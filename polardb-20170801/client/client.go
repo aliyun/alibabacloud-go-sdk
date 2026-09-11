@@ -3861,7 +3861,7 @@ func (client *Client) CreateAgenticDBTenantApiKey(request *CreateAgenticDBTenant
 
 // Summary:
 //
-// Creates an application that is attached to a PolarDB instance.
+// Creates an application associated with a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -3877,6 +3877,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	}
 	request := &CreateApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgenticDBBranchSpec) {
+		request.AgenticDBBranchSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgenticDBBranchSpec, dara.String("AgenticDBBranchSpec"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Components) {
 		request.ComponentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Components, dara.String("Components"), dara.String("json"))
 	}
@@ -3901,9 +3905,17 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Storages) {
+		request.StoragesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Storages, dara.String("Storages"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AIDBClusterId) {
 		query["AIDBClusterId"] = request.AIDBClusterId
+	}
+
+	if !dara.IsNil(request.AgenticDBBranchSpecShrink) {
+		query["AgenticDBBranchSpec"] = request.AgenticDBBranchSpecShrink
 	}
 
 	if !dara.IsNil(request.ApplicationType) {
@@ -4042,6 +4054,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["SkillTemplateId"] = request.SkillTemplateId
 	}
 
+	if !dara.IsNil(request.StoragesShrink) {
+		query["Storages"] = request.StoragesShrink
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -4095,7 +4111,7 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 // Summary:
 //
-// Creates an application that is attached to a PolarDB instance.
+// Creates an application associated with a PolarDB instance.
 //
 // @param request - CreateApplicationRequest
 //
@@ -21441,13 +21457,13 @@ func (client *Client) DescribeDbClusterAttributeZonal(request *DescribeDbCluster
 
 // Summary:
 //
-// Queries the information about the backup sets in a released PolarDB cluster.
+// Queries the details of backup sets in a released PolarDB cluster.
 //
 // Description:
 //
-// Before you call this operation, make sure that the PolarDB cluster is in the **Released*	- state. You must also confirm that the **Retain All Backups Permanently*	- or **Retain Last Automatic Backup Permanently*	- backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+// When you invoke this operation, the PolarDB cluster must be in the **Released*	- state, and one of the following backup retention options must have been selected when the cluster was released: **Long-term Retention (LTR) of All Backups*	- or **Long-term Retention (LTR) of the Last Backup (Automatic Backup Before Deletion)**. If all retained backup sets of a released cluster have been manually deleted, this operation can no longer query the cluster.
 //
-// >  You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+// > You can invoke the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
 //
 // @param request - DescribeDetachedBackupsRequest
 //
@@ -21539,13 +21555,13 @@ func (client *Client) DescribeDetachedBackupsWithOptions(request *DescribeDetach
 
 // Summary:
 //
-// Queries the information about the backup sets in a released PolarDB cluster.
+// Queries the details of backup sets in a released PolarDB cluster.
 //
 // Description:
 //
-// Before you call this operation, make sure that the PolarDB cluster is in the **Released*	- state. You must also confirm that the **Retain All Backups Permanently*	- or **Retain Last Automatic Backup Permanently*	- backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+// When you invoke this operation, the PolarDB cluster must be in the **Released*	- state, and one of the following backup retention options must have been selected when the cluster was released: **Long-term Retention (LTR) of All Backups*	- or **Long-term Retention (LTR) of the Last Backup (Automatic Backup Before Deletion)**. If all retained backup sets of a released cluster have been manually deleted, this operation can no longer query the cluster.
 //
-// >  You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+// > You can invoke the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
 //
 // @param request - DescribeDetachedBackupsRequest
 //
@@ -22979,7 +22995,7 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 
 // Summary:
 //
-// Queries the synchronization list of a knowledge base.
+// Queries the list of knowledge base synchronization links.
 //
 // @param request - DescribeKBSyncLinksRequest
 //
@@ -23000,6 +23016,14 @@ func (client *Client) DescribeKBSyncLinksWithOptions(request *DescribeKBSyncLink
 
 	if !dara.IsNil(request.KnowledgeBaseId) {
 		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -23031,7 +23055,7 @@ func (client *Client) DescribeKBSyncLinksWithOptions(request *DescribeKBSyncLink
 
 // Summary:
 //
-// Queries the synchronization list of a knowledge base.
+// Queries the list of knowledge base synchronization links.
 //
 // @param request - DescribeKBSyncLinksRequest
 //
@@ -32153,11 +32177,11 @@ func (client *Client) ModifyAutoRenewAttribute(request *ModifyAutoRenewAttribute
 
 // Summary:
 //
-// Modifies the automatic backup policy for a PolarDB cluster.
+// Modifies the automatic backup policy of a PolarDB cluster.
 //
 // Description:
 //
-// > You can also modify the automatic backup policy for a PolarDB cluster in the console. For more information, see [backup settings](https://help.aliyun.com/document_detail/280422.html).
+// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
 //
 // @param tmpReq - ModifyBackupPolicyRequest
 //
@@ -32279,11 +32303,11 @@ func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRe
 
 // Summary:
 //
-// Modifies the automatic backup policy for a PolarDB cluster.
+// Modifies the automatic backup policy of a PolarDB cluster.
 //
 // Description:
 //
-// > You can also modify the automatic backup policy for a PolarDB cluster in the console. For more information, see [backup settings](https://help.aliyun.com/document_detail/280422.html).
+// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -38229,6 +38253,76 @@ func (client *Client) RefreshDBClusterStorageUsage(request *RefreshDBClusterStor
 
 // Summary:
 //
+// Registers an OSS file in a knowledge base.
+//
+// @param request - RegisterKnowledgeBaseFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterKnowledgeBaseFileResponse
+func (client *Client) RegisterKnowledgeBaseFileWithOptions(request *RegisterKnowledgeBaseFileRequest, runtime *dara.RuntimeOptions) (_result *RegisterKnowledgeBaseFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilePath) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RegisterKnowledgeBaseFile"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RegisterKnowledgeBaseFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers an OSS file in a knowledge base.
+//
+// @param request - RegisterKnowledgeBaseFileRequest
+//
+// @return RegisterKnowledgeBaseFileResponse
+func (client *Client) RegisterKnowledgeBaseFile(request *RegisterKnowledgeBaseFileRequest) (_result *RegisterKnowledgeBaseFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RegisterKnowledgeBaseFileResponse{}
+	_body, _err := client.RegisterKnowledgeBaseFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Rejects a PolarClaw device pairing request.
 //
 // @param request - RejectPolarClawDevicePairRequest
@@ -39601,7 +39695,7 @@ func (client *Client) RestoreTable(request *RestoreTableRequest) (_result *Resto
 
 // Summary:
 //
-// Retrieves information from a knowledge base.
+// Retrieves knowledge base search results.
 //
 // @param request - RetrievalKnowledgeBaseRequest
 //
@@ -39665,7 +39759,7 @@ func (client *Client) RetrievalKnowledgeBaseWithOptions(request *RetrievalKnowle
 
 // Summary:
 //
-// Retrieves information from a knowledge base.
+// Retrieves knowledge base search results.
 //
 // @param request - RetrievalKnowledgeBaseRequest
 //

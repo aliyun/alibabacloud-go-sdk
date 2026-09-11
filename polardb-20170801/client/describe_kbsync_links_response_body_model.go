@@ -11,19 +11,43 @@ type iDescribeKBSyncLinksResponseBody interface {
 	GoString() string
 	SetItems(v []*DescribeKBSyncLinksResponseBodyItems) *DescribeKBSyncLinksResponseBody
 	GetItems() []*DescribeKBSyncLinksResponseBodyItems
+	SetPageNumber(v int32) *DescribeKBSyncLinksResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeKBSyncLinksResponseBody
+	GetPageSize() *int32
 	SetRequestId(v string) *DescribeKBSyncLinksResponseBody
 	GetRequestId() *string
+	SetTotalRecordCount(v int32) *DescribeKBSyncLinksResponseBody
+	GetTotalRecordCount() *int32
 }
 
 type DescribeKBSyncLinksResponseBody struct {
 	// The list of synchronization links.
 	Items []*DescribeKBSyncLinksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the current results.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page in the current results.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// EB07CFF0-D8A4-5C76-AED7-D00E26FC2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of synchronization links that match the query conditions.
+	//
+	// example:
+	//
+	// 1
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeKBSyncLinksResponseBody) String() string {
@@ -38,8 +62,20 @@ func (s *DescribeKBSyncLinksResponseBody) GetItems() []*DescribeKBSyncLinksRespo
 	return s.Items
 }
 
+func (s *DescribeKBSyncLinksResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeKBSyncLinksResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *DescribeKBSyncLinksResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeKBSyncLinksResponseBody) GetTotalRecordCount() *int32 {
+	return s.TotalRecordCount
 }
 
 func (s *DescribeKBSyncLinksResponseBody) SetItems(v []*DescribeKBSyncLinksResponseBodyItems) *DescribeKBSyncLinksResponseBody {
@@ -47,8 +83,23 @@ func (s *DescribeKBSyncLinksResponseBody) SetItems(v []*DescribeKBSyncLinksRespo
 	return s
 }
 
+func (s *DescribeKBSyncLinksResponseBody) SetPageNumber(v int32) *DescribeKBSyncLinksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeKBSyncLinksResponseBody) SetPageSize(v int32) *DescribeKBSyncLinksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeKBSyncLinksResponseBody) SetRequestId(v string) *DescribeKBSyncLinksResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeKBSyncLinksResponseBody) SetTotalRecordCount(v int32) *DescribeKBSyncLinksResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -66,7 +117,7 @@ func (s *DescribeKBSyncLinksResponseBody) Validate() error {
 }
 
 type DescribeKBSyncLinksResponseBodyItems struct {
-	// The client identifier.
+	// The client ID.
 	//
 	// example:
 	//

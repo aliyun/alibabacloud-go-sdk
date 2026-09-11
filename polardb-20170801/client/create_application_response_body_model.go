@@ -34,7 +34,7 @@ type CreateApplicationResponseBody struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The list of child components.
 	Components []*CreateApplicationResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//

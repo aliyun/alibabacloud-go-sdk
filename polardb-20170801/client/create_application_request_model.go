@@ -11,6 +11,8 @@ type iCreateApplicationRequest interface {
 	GoString() string
 	SetAIDBClusterId(v string) *CreateApplicationRequest
 	GetAIDBClusterId() *string
+	SetAgenticDBBranchSpec(v *CreateApplicationRequestAgenticDBBranchSpec) *CreateApplicationRequest
+	GetAgenticDBBranchSpec() *CreateApplicationRequestAgenticDBBranchSpec
 	SetApplicationType(v string) *CreateApplicationRequest
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationRequest
@@ -79,6 +81,8 @@ type iCreateApplicationRequest interface {
 	GetSecurityIPType() *string
 	SetSkillTemplateId(v string) *CreateApplicationRequest
 	GetSkillTemplateId() *string
+	SetStorages(v []*CreateApplicationRequestStorages) *CreateApplicationRequest
+	GetStorages() []*CreateApplicationRequestStorages
 	SetTag(v []*CreateApplicationRequestTag) *CreateApplicationRequest
 	GetTag() []*CreateApplicationRequestTag
 	SetTargetVersion(v string) *CreateApplicationRequest
@@ -96,12 +100,18 @@ type iCreateApplicationRequest interface {
 }
 
 type CreateApplicationRequest struct {
-	// The ID of an existing template operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The ID of an existing model operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// pm-xxxxxx
 	AIDBClusterId *string `json:"AIDBClusterId,omitempty" xml:"AIDBClusterId,omitempty"`
+	// The AgenticDB branch specification.
+	//
+	// example:
+	//
+	// {"DBClusterId":"pagc-2zea920mcvd5o87","TenantId":"t-cfc2d7df0e59439681f0087f51","ProjectId":"proj-d7849d0050664c758af795d468","BranchId":"br-9054b3b7649e4c0d977bd0df37","ForkFromBranch":true,"ForkFromApplicationId":"pa-source"}
+	AgenticDBBranchSpec *CreateApplicationRequestAgenticDBBranchSpec `json:"AgenticDBBranchSpec,omitempty" xml:"AgenticDBBranchSpec,omitempty" type:"Struct"`
 	// The application type. Valid values:
 	//
 	// - supabase: Set this value to create a managed Supabase application.
@@ -132,13 +142,13 @@ type CreateApplicationRequest struct {
 	//
 	// feishu
 	AuthProvider *string `json:"AuthProvider,omitempty" xml:"AuthProvider,omitempty"`
-	// The configuration of the authentication provider.
+	// The authentication provider configuration.
 	//
 	// example:
 	//
 	// xxx
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies whether to automatically create and associate with an elastic IP address (EIP).
+	// Specifies whether to enable automatic creation of an elastic IP address (EIP) and attach it to the instance. This is equivalent to associate with an EIP.
 	//
 	// example:
 	//
@@ -186,13 +196,13 @@ type CreateApplicationRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
 	DnatEntries []*CreateApplicationRequestDnatEntries `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty" type:"Repeated"`
-	// The dedicated DNAT NAT IP address that is allocated by the customer (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in the available state. The vSwitch of the gateway must belong to the primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
+	// The DNAT-dedicated NAT IP address that has been allocated (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in an available state. The vSwitch of the gateway must belong to a primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry has been bound to the vSwitch where the application resides.
 	//
 	// example:
 	//
 	// 10.64.0.10
 	DnatIpAddress *string `json:"DnatIpAddress,omitempty" xml:"DnatIpAddress,omitempty"`
-	// Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating resources.
+	// Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating the resource.
 	//
 	// example:
 	//
@@ -204,19 +214,19 @@ type CreateApplicationRequest struct {
 	KnowledgeApplicationSpec *CreateApplicationRequestKnowledgeApplicationSpec `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty" type:"Struct"`
 	// Required for mem0 applications.
 	MemApplicationSpec *CreateApplicationRequestMemApplicationSpec `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
-	// The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model API. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// openai-completions
 	ModelApi *string `json:"ModelApi,omitempty" xml:"ModelApi,omitempty"`
-	// The API key of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model API key. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// sk-xxxxxx
 	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
-	// The URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model base URL. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -224,7 +234,7 @@ type CreateApplicationRequest struct {
 	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
 	// The model source. Valid values:
 	//
-	// 	- bailian: Bailian model.
+	// 	- bailian: Alibaba Cloud Model Studio model.
 	//
 	// 	- custom: Custom model.
 	//
@@ -234,7 +244,7 @@ type CreateApplicationRequest struct {
 	//
 	// bailian
 	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
-	// The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model name. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -248,13 +258,13 @@ type CreateApplicationRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription type, such as yearly or monthly.
+	// The subscription type (yearly or monthly).
 	//
 	// example:
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The instance ID of the Polarlakebase cold storage or high-performance instance. Default value: empty. If specified, the corresponding storage is mounted to the application.
+	// The instance ID of the Polarlakebase cold storage or high-performance edition. Default value: empty. If specified, the corresponding storage is mounted to the application.
 	//
 	// Currently, only the following applications support this parameter:
 	//
@@ -296,7 +306,7 @@ type CreateApplicationRequest struct {
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+	// The IP whitelist. If you do not specify this parameter, the default value is `127.0.0.1`.
 	//
 	// example:
 	//
@@ -314,6 +324,12 @@ type CreateApplicationRequest struct {
 	//
 	// xxx
 	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
+	// The list of application storages.
+	//
+	// example:
+	//
+	// [{"StorageType":"oss","StorageInstanceId":"pfs-xxxx","EndpointId":"pe-xxxx"}]
+	Storages []*CreateApplicationRequestStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
 	// The tags.
 	Tag []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The target version.
@@ -328,7 +344,7 @@ type CreateApplicationRequest struct {
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The vSwitch. Default value: the current vSwitch in the primary zone of the instance.
+	// The vSwitch. Default value: the vSwitch in the primary zone of the instance.
 	//
 	// example:
 	//
@@ -340,7 +356,7 @@ type CreateApplicationRequest struct {
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in the active state.
+	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in an active state.
 	//
 	// example:
 	//
@@ -364,6 +380,10 @@ func (s CreateApplicationRequest) GoString() string {
 
 func (s *CreateApplicationRequest) GetAIDBClusterId() *string {
 	return s.AIDBClusterId
+}
+
+func (s *CreateApplicationRequest) GetAgenticDBBranchSpec() *CreateApplicationRequestAgenticDBBranchSpec {
+	return s.AgenticDBBranchSpec
 }
 
 func (s *CreateApplicationRequest) GetApplicationType() *string {
@@ -502,6 +522,10 @@ func (s *CreateApplicationRequest) GetSkillTemplateId() *string {
 	return s.SkillTemplateId
 }
 
+func (s *CreateApplicationRequest) GetStorages() []*CreateApplicationRequestStorages {
+	return s.Storages
+}
+
 func (s *CreateApplicationRequest) GetTag() []*CreateApplicationRequestTag {
 	return s.Tag
 }
@@ -532,6 +556,11 @@ func (s *CreateApplicationRequest) GetZoneId() *string {
 
 func (s *CreateApplicationRequest) SetAIDBClusterId(v string) *CreateApplicationRequest {
 	s.AIDBClusterId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetAgenticDBBranchSpec(v *CreateApplicationRequestAgenticDBBranchSpec) *CreateApplicationRequest {
+	s.AgenticDBBranchSpec = v
 	return s
 }
 
@@ -705,6 +734,11 @@ func (s *CreateApplicationRequest) SetSkillTemplateId(v string) *CreateApplicati
 	return s
 }
 
+func (s *CreateApplicationRequest) SetStorages(v []*CreateApplicationRequestStorages) *CreateApplicationRequest {
+	s.Storages = v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetTag(v []*CreateApplicationRequestTag) *CreateApplicationRequest {
 	s.Tag = v
 	return s
@@ -741,6 +775,11 @@ func (s *CreateApplicationRequest) SetZoneId(v string) *CreateApplicationRequest
 }
 
 func (s *CreateApplicationRequest) Validate() error {
+	if s.AgenticDBBranchSpec != nil {
+		if err := s.AgenticDBBranchSpec.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Components != nil {
 		for _, item := range s.Components {
 			if item != nil {
@@ -787,6 +826,15 @@ func (s *CreateApplicationRequest) Validate() error {
 			}
 		}
 	}
+	if s.Storages != nil {
+		for _, item := range s.Storages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Tag != nil {
 		for _, item := range s.Tag {
 			if item != nil {
@@ -799,14 +847,119 @@ func (s *CreateApplicationRequest) Validate() error {
 	return nil
 }
 
+type CreateApplicationRequestAgenticDBBranchSpec struct {
+	// The AgenticDB branch ID.
+	//
+	// example:
+	//
+	// br-9054b3b7649e4c0d977bd0df37
+	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	// The AgenticDB cluster ID.
+	//
+	// example:
+	//
+	// pagc-2zea920mcvd5o87
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the source application.
+	//
+	// example:
+	//
+	// pa-source
+	ForkFromApplicationId *string `json:"ForkFromApplicationId,omitempty" xml:"ForkFromApplicationId,omitempty"`
+	// Specifies whether to create the application based on a specified AgenticDB branch.
+	//
+	// example:
+	//
+	// true
+	ForkFromBranch *bool `json:"ForkFromBranch,omitempty" xml:"ForkFromBranch,omitempty"`
+	// The AgenticDB project ID.
+	//
+	// example:
+	//
+	// proj-d7849d0050664c758af795d468
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The AgenticDB tenant ID.
+	//
+	// example:
+	//
+	// t-cfc2d7df0e59439681f0087f51
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s CreateApplicationRequestAgenticDBBranchSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestAgenticDBBranchSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) GetBranchId() *string {
+	return s.BranchId
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) GetDBClusterId() *string {
+	return s.DBClusterId
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) GetForkFromApplicationId() *string {
+	return s.ForkFromApplicationId
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) GetForkFromBranch() *bool {
+	return s.ForkFromBranch
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) GetProjectId() *string {
+	return s.ProjectId
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) GetTenantId() *string {
+	return s.TenantId
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) SetBranchId(v string) *CreateApplicationRequestAgenticDBBranchSpec {
+	s.BranchId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) SetDBClusterId(v string) *CreateApplicationRequestAgenticDBBranchSpec {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) SetForkFromApplicationId(v string) *CreateApplicationRequestAgenticDBBranchSpec {
+	s.ForkFromApplicationId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) SetForkFromBranch(v bool) *CreateApplicationRequestAgenticDBBranchSpec {
+	s.ForkFromBranch = &v
+	return s
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) SetProjectId(v string) *CreateApplicationRequestAgenticDBBranchSpec {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) SetTenantId(v string) *CreateApplicationRequestAgenticDBBranchSpec {
+	s.TenantId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestAgenticDBBranchSpec) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateApplicationRequestComponents struct {
-	// The specifications of the application subcomponent.
+	// The specification of the application subcomponent.
 	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The maximum number of application subcomponents with the same specifications. Default value: the value of ComponentReplica.
+	// The maximum number of replicas for the application subcomponent with the same specification. Default value: the value of ComponentReplica.
 	//
 	// - Only raycluster supports this parameter.
 	//
@@ -852,7 +1005,7 @@ type CreateApplicationRequestComponents struct {
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The list of security groups for the application subcomponent. Separate multiple security groups with commas (,).
+	// The list of security groups for the application subcomponent, separated by commas (,).
 	//
 	// example:
 	//
@@ -864,7 +1017,7 @@ type CreateApplicationRequestComponents struct {
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The whitelist IP addresses of the application subcomponent. Separate multiple IP addresses with commas (,).
+	// The whitelist IP addresses of the application subcomponent, separated by commas (,).
 	//
 	// example:
 	//
@@ -981,7 +1134,7 @@ func (s *CreateApplicationRequestComponents) Validate() error {
 }
 
 type CreateApplicationRequestDnatEntries struct {
-	// The frontend port. This parameter is optional. If not specified, the port is automatically assigned by the control plane to avoid conflicts with ports already in use on the gateway. You can query the assignment result by calling the DescribeApplicationAttribute operation.
+	// The frontend port. This parameter is optional. If not specified, the system automatically assigns a port that does not conflict with ports already in use on the gateway. You can query the assignment result by calling the DescribeApplicationAttribute operation.
 	//
 	// example:
 	//
@@ -1075,7 +1228,7 @@ type CreateApplicationRequestKnowledgeApplicationSpec struct {
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
 	// The password.
 	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	// Required for knowledge applications. The name of the LLM model, such as qwen3-max.
+	// Required for knowledge applications. The LLM model name, such as qwen3-max.
 	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
 }
 
@@ -1137,7 +1290,7 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// test-user
 	DbUser *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	// Required for mem0 applications. The name of the embedder model, such as text-embedding-v4.
+	// Required for mem0 applications. The embedder model name, such as text-embedding-v4.
 	//
 	// example:
 	//
@@ -1155,7 +1308,7 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// qwen-plus
 	GraphLlmModel *string `json:"GraphLlmModel,omitempty" xml:"GraphLlmModel,omitempty"`
-	// Required for mem0 applications. The name of the LLM model, such as qwen3-max.
+	// Required for mem0 applications. The LLM model name, such as qwen3-max.
 	//
 	// example:
 	//
@@ -1167,7 +1320,7 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Required for mem0 applications. The name of the reranker model, such as qwen3-rerank.
+	// Required for mem0 applications. The reranker model name, such as qwen3-rerank.
 	//
 	// example:
 	//
@@ -1325,6 +1478,141 @@ func (s *CreateApplicationRequestParameters) SetParameterValue(v string) *Create
 }
 
 func (s *CreateApplicationRequestParameters) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationRequestStorages struct {
+	// The mount path inside the container.
+	//
+	// example:
+	//
+	// /data/container
+	ContainerMountPath *string `json:"ContainerMountPath,omitempty" xml:"ContainerMountPath,omitempty"`
+	// The storage endpoint ID.
+	//
+	// example:
+	//
+	// pe-xxxx
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The storage mount path.
+	//
+	// example:
+	//
+	// /data/source
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The storage capacity.
+	//
+	// example:
+	//
+	// 100
+	StorageCapacity *string `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
+	// The storage access endpoint.
+	//
+	// example:
+	//
+	// polarfs.example.com
+	StorageEndpoint *string `json:"StorageEndpoint,omitempty" xml:"StorageEndpoint,omitempty"`
+	// The storage instance ID.
+	//
+	// example:
+	//
+	// pfs-xxxx
+	StorageInstanceId *string `json:"StorageInstanceId,omitempty" xml:"StorageInstanceId,omitempty"`
+	// The storage performance level.
+	//
+	// example:
+	//
+	// PL1
+	StoragePerformanceLevel *string `json:"StoragePerformanceLevel,omitempty" xml:"StoragePerformanceLevel,omitempty"`
+	// The storage type.
+	//
+	// example:
+	//
+	// oss
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s CreateApplicationRequestStorages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestStorages) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestStorages) GetContainerMountPath() *string {
+	return s.ContainerMountPath
+}
+
+func (s *CreateApplicationRequestStorages) GetEndpointId() *string {
+	return s.EndpointId
+}
+
+func (s *CreateApplicationRequestStorages) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *CreateApplicationRequestStorages) GetStorageCapacity() *string {
+	return s.StorageCapacity
+}
+
+func (s *CreateApplicationRequestStorages) GetStorageEndpoint() *string {
+	return s.StorageEndpoint
+}
+
+func (s *CreateApplicationRequestStorages) GetStorageInstanceId() *string {
+	return s.StorageInstanceId
+}
+
+func (s *CreateApplicationRequestStorages) GetStoragePerformanceLevel() *string {
+	return s.StoragePerformanceLevel
+}
+
+func (s *CreateApplicationRequestStorages) GetStorageType() *string {
+	return s.StorageType
+}
+
+func (s *CreateApplicationRequestStorages) SetContainerMountPath(v string) *CreateApplicationRequestStorages {
+	s.ContainerMountPath = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) SetEndpointId(v string) *CreateApplicationRequestStorages {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) SetMountPath(v string) *CreateApplicationRequestStorages {
+	s.MountPath = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) SetStorageCapacity(v string) *CreateApplicationRequestStorages {
+	s.StorageCapacity = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) SetStorageEndpoint(v string) *CreateApplicationRequestStorages {
+	s.StorageEndpoint = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) SetStorageInstanceId(v string) *CreateApplicationRequestStorages {
+	s.StorageInstanceId = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) SetStoragePerformanceLevel(v string) *CreateApplicationRequestStorages {
+	s.StoragePerformanceLevel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) SetStorageType(v string) *CreateApplicationRequestStorages {
+	s.StorageType = &v
+	return s
+}
+
+func (s *CreateApplicationRequestStorages) Validate() error {
 	return dara.Validate(s)
 }
 

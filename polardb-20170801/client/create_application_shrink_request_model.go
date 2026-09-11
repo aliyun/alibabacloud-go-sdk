@@ -11,6 +11,8 @@ type iCreateApplicationShrinkRequest interface {
 	GoString() string
 	SetAIDBClusterId(v string) *CreateApplicationShrinkRequest
 	GetAIDBClusterId() *string
+	SetAgenticDBBranchSpecShrink(v string) *CreateApplicationShrinkRequest
+	GetAgenticDBBranchSpecShrink() *string
 	SetApplicationType(v string) *CreateApplicationShrinkRequest
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationShrinkRequest
@@ -79,6 +81,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetSecurityIPType() *string
 	SetSkillTemplateId(v string) *CreateApplicationShrinkRequest
 	GetSkillTemplateId() *string
+	SetStoragesShrink(v string) *CreateApplicationShrinkRequest
+	GetStoragesShrink() *string
 	SetTag(v []*CreateApplicationShrinkRequestTag) *CreateApplicationShrinkRequest
 	GetTag() []*CreateApplicationShrinkRequestTag
 	SetTargetVersion(v string) *CreateApplicationShrinkRequest
@@ -96,12 +100,18 @@ type iCreateApplicationShrinkRequest interface {
 }
 
 type CreateApplicationShrinkRequest struct {
-	// The ID of an existing template operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The ID of an existing model operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// pm-xxxxxx
 	AIDBClusterId *string `json:"AIDBClusterId,omitempty" xml:"AIDBClusterId,omitempty"`
+	// The AgenticDB branch specification.
+	//
+	// example:
+	//
+	// {"DBClusterId":"pagc-2zea920mcvd5o87","TenantId":"t-cfc2d7df0e59439681f0087f51","ProjectId":"proj-d7849d0050664c758af795d468","BranchId":"br-9054b3b7649e4c0d977bd0df37","ForkFromBranch":true,"ForkFromApplicationId":"pa-source"}
+	AgenticDBBranchSpecShrink *string `json:"AgenticDBBranchSpec,omitempty" xml:"AgenticDBBranchSpec,omitempty"`
 	// The application type. Valid values:
 	//
 	// - supabase: Set this value to create a managed Supabase application.
@@ -132,13 +142,13 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// feishu
 	AuthProvider *string `json:"AuthProvider,omitempty" xml:"AuthProvider,omitempty"`
-	// The configuration of the authentication provider.
+	// The authentication provider configuration.
 	//
 	// example:
 	//
 	// xxx
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies whether to automatically create and associate with an elastic IP address (EIP).
+	// Specifies whether to enable automatic creation of an elastic IP address (EIP) and attach it to the instance. This is equivalent to associate with an EIP.
 	//
 	// example:
 	//
@@ -186,13 +196,13 @@ type CreateApplicationShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
 	DnatEntriesShrink *string `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty"`
-	// The dedicated DNAT NAT IP address that is allocated by the customer (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in the available state. The vSwitch of the gateway must belong to the primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
+	// The DNAT-dedicated NAT IP address that has been allocated (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in an available state. The vSwitch of the gateway must belong to a primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry has been bound to the vSwitch where the application resides.
 	//
 	// example:
 	//
 	// 10.64.0.10
 	DnatIpAddress *string `json:"DnatIpAddress,omitempty" xml:"DnatIpAddress,omitempty"`
-	// Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating resources.
+	// Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating the resource.
 	//
 	// example:
 	//
@@ -204,19 +214,19 @@ type CreateApplicationShrinkRequest struct {
 	KnowledgeApplicationSpecShrink *string `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty"`
 	// Required for mem0 applications.
 	MemApplicationSpecShrink *string `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty"`
-	// The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model API. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// openai-completions
 	ModelApi *string `json:"ModelApi,omitempty" xml:"ModelApi,omitempty"`
-	// The API key of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model API key. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// sk-xxxxxx
 	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
-	// The URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model base URL. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -224,7 +234,7 @@ type CreateApplicationShrinkRequest struct {
 	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
 	// The model source. Valid values:
 	//
-	// 	- bailian: Bailian model.
+	// 	- bailian: Alibaba Cloud Model Studio model.
 	//
 	// 	- custom: Custom model.
 	//
@@ -234,7 +244,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// bailian
 	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
-	// The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+	// The model name. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
@@ -248,13 +258,13 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription type, such as yearly or monthly.
+	// The subscription type (yearly or monthly).
 	//
 	// example:
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The instance ID of the Polarlakebase cold storage or high-performance instance. Default value: empty. If specified, the corresponding storage is mounted to the application.
+	// The instance ID of the Polarlakebase cold storage or high-performance edition. Default value: empty. If specified, the corresponding storage is mounted to the application.
 	//
 	// Currently, only the following applications support this parameter:
 	//
@@ -296,7 +306,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+	// The IP whitelist. If you do not specify this parameter, the default value is `127.0.0.1`.
 	//
 	// example:
 	//
@@ -314,6 +324,12 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// xxx
 	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
+	// The list of application storages.
+	//
+	// example:
+	//
+	// [{"StorageType":"oss","StorageInstanceId":"pfs-xxxx","EndpointId":"pe-xxxx"}]
+	StoragesShrink *string `json:"Storages,omitempty" xml:"Storages,omitempty"`
 	// The tags.
 	Tag []*CreateApplicationShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The target version.
@@ -328,7 +344,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The vSwitch. Default value: the current vSwitch in the primary zone of the instance.
+	// The vSwitch. Default value: the vSwitch in the primary zone of the instance.
 	//
 	// example:
 	//
@@ -340,7 +356,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in the active state.
+	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in an active state.
 	//
 	// example:
 	//
@@ -364,6 +380,10 @@ func (s CreateApplicationShrinkRequest) GoString() string {
 
 func (s *CreateApplicationShrinkRequest) GetAIDBClusterId() *string {
 	return s.AIDBClusterId
+}
+
+func (s *CreateApplicationShrinkRequest) GetAgenticDBBranchSpecShrink() *string {
+	return s.AgenticDBBranchSpecShrink
 }
 
 func (s *CreateApplicationShrinkRequest) GetApplicationType() *string {
@@ -502,6 +522,10 @@ func (s *CreateApplicationShrinkRequest) GetSkillTemplateId() *string {
 	return s.SkillTemplateId
 }
 
+func (s *CreateApplicationShrinkRequest) GetStoragesShrink() *string {
+	return s.StoragesShrink
+}
+
 func (s *CreateApplicationShrinkRequest) GetTag() []*CreateApplicationShrinkRequestTag {
 	return s.Tag
 }
@@ -532,6 +556,11 @@ func (s *CreateApplicationShrinkRequest) GetZoneId() *string {
 
 func (s *CreateApplicationShrinkRequest) SetAIDBClusterId(v string) *CreateApplicationShrinkRequest {
 	s.AIDBClusterId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetAgenticDBBranchSpecShrink(v string) *CreateApplicationShrinkRequest {
+	s.AgenticDBBranchSpecShrink = &v
 	return s
 }
 
@@ -702,6 +731,11 @@ func (s *CreateApplicationShrinkRequest) SetSecurityIPType(v string) *CreateAppl
 
 func (s *CreateApplicationShrinkRequest) SetSkillTemplateId(v string) *CreateApplicationShrinkRequest {
 	s.SkillTemplateId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetStoragesShrink(v string) *CreateApplicationShrinkRequest {
+	s.StoragesShrink = &v
 	return s
 }
 
