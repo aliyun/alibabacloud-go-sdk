@@ -24,11 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("regional")
+	client.EndpointRule = dara.String("central")
 	client.EndpointMap = map[string]*string{
-		"cn-qingdao":            dara.String("foasconsole.cn-qingdao.aliyuncs.com"),
 		"cn-wulanchabu":         dara.String("foasconsole.cn-wulanchabu.aliyuncs.com"),
 		"cn-beijing":            dara.String("foasconsole.cn-beijing.aliyuncs.com"),
+		"cn-qingdao":            dara.String("foasconsole.cn-qingdao.aliyuncs.com"),
 		"cn-shanghai":           dara.String("foasconsole.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":           dara.String("foasconsole.cn-hongkong.aliyuncs.com"),
 		"cn-zhangjiakou":        dara.String("foasconsole.cn-zhangjiakou.aliyuncs.com"),
@@ -44,7 +44,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-central-1":          dara.String("foasconsole.eu-central-1.aliyuncs.com"),
 		"cn-shenzhen-finance-1": dara.String("foasconsole.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-shanghai-finance-1": dara.String("foasconsole.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("foasconsole.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -407,7 +406,7 @@ func (client *Client) ConvertPrepayInstance(request *ConvertPrepayInstanceReques
 //
 // Description:
 //
-// *Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/billing-overview) of fully managed Flink before you call this operation.**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/billing-overview) of fully managed Flink.**
 //
 // @param tmpReq - CreateInstanceRequest
 //
@@ -423,6 +422,14 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 	}
 	request := &CreateInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DefaultHaNamespaceResourceSpec) {
+		request.DefaultHaNamespaceResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultHaNamespaceResourceSpec, dara.String("DefaultHaNamespaceResourceSpec"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DefaultNamespaceResourceSpec) {
+		request.DefaultNamespaceResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultNamespaceResourceSpec, dara.String("DefaultNamespaceResourceSpec"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.HaResourceSpec) {
 		request.HaResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HaResourceSpec, dara.String("HaResourceSpec"), dara.String("json"))
 	}
@@ -458,6 +465,14 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 
 	if !dara.IsNil(request.ChargeType) {
 		body["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.DefaultHaNamespaceResourceSpecShrink) {
+		body["DefaultHaNamespaceResourceSpec"] = request.DefaultHaNamespaceResourceSpecShrink
+	}
+
+	if !dara.IsNil(request.DefaultNamespaceResourceSpecShrink) {
+		body["DefaultNamespaceResourceSpec"] = request.DefaultNamespaceResourceSpecShrink
 	}
 
 	if !dara.IsNil(request.Duration) {
@@ -557,7 +572,7 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 //
 // Description:
 //
-// *Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/billing-overview) of fully managed Flink before you call this operation.**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/billing-overview) of fully managed Flink.**
 //
 // @param request - CreateInstanceRequest
 //
@@ -805,6 +820,10 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 //
 // Queries the details of one or more fully managed Flink workspaces.
 //
+// Description:
+//
+// > In the following cases, you cannot release a workspace:- In pay-as-you-go mode, the workspace is in the Creating, Releasing, or Creation Timed Out state.- If the billing method is subscription, unsubscribe from the resource on the Unsubscription Management page in User Center.
+//
 // @param tmpReq - DescribeInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -850,6 +869,10 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 // Summary:
 //
 // Queries the details of one or more fully managed Flink workspaces.
+//
+// Description:
+//
+// > In the following cases, you cannot release a workspace:- In pay-as-you-go mode, the workspace is in the Creating, Releasing, or Creation Timed Out state.- If the billing method is subscription, unsubscribe from the resource on the Unsubscription Management page in User Center.
 //
 // @param request - DescribeInstancesRequest
 //

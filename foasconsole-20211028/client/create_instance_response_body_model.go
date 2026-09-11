@@ -79,7 +79,7 @@ func (s *CreateInstanceResponseBody) Validate() error {
 }
 
 type CreateInstanceResponseBodyOrderInfo struct {
-	// The instance ID of the order.
+	// The order instance ID.
 	//
 	// example:
 	//

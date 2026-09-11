@@ -253,7 +253,7 @@ func (client *Client) ConvertPrepayInstanceWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// *Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/billing-overview) of fully managed Flink before you call this operation.**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/billing-overview) of fully managed Flink.**
 //
 // @param tmpReq - CreateInstanceRequest
 //
@@ -269,6 +269,14 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 	}
 	request := &CreateInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DefaultHaNamespaceResourceSpec) {
+		request.DefaultHaNamespaceResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultHaNamespaceResourceSpec, dara.String("DefaultHaNamespaceResourceSpec"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DefaultNamespaceResourceSpec) {
+		request.DefaultNamespaceResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultNamespaceResourceSpec, dara.String("DefaultNamespaceResourceSpec"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.HaResourceSpec) {
 		request.HaResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HaResourceSpec, dara.String("HaResourceSpec"), dara.String("json"))
 	}
@@ -304,6 +312,14 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, tmpReq *Cre
 
 	if !dara.IsNil(request.ChargeType) {
 		body["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.DefaultHaNamespaceResourceSpecShrink) {
+		body["DefaultHaNamespaceResourceSpec"] = request.DefaultHaNamespaceResourceSpecShrink
+	}
+
+	if !dara.IsNil(request.DefaultNamespaceResourceSpecShrink) {
+		body["DefaultNamespaceResourceSpec"] = request.DefaultNamespaceResourceSpecShrink
 	}
 
 	if !dara.IsNil(request.Duration) {
@@ -570,6 +586,10 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 // Summary:
 //
 // Queries the details of one or more fully managed Flink workspaces.
+//
+// Description:
+//
+// > In the following cases, you cannot release a workspace:- In pay-as-you-go mode, the workspace is in the Creating, Releasing, or Creation Timed Out state.- If the billing method is subscription, unsubscribe from the resource on the Unsubscription Management page in User Center.
 //
 // @param tmpReq - DescribeInstancesRequest
 //

@@ -15,6 +15,10 @@ type iCreateInstanceRequest interface {
 	GetAutoRenew() *bool
 	SetChargeType(v string) *CreateInstanceRequest
 	GetChargeType() *string
+	SetDefaultHaNamespaceResourceSpec(v *CreateInstanceRequestDefaultHaNamespaceResourceSpec) *CreateInstanceRequest
+	GetDefaultHaNamespaceResourceSpec() *CreateInstanceRequestDefaultHaNamespaceResourceSpec
+	SetDefaultNamespaceResourceSpec(v *CreateInstanceRequestDefaultNamespaceResourceSpec) *CreateInstanceRequest
+	GetDefaultNamespaceResourceSpec() *CreateInstanceRequestDefaultNamespaceResourceSpec
 	SetDuration(v int32) *CreateInstanceRequest
 	GetDuration() *int32
 	SetExtra(v string) *CreateInstanceRequest
@@ -82,6 +86,10 @@ type CreateInstanceRequest struct {
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The default high-availability namespace resource configuration.
+	DefaultHaNamespaceResourceSpec *CreateInstanceRequestDefaultHaNamespaceResourceSpec `json:"DefaultHaNamespaceResourceSpec,omitempty" xml:"DefaultHaNamespaceResourceSpec,omitempty" type:"Struct"`
+	// The default namespace resource configuration.
+	DefaultNamespaceResourceSpec *CreateInstanceRequestDefaultNamespaceResourceSpec `json:"DefaultNamespaceResourceSpec,omitempty" xml:"DefaultNamespaceResourceSpec,omitempty" type:"Struct"`
 	// The subscription duration.
 	//
 	// > This parameter is required when ChargeType is set to PRE.
@@ -96,7 +104,7 @@ type CreateInstanceRequest struct {
 	//
 	// “”
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Specifies whether to use zone-disaster recovery resources.
+	// Specifies whether to enable zone-disaster recovery resources.
 	//
 	// if can be null:
 	// true
@@ -123,17 +131,17 @@ type CreateInstanceRequest struct {
 	//
 	// rtc-e2e-test-pre
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of monitoring and alerting service. You can select ARMS or CloudMonitor.
+	// The type of monitoring and alerting service. You can select Application Real-Time Monitoring Service (ARMS) or CloudMonitor.
 	//
 	// example:
 	//
 	// TAIHAO
 	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// The billing cycle of the subscription instance. Valid values:
 	//
-	// - **year**: year.
+	// - **year**: yearly.
 	//
-	// - **month**: month.
+	// - **month**: monthly.
 	//
 	// > This parameter is required when ChargeType is set to PRE.
 	//
@@ -147,7 +155,7 @@ type CreateInstanceRequest struct {
 	//
 	// 500043499350689
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -213,6 +221,14 @@ func (s *CreateInstanceRequest) GetAutoRenew() *bool {
 
 func (s *CreateInstanceRequest) GetChargeType() *string {
 	return s.ChargeType
+}
+
+func (s *CreateInstanceRequest) GetDefaultHaNamespaceResourceSpec() *CreateInstanceRequestDefaultHaNamespaceResourceSpec {
+	return s.DefaultHaNamespaceResourceSpec
+}
+
+func (s *CreateInstanceRequest) GetDefaultNamespaceResourceSpec() *CreateInstanceRequestDefaultNamespaceResourceSpec {
+	return s.DefaultNamespaceResourceSpec
 }
 
 func (s *CreateInstanceRequest) GetDuration() *int32 {
@@ -295,6 +311,16 @@ func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetChargeType(v string) *CreateInstanceRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetDefaultHaNamespaceResourceSpec(v *CreateInstanceRequestDefaultHaNamespaceResourceSpec) *CreateInstanceRequest {
+	s.DefaultHaNamespaceResourceSpec = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetDefaultNamespaceResourceSpec(v *CreateInstanceRequestDefaultNamespaceResourceSpec) *CreateInstanceRequest {
+	s.DefaultNamespaceResourceSpec = v
 	return s
 }
 
@@ -384,6 +410,16 @@ func (s *CreateInstanceRequest) SetVpcId(v string) *CreateInstanceRequest {
 }
 
 func (s *CreateInstanceRequest) Validate() error {
+	if s.DefaultHaNamespaceResourceSpec != nil {
+		if err := s.DefaultHaNamespaceResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DefaultNamespaceResourceSpec != nil {
+		if err := s.DefaultNamespaceResourceSpec.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.HaResourceSpec != nil {
 		if err := s.HaResourceSpec.Validate(); err != nil {
 			return err
@@ -411,6 +447,100 @@ func (s *CreateInstanceRequest) Validate() error {
 	return nil
 }
 
+type CreateInstanceRequestDefaultHaNamespaceResourceSpec struct {
+	// The number of CPUs.
+	//
+	// example:
+	//
+	// 4
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
+	// example:
+	//
+	// 16
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s CreateInstanceRequestDefaultHaNamespaceResourceSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceRequestDefaultHaNamespaceResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestDefaultHaNamespaceResourceSpec) GetCpu() *int32 {
+	return s.Cpu
+}
+
+func (s *CreateInstanceRequestDefaultHaNamespaceResourceSpec) GetMemoryGB() *int32 {
+	return s.MemoryGB
+}
+
+func (s *CreateInstanceRequestDefaultHaNamespaceResourceSpec) SetCpu(v int32) *CreateInstanceRequestDefaultHaNamespaceResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDefaultHaNamespaceResourceSpec) SetMemoryGB(v int32) *CreateInstanceRequestDefaultHaNamespaceResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDefaultHaNamespaceResourceSpec) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateInstanceRequestDefaultNamespaceResourceSpec struct {
+	// The number of CPUs.
+	//
+	// example:
+	//
+	// 4
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size. Unit: GB.
+	//
+	// > The memory size must be 4 times the number of CPUs.
+	//
+	// example:
+	//
+	// 16
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s CreateInstanceRequestDefaultNamespaceResourceSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceRequestDefaultNamespaceResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestDefaultNamespaceResourceSpec) GetCpu() *int32 {
+	return s.Cpu
+}
+
+func (s *CreateInstanceRequestDefaultNamespaceResourceSpec) GetMemoryGB() *int32 {
+	return s.MemoryGB
+}
+
+func (s *CreateInstanceRequestDefaultNamespaceResourceSpec) SetCpu(v int32) *CreateInstanceRequestDefaultNamespaceResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDefaultNamespaceResourceSpec) SetMemoryGB(v int32) *CreateInstanceRequestDefaultNamespaceResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDefaultNamespaceResourceSpec) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateInstanceRequestHaResourceSpec struct {
 	// The number of CPUs for zone-disaster recovery.
 	//
@@ -418,7 +548,7 @@ type CreateInstanceRequestHaResourceSpec struct {
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The memory size for zone-disaster recovery.
+	// The memory size for zone-disaster recovery. The value is active memory allocated for high availability (HA).
 	//
 	// example:
 	//

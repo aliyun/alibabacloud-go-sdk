@@ -15,6 +15,10 @@ type iCreateInstanceShrinkRequest interface {
 	GetAutoRenew() *bool
 	SetChargeType(v string) *CreateInstanceShrinkRequest
 	GetChargeType() *string
+	SetDefaultHaNamespaceResourceSpecShrink(v string) *CreateInstanceShrinkRequest
+	GetDefaultHaNamespaceResourceSpecShrink() *string
+	SetDefaultNamespaceResourceSpecShrink(v string) *CreateInstanceShrinkRequest
+	GetDefaultNamespaceResourceSpecShrink() *string
 	SetDuration(v int32) *CreateInstanceShrinkRequest
 	GetDuration() *int32
 	SetExtra(v string) *CreateInstanceShrinkRequest
@@ -82,6 +86,10 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The default high-availability namespace resource configuration.
+	DefaultHaNamespaceResourceSpecShrink *string `json:"DefaultHaNamespaceResourceSpec,omitempty" xml:"DefaultHaNamespaceResourceSpec,omitempty"`
+	// The default namespace resource configuration.
+	DefaultNamespaceResourceSpecShrink *string `json:"DefaultNamespaceResourceSpec,omitempty" xml:"DefaultNamespaceResourceSpec,omitempty"`
 	// The subscription duration.
 	//
 	// > This parameter is required when ChargeType is set to PRE.
@@ -96,7 +104,7 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// “”
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Specifies whether to use zone-disaster recovery resources.
+	// Specifies whether to enable zone-disaster recovery resources.
 	//
 	// if can be null:
 	// true
@@ -123,17 +131,17 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// rtc-e2e-test-pre
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of monitoring and alerting service. You can select ARMS or CloudMonitor.
+	// The type of monitoring and alerting service. You can select Application Real-Time Monitoring Service (ARMS) or CloudMonitor.
 	//
 	// example:
 	//
 	// TAIHAO
 	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// The billing cycle of the subscription instance. Valid values:
 	//
-	// - **year**: year.
+	// - **year**: yearly.
 	//
-	// - **month**: month.
+	// - **month**: monthly.
 	//
 	// > This parameter is required when ChargeType is set to PRE.
 	//
@@ -147,7 +155,7 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// 500043499350689
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -213,6 +221,14 @@ func (s *CreateInstanceShrinkRequest) GetAutoRenew() *bool {
 
 func (s *CreateInstanceShrinkRequest) GetChargeType() *string {
 	return s.ChargeType
+}
+
+func (s *CreateInstanceShrinkRequest) GetDefaultHaNamespaceResourceSpecShrink() *string {
+	return s.DefaultHaNamespaceResourceSpecShrink
+}
+
+func (s *CreateInstanceShrinkRequest) GetDefaultNamespaceResourceSpecShrink() *string {
+	return s.DefaultNamespaceResourceSpecShrink
 }
 
 func (s *CreateInstanceShrinkRequest) GetDuration() *int32 {
@@ -295,6 +311,16 @@ func (s *CreateInstanceShrinkRequest) SetAutoRenew(v bool) *CreateInstanceShrink
 
 func (s *CreateInstanceShrinkRequest) SetChargeType(v string) *CreateInstanceShrinkRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateInstanceShrinkRequest) SetDefaultHaNamespaceResourceSpecShrink(v string) *CreateInstanceShrinkRequest {
+	s.DefaultHaNamespaceResourceSpecShrink = &v
+	return s
+}
+
+func (s *CreateInstanceShrinkRequest) SetDefaultNamespaceResourceSpecShrink(v string) *CreateInstanceShrinkRequest {
+	s.DefaultNamespaceResourceSpecShrink = &v
 	return s
 }
 

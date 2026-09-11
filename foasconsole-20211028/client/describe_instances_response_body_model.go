@@ -48,9 +48,9 @@ type DescribeInstancesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -155,9 +155,19 @@ func (s *DescribeInstancesResponseBody) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	Ansm             *bool   `json:"Ansm,omitempty" xml:"Ansm,omitempty"`
+	Ansm *bool `json:"Ansm,omitempty" xml:"Ansm,omitempty"`
+	// The processor architecture.
+	//
+	// example:
+	//
+	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AskClusterId     *string `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// c20c******404
+	AskClusterId *string `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
 	// The billing method. Valid values:
 	//
 	// - POST: pay-as-you-go.
@@ -167,7 +177,8 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// PRE
-	ChargeType   *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The cluster state.
 	ClusterState *DescribeInstancesResponseBodyInstancesClusterState `json:"ClusterState,omitempty" xml:"ClusterState,omitempty" type:"Struct"`
 	// The cluster status. Valid values:
 	//
@@ -184,10 +195,17 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// RUNNING
-	ClusterStatus        *string                                                     `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	// The overall resource usage of the Flink service.
 	ClusterUsedResources *DescribeInstancesResponseBodyInstancesClusterUsedResources `json:"ClusterUsedResources,omitempty" xml:"ClusterUsedResources,omitempty" type:"Struct"`
 	ClusterUsedStorage   *DescribeInstancesResponseBodyInstancesClusterUsedStorage   `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
-	Elastic              *bool                                                       `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
+	// Indicates whether deletion protection is enabled.
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Elastic            *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
 	// The elastic order ID.
 	//
 	// example:
@@ -196,11 +214,26 @@ type DescribeInstancesResponseBodyInstances struct {
 	ElasticInstanceId   *string                                                    `json:"ElasticInstanceId,omitempty" xml:"ElasticInstanceId,omitempty"`
 	ElasticOrderState   *string                                                    `json:"ElasticOrderState,omitempty" xml:"ElasticOrderState,omitempty"`
 	ElasticResourceSpec *DescribeInstancesResponseBodyInstancesElasticResourceSpec `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
-	Ha                  *bool                                                      `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaResourceSpec      *DescribeInstancesResponseBodyInstancesHaResourceSpec      `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds        []*string                                                  `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaVSwitchInfo       []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo     `json:"HaVSwitchInfo,omitempty" xml:"HaVSwitchInfo,omitempty" type:"Repeated"`
-	HaZoneId            *string                                                    `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// Indicates whether zone-disaster recovery resources are selected.
+	//
+	// example:
+	//
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The zone-disaster recovery resource description.
+	HaResourceSpec *DescribeInstancesResponseBodyInstancesHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	// The vSwitch group in the secondary zone for zone-disaster recovery.
+	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// The vSwitch group information for the secondary zone of zone-disaster recovery.
+	HaVSwitchInfo []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo `json:"HaVSwitchInfo,omitempty" xml:"HaVSwitchInfo,omitempty" type:"Repeated"`
+	// The secondary zone ID for zone-disaster recovery.
+	//
+	// example:
+	//
+	// cn-hongkong-b
+	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// The domain name information added by the user.
+	//
 	// This parameter is required.
 	HostAliases []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
 	// The instance ID.
@@ -215,10 +248,15 @@ type DescribeInstancesResponseBodyInstances struct {
 	//
 	// vvp1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MonitorType  *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	// The order status. Valid values:
+	// The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
 	//
-	// - NOT_INIT: The order is placed but components are not deployed.
+	// example:
+	//
+	// TAIHAO
+	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// The order status of the Flink compute service. Valid values:
+	//
+	// - NOT_INIT: The order is placed but components are not yet deployed.
 	//
 	// - NORMAL: Normal.
 	//
@@ -231,7 +269,7 @@ type DescribeInstancesResponseBodyInstances struct {
 	// NORMAL
 	OrderState *string                                        `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
 	OssInfo    *DescribeInstancesResponseBodyInstancesOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
-	// The region of the instance.
+	// The region to which the instance belongs.
 	//
 	// example:
 	//
@@ -243,13 +281,18 @@ type DescribeInstancesResponseBodyInstances struct {
 	//
 	// 1629879567394
 	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	// The expiration time.
+	// The overdue time.
 	//
 	// example:
 	//
 	// 1637337600000
-	ResourceExpiredTime *int64  `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
-	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceExpiredTime *int64 `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
+	// The resource group.
+	//
+	// example:
+	//
+	// rg-***
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource ID.
 	//
 	// example:
@@ -261,7 +304,7 @@ type DescribeInstancesResponseBodyInstances struct {
 	// The storage information.
 	Storage                      *DescribeInstancesResponseBodyInstancesStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
 	SupportDisasterRecoveryDrill *bool                                          `json:"SupportDisasterRecoveryDrill,omitempty" xml:"SupportDisasterRecoveryDrill,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*DescribeInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the user to whom the instance belongs.
 	//
@@ -269,15 +312,17 @@ type DescribeInstancesResponseBodyInstances struct {
 	//
 	// 183899668736****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// The vSwitch IDs.
-	VSwitchIds  []*string                                            `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The vSwitch ID group.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The information about the primary vSwitch group.
 	VSwitchInfo []*DescribeInstancesResponseBodyInstancesVSwitchInfo `json:"VSwitchInfo,omitempty" xml:"VSwitchInfo,omitempty" type:"Repeated"`
 	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-2ze9*******nxfmfcdi
-	VpcId   *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC information.
 	VpcInfo *DescribeInstancesResponseBodyInstancesVpcInfo `json:"VpcInfo,omitempty" xml:"VpcInfo,omitempty" type:"Struct"`
 	// The zone ID of the instance.
 	//
@@ -325,6 +370,10 @@ func (s *DescribeInstancesResponseBodyInstances) GetClusterUsedResources() *Desc
 
 func (s *DescribeInstancesResponseBodyInstances) GetClusterUsedStorage() *DescribeInstancesResponseBodyInstancesClusterUsedStorage {
 	return s.ClusterUsedStorage
+}
+
+func (s *DescribeInstancesResponseBodyInstances) GetDeletionProtection() *bool {
+	return s.DeletionProtection
 }
 
 func (s *DescribeInstancesResponseBodyInstances) GetElastic() *bool {
@@ -484,6 +533,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetClusterUsedResources(v *Desc
 
 func (s *DescribeInstancesResponseBodyInstances) SetClusterUsedStorage(v *DescribeInstancesResponseBodyInstancesClusterUsedStorage) *DescribeInstancesResponseBodyInstances {
 	s.ClusterUsedStorage = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetDeletionProtection(v bool) *DescribeInstancesResponseBodyInstances {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -723,14 +777,43 @@ func (s *DescribeInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesClusterState struct {
+	// example:
+	//
+	// a6f35c0ff73448
 	ClusterId     *string                                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterStage  *DescribeInstancesResponseBodyInstancesClusterStateClusterStage `json:"ClusterStage,omitempty" xml:"ClusterStage,omitempty" type:"Struct"`
 	CreateTimeout *bool                                                           `json:"CreateTimeout,omitempty" xml:"CreateTimeout,omitempty"`
-	Status        *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus     *string                                                         `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	Url           *string                                                         `json:"Url,omitempty" xml:"Url,omitempty"`
-	UserSlbDto    *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto   `json:"UserSlbDto,omitempty" xml:"UserSlbDto,omitempty" type:"Struct"`
-	VpcCidr       *string                                                         `json:"VpcCidr,omitempty" xml:"VpcCidr,omitempty"`
+	// The cluster status. Valid values:
+	//
+	// - CREATING: Being created.
+	//
+	// - RUNNING: Running.
+	//
+	// - DISABLE: Invalid.
+	//
+	// - DELETING: Being deleted.
+	//
+	// - DELETED: Deleted.
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The cluster status. Valid values:
+	//
+	// - CREATING: Being created.
+	//
+	// - RUNNING: Running.
+	//
+	// - DISABLE: Invalid.
+	//
+	// - DELETING: Being deleted.
+	//
+	// - DELETED: Deleted.
+	SubStatus  *string                                                       `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	Url        *string                                                       `json:"Url,omitempty" xml:"Url,omitempty"`
+	UserSlbDto *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto `json:"UserSlbDto,omitempty" xml:"UserSlbDto,omitempty" type:"Struct"`
+	VpcCidr    *string                                                       `json:"VpcCidr,omitempty" xml:"VpcCidr,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesClusterState) String() string {
@@ -828,9 +911,24 @@ func (s *DescribeInstancesResponseBodyInstancesClusterState) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesClusterStateClusterStage struct {
-	ClusterId            *string                                                                               `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CurrentStage         *int32                                                                                `json:"CurrentStage,omitempty" xml:"CurrentStage,omitempty"`
-	Message              *string                                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// f0957e82de6e47
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentStage *int32  `json:"CurrentStage,omitempty" xml:"CurrentStage,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status of the project space. Valid values:
+	//
+	// - CREATING: Being created.
+	//
+	// - DELETING: Being deleted.
+	//
+	// - MODIFYING: Resource specifications are being modified.
+	//
+	// - SUCCESS: The previous operation was successful.
+	//
+	// - FAILED: The previous operation failed.
 	Status               *string                                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
 	TotalStageWithWeight []*DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight `json:"TotalStageWithWeight,omitempty" xml:"TotalStageWithWeight,omitempty" type:"Repeated"`
 }
@@ -1056,6 +1154,9 @@ func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbList
 }
 
 type DescribeInstancesResponseBodyInstancesClusterUsedResources struct {
+	// example:
+	//
+	// ea2e9545fdc942
 	ClusterId              *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ElasticUsedCpu         *float32 `json:"ElasticUsedCpu,omitempty" xml:"ElasticUsedCpu,omitempty"`
 	ElasticUsedMemory      *float32 `json:"ElasticUsedMemory,omitempty" xml:"ElasticUsedMemory,omitempty"`
@@ -1063,13 +1164,18 @@ type DescribeInstancesResponseBodyInstancesClusterUsedResources struct {
 	GuaranteedUsedCpu      *float32 `json:"GuaranteedUsedCpu,omitempty" xml:"GuaranteedUsedCpu,omitempty"`
 	GuaranteedUsedMemory   *float32 `json:"GuaranteedUsedMemory,omitempty" xml:"GuaranteedUsedMemory,omitempty"`
 	GuaranteedUsedResource *float32 `json:"GuaranteedUsedResource,omitempty" xml:"GuaranteedUsedResource,omitempty"`
-	Ha                     *bool    `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaUsedCpu              *float32 `json:"HaUsedCpu,omitempty" xml:"HaUsedCpu,omitempty"`
-	HaUsedMemory           *float32 `json:"HaUsedMemory,omitempty" xml:"HaUsedMemory,omitempty"`
-	HaUsedResource         *float32 `json:"HaUsedResource,omitempty" xml:"HaUsedResource,omitempty"`
-	UsedCpu                *float32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
-	UsedMemory             *float32 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
-	UsedResource           *float32 `json:"UsedResource,omitempty" xml:"UsedResource,omitempty"`
+	// Indicates whether zone-disaster recovery resources are selected.
+	//
+	// example:
+	//
+	// true
+	Ha             *bool    `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaUsedCpu      *float32 `json:"HaUsedCpu,omitempty" xml:"HaUsedCpu,omitempty"`
+	HaUsedMemory   *float32 `json:"HaUsedMemory,omitempty" xml:"HaUsedMemory,omitempty"`
+	HaUsedResource *float32 `json:"HaUsedResource,omitempty" xml:"HaUsedResource,omitempty"`
+	UsedCpu        *float32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+	UsedMemory     *float32 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+	UsedResource   *float32 `json:"UsedResource,omitempty" xml:"UsedResource,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesClusterUsedResources) String() string {
@@ -1211,6 +1317,9 @@ func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) Validate() 
 }
 
 type DescribeInstancesResponseBodyInstancesClusterUsedStorage struct {
+	// example:
+	//
+	// f0957e82de6e47
 	ClusterId   *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	UsedStorage *float32 `json:"UsedStorage,omitempty" xml:"UsedStorage,omitempty"`
 }
@@ -1246,7 +1355,17 @@ func (s *DescribeInstancesResponseBodyInstancesClusterUsedStorage) Validate() er
 }
 
 type DescribeInstancesResponseBodyInstancesElasticResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of CPUs.
+	//
+	// example:
+	//
+	// 5
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The amount of memory used.
+	//
+	// example:
+	//
+	// 280
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -1281,7 +1400,17 @@ func (s *DescribeInstancesResponseBodyInstancesElasticResourceSpec) Validate() e
 }
 
 type DescribeInstancesResponseBodyInstancesHaResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of CPUs for zone-disaster recovery.
+	//
+	// example:
+	//
+	// 12
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size of zone-disaster recovery resources.
+	//
+	// example:
+	//
+	// 48
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -1316,14 +1445,54 @@ func (s *DescribeInstancesResponseBodyInstancesHaResourceSpec) Validate() error 
 }
 
 type DescribeInstancesResponseBodyInstancesHaVSwitchInfo struct {
-	AvailableIpAddressCount *int64  `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitchCidr             *string `json:"VSwitchCidr,omitempty" xml:"VSwitchCidr,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of available IP addresses in the vSwitch.
+	//
+	// example:
+	//
+	// 64
+	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	// The description of the VPC.
+	//
+	// example:
+	//
+	// “”
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitch CIDR block information.
+	//
+	// example:
+	//
+	// 192.168.16.0/24
+	VSwitchCidr *string `json:"VSwitchCidr,omitempty" xml:"VSwitchCidr,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-wz9e9zt38b9f3l6*****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The vSwitch name.
+	//
+	// example:
+	//
+	// Test vSwitch
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-uf6d0akr6lzd75v****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID of the workspace.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesHaVSwitchInfo) String() string {
@@ -1448,8 +1617,13 @@ func (s *DescribeInstancesResponseBodyInstancesHostAliases) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesOssInfo struct {
-	AccessId               *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	AccessKey              *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The name of the bound OSS bucket.
+	//
+	// example:
+	//
+	// flink-log-john
 	Bucket                 *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	BucketVersioningStatus *string `json:"BucketVersioningStatus,omitempty" xml:"BucketVersioningStatus,omitempty"`
 	Endpoint               *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
@@ -1558,8 +1732,30 @@ func (s *DescribeInstancesResponseBodyInstancesResourceSpec) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesStorage struct {
-	FullyManaged *bool   `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
-	OrderState   *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	// Indicates whether fully managed storage is selected. Valid values:
+	//
+	// - true: Used.
+	//
+	// - false: Not used.
+	//
+	// example:
+	//
+	// true
+	FullyManaged *bool `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
+	// The order status of fully managed storage. Valid values:
+	//
+	// - NOT_INIT: The order is placed but components are not yet deployed.
+	//
+	// - NORMAL: Normal.
+	//
+	// - CEASE: Expired.
+	//
+	// - RELEASE: Overdue.
+	//
+	// example:
+	//
+	// NORMAL
+	OrderState *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
 	// The OSS storage information.
 	Oss                               *DescribeInstancesResponseBodyInstancesStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 	SupportCreateFullyManagedStorage  *bool                                             `json:"SupportCreateFullyManagedStorage,omitempty" xml:"SupportCreateFullyManagedStorage,omitempty"`
@@ -1629,7 +1825,7 @@ func (s *DescribeInstancesResponseBodyInstancesStorage) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesStorageOss struct {
-	// The name of the OSS bucket.
+	// The name of the bound OSS bucket.
 	//
 	// example:
 	//
@@ -1704,14 +1900,54 @@ func (s *DescribeInstancesResponseBodyInstancesTags) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesVSwitchInfo struct {
+	// The number of available IP addresses in the vSwitch.
+	//
+	// example:
+	//
+	// 256
 	AvailableIpAddressCount *string `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VSwitchCidr             *string `json:"VSwitchCidr,omitempty" xml:"VSwitchCidr,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The description of the vSwitch group.
+	//
+	// example:
+	//
+	// “”
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The vSwitch CIDR block.
+	//
+	// example:
+	//
+	// 192.168.16.0/24
+	VSwitchCidr *string `json:"VSwitchCidr,omitempty" xml:"VSwitchCidr,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-8vb6jk75wfcwnuq****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
+	// example:
+	//
+	// “”
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-bp16h9ru9gvz2tygo*****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID of the workspace.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesVSwitchInfo) String() string {
@@ -1799,12 +2035,46 @@ func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesVpcInfo struct {
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The VPC CIDR block.
+	//
+	// example:
+	//
+	// 172.16.5.0/24
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The VPC description.
+	//
+	// example:
+	//
+	// “”
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName     *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The VPC status. Valid values:
+	//
+	// - Pending: Being configured.
+	//
+	// - Available: Available.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-gw8c6nhjta3eq12y****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC name.
+	//
+	// example:
+	//
+	// flink集群vpc
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesVpcInfo) String() string {

@@ -34,7 +34,7 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
-	// The architecture type.
+	// The processor architecture. Valid values: X86 and ARM.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeInstancesRequest struct {
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether mixed billing is used.
+	// Specifies whether hybrid billing is used.
 	//
 	// example:
 	//
@@ -89,7 +89,12 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// cn-shenzhen
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-aek2e55emewbqgy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the instance.
 	Tags []*DescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
