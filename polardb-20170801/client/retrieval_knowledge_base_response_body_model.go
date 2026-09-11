@@ -102,9 +102,9 @@ func (s *RetrievalKnowledgeBaseResponseBody) Validate() error {
 type RetrievalKnowledgeBaseResponseBodyResults struct {
 	// The list of figure or table captions associated with the chunk.
 	Captions []*string `json:"Captions,omitempty" xml:"Captions,omitempty" type:"Repeated"`
-	// The list of Docling source document structured element references associated with the chunk. You can use these references to precisely locate original elements.
+	// The list of Docling source document structured element references associated with the chunk. You can use these references to precisely locate elements in the original document.
 	DocItems []*string `json:"DocItems,omitempty" xml:"DocItems,omitempty" type:"Repeated"`
-	// The unique ID of the file.
+	// The unique identifier of the file.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type RetrievalKnowledgeBaseResponseBodyResults struct {
 	//
 	// 2024FinancialReport.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The chain of section headings that the chunk belongs to.
+	// The chain of section headings to which the chunk belongs.
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
 	// The list of image resources referenced by the chunk.
 	ImageResources []*RetrievalKnowledgeBaseResponseBodyResultsImageResources `json:"ImageResources,omitempty" xml:"ImageResources,omitempty" type:"Repeated"`
@@ -126,7 +126,7 @@ type RetrievalKnowledgeBaseResponseBodyResults struct {
 	//
 	// {}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The list of page numbers that the chunk belongs to.
+	// The list of page numbers to which the chunk belongs.
 	PageNumbers []*int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty" type:"Repeated"`
 	// The text content of the chunk.
 	//
@@ -269,13 +269,13 @@ func (s *RetrievalKnowledgeBaseResponseBodyResults) Validate() error {
 }
 
 type RetrievalKnowledgeBaseResponseBodyResultsImageResources struct {
-	// The index of the source document that the image belongs to, starting from 0.
+	// The index of the source document to which the image belongs, starting from 0.
 	//
 	// example:
 	//
 	// 0
 	DocumentIndex *int32 `json:"DocumentIndex,omitempty" xml:"DocumentIndex,omitempty"`
-	// The unique ID of the image resource.
+	// The unique identifier of the image resource.
 	//
 	// example:
 	//

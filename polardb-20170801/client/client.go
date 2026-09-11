@@ -16235,7 +16235,7 @@ func (client *Client) DescribeApplicationUsage(request *DescribeApplicationUsage
 
 // Summary:
 //
-// Gets the list of applications for all PolarDB instances in a specified region.
+// Retrieves the list of applications for all PolarDB instances in a specified region.
 //
 // @param request - DescribeApplicationsRequest
 //
@@ -16303,7 +16303,7 @@ func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicati
 
 // Summary:
 //
-// Gets the list of applications for all PolarDB instances in a specified region.
+// Retrieves the list of applications for all PolarDB instances in a specified region.
 //
 // @param request - DescribeApplicationsRequest
 //
@@ -33567,7 +33567,7 @@ func (client *Client) ModifyDBClusterDescriptionZonal(request *ModifyDBClusterDe
 
 // Summary:
 //
-// This operation modifies the properties of a PolarDB cluster endpoint. You can configure settings such as the read/write mode, automatic node addition, consistency level, transaction splitting, the connection pool, and whether the primary node accepts read requests.
+// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, the consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
 //
 // @param request - ModifyDBClusterEndpointRequest
 //
@@ -33663,7 +33663,7 @@ func (client *Client) ModifyDBClusterEndpointWithOptions(request *ModifyDBCluste
 
 // Summary:
 //
-// This operation modifies the properties of a PolarDB cluster endpoint. You can configure settings such as the read/write mode, automatic node addition, consistency level, transaction splitting, the connection pool, and whether the primary node accepts read requests.
+// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, the consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
 //
 // @param request - ModifyDBClusterEndpointRequest
 //
@@ -39695,7 +39695,7 @@ func (client *Client) RestoreTable(request *RestoreTableRequest) (_result *Resto
 
 // Summary:
 //
-// Retrieves knowledge base search results.
+// Retrieves information from a knowledge base.
 //
 // @param request - RetrievalKnowledgeBaseRequest
 //
@@ -39759,7 +39759,7 @@ func (client *Client) RetrievalKnowledgeBaseWithOptions(request *RetrievalKnowle
 
 // Summary:
 //
-// Retrieves knowledge base search results.
+// Retrieves information from a knowledge base.
 //
 // @param request - RetrievalKnowledgeBaseRequest
 //

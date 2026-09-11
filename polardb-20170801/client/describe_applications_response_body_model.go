@@ -22,15 +22,14 @@ type iDescribeApplicationsResponseBody interface {
 }
 
 type DescribeApplicationsResponseBody struct {
-	// Contains the returned applications.
 	Items *DescribeApplicationsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -42,7 +41,7 @@ type DescribeApplicationsResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total record count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -149,7 +148,11 @@ func (s *DescribeApplicationsResponseBodyItems) Validate() error {
 type DescribeApplicationsResponseBodyItemsApplications struct {
 	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// br-1db52a73dc8545f19a47a3f1d8
+	BranchId     *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// example:
 	//
 	// pc-xxxxxx
@@ -181,6 +184,10 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) GetApplicationId() *
 
 func (s *DescribeApplicationsResponseBodyItemsApplications) GetApplicationType() *string {
 	return s.ApplicationType
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplications) GetBranchId() *string {
+	return s.BranchId
 }
 
 func (s *DescribeApplicationsResponseBodyItemsApplications) GetCreationTime() *string {
@@ -242,6 +249,11 @@ func (s *DescribeApplicationsResponseBodyItemsApplications) SetApplicationId(v s
 
 func (s *DescribeApplicationsResponseBodyItemsApplications) SetApplicationType(v string) *DescribeApplicationsResponseBodyItemsApplications {
 	s.ApplicationType = &v
+	return s
+}
+
+func (s *DescribeApplicationsResponseBodyItemsApplications) SetBranchId(v string) *DescribeApplicationsResponseBodyItemsApplications {
+	s.BranchId = &v
 	return s
 }
 

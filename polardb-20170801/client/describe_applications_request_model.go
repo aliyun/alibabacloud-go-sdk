@@ -26,14 +26,15 @@ type iDescribeApplicationsRequest interface {
 }
 
 type DescribeApplicationsRequest struct {
-	// A list of application IDs. If specified, this operation returns information only about the specified applications.
+	// The list of application IDs. If specified, only information about these applications is returned.
 	//
 	// example:
 	//
 	// pa-**************
-	ApplicationIds   *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
+	ApplicationIds *string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty"`
+	// The application engine filter.
 	ApplicationTypes *string `json:"ApplicationTypes,omitempty" xml:"ApplicationTypes,omitempty"`
-	// The ID of the PolarDB instance. If specified, this operation returns information only about applications associated with this instance.
+	// The PolarDB instance ID. If specified, only application information related to this PolarDB instance is returned.
 	//
 	// example:
 	//
@@ -45,13 +46,13 @@ type DescribeApplicationsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: **30**.
 	//
@@ -59,7 +60,7 @@ type DescribeApplicationsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +68,7 @@ type DescribeApplicationsRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of tags. A tag is a key-value pair.
+	// The tags.
 	Tag []*DescribeApplicationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -156,13 +157,13 @@ func (s *DescribeApplicationsRequest) Validate() error {
 }
 
 type DescribeApplicationsRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
