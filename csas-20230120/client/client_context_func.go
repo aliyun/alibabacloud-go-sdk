@@ -10184,18 +10184,24 @@ func (client *Client) UpdateConnectorClientWithContext(ctx context.Context, requ
 //
 // Updates a device label.
 //
-// @param request - UpdateDeviceGroupRequest
+// @param tmpReq - UpdateDeviceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDeviceGroupResponse
-func (client *Client) UpdateDeviceGroupWithContext(ctx context.Context, request *UpdateDeviceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateDeviceGroupResponse, _err error) {
+func (client *Client) UpdateDeviceGroupWithContext(ctx context.Context, tmpReq *UpdateDeviceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateDeviceGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateDeviceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DynamicRule) {
+		request.DynamicRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DynamicRule, dara.String("DynamicRule"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
@@ -10207,6 +10213,10 @@ func (client *Client) UpdateDeviceGroupWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.DynamicOperator) {
 		body["DynamicOperator"] = request.DynamicOperator
+	}
+
+	if !dara.IsNil(request.DynamicRuleShrink) {
+		body["DynamicRule"] = request.DynamicRuleShrink
 	}
 
 	if !dara.IsNil(request.Name) {

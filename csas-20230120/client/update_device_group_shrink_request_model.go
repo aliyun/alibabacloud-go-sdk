@@ -5,23 +5,23 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iUpdateDeviceGroupRequest interface {
+type iUpdateDeviceGroupShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDescription(v string) *UpdateDeviceGroupRequest
+	SetDescription(v string) *UpdateDeviceGroupShrinkRequest
 	GetDescription() *string
-	SetDeviceGroupId(v string) *UpdateDeviceGroupRequest
+	SetDeviceGroupId(v string) *UpdateDeviceGroupShrinkRequest
 	GetDeviceGroupId() *string
-	SetDynamicOperator(v string) *UpdateDeviceGroupRequest
+	SetDynamicOperator(v string) *UpdateDeviceGroupShrinkRequest
 	GetDynamicOperator() *string
-	SetDynamicRule(v *Rule) *UpdateDeviceGroupRequest
-	GetDynamicRule() *Rule
-	SetName(v string) *UpdateDeviceGroupRequest
+	SetDynamicRuleShrink(v string) *UpdateDeviceGroupShrinkRequest
+	GetDynamicRuleShrink() *string
+	SetName(v string) *UpdateDeviceGroupShrinkRequest
 	GetName() *string
 }
 
-type UpdateDeviceGroupRequest struct {
+type UpdateDeviceGroupShrinkRequest struct {
 	// The description of the device label. Set this parameter to an empty string to clear the description. The description can contain letters, digits, Chinese characters, spaces, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
@@ -43,7 +43,7 @@ type UpdateDeviceGroupRequest struct {
 	// AND
 	DynamicOperator *string `json:"DynamicOperator,omitempty" xml:"DynamicOperator,omitempty"`
 	// The matching rule of the dynamic device label.
-	DynamicRule *Rule `json:"DynamicRule,omitempty" xml:"DynamicRule,omitempty"`
+	DynamicRuleShrink *string `json:"DynamicRule,omitempty" xml:"DynamicRule,omitempty"`
 	// The name of the device label. The name must be 1 to 128 characters in length and can contain letters, digits, Chinese characters, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
 	//
 	// example:
@@ -52,64 +52,59 @@ type UpdateDeviceGroupRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
-func (s UpdateDeviceGroupRequest) String() string {
+func (s UpdateDeviceGroupShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s UpdateDeviceGroupRequest) GoString() string {
+func (s UpdateDeviceGroupShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateDeviceGroupRequest) GetDescription() *string {
+func (s *UpdateDeviceGroupShrinkRequest) GetDescription() *string {
 	return s.Description
 }
 
-func (s *UpdateDeviceGroupRequest) GetDeviceGroupId() *string {
+func (s *UpdateDeviceGroupShrinkRequest) GetDeviceGroupId() *string {
 	return s.DeviceGroupId
 }
 
-func (s *UpdateDeviceGroupRequest) GetDynamicOperator() *string {
+func (s *UpdateDeviceGroupShrinkRequest) GetDynamicOperator() *string {
 	return s.DynamicOperator
 }
 
-func (s *UpdateDeviceGroupRequest) GetDynamicRule() *Rule {
-	return s.DynamicRule
+func (s *UpdateDeviceGroupShrinkRequest) GetDynamicRuleShrink() *string {
+	return s.DynamicRuleShrink
 }
 
-func (s *UpdateDeviceGroupRequest) GetName() *string {
+func (s *UpdateDeviceGroupShrinkRequest) GetName() *string {
 	return s.Name
 }
 
-func (s *UpdateDeviceGroupRequest) SetDescription(v string) *UpdateDeviceGroupRequest {
+func (s *UpdateDeviceGroupShrinkRequest) SetDescription(v string) *UpdateDeviceGroupShrinkRequest {
 	s.Description = &v
 	return s
 }
 
-func (s *UpdateDeviceGroupRequest) SetDeviceGroupId(v string) *UpdateDeviceGroupRequest {
+func (s *UpdateDeviceGroupShrinkRequest) SetDeviceGroupId(v string) *UpdateDeviceGroupShrinkRequest {
 	s.DeviceGroupId = &v
 	return s
 }
 
-func (s *UpdateDeviceGroupRequest) SetDynamicOperator(v string) *UpdateDeviceGroupRequest {
+func (s *UpdateDeviceGroupShrinkRequest) SetDynamicOperator(v string) *UpdateDeviceGroupShrinkRequest {
 	s.DynamicOperator = &v
 	return s
 }
 
-func (s *UpdateDeviceGroupRequest) SetDynamicRule(v *Rule) *UpdateDeviceGroupRequest {
-	s.DynamicRule = v
+func (s *UpdateDeviceGroupShrinkRequest) SetDynamicRuleShrink(v string) *UpdateDeviceGroupShrinkRequest {
+	s.DynamicRuleShrink = &v
 	return s
 }
 
-func (s *UpdateDeviceGroupRequest) SetName(v string) *UpdateDeviceGroupRequest {
+func (s *UpdateDeviceGroupShrinkRequest) SetName(v string) *UpdateDeviceGroupShrinkRequest {
 	s.Name = &v
 	return s
 }
 
-func (s *UpdateDeviceGroupRequest) Validate() error {
-	if s.DynamicRule != nil {
-		if err := s.DynamicRule.Validate(); err != nil {
-			return err
-		}
-	}
-	return nil
+func (s *UpdateDeviceGroupShrinkRequest) Validate() error {
+	return dara.Validate(s)
 }
