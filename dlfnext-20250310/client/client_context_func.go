@@ -507,7 +507,7 @@ func (client *Client) BatchRevokePermissionsWithContext(ctx context.Context, cat
 
 // Summary:
 //
-// Creates a catalog.
+// Creates a data catalog.
 //
 // @param request - CreateCatalogRequest
 //
@@ -557,7 +557,7 @@ func (client *Client) CreateCatalogWithContext(ctx context.Context, request *Cre
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
 		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("none"),
+		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCatalogResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)

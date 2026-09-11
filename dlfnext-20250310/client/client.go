@@ -25,20 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"us-west-1":      dara.String("dlfnext.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("dlfnext.us-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("dlfnext.eu-central-1.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("dlfnext.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("dlfnext.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":    dara.String("dlfnext.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("dlfnext.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("dlfnext.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":     dara.String("dlfnext.cn-beijing.aliyuncs.com"),
-		"ap-southeast-5": dara.String("dlfnext.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-1": dara.String("dlfnext.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-1": dara.String("dlfnext.ap-northeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -760,7 +746,7 @@ func (client *Client) BatchRevokePermissions(catalogId *string, request *BatchRe
 
 // Summary:
 //
-// Creates a catalog.
+// Creates a data catalog.
 //
 // @param request - CreateCatalogRequest
 //
@@ -810,7 +796,7 @@ func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, he
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
 		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("none"),
+		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCatalogResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -823,7 +809,7 @@ func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, he
 
 // Summary:
 //
-// Creates a catalog.
+// Creates a data catalog.
 //
 // @param request - CreateCatalogRequest
 //

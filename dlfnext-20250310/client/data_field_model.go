@@ -30,7 +30,7 @@ type DataField struct {
 	//
 	// example:
 	//
-	// 1
+	// 0
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
 	// The column name.
 	//

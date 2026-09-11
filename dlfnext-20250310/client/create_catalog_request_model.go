@@ -22,19 +22,19 @@ type iCreateCatalogRequest interface {
 }
 
 type CreateCatalogRequest struct {
-	// Specifies whether to share the catalog.
+	// Specifies whether the catalog is a shared data catalog.
 	//
 	// example:
 	//
 	// false
 	IsShared *bool `json:"isShared,omitempty" xml:"isShared,omitempty"`
-	// The catalog name.
+	// The name of the data catalog.
 	//
 	// example:
 	//
 	// catalog_demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The configuration options for the catalog.
+	// The configuration parameter struct.
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
 	// The share ID.
 	//
@@ -42,7 +42,7 @@ type CreateCatalogRequest struct {
 	//
 	// share-xxxx
 	ShareId *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
-	// The catalog type.
+	// The type of the data catalog.
 	//
 	// example:
 	//
