@@ -38,7 +38,7 @@ type ListContactsShrinkRequest struct {
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The ID of the contact group.
+	// The ID of the contact group to which the contact belongs.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListContactsShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 100.
+	// The number of entries per page. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The mobile number of the contact.
+	// The phone number of the contact.
 	//
 	// example:
 	//
@@ -74,7 +74,11 @@ type ListContactsShrinkRequest struct {
 	//
 	// true
 	QueryUngroupedContacts *bool `json:"queryUngroupedContacts,omitempty" xml:"queryUngroupedContacts,omitempty"`
-	// The workspace ID.
+	// The workspace name.
+	//
+	// example:
+	//
+	// default-cms-1744108686100472-cn-hangzhou
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

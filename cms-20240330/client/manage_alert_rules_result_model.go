@@ -22,15 +22,23 @@ type iManageAlertRulesResult interface {
 }
 
 type ManageAlertRulesResult struct {
-	// The details of the created or updated alert rule.
+	// The alert rule V2.
 	AlertRule *AlertRuleV2 `json:"alertRule,omitempty" xml:"alertRule,omitempty"`
-	// The number of deleted alert rules.
+	// The number of rules that were successfully deleted.
+	//
+	// example:
+	//
+	// 1
 	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
-	// A list of UUIDs of deleted alert rules.
+	// The list of UUIDs of rules that were successfully deleted.
 	DeletedUuidList []*string `json:"deletedUuidList,omitempty" xml:"deletedUuidList,omitempty" type:"Repeated"`
-	// The number of updated alert rules.
+	// The number of rules that were successfully enabled or disabled.
+	//
+	// example:
+	//
+	// 1
 	UpdatedCount *int32 `json:"updatedCount,omitempty" xml:"updatedCount,omitempty"`
-	// A list of UUIDs of updated alert rules.
+	// The list of UUIDs of rules that were successfully enabled or disabled.
 	UpdatedUuidList []*string `json:"updatedUuidList,omitempty" xml:"updatedUuidList,omitempty" type:"Repeated"`
 }
 

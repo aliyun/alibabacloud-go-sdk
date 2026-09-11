@@ -56,31 +56,96 @@ type iManageAlertRulesUnifiedActionInput interface {
 }
 
 type ManageAlertRulesUnifiedActionInput struct {
+	// The action type.
+	//
 	// This parameter is required.
-	Action                  *string                  `json:"action,omitempty" xml:"action,omitempty"`
+	//
+	// example:
+	//
+	// CREATE
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The action integration configuration.
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
-	Annotations             map[string]*string       `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	ArmsIntegrationConfig   *ArmsIntegrationConfig   `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	BizSource               *string                  `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	ConditionConfig         *ConditionConfigUnified  `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
-	ContentTemplate         *string                  `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	DatasourceConfig        *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	DisplayName             *string                  `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Enabled                 *bool                    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Labels                  map[string]*string       `json:"labels,omitempty" xml:"labels,omitempty"`
-	NotifyConfig            *NotifyConfigUnified     `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	ObserveResourceConfig   *ObserveResourceConfig   `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
+	// The annotations.
+	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	// The ARMS integration configuration.
+	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
+	// The business source (optional). Examples: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, sls. Provide as needed for CREATE/UPDATE/PATCH.
+	//
+	// example:
+	//
+	// Sample value
+	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	// The aggregated condition configuration.
+	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
+	// The content template.
+	//
+	// example:
+	//
+	// Instance {{instance}} CPU usage exceeds {{threshold}}%
+	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
+	// The aggregated data source configuration.
+	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// test
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Specifies whether the rule is enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The labels.
+	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The aggregated notification configuration.
+	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
+	// The observable resource configuration.
+	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
+	//
+	// **[Deprecated]*	- The monitored object instance ID. Use observeResourceConfig.resources instead. Retained only for backward compatibility with legacy SDKs.
+	//
+	// example:
+	//
+	// example-id-001
 	ObserveResourceInstanceId *string `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
 	// Deprecated
-	ObserveResourceType *string                `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	QueryConfig         *QueryConfigUnified    `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	RcaConfig           *AlertRuleRcaConfig    `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	RegionId            *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ScheduleConfig      *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	Uuid                *string                `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	UuidList            []*string              `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
-	Workspace           *string                `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	//
+	// **[Deprecated]*	- The monitored object resource type. Use observeResourceConfig.entityType instead. Retained only for backward compatibility with legacy SDKs.
+	//
+	// example:
+	//
+	// default
+	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
+	// The aggregated query configuration.
+	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
+	// The root cause analysis (RCA) configuration (optional). Provide as needed for CREATE/UPDATE/PATCH.
+	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
+	// The region ID. Aligned with V1 AlertRule.regionId. If not provided, the gateway callerRegionId is used.
+	//
+	// example:
+	//
+	// example-id-001
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The aggregated schedule configuration.
+	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
+	// The UUID of the rule. Required for UPDATE/PATCH.
+	//
+	// example:
+	//
+	// xxx-xxx-xxx
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The list of rule UUIDs to delete (BATCH_DELETE).
+	UuidList []*string `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
+	// The workspace. Required for CREATE/UPDATE and other actions.
+	//
+	// example:
+	//
+	// workspace-test
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ManageAlertRulesUnifiedActionInput) String() string {

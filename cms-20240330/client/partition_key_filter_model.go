@@ -14,7 +14,11 @@ type iPartitionKeyFilter interface {
 }
 
 type PartitionKeyFilter struct {
-	// Returns only items whose partition key value equals this string.
+	// The exact match value.
+	//
+	// example:
+	//
+	// workspace
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

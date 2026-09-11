@@ -46,35 +46,48 @@ type iQueryAlertRulesFilter interface {
 }
 
 type QueryAlertRulesFilter struct {
-	BizSource      *BizSourceFilter      `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	// The filter condition for the business source.
+	BizSource *BizSourceFilter `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	// The filter condition for the data source type.
 	DatasourceType *DatasourceTypeFilter `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
-	DisplayName    *DisplayNameFilter    `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Enabled        *EnabledFilter        `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Labels         *LabelsFilter         `json:"labels,omitempty" xml:"labels,omitempty"`
-	// Filters by migration status. isMigrated=true queries migrated rules (migration_status is not 0 or NULL). isMigrated=false queries native rules (migration_status=0).
-	MigrationStatus      *MigrationStatusFilter      `json:"migrationStatus,omitempty" xml:"migrationStatus,omitempty"`
+	// The filter for alert rule names.
+	DisplayName *DisplayNameFilter `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The filter for whether the alert rule is enabled.
+	Enabled *EnabledFilter `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The filter for labels.
+	Labels *LabelsFilter `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The migration status filter. Set isMigrated to true to query migrated rules (migration_status is not 0 or NULL). Set isMigrated to false to query native rules (migration_status=0).
+	MigrationStatus *MigrationStatusFilter `json:"migrationStatus,omitempty" xml:"migrationStatus,omitempty"`
+	// The filter condition for notification channels.
 	NotificationChannels *NotificationChannelsFilter `json:"notificationChannels,omitempty" xml:"notificationChannels,omitempty"`
-	NotifyStrategyId     *NotifyStrategyIdFilter     `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// Filters by the observeResourceConfig structure. This takes priority over the standalone observeResourceType / observeResourceGlobalScope / observeResourceList fields below. If both are specified and their semantics conflict, the request is rejected.
-	ObserveResourceConfig      *ObserveResourceConfigFilter      `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
+	// The filter condition for the notification policy ID.
+	NotifyStrategyId *NotifyStrategyIdFilter `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	// The composite filter based on the observeResourceConfig structure. This filter takes priority over the standalone observeResourceType, observeResourceGlobalScope, and observeResourceList fields. If both are specified and their semantics conflict, the request is rejected.
+	ObserveResourceConfig *ObserveResourceConfigFilter `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
+	// The filter condition for the global scope of observable resources.
 	ObserveResourceGlobalScope *ObserveResourceGlobalScopeFilter `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Filters by a single resource entity ID. This field is retained only for backward compatibility with legacy SDKs. For new integrations, use observeResourceList.contains instead. If this field is not empty and observeResourceList is not specified, it is equivalent to observeResourceList.contains=[observeResourceInstanceId].
+	// **[Deprecated]*	- The single-value filter for the resource instance ID. This field is retained only for compatibility with legacy SDKs. Use observeResourceList.contains instead for new integrations. If this field is not empty and observeResourceList is not specified, it is equivalent to observeResourceList.contains=[observeResourceInstanceId].
 	//
 	// example:
 	//
 	// i-bp1abcxxxxxxxx
-	ObserveResourceInstanceId *string                    `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
-	ObserveResourceList       *ObserveResourceListFilter `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
+	ObserveResourceInstanceId *string `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
+	// The filter condition for the list of observable resources.
+	ObserveResourceList *ObserveResourceListFilter `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Filters by observable resource type. For new integrations, use observeResourceConfig.entityType instead.
+	// **[Deprecated]*	- The filter for the observable resource type. Use observeResourceConfig.entityType instead for new integrations.
 	ObserveResourceType *ObserveResourceTypeFilter `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	PartitionKey        *PartitionKeyFilter        `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	SeverityLevels      *SeverityLevelsFilter      `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
-	Status              *StatusFilter              `json:"status,omitempty" xml:"status,omitempty"`
-	Uuid                *UuidFilter                `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The filter condition for the partition key.
+	PartitionKey *PartitionKeyFilter `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
+	// The filter condition for alert severity levels.
+	SeverityLevels *SeverityLevelsFilter `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
+	// The filter for statuses.
+	Status *StatusFilter `json:"status,omitempty" xml:"status,omitempty"`
+	// The filter for alert rule UUIDs.
+	Uuid *UuidFilter `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s QueryAlertRulesFilter) String() string {

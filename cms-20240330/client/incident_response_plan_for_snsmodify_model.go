@@ -20,13 +20,17 @@ type iIncidentResponsePlanForSNSModify interface {
 }
 
 type IncidentResponsePlanForSNSModify struct {
-	// The auto recovery time, in seconds. After this period, the incident is automatically resolved.
+	// The auto-recovery time. Unit: seconds. After this is configured, if no new events are generated for the incident within this period, the incident is automatically marked as resolved.
+	//
+	// example:
+	//
+	// 3600
 	AutoRecoverSeconds *int64 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	// The IDs of the escalation policies.
+	// The list of escalation policy IDs. Associates with IncidentEscalationPolicy to define step-by-step escalation rules when an incident is not handled as expected, such as notifying a supervisor if the incident is not acknowledged within 30 minutes.
 	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
-	// The push setting for notifications.
+	// The action integration execution configuration that defines automated actions to trigger when an incident occurs and when it is recovered.
 	PushingSetting *IncidentResponsePlanForSNSModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// The repeat notification setting.
+	// The repeat notification settings. When an incident remains unresolved, notifications are sent repeatedly at a fixed interval.
 	RepeatNotifySetting *IncidentResponsePlanForSNSModifyRepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty" type:"Struct"`
 }
 
@@ -89,11 +93,15 @@ func (s *IncidentResponsePlanForSNSModify) Validate() error {
 }
 
 type IncidentResponsePlanForSNSModifyPushingSetting struct {
-	// The IDs of the alert actions.
+	// The list of action IDs to execute when an event is triggered. Actions must be created in advance by calling CreateAlertAction.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// The IDs of the restore actions.
+	// The list of action IDs to execute when an event is recovered.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// The UUID of the notification template.
+	// Deprecated. This parameter does not take effect even if a value is passed in.
+	//
+	// example:
+	//
+	// uuid
 	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
@@ -137,9 +145,17 @@ func (s *IncidentResponsePlanForSNSModifyPushingSetting) Validate() error {
 }
 
 type IncidentResponsePlanForSNSModifyRepeatNotifySetting struct {
-	// The incident state that stops repeat notifications.
+	// The incident status at which repeat notifications stop. Repeat notifications are no longer sent after the incident reaches this status.
+	//
+	// example:
+	//
+	// resolved
 	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
-	// The repeat interval for notifications, in seconds.
+	// The repeat notification interval. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
 	RepeatInterval *int32 `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
 }
 

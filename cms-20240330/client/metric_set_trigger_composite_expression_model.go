@@ -18,9 +18,26 @@ type iMetricSetTriggerCompositeExpression interface {
 }
 
 type MetricSetTriggerCompositeExpression struct {
-	Conditions     []*MetricSetTriggerSimpleExpression `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	ExpressionType *string                             `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
-	LogicOperator  *string                             `json:"logicOperator,omitempty" xml:"logicOperator,omitempty"`
+	// The list of sub-conditions. Each item is a simple comparison expression.
+	Conditions []*MetricSetTriggerSimpleExpression `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// The expression type, fixed as COMPOSITE.
+	//
+	// example:
+	//
+	// COMPOSITE
+	ExpressionType *string `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
+	// The logical operator. Valid values:
+	//
+	// - AND: All conditions are met.
+	//
+	// - OR: Any condition is met.
+	//
+	// - UNLESS: The first condition is met and none of the remaining conditions are met.
+	//
+	// example:
+	//
+	// AND
+	LogicOperator *string `json:"logicOperator,omitempty" xml:"logicOperator,omitempty"`
 }
 
 func (s MetricSetTriggerCompositeExpression) String() string {

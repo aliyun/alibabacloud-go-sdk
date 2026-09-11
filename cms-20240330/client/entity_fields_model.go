@@ -16,7 +16,17 @@ type iEntityFields interface {
 }
 
 type EntityFields struct {
+  // The entity field name.
+  // 
+  // example:
+  // 
+  // region
   Field *string `json:"field,omitempty" xml:"field,omitempty"`
+  // The field alias or display value.
+  // 
+  // example:
+  // 
+  // cn-hangzhou
   Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

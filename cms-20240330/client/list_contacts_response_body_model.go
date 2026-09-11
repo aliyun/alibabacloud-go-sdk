@@ -36,13 +36,13 @@ type ListContactsResponseBody struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListContactsResponseBody) Validate() error {
 }
 
 type ListContactsResponseBodyContacts struct {
-	// The ID of the contact.
+	// The contact ID.
 	//
 	// example:
 	//
@@ -135,17 +135,17 @@ type ListContactsResponseBodyContacts struct {
 	//
 	// true
 	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
-	// A list of contact group IDs to which the contact belongs.
+	// The contact groups to which the contact belongs.
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
-	// A map of user IDs for various instant messaging (IM) tools.
+	// The instant messaging user ID mappings. Multiple instant messaging tools are supported.
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
-	// The language preference for notifications. Valid values: zh-CN and en-US.
+	// The language.
 	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The name of the contact.
+	// The contact name.
 	//
 	// example:
 	//
@@ -157,19 +157,24 @@ type ListContactsResponseBodyContacts struct {
 	//
 	// 130123456789
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// Indicates whether the phone number is verified.
+	// Indicates whether the phone number of the contact is verified.
 	//
 	// example:
 	//
 	// true
 	PhoneVerify *bool `json:"phoneVerify,omitempty" xml:"phoneVerify,omitempty"`
-	// The last time the contact was updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-10-22 02:21:51
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Workspace  *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// default-cms-5884500827389836-cn-hangzhou
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListContactsResponseBodyContacts) String() string {

@@ -23,14 +23,34 @@ type iSlsNamedQueryEntry interface {
 
 type SlsNamedQueryEntry struct {
 	// The end offset of the time range. This parameter is mutually exclusive with window.
+	//
+	// example:
+	//
+	// 1700000300000
 	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
 	// The SPL query expression.
+	//
+	// example:
+	//
+	// logLevel: error
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// The start offset of the time range. This parameter is mutually exclusive with window.
+	//
+	// example:
+	//
+	// 1700000000000
 	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
 	// The time unit. Valid values: day, hour, minute, and second.
+	//
+	// example:
+	//
+	// second
 	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 	// The snap window size. This parameter is mutually exclusive with start and end.
+	//
+	// example:
+	//
+	// 300
 	Window *int64 `json:"window,omitempty" xml:"window,omitempty"`
 }
 

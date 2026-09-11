@@ -21,10 +21,36 @@ type iStores interface {
 
 type Stores struct {
 	// Deprecated
+	//
+	// **[Deprecated]*	- The SLS project name. This field has been moved to DatasourceConfigUnified.project. Using this field in write paths returns HTTP status code 400.
+	//
+	// example:
+	//
+	// my-sls-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 	// Deprecated
-	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	Store     *string `json:"store,omitempty" xml:"store,omitempty"`
+	//
+	// **[Deprecated]*	- The region ID. This field has been moved to DatasourceConfigUnified.regionId. Using this field in write paths returns HTTP status code 400.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The name of the SLS Store.
+	//
+	// example:
+	//
+	// my-log-store
+	Store *string `json:"store,omitempty" xml:"store,omitempty"`
+	// The store type. Valid values:
+	//
+	// - LOG: Logstore.
+	//
+	// - METRIC: Metricstore.
+	//
+	// example:
+	//
+	// LOG
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
 }
 

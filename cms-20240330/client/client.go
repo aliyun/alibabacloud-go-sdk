@@ -352,11 +352,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Installs an add-on.
+// Installs an access component, which represents a single access operation.
 //
 // Description:
 //
-// Creates a release for an add-on.
+// Creates a site monitoring task.
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -439,11 +439,11 @@ func (client *Client) CreateAddonReleaseWithOptions(policyId *string, request *C
 
 // Summary:
 //
-// Installs an add-on.
+// Installs an access component, which represents a single access operation.
 //
 // Description:
 //
-// Creates a release for an add-on.
+// Creates a site monitoring task.
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -594,11 +594,11 @@ func (client *Client) CreateAggTaskGroup(instanceId *string, request *CreateAggT
 
 // Summary:
 //
-// # Create a webhook
+// Creates a webhook.
 //
 // Description:
 //
-// Creates an alert webhook to use as a notification recipient.
+// Creates a webhook notification recipient.
 //
 // @param request - CreateAlertWebhookRequest
 //
@@ -673,11 +673,11 @@ func (client *Client) CreateAlertWebhookWithOptions(request *CreateAlertWebhookR
 
 // Summary:
 //
-// # Create a webhook
+// Creates a webhook.
 //
 // Description:
 //
-// Creates an alert webhook to use as a notification recipient.
+// Creates a webhook notification recipient.
 //
 // @param request - CreateAlertWebhookRequest
 //
@@ -1391,6 +1391,73 @@ func (client *Client) CreateIntegrationPolicy(request *CreateIntegrationPolicyRe
 	headers := make(map[string]*string)
 	_result = &CreateIntegrationPolicyResponse{}
 	_body, _err := client.CreateIntegrationPolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订阅
+//
+// @param request - CreateMaintainWindowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMaintainWindowResponse
+func (client *Client) CreateMaintainWindowWithOptions(request *CreateMaintainWindowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMaintainWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMaintainWindow"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/maintainWindows"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMaintainWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建订阅
+//
+// @param request - CreateMaintainWindowRequest
+//
+// @return CreateMaintainWindowResponse
+func (client *Client) CreateMaintainWindow(request *CreateMaintainWindowRequest) (_result *CreateMaintainWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMaintainWindowResponse{}
+	_body, _err := client.CreateMaintainWindowWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2431,7 +2498,7 @@ func (client *Client) CreateUmodel(workspace *string, request *CreateUmodelReque
 
 // Summary:
 //
-// Deletes add-on release information.
+// Deletes addon release information.
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -2486,7 +2553,7 @@ func (client *Client) DeleteAddonReleaseWithOptions(policyId *string, request *D
 
 // Summary:
 //
-// Deletes add-on release information.
+// Deletes addon release information.
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -3302,6 +3369,80 @@ func (client *Client) DeleteIntegrationPolicy(policyId *string, request *DeleteI
 	headers := make(map[string]*string)
 	_result = &DeleteIntegrationPolicyResponse{}
 	_body, _err := client.DeleteIntegrationPolicyWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除转换器
+//
+// Description:
+//
+// 删除指定的静默策略。删除成功后，服务通过异步消息刷新运行时缓存，因此短时间内仍可能按删除前的策略处理事件。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - DeleteMaintainWindowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMaintainWindowResponse
+func (client *Client) DeleteMaintainWindowWithOptions(maintainWindowId *string, request *DeleteMaintainWindowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMaintainWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMaintainWindow"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/maintainWindows/" + dara.PercentEncode(dara.StringValue(maintainWindowId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMaintainWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除转换器
+//
+// Description:
+//
+// 删除指定的静默策略。删除成功后，服务通过异步消息刷新运行时缓存，因此短时间内仍可能按删除前的策略处理事件。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - DeleteMaintainWindowRequest
+//
+// @return DeleteMaintainWindowResponse
+func (client *Client) DeleteMaintainWindow(maintainWindowId *string, request *DeleteMaintainWindowRequest) (_result *DeleteMaintainWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMaintainWindowResponse{}
+	_body, _err := client.DeleteMaintainWindowWithOptions(maintainWindowId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4362,6 +4503,14 @@ func (client *Client) DescribeMetricMetaListWithOptions(tmpReq *DescribeMetricMe
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.Category) {
+		query["category"] = request.Category
+	}
+
 	if !dara.IsNil(request.Keywords) {
 		query["keywords"] = request.Keywords
 	}
@@ -4505,6 +4654,80 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
+// 暂停转换器
+//
+// Description:
+//
+// 暂停指定的静默策略。暂停成功后，服务通过异步消息刷新运行时缓存；刷新完成后该策略不再参与事件静默判断，短时间内仍可能按暂停前状态处理事件。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - DisableMaintainWindowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableMaintainWindowResponse
+func (client *Client) DisableMaintainWindowWithOptions(maintainWindowId *string, request *DisableMaintainWindowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableMaintainWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableMaintainWindow"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/maintainWindows/" + dara.PercentEncode(dara.StringValue(maintainWindowId)) + "/disable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableMaintainWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停转换器
+//
+// Description:
+//
+// 暂停指定的静默策略。暂停成功后，服务通过异步消息刷新运行时缓存；刷新完成后该策略不再参与事件静默判断，短时间内仍可能按暂停前状态处理事件。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - DisableMaintainWindowRequest
+//
+// @return DisableMaintainWindowResponse
+func (client *Client) DisableMaintainWindow(maintainWindowId *string, request *DisableMaintainWindowRequest) (_result *DisableMaintainWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableMaintainWindowResponse{}
+	_body, _err := client.DisableMaintainWindowWithOptions(maintainWindowId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables a specified notification policy. After the policy is disabled, notifications are paused but all configurations are retained. The policy can be re-enabled.
 //
 // Description:
@@ -4570,6 +4793,80 @@ func (client *Client) DisableNotifyPolicy(uuid *string, request *DisableNotifyPo
 	headers := make(map[string]*string)
 	_result = &DisableNotifyPolicyResponse{}
 	_body, _err := client.DisableNotifyPolicyWithOptions(uuid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动转换器
+//
+// Description:
+//
+// 启用指定的静默策略。启用成功后，服务通过异步消息刷新运行时缓存；刷新完成后，命中该策略过滤条件且处于生效时间内的事件不会触发通知，短时间内仍可能按启用前状态处理事件。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - EnableMaintainWindowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableMaintainWindowResponse
+func (client *Client) EnableMaintainWindowWithOptions(maintainWindowId *string, request *EnableMaintainWindowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableMaintainWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableMaintainWindow"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/maintainWindows/" + dara.PercentEncode(dara.StringValue(maintainWindowId)) + "/enable"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableMaintainWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动转换器
+//
+// Description:
+//
+// 启用指定的静默策略。启用成功后，服务通过异步消息刷新运行时缓存；刷新完成后，命中该策略过滤条件且处于生效时间内的事件不会触发通知，短时间内仍可能按启用前状态处理事件。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - EnableMaintainWindowRequest
+//
+// @return EnableMaintainWindowResponse
+func (client *Client) EnableMaintainWindow(maintainWindowId *string, request *EnableMaintainWindowRequest) (_result *EnableMaintainWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableMaintainWindowResponse{}
+	_body, _err := client.EnableMaintainWindowWithOptions(maintainWindowId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5969,6 +6266,80 @@ func (client *Client) GetIntegrationVersionForCS(request *GetIntegrationVersionF
 	headers := make(map[string]*string)
 	_result = &GetIntegrationVersionForCSResponse{}
 	_body, _err := client.GetIntegrationVersionForCSWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取订阅
+//
+// Description:
+//
+// 查询指定静默策略的详细配置，包括策略名称、描述、启用状态、过滤条件、生效时间配置以及创建时间和更新时间。当前查询结果不返回 workspaceFilterSetting。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - GetMaintainWindowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMaintainWindowResponse
+func (client *Client) GetMaintainWindowWithOptions(maintainWindowId *string, request *GetMaintainWindowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMaintainWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMaintainWindow"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/maintainWindows/" + dara.PercentEncode(dara.StringValue(maintainWindowId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMaintainWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取订阅
+//
+// Description:
+//
+// 查询指定静默策略的详细配置，包括策略名称、描述、启用状态、过滤条件、生效时间配置以及创建时间和更新时间。当前查询结果不返回 workspaceFilterSetting。指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - GetMaintainWindowRequest
+//
+// @return GetMaintainWindowResponse
+func (client *Client) GetMaintainWindow(maintainWindowId *string, request *GetMaintainWindowRequest) (_result *GetMaintainWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMaintainWindowResponse{}
+	_body, _err := client.GetMaintainWindowWithOptions(maintainWindowId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7524,7 +7895,13 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 
 // Summary:
 //
-// Queries alert chatbots.
+// Queries alert robots.
+//
+// Description:
+//
+// This operation can only query alert history from the last year.
+//
+// This topic provides an example of querying the alert history of Elastic Computing Service from the cloud service `product` dimension.
 //
 // @param tmpReq - ListAlertRobotsRequest
 //
@@ -7601,7 +7978,13 @@ func (client *Client) ListAlertRobotsWithOptions(tmpReq *ListAlertRobotsRequest,
 
 // Summary:
 //
-// Queries alert chatbots.
+// Queries alert robots.
+//
+// Description:
+//
+// This operation can only query alert history from the last year.
+//
+// This topic provides an example of querying the alert history of Elastic Computing Service from the cloud service `product` dimension.
 //
 // @param request - ListAlertRobotsRequest
 //
@@ -7620,7 +8003,7 @@ func (client *Client) ListAlertRobots(request *ListAlertRobotsRequest) (_result 
 
 // Summary:
 //
-// # Query webhooks
+// Queries webhooks.
 //
 // @param tmpReq - ListAlertWebhooksRequest
 //
@@ -7689,7 +8072,7 @@ func (client *Client) ListAlertWebhooksWithOptions(tmpReq *ListAlertWebhooksRequ
 
 // Summary:
 //
-// # Query webhooks
+// Queries webhooks.
 //
 // @param request - ListAlertWebhooksRequest
 //
@@ -7784,6 +8167,10 @@ func (client *Client) ListBizTraces(request *ListBizTracesRequest) (_result *Lis
 //
 // Queries contact groups.
 //
+// Description:
+//
+// This topic provides an example of how to create an alert contact group named `ECS_Group`.
+//
 // @param tmpReq - ListContactGroupsRequest
 //
 // @param headers - map
@@ -7853,6 +8240,10 @@ func (client *Client) ListContactGroupsWithOptions(tmpReq *ListContactGroupsRequ
 //
 // Queries contact groups.
 //
+// Description:
+//
+// This topic provides an example of how to create an alert contact group named `ECS_Group`.
+//
 // @param request - ListContactGroupsRequest
 //
 // @return ListContactGroupsResponse
@@ -7870,7 +8261,11 @@ func (client *Client) ListContactGroups(request *ListContactGroupsRequest) (_res
 
 // Summary:
 //
-// # Query contacts
+// Queries contacts.
+//
+// Description:
+//
+// This topic provides an example of how to create an alert contact group named `ECS_Group`.
 //
 // @param tmpReq - ListContactsRequest
 //
@@ -7955,7 +8350,11 @@ func (client *Client) ListContactsWithOptions(tmpReq *ListContactsRequest, heade
 
 // Summary:
 //
-// # Query contacts
+// Queries contacts.
+//
+// Description:
+//
+// This topic provides an example of how to create an alert contact group named `ECS_Group`.
 //
 // @param request - ListContactsRequest
 //
@@ -9037,6 +9436,112 @@ func (client *Client) ListIntegrationPolicyStorageRequirements(policyId *string,
 	headers := make(map[string]*string)
 	_result = &ListIntegrationPolicyStorageRequirementsResponse{}
 	_body, _err := client.ListIntegrationPolicyStorageRequirementsWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询维护窗口列表
+//
+// Description:
+//
+// 分页查询指定工作空间下的静默策略列表，支持按策略名称模糊匹配、按策略 ID 精确匹配、按启用状态过滤，并支持按创建时间、更新时间或启用状态排序。没有匹配项时正常返回空列表；列表项不返回 workspaceFilterSetting。
+//
+// 当本次返回条数达到 maxResults 时，响应可能包含非空 nextToken；非空 nextToken 仅表示可以继续查询，不保证下一页一定包含数据。nextToken 为空表示分页结束。
+//
+// @param request - ListMaintainWindowsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMaintainWindowsResponse
+func (client *Client) ListMaintainWindowsWithOptions(request *ListMaintainWindowsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMaintainWindowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.Enable) {
+		query["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.MaintainWindowId) {
+		query["maintainWindowId"] = request.MaintainWindowId
+	}
+
+	if !dara.IsNil(request.MaintainWindowName) {
+		query["maintainWindowName"] = request.MaintainWindowName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMaintainWindows"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/maintainWindows"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMaintainWindowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询维护窗口列表
+//
+// Description:
+//
+// 分页查询指定工作空间下的静默策略列表，支持按策略名称模糊匹配、按策略 ID 精确匹配、按启用状态过滤，并支持按创建时间、更新时间或启用状态排序。没有匹配项时正常返回空列表；列表项不返回 workspaceFilterSetting。
+//
+// 当本次返回条数达到 maxResults 时，响应可能包含非空 nextToken；非空 nextToken 仅表示可以继续查询，不保证下一页一定包含数据。nextToken 为空表示分页结束。
+//
+// @param request - ListMaintainWindowsRequest
+//
+// @return ListMaintainWindowsResponse
+func (client *Client) ListMaintainWindows(request *ListMaintainWindowsRequest) (_result *ListMaintainWindowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMaintainWindowsResponse{}
+	_body, _err := client.ListMaintainWindowsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10478,7 +10983,7 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 //
 // Description:
 //
-// This topic provides an example of how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example on how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //
@@ -10553,7 +11058,7 @@ func (client *Client) QueryAlertRulesWithOptions(tmpReq *QueryAlertRulesRequest,
 //
 // Description:
 //
-// This topic provides an example of how to query the list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example on how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - QueryAlertRulesRequest
 //
@@ -10938,7 +11443,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Upgrades an add-on component.
+// Upgrades an access component.
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -10997,7 +11502,7 @@ func (client *Client) UpdateAddonReleaseWithOptions(releaseName *string, policyI
 
 // Summary:
 //
-// Upgrades an add-on component.
+// Upgrades an access component.
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -11875,6 +12380,85 @@ func (client *Client) UpdateIntegrationPolicy(integrationPolicyId *string, reque
 	headers := make(map[string]*string)
 	_result = &UpdateIntegrationPolicyResponse{}
 	_body, _err := client.UpdateIntegrationPolicyWithOptions(integrationPolicyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的维护窗口配置。
+//
+// Description:
+//
+// 更新指定静默策略的配置。maintainWindowName 为空时保留原名称；description、filterSetting、effective、effectTimeRange、startTime、endTime 按请求体中的值更新，未提供时写为空。建议先通过 GetMaintainWindow 获取当前配置后再提交修改。
+//
+// 本接口不修改策略的启用状态，启用或暂停请使用 EnableMaintainWindow、DisableMaintainWindow。时间配置校验与 CreateMaintainWindow 一致；同一工作空间下策略名称重复时返回 InvalidParameterValue；指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - UpdateMaintainWindowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMaintainWindowResponse
+func (client *Client) UpdateMaintainWindowWithOptions(maintainWindowId *string, request *UpdateMaintainWindowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMaintainWindowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMaintainWindow"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/maintainWindows/" + dara.PercentEncode(dara.StringValue(maintainWindowId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMaintainWindowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改已存在的维护窗口配置。
+//
+// Description:
+//
+// 更新指定静默策略的配置。maintainWindowName 为空时保留原名称；description、filterSetting、effective、effectTimeRange、startTime、endTime 按请求体中的值更新，未提供时写为空。建议先通过 GetMaintainWindow 获取当前配置后再提交修改。
+//
+// 本接口不修改策略的启用状态，启用或暂停请使用 EnableMaintainWindow、DisableMaintainWindow。时间配置校验与 CreateMaintainWindow 一致；同一工作空间下策略名称重复时返回 InvalidParameterValue；指定的静默策略不存在时返回 ResourceNotFound。
+//
+// @param request - UpdateMaintainWindowRequest
+//
+// @return UpdateMaintainWindowResponse
+func (client *Client) UpdateMaintainWindow(maintainWindowId *string, request *UpdateMaintainWindowRequest) (_result *UpdateMaintainWindowResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMaintainWindowResponse{}
+	_body, _err := client.UpdateMaintainWindowWithOptions(maintainWindowId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

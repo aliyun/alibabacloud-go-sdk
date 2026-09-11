@@ -23,10 +23,22 @@ type CloudMonitoringCompositeEscalation struct {
 	// The list of multi-condition configurations.
 	Escalations []*CloudMonitoringCompositeEscalationEntry `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
 	// The logical relationship between conditions (AND/OR).
+	//
+	// example:
+	//
+	// AND
 	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// CRITICAL
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The number of consecutive times the conditions are met before the alert is triggered.
+	// The number of consecutive times the condition is triggered.
+	//
+	// example:
+	//
+	// 3
 	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 

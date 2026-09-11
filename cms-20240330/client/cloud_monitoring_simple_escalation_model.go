@@ -18,11 +18,19 @@ type iCloudMonitoringSimpleEscalation interface {
 }
 
 type CloudMonitoringSimpleEscalation struct {
-	// An object that defines a single escalation rule.
+	// The multi-level trigger list.
 	Escalations []*CloudMonitoringSimpleEscalationEntry `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// The name of the metric.
+	// The metric name.
+	//
+	// example:
+	//
+	// cpuUsage
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// The evaluation period for the metric, in seconds.
+	// The collection period, in seconds.
+	//
+	// example:
+	//
+	// 60
 	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
 }
 

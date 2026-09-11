@@ -21,14 +21,30 @@ type iApmThresholdConfig interface {
 
 type ApmThresholdConfig struct {
 	// The upper bound of the range.
+	//
+	// example:
+	//
+	// 100
 	Max *float64 `json:"max,omitempty" xml:"max,omitempty"`
 	// The lower bound of the range.
+	//
+	// example:
+	//
+	// 0
 	Min *float64 `json:"min,omitempty" xml:"min,omitempty"`
-	// The alert level.
+	// The warning level.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// INFO
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The threshold. This parameter is required for APM_SIMPLE_CONDITION.
+	// The threshold.
+	//
+	// example:
+	//
+	// 30
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 

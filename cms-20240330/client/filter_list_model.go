@@ -18,10 +18,27 @@ type iFilterList interface {
 }
 
 type FilterList struct {
+	// The dimension key.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The filter type.
+	//
 	// This parameter is required.
-	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
+	//
+	// example:
+	//
+	// ALL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The filter value. This parameter can be left empty when type is set to ALL or DISABLED.
+	//
+	// example:
+	//
+	// prod
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

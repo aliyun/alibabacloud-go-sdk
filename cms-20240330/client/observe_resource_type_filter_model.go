@@ -14,7 +14,11 @@ type iObserveResourceTypeFilter interface {
 }
 
 type ObserveResourceTypeFilter struct {
-	// The exact resource type to query. Returns only resources of this type.
+	// The exact match.
+	//
+	// example:
+	//
+	// ACS::ECS::Instance
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

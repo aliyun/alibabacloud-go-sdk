@@ -24,7 +24,7 @@ type iListAlertRobotsShrinkRequest interface {
 }
 
 type ListAlertRobotsShrinkRequest struct {
-	// The chatbot name. Prefix fuzzy match is supported.
+	// The robot name. Prefix fuzzy match is supported.
 	//
 	// example:
 	//
@@ -42,11 +42,16 @@ type ListAlertRobotsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The chatbot ID.
+	// The robot IDs.
 	RobotIdsShrink *string `json:"robotIds,omitempty" xml:"robotIds,omitempty"`
-	// The chatbot type.
+	// The robot type.
 	TypesShrink *string `json:"types,omitempty" xml:"types,omitempty"`
-	Workspace   *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// default-cms-1423134313712421-cn-shanghai
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListAlertRobotsShrinkRequest) String() string {

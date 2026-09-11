@@ -34,7 +34,7 @@ type ListAlertWebhooksShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

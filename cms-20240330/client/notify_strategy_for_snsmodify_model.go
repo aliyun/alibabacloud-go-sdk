@@ -24,12 +24,32 @@ type iNotifyStrategyForSNSModify interface {
 }
 
 type NotifyStrategyForSNSModify struct {
-	CustomTemplateEntries    []*NotifyStrategyForSNSModifyCustomTemplateEntries `json:"customTemplateEntries,omitempty" xml:"customTemplateEntries,omitempty" type:"Repeated"`
-	Description              *string                                            `json:"description,omitempty" xml:"description,omitempty"`
-	EnableIncidentManagement *bool                                              `json:"enableIncidentManagement,omitempty" xml:"enableIncidentManagement,omitempty"`
+	// The notification channel templates.
+	CustomTemplateEntries []*NotifyStrategyForSNSModifyCustomTemplateEntries `json:"customTemplateEntries,omitempty" xml:"customTemplateEntries,omitempty" type:"Repeated"`
+	// The description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to enable incident management.
+	//
+	// example:
+	//
+	// true
+	EnableIncidentManagement *bool `json:"enableIncidentManagement,omitempty" xml:"enableIncidentManagement,omitempty"`
+	// The grouping settings.
+	//
 	// This parameter is required.
-	GroupingSetting            *NotifyStrategyForSNSModifyGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	IgnoreRestoredNotification *bool                                      `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
+	GroupingSetting *NotifyStrategyForSNSModifyGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
+	// Specifies whether to send a notification when the alert is recovered.
+	//
+	// example:
+	//
+	// true
+	IgnoreRestoredNotification *bool `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
+	// The notification channel routing settings.
+	//
 	// This parameter is required.
 	Routes []*NotifyStrategyForSNSModifyRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
@@ -124,7 +144,17 @@ func (s *NotifyStrategyForSNSModify) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyCustomTemplateEntries struct {
-	TargetType   *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// **[Deprecated]*	- This parameter is deprecated and does not take effect. The actual purpose of the template is determined by the type field of the template object referenced by templateUuid.
+	//
+	// example:
+	//
+	// DING
+	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// The UUID of the template.
+	//
+	// example:
+	//
+	// adef12efca3f-8728-1928-eeaac12ef9ad92
 	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
@@ -159,10 +189,26 @@ func (s *NotifyStrategyForSNSModifyCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyGroupingSetting struct {
+	// The grouping keys.
 	GroupingKeys []*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty" type:"Repeated"`
-	PeriodMin    *int32    `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	SilenceSec   *int32    `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	Times        *int32    `json:"times,omitempty" xml:"times,omitempty"`
+	// The check period in minutes.
+	//
+	// example:
+	//
+	// 1
+	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
+	// The silence duration in seconds.
+	//
+	// example:
+	//
+	// 300
+	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
+	// The number of times the condition is triggered.
+	//
+	// example:
+	//
+	// 10
+	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 
 func (s NotifyStrategyForSNSModifyGroupingSetting) String() string {
@@ -214,13 +260,18 @@ func (s *NotifyStrategyForSNSModifyGroupingSetting) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutes struct {
-	Channels            []*NotifyStrategyForSNSModifyRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	DigitalEmployeeName *string                                     `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The effective period settings for notifications. Defines on which days and during which time range the system sends notifications.
+	// The notification channels.
+	Channels []*NotifyStrategyForSNSModifyRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// The digital employee name.
+	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The effective time range.
 	EffectTimeRange *NotifyStrategyForSNSModifyRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	EnableRca       *bool                                            `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
-	FilterSetting   *NotifyStrategyForSNSModifyRoutesFilterSetting   `json:"filterSetting,omitempty" xml:"filterSetting,omitempty" type:"Struct"`
-	Severities      []*string                                        `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
+	// Specifies whether to enable root cause analysis (RCA).
+	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
+	// The route-level filter. This is different from the top-level subscription.filterSetting.
+	FilterSetting *NotifyStrategyForSNSModifyRoutesFilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty" type:"Struct"`
+	// **[Deprecated]*	- This parameter is deprecated and does not take effect. Route matching only checks filterSetting and effectTimeRange.
+	Severities []*string `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
 }
 
 func (s NotifyStrategyForSNSModifyRoutes) String() string {
@@ -309,21 +360,21 @@ func (s *NotifyStrategyForSNSModifyRoutes) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutesChannels struct {
-	// The notification channel type. The value must be one of the following uppercase enum values: DING (DingTalk chatbot), WEIXIN (WeCom chatbot), FEISHU (Lark chatbot), SLACK, TEAMS, WEBHOOK (custom webhook), CONTACT (contact, requires enabledSubChannels to specify sub-channels), GROUP (contact group), DUTY (on-call schedule), or DING_COOL_APP (DingTalk Cool App). Note: Lowercase values such as EMAIL or SMS are not supported. To send email, text message, or voice notifications, set channelType to CONTACT and specify EMAIL, SMS, or VOICE in enabledSubChannels.
+	// The channel type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// WEBHOOK
+	// DING
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// Required only when channelType is CONTACT, GROUP, or DUTY. Valid values: EMAIL (email), SMS (text message), VOICE (voice call), DING (DingTalk work notification), WEIXIN (WeCom message), FEISHU (Lark message), and WEBHOOK. For example, to notify a contact by email and text message, set channelType to CONTACT and enabledSubChannels to ["EMAIL","SMS"]. This field is not required for other channelType values such as WEBHOOK or DING.
+	// The enabled notification types.
 	//
 	// example:
 	//
 	// ["EMAIL","SMS"]
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
-	// The list of receiver identifiers. For the WEBHOOK type, specify the webhook UUID. For DING, WEIXIN, or FEISHU, specify the chatbot UUID. For CONTACT, specify the contact ID. For GROUP, specify the contact group ID. For DUTY, specify the on-call schedule UUID. At least one element is required.
+	// The channel receivers.
 	//
 	// This parameter is required.
 	//
@@ -373,25 +424,25 @@ func (s *NotifyStrategyForSNSModifyRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutesEffectTimeRange struct {
-	// The days of the week on which the setting takes effect. Array element values range from 0 to 6 (0 = Sunday, 1 = Monday, 2 = Tuesday, ... 6 = Saturday). Note: The value 7 is not supported. The maximum value is 6. Example for all days: [0,1,2,3,4,5,6]. Example for weekdays only: [1,2,3,4,5].
+	// The effective days of the week (Monday through Sunday).
 	//
 	// example:
 	//
 	// [0,1,2,3,4,5,6]
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// The end time of the day, expressed as the number of minutes from 00:00. Valid values: 0 to 1439 (23 × 60 + 59 = 1439, which represents 23:59).
+	// The end time in minutes.
 	//
 	// example:
 	//
-	// 1439
+	// 1
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// The start time of the day, expressed as the number of minutes from 00:00. Valid values: 0 to 1439 (0 represents 00:00).
+	// The start time in minutes.
 	//
 	// example:
 	//
-	// 0
+	// 59
 	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	// The IANA time zone identifier, such as Asia/Shanghai or America/Los_Angeles.
+	// The time zone.
 	//
 	// example:
 	//
@@ -448,9 +499,20 @@ func (s *NotifyStrategyForSNSModifyRoutesEffectTimeRange) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutesFilterSetting struct {
+	// The subscription conditions.
 	Conditions []*NotifyStrategyForSNSModifyRoutesFilterSettingConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	Expression *string                                                    `json:"expression,omitempty" xml:"expression,omitempty"`
-	Relation   *string                                                    `json:"relation,omitempty" xml:"relation,omitempty"`
+	// If expression is not empty, it takes precedence and relation is ignored. If expression is empty or not specified, the system uses relation (AND or OR) to perform a simple AND/OR operation on all conditions. Condition numbers correspond to the indexes of the conditions array (starting from 1). Each condition evaluates whether a single event field matches by using field (the event field path, which supports dot-separated nesting such as resource.tags.pod), op (the operator, such as CONTAIN, EQ, or IN), and value (the match value).
+	//
+	// example:
+	//
+	// (1 AND 2 )OR 3
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The relationship between conditions. If an expression is configured, the expression takes higher precedence.
+	//
+	// example:
+	//
+	// AND
+	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
 }
 
 func (s NotifyStrategyForSNSModifyRoutesFilterSetting) String() string {
@@ -502,8 +564,23 @@ func (s *NotifyStrategyForSNSModifyRoutesFilterSetting) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyRoutesFilterSettingConditions struct {
+	// The JSON path of the field, such as labels._cms_rule_name.
+	//
+	// example:
+	//
+	// subject
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	Op    *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The comparison operator.
+	//
+	// example:
+	//
+	// EQ
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// Pod OOM
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

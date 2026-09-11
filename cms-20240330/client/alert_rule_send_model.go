@@ -22,14 +22,15 @@ type iAlertRuleSend interface {
 }
 
 type AlertRuleSend struct {
-	// The integrated alert action configuration.
+	// The alert action integration configuration.
 	Action *AlertRuleAction `json:"action,omitempty" xml:"action,omitempty"`
 	// The alert notification configuration.
 	Notification *AlertRuleNotification `json:"notification,omitempty" xml:"notification,omitempty"`
-	// The list of notification policies. Each policy defines the notification method or policy name to use for a specific alert state, such as trigger or recovery.
-	NotifyStrategies []*string           `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
-	RcaConfig        *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// Specifies whether to deliver alert events to Alert Management of Application Real-Time Monitoring Service (ARMS).
+	// The list of notification policies that define the notification methods or Policy Name values to use for different alert states, such as triggered and recover.
+	NotifyStrategies []*string `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
+	// The root cause analysis (RCA) configuration. After this feature is enabled, root cause analysis is automatically performed when an alert is triggered.
+	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
+	// Indicates whether event delivery of alert events to ARMS alert management is enabled.
 	//
 	// example:
 	//

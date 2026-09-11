@@ -19,6 +19,10 @@ type SlsQueryJoin struct {
 	// The list of join conditions.
 	Conditions []*SlsJoinCondition `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// The set operation type. Valid values: InnerJoin, LeftJoin, RightJoin, FullJoin, LeftExclude, RightExclude, CrossJoin, NoJoin, and Concat.
+	//
+	// example:
+	//
+	// LEFT
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

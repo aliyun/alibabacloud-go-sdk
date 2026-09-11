@@ -16,9 +16,13 @@ type iActionIntegrationConfig interface {
 }
 
 type ActionIntegrationConfig struct {
-	// The list of action integration IDs.
+	// The list of action integration configurations. An action integration is an automated action that is executed after an alert rule is triggered, such as sending a notification or invoking a webhook. Each action integration is referenced by its action integration ID.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// Indicates whether action integration is started.
+	// Indicates whether action integration is enabled.
+	//
+	// example:
+	//
+	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 

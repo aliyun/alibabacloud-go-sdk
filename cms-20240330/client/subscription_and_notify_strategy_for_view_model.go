@@ -46,23 +46,92 @@ type iSubscriptionAndNotifyStrategyForView interface {
 }
 
 type SubscriptionAndNotifyStrategyForView struct {
-	CreateTime         *string                         `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description        *string                         `json:"description,omitempty" xml:"description,omitempty"`
-	Enabled            *bool                           `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	MigrationBatchId   *string                         `json:"migrationBatchId,omitempty" xml:"migrationBatchId,omitempty"`
-	MigrationMeta      *string                         `json:"migrationMeta,omitempty" xml:"migrationMeta,omitempty"`
-	Name               *string                         `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyStrategy     *NotifyStrategyForSNSView       `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
-	NotifyStrategyUuid *string                         `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	ResponsePlan       *IncidentResponsePlanForSNSView `json:"responsePlan,omitempty" xml:"responsePlan,omitempty"`
-	Subscription       *SubscriptionForSNSView         `json:"subscription,omitempty" xml:"subscription,omitempty"`
-	SubscriptionUuid   *string                         `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
-	Subscriptions      []*SubscriptionForView          `json:"subscriptions,omitempty" xml:"subscriptions,omitempty" type:"Repeated"`
-	UpdateTime         *string                         `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId             *string                         `json:"userId,omitempty" xml:"userId,omitempty"`
-	Uuid               *string                         `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	Version            *int32                          `json:"version,omitempty" xml:"version,omitempty"`
-	Workspace          *string                         `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The creation time. The value is a UNIX timestamp string in milliseconds.
+	//
+	// example:
+	//
+	// 1719820800000
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the alert policy.
+	//
+	// example:
+	//
+	// Alert policy for ECS faults in the production environment. Notifications are sent to the on-duty group
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the alert policy is enabled. This field is controlled by the EnableAlertPolicy and DisableAlertPolicy operations. The Create and Update operations do not directly set this field.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The migration batch ID. This is an internal system field. The value is an empty string for user-created policies and is populated for policies migrated from the legacy version.
+	//
+	// example:
+	//
+	// 123
+	MigrationBatchId *string `json:"migrationBatchId,omitempty" xml:"migrationBatchId,omitempty"`
+	// The migration metadata JSON string. This is an internal system field. You do not need to configure this field.
+	//
+	// example:
+	//
+	// {}
+	MigrationMeta *string `json:"migrationMeta,omitempty" xml:"migrationMeta,omitempty"`
+	// The name of the alert policy.
+	//
+	// example:
+	//
+	// ECS Fault Notification Policy
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The snapshot of the notification strategy details, including notification routes (routes), notification channels (channels), grouping settings (groupingSetting), and custom templates (customTemplateEntries).
+	NotifyStrategy *NotifyStrategyForSNSView `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
+	// The UUID of the associated notifyStrategy. This UUID is shared with the responsePlan UUID.
+	//
+	// example:
+	//
+	// 7076c75c-c804-461e-975f-c6f9ed5af745
+	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
+	// The snapshot of the event response plan details, including escalation policy (escalationId), repeat notification (repeatNotifySetting), automatic recovery (autoRecoverSeconds), and action integration (pushingSetting).
+	ResponsePlan *IncidentResponsePlanForSNSView `json:"responsePlan,omitempty" xml:"responsePlan,omitempty"`
+	// The snapshot of the primary subscription details, including filter conditions (filterSetting) and cross-workspace subscription configuration (workspaceFilterSetting).
+	Subscription *SubscriptionForSNSView `json:"subscription,omitempty" xml:"subscription,omitempty"`
+	// The UUID of the primary subscription. This UUID is generated when the alert policy is bound to a subscription in a 1:1 relationship.
+	//
+	// example:
+	//
+	// 7076c75c-c804-461e-975f-c6f9ed5af745
+	SubscriptionUuid *string `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
+	// The list of all associated subscriptions, including the primary subscription. This list is generated by the backend through a reverse lookup. The array length is greater than 1 only when workspace-level subscriptions are added in addition to the primary subscription.
+	Subscriptions []*SubscriptionForView `json:"subscriptions,omitempty" xml:"subscriptions,omitempty" type:"Repeated"`
+	// The last update time. The value is a UNIX timestamp string in milliseconds.
+	//
+	// example:
+	//
+	// 1719820800000
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The userId of the owner.
+	//
+	// example:
+	//
+	// 1234567890123456
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The UUID of the alert policy.
+	//
+	// example:
+	//
+	// 7076c75c-c804-461e-975f-c6f9ed5af745
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The optimistic lock version number. You must pass in the current value during an Update operation to prevent concurrent conflicts. The value is incremented by 1 after each successful Update operation.
+	//
+	// example:
+	//
+	// 1
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	// The workspace identifier.
+	//
+	// example:
+	//
+	// default-cms-1234567890-cn-hangzhou
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s SubscriptionAndNotifyStrategyForView) String() string {

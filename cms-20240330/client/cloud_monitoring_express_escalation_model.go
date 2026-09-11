@@ -19,10 +19,22 @@ type iCloudMonitoringExpressEscalation interface {
 
 type CloudMonitoringExpressEscalation struct {
 	// The raw expression.
+	//
+	// example:
+	//
+	// cpu_usage > 90
 	RawExpression *string `json:"rawExpression,omitempty" xml:"rawExpression,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// CRITICAL
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
 	// The number of consecutive times the alert is triggered.
+	//
+	// example:
+	//
+	// 3
 	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 

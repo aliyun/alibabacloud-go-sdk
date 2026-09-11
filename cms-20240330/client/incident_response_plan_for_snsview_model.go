@@ -38,31 +38,71 @@ type iIncidentResponsePlanForSNSView interface {
 }
 
 type IncidentResponsePlanForSNSView struct {
-	// The duration, in seconds, after which an incident without new alerts is automatically resolved.
+	// The auto-recovery time when no incidents occur, in seconds.
+	//
+	// example:
+	//
+	// 600
 	AutoRecoverSeconds *int64 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	// The time when the incident response plan was created, in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The creation time.
+	//
+	// example:
+	//
+	// 1700000000000
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Indicates if the incident response plan is enabled. Valid values: `true` and `false`.
+	// Indicates whether the response plan is enabled.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The IDs of the escalation policies.
+	// The list of escalation plan IDs.
 	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
-	// The mode of the incident response plan. Valid values: `AUTO` and `MANUAL`.
+	// The lifecycle mode.
+	//
+	// example:
+	//
+	// NOTIFY_STRATEGY_DEFINED
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The name of the incident response plan.
+	// The name.
+	//
+	// example:
+	//
+	// Sample response plan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The settings for sending notifications.
+	// The push settings.
 	PushingSetting *IncidentResponsePlanForSNSViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// The settings for repeated notifications.
+	// The repeat notification configuration.
 	RepeatNotifySetting *IncidentResponsePlanForSNSViewRepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty" type:"Struct"`
-	// The source of the incident.
+	// The source. The value must be CUSTOM within SNS.
+	//
+	// example:
+	//
+	// CUSTOM
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The synchronization source type.
+	//
+	// example:
+	//
+	// CUSTOM
 	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	// The type of the incident response plan.
+	// The response plan type. The value must be NOTIFY_STRATEGY_DEFINED within SNS.
+	//
+	// example:
+	//
+	// NOTIFY_STRATEGY_DEFINED
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the incident response plan was last updated, in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The update time.
+	//
+	// example:
+	//
+	// 1700000000000
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The unique ID of the incident response plan.
+	// The unique identifier of the response plan.
+	//
+	// example:
+	//
+	// abc-def-12345
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
@@ -206,11 +246,15 @@ func (s *IncidentResponsePlanForSNSView) Validate() error {
 }
 
 type IncidentResponsePlanForSNSViewPushingSetting struct {
-	// The IDs of actions to run when an alert is triggered.
+	// The list of response action IDs triggered by alerts.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// The IDs of actions to run when the incident is resolved.
+	// The list of response action IDs triggered by alert recovery.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// The ID of the notification template.
+	// The UUID of the template used for pushing.
+	//
+	// example:
+	//
+	// tpl-001
 	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
@@ -254,9 +298,17 @@ func (s *IncidentResponsePlanForSNSViewPushingSetting) Validate() error {
 }
 
 type IncidentResponsePlanForSNSViewRepeatNotifySetting struct {
-	// The incident state at which repeated notifications stop. For example, `resolved`.
+	// The setting that specifies whether to send repeat notifications when an incident ends.
+	//
+	// example:
+	//
+	// false
 	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
-	// The interval, in seconds, for repeated notifications.
+	// The repeat notification interval, in seconds.
+	//
+	// example:
+	//
+	// 300
 	RepeatInterval *int32 `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
 }
 

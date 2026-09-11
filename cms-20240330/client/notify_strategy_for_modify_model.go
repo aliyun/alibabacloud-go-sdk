@@ -38,13 +38,13 @@ type iNotifyStrategyForModify interface {
 }
 
 type NotifyStrategyForModify struct {
-	// The auto-recovery time in seconds.
+	// The automatic recovery time in seconds.
 	//
 	// example:
 	//
 	// 300
 	AutoRecoverSeconds *int32 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	// The notification channel template.
+	// The notification channel templates.
 	CustomTemplateEntries []*NotifyStrategyForModifyCustomTemplateEntries `json:"customTemplateEntries,omitempty" xml:"customTemplateEntries,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -52,7 +52,7 @@ type NotifyStrategyForModify struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable incident management.
+	// Indicates whether incident management is enabled.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type NotifyStrategyForModify struct {
 	//
 	// This parameter is required.
 	GroupingSetting *NotifyStrategyForModifyGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	// Specifies whether to send a notification upon recovery.
+	// Indicates whether to send a notification when the alert is restored.
 	//
 	// example:
 	//
 	// false
 	IgnoreRestoredNotification *bool `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
-	// The name.
+	// The name of the notification policy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Policy name.
+	// Policy Name
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
 	// The push settings.
 	PushingSetting *NotifyStrategyForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// The settings for repeated notifications.
+	// The repeat notification settings.
 	RepeatNotifySetting *NotifyStrategyForModifyRepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty" type:"Struct"`
-	// The routing settings for the notification channel.
+	// The notification channel route settings.
 	//
 	// This parameter is required.
 	Routes []*NotifyStrategyForModifyRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
@@ -314,7 +314,7 @@ func (s *NotifyStrategyForModifyCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyForModifyGroupingSetting struct {
-	// The keys used for merging.
+	// The grouping keys.
 	GroupingKeys []*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty" type:"Repeated"`
 	// The check period in minutes.
 	//
@@ -322,13 +322,13 @@ type NotifyStrategyForModifyGroupingSetting struct {
 	//
 	// 5
 	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	// The silence period in seconds.
+	// The silence duration in seconds.
 	//
 	// example:
 	//
 	// 300
 	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	// The number of triggers.
+	// The number of times the alert is triggered.
 	//
 	// example:
 	//
@@ -387,13 +387,13 @@ func (s *NotifyStrategyForModifyGroupingSetting) Validate() error {
 type NotifyStrategyForModifyPushingSetting struct {
 	// The list of alert action IDs.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// The list of restore action IDs.
+	// The list of recovery action IDs.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
 	// The message template UUID.
 	//
 	// example:
 	//
-	// 模板 UUID
+	// Template UUID
 	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
@@ -437,13 +437,13 @@ func (s *NotifyStrategyForModifyPushingSetting) Validate() error {
 }
 
 type NotifyStrategyForModifyRepeatNotifySetting struct {
-	// The incident state that stops the repeated notifications.
+	// The end incident state.
 	//
 	// example:
 	//
 	// "Resolved"
 	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
-	// The interval for repeated notifications.
+	// The time interval for repeat notifications.
 	//
 	// example:
 	//
@@ -482,13 +482,23 @@ func (s *NotifyStrategyForModifyRepeatNotifySetting) Validate() error {
 }
 
 type NotifyStrategyForModifyRoutes struct {
-	// The notification channel.
-	Channels            []*NotifyStrategyForModifyRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	DigitalEmployeeName *string                                  `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The notification channels.
+	Channels []*NotifyStrategyForModifyRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// The name of the digital employee.
+	//
+	// example:
+	//
+	// On-call Assistant
+	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// The effective time range.
 	EffectTimeRange *NotifyStrategyForModifyRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	EnableRca       *bool                                         `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
-	// The routing conditions.
+	// Indicates whether root cause analysis is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
+	// The route condition.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
 	// The list of severity levels.
 	Severities []*string `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
@@ -636,7 +646,7 @@ func (s *NotifyStrategyForModifyRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyForModifyRoutesEffectTimeRange struct {
-	// The days of the week when the policy is active. Monday to Sunday.
+	// The effective days (Monday to Sunday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
 	// The end time in minutes.
 	//

@@ -24,17 +24,41 @@ type iTriggerConditions interface {
 }
 
 type TriggerConditions struct {
-	// The expression type, fixed as SIMPLE (used by MetricSet multi-threshold triggers).
+	// The expression type. Fixed as SIMPLE (used for MetricSet multi-threshold triggers).
+	//
+	// example:
+	//
+	// SIMPLE
 	ExpressionType *string `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
 	// The upper bound of the range. Required when operator is IN_RANGE or OUT_OF_RANGE. Must be greater than or equal to min.
+	//
+	// example:
+	//
+	// 100
 	Max *float64 `json:"max,omitempty" xml:"max,omitempty"`
 	// The lower bound of the range. Required when operator is IN_RANGE or OUT_OF_RANGE.
+	//
+	// example:
+	//
+	// 0
 	Min *float64 `json:"min,omitempty" xml:"min,omitempty"`
-	// The comparison operator. Valid values: GT / GE / LT / LE / EQ / NE / IN_RANGE (requires both min and max) / OUT_OF_RANGE (requires both min and max) / PRESENT / NOT_PRESENT.
+	// The comparison operator. Valid values: GT, GE, LT, LE, EQ, NE, IN_RANGE (requires both min and max), OUT_OF_RANGE (requires both min and max), PRESENT, and NOT_PRESENT.
+	//
+	// example:
+	//
+	// GT
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The referenced query name, corresponding to QueryConfigUnified.queries[].name.
+	//
+	// example:
+	//
+	// cpuQuery
 	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
-	// The comparison threshold. Used when operator is GT, GE, LT, LE, EQ, or NE. Use min and max for IN_RANGE or OUT_OF_RANGE. Leave empty for PRESENT or NOT_PRESENT.
+	// The comparison threshold. Used when operator is GT, GE, LT, LE, EQ, or NE. For IN_RANGE or OUT_OF_RANGE, use min and max instead. Not required for PRESENT or NOT_PRESENT.
+	//
+	// example:
+	//
+	// 80
 	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 

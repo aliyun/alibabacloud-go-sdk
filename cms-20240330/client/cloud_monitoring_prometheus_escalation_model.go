@@ -19,10 +19,22 @@ type iCloudMonitoringPrometheusEscalation interface {
 
 type CloudMonitoringPrometheusEscalation struct {
 	// The PromQL query statement.
+	//
+	// example:
+	//
+	// rate(http_errors_total[5m]) > 0.1
 	PromQl *string `json:"promQl,omitempty" xml:"promQl,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// CRITICAL
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
 	// The number of consecutive times the alert is triggered.
+	//
+	// example:
+	//
+	// 3
 	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 

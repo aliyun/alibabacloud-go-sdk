@@ -32,16 +32,51 @@ type iNotifyConfigUnified interface {
 }
 
 type NotifyConfigUnified struct {
-	ActiveDays              []*int32                         `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
-	ActiveEndTime           *string                          `json:"activeEndTime,omitempty" xml:"activeEndTime,omitempty"`
-	ActiveStartTime         *string                          `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
-	Channels                []*DirectNotifyChannel           `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	NotifyStrategies        []*string                        `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
-	SendRecoverNotification *bool                            `json:"sendRecoverNotification,omitempty" xml:"sendRecoverNotification,omitempty"`
-	SeverityChannels        map[string]*SeverityNotifyConfig `json:"severityChannels,omitempty" xml:"severityChannels,omitempty"`
-	SilenceTimeSecs         *int32                           `json:"silenceTimeSecs,omitempty" xml:"silenceTimeSecs,omitempty"`
+	// The days of the week on which notifications are sent, 1-7.
+	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
+	// The daily notification effective end time.
+	//
+	// example:
+	//
+	// 20:00
+	ActiveEndTime *string `json:"activeEndTime,omitempty" xml:"activeEndTime,omitempty"`
+	// The daily notification effective start time.
+	//
+	// example:
+	//
+	// 08:00
+	ActiveStartTime *string `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
+	// The list of notification channels.
+	Channels []*DirectNotifyChannel `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// The list of notification policy IDs (type=NOTIFY_POLICY, currently a maximum of 1 is supported. Mutually exclusive with the DIRECT_NOTIFY fields channels/silenceTimeSecs/activeDays/activeStartTime/activeEndTime/utcOffset).
+	NotifyStrategies []*string `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
+	// Specifies whether to send recovery notifications (type=DIRECT_NOTIFY). Default value: true. Each severity level in severityChannels can independently override this setting.
+	//
+	// example:
+	//
+	// true
+	SendRecoverNotification *bool `json:"sendRecoverNotification,omitempty" xml:"sendRecoverNotification,omitempty"`
+	// The Notification Recipients and channels configured by severity level (type=DIRECT_NOTIFY, new mode, mutually exclusive with channels). The key is the severity level: CRITICAL/ERROR/WARNING/INFO.
+	SeverityChannels map[string]*SeverityNotifyConfig `json:"severityChannels,omitempty" xml:"severityChannels,omitempty"`
+	// The mute for epoch in seconds.
+	//
+	// example:
+	//
+	// 60
+	SilenceTimeSecs *int32 `json:"silenceTimeSecs,omitempty" xml:"silenceTimeSecs,omitempty"`
+	// The notification configuration type.
+	//
 	// This parameter is required.
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+	//
+	// example:
+	//
+	// DIRECT_NOTIFY
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The UTC time zone offset.
+	//
+	// example:
+	//
+	// +08:00
 	UtcOffset *string `json:"utcOffset,omitempty" xml:"utcOffset,omitempty"`
 }
 

@@ -18,9 +18,24 @@ type iLabelFilters interface {
 }
 
 type LabelFilters struct {
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The label name.
+	//
+	// example:
+	//
+	// env
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The label filter operator. Supported operators: = (equal to), != (not equal to), =~ (regular expression match), and !~ (regular expression not match).
+	//
+	// example:
+	//
+	// =
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The label value.
+	//
+	// example:
+	//
+	// prod
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s LabelFilters) String() string {

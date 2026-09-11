@@ -16,9 +16,9 @@ type iWorkspaceFilterSetting interface {
 }
 
 type WorkspaceFilterSetting struct {
-	// The tag filter.
+	// The label filter. This parameter is not supported and does not take effect if specified.
 	TagSelector *FilterSetting `json:"tagSelector,omitempty" xml:"tagSelector,omitempty"`
-	// A list of workspace UUIDs.
+	// The list of workspace UUIDs.
 	WorkspaceUuids []*string `json:"workspaceUuids,omitempty" xml:"workspaceUuids,omitempty" type:"Repeated"`
 }
 

@@ -40,20 +40,86 @@ type iSubscriptionAndNotifyStrategyForListView interface {
 }
 
 type SubscriptionAndNotifyStrategyForListView struct {
-	CreateTime         *string                   `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description        *string                   `json:"description,omitempty" xml:"description,omitempty"`
-	Enabled            *bool                     `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	MigrationBatchId   *string                   `json:"migrationBatchId,omitempty" xml:"migrationBatchId,omitempty"`
-	MigrationMeta      *string                   `json:"migrationMeta,omitempty" xml:"migrationMeta,omitempty"`
-	Name               *string                   `json:"name,omitempty" xml:"name,omitempty"`
-	NotifyStrategy     *NotifyStrategyForSNSView `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
-	NotifyStrategyUuid *string                   `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	SubscriptionUuid   *string                   `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
-	UpdateTime         *string                   `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId             *string                   `json:"userId,omitempty" xml:"userId,omitempty"`
-	Uuid               *string                   `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	Version            *int32                    `json:"version,omitempty" xml:"version,omitempty"`
-	Workspace          *string                   `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1700000000
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Sample description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the policy is enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The migration batch ID. This field is empty for user-created entries and has a value for migration artifacts.
+	//
+	// example:
+	//
+	// example-id-001
+	MigrationBatchId *string `json:"migrationBatchId,omitempty" xml:"migrationBatchId,omitempty"`
+	// The migration metadata JSON string.
+	//
+	// example:
+	//
+	// Sample value
+	MigrationMeta *string `json:"migrationMeta,omitempty" xml:"migrationMeta,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// Sample name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The notification policy snapshot.
+	NotifyStrategy *NotifyStrategyForSNSView `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
+	// The UUID of the associated notifyStrategy, which is shared with the responsePlan UUID.
+	//
+	// example:
+	//
+	// example-id-001
+	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
+	// The UUID of the directly bound primary subscription, which has a 1:1 association in the NOTIFY mode.
+	//
+	// example:
+	//
+	// example-id-001
+	SubscriptionUuid *string `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1700000000
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The user ID of the owner.
+	//
+	// example:
+	//
+	// example-id-001
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The UUID of the aggregate entity.
+	//
+	// example:
+	//
+	// example-id-001
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The optimistic lock version number.
+	//
+	// example:
+	//
+	// 1
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	// The workspace identifier.
+	//
+	// example:
+	//
+	// Sample value
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s SubscriptionAndNotifyStrategyForListView) String() string {

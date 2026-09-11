@@ -18,9 +18,20 @@ type iTagSelector interface {
 }
 
 type TagSelector struct {
+	// The list of label filter conditions.
 	Conditions []*TagCondition `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	Expression *string         `json:"expression,omitempty" xml:"expression,omitempty"`
-	Relation   *string         `json:"relation,omitempty" xml:"relation,omitempty"`
+	// The custom expression in advanced mode, which overwrites conditions and relation.
+	//
+	// example:
+	//
+	// env=prod AND region=cn-hangzhou
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The condition relationship.
+	//
+	// example:
+	//
+	// AND
+	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
 }
 
 func (s TagSelector) String() string {

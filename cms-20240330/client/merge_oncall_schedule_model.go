@@ -26,19 +26,43 @@ type iMergeOncallSchedule interface {
 }
 
 type MergeOncallSchedule struct {
-	// Details of the on-call schedule.
+	// The extension details.
 	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
-	// The UTC time when the on-call schedule was created.
+	// The creation time.
+	//
+	// example:
+	//
+	// 1700000000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The UTC time when the on-call schedule was last modified.
+	// The last modified time.
+	//
+	// example:
+	//
+	// 1700000000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The unique identifier of the on-call schedule.
+	// The unique identifier.
+	//
+	// example:
+	//
+	// SampleValue
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// The name of the on-call schedule.
+	// The schedule name.
+	//
+	// example:
+	//
+	// SampleName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The creation source of the on-call schedule.
+	// The source.
+	//
+	// example:
+	//
+	// SampleValue
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The workspace that the on-call schedule belongs to.
+	// The workspace.
+	//
+	// example:
+	//
+	// SampleValue
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

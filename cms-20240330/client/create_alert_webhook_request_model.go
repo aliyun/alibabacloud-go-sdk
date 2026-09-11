@@ -28,7 +28,7 @@ type iCreateAlertWebhookRequest interface {
 }
 
 type CreateAlertWebhookRequest struct {
-	// The content type. Valid values:
+	// The content type of the data. Valid values:
 	//
 	// - JSON (default)
 	//
@@ -38,7 +38,7 @@ type CreateAlertWebhookRequest struct {
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The headers.
+	// The collection of HTTP request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The language. Valid values:
 	//
@@ -60,7 +60,7 @@ type CreateAlertWebhookRequest struct {
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The name of the webhook.
+	// The webhook name.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type CreateAlertWebhookRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The URL for the alert callback.
+	// The alert callback URL.
 	//
 	// This parameter is required.
 	//
@@ -76,12 +76,14 @@ type CreateAlertWebhookRequest struct {
 	//
 	// https://aliyun.com/test
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-	// The unique ID of the webhook.
+	// The unique identifier of the webhook.
 	//
 	// example:
 	//
 	// test
 	WebhookId *string `json:"webhookId,omitempty" xml:"webhookId,omitempty"`
+	// The workspace identifier.
+	//
 	// example:
 	//
 	// my-workspace

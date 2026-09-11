@@ -20,10 +20,26 @@ type iMetricSetNamedQueryEntry interface {
 }
 
 type MetricSetNamedQueryEntry struct {
+	// The label filter conditions. This parameter is optional and independent for each query.
 	LabelFilters []*LabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
-	Metric       *string         `json:"metric,omitempty" xml:"metric,omitempty"`
-	MetricSet    *string         `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	Name         *string         `json:"name,omitempty" xml:"name,omitempty"`
+	// The metric name.
+	//
+	// example:
+	//
+	// cpuUsage
+	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
+	// The metric set name.
+	//
+	// example:
+	//
+	// ecs_metrics
+	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
+	// The query name, such as $A or $B, referenced by condition triggers.
+	//
+	// example:
+	//
+	// cpuQuery
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s MetricSetNamedQueryEntry) String() string {

@@ -18,8 +18,23 @@ type iSlsJoinCondition interface {
 }
 
 type SlsJoinCondition struct {
+	// The left field in the format $<query_idx>.<field>, such as $0.hostIp.
+	//
+	// example:
+	//
+	// request_id
 	LhsField *string `json:"lhsField,omitempty" xml:"lhsField,omitempty"`
+	// The comparison operator. Valid values: ==, !=, <, >, <=, and >=.
+	//
+	// example:
+	//
+	// =
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The right field in the format $<query_idx>.<field>, such as $1.hostIp.
+	//
+	// example:
+	//
+	// trace_id
 	RhsField *string `json:"rhsField,omitempty" xml:"rhsField,omitempty"`
 }
 

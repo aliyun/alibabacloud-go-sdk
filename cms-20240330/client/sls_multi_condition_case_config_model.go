@@ -33,36 +33,76 @@ type iSlsMultiConditionCaseConfig interface {
 
 type SlsMultiConditionCaseConfig struct {
 	// The match expression (corresponds to V1 condition, preserved as-is without structured parsing).
+	//
+	// example:
+	//
+	// Sample value
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
 	// The count match expression (corresponds to V1 countCondition, preserved as-is without structured parsing).
+	//
+	// example:
+	//
+	// Sample value
 	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- The write path is disabled. Use countCondition instead.
+	//
+	// example:
+	//
+	// GTE
 	CountOperator *string `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- The write path is disabled. Use countCondition instead.
+	//
+	// example:
+	//
+	// 100
 	CountThreshold *int64 `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- The write path is disabled. Use condition instead.
+	//
+	// example:
+	//
+	// Sample value
 	MatchField *string `json:"matchField,omitempty" xml:"matchField,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- The write path is disabled. Use condition instead.
+	//
+	// example:
+	//
+	// PRESENT
 	MatchOperator *string `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- The write path is disabled. Use condition instead.
+	//
+	// example:
+	//
+	// Sample value
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
 	// The detection operator (aligned with V1 caseList.type): HAS_DATA / HAS_DATA_COUNT / HAS_DATA_MATCH / HAS_DATA_MATCH_COUNT.
+	//
+	// example:
+	//
+	// HAS_DATA
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	// Deprecated
 	//
 	// **[Deprecated]*	- The write path is disabled. Use condition instead.
+	//
+	// example:
+	//
+	// Sample value
 	RawCondition *string `json:"rawCondition,omitempty" xml:"rawCondition,omitempty"`
 	// The severity level (corresponds to V1 level).
+	//
+	// example:
+	//
+	// INFO
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
 }
 

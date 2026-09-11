@@ -32,16 +32,62 @@ type iNotifyPolicySummary interface {
 }
 
 type NotifyPolicySummary struct {
-	CreateTime     *string               `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description    *string               `json:"description,omitempty" xml:"description,omitempty"`
-	Enabled        *bool                 `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Name           *string               `json:"name,omitempty" xml:"name,omitempty"`
+	// The creation time, represented as a UNIX millisecond timestamp string.
+	//
+	// example:
+	//
+	// 1700000000000
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the notification policy.
+	//
+	// example:
+	//
+	// A notification policy for testing
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the notification policy is enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The Policy Name of the notification policy.
+	//
+	// example:
+	//
+	// Sample notification policy
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The configuration details of the notification policy.
 	NotifyStrategy *NotifyStrategyDetail `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
-	UpdateTime     *string               `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId         *string               `json:"userId,omitempty" xml:"userId,omitempty"`
-	Uuid           *string               `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	Version        *int32                `json:"version,omitempty" xml:"version,omitempty"`
-	Workspace      *string               `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The update time, represented as a UNIX millisecond timestamp string.
+	//
+	// example:
+	//
+	// 1700000000000
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The Alibaba Cloud account UID.
+	//
+	// example:
+	//
+	// 1234567890
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The unique identifier of the notification policy.
+	//
+	// example:
+	//
+	// ns-uuid-001
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The version number of the notification policy.
+	//
+	// example:
+	//
+	// 1
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	// The workspace identifier.
+	//
+	// example:
+	//
+	// default
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s NotifyPolicySummary) String() string {

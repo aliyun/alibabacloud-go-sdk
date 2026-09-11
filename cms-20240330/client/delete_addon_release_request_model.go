@@ -18,13 +18,15 @@ type iDeleteAddonReleaseRequest interface {
 }
 
 type DeleteAddonReleaseRequest struct {
-	// The name of the add-on. If you specify this parameter, the ReleaseName parameter is ignored and all AddonReleases that belong to the add-on are uninstalled in a batch.
+	// The addon name. If AddonName is specified, the ReleaseName parameter is ignored and all AddonRelease instances that belong to the same addon are uninstalled in a batch.
 	//
 	// example:
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// Specifies whether to forcibly delete the add-on release. The default value is false.
+	// Deprecated
+	//
+	// Specifies whether to force delete the addon release. Default value: false.
 	//
 	// example:
 	//

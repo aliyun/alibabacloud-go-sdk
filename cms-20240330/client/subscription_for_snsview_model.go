@@ -42,22 +42,87 @@ type iSubscriptionForSNSView interface {
 }
 
 type SubscriptionForSNSView struct {
-	CreateTime    *string        `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Enable        *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The time when the subscription was created.
+	//
+	// example:
+	//
+	// 1700000000
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Indicates whether the subscription is enabled.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The filter configuration.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	Mode          *string        `json:"mode,omitempty" xml:"mode,omitempty"`
-	Name          *string        `json:"name,omitempty" xml:"name,omitempty"`
-	// The reverse association to SNS (= snsUuid).
+	// The lifecycle mode.
+	//
+	// example:
+	//
+	// Sample value
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The subscription name.
+	//
+	// example:
+	//
+	// Sample name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The reverse association to the SNS (= snsUuid).
+	//
+	// example:
+	//
+	// example-id-001
 	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	RegionId           *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Indicates whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
-	SubscribeLegacyEvent   *bool                   `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
-	SubscriptionType       *string                 `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
-	SyncFromType           *string                 `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	UpdateTime             *string                 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserId                 *string                 `json:"userId,omitempty" xml:"userId,omitempty"`
-	Uuid                   *string                 `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	Workspace              *string                 `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// example-id-001
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Indicates whether the subscription includes legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribed. false or null: Not subscribed.
+	//
+	// example:
+	//
+	// true
+	SubscribeLegacyEvent *bool `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
+	// The subscription type.
+	//
+	// example:
+	//
+	// default
+	SubscriptionType *string `json:"subscriptionType,omitempty" xml:"subscriptionType,omitempty"`
+	// The sync source type.
+	//
+	// example:
+	//
+	// default
+	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	// The time when the subscription was last updated.
+	//
+	// example:
+	//
+	// 1700000000
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The user ID of the owner.
+	//
+	// example:
+	//
+	// example-id-001
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The subscription UUID.
+	//
+	// example:
+	//
+	// example-id-001
+	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	// The workspace.
+	//
+	// example:
+	//
+	// Sample value
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The workspace filter configuration.
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 

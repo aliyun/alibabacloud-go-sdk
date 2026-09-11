@@ -16,8 +16,14 @@ type iJoinings interface {
 }
 
 type Joinings struct {
+	// The list of join conditions.
 	Conditions []*JoinConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	Type       *string           `json:"type,omitempty" xml:"type,omitempty"`
+	// The set operation type. Valid values: InnerJoin, LeftJoin, RightJoin, FullJoin, LeftExclude, RightExclude, CrossJoin, NoJoin, and Concat.
+	//
+	// example:
+	//
+	// INNER
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s Joinings) String() string {

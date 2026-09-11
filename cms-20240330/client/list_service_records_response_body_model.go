@@ -34,7 +34,7 @@ type ListServiceRecordsResponseBody struct {
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of ticket operation records.
+	// The list of operation records.
 	Records []*ListServiceRecordsResponseBodyRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -149,6 +149,12 @@ type ListServiceRecordsResponseBodyRecords struct {
 	//
 	// gaddp9ap8q@f8ca37734da3eda787dbb
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// agentrun-ai-customer-sales-test-qa
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	// The workspace.
 	//
 	// example:
@@ -177,6 +183,10 @@ func (s *ListServiceRecordsResponseBodyRecords) GetServiceId() *string {
 	return s.ServiceId
 }
 
+func (s *ListServiceRecordsResponseBodyRecords) GetServiceName() *string {
+	return s.ServiceName
+}
+
 func (s *ListServiceRecordsResponseBodyRecords) GetWorkspace() *string {
 	return s.Workspace
 }
@@ -193,6 +203,11 @@ func (s *ListServiceRecordsResponseBodyRecords) SetRecordType(v string) *ListSer
 
 func (s *ListServiceRecordsResponseBodyRecords) SetServiceId(v string) *ListServiceRecordsResponseBodyRecords {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceRecordsResponseBodyRecords) SetServiceName(v string) *ListServiceRecordsResponseBodyRecords {
+	s.ServiceName = &v
 	return s
 }
 

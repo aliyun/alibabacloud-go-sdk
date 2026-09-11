@@ -18,8 +18,23 @@ type iEntityFilters interface {
 }
 
 type EntityFilters struct {
+  // The name of the filter field.
+  // 
+  // example:
+  // 
+  // region
   Field *string `json:"field,omitempty" xml:"field,omitempty"`
+  // The filter operator. Only = or != is supported.
+  // 
+  // example:
+  // 
+  // =
   Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+  // The filter value.
+  // 
+  // example:
+  // 
+  // cn-hangzhou
   Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

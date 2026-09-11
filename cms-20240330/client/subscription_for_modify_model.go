@@ -28,6 +28,7 @@ type iSubscriptionForModify interface {
 }
 
 type SubscriptionForModify struct {
+	// The agent configuration information.
 	AgentConfig *SubscriptionForModifyAgentConfig `json:"agentConfig,omitempty" xml:"agentConfig,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -50,6 +51,10 @@ type SubscriptionForModify struct {
 	// - true: Subscribe.
 	//
 	// - false or null: Do not subscribe.
+	//
+	// example:
+	//
+	// false
 	SubscribeLegacyEvent *bool `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
 	// The name.
 	//
@@ -57,8 +62,9 @@ type SubscriptionForModify struct {
 	//
 	// example:
 	//
-	// Test subscription.
-	SubscriptionName       *string                 `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	// TestSubscription
+	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	// The workspace filter settings.
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 
@@ -167,8 +173,14 @@ func (s *SubscriptionForModify) Validate() error {
 }
 
 type SubscriptionForModifyAgentConfig struct {
-	AgentUuid *string                       `json:"agentUuid,omitempty" xml:"agentUuid,omitempty"`
-	Routes    []*NotifyRouteForSubscription `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	// The unique identifier of the agent.
+	//
+	// example:
+	//
+	// agent-uuid-001
+	AgentUuid *string `json:"agentUuid,omitempty" xml:"agentUuid,omitempty"`
+	// The list of agent routing configurations.
+	Routes []*NotifyRouteForSubscription `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 
 func (s SubscriptionForModifyAgentConfig) String() string {
@@ -211,7 +223,7 @@ func (s *SubscriptionForModifyAgentConfig) Validate() error {
 }
 
 type SubscriptionForModifyPushingSetting struct {
-	// The list of action plan IDs for alert pushing.
+	// The list of action plan IDs for alert push.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
 	// The action plan ID.
 	//
@@ -219,7 +231,7 @@ type SubscriptionForModifyPushingSetting struct {
 	//
 	// 123123123
 	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
-	// The list of action integration plan IDs for recovery pushing.
+	// The list of action integration plan IDs for recovery push.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
 	// The UUID of the template.
 	//

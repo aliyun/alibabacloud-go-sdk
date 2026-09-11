@@ -16,7 +16,7 @@ type iCreateAddonReleaseResponseBody interface {
 }
 
 type CreateAddonReleaseResponseBody struct {
-	// The information about the integrated add-on.
+	// The component integration information.
 	Release *CreateAddonReleaseResponseBodyRelease `json:"release,omitempty" xml:"release,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,27 +62,27 @@ func (s *CreateAddonReleaseResponseBody) Validate() error {
 }
 
 type CreateAddonReleaseResponseBodyRelease struct {
-	// The name of the integrated add-on.
+	// The addon name of the component integrated with monitoring.
 	//
 	// example:
 	//
 	// cs-gpu
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The number of alert rules.
+	// The number of alert rule groups.
 	//
 	// example:
 	//
 	// 6
 	AlertRuleCount *int64 `json:"alertRuleCount,omitempty" xml:"alertRuleCount,omitempty"`
-	// The information about the add-on installation phases.
+	// The component installation phase information.
 	Conditions []*CreateAddonReleaseResponseBodyReleaseConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The configuration of the add-on.
+	// The component configuration.
 	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The time when the add-on was integrated.
+	// The time when the component was integrated.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// 3
 	DashboardCount *int64 `json:"dashboardCount,omitempty" xml:"dashboardCount,omitempty"`
-	// The details of the entity.
+	// The entity details.
 	EntityRules *EntityGroupBase `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
 	// The environment type.
 	//
@@ -114,13 +114,13 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// 2
 	ExporterCount *int64 `json:"exporterCount,omitempty" xml:"exporterCount,omitempty"`
-	// Indicates whether a configuration is available.
+	// Indicates whether the component has a configuration.
 	//
 	// example:
 	//
 	// true
 	HaveConfig *bool `json:"haveConfig,omitempty" xml:"haveConfig,omitempty"`
-	// The ID of the user who installed the add-on.
+	// The ID of the user who installed the component.
 	//
 	// example:
 	//
@@ -132,19 +132,19 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Indicates whether the add-on is a managed add-on.
+	// Indicates whether the component is a managed component.
 	//
 	// example:
 	//
 	// true
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The ID of the parent AddonRelease.
+	// The parent AddonReleaseId.
 	//
 	// example:
 	//
 	// policy-xxxxxxxxxxx
 	ParentAddonReleaseId *string `json:"parentAddonReleaseId,omitempty" xml:"parentAddonReleaseId,omitempty"`
-	// The ID of the environment policy.
+	// The policy environment ID.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the release.
+	// The release ID after installation.
 	//
 	// example:
 	//
@@ -168,31 +168,31 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// The scenario of the add-on.
+	// The component scenario.
 	//
 	// example:
 	//
 	// 1
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The status of the add-on.
+	// The component status.
 	//
 	// example:
 	//
 	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the add-on was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-09-13T02:21:02Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The user ID.
+	// The ID of the user to whom the component belongs.
 	//
 	// example:
 	//
 	// 165421896xxxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The version of the add-on.
+	// The component version.
 	//
 	// example:
 	//
@@ -458,31 +458,31 @@ func (s *CreateAddonReleaseResponseBodyRelease) Validate() error {
 }
 
 type CreateAddonReleaseResponseBodyReleaseConditions struct {
-	// The time when the phase first transitioned.
+	// The first transition time.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The time when the phase last transitioned.
+	// The last transition time.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	// The details of the phase.
+	// The detailed information.
 	//
 	// example:
 	//
 	// The addon loaded successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The status of the phase.
+	// The phase status.
 	//
 	// example:
 	//
 	// {\\"phase\\": \\"Created\\", \\"executionDetails\\": [], \\"invocations\\": [], \\"latestExecError\\": {\\"message\\": \\"\\", \\"code\\": \\"\\", \\"requestId\\": \\"\\", \\"extraInfo\\": \\"\\", \\"title\\": \\"\\"}}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of the phase.
+	// The phase type.
 	//
 	// example:
 	//

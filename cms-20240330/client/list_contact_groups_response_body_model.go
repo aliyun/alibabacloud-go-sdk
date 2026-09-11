@@ -22,21 +22,21 @@ type iListContactGroupsResponseBody interface {
 }
 
 type ListContactGroupsResponseBody struct {
-	// A list of contact groups.
+	// The contact groups.
 	ContactGroups []*ListContactGroupsResponseBodyContactGroups `json:"contactGroups,omitempty" xml:"contactGroups,omitempty" type:"Repeated"`
-	// The returned page number.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -117,24 +117,25 @@ func (s *ListContactGroupsResponseBody) Validate() error {
 }
 
 type ListContactGroupsResponseBodyContactGroups struct {
-	// The contact group ID.
+	// The unique identifier of the contact group.
 	//
 	// example:
 	//
 	// test
 	ContactGroupId *string `json:"contactGroupId,omitempty" xml:"contactGroupId,omitempty"`
-	// The contact IDs in the group.
-	//
-	// example:
-	//
-	// ["Demo meeting"]
+	// The contact IDs.
 	ContactIds []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
-	// The name of the contact group.
+	// The contact name.
 	//
 	// example:
 	//
 	// test
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The workspace.
+	//
+	// example:
+	//
+	// default-cms-1641973317055299-cn-hangzhou
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

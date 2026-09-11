@@ -26,9 +26,9 @@ type iAlertRuleDataSource interface {
 }
 
 type AlertRuleDataSource struct {
-	// Applies to the APM_DS data source type.
+	// Applicable data source type: APM_DS.
 	//
-	// The type of the application. Valid value:
+	// The application type. Valid values:
 	//
 	// - apm
 	//
@@ -36,19 +36,19 @@ type AlertRuleDataSource struct {
 	//
 	// apm
 	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
-	// Applies to the SLS_MULTI_DS data source type.
+	// Applicable data source type: SLS_MULTI_DS.
 	//
-	// A list of sub-data sources.
+	// The list of sub-data sources.
 	DsList []*AlertRuleDataSourceDsList `json:"dsList,omitempty" xml:"dsList,omitempty" type:"Repeated"`
-	// Applies to the PROMETHEUS_DS data source type.
+	// Applicable data source type: PROMETHEUS_DS.
 	//
-	// The ID of the Prometheus instance.
+	// The Prometheus instance ID.
 	//
 	// example:
 	//
 	// rw-bbe8961b4a59be0
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Applies to the ENTERPRISE_DS data source type.
+	// Applicable data source type: ENTERPRISE_DS.
 	//
 	// The name of the Hybrid Cloud Monitoring metric repository.
 	//
@@ -56,28 +56,35 @@ type AlertRuleDataSource struct {
 	//
 	// aliyun-default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Applies to the APM_DS and PROMETHEUS_DS data source types.
+	// Applicable data source types: APM_DS and PROMETHEUS_DS.
 	//
-	// The ID of the region where the data source is located.
+	// The region ID of the data source.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Applicable data source type: ENTERPRISE_DS.
+	//
+	// The tenant ID of the Hybrid Cloud Monitoring data source. Identifies the tenant in the Hybrid Cloud Monitoring environment.
+	//
+	// example:
+	//
+	// 1234567890
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The data source type.
 	//
 	// Valid values:
 	//
-	// - PROMETHEUS_DS: A Prometheus data source.
+	// - PROMETHEUS_DS: Prometheus data source.
 	//
-	// - SLS_MULTI_DS: An SLS data source.
+	// - SLS_MULTI_DS: SLS data source.
 	//
-	// - APM_DS: An Application Monitoring data source.
+	// - APM_DS: Application monitoring data source.
 	//
-	// - CMS_BASIC_DS: A basic Cloud Monitor data source.
+	// - CMS_BASIC_DS: CloudMonitor Basic data source.
 	//
-	// - ENTERPRISE_DS: A Hybrid Cloud Monitoring data source.
+	// - ENTERPRISE_DS: Hybrid Cloud Monitoring data source.
 	//
 	// This parameter is required.
 	//
@@ -172,13 +179,13 @@ func (s *AlertRuleDataSource) Validate() error {
 }
 
 type AlertRuleDataSourceDsList struct {
-	// The SLS project.
+	// The name of the Simple Log Service (SLS) project. Specifies the project where the logs or metrics reside.
 	//
 	// example:
 	//
 	// mySlsProject
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The region where the SLS project is located.
+	// The region where the SLS project resides.
 	//
 	// example:
 	//
@@ -192,9 +199,9 @@ type AlertRuleDataSourceDsList struct {
 	Store *string `json:"store,omitempty" xml:"store,omitempty"`
 	// The type of the SLS sub-data source. Valid values:
 	//
-	// - SLS_LOG_DS: A LogStore data source.
+	// - SLS_LOG_DS: LogStore data source.
 	//
-	// - SLS_METRIC_DS: A MetricStore data source.
+	// - SLS_METRIC_DS: MetricStore data source.
 	//
 	// example:
 	//

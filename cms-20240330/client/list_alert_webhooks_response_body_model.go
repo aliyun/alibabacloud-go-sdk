@@ -22,13 +22,13 @@ type iListAlertWebhooksResponseBody interface {
 }
 
 type ListAlertWebhooksResponseBody struct {
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListAlertWebhooksResponseBody struct {
 	//
 	// 8
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
-	// The webhooks.
+	// The list of webhooks.
 	Webhooks []*ListAlertWebhooksResponseBodyWebhooks `json:"webhooks,omitempty" xml:"webhooks,omitempty" type:"Repeated"`
 }
 
@@ -127,7 +127,7 @@ type ListAlertWebhooksResponseBodyWebhooks struct {
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The headers.
+	// The collection of HTTP request headers.
 	//
 	// example:
 	//

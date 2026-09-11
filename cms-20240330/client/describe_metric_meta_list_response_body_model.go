@@ -123,15 +123,15 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// ECS CPU Utilization
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The dimension description.
+	// The dimension information description.
 	DimensionDescription []*DescribeMetricMetaListResponseBodyResourcesDimensionDescription `json:"dimensionDescription,omitempty" xml:"dimensionDescription,omitempty" type:"Repeated"`
 	// The resource filtering dimensions of CloudMonitor Basic.
 	Dimensions []*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
 	// The CloudMonitor labels. This parameter is returned only when metaFormat is set to CMS.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor basic monitoring metrics.
+	// The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor Basic monitoring metrics.
 	//
-	// Sample value:
+	// Example value:
 	//
 	// CMS
 	//

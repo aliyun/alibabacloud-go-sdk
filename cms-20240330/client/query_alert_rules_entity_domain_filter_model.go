@@ -14,6 +14,11 @@ type iQueryAlertRulesEntityDomainFilter interface {
 }
 
 type QueryAlertRulesEntityDomainFilter struct {
+	// The exact match.
+	//
+	// example:
+	//
+	// cloud_monitor
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

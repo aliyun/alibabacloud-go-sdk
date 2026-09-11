@@ -20,13 +20,19 @@ type iUpdateAddonReleaseRequest interface {
 }
 
 type UpdateAddonReleaseRequest struct {
-	// The version of the add-on.
+	// The version of the addon.
 	//
 	// example:
 	//
 	// 0.0.2
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// Specifies whether to perform a dry run for the request.
+	// Deprecated
+	//
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - true: Performs a dry run.
+	//
+	// - false: Does not perform a dry run.
 	//
 	// example:
 	//

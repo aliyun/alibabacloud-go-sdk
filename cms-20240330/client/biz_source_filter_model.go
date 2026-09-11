@@ -14,7 +14,11 @@ type iBizSourceFilter interface {
 }
 
 type BizSourceFilter struct {
-	// The exact match value.
+	// The exact match.
+	//
+	// example:
+	//
+	// managed_service_for_prometheus
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

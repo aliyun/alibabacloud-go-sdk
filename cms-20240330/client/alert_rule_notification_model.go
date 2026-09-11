@@ -50,12 +50,15 @@ type AlertRuleNotification struct {
 	FsWebhooks []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
 	// The list of contact group IDs.
 	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	// The notification time period. Notifications are sent only during this time period.
-	NotifyTime            *AlertRuleTimeSpan                `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
-	QwencloudContacts     map[string]map[string]interface{} `json:"qwencloudContacts,omitempty" xml:"qwencloudContacts,omitempty"`
-	SendOk                *bool                             `json:"sendOk,omitempty" xml:"sendOk,omitempty"`
-	SeverityNotifications map[string]*SeverityNotifyConfig  `json:"severityNotifications,omitempty" xml:"severityNotifications,omitempty"`
-	// The notification mute duration, in seconds.
+	// The notification time window. Notifications are sent only within this time window.
+	NotifyTime *AlertRuleTimeSpan `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
+	// The Qwen (Qwencloud) Notification Recipient configuration. Both the outer key and inner key are custom identity values. The inner Boolean value specifies whether the Notification Recipient is enabled.
+	QwencloudContacts map[string]map[string]interface{} `json:"qwencloudContacts,omitempty" xml:"qwencloudContacts,omitempty"`
+	// Specifies whether to send recovery notifications. Each severity level in severityNotifications can independently override this setting.
+	SendOk *bool `json:"sendOk,omitempty" xml:"sendOk,omitempty"`
+	// The Notification Recipients and channels configured by severity level. This parameter is mutually exclusive with the top-level contacts, groups, and similar parameters. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
+	SeverityNotifications map[string]*SeverityNotifyConfig `json:"severityNotifications,omitempty" xml:"severityNotifications,omitempty"`
+	// The notification mute duration. Unit: seconds.
 	//
 	// example:
 	//

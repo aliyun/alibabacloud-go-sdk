@@ -14,7 +14,11 @@ type iEnabledFilter interface {
 }
 
 type EnabledFilter struct {
-  // The value to filter by. Set to `true` to return only enabled resources. Set to `false` to return only disabled resources.
+  // The exact match.
+  // 
+  // example:
+  // 
+  // true
   Eq *bool `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

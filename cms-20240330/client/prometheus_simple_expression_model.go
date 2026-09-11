@@ -18,23 +18,23 @@ type iPrometheusSimpleExpression interface {
 }
 
 type PrometheusSimpleExpression struct {
-	// The comparison operator. Valid values:
+	// The comparison operator. Valid values: GT (greater than), GE (greater than or equal to), LT (less than), LE (less than or equal to), EQ (equal to), and NE (not equal to).
 	//
-	// - GT: greater than
+	// example:
 	//
-	// - GE: greater than or equal to
-	//
-	// - LT: less than
-	//
-	// - LE: less than or equal to
-	//
-	// - EQ: equal to
-	//
-	// - NE: not equal to
+	// GT
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The referenced query name, corresponding to QueryConfigUnified.queries[].name.
+	//
+	// example:
+	//
+	// cpuQuery
 	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
 	// The comparison threshold.
+	//
+	// example:
+	//
+	// 80
 	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 

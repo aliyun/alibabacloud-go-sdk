@@ -18,10 +18,23 @@ type iMeasureList interface {
 }
 
 type MeasureList struct {
+	// The grouping dimension.
 	GroupBy []*string `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
+	// The metric code.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cpu_usage
 	MeasureCode *string `json:"measureCode,omitempty" xml:"measureCode,omitempty"`
+	// The query time window, in seconds.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
 	WindowSecs *int32 `json:"windowSecs,omitempty" xml:"windowSecs,omitempty"`
 }
 

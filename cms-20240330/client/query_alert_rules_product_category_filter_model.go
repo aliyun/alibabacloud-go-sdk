@@ -14,6 +14,11 @@ type iQueryAlertRulesProductCategoryFilter interface {
 }
 
 type QueryAlertRulesProductCategoryFilter struct {
+	// The exact match.
+	//
+	// example:
+	//
+	// ecs
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

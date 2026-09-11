@@ -28,7 +28,7 @@ type ListAlertRobotsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListAlertRobotsResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The chatbot ID.
+	// The robot IDs.
 	Robots []*ListAlertRobotsResponseBodyRobots `json:"robots,omitempty" xml:"robots,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -117,6 +117,11 @@ func (s *ListAlertRobotsResponseBody) Validate() error {
 }
 
 type ListAlertRobotsResponseBodyRobots struct {
+	// The digital employee name.
+	//
+	// example:
+	//
+	// apsara-ops
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// The language.
 	//
@@ -124,31 +129,36 @@ type ListAlertRobotsResponseBodyRobots struct {
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The chatbot name.
+	// The robot name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The unique ID of the chatbot.
+	// The unique ID of the robot.
 	//
 	// example:
 	//
 	// test
 	RobotId      *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
 	RobotSignKey *string `json:"robotSignKey,omitempty" xml:"robotSignKey,omitempty"`
-	// The chatbot type.
+	// The robot type.
 	//
 	// example:
 	//
 	// DING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The webhook URL of the chatbot.
+	// The webhook URL of the robot.
 	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=*******
-	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// default-cms-5551847274244273-cn-hangzhou
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

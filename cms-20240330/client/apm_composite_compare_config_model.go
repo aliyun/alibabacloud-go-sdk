@@ -22,21 +22,41 @@ type iApmCompositeCompareConfig interface {
 }
 
 type ApmCompositeCompareConfig struct {
-	// The aggregate functions used for aggregation.
+	// The aggregate functions.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// AVG
 	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	// The comparison operator. GTE/LTE indicates greater than or equal to/less than or equal to. YOY_UP/YOY_DOWN indicates year-over-year increase/decrease, which requires yoyTimeUnit and yoyTimeValue to be specified.
+	// The comparison operator.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// GT
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The threshold.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 	// The year-over-year time unit. This parameter takes effect only when operator is set to YOY_UP or YOY_DOWN.
+	//
+	// example:
+	//
+	// day
 	YoyTimeUnit *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
 	// The year-over-year time value. This parameter takes effect only when operator is set to YOY_UP or YOY_DOWN.
+	//
+	// example:
+	//
+	// 1
 	YoyTimeValue *int32 `json:"yoyTimeValue,omitempty" xml:"yoyTimeValue,omitempty"`
 }
 

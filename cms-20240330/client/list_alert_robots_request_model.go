@@ -24,7 +24,7 @@ type iListAlertRobotsRequest interface {
 }
 
 type ListAlertRobotsRequest struct {
-	// The chatbot name. Prefix fuzzy match is supported.
+	// The robot name. Prefix fuzzy match is supported.
 	//
 	// example:
 	//
@@ -42,11 +42,16 @@ type ListAlertRobotsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The chatbot ID.
+	// The robot IDs.
 	RobotIds []*string `json:"robotIds,omitempty" xml:"robotIds,omitempty" type:"Repeated"`
-	// The chatbot type.
-	Types     []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
-	Workspace *string   `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The robot type.
+	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// default-cms-1423134313712421-cn-shanghai
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListAlertRobotsRequest) String() string {

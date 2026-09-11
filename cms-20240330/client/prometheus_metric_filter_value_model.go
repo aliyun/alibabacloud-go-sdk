@@ -18,8 +18,23 @@ type iPrometheusMetricFilterValue interface {
 }
 
 type PrometheusMetricFilterValue struct {
-	Dim   *string `json:"dim,omitempty" xml:"dim,omitempty"`
-	Opt   *string `json:"opt,omitempty" xml:"opt,omitempty"`
+	// The filter dimension name.
+	//
+	// example:
+	//
+	// host
+	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
+	// The filter operator, such as eq, neq, contain, not_contain, all, or disabled.
+	//
+	// example:
+	//
+	// =
+	Opt *string `json:"opt,omitempty" xml:"opt,omitempty"`
+	// The filter value.
+	//
+	// example:
+	//
+	// web-01
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

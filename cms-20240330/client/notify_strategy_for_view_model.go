@@ -52,7 +52,7 @@ type iNotifyStrategyForView interface {
 }
 
 type NotifyStrategyForView struct {
-	// The automatic recovery time.
+	// The automatic recovery time in seconds.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type NotifyStrategyForView struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the policy is enabled.
+	// Indicates whether the notification strategy is enabled.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type NotifyStrategyForView struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// The merge settings.
+	// The grouping settings.
 	//
 	// This parameter is required.
 	GroupingSetting *NotifyStrategyForViewGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	// Indicates whether to send a notification upon recovery.
+	// Indicates whether recovery notifications are sent.
 	//
 	// example:
 	//
@@ -92,27 +92,27 @@ type NotifyStrategyForView struct {
 	IgnoreRestoredNotification *bool `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
 	// The list of associated escalation policies.
 	IncidentEscalationPolicies []interface{} `json:"incidentEscalationPolicies,omitempty" xml:"incidentEscalationPolicies,omitempty" type:"Repeated"`
-	// The UUID.
+	// The unique identifier of the notification strategy.
 	//
 	// example:
 	//
 	// 12312-31-23-123-1-23123
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// The name.
+	// The name of the notification strategy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test policy.
+	// TestStrategy
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
 	// The push settings.
 	PushingSetting *NotifyStrategyForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// The list of receiver names.
+	// The list of recipient names.
 	ReceiverNames []*string `json:"receiverNames,omitempty" xml:"receiverNames,omitempty" type:"Repeated"`
-	// The settings for repeated notifications.
+	// The repeat notification settings.
 	RepeatNotifySetting *NotifyStrategyForViewRepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty" type:"Struct"`
-	// The routing settings for notification channels.
+	// The notification channel routing settings.
 	//
 	// This parameter is required.
 	Routes []*NotifyStrategyForViewRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
@@ -429,7 +429,7 @@ func (s *NotifyStrategyForViewCustomTemplateEntries) Validate() error {
 }
 
 type NotifyStrategyForViewGroupingSetting struct {
-	// The merge keys.
+	// The grouping keys.
 	GroupingKeys []*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty" type:"Repeated"`
 	// The check period in minutes.
 	//
@@ -437,13 +437,13 @@ type NotifyStrategyForViewGroupingSetting struct {
 	//
 	// 5
 	PeriodMin *int32 `json:"periodMin,omitempty" xml:"periodMin,omitempty"`
-	// The silence period in seconds.
+	// The silence duration in seconds.
 	//
 	// example:
 	//
 	// 300
 	SilenceSec *int32 `json:"silenceSec,omitempty" xml:"silenceSec,omitempty"`
-	// The number of triggers.
+	// The number of times the alert is triggered.
 	//
 	// example:
 	//
@@ -552,13 +552,13 @@ func (s *NotifyStrategyForViewPushingSetting) Validate() error {
 }
 
 type NotifyStrategyForViewRepeatNotifySetting struct {
-	// The event state at which to stop.
+	// The end incident state.
 	//
 	// example:
 	//
 	// "Resolved"
 	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
-	// The interval for repeated notifications.
+	// The time interval for repeat notifications.
 	//
 	// example:
 	//
@@ -598,11 +598,21 @@ func (s *NotifyStrategyForViewRepeatNotifySetting) Validate() error {
 
 type NotifyStrategyForViewRoutes struct {
 	// The notification channels.
-	Channels            []*NotifyStrategyForViewRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	DigitalEmployeeName *string                                `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The field.
+	Channels []*NotifyStrategyForViewRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	// The name of the digital employee.
+	//
+	// example:
+	//
+	// OnCallAssistant
+	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The effective time range.
 	EffectTimeRange *NotifyStrategyForViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	EnableRca       *bool                                       `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
+	// Indicates whether root cause analysis is enabled.
+	//
+	// example:
+	//
+	// true
+	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
 	// The routing settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
 	// The list of severity levels.
@@ -751,7 +761,7 @@ func (s *NotifyStrategyForViewRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyForViewRoutesEffectTimeRange struct {
-	// The days of the week when the policy is effective (Monday to Sunday).
+	// The effective days (Monday to Sunday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
 	// The end time in minutes.
 	//

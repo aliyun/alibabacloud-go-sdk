@@ -20,10 +20,31 @@ type iThresholdList interface {
 }
 
 type ThresholdList struct {
+	// The upper bound of the interval.
+	//
+	// example:
+	//
+	// 100
 	Max *float64 `json:"max,omitempty" xml:"max,omitempty"`
+	// The lower bound of the interval.
+	//
+	// example:
+	//
+	// 0
 	Min *float64 `json:"min,omitempty" xml:"min,omitempty"`
+	// The warning level.
+	//
 	// This parameter is required.
-	Severity  *string  `json:"severity,omitempty" xml:"severity,omitempty"`
+	//
+	// example:
+	//
+	// CRITICAL
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The threshold.
+	//
+	// example:
+	//
+	// 80
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 

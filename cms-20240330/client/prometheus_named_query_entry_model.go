@@ -16,7 +16,17 @@ type iPrometheusNamedQueryEntry interface {
 }
 
 type PrometheusNamedQueryEntry struct {
+	// The PromQL query expression.
+	//
+	// example:
+	//
+	// avg(cpu_usage) > 80
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	// The query name, such as $A or $B, referenced by the condition trigger.
+	//
+	// example:
+	//
+	// cpuQuery
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

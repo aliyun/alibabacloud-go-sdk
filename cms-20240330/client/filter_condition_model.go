@@ -18,11 +18,23 @@ type iFilterCondition interface {
 }
 
 type FilterCondition struct {
-	// The name of the field to filter on.
+	// The field name.
+	//
+	// example:
+	//
+	// region
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// The comparison operator, such as `equals` or `startsWith`.
+	// The operator.
+	//
+	// example:
+	//
+	// EQ
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
-	// The value to match for the specified field and operator.
+	// The comparison value.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

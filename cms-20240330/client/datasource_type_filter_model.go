@@ -14,7 +14,11 @@ type iDatasourceTypeFilter interface {
 }
 
 type DatasourceTypeFilter struct {
-	// Specifies the data source type for an exact match.
+	// The exact match value.
+	//
+	// example:
+	//
+	// APM_DS
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

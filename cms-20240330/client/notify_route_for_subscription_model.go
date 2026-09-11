@@ -16,9 +16,9 @@ type iNotifyRouteForSubscription interface {
 }
 
 type NotifyRouteForSubscription struct {
-	// An array of objects, each defining a notification channel.
+	// The list of notification channels.
 	Channels []*NotifyRouteForSubscriptionChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// The active period for the notification rule.
+	// The effective period configuration.
 	EffectTimeRange *NotifyRouteForSubscriptionEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
 }
 
@@ -67,11 +67,15 @@ func (s *NotifyRouteForSubscription) Validate() error {
 }
 
 type NotifyRouteForSubscriptionChannels struct {
-	// The channel type. For example, `Email`, `SMS`, or `Webhook`.
+	// The channel type.
+	//
+	// example:
+	//
+	// default
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// A list of enabled sub-channels. Applicable to channels that support finer-grained topics or categories.
+	// The list of enabled sub-channels.
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
-	// A list of notification receivers. The receiver format depends on the `channelType`.
+	// The list of receivers.
 	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
 }
 
@@ -115,13 +119,25 @@ func (s *NotifyRouteForSubscriptionChannels) Validate() error {
 }
 
 type NotifyRouteForSubscriptionEffectTimeRange struct {
-	// The active days of the week, specified as an array of integers.
+	// The effective days of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// The end of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
+	// The end time of the day, in minutes from 0:00.
+	//
+	// example:
+	//
+	// 1
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// The start of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
+	// The start time of the day, in minutes from 0:00.
+	//
+	// example:
+	//
+	// 1
 	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	// The time zone for the effect time range, specified in the IANA Time Zone Database format. For example, `UTC` or `Asia/Shanghai`.
+	// The time zone.
+	//
+	// example:
+	//
+	// 1700000000
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 

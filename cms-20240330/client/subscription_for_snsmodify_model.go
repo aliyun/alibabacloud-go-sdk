@@ -18,15 +18,15 @@ type iSubscriptionForSNSModify interface {
 }
 
 type SubscriptionForSNSModify struct {
-	// The filter configuration.
+	// The event content filter that matches conditions based on event fields such as labels, source, and severity. If this parameter is not specified, no events are received.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
 	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
 	//
-	// - true: Subscribe.
+	// - true: Subscribe to legacy product events.
 	//
-	// - false or null: Do not subscribe.
+	// - false or null: Do not subscribe to legacy product events.
 	SubscribeLegacyEvent *bool `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
-	// The workspace filter configuration.
+	// The global subscription configuration. If the subscription needs to receive events from other workspaces, specify the target workspace list by using workspaceUuids. If this parameter is not configured, only events from the current workspace are received.
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 

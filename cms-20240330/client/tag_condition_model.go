@@ -18,8 +18,23 @@ type iTagCondition interface {
 }
 
 type TagCondition struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
-	Op    *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The operator.
+	//
+	// example:
+	//
+	// EQ
+	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// prod
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

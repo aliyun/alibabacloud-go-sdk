@@ -16,7 +16,7 @@ type iCreateAlertWebhookResponseBody interface {
 }
 
 type CreateAlertWebhookResponseBody struct {
-	// The unique ID of the webhook.
+	// The unique identifier of the webhook.
 	//
 	// example:
 	//

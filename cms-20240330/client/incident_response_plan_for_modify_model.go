@@ -36,18 +36,65 @@ type iIncidentResponsePlanForModify interface {
 }
 
 type IncidentResponsePlanForModify struct {
-	AutoRecoverSeconds  *int64               `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	Description         *string              `json:"description,omitempty" xml:"description,omitempty"`
-	Enabled             *bool                `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	EscalationId        []*string            `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
-	Mode                *string              `json:"mode,omitempty" xml:"mode,omitempty"`
-	Name                *string              `json:"name,omitempty" xml:"name,omitempty"`
-	PushingSetting      *PushingSetting      `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty"`
+	// The auto-recovery time in seconds when no events occur.
+	//
+	// example:
+	//
+	// 100
+	AutoRecoverSeconds *int64 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Sample description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the response plan is enabled.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The list of escalation plan IDs.
+	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
+	// The lifecycle mode.
+	//
+	// example:
+	//
+	// SampleValue
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// SampleName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The push settings.
+	PushingSetting *PushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty"`
+	// The repeat notification configuration.
 	RepeatNotifySetting *RepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty"`
-	Source              *string              `json:"source,omitempty" xml:"source,omitempty"`
-	SyncFromType        *string              `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	Type                *string              `json:"type,omitempty" xml:"type,omitempty"`
-	// Required for update operations. Optional for create operations; if omitted, the backend generates one. `NotifyStrategy` also uses this UUID.
+	// The source.
+	//
+	// example:
+	//
+	// SampleValue
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The synchronization source type.
+	//
+	// example:
+	//
+	// default
+	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// default
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Required for Update. Can be omitted for Create, in which case the backend generates it. The UUID is shared with NotifyStrategy.
+	//
+	// example:
+	//
+	// example-id-001
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 

@@ -9,6 +9,10 @@ type iDescribeMetricMetaListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAliyunLang(v string) *DescribeMetricMetaListRequest
+	GetAliyunLang() *string
+	SetCategory(v string) *DescribeMetricMetaListRequest
+	GetCategory() *string
 	SetKeywords(v string) *DescribeMetricMetaListRequest
 	GetKeywords() *string
 	SetLabels(v []*DescribeMetricMetaListRequestLabels) *DescribeMetricMetaListRequest
@@ -26,11 +30,23 @@ type iDescribeMetricMetaListRequest interface {
 }
 
 type DescribeMetricMetaListRequest struct {
+	// The language.
+	//
+	// example:
+	//
+	// zh
+	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
+	// The category.
+	//
+	// example:
+	//
+	// ecs
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// The keyword.
 	//
 	// example:
 	//
-	// 实例理论
+	// Instance theory
 	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
 	// Filters resources by label. The following labels are available:
 	//
@@ -44,13 +60,13 @@ type DescribeMetricMetaListRequest struct {
 	//
 	// - minAlertPeriod: the minimum alert period.
 	//
-	// - productCategory: the service type category.
+	// - productCategory: the product type category.
 	Labels []*DescribeMetricMetaListRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	// The metadata source. Valid values:
 	//
 	// - CMS: CloudMonitor Basic monitoring metrics.
 	//
-	// - PROM_BASIC: Prometheus CloudMonitor basic monitoring metrics.
+	// - PROM_BASIC: Prometheus CloudMonitor Basic monitoring metrics.
 	//
 	// example:
 	//
@@ -90,6 +106,14 @@ func (s DescribeMetricMetaListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMetricMetaListRequest) GetAliyunLang() *string {
+	return s.AliyunLang
+}
+
+func (s *DescribeMetricMetaListRequest) GetCategory() *string {
+	return s.Category
+}
+
 func (s *DescribeMetricMetaListRequest) GetKeywords() *string {
 	return s.Keywords
 }
@@ -116,6 +140,16 @@ func (s *DescribeMetricMetaListRequest) GetPageNumber() *int32 {
 
 func (s *DescribeMetricMetaListRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DescribeMetricMetaListRequest) SetAliyunLang(v string) *DescribeMetricMetaListRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *DescribeMetricMetaListRequest) SetCategory(v string) *DescribeMetricMetaListRequest {
+	s.Category = &v
+	return s
 }
 
 func (s *DescribeMetricMetaListRequest) SetKeywords(v string) *DescribeMetricMetaListRequest {

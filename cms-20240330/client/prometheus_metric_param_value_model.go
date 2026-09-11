@@ -16,7 +16,17 @@ type iPrometheusMetricParamValue interface {
 }
 
 type PrometheusMetricParamValue struct {
-	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parameter name.
+	//
+	// example:
+	//
+	// threshold
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parameter value.
+	//
+	// example:
+	//
+	// 80
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

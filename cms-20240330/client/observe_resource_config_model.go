@@ -24,12 +24,38 @@ type iObserveResourceConfig interface {
 }
 
 type ObserveResourceConfig struct {
-	EntityDomain    *string   `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
-	EntityType      *string   `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	Namespace       *string   `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	ProductCategory *string   `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
-	RelationType    *string   `json:"relationType,omitempty" xml:"relationType,omitempty"`
-	Resources       []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+	// The UModel entity domain.
+	//
+	// example:
+	//
+	// cloud_monitor
+	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
+	// The UModel entity type.
+	//
+	// example:
+	//
+	// ACS::ECS::Instance
+	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	// The CloudMonitor namespace.
+	//
+	// example:
+	//
+	// acs_ecs_dashboard
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The CloudMonitor product category.
+	//
+	// example:
+	//
+	// ecs
+	ProductCategory *string `json:"productCategory,omitempty" xml:"productCategory,omitempty"`
+	// The relation type. TAG is supported only for alert rules where datasourceConfig.type is set to APM and queryConfig.type is set to APM_MULTI_QUERY. UMODEL_ENTITY does not support writes and is used only for reading existing data.
+	//
+	// example:
+	//
+	// ALL
+	RelationType *string `json:"relationType,omitempty" xml:"relationType,omitempty"`
+	// The list of resources. If relationType is set to ALL, this parameter can be left empty, which indicates all resources. If relationType is set to TAG, this parameter is a list of labels in key=value format (such as ["env=prod", "app=foo"]). This is supported only for APM data sources with APM_MULTI_QUERY.
+	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 
 func (s ObserveResourceConfig) String() string {

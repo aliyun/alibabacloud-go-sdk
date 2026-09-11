@@ -14,7 +14,11 @@ type iArmsIntegrationConfig interface {
 }
 
 type ArmsIntegrationConfig struct {
-	// Specifies whether ARMS integration is enabled.
+	// Indicates whether ARMS integration is enabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 

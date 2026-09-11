@@ -16,9 +16,13 @@ type iSeverityNotifyConfig interface {
 }
 
 type SeverityNotifyConfig struct {
-	// The list of notification recipients. Each recipient specifies a type, an identifier, and the enabled channels.
+	// The list of Notification Recipients. Each recipient specifies the type, identifier, and enabled channels.
 	Receivers []*DirectNotifyReceiver `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`
-	// Specifies whether to send recovery notifications for this severity level. If this parameter is left empty, the value falls back to the top-level sendRecoverNotification parameter.
+	// Specifies whether to send recovery notifications for this severity level. If this parameter is empty, the value falls back to the top-level sendRecoverNotification parameter.
+	//
+	// example:
+	//
+	// true
 	SendRecoverNotification *bool `json:"sendRecoverNotification,omitempty" xml:"sendRecoverNotification,omitempty"`
 }
 

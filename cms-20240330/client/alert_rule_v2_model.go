@@ -68,58 +68,129 @@ type iAlertRuleV2 interface {
 }
 
 type AlertRuleV2 struct {
+	// The action integration configuration.
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
 	// The annotations.
-	Annotations           map[string]*string     `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	// The ARMS integration configuration.
 	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	// The business source. This field is read-only. Example values: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
-	BizSource       *string                 `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	// The business source. This value is read-only. Example values: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
+	//
+	// example:
+	//
+	// Sample value
+	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	// The detection condition configuration. Supported types: Prometheus simple, UModel, APM simple, and APM composite.
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
 	// The content template.
+	//
+	// example:
+	//
+	// Alert triggered: ${metricName} current value ${currentValue} exceeds threshold ${threshold}
 	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	// The creation time in ISO 8601 format. This field is read-only.
-	CreatedAt        *string                  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The creation time in ISO 8601 format. This value is read-only.
+	//
+	// example:
+	//
+	// 1751595283143
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The datasource configuration. This is a unified object shared by PROMETHEUS, UMODEL, and APM. Fields are selected based on the type.
 	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	// The data source type. This field is read-only and derived.
+	// The datasource type. This value is read-only and derived.
+	//
+	// example:
+	//
+	// default
 	DatasourceType *string `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
 	// The display name.
+	//
+	// example:
+	//
+	// CPU usage alert 95%
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Specifies whether the alert rule is enabled.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The labels.
-	Labels       map[string]*string   `json:"labels,omitempty" xml:"labels,omitempty"`
+	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The notification configuration. Currently, only DIRECT_NOTIFY is supported, which corresponds to DirectNotifyConfig.
 	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	// The notification strategy ID. This field is read-only and derived from the first item in the notification strategy list.
+	// The notification policy ID. This value is read-only and derived from the first entry in the notification policy list.
+	//
+	// example:
+	//
+	// example-id-001
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// The observable resource configuration.
 	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Indicates whether the rule applies to all resources of this type. This field is read-only and derived. Use observeResourceConfig.relationType set to ALL for equivalent semantics in new integrations.
+	// **[Deprecated]*	- Indicates whether the rule applies to all resources of this type. This value is read-only and derived. For new integrations, use observeResourceConfig.relationType and check whether it is set to ALL for equivalent semantics.
+	//
+	// example:
+	//
+	// true
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	// The list of observable resource IDs. This field is read-only and derived.
+	// The list of observable resource IDs. This value is read-only and derived.
 	ObserveResourceList []*string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The observable resource type. This field is read-only and derived. Use observeResourceConfig.entityType instead for new integrations.
+	// **[Deprecated]*	- The observable resource type. This value is read-only and derived. Use observeResourceConfig.entityType instead for new integrations.
+	//
+	// example:
+	//
+	// default
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	// The partition key. This field is read-only and maintained by the system for rule routing and sharding.
-	PartitionKey *string             `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	QueryConfig  *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
+	// The partition key. This value is read-only and maintained by the system for rule routing and sharding.
+	//
+	// example:
+	//
+	// Sample value
+	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
+	// The query configuration. Valid types: PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, and APM_MULTI_QUERY.
+	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
 	// The RCA (root cause analysis) configuration.
 	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// The region ID. This field is aligned with V1 AlertRule.regionId. Priority: request body regionId > gateway callerRegionId.
-	RegionId       *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The region ID, aligned with V1 AlertRule.regionId. Priority: the regionId in the request body takes precedence over the gateway callerRegionId.
+	//
+	// example:
+	//
+	// example-id-001
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The scheduling configuration. Currently, only the FIXED type is supported.
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// The severity levels covered by this rule, separated by commas. This field is read-only and derived. The format is the same as the filter.severityLevels query parameter.
+	// The severity levels covered by this rule, in comma-separated format. This value is read-only and derived. The format is consistent with the filter.severityLevels query parameter.
+	//
+	// example:
+	//
+	// 1
 	SeverityLevels *string `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
-	// The alert status. This field is read-only.
+	// The alert status. This value is read-only.
+	//
+	// example:
+	//
+	// Alarm
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time in ISO 8601 format. This field is read-only.
+	// The update time in ISO 8601 format. This value is read-only.
+	//
+	// example:
+	//
+	// 1764556086388
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The rule UUID. This field is system-generated and read-only.
+	// The rule UUID. This value is system-generated and read-only.
+	//
+	// example:
+	//
+	// xxxxx-xxxx-xxxx
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 	// The workspace.
+	//
+	// example:
+	//
+	// workspace-test
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

@@ -17,6 +17,10 @@ type iAlertRuleRcaConfig interface {
 
 type AlertRuleRcaConfig struct {
 	// The digital employee name.
+	//
+	// example:
+	//
+	// O&M Assistant
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// Indicates whether RCA is enabled.
 	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`

@@ -25,16 +25,40 @@ type iCloudMonitoringSimpleEscalationEntry interface {
 
 type CloudMonitoringSimpleEscalationEntry struct {
 	// The comparison operator.
+	//
+	// example:
+	//
+	// GT
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
 	// The precondition.
+	//
+	// example:
+	//
+	// 3 consecutive times
 	PreCondition *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
 	// The severity level.
+	//
+	// example:
+	//
+	// CRITICAL
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The statistics method.
+	// The statistical method.
+	//
+	// example:
+	//
+	// Average
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
 	// The threshold.
+	//
+	// example:
+	//
+	// 80
 	Threshold *string `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// The number of consecutive times the condition is triggered.
+	// The number of consecutive times the condition must be met to trigger an alert.
+	//
+	// example:
+	//
+	// 3
 	Times *int32 `json:"times,omitempty" xml:"times,omitempty"`
 }
 

@@ -14,7 +14,11 @@ type iNotifyStrategyIdFilter interface {
 }
 
 type NotifyStrategyIdFilter struct {
-	// The exact ID of the notification strategy to retrieve.
+	// The exact match.
+	//
+	// example:
+	//
+	// ns_1234567890
 	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 

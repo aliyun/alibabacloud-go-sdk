@@ -25,16 +25,40 @@ type iCloudMonitoringCompositeEscalationEntry interface {
 
 type CloudMonitoringCompositeEscalationEntry struct {
 	// The comparison operator.
+	//
+	// example:
+	//
+	// GT
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
 	// The metric name.
+	//
+	// example:
+	//
+	// cpuUsage
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
 	// The collection period, in seconds.
+	//
+	// example:
+	//
+	// 60
 	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
 	// The precondition.
+	//
+	// example:
+	//
+	// 3 consecutive times
 	PreCondition *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
 	// The statistical method.
+	//
+	// example:
+	//
+	// Average
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
 	// The threshold.
+	//
+	// example:
+	//
+	// 80
 	Threshold *string `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 

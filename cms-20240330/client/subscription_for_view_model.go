@@ -44,6 +44,7 @@ type iSubscriptionForView interface {
 }
 
 type SubscriptionForView struct {
+	// The Agent configuration information.
 	AgentConfig *SubscriptionForViewAgentConfig `json:"agentConfig,omitempty" xml:"agentConfig,omitempty" type:"Struct"`
 	// The creation time.
 	//
@@ -73,13 +74,13 @@ type SubscriptionForView struct {
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// The push settings.
 	PushingSetting *SubscriptionForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
+	// Indicates whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: Subscribed. false or null: Not subscribed.
 	//
-	// - true: Subscribe.
+	// example:
 	//
-	// - false or null: Do not subscribe.
+	// false
 	SubscribeLegacyEvent *bool `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
-	// UUID
+	// The unique identifier of the subscription.
 	//
 	// example:
 	//
@@ -91,8 +92,10 @@ type SubscriptionForView struct {
 	//
 	// example:
 	//
-	// Subscription test.
+	// SubscriptionTest
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	// The subscription type.
+	//
 	// example:
 	//
 	// NORMAL
@@ -115,12 +118,13 @@ type SubscriptionForView struct {
 	//
 	// 123123123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// workspace
+	// The workspace identifier.
 	//
 	// example:
 	//
 	// workspace-test
-	Workspace              *string                 `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The workspace filter settings.
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
 
@@ -301,8 +305,14 @@ func (s *SubscriptionForView) Validate() error {
 }
 
 type SubscriptionForViewAgentConfig struct {
-	AgentUuid *string                       `json:"agentUuid,omitempty" xml:"agentUuid,omitempty"`
-	Routes    []*NotifyRouteForSubscription `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	// The unique identifier of the Agent.
+	//
+	// example:
+	//
+	// agent-uuid-001
+	AgentUuid *string `json:"agentUuid,omitempty" xml:"agentUuid,omitempty"`
+	// The list of Agent routing configurations.
+	Routes []*NotifyRouteForSubscription `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 
 func (s SubscriptionForViewAgentConfig) String() string {

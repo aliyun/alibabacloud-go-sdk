@@ -14,7 +14,11 @@ type iObserveResourceGlobalScopeFilter interface {
 }
 
 type ObserveResourceGlobalScopeFilter struct {
-	// Specifies whether to retrieve only resources that are exclusive to the global scope.
+	// The exact match.
+	//
+	// example:
+	//
+	// true
 	Eq *bool `json:"eq,omitempty" xml:"eq,omitempty"`
 }
 
