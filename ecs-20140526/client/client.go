@@ -4469,13 +4469,13 @@ func (client *Client) CreateAutoProvisioningGroup(request *CreateAutoProvisionin
 //
 // When you call this operation, take note of the following items:
 //
-// -  You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account. When the number of automatic snapshots for a disk reaches the quota limit, the system deletes the earliest automatic snapshot created by the automatic snapshot policy when a new snapshot task is created.
+// -  You can create a maximum of 100 automatic snapshot policies per region for an Alibaba Cloud account. When the number of automatic snapshots for a disk reaches the quota limit, the system deletes the earliest automatic snapshot created by the automatic snapshot policy when a new snapshot task is created.
 //
 // - The system does not execute an automatic snapshot policy when an ECS instance has a pending stop or restart task.
 //
-// - If cross-region snapshot replication is enabled and no encryption parameters are configured, encrypted snapshots are encrypted by using the default service key of the destination region. For more information about cross-region snapshot replication, see [Copy a snapshot](https://help.aliyun.com/document_detail/159441.html).
+// - If cross-region snapshot replication is enabled and no encryption parameters are configured, encrypted snapshots are encrypted by using the service key of the destination region by default. For more information about cross-region snapshot replication, see [Copy a snapshot](https://help.aliyun.com/document_detail/159441.html).
 //
-// After you create an automatic snapshot policy, call [ApplyAutoSnapshotPolicy](https://help.aliyun.com/document_detail/25531.html) to apply the policy to disks. To modify an automatic snapshot policy, call [ModifyAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25529.html).
+// After you create an automatic snapshot policy, call [ApplyAutoSnapshotPolicy](https://help.aliyun.com/document_detail/25531.html) to apply the policy to the target disks. To modify an automatic snapshot policy, call [ModifyAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25529.html).
 //
 // @param request - CreateAutoSnapshotPolicyRequest
 //
@@ -4591,13 +4591,13 @@ func (client *Client) CreateAutoSnapshotPolicyWithOptions(request *CreateAutoSna
 //
 // When you call this operation, take note of the following items:
 //
-// -  You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account. When the number of automatic snapshots for a disk reaches the quota limit, the system deletes the earliest automatic snapshot created by the automatic snapshot policy when a new snapshot task is created.
+// -  You can create a maximum of 100 automatic snapshot policies per region for an Alibaba Cloud account. When the number of automatic snapshots for a disk reaches the quota limit, the system deletes the earliest automatic snapshot created by the automatic snapshot policy when a new snapshot task is created.
 //
 // - The system does not execute an automatic snapshot policy when an ECS instance has a pending stop or restart task.
 //
-// - If cross-region snapshot replication is enabled and no encryption parameters are configured, encrypted snapshots are encrypted by using the default service key of the destination region. For more information about cross-region snapshot replication, see [Copy a snapshot](https://help.aliyun.com/document_detail/159441.html).
+// - If cross-region snapshot replication is enabled and no encryption parameters are configured, encrypted snapshots are encrypted by using the service key of the destination region by default. For more information about cross-region snapshot replication, see [Copy a snapshot](https://help.aliyun.com/document_detail/159441.html).
 //
-// After you create an automatic snapshot policy, call [ApplyAutoSnapshotPolicy](https://help.aliyun.com/document_detail/25531.html) to apply the policy to disks. To modify an automatic snapshot policy, call [ModifyAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25529.html).
+// After you create an automatic snapshot policy, call [ApplyAutoSnapshotPolicy](https://help.aliyun.com/document_detail/25531.html) to apply the policy to the target disks. To modify an automatic snapshot policy, call [ModifyAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25529.html).
 //
 // @param request - CreateAutoSnapshotPolicyRequest
 //
@@ -6383,13 +6383,13 @@ func (client *Client) CreateImageComponent(request *CreateImageComponentRequest)
 //
 // ## Operation description
 //
-// You can use image templates to customize image content and build images cross-region and across accounts. Before you create an image template, take note of the following items:
+// You can use image templates to customize image content and build images cross-region and cross-account. Before you create an image template, take note of the following items:
 //
 // - You can create only custom image templates.
 //
 // - Only public images, custom images, shared images, or image families can be used as source images for building.
 //
-// - When you build an image by using an image template, multiple intermediate instances are created to assist in building the image. The intermediate instances are pay-as-you-go billing method ECS instances, and fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+// - When you build an image by using an image template, multiple intermediate instances are created to assist in the image building process. Intermediate instances are ECS instances that use the pay-as-you-go billing method, and fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
 //
 // Take note of the following items about the build template content `BuildContent`:
 //
@@ -6567,13 +6567,13 @@ func (client *Client) CreateImagePipelineWithOptions(request *CreateImagePipelin
 //
 // ## Operation description
 //
-// You can use image templates to customize image content and build images cross-region and across accounts. Before you create an image template, take note of the following items:
+// You can use image templates to customize image content and build images cross-region and cross-account. Before you create an image template, take note of the following items:
 //
 // - You can create only custom image templates.
 //
 // - Only public images, custom images, shared images, or image families can be used as source images for building.
 //
-// - When you build an image by using an image template, multiple intermediate instances are created to assist in building the image. The intermediate instances are pay-as-you-go billing method ECS instances, and fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+// - When you build an image by using an image template, multiple intermediate instances are created to assist in the image building process. Intermediate instances are ECS instances that use the pay-as-you-go billing method, and fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
 //
 // Take note of the following items about the build template content `BuildContent`:
 //
@@ -6599,11 +6599,11 @@ func (client *Client) CreateImagePipeline(request *CreateImagePipelineRequest) (
 
 // Summary:
 //
-// Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance with customizable parameters.
+// Creates a subscription or pay-as-you-go ECS instance. You can use this operation to configure various parameters based on your requirements to create a customized instance.
 //
 // Description:
 //
-// > This operation is no longer being updated. We recommend that you use [RunInstances](https://help.aliyun.com/document_detail/2679677.html).
+// > This operation is no longer maintained. We recommend that you use [RunInstances](https://help.aliyun.com/document_detail/2679677.html).
 //
 // <props="china">
 //
@@ -6619,33 +6619,33 @@ func (client *Client) CreateImagePipeline(request *CreateImagePipelineRequest) (
 //
 // <props="china">
 //
-// - Make sure that your account has completed real-name registration. For more information, see [Real-name registration](https://help.aliyun.com/document_detail/48263.html).
+// - Make sure that your account has passed real-name registration. For more information, see [Real-name registration](https://help.aliyun.com/document_detail/48263.html).
 //
 // - Creating an instance incurs charges. Make sure that you understand the billing methods of Elastic Compute Service. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html).
 //
 // - Make sure that the total number of instances or the total number of vCPUs across all instance types does not exceed the quota. For more information, see [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas).
 //
-// - Before creating a VPC-connected instance, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the corresponding Alibaba Cloud region.
+// - Before you create a Virtual Private Cloud (VPC)-type instance, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the corresponding Alibaba Cloud region.
 //
 // ### Precautions
 //
 // - When you invoke this operation, the system does not send notifications (including text messages, emails, and internal messages) about instance creation.
 //
-// - If the billing method of the instance is subscription (`PrePaid`), your active coupons are used by default during payment.
+// - If the billing method of the instance is subscription (`PrePaid`), your active coupon is used by default during payment.
 //
 // - If the instance memory is 512 MiB, you cannot use Windows Server images except through the half-year channel. If the instance memory is 4 GiB or more, you cannot use 32-bit operating system images.
 //
 // - Instances created by invoking this operation are not assigned Internet IP addresses. If the public bandwidth is greater than 0, you can invoke [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) to assign an Internet IP address. If the public bandwidth is 0, invoke [ModifyInstanceNetworkSpec](https://help.aliyun.com/document_detail/2679879.html) to adjust the bandwidth and then invoke [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) to assign an Internet IP address.
 //
-// > In a single region, the total peak Internet bandwidth billed on a pay-by-bandwidth basis for a single Alibaba Cloud account is limited. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
+// > In a single region, the total peak pay-by-bandwidth Internet bandwidth for a single Alibaba Cloud account is limited. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
-// ### Suggestions
+// ### Recommendations
 //
 // - **Instance type selection**: See [Instance families](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the performance data of the target instance type. You can also see [Best practices for instance type selection](https://help.aliyun.com/document_detail/58291.html) to learn how to select an instance type.
 //
 // - **Check active resources**: Invoke [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) to query active resources in a specific region or zone.
 //
-// - **User data**: If the instance meets the requirements for [instance user data](https://help.aliyun.com/document_detail/49121.html), you can pass in UserData. The `UserData` data is not encrypted when the API request is sent. Do not send confidential information such as passwords and private keys in plaintext. If you must pass in such information, encrypt it and use Base64 encoding before passing it in, and then perform decryption within the instance.
+// - **User data**: If the instance meets the requirements for [instance user data](https://help.aliyun.com/document_detail/49121.html), you can pass in UserData. The `UserData` data is not encrypted when the API request is sent. Do not send confidential information such as passwords and private keys in plaintext. If you must pass in such information, encrypt it and use Base64 encoding before you pass it in. Then, decrypt the data inside the instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -6778,6 +6778,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !dara.IsNil(request.ManagedHostId) {
+		query["ManagedHostId"] = request.ManagedHostId
 	}
 
 	if !dara.IsNil(request.NodeControllerId) {
@@ -6929,11 +6933,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance with customizable parameters.
+// Creates a subscription or pay-as-you-go ECS instance. You can use this operation to configure various parameters based on your requirements to create a customized instance.
 //
 // Description:
 //
-// > This operation is no longer being updated. We recommend that you use [RunInstances](https://help.aliyun.com/document_detail/2679677.html).
+// > This operation is no longer maintained. We recommend that you use [RunInstances](https://help.aliyun.com/document_detail/2679677.html).
 //
 // <props="china">
 //
@@ -6949,33 +6953,33 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 //
 // <props="china">
 //
-// - Make sure that your account has completed real-name registration. For more information, see [Real-name registration](https://help.aliyun.com/document_detail/48263.html).
+// - Make sure that your account has passed real-name registration. For more information, see [Real-name registration](https://help.aliyun.com/document_detail/48263.html).
 //
 // - Creating an instance incurs charges. Make sure that you understand the billing methods of Elastic Compute Service. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html).
 //
 // - Make sure that the total number of instances or the total number of vCPUs across all instance types does not exceed the quota. For more information, see [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas).
 //
-// - Before creating a VPC-connected instance, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the corresponding Alibaba Cloud region.
+// - Before you create a Virtual Private Cloud (VPC)-type instance, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the corresponding Alibaba Cloud region.
 //
 // ### Precautions
 //
 // - When you invoke this operation, the system does not send notifications (including text messages, emails, and internal messages) about instance creation.
 //
-// - If the billing method of the instance is subscription (`PrePaid`), your active coupons are used by default during payment.
+// - If the billing method of the instance is subscription (`PrePaid`), your active coupon is used by default during payment.
 //
 // - If the instance memory is 512 MiB, you cannot use Windows Server images except through the half-year channel. If the instance memory is 4 GiB or more, you cannot use 32-bit operating system images.
 //
 // - Instances created by invoking this operation are not assigned Internet IP addresses. If the public bandwidth is greater than 0, you can invoke [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) to assign an Internet IP address. If the public bandwidth is 0, invoke [ModifyInstanceNetworkSpec](https://help.aliyun.com/document_detail/2679879.html) to adjust the bandwidth and then invoke [AllocatePublicIpAddress](https://help.aliyun.com/document_detail/25544.html) to assign an Internet IP address.
 //
-// > In a single region, the total peak Internet bandwidth billed on a pay-by-bandwidth basis for a single Alibaba Cloud account is limited. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
+// > In a single region, the total peak pay-by-bandwidth Internet bandwidth for a single Alibaba Cloud account is limited. For more information, see [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
-// ### Suggestions
+// ### Recommendations
 //
 // - **Instance type selection**: See [Instance families](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the performance data of the target instance type. You can also see [Best practices for instance type selection](https://help.aliyun.com/document_detail/58291.html) to learn how to select an instance type.
 //
 // - **Check active resources**: Invoke [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) to query active resources in a specific region or zone.
 //
-// - **User data**: If the instance meets the requirements for [instance user data](https://help.aliyun.com/document_detail/49121.html), you can pass in UserData. The `UserData` data is not encrypted when the API request is sent. Do not send confidential information such as passwords and private keys in plaintext. If you must pass in such information, encrypt it and use Base64 encoding before passing it in, and then perform decryption within the instance.
+// - **User data**: If the instance meets the requirements for [instance user data](https://help.aliyun.com/document_detail/49121.html), you can pass in UserData. The `UserData` data is not encrypted when the API request is sent. Do not send confidential information such as passwords and private keys in plaintext. If you must pass in such information, encrypt it and use Base64 encoding before you pass it in. Then, decrypt the data inside the instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -13744,7 +13748,7 @@ func (client *Client) DeleteVirtualBorderRouter(request *DeleteVirtualBorderRout
 //
 // Summary:
 //
-// delete a VPC
+// Deletes a VPC.
 //
 // @param request - DeleteVpcRequest
 //
@@ -13810,7 +13814,7 @@ func (client *Client) DeleteVpcWithOptions(request *DeleteVpcRequest, runtime *d
 //
 // Summary:
 //
-// delete a VPC
+// Deletes a VPC.
 //
 // @param request - DeleteVpcRequest
 //
@@ -19041,7 +19045,7 @@ func (client *Client) DescribeImagePipelineExecutions(request *DescribeImagePipe
 //
 // Description:
 //
-// You can set `NextToken` to the value of `NextToken` returned by the previous call to `DescribeImagePipelines`, and set `MaxResults` to specify the maximum number of entries per page for the query.
+// You can set `NextToken` to the value of `NextToken` returned by the previous call to `DescribeImagePipelines`, and use `MaxResults` to specify the maximum number of entries per page.
 //
 // @param request - DescribeImagePipelinesRequest
 //
@@ -19137,7 +19141,7 @@ func (client *Client) DescribeImagePipelinesWithOptions(request *DescribeImagePi
 //
 // Description:
 //
-// You can set `NextToken` to the value of `NextToken` returned by the previous call to `DescribeImagePipelines`, and set `MaxResults` to specify the maximum number of entries per page for the query.
+// You can set `NextToken` to the value of `NextToken` returned by the previous call to `DescribeImagePipelines`, and use `MaxResults` to specify the maximum number of entries per page.
 //
 // @param request - DescribeImagePipelinesRequest
 //
@@ -21183,19 +21187,19 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 
 // Summary:
 //
-// Queries the list of instances based on different request conditions and associates the conditional query with detailed information of the instances.
+// Queries a list of instances based on specified request conditions and retrieves the associated detailed information of the instances.
 //
 // Description:
 //
 // ### Before you begin
 //
-// - When you invoke an API operation by using Cloud Assistant CLI, request parameters of different data types must comply with format requirements. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+// - When you invoke an API operation by using Cloud Assistant CLI, make sure that the request parameter values of different data types comply with the format requirements. For more information, see [CLI parameter format overview](https://help.aliyun.com/document_detail/110340.html).
 //
 // ### Usage notes
 //
 // - Send a dry run request by using the DryRun request parameter to check the validity of parameters and authorization.
 //
-// - When performing a paging query for the first page of results, set only `MaxResults` to limit the number of entries to return. The `NextToken` value in the response is used as the credential to query subsequent pages. When performing a paging query for subsequent pages, set `NextToken` to the `NextToken` value obtained from the previous response as the query credential, and set `MaxResults` to limit the number of entries to return.
+// - When you perform a paging query for the first page of results, set only `MaxResults` to limit the number of entries to return. The `NextToken` value in the response is used as the credential to query subsequent pages. When you perform a paging query for subsequent pages, set `NextToken` to the `NextToken` value obtained from the previous response and set `MaxResults` to limit the number of entries to return.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -21403,19 +21407,19 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 // Summary:
 //
-// Queries the list of instances based on different request conditions and associates the conditional query with detailed information of the instances.
+// Queries a list of instances based on specified request conditions and retrieves the associated detailed information of the instances.
 //
 // Description:
 //
 // ### Before you begin
 //
-// - When you invoke an API operation by using Cloud Assistant CLI, request parameters of different data types must comply with format requirements. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+// - When you invoke an API operation by using Cloud Assistant CLI, make sure that the request parameter values of different data types comply with the format requirements. For more information, see [CLI parameter format overview](https://help.aliyun.com/document_detail/110340.html).
 //
 // ### Usage notes
 //
 // - Send a dry run request by using the DryRun request parameter to check the validity of parameters and authorization.
 //
-// - When performing a paging query for the first page of results, set only `MaxResults` to limit the number of entries to return. The `NextToken` value in the response is used as the credential to query subsequent pages. When performing a paging query for subsequent pages, set `NextToken` to the `NextToken` value obtained from the previous response as the query credential, and set `MaxResults` to limit the number of entries to return.
+// - When you perform a paging query for the first page of results, set only `MaxResults` to limit the number of entries to return. The `NextToken` value in the response is used as the credential to query subsequent pages. When you perform a paging query for subsequent pages, set `NextToken` to the `NextToken` value obtained from the previous response and set `MaxResults` to limit the number of entries to return.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -23971,7 +23975,7 @@ func (client *Client) DescribePrefixLists(request *DescribePrefixListsRequest) (
 //
 //   - If `ResourceType=instance`, you must also specify the `InstanceType` parameter.
 //
-//     By default, the price of the pay-as-you-go (`PostPaid`) billing method (`ChargeType`) is queried. You can specify the `PriceUnit` parameter to perform a parameter query for Elastic Compute Service (ECS) prices across different billing cycles.
+//     By default, the price of the pay-as-you-go (`PostPaid`) billing method (`ChargeType`) is queried. You can specify the `PriceUnit` parameter to query the prices of Elastic Compute Service (ECS) servers for different billing cycles.
 //
 //   - If `ResourceType=disk`, you must also specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When you query the price of a `disk` resource, only the pay-as-you-go price of the disk is returned. This means that the `PriceUnit` parameter can only be set to `Hour`.
 //
@@ -24163,7 +24167,7 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 //
 //   - If `ResourceType=instance`, you must also specify the `InstanceType` parameter.
 //
-//     By default, the price of the pay-as-you-go (`PostPaid`) billing method (`ChargeType`) is queried. You can specify the `PriceUnit` parameter to perform a parameter query for Elastic Compute Service (ECS) prices across different billing cycles.
+//     By default, the price of the pay-as-you-go (`PostPaid`) billing method (`ChargeType`) is queried. You can specify the `PriceUnit` parameter to query the prices of Elastic Compute Service (ECS) servers for different billing cycles.
 //
 //   - If `ResourceType=disk`, you must also specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When you query the price of a `disk` resource, only the pay-as-you-go price of the disk is returned. This means that the `PriceUnit` parameter can only be set to `Hour`.
 //
@@ -35862,37 +35866,37 @@ func (client *Client) ModifyInstanceAutoRenewAttribute(request *ModifyInstanceAu
 
 // Summary:
 //
-// Modifies the billing method of ECS instances. Batch modification is supported.
+// Modifies the billing methods of ECS instances. Batch modification is supported.
 //
 // Description:
 //
 // ### Before you begin
 //
-// - Make sure that you are familiar with the [subscription](https://help.aliyun.com/document_detail/56220.html) and [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html) billing methods and the <props="china">[pricing](https://www.aliyun.com/price/product#/ecs/detail)<props="intl">[pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS).
+// - Make sure that you fully understand the [subscription](https://help.aliyun.com/document_detail/56220.html), [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html), and other billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/ecs/detail)<props="intl">[pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS) before you invoke this operation.
 //
 // - Make sure that the target instances are in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state and that your account has no overdue payments.
 //
-// - After the billing method is changed, automatic payment is enabled by default. Make sure that your account balance is sufficient. Otherwise, abnormal orders are generated, and you can only cancel the orders. If your account balance is insufficient, set the AutoPay parameter to `false`. In this case, unpaid orders are generated. You can log on to the [ECS console](https://ecs.console.aliyun.com/) to complete the payment.
+// - After the billing method is changed, automatic payment is enabled by default. Make sure that your account balance is sufficient. Otherwise, abnormal orders are generated, and you can only cancel the orders. If your account balance is insufficient, you can set the AutoPay parameter to `false`. In this case, an unpaid order is generated. You can log on to the [ECS console](https://ecs.console.aliyun.com/) to complete the payment.
 //
-// ### Before you begin
+// ### Precautions
 //
 // - **Subscription to pay-as-you-go**:
 //
 // <props="china">
 //
-//   - When you transform a subscription instance to a pay-as-you-go instance, the new billing method overwrites the entire lifecycle of the instance. You receive a refund for the price difference. The refund is returned to your original payment method. Consumed coupons are not refunded.
+//   - When you transform the billing method of a subscription instance to pay-as-you-go, the new billing method overwrites the instance\\"s entire lifecycle. The price difference is refunded to your original payment method. Vouchers that have been redeemed are not refundable.
 //
 // <props="intl">
 //
-//   - When you transform a subscription instance to a pay-as-you-go instance, the new billing method overwrites the entire lifecycle of the instance. You receive a refund for the price difference. The refund is returned to your original payment method. Consumed coupons are not refunded.
+//   - When you transform the billing method of a subscription instance to pay-as-you-go, the new billing method overwrites the instance\\"s entire lifecycle. The price difference is refunded to your original payment method. Vouchers that have been redeemed are not refundable.
 //
-//   - **Refund rules**: The refund amount that you can claim each month is limited and does not carry over to the next month. After the refund quota is exhausted, you must wait until the next month to switch the billing method. The refund quota consumed by each billing method change is calculated by using the following formula: **vCPUs × (Refund days × 24 ± Floating hours)**. For more information, see [Switch the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
+//   - **Refund rules**: The refund amount that you can claim in a month is limited and does not carry over to the next month. After the refund quota is exhausted, you can switch between billing methods only in the next month. The refund quota consumed by a single billing method change is calculated by using the following formula: **vCPUs × (Remaining days × 24 ± Floating hours)**. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
 //
 // - **Pay-as-you-go to subscription**:
 //
-//   - All pay-as-you-go data disks attached to the instance can be transformed to subscription data disks at the same time.
+//   - All pay-as-you-go data disks that are attached to the instance can be converted to subscription data disks at the same time.
 //
-//   - If a release time is set for the pay-as-you-go instance, you cannot call this operation. For more information, see [Switch the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/49884.html).
+//   - If a release time is set for the pay-as-you-go instance, you cannot invoke this operation. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/49884.html).
 //
 //   - If the instance is in economical mode, start the instance first.
 //
@@ -35990,37 +35994,37 @@ func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanc
 
 // Summary:
 //
-// Modifies the billing method of ECS instances. Batch modification is supported.
+// Modifies the billing methods of ECS instances. Batch modification is supported.
 //
 // Description:
 //
 // ### Before you begin
 //
-// - Make sure that you are familiar with the [subscription](https://help.aliyun.com/document_detail/56220.html) and [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html) billing methods and the <props="china">[pricing](https://www.aliyun.com/price/product#/ecs/detail)<props="intl">[pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS).
+// - Make sure that you fully understand the [subscription](https://help.aliyun.com/document_detail/56220.html), [pay-as-you-go](https://help.aliyun.com/document_detail/40653.html), and other billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/ecs/detail)<props="intl">[pricing](https://www.alibabacloud.com/product/ecs#pricing) of Elastic Compute Service (ECS) before you invoke this operation.
 //
 // - Make sure that the target instances are in the **Running*	- (`Running`) or **Stopped*	- (`Stopped`) state and that your account has no overdue payments.
 //
-// - After the billing method is changed, automatic payment is enabled by default. Make sure that your account balance is sufficient. Otherwise, abnormal orders are generated, and you can only cancel the orders. If your account balance is insufficient, set the AutoPay parameter to `false`. In this case, unpaid orders are generated. You can log on to the [ECS console](https://ecs.console.aliyun.com/) to complete the payment.
+// - After the billing method is changed, automatic payment is enabled by default. Make sure that your account balance is sufficient. Otherwise, abnormal orders are generated, and you can only cancel the orders. If your account balance is insufficient, you can set the AutoPay parameter to `false`. In this case, an unpaid order is generated. You can log on to the [ECS console](https://ecs.console.aliyun.com/) to complete the payment.
 //
-// ### Before you begin
+// ### Precautions
 //
 // - **Subscription to pay-as-you-go**:
 //
 // <props="china">
 //
-//   - When you transform a subscription instance to a pay-as-you-go instance, the new billing method overwrites the entire lifecycle of the instance. You receive a refund for the price difference. The refund is returned to your original payment method. Consumed coupons are not refunded.
+//   - When you transform the billing method of a subscription instance to pay-as-you-go, the new billing method overwrites the instance\\"s entire lifecycle. The price difference is refunded to your original payment method. Vouchers that have been redeemed are not refundable.
 //
 // <props="intl">
 //
-//   - When you transform a subscription instance to a pay-as-you-go instance, the new billing method overwrites the entire lifecycle of the instance. You receive a refund for the price difference. The refund is returned to your original payment method. Consumed coupons are not refunded.
+//   - When you transform the billing method of a subscription instance to pay-as-you-go, the new billing method overwrites the instance\\"s entire lifecycle. The price difference is refunded to your original payment method. Vouchers that have been redeemed are not refundable.
 //
-//   - **Refund rules**: The refund amount that you can claim each month is limited and does not carry over to the next month. After the refund quota is exhausted, you must wait until the next month to switch the billing method. The refund quota consumed by each billing method change is calculated by using the following formula: **vCPUs × (Refund days × 24 ± Floating hours)**. For more information, see [Switch the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
+//   - **Refund rules**: The refund amount that you can claim in a month is limited and does not carry over to the next month. After the refund quota is exhausted, you can switch between billing methods only in the next month. The refund quota consumed by a single billing method change is calculated by using the following formula: **vCPUs × (Remaining days × 24 ± Floating hours)**. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/85517.html).
 //
 // - **Pay-as-you-go to subscription**:
 //
-//   - All pay-as-you-go data disks attached to the instance can be transformed to subscription data disks at the same time.
+//   - All pay-as-you-go data disks that are attached to the instance can be converted to subscription data disks at the same time.
 //
-//   - If a release time is set for the pay-as-you-go instance, you cannot call this operation. For more information, see [Switch the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/49884.html).
+//   - If a release time is set for the pay-as-you-go instance, you cannot invoke this operation. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/49884.html).
 //
 //   - If the instance is in economical mode, start the instance first.
 //
@@ -43110,13 +43114,13 @@ func (client *Client) RenewReservedInstances(request *RenewReservedInstancesRequ
 //
 // - The instance must be in the Stopped (`Stopped`) state.
 //
-//	> This applies only to instances in virtual private clouds (VPCs). If the ECS instance uses the pay-as-you-go billing method and has the economical mode enabled by default, set the instance to the standard stop mode when you stop the instance to prevent the instance from failing to restart after the system disk is replaced due to insufficient resources in the region. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
+//	> This applies only to instances in virtual private clouds (VPCs). If the ECS instance uses the pay-as-you-go billing method and has the economical mode enabled by default, to prevent the instance from failing to restart after the system disk replacement due to insufficient inventory in the region, stop the instance in standard stop mode. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
 //
-// - You can use the `SystemDisk.Size` parameter to specify a new capacity for the system disk. The new capacity cannot be smaller than the original capacity.
+// - You can use the `SystemDisk.Size` parameter to specify a new system disk capacity. The new capacity cannot be smaller than the original system disk capacity.
 //
-// - If the ECS instance is locked for security purposes, which means the `OperationLocks` parameter of the instance contains `"LockReason": "security"`, the system disk cannot be replaced. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+// - If the ECS instance is locked for security reasons, which means the `OperationLocks` parameter of the instance contains `"LockReason": "security"`, the system disk cannot be replaced. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
 //
-// After the system disk is replaced, you can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to check the status of the instance and verify whether the replacement is successful. If the `OperationLocks` response parameter is empty, the system disk replacement is complete.
+// After the system disk is replaced, you can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to check the status of the instance to verify whether the replacement is successful. If the `OperationLocks` response parameter is empty, the system disk replacement is complete.
 //
 // @param request - ReplaceSystemDiskRequest
 //
@@ -43252,13 +43256,13 @@ func (client *Client) ReplaceSystemDiskWithOptions(request *ReplaceSystemDiskReq
 //
 // - The instance must be in the Stopped (`Stopped`) state.
 //
-//	> This applies only to instances in virtual private clouds (VPCs). If the ECS instance uses the pay-as-you-go billing method and has the economical mode enabled by default, set the instance to the standard stop mode when you stop the instance to prevent the instance from failing to restart after the system disk is replaced due to insufficient resources in the region. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
+//	> This applies only to instances in virtual private clouds (VPCs). If the ECS instance uses the pay-as-you-go billing method and has the economical mode enabled by default, to prevent the instance from failing to restart after the system disk replacement due to insufficient inventory in the region, stop the instance in standard stop mode. For more information, see [StopInstance](https://help.aliyun.com/document_detail/25501.html).
 //
-// - You can use the `SystemDisk.Size` parameter to specify a new capacity for the system disk. The new capacity cannot be smaller than the original capacity.
+// - You can use the `SystemDisk.Size` parameter to specify a new system disk capacity. The new capacity cannot be smaller than the original system disk capacity.
 //
-// - If the ECS instance is locked for security purposes, which means the `OperationLocks` parameter of the instance contains `"LockReason": "security"`, the system disk cannot be replaced. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
+// - If the ECS instance is locked for security reasons, which means the `OperationLocks` parameter of the instance contains `"LockReason": "security"`, the system disk cannot be replaced. For more information, see [API behavior when an instance is locked for security reasons](https://help.aliyun.com/document_detail/25695.html).
 //
-// After the system disk is replaced, you can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to check the status of the instance and verify whether the replacement is successful. If the `OperationLocks` response parameter is empty, the system disk replacement is complete.
+// After the system disk is replaced, you can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to check the status of the instance to verify whether the replacement is successful. If the `OperationLocks` response parameter is empty, the system disk replacement is complete.
 //
 // @param request - ReplaceSystemDiskRequest
 //
@@ -44858,17 +44862,17 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 
 // Summary:
 //
-// Batch creates ECS instances with support for automatic startup, public IP address allocation, and automatic release time settings.
+// Creates ECS instances in batches with support for automatic startup, public IP address assignment, and automatic release time configuration.
 //
 // Description:
 //
 // <props="china">
 //
-// Creating instances incurs charges. Billable items include [instance types](https://help.aliyun.com/document_detail/25398.html), [images](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of ECS.
+// Creating instances incurs fees. Billable items include [instance types](https://help.aliyun.com/document_detail/25398.html), [images](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of ECS.
 //
 // <props="intl">Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS.
 //
-// This is an asynchronous operation. After the instance creation request is sent, the instance IDs are returned. The instance creation and startup are not completed immediately. You can call [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) to query instance information. When the returned status is `Running`, the instances are created and started.
+// This is an asynchronous operation. After the instance creation request is sent, the instance IDs are returned. The instances are not immediately created and started. You can call [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) to query instance information. When the returned status is `Running`, the instances are created and started.
 //
 // ### Before you begin
 //
@@ -44876,29 +44880,29 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // - Make sure that your account has passed real-name registration. For more information, refer to [Real-name registration](https://help.aliyun.com/document_detail/48263.html).
 //
-// - When the resource inventory is insufficient to complete the current instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) to check whether an instance creation failure event exists. For more information, refer to [Instance creation failure events](https://help.aliyun.com/document_detail/2545990.html).
+// - When the resource inventory is insufficient to create the instances, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) to check whether an instance creation failure event exists. For more information, refer to [Instance creation failure events](https://help.aliyun.com/document_detail/2545990.html).
 //
-// - Make sure that the total number of instances you create or the total vCPUs across all instance types does not exceed the system quota. For more information, refer to [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas).
+// - Make sure that the total number of instances you create or the total vCPUs across all instance types does not exceed the system quota. For more information, visit [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas).
 //
-// - Before creating VPC-type instances, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the corresponding Alibaba Cloud region.
+// - Before creating VPC-type instances, create a VPC in the corresponding Alibaba Cloud region by calling [CreateVpc](https://help.aliyun.com/document_detail/65430.html).
 //
 // ### Precautions
 //
 // - If the billing method of the instance is subscription (`PrePaid`), your available coupon is used by default during payment.
 //
-// - A single request can create up to 100 instances. If you need more than 100 instances, invoke requests in batches or concurrently.
+// - A single request can create up to 100 instances. To create more than 100 instances, submit requests in batches or invoke them concurrently.
 //
 // - If the value of the `InternetMaxBandwidthOut` parameter is greater than 0, a public IP address is automatically allocated to the instance.
 //
-// > In a single region, the total peak pay-by-bandwidth public bandwidth for a single Alibaba Cloud account is limited. For more information, refer to [Public bandwidth limits](~~25412#BandwidthQuota~~).
+// > In a single region, the total peak public bandwidth billed on a pay-by-bandwidth basis for a single Alibaba Cloud account is subject to limits. For more information, refer to [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
 // ### Suggestions
 //
-// - **Test scenarios**: Send a dry run request by setting `DryRun=true`.
+// - **Test scenarios**: Send a dry run request by Settings `DryRun=true`.
 //
-// - **Release instances**: Set the automatic release time by using the `AutoReleaseTime` parameter, or invoke [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) to perform manual release.
+// - **Release instances**: Set the automatic release time by using the `AutoReleaseTime` parameter, or invoke [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) for manual release.
 //
-// - **Management and retrieval**: Specify tags (`Tag.N.Key` and `Tag.N.Value`) for each batch of instances, and add sequential suffixes (`UniqueSuffix`) to hostnames (`HostName`) and instance names (`InstanceName`). For more information, refer to [Batch configure sequential names or hostnames for instances](https://help.aliyun.com/document_detail/196048.html).
+// - **Management and retrieve**: Specify tags (`Tag.N.Key` and `Tag.N.Value`) for each batch of instances, and add sequential suffixes (`UniqueSuffix`) to hostnames (`HostName`) and instance names (`InstanceName`). For more information, refer to [Batch configure sequential names or hostnames for instances](https://help.aliyun.com/document_detail/196048.html).
 //
 // - **Launch templates**: Use launch templates to avoid specifying a large number of configuration parameters each time you create instances. Create a launch template by invoking [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html), and then specify `LaunchTemplateId` and `LaunchTemplateVersion` in the `RunInstances` request.
 //
@@ -44912,21 +44916,21 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // ```
 //
-// RegionId:"cn-hangzhou", //Set the China (Hangzhou) region
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// ImageId:"aliyun_3_x64_20G_alibase_20221102.vhd", //Set the image ID
+// ImageId:"aliyun_3_x64_20G_alibase_20221102.vhd", // Set the image ID
 //
-// InstanceType:"ecs.g7.large", //Set the instance type
+// InstanceType:"ecs.g7.large", // Set the instance type
 //
-// SecurityGroupId:"sg-bp150uqocpf9jj70****", //Set the security group ID
+// SecurityGroupId:"sg-bp150uqocpf9jj70****", // Set the security group ID
 //
-// VSwitchId:"vsw-bp1qo7s91cbch5i4l****", //Set the vSwitch ID
+// VSwitchId:"vsw-bp1qo7s91cbch5i4l****", // Set the vSwitch ID
 //
 // SystemDisk:{
 //
-//	Category:"cloud_essd", //Set the system disk category to enterprise SSD
+//	Category:"cloud_essd", // Set the system disk category to enterprise SSD
 //
-//	Size:40, //Set the system disk size to 40 GiB
+//	Size:40, // Set the system disk size to 40 GiB
 //
 // },
 //
@@ -44934,19 +44938,19 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 //	{
 //
-//	  Category:"cloud_essd", //Set the data disk category to enterprise SSD
+//	  Category:"cloud_essd", // Set the data disk category to enterprise SSD
 //
-//	  Size:100, //Set the data disk size to 100 GiB
+//	  Size:100, // Set the data disk size to 100 GiB
 //
 //	}
 //
 // ],
 //
-// HostName:"ECS-test", //Set the instance hostname
+// HostName:"ECS-test", // Set the instance hostname
 //
-// Password:"ECS@test1234", //Set the instance logon password
+// Password:"ECS@test1234", // Set the instance logon password
 //
-// InternetMaxBandwidthOut:10 //Set the outbound public bandwidth to 10 Mbit/s
+// InternetMaxBandwidthOut:10 // Set the outbound public bandwidth to 10 Mbit/s
 //
 // ```
 //
@@ -44954,21 +44958,21 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // <details>
 //
-// <summary>Example: Create 5 subscription instances with auto-renewal</summary>
+// <summary>Example: Create five subscription instances with auto-renewal enabled</summary>
 //
 // ```
 //
-// Amount:5, //Create 5 instances
+// Amount:5, // Create 5 instances
 //
-// InstanceChargeType:"PrePaid", //Subscription
+// InstanceChargeType:"PrePaid", // Subscription billing method
 //
-// PeriodUnit:"Month", //Set the unit to month
+// PeriodUnit:"Month", // Set the unit to month
 //
-// Period:1, //Set the duration to 1 month
+// Period:1, // Set the duration to 1 month
 //
-// AutoRenew:true, //Enable auto-renewal
+// AutoRenew:true, // Enable auto-renewal
 //
-// AutoRenewPeriod:1 //Set the auto-renewal period to 1 month
+// AutoRenewPeriod:1 // Set the auto-renewal period to 1 month
 //
 // ```
 //
@@ -44980,11 +44984,11 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // ```
 //
-// Amount:10, //Create 10 instances
+// Amount:10, // Create 10 instances
 //
-// InstanceChargeType:"PostPaid", //Pay-as-you-go
+// InstanceChargeType:"PostPaid", // Pay-as-you-go billing method
 //
-// SpotStrategy:"NoSpot" //Default value, Normal pay-as-you-go
+// SpotStrategy:"NoSpot" // Default value, Normal pay-as-you-go
 //
 // ```
 //
@@ -44992,23 +44996,23 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // <details>
 //
-// <summary>Example: Create 20 spot instances with a bidding policy and retention period</summary>
+// <summary>Example: Create 20 spot instances with a bidding policy and protection period</summary>
 //
 // ```
 //
-// Amount:20, //Create 20 instances
+// Amount:20, // Create 20 instances
 //
 // InstanceChargeType:"PostPaid",
 //
-// SpotStrategy:"SpotAsPriceGo", //Automatically bid based on the current marketplace price
+// SpotStrategy:"SpotAsPriceGo", // Automatically bid based on the current marketplace price
 //
-// SpotDuration:1 //Set the retention period to 1 hour
+// SpotDuration:1 // Set the protection period to 1 hour
 //
 // ```
 //
 // </details>
 //
-// Assume that you have created a launch template by invoking [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) and want to use the template to create ECS instances in the China (Hangzhou) region. Example:
+// Assume that you have created a launch template by calling [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) and want to use the template to create ECS instances in the China (Hangzhou) region. Example:
 //
 // <details>
 //
@@ -45016,49 +45020,49 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // ```
 //
-// RegionId:"cn-hangzhou", //Set the China (Hangzhou) region
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// Amount:10, //Create 10 instances
+// Amount:10, // Create 10 instances
 //
-// LaunchTemplateId:"lt-bp14xczpoxvb6rre****" //Set the launch template ID
+// LaunchTemplateId:"lt-bp14xczpoxvb6rre****" // Set the launch template ID
 //
 // ```
 //
 // </details>
 //
-//	Notice: If both instance parameters and template parameters are specified, the instance parameters take precedence. For example, if the billing method in the template is subscription but `InstanceChargeType` is set to `PostPaid`, the created instances are pay-as-you-go.
+//	Notice: When both instance parameters and template parameters are specified, the instance parameters take precedence. For example, if the billing method in the template is subscription but `InstanceChargeType` is set to `PostPaid`, the created instances are pay-as-you-go instances.
 //
 // <details>
 //
-// <summary>Example: Create 1 instance by using a full image (a whole-machine image that includes system and data disks)</summary>
+// <summary>Example: Create one instance by using a full image (a whole-machine image that contains system and data disks)</summary>
 //
 // ```
 //
-// RegionId:"cn-hangzhou", //Set the China (Hangzhou) region
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// ImageId = m-bp13ohd32cvzpq9e****,//Custom image ID
+// ImageId = m-bp13ohd32cvzpq9e****, // Custom image ID
 //
-// InstanceType = ecs.u1-c1m1.large,//Instance type
+// InstanceType = ecs.u1-c1m1.large, // Instance type
 //
-// SecurityGroupId = sg-bp10jztp6b0sdsyl****,//Security group ID
+// SecurityGroupId = sg-bp10jztp6b0sdsyl****, // Security group ID
 //
-// VSwitchId = vsw-bp19wo63nleroq22g****,//vSwitch ID
+// VSwitchId = vsw-bp19wo63nleroq22g****, // vSwitch ID
 //
-// SystemDisk.Size = 50,//Set the size of the system disk included in the full image
+// SystemDisk.Size = 50, // Set the size of the system disk included in the full image
 //
-// SystemDisk.Category = cloud_auto,//Set the category of the system disk included in the full image
+// SystemDisk.Category = cloud_auto, // Set the category of the system disk included in the full image
 //
-// DataDisk.1.Device = /dev/xvdb,//Set the attach point of the data disk included in the full image
+// DataDisk.1.Device = /dev/xvdb, // Set the attach point of the data disk included in the full image
 //
-// DataDisk.1.Size = 50,//Set the size of the data disk included in the full image
+// DataDisk.1.Size = 50, // Set the size of the data disk included in the full image
 //
-// DataDisk.1.Category = cloud_essd,//Set the category of the data disk included in the full image
+// DataDisk.1.Category = cloud_essd, // Set the category of the data disk included in the full image
 //
-// DataDisk.2.Device = /dev/xvdc,//Attach point of the new data disk. To replace the data disk included in the full image with a new data disk, set DataDisk.1.Device = /dev/xvdb (the default attach point of the data disk in the full image).
+// DataDisk.2.Device = /dev/xvdc, // Attach point of the new data disk. To replace the data disk included in the full image with a new data disk, set DataDisk.1.Device = /dev/xvdb (the default attach point of the data disk in the full image).
 //
-// DataDisk.2.Size = 70,//Size of the new data disk
+// DataDisk.2.Size = 70, // Size of the new data disk
 //
-// DataDisk.2.Category = cloud_auto,//Category of the new data disk
+// DataDisk.2.Category = cloud_auto, // Category of the new data disk
 //
 // ```
 //
@@ -45235,6 +45239,10 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 
 	if !dara.IsNil(request.LaunchTemplateVersion) {
 		query["LaunchTemplateVersion"] = request.LaunchTemplateVersion
+	}
+
+	if !dara.IsNil(request.ManagedHostId) {
+		query["ManagedHostId"] = request.ManagedHostId
 	}
 
 	if !dara.IsNil(request.MinAmount) {
@@ -45418,17 +45426,17 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 
 // Summary:
 //
-// Batch creates ECS instances with support for automatic startup, public IP address allocation, and automatic release time settings.
+// Creates ECS instances in batches with support for automatic startup, public IP address assignment, and automatic release time configuration.
 //
 // Description:
 //
 // <props="china">
 //
-// Creating instances incurs charges. Billable items include [instance types](https://help.aliyun.com/document_detail/25398.html), [images](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of ECS.
+// Creating instances incurs fees. Billable items include [instance types](https://help.aliyun.com/document_detail/25398.html), [images](https://help.aliyun.com/document_detail/179021.html), [block storage](https://help.aliyun.com/document_detail/179022.html), and [public bandwidth](https://help.aliyun.com/document_detail/25411.html). Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of ECS.
 //
 // <props="intl">Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS.
 //
-// This is an asynchronous operation. After the instance creation request is sent, the instance IDs are returned. The instance creation and startup are not completed immediately. You can call [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) to query instance information. When the returned status is `Running`, the instances are created and started.
+// This is an asynchronous operation. After the instance creation request is sent, the instance IDs are returned. The instances are not immediately created and started. You can call [DescribeInstanceStatus](https://help.aliyun.com/document_detail/2679688.html) to query instance information. When the returned status is `Running`, the instances are created and started.
 //
 // ### Before you begin
 //
@@ -45436,29 +45444,29 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 //
 // - Make sure that your account has passed real-name registration. For more information, refer to [Real-name registration](https://help.aliyun.com/document_detail/48263.html).
 //
-// - When the resource inventory is insufficient to complete the current instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) to check whether an instance creation failure event exists. For more information, refer to [Instance creation failure events](https://help.aliyun.com/document_detail/2545990.html).
+// - When the resource inventory is insufficient to create the instances, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call [DescribeInstanceHistoryEvents](https://help.aliyun.com/document_detail/2679897.html) to check whether an instance creation failure event exists. For more information, refer to [Instance creation failure events](https://help.aliyun.com/document_detail/2545990.html).
 //
-// - Make sure that the total number of instances you create or the total vCPUs across all instance types does not exceed the system quota. For more information, refer to [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas).
+// - Make sure that the total number of instances you create or the total vCPUs across all instance types does not exceed the system quota. For more information, visit [Quota Center](https://quotas.console.aliyun.com/products/ecs/quotas).
 //
-// - Before creating VPC-type instances, [create a VPC](https://help.aliyun.com/document_detail/65430.html) in the corresponding Alibaba Cloud region.
+// - Before creating VPC-type instances, create a VPC in the corresponding Alibaba Cloud region by calling [CreateVpc](https://help.aliyun.com/document_detail/65430.html).
 //
 // ### Precautions
 //
 // - If the billing method of the instance is subscription (`PrePaid`), your available coupon is used by default during payment.
 //
-// - A single request can create up to 100 instances. If you need more than 100 instances, invoke requests in batches or concurrently.
+// - A single request can create up to 100 instances. To create more than 100 instances, submit requests in batches or invoke them concurrently.
 //
 // - If the value of the `InternetMaxBandwidthOut` parameter is greater than 0, a public IP address is automatically allocated to the instance.
 //
-// > In a single region, the total peak pay-by-bandwidth public bandwidth for a single Alibaba Cloud account is limited. For more information, refer to [Public bandwidth limits](~~25412#BandwidthQuota~~).
+// > In a single region, the total peak public bandwidth billed on a pay-by-bandwidth basis for a single Alibaba Cloud account is subject to limits. For more information, refer to [Public bandwidth limits](~~25412#BandwidthQuota~~).
 //
 // ### Suggestions
 //
-// - **Test scenarios**: Send a dry run request by setting `DryRun=true`.
+// - **Test scenarios**: Send a dry run request by Settings `DryRun=true`.
 //
-// - **Release instances**: Set the automatic release time by using the `AutoReleaseTime` parameter, or invoke [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) to perform manual release.
+// - **Release instances**: Set the automatic release time by using the `AutoReleaseTime` parameter, or invoke [DeleteInstances](https://help.aliyun.com/document_detail/2679710.html) for manual release.
 //
-// - **Management and retrieval**: Specify tags (`Tag.N.Key` and `Tag.N.Value`) for each batch of instances, and add sequential suffixes (`UniqueSuffix`) to hostnames (`HostName`) and instance names (`InstanceName`). For more information, refer to [Batch configure sequential names or hostnames for instances](https://help.aliyun.com/document_detail/196048.html).
+// - **Management and retrieve**: Specify tags (`Tag.N.Key` and `Tag.N.Value`) for each batch of instances, and add sequential suffixes (`UniqueSuffix`) to hostnames (`HostName`) and instance names (`InstanceName`). For more information, refer to [Batch configure sequential names or hostnames for instances](https://help.aliyun.com/document_detail/196048.html).
 //
 // - **Launch templates**: Use launch templates to avoid specifying a large number of configuration parameters each time you create instances. Create a launch template by invoking [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html), and then specify `LaunchTemplateId` and `LaunchTemplateVersion` in the `RunInstances` request.
 //
@@ -45472,21 +45480,21 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 //
 // ```
 //
-// RegionId:"cn-hangzhou", //Set the China (Hangzhou) region
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// ImageId:"aliyun_3_x64_20G_alibase_20221102.vhd", //Set the image ID
+// ImageId:"aliyun_3_x64_20G_alibase_20221102.vhd", // Set the image ID
 //
-// InstanceType:"ecs.g7.large", //Set the instance type
+// InstanceType:"ecs.g7.large", // Set the instance type
 //
-// SecurityGroupId:"sg-bp150uqocpf9jj70****", //Set the security group ID
+// SecurityGroupId:"sg-bp150uqocpf9jj70****", // Set the security group ID
 //
-// VSwitchId:"vsw-bp1qo7s91cbch5i4l****", //Set the vSwitch ID
+// VSwitchId:"vsw-bp1qo7s91cbch5i4l****", // Set the vSwitch ID
 //
 // SystemDisk:{
 //
-//	Category:"cloud_essd", //Set the system disk category to enterprise SSD
+//	Category:"cloud_essd", // Set the system disk category to enterprise SSD
 //
-//	Size:40, //Set the system disk size to 40 GiB
+//	Size:40, // Set the system disk size to 40 GiB
 //
 // },
 //
@@ -45494,19 +45502,19 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 //
 //	{
 //
-//	  Category:"cloud_essd", //Set the data disk category to enterprise SSD
+//	  Category:"cloud_essd", // Set the data disk category to enterprise SSD
 //
-//	  Size:100, //Set the data disk size to 100 GiB
+//	  Size:100, // Set the data disk size to 100 GiB
 //
 //	}
 //
 // ],
 //
-// HostName:"ECS-test", //Set the instance hostname
+// HostName:"ECS-test", // Set the instance hostname
 //
-// Password:"ECS@test1234", //Set the instance logon password
+// Password:"ECS@test1234", // Set the instance logon password
 //
-// InternetMaxBandwidthOut:10 //Set the outbound public bandwidth to 10 Mbit/s
+// InternetMaxBandwidthOut:10 // Set the outbound public bandwidth to 10 Mbit/s
 //
 // ```
 //
@@ -45514,21 +45522,21 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 //
 // <details>
 //
-// <summary>Example: Create 5 subscription instances with auto-renewal</summary>
+// <summary>Example: Create five subscription instances with auto-renewal enabled</summary>
 //
 // ```
 //
-// Amount:5, //Create 5 instances
+// Amount:5, // Create 5 instances
 //
-// InstanceChargeType:"PrePaid", //Subscription
+// InstanceChargeType:"PrePaid", // Subscription billing method
 //
-// PeriodUnit:"Month", //Set the unit to month
+// PeriodUnit:"Month", // Set the unit to month
 //
-// Period:1, //Set the duration to 1 month
+// Period:1, // Set the duration to 1 month
 //
-// AutoRenew:true, //Enable auto-renewal
+// AutoRenew:true, // Enable auto-renewal
 //
-// AutoRenewPeriod:1 //Set the auto-renewal period to 1 month
+// AutoRenewPeriod:1 // Set the auto-renewal period to 1 month
 //
 // ```
 //
@@ -45540,11 +45548,11 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 //
 // ```
 //
-// Amount:10, //Create 10 instances
+// Amount:10, // Create 10 instances
 //
-// InstanceChargeType:"PostPaid", //Pay-as-you-go
+// InstanceChargeType:"PostPaid", // Pay-as-you-go billing method
 //
-// SpotStrategy:"NoSpot" //Default value, Normal pay-as-you-go
+// SpotStrategy:"NoSpot" // Default value, Normal pay-as-you-go
 //
 // ```
 //
@@ -45552,23 +45560,23 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 //
 // <details>
 //
-// <summary>Example: Create 20 spot instances with a bidding policy and retention period</summary>
+// <summary>Example: Create 20 spot instances with a bidding policy and protection period</summary>
 //
 // ```
 //
-// Amount:20, //Create 20 instances
+// Amount:20, // Create 20 instances
 //
 // InstanceChargeType:"PostPaid",
 //
-// SpotStrategy:"SpotAsPriceGo", //Automatically bid based on the current marketplace price
+// SpotStrategy:"SpotAsPriceGo", // Automatically bid based on the current marketplace price
 //
-// SpotDuration:1 //Set the retention period to 1 hour
+// SpotDuration:1 // Set the protection period to 1 hour
 //
 // ```
 //
 // </details>
 //
-// Assume that you have created a launch template by invoking [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) and want to use the template to create ECS instances in the China (Hangzhou) region. Example:
+// Assume that you have created a launch template by calling [CreateLaunchTemplate](https://help.aliyun.com/document_detail/2679729.html) and want to use the template to create ECS instances in the China (Hangzhou) region. Example:
 //
 // <details>
 //
@@ -45576,49 +45584,49 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 //
 // ```
 //
-// RegionId:"cn-hangzhou", //Set the China (Hangzhou) region
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// Amount:10, //Create 10 instances
+// Amount:10, // Create 10 instances
 //
-// LaunchTemplateId:"lt-bp14xczpoxvb6rre****" //Set the launch template ID
+// LaunchTemplateId:"lt-bp14xczpoxvb6rre****" // Set the launch template ID
 //
 // ```
 //
 // </details>
 //
-//	Notice: If both instance parameters and template parameters are specified, the instance parameters take precedence. For example, if the billing method in the template is subscription but `InstanceChargeType` is set to `PostPaid`, the created instances are pay-as-you-go.
+//	Notice: When both instance parameters and template parameters are specified, the instance parameters take precedence. For example, if the billing method in the template is subscription but `InstanceChargeType` is set to `PostPaid`, the created instances are pay-as-you-go instances.
 //
 // <details>
 //
-// <summary>Example: Create 1 instance by using a full image (a whole-machine image that includes system and data disks)</summary>
+// <summary>Example: Create one instance by using a full image (a whole-machine image that contains system and data disks)</summary>
 //
 // ```
 //
-// RegionId:"cn-hangzhou", //Set the China (Hangzhou) region
+// RegionId:"cn-hangzhou", // Set the China (Hangzhou) region
 //
-// ImageId = m-bp13ohd32cvzpq9e****,//Custom image ID
+// ImageId = m-bp13ohd32cvzpq9e****, // Custom image ID
 //
-// InstanceType = ecs.u1-c1m1.large,//Instance type
+// InstanceType = ecs.u1-c1m1.large, // Instance type
 //
-// SecurityGroupId = sg-bp10jztp6b0sdsyl****,//Security group ID
+// SecurityGroupId = sg-bp10jztp6b0sdsyl****, // Security group ID
 //
-// VSwitchId = vsw-bp19wo63nleroq22g****,//vSwitch ID
+// VSwitchId = vsw-bp19wo63nleroq22g****, // vSwitch ID
 //
-// SystemDisk.Size = 50,//Set the size of the system disk included in the full image
+// SystemDisk.Size = 50, // Set the size of the system disk included in the full image
 //
-// SystemDisk.Category = cloud_auto,//Set the category of the system disk included in the full image
+// SystemDisk.Category = cloud_auto, // Set the category of the system disk included in the full image
 //
-// DataDisk.1.Device = /dev/xvdb,//Set the attach point of the data disk included in the full image
+// DataDisk.1.Device = /dev/xvdb, // Set the attach point of the data disk included in the full image
 //
-// DataDisk.1.Size = 50,//Set the size of the data disk included in the full image
+// DataDisk.1.Size = 50, // Set the size of the data disk included in the full image
 //
-// DataDisk.1.Category = cloud_essd,//Set the category of the data disk included in the full image
+// DataDisk.1.Category = cloud_essd, // Set the category of the data disk included in the full image
 //
-// DataDisk.2.Device = /dev/xvdc,//Attach point of the new data disk. To replace the data disk included in the full image with a new data disk, set DataDisk.1.Device = /dev/xvdb (the default attach point of the data disk in the full image).
+// DataDisk.2.Device = /dev/xvdc, // Attach point of the new data disk. To replace the data disk included in the full image with a new data disk, set DataDisk.1.Device = /dev/xvdb (the default attach point of the data disk in the full image).
 //
-// DataDisk.2.Size = 70,//Size of the new data disk
+// DataDisk.2.Size = 70, // Size of the new data disk
 //
-// DataDisk.2.Category = cloud_auto,//Category of the new data disk
+// DataDisk.2.Category = cloud_auto, // Category of the new data disk
 //
 // ```
 //
@@ -45916,11 +45924,11 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 //
 // Description:
 //
-// - After an image template is created, call this operation to execute an image building task. The system builds, distributes, and creates shared images based on the parameters specified in the image template.
+// - After an image template is created, call this operation to execute an image building task. The system builds, distributes, and creates shared images based on the parameters configured in the image template settings.
 //
-// - For the same image template, only one image building task can be executed at a time. You can call CancelImagePipelineExecution multiple times simultaneously, and canceling an image building task does not interfere with other image building tasks.
+// - For the same image template, only one image building task can be executed at a time. You can call CancelImagePipelineExecution multiple times simultaneously. Canceling an image building task does not interfere with other image building tasks.
 //
-// - When you execute an image template, multiple intermediate instances are created to help build images. The intermediate instances are ECS instances that use the pay-as-you-go billing method, and billing fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+// - When you execute an image building template, multiple intermediate instances are created to help build images. The intermediate instances are ECS instances that use the pay-as-you-go billing method, and billing fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
 //
 // @param request - StartImagePipelineExecutionRequest
 //
@@ -46004,11 +46012,11 @@ func (client *Client) StartImagePipelineExecutionWithOptions(request *StartImage
 //
 // Description:
 //
-// - After an image template is created, call this operation to execute an image building task. The system builds, distributes, and creates shared images based on the parameters specified in the image template.
+// - After an image template is created, call this operation to execute an image building task. The system builds, distributes, and creates shared images based on the parameters configured in the image template settings.
 //
-// - For the same image template, only one image building task can be executed at a time. You can call CancelImagePipelineExecution multiple times simultaneously, and canceling an image building task does not interfere with other image building tasks.
+// - For the same image template, only one image building task can be executed at a time. You can call CancelImagePipelineExecution multiple times simultaneously. Canceling an image building task does not interfere with other image building tasks.
 //
-// - When you execute an image template, multiple intermediate instances are created to help build images. The intermediate instances are ECS instances that use the pay-as-you-go billing method, and billing fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
+// - When you execute an image building template, multiple intermediate instances are created to help build images. The intermediate instances are ECS instances that use the pay-as-you-go billing method, and billing fees are incurred. For more information, see [Pay-as-you-go](https://help.aliyun.com/document_detail/40653.html).
 //
 // @param request - StartImagePipelineExecutionRequest
 //

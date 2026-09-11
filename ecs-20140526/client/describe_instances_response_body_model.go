@@ -25,7 +25,7 @@ type iDescribeInstancesResponseBody interface {
 
 type DescribeInstancesResponseBody struct {
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The query token returned in this call.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
@@ -37,7 +37,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page as specified in the request.
+	// The number of entries per page that was specified in the request.
 	//
 	// example:
 	//
@@ -972,8 +972,12 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo struct {
-	EnableHighDensityMode *bool   `json:"EnableHighDensityMode,omitempty" xml:"EnableHighDensityMode,omitempty"`
-	NodeSerialNumber      *string `json:"NodeSerialNumber,omitempty" xml:"NodeSerialNumber,omitempty"`
+	EnableHighDensityMode *bool `json:"EnableHighDensityMode,omitempty" xml:"EnableHighDensityMode,omitempty"`
+	// example:
+	//
+	// mh-f2d3647ca21****
+	ManagedHostId    *string `json:"ManagedHostId,omitempty" xml:"ManagedHostId,omitempty"`
+	NodeSerialNumber *string `json:"NodeSerialNumber,omitempty" xml:"NodeSerialNumber,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) String() string {
@@ -988,12 +992,21 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) GetEnable
 	return s.EnableHighDensityMode
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) GetManagedHostId() *string {
+	return s.ManagedHostId
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) GetNodeSerialNumber() *string {
 	return s.NodeSerialNumber
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) SetEnableHighDensityMode(v bool) *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo {
 	s.EnableHighDensityMode = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) SetManagedHostId(v string) *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo {
+	s.ManagedHostId = &v
 	return s
 }
 

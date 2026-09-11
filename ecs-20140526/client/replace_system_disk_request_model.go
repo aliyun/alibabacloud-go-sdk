@@ -73,7 +73,7 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// d-bp67acfmxazb4ph****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// >This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type ReplaceSystemDiskRequest struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The ID of target instance.
 	//
-	// >Before you send the request, make sure that the instance status of the target instance is `Stopped`.
+	// > Before you send the request, make sure that the instance status of the target instance is `Stopped`.
 	//
 	// This parameter is required.
 	//
@@ -118,7 +118,7 @@ type ReplaceSystemDiskRequest struct {
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The name of the key pair.
 	//
-	// > This parameter takes effect only for Linux instances. You can bind an SSH key pair to the ECS instance as a logon credential. After you bind an SSH key pair, the username and password logon method is disabled.
+	// > This parameter takes effect only for Linux instances. You can bind an SSH key pair to the ECS instance as a logon credential. After an SSH key pair is used, the username and password logon method is disabled.
 	//
 	// example:
 	//
@@ -144,11 +144,11 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// EcsV587!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether to use the preset password of the image.
+	// Specifies whether to use the password preset in the image.
 	//
 	// Default value: false.
 	//
-	// > If you use this parameter, the Password parameter must be empty. Make sure that the image has a preset password.
+	// > If you use this parameter, the Password parameter must be empty. Make sure that the image you use has a password preset.
 	//
 	// example:
 	//
@@ -164,9 +164,9 @@ type ReplaceSystemDiskRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to use the free Security Center service after the system disk is replaced. Valid values:
 	//
-	// - Active: The Security Center service is used. This value is supported only for public images.
+	// - Active: Security Center is used. This value is applicable only to public images.
 	//
-	// - Deactive: The Security Center service is not used. This value is supported for all images.
+	// - Deactive: Security Center is not used. This value is applicable to all images.
 	//
 	// Default value: Deactive.
 	//
@@ -395,7 +395,7 @@ type ReplaceSystemDiskRequestSystemDisk struct {
 	//
 	// - Basic disk: Max{20, size of the image specified by the ImageId parameter} to 500.
 	//
-	// - Enterprise SSD (ESSD):
+	// - Enterprise SSD:
 	//
 	//   - PL0: Max{1, size of the image specified by the ImageId parameter} to 2048.
 	//
@@ -441,19 +441,19 @@ func (s *ReplaceSystemDiskRequestSystemDisk) Validate() error {
 }
 
 type ReplaceSystemDiskRequestArn struct {
-	// >This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 0
 	AssumeRoleFor *int64 `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// >This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// null
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// >This parameter is not publicly available.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//

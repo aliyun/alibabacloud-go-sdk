@@ -153,7 +153,7 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// 1
 	ReservedInstanceHourPrice *float32 `json:"ReservedInstanceHourPrice,omitempty" xml:"ReservedInstanceHourPrice,omitempty"`
-	// The transaction price, which is equal to the original price minus the discount.
+	// The final price, which is the original price minus the discount.
 	//
 	// example:
 	//
@@ -459,7 +459,7 @@ type DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct 
 	//
 	// 100
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The transaction price, which is equal to the original price minus the discount.
+	// The final price, which is the original price minus the discount.
 	//
 	// example:
 	//

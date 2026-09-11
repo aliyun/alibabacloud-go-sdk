@@ -73,9 +73,7 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// ["cn-hangzhou"]
 	TargetCopyRegions *string `json:"TargetCopyRegions,omitempty" xml:"TargetCopyRegions,omitempty"`
-	// The list of target resource tags. The automatic snapshot policy matches target resources based on tags.
-	//
-	// This parameter is required when AssociationType is set to AssociatedWithInstanceTag.
+	// The list of target resource tags. The automatic snapshot policy matches target resources by tag.
 	TargetTags []*ModifyAutoSnapshotPolicyExRequestTargetTags `json:"TargetTags,omitempty" xml:"TargetTags,omitempty" type:"Repeated"`
 	// The ID of the automatic snapshot policy. You can call [DescribeAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25530.html) to query available automatic snapshot policies.
 	//
@@ -294,9 +292,9 @@ type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration struct {
 	Arn []*ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	// Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
 	//
-	// - true: Encryption is enabled.
+	// - true: enabled.
 	//
-	// - false: Encryption is not enabled.
+	// - false: disabled.
 	//
 	// Default value: false.
 	//
@@ -423,15 +421,17 @@ func (s *ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn) Valida
 type ModifyAutoSnapshotPolicyExRequestTargetTags struct {
 	// The tag key.
 	//
-	// Valid values of N: 1 to 10.
+	// Valid values of N: 1 to 5.
 	//
 	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// Valid values of N: 1 to 10. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	// Valid values of N: 1 to 5.
 	//
-	// Note: If you pass in an empty value or an empty string, it indicates any value.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
+	// > If you pass in an empty value or an empty string, the tag value matches any value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
