@@ -9,6 +9,8 @@ type iModifyNodeNumberRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ModifyNodeNumberRequest
+	GetAutoPay() *bool
 	SetInstanceId(v string) *ModifyNodeNumberRequest
 	GetInstanceId() *string
 	SetNodeGroupId(v string) *ModifyNodeNumberRequest
@@ -24,6 +26,19 @@ type iModifyNodeNumberRequest interface {
 }
 
 type ModifyNodeNumberRequest struct {
+	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter. Valid values:
+	//
+	// - true: Automatic payment.
+	//
+	// - false: No automatic payment.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -40,7 +55,7 @@ type ModifyNodeNumberRequest struct {
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The decommission concurrency for BE scale-in scenarios in compute-storage decoupled architecture. Default value: 1.
+	// The decommission concurrency for BE scale-in scenarios in compute-storage coupled mode. Default value: 1.
 	//
 	// example:
 	//
@@ -60,7 +75,7 @@ type ModifyNodeNumberRequest struct {
 	//
 	// 3
 	Target *int32 `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The duration to wait for running tasks to complete before dropping nodes during CN scale-in scenarios in storage-compute disaggregation architecture.
+	// The wait time for running tasks to complete before dropping nodes during CN scale-in scenarios in compute-storage decoupled mode.
 	//
 	// example:
 	//
@@ -74,6 +89,10 @@ func (s ModifyNodeNumberRequest) String() string {
 
 func (s ModifyNodeNumberRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyNodeNumberRequest) GetAutoPay() *bool {
+	return s.AutoPay
 }
 
 func (s *ModifyNodeNumberRequest) GetInstanceId() *string {
@@ -98,6 +117,11 @@ func (s *ModifyNodeNumberRequest) GetTarget() *int32 {
 
 func (s *ModifyNodeNumberRequest) GetTerminationGracePeriodSeconds() *int32 {
 	return s.TerminationGracePeriodSeconds
+}
+
+func (s *ModifyNodeNumberRequest) SetAutoPay(v bool) *ModifyNodeNumberRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *ModifyNodeNumberRequest) SetInstanceId(v string) *ModifyNodeNumberRequest {

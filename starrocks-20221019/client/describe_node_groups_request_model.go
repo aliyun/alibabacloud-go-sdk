@@ -104,9 +104,9 @@ type DescribeNodeGroupsRequest struct {
 	//
 	// - SCALING_IN: Scale-in in progress.
 	//
-	// - SCALING_UP: Upgrading specifications.
+	// - SCALING_UP: Scaling up.
 	//
-	// - SCALING_DOWN: Downgrading specifications.
+	// - SCALING_DOWN: Scaling down.
 	//
 	// - UPGRADING: Upgrading.
 	//
@@ -125,8 +125,9 @@ type DescribeNodeGroupsRequest struct {
 	// example:
 	//
 	// RUNNING
-	Status *string                          `json:"status,omitempty" xml:"status,omitempty"`
-	Tags   []*DescribeNodeGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of tags.
+	Tags []*DescribeNodeGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNodeGroupsRequest) String() string {
@@ -232,7 +233,17 @@ func (s *DescribeNodeGroupsRequest) Validate() error {
 }
 
 type DescribeNodeGroupsRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// k1
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

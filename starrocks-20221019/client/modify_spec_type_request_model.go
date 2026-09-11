@@ -9,6 +9,8 @@ type iModifySpecTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ModifySpecTypeRequest
+	GetAutoPay() *bool
 	SetFastMode(v bool) *ModifySpecTypeRequest
 	GetFastMode() *bool
 	SetInstanceId(v string) *ModifySpecTypeRequest
@@ -22,9 +24,22 @@ type iModifySpecTypeRequest interface {
 }
 
 type ModifySpecTypeRequest struct {
-	// Restart in fast restart mode. Default is false.
+	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
 	//
-	// - true: Restarts compute nodes in fast restart mode. Nodes restart in parallel within a batch, and batches execute sequentially.
+	// - true: Automatic payment.
+	//
+	// - false: No automatic payment.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to use the fast restart mode. Default value: false.
+	//
+	// - true: Restarts compute nodes in fast restart mode. Compute nodes are restarted in multiple batches. Nodes within a batch are restarted in parallel, and batches execute sequentially.
 	//
 	// - false: Restarts compute nodes in rolling restart mode.
 	//
@@ -32,7 +47,7 @@ type ModifySpecTypeRequest struct {
 	//
 	// true
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +55,7 @@ type ModifySpecTypeRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Compute group ID.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +63,13 @@ type ModifySpecTypeRequest struct {
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// Coupon ID.
+	// The coupon ID.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// Target specifications type.
+	// The target specification type.
 	//
 	// This parameter is required.
 	//
@@ -70,6 +85,10 @@ func (s ModifySpecTypeRequest) String() string {
 
 func (s ModifySpecTypeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifySpecTypeRequest) GetAutoPay() *bool {
+	return s.AutoPay
 }
 
 func (s *ModifySpecTypeRequest) GetFastMode() *bool {
@@ -90,6 +109,11 @@ func (s *ModifySpecTypeRequest) GetPromotionOptionNo() *string {
 
 func (s *ModifySpecTypeRequest) GetTargetSpecType() *string {
 	return s.TargetSpecType
+}
+
+func (s *ModifySpecTypeRequest) SetAutoPay(v bool) *ModifySpecTypeRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *ModifySpecTypeRequest) SetFastMode(v bool) *ModifySpecTypeRequest {

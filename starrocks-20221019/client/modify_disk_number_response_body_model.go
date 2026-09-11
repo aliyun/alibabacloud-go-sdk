@@ -26,7 +26,7 @@ type iModifyDiskNumberResponseBody interface {
 }
 
 type ModifyDiskNumberResponseBody struct {
-	// Details about the access denial.
+	// The details of the permission verification failure.
 	//
 	// example:
 	//

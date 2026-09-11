@@ -9,6 +9,8 @@ type iModifyDiskSizeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ModifyDiskSizeRequest
+	GetAutoPay() *bool
 	SetFastMode(v bool) *ModifyDiskSizeRequest
 	GetFastMode() *bool
 	SetInstanceId(v string) *ModifyDiskSizeRequest
@@ -22,8 +24,30 @@ type iModifyDiskSizeRequest interface {
 }
 
 type ModifyDiskSizeRequest struct {
+	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
+	//
+	// - true: Automatic payment.
+	//
+	// - false: No automatic payment.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to use the fast restart mode for restart. Default value: false.
+	//
+	// - true: Restarts compute nodes in fast restart mode. Compute nodes are restarted in multiple batches. Nodes within a batch are restarted in parallel, and batches execute sequentially.
+	//
+	// - false: Restarts compute nodes in rolling restart mode.
+	//
+	// example:
+	//
+	// false
 	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -31,14 +55,19 @@ type ModifyDiskSizeRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the compute group.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The coupon ID.
+	//
+	// example:
+	//
+	// 2345
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The target disk size. Unit: GB.
 	//
@@ -56,6 +85,10 @@ func (s ModifyDiskSizeRequest) String() string {
 
 func (s ModifyDiskSizeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDiskSizeRequest) GetAutoPay() *bool {
+	return s.AutoPay
 }
 
 func (s *ModifyDiskSizeRequest) GetFastMode() *bool {
@@ -76,6 +109,11 @@ func (s *ModifyDiskSizeRequest) GetPromotionOptionNo() *string {
 
 func (s *ModifyDiskSizeRequest) GetTarget() *int32 {
 	return s.Target
+}
+
+func (s *ModifyDiskSizeRequest) SetAutoPay(v bool) *ModifyDiskSizeRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *ModifyDiskSizeRequest) SetFastMode(v bool) *ModifyDiskSizeRequest {

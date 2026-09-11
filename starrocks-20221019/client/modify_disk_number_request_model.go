@@ -9,6 +9,8 @@ type iModifyDiskNumberRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ModifyDiskNumberRequest
+	GetAutoPay() *bool
 	SetFastMode(v bool) *ModifyDiskNumberRequest
 	GetFastMode() *bool
 	SetInstanceId(v string) *ModifyDiskNumberRequest
@@ -22,11 +24,24 @@ type iModifyDiskNumberRequest interface {
 }
 
 type ModifyDiskNumberRequest struct {
-	// Specifies whether to restart the compute nodes in fast mode. Default value: false.
+	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
 	//
-	// - true: Restarts the compute nodes in fast mode. The nodes are restarted in batches. Nodes within a batch are restarted in parallel, and the batches are processed sequentially.
+	// - true: Automatic payment.
 	//
-	// - false: Restarts the compute nodes in rolling restart mode.
+	// - false: No automatic payment.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to use the fast restart mode. Default value: false.
+	//
+	// - true: Restarts compute nodes in fast restart mode. Compute nodes are restarted in multiple batches. Nodes within a batch are restarted in parallel, and batches execute sequentially.
+	//
+	// - false: Restarts compute nodes in rolling restart mode.
 	//
 	// example:
 	//
@@ -47,7 +62,12 @@ type ModifyDiskNumberRequest struct {
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The coupon ID.
+	//
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The target number of disks.
 	//
@@ -65,6 +85,10 @@ func (s ModifyDiskNumberRequest) String() string {
 
 func (s ModifyDiskNumberRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDiskNumberRequest) GetAutoPay() *bool {
+	return s.AutoPay
 }
 
 func (s *ModifyDiskNumberRequest) GetFastMode() *bool {
@@ -85,6 +109,11 @@ func (s *ModifyDiskNumberRequest) GetPromotionOptionNo() *string {
 
 func (s *ModifyDiskNumberRequest) GetTarget() *int32 {
 	return s.Target
+}
+
+func (s *ModifyDiskNumberRequest) SetAutoPay(v bool) *ModifyDiskNumberRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *ModifyDiskNumberRequest) SetFastMode(v bool) *ModifyDiskNumberRequest {

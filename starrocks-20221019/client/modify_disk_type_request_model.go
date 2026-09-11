@@ -9,6 +9,8 @@ type iModifyDiskTypeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ModifyDiskTypeRequest
+	GetAutoPay() *bool
 	SetInstanceId(v string) *ModifyDiskTypeRequest
 	GetInstanceId() *string
 	SetNodeGroupId(v string) *ModifyDiskTypeRequest
@@ -22,7 +24,20 @@ type iModifyDiskTypeRequest interface {
 }
 
 type ModifyDiskTypeRequest struct {
-	// The ID of the instance.
+	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter. Valid values:
+	//
+	// - true: Automatic payment is enabled.
+	//
+	// - false: Automatic payment is disabled.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +45,7 @@ type ModifyDiskTypeRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the compute group.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +53,7 @@ type ModifyDiskTypeRequest struct {
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The ID of the coupon.
+	// The coupon ID.
 	//
 	// example:
 	//
@@ -70,6 +85,10 @@ func (s ModifyDiskTypeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDiskTypeRequest) GetAutoPay() *bool {
+	return s.AutoPay
+}
+
 func (s *ModifyDiskTypeRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -88,6 +107,11 @@ func (s *ModifyDiskTypeRequest) GetTargetDiskType() *string {
 
 func (s *ModifyDiskTypeRequest) GetTargetPerformanceLevel() *string {
 	return s.TargetPerformanceLevel
+}
+
+func (s *ModifyDiskTypeRequest) SetAutoPay(v bool) *ModifyDiskTypeRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *ModifyDiskTypeRequest) SetInstanceId(v string) *ModifyDiskTypeRequest {

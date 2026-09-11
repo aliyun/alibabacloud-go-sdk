@@ -20,7 +20,7 @@ type iQueryModifyCuPriceRequest interface {
 }
 
 type QueryModifyCuPriceRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type QueryModifyCuPriceRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the compute group.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type QueryModifyCuPriceRequest struct {
 	//
 	// ng-3d5ce6454354****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The ID of the coupon.
+	// The coupon ID.
 	//
 	// example:
 	//
 	// youhuiquan_12378dfj6
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The target number of CUs.
+	// The target CU count.
 	//
 	// This parameter is required.
 	//

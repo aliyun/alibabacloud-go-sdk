@@ -26,7 +26,7 @@ type iQueryModifyCuPriceResponseBody interface {
 }
 
 type QueryModifyCuPriceResponseBody struct {
-	// Details about the access denial.
+	// AccessDeniedDetail
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type QueryModifyCuPriceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *QueryModifyCuPriceResponseBody) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyData struct {
-	// The prices of the components.
+	// The component prices.
 	ComponentPrices []*QueryModifyCuPriceResponseBodyDataComponentPrices `json:"ComponentPrices,omitempty" xml:"ComponentPrices,omitempty" type:"Repeated"`
 	// The currency.
 	//
@@ -155,13 +155,13 @@ type QueryModifyCuPriceResponseBodyData struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The depreciation rate.
+	// The price reduction information.
 	//
 	// example:
 	//
 	// 0
 	DepreciateInfo *QueryModifyCuPriceResponseBodyDataDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
-	// The discount amount. Discount amount = Original amount - Billable amount. The billable amount includes coupon deductions.
+	// The discount amount, which is the original amount minus the payable amount (including coupon deductions).
 	//
 	// example:
 	//
@@ -169,21 +169,21 @@ type QueryModifyCuPriceResponseBodyData struct {
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	// The coupon information.
 	OptionalPromotions []*QueryModifyCuPriceResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	// The original price. Original price = List price × Billing usage.
+	// The original amount, which is the catalog price multiplied by the billable usage.
 	//
 	// example:
 	//
 	// 7986
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The data structure returned in the response.
+	// The returned data structure.
 	Rules []*QueryModifyCuPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The price after the standard discount is applied.
+	// The discounted price based on the list price discount.
 	//
 	// example:
 	//
 	// 7986
 	StandDiscountPrice *float32 `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The discounted price on the official website.
+	// The list discount price.
 	//
 	// example:
 	//
@@ -332,7 +332,7 @@ func (s *QueryModifyCuPriceResponseBodyData) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyDataComponentPrices struct {
-	// The name of the component.
+	// The component name.
 	//
 	// example:
 	//
@@ -407,7 +407,7 @@ func (s *QueryModifyCuPriceResponseBodyDataComponentPrices) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyDataDepreciateInfo struct {
-	// The price reduction ratio.
+	// The price reduction information.
 	//
 	// example:
 	//
@@ -419,7 +419,7 @@ type QueryModifyCuPriceResponseBodyDataDepreciateInfo struct {
 	//
 	// 7986
 	CheapStandAmount *float32 `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// Indicates whether to show the price reduction information.
+	// Indicates whether to display the price reduction.
 	//
 	// example:
 	//
@@ -482,19 +482,19 @@ func (s *QueryModifyCuPriceResponseBodyDataDepreciateInfo) Validate() error {
 }
 
 type QueryModifyCuPriceResponseBodyDataOptionalPromotions struct {
-	// The description of the coupon.
+	// The coupon description.
 	//
 	// example:
 	//
 	// youhuiquan_desc
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// The name of the coupon.
+	// The coupon name.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// The ID of the coupon.
+	// The coupon ID.
 	//
 	// example:
 	//
@@ -542,7 +542,7 @@ func (s *QueryModifyCuPriceResponseBodyDataOptionalPromotions) Validate() error 
 }
 
 type QueryModifyCuPriceResponseBodyDataRules struct {
-	// The number of instances to purchase in a batch. You can use this parameter to query the price of purchasing multiple Elastic Compute Service (ECS) instances with a specific configuration. Valid values: 1 to 1000.
+	// The price for purchasing Elastic Computing Service (ECS) servers of a specific configuration in bulk. Valid values: 1 to 1000.
 	//
 	// Default value: 1.
 	//
@@ -550,13 +550,13 @@ type QueryModifyCuPriceResponseBodyDataRules struct {
 	//
 	// 1
 	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// rule_123123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//

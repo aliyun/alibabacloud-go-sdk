@@ -9,6 +9,8 @@ type iModifyCuRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ModifyCuRequest
+	GetAutoPay() *bool
 	SetFastMode(v bool) *ModifyCuRequest
 	GetFastMode() *bool
 	SetInstanceId(v string) *ModifyCuRequest
@@ -22,11 +24,24 @@ type iModifyCuRequest interface {
 }
 
 type ModifyCuRequest struct {
-	// Specifies whether to restart the instance in fast restart mode. The default value is false.
+	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
 	//
-	// - true: Restarts the compute nodes in fast restart mode. The compute nodes are restarted in batches. Nodes within a batch are restarted in parallel, and batches are processed sequentially.
+	// - true: Automatic payment.
 	//
-	// - false: Restarts the compute nodes in rolling restart mode.
+	// - false: No automatic payment.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to use the fast restart mode. Default value: false.
+	//
+	// - true: Restarts compute nodes in the fast restart mode. Compute nodes are restarted in multiple batches. Nodes within a batch are restarted in parallel, and batches execute sequentially.
+	//
+	// - false: Restarts compute nodes in the rolling restart mode.
 	//
 	// example:
 	//
@@ -47,7 +62,12 @@ type ModifyCuRequest struct {
 	// example:
 	//
 	// ng-3d5ce6454354****
-	NodeGroupId       *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The coupon ID.
+	//
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The target number of CUs.
 	//
@@ -65,6 +85,10 @@ func (s ModifyCuRequest) String() string {
 
 func (s ModifyCuRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyCuRequest) GetAutoPay() *bool {
+	return s.AutoPay
 }
 
 func (s *ModifyCuRequest) GetFastMode() *bool {
@@ -85,6 +109,11 @@ func (s *ModifyCuRequest) GetPromotionOptionNo() *string {
 
 func (s *ModifyCuRequest) GetTarget() *int32 {
 	return s.Target
+}
+
+func (s *ModifyCuRequest) SetAutoPay(v bool) *ModifyCuRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *ModifyCuRequest) SetFastMode(v bool) *ModifyCuRequest {

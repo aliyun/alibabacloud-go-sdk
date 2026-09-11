@@ -180,9 +180,9 @@ type DescribeNodeGroupsResponseBodyData struct {
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The compute group architecture. Valid values:
 	//
-	// - onEci: Deployed on Elastic Container Instance (ECI).
+	// - onEci: Deployed on ECI.
 	//
-	// - onECS: Deployed on Elastic Compute Service (ECS).
+	// - onECS: Deployed on ECS.
 	//
 	// - onBareMetal: Deployed on a bare metal resource pool.
 	//
@@ -196,7 +196,7 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// 1742179008000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The instance ID associated with the bill. For default compute groups (FE compute group and default BE compute group), this value is the instance ID. Otherwise, it is the compute group ID.
+	// The instance ID associated with the bill. For default compute groups (FE compute group and the default BE compute group), this value is the instance ID. Otherwise, it is the compute group ID.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// 3
 	ResidentNodeNumber *int32 `json:"ResidentNodeNumber,omitempty" xml:"ResidentNodeNumber,omitempty"`
-	// The duration that the compute group has been running. Unit: seconds.
+	// The running time of the compute group. Unit: seconds.
 	//
 	// example:
 	//
@@ -390,9 +390,9 @@ type DescribeNodeGroupsResponseBodyData struct {
 	//
 	// - SCALING_IN: Scale-in in progress.
 	//
-	// - SCALING_UP: Upgrading specifications.
+	// - SCALING_UP: Scaling up.
 	//
-	// - SCALING_DOWN: Downgrading specifications.
+	// - SCALING_DOWN: Scaling down.
 	//
 	// - UPGRADING: Upgrading.
 	//
@@ -431,8 +431,9 @@ type DescribeNodeGroupsResponseBodyData struct {
 	// example:
 	//
 	// 100
-	StorageSize *int32                                    `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	Tags        []*DescribeNodeGroupsResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The list of tags.
+	Tags []*DescribeNodeGroupsResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The target number of elastic nodes.
 	//
 	// example:
@@ -805,7 +806,17 @@ func (s *DescribeNodeGroupsResponseBodyDataNodeInfo) Validate() error {
 }
 
 type DescribeNodeGroupsResponseBodyDataTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

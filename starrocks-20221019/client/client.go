@@ -25,21 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-southeast-1": dara.String("starrocks.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5": dara.String("starrocks.ap-southeast-5.aliyuncs.com"),
-		"cn-beijing":     dara.String("starrocks.cn-beijing.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("starrocks.cn-hangzhou.aliyuncs.com"),
-		"cn-hongkong":    dara.String("starrocks.cn-hongkong.aliyuncs.com"),
-		"cn-qingdao":     dara.String("starrocks.cn-qingdao.aliyuncs.com"),
-		"cn-shanghai":    dara.String("starrocks.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("starrocks.cn-shenzhen.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("starrocks.cn-wulanchabu.aliyuncs.com"),
-		"cn-zhangjiakou": dara.String("starrocks.cn-zhangjiakou.aliyuncs.com"),
-		"us-west-1":      dara.String("starrocks.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("starrocks.us-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("starrocks.eu-central-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1925,7 +1910,7 @@ func (client *Client) DescribeInstanceMetaToken(request *DescribeInstanceMetaTok
 
 // Summary:
 //
-// This operation queries Serverless StarRocks instances. You can filter the instances by criteria such as instance name and tags.
+// Queries Serverless StarRocks instances. You can filter instances by instance name, tags, and other criteria.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -2006,7 +1991,7 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 
 // Summary:
 //
-// This operation queries Serverless StarRocks instances. You can filter the instances by criteria such as instance name and tags.
+// Queries Serverless StarRocks instances. You can filter instances by instance name, tags, and other criteria.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -3353,25 +3338,25 @@ func (client *Client) ModifyChargeType(request *ModifyChargeTypeRequest) (_resul
 
 // Summary:
 //
-// You can use this API to change the number of Compute Units (CUs) in a compute group of a Serverless StarRocks instance.
+// Modifies the number of CUs for nodes in a compute group of a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this API, make sure that you understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
+// Before you use this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// When you call this API, note the following:
+// When you call this operation, take note of the following items:
 //
-// - This operation is supported only for Standard Edition instances. It is not supported for Starter Edition instances.
+// - Only standard instances support modifying the number of CUs for a compute group. Starter instances do not support this operation.
 //
-// - You can increase the number of disks only for instances with a standard compute group specification.
+// - Only instances whose compute group specification type is Standard (standard) support increasing the number of cloud disks.
 //
 // - The instance must be in the Running state.
 //
-// After you change the number of CUs, the billing for the instance is updated as follows:
+// After you modify the number of CUs, billing changes are as follows:
 //
-// - Pay-as-you-go: You are billed based on the new number of CUs.
+// - Pay-as-you-go: You are charged based on the new number of CUs.
 //
-// - Subscription: A supplementary fee is charged. This fee is calculated based on the price difference between the old and new configurations and the remaining subscription period. The remaining period starts at 00:00 on the following day and ends when the subscription expires.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyCuRequest
 //
@@ -3388,6 +3373,10 @@ func (client *Client) ModifyCuWithOptions(request *ModifyCuRequest, headers map[
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.FastMode) {
 		query["FastMode"] = request.FastMode
 	}
@@ -3434,25 +3423,25 @@ func (client *Client) ModifyCuWithOptions(request *ModifyCuRequest, headers map[
 
 // Summary:
 //
-// You can use this API to change the number of Compute Units (CUs) in a compute group of a Serverless StarRocks instance.
+// Modifies the number of CUs for nodes in a compute group of a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this API, make sure that you understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
+// Before you use this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// When you call this API, note the following:
+// When you call this operation, take note of the following items:
 //
-// - This operation is supported only for Standard Edition instances. It is not supported for Starter Edition instances.
+// - Only standard instances support modifying the number of CUs for a compute group. Starter instances do not support this operation.
 //
-// - You can increase the number of disks only for instances with a standard compute group specification.
+// - Only instances whose compute group specification type is Standard (standard) support increasing the number of cloud disks.
 //
 // - The instance must be in the Running state.
 //
-// After you change the number of CUs, the billing for the instance is updated as follows:
+// After you modify the number of CUs, billing changes are as follows:
 //
-// - Pay-as-you-go: You are billed based on the new number of CUs.
+// - Pay-as-you-go: You are charged based on the new number of CUs.
 //
-// - Subscription: A supplementary fee is charged. This fee is calculated based on the price difference between the old and new configurations and the remaining subscription period. The remaining period starts at 00:00 on the following day and ends when the subscription expires.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyCuRequest
 //
@@ -3471,7 +3460,7 @@ func (client *Client) ModifyCu(request *ModifyCuRequest) (_result *ModifyCuRespo
 
 // Summary:
 //
-// Performs a precheck before you modify the number of CUs for a warehouse.
+// Performs a dry run to check whether the number of CUs can be scaled up or down for nodes in the FE, BE, or CN compute group of a Serverless StarRocks instance.
 //
 // @param request - ModifyCuPreCheckRequest
 //
@@ -3526,7 +3515,7 @@ func (client *Client) ModifyCuPreCheckWithOptions(request *ModifyCuPreCheckReque
 
 // Summary:
 //
-// Performs a precheck before you modify the number of CUs for a warehouse.
+// Performs a dry run to check whether the number of CUs can be scaled up or down for nodes in the FE, BE, or CN compute group of a Serverless StarRocks instance.
 //
 // @param request - ModifyCuPreCheckRequest
 //
@@ -3545,25 +3534,25 @@ func (client *Client) ModifyCuPreCheck(request *ModifyCuPreCheckRequest) (_resul
 
 // Summary:
 //
-// Increases the number of disks for the nodes in a compute group of a Serverless StarRocks instance.
+// Increases the number of disk blocks for a compute group node in a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this operation, make sure you fully understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
+// Before you call this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// Note the following:
+// When you call this operation, take note of the following items:
 //
-// - The number of disks can be increased only for standard instances. This operation is not supported for entry-level instances.
+// - Only standard instances support increasing the disk count. Entry-level instances do not support this operation.
 //
-// - The number of disks can be increased only for instances whose compute group is the Standard Edition (standard).
+// - Only instances whose compute group specification type is Standard (standard) support increasing the disk count.
 //
 // - The instance must be in the Running state.
 //
-// After you increase the number of disks, billing changes as follows:
+// After you increase the disk count, billing changes are as follows:
 //
-// - Pay-as-you-go: You are billed based on the new disk type.
+// - Pay-as-you-go: You are charged based on the new disk type.
 //
-// - Subscription: A supplemental fee is calculated. This fee is based on the price difference between the old and new configurations and the remaining days in the billing cycle. The remaining period starts from 00:00 on the following day and ends when the subscription expires.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskNumberRequest
 //
@@ -3580,6 +3569,10 @@ func (client *Client) ModifyDiskNumberWithOptions(request *ModifyDiskNumberReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.FastMode) {
 		query["FastMode"] = request.FastMode
 	}
@@ -3626,25 +3619,25 @@ func (client *Client) ModifyDiskNumberWithOptions(request *ModifyDiskNumberReque
 
 // Summary:
 //
-// Increases the number of disks for the nodes in a compute group of a Serverless StarRocks instance.
+// Increases the number of disk blocks for a compute group node in a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this operation, make sure you fully understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
+// Before you call this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// Note the following:
+// When you call this operation, take note of the following items:
 //
-// - The number of disks can be increased only for standard instances. This operation is not supported for entry-level instances.
+// - Only standard instances support increasing the disk count. Entry-level instances do not support this operation.
 //
-// - The number of disks can be increased only for instances whose compute group is the Standard Edition (standard).
+// - Only instances whose compute group specification type is Standard (standard) support increasing the disk count.
 //
 // - The instance must be in the Running state.
 //
-// After you increase the number of disks, billing changes as follows:
+// After you increase the disk count, billing changes are as follows:
 //
-// - Pay-as-you-go: You are billed based on the new disk type.
+// - Pay-as-you-go: You are charged based on the new disk type.
 //
-// - Subscription: A supplemental fee is calculated. This fee is based on the price difference between the old and new configurations and the remaining days in the billing cycle. The remaining period starts from 00:00 on the following day and ends when the subscription expires.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskNumberRequest
 //
@@ -3663,29 +3656,29 @@ func (client *Client) ModifyDiskNumber(request *ModifyDiskNumberRequest) (_resul
 
 // Summary:
 //
-// This operation modifies the disk performance level of the nodes in a compute group of a Serverless StarRocks instance.
+// Modifies the disk performance level (PL) of nodes in a compute group of a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this operation, understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.1837281f3hbi2d#/ecs/detail/vm)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/ecs?_p_lc=1#pricing) of Serverless StarRocks.
+// Before you use this operation, make sure that you fully understand the billing and <props="china">[pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.1837281f3hbi2d#/ecs/detail/vm)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/ecs?_p_lc=1#pricing) of Serverless StarRocks.
 //
-// Note the following when you call this operation:
+// When you call this operation, take note of the following items:
 //
-// - You can upgrade or downgrade disks only for standard instances. This operation is not supported for Starter Edition instances.
+// - Only standard instances support disk specification changes. Entry-level instances are not supported.
 //
-// - Disk upgrades and downgrades are supported only for instances that have a Standard Edition (standard) compute group.
+// - Only instances whose compute group specification type is Standard (standard) support disk specification changes.
 //
 // - The instance must be in the Running state.
 //
-// - You cannot downgrade the disk performance level (PL) to PL0.
+// - Downgrading the disk to PL0 is not supported.
 //
-// - The performance level of an Enhanced SSD (ESSD) is limited by its capacity. If you cannot upgrade the performance level, increase the disk capacity and try again. For more information, see <props="china">[ESSDs](https://help.aliyun.com/zh/ecs/user-guide/essds)<props="intl">[ESSDs](https://www.alibabacloud.com/help/en/ecs/user-guide/essds).
+// - Because the performance level (PL) of an ESSD is limited by its capacity, if you cannot upgrade the performance level (PL), expand the cloud disk capacity and try again. For more information, see <props="china">[ESSDs](https://www.alibabacloud.com/help/en/ecs/user-guide/essds)<props="intl">[ESSDs](https://www.alibabacloud.com/help/en/ecs/user-guide/essds).
 //
-// After you change the disk configuration, the billing is adjusted as follows:
+// After the disk specification is changed, billing changes are as follows:
 //
-// - Pay-as-you-go: You are charged based on the new disk type.
+// - Pay-as-you-go: Billed based on the new disk type.
 //
-// - Subscription: A supplemental fee is calculated based on the price difference between the new and old configurations for the remainder of the billing cycle. The remaining period starts at 00:00 on the next day and ends when the subscription expires.
+// - Subscription: Within the billing cycle, the additional fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskPerformanceLevelRequest
 //
@@ -3702,6 +3695,10 @@ func (client *Client) ModifyDiskPerformanceLevelWithOptions(request *ModifyDiskP
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -3744,29 +3741,29 @@ func (client *Client) ModifyDiskPerformanceLevelWithOptions(request *ModifyDiskP
 
 // Summary:
 //
-// This operation modifies the disk performance level of the nodes in a compute group of a Serverless StarRocks instance.
+// Modifies the disk performance level (PL) of nodes in a compute group of a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this operation, understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.1837281f3hbi2d#/ecs/detail/vm)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/ecs?_p_lc=1#pricing) of Serverless StarRocks.
+// Before you use this operation, make sure that you fully understand the billing and <props="china">[pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.1837281f3hbi2d#/ecs/detail/vm)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/ecs?_p_lc=1#pricing) of Serverless StarRocks.
 //
-// Note the following when you call this operation:
+// When you call this operation, take note of the following items:
 //
-// - You can upgrade or downgrade disks only for standard instances. This operation is not supported for Starter Edition instances.
+// - Only standard instances support disk specification changes. Entry-level instances are not supported.
 //
-// - Disk upgrades and downgrades are supported only for instances that have a Standard Edition (standard) compute group.
+// - Only instances whose compute group specification type is Standard (standard) support disk specification changes.
 //
 // - The instance must be in the Running state.
 //
-// - You cannot downgrade the disk performance level (PL) to PL0.
+// - Downgrading the disk to PL0 is not supported.
 //
-// - The performance level of an Enhanced SSD (ESSD) is limited by its capacity. If you cannot upgrade the performance level, increase the disk capacity and try again. For more information, see <props="china">[ESSDs](https://help.aliyun.com/zh/ecs/user-guide/essds)<props="intl">[ESSDs](https://www.alibabacloud.com/help/en/ecs/user-guide/essds).
+// - Because the performance level (PL) of an ESSD is limited by its capacity, if you cannot upgrade the performance level (PL), expand the cloud disk capacity and try again. For more information, see <props="china">[ESSDs](https://www.alibabacloud.com/help/en/ecs/user-guide/essds)<props="intl">[ESSDs](https://www.alibabacloud.com/help/en/ecs/user-guide/essds).
 //
-// After you change the disk configuration, the billing is adjusted as follows:
+// After the disk specification is changed, billing changes are as follows:
 //
-// - Pay-as-you-go: You are charged based on the new disk type.
+// - Pay-as-you-go: Billed based on the new disk type.
 //
-// - Subscription: A supplemental fee is calculated based on the price difference between the new and old configurations for the remainder of the billing cycle. The remaining period starts at 00:00 on the next day and ends when the subscription expires.
+// - Subscription: Within the billing cycle, the additional fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskPerformanceLevelRequest
 //
@@ -3785,25 +3782,25 @@ func (client *Client) ModifyDiskPerformanceLevel(request *ModifyDiskPerformanceL
 
 // Summary:
 //
-// Scales out the disk of a compute group node for a Serverless StarRocks instance.
+// Scales up the disk capacity of compute group nodes in a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this operation, ensure that you understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
+// Before you use this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// Note the following:
+// When you call this operation, take note of the following items:
 //
-// - Only standard instances support disk scale-out. Entry-level instances do not.
+// - Only standard instances support disk scale-up. Entry-level instances do not support this operation.
 //
-// - Only instances that have a compute group of the standard specification type support disk scale-out.
+// - Only instances whose compute group specification type is Standard (standard) support disk scale-up.
 //
 // - The instance must be in the Running state.
 //
-// After you scale out the disk, your billing changes as follows:
+// After the disk is scaled up, billing changes are as follows:
 //
-// - Pay-as-you-go: You are charged based on the new disk size.
+// - Pay-as-you-go: You are billed based on the new disk size.
 //
-// - Subscription: You must pay an upgrade fee. The fee is calculated based on the price difference between the old and new configurations and the remaining subscription period. The remaining subscription period is calculated starting from 00:00 on the next day.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskSizeRequest
 //
@@ -3820,6 +3817,10 @@ func (client *Client) ModifyDiskSizeWithOptions(request *ModifyDiskSizeRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.FastMode) {
 		query["FastMode"] = request.FastMode
 	}
@@ -3866,25 +3867,25 @@ func (client *Client) ModifyDiskSizeWithOptions(request *ModifyDiskSizeRequest, 
 
 // Summary:
 //
-// Scales out the disk of a compute group node for a Serverless StarRocks instance.
+// Scales up the disk capacity of compute group nodes in a Serverless StarRocks instance.
 //
 // Description:
 //
-// Before you call this operation, ensure that you understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
+// Before you use this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// Note the following:
+// When you call this operation, take note of the following items:
 //
-// - Only standard instances support disk scale-out. Entry-level instances do not.
+// - Only standard instances support disk scale-up. Entry-level instances do not support this operation.
 //
-// - Only instances that have a compute group of the standard specification type support disk scale-out.
+// - Only instances whose compute group specification type is Standard (standard) support disk scale-up.
 //
 // - The instance must be in the Running state.
 //
-// After you scale out the disk, your billing changes as follows:
+// After the disk is scaled up, billing changes are as follows:
 //
-// - Pay-as-you-go: You are charged based on the new disk size.
+// - Pay-as-you-go: You are billed based on the new disk size.
 //
-// - Subscription: You must pay an upgrade fee. The fee is calculated based on the price difference between the old and new configurations and the remaining subscription period. The remaining subscription period is calculated starting from 00:00 on the next day.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskSizeRequest
 //
@@ -3903,23 +3904,25 @@ func (client *Client) ModifyDiskSize(request *ModifyDiskSizeRequest) (_result *M
 
 // Summary:
 //
-// # Change the disk type for nodes in a compute group
+// Modifies the disk type of nodes in a compute group.
 //
 // Description:
 //
-// Before you call this operation, review the Serverless StarRocks billing model and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P).
+// Before you call this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// - Only standard instances support disk scaling. Starter instances do not support disk scaling.
+// When you call this operation, take note of the following items:
 //
-// - Only instances with a compute group specification type of Standard Edition support disk scaling.
+// - Only Standard Standard instances support disk expansion. Starter Standard instances do not support disk expansion.
+//
+// - Only instances whose compute group specification type is Standard (standard) support disk expansion.
 //
 // - The instance must be in the Running state.
 //
-// After disk scaling, billing changes as follows:
+// After disk expansion, billing changes are as follows:
 //
 // - Pay-as-you-go: You are billed based on the new disk size.
 //
-// - Subscription: During the billing cycle, the additional fee is calculated based on the price difference between the old and new configurations and the remaining days, from 00:00 the next day to the end of the validity period.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskTypeRequest
 //
@@ -3936,6 +3939,10 @@ func (client *Client) ModifyDiskTypeWithOptions(request *ModifyDiskTypeRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -3982,23 +3989,25 @@ func (client *Client) ModifyDiskTypeWithOptions(request *ModifyDiskTypeRequest, 
 
 // Summary:
 //
-// # Change the disk type for nodes in a compute group
+// Modifies the disk type of nodes in a compute group.
 //
 // Description:
 //
-// Before you call this operation, review the Serverless StarRocks billing model and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P).
+// Before you call this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// - Only standard instances support disk scaling. Starter instances do not support disk scaling.
+// When you call this operation, take note of the following items:
 //
-// - Only instances with a compute group specification type of Standard Edition support disk scaling.
+// - Only Standard Standard instances support disk expansion. Starter Standard instances do not support disk expansion.
+//
+// - Only instances whose compute group specification type is Standard (standard) support disk expansion.
 //
 // - The instance must be in the Running state.
 //
-// After disk scaling, billing changes as follows:
+// After disk expansion, billing changes are as follows:
 //
 // - Pay-as-you-go: You are billed based on the new disk size.
 //
-// - Subscription: During the billing cycle, the additional fee is calculated based on the price difference between the old and new configurations and the remaining days, from 00:00 the next day to the end of the validity period.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyDiskTypeRequest
 //
@@ -4351,7 +4360,7 @@ func (client *Client) ModifyMaintainableTime(request *ModifyMaintainableTimeRequ
 //
 // When calling this operation, note the following:
 //
-// - Only Standard Standard instances support modifying the number of compute group nodes. Basic Standard instances do not support this operation.
+// - Only Standard Standard instances support modifying the number of nodes in a compute group. Entry Standard instances do not support this operation.
 //
 // - The instance must be in the Running state.
 //
@@ -4361,7 +4370,7 @@ func (client *Client) ModifyMaintainableTime(request *ModifyMaintainableTimeRequ
 //
 // - Pay-as-you-go: Billed based on the new node count.
 //
-// - Subscription: Within the billing cycle, the additional fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyNodeNumberRequest
 //
@@ -4378,6 +4387,10 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -4436,7 +4449,7 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 //
 // When calling this operation, note the following:
 //
-// - Only Standard Standard instances support modifying the number of compute group nodes. Basic Standard instances do not support this operation.
+// - Only Standard Standard instances support modifying the number of nodes in a compute group. Entry Standard instances do not support this operation.
 //
 // - The instance must be in the Running state.
 //
@@ -4446,7 +4459,7 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 //
 // - Pay-as-you-go: Billed based on the new node count.
 //
-// - Subscription: Within the billing cycle, the additional fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - ModifyNodeNumberRequest
 //
@@ -4621,7 +4634,7 @@ func (client *Client) ModifyScalingRule(request *ModifyScalingRuleRequest) (_res
 
 // Summary:
 //
-// Modify the node specifications type of the compute group.
+// Modifies the node specifications type of a compute group.
 //
 // @param request - ModifySpecTypeRequest
 //
@@ -4638,6 +4651,10 @@ func (client *Client) ModifySpecTypeWithOptions(request *ModifySpecTypeRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.FastMode) {
 		query["FastMode"] = request.FastMode
 	}
@@ -4684,7 +4701,7 @@ func (client *Client) ModifySpecTypeWithOptions(request *ModifySpecTypeRequest, 
 
 // Summary:
 //
-// Modify the node specifications type of the compute group.
+// Modifies the node specifications type of a compute group.
 //
 // @param request - ModifySpecTypeRequest
 //
@@ -5113,25 +5130,25 @@ func (client *Client) QueryModifyChargeTypePrice(request *QueryModifyChargeTypeP
 
 // Summary:
 //
-// Queries the price for modifying the CU of compute group nodes.
+// Queries the price for modifying the CU count of a compute group node.
 //
 // Description:
 //
-// Before you use this API, understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G) <props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) for Serverless StarRocks.
+// Before you call this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// When you call this API, note the following:
+// When you call this operation, take note of the following items:
 //
-// - Only standard instances allow you to modify the number of CUs for compute groups. Entry-level instances do not.
+// - Only standard instances support modifying the CU count of a compute group. Starter instances do not support this operation.
 //
-// - You can increase the disk size only for instances with a Standard Edition (standard) compute group.
+// - Only instances whose compute group specification type is Standard (standard) support increasing the number of disks.
 //
 // - The instance must be in the Running state.
 //
-// After you modify the number of CUs, billing changes as follows:
+// After you modify the CU count, billing changes are as follows:
 //
-// - Pay-as-you-go: Billing is based on the new number of CUs.
+// - Pay-as-you-go: You are billed based on the new CU count.
 //
-// - Subscription: The amount to pay is calculated based on the price difference between the old and new configurations for the remainder of the subscription period. This period starts at 00:00 on the following day.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - QueryModifyCuPriceRequest
 //
@@ -5190,25 +5207,25 @@ func (client *Client) QueryModifyCuPriceWithOptions(request *QueryModifyCuPriceR
 
 // Summary:
 //
-// Queries the price for modifying the CU of compute group nodes.
+// Queries the price for modifying the CU count of a compute group node.
 //
 // Description:
 //
-// Before you use this API, understand the billing methods and <props="china">[billable items](https://help.aliyun.com/zh/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c4g.11186623.help-menu-28066.d_0_1_1.4db82b05p3Gg0G) <props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) for Serverless StarRocks.
+// Before you call this operation, make sure that you fully understand the billing method and <props="china">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items)<props="intl">[billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of Serverless StarRocks.
 //
-// When you call this API, note the following:
+// When you call this operation, take note of the following items:
 //
-// - Only standard instances allow you to modify the number of CUs for compute groups. Entry-level instances do not.
+// - Only standard instances support modifying the CU count of a compute group. Starter instances do not support this operation.
 //
-// - You can increase the disk size only for instances with a Standard Edition (standard) compute group.
+// - Only instances whose compute group specification type is Standard (standard) support increasing the number of disks.
 //
 // - The instance must be in the Running state.
 //
-// After you modify the number of CUs, billing changes as follows:
+// After you modify the CU count, billing changes are as follows:
 //
-// - Pay-as-you-go: Billing is based on the new number of CUs.
+// - Pay-as-you-go: You are billed based on the new CU count.
 //
-// - Subscription: The amount to pay is calculated based on the price difference between the old and new configurations for the remainder of the subscription period. This period starts at 00:00 on the following day.
+// - Subscription: Within the billing cycle, the supplemental fee is calculated based on the price difference between the old and new configurations and the remaining days (from 00:00 of the next day to the end of the validity period).
 //
 // @param request - QueryModifyCuPriceRequest
 //

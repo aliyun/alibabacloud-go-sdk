@@ -26,7 +26,7 @@ type ModifyCuPreCheckRequest struct {
 	//
 	// c-b25e21e24388****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The warehouse ID.
+	// The compute group ID.
 	//
 	// This parameter is required.
 	//
@@ -34,21 +34,7 @@ type ModifyCuPreCheckRequest struct {
 	//
 	// ng-d332aa8bca48****
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// The number of CUs to which you want to change.
-	//
-	// Valid values:
-	//
-	// 	- 2
-	//
-	// 	- 4
-	//
-	// 	- 8
-	//
-	// 	- 16
-	//
-	// 	- 32
-	//
-	// 	- 64
+	// The target number of CUs.
 	//
 	// This parameter is required.
 	//

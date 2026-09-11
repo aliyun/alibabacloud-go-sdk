@@ -85,9 +85,21 @@ type CreateInstanceV1Request struct {
 	// example:
 	//
 	// password_example
-	AdminPassword  *string                                `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
+	AdminPassword *string `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
+	// The agent compute group.
 	AgentNodeGroup *CreateInstanceV1RequestAgentNodeGroup `json:"AgentNodeGroup,omitempty" xml:"AgentNodeGroup,omitempty" type:"Struct"`
-	AutoPay        *bool                                  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
+	//
+	// Valid values:
+	//
+	// - true: Automatic payment.
+	//
+	// - false: No automatic payment.
+	//
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. This parameter takes effect only when payType is set to PrePaid. Auto-renewal is disabled by default.
 	//
 	// example:
@@ -119,8 +131,9 @@ type CreateInstanceV1Request struct {
 	// example:
 	//
 	// 1
-	Duration         *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EnableAiFunction *bool  `json:"EnableAiFunction,omitempty" xml:"EnableAiFunction,omitempty"`
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Specifies whether to enable the AI Center. Default value: false.
+	EnableAiFunction *bool `json:"EnableAiFunction,omitempty" xml:"EnableAiFunction,omitempty"`
 	// Specifies whether to enable disaster recovery.
 	EnableMultiAz *bool `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
 	// Specifies whether to enable encryption.
@@ -131,7 +144,12 @@ type CreateInstanceV1Request struct {
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The FE node group information.
 	FrontendNodeGroups []*CreateInstanceV1RequestFrontendNodeGroups `json:"FrontendNodeGroups,omitempty" xml:"FrontendNodeGroups,omitempty" type:"Repeated"`
-	GatewayType        *string                                      `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The gateway type. Valid values: Slb and Privatezone.
+	//
+	// example:
+	//
+	// Traditional\\"\\"
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// The instance name.
 	//
 	// This parameter is required.
@@ -152,21 +170,21 @@ type CreateInstanceV1Request struct {
 	//
 	// aliyun.test1
 	LinkedRamUserName *string `json:"LinkedRamUserName,omitempty" xml:"LinkedRamUserName,omitempty"`
-	// The Observer node group information. Specify this parameter only when you need to enable cross-zone disaster recovery. The Observer node group specifications must be the same as those of the FE node group.
+	// The Observer node group information. Specify this parameter only when you need to enable multi-zone disaster recovery. The Observer node group specifications must be the same as those of the FE node group.
 	ObserverNodeGroups []*CreateInstanceV1RequestObserverNodeGroups `json:"ObserverNodeGroups,omitempty" xml:"ObserverNodeGroups,omitempty" type:"Repeated"`
-	// The name of the role used for password-free access to Object Storage Service (OSS).
+	// The name of the role used for password-free access to OSS.
 	//
 	// example:
 	//
 	// AliyunEMRStarRocksAccessingOSSRole
 	OssAccessingRoleName *string `json:"OssAccessingRoleName,omitempty" xml:"OssAccessingRoleName,omitempty"`
-	// The instance edition. Valid values:
+	// The instance edition:
 	//
 	// <ul>
 	//
-	// <li>trial: Trial Edition.</li>
+	// <li>  Entry edition (trial).</li>
 	//
-	// <li>official: Standard Edition.</li>
+	// <li> Standard edition (official).</li>
 	//
 	// </ul>
 	//
@@ -248,7 +266,7 @@ type CreateInstanceV1Request struct {
 	//
 	// - shared_nothing: compute-storage coupled.
 	//
-	// - shared_data: storage-compute disaggregation.
+	// - shared_data: compute-storage decoupled.
 	//
 	// This parameter is required.
 	//
@@ -646,6 +664,11 @@ func (s *CreateInstanceV1Request) Validate() error {
 }
 
 type CreateInstanceV1RequestAgentNodeGroup struct {
+	// The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+	//
+	// example:
+	//
+	// 2
 	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
 }
 
@@ -704,15 +727,7 @@ type CreateInstanceV1RequestBackendNodeGroups struct {
 	//
 	// standard
 	SpecType *string `json:"specType,omitempty" xml:"specType,omitempty"`
-	// The performance level of the cloud disk. Valid values:
-	//
-	// - pl0: A single disk delivers up to 10,000 random read/write IOPS.
-	//
-	// - pl1: A single disk delivers up to 50,000 random read/write IOPS.
-	//
-	// - pl2: A single disk delivers up to 100,000 random read/write IOPS.
-	//
-	// - pl3: A single disk delivers up to 1,000,000 random read/write IOPS.
+	// The performance level (PL) of the cloud disk. Valid values:
 	//
 	// example:
 	//
