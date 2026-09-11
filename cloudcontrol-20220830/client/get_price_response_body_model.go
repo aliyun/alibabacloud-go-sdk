@@ -53,7 +53,12 @@ func (s *GetPriceResponseBody) SetRequestId(v string) *GetPriceResponseBody {
 }
 
 func (s *GetPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPriceResponseBodyPrice struct {
@@ -150,7 +155,25 @@ func (s *GetPriceResponseBodyPrice) SetTradePrice(v float32) *GetPriceResponseBo
 }
 
 func (s *GetPriceResponseBodyPrice) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleDetails != nil {
+		for _, item := range s.ModuleDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PromotionDetails != nil {
+		for _, item := range s.PromotionDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPriceResponseBodyPriceModuleDetails struct {
@@ -266,8 +289,16 @@ type GetPriceResponseBodyPricePromotionDetails struct {
 	// 37284
 	PromotionDesc *string `json:"promotionDesc,omitempty" xml:"promotionDesc,omitempty"`
 	// The ID of the promotion.
+	//
+	// example:
+	//
+	// 数据盘享8.5折
 	PromotionId *int64 `json:"promotionId,omitempty" xml:"promotionId,omitempty"`
 	// The name of the promotion.
+	//
+	// example:
+	//
+	// 数据盘享8.5折
 	PromotionName *string `json:"promotionName,omitempty" xml:"promotionName,omitempty"`
 }
 

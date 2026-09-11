@@ -24,13 +24,13 @@ type iGetResourcesResponseBody interface {
 }
 
 type GetResourcesResponseBody struct {
-	// The maximum number of entries returned. Return result of the List operation.
+	// The maximum number of records returned for the current request. This parameter is returned by the List operation.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. Return result of the List operation.
+	// The position where the current call finished reading. An empty value indicates that all data has been read. This parameter is returned by the List operation.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type GetResourcesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The specified resource. Return result of the Get operation.
+	// The specified resource. This parameter is returned by the Get operation.
 	Resource *GetResourcesResponseBodyResource `json:"resource,omitempty" xml:"resource,omitempty" type:"Struct"`
-	// The resource list. Return result of the List operation.
+	// A list of resources. This parameter is returned by the List operation.
 	Resources []*GetResourcesResponseBodyResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
-	// The total number of entries returned. Return result of the List operation.
+	// The total number of entries that match the query conditions. This parameter is returned by the List operation.
 	//
 	// example:
 	//
@@ -117,17 +117,31 @@ func (s *GetResourcesResponseBody) SetTotalCount(v int32) *GetResourcesResponseB
 }
 
 func (s *GetResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourcesResponseBodyResource struct {
-	// The resource properties in the JSON format.
+	// The resource properties in JSON format.
 	//
 	// example:
 	//
-	// {"Status":"Available","Description":"","AccountPrivilege":"RoleReadWrite","InstanceId":"r-8vbf5abe31c9c4d4","RegionId":"cn-zhangjiakou","AccountType":"Normal","TypeInfo":{},"AccountName":"cctest"}
+	// {"Status":"Available","Description":"","AccountPrivilege":"RoleReadWrite","InstanceId":"r-2ze8v41uei31lo****","RegionId":"cn-zhangjiakou","AccountType":"Normal","TypeInfo":{},"AccountName":"cctest"}
 	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
@@ -166,13 +180,13 @@ func (s *GetResourcesResponseBodyResource) Validate() error {
 }
 
 type GetResourcesResponseBodyResources struct {
-	// The resource properties in the JSON format.
+	// The resource properties in JSON format.
 	//
 	// example:
 	//
-	// {"Status":"Available","Description":"","AccountPrivilege":"RoleReadWrite","InstanceId":"r-8vbf5abe31c9c4d4","RegionId":"cn-zhangjiakou","AccountType":"Normal","TypeInfo":{},"AccountName":"cctest"}
+	// {"Status":"Available","Description":"","AccountPrivilege":"RoleReadWrite","InstanceId":"r-2ze8v41uei31lo****","RegionId":"cn-zhangjiakou","AccountType":"Normal","TypeInfo":{},"AccountName":"cctest"}
 	ResourceAttributes map[string]interface{} `json:"resourceAttributes,omitempty" xml:"resourceAttributes,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//

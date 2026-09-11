@@ -20,21 +20,43 @@ type iGetResourcesRequest interface {
 }
 
 type GetResourcesRequest struct {
-	// The filter condition. The JSON format. You can use some resource properties as filter conditions.
+	// The filter conditions for resources.
+	//
+	// Specify multiple key-value pairs in JSON format to filter resources. If a List or Get operation for a cloud product supports filtering by specific properties, you can use those properties as filter conditions for this parameter.
+	//
+	// > The supported filter fields may vary for different resource types. For more information about the supported fields, see the OpenAPI documentation for the specific resource.
+	//
+	// For example, DBInstance resources support filtering by the `EditionType` and `PaymentType` fields.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "EditionType": "Community",
+	//
+	//   "PaymentType": "PostPaid"
+	//
+	// }
 	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The maximum number of records to return on each page for a paged query. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
+	// The pagination token.
+	//
+	// - You do not need to specify this parameter for the first query. The system returns data from the first page.
+	//
+	// - For subsequent queries, set this parameter to the nextToken value returned from the previous call.
+	//
+	// > If this parameter contains only digits, Cloud Control API treats it as the `PageNumber` for paging.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the region. This parameter is required if the cloud product is deployed in a region.
+	// The region ID. This parameter is required if the cloud product is region-specific.
 	//
 	// example:
 	//

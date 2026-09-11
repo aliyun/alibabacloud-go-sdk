@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -23,7 +24,37 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-1": dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2": dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-2": dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3": dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-5": dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-6": dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-7": dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"cn-beijing":     dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-chengdu":     dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-fuzhou":      dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-heyuan":      dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-hongkong":    dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"cn-huhehaote":   dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-nanjing":     dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-qingdao":     dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-shanghai":    dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("cloudcontrol.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("cloudcontrol.aliyuncs.com"),
+		"us-west-1":      dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"us-east-1":      dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"eu-west-1":      dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"me-east-1":      dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"me-central-1":   dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":     dara.String("cloudcontrol.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -135,9 +166,11 @@ func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _
 //
 // @return CreateResourceResponse
 func (client *Client) CreateResourceWithOptions(requestPath *string, request *CreateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -200,11 +233,11 @@ func (client *Client) CreateResource(requestPath *string, request *CreateResourc
 
 // Summary:
 //
-// Calls this operation to delete resources.
+// Deletes a resource.
 //
 // Description:
 //
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
+// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view resource documentation and try Cloud Control API.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -216,9 +249,11 @@ func (client *Client) CreateResource(requestPath *string, request *CreateResourc
 //
 // @return DeleteResourceResponse
 func (client *Client) DeleteResourceWithOptions(requestPath *string, tmpReq *DeleteResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteResourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -265,11 +300,11 @@ func (client *Client) DeleteResourceWithOptions(requestPath *string, tmpReq *Del
 
 // Summary:
 //
-// Calls this operation to delete resources.
+// Deletes a resource.
 //
 // Description:
 //
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
+// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view resource documentation and try Cloud Control API.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -281,6 +316,67 @@ func (client *Client) DeleteResource(requestPath *string, request *DeleteResourc
 	headers := make(map[string]*string)
 	_result = &DeleteResourceResponse{}
 	_body, _err := client.DeleteResourceWithOptions(requestPath, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries pricing based on an OpenAPI triplet and input parameters.
+//
+// @param request - GetApiPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiPriceResponse
+func (client *Client) GetApiPriceWithOptions(request *GetApiPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApiPrice"),
+		Version:     dara.String("2022-08-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/price/quote"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApiPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries pricing based on an OpenAPI triplet and input parameters.
+//
+// @param request - GetApiPriceRequest
+//
+// @return GetApiPriceResponse
+func (client *Client) GetApiPrice(request *GetApiPriceRequest) (_result *GetApiPriceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetApiPriceResponse{}
+	_body, _err := client.GetApiPriceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -302,9 +398,11 @@ func (client *Client) DeleteResource(requestPath *string, request *DeleteResourc
 //
 // @return GetPriceResponse
 func (client *Client) GetPriceWithOptions(requestPath *string, tmpReq *GetPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPriceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetPriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -368,7 +466,7 @@ func (client *Client) GetPrice(requestPath *string, request *GetPriceRequest) (_
 
 // Summary:
 //
-// You can call the operation to obtain resource metadata.
+// Retrieves resource metadata.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -412,7 +510,7 @@ func (client *Client) GetResourceTypeWithOptions(requestPath *string, headers *G
 
 // Summary:
 //
-// You can call the operation to obtain resource metadata.
+// Retrieves resource metadata.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -431,13 +529,13 @@ func (client *Client) GetResourceType(requestPath *string) (_result *GetResource
 
 // Summary:
 //
-// You can call the operation to query resources.
+// Query resources.
 //
 // Description:
 //
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
+// You can go to the [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the resource documentation and test the Cloud Control API.
 //
-// You can call this operation to query resources List and Get based on different request paths.
+// This API provides Get and List operations for resources that you can invoke using different request URIs.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -449,9 +547,11 @@ func (client *Client) GetResourceType(requestPath *string) (_result *GetResource
 //
 // @return GetResourcesResponse
 func (client *Client) GetResourcesWithOptions(requestPath *string, tmpReq *GetResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetResourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -502,13 +602,13 @@ func (client *Client) GetResourcesWithOptions(requestPath *string, tmpReq *GetRe
 
 // Summary:
 //
-// You can call the operation to query resources.
+// Query resources.
 //
 // Description:
 //
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
+// You can go to the [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the resource documentation and test the Cloud Control API.
 //
-// You can call this operation to query resources List and Get based on different request paths.
+// This API provides Get and List operations for resources that you can invoke using different request URIs.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -587,7 +687,76 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 
 // Summary:
 //
-// You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
+// Retrieves pricing mapping catalogs in batches by Terraform resource type for cost estimation during the RunIaC plan phase.
+//
+// Description:
+//
+// Retrieves the mappings between schema properties in the Terraform alicloud provider and OpenAPI parameters.
+//
+// @param request - GetTerraformPricingMappingsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTerraformPricingMappingsResponse
+func (client *Client) GetTerraformPricingMappingsWithOptions(request *GetTerraformPricingMappingsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTerraformPricingMappingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTerraformPricingMappings"),
+		Version:     dara.String("2022-08-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/price/terraform-mappings"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTerraformPricingMappingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves pricing mapping catalogs in batches by Terraform resource type for cost estimation during the RunIaC plan phase.
+//
+// Description:
+//
+// Retrieves the mappings between schema properties in the Terraform alicloud provider and OpenAPI parameters.
+//
+// @param request - GetTerraformPricingMappingsRequest
+//
+// @return GetTerraformPricingMappingsResponse
+func (client *Client) GetTerraformPricingMappings(request *GetTerraformPricingMappingsRequest) (_result *GetTerraformPricingMappingsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTerraformPricingMappingsResponse{}
+	_body, _err := client.GetTerraformPricingMappingsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the valid values of resource attributes, such as RegionID and ZoneId.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -599,9 +768,11 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 //
 // @return ListDataSourcesResponse
 func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataSourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -644,7 +815,7 @@ func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *Li
 
 // Summary:
 //
-// You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
+// Queries the valid values of resource attributes, such as RegionID and ZoneId.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -679,9 +850,11 @@ func (client *Client) ListDataSources(requestPath *string, request *ListDataSour
 //
 // @return ListProductsResponse
 func (client *Client) ListProductsWithOptions(provider *string, request *ListProductsRequest, headers *ListProductsHeaders, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -764,9 +937,11 @@ func (client *Client) ListProducts(provider *string, request *ListProductsReques
 //
 // @return ListResourceTypesResponse
 func (client *Client) ListResourceTypesWithOptions(provider *string, product *string, tmpReq *ListResourceTypesRequest, headers *ListResourceTypesHeaders, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListResourceTypesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -845,6 +1020,76 @@ func (client *Client) ListResourceTypes(provider *string, product *string, reque
 
 // Summary:
 //
+// Lists the OpenAPI triplets that currently support price inquiry.
+//
+// @param request - ListSupportedPricingApisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupportedPricingApisResponse
+func (client *Client) ListSupportedPricingApisWithOptions(request *ListSupportedPricingApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSupportedPricingApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSupportedPricingApis"),
+		Version:     dara.String("2022-08-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/price/supported-apis"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSupportedPricingApisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists the OpenAPI triplets that currently support price inquiry.
+//
+// @param request - ListSupportedPricingApisRequest
+//
+// @return ListSupportedPricingApisResponse
+func (client *Client) ListSupportedPricingApis(request *ListSupportedPricingApisRequest) (_result *ListSupportedPricingApisResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSupportedPricingApisResponse{}
+	_body, _err := client.ListSupportedPricingApisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Calls this operation to update resources.
 //
 // Description:
@@ -865,9 +1110,11 @@ func (client *Client) ListResourceTypes(provider *string, product *string, reque
 //
 // @return UpdateResourceResponse
 func (client *Client) UpdateResourceWithOptions(requestPath *string, request *UpdateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {

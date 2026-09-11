@@ -16,9 +16,9 @@ type iListDataSourcesResponseBody interface {
 }
 
 type ListDataSourcesResponseBody struct {
-	// The queried data.
+	// The list of data.
 	DataSources []*ListDataSourcesResponseBodyDataSources `json:"dataSources,omitempty" xml:"dataSources,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -53,11 +53,20 @@ func (s *ListDataSourcesResponseBody) SetRequestId(v string) *ListDataSourcesRes
 }
 
 func (s *ListDataSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataSources != nil {
+		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourcesResponseBodyDataSources struct {
-	// The ID of the data.
+	// The data ID.
 	//
 	// example:
 	//

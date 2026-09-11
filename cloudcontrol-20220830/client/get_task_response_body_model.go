@@ -53,7 +53,12 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 }
 
 func (s *GetTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Task != nil {
+		if err := s.Task.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTask struct {
@@ -228,7 +233,12 @@ func (s *GetTaskResponseBodyTask) SetTaskId(v string) *GetTaskResponseBodyTask {
 }
 
 func (s *GetTaskResponseBodyTask) Validate() error {
-	return dara.Validate(s)
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTaskResponseBodyTaskError struct {

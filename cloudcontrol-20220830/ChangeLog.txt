@@ -1,3 +1,6 @@
+2026-09-11 Version: v1.1.3
+- Generated golang 2022-08-30 for cloudcontrol.
+
 2025-09-17 Version: v1.1.2
 - Update API DeleteResource: add request parameters filter.
 

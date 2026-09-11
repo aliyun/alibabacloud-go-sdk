@@ -17,11 +17,11 @@ type iGetResourceTypeHeaders interface {
 
 type GetResourceTypeHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The language selected for the returned product.
+	// The language in which the product information is returned. Valid values:
 	//
 	// zh_CH: Chinese (default)
 	//
-	// en_US: English
+	// en_US: English.
 	//
 	// example:
 	//

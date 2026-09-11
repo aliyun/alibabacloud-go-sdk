@@ -16,7 +16,7 @@ type iListDataSourcesRequest interface {
 }
 
 type ListDataSourcesRequest struct {
-	// The name of the property. RegionId is supported.
+	// The name of the attribute. Only `RegionId` is supported.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListDataSourcesRequest struct {
 	//
 	// RegionId
 	AttributeName *string `json:"attributeName,omitempty" xml:"attributeName,omitempty"`
-	// The filter conditions. JSON format:{"key1":"value1"}.
+	// The filter condition. The value must be a JSON string in the {"key1":"value1"} format.
 	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
 }
 

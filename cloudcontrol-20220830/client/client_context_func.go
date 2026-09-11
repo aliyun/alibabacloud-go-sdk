@@ -64,9 +64,11 @@ func (client *Client) CancelTaskWithContext(ctx context.Context, taskId *string,
 //
 // @return CreateResourceResponse
 func (client *Client) CreateResourceWithContext(ctx context.Context, requestPath *string, request *CreateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -104,11 +106,11 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, requestPath
 
 // Summary:
 //
-// Calls this operation to delete resources.
+// Deletes a resource.
 //
 // Description:
 //
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
+// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view resource documentation and try Cloud Control API.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -120,9 +122,11 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, requestPath
 //
 // @return DeleteResourceResponse
 func (client *Client) DeleteResourceWithContext(ctx context.Context, requestPath *string, tmpReq *DeleteResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteResourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -169,6 +173,48 @@ func (client *Client) DeleteResourceWithContext(ctx context.Context, requestPath
 
 // Summary:
 //
+// Queries pricing based on an OpenAPI triplet and input parameters.
+//
+// @param request - GetApiPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiPriceResponse
+func (client *Client) GetApiPriceWithContext(ctx context.Context, request *GetApiPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApiPrice"),
+		Version:     dara.String("2022-08-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/price/quote"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApiPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // An RFQ interface through which users can query resource prices.
 //
 // @param requestPath - the whole path of resource string
@@ -181,9 +227,11 @@ func (client *Client) DeleteResourceWithContext(ctx context.Context, requestPath
 //
 // @return GetPriceResponse
 func (client *Client) GetPriceWithContext(ctx context.Context, requestPath *string, tmpReq *GetPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPriceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetPriceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -226,7 +274,7 @@ func (client *Client) GetPriceWithContext(ctx context.Context, requestPath *stri
 
 // Summary:
 //
-// You can call the operation to obtain resource metadata.
+// Retrieves resource metadata.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -270,13 +318,13 @@ func (client *Client) GetResourceTypeWithContext(ctx context.Context, requestPat
 
 // Summary:
 //
-// You can call the operation to query resources.
+// Query resources.
 //
 // Description:
 //
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
+// You can go to the [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the resource documentation and test the Cloud Control API.
 //
-// You can call this operation to query resources List and Get based on different request paths.
+// This API provides Get and List operations for resources that you can invoke using different request URIs.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -288,9 +336,11 @@ func (client *Client) GetResourceTypeWithContext(ctx context.Context, requestPat
 //
 // @return GetResourcesResponse
 func (client *Client) GetResourcesWithContext(ctx context.Context, requestPath *string, tmpReq *GetResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetResourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -378,7 +428,53 @@ func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, he
 
 // Summary:
 //
-// You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
+// Retrieves pricing mapping catalogs in batches by Terraform resource type for cost estimation during the RunIaC plan phase.
+//
+// Description:
+//
+// Retrieves the mappings between schema properties in the Terraform alicloud provider and OpenAPI parameters.
+//
+// @param request - GetTerraformPricingMappingsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTerraformPricingMappingsResponse
+func (client *Client) GetTerraformPricingMappingsWithContext(ctx context.Context, request *GetTerraformPricingMappingsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTerraformPricingMappingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTerraformPricingMappings"),
+		Version:     dara.String("2022-08-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/price/terraform-mappings"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTerraformPricingMappingsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the valid values of resource attributes, such as RegionID and ZoneId.
 //
 // @param requestPath - the whole path of resource string
 //
@@ -390,9 +486,11 @@ func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, he
 //
 // @return ListDataSourcesResponse
 func (client *Client) ListDataSourcesWithContext(ctx context.Context, requestPath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListDataSourcesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -449,9 +547,11 @@ func (client *Client) ListDataSourcesWithContext(ctx context.Context, requestPat
 //
 // @return ListProductsResponse
 func (client *Client) ListProductsWithContext(ctx context.Context, provider *string, request *ListProductsRequest, headers *ListProductsHeaders, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -511,9 +611,11 @@ func (client *Client) ListProductsWithContext(ctx context.Context, provider *str
 //
 // @return ListResourceTypesResponse
 func (client *Client) ListResourceTypesWithContext(ctx context.Context, provider *string, product *string, tmpReq *ListResourceTypesRequest, headers *ListResourceTypesHeaders, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListResourceTypesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -569,6 +671,57 @@ func (client *Client) ListResourceTypesWithContext(ctx context.Context, provider
 
 // Summary:
 //
+// Lists the OpenAPI triplets that currently support price inquiry.
+//
+// @param request - ListSupportedPricingApisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupportedPricingApisResponse
+func (client *Client) ListSupportedPricingApisWithContext(ctx context.Context, request *ListSupportedPricingApisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSupportedPricingApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSupportedPricingApis"),
+		Version:     dara.String("2022-08-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/price/supported-apis"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSupportedPricingApisResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Calls this operation to update resources.
 //
 // Description:
@@ -589,9 +742,11 @@ func (client *Client) ListResourceTypesWithContext(ctx context.Context, provider
 //
 // @return UpdateResourceResponse
 func (client *Client) UpdateResourceWithContext(ctx context.Context, requestPath *string, request *UpdateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {

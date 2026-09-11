@@ -104,7 +104,16 @@ func (s *ListResourceTypesResponseBody) SetTotalCount(v int32) *ListResourceType
 }
 
 func (s *ListResourceTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTypes != nil {
+		for _, item := range s.ResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
@@ -340,7 +349,17 @@ func (s *ListResourceTypesResponseBodyResourceTypes) SetUpdateTypeProperties(v [
 }
 
 func (s *ListResourceTypesResponseBodyResourceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.Handlers != nil {
+		if err := s.Handlers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourceTypesResponseBodyResourceTypesHandlers struct {
@@ -410,7 +429,32 @@ func (s *ListResourceTypesResponseBodyResourceTypesHandlers) SetUpdate(v *ListRe
 }
 
 func (s *ListResourceTypesResponseBodyResourceTypesHandlers) Validate() error {
-	return dara.Validate(s)
+	if s.Create != nil {
+		if err := s.Create.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Delete != nil {
+		if err := s.Delete.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Get != nil {
+		if err := s.Get.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.List != nil {
+		if err := s.List.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Update != nil {
+		if err := s.Update.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListResourceTypesResponseBodyResourceTypesHandlersCreate struct {

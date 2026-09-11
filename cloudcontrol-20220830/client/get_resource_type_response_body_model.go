@@ -16,13 +16,23 @@ type iGetResourceTypeResponseBody interface {
 }
 
 type GetResourceTypeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The resource type. Valid values:
+	// The resource type.
+	//
+	// example:
+	//
+	// No parent resource:
+	//
+	// Instance
+	//
+	// Has parent resource:
+	//
+	// DBInstance/Account
 	ResourceType *GetResourceTypeResponseBodyResourceType `json:"resourceType,omitempty" xml:"resourceType,omitempty" type:"Struct"`
 }
 
@@ -53,57 +63,68 @@ func (s *GetResourceTypeResponseBody) SetResourceType(v *GetResourceTypeResponse
 }
 
 func (s *GetResourceTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceType != nil {
+		if err := s.ResourceType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceTypeResponseBodyResourceType struct {
-	// The properties that are specific to the create operation. You need to specify these properties when you create the resource. These properties are not returned when you query the resource.
+	// The properties exclusive to the create operation. These properties are not returned in resource query operations but are required as input parameters for the create operation.
 	CreateOnlyProperties []*string `json:"createOnlyProperties,omitempty" xml:"createOnlyProperties,omitempty" type:"Repeated"`
-	// The properties that are specific to the delete operation. You need to specify these properties when you delete the resource. These properties are not returned when you query the resource.
+	// The properties exclusive to the delete operation. These properties are not returned in resource query operations but are required as input parameters for the delete operation.
 	DeleteOnlyProperties []*string `json:"deleteOnlyProperties,omitempty" xml:"deleteOnlyProperties,omitempty" type:"Repeated"`
-	// The properties that can be used to filter the resource when you list the resource.
+	// The properties that can be used as filter parameters in the list operation.
 	FilterProperties []*string `json:"filterProperties,omitempty" xml:"filterProperties,omitempty" type:"Repeated"`
-	// The properties that are specific to the query operation. You need to specify these properties when you query the resource. These properties are not returned in the query result.
+	// The properties exclusive to the get operation. These properties are not returned in resource query operations but are required as input parameters for the get operation.
 	GetOnlyProperties []*string `json:"getOnlyProperties,omitempty" xml:"getOnlyProperties,omitempty" type:"Repeated"`
-	// The properties that are returned when you query the resource.
+	// The properties returned by the get operation.
 	GetResponseProperties []*string `json:"getResponseProperties,omitempty" xml:"getResponseProperties,omitempty" type:"Repeated"`
-	// The information about the operation, including the required Resource Access Management (RAM) permissions.
+	// The supported resource operations, including RAM permissions.
 	Handlers *GetResourceTypeResponseBodyResourceTypeHandlers `json:"handlers,omitempty" xml:"handlers,omitempty" type:"Struct"`
 	// The basic information about the resource type.
 	Info *GetResourceTypeResponseBodyResourceTypeInfo `json:"info,omitempty" xml:"info,omitempty" type:"Struct"`
-	// The properties that are specific to the list operation. You need to specify these properties when you list the resource. These properties are not returned when you query the resource.
+	// The properties exclusive to the list operation. These properties are not returned in resource query operations but are required as input parameters for the list operation.
 	ListOnlyProperties []*string `json:"listOnlyProperties,omitempty" xml:"listOnlyProperties,omitempty" type:"Repeated"`
-	// The properties that are returned when you list the resource.
+	// The properties returned by the list operation.
 	ListResponseProperties []*string `json:"listResponseProperties,omitempty" xml:"listResponseProperties,omitempty" type:"Repeated"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// /properties/InstanceId
 	PrimaryIdentifier *string `json:"primaryIdentifier,omitempty" xml:"primaryIdentifier,omitempty"`
-	// The code of the service.
+	// The product code.
 	//
 	// example:
 	//
 	// ECS
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// The resource properties. The key specifies the property name and the value specifies the details of the property.
+	// The resource property definitions. The key is the property name, and the value is the detailed property information.
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
-	// The common properties of the resource. The common properties are not operation-specific.
+	// The common properties that represent basic resource attributes. These are not operation-specific properties.
 	PublicProperties []*string `json:"publicProperties,omitempty" xml:"publicProperties,omitempty" type:"Repeated"`
-	// The read-only properties. These properties are returned only when you perform the List or Get operation. You do not need to specify these properties when you create or update the resource.
+	// The read-only properties. These properties are returned only in list or get operations and cannot be used as input parameters for create or update operations.
 	ReadOnlyProperties []*string `json:"readOnlyProperties,omitempty" xml:"readOnlyProperties,omitempty" type:"Repeated"`
-	// The properties that must be specified when you create the resource.
+	// The required parameters for resource creation.
 	Required []*string `json:"required,omitempty" xml:"required,omitempty" type:"Repeated"`
-	// The type of the resource. If the resource belongs to a parent resource, the return format is {parent resource type code /resource type code}.
+	// The resource type. If the resource has a parent resource, the format is {parentResourceTypeCode/resourceTypeCode}.
 	//
 	// example:
 	//
+	// 无父资源：
+	//
 	// Instance
+	//
+	// 有父资源：
+	//
+	// DBInstance/Account
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The sensitive properties, such as the password.
+	// The sensitive properties, such as passwords.
 	SensitiveInfoProperties []*string `json:"sensitiveInfoProperties,omitempty" xml:"sensitiveInfoProperties,omitempty" type:"Repeated"`
-	// The properties that are specific to the update operation. You need to specify these properties when you update the resource. These properties are not returned when you query the resource.
+	// The properties exclusive to the update operation. These properties are not returned in resource query operations but are required as input parameters for the update operation.
 	UpdateOnlyProperties []*string `json:"updateOnlyProperties,omitempty" xml:"updateOnlyProperties,omitempty" type:"Repeated"`
 	// The properties that can be modified.
 	UpdateTypeProperties []*string `json:"updateTypeProperties,omitempty" xml:"updateTypeProperties,omitempty" type:"Repeated"`
@@ -289,19 +310,29 @@ func (s *GetResourceTypeResponseBodyResourceType) SetUpdateTypeProperties(v []*s
 }
 
 func (s *GetResourceTypeResponseBodyResourceType) Validate() error {
-	return dara.Validate(s)
+	if s.Handlers != nil {
+		if err := s.Handlers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceTypeResponseBodyResourceTypeHandlers struct {
-	// The information about the create operation.
+	// The information associated with the create operation.
 	Create *GetResourceTypeResponseBodyResourceTypeHandlersCreate `json:"create,omitempty" xml:"create,omitempty" type:"Struct"`
-	// The information about the delete operation.
+	// The information associated with the delete operation.
 	Delete *GetResourceTypeResponseBodyResourceTypeHandlersDelete `json:"delete,omitempty" xml:"delete,omitempty" type:"Struct"`
-	// The information about the query operation.
+	// The information associated with the get operation.
 	Get *GetResourceTypeResponseBodyResourceTypeHandlersGet `json:"get,omitempty" xml:"get,omitempty" type:"Struct"`
-	// The information about the list operation.
+	// The information associated with the list operation.
 	List *GetResourceTypeResponseBodyResourceTypeHandlersList `json:"list,omitempty" xml:"list,omitempty" type:"Struct"`
-	// The information about the update operation.
+	// The information associated with the update operation.
 	Update *GetResourceTypeResponseBodyResourceTypeHandlersUpdate `json:"update,omitempty" xml:"update,omitempty" type:"Struct"`
 }
 
@@ -359,11 +390,36 @@ func (s *GetResourceTypeResponseBodyResourceTypeHandlers) SetUpdate(v *GetResour
 }
 
 func (s *GetResourceTypeResponseBodyResourceTypeHandlers) Validate() error {
-	return dara.Validate(s)
+	if s.Create != nil {
+		if err := s.Create.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Delete != nil {
+		if err := s.Delete.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Get != nil {
+		if err := s.Get.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.List != nil {
+		if err := s.List.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Update != nil {
+		if err := s.Update.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceTypeResponseBodyResourceTypeHandlersCreate struct {
-	// The information about the required RAM permissions.
+	// The required RAM permissions.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 
@@ -389,7 +445,7 @@ func (s *GetResourceTypeResponseBodyResourceTypeHandlersCreate) Validate() error
 }
 
 type GetResourceTypeResponseBodyResourceTypeHandlersDelete struct {
-	// The information about the required RAM permissions.
+	// The required RAM permissions.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 
@@ -415,7 +471,7 @@ func (s *GetResourceTypeResponseBodyResourceTypeHandlersDelete) Validate() error
 }
 
 type GetResourceTypeResponseBodyResourceTypeHandlersGet struct {
-	// The information about the required RAM permissions.
+	// The required RAM permissions.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 
@@ -441,7 +497,7 @@ func (s *GetResourceTypeResponseBodyResourceTypeHandlersGet) Validate() error {
 }
 
 type GetResourceTypeResponseBodyResourceTypeHandlersList struct {
-	// The information about the required RAM permissions.
+	// The required RAM permissions.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 
@@ -467,7 +523,7 @@ func (s *GetResourceTypeResponseBodyResourceTypeHandlersList) Validate() error {
 }
 
 type GetResourceTypeResponseBodyResourceTypeHandlersUpdate struct {
-	// The information about the required RAM permissions.
+	// The required RAM permissions.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 }
 
@@ -493,21 +549,23 @@ func (s *GetResourceTypeResponseBodyResourceTypeHandlersUpdate) Validate() error
 }
 
 type GetResourceTypeResponseBodyResourceTypeInfo struct {
-	// The payment form. Valid values:
+	// The billing method. Valid values:
 	//
-	// paid free
+	// paid: paid.
+	//
+	// free: free.
 	//
 	// example:
 	//
 	// paid
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The delivery level. Valid values:
+	// The delivery scope. Valid values:
 	//
-	// center
+	// center: centralized deployment.
 	//
-	// region
+	// region: region-level deployment.
 	//
-	// zone
+	// zone: zone-level deployment.
 	//
 	// example:
 	//

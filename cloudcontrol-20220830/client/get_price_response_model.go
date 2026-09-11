@@ -59,5 +59,10 @@ func (s *GetPriceResponse) SetBody(v *GetPriceResponseBody) *GetPriceResponse {
 }
 
 func (s *GetPriceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
