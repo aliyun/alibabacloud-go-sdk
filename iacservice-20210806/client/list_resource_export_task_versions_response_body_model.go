@@ -117,7 +117,7 @@ func (s *ListResourceExportTaskVersionsResponseBody) Validate() error {
 }
 
 type ListResourceExportTaskVersionsResponseBodyExportTasks struct {
-	// The creation time in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
+	// The creation time in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type ListResourceExportTaskVersionsResponseBodyExportTasks struct {
 	//
 	// ex-al1711jl6hd8u5crggeq6v
 	ExportTaskId *string `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
-	// The module to which the exported template is saved. If this parameter is not set, the template is automatically saved in the Registry.
+	// The module to which the exported template is saved. If this parameter is not specified, the template is automatically saved in the Registry.
 	ExportToModule *ListResourceExportTaskVersionsResponseBodyExportTasksExportToModule `json:"exportToModule,omitempty" xml:"exportToModule,omitempty" type:"Struct"`
 	// The resource export version.
 	//
@@ -158,7 +158,7 @@ type ListResourceExportTaskVersionsResponseBodyExportTasks struct {
 	// The list of include rules used when exporting resources.
 	IncludeRules  []*ListResourceExportTaskVersionsResponseBodyExportTasksIncludeRules `json:"includeRules,omitempty" xml:"includeRules,omitempty" type:"Repeated"`
 	ManagedTaskId *string                                                              `json:"managedTaskId,omitempty" xml:"managedTaskId,omitempty"`
-	// The module configuration of the exported resources.
+	// The module configurations of the exported resources.
 	Modules []*ListResourceExportTaskVersionsResponseBodyExportTasksModules `json:"modules,omitempty" xml:"modules,omitempty" type:"Repeated"`
 	// The name of the export task.
 	//
@@ -182,6 +182,12 @@ type ListResourceExportTaskVersionsResponseBodyExportTasks struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The Terraform Provider version.
+	//
+	// example:
+	//
+	// 1.206.0
+	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
 	// The list of variables. Parameters of exported resources are set as variables.
 	Variables []*ListResourceExportTaskVersionsResponseBodyExportTasksVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
@@ -240,6 +246,10 @@ func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) GetName() *strin
 
 func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) GetTerraformProviderVersion() *string {
+	return s.TerraformProviderVersion
 }
 
 func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) GetVariables() []*ListResourceExportTaskVersionsResponseBodyExportTasksVariables {
@@ -306,6 +316,11 @@ func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) SetStatus(v stri
 	return s
 }
 
+func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) SetTerraformProviderVersion(v string) *ListResourceExportTaskVersionsResponseBodyExportTasks {
+	s.TerraformProviderVersion = &v
+	return s
+}
+
 func (s *ListResourceExportTaskVersionsResponseBodyExportTasks) SetVariables(v []*ListResourceExportTaskVersionsResponseBodyExportTasksVariables) *ListResourceExportTaskVersionsResponseBodyExportTasks {
 	s.Variables = v
 	return s
@@ -368,7 +383,7 @@ type ListResourceExportTaskVersionsResponseBodyExportTasksExportToModule struct 
 	//
 	// oss::https://.oss-cn-hangzhou.aliyuncs.com/xxx.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
-	// The path of the State file corresponding to the module.
+	// The path of the State file that corresponds to the module.
 	//
 	// example:
 	//
@@ -428,7 +443,7 @@ type ListResourceExportTaskVersionsResponseBodyExportTasksIncludeRules struct {
 	//
 	// - ZoneId: the zone to which the resource belongs. Only one zone is supported. Example: cn-hangzhou-h.
 	//
-	// Multiple filter conditions have an AND relationship by default. A resource must meet all filter conditions to be considered a match.
+	// By default, multiple filter conditions are evaluated with an AND operator. A resource must match all filter conditions to be considered a match.
 	//
 	// example:
 	//
@@ -475,11 +490,11 @@ type ListResourceExportTaskVersionsResponseBodyExportTasksModules struct {
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The download address of the exported template within the module.
+	// The download address of the exported template in the module.
 	//
-	// - If Source is CloudRegistry, the format is: "cloudregistry::iacservice//"
+	// - If Source is set to CloudRegistry, the format is: "cloudregistry::iacservice//"
 	//
-	// - If Source is OSS, the format is: "oss::https://.oss-cn-hangzhou.aliyuncs.com/xxx.zip"
+	// - If Source is set to OSS, the format is: "oss::https://.oss-cn-hangzhou.aliyuncs.com/xxx.zip"
 	//
 	// example:
 	//
@@ -533,7 +548,7 @@ func (s *ListResourceExportTaskVersionsResponseBodyExportTasksModules) Validate(
 }
 
 type ListResourceExportTaskVersionsResponseBodyExportTasksVariables struct {
-	// The list of Terraform resource properties corresponding to the resource type.
+	// The list of Terraform resource properties that correspond to the resource type.
 	Properties []*string `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
 	// The resource type.
 	//

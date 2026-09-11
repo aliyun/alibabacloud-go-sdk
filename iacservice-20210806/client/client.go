@@ -6322,7 +6322,7 @@ func (client *Client) ListRegistryNamespaces(request *ListRegistryNamespacesRequ
 
 // Summary:
 //
-// Retrieves the list of versions for a resource export task.
+// Retrieves the list of resource export task versions.
 //
 // Description:
 //
@@ -6389,7 +6389,7 @@ func (client *Client) ListResourceExportTaskVersionsWithOptions(exportTaskId *st
 
 // Summary:
 //
-// Retrieves the list of versions for a resource export task.
+// Retrieves the list of resource export task versions.
 //
 // Description:
 //

@@ -4449,7 +4449,7 @@ func (client *Client) ListRegistryNamespacesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves the list of versions for a resource export task.
+// Retrieves the list of resource export task versions.
 //
 // Description:
 //
