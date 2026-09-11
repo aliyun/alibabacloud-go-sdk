@@ -1,3 +1,7 @@
+2026-09-11 Version: v11.2.2
+- Update API DeleteHttpApi: add request parameters clientToken.
+
+
 2026-09-08 Version: v11.2.1
 - Update API GetGatewayQuotaRuleSubjectUsage: add request parameters endTime.
 - Update API GetGatewayQuotaRuleSubjectUsage: add request parameters startTime.
