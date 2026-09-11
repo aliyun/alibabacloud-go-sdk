@@ -168,7 +168,7 @@ func (s *GetScheduledTaskExecutionRecordsResponseBody) Validate() error {
 }
 
 type GetScheduledTaskExecutionRecordsResponseBodyTasks struct {
-	// The ID of the collaboration group to which the task belongs. If empty, the task is a personal task.
+	// The ID of the collaboration group to which the task belongs. An empty value indicates a personal task.
 	//
 	// example:
 	//
@@ -194,11 +194,11 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasks struct {
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
 	// The execution model tier. Valid values:
 	//
-	// - flagship: flagship.
+	// - flagship: Flagship.
 	//
-	// - standard: standard.
+	// - standard: Standard.
 	//
-	// - quick: lightweight.
+	// - quick: Lightweight.
 	//
 	// example:
 	//
@@ -228,9 +228,9 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasks struct {
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Manual: manually executed.
+	// - Manual: Manual execution.
 	//
-	// - Cron: triggered by a schedule.
+	// - Cron: Timed scheduling.
 	//
 	// example:
 	//
@@ -350,7 +350,7 @@ func (s *GetScheduledTaskExecutionRecordsResponseBodyTasks) Validate() error {
 }
 
 type GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline struct {
-	// The actual working hours, in hours.
+	// The actual hours spent, in hours.
 	//
 	// example:
 	//

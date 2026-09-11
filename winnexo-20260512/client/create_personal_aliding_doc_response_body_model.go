@@ -80,7 +80,7 @@ type CreatePersonalAlidingDocResponseBody struct {
 	//
 	// user_info projects pull_requests hook gists emails
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The unique identifier on the business system side, that is, the business ID.
+	// The unique ID on the business system side, which is the business ID.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type CreatePersonalAlidingDocResponseBody struct {
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 	// The call status. Valid values:
 	//
-	// - **PENDING**: Waiting for receipt.
+	// - **PENDING**: Waiting for a receipt.
 	//
-	// - **SUCCESS**: Succeeded.
+	// - **SUCCESS**: Successful.
 	//
 	// - **FAILED**: Failed.
 	//

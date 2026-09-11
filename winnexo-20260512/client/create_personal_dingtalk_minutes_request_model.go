@@ -21,12 +21,14 @@ type iCreatePersonalDingtalkMinutesRequest interface {
 	GetOperatingObjectName() *string
 	SetShanjiUrl(v string) *CreatePersonalDingtalkMinutesRequest
 	GetShanjiUrl() *string
+	SetSourceTags(v string) *CreatePersonalDingtalkMinutesRequest
+	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalDingtalkMinutesRequest
 	GetTenantId() *string
 }
 
 type CreatePersonalDingtalkMinutesRequest struct {
-	// The description of the pipeline.
+	// The pipeline description.
 	//
 	// example:
 	//
@@ -58,7 +60,7 @@ type CreatePersonalDingtalkMinutesRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The original Shanji link (required).
+	// The original Shanji note link (required).
 	//
 	// This parameter is required.
 	//
@@ -66,6 +68,12 @@ type CreatePersonalDingtalkMinutesRequest struct {
 	//
 	// https://example.com/winnexo/resource
 	ShanjiUrl *string `json:"shanjiUrl,omitempty" xml:"shanjiUrl,omitempty"`
+	// A list of resource tag JSON strings.
+	//
+	// example:
+	//
+	// ["Important","Shanji"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -106,6 +114,10 @@ func (s *CreatePersonalDingtalkMinutesRequest) GetShanjiUrl() *string {
 	return s.ShanjiUrl
 }
 
+func (s *CreatePersonalDingtalkMinutesRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalDingtalkMinutesRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -137,6 +149,11 @@ func (s *CreatePersonalDingtalkMinutesRequest) SetOperatingObjectName(v string) 
 
 func (s *CreatePersonalDingtalkMinutesRequest) SetShanjiUrl(v string) *CreatePersonalDingtalkMinutesRequest {
 	s.ShanjiUrl = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkMinutesRequest) SetSourceTags(v string) *CreatePersonalDingtalkMinutesRequest {
+	s.SourceTags = &v
 	return s
 }
 

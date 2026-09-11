@@ -17,6 +17,8 @@ type iSendAsyncChatMessageShrinkRequest interface {
 	GetDigitalEmployeeNameShrink() *string
 	SetDirectChat(v bool) *SendAsyncChatMessageShrinkRequest
 	GetDirectChat() *bool
+	SetEnableWebSearch(v bool) *SendAsyncChatMessageShrinkRequest
+	GetEnableWebSearch() *bool
 	SetFilesShrink(v string) *SendAsyncChatMessageShrinkRequest
 	GetFilesShrink() *string
 	SetModel(v string) *SendAsyncChatMessageShrinkRequest
@@ -60,6 +62,12 @@ type SendAsyncChatMessageShrinkRequest struct {
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
+	// 是否启用联网搜索，默认 False；任务执行场景（传 taskExecution）下以任务配置为准
+	//
+	// example:
+	//
+	// false
+	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
 	// The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
 	FilesShrink *string `json:"files,omitempty" xml:"files,omitempty"`
 	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain their current tier.
@@ -120,6 +128,10 @@ func (s *SendAsyncChatMessageShrinkRequest) GetDirectChat() *bool {
 	return s.DirectChat
 }
 
+func (s *SendAsyncChatMessageShrinkRequest) GetEnableWebSearch() *bool {
+	return s.EnableWebSearch
+}
+
 func (s *SendAsyncChatMessageShrinkRequest) GetFilesShrink() *string {
 	return s.FilesShrink
 }
@@ -165,6 +177,11 @@ func (s *SendAsyncChatMessageShrinkRequest) SetDigitalEmployeeNameShrink(v strin
 
 func (s *SendAsyncChatMessageShrinkRequest) SetDirectChat(v bool) *SendAsyncChatMessageShrinkRequest {
 	s.DirectChat = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageShrinkRequest) SetEnableWebSearch(v bool) *SendAsyncChatMessageShrinkRequest {
+	s.EnableWebSearch = &v
 	return s
 }
 

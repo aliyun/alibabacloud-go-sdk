@@ -36,7 +36,7 @@ type CreatePersonalVoiceMeetingResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The bound directory ID. This value echoes the directoryId provided in the request body. If no directoryId is specified, the value is null because the default root directory is used.
+	// The bound directory ID. This value is echoed back if provided in the request body. The value is null if the default root directory is used.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type CreatePersonalVoiceMeetingResponseBody struct {
 	//
 	// user_info projects pull_requests hook gists emails
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The unique identifier on the business system side, that is, the business ID.
+	// The unique ID on the business system side, which is the business ID.
 	//
 	// example:
 	//

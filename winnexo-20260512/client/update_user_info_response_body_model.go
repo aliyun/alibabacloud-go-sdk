@@ -96,7 +96,7 @@ func (s *UpdateUserInfoResponseBody) Validate() error {
 }
 
 type UpdateUserInfoResponseBodyUser struct {
-	// The user profile picture URL.
+	// The profile picture URL of the user.
 	//
 	// example:
 	//
@@ -114,49 +114,49 @@ type UpdateUserInfoResponseBodyUser struct {
 	//
 	// true
 	IsSystemTenant *bool `json:"isSystemTenant,omitempty" xml:"isSystemTenant,omitempty"`
-	// The user language preference.
+	// The language preference of the user.
 	//
 	// example:
 	//
 	// string_value
 	LanguagePreference *string `json:"languagePreference,omitempty" xml:"languagePreference,omitempty"`
-	// The username.
+	// The name of the user.
 	//
 	// example:
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The user service description.
+	// The service description of the user.
 	//
 	// example:
 	//
 	// string_value
 	Offering *string `json:"offering,omitempty" xml:"offering,omitempty"`
-	// The parsed user service result in JSON format.
+	// The parsed result of the user service in JSON format.
 	//
 	// example:
 	//
 	// string_value
 	ParsedOffering *string `json:"parsedOffering,omitempty" xml:"parsedOffering,omitempty"`
-	// The user role.
+	// The role of the user.
 	//
 	// example:
 	//
 	// string_value
 	ProfileRole *string `json:"profileRole,omitempty" xml:"profileRole,omitempty"`
-	// The user role description.
+	// The role description of the user.
 	//
 	// example:
 	//
 	// string_value
 	ProfileRoleInfo *string `json:"profileRoleInfo,omitempty" xml:"profileRoleInfo,omitempty"`
-	// The user self-introduction.
+	// The self-introduction of the user.
 	//
 	// example:
 	//
 	// string_value
 	SelfIntroduction *string `json:"selfIntroduction,omitempty" xml:"selfIntroduction,omitempty"`
-	// The current tenant ID.
+	// The ID of the current tenant.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type UpdateUserInfoResponseBodyUser struct {
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The list of tenants to which the user belongs.
 	TenantList []*UpdateUserInfoResponseBodyUserTenantList `json:"tenantList,omitempty" xml:"tenantList,omitempty" type:"Repeated"`
-	// The current tenant name.
+	// The name of the current tenant.
 	//
 	// example:
 	//

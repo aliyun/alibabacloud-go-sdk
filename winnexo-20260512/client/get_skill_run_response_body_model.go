@@ -70,7 +70,7 @@ type GetSkillRunResponseBody struct {
 	//
 	// string_value
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The task end time in ISO 8601 format. This parameter has a value only in desired states (Succeeded, Failed, or Cancelled).
+	// The task end time in ISO 8601 format. This parameter has a value only when the task is in a desired state (Succeeded, Failed, or Cancelled).
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GetSkillRunResponseBody struct {
 	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
 	// The execution log list. This parameter is returned only when IncludeLogs is set to true.
 	Logs []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//

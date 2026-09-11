@@ -245,11 +245,11 @@ func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (
 
 // Summary:
 //
-// Batch cancels digital employee favorites for specific object types.
+// Batch cancels digital employee precise object type subscriptions.
 //
 // Description:
 //
-// Idempotently cancels favorites across three independent dimensions: graphName, operatingObjectName, and objectType. The input array accepts 1 to 200 items per request. Each item must be a non-empty string with a maximum length of 128 characters. The server validates and deduplicates items while preserving order. Non-string values, values that exceed the length limit, or arrays that exceed the size limit are rejected. Deletion, per-item status updates, and remaining valid count are completed within a single transaction. To safely cancel all favorites, you must also call ClearOperatingObjectFavorites to clean up historical records, MISSING records, or permission-hidden records that are not visible in the list. Then read back the result to confirm that total is 0.
+// Idempotently cancels subscriptions along three independent dimensions: graphName, operatingObjectName, and objectType. The input array accepts 1 to 200 items per request. Each item must be a non-empty string with a maximum length of 128 characters. After server-side validation, items are deduplicated while preserving order. Non-string values, values that exceed the length limit, or arrays that exceed the size limit are rejected. The delete operation, per-item status tracking, and remaining valid count are completed within a single transaction. To safely cancel all subscriptions, you must also invoke ClearOperatingObjectFavorites to clean up historical, MISSING, or permission-hidden records that are invisible in the list, and then read back to confirm that total is 0.
 //
 // @param tmpReq - BatchRemoveOperatingObjectFavoritesRequest
 //
@@ -320,11 +320,11 @@ func (client *Client) BatchRemoveOperatingObjectFavoritesWithOptions(tmpReq *Bat
 
 // Summary:
 //
-// Batch cancels digital employee favorites for specific object types.
+// Batch cancels digital employee precise object type subscriptions.
 //
 // Description:
 //
-// Idempotently cancels favorites across three independent dimensions: graphName, operatingObjectName, and objectType. The input array accepts 1 to 200 items per request. Each item must be a non-empty string with a maximum length of 128 characters. The server validates and deduplicates items while preserving order. Non-string values, values that exceed the length limit, or arrays that exceed the size limit are rejected. Deletion, per-item status updates, and remaining valid count are completed within a single transaction. To safely cancel all favorites, you must also call ClearOperatingObjectFavorites to clean up historical records, MISSING records, or permission-hidden records that are not visible in the list. Then read back the result to confirm that total is 0.
+// Idempotently cancels subscriptions along three independent dimensions: graphName, operatingObjectName, and objectType. The input array accepts 1 to 200 items per request. Each item must be a non-empty string with a maximum length of 128 characters. After server-side validation, items are deduplicated while preserving order. Non-string values, values that exceed the length limit, or arrays that exceed the size limit are rejected. The delete operation, per-item status tracking, and remaining valid count are completed within a single transaction. To safely cancel all subscriptions, you must also invoke ClearOperatingObjectFavorites to clean up historical, MISSING, or permission-hidden records that are invisible in the list, and then read back to confirm that total is 0.
 //
 // @param request - BatchRemoveOperatingObjectFavoritesRequest
 //
@@ -832,6 +832,142 @@ func (client *Client) CreateCustomOrg(request *CreateCustomOrgRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &CreateCustomOrgResponse{}
 	_body, _err := client.CreateCustomOrgWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语义图谱并绑定数据源
+//
+// Description:
+//
+// OpenAPI 创建语义图谱（同步快建占位记录 0.0.0）并在创建时绑定数据源。
+//
+//	内容编辑走个人草稿接口，正式发布走产品控制台。
+//
+//	业务编排：
+//
+//	1. 权限校验（个人 Token 校验语义管理权限；部署/系统级 Token 放行）
+//
+//	2. 同步落库 active 占位记录（schemaVersion 固定 0.0.0）并绑定数据源；
+//
+//	   不写 history、不触发 runtime 重建
+//
+//	3. 图谱内容后续经个人草稿编辑，在控制台正式发布
+//
+//	错误码：
+//
+//	- ERR.GraphSchema.GraphNameInvalid: 图谱名称不合法
+//
+//	- ERR.GraphSchema.GraphNameDuplicated: 图谱名称已存在
+//
+//	- ERR.GraphSchema.DisplayNameInvalid: 展示名不合法或重复
+//
+//	- ERR.GraphDataSource.*: 数据源不存在 / 非 RDB 类不可绑定
+//
+// @param request - CreateGraphRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGraphResponse
+func (client *Client) CreateGraphWithOptions(request *CreateGraphRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGraphResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessProfile) {
+		body["businessProfile"] = request.BusinessProfile
+	}
+
+	if !dara.IsNil(request.DataSourceId) {
+		body["dataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGraph"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGraph"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGraphResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语义图谱并绑定数据源
+//
+// Description:
+//
+// OpenAPI 创建语义图谱（同步快建占位记录 0.0.0）并在创建时绑定数据源。
+//
+//	内容编辑走个人草稿接口，正式发布走产品控制台。
+//
+//	业务编排：
+//
+//	1. 权限校验（个人 Token 校验语义管理权限；部署/系统级 Token 放行）
+//
+//	2. 同步落库 active 占位记录（schemaVersion 固定 0.0.0）并绑定数据源；
+//
+//	   不写 history、不触发 runtime 重建
+//
+//	3. 图谱内容后续经个人草稿编辑，在控制台正式发布
+//
+//	错误码：
+//
+//	- ERR.GraphSchema.GraphNameInvalid: 图谱名称不合法
+//
+//	- ERR.GraphSchema.GraphNameDuplicated: 图谱名称已存在
+//
+//	- ERR.GraphSchema.DisplayNameInvalid: 展示名不合法或重复
+//
+//	- ERR.GraphDataSource.*: 数据源不存在 / 非 RDB 类不可绑定
+//
+// @param request - CreateGraphRequest
+//
+// @return CreateGraphResponse
+func (client *Client) CreateGraph(request *CreateGraphRequest) (_result *CreateGraphResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGraphResponse{}
+	_body, _err := client.CreateGraphWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2089,6 +2225,10 @@ func (client *Client) CreatePersonalAliDingMeetingWithOptions(request *CreatePer
 		body["shanjiUrl"] = request.ShanjiUrl
 	}
 
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2157,17 +2297,19 @@ func (client *Client) CreatePersonalAliDingMeeting(request *CreatePersonalAliDin
 //
 // ## Request description
 //
-// - This API is used to add an AliDing online document to the "My Resources" section of a specified digital employee.
+// - This API operation adds an AliDing online document to the "My Resources" section of a specified digital employee.
 //
 // - Fixed parameters include `source_type=ONLINE_DOC`, `platform=ALI_DING`, and `scope=PERSONAL`.
 //
-// - If `directoryId` is not provided, the document is attached to the root folder of the current digital employee by default. If provided, ensure that the folder belongs to the current user and exists under the current digital employee.
+// - If `directoryId` is not provided, the document is attached to the root folder of the current digital employee by default. If `directoryId` is provided, make sure that the folder belongs to the current user and exists under the current digital employee.
 //
 // - During the invoke process, metering is started and related operation logs are recorded.
 //
 // - For security purposes, `tenant_id` and `user_id` are obtained only from the authentication identity. Values provided by the caller for these fields are ignored.
 //
-// - Any validation or execute failure is thrown as an exception by the service and transformed into a POP error code returned to the caller.
+// - Any validation or execute failure throws an exception through the service and is transformed to a POP error code returned to the caller.
+//
+// ## Related operations
 //
 // @param request - CreatePersonalAlidingDocRequest
 //
@@ -2209,6 +2351,10 @@ func (client *Client) CreatePersonalAlidingDocWithOptions(request *CreatePersona
 		body["operatingObjectName"] = request.OperatingObjectName
 	}
 
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2242,17 +2388,19 @@ func (client *Client) CreatePersonalAlidingDocWithOptions(request *CreatePersona
 //
 // ## Request description
 //
-// - This API is used to add an AliDing online document to the "My Resources" section of a specified digital employee.
+// - This API operation adds an AliDing online document to the "My Resources" section of a specified digital employee.
 //
 // - Fixed parameters include `source_type=ONLINE_DOC`, `platform=ALI_DING`, and `scope=PERSONAL`.
 //
-// - If `directoryId` is not provided, the document is attached to the root folder of the current digital employee by default. If provided, ensure that the folder belongs to the current user and exists under the current digital employee.
+// - If `directoryId` is not provided, the document is attached to the root folder of the current digital employee by default. If `directoryId` is provided, make sure that the folder belongs to the current user and exists under the current digital employee.
 //
 // - During the invoke process, metering is started and related operation logs are recorded.
 //
 // - For security purposes, `tenant_id` and `user_id` are obtained only from the authentication identity. Values provided by the caller for these fields are ignored.
 //
-// - Any validation or execute failure is thrown as an exception by the service and transformed into a POP error code returned to the caller.
+// - Any validation or execute failure throws an exception through the service and is transformed to a POP error code returned to the caller.
+//
+// ## Related operations
 //
 // @param request - CreatePersonalAlidingDocRequest
 //
@@ -2271,13 +2419,13 @@ func (client *Client) CreatePersonalAlidingDoc(request *CreatePersonalAlidingDoc
 
 // Summary:
 //
-// Adds an AliDing knowledge base to the personal resources of the current digital employee.
+// Adds the entire AliDing knowledge base to the personal resources of the current digital employee.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API creates an AliDing knowledge base and mounts it to the personal resource directory of the specified digital employee.
+// - This API creates an AliDing knowledge base and mounts it under the personal resource directory of the specified digital employee.
 //
 // - `platform` is fixed to `ALI_DING`, and `directory_type` is fixed to `PERSONAL`.
 //
@@ -2287,7 +2435,7 @@ func (client *Client) CreatePersonalAlidingDoc(request *CreatePersonalAlidingDoc
 //
 // - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. These fields in the request body are ignored.
 //
-// - The synchronization configuration is optional. If enabled, a cron expression must be provided. If not provided or disabled, scheduled synchronization is not performed by default.
+// - The synchronization configuration is optional. If enabled, a cron expression is required. If not provided or disabled, scheduled synchronization is not performed by default.
 //
 // - The knowledge base name can be customized. If not provided, it is automatically populated after background synchronization.
 //
@@ -2343,6 +2491,10 @@ func (client *Client) CreatePersonalAlidingKnowledgeBaseWithOptions(tmpReq *Crea
 		body["operatingObjectName"] = request.OperatingObjectName
 	}
 
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
 	if !dara.IsNil(request.SyncConfigShrink) {
 		body["syncConfig"] = request.SyncConfigShrink
 	}
@@ -2374,13 +2526,13 @@ func (client *Client) CreatePersonalAlidingKnowledgeBaseWithOptions(tmpReq *Crea
 
 // Summary:
 //
-// Adds an AliDing knowledge base to the personal resources of the current digital employee.
+// Adds the entire AliDing knowledge base to the personal resources of the current digital employee.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API creates an AliDing knowledge base and mounts it to the personal resource directory of the specified digital employee.
+// - This API creates an AliDing knowledge base and mounts it under the personal resource directory of the specified digital employee.
 //
 // - `platform` is fixed to `ALI_DING`, and `directory_type` is fixed to `PERSONAL`.
 //
@@ -2390,7 +2542,7 @@ func (client *Client) CreatePersonalAlidingKnowledgeBaseWithOptions(tmpReq *Crea
 //
 // - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. These fields in the request body are ignored.
 //
-// - The synchronization configuration is optional. If enabled, a cron expression must be provided. If not provided or disabled, scheduled synchronization is not performed by default.
+// - The synchronization configuration is optional. If enabled, a cron expression is required. If not provided or disabled, scheduled synchronization is not performed by default.
 //
 // - The knowledge base name can be customized. If not provided, it is automatically populated after background synchronization.
 //
@@ -2680,17 +2832,17 @@ func (client *Client) CreatePersonalDingtalkMeeting(request *CreatePersonalDingt
 
 // Summary:
 //
-// Uploads a meeting to the current user\\"s personal knowledge base by using a standard DingTalk Shanji URL.
+// Uploads a meeting to the current user\\"s personal knowledge base by using the URL of a standard DingTalk Shanji note.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API creates a meeting resource by using a standard DingTalk Shanji link. The collection method is fixed to the DWS corresponding to personal OAuth.
+// - This API creates a meeting resource by using a standard DingTalk Shanji note link. The collection method is fixed to the DWS corresponding to personal OAuth.
 //
 // - `source_type` is fixed to `DINGTALK_MEETING`, and `scope` is fixed to `PERSONAL`.
 //
-// - You must provide a standard DingTalk Shanji link or taskUuid (`shanjiUrl`).
+// - You must provide a standard DingTalk Shanji note link or taskUuid (`shanjiUrl`).
 //
 // - Optionally specify a target personal directory ID (`directoryId`). If not specified, the default root directory of the current digital employee is used.
 //
@@ -2742,6 +2894,10 @@ func (client *Client) CreatePersonalDingtalkMinutesWithOptions(request *CreatePe
 		body["shanjiUrl"] = request.ShanjiUrl
 	}
 
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2769,17 +2925,17 @@ func (client *Client) CreatePersonalDingtalkMinutesWithOptions(request *CreatePe
 
 // Summary:
 //
-// Uploads a meeting to the current user\\"s personal knowledge base by using a standard DingTalk Shanji URL.
+// Uploads a meeting to the current user\\"s personal knowledge base by using the URL of a standard DingTalk Shanji note.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API creates a meeting resource by using a standard DingTalk Shanji link. The collection method is fixed to the DWS corresponding to personal OAuth.
+// - This API creates a meeting resource by using a standard DingTalk Shanji note link. The collection method is fixed to the DWS corresponding to personal OAuth.
 //
 // - `source_type` is fixed to `DINGTALK_MEETING`, and `scope` is fixed to `PERSONAL`.
 //
-// - You must provide a standard DingTalk Shanji link or taskUuid (`shanjiUrl`).
+// - You must provide a standard DingTalk Shanji note link or taskUuid (`shanjiUrl`).
 //
 // - Optionally specify a target personal directory ID (`directoryId`). If not specified, the default root directory of the current digital employee is used.
 //
@@ -3192,7 +3348,7 @@ func (client *Client) CreatePersonalFeishuDoc(request *CreatePersonalFeishuDocRe
 //
 // - `credentialId`: The ID associated with specific authentication information, used to verify the validity of the request.
 //
-// - `directoryId` (optional): The ID of the target personal directory where the resource is stored. If this field is omitted, the resource is automatically placed in the default location.
+// - `directoryId` (optional): The ID of the target personal directory in which to store the resource. If this field is omitted, the resource is automatically placed in the default location.
 //
 // - `description` (optional): A brief description or note about the uploaded resource.
 //
@@ -3246,6 +3402,10 @@ func (client *Client) CreatePersonalFeishuMinuteWithOptions(request *CreatePerso
 		body["operatingObjectName"] = request.OperatingObjectName
 	}
 
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3289,7 +3449,7 @@ func (client *Client) CreatePersonalFeishuMinuteWithOptions(request *CreatePerso
 //
 // - `credentialId`: The ID associated with specific authentication information, used to verify the validity of the request.
 //
-// - `directoryId` (optional): The ID of the target personal directory where the resource is stored. If this field is omitted, the resource is automatically placed in the default location.
+// - `directoryId` (optional): The ID of the target personal directory in which to store the resource. If this field is omitted, the resource is automatically placed in the default location.
 //
 // - `description` (optional): A brief description or note about the uploaded resource.
 //
@@ -3390,6 +3550,10 @@ func (client *Client) CreatePersonalFileWithOptions(request *CreatePersonalFileR
 
 	if !dara.IsNil(request.OperatingObjectName) {
 		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3512,6 +3676,10 @@ func (client *Client) CreatePersonalTextWithOptions(request *CreatePersonalTextR
 		body["operatingObjectName"] = request.OperatingObjectName
 	}
 
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
 	if !dara.IsNil(request.TextContent) {
 		body["textContent"] = request.TextContent
 	}
@@ -3586,7 +3754,7 @@ func (client *Client) CreatePersonalText(request *CreatePersonalTextRequest) (_r
 //
 // ## Operation description
 //
-// - This API operation uploads an offline meeting audio file to the "My Resources" section of a specified digital employee.
+// - This API operation uploads an offline meeting audio file to the My Resources section of a specified digital employee.
 //
 // - `source_type` is fixed to `VOICE_MEETING`, `scope` is fixed to `PERSONAL`, and `voice_meeting_type` is fixed to `OFFLINE`.
 //
@@ -3638,6 +3806,10 @@ func (client *Client) CreatePersonalVoiceMeetingWithOptions(request *CreatePerso
 		body["operatingObjectName"] = request.OperatingObjectName
 	}
 
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -3680,7 +3852,7 @@ func (client *Client) CreatePersonalVoiceMeetingWithOptions(request *CreatePerso
 //
 // ## Operation description
 //
-// - This API operation uploads an offline meeting audio file to the "My Resources" section of a specified digital employee.
+// - This API operation uploads an offline meeting audio file to the My Resources section of a specified digital employee.
 //
 // - `source_type` is fixed to `VOICE_MEETING`, `scope` is fixed to `PERSONAL`, and `voice_meeting_type` is fixed to `OFFLINE`.
 //
@@ -4869,19 +5041,111 @@ func (client *Client) EnableToken(request *EnableTokenRequest) (_result *EnableT
 
 // Summary:
 //
-// Retrieves session details.
+// Retrieves DingTalk meeting minutes content for the Winnexo Lite Workbench.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API uploads a file to the "My Resources" section of a specified digital employee.
+// - This API is exclusively for the Winnexo Lite Workbench.
+//
+// - Retrieves the title, meeting summary, to-do items, and full transcription based on a DingTalk minutes ID.
+//
+// - Audio and video files are not downloaded. If any content fails to be read, the entire request fails.
+//
+// @param request - GetAliDingMinutesContentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAliDingMinutesContentResponse
+func (client *Client) GetAliDingMinutesContentWithOptions(request *GetAliDingMinutesContentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAliDingMinutesContentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MinutesId) {
+		body["minutesId"] = request.MinutesId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAliDingMinutesContent"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getAliDingMinutesContent"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAliDingMinutesContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves DingTalk meeting minutes content for the Winnexo Lite Workbench.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API is exclusively for the Winnexo Lite Workbench.
+//
+// - Retrieves the title, meeting summary, to-do items, and full transcription based on a DingTalk minutes ID.
+//
+// - Audio and video files are not downloaded. If any content fails to be read, the entire request fails.
+//
+// @param request - GetAliDingMinutesContentRequest
+//
+// @return GetAliDingMinutesContentResponse
+func (client *Client) GetAliDingMinutesContent(request *GetAliDingMinutesContentRequest) (_result *GetAliDingMinutesContentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAliDingMinutesContentResponse{}
+	_body, _err := client.GetAliDingMinutesContentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves session details.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API is used to upload files to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
 // - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
 //
 // - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
 //
@@ -4944,15 +5208,15 @@ func (client *Client) GetChatSessionWithOptions(request *GetChatSessionRequest, 
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API uploads a file to the "My Resources" section of a specified digital employee.
+// - This API is used to upload files to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
 // - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
 //
 // - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
 //
@@ -4966,6 +5230,118 @@ func (client *Client) GetChatSession(request *GetChatSessionRequest) (_result *G
 	headers := make(map[string]*string)
 	_result = &GetChatSessionResponse{}
 	_body, _err := client.GetChatSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the full schema after merging the active schema with personal drafts.
+//
+// Description:
+//
+// Retrieves the full schema YAML by merging the active schema with the current user\\"s draft via OpenAPI (personal token only).
+//
+//	Business orchestration:
+//
+//	1. Draft domain identity verification (personal token only. Deploy/system-level tokens are rejected)
+//
+//	   and semantic view permission verification.
+//
+//	2. If no personal draft exists, the full active YAML is returned (underlying short path).
+//
+//	   If a draft exists, the merged full YAML is returned for editor rendering and pre-publish preview.
+//
+//	Error codes:
+//
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
+//
+//	- ERR.GraphSchema.*: The knowledge graph does not exist.
+//
+// @param request - GetGraphDraftAssembledRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGraphDraftAssembledResponse
+func (client *Client) GetGraphDraftAssembledWithOptions(request *GetGraphDraftAssembledRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGraphDraftAssembledResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGraphDraftAssembled"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getGraphDraftAssembled"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGraphDraftAssembledResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the full schema after merging the active schema with personal drafts.
+//
+// Description:
+//
+// Retrieves the full schema YAML by merging the active schema with the current user\\"s draft via OpenAPI (personal token only).
+//
+//	Business orchestration:
+//
+//	1. Draft domain identity verification (personal token only. Deploy/system-level tokens are rejected)
+//
+//	   and semantic view permission verification.
+//
+//	2. If no personal draft exists, the full active YAML is returned (underlying short path).
+//
+//	   If a draft exists, the merged full YAML is returned for editor rendering and pre-publish preview.
+//
+//	Error codes:
+//
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
+//
+//	- ERR.GraphSchema.*: The knowledge graph does not exist.
+//
+// @param request - GetGraphDraftAssembledRequest
+//
+// @return GetGraphDraftAssembledResponse
+func (client *Client) GetGraphDraftAssembled(request *GetGraphDraftAssembledRequest) (_result *GetGraphDraftAssembledResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGraphDraftAssembledResponse{}
+	_body, _err := client.GetGraphDraftAssembledWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5046,6 +5422,98 @@ func (client *Client) GetGraphSchema(request *GetGraphSchemaRequest) (_result *G
 	headers := make(map[string]*string)
 	_result = &GetGraphSchemaResponse{}
 	_body, _err := client.GetGraphSchemaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the complete schema of a semantic graph from the management perspective.
+//
+// Description:
+//
+// Retrieves the complete active schema of a graph from the OpenAPI management perspective. This operation does not perform resource-level permission trimming, but requires semantic view permission at the entry point.
+//
+// graphStatus and hasDraft reflect the personal draft and publish status from the current caller\\"s perspective. Deployment or system-level tokens have no personal identity, so hasDraft is always false.
+//
+// Error codes:
+//
+// - ERR.GraphSchema.GraphSchemaNotFound: The graph does not exist.
+//
+// @param request - GetGraphSchemaDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGraphSchemaDetailResponse
+func (client *Client) GetGraphSchemaDetailWithOptions(request *GetGraphSchemaDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGraphSchemaDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGraphSchemaDetail"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getGraphSchemaDetail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGraphSchemaDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the complete schema of a semantic graph from the management perspective.
+//
+// Description:
+//
+// Retrieves the complete active schema of a graph from the OpenAPI management perspective. This operation does not perform resource-level permission trimming, but requires semantic view permission at the entry point.
+//
+// graphStatus and hasDraft reflect the personal draft and publish status from the current caller\\"s perspective. Deployment or system-level tokens have no personal identity, so hasDraft is always false.
+//
+// Error codes:
+//
+// - ERR.GraphSchema.GraphSchemaNotFound: The graph does not exist.
+//
+// @param request - GetGraphSchemaDetailRequest
+//
+// @return GetGraphSchemaDetailResponse
+func (client *Client) GetGraphSchemaDetail(request *GetGraphSchemaDetailRequest) (_result *GetGraphSchemaDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGraphSchemaDetailResponse{}
+	_body, _err := client.GetGraphSchemaDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5369,19 +5837,19 @@ func (client *Client) GetScheduledTaskExecutionDetail(request *GetScheduledTaskE
 //
 // ## Operation description
 //
-// - This operation uploads a file to the enterprise knowledge base.
+// - This operation uploads files to an enterprise knowledge base.
 //
-// - The `DEVELOPMENT_KB_MANAGE` feature permission is required to call this API.
+// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this operation.
 //
 // - You must provide the OSS persistent address (`filePath`) of the file when uploading.
 //
 // - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base folder. Otherwise, the file is bound to the default root folder of the current digital employee.
 //
-// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionRecordsRequest
 //
@@ -5458,19 +5926,19 @@ func (client *Client) GetScheduledTaskExecutionRecordsWithOptions(request *GetSc
 //
 // ## Operation description
 //
-// - This operation uploads a file to the enterprise knowledge base.
+// - This operation uploads files to an enterprise knowledge base.
 //
-// - The `DEVELOPMENT_KB_MANAGE` feature permission is required to call this API.
+// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this operation.
 //
 // - You must provide the OSS persistent address (`filePath`) of the file when uploading.
 //
 // - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base folder. Otherwise, the file is bound to the default root folder of the current digital employee.
 //
-// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionRecordsRequest
 //
@@ -5579,21 +6047,21 @@ func (client *Client) GetScheduledTaskPushOptions(request *GetScheduledTaskPushO
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // - This operation uploads a file to the enterprise knowledge base.
 //
-// - The `DEVELOPMENT_KB_MANAGE` feature permission is required to call this API.
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
 //
-// - The OSS persistent address (`filePath`) of the file must be provided during upload.
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
 //
-// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
 //
 // - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param tmpReq - GetScheduledTaskUnderstandDetailRequest
 //
@@ -5672,21 +6140,21 @@ func (client *Client) GetScheduledTaskUnderstandDetailWithOptions(tmpReq *GetSch
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // - This operation uploads a file to the enterprise knowledge base.
 //
-// - The `DEVELOPMENT_KB_MANAGE` feature permission is required to call this API.
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
 //
-// - The OSS persistent address (`filePath`) of the file must be provided during upload.
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
 //
-// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
 //
 // - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskUnderstandDetailRequest
 //
@@ -6676,13 +7144,13 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 //
 // - If the tenant information is invalid, the corresponding error message is returned.
 //
-// - `tenantId` is an optional parameter. If not provided, the default tenant ID of the caller is used.
+// - tenantId is an optional parameter. If not provided, the default tenant ID of the caller is used.
 //
-// - Multiple authentication methods are supported: AK, BearerToken, and APP authentication.
+// - Multiple authentication methods are supported: AccessKey, BearerToken, and APP authentication.
 //
 // - The returned data includes the user profile (such as username and profile picture URL), role preference settings, and details of all tenants to which the user belongs.
 //
-// - If the current logon tenant is the system tenant (that is, `tenantId=10000`), this is explicitly indicated in the response.
+// - Note that if the current logon tenant is a system tenant (tenantId=10000), this is explicitly indicated in the response.
 //
 // @param request - GetUserInfoRequest
 //
@@ -6739,13 +7207,13 @@ func (client *Client) GetUserInfoWithOptions(request *GetUserInfoRequest, header
 //
 // - If the tenant information is invalid, the corresponding error message is returned.
 //
-// - `tenantId` is an optional parameter. If not provided, the default tenant ID of the caller is used.
+// - tenantId is an optional parameter. If not provided, the default tenant ID of the caller is used.
 //
-// - Multiple authentication methods are supported: AK, BearerToken, and APP authentication.
+// - Multiple authentication methods are supported: AccessKey, BearerToken, and APP authentication.
 //
 // - The returned data includes the user profile (such as username and profile picture URL), role preference settings, and details of all tenants to which the user belongs.
 //
-// - If the current logon tenant is the system tenant (that is, `tenantId=10000`), this is explicitly indicated in the response.
+// - Note that if the current logon tenant is a system tenant (tenantId=10000), this is explicitly indicated in the response.
 //
 // @param request - GetUserInfoRequest
 //
@@ -6994,13 +7462,13 @@ func (client *Client) ListActiveAnnouncements(request *ListActiveAnnouncementsRe
 //
 // - This API supports two modes: when `directoryId` is empty or set to \\"root\\", the top-level knowledge base list is returned. When `directoryId` has a specific value, a drill-down operation is performed to return subdirectories and resources under the specified directory.
 //
-// - `tenantId` is a common parameter. If not provided, the caller\\"s tenant ID is used by default.
+// - `tenantId` is a common parameter. If not provided, the tenant ID of the caller is used by default.
 //
-// - In drill-down mode (when `directoryId` is not empty), use the `sourceTypes` parameter to filter resources by specific types.
+// - In drill-down mode (when `directoryId` is not empty), use the `sourceTypes` parameter to filter resources of specific types.
 //
 // - The sort field (`sortField`) and sort order (`sortOrder`) can be customized. Invalid values are reset to default settings.
 //
-// - The search feature is only effective when retrieving the top-level list and supports only fuzzy matching on names or descriptions.
+// - The search feature is effective only when retrieving the top-level list and supports only fuzzy matching on names or descriptions.
 //
 // - For security purposes, `tenant_id` is strictly obtained from the authenticated identity and cannot be passed through the request body.
 //
@@ -7093,13 +7561,13 @@ func (client *Client) ListAdminKnowledgeBasesWithOptions(tmpReq *ListAdminKnowle
 //
 // - This API supports two modes: when `directoryId` is empty or set to \\"root\\", the top-level knowledge base list is returned. When `directoryId` has a specific value, a drill-down operation is performed to return subdirectories and resources under the specified directory.
 //
-// - `tenantId` is a common parameter. If not provided, the caller\\"s tenant ID is used by default.
+// - `tenantId` is a common parameter. If not provided, the tenant ID of the caller is used by default.
 //
-// - In drill-down mode (when `directoryId` is not empty), use the `sourceTypes` parameter to filter resources by specific types.
+// - In drill-down mode (when `directoryId` is not empty), use the `sourceTypes` parameter to filter resources of specific types.
 //
 // - The sort field (`sortField`) and sort order (`sortOrder`) can be customized. Invalid values are reset to default settings.
 //
-// - The search feature is only effective when retrieving the top-level list and supports only fuzzy matching on names or descriptions.
+// - The search feature is effective only when retrieving the top-level list and supports only fuzzy matching on names or descriptions.
 //
 // - For security purposes, `tenant_id` is strictly obtained from the authenticated identity and cannot be passed through the request body.
 //
@@ -7128,11 +7596,11 @@ func (client *Client) ListAdminKnowledgeBases(request *ListAdminKnowledgeBasesRe
 //
 //	Business logic:
 //
-//	1. Constructs AuthContext from identity.
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. Delegates to AgentAuthorizationAuthorizedService.list_agents to complete permission verification (APPLICATION_AGENT_VIEW).
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_agents to perform permission verification (APPLICATION_AGENT_VIEW).
 //
-//	3. Returns rich fields for all digital employees of the tenant (operatingObjectName / displayName / authMode / isActive).
+//	3. Returns rich fields for all digital employees of the tenant (operatingObjectName, displayName, authMode, and isActive).
 //
 //	4. System-level tokens are automatically allowed through ctx.skip_permission.
 //
@@ -7191,11 +7659,11 @@ func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, headers 
 //
 //	Business logic:
 //
-//	1. Constructs AuthContext from identity.
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. Delegates to AgentAuthorizationAuthorizedService.list_agents to complete permission verification (APPLICATION_AGENT_VIEW).
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_agents to perform permission verification (APPLICATION_AGENT_VIEW).
 //
-//	3. Returns rich fields for all digital employees of the tenant (operatingObjectName / displayName / authMode / isActive).
+//	3. Returns rich fields for all digital employees of the tenant (operatingObjectName, displayName, authMode, and isActive).
 //
 //	4. System-level tokens are automatically allowed through ctx.skip_permission.
 //
@@ -7209,6 +7677,214 @@ func (client *Client) ListAgents(request *ListAgentsRequest) (_result *ListAgent
 	headers := make(map[string]*string)
 	_result = &ListAgentsResponse{}
 	_body, _err := client.ListAgentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves DingTalk group chat records for the Winnexo lightweight workbench.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is exclusively for the Winnexo lightweight workbench.
+//
+// - Uses the existing time, direction, and pageSize time-watermark protocol to read messages from a specified group chat.
+//
+// - Does not introduce start or end time ranges. The response does not include raw DWS objects, attachment locators, or temporary download URLs.
+//
+// @param request - ListAliDingGroupMessagesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAliDingGroupMessagesResponse
+func (client *Client) ListAliDingGroupMessagesWithOptions(request *ListAliDingGroupMessagesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAliDingGroupMessagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.Direction) {
+		body["direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Time) {
+		body["time"] = request.Time
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAliDingGroupMessages"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listAliDingGroupMessages"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAliDingGroupMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves DingTalk group chat records for the Winnexo lightweight workbench.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is exclusively for the Winnexo lightweight workbench.
+//
+// - Uses the existing time, direction, and pageSize time-watermark protocol to read messages from a specified group chat.
+//
+// - Does not introduce start or end time ranges. The response does not include raw DWS objects, attachment locators, or temporary download URLs.
+//
+// @param request - ListAliDingGroupMessagesRequest
+//
+// @return ListAliDingGroupMessagesResponse
+func (client *Client) ListAliDingGroupMessages(request *ListAliDingGroupMessagesRequest) (_result *ListAliDingGroupMessagesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAliDingGroupMessagesResponse{}
+	_body, _err := client.ListAliDingGroupMessagesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of DingTalk meeting minutes for the Winnexo lightweight workbench.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is exclusively for the Winnexo lightweight workbench.
+//
+// - Queries DingTalk meeting transcripts that the current platform user has access to, based on the startTime and endTime provided by the caller.
+//
+// - The time must include a time zone. This operation does not use recentDays and does not determine the time range on behalf of the caller.
+//
+// @param request - ListAliDingMinutesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAliDingMinutesResponse
+func (client *Client) ListAliDingMinutesWithOptions(request *ListAliDingMinutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAliDingMinutesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cursor) {
+		body["cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAliDingMinutes"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listAliDingMinutes"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAliDingMinutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of DingTalk meeting minutes for the Winnexo lightweight workbench.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is exclusively for the Winnexo lightweight workbench.
+//
+// - Queries DingTalk meeting transcripts that the current platform user has access to, based on the startTime and endTime provided by the caller.
+//
+// - The time must include a time zone. This operation does not use recentDays and does not determine the time range on behalf of the caller.
+//
+// @param request - ListAliDingMinutesRequest
+//
+// @return ListAliDingMinutesResponse
+func (client *Client) ListAliDingMinutes(request *ListAliDingMinutesRequest) (_result *ListAliDingMinutesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAliDingMinutesResponse{}
+	_body, _err := client.ListAliDingMinutesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7536,7 +8212,7 @@ func (client *Client) ListAvailableConfigs(request *ListAvailableConfigsRequest)
 
 // Summary:
 //
-// Queries and filters the bill list through OpenAPI with support for multiple filter conditions.
+// Queries and filters a bill list by using OpenAPI. Multiple filter conditions are supported.
 //
 // Description:
 //
@@ -7544,13 +8220,13 @@ func (client *Client) ListAvailableConfigs(request *ListAvailableConfigsRequest)
 //
 // - This operation queries the bill list based on specified conditions.
 //
-// - Supports filtering by tenant, user, operation type, status, time range, business source, and other conditions.
+// - Filtering is supported by tenant, user, operation type, status, time range, business source, and other conditions.
 //
-// - Returns bill data in pages. The default page size is 20 records.
+// - Bill data is returned in pages. By default, 20 records are displayed per page.
 //
 // - You can choose whether to filter out bills with zero credit consumption. By default, such bills are filtered out.
 //
-// - Authentication information (such as AK, BearerToken, or APP authentication) is required for the request.
+// - Provide the required authentication information (such as AccessKey pair, BearerToken, or APP authentication) when you send a request.
 //
 // @param request - ListBillingRequest
 //
@@ -7639,7 +8315,7 @@ func (client *Client) ListBillingWithOptions(request *ListBillingRequest, header
 
 // Summary:
 //
-// Queries and filters the bill list through OpenAPI with support for multiple filter conditions.
+// Queries and filters a bill list by using OpenAPI. Multiple filter conditions are supported.
 //
 // Description:
 //
@@ -7647,13 +8323,13 @@ func (client *Client) ListBillingWithOptions(request *ListBillingRequest, header
 //
 // - This operation queries the bill list based on specified conditions.
 //
-// - Supports filtering by tenant, user, operation type, status, time range, business source, and other conditions.
+// - Filtering is supported by tenant, user, operation type, status, time range, business source, and other conditions.
 //
-// - Returns bill data in pages. The default page size is 20 records.
+// - Bill data is returned in pages. By default, 20 records are displayed per page.
 //
 // - You can choose whether to filter out bills with zero credit consumption. By default, such bills are filtered out.
 //
-// - Authentication information (such as AK, BearerToken, or APP authentication) is required for the request.
+// - Provide the required authentication information (such as AccessKey pair, BearerToken, or APP authentication) when you send a request.
 //
 // @param request - ListBillingRequest
 //
@@ -7765,6 +8441,224 @@ func (client *Client) ListChatSessions(request *ListChatSessionsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListChatSessionsResponse{}
 	_body, _err := client.ListChatSessionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists personal draft changes for a semantic graph.
+//
+// Description:
+//
+// Queries the list of personal draft changes for the current user under a specified graph (personal token only).
+//
+//	Business orchestration:
+//
+//	1. Draft domain identity verification (personal token only. Deployment/system-level tokens are rejected)
+//
+//	   and semantic view permission verification.
+//
+//	2. Returns the active drafts of the current user (with online change risks).
+//
+//	   In permission revocation scenarios, the system also cleans up unauthorized drafts (existing behavior).
+//
+//	Online risk aggregation (riskCode / riskMessage) is serialized as risk JSON text.
+//
+//	Error codes:
+//
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
+//
+//	- ERR.GraphSchema.*: The graph does not exist.
+//
+// @param request - ListGraphDraftResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGraphDraftResourcesResponse
+func (client *Client) ListGraphDraftResourcesWithOptions(request *ListGraphDraftResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGraphDraftResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGraphDraftResources"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listGraphDraftResources"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGraphDraftResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists personal draft changes for a semantic graph.
+//
+// Description:
+//
+// Queries the list of personal draft changes for the current user under a specified graph (personal token only).
+//
+//	Business orchestration:
+//
+//	1. Draft domain identity verification (personal token only. Deployment/system-level tokens are rejected)
+//
+//	   and semantic view permission verification.
+//
+//	2. Returns the active drafts of the current user (with online change risks).
+//
+//	   In permission revocation scenarios, the system also cleans up unauthorized drafts (existing behavior).
+//
+//	Online risk aggregation (riskCode / riskMessage) is serialized as risk JSON text.
+//
+//	Error codes:
+//
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
+//
+//	- ERR.GraphSchema.*: The graph does not exist.
+//
+// @param request - ListGraphDraftResourcesRequest
+//
+// @return ListGraphDraftResourcesResponse
+func (client *Client) ListGraphDraftResources(request *ListGraphDraftResourcesRequest) (_result *ListGraphDraftResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGraphDraftResourcesResponse{}
+	_body, _err := client.ListGraphDraftResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 管理视角图谱列表
+//
+// Description:
+//
+// OpenAPI 管理视角图谱列表（含草稿/发布中状态）。
+//
+//	返回租户级 active 图谱；graphStatus 三态：PUBLISHED / DEVELOPING（当前用户有活动草稿）/
+//
+//	PUBLISHING（当前用户发布中）；部署/系统级 Token 无个人身份，hasDraft 恒 false。
+//
+//	keyword 匹配 graphName / displayName（忽略大小写）；semanticTags 命中任一标签即保留。
+//
+// @param tmpReq - ListGraphSchemasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGraphSchemasResponse
+func (client *Client) ListGraphSchemasWithOptions(tmpReq *ListGraphSchemasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGraphSchemasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListGraphSchemasShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SemanticTags) {
+		request.SemanticTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SemanticTags, dara.String("semanticTags"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.SemanticTagsShrink) {
+		body["semanticTags"] = request.SemanticTagsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGraphSchemas"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listGraphSchemas"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGraphSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 管理视角图谱列表
+//
+// Description:
+//
+// OpenAPI 管理视角图谱列表（含草稿/发布中状态）。
+//
+//	返回租户级 active 图谱；graphStatus 三态：PUBLISHED / DEVELOPING（当前用户有活动草稿）/
+//
+//	PUBLISHING（当前用户发布中）；部署/系统级 Token 无个人身份，hasDraft 恒 false。
+//
+//	keyword 匹配 graphName / displayName（忽略大小写）；semanticTags 命中任一标签即保留。
+//
+// @param request - ListGraphSchemasRequest
+//
+// @return ListGraphSchemasResponse
+func (client *Client) ListGraphSchemas(request *ListGraphSchemasRequest) (_result *ListGraphSchemasResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGraphSchemasResponse{}
+	_body, _err := client.ListGraphSchemasWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8188,13 +9082,13 @@ func (client *Client) ListOutputFiles(request *ListOutputFilesRequest) (_result 
 
 // Summary:
 //
-// Queries subdirectories and resources under a specified digital employee resource directory.
+// Queries the subdirectories and resources under a specified digital employee resource directory.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API is used to drill down and query subdirectories and resources under the "My Resources" directory.
+// - This API is used to drill down and query the subdirectories and resources under the "My Resources" directory.
 //
 // - When `directoryId` is set to \\"root\\", the service automatically resolves and returns the content under the current digital employee\\"s default root directory. If a specific directory ID is provided, the subdirectories and resources under that directory are returned.
 //
@@ -8202,7 +9096,7 @@ func (client *Client) ListOutputFiles(request *ListOutputFilesRequest) (_result 
 //
 // - You can use the `sourceTypes` parameter to filter resources of specific types. When this parameter has a value, only resources that match the type condition are returned, and subdirectories are not included.
 //
-// - Sorting supports ascending or descending order by name (`name`), creation time (`gmt_create`), or modification time (`gmt_modified`).
+// - Sorting is supported by name (`name`), creation time (`gmt_create`), or modification time (`gmt_modified`) in ascending or descending order.
 //
 // - The pagination feature allows you to customize the number of items displayed per page (maximum 100) and the current page number.
 //
@@ -8287,13 +9181,13 @@ func (client *Client) ListPersonalDirectoryContentsWithOptions(tmpReq *ListPerso
 
 // Summary:
 //
-// Queries subdirectories and resources under a specified digital employee resource directory.
+// Queries the subdirectories and resources under a specified digital employee resource directory.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API is used to drill down and query subdirectories and resources under the "My Resources" directory.
+// - This API is used to drill down and query the subdirectories and resources under the "My Resources" directory.
 //
 // - When `directoryId` is set to \\"root\\", the service automatically resolves and returns the content under the current digital employee\\"s default root directory. If a specific directory ID is provided, the subdirectories and resources under that directory are returned.
 //
@@ -8301,7 +9195,7 @@ func (client *Client) ListPersonalDirectoryContentsWithOptions(tmpReq *ListPerso
 //
 // - You can use the `sourceTypes` parameter to filter resources of specific types. When this parameter has a value, only resources that match the type condition are returned, and subdirectories are not included.
 //
-// - Sorting supports ascending or descending order by name (`name`), creation time (`gmt_create`), or modification time (`gmt_modified`).
+// - Sorting is supported by name (`name`), creation time (`gmt_create`), or modification time (`gmt_modified`) in ascending or descending order.
 //
 // - The pagination feature allows you to customize the number of items displayed per page (maximum 100) and the current page number.
 //
@@ -8566,7 +9460,7 @@ func (client *Client) ListScheduledTasks(request *ListScheduledTasksRequest) (_r
 //
 // ## Request description
 //
-// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, and keywords, and supports pagination.
+// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, keywords, and other conditions, and supports pagination.
 //
 // ### Request parameters
 //
@@ -8582,13 +9476,13 @@ func (client *Client) ListScheduledTasks(request *ListScheduledTasksRequest) (_r
 //
 // - **PageSize**: Optional. The number of entries per page. Valid values: 1 to 100. Default value: 20.
 //
-// - **OperatingObjectName**: Optional. The digital employee name. If specified, results are filtered by binding relationship. Must be used together with `BindStatus`.
+// - **OperatingObjectName**: Optional. The name of the digital employee. If specified, results are filtered by binding relationship. Must be used together with `BindStatus`.
 //
 // - **BindStatus**: Optional. The binding status. Valid values: `BOUND` (bound), `UNBOUND` (unbound global skills).
 //
 // ### Response parameters
 //
-// The response contains the skill list `items`, total count `total`, current page `page`, and page size `pageSize`.
+// The response contains the skill list `items`, the total count `total`, the current page `page`, and the number of entries per page `pageSize`.
 //
 // @param tmpReq - ListSkillsRequest
 //
@@ -8677,7 +9571,7 @@ func (client *Client) ListSkillsWithOptions(tmpReq *ListSkillsRequest, headers m
 //
 // ## Request description
 //
-// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, and keywords, and supports pagination.
+// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, keywords, and other conditions, and supports pagination.
 //
 // ### Request parameters
 //
@@ -8693,13 +9587,13 @@ func (client *Client) ListSkillsWithOptions(tmpReq *ListSkillsRequest, headers m
 //
 // - **PageSize**: Optional. The number of entries per page. Valid values: 1 to 100. Default value: 20.
 //
-// - **OperatingObjectName**: Optional. The digital employee name. If specified, results are filtered by binding relationship. Must be used together with `BindStatus`.
+// - **OperatingObjectName**: Optional. The name of the digital employee. If specified, results are filtered by binding relationship. Must be used together with `BindStatus`.
 //
 // - **BindStatus**: Optional. The binding status. Valid values: `BOUND` (bound), `UNBOUND` (unbound global skills).
 //
 // ### Response parameters
 //
-// The response contains the skill list `items`, total count `total`, current page `page`, and page size `pageSize`.
+// The response contains the skill list `items`, the total count `total`, the current page `page`, and the number of entries per page `pageSize`.
 //
 // @param request - ListSkillsRequest
 //
@@ -10042,21 +10936,21 @@ func (client *Client) PreviewPersonalSource(request *PreviewPersonalSourceReques
 
 // Summary:
 //
-// Queries primary object data by operating object name with pagination, and supports filtering and searching.
+// Queries primary object data with paging by operating object name, with support for filtering and search.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API queries primary object data with pagination based on a specified operating object name (such as `customer_1`).
+// - This API operation queries primary object data with paging by a specified operating object name (such as `customer_1`).
 //
-// - Supports keyword-based searching and allows you to specify whether to return only objects marked as favorites.
+// - You can search by keyword and specify whether to return only objects marked as favorites.
 //
-// - Complex filter conditions can be used to further refine results, including but not limited to logical operators such as equal to, not equal to, greater than, and less than.
+// - You can use complex filter conditions to further narrow results, including but not limited to operators such as equal to, not equal to, greater than, and less than.
 //
 // - If no primary object type is configured, an empty result set is returned.
 //
-// - Data included in the request undergoes authentication and filtering to ensure security and accuracy.
+// - The data in the request is subject to authentication and filtering to ensure security and accuracy.
 //
 // @param request - QueryPrimaryObjectDataRequest
 //
@@ -10125,21 +11019,21 @@ func (client *Client) QueryPrimaryObjectDataWithOptions(request *QueryPrimaryObj
 
 // Summary:
 //
-// Queries primary object data by operating object name with pagination, and supports filtering and searching.
+// Queries primary object data with paging by operating object name, with support for filtering and search.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API queries primary object data with pagination based on a specified operating object name (such as `customer_1`).
+// - This API operation queries primary object data with paging by a specified operating object name (such as `customer_1`).
 //
-// - Supports keyword-based searching and allows you to specify whether to return only objects marked as favorites.
+// - You can search by keyword and specify whether to return only objects marked as favorites.
 //
-// - Complex filter conditions can be used to further refine results, including but not limited to logical operators such as equal to, not equal to, greater than, and less than.
+// - You can use complex filter conditions to further narrow results, including but not limited to operators such as equal to, not equal to, greater than, and less than.
 //
 // - If no primary object type is configured, an empty result set is returned.
 //
-// - Data included in the request undergoes authentication and filtering to ensure security and accuracy.
+// - The data in the request is subject to authentication and filtering to ensure security and accuracy.
 //
 // @param request - QueryPrimaryObjectDataRequest
 //
@@ -10360,17 +11254,17 @@ func (client *Client) QuerySyncResult(request *QuerySyncResultRequest) (_result 
 //
 // ## Request description
 //
-// Based on the most recent N messages in a session and the skills attached to the agent, this operation invokes an LLM to generate 0 to 3 next-step recommendations (follow-up questions or recommended skills to execute).
+// Based on the most recent N messages in a session and the skills attached to the agent, invokes an LLM to generate 0 to 3 next-step recommendations (follow-up questions or recommended skills to execute).
 //
 // - `sessionId`: The session ID. Required. Only sessions that the currently authenticated user has permission to access are allowed.
 //
-// - `recentMessageCount`: The number of recent messages used to assemble contextual information. Valid values: 1 to 30. Default value: 10 (approximately 5 rounds of user+assistant conversation).
+// - `recentMessageCount`: The number of recent messages used to assemble the contextual information. Valid values: 1 to 30. Default value: 10 (approximately 5 rounds of user+assistant conversation).
 //
-// - `customPrompt`: A custom recommendation instruction (up to 10,000 characters). This is injected into the default recommendation template as a custom instruction (before the output format constraints). The output is still subject to the JSON format and type constraints of the template.
+// - `customPrompt`: A custom recommendation instruction (up to 10,000 characters). This instruction is injected into the default recommendation template before the output format constraints. The output is still subject to the JSON format and type constraints of the template.
 //
-// - `outputType`: The output type filter. followUpOnly = follow-up recommendations only (default). skillOnly = skill recommendations only. both = generate both types.
+// - `outputType`: Filters the output type. followUpOnly = follow-up question recommendations only (default). skillOnly = skill recommendations only. both = generates both types.
 //
-// Unlike internal endpoints, API calls are not restricted by the next-step recommendation toggle in user personal settings and always execute recommendation generation.
+// Unlike internal endpoints, API calls are not restricted by the next-step recommendation toggle in user personal settings and always perform recommendation generation.
 //
 // @param request - RecommendNextActionsRequest
 //
@@ -10441,17 +11335,17 @@ func (client *Client) RecommendNextActionsWithOptions(request *RecommendNextActi
 //
 // ## Request description
 //
-// Based on the most recent N messages in a session and the skills attached to the agent, this operation invokes an LLM to generate 0 to 3 next-step recommendations (follow-up questions or recommended skills to execute).
+// Based on the most recent N messages in a session and the skills attached to the agent, invokes an LLM to generate 0 to 3 next-step recommendations (follow-up questions or recommended skills to execute).
 //
 // - `sessionId`: The session ID. Required. Only sessions that the currently authenticated user has permission to access are allowed.
 //
-// - `recentMessageCount`: The number of recent messages used to assemble contextual information. Valid values: 1 to 30. Default value: 10 (approximately 5 rounds of user+assistant conversation).
+// - `recentMessageCount`: The number of recent messages used to assemble the contextual information. Valid values: 1 to 30. Default value: 10 (approximately 5 rounds of user+assistant conversation).
 //
-// - `customPrompt`: A custom recommendation instruction (up to 10,000 characters). This is injected into the default recommendation template as a custom instruction (before the output format constraints). The output is still subject to the JSON format and type constraints of the template.
+// - `customPrompt`: A custom recommendation instruction (up to 10,000 characters). This instruction is injected into the default recommendation template before the output format constraints. The output is still subject to the JSON format and type constraints of the template.
 //
-// - `outputType`: The output type filter. followUpOnly = follow-up recommendations only (default). skillOnly = skill recommendations only. both = generate both types.
+// - `outputType`: Filters the output type. followUpOnly = follow-up question recommendations only (default). skillOnly = skill recommendations only. both = generates both types.
 //
-// Unlike internal endpoints, API calls are not restricted by the next-step recommendation toggle in user personal settings and always execute recommendation generation.
+// Unlike internal endpoints, API calls are not restricted by the next-step recommendation toggle in user personal settings and always perform recommendation generation.
 //
 // @param request - RecommendNextActionsRequest
 //
@@ -11688,7 +12582,7 @@ func (client *Client) RetryDirectoryFailedSources(request *RetryDirectoryFailedS
 
 // Summary:
 //
-// Retries all data sources in failed status under a specified directory in batches.
+// Retries all data sources in failed status under a specified directory in batch.
 //
 // Description:
 //
@@ -11696,17 +12590,17 @@ func (client *Client) RetryDirectoryFailedSources(request *RetryDirectoryFailedS
 //
 // This API retrieves and retries all data sources in FAILED status under a specified enterprise knowledge base directory (including its subdirectories). The request returns immediately, and the actual retry operations are executed asynchronously in the background.
 //
-// - **Authentication**: In addition to basic authentication, the `DEVELOPMENT_KB_MANAGE` permission is required.
+// - **Authentication**: In addition to basic authentication, the DEVELOPMENT_KB_MANAGE permission is required.
 //
 // - **Security constraints**: Only callers with the corresponding tenant and user identity are allowed access, and KB management permission is required. Administrators can initiate retries for failed resources of any user.
 //
 // - **Parameters**:
 //
-//   - `directoryId` (required): The ID of the enterprise knowledge base directory to check and retry failed data sources.
+//   - `directoryId` (required): The ID of the enterprise knowledge base directory for which to check and retry failed data sources.
 //
 //   - `tenantId` (optional): The tenant ID. The default tenant of the caller is used if this parameter is not specified.
 //
-// - **Response**: On success, returns the number of data sources enqueued for retry and related details.
+// - **Response**: On success, the response includes the number of data sources enqueued for retry and their details.
 //
 // @param request - RetryKnowledgeBaseFailedSourcesRequest
 //
@@ -11759,7 +12653,7 @@ func (client *Client) RetryKnowledgeBaseFailedSourcesWithOptions(request *RetryK
 
 // Summary:
 //
-// Retries all data sources in failed status under a specified directory in batches.
+// Retries all data sources in failed status under a specified directory in batch.
 //
 // Description:
 //
@@ -11767,17 +12661,17 @@ func (client *Client) RetryKnowledgeBaseFailedSourcesWithOptions(request *RetryK
 //
 // This API retrieves and retries all data sources in FAILED status under a specified enterprise knowledge base directory (including its subdirectories). The request returns immediately, and the actual retry operations are executed asynchronously in the background.
 //
-// - **Authentication**: In addition to basic authentication, the `DEVELOPMENT_KB_MANAGE` permission is required.
+// - **Authentication**: In addition to basic authentication, the DEVELOPMENT_KB_MANAGE permission is required.
 //
 // - **Security constraints**: Only callers with the corresponding tenant and user identity are allowed access, and KB management permission is required. Administrators can initiate retries for failed resources of any user.
 //
 // - **Parameters**:
 //
-//   - `directoryId` (required): The ID of the enterprise knowledge base directory to check and retry failed data sources.
+//   - `directoryId` (required): The ID of the enterprise knowledge base directory for which to check and retry failed data sources.
 //
 //   - `tenantId` (optional): The tenant ID. The default tenant of the caller is used if this parameter is not specified.
 //
-// - **Response**: On success, returns the number of data sources enqueued for retry and related details.
+// - **Response**: On success, the response includes the number of data sources enqueued for retry and their details.
 //
 // @param request - RetryKnowledgeBaseFailedSourcesRequest
 //
@@ -11787,6 +12681,122 @@ func (client *Client) RetryKnowledgeBaseFailedSources(request *RetryKnowledgeBas
 	headers := make(map[string]*string)
 	_result = &RetryKnowledgeBaseFailedSourcesResponse{}
 	_body, _err := client.RetryKnowledgeBaseFailedSourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a single semantic resource draft.
+//
+// Description:
+//
+// Revokes a single semantic resource draft via OpenAPI (personal token only).
+//
+//	Business orchestration:
+//
+//	1. Draft domain identity verification (personal token only. Deploy/system-level tokens are rejected)
+//
+//	   and semantic management permission verification.
+//
+//	2. When graphName is provided, verifies draft ownership consistency (prevents accidental cross-knowledge-graph deletion).
+//
+//	   If the draft no longer exists, returns reverted=false (idempotent semantics, no error is reported).
+//
+//	Error codes:
+//
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
+//
+//	- ERR.Robject.Global.InvalidParameter: draftChangeId does not belong to the specified knowledge graph.
+//
+// @param request - RevertGraphDraftResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevertGraphDraftResourceResponse
+func (client *Client) RevertGraphDraftResourceWithOptions(request *RevertGraphDraftResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevertGraphDraftResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DraftChangeId) {
+		body["draftChangeId"] = request.DraftChangeId
+	}
+
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevertGraphDraftResource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/revertGraphDraftResource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevertGraphDraftResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a single semantic resource draft.
+//
+// Description:
+//
+// Revokes a single semantic resource draft via OpenAPI (personal token only).
+//
+//	Business orchestration:
+//
+//	1. Draft domain identity verification (personal token only. Deploy/system-level tokens are rejected)
+//
+//	   and semantic management permission verification.
+//
+//	2. When graphName is provided, verifies draft ownership consistency (prevents accidental cross-knowledge-graph deletion).
+//
+//	   If the draft no longer exists, returns reverted=false (idempotent semantics, no error is reported).
+//
+//	Error codes:
+//
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
+//
+//	- ERR.Robject.Global.InvalidParameter: draftChangeId does not belong to the specified knowledge graph.
+//
+// @param request - RevertGraphDraftResourceRequest
+//
+// @return RevertGraphDraftResourceResponse
+func (client *Client) RevertGraphDraftResource(request *RevertGraphDraftResourceRequest) (_result *RevertGraphDraftResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RevertGraphDraftResourceResponse{}
+	_body, _err := client.RevertGraphDraftResourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12039,6 +13049,142 @@ func (client *Client) RunSkill(request *RunSkillRequest) (_result *RunSkillRespo
 	headers := make(map[string]*string)
 	_result = &RunSkillResponse{}
 	_body, _err := client.RunSkillWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存单个语义资源草稿
+//
+// Description:
+//
+// OpenAPI 保存单个语义资源草稿（仅个人 Token）。
+//
+//	业务编排：
+//
+//	1. 草稿域身份校验（仅个人 Token；部署/系统级 Token 被拒绝）
+//
+//	   与语义管理权限校验
+//
+//	2. 委托个人草稿服务保存（来源固定 YAML），底层含资源级写权限校验；
+//
+//	   内容与在线完全一致时跳过落库，摘要字段返回 null
+//
+//	错误码：
+//
+//	- ERR.User.TokenUserOnly: 个人草稿仅支持用户 Token
+//
+//	- ERR.Robject.Global.InvalidParameter: resourceType/elementType 组合不合法
+//
+//	- ERR.GraphSchema.*: 图谱不存在 / 资源命名与归属校验失败
+//
+//	- ERR.Robject.Global.ResourceNotFound: 资源不存在等底层校验失败
+//
+// @param request - SaveGraphDraftResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveGraphDraftResourceResponse
+func (client *Client) SaveGraphDraftResourceWithOptions(request *SaveGraphDraftResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SaveGraphDraftResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ElementType) {
+		body["elementType"] = request.ElementType
+	}
+
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	if !dara.IsNil(request.ResourceName) {
+		body["resourceName"] = request.ResourceName
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.YamlEdit) {
+		body["yamlEdit"] = request.YamlEdit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveGraphDraftResource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/saveGraphDraftResource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveGraphDraftResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存单个语义资源草稿
+//
+// Description:
+//
+// OpenAPI 保存单个语义资源草稿（仅个人 Token）。
+//
+//	业务编排：
+//
+//	1. 草稿域身份校验（仅个人 Token；部署/系统级 Token 被拒绝）
+//
+//	   与语义管理权限校验
+//
+//	2. 委托个人草稿服务保存（来源固定 YAML），底层含资源级写权限校验；
+//
+//	   内容与在线完全一致时跳过落库，摘要字段返回 null
+//
+//	错误码：
+//
+//	- ERR.User.TokenUserOnly: 个人草稿仅支持用户 Token
+//
+//	- ERR.Robject.Global.InvalidParameter: resourceType/elementType 组合不合法
+//
+//	- ERR.GraphSchema.*: 图谱不存在 / 资源命名与归属校验失败
+//
+//	- ERR.Robject.Global.ResourceNotFound: 资源不存在等底层校验失败
+//
+// @param request - SaveGraphDraftResourceRequest
+//
+// @return SaveGraphDraftResourceResponse
+func (client *Client) SaveGraphDraftResource(request *SaveGraphDraftResourceRequest) (_result *SaveGraphDraftResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SaveGraphDraftResourceResponse{}
+	_body, _err := client.SaveGraphDraftResourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12414,6 +13560,110 @@ func (client *Client) SaveOutputFileToResource(request *SaveOutputFileToResource
 
 // Summary:
 //
+// Winnexo 轻量工作台搜索阿里钉群聊。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 仅供 Winnexo 轻量工作台使用。
+//
+// - 按关键词分页搜索当前平台用户可见的阿里钉群聊。
+//
+// - 响应不包含 DWS 原始对象。
+//
+// @param request - SearchAliDingGroupChatsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchAliDingGroupChatsResponse
+func (client *Client) SearchAliDingGroupChatsWithOptions(request *SearchAliDingGroupChatsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchAliDingGroupChatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cursor) {
+		body["cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.ExcludeMuted) {
+		body["excludeMuted"] = request.ExcludeMuted
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchAliDingGroupChats"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/searchAliDingGroupChats"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchAliDingGroupChatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Winnexo 轻量工作台搜索阿里钉群聊。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 仅供 Winnexo 轻量工作台使用。
+//
+// - 按关键词分页搜索当前平台用户可见的阿里钉群聊。
+//
+// - 响应不包含 DWS 原始对象。
+//
+// @param request - SearchAliDingGroupChatsRequest
+//
+// @return SearchAliDingGroupChatsResponse
+func (client *Client) SearchAliDingGroupChats(request *SearchAliDingGroupChatsRequest) (_result *SearchAliDingGroupChatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchAliDingGroupChatsResponse{}
+	_body, _err := client.SearchAliDingGroupChatsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Asynchronously sends a session message.
 //
 // Description:
@@ -12468,6 +13718,10 @@ func (client *Client) SendAsyncChatMessageWithOptions(tmpReq *SendAsyncChatMessa
 
 	if !dara.IsNil(request.DirectChat) {
 		body["directChat"] = request.DirectChat
+	}
+
+	if !dara.IsNil(request.EnableWebSearch) {
+		body["enableWebSearch"] = request.EnableWebSearch
 	}
 
 	if !dara.IsNil(request.FilesShrink) {
@@ -12548,19 +13802,19 @@ func (client *Client) SendAsyncChatMessage(request *SendAsyncChatMessageRequest)
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API operation is used to upload a file to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
+// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
 //
-// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the invoker.
 //
-// - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
+// - Multiple authentication methods (AK, BearerToken, APP) are supported for security authentication.
 //
-// - The operation type is write, and operation logs are recorded for subsequent auditing.
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -12581,19 +13835,19 @@ func (client *Client) SendChatMessageWithSSE(tmpReq *SendChatMessageRequest, hea
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API operation is used to upload a file to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
+// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
 //
-// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the invoker.
 //
-// - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
+// - Multiple authentication methods (AK, BearerToken, APP) are supported for security authentication.
 //
-// - The operation type is write, and operation logs are recorded for subsequent auditing.
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -12643,6 +13897,10 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 	if !dara.IsNil(request.DirectChat) {
 		body["directChat"] = request.DirectChat
+	}
+
+	if !dara.IsNil(request.EnableWebSearch) {
+		body["enableWebSearch"] = request.EnableWebSearch
 	}
 
 	if !dara.IsNil(request.FilesShrink) {
@@ -12700,19 +13958,19 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API operation is used to upload a file to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
+// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
 //
-// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the invoker.
 //
-// - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
+// - Multiple authentication methods (AK, BearerToken, APP) are supported for security authentication.
 //
-// - The operation type is write, and operation logs are recorded for subsequent auditing.
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
 // @param request - SendChatMessageRequest
 //
@@ -13176,6 +14434,253 @@ func (client *Client) TogglePrimaryObjectFavorite(request *TogglePrimaryObjectFa
 
 // Summary:
 //
+// Converts speech to text.
+//
+// Description:
+//
+// ## Request description
+//
+// This API is used for speech-to-text (ASR) and uses the **file transfer upload*	- mode (`fileTransfer`). Audio files are not transmitted through the request body of this API. Instead, the audio file is first uploaded to OSS, and then the OSS address is passed to the backend through the `FileUrl` parameter. The backend retrieves the audio bytes from that address and calls the ASR model to convert them to text.
+//
+// ### Call methods
+//
+// - **Recommended**: Use the `TranscribeChatVoiceAdvance` method generated by the SDK. Pass in the local audio file stream, and the SDK automatically completes the transfer upload and populates the `FileUrl` parameter.
+//
+// - **Direct upload**: Upload the audio file to an OSS address accessible by the server, and then call this API directly with the `FileUrl` parameter.
+//
+// ### Request parameters
+//
+// - **FileUrl**: Required. The OSS address of the audio file. When you use the Advance method, the SDK automatically populates this parameter. You do not need to set it manually.
+//
+// - **FileName**: Required. The original file name including the extension, such as `meeting.mp3`. The OSS address generated during the transfer does not carry the original file name. The backend uses this parameter to determine the audio format, so you must explicitly specify it.
+//
+// - **ContentType**: Optional. The MIME type of the audio, such as `audio/mpeg`. If this parameter is not specified, the MIME type is determined based on the file name extension.
+//
+// - Supported audio formats: mp3, wav, m4a, mp4, webm, ogg, oga, opus, flac, and amr. Maximum file size: 25 MB.
+//
+// ### Response parameters
+//
+// Returns the recognized text content `text`.
+//
+// ### Before you begin
+//
+// The tenant must have the speech recognition model (model_audio_flash) configured. If it is not configured, the error `ERR.Robject.Chat.VoiceAudioNotConfigured` is returned.
+//
+// @param request - TranscribeChatVoiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranscribeChatVoiceResponse
+func (client *Client) TranscribeChatVoiceWithOptions(request *TranscribeChatVoiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TranscribeChatVoiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentType) {
+		body["contentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		body["fileUrl"] = request.FileUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TranscribeChatVoice"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/transcribeChatVoice"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TranscribeChatVoiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Converts speech to text.
+//
+// Description:
+//
+// ## Request description
+//
+// This API is used for speech-to-text (ASR) and uses the **file transfer upload*	- mode (`fileTransfer`). Audio files are not transmitted through the request body of this API. Instead, the audio file is first uploaded to OSS, and then the OSS address is passed to the backend through the `FileUrl` parameter. The backend retrieves the audio bytes from that address and calls the ASR model to convert them to text.
+//
+// ### Call methods
+//
+// - **Recommended**: Use the `TranscribeChatVoiceAdvance` method generated by the SDK. Pass in the local audio file stream, and the SDK automatically completes the transfer upload and populates the `FileUrl` parameter.
+//
+// - **Direct upload**: Upload the audio file to an OSS address accessible by the server, and then call this API directly with the `FileUrl` parameter.
+//
+// ### Request parameters
+//
+// - **FileUrl**: Required. The OSS address of the audio file. When you use the Advance method, the SDK automatically populates this parameter. You do not need to set it manually.
+//
+// - **FileName**: Required. The original file name including the extension, such as `meeting.mp3`. The OSS address generated during the transfer does not carry the original file name. The backend uses this parameter to determine the audio format, so you must explicitly specify it.
+//
+// - **ContentType**: Optional. The MIME type of the audio, such as `audio/mpeg`. If this parameter is not specified, the MIME type is determined based on the file name extension.
+//
+// - Supported audio formats: mp3, wav, m4a, mp4, webm, ogg, oga, opus, flac, and amr. Maximum file size: 25 MB.
+//
+// ### Response parameters
+//
+// Returns the recognized text content `text`.
+//
+// ### Before you begin
+//
+// The tenant must have the speech recognition model (model_audio_flash) configured. If it is not configured, the error `ERR.Robject.Chat.VoiceAudioNotConfigured` is returned.
+//
+// @param request - TranscribeChatVoiceRequest
+//
+// @return TranscribeChatVoiceResponse
+func (client *Client) TranscribeChatVoice(request *TranscribeChatVoiceRequest) (_result *TranscribeChatVoiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TranscribeChatVoiceResponse{}
+	_body, _err := client.TranscribeChatVoiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TranscribeChatVoiceAdvance(request *TranscribeChatVoiceAdvanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TranscribeChatVoiceResponse, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("WinNexo"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	transcribeChatVoiceReq := &TranscribeChatVoiceRequest{}
+	openapiutil.Convert(request, transcribeChatVoiceReq)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.FileUrlObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		transcribeChatVoiceReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	transcribeChatVoiceResp, _err := client.TranscribeChatVoiceWithOptions(transcribeChatVoiceReq, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = transcribeChatVoiceResp
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the authorization mode for digital employee usage permissions.
 //
 // Description:
@@ -13495,6 +15000,118 @@ func (client *Client) UpdateDirectory(request *UpdateDirectoryRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &UpdateDirectoryResponse{}
 	_body, _err := client.UpdateDirectoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 快更图谱元信息
+//
+// Description:
+//
+// OpenAPI 快更图谱元信息（displayName / businessProfile），同步更新 active 记录。
+//
+//	displayName 与 businessProfile 至少传其一，否则返回 ERR.GraphSchema.QuickUpdateNoFieldsToUpdate。
+//
+//	错误码：
+//
+//	- ERR.GraphSchema.QuickUpdateNoFieldsToUpdate: 未传任何可更新字段
+//
+//	- ERR.GraphSchema.GraphNameInvalid: 图谱名称不合法
+//
+//	- ERR.GraphSchema.GraphSchemaNotFound: 图谱不存在
+//
+//	- ERR.GraphSchema.DisplayNameInvalid: 展示名不合法或重复
+//
+// @param request - UpdateGraphInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGraphInfoResponse
+func (client *Client) UpdateGraphInfoWithOptions(request *UpdateGraphInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGraphInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessProfile) {
+		body["businessProfile"] = request.BusinessProfile
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGraphInfo"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateGraphInfo"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGraphInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 快更图谱元信息
+//
+// Description:
+//
+// OpenAPI 快更图谱元信息（displayName / businessProfile），同步更新 active 记录。
+//
+//	displayName 与 businessProfile 至少传其一，否则返回 ERR.GraphSchema.QuickUpdateNoFieldsToUpdate。
+//
+//	错误码：
+//
+//	- ERR.GraphSchema.QuickUpdateNoFieldsToUpdate: 未传任何可更新字段
+//
+//	- ERR.GraphSchema.GraphNameInvalid: 图谱名称不合法
+//
+//	- ERR.GraphSchema.GraphSchemaNotFound: 图谱不存在
+//
+//	- ERR.GraphSchema.DisplayNameInvalid: 展示名不合法或重复
+//
+// @param request - UpdateGraphInfoRequest
+//
+// @return UpdateGraphInfoResponse
+func (client *Client) UpdateGraphInfo(request *UpdateGraphInfoRequest) (_result *UpdateGraphInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGraphInfoResponse{}
+	_body, _err := client.UpdateGraphInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14424,7 +16041,7 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // - This API allows the caller to update some or all optional fields of a specified user. Fields that are not provided retain their original values.
 //
@@ -14432,7 +16049,7 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 //
 // - After a successful update, the response body contains the complete user information object.
 //
-// - This operation requires authentication and supports AK, BearerToken, and APP security schemes.
+// - This operation requires authentication and supports three security schemes: AK, BearerToken, and APP.
 //
 // - The request content type is JSON, and the operation is available only over HTTPS.
 //
@@ -14513,7 +16130,7 @@ func (client *Client) UpdateUserInfoWithOptions(request *UpdateUserInfoRequest, 
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // - This API allows the caller to update some or all optional fields of a specified user. Fields that are not provided retain their original values.
 //
@@ -14521,7 +16138,7 @@ func (client *Client) UpdateUserInfoWithOptions(request *UpdateUserInfoRequest, 
 //
 // - After a successful update, the response body contains the complete user information object.
 //
-// - This operation requires authentication and supports AK, BearerToken, and APP security schemes.
+// - This operation requires authentication and supports three security schemes: AK, BearerToken, and APP.
 //
 // - The request content type is JSON, and the operation is available only over HTTPS.
 //
@@ -14856,6 +16473,10 @@ func (client *Client) sendChatMessageWithSSE_opYieldFunc(_yield chan *SendChatMe
 
 	if !dara.IsNil(request.DirectChat) {
 		body["directChat"] = request.DirectChat
+	}
+
+	if !dara.IsNil(request.EnableWebSearch) {
+		body["enableWebSearch"] = request.EnableWebSearch
 	}
 
 	if !dara.IsNil(request.FilesShrink) {

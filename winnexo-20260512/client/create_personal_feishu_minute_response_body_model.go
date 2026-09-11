@@ -54,7 +54,7 @@ type CreatePersonalFeishuMinuteResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The resource name.
+	// The image name.
 	//
 	// example:
 	//

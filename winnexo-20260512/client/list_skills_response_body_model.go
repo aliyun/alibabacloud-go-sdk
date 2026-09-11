@@ -187,7 +187,7 @@ type ListSkillsResponseBodyItems struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The actual skill code for execution.
+	// The skill code that is actually executed.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type ListSkillsResponseBodyItems struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The key.
+	// The keys.
 	//
 	// example:
 	//

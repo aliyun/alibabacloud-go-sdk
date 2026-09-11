@@ -32,13 +32,13 @@ type QueryPrimaryObjectDataResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The incremental information list.
+	// The list of incremental information.
 	//
 	// example:
 	//
 	// string_value
 	Items []map[string]*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The error description. This parameter is empty when the request succeeds.
+	// The error description. This parameter is empty if the request is successful.
 	//
 	// example:
 	//

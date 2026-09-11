@@ -42,7 +42,7 @@ type RecommendNextActionsResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The meeting reservation title.
+	// The scheduled meeting title.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type RecommendNextActionsResponseBodyNextActions struct {
 	//
 	// example:
 	//
-	// Sample skill
+	// SampleSkill
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
 	// The recommendation type.
 	//

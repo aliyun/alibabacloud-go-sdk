@@ -24,7 +24,7 @@ type iQueryPrimaryObjectDataRequest interface {
 }
 
 type QueryPrimaryObjectDataRequest struct {
-	// The keyword for searching. The keyword is matched against the name field by default. If the schema defines a description field, the keyword is also matched against the description field.
+	// The keyword for search. The keyword is matched against the name field. If the schema defines a description field, the keyword is also matched against the description field.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QueryPrimaryObjectDataRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The page number. Pages start from 1.
+	// The page number. Pages start from page 1.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type QueryPrimaryObjectDataRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The tenant ID. This is a common parameter. You can explicitly pass it in winnexo-cli by using --tenant-id.
+	// The tenant ID. This is a common parameter. You can explicitly pass this parameter by using --tenant-id in winnexo-cli.
 	//
 	// example:
 	//

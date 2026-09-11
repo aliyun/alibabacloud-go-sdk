@@ -17,6 +17,8 @@ type iSendAsyncChatMessageRequest interface {
 	GetDigitalEmployeeName() []*string
 	SetDirectChat(v bool) *SendAsyncChatMessageRequest
 	GetDirectChat() *bool
+	SetEnableWebSearch(v bool) *SendAsyncChatMessageRequest
+	GetEnableWebSearch() *bool
 	SetFiles(v []*SendAsyncChatMessageRequestFiles) *SendAsyncChatMessageRequest
 	GetFiles() []*SendAsyncChatMessageRequestFiles
 	SetModel(v string) *SendAsyncChatMessageRequest
@@ -60,6 +62,12 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
+	// 是否启用联网搜索，默认 False；任务执行场景（传 taskExecution）下以任务配置为准
+	//
+	// example:
+	//
+	// false
+	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
 	// The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
 	Files []*SendAsyncChatMessageRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain their current tier.
@@ -120,6 +128,10 @@ func (s *SendAsyncChatMessageRequest) GetDirectChat() *bool {
 	return s.DirectChat
 }
 
+func (s *SendAsyncChatMessageRequest) GetEnableWebSearch() *bool {
+	return s.EnableWebSearch
+}
+
 func (s *SendAsyncChatMessageRequest) GetFiles() []*SendAsyncChatMessageRequestFiles {
 	return s.Files
 }
@@ -165,6 +177,11 @@ func (s *SendAsyncChatMessageRequest) SetDigitalEmployeeName(v []*string) *SendA
 
 func (s *SendAsyncChatMessageRequest) SetDirectChat(v bool) *SendAsyncChatMessageRequest {
 	s.DirectChat = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetEnableWebSearch(v bool) *SendAsyncChatMessageRequest {
+	s.EnableWebSearch = &v
 	return s
 }
 

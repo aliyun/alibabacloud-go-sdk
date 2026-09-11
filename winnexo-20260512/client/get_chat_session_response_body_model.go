@@ -34,7 +34,7 @@ type GetChatSessionResponseBody struct {
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The message data detail structure.
+	// The message data details structure.
 	Messages []*GetChatSessionResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type GetChatSessionResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The session information.
+	// The session ID.
 	Session *GetChatSessionResponseBodySession `json:"session,omitempty" xml:"session,omitempty" type:"Struct"`
 }
 
@@ -124,13 +124,13 @@ type GetChatSessionResponseBodyMessages struct {
 	//
 	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Indicates whether the LLM context has been cleared after this message.
+	// Indicates whether the LLM context was cleared after this message.
 	//
 	// example:
 	//
 	// true
 	ContextCleared *bool `json:"contextCleared,omitempty" xml:"contextCleared,omitempty"`
-	// Indicates whether the message is copied from a shared conversation.
+	// Indicates whether the message was copied from a shared conversation.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type GetChatSessionResponseBodyMessages struct {
 	//
 	// string_value
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The username of the user who shared the message. This parameter has a value only when from_share is set to True.
+	// The username of the sharing source. This field has a value only when from_share is set to True.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type GetChatSessionResponseBodyMessages struct {
 	//
 	// 20240101
 	UpdateAt *int64 `json:"updateAt,omitempty" xml:"updateAt,omitempty"`
-	// The user feedback type: LIKE | DISLIKE | CANCEL.
+	// The user feedback type. Valid values: LIKE, DISLIKE, and CANCEL.
 	//
 	// example:
 	//
@@ -325,7 +325,7 @@ type GetChatSessionResponseBodySession struct {
 	//
 	// exampleId
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the creation time is older than 30 days.
+	// Indicates whether the creation time exceeds 30 days.
 	//
 	// example:
 	//
@@ -337,7 +337,7 @@ type GetChatSessionResponseBodySession struct {
 	//
 	// exampleObjectId
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The abstract model name used by the session (quick/standard/flagship).
+	// The abstract model name used by the session. Valid values: quick, standard, and flagship.
 	//
 	// example:
 	//

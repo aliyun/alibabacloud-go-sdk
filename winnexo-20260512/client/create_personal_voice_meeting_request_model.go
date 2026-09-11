@@ -19,6 +19,8 @@ type iCreatePersonalVoiceMeetingRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalVoiceMeetingRequest
 	GetOperatingObjectName() *string
+	SetSourceTags(v string) *CreatePersonalVoiceMeetingRequest
+	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalVoiceMeetingRequest
 	GetTenantId() *string
 }
@@ -58,6 +60,12 @@ type CreatePersonalVoiceMeetingRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The list of resource tag JSON strings.
+	//
+	// example:
+	//
+	// ["Key","Meeting"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -94,6 +102,10 @@ func (s *CreatePersonalVoiceMeetingRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalVoiceMeetingRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalVoiceMeetingRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -120,6 +132,11 @@ func (s *CreatePersonalVoiceMeetingRequest) SetName(v string) *CreatePersonalVoi
 
 func (s *CreatePersonalVoiceMeetingRequest) SetOperatingObjectName(v string) *CreatePersonalVoiceMeetingRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalVoiceMeetingRequest) SetSourceTags(v string) *CreatePersonalVoiceMeetingRequest {
+	s.SourceTags = &v
 	return s
 }
 

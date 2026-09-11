@@ -28,7 +28,7 @@ type ListAvailableConfigsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The list of queried Logtail configurations.
 	Configs []*ListAvailableConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type ListAvailableConfigsResponseBodyConfigs struct {
 	//
 	// string_value
 	PlatformType *string `json:"platformType,omitempty" xml:"platformType,omitempty"`
-	// The SSO configuration ID. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
+	// The SSO configuration ID. This parameter has a value only for SAML, OAuth2, and WeCom types. The value is null for the custom type.
 	//
 	// example:
 	//
 	// exampleSsoSettingsId
 	SsoSettingsId *string `json:"ssoSettingsId,omitempty" xml:"ssoSettingsId,omitempty"`
-	// The SSO configuration name. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
+	// The SSO configuration name. This parameter has a value only for SAML, OAuth2, and WeCom types. The value is null for the custom type.
 	//
 	// example:
 	//

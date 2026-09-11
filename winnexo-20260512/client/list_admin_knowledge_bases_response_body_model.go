@@ -34,7 +34,7 @@ type ListAdminKnowledgeBasesResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The list of MCP cards.
 	Items []*ListAdminKnowledgeBasesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListAdminKnowledgeBasesResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The maximum number of records returned in this request.
+	// The maximum number of entries returned in this request.
 	//
 	// example:
 	//
@@ -201,31 +201,31 @@ type ListAdminKnowledgeBasesResponseBodyItems struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The object bindings.
 	ObjectBindings []*ListAdminKnowledgeBasesResponseBodyItemsObjectBindings `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// The number of resources with FAILED status. This field is returned only for the top-level knowledge base directory list.
+	// The number of resources with the FAILED status. This field is returned only in the top-level knowledge base directory list.
 	//
 	// example:
 	//
 	// 1
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// The knowledge base ownership type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
+	// The knowledge base source type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
 	//
 	// example:
 	//
 	// string_value
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// The number of resources with READY status. This field is returned only for the top-level knowledge base directory list.
+	// The number of resources with the READY status. This field is returned only in the top-level knowledge base directory list.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// The resource status. This field has a value only when itemType is resource.
+	// The resource status. This field has a value when itemType is set to resource.
 	//
 	// example:
 	//
 	// string_value
 	SourceStatus *string `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty"`
-	// The total number of resources in the directory and its subdirectories. This field is returned only for the top-level knowledge base directory list.
+	// The total number of resources in the directory and its subdirectories. This field is returned only in the top-level knowledge base directory list.
 	//
 	// example:
 	//
@@ -396,13 +396,13 @@ func (s *ListAdminKnowledgeBasesResponseBodyItems) Validate() error {
 }
 
 type ListAdminKnowledgeBasesResponseBodyItemsObjectBindings struct {
-	// The semantic graph name to which the object belongs. The object_id is unique within this graph.
+	// The name of the semantic graph to which the object belongs. The object_id is unique within this graph.
 	//
 	// example:
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// The ID of the recommended item, which can be a feedId or a micro-application ID.
+	// The ID of the recommended item, which can be a **feedId*	- or a micro-application ID.
 	//
 	// example:
 	//
@@ -414,7 +414,7 @@ type ListAdminKnowledgeBasesResponseBodyItemsObjectBindings struct {
 	//
 	// string_value
 	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
-	// The object type, such as customer. This field has a value only when type is mention.
+	// The object type, such as customer. This field has a value when type is set to mention.
 	//
 	// example:
 	//

@@ -19,6 +19,8 @@ type iCreatePersonalAlidingKnowledgeBaseShrinkRequest interface {
 	GetObjectBindingsShrink() *string
 	SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
 	GetOperatingObjectName() *string
+	SetSourceTags(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
+	GetSourceTags() *string
 	SetSyncConfigShrink(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
 	GetSyncConfigShrink() *string
 	SetTenantId(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
@@ -54,6 +56,12 @@ type CreatePersonalAlidingKnowledgeBaseShrinkRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The list of resource tag JSON strings applied to all child sources created during knowledge base synchronization.
+	//
+	// example:
+	//
+	// ["Key","KnowledgeBase"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The synchronization settings.
 	SyncConfigShrink *string `json:"syncConfig,omitempty" xml:"syncConfig,omitempty"`
 	// The tenant ID.
@@ -92,6 +100,10 @@ func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetOperatingObjectName
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetSyncConfigShrink() *string {
 	return s.SyncConfigShrink
 }
@@ -122,6 +134,11 @@ func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetObjectBindingsShrin
 
 func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetSourceTags(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest {
+	s.SourceTags = &v
 	return s
 }
 

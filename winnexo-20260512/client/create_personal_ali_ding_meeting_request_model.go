@@ -21,6 +21,8 @@ type iCreatePersonalAliDingMeetingRequest interface {
 	GetOperatingObjectName() *string
 	SetShanjiUrl(v string) *CreatePersonalAliDingMeetingRequest
 	GetShanjiUrl() *string
+	SetSourceTags(v string) *CreatePersonalAliDingMeetingRequest
+	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalAliDingMeetingRequest
 	GetTenantId() *string
 }
@@ -66,6 +68,12 @@ type CreatePersonalAliDingMeetingRequest struct {
 	//
 	// https://example.com/winnexo/resource
 	ShanjiUrl *string `json:"shanjiUrl,omitempty" xml:"shanjiUrl,omitempty"`
+	// A list of resource tag JSON strings.
+	//
+	// example:
+	//
+	// ["Important","Meeting"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -106,6 +114,10 @@ func (s *CreatePersonalAliDingMeetingRequest) GetShanjiUrl() *string {
 	return s.ShanjiUrl
 }
 
+func (s *CreatePersonalAliDingMeetingRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalAliDingMeetingRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -137,6 +149,11 @@ func (s *CreatePersonalAliDingMeetingRequest) SetOperatingObjectName(v string) *
 
 func (s *CreatePersonalAliDingMeetingRequest) SetShanjiUrl(v string) *CreatePersonalAliDingMeetingRequest {
 	s.ShanjiUrl = &v
+	return s
+}
+
+func (s *CreatePersonalAliDingMeetingRequest) SetSourceTags(v string) *CreatePersonalAliDingMeetingRequest {
+	s.SourceTags = &v
 	return s
 }
 

@@ -32,7 +32,7 @@ type UpdateUserInfoRequest struct {
 	//
 	// https://example.com/avatar.png
 	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	// The language preference: zh-CN, en-US.
+	// The language preference: zh-CN or en-US.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateUserInfoRequest struct {
 	//
 	// string_value
 	Offering *string `json:"offering,omitempty" xml:"offering,omitempty"`
-	// The user role description (used when profileRole is set to Others). Maximum length: 100 characters.
+	// The user role description. This parameter is used when profileRole is set to Others. Maximum length: 100 characters.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type UpdateUserInfoRequest struct {
 	//
 	// string_value
 	SelfIntroduction *string `json:"selfIntroduction,omitempty" xml:"selfIntroduction,omitempty"`
-	// The effective tenant ID.
+	// The ID of the effective tenant.
 	//
 	// example:
 	//

@@ -121,23 +121,23 @@ func (s *ListUserVisibleKnowledgeBasesResponseBody) Validate() error {
 }
 
 type ListUserVisibleKnowledgeBasesResponseBodyItems struct {
-	// The user ID of the creator.
+	// The user ID of the task creator.
 	//
 	// example:
 	//
 	// 1
 	CreatorId *int64 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The name of the creator.
+	// The creator name.
 	//
 	// example:
 	//
-	// John
+	// John Doe
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// The description of the knowledge base.
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// Product materials and usage instructions
+	// Product materials and user guides
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The directory ID of the enterprise knowledge base.
 	//
@@ -173,7 +173,7 @@ type ListUserVisibleKnowledgeBasesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Product Knowledge Base
+	// ProductKnowledgeBase
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

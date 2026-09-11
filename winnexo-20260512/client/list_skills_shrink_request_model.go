@@ -50,7 +50,7 @@ type ListSkillsShrinkRequest struct {
 	//
 	// SampleKeyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The digital employee name. Used to calculate the CodeAgent allowedSkills whitelist based on binding relationships.
+	// The name of the digital employee. Used to calculate the CodeAgent allowedSkills whitelist based on binding relationships.
 	//
 	// example:
 	//

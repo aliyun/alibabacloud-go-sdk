@@ -34,7 +34,7 @@ type iListBillingRequest interface {
 }
 
 type ListBillingRequest struct {
-	// The unique business identifier. When bizType is LibraryChat, bizId refers to the document library ID.
+	// The unique business identifier. When bizType is set to LibraryChat, bizId specifies the document library ID.
 	//
 	// example:
 	//
@@ -60,11 +60,11 @@ type ListBillingRequest struct {
 	IgnoreZero *bool `json:"ignoreZero,omitempty" xml:"ignoreZero,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - start: indicates task creation. This is the default value and does not need to be explicitly set in most cases.
+	// - start: indicates node creation. This is the default value. In most cases, you do not need to explicitly set this value.
 	//
-	// - stop: stops a real-time meeting task. This corresponds to the creation of a real-time meeting. After the meeting ends, set this to stop to trigger the call. This is used in real-time meeting scenarios.
+	// - stop: stops a real-time meeting node. This value corresponds to the creation of a real-time meeting. After the meeting ends, set this value to stop and trigger the call. This value is used in real-time meeting scenarios.
 	//
-	// Note: When ending a real-time recording, you must set this parameter to stop.
+	// > Note: When ending a real-time recording, make sure to set this parameter to stop.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type ListBillingRequest struct {
 	//
 	// 2023-10-01T12:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The task status. The status is returned as Running upon submission.
+	// The node status. Running is returned upon submission.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass this parameter explicitly by using --tenant-id.
 	//
 	// example:
 	//

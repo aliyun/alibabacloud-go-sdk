@@ -72,7 +72,7 @@ type CreatePersonalDingtalkMinutesResponseBody struct {
 	//
 	// read:user,read:repo,write:repo,read:org,read:group
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The unique identifier on the business system side, which is the business ID.
+	// The unique ID on the business system side, that is, the business ID.
 	//
 	// example:
 	//

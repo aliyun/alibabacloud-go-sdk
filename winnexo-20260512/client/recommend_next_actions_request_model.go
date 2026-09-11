@@ -34,7 +34,7 @@ type RecommendNextActionsRequest struct {
 	//
 	// followUpOnly
 	OutputType *string `json:"outputType,omitempty" xml:"outputType,omitempty"`
-	// The number of recent messages used to assemble contextual information.
+	// The number of recent messages used to assemble the contextual information.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type RecommendNextActionsRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The tenant ID. This is a common parameter. Pass it explicitly through winnexo-cli using --tenant-id.
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
 	//
 	// example:
 	//

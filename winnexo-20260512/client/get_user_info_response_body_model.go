@@ -76,7 +76,7 @@ type GetUserInfoResponseBody struct {
 	//
 	// true
 	IsAdmin *bool `json:"isAdmin,omitempty" xml:"isAdmin,omitempty"`
-	// Indicates whether the current logon tenant is the system tenant (tenantId=10000).
+	// Indicates whether the current logon tenant is a system tenant (tenantId=10000).
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type GetUserInfoResponseBody struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The user service description. Maximum length: 1000 characters.
+	// The user service description. The value can be up to 1000 characters in length.
 	//
 	// example:
 	//
 	// string_value
 	Offering *string `json:"offering,omitempty" xml:"offering,omitempty"`
-	// The parsed result of the user service (JSON format).
+	// The parsed result of the user service description in JSON format.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type GetUserInfoResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The user self-introduction. Maximum length: 1000 characters.
+	// The user self-introduction. The value can be up to 1000 characters in length.
 	//
 	// example:
 	//

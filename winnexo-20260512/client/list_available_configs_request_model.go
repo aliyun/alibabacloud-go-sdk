@@ -14,7 +14,7 @@ type iListAvailableConfigsRequest interface {
 }
 
 type ListAvailableConfigsRequest struct {
-	// The tenant ID. This is a common parameter. Pass it explicitly through --tenant-id in winnexo-cli.
+	// The tenant ID. This is a common parameter. The winnexo-cli passes this parameter explicitly by using --tenant-id.
 	//
 	// example:
 	//

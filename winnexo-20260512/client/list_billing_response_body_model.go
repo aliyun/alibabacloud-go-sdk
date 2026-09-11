@@ -32,7 +32,7 @@ type ListBillingResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The details of the bill list.
+	// The details of the bills.
 	List []*ListBillingResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
 	// The prompt message.
 	//
@@ -58,7 +58,7 @@ type ListBillingResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of bills.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListBillingResponseBodyList struct {
 	//
 	// string_value
 	EntryObjectType *string `json:"entryObjectType,omitempty" xml:"entryObjectType,omitempty"`
-	// Indicates whether this is a shadow bill.
+	// Indicates whether the bill is a shadow bill.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type ListBillingResponseBodyList struct {
 	//
 	// 2023-10-01T12:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The task status. The status is returned as Running upon submission.
+	// The node status. Running is returned upon submission.
 	//
 	// example:
 	//

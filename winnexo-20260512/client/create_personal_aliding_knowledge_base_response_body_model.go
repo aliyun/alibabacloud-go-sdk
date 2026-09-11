@@ -48,7 +48,7 @@ type CreatePersonalAlidingKnowledgeBaseResponseBody struct {
 	//
 	// 2025-11-14T02:18:27Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The knowledge base URL (echoed from the request parameter for caller alignment).
+	// The knowledge base URL. This echoes the input parameter for the caller to verify alignment.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type CreatePersonalAlidingKnowledgeBaseResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The status. Valid values:
 	//
-	// - 200: Success.
+	// - 200: Succeeded.
 	//
-	// - 500: Failure.
+	// - 500: Failed.
 	//
 	// example:
 	//

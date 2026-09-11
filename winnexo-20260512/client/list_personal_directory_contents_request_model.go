@@ -54,19 +54,19 @@ type ListPersonalDirectoryContentsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The field by which the results are sorted. Valid values:
+	// The field by which the returned results are sorted. Valid values:
 	//
-	// - event_time: event creation time
+	// - event_time: the event creation time.
 	//
-	// - event_execute_start_time: event execution time
+	// - event_execute_start_time: the event execution time.
 	//
-	// - event_execute_finish_time: event completion time
+	// - event_execute_finish_time: the event completion time.
 	//
 	// example:
 	//
 	// name
 	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
-	// The sort order. This parameter takes effect when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
+	// The sort order. This parameter takes effect when sortBy is specified. Valid values: ASC and DESC (case-insensitive).
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iGetScheduledTaskExecutionRecordsRequest interface {
 }
 
 type GetScheduledTaskExecutionRecordsRequest struct {
-	// The ID of the collaboration group to which the task belongs (such as cg_101). If specified, a group space task is created (the caller must be a valid group member). If left empty, a personal task is created.
+	// The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is specified, a group workspace task is created and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
 	//
 	// example:
 	//
 	// 1112
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// Filters by initiator (platform user ID). The scope is the executor of the record (manual execution = the person who triggered it, automatic execution = the task creator). To view only tasks initiated by yourself, pass the current user ID.
+	// The platform user ID of the initiator for filtering. The scope is the executor of the record. For manual execution, this is the user who triggered the execution. For automatic execution, this is the task creator. To view only tasks initiated by yourself, pass the current user ID.
 	//
 	// example:
 	//
@@ -50,27 +50,27 @@ type GetScheduledTaskExecutionRecordsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters by execution status (lowercase). Valid values:
+	// The execution status filter (lowercase). Valid values:
 	//
-	// - pending: queued.
+	// - pending: Queued.
 	//
-	// - running: in progress.
+	// - running: Running.
 	//
-	// - success: succeeded.
+	// - success: Succeeded.
 	//
-	// - failed: failed.
+	// - failed: Failed.
 	//
-	// - timeout: timed out.
+	// - timeout: Timed out.
 	//
-	// - cancelled: terminated.
+	// - cancelled: Cancelled.
 	//
-	// If not specified, no status filter is applied. If specified, future planned items are no longer generated.
+	// If this parameter is not specified, no status filtering is applied. If this parameter is specified, future planned items are no longer generated.
 	//
 	// example:
 	//
 	// failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Filters by a single task ID. If not specified, execution records of all visible tasks are returned.
+	// The ID of a single task for pre-filtering. If this parameter is not specified, execution records of all visible tasks are returned.
 	//
 	// example:
 	//

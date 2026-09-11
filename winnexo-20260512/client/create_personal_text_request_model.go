@@ -17,6 +17,8 @@ type iCreatePersonalTextRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalTextRequest
 	GetOperatingObjectName() *string
+	SetSourceTags(v string) *CreatePersonalTextRequest
+	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalTextRequest
 	GetTenantId() *string
 	SetTextContent(v string) *CreatePersonalTextRequest
@@ -50,6 +52,12 @@ type CreatePersonalTextRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 资源标签 JSON 字符串列表
+	//
+	// example:
+	//
+	// ["重点","文本"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -90,6 +98,10 @@ func (s *CreatePersonalTextRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalTextRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalTextRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -115,6 +127,11 @@ func (s *CreatePersonalTextRequest) SetName(v string) *CreatePersonalTextRequest
 
 func (s *CreatePersonalTextRequest) SetOperatingObjectName(v string) *CreatePersonalTextRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalTextRequest) SetSourceTags(v string) *CreatePersonalTextRequest {
+	s.SourceTags = &v
 	return s
 }
 

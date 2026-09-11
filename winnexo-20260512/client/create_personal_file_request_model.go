@@ -27,6 +27,8 @@ type iCreatePersonalFileRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalFileRequest
 	GetOperatingObjectName() *string
+	SetSourceTags(v string) *CreatePersonalFileRequest
+	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalFileRequest
 	GetTenantId() *string
 }
@@ -90,6 +92,12 @@ type CreatePersonalFileRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 资源标签 JSON 字符串列表
+	//
+	// example:
+	//
+	// ["重点","文件"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -142,6 +150,10 @@ func (s *CreatePersonalFileRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalFileRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalFileRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -188,6 +200,11 @@ func (s *CreatePersonalFileRequest) SetName(v string) *CreatePersonalFileRequest
 
 func (s *CreatePersonalFileRequest) SetOperatingObjectName(v string) *CreatePersonalFileRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalFileRequest) SetSourceTags(v string) *CreatePersonalFileRequest {
+	s.SourceTags = &v
 	return s
 }
 

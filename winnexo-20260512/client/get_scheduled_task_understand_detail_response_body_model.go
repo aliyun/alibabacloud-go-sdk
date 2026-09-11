@@ -50,7 +50,7 @@ type GetScheduledTaskUnderstandDetailResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The task understanding description polished by the LLM.
+	// The task understanding description refined by the LLM.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The object ID. Pass the project task ID.
+	// The object ID. Set this parameter to the project task ID.
 	//
 	// - For internal enterprise applications, this is the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
 	//
@@ -303,7 +303,7 @@ type GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills struct {
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// The list of source IDs for related skills.
+	// The list of related skill source IDs.
 	//
 	// example:
 	//

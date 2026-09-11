@@ -17,6 +17,8 @@ type iSendChatMessageShrinkRequest interface {
 	GetDigitalEmployeeNameShrink() *string
 	SetDirectChat(v bool) *SendChatMessageShrinkRequest
 	GetDirectChat() *bool
+	SetEnableWebSearch(v bool) *SendChatMessageShrinkRequest
+	GetEnableWebSearch() *bool
 	SetFilesShrink(v string) *SendChatMessageShrinkRequest
 	GetFilesShrink() *string
 	SetModel(v string) *SendChatMessageShrinkRequest
@@ -60,7 +62,13 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
-	// The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
+	// Specifies whether to enable web search. Default value: False. In task execution scenarios (when taskExecution is passed), the task configuration takes precedence.
+	//
+	// example:
+	//
+	// false
+	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
+	// The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
 	FilesShrink *string `json:"files,omitempty" xml:"files,omitempty"`
 	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain the current session tier.
 	//
@@ -68,7 +76,7 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// quick
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// Specifies whether to reuse the most recent session of the digital employee when sessionId is not provided (CLI scenario). Default value: false, which creates a new session.
+	// Specifies whether to reuse the most recent session of the digital employee when sessionId is not passed (CLI scenario). Default value: false, which creates a new session.
 	//
 	// example:
 	//
@@ -80,7 +88,7 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// Specifies whether to use streaming output.
+	// Specifies whether to enable streaming output.
 	//
 	// example:
 	//
@@ -118,6 +126,10 @@ func (s *SendChatMessageShrinkRequest) GetDigitalEmployeeNameShrink() *string {
 
 func (s *SendChatMessageShrinkRequest) GetDirectChat() *bool {
 	return s.DirectChat
+}
+
+func (s *SendChatMessageShrinkRequest) GetEnableWebSearch() *bool {
+	return s.EnableWebSearch
 }
 
 func (s *SendChatMessageShrinkRequest) GetFilesShrink() *string {
@@ -165,6 +177,11 @@ func (s *SendChatMessageShrinkRequest) SetDigitalEmployeeNameShrink(v string) *S
 
 func (s *SendChatMessageShrinkRequest) SetDirectChat(v bool) *SendChatMessageShrinkRequest {
 	s.DirectChat = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetEnableWebSearch(v bool) *SendChatMessageShrinkRequest {
+	s.EnableWebSearch = &v
 	return s
 }
 

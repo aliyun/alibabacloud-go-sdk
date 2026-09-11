@@ -21,6 +21,8 @@ type iCreatePersonalFeishuMinuteRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalFeishuMinuteRequest
 	GetOperatingObjectName() *string
+	SetSourceTags(v string) *CreatePersonalFeishuMinuteRequest
+	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalFeishuMinuteRequest
 	GetTenantId() *string
 }
@@ -34,7 +36,7 @@ type CreatePersonalFeishuMinuteRequest struct {
 	//
 	// exampleCredentialId
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The resource description.
+	// The schedule description.
 	//
 	// example:
 	//
@@ -54,7 +56,7 @@ type CreatePersonalFeishuMinuteRequest struct {
 	//
 	// string_value
 	MinuteToken *string `json:"minuteToken,omitempty" xml:"minuteToken,omitempty"`
-	// The resource name.
+	// The image name.
 	//
 	// This parameter is required.
 	//
@@ -68,6 +70,12 @@ type CreatePersonalFeishuMinuteRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The list of resource tag JSON strings.
+	//
+	// example:
+	//
+	// ["Important","Minutes"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -108,6 +116,10 @@ func (s *CreatePersonalFeishuMinuteRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalFeishuMinuteRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalFeishuMinuteRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -139,6 +151,11 @@ func (s *CreatePersonalFeishuMinuteRequest) SetName(v string) *CreatePersonalFei
 
 func (s *CreatePersonalFeishuMinuteRequest) SetOperatingObjectName(v string) *CreatePersonalFeishuMinuteRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalFeishuMinuteRequest) SetSourceTags(v string) *CreatePersonalFeishuMinuteRequest {
+	s.SourceTags = &v
 	return s
 }
 

@@ -62,13 +62,13 @@ type BatchRemoveOperatingObjectFavoritesResponseBody struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The number of remaining favorited objects within the specified scope.
+	// The number of remaining subscribed objects within the precise scope.
 	//
 	// example:
 	//
 	// 0
 	RemainingCount *int64 `json:"remainingCount,omitempty" xml:"remainingCount,omitempty"`
-	// The number of physical favorite records that are actually deleted.
+	// The number of physical subscription records that are actually deleted.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ func (s *BatchRemoveOperatingObjectFavoritesResponseBody) Validate() error {
 }
 
 type BatchRemoveOperatingObjectFavoritesResponseBodyResults struct {
-	// Indicates whether the object is favorited after the operation.
+	// Indicates whether the object is subscribed after the operation.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type BatchRemoveOperatingObjectFavoritesResponseBodyResults struct {
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// Indicates whether the request has been processed.
+	// Indicates whether the request is processed.
 	//
 	// example:
 	//

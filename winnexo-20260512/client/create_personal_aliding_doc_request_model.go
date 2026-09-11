@@ -19,6 +19,8 @@ type iCreatePersonalAlidingDocRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalAlidingDocRequest
 	GetOperatingObjectName() *string
+	SetSourceTags(v string) *CreatePersonalAlidingDocRequest
+	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalAlidingDocRequest
 	GetTenantId() *string
 }
@@ -58,6 +60,12 @@ type CreatePersonalAlidingDocRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The list of resource tag JSON strings.
+	//
+	// example:
+	//
+	// ["Key","Document"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -94,6 +102,10 @@ func (s *CreatePersonalAlidingDocRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAlidingDocRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalAlidingDocRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -120,6 +132,11 @@ func (s *CreatePersonalAlidingDocRequest) SetName(v string) *CreatePersonalAlidi
 
 func (s *CreatePersonalAlidingDocRequest) SetOperatingObjectName(v string) *CreatePersonalAlidingDocRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalAlidingDocRequest) SetSourceTags(v string) *CreatePersonalAlidingDocRequest {
+	s.SourceTags = &v
 	return s
 }
 

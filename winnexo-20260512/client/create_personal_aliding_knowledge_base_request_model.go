@@ -19,6 +19,8 @@ type iCreatePersonalAlidingKnowledgeBaseRequest interface {
 	GetObjectBindings() []*CreatePersonalAlidingKnowledgeBaseRequestObjectBindings
 	SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseRequest
 	GetOperatingObjectName() *string
+	SetSourceTags(v string) *CreatePersonalAlidingKnowledgeBaseRequest
+	GetSourceTags() *string
 	SetSyncConfig(v *CreatePersonalAlidingKnowledgeBaseRequestSyncConfig) *CreatePersonalAlidingKnowledgeBaseRequest
 	GetSyncConfig() *CreatePersonalAlidingKnowledgeBaseRequestSyncConfig
 	SetTenantId(v string) *CreatePersonalAlidingKnowledgeBaseRequest
@@ -54,6 +56,12 @@ type CreatePersonalAlidingKnowledgeBaseRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The list of resource tag JSON strings applied to all child sources created during knowledge base synchronization.
+	//
+	// example:
+	//
+	// ["Key","KnowledgeBase"]
+	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The synchronization settings.
 	SyncConfig *CreatePersonalAlidingKnowledgeBaseRequestSyncConfig `json:"syncConfig,omitempty" xml:"syncConfig,omitempty" type:"Struct"`
 	// The tenant ID.
@@ -92,6 +100,10 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetOperatingObjectName() *st
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetSourceTags() *string {
+	return s.SourceTags
+}
+
 func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetSyncConfig() *CreatePersonalAlidingKnowledgeBaseRequestSyncConfig {
 	return s.SyncConfig
 }
@@ -122,6 +134,11 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetObjectBindings(v []*Creat
 
 func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetSourceTags(v string) *CreatePersonalAlidingKnowledgeBaseRequest {
+	s.SourceTags = &v
 	return s
 }
 
@@ -199,7 +216,7 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequestObjectBindings) Validate() err
 }
 
 type CreatePersonalAlidingKnowledgeBaseRequestSyncConfig struct {
-	// The cron expression for timed scheduling.
+	// The cron expression for the timed scheduling node.
 	//
 	// example:
 	//
