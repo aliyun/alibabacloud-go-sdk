@@ -526,6 +526,7 @@ type EnrichResponseBodyDataSolutionListJourneyListSegmentList struct {
   // 
   // 32Q
   EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
+  FareBasis *string `json:"fare_basis,omitempty" xml:"fare_basis,omitempty"`
   // Flight duration, unit: minutes
   // 
   // example:
@@ -642,6 +643,10 @@ func (s *EnrichResponseBodyDataSolutionListJourneyListSegmentList) GetEquipType(
   return s.EquipType
 }
 
+func (s *EnrichResponseBodyDataSolutionListJourneyListSegmentList) GetFareBasis() *string  {
+  return s.FareBasis
+}
+
 func (s *EnrichResponseBodyDataSolutionListJourneyListSegmentList) GetFlightDuration() *int32  {
   return s.FlightDuration
 }
@@ -740,6 +745,11 @@ func (s *EnrichResponseBodyDataSolutionListJourneyListSegmentList) SetDepartureT
 
 func (s *EnrichResponseBodyDataSolutionListJourneyListSegmentList) SetEquipType(v string) *EnrichResponseBodyDataSolutionListJourneyListSegmentList {
   s.EquipType = &v
+  return s
+}
+
+func (s *EnrichResponseBodyDataSolutionListJourneyListSegmentList) SetFareBasis(v string) *EnrichResponseBodyDataSolutionListJourneyListSegmentList {
+  s.FareBasis = &v
   return s
 }
 

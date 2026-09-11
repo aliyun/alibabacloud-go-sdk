@@ -44,7 +44,7 @@ type GlobalHotelValidatePriceResponseBody struct {
 	//
 	// 260E4F99-983D-1919-834C-5C42E98E5B2B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GlobalHotelValidatePriceResponseBodyData struct {
 	CancellationPolicies []*GlobalHotelValidatePriceResponseBodyDataCancellationPolicies `json:"CancellationPolicies,omitempty" xml:"CancellationPolicies,omitempty" type:"Repeated"`
 	// The list of daily prices.
 	DailyPrices []*GlobalHotelValidatePriceResponseBodyDataDailyPrices `json:"DailyPrices,omitempty" xml:"DailyPrices,omitempty" type:"Repeated"`
-	// The price validation result ID, used for subsequent order creation.
+	// The price validation result ID, which is used for subsequent order creation.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ func (s *GlobalHotelValidatePriceResponseBodyData) Validate() error {
 type GlobalHotelValidatePriceResponseBodyDataCancellationPolicies struct {
 	// The list of cancellation penalty details.
 	Penalties []*GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties `json:"Penalties,omitempty" xml:"Penalties,omitempty" type:"Repeated"`
-	// The cancellation policy type (FREE_CANCEL/CONDITIONAL/NON_REFUNDABLE).
+	// The cancellation policy type.
 	//
 	// example:
 	//
@@ -308,13 +308,13 @@ type GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties struc
 	//
 	// 1672617600000
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The penalty type (PERCENT/NIGHTS/NON_CANCELLABLE).
+	// The penalty type.
 	//
 	// example:
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
-	// The penalty value (percentage, amount, or number of nights). This field is not present when PenaltyType is NON_CANCELLABLE.
+	// The penalty value, which represents a percentage, amount, or number of nights.
 	//
 	// example:
 	//
@@ -401,7 +401,7 @@ func (s *GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties) 
 }
 
 type GlobalHotelValidatePriceResponseBodyDataDailyPrices struct {
-	// The date in yyyy-MM-dd format, in the local time zone of the hotel.
+	// The date in yyyy-MM-dd format, based on the hotel\\"s local time zone.
 	//
 	// example:
 	//
@@ -468,7 +468,7 @@ type GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice struct {
 	//
 	// 574
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The currency code (ISO 4217).
+	// The currency code in ISO 4217 format.
 	//
 	// example:
 	//
@@ -528,7 +528,7 @@ type GlobalHotelValidatePriceResponseBodyDataTotalPrice struct {
 	//
 	// 574
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The currency code (ISO 4217).
+	// The currency code in ISO 4217 format.
 	//
 	// example:
 	//

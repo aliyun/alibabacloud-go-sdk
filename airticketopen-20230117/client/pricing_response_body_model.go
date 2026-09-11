@@ -793,6 +793,7 @@ type PricingResponseBodyDataSolutionJourneyListSegmentList struct {
 	//
 	// 32Q
 	EquipType *string `json:"equip_type,omitempty" xml:"equip_type,omitempty"`
+	FareBasis *string `json:"fare_basis,omitempty" xml:"fare_basis,omitempty"`
 	// The flight duration in minutes.
 	//
 	// example:
@@ -909,6 +910,10 @@ func (s *PricingResponseBodyDataSolutionJourneyListSegmentList) GetEquipType() *
 	return s.EquipType
 }
 
+func (s *PricingResponseBodyDataSolutionJourneyListSegmentList) GetFareBasis() *string {
+	return s.FareBasis
+}
+
 func (s *PricingResponseBodyDataSolutionJourneyListSegmentList) GetFlightDuration() *int32 {
 	return s.FlightDuration
 }
@@ -1007,6 +1012,11 @@ func (s *PricingResponseBodyDataSolutionJourneyListSegmentList) SetDepartureTime
 
 func (s *PricingResponseBodyDataSolutionJourneyListSegmentList) SetEquipType(v string) *PricingResponseBodyDataSolutionJourneyListSegmentList {
 	s.EquipType = &v
+	return s
+}
+
+func (s *PricingResponseBodyDataSolutionJourneyListSegmentList) SetFareBasis(v string) *PricingResponseBodyDataSolutionJourneyListSegmentList {
+	s.FareBasis = &v
 	return s
 }
 
