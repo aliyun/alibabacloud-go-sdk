@@ -26,7 +26,7 @@ type iListKVCacheStoreAttachInfoResponseBody interface {
 type ListKVCacheStoreAttachInfoResponseBody struct {
 	// The list of mount information.
 	AttachInfos []*ListKVCacheStoreAttachInfoResponseBodyAttachInfos `json:"AttachInfos,omitempty" xml:"AttachInfos,omitempty" type:"Repeated"`
-	// The pagination token used to query the next batch of data.
+	// The pagination token. Used to query the next batch of data.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListKVCacheStoreAttachInfoResponseBody) Validate() error {
 }
 
 type ListKVCacheStoreAttachInfoResponseBodyAttachInfos struct {
-	// The time of the most recent attach operation, in ISO 8601 format. The value is null if the instance has not been attached.
+	// The time of the most recent attach operation, in ISO 8601 format. This value is null if the instance has not been attached.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type ListKVCacheStoreAttachInfoResponseBodyAttachInfos struct {
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The mount point ID at the file system level.
+	// The file system-level mount point ID.
 	//
 	// example:
 	//
@@ -178,9 +178,7 @@ type ListKVCacheStoreAttachInfoResponseBodyAttachInfos struct {
 	//
 	// ATTACHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The instance type. Valid values:
-	//
-	// - kvcs: KVCacheStore (CPFS).
+	// The instance type. Valid values: kvcs (KVCacheStore, CPFS).
 	//
 	// example:
 	//

@@ -25,11 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing":     dara.String("kvcachestore.cn-beijing.aliyuncs.com"),
-		"cn-shanghai":    dara.String("kvcachestore.cn-shanghai.aliyuncs.com"),
-		"ap-southeast-1": dara.String("kvcachestore.ap-southeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -63,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Mounts KVCacheInstance resources to the virtualization side in batches.
+// Mounts KVCacheInstance resources to the virtualization stack in batches.
 //
 // Description:
 //
@@ -125,7 +120,7 @@ func (client *Client) AttachKVCacheStoreWithOptions(request *AttachKVCacheStoreR
 
 // Summary:
 //
-// Mounts KVCacheInstance resources to the virtualization side in batches.
+// Mounts KVCacheInstance resources to the virtualization stack in batches.
 //
 // Description:
 //
@@ -551,7 +546,7 @@ func (client *Client) DetachKVCacheStore(request *DetachKVCacheStoreRequest) (_r
 
 // Summary:
 //
-// 查询 KvCacheStore 实例详情
+// Queries the details of a KvCacheStore instance.
 //
 // @param request - GetKVCacheStoreRequest
 //
@@ -599,7 +594,7 @@ func (client *Client) GetKVCacheStoreWithOptions(request *GetKVCacheStoreRequest
 
 // Summary:
 //
-// 查询 KvCacheStore 实例详情
+// Queries the details of a KvCacheStore instance.
 //
 // @param request - GetKVCacheStoreRequest
 //
@@ -617,7 +612,17 @@ func (client *Client) GetKVCacheStore(request *GetKVCacheStoreRequest) (_result 
 
 // Summary:
 //
-// Queries the mount information of KVCacheInstance resources in batches.
+// Queries mount information of KVCacheInstances in batches.
+//
+// Description:
+//
+// This operation has no KVCacheStore status restrictions. If a KVCacheStore is in the Creating state, an empty list is returned.
+//
+//   - A KVCacheStore can be mounted to multiple VSCs, so each KVCacheStore may return multiple mount records.
+//
+//   - This operation supports batch queries. You can query up to 100 KVCacheStores in a single request.
+//
+//   - This operation supports page number-based pagination (PageNumber and PageSize) and cursor-based pagination (NextToken and MaxResults). If both sets of pagination parameters are specified, cursor-based pagination takes precedence.
 //
 // @param request - ListKVCacheStoreAttachInfoRequest
 //
@@ -681,7 +686,17 @@ func (client *Client) ListKVCacheStoreAttachInfoWithOptions(request *ListKVCache
 
 // Summary:
 //
-// Queries the mount information of KVCacheInstance resources in batches.
+// Queries mount information of KVCacheInstances in batches.
+//
+// Description:
+//
+// This operation has no KVCacheStore status restrictions. If a KVCacheStore is in the Creating state, an empty list is returned.
+//
+//   - A KVCacheStore can be mounted to multiple VSCs, so each KVCacheStore may return multiple mount records.
+//
+//   - This operation supports batch queries. You can query up to 100 KVCacheStores in a single request.
+//
+//   - This operation supports page number-based pagination (PageNumber and PageSize) and cursor-based pagination (NextToken and MaxResults). If both sets of pagination parameters are specified, cursor-based pagination takes precedence.
 //
 // @param request - ListKVCacheStoreAttachInfoRequest
 //
@@ -699,7 +714,11 @@ func (client *Client) ListKVCacheStoreAttachInfo(request *ListKVCacheStoreAttach
 
 // Summary:
 //
-// 查询指定 KVCacheStore 实例可用的 HpnZone 列表
+// Queries the list of available HpnZones for a specified KVCacheStore instance.
+//
+// Description:
+//
+// This operation queries available HpnZones by KVCacheStore. Use this operation to query available HPN cluster IDs before scaling or migrating a KVCacheStore.
 //
 // @param request - ListKVCacheStoreAvailableHpnZonesRequest
 //
@@ -747,7 +766,11 @@ func (client *Client) ListKVCacheStoreAvailableHpnZonesWithOptions(request *List
 
 // Summary:
 //
-// 查询指定 KVCacheStore 实例可用的 HpnZone 列表
+// Queries the list of available HpnZones for a specified KVCacheStore instance.
+//
+// Description:
+//
+// This operation queries available HpnZones by KVCacheStore. Use this operation to query available HPN cluster IDs before scaling or migrating a KVCacheStore.
 //
 // @param request - ListKVCacheStoreAvailableHpnZonesRequest
 //
@@ -756,6 +779,84 @@ func (client *Client) ListKVCacheStoreAvailableHpnZones(request *ListKVCacheStor
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListKVCacheStoreAvailableHpnZonesResponse{}
 	_body, _err := client.ListKVCacheStoreAvailableHpnZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of available VSC resources associated with a specified KVCacheStore instance.
+//
+// @param request - ListKVCacheStoreAvailableVscsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKVCacheStoreAvailableVscsResponse
+func (client *Client) ListKVCacheStoreAvailableVscsWithOptions(request *ListKVCacheStoreAvailableVscsRequest, runtime *dara.RuntimeOptions) (_result *ListKVCacheStoreAvailableVscsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Arns) {
+		query["Arns"] = request.Arns
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.KvcsId) {
+		query["KvcsId"] = request.KvcsId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKVCacheStoreAvailableVscs"),
+		Version:     dara.String("2026-06-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKVCacheStoreAvailableVscsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of available VSC resources associated with a specified KVCacheStore instance.
+//
+// @param request - ListKVCacheStoreAvailableVscsRequest
+//
+// @return ListKVCacheStoreAvailableVscsResponse
+func (client *Client) ListKVCacheStoreAvailableVscs(request *ListKVCacheStoreAvailableVscsRequest) (_result *ListKVCacheStoreAvailableVscsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKVCacheStoreAvailableVscsResponse{}
+	_body, _err := client.ListKVCacheStoreAvailableVscsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

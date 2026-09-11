@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Mounts KVCacheInstance resources to the virtualization side in batches.
+// Mounts KVCacheInstance resources to the virtualization stack in batches.
 //
 // Description:
 //
@@ -361,7 +361,7 @@ func (client *Client) DetachKVCacheStoreWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询 KvCacheStore 实例详情
+// Queries the details of a KvCacheStore instance.
 //
 // @param request - GetKVCacheStoreRequest
 //
@@ -409,7 +409,17 @@ func (client *Client) GetKVCacheStoreWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the mount information of KVCacheInstance resources in batches.
+// Queries mount information of KVCacheInstances in batches.
+//
+// Description:
+//
+// This operation has no KVCacheStore status restrictions. If a KVCacheStore is in the Creating state, an empty list is returned.
+//
+//   - A KVCacheStore can be mounted to multiple VSCs, so each KVCacheStore may return multiple mount records.
+//
+//   - This operation supports batch queries. You can query up to 100 KVCacheStores in a single request.
+//
+//   - This operation supports page number-based pagination (PageNumber and PageSize) and cursor-based pagination (NextToken and MaxResults). If both sets of pagination parameters are specified, cursor-based pagination takes precedence.
 //
 // @param request - ListKVCacheStoreAttachInfoRequest
 //
@@ -473,7 +483,11 @@ func (client *Client) ListKVCacheStoreAttachInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询指定 KVCacheStore 实例可用的 HpnZone 列表
+// Queries the list of available HpnZones for a specified KVCacheStore instance.
+//
+// Description:
+//
+// This operation queries available HpnZones by KVCacheStore. Use this operation to query available HPN cluster IDs before scaling or migrating a KVCacheStore.
 //
 // @param request - ListKVCacheStoreAvailableHpnZonesRequest
 //
@@ -511,6 +525,66 @@ func (client *Client) ListKVCacheStoreAvailableHpnZonesWithContext(ctx context.C
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListKVCacheStoreAvailableHpnZonesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of available VSC resources associated with a specified KVCacheStore instance.
+//
+// @param request - ListKVCacheStoreAvailableVscsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKVCacheStoreAvailableVscsResponse
+func (client *Client) ListKVCacheStoreAvailableVscsWithContext(ctx context.Context, request *ListKVCacheStoreAvailableVscsRequest, runtime *dara.RuntimeOptions) (_result *ListKVCacheStoreAvailableVscsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Arns) {
+		query["Arns"] = request.Arns
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.KvcsId) {
+		query["KvcsId"] = request.KvcsId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKVCacheStoreAvailableVscs"),
+		Version:     dara.String("2026-06-17"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKVCacheStoreAvailableVscsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

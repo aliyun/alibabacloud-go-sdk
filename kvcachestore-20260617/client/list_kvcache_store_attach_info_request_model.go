@@ -24,11 +24,11 @@ type iListKVCacheStoreAttachInfoRequest interface {
 }
 
 type ListKVCacheStoreAttachInfoRequest struct {
-	// The list of KVCacheStore KvcsId values to query. A maximum of 100 values can be specified.
+	// The list of KVCacheStore KvcsIds to query. You can specify up to 100 IDs.
 	//
 	// This parameter is required.
 	KvcsIds []*string `json:"KvcsIds,omitempty" xml:"KvcsIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return in a single request. Valid values: 1 to 500.
+	// The maximum number of entries to return per query. Valid values: 1 to 500.
 	//
 	// Default value: 10.
 	//
@@ -36,13 +36,13 @@ type ListKVCacheStoreAttachInfoRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If you set NextToken, the PageSize and PageNumber request parameters become ineffective, and the TotalCount value in the response is invalid.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If NextToken is specified, the PageSize and PageNumber request parameters become ineffective, and TotalCount in the response is invalid.
 	//
 	// example:
 	//
 	// your-client-token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number for a paged query. Used together with PageSize. If the value exceeds the total number of pages, the last page of data is returned.
+	// The page number for a paged query. Used together with PageSize. If the specified page number exceeds the total number of pages, the last page of data is returned.
 	//
 	// example:
 	//

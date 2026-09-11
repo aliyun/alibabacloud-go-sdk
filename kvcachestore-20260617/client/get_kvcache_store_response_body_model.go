@@ -16,7 +16,10 @@ type iGetKVCacheStoreResponseBody interface {
 }
 
 type GetKVCacheStoreResponseBody struct {
+	// The details of the KvCacheStore instance.
 	KvCacheStore *GetKVCacheStoreResponseBodyKvCacheStore `json:"KvCacheStore,omitempty" xml:"KvCacheStore,omitempty" type:"Struct"`
+	// The request ID. A request ID is returned regardless of whether the call is successful.
+	//
 	// example:
 	//
 	// 019FB5E9-F9E8-52F5-9C56-2CDF479CBEB2
@@ -59,59 +62,112 @@ func (s *GetKVCacheStoreResponseBody) Validate() error {
 }
 
 type GetKVCacheStoreResponseBodyKvCacheStore struct {
+	// The storage capacity, in GiB.
+	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The creation time in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-06-18T10:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
 	// production kvcachestore
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The extra status information. Valid values:
+	//
+	// - CapacityExpanding
+	//
+	// - CapacityExpandSuccess
+	//
+	// - CapacityExpandFail
+	//
 	// example:
 	//
 	// CapacityExpanding
 	ExtraStatus *string `json:"ExtraStatus,omitempty" xml:"ExtraStatus,omitempty"`
+	// The cluster number.
+	//
 	// example:
 	//
 	// default
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
+	// The file system-level mount point ID. Instances under the same file system share this mount point. For more information, use ListKVCacheInstanceAttachInfo.
+	//
 	// example:
 	//
 	// mp-xxxxx
 	MountPointId *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// production-instance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The payment type. Valid values:
+	//
+	// - PREPAY
+	//
+	// - POSTPAY
+	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzrwkxbdvkctq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - Creating
+	//
+	// - Available
+	//
+	// - InUse
+	//
+	// - Stopping
+	//
+	// - Stopped
+	//
+	// - Deleting
+	//
 	// example:
 	//
 	// AVAILABLE
-	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetKVCacheStoreResponseBodyKvCacheStoreTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of resource tags.
+	Tags []*GetKVCacheStoreResponseBodyKvCacheStoreTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The instance type. Valid values:
+	//
+	// - kvcs: KVCacheStore (CPFS).
+	//
 	// example:
 	//
 	// kvcs
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -275,10 +331,14 @@ func (s *GetKVCacheStoreResponseBodyKvCacheStore) Validate() error {
 }
 
 type GetKVCacheStoreResponseBodyKvCacheStoreTags struct {
+	// The tag key of the resource.
+	//
 	// example:
 	//
 	// ac-cus-tag-6
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value of the resource.
+	//
 	// example:
 	//
 	// advanced

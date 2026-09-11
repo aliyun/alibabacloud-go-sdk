@@ -16,12 +16,16 @@ type iGetKVCacheStoreRequest interface {
 }
 
 type GetKVCacheStoreRequest struct {
+	// The KvCacheStore instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kvcs-your-id
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
+	// The region ID, such as cn-hangzhou.
+	//
 	// This parameter is required.
 	//
 	// example:

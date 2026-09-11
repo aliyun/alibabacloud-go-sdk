@@ -16,7 +16,10 @@ type iListKVCacheStoreAvailableHpnZonesResponseBody interface {
 }
 
 type ListKVCacheStoreAvailableHpnZonesResponseBody struct {
+	// The list of available HpnZone information for instances.
 	InstanceHpnZones []*ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones `json:"InstanceHpnZones,omitempty" xml:"InstanceHpnZones,omitempty" type:"Repeated"`
+	// The request ID. A request ID is returned regardless of whether the call is successful.
+	//
 	// example:
 	//
 	// 019FB5E9-F9E8-52F5-9C56-2CDF479CBEB2
@@ -63,11 +66,16 @@ func (s *ListKVCacheStoreAvailableHpnZonesResponseBody) Validate() error {
 }
 
 type ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones struct {
+	// The list of available HpnZones for the instance.
 	AvailableHpnZones []*ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZonesAvailableHpnZones `json:"AvailableHpnZones,omitempty" xml:"AvailableHpnZones,omitempty" type:"Repeated"`
+	// The KVCacheStore instance ID.
+	//
 	// example:
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
+	// The zone ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -123,6 +131,8 @@ func (s *ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones) Validate
 }
 
 type ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZonesAvailableHpnZones struct {
+	// The cluster ID, such as default.
+	//
 	// example:
 	//
 	// default

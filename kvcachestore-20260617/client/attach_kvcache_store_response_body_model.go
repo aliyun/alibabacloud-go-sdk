@@ -18,7 +18,7 @@ type iAttachKVCacheStoreResponseBody interface {
 type AttachKVCacheStoreResponseBody struct {
 	// The list of mount results.
 	AttachResults []*AttachKVCacheStoreResponseBodyAttachResults `json:"AttachResults,omitempty" xml:"AttachResults,omitempty" type:"Repeated"`
-	// The request ID. A request ID is returned regardless of whether the operation is successful.
+	// The request ID. A request ID is returned regardless of whether the API call succeeds.
 	//
 	// example:
 	//
