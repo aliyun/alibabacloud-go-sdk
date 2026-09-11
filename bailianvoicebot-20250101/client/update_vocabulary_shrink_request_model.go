@@ -22,17 +22,32 @@ type iUpdateVocabularyShrinkRequest interface {
 }
 
 type UpdateVocabularyShrinkRequest struct {
+	// The ID of the Model Studio business unit.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the vocabulary.
+	//
+	// example:
+	//
+	// 包含金融场景专业术语
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the vocabulary.
+	//
+	// example:
+	//
+	// 金融场景热词
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the vocabulary.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4061
 	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
-	WordsShrink  *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	// An object containing the words in the vocabulary and their corresponding weights.
+	WordsShrink *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s UpdateVocabularyShrinkRequest) String() string {

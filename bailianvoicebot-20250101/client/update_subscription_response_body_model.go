@@ -24,24 +24,33 @@ type iUpdateSubscriptionResponseBody interface {
 }
 
 type UpdateSubscriptionResponseBody struct {
+	// The request status code. A value of `OK` indicates that the request was successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data, which is the application ID for this operation.
+	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message. If the request fails, this parameter contains the error message.
+	//
 	// example:
 	//
 	// Instance llm-rj6aqmctjcit4acy does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// Id of the request
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of dynamic parameters used in the error message.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//

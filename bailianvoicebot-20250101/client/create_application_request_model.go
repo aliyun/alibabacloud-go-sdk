@@ -22,19 +22,38 @@ type iCreateApplicationRequest interface {
 }
 
 type CreateApplicationRequest struct {
+	// The ID of the Bailian business workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The number of concurrent connections.
+	//
 	// example:
 	//
 	// 10
-	Concurrency *int32  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The application description.
+	//
+	// example:
+	//
+	// Describe this application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Test001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The NLU access method.
+	//
+	// - Managed
+	//
 	// example:
 	//
 	// MANAGED

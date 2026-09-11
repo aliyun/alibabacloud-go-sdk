@@ -22,21 +22,30 @@ type iListCloneVoiceResponseBody interface {
 }
 
 type ListCloneVoiceResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated data of the clone voice list.
 	Data *ListCloneVoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance llm-xdne77rxe14ziszr
 	//
 	//  does not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D771A1B6-3D5F-174A-BEE1-98CE1000D337
@@ -106,15 +115,22 @@ func (s *ListCloneVoiceResponseBody) Validate() error {
 }
 
 type ListCloneVoiceResponseBodyData struct {
+	// The list of clone voices.
 	CloneVoices []*ListCloneVoiceResponseBodyDataCloneVoices `json:"CloneVoices,omitempty" xml:"CloneVoices,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -179,39 +195,62 @@ func (s *ListCloneVoiceResponseBodyData) Validate() error {
 }
 
 type ListCloneVoiceResponseBodyDataCloneVoices struct {
+	// The clone voice ID.
+	//
 	// example:
 	//
 	// 8ee1160a-6999-478f-8df6-f33ef21f27d5
 	CloneVoiceId *string `json:"CloneVoiceId,omitempty" xml:"CloneVoiceId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1760494691000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The business workspace ID.
+	//
 	// example:
 	//
 	// llm-xdne77rxe14ziszr
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The clone model.
+	//
 	// example:
 	//
 	// CosyVoice
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The clone voice name.
+	//
+	// example:
+	//
+	// TestCloneVoice
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The TTS engine.
+	//
 	// example:
 	//
 	// BAILIAN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Published
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1655449505171
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1760494691000
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The voice speaker.
+	//
 	// example:
 	//
 	// cosyvoice-v3-plus-voicebot2-3666e4bbb2b94832ac4f4107b5804c34

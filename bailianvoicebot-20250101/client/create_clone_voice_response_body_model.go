@@ -24,22 +24,32 @@ type iCreateCloneVoiceResponseBody interface {
 }
 
 type CreateCloneVoiceResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The cloned voice object.
 	Data *CreateCloneVoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance llm-xdne77rxe14ziszr
 	//
 	//  does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CF6D3484-19A1-5C77-863B-AC8B5754D37C
@@ -118,10 +128,14 @@ func (s *CreateCloneVoiceResponseBody) Validate() error {
 }
 
 type CreateCloneVoiceResponseBodyData struct {
+	// The cloned voice ID.
+	//
 	// example:
 	//
 	// 8ee1160a-6999-478f-8df6-f33ef21f27d5
 	CloneVoiceId *string `json:"CloneVoiceId,omitempty" xml:"CloneVoiceId,omitempty"`
+	// The voice speaker.
+	//
 	// example:
 	//
 	// cosyvoice-v3-plus-voicebot2-3666e4bbb2b94832ac4f4107b5804c34

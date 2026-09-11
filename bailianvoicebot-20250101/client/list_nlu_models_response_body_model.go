@@ -24,20 +24,28 @@ type iListNluModelsResponseBody interface {
 }
 
 type ListNluModelsResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of conversation models.
 	Data []*ListNluModelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance llm-rj6aqmctjcit4acy does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -122,10 +130,17 @@ func (s *ListNluModelsResponseBody) Validate() error {
 }
 
 type ListNluModelsResponseBodyData struct {
+	// The model ID.
+	//
 	// example:
 	//
 	// qwen-plus
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The model name.
+	//
+	// example:
+	//
+	// 通义千问-Plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

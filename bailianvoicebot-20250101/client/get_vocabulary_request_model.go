@@ -16,10 +16,14 @@ type iGetVocabularyRequest interface {
 }
 
 type GetVocabularyRequest struct {
+	// The ID of the Model Studio business space.
+	//
 	// example:
 	//
 	// llm-zop7ukgtksltamo4
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The hot word vocabulary ID.
+	//
 	// example:
 	//
 	// d74d6290-7cbe-4436-b5d7-014ebb0f4061

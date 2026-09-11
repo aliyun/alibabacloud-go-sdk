@@ -22,19 +22,28 @@ type iListApplicationsResponseBody interface {
 }
 
 type ListApplicationsResponseBody struct {
+	// The API status code or POP error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
 	Data *ListApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D771A1B6-3D5F-174A-BEE1-98CE1000D337
@@ -104,15 +113,22 @@ func (s *ListApplicationsResponseBody) Validate() error {
 }
 
 type ListApplicationsResponseBodyData struct {
+	// The application list information.
 	Applications []*ListApplicationsResponseBodyDataApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 1000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 6
@@ -177,36 +193,62 @@ func (s *ListApplicationsResponseBodyData) Validate() error {
 }
 
 type ListApplicationsResponseBodyDataApplications struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The concurrency settings.
+	//
 	// example:
 	//
 	// 10
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1729909690
-	CreatedTime *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The application description.
+	//
+	// example:
+	//
+	// Describe this application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The draft version ID.
+	//
 	// example:
 	//
 	// 20904943-f711-494f-9f1f-e7f340f37707
 	DraftVersionId *string `json:"DraftVersionId,omitempty" xml:"DraftVersionId,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// Test001
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The NLU invocation method.
+	//
 	// example:
 	//
 	// MANAGED
 	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	// The NLU engine.
+	//
 	// example:
 	//
 	// PROMPTS
 	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// The published version ID.
+	//
 	// example:
 	//
 	// 20904943-f711-494f-9f1f-e7f340f37707
 	PublishedVersionId *string `json:"PublishedVersionId,omitempty" xml:"PublishedVersionId,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1729909348

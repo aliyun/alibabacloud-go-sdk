@@ -18,15 +18,20 @@ type iCreateVoiceAccessProfileRequest interface {
 }
 
 type CreateVoiceAccessProfileRequest struct {
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-xdne77rxe14ziszr
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The speech engine.
+	//
 	// example:
 	//
 	// VOLC
-	NlsEngine *string                                 `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	Profile   *CreateVoiceAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The parameter settings.
+	Profile *CreateVoiceAccessProfileRequestProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 }
 
 func (s CreateVoiceAccessProfileRequest) String() string {
@@ -74,27 +79,47 @@ func (s *CreateVoiceAccessProfileRequest) Validate() error {
 }
 
 type CreateVoiceAccessProfileRequestProfile struct {
+	// Required when using Doubao.
+	//
 	// example:
 	//
 	// HwRnTXgwnQOlsj68URDS5_VMm4Wtapq9
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// Required when using Bailian or iFLYTEK.
+	//
 	// example:
 	//
 	// sk-12341e259b1049e8872b47981e545f78
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// Required when using iFLYTEK.
+	//
 	// example:
 	//
 	// c0358c6e51c1013b446fdeb21a3a1234
 	ApiSecret *string `json:"ApiSecret,omitempty" xml:"ApiSecret,omitempty"`
+	// Required when using iFLYTEK.
+	//
 	// example:
 	//
 	// 5b123bfb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Required when using Doubao.
+	//
 	// example:
 	//
 	// 2541370123
-	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Not currently in use.
+	//
+	// example:
+	//
+	// Not currently in use
 	AsrAppKey *string `json:"AsrAppKey,omitempty" xml:"AsrAppKey,omitempty"`
+	// Not currently in use.
+	//
+	// example:
+	//
+	// Not currently in use
 	TtsApiKey *string `json:"TtsApiKey,omitempty" xml:"TtsApiKey,omitempty"`
 }
 

@@ -16,10 +16,14 @@ type iListVoiceEnginesRequest interface {
 }
 
 type ListVoiceEnginesRequest struct {
+	// The page number. Pages start from 1. The default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The default is 10.
+	//
 	// example:
 	//
 	// 10

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建软电话测试通话
+// Creates a softphone test call.
 //
 // @param request - BridgeWebCallRequest
 //
@@ -85,7 +85,7 @@ func (client *Client) BridgeWebCallWithContext(ctx context.Context, request *Bri
 
 // Summary:
 //
-// 创建应用
+// Creates a voice chatbot application.
 //
 // @param request - CreateApplicationRequest
 //
@@ -165,6 +165,10 @@ func (client *Client) CreateApplicationVersionWithContext(ctx context.Context, t
 		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.LabelConfig) {
+		request.LabelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelConfig, dara.String("LabelConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RagConfig) {
 		request.RagConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RagConfig, dara.String("RagConfig"), dara.String("json"))
 	}
@@ -196,6 +200,10 @@ func (client *Client) CreateApplicationVersionWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.InteractionConfigShrink) {
 		query["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.LabelConfigShrink) {
+		query["LabelConfig"] = request.LabelConfigShrink
 	}
 
 	if !dara.IsNil(request.RagConfigShrink) {
@@ -247,7 +255,7 @@ func (client *Client) CreateApplicationVersionWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 创建克隆音
+// Creates a cloned voice.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -299,7 +307,7 @@ func (client *Client) CreateCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建变量
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -355,7 +363,7 @@ func (client *Client) CreateVariableWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVocabularyRequest
 //
@@ -417,7 +425,7 @@ func (client *Client) CreateVocabularyWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVoiceAccessProfileRequest
 //
@@ -475,7 +483,7 @@ func (client *Client) CreateVoiceAccessProfileWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 删除应用
+// Deletes an application.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -523,7 +531,7 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除场景
+// Deletes a cloned voice.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -571,7 +579,7 @@ func (client *Client) DeleteCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除变量
+// Deletes a variable.
 //
 // @param request - DeleteVariableRequest
 //
@@ -619,7 +627,7 @@ func (client *Client) DeleteVariableWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteVocabularyRequest
 //
@@ -667,7 +675,7 @@ func (client *Client) DeleteVocabularyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除三方语音配置
+// Deletes a third-party voice configuration.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -715,7 +723,7 @@ func (client *Client) DeleteVoiceAccessProfileWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables message subscription.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -759,7 +767,7 @@ func (client *Client) DisableSubscriptionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 导出热词
+// Exports hot words.
 //
 // @param tmpReq - ExportVocabularyRequest
 //
@@ -813,7 +821,7 @@ func (client *Client) ExportVocabularyWithContext(ctx context.Context, tmpReq *E
 
 // Summary:
 //
-// 获取文件上传信息
+// Retrieves file upload information.
 //
 // @param request - GenerateFileUploadParamsRequest
 //
@@ -865,7 +873,7 @@ func (client *Client) GenerateFileUploadParamsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Get应用
+// Retrieves a voice chatbot application.
 //
 // @param request - GetApplicationRequest
 //
@@ -913,7 +921,7 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取数据通道凭证
+// Retrieves data channel credentials.
 //
 // @param request - GetDataChannelCredentialRequest
 //
@@ -961,7 +969,7 @@ func (client *Client) GetDataChannelCredentialWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the MQ configuration.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -1005,7 +1013,7 @@ func (client *Client) GetSubscriptionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of a hot word vocabulary.
 //
 // @param request - GetVocabularyRequest
 //
@@ -1053,7 +1061,7 @@ func (client *Client) GetVocabularyWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 导入热词
+// Imports hot words.
 //
 // @param request - ImportVocabularyRequest
 //
@@ -1101,7 +1109,7 @@ func (client *Client) ImportVocabularyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询应用
+// Queries the list of voice robot applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -1157,7 +1165,7 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取背景音列表
+// Retrieves the list of background music.
 //
 // @param request - ListBackgroundMusicsRequest
 //
@@ -1209,7 +1217,7 @@ func (client *Client) ListBackgroundMusicsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListCloneVoiceRequest
 //
@@ -1265,7 +1273,7 @@ func (client *Client) ListCloneVoiceWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Retrieves the list of available models for voice cloning.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -1313,7 +1321,7 @@ func (client *Client) ListCloneVoiceModelsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取对话模型列表
+// Retrieves the list of conversation models.
 //
 // @param request - ListNluModelsRequest
 //
@@ -1357,7 +1365,7 @@ func (client *Client) ListNluModelsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取变量列表
+// Retrieves a list of variables.
 //
 // @param request - ListVariableRequest
 //
@@ -1413,7 +1421,7 @@ func (client *Client) ListVariableWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListVocabularyRequest
 //
@@ -1469,7 +1477,7 @@ func (client *Client) ListVocabularyWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取三方语音配置列表
+// Retrieves the list of third-party voice configurations.
 //
 // @param request - ListVoiceAccessProfileRequest
 //
@@ -1521,7 +1529,7 @@ func (client *Client) ListVoiceAccessProfileWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取引擎列表
+// Retrieves a paginated list of available voice engines.
 //
 // @param request - ListVoiceEnginesRequest
 //
@@ -1569,7 +1577,7 @@ func (client *Client) ListVoiceEnginesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取音色列表
+// Retrieves the list of voice timbres.
 //
 // @param request - ListVoicesRequest
 //
@@ -1629,7 +1637,7 @@ func (client *Client) ListVoicesWithContext(ctx context.Context, request *ListVo
 
 // Summary:
 //
-// 试听
+// Generates a preview of a synthesized voice.
 //
 // @param tmpReq - PreviewVoiceRequest
 //
@@ -1703,7 +1711,7 @@ func (client *Client) PreviewVoiceWithContext(ctx context.Context, tmpReq *Previ
 
 // Summary:
 //
-// 发布版本
+// Publishes a voice robot version.
 //
 // @param request - PublishApplicationVersionRequest
 //
@@ -1755,7 +1763,7 @@ func (client *Client) PublishApplicationVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 修改应用
+// Updates a voice bot application.
 //
 // @param request - UpdateApplicationRequest
 //
@@ -1835,6 +1843,10 @@ func (client *Client) UpdateApplicationVersionWithContext(ctx context.Context, t
 		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.LabelConfig) {
+		request.LabelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelConfig, dara.String("LabelConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RagConfig) {
 		request.RagConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RagConfig, dara.String("RagConfig"), dara.String("json"))
 	}
@@ -1866,6 +1878,10 @@ func (client *Client) UpdateApplicationVersionWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.InteractionConfigShrink) {
 		query["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.LabelConfigShrink) {
+		query["LabelConfig"] = request.LabelConfigShrink
 	}
 
 	if !dara.IsNil(request.RagConfigShrink) {
@@ -1917,7 +1933,7 @@ func (client *Client) UpdateApplicationVersionWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -1969,7 +1985,7 @@ func (client *Client) UpdateCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建或更新MQ配置
+// Creates or updates a message queue (MQ) subscription.
 //
 // @param tmpReq - UpdateSubscriptionRequest
 //
@@ -2051,7 +2067,7 @@ func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 更新变量
+// Updates a variable.
 //
 // @param request - UpdateVariableRequest
 //
@@ -2107,7 +2123,7 @@ func (client *Client) UpdateVariableWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新实例
+// Updates a vocabulary.
 //
 // @param tmpReq - UpdateVocabularyRequest
 //
@@ -2173,7 +2189,7 @@ func (client *Client) UpdateVocabularyWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// 更新三方语音配置
+// Updates the third-party voice configuration.
 //
 // @param tmpReq - UpdateVoiceAccessProfileRequest
 //

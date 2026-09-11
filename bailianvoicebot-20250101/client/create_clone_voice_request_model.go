@@ -18,11 +18,20 @@ type iCreateCloneVoiceRequest interface {
 }
 
 type CreateCloneVoiceRequest struct {
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-xdne77rxe14ziszr
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
-	FileKey        *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The path of the uploaded file.
+	//
+	// example:
+	//
+	// voice_clone/voice_clone_unit_test.wav
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The clone model.
+	//
 	// example:
 	//
 	// CosyVoice

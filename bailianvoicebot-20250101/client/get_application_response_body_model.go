@@ -17,24 +17,36 @@ type iGetApplicationResponseBody interface {
 	GetHttpStatusCode() *int32
 	SetMessage(v string) *GetApplicationResponseBody
 	GetMessage() *string
+	SetParams(v []*string) *GetApplicationResponseBody
+	GetParams() []*string
 	SetRequestId(v string) *GetApplicationResponseBody
 	GetRequestId() *string
 }
 
 type GetApplicationResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D771A1B6-3D5F-174A-BEE1-98CE1000D337
@@ -65,6 +77,10 @@ func (s *GetApplicationResponseBody) GetMessage() *string {
 	return s.Message
 }
 
+func (s *GetApplicationResponseBody) GetParams() []*string {
+	return s.Params
+}
+
 func (s *GetApplicationResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -89,6 +105,11 @@ func (s *GetApplicationResponseBody) SetMessage(v string) *GetApplicationRespons
 	return s
 }
 
+func (s *GetApplicationResponseBody) SetParams(v []*string) *GetApplicationResponseBody {
+	s.Params = v
+	return s
+}
+
 func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationResponseBody {
 	s.RequestId = &v
 	return s
@@ -104,30 +125,55 @@ func (s *GetApplicationResponseBody) Validate() error {
 }
 
 type GetApplicationResponseBodyData struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The call concurrency, which is the number of calls being made simultaneously.
+	//
 	// example:
 	//
 	// 10
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The time when the application was created.
+	//
 	// example:
 	//
 	// 1730081561000
-	CreatedTime  *int64                                      `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description  *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The application description.
+	//
+	// example:
+	//
+	// Describe this application
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The draft version configuration content.
 	DraftVersion *GetApplicationResponseBodyDataDraftVersion `json:"DraftVersion,omitempty" xml:"DraftVersion,omitempty" type:"Struct"`
-	Name         *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The application name.
+	//
+	// example:
+	//
+	// Test001
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The NLU access method.
+	//
 	// example:
 	//
 	// MANAGED
 	NluAccessType *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	// The NLU engine.
+	//
 	// example:
 	//
 	// PROMPTS
-	NluEngine        *string                                         `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	NluEngine *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	// The published application version.
 	PublishedVersion *GetApplicationResponseBodyDataPublishedVersion `json:"PublishedVersion,omitempty" xml:"PublishedVersion,omitempty" type:"Struct"`
+	Status           *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the application was last modified.
+	//
 	// example:
 	//
 	// 1730081561000
@@ -176,6 +222,10 @@ func (s *GetApplicationResponseBodyData) GetNluEngine() *string {
 
 func (s *GetApplicationResponseBodyData) GetPublishedVersion() *GetApplicationResponseBodyDataPublishedVersion {
 	return s.PublishedVersion
+}
+
+func (s *GetApplicationResponseBodyData) GetStatus() *string {
+	return s.Status
 }
 
 func (s *GetApplicationResponseBodyData) GetUpdatedTime() *int64 {
@@ -227,6 +277,11 @@ func (s *GetApplicationResponseBodyData) SetPublishedVersion(v *GetApplicationRe
 	return s
 }
 
+func (s *GetApplicationResponseBodyData) SetStatus(v string) *GetApplicationResponseBodyData {
+	s.Status = &v
+	return s
+}
+
 func (s *GetApplicationResponseBodyData) SetUpdatedTime(v int64) *GetApplicationResponseBodyData {
 	s.UpdatedTime = &v
 	return s
@@ -247,12 +302,21 @@ func (s *GetApplicationResponseBodyData) Validate() error {
 }
 
 type GetApplicationResponseBodyDataDraftVersion struct {
+	// The interaction configuration.
 	InteractionConfig *GetApplicationResponseBodyDataDraftVersionInteractionConfig `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty" type:"Struct"`
-	RagConfig         *GetApplicationResponseBodyDataDraftVersionRagConfig         `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
-	ScriptProfile     *GetApplicationResponseBodyDataDraftVersionScriptProfile     `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
+	LabelConfig       []*GetApplicationResponseBodyDataDraftVersionLabelConfig     `json:"LabelConfig,omitempty" xml:"LabelConfig,omitempty" type:"Repeated"`
+	// The RAG configuration.
+	RagConfig *GetApplicationResponseBodyDataDraftVersionRagConfig `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
+	// The application model configuration.
+	ScriptProfile *GetApplicationResponseBodyDataDraftVersionScriptProfile `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
+	// The text-to-speech (TTS) configuration.
 	SynthesizerConfig *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
-	ToolConfig        *GetApplicationResponseBodyDataDraftVersionToolConfig        `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
+	// The tool configuration.
+	ToolConfig *GetApplicationResponseBodyDataDraftVersionToolConfig `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
+	// The automatic speech recognition (ASR) configuration.
 	TranscriberConfig *GetApplicationResponseBodyDataDraftVersionTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
+	// The version ID.
+	//
 	// example:
 	//
 	// 743219815472857088
@@ -269,6 +333,10 @@ func (s GetApplicationResponseBodyDataDraftVersion) GoString() string {
 
 func (s *GetApplicationResponseBodyDataDraftVersion) GetInteractionConfig() *GetApplicationResponseBodyDataDraftVersionInteractionConfig {
 	return s.InteractionConfig
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersion) GetLabelConfig() []*GetApplicationResponseBodyDataDraftVersionLabelConfig {
+	return s.LabelConfig
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersion) GetRagConfig() *GetApplicationResponseBodyDataDraftVersionRagConfig {
@@ -297,6 +365,11 @@ func (s *GetApplicationResponseBodyDataDraftVersion) GetVersionId() *string {
 
 func (s *GetApplicationResponseBodyDataDraftVersion) SetInteractionConfig(v *GetApplicationResponseBodyDataDraftVersionInteractionConfig) *GetApplicationResponseBodyDataDraftVersion {
 	s.InteractionConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersion) SetLabelConfig(v []*GetApplicationResponseBodyDataDraftVersionLabelConfig) *GetApplicationResponseBodyDataDraftVersion {
+	s.LabelConfig = v
 	return s
 }
 
@@ -336,6 +409,15 @@ func (s *GetApplicationResponseBodyDataDraftVersion) Validate() error {
 			return err
 		}
 	}
+	if s.LabelConfig != nil {
+		for _, item := range s.LabelConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RagConfig != nil {
 		if err := s.RagConfig.Validate(); err != nil {
 			return err
@@ -365,6 +447,10 @@ func (s *GetApplicationResponseBodyDataDraftVersion) Validate() error {
 }
 
 type GetApplicationResponseBodyDataDraftVersionInteractionConfig struct {
+	BackgroundMusicId                *string                                                                           `json:"BackgroundMusicId,omitempty" xml:"BackgroundMusicId,omitempty"`
+	EndConversationConfig            *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig `json:"EndConversationConfig,omitempty" xml:"EndConversationConfig,omitempty" type:"Struct"`
+	InitialGreetingDelayMilliseconds *int32                                                                            `json:"InitialGreetingDelayMilliseconds,omitempty" xml:"InitialGreetingDelayMilliseconds,omitempty"`
+	// The silence detection configuration.
 	SilenceDetectionConfig *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig `json:"SilenceDetectionConfig,omitempty" xml:"SilenceDetectionConfig,omitempty" type:"Struct"`
 }
 
@@ -376,8 +462,35 @@ func (s GetApplicationResponseBodyDataDraftVersionInteractionConfig) GoString() 
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) GetBackgroundMusicId() *string {
+	return s.BackgroundMusicId
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) GetEndConversationConfig() *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig {
+	return s.EndConversationConfig
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) GetInitialGreetingDelayMilliseconds() *int32 {
+	return s.InitialGreetingDelayMilliseconds
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) GetSilenceDetectionConfig() *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig {
 	return s.SilenceDetectionConfig
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) SetBackgroundMusicId(v string) *GetApplicationResponseBodyDataDraftVersionInteractionConfig {
+	s.BackgroundMusicId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) SetEndConversationConfig(v *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) *GetApplicationResponseBodyDataDraftVersionInteractionConfig {
+	s.EndConversationConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) SetInitialGreetingDelayMilliseconds(v int32) *GetApplicationResponseBodyDataDraftVersionInteractionConfig {
+	s.InitialGreetingDelayMilliseconds = &v
+	return s
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) SetSilenceDetectionConfig(v *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig) *GetApplicationResponseBodyDataDraftVersionInteractionConfig {
@@ -386,6 +499,11 @@ func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) SetSilence
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) Validate() error {
+	if s.EndConversationConfig != nil {
+		if err := s.EndConversationConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SilenceDetectionConfig != nil {
 		if err := s.SilenceDetectionConfig.Validate(); err != nil {
 			return err
@@ -394,7 +512,109 @@ func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfig) Validate()
 	return nil
 }
 
+type GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig struct {
+	Delay    *int32                                                                                      `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	Triggers []*GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) GetDelay() *int32 {
+	return s.Delay
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) GetTriggers() []*GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers {
+	return s.Triggers
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) SetDelay(v int32) *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig {
+	s.Delay = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) SetTriggers(v []*GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig {
+	s.Triggers = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfig) Validate() error {
+	if s.Triggers != nil {
+		for _, item := range s.Triggers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers struct {
+	ClosingStatement *string   `json:"ClosingStatement,omitempty" xml:"ClosingStatement,omitempty"`
+	KeyWords         []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	TriggerType      *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TurnLimit        *int32    `json:"TurnLimit,omitempty" xml:"TurnLimit,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) GetClosingStatement() *string {
+	return s.ClosingStatement
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) GetKeyWords() []*string {
+	return s.KeyWords
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) GetTriggerType() *string {
+	return s.TriggerType
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) GetTurnLimit() *int32 {
+	return s.TurnLimit
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) SetClosingStatement(v string) *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers {
+	s.ClosingStatement = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) SetKeyWords(v []*string) *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers {
+	s.KeyWords = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) SetTriggerType(v string) *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) SetTurnLimit(v int32) *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers {
+	s.TurnLimit = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigEndConversationConfigTriggers) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig struct {
+	MaxRepeats *int32 `json:"MaxRepeats,omitempty" xml:"MaxRepeats,omitempty"`
+	// The task execution timeout period, in seconds.
+	//
 	// example:
 	//
 	// 3
@@ -409,8 +629,17 @@ func (s GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetect
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig) GetMaxRepeats() *int32 {
+	return s.MaxRepeats
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig) GetTimeout() *int32 {
 	return s.Timeout
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig) SetMaxRepeats(v int32) *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig {
+	s.MaxRepeats = &v
+	return s
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig) SetTimeout(v int32) *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig {
@@ -422,12 +651,78 @@ func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetec
 	return dara.Validate(s)
 }
 
+type GetApplicationResponseBodyDataDraftVersionLabelConfig struct {
+	CandidateValues []*string `json:"CandidateValues,omitempty" xml:"CandidateValues,omitempty" type:"Repeated"`
+	Description     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionLabelConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionLabelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionLabelConfig) GetCandidateValues() []*string {
+	return s.CandidateValues
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionLabelConfig) GetDescription() *string {
+	return s.Description
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionLabelConfig) GetName() *string {
+	return s.Name
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionLabelConfig) SetCandidateValues(v []*string) *GetApplicationResponseBodyDataDraftVersionLabelConfig {
+	s.CandidateValues = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionLabelConfig) SetDescription(v string) *GetApplicationResponseBodyDataDraftVersionLabelConfig {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionLabelConfig) SetName(v string) *GetApplicationResponseBodyDataDraftVersionLabelConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionLabelConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApplicationResponseBodyDataDraftVersionRagConfig struct {
-	Enabled          *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether RAG is enabled.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The list of knowledge base IDs.
 	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitempty" xml:"KnowledgeBaseIds,omitempty" type:"Repeated"`
-	MaxContentLength *int32    `json:"MaxContentLength,omitempty" xml:"MaxContentLength,omitempty"`
-	RagEngine        *string   `json:"RagEngine,omitempty" xml:"RagEngine,omitempty"`
-	TopN             *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// The maximum concatenation length of RAG content.
+	//
+	// example:
+	//
+	// 2000
+	MaxContentLength *int32 `json:"MaxContentLength,omitempty" xml:"MaxContentLength,omitempty"`
+	// The RAG engine.
+	//
+	// example:
+	//
+	// BAILIAN
+	RagEngine *string `json:"RagEngine,omitempty" xml:"RagEngine,omitempty"`
+	// The maximum number of data entries to retrieve.
+	//
+	// example:
+	//
+	// 5
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
 }
 
 func (s GetApplicationResponseBodyDataDraftVersionRagConfig) String() string {
@@ -488,15 +783,37 @@ func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) Validate() error {
 }
 
 type GetApplicationResponseBodyDataDraftVersionScriptProfile struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The agent configuration information.
 	AgentProfile *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile `json:"AgentProfile,omitempty" xml:"AgentProfile,omitempty" type:"Struct"`
+	ChatbotId    *string                                                              `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
+	FunctionMeta *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta `json:"FunctionMeta,omitempty" xml:"FunctionMeta,omitempty" type:"Struct"`
+	// The model.
+	//
 	// example:
 	//
 	// qwen-plus
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model            *string                                                                  `json:"Model,omitempty" xml:"Model,omitempty"`
+	NluAccessProfile *GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile `json:"NluAccessProfile,omitempty" xml:"NluAccessProfile,omitempty" type:"Struct"`
+	NluAccessType    *string                                                                  `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	NluEngine        *string                                                                  `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	OmniModel        *bool                                                                    `json:"OmniModel,omitempty" xml:"OmniModel,omitempty"`
+	// The probability threshold for nucleus sampling during generation.
+	//
+	// > - For example, when the value is set to 0.8, only the smallest set of most likely tokens whose cumulative probability is greater than or equal to 0.8 is retained as the candidate set.
+	//
+	//      	- Valid values: (0, 1.0). A higher value increases randomness in generation. A lower value increases determinism in generation.
+	//
 	// example:
 	//
 	// 0.8
 	Temperature *string `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// Controls the randomness and diversity of model responses.
+	//
+	// > - Specifically, the temperature value controls the degree of smoothing applied to the probability distribution of each candidate token during text generation. A higher temperature value flattens the probability distribution, allowing more low-probability tokens to be selected, which produces more diverse results. A lower temperature value sharpens the probability distribution, making high-probability tokens more likely to be selected, which produces more deterministic results.
+	//
+	// > - Valid values: [0, 2). Setting the value to 0 is not recommended because it is meaningless.
+	//
 	// example:
 	//
 	// 0.1
@@ -511,12 +828,40 @@ func (s GetApplicationResponseBodyDataDraftVersionScriptProfile) GoString() stri
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetAgentKey() *string {
+	return s.AgentKey
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetAgentProfile() *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile {
 	return s.AgentProfile
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetChatbotId() *string {
+	return s.ChatbotId
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetFunctionMeta() *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta {
+	return s.FunctionMeta
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetModel() *string {
 	return s.Model
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetNluAccessProfile() *GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile {
+	return s.NluAccessProfile
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetNluAccessType() *string {
+	return s.NluAccessType
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetNluEngine() *string {
+	return s.NluEngine
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetOmniModel() *bool {
+	return s.OmniModel
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetTemperature() *string {
@@ -527,13 +872,48 @@ func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) GetTopP() *str
 	return s.TopP
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetAgentKey(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
+	s.AgentKey = &v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetAgentProfile(v *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
 	s.AgentProfile = v
 	return s
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetChatbotId(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
+	s.ChatbotId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetFunctionMeta(v *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
+	s.FunctionMeta = v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetModel(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
 	s.Model = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetNluAccessProfile(v *GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
+	s.NluAccessProfile = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetNluAccessType(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
+	s.NluAccessType = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetNluEngine(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
+	s.NluEngine = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) SetOmniModel(v bool) *GetApplicationResponseBodyDataDraftVersionScriptProfile {
+	s.OmniModel = &v
 	return s
 }
 
@@ -553,16 +933,41 @@ func (s *GetApplicationResponseBodyDataDraftVersionScriptProfile) Validate() err
 			return err
 		}
 	}
+	if s.FunctionMeta != nil {
+		if err := s.FunctionMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NluAccessProfile != nil {
+		if err := s.NluAccessProfile.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile struct {
+	// The agent configuration ID.
+	//
 	// example:
 	//
 	// 6a50b67072d44788951de29758432d94
 	AgentProfileId *string `json:"AgentProfileId,omitempty" xml:"AgentProfileId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PromptsJson    *string `json:"PromptsJson,omitempty" xml:"PromptsJson,omitempty"`
+	// The agent description.
+	//
+	// example:
+	//
+	// Chatbot
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The prompt in JSON format.
+	//
+	// example:
+	//
+	// {"prompts":"I am a chatbot."}
+	PromptsJson *string `json:"PromptsJson,omitempty" xml:"PromptsJson,omitempty"`
+	// The application template ID.
+	//
 	// example:
 	//
 	// SFM_PROMPTS_DEFAULT
@@ -585,6 +990,10 @@ func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) Ge
 	return s.Description
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) GetName() *string {
+	return s.Name
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) GetPromptsJson() *string {
 	return s.PromptsJson
 }
@@ -603,6 +1012,11 @@ func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) Se
 	return s
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) SetName(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile {
+	s.Name = &v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) SetPromptsJson(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile {
 	s.PromptsJson = &v
 	return s
@@ -617,30 +1031,136 @@ func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileAgentProfile) Va
 	return dara.Validate(s)
 }
 
+type GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta struct {
+	FunctionId      *string `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
+	FunctionName    *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	HttpTriggerName *string `json:"HttpTriggerName,omitempty" xml:"HttpTriggerName,omitempty"`
+	HttpTriggerUrl  *string `json:"HttpTriggerUrl,omitempty" xml:"HttpTriggerUrl,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) GetFunctionId() *string {
+	return s.FunctionId
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) GetFunctionName() *string {
+	return s.FunctionName
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) GetHttpTriggerName() *string {
+	return s.HttpTriggerName
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) GetHttpTriggerUrl() *string {
+	return s.HttpTriggerUrl
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) SetFunctionId(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta {
+	s.FunctionId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) SetFunctionName(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) SetHttpTriggerName(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta {
+	s.HttpTriggerName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) SetHttpTriggerUrl(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta {
+	s.HttpTriggerUrl = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) SetRegionId(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileFunctionMeta) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile struct {
+	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile) GetAccessProfileId() *string {
+	return s.AccessProfileId
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile) SetAccessProfileId(v string) *GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile {
+	s.AccessProfileId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionScriptProfileNluAccessProfile) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApplicationResponseBodyDataDraftVersionSynthesizerConfig struct {
 	Model            *string                                                                      `json:"Model,omitempty" xml:"Model,omitempty"`
 	NlsAccessProfile *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigNlsAccessProfile `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
+	// The TTS invocation method.
+	//
 	// example:
 	//
 	// MANAGED
 	NlsAccessType *string `json:"NlsAccessType,omitempty" xml:"NlsAccessType,omitempty"`
+	// The TTS engine.
+	//
 	// example:
 	//
 	// ALIYUN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The pitch rate.
+	//
+	// > Valid values: -500 to 500.
+	//
 	// example:
 	//
 	// 5
 	PitchRate *int32                                                                  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
 	PronRules []*GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules `json:"PronRules,omitempty" xml:"PronRules,omitempty" type:"Repeated"`
+	// The speech rate.
+	//
+	// > Valid values: -500 to 500.
+	//
 	// example:
 	//
 	// 1
 	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The voice.
+	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The volume.
+	//
 	// example:
 	//
 	// 50
@@ -815,6 +1335,7 @@ func (s *GetApplicationResponseBodyDataDraftVersionSynthesizerConfigPronRules) V
 }
 
 type GetApplicationResponseBodyDataDraftVersionToolConfig struct {
+	// The list of MCP server configurations.
 	McpServers []*GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers `json:"McpServers,omitempty" xml:"McpServers,omitempty" type:"Repeated"`
 }
 
@@ -849,8 +1370,23 @@ func (s *GetApplicationResponseBodyDataDraftVersionToolConfig) Validate() error 
 }
 
 type GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers struct {
-	BaseUrl     *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The base URL.
+	//
+	// example:
+	//
+	// https://example.com
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// phone-ai-call
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The SSE endpoint.
+	//
+	// example:
+	//
+	// /phone-ai-call/mcp/sse?key=value
 	SseEndpoint *string `json:"SseEndpoint,omitempty" xml:"SseEndpoint,omitempty"`
 }
 
@@ -899,10 +1435,14 @@ type GetApplicationResponseBodyDataDraftVersionTranscriberConfig struct {
 	EndSilenceTimeout *int32                                                                        `json:"EndSilenceTimeout,omitempty" xml:"EndSilenceTimeout,omitempty"`
 	Model             *string                                                                       `json:"Model,omitempty" xml:"Model,omitempty"`
 	NlsAccessProfile  *GetApplicationResponseBodyDataDraftVersionTranscriberConfigNlsAccessProfile  `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
+	// The ASR invocation method.
+	//
 	// example:
 	//
 	// MANAGED
 	NlsAccessType *string `json:"NlsAccessType,omitempty" xml:"NlsAccessType,omitempty"`
+	// The ASR engine.
+	//
 	// example:
 	//
 	// ALIYUN
@@ -1079,12 +1619,21 @@ func (s *GetApplicationResponseBodyDataDraftVersionTranscriberConfigNlsAccessPro
 }
 
 type GetApplicationResponseBodyDataPublishedVersion struct {
+	// The interaction configuration.
 	InteractionConfig *GetApplicationResponseBodyDataPublishedVersionInteractionConfig `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty" type:"Struct"`
-	RagConfig         *GetApplicationResponseBodyDataPublishedVersionRagConfig         `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
-	ScriptProfile     *GetApplicationResponseBodyDataPublishedVersionScriptProfile     `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
+	LabelConfig       []*GetApplicationResponseBodyDataPublishedVersionLabelConfig     `json:"LabelConfig,omitempty" xml:"LabelConfig,omitempty" type:"Repeated"`
+	// The RAG configuration.
+	RagConfig *GetApplicationResponseBodyDataPublishedVersionRagConfig `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
+	// The application model configuration.
+	ScriptProfile *GetApplicationResponseBodyDataPublishedVersionScriptProfile `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
+	// The text-to-speech (TTS) configuration.
 	SynthesizerConfig *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
-	ToolConfig        *GetApplicationResponseBodyDataPublishedVersionToolConfig        `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
+	// The tool configuration.
+	ToolConfig *GetApplicationResponseBodyDataPublishedVersionToolConfig `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty" type:"Struct"`
+	// The automatic speech recognition (ASR) configuration.
 	TranscriberConfig *GetApplicationResponseBodyDataPublishedVersionTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
+	// The version ID.
+	//
 	// example:
 	//
 	// 47889c1f-dd3f-4ace-9587-a13a3563e678
@@ -1101,6 +1650,10 @@ func (s GetApplicationResponseBodyDataPublishedVersion) GoString() string {
 
 func (s *GetApplicationResponseBodyDataPublishedVersion) GetInteractionConfig() *GetApplicationResponseBodyDataPublishedVersionInteractionConfig {
 	return s.InteractionConfig
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersion) GetLabelConfig() []*GetApplicationResponseBodyDataPublishedVersionLabelConfig {
+	return s.LabelConfig
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersion) GetRagConfig() *GetApplicationResponseBodyDataPublishedVersionRagConfig {
@@ -1129,6 +1682,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) GetVersionId() *string 
 
 func (s *GetApplicationResponseBodyDataPublishedVersion) SetInteractionConfig(v *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) *GetApplicationResponseBodyDataPublishedVersion {
 	s.InteractionConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersion) SetLabelConfig(v []*GetApplicationResponseBodyDataPublishedVersionLabelConfig) *GetApplicationResponseBodyDataPublishedVersion {
+	s.LabelConfig = v
 	return s
 }
 
@@ -1168,6 +1726,15 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) Validate() error {
 			return err
 		}
 	}
+	if s.LabelConfig != nil {
+		for _, item := range s.LabelConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RagConfig != nil {
 		if err := s.RagConfig.Validate(); err != nil {
 			return err
@@ -1197,6 +1764,10 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) Validate() error {
 }
 
 type GetApplicationResponseBodyDataPublishedVersionInteractionConfig struct {
+	BackgroundMusicId                *string                                                                               `json:"BackgroundMusicId,omitempty" xml:"BackgroundMusicId,omitempty"`
+	EndConversationConfig            *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig `json:"EndConversationConfig,omitempty" xml:"EndConversationConfig,omitempty" type:"Struct"`
+	InitialGreetingDelayMilliseconds *int32                                                                                `json:"InitialGreetingDelayMilliseconds,omitempty" xml:"InitialGreetingDelayMilliseconds,omitempty"`
+	// The silence detection configuration.
 	SilenceDetectionConfig *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig `json:"SilenceDetectionConfig,omitempty" xml:"SilenceDetectionConfig,omitempty" type:"Struct"`
 }
 
@@ -1208,8 +1779,35 @@ func (s GetApplicationResponseBodyDataPublishedVersionInteractionConfig) GoStrin
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) GetBackgroundMusicId() *string {
+	return s.BackgroundMusicId
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) GetEndConversationConfig() *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig {
+	return s.EndConversationConfig
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) GetInitialGreetingDelayMilliseconds() *int32 {
+	return s.InitialGreetingDelayMilliseconds
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) GetSilenceDetectionConfig() *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig {
 	return s.SilenceDetectionConfig
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) SetBackgroundMusicId(v string) *GetApplicationResponseBodyDataPublishedVersionInteractionConfig {
+	s.BackgroundMusicId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) SetEndConversationConfig(v *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) *GetApplicationResponseBodyDataPublishedVersionInteractionConfig {
+	s.EndConversationConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) SetInitialGreetingDelayMilliseconds(v int32) *GetApplicationResponseBodyDataPublishedVersionInteractionConfig {
+	s.InitialGreetingDelayMilliseconds = &v
+	return s
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) SetSilenceDetectionConfig(v *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig) *GetApplicationResponseBodyDataPublishedVersionInteractionConfig {
@@ -1218,6 +1816,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) SetSil
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) Validate() error {
+	if s.EndConversationConfig != nil {
+		if err := s.EndConversationConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SilenceDetectionConfig != nil {
 		if err := s.SilenceDetectionConfig.Validate(); err != nil {
 			return err
@@ -1226,7 +1829,109 @@ func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) Valida
 	return nil
 }
 
+type GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig struct {
+	Delay    *int32                                                                                          `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	Triggers []*GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) GetDelay() *int32 {
+	return s.Delay
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) GetTriggers() []*GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers {
+	return s.Triggers
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) SetDelay(v int32) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig {
+	s.Delay = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) SetTriggers(v []*GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig {
+	s.Triggers = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfig) Validate() error {
+	if s.Triggers != nil {
+		for _, item := range s.Triggers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers struct {
+	ClosingStatement *string   `json:"ClosingStatement,omitempty" xml:"ClosingStatement,omitempty"`
+	KeyWords         []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	TriggerType      *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	TurnLimit        *int32    `json:"TurnLimit,omitempty" xml:"TurnLimit,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) GetClosingStatement() *string {
+	return s.ClosingStatement
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) GetKeyWords() []*string {
+	return s.KeyWords
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) GetTriggerType() *string {
+	return s.TriggerType
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) GetTurnLimit() *int32 {
+	return s.TurnLimit
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) SetClosingStatement(v string) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers {
+	s.ClosingStatement = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) SetKeyWords(v []*string) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers {
+	s.KeyWords = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) SetTriggerType(v string) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers {
+	s.TriggerType = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) SetTurnLimit(v int32) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers {
+	s.TurnLimit = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigEndConversationConfigTriggers) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig struct {
+	MaxRepeats *int32 `json:"MaxRepeats,omitempty" xml:"MaxRepeats,omitempty"`
+	// The timeout period.
+	//
 	// example:
 	//
 	// 30
@@ -1241,8 +1946,17 @@ func (s GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDe
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig) GetMaxRepeats() *int32 {
+	return s.MaxRepeats
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig) GetTimeout() *int32 {
 	return s.Timeout
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig) SetMaxRepeats(v int32) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig {
+	s.MaxRepeats = &v
+	return s
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig) SetTimeout(v int32) *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig {
@@ -1254,12 +1968,78 @@ func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceD
 	return dara.Validate(s)
 }
 
+type GetApplicationResponseBodyDataPublishedVersionLabelConfig struct {
+	CandidateValues []*string `json:"CandidateValues,omitempty" xml:"CandidateValues,omitempty" type:"Repeated"`
+	Description     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionLabelConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionLabelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionLabelConfig) GetCandidateValues() []*string {
+	return s.CandidateValues
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionLabelConfig) GetDescription() *string {
+	return s.Description
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionLabelConfig) GetName() *string {
+	return s.Name
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionLabelConfig) SetCandidateValues(v []*string) *GetApplicationResponseBodyDataPublishedVersionLabelConfig {
+	s.CandidateValues = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionLabelConfig) SetDescription(v string) *GetApplicationResponseBodyDataPublishedVersionLabelConfig {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionLabelConfig) SetName(v string) *GetApplicationResponseBodyDataPublishedVersionLabelConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionLabelConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApplicationResponseBodyDataPublishedVersionRagConfig struct {
-	Enabled          *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether RAG is enabled.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The list of knowledge base IDs.
 	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitempty" xml:"KnowledgeBaseIds,omitempty" type:"Repeated"`
-	MaxContentLength *int32    `json:"MaxContentLength,omitempty" xml:"MaxContentLength,omitempty"`
-	RagEngine        *string   `json:"RagEngine,omitempty" xml:"RagEngine,omitempty"`
-	TopN             *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// The maximum concatenation length of RAG content.
+	//
+	// example:
+	//
+	// 2000
+	MaxContentLength *int32 `json:"MaxContentLength,omitempty" xml:"MaxContentLength,omitempty"`
+	// The RAG engine.
+	//
+	// example:
+	//
+	// BAILIAN
+	RagEngine *string `json:"RagEngine,omitempty" xml:"RagEngine,omitempty"`
+	// The maximum number of data entries to retrieve.
+	//
+	// example:
+	//
+	// 5
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
 }
 
 func (s GetApplicationResponseBodyDataPublishedVersionRagConfig) String() string {
@@ -1320,15 +2100,37 @@ func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) Validate() err
 }
 
 type GetApplicationResponseBodyDataPublishedVersionScriptProfile struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The agent configuration information.
 	AgentProfile *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile `json:"AgentProfile,omitempty" xml:"AgentProfile,omitempty" type:"Struct"`
+	ChatbotId    *string                                                                  `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
+	FunctionMeta *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta `json:"FunctionMeta,omitempty" xml:"FunctionMeta,omitempty" type:"Struct"`
+	// The model.
+	//
 	// example:
 	//
 	// qwen-plus
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model            *string                                                                      `json:"Model,omitempty" xml:"Model,omitempty"`
+	NluAccessProfile *GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile `json:"NluAccessProfile,omitempty" xml:"NluAccessProfile,omitempty" type:"Struct"`
+	NluAccessType    *string                                                                      `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	NluEngine        *string                                                                      `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	OmniModel        *bool                                                                        `json:"OmniModel,omitempty" xml:"OmniModel,omitempty"`
+	// The probability threshold for nucleus sampling during generation.
+	//
+	// > - For example, when the value is set to 0.8, only the smallest set of most likely tokens whose cumulative probability is greater than or equal to 0.8 is retained as the candidate set.
+	//
+	//      	- Valid values: (0, 1.0). A higher value increases randomness in generation. A lower value increases determinism in generation.
+	//
 	// example:
 	//
 	// 0.8
 	Temperature *string `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// Controls the randomness and diversity of model responses.
+	//
+	// > - Specifically, the temperature value controls the degree of smoothing applied to the probability distribution of each candidate token during text generation. A higher temperature value flattens the probability distribution, allowing more low-probability tokens to be selected, which produces more diverse results. A lower temperature value sharpens the probability distribution, making high-probability tokens more likely to be selected, which produces more deterministic results.
+	//
+	// > - Valid values: [0, 2). Setting the value to 0 is not recommended because it is meaningless.
+	//
 	// example:
 	//
 	// 0.1
@@ -1343,12 +2145,40 @@ func (s GetApplicationResponseBodyDataPublishedVersionScriptProfile) GoString() 
 	return s.String()
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetAgentKey() *string {
+	return s.AgentKey
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetAgentProfile() *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile {
 	return s.AgentProfile
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetChatbotId() *string {
+	return s.ChatbotId
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetFunctionMeta() *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta {
+	return s.FunctionMeta
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetModel() *string {
 	return s.Model
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetNluAccessProfile() *GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile {
+	return s.NluAccessProfile
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetNluAccessType() *string {
+	return s.NluAccessType
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetNluEngine() *string {
+	return s.NluEngine
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetOmniModel() *bool {
+	return s.OmniModel
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetTemperature() *string {
@@ -1359,13 +2189,48 @@ func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) GetTopP() 
 	return s.TopP
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetAgentKey(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
+	s.AgentKey = &v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetAgentProfile(v *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
 	s.AgentProfile = v
 	return s
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetChatbotId(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
+	s.ChatbotId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetFunctionMeta(v *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
+	s.FunctionMeta = v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetModel(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
 	s.Model = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetNluAccessProfile(v *GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
+	s.NluAccessProfile = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetNluAccessType(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
+	s.NluAccessType = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetNluEngine(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
+	s.NluEngine = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) SetOmniModel(v bool) *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
+	s.OmniModel = &v
 	return s
 }
 
@@ -1385,16 +2250,41 @@ func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfile) Validate()
 			return err
 		}
 	}
+	if s.FunctionMeta != nil {
+		if err := s.FunctionMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NluAccessProfile != nil {
+		if err := s.NluAccessProfile.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile struct {
+	// The agent configuration ID.
+	//
 	// example:
 	//
 	// b97b6822dd624c32b6c2a54d717db718
 	AgentProfileId *string `json:"AgentProfileId,omitempty" xml:"AgentProfileId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PromptsJson    *string `json:"PromptsJson,omitempty" xml:"PromptsJson,omitempty"`
+	// The agent description.
+	//
+	// example:
+	//
+	// I am a chatbot
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The prompt in JSON format.
+	//
+	// example:
+	//
+	// {"prompts":"I am a chatbot."}
+	PromptsJson *string `json:"PromptsJson,omitempty" xml:"PromptsJson,omitempty"`
+	// The agent configuration template ID.
+	//
 	// example:
 	//
 	// SFM_PROMPTS_DEFAULT
@@ -1417,6 +2307,10 @@ func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile
 	return s.Description
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile) GetName() *string {
+	return s.Name
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile) GetPromptsJson() *string {
 	return s.PromptsJson
 }
@@ -1435,6 +2329,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile
 	return s
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile) SetName(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile {
+	s.Name = &v
+	return s
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile) SetPromptsJson(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile {
 	s.PromptsJson = &v
 	return s
@@ -1449,30 +2348,136 @@ func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileAgentProfile
 	return dara.Validate(s)
 }
 
+type GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta struct {
+	FunctionId      *string `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
+	FunctionName    *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	HttpTriggerName *string `json:"HttpTriggerName,omitempty" xml:"HttpTriggerName,omitempty"`
+	HttpTriggerUrl  *string `json:"HttpTriggerUrl,omitempty" xml:"HttpTriggerUrl,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) GetFunctionId() *string {
+	return s.FunctionId
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) GetFunctionName() *string {
+	return s.FunctionName
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) GetHttpTriggerName() *string {
+	return s.HttpTriggerName
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) GetHttpTriggerUrl() *string {
+	return s.HttpTriggerUrl
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) SetFunctionId(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta {
+	s.FunctionId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) SetFunctionName(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) SetHttpTriggerName(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta {
+	s.HttpTriggerName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) SetHttpTriggerUrl(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta {
+	s.HttpTriggerUrl = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) SetRegionId(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileFunctionMeta) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile struct {
+	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile) GetAccessProfileId() *string {
+	return s.AccessProfileId
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile) SetAccessProfileId(v string) *GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile {
+	s.AccessProfileId = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionScriptProfileNluAccessProfile) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig struct {
 	Model            *string                                                                          `json:"Model,omitempty" xml:"Model,omitempty"`
 	NlsAccessProfile *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigNlsAccessProfile `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
+	// The TTS invocation method.
+	//
 	// example:
 	//
 	// MANAGED
 	NlsAccessType *string `json:"NlsAccessType,omitempty" xml:"NlsAccessType,omitempty"`
+	// The TTS engine.
+	//
 	// example:
 	//
 	// ALIYUN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The pitch rate.
+	//
+	// > Valid values: -500 to 500.
+	//
 	// example:
 	//
 	// 3
 	PitchRate *int32                                                                      `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
 	PronRules []*GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRules `json:"PronRules,omitempty" xml:"PronRules,omitempty" type:"Repeated"`
+	// The speech rate.
+	//
+	// > Valid values: -500 to 500.
+	//
 	// example:
 	//
 	// -20
 	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The voice.
+	//
 	// example:
 	//
 	// aixia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The volume.
+	//
 	// example:
 	//
 	// 50
@@ -1647,6 +2652,7 @@ func (s *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfigPronRule
 }
 
 type GetApplicationResponseBodyDataPublishedVersionToolConfig struct {
+	// The list of MCP server configurations.
 	McpServers []*GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers `json:"McpServers,omitempty" xml:"McpServers,omitempty" type:"Repeated"`
 }
 
@@ -1681,8 +2687,23 @@ func (s *GetApplicationResponseBodyDataPublishedVersionToolConfig) Validate() er
 }
 
 type GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers struct {
-	BaseUrl     *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The base URL.
+	//
+	// example:
+	//
+	// https://example.com
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// phone-ai-call
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The SSE endpoint.
+	//
+	// example:
+	//
+	// /phone-ai-call/mcp/sse?key=value
 	SseEndpoint *string `json:"SseEndpoint,omitempty" xml:"SseEndpoint,omitempty"`
 }
 
@@ -1731,10 +2752,14 @@ type GetApplicationResponseBodyDataPublishedVersionTranscriberConfig struct {
 	EndSilenceTimeout *int32                                                                            `json:"EndSilenceTimeout,omitempty" xml:"EndSilenceTimeout,omitempty"`
 	Model             *string                                                                           `json:"Model,omitempty" xml:"Model,omitempty"`
 	NlsAccessProfile  *GetApplicationResponseBodyDataPublishedVersionTranscriberConfigNlsAccessProfile  `json:"NlsAccessProfile,omitempty" xml:"NlsAccessProfile,omitempty" type:"Struct"`
+	// The ASR invocation method.
+	//
 	// example:
 	//
 	// MANAGED
 	NlsAccessType *string `json:"NlsAccessType,omitempty" xml:"NlsAccessType,omitempty"`
+	// The ASR engine.
+	//
 	// example:
 	//
 	// ALIYUN

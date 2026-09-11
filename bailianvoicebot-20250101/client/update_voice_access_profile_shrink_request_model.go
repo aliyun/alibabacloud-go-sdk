@@ -20,18 +20,25 @@ type iUpdateVoiceAccessProfileShrinkRequest interface {
 }
 
 type UpdateVoiceAccessProfileShrinkRequest struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// llm-xdne77rxe14ziszr
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The speech engine.
+	//
 	// example:
 	//
 	// BAILIAN
-	NlsEngine     *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The parameter settings.
 	ProfileShrink *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

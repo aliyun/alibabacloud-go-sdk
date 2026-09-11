@@ -24,20 +24,30 @@ type iGetVocabularyResponseBody interface {
 }
 
 type GetVocabularyResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The hot word vocabulary object.
 	Data *GetVocabularyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance llm-zzu528i29ecnprcl does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D771A1B6-3D5F-174A-BEE1-98CE1000D337
@@ -116,33 +126,60 @@ func (s *GetVocabularyResponseBody) Validate() error {
 }
 
 type GetVocabularyResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1773453676000
-	CreatedTime *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Contains professional terminology for financial scenarios
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Model Studio business space.
+	//
 	// example:
 	//
 	// llm-zop7ukgtksltamo4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the hot word vocabulary.
+	//
+	// example:
+	//
+	// Financial scenario hot words
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1308144684576655
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1773453676000
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The hot word vocabulary ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+	// The number of hot words.
+	//
 	// example:
 	//
 	// 50
 	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
-	Words     *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	// The hot words.
+	//
+	// example:
+	//
+	// {\\"苹果\\":\\"2\\",\\"香蕉\\":\\"3\\"}
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetVocabularyResponseBodyData) String() string {

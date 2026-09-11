@@ -16,10 +16,14 @@ type iDeleteVocabularyRequest interface {
 }
 
 type DeleteVocabularyRequest struct {
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The hot word ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b

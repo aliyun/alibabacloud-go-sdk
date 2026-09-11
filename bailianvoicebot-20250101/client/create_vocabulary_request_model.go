@@ -20,13 +20,26 @@ type iCreateVocabularyRequest interface {
 }
 
 type CreateVocabularyRequest struct {
+	// The ID of the Bailian business workspace.
+	//
 	// example:
 	//
 	// llm-baployoyopf22m2r
-	BusinessUnitId *string            `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
-	Description    *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name           *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Words          map[string]*string `json:"Words,omitempty" xml:"Words,omitempty"`
+	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Contains financial industry terminology
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the hot word list.
+	//
+	// example:
+	//
+	// Financial industry hot words
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hot word list.
+	Words map[string]*string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s CreateVocabularyRequest) String() string {

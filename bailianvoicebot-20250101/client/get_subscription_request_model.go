@@ -14,6 +14,8 @@ type iGetSubscriptionRequest interface {
 }
 
 type GetSubscriptionRequest struct {
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// llm-3pptowd2olrctsvc

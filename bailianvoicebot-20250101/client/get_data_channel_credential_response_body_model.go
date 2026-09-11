@@ -24,20 +24,30 @@ type iGetDataChannelCredentialResponseBody interface {
 }
 
 type GetDataChannelCredentialResponseBody struct {
+	// The API status or POP error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetDataChannelCredentialResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D771A1B6-3D5F-174A-BEE1-98CE1000D337
@@ -116,22 +126,34 @@ func (s *GetDataChannelCredentialResponseBody) Validate() error {
 }
 
 type GetDataChannelCredentialResponseBodyData struct {
+	// The client ID.
+	//
 	// example:
 	//
 	// 26c2f022-b6c0-4ab0-9019-6e1a42dc5582
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// device-3i5x4234f2j4w55e
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The endpoint.
+	//
 	// example:
 	//
 	// mqtt-cn-ux146hgtt04.mqtt.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The validity period of the connection.
+	//
+	// > The value is in timestamp format.
+	//
 	// example:
 	//
 	// 1745004535507
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// ***
@@ -142,6 +164,8 @@ type GetDataChannelCredentialResponseBodyData struct {
 	//
 	// datachannel-prepub-a/dc52807f0eff4b9b8224d06c7f240c07
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// Token|LTAI5tRYzHUYYi4XstgMCsL4|mqtt-cn-ux146hgtt04

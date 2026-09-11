@@ -26,24 +26,40 @@ type iPreviewVoiceRequest interface {
 }
 
 type PreviewVoiceRequest struct {
+	// The ID of the Model Studio business unit.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The TTS model.
+	//
 	// example:
 	//
 	// Qwen
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The TTS access type.
+	//
 	// example:
 	//
 	// MANAGED
 	NlsAccessType *string `json:"NlsAccessType,omitempty" xml:"NlsAccessType,omitempty"`
+	// The TTS engine.
+	//
 	// example:
 	//
 	// BAILIAN
-	NlsEngine *string                    `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	Params    *PreviewVoiceRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
-	Text      *string                    `json:"Text,omitempty" xml:"Text,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The synthesis parameters.
+	Params *PreviewVoiceRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	// The text to synthesize for the preview.
+	//
+	// example:
+	//
+	// 你好，很高兴认识你
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The voice for synthesis.
+	//
 	// example:
 	//
 	// Cherry
@@ -131,14 +147,26 @@ func (s *PreviewVoiceRequest) Validate() error {
 }
 
 type PreviewVoiceRequestParams struct {
+	// The pitch rate.
+	//
+	// > Valid values: -500 to 500.
+	//
 	// example:
 	//
 	// 0
 	PitchRate *float32 `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// The speech rate.
+	//
+	// > Valid values: -500 to 500.
+	//
 	// example:
 	//
 	// 0
 	SpeechRate *float32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The volume.
+	//
+	// > Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 50

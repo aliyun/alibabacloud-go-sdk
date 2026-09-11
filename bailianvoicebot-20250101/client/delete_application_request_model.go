@@ -16,12 +16,16 @@ type iDeleteApplicationRequest interface {
 }
 
 type DeleteApplicationRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The Bailian business workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

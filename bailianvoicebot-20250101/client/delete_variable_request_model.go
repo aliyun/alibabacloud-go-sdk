@@ -16,10 +16,14 @@ type iDeleteVariableRequest interface {
 }
 
 type DeleteVariableRequest struct {
+	// The ID of the Bailian business workspace.
+	//
 	// example:
 	//
 	// llm-rj6aqmctjcit4acy
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The variable ID.
+	//
 	// example:
 	//
 	// 82ea16d1-425c-4c03-9be5-cc91de9779ed

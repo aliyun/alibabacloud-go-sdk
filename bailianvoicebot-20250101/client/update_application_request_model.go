@@ -22,24 +22,41 @@ type iUpdateApplicationRequest interface {
 }
 
 type UpdateApplicationRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The Model Studio workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The concurrency setting.
+	//
 	// example:
 	//
 	// 10
-	Concurrency *int32  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The application\\"s new description.
+	//
+	// example:
+	//
+	// 描述一下这个应用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The new name for the application.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

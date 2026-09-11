@@ -20,12 +20,26 @@ type iCreateVariableRequest interface {
 }
 
 type CreateVariableRequest struct {
+	// The ID of the Bailian business workspace.
+	//
 	// example:
 	//
 	// llm-baployoyopf22m2r
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Indicates the user type, including VIP and regular users
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// UserType
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The variable name.
+	//
 	// example:
 	//
 	// userType

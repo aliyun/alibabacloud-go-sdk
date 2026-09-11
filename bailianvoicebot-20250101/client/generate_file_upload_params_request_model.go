@@ -18,14 +18,20 @@ type iGenerateFileUploadParamsRequest interface {
 }
 
 type GenerateFileUploadParamsRequest struct {
+	// The file type.
+	//
 	// example:
 	//
 	// CloneVoice
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The ID of the Bailian business workspace.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// test.wav

@@ -18,18 +18,24 @@ type iPublishApplicationVersionRequest interface {
 }
 
 type PublishApplicationVersionRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The Bailian business workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The version ID.
+	//
 	// This parameter is required.
 	//
 	// example:

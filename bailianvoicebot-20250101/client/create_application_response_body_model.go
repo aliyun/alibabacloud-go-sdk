@@ -22,22 +22,32 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
+	// The API status code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result (application ID).
+	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CF6D3484-19A1-5C77-863B-AC8B5754D37C

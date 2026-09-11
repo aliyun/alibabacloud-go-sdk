@@ -22,26 +22,11 @@ type iCreateApplicationVersionResponseBody interface {
 }
 
 type CreateApplicationVersionResponseBody struct {
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 20904943-f711-494f-9f1f-e7f340f37707
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// CF6D3484-19A1-5C77-863B-AC8B5754D37C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateApplicationVersionResponseBody) String() string {

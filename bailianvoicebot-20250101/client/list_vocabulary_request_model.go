@@ -20,15 +20,26 @@ type iListVocabularyRequest interface {
 }
 
 type ListVocabularyRequest struct {
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hot word name.
+	//
+	// example:
+	//
+	// Finance
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

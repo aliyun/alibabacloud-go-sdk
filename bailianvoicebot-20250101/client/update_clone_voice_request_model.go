@@ -18,15 +18,24 @@ type iUpdateCloneVoiceRequest interface {
 }
 
 type UpdateCloneVoiceRequest struct {
+	// The ID of the Bailian business workspace.
+	//
 	// example:
 	//
 	// llm-3pptowd2olrctsvc
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The ID of the cloned voice.
+	//
 	// example:
 	//
 	// 8ee1160a-6999-478f-8df6-f33ef21f27d5
 	CloneVoiceId *string `json:"CloneVoiceId,omitempty" xml:"CloneVoiceId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the cloned voice.
+	//
+	// example:
+	//
+	// TestClonedVoice
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateCloneVoiceRequest) String() string {

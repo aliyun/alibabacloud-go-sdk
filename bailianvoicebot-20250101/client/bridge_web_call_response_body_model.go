@@ -24,23 +24,34 @@ type iBridgeWebCallResponseBody interface {
 }
 
 type BridgeWebCallResponseBody struct {
+	// The status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *BridgeWebCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// connect timed out
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CF6D3484-19A1-5C77-863B-AC8B5754D37C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,26 +130,40 @@ func (s *BridgeWebCallResponseBody) Validate() error {
 }
 
 type BridgeWebCallResponseBodyData struct {
+	// The channel ID.
+	//
 	// example:
 	//
 	// 894526715106764802
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The token expiration time.
+	//
+	// > The value is in timestamp format.
+	//
 	// example:
 	//
 	// 1744964682422
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-uf6abxo1tuuwarrtffpp
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The server URL.
+	//
 	// example:
 	//
-	// wss://pre-cab-wss.aliyuncs.com:443/audio
+	// wss://sh-voicebot.aliyuncs.com:443/audio
 	ServerUrl *string `json:"ServerUrl,omitempty" xml:"ServerUrl,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// ws-4b7c263f-9b4c-4b28-baae-a65e9155e380
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The authentication signature.
+	//
 	// example:
 	//
 	// 83480f806b48f022313de37b691e167e

@@ -24,20 +24,28 @@ type iListVoiceAccessProfileResponseBody interface {
 }
 
 type ListVoiceAccessProfileResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated results of third-party voice configurations.
 	Data *ListVoiceAccessProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance llm-xdne77rxe14ziszr does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -118,18 +126,25 @@ func (s *ListVoiceAccessProfileResponseBody) Validate() error {
 }
 
 type ListVoiceAccessProfileResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
-	TotalCount          *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of third-party voice configurations.
 	VoiceAccessProfiles []*ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles `json:"VoiceAccessProfiles,omitempty" xml:"VoiceAccessProfiles,omitempty" type:"Repeated"`
 }
 
@@ -191,25 +206,42 @@ func (s *ListVoiceAccessProfileResponseBodyData) Validate() error {
 }
 
 type ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
-	AccessProfileId *string   `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
-	Capabilities    []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
+	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The list of voice engine capabilities.
+	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1747620752000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The Bailian business unit ID.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The voice engine.
+	//
 	// example:
 	//
 	// VOLC
-	NlsEngine     *string                                                           `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	NlsEngineName *string                                                           `json:"NlsEngineName,omitempty" xml:"NlsEngineName,omitempty"`
-	Profile       *ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// 豆包
+	NlsEngineName *string `json:"NlsEngineName,omitempty" xml:"NlsEngineName,omitempty"`
+	// The parameter settings.
+	Profile *ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1747620752000
@@ -306,27 +338,47 @@ func (s *ListVoiceAccessProfileResponseBodyDataVoiceAccessProfiles) Validate() e
 }
 
 type ListVoiceAccessProfileResponseBodyDataVoiceAccessProfilesProfile struct {
+	// The AccessKey for Doubao calls.
+	//
 	// example:
 	//
 	// HwRnTXgwnQOlsj68URDS5_VMm4Wtapq9
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The ApiKey for Bailian or iFLYTEK calls.
+	//
 	// example:
 	//
 	// sk-12341e259b1049e8872b47981e545f78
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The ApiSecret for iFLYTEK calls.
+	//
 	// example:
 	//
 	// c0358c6e51c1013b446fdeb21a3a1234
 	ApiSecret *string `json:"ApiSecret,omitempty" xml:"ApiSecret,omitempty"`
+	// The AppId for iFLYTEK calls.
+	//
 	// example:
 	//
 	// 5b123bfb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The AppKey for Doubao calls.
+	//
 	// example:
 	//
 	// 2541370123
-	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Not currently in use.
+	//
+	// example:
+	//
+	// 暂无使用
 	AsrAppKey *string `json:"AsrAppKey,omitempty" xml:"AsrAppKey,omitempty"`
+	// Not currently in use.
+	//
+	// example:
+	//
+	// 暂无使用
 	TtsApiKey *string `json:"TtsApiKey,omitempty" xml:"TtsApiKey,omitempty"`
 }
 

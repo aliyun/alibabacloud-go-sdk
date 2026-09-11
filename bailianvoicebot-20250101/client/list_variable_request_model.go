@@ -20,18 +20,26 @@ type iListVariableRequest interface {
 }
 
 type ListVariableRequest struct {
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// llm-zop7ukgtksltamo4
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Performs a fuzzy match based on the variable name or display name.
+	//
 	// example:
 	//
 	// age

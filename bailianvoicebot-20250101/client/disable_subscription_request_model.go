@@ -14,6 +14,8 @@ type iDisableSubscriptionRequest interface {
 }
 
 type DisableSubscriptionRequest struct {
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// llm-3pptowd2olrctsvc

@@ -30,41 +30,66 @@ type iBridgeWebCallRequest interface {
 }
 
 type BridgeWebCallRequest struct {
+	// The Bailian application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	AudioCodec    *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	// The encoding type. If this parameter is not specified, PCM encoding is used by default. Valid values:
+	//
+	// - PCM
+	//
+	// - OPUS
+	//
+	// example:
+	//
+	// PCM
+	AudioCodec *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	// The Bailian business space ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The caller number for inbound calls (used for display purposes).
+	//
 	// example:
 	//
 	// 13052253537
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 467539456766097392-cn-shenzhen
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The sampling rate.
+	//
 	// example:
 	//
 	// 8000
 	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// Specifies whether the call is in a test environment.
+	//
 	// example:
 	//
 	// true
 	Sandbox *bool `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
+	// The pass-through data.
+	//
 	// example:
 	//
 	// {\\"ENV\\": \\"production\\"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The timeout period. If the call is not connected within the specified time, the call is automatically hung up. Unit: seconds.
+	//
 	// example:
 	//
 	// 3

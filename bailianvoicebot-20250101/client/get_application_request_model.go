@@ -16,12 +16,16 @@ type iGetApplicationRequest interface {
 }
 
 type GetApplicationRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the Model Studio business workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

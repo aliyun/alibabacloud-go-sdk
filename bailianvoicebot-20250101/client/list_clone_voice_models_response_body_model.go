@@ -24,20 +24,28 @@ type iListCloneVoiceModelsResponseBody interface {
 }
 
 type ListCloneVoiceModelsResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated data of voice cloning models.
 	Data *ListCloneVoiceModelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance llm-zzu528i29ecnprcl does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -118,15 +126,22 @@ func (s *ListCloneVoiceModelsResponseBody) Validate() error {
 }
 
 type ListCloneVoiceModelsResponseBodyData struct {
+	// The list of voice cloning models.
 	CloneVoiceModels []*ListCloneVoiceModelsResponseBodyDataCloneVoiceModels `json:"CloneVoiceModels,omitempty" xml:"CloneVoiceModels,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -191,11 +206,20 @@ func (s *ListCloneVoiceModelsResponseBodyData) Validate() error {
 }
 
 type ListCloneVoiceModelsResponseBodyDataCloneVoiceModels struct {
+	// The description.
+	//
+	// example:
+	//
+	// High accent restoration similarity with fluent prosody
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// CosyVoice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// CosyVoice

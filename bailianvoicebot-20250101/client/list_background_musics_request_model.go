@@ -18,14 +18,20 @@ type iListBackgroundMusicsRequest interface {
 }
 
 type ListBackgroundMusicsRequest struct {
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// llm-zzu528i29ecnprcl
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

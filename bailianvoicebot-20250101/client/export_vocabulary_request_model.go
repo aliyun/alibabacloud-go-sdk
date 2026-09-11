@@ -16,10 +16,13 @@ type iExportVocabularyRequest interface {
 }
 
 type ExportVocabularyRequest struct {
+  // The ID of the Bailian business workspace.
+  // 
   // example:
   // 
   // llm-c11iig67g863rih8
   BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+  // The list of hot word IDs.
   VocabularyIds []*string `json:"VocabularyIds,omitempty" xml:"VocabularyIds,omitempty" type:"Repeated"`
 }
 

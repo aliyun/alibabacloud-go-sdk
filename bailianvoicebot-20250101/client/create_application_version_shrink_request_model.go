@@ -15,6 +15,8 @@ type iCreateApplicationVersionShrinkRequest interface {
 	GetBusinessUnitId() *string
 	SetInteractionConfigShrink(v string) *CreateApplicationVersionShrinkRequest
 	GetInteractionConfigShrink() *string
+	SetLabelConfigShrink(v string) *CreateApplicationVersionShrinkRequest
+	GetLabelConfigShrink() *string
 	SetRagConfigShrink(v string) *CreateApplicationVersionShrinkRequest
 	GetRagConfigShrink() *string
 	SetScriptProfileShrink(v string) *CreateApplicationVersionShrinkRequest
@@ -31,23 +33,13 @@ type iCreateApplicationVersionShrinkRequest interface {
 
 type CreateApplicationVersionShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-c11iig67g863rih8
 	BusinessUnitId          *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
 	InteractionConfigShrink *string `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty"`
+	LabelConfigShrink       *string `json:"LabelConfig,omitempty" xml:"LabelConfig,omitempty"`
 	RagConfigShrink         *string `json:"RagConfig,omitempty" xml:"RagConfig,omitempty"`
 	ScriptProfileShrink     *string `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty"`
-	// example:
-	//
-	// 20904943-f711-494f-9f1f-e7f340f37707
 	SourceVersionId         *string `json:"SourceVersionId,omitempty" xml:"SourceVersionId,omitempty"`
 	SynthesizerConfigShrink *string `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty"`
 	ToolConfigShrink        *string `json:"ToolConfig,omitempty" xml:"ToolConfig,omitempty"`
@@ -72,6 +64,10 @@ func (s *CreateApplicationVersionShrinkRequest) GetBusinessUnitId() *string {
 
 func (s *CreateApplicationVersionShrinkRequest) GetInteractionConfigShrink() *string {
 	return s.InteractionConfigShrink
+}
+
+func (s *CreateApplicationVersionShrinkRequest) GetLabelConfigShrink() *string {
+	return s.LabelConfigShrink
 }
 
 func (s *CreateApplicationVersionShrinkRequest) GetRagConfigShrink() *string {
@@ -110,6 +106,11 @@ func (s *CreateApplicationVersionShrinkRequest) SetBusinessUnitId(v string) *Cre
 
 func (s *CreateApplicationVersionShrinkRequest) SetInteractionConfigShrink(v string) *CreateApplicationVersionShrinkRequest {
 	s.InteractionConfigShrink = &v
+	return s
+}
+
+func (s *CreateApplicationVersionShrinkRequest) SetLabelConfigShrink(v string) *CreateApplicationVersionShrinkRequest {
+	s.LabelConfigShrink = &v
 	return s
 }
 

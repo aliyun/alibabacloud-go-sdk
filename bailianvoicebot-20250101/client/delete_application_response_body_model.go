@@ -22,22 +22,32 @@ type iDeleteApplicationResponseBody interface {
 }
 
 type DeleteApplicationResponseBody struct {
+	// The API status or POP error code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response result, which is the ID of the deleted application.
+	//
 	// example:
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The additional information.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D771A1B6-3D5F-174A-BEE1-98CE1000D337

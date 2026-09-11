@@ -14,6 +14,8 @@ type iListNluModelsRequest interface {
 }
 
 type ListNluModelsRequest struct {
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-3pptowd2olrctsvc

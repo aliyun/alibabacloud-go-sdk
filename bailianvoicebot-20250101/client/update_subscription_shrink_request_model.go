@@ -30,35 +30,52 @@ type iUpdateSubscriptionShrinkRequest interface {
 }
 
 type UpdateSubscriptionShrinkRequest struct {
+	// The ID of the Model Studio business space.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The endpoint. This parameter is required if `MqType` is set to `ROCKET_MQ_4` or `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// rmq-cn-l4p89zajz67.cn-hangzhou.rmq.aliyuncs.com:8080
-	Endpoint                 *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// A list of events to subscribe to.
 	EventSubscriptionsShrink *string `json:"EventSubscriptions,omitempty" xml:"EventSubscriptions,omitempty"`
+	// The ID of the ApsaraMQ for RocketMQ instance. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// rmq-cn-l4p89zajz67.cn
 	MqInstanceId *string `json:"MqInstanceId,omitempty" xml:"MqInstanceId,omitempty"`
+	// The type of the message queue service. Valid values are `ROCKET_MQ_4` and `ROCKET_MQ_5`, which correspond to ApsaraMQ for RocketMQ.
+	//
 	// example:
 	//
 	// ROCKET_MQ_4
 	MqType *string `json:"MqType,omitempty" xml:"MqType,omitempty"`
+	// The password for authentication. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// pwd
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ID of the producer. This parameter is required if `MqType` is set to `ROCKET_MQ_4`.
+	//
 	// example:
 	//
 	// user1
 	ProducerId *string `json:"ProducerId,omitempty" xml:"ProducerId,omitempty"`
+	// The topic of the queue. This parameter is required if `MqType` is set to `ROCKET_MQ_4` or `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// test
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The username for authentication. This parameter is required if `MqType` is set to `ROCKET_MQ_5`.
+	//
 	// example:
 	//
 	// username

@@ -24,20 +24,28 @@ type iListVocabularyResponseBody interface {
 }
 
 type ListVocabularyResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The paginated data of the hot word list.
 	Data *ListVocabularyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Instance llm-xdne77rxe14ziszr does not exist.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -118,18 +126,25 @@ func (s *ListVocabularyResponseBody) Validate() error {
 }
 
 type ListVocabularyResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
-	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of hot word objects.
 	Vocabularies []*ListVocabularyResponseBodyDataVocabularies `json:"Vocabularies,omitempty" xml:"Vocabularies,omitempty" type:"Repeated"`
 }
 
@@ -191,28 +206,50 @@ func (s *ListVocabularyResponseBodyData) Validate() error {
 }
 
 type ListVocabularyResponseBodyDataVocabularies struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1754013825102
-	CreatedTime *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Contains professional terminology for finance scenarios
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hot word name.
+	//
+	// example:
+	//
+	// Finance scenario hot words
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1308144684576655
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1754013825102
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The hot word ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+	// The number of hot words.
+	//
 	// example:
 	//
 	// 50

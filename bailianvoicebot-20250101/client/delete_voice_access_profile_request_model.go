@@ -16,10 +16,14 @@ type iDeleteVoiceAccessProfileRequest interface {
 }
 
 type DeleteVoiceAccessProfileRequest struct {
+	// The third-party voice configuration ID.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b
 	AccessProfileId *string `json:"AccessProfileId,omitempty" xml:"AccessProfileId,omitempty"`
+	// The Bailian business workspace ID.
+	//
 	// example:
 	//
 	// llm-c11iig67g863rih8

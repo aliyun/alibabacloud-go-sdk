@@ -15,6 +15,8 @@ type iUpdateApplicationVersionShrinkRequest interface {
 	GetBusinessUnitId() *string
 	SetInteractionConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
 	GetInteractionConfigShrink() *string
+	SetLabelConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
+	GetLabelConfigShrink() *string
 	SetRagConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
 	GetRagConfigShrink() *string
 	SetScriptProfileShrink(v string) *UpdateApplicationVersionShrinkRequest
@@ -31,18 +33,11 @@ type iUpdateApplicationVersionShrinkRequest interface {
 
 type UpdateApplicationVersionShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-c11iig67g863rih8
 	BusinessUnitId          *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
 	InteractionConfigShrink *string `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty"`
+	LabelConfigShrink       *string `json:"LabelConfig,omitempty" xml:"LabelConfig,omitempty"`
 	RagConfigShrink         *string `json:"RagConfig,omitempty" xml:"RagConfig,omitempty"`
 	// This parameter is required.
 	ScriptProfileShrink *string `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty"`
@@ -54,10 +49,6 @@ type UpdateApplicationVersionShrinkRequest struct {
 	// true
 	TranscriberConfigShrink *string `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 20904943-f711-494f-9f1f-e7f340f37707
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -79,6 +70,10 @@ func (s *UpdateApplicationVersionShrinkRequest) GetBusinessUnitId() *string {
 
 func (s *UpdateApplicationVersionShrinkRequest) GetInteractionConfigShrink() *string {
 	return s.InteractionConfigShrink
+}
+
+func (s *UpdateApplicationVersionShrinkRequest) GetLabelConfigShrink() *string {
+	return s.LabelConfigShrink
 }
 
 func (s *UpdateApplicationVersionShrinkRequest) GetRagConfigShrink() *string {
@@ -117,6 +112,11 @@ func (s *UpdateApplicationVersionShrinkRequest) SetBusinessUnitId(v string) *Upd
 
 func (s *UpdateApplicationVersionShrinkRequest) SetInteractionConfigShrink(v string) *UpdateApplicationVersionShrinkRequest {
 	s.InteractionConfigShrink = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionShrinkRequest) SetLabelConfigShrink(v string) *UpdateApplicationVersionShrinkRequest {
+	s.LabelConfigShrink = &v
 	return s
 }
 

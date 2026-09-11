@@ -18,14 +18,19 @@ type iCreateVoiceAccessProfileShrinkRequest interface {
 }
 
 type CreateVoiceAccessProfileShrinkRequest struct {
+	// The Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-xdne77rxe14ziszr
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The speech engine.
+	//
 	// example:
 	//
 	// VOLC
-	NlsEngine     *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
+	// The parameter settings.
 	ProfileShrink *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 

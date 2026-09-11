@@ -16,12 +16,16 @@ type iGetDataChannelCredentialRequest interface {
 }
 
 type GetDataChannelCredentialRequest struct {
+	// The Bailian business workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

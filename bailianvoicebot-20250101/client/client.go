@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建软电话测试通话
+// Creates a softphone test call.
 //
 // @param request - BridgeWebCallRequest
 //
@@ -134,7 +134,7 @@ func (client *Client) BridgeWebCallWithOptions(request *BridgeWebCallRequest, ru
 
 // Summary:
 //
-// 创建软电话测试通话
+// Creates a softphone test call.
 //
 // @param request - BridgeWebCallRequest
 //
@@ -152,7 +152,7 @@ func (client *Client) BridgeWebCall(request *BridgeWebCallRequest) (_result *Bri
 
 // Summary:
 //
-// 创建应用
+// Creates a voice chatbot application.
 //
 // @param request - CreateApplicationRequest
 //
@@ -212,7 +212,7 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 // Summary:
 //
-// 创建应用
+// Creates a voice chatbot application.
 //
 // @param request - CreateApplicationRequest
 //
@@ -250,6 +250,10 @@ func (client *Client) CreateApplicationVersionWithOptions(tmpReq *CreateApplicat
 		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.LabelConfig) {
+		request.LabelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelConfig, dara.String("LabelConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RagConfig) {
 		request.RagConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RagConfig, dara.String("RagConfig"), dara.String("json"))
 	}
@@ -281,6 +285,10 @@ func (client *Client) CreateApplicationVersionWithOptions(tmpReq *CreateApplicat
 
 	if !dara.IsNil(request.InteractionConfigShrink) {
 		query["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.LabelConfigShrink) {
+		query["LabelConfig"] = request.LabelConfigShrink
 	}
 
 	if !dara.IsNil(request.RagConfigShrink) {
@@ -350,7 +358,7 @@ func (client *Client) CreateApplicationVersion(request *CreateApplicationVersion
 
 // Summary:
 //
-// 创建克隆音
+// Creates a cloned voice.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -402,7 +410,7 @@ func (client *Client) CreateCloneVoiceWithOptions(request *CreateCloneVoiceReque
 
 // Summary:
 //
-// 创建克隆音
+// Creates a cloned voice.
 //
 // @param request - CreateCloneVoiceRequest
 //
@@ -420,7 +428,7 @@ func (client *Client) CreateCloneVoice(request *CreateCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 创建变量
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -476,7 +484,7 @@ func (client *Client) CreateVariableWithOptions(request *CreateVariableRequest, 
 
 // Summary:
 //
-// 创建变量
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -494,7 +502,7 @@ func (client *Client) CreateVariable(request *CreateVariableRequest) (_result *C
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVocabularyRequest
 //
@@ -556,7 +564,7 @@ func (client *Client) CreateVocabularyWithOptions(tmpReq *CreateVocabularyReques
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateVocabularyRequest
 //
@@ -574,7 +582,7 @@ func (client *Client) CreateVocabulary(request *CreateVocabularyRequest) (_resul
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param tmpReq - CreateVoiceAccessProfileRequest
 //
@@ -632,7 +640,7 @@ func (client *Client) CreateVoiceAccessProfileWithOptions(tmpReq *CreateVoiceAcc
 
 // Summary:
 //
-// 创建实例
+// Creates an instance.
 //
 // @param request - CreateVoiceAccessProfileRequest
 //
@@ -650,7 +658,7 @@ func (client *Client) CreateVoiceAccessProfile(request *CreateVoiceAccessProfile
 
 // Summary:
 //
-// 删除应用
+// Deletes an application.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -698,7 +706,7 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 
 // Summary:
 //
-// 删除应用
+// Deletes an application.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -716,7 +724,7 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 
 // Summary:
 //
-// 删除场景
+// Deletes a cloned voice.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -764,7 +772,7 @@ func (client *Client) DeleteCloneVoiceWithOptions(request *DeleteCloneVoiceReque
 
 // Summary:
 //
-// 删除场景
+// Deletes a cloned voice.
 //
 // @param request - DeleteCloneVoiceRequest
 //
@@ -782,7 +790,7 @@ func (client *Client) DeleteCloneVoice(request *DeleteCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 删除变量
+// Deletes a variable.
 //
 // @param request - DeleteVariableRequest
 //
@@ -830,7 +838,7 @@ func (client *Client) DeleteVariableWithOptions(request *DeleteVariableRequest, 
 
 // Summary:
 //
-// 删除变量
+// Deletes a variable.
 //
 // @param request - DeleteVariableRequest
 //
@@ -848,7 +856,7 @@ func (client *Client) DeleteVariable(request *DeleteVariableRequest) (_result *D
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteVocabularyRequest
 //
@@ -896,7 +904,7 @@ func (client *Client) DeleteVocabularyWithOptions(request *DeleteVocabularyReque
 
 // Summary:
 //
-// 删除场景
+// Deletes a scenario.
 //
 // @param request - DeleteVocabularyRequest
 //
@@ -914,7 +922,7 @@ func (client *Client) DeleteVocabulary(request *DeleteVocabularyRequest) (_resul
 
 // Summary:
 //
-// 删除三方语音配置
+// Deletes a third-party voice configuration.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -962,7 +970,7 @@ func (client *Client) DeleteVoiceAccessProfileWithOptions(request *DeleteVoiceAc
 
 // Summary:
 //
-// 删除三方语音配置
+// Deletes a third-party voice configuration.
 //
 // @param request - DeleteVoiceAccessProfileRequest
 //
@@ -980,7 +988,7 @@ func (client *Client) DeleteVoiceAccessProfile(request *DeleteVoiceAccessProfile
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables message subscription.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -1024,7 +1032,7 @@ func (client *Client) DisableSubscriptionWithOptions(request *DisableSubscriptio
 
 // Summary:
 //
-// 禁用消息订阅
+// Disables message subscription.
 //
 // @param request - DisableSubscriptionRequest
 //
@@ -1042,7 +1050,7 @@ func (client *Client) DisableSubscription(request *DisableSubscriptionRequest) (
 
 // Summary:
 //
-// 导出热词
+// Exports hot words.
 //
 // @param tmpReq - ExportVocabularyRequest
 //
@@ -1096,7 +1104,7 @@ func (client *Client) ExportVocabularyWithOptions(tmpReq *ExportVocabularyReques
 
 // Summary:
 //
-// 导出热词
+// Exports hot words.
 //
 // @param request - ExportVocabularyRequest
 //
@@ -1114,7 +1122,7 @@ func (client *Client) ExportVocabulary(request *ExportVocabularyRequest) (_resul
 
 // Summary:
 //
-// 获取文件上传信息
+// Retrieves file upload information.
 //
 // @param request - GenerateFileUploadParamsRequest
 //
@@ -1166,7 +1174,7 @@ func (client *Client) GenerateFileUploadParamsWithOptions(request *GenerateFileU
 
 // Summary:
 //
-// 获取文件上传信息
+// Retrieves file upload information.
 //
 // @param request - GenerateFileUploadParamsRequest
 //
@@ -1184,7 +1192,7 @@ func (client *Client) GenerateFileUploadParams(request *GenerateFileUploadParams
 
 // Summary:
 //
-// # Get应用
+// Retrieves a voice chatbot application.
 //
 // @param request - GetApplicationRequest
 //
@@ -1232,7 +1240,7 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 
 // Summary:
 //
-// # Get应用
+// Retrieves a voice chatbot application.
 //
 // @param request - GetApplicationRequest
 //
@@ -1250,7 +1258,7 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// 获取数据通道凭证
+// Retrieves data channel credentials.
 //
 // @param request - GetDataChannelCredentialRequest
 //
@@ -1298,7 +1306,7 @@ func (client *Client) GetDataChannelCredentialWithOptions(request *GetDataChanne
 
 // Summary:
 //
-// 获取数据通道凭证
+// Retrieves data channel credentials.
 //
 // @param request - GetDataChannelCredentialRequest
 //
@@ -1316,7 +1324,7 @@ func (client *Client) GetDataChannelCredential(request *GetDataChannelCredential
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the MQ configuration.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -1360,7 +1368,7 @@ func (client *Client) GetSubscriptionWithOptions(request *GetSubscriptionRequest
 
 // Summary:
 //
-// 获取MQ配置
+// Retrieves the MQ configuration.
 //
 // @param request - GetSubscriptionRequest
 //
@@ -1378,7 +1386,7 @@ func (client *Client) GetSubscription(request *GetSubscriptionRequest) (_result 
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of a hot word vocabulary.
 //
 // @param request - GetVocabularyRequest
 //
@@ -1426,7 +1434,7 @@ func (client *Client) GetVocabularyWithOptions(request *GetVocabularyRequest, ru
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of a hot word vocabulary.
 //
 // @param request - GetVocabularyRequest
 //
@@ -1444,7 +1452,7 @@ func (client *Client) GetVocabulary(request *GetVocabularyRequest) (_result *Get
 
 // Summary:
 //
-// 导入热词
+// Imports hot words.
 //
 // @param request - ImportVocabularyRequest
 //
@@ -1492,7 +1500,7 @@ func (client *Client) ImportVocabularyWithOptions(request *ImportVocabularyReque
 
 // Summary:
 //
-// 导入热词
+// Imports hot words.
 //
 // @param request - ImportVocabularyRequest
 //
@@ -1510,7 +1518,7 @@ func (client *Client) ImportVocabulary(request *ImportVocabularyRequest) (_resul
 
 // Summary:
 //
-// 查询应用
+// Queries the list of voice robot applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -1566,7 +1574,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// 查询应用
+// Queries the list of voice robot applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -1584,7 +1592,7 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
-// 获取背景音列表
+// Retrieves the list of background music.
 //
 // @param request - ListBackgroundMusicsRequest
 //
@@ -1636,7 +1644,7 @@ func (client *Client) ListBackgroundMusicsWithOptions(request *ListBackgroundMus
 
 // Summary:
 //
-// 获取背景音列表
+// Retrieves the list of background music.
 //
 // @param request - ListBackgroundMusicsRequest
 //
@@ -1654,7 +1662,7 @@ func (client *Client) ListBackgroundMusics(request *ListBackgroundMusicsRequest)
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListCloneVoiceRequest
 //
@@ -1710,7 +1718,7 @@ func (client *Client) ListCloneVoiceWithOptions(request *ListCloneVoiceRequest, 
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListCloneVoiceRequest
 //
@@ -1728,7 +1736,7 @@ func (client *Client) ListCloneVoice(request *ListCloneVoiceRequest) (_result *L
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Retrieves the list of available models for voice cloning.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -1776,7 +1784,7 @@ func (client *Client) ListCloneVoiceModelsWithOptions(request *ListCloneVoiceMod
 
 // Summary:
 //
-// 获取克隆音色可用模型列表
+// Retrieves the list of available models for voice cloning.
 //
 // @param request - ListCloneVoiceModelsRequest
 //
@@ -1794,7 +1802,7 @@ func (client *Client) ListCloneVoiceModels(request *ListCloneVoiceModelsRequest)
 
 // Summary:
 //
-// 获取对话模型列表
+// Retrieves the list of conversation models.
 //
 // @param request - ListNluModelsRequest
 //
@@ -1838,7 +1846,7 @@ func (client *Client) ListNluModelsWithOptions(request *ListNluModelsRequest, ru
 
 // Summary:
 //
-// 获取对话模型列表
+// Retrieves the list of conversation models.
 //
 // @param request - ListNluModelsRequest
 //
@@ -1856,7 +1864,7 @@ func (client *Client) ListNluModels(request *ListNluModelsRequest) (_result *Lis
 
 // Summary:
 //
-// 获取变量列表
+// Retrieves a list of variables.
 //
 // @param request - ListVariableRequest
 //
@@ -1912,7 +1920,7 @@ func (client *Client) ListVariableWithOptions(request *ListVariableRequest, runt
 
 // Summary:
 //
-// 获取变量列表
+// Retrieves a list of variables.
 //
 // @param request - ListVariableRequest
 //
@@ -1930,7 +1938,7 @@ func (client *Client) ListVariable(request *ListVariableRequest) (_result *ListV
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListVocabularyRequest
 //
@@ -1986,7 +1994,7 @@ func (client *Client) ListVocabularyWithOptions(request *ListVocabularyRequest, 
 
 // Summary:
 //
-// 获取实例详情
+// Retrieves the details of an instance.
 //
 // @param request - ListVocabularyRequest
 //
@@ -2004,7 +2012,7 @@ func (client *Client) ListVocabulary(request *ListVocabularyRequest) (_result *L
 
 // Summary:
 //
-// 获取三方语音配置列表
+// Retrieves the list of third-party voice configurations.
 //
 // @param request - ListVoiceAccessProfileRequest
 //
@@ -2056,7 +2064,7 @@ func (client *Client) ListVoiceAccessProfileWithOptions(request *ListVoiceAccess
 
 // Summary:
 //
-// 获取三方语音配置列表
+// Retrieves the list of third-party voice configurations.
 //
 // @param request - ListVoiceAccessProfileRequest
 //
@@ -2074,7 +2082,7 @@ func (client *Client) ListVoiceAccessProfile(request *ListVoiceAccessProfileRequ
 
 // Summary:
 //
-// 获取引擎列表
+// Retrieves a paginated list of available voice engines.
 //
 // @param request - ListVoiceEnginesRequest
 //
@@ -2122,7 +2130,7 @@ func (client *Client) ListVoiceEnginesWithOptions(request *ListVoiceEnginesReque
 
 // Summary:
 //
-// 获取引擎列表
+// Retrieves a paginated list of available voice engines.
 //
 // @param request - ListVoiceEnginesRequest
 //
@@ -2140,7 +2148,7 @@ func (client *Client) ListVoiceEngines(request *ListVoiceEnginesRequest) (_resul
 
 // Summary:
 //
-// 获取音色列表
+// Retrieves the list of voice timbres.
 //
 // @param request - ListVoicesRequest
 //
@@ -2200,7 +2208,7 @@ func (client *Client) ListVoicesWithOptions(request *ListVoicesRequest, runtime 
 
 // Summary:
 //
-// 获取音色列表
+// Retrieves the list of voice timbres.
 //
 // @param request - ListVoicesRequest
 //
@@ -2218,7 +2226,7 @@ func (client *Client) ListVoices(request *ListVoicesRequest) (_result *ListVoice
 
 // Summary:
 //
-// 试听
+// Generates a preview of a synthesized voice.
 //
 // @param tmpReq - PreviewVoiceRequest
 //
@@ -2292,7 +2300,7 @@ func (client *Client) PreviewVoiceWithOptions(tmpReq *PreviewVoiceRequest, runti
 
 // Summary:
 //
-// 试听
+// Generates a preview of a synthesized voice.
 //
 // @param request - PreviewVoiceRequest
 //
@@ -2310,7 +2318,7 @@ func (client *Client) PreviewVoice(request *PreviewVoiceRequest) (_result *Previ
 
 // Summary:
 //
-// 发布版本
+// Publishes a voice robot version.
 //
 // @param request - PublishApplicationVersionRequest
 //
@@ -2362,7 +2370,7 @@ func (client *Client) PublishApplicationVersionWithOptions(request *PublishAppli
 
 // Summary:
 //
-// 发布版本
+// Publishes a voice robot version.
 //
 // @param request - PublishApplicationVersionRequest
 //
@@ -2380,7 +2388,7 @@ func (client *Client) PublishApplicationVersion(request *PublishApplicationVersi
 
 // Summary:
 //
-// 修改应用
+// Updates a voice bot application.
 //
 // @param request - UpdateApplicationRequest
 //
@@ -2440,7 +2448,7 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 
 // Summary:
 //
-// 修改应用
+// Updates a voice bot application.
 //
 // @param request - UpdateApplicationRequest
 //
@@ -2478,6 +2486,10 @@ func (client *Client) UpdateApplicationVersionWithOptions(tmpReq *UpdateApplicat
 		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.LabelConfig) {
+		request.LabelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelConfig, dara.String("LabelConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RagConfig) {
 		request.RagConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RagConfig, dara.String("RagConfig"), dara.String("json"))
 	}
@@ -2509,6 +2521,10 @@ func (client *Client) UpdateApplicationVersionWithOptions(tmpReq *UpdateApplicat
 
 	if !dara.IsNil(request.InteractionConfigShrink) {
 		query["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.LabelConfigShrink) {
+		query["LabelConfig"] = request.LabelConfigShrink
 	}
 
 	if !dara.IsNil(request.RagConfigShrink) {
@@ -2578,7 +2594,7 @@ func (client *Client) UpdateApplicationVersion(request *UpdateApplicationVersion
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -2630,7 +2646,7 @@ func (client *Client) UpdateCloneVoiceWithOptions(request *UpdateCloneVoiceReque
 
 // Summary:
 //
-// 更新实例
+// Updates an instance.
 //
 // @param request - UpdateCloneVoiceRequest
 //
@@ -2648,7 +2664,7 @@ func (client *Client) UpdateCloneVoice(request *UpdateCloneVoiceRequest) (_resul
 
 // Summary:
 //
-// 创建或更新MQ配置
+// Creates or updates a message queue (MQ) subscription.
 //
 // @param tmpReq - UpdateSubscriptionRequest
 //
@@ -2730,7 +2746,7 @@ func (client *Client) UpdateSubscriptionWithOptions(tmpReq *UpdateSubscriptionRe
 
 // Summary:
 //
-// 创建或更新MQ配置
+// Creates or updates a message queue (MQ) subscription.
 //
 // @param request - UpdateSubscriptionRequest
 //
@@ -2748,7 +2764,7 @@ func (client *Client) UpdateSubscription(request *UpdateSubscriptionRequest) (_r
 
 // Summary:
 //
-// 更新变量
+// Updates a variable.
 //
 // @param request - UpdateVariableRequest
 //
@@ -2804,7 +2820,7 @@ func (client *Client) UpdateVariableWithOptions(request *UpdateVariableRequest, 
 
 // Summary:
 //
-// 更新变量
+// Updates a variable.
 //
 // @param request - UpdateVariableRequest
 //
@@ -2822,7 +2838,7 @@ func (client *Client) UpdateVariable(request *UpdateVariableRequest) (_result *U
 
 // Summary:
 //
-// 更新实例
+// Updates a vocabulary.
 //
 // @param tmpReq - UpdateVocabularyRequest
 //
@@ -2888,7 +2904,7 @@ func (client *Client) UpdateVocabularyWithOptions(tmpReq *UpdateVocabularyReques
 
 // Summary:
 //
-// 更新实例
+// Updates a vocabulary.
 //
 // @param request - UpdateVocabularyRequest
 //
@@ -2906,7 +2922,7 @@ func (client *Client) UpdateVocabulary(request *UpdateVocabularyRequest) (_resul
 
 // Summary:
 //
-// 更新三方语音配置
+// Updates the third-party voice configuration.
 //
 // @param tmpReq - UpdateVoiceAccessProfileRequest
 //
@@ -2968,7 +2984,7 @@ func (client *Client) UpdateVoiceAccessProfileWithOptions(tmpReq *UpdateVoiceAcc
 
 // Summary:
 //
-// 更新三方语音配置
+// Updates the third-party voice configuration.
 //
 // @param request - UpdateVoiceAccessProfileRequest
 //

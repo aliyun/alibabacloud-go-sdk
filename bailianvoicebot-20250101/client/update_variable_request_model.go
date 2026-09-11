@@ -20,12 +20,26 @@ type iUpdateVariableRequest interface {
 }
 
 type UpdateVariableRequest struct {
+	// The ID of the Model Studio business unit.
+	//
 	// example:
 	//
 	// llm-0rxabdztx7rsdi7n
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The description of the variable.
+	//
+	// example:
+	//
+	// 用户当前年龄
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the variable.
+	//
+	// example:
+	//
+	// 年龄
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the variable.
+	//
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66b

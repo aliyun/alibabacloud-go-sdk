@@ -16,11 +16,18 @@ type iImportVocabularyRequest interface {
 }
 
 type ImportVocabularyRequest struct {
+	// The ID of the Bailian business workspace.
+	//
 	// example:
 	//
 	// llm-zop7ukgtksltamo4
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
-	FileKey        *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The path of the uploaded file.
+	//
+	// example:
+	//
+	// vocabulary/热词导入单元测试.zip
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
 }
 
 func (s ImportVocabularyRequest) String() string {

@@ -20,24 +20,35 @@ type iListApplicationsRequest interface {
 }
 
 type ListApplicationsRequest struct {
+	// The Bailian business workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-c11iig67g863rih8
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The template name for fuzzy match.
+	//
+	// example:
+	//
+	// General
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
 }
 

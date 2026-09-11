@@ -16,10 +16,14 @@ type iDeleteCloneVoiceRequest interface {
 }
 
 type DeleteCloneVoiceRequest struct {
+	// The ID of the Bailian business workspace.
+	//
 	// example:
 	//
 	// llm-zzu528i29ecnprcl
 	BusinessUnitId *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
+	// The ID of the cloned voice.
+	//
 	// example:
 	//
 	// 8ee1160a-6999-478f-8df6-f33ef21f27d5

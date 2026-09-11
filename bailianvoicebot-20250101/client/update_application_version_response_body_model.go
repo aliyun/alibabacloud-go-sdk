@@ -22,26 +22,11 @@ type iUpdateApplicationVersionResponseBody interface {
 }
 
 type UpdateApplicationVersionResponseBody struct {
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 82ea16d1-425c-4c03-9be5-cc91de9779ed
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// CF6D3484-19A1-5C77-863B-AC8B5754D37C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateApplicationVersionResponseBody) String() string {
