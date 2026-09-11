@@ -34,15 +34,15 @@ type iRenewInstanceResponseBody interface {
 }
 
 type RenewInstanceResponseBody struct {
-	// The billing method of the DTS instance. Only **PREPAY*	- may be returned, which indicates the subscription billing method.
+	// The billing method. Set the value to **PREPAY**, which indicates the subscription billing method.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
-	// > This parameter will be removed in the future.
+	// > This parameter will be deprecated.
 	//
 	// example:
 	//
@@ -54,29 +54,29 @@ type RenewInstanceResponseBody struct {
 	//
 	// qi0r643lc31****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the **%s*	- variable in the value of **ErrMessage**.
+	// The dynamic error message, which is used to replace the %**s*	- variable in the **ErrMessage*	- response parameter.
 	//
-	// > If the return value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the return value of **DynamicMessage*	- is **DtsJobId**, the specified value of **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The time when the DTS instance expires after renewal. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZZZ	- format. The time is displayed in UTC.
+	// The time when the renewal instance expires. The time is displayed in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ssZZZ</i> (UTC).
 	//
-	// > **ZZZ*	- indicates the offset of the time zone, which is displayed in the format of a plus sign (+) or a minus sign (-) followed by hours and minutes, such as **+00:00**.
+	// > **ZZZ*	- indicates the full time zone offset ("+" or "-" followed by hours and minutes), for example, **+00:00**.
 	//
 	// example:
 	//
 	// 2021-08-04T16:00:00.000+00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type RenewInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the instance
+	// The instance ID.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type RenewInstanceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

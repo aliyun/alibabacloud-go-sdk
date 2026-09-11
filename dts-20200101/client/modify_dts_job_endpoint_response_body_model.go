@@ -22,31 +22,31 @@ type iModifyDtsJobEndpointResponseBody interface {
 }
 
 type ModifyDtsJobEndpointResponseBody struct {
-	// Error code returned when the call fails.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// DTS.Msg.InvalidEndpoint
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Error message returned when the call fails.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The endpoint is invalid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 3FA98DF2-2F81-51FF-8A38-AA5112DD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

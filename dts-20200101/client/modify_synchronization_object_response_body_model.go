@@ -22,31 +22,31 @@ type iModifySynchronizationObjectResponseBody interface {
 }
 
 type ModifySynchronizationObjectResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 902DDCDE-C755-4458-85DA-DF9A323C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the task that changes the objects. You must specify the task ID when you call the DescribeSynchronizationObjectModifyStatus operation to query the status and progress of the task.
+	// The task ID. You can call the [DescribeSynchronizationObjectModifyStatus](https://help.aliyun.com/document_detail/49452.html) operation based on this parameter to query the status and progress of the synchronization object modification.
 	//
 	// example:
 	//

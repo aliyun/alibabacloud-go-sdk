@@ -32,25 +32,25 @@ type iDescribeSynchronizationObjectModifyStatusResponseBody interface {
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBody struct {
-	// The status of full data synchronization.
+	// The initial full data synchronization status.
 	DataInitializationStatus *DescribeSynchronizationObjectModifyStatusResponseBodyDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	// The status of incremental data synchronization.
+	// The incremental data synchronization status.
 	//
-	// >  This parameter and its sub-parameters will be removed in the future.
+	// > This parameter set and its response parameters will be discontinued.
 	DataSynchronizationStatus *DescribeSynchronizationObjectModifyStatusResponseBodyDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	// The error code returned if the call failed.
+	// The error code returned when the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error message returned if the task failed to modify the objects to be synchronized.
+	// The error message returned when the task to modify synchronization objects failed.
 	//
 	// example:
 	//
@@ -58,33 +58,33 @@ type DescribeSynchronizationObjectModifyStatusResponseBody struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The precheck status.
 	PrecheckStatus *DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B38C644B-4395-4F6F-86E3-592F26BE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the task that changes the objects to be synchronized. Valid values:
+	// The status of the synchronization object change. Valid values:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is being prechecked.
+	// - **Prechecking**: running the precheck.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: the precheck failed.
 	//
-	// 	- **Migrating**: The task is running.
+	// - **Migrating**: synchronizing.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: synchronization failed.
 	//
-	// 	- **Finished**: The task is completed.
+	// - **Finished**: synchronization completed.
 	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status of schema synchronization.
+	// The initial schema synchronization status.
 	StructureInitializationStatus *DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -215,33 +215,25 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBody) Validate() error
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBodyDataInitializationStatus struct {
-	// The error message returned if full data synchronization failed.
+	// The error message returned when initial full data synchronization failed.
 	//
 	// example:
 	//
-	// java.lang.NumberFormatException: For input string: ""
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of full data synchronization. Unit: %.
+	// The progress of initial full data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of records that have been synchronized during full data synchronization.
+	// The number of records that have been synchronized during initial full data synchronization.
 	//
 	// example:
 	//
 	// 39754
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The status of full data synchronization. Valid values:
-	//
-	// 	- **NotStarted**: Full data synchronization is not started.
-	//
-	// 	- **Migrating**: Full data synchronization is in progress.
-	//
-	// 	- **Failed**: Full data synchronization failed.
-	//
-	// 	- **Finished**: Full data synchronization is completed.
+	// The status of the synchronization object change. Valid values: -**notstarted**: not started. -**migrating**: synchronizing. -**failed**: synchronization failed. -**finaciallocked**: financial lock.
 	//
 	// example:
 	//
@@ -298,37 +290,41 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBodyDataInitialization
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBodyDataSynchronizationStatus struct {
-	// The synchronization latency, in seconds.
+	// The synchronization latency of incremental data synchronization, in seconds.
 	//
 	// example:
 	//
 	// 0
 	Delay *string `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The error message returned if incremental data synchronization failed.
+	// The error message returned when incremental data synchronization failed.
 	//
 	// example:
 	//
 	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of incremental data synchronization. Unit: %.
+	// The progress of incremental data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The status of incremental data synchronization. Valid values:
+	// The status of the synchronization object change. Valid values:
 	//
-	// 	- **NotStarted**: Incremental data synchronization is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Migrating**: Incremental data synchronization is in progress.
+	// - **Prechecking**: running the precheck.
 	//
-	// 	- **Failed**: Incremental data synchronization failed.
+	// - **PrecheckFailed**: the precheck failed.
 	//
-	// 	- **Finished**: Incremental data synchronization is completed.
+	// - **Migrating**: synchronizing.
+	//
+	// - **Failed**: synchronization failed.
+	//
+	// - **Finished**: synchronization completed.
 	//
 	// example:
 	//
-	// Migrating
+	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -381,9 +377,9 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBodyDataSynchronizatio
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus struct {
-	// The result of each precheck item.
+	// The execution details of each precheck item.
 	Detail []*DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// The precheck progress. Unit: %.
+	// The precheck progress, in percentage.
 	//
 	// example:
 	//
@@ -446,25 +442,23 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus) Va
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail struct {
-	// The precheck result. Valid values:
+	// The check result. Valid values:
 	//
-	// 	- Success: The task passed the precheck.
+	// - Success: The precheck item was passed.
 	//
-	// 	- Failed: The task failed to pass the precheck.
+	// - Failed: The precheck item was not passed.
 	//
 	// example:
 	//
 	// Success
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The error message returned if the task failed to pass the precheck.
-	//
-	// >  This parameter is returned only if the return value of the **CheckStatus*	- parameter is **Failed**.
+	// The error message returned when the precheck item was not passed.
 	//
 	// example:
 	//
-	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.xxx.xx\\" (using password: YES)
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The name of the precheck item.
+	// The precheck item.
 	//
 	// example:
 	//
@@ -472,7 +466,7 @@ type DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail s
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	// The method to fix the precheck failure.
 	//
-	// >  This parameter is returned only if the return value of the **CheckStatus*	- parameter is Failed.
+	// > This parameter is returned only when the value of the **CheckStatus*	- parameter is Failed.
 	//
 	// example:
 	//
@@ -529,33 +523,25 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDeta
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializationStatus struct {
-	// The error message returned if schema synchronization failed.
+	// The error message returned when initial schema synchronization failed.
 	//
 	// example:
 	//
-	// DTS-1020042 Execute sql error sql: Table \\"customer\\" already exists
+	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of schema synchronization. Unit: %.
+	// The progress of initial schema synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables whose schemas have been synchronized.
+	// The number of tables for which initial schema synchronization has been completed.
 	//
 	// example:
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The status of schema synchronization. Valid values:
-	//
-	// 	- **NotStarted**: Schema synchronization is not started.
-	//
-	// 	- **Migrating**: Schema synchronization is in progress.
-	//
-	// 	- **Failed**: Schema synchronization failed.
-	//
-	// 	- **Finished**: Schema synchronization is completed.
+	// The initial schema synchronization status. Valid values: NotStarted: not started. Migrating: initializing. Failed: initialization failed. Finished: initialization completed.
 	//
 	// example:
 	//

@@ -32,86 +32,78 @@ type iConfigureSubscriptionInstanceAlertRequest interface {
 }
 
 type ConfigureSubscriptionInstanceAlertRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The mobile phone numbers that receive latency-related alerts. Separate mobile phone numbers with commas (,).
+	// The mobile phone numbers of contacts for latency alerts. Separate multiple mobile phone numbers with commas (,).
 	//
-	// >
+	// >- This parameter is supported only on the China site (aliyun.com). Only Chinese mainland mobile phone numbers are supported, and you can specify up to 10 mobile phone numbers.
 	//
-	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
+	// - China site (Chinese mainland) does not support Chinese mainland mobile phone alerts. You can only [configure alert rules for DTS tasks in CloudMonitor](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	DelayAlertPhone *string `json:"DelayAlertPhone,omitempty" xml:"DelayAlertPhone,omitempty"`
-	// Specifies whether to monitor task latency. Valid values:
+	// Specifies whether to monitor the latency status. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: yes.
 	//
-	// 	- **disable**: no
+	// - **disable**: no.
 	//
-	// >
+	// > - Default value: **enable**.
 	//
-	// 	- The default value is **enable**.
-	//
-	// 	- You must specify at least one of the DelayAlertStatus and **ErrorAlertStatus*	- parameters.
+	// - You must specify at least one of this parameter and the **ErrorAlertStatus*	- parameter.
 	//
 	// example:
 	//
 	// enable
 	DelayAlertStatus *string `json:"DelayAlertStatus,omitempty" xml:"DelayAlertStatus,omitempty"`
-	// The threshold for triggering latency alerts. The unit is seconds and the value must be an integer. You can set the threshold based on your business needs. To avoid delay fluctuations caused by network and database loads, we recommend that you set the threshold to more than 10 seconds.
+	// The threshold for triggering a latency alert. Unit: seconds. The value must be an integer. Set the threshold based on your business requirements. To avoid alert fluctuations caused by network issues or database loads, set the threshold to 10 seconds or more.
 	//
-	// >  If the **DelayAlertStatus*	- parameter is set to **enable**, this parameter must be specified.
+	// > This parameter is required when **DelayAlertStatus*	- is set to **enable**.
 	//
 	// example:
 	//
 	// 10
 	DelayOverSeconds *string `json:"DelayOverSeconds,omitempty" xml:"DelayOverSeconds,omitempty"`
-	// The mobile phone numbers that receive status-related alerts. Separate mobile phone numbers with commas (,).
+	// The mobile phone numbers of contacts for exception alerts. Separate multiple mobile phone numbers with commas (,).
 	//
-	// >
+	// >- This parameter is supported only on the China site (aliyun.com). Only Chinese mainland mobile phone numbers are supported, and you can specify up to 10 mobile phone numbers.
 	//
-	// 	- This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-	//
-	// 	- International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
+	// - China site (Chinese mainland) does not support Chinese mainland mobile phone alerts. You can only [configure alert rules for DTS tasks in CloudMonitor](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	ErrorAlertPhone *string `json:"ErrorAlertPhone,omitempty" xml:"ErrorAlertPhone,omitempty"`
-	// Specifies whether to monitor task status. Valid values:
+	// Specifies whether to monitor the exception status. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: yes.
 	//
-	// 	- **disable**: no
+	// - **disable**: no.
 	//
-	// >
+	// > - Default value: **enable**.
 	//
-	// 	- The default value is **enable**.
+	// - You must specify at least one of this parameter and the **DelayAlertStatus*	- parameter.
 	//
-	// 	- You must specify at least one of the **DelayAlertStatus*	- and ErrorAlertStatus parameters.
-	//
-	// 	- If the task that you monitor enters an abnormal state, an alert is triggered.
+	// - After you enable exception status monitoring, an alert is triggered when an exception is detected.
 	//
 	// example:
 	//
 	// enable
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
 	OwnerId          *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

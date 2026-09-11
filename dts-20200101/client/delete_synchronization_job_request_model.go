@@ -22,26 +22,26 @@ type iDeleteSynchronizationJobRequest interface {
 }
 
 type DeleteSynchronizationJobRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the data synchronization instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID。
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
+	// The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//

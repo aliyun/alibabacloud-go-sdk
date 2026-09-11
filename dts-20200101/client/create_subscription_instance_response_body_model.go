@@ -34,19 +34,19 @@ type CreateSubscriptionInstanceResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4E9564C5-F99D-4176-A6BA-2D7F2DC8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the change tracking instance.
+	// The change tracking instance ID.
 	//
 	// example:
 	//
 	// dtsfen11q2g23x****
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

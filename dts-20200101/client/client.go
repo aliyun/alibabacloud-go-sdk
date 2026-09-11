@@ -198,6 +198,12 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Configures a data migration or synchronization task.
 //
+// Description:
+//
+// - You can perform the required pre-configurations in the console and then preview the corresponding OpenAPI parameter information to help you specify request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
+//
+// - Tasks on dedicated clusters support only the configure-before-purchase mode and do not support cross-region tasks.
+//
 // @param request - ConfigureDtsJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -500,6 +506,12 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 //
 // Configures a data migration or synchronization task.
 //
+// Description:
+//
+// - You can perform the required pre-configurations in the console and then preview the corresponding OpenAPI parameter information to help you specify request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
+//
+// - Tasks on dedicated clusters support only the configure-before-purchase mode and do not support cross-region tasks.
+//
 // @param request - ConfigureDtsJobRequest
 //
 // @return ConfigureDtsJobResponse
@@ -623,7 +635,7 @@ func (client *Client) ConfigureDtsJobAdvance(request *ConfigureDtsJobAdvanceRequ
 
 // Summary:
 //
-// Configures a data migration task.
+// Configures a legacy data migration task.
 //
 // @param request - ConfigureMigrationJobRequest
 //
@@ -713,7 +725,7 @@ func (client *Client) ConfigureMigrationJobWithOptions(request *ConfigureMigrati
 
 // Summary:
 //
-// Configures a data migration task.
+// Configures a legacy data migration task.
 //
 // @param request - ConfigureMigrationJobRequest
 //
@@ -731,7 +743,7 @@ func (client *Client) ConfigureMigrationJob(request *ConfigureMigrationJobReques
 
 // Summary:
 //
-// Configures alert settings to monitor a data migration instance.
+// Configures monitoring alerts to monitor the latency and exception status of a data migration task.
 //
 // @param request - ConfigureMigrationJobAlertRequest
 //
@@ -811,7 +823,7 @@ func (client *Client) ConfigureMigrationJobAlertWithOptions(request *ConfigureMi
 
 // Summary:
 //
-// Configures alert settings to monitor a data migration instance.
+// Configures monitoring alerts to monitor the latency and exception status of a data migration task.
 //
 // @param request - ConfigureMigrationJobAlertRequest
 //
@@ -829,11 +841,11 @@ func (client *Client) ConfigureMigrationJobAlert(request *ConfigureMigrationJobA
 
 // Summary:
 //
-// Configures a change tracking task.
+// Configures a DTS change tracking task.
 //
 // Description:
 //
-// >  You can preview related API operation parameters when you configure a change tracking task in the Data Transmission Service (DTS) console. This helps you configure the request parameters of this API operation. For more information, see [Preview the request parameters of API operations](https://help.aliyun.com/document_detail/2851612.html).
+// > You can perform the required pre-configurations in the console and then preview the corresponding OpenAPI parameter information to help you specify request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
 //
 // @param request - ConfigureSubscriptionRequest
 //
@@ -1029,11 +1041,11 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 
 // Summary:
 //
-// Configures a change tracking task.
+// Configures a DTS change tracking task.
 //
 // Description:
 //
-// >  You can preview related API operation parameters when you configure a change tracking task in the Data Transmission Service (DTS) console. This helps you configure the request parameters of this API operation. For more information, see [Preview the request parameters of API operations](https://help.aliyun.com/document_detail/2851612.html).
+// > You can perform the required pre-configurations in the console and then preview the corresponding OpenAPI parameter information to help you specify request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
 //
 // @param request - ConfigureSubscriptionRequest
 //
@@ -1051,11 +1063,13 @@ func (client *Client) ConfigureSubscription(request *ConfigureSubscriptionReques
 
 // Summary:
 //
-// Configures a change tracking instance of the previous version.
+// Configures a change tracking channel. This is a legacy operation.
 //
 // Description:
 //
 // Before you call this operation, you must call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation to create a change tracking instance.
+//
+// > In the **Advanced Settings*	- step of the console, move the pointer over the **Next: Save the task and perform a precheck*	- button, and then click **Preview OpenAPI parameters*	- in the tooltip to view the parameter information for configuring this instance by using API operations.
 //
 // @param request - ConfigureSubscriptionInstanceRequest
 //
@@ -1141,11 +1155,13 @@ func (client *Client) ConfigureSubscriptionInstanceWithOptions(request *Configur
 
 // Summary:
 //
-// Configures a change tracking instance of the previous version.
+// Configures a change tracking channel. This is a legacy operation.
 //
 // Description:
 //
 // Before you call this operation, you must call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation to create a change tracking instance.
+//
+// > In the **Advanced Settings*	- step of the console, move the pointer over the **Next: Save the task and perform a precheck*	- button, and then click **Preview OpenAPI parameters*	- in the tooltip to view the parameter information for configuring this instance by using API operations.
 //
 // @param request - ConfigureSubscriptionInstanceRequest
 //
@@ -1163,7 +1179,7 @@ func (client *Client) ConfigureSubscriptionInstance(request *ConfigureSubscripti
 
 // Summary:
 //
-// Configures alert settings to monitor a change tracking instance.
+// Configures monitoring and alerting to monitor the latency and exception status of a change tracking channel.
 //
 // @param request - ConfigureSubscriptionInstanceAlertRequest
 //
@@ -1243,7 +1259,7 @@ func (client *Client) ConfigureSubscriptionInstanceAlertWithOptions(request *Con
 
 // Summary:
 //
-// Configures alert settings to monitor a change tracking instance.
+// Configures monitoring and alerting to monitor the latency and exception status of a change tracking channel.
 //
 // @param request - ConfigureSubscriptionInstanceAlertRequest
 //
@@ -1261,17 +1277,15 @@ func (client *Client) ConfigureSubscriptionInstanceAlert(request *ConfigureSubsc
 
 // Summary:
 //
-// Configures a data synchronization task.
+// Configures a data synchronization task by using the previous version.
 //
 // Description:
 //
 // Before you call this operation, you must call the [CreateSynchronizationJob](https://help.aliyun.com/document_detail/49446.html) operation to create a data synchronization instance.
 //
-// >
+// > - After this operation is called, the data synchronization instance automatically starts and performs a precheck. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the instance.
 //
-//   - After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
-//
-//   - A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
+// - If the data synchronization instance fails to start, the precheck may have failed. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the data synchronization instance, obtain the error message of the precheck failure, and adjust the parameters. After the adjustment, you can call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization instance.
 //
 // @param request - ConfigureSynchronizationJobRequest
 //
@@ -1373,17 +1387,15 @@ func (client *Client) ConfigureSynchronizationJobWithOptions(request *ConfigureS
 
 // Summary:
 //
-// Configures a data synchronization task.
+// Configures a data synchronization task by using the previous version.
 //
 // Description:
 //
 // Before you call this operation, you must call the [CreateSynchronizationJob](https://help.aliyun.com/document_detail/49446.html) operation to create a data synchronization instance.
 //
-// >
+// > - After this operation is called, the data synchronization instance automatically starts and performs a precheck. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the instance.
 //
-//   - After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
-//
-//   - A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
+// - If the data synchronization instance fails to start, the precheck may have failed. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the data synchronization instance, obtain the error message of the precheck failure, and adjust the parameters. After the adjustment, you can call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization instance.
 //
 // @param request - ConfigureSynchronizationJobRequest
 //
@@ -1401,7 +1413,7 @@ func (client *Client) ConfigureSynchronizationJob(request *ConfigureSynchronizat
 
 // Summary:
 //
-// Configures alert settings to monitor a data synchronization instance.
+// Configures monitoring and alerting to monitor the latency and exception status of a synchronization task.
 //
 // @param request - ConfigureSynchronizationJobAlertRequest
 //
@@ -1485,7 +1497,7 @@ func (client *Client) ConfigureSynchronizationJobAlertWithOptions(request *Confi
 
 // Summary:
 //
-// Configures alert settings to monitor a data synchronization instance.
+// Configures monitoring and alerting to monitor the latency and exception status of a synchronization task.
 //
 // @param request - ConfigureSynchronizationJobAlertRequest
 //
@@ -1503,7 +1515,7 @@ func (client *Client) ConfigureSynchronizationJobAlert(request *ConfigureSynchro
 
 // Summary:
 //
-// Enables or disables image matching for a data synchronization instance.
+// Configures the full image matching switch for a data synchronization instance.
 //
 // @param request - ConfigureSynchronizationJobReplicatorCompareRequest
 //
@@ -1575,7 +1587,7 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompareWithOptions(re
 
 // Summary:
 //
-// Enables or disables image matching for a data synchronization instance.
+// Configures the full image matching switch for a data synchronization instance.
 //
 // @param request - ConfigureSynchronizationJobReplicatorCompareRequest
 //
@@ -1593,7 +1605,7 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompare(request *Conf
 
 // Summary:
 //
-// Transfers resource groups of instance resources.
+// Transfers a DTS instance to a different resource group.
 //
 // @param request - ConvertInstanceResourceGroupRequest
 //
@@ -1657,7 +1669,7 @@ func (client *Client) ConvertInstanceResourceGroupWithOptions(request *ConvertIn
 
 // Summary:
 //
-// Transfers resource groups of instance resources.
+// Transfers a DTS instance to a different resource group.
 //
 // @param request - ConvertInstanceResourceGroupRequest
 //
@@ -1675,7 +1687,7 @@ func (client *Client) ConvertInstanceResourceGroup(request *ConvertInstanceResou
 
 // Summary:
 //
-// Counts tasks by condition.
+// Queries the count of tasks by conditions.
 //
 // @param request - CountJobByConditionRequest
 //
@@ -1755,7 +1767,7 @@ func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditio
 
 // Summary:
 //
-// Counts tasks by condition.
+// Queries the count of tasks by conditions.
 //
 // @param request - CountJobByConditionRequest
 //
@@ -1773,7 +1785,7 @@ func (client *Client) CountJobByCondition(request *CountJobByConditionRequest) (
 
 // Summary:
 //
-// Creates a consumer group for a change tracking task. Downstream clients can use the consumer group to consume tracked data.
+// Creates a consumer group for a change tracking task (new version).
 //
 // @param request - CreateConsumerChannelRequest
 //
@@ -1841,7 +1853,7 @@ func (client *Client) CreateConsumerChannelWithOptions(request *CreateConsumerCh
 
 // Summary:
 //
-// Creates a consumer group for a change tracking task. Downstream clients can use the consumer group to consume tracked data.
+// Creates a consumer group for a change tracking task (new version).
 //
 // @param request - CreateConsumerChannelRequest
 //
@@ -1949,7 +1961,7 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 
 // Summary:
 //
-// Creates an alert rule.
+// Creates an alert rule by calling the CreateDedicatedClusterMonitorRule operation.
 //
 // @param request - CreateDedicatedClusterMonitorRuleRequest
 //
@@ -2033,7 +2045,7 @@ func (client *Client) CreateDedicatedClusterMonitorRuleWithOptions(request *Crea
 
 // Summary:
 //
-// Creates an alert rule.
+// Creates an alert rule by calling the CreateDedicatedClusterMonitorRule operation.
 //
 // @param request - CreateDedicatedClusterMonitorRuleRequest
 //
@@ -2052,6 +2064,14 @@ func (client *Client) CreateDedicatedClusterMonitorRule(request *CreateDedicated
 // Summary:
 //
 // Creates a document parsing task.
+//
+// Description:
+//
+// Calling this operation creates a document parsing task and returns a task ID (DtsJobId).
+//
+// > - This operation relies on Object Storage Service (OSS) for file transfer. We recommend that you call this operation by using an SDK. The CreateDocParserJobAdvance operation automatically encapsulates the file transfer process.
+//
+// > - After you obtain the DtsJobId response parameter, you can call the DescribeDocParserJobStatus operation to query the execution status of the document parsing task, and call the DescribeDocParserJobResult operation to obtain the output of the document parsing task.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -2116,6 +2136,14 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 // Summary:
 //
 // Creates a document parsing task.
+//
+// Description:
+//
+// Calling this operation creates a document parsing task and returns a task ID (DtsJobId).
+//
+// > - This operation relies on Object Storage Service (OSS) for file transfer. We recommend that you call this operation by using an SDK. The CreateDocParserJobAdvance operation automatically encapsulates the file transfer process.
+//
+// > - After you obtain the DtsJobId response parameter, you can call the DescribeDocParserJobStatus operation to query the execution status of the document parsing task, and call the DescribeDocParserJobResult operation to obtain the output of the document parsing task.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -2240,13 +2268,19 @@ func (client *Client) CreateDocParserJobAdvance(request *CreateDocParserJobAdvan
 
 // Summary:
 //
-// Purchases a Data Transmission Service (DTS) instance.
+// Purchases a DTS instance by calling the CreateDtsInstance operation.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+// <props="china">
 //
-//		- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
+// - Before invoking this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/dts/detail) of Data Transmission Service (DTS).
+//
+// <props="intl">
+//
+// - Before invoking this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+//
+// - Nodes on a dedicated cluster support only the workflow of configuring a node before purchasing an instance. You can invoke the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a node.
 //
 // @param request - CreateDtsInstanceRequest
 //
@@ -2382,13 +2416,19 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 
 // Summary:
 //
-// Purchases a Data Transmission Service (DTS) instance.
+// Purchases a DTS instance by calling the CreateDtsInstance operation.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+// <props="china">
 //
-//		- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
+// - Before invoking this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/dts/detail) of Data Transmission Service (DTS).
+//
+// <props="intl">
+//
+// - Before invoking this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
+//
+// - Nodes on a dedicated cluster support only the workflow of configuring a node before purchasing an instance. You can invoke the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a node.
 //
 // @param request - CreateDtsInstanceRequest
 //
@@ -2406,17 +2446,17 @@ func (client *Client) CreateDtsInstance(request *CreateDtsInstanceRequest) (_res
 
 // Summary:
 //
-// Creates or modifies an alert rule for a Data Transmission Service (DTS) task.
+// Creates or modifies an alert rule for a DTS task.
 //
 // Description:
 //
-// DTS provides the following metrics for DTS tasks:************
+// DTS currently supports the following alert metrics: **Latency**, **Migration Status**, and **Full Migration Duration**:
 //
-//   - **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of seconds.
+// - **Latency**: Monitors incremental data migration latency. An alert is triggered when the migration latency, synchronization latency, or change tracking latency exceeds the specified threshold (in seconds).
 //
-//   - **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error*	- or **Restore**, an alert is triggered.
+// - **Migration Status**: Monitors the task status. An alert is triggered when the task status is **Error*	- or **Recovered**.
 //
-//   - **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of hours.
+// - **Full Migration Duration**: Monitors the duration of full data migration. An alert is triggered when the duration exceeds the specified threshold (in hours).
 //
 // @param request - CreateJobMonitorRuleRequest
 //
@@ -2496,17 +2536,17 @@ func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorR
 
 // Summary:
 //
-// Creates or modifies an alert rule for a Data Transmission Service (DTS) task.
+// Creates or modifies an alert rule for a DTS task.
 //
 // Description:
 //
-// DTS provides the following metrics for DTS tasks:************
+// DTS currently supports the following alert metrics: **Latency**, **Migration Status**, and **Full Migration Duration**:
 //
-//   - **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of seconds.
+// - **Latency**: Monitors incremental data migration latency. An alert is triggered when the migration latency, synchronization latency, or change tracking latency exceeds the specified threshold (in seconds).
 //
-//   - **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error*	- or **Restore**, an alert is triggered.
+// - **Migration Status**: Monitors the task status. An alert is triggered when the task status is **Error*	- or **Recovered**.
 //
-//   - **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of hours.
+// - **Full Migration Duration**: Monitors the duration of full data migration. An alert is triggered when the duration exceeds the specified threshold (in hours).
 //
 // @param request - CreateJobMonitorRuleRequest
 //
@@ -2610,13 +2650,13 @@ func (client *Client) CreateMigrationJob(request *CreateMigrationJobRequest) (_r
 
 // Summary:
 //
-// Creates a reverse task for a data synchronization or migration task.
+// Creates a reverse task for a specified synchronization or migration task by calling the CreateReverseDtsJob operation.
 //
 // Description:
 //
-// 调用接口创建的反向任务会立即进行预检查，预检查通过后会进行增量数据采集，增量数据写入模块不会运行（需要调用**StartReverseWriter**接口运行）。
+// The reverse task created by calling this operation immediately starts a precheck. After the precheck is passed, incremental data collection begins, but the incremental data write module does not run. You must call the **StartReverseWriter*	- operation to start it.
 //
-// > 创建的反向任务固定为同步任务，且只有增量写入模块。
+// > The created reverse task is a synchronization task that contains only the incremental write module.
 //
 // @param request - CreateReverseDtsJobRequest
 //
@@ -2672,13 +2712,13 @@ func (client *Client) CreateReverseDtsJobWithOptions(request *CreateReverseDtsJo
 
 // Summary:
 //
-// Creates a reverse task for a data synchronization or migration task.
+// Creates a reverse task for a specified synchronization or migration task by calling the CreateReverseDtsJob operation.
 //
 // Description:
 //
-// 调用接口创建的反向任务会立即进行预检查，预检查通过后会进行增量数据采集，增量数据写入模块不会运行（需要调用**StartReverseWriter**接口运行）。
+// The reverse task created by calling this operation immediately starts a precheck. After the precheck is passed, incremental data collection begins, but the incremental data write module does not run. You must call the **StartReverseWriter*	- operation to start it.
 //
-// > 创建的反向任务固定为同步任务，且只有增量写入模块。
+// > The created reverse task is a synchronization task that contains only the incremental write module.
 //
 // @param request - CreateReverseDtsJobRequest
 //
@@ -2696,7 +2736,7 @@ func (client *Client) CreateReverseDtsJob(request *CreateReverseDtsJobRequest) (
 
 // Summary:
 //
-// Purchases a change tracking instance.
+// Creates a change tracking channel. This is a legacy operation.
 //
 // @param request - CreateSubscriptionInstanceRequest
 //
@@ -2776,7 +2816,7 @@ func (client *Client) CreateSubscriptionInstanceWithOptions(request *CreateSubsc
 
 // Summary:
 //
-// Purchases a change tracking instance.
+// Creates a change tracking channel. This is a legacy operation.
 //
 // @param request - CreateSubscriptionInstanceRequest
 //
@@ -2794,7 +2834,7 @@ func (client *Client) CreateSubscriptionInstance(request *CreateSubscriptionInst
 
 // Summary:
 //
-// Creates a data synchronization instance.
+// Creates a data synchronization job instance. This is a legacy API operation.
 //
 // @param request - CreateSynchronizationJobRequest
 //
@@ -2898,7 +2938,7 @@ func (client *Client) CreateSynchronizationJobWithOptions(request *CreateSynchro
 
 // Summary:
 //
-// Creates a data synchronization instance.
+// Creates a data synchronization job instance. This is a legacy API operation.
 //
 // @param request - CreateSynchronizationJobRequest
 //
@@ -2916,7 +2956,7 @@ func (client *Client) CreateSynchronizationJob(request *CreateSynchronizationJob
 
 // Summary:
 //
-// Deletes a consumer group.
+// Deletes a consumer group of a change tracking task (new version).
 //
 // @param request - DeleteConsumerChannelRequest
 //
@@ -2976,7 +3016,7 @@ func (client *Client) DeleteConsumerChannelWithOptions(request *DeleteConsumerCh
 
 // Summary:
 //
-// Deletes a consumer group.
+// Deletes a consumer group of a change tracking task (new version).
 //
 // @param request - DeleteConsumerChannelRequest
 //
@@ -2994,7 +3034,7 @@ func (client *Client) DeleteConsumerChannel(request *DeleteConsumerChannelReques
 
 // Summary:
 //
-// Deletes a consumer group.
+// Deletes a consumer group from a change tracking channel.
 //
 // @param request - DeleteConsumerGroupRequest
 //
@@ -3058,7 +3098,7 @@ func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGrou
 
 // Summary:
 //
-// Deletes a consumer group.
+// Deletes a consumer group from a change tracking channel.
 //
 // @param request - DeleteConsumerGroupRequest
 //
@@ -3076,7 +3116,11 @@ func (client *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (
 
 // Summary:
 //
-// Deletes a data migration, data synchronization, or change tracking task.
+// Releases a data migration, synchronization, or change tracking instance.
+//
+// Description:
+//
+// > <props="china"><ph>Subscription DTS instances cannot be released by calling this API operation. You can release them by unsubscribing. For more information, see [Release a DTS instance](https://help.aliyun.com/document_detail/289054.html).</ph><props="intl"><ph>Subscription DTS instances cannot be released.</ph>.
 //
 // @param request - DeleteDtsJobRequest
 //
@@ -3144,7 +3188,11 @@ func (client *Client) DeleteDtsJobWithOptions(request *DeleteDtsJobRequest, runt
 
 // Summary:
 //
-// Deletes a data migration, data synchronization, or change tracking task.
+// Releases a data migration, synchronization, or change tracking instance.
+//
+// Description:
+//
+// > <props="china"><ph>Subscription DTS instances cannot be released by calling this API operation. You can release them by unsubscribing. For more information, see [Release a DTS instance](https://help.aliyun.com/document_detail/289054.html).</ph><props="intl"><ph>Subscription DTS instances cannot be released.</ph>.
 //
 // @param request - DeleteDtsJobRequest
 //
@@ -3162,7 +3210,11 @@ func (client *Client) DeleteDtsJob(request *DeleteDtsJobRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes multiple data migration, data synchronization, or change tracking tasks.
+// Releases data migration, data synchronization, or change tracking tasks in batches by calling the DeleteDtsJobs operation.
+//
+// Description:
+//
+// > <props="china"><ph>Subscription DTS instances cannot be released by calling API operations. You can release them by unsubscribing. For more information, see [Release a DTS instance](https://help.aliyun.com/document_detail/289054.html).</ph><props="intl"><ph>Subscription DTS instances cannot be released.</ph>.
 //
 // @param request - DeleteDtsJobsRequest
 //
@@ -3218,7 +3270,11 @@ func (client *Client) DeleteDtsJobsWithOptions(request *DeleteDtsJobsRequest, ru
 
 // Summary:
 //
-// Deletes multiple data migration, data synchronization, or change tracking tasks.
+// Releases data migration, data synchronization, or change tracking tasks in batches by calling the DeleteDtsJobs operation.
+//
+// Description:
+//
+// > <props="china"><ph>Subscription DTS instances cannot be released by calling API operations. You can release them by unsubscribing. For more information, see [Release a DTS instance](https://help.aliyun.com/document_detail/289054.html).</ph><props="intl"><ph>Subscription DTS instances cannot be released.</ph>.
 //
 // @param request - DeleteDtsJobsRequest
 //
@@ -3314,7 +3370,7 @@ func (client *Client) DeleteMigrationJob(request *DeleteMigrationJobRequest) (_r
 
 // Summary:
 //
-// Releases a change tracking instance.
+// Releases the channel of a change tracking instance.
 //
 // @param request - DeleteSubscriptionInstanceRequest
 //
@@ -3374,7 +3430,7 @@ func (client *Client) DeleteSubscriptionInstanceWithOptions(request *DeleteSubsc
 
 // Summary:
 //
-// Releases a change tracking instance.
+// Releases the channel of a change tracking instance.
 //
 // @param request - DeleteSubscriptionInstanceRequest
 //
@@ -3556,7 +3612,7 @@ func (client *Client) DescribeChannelAccount(request *DescribeChannelAccountRequ
 
 // Summary:
 //
-// # Verifies data migration tasks and data synchronization tasks
+// Contains data validation tasks associated with data migration tasks and data synchronization tasks.
 //
 // @param request - DescribeCheckJobsRequest
 //
@@ -3624,7 +3680,7 @@ func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsReq
 
 // Summary:
 //
-// # Verifies data migration tasks and data synchronization tasks
+// Contains data validation tasks associated with data migration tasks and data synchronization tasks.
 //
 // @param request - DescribeCheckJobsRequest
 //
@@ -3642,7 +3698,7 @@ func (client *Client) DescribeCheckJobs(request *DescribeCheckJobsRequest) (_res
 
 // Summary:
 //
-// Queries operation logs of a Data Transmission Service (DTS) dedicated cluster.
+// Queries the log information of a DTS cluster by calling the DescribeClusterOperateLogs operation.
 //
 // @param request - DescribeClusterOperateLogsRequest
 //
@@ -3724,7 +3780,7 @@ func (client *Client) DescribeClusterOperateLogsWithOptions(request *DescribeClu
 
 // Summary:
 //
-// Queries operation logs of a Data Transmission Service (DTS) dedicated cluster.
+// Queries the log information of a DTS cluster by calling the DescribeClusterOperateLogs operation.
 //
 // @param request - DescribeClusterOperateLogsRequest
 //
@@ -3742,7 +3798,7 @@ func (client *Client) DescribeClusterOperateLogs(request *DescribeClusterOperate
 
 // Summary:
 //
-// Queries the resource usage of a cluster.
+// Queries the current usage of a cluster by calling the DescribeClusterUsedUtilization operation.
 //
 // @param request - DescribeClusterUsedUtilizationRequest
 //
@@ -3824,7 +3880,7 @@ func (client *Client) DescribeClusterUsedUtilizationWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the resource usage of a cluster.
+// Queries the current usage of a cluster by calling the DescribeClusterUsedUtilization operation.
 //
 // @param request - DescribeClusterUsedUtilizationRequest
 //
@@ -3842,7 +3898,7 @@ func (client *Client) DescribeClusterUsedUtilization(request *DescribeClusterUse
 
 // Summary:
 //
-// Queries the connectivity of Data Transmission Service (DTS) servers to the source and destination databases.
+// Tests the connectivity between the execution node of a data migration task and the source and destination databases.
 //
 // @param request - DescribeConnectionStatusRequest
 //
@@ -3978,7 +4034,7 @@ func (client *Client) DescribeConnectionStatusWithOptions(request *DescribeConne
 
 // Summary:
 //
-// Queries the connectivity of Data Transmission Service (DTS) servers to the source and destination databases.
+// Tests the connectivity between the execution node of a data migration task and the source and destination databases.
 //
 // @param request - DescribeConnectionStatusRequest
 //
@@ -3996,7 +4052,7 @@ func (client *Client) DescribeConnectionStatus(request *DescribeConnectionStatus
 
 // Summary:
 //
-// Queries the information of a consumer group, including the consumer group ID, consumer group name, username, and message latency.
+// Queries the consumer group information of a DTS change tracking task, such as the consumer group ID, name, account, and consumption latency.
 //
 // @param request - DescribeConsumerChannelRequest
 //
@@ -4064,7 +4120,7 @@ func (client *Client) DescribeConsumerChannelWithOptions(request *DescribeConsum
 
 // Summary:
 //
-// Queries the information of a consumer group, including the consumer group ID, consumer group name, username, and message latency.
+// Queries the consumer group information of a DTS change tracking task, such as the consumer group ID, name, account, and consumption latency.
 //
 // @param request - DescribeConsumerChannelRequest
 //
@@ -4168,7 +4224,7 @@ func (client *Client) DescribeConsumerGroup(request *DescribeConsumerGroupReques
 
 // Summary:
 //
-// Queries the CIDR blocks of DTS servers.
+// Retrieves the DTS IP addresses that must be added to the whitelists of both the source and destination databases.
 //
 // @param request - DescribeDTSIPRequest
 //
@@ -4224,7 +4280,7 @@ func (client *Client) DescribeDTSIPWithOptions(request *DescribeDTSIPRequest, ru
 
 // Summary:
 //
-// Queries the CIDR blocks of DTS servers.
+// Retrieves the DTS IP addresses that must be added to the whitelists of both the source and destination databases.
 //
 // @param request - DescribeDTSIPRequest
 //
@@ -4242,7 +4298,7 @@ func (client *Client) DescribeDTSIP(request *DescribeDTSIPRequest) (_result *Des
 
 // Summary:
 //
-// Queries the download URL of the data consistency verification report.
+// Obtains the download URL for the list data of inconsistent data.
 //
 // @param request - DescribeDataCheckReportUrlRequest
 //
@@ -4302,7 +4358,7 @@ func (client *Client) DescribeDataCheckReportUrlWithOptions(request *DescribeDat
 
 // Summary:
 //
-// Queries the download URL of the data consistency verification report.
+// Obtains the download URL for the list data of inconsistent data.
 //
 // @param request - DescribeDataCheckReportUrlRequest
 //
@@ -4320,7 +4376,7 @@ func (client *Client) DescribeDataCheckReportUrl(request *DescribeDataCheckRepor
 
 // Summary:
 //
-// Queries the details of a data verification task.
+// Queries data consistency verification results at the table level.
 //
 // @param request - DescribeDataCheckTableDetailsRequest
 //
@@ -4392,7 +4448,7 @@ func (client *Client) DescribeDataCheckTableDetailsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the details of a data verification task.
+// Queries data consistency verification results at the table level.
 //
 // @param request - DescribeDataCheckTableDetailsRequest
 //
@@ -4410,7 +4466,7 @@ func (client *Client) DescribeDataCheckTableDetails(request *DescribeDataCheckTa
 
 // Summary:
 //
-// Queries the information about inconsistent data in the data verification task.
+// Lists data inconsistency results grouped by inconsistent data.
 //
 // @param request - DescribeDataCheckTableDiffDetailsRequest
 //
@@ -4478,7 +4534,7 @@ func (client *Client) DescribeDataCheckTableDiffDetailsWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the information about inconsistent data in the data verification task.
+// Lists data inconsistency results grouped by inconsistent data.
 //
 // @param request - DescribeDataCheckTableDiffDetailsRequest
 //
@@ -4496,7 +4552,7 @@ func (client *Client) DescribeDataCheckTableDiffDetails(request *DescribeDataChe
 
 // Summary:
 //
-// Queries the information about a dedicated cluster.
+// Queries the details of a specified cluster by calling the DescribeDedicatedCluster operation.
 //
 // @param request - DescribeDedicatedClusterRequest
 //
@@ -4552,7 +4608,7 @@ func (client *Client) DescribeDedicatedClusterWithOptions(request *DescribeDedic
 
 // Summary:
 //
-// Queries the information about a dedicated cluster.
+// Queries the details of a specified cluster by calling the DescribeDedicatedCluster operation.
 //
 // @param request - DescribeDedicatedClusterRequest
 //
@@ -4570,7 +4626,7 @@ func (client *Client) DescribeDedicatedCluster(request *DescribeDedicatedCluster
 
 // Summary:
 //
-// Queries the information about an alert rule.
+// Queries alert rules by calling the DescribeDedicatedClusterMonitorRule operation.
 //
 // @param request - DescribeDedicatedClusterMonitorRuleRequest
 //
@@ -4626,7 +4682,7 @@ func (client *Client) DescribeDedicatedClusterMonitorRuleWithOptions(request *De
 
 // Summary:
 //
-// Queries the information about an alert rule.
+// Queries alert rules by calling the DescribeDedicatedClusterMonitorRule operation.
 //
 // @param request - DescribeDedicatedClusterMonitorRuleRequest
 //
@@ -4645,6 +4701,14 @@ func (client *Client) DescribeDedicatedClusterMonitorRule(request *DescribeDedic
 // Summary:
 //
 // Retrieves the result of a document parsing task.
+//
+// Description:
+//
+// This operation has rate limits. Calls that exceed the limits are rejected.
+//
+// - The cumulative call threshold per region is 100 calls per second.
+//
+// - The call threshold per account per region is 5 calls per second.
 //
 // @param request - DescribeDocParserJobResultRequest
 //
@@ -4702,6 +4766,14 @@ func (client *Client) DescribeDocParserJobResultWithOptions(request *DescribeDoc
 //
 // Retrieves the result of a document parsing task.
 //
+// Description:
+//
+// This operation has rate limits. Calls that exceed the limits are rejected.
+//
+// - The cumulative call threshold per region is 100 calls per second.
+//
+// - The call threshold per account per region is 5 calls per second.
+//
 // @param request - DescribeDocParserJobResultRequest
 //
 // @return DescribeDocParserJobResultResponse
@@ -4719,6 +4791,14 @@ func (client *Client) DescribeDocParserJobResult(request *DescribeDocParserJobRe
 // Summary:
 //
 // Queries the execution status of a document parsing task.
+//
+// Description:
+//
+// This operation has call frequency limits. Calls that exceed the limits are rejected.
+//
+// - The cumulative call threshold for a single region is 200 calls per second.
+//
+// - The call threshold for a single account in a single region is 20 calls per second.
 //
 // @param request - DescribeDocParserJobStatusRequest
 //
@@ -4776,6 +4856,14 @@ func (client *Client) DescribeDocParserJobStatusWithOptions(request *DescribeDoc
 //
 // Queries the execution status of a document parsing task.
 //
+// Description:
+//
+// This operation has call frequency limits. Calls that exceed the limits are rejected.
+//
+// - The cumulative call threshold for a single region is 200 calls per second.
+//
+// - The call threshold for a single account in a single region is 20 calls per second.
+//
 // @param request - DescribeDocParserJobStatusRequest
 //
 // @return DescribeDocParserJobStatusResponse
@@ -4792,7 +4880,7 @@ func (client *Client) DescribeDocParserJobStatus(request *DescribeDocParserJobSt
 
 // Summary:
 //
-// Queries the details of extract, transform, and load (ETL) tasks.
+// Queries the details of an ETL task.
 //
 // @param request - DescribeDtsEtlJobVersionInfoRequest
 //
@@ -4856,7 +4944,7 @@ func (client *Client) DescribeDtsEtlJobVersionInfoWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the details of extract, transform, and load (ETL) tasks.
+// Queries the details of an ETL task.
 //
 // @param request - DescribeDtsEtlJobVersionInfoRequest
 //
@@ -4956,7 +5044,15 @@ func (client *Client) DescribeDtsJobConfig(request *DescribeDtsJobConfigRequest)
 
 // Summary:
 //
-// The latency of incremental data migration or synchronization. \\\\\\\\\\\\\\\\> If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+// Queries the details of a DTS task by calling DescribeDtsJobDetail.
+//
+// Description:
+//
+// This operation has rate limits. Calls that exceed the limits are rejected.
+//
+// - The cumulative threshold for calls in a single region is 160 calls per second.
+//
+// - The threshold for calls by a single account in a single region is 40 calls per second.
 //
 // @param request - DescribeDtsJobDetailRequest
 //
@@ -4971,6 +5067,10 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbObjectOutputType) {
+		query["DbObjectOutputType"] = request.DbObjectOutputType
+	}
+
 	if !dara.IsNil(request.DtsInstanceID) {
 		query["DtsInstanceID"] = request.DtsInstanceID
 	}
@@ -5024,7 +5124,15 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 
 // Summary:
 //
-// The latency of incremental data migration or synchronization. \\\\\\\\\\\\\\\\> If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+// Queries the details of a DTS task by calling DescribeDtsJobDetail.
+//
+// Description:
+//
+// This operation has rate limits. Calls that exceed the limits are rejected.
+//
+// - The cumulative threshold for calls in a single region is 160 calls per second.
+//
+// - The threshold for calls by a single account in a single region is 40 calls per second.
 //
 // @param request - DescribeDtsJobDetailRequest
 //
@@ -5042,13 +5150,15 @@ func (client *Client) DescribeDtsJobDetail(request *DescribeDtsJobDetailRequest)
 
 // Summary:
 //
-// Queries the list of Data Transmission Service (DTS) tasks and the details of each task.
+// Queries the list of DTS tasks and the execution details of each task.
 //
 // Description:
 //
-// ## Debugging
+// This operation has rate limits. Calls that exceed the limits are rejected.
 //
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Dts\\&api=DescribeDtsJobs\\&type=RPC\\&version=2020-01-01)
+// - The cumulative threshold for calls in a single region is 200 calls per second.
+//
+// - The threshold for calls by a single account in a single region is 20 calls per second.
 //
 // @param request - DescribeDtsJobsRequest
 //
@@ -5184,13 +5294,15 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 
 // Summary:
 //
-// Queries the list of Data Transmission Service (DTS) tasks and the details of each task.
+// Queries the list of DTS tasks and the execution details of each task.
 //
 // Description:
 //
-// ## Debugging
+// This operation has rate limits. Calls that exceed the limits are rejected.
 //
-// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Dts\\&api=DescribeDtsJobs\\&type=RPC\\&version=2020-01-01)
+// - The cumulative threshold for calls in a single region is 200 calls per second.
+//
+// - The threshold for calls by a single account in a single region is 20 calls per second.
 //
 // @param request - DescribeDtsJobsRequest
 //
@@ -5208,7 +5320,7 @@ func (client *Client) DescribeDtsJobs(request *DescribeDtsJobsRequest) (_result 
 
 // Summary:
 //
-// Queries the logs of a data migration or synchronization task.
+// Queries the log information of a data migration or synchronization task.
 //
 // @param request - DescribeDtsServiceLogRequest
 //
@@ -5292,7 +5404,7 @@ func (client *Client) DescribeDtsServiceLogWithOptions(request *DescribeDtsServi
 
 // Summary:
 //
-// Queries the logs of a data migration or synchronization task.
+// Queries the log information of a data migration or synchronization task.
 //
 // @param request - DescribeDtsServiceLogRequest
 //
@@ -5310,7 +5422,7 @@ func (client *Client) DescribeDtsServiceLog(request *DescribeDtsServiceLogReques
 
 // Summary:
 //
-// Queries the status of the task that changes the database connection settings.
+// Queries the execution status of a task.
 //
 // @param request - DescribeEndpointSwitchStatusRequest
 //
@@ -5374,7 +5486,7 @@ func (client *Client) DescribeEndpointSwitchStatusWithOptions(request *DescribeE
 
 // Summary:
 //
-// Queries the status of the task that changes the database connection settings.
+// Queries the execution status of a task.
 //
 // @param request - DescribeEndpointSwitchStatusRequest
 //
@@ -5392,7 +5504,7 @@ func (client *Client) DescribeEndpointSwitchStatus(request *DescribeEndpointSwit
 
 // Summary:
 //
-// Queries the logs of extract, transform, and load (ETL) tasks.
+// Queries the running logs of an ETL task.
 //
 // @param request - DescribeEtlJobLogsRequest
 //
@@ -5444,7 +5556,7 @@ func (client *Client) DescribeEtlJobLogsWithOptions(request *DescribeEtlJobLogsR
 
 // Summary:
 //
-// Queries the logs of extract, transform, and load (ETL) tasks.
+// Queries the running logs of an ETL task.
 //
 // @param request - DescribeEtlJobLogsRequest
 //
@@ -5462,7 +5574,7 @@ func (client *Client) DescribeEtlJobLogs(request *DescribeEtlJobLogsRequest) (_r
 
 // Summary:
 //
-// Queries full data migration tasks.
+// Queries the running details of a full data migration task.
 //
 // @param request - DescribeFullProcessListRequest
 //
@@ -5518,7 +5630,7 @@ func (client *Client) DescribeFullProcessListWithOptions(request *DescribeFullPr
 
 // Summary:
 //
-// Queries full data migration tasks.
+// Queries the running details of a full data migration task.
 //
 // @param request - DescribeFullProcessListRequest
 //
@@ -5536,7 +5648,7 @@ func (client *Client) DescribeFullProcessList(request *DescribeFullProcessListRe
 
 // Summary:
 //
-// Queries the GAD instances.
+// Queries a list of Global Active Database (GAD) instances.
 //
 // @param request - DescribeGadInstancesRequest
 //
@@ -5612,7 +5724,7 @@ func (client *Client) DescribeGadInstancesWithOptions(request *DescribeGadInstan
 
 // Summary:
 //
-// Queries the GAD instances.
+// Queries a list of Global Active Database (GAD) instances.
 //
 // @param request - DescribeGadInstancesRequest
 //
@@ -5630,7 +5742,7 @@ func (client *Client) DescribeGadInstances(request *DescribeGadInstancesRequest)
 
 // Summary:
 //
-// Queries the details of initial data synchronization, including the information about the schemas and historical data of the object to be synchronized.
+// Queries the initialization status. This is an earlier version of the operation.
 //
 // @param request - DescribeInitializationStatusRequest
 //
@@ -5698,7 +5810,7 @@ func (client *Client) DescribeInitializationStatusWithOptions(request *DescribeI
 
 // Summary:
 //
-// Queries the details of initial data synchronization, including the information about the schemas and historical data of the object to be synchronized.
+// Queries the initialization status. This is an earlier version of the operation.
 //
 // @param request - DescribeInitializationStatusRequest
 //
@@ -5716,7 +5828,7 @@ func (client *Client) DescribeInitializationStatus(request *DescribeInitializati
 
 // Summary:
 //
-// Queries the monitoring rules of a Data Transmission Service (DTS) task.
+// Queries the alert rules of a DTS task by calling DescribeJobMonitorRule.
 //
 // @param request - DescribeJobMonitorRuleRequest
 //
@@ -5768,7 +5880,7 @@ func (client *Client) DescribeJobMonitorRuleWithOptions(request *DescribeJobMoni
 
 // Summary:
 //
-// Queries the monitoring rules of a Data Transmission Service (DTS) task.
+// Queries the alert rules of a DTS task by calling DescribeJobMonitorRule.
 //
 // @param request - DescribeJobMonitorRuleRequest
 //
@@ -5786,7 +5898,7 @@ func (client *Client) DescribeJobMonitorRule(request *DescribeJobMonitorRuleRequ
 
 // Summary:
 //
-// Queries the metrics of a cluster.
+// Queries cluster monitoring information by calling the DescribeMetricList operation.
 //
 // @param request - DescribeMetricListRequest
 //
@@ -5876,7 +5988,7 @@ func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListR
 
 // Summary:
 //
-// Queries the metrics of a cluster.
+// Queries cluster monitoring information by calling the DescribeMetricList operation.
 //
 // @param request - DescribeMetricListRequest
 //
@@ -5894,7 +6006,7 @@ func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_r
 
 // Summary:
 //
-// Queries the alert settings of a data migration instance.
+// Queries the monitoring and alert settings of a data migration task.
 //
 // @param request - DescribeMigrationJobAlertRequest
 //
@@ -5958,7 +6070,7 @@ func (client *Client) DescribeMigrationJobAlertWithOptions(request *DescribeMigr
 
 // Summary:
 //
-// Queries the alert settings of a data migration instance.
+// Queries the monitoring and alert settings of a data migration task.
 //
 // @param request - DescribeMigrationJobAlertRequest
 //
@@ -5976,7 +6088,7 @@ func (client *Client) DescribeMigrationJobAlert(request *DescribeMigrationJobAle
 
 // Summary:
 //
-// Queries the details of a data migration task.
+// Queries the execution details of a data migration task. This is a legacy operation.
 //
 // @param request - DescribeMigrationJobDetailRequest
 //
@@ -6052,7 +6164,7 @@ func (client *Client) DescribeMigrationJobDetailWithOptions(request *DescribeMig
 
 // Summary:
 //
-// Queries the details of a data migration task.
+// Queries the execution details of a data migration task. This is a legacy operation.
 //
 // @param request - DescribeMigrationJobDetailRequest
 //
@@ -6070,7 +6182,7 @@ func (client *Client) DescribeMigrationJobDetail(request *DescribeMigrationJobDe
 
 // Summary:
 //
-// Queries the status of a data migration task.
+// Queries the status of a data migration task. This is a legacy operation.
 //
 // @param request - DescribeMigrationJobStatusRequest
 //
@@ -6134,7 +6246,7 @@ func (client *Client) DescribeMigrationJobStatusWithOptions(request *DescribeMig
 
 // Summary:
 //
-// Queries the status of a data migration task.
+// Queries the status of a data migration task. This is a legacy operation.
 //
 // @param request - DescribeMigrationJobStatusRequest
 //
@@ -6152,7 +6264,7 @@ func (client *Client) DescribeMigrationJobStatus(request *DescribeMigrationJobSt
 
 // Summary:
 //
-// Queries the list of data migration instances and the details of each instance.
+// Queries the list of data migration instances and details of each migration instance.
 //
 // @param request - DescribeMigrationJobsRequest
 //
@@ -6224,7 +6336,7 @@ func (client *Client) DescribeMigrationJobsWithOptions(request *DescribeMigratio
 
 // Summary:
 //
-// Queries the list of data migration instances and the details of each instance.
+// Queries the list of data migration instances and details of each migration instance.
 //
 // @param request - DescribeMigrationJobsRequest
 //
@@ -6242,7 +6354,7 @@ func (client *Client) DescribeMigrationJobs(request *DescribeMigrationJobsReques
 
 // Summary:
 //
-// Queries the result of a precheck task before a GAD instance is created.
+// Queries the task result of a precheck for creating a Global Active Database (GAD) order node.
 //
 // @param request - DescribePreCheckCreateGadOrderResultRequest
 //
@@ -6302,7 +6414,7 @@ func (client *Client) DescribePreCheckCreateGadOrderResultWithOptions(request *D
 
 // Summary:
 //
-// Queries the result of a precheck task before a GAD instance is created.
+// Queries the task result of a precheck for creating a Global Active Database (GAD) order node.
 //
 // @param request - DescribePreCheckCreateGadOrderResultRequest
 //
@@ -6320,7 +6432,7 @@ func (client *Client) DescribePreCheckCreateGadOrderResult(request *DescribePreC
 
 // Summary:
 //
-// Queries the status of a Data Transmission Service (DTS) subtask that performs precheck, schema migration, initial schema synchronization, full data migration, initial full data synchronization, incremental data migration, or incremental data synchronization.
+// Queries the execution details of subtasks of a DTS task, including precheck, schema migration or synchronization, full data migration or synchronization, and incremental data migration or synchronization.
 //
 // @param request - DescribePreCheckStatusRequest
 //
@@ -6400,7 +6512,7 @@ func (client *Client) DescribePreCheckStatusWithOptions(request *DescribePreChec
 
 // Summary:
 //
-// Queries the status of a Data Transmission Service (DTS) subtask that performs precheck, schema migration, initial schema synchronization, full data migration, initial full data synchronization, incremental data migration, or incremental data synchronization.
+// Queries the execution details of subtasks of a DTS task, including precheck, schema migration or synchronization, full data migration or synchronization, and incremental data migration or synchronization.
 //
 // @param request - DescribePreCheckStatusRequest
 //
@@ -6418,7 +6530,7 @@ func (client *Client) DescribePreCheckStatus(request *DescribePreCheckStatusRequ
 
 // Summary:
 //
-// Queries the alert settings of a change tracking instance.
+// Queries the monitoring and alerting settings of a change tracking instance.
 //
 // @param request - DescribeSubscriptionInstanceAlertRequest
 //
@@ -6482,7 +6594,7 @@ func (client *Client) DescribeSubscriptionInstanceAlertWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the alert settings of a change tracking instance.
+// Queries the monitoring and alerting settings of a change tracking instance.
 //
 // @param request - DescribeSubscriptionInstanceAlertRequest
 //
@@ -6500,7 +6612,7 @@ func (client *Client) DescribeSubscriptionInstanceAlert(request *DescribeSubscri
 
 // Summary:
 //
-// Queries the status of a change tracking instance.
+// Queries the instance status details of a change tracking channel. This is a legacy operation.
 //
 // @param request - DescribeSubscriptionInstanceStatusRequest
 //
@@ -6560,7 +6672,7 @@ func (client *Client) DescribeSubscriptionInstanceStatusWithOptions(request *Des
 
 // Summary:
 //
-// Queries the status of a change tracking instance.
+// Queries the instance status details of a change tracking channel. This is a legacy operation.
 //
 // @param request - DescribeSubscriptionInstanceStatusRequest
 //
@@ -6672,13 +6784,23 @@ func (client *Client) DescribeSubscriptionInstances(request *DescribeSubscriptio
 
 // Summary:
 //
-// Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+// Queries the information about subtasks of a PolarDB-X 1.0 distributed change tracking task.
 //
 // Description:
 //
-//	  When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+// <props="china">
 //
-//		- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
+// - Because a PolarDB-X 1.0 change tracking task is a distributed change tracking task, each ApsaraDB RDS for MySQL instance associated with the task corresponds to a change tracking subtask. You can call this operation to query the information about change tracking subtasks.
+//
+// - You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID, consumer group ID, and other information about a PolarDB-X 1.0 change tracking task.
+//
+// <props="intl">
+//
+// - Because a DRDS change tracking task is a distributed change tracking task, each ApsaraDB RDS for MySQL instance associated with the task corresponds to a change tracking subtask. You can call this operation to query the information about change tracking subtasks.
+//
+// - You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID, consumer group ID, and other information about a DRDS change tracking task.
+//
+// .
 //
 // @param tmpReq - DescribeSubscriptionMetaRequest
 //
@@ -6752,13 +6874,23 @@ func (client *Client) DescribeSubscriptionMetaWithOptions(tmpReq *DescribeSubscr
 
 // Summary:
 //
-// Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+// Queries the information about subtasks of a PolarDB-X 1.0 distributed change tracking task.
 //
 // Description:
 //
-//	  When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+// <props="china">
 //
-//		- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
+// - Because a PolarDB-X 1.0 change tracking task is a distributed change tracking task, each ApsaraDB RDS for MySQL instance associated with the task corresponds to a change tracking subtask. You can call this operation to query the information about change tracking subtasks.
+//
+// - You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID, consumer group ID, and other information about a PolarDB-X 1.0 change tracking task.
+//
+// <props="intl">
+//
+// - Because a DRDS change tracking task is a distributed change tracking task, each ApsaraDB RDS for MySQL instance associated with the task corresponds to a change tracking subtask. You can call this operation to query the information about change tracking subtasks.
+//
+// - You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID, consumer group ID, and other information about a DRDS change tracking task.
+//
+// .
 //
 // @param request - DescribeSubscriptionMetaRequest
 //
@@ -6854,7 +6986,7 @@ func (client *Client) DescribeSyncStatus(request *DescribeSyncStatusRequest) (_r
 
 // Summary:
 //
-// Queries the alert settings of a data synchronization instance.
+// Queries the monitoring and alerting settings of a synchronization task.
 //
 // @param request - DescribeSynchronizationJobAlertRequest
 //
@@ -6922,7 +7054,7 @@ func (client *Client) DescribeSynchronizationJobAlertWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the alert settings of a data synchronization instance.
+// Queries the monitoring and alerting settings of a synchronization task.
 //
 // @param request - DescribeSynchronizationJobAlertRequest
 //
@@ -6940,7 +7072,7 @@ func (client *Client) DescribeSynchronizationJobAlert(request *DescribeSynchroni
 
 // Summary:
 //
-// Queries whether image matching is enabled for a data synchronization instance.
+// Retrieves the current image matching switch configuration. This is a legacy operation.
 //
 // @param request - DescribeSynchronizationJobReplicatorCompareRequest
 //
@@ -7008,7 +7140,7 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompareWithOptions(req
 
 // Summary:
 //
-// Queries whether image matching is enabled for a data synchronization instance.
+// Retrieves the current image matching switch configuration. This is a legacy operation.
 //
 // @param request - DescribeSynchronizationJobReplicatorCompareRequest
 //
@@ -7026,7 +7158,7 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompare(request *Descr
 
 // Summary:
 //
-// Queries the status of a data synchronization instance.
+// Queries the running status of a data synchronization task. This is a legacy API operation.
 //
 // @param request - DescribeSynchronizationJobStatusRequest
 //
@@ -7094,7 +7226,7 @@ func (client *Client) DescribeSynchronizationJobStatusWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the status of a data synchronization instance.
+// Queries the running status of a data synchronization task. This is a legacy API operation.
 //
 // @param request - DescribeSynchronizationJobStatusRequest
 //
@@ -7112,7 +7244,7 @@ func (client *Client) DescribeSynchronizationJobStatus(request *DescribeSynchron
 
 // Summary:
 //
-// Queries the status of one or more data synchronization instances.
+// Queries the status list of synchronization jobs. This is a legacy operation.
 //
 // @param request - DescribeSynchronizationJobStatusListRequest
 //
@@ -7176,7 +7308,7 @@ func (client *Client) DescribeSynchronizationJobStatusListWithOptions(request *D
 
 // Summary:
 //
-// Queries the status of one or more data synchronization instances.
+// Queries the status list of synchronization jobs. This is a legacy operation.
 //
 // @param request - DescribeSynchronizationJobStatusListRequest
 //
@@ -7194,7 +7326,7 @@ func (client *Client) DescribeSynchronizationJobStatusList(request *DescribeSync
 
 // Summary:
 //
-// Queries the list of data synchronization instances and the details of each instance.
+// Queries a list of data synchronization instances and the details of each instance by calling DescribeSynchronizationJobs.
 //
 // @param request - DescribeSynchronizationJobsRequest
 //
@@ -7270,7 +7402,7 @@ func (client *Client) DescribeSynchronizationJobsWithOptions(request *DescribeSy
 
 // Summary:
 //
-// Queries the list of data synchronization instances and the details of each instance.
+// Queries a list of data synchronization instances and the details of each instance by calling DescribeSynchronizationJobs.
 //
 // @param request - DescribeSynchronizationJobsRequest
 //
@@ -7288,7 +7420,7 @@ func (client *Client) DescribeSynchronizationJobs(request *DescribeSynchronizati
 
 // Summary:
 //
-// Queries the status of the task that changes the objects to be synchronized.
+// Queries the execution status of a task that modifies synchronization objects. This is a legacy operation.
 //
 // @param request - DescribeSynchronizationObjectModifyStatusRequest
 //
@@ -7352,7 +7484,7 @@ func (client *Client) DescribeSynchronizationObjectModifyStatusWithOptions(reque
 
 // Summary:
 //
-// Queries the status of the task that changes the objects to be synchronized.
+// Queries the execution status of a task that modifies synchronization objects. This is a legacy operation.
 //
 // @param request - DescribeSynchronizationObjectModifyStatusRequest
 //
@@ -7370,7 +7502,7 @@ func (client *Client) DescribeSynchronizationObjectModifyStatus(request *Describ
 
 // Summary:
 //
-// Queries all the tags added to a data migration, data synchronization, or change tracking instance.
+// Queries all tags that are bound to a data migration, data synchronization, or change tracking instance.
 //
 // @param request - DescribeTagKeysRequest
 //
@@ -7438,7 +7570,7 @@ func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest
 
 // Summary:
 //
-// Queries all the tags added to a data migration, data synchronization, or change tracking instance.
+// Queries all tags that are bound to a data migration, data synchronization, or change tracking instance.
 //
 // @param request - DescribeTagKeysRequest
 //
@@ -7456,7 +7588,7 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 
 // Summary:
 //
-// Queries all the tag values of a tag bound to a data migration, data synchronization, or change tracking instance.
+// Queries all values of a tag key that is attached to a data migration, data synchronization, or change tracking instance.
 //
 // @param request - DescribeTagValuesRequest
 //
@@ -7528,7 +7660,7 @@ func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesReq
 
 // Summary:
 //
-// Queries all the tag values of a tag bound to a data migration, data synchronization, or change tracking instance.
+// Queries all values of a tag key that is attached to a data migration, data synchronization, or change tracking instance.
 //
 // @param request - DescribeTagValuesRequest
 //
@@ -7546,7 +7678,7 @@ func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_res
 
 // Summary:
 //
-// # Removes a secondary instance
+// Removes a secondary role.
 //
 // @param request - DetachGadInstanceDbMemberRequest
 //
@@ -7606,7 +7738,7 @@ func (client *Client) DetachGadInstanceDbMemberWithOptions(request *DetachGadIns
 
 // Summary:
 //
-// # Removes a secondary instance
+// Removes a secondary role.
 //
 // @param request - DetachGadInstanceDbMemberRequest
 //
@@ -7624,13 +7756,13 @@ func (client *Client) DetachGadInstanceDbMember(request *DetachGadInstanceDbMemb
 
 // Summary:
 //
-// Initializes a built-in account on a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses the built-in account to connect to the node and perform data synchronization tasks.
+// Initializes a built-in account in a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses this account to connect to the node and perform synchronization tasks.
 //
 // Description:
 //
-//	  The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+// - The unit node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database connected through Cloud Enterprise Network (CEN).
 //
-//		- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+// - This operation initializes a built-in account named rdsdt_dtsacct in a unit node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform synchronization tasks.
 //
 // @param request - InitDtsRdsInstanceRequest
 //
@@ -7698,13 +7830,13 @@ func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceR
 
 // Summary:
 //
-// Initializes a built-in account on a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses the built-in account to connect to the node and perform data synchronization tasks.
+// Initializes a built-in account in a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses this account to connect to the node and perform synchronization tasks.
 //
 // Description:
 //
-//	  The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+// - The unit node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database connected through Cloud Enterprise Network (CEN).
 //
-//		- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+// - This operation initializes a built-in account named rdsdt_dtsacct in a unit node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform synchronization tasks.
 //
 // @param request - InitDtsRdsInstanceRequest
 //
@@ -7722,7 +7854,7 @@ func (client *Client) InitDtsRdsInstance(request *InitDtsRdsInstanceRequest) (_r
 
 // Summary:
 //
-// Queries all clusters that are created within an Alibaba Cloud account. You can also query clusters based on the specified conditions.
+// Queries all clusters created by the current user. You can also filter specific clusters based on specified conditions.
 //
 // @param request - ListDedicatedClusterRequest
 //
@@ -7802,7 +7934,7 @@ func (client *Client) ListDedicatedClusterWithOptions(request *ListDedicatedClus
 
 // Summary:
 //
-// Queries all clusters that are created within an Alibaba Cloud account. You can also query clusters based on the specified conditions.
+// Queries all clusters created by the current user. You can also filter specific clusters based on specified conditions.
 //
 // @param request - ListDedicatedClusterRequest
 //
@@ -7820,7 +7952,7 @@ func (client *Client) ListDedicatedCluster(request *ListDedicatedClusterRequest)
 
 // Summary:
 //
-// 查询JobStep列表。
+// # Query the JobStep list
 //
 // @param request - ListJobStepRequest
 //
@@ -7876,7 +8008,7 @@ func (client *Client) ListJobStepWithOptions(request *ListJobStepRequest, runtim
 
 // Summary:
 //
-// 查询JobStep列表。
+// # Query the JobStep list
 //
 // @param request - ListJobStepRequest
 //
@@ -7894,11 +8026,11 @@ func (client *Client) ListJobStep(request *ListJobStepRequest) (_result *ListJob
 
 // Summary:
 //
-// Queries the tags that are bound to specific data migration, data synchronization, or change tracking instances, or queries the instances to which specific tags are bound.
+// Queries the tags bound to data migration, data synchronization, and change tracking instances. You can also query the instances bound to specific tags.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7962,11 +8094,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are bound to specific data migration, data synchronization, or change tracking instances, or queries the instances to which specific tags are bound.
+// Queries the tags bound to data migration, data synchronization, and change tracking instances. You can also query the instances bound to specific tags.
 //
 // Description:
 //
-// ***
+// ***.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7984,7 +8116,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Modifies the information of a consumer group, including the consumer group name, username, and password.
+// Modifies the information of a consumer group in a change tracking channel (new version).
 //
 // @param request - ModifyConsumerChannelRequest
 //
@@ -8056,7 +8188,7 @@ func (client *Client) ModifyConsumerChannelWithOptions(request *ModifyConsumerCh
 
 // Summary:
 //
-// Modifies the information of a consumer group, including the consumer group name, username, and password.
+// Modifies the information of a consumer group in a change tracking channel (new version).
 //
 // @param request - ModifyConsumerChannelRequest
 //
@@ -8074,7 +8206,7 @@ func (client *Client) ModifyConsumerChannel(request *ModifyConsumerChannelReques
 
 // Summary:
 //
-// # Modifies the password of a consumer group
+// Modifies the password of a consumer group. This is a legacy operation.
 //
 // @param request - ModifyConsumerGroupPasswordRequest
 //
@@ -8154,7 +8286,7 @@ func (client *Client) ModifyConsumerGroupPasswordWithOptions(request *ModifyCons
 
 // Summary:
 //
-// # Modifies the password of a consumer group
+// Modifies the password of a consumer group. This is a legacy operation.
 //
 // @param request - ModifyConsumerGroupPasswordRequest
 //
@@ -8172,7 +8304,7 @@ func (client *Client) ModifyConsumerGroupPassword(request *ModifyConsumerGroupPa
 
 // Summary:
 //
-// Modifies the consumption checkpoint of a change tracking instance.
+// Modifies the consumption checkpoint of a change tracking instance channel.
 //
 // @param request - ModifyConsumptionTimestampRequest
 //
@@ -8236,7 +8368,7 @@ func (client *Client) ModifyConsumptionTimestampWithOptions(request *ModifyConsu
 
 // Summary:
 //
-// Modifies the consumption checkpoint of a change tracking instance.
+// Modifies the consumption checkpoint of a change tracking instance channel.
 //
 // @param request - ModifyConsumptionTimestampRequest
 //
@@ -8254,11 +8386,11 @@ func (client *Client) ModifyConsumptionTimestamp(request *ModifyConsumptionTimes
 
 // Summary:
 //
-// Modifies the configuration of a cluster.
+// Modifies the configuration of a dedicated cluster by calling the ModifyDedicatedCluster operation.
 //
 // Description:
 //
-// You can modify only the overcommit ratio.
+// Currently, only the overcommit ratio can be modified.
 //
 // @param request - ModifyDedicatedClusterRequest
 //
@@ -8326,11 +8458,11 @@ func (client *Client) ModifyDedicatedClusterWithOptions(request *ModifyDedicated
 
 // Summary:
 //
-// Modifies the configuration of a cluster.
+// Modifies the configuration of a dedicated cluster by calling the ModifyDedicatedCluster operation.
 //
 // Description:
 //
-// You can modify only the overcommit ratio.
+// Currently, only the overcommit ratio can be modified.
 //
 // @param request - ModifyDedicatedClusterRequest
 //
@@ -8348,11 +8480,11 @@ func (client *Client) ModifyDedicatedCluster(request *ModifyDedicatedClusterRequ
 
 // Summary:
 //
-// Modifies the configurations of a data synchronization task.
+// Modifies a data synchronization task by calling the ModifyDtsJob operation.
 //
 // Description:
 //
-// When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over **Next: Save Task Settings and Precheck*	- in the **Advanced Settings*	- step and click **Preview OpenAPI parameters*	- to view the parameters that are used to configure the task by calling an API operation.
+// > You can preconfigure settings in the console as needed, and then preview the corresponding OpenAPI parameter information to help you specify request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
 //
 // @param tmpReq - ModifyDtsJobRequest
 //
@@ -8464,11 +8596,11 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 
 // Summary:
 //
-// Modifies the configurations of a data synchronization task.
+// Modifies a data synchronization task by calling the ModifyDtsJob operation.
 //
 // Description:
 //
-// When you configure a data synchronization task in the Data Transmission Service (DTS) console, you can move the pointer over **Next: Save Task Settings and Precheck*	- in the **Advanced Settings*	- step and click **Preview OpenAPI parameters*	- to view the parameters that are used to configure the task by calling an API operation.
+// > You can preconfigure settings in the console as needed, and then preview the corresponding OpenAPI parameter information to help you specify request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
 //
 // @param request - ModifyDtsJobRequest
 //
@@ -8593,7 +8725,7 @@ func (client *Client) ModifyDtsJobAdvance(request *ModifyDtsJobAdvanceRequest, r
 
 // Summary:
 //
-// Modifies the parameters of a Data Transmission Service (DTS) task.
+// Modifies the parameters of a DTS task by calling the ModifyDtsJobConfig operation.
 //
 // @param request - ModifyDtsJobConfigRequest
 //
@@ -8653,7 +8785,7 @@ func (client *Client) ModifyDtsJobConfigWithOptions(request *ModifyDtsJobConfigR
 
 // Summary:
 //
-// Modifies the parameters of a Data Transmission Service (DTS) task.
+// Modifies the parameters of a DTS task by calling the ModifyDtsJobConfig operation.
 //
 // @param request - ModifyDtsJobConfigRequest
 //
@@ -8671,11 +8803,11 @@ func (client *Client) ModifyDtsJobConfig(request *ModifyDtsJobConfigRequest) (_r
 
 // Summary:
 //
-// Changes the dedicated cluster on which a Data Transmission Service (DTS) task runs.
+// Changes the dedicated cluster on which a task runs.
 //
 // Description:
 //
-// > After a DTS task is migrated from a dedicated cluster to a shared cluster, the task is billed on a pay-as-you-go basis.
+// > After a migration task is changed from a dedicated cluster to a public cluster, the billing method of the task changes to pay-as-you-go, and billing starts.
 //
 // @param request - ModifyDtsJobDedicatedClusterRequest
 //
@@ -8735,11 +8867,11 @@ func (client *Client) ModifyDtsJobDedicatedClusterWithOptions(request *ModifyDts
 
 // Summary:
 //
-// Changes the dedicated cluster on which a Data Transmission Service (DTS) task runs.
+// Changes the dedicated cluster on which a task runs.
 //
 // Description:
 //
-// > After a DTS task is migrated from a dedicated cluster to a shared cluster, the task is billed on a pay-as-you-go basis.
+// > After a migration task is changed from a dedicated cluster to a public cluster, the billing method of the task changes to pay-as-you-go, and billing starts.
 //
 // @param request - ModifyDtsJobDedicatedClusterRequest
 //
@@ -8757,13 +8889,13 @@ func (client *Client) ModifyDtsJobDedicatedCluster(request *ModifyDtsJobDedicate
 
 // Summary:
 //
-// Modifies the upper limit of DTS units (DUs) for a Data Transmission Service (DTS) task.
+// Modifies the DU upper limit of a DTS task by calling the ModifyDtsJobDuLimit operation.
 //
 // Description:
 //
-//	  DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+// - DTS instances in a dedicated cluster must support specification changes. By changing the resources consumed by a task at runtime, you can dynamically adjust the number of schedulable tasks in the current cluster, thereby deducting or releasing the total number of DUs in the cluster.
 //
-//		- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+// - Before modifying the DU upper limit of a task, ensure that sufficient resources are available.
 //
 // @param request - ModifyDtsJobDuLimitRequest
 //
@@ -8823,13 +8955,13 @@ func (client *Client) ModifyDtsJobDuLimitWithOptions(request *ModifyDtsJobDuLimi
 
 // Summary:
 //
-// Modifies the upper limit of DTS units (DUs) for a Data Transmission Service (DTS) task.
+// Modifies the DU upper limit of a DTS task by calling the ModifyDtsJobDuLimit operation.
 //
 // Description:
 //
-//	  DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+// - DTS instances in a dedicated cluster must support specification changes. By changing the resources consumed by a task at runtime, you can dynamically adjust the number of schedulable tasks in the current cluster, thereby deducting or releasing the total number of DUs in the cluster.
 //
-//		- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+// - Before modifying the DU upper limit of a task, ensure that sufficient resources are available.
 //
 // @param request - ModifyDtsJobDuLimitRequest
 //
@@ -8847,11 +8979,11 @@ func (client *Client) ModifyDtsJobDuLimit(request *ModifyDtsJobDuLimitRequest) (
 
 // Summary:
 //
-// Changes the source or destination database instance of a data synchronization or migration task in Data Transmission Service (DTS).
+// Modifies the source or destination instance of a DTS synchronization or migration task.
 //
 // Description:
 //
-// >  After the database is changed, Data Transmission Service (DTS) rolls back the incremental write offset for 10 seconds. If the synchronized or migrated data does not have a primary key, make sure that no data is written to the source database while the source or destination database is being replaced. Otherwise, duplicate data may exist.
+// > After the database instance is modified, the DTS incremental write module rolls back writes by 10 seconds. If the data being synchronized or migrated does not have a primary key, stop writing data to the business associated with the source instance during the database instance replacement. Otherwise, duplicate data may occur.
 //
 // @param request - ModifyDtsJobEndpointRequest
 //
@@ -8906,8 +9038,20 @@ func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpo
 		query["EndpointPort"] = request.EndpointPort
 	}
 
+	if !dara.IsNil(request.EndpointPrimaryVswId) {
+		query["EndpointPrimaryVswId"] = request.EndpointPrimaryVswId
+	}
+
 	if !dara.IsNil(request.EndpointRegionId) {
 		query["EndpointRegionId"] = request.EndpointRegionId
+	}
+
+	if !dara.IsNil(request.EndpointSecondaryVswId) {
+		query["EndpointSecondaryVswId"] = request.EndpointSecondaryVswId
+	}
+
+	if !dara.IsNil(request.EndpointVpcId) {
+		query["EndpointVpcId"] = request.EndpointVpcId
 	}
 
 	if !dara.IsNil(request.ModifyAccount) {
@@ -8975,11 +9119,11 @@ func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpo
 
 // Summary:
 //
-// Changes the source or destination database instance of a data synchronization or migration task in Data Transmission Service (DTS).
+// Modifies the source or destination instance of a DTS synchronization or migration task.
 //
 // Description:
 //
-// >  After the database is changed, Data Transmission Service (DTS) rolls back the incremental write offset for 10 seconds. If the synchronized or migrated data does not have a primary key, make sure that no data is written to the source database while the source or destination database is being replaced. Otherwise, duplicate data may exist.
+// > After the database instance is modified, the DTS incremental write module rolls back writes by 10 seconds. If the data being synchronized or migrated does not have a primary key, stop writing data to the business associated with the source instance during the database instance replacement. Otherwise, duplicate data may occur.
 //
 // @param request - ModifyDtsJobEndpointRequest
 //
@@ -8997,7 +9141,7 @@ func (client *Client) ModifyDtsJobEndpoint(request *ModifyDtsJobEndpointRequest)
 
 // Summary:
 //
-// Changes the name of a Data Transmission Service (DTS) task.
+// Modifies the name of a DTS task by calling ModifyDtsJobName.
 //
 // @param request - ModifyDtsJobNameRequest
 //
@@ -9057,7 +9201,7 @@ func (client *Client) ModifyDtsJobNameWithOptions(request *ModifyDtsJobNameReque
 
 // Summary:
 //
-// Changes the name of a Data Transmission Service (DTS) task.
+// Modifies the name of a DTS task by calling ModifyDtsJobName.
 //
 // @param request - ModifyDtsJobNameRequest
 //
@@ -9075,7 +9219,7 @@ func (client *Client) ModifyDtsJobName(request *ModifyDtsJobNameRequest) (_resul
 
 // Summary:
 //
-// Changes the password of the account used to log on to the source or destination database in a Data Transmission Service (DTS) task.
+// Modifies the password of a DTS task (new version).
 //
 // @param request - ModifyDtsJobPasswordRequest
 //
@@ -9151,7 +9295,7 @@ func (client *Client) ModifyDtsJobPasswordWithOptions(request *ModifyDtsJobPassw
 
 // Summary:
 //
-// Changes the password of the account used to log on to the source or destination database in a Data Transmission Service (DTS) task.
+// Modifies the password of a DTS task (new version).
 //
 // @param request - ModifyDtsJobPasswordRequest
 //
@@ -9169,7 +9313,7 @@ func (client *Client) ModifyDtsJobPassword(request *ModifyDtsJobPasswordRequest)
 
 // Summary:
 //
-// Enables throttling for data synchronization and data migration.
+// Adjusts the migration rate of a data synchronization or migration instance.
 //
 // @param request - ModifyDynamicConfigRequest
 //
@@ -9233,7 +9377,7 @@ func (client *Client) ModifyDynamicConfigWithOptions(request *ModifyDynamicConfi
 
 // Summary:
 //
-// Enables throttling for data synchronization and data migration.
+// Adjusts the migration rate of a data synchronization or migration instance.
 //
 // @param request - ModifyDynamicConfigRequest
 //
@@ -9251,7 +9395,7 @@ func (client *Client) ModifyDynamicConfig(request *ModifyDynamicConfigRequest) (
 
 // Summary:
 //
-// Modifies the name of a GAD instance.
+// Modifies the name of a Global Active Database (GAD) instance.
 //
 // @param request - ModifyGadInstanceNameRequest
 //
@@ -9311,7 +9455,7 @@ func (client *Client) ModifyGadInstanceNameWithOptions(request *ModifyGadInstanc
 
 // Summary:
 //
-// Modifies the name of a GAD instance.
+// Modifies the name of a Global Active Database (GAD) instance.
 //
 // @param request - ModifyGadInstanceNameRequest
 //
@@ -9329,7 +9473,7 @@ func (client *Client) ModifyGadInstanceName(request *ModifyGadInstanceNameReques
 
 // Summary:
 //
-// 修改增量写入的位点。
+// Modify the offset for incremental data writing.
 //
 // @param request - ModifyJobStepCheckpointRequest
 //
@@ -9389,7 +9533,7 @@ func (client *Client) ModifyJobStepCheckpointWithOptions(request *ModifyJobStepC
 
 // Summary:
 //
-// 修改增量写入的位点。
+// Modify the offset for incremental data writing.
 //
 // @param request - ModifyJobStepCheckpointRequest
 //
@@ -9407,11 +9551,11 @@ func (client *Client) ModifyJobStepCheckpoint(request *ModifyJobStepCheckpointRe
 
 // Summary:
 //
-// Modifies the information about a change tracking task.
+// Modifies a change tracking task (new version).
 //
 // Description:
 //
-// >  You can preview related API operation parameters when you modify the information about a change tracking task in the Data Transmission Service (DTS) console. This helps you configure the request parameters of this API operation. For more information, see [Preview the request parameters of API operations](https://help.aliyun.com/document_detail/2851612.html).
+// > You can perform the required preconfigurations in the console and then preview the corresponding OpenAPI parameter information to help you fill in the request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
 //
 // @param request - ModifySubscriptionRequest
 //
@@ -9487,11 +9631,11 @@ func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionR
 
 // Summary:
 //
-// Modifies the information about a change tracking task.
+// Modifies a change tracking task (new version).
 //
 // Description:
 //
-// >  You can preview related API operation parameters when you modify the information about a change tracking task in the Data Transmission Service (DTS) console. This helps you configure the request parameters of this API operation. For more information, see [Preview the request parameters of API operations](https://help.aliyun.com/document_detail/2851612.html).
+// > You can perform the required preconfigurations in the console and then preview the corresponding OpenAPI parameter information to help you fill in the request parameters. For more information, see [Preview OpenAPI request parameters](https://help.aliyun.com/document_detail/2851612.html).
 //
 // @param request - ModifySubscriptionRequest
 //
@@ -9509,7 +9653,7 @@ func (client *Client) ModifySubscription(request *ModifySubscriptionRequest) (_r
 
 // Summary:
 //
-// Modifies the objects for change tracking.
+// Modifies the subscription objects of a change tracking task. This is a legacy operation.
 //
 // @param request - ModifySubscriptionObjectRequest
 //
@@ -9573,7 +9717,7 @@ func (client *Client) ModifySubscriptionObjectWithOptions(request *ModifySubscri
 
 // Summary:
 //
-// Modifies the objects for change tracking.
+// Modifies the subscription objects of a change tracking task. This is a legacy operation.
 //
 // @param request - ModifySubscriptionObjectRequest
 //
@@ -9591,7 +9735,7 @@ func (client *Client) ModifySubscriptionObject(request *ModifySubscriptionObject
 
 // Summary:
 //
-// Modifies the objects to be synchronized.
+// Modifies the synchronization objects in a data synchronization job instance. This is a legacy operation.
 //
 // @param request - ModifySynchronizationObjectRequest
 //
@@ -9661,7 +9805,7 @@ func (client *Client) ModifySynchronizationObjectWithOptions(request *ModifySync
 
 // Summary:
 //
-// Modifies the objects to be synchronized.
+// Modifies the synchronization objects in a data synchronization job instance. This is a legacy operation.
 //
 // @param request - ModifySynchronizationObjectRequest
 //
@@ -9679,7 +9823,7 @@ func (client *Client) ModifySynchronizationObject(request *ModifySynchronization
 
 // Summary:
 //
-// Prechecks before a GAD instance is created.
+// Prechecks an order for creating a Global Active Database (GAD) instance group.
 //
 // @param request - PreCheckCreateGadOrderRequest
 //
@@ -9767,7 +9911,7 @@ func (client *Client) PreCheckCreateGadOrderWithOptions(request *PreCheckCreateG
 
 // Summary:
 //
-// Prechecks before a GAD instance is created.
+// Prechecks an order for creating a Global Active Database (GAD) instance group.
 //
 // @param request - PreCheckCreateGadOrderRequest
 //
@@ -9783,6 +9927,10 @@ func (client *Client) PreCheckCreateGadOrder(request *PreCheckCreateGadOrderRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// # Promote a geo-disaster recovery instance from the secondary role to the primary role
+//
 // @param request - PromoteToMasterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9839,6 +9987,10 @@ func (client *Client) PromoteToMasterWithOptions(request *PromoteToMasterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// # Promote a geo-disaster recovery instance from the secondary role to the primary role
+//
 // @param request - PromoteToMasterRequest
 //
 // @return PromoteToMasterResponse
@@ -9855,7 +10007,7 @@ func (client *Client) PromoteToMaster(request *PromoteToMasterRequest) (_result 
 
 // Summary:
 //
-// Renews a Data Transmission Service (DTS) instance. This API operation is available only for subscription instances.
+// Renews a DTS instance. This operation is applicable only to subscription DTS instances.
 //
 // @param request - RenewInstanceRequest
 //
@@ -9919,7 +10071,7 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 
 // Summary:
 //
-// Renews a Data Transmission Service (DTS) instance. This API operation is available only for subscription instances.
+// Renews a DTS instance. This operation is applicable only to subscription DTS instances.
 //
 // @param request - RenewInstanceRequest
 //
@@ -9941,7 +10093,7 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 //
 // Description:
 //
-// >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation reconfigure the task.
+// > After the configuration of a data synchronization or change tracking task is cleared, the original task is deleted. DTS creates a new unconfigured task. You must call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to reconfigure the task.
 //
 // @param request - ResetDtsJobRequest
 //
@@ -10005,7 +10157,7 @@ func (client *Client) ResetDtsJobWithOptions(request *ResetDtsJobRequest, runtim
 //
 // Description:
 //
-// >  If you clear the configurations of a data synchronization or change tracking task, DTS deletes the task. Then, DTS creates another task. The task is in the Not Configured state. You must call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation reconfigure the task.
+// > After the configuration of a data synchronization or change tracking task is cleared, the original task is deleted. DTS creates a new unconfigured task. You must call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to reconfigure the task.
 //
 // @param request - ResetDtsJobRequest
 //
@@ -10023,11 +10175,11 @@ func (client *Client) ResetDtsJob(request *ResetDtsJobRequest) (_result *ResetDt
 
 // Summary:
 //
-// Clears the configurations of a data synchronization task.
+// Resets the configuration of a data synchronization task.
 //
 // Description:
 //
-// >  If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the **ConfigureSynchronizationJob*	- operation to reconfigure the task.
+// > After you reset the configuration of a data synchronization task, the original synchronization task is released. You must call the **ConfigureSynchronizationJob*	- operation to reconfigure the synchronization task before you can start the task.
 //
 // @param request - ResetSynchronizationJobRequest
 //
@@ -10091,11 +10243,11 @@ func (client *Client) ResetSynchronizationJobWithOptions(request *ResetSynchroni
 
 // Summary:
 //
-// Clears the configurations of a data synchronization task.
+// Resets the configuration of a data synchronization task.
 //
 // Description:
 //
-// >  If you clear the configurations of a data synchronization task, the task will be released. To start the task again, you must call the **ConfigureSynchronizationJob*	- operation to reconfigure the task.
+// > After you reset the configuration of a data synchronization task, the original synchronization task is released. You must call the **ConfigureSynchronizationJob*	- operation to reconfigure the synchronization task before you can start the task.
 //
 // @param request - ResetSynchronizationJobRequest
 //
@@ -10113,7 +10265,7 @@ func (client *Client) ResetSynchronizationJob(request *ResetSynchronizationJobRe
 
 // Summary:
 //
-// Reverse the direction of a two-way synchronization task.
+// 调转双向任务的方向
 //
 // @param request - ReverseTwoWayDirectionRequest
 //
@@ -10169,7 +10321,7 @@ func (client *Client) ReverseTwoWayDirectionWithOptions(request *ReverseTwoWayDi
 
 // Summary:
 //
-// Reverse the direction of a two-way synchronization task.
+// 调转双向任务的方向
 //
 // @param request - ReverseTwoWayDirectionRequest
 //
@@ -10187,7 +10339,7 @@ func (client *Client) ReverseTwoWayDirection(request *ReverseTwoWayDirectionRequ
 
 // Summary:
 //
-// Ignores the precheck items that a data migration or synchronization task may fail to pass.
+// Skips the precheck for a legacy data migration or synchronization task.
 //
 // @param request - ShieldPrecheckRequest
 //
@@ -10243,7 +10395,7 @@ func (client *Client) ShieldPrecheckWithOptions(request *ShieldPrecheckRequest, 
 
 // Summary:
 //
-// Ignores the precheck items that a data migration or synchronization task may fail to pass.
+// Skips the precheck for a legacy data migration or synchronization task.
 //
 // @param request - ShieldPrecheckRequest
 //
@@ -10261,7 +10413,7 @@ func (client *Client) ShieldPrecheck(request *ShieldPrecheckRequest) (_result *S
 
 // Summary:
 //
-// The tables that do not need to be synchronized in a full data synchronization are skipped.
+// Skips tables that do not need to be synchronized during the full data synchronization phase.
 //
 // @param request - SkipFullJobTableRequest
 //
@@ -10321,7 +10473,7 @@ func (client *Client) SkipFullJobTableWithOptions(request *SkipFullJobTableReque
 
 // Summary:
 //
-// The tables that do not need to be synchronized in a full data synchronization are skipped.
+// Skips tables that do not need to be synchronized during the full data synchronization phase.
 //
 // @param request - SkipFullJobTableRequest
 //
@@ -10339,7 +10491,7 @@ func (client *Client) SkipFullJobTable(request *SkipFullJobTableRequest) (_resul
 
 // Summary:
 //
-// Skips one or more precheck items.
+// Suppresses or unsuppresses precheck alert items.
 //
 // @param request - SkipPreCheckRequest
 //
@@ -10407,7 +10559,7 @@ func (client *Client) SkipPreCheckWithOptions(request *SkipPreCheckRequest, runt
 
 // Summary:
 //
-// Skips one or more precheck items.
+// Suppresses or unsuppresses precheck alert items.
 //
 // @param request - SkipPreCheckRequest
 //
@@ -10425,7 +10577,7 @@ func (client *Client) SkipPreCheck(request *SkipPreCheckRequest) (_result *SkipP
 
 // Summary:
 //
-// Starts a data migration, data synchronization, or change tracking task.
+// Starts a data migration, data synchronization, or change tracking task by calling the StartDtsJob operation.
 //
 // @param request - StartDtsJobRequest
 //
@@ -10489,7 +10641,7 @@ func (client *Client) StartDtsJobWithOptions(request *StartDtsJobRequest, runtim
 
 // Summary:
 //
-// Starts a data migration, data synchronization, or change tracking task.
+// Starts a data migration, data synchronization, or change tracking task by calling the StartDtsJob operation.
 //
 // @param request - StartDtsJobRequest
 //
@@ -10507,7 +10659,7 @@ func (client *Client) StartDtsJob(request *StartDtsJobRequest) (_result *StartDt
 
 // Summary:
 //
-// Starts multiple data migration or data synchronization tasks.
+// Starts multiple data migration or synchronization tasks in a batch by calling the StartDtsJobs operation.
 //
 // @param request - StartDtsJobsRequest
 //
@@ -10563,7 +10715,7 @@ func (client *Client) StartDtsJobsWithOptions(request *StartDtsJobsRequest, runt
 
 // Summary:
 //
-// Starts multiple data migration or data synchronization tasks.
+// Starts multiple data migration or synchronization tasks in a batch by calling the StartDtsJobs operation.
 //
 // @param request - StartDtsJobsRequest
 //
@@ -10581,7 +10733,7 @@ func (client *Client) StartDtsJobs(request *StartDtsJobsRequest) (_result *Start
 
 // Summary:
 //
-// Starts a data migration task.
+// Starts a data migration task of Data Transmission Service (DTS).
 //
 // @param request - StartMigrationJobRequest
 //
@@ -10641,7 +10793,7 @@ func (client *Client) StartMigrationJobWithOptions(request *StartMigrationJobReq
 
 // Summary:
 //
-// Starts a data migration task.
+// Starts a data migration task of Data Transmission Service (DTS).
 //
 // @param request - StartMigrationJobRequest
 //
@@ -10659,11 +10811,11 @@ func (client *Client) StartMigrationJob(request *StartMigrationJobRequest) (_res
 
 // Summary:
 //
-// Starts the reverse task that is created by calling the CreateReverseDtsJob operation.
+// Starts a reverse task that is created by calling the CreateReverseDtsJob operation.
 //
 // Description:
 //
-// Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation.
+// Before you call this operation, check the status of the reverse task in the console or by calling [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html). Make sure that the task has not been released and is in the paused state.
 //
 // @param request - StartReverseWriterRequest
 //
@@ -10715,11 +10867,11 @@ func (client *Client) StartReverseWriterWithOptions(request *StartReverseWriterR
 
 // Summary:
 //
-// Starts the reverse task that is created by calling the CreateReverseDtsJob operation.
+// Starts a reverse task that is created by calling the CreateReverseDtsJob operation.
 //
 // Description:
 //
-// Before you call this operation, make sure that your instance is not released and is paused. You can check the status of the instance in the Data Transmission Service (DTS) console or by calling the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation.
+// Before you call this operation, check the status of the reverse task in the console or by calling [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html). Make sure that the task has not been released and is in the paused state.
 //
 // @param request - StartReverseWriterRequest
 //
@@ -10737,7 +10889,7 @@ func (client *Client) StartReverseWriter(request *StartReverseWriterRequest) (_r
 
 // Summary:
 //
-// Starts a change tracking task.
+// Starts the channel of a change tracking instance. This is a legacy operation.
 //
 // @param request - StartSubscriptionInstanceRequest
 //
@@ -10797,7 +10949,7 @@ func (client *Client) StartSubscriptionInstanceWithOptions(request *StartSubscri
 
 // Summary:
 //
-// Starts a change tracking task.
+// Starts the channel of a change tracking instance. This is a legacy operation.
 //
 // @param request - StartSubscriptionInstanceRequest
 //
@@ -10897,7 +11049,7 @@ func (client *Client) StartSynchronizationJob(request *StartSynchronizationJobRe
 
 // Summary:
 //
-// Releases a cluster.
+// Releases a cluster by calling the StopDedicatedCluster operation.
 //
 // @param request - StopDedicatedClusterRequest
 //
@@ -10961,7 +11113,7 @@ func (client *Client) StopDedicatedClusterWithOptions(request *StopDedicatedClus
 
 // Summary:
 //
-// Releases a cluster.
+// Releases a cluster by calling the StopDedicatedCluster operation.
 //
 // @param request - StopDedicatedClusterRequest
 //
@@ -10979,7 +11131,7 @@ func (client *Client) StopDedicatedCluster(request *StopDedicatedClusterRequest)
 
 // Summary:
 //
-// Stops a data migration, data synchronization, or change tracking task.
+// Stops a data migration, data synchronization, or change tracking task by calling StopDtsJob.
 //
 // @param request - StopDtsJobRequest
 //
@@ -11043,7 +11195,7 @@ func (client *Client) StopDtsJobWithOptions(request *StopDtsJobRequest, runtime 
 
 // Summary:
 //
-// Stops a data migration, data synchronization, or change tracking task.
+// Stops a data migration, data synchronization, or change tracking task by calling StopDtsJob.
 //
 // @param request - StopDtsJobRequest
 //
@@ -11061,7 +11213,7 @@ func (client *Client) StopDtsJob(request *StopDtsJobRequest) (_result *StopDtsJo
 
 // Summary:
 //
-// Stops multiple data migration or data synchronization tasks.
+// Stops multiple DTS tasks at a time.
 //
 // @param request - StopDtsJobsRequest
 //
@@ -11117,7 +11269,7 @@ func (client *Client) StopDtsJobsWithOptions(request *StopDtsJobsRequest, runtim
 
 // Summary:
 //
-// Stops multiple data migration or data synchronization tasks.
+// Stops multiple DTS tasks at a time.
 //
 // @param request - StopDtsJobsRequest
 //
@@ -11135,7 +11287,7 @@ func (client *Client) StopDtsJobs(request *StopDtsJobsRequest) (_result *StopDts
 
 // Summary:
 //
-// Stops a data migration task that is in the Migrating state.
+// Ends a data migration task that is in a migration state.
 //
 // @param request - StopMigrationJobRequest
 //
@@ -11199,7 +11351,7 @@ func (client *Client) StopMigrationJobWithOptions(request *StopMigrationJobReque
 
 // Summary:
 //
-// Stops a data migration task that is in the Migrating state.
+// Ends a data migration task that is in a migration state.
 //
 // @param request - StopMigrationJobRequest
 //
@@ -11217,7 +11369,7 @@ func (client *Client) StopMigrationJob(request *StopMigrationJobRequest) (_resul
 
 // Summary:
 //
-// Queries the number of migrated or synchronized objects in a Data Transmission Service (DTS) task.
+// Queries the number of tables migrated in a Data Transmission Service (DTS) data migration or synchronization task.
 //
 // @param request - SummaryJobDetailRequest
 //
@@ -11289,7 +11441,7 @@ func (client *Client) SummaryJobDetailWithOptions(request *SummaryJobDetailReque
 
 // Summary:
 //
-// Queries the number of migrated or synchronized objects in a Data Transmission Service (DTS) task.
+// Queries the number of tables migrated in a Data Transmission Service (DTS) data migration or synchronization task.
 //
 // @param request - SummaryJobDetailRequest
 //
@@ -11307,7 +11459,7 @@ func (client *Client) SummaryJobDetail(request *SummaryJobDetailRequest) (_resul
 
 // Summary:
 //
-// Pauses a data migration, data synchronization, or change tracking task.
+// Suspends a data migration or synchronization task. Change tracking tasks are not supported. Change tracking instances do not support the suspend capability. Do not call this operation on change tracking instances.
 //
 // Description:
 //
@@ -11375,7 +11527,7 @@ func (client *Client) SuspendDtsJobWithOptions(request *SuspendDtsJobRequest, ru
 
 // Summary:
 //
-// Pauses a data migration, data synchronization, or change tracking task.
+// Suspends a data migration or synchronization task. Change tracking tasks are not supported. Change tracking instances do not support the suspend capability. Do not call this operation on change tracking instances.
 //
 // Description:
 //
@@ -11397,7 +11549,7 @@ func (client *Client) SuspendDtsJob(request *SuspendDtsJobRequest) (_result *Sus
 
 // Summary:
 //
-// Suspends multiple Data Transmission Service (DTS) tasks.
+// Suspends multiple DTS tasks at a time.
 //
 // @param request - SuspendDtsJobsRequest
 //
@@ -11453,7 +11605,7 @@ func (client *Client) SuspendDtsJobsWithOptions(request *SuspendDtsJobsRequest, 
 
 // Summary:
 //
-// Suspends multiple Data Transmission Service (DTS) tasks.
+// Suspends multiple DTS tasks at a time.
 //
 // @param request - SuspendDtsJobsRequest
 //
@@ -11471,7 +11623,7 @@ func (client *Client) SuspendDtsJobs(request *SuspendDtsJobsRequest) (_result *S
 
 // Summary:
 //
-// Pauses a data migration task.
+// Suspends a data migration task that is in progress.
 //
 // @param request - SuspendMigrationJobRequest
 //
@@ -11535,7 +11687,7 @@ func (client *Client) SuspendMigrationJobWithOptions(request *SuspendMigrationJo
 
 // Summary:
 //
-// Pauses a data migration task.
+// Suspends a data migration task that is in progress.
 //
 // @param request - SuspendMigrationJobRequest
 //
@@ -11553,17 +11705,15 @@ func (client *Client) SuspendMigrationJob(request *SuspendMigrationJobRequest) (
 
 // Summary:
 //
-// Pauses a data synchronization task.
+// Pauses a data synchronization task that is in the Synchronizing state.
 //
 // Description:
 //
-// >
+// > - When you call this operation, the synchronization task must be in the Synchronizing state.
 //
-//   - When you call this operation, the data synchronization task must be in the Synchronizing state.
+// - A synchronization task cannot be paused for more than 6 hours. Otherwise, the task cannot be restarted.
 //
-//   - We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
-//
-//   - If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+// - DTS continues to charge fees for a pay-as-you-go synchronization task even if the task is paused. This is because DTS only pauses writing data to the destination instance but continues to pull logs from the source instance to ensure quick resumption when the task is restarted. Therefore, the task still consumes resources such as bandwidth of the source database.
 //
 // @param request - SuspendSynchronizationJobRequest
 //
@@ -11627,17 +11777,15 @@ func (client *Client) SuspendSynchronizationJobWithOptions(request *SuspendSynch
 
 // Summary:
 //
-// Pauses a data synchronization task.
+// Pauses a data synchronization task that is in the Synchronizing state.
 //
 // Description:
 //
-// >
+// > - When you call this operation, the synchronization task must be in the Synchronizing state.
 //
-//   - When you call this operation, the data synchronization task must be in the Synchronizing state.
+// - A synchronization task cannot be paused for more than 6 hours. Otherwise, the task cannot be restarted.
 //
-//   - We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
-//
-//   - If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+// - DTS continues to charge fees for a pay-as-you-go synchronization task even if the task is paused. This is because DTS only pauses writing data to the destination instance but continues to pull logs from the source instance to ensure quick resumption when the task is restarted. Therefore, the task still consumes resources such as bandwidth of the source database.
 //
 // @param request - SuspendSynchronizationJobRequest
 //
@@ -11655,7 +11803,7 @@ func (client *Client) SuspendSynchronizationJob(request *SuspendSynchronizationJ
 
 // Summary:
 //
-// # Migrates Microsoft SQL Server (MSSQL) to the cloud by using a physical gateway
+// Performs physical migration of an MSSQL database to Alibaba Cloud.
 //
 // @param request - SwitchPhysicalDtsJobToCloudRequest
 //
@@ -11715,7 +11863,7 @@ func (client *Client) SwitchPhysicalDtsJobToCloudWithOptions(request *SwitchPhys
 
 // Summary:
 //
-// # Migrates Microsoft SQL Server (MSSQL) to the cloud by using a physical gateway
+// Performs physical migration of an MSSQL database to Alibaba Cloud.
 //
 // @param request - SwitchPhysicalDtsJobToCloudRequest
 //
@@ -11733,7 +11881,7 @@ func (client *Client) SwitchPhysicalDtsJobToCloud(request *SwitchPhysicalDtsJobT
 
 // Summary:
 //
-// After you perform a primary/secondary switchover on the source or destination database, you can call the SwitchSynchronizationEndpoint operation to transfer the connection settings to Data Transmission Service (DTS). DTS will restart the data synchronization task from the breakpoint.
+// Passes the connection information of the new database to DTS after a primary/secondary switchover. DTS restarts data synchronization from the checkpoint.
 //
 // @param request - SwitchSynchronizationEndpointRequest
 //
@@ -11805,7 +11953,7 @@ func (client *Client) SwitchSynchronizationEndpointWithOptions(request *SwitchSy
 
 // Summary:
 //
-// After you perform a primary/secondary switchover on the source or destination database, you can call the SwitchSynchronizationEndpoint operation to transfer the connection settings to Data Transmission Service (DTS). DTS will restart the data synchronization task from the breakpoint.
+// Passes the connection information of the new database to DTS after a primary/secondary switchover. DTS restarts data synchronization from the checkpoint.
 //
 // @param request - SwitchSynchronizationEndpointRequest
 //
@@ -11823,21 +11971,21 @@ func (client *Client) SwitchSynchronizationEndpoint(request *SwitchSynchronizati
 
 // Summary:
 //
-// Adds tags to data migration, data synchronization, or change tracking instances.
+// Binds tags to one or more data migration, synchronization, and change tracking instances by calling the TagResources operation.
 //
 // Description:
 //
-// If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can query instances by tag.
+// If you have a large number of instances, you can create multiple tags and attach different tags to instances for categorization. Then, you can filter instances by tag.
 //
-//   - A tag consists of a key and a value. Each key must be unique in a region within an Alibaba Cloud account. Different keys can be mapped to the same value.
+// - A tag consists of a key-value pair. Tag keys must be unique within the same Alibaba Cloud account and region. Tag values do not have this restriction.
 //
-//   - If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+// - If the specified tag does not exist, the tag is automatically created and attached to the destination instance.
 //
-//   - If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+// - If the instance already has a tag with the same key, the existing tag is overwritten.
 //
-//   - You can add up to 20 tags to an instance.
+// - You can attach up to 20 tags to each instance.
 //
-//   - You can add tags to up to 50 instances in each request.
+// - You can invoke the operation to attach tags to up to 50 instances at a time.
 //
 // @param request - TagResourcesRequest
 //
@@ -11897,21 +12045,21 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds tags to data migration, data synchronization, or change tracking instances.
+// Binds tags to one or more data migration, synchronization, and change tracking instances by calling the TagResources operation.
 //
 // Description:
 //
-// If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can query instances by tag.
+// If you have a large number of instances, you can create multiple tags and attach different tags to instances for categorization. Then, you can filter instances by tag.
 //
-//   - A tag consists of a key and a value. Each key must be unique in a region within an Alibaba Cloud account. Different keys can be mapped to the same value.
+// - A tag consists of a key-value pair. Tag keys must be unique within the same Alibaba Cloud account and region. Tag values do not have this restriction.
 //
-//   - If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+// - If the specified tag does not exist, the tag is automatically created and attached to the destination instance.
 //
-//   - If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+// - If the instance already has a tag with the same key, the existing tag is overwritten.
 //
-//   - You can add up to 20 tags to an instance.
+// - You can attach up to 20 tags to each instance.
 //
-//   - You can add tags to up to 50 instances in each request.
+// - You can invoke the operation to attach tags to up to 50 instances at a time.
 //
 // @param request - TagResourcesRequest
 //
@@ -11929,7 +12077,13 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Upgrades or downgrades a Data Transmission Service (DTS) instance.
+// Upgrades or downgrades the specifications of a DTS instance.
+//
+// Description:
+//
+// > - Downgrading DTS instance specifications is no longer supported.
+//
+// - If the source of a DTS instance is Redis 6.0 and incremental data updates exist, do not perform an upgrade. Otherwise, the DTS instance may fail and cannot be recovered. You must reconfigure the instance after a failure.
 //
 // @param request - TransferInstanceClassRequest
 //
@@ -11993,7 +12147,13 @@ func (client *Client) TransferInstanceClassWithOptions(request *TransferInstance
 
 // Summary:
 //
-// Upgrades or downgrades a Data Transmission Service (DTS) instance.
+// Upgrades or downgrades the specifications of a DTS instance.
+//
+// Description:
+//
+// > - Downgrading DTS instance specifications is no longer supported.
+//
+// - If the source of a DTS instance is Redis 6.0 and incremental data updates exist, do not perform an upgrade. Otherwise, the DTS instance may fail and cannot be recovered. You must reconfigure the instance after a failure.
 //
 // @param request - TransferInstanceClassRequest
 //
@@ -12011,15 +12171,21 @@ func (client *Client) TransferInstanceClass(request *TransferInstanceClassReques
 
 // Summary:
 //
-// Changes the billing method of a Data Transmission Service (DTS) instance.
+// Transforms the payment method of a DTS instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the [billing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
+// <props="china">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/dts/detail) of Data Transmission Service (DTS).
 //
-//   - To prevent resource waste, make sure that the billing method of your DTS instances has to be changed.
+// <props="intl">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
 //
-//   - Data migration instances only support the pay-as-you-go billing method.
+// - To avoid resource waste, confirm the payment method transformation before you perform the operation.
+//
+// - Data migration instances support only the pay-as-you-go billing method. No transformation is required.
+//
+// <props="china">
+//
+// - Serverless instances do not support payment method transformation.
 //
 // @param request - TransferPayTypeRequest
 //
@@ -12099,15 +12265,21 @@ func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest
 
 // Summary:
 //
-// Changes the billing method of a Data Transmission Service (DTS) instance.
+// Transforms the payment method of a DTS instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the [billing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
+// <props="china">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/dts/detail) of Data Transmission Service (DTS).
 //
-//   - To prevent resource waste, make sure that the billing method of your DTS instances has to be changed.
+// <props="intl">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
 //
-//   - Data migration instances only support the pay-as-you-go billing method.
+// - To avoid resource waste, confirm the payment method transformation before you perform the operation.
+//
+// - Data migration instances support only the pay-as-you-go billing method. No transformation is required.
+//
+// <props="china">
+//
+// - Serverless instances do not support payment method transformation.
 //
 // @param request - TransferPayTypeRequest
 //
@@ -12125,11 +12297,11 @@ func (client *Client) TransferPayType(request *TransferPayTypeRequest) (_result 
 
 // Summary:
 //
-// Unbinds tags from one or more data migration, data synchronization, or change tracking instances.
+// Unbinds tags from data migration, synchronization, and change tracking instances.
 //
 // Description:
 //
-// >  If a tag is unbound from an instance and is not bound to other instances, the tag is deleted.
+// > After a tag is unbound from an instance, the tag is automatically deleted if it is not bound to any other instance.
 //
 // @param request - UntagResourcesRequest
 //
@@ -12193,11 +12365,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Unbinds tags from one or more data migration, data synchronization, or change tracking instances.
+// Unbinds tags from data migration, synchronization, and change tracking instances.
 //
 // Description:
 //
-// >  If a tag is unbound from an instance and is not bound to other instances, the tag is deleted.
+// > After a tag is unbound from an instance, the tag is automatically deleted if it is not bound to any other instance.
 //
 // @param request - UntagResourcesRequest
 //
@@ -12215,21 +12387,23 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Upgrades the synchronization topology of a data synchronization instance from one-way synchronization to two-way synchronization. This operation is supported only for pay-as-you-go synchronization instances.
+// Upgrades the synchronization topology of a DTS data synchronization instance from one-way synchronization to two-way synchronization.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS)
+// <props="china">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/dts/detail) of ApsaraDB DTS.
 //
-// When you call this operation, take note of the following information:
+// <props="intl">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of ApsaraDB DTS.
 //
-//   - The source and destination databases of the data synchronization task are both **MySQL*	- databases.
+// Before you begin:
 //
-//   - The synchronization topology of the data synchronization task is **one-way synchronization**.
+// - The database type of both the source instance and the destination instance of the data synchronization node must be **MySQL**.
 //
-//   - The data synchronization task is in the **Synchronizing*	- state.
+// - The synchronization topology of the data synchronization node must be **one-way synchronization**.
 //
-//   - The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+// - The data synchronization node must be in the **Synchronizing*	- state.
+//
+// - During the upgrade, data synchronization may experience a latency of approximately 5 seconds. Perform this operation during off-peak hours.
 //
 // @param request - UpgradeTwoWayRequest
 //
@@ -12285,21 +12459,23 @@ func (client *Client) UpgradeTwoWayWithOptions(request *UpgradeTwoWayRequest, ru
 
 // Summary:
 //
-// Upgrades the synchronization topology of a data synchronization instance from one-way synchronization to two-way synchronization. This operation is supported only for pay-as-you-go synchronization instances.
+// Upgrades the synchronization topology of a DTS data synchronization instance from one-way synchronization to two-way synchronization.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS)
+// <props="china">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/dts/detail) of ApsaraDB DTS.
 //
-// When you call this operation, take note of the following information:
+// <props="intl">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of ApsaraDB DTS.
 //
-//   - The source and destination databases of the data synchronization task are both **MySQL*	- databases.
+// Before you begin:
 //
-//   - The synchronization topology of the data synchronization task is **one-way synchronization**.
+// - The database type of both the source instance and the destination instance of the data synchronization node must be **MySQL**.
 //
-//   - The data synchronization task is in the **Synchronizing*	- state.
+// - The synchronization topology of the data synchronization node must be **one-way synchronization**.
 //
-//   - The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+// - The data synchronization node must be in the **Synchronizing*	- state.
+//
+// - During the upgrade, data synchronization may experience a latency of approximately 5 seconds. Perform this operation during off-peak hours.
 //
 // @param request - UpgradeTwoWayRequest
 //
@@ -12317,13 +12493,15 @@ func (client *Client) UpgradeTwoWay(request *UpgradeTwoWayRequest) (_result *Upg
 
 // Summary:
 //
-// If the \\\\\\\\*\\\\\\\\*source or destination instance\\\\\\\\*\\\\\\\\	- is a \\\\\\\\*\\\\\\\\*self-managed database\\\\\\\\*\\\\\\\\	- or a \\\\\\\\*\\\\\\\\*third-party cloud database\\\\\\\\*\\\\\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\\\\\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\\\(~~176627~~).
-//
-// \\\\\\>  If the \\\\\\\\*\\\\\\\\*source or destination database\\\\\\\\*\\\\\\\\	- is an \\\\\\\\*\\\\\\\\*ApsaraDB database instance\\\\\\\\*\\\\\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\\\\\*\\\\\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\\\\\*\\\\\\\\*, you do not need to add the CIDR blocks. When you click \\\\\\\\*\\\\\\\\*Set Whitelist and Next\\\\\\\\*\\\\\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source o
+// Queries the IP addresses of DTS servers by calling the WhiteIpList operation.
 //
 // Description:
 //
-// The operation that you want to perform. Set the value to **WhiteIpList**.
+// <props="china">If the **source or destination instance*	- is a **self-managed database*	- or a **third-party ApsaraDB database**, you need to invoke this operation to query the IP addresses of DTS servers, and then add the returned IP addresses to the security settings (typically the firewall) of the source or destination instance. For more information about how to add IP addresses, see [Add the CIDR blocks of DTS servers to the whitelist of a self-managed database for migration, synchronization, or subscribe](https://help.aliyun.com/document_detail/84900.html).
+//
+// <props="intl">If the **source or destination instance*	- is a **self-managed database*	- or a **third-party ApsaraDB database**, you need to invoke this operation to query the IP addresses of DTS servers, and then add the returned IP addresses to the security settings (typically the firewall) of the source or destination instance. For more information about how to add IP addresses, see [Add the CIDR blocks of DTS servers to the whitelist of a self-managed database](https://help.aliyun.com/document_detail/176627.html).
+//
+// > If the **source or destination database*	- is an **Alibaba Cloud database instance*	- (such as ApsaraDB RDS or ApsaraDB for MongoDB) or a **self-managed database hosted on ECS**, the system automatically adds the IP addresses of DTS servers to the security settings of the instance when you click **Authorize Whitelist and Proceed to Next Step*	- during the configuration of the source or destination instance. You do not need to manually add the IP addresses.
 //
 // @param request - WhiteIpListRequest
 //
@@ -12427,13 +12605,15 @@ func (client *Client) WhiteIpListWithOptions(request *WhiteIpListRequest, runtim
 
 // Summary:
 //
-// If the \\\\\\\\*\\\\\\\\*source or destination instance\\\\\\\\*\\\\\\\\	- is a \\\\\\\\*\\\\\\\\*self-managed database\\\\\\\\*\\\\\\\\	- or a \\\\\\\\*\\\\\\\\*third-party cloud database\\\\\\\\*\\\\\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\\\\\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\\\(~~176627~~).
-//
-// \\\\\\>  If the \\\\\\\\*\\\\\\\\*source or destination database\\\\\\\\*\\\\\\\\	- is an \\\\\\\\*\\\\\\\\*ApsaraDB database instance\\\\\\\\*\\\\\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\\\\\*\\\\\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\\\\\*\\\\\\\\*, you do not need to add the CIDR blocks. When you click \\\\\\\\*\\\\\\\\*Set Whitelist and Next\\\\\\\\*\\\\\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source o
+// Queries the IP addresses of DTS servers by calling the WhiteIpList operation.
 //
 // Description:
 //
-// The operation that you want to perform. Set the value to **WhiteIpList**.
+// <props="china">If the **source or destination instance*	- is a **self-managed database*	- or a **third-party ApsaraDB database**, you need to invoke this operation to query the IP addresses of DTS servers, and then add the returned IP addresses to the security settings (typically the firewall) of the source or destination instance. For more information about how to add IP addresses, see [Add the CIDR blocks of DTS servers to the whitelist of a self-managed database for migration, synchronization, or subscribe](https://help.aliyun.com/document_detail/84900.html).
+//
+// <props="intl">If the **source or destination instance*	- is a **self-managed database*	- or a **third-party ApsaraDB database**, you need to invoke this operation to query the IP addresses of DTS servers, and then add the returned IP addresses to the security settings (typically the firewall) of the source or destination instance. For more information about how to add IP addresses, see [Add the CIDR blocks of DTS servers to the whitelist of a self-managed database](https://help.aliyun.com/document_detail/176627.html).
+//
+// > If the **source or destination database*	- is an **Alibaba Cloud database instance*	- (such as ApsaraDB RDS or ApsaraDB for MongoDB) or a **self-managed database hosted on ECS**, the system automatically adds the IP addresses of DTS servers to the security settings of the instance when you click **Authorize Whitelist and Proceed to Next Step*	- during the configuration of the source or destination instance. You do not need to manually add the IP addresses.
 //
 // @param request - WhiteIpListRequest
 //

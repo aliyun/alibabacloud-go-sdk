@@ -22,13 +22,13 @@ type iStartMigrationJobRequest interface {
 }
 
 type StartMigrationJobRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query all data migration instances.
+	// Instance ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -37,13 +37,13 @@ type StartMigrationJobRequest struct {
 	// dtss0611o8vv90****
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
 	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

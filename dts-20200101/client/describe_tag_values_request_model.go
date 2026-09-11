@@ -30,43 +30,43 @@ type iDescribeTagValuesRequest interface {
 type DescribeTagValuesRequest struct {
 	// The type of the tag key. Valid values:
 	//
-	// 	- **Custom**: The tag key is created by users.
+	// - **Custom**: a user-added tag key.
 	//
-	// 	- **System**: The tag key is created by the system.
+	// - **System**: a system-created tag key.
 	//
-	// >  By default, if the parameter is left empty, both custom tag keys and system tag keys are returned.
+	// > If this parameter is left empty, all tag keys are returned by default.
 	//
 	// example:
 	//
 	// Custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The tag key.
+	// The key of the tag.
 	//
-	// >  This parameter is required.
+	// > This parameter is required.
 	//
 	// example:
 	//
 	// owner
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The page number of the start page to return for a tag key that has multiple values. The valid value ranges from 1 to the maximum value of the INTEGER data type. This parameter is often used with the PageSize parameter. Default value: 1.
+	// The page number. Specifies the page to return when a tag key has multiple tag values. The value must be a positive integer that does not exceed the maximum value of the Integer data type. This parameter is typically used together with PageSize. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of tag values to return each time for a tag key that has multiple values. Default value: 20.
+	// The number of tag values to return per page when a tag key has multiple tag values. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type DescribeTagValuesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
 	//
-	// >  If this parameter is left empty, the values of all tag keys of the current user are returned.
+	// > If this parameter is left empty, all tag values of the specified tag key for the current account are returned.
 	//
 	// example:
 	//
 	// dtsl5o11f9029c****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. Set the value to **ALIYUN::DTS::INSTANCE**.
+	// The resource type defined by the system. Set the value to **ALIYUN::DTS::INSTANCE**.
 	//
 	// example:
 	//

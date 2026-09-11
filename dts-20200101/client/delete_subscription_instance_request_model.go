@@ -22,26 +22,26 @@ type iDeleteSubscriptionInstanceRequest interface {
 }
 
 type DeleteSubscriptionInstanceRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//

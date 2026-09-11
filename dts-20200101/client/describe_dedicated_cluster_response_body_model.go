@@ -64,67 +64,67 @@ type iDescribeDedicatedClusterResponseBody interface {
 }
 
 type DescribeDedicatedClusterResponseBody struct {
-	// The CPU utilization. Unit: percentage.
+	// The CPU utilization percentage.
 	//
 	// example:
 	//
 	// 30
 	CpuUtilization *int64 `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// dtsCluster****
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// daily_test
 	DedicatedClusterName *string `json:"DedicatedClusterName,omitempty" xml:"DedicatedClusterName,omitempty"`
-	// The disk usage.
+	// The disk utilization.
 	//
 	// example:
 	//
 	// 50
 	DiskUtilization *int64 `json:"DiskUtilization,omitempty" xml:"DiskUtilization,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// dtsb8r****
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// The number of DTS units (DUs).
+	// The number of DUs.
 	//
 	// example:
 	//
 	// 30
 	Du *int64 `json:"Du,omitempty" xml:"Du,omitempty"`
-	// The DU usage. Unit: percentage.
+	// The DU utilization percentage.
 	//
 	// example:
 	//
 	// 16
 	DuUtilization *int64 `json:"DuUtilization,omitempty" xml:"DuUtilization,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The time when the cluster was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1642476144000
 	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the cluster stopped.
+	// The end time.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The memory usage.
+	// The memory utilization.
 	//
 	// example:
 	//
@@ -148,41 +148,41 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 5
 	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The number of DUs that exceeds the upper limit.
+	// The number of oversold DUs.
 	//
 	// example:
 	//
 	// 60
 	OversoldDu *int64 `json:"OversoldDu,omitempty" xml:"OversoldDu,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region in which the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the cluster. Valid values:
+	// The cluster status. Valid values:
 	//
-	// 	- **init**: The cluster is being initialized.
+	// - **init**: initialization.
 	//
-	// 	- **schedule**: The cluster is pending scheduling.
+	// - **schedule**: pending scheduling.
 	//
-	// 	- **running**: The cluster is running.
+	// - **running**: running.
 	//
-	// 	- **upgrade**: The cluster is being upgraded.
+	// - **upgrade**: upgrading.
 	//
-	// 	- **downgrade**: The cluster is being downgraded.
+	// - **downgrade**: downgrading.
 	//
-	// 	- **locked**: The cluster is locked.
+	// - **locked**: locked.
 	//
-	// 	- **releasing**: The cluster is being released.
+	// - **releasing**: being released.
 	//
-	// 	- **released**: The cluster is released.
+	// - **released**: released.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 100
 	TotalCpuCore *int64 `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
-	// The total disk size. Unit: GB.
+	// The total disk size, in GB.
 	//
 	// example:
 	//
 	// 2048
 	TotalDiskGBSize *int64 `json:"TotalDiskGBSize,omitempty" xml:"TotalDiskGBSize,omitempty"`
-	// The total amount of memory. Unit: GB.
+	// The total memory size, in GB.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 30
 	UsedCpuCore *int64 `json:"UsedCpuCore,omitempty" xml:"UsedCpuCore,omitempty"`
-	// The used disk size. Unit: GB.
+	// The used disk size, in GB.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type DescribeDedicatedClusterResponseBody struct {
 	//
 	// 5
 	UsedDu *int64 `json:"UsedDu,omitempty" xml:"UsedDu,omitempty"`
-	// The amount of used memory. Unit: GB.
+	// The used memory size, in GB.
 	//
 	// example:
 	//

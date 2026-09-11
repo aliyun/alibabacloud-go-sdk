@@ -46,27 +46,27 @@ type iCreateSynchronizationJobRequest interface {
 type CreateSynchronizationJobRequest struct {
 	DestinationEndpoint *CreateSynchronizationJobRequestDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	SourceEndpoint      *CreateSynchronizationJobRequestSourceEndpoint      `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken*	- parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Generate a value from your client to ensure uniqueness across different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// If you set the **SourceEndpoint.InstanceType*	- parameter to **DRDS**, you must specify the DBInstanceCount parameter. This parameter specifies the number of private RDS instances attached to the source PolarDB-X instance. Default value: **1**.
+	// The number of private custom ApsaraDB RDS instances attached to the source PolarDB-X instance. This parameter is required when **SourceEndpoint.InstanceType*	- is set to **DRDS**. Default value: **1**.
 	//
 	// example:
 	//
-	// 3
+	// 1
 	DBInstanceCount *int32 `json:"DBInstanceCount,omitempty" xml:"DBInstanceCount,omitempty"`
-	// The ID of the region where the destination database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the destination database for data synchronization. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// >  If the **SourceRegion*	- parameter is set to the China (Hong Kong) region or a region outside the Chinese mainland, you must set the DestRegion parameter to the same region ID.
+	// > If the region specified by the **SourceRegion*	- parameter is Hong Kong (China) or a region outside China, set this parameter to the same region ID.
 	//
 	// This parameter is required.
 	//
@@ -75,11 +75,11 @@ type CreateSynchronizationJobRequest struct {
 	// cn-hangzhou
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The billing method of the data synchronization instance.
+	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid*	- (default value): pay-as-you-go
+	// - **PostPaid**: pay-as-you-go. This is the default value.
 	//
 	// This parameter is required.
 	//
@@ -87,31 +87,31 @@ type CreateSynchronizationJobRequest struct {
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle of the subscription instance. Valid values:
+	// The billing method of the subscription instance. Valid values:
 	//
-	// 	- **Year**
+	// - **Year**: annual subscription.
 	//
-	// 	- **Month**
+	// - **Month**: monthly subscription.
 	//
-	// >  You must specify this parameter only if you set the PayType parameter to **PrePaid**.
+	// > This parameter is valid and required only when **PayType*	- is set to **PrePaid*	- (subscription).
 	//
 	// example:
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region where the data synchronization instance resides. The region ID is the same as the value of the **DestRegion*	- parameter.
+	// The region ID of the data synchronization instance. Set this parameter to the same value as the **DestRegion*	- parameter.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource GroupId
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the region where the source database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the source database for data synchronization. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -119,9 +119,9 @@ type CreateSynchronizationJobRequest struct {
 	//
 	// cn-hangzhou
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
-	// The specification of the data synchronization instance. Valid values: **micro**, **small**, **medium**, and **large**.
+	// The specification of the data synchronization link. Valid values: **micro**, **small**, **medium**, **large**.
 	//
-	// >  For more information about the test performance of each specification, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about the description and performance test results of each specification, see [Specifications of data synchronization links](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// This parameter is required.
 	//
@@ -131,33 +131,31 @@ type CreateSynchronizationJobRequest struct {
 	SynchronizationJobClass *string `json:"SynchronizationJobClass,omitempty" xml:"SynchronizationJobClass,omitempty"`
 	// The synchronization topology. Valid values:
 	//
-	// 	- **oneway**: one-way synchronization
+	// - **oneway**: one-way synchronization.
 	//
-	// 	- **bidirectional**: two-way synchronization
+	// - **bidirectional**: two-way synchronization.
 	//
-	// >
+	// > - Default value: **oneway**.
 	//
-	// 	- The default value is **oneway**.
-	//
-	// 	- This parameter can be set to **bidirectional*	- only when the **SourceEndpoint.InstanceType*	- and **DestinationEndpoint.InstanceType*	- parameters are set to **MySQL**, **PolarDB**, or **Redis**.
+	// - You can set this parameter to **bidirectional*	- only when both **SourceEndpoint.InstanceType*	- and **DestinationEndpoint.InstanceType*	- are set to **MySQL**, **PolarDB**, or **Redis**.
 	//
 	// example:
 	//
 	// oneway
 	Topology *string `json:"Topology,omitempty" xml:"Topology,omitempty"`
-	// The subscription length.
+	// The subscription duration of the subscription instance.
 	//
-	// 	- If the billing cycle is **Year**, the value range is **1 to 5**.
+	// - If the billing method is set to **Year**, valid values are **1 to 5**.
 	//
-	// 	- If the billing cycle is **Month**, the value range is **1 to 60**.
+	// - If the billing method is set to **Month**, valid values are **1 to 60**.
 	//
-	// >  You must specify this parameter only if you set the PayType parameter to **PrePaid**.
+	// > This parameter is valid and required only when **PayType*	- is set to **PrePaid*	- (subscription).
 	//
 	// example:
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The network type. Valid value: **Intranet**, which indicates virtual private cloud (VPC).
+	// The network type for Data Transmission Service. Set the value to **Intranet*	- (Express Connect).
 	//
 	// example:
 	//
@@ -332,21 +330,19 @@ func (s *CreateSynchronizationJobRequest) Validate() error {
 }
 
 type CreateSynchronizationJobRequestDestinationEndpoint struct {
-	// The instance type of the destination database. Valid values:
+	// 目标库的实例类型，取值：
 	//
-	// 	- **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+	// - **MySQL**：MySQL数据库（包括RDS MySQL和自建MySQL）。
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+	// - **PolarDB**：PolarDB集群（仅支持MySQL或兼容Oracle语法的引擎）。
 	//
-	// 	- **Redis**: Redis database
+	// - **Redis**：Redis数据库。
 	//
-	// 	- **MaxCompute**: MaxCompute project
+	// - **MaxCompute**：MaxCompute实例。
 	//
-	// >
+	// >- 默认取值为**MySQL**。
 	//
-	// 	- Default value: **MySQL**.
-	//
-	// 	- For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html).
+	// - 关于支持的源库和目标库对应情况，请参见支持的[数据库、同步初始化类型和同步拓扑](https://help.aliyun.com/document_detail/130744.html)。
 	//
 	// example:
 	//
@@ -376,21 +372,19 @@ func (s *CreateSynchronizationJobRequestDestinationEndpoint) Validate() error {
 }
 
 type CreateSynchronizationJobRequestSourceEndpoint struct {
-	// The instance type of the source database. Valid values:
+	// 源库的实例类型，取值：
 	//
-	// 	- **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
+	// - **MySQL**：MySQL数据库（包括RDS MySQL和自建MySQL）。
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+	// - **PolarDB**：PolarDB集群（仅支持MySQL或兼容Oracle语法的引擎）。
 	//
-	// 	- **Redis**: Redis database
+	// - **Redis**：Redis数据库。
 	//
-	// 	- **DRDS**: PolarDB-X instance V1.0
+	// - **DRDS**：云原生分布式数据库PolarDB-X 1.0。
 	//
-	// >
+	// > - 默认取值为**MySQL**。
 	//
-	// 	- Default value: **MySQL**.
-	//
-	// 	- For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html).
+	// - 关于支持的源库和目标库对应情况，请参见支持的[数据库、同步初始化类型和同步拓扑](https://help.aliyun.com/document_detail/130744.html)。
 	//
 	// example:
 	//

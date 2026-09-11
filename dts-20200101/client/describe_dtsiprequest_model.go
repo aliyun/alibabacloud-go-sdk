@@ -20,29 +20,29 @@ type iDescribeDTSIPRequest interface {
 }
 
 type DescribeDTSIPRequest struct {
-	// The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the destination instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// >  If the destination instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou*	- or the ID of the closest region.
+	// > If the destination instance is a self-managed database that has a public IP address, you can specify **ap-southeast-1*	- or the region ID that is geographically closest to the self-managed database.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
-	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS task instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the source instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// >  If the source instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou*	- or the ID of the closest region.
+	// > If the source instance is a self-managed database that has a public IP address, you can specify **ap-southeast-1*	- or the region ID that is geographically closest to the self-managed database.
 	//
 	// This parameter is required.
 	//

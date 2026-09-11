@@ -26,7 +26,7 @@ type SkipFullJobTableResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type SkipFullJobTableResponseBody struct {
 	//
 	// 4D0ADAD5-DD97-41B6-B78F-D1961AB1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

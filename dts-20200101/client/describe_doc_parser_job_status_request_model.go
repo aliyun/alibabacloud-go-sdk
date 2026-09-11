@@ -20,15 +20,21 @@ type iDescribeDocParserJobStatusRequest interface {
 }
 
 type DescribeDocParserJobStatusRequest struct {
+	// The task ID (DtsJobId) returned when the document parsing task was created.
+	//
 	// example:
 	//
 	// dts-20250729-l3m1213ye7l****
 	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	RagInstanceId *string `json:"RagInstanceId,omitempty" xml:"RagInstanceId,omitempty"`
+	// The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmzawhxxc****

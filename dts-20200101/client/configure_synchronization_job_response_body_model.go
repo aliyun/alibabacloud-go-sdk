@@ -20,25 +20,25 @@ type iConfigureSynchronizationJobResponseBody interface {
 }
 
 type ConfigureSynchronizationJobResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2690E467-7773-43BC-A009-370EE2E7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

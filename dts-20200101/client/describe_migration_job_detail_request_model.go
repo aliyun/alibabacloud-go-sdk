@@ -31,19 +31,19 @@ type iDescribeMigrationJobDetailRequest interface {
 
 type DescribeMigrationJobDetailRequest struct {
 	MigrationMode *DescribeMigrationJobDetailRequestMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the instance ID.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be discontinued.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0*	- and does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The client token that is used to ensure the idempotence of the request. Generate a value from your client to ensure that the value is unique among different requests. The value of **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the instance ID.
+	// Instance ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,31 +52,25 @@ type DescribeMigrationJobDetailRequest struct {
 	// dtsta7w132u12h****
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
 	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0*	- and does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be an integer greater than **0*	- and must not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30.
+	// The number of records per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the data migration instance resides. For more information, see List of supported regions.
+	// The ID of the region where the data migration instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to query the details of schema migration. Valid values:
-	//
-	// 	- **true**: yes
-	//
-	// 	- **false**: no
-	//
-	// > Default value: **false**
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -183,19 +177,37 @@ func (s *DescribeMigrationJobDetailRequest) Validate() error {
 }
 
 type DescribeMigrationJobDetailRequestMigrationMode struct {
-	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// Specifies whether to query the details of full data migration. Valid values:
+	//
+	// - **true**: yes.
+	//
+	// - **false**: no.
+	//
+	// > Default value: **false**.
 	//
 	// example:
 	//
 	// true
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+	// Specifies whether to query the details of incremental data migration. Valid values:
+	//
+	// - **true**: yes.
+	//
+	// - **false**: no.
+	//
+	// > Default value: **false**.
 	//
 	// example:
 	//
 	// true
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// When you call this operation, the data migration task must be in the Migrating, Failed, Paused, or Finished state.
+	// Specifies whether to query the details of schema migration. Valid values:
+	//
+	// - **true**: yes.
+	//
+	// - **false**: no.
+	//
+	// > Default value: **false**.
 	//
 	// example:
 	//

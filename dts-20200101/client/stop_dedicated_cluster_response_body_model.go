@@ -22,13 +22,13 @@ type iStopDedicatedClusterResponseBody interface {
 }
 
 type StopDedicatedClusterResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type StopDedicatedClusterResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

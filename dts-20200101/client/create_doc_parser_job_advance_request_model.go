@@ -25,23 +25,41 @@ type iCreateDocParserJobAdvanceRequest interface {
 }
 
 type CreateDocParserJobAdvanceRequest struct {
+	// The name of the document to be parsed.
+	//
+	// > The name must include the file name extension. Currently, only .pdf is supported.
+	//
 	// example:
 	//
 	// 2.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The OSS URL of the document to be parsed.
+	//
+	// > This parameter is automatically populated when you call this operation by using an SDK.
+	//
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com/storage/pdf/40184458-fbb0-44cf-a391-350628ceccdd17375122****
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	RagInstanceId *string   `json:"RagInstanceId,omitempty" xml:"RagInstanceId,omitempty"`
+	// The region ID of the document parsing task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The output format of the parsing result after the task is complete. Valid values:
+	//
+	// - **zip**: a ZIP compressed file.
+	//
+	// - **content**: plain text.
+	//
 	// example:
 	//
 	// zip

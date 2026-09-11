@@ -32,13 +32,13 @@ type ResetSynchronizationJobResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// FDC111B1-ACBF-457D-9656-247FDEE9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

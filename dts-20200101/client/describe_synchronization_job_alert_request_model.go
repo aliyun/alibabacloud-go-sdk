@@ -26,26 +26,26 @@ type iDescribeSynchronizationJobAlertRequest interface {
 }
 
 type DescribeSynchronizationJobAlertRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The value can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Specify this parameter to indicate the region where the subscription channel resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -53,23 +53,23 @@ type DescribeSynchronizationJobAlertRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >  Default value: **Forward**.
+	// > Default value: **Forward**.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs*	- operation to query the instance ID.
+	// Instance ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs*	- operation to query instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dtskxz1170c10p****
+	// kxz1170c10p****
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
 }
 

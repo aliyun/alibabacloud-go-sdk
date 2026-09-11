@@ -24,31 +24,31 @@ type iCreateDtsInstanceResponseBody interface {
 }
 
 type CreateDtsInstanceResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the DTS instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// dtsbi6e22ay243****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// bi6e22ay243****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

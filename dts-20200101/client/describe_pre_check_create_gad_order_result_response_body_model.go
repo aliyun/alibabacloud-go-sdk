@@ -36,47 +36,71 @@ type iDescribePreCheckCreateGadOrderResultResponseBody interface {
 }
 
 type DescribePreCheckCreateGadOrderResultResponseBody struct {
+	// The dynamic error code. This parameter will be deprecated.
+	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// present environment is not support,so skip.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code returned if the call failed.
+	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the call failed.
+	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID of the GAD instance group.
+	//
 	// example:
 	//
 	// gad-bp1i99e8l7913****
 	InstanceId    *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PreCheckItems *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems `json:"PreCheckItems,omitempty" xml:"PreCheckItems,omitempty" type:"Struct"`
+	// The overall precheck result.
+	//
 	// example:
 	//
 	// True
 	PreCheckResult *bool `json:"PreCheckResult,omitempty" xml:"PreCheckResult,omitempty"`
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 92E1E99D-5224-4AD3-8C94-23A3516B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the precheck task.
+	//
 	// example:
 	//
 	// 11****

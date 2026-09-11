@@ -142,25 +142,27 @@ type iConfigureDtsJobRequest interface {
 }
 
 type ConfigureDtsJobRequest struct {
-	// The start offset of incremental data migration or incremental data synchronization. The value is a UNIX timestamp. Unit: seconds.
+	// The start position for incremental data migration or the synchronization checkpoint, in the format of a UNIX timestamp. Unit: seconds.
+	//
+	// > If you specify the **Checkpoint*	- parameter, make sure that no other running DTS instance has the same source database as the destination DTS instance.
 	//
 	// example:
 	//
 	// 1610540493
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The parameters for data verification, including the configurations for data verification and alerts. The value is a JSON string. For more information, see [DataCheckConfigure parameter description](https://help.aliyun.com/document_detail/459023.html).
+	// The parameters of the data validation node, in JSON character string format, such as parameter limits and alert configuration. For more information, see [DataCheckConfigure parameter description](https://help.aliyun.com/document_detail/459023.html).
 	//
 	// example:
 	//
 	// {"fullCheckModel":1,"fullCheckRatio":20,"checkMaximumHourEnable":1,"checkMaximumHour":1,"fullCheckErrorNotice":true,"fullCheckValidFailNotice":true,"fullCheckNoticeValue":8,"incrementalCheckErrorNotice":true,"incrementalCheckValidFailNotice":true,"incrementalCheckValidFailNoticeTimes":2,"incrementalCheckValidFailNoticePeriod":1,"incrementalCheckValidFailNoticeValue":1,"incrementalCheckDelayNotice":true,"incrementalCheckDelayNoticeTimes":2,"incrementalCheckDelayNoticePeriod":1,"incrementalCheckDelayNoticeValue":60,"fullDataCheck":true,"incrementalDataCheck":true,"dataCheckNoticePhone":"13126800****","dataCheckDbList":{"dts":{"name":"dts","all":true}}}
 	DataCheckConfigure *string `json:"DataCheckConfigure,omitempty" xml:"DataCheckConfigure,omitempty"`
-	// Specifies whether to perform full data migration or full data synchronization. Valid values:
+	// Specifies whether to perform full data migration or initial full data synchronization. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true**: Yes. This is the default value.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
-	// > If **JobType*	- is set to **CHECK**, set this parameter to **false**.
+	// > If **JobType*	- is set to **CHECK**, this parameter can only be set to **false**.
 	//
 	// This parameter is required.
 	//
@@ -168,13 +170,13 @@ type ConfigureDtsJobRequest struct {
 	//
 	// true
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	// Specifies whether to perform incremental data migration or incremental data synchronization. Valid values:
+	// Specifies whether to perform incremental data migration or synchronization. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false**: No. This is the default value.
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// > If **JobType*	- is set to **CHECK**, set this parameter to **false**.
+	// > If **JobType*	- is set to **CHECK**, this parameter can only be set to **false**.
 	//
 	// This parameter is required.
 	//
@@ -182,51 +184,55 @@ type ConfigureDtsJobRequest struct {
 	//
 	// true
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+	// The objects to be migrated or synchronized, in JSON format. For more information, see [Objects of migration, synchronization, or change tracking tasks](https://help.aliyun.com/document_detail/209545.html).
+	//
+	// - The maximum size of the DbList value is 1 MB.
+	//
+	// - If DbList contains filter conditions, the total length of DbList (including filter conditions) cannot exceed 1 MB.
+	//
+	// - For distributed tasks (such as migration or synchronization tasks with PolarDB-X 1.0 as the source), DbList is split based on physical shards and multiple subtasks are generated. The maximum size of DbList for each subtask is 1 MB.
 	//
 	// example:
 	//
 	// {"dtstest":{"name":"dtstest","all":true}}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The ID of the DTS dedicated cluster on which the task runs.
+	// The ID of the DTS dedicated cluster.
 	//
-	// > If this parameter is specified, the task is scheduled to the specified DTS dedicated cluster.
+	// > If you specify the ID of a dedicated cluster, the task is scheduled to the corresponding cluster.
 	//
 	// example:
 	//
 	// dtscluster_atyl3b5214uk***
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// Specifies whether to monitor task latency. Valid values:
+	// Specifies whether to monitor the latency status. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	DelayNotice *bool `json:"DelayNotice,omitempty" xml:"DelayNotice,omitempty"`
-	// The mobile phone numbers to which latency-related alerts are sent. Separate multiple mobile phone numbers with commas (,).
+	// The mobile phone numbers for latency alerting of the contact. Separate multiple phone numbers with commas (,).
 	//
-	// >
+	// > - This parameter is supported only on the China site. Only the Chinese mainland phone numbers are supported, and a maximum of 10 phone numbers can be specified.
 	//
-	// 	- This parameter is available only for users of the China site (aliyun.com). Only mobile phone numbers in the Chinese mainland are supported. You can specify up to 10 mobile phone numbers.
-	//
-	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phone numbers, but can configure alert rules for DTS tasks in the CloudMonitor console. For more information, see [Configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
+	// - The international site does not support phone alerting. You can only [configure alert rules for DTS tasks through the CloudMonitor platform to set alert rules](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	DelayPhone *string `json:"DelayPhone,omitempty" xml:"DelayPhone,omitempty"`
-	// The threshold for latency alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business requirements. To prevent unstable latency caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
+	// The threshold for triggering latency alerts. Unit: seconds. The value must be an integer. Set the threshold based on your business requirements. To avoid alert fluctuations caused by network conditions or database loads, set the threshold to 10 seconds or more.
 	//
-	// > If **DelayNotice*	- is set to **true**, this parameter is required.
+	// > This parameter is required when **DelayNotice*	- is set to **true**.
 	//
 	// example:
 	//
 	// 10
 	DelayRuleTime *int64 `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
-	// The path of the CA certificate that is used if the connection to the destination database is encrypted by using SSL.
+	// The path of the CA certificate for SSL connection to the destination database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -234,7 +240,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	DestCaCertificateOssUrl *string `json:"DestCaCertificateOssUrl,omitempty" xml:"DestCaCertificateOssUrl,omitempty"`
-	// The key of the CA certificate that is used if the connection to the destination database is encrypted by using SSL.
+	// The password of the CA certificate for SSL connection to the destination database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -242,7 +248,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	DestCaCertificatePassword *string `json:"DestCaCertificatePassword,omitempty" xml:"DestCaCertificatePassword,omitempty"`
-	// The path to the client certificate that is used if the connection to the destination database is encrypted by using SSL.
+	// The path of the client certificate for SSL connection to the destination database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -250,7 +256,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	DestClientCertOssUrl *string `json:"DestClientCertOssUrl,omitempty" xml:"DestClientCertOssUrl,omitempty"`
-	// The path to the private key of the client certificate that is used if the connection to the destination database is encrypted by using SSL.
+	// The path of the client certificate private key for SSL connection to the destination database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -258,7 +264,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	DestClientKeyOssUrl *string `json:"DestClientKeyOssUrl,omitempty" xml:"DestClientKeyOssUrl,omitempty"`
-	// The password of the private key of the client certificate that is used if the connection to the destination database is encrypted by using SSL.
+	// The password of the client certificate private key for SSL connection to the destination database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -266,79 +272,79 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	DestClientPassword *string `json:"DestClientPassword,omitempty" xml:"DestClientPassword,omitempty"`
-	// VPCNAT destination main VSW
+	// The primary vSwitch of the VPC NAT gateway on the destination side.
 	//
 	// example:
 	//
 	// ****
 	DestPrimaryVswId *string `json:"DestPrimaryVswId,omitempty" xml:"DestPrimaryVswId,omitempty"`
-	// VPCNAT destination backup VSW
+	// The secondary vSwitch of the VPC NAT gateway on the destination side.
 	//
 	// example:
 	//
 	// ****
 	DestSecondaryVswId *string `json:"DestSecondaryVswId,omitempty" xml:"DestSecondaryVswId,omitempty"`
-	// The name of the database to which the objects are migrated or synchronized in the destination instance.
+	// The name of the database to which the objects to be migrated belong in the destination instance.
 	//
-	// >
+	// > - This parameter is available and required only when the destination instance or destination database type is PolarDB for PostgreSQL (Compatible with Oracle), AnalyticDB for PostgreSQL, PostgreSQL, MaxCompute, or MongoDB.
 	//
-	// 	- This parameter is valid and required only if the destination database is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database.
-	//
-	// 	- If the destination instance is a MaxCompute project, you must specify the MaxCompute project ID.
+	// - If the destination database is MaxCompute, specify the project of the MaxCompute instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DestinationEndpointDataBaseName *string `json:"DestinationEndpointDataBaseName,omitempty" xml:"DestinationEndpointDataBaseName,omitempty"`
-	// The type of the destination database. Valid values:
+	// The database type of the destination instance. Valid values:
 	//
-	// 	- **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database.
+	// - **MYSQL**: MySQL database (including ApsaraDB RDS for MySQL and self-managed MySQL).
 	//
-	// 	- **MARIADB**: ApsaraDB RDS for MariaDB instance.
+	// - **MARIADB**: ApsaraDB RDS for MariaDB.
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster.
+	// - **PolarDB**: PolarDB for MySQL.
 	//
-	// 	- **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+	// - **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle).
 	//
-	// 	- **POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+	// - **POLARDBX10**: PolarDB-X 1.0 (formerly DRDS).
 	//
-	// 	- **POLARDBX20**: PolarDB-X 2.0 instance.
+	// - **POLARDBX20**: cloud-native distributed database PolarDB-X 2.0.
 	//
-	// 	- **ORACLE**: self-managed Oracle database.
+	// - **ORACLE**: self-managed Oracle.
 	//
-	// 	- **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database.
+	// - **PostgreSQL**: PostgreSQL database (including ApsaraDB RDS for PostgreSQL and self-managed PostgreSQL).
 	//
-	// 	- **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database.
+	// - **MSSQL**: SQL Server database (including ApsaraDB RDS for SQL Server and self-managed SQL Server).
 	//
-	// 	- **ADS**: AnalyticDB for MySQL V2.0 cluster.
+	// - **ADS**: AnalyticDB for MySQL 2.0.
 	//
-	// 	- **ADB30**: AnalyticDB for MySQL V3.0 cluster.
+	// - **ADB30**: AnalyticDB for MySQL 3.0.
 	//
-	// 	- **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database.
+	// - **MONGODB**: MongoDB database (including self-managed MongoDB and ApsaraDB for MongoDB).
 	//
-	// 	- **GREENPLUM**: AnalyticDB for PostgreSQL instance.
+	// - **ROCKETMQ**: ApsaraMQ for RocketMQ.
 	//
-	// 	- **KAFKA**: ApsaraMQ for Kafka instance or self-managed Kafka cluster.
+	// - **GREENPLUM**: AnalyticDB for PostgreSQL.
 	//
-	// 	- **DATAHUB**: DataHub project.
+	// - **KAFKA**: Kafka database (including MSMQ for Apache Kafka and self-managed Kafka).
 	//
-	// 	- **DB2**: self-managed Db2 for LUW database.
+	// - **DATAHUB**: Alibaba Cloud DataHub.
 	//
-	// 	- **AS400**: Db2 for i database.
+	// - **DB2**: self-managed Db2 for LUW.
 	//
-	// 	- **ODPS**: MaxCompute project.
+	// - **AS400**: Db2 for i.
 	//
-	// 	- **Tablestore**: Tablestore instance.
+	// - **ODPS**: MaxCompute.
 	//
-	// 	- **ELK**: Elasticsearch cluster.
+	// - **Tablestore**: Tablestore.
 	//
-	// 	- **REDIS**: ApsaraDB for Redis instance or self-managed Redis database.
+	// - **ELK**: Alibaba Cloud Elasticsearch.
 	//
-	// >
+	// - **REDIS**: Redis database, including self-managed Redis and Tair (Redis® OSS-Compatible).
 	//
-	// 	- Default value: **MYSQL**.
+	// - **LINDORM**: cloud-native multi-model database Lindorm.
 	//
-	// 	- If this parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	// > - Default value: **MYSQL**.
+	//
+	// - If the database type of the destination instance is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify additional information in the Reserve parameter. For the metric description, see [Reserve parameter description](https://help.aliyun.com/document_detail/273111.html).
 	//
 	// example:
 	//
@@ -346,79 +352,82 @@ type ConfigureDtsJobRequest struct {
 	DestinationEndpointEngineName *string `json:"DestinationEndpointEngineName,omitempty" xml:"DestinationEndpointEngineName,omitempty"`
 	// The IP address of the destination instance.
 	//
-	// > This parameter is valid and required only if **DestinationEndpointInstanceType*	- is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
+	// > This parameter is available and required only when **DestinationEndpointInstanceType*	- is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
 	//
 	// example:
 	//
 	// ``172.16.**.**``*
 	DestinationEndpointIP *string `json:"DestinationEndpointIP,omitempty" xml:"DestinationEndpointIP,omitempty"`
-	// The destination instance ID.
+	// The ID of the destination instance.
 	//
-	// If the destination instance is an Alibaba Cloud database instance, you must specify the database instance ID. For example, if the destination instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+	//  If the destination instance is an Alibaba Cloud database (such as ApsaraDB RDS for MySQL), specify the ID of the Alibaba Cloud database instance (such as the ApsaraDB RDS for MySQL instance ID).
 	//
-	// If the destination instance is a self-managed database, the value of this parameter varies with the value of **DestinationEndpointInstanceType**.****
+	//  If the destination instance is a self-managed database, the value of this parameter varies based on the value of **DestinationEndpointInstanceType**. Example:
 	//
-	// 	- If DestinationEndpointInstanceType is set to **ECS**, you must specify the ECS instance ID.
 	//
-	// 	- If DestinationEndpointInstanceType is set to **DG**, you must specify the database gateway ID.
+	// - **ECS**: Specify the ID of the ECS instance.
 	//
-	// 	- If DestinationEndpointInstanceType is set to **EXPRESS*	- or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
+	// - **DG**: Specify the ID of the database gateway.
 	//
-	// > If DestinationEndpointInstanceType is set to **CEN**, you must also specify the ID of the CEN instance in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	// - **EXPRESS*	- or **CEN**: Specify the ID of the VPC that is connected to the source database.
+	//
+	// > If the value is **CEN**, you must also specify the CEN instance ID in the Reserve parameter. For the metric description, see [Reserve parameter description](https://help.aliyun.com/document_detail/273111.html).
 	//
 	// example:
 	//
 	// vpc-bp1opxu1zkhn00gzv****
 	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
-	// The type of the destination instance. Valid values:
+	// The target instance type. Valid values:
 	//
-	// **Alibaba Cloud database instance**
+	// **Alibaba Cloud databases**
 	//
-	// 	- **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance.
+	// - **RDS**: ApsaraDB RDS for MySQL, ApsaraDB RDS for SQL Server, ApsaraDB RDS for PostgreSQL, or ApsaraDB RDS for MariaDB.
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster.
+	// - **PolarDB**: PolarDB for MySQL.
 	//
-	// 	- **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+	// - **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 (formerly DRDS).
 	//
-	// 	- **POLARDBX20**: PolarDB-X 2.0 instance.
+	// - **POLARDBX20**: PolarDB-X 2.0.
 	//
-	// 	- **REDIS**: ApsaraDB for Redis instance.
+	// - **REDIS**: Tair (Redis® OSS-Compatible).
 	//
-	// 	- **ADS**: AnalyticDB for MySQL V2.0 cluster or AnalyticDB for MySQL V3.0 cluster.
+	// - **ADS**: AnalyticDB for MySQL 2.0 or 3.0.
 	//
-	// 	- **MONGODB**: ApsaraDB for MongoDB instance.
+	// - **MONGODB**: ApsaraDB for MongoDB.
 	//
-	// 	- **GREENPLUM**: AnalyticDB for PostgreSQL instance.
+	// - **ROCKETMQ**: ApsaraMQ for RocketMQ.
 	//
-	// 	- **DATAHUB**: DataHub project.
+	// - **GREENPLUM**: AnalyticDB for PostgreSQL.
 	//
-	// 	- **ELK**: Elasticsearch cluster.
+	// - **DATAHUB**: Alibaba Cloud DataHub platform.
 	//
-	// 	- **Tablestore**: Tablestore instance.
+	// - **ELK**: Alibaba Cloud Elasticsearch.
 	//
-	// 	- **ODPS**: MaxCompute project.
+	// - **Tablestore**: Tablestore.
 	//
-	// **Self-managed database**
+	// - **ODPS**: MaxCompute.
 	//
-	// 	- **OTHER**: self-managed database with a public IP address.
+	// - **LINDORM**: cloud-native multi-model database Lindorm.
 	//
-	// 	- **ECS**: self-managed database hosted on an ECS instance.
+	// **Self-managed databases**
 	//
-	// 	- **EXPRESS**: self-managed database connected over Express Connect.
+	// - **OTHER**: self-managed database with a public IP address.
 	//
-	// 	- **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
+	// - **ECS**: self-managed database hosted on ECS.
 	//
-	// 	- **DG**: self-managed database connected over Database Gateway.
+	// - **EXPRESS**: self-managed database connected over Express Connect.
 	//
-	// >
+	// - **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
 	//
-	// 	- If the destination instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you must connect the cluster to DTS as a self-managed database by using a public IP address or Express Connect and set this parameter to **OTHER*	- or **EXPRESS**.
+	// - **DG**: self-managed database connected over Database Gateway.
 	//
-	// 	- If the destination instance is an ApsaraMQ for Kafka instance, you must connect the instance to DTS as a self-managed database by using ECS or Express Connect and set this parameter to **ECS*	- or **EXPRESS**.
+	// > - If the destination instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, set this parameter to **OTHER*	- or **EXPRESS*	- to connect the cluster as a self-managed database over a public IP address or Express Connect.
 	//
-	// 	- For more information, see [Supported source and destination databases](https://help.aliyun.com/document_detail/176064.html).
+	// - If the destination instance is MSMQ for Apache Kafka, set this parameter to **ECS*	- or **EXPRESS*	- to connect the instance as a self-managed database over ECS or Express Connect.
 	//
-	// 	- If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
+	// - For information about supported source and destination database combinations, see <props="china">[Supported databases](https://help.aliyun.com/document_detail/131497.html)<props="intl">[Supported source and destination databases](https://help.aliyun.com/document_detail/176064.html).
+	//
+	// - If the destination instance is a self-managed database, you must also execute the required preparations. For more information, see [Preparations overview](https://help.aliyun.com/document_detail/146958.html).
 	//
 	// This parameter is required.
 	//
@@ -428,43 +437,41 @@ type ConfigureDtsJobRequest struct {
 	DestinationEndpointInstanceType *string `json:"DestinationEndpointInstanceType,omitempty" xml:"DestinationEndpointInstanceType,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is valid and required only if **DestinationEndpointEngineName*	- is set to **ORACLE*	- and the **Oracle*	- database is deployed in a non-RAC architecture.
+	// > This parameter is available and required only when **DestinationEndpointEngineName*	- is set to **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	DestinationEndpointOracleSID *string `json:"DestinationEndpointOracleSID,omitempty" xml:"DestinationEndpointOracleSID,omitempty"`
-	// The ID of the Alibaba Cloud account to which the destination ApsaraDB RDS for MySQL instance belongs.
+	// The Alibaba Cloud account ID to which the destination ApsaraDB RDS for MySQL instance belongs.
 	//
-	// >
+	// > - This parameter can be configured only when the destination instance is ApsaraDB RDS for MySQL.
 	//
-	// 	- This parameter is available only if the destination instance is an ApsaraDB RDS for MySQL instance.
-	//
-	// 	- You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify **DestinationEndpointRole**.
+	// - Specifying this parameter indicates you execute a cross-account data migration or synchronization. You must also specify the **DestinationEndpointRole*	- parameter.
 	//
 	// example:
 	//
 	// 140692647406****
 	DestinationEndpointOwnerID *string `json:"DestinationEndpointOwnerID,omitempty" xml:"DestinationEndpointOwnerID,omitempty"`
-	// The password of the account that is used to log on to the destination database.
+	// The password of the destination database account.
 	//
-	// > If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
+	// > If the destination database is MaxCompute, specify the AccessKey secret of the Alibaba Cloud account. For more information about how to obtain the AccessKey secret, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
 	//
 	// example:
 	//
 	// Test123456
 	DestinationEndpointPassword *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
-	// The port number of the destination instance.
+	// The database service port of the destination instance.
 	//
-	// > This parameter is valid and required only if the destination instance is a self-managed database.
+	// > This parameter is available and required only when the destination instance is a self-managed database.
 	//
 	// example:
 	//
 	// 3306
 	DestinationEndpointPort *string `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region of the destination instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// > If the destination instance is an Alibaba Cloud database instance, this parameter is required.
+	// > If the destination instance is an Alibaba Cloud database, this parameter is required.
 	//
 	// example:
 	//
@@ -472,57 +479,55 @@ type ConfigureDtsJobRequest struct {
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
 	// The name of the RAM role configured for the Alibaba Cloud account to which the destination instance belongs.
 	//
-	// > This parameter is required if you migrate or synchronize data across Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account DTS tasks](https://help.aliyun.com/document_detail/48468.html).
+	// > This parameter is required for cross-account data migration or synchronization. For information about the permissions and authorization method required for this role, see [Configure RAM authorization for cross-account data migration or synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
 	// ram-for-dts
 	DestinationEndpointRole *string `json:"DestinationEndpointRole,omitempty" xml:"DestinationEndpointRole,omitempty"`
-	// The username of the account that is used to log on to the destination database.
+	// The database account of the destination database.
 	//
-	// >
+	// > - In most cases, you must specify the database account of the destination database.
 	//
-	// 	- In most cases, this parameter is required.
+	// - The required permissions vary depending on the database being migrated or synchronized. For more information, see [Prepare database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) and [Prepare database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
 	//
-	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
-	//
-	// 	- If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
+	// - If the destination database is MaxCompute, specify the AccessKey ID of the Alibaba Cloud account. For more information about how to obtain the AccessKey ID, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
 	//
 	// example:
 	//
 	// dtstest
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
-	// Specifies whether the instance is a disaster recovery instance. Valid values:
+	// Specifies whether this is a disaster recovery instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	DisasterRecoveryJob *bool `json:"DisasterRecoveryJob,omitempty" xml:"DisasterRecoveryJob,omitempty"`
-	// The environment tag of the DTS instance. Valid values:
+	// The environment label of the DTS instance. Valid values:
 	//
-	// 	- **normal******
+	// - **normal**: normal
 	//
-	// 	- **online******
+	// - **online**: online.
 	//
 	// example:
 	//
 	// normal
 	DtsBisLabel *string `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
-	// The ID of the data migration or synchronization instance.
+	// The ID of the migration or synchronization instance.
 	//
-	// > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+	// > You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
 	//
 	// example:
 	//
 	// dtsk2gm967v16f****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the data migration or synchronization task.
+	// The ID of the migration or synchronization task.
 	//
-	// > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	// > You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
 	//
 	// example:
 	//
@@ -536,43 +541,43 @@ type ConfigureDtsJobRequest struct {
 	//
 	// rdsmysql_to_mysql
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// Specifies whether to monitor task status. Valid values:
+	// Specifies whether to monitor the error status. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	ErrorNotice *bool `json:"ErrorNotice,omitempty" xml:"ErrorNotice,omitempty"`
-	// The mobile phone numbers to which status-related alerts are sent. Separate multiple mobile phone numbers with commas (,).
+	// The mobile phone numbers for error alerting of the contact. Separate multiple phone numbers with commas (,).
 	//
-	// >
+	// > - This parameter is supported only on the China site. Only the Chinese mainland phone numbers are supported, and a maximum of 10 phone numbers can be specified.
 	//
-	// 	- This parameter is available only for users of the China site (aliyun.com). Only mobile phone numbers in the Chinese mainland are supported. You can specify up to 10 mobile phone numbers.
-	//
-	// 	- Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phone numbers, but can configure alert rules for DTS tasks in the CloudMonitor console. For more information, see [Configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
+	// - The international site does not support phone alerting. You can only [configure alert rules for DTS tasks through the CloudMonitor platform to set alert rules](https://help.aliyun.com/document_detail/175876.html).
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	ErrorPhone *string `json:"ErrorPhone,omitempty" xml:"ErrorPhone,omitempty"`
-	// The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
+	// The OSS URL of the task file.
 	//
 	// example:
 	//
 	// http://db-list-os-file.oss-cn-shanghai.aliyuncs.com/8e42_121852**********_79dd3aeabe2f43cdb**************
 	FileOssUrl *string `json:"FileOssUrl,omitempty" xml:"FileOssUrl,omitempty"`
-	// The type of the task. Valid values:
+	// The type of the node. Valid values:
 	//
-	// 	- **MIGRATION**: data migration task.
+	// - **MIGRATION**: data migration.
 	//
-	// 	- **SYNC**: data synchronization task.
+	// - **SYNC**: data synchronization.
 	//
-	// 	- **CHECK**: data verification task. You must separately purchase a data verification instance.
+	// - **CHECK**: data validation (purchased separately).
 	//
-	// > If you set this parameter to **MIGRATION*	- or **SYNC**, you can also enable data verification in the data migration or synchronization task.
+	// > - If the value is **MIGRATION*	- or **SYNC**, you can also configure a data validation node within the migration or synchronization instance.
+	//
+	// - To configure a data validation node, you must also specify the **DataCheckConfigure*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -580,7 +585,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// SYNC
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The maximum number of DUs.
+	// The maximum number of DTS Units (DUs).
 	//
 	// > This parameter is supported only for serverless instances.
 	//
@@ -597,13 +602,13 @@ type ConfigureDtsJobRequest struct {
 	// 1
 	MinDu   *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
 	OwnerId *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the CEN instance ID. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	// The reserved parameter of DTS, in JSON character string format. You can specify this parameter to add information about the source and destination databases (such as the data storage format of the destination Kafka database, the CEN instance ID, and ETL feature configurations). For more information, see [Reserve parameter description](https://help.aliyun.com/document_detail/273111.html).
 	//
 	// example:
 	//
@@ -615,55 +620,58 @@ type ConfigureDtsJobRequest struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the database from which the objects are migrated or synchronized in the source instance.
+	// The name of the database to which the objects to be migrated belong in the source instance.
 	//
-	// > This parameter is valid and required only if the source instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, a PostgreSQL database, or a MongoDB database.
+	// > This parameter is available and required only when the source instance or its database type is PolarDB for PostgreSQL (Compatible with Oracle), PostgreSQL, or MongoDB.
 	//
 	// example:
 	//
 	// dtstestdatabase
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
-	// The database type of the source instance.
+	// The database type of the source instance. Valid values:
 	//
-	// 	- **MYSQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database.
+	// - **MYSQL**: MySQL database (including ApsaraDB RDS for MySQL and self-managed MySQL).
 	//
-	// 	- **MARIADB**: ApsaraDB RDS for MariaDB instance.
+	// - **MARIADB**: ApsaraDB RDS for MariaDB.
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster.
+	// - **PolarDB**: PolarDB for MySQL.
 	//
-	// 	- **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+	// - **POLARDB_O**: PolarDB for PostgreSQL (Compatible with Oracle).
 	//
-	// 	- **POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+	// - **POLARDBX10**: PolarDB-X 1.0 (formerly DRDS).
 	//
-	// 	- **POLARDBX20**: PolarDB-X 2.0 instance.
+	// - **POLARDBX20**: cloud-native distributed database PolarDB-X 2.0.
 	//
-	// 	- **ORACLE**: self-managed Oracle database.
+	// - **ADB30**: AnalyticDB for MySQL 3.0.
 	//
-	// 	- **POSTGRESQL**: ApsaraDB RDS for PostgreSQL instance or self-managed PostgreSQL database.
+	// - **ORACLE**: self-managed Oracle.
 	//
-	// 	- **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database.
+	// - **POSTGRESQL**: PostgreSQL database (including ApsaraDB RDS for PostgreSQL and self-managed PostgreSQL).
 	//
-	// 	- **MONGODB**: ApsaraDB for MongoDB instance or self-managed MongoDB database.
+	// - **MSSQL**: SQL Server database (including ApsaraDB RDS for SQL Server and self-managed SQL Server).
 	//
-	// 	- **DB2**: self-managed Db2 for LUW database.
+	// - **MONGODB**: MongoDB database (including self-managed MongoDB and ApsaraDB for MongoDB).
 	//
-	// 	- **AS400**: self-managed Db2 for i database.
+	// - **DB2**: self-managed Db2 for LUW.
 	//
-	// 	- **DMSPOLARDB**: DMS logical database.
+	// - **AS400**: self-managed Db2 for i.
 	//
-	// 	- **HBASE**: self-managed HBase database.
+	// - **DMSPOLARDB**: Data Management (DMS) logical database.
 	//
-	// 	- **TERADATA**: Teradata database.
+	// - **HBASE**: self-managed HBase database.
 	//
-	// 	- **TiDB**: TiDB database.
+	// - **TERADATA**: Teradata database.
 	//
-	// 	- **REDIS**: ApsaraDB for Redis instance or self-managed Redis database.
+	// - **TiDB**: TiDB database.
 	//
-	// >
+	// - **REDIS**: Redis database, including self-managed Redis and Tair (Redis® OSS-Compatible).
 	//
-	// 	- Default value: **MYSQL**.
+	// - **LINDORM**: Lindorm.
 	//
-	// 	- If this parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > - Default value: **MYSQL**.
+	//
+	//  - If the database type of the source instance is set to **MONGODB**, you must also specify additional information in the Reserve parameter. For the metric description, see [Reserve parameter description](https://help.aliyun.com/document_detail/273111.html).
 	//
 	// example:
 	//
@@ -671,25 +679,25 @@ type ConfigureDtsJobRequest struct {
 	SourceEndpointEngineName *string `json:"SourceEndpointEngineName,omitempty" xml:"SourceEndpointEngineName,omitempty"`
 	// The IP address of the source instance.
 	//
-	// > This parameter is valid and required only if **SourceEndpointInstanceType*	- is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
+	// > This parameter is available and required only when **SourceEndpointInstanceType*	- is set to **OTHER**, **EXPRESS**, **DG**, or **CEN**.
 	//
 	// example:
 	//
 	// ``172.16.**.**``*
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
-	// The source instance ID.
+	// The ID of the source instance.
 	//
-	// If the source instance is an Alibaba Cloud database instance, you must specify the database instance ID. For example, if the source instance is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
+	// If the source instance is an Alibaba Cloud database (such as ApsaraDB RDS for MySQL), specify the ID of the Alibaba Cloud database instance (such as the ApsaraDB RDS for MySQL instance ID).
 	//
-	// If the source instance is a self-managed database, the value of this parameter varies with the value of **SourceEndpointInstanceType**.****
+	// If the source instance is a self-managed database, the value of this parameter varies based on the value of **SourceEndpointInstanceType**. Example:
 	//
-	// 	- If SourceEndpointInstanceType is set to **ECS**, you must specify the ECS instance ID.
+	// - **ECS**: Specify the ID of the ECS instance.
 	//
-	// 	- If SourceEndpointInstanceType is set to **DG**, you must specify the database gateway ID.
+	// - **DG**: Specify the ID of the database gateway.
 	//
-	// 	- If SourceEndpointInstanceType is set to **EXPRESS*	- or **CEN**, you must specify the ID of the virtual private cloud (VPC) that is connected to the source instance.
+	// - **EXPRESS*	- or **CEN**: Specify the ID of the VPC that is connected to the source database.
 	//
-	// > If SourceEndpointInstanceType is set to **CEN**, you must also specify the ID of the CEN instance in Reserve. For more information, see [Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	// > If the value is **CEN**, you must also specify the CEN instance ID in the Reserve parameter. For the metric description, see [Reserve parameter description](https://help.aliyun.com/document_detail/273111.html).
 	//
 	// example:
 	//
@@ -697,41 +705,44 @@ type ConfigureDtsJobRequest struct {
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
 	// The type of the source instance. Valid values:
 	//
-	// **Alibaba Cloud database instance**
+	// **Alibaba Cloud databases**
 	//
-	// 	- **RDS**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, ApsaraDB RDS for PostgreSQL instance, or ApsaraDB RDS for MariaDB instance
+	// - **RDS**: ApsaraDB RDS for MySQL, ApsaraDB RDS for SQL Server, ApsaraDB RDS for PostgreSQL, or ApsaraDB RDS for MariaDB.
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster.
+	// - **PolarDB**: PolarDB for MySQL.
 	//
-	// 	- **REDIS**: ApsaraDB for Redis instance.
+	// - **ADS**: AnalyticDB for MySQL.
 	//
-	// 	- **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 instance (formerly DRDS).
+	// - **REDIS**: Tair (Redis® OSS-Compatible).
 	//
-	// 	- **POLARDBX20**: PolarDB-X 2.0 instance.
+	// - **DISTRIBUTED_POLARDBX10**: PolarDB-X 1.0 (formerly DRDS).
 	//
-	// 	- **MONGODB**: ApsaraDB for MongoDB instance.
+	// - **POLARDBX20**: PolarDB-X 2.0.
 	//
-	// 	- **DISTRIBUTED_DMSLOGICDB**: Data Management (DMS) logical database
+	// - **MONGODB**: ApsaraDB for MongoDB.
 	//
-	// **Self-managed database**
+	// - **DISTRIBUTED_DMSLOGICDB**: Data Management (DMS) logical database.
 	//
-	// 	- **OTHER**: self-managed database with a public IP address.
+	// - **LINDORM**: Lindorm.
 	//
-	// 	- **ECS**: self-managed database hosted on an ECS instance.
+	// **Self-managed databases**
 	//
-	// 	- **EXPRESS**: self-managed database connected over Express Connect.
+	// - **OTHER**: self-managed database with a public IP address.
 	//
-	// 	- **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
+	// - **ECS**: self-managed database hosted on ECS.
 	//
-	// 	- **DG**: self-managed database connected over Database Gateway.
+	// - **EXPRESS**: self-managed database connected over Express Connect.
 	//
-	// >
+	// - **CEN**: self-managed database connected over Cloud Enterprise Network (CEN).
 	//
-	// 	- If the source instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you must connect the cluster to DTS as a self-managed database by using a public IP address or Express Connect and set this parameter to **OTHER*	- or **EXPRESS**.
+	// - **DG**: self-managed database connected over Database Gateway.
 	//
-	// 	- For more information, see [Supported sources and targets](https://help.aliyun.com/document_detail/176064.html).
 	//
-	// 	- If the source instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
+	// > - If the source instance is a PolarDB for PostgreSQL (Compatible with Oracle) cluster, set this parameter to **OTHER*	- or **EXPRESS*	- to connect the cluster as a self-managed database over a public IP address or Express Connect.
+	//
+	// - For information about supported source and destination database combinations, see [Supported databases](https://help.aliyun.com/document_detail/131497.html).
+	//
+	// - If the source instance is a self-managed database, you must complete the required preparations. For more information, see [Preparations overview](https://help.aliyun.com/document_detail/130607.html).
 	//
 	// This parameter is required.
 	//
@@ -741,69 +752,67 @@ type ConfigureDtsJobRequest struct {
 	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is valid and required only if **SourceEndpointEngineName*	- is set to **ORACLE*	- and the **Oracle*	- database is deployed in a non-Real Application Cluster (RAC) architecture.
+	// > This parameter is available and required only when **SourceEndpointEngineName*	- is set to **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	SourceEndpointOracleSID *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
-	// The ID of the Alibaba Cloud account to which the source database belongs.
+	// The Alibaba Cloud account ID to which the source instance belongs.
 	//
-	// > You can specify this parameter to migrate or synchronize data across different Alibaba Cloud accounts. In this case, you must specify **SourceEndpointRole**.
+	// > Specifying this parameter indicates you execute a cross-account data migration or synchronization. You must also specify the **SourceEndpointRole*	- parameter.
 	//
 	// example:
 	//
 	// 140692647406****
 	SourceEndpointOwnerID *string `json:"SourceEndpointOwnerID,omitempty" xml:"SourceEndpointOwnerID,omitempty"`
-	// The password of the account that is used to log on to the source database.
+	// The password of the source database account.
 	//
 	// example:
 	//
 	// Test123456
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
-	// The port number of the source instance.
+	// The database service port of the source instance.
 	//
-	// > This parameter is required only if the source instance is a self-managed database.
+	// > This parameter is available and required only when the source instance is a self-managed database.
 	//
 	// example:
 	//
 	// 3306
 	SourceEndpointPort *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region of the source instance. For details, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
-	// > If the source instance is an Alibaba Cloud database instance, this parameter is required.
+	// > If the source instance is an Alibaba Cloud database, this parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// The name of the Resource Access Management (RAM) role configured for the Alibaba Cloud account to which the source instance belongs.
+	// The name of the RAM role configured for the Alibaba Cloud account to which the source instance belongs.
 	//
-	// > This parameter is required if you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account DTS tasks](https://help.aliyun.com/document_detail/48468.html).
+	// > This parameter is required for cross-account data migration or synchronization. For information about the permissions and authorization method required for this role, see [Configure RAM authorization for cross-account data migration or synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
 	// ram-for-dts
 	SourceEndpointRole *string `json:"SourceEndpointRole,omitempty" xml:"SourceEndpointRole,omitempty"`
-	// The username of the account that is used to log on to the source database.
+	// The database account of the source database.
 	//
-	// >
+	// > - In most cases, you must specify the database account of the source database.
 	//
-	// 	- In most cases, this parameter is required.
-	//
-	// 	- The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
+	// - The required permissions vary depending on the database being migrated or synchronized. For more information, see [Prepare database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) and [Prepare database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
 	//
 	// example:
 	//
 	// dtstest
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
-	// The ID of the vSwitch that is used for data shipping.
+	// The vSwitch instance ID for the data delivery link.
 	//
 	// example:
 	//
 	// vsw-bp10df3mxae6lpmku****
 	SourceEndpointVSwitchID *string `json:"SourceEndpointVSwitchID,omitempty" xml:"SourceEndpointVSwitchID,omitempty"`
-	// The path of the certificate authority (CA) certificate that is used if the connection to the source database is encrypted by using SSL.
+	// The path of the CA certificate for SSL connection to the source database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -811,7 +820,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	SrcCaCertificateOssUrl *string `json:"SrcCaCertificateOssUrl,omitempty" xml:"SrcCaCertificateOssUrl,omitempty"`
-	// The key of the CA certificate that is used if the connection to the source database is encrypted by using SSL.
+	// The password of the CA certificate for SSL connection to the source database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -819,7 +828,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	SrcCaCertificatePassword *string `json:"SrcCaCertificatePassword,omitempty" xml:"SrcCaCertificatePassword,omitempty"`
-	// The path to the client certificate that is used if the connection to the source database is encrypted by using SSL.
+	// The path of the client certificate for SSL connection to the source database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -827,7 +836,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	SrcClientCertOssUrl *string `json:"SrcClientCertOssUrl,omitempty" xml:"SrcClientCertOssUrl,omitempty"`
-	// The path to the private key of the client certificate that is used if the connection to the source database is encrypted by using SSL.
+	// The path of the client certificate private key for SSL connection to the source database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -835,7 +844,7 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	SrcClientKeyOssUrl *string `json:"SrcClientKeyOssUrl,omitempty" xml:"SrcClientKeyOssUrl,omitempty"`
-	// The password of the private key of the client certificate that is used if the connection to the source database is encrypted by using SSL.
+	// The password of the client certificate private key for SSL connection to the source database.
 	//
 	// > This feature is not supported. Do not specify this parameter.
 	//
@@ -843,25 +852,25 @@ type ConfigureDtsJobRequest struct {
 	//
 	// ****
 	SrcClientPassword *string `json:"SrcClientPassword,omitempty" xml:"SrcClientPassword,omitempty"`
-	// VPCNAT source end main VSW
+	// The primary vSwitch of the VPC NAT gateway on the source side.
 	//
 	// example:
 	//
 	// ****
 	SrcPrimaryVswId *string `json:"SrcPrimaryVswId,omitempty" xml:"SrcPrimaryVswId,omitempty"`
-	// VPCNAT source backup VSW
+	// The secondary vSwitch of the VPC NAT gateway on the source side.
 	//
 	// example:
 	//
 	// ****
 	SrcSecondaryVswId *string `json:"SrcSecondaryVswId,omitempty" xml:"SrcSecondaryVswId,omitempty"`
-	// Specifies whether to perform schema migration or schema synchronization. Valid values:
+	// Specifies whether to perform schema migration or initial schema synchronization. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true**: Yes. This is the default value.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
-	// > If **JobType*	- is set to **CHECK**, set this parameter to **false**.
+	// > If **JobType*	- is set to **CHECK**, this parameter can only be set to **false**.
 	//
 	// This parameter is required.
 	//
@@ -871,15 +880,13 @@ type ConfigureDtsJobRequest struct {
 	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >
+	// > - Default value: **Forward**.
 	//
-	// 	- The default value is **Forward**.
-	//
-	// 	- The value **Reverse*	- takes effect only if the topology of the data synchronization task is two-way synchronization.
+	// - The value **Reverse*	- takes effect only when the synchronization topology of the synchronization task is two-way synchronization.
 	//
 	// example:
 	//

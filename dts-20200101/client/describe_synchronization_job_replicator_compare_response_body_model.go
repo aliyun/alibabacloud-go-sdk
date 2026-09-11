@@ -34,23 +34,23 @@ type DescribeSynchronizationJobReplicatorCompareResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E6EB407F-C59F-4682-A682-A00FA6A2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether image matching is enabled. Valid values:
+	// The full image switch. Valid values:
 	//
-	// 	- **true**: Image matching is enabled.
+	// - **true**: enabled.
 	//
-	// 	- **false**: Image matching is disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//

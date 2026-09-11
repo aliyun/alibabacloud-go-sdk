@@ -32,39 +32,64 @@ type iPreCheckCreateGadOrderResponseBody interface {
 }
 
 type PreCheckCreateGadOrderResponseBody struct {
+	// The dynamic error code. This parameter will be deprecated.
+	//
 	// example:
 	//
 	// 403
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
+	//
+	// > If ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, the value of the JobId request parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code returned if the call failed.
+	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the call failed.
+	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the active geo-redundancy instance group.
+	//
 	// example:
 	//
 	// rm-bp162d4tp0500****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region in which the instance resides. For more information, see Supported regions.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C166D79D-436B-45F0-B5A5-25E1959F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The precheck task ID.
+	//
 	// example:
 	//
 	// z2v12jfo309****

@@ -22,22 +22,32 @@ type iPromoteToMasterRequest interface {
 }
 
 type PromoteToMasterRequest struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// gad-bp162d4tp0500****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Primary instance ID.
+	//
 	// example:
 	//
 	// rm-bp1756****
 	MasterDbInstanceId *string `json:"MasterDbInstanceId,omitempty" xml:"MasterDbInstanceId,omitempty"`
+	// Region ID. Specify this parameter to indicate the region where the instance resides. For more information, see the list of supported regions.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Secondary instance ID.
+	//
 	// example:
 	//
 	// rm-bp1756****

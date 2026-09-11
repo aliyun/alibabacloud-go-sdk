@@ -24,25 +24,27 @@ type iDescribeSubscriptionMetaShrinkRequest interface {
 }
 
 type DescribeSubscriptionMetaShrinkRequest struct {
-	// The ID of the distributed change tracking instance.
+	// The instance ID of the distributed change tracking task.
+	//
+	// > This parameter is required.
 	//
 	// example:
 	//
 	// dtsbr4m9luv2******
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the region in which the change tracking instance resides.
+	// The region in which the change tracking instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the consumer group.
+	// The consumer group ID.
 	//
 	// This parameter is required.
 	//
@@ -50,21 +52,21 @@ type DescribeSubscriptionMetaShrinkRequest struct {
 	//
 	// z38m91gg2******
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
+	// The IDs of all change tracking subtasks in the distributed change tracking task. Separate multiple IDs with commas (,).
 	//
-	// >  You must specify at least one of the SubMigrationJobIds and **Topics*	- parameters. We recommend that you specify the SubMigrationJobIds parameter.
+	// > You must specify at least one of this parameter and **Topics**. We recommend that you specify this parameter.
 	//
 	// example:
 	//
-	// z38m91gg2******
+	// ["zsls58agp6f****"]
 	SubMigrationJobIdsShrink *string `json:"SubMigrationJobIds,omitempty" xml:"SubMigrationJobIds,omitempty"`
-	// The topics of all subtasks in the distributed change tracking task. Separate multiple topics with commas (,).
+	// All topics of the distributed change tracking task. Separate multiple topics with commas (,).
 	//
-	// >  You must specify at least one of the **SubMigrationJobIds*	- and Topics parameters. We recommend that you specify the **SubMigrationJobIds*	- parameter.
+	// > You must specify at least one of this parameter and **SubMigrationJobIds**. We recommend that you specify **SubMigrationJobIds**.
 	//
 	// example:
 	//
-	// cn_hangzhou_rm_bp1n0x0x5tz******_dtstestdata_version2
+	// ["rm_bp15jj3qi1p8f****"]
 	TopicsShrink *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
 }
 

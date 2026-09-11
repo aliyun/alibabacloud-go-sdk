@@ -45,7 +45,7 @@ type ConfigureSynchronizationJobRequest struct {
 	DestinationEndpoint *ConfigureSynchronizationJobRequestDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	PartitionKey        *ConfigureSynchronizationJobRequestPartitionKey        `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty" type:"Struct"`
 	SourceEndpoint      *ConfigureSynchronizationJobRequestSourceEndpoint      `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be discontinued.
 	//
 	// example:
 	//
@@ -59,11 +59,11 @@ type ConfigureSynchronizationJobRequest struct {
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	// Specifies whether to perform initial full data synchronization. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
-	// >  Default value: **true**.
+	// > Default value: **true**.
 	//
 	// This parameter is required.
 	//
@@ -71,22 +71,22 @@ type ConfigureSynchronizationJobRequest struct {
 	//
 	// true
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
+	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck. For more information, see [MigrationReserved parameter description](https://help.aliyun.com/document_detail/176470.html).
 	//
-	// >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](https://help.aliyun.com/document_detail/155967.html).
+	// > For example, you can use this parameter for data synchronization between ApsaraDB for Redis Enhanced Edition (Tair) instances. For more information, see [Use OpenAPI to configure one-way or bidirectional data synchronization between ApsaraDB for Redis Enhanced Edition instances](https://help.aliyun.com/document_detail/155967.html).
 	//
 	// example:
 	//
 	// {     "autoStartModulesAfterConfig": "none",     "targetTableMode": 2 }
 	MigrationReserved *string `json:"MigrationReserved,omitempty" xml:"MigrationReserved,omitempty"`
 	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the data synchronization instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID。
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -94,11 +94,11 @@ type ConfigureSynchronizationJobRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to perform initial schema synchronization. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
-	// >  Default value: **true**.
+	// > Default value: **true**.
 	//
 	// This parameter is required.
 	//
@@ -108,15 +108,13 @@ type ConfigureSynchronizationJobRequest struct {
 	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >
+	// > - Default value: **Forward**.
 	//
-	// 	- Default value: **Forward**.
-	//
-	// 	- The value **Reverse*	- takes effect only if the topology of the data synchronization instance is two-way synchronization.
+	// - This parameter takes effect only if you set it to **Reverse*	- and the synchronization topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
@@ -130,15 +128,15 @@ type ConfigureSynchronizationJobRequest struct {
 	//
 	// dtsz4ao1dor13d****
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	// The name of the data synchronization task.
+	// The name of the synchronization task.
 	//
-	// >  We recommend that you specify an informative name for easy identification. You do not need to use a unique task name.
+	// > Specify a descriptive name that makes it easy to identify the task. It does not need to be unique.
 	//
 	// example:
 	//
 	// MySQL同步
 	SynchronizationJobName *string `json:"SynchronizationJobName,omitempty" xml:"SynchronizationJobName,omitempty"`
-	// The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](https://help.aliyun.com/document_detail/141901.html).
+	// The objects to be synchronized. The value is a JSON string and supports certain regular expressions. For more information, see [Synchronization object configuration](https://help.aliyun.com/document_detail/141901.html).
 	//
 	// This parameter is required.
 	//
@@ -311,85 +309,81 @@ func (s *ConfigureSynchronizationJobRequest) Validate() error {
 }
 
 type ConfigureSynchronizationJobRequestDestinationEndpoint struct {
-	// The name of the database to which the synchronization object in the destination instance belongs.
+	// 目标实例中的同步对象所属数据库名称。
 	//
 	// example:
 	//
 	// dtstestdata
 	DataBaseName *string `json:"DataBaseName,omitempty" xml:"DataBaseName,omitempty"`
-	// The IP address of the destination database.
+	// 目标库的IP地址。
 	//
-	// >  You must specify this parameter only if the **DestinationEndpoint.InstanceType*	- parameter is set to **Express**, **dg**, or **cen**.
+	// > 当**DestinationEndpoint.InstanceType**取值为**Express**、**dg**或**cen**时，本参数必须传入本参数才可用且必须传入。
 	//
 	// example:
 	//
 	// 172.16.88.***
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the destination instance.
+	// 同步目标实例的实例ID
 	//
-	// >  If the **DestinationEndpoint.InstanceType*	- parameter is set to **MaxCompute*	- or **DataHub**, you must specify the name of the MaxCompute project or the DataHub project.
+	// > 当**DestinationEndpoint.InstanceType**取值为**MaxCompute**或**DataHub**时，本参数传入MaxCompute实例或DataHub的Project名称。
 	//
-	// If the destination instance is an AnalyticDB for MySQL cluster, specify the ID of the AnalyticDB for MySQL cluster.
+	// 当目标实例为阿里云分析型数据库MySQL版时，传入分析型数据库MySQL版的集群ID。
 	//
 	// example:
 	//
 	// rm-bp1r46452ai50****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the destination instance. Valid values:
+	// 目标实例类型，取值为：
 	//
-	// 	- **Redis**: ApsaraDB for Redis instance
+	// - **Redis**：阿里云Redis实例。
 	//
-	// 	- **RDS**: ApsaraDB RDS instance
+	// - **RDS**：阿里云RDS实例。
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+	// - **PolarDB**：阿里云PolarDB集群（仅支持MySQL或兼容Oracle语法的引擎）。
 	//
-	// 	- **ECS**: self-managed database that is hosted on ECS
+	// - **ECS**：ECS上的自建数据库。
 	//
-	// 	- **Express**: self-managed database that is connected over Express Connect
+	// - **Express**：通过专线接入的本地数据库。
 	//
-	// 	- **DataHub**: DataHub project
+	// - **DataHub**：阿里云DataHub实例。
 	//
-	// 	- **MaxCompute**: MaxCompute project
+	// - **MaxCompute**：阿里云MaxCompute实例。
 	//
-	// 	- **AnalyticDB**: AnalyticDB for MySQL cluster V3.0 or V2.0
+	// - **AnalyticDB**：云原生数据仓库AnalyticDB MySQL  3.0和2.0版本。
 	//
-	// 	- **Greenplum**: AnalyticDB for PostgreSQL instance
+	// - **Greenplum**：云原生数据仓库ADB PostgreSQL版（原分析型数据库PostgreSQL版）。
 	//
-	// >  The default value is **RDS**.
+	// > 默认取值为**RDS**。
 	//
 	// example:
 	//
 	// RDS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The password of the destination database account.
+	// 目标库数据库账号密码。
 	//
-	// >
-	//
-	// 	- If the **DestinationEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.Password parameter.
+	// > - 当**DestinationEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数必须传入。
 	//
 	// example:
 	//
 	// Test654321
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The service port number of the destination database.
+	// 目标库的数据库服务端口。
 	//
-	// >  You must specify this parameter only if the **DestinationEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+	// > 当**DestinationEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The database account of the destination database.
+	// 目标库的数据库账号。
 	//
-	// >
+	// > - 同步不同的数据库所需的权限有所差异，详情请参见[DTS数据同步方案概览](https://help.aliyun.com/document_detail/140954.html)中对应的配置案例。
 	//
-	// 	- The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
+	// - 当**DestinationEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数必须传入。
 	//
-	// 	- If the **DestinationEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.UserName parameter.
+	// - 当**DestinationEndpoint.InstanceType**取值为RDS且数据库版本为MySQL 5.5或MySQL 5.6，无需传入本参数和**DestinationEndpoint.Password**参数。
 	//
-	// 	- If the **DestinationEndpoint.InstanceType*	- parameter is set to RDS and the database version is MySQL 5.5 or MySQL 5.6, you do not need to specify the DestinationEndpoint.UserName and **DestinationEndpoint.Password*	- parameters.
-	//
-	// 	- If the **DestinationEndpoint.InstanceType*	- parameter is set to **Redis**, you do not need to specify the DestinationEndpoint.UserName parameter.
+	// - 当**DestinationEndpoint.InstanceType**取值为**Redis**时，无需传入本参数。
 	//
 	// example:
 	//
@@ -473,41 +467,41 @@ func (s *ConfigureSynchronizationJobRequestDestinationEndpoint) Validate() error
 }
 
 type ConfigureSynchronizationJobRequestPartitionKey struct {
-	// Specifies whether the incremental data table contains partitions defined by the modifytime_day field. Valid values: **true*	- and **false**.
+	// 设置增量日志表是否包含以增量更新时间对应日期信息定义的分区，取值：**true**或**false**。
 	//
-	// >  This parameter is available only if the **DestinationEndpoint.InstanceType*	- parameter is set to **MaxCompute**.
+	// > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
 	//
 	// example:
 	//
 	// true
 	ModifyTimeDay *bool `json:"ModifyTime_Day,omitempty" xml:"ModifyTime_Day,omitempty"`
-	// Specifies whether the incremental data table contains partitions defined by the modifytime_hour field. Valid values: **true*	- and **false**.
+	// 设置增量日志表是否包含以增量更新时间对应小时信息定义的分区，取值：**true**或**false**。
 	//
-	// >  This parameter is available only if the **DestinationEndpoint.InstanceType*	- parameter is set to **MaxCompute**.
+	// > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
 	//
 	// example:
 	//
 	// true
 	ModifyTimeHour *bool `json:"ModifyTime_Hour,omitempty" xml:"ModifyTime_Hour,omitempty"`
-	// Specifies whether the incremental data table contains partitions defined by the modifytime_minute field. Valid values: **true*	- and **false**.
+	// 设置增量日志表是否包含以增量更新时间对应分钟信息定义的分区，取值：**true**或**false**。
 	//
-	// >  This parameter is available only if the **DestinationEndpoint.InstanceType*	- parameter is set to **MaxCompute**.
+	// > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
 	//
 	// example:
 	//
 	// true
 	ModifyTimeMinute *bool `json:"ModifyTime_Minute,omitempty" xml:"ModifyTime_Minute,omitempty"`
-	// Specifies whether the incremental data table contains partitions defined by the modifytime_month field. Valid values: **true*	- and **false**.
+	// 设置增量日志表是否包含以增量更新时间对应月份信息定义的分区，取值：**true**或**false**。
 	//
-	// >  This parameter is available only if the **DestinationEndpoint.InstanceType*	- parameter is set to **MaxCompute**.
+	// > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
 	//
 	// example:
 	//
 	// true
 	ModifyTimeMonth *bool `json:"ModifyTime_Month,omitempty" xml:"ModifyTime_Month,omitempty"`
-	// Specifies whether the incremental data table contains partitions defined by the modifytime_year field. Valid values: **true*	- and **false**.
+	// 设置增量日志表是否包含以增量更新时间对应年份信息定义的分区，取值：**true**或**false**。
 	//
-	// >  This parameter is available only if the **DestinationEndpoint.InstanceType*	- parameter is set to **MaxCompute**.
+	// > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
 	//
 	// example:
 	//
@@ -573,89 +567,87 @@ func (s *ConfigureSynchronizationJobRequestPartitionKey) Validate() error {
 }
 
 type ConfigureSynchronizationJobRequestSourceEndpoint struct {
-	// The name of the database to which the synchronization object in the source instance belongs.
+	// 源实例中的同步对象所属数据库名称。
 	//
 	// example:
 	//
 	// dtstestdata
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The IP address of the source database.
+	// 源库的IP地址。
 	//
-	// >  You must specify this parameter only if the **SourceEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+	// > 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
 	//
 	// example:
 	//
 	// 172.16.88.***
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the source instance.
+	// 源实例ID。
 	//
 	// example:
 	//
 	// rm-bp1i99e8l7913****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the source instance. Valid values:
+	// 源实例类型，取值为：
 	//
-	// 	- **RDS**: ApsaraDB RDS instance
+	// - **RDS**：阿里云RDS实例。
 	//
-	// 	- **Redis**: ApsaraDB for Redis instance
+	// - **Redis**：阿里云Redis实例。
 	//
-	// 	- **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
+	// - **PolarDB**：阿里云PolarDB集群（仅支持MySQL或兼容Oracle语法的引擎）。
 	//
-	// 	- **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
+	// - **ECS**：ECS上的自建数据库。
 	//
-	// 	- **Express**: self-managed database that is connected over Express Connect
+	// - **Express**：通过专线接入的自建数据库。
 	//
-	// 	- **dg**: self-managed database that is connected over Database Gateway
+	// - **dg**：通过数据库网关DG接入的自建数据库。
 	//
-	// 	- **cen**: self-managed database that is connected over Cloud Enterprise Network (CEN)
+	// - **cen**：通过云企业网CEN接入的自建数据库。
 	//
-	// >  The default value is **RDS**.
+	// > 默认取值为**RDS**。
 	//
 	// example:
 	//
 	// RDS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the source RDS instance.
+	// 源RDS实例所属的阿里云账号ID。
 	//
-	// >  You can specify this parameter to synchronize data across different Alibaba Cloud accounts. In this case, you also need to specify the **SourceEndpoint.Role*	- parameter.
+	// > 传入本参数即代表执行跨阿里云账号的数据同步，同时您还需要传入**SourceEndpoint.Role**参数。
 	//
 	// example:
 	//
 	// 140692647406****
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The password of the source database account.
+	// 源库数据库账号密码。
 	//
-	// >  You must specify this parameter only if the **SourceEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+	// > 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数必须传入。
 	//
 	// example:
 	//
 	// Test123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The service port number of the source database.
+	// 源库的数据库服务端口。
 	//
-	// >  You must specify this parameter only if the **SourceEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+	// > 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
+	// 源实例所属云账号配置的角色名称。
 	//
-	// >  You must specify this parameter when you synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
+	// > 执行跨阿里云账号的数据同步时须传入本参数，该角色所需的权限及授权方式请参见[跨阿里云账号数据迁移或同步时如何配置RAM授权](https://help.aliyun.com/document_detail/48468.html)。
 	//
 	// example:
 	//
 	// ram-for-dts
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The database account of the source database.
+	// 源库的数据库账号。
 	//
-	// >
+	// > - 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
 	//
-	// 	- You must specify this parameter only if the **SourceEndpoint.InstanceType*	- parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+	// - 当**SourceEndpoint.InstanceType**取值为**Redis**时，本参数无需传入。
 	//
-	// 	- If the **SourceEndpoint.InstanceType*	- parameter is set to **Redis**, you do not need to specify the database account.
-	//
-	// 	- The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
+	// - 同步不同的数据库所需的权限有所差异，详情请参见[DTS数据同步方案概览](https://help.aliyun.com/document_detail/140954.html)中对应的配置案例。
 	//
 	// example:
 	//

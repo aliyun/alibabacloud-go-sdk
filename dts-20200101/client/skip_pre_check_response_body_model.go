@@ -34,15 +34,15 @@ type iSkipPreCheckResponseBody interface {
 }
 
 type SkipPreCheckResponseBody struct {
-	// The error code. This parameter will be removed in the future.
+	// The error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace %s in ErrMessage.
+	// The dynamic error message used to replace the %s variable in the ErrMessage parameter.
 	//
-	// > If JobId is invalid, JobId is returned for DynamicMessage, and the following message is returned for ErrMessage: The Value of Input Parameter %s is not valid.
+	// > For example, if ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, the JobId request parameter is invalid.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type SkipPreCheckResponseBody struct {
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status codes returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The precheck task ID.
+	// The ID of the precheck task.
 	//
 	// example:
 	//
@@ -78,25 +78,25 @@ type SkipPreCheckResponseBody struct {
 	//
 	// 8C498360-7892-433C-847A-BA71A850****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The precheck task ID.
+	// The ID of the precheck task.
 	//
 	// example:
 	//
 	// b4my3zg929a****
 	ScheduleJobId *string `json:"ScheduleJobId,omitempty" xml:"ScheduleJobId,omitempty"`
-	// The shortened name of the precheck item.
+	// The abbreviated names of the precheck items to suppress or unsuppress.
 	//
 	// example:
 	//
 	// CHECK_SAME_OBJ
 	SkipItems *string `json:"SkipItems,omitempty" xml:"SkipItems,omitempty"`
-	// The precheck item name.
+	// The full names of the precheck items to suppress or unsuppress.
 	//
 	// example:
 	//
 	// CHECK_SAME_OBJ_DETAIL
 	SkipNames *string `json:"SkipNames,omitempty" xml:"SkipNames,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

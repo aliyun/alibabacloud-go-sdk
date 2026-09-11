@@ -32,48 +32,48 @@ type iListDedicatedClusterRequest interface {
 }
 
 type ListDedicatedClusterRequest struct {
-	// The basis on which the retrieved entries are sorted if multiple DTS dedicated clusters are returned. Valid values:
+	// The sort column when the response contains multiple DTS dedicated cluster instances. Valid values:
 	//
-	// 	- **gmtCreated**: the time when a cluster was created.
+	// - **gmtCreated**: creation time.
 	//
-	// 	- **orderCount**: the number of nodes in a cluster.
+	// - **orderCount**: number of nodes.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The order in which you want to sort the retrieved entries. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- asc: sorts the retrieved entries in ascending order. This is the default value.
+	// - **asc**: ascending order. This is the default value.
 	//
-	// 	- desc: sorts the retrieved entries in descending order.
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// asc
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
 	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of clusters to return on each page.
+	// The number of clusters to display per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The content of the query condition.
+	// The specific content of the query condition.
 	//
-	// >  You must set the **Type parameter*	- to specify the type of the query condition.
+	// > You must first specify the **Type*	- parameter to define the query key.
 	//
 	// example:
 	//
 	// dtspk3f13r731m****
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The ID of the region.
+	// The region ID. This parameter is used as a query condition.
 	//
 	// example:
 	//
@@ -85,37 +85,37 @@ type ListDedicatedClusterRequest struct {
 	//
 	// rg-acfntftbiobqyky
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the cluster. Valid values:
+	// The cluster status. Valid values:
 	//
-	// 	- **init**: The cluster is being initialized.
+	// - **init**: initializing.
 	//
-	// 	- **schedule**: The cluster is pending scheduling.
+	// - **schedule**: pending scheduling.
 	//
-	// 	- **running**: The cluster is running.
+	// - **running**: running.
 	//
-	// 	- **upgrade**: The cluster is being upgraded.
+	// - **upgrade**: upgrading.
 	//
-	// 	- **downgrade**: The cluster is being downgraded.
+	// - **downgrade**: downgrading.
 	//
-	// 	- **locked**: The cluster is locked.
+	// - **locked**: locked.
 	//
-	// 	- **releasing**: The cluster is being released.
+	// - **releasing**: being released.
 	//
-	// 	- **released**: The cluster is released.
+	// - **released**: released.
 	//
 	// example:
 	//
 	// init
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The type of the query condition. Valid values:
+	// The query key. Valid values:
 	//
-	// 	- **NAME**: the name of the cluster.
+	// - **NAME**: cluster name.
 	//
-	// 	- **INSTANCE**: the ID of a cluster instance.
+	// - **INSTANCE**: cluster instance ID.
 	//
-	// 	- **DEDICAETEDCLUSTERID**: the ID of a dedicated cluster.
+	// - **DEDICATEDCLUSTERID**: dedicated cluster ID.
 	//
-	// >  You must specify the query condition by using the **Params*	- parameter.
+	// > You must also specify the **Params*	- parameter to provide the specific content of the query condition.
 	//
 	// example:
 	//

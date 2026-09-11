@@ -28,34 +28,50 @@ type iCreateDocParserJobResponseBody interface {
 }
 
 type CreateDocParserJobResponseBody struct {
+	// The ID of the document parsing task.
+	//
 	// example:
 	//
 	// dts-20250729-boss6pn1w******
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The dynamic error code. This parameter will be deprecated.
+	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message, which is used to replace the %s variable in the **ErrMessage*	- response parameter.
+	//
 	// example:
 	//
 	// present environment is not support, so skip
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code returned if the call fails.
+	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the call fails.
+	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FDC111B1-ACBF-457D-9656-247FDEE9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

@@ -20,25 +20,25 @@ type iStartReverseWriterResponseBody interface {
 }
 
 type StartReverseWriterResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 291BA4F1-2035-3FAA-6D5A-5D2015CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

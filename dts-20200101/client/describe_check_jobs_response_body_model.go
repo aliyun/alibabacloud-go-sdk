@@ -34,39 +34,39 @@ type iDescribeCheckJobsResponseBody interface {
 }
 
 type DescribeCheckJobsResponseBody struct {
-	// Item information check.
+	// The information about the data validation tasks.
 	CheckJobs []*DescribeCheckJobsResponseBodyCheckJobs `json:"CheckJobs,omitempty" xml:"CheckJobs,omitempty" type:"Repeated"`
-	// Dynamic error code, this parameter will be deprecated soon.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace the **%s*	- in the **errmessage*	- return parameter. If **errmessage*	- returns **thevalueofinputparameter%sisnotvalid**, and **dynamicmessage*	- returns *[1,2,3]*, it indicates that the request parameter **dtsjobid*	- is invalid.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter. > If **ErrMessage*	- returns **The value of input parameter %s is not valid*	- and **DynamicMessage*	- returns **[1,2,3]**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// present environment is not support,so skip.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Error code returned when the call fails.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Error message returned when the call fails.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -78,19 +78,19 @@ type DescribeCheckJobsResponseBody struct {
 	//
 	// 20
 	PageRecordCount *int64 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// FC1D920B-AB89-52A9-AA5F-AA724C4205E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -219,75 +219,81 @@ func (s *DescribeCheckJobsResponseBody) Validate() error {
 }
 
 type DescribeCheckJobsResponseBodyCheckJobs struct {
-	// Billing type, return values: - **POSTPAY**: Pay-as-you-go (postpaid). - **PREPAY**: Subscription (prepaid).
+	// The billing method. Valid values:
+	//
+	// - **POSTPAY**: pay-as-you-go.
+	//
+	// - **PREPAY**: subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// checkpoint
+	// The checkpoint.
 	//
 	// example:
 	//
 	// 1111****
 	CheckPoint *int64 `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
-	// Data validation method, with values:
+	// The data validation method. Valid values:
 	//
-	// - **1**: Full validation. - **2**: Incremental validation.
+	// - **1**: full data validation.
+	//
+	// - **2**: incremental data validation.
 	//
 	// example:
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// Number of rows with data inconsistency
+	// The number of rows with data inconsistency.
 	//
 	// example:
 	//
 	// 0
 	DiffCount *int64 `json:"DiffCount,omitempty" xml:"DiffCount,omitempty"`
-	// Synchronization initialization progress, in percentage.
+	// The progress of initial synchronization, in percentage.
 	//
 	// example:
 	//
 	// 1
 	DiffSum *int64 `json:"DiffSum,omitempty" xml:"DiffSum,omitempty"`
-	// Migration, synchronization, or subscription instance ID.
+	// The ID of the data migration, data synchronization, or change tracking instance.
 	//
 	// example:
 	//
 	// dtsz8tc99sy2158b36
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// Migration, synchronization, or subscription task ID.
+	// The ID of the data migration, data synchronization, or change tracking task.
 	//
 	// example:
 	//
 	// n08o6si4q338b1x
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The number of data rows in the table that have completed validation.
+	// The number of rows that have been validated in the table.
 	//
 	// example:
 	//
 	// 15094
 	FinishCount *int64 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// DTS task ID. In most cases, there is no need to set this parameter.
+	// The DTS task ID. > In most cases, you do not need to specify this parameter.
 	//
 	// example:
 	//
 	// c3d12dii27t632g
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Instance specification.
+	// The instance specifications.
 	//
 	// example:
 	//
 	// SMALL
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// Check the name of the task.
+	// The name of the data validation task.
 	//
 	// example:
 	//
 	// dtstest
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
@@ -299,19 +305,19 @@ type DescribeCheckJobsResponseBodyCheckJobs struct {
 	//
 	// ****
 	ParentJobType *string `json:"ParentJobType,omitempty" xml:"ParentJobType,omitempty"`
-	// Region ID to which it belongs.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Check result, return values: -**0**: Check passed -**1**: Check failed
+	// The validation result. Valid values: - **0**: passed. - **1**: failed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Verify the total number of rows in the data.
+	// The total number of rows to be validated.
 	//
 	// example:
 	//

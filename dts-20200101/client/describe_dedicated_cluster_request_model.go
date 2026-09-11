@@ -20,7 +20,7 @@ type iDescribeDedicatedClusterRequest interface {
 }
 
 type DescribeDedicatedClusterRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,7 @@ type DescribeDedicatedClusterRequest struct {
 	// dtsCluster****
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region in which the instance resides.
 	//
 	// example:
 	//

@@ -26,33 +26,33 @@ type iSuspendDtsJobResponseBody interface {
 }
 
 type SuspendDtsJobResponseBody struct {
-	// The dynamic error code. This parameter is going to be removed in the future.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the value of **ErrMessage**.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
 	//
-	// >  If the return value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the return value of **DynamicMessage*	- is **DtsJobId**, the specified value of **DtsJobId*	- in the request is invalid.
+	// > For example, if the **ErrMessage*	- parameter returns **The Value of Input Parameter %s is not valid*	- and the **DynamicMessage*	- parameter returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//

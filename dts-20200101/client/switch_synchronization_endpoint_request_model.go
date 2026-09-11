@@ -30,20 +30,20 @@ type iSwitchSynchronizationEndpointRequest interface {
 type SwitchSynchronizationEndpointRequest struct {
 	Endpoint       *SwitchSynchronizationEndpointRequestEndpoint       `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
 	SourceEndpoint *SwitchSynchronizationEndpointRequestSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The Alibaba Cloud account ID. You do not need to specify this parameter because it will be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -51,19 +51,17 @@ type SwitchSynchronizationEndpointRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >  Default value: **Forward**.
-	//
-	// The value **Reverse*	- takes effect only if the topology of the data synchronization instance is two-way synchronization.
+	// > Default value: **Forward**. The value **Reverse*	- takes effect only when the synchronization topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
+	// Instance ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -168,21 +166,19 @@ func (s *SwitchSynchronizationEndpointRequest) Validate() error {
 }
 
 type SwitchSynchronizationEndpointRequestEndpoint struct {
-	// The IP address of the database.
+	// 新数据库的IP地址。
 	//
-	// >  You must specify the IP address only if the **Endpoint.InstanceType*	- parameter is set to **Express**.
+	// > 当**Endpoint.InstanceType**取值为**Express**时，本参数才可用且必须传入。
 	//
 	// example:
 	//
 	// 172.15.185.***
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the ECS instance or the virtual private cloud (VPC).
+	// ECS或专有网络的实例ID。
 	//
-	// >
+	// > - 当**Endpoint.InstanceType**取值为**ECS**时，本参数需传入ECS实例的ID。
 	//
-	// 	- If the **Endpoint.InstanceType*	- parameter is set to **ECS**, you must specify the ID of the ECS instance.
-	//
-	// 	- If the **Endpoint.InstanceType*	- parameter is set to **Express**, you must specify the ID of the VPC.
+	// - 当**Endpoint.InstanceType**取值为**Express**时，本参数需传入专有网络ID。
 	//
 	// This parameter is required.
 	//
@@ -190,13 +186,13 @@ type SwitchSynchronizationEndpointRequestEndpoint struct {
 	//
 	// i-bp11haem1kpkhoup****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance type of the database. Valid values:
+	// 新数据库所属的实例类型，取值：
 	//
-	// 	- **LocalInstance**: self-managed database with a public IP address
+	// - **LocalInstance**：有公网IP的自建数据库；
 	//
-	// 	- **ECS**: self-managed database that is hosted on ECS
+	// - **ECS**：ECS上的自建数据库。
 	//
-	// 	- **Express**: self-managed database that is connected over Express Connect
+	// - **Express**：通过专线接入的自建数据库。
 	//
 	// This parameter is required.
 	//
@@ -204,7 +200,7 @@ type SwitchSynchronizationEndpointRequestEndpoint struct {
 	//
 	// ECS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The service port number of the database.
+	// 新的数据库服务端口。
 	//
 	// This parameter is required.
 	//
@@ -212,11 +208,11 @@ type SwitchSynchronizationEndpointRequestEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Specifies whether to update the connection settings of the source instance or the destination instance. Valid values:
+	// 待调整连接信息的实例，取值：
 	//
-	// 	- **Source**
+	// - **Source**：源实例。
 	//
-	// 	- **Destination**
+	// - **Destination**：目标实例。
 	//
 	// This parameter is required.
 	//
@@ -284,15 +280,15 @@ func (s *SwitchSynchronizationEndpointRequestEndpoint) Validate() error {
 }
 
 type SwitchSynchronizationEndpointRequestSourceEndpoint struct {
-	// The ID of the Alibaba Cloud account to which the source instance belongs. You must specify this parameter only if the source instance and the destination instance belong to different Alibaba Cloud accounts.
+	// 当源实例与目标实例所属阿里云账号不同时，您需要传入该参数指定源实例的所属阿里云账号的ID。
 	//
 	// example:
 	//
 	// 14069264****
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The authorized Resource Access Management (RAM) role of the source instance. You must specify the RAM role only if the source instance and the destination instance belong to different Alibaba Cloud accounts. You can use the RAM role to allow the Alibaba Cloud account that owns the destination instance to access the source instance.
+	// 当源实例与目标实例所属阿里云账号不同时，需传入该参数，来指定源实例的授权角色，以允许目标实例阿里云账号访问源实例的实例信息。
 	//
-	// >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
+	// > 角色所需的权限及授权方式，请参见[跨阿里云账号数据迁移或同步时如何配置RAM授权](https://help.aliyun.com/document_detail/48468.html)。
 	//
 	// example:
 	//

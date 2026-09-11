@@ -26,15 +26,15 @@ type iUpgradeTwoWayResponseBody interface {
 }
 
 type UpgradeTwoWayResponseBody struct {
-	// The dynamic error code. This parameter will be removed in the future.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message. This parameter is used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
 	//
-	// >  If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and that of the **DynamicMessage*	- parameter is **InstanceId**, the specified **InstanceId*	- parameter is invalid.
+	// > For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **InstanceId**, the specified value of the request parameter **InstanceId*	- is invalid.
 	//
 	// example:
 	//
@@ -58,17 +58,17 @@ type UpgradeTwoWayResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2D3B4615-923F-49AA-AF21-6D8E3967****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The call was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The call failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iCreateReverseDtsJobRequest interface {
 }
 
 type CreateReverseDtsJobRequest struct {
-	// The ID of the synchronization or migration task, which can be queried by calling [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html).
+	// The ID of the synchronization or migration task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,23 @@ type CreateReverseDtsJobRequest struct {
 	//
 	// n99m9jx822k****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// Resource GroupId
+	// The ID of the resource group. This is a global parameter that does not need to be specified for this operation.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Shard Password
+	// The password of the shard in a MongoDB sharded cluster instance.
+	//
+	// > - This parameter is available and required only when the source database instance is a MongoDB sharded cluster instance.
+	//
+	// - This parameter takes effect only when **ModifyAccount*	- is set to **true**.
 	//
 	// example:
 	//
 	// DTStest****
 	ShardPassword *string `json:"ShardPassword,omitempty" xml:"ShardPassword,omitempty"`
-	// Shard User name
+	// The account of the shard in a MongoDB sharded cluster instance.
 	//
 	// example:
 	//

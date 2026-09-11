@@ -20,7 +20,7 @@ type iStartMigrationJobResponseBody interface {
 }
 
 type StartMigrationJobResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type StartMigrationJobResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

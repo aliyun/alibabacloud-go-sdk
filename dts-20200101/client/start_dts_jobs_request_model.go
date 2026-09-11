@@ -20,13 +20,11 @@ type iStartDtsJobsRequest interface {
 }
 
 type StartDtsJobsRequest struct {
-	// The ID of the data migration or data synchronization task.
+	// The IDs of the data migration or synchronization tasks.
 	//
-	// >
+	// > - Separate multiple task IDs with commas (,).
 	//
-	// 	- For multiple tasks, separate them with commas (**,**).
-	//
-	// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	// - You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query DTS task IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,21 +32,23 @@ type StartDtsJobsRequest struct {
 	//
 	// l5o11f9029c****
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource GroupId
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Whether it is a seamless integration (Zero-ETL) task, the value can be:
+	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
 	//
-	// - **false**: No. - **true**: Yes.
+	// - **false**: No.
+	//
+	// - **true**: Yes.
 	//
 	// example:
 	//

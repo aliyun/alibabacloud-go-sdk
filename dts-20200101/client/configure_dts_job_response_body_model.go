@@ -26,31 +26,31 @@ type iConfigureDtsJobResponseBody interface {
 }
 
 type ConfigureDtsJobResponseBody struct {
-	// The ID of the data migration or synchronization instance.
+	// The instance ID of the migration or synchronization task.
 	//
 	// example:
 	//
 	// dtsk2gm967v16f****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the data migration or synchronization task.
+	// The ID of the migration or synchronization task.
 	//
 	// example:
 	//
 	// k2gm967v16f****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The returned HTTP status codes.
+	// The HTTP status code.
 	//
 	// example:
 	//

@@ -30,27 +30,27 @@ type DescribeTagValuesResponseBody struct {
 	//
 	// Custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The start page of the returned pages.
+	// The page number of the returned tag values.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of tag values returned on each page.
+	// The number of tag values returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// AD110813-9AD6-5F07-BFC8-4C841309****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag values that are associated with the tag key.
+	// The tag information.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
-	// The total number of tag values that are associated with the tag key.
+	// The total number of tag values that correspond to the tag key.
 	//
 	// example:
 	//

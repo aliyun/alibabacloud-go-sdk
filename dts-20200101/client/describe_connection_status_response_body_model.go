@@ -24,7 +24,7 @@ type iDescribeConnectionStatusResponseBody interface {
 }
 
 type DescribeConnectionStatusResponseBody struct {
-	// The connectivity of DTS servers to the destination database.
+	// The connectivity test result of the destination database.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type DescribeConnectionStatusResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0A47C784-70EF-4111-8677-369CAA00****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The connectivity of DTS servers to the source database.
+	// The connectivity test result of the source database.
 	//
 	// example:
 	//

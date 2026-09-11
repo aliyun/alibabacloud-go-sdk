@@ -9,6 +9,8 @@ type iDescribeDtsJobDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDbObjectOutputType(v string) *DescribeDtsJobDetailRequest
+	GetDbObjectOutputType() *string
 	SetDtsInstanceID(v string) *DescribeDtsJobDetailRequest
 	GetDtsInstanceID() *string
 	SetDtsJobId(v string) *DescribeDtsJobDetailRequest
@@ -26,7 +28,8 @@ type iDescribeDtsJobDetailRequest interface {
 }
 
 type DescribeDtsJobDetailRequest struct {
-	// The ID of the data migration, data synchronization, or change tracking instance.
+	DbObjectOutputType *string `json:"DbObjectOutputType,omitempty" xml:"DbObjectOutputType,omitempty"`
+	// The instance ID of the data migration, data synchronization, or subscribe instance.
 	//
 	// example:
 	//
@@ -38,7 +41,7 @@ type DescribeDtsJobDetailRequest struct {
 	//
 	// ta7w132u12h****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region in which the task resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -50,7 +53,7 @@ type DescribeDtsJobDetailRequest struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Specifies whether to return the information about all data synchronization subtasks. Default value: **false**. A value of false indicates that the system returns only the information about a data synchronization subtask that is running or was most recently run.
+	// Specifies whether to return information about all synchronization subtasks. Default value: **false**, which returns only the synchronization subtask that is in progress or the most recently executed synchronization subtask.
 	//
 	// example:
 	//
@@ -58,25 +61,23 @@ type DescribeDtsJobDetailRequest struct {
 	SyncSubJobHistory *bool `json:"SyncSubJobHistory,omitempty" xml:"SyncSubJobHistory,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >
+	// > - Default value: **Forward**.
 	//
-	// 	- The default value is **Forward**.
-	//
-	// 	- The value **Reverse*	- takes effect only if the topology of the data synchronization instance is two-way synchronization.
+	// - The value **Reverse*	- takes effect only when the synchronization topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
+	// Specifies whether the task is a zero-ETL task. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The task is a zero-ETL task.
 	//
-	// 	- **false**
+	// - **false**: The task is not a zero-ETL task.
 	//
 	// example:
 	//
@@ -90,6 +91,10 @@ func (s DescribeDtsJobDetailRequest) String() string {
 
 func (s DescribeDtsJobDetailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDtsJobDetailRequest) GetDbObjectOutputType() *string {
+	return s.DbObjectOutputType
 }
 
 func (s *DescribeDtsJobDetailRequest) GetDtsInstanceID() *string {
@@ -118,6 +123,11 @@ func (s *DescribeDtsJobDetailRequest) GetSynchronizationDirection() *string {
 
 func (s *DescribeDtsJobDetailRequest) GetZeroEtlJob() *bool {
 	return s.ZeroEtlJob
+}
+
+func (s *DescribeDtsJobDetailRequest) SetDbObjectOutputType(v string) *DescribeDtsJobDetailRequest {
+	s.DbObjectOutputType = &v
+	return s
 }
 
 func (s *DescribeDtsJobDetailRequest) SetDtsInstanceID(v string) *DescribeDtsJobDetailRequest {

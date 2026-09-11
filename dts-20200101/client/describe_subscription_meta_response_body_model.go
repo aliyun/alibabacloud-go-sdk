@@ -24,13 +24,13 @@ type iDescribeSubscriptionMetaResponseBody interface {
 }
 
 type DescribeSubscriptionMetaResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type DescribeSubscriptionMetaResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C12E7A51-09A4-5796-94BE-08B6DA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the subtasks.
+	// The data information about the change tracking subtasks.
 	SubscriptionMetaList []*DescribeSubscriptionMetaResponseBodySubscriptionMetaList `json:"SubscriptionMetaList,omitempty" xml:"SubscriptionMetaList,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful.
 	//
@@ -134,9 +134,9 @@ func (s *DescribeSubscriptionMetaResponseBody) Validate() error {
 }
 
 type DescribeSubscriptionMetaResponseBodySubscriptionMetaList struct {
-	// The consumer offset of the subtask. It is a UNIX timestamp that is generated when the client consumes the first data record. Unit: seconds.
+	// The consumption checkpoint of the subtask, which is the timestamp of the first data record consumed by the client. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// >  You can use a search engine to obtain a UNIX timestamp converter.
+	// > You can use a search engine to find a UNIX timestamp converter.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeSubscriptionMetaResponseBodySubscriptionMetaList struct {
 	//
 	// {\\"dtstestdata\\":{\\"name\\":\\"dtstestdata\\",\\"all\\":false,\\"Table\\":{\\"order\\":{\\"name\\":\\"order\\",\\"all\\":true}}}}
 	DBList *string `json:"DBList,omitempty" xml:"DBList,omitempty"`
-	// The endpoint and port number of the change tracking instance.
+	// The network address and port number of the change tracking channel.
 	//
 	// example:
 	//

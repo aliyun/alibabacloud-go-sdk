@@ -32,7 +32,7 @@ type iModifyConsumerGroupPasswordRequest interface {
 }
 
 type ModifyConsumerGroupPasswordRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
 	//
 	// example:
 	//
@@ -46,17 +46,13 @@ type ModifyConsumerGroupPasswordRequest struct {
 	//
 	// dtswc411cg617p****
 	ConsumerGroupID *string `json:"ConsumerGroupID,omitempty" xml:"ConsumerGroupID,omitempty"`
-	// The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
+	// The name of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group name.
 	//
 	// example:
 	//
 	// dtstest
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The new password of the consumer group.
-	//
-	// 	- A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-	//
-	// 	- A password must be 8 to 32 characters in length.
+	// The current password of the consumer group.
 	//
 	// This parameter is required.
 	//
@@ -64,26 +60,26 @@ type ModifyConsumerGroupPasswordRequest struct {
 	//
 	// Test123456
 	ConsumerGroupPassword *string `json:"ConsumerGroupPassword,omitempty" xml:"ConsumerGroupPassword,omitempty"`
-	// The username of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the username.
+	// The username of the consumer group. You can call the DescribeConsumerGroup operation to query the username.
 	//
 	// example:
 	//
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
 	OwnerId               *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances*	- operation to query the instance ID.
+	// The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -93,11 +89,9 @@ type ModifyConsumerGroupPasswordRequest struct {
 	SubscriptionInstanceId *string `json:"SubscriptionInstanceId,omitempty" xml:"SubscriptionInstanceId,omitempty"`
 	// The new password of the consumer group.
 	//
+	// - The password must contain characters from at least two of the following categories: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	//
-	// 	- A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-	//
-	// 	- A password must be 8 to 32 characters in length.
+	// - The password must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//

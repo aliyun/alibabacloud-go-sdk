@@ -24,40 +24,40 @@ type iStopDedicatedClusterRequest interface {
 }
 
 type StopDedicatedClusterRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You must specify one of the **InstanceId*	- and **DedicatedClusterId*	- parameters.
+	// > You must specify either **InstanceId*	- or **DedicatedClusterId**.
 	//
 	// example:
 	//
 	// dtscluster_h3fl1cs217sx952
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// dtscluster_test_001
 	DedicatedClusterName *string `json:"DedicatedClusterName,omitempty" xml:"DedicatedClusterName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// >  You must specify one of the **InstanceId*	- and **DedicatedClusterId*	- parameters.
+	// > You must specify either **InstanceId*	- or **DedicatedClusterId**.
 	//
 	// example:
 	//
 	// rm-bp1162kryivb8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region in which the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This parameter is a global parameter and not required.
+	// The resource group ID. This is a global parameter that does not need to be specified for this operation.
 	//
 	// example:
 	//
-	// The resource group ID. This parameter is a global parameter and not required.
+	// 资源组ID，全局参数，当前API无需传入。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

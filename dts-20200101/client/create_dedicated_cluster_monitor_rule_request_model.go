@@ -34,13 +34,13 @@ type iCreateDedicatedClusterMonitorRuleRequest interface {
 }
 
 type CreateDedicatedClusterMonitorRuleRequest struct {
-	// The alert threshold for CPU utilization. Unit: percentage.
+	// The CPU alert threshold. Unit: %.
 	//
 	// example:
 	//
 	// 30
 	CpuAlarmThreshold *int64 `json:"CpuAlarmThreshold,omitempty" xml:"CpuAlarmThreshold,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -48,42 +48,42 @@ type CreateDedicatedClusterMonitorRuleRequest struct {
 	//
 	// dts-dasd22******
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The alert threshold for disk usage. Unit: percentage.
+	// The disk alert threshold. Unit: %.
 	//
 	// example:
 	//
 	// 100
 	DiskAlarmThreshold *int64 `json:"DiskAlarmThreshold,omitempty" xml:"DiskAlarmThreshold,omitempty"`
-	// The alert threshold for DTS Unit (DU) usage. Unit: percentage.
+	// The DU alert threshold. Unit: %.
 	//
 	// example:
 	//
 	// 20
 	DuAlarmThreshold *int64 `json:"DuAlarmThreshold,omitempty" xml:"DuAlarmThreshold,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rm-bp1162kryivb8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The alert threshold for memory usage. Unit: percentage.
+	// The memory alert threshold. Unit: %.
 	//
 	// example:
 	//
 	// 40
 	MemAlarmThreshold *int64 `json:"MemAlarmThreshold,omitempty" xml:"MemAlarmThreshold,omitempty"`
-	// Specifies whether to enable the alert feature. Valid values:
+	// The alert switch. Valid values:
 	//
-	// 	- **1**: enables the alert feature.
+	// - **1**: on.
 	//
-	// 	- **0**: disables the alert feature.
+	// - **0**: off.
 	//
 	// example:
 	//
 	// 1
 	NoticeSwitch *int64  `json:"NoticeSwitch,omitempty" xml:"NoticeSwitch,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+	// The alert phone numbers. Separate multiple phone numbers with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -91,17 +91,17 @@ type CreateDedicatedClusterMonitorRuleRequest struct {
 	//
 	// 186****7654
 	Phones *string `json:"Phones,omitempty" xml:"Phones,omitempty"`
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
+	// The region in which the DTS instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This parameter is a global parameter and not required.
+	// The resource group ID. This is a global parameter and does not need to be passed in for this API operation.
 	//
 	// example:
 	//
-	// The resource group ID. This parameter is a global parameter and not required.
+	// 资源组ID，全局参数，当前API无需传入。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

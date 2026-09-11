@@ -34,17 +34,17 @@ type iTransferInstanceClassResponseBody interface {
 }
 
 type TransferInstanceClassResponseBody struct {
-	// The billing method of the DTS instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go.
 	//
-	// 	- **PREPAY**: subscription.
+	// - **PREPAY**: subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The error code that is returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -56,29 +56,29 @@ type TransferInstanceClassResponseBody struct {
 	//
 	// r4yr723m199****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the **%s*	- variable in the value of the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the %**s*	- variable in the **ErrMessage*	- parameter.
 	//
-	// > For example, if the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified value of the **DtsJobId*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The expiration time of the DTS instance.
+	// The time when the instance expires.
 	//
-	// > This parameter is returned only if the value of the ChargeType parameter is **PREPAY**.
+	// > This parameter is returned only when ChargeType is set to **PREPAY**.
 	//
 	// example:
 	//
 	// 2021-08-04T16:00:00.000+00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type TransferInstanceClassResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the DTS instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type TransferInstanceClassResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

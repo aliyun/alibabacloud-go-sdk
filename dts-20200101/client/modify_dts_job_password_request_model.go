@@ -30,71 +30,75 @@ type iModifyDtsJobPasswordRequest interface {
 }
 
 type ModifyDtsJobPasswordRequest struct {
-	// The ID of the data migration, data synchronization, or change tracking instance.
-	//
-	// >  You can call the [DescribeMigrationJobs](https://help.aliyun.com/document_detail/208139.html), [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html), or [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID
+	// The instance ID of the data migration, synchronization, or subscribe instance.
 	//
 	// example:
 	//
 	// dtsl3m1213ye7l****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the DTS task. The DTS task can be a data migration, data synchronization, or change tracking task.
+	// The ID of the data migration, synchronization, or change tracking task.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The database to which the password belongs. Valid values:
+	// The database to which the account belongs. Valid values:
 	//
-	// 	- **src**: source database.
+	// - **src**: the source database.
 	//
-	// 	- **dest**: destination database.
+	// - **dest**: the destination database.
 	//
-	// >  This parameter is required.
+	// > This parameter is required.
 	//
 	// example:
 	//
 	// src
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The new password.
+	// The new password for the database account.
 	//
-	// >  This parameter is required and cannot be set to a value that is the same as the current password.
+	// > This parameter is required and must be different from the current password.
 	//
 	// example:
 	//
 	// Test123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Synchronization direction, with values:
+	// The synchronization direction. Valid values:
 	//
-	// - **Forward*	- (default): Forward. - **Reverse**: Reverse.
+	// - **Forward**: forward.
+	//
+	// - **Reverse**: reverse.
+	//
+	// > - Default value: **Forward**.
+	//
+	// - This parameter is required only when the synchronization topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The account of the source or destination database.
-	//
-	// >  This parameter is required.
+	// The username of the database account to modify.
 	//
 	// example:
 	//
 	// dtstest
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// Whether it is a seamless integration (Zero-ETL) task, the value can be:
+	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
 	//
-	// - **false**: No. - **true**: Yes.
+	// - **true**
+	//
+	// - **false**.
 	//
 	// example:
 	//

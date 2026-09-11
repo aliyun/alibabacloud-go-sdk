@@ -20,19 +20,9 @@ type iReverseTwoWayDirectionRequest interface {
 }
 
 type ReverseTwoWayDirectionRequest struct {
-	// example:
-	//
-	// dtsldy114cy24f****
-	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// example:
-	//
-	// false
-	IgnoreErrorSubJob *bool `json:"IgnoreErrorSubJob,omitempty" xml:"IgnoreErrorSubJob,omitempty"`
+	DtsInstanceId     *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	IgnoreErrorSubJob *bool   `json:"IgnoreErrorSubJob,omitempty" xml:"IgnoreErrorSubJob,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }

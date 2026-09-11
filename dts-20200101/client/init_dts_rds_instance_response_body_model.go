@@ -26,7 +26,7 @@ type iInitDtsRdsInstanceResponseBody interface {
 }
 
 type InitDtsRdsInstanceResponseBody struct {
-	// The built-in account that is used by DTS to connect to the node.
+	// The built-in account that DTS uses to connect to the unit node.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type InitDtsRdsInstanceResponseBody struct {
 	//
 	// 1jecpqrtc****
 	AdminPassword *string `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
-	// The error code returned if the request fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type InitDtsRdsInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

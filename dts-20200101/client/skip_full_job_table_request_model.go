@@ -22,19 +22,19 @@ type iSkipFullJobTableRequest interface {
 }
 
 type SkipFullJobTableRequest struct {
-	// The ID of the DTS task. The DTS task can be a data migration, data synchronization, or change tracking task.
+	// The ID of the data migration, synchronization, or change tracking task. This parameter is deprecated and no longer takes effect.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the primary key.
+	// The primary key ID of JobProgress. Each object in a full data migration task corresponds to a JobProgress entry. Specify this parameter to identify the table to skip.
 	//
 	// example:
 	//
 	// 123
 	JobProgressId *string `json:"JobProgressId,omitempty" xml:"JobProgressId,omitempty"`
-	// The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type SkipFullJobTableRequest struct {
 	//
 	// rg-aek2ilvoxlrdcby
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
+	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
 	//
-	// 	- **true**: yes.
+	// - **true**: The node is a zero-ETL node.
 	//
-	// 	- **false**: no.
+	// - **false**: The node is not a zero-ETL node.
 	//
 	// example:
 	//

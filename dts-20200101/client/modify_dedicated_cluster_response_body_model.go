@@ -24,19 +24,19 @@ type iModifyDedicatedClusterResponseBody interface {
 }
 
 type ModifyDedicatedClusterResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// dtscluster_h3fl1cs217sx952
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ModifyDedicatedClusterResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iDescribeTagKeysResponseBody interface {
 }
 
 type DescribeTagKeysResponseBody struct {
-	// The type of the tag.
+	// The tag type.
 	//
 	// example:
 	//
 	// Custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The start page of the returned pages.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type DescribeTagKeysResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// AD110813-9AD6-5F07-BFC8-4C841309****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The key of the tag.
+	// The list of tag keys.
 	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
-	// The total number of returned tag keys.
+	// The total number of tag keys.
 	//
 	// example:
 	//

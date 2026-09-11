@@ -40,15 +40,15 @@ type DescribePreCheckStatusRequest struct {
 	//
 	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The task code that specifies the type of the DTS subtask. Valid values:
+	// The task code. Specify this parameter to query a specific subtask type of the DTS task. Valid values:
 	//
-	// 	- **01**: precheck.
+	// - **01**: precheck.
 	//
-	// 	- **02**: schema migration or initial schema synchronization.
+	// - **02**: schema migration or initial schema synchronization.
 	//
-	// 	- **03**: full data migration or initial full data synchronization.
+	// - **03**: full data migration or initial full data synchronization.
 	//
-	// 	- **04**: incremental data migration or synchronization.
+	// - **04**: incremental data migration or incremental data synchronization.
 	//
 	// This parameter is required.
 	//
@@ -56,37 +56,37 @@ type DescribePreCheckStatusRequest struct {
 	//
 	// 01
 	JobCode *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
-	// The filter item used to filter tables in fuzzy match.
+	// The filter. Performs a fuzzy match on table names.
 	//
 	// example:
 	//
 	// dewuprop
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: **20**.
+	// The number of records per page. Default value: **20**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
-	// cn-beijing
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekz4us4iruleja
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The filter item used to filter tables, views, and functions during schema migration.
+	// The filter. Filters tables, views, and functions in schema migration.
 	//
 	// example:
 	//
@@ -94,17 +94,19 @@ type DescribePreCheckStatusRequest struct {
 	StructPhase *string `json:"StructPhase,omitempty" xml:"StructPhase,omitempty"`
 	// The type of schema definition. Valid values:
 	//
-	// 	- **before**: schema migration or initial schema synchronization.
+	// - **before**: schema migration or initial schema synchronization.
 	//
-	// 	- **after**: DDL operations performed during incremental data migration or synchronization.
+	// - **after**: DDL operations during incremental data migration or incremental data synchronization.
 	//
 	// example:
 	//
 	// before
 	StructType *string `json:"StructType,omitempty" xml:"StructType,omitempty"`
-	// Whether it is a seamless integration (Zero-ETL) task, the value can be:
+	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
 	//
-	// - **false**: No. - **true**: Yes.
+	// - **false**: No.
+	//
+	// - **true**: Yes.
 	//
 	// example:
 	//

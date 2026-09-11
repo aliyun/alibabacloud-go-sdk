@@ -46,25 +46,25 @@ type iDescribeClusterUsedUtilizationResponseBody interface {
 }
 
 type DescribeClusterUsedUtilizationResponseBody struct {
-	// The error code returned by the backend service. The number is incremented.
+	// The internal error code. The value is incremented.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The CPU utilization of the cluster. Unit: percentage.
+	// The CPU utilization of the cluster. Unit: %.
 	//
 	// example:
 	//
 	// 50
 	CpuTotal *float32 `json:"CpuTotal,omitempty" xml:"CpuTotal,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// dtscluster_h3fl1cs217sx952
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The total disk size of the cluster. Unit: GB.
+	// The total disk space of the cluster. Unit: GB.
 	//
 	// example:
 	//
@@ -76,73 +76,73 @@ type DescribeClusterUsedUtilizationResponseBody struct {
 	//
 	// 96
 	DiskUsed *float32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
-	// The total number of DTS units (DUs).
+	// The total number of DUs.
 	//
 	// example:
 	//
 	// 30
 	DuTotal *int32 `json:"DuTotal,omitempty" xml:"DuTotal,omitempty"`
-	// The usage of DUs.
+	// The number of used DUs.
 	//
 	// example:
 	//
 	// 2
 	DuUsed *int32 `json:"DuUsed,omitempty" xml:"DuUsed,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace %s in the ErrMessage parameter.
+	// The dynamic error message. This parameter is used to replace the %s placeholder in the ErrMessage response parameter.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The total amount of memory. A value of 0 is temporarily returned.
+	// The total memory. The value 0 is returned.
 	//
 	// example:
 	//
 	// 0
 	MemoryTotal *float32 `json:"MemoryTotal,omitempty" xml:"MemoryTotal,omitempty"`
-	// The memory usage. A value of 0 is temporarily returned.
+	// The memory usage. The value 0 is returned.
 	//
 	// example:
 	//
 	// 0
 	MemoryUsed *float32 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	// The memory usage.
+	// The memory usage percentage.
 	//
 	// example:
 	//
 	// 1.0
 	MemoryUsedPercentage *float32 `json:"MemoryUsedPercentage,omitempty" xml:"MemoryUsedPercentage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of tasks that are in progress.
+	// The number of running tasks.
 	//
 	// example:
 	//

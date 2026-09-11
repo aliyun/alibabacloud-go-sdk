@@ -22,7 +22,7 @@ type iModifyDtsJobDuLimitRequest interface {
 }
 
 type ModifyDtsJobDuLimitRequest struct {
-	// The ID of the data migration, data synchronization, or change tracking task.
+	// The ID of the DTS migration, synchronization, or change tracking task.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type ModifyDtsJobDuLimitRequest struct {
 	//
 	// dtsxxx
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The upper limit of DUs for the DTS task.
+	// The DU upper limit of the task.
 	//
-	// >  Minimum value: **1**.
+	// > The minimum value is **1**.
 	//
 	// This parameter is required.
 	//
@@ -41,13 +41,13 @@ type ModifyDtsJobDuLimitRequest struct {
 	// 1
 	DuLimit *int64  `json:"DuLimit,omitempty" xml:"DuLimit,omitempty"`
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the DTS instance resides.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

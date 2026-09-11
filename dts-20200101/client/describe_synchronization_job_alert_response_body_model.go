@@ -36,23 +36,23 @@ type iDescribeSynchronizationJobAlertResponseBody interface {
 }
 
 type DescribeSynchronizationJobAlertResponseBody struct {
-	// The mobile phone numbers that receive latency-related alerts.
+	// The mobile phone number of the contact for latency alerts.
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	DelayAlertPhone *string `json:"DelayAlertPhone,omitempty" xml:"DelayAlertPhone,omitempty"`
-	// Indicates whether task latency is monitored. Valid values:
+	// Indicates whether latency monitoring is enabled. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: enabled.
 	//
-	// 	- **disable**: no
+	// - **disable**: disabled.
 	//
 	// example:
 	//
 	// enable
 	DelayAlertStatus *string `json:"DelayAlertStatus,omitempty" xml:"DelayAlertStatus,omitempty"`
-	// The threshold for triggering latency alerts. Unit: seconds.
+	// The threshold that triggers a latency alert. Unit: seconds.
 	//
 	// example:
 	//
@@ -70,29 +70,29 @@ type DescribeSynchronizationJobAlertResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The mobile phone numbers that receive status-related alerts.
+	// The mobile phone number of the contact for error alerts.
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	ErrorAlertPhone *string `json:"ErrorAlertPhone,omitempty" xml:"ErrorAlertPhone,omitempty"`
-	// Indicates whether task status is monitored. Valid values:
+	// Indicates whether error status monitoring is enabled. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: enabled.
 	//
-	// 	- **disable**: no
+	// - **disable**: disabled.
 	//
 	// example:
 	//
 	// enable
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 210ec20e16055205968635339d****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -100,17 +100,17 @@ type DescribeSynchronizationJobAlertResponseBody struct {
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// > This parameter is returned only when the topology of data synchronization is two-way synchronization.
+	// > Default value: **Forward**.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// The ID of the data synchronization instance.
+	// The instance ID of the data synchronization instance.
 	//
 	// example:
 	//

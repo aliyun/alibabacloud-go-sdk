@@ -28,17 +28,13 @@ type iSummaryJobDetailRequest interface {
 }
 
 type SummaryJobDetailRequest struct {
-	// The ID of the data migration or data synchronization instance.
-	//
-	// >  You must specify at least one of the DtsJobId and DtsInstanceId parameters.
+	// The migration or synchronization instance ID.
 	//
 	// example:
 	//
 	// dtsl3m1213ye7l****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the data migration or data synchronization task.
-	//
-	// >  You must specify at least one of the DtsJobId and DtsInstanceId parameters.
+	// The ID of the data migration or synchronization task.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +42,11 @@ type SummaryJobDetailRequest struct {
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The phase of the data migration task. Valid values:
+	// The migration phase. Valid values:
 	//
-	// 	- **02**: The task is in the schema migration phase.
+	// - **02**: schema migration phase.
 	//
-	// 	- **03**: The task is in the incremental migration phase.
+	// - **03**: incremental data migration phase.
 	//
 	// This parameter is required.
 	//
@@ -58,47 +54,47 @@ type SummaryJobDetailRequest struct {
 	//
 	// 02
 	JobCode *string `json:"JobCode,omitempty" xml:"JobCode,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-aek25bwhtt22cjq
+	// rg-aek2mjc4qlnog6q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of schema definition. Valid values:
 	//
-	// 	- **before**: schema migration or initial schema synchronization
+	// - **before**: schema migration or initial schema synchronization.
 	//
-	// 	- **after**: DDL operations performed during incremental data migration or synchronization
+	// - **after**: DDL operations during incremental data migration or synchronization.
 	//
 	// example:
 	//
 	// before
 	StructType *string `json:"StructType,omitempty" xml:"StructType,omitempty"`
-	// The synchronization direction of the data synchronization task. Valid values:
+	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**: Data is synchronized from the source database to the destination database.
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**: Data is synchronized from the destination database to the source database.
+	// - **Reverse**: reverse.
 	//
-	// >
+	// > - Default value: **Forward**.
 	//
-	// 	- Default value: **Forward**.
-	//
-	// 	- You can set this parameter to **Reverse*	- to delete the reverse synchronization task only if the topology is two-way synchronization.
+	// - You can set this parameter to **Reverse*	- to release the reverse synchronization link only when the topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// Whether it is a seamless integration (Zero-ETL) task, the value can be:
+	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
 	//
-	// - **false**: No. - **true**: Yes.
+	// - **true**: The node is a seamless integration node.
+	//
+	// - **false**: The node is not a seamless integration node.
 	//
 	// example:
 	//

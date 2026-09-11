@@ -32,19 +32,19 @@ type iDescribeClusterUsedUtilizationRequest interface {
 }
 
 type DescribeClusterUsedUtilizationRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is discontinued.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotency of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the cluster. If the **MetricType*	- parameter is set to **CLUSTER**, enter the ID of the exclusive cluster. Otherwise, set this parameter to a node ID.
+	// The dedicated cluster ID if **MetricType*	- is set to **CLUSTER**. Otherwise, set this parameter to the **nodeid**.
 	//
 	// This parameter is required.
 	//
@@ -52,30 +52,30 @@ type DescribeClusterUsedUtilizationRequest struct {
 	//
 	// nodeid
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The ID of the data migration or synchronization task.
+	// The ID of the data migration or data synchronization task.
 	//
 	// example:
 	//
 	// k2gm967v16f****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The cluster environment. Default value: **ALIYUN**.
+	// The environment. Default value: **ALIYUN**.
 	//
 	// example:
 	//
 	// ALIYUN
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Specifies whether to query the metrics of the cluster or a node. Default value: CLUSTER. Valid values:
+	// Specifies whether to query a cluster or a node. Valid values:
 	//
-	// 	- **CLUSTER**: query the metrics of the cluster.
+	// - **CLUSTER*	- (default): cluster.
 	//
-	// 	- **NODE**: query the metrics of a node.
+	// - **NODE**: node.
 	//
 	// example:
 	//
 	// NODE
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerID    *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//

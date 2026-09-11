@@ -26,43 +26,45 @@ type iSwitchPhysicalDtsJobToCloudResponseBody interface {
 }
 
 type SwitchPhysicalDtsJobToCloudResponseBody struct {
-	// Dynamic error code, this parameter will be deprecated.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the **%s*	- in the **ErrMessage*	- return parameter.  > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- response parameter.
+	//
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Error code returned when the call fails.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Returns the corresponding error message when an invocation error occurs.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 659304E3-D44E-5EFA-BDE3-60015E30403B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

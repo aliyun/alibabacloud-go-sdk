@@ -38,57 +38,57 @@ type iDescribeDataCheckTableDetailsResponseBody interface {
 }
 
 type DescribeDataCheckTableDetailsResponseBody struct {
-	// The number of tables that contain inconsistent data.
+	// The number of tables with data inconsistency.
 	//
 	// example:
 	//
 	// 1
 	DiffTableCount *int64 `json:"DiffTableCount,omitempty" xml:"DiffTableCount,omitempty"`
-	// The dynamic error code. This parameter will be discontinued in the future.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- response parameter.
 	//
-	// > For example, if the returned value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **Type**, the specified **Type*	- parameter is invalid.
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **Type**, the request parameter **Type*	- is invalid.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The total number of data rows that were failed.
+	// The number of tables that failed the verification.
 	//
 	// example:
 	//
 	// 1
 	FailedTableCount *int64 `json:"FailedTableCount,omitempty" xml:"FailedTableCount,omitempty"`
-	// The total number of data rows that were verified.
+	// The total number of rows that have been verified.
 	//
 	// example:
 	//
 	// 7
 	FinishedCount *int64 `json:"FinishedCount,omitempty" xml:"FinishedCount,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type DescribeDataCheckTableDetailsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of data verification results.
+	// The details of the data consistency verification results for tables.
 	TableDetails []*DescribeDataCheckTableDetailsResponseBodyTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Repeated"`
-	// The total number of tables on which data verification was performed.
+	// The total number of tables to be verified.
 	//
 	// example:
 	//
@@ -255,39 +255,39 @@ func (s *DescribeDataCheckTableDetailsResponseBody) Validate() error {
 }
 
 type DescribeDataCheckTableDetailsResponseBodyTableDetails struct {
-	// The time when data verification was performed.
+	// The time when the verification was performed.
 	//
 	// example:
 	//
 	// 2023-01-18 11:26:59
 	BootTime *string `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
-	// The number of data rows that contain inconsistent data.
+	// The number of rows with data inconsistency.
 	//
 	// example:
 	//
 	// 1
 	DiffCount *int64 `json:"DiffCount,omitempty" xml:"DiffCount,omitempty"`
-	// The error code returned if the data verification task failed. Valid values:
+	// The error code returned when the task fails. Valid values:
 	//
-	// 	- **1**: The number of tables that do not contain primary keys exceeds the limit.
+	// - **1**: the number of tables without primary key exceeds the limit.
 	//
-	// 	- **2**: The number of data rows that contain inconsistent data exceeds 300.
+	// - **2**: the number of rows with data inconsistency exceeds 300.
 	//
-	// 	- **3**: One or more tables to be verified do not exist.
+	// - **3**: the table to be queried does not exist.
 	//
-	// 	- **4**: The SQL statements used for verifying data contain a syntax error.
+	// - **4**: the SQL statement used to query data contains a syntax error.
 	//
 	// example:
 	//
 	// 1
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The number of data rows that were verified.
+	// The number of rows that have been verified in the table.
 	//
 	// example:
 	//
 	// 7
 	FinishCount *int64 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The auto-increment primary key that is used to identify the data in a verification result.
+	// The auto-increment primary key that identifies a verification result record.
 	//
 	// example:
 	//
@@ -305,15 +305,15 @@ type DescribeDataCheckTableDetailsResponseBodyTableDetails struct {
 	//
 	// student
 	SourceTbName *string `json:"SourceTbName,omitempty" xml:"SourceTbName,omitempty"`
-	// The status of data verification results. Valid values:
+	// The status of the verification result. Valid values:
 	//
-	// 	- **0**: The data verification task was complete.
+	// - **0**: completed.
 	//
-	// 	- **2**: The data verification task was being initialized.
+	// - **2**: initializing.
 	//
-	// 	- **3**: The data verification task was in progress.
+	// - **3**: running.
 	//
-	// 	- **5**: The data verification task failed.
+	// - **5**: failed.
 	//
 	// example:
 	//
@@ -331,7 +331,7 @@ type DescribeDataCheckTableDetailsResponseBodyTableDetails struct {
 	//
 	// person
 	TargetTbName *string `json:"TargetTbName,omitempty" xml:"TargetTbName,omitempty"`
-	// The total number of data rows.
+	// The total number of rows to be verified.
 	//
 	// example:
 	//

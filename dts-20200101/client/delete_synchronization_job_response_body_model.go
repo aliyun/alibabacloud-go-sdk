@@ -20,25 +20,25 @@ type iDeleteSynchronizationJobResponseBody interface {
 }
 
 type DeleteSynchronizationJobResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C306C198-7807-409D-930A-D6CE6C32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -48,11 +48,11 @@ type iDescribeMigrationJobStatusResponseBody interface {
 }
 
 type DescribeMigrationJobStatusResponseBody struct {
-	// The status of full data migration.
+	// The execution status of full data migration.
 	DataInitializationStatus *DescribeMigrationJobStatusResponseBodyDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	// The status of incremental data migration.
+	// The execution status of incremental data migration.
 	DataSynchronizationStatus *DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	// The connection settings of the destination instance.
+	// The connection information of the destination instance.
 	DestinationEndpoint *DescribeMigrationJobStatusResponseBodyDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	// The error code returned if the call failed.
 	//
@@ -72,33 +72,33 @@ type DescribeMigrationJobStatusResponseBody struct {
 	//
 	// 2xlarge
 	MigrationJobClass *string `json:"MigrationJobClass,omitempty" xml:"MigrationJobClass,omitempty"`
-	// The ID of the data migration instance.
+	// The instance ID of the data migration instance.
 	//
 	// example:
 	//
-	// dtsz2v12jfo309****
+	// dtsxxxxxxxx
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	// The name of the data migration task.
+	// The name of the data migration instance.
 	//
 	// example:
 	//
-	// MySQL migration
+	// MySQL迁移
 	MigrationJobName *string `json:"MigrationJobName,omitempty" xml:"MigrationJobName,omitempty"`
 	// The status of the data migration task. Valid values:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is being prechecked.
+	// - **Prechecking**: running the precheck.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// 	- **Migrating**: The task is migrating data.
+	// - **Migrating**: migrating.
 	//
-	// 	- **Suspending**: The task is paused.
+	// - **Suspending**: paused.
 	//
-	// 	- **MigrationFailed**: The task failed to migrate data.
+	// - **MigrationFailed**: migration failed.
 	//
-	// 	- **Finished**: The task is completed.
+	// - **Finished**: migration completed.
 	//
 	// example:
 	//
@@ -106,36 +106,38 @@ type DescribeMigrationJobStatusResponseBody struct {
 	MigrationJobStatus *string `json:"MigrationJobStatus,omitempty" xml:"MigrationJobStatus,omitempty"`
 	// The migration types.
 	MigrationMode *DescribeMigrationJobStatusResponseBodyMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// The objects that are migrated by the task.
+	// The migration objects.
 	//
 	// example:
 	//
 	// [{\\"DBName\\":\\"dtstestdata\\",\\"TableIncludes\\":[{\\"TableName\\":\\"customer\\"}]}]
 	MigrationObject *string `json:"MigrationObject,omitempty" xml:"MigrationObject,omitempty"`
-	// The billing method of the data migration instance. The value is **PostPaid*	- (pay-as-you-go).
+	// The billing method of the data migration task. The return value is fixed as **PostPaid*	- (pay-as-you-go).
 	//
 	// example:
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The precheck details.
+	// The precheck status.
 	PrecheckStatus *DescribeMigrationJobStatusResponseBodyPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A032E3B4-929B-48E9-97B9-37587CBF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The connection settings of the source instance.
+	// The connection information of the source instance.
 	SourceEndpoint *DescribeMigrationJobStatusResponseBodySourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The status of schema migration.
+	// The execution status of schema migration.
 	StructureInitializationStatus *DescribeMigrationJobStatusResponseBodyStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the data migration task.
+	//
 	// example:
 	//
 	// z2v12jfo309****
@@ -352,19 +354,19 @@ func (s *DescribeMigrationJobStatusResponseBody) Validate() error {
 }
 
 type DescribeMigrationJobStatusResponseBodyDataInitializationStatus struct {
-	// The error message returned if full data migration failed.
+	// The error message returned when full data migration failed.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The migration progress. Unit: %.
+	// The progress of full data migration, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of records that have been migrated during full data migration.
+	// The number of records that have been migrated during initial full data synchronization.
 	//
 	// example:
 	//
@@ -372,13 +374,13 @@ type DescribeMigrationJobStatusResponseBodyDataInitializationStatus struct {
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The status of full data migration. Valid values:
 	//
-	// 	- **NotStarted**: Full data migration is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Migrating**: Full data migration is in progress.
+	// - **Migrating**: migrating.
 	//
-	// 	- **Failed**: Full data migration failed.
+	// - **Failed**: migration failed.
 	//
-	// 	- **Finished**: Full data migration is completed.
+	// - **Finished**: migration completed.
 	//
 	// example:
 	//
@@ -435,25 +437,25 @@ func (s *DescribeMigrationJobStatusResponseBodyDataInitializationStatus) Validat
 }
 
 type DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus struct {
-	// The UNIX timestamp generated when the latest incremental data is migrated. Unit: seconds.
+	// The timestamp of the latest incremental data that has been migrated. The value is a UNIX timestamp, in seconds.
 	//
 	// example:
 	//
-	// 1612507847
+	// 1571040679
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The latency of incremental data migration. Unit: seconds.
+	// The migration latency of incremental data migration, in seconds.
 	//
 	// example:
 	//
 	// 0
 	Delay *string `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The error message returned if incremental data migration failed.
+	// The error message returned when incremental data migration failed.
 	//
 	// example:
 	//
-	// The task has failed for too long and cannot be restored
+	// 任务失败太久 无法恢复
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of incremental data migration. Unit: %.
+	// The progress of incremental data migration, in percentage.
 	//
 	// example:
 	//
@@ -461,15 +463,15 @@ type DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus struct {
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The status of incremental data migration. Valid values:
 	//
-	// 	- **NotStarted**: Incremental data migration is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Migrating**: Incremental data migration is in progress.
+	// - **Migrating**: migrating.
 	//
-	// 	- **Failed**: Incremental data migration failed.
+	// - **Failed**: migration failed.
 	//
-	// 	- **Finished**: Incremental data migration is completed.
+	// - **Finished**: migration completed.
 	//
-	// 	- **Catched**: Incremental data migration is not delayed.
+	// - **Catched**: no latency.
 	//
 	// example:
 	//
@@ -535,7 +537,7 @@ func (s *DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus) Valida
 }
 
 type DescribeMigrationJobStatusResponseBodyDestinationEndpoint struct {
-	// The name of the database to which the migration object in the destination instance belongs.
+	// The name of the database to which the objects to be migrated belong in the destination instance.
 	//
 	// example:
 	//
@@ -553,11 +555,11 @@ type DescribeMigrationJobStatusResponseBodyDestinationEndpoint struct {
 	//
 	// 172.16.88.***
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the destination instance.
+	// The instance ID of the destination instance.
 	//
 	// example:
 	//
-	// rm-bp1zc3iyqe3qw****
+	// rm-bpxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the destination instance.
 	//
@@ -577,9 +579,9 @@ type DescribeMigrationJobStatusResponseBodyDestinationEndpoint struct {
 	//
 	// dtstest
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The system ID (SID) of the Oracle database.
+	// The SID of the Oracle database.
 	//
-	// >  This parameter is returned only if the database type of the destination instance is **Oracle**.
+	// > This parameter is returned only when the database type of the destination instance is **Oracle**.
 	//
 	// example:
 	//
@@ -674,9 +676,9 @@ func (s *DescribeMigrationJobStatusResponseBodyDestinationEndpoint) Validate() e
 type DescribeMigrationJobStatusResponseBodyMigrationMode struct {
 	// Indicates whether full data migration is performed. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
 	// example:
 	//
@@ -684,23 +686,23 @@ type DescribeMigrationJobStatusResponseBodyMigrationMode struct {
 	DataInitialization *bool `json:"dataInitialization,omitempty" xml:"dataInitialization,omitempty"`
 	// Indicates whether incremental data migration is performed. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
 	// example:
 	//
-	// true
+	// **false**。
 	DataSynchronization *bool `json:"dataSynchronization,omitempty" xml:"dataSynchronization,omitempty"`
 	// Indicates whether schema migration is performed. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: yes.
 	//
-	// 	- **false**: no
+	// - **false**: no.
 	//
 	// example:
 	//
-	// true
+	// **false**。
 	StructureInitialization *bool `json:"structureInitialization,omitempty" xml:"structureInitialization,omitempty"`
 }
 
@@ -745,7 +747,7 @@ func (s *DescribeMigrationJobStatusResponseBodyMigrationMode) Validate() error {
 
 type DescribeMigrationJobStatusResponseBodyPrecheckStatus struct {
 	Detail *DescribeMigrationJobStatusResponseBodyPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// The precheck progress. Unit: %.
+	// The overall progress of the precheck, in percentage.
 	//
 	// example:
 	//
@@ -753,15 +755,13 @@ type DescribeMigrationJobStatusResponseBodyPrecheckStatus struct {
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The precheck status. Valid values:
 	//
-	// 	- **NotStarted**
+	// - **NotStarted**: not started.
 	//
-	// 	- **Suspending**:
+	// - **Checking**: running the precheck.
 	//
-	// 	- **Checking**
+	// - **Failed**: precheck failed.
 	//
-	// 	- **Failed**
-	//
-	// 	- **Finished**
+	// - **Finished**: precheck completed.
 	//
 	// example:
 	//
@@ -903,7 +903,7 @@ func (s *DescribeMigrationJobStatusResponseBodyPrecheckStatusDetailCheckItem) Va
 }
 
 type DescribeMigrationJobStatusResponseBodySourceEndpoint struct {
-	// The name of the database to which the migration object in the source instance belongs.
+	// The name of the database to which the objects to be migrated belong in the source instance.
 	//
 	// example:
 	//
@@ -921,25 +921,25 @@ type DescribeMigrationJobStatusResponseBodySourceEndpoint struct {
 	//
 	// 172.16.88.***
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The ID of the source instance.
+	// The instance ID of the source instance.
 	//
 	// example:
 	//
 	// rm-bp1i99e8l7913****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the source instance.
+	// The type of the source instance. Valid values:
 	//
-	// 	- **RDS**: ApsaraDB RDS instance
+	// - **RDS**: ApsaraDB RDS instance.
 	//
-	// 	- **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
+	// - **ECS**: self-managed database hosted on ECS.
 	//
-	// 	- **LocalInstance**: self-managed database with a public IP address
+	// - **LocalInstance**: self-managed database with a public IP address.
 	//
-	// 	- **Express**: self-managed database that is connected over Express Connect, VPN Gateway, or Smart Access Gateway
+	// - **Express**: self-managed database connected over Express Connect, VPN Gateway, or Smart Access Gateway.
 	//
-	// 	- **MongoDB**: ApsaraDB for MongoDB instance
+	// - **MongoDB**: ApsaraDB for MongoDB instance.
 	//
-	// 	- **POLARDB**: PolarDB for MySQL cluster (available only for the China site)
+	// - **POLARDB**: PolarDB for MySQL cluster (this value is applicable only to the China site).
 	//
 	// example:
 	//
@@ -959,11 +959,11 @@ type DescribeMigrationJobStatusResponseBodySourceEndpoint struct {
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// >  This parameter is returned only if the database type of the source instance is **Oracle**.
+	// > This parameter is returned only when the database type of the source instance is Oracle.
 	//
 	// example:
 	//
-	// dtstestdatabase
+	// testsid
 	OracleSID *string `json:"oracleSID,omitempty" xml:"oracleSID,omitempty"`
 }
 
@@ -1052,19 +1052,19 @@ func (s *DescribeMigrationJobStatusResponseBodySourceEndpoint) Validate() error 
 }
 
 type DescribeMigrationJobStatusResponseBodyStructureInitializationStatus struct {
-	// The error message returned if schema migration failed.
+	// The error message returned when schema migration failed.
 	//
 	// example:
 	//
 	// DTS-1020042 Execute sql error sql: ERROR: type "geometry" does not exist;
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of schema migration. Unit: %.
+	// The progress of schema migration, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables whose schemas have been migrated.
+	// The number of tables for which schema migration has been completed.
 	//
 	// example:
 	//
@@ -1072,13 +1072,13 @@ type DescribeMigrationJobStatusResponseBodyStructureInitializationStatus struct 
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The status of schema migration. Valid values:
 	//
-	// 	- **NotStarted**: Schema migration is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Migrating**: Schema migration is in progress.
+	// - **Migrating**: migrating.
 	//
-	// 	- **Failed**: Schema migration failed.
+	// - **Failed**: migration failed.
 	//
-	// 	- **Finished**: Schema migration is completed.
+	// - **Finished**: migration completed.
 	//
 	// example:
 	//

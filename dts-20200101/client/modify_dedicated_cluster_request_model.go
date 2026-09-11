@@ -26,9 +26,9 @@ type iModifyDedicatedClusterRequest interface {
 }
 
 type ModifyDedicatedClusterRequest struct {
-	// The ID of the cluster.
+	// The ID of the dedicated cluster.
 	//
-	// >  You must specify one of the **InstanceId*	- and **DedicatedClusterId*	- parameters.
+	// > Either **InstanceId*	- or **DedicatedClusterId*	- must be specified.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ModifyDedicatedClusterRequest struct {
 	//
 	// dtscluster_test_001
 	DedicatedClusterName *string `json:"DedicatedClusterName,omitempty" xml:"DedicatedClusterName,omitempty"`
-	// The ID of the instance.
+	// The instance ID of the cluster.
 	//
-	// >  You must specify one of the **InstanceId*	- and **DedicatedClusterId*	- parameters.
+	// > Either the **InstanceId*	- or **DedicatedClusterId*	- parameter must be specified.
 	//
 	// example:
 	//
@@ -55,7 +55,7 @@ type ModifyDedicatedClusterRequest struct {
 	// 150
 	OversoldRatio *int32  `json:"OversoldRatio,omitempty" xml:"OversoldRatio,omitempty"`
 	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
+	// The region in which the DTS instance resides.
 	//
 	// example:
 	//

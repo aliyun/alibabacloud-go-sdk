@@ -36,37 +36,37 @@ type iDescribeDedicatedClusterMonitorRuleResponseBody interface {
 }
 
 type DescribeDedicatedClusterMonitorRuleResponseBody struct {
-	// The alert threshold for CPU utilization. Unit: percentage.
+	// The CPU alert threshold, in percentage.
 	//
 	// example:
 	//
 	// 80
 	CpuAlarmThreshold *string `json:"CpuAlarmThreshold,omitempty" xml:"CpuAlarmThreshold,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// dtsClustervcwn1oeyu5fx4yf
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The alert threshold for disk usage. Unit: percentage.
+	// The disk alert threshold, in percentage.
 	//
 	// example:
 	//
 	// 80
 	DiskAlarmThreshold *string `json:"DiskAlarmThreshold,omitempty" xml:"DiskAlarmThreshold,omitempty"`
-	// The alert threshold for DTS Unit (DU) usage. Unit: percentage.
+	// The DU alert threshold, in percentage.
 	//
 	// example:
 	//
 	// 46
 	DuAlarmThreshold *string `json:"DuAlarmThreshold,omitempty" xml:"DuAlarmThreshold,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -78,35 +78,35 @@ type DescribeDedicatedClusterMonitorRuleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The alert threshold for memory usage. Unit: percentage.
+	// The memory alert threshold, in percentage.
 	//
 	// example:
 	//
 	// 80
 	MemAlarmThreshold *string `json:"MemAlarmThreshold,omitempty" xml:"MemAlarmThreshold,omitempty"`
-	// Indicates whether the alert feature is enabled. Valid values:
+	// The alert switch. Valid values:
 	//
-	// 	- **1**: The alert feature is enabled.
+	// - **1**: enabled.
 	//
-	// 	- **0**: The alert feature is disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	NoticeSwitch *string `json:"NoticeSwitch,omitempty" xml:"NoticeSwitch,omitempty"`
-	// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+	// The phone numbers that receive alerts. If there are multiple phone numbers, they are separated by commas (,).
 	//
 	// example:
 	//
 	// 186****7653
 	Phones *string `json:"Phones,omitempty" xml:"Phones,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

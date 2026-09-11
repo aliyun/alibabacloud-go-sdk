@@ -28,44 +28,44 @@ type iDescribeMigrationJobsResponseBody interface {
 }
 
 type DescribeMigrationJobsResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage    *string                                         `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	MigrationJobs *DescribeMigrationJobsResponseBodyMigrationJobs `json:"MigrationJobs,omitempty" xml:"MigrationJobs,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries that can be displayed on the current page.
+	// The maximum number of records that can be displayed on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0ED4846D-ED60-435D-88C0-7EC0CE4D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of data migration instances that belong to your Alibaba Cloud account.
+	// The total number of data migration instances that meet the specified conditions under the Alibaba Cloud account.
 	//
 	// example:
 	//

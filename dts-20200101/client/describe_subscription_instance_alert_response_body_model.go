@@ -34,23 +34,23 @@ type iDescribeSubscriptionInstanceAlertResponseBody interface {
 }
 
 type DescribeSubscriptionInstanceAlertResponseBody struct {
-	// The mobile phone numbers that receive latency-related alerts.
+	// The mobile phone number of the contact for latency alerts.
 	//
 	// example:
 	//
-	// 1361234****,1371234****
+	// 13465****
 	DelayAlertPhone *string `json:"DelayAlertPhone,omitempty" xml:"DelayAlertPhone,omitempty"`
-	// Indicates whether task latency is monitored. Valid values:
+	// Indicates whether latency alerting is enabled. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: Enabled.
 	//
-	// 	- **disable**: no
+	// - **disable**: Disabled.
 	//
 	// example:
 	//
 	// enable
 	DelayAlertStatus *string `json:"DelayAlertStatus,omitempty" xml:"DelayAlertStatus,omitempty"`
-	// The threshold for triggering latency alerts. The unit is seconds and the value is an integer. The recommended value is 10 seconds.
+	// The threshold for triggering latency alerts. Unit: seconds. The value must be an integer. A value of 10 seconds is recommended.
 	//
 	// example:
 	//
@@ -68,29 +68,29 @@ type DescribeSubscriptionInstanceAlertResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The mobile phone numbers that receive status-related alerts.
+	// The mobile phone number of the contact for error alerts.
 	//
 	// example:
 	//
-	// 1361234****,1371234****
+	// 13555*****
 	ErrorAlertPhone *string `json:"ErrorAlertPhone,omitempty" xml:"ErrorAlertPhone,omitempty"`
-	// Indicates whether task status is monitored. Valid values:
+	// Indicates whether error alerting is enabled. Valid values:
 	//
-	// 	- **enable**: yes
+	// - **enable**: Enabled.
 	//
-	// 	- **disable**: no
+	// - **disable**: Disabled.
 	//
 	// example:
 	//
 	// enable
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 210ec2e116055198849072222d****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the change tracking instance.
+	// The change tracking instance ID.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeSubscriptionInstanceAlertResponseBody struct {
 	//
 	// test
 	SubscriptionInstanceName *string `json:"SubscriptionInstanceName,omitempty" xml:"SubscriptionInstanceName,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

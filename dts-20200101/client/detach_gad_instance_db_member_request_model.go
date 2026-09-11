@@ -22,19 +22,27 @@ type iDetachGadInstanceDbMemberRequest interface {
 }
 
 type DetachGadInstanceDbMemberRequest struct {
+	// The instance ID of the active geo-redundancy instance group.
+	//
 	// example:
 	//
 	// gad-bp162d4tp0500****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see the list of supported regions.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The instance ID of the secondary role.
+	//
 	// example:
 	//
 	// rm-sdfghjk****

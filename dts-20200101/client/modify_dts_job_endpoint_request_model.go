@@ -29,8 +29,14 @@ type iModifyDtsJobEndpointRequest interface {
 	GetEndpointIp() *string
 	SetEndpointPort(v string) *ModifyDtsJobEndpointRequest
 	GetEndpointPort() *string
+	SetEndpointPrimaryVswId(v string) *ModifyDtsJobEndpointRequest
+	GetEndpointPrimaryVswId() *string
 	SetEndpointRegionId(v string) *ModifyDtsJobEndpointRequest
 	GetEndpointRegionId() *string
+	SetEndpointSecondaryVswId(v string) *ModifyDtsJobEndpointRequest
+	GetEndpointSecondaryVswId() *string
+	SetEndpointVpcId(v string) *ModifyDtsJobEndpointRequest
+	GetEndpointVpcId() *string
 	SetModifyAccount(v bool) *ModifyDtsJobEndpointRequest
 	GetModifyAccount() *bool
 	SetPassword(v string) *ModifyDtsJobEndpointRequest
@@ -54,49 +60,53 @@ type iModifyDtsJobEndpointRequest interface {
 }
 
 type ModifyDtsJobEndpointRequest struct {
-	// The ID of the Alibaba Cloud account (primary account) to which the database instance belongs.
+	// The ID of the Alibaba Cloud account that owns the database instance.
 	//
-	// >  Passing this parameter indicates that cross-Alibaba Cloud account data synchronization will be performed, and you also need to pass the **RoleName*	- parameter.
+	// > Specifying this parameter indicates cross-account data synchronization. You must also specify the **RoleName*	- parameter.
 	//
 	// example:
 	//
 	// 150780020300****
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// When the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, or **AnalyticDB PostgreSQL**, it represents the database name; when the database type is **MongoDB**, it represents the authentication database name.
+	// The database name when the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, or **AnalyticDB PostgreSQL**. The authentication database name when the database type is **MongoDB**.
 	//
-	// > This parameter is only available and must be provided when the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, **AnalyticDB PostgreSQL**, or **MongoDB**.
+	// > This parameter is available and required only when the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, **AnalyticDB PostgreSQL**, or **MongoDB**.
 	//
 	// example:
 	//
 	// admin
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// Specifies whether to perform only a precheck. Valid values:
+	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// 	- **true**: Yes. After the precheck is passed, the database is not changed.
+	// - **true**: Yes. After the dry run succeeds, the instance is not modified.
 	//
-	// 	- **false*	- (default): No. After the precheck is passed, the system changes the original database of the DTS task and runs the task.
+	// - **false*	- (default): No. After the dry run succeeds, the database instance of the DTS task is modified and the task runs.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the DTS instance. If this parameter is not provided, **DtsJobId*	- must be specified.
+	// The ID of the DTS instance.
+	//
+	// > If you do not specify this parameter, you must specify **DtsJobId**.
 	//
 	// example:
 	//
 	// dtsaw012y2g15q****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// DTS job ID, which can be queried by calling [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html).
+	// The ID of the DTS task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
 	//
-	// > If this parameter is not provided, **DtsInstanceId*	- must be filled in.
+	// > If you do not specify this parameter, you must specify **DtsInstanceId**.
 	//
 	// example:
 	//
 	// m4312mab158****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The database instance to be modified, with values:
+	// The database instance to be modified. Valid values:
 	//
-	// - **src**: Source database instance. - **dest**: Target database instance.
+	// - **src**: source instance.
+	//
+	// - **dest**: destination instance.
 	//
 	// This parameter is required.
 	//
@@ -104,41 +114,41 @@ type ModifyDtsJobEndpointRequest struct {
 	//
 	// src
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// ID of the database instance.
+	// The ID of the database instance.
 	//
 	// example:
 	//
 	// rm-bp10k50h8374w****
 	EndpointInstanceId *string `json:"EndpointInstanceId,omitempty" xml:"EndpointInstanceId,omitempty"`
-	// The type of the database. Valid values:
+	// The type of the database instance. Valid values:
 	//
-	// 	- **rds**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, or ApsaraDB RDS for PostgreSQL instance.
+	// - **rds**: ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL.
 	//
-	// 	- **polardb**: PolarDB for MySQL cluster or PolarDB for PostgreSQL cluster.
+	// - **polardb**: PolarDB for MySQL or PolarDB for PostgreSQL.
 	//
-	// 	- **mongodb**: ApsaraDB for MongoDB replica set instance.
+	// - **mongodb**: when used as the source, ApsaraDB for MongoDB (replica set architecture). When used as the destination, ApsaraDB for MongoDB (replica set or sharded cluster architecture).
 	//
-	// 	- **distributed_mongodb**: ApsaraDB for MongoDB sharded cluster instance.
+	// - **distributed_mongodb**: supported only as the source of a distributed instance. Indicates ApsaraDB for MongoDB (sharded cluster architecture).
 	//
-	// 	- **greenplum**: AnalyticDB for PostgreSQL instance.
+	// > The incremental node of a distributed instance must obtain data changes from the source through Oplog.
 	//
-	// 	- **kafka**: ApsaraMQ for Kafka instance.
+	// - **greenplum**: cloud-native data warehouse AnalyticDB for PostgreSQL.
 	//
-	// 	- **ecs**: self-managed database that is hosted on an Elastic Compute Service (ECS) instance. If you set this parameter to ecs, the database must be the supported one.
+	// - **kafka**: ApsaraMQ for Kafka.
 	//
-	// 	- **express**: database that is connected over Express Connect. If you set this parameter to express, the database must be the supported one.
+	// - **ecs**: self-managed database on an ECS instance (only supported database types).
 	//
-	// 	- **other**: database that is connected over Internet. If you set this parameter to other, the database must be the supported one.
+	// - **express**: database connected over Express Connect (only supported database types).
 	//
-	// >
+	// - **other**: database connected over the Internet (only supported database types).
 	//
-	// 	- The following types of databases are supported: **MySQL**, **PolarDB for MySQL**, **PostgreSQL**, **PolarDB for PostgreSQL**, **MongoDB**, **SQL Server**, **Kafka**, and **AnalyticDB for PostgreSQL**.
+	// > - Currently supported database types include **MySQL**, **PolarDB for MySQL**, **PostgreSQL**, **PolarDB for PostgreSQL**, **MongoDB**, **Kafka**, and **AnalyticDB PostgreSQL**.
 	//
-	// 	- If the original database is an ApsaraDB for MongoDB sharded cluster instance, the new database must have the same number of shards as the original database.
+	// - If the database is MongoDB (sharded cluster), the number of shards in the new database must be the same as that in the original MongoDB (sharded cluster).
 	//
-	// 	- If the database that you want to change is a source **PostgreSQL*	- database, you must make sure that the latency of the DTS instance is less than 30 seconds and no data is written to the source database during the change. Otherwise, data inconsistency may occur.
+	// - If the source instance is to be modified and the database type is **PostgreSQL**, make sure that the latency of the DTS instance is less than 30 seconds and stop writing data to the source. Otherwise, inconsistent data may occur.
 	//
-	// 	- The value of this parameter is case-insensitive.
+	// - The parameter values are case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -146,87 +156,105 @@ type ModifyDtsJobEndpointRequest struct {
 	//
 	// rds
 	EndpointInstanceType *string `json:"EndpointInstanceType,omitempty" xml:"EndpointInstanceType,omitempty"`
-	// The IP of the database instance.
+	// The IP address of the database instance.
 	//
 	// example:
 	//
 	// 172.168.XX.XXX
 	EndpointIp *string `json:"EndpointIp,omitempty" xml:"EndpointIp,omitempty"`
-	// port of the database instance.
+	// The port of the database instance.
 	//
 	// example:
 	//
 	// 3306
 	EndpointPort *string `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
-	// The ID of the region in which the database resides.
+	// The primary vSwitch for Express Connect access.
+	//
+	// example:
+	//
+	// vsw-bp1w7gscw7pky*******
+	EndpointPrimaryVswId *string `json:"EndpointPrimaryVswId,omitempty" xml:"EndpointPrimaryVswId,omitempty"`
+	// The region to which the database instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	EndpointRegionId *string `json:"EndpointRegionId,omitempty" xml:"EndpointRegionId,omitempty"`
-	// Specifies whether to change the password of the database account. Valid values:
+	// The secondary vSwitch for Express Connect access.
 	//
-	// 	- **true**
+	// example:
 	//
-	// 	- **false*	- (default)
+	// vsw-bp1ud8e2mhw*****
+	EndpointSecondaryVswId *string `json:"EndpointSecondaryVswId,omitempty" xml:"EndpointSecondaryVswId,omitempty"`
+	// The VPC ID for Express Connect access.
+	//
+	// example:
+	//
+	// vpc-bp1q00qitocaem****
+	EndpointVpcId *string `json:"EndpointVpcId,omitempty" xml:"EndpointVpcId,omitempty"`
+	// Specifies whether to modify the account and password. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false*	- (default): No.
 	//
 	// example:
 	//
 	// false
 	ModifyAccount *bool `json:"ModifyAccount,omitempty" xml:"ModifyAccount,omitempty"`
-	// The password of the database account.
+	// The database password.
 	//
-	// >  This parameter is valid only if **ModifyAccount*	- is set to **true**.
+	// > This parameter takes effect only when **ModifyAccount*	- is set to **true**.
 	//
 	// example:
 	//
 	// DTStest****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the region in which the DTS instance resides.
+	// The region to which the DTS instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Cross Alibaba Cloud account role name. When performing data synchronization across Alibaba Cloud accounts, this parameter must be passed. For the required permissions and authorization methods for this role, please refer to [How to Configure RAM Authorization for Cross-Account Data Migration or Synchronization](https://help.aliyun.com/document_detail/48468.html).
+	// The name of the RAM role for cross-account access.
+	//
+	// > Specify this parameter when performing cross-account data synchronization. For the required permissions and authorization method of this role, see [Configure RAM authorization for cross-account data migration or synchronization](https://help.aliyun.com/document_detail/48468.html).
 	//
 	// example:
 	//
 	// ram-for-dts
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The account password of the shard of the ApsaraDB for MongoDB sharded cluster instance.
+	// The password of the shard in the MongoDB sharded cluster instance.
 	//
-	// >
+	// > - This parameter is available and required only when the source database instance is ApsaraDB for MongoDB (sharded cluster architecture).
 	//
-	// 	- This parameter is valid and required only if the source database is an ApsaraDB for MongoDB sharded cluster instance.
-	//
-	// 	- This parameter is valid only if **ModifyAccount*	- is set to **true**.
+	// - This parameter takes effect only when **ModifyAccount*	- is set to **true**.
 	//
 	// example:
 	//
 	// DTStest****
 	ShardPassword *string `json:"ShardPassword,omitempty" xml:"ShardPassword,omitempty"`
-	// The account username of the shard of the ApsaraDB for MongoDB sharded cluster instance.
+	// The account of the shard in the MongoDB sharded cluster instance.
 	//
-	// >
+	// > - This parameter is available and required only when the source database instance is ApsaraDB for MongoDB (sharded cluster architecture).
 	//
-	// 	- This parameter is valid and required only if the source database is an ApsaraDB for MongoDB sharded cluster instance.
-	//
-	// 	- This parameter is valid only if **ModifyAccount*	- is set to **true**.
+	// - This parameter takes effect only when **ModifyAccount*	- is set to **true**.
 	//
 	// example:
 	//
 	// shard
 	ShardUsername *string `json:"ShardUsername,omitempty" xml:"ShardUsername,omitempty"`
-	// Synchronization direction, with values:
+	// The synchronization direction. Valid values:
 	//
-	// - **Forward*	- (default): Forward. - **Reverse**: Reverse.
+	// - **Forward*	- (default): forward.
+	//
+	// - **Reverse**: reverse.
 	//
 	// example:
 	//
@@ -234,13 +262,22 @@ type ModifyDtsJobEndpointRequest struct {
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
 	// The database account.
 	//
-	// >  This parameter is valid only if **ModifyAccount*	- is set to **true**.
+	// > This parameter takes effect only when **ModifyAccount*	- is set to **true**.
 	//
 	// example:
 	//
 	// dtstest
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	ZeroEtlJob *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// Specifies whether this is a seamless integration (zero-ETL) node. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// example:
+	//
+	// true
+	ZeroEtlJob *bool `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s ModifyDtsJobEndpointRequest) String() string {
@@ -291,8 +328,20 @@ func (s *ModifyDtsJobEndpointRequest) GetEndpointPort() *string {
 	return s.EndpointPort
 }
 
+func (s *ModifyDtsJobEndpointRequest) GetEndpointPrimaryVswId() *string {
+	return s.EndpointPrimaryVswId
+}
+
 func (s *ModifyDtsJobEndpointRequest) GetEndpointRegionId() *string {
 	return s.EndpointRegionId
+}
+
+func (s *ModifyDtsJobEndpointRequest) GetEndpointSecondaryVswId() *string {
+	return s.EndpointSecondaryVswId
+}
+
+func (s *ModifyDtsJobEndpointRequest) GetEndpointVpcId() *string {
+	return s.EndpointVpcId
 }
 
 func (s *ModifyDtsJobEndpointRequest) GetModifyAccount() *bool {
@@ -385,8 +434,23 @@ func (s *ModifyDtsJobEndpointRequest) SetEndpointPort(v string) *ModifyDtsJobEnd
 	return s
 }
 
+func (s *ModifyDtsJobEndpointRequest) SetEndpointPrimaryVswId(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointPrimaryVswId = &v
+	return s
+}
+
 func (s *ModifyDtsJobEndpointRequest) SetEndpointRegionId(v string) *ModifyDtsJobEndpointRequest {
 	s.EndpointRegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpointSecondaryVswId(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointSecondaryVswId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpointVpcId(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointVpcId = &v
 	return s
 }
 

@@ -36,6 +36,8 @@ type iPreCheckCreateGadOrderRequest interface {
 }
 
 type PreCheckCreateGadOrderRequest struct {
+	// The ID of the active geo-redundancy instance group.
+	//
 	// example:
 	//
 	// gad-bp1i99e8l7913****
@@ -45,19 +47,27 @@ type PreCheckCreateGadOrderRequest struct {
 	MasterShardAccountName     *string `json:"MasterShardAccountName,omitempty" xml:"MasterShardAccountName,omitempty"`
 	MasterShardAccountPassword *string `json:"MasterShardAccountPassword,omitempty" xml:"MasterShardAccountPassword,omitempty"`
 	OwnerId                    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfntftbiobqyky
 	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SlaveDatabaseName *string `json:"SlaveDatabaseName,omitempty" xml:"SlaveDatabaseName,omitempty"`
+	// The instance ID of the database instance that assumes the secondary role.
+	//
 	// example:
 	//
 	// rm-bp17562h64****
 	SlaveDbInstanceId *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
+	// The region of the database instance that assumes the secondary role.
+	//
 	// example:
 	//
 	// cn-hangzhou

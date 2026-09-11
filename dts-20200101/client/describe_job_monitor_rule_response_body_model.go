@@ -32,7 +32,7 @@ type iDescribeJobMonitorRuleResponseBody interface {
 }
 
 type DescribeJobMonitorRuleResponseBody struct {
-	// The error code. This parameter will be removed in the future.
+	// The error code. This parameter will be deprecated.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type DescribeJobMonitorRuleResponseBody struct {
 	//
 	// ta7w132u12h****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
 	//
-	// >  If the specified **DtsJobId*	- parameter is invalid, **The Value of Input Parameter %s is not valid*	- is returned for **ErrMessage*	- and **DtsJobId*	- is returned for **DynamicMessage**.
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// 403
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type DescribeJobMonitorRuleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The monitoring rules of the DTS task.
+	// The monitoring rule information of the DTS task.
 	MonitorRules []*DescribeJobMonitorRuleResponseBodyMonitorRules `json:"MonitorRules,omitempty" xml:"MonitorRules,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0CA14388-DD89-4A7B-8CDD-884A10CE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The call was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**:The call failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The topics of all subtasks in the distributed change tracking task.
+	// The Kafka topics.
 	Topics []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
@@ -204,43 +204,45 @@ func (s *DescribeJobMonitorRuleResponseBody) Validate() error {
 }
 
 type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
-	// The threshold that triggers the alert.
-	//
-	// 	- If the request parameter **Type*	- of the [CreateJobMonitorRule](https://help.aliyun.com/document_detail/212332.html) operation is set to **delay**, the unit of DelayRuleTime is seconds.
-	//
-	// 	- If the request parameter **Type*	- of the [CreateJobMonitorRule](https://help.aliyun.com/document_detail/212332.html) operation is set to **full_timeout**, the unit of DelayRuleTime is hours.
+	// The threshold that triggers a latency alert. Unit: seconds.
 	//
 	// example:
 	//
-	// 11
+	// 60
 	DelayRuleTime *int64 `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// bi6e22ay243****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task type of the DTS instance, with values: - **normal**: Migration or synchronization task. - **full_check**: Associated full check task. - **etl_check**: Associated incremental check task.
+	// The task type of the DTS instance. Valid values:
+	//
+	// - **normal**: data migration or data synchronization task.
+	//
+	// - **full_check**: associated full data validation task.
+	//
+	// - **etl_check**: associated incremental data validation task.
 	//
 	// example:
 	//
 	// normal
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// Alarm threshold.
+	// The alert threshold.
 	//
 	// example:
 	//
 	// 2
 	NoticeValue *int32 `json:"NoticeValue,omitempty" xml:"NoticeValue,omitempty"`
-	// The statistical period for incremental validation tasks, in minutes.
+	// The statistical period of the incremental data validation task. Unit: minutes.
 	//
-	// > Currently supported values are 1 minute, 5 minutes, 10 minutes, and 30 minutes.
+	// > Valid values: 1, 5, 10, and 30 minutes.
 	//
 	// example:
 	//
 	// 5
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The mobile phone numbers that receive alert notifications. Multiple mobile numbers are separated by commas (,).
+	// The phone numbers of the contacts to be notified when an alert is triggered. Multiple phone numbers are separated by commas (,).
 	//
 	// example:
 	//
@@ -248,15 +250,15 @@ type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// Indicates whether the monitoring rule is enabled. Valid values:
 	//
-	// 	- **Y**: The monitoring rule is enabled.
+	// - **Y**: enabled.
 	//
-	// 	- **N**: The monitoring rule is disabled.
+	// - **N**: disabled.
 	//
 	// example:
 	//
 	// Y
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The number of cycles for the incremental validation task.
+	// The number of periods for the incremental data validation task.
 	//
 	// example:
 	//
@@ -264,9 +266,13 @@ type DescribeJobMonitorRuleResponseBodyMonitorRules struct {
 	Times *int32 `json:"Times,omitempty" xml:"Times,omitempty"`
 	// The type of the monitoring rule. Valid values:
 	//
-	// 	- **delay**: If the task latency reaches the threshold, an alert is triggered.
+	// - **delay**: latency alert.
 	//
-	// 	- **error**: If an exception occurs, an alert is triggered.
+	// - **error**: anomaly alert.
+	//
+	// - **full_timeout**: alert for the runtime of the full data module.
+	//
+	// - **warn**: notification alert (the task succeeded but the result did not meet expectations).
 	//
 	// example:
 	//

@@ -34,71 +34,75 @@ type iDescribeMigrationJobAlertResponseBody interface {
 }
 
 type DescribeMigrationJobAlertResponseBody struct {
-	// Phone number of the contact for delay alarm.
+	// The mobile phone number of the contact for latency alerts.
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	DelayAlertPhone *string `json:"DelayAlertPhone,omitempty" xml:"DelayAlertPhone,omitempty"`
-	// Whether to monitor the delay status, return values:
+	// Indicates whether latency status monitoring is enabled. Valid values:
 	//
-	// - **enable**: Yes. - **disable**: No.
+	// - **enable**: Enabled.
+	//
+	// - **disable**: Disabled.
 	//
 	// example:
 	//
 	// enable
 	DelayAlertStatus *string `json:"DelayAlertStatus,omitempty" xml:"DelayAlertStatus,omitempty"`
-	// The threshold for triggering a delayed alarm, in seconds.
+	// The threshold that triggers a latency alert. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	DelayOverSeconds *string `json:"DelayOverSeconds,omitempty" xml:"DelayOverSeconds,omitempty"`
-	// Error code returned when the call fails.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Indicates whether the call was successful.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Phone number of the contact for abnormal alarm notifications
+	// The mobile phone number of the contact for error alerts.
 	//
 	// example:
 	//
 	// 1361234****,1371234****
 	ErrorAlertPhone *string `json:"ErrorAlertPhone,omitempty" xml:"ErrorAlertPhone,omitempty"`
-	// Whether to monitor for abnormal status, return values:
+	// Indicates whether error status monitoring is enabled. Valid values:
 	//
-	// - **enable**: Yes. - **disable**: No.
+	// - **enable**: Enabled.
+	//
+	// - **disable**: Disabled.
 	//
 	// example:
 	//
 	// enable
 	ErrorAlertStatus *string `json:"ErrorAlertStatus,omitempty" xml:"ErrorAlertStatus,omitempty"`
-	// Data migration instance ID.
+	// The ID of the data migration instance.
 	//
 	// example:
 	//
 	// dtslb9113qq11n****
 	MigrationJobId *string `json:"MigrationJobId,omitempty" xml:"MigrationJobId,omitempty"`
-	// Name of the data migration task.
+	// The name of the data migration task.
 	//
 	// example:
 	//
 	// zwy-test5
 	MigrationJobName *string `json:"MigrationJobName,omitempty" xml:"MigrationJobName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CFB89C51-6F03-519C-A921-AAE28D50AEFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

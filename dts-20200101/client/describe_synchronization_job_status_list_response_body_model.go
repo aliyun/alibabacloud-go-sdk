@@ -40,33 +40,33 @@ type DescribeSynchronizationJobStatusListResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of data synchronization instances displayed on one page.
+	// The number of synchronization instances displayed on one page.
 	//
 	// example:
 	//
 	// 2
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1413460B-138A-48D1-836C-B24EDDC1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The status of the data synchronization tasks.
+	// The status list of synchronization jobs.
 	SynchronizationJobListStatusList []*DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusList `json:"SynchronizationJobListStatusList,omitempty" xml:"SynchronizationJobListStatusList,omitempty" type:"Repeated"`
-	// The total number of data synchronization instances.
+	// The total number of synchronization instances that were queried.
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ func (s *DescribeSynchronizationJobStatusListResponseBody) Validate() error {
 }
 
 type DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusList struct {
-	// The details of data synchronization tasks in each direction.
+	// The list of synchronization direction details.
 	SynchronizationDirectionInfoList []*DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusListSynchronizationDirectionInfoList `json:"SynchronizationDirectionInfoList,omitempty" xml:"SynchronizationDirectionInfoList,omitempty" type:"Repeated"`
-	// The ID of the data synchronization instance.
+	// The instance ID of the data synchronization instance.
 	//
 	// example:
 	//
@@ -218,35 +218,35 @@ func (s *DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListS
 }
 
 type DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusListSynchronizationDirectionInfoList struct {
-	// The UNIX timestamp generated when the latest data record was synchronized.
+	// The timestamp of the latest synchronized data, in UNIX timestamp format.
 	//
-	// >  You can use a search engine to obtain a UNIX timestamp converter.
+	// > You can use a search engine to find a UNIX timestamp converter.
 	//
 	// example:
 	//
 	// 1610524452
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The status of the data synchronization task in this direction. Valid values:
+	// The synchronization status of the synchronization instance in this direction. Valid values:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is being prechecked.
+	// - **Prechecking**: running a precheck.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// 	- **Initializing**: The task is performing initial synchronization.
+	// - **Initializing**: performing initial synchronization.
 	//
-	// 	- **InitializeFailed**: Initial synchronization failed.
+	// - **InitializeFailed**: initial synchronization failed.
 	//
-	// 	- **Synchronizing**: The task is synchronizing data.
+	// - **Synchronizing**: synchronizing.
 	//
-	// 	- **Failed**: The task failed to synchronize data.
+	// - **Failed**: synchronization failed.
 	//
-	// 	- **Suspending**: The task is paused.
+	// - **Suspending**: paused.
 	//
-	// 	- **Modifying**: The objects in the task are being modified.
+	// - **Modifying**: modifying synchronization objects.
 	//
-	// 	- **Finished**: The task is completed.
+	// - **Finished**: completed.
 	//
 	// example:
 	//
@@ -254,9 +254,9 @@ type DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatu
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
 	// example:
 	//

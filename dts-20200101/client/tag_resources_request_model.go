@@ -22,7 +22,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The region ID of the Data Transmission Service (DTS) instances. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -30,15 +30,15 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The IDs of the data migration, data synchronization, or change tracking instances. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance IDs.
+	// The ID of the data migration, synchronization, or change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query instance IDs.
 	//
-	// > N specifies the serial number of the instance. For example, ResourceId.1 specifies the ID of the first instance and ResourceId.2 specifies the ID of the second instance.
+	// > N specifies the sequence number of the instance ID. For example, ResourceId.0 specifies the first instance ID, and ResourceId.1 specifies the second instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type TagResourcesRequest struct {
 	//
 	// ALIYUN::DTS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags to be added to the instances.
+	// The list of tags (key-value pairs) to bind.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -125,13 +125,11 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of tag N.
+	// The key of the tag.
 	//
-	// >
+	// > - N specifies the sequence number of the tag key. For example, Tag.0.Key specifies the key of the first tag, and Tag.1.Key specifies the key of the second tag.
 	//
-	// 	- N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag, and Tag.2.Key specifies the key of the second tag.
-	//
-	// 	- The tag key cannot be an empty string.
+	// - Empty strings are not allowed.
 	//
 	// This parameter is required.
 	//
@@ -139,13 +137,11 @@ type TagResourcesRequestTag struct {
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The value of the tag.
 	//
-	// >
+	// > - N specifies the sequence number of the tag value. For example, Tag.0.Value specifies the value of the first tag, and Tag.1.Value specifies the value of the second tag.
 	//
-	// 	- N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag.
-	//
-	// 	- The tag value can be an empty string.
+	// - Empty strings are allowed.
 	//
 	// This parameter is required.
 	//

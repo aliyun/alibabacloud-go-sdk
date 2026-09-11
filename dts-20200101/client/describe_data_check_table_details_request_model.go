@@ -28,11 +28,11 @@ type iDescribeDataCheckTableDetailsRequest interface {
 }
 
 type DescribeDataCheckTableDetailsRequest struct {
-	// The data verification method. Valid values:
+	// The data validation method. Valid values:
 	//
-	// 	- **1**: full data verification.
+	// - **1**: full data validation.
 	//
-	// 	- **2**: incremental data verification.
+	// - **2**: incremental data validation.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type DescribeDataCheckTableDetailsRequest struct {
 	//
 	// xd4e4xb419q****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0*	- and does not exceed the maximum value of the Integer data type. Default value:**1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -66,23 +66,23 @@ type DescribeDataCheckTableDetailsRequest struct {
 	//
 	// rg-aekz4us4iruleja
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the schema whose data is verified in the source database.
+	// The schema name of the object to be verified in the source database.
 	//
 	// example:
 	//
 	// dtstest
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The status of the data verification result. Valid values:
+	// The status of the verification result. Valid values:
 	//
-	// 	- **-1*	- (default): All status.
+	// - **-1*	- (default): all statuses.
 	//
-	// 	- **6**: Inconsistent data detected in the table.
+	// - **6**: tables with inconsistent data.
 	//
 	// example:
 	//
 	// -1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the table whose data is verified in the source database.
+	// The name of the table to be verified in the source database.
 	//
 	// example:
 	//

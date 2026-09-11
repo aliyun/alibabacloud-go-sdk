@@ -28,7 +28,7 @@ type iModifyConsumerChannelRequest interface {
 }
 
 type ModifyConsumerChannelRequest struct {
-	// The ID of the consumer group. You can call the [DescribeConsumerChannel](https://help.aliyun.com/document_detail/264169.html) operation to query the consumer group ID.
+	// The ID of the consumer group. You can call [DescribeConsumerChannel](https://help.aliyun.com/document_detail/264169.html) to query the consumer group ID.
 	//
 	// This parameter is required.
 	//
@@ -36,49 +36,49 @@ type ModifyConsumerChannelRequest struct {
 	//
 	// dtsor2y66j4219****
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
+	// The new name of the consumer group. The name can be up to 128 characters in length. Specify a descriptive name for easy identification.
 	//
 	// example:
 	//
-	// dtstest
+	// 订阅组B
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The new password of the consumer group.
+	// The new password of the consumer group account.
 	//
-	// 	- A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+	// - The password must contain characters from at least two of the following categories: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- A password must be 8 to 32 characters in length.
+	// - The password must be 8 to 32 characters in length.
 	//
 	// example:
 	//
 	// Test123456
 	ConsumerGroupPassword *string `json:"ConsumerGroupPassword,omitempty" xml:"ConsumerGroupPassword,omitempty"`
-	// The new username of the consumer group.
+	// The new username of the consumer group account.
 	//
-	// 	- A username can contain one or more of the following character types: uppercase letters, lowercase letters, digits, and underscores (_).
+	// - The username can contain one or more types of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
 	//
-	// 	- A username cannot exceed 16 characters in length.
+	// - The username can be up to 16 characters in length.
 	//
 	// example:
 	//
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+	// The ID of the change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
 	//
-	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify either **DtsInstanceId*	- or **DtsJobId**.
 	//
 	// example:
 	//
 	// dtsboss6pn1w73****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	// The ID of the change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
 	//
-	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// > You must specify either **DtsInstanceId*	- or **DtsJobId**.
 	//
 	// example:
 	//
 	// boss6pn1w73****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the DTS change tracking instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ModifyConsumerChannelRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

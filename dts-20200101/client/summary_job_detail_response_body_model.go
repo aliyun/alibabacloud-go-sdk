@@ -36,17 +36,17 @@ type SummaryJobDetailResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the data migration or data synchronization task.
+	// The ID of the data migration or synchronization task.
 	//
 	// example:
 	//
 	// l3m1213ye7l****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The returned information about the migrated or synchronized objects in arrays.
+	// The array of migration object information.
 	//
-	// >  The arrays are in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
+	// > The array is returned in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
 	ProgressSummaryDetails []*SummaryJobDetailResponseBodyProgressSummaryDetails `json:"ProgressSummaryDetails,omitempty" xml:"ProgressSummaryDetails,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type SummaryJobDetailResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -140,31 +140,31 @@ func (s *SummaryJobDetailResponseBody) Validate() error {
 }
 
 type SummaryJobDetailResponseBodyProgressSummaryDetails struct {
-	// The type of migrated or synchronized object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
+	// The object type of the migration object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type*	- (user-defined type), **Synonym**, **Trigger**, **Function**, **Procedure*	- (stored procedure), **Package**, **Default**, **Rule**, **PlanGuide*	- (execute plan), and **Sequence**.
 	//
 	// example:
 	//
 	// Table
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The state of the data migration or data synchronization task. Valid values:
+	// The migration status. Valid values:
 	//
-	// 	- **0**: The task was complete.
+	// - **0**: finish (completed).
 	//
-	// 	- **1**: The task was waiting to start.
+	// - **1**: catched (waiting for synchronization).
 	//
-	// 	- **2**: The task was being initialized.
+	// - **2**: init (initializing).
 	//
-	// 	- **3**: The task was in progress.
+	// - **3**: running (synchronizing).
 	//
-	// 	- **4**: An error occurred.
+	// - **4**: warning (error).
 	//
-	// 	- **5**: The task failed.
+	// - **5**: failed (failed).
 	//
 	// example:
 	//
 	// 0
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
-	// The total number of migrated or synchronized objects.
+	// The total number of migration objects.
 	//
 	// example:
 	//

@@ -36,89 +36,89 @@ type iDescribeMetricListResponseBody interface {
 }
 
 type DescribeMetricListResponseBody struct {
-	// The error code returned by the backend service. The number is incremented.
+	// The backend error code, which is an incrementing number.
 	//
 	// example:
 	//
 	// 403
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The monitoring statistics.
+	// The monitoring statistics information.
 	DataPoints []*DescribeMetricListResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// The dynamic part in the error message. This parameter is used to replace the %s variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the %s placeholder in the **ErrMessage*	- error message.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code returned for an exception.
+	// The HTTP status code corresponding to the exception.
 	//
 	// example:
 	//
 	// 403
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 	- **InternetOut**: the outbound traffic over the Internet. Unit: byte.
+	// - **InternetOut**: outbound Internet traffic, in bytes.
 	//
-	// 	- **diskusage_utilization**: the disk usage.
+	// - **diskusage_utilization**: disk usage.
 	//
-	// 	- **IntranetInRate**: the inbound traffic over the internal network. Unit: byte.
+	// - **IntranetInRate**: inbound internal network traffic, in bytes.
 	//
-	// 	- **InternetIn**: the inbound traffic from the Internet. Unit: byte.
+	// - **InternetIn**: inbound Internet traffic, in bytes.
 	//
-	// 	- **cpu_total**: the CPU utilization.
+	// - **cpu_total**: CPU utilization.
 	//
-	// 	- **memory_usedutilization**: the memory usage.
+	// - **memory_usedutilization**: memory utilization.
 	//
-	// 	- **IntranetOutRate**: the outbound traffic over the internal network. Unit: byte.
+	// - **IntranetOutRate**: outbound internal network traffic, in bytes.
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// Indicates whether the metrics of the cluster or a node are queried. Valid values:
+	// Specifies whether to query a cluster or a node. Valid values:
 	//
-	// 	- **CLUSTER**: The metrics of the cluster are queried.
+	// - **CLUSTER**: cluster.
 	//
-	// 	- **NODE**: The metrics of a node are queried.
+	// - **NODE**: node.
 	//
 	// example:
 	//
 	// CLUSTER
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The monitored object.
+	// The observation value.
 	//
-	// 	- If the **MetricType*	- parameter is set to **NODE**, the value of this parameter is the ID of the node that is monitored.****
+	// - If **MetricType*	- is set to **NODE**, the value is **nodeid**.
 	//
-	// 	- If the **MetricType*	- parameter is set to **CLUSTER**, the value of this parameter is the ID of the dedicated cluster. You can obtain the ID by calling the ListDedicatedCluster operation.
+	// - If **MetricType*	- is set to **CLUSTER**, the value is the ID of the dedicated cluster, which can be obtained by calling the ListDedicatedCluster operation.
 	//
 	// example:
 	//
 	// ecs-jhjnjjn
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The monitoring interval. Unit: seconds. Minimum value: 15.
+	// The observation interval in seconds. The minimum interval is 15 seconds.
 	//
 	// example:
 	//
 	// 15
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type DescribeMetricListResponseBodyDataPoints struct {
 	//
 	// 15.25
 	Statistics *float32 `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The timestamp of the record. Unit: milliseconds.
+	// The record timestamp, in milliseconds.
 	//
 	// example:
 	//

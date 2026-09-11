@@ -49,19 +49,19 @@ type ListDedicatedClusterResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of records that can be displayed on the current page.
 	//
 	// example:
 	//
 	// 20
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -73,7 +73,7 @@ type ListDedicatedClusterResponseBody struct {
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of clusters that meet the query condition.
+	// The total number of clusters that meet the specified conditions.
 	//
 	// example:
 	//

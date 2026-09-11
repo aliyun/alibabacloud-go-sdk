@@ -28,26 +28,26 @@ type iConfigureSynchronizationJobReplicatorCompareRequest interface {
 }
 
 type ConfigureSynchronizationJobReplicatorCompareRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be discontinued.
 	//
 	// example:
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken*	- parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken*	- parameter can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -55,15 +55,13 @@ type ConfigureSynchronizationJobReplicatorCompareRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >
+	// > - Default value: **Forward**.
 	//
-	// 	- Default value: **Forward**.
-	//
-	// 	- This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
+	// - You need to specify this parameter only if the synchronization topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
@@ -77,11 +75,11 @@ type ConfigureSynchronizationJobReplicatorCompareRequest struct {
 	//
 	// dtsexjk1alb116****
 	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
-	// Specifies whether to enable image matching. Valid values:
+	// Specifies whether to enable full image matching. Valid values:
 	//
-	// 	- **true**: enables image matching
+	// - **true**: enabled.
 	//
-	// 	- **false**: disables image matching
+	// - **false**: disabled.
 	//
 	// example:
 	//

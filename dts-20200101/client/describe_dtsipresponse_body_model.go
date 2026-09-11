@@ -24,13 +24,13 @@ type iDescribeDTSIPResponseBody interface {
 }
 
 type DescribeDTSIPResponseBody struct {
-	// The internal error code. This parameter will be removed in the future.
+	// The internal error code of the service. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 500
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The CIDR blocks of DTS servers.
+	// The IP addresses of the DTS service.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DescribeDTSIPResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0C99C0BE-F312-40FA-ADFA-4DC1166B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

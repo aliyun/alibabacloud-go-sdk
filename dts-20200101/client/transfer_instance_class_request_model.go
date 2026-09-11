@@ -25,7 +25,7 @@ type iTransferInstanceClassRequest interface {
 
 type TransferInstanceClassRequest struct {
 	DatabaseCount *int32 `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
-	// The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	// The ID of the data migration or data synchronization task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
 	//
 	// This parameter is required.
 	//
@@ -33,13 +33,13 @@ type TransferInstanceClassRequest struct {
 	//
 	// r4yr723m199****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original instance class of the DTS instance.
+	// The instance specifications after the upgrade. You can call [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) to query the instance specifications before the upgrade.
 	//
-	// 	- DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
+	// - Specifications supported by data migration instances: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
 	//
-	// 	- DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
+	// - Specifications supported by data synchronization instances: **large**, **medium**, **small**, and **micro**.
 	//
-	// > For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization channels](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about the description and performance test results of each specification, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type TransferInstanceClassRequest struct {
 	//
 	// large
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// Set the value to **UPGRADE**.
+	// Set this parameter to **UPGRADE**.
 	//
 	// This parameter is required.
 	//
@@ -55,13 +55,13 @@ type TransferInstanceClassRequest struct {
 	//
 	// UPGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

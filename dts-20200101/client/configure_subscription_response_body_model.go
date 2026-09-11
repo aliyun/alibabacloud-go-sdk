@@ -26,7 +26,7 @@ type iConfigureSubscriptionResponseBody interface {
 }
 
 type ConfigureSubscriptionResponseBody struct {
-	// The ID of the change tracking instance.
+	// The instance ID of the subscribe instance.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type ConfigureSubscriptionResponseBody struct {
 	//
 	// y0zz3t13h7d****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ConfigureSubscriptionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

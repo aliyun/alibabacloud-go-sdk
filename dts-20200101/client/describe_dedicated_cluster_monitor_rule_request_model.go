@@ -20,24 +20,24 @@ type iDescribeDedicatedClusterMonitorRuleRequest interface {
 }
 
 type DescribeDedicatedClusterMonitorRuleRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// dtsClustervcwn1oeyu5fx4yf
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region in which the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID. This is a global parameter that does not need to be passed in for this operation.
 	//
 	// example:
 	//
-	// rg-acfmzawhxxc****
+	// 资源组ID，全局参数，当前API无需传入。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

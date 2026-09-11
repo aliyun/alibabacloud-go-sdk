@@ -20,25 +20,25 @@ type iStopMigrationJobResponseBody interface {
 }
 
 type StopMigrationJobResponseBody struct {
-	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query all data migration instances.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The request ID.
 	//
 	// example:
 	//
 	// C306C198-7807-409D-930A-D6CE6C32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken*	- parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

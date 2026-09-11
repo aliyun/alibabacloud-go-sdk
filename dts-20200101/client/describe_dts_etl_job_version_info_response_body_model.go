@@ -34,27 +34,27 @@ type iDescribeDtsEtlJobVersionInfoResponseBody interface {
 }
 
 type DescribeDtsEtlJobVersionInfoResponseBody struct {
-	// The details of ETL tasks.
+	// The array of ETL task information objects.
 	DtsEtlJobVersionInfos []*DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos `json:"DtsEtlJobVersionInfos,omitempty" xml:"DtsEtlJobVersionInfos,omitempty" type:"Repeated"`
-	// The dynamic error code.
+	// The dynamic error code associated with this request.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message.
+	// The dynamic error message associated with this request.
 	//
 	// example:
 	//
 	// present environment is not support,so skip
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code. This example indicates that the specified ETL task ID is invalid.
+	// The error code returned when the specified ETL task ID is invalid and the corresponding task cannot be found.
 	//
 	// example:
 	//
 	// InvalidJobId
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message. This example indicates that the specified ETL task ID does not exist. In this case, the ETL task may have been deleted.
+	// The error message returned when the specified ETL task ID is invalid and the corresponding task cannot be found. The task may have been deleted.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type DescribeDtsEtlJobVersionInfoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The page number of the returned page. Default value: 1.
+	// The page number of the instance status list. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records returned on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 20
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 224DB9F7-3100-4899-AB9C-C938BCCB43E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. If the call failed, false is returned.
+	// Indicates whether the request was successful. A value of false indicates a failure.
 	//
 	// example:
 	//
@@ -219,13 +219,13 @@ func (s *DescribeDtsEtlJobVersionInfoResponseBody) Validate() error {
 }
 
 type DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos struct {
-	// The time when the ETL task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp when the ETL task was created.
 	//
 	// example:
 	//
 	// 1637229315000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the creator.
+	// The creator ID.
 	//
 	// example:
 	//
@@ -237,13 +237,13 @@ type DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos struct {
 	//
 	// ***@****.com
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The ID of the DTS instance.
+	// The DTS instance ID.
 	//
 	// example:
 	//
 	// dtsg******gd
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The ID of the ETL task.
+	// The ETL task ID.
 	//
 	// example:
 	//
@@ -255,13 +255,13 @@ type DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos struct {
 	//
 	// test_sql
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The time when the ETL task was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The modification timestamp.
 	//
 	// example:
 	//
 	// 1637230117000
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The safe checkpoint of the ETL task.
+	// The safe checkpoint, which indicates the current position of the ETL task.
 	//
 	// example:
 	//

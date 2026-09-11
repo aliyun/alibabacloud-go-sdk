@@ -38,21 +38,19 @@ type DescribeFullProcessListResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The throttling configuration. Valid values:
+	// This parameter does not return a value. The following parameters describe the rate limiting configurations:
 	//
-	// 	- **dts.datamove.blaster.qps.max**: The rate at which queries are made to the source database per second.
+	// - **dts.datamove.blaster.qps.max**: the rate of queries per second to the source database.
 	//
-	// 	- **dts.datamove.source.rps.max**: the number of rows that are fully synchronized or migrated per second.
+	// - **dts.datamove.source.rps.max**: the number of rows per second for full data synchronization or migration (RPS).
 	//
-	// 	- **dts.datamove.source.bps.max**: the amount of data processed per second for full synchronization or migration. Unit: Byte/s.
+	// - **dts.datamove.source.bps.max**: the amount of data per second for full data synchronization or migration, in bytes per second.
 	//
-	// >
+	// > - When **JobCode*	- is set to **03**, you must set **EnableLimit*	- to **true*	- for the three parameters to take effect.
 	//
-	// 	- When you set the **JobCode*	- parameter to **03**, you need to specify the **EnableLimit*	- parameter as **true**. Otherwise, the configuration cannot take effect.
+	// - When **JobCode*	- is set to **04*	- or **07**, you only need to configure **dts.datamove.source.rps.max*	- and **dts.datamove.source.bps.max**.
 	//
-	// 	- When you set the **JobCode*	- parameter to **04*	- or **07**, you only need to specify the **dts.datamove.source.rps.max*	- and **dts.datamove.source.bps.max*	- parameters.
-	//
-	// 	- A value of \\*\\*-1\\*\\	- indicates no rate limit.
+	// - A value of **-1*	- indicates that rate limiting is disabled.
 	//
 	// example:
 	//
@@ -64,33 +62,33 @@ type DescribeFullProcessListResponseBody struct {
 	//
 	// }
 	ConfigList map[string]interface{} `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking task.
+	// The ID of the migration, synchronization, or change tracking task.
 	//
 	// example:
 	//
 	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
 	//
-	// >  The request parameter **DtsJobId*	- is invalid if **The Value of Input Parameter %s is not valid*	- is returned for **ErrMessage*	- and **DtsJobId*	- is returned for **DynamicMessage**.
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned when the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned when the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The details of the GA instances.
+	// The details of the Alibaba Cloud Global Accelerator (GA) instance list.
 	FullProcessList []*DescribeFullProcessListResponseBodyFullProcessList `json:"FullProcessList,omitempty" xml:"FullProcessList,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -106,9 +104,9 @@ type DescribeFullProcessListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -228,55 +226,55 @@ func (s *DescribeFullProcessListResponseBody) Validate() error {
 }
 
 type DescribeFullProcessListResponseBodyFullProcessList struct {
-	// Details
+	// The details.
 	//
 	// example:
 	//
 	// {}
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The abnormal status of the task. Valid values:**notstarted**. -**checking**. -**failed**. -**finished**.
+	// The exception status of the task. Valid values: - **notstarted**: not started. - **checking**: being checked. - **failed**: failed. - **finished**: completed.
 	//
 	// example:
 	//
 	// notstarted
 	Exception *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
-	// The name of the process.
+	// The process name.
 	//
 	// example:
 	//
 	// universer
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The type of the process. Valid values:
+	// The process type. Valid values:
 	//
-	// 	- **1**: trusted
+	// - **1**: trusted
 	//
-	// 	- **2**: suspicious
+	// - **2**: suspicious
 	//
-	// 	- **3**: malicious
+	// - **3**: malicious.
 	//
 	// example:
 	//
 	// 1
 	ProcessType *string `json:"ProcessType,omitempty" xml:"ProcessType,omitempty"`
-	// SQL that is running
+	// The SQL statement that is being executed.
 	//
 	// example:
 	//
 	// test
 	RunningSQL *string `json:"RunningSQL,omitempty" xml:"RunningSQL,omitempty"`
-	// The log status.
+	// The status of the log information.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// TaskD4E5F6
 	TaskID *string `json:"TaskID,omitempty" xml:"TaskID,omitempty"`
-	// The time when the logs were collected. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the log was collected, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//

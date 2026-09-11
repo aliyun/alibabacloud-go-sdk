@@ -20,7 +20,7 @@ type iShieldPrecheckResponseBody interface {
 }
 
 type ShieldPrecheckResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type ShieldPrecheckResponseBody struct {
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6F4B5BC4-34B1-49C9-9C8F-C8F16AC4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

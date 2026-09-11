@@ -26,27 +26,27 @@ type iModifyDynamicConfigResponseBody interface {
 }
 
 type ModifyDynamicConfigResponseBody struct {
-	// The error code. This parameter will be removed in the future.
+	// The error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
 	//
-	// >  If the value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- value is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request fails.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModifyDynamicConfigResponseBody struct {
 	//
 	// 8D81829D-1BBD-5CE8-BE75-1CAD5750****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

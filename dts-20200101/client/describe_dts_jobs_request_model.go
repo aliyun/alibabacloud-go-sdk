@@ -60,7 +60,7 @@ type iDescribeDtsJobsRequest interface {
 }
 
 type DescribeDtsJobsRequest struct {
-	// The ID of the DTS dedicated cluster on which the task runs.
+	// The ID of the DTS dedicated cluster.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type DescribeDtsJobsRequest struct {
 	//
 	// RDS
 	DestProductType *string `json:"DestProductType,omitempty" xml:"DestProductType,omitempty"`
-	// The environment tag of the DTS instance. Valid values:
+	// The environment label of the DTS instance. Valid values:
 	//
-	// - **normal**
+	// - **normal**: normal
 	//
-	// - **online**
+	// - **online**: online
 	//
 	// example:
 	//
@@ -84,178 +84,108 @@ type DescribeDtsJobsRequest struct {
 	DtsBisLabel *string `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking instance.
 	//
+	// > Separate multiple instance IDs with commas (,). Make sure that the **JobType*	- parameter is set as expected.
+	//
 	// example:
 	//
 	// dtsi03e3zty16i****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
+	// > Separate multiple task IDs with commas (,). Make sure that the **JobType*	- parameter is set as expected.
+	//
 	// example:
 	//
 	// qa110wq5r93hb49
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of the parent task.
+	// The DTS task ID.
 	//
-	// >  In most cases, you do not need to specify this parameter.
+	// > In most cases, you do not need to set this parameter.
 	//
 	// example:
 	//
 	// pk13r731m****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the source or target database instance corresponding to the request parameter **InstanceType**.
+	// The ID of the source or destination database instance that corresponds to the **InstanceType*	- request parameter.
 	//
 	// example:
 	//
 	// rm-bp1966yuut4w3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the source or target database instance.
+	// The type of the source or destination database instance.
 	//
 	// example:
 	//
 	// RDS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The type of the DTS task. Valid values:
+	// The task type of the DTS instance. Valid values:
 	//
-	// 	- **MIGRATION**: data migration. This is the default value.
+	// - **MIGRATION**: data migration (default).
 	//
-	// 	- **SYNC**: data synchronization.
+	// - **SYNC**: data synchronization.
 	//
-	// 	- **SUBSCRIBE**: change tracking.
+	// - **SUBSCRIBE**: change tracking.
 	//
 	// example:
 	//
 	// MIGRATION
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The basis on which the returned DTS tasks are sorted. Valid values:
+	// The sort criterion when the response contains multiple DTS instances. Valid values:
 	//
-	// 	- **CreateTime**: sorts the DTS tasks based on the points in time when the DTS tasks are created.
+	// - **CreateTime**: sorts by task creation time.
 	//
-	// 	- **FinishTime**: sorts the DTS tasks based on the points in time when the DTS tasks are complete.
+	// - **FinishTime**: sorts by task completion time.
 	//
-	// 	- **duLimit*	- sorts the DTS tasks based on the upper limits on DTS Units (DUs) that the DTS tasks can use. This option applies only to the DTS tasks that are run on a DTS dedicated cluster.
+	// - **duLimit*	- (dedicated cluster tasks): sorts by the upper limit of DU usage for DTS tasks. This value is supported only for dedicated clusters.
 	//
-	// >  You can also set the **OrderDirection*	- parameter to specify whether to sort the DTS tasks in ascending or descending order.
+	// > You can also specify **OrderDirection*	- to set the sort order to ascending or descending.
 	//
 	// example:
 	//
 	// CreateTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The order in which the returned DTS tasks are sorted. Valid values:
+	// The sort order of instances. Valid values:
 	//
-	// 	- **ASC**: sorts the DTS tasks in ascending order. This is the default value.
+	// - **ASC**: ascending order. This is the default value.
 	//
-	// 	- **DESC**: sorts the DTS tasks in descending order.
+	// - **DESC**: descending order.
 	//
 	// example:
 	//
 	// ASC
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
 	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page **1**. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **20**, **30**, **50**, and **100**. Default value: **20**.
+	// The number of records per page. Valid values: **10**, **20**, and **30**. Default value: **20**. Maximum value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The content of the query condition.
+	// The specific content of the query condition.
 	//
-	// >  You must set the **Type*	- parameter to specify the type of the query condition.
+	// > Specify **Type*	- in advance to define the query condition.
 	//
 	// example:
 	//
 	// dtspk3f13r731m****
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// This parameter is deprecated.
-	//
-	// Valid values:
-	//
-	// 	- cn-hangzhou
-	//
-	// 	- cn-shanghai
-	//
-	// 	- cn-beijing
-	//
-	// 	- cn-guangzhou
-	//
-	// 	- cn-shenzhen
-	//
-	// 	- cn-chengdu
-	//
-	// 	- cn-heyuan
-	//
-	// 	- cn-hongkong
-	//
-	// 	- cn-qingdao
-	//
-	// 	- cn-zhangbei
-	//
-	// 	- cn-zhangjiakou
-	//
-	// 	- us-east-1
-	//
-	// 	- us-west-1
-	//
-	// 	- cn-hangzhou-finance
-	//
-	// 	- cn-shanghai-finance
-	//
-	// 	- cn-shanghai-finance-1
-	//
-	// 	- cn-shenzhen-finance
-	//
-	// 	- cn-shenzhen-finance-1
-	//
-	// 	- cn-beijing-finance-1
-	//
-	// 	- cn-huhehaote
-	//
-	// 	- cn-north-2-gov-1
-	//
-	// 	- eu-central-1
-	//
-	// 	- eu-west-1
-	//
-	// 	- me-central-1
-	//
-	// 	- me-east-1
-	//
-	// 	- ap-northeast-1
-	//
-	// 	- ap-northeast-2
-	//
-	// 	- ap-southeast-1
-	//
-	// 	- ap-southeast-2
-	//
-	// 	- ap-southeast-3
-	//
-	// 	- ap-southeast-5
-	//
-	// 	- ap-southeast-6
-	//
-	// 	- ap-southeast-7
-	//
-	// 	- cn-wulanchabu
-	//
-	// 	- cn-zhengzhou-jva
-	//
-	// 	- cn-wuhan-lr
+	// Deprecated parameter.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// 无
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
 	//
@@ -269,137 +199,139 @@ type DescribeDtsJobsRequest struct {
 	//
 	// RDS
 	SrcProductType *string `json:"SrcProductType,omitempty" xml:"SrcProductType,omitempty"`
-	// The state of the DTS task.
+	// The instance status of the DTS instance. Valid values:
 	//
-	// Valid values for a data migration task:
+	// Data migration task statuses:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is being prechecked.
+	// - **Prechecking**: running a precheck.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// 	- **PreCheckPass**: The task passed the precheck.
+	// - **PreCheckPass**: precheck passed.
 	//
-	// 	- **NotConfigured**: The task is not configured.
+	// - **NotConfigured**: not configured.
 	//
-	// 	- **Migrating**: The task is in progress.
+	// - **Migrating**: migrating.
 	//
-	// 	- **Suspending**: The task is paused.
+	// - **Suspending**: paused.
 	//
-	// 	- **MigrationFailed**: The task failed.
+	// - **MigrationFailed**: migration failed.
 	//
-	// 	- **Finished**: The task is complete.
+	// - **Finished**: completed.
 	//
-	// 	- **Retrying**: The task is being retried.
+	// - **Retrying**: retrying.
 	//
-	// 	- **Upgrade**: The task is being upgraded.
+	// - **Upgrade**: upgrading.
 	//
-	// 	- **Locked**: The task is locked.
+	// - **Locked**: locked.
 	//
-	// 	- **Downgrade**: The task is being downgraded.
+	// - **Downgrade**: downgrading.
 	//
-	// Valid values for a data synchronization task:
+	// Data synchronization task statuses:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is being prechecked.
+	// - **Prechecking**: running a precheck.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// 	- **PreCheckPass**: The task passed the precheck.
+	// - **PreCheckPass**: precheck passed.
 	//
-	// 	- **NotConfigured**: The task is not configured.
+	// - **NotConfigured**: not configured.
 	//
-	// 	- **Initializing**: The task is being initialized.
+	// - **Initializing**: performing initial synchronization.
 	//
-	// 	- **InitializeFailed**: Initialization failed.
+	// - **InitializeFailed**: initial synchronization failed.
 	//
-	// 	- **Synchronizing**: The task is in progress.
+	// - **Synchronizing**: synchronizing.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: synchronization failed.
 	//
-	// 	- **Suspending**: The task is paused.
+	// - **Suspending**: paused.
 	//
-	// 	- **Modifying**: The objects in the task are being modified.
+	// - **Modifying**: modifying synchronization objects.
 	//
-	// 	- **Finished**: The task is complete.
+	// - **Finished**: completed.
 	//
-	// 	- **Retrying**: The task is being retried.
+	// - **Retrying**: retrying.
 	//
-	// 	- **Upgrade**: The task is being upgraded.
+	// - **Upgrade**: upgrading.
 	//
-	// 	- **Locked**: The task is locked.
+	// - **Locked**: locked.
 	//
-	// 	- **Downgrade**: The task is being downgraded.
+	// - **Downgrade**: downgrading.
 	//
-	// Valid values for a change tracking task:
+	// Change tracking task statuses:
 	//
-	// 	- **NotConfigured**: The task is not configured.
+	// - **NotConfigured**: not configured.
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is being prechecked.
+	// - **Prechecking**: running a precheck.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: precheck failed.
 	//
-	// 	- **PreCheckPass**: The task passed the precheck.
+	// - **PreCheckPass**: precheck passed.
 	//
-	// 	- **Starting**: The task is being started.
+	// - **Starting**: starting.
 	//
-	// 	- **Normal**: The task is running as expected.
+	// - **Normal**: normal.
 	//
-	// 	- **Retrying**: The task is being retried.
+	// - **Retrying**: retrying.
 	//
-	// 	- **Abnormal**: The task is not running as expected.
+	// - **Abnormal**: abnormal.
 	//
-	// 	- **Upgrade**: The task is being upgraded.
+	// - **Upgrade**: upgrading.
 	//
-	// 	- **Locked**: The task is locked.
+	// - **Locked**: locked.
 	//
-	// 	- **Downgrade**: The task is being downgraded.
+	// - **Downgrade**: downgrading.
 	//
 	// example:
 	//
 	// Migrating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the DTS task to be queried. Specify tags in the JSON format.
+	// The tag-based search condition in JSON format.
 	//
-	// >  You can call the **ListTagResources*	- operation to query the tag key and tag value.
+	// > You can call the **ListTagResources*	- operation to query tag keys and values.
 	//
 	// example:
 	//
 	// [     {         \\"key\\": \\"testK\\",         \\"value\\": \\"testV\\"     }  ]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The type of the query condition. Valid values:
+	// The conditional query parameter. Valid values:
 	//
-	// 	- **instance**: queries DTS tasks based on the ID of a DTS instance.
+	// - **instance**: queries by DTS instance ID.
 	//
-	// 	- **name**: queries DTS tasks based on the name of a DTS instance. Fuzzy match is supported.
+	// - **name**: queries by DTS instance name. Fuzzy match is supported.
 	//
-	// 	- **srcRds**: queries DTS tasks based on the ID of an ApsaraDB RDS instance. The ApsaraDB RDS instance is the source instance of a DTS task.
+	// - **srcRds**: queries by the ID of the source instance (ApsaraDB RDS).
 	//
-	// 	- **rds**: queries DTS tasks based on the ID of an ApsaraDB RDS instance. The ApsaraDB RDS instance is the destination instance of a DTS task.
+	// - **rds**: queries by the ID of the destination instance (ApsaraDB RDS).
 	//
-	// >  You must set the **Params*	- parameter to specify the content of the query condition.
+	// > Specify the **Params*	- parameter to provide the specific content of the query condition.
 	//
 	// example:
 	//
 	// instance
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Specifies whether to skip the **DbObject*	- parameter in the response. The DbObject parameter specifies the objects of the data migration, data synchronization, or change tracking task. Valid values:
+	// Specifies whether to exclude task objects from the response (not return the **DbObject*	- parameter). Valid values:
 	//
-	// - **true**: does not return **DbObject**.
+	// - **true**: excludes **DbObject*	- from the response.
 	//
-	// - **false**: returns **DbObject**. If you set this parameter to false, the response time is shortened.
+	// - **false**: includes **DbObject*	- in the response, which can improve the response speed.
 	//
 	// example:
 	//
 	// true
 	WithoutDbList *bool `json:"WithoutDbList,omitempty" xml:"WithoutDbList,omitempty"`
-	// Whether it is a seamless integration (Zero-ETL) task, the value can be:
+	// Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
 	//
-	// - **false**: No. - **true**: Yes.
+	// - **false**: No.
+	//
+	// - **true**: Yes.
 	//
 	// example:
 	//

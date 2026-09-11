@@ -26,25 +26,25 @@ type iModifyDtsJobDuLimitResponseBody interface {
 }
 
 type ModifyDtsJobDuLimitResponseBody struct {
-	// The error code returned by the backend service. The number is incremented.
+	// The backend error code, which is an incrementing number.
 	//
 	// example:
 	//
 	// 500
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the %s variable in the **ErrMessage*	- parameter.
+	// The dynamic error message. This parameter is used to replace the %s variable in the **ErrMessage*	- parameter.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ModifyDtsJobDuLimitResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

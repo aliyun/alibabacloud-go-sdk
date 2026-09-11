@@ -26,45 +26,49 @@ type iDescribeCheckJobsRequest interface {
 }
 
 type DescribeCheckJobsRequest struct {
-	// Check the task job ID.
+	// The ID of the data validation task.
 	//
 	// example:
 	//
 	// z9p104ib23***
 	CheckJobId *string `json:"CheckJobId,omitempty" xml:"CheckJobId,omitempty"`
-	// The type of the check
+	// The data validation method. Valid values:
 	//
-	// >>1 full quantity, 2 incremental, 3 all
+	// - **1**: full data validation.
+	//
+	// - **2**: incremental data validation.
+	//
+	// - **3**: all.
 	//
 	// example:
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// Data migration instance ID, which can be queried by calling the **describemigrationjobs*	- API.
+	// The ID of the data migration instance. You can call the **DescribeMigrationJobs*	- operation to query the ID.
 	//
 	// example:
 	//
 	// dtsz9p104ib23e972e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the data migration or synchronization job.
+	// The name of the data migration or data synchronization task.
 	//
 	// example:
 	//
 	// zwy_test
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

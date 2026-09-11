@@ -26,7 +26,7 @@ type iCreateReverseDtsJobResponseBody interface {
 }
 
 type CreateReverseDtsJobResponseBody struct {
-	// The ID of the instance corresponding to the generated reverse task.
+	// The ID of the DTS instance that corresponds to the generated reverse task.
 	//
 	// example:
 	//
@@ -38,31 +38,31 @@ type CreateReverseDtsJobResponseBody struct {
 	//
 	// n99m9jx822k****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// Error code returned when the call fails.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Error message returned when the call fails.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -24,47 +24,47 @@ type iDescribeEndpointSwitchStatusResponseBody interface {
 }
 
 type DescribeEndpointSwitchStatusResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// This parameter is no longer available.
+	// This parameter is discontinued.
 	//
 	// example:
 	//
 	// 400
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0DD6B201-604B-4CAB-B6A8-4B2953B5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the task. Valid values:
+	// The execution status of the task. Valid values:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Initializing**: The task is being initialized.
+	// - **Initializing**: initializing.
 	//
-	// 	- **Switching**: The task is running.
+	// - **Switching**: switching.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: failed.
 	//
-	// 	- **Finished**: The task is completed.
+	// - **Finished**: succeeded.
 	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

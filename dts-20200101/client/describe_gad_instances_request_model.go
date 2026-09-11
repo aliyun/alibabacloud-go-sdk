@@ -31,24 +31,34 @@ type iDescribeGadInstancesRequest interface {
 
 type DescribeGadInstancesRequest struct {
 	DbEngineTypes *string `json:"DbEngineTypes,omitempty" xml:"DbEngineTypes,omitempty"`
+	// The name of the active geo-redundancy instance group.
+	//
 	// example:
 	//
 	// test
 	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	MasterDbInstanceId *string `json:"MasterDbInstanceId,omitempty" xml:"MasterDbInstanceId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID. Specify this parameter to query instances in a specific region. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmzawhxxc****

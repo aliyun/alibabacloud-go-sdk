@@ -28,7 +28,7 @@ type iCreateJobMonitorRuleResponseBody interface {
 }
 
 type CreateJobMonitorRuleResponseBody struct {
-	// The error code. This parameter will be removed in the future.
+	// The error code. This parameter will be deprecated.
 	//
 	// example:
 	//
@@ -40,21 +40,21 @@ type CreateJobMonitorRuleResponseBody struct {
 	//
 	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic part in the error message. The value of this parameter is used to replace the \\*\\*%s\\*\\	- variable in the value of **ErrMessage**.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- response parameter.
 	//
-	// > If the return value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the return value of **DynamicMessage*	- is **DtsJobId**, the specified value of **DtsJobId*	- is invalid.
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// 403
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type CreateJobMonitorRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

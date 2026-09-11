@@ -38,31 +38,31 @@ type CountJobByConditionRequest struct {
 	//
 	// MongoDB
 	DestDbType *string `json:"DestDbType,omitempty" xml:"DestDbType,omitempty"`
-	// The ID of the DTS task.
+	// The parent task ID of a distributed synchronization task.
 	//
 	// example:
 	//
 	// pk13r731m****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The type of the DTS task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **MIGRATION**: data migration task
+	// - **MIGRATION**: data migration.
 	//
-	// 	- **SYNC**: data synchronization task
+	// - **SYNC**: data synchronization.
 	//
-	// 	- **SUBSCRIBE**: change tracking task
+	// - **SUBSCRIBE**: change tracking.
 	//
 	// example:
 	//
 	// SYNC
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The content of the query condition, which corresponds to the value of the JobType parameter.
+	// The query value that corresponds to JobType.
 	//
 	// example:
 	//
 	// dtspk3f13r731m****
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// One of the query conditions. The ID of the region. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID used as a filter condition. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type CountJobByConditionRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// This parameter is required.
 	//
@@ -78,11 +78,11 @@ type CountJobByConditionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID, global parameter that does not need to be passed in by the current API.
+	// The resource group ID. This is a global parameter and does not need to be passed for this API operation.
 	//
 	// example:
 	//
-	// Resource group ID, global parameter that does not need to be passed in by the current API.
+	// 资源组ID，全局参数，当前API无需传入。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the source database.
 	//
@@ -90,111 +90,111 @@ type CountJobByConditionRequest struct {
 	//
 	// MongoDB
 	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
-	// The status of the DTS task.
+	// The instance status of the DTS instance. Valid values:
 	//
-	// Valid values for a data migration task:
+	// Data migration node statuses:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is in precheck.
+	// - **Prechecking**: running a dry run.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: dry run failed.
 	//
-	// 	- **PreCheckPass**: The task passed the precheck.
+	// - **PreCheckPass**: dry run passed.
 	//
-	// 	- **NotConfigured**: The task is not configured.
+	// - **NotConfigured**: not configured.
 	//
-	// 	- **Migrating**: The task is in progress.
+	// - **Migrating**: migrating.
 	//
-	// 	- **Suspending**: The task is paused.
+	// - **Suspending**: paused.
 	//
-	// 	- **MigrationFailed**: The task failed to migrate data.
+	// - **MigrationFailed**: migration failed.
 	//
-	// 	- **Finished**: The task is complete.
+	// - **Finished**: finished.
 	//
-	// 	- **Retrying**: The task is being retried.
+	// - **Retrying**: retrying.
 	//
-	// 	- **Upgrade**: The task is being upgraded.
+	// - **Upgrade**: upgrading.
 	//
-	// 	- **Locked**: The task is locked.
+	// - **Locked**: locked.
 	//
-	// 	- **Downgrade**: The task is being downgraded.
+	// - **Downgrade**: downgrading.
 	//
-	// Valid values for a data synchronization task:
+	// Data synchronization node statuses:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is in precheck.
+	// - **Prechecking**: running a dry run.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: dry run failed.
 	//
-	// 	- **PreCheckPass**: The task passed the precheck.
+	// - **PreCheckPass**: dry run passed.
 	//
-	// 	- **NotConfigured**: The task is not configured.
+	// - **NotConfigured**: not configured.
 	//
-	// 	- **Initializing**: The task is performing initial synchronization.
+	// - **Initializing**: performing initial synchronization.
 	//
-	// 	- **InitializeFailed**: Initial synchronization failed.
+	// - **InitializeFailed**: initial synchronization failed.
 	//
-	// 	- **Synchronizing**: The task is in progress.
+	// - **Synchronizing**: synchronizing.
 	//
-	// 	- **Failed**: The task failed to synchronize data.
+	// - **Failed**: synchronization failed.
 	//
-	// 	- **Suspending**: The task is paused.
+	// - **Suspending**: paused.
 	//
-	// 	- **Modifying**: The objects in the task are being modified.
+	// - **Modifying**: modifying sub-objects.
 	//
-	// 	- **Finished**: The task is complete.
+	// - **Finished**: finished.
 	//
-	// 	- **Retrying**: The task is being retried.
+	// - **Retrying**: retrying.
 	//
-	// 	- **Upgrade**: The task is being upgraded.
+	// - **Upgrade**: upgrading.
 	//
-	// 	- **Locked**: The task is locked.
+	// - **Locked**: locked.
 	//
-	// 	- **Downgrade**: The task is being downgraded.
+	// - **Downgrade**: downgrading.
 	//
-	// Valid values for a change tracking task:
+	// Subscribe node statuses:
 	//
-	// 	- **NotConfigured**: The task is not configured.
+	// - **NotConfigured**: not configured.
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Prechecking**: The task is in precheck.
+	// - **Prechecking**: running a dry run.
 	//
-	// 	- **PrecheckFailed**: The task failed to pass the precheck.
+	// - **PrecheckFailed**: dry run failed.
 	//
-	// 	- **PreCheckPass**: The task passed the precheck.
+	// - **PreCheckPass**: dry run passed.
 	//
-	// 	- **Starting**: The task is being started.
+	// - **Starting**: starting.
 	//
-	// 	- **Normal**: The task is running as expected.
+	// - **Normal**: Normal.
 	//
-	// 	- **Retrying**: The task is being retried.
+	// - **Retrying**: retrying.
 	//
-	// 	- **Abnormal**: The task is not running as expected.
+	// - **Abnormal**: abnormal.
 	//
-	// 	- **Upgrade**: The task is being upgraded.
+	// - **Upgrade**: upgrading.
 	//
-	// 	- **Locked**: The task is locked.
+	// - **Locked**: locked.
 	//
-	// 	- **Downgrade**: The task is being downgraded.
+	// - **Downgrade**: downgrading.
 	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The content of the query condition. Valid values:
+	// The query type. Valid values:
 	//
-	// 	- **name**: the name of the task
+	// - **name**: queries by job name.
 	//
-	// 	- **rds**: the ID of the destination instance
+	// - **rds**: queries by destination instance ID.
 	//
-	// 	- **instance**: the ID of the Data Transmission Service (DTS) instance
+	// - **instance**: queries by DTS instance ID.
 	//
-	// 	- **srcRds**: the ID of the source instance
+	// - **srcRds**: queries by source instance ID.
 	//
-	// > The value of this parameter corresponds to the value of the **JobType*	- parameter.
+	// > This parameter corresponds to the **JobType*	- parameter.
 	//
 	// example:
 	//

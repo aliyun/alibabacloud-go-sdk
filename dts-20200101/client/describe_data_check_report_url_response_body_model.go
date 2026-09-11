@@ -24,15 +24,15 @@ type iDescribeDataCheckReportUrlResponseBody interface {
 }
 
 type DescribeDataCheckReportUrlResponseBody struct {
-	// The URL for downloading the verification report.
+	// The download URL of the verification report.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//

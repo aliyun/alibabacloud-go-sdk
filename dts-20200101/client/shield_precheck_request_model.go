@@ -20,9 +20,7 @@ type iShieldPrecheckRequest interface {
 }
 
 type ShieldPrecheckRequest struct {
-	// The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
-	//
-	// >  You must specify at least one of the **DtsInstanceId*	- and **DtsJobId*	- parameters.
+	// The ID of the data migration or synchronization instance. You can call the **DescribeMigrationJobs*	- or DescribeSynchronizationJobs operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,31 +28,19 @@ type ShieldPrecheckRequest struct {
 	//
 	// dtsi76118o3w92****
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
-	// The precheck items that you want to ignore. Separate multiple items with commas (,). Valid values:
+	// The precheck items to skip. Separate multiple items with commas (,). Valid values:
 	//
+	// - **CHECK_SAME_OBJ**: checks whether objects with the same name exist.
 	//
+	// - **CHECK_SAME_USER**: checks whether accounts with different names exist.
 	//
-	// 	- **CHECK_SAME_OBJ**: schema name conflict
+	// - **CHECK_SRC**: checks the source database version.
 	//
+	// - **CHECK_TOPOLOGY**: checks the topology version.
 	//
+	// > For the topology versions supported by DTS, see [Topology overview](https://help.aliyun.com/document_detail/124115.html).
 	//
-	// 	- **CHECK_SAME_USER**: multiple usernames for one instance
-	//
-	//
-	//
-	// 	- **CHECK_SRC**: source database version
-	//
-	//
-	//
-	// 	- **CHECK_TOPOLOGY**: topology
-	//
-	//
-	//
-	// > For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
-	//
-	//
-	//
-	// 	- **CHECK_SERVER_ID**: value of server_id in the source database
+	// - **CHECK_SERVER_ID**: checks the server_id of the source database.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +48,13 @@ type ShieldPrecheckRequest struct {
 	//
 	// CHECK_SAME_OBJ
 	PrecheckItems *string `json:"PrecheckItems,omitempty" xml:"PrecheckItems,omitempty"`
-	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

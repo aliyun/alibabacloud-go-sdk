@@ -34,43 +34,41 @@ type iTransferPayTypeResponseBody interface {
 }
 
 type TransferPayTypeResponseBody struct {
-	// The billing method of the DTS instance. Valid values:
+	// The billing method after conversion. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The error code. This parameter will be removed in the future.
+	// The error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the DTS task.
+	// The task ID.
 	//
 	// example:
 	//
 	// o4nh3g7jg56****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
 	//
-	// >  If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The expiration time of the subscription instance. The value is a UNIX timestamp.
+	// The time when the subscription instance expires, in UNIX timestamp format.
 	//
-	// >
+	// > - If the instance is converted to pay-as-you-go, this value is empty.
 	//
-	// 	- If the DTS instance is a pay-as-you-go instance, the value of this parameter is empty.
-	//
-	// 	- You can use a search engine to obtain a UNIX timestamp converter.
+	// - You can use a search engine to find a UNIX timestamp conversion tool.
 	//
 	// example:
 	//
@@ -94,23 +92,23 @@ type TransferPayTypeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the DTS instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// dtso4nh3g7jg56****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 601B6F25-21E7-4484-99D5-3EF2625C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The call was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The call failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

@@ -24,20 +24,20 @@ type iStartSynchronizationJobRequest interface {
 }
 
 type StartSynchronizationJobRequest struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
 	//
 	// example:
 	//
-	// 12323344****
+	// 1689726061829****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which the data synchronization instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The ID of the region where the data synchronization instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -45,15 +45,13 @@ type StartSynchronizationJobRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >
+	// > - Default value: **Forward**.
 	//
-	// 	- The default value is **Forward**.
-	//
-	// 	- You can set this parameter to **Reverse*	- to start the reverse synchronization task only if the topology is two-way synchronization.
+	// > - You can set this parameter to **Reverse*	- to start the reverse synchronization link only if the topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//

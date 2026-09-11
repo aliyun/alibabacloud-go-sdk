@@ -22,11 +22,7 @@ type iDescribeDataCheckReportUrlRequest interface {
 }
 
 type DescribeDataCheckReportUrlRequest struct {
-	// The data verification method. Valid values:
-	//
-	// 	- **1**: full data verification.
-	//
-	// 	- **2**: incremental data verification.
+	// The data verification method. Currently, only the value **1*	- is supported, which indicates full verification.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +30,7 @@ type DescribeDataCheckReportUrlRequest struct {
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The name of the verified source database.
+	// The name of the source database to be verified.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +38,7 @@ type DescribeDataCheckReportUrlRequest struct {
 	//
 	// dtsdb
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+	// The ID of the DTS task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +46,13 @@ type DescribeDataCheckReportUrlRequest struct {
 	//
 	// f4612nr2182****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// Resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the table verified in the source database.
+	// The name of the table in the source database to be verified.
 	//
 	// This parameter is required.
 	//

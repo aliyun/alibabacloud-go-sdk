@@ -22,7 +22,7 @@ type iModifyDtsJobNameRequest interface {
 }
 
 type ModifyDtsJobNameRequest struct {
-	// The ID of the DTS task. The DTS task can be a data migration, data synchronization, or change tracking task.
+	// The ID of the data migration, data synchronization, or change tracking task.
 	//
 	// This parameter is required.
 	//
@@ -30,31 +30,33 @@ type ModifyDtsJobNameRequest struct {
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The new name of the DTS task.
+	// The new name of the task.
 	//
-	// >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
+	// > Configure a descriptive name that has business meaning (uniqueness is not required) for easy identification.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dtstest
+	// RDS间迁移
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource GroupId
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzfkjjb5gyy6i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Whether it is a seamless integration (Zero-ETL) task, the value can be:
+	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
 	//
-	// - **false**: No. - **true**: Yes.
+	// - **true**: The node is a seamless integration (zero-ETL) node.
+	//
+	// - **false**: The node is not a seamless integration (zero-ETL) node.
 	//
 	// example:
 	//

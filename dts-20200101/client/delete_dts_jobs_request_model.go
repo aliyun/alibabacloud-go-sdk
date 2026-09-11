@@ -20,11 +20,11 @@ type iDeleteDtsJobsRequest interface {
 }
 
 type DeleteDtsJobsRequest struct {
-	// The ID of the data migration, data synchronization, or change tracking task.
+	// The IDs of the data migration, data synchronization, or change tracking tasks.
 	//
-	// > 	- Separate multiple task IDs with commas (,).
+	// > - You can specify up to 10 task IDs, separated by commas (,).
 	//
-	// > 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query task IDs.
+	// - You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the DTS task IDs.
 	//
 	// This parameter is required.
 	//
@@ -32,19 +32,19 @@ type DeleteDtsJobsRequest struct {
 	//
 	// l5o11f9029c****
 	DtsJobIds *string `json:"DtsJobIds,omitempty" xml:"DtsJobIds,omitempty"`
-	// The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// A special parameter for specific business scenarios. You do not need to configure this parameter.
 	//
 	// example:
 	//
-	// rg-aekz4us4iruleja
+	// rg3m1213ye7l****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Is it ZeroETL task
+	// A special parameter for specific business scenarios. You do not need to configure this parameter.
 	//
 	// example:
 	//

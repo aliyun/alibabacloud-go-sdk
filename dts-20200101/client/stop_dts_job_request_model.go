@@ -24,7 +24,7 @@ type iStopDtsJobRequest interface {
 }
 
 type StopDtsJobRequest struct {
-	// The ID of the data migration, data synchronization, or change tracking instance.
+	// The instance ID of the data migration, data synchronization, or subscribe instance.
 	//
 	// example:
 	//
@@ -36,37 +36,37 @@ type StopDtsJobRequest struct {
 	//
 	// l3m1213ye7l****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
-	// cn-qingdao
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-aekznwnajjh4d3a
+	// rg-acfm2jr35xnjh7i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- **Forward**
+	// - **Forward**: forward.
 	//
-	// 	- **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// >
+	// > - Default value: **Forward**.
 	//
-	// 	- Default value: **Forward**.
-	//
-	// 	- You can set this parameter to **Reverse*	- to stop the reverse synchronization task only when the topology is two-way synchronization.
+	// - You can set this parameter to **Reverse*	- to stop the reverse synchronization link only if the topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
 	// Forward
 	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
-	// Whether it is a seamless integration (Zero-ETL) task, the value can be:
+	// Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
 	//
-	// - **false**: No. - **true**: Yes.
+	// - **false**: No.
+	//
+	// - **true**: Yes.
 	//
 	// example:
 	//

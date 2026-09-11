@@ -42,19 +42,19 @@ type DescribeMetricListRequest struct {
 	//
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotency of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. **ClientToken*	- supports only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the data migration or synchronization task.
+	// The ID of the data migration or data synchronization task.
 	//
 	// example:
 	//
 	// k2gm967v16f****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The timestamp that indicates the end of the time range to query. Unit: milliseconds.
+	// The end timestamp, in milliseconds.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type DescribeMetricListRequest struct {
 	//
 	// ALIYUN
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// 	- **InternetOut**: the outbound traffic over the Internet. Unit: byte.
+	// - **InternetOut**: outbound Internet traffic, in bytes.
 	//
-	// 	- **diskusage_utilization**: the disk usage.
+	// - **diskusage_utilization**: disk usage.
 	//
-	// 	- **IntranetInRate**: the inbound traffic over the internal network. Unit: byte.
+	// - **IntranetInRate**: inbound internal network traffic, in bytes.
 	//
-	// 	- **InternetIn**: the inbound traffic from the Internet. Unit: byte.
+	// - **InternetIn**: inbound Internet traffic, in bytes.
 	//
-	// 	- **cpu_total**: the CPU utilization.
+	// - **cpu_total**: CPU utilization.
 	//
-	// 	- **memory_usedutilization**: the memory usage.
+	// - **memory_usedutilization**: memory utilization.
 	//
-	// 	- **IntranetOutRate**: the outbound traffic over the internal network. Unit: byte.
+	// - **IntranetOutRate**: outbound internal network traffic, in bytes.
 	//
 	// This parameter is required.
 	//
@@ -86,18 +86,18 @@ type DescribeMetricListRequest struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// Indicates whether the metrics of the cluster or a node are queried. Valid values:
+	// Specifies whether to query a cluster or a node. Valid values:
 	//
-	// 	- **CLUSTER**: The metrics of the cluster are queried.
+	// - **CLUSTER**: cluster.
 	//
-	// 	- **NODE**: The metrics of a node are queried.
+	// - **NODE**: node.
 	//
 	// example:
 	//
 	// NODE
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerID    *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The monitored object. If the **MetricType*	- parameter is set to **NODE**, set this parameter to the ID of the node that is monitored.
+	// The observation value. If **MetricType*	- is set to **NODE**, the value is **nodeid**.
 	//
 	// This parameter is required.
 	//
@@ -105,7 +105,7 @@ type DescribeMetricListRequest struct {
 	//
 	// nodeid
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The monitoring interval. Unit: seconds. The minimum value is 15.
+	// The observation interval in seconds. The minimum interval is 15 seconds.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type DescribeMetricListRequest struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The timestamp that indicates the beginning of the time range to query. Unit: milliseconds.
+	// The start timestamp, in milliseconds.
 	//
 	// example:
 	//

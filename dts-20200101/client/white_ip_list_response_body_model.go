@@ -32,19 +32,19 @@ type iWhiteIpListResponseBody interface {
 }
 
 type WhiteIpListResponseBody struct {
-	// Target end adaptation to VPCNAT IP whitelist
+	// The IP whitelist of the destination adapted for VPC NAT.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	DestIpList *string `json:"DestIpList,omitempty" xml:"DestIpList,omitempty"`
-	// The dynamic error code. This parameter will be removed in the future.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message. This parameter will be removed in the future.
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
 	//
 	// example:
 	//
@@ -68,25 +68,29 @@ type WhiteIpListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// IP address.
+	// The IP whitelist. Multiple IP addresses are separated by commas (,).
 	//
 	// example:
 	//
 	// 10.151.12.0/24,47.102.181.0/24,47.101.109.0/24,120.55.129.0/24,11.115.103.0/24,47.102.234.0/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// AD823BD3-1BA6-4117-A536-165CB280****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Source adaptation to VPC NAT IP whitelist
+	// The IP whitelist of the source adapted for VPC NAT.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SrcIpList *string `json:"SrcIpList,omitempty" xml:"SrcIpList,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
 	//
 	// example:
 	//

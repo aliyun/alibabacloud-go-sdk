@@ -34,57 +34,57 @@ type iDescribeClusterOperateLogsResponseBody interface {
 }
 
 type DescribeClusterOperateLogsResponseBody struct {
-	// The error code returned by the backend service. The number is incremented.
+	// The backend error code, which is incrementally numeric.
 	//
 	// example:
 	//
 	// 500
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the operation logs.
+	// The monitoring statistics information.
 	DataPoints []*DescribeClusterOperateLogsResponseBodyDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
-	// The dynamic part in the error message. This parameter is used to replace %s in the ErrMessage parameter.
+	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code returned for an exception.
+	// The HTTP status code corresponding to the exception.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries displayed on the current page.
 	//
 	// example:
 	//
 	// 20
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The call result.
 	//
 	// example:
 	//
@@ -219,49 +219,49 @@ func (s *DescribeClusterOperateLogsResponseBody) Validate() error {
 }
 
 type DescribeClusterOperateLogsResponseBodyDataPoints struct {
-	// Other description of the operation.
+	// The additional remarks.
 	//
 	// example:
 	//
 	// null
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The primary key of the log table.
+	// The primary key of the log record table.
 	//
 	// example:
 	//
 	// 237827
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the operation is recorded. The value is in the UNIX timestamp format. Unit: milliseconds.
+	// The timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1642077211574
 	LogDatetime *int64 `json:"LogDatetime,omitempty" xml:"LogDatetime,omitempty"`
-	// The value of the parameter after the operation if the operation is an UPDATE operation.
+	// The new parameter value when the operation type is update.
 	//
 	// example:
 	//
 	// 105
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The value of the parameter before the operation if the operation is an UPDATE operation.
+	// The old parameter value when the operation type is update.
 	//
 	// example:
 	//
 	// 100
 	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
-	// The type of the operation.
+	// The operation type.
 	//
 	// example:
 	//
 	// modify-oversold-ratio
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The user who performed the operation.
+	// The operator.
 	//
 	// example:
 	//
 	// null
 	OperationUser *string `json:"OperationUser,omitempty" xml:"OperationUser,omitempty"`
-	// Indicates whether the request was successful. A value of **1*	- indicates that the request was successful.
+	// The call result. Indicates whether the call was successful. A value of **1*	- indicates success.
 	//
 	// example:
 	//

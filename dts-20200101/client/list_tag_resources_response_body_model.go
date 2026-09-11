@@ -24,13 +24,13 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The error code returned if the call failed.
+	// The error code returned when the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type ListTagResourcesResponseBody struct {
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	// The query token.
 	//
-	// >  If a query does not return all results, you can specify the returned **NextToken*	- parameter in the next query to obtain more results.
+	// > If this request does not return all results, you can pass this **NextToken*	- value in the subsequent request to continue the query.
 	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707ec2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 609AD332-F2B1-48B7-BF43-41FEE641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

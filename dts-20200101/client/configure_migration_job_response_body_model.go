@@ -20,27 +20,29 @@ type iConfigureMigrationJobResponseBody interface {
 }
 
 type ConfigureMigrationJobResponseBody struct {
-	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The ID of the request.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The start offset of incremental data migration. The value is a UNIX timestamp. Unit: seconds.
+	// The request ID.
 	//
 	// example:
 	//
 	// 40E35BD9-002E-4D63-9BE5-FBA48833****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The SID of the Oracle database.
+	// Indicates whether the request was successful. Valid values:
 	//
-	// >  You must specify this parameter only if the **DestinationEndpoint.EngineName*	- parameter is set to **Oracle*	- and the **Oracle*	- database is deployed in a non-RAC architecture.
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
 	//
 	// example:
 	//

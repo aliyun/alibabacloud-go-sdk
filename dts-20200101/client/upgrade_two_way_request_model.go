@@ -20,9 +20,9 @@ type iUpgradeTwoWayRequest interface {
 }
 
 type UpgradeTwoWayRequest struct {
-	// The instance class of the two-way synchronization task. Valid values: **large**, **medium**, **micro**, and **small**.
+	// The instance specification for two-way synchronization. Valid values: **large**, **medium**, **micro**, and **small**.
 	//
-	// >  For more information, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about instance specifications, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UpgradeTwoWayRequest struct {
 	//
 	// large
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the data synchronization instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+	// The instance ID. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type UpgradeTwoWayRequest struct {
 	//
 	// dtsh77p49x4k28****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//

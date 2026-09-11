@@ -22,19 +22,27 @@ type iDescribePreCheckCreateGadOrderResultRequest interface {
 }
 
 type DescribePreCheckCreateGadOrderResultRequest struct {
+	// The instance ID of the GAD instance group.
+	//
 	// example:
 	//
 	// gad-bp162d4tp0500****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the precheck task.
+	//
 	// example:
 	//
 	// k71r16fj13g****

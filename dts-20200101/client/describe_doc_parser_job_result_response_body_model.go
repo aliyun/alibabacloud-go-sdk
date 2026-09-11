@@ -32,36 +32,64 @@ type iDescribeDocParserJobResultResponseBody interface {
 }
 
 type DescribeDocParserJobResultResponseBody struct {
+	// The complete text parsing content.
+	//
+	// > If the task type is content, ContentList splits the original document by page. Each page has a separate Markdown text entry.
 	ContentList []*DescribeDocParserJobResultResponseBodyContentList `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
+	// The dynamic error code. This parameter will be deprecated.
+	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message used to replace the **%s*	- variable in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code returned when the call fails.
+	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned when the call fails.
+	//
 	// example:
 	//
 	// The request processing has failed due to some unknown error.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The OSS download URL of the file.
+	//
+	// > If the task type is zip, this field returns the download URL of the zip package. The URL is valid for 30 minutes.
+	//
 	// example:
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com/806a_209584525031252870_078f1180f27b4c069c0f271758aa****
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	OuterFileUrl   *string `json:"OuterFileUrl,omitempty" xml:"OuterFileUrl,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The public OSS download URL of the file.
+	//
+	// example:
+	//
+	// https://oss-cn-hangzhou.aliyuncs.com/806a_209584525031252870_078f1180f27b4c069c0f271758aa****
+	OuterFileUrl *string `json:"OuterFileUrl,omitempty" xml:"OuterFileUrl,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C166D79D-436B-45F0-B5A5-25E1959F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -180,10 +208,14 @@ func (s *DescribeDocParserJobResultResponseBody) Validate() error {
 }
 
 type DescribeDocParserJobResultResponseBodyContentList struct {
+	// The text content of the corresponding page, which is the complete Markdown text after parsing.
+	//
 	// example:
 	//
 	// 	- Demo 	- *	- Demo title **
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1

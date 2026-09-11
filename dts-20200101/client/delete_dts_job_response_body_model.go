@@ -26,53 +26,45 @@ type iDeleteDtsJobResponseBody interface {
 }
 
 type DeleteDtsJobResponseBody struct {
-	// The operation that you want to perform. Set the value to **DeleteDtsJob**.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The operation that you want to perform. Set the value to **DeleteDtsJob**.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error message returned if the call failed.
+	// The error code returned if the call failed.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The ID of the request.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the data migration, data synchronization, or change tracking instance.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The synchronization direction. Valid values:
-	//
-	// 	- **Forward**: Data is synchronized from the source database to the destination database.
-	//
-	// 	- **Reverse**: Data is synchronized from the destination database to the source database.
-	//
-	// >
-	//
-	// 	- Default value: **Forward**.
-	//
-	// 	- You can set this parameter to **Reverse*	- to delete the reverse synchronization task only if the topology is two-way synchronization.
+	// The request ID.
 	//
 	// example:
 	//
 	// 01B6F25-21E7-4484-99D5-3EF2625C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the region in which the data migration or synchronization task resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

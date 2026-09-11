@@ -24,39 +24,39 @@ type iConvertInstanceResourceGroupRequest interface {
 }
 
 type ConvertInstanceResourceGroupRequest struct {
-	// This historical parameter does not take effect and is not required.
+	// A legacy parameter. This parameter does not take effect. You do not need to pass this parameter.
 	//
 	// example:
 	//
 	// m4312mab158****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The ID of new resource group. You can obtain the ID on the Resource Group page in the Resource Management console. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The ID of the new resource group. You can obtain the ID from the Resource Management console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
 	// rg-aek2r4fkrqw****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
+	// The region in which the DTS instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is only for special services and not required.
+	// A parameter reserved for special business scenarios. You do not need to pass this parameter.
 	//
 	// example:
 	//
 	// rg-3m1213ye7l****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the DTS instance. You can view the ID in the **ID/Name*	- column on the task page in the console.
+	// The ID of the DTS instance. You can view the ID in the **ID/Name*	- column on the task list page in the console.
 	//
-	// >  This parameter is required.
+	// > This parameter is required.
 	//
 	// example:
 	//
 	// dtszhc12zp727o****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// This parameter is only for special services and not required.
+	// A parameter reserved for special business scenarios. You do not need to pass this parameter.
 	//
 	// example:
 	//

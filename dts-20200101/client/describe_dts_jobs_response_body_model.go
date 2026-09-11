@@ -36,35 +36,35 @@ type iDescribeDtsJobsResponseBody interface {
 }
 
 type DescribeDtsJobsResponseBody struct {
-	// The Data Transmission Service (DTS) tasks and the details of each task.
+	// The task list and execution details of each task.
 	DtsJobList []*DescribeDtsJobsResponseBodyDtsJobList `json:"DtsJobList,omitempty" xml:"DtsJobList,omitempty" type:"Repeated"`
-	// The dynamic error code. This parameter will be removed in the future.
+	// The dynamic error code. This parameter will be deprecated.
 	//
 	// example:
 	//
 	// 403
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. The value of this parameter is used to replace the **%s*	- variable in the value of the **ErrMessage*	- parameter.
+	// The dynamic error message used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
 	//
-	// >  For example, if the value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the value of the **DynamicMessage*	- parameter is **Type**, the specified **Type*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **Type**, the request parameter **Type*	- is invalid.
 	//
 	// example:
 	//
 	// Type
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the call failed.
+	// The error code returned if the call fails.
 	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned if the call fails.
 	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The DTS tasks and the details of each task.
+	// The task list and execution details of each task.
 	EtlDemoList []*DescribeDtsJobsResponseBodyEtlDemoList `json:"EtlDemoList,omitempty" xml:"EtlDemoList,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -72,31 +72,31 @@ type DescribeDtsJobsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of records that can be displayed on the current page.
 	//
 	// example:
 	//
 	// 20
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of DTS tasks that meet the query condition.
+	// The total number of DTS instances that meet the specified conditions.
 	//
 	// example:
 	//
@@ -243,182 +243,188 @@ func (s *DescribeDtsJobsResponseBody) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobList struct {
-	// Indicates whether the **new*	- change tracking feature is used.
+	// Indicates whether the instance uses the new version of change tracking. The value **new*	- indicates the new version.
 	//
-	// >  This parameter is returned only for change tracking instances of the new version.
+	// > This parameter is returned only for new-version change tracking instances.
 	//
 	// example:
 	//
 	// new
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The start of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The beginning of the timestamp range for data stored in the change tracking instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-15T08:25:34Z
 	BeginTimestamp *string `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	// The start offset of incremental data synchronization. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The start checkpoint of incremental data migration or the synchronization checkpoint, in the format of a Unix timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1616899019
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The consumption checkpoint of the change tracking instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The consumption checkpoint of the downstream consumer for the change tracking instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-23T07:30:31Z
 	ConsumptionCheckpoint *string `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	// The downstream client information, in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
+	// The downstream consumer client information, which consists of an IP address and a random number generated by DTS.
 	//
 	// example:
 	//
 	// 114...:dts******
 	ConsumptionClient *string `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	// The CPU utilization of the instance. Unit: percentage.
+	// The current CPU utilization of the instance. Unit: %.
 	//
 	// example:
 	//
 	// 1
 	CpuUsage *string `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
-	// The point in time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The task creation time in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-16T08:01:19Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The state of the physical gateway-based migration task.
+	// The task progress status of physical migration to the cloud.
 	DataCloudStatus *DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus `json:"DataCloudStatus,omitempty" xml:"DataCloudStatus,omitempty" type:"Struct"`
-	// The state of the extract, transform, and load (ETL) task. Valid values:
+	// The status of the ETL task.
 	//
-	// >  This parameter collection is returned only if an ETL task is configured.
+	// > This parameter set is returned only after an ETL task is configured.
 	DataEtlStatus *DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	// The state of full data synchronization.
+	// The status of full data migration or initial full data synchronization.
 	DataInitializationStatus *DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	// The state of incremental data migration or synchronization.
+	// The status of incremental data migration or synchronization.
 	DataSynchronizationStatus *DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	// The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see "Objects of DTS tasks".
+	// The objects for data migration, data synchronization, or change tracking. For more information, see [Objects for data migration, data synchronization, or change tracking](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// example:
 	//
 	// {"dtstestdata": { "name": "dtstestdata", "all": true }}
 	DbObject *string `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	// The ID of the DTS dedicated cluster on which a DTS task runs.
+	// The ID of the DTS dedicated cluster.
 	//
 	// example:
 	//
 	// dtscluster_ft7y3**********
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The latency of incremental data synchronization. Unit: seconds.
+	// The latency of incremental data migration or synchronization.
+	//
+	// > For data migration tasks, the unit is milliseconds. For data synchronization tasks, the unit is seconds.
 	//
 	// example:
 	//
 	// 0
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The connection settings of the destination instance.
+	// The connection information of the destination instance.
 	DestinationEndpoint *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	// The environment tag of the DTS instance. Valid values:
+	// The environment label of the DTS instance. Valid values:
 	//
-	// - **normal**
+	// - **normal**: normal
 	//
-	// - **online**
+	// - **online**: online
 	//
 	// example:
 	//
 	// normal
 	DtsBisLabel *string `json:"DtsBisLabel,omitempty" xml:"DtsBisLabel,omitempty"`
-	// The ID of the data synchronization instance.
+	// The ID of the data migration, data synchronization, or change tracking instance.
 	//
 	// example:
 	//
 	// dtsi03e3zty16i****
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// The instance class.
+	// The specification of the data transmission link.
 	//
-	// >  For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about link specifications and performance test results, see [Specifications of data migration links](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization links](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
 	// large
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// The synchronization direction. The value is **Reverse**.
+	// The synchronization direction. Valid values:
+	//
+	// - **Forward**: forward.
+	//
+	// - **Reverse**: reverse.
+	//
+	// > This parameter is returned only when the topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
 	// Forward
 	DtsJobDirection *string `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
-	// The ID of the data synchronization task.
+	// The ID of the data migration, data synchronization, or change tracking task.
 	//
 	// example:
 	//
 	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The name of the data synchronization task.
+	// The name of the data migration, data synchronization, or change tracking task.
 	//
 	// example:
 	//
-	// RDS_TO_RDS_MIGRATION
+	// RDS间迁移
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The DTS Units (DUs) usage of a task in a DTS dedicated cluster.
+	// The DU usage of the dedicated cluster task.
 	//
 	// example:
 	//
 	// 12.0%
 	DuRealUsage *string `json:"DuRealUsage,omitempty" xml:"DuRealUsage,omitempty"`
-	// The number of DUs that have been used.
+	// The DTS dedicated cluster resources that have been used. Unit: DU.
 	//
 	// example:
 	//
 	// 15
 	DuUsage *int64 `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
-	// The end of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end of the timestamp range for data stored in the change tracking instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-26T14:03:21Z
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The error message returned.
+	// The error details.
 	ErrorDetails []*DescribeDtsJobsResponseBodyDtsJobListErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The checkpoint of the ETL task.
+	// The safe checkpoint of the ETL task.
 	//
 	// example:
 	//
 	// 1610540493
 	EtlSafeCheckpoint *string `json:"EtlSafeCheckpoint,omitempty" xml:"EtlSafeCheckpoint,omitempty"`
-	// The point in time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time of the instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// >  This parameter is returned only if the value of the **PayType*	- parameter is **PrePaid**.
+	// > This parameter is returned only when the value of **PayType*	- is **PrePaid**.
 	//
 	// example:
 	//
 	// 2022-03-16T08:01:19Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The state information about the full data verification task.
+	// The status information of full data verification.
 	FullDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus `json:"FullDataCheckStatus,omitempty" xml:"FullDataCheckStatus,omitempty" type:"Struct"`
-	// The state information about the incremental data verification task.
+	// The status information of incremental data verification.
 	IncDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus `json:"IncDataCheckStatus,omitempty" xml:"IncDataCheckStatus,omitempty" type:"Struct"`
 	InsightModule      *bool                                                    `json:"InsightModule,omitempty" xml:"InsightModule,omitempty"`
 	// The type of the DTS task. Valid values:
 	//
-	// - **MIGRATION**: data migration task
+	// - **online**: data migration.
 	//
-	// - **SYNC**: data synchronization task
+	// - **sync**: data synchronization.
 	//
-	// - **SUBSCRIBE**: change tracking task
+	// - **subscribe**: change tracking.
 	//
 	// example:
 	//
-	// MIGRATION
+	// online
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// Upper limit of DU.
-	//
-	// > Only supported by Serverless instances.
+	// The maximum number of DUs for the serverless instance.
 	//
 	// example:
 	//
@@ -436,13 +442,13 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	//
 	// dts.retry.err.0046
 	MigrationErrCode *string `json:"MigrationErrCode,omitempty" xml:"MigrationErrCode,omitempty"`
-	// The ID of the error code-related documentation.
+	// The ID of the help documentation for the error code.
 	//
 	// example:
 	//
 	// 462133
 	MigrationErrHelpDocId *string `json:"MigrationErrHelpDocId,omitempty" xml:"MigrationErrHelpDocId,omitempty"`
-	// The key of the error code-related documentation.
+	// The key of the help documentation for the error code.
 	//
 	// example:
 	//
@@ -460,49 +466,47 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	//
 	// ForeignKey
 	MigrationErrType *string `json:"MigrationErrType,omitempty" xml:"MigrationErrType,omitempty"`
-	// The solution to the error.
+	// The workaround for the error.
 	//
 	// example:
 	//
 	// dts.retry.err.0046.workaround
 	MigrationErrWorkaround *string `json:"MigrationErrWorkaround,omitempty" xml:"MigrationErrWorkaround,omitempty"`
-	// The migration or synchronization modes.
+	// The migration type or synchronization initialization type.
 	MigrationMode *DescribeDtsJobsResponseBodyDtsJobListMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// Lower limit of DU.
-	//
-	// > Only supported by Serverless instances.
+	// The minimum number of DUs for the serverless instance.
 	//
 	// example:
 	//
 	// 1
 	MinDu *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
-	// The source of the task. Valid values:
+	// The task source:
 	//
-	// 	- **PTS**
+	// - **PTS task**
 	//
-	// 	- **DMS**
+	// - **DMS task**
 	//
-	// 	- **DTS**
+	// - **DTS task**
 	//
 	// example:
 	//
-	// DTS
+	// DTS任务
 	OriginType *string `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
-	// The billing method of the DTS instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The performance of the data migration or synchronization instance.
+	// The performance information of the data migration or synchronization link.
 	Performance *DescribeDtsJobsResponseBodyDtsJobListPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
-	// The precheck state.
+	// The precheck status.
 	PrecheckStatus *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
+	// The reserved parameter of DTS in JSON format. You can specify this parameter to meet special requirements, such as whether to automatically start a precheck. For more information, see [MigrationReserved parameter description](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
@@ -520,25 +524,117 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the retries performed by DTS due to an exception.
+	// The retry state. DTS is retrying because the task encountered an exception.
 	RetryState *DescribeDtsJobsResponseBodyDtsJobListRetryState `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
-	// The details of the data synchronization task in the reverse direction.
+	// The execution details of the reverse synchronization task.
 	//
-	// > This parameter is returned only for two-way data synchronization tasks.
+	// > This parameter set is returned only when the task is a data synchronization task with a two-way synchronization topology.
 	ReverseJob *DescribeDtsJobsResponseBodyDtsJobListReverseJob `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
-	// The connection settings of the source instance.
+	// The connection information of the source instance.
 	SourceEndpoint *DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
+	// The instance status of the DTS instance. Valid values:
+	//
+	// Data migration task statuses:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **Migrating**: migrating.
+	//
+	// - **Suspending**: paused.
+	//
+	// - **MigrationFailed**: migration failed.
+	//
+	// - **Finished**: completed.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
+	//
+	// Data synchronization task statuses:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **Initializing**: performing initial synchronization.
+	//
+	// - **InitializeFailed**: initial synchronization failed.
+	//
+	// - **Synchronizing**: synchronizing.
+	//
+	// - **Failed**: synchronization failed.
+	//
+	// - **Suspending**: paused.
+	//
+	// - **Modifying**: modifying synchronization objects.
+	//
+	// - **ModifyFailed**: failed to modify synchronization objects.
+	//
+	// - **Finished**: completed.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
+	//
+	// Change tracking task statuses:
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **Starting**: starting.
+	//
+	// - **Normal**: normal.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Abnormal**: abnormal.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
 	//
 	// example:
 	//
 	// Migrating
-	Status                   *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status information of schema verification.
 	StructureDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListStructureDataCheckStatus `json:"StructureDataCheckStatus,omitempty" xml:"StructureDataCheckStatus,omitempty" type:"Struct"`
-	// The state of schema migration or initial schema synchronization.
+	// The status of schema migration or initial schema synchronization.
 	StructureInitializationStatus *DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
-	// The tags of the task.
-	TagList []*DescribeDtsJobsResponseBodyDtsJobListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The tag collection.
+	TagList                   []*DescribeDtsJobsResponseBodyDtsJobListTagList                 `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	TimeWindowDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus `json:"TimeWindowDataCheckStatus,omitempty" xml:"TimeWindowDataCheckStatus,omitempty" type:"Struct"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobList) String() string {
@@ -771,6 +867,10 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) GetStructureInitializationStatus
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) GetTagList() []*DescribeDtsJobsResponseBodyDtsJobListTagList {
 	return s.TagList
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) GetTimeWindowDataCheckStatus() *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus {
+	return s.TimeWindowDataCheckStatus
 }
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetAppName(v string) *DescribeDtsJobsResponseBodyDtsJobList {
@@ -1053,6 +1153,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetTagList(v []*DescribeDtsJobsR
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetTimeWindowDataCheckStatus(v *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.TimeWindowDataCheckStatus = v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobList) Validate() error {
 	if s.DataCloudStatus != nil {
 		if err := s.DataCloudStatus.Validate(); err != nil {
@@ -1147,27 +1252,32 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) Validate() error {
 			}
 		}
 	}
+	if s.TimeWindowDataCheckStatus != nil {
+		if err := s.TimeWindowDataCheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus struct {
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// framework: DTS-31009: In process of processing data ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the instance needs to be upgraded. Valid values:
+	// Indicates whether the instance specification needs to be upgraded. Valid values:
 	//
-	// - **true*	-
+	// - **true**: The specification needs to be upgraded.
 	//
-	// - **false**
+	// - **false**: The specification does not need to be upgraded.
 	//
 	// example:
 	//
 	// false
 	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// The progress of the task. Unit: percentage.
+	// The task progress, in percentage.
 	//
 	// example:
 	//
@@ -1179,7 +1289,7 @@ type DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus struct {
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of the task. For more information about the valid values, see the description of the request parameter **Status**.
+	// The status of the task. For more information, see the description of the **Status*	- request parameter in this operation.
 	//
 	// example:
 	//
@@ -1245,13 +1355,13 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus) Validate() error 
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus struct {
-	// The error message returned if the task failed.
+	// The error message returned when the ETL task fails.
 	//
 	// example:
 	//
-	// The task has failed for a long time and cannot be recovered.
+	// 任务失败太久无法恢复
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of the ETL task.
+	// The progress of the ETL task, in percentage.
 	//
 	// example:
 	//
@@ -1263,17 +1373,17 @@ type DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus struct {
 	//
 	// 0/0
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of the ETL task. Valid values:
+	// The status of the ETL task. Valid values:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Migrating**: The task is in progress.
+	// - **Migrating**: running.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: execution failed.
 	//
-	// 	- **Finished**: The task is complete.
+	// - **Finished**: completed.
 	//
-	// 	- **Catched**: The task is not delayed.
+	// - **Catched**: no latency.
 	//
 	// example:
 	//
@@ -1330,33 +1440,33 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus struct {
-	// The error message returned if full data synchronization failed.
+	// The error message returned when full data migration or initial full data synchronization fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of full data synchronization. This is expressed as a percentage.
+	// The progress of full data migration or initial full data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of records that have been synchronized during full data synchronization.
+	// The number of records that have been migrated or initialized during full data migration or initial full data synchronization.
 	//
 	// example:
 	//
 	// 44755
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of full data synchronization. Valid values:
+	// The status of full data migration or initial full data synchronization. Valid values:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Migrating**: The task is in progress.
+	// - **Migrating**: migrating or initializing.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: migration or initialization failed.
 	//
-	// 	- **Finished**: The task is complete.
+	// - **Finished**: migration or initialization completed.
 	//
 	// example:
 	//
@@ -1413,25 +1523,25 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus) Validate
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus struct {
-	// The error message returned if incremental data migration or synchronization failed.
+	// The error message returned when incremental data migration or synchronization fails.
 	//
 	// example:
 	//
-	// The task has failed for a long time and cannot be recovered.
+	// 任务失败太久无法恢复
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the instance needs to be upgraded. Valid values:
+	// Indicates whether the instance specification needs to be upgraded. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The specification needs to be upgraded.
 	//
-	// 	- **false**: no
+	// - **false**: The specification does not need to be upgraded.
 	//
-	// >  To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
+	// > To upgrade the instance specification, call [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html).
 	//
 	// example:
 	//
 	// true
 	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// The progress of incremental data migration or synchronization.
+	// The progress of incremental data migration or synchronization, in percentage.
 	//
 	// example:
 	//
@@ -1443,17 +1553,17 @@ type DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus struct {
 	//
 	// 0/0
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of incremental data migration or synchronization. Valid values:
+	// The status of incremental data migration or synchronization. Valid values:
 	//
-	// 	- **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// 	- **Migrating**: The task is in progress.
+	// - **Migrating**: migrating or synchronizing.
 	//
-	// 	- **Failed**: The task failed.
+	// - **Failed**: migration or synchronization failed.
 	//
-	// 	- **Finished**: The task is complete.
+	// - **Finished**: migration or synchronization completed.
 	//
-	// 	- **Catched**: The task is not delayed.
+	// - **Catched**: no latency.
 	//
 	// example:
 	//
@@ -1519,19 +1629,19 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus) Validat
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint struct {
-	// The name of the database to which the migration object in the destination instance belongs.
+	// The name of the database to which the migration objects belong in the destination instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The database type of the destination instance.
+	// The database engine of the destination instance.
 	//
 	// example:
 	//
 	// MySQL
 	EngineName *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
-	// The ID of the destination instance.
+	// The instance ID of the destination instance.
 	//
 	// example:
 	//
@@ -1551,7 +1661,7 @@ type DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// >  This parameter is returned only if the **EngineName*	- parameter of the destination instance is set to **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the destination instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
@@ -1563,21 +1673,21 @@ type DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// 	- **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// 	- **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// 	- **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// 	- **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -1694,13 +1804,13 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint) Validate() er
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListErrorDetails struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// DTS-31009
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The URL of the documentation.
+	// The URL of the help documentation.
 	//
 	// example:
 	//
@@ -1739,14 +1849,25 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListErrorDetails) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus struct {
+	// Indicates whether migration switchover can be performed. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// > This parameter is used by the one-click upgrade feature of PolarDB.
+	//
+	// example:
+	//
+	// false
 	CanSwitch *bool `json:"CanSwitch,omitempty" xml:"CanSwitch,omitempty"`
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of the full data verification task. Unit: percentage.
+	// The progress of the full data verification task, in percentage.
 	//
 	// example:
 	//
@@ -1758,15 +1879,15 @@ type DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus struct {
 	//
 	// 1 rows/s (row: 5/5, table: 1/1)
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of the full data verification task. Valid values:
+	// The status of the full data verification task. Valid values:
 	//
-	// - **NotStarted**: The verification is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Checking**: The verification is in progress.
+	// - **Checking**: verifying.
 	//
-	// - **Failed**: The verification failed.
+	// - **Failed**: verification failed.
 	//
-	// - **Finished**: The verification is complete.
+	// - **Finished**: verification completed.
 	//
 	// example:
 	//
@@ -1832,13 +1953,13 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus) Validate() er
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus struct {
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of the incremental data verification task. Unit: percentage.
+	// The progress of the incremental data verification task, in percentage.
 	//
 	// example:
 	//
@@ -1850,15 +1971,15 @@ type DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus struct {
 	//
 	// 1 rows/s (row: 5/5, table: 1/1)
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of the incremental data verification task. Valid values:
+	// The status of the incremental data verification task. Valid values:
 	//
-	// - **Catched**: The verification is delayed.
+	// - **Catched**: no latency.
 	//
-	// - **NotStarted**: The verification is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Checking**: The verification is in progress.
+	// - **Checking**: verifying.
 	//
-	// - **Failed**: The verification failed.
+	// - **Failed**: verification failed.
 	//
 	// example:
 	//
@@ -1915,11 +2036,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus) Validate() err
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListMigrationMode struct {
-	// Indicates whether full data migration or synchronization is performed. Valid values:
+	// Indicates whether full data migration or initial full data synchronization is performed. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -1927,45 +2048,55 @@ type DescribeDtsJobsResponseBodyDtsJobListMigrationMode struct {
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	// Indicates whether incremental data migration or synchronization is performed. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
-	// Indicates whether full data verification is performed. Valid values:
+	// Indicates whether full data validation is performed. Valid values:
 	//
-	// -  **true**: yes
+	// - **true**: Yes.
 	//
-	// -  **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	FullDataCheck *bool `json:"FullDataCheck,omitempty" xml:"FullDataCheck,omitempty"`
-	// Indicates whether incremental data verification is performed. Valid values:
+	// Indicates whether incremental data validation is performed. Valid values:
 	//
-	// -  **true**: yes
+	// - **true**: Yes.
 	//
-	// -  **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
-	IncDataCheck       *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
+	IncDataCheck *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
+	// Indicates whether schema verification is performed. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// example:
+	//
+	// true
 	StructureDataCheck *bool `json:"StructureDataCheck,omitempty" xml:"StructureDataCheck,omitempty"`
-	// Indicates whether schema migration or schema synchronization is performed. Valid values:
+	// Indicates whether schema migration or initial schema synchronization is performed. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+	TimeWindowCheck         *bool `json:"TimeWindowCheck,omitempty" xml:"TimeWindowCheck,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobListMigrationMode) String() string {
@@ -2000,6 +2131,10 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) GetStructureInitial
 	return s.StructureInitialization
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) GetTimeWindowCheck() *bool {
+	return s.TimeWindowCheck
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobsResponseBodyDtsJobListMigrationMode {
 	s.DataInitialization = &v
 	return s
@@ -2030,18 +2165,23 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) SetStructureInitial
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) SetTimeWindowCheck(v bool) *DescribeDtsJobsResponseBodyDtsJobListMigrationMode {
+	s.TimeWindowCheck = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListMigrationMode) Validate() error {
 	return dara.Validate(s)
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListPerformance struct {
-	// The size of data that is migrated or synchronized per second. Unit: MB/s.
+	// The volume of data migrated or synchronized per second. Unit: MB/s.
 	//
 	// example:
 	//
 	// 1
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The number of times that SQL statements are migrated or synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
+	// The number of SQL statements migrated or synchronized per second, including BEGIN, COMMIT, DML statements (INSERT, DELETE, UPDATE), and DDL statements.
 	//
 	// example:
 	//
@@ -2080,15 +2220,15 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListPerformance) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus struct {
-	// The result of each precheck item.
+	// The execution details of each precheck item.
 	Detail []*DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// The cause of the precheck failure.
+	// The error message returned when the precheck fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The precheck progress. This is expressed as a percentage.
+	// The overall progress of the precheck, in percentage.
 	//
 	// example:
 	//
@@ -2096,15 +2236,15 @@ type DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus struct {
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
 	// The precheck status. Valid values:
 	//
-	// 	- **NotStarted**
+	// - **NotStarted**: not started.
 	//
-	// 	- **Suspending**:
+	// - **Suspending**: paused.
 	//
-	// 	- **Checking**
+	// - **Checking**: running a precheck.
 	//
-	// 	- **Failed**
+	// - **Failed**: precheck failed.
 	//
-	// 	- **Finished**
+	// - **Finished**: precheck completed.
 	//
 	// example:
 	//
@@ -2170,7 +2310,7 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail struct {
-	// The name of the precheck item.
+	// The precheck item.
 	//
 	// example:
 	//
@@ -2182,27 +2322,27 @@ type DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail struct {
 	//
 	// CHECK_CONN_SRC_DETAIL
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// The precheck result. Valid values:
+	// The check result. Valid values:
 	//
-	// 	- **Success**
+	// - **Success**: The check item passed.
 	//
-	// 	- **Failed**
+	// - **Failed**: The check item did not pass.
 	//
 	// example:
 	//
 	// Success
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The error message returned if the task failed to pass the precheck.
+	// The error message returned when the precheck does not pass.
 	//
-	// >  This parameter is returned only if the value of the **CheckResult*	- parameter is **Failed**.
+	// > This parameter is returned only when the value of **CheckResult*	- is **Failed**.
 	//
 	// example:
 	//
 	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The method to fix the precheck failure.
+	// The repair method when the precheck does not pass.
 	//
-	// >  This parameter is returned only if the value of the **CheckResult*	- parameter is **Failed**.
+	// > This parameter is returned only when the value of **CheckResult*	- is **Failed**.
 	//
 	// example:
 	//
@@ -2268,7 +2408,7 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail) Validate() e
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListRetryState struct {
-	// The error message returned if these retries failed.
+	// The error message returned when the retry fails.
 	//
 	// example:
 	//
@@ -2280,7 +2420,7 @@ type DescribeDtsJobsResponseBodyDtsJobListRetryState struct {
 	//
 	// bi6e22ay243****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The maximum duration of a retry. Unit: seconds.
+	// The maximum retry duration. Unit: seconds.
 	//
 	// example:
 	//
@@ -2292,13 +2432,13 @@ type DescribeDtsJobsResponseBodyDtsJobListRetryState struct {
 	//
 	// dts.retry.err.0046
 	MigrationErrCode *string `json:"MigrationErrCode,omitempty" xml:"MigrationErrCode,omitempty"`
-	// The ID of the error code-related documentation.
+	// The ID of the help documentation for the error code.
 	//
 	// example:
 	//
 	// 462133
 	MigrationErrHelpDocId *string `json:"MigrationErrHelpDocId,omitempty" xml:"MigrationErrHelpDocId,omitempty"`
-	// The key of the error code-related documentation.
+	// The key of the help documentation for the error code.
 	//
 	// example:
 	//
@@ -2316,13 +2456,13 @@ type DescribeDtsJobsResponseBodyDtsJobListRetryState struct {
 	//
 	// ForeignKey
 	MigrationErrType *string `json:"MigrationErrType,omitempty" xml:"MigrationErrType,omitempty"`
-	// The solution to the error.
+	// The workaround for the error.
 	//
 	// example:
 	//
 	// dts.retry.err.0046.workaround
 	MigrationErrWorkaround *string `json:"MigrationErrWorkaround,omitempty" xml:"MigrationErrWorkaround,omitempty"`
-	// The progress of the instance when DTS retries.
+	// The instance progress.
 	//
 	// example:
 	//
@@ -2334,19 +2474,19 @@ type DescribeDtsJobsResponseBodyDtsJobListRetryState struct {
 	//
 	// 5
 	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// The object on which these retries are performed. Valid values:
+	// The retry target. Valid values:
 	//
-	// - **srcDB**: the source database
+	// - **srcDB**: the source database.
 	//
-	// - **destDB**: the destination database
+	// - **destDB**: the destination database.
 	//
-	// - **inner_module**: an internal module of DTS
+	// - **inner_module**: a DTS internal module.
 	//
 	// example:
 	//
 	// srcDB
 	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
-	// The time that has elapsed from the time when the first retry starts. Unit: seconds.
+	// The time that has been spent on retries. Unit: seconds.
 	//
 	// example:
 	//
@@ -2354,9 +2494,9 @@ type DescribeDtsJobsResponseBodyDtsJobListRetryState struct {
 	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
 	// Indicates whether the task is being retried. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -2503,35 +2643,35 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
-	// The start offset of incremental data synchronization. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The synchronization checkpoint of incremental data synchronization, in the format of a Unix timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1616980369
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The CPU utilization of the instance. Unit: percentage.
+	// The current CPU utilization of the instance. Unit: %.
 	//
 	// example:
 	//
 	// 90
 	CpuUsage *string `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
-	// The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The task creation time in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2022-03-16T08:01:19Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The state of initial full data synchronization.
+	// The status of initial full data synchronization.
 	DataInitializationStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	// The state of incremental data synchronization.
+	// The status of incremental data synchronization.
 	DataSynchronizationStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	// The schema of the objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see Objects of DTS tasks.
+	// The schema definition of the synchronization objects in JSON format, which supports certain regular expressions. For more information and examples, see the description of migration, synchronization, or change tracking object configuration.
 	//
 	// example:
 	//
 	// {"dtstestdata": { "name": "dtstestdata", "all": true }}
 	DbObject *string `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
-	// The ID of the DTS dedicated cluster on which a DTS task runs.
+	// The ID of the DTS dedicated cluster.
 	//
 	// example:
 	//
@@ -2543,23 +2683,23 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	//
 	// 0
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The connection settings of the destination instance.
+	// The connection information of the destination instance.
 	DestinationEndpoint *DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
-	// The ID of the data synchronization instance.
+	// The instance ID of the data synchronization instance.
 	//
 	// example:
 	//
 	// dtsi03e3zty16i****
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// The instance class.
+	// The specification of the data transmission link.
 	//
-	// > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about link specifications and performance test results, see [Specifications of data synchronization links](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
 	// large
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// The synchronization direction. **Reverse*	- is returned.
+	// The synchronization direction. The value is fixed as **Reverse**.
 	//
 	// example:
 	//
@@ -2571,47 +2711,45 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	//
 	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The name of the data synchronization task.
+	// The name of the synchronization task.
 	//
 	// example:
 	//
-	// RDS_TO_RDS_MIGRATION
+	// RDS间迁移
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The number of DUs that have been used.
+	// The DTS dedicated cluster resources that have been used. Unit: DU.
 	//
 	// example:
 	//
 	// 15
 	DuUsage *int64 `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
-	// The error message returned.
+	// The error details.
 	ErrorDetails []*DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The checkpoint of the ETL task.
+	// The safe checkpoint of the ETL task.
 	//
 	// example:
 	//
 	// 1610540493
 	EtlSafeCheckpoint *string `json:"EtlSafeCheckpoint,omitempty" xml:"EtlSafeCheckpoint,omitempty"`
-	// The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time of the instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// > This parameter is returned only if the returned value of **PayType*	- is **PrePaid**.
+	// > This parameter is returned only when the value of **PayType*	- is **PrePaid**.
 	//
 	// example:
 	//
 	// 2023-03-16T08:01:19Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The state information about the full data verification task.
+	// The status information of full data verification.
 	FullDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus `json:"FullDataCheckStatus,omitempty" xml:"FullDataCheckStatus,omitempty" type:"Struct"`
-	// The state information about the incremental data verification task.
+	// The status information of incremental data verification.
 	IncDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus `json:"IncDataCheckStatus,omitempty" xml:"IncDataCheckStatus,omitempty" type:"Struct"`
-	// Upper limit of DU.
-	//
-	// > Only supported by Serverless instances.
+	// The maximum number of DUs for the serverless instance.
 	//
 	// example:
 	//
@@ -2623,46 +2761,79 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	//
 	// 500
 	MemUsage *string `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
-	// The initial synchronization types.
+	// The synchronization initialization type.
 	MigrationMode *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// Lower limit of DU.
-	//
-	// > Only supported by Serverless instances.
+	// The minimum number of DUs for the serverless instance.
 	//
 	// example:
 	//
 	// 1
 	MinDu *float64 `json:"MinDu,omitempty" xml:"MinDu,omitempty"`
-	// The billing method of the DTS instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// - **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The performance of the data synchronization instance.
+	// The performance information of the synchronization link.
 	Performance *DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
-	// The precheck state.
+	// The precheck status.
 	PrecheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
+	// The reserved parameter of DTS in JSON format. You can specify this parameter to meet special requirements, such as whether to automatically start a precheck. For more information, see [MigrationReserved parameter description](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
 	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	// The connection settings of the source instance.
+	// The connection information of the source instance.
 	SourceEndpoint *DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
+	// The status of the reverse synchronization task. Valid values:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **Initializing**: performing initial synchronization.
+	//
+	// - **InitializeFailed**: initial synchronization failed.
+	//
+	// - **Synchronizing**: synchronizing.
+	//
+	// - **Failed**: synchronization failed.
+	//
+	// - **Suspending**: paused.
+	//
+	// - **Modifying**: modifying synchronization objects.
+	//
+	// - **ModifyFailed**: failed to modify synchronization objects.
+	//
+	// - **Finished**: completed.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
 	//
 	// example:
 	//
 	// Synchronizing
-	Status                   *string                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status information of schema verification.
 	StructureDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureDataCheckStatus `json:"StructureDataCheckStatus,omitempty" xml:"StructureDataCheckStatus,omitempty" type:"Struct"`
-	// The state of initial schema synchronization.
+	// The status of initial schema synchronization.
 	StructureInitializationStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
 }
 
@@ -3040,33 +3211,33 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus struct {
-	// The error message returned if initial full data synchronization failed.
+	// The error message returned when initial full data synchronization fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of initial full data synchronization. Unit: percentage.
+	// The progress of initial full data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of entries that have been synchronized during initial full data synchronization.
+	// The number of records that have been synchronized during initial full data synchronization.
 	//
 	// example:
 	//
 	// 43071
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of initial full data synchronization. Valid values:
+	// The status of initial full data synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: initializing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: initialization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: initialization completed.
 	//
 	// example:
 	//
@@ -3123,37 +3294,37 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus struct {
-	// The error message returned if incremental data synchronization failed.
+	// The error message returned when incremental data synchronization fails.
 	//
 	// example:
 	//
-	// The task has failed for a long time and cannot be recovered.
+	// 任务失败太久无法恢复
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the instance needs to be upgraded. Valid values:
+	// Indicates whether the instance specification needs to be upgraded. Valid values:
 	//
-	// - **true**
+	// - **true**: The specification needs to be upgraded.
 	//
-	// - **false**
+	// - **false**: The specification does not need to be upgraded.
 	//
-	// > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
+	// > To upgrade the instance specification, call [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html).
 	//
 	// example:
 	//
 	// true
 	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// The progress of incremental data synchronization. Unit: percentage.
+	// The progress of incremental data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of entries that have been migrated or synchronized during incremental data migration or synchronization.
+	// The number of records that have been migrated or synchronized during incremental data migration or synchronization.
 	//
 	// example:
 	//
 	// 20001
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of incremental data synchronization.
+	// The status of incremental data synchronization.
 	//
 	// example:
 	//
@@ -3219,7 +3390,7 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatu
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint struct {
-	// The name of the database that contains the synchronized objects in the destination instance.
+	// The name of the database to which the synchronization objects belong in the destination instance.
 	//
 	// example:
 	//
@@ -3251,33 +3422,33 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is returned only if the returned value of **EngineName*	- of the destination instance is **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the destination instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The port number of the destination instance.
+	// The database service port of the destination instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// - **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -3394,13 +3565,13 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint) Val
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// DTS-31009
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The URL of the documentation.
+	// The URL of the help documentation.
 	//
 	// example:
 	//
@@ -3439,14 +3610,25 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) Validate()
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus struct {
+	// Indicates whether migration switchover can be performed. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// > This parameter is used by the one-click upgrade feature of PolarDB.
+	//
+	// example:
+	//
+	// false
 	CanSwitch *bool `json:"CanSwitch,omitempty" xml:"CanSwitch,omitempty"`
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of the full data verification task. Unit: percentage.
+	// The progress of the full data verification task, in percentage.
 	//
 	// example:
 	//
@@ -3458,15 +3640,17 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus struct {
 	//
 	// 1 rows/s (row: 5/5, table: 1/1)
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of the full data verification task. Valid values:
+	// The status of the full data verification task. Valid values:
 	//
-	// - **NotStarted**: The verification is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Checking**: The verification is in progress.
+	// - **Checking**: verifying.
 	//
-	// - **Failed**: The verification failed.
+	// - **Failed**: verification failed.
 	//
-	// - **Finished**: The verification is complete.
+	// - **Finished**: verification completed.
+	//
+	// - **Inconsistency**: the task completed but inconsistent data exists.
 	//
 	// example:
 	//
@@ -3532,13 +3716,13 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) Val
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus struct {
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of the incremental data verification task. Unit: percentage.
+	// The progress of the incremental data verification task, in percentage.
 	//
 	// example:
 	//
@@ -3550,15 +3734,17 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus struct {
 	//
 	// 1 rows/s (row: 5/5, table: 1/1)
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of the incremental data verification task. Valid values:
+	// The status of the incremental data verification task. Valid values:
 	//
-	// - **Catched**: The verification is delayed.
+	// - **Catched**: no latency.
 	//
-	// - **NotStarted**: The verification is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Checking**: The verification is in progress.
+	// - **Checking**: verifying.
 	//
-	// - **Failed**: The verification failed.
+	// - **Failed**: verification failed.
+	//
+	// - **Inconsistency**: the task completed but inconsistent data exists.
 	//
 	// example:
 	//
@@ -3617,9 +3803,9 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) Vali
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode struct {
 	// Indicates whether initial full data synchronization is performed. Valid values:
 	//
-	// -  **true**
+	// - **true**: Yes.
 	//
-	// -  **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -3627,9 +3813,9 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode struct {
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	// Indicates whether incremental data synchronization is performed. Valid values:
 	//
-	// -  **true**
+	// - **true**: Yes.
 	//
-	// -  **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -3637,9 +3823,9 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode struct {
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
 	// Indicates whether full data verification is performed. Valid values:
 	//
-	// -  **true**: yes
+	// - **true**: Yes.
 	//
-	// -  **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -3647,25 +3833,35 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode struct {
 	FullDataCheck *bool `json:"FullDataCheck,omitempty" xml:"FullDataCheck,omitempty"`
 	// Indicates whether incremental data verification is performed. Valid values:
 	//
-	// -  **true**: yes
+	// - **true**: Yes.
 	//
-	// -  **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
-	IncDataCheck       *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
+	IncDataCheck *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
+	// Indicates whether schema verification is performed. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// example:
+	//
+	// true
 	StructureDataCheck *bool `json:"StructureDataCheck,omitempty" xml:"StructureDataCheck,omitempty"`
 	// Indicates whether initial schema synchronization is performed. Valid values:
 	//
-	// -  **true**
+	// - **true**: Yes.
 	//
-	// -  **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	StructureInitialization *bool `json:"StructureInitialization,omitempty" xml:"StructureInitialization,omitempty"`
+	TimeWindowCheck         *bool `json:"TimeWindowCheck,omitempty" xml:"TimeWindowCheck,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) String() string {
@@ -3700,6 +3896,10 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) GetStruct
 	return s.StructureInitialization
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) GetTimeWindowCheck() *bool {
+	return s.TimeWindowCheck
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) SetDataInitialization(v bool) *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode {
 	s.DataInitialization = &v
 	return s
@@ -3730,18 +3930,23 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) SetStruct
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) SetTimeWindowCheck(v bool) *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode {
+	s.TimeWindowCheck = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) Validate() error {
 	return dara.Validate(s)
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance struct {
-	// The size of data that is synchronized per second. Unit: MB/s.
+	// The volume of data synchronized per second. Unit: MB/s.
 	//
 	// example:
 	//
 	// 1
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The number of times that SQL statements are synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
+	// The number of SQL statements synchronized per second, including BEGIN, COMMIT, DML statements (INSERT, DELETE, UPDATE), and DDL statements.
 	//
 	// example:
 	//
@@ -3780,31 +3985,31 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance) Validate() 
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus struct {
-	// The result of each precheck item.
+	// The execution details of each precheck item.
 	Detail []*DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// The error message returned if the precheck failed.
+	// The error message returned when the precheck fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The precheck progress. Unit: percentage.
+	// The overall progress of the precheck, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The precheck state. Valid values:
+	// The precheck status. Valid values:
 	//
-	// - **NotStarted**: The precheck is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Suspending**: The precheck is paused.
+	// - **Suspending**: paused.
 	//
-	// - **Checking**: The precheck is in progress.
+	// - **Checking**: running a precheck.
 	//
-	// - **Failed**: The precheck failed.
+	// - **Failed**: precheck failed.
 	//
-	// - **Finished**: The precheck is complete.
+	// - **Finished**: precheck completed.
 	//
 	// example:
 	//
@@ -3870,7 +4075,7 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus) Validate
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail struct {
-	// The name of the precheck item.
+	// The precheck item.
 	//
 	// example:
 	//
@@ -3882,23 +4087,23 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail struct 
 	//
 	// CHECK_CONN_SRC_DETAIL
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// The precheck result. Valid values:
+	// The check result. Valid values:
 	//
-	// - **Success**
+	// - **Success**: The check item passed.
 	//
-	// - **Failed**
+	// - **Failed**: The check item did not pass.
 	//
 	// example:
 	//
 	// Success
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The error message returned if the task failed to pass the precheck.
+	// The error message returned when the precheck does not pass.
 	//
 	// example:
 	//
 	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The method to fix a precheck failure.
+	// The repair method when the precheck does not pass.
 	//
 	// example:
 	//
@@ -3964,13 +4169,15 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail) Va
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint struct {
-	// The name of the database that contains the objects to be migrated from the source instance.
+	// The name of the database to which the migration objects belong in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The database engine of the source instance.
+	//
+	// [_single.resp.200.
 	//
 	// example:
 	//
@@ -3996,33 +4203,33 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is returned only if the returned value of **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The port number of the source instance.
+	// The database service port of the source instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// - **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -4139,10 +4346,40 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint) Validate
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureDataCheckStatus struct {
+	// The error message returned when the task fails.
+	//
+	// example:
+	//
+	// ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The progress of the schema verification task, in percentage.
+	//
+	// example:
+	//
+	// 100
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The number of objects for which schema verification has been completed.
+	//
+	// example:
+	//
+	// 5
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The status of the schema verification task. Valid values:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Checking**: verifying.
+	//
+	// - **Failed**: verification failed.
+	//
+	// - **Finished**: verification completed.
+	//
+	// - **Inconsistency**: the task completed but inconsistent data exists.
+	//
+	// example:
+	//
+	// Finished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureDataCheckStatus) String() string {
@@ -4194,33 +4431,33 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureDataCheckStatus
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationStatus struct {
-	// The error message returned if initial schema synchronization failed.
+	// The error message returned when initial schema synchronization fails.
 	//
 	// example:
 	//
 	// DTS-1020042 Execute sql error sql: ERROR: type "geometry" does not exist;
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of initial schema synchronization. Unit: percentage.
+	// The progress of initial schema synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables that have been synchronized during initial schema synchronization.
+	// The number of tables for which initial schema synchronization has been completed.
 	//
 	// example:
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of initial schema synchronization. Valid values:
+	// The status of initial schema synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: initializing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: initialization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: initialization completed.
 	//
 	// example:
 	//
@@ -4277,13 +4514,15 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobStructureInitializationS
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint struct {
-	// The name of the database that contains the objects to be migrated from the source instance.
+	// The name of the database to which the migration objects belong in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The database engine of the source instance.
+	//
+	// [_single.resp.200.
 	//
 	// example:
 	//
@@ -4309,33 +4548,33 @@ type DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is returned only if the returned value of **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The port number of the source instance.
+	// The database service port of the source instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// - **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// - **ENABLE_WITH_CERTIFICAT**E: SSL encryption is enabled and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -4452,10 +4691,40 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListStructureDataCheckStatus struct {
+	// The error message returned when the task fails.
+	//
+	// example:
+	//
+	// ****
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The progress of the schema verification task, in percentage.
+	//
+	// example:
+	//
+	// 100
+	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The number of objects for which schema verification has been completed.
+	//
+	// example:
+	//
+	// 5
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The status of the schema verification task. Valid values:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Checking**: verifying.
+	//
+	// - **Failed**: verification failed.
+	//
+	// - **Finished**: verification completed.
+	//
+	// - **Inconsistency**: the task completed but inconsistent data exists.
+	//
+	// example:
+	//
+	// Finished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDtsJobsResponseBodyDtsJobListStructureDataCheckStatus) String() string {
@@ -4507,33 +4776,33 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListStructureDataCheckStatus) Validate
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus struct {
-	// The error message returned if schema migration or initial schema synchronization failed.
+	// The error message returned when schema migration or initial schema synchronization fails.
 	//
 	// example:
 	//
 	// DTS-1020042 Execute sql error sql: ERROR: type "geometry" does not exist;
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of schema migration or initial schema synchronization. Unit: percentage.
+	// The progress of schema migration or initial schema synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables that have been migrated or synchronized during schema migration or initial schema synchronization.
+	// The number of tables for which schema migration or initial schema synchronization has been completed.
 	//
 	// example:
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of schema migration or initial schema synchronization. Valid values:
+	// The status of schema migration or initial schema synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: migrating or initializing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: migration or initialization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: migration or initialization completed.
 	//
 	// example:
 	//
@@ -4590,13 +4859,13 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListStructureInitializationStatus) Val
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListTagList struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// testkey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -4634,54 +4903,109 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListTagList) Validate() error {
 	return dara.Validate(s)
 }
 
+type DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) GetPercent() *string {
+	return s.Percent
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) GetProgress() *string {
+	return s.Progress
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListTimeWindowDataCheckStatus) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeDtsJobsResponseBodyEtlDemoList struct {
-	// Indicates whether the **new*	- change tracking feature is used.
+	// Indicates whether the instance uses the new version of change tracking. The value **new*	- indicates the new version.
 	//
-	// > This parameter is returned only for change tracking instances of the new version.
+	// > This parameter is returned only for new-version change tracking instances.
 	//
 	// example:
 	//
 	// new
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The start of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The beginning of the timestamp range for data stored in the change tracking instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-15T08:25:34Z
 	BeginTimestamp *string `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
-	// The start offset of incremental data migration or data synchronization. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start checkpoint of incremental data migration or the synchronization checkpoint, in the format of a Unix timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1616899019
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The consumption checkpoint of the change tracking instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The consumption checkpoint of the downstream consumer for the change tracking instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-23T07:30:31Z
 	ConsumptionCheckpoint *string `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	// The downstream client information in the following format: <IP address of the downstream client>:<Random ID generated by DTS>.
+	// The downstream consumer client information, which consists of an IP address and a random number generated by DTS.
 	//
 	// example:
 	//
 	// 114...:dts******
 	ConsumptionClient *string `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
-	// The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:s*sZ format. The time is displayed in UTC.
+	// The task creation time in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-16T08:01:19Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The state of the ETL task.
+	// The status of the ETL task.
 	//
-	// > This parameter collection is returned only if an ETL task is configured.
+	// > This parameter set is returned only after an ETL task is configured.
 	DataEtlStatus *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
-	// The state of full data migration or initial full data synchronization.
+	// The status of full data migration or initial full data synchronization.
 	DataInitializationStatus *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	// The state of incremental data migration or synchronization.
+	// The status of incremental data migration or synchronization.
 	DataSynchronizationStatus *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	// The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+	// The objects for data migration, data synchronization, or change tracking. For more information, see [Objects for data migration, data synchronization, or change tracking](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// example:
 	//
@@ -4689,13 +5013,13 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	DbObject *string `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
 	// The latency of incremental data migration or synchronization.
 	//
-	// > If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+	// > For data migration tasks, the unit is milliseconds. For data synchronization tasks, the unit is seconds.
 	//
 	// example:
 	//
 	// 0
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The connection settings of the destination instance.
+	// The connection information of the destination instance.
 	DestinationEndpoint *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	// The ID of the data migration, data synchronization, or change tracking instance.
 	//
@@ -4703,9 +5027,9 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	//
 	// dtsi03e3zty16i****
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// The instance class.
+	// The specification of the data transmission link.
 	//
-	// > For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about link specifications and performance test results, see [Specifications of data migration links](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization links](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
@@ -4713,11 +5037,11 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// - **Forward**
+	// - **Forward**: forward.
 	//
-	// - **Reverse**
+	// - **Reverse**: reverse.
 	//
-	// > This parameter is returned only if the topology of the data synchronization instance is two-way synchronization.
+	// > This parameter is returned only when the topology of the data synchronization instance is two-way synchronization.
 	//
 	// example:
 	//
@@ -4733,29 +5057,29 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	//
 	// example:
 	//
-	// RDS_TO_RDS_MIGRATION
+	// RDS间迁移
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The end of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end of the timestamp range for data stored in the change tracking instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-26T14:03:21Z
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The checkpoint of the ETL task.
+	// The safe checkpoint of the ETL task.
 	//
 	// example:
 	//
-	// 1610540493
+	// 161054****
 	EtlSafeCheckpoint *string `json:"EtlSafeCheckpoint,omitempty" xml:"EtlSafeCheckpoint,omitempty"`
-	// The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time of the instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// > This parameter is returned only if the returned value of **PayType*	- is **PrePaid**.
+	// > This parameter is returned only when the value of **PayType*	- is **PrePaid**.
 	//
 	// example:
 	//
@@ -4763,45 +5087,45 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The type of the DTS task. Valid values:
 	//
-	// - **MIGRATION**: data migration task
+	// - **online**: data migration.
 	//
-	// - **SYNC**: data synchronization task
+	// - **sync**: data synchronization.
 	//
-	// - **SUBSCRIBE**: change tracking task
+	// - **subscribe**: change tracking.
 	//
 	// example:
 	//
-	// MIGRATION
+	// online
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The migration types or initial synchronization types.
+	// The migration type or synchronization initialization type.
 	MigrationMode *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// The source of the task.
+	// The task source:
 	//
-	// - **PTS**
+	// - **PTS task**
 	//
-	// - **DMS**
+	// - **DMS task**
 	//
-	// - **DTS**
+	// - **DTS task**
 	//
 	// example:
 	//
-	// DTS
+	// DTS任务
 	OriginType *string `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
-	// The billing method of the DTS instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// - **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The performance of the data migration or synchronization instance.
+	// The performance information of the data migration or synchronization link.
 	Performance *DescribeDtsJobsResponseBodyEtlDemoListPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
-	// The precheck state.
+	// The precheck status.
 	PrecheckStatus *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
+	// The reserved parameter of DTS in JSON format. You can specify this parameter to meet special requirements, such as whether to automatically start a precheck. For more information, see [MigrationReserved parameter description](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
@@ -4819,23 +5143,113 @@ type DescribeDtsJobsResponseBodyEtlDemoList struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the retries performed by DTS due to an exception.
+	// The retry state. DTS is retrying because the task encountered an exception.
 	RetryState *DescribeDtsJobsResponseBodyEtlDemoListRetryState `json:"RetryState,omitempty" xml:"RetryState,omitempty" type:"Struct"`
-	// The details of the data synchronization task in the reverse direction.
+	// The execution details of the reverse synchronization task.
 	//
-	// > This parameter is returned only for two-way data synchronization tasks.
+	// > This parameter set is returned only when the task is a data synchronization task with a two-way synchronization topology.
 	ReverseJob *DescribeDtsJobsResponseBodyEtlDemoListReverseJob `json:"ReverseJob,omitempty" xml:"ReverseJob,omitempty" type:"Struct"`
-	// The connection settings of the source instance.
+	// The connection information of the source instance.
 	SourceEndpoint *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
+	// The instance status of the DTS instance. Valid values:
+	//
+	// Data migration task statuses:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **Migrating**: migrating.
+	//
+	// - **Suspending**: paused.
+	//
+	// - **MigrationFailed**: migration failed.
+	//
+	// - **Finished**: completed.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
+	//
+	// Data synchronization task statuses:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **Initializing**: performing initial synchronization.
+	//
+	// - **InitializeFailed**: initial synchronization failed.
+	//
+	// - **Synchronizing**: synchronizing.
+	//
+	// - **Failed**: synchronization failed.
+	//
+	// - **Suspending**: paused.
+	//
+	// - **Modifying**: modifying synchronization objects.
+	//
+	// - **ModifyFailed**: failed to modify synchronization objects.
+	//
+	// - **Finished**: completed.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
+	//
+	// Change tracking task statuses:
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **Starting**: starting.
+	//
+	// - **Normal**: normal.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Abnormal**: abnormal.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
 	//
 	// example:
 	//
 	// Migrating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The state of schema migration or initial schema synchronization.
+	// The status of schema migration or initial schema synchronization.
 	StructureInitializationStatus *DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
-	// The tags of the task.
+	// The tag collection.
 	TagList []*DescribeDtsJobsResponseBodyEtlDemoListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
@@ -5240,35 +5654,35 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoList) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus struct {
-	// The error message returned if the ETL task failed.
+	// The error message returned when the ETL task fails.
 	//
 	// example:
 	//
-	// The task has failed for a long time and cannot be recovered.
+	// 任务失败太久无法恢复
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of the ETL task. Unit: percentage.
+	// The progress of the ETL task, in percentage.
 	//
 	// example:
 	//
 	// 95
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of entries that have been processed by the ETL task.
+	// The number of records that have been processed by the ETL task.
 	//
 	// example:
 	//
 	// 0/0
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of the ETL task. Valid values:
+	// The status of the ETL task. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: running.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: execution failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: completed.
 	//
-	// - **Catched**: The task is not delayed.
+	// - **Catched**: no latency.
 	//
 	// example:
 	//
@@ -5325,33 +5739,33 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus struct {
-	// The error message returned if full data migration or initial full data synchronization failed.
+	// The error message returned when full data migration or initial full data synchronization fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of full data migration or initial full data synchronization. Unit: percentage.
+	// The progress of full data migration or initial full data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of entries that have been migrated or synchronized during full data migration or initial full data synchronization.
+	// The number of records that have been migrated or initialized during full data migration or initial full data synchronization.
 	//
 	// example:
 	//
 	// 44755
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of full data migration or initial full data synchronization. Valid values:
+	// The status of full data migration or initial full data synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: migrating or initializing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: migration or initialization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: migration or initialization completed.
 	//
 	// example:
 	//
@@ -5408,47 +5822,47 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListDataInitializationStatus) Validat
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus struct {
-	// The error message returned if incremental data migration or synchronization failed.
+	// The error message returned when incremental data migration or synchronization fails.
 	//
 	// example:
 	//
-	// The task has failed for a long time and cannot be recovered.
+	// 任务失败太久无法恢复
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the instance needs to be upgraded. Valid values:
+	// Indicates whether the instance specification needs to be upgraded. Valid values:
 	//
-	// - **true**
+	// - **true**: The specification needs to be upgraded.
 	//
-	// - **false**
+	// - **false**: The specification does not need to be upgraded.
 	//
-	// > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
+	// > To upgrade the instance specification, call [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html).
 	//
 	// example:
 	//
 	// true
 	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// The progress of incremental data migration or synchronization. Unit: percentage.
+	// The progress of incremental data migration or synchronization, in percentage.
 	//
 	// example:
 	//
 	// 95
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of entries that have been migrated or synchronized during incremental data migration or synchronization.
+	// The number of records that have been migrated or synchronized during incremental data migration or synchronization.
 	//
 	// example:
 	//
 	// 0/0
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of incremental data migration or synchronization. Valid values:
+	// The status of incremental data migration or synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: migrating or synchronizing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: migration or synchronization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: migration or synchronization completed.
 	//
-	// - **Catched**: The task is not delayed.
+	// - **Catched**: no latency.
 	//
 	// example:
 	//
@@ -5514,7 +5928,7 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus) Valida
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint struct {
-	// The name of the database that contains the migrated objects in the destination instance.
+	// The name of the database to which the migration objects belong in the destination instance.
 	//
 	// example:
 	//
@@ -5546,33 +5960,33 @@ type DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is returned only if the returned value of **EngineName*	- of the destination instance is **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the destination instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The port number of the destination instance.
+	// The database service port of the destination instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// - **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -5691,9 +6105,9 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint) Validate() e
 type DescribeDtsJobsResponseBodyEtlDemoListMigrationMode struct {
 	// Indicates whether full data migration or initial full data synchronization is performed. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -5701,9 +6115,9 @@ type DescribeDtsJobsResponseBodyEtlDemoListMigrationMode struct {
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	// Indicates whether incremental data migration or synchronization is performed. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -5711,9 +6125,9 @@ type DescribeDtsJobsResponseBodyEtlDemoListMigrationMode struct {
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
 	// Indicates whether schema migration or initial schema synchronization is performed. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -5761,13 +6175,13 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListMigrationMode) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListPerformance struct {
-	// The size of data that is migrated or synchronized per second. Unit: MB/s.
+	// The volume of data migrated or synchronized per second. Unit: MB/s.
 	//
 	// example:
 	//
 	// 1
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The number of times that SQL statements are migrated or synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
+	// The number of SQL statements migrated or synchronized per second, including BEGIN, COMMIT, DML statements (INSERT, DELETE, UPDATE), and DDL statements.
 	//
 	// example:
 	//
@@ -5806,31 +6220,31 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListPerformance) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus struct {
-	// The result of each precheck item.
+	// The execution details of each precheck item.
 	Detail []*DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// The error message returned if the precheck failed.
+	// The error message returned when the precheck fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The precheck progress. Unit: percentage.
+	// The overall progress of the precheck, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The precheck state. Valid values:
+	// The precheck status. Valid values:
 	//
-	// - **NotStarted**: The precheck is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Suspending**: The precheck is paused.
+	// - **Suspending**: paused.
 	//
-	// - **Checking**: The precheck is in progress.
+	// - **Checking**: running a precheck.
 	//
-	// - **Failed**: The precheck failed.
+	// - **Failed**: precheck failed.
 	//
-	// - **Finished**: The precheck is complete.
+	// - **Finished**: precheck completed.
 	//
 	// example:
 	//
@@ -5896,7 +6310,7 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) Validate() error 
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail struct {
-	// The name of the precheck item.
+	// The precheck item.
 	//
 	// example:
 	//
@@ -5908,27 +6322,27 @@ type DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail struct {
 	//
 	// CHECK_CONN_SRC_DETAIL
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// The precheck result. Valid values:
+	// The check result. Valid values:
 	//
-	// - **Success**
+	// - **Success**: The check item passed.
 	//
-	// - **Failed**
+	// - **Failed**: The check item did not pass.
 	//
 	// example:
 	//
 	// Success
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The error message returned if the task failed to pass the precheck.
+	// The error message returned when the precheck does not pass.
 	//
-	// > This parameter is returned only if the returned value of **CheckResult*	- is **Failed**.
+	// > This parameter is returned only when the value of **CheckResult*	- is **Failed**.
 	//
 	// example:
 	//
 	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The method to fix a precheck failure.
+	// The repair method when the precheck does not pass.
 	//
-	// > This parameter is returned only if the returned value of **CheckResult*	- is **Failed**.
+	// > This parameter is returned only when the value of **CheckResult*	- is **Failed**.
 	//
 	// example:
 	//
@@ -5994,7 +6408,7 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail) Validate() 
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListRetryState struct {
-	// The error message returned if these retries failed.
+	// The error message returned when the retry fails.
 	//
 	// example:
 	//
@@ -6006,13 +6420,13 @@ type DescribeDtsJobsResponseBodyEtlDemoListRetryState struct {
 	//
 	// bi6e22ay243****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The maximum duration of a retry. Unit: seconds.
+	// The maximum retry duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 7200
 	MaxRetryTime *int32 `json:"MaxRetryTime,omitempty" xml:"MaxRetryTime,omitempty"`
-	// The progress of the instance when DTS retries.
+	// The instance progress.
 	//
 	// example:
 	//
@@ -6024,19 +6438,19 @@ type DescribeDtsJobsResponseBodyEtlDemoListRetryState struct {
 	//
 	// 5
 	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// The object on which these retries are performed. Valid values:
+	// The retry target. Valid values:
 	//
-	// - **srcDB**: the source database
+	// - **srcDB**: the source database.
 	//
-	// - **destDB**: the destination database
+	// - **destDB**: the destination database.
 	//
-	// - **inner_module**: an internal module of DTS
+	// - **inner_module**: a DTS internal module.
 	//
 	// example:
 	//
 	// srcDB
 	RetryTarget *string `json:"RetryTarget,omitempty" xml:"RetryTarget,omitempty"`
-	// The time that has elapsed from the time when the first retry starts. Unit: seconds.
+	// The time that has been spent on retries. Unit: seconds.
 	//
 	// example:
 	//
@@ -6044,9 +6458,9 @@ type DescribeDtsJobsResponseBodyEtlDemoListRetryState struct {
 	RetryTime *int32 `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
 	// Indicates whether the task is being retried. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -6139,23 +6553,23 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListRetryState) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
-	// The start offset of incremental data synchronization. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The synchronization checkpoint of incremental data synchronization, in the format of a Unix timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1616980369
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
-	// The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The task creation time in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2021-03-16T08:01:19Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The state of initial full data synchronization.
+	// The status of initial full data synchronization.
 	DataInitializationStatus *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
-	// The state of incremental data synchronization.
+	// The status of incremental data synchronization.
 	DataSynchronizationStatus *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
-	// The schema of the objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see Objects of DTS tasks.
+	// The schema definition of the synchronization objects in JSON format, which supports certain regular expressions. For more information and examples, see [Objects for data migration, data synchronization, or change tracking](https://help.aliyun.com/document_detail/209545.html).
 	//
 	// example:
 	//
@@ -6167,7 +6581,7 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
 	//
 	// 0
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The connection settings of the destination instance.
+	// The connection information of the destination instance.
 	DestinationEndpoint *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	// The ID of the data synchronization instance.
 	//
@@ -6175,15 +6589,15 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
 	//
 	// dtsi03e3zty16i****
 	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// The instance class.
+	// The specification of the data transmission link.
 	//
-	// > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+	// > For more information about link specifications and performance test results, see [Specifications of data synchronization links](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// example:
 	//
 	// large
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// The synchronization direction. **Reverse*	- is returned.
+	// The synchronization direction. The value is fixed as **Reverse**.
 	//
 	// example:
 	//
@@ -6195,63 +6609,97 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJob struct {
 	//
 	// i03e3zty16i****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The name of the data synchronization task.
+	// The name of the synchronization task.
 	//
 	// example:
 	//
-	// RDS_TO_RDS_MIGRATION
+	// RDS间迁移
 	DtsJobName *string `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
-	// The error message returned if the task failed.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//
 	// DTS-070211: Connect Source DB failed. cause by [com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException:Could not create connection to database server. Attempted reconnect 3 times. Giving up.][com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure\\n\\nThe last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.][java.net.ConnectException:Connection timed out (Connection timed out)] About more information in [https://yq.aliyun.com/articles/499178].
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The checkpoint of the ETL task.
+	// The safe checkpoint of the ETL task.
 	//
 	// example:
 	//
-	// 1610540493
+	// 161054****
 	EtlSafeCheckpoint *string `json:"EtlSafeCheckpoint,omitempty" xml:"EtlSafeCheckpoint,omitempty"`
-	// The time when the instance expires. The time follows the ISO 8601 standard in the	- yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time of the instance in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// > This parameter is returned only if the returned value of **PayType*	- is **PrePaid**.
+	// > This parameter is returned only when the value of **PayType*	- is **PrePaid**.
 	//
 	// example:
 	//
 	// 2022-03-16T08:01:19Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The migration types or initial synchronization types.
+	// The migration type or synchronization initialization type.
 	MigrationMode *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
-	// The billing method of the DTS instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// - **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The performance of the data migration or synchronization instance.
+	// The performance information of the data migration or synchronization link.
 	Performance *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
-	// The precheck state.
+	// The precheck status.
 	PrecheckStatus *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty" type:"Struct"`
-	// The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
+	// The reserved parameter of DTS in JSON format. You can specify this parameter to meet special requirements, such as whether to automatically start a precheck. For more information, see [MigrationReserved parameter description](https://help.aliyun.com/document_detail/176470.html).
 	//
 	// example:
 	//
 	// {\\"srcHostPorts\\":\\"\\",\\"whitelist.dms.online.ddl.enable\\":false,\\"filterDDL\\":false,\\"sqlparser.dms.original.ddl\\":true,\\"srcOracleType\\":\\"sid\\",\\"maxRetryTime\\":43200,\\"destSSL\\":\\"0\\",\\"destOracleType\\":\\"sid\\",\\"srcSSL\\":\\"0\\",\\"dbListCaseChangeMode\\":\\"default\\",\\"SourceEngineVersion\\":\\"8.0.18\\",\\"srcNetType\\":\\"VPC\\",\\"destNetType\\":\\"VPC\\",\\"srcVpcNetMappingInst\\":\\"172.16.1**.**:10803\\",\\"destVpcNetMappingInst\\":\\"172.16.1**.**:11077\\",\\"useJobTask\\":\\"1\\"}
 	Reserved *string `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	// The connection settings of the source instance.
+	// The connection information of the source instance.
 	SourceEndpoint *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
-	// The state of the DTS instance. For more information about the valid values, see the description of the request parameter **Status**.
+	// The status of the reverse synchronization task. Valid values:
+	//
+	// - **NotStarted**: not started.
+	//
+	// - **Prechecking**: running a precheck.
+	//
+	// - **PrecheckFailed**: precheck failed.
+	//
+	// - **PreCheckPass**: precheck passed.
+	//
+	// - **NotConfigured**: not configured.
+	//
+	// - **Initializing**: performing initial synchronization.
+	//
+	// - **InitializeFailed**: initial synchronization failed.
+	//
+	// - **Synchronizing**: synchronizing.
+	//
+	// - **Failed**: synchronization failed.
+	//
+	// - **Suspending**: paused.
+	//
+	// - **Modifying**: modifying synchronization objects.
+	//
+	// - **ModifyFailed**: failed to modify synchronization objects.
+	//
+	// - **Finished**: completed.
+	//
+	// - **Retrying**: retrying.
+	//
+	// - **Upgrade**: upgrading.
+	//
+	// - **Locked**: locked.
+	//
+	// - **Downgrade**: downgrading.
 	//
 	// example:
 	//
 	// Synchronizing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The state of initial schema synchronization.
+	// The status of initial schema synchronization.
 	StructureInitializationStatus *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus `json:"StructureInitializationStatus,omitempty" xml:"StructureInitializationStatus,omitempty" type:"Struct"`
 }
 
@@ -6515,33 +6963,33 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) Validate() error {
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus struct {
-	// The error message returned if initial full data synchronization failed.
+	// The error message returned when initial full data synchronization fails.
 	//
 	// example:
 	//
 	// java.lang.NumberFormatException: For input string: ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of initial full data synchronization. Unit: percentage.
+	// The progress of initial full data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of entries that have been synchronized during initial full data synchronization.
+	// The number of records that have been synchronized during initial full data synchronization.
 	//
 	// example:
 	//
 	// 43071
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of initial full data synchronization. Valid values:
+	// The status of initial full data synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: initializing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: initialization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: initialization completed.
 	//
 	// example:
 	//
@@ -6598,37 +7046,37 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatu
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus struct {
-	// The error message returned if incremental data synchronization failed.
+	// The error message returned when incremental data synchronization fails.
 	//
 	// example:
 	//
-	// The task has failed for a long time and cannot be recovered.
+	// 任务失败太久无法恢复
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the instance needs to be upgraded. Valid values:
+	// Indicates whether the instance specification needs to be upgraded. Valid values:
 	//
-	// - **true**
+	// - **true**: The specification needs to be upgraded.
 	//
-	// - **false**
+	// - **false**: The specification does not need to be upgraded.
 	//
-	// > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
+	// > To upgrade the instance specification, call [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html).
 	//
 	// example:
 	//
 	// true
 	NeedUpgrade *bool `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	// The progress of incremental data synchronization. Unit: percentage.
+	// The progress of incremental data synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of entries that have been migrated or synchronized during incremental data migration or synchronization.
+	// The number of records that have been migrated or synchronized during incremental data migration or synchronization.
 	//
 	// example:
 	//
 	// 20001
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of incremental data synchronization.
+	// The status of incremental data synchronization.
 	//
 	// example:
 	//
@@ -6694,7 +7142,7 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStat
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint struct {
-	// The name of the database that contains the synchronized objects in the destination instance.
+	// The name of the database to which the synchronization objects belong in the destination instance.
 	//
 	// example:
 	//
@@ -6726,33 +7174,33 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint struct 
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is returned only if the returned value of **EngineName*	- of the destination instance is **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the destination instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The port number of the destination instance.
+	// The database service port of the destination instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// - **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -6871,9 +7319,9 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint) Va
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode struct {
 	// Indicates whether full data migration or initial full data synchronization is performed. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -6881,9 +7329,9 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode struct {
 	DataInitialization *bool `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	// Indicates whether incremental data migration or synchronization is performed. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -6891,9 +7339,9 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode struct {
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
 	// Indicates whether schema migration or initial schema synchronization is performed. Valid values:
 	//
-	// - **true**
+	// - **true**: Yes.
 	//
-	// - **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -6941,13 +7389,13 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobMigrationMode) Validate
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance struct {
-	// The size of data that is migrated or synchronized per second. Unit: MB/s.
+	// The volume of data migrated or synchronized per second. Unit: MB/s.
 	//
 	// example:
 	//
 	// 1
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The number of times that SQL statements are migrated or synchronized per second, including BEGIN, COMMIT, DML, and DDL statements. DML statements include INSERT, DELETE, and UPDATE.
+	// The number of SQL statements migrated or synchronized per second, including BEGIN, COMMIT, DML statements (INSERT, DELETE, UPDATE), and DDL statements.
 	//
 	// example:
 	//
@@ -6986,31 +7434,31 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPerformance) Validate()
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus struct {
-	// The result of each precheck item.
+	// The execution details of each precheck item.
 	Detail []*DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Repeated"`
-	// The error message returned if the precheck failed.
+	// The error message returned when the precheck fails.
 	//
 	// example:
 	//
 	// CHECK__ERROR_SAME_OBJ
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The precheck progress. Unit: percentage.
+	// The overall progress of the precheck, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The precheck state. Valid values:
+	// The precheck status. Valid values:
 	//
-	// - **NotStarted**: The precheck is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Suspending**: The precheck is paused.
+	// - **Suspending**: paused.
 	//
-	// - **Checking**: The precheck is in progress.
+	// - **Checking**: running a precheck.
 	//
-	// - **Failed**: The precheck failed.
+	// - **Failed**: precheck failed.
 	//
-	// - **Finished**: The precheck is complete.
+	// - **Finished**: precheck completed.
 	//
 	// example:
 	//
@@ -7076,7 +7524,7 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) Validat
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail struct {
-	// The name of the precheck item.
+	// The precheck item.
 	//
 	// example:
 	//
@@ -7088,27 +7536,27 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail struct
 	//
 	// CHECK_CONN_SRC_DETAIL
 	CheckItemDescription *string `json:"CheckItemDescription,omitempty" xml:"CheckItemDescription,omitempty"`
-	// The precheck result. Valid values:
+	// The check result. Valid values:
 	//
-	// - **Success**
+	// - **Success**: The check item passed.
 	//
-	// - **Failed**
+	// - **Failed**: The check item did not pass.
 	//
 	// example:
 	//
 	// Success
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// The error message returned if the task failed to pass the precheck.
+	// The error message returned when the precheck does not pass.
 	//
-	// > This parameter is returned only if the returned value of **CheckResult*	- is **Failed**.
+	// > This parameter is returned only when the value of **CheckResult*	- is **Failed**.
 	//
 	// example:
 	//
-	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
+	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.XXX.XX\\" (using password: YES)
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The method to fix a precheck failure.
+	// The repair method when the precheck does not pass.
 	//
-	// > This parameter is returned only if the returned value of **CheckResult*	- is **Failed**.
+	// > This parameter is returned only when the value of **CheckResult*	- is **Failed**.
 	//
 	// example:
 	//
@@ -7174,13 +7622,15 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail) V
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint struct {
-	// The name of the database that contains the objects to be migrated from the source instance.
+	// The name of the database to which the migration objects belong in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The database engine of the source instance.
+	//
+	// [_single.resp.200.
 	//
 	// example:
 	//
@@ -7202,37 +7652,37 @@ type DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint struct {
 	//
 	// example:
 	//
-	// 172.16.88.***
+	// 172.16.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is returned only if the returned value of **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The port number of the source instance.
+	// The database service port of the source instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// - **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -7349,33 +7799,33 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint) Validat
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitializationStatus struct {
-	// The error message returned if initial schema synchronization failed.
+	// The error message returned when initial schema synchronization fails.
 	//
 	// example:
 	//
 	// DTS-1020042 Execute sql error sql: ERROR: type "geometry" does not exist;
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of initial schema synchronization. Unit: percentage.
+	// The progress of initial schema synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables that have been synchronized during initial schema synchronization.
+	// The number of tables for which initial schema synchronization has been completed.
 	//
 	// example:
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of initial schema synchronization. Valid values:
+	// The status of initial schema synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: initializing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: initialization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: initialization completed.
 	//
 	// example:
 	//
@@ -7432,13 +7882,15 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobStructureInitialization
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint struct {
-	// The name of the database that contains the objects to be migrated from the source instance.
+	// The name of the database to which the migration objects belong in the source instance.
 	//
 	// example:
 	//
 	// dtstestdata
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The database engine of the source instance.
+	//
+	// [_single.resp.200.
 	//
 	// example:
 	//
@@ -7464,33 +7916,33 @@ type DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint struct {
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The SID of the Oracle database.
 	//
-	// > This parameter is returned only if the returned value of **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is deployed in a non-RAC architecture.
+	// > This parameter is returned only when **EngineName*	- of the source instance is **Oracle*	- and the Oracle database is a non-RAC instance.
 	//
 	// example:
 	//
 	// testsid
 	OracleSID *string `json:"OracleSID,omitempty" xml:"OracleSID,omitempty"`
-	// The port number of the source instance.
+	// The database service port of the source instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	// The region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// Indicates whether an SSL connection is used. Valid values:
 	//
-	// - **DISABLE**: SSL encryption is disabled.
+	// - **DISABLE**: SSL is not used.
 	//
-	// - **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled and the CA certificate is uploaded.
+	// - **ENABLE_WITH_CERTIFICATE**: SSL is used with a CA certificate uploaded.
 	//
-	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection with an AWS MongoDB Altas database.
+	// - **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL is used to connect to AWS MongoDB Atlas.
 	//
-	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection with a Kafka cluster.
+	// - **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to connect to Kafka.
 	//
 	// example:
 	//
@@ -7607,33 +8059,33 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint) Validate() error 
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListStructureInitializationStatus struct {
-	// The error message returned if schema migration or initial schema synchronization failed.
+	// The error message returned when schema migration or initial schema synchronization fails.
 	//
 	// example:
 	//
 	// DTS-1020042 Execute sql error sql: ERROR: type "geometry" does not exist;
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The progress of schema migration or initial schema synchronization. Unit: percentage.
+	// The progress of schema migration or initial schema synchronization, in percentage.
 	//
 	// example:
 	//
 	// 100
 	Percent *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The number of tables that have been migrated or synchronized during schema migration or initial schema synchronization.
+	// The number of tables for which schema migration or initial schema synchronization has been completed.
 	//
 	// example:
 	//
 	// 1
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The state of schema migration or initial schema synchronization. Valid values:
+	// The status of schema migration or initial schema synchronization. Valid values:
 	//
-	// - **NotStarted**: The task is not started.
+	// - **NotStarted**: not started.
 	//
-	// - **Migrating**: The task is in progress.
+	// - **Migrating**: migrating or initializing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: migration or initialization failed.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: migration or initialization completed.
 	//
 	// example:
 	//
