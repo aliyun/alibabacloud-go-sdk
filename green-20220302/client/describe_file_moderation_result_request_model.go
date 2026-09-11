@@ -22,7 +22,9 @@ type DescribeFileModerationResultRequest struct {
 	//
 	// document_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The set of parameters required by the moderation service, in JSON string format.
+	// The set of parameters required by the moderation service, in JSON character string format.
+	//
+	// - taskId: Required. The URL of the object to be moderated. Make sure that the URL is accessible through public network access.
 	//
 	// example:
 	//

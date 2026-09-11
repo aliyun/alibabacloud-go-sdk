@@ -96,7 +96,7 @@ func (s *DescribeFileModerationResultResponseBody) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
-	// The AccountId specified in the request.
+	// The AccountId specified by the caller.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeFileModerationResultResponseBodyData struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The file download URL.
+	// The URL for downloading the file.
 	//
 	// example:
 	//
@@ -326,7 +326,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
 	//
 	// example:
 	//
-	// This is a title.
+	// This is a title
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label information.
 	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
@@ -428,7 +428,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResul
 	//
 	// example:
 	//
-	// This is a title.
+	// This is a title
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -557,13 +557,13 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// example:
 	//
-	// This is a title.
+	// This is a title
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label descriptions.
 	//
 	// example:
 	//
-	// Suspected advertising content.
+	// Suspected advertising content
 	Descriptions *string `json:"Descriptions,omitempty" xml:"Descriptions,omitempty"`
 	// The label values.
 	//
@@ -571,19 +571,21 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// porn
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The text plus version result.
+	Result []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The risk level.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The details of the hit risk.
+	// The hit risk details.
 	//
 	// example:
 	//
 	// xxx
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The risk keywords that are hit.
+	// The hit risk keywords.
 	//
 	// example:
 	//
@@ -599,7 +601,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// example:
 	//
-	// blah blah.
+	// blah blah
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The text segmentation information.
 	//
@@ -627,6 +629,10 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) GetDe
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) GetLabels() *string {
 	return s.Labels
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) GetResult() []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	return s.Result
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) GetRiskLevel() *string {
@@ -668,6 +674,11 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetLa
 	return s
 }
 
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetResult(v []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.Result = v
+	return s
+}
+
 func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
 	s.RiskLevel = &v
 	return s
@@ -699,6 +710,250 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetTe
 }
 
 func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) Validate() error {
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResultTextResultResult struct {
+	// The label confidence score.
+	//
+	// example:
+	//
+	// 90.50
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The custom vocabulary hit results.
+	CustomizedHit []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
+	// The description corresponding to the label.
+	//
+	// example:
+	//
+	// Pornography
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The text label in page results.
+	//
+	// example:
+	//
+	// Political sensitivity
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The positions of the violation words.
+	RiskPositions []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
+	// The hit violation words.
+	//
+	// example:
+	//
+	// Popular among everyone
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GetConfidence() *float32 {
+	return s.Confidence
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GetCustomizedHit() []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit {
+	return s.CustomizedHit
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GetDescription() *string {
+	return s.Description
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GetLabel() *string {
+	return s.Label
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GetRiskLevel() *string {
+	return s.RiskLevel
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GetRiskPositions() []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions {
+	return s.RiskPositions
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) GetRiskWords() *string {
+	return s.RiskWords
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) SetConfidence(v float32) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) SetCustomizedHit(v []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	s.CustomizedHit = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) SetLabel(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) SetRiskPositions(v []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	s.RiskPositions = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) SetRiskWords(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult {
+	s.RiskWords = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult) Validate() error {
+	if s.CustomizedHit != nil {
+		for _, item := range s.CustomizedHit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskPositions != nil {
+		for _, item := range s.RiskPositions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit struct {
+	// The hit keyword.
+	//
+	// example:
+	//
+	// Popular among everyone
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	// The vocabulary name.
+	//
+	// example:
+	//
+	// TestVocabulary22
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) GetKeyWords() *string {
+	return s.KeyWords
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) GetLibName() *string {
+	return s.LibName
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) SetKeyWords(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) SetLibName(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit {
+	s.LibName = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions struct {
+	// The end position.
+	//
+	// example:
+	//
+	// 21
+	EndPos *int64 `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	// The violation word.
+	//
+	// example:
+	//
+	// Visit pornographic website
+	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
+	// The start position.
+	//
+	// example:
+	//
+	// 17
+	StartPos *int64 `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) GetEndPos() *int64 {
+	return s.EndPos
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) GetRiskWord() *string {
+	return s.RiskWord
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) GetStartPos() *int64 {
+	return s.StartPos
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) SetEndPos(v int64) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions {
+	s.EndPos = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) SetRiskWord(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions {
+	s.RiskWord = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) SetStartPos(v int64) *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions {
+	s.StartPos = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -711,7 +966,7 @@ type DescribeFileModerationResultResponseBodyDataPageSummary struct {
 	//
 	// 1
 	PageSum *int32 `json:"PageSum,omitempty" xml:"PageSum,omitempty"`
-	// The document authenticity verification risk summary.
+	// The document forgery detection risk summary.
 	RiskSummary *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary `json:"RiskSummary,omitempty" xml:"RiskSummary,omitempty" type:"Struct"`
 	// The text summary information.
 	TextSummary *DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary `json:"TextSummary,omitempty" xml:"TextSummary,omitempty" type:"Struct"`
@@ -893,9 +1148,9 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImag
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary struct {
 	// The extended information.
 	Ext *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	// The list of hit authenticity verification risk labels.
+	// The list of matched forgery detection risk labels.
 	RiskLabels []*DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels `json:"RiskLabels,omitempty" xml:"RiskLabels,omitempty" type:"Repeated"`
-	// The overall risk level of the document, which is the highest level among all hit labels.
+	// The overall risk level of the document, which is the highest level among all matched labels.
 	//
 	// example:
 	//
@@ -957,7 +1212,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) Val
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt struct {
-	// The detection details of AI-generated content.
+	// The details of AI-generated or synthetic content detection.
 	AigcData *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
 }
 
@@ -988,13 +1243,17 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) 
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData struct {
-	// The implicit identifier information of AI-generated content.
+	// The implicit label information of AI-generated or synthetic content.
 	AIGC *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
-	// The comprehensive analysis report of large model authenticity verification.
+	// The comprehensive analysis report for forgery detection by the large language model.
 	//
 	// example:
 	//
-	// ### Comprehensive report for users.
+	// ### Comprehensive Report for Users
+	//
+	// #### Quick Image Overview
+	//
+	// - **Image Subject**: A scanned document titled "Letter of Authorization", containing the names of the authorizing and authorized companies and red official seals
 	Explain *string `json:"Explain,omitempty" xml:"Explain,omitempty"`
 }
 
@@ -1046,11 +1305,11 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDa
 	//
 	// 00119144030008867405X220001
 	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
-	// The content attribute declared by the implicit identifier.
+	// The content attribute declared by the implicit label.
 	//
 	// example:
 	//
-	// Belongs to AI-generated synthetic content.
+	// AI-generated or synthetic content
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The content production ID.
 	//
@@ -1068,13 +1327,13 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDa
 	//
 	// example:
 	//
-	// None.
+	// None
 	ReservedCode1 *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
 	// Reserved field 2.
 	//
 	// example:
 	//
-	// None.
+	// None
 	ReservedCode2 *string `json:"ReservedCode2,omitempty" xml:"ReservedCode2,omitempty"`
 }
 
@@ -1154,17 +1413,17 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAi
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabels struct {
-	// The label confidence score.
+	// The confidence score of the label.
 	//
 	// example:
 	//
 	// 95.96
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The Chinese description of the risk label.
+	// The description of the risk label in Chinese.
 	//
 	// example:
 	//
-	// Suspected AI-generated synthetic content.
+	// 疑似AI生成合成内容
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The risk label.
 	//
@@ -1268,7 +1527,7 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabel
 	//
 	// example:
 	//
-	// No risk detected.
+	// No risk detected
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//

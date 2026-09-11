@@ -203,7 +203,7 @@ type ManualModerationResultResponseBodyDataResult struct {
 	//
 	// example:
 	//
-	// No risk detected.
+	// No risk detected
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The risk label.
 	//

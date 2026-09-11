@@ -16,11 +16,11 @@ type iManualModerationResultRequest interface {
 type ManualModerationResultRequest struct {
 	// The set of parameters required by the service, in JSON string format.
 	//
-	// - TaskId: The task ID returned when the task was submitted.
+	// - taskId: The task ID returned when the task was submitted.
 	//
 	// example:
 	//
-	// {\\"TaskId\\":\\"e5f2d886-4c23-440d-999c-bd98acde11b6\\"}
+	// \\"taskId\\":\\"m_tx_8oaprwnGUKuuLYNwV21JRf-VQjzQX3\\"
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 

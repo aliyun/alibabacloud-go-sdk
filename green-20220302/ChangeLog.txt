@@ -1,3 +1,8 @@
+2026-09-11 Version: v3.5.5
+- Update API DescribeFileModerationResult: add response parameters Body.Data.PageResult.$.TextResult.$.Result.
+- Update API MultiModalAgent: add response parameters Body.Data.Usage.Credits.
+
+
 2026-08-03 Version: v3.5.4
 - Generated golang 2022-03-02 for Green.
 

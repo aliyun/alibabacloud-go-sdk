@@ -20,7 +20,7 @@ type iMultiModalAgentResponseBody interface {
 }
 
 type MultiModalAgentResponseBody struct {
-	// The return code. A value of 200 indicates that the request was successful.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -102,23 +102,25 @@ type MultiModalAgentResponseBodyData struct {
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The structure of the label item.
+	// The label item structure.
 	Result []*MultiModalAgentResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The risk level. The value is returned based on the configured high and low risk scores. Valid values:
+	// The risk level, which is returned based on the configured high and low risk scores. Valid values:
 	//
-	// - high: High risk
+	// - high: high risk.
 	//
-	// - medium: Medium risk
+	// - medium: medium risk.
 	//
-	// - low: Low risk
 	//
-	// - none: No risk detected
+	//
+	// - low: low risk.
+	//
+	// - none: no risk detected.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Token usage.
+	// The token usage.
 	Usage *MultiModalAgentResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -185,11 +187,11 @@ func (s *MultiModalAgentResponseBodyData) Validate() error {
 }
 
 type MultiModalAgentResponseBodyDataResult struct {
-	// The description of the label.
+	// The label description.
 	//
 	// example:
 	//
-	// 未检测出风险
+	// No risk detected
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The risk label.
 	//
@@ -197,21 +199,21 @@ type MultiModalAgentResponseBodyDataResult struct {
 	//
 	// violent_explosion
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// A description of the result when the session is terminated.
+	// The result description when the session is terminated.
 	//
-	// - **SESSION_KILLED**: The session was successfully terminated.
+	// - **SESSION_KILLED**: The session is terminated.
 	//
 	// - **SESSION_EXPIRED**: The session has expired.
 	//
-	// - **SESSION_NO_PERMISSION**: The account used to terminate the session does not have sufficient permissions.
+	// - **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
 	//
 	// - **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is incorrect.
 	//
-	// - **SESSION_IGNORED_USER**: The session of an account that does not need to be terminated.
+	// - **SESSION_IGNORED_USER**: The session belongs to an account that does not need to be terminated.
 	//
-	// - **SESSION_INTERNAL_USER_OR_COMMAND**: The session or command of an Alibaba Cloud operations account.
+	// - **SESSION_INTERNAL_USER_OR_COMMAND**: The session or command belongs to an Alibaba Cloud operations account.
 	//
-	// - **SESSION_KILL_TASK_TIMEOUT**: A timeout occurred when terminating the session.
+	// - **SESSION_KILL_TASK_TIMEOUT**: The session termination timed out.
 	//
 	// - **SESSION_OTHER_ERROR**: Other errors.
 	//
@@ -261,15 +263,21 @@ func (s *MultiModalAgentResponseBodyDataResult) Validate() error {
 }
 
 type MultiModalAgentResponseBodyDataUsage struct {
-	// Agent details.
+	// The agent details.
 	AgentDetail map[string]interface{} `json:"AgentDetail,omitempty" xml:"AgentDetail,omitempty"`
-	// The length of the content.
+	// The content length.
 	//
 	// example:
 	//
 	// 10
 	ContentLength *int64 `json:"ContentLength,omitempty" xml:"ContentLength,omitempty"`
-	// The length of the prompt.
+	// The credits consumed.
+	//
+	// example:
+	//
+	// 1.23
+	Credits *float64 `json:"Credits,omitempty" xml:"Credits,omitempty"`
+	// The prompt length.
 	//
 	// example:
 	//
@@ -293,6 +301,10 @@ func (s *MultiModalAgentResponseBodyDataUsage) GetContentLength() *int64 {
 	return s.ContentLength
 }
 
+func (s *MultiModalAgentResponseBodyDataUsage) GetCredits() *float64 {
+	return s.Credits
+}
+
 func (s *MultiModalAgentResponseBodyDataUsage) GetPromptLength() *int64 {
 	return s.PromptLength
 }
@@ -304,6 +316,11 @@ func (s *MultiModalAgentResponseBodyDataUsage) SetAgentDetail(v map[string]inter
 
 func (s *MultiModalAgentResponseBodyDataUsage) SetContentLength(v int64) *MultiModalAgentResponseBodyDataUsage {
 	s.ContentLength = &v
+	return s
+}
+
+func (s *MultiModalAgentResponseBodyDataUsage) SetCredits(v float64) *MultiModalAgentResponseBodyDataUsage {
+	s.Credits = &v
 	return s
 }
 

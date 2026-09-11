@@ -46,10 +46,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shanghai-finance-1": dara.String("green.aliyuncs.com"),
 		"cn-north-2-gov-1":      dara.String("green.aliyuncs.com"),
 		"cn-shenzhen":           dara.String("green-cip.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":           dara.String("green-cip.cn-shanghai.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("green-cip.cn-hangzhou.aliyuncs.com"),
 		"cn-beijing":            dara.String("green-cip.cn-beijing.aliyuncs.com"),
+		"cn-shanghai":           dara.String("green-cip.cn-shanghai.aliyuncs.com"),
 		"ap-southeast-1":        dara.String("green-cip.ap-southeast-1.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("green-cip.cn-hangzhou.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1075,11 +1075,11 @@ func (client *Client) ManualModerationResult(request *ManualModerationResultRequ
 
 // Summary:
 //
-// This is the synchronous detection API for the multi-modal agent.
+// Synchronously detects content by calling the multimodal Agent API.
 //
 // Description:
 //
-// This is the AI Guardrails agent.
+// The content moderation agent.
 //
 // @param request - MultiModalAgentRequest
 //
@@ -1127,11 +1127,11 @@ func (client *Client) MultiModalAgentWithOptions(request *MultiModalAgentRequest
 
 // Summary:
 //
-// This is the synchronous detection API for the multi-modal agent.
+// Synchronously detects content by calling the multimodal Agent API.
 //
 // Description:
 //
-// This is the AI Guardrails agent.
+// The content moderation agent.
 //
 // @param request - MultiModalAgentRequest
 //
@@ -1149,7 +1149,7 @@ func (client *Client) MultiModalAgent(request *MultiModalAgentRequest) (_result 
 
 // Summary:
 //
-// Synchronously detects multimodal content by using the Agent API.
+// Synchronously moderates multimodal content through the Agent API.
 //
 // Description:
 //
@@ -1168,7 +1168,7 @@ func (client *Client) MultiModalAgentSSEWithSSE(request *MultiModalAgentSSEReque
 
 // Summary:
 //
-// Synchronously detects multimodal content by using the Agent API.
+// Synchronously moderates multimodal content through the Agent API.
 //
 // Description:
 //
@@ -1224,7 +1224,7 @@ func (client *Client) MultiModalAgentSSEWithOptions(request *MultiModalAgentSSER
 
 // Summary:
 //
-// Synchronously detects multimodal content by using the Agent API.
+// Synchronously moderates multimodal content through the Agent API.
 //
 // Description:
 //
@@ -1987,7 +1987,11 @@ func (client *Client) VideoModeration(request *VideoModerationRequest) (_result 
 
 // Summary:
 //
-// Cancels an ApsaraVideo Live moderation task.
+// Cancels an ApsaraVideo Live content moderation node.
+//
+// Description:
+//
+// Before calling this operation, you must activate Content Moderation Enhanced Edition. Activation link: https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.14652963KTpjic&commodityCode=lvwang_cip_public_cn. You must grant the required RAM access policy (such as AliyunYundunGreenWebFullAccess) and use the correct endpoint (green-cip.{region}.aliyuncs.com).
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -2035,7 +2039,11 @@ func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationC
 
 // Summary:
 //
-// Cancels an ApsaraVideo Live moderation task.
+// Cancels an ApsaraVideo Live content moderation node.
+//
+// Description:
+//
+// Before calling this operation, you must activate Content Moderation Enhanced Edition. Activation link: https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.14652963KTpjic&commodityCode=lvwang_cip_public_cn. You must grant the required RAM access policy (such as AliyunYundunGreenWebFullAccess) and use the correct endpoint (green-cip.{region}.aliyuncs.com).
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -2057,7 +2065,7 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 //
 // Description:
 //
-// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, results are automatically deleted.
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous detection task). The maximum query window is 24 hours. After 24 hours, results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //
@@ -2109,7 +2117,7 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 //
 // Description:
 //
-// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, results are automatically deleted.
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous detection task). The maximum query window is 24 hours. After 24 hours, results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //

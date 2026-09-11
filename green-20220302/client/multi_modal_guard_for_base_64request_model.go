@@ -20,6 +20,11 @@ type iMultiModalGuardForBase64Request interface {
 }
 
 type MultiModalGuardForBase64Request struct {
+	// The base64-encoded string of the document.
+	//
+	// example:
+	//
+	// {base64}
 	FileBase64Str *string `json:"FileBase64Str,omitempty" xml:"FileBase64Str,omitempty"`
 	// The base64-encoded string of the image.
 	//

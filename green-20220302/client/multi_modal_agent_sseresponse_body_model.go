@@ -102,13 +102,13 @@ type MultiModalAgentSSEResponseBodyData struct {
 	//
 	// 1783328536
 	Created *int64 `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The value of dataId passed in the API request. This field is not returned if dataId is not specified in the request.
+	// The value of DataId passed in the API request. This field is not returned if DataId is not specified in the request.
 	//
 	// example:
 	//
 	// dataId-XXX
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// If streaming output is used, this field is null during generation. When generation ends, this field is set to stop if the generation stopped due to a stop token.
+	// For streaming output, this value is null during generation. When generation ends, the value is stop if the generation stopped due to a stop token.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type MultiModalAgentSSEResponseBodyData struct {
 	//
 	// example:
 	//
-	// "违规，原因XX"
+	// "Violation, reason XX"
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The credits usage.
+	// The credits usage information.
 	Usage *MultiModalAgentSSEResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 

@@ -679,11 +679,11 @@ func (client *Client) ManualModerationResultWithContext(ctx context.Context, req
 
 // Summary:
 //
-// This is the synchronous detection API for the multi-modal agent.
+// Synchronously detects content by calling the multimodal Agent API.
 //
 // Description:
 //
-// This is the AI Guardrails agent.
+// The content moderation agent.
 //
 // @param request - MultiModalAgentRequest
 //
@@ -731,7 +731,7 @@ func (client *Client) MultiModalAgentWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Synchronously detects multimodal content by using the Agent API.
+// Synchronously moderates multimodal content through the Agent API.
 //
 // Description:
 //
@@ -750,7 +750,7 @@ func (client *Client) MultiModalAgentSSEWithSSECtx(ctx context.Context, request 
 
 // Summary:
 //
-// Synchronously detects multimodal content by using the Agent API.
+// Synchronously moderates multimodal content through the Agent API.
 //
 // Description:
 //
@@ -1331,7 +1331,11 @@ func (client *Client) VideoModerationWithContext(ctx context.Context, request *V
 
 // Summary:
 //
-// Cancels an ApsaraVideo Live moderation task.
+// Cancels an ApsaraVideo Live content moderation node.
+//
+// Description:
+//
+// Before calling this operation, you must activate Content Moderation Enhanced Edition. Activation link: https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.14652963KTpjic&commodityCode=lvwang_cip_public_cn. You must grant the required RAM access policy (such as AliyunYundunGreenWebFullAccess) and use the correct endpoint (green-cip.{region}.aliyuncs.com).
 //
 // @param request - VideoModerationCancelRequest
 //
@@ -1383,7 +1387,7 @@ func (client *Client) VideoModerationCancelWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, results are automatically deleted.
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous detection task). The maximum query window is 24 hours. After 24 hours, results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //

@@ -251,13 +251,13 @@ type MultiModalGuardForBase64ResponseBodyDataDetailResult struct {
 	//
 	// example:
 	//
-	// No risk detected.
+	// No risk detected
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extension information.
 	//
 	// example:
 	//
-	// JSON format data.
+	// JSON-formatted data
 	Ext interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
 	// The label.
 	//

@@ -18,19 +18,19 @@ type iVideoModerationCancelResponseBody interface {
 }
 
 type VideoModerationCancelResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message.
+	// The response message.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

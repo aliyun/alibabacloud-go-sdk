@@ -18,19 +18,19 @@ type iMultiModalAgentSSERequest interface {
 }
 
 type MultiModalAgentSSERequest struct {
-	// The unique identifier of the whiteboard application. To obtain the whiteboard application ID, see [CreateApp](https://help.aliyun.com/document_detail/204234.html).
+	// The unique identifier of the whiteboard application. To obtain the whiteboard application ID, refer to [CreateApp](https://help.aliyun.com/document_detail/204234.html).
 	//
 	// example:
 	//
 	// txt_check_pro_agent_01
 	AppID *string `json:"AppID,omitempty" xml:"AppID,omitempty"`
-	// The parameter set required by the moderation service, in JSON string format. The input parameter for text content is content (String), the custom data ID is DataId (String), and the cache type is CacheType (String, valid value: ephemeral).
+	// The parameter set required by the moderation service, in JSON string format. The text content input parameter is content (String), the custom data ID is DataId (String), and the cache type is CacheType (String, valid value: ephemeral).
 	//
 	// example:
 	//
 	// {
 	//
-	//     "content": "这里待审核的文本内容",
+	//     "content": "Text content to be moderated",
 	//
 	//     "DataId": "data123***",
 	//
