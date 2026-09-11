@@ -119,7 +119,7 @@ func (s *ListLifecycleRetrieveJobsResponseBody) Validate() error {
 type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	// The time when the task was created.
 	//
-	// The time follows the ISO 8601 standard in the format of `yyyy-MM-ddTHH:mm:ssZ`.
+	// The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The execution paths of the data retrieval task.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The number of files successfully retrieved by the data retrieval task.
+	// The number of files that are successfully retrieved by the data retrieval task.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	RetrievedFileCount *int64 `json:"RetrievedFileCount,omitempty" xml:"RetrievedFileCount,omitempty"`
 	// The status of the data retrieval task. Valid values:
 	//
-	// - active: running.
+	// - active: Running.
 	//
-	// - canceled: canceled.
+	// - canceled: Canceled.
 	//
-	// - completed: completed.
+	// - completed: Completed.
 	//
-	// - failed: failed.
+	// - failed: Failed.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	//
 	// - InfrequentAccess: IA storage class.
 	//
-	// - Archive: Archive storage class.
+	// - Archive: Archive storage.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The time when the task was last updated.
 	//
-	// The time follows the ISO 8601 standard in the format of `yyyy-MM-ddTHH:mm:ssZ`.
+	// The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//

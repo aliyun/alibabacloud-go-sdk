@@ -28,7 +28,7 @@ type DescribeAgenticSpacesRequest struct {
 	//
 	// 1ca404****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The collection of filter key information.
+	// The collection of filter conditions.
 	Filters []*DescribeAgenticSpacesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of results per query.
 	//
@@ -38,7 +38,7 @@ type DescribeAgenticSpacesRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token. Set this parameter to the value of NextToken that is returned in the previous API call.
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type DescribeAgenticSpacesRequestFilters struct {
 	//
 	// AgenticSpaceIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter key. This parameter does not support wildcards.
+	// The value of the filter key. Wildcards are not supported.
 	//
-	// - AgenticSpaceIds: Only one ID can be specified.
+	// - AgenticSpaceIds: Only a single ID can be specified.
 	//
 	// example:
 	//

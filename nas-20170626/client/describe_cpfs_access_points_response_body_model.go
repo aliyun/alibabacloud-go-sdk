@@ -169,20 +169,22 @@ type DescribeCpfsAccessPointsResponseBodyAccessPoints struct {
 	//
 	// Valid values:
 	//
-	// - Active: available
+	// - Active: available.
 	//
-	// - Inactive: unavailable
+	// - Inactive: unavailable.
 	//
-	// - Pending: being created
+	// - Pending: being created.
 	//
-	// - Deleting: being deleted
+	// - Deleting: being deleted.
 	//
-	// > The file system can be mounted only when the status is Active.
+	// > You can mount the file system only when the status is Active.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of CPFS access point tags.
+	Tags []*DescribeCpfsAccessPointsResponseBodyAccessPointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCpfsAccessPointsResponseBodyAccessPoints) String() string {
@@ -227,6 +229,10 @@ func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) GetRootDirectory() *D
 
 func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) GetTags() []*DescribeCpfsAccessPointsResponseBodyAccessPointsTags {
+	return s.Tags
 }
 
 func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) SetARN(v string) *DescribeCpfsAccessPointsResponseBodyAccessPoints {
@@ -274,10 +280,24 @@ func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) SetStatus(v string) *
 	return s
 }
 
+func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) SetTags(v []*DescribeCpfsAccessPointsResponseBodyAccessPointsTags) *DescribeCpfsAccessPointsResponseBodyAccessPoints {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) Validate() error {
 	if s.RootDirectory != nil {
 		if err := s.RootDirectory.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -294,11 +314,11 @@ type DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory struct {
 	//
 	// Valid values:
 	//
-	// - Unknown: The root path status is unknown.
+	// - Unknown: the root path status is unknown.
 	//
-	// - NotExist: The root path does not exist. It may have been deleted by the user.
+	// - NotExist: the root path does not exist. It may have been deleted by the user.
 	//
-	// - Ready: The root path status is normal.
+	// - Ready: the root path status is normal.
 	//
 	// example:
 	//
@@ -333,5 +353,50 @@ func (s *DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory) SetRootP
 }
 
 func (s *DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeCpfsAccessPointsResponseBodyAccessPointsTags struct {
+	// The key of the CPFS access point tag.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the CPFS access point tag.
+	//
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCpfsAccessPointsResponseBodyAccessPointsTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCpfsAccessPointsResponseBodyAccessPointsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCpfsAccessPointsResponseBodyAccessPointsTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeCpfsAccessPointsResponseBodyAccessPointsTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeCpfsAccessPointsResponseBodyAccessPointsTags) SetKey(v string) *DescribeCpfsAccessPointsResponseBodyAccessPointsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCpfsAccessPointsResponseBodyAccessPointsTags) SetValue(v string) *DescribeCpfsAccessPointsResponseBodyAccessPointsTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeCpfsAccessPointsResponseBodyAccessPointsTags) Validate() error {
 	return dara.Validate(s)
 }

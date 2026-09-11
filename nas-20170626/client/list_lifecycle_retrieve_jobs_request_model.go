@@ -48,13 +48,13 @@ type ListLifecycleRetrieveJobsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the data retrieval task. Valid values:
 	//
-	// - active: running.
+	// - active: Running.
 	//
-	// - canceled: canceled.
+	// - canceled: Canceled.
 	//
-	// - completed: completed.
+	// - completed: Completed.
 	//
-	// - failed: failed.
+	// - failed: Failed.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListLifecycleRetrieveJobsRequest struct {
 	//
 	// - InfrequentAccess: IA storage class.
 	//
-	// - Archive: Archive storage class.
+	// - Archive: Archive storage.
 	//
 	// > If StorageType is not specified, data retrieval tasks of all storage classes are returned.
 	//

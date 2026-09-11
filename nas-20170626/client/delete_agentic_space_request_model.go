@@ -28,11 +28,11 @@ type DeleteAgenticSpaceRequest struct {
 	//
 	// agentic-229oypxjgpau2****
 	AgenticSpaceId *string `json:"AgenticSpaceId,omitempty" xml:"AgenticSpaceId,omitempty"`
-	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure uniqueness across different requests.
+	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests.
 	//
 	// ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
-	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DeleteAgenticSpaceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run for this request.
 	//
-	// A dry run checks parameter validity and resource availability without actually creating or deleting instances, and does not incur fees.
+	// A dry run checks parameter validity and resource availability without actually creating or deleting instances, and no fees are incurred.
 	//
 	// Valid values:
 	//
-	// - true: Sends a dry run request without deleting the instance. The check items include required parameters, request format, service limits, and NAS resource availability. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
+	// - true: Sends a dry run request without deleting the instance. The check items include whether required parameters are specified, the request format, business limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
 	//
-	// - false (default): Sends a normal request and directly deletes the instance after the check passes.
+	// - false (default): Sends a normal request and directly deletes the instance after the check is passed.
 	//
 	// example:
 	//

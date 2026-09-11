@@ -32,7 +32,7 @@ type DescribeFilesystemsVscAttachInfoResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the NextToken value returned in the previous API call.
+	// The query token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//

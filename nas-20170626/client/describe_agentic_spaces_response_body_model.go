@@ -19,7 +19,7 @@ type iDescribeAgenticSpacesResponseBody interface {
 
 type DescribeAgenticSpacesResponseBody struct {
 	AgenticSpaces *DescribeAgenticSpacesResponseBodyAgenticSpaces `json:"AgenticSpaces,omitempty" xml:"AgenticSpaces,omitempty" type:"Struct"`
-	// The query token. Set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token. Set this parameter to the value of NextToken that is returned in the previous API call.
 	//
 	// example:
 	//

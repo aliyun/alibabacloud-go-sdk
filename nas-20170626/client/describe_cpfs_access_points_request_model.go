@@ -19,6 +19,8 @@ type iDescribeCpfsAccessPointsRequest interface {
 	GetPageSize() *int32
 	SetRegionId(v string) *DescribeCpfsAccessPointsRequest
 	GetRegionId() *string
+	SetTag(v []*DescribeCpfsAccessPointsRequestTag) *DescribeCpfsAccessPointsRequest
+	GetTag() []*DescribeCpfsAccessPointsRequestTag
 }
 
 type DescribeCpfsAccessPointsRequest struct {
@@ -64,6 +66,8 @@ type DescribeCpfsAccessPointsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of CPFS access point tags.
+	Tag []*DescribeCpfsAccessPointsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCpfsAccessPointsRequest) String() string {
@@ -94,6 +98,10 @@ func (s *DescribeCpfsAccessPointsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeCpfsAccessPointsRequest) GetTag() []*DescribeCpfsAccessPointsRequestTag {
+	return s.Tag
+}
+
 func (s *DescribeCpfsAccessPointsRequest) SetAccessPointId(v string) *DescribeCpfsAccessPointsRequest {
 	s.AccessPointId = &v
 	return s
@@ -119,6 +127,65 @@ func (s *DescribeCpfsAccessPointsRequest) SetRegionId(v string) *DescribeCpfsAcc
 	return s
 }
 
+func (s *DescribeCpfsAccessPointsRequest) SetTag(v []*DescribeCpfsAccessPointsRequestTag) *DescribeCpfsAccessPointsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeCpfsAccessPointsRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeCpfsAccessPointsRequestTag struct {
+	// The key of the CPFS access point tag.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the CPFS access point tag.
+	//
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCpfsAccessPointsRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeCpfsAccessPointsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCpfsAccessPointsRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeCpfsAccessPointsRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeCpfsAccessPointsRequestTag) SetKey(v string) *DescribeCpfsAccessPointsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCpfsAccessPointsRequestTag) SetValue(v string) *DescribeCpfsAccessPointsRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeCpfsAccessPointsRequestTag) Validate() error {
 	return dara.Validate(s)
 }

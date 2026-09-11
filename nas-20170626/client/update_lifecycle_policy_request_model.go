@@ -28,7 +28,7 @@ type iUpdateLifecyclePolicyRequest interface {
 }
 
 type UpdateLifecyclePolicyRequest struct {
-	// The file data expiration and deletion rules.
+	// The expiration and deletion rules for file data.
 	DeleteRules []*UpdateLifecyclePolicyRequestDeleteRules `json:"DeleteRules,omitempty" xml:"DeleteRules,omitempty" type:"Repeated"`
 	// The description of the lifecycle policy.
 	//
@@ -64,25 +64,23 @@ type UpdateLifecyclePolicyRequest struct {
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
 	// The absolute paths of the directories associated with the lifecycle management policy.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The file data retrieval rules. You can configure up to one rule.
+	// The data retrieval rules. You can configure up to one rule.
 	//
 	// > Only CPFS for Lingjun file systems are supported.
 	RetrieveRules []*UpdateLifecyclePolicyRequestRetrieveRules `json:"RetrieveRules,omitempty" xml:"RetrieveRules,omitempty" type:"Repeated"`
 	// The tiered storage type.
 	//
-	// Valid values:
+	// - InfrequentAccess: IA storage class (default).
 	//
-	// - InfrequentAccess: IA storage class. This is the default value.
-	//
-	// - Archive: Archive storage.
+	// - Archive: Archive storage class.
 	//
 	// example:
 	//
 	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The file data transit rules. You can configure up to one rule.
+	// The data transit rules. You can configure up to one rule.
 	//
-	// > This parameter is supported only when LifecyclePolicyType is set to Auto for a CPFS for Lingjun file system.
+	// > This parameter is supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
 	TransitRules []*UpdateLifecyclePolicyRequestTransitRules `json:"TransitRules,omitempty" xml:"TransitRules,omitempty" type:"Repeated"`
 }
 
@@ -202,7 +200,7 @@ type UpdateLifecyclePolicyRequestDeleteRules struct {
 	//
 	// Valid values:
 	//
-	// - Atime: the access time of the file.
+	// - Atime: the last access time of the file.
 	//
 	// example:
 	//
@@ -251,9 +249,7 @@ func (s *UpdateLifecyclePolicyRequestDeleteRules) Validate() error {
 }
 
 type UpdateLifecyclePolicyRequestRetrieveRules struct {
-	// The attribute of the rule.
-	//
-	// Valid values:
+	// The attribute of the rule. Valid values:
 	//
 	// - RetrieveType: the retrieval method.
 	//
@@ -261,15 +257,13 @@ type UpdateLifecyclePolicyRequestRetrieveRules struct {
 	//
 	// RetrieveType
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The threshold of the rule.
-	//
-	// Valid values:
+	// The threshold of the rule. Valid values:
 	//
 	// - RetrieveType
 	//
 	//     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
 	//
-	//     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieval of all data.
+	//     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieving all data.
 	//
 	// example:
 	//
@@ -312,7 +306,7 @@ type UpdateLifecyclePolicyRequestTransitRules struct {
 	//
 	// Valid values:
 	//
-	// - Atime: the access time of the file.
+	// - Atime: the last access time of the file.
 	//
 	// example:
 	//

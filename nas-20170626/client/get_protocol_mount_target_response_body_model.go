@@ -18,13 +18,13 @@ type iGetProtocolMountTargetResponseBody interface {
 }
 
 type GetProtocolMountTargetResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// If the response is truncated, you can use NextToken to send a subsequent request to retrieve the content after the current truncation point.
 	//
 	// example:
 	//
 	// M18xMA==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Information of the export directory for the protocol service
+	// The export directory information of the protocol service.
 	ProtocolMountTarget *GetProtocolMountTargetResponseBodyProtocolMountTarget `json:"ProtocolMountTarget,omitempty" xml:"ProtocolMountTarget,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -79,53 +79,55 @@ func (s *GetProtocolMountTargetResponseBody) Validate() error {
 }
 
 type GetProtocolMountTargetResponseBodyProtocolMountTarget struct {
-	// The name of the permission group.
+	// The permission group name.
 	//
-	// Default permission group: DEFAULT\_VPC\_GROUP\_NAME
+	// Default permission group: DEFAULT_VPC_GROUP_NAME.
 	//
 	// example:
 	//
 	// DEFAULT_VPC_GROUP_NAME
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	// The time when the export directory was created. Return format: yyyy-MM-dd HH:mm:ss
+	// The creation time.
+	//
+	// Format: yyyy-MM-dd HH:mm:ss
 	//
 	// example:
 	//
 	// 2025-12-22 17:49:25
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the export directory.
+	// The description of the protocol service export.
 	//
 	// example:
 	//
-	// 此协议服务导出的描述。
+	// Description of this protocol service export
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the export directory.
+	// The export directory ID.
 	//
 	// example:
 	//
 	// exp-19abf5beab8d****
 	ExportId *string `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
-	// The fileset ID.
+	// Fileset ID。
 	//
 	// example:
 	//
 	// fset-299b4ca04de8****
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
-	// The path of the CPFS directory that was queried.
+	// The path of the queried CPFS directory.
 	//
 	// Format:
 	//
-	// 	- Must be 1 to 1,024 characters in length.
+	// - The path is 1 to 1,024 characters in length.
 	//
-	// 	- Must be encoded in UTF-8.
+	// - The path is encoded in UTF-8.
 	//
-	// 	- Must start and end with a forward slash (/). The root directory is `/`.
+	// - The path must start and end with a forward slash (/). The root directory is `/`.
 	//
 	// example:
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The domain name of the export directory for the protocol service.
+	// The domain name of the protocol service export directory.
 	//
 	// example:
 	//
@@ -135,41 +137,41 @@ type GetProtocolMountTargetResponseBodyProtocolMountTarget struct {
 	//
 	// Valid values:
 	//
-	// 	- NFS: Network File System (NFS)
+	// - NFS: NFS protocol
 	//
-	// 	- SMB: Server Message Block (SMB)
+	// - SMB: SMB protocol
 	//
-	// 	- cpfs: The protocol type supported by the CPFS file system.
+	// - cpfs: the protocol type supported by CPFS file systems
 	//
 	// example:
 	//
 	// NFS
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The status of the export directory. Valid values:
+	// The status of the protocol service export directory. Valid values:
 	//
-	// 	- CREATING: The export directory is being created.
+	// - CREATING: Being created.
 	//
-	// 	- AVAILABLE : The export directory is available.
+	// - AVAILABLE: Available.
 	//
-	// 	- MODIFYING: The export directory is being modified.
+	// - MODIFYING: Being modified.
 	//
-	// 	- DELETING: The export directory is being deleted.
+	// - DELETING: Being deleted.
 	//
-	// 	- STOPPING: The export directory is being stopped.
+	// - STOPPING: Being stopped.
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID of the export directory.
+	// The vSwitch ID of the protocol service export.
 	//
 	// example:
 	//
 	// vsw-8vb2qjnxs6hiobzve****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The vSwitch ID list of the export directory.
+	// The list of vSwitch IDs of the protocol service export.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID of the export directory.
+	// The virtual private cloud (VPC) ID of the protocol service export.
 	//
 	// example:
 	//

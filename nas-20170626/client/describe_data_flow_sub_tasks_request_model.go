@@ -43,7 +43,7 @@ type DescribeDataFlowSubTasksRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// If the returned results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation point.
+	// If the response is truncated, you can use NextToken to send a subsequent request to retrieve the remaining content from the point of truncation.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeDataFlowSubTasksRequestFilters struct {
 	//
 	// DataFlowSubTaskIds
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the filter key. Wildcards are not supported for this parameter.
+	// The value of the filter key. Wildcards are not supported.
 	//
 	// - If Key is set to DataFlowIds, Value is set to a data flow ID or part of a data flow ID. You can specify one or more data flow IDs. A maximum of 10 data flow IDs can be specified. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
 	//
@@ -139,9 +139,9 @@ type DescribeDataFlowSubTasksRequestFilters struct {
 	//
 	// - If Key is set to Status, Value is set to the status of the data flow task, including EXPIRED, CREATED, RUNNING, COMPLETE, CANCELING, FAILED, and CANCELED. Combined queries are supported.
 	//
-	// - If Key is set to SrcFilePath, Value is set to the source file path. The maximum length is 1023 characters.
+	// - If Key is set to SrcFilePath, Value is set to the source file path. The maximum length is 1,023 characters.
 	//
-	// - If Key is set to DstFilePath, Value is set to the destination file path. The maximum length is 1023 characters.
+	// - If Key is set to DstFilePath, Value is set to the destination file path. The maximum length is 1,023 characters.
 	//
 	// example:
 	//

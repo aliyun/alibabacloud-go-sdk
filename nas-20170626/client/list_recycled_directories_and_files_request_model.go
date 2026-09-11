@@ -22,7 +22,7 @@ type iListRecycledDirectoriesAndFilesRequest interface {
 type ListRecycledDirectoriesAndFilesRequest struct {
 	// The FileId of the directory to query.
 	//
-	// If the recycle bin is empty, you can call this operation with FileId=2 (root directory inode) to verify the reachability of the operation or query the recycle bin content under the root directory. You can obtain other valid FileId values by calling the [ListRecentlyRecycledDirectories](https://help.aliyun.com/document_detail/2412173.html) operation.
+	// This field is the NFS inode number. When the recycle bin is empty, you can call this operation with FileId=2 (root directory inode) to verify the reachability of the operation or query the recycle bin content under the root directory. Other valid FileId values can be obtained by calling the [ListRecentlyRecycledDirectories](https://help.aliyun.com/document_detail/2412173.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ListRecycledDirectoriesAndFilesRequest struct {
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token for the next page. You do not need to specify this parameter for the first query.
 	//
-	// If a single query does not return all files and directories, a non-empty NextToken is returned. You can specify the correct NextToken in subsequent queries to continue listing.
+	// If a single query does not return all files and directories, a non-empty NextToken is returned. You can pass the correct NextToken in subsequent queries to continue retrieving results.
 	//
 	// example:
 	//
