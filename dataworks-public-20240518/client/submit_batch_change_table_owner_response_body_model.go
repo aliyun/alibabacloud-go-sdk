@@ -18,11 +18,16 @@ type iSubmitBatchChangeTableOwnerResponseBody interface {
 }
 
 type SubmitBatchChangeTableOwnerResponseBody struct {
+	// The submit result of the batch table ownership transfer task.
 	Data *SubmitBatchChangeTableOwnerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,14 +79,20 @@ func (s *SubmitBatchChangeTableOwnerResponseBody) Validate() error {
 }
 
 type SubmitBatchChangeTableOwnerResponseBodyData struct {
+	// The batch transfer task ID. You can use this ID to call GetBatchChangeTableOwnerStatus to query the task progress.
+	//
 	// example:
 	//
 	// 524257_xxxxx
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The initial status of the task after submission.
+	//
 	// example:
 	//
 	// SUBMITTED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of tables submitted in this batch.
+	//
 	// example:
 	//
 	// 13

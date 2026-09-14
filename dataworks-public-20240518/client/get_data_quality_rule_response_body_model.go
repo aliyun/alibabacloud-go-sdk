@@ -16,9 +16,9 @@ type iGetDataQualityRuleResponseBody interface {
 }
 
 type GetDataQualityRuleResponseBody struct {
-	// The details of the rule.
+	// The rule details.
 	DataQualityRule *GetDataQualityRuleResponseBodyDataQualityRule `json:"DataQualityRule,omitempty" xml:"DataQualityRule,omitempty" type:"Struct"`
-	// The request ID.
+	// The API request ID.
 	//
 	// example:
 	//
@@ -64,19 +64,19 @@ func (s *GetDataQualityRuleResponseBody) Validate() error {
 type GetDataQualityRuleResponseBodyDataQualityRule struct {
 	// The sample check settings.
 	CheckingConfig *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The description of the rule. The maximum length is 500 characters.
+	// The rule description. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the rule is enabled.
+	// Indicates whether the rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The list of issue handlers for quality rule checks.
+	// The list of quality rule check error handlers.
 	ErrorHandlers []*GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
@@ -84,7 +84,7 @@ type GetDataQualityRuleResponseBodyDataQualityRule struct {
 	//
 	// 16033
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetDataQualityRuleResponseBodyDataQualityRule struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The settings required for sample collection.
 	SamplingConfig *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The severity of the rule for the business (corresponds to strong/weak rules on the page). Valid values:
+	// The severity level of the rule for business (corresponding to strong and weak rules on the page). Valid values:
 	//
 	// - Normal
 	//
@@ -254,7 +254,7 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRule) Validate() error {
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig struct {
-	// Some types of thresholds require querying reference samples and then aggregating the values of the reference samples to derive the threshold used for comparison. An expression is used here to indicate the way in which the reference samples are queried.
+	// Some types of thresholds require querying reference samples and then aggregating the values of the reference samples to derive the threshold for comparison. This field uses an expression to specify how to query the reference samples.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig struct {
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
 	// The threshold settings.
 	Thresholds *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
-	// The threshold calculation method:
+	// The threshold calculation method. Valid values:
 	//
 	// - Fixed
 	//
@@ -396,7 +396,7 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritic
 	//
 	// $checkValue > 0.05
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator:
+	// The comparison operator. Valid values:
 	//
 	// - \\>
 	//
@@ -468,7 +468,7 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpect
 	//
 	// $checkValue <= 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator:
+	// The comparison operator. Valid values:
 	//
 	// - \\>
 	//
@@ -540,7 +540,7 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The comparison operator:
+	// The comparison operator. Valid values:
 	//
 	// - \\>
 	//
@@ -606,13 +606,13 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWa
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers struct {
-	// If the rule is a custom SQL rule, you must specify an SQL statement to filter the problem data.
+	// The SQL statement specified by the user to filter error data. This is required for custom SQL rules.
 	//
 	// example:
 	//
 	// SELECT 	- FROM tb_api_log WHERE id IS NULL
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
-	// The handler type:
+	// The handler type. Valid values:
 	//
 	// - SaveErrorData
 	//
@@ -653,37 +653,37 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers) Validate() 
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig struct {
-	// The name of the sampling metric:
+	// The name of the sampling metric. Valid values:
 	//
-	// - Count: the number of table rows
+	// - Count: the number of table rows.
 	//
-	// - Min: the minimum value of the field
+	// - Min: the minimum value of a field.
 	//
-	// - Max: the maximum value of the field
+	// - Max: the maximum value of a field.
 	//
-	// - Avg: the average value of the field
+	// - Avg: the average value of a field.
 	//
-	// - DistinctCount: the number of distinct values of the field
+	// - DistinctCount: the number of unique values of a field.
 	//
-	// - DistinctPercent: the ratio of the number of distinct values of the field to the number of data rows
+	// - DistinctPercent: the ratio of the number of unique values of a field to the number of data rows.
 	//
-	// - DuplicatedCount: the number of duplicate values of the field
+	// - DuplicatedCount: the number of duplicate values of a field.
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows
+	// - DuplicatedPercent: the ratio of the number of duplicate values of a field to the number of data rows.
 	//
-	// - TableSize: the size of the table
+	// - TableSize: the table size.
 	//
-	// - NullValueCount: the number of rows in which the field is null
+	// - NullValueCount: the number of rows in which the field is null.
 	//
-	// - NullValuePercent: the proportion of rows in which the field is null
+	// - NullValuePercent: the ratio of rows in which the field is null.
 	//
-	// - GroupCount: the number of data rows corresponding to each value after aggregation by field value
+	// - GroupCount: the number of data rows for each value after aggregation by field value.
 	//
-	// - CountNotIn: the number of rows in which the enum value does not match
+	// - CountNotIn: the number of rows with mismatched enumeration values.
 	//
-	// - CountDistinctNotIn: the number of distinct values in which the enum value does not match
+	// - CountDistinctNotIn: the number of unique values with mismatched enumeration values.
 	//
-	// - UserDefinedSql: performs sample collection by using a custom SQL statement
+	// - UserDefinedSql: sample collection through custom SQL.
 	//
 	// example:
 	//
@@ -695,13 +695,13 @@ type GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig struct {
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The condition used to perform secondary filtering on data that you do not focus on during sampling. The maximum length is 16,777,215 characters.
+	// The filter condition used to perform secondary filtering on irrelevant data during sampling. The value can be up to 16,777,215 characters in length.
 	//
 	// example:
 	//
 	// id IS NULL
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	// The runtime parameter setting statements that are inserted and executed before the specific sampling statement is executed. The maximum length is 1,000 characters. Currently, only MaxCompute is supported.
+	// The runtime parameter setting statements that are executed before the sampling statement. The value can be up to 1,000 characters in length. Only MaxCompute is supported.
 	//
 	// example:
 	//
@@ -760,7 +760,7 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) Validate()
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleTarget struct {
-	// For a Table-type dataset, the type of database to which the table belongs.
+	// The database type of the table for a table-type dataset. Valid values:
 	//
 	// - maxcompute
 	//
@@ -786,13 +786,13 @@ type GetDataQualityRuleResponseBodyDataQualityRuleTarget struct {
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The unique ID of the table on which the rule takes effect in Data Map.
+	// The unique ID of the table in Data Map that the rule applies to.
 	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The type of the monitored object.
+	// The monitored object type. Valid values:
 	//
 	// - Table
 	//

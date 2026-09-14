@@ -16,7 +16,7 @@ type iStopDIJobResponseBody interface {
 }
 
 type StopDIJobResponseBody struct {
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -24,9 +24,9 @@ type StopDIJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true
+	// - True: The request was successful.
 	//
-	// - false
+	// - False: The request failed.
 	//
 	// example:
 	//

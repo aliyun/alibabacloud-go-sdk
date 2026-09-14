@@ -50,7 +50,7 @@ type CreateAgentRequest struct {
 	//
 	// example:
 	//
-	// MyAssistant.
+	// MyAssistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The extended metadata (key-value pairs).
 	//
@@ -98,7 +98,7 @@ type CreateAgentRequest struct {
 	//
 	// `TENANT`: Visible within the account.<br>
 	//
-	// `PROJECT`: Visible to specified projects.<br>
+	// `PROJECT`: Visible to a specified project.<br>
 	//
 	// `USER`: Visible to specified users.
 	//
@@ -344,9 +344,9 @@ func (s *CreateAgentRequestTools) Validate() error {
 }
 
 type CreateAgentRequestVisibilityScope struct {
-	// The list of project IDs that have visibility. This parameter takes effect when Visibility is set to `PROJECT`.
+	// The list of project IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of user IDs that have visibility. This parameter takes effect when Visibility is set to `USER`.
+	// The list of user IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `USER`.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

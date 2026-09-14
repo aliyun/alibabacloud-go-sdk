@@ -14,7 +14,7 @@ type iGetTaskInstanceRequest interface {
 }
 
 type GetTaskInstanceRequest struct {
-	// The instance ID.
+	// The unique identifier of the task instance.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type DeleteDatasetVersionResponseBody struct {
 	//
 	// 6AABBBD3-F2E4-5860-8CF7-2E9CEE3BDXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the deletion succeeded.
+	// Indicates whether the dataset version is deleted.
 	//
 	// example:
 	//

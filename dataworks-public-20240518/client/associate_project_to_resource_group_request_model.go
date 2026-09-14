@@ -16,7 +16,7 @@ type iAssociateProjectToResourceGroupRequest interface {
 }
 
 type AssociateProjectToResourceGroupRequest struct {
-	// The ID of the workspace to associate.
+	// The ID of the workspace to associate with the resource group.
 	//
 	// This parameter is required.
 	//

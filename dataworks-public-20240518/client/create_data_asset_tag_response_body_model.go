@@ -16,13 +16,13 @@ type iCreateDataAssetTagResponseBody interface {
 }
 
 type CreateDataAssetTagResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 0bc1ec92159376
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

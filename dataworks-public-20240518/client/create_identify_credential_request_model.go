@@ -14,7 +14,7 @@ type iCreateIdentifyCredentialRequest interface {
 }
 
 type CreateIdentifyCredentialRequest struct {
-	// The user credential object.
+	// The user identity credential object.
 	IdentifyCredential *IdentifyCredential `json:"IdentifyCredential,omitempty" xml:"IdentifyCredential,omitempty"`
 }
 

@@ -22,29 +22,36 @@ type iUpdateIDEEventResultRequest interface {
 type UpdateIDEEventResultRequest struct {
 	// The check status of the extension for this extension point event. Valid values:
 	//
-	// - OK: The extension passed the check for this event.
+	// - OK: The extension check for this extension point event passed.
 	//
-	// - FAIL: The extension failed the check for this event. You need to review and resolve the error promptly to avoid affecting subsequent program execution.
+	// - FAIL: The extension check for this extension point event failed. View and resolve the error promptly to avoid affecting the normal execution of subsequent programs.
 	//
-	// - WARN: The extension passed the check for this event, but with warnings.
+	// - WARN: The extension check for this extension point event passed, but warnings exist.
 	//
 	// example:
 	//
 	// OK
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
-	// A summary of the check result for this extension point event. This message is displayed on your current development page. When the check fails or has warnings, you can use this summary to quickly identify the cause.
+	// The summary of the check performed by the extension on this extension point event.
+	//
+	// This information is displayed on your current development page. If the check has warnings or fails, you can use this summary to quickly identify the cause.
 	//
 	// example:
 	//
 	// Succeeded
 	CheckResultTip *string `json:"CheckResultTip,omitempty" xml:"CheckResultTip,omitempty"`
-	// The unique identifier of the extension. You can obtain the identifier from the Extensions tab on Open Platform in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// The unique identifier of the extension.
+	//
+	// You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and view the identifier on the Extensions tab of the Open Platform page.
 	//
 	// example:
 	//
 	// 8abcb91f-d266-4073-b907-2ed670378ed1
 	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
-	// The OpenEvent message ID from DataWorks. When an extension point event is triggered, you can obtain the message ID from the event message.
+	// The message ID of the DataWorks open message. After an extension point event is triggered, you can obtain the message ID from the received event message.
+	//
+	//
+	// <props="china">For more information about the message format, see [Message format](https://help.aliyun.com/document_detail/215367.html).
 	//
 	// example:
 	//

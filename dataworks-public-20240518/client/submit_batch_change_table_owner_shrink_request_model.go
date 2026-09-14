@@ -18,16 +18,22 @@ type iSubmitBatchChangeTableOwnerShrinkRequest interface {
 }
 
 type SubmitBatchChangeTableOwnerShrinkRequest struct {
+	// Specifies whether to allow transferring ownership to an owner in a different tenant. Default value: false.
+	//
 	// example:
 	//
 	// false
 	EnableCrossTenant *bool `json:"EnableCrossTenant,omitempty" xml:"EnableCrossTenant,omitempty"`
+	// The target owner after the transfer. Use the Alibaba Cloud UID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2xxxxx8146415628
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The list of MaxCompute table metadata entity IDs to transfer. A maximum of 100 tables are allowed per request. Duplicate values are not allowed.
+	//
 	// This parameter is required.
 	TableMetaEntityIdsShrink *string `json:"TableMetaEntityIds,omitempty" xml:"TableMetaEntityIds,omitempty"`
 }

@@ -16,13 +16,13 @@ type iGetTaskInstanceResponseBody interface {
 }
 
 type GetTaskInstanceResponseBody struct {
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the task instance.
+	// The detailed information about the task instance.
 	TaskInstance *GetTaskInstanceResponseBodyTaskInstance `json:"TaskInstance,omitempty" xml:"TaskInstance,omitempty" type:"Struct"`
 }
 
@@ -68,7 +68,7 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The data timestamp.
+	// The business date.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the instance.
 	//
 	// example:
 	//
 	// 1000
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The information about the associated data source.
+	// The data source information associated with the instance.
 	DataSource *GetTaskInstanceResponseBodyTaskInstanceDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -94,13 +94,13 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the instance finished running.
+	// The completion time.
 	//
 	// example:
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The instance ID.
+	// The unique identifier of the node instance.
 	//
 	// example:
 	//
@@ -114,205 +114,227 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who modified the instance.
 	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The type of the most recent operation on the instance.
+	//
+	// example:
+	//
+	// TriggerDqc
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// The output information.
 	Outputs *GetTaskInstanceResponseBodyTaskInstanceOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The account ID of the task owner.
+	// The account ID of the node owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
+	// The period number. Indicates which scheduling cycle of the day the task instance is in.
 	//
 	// example:
 	//
 	// 1
 	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
-	// The task priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	// The running priority of the task. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment. Valid values:
 	//
-	// - Prod: production environment
+	// - Prod: Production.
 	//
-	// - Dev: development environment
+	// - Dev: Development.
 	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun mode. Valid values:
+	// The rerun configuration of the task. Valid values:
 	//
-	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllDenied: reruns are not allowed regardless of whether the task fails or succeeds.
 	//
-	// - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllAllowed: reruns are allowed regardless of whether the task fails or succeeds.
 	//
-	// - FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: reruns are allowed only when the task fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of times the instance is run. By default, the value starts from 1.
+	// The current run number. The value starts from 1 by default.
 	//
 	// example:
 	//
 	// 1
 	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
-	// The runtime information about the instance.
+	// The runtime information of the instance.
 	Runtime *GetTaskInstanceResponseBodyTaskInstanceRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
-	// The information about the resource group with which the instance is associated.
+	// The resource group information associated with the instance.
 	RuntimeResource *GetTaskInstanceResponseBodyTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The script information.
+	// The running script information.
 	Script *GetTaskInstanceResponseBodyTaskInstanceScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The time when the instance started to run.
+	// The start time of the run.
 	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance running status. Valid values:
 	//
-	// - NotRun: The instance is not run.
+	// - NotRun: Not run.
 	//
-	// - Running: The instance is running.
+	// - Running: Running.
 	//
-	// - WaitTime: The instance is waiting for the scheduling time to arrive.
+	// - WaitTime: Waiting for the TriggerTime to arrive.
 	//
-	// - CheckingCondition: Branch conditions are being checked for the instance.
+	// - CheckingCondition: Checking branch conditions.
 	//
-	// - WaitResource: The instance is waiting for resources.
+	// - WaitResource: Waiting for resources.
 	//
-	// - Failure: The instance fails to be run.
+	// - Failure: Execution failed.
 	//
-	// - Success: The instance is successfully run.
+	// - Success: Execution succeeded.
 	//
-	// - Checking: Data quality is being checked for the instance.
+	// - Checking: Submitted for data quality check.
+	//
+	// - WaitTrigger: Waiting for an external trigger. Trigger-based nodes enter this status after the waiting time elapses.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the task.
+	// The list of node tags.
 	Tags []*GetTaskInstanceResponseBodyTaskInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the task for which the instance is generated.
+	// The ID of the corresponding task.
 	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task for which the instance is generated.
+	// The name of the corresponding task.
 	//
 	// example:
 	//
 	// SQL node
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task for which the instance is generated.
+	// The type of the corresponding task.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The timeout period of task running. Unit: seconds.
+	// The timeout period for task execution. Unit: seconds.
 	//
-	// Note: The value of this parameter is rounded up by hour.
+	// Note: The scheduling system rounds the configured value to the nearest hour.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
+	// The running mode when triggered. This parameter takes effect when TriggerType is set to Scheduler. Valid values:
 	//
-	// - Pause
+	// - Normal: a normal scheduled task that is scheduled on a regular basis.
 	//
-	// - Skip
+	// - Manual: a manual task that is not scheduled on a regular basis.
 	//
-	// - Normal
+	// - Pause: a paused task that is scheduled on a regular basis but is set to failed when scheduling starts.
+	//
+	// - Skip: a dry-run task that is scheduled on a regular basis but is set to succeeded when scheduling starts.
+	//
+	// - SkipUnchoose: a task that is not selected in a temporary workflow. This value exists only in temporary workflows. The task is set to succeeded when scheduling starts.
+	//
+	// - SkipCycle: a weekly or monthly task whose running cycle has not arrived. The task is scheduled on a regular basis but is set to succeeded when scheduling starts.
+	//
+	// - ConditionUnchoose: a downstream node that is not selected by an upstream branch (IF) node. The task directly becomes a dry run.
+	//
+	// - RealtimeDeprecated: an expired periodic instance generated in real time. The task is set to succeeded.
+	//
+	// - PauseCalendar: the instance is paused because a calendar is referenced.
+	//
+	// - SkipCalendar: the instance is a dry run because a calendar is referenced.
 	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The scheduling time.
+	// The scheduled trigger time.
 	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
-	// The method to trigger instance scheduling. The value of the Trigger.Type parameter in the response of the GetTask operation is used. Valid values:
+	// The trigger type. You can obtain the trigger type from the Trigger.Type response parameter of the GetTask operation. Valid values:
 	//
-	// - Scheduler
+	// - Scheduler: triggered by a scheduling cycle.
 	//
-	// - Manual
+	// - Manual: manually triggered.
 	//
 	// example:
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// Unified workflow instance ID. All task instances triggered under the same data timestamp share the same value for this field.
+	// The unified workflow instance ID. All task instances within the same business date under a single trigger share the same value for this field.
 	//
 	// example:
 	//
 	// 1234
 	UnifiedWorkflowInstanceId *int64 `json:"UnifiedWorkflowInstanceId,omitempty" xml:"UnifiedWorkflowInstanceId,omitempty"`
-	// The timestamp for when it started waiting for resources.
+	// The time when the instance entered the waiting-for-resource state.
 	//
 	// example:
 	//
 	// 1710239005403
 	WaitingResourceTime *int64 `json:"WaitingResourceTime,omitempty" xml:"WaitingResourceTime,omitempty"`
-	// The timestamp for when it started waiting for the scheduled time.
+	// The time when the instance entered the waiting-for-scheduled-time state.
 	//
 	// example:
 	//
 	// 1710239005403
 	WaitingTriggerTime *int64 `json:"WaitingTriggerTime,omitempty" xml:"WaitingTriggerTime,omitempty"`
-	// The ID of the workflow to which the instance belongs.
+	// The ID of the workflow to which the task instance belongs.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow instance ID.
+	// The ID of the workflow instance to which the task instance belongs.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance. Valid values:
+	// The type of the workflow instance to which the task instance belongs. Valid values:
 	//
-	// - SmokeTest
+	// - SmokeTest: test.
 	//
-	// - SupplementData
+	// - SupplementData: data backfill.
 	//
-	// - Manual
+	// - Manual: manual task.
 	//
-	// - ManualWorkflow
+	// - ManualWorkflow: manual workflow.
 	//
-	// - Normal
+	// - Normal: periodic scheduling.
 	//
-	// - ManualFlow
+	// - ManualFlow: manually executed business flow.
 	//
 	// example:
 	//
 	// Normal
 	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
-	// The name of the workflow to which the instance belongs.
+	// The name of the workflow to which the task instance belongs.
 	//
 	// example:
 	//
@@ -370,6 +392,10 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) GetModifyTime() *int64 {
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) GetModifyUser() *string {
 	return s.ModifyUser
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) GetOperationType() *string {
+	return s.OperationType
 }
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) GetOutputs() *GetTaskInstanceResponseBodyTaskInstanceOutputs {
@@ -536,6 +562,11 @@ func (s *GetTaskInstanceResponseBodyTaskInstance) SetModifyTime(v int64) *GetTas
 
 func (s *GetTaskInstanceResponseBodyTaskInstance) SetModifyUser(v string) *GetTaskInstanceResponseBodyTaskInstance {
 	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetTaskInstanceResponseBodyTaskInstance) SetOperationType(v string) *GetTaskInstanceResponseBodyTaskInstance {
+	s.OperationType = &v
 	return s
 }
 
@@ -753,7 +784,7 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceDataSource) Validate() error {
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceInputs struct {
-	// The variables.
+	// The list of variable definitions.
 	Variables []*GetTaskInstanceResponseBodyTaskInstanceInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -796,13 +827,13 @@ type GetTaskInstanceResponseBodyTaskInstanceInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// - Constant: constant
+	// - Constant: constant.
 	//
-	// - PassThrough: node output
+	// - PassThrough: output of a parameter node.
 	//
-	// - System: variable
+	// - System: variable.
 	//
-	// - NodeOutput: script output
+	// - NodeOutput: script output.
 	//
 	// example:
 	//
@@ -856,9 +887,9 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceInputsVariables) Validate() erro
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceOutputs struct {
-	// The task outputs.
+	// The list of task output definitions.
 	TaskOutputs []*GetTaskInstanceResponseBodyTaskInstanceOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
-	// The variables.
+	// The list of variable definitions.
 	Variables []*GetTaskInstanceResponseBodyTaskInstanceOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -949,13 +980,13 @@ type GetTaskInstanceResponseBodyTaskInstanceOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// - Constant: constant
+	// - Constant: constant.
 	//
-	// - PassThrough: node output
+	// - PassThrough: output of a parameter node.
 	//
-	// - System: variable
+	// - System: variable.
 	//
-	// - NodeOutput: script output
+	// - NodeOutput: script output.
 	//
 	// example:
 	//
@@ -1009,13 +1040,13 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceOutputsVariables) Validate() err
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceRuntime struct {
-	// The host for running.
+	// The machine on which the task runs.
 	//
 	// example:
 	//
 	// cn-shanghai.1.2
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// The instance run ID.
+	// The unique ID of the run.
 	//
 	// example:
 	//
@@ -1054,19 +1085,19 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceRuntime) Validate() error {
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceRuntimeResource struct {
-	// The default number of CUs configured for task running.
+	// The compute unit (CU) consumption configured for the task.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task running.
+	// The image ID configured for the task.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the resource group for scheduling configured for task running.
+	// The identifier of the schedule resource group configured for the task.
 	//
 	// example:
 	//
@@ -1120,7 +1151,7 @@ type GetTaskInstanceResponseBodyTaskInstanceScript struct {
 	//
 	// echo "helloWorld"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The script parameters.
+	// The list of script parameters.
 	//
 	// example:
 	//
@@ -1159,13 +1190,13 @@ func (s *GetTaskInstanceResponseBodyTaskInstanceScript) Validate() error {
 }
 
 type GetTaskInstanceResponseBodyTaskInstanceTags struct {
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//

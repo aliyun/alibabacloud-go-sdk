@@ -16,7 +16,7 @@ type iGetDataQualityScanRunLogResponseBody interface {
 }
 
 type GetDataQualityScanRunLogResponseBody struct {
-	// The task log information.
+	// The node task logs information.
 	LogSegment *GetDataQualityScanRunLogResponseBodyLogSegment `json:"LogSegment,omitempty" xml:"LogSegment,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetDataQualityScanRunLogResponseBody) Validate() error {
 }
 
 type GetDataQualityScanRunLogResponseBodyLogSegment struct {
-	// The task log.
+	// The node task logs.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type GetDataQualityScanRunLogResponseBodyLogSegment struct {
 	//
 	// Begin to check rule ***
 	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	// The starting offset of the next log segment. A value of -1 indicates that all logs have been read.
+	// The start offset of the next log segment. A value of -1 indicates that all logs have been read.
 	//
 	// example:
 	//

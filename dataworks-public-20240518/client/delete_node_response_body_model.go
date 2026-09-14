@@ -16,7 +16,7 @@ type iDeleteNodeResponseBody interface {
 }
 
 type DeleteNodeResponseBody struct {
-	// The request ID.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -24,9 +24,9 @@ type DeleteNodeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true<br>
+	// true: The request was successful.
 	//
-	// false
+	// false: The request failed.
 	//
 	// example:
 	//

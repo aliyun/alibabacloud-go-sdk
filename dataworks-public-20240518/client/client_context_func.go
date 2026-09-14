@@ -10,6 +10,58 @@ import (
 
 // Summary:
 //
+// Stops a cross-workspace publish flow.
+//
+// @param request - AbolishCrossProjectPipelineRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AbolishCrossProjectPipelineRunResponse
+func (client *Client) AbolishCrossProjectPipelineRunWithContext(ctx context.Context, request *AbolishCrossProjectPipelineRunRequest, runtime *dara.RuntimeOptions) (_result *AbolishCrossProjectPipelineRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PipelineRunId) {
+		body["PipelineRunId"] = request.PipelineRunId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Reason) {
+		body["Reason"] = request.Reason
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AbolishCrossProjectPipelineRun"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AbolishCrossProjectPipelineRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Calls this operation to change the status of a specified deployment process to terminated. The deployment process is not deleted and can still be queried through query operations.
 //
 // Description:
@@ -118,29 +170,29 @@ func (client *Client) AddEntityIntoMetaCollectionWithContext(ctx context.Context
 
 // Summary:
 //
-// Submits an application for access permissions on a specific resource.
+// Commits an access permissions request for specific resources.
 //
 // Description:
 //
-// ## Request Description
+// ## Operation description
 //
-// - **Reason**: The reason for the application. This parameter is required.
+// - **Reason**: The reason for the request. This parameter is required.
 //
-// - **ApplyContents**: Contains multiple resource permission application contents, each including the resource description (Resource), grantee description (Grantee), permission types (AccessTypes), and permission expiration time (ExpirationTime). The maximum limit per request is 400 entries.
+// - **ApplyContents**: Contains multiple resource permission request entries. Each entry includes a resource description (Resource), a grantee description (Grantee), access types (AccessTypes), and a permission expiration time (ExpirationTime). A maximum of 400 entries can be submitted in a single request.
 //
-// - **Resource**: The resource description. You need to specify the ResourceSchema.name and version that the resource parsing depends on, as well as the resource metadata MetaData.
+// - **Resource**: The resource description. You must specify the ResourceSchema.name and version on which the resource parsing depends, as well as the resource metadata (MetaData).
 //
-// - **Grantee**: The grantee description. You need to specify the grantee type (PrincipalType) and the principal ID (PrincipalId).
+// - **Grantee**: The grantee description. You must specify the principal type (PrincipalType) and principal ID (PrincipalId).
 //
-// - **AccessTypes**: The list of permission types. Multiple permission combinations are supported.
+// - **AccessTypes**: The list of access types. Multiple access type combinations are supported.
 //
-// - **ExpirationTime**: The permission expiration time, provided as a milliseconds timestamp.
+// - **ExpirationTime**: The permission expiration time, provided as a millisecond-level timestamp.
 //
-// - **AuthMethod**: An optional parameter that specifies the authorization method. The system uses the built-in default authorization method if not specified.
+// - **AuthMethod**: Optional. Specifies the authorization method. The system uses the built-in default authorization method if this parameter is not specified.
 //
 // - **ClientToken**: The client token used to prevent duplicate requests. This parameter is optional.
 //
-// Ensure all required fields are filled in correctly and comply with the corresponding constraints. For example, `DefVersion` and `MetaData` in `Resource` should match the selected `DefSchema`.
+// Make sure that all required fields are correctly specified and meet the corresponding constraints. For example, the DefVersion and MetaData in Resource must match the selected DefSchema.
 //
 // @param tmpReq - ApplyResourceAccessPermissionRequest
 //
@@ -272,9 +324,9 @@ func (client *Client) ApproveProcessInstanceWithContext(ctx context.Context, req
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or later to use this operation.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
-// 2. **Ensure the AliyunServiceRoleForDataWorks service-linked role is created before you call this operation.**
+// 2. **Before calling this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
 //
 // @param request - AssociateProjectToImageRequest
 //
@@ -326,11 +378,11 @@ func (client *Client) AssociateProjectToImageWithContext(ctx context.Context, re
 //
 // Description:
 //
-// 1. This operation requires DataWorks Basic Edition or a more advanced edition.
+// 1. You must have purchased DataWorks Basic Edition or a higher edition to use this operation.
 //
-// 2. You must have one of the following roles in the DataWorks workspace:
+// 2. You must have at least one of the following roles in the DataWorks workspace:
 //
-// - tenant owner, workspace administrator, project owner, or operator
+// - Tenant Owner, Storage Management Administrator, Project Owner, or O&M Engineer
 //
 // @param request - AssociateProjectToResourceGroupRequest
 //
@@ -856,11 +908,11 @@ func (client *Client) CloneDataSourceWithContext(ctx context.Context, request *C
 //
 // - **Model configuration**: An optional parameter that specifies the model used by the Agent and its related settings.
 //
-// - **Visibility level**: Defines who can access the Agent. Supported levels include account-wide, project-specific, or user-specific visibility.
+// - **Visibility level**: Defines who can access the Agent. The Agent can be visible within the account, to a specific project, or to specific users.
 //
 // - **Visibility scope**: When you set the visibility level to `PROJECT` or `USER`, you must specify the list of project IDs or user IDs.
 //
-// - **Other parameters**: Parameters such as display name and description are optional. Set them as needed.
+// - **Other parameters**: Optional parameters such as display name and description. Set them as needed.
 //
 // @param tmpReq - CreateAgentRequest
 //
@@ -1416,6 +1468,76 @@ func (client *Client) CreateCrawlerWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
+// Creates a cross-workspace deployment flow.
+//
+// Description:
+//
+// Creates and persists a cross-workspace deployment flow. The ObjectIds parameter must contain exactly one top-level object ID from the source project. Child objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call ListCrossProjectDeploymentCandidates to query candidate objects, call ExecCrossProjectPipelineRun to execute the deployment after creation, and call GetCrossProjectPipelineRun to query the deployment status.
+//
+// @param tmpReq - CreateCrossProjectPipelineRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCrossProjectPipelineRunResponse
+func (client *Client) CreateCrossProjectPipelineRunWithContext(ctx context.Context, tmpReq *CreateCrossProjectPipelineRunRequest, runtime *dara.RuntimeOptions) (_result *CreateCrossProjectPipelineRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateCrossProjectPipelineRunShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ObjectIds) {
+		request.ObjectIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectIds, dara.String("ObjectIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentEnvironmentId) {
+		body["DeploymentEnvironmentId"] = request.DeploymentEnvironmentId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ObjectIdsShrink) {
+		body["ObjectIds"] = request.ObjectIdsShrink
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCrossProjectPipelineRun"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCrossProjectPipelineRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom attribute definition.
 //
 // @param tmpReq - CreateCustomAttributeRequest
@@ -1690,11 +1812,11 @@ func (client *Client) CreateDIJobWithContext(ctx context.Context, tmpReq *Create
 
 // Summary:
 //
-// Creates a tag.
+// Creates a label.
 //
 // Description:
 //
-// This API operation is available only for DataWorks Enterprise Edition or a more advanced edition.
+// You must purchase DataWorks Enterprise Edition or a higher edition to use this feature.
 //
 // @param tmpReq - CreateDataAssetTagRequest
 //
@@ -2374,11 +2496,11 @@ func (client *Client) CreateDataQualityScanRunWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Creates a data quality template.
+// Creates a data quality rule template in a specified project.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - CreateDataQualityTemplateRequest
 //
@@ -2994,9 +3116,7 @@ func (client *Client) CreateFunctionWithContext(ctx context.Context, request *Cr
 //
 // Description:
 //
-//	Notice:
-//
-// This operation does not support batch processing. If you specify multiple entities in the request parameters, only the first entity is processed and the rest are ignored.
+//	Notice: This operation does not support batch operations. If you specify multiple publish entities in the parameters, all entities except the first one are ignored.
 //
 // @param tmpReq - CreateIdentifyCredentialRequest
 //
@@ -5992,7 +6112,7 @@ func (client *Client) DeleteDatasetWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a dataset version. Only non-v1 DataWorks datasets are supported. To delete v1 datasets, use the DeleteDataset operation. Requires dataset creator or workspace administrator permissions.
+// Deletes a dataset version. Only non-v1 DataWorks dataset versions can be deleted by using this operation. To delete a v1 dataset version, use the DeleteDataset operation. The operator must be the creator of the dataset or an administrator of the workspace to which the dataset belongs.
 //
 // @param request - DeleteDatasetVersionRequest
 //
@@ -6498,13 +6618,11 @@ func (client *Client) DeleteNetworkWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a node from DataStudio.
+// Deletes a specified data development node.
 //
 // Description:
 //
-//	Notice:
-//
-// After a node is published, it cannot be deleted. You must unpublish the node before you can delete it.
+//	Notice: After a node is published, it cannot be deleted. You must offline the node before deleting it.
 //
 // @param request - DeleteNodeRequest
 //
@@ -6658,9 +6776,9 @@ func (client *Client) DeleteProcessDefinitionWithContext(ctx context.Context, re
 //
 // Description:
 //
-// To call this API, you must purchase DataWorks Basic Edition or a higher edition.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
-// Note: When you delete a workspace, the system moves it to the Recycle Bin. After a 14-day retention period, the system permanently purges the workspace. During this time, you cannot create a new workspace with the same name. You can find the deleted workspace in the Recycle Bin on the Workspace page in the console.
+// > Note: After a workspace is deleted, it is moved to the recycle bin on the **Workspaces*	- page in the console. The workspace is permanently removed after a 14-day cool-down period. During this period, you cannot create a workspace with the same name.
 //
 // @param request - DeleteProjectRequest
 //
@@ -7910,6 +8028,54 @@ func (client *Client) EstablishRelationTableToBusinessWithContext(ctx context.Co
 
 // Summary:
 //
+// Executes a cross-workspace publish flow.
+//
+// @param request - ExecCrossProjectPipelineRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecCrossProjectPipelineRunResponse
+func (client *Client) ExecCrossProjectPipelineRunWithContext(ctx context.Context, request *ExecCrossProjectPipelineRunRequest, runtime *dara.RuntimeOptions) (_result *ExecCrossProjectPipelineRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PipelineRunId) {
+		body["PipelineRunId"] = request.PipelineRunId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecCrossProjectPipelineRun"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecCrossProjectPipelineRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Executes a specified stage of a publish flow.
 //
 // Description:
@@ -8380,7 +8546,7 @@ func (client *Client) GetApplicationContentsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询批量转交表Owner状态
+// Queries the status of a batch table owner transfer task.
 //
 // @param request - GetBatchChangeTableOwnerStatusRequest
 //
@@ -8718,6 +8884,62 @@ func (client *Client) GetComputeResourceWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Queries the user mappings of a compute resource. Supports EMR and Serverless Spark resource types.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. You must have at least one of the following roles in the DataWorks workspace:
+//
+// - Tenant Owner, Storage Management Administrator, Deployment, Developer, Project Owner, or O&M Engineer
+//
+// @param request - GetComputeResourceAuthUserMappingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetComputeResourceAuthUserMappingsResponse
+func (client *Client) GetComputeResourceAuthUserMappingsWithContext(ctx context.Context, request *GetComputeResourceAuthUserMappingsRequest, runtime *dara.RuntimeOptions) (_result *GetComputeResourceAuthUserMappingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeResourceId) {
+		query["ComputeResourceId"] = request.ComputeResourceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetComputeResourceAuthUserMappings"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetComputeResourceAuthUserMappingsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the configuration, status, and latest run information of a specified metadata crawler.
 //
 // Description:
@@ -8875,6 +9097,54 @@ func (client *Client) GetCreateWorkflowInstancesResultWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCreateWorkflowInstancesResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a cross-workspace deployment flow.
+//
+// @param request - GetCrossProjectPipelineRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCrossProjectPipelineRunResponse
+func (client *Client) GetCrossProjectPipelineRunWithContext(ctx context.Context, request *GetCrossProjectPipelineRunRequest, runtime *dara.RuntimeOptions) (_result *GetCrossProjectPipelineRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PipelineRunId) {
+		body["PipelineRunId"] = request.PipelineRunId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCrossProjectPipelineRun"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCrossProjectPipelineRunResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9163,7 +9433,7 @@ func (client *Client) GetDataQualityEvaluationTaskInstanceWithContext(ctx contex
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or above to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetDataQualityRuleRequest
 //
@@ -9345,11 +9615,11 @@ func (client *Client) GetDataQualityScanRunWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the log of a specific task instance that monitors data quality.
+// Queries the log content of a specified data quality monitoring task instance.
 //
 // Description:
 //
-// DataWorks Basic Edition or a higher edition is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - GetDataQualityScanRunLogRequest
 //
@@ -11425,7 +11695,7 @@ func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRe
 
 // Summary:
 //
-// Queries the information about an instance.
+// Retrieves the details of a specified task instance.
 //
 // Description:
 //
@@ -11503,6 +11773,54 @@ func (client *Client) GetTaskInstanceLogWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskInstanceLogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the result of asynchronously creating a workflow instance.
+//
+// Description:
+//
+// DataWorks Basic Edition or a more advanced edition is required.
+//
+// @param request - GetUpdateTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUpdateTaskResultResponse
+func (client *Client) GetUpdateTaskResultWithContext(ctx context.Context, request *GetUpdateTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetUpdateTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OperationId) {
+		query["OperationId"] = request.OperationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUpdateTaskResult"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUpdateTaskResultResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11963,21 +12281,21 @@ func (client *Client) ListAgentSessionArtifactsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the conversation history for the agent session.
+// Loads the conversation history list of an Agent Session.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - Specify at least one of `agentName` or `sessionSourceList`.
+// - At least one of `agentName` and `sessionSourceList` must be provided.
 //
-// - You can use the `tagList`, `sessionId`, and `sessionTitle` parameters for combined filtering.
+// - Supports combined filtering by `tagList`, `sessionId`, and `sessionTitle`.
 //
-// - The response follows the Alibaba Cloud OpenAPI pagination specification and includes the `totalCount`, `maxResults`, `nextToken`, and `sessionList` fields.
+// - The response conforms to the Alibaba Cloud OpenAPI paging specification, including `totalCount`, `maxResults`, `nextToken`, and `sessionList`.
 //
-// - If you provide an invalid string for `nextToken`, its value defaults to `1`.
+// - If `nextToken` is an invalid character string, it defaults to 1.
 //
-// - By default, this operation returns 50 records per page. You can use the `maxResults` parameter to adjust this number.
+// - By default, 50 records are returned per page. Adjust this by using the `maxResults` parameter.
 //
 // @param tmpReq - ListAgentSessionsRequest
 //
@@ -12699,6 +13017,282 @@ func (client *Client) ListCrawlersWithContext(ctx context.Context, tmpReq *ListC
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCrawlersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries cross-workspace deployment candidate objects.
+//
+// @param request - ListCrossProjectDeploymentCandidatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrossProjectDeploymentCandidatesResponse
+func (client *Client) ListCrossProjectDeploymentCandidatesWithContext(ctx context.Context, request *ListCrossProjectDeploymentCandidatesRequest, runtime *dara.RuntimeOptions) (_result *ListCrossProjectDeploymentCandidatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChangeType) {
+		body["ChangeType"] = request.ChangeType
+	}
+
+	if !dara.IsNil(request.CommitTimeFrom) {
+		body["CommitTimeFrom"] = request.CommitTimeFrom
+	}
+
+	if !dara.IsNil(request.CommitTimeTo) {
+		body["CommitTimeTo"] = request.CommitTimeTo
+	}
+
+	if !dara.IsNil(request.CommitUser) {
+		body["CommitUser"] = request.CommitUser
+	}
+
+	if !dara.IsNil(request.DeploymentEnvironmentId) {
+		body["DeploymentEnvironmentId"] = request.DeploymentEnvironmentId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.ObjectId) {
+		body["ObjectId"] = request.ObjectId
+	}
+
+	if !dara.IsNil(request.ObjectType) {
+		body["ObjectType"] = request.ObjectType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCrossProjectDeploymentCandidates"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCrossProjectDeploymentCandidatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries cross-workspace deployment environments.
+//
+// @param request - ListCrossProjectDeploymentEnvironmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrossProjectDeploymentEnvironmentsResponse
+func (client *Client) ListCrossProjectDeploymentEnvironmentsWithContext(ctx context.Context, request *ListCrossProjectDeploymentEnvironmentsRequest, runtime *dara.RuntimeOptions) (_result *ListCrossProjectDeploymentEnvironmentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCrossProjectDeploymentEnvironments"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCrossProjectDeploymentEnvironmentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the publish items of a cross-workspace publish pipeline.
+//
+// @param request - ListCrossProjectPipelineRunItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrossProjectPipelineRunItemsResponse
+func (client *Client) ListCrossProjectPipelineRunItemsWithContext(ctx context.Context, request *ListCrossProjectPipelineRunItemsRequest, runtime *dara.RuntimeOptions) (_result *ListCrossProjectPipelineRunItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PipelineRunId) {
+		body["PipelineRunId"] = request.PipelineRunId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCrossProjectPipelineRunItems"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCrossProjectPipelineRunItemsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of cross-workspace publish flows.
+//
+// @param request - ListCrossProjectPipelineRunsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrossProjectPipelineRunsResponse
+func (client *Client) ListCrossProjectPipelineRunsWithContext(ctx context.Context, request *ListCrossProjectPipelineRunsRequest, runtime *dara.RuntimeOptions) (_result *ListCrossProjectPipelineRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateTimeFrom) {
+		body["CreateTimeFrom"] = request.CreateTimeFrom
+	}
+
+	if !dara.IsNil(request.CreateTimeTo) {
+		body["CreateTimeTo"] = request.CreateTimeTo
+	}
+
+	if !dara.IsNil(request.Creator) {
+		body["Creator"] = request.Creator
+	}
+
+	if !dara.IsNil(request.DeploymentEnvironmentId) {
+		body["DeploymentEnvironmentId"] = request.DeploymentEnvironmentId
+	}
+
+	if !dara.IsNil(request.Executor) {
+		body["Executor"] = request.Executor
+	}
+
+	if !dara.IsNil(request.ObjectId) {
+		body["ObjectId"] = request.ObjectId
+	}
+
+	if !dara.IsNil(request.ObjectType) {
+		body["ObjectType"] = request.ObjectType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCrossProjectPipelineRuns"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCrossProjectPipelineRunsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15469,7 +16063,7 @@ func (client *Client) ListNetworksWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Gets a paginated list of dependent nodes for a specified data development node.
+// Retrieves the dependency nodes of a specified DataStudio node with pagination.
 //
 // @param request - ListNodeDependenciesRequest
 //
@@ -17237,11 +17831,11 @@ func (client *Client) ListTaskInstanceOperationLogsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of instances. You can also specify filter conditions to query specific instances.
+// Lists node instances by paging and supports filtered query by conditions.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this API operation.
 //
 // @param tmpReq - ListTaskInstancesRequest
 //
@@ -19221,21 +19815,21 @@ func (client *Client) RunImageTestWithContext(ctx context.Context, request *RunI
 
 // Summary:
 //
-// Submits a saved semantic job for execution by name and returns the run identifier and executor job identifier. A successful call indicates that the job has been submitted, not that the semantic model results have been generated.
+// Submits a saved semantic job for execution by name and returns the run and executor identifiers. A successful call indicates that the job has been submitted, not that the semantic model results have been generated.
 //
 // Description:
 //
 // ## Description
 //
-// Loads a saved semantic job definition by `Name` and submits a new analysis run to the executor. This operation does not accept runtime `Source`, resource group, or reference file overrides. The execution always uses the configuration saved by `CreateSemanticJob`.
+// Loads a saved semantic job definition by `Name` and submits a new analysis run to the executor. This operation does not accept runtime overrides for `Source`, resource groups, or reference files. The execution always uses the configuration saved by `CreateSemanticJob`.
 //
 // ## Pre-execution validation
 //
-// The service validates the existence and access permissions of the job, and re-validates whether the associated files still exist. For files associated through `ReferenceFileIds`, the service resolves them to temporary addresses readable by the current run before submission. Deleting a file after upload or specifying an invalid file ID causes the submission to fail.
+// The service validates the existence and access permissions of the job, and re-validates whether the associated files still exist. For files associated through `ReferenceFileIds`, the service resolves them into temporary addresses readable by the current run before submission. If a file is deleted after upload or an invalid file ID is specified, the submission fails.
 //
 // ## Response and What to do next
 //
-// `Data.JobRunId` is the identity of the current semantics node run and is used by `DownloadSemanticResults` to download the exact output of this run. `Data.ExecutorJobId` is the identity of the executor node and is used by `GetSemanticJobDetail`, `GetSemanticJobLog`, and `KillSemanticJob`. A successful response indicates that the executor has accepted the submission, not that the model analysis or result files are complete.
+// `Data.JobRunId` is the identity of the current semantics job run and is used by `DownloadSemanticResults` to download the exact output of this run. `Data.ExecutorJobId` is the identity of the executor job and is used by `GetSemanticJobDetail`, `GetSemanticJobLog`, and `KillSemanticJob`. A successful response indicates that the executor has accepted the submission, not that the model analysis or result files are complete.
 //
 // ## Billing
 //
@@ -19563,11 +20157,11 @@ func (client *Client) StopCrawlerWithContext(ctx context.Context, request *StopC
 
 // Summary:
 //
-// Stops a synchronization task.
+// Aborts a data integration task.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - StopDIJobRequest
 //
@@ -19829,7 +20423,7 @@ func (client *Client) StopWorkflowInstancesWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 提交批量转交表Owner
+// Submits a batch request to transfer table ownership.
 //
 // @param tmpReq - SubmitBatchChangeTableOwnerRequest
 //
@@ -20593,6 +21187,80 @@ func (client *Client) UpdateComputeResourceWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateComputeResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the account mapping of a compute resource. Currently supports EMR and Serverless Spark resource types.
+//
+// Description:
+//
+// 1. DataWorks Basic Edition or a higher edition is required.
+//
+// 2. You must have at least one of the following roles in the DataWorks workspace:
+//
+// 3. Tenant owner, tenant administrator, storage management administrator, project owner, or O&M engineer.
+//
+// @param tmpReq - UpdateComputeResourceAuthUserMappingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateComputeResourceAuthUserMappingsResponse
+func (client *Client) UpdateComputeResourceAuthUserMappingsWithContext(ctx context.Context, tmpReq *UpdateComputeResourceAuthUserMappingsRequest, runtime *dara.RuntimeOptions) (_result *UpdateComputeResourceAuthUserMappingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateComputeResourceAuthUserMappingsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RemoveUserIds) {
+		request.RemoveUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RemoveUserIds, dara.String("RemoveUserIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Upserts) {
+		request.UpsertsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Upserts, dara.String("Upserts"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeResourceId) {
+		body["ComputeResourceId"] = request.ComputeResourceId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RemoveUserIdsShrink) {
+		body["RemoveUserIds"] = request.RemoveUserIdsShrink
+	}
+
+	if !dara.IsNil(request.UpsertsShrink) {
+		body["Upserts"] = request.UpsertsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateComputeResourceAuthUserMappings"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateComputeResourceAuthUserMappingsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21991,7 +22659,7 @@ func (client *Client) UpdateFunctionWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Recalls the check result of the message of an extension point event.
+// Returns the check result of an extension point event message.
 //
 // @param request - UpdateIDEEventResultRequest
 //
@@ -23437,6 +24105,166 @@ func (client *Client) UpdateTaskWithContext(ctx context.Context, tmpReq *UpdateT
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a specified node and synchronizes the changes to DataStudio to create a new saved version.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API operation updates the information of a specified node, including but not limited to the node name, description, and owner.
+//
+// - The changes are synchronized to DataStudio, and DataStudio creates a new saved version.
+//
+// - You can set detailed parameters such as the trigger method, runtime environment configuration, and dependencies of the node.
+//
+// @param tmpReq - UpdateTaskAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTaskAsyncResponse
+func (client *Client) UpdateTaskAsyncWithContext(ctx context.Context, tmpReq *UpdateTaskAsyncRequest, runtime *dara.RuntimeOptions) (_result *UpdateTaskAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateTaskAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataSource) {
+		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, dara.String("DataSource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Dependencies) {
+		request.DependenciesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dependencies, dara.String("Dependencies"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Inputs) {
+		request.InputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Inputs, dara.String("Inputs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Outputs) {
+		request.OutputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Outputs, dara.String("Outputs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RuntimeResource) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, dara.String("RuntimeResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Script) {
+		request.ScriptShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Script, dara.String("Script"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Trigger) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, dara.String("Trigger"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientUniqueCode) {
+		body["ClientUniqueCode"] = request.ClientUniqueCode
+	}
+
+	if !dara.IsNil(request.DataSourceShrink) {
+		body["DataSource"] = request.DataSourceShrink
+	}
+
+	if !dara.IsNil(request.DependenciesShrink) {
+		body["Dependencies"] = request.DependenciesShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.InputsShrink) {
+		body["Inputs"] = request.InputsShrink
+	}
+
+	if !dara.IsNil(request.InstanceMode) {
+		body["InstanceMode"] = request.InstanceMode
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OutputsShrink) {
+		body["Outputs"] = request.OutputsShrink
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.RerunInterval) {
+		body["RerunInterval"] = request.RerunInterval
+	}
+
+	if !dara.IsNil(request.RerunMode) {
+		body["RerunMode"] = request.RerunMode
+	}
+
+	if !dara.IsNil(request.RerunTimes) {
+		body["RerunTimes"] = request.RerunTimes
+	}
+
+	if !dara.IsNil(request.RuntimeResourceShrink) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	if !dara.IsNil(request.ScriptShrink) {
+		body["Script"] = request.ScriptShrink
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		body["Tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !dara.IsNil(request.TriggerShrink) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTaskAsync"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTaskAsyncResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -14,7 +14,7 @@ type iUpdateIDEEventResultResponseBody interface {
 }
 
 type UpdateIDEEventResultResponseBody struct {
-	// The request ID. Used for troubleshooting errors.
+	// The unique ID of the request, which is used for subsequent error troubleshooting.
 	//
 	// example:
 	//

@@ -56,7 +56,7 @@ type iListTaskInstancesShrinkRequest interface {
 }
 
 type ListTaskInstancesShrinkRequest struct {
-	// The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
+	// The business date. This is typically 00:00:00 of the day before the scheduled time of the periodic instance. The value is a millisecond-level timestamp, such as 1743350400000.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The filter. It is in JSON format, and multiple filter conditions are combined with a logical AND. Currently supported fields include: `startedTimeStart`, `startedTimeEnd`, `finishedTimeStart`, `finishedTimeEnd`, `createTimeStart`, `createTimeEnd`.
+	// The filter. The value is in JSON format. Multiple filter conditions are combined with AND logic. Currently supported fields: `startedTimeStart, startedTimeEnd, finishedTimeStart, finishedTimeEnd, createTimeStart, createTimeEnd`
 	//
 	// example:
 	//
@@ -84,43 +84,43 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// }
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
+	// The instance ID. If an instance has been rerun, specifying this parameter returns the historical information including reruns. You can use RunNumber to distinguish each historical record.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IDs of the instances. You can query multiple instances at a time by instance ID.
+	// The list of instance IDs. You can use this parameter to query multiple instances in a batch.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The account ID of the task owner.
+	// The account ID of the node owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries per page. Default value: 10. Maximum value: 500.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment. Valid values:
 	//
-	// - Prod: production environment
+	// - Prod: production.
 	//
-	// - Dev: development environment
+	// - Dev: development.
 	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The DataWorks workspace ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -128,13 +128,13 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The information about the resource group. Set this parameter to the identifier of a resource group for scheduling.
+	// The schedule resource information. Specify the identifier of the schedule resource group.
 	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	// The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+	// The sort field. Supports fields such as scheduled time and start time. The format is "sort field + sort order (Desc/Asc)". Asc can be omitted. Valid values:
 	//
 	// - `TriggerTime (Desc/Asc)`
 	//
@@ -146,57 +146,57 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// - `Id (Desc/Asc)`
 	//
-	//   Default value: `Id Desc`.
+	//   Default value: `Id Desc`
 	//
 	// example:
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The status of the task instance.
+	// The status of the instance. Valid values:
 	//
-	// - `NotRun`: Not started
+	// - `NotRun`: not run.
 	//
-	// - `Running`
+	// - `Running`: running.
 	//
-	// - `Failure`
+	// - `Failure`: failed.
 	//
-	// - `Success`
+	// - `Success`: succeeded.
 	//
-	// - `WaitTime`: Awaiting scheduled time
+	// - `WaitTime`: waiting for the scheduled time.
 	//
-	// - `WaitResource`: Awaiting resources
+	// - `WaitResource`: waiting for resources.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task for which the instance is generated.
+	// The ID of the corresponding node.
 	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The IDs of the tasks. You can query multiple instances at a time by task ID.
+	// The list of node IDs. You can use this parameter to query instances of multiple nodes in a batch.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
-	// The name of the task. Fuzzy match is supported.
+	// The name of the corresponding node. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// SQL node
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task for which the instance is generated.
+	// The node type. For the TaskType values of each node, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
+	// The run mode at the time of triggering. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
 	//
-	// - Pause
+	// - Pause: paused.
 	//
-	// - Skip
+	// - Skip: dry run.
 	//
-	// - Normal
+	// - Normal: normal run.
 	//
 	// example:
 	//
@@ -204,15 +204,15 @@ type ListTaskInstancesShrinkRequest struct {
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Scheduler: scheduling cycle-based trigger
+	// - Scheduler: triggered by periodic scheduling.
 	//
-	// - Manual: manual trigger
+	// - Manual: manually triggered.
 	//
 	// example:
 	//
 	// Normal
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The unified workflow instance ID. For all task instances under a specific data timestamp within a single trigger, this field has the same value.
+	// The unified workflow instance ID. All instances within the same business date under a single trigger share the same value for this field.
 	//
 	// example:
 	//
@@ -224,25 +224,25 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow instance ID.
+	// The ID of the workflow instance to which the instance belongs.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance. Valid values:
+	// The type of the workflow instance to which the instance belongs. Valid values:
 	//
-	// - SmokeTest: Testing
+	// - SmokeTest: test.
 	//
-	// - Manual: Manually triggered node
+	// - Manual: manual node.
 	//
-	// - SupplementData: Data backfill
+	// - SupplementData: data backfill.
 	//
-	// - ManualWorkflow: Manually triggered workflow
+	// - ManualWorkflow: manual workflow.
 	//
-	// - Normal: Scheduled execution
+	// - Normal: periodic scheduling.
 	//
-	// - TriggerWorkflow: Triggered Workflow
+	// - TriggerWorkflow: trigger-based workflow.
 	//
 	// example:
 	//

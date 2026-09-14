@@ -18,11 +18,16 @@ type iGetBatchChangeTableOwnerStatusResponseBody interface {
 }
 
 type GetBatchChangeTableOwnerStatusResponseBody struct {
+	// The execution status of the batch table owner transfer task.
 	Data *GetBatchChangeTableOwnerStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 01A017D3-207E-582C-A683-BE991E54051D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -74,27 +79,40 @@ func (s *GetBatchChangeTableOwnerStatusResponseBody) Validate() error {
 }
 
 type GetBatchChangeTableOwnerStatusResponseBodyData struct {
+	// The batch transfer task ID.
+	//
 	// example:
 	//
 	// 524257_openapi-req-abc123
-	BatchId *string                                                  `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The transfer result details for each table.
 	Details []*GetBatchChangeTableOwnerStatusResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The number of tables that failed to transfer.
+	//
 	// example:
 	//
 	// 1
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The number of tables that are still being processed.
+	//
 	// example:
 	//
 	// 5
 	OngoingCount *int32 `json:"OngoingCount,omitempty" xml:"OngoingCount,omitempty"`
+	// The overall status of the task.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of tables that were successfully transferred.
+	//
 	// example:
 	//
 	// 2
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The total number of tables in the batch.
+	//
 	// example:
 	//
 	// 8
@@ -186,14 +204,20 @@ func (s *GetBatchChangeTableOwnerStatusResponseBodyData) Validate() error {
 }
 
 type GetBatchChangeTableOwnerStatusResponseBodyDataDetails struct {
+	// The error message returned when the table transfer fails.
+	//
 	// example:
 	//
 	// Forbidden: You are not a member of this project
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The transfer status of the table.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metadata entity ID of the table.
+	//
 	// example:
 	//
 	// maxcompute-table:123:project_a::table_1

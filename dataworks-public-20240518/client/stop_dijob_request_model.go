@@ -20,19 +20,19 @@ type iStopDIJobRequest interface {
 type StopDIJobRequest struct {
 	// Deprecated
 	//
-	// This parameter is deprecated and is replaced by the Id parameter.
+	// **[Deprecated]*	- This parameter is deprecated. Use the Id parameter instead.
 	//
 	// example:
 	//
 	// 11668
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The ID of the synchronization task.
+	// The ID of the sync task.
 	//
 	// example:
 	//
 	// 11668
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
