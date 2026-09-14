@@ -16,9 +16,9 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// Details about the regions.
+	// The collection of region and zone information.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// ebs.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Details about the zones.
+	// The collection of zone information.
 	Zones []*DescribeRegionsResponseBodyRegionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -146,15 +146,15 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsZones struct {
-	// The name of the zone.
+	// The zone name.
 	//
 	// example:
 	//
 	// Hangzhou Zone H
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The type of resource list.
+	// The list of resource types.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateEnterpriseSnapshotPolicyResponseBody interface {
 }
 
 type CreateEnterpriseSnapshotPolicyResponseBody struct {
-	// The id of a policy.
+	// The snapshot policy ID.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type CreateEnterpriseSnapshotPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// 7A8959DA-1E04-5724-8288-58334031454E
+	// F13483A9-17E2-5085-9B2E-2155B0487FF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

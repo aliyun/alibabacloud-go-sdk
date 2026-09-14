@@ -22,7 +22,7 @@ type CreateDiskReplicaGroupResponseBody struct {
 	//
 	// pg-xxxxxxx
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

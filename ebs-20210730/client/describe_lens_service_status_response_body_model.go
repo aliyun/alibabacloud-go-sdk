@@ -22,13 +22,13 @@ type DescribeLensServiceStatusResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of CloudLens for EBS. Valid values:
+	// The status of EBS Lens. Valid values:
 	//
-	// 	- Applying
+	// - Applying: The service is being applied for.
 	//
-	// 	- UnAvailable
+	// - UnAvailable: The service is unavailable.
 	//
-	// 	- Available
+	// - Available: The service is available.
 	//
 	// example:
 	//

@@ -32,41 +32,45 @@ type iDescribeEnterpriseSnapshotPolicyRequest interface {
 }
 
 type DescribeEnterpriseSnapshotPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
-	// 123e4567-e89b-12d3-a456-42665544****
+	// 0c593ea1-3bea-11e9-b96b-88e9fe63****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The IDs of disks.
+	// The list of cloud disk IDs.
 	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// The maximum number of entries per page.
+	// The maximum number of entries to return in this call. You can use this parameter together with NextToken.
+	//
+	// Valid values: 1 to 500.
+	//
+	// Default value: 10.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
+	// The pagination token (Token). Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If NextToken is specified, the PageSize and PageNumber request parameters do not take effect, and the TotalCount value in the response is invalid.
 	//
 	// example:
 	//
-	// xxx
+	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number in a paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IDs of enterprise-level snapshot policies.
+	// The list of snapshot policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -74,13 +78,13 @@ type DescribeEnterpriseSnapshotPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// xxx
+	// rg-acfmvs****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the enterprise-level snapshot policies. Valid values of N: 1 to 20.
+	// The tag key-value pairs. Valid values of N: 1 to 20.
 	Tag []*DescribeEnterpriseSnapshotPolicyRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -196,7 +200,7 @@ func (s *DescribeEnterpriseSnapshotPolicyRequest) Validate() error {
 }
 
 type DescribeEnterpriseSnapshotPolicyRequestTag struct {
-	// The key of tag N of the enterprise-level snapshot policy.
+	// The tag key of the resource.
 	//
 	// This parameter is required.
 	//
@@ -204,7 +208,7 @@ type DescribeEnterpriseSnapshotPolicyRequestTag struct {
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the enterprise-level snapshot policy.
+	// The tag value of the resource.
 	//
 	// This parameter is required.
 	//

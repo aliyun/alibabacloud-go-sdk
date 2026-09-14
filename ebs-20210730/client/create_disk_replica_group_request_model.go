@@ -36,15 +36,15 @@ type iCreateDiskReplicaGroupRequest interface {
 }
 
 type CreateDiskReplicaGroupRequest struct {
-	// The bandwidth value. Unit: Mbit/s.
+	// The bandwidth in Kbps.
 	//
-	// >  This parameter is not publicly available.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
-	// 10240
+	// 5
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The \\`ClientToken\\` parameter value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateDiskReplicaGroupRequest struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region ID of the secondary site.
+	// The ID of the region where the disaster recovery site is located.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateDiskReplicaGroupRequest struct {
 	//
 	// cn-shanghai
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The zone ID of the secondary site.
+	// The ID of the zone where the disaster recovery site is located.
 	//
 	// This parameter is required.
 	//
@@ -72,25 +72,33 @@ type CreateDiskReplicaGroupRequest struct {
 	//
 	// cn-shanghai-e
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	// Whether to enable replication time control. By default, this parameter is disabled.
+	// Specifies whether to enable replication time control (RTC). Valid values:
+	//
+	// - false: Disable RTC.
+	//
+	// - true: Enable RTC.
+	//
+	// Default value: false.
+	//
+	// > If you set this parameter to true, RTC is enabled for the replication pair-consistent group. RTC is also enabled for all asynchronous replication pairs that are added to the group.
 	//
 	// example:
 	//
 	// true
 	EnableRtc *bool `json:"EnableRtc,omitempty" xml:"EnableRtc,omitempty"`
-	// The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// myreplicagrouptest
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
+	// The recovery point objective (RPO) of the replication pair-consistent group, in seconds. The only supported value is 900.
 	//
 	// example:
 	//
 	// 900
 	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	// The ID of the region in which to create the replication pair-consistent group. The primary site is deployed in the specified region.
+	// The ID of the region where the replication pair-consistent group resides. This is the same as the region of the production site.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +112,7 @@ type CreateDiskReplicaGroupRequest struct {
 	//
 	// rg-acfmvs*******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The zone ID of the primary site.
+	// The ID of the zone where the production site is located.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +120,7 @@ type CreateDiskReplicaGroupRequest struct {
 	//
 	// cn-beijing-f
 	SourceZoneId *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	// The tags. Up to 20 tags are supported.
+	// The tags to add to the resource. You can add up to 20 tags.
 	Tag []*CreateDiskReplicaGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -246,13 +254,13 @@ func (s *CreateDiskReplicaGroupRequest) Validate() error {
 }
 
 type CreateDiskReplicaGroupRequestTag struct {
-	// The key of tag N of the replication pair-consistent group.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the replication pair-consistent group.
+	// The value of the tag.
 	//
 	// example:
 	//

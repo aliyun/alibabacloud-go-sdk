@@ -18,13 +18,13 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language in which the regions and zones are named. This parameter corresponds to the `LocalName` response parameter. Valid values:
+	// The language type for region and zone names. This parameter determines the value of `LocalName` in the response. Valid values:
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese.
 	//
-	// 	- en-US: English
+	// - en-US: English.
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese.
 	//
 	// Default value: zh-CN.
 	//
@@ -32,21 +32,21 @@ type DescribeRegionsRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the region.
+	// The region ID of the user access endpoint.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- ear: async replication
+	// - ear: asynchronous replication.
 	//
-	// 	- lens: CloudLens for EBS
+	// - lens: EBS Lens.
 	//
-	// 	- dbsc: Dedicated Block Storage Cluster
+	// - dbsc: dedicated block storage cluster.
 	//
-	// Default value: ear.
+	// If you do not specify a resource type, region information for all resource types is returned.
 	//
 	// example:
 	//

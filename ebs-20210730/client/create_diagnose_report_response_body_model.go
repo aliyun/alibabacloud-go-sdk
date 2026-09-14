@@ -16,10 +16,14 @@ type iCreateDiagnoseReportResponseBody interface {
 }
 
 type CreateDiagnoseReportResponseBody struct {
+	// The report ID.
+	//
 	// example:
 	//
 	// report-qe2s****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****

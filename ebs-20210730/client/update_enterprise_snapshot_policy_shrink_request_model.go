@@ -34,27 +34,27 @@ type iUpdateEnterpriseSnapshotPolicyShrinkRequest interface {
 }
 
 type UpdateEnterpriseSnapshotPolicyShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Snapshot replication destination information.
+	// The cross-region copy destination information.
 	CrossRegionCopyInfoShrink *string `json:"CrossRegionCopyInfo,omitempty" xml:"CrossRegionCopyInfo,omitempty"`
-	// The description of the policy.
+	// The description of the snapshot policy.
 	//
 	// example:
 	//
 	// xxx
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The name of the policy.
+	// The ID of the policy to modify.
 	//
 	// example:
 	//
 	// xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The id of the policy.
+	// The snapshot policy ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateEnterpriseSnapshotPolicyShrinkRequest struct {
 	//
 	// esp-xxx
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -70,23 +70,23 @@ type UpdateEnterpriseSnapshotPolicyShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Snapshot retention rule.
+	// The retention rule.
 	RetainRuleShrink *string `json:"RetainRule,omitempty" xml:"RetainRule,omitempty"`
-	// The rule for scheduling.
+	// The schedule rule.
 	ScheduleShrink *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The special snapshot retention rules.
+	// The special retention rules.
 	SpecialRetainRulesShrink *string `json:"SpecialRetainRules,omitempty" xml:"SpecialRetainRules,omitempty"`
-	// The status of the policy. Valid values:
+	// The status of the snapshot policy. Valid values:
 	//
-	// 	- **ENABLED**: Enable snapshot policy execution.
+	// - ENABLED
 	//
-	// 	- **DISABLED**: Disable snapshot policy execution.
+	// - DISABLED
 	//
 	// example:
 	//
 	// ENABLED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Advanced snapshot features.
+	// The advanced snapshot feature.
 	StorageRuleShrink *string `json:"StorageRule,omitempty" xml:"StorageRule,omitempty"`
 }
 

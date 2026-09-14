@@ -38,21 +38,21 @@ type iCreateEnterpriseSnapshotPolicyShrinkRequest interface {
 }
 
 type CreateEnterpriseSnapshotPolicyShrinkRequest struct {
-	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// Ensures the idempotence of the request. Generate a parameter value from your client that is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Snapshot replication destination information.
+	// The snapshot replication information.
 	CrossRegionCopyInfoShrink *string `json:"CrossRegionCopyInfo,omitempty" xml:"CrossRegionCopyInfo,omitempty"`
-	// The description of the policy.
+	// The description.
 	//
 	// example:
 	//
 	// xxx
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The name of the policy.
+	// The Policy Name.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateEnterpriseSnapshotPolicyShrinkRequest struct {
 	//
 	// xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+	// The region ID. You can call DescribeRegions to query the regions that support asynchronous replication.
 	//
 	// This parameter is required.
 	//
@@ -68,37 +68,37 @@ type CreateEnterpriseSnapshotPolicyShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which to assign the snapshot policy.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The snapshot retention rule.
+	// The retention rule.
 	//
 	// This parameter is required.
 	RetainRuleShrink *string `json:"RetainRule,omitempty" xml:"RetainRule,omitempty"`
-	// The rule for scheduling.
+	// The schedule rule.
 	//
 	// This parameter is required.
 	ScheduleShrink *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The special snapshot retention rules.
+	// The special retention rules.
 	SpecialRetainRulesShrink *string `json:"SpecialRetainRules,omitempty" xml:"SpecialRetainRules,omitempty"`
-	// The status of the policy. Valid values:
+	// The status. Valid values:
 	//
-	// - ENABLED: Enable snapshot policy execution.
+	// - DISABLED
 	//
-	// - DISABLED: Disable snapshot policy execution.
+	// - ENABLED
 	//
 	// example:
 	//
 	// ENABLED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Advanced snapshot features.
+	// The advanced snapshot feature.
 	StorageRuleShrink *string `json:"StorageRule,omitempty" xml:"StorageRule,omitempty"`
-	// The list of tags.
+	// The tag key-value pairs. Valid values of n: 1 to 20.
 	Tag []*CreateEnterpriseSnapshotPolicyShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Binding target type, valid value:
+	// The type. Valid values:
 	//
 	// - DISK
 	//
@@ -249,7 +249,7 @@ func (s *CreateEnterpriseSnapshotPolicyShrinkRequest) Validate() error {
 }
 
 type CreateEnterpriseSnapshotPolicyShrinkRequestTag struct {
-	// The key of the tag.
+	// The tag key of the resource.
 	//
 	// This parameter is required.
 	//
@@ -257,11 +257,7 @@ type CreateEnterpriseSnapshotPolicyShrinkRequestTag struct {
 	//
 	// tag-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// The tag value of the resource.
 	//
 	// This parameter is required.
 	//

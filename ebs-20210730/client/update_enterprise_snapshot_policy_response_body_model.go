@@ -18,7 +18,7 @@ type UpdateEnterpriseSnapshotPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// BA903E56-48CE-5B81-9611-ED7962EED3DF
+	// FED145A8-7D5F-5C60-B054-4EB2899A5996
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

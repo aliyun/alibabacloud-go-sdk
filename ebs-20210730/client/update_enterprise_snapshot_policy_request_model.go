@@ -34,27 +34,27 @@ type iUpdateEnterpriseSnapshotPolicyRequest interface {
 }
 
 type UpdateEnterpriseSnapshotPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Snapshot replication destination information.
+	// The cross-region copy destination information.
 	CrossRegionCopyInfo *UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfo `json:"CrossRegionCopyInfo,omitempty" xml:"CrossRegionCopyInfo,omitempty" type:"Struct"`
-	// The description of the policy.
+	// The description of the snapshot policy.
 	//
 	// example:
 	//
 	// xxx
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The name of the policy.
+	// The ID of the policy to modify.
 	//
 	// example:
 	//
 	// xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The id of the policy.
+	// The snapshot policy ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateEnterpriseSnapshotPolicyRequest struct {
 	//
 	// esp-xxx
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -70,23 +70,23 @@ type UpdateEnterpriseSnapshotPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Snapshot retention rule.
+	// The retention rule.
 	RetainRule *UpdateEnterpriseSnapshotPolicyRequestRetainRule `json:"RetainRule,omitempty" xml:"RetainRule,omitempty" type:"Struct"`
-	// The rule for scheduling.
+	// The schedule rule.
 	Schedule *UpdateEnterpriseSnapshotPolicyRequestSchedule `json:"Schedule,omitempty" xml:"Schedule,omitempty" type:"Struct"`
-	// The special snapshot retention rules.
+	// The special retention rules.
 	SpecialRetainRules *UpdateEnterpriseSnapshotPolicyRequestSpecialRetainRules `json:"SpecialRetainRules,omitempty" xml:"SpecialRetainRules,omitempty" type:"Struct"`
-	// The status of the policy. Valid values:
+	// The status of the snapshot policy. Valid values:
 	//
-	// 	- **ENABLED**: Enable snapshot policy execution.
+	// - ENABLED
 	//
-	// 	- **DISABLED**: Disable snapshot policy execution.
+	// - DISABLED
 	//
 	// example:
 	//
 	// ENABLED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Advanced snapshot features.
+	// The advanced snapshot feature.
 	StorageRule *UpdateEnterpriseSnapshotPolicyRequestStorageRule `json:"StorageRule,omitempty" xml:"StorageRule,omitempty" type:"Struct"`
 }
 
@@ -227,7 +227,7 @@ func (s *UpdateEnterpriseSnapshotPolicyRequest) Validate() error {
 }
 
 type UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfo struct {
-	// Whether cross-region replication is enabled. The range of values:
+	// Specifies whether to enable cross-region replication. Valid values:
 	//
 	// - true
 	//
@@ -237,7 +237,7 @@ type UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfo struct {
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Destination region information.
+	// The destination region information.
 	Regions []*UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfoRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -281,13 +281,13 @@ func (s *UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfo) Validate() er
 }
 
 type UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfoRegions struct {
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+	// The destination region ID for snapshot replication. You can call [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) to query the region information of existing asynchronous replication relationships.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Number of days to retain the destination snapshot. The range of values is greater than 1.
+	// The number of days to retain snapshots in the destination region. The value must be greater than 1.
 	//
 	// example:
 	//
@@ -326,19 +326,19 @@ func (s *UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfoRegions) Valida
 }
 
 type UpdateEnterpriseSnapshotPolicyRequestRetainRule struct {
-	// Maximum number of retained snapshots.
+	// The number of snapshots to retain. Valid values: 1 to 256.
 	//
 	// example:
 	//
 	// 10
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The time interval , valid value greater than 1.
+	// The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
 	//
 	// example:
 	//
 	// 14
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
-	// The unit of time, valid values:
+	// The unit of the retention time. Valid values:
 	//
 	// - DAYS
 	//
@@ -390,9 +390,9 @@ func (s *UpdateEnterpriseSnapshotPolicyRequestRetainRule) Validate() error {
 }
 
 type UpdateEnterpriseSnapshotPolicyRequestSchedule struct {
-	// The time when the policy will to be scheduled. Valid values: Set the parameter in a cron expression.
+	// The execution cycle and time of the policy. A cron expression is used.
 	//
-	// For example, you can use `0 0 4 1/1 	- ?` to specify 04:00:00 (UTC+8) on the first day of each month.
+	// For example, `0 0 4 1/1 	- ?` specifies that the snapshot operation is performed at 04:00 every day, starting from the first day of each month.
 	//
 	// This parameter is required.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
@@ -420,17 +420,17 @@ func (s *UpdateEnterpriseSnapshotPolicyRequestSchedule) Validate() error {
 }
 
 type UpdateEnterpriseSnapshotPolicyRequestSpecialRetainRules struct {
-	// Indicates whether the special retention is enabled.
+	// Specifies whether to enable special retention. Valid values:
 	//
-	// 	- true: enable
+	// - true
 	//
-	// 	- false: disable
+	// - false
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The special retention rules.
+	// The list of special retention rules. Multiple rules are supported.
 	Rules []*UpdateEnterpriseSnapshotPolicyRequestSpecialRetainRulesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -474,25 +474,25 @@ func (s *UpdateEnterpriseSnapshotPolicyRequestSpecialRetainRules) Validate() err
 }
 
 type UpdateEnterpriseSnapshotPolicyRequestSpecialRetainRulesRules struct {
-	// The periodic unit for specially retained snapshots. If configured to WEEKS, it provides special retention for the first snapshot of each week. The retention period is determined by TimeUnit and TimeInterval. The range of values are:
+	// The period unit for special retention snapshots. For example, if this parameter is set to WEEKS, the first snapshot of each week is given special retention. The retention duration is determined by the TimeUnit and TimeInterval parameters. Valid values:
 	//
 	// - WEEKS
 	//
 	// - MONTHS
 	//
-	// - YEARS"
+	// - YEARS
 	//
 	// example:
 	//
 	// WEEKS
 	SpecialPeriodUnit *string `json:"SpecialPeriodUnit,omitempty" xml:"SpecialPeriodUnit,omitempty"`
-	// Retention Time Value. The range of values is greater than 1.
+	// The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
 	//
 	// example:
 	//
 	// 30
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
-	// Retention time unit for special snapshots. The range of values:
+	// The unit of the retention time for special snapshots. Valid values:
 	//
 	// - DAYS
 	//
@@ -500,7 +500,7 @@ type UpdateEnterpriseSnapshotPolicyRequestSpecialRetainRulesRules struct {
 	//
 	// example:
 	//
-	// WEEKS
+	// DAYS
 	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
@@ -544,7 +544,7 @@ func (s *UpdateEnterpriseSnapshotPolicyRequestSpecialRetainRulesRules) Validate(
 }
 
 type UpdateEnterpriseSnapshotPolicyRequestStorageRule struct {
-	// Whether to enable the rapid availability of snapshots. The range of values:
+	// Specifies whether to enable instant access for snapshots. Valid values:
 	//
 	// - true
 	//

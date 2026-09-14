@@ -20,7 +20,7 @@ type iDescribeEventsResponseBody interface {
 }
 
 type DescribeEventsResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type DescribeEventsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The events.
+	// The list of events.
 	ResourceEvents []*DescribeEventsResponseBodyResourceEvents `json:"ResourceEvents,omitempty" xml:"ResourceEvents,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries returned for the paged query.
 	//
 	// example:
 	//
@@ -100,135 +100,135 @@ func (s *DescribeEventsResponseBody) Validate() error {
 }
 
 type DescribeEventsResponseBodyResourceEvents struct {
-	// The description of the event.
+	// The event description.
 	//
 	// example:
 	//
-	// need snapshot
+	// You can purchase 4296 provisioned IOPS for cost optimization. Based on your usage over the past 7 days, costs are estimated to decrease by 16%
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time of the event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+	// The end time of the event. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1679538083000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The level of the event. Valid values:
+	// The event level. Valid values:
 	//
-	// 1.  INFO
+	// 1. INFO
 	//
-	// 2.  WARN
+	// 2. WARN
 	//
-	// 3.  CRITICAL
+	// 3. CRITICAL
 	//
 	// example:
 	//
 	// INFO
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The name of the event. Valid values:
+	// The event name. Valid values:
 	//
-	// 	- NoSnapshot: indicates the event that is triggered because no snapshot is created for a disk to protect data on the disk.
+	// - NoSnapshot: data protection
 	//
-	// 	- BurstIOTriggered: indicates the event that is triggered when a burst I/O operation is performed on a disk.
+	// - BurstIOTriggered: burst I/O
 	//
-	// 	- CostOptimizationNeeded: indicates the event that is triggered when cost optimization is required.
+	// - CostOptimizationNeeded: cost optimization
 	//
-	// 	- DiskSpecNotMatchedWithInstance: indicates the event that is triggered because the specifications of a disk do not match the instance to which the disk is attached.
+	// - DiskSpecNotMatchedWithInstance: instance and disk specification mismatch
 	//
-	// 	- DiskIONo4kAligned: indicates the event that is triggered because the physical and logical sectors involved in a read or write operation are not 4K aligned.
+	// - DiskIONo4kAligned: non-4K aligned read/write
 	//
-	// 	- DiskIOHang: indicates the event that is triggered when an I/O hang occurs on a disk.
+	// - DiskIOHang: disk IOHang occurred
 	//
-	// 	- InstanceIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on an instance reaches the upper limit.
+	// - InstanceIOPSExceedInstanceMaxLimit: instance IOPS reached the upper limit
 	//
-	// 	- InstanceBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on an instance reaches the upper limit.
+	// - InstanceBPSExceedInstanceMaxLimit: instance BPS reached the upper limit
 	//
-	// 	- DiskIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the associated instance.
+	// - DiskIOPSExceedInstanceMaxLimit: disk IOPS reached the instance upper limit
 	//
-	// 	- DiskBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the associated instance.
+	// - DiskBPSExceedInstanceMaxLimit: disk BPS reached the instance upper limit
 	//
-	// 	- DiskIOPSExceedDiskMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the disk.
+	// - DiskIOPSExceedDiskMaxLimit: disk IOPS reached the disk upper limit
 	//
-	// 	- DiskBPSExceedDiskMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the disk.
+	// - DiskBPSExceedDiskMaxLimit: disk BPS reached the disk upper limit
 	//
 	// example:
 	//
 	// DiskIOHang
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The type of the event. Valid values:
+	// The event type. Valid values:
 	//
-	// 1.  Notification
+	// 1. Notification
 	//
-	// 2.  SystemException
+	// 2. SystemException
 	//
-	// 3.  Alert
+	// 3. Alert
 	//
 	// example:
 	//
 	// Alert
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// Extra attributes of event, possible fields are:
+	// The additional properties. Possible fields:
 	//
-	// - EcsInstanceId: ECS instance ID where the cloud disk is mounted;
+	// - EcsInstanceId: the ID of the ECS instance to which the cloud disk is attached.
 	//
-	// - Adapter: cloud disk mount point.
+	// - Adapter: the mount point of the cloud disk.
 	//
 	// example:
 	//
 	// {\\"EcsInstanceId\\":\\"i-uf6dkn9qpcw6y94g7ag7\\",\\"Adapter\\":\\"hda\\"}
 	ExtraAttributes *string `json:"ExtraAttributes,omitempty" xml:"ExtraAttributes,omitempty"`
-	// The recommended action after the event occurred. Valid values:
+	// The recommended action after the event occurs. Valid values:
 	//
-	// 	- ModifyDiskSpec
+	// - ModifyDiskSpec: change disk specifications
 	//
-	// 	- CreateSnapshot
+	// - CreateSnapshot: create a snapshot
 	//
-	// 	- ResizeDisk
+	// - ResizeDisk: expand disk capacity
 	//
-	// 	- AdjustProvision
+	// - AdjustProvision: adjust provisioned performance
 	//
-	// 	- ModifyInstanceSpec
+	// - ModifyInstanceSpec: change instance specifications
 	//
 	// example:
 	//
 	// AdjustProvision
 	RecommendAction *string `json:"RecommendAction,omitempty" xml:"RecommendAction,omitempty"`
-	// The codes of the parameters for the recommended action after the event occurred.
+	// The parameters for the recommended action after the event occurs.
 	//
 	// example:
 	//
 	// 4296
 	RecommendParams *string `json:"RecommendParams,omitempty" xml:"RecommendParams,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// d-bp67acfmxazb4p****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//
 	// disk
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The start time of the event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+	// The start time of the event. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1684204822000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the event. Valid values:
+	// The event status. Valid values:
 	//
-	// 1.  WillExecute
+	// 1. WillExecute: pending
 	//
-	// 2.  Executing
+	// 2. Executing: processing
 	//
-	// 3.  Executed
+	// 3. Executed: processed
 	//
-	// 4.  Ignore
+	// 4. Ignore: ignored
 	//
-	// 5.  Expired
+	// 5. Expired: expired
 	//
-	// 6.  Deleted
+	// 6. Deleted: deleted
 	//
 	// example:
 	//

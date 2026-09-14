@@ -24,7 +24,7 @@ type iDescribeDiskReplicaGroupsResponseBody interface {
 }
 
 type DescribeDiskReplicaGroupsResponseBody struct {
-	// A pagination token.
+	// The query token returned in this call.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DescribeDiskReplicaGroupsResponseBody) Validate() error {
 }
 
 type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
-	// The bandwidth value. Unit: Kbit/s. This parameter is not publicly available and has a system-preset value.
+	// The bandwidth. Unit: Kbit/s. This parameter is not yet available. The return value is preset by the system.
 	//
 	// example:
 	//
@@ -146,19 +146,25 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the region in which the secondary site is deployed.
+	// The region ID of the disaster recovery site.
 	//
 	// example:
 	//
 	// cn-shanghai
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The ID of the zone in which the secondary site is deployed.
+	// The zone ID of the disaster recovery site.
 	//
 	// example:
 	//
 	// cn-shanghai-e
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	// Indicates whether to enable replication time control.
+	// Specifies whether to enable replication time control (RTC). Valid values:
+	//
+	// - false: Disables RTC.
+	//
+	// - true: Enables RTC.
+	//
+	// > If you set this parameter to true, RTC is enabled for the replication pair-consistent group and all asynchronous replication pairs that are added to the group.
 	//
 	// example:
 	//
@@ -170,27 +176,27 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	//
 	// myreplicagrouptest
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when data was last replicated from the primary disks to the secondary disks in the replication pair-consistent group. The value of this parameter is a timestamp. Unit: seconds.
+	// The time when the last asynchronous replication was completed for the replication pair-consistent group. This parameter is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1637835114
 	LastRecoverPoint *int64 `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
-	// The IDs of replication pairs that belong to the replication pair-consistent group.
+	// The list of replication pair IDs in the replication pair-consistent group.
 	PairIds [][]byte `json:"PairIds,omitempty" xml:"PairIds,omitempty" type:"Repeated"`
-	// The number of replication pairs that belong to the replication pair-consistent group.
+	// The number of replication pairs in the replication pair-consistent group.
 	//
 	// example:
 	//
 	// 2
 	PairNumber *int64 `json:"PairNumber,omitempty" xml:"PairNumber,omitempty"`
-	// The initial source region (primary region) of the replication pair-consistent group.
+	// The initial source region of the replication group.
 	//
 	// example:
 	//
 	// cn-beijing
 	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
-	// The initial source zone (primary zone) of the replication pair-consistent group.
+	// The initial source zone of the replication group.
 	//
 	// example:
 	//
@@ -202,47 +208,47 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	//
 	// 180
 	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	// The IDs of the replication pair-consistent groups.
+	// The ID of the replication pair-consistent group.
 	//
 	// example:
 	//
 	// pg-myreplica****
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// The ID of the resource group to which the replication pair-consistent group belongs.
+	// The ID of the resource group to which the replication group belongs.
 	//
 	// example:
 	//
 	// rg-aek2a*******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the site from which the information about the replication pairs and replication pair-consistent group was obtained. Valid values:
+	// The site of the replication pair and the replication pair-consistent group. Valid values:
 	//
-	// 	- production: primary site
+	// - production: The production site.
 	//
-	// 	- backup: secondary site
+	// - backup: The disaster recovery site.
 	//
 	// example:
 	//
 	// production
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	// The ID of the region in which the primary site is deployed.
+	// The region ID of the production site.
 	//
 	// example:
 	//
 	// cn-beijing
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// The ID of the zone in which the primary site is deployed.
+	// The zone ID of the production site.
 	//
 	// example:
 	//
 	// cn-beijing-f
 	SourceZoneId *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	// The initial destination region (secondary region) of the replication pair-consistent group.
+	// The initial destination region of the replication group.
 	//
 	// example:
 	//
 	// cn-shanghai
 	StandbyRegion *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
-	// The initial destination zone (secondary zone) of the replication pair-consistent group.
+	// The initial destination zone of the replication group.
 	//
 	// example:
 	//
@@ -250,47 +256,47 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
 	// The status of the replication pair-consistent group. Valid values:
 	//
-	// 	- invalid: The replication pair-consistent group is invalid, which indicates that abnormal replication pairs are present in the replication pair-consistent group.
+	// - invalid: The replication pair-consistent group is invalid. This status indicates that a replication pair in the group is abnormal.
 	//
-	// 	- creating: The replication pair-consistent group is being created.
+	// - creating: The replication pair-consistent group is being created.
 	//
-	// 	- created: The replication pair-consistent group was created.
+	// - created: The replication pair-consistent group is created.
 	//
-	// 	- create_failed: The replication pair-consistent group failed to be created.
+	// - create_failed: The replication pair-consistent group failed to be created.
 	//
-	// 	- manual_syncing: Data was being manually synchronized between the disks in the replication pair-consistent group. When data was being manually synchronized for the first time, the replication pair is in this state.
+	// - manual_syncing: The replication pair-consistent group is performing a one-time synchronization. The group is also in this state during the first one-time synchronization.
 	//
-	// 	- syncing: Data was being synchronized between the disks. When data is being asynchronously replicated from the primary disk to the secondary disk again in subsequent operations, the replication pair is in this state.
+	// - syncing: The replication pair-consistent group is synchronizing data. The group is in this state when data is asynchronously replicated from the primary disk to the secondary disk for a subsequent time.
 	//
-	// 	- normal: The replication pair was working as expected. When the system finishes replicating data from the primary disk to the secondary disk within the current replication cycle, the replication pair enters this state.
+	// - normal: Normal. When data replication is complete in the current asynchronous replication cycle, the group is in this state.
 	//
-	// 	- stopping: The replication pair was being stopped.
+	// - stopping: The replication pair-consistent group is being stopped.
 	//
-	// 	- stopped: The replication pair was stopped.
+	// - stopped: The replication pair-consistent group is stopped.
 	//
-	// 	- stop_failed: The replication pair failed to be stopped.
+	// - stop_failed: The replication pair-consistent group failed to be stopped.
 	//
-	// 	- failovering: A failover was being performed.
+	// - failovering: A failover is being performed.
 	//
-	// 	- failovered: A failover was performed.
+	// - failovered: The failover is complete.
 	//
-	// 	- failover_failed: A failover failed to be performed.
+	// - failover_failed: The failover failed.
 	//
-	// 	- reprotecting: A reverse replication was being performed.
+	// - reprotecting: A reverse replication is being performed.
 	//
-	// 	- reprotect_failed: A reverse replication failed to be performed.
+	// - reprotect_failed: The reverse replication failed.
 	//
-	// 	- deleting: The replication pair was being deleted.
+	// - deleting: The replication pair-consistent group is being deleted.
 	//
-	// 	- delete_failed: The replication pair failed to be deleted.
+	// - delete_failed: The replication pair-consistent group failed to be deleted.
 	//
-	// 	- deleted: The replication pair was deleted.
+	// - deleted: The replication pair-consistent group is deleted.
 	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the replication pair-consistent group.
+	// The tags of the replication group.
 	Tags []*DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -505,13 +511,13 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) Validate() error {
 }
 
 type DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags struct {
-	// The tag key of the replication pair-consistent group.
+	// The key of the tag of the replication group.
 	//
 	// example:
 	//
 	// testKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the replication pair-consistent group.
+	// The value of the tag of the replication group.
 	//
 	// example:
 	//

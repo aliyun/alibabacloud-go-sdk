@@ -34,46 +34,68 @@ type iCreateAppResponseBody interface {
 }
 
 type CreateAppResponseBody struct {
+	// The detailed reason why access was denied.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The app ID.
+	//
 	// example:
 	//
 	// app-bd5e3533
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The app name.
+	//
 	// example:
 	//
 	// TestApp_g5t
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// 200
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	//
 	// example:
 	//
-	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/j6if7e3w217z31q/j6if7e3w217z31q.sql.zip?Expires=1753331032&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=vOXj4E1%2FCqncWcDtu3UxxuOcyh0%3D
+	// -
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code description.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The additional information. If the request is successful, "success" is returned. If the request fails, a specific error code is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E604ABBF-FD0F-5080-BE2B-BCF674A9E941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the app was created successfully. Valid values: true: The app was created successfully. false: The app failed to be created.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// OK

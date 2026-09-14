@@ -15,6 +15,8 @@ type iDescribeLensMonitorDisksRequest interface {
 	GetDiskIdPattern() *string
 	SetDiskIds(v []*string) *DescribeLensMonitorDisksRequest
 	GetDiskIds() []*string
+	SetEcsInstanceId(v string) *DescribeLensMonitorDisksRequest
+	GetEcsInstanceId() *string
 	SetLensTags(v []*string) *DescribeLensMonitorDisksRequest
 	GetLensTags() []*string
 	SetMaxResults(v int32) *DescribeLensMonitorDisksRequest
@@ -26,77 +28,87 @@ type iDescribeLensMonitorDisksRequest interface {
 }
 
 type DescribeLensMonitorDisksRequest struct {
-	// The type of the disk. Valid values:
+	// The cloud disk type. Valid values:
 	//
-	// - cloud
+	// - cloud: basic cloud disk.
 	//
-	// - cloud_efficiency
+	// - cloud_efficiency: ultra cloud disk.
 	//
-	// - cloud_ssd
+	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_essd
+	// - cloud_essd: Enterprise SSD (ESSD).
 	//
-	// - cloud_auto
+	// - cloud_auto: ESSD AutoPL cloud disk.
 	//
-	// - cloud_essd_entry
+	// - cloud_essd_entry: ESSD Entry disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// Regular matching fuzzy query to filter cloud disk IDs.
+	// The regular expression pattern used for fuzzy match filtering of cloud disk IDs.
 	//
 	// example:
 	//
-	// d-cd40hxfu0v**
+	// d-cd40hxfu0v*
 	DiskIdPattern *string `json:"DiskIdPattern,omitempty" xml:"DiskIdPattern,omitempty"`
-	// The list of disks.
+	// The list of cloud disk IDs.
 	//
 	// example:
 	//
 	// [\\"d-1\\", \\"d-2\\"]
 	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// Event tags of the disk, which are used to filter the disks on which the events associated with the specified tags occurred in the previous 24 hours. Valid values:
+	// The ECS instance ID.
 	//
-	// 	- NoSnapshot: specifies the event that is triggered because no snapshot is created for the disk to protect data on the disk.
+	// example:
 	//
-	// 	- BurstIOTriggered: specifies the event that is triggered when a burst I/O operation is performed on the disk.
+	// i-2zedroc0yv8z19ubnyos
+	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	// The list of cloud disk event tags, used to filter cloud disks that have experienced these event types within the last 24 hours. Valid values:
 	//
-	// 	- CostOptimizationNeeded: specifies the event that is triggered when cost optimization is required.
+	// - NoSnapshot: data protection
 	//
-	// 	- DiskSpecNotMatchedWithInstance: specifies the event that is triggered if the disk specifications do not match the instance to which the disk is attached.
+	// - BurstIOTriggered: burst I/O
 	//
-	// 	- DiskIONo4kAligned: specifies the event that is triggered if the physical and logical sectors involved in a read or write operation are not 4K aligned.
+	// - CostOptimizationNeeded: cost optimization
 	//
-	// 	- DiskIOHang: specifies the event that is triggered when an I/O hang occurs on the disk.
+	// - DiskSpecNotMatchedWithInstance: instance and cloud disk specifications do not match
 	//
-	// 	- InstanceIOPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of IOPS on the instance reaches the upper limit.
+	// - DiskIONo4kAligned: non-4K aligned read/write
 	//
-	// 	- InstanceBPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of BPS on the instance reaches the upper limit.
+	// - DiskIOHang: I/O hang occurred on the cloud disk
 	//
-	// 	- DiskIOPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of IOPS on the disk reaches the upper limit of the instance.
+	// - InstanceIOPSExceedInstanceMaxLimit: instance IOPS reached the upper limit
 	//
-	// 	- DiskBPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of BPS on the disk reaches the upper limit of the instance.
+	// - InstanceBPSExceedInstanceMaxLimit: instance BPS reached the upper limit
 	//
-	// 	- DiskIOPSExceedDiskMaxLimit: specifies the event that is triggered when the number of IOPS on the disk reaches the upper limit of the disk.
+	// - DiskIOPSExceedInstanceMaxLimit: cloud disk IOPS reached the instance upper limit
 	//
-	// 	- DiskBPSExceedDiskMaxLimit: specifies the event that is triggered when the number of BPS on the disk reaches the upper limit of the disk.
+	// - DiskBPSExceedInstanceMaxLimit: cloud disk BPS reached the instance upper limit
+	//
+	// - DiskIOPSExceedDiskMaxLimit: cloud disk IOPS reached the disk upper limit
+	//
+	// - DiskBPSExceedDiskMaxLimit: cloud disk BPS reached the disk upper limit
 	LensTags []*string `json:"LensTags,omitempty" xml:"LensTags,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries per page for a paged query. Maximum value: 100.
+	//
+	// Default value:
+	//
+	// - The default value is 10.
+	//
+	// - If the specified value is greater than 100, the default value of 100 is used.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query to retrieve more results.
-	//
-	// >The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID.
+	// The region ID. You can call DescribeRegions to query the list of regions supported by EBS Lens.
 	//
 	// This parameter is required.
 	//
@@ -124,6 +136,10 @@ func (s *DescribeLensMonitorDisksRequest) GetDiskIdPattern() *string {
 
 func (s *DescribeLensMonitorDisksRequest) GetDiskIds() []*string {
 	return s.DiskIds
+}
+
+func (s *DescribeLensMonitorDisksRequest) GetEcsInstanceId() *string {
+	return s.EcsInstanceId
 }
 
 func (s *DescribeLensMonitorDisksRequest) GetLensTags() []*string {
@@ -154,6 +170,11 @@ func (s *DescribeLensMonitorDisksRequest) SetDiskIdPattern(v string) *DescribeLe
 
 func (s *DescribeLensMonitorDisksRequest) SetDiskIds(v []*string) *DescribeLensMonitorDisksRequest {
 	s.DiskIds = v
+	return s
+}
+
+func (s *DescribeLensMonitorDisksRequest) SetEcsInstanceId(v string) *DescribeLensMonitorDisksRequest {
+	s.EcsInstanceId = &v
 	return s
 }
 

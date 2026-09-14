@@ -20,7 +20,7 @@ type iDescribeDedicatedBlockStorageClusterDisksRequest interface {
 }
 
 type DescribeDedicatedBlockStorageClusterDisksRequest struct {
-	// The ID of the dedicated block storage cluster.
+	// The dedicated block storage cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeDedicatedBlockStorageClusterDisksRequest struct {
 	//
 	// dbsc-cn-od43bf****
 	DbscId *string `json:"DbscId,omitempty" xml:"DbscId,omitempty"`
-	// The maximum number of entries to return on each page. Maximum value: 500.
+	// The maximum number of entries per page for a paged query. Maximum value: 500.
 	//
 	// Default value: 10.
 	//
@@ -36,13 +36,13 @@ type DescribeDedicatedBlockStorageClusterDisksRequest struct {
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the NextToken value returned in the previous call to the DescribeDedicatedBlockStorageClusterDisks operation. Leave this parameter empty the first time you call this operation.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the dedicated block storage cluster resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the dedicated block storage cluster. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

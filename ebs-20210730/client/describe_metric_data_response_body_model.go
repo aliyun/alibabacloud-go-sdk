@@ -20,21 +20,21 @@ type iDescribeMetricDataResponseBody interface {
 }
 
 type DescribeMetricDataResponseBody struct {
-	// Collection of monitoring data for the cloud disk.
+	// A collection of monitoring data for the disk.
 	DataList []*DescribeMetricDataResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 11B55F58-D3A4-4A9B-9596-342420D0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of data points queried.
+	// The total number of data entries returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// List of warning messages.
+	// A list of warning messages.
 	Warnings []*string `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
 }
 
@@ -96,13 +96,13 @@ func (s *DescribeMetricDataResponseBody) Validate() error {
 }
 
 type DescribeMetricDataResponseBodyDataList struct {
-	// List of monitoring data, consisting of a series of consecutive second-level timestamps and the corresponding metric values at those times.
+	// A list of monitoring data. The list contains a series of consecutive second-level timestamps and the corresponding metric values.
 	//
 	// example:
 	//
 	// {"1699258861": 1,"1699259461": 0}
 	Datapoints interface{} `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	// Labels.
+	// The labels.
 	//
 	// example:
 	//

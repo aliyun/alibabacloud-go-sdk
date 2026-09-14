@@ -20,25 +20,29 @@ type iGetReportRequest interface {
 }
 
 type GetReportRequest struct {
-	// Optional, AppName only takes effect when ReportType=present.
+	// Optional. This parameter takes effect only when ReportType is set to present.
 	//
 	// example:
 	//
 	// App1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Region name.
+	// The region ID. This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// When ReportType=history, ReportId is required to query historical reports based on ReportId.
+	// When ReportType is set to history, this parameter is required. The system queries the historical report based on the specified ReportId.
 	//
 	// example:
 	//
 	// report-74fbea80e802xxxx
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// Optional values: history/present.
+	// Valid values:
+	//
+	// - history
+	//
+	// - present
 	//
 	// example:
 	//

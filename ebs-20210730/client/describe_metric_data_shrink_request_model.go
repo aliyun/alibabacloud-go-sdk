@@ -30,7 +30,7 @@ type iDescribeMetricDataShrinkRequest interface {
 }
 
 type DescribeMetricDataShrinkRequest struct {
-	// Aggregation method over time. Possible values include:
+	// The method for aggregating data over time. Valid values:
 	//
 	// - SUM_OVER_TIME
 	//
@@ -42,65 +42,63 @@ type DescribeMetricDataShrinkRequest struct {
 	//
 	// - MIN_OVER_TIME
 	//
-	// - SUM_OVER_TIME_LCRO: Sum over a left-closed, right-open interval
+	// - SUM_OVER_TIME_LCRO: The sum of values in a left-closed, right-open interval.
 	//
-	// - AVG_OVER_TIME_LCRO: Average over a left-closed, right-open interval
+	// - AVG_OVER_TIME_LCRO: The average of values in a left-closed, right-open interval.
 	//
-	// - SUM_OVER_TIME_LORC: Sum over a left-open, right-closed interval
+	// - SUM_OVER_TIME_LORC: The sum of values in a left-open, right-closed interval.
 	//
-	// - AVG_OVER_TIME_LORC: Average over a left-open, right-closed interval
+	// - AVG_OVER_TIME_LORC: The average of values in a left-open, right-closed interval.
 	//
 	// example:
 	//
 	// AVG_OVER_TIME
 	AggreOps *string `json:"AggreOps,omitempty" xml:"AggreOps,omitempty"`
-	// Aggregation method between lines. Possible values include:
+	// The method for aggregating data across different lines. Valid values:
 	//
-	// - NON: No aggregation
+	// - NON: No aggregation is performed.
 	//
-	// - SUM: Sum
+	// - SUM: The sum of values.
 	//
-	// - AVG: Average
+	// - AVG: The average of values.
 	//
-	// - COUNT: Count
+	// - COUNT: The number of values.
 	//
-	// - MAX: Maximum
+	// - MAX: The maximum value.
 	//
-	// - MIN: Minimum
+	// - MIN: The minimum value.
 	//
 	// example:
 	//
 	// NON
 	AggreOverLineOps *string `json:"AggreOverLineOps,omitempty" xml:"AggreOverLineOps,omitempty"`
-	// The dimension map, in the JSON format. Valid values:
+	// A map of dimensions in the JSON format. The map specifies the dimensions to query. The following keys are supported:
 	//
-	// 	- DiskId: the disk name. Example: d-xxx.
+	// - DiskId: The disk name, such as d-xxx.
 	//
-	// 	- DeviceType: the disk type. system indicates the system disk, and data indicates the data disk.
+	// - DeviceType: The disk category. \\`system\\` indicates a system disk and \\`data\\` indicates a data disk.
 	//
-	// 	- DeviceCategory: the disk category. Example: cloud_essd.
+	// - DeviceCategory: The disk type, such as cloud_essd.
 	//
-	// 	- EcsInstanceId: the ECS instance name. Example: i-xxx.
+	// - EcsInstanceId: The name of the ECS instance to which the disk is attached, such as i-xxx.
 	//
-	// 	- Azone: the zone, such as cn-hangzhou-a.
+	// - Azone: The zone, such as cn-hangzhou-a.
 	//
-	// The returned result is the intersection of all dimension filtering conditions.
+	// The returned results are the intersection of all specified dimension-based filter conditions.
 	//
 	// example:
 	//
 	// {"DiskId":["d-bp14xxxx","d-bp11xxxx"], "DeviceCategory": ["cloud_essd"]}
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The end time point for obtaining metric data. It should not be later than the current moment. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+	// The end of the time range to query metric data. The time cannot be later than the current time. The time must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-11-21T02:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of fields used for grouping and aggregation.
+	// A list of fields for grouping and aggregation.
 	GroupByLabelsShrink *string `json:"GroupByLabels,omitempty" xml:"GroupByLabels,omitempty"`
-	// Metric name. Possible values include:
-	//
-	//
+	// The name of the metric. Valid values:
 	//
 	// - disk_bps_percent
 	//
@@ -124,31 +122,31 @@ type DescribeMetricDataShrinkRequest struct {
 	//
 	// disk_bps_percent
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The granularity at which data is collected for the metric. Unit: seconds. Default value: 5. Valid values:
+	// The interval at which to query metric data. Unit: seconds. The default value is 5. Valid values:
 	//
-	// 	- 5: 5 seconds. The query time range can be up to 12 hours.
+	// - 5: 5-second precision. You can query data within a 12-hour time range.
 	//
-	// 	- 10: 10 seconds. The query time range can be up to 24 hours.
+	// - 10: 10-second precision. You can query data within a 24-hour time range.
 	//
-	// 	- 60: 60 seconds. The query time range can be up to 7 days.
+	// - 60: 60-second precision. You can query data within a 7-day time range.
 	//
-	// 	- 300: 300 seconds. The query time range can be up to 30 days.
+	// - 300: 300-second precision. You can query data within a 30-day time range.
 	//
-	// 	- 600: 600 seconds. The query time range can be up to 30 days.
+	// - 600: 600-second precision. You can query data within a 30-day time range.
 	//
-	// 	- 3600: 3,600 seconds. The query time range can be up to 30 days.
+	// - 3600: 3600-second precision. You can query data within a 30-day time range.
 	//
 	// example:
 	//
 	// 60
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. You can specify a point in time that is up to 30 days before the current time. If both StartTime and EndTime are left empty, the monitoring metric data of the most recent statistical period is queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The beginning of the time range to query metric data. The start time can be up to 30 days before the current time. If you leave both the StartTime and EndTime parameters empty, the system queries the metrics for the most recent period. The time must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

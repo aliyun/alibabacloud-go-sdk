@@ -20,18 +20,29 @@ type iListReplicaEdgeSupportedResponseBody interface {
 }
 
 type ListReplicaEdgeSupportedResponseBody struct {
+	// The maximum number of entries to return on each page.
+	//
+	// Valid values: 1 to 500.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query. If NextToken is empty, no more results are available.
+	//
 	// example:
 	//
 	// e71d8a535bd9c****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17EE62D8-064E-5404-8B0D-72122478****
-	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The set of region information.
 	SupportedRegions []*ListReplicaEdgeSupportedResponseBodySupportedRegions `json:"SupportedRegions,omitempty" xml:"SupportedRegions,omitempty" type:"Repeated"`
 }
 
@@ -93,11 +104,14 @@ func (s *ListReplicaEdgeSupportedResponseBody) Validate() error {
 }
 
 type ListReplicaEdgeSupportedResponseBodySupportedRegions struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Zones    []*ListReplicaEdgeSupportedResponseBodySupportedRegionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The set of zone information.
+	Zones []*ListReplicaEdgeSupportedResponseBodySupportedRegionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s ListReplicaEdgeSupportedResponseBodySupportedRegions) String() string {
@@ -140,7 +154,14 @@ func (s *ListReplicaEdgeSupportedResponseBodySupportedRegions) Validate() error 
 }
 
 type ListReplicaEdgeSupportedResponseBodySupportedRegionsZones struct {
+	// Indicates whether replication time control is supported.
+	//
+	// example:
+	//
+	// false
 	SupportRtc *bool `json:"SupportRtc,omitempty" xml:"SupportRtc,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

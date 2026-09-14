@@ -20,15 +20,15 @@ type iDescribeLensMonitorDisksResponseBody interface {
 }
 
 type DescribeLensMonitorDisksResponseBody struct {
-	// The information about the disks.
+	// The list of cloud disk information.
 	DiskInfos []*DescribeLensMonitorDisksResponseBodyDiskInfos `json:"DiskInfos,omitempty" xml:"DiskInfos,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The request ID. A request ID is returned regardless of whether the API call succeeds.
 	//
 	// example:
 	//
@@ -100,122 +100,127 @@ func (s *DescribeLensMonitorDisksResponseBody) Validate() error {
 }
 
 type DescribeLensMonitorDisksResponseBodyDiskInfos struct {
-	// The BPS.
+	// The maximum data throughput for read/write (I/O) operations per second. Unit: MB/s.
 	//
 	// example:
 	//
 	// 300
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// Indicates whether the performance burst feature is enabled. Valid values:
+	// Indicates whether burst (performance bursting) is enabled. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
-	// This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL cloud disk](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// true
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The type of the disk. Valid values:
+	// The cloud disk type. Valid values:
 	//
-	// - cloud
+	// - cloud: basic cloud disk.
 	//
-	// - cloud_efficiency
+	// - cloud_efficiency: ultra cloud disk.
 	//
-	// - cloud_ssd
+	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_essd
+	// - cloud_essd: Enterprise SSD (ESSD).
 	//
-	// - cloud_auto
+	// - cloud_auto: ESSD AutoPL cloud disk.
 	//
-	// - cloud_essd_entry
+	// - cloud_essd_entry: ESSD Entry disk.
 	//
 	// example:
 	//
 	// cloud_essd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The ID of the disk.
+	// The cloud disk ID.
 	//
 	// example:
 	//
 	// d-cd401****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the disk.
+	// The cloud disk name.
 	//
 	// example:
 	//
 	// disk-28c6b****
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The disk status. Valid values:
+	// The cloud disk status. Valid values:
 	//
-	// - Available
+	// - Available: in use.
 	//
-	// - Deleted
+	// - Deleted: deleted.
 	//
 	// example:
 	//
 	// Available
 	DiskStatus *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
-	// The disk type. Valid values:
+	// The cloud disk type. Valid values:
 	//
-	// 	- system: system disk
+	// - system: system cloud disk.
 	//
-	// 	- data: data disk
+	// - data: data cloud disk.
 	//
 	// example:
 	//
 	// system
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The IOPS.
+	// The maximum number of read/write (I/O) operations per second. Unit: operations/s.
 	//
 	// example:
 	//
 	// 4000
 	Iops *int32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
-	// Event tags of the disk.
+	// The collection of event tags for the cloud disk. Event tags display events that occurred on the cloud disk within the last 24 hours, with a delay of up to 1 hour compared to the actual events.
 	LensTags []*string `json:"LensTags,omitempty" xml:"LensTags,omitempty" type:"Repeated"`
-	// The new performance level of the ESSD. Valid values:
+	// The performance level (PL) of the ESSD cloud disk. Valid values:
 	//
-	// 	- PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
+	// - PL0: maximum random read/write IOPS of 10,000 per standard SSD.
 	//
-	// 	- PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
+	// - PL1: maximum random read/write IOPS of 50,000 per standard SSD.
 	//
-	// 	- PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
+	// - PL2: maximum random read/write IOPS of 100,000 per standard SSD.
 	//
-	// 	- PL3: An ESSD delivers up to 1,000,000 random read/write IOPS.
+	// - PL3: maximum random read/write IOPS of 1,000,000 per standard SSD.
 	//
 	// example:
 	//
 	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
+	// The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline performance}.
 	//
-	// Baseline performance = min{1,800 + 50 × Capacity, 50,000}
+	// Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
 	//
-	// This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL cloud disk](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// 4000
 	ProvisionedIops *int32 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The region ID of the disk.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether the cloud disk is a shared cloud disk.
+	//
+	// example:
+	//
+	// true
 	SharingEnabled *string `json:"SharingEnabled,omitempty" xml:"SharingEnabled,omitempty"`
-	// The size of the disk. Unit: GiB.
+	// The cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 64
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// Tags of the disk.
+	// The collection of tags for the cloud disk.
 	Tags []*DescribeLensMonitorDisksResponseBodyDiskInfosTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the zone.
+	// The zone ID of the cloud disk.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iDescribeDedicatedBlockStorageClusterDisksResponseBody interface {
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBody struct {
-	// Details about the cloud disks.
+	// The collection of cloud disk information.
 	Disks *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	// The query token returned in this call.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBody) Validate() error
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks struct {
-	// Details about the cloud disks.
+	// The collection of cloud disk information.
 	Disk []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
 }
 
@@ -114,53 +114,59 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks) Validate() 
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
-	// The time when the cloud disk was last attached. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
+	// The time when the cloud disk was last attached. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-06-07T06:08:56Z
 	AttachedTime *string `json:"AttachedTime,omitempty" xml:"AttachedTime,omitempty"`
-	// This parameter is currently in invitational preview and unavailable for general users.
+	// This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// null
 	BdfId *string `json:"BdfId,omitempty" xml:"BdfId,omitempty"`
-	// Whether the ESSD AutoPL disk is enabled burst IOPS / BPS. This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// Indicates whether the burst (performance burst) feature is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
+	// This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
-	// true
+	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The category of the disk. A value of cloud_essd indicates that the disk is an ESSD.
+	// The category of the cloud disk or local disk is cloud_essd, which indicates an ESSD.
 	//
 	// example:
 	//
 	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Indicates whether the automatic snapshots of the cloud disk are deleted when the disk is released. Valid values:
+	// Indicates whether automatic snapshots are deleted when the cloud disk is released. Valid values:
 	//
-	// 	- true: The automatic snapshots of the cloud disk are deleted when the disk is released.
+	// - true: Automatic snapshots are deleted when the cloud disk is released.
 	//
-	// 	- false: The automatic snapshots of the cloud disk are retained when the disk is released.
+	// - false: Automatic snapshots are retained when the cloud disk is released.
 	//
-	// Snapshots that are created by calling the [CreateSnapshot](https://help.aliyun.com/document_detail/25524.html) operation or by using the Elastic Compute Service (ECS) console are retained and not affected by this parameter.
+	// Snapshots created by calling [CreateSnapshot](https://help.aliyun.com/document_detail/25524.html) or by using the console are not affected by this parameter and are always retained.
 	//
 	// example:
 	//
 	// false
 	DeleteAutoSnapshot *bool `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
-	// Indicates whether the cloud disk is released when its associated instance is released. Valid values:
+	// Indicates whether the cloud disk is released when the instance is released. Valid values:
 	//
-	// 	- true: The cloud disk is released when its associated instance is released.
+	// - true: The cloud disk is released when the instance is released.
 	//
-	// 	- false: The cloud disk is retained when its associated instance is released.
+	// - false: The cloud disk is retained when the instance is released.
 	//
 	// example:
 	//
 	// true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The description of the cloud disk.
+	// The cloud disk description.
 	//
 	// example:
 	//
@@ -172,13 +178,13 @@ type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
 	//
 	// 2021-06-07T21:01:22Z
 	DetachedTime *string `json:"DetachedTime,omitempty" xml:"DetachedTime,omitempty"`
-	// The device name of the cloud disk on its associated instance. Example: /dev/xvdb. Take note of the following items:
+	// The device name of the instance to which the cloud disk is attached, such as /dev/xvdb. Note the following items:
 	//
-	// 	- This parameter has a value only when the `Status` value is `In_use`.
+	// - This parameter has a value only when the `Status` parameter is set to `In_use`. This parameter is empty in other states.
 	//
-	// 	- This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
+	// - For cloud disks with the multi-attach feature enabled, this value is always empty. You can view all attachment information of the cloud disk from the returned `Attachment` list.
 	//
-	// >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
+	// > This parameter will be deprecated. To ensure code compatibility, do not use this parameter.
 	//
 	// example:
 	//
@@ -186,27 +192,29 @@ type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// The billing method of the cloud disk. Valid values:
 	//
-	// 	- PrePaid: subscription
+	// - PrePaid: subscription.
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - PostPaid: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	// The ID of the cloud disk.
+	// The cloud disk ID.
 	//
 	// example:
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the cloud disk.
+	// The cloud disk name.
 	//
 	// example:
 	//
 	// testDiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// Indicates whether the automatic snapshot policy feature is enabled for the cloud disk.
+	//
+	// >This parameter is deprecated. After a cloud disk is created, the automatic snapshot policy feature is enabled by default. You only need to associate an automatic snapshot policy with the cloud disk.
 	//
 	// example:
 	//
@@ -218,55 +226,55 @@ type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The maximum number of IOPS.
+	// The maximum number of read/write (I/O) operations per second. Unit: operations/s.
 	//
 	// example:
 	//
 	// 4000
 	IOPS *int64 `json:"IOPS,omitempty" xml:"IOPS,omitempty"`
-	// The ID of the image that was used to create the instance. This parameter is empty unless the cloud disk was created from an image. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
+	// The ID of the image used to create the ECS instance. This parameter has a value only for cloud disks created from an image. Otherwise, this value is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
 	//
 	// example:
 	//
 	// m-bp13aqm171qynt3u***
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the instance to which the cloud disk is attached. Take note of the following items:
+	// The instance ID of the instance to which the cloud disk is mounted. Note the following items:
 	//
-	// 	- This parameter has a value only when the `Status` value is `In_use`.
+	// - This parameter has a value only when the `Status` parameter is set to `In_use`. This parameter is empty in other states.
 	//
-	// 	- This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
+	// - For cloud disks with the multi-attach attribute enabled, this value is always empty. You can view all mount information of the cloud disk from the returned `Attachment` list.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4q****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Key Management Service (KMS) key used by the cloud disk.
+	// The KMS key ID used by the cloud disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The number of instances to which the Shared Block Storage device is attached.
+	// The number of instances to which the shared storage is attached.
 	//
 	// example:
 	//
 	// 1
 	MountInstanceNum *int32 `json:"MountInstanceNum,omitempty" xml:"MountInstanceNum,omitempty"`
-	// Indicates whether the multi-attach feature was enabled for the cloud disk.
+	// Indicates whether the multi-attach feature is enabled for the cloud disk.
 	//
 	// example:
 	//
 	// Disabled
 	MultiAttach *string `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
-	// The performance level of the enhanced SSD (ESSD). Valid values:
+	// The performance level of the ESSD. Valid values:
 	//
-	// 	- PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
 	//
-	// 	- PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
 	//
-	// 	- PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - PL2: a maximum of 100,000 random read/write IOPS per cloud disk.
 	//
-	// 	- PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: a maximum of 1,000,000 random read/write IOPS per cloud disk.
 	//
 	// example:
 	//
@@ -278,59 +286,61 @@ type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
 	//
 	// false
 	Portable *bool `json:"Portable,omitempty" xml:"Portable,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk.
+	// The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline performance}.
 	//
-	// >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
+	// Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
+	//
+	// This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
-	// 50000
+	// 40000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The region ID of cloud disk.
+	// The region ID of the cloud disk.
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The size of the disk. Unit: GiB.
+	// The cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 60
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot that was used to create the cloud disk.
+	// The ID of the snapshot used to create the cloud disk.
 	//
-	// This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
+	// If no snapshot was specified when the cloud disk was created, this value is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
 	//
 	// example:
 	//
 	// s-bp67acfmxazb4p****
 	SourceSnapshotId *string `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
-	// The state of the cloud disk. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html). Valid values:
+	// The cloud disk status. For more information, see [Cloud disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
 	//
-	// 	- In_use
+	// -   In_use.
 	//
-	// 	- Available
+	// -   Available.
 	//
-	// 	- Attaching
+	// -   Attaching.
 	//
-	// 	- Detaching
+	// -   Detaching.
 	//
-	// 	- Creating
+	// -   Creating.
 	//
-	// 	- ReIniting
+	// -   ReIniting.
 	//
 	// example:
 	//
 	// In_use
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the dedicated block storage cluster to which the cloud disk belongs. If your cloud disk belongs to the public block storage cluster, an empty value is returned.
+	// The ID of the dedicated block storage cluster to which the cloud disk belongs. If the cloud disk belongs to a public cloud block storage cluster, this value is empty.
 	//
 	// example:
 	//
 	// dbsc-j5e1sf2vaf5he8m2****
 	StorageClusterId *string `json:"StorageClusterId,omitempty" xml:"StorageClusterId,omitempty"`
-	// The ID of the storage set.
+	// The storage set ID.
 	//
 	// example:
 	//
@@ -344,23 +354,23 @@ type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk struct {
 	StorageSetPartitionNumber *int32 `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
 	// The tags of the cloud disk.
 	Tags []*DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The maximum number of BPS.
+	// The amount of data that can be transferred per unit of time. Unit: MB/s.
 	//
 	// example:
 	//
-	// 350
+	// 100
 	Throughput *int64 `json:"Throughput,omitempty" xml:"Throughput,omitempty"`
-	// The type of the disk. Valid values:
+	// The type of the cloud disk. Valid values:
 	//
-	// 	- system: system disk
+	// - system: system cloud disk.
 	//
-	// 	- data: data disk
+	// - data: data cloud disk.
 	//
 	// example:
 	//
-	// all
+	// system
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The zone ID of cloud disk.
+	// The zone ID of the cloud disk.
 	//
 	// example:
 	//
@@ -696,13 +706,13 @@ func (s *DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk) Validat
 }
 
 type DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags struct {
-	// The tag key of the cloud disk.
+	// The tag key.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the cloud disk.
+	// The tag value.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetReportResponseBody interface {
 }
 
 type GetReportResponseBody struct {
-	// Data Details.
+	// The data details.
 	Datas []*GetReportResponseBodyDatas `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ func (s *GetReportResponseBody) Validate() error {
 }
 
 type GetReportResponseBodyDatas struct {
-	// Data.
+	// The data.
 	Data []*GetReportResponseBodyDatasData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Data Title.
+	// The data title.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ func (s *GetReportResponseBodyDatas) Validate() error {
 }
 
 type GetReportResponseBodyDatasData struct {
-	// Data Points.
+	// The data points.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetReportResponseBodyDatasData struct {
 	//
 	// }
 	DataPoints map[string]interface{} `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
-	// Data Labels.
+	// The data labels.
 	//
 	// example:
 	//

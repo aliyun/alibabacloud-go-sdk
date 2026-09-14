@@ -24,33 +24,33 @@ type iDescribeEnterpriseSnapshotPolicyResponseBody interface {
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token (Token) returned for the next query.
 	//
 	// example:
 	//
-	// AAAAAdDWBF2
+	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number for paged queries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paged queries.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned snapshot policies.
+	// The list of policies.
 	Policies []*DescribeEnterpriseSnapshotPolicyResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 5CA35A83-8D8A-5B67-BAA0-2E124F194DA4
+	// 549BB71F-6778-53CE-AA73-E94ACE802AB4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,35 +134,35 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBody) Validate() error {
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPolicies struct {
-	// The time when the enterprise-level snapshot policy was created.
+	// The creation time in UTC ISO 8601 format.
 	//
 	// example:
 	//
 	// 2023-06-24T06:03:35Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The replication rule of snapshots in the enterprise-level snapshot policy.
+	// The snapshot cross-region copy information.
 	CrossRegionCopyInfo *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo `json:"CrossRegionCopyInfo,omitempty" xml:"CrossRegionCopyInfo,omitempty" type:"Struct"`
-	// The description of the enterprise-level snapshot policy.
+	// The snapshot policy description.
 	//
 	// example:
 	//
 	// xxx
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The disks that are associated with the snapshot policy.
+	// The list of bound cloud disk IDs.
 	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// Indicates whether snapshots are managed.
+	// The snapshot managed status.
 	//
 	// example:
 	//
 	// false
 	ManagedForEcs *bool `json:"ManagedForEcs,omitempty" xml:"ManagedForEcs,omitempty"`
-	// The name of the enterprise-level snapshot policy.
+	// The snapshot policy name.
 	//
 	// example:
 	//
 	// xxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the enterprise-level snapshot policy.
+	// The snapshot policy ID.
 	//
 	// example:
 	//
@@ -174,29 +174,35 @@ type DescribeEnterpriseSnapshotPolicyResponseBodyPolicies struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The retention rule of the enterprise-level snapshot policy.
+	// The snapshot policy retention rule.
 	RetainRule *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesRetainRule `json:"RetainRule,omitempty" xml:"RetainRule,omitempty" type:"Struct"`
-	// The scheduling rule of the enterprise-level snapshot policy.
+	// The snapshot policy schedule rule.
 	Schedule *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSchedule `json:"Schedule,omitempty" xml:"Schedule,omitempty" type:"Struct"`
-	// The special retention rules of the enterprise-level snapshot policy.
+	// The special retention rules for the snapshot policy.
 	SpecialRetainRules *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRules `json:"SpecialRetainRules,omitempty" xml:"SpecialRetainRules,omitempty" type:"Struct"`
-	// The status of the enterprise-level snapshot policy.
+	// The status. Valid values:
+	//
+	// - DISABLED
+	//
+	// - ENABLED
 	//
 	// example:
 	//
 	// DISABLED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The storage rule of snapshots in the enterprise-level snapshot policy.
+	// The snapshot policy storage rule.
 	StorageRule *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesStorageRule `json:"StorageRule,omitempty" xml:"StorageRule,omitempty" type:"Struct"`
 	// the pair tags
 	Tags []*DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The number of objects that are associated with the enterprise-level snapshot policy.
+	// The number of bound targets.
 	//
 	// example:
 	//
 	// 10
 	TargetCount *int32 `json:"TargetCount,omitempty" xml:"TargetCount,omitempty"`
-	// The type of the enterprise-level snapshot policy.
+	// The type. Valid values:
+	//
+	// - DISK
 	//
 	// example:
 	//
@@ -395,13 +401,13 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPolicies) Validate() error 
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo struct {
-	// Indicates whether the cross-region replication feature is enabled.
+	// Indicates whether cross-region copy is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The destination regions that store snapshot copies.
+	// The destination region information.
 	Regions []*DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfoRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -445,13 +451,13 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfoRegions struct {
-	// The ID of the destination region.
+	// The snapshot copy destination region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The retention period of snapshot copies in the destination region. Unit: day.
+	// The number of days to retain snapshots at the destination region.
 	//
 	// example:
 	//
@@ -490,19 +496,19 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesRetainRule struct {
-	// The maximum number of snapshots that can be retained.
+	// The retention count.
 	//
 	// example:
 	//
 	// 10
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The value of the retention period of snapshots.
+	// The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
 	//
 	// example:
 	//
 	// 14
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
-	// The unit of the retention period of snapshots.
+	// The retention time unit.
 	//
 	// example:
 	//
@@ -550,7 +556,7 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesRetainRule) Validat
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSchedule struct {
-	// The cron expression of the enterprise-level snapshot policy.
+	// The cron expression.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 }
 
@@ -576,7 +582,7 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSchedule) Validate(
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRules struct {
-	// Indicates whether the special retention period is enabled.
+	// Indicates whether special retention is enabled.
 	//
 	// example:
 	//
@@ -626,19 +632,19 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRules)
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRulesRules struct {
-	// The unit of the special retention period.
+	// The special period unit.
 	//
 	// example:
 	//
 	// WEEKS
 	SpecialPeriodUnit *string `json:"SpecialPeriodUnit,omitempty" xml:"SpecialPeriodUnit,omitempty"`
-	// The value of the retention period.
+	// The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
 	//
 	// example:
 	//
 	// 1
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
-	// The unit of the retention period.
+	// The retention time unit.
 	//
 	// example:
 	//
@@ -686,7 +692,7 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRulesR
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesStorageRule struct {
-	// Indicates whether the instant access feature is enabled.
+	// Indicates whether instant access is enabled for snapshots.
 	//
 	// example:
 	//
@@ -716,13 +722,13 @@ func (s *DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesStorageRule) Valida
 }
 
 type DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesTags struct {
-	// The key of the tag of the enterprise-level snapshot policy.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag of the enterprise-level snapshot policy.
+	// The tag value of the resource.
 	//
 	// example:
 	//

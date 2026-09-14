@@ -32,39 +32,58 @@ type iDescribeAppsResponseBody interface {
 }
 
 type DescribeAppsResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// None
-	AccessDeniedDetail *string                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AppInfos           []*DescribeAppsResponseBodyAppInfos `json:"AppInfos,omitempty" xml:"AppInfos,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The application information.
+	AppInfos []*DescribeAppsResponseBodyAppInfos `json:"AppInfos,omitempty" xml:"AppInfos,omitempty" type:"Repeated"`
+	// The internal error code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// OK
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message, which is used to replace the %s variable in the ErrMessage error message.
+	//
 	// example:
 	//
 	// -
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A1C00637-AC84-5EFD-89B5-D5CE39F0F2B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The user error code.
+	//
 	// example:
 	//
 	// OK
@@ -183,38 +202,66 @@ func (s *DescribeAppsResponseBody) Validate() error {
 }
 
 type DescribeAppsResponseBodyAppInfos struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-bd5e3533
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name. This parameter takes effect only when ReportType is set to present.
+	//
 	// example:
 	//
 	// app1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The tags contained in the user application.
+	//
 	// example:
 	//
 	// default
 	AppTags []*DescribeAppsResponseBodyAppInfosAppTags `json:"AppTags,omitempty" xml:"AppTags,omitempty" type:"Repeated"`
+	// The default time zone.
+	//
 	// example:
 	//
 	// true
-	Default                *bool   `json:"Default,omitempty" xml:"Default,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EventBridgeSendEnabled *bool   `json:"EventBridgeSendEnabled,omitempty" xml:"EventBridgeSendEnabled,omitempty"`
+	Default *bool `json:"Default,omitempty" xml:"Default,omitempty"`
+	// The event description.
+	//
+	// example:
+	//
+	// This app is used to collect cloud disk usage statistics across the network
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether delivery to EventBridge is enabled.
+	EventBridgeSendEnabled *bool `json:"EventBridgeSendEnabled,omitempty" xml:"EventBridgeSendEnabled,omitempty"`
+	// The modification time in UTC.
+	//
 	// example:
 	//
 	// 2025-11-14T02:11:32Z
-	ModifyTime         *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	MonitorSendEnabled *bool  `json:"MonitorSendEnabled,omitempty" xml:"MonitorSendEnabled,omitempty"`
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Indicates whether delivery to CloudMonitor is enabled.
+	MonitorSendEnabled *bool `json:"MonitorSendEnabled,omitempty" xml:"MonitorSendEnabled,omitempty"`
+	// Indicates whether report sending is enabled.
+	//
 	// example:
 	//
 	// true
 	ReportSendEnabled *bool `json:"ReportSendEnabled,omitempty" xml:"ReportSendEnabled,omitempty"`
-	SlsSendEnabled    *bool `json:"SlsSendEnabled,omitempty" xml:"SlsSendEnabled,omitempty"`
+	// Indicates whether delivery to Simple Log Service (SLS) is enabled.
+	SlsSendEnabled *bool `json:"SlsSendEnabled,omitempty" xml:"SlsSendEnabled,omitempty"`
+	// The report subscription period.
+	//
 	// example:
 	//
 	// Weekly
 	SubscribePeriod *string `json:"SubscribePeriod,omitempty" xml:"SubscribePeriod,omitempty"`
+	// The subscription status. Valid values:
+	//
+	// - Subscribe: subscribed.
+	//
+	// - UnSubscribe: not subscribed.
+	//
 	// example:
 	//
 	// Subscribe
@@ -351,10 +398,14 @@ func (s *DescribeAppsResponseBodyAppInfos) Validate() error {
 }
 
 type DescribeAppsResponseBodyAppInfosAppTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// ebs
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

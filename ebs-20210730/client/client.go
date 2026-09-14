@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -160,13 +160,7 @@ func (client *Client) AddDiskReplicaPair(request *AddDiskReplicaPairRequest) (_r
 
 // Summary:
 //
-// Cancels Elastic Block Storage data insight (CloudLens for EBS).
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+// Activates EBS Lens (CloudLens for EBS).
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -195,13 +189,7 @@ func (client *Client) ApplyLensServiceWithOptions(runtime *dara.RuntimeOptions) 
 
 // Summary:
 //
-// Cancels Elastic Block Storage data insight (CloudLens for EBS).
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+// Activates EBS Lens (CloudLens for EBS).
 //
 // @return ApplyLensServiceResponse
 func (client *Client) ApplyLensService() (_result *ApplyLensServiceResponse, _err error) {
@@ -291,13 +279,7 @@ func (client *Client) BindEnterpriseSnapshotPolicy(request *BindEnterpriseSnapsh
 
 // Summary:
 //
-// Cancels Elastic Block Storage data insight (CloudLens for EBS).
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+// Cancels EBS Lens.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -326,13 +308,7 @@ func (client *Client) CancelLensServiceWithOptions(runtime *dara.RuntimeOptions)
 
 // Summary:
 //
-// Cancels Elastic Block Storage data insight (CloudLens for EBS).
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+// Cancels EBS Lens.
 //
 // @return CancelLensServiceResponse
 func (client *Client) CancelLensService() (_result *CancelLensServiceResponse, _err error) {
@@ -566,7 +542,7 @@ func (client *Client) ClearReplicaGroupDrill(request *ClearReplicaGroupDrillRequ
 
 // Summary:
 //
-// 中心化角色：创建App
+// Creates an app with the centralized role.
 //
 // @param request - CreateAppRequest
 //
@@ -642,7 +618,7 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *d
 
 // Summary:
 //
-// 中心化角色：创建App
+// Creates an app with the centralized role.
 //
 // @param request - CreateAppRequest
 //
@@ -660,19 +636,19 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
-// Creates a dedicated block storage cluster. When you call this operation, you can specify parameters, such as Azone, Capacity, Type, and PeriodUnit, in the request.
+// Creates a dedicated block storage cluster by calling the CreateDedicatedBlockStorageCluster operation with parameters such as Azone, Capacity, Type, and PeriodUnit.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-//   - Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
+// - Dedicated Block Storage Cluster is a block storage service that is physically isolated from other public cloud block storage clusters and provides exclusive access to all cluster resources for the owner.<props="china"> For more information, see [What is Dedicated Block Storage Cluster](https://help.aliyun.com/document_detail/208883.html).
 //
-//   - Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
+// - Cloud disks created on a dedicated block storage cluster can be attached only to ECS instances in the same zone. Before you create a dedicated block storage cluster, plan the region and zone for the resources.
 //
-//   - Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
+// - Dedicated block storage clusters are classified into basic and performance types. Select the appropriate cluster performance type based on your business requirements when you create a cluster.
 //
-//   - You are charged for creating dedicated block storage clusters.
+// - You are charged for creating a dedicated block storage cluster.<props="china"> For more information, see [Billing](https://help.aliyun.com/document_detail/208884.html).
 //
 // @param request - CreateDedicatedBlockStorageClusterRequest
 //
@@ -752,19 +728,19 @@ func (client *Client) CreateDedicatedBlockStorageClusterWithOptions(request *Cre
 
 // Summary:
 //
-// Creates a dedicated block storage cluster. When you call this operation, you can specify parameters, such as Azone, Capacity, Type, and PeriodUnit, in the request.
+// Creates a dedicated block storage cluster by calling the CreateDedicatedBlockStorageCluster operation with parameters such as Azone, Capacity, Type, and PeriodUnit.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-//   - Dedicated block storage clusters are physically isolated from public block storage clusters. The owner of each dedicated block storage cluster has exclusive access to all resources in the cluster.
+// - Dedicated Block Storage Cluster is a block storage service that is physically isolated from other public cloud block storage clusters and provides exclusive access to all cluster resources for the owner.<props="china"> For more information, see [What is Dedicated Block Storage Cluster](https://help.aliyun.com/document_detail/208883.html).
 //
-//   - Disks created in a dedicated block storage cluster can be attached only to Elastic Compute Service (ECS) instances that reside in the same zone as the cluster. Before you create a dedicated block storage cluster, decide the regions and zones in which to deploy your cloud resources.
+// - Cloud disks created on a dedicated block storage cluster can be attached only to ECS instances in the same zone. Before you create a dedicated block storage cluster, plan the region and zone for the resources.
 //
-//   - Dedicated block storage clusters are classified into basic and performance types. When you create a dedicated block storage cluster, select a cluster type based on your business requirements.
+// - Dedicated block storage clusters are classified into basic and performance types. Select the appropriate cluster performance type based on your business requirements when you create a cluster.
 //
-//   - You are charged for creating dedicated block storage clusters.
+// - You are charged for creating a dedicated block storage cluster.<props="china"> For more information, see [Billing](https://help.aliyun.com/document_detail/208884.html).
 //
 // @param request - CreateDedicatedBlockStorageClusterRequest
 //
@@ -782,7 +758,7 @@ func (client *Client) CreateDedicatedBlockStorageCluster(request *CreateDedicate
 
 // Summary:
 //
-// Triggers a diagnostic.
+// Creates a diagnostic report for a specified resource.
 //
 // @param request - CreateDiagnoseReportRequest
 //
@@ -850,7 +826,7 @@ func (client *Client) CreateDiagnoseReportWithOptions(request *CreateDiagnoseRep
 
 // Summary:
 //
-// Triggers a diagnostic.
+// Creates a diagnostic report for a specified resource.
 //
 // @param request - CreateDiagnoseReportRequest
 //
@@ -872,19 +848,19 @@ func (client *Client) CreateDiagnoseReport(request *CreateDiagnoseReportRequest)
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation Description
 //
-// The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of instances.
+// Replication pair-consistent groups help you manage asynchronous replication for multiple disks in disaster recovery scenarios. You can centrally manage operations for these disks. The groups ensure that data on all disks can be recovered to the same point in time. This provides disaster recovery protection for one or more instances.
 //
-// Take note of the following items:
+// When you create a replication pair-consistent group, note the following:
 //
-//   - For information about the regions in which the replication pair-consistent group feature is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support replication pair-consistent groups, see [Async replication overview](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - Replication pair-consistent groups can be used to implement disaster recovery across zones within the same region and disaster recovery across regions.
+// - Replication pair-consistent groups support asynchronous disaster recovery across zones in the same region or across regions.
 //
-//   - A replication pair and a replication pair-consistent group can replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added to only a replication pair-consistent group that replicates in the same direction as the replication pair.
+// - A replication pair can be added to a replication pair-consistent group only if the pair and the group have the same data replication direction. This means their production regions, production zones, disaster recovery regions, and disaster recovery zones must be the same.
 //
-//   - After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs instead of their original RPOs.
+// - After a replication pair is added to a replication pair-consistent group, the original Recovery Point Object (RPO) of the pair becomes invalid. Data is then replicated based on the RPO of the group.
 //
 // @param request - CreateDiskReplicaGroupRequest
 //
@@ -976,19 +952,19 @@ func (client *Client) CreateDiskReplicaGroupWithOptions(request *CreateDiskRepli
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation Description
 //
-// The replication pair-consistent group feature allows you to batch manage multiple disks in disaster recovery scenarios. You can restore the data of all disks in the same replication pair-consistent group to the same point in time to allow for disaster recovery of instances.
+// Replication pair-consistent groups help you manage asynchronous replication for multiple disks in disaster recovery scenarios. You can centrally manage operations for these disks. The groups ensure that data on all disks can be recovered to the same point in time. This provides disaster recovery protection for one or more instances.
 //
-// Take note of the following items:
+// When you create a replication pair-consistent group, note the following:
 //
-//   - For information about the regions in which the replication pair-consistent group feature is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support replication pair-consistent groups, see [Async replication overview](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - Replication pair-consistent groups can be used to implement disaster recovery across zones within the same region and disaster recovery across regions.
+// - Replication pair-consistent groups support asynchronous disaster recovery across zones in the same region or across regions.
 //
-//   - A replication pair and a replication pair-consistent group can replicate in the same direction if they have the same primary region (production region), primary zone (production zone), secondary region (disaster recovery region), and secondary zone (disaster recovery zone). A replication pair can be added to only a replication pair-consistent group that replicates in the same direction as the replication pair.
+// - A replication pair can be added to a replication pair-consistent group only if the pair and the group have the same data replication direction. This means their production regions, production zones, disaster recovery regions, and disaster recovery zones must be the same.
 //
-//   - After replication pairs are added to a replication pair-consistent group, the recovery point objective (RPO) of the group takes effect on the pairs instead of their original RPOs.
+// - After a replication pair is added to a replication pair-consistent group, the original Recovery Point Object (RPO) of the pair becomes invalid. Data is then replicated based on the RPO of the group.
 //
 // @param request - CreateDiskReplicaGroupRequest
 //
@@ -1006,23 +982,29 @@ func (client *Client) CreateDiskReplicaGroup(request *CreateDiskReplicaGroupRequ
 
 // Summary:
 //
-// Creates a replication pair to asynchronously replicate data between disks.
+// Creates a disk replication pair.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-// Async replication is a feature that protects data across regions by using the data replication capability of Elastic Block Storage (EBS). This feature can be used to asynchronously replicate data from a disk in one region to a disk in another region for disaster recovery purposes. You can use this feature to implement disaster recovery for critical business to protect data in your databases and improve business continuity. You are charged on a subscription basis for the bandwidth that is used by the async replication feature.
+// <props="china">
 //
-// Currently, the async replication feature can asynchronously replicate data only between enhanced SSDs (ESSDs). The functionality of disks in replication pairs is limited.
+// Asynchronous replication is a feature that provides cross-region data protection using the data replication capabilities of Elastic Block Storage. The feature asynchronously replicates data from a disk in one region to another disk in a different region to provide cross-region disaster recovery and backup for your data. You can use this feature to build disaster recovery capabilities for critical services, protect database data, and improve business continuity. For more information about the feature notes and billing, see [Overview of asynchronous replication for disks](https://help.aliyun.com/document_detail/314563.html). The asynchronous replication feature is billed for bandwidth on a subscription basis. Pay-as-you-go billing for traffic is also supported.
 //
-// Take note of the following items:
+// <props="intl">
 //
-//   - Make sure that the source disk (primary disk) from which to replicate data and the destination disk (secondary disk) to which to replicate data are created. You can call the [CreateDisk](https://help.aliyun.com/document_detail/25513.html) operation to create disks.
+// Async replication is a feature that provides cross-region data protection based on the data replication capabilities of Elastic Block Storage (EBS). The feature asynchronously replicates data from a disk in one region to a disk in another region for disaster recovery. You can use this feature to build disaster recovery capabilities for critical services, protect database data, and improve business continuity. The async replication feature is billed for bandwidth on a subscription basis.
 //
-//   - The secondary disk cannot reside in the same region as the primary disk. For information about the regions that support async replication, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// Currently, the asynchronous replication feature is available only for Enhanced SSD (ESSD) disks and has certain limitations.
 //
-//   - After you call this operation to create a replication pair for the primary disk and the secondary disk, you must call the [StartDiskReplicaPair](https://help.aliyun.com/document_detail/354205.html) operation to enable async replication to replicate data from the primary disk to the secondary disk cross regions on a periodic basis.
+// Before you create a replication pair, note the following:
+//
+// - Prepare a source disk (primary disk) and a destination disk (secondary disk). The source disk is the disk that you want to protect with disaster recovery, and the destination disk is the replication target. You can call the [CreateDisk](https://help.aliyun.com/document_detail/25513.html) operation to create the disks.
+//
+// - The secondary disk must be in a different region from the primary disk. For more information about the regions that support asynchronous replication, see [Overview of asynchronous replication for disks](https://help.aliyun.com/document_detail/314563.html).
+//
+// - This operation creates a replication pair between the primary and secondary disks. After you create the pair, you must call the [StartDiskReplicaPair](https://help.aliyun.com/document_detail/354205.html) operation to activate it. Activating the replication pair starts the periodic, cross-region data replication from the primary disk to the secondary disk.
 //
 // @param request - CreateDiskReplicaPairRequest
 //
@@ -1130,23 +1112,29 @@ func (client *Client) CreateDiskReplicaPairWithOptions(request *CreateDiskReplic
 
 // Summary:
 //
-// Creates a replication pair to asynchronously replicate data between disks.
+// Creates a disk replication pair.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-// Async replication is a feature that protects data across regions by using the data replication capability of Elastic Block Storage (EBS). This feature can be used to asynchronously replicate data from a disk in one region to a disk in another region for disaster recovery purposes. You can use this feature to implement disaster recovery for critical business to protect data in your databases and improve business continuity. You are charged on a subscription basis for the bandwidth that is used by the async replication feature.
+// <props="china">
 //
-// Currently, the async replication feature can asynchronously replicate data only between enhanced SSDs (ESSDs). The functionality of disks in replication pairs is limited.
+// Asynchronous replication is a feature that provides cross-region data protection using the data replication capabilities of Elastic Block Storage. The feature asynchronously replicates data from a disk in one region to another disk in a different region to provide cross-region disaster recovery and backup for your data. You can use this feature to build disaster recovery capabilities for critical services, protect database data, and improve business continuity. For more information about the feature notes and billing, see [Overview of asynchronous replication for disks](https://help.aliyun.com/document_detail/314563.html). The asynchronous replication feature is billed for bandwidth on a subscription basis. Pay-as-you-go billing for traffic is also supported.
 //
-// Take note of the following items:
+// <props="intl">
 //
-//   - Make sure that the source disk (primary disk) from which to replicate data and the destination disk (secondary disk) to which to replicate data are created. You can call the [CreateDisk](https://help.aliyun.com/document_detail/25513.html) operation to create disks.
+// Async replication is a feature that provides cross-region data protection based on the data replication capabilities of Elastic Block Storage (EBS). The feature asynchronously replicates data from a disk in one region to a disk in another region for disaster recovery. You can use this feature to build disaster recovery capabilities for critical services, protect database data, and improve business continuity. The async replication feature is billed for bandwidth on a subscription basis.
 //
-//   - The secondary disk cannot reside in the same region as the primary disk. For information about the regions that support async replication, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// Currently, the asynchronous replication feature is available only for Enhanced SSD (ESSD) disks and has certain limitations.
 //
-//   - After you call this operation to create a replication pair for the primary disk and the secondary disk, you must call the [StartDiskReplicaPair](https://help.aliyun.com/document_detail/354205.html) operation to enable async replication to replicate data from the primary disk to the secondary disk cross regions on a periodic basis.
+// Before you create a replication pair, note the following:
+//
+// - Prepare a source disk (primary disk) and a destination disk (secondary disk). The source disk is the disk that you want to protect with disaster recovery, and the destination disk is the replication target. You can call the [CreateDisk](https://help.aliyun.com/document_detail/25513.html) operation to create the disks.
+//
+// - The secondary disk must be in a different region from the primary disk. For more information about the regions that support asynchronous replication, see [Overview of asynchronous replication for disks](https://help.aliyun.com/document_detail/314563.html).
+//
+// - This operation creates a replication pair between the primary and secondary disks. After you create the pair, you must call the [StartDiskReplicaPair](https://help.aliyun.com/document_detail/354205.html) operation to activate it. Activating the replication pair starts the periodic, cross-region data replication from the primary disk to the secondary disk.
 //
 // @param request - CreateDiskReplicaPairRequest
 //
@@ -1164,7 +1152,7 @@ func (client *Client) CreateDiskReplicaPair(request *CreateDiskReplicaPairReques
 
 // Summary:
 //
-// # Create an enterprise-level snapshot policy
+// Creates an enterprise-level snapshot policy by calling CreateEnterpriseSnapshotPolicy.
 //
 // @param tmpReq - CreateEnterpriseSnapshotPolicyRequest
 //
@@ -1278,7 +1266,7 @@ func (client *Client) CreateEnterpriseSnapshotPolicyWithOptions(tmpReq *CreateEn
 
 // Summary:
 //
-// # Create an enterprise-level snapshot policy
+// Creates an enterprise-level snapshot policy by calling CreateEnterpriseSnapshotPolicy.
 //
 // @param request - CreateEnterpriseSnapshotPolicyRequest
 //
@@ -1296,7 +1284,7 @@ func (client *Client) CreateEnterpriseSnapshotPolicy(request *CreateEnterpriseSn
 
 // Summary:
 //
-// 中心化角色：删除App
+// Deletes an application using the centralized role.
 //
 // @param request - DeleteAppRequest
 //
@@ -1352,7 +1340,7 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *d
 
 // Summary:
 //
-// 中心化角色：删除App
+// Deletes an application using the centralized role.
 //
 // @param request - DeleteAppRequest
 //
@@ -1620,7 +1608,13 @@ func (client *Client) DeleteEnterpriseSnapshotPolicy(request *DeleteEnterpriseSn
 
 // Summary:
 //
-// 中心化角色：查询App信息
+// Queries application information as a centralized role.
+//
+// Description:
+//
+// ## Operation description
+//
+// Queries the tag keys and values of cloud disks and snapshots contained in a user-defined application. You can use filterTagKey to narrow the query scope.
 //
 // @param request - DescribeAppsRequest
 //
@@ -1680,7 +1674,13 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 
 // Summary:
 //
-// 中心化角色：查询App信息
+// Queries application information as a centralized role.
+//
+// Description:
+//
+// ## Operation description
+//
+// Queries the tag keys and values of cloud disks and snapshots contained in a user-defined application. You can use filterTagKey to narrow the query scope.
 //
 // @param request - DescribeAppsRequest
 //
@@ -1698,21 +1698,21 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries information about cloud disks in a dedicated block storage cluster.
+// Queries information about one or more cloud disks that you have created in a dedicated block storage cluster.
 //
 // Description:
 //
-//	  You can use one of the following methods to check the responses:
+// - The following two methods are supported to view returned data:
 //
-//	    	- Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+//   - Method 1: Use `NextToken` to set a query token. Set its value to the `NextToken` value returned by the previous call to DescribeDisks, and use `MaxResults` to set the maximum number of entries per page.
 //
-//	    	- Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the number of the page to return.
+//   - Method 2: Use `PageSize` to set the number of entries per page, and use `PageNumber` to set the page number.
 //
-//	        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use method 1. When `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+//     You can use only one of the preceding methods. When a large number of entries are returned, we recommend that you use Method 1. If you set `NextToken`, the `PageSize` and `PageNumber` request parameters do not take effect, and `TotalCount` in the returned data is invalid.
 //
-//		- A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+// - Cloud disks with the multi-attach feature enabled can be attached to multiple instances. You can view all attachment information of a cloud disk based on the `Attachment` list in the response.
 //
-// When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+// When you invoke an API operation by using Cloud Assistant CLI, specify request parameters of different data types in the required formats. For more information, see [Parameter format of CLI](https://help.aliyun.com/document_detail/110340.html).
 //
 // @param request - DescribeDedicatedBlockStorageClusterDisksRequest
 //
@@ -1768,21 +1768,21 @@ func (client *Client) DescribeDedicatedBlockStorageClusterDisksWithOptions(reque
 
 // Summary:
 //
-// Queries information about cloud disks in a dedicated block storage cluster.
+// Queries information about one or more cloud disks that you have created in a dedicated block storage cluster.
 //
 // Description:
 //
-//	  You can use one of the following methods to check the responses:
+// - The following two methods are supported to view returned data:
 //
-//	    	- Method 1: Use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the DescribeDisks operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
+//   - Method 1: Use `NextToken` to set a query token. Set its value to the `NextToken` value returned by the previous call to DescribeDisks, and use `MaxResults` to set the maximum number of entries per page.
 //
-//	    	- Method 2: Use `PageSize` to specify the number of entries to return on each page and then use `PageNumber` to specify the number of the page to return.
+//   - Method 2: Use `PageSize` to set the number of entries per page, and use `PageNumber` to set the page number.
 //
-//	        You can use only one of the preceding methods. If a large number of entries are to be returned, we recommend that you use method 1. When `NextToken` is specified, `PageSize` and `PageNumber` do not take effect and `TotalCount` in the response is invalid.
+//     You can use only one of the preceding methods. When a large number of entries are returned, we recommend that you use Method 1. If you set `NextToken`, the `PageSize` and `PageNumber` request parameters do not take effect, and `TotalCount` in the returned data is invalid.
 //
-//		- A disk that has the multi-attach feature enabled can be attached to multiple instances. You can query the attachment information of the disk based on the `Attachment` values in the response.
+// - Cloud disks with the multi-attach feature enabled can be attached to multiple instances. You can view all attachment information of a cloud disk based on the `Attachment` list in the response.
 //
-// When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in the required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
+// When you invoke an API operation by using Cloud Assistant CLI, specify request parameters of different data types in the required formats. For more information, see [Parameter format of CLI](https://help.aliyun.com/document_detail/110340.html).
 //
 // @param request - DescribeDedicatedBlockStorageClusterDisksRequest
 //
@@ -2128,15 +2128,15 @@ func (client *Client) DescribeDiskMonitorData(request *DescribeDiskMonitorDataRe
 
 // Summary:
 //
-// Queries the details of replication pair-consistent groups in a specific region.
+// Queries information about one or more replication pair-consistent groups in a specified region.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-// To perform a paged query, specify the MaxResults and NextToken parameters.
+// To perform a paged query, you can use the MaxResults and NextToken parameters.
 //
-// During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+// When you query the first page, set `MaxResults` to specify the number of entries to return. The `NextToken` value in the response is the token used to query subsequent pages. To query a subsequent page, set `NextToken` to the value from the previous response and set MaxResults to specify the number of entries for the current page.
 //
 // @param request - DescribeDiskReplicaGroupsRequest
 //
@@ -2216,15 +2216,15 @@ func (client *Client) DescribeDiskReplicaGroupsWithOptions(request *DescribeDisk
 
 // Summary:
 //
-// Queries the details of replication pair-consistent groups in a specific region.
+// Queries information about one or more replication pair-consistent groups in a specified region.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-// To perform a paged query, specify the MaxResults and NextToken parameters.
+// To perform a paged query, you can use the MaxResults and NextToken parameters.
 //
-// During a paged query, when you call the DescribeDiskReplicaGroups operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+// When you query the first page, set `MaxResults` to specify the number of entries to return. The `NextToken` value in the response is the token used to query subsequent pages. To query a subsequent page, set `NextToken` to the value from the previous response and set MaxResults to specify the number of entries for the current page.
 //
 // @param request - DescribeDiskReplicaGroupsRequest
 //
@@ -2308,17 +2308,17 @@ func (client *Client) DescribeDiskReplicaPairProgress(request *DescribeDiskRepli
 
 // Summary:
 //
-// Queries information about replication pairs in a specific region.
+// Queries information about one or more replication pairs in a specified region.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-//   - For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support asynchronous replication, see [Overview of asynchronous replication for disks](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides in the region, information about the replication pair is displayed in the response.
+// - If the primary or secondary disk of an asynchronous replication pair is in the specified region, the query returns information about that replication pair.
 //
-//   - If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+// - To perform a paged query, use the MaxResults and NextToken parameters. For the first page, set MaxResults to limit the number of entries returned. The `NextToken` value in the response is the token for the next page. For subsequent pages, set `NextToken` to the value from the previous response and set `MaxResults` to limit the number of entries.
 //
 // @param request - DescribeDiskReplicaPairsRequest
 //
@@ -2402,17 +2402,17 @@ func (client *Client) DescribeDiskReplicaPairsWithOptions(request *DescribeDiskR
 
 // Summary:
 //
-// Queries information about replication pairs in a specific region.
+// Queries information about one or more replication pairs in a specified region.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-//   - For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support asynchronous replication, see [Overview of asynchronous replication for disks](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - When you call this operation for a specific region, if the primary disk (source disk) or secondary disk (destination disk) of a replication pair resides in the region, information about the replication pair is displayed in the response.
+// - If the primary or secondary disk of an asynchronous replication pair is in the specified region, the query returns information about that replication pair.
 //
-//   - If you want to perform a paged query, configure the `NextToken` and `MaxResults` parameters. During a paged query, when you call the DescribeDiskReplicaPairs operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeDiskReplicaPairs operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call.
+// - To perform a paged query, use the MaxResults and NextToken parameters. For the first page, set MaxResults to limit the number of entries returned. The `NextToken` value in the response is the token for the next page. For subsequent pages, set `NextToken` to the value from the previous response and set `MaxResults` to limit the number of entries.
 //
 // @param request - DescribeDiskReplicaPairsRequest
 //
@@ -2430,7 +2430,7 @@ func (client *Client) DescribeDiskReplicaPairs(request *DescribeDiskReplicaPairs
 
 // Summary:
 //
-// Queries the information about enterprise-level snapshot policies. When you call this operation, you can specify parameters, such as PolicyIds, ResourceGroupId, and Tag, in the request.
+// Queries enterprise-level snapshot policies by specifying parameters such as PolicyIds, ResourceGroupId, and Tag.
 //
 // @param request - DescribeEnterpriseSnapshotPolicyRequest
 //
@@ -2510,7 +2510,7 @@ func (client *Client) DescribeEnterpriseSnapshotPolicyWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the information about enterprise-level snapshot policies. When you call this operation, you can specify parameters, such as PolicyIds, ResourceGroupId, and Tag, in the request.
+// Queries enterprise-level snapshot policies by specifying parameters such as PolicyIds, ResourceGroupId, and Tag.
 //
 // @param request - DescribeEnterpriseSnapshotPolicyRequest
 //
@@ -2528,7 +2528,7 @@ func (client *Client) DescribeEnterpriseSnapshotPolicy(request *DescribeEnterpri
 
 // Summary:
 //
-// Queries the risk events of a disk.
+// Queries cloud disk risk events.
 //
 // @param request - DescribeEventsRequest
 //
@@ -2608,7 +2608,7 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 
 // Summary:
 //
-// Queries the risk events of a disk.
+// Queries cloud disk risk events.
 //
 // @param request - DescribeEventsRequest
 //
@@ -2626,7 +2626,7 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 
 // Summary:
 //
-// Queries one or more Elastic Block Storage (EBS) devices that you created.
+// Queries one or more block storage cloud disks that you have created.
 //
 // @param request - DescribeLensMonitorDisksRequest
 //
@@ -2651,6 +2651,10 @@ func (client *Client) DescribeLensMonitorDisksWithOptions(request *DescribeLensM
 
 	if !dara.IsNil(request.DiskIds) {
 		query["DiskIds"] = request.DiskIds
+	}
+
+	if !dara.IsNil(request.EcsInstanceId) {
+		query["EcsInstanceId"] = request.EcsInstanceId
 	}
 
 	if !dara.IsNil(request.LensTags) {
@@ -2694,7 +2698,7 @@ func (client *Client) DescribeLensMonitorDisksWithOptions(request *DescribeLensM
 
 // Summary:
 //
-// Queries one or more Elastic Block Storage (EBS) devices that you created.
+// Queries one or more block storage cloud disks that you have created.
 //
 // @param request - DescribeLensMonitorDisksRequest
 //
@@ -2712,13 +2716,7 @@ func (client *Client) DescribeLensMonitorDisks(request *DescribeLensMonitorDisks
 
 // Summary:
 //
-// Queries the status of CloudLens for EBS.
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+// Queries the status of the EBS Lens service activated by the user.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2747,13 +2745,7 @@ func (client *Client) DescribeLensServiceStatusWithOptions(runtime *dara.Runtime
 
 // Summary:
 //
-// Queries the status of CloudLens for EBS.
-//
-// Description:
-//
-// ## Usage notes
-//
-// CloudLens for EBS is in invitational preview in the China (Hangzhou), China (Shanghai), China (Zhangjiakou), China (Shenzhen), and China (Hong Kong) regions. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+// Queries the status of the EBS Lens service activated by the user.
 //
 // @return DescribeLensServiceStatusResponse
 func (client *Client) DescribeLensServiceStatus() (_result *DescribeLensServiceStatusResponse, _err error) {
@@ -2769,7 +2761,7 @@ func (client *Client) DescribeLensServiceStatus() (_result *DescribeLensServiceS
 
 // Summary:
 //
-// # Query single metric monitoring information
+// Queries the monitoring metrics of a resource.
 //
 // @param tmpReq - DescribeMetricDataRequest
 //
@@ -2851,7 +2843,7 @@ func (client *Client) DescribeMetricDataWithOptions(tmpReq *DescribeMetricDataRe
 
 // Summary:
 //
-// # Query single metric monitoring information
+// Queries the monitoring metrics of a resource.
 //
 // @param request - DescribeMetricDataRequest
 //
@@ -2955,7 +2947,7 @@ func (client *Client) DescribePairDrills(request *DescribePairDrillsRequest) (_r
 
 // Summary:
 //
-// Queries the details of regions in which Elastic Block Storage (EBS) features (such as async replication, CloudLens for EBS, and Dedicated Block Storage Cluster) are supported.
+// Queries the regions supported by Elastic Block Storage (EBS) features, including asynchronous replication, EBS Lens, and dedicated block storage clusters.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -3007,7 +2999,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries the details of regions in which Elastic Block Storage (EBS) features (such as async replication, CloudLens for EBS, and Dedicated Block Storage Cluster) are supported.
+// Queries the regions supported by Elastic Block Storage (EBS) features, including asynchronous replication, EBS Lens, and dedicated block storage clusters.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -3553,7 +3545,7 @@ func (client *Client) FailoverDiskReplicaPair(request *FailoverDiskReplicaPairRe
 
 // Summary:
 //
-// Centralized Role: Obtain User Usage Report with reportId
+// Retrieves a user usage report by report ID using the centralized role.
 //
 // @param request - GetReportRequest
 //
@@ -3611,7 +3603,7 @@ func (client *Client) GetReportWithOptions(request *GetReportRequest, runtime *d
 
 // Summary:
 //
-// Centralized Role: Obtain User Usage Report with reportId
+// Retrieves a user usage report by report ID using the centralized role.
 //
 // @param request - GetReportRequest
 //
@@ -3629,7 +3621,7 @@ func (client *Client) GetReport(request *GetReportRequest) (_result *GetReportRe
 
 // Summary:
 //
-// 查询异步复制支持的目的地域和可用区
+// Queries the destination regions and zones that support asynchronous replication for a specified zone.
 //
 // @param request - ListReplicaEdgeSupportedRequest
 //
@@ -3685,7 +3677,7 @@ func (client *Client) ListReplicaEdgeSupportedWithOptions(request *ListReplicaEd
 
 // Summary:
 //
-// 查询异步复制支持的目的地域和可用区
+// Queries the destination regions and zones that support asynchronous replication for a specified zone.
 //
 // @param request - ListReplicaEdgeSupportedRequest
 //
@@ -3703,7 +3695,7 @@ func (client *Client) ListReplicaEdgeSupported(request *ListReplicaEdgeSupported
 
 // Summary:
 //
-// Queries historical reports of a specific application.
+// Queries the historical report list for a specified application using a centralized role.
 //
 // @param request - ListReportsRequest
 //
@@ -3769,7 +3761,7 @@ func (client *Client) ListReportsWithOptions(request *ListReportsRequest, runtim
 
 // Summary:
 //
-// Queries historical reports of a specific application.
+// Queries the historical report list for a specified application using a centralized role.
 //
 // @param request - ListReportsRequest
 //
@@ -3889,7 +3881,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 中心化角色：修改App
+// Modifies an app from a centralized role.
 //
 // @param request - ModifyAppRequest
 //
@@ -3969,7 +3961,7 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *d
 
 // Summary:
 //
-// 中心化角色：修改App
+// Modifies an app from a centralized role.
 //
 // @param request - ModifyAppRequest
 //
@@ -4073,15 +4065,15 @@ func (client *Client) ModifyDedicatedBlockStorageClusterAttribute(request *Modif
 
 // Summary:
 //
-// Modifies the name, description, or recovery point objective (RPO) of a replication pair-consistent group.
+// Modifies the name, description, or Recovery Point Objective (RPO) of a replication pair-consistent group.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-//   - For information about the regions in which the replication pair-consistent group feature is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support the replication pair-consistent group feature, see [Overview of asynchronous replication](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - The replication pair-consistent group must be in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state.
+// - The replication pair-consistent group must be in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state.
 //
 // @param request - ModifyDiskReplicaGroupRequest
 //
@@ -4153,15 +4145,15 @@ func (client *Client) ModifyDiskReplicaGroupWithOptions(request *ModifyDiskRepli
 
 // Summary:
 //
-// Modifies the name, description, or recovery point objective (RPO) of a replication pair-consistent group.
+// Modifies the name, description, or Recovery Point Objective (RPO) of a replication pair-consistent group.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-//   - For information about the regions in which the replication pair-consistent group feature is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support the replication pair-consistent group feature, see [Overview of asynchronous replication](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - The replication pair-consistent group must be in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state.
+// - The replication pair-consistent group must be in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state.
 //
 // @param request - ModifyDiskReplicaGroupRequest
 //
@@ -4179,15 +4171,15 @@ func (client *Client) ModifyDiskReplicaGroup(request *ModifyDiskReplicaGroupRequ
 
 // Summary:
 //
-// Modifies a replication pair.
+// Modifies an async replication pair.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-//   - For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support the asynchronous replication feature, see [Overview of asynchronous replication](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - Only replication pairs that are in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state can have their names or descriptions modified.
+// - You can modify the name or description of a replication pair only when the pair is in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state.
 //
 // @param request - ModifyDiskReplicaPairRequest
 //
@@ -4259,15 +4251,15 @@ func (client *Client) ModifyDiskReplicaPairWithOptions(request *ModifyDiskReplic
 
 // Summary:
 //
-// Modifies a replication pair.
+// Modifies an async replication pair.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Description
 //
-//   - For information about the regions in which async replication is available, see [Overview](https://help.aliyun.com/document_detail/314563.html).
+// - For information about the regions that support the asynchronous replication feature, see [Overview of asynchronous replication](https://help.aliyun.com/document_detail/314563.html).
 //
-//   - Only replication pairs that are in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state can have their names or descriptions modified.
+// - You can modify the name or description of a replication pair only when the pair is in the **Created*	- (`created`) or **Stopped*	- (`stopped`) state.
 //
 // @param request - ModifyDiskReplicaPairRequest
 //
@@ -5597,7 +5589,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Search for a enterprise-level snapshot policy.
+// Modifies the configuration of an enterprise-level snapshot policy.
 //
 // @param tmpReq - UpdateEnterpriseSnapshotPolicyRequest
 //
@@ -5703,7 +5695,7 @@ func (client *Client) UpdateEnterpriseSnapshotPolicyWithOptions(tmpReq *UpdateEn
 
 // Summary:
 //
-// Search for a enterprise-level snapshot policy.
+// Modifies the configuration of an enterprise-level snapshot policy.
 //
 // @param request - UpdateEnterpriseSnapshotPolicyRequest
 //
