@@ -30,11 +30,11 @@ type iGetDashboardRequest interface {
 }
 
 type GetDashboardRequest struct {
-	// The language. Valid values:
+	// The response language. Valid values:
 	//
-	// - zh: Chinese
+	// zh: Chinese
 	//
-	// - en: English
+	// en: English
 	//
 	// example:
 	//
@@ -52,19 +52,19 @@ type GetDashboardRequest struct {
 	//
 	// - LOG: access log
 	//
-	// - PLUGIN: plugin log
+	// - PLUGIN: plug-in log
 	//
 	// example:
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plugin type ID.
+	// The plug-in type ID.
 	//
 	// example:
 	//
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The plugin ID.
+	// The plug-in ID.
 	//
 	// example:
 	//

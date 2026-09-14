@@ -22,7 +22,7 @@ type iCreatePolicyAttachmentRequest interface {
 }
 
 type CreatePolicyAttachmentRequest struct {
-	// The ID of the resource to which the policy is attached.
+	// The ID of the resource to mount.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreatePolicyAttachmentRequest struct {
 	//
 	// api-cu07jj6m1hkokaus***
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The type of the resource to which the policy is attached. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, and Domain.
+	// The type of the resource to mount. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain.
 	//
 	// This parameter is required.
 	//

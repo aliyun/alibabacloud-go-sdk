@@ -24,9 +24,9 @@ import (
 //
 // > - - Set dryRun to true.
 //
-// > - - The response returns a conflict preview that contains the conflictHash value.
+// > - - The response returns a conflict preview that contains conflictHash.
 //
-// > - Step 2: Submit the request after confirmation.
+// > - Step 2: Submit the rule after confirmation.
 //
 // > - - No conflicts: Set dryRun to false and overwrite to false.
 //
@@ -814,6 +814,15 @@ func (client *Client) CreateConsumerWithContext(ctx context.Context, request *Cr
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AkSkIdentityConfigs) {
 		body["akSkIdentityConfigs"] = request.AkSkIdentityConfigs
@@ -845,6 +854,7 @@ func (client *Client) CreateConsumerWithContext(ctx context.Context, request *Cr
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -1436,7 +1446,7 @@ func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates operations for an HTTP API.
+// Creates an operation for an HTTP API.
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -2059,7 +2069,7 @@ func (client *Client) CreatePolicyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a policy attachment to a resource.
+// Creates a policy resource mount.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -2703,11 +2713,11 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, gatewayId *s
 
 // Summary:
 //
-// Deletes a quota throttling rule from a gateway.
+// Deletes a quota throttling rule for a gateway.
 //
 // Description:
 //
-// This operation deletes a consumer-based or consumer group-based quota rule from an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
+// Deletes a quota rule based on an API consumer or consumer group for an AI gateway. This operation only takes effect on AI gateways with a version later than 2.1.19.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -4163,7 +4173,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves HTTP API information.
+// Retrieves the information of an HTTP API.
 //
 // @param request - GetHttpApiRequest
 //
@@ -4210,7 +4220,7 @@ func (client *Client) GetHttpApiWithContext(ctx context.Context, httpApiId *stri
 
 // Summary:
 //
-// Retrieves operation information.
+// Retrieves the API operation information.
 //
 // @param headers - map
 //
@@ -4857,7 +4867,7 @@ func (client *Client) GetTraceConfigWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
+// Imports an HTTP API. Supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST-type APIs.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -5280,7 +5290,7 @@ func (client *Client) ListBatchExportTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the list of consumer authorization rules.
+// Retrieves a list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -6929,7 +6939,7 @@ func (client *Client) ListMseNacosSourcesWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// Retrieves the list of plugin mounts.
+// Retrieves the plug-in mount list.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -8912,7 +8922,7 @@ func (client *Client) UpdateConsumerWithContext(ctx context.Context, consumerId 
 //
 // Description:
 //
-// 该 API 已被 UpdateAuthorizationRule 替代，新路径为 /v1/authorization-rules/{consumerAuthorizationRuleId}
+// This API has been replaced by UpdateAuthorizationRule. The new operation path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When calling the new operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //

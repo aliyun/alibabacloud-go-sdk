@@ -72,9 +72,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // > - - Set dryRun to true.
 //
-// > - - The response returns a conflict preview that contains the conflictHash value.
+// > - - The response returns a conflict preview that contains conflictHash.
 //
-// > - Step 2: Submit the request after confirmation.
+// > - Step 2: Submit the rule after confirmation.
 //
 // > - - No conflicts: Set dryRun to false and overwrite to false.
 //
@@ -187,9 +187,9 @@ func (client *Client) AddGatewayQuotaRuleWithOptions(gatewayId *string, request 
 //
 // > - - Set dryRun to true.
 //
-// > - - The response returns a conflict preview that contains the conflictHash value.
+// > - - The response returns a conflict preview that contains conflictHash.
 //
-// > - Step 2: Submit the request after confirmation.
+// > - Step 2: Submit the rule after confirmation.
 //
 // > - - No conflicts: Set dryRun to false and overwrite to false.
 //
@@ -1116,6 +1116,15 @@ func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, 
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AkSkIdentityConfigs) {
 		body["akSkIdentityConfigs"] = request.AkSkIdentityConfigs
@@ -1147,6 +1156,7 @@ func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, 
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -1907,7 +1917,7 @@ func (client *Client) CreateHttpApi(request *CreateHttpApiRequest) (_result *Cre
 
 // Summary:
 //
-// Creates operations for an HTTP API.
+// Creates an operation for an HTTP API.
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -1954,7 +1964,7 @@ func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, reque
 
 // Summary:
 //
-// Creates operations for an HTTP API.
+// Creates an operation for an HTTP API.
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -2705,7 +2715,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a policy attachment to a resource.
+// Creates a policy resource mount.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -2768,7 +2778,7 @@ func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAtt
 
 // Summary:
 //
-// Creates a policy attachment to a resource.
+// Creates a policy resource mount.
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -3612,11 +3622,11 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 
 // Summary:
 //
-// Deletes a quota throttling rule from a gateway.
+// Deletes a quota throttling rule for a gateway.
 //
 // Description:
 //
-// This operation deletes a consumer-based or consumer group-based quota rule from an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
+// Deletes a quota rule based on an API consumer or consumer group for an AI gateway. This operation only takes effect on AI gateways with a version later than 2.1.19.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -3657,11 +3667,11 @@ func (client *Client) DeleteGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 
 // Summary:
 //
-// Deletes a quota throttling rule from a gateway.
+// Deletes a quota throttling rule for a gateway.
 //
 // Description:
 //
-// This operation deletes a consumer-based or consumer group-based quota rule from an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
+// Deletes a quota rule based on an API consumer or consumer group for an AI gateway. This operation only takes effect on AI gateways with a version later than 2.1.19.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -5713,7 +5723,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsage(gatewayId *string, ruleId 
 
 // Summary:
 //
-// Retrieves HTTP API information.
+// Retrieves the information of an HTTP API.
 //
 // @param request - GetHttpApiRequest
 //
@@ -5760,7 +5770,7 @@ func (client *Client) GetHttpApiWithOptions(httpApiId *string, request *GetHttpA
 
 // Summary:
 //
-// Retrieves HTTP API information.
+// Retrieves the information of an HTTP API.
 //
 // @param request - GetHttpApiRequest
 //
@@ -5779,7 +5789,7 @@ func (client *Client) GetHttpApi(httpApiId *string, request *GetHttpApiRequest) 
 
 // Summary:
 //
-// Retrieves operation information.
+// Retrieves the API operation information.
 //
 // @param headers - map
 //
@@ -5812,7 +5822,7 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 
 // Summary:
 //
-// Retrieves operation information.
+// Retrieves the API operation information.
 //
 // @return GetHttpApiOperationResponse
 func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string) (_result *GetHttpApiOperationResponse, _err error) {
@@ -6741,7 +6751,7 @@ func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigR
 
 // Summary:
 //
-// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
+// Imports an HTTP API. Supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST-type APIs.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -6840,7 +6850,7 @@ func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, he
 
 // Summary:
 //
-// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
+// Imports an HTTP API. Supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST-type APIs.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -7278,7 +7288,7 @@ func (client *Client) ListBatchExportTasks(request *ListBatchExportTasksRequest)
 
 // Summary:
 //
-// Retrieves the list of consumer authorization rules.
+// Retrieves a list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -7333,7 +7343,7 @@ func (client *Client) ListConsumerAuthorizationRulesWithOptions(consumerId *stri
 
 // Summary:
 //
-// Retrieves the list of consumer authorization rules.
+// Retrieves a list of consumer authorization rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -9419,7 +9429,7 @@ func (client *Client) ListMseNacosSources(gatewayId *string, request *ListMseNac
 
 // Summary:
 //
-// Retrieves the list of plugin mounts.
+// Retrieves the plug-in mount list.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -9498,7 +9508,7 @@ func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttach
 
 // Summary:
 //
-// Retrieves the list of plugin mounts.
+// Retrieves the plug-in mount list.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -12053,7 +12063,7 @@ func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumer
 //
 // Description:
 //
-// 该 API 已被 UpdateAuthorizationRule 替代，新路径为 /v1/authorization-rules/{consumerAuthorizationRuleId}
+// This API has been replaced by UpdateAuthorizationRule. The new operation path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When calling the new operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
@@ -12112,7 +12122,7 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *str
 //
 // Description:
 //
-// 该 API 已被 UpdateAuthorizationRule 替代，新路径为 /v1/authorization-rules/{consumerAuthorizationRuleId}
+// This API has been replaced by UpdateAuthorizationRule. The new operation path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When calling the new operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //

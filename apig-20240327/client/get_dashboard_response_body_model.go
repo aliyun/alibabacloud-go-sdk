@@ -148,7 +148,7 @@ type GetDashboardResponseBodyData struct {
 	//
 	// APIG Plugin
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The URL of the dashboard.
+	// The dashboard URL.
 	//
 	// example:
 	//

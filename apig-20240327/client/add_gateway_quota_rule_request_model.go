@@ -38,47 +38,47 @@ type iAddGatewayQuotaRuleRequest interface {
 }
 
 type AddGatewayQuotaRuleRequest struct {
-	// The conflict snapshot hash used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dry run (dryRun=true).
+	// The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Retrieve this value from the response of a previous dry run (dryRun=true).
 	//
 	// This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
 	//
-	// When dryRun is set to false and overwrite is set to true, if this parameter is not provided or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. In this case, perform a new dry run to confirm the latest conflicts.
+	// When dryRun is set to false and overwrite is set to true, if this parameter is not provided or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. Perform a new dry run to confirm the updated conflicts.
 	//
 	// example:
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541fxxxxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
-	// The list of API consumer group IDs to bind to the rule. This parameter is used when subjectType is set to consumer_group and cannot be specified together with consumerIds.
+	// The list of consumer group IDs to bind to the rule. Specify this parameter when subjectType is set to consumer_group. This parameter cannot be specified together with consumerIds.
 	//
 	// example:
 	//
 	// group1,group2
 	ConsumerGroupIds []*string `json:"consumerGroupIds,omitempty" xml:"consumerGroupIds,omitempty" type:"Repeated"`
-	// The list of API consumer IDs to bind to the rule. A maximum of 1,000 consumers can be specified in a single request.
+	// The list of consumer IDs to bind to the rule. A maximum of 1,000 consumers can be specified in a single request.
 	//
 	// example:
 	//
 	// 1001,1002,1003
 	ConsumerIds []*string `json:"consumerIds,omitempty" xml:"consumerIds,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumer subjects. For example, a consumer subject that already has a calendar-day quota rule cannot have another calendar-day quota rule added.
+	// Specifies whether to perform only a dry run without applying the configuration. A dry run checks whether conflicting rules exist on the bound consumer subjects. For example, a consumer subject that already has a calendar-day quota cannot have another calendar-day quota rule added.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, the conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
+	// Specifies whether to allow overwriting on conflict. If overwriting is allowed, the conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
 	//
 	// example:
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// The period multiplier, which specifies the number of periods after which the quota resets. This parameter is required for custom (epoch) period rules. Minimum value: 1. Maximum value: 60.
+	// The period multiplier, which specifies the number of periods after which the quota resets. This parameter is required for custom period rules. Minimum value: 1. Maximum value: 60.
 	//
 	// example:
 	//
 	// 10
 	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
-	// The period type. For calendar periods, the quota can be calculated by day, week, or month. Valid values: day, week, and month. For custom (epoch) periods, only day is supported.
+	// The period type. For calendar periods, the value can be day, week, or month. For custom periods, only day is supported.
 	//
 	// This parameter is required.
 	//
@@ -110,29 +110,27 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// team-rule
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// The type of the rule subject. Valid values:
+	// The subject type of the rule. Valid values:
 	//
-	// - consumer: API consumer.
+	// - consumer: API consumer. This is the default value.
 	//
 	// - consumer_group: API consumer group.
-	//
-	// Default value: consumer.
 	//
 	// example:
 	//
 	// consumer_group
 	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
-	// The time zone for calendar periods, in UTC+x format.
+	// The time zone for the calendar period, in UTC+x format.
 	//
 	// example:
 	//
 	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The reset period alignment type. Valid values:
+	// The reset period type. Valid values:
 	//
-	// - calendar: The quota resets at the beginning of a calendar day, week, or month.
+	// - calendar: calendar period. The period starts from the beginning of a calendar day, week, or month.
 	//
-	// - epoch: The quota resets based on a custom period that starts when the rule takes effect.
+	// - epoch: custom period. The period starts from the time the rule is applied.
 	//
 	// example:
 	//

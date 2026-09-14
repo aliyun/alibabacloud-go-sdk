@@ -32,7 +32,7 @@ type AddGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *AddGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message.
+	// The message content.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *AddGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The conflict snapshot hash.
+	// The conflict hash.
 	//
 	// example:
 	//
@@ -241,35 +241,25 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
-	// The period type of the existing conflicting rule on the consumer subject. Valid values:
-	//
-	// - day: The existing conflicting rule has a daily period.
-	//
-	// - week: The existing conflicting rule has a weekly period.
-	//
-	// - month: The existing conflicting rule has a monthly period.
+	// The period type of the existing conflicting rule on the consumer subject. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month respectively.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumer subject. Valid values:
-	//
-	// - calendar: The existing conflicting rule uses a calendar period.
-	//
-	// - epoch: The existing conflicting rule uses a custom period.
+	// The type of the existing conflicting rule on the consumer subject. A value of calendar indicates that the existing conflicting rule uses a calendar period. A value of epoch indicates that the existing conflicting rule uses a custom period.
 	//
 	// example:
 	//
 	// calendar
 	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
-	// The conflicting consumer ID. You can use subjectId instead.
+	// The conflicting consumer ID. Use subjectId instead.
 	//
 	// example:
 	//
 	// cs-xxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The conflicting consumer name. You can use subjectName instead.
+	// The conflicting consumer name. Use subjectName instead.
 	//
 	// example:
 	//

@@ -50,13 +50,13 @@ type iCreateHttpApiRequest interface {
 }
 
 type CreateHttpApiRequest struct {
-	// The list of protocols supported by the agent. Required when type is Agent. Not required for other types.
+	// The list of protocols supported by the agent. Required when type is Agent. This field is not required for other types.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The list of AI API protocols. Required when type is LLM, and only one protocol can be specified. Required when type is Ai, and multiple protocols can be specified. Not required for other types. Example protocol entry: OpenAI/v1.
+	// The list of AI API protocols. Required when type is LLM (only one protocol allowed) or Ai (multiple protocols allowed). Not required for other types. Example protocol: OpenAI/v1.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	// The authentication configuration. Required when enableAuth=true.
+	// The authentication configuration. Required when enableAuth is set to true.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The API base path. Must start with a forward slash (/), cannot exceed 256 bytes in length, and cannot contain spaces. Required when type=Rest. Optional when type=LLM, Ai, or Agent. Default value: /
+	// The base path of the API. Must start with a forward slash (/), cannot exceed 256 bytes in length, and cannot contain spaces. Required when type is Rest. Optional when type is LLM, Ai, or Agent. Defaults to /.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateHttpApiRequest struct {
 	//
 	// gw-abc123xyz789
 	BelongGatewayId *string `json:"belongGatewayId,omitempty" xml:"belongGatewayId,omitempty"`
-	// The list of deployment configurations for the HTTP API. Required when type is LLM or Ai, and only one deployment configuration can be specified. Not validated at the request level for other types.
+	// The list of deployment configurations for the HTTP API. Required when type is LLM or Ai (only one deployment configuration allowed). Not validated at the request level for other types.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The API description.
 	//
@@ -78,7 +78,7 @@ type CreateHttpApiRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to perform a dry run without executing the operation.
+	// Specifies whether to preview only without executing.
 	//
 	// example:
 	//
@@ -90,21 +90,37 @@ type CreateHttpApiRequest struct {
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The timeout period for waiting for the first byte from the backend.
+	// The timeout period for waiting for the backend to return the first byte.
 	//
 	// example:
 	//
 	// 30
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// The HTTP Ingress API configuration. Required when type is HttpIngress and cannot be nil. Not required for other types.
+	// The HTTP Ingress API configuration. Required when type is HttpIngress and cannot be null. Not required for other types.
 	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// The AI model category. Optional when type is LLM or Ai. Not required for other types. Valid values: Text (text generation), Image (image generation), Audio (audio processing), Video (AI video generation), MultiModal (multi-modal), Embedding (text embedding), Rerank (reranking), Others (other).
+	// The AI model category. Optional when type is LLM or Ai. Not required for other types. Valid values:
+	//
+	// - Text: text generation.
+	//
+	// - Image: image generation.
+	//
+	// - Audio: audio processing.
+	//
+	// - Video: video generation.
+	//
+	// - MultiModal: multimodal.
+	//
+	// - Embedding: vector embedding.
+	//
+	// - Rerank: reranking.
+	//
+	// - Others: others.
 	//
 	// example:
 	//
 	// Text
 	ModelCategory *string `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
-	// The name of the HTTP API, used to identify the current API resource. Example: test-api.
+	// The name of the HTTP API, used to identify the current API resource. For example, test-api.
 	//
 	// This parameter is required.
 	//
@@ -126,13 +142,25 @@ type CreateHttpApiRequest struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The conflict merge strategy for import.
+	// The conflict resolution strategy for imports.
 	//
 	// example:
 	//
 	// ExistFirst
 	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
-	// The HTTP API type. Valid values: Http (standard HTTP API), Rest (RESTful API), WebSocket (WebSocket API), HttpIngress (HTTP API accessed through Ingress), LLM (large language model API), Agent (Agent proxy API).
+	// The HTTP API type. Valid values:
+	//
+	// - Http: a standard HTTP API.
+	//
+	// - Rest: a RESTful API.
+	//
+	// - WebSocket: a WebSocket API.
+	//
+	// - HttpIngress: an HTTP API accessed through Ingress.
+	//
+	// - LLM: a large language model API.
+	//
+	// - Agent: an Agent proxy API.
 	//
 	// This parameter is required.
 	//
@@ -364,13 +392,13 @@ type CreateHttpApiRequestIngressConfig struct {
 	//
 	// env-cq146allhtgk***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The Ingress Class to listen on.
+	// The Ingress class to listen on.
 	//
 	// example:
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// Specifies whether to update the address in the Ingress Status.
+	// Specifies whether to update the address in the Ingress status.
 	//
 	// example:
 	//

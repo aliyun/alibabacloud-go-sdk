@@ -28,7 +28,7 @@ type iCreatePluginAttachmentRequest interface {
 type CreatePluginAttachmentRequest struct {
 	// The list of mount point IDs.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// The resource type to which the plug-in is mounted. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+	// The resource type to which the plug-in is mounted. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, Operation.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreatePluginAttachmentRequest struct {
 	//
 	// gw-cq7l5s5lhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The Base64-encoded content of the original plug-in configuration.
+	// The Base64-encoded content of the plug-in configuration.
 	//
 	// example:
 	//

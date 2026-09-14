@@ -45,16 +45,18 @@ type iHttpApiDeployConfig interface {
 	GetServiceConfigs() []*HttpApiDeployConfigServiceConfigs
 	SetSubDomains(v []*HttpApiDeployConfigSubDomains) *HttpApiDeployConfig
 	GetSubDomains() []*HttpApiDeployConfigSubDomains
+	SetSystemModelTiers(v []*string) *HttpApiDeployConfig
+	GetSystemModelTiers() []*string
 }
 
 type HttpApiDeployConfig struct {
-	// Specifies whether to automatically deploy.
+	// Specifies whether to automatically deploy the API.
 	//
 	// example:
 	//
 	// true
 	AutoDeploy *bool `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
-	// The deployment scenario.
+	// The publishing scenario.
 	//
 	// example:
 	//
@@ -64,9 +66,9 @@ type HttpApiDeployConfig struct {
 	BuiltinRouteNames []*string `json:"builtinRouteNames,omitempty" xml:"builtinRouteNames,omitempty" type:"Repeated"`
 	// The list of custom domain name IDs.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
-	// The list of custom domain name details.
+	// The list of custom domain name information.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
-	// Specifies whether to enable gateway system models. This parameter takes effect only when the deployment scenario is AiAutoRouter. Default value: false. If enabled, built-in Qwen candidates from the platform are merged with the user\\"s own candidates.
+	// Specifies whether to enable gateway system models. This parameter takes effect only when the publishing scenario is AiAutoRouter. Default value: false. This field is used for backward compatibility with older clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that all are disabled.
 	//
 	// example:
 	//
@@ -74,7 +76,7 @@ type HttpApiDeployConfig struct {
 	EnableSystemModels *bool `json:"enableSystemModels,omitempty" xml:"enableSystemModels,omitempty"`
 	// The list of environment domain name IDs. If not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
 	EnvDomainIds []*string `json:"envDomainIds,omitempty" xml:"envDomainIds,omitempty" type:"Repeated"`
-	// The list of environment domain name details.
+	// The list of environment domain name information.
 	EnvDomainInfos []*HttpApiDeployConfigEnvDomainInfos `json:"envDomainInfos,omitempty" xml:"envDomainInfos,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -106,7 +108,7 @@ type HttpApiDeployConfig struct {
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
 	// The list of policy configurations.
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
-	// The current online routing mode of the REST API. ordinary indicates per-Operation routing. compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
+	// The current online routing mode of the REST API. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
 	//
 	// example:
 	//
@@ -119,8 +121,14 @@ type HttpApiDeployConfig struct {
 	RouteBackend *Backend `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
 	// The list of service configurations.
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The list of subdomain contents.
+	// The list of subdomain content.
 	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
+	// The set of explicitly enabled gateway system model capability tiers. Takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, premium. An explicit empty array indicates that no system model is enabled.
+	//
+	// example:
+	//
+	// ["economy","standard","premium"]
+	SystemModelTiers []*string `json:"systemModelTiers,omitempty" xml:"systemModelTiers,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiDeployConfig) String() string {
@@ -201,6 +209,10 @@ func (s *HttpApiDeployConfig) GetServiceConfigs() []*HttpApiDeployConfigServiceC
 
 func (s *HttpApiDeployConfig) GetSubDomains() []*HttpApiDeployConfigSubDomains {
 	return s.SubDomains
+}
+
+func (s *HttpApiDeployConfig) GetSystemModelTiers() []*string {
+	return s.SystemModelTiers
 }
 
 func (s *HttpApiDeployConfig) SetAutoDeploy(v bool) *HttpApiDeployConfig {
@@ -290,6 +302,11 @@ func (s *HttpApiDeployConfig) SetServiceConfigs(v []*HttpApiDeployConfigServiceC
 
 func (s *HttpApiDeployConfig) SetSubDomains(v []*HttpApiDeployConfigSubDomains) *HttpApiDeployConfig {
 	s.SubDomains = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetSystemModelTiers(v []*string) *HttpApiDeployConfig {
+	s.SystemModelTiers = v
 	return s
 }
 
@@ -478,6 +495,12 @@ func (s *HttpApiDeployConfigEnvDomainInfos) Validate() error {
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
+	// The capability tier of the intelligent routing candidate. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+	//
+	// example:
+	//
+	// standard
+	CapabilityTier *string `json:"capabilityTier,omitempty" xml:"capabilityTier,omitempty"`
 	// The gateway service ID.
 	//
 	// example:
@@ -510,13 +533,13 @@ type HttpApiDeployConfigServiceConfigs struct {
 	//
 	// ByWeight
 	MultiServiceRouteStrategy *string `json:"multiServiceRouteStrategy,omitempty" xml:"multiServiceRouteStrategy,omitempty"`
-	// The service display name.
+	// The display name of the service.
 	//
 	// example:
 	//
 	// Qwen-Max-Service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The observability metric routing configuration.
+	// The observability metric-based routing configuration.
 	//
 	// if can be null:
 	// true
@@ -559,6 +582,10 @@ func (s HttpApiDeployConfigServiceConfigs) String() string {
 
 func (s HttpApiDeployConfigServiceConfigs) GoString() string {
 	return s.String()
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) GetCapabilityTier() *string {
+	return s.CapabilityTier
 }
 
 func (s *HttpApiDeployConfigServiceConfigs) GetGatewayServiceId() *string {
@@ -611,6 +638,11 @@ func (s *HttpApiDeployConfigServiceConfigs) GetVersion() *string {
 
 func (s *HttpApiDeployConfigServiceConfigs) GetWeight() *int64 {
 	return s.Weight
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetCapabilityTier(v string) *HttpApiDeployConfigServiceConfigs {
+	s.CapabilityTier = &v
+	return s
 }
 
 func (s *HttpApiDeployConfigServiceConfigs) SetGatewayServiceId(v string) *HttpApiDeployConfigServiceConfigs {

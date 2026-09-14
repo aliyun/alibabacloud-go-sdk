@@ -50,7 +50,7 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// env-cpqnr6tlhtgubcv***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The route match rule.
+	// The route match rules.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The MCP route configuration.
 	McpRouteConfig *CreateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
@@ -249,25 +249,25 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// The service group. Used in the HTTP-to-Dubbo conversion scenario.
+	// The service group. Used in HTTP-to-Dubbo transcoding scenarios.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	// The HTTP-to-Dubbo protocol transcoding configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
 	//
 	// example:
 	//
 	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
 	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
-	// The target model name. This field is shared by multiple model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not specified for the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The service namespace. Used in the HTTP-to-Dubbo conversion scenario.
+	// The service namespace. Used in HTTP-to-Dubbo transcoding scenarios.
 	//
 	// example:
 	//
@@ -295,19 +295,19 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service source type. Used in the HTTP-to-Dubbo conversion scenario.
+	// The service source type. Used in HTTP-to-Dubbo transcoding scenarios.
 	//
 	// example:
 	//
 	// MSE_NACOS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The service version. This parameter is valid only in the tag-based scenario.
+	// The service version. This parameter takes effect only in the tag-based scenario.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The traffic ratio percentage value.
+	// The percentage value of the traffic ratio.
 	//
 	// example:
 	//

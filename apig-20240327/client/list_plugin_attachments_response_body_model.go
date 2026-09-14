@@ -110,7 +110,7 @@ type ListPluginAttachmentsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *ListPluginAttachmentsResponseBodyData) Validate() error {
 }
 
 type ListPluginAttachmentsResponseBodyDataItems struct {
-	// The plugin mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+	// The plug-in mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, Operation.
 	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Indicates whether the plugin mount is enabled.
+	// Specifies whether the plug-in is enabled.
 	//
 	// example:
 	//
@@ -192,21 +192,21 @@ type ListPluginAttachmentsResponseBodyDataItems struct {
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
 	// The parent resource information.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
-	// The plugin mount ID.
+	// The plug-in mount ID.
 	//
 	// example:
 	//
 	// pa-d0j9t5em1hkncrlo51mg
 	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	// The plugin type information.
+	// The plug-in type information.
 	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
-	// The Base64-encoded content of the original plugin configuration.
+	// The Base64-encoded content of the original plug-in configuration.
 	//
 	// example:
 	//
 	// bGltaXRfYnlfaGVhZGVyOiB4LWFwaS1rZXkKbGltaXRfa2V5czoKLSBrZXk6IGV4YW1wbGUta2V5LWEKICBxdWVyeV9wZXJfc2Vjb25kOiAxMAotIGtleTogZXhhbXBsZS1rZXktYgogIHF1ZXJ5X3Blcl9zZWNvbmQ6IDEK
 	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
-	// The plugin ID.
+	// The plug-in ID.
 	//
 	// example:
 	//

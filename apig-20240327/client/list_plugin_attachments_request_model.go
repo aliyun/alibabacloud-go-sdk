@@ -36,13 +36,13 @@ type ListPluginAttachmentsRequest struct {
 	//
 	// hr-cv2h58em1hkg7c6vt43g
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The plugin mount point type. This parameter is not yet enabled.
+	// The plug-in mount point type. Not enabled yet.
 	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The mount point types. Separate multiple types with commas.
+	// The mount point types. Separate multiple values with commas.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListPluginAttachmentsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The plugin ID.
+	// The plug-in ID.
 	//
 	// example:
 	//
 	// pl-ct8181um1hkiqns9f6e0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// Specifies whether to return parent resource mounts.
+	// Specifies whether to return the parent resource mount.
 	//
 	// example:
 	//
