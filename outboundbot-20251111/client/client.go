@@ -25,9 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shanghai": dara.String("outboundbot.cn-shanghai.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -61,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Stops an outbound call campaign.
+// Terminates an outbound call campaign.
 //
 // Description:
 //
@@ -113,7 +110,7 @@ func (client *Client) AbortCampaignWithOptions(request *AbortCampaignRequest, ru
 
 // Summary:
 //
-// Stops an outbound call campaign.
+// Terminates an outbound call campaign.
 //
 // Description:
 //
@@ -305,7 +302,7 @@ func (client *Client) AppendCases(request *AppendCasesRequest) (_result *AppendC
 
 // Summary:
 //
-// Creates an outbound call task.
+// Creates an outbound call campaign.
 //
 // Description:
 //
@@ -437,7 +434,7 @@ func (client *Client) CreateCampaignWithOptions(tmpReq *CreateCampaignRequest, r
 
 // Summary:
 //
-// Creates an outbound call task.
+// Creates an outbound call campaign.
 //
 // Description:
 //
@@ -1752,6 +1749,72 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetInstanceResponse{}
 	_body, _err := client.GetInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a call recording.
+//
+// @param request - GetRecordingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecordingResponse
+func (client *Client) GetRecordingWithOptions(request *GetRecordingRequest, runtime *dara.RuntimeOptions) (_result *GetRecordingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecording"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecordingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a call recording.
+//
+// @param request - GetRecordingRequest
+//
+// @return GetRecordingResponse
+func (client *Client) GetRecording(request *GetRecordingRequest) (_result *GetRecordingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRecordingResponse{}
+	_body, _err := client.GetRecordingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

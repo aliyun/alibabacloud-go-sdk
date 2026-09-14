@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Stops an outbound call campaign.
+// Terminates an outbound call campaign.
 //
 // Description:
 //
@@ -187,7 +187,7 @@ func (client *Client) AppendCasesWithContext(ctx context.Context, tmpReq *Append
 
 // Summary:
 //
-// Creates an outbound call task.
+// Creates an outbound call campaign.
 //
 // Description:
 //
@@ -1279,6 +1279,54 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a call recording.
+//
+// @param request - GetRecordingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecordingResponse
+func (client *Client) GetRecordingWithContext(ctx context.Context, request *GetRecordingRequest, runtime *dara.RuntimeOptions) (_result *GetRecordingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRecording"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRecordingResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

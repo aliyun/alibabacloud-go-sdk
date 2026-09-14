@@ -24,7 +24,7 @@ type GetCampaignRequest struct {
 	//
 	// 6ac878ab-115b-4170-a5d8-547481273364
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// The outbound instance ID.
+	// The instance ID of the outbound robot.
 	//
 	// This parameter is required.
 	//

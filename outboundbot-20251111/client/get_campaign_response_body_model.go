@@ -215,7 +215,7 @@ type GetCampaignResponseBodyData struct {
 	//
 	// 5
 	MinAttemptInterval *int32 `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	// The campaign name.
+	// The name of the campaign.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type GetCampaignResponseBodyData struct {
 	//
 	// d13ad2d3-3fe6-4352-b38b-bd6559047de8
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The campaign state.
+	// The state of the campaign.
 	//
 	// example:
 	//
@@ -265,7 +265,7 @@ type GetCampaignResponseBodyData struct {
 	//
 	// 1735660800000
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// The campaign weight.
+	// The weight of the campaign.
 	//
 	// example:
 	//

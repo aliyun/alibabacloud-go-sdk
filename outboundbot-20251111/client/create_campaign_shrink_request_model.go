@@ -52,9 +52,9 @@ type iCreateCampaignShrinkRequest interface {
 type CreateCampaignShrinkRequest struct {
 	// The call execution order. Default value: MIN_ATTEMPT_FIRST. Valid values:
 	//
-	// - PRIORITY_FIRST: priority first.
+	// - PRIORITY_FIRST: prioritize by priority.
 	//
-	// - MIN_ATTEMPT_FIRST: minimum attempt count first.
+	// - MIN_ATTEMPT_FIRST: prioritize by minimum attempt count.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type CreateCampaignShrinkRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The minimum concurrency for the task. A value of 0 indicates no guaranteed minimum, and resources are allocated by weight.
 	//
-	// If multiple tasks have a minimum concurrency configured:
+	// If multiple campaigns have a minimum concurrency configured:
 	//
 	// - If the total concurrency is less than the instance total concurrency, the minimum concurrency of each task is satisfied first, and the remaining resources are allocated proportionally by weight.
 	//
@@ -108,7 +108,7 @@ type CreateCampaignShrinkRequest struct {
 	//
 	// {}
 	FlashSmsParameters *string `json:"FlashSmsParameters,omitempty" xml:"FlashSmsParameters,omitempty"`
-	// Specifies whether to prohibit outbound calls on holidays.
+	// Specifies whether to restrict outbound calls on holidays.
 	//
 	// example:
 	//
@@ -144,11 +144,11 @@ type CreateCampaignShrinkRequest struct {
 	//
 	// example:
 	//
-	// Updated_task_group
+	// Updated job group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of caller numbers for the outbound task.
+	// The list of caller numbers for the outbound call task.
 	NumbersShrink *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
-	// The list of redial restriction conditions. If this parameter is not specified, no restrictions are applied. Valid values:
+	// The list of redial restriction conditions. If not specified, no restrictions are applied. Valid values:
 	//
 	// - CALLEE_NOT_EXISTS: Do not call nonexistent numbers.
 	//
@@ -158,7 +158,7 @@ type CreateCampaignShrinkRequest struct {
 	//
 	// None
 	RedialRestrictions *string `json:"RedialRestrictions,omitempty" xml:"RedialRestrictions,omitempty"`
-	// Specifies whether to keep the scheduling state until the task end time after all contacts are called. Default value: false. Valid values:
+	// Specifies whether to keep the scheduling state until the campaign end time after all contacts are called. Default value: false. Valid values:
 	//
 	// - true: The task remains in the scheduling state, and you can continue to append contacts.
 	//

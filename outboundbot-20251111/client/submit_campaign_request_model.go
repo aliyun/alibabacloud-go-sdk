@@ -16,7 +16,7 @@ type iSubmitCampaignRequest interface {
 }
 
 type SubmitCampaignRequest struct {
-	// The ID of the task.
+	// The ID of the campaign.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type SubmitCampaignRequest struct {
 	//
 	// f295a472-35ee-442a-9013-b13862505a1a
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// The outbound instance ID.
+	// The outbound call instance ID.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type PauseCampaignRequest struct {
 	//
 	// 6ac878ab-115b-4170-a5d8-547481273364
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	// The instance ID of the outbound call instance.
+	// The outbound robot instance ID.
 	//
 	// This parameter is required.
 	//
