@@ -27,7 +27,7 @@ type SubmitConvertImageToPdfJobShrinkRequest struct {
 	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
-	// JPG
+	// jpg
 	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`

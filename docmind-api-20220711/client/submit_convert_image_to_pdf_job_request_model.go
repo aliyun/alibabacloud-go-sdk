@@ -27,7 +27,7 @@ type SubmitConvertImageToPdfJobRequest struct {
 	EnableEventCallback *bool `json:"EnableEventCallback,omitempty" xml:"EnableEventCallback,omitempty"`
 	// example:
 	//
-	// JPG
+	// jpg
 	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
 	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`

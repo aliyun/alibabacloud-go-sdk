@@ -130,11 +130,13 @@ func (client *Client) _postOSSObject(bucketName *string, form map[string]interfa
 
 		request_ = dara.NewRequest()
 		boundary := dara.GetBoundary()
+		tmp := dara.ToString(form["host"])
+		host := dara.StringValue(bucketName) + "." + tmp
 		request_.Protocol = dara.String("HTTPS")
 		request_.Method = dara.String("POST")
 		request_.Pathname = dara.String("/")
 		request_.Headers = map[string]*string{
-			"host":       dara.String(dara.ToString(form["host"])),
+			"host":       dara.String(host),
 			"date":       openapiutil.GetDateUTCString(),
 			"user-agent": openapiutil.GetUserAgent(dara.String("")),
 		}
@@ -1340,7 +1342,7 @@ func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPd
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -1525,7 +1527,7 @@ func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPd
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -1706,7 +1708,7 @@ func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConver
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -1903,7 +1905,7 @@ func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdf
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -2100,7 +2102,7 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -2351,7 +2353,7 @@ func (client *Client) SubmitDocParserJobAdvance(request *SubmitDocParserJobAdvan
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -2566,7 +2568,7 @@ func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJo
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -2751,7 +2753,7 @@ func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExt
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -2936,7 +2938,7 @@ func (client *Client) SubmitTableUnderstandingJobAdvance(request *SubmitTableUnd
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),

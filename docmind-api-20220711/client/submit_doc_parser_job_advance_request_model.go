@@ -351,8 +351,12 @@ func (s *SubmitDocParserJobAdvanceRequestLLMParam) Validate() error {
 }
 
 type SubmitDocParserJobAdvanceRequestMultimediaParameters struct {
-	EnableSynopsisParse *bool   `json:"EnableSynopsisParse,omitempty" xml:"EnableSynopsisParse,omitempty"`
-	VlParsePrompt       *string `json:"VlParsePrompt,omitempty" xml:"VlParsePrompt,omitempty"`
+	EnableDiarization      *bool                                                                `json:"EnableDiarization,omitempty" xml:"EnableDiarization,omitempty"`
+	EnableSynopsisParse    *bool                                                                `json:"EnableSynopsisParse,omitempty" xml:"EnableSynopsisParse,omitempty"`
+	EnableSynopsisSegments *bool                                                                `json:"EnableSynopsisSegments,omitempty" xml:"EnableSynopsisSegments,omitempty"`
+	EnableSynopsisSummary  *bool                                                                `json:"EnableSynopsisSummary,omitempty" xml:"EnableSynopsisSummary,omitempty"`
+	FrameExtraction        *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction `json:"FrameExtraction,omitempty" xml:"FrameExtraction,omitempty" type:"Struct"`
+	VlParsePrompt          *string                                                              `json:"VlParsePrompt,omitempty" xml:"VlParsePrompt,omitempty"`
 }
 
 func (s SubmitDocParserJobAdvanceRequestMultimediaParameters) String() string {
@@ -363,16 +367,52 @@ func (s SubmitDocParserJobAdvanceRequestMultimediaParameters) GoString() string 
 	return s.String()
 }
 
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) GetEnableDiarization() *bool {
+	return s.EnableDiarization
+}
+
 func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) GetEnableSynopsisParse() *bool {
 	return s.EnableSynopsisParse
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) GetEnableSynopsisSegments() *bool {
+	return s.EnableSynopsisSegments
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) GetEnableSynopsisSummary() *bool {
+	return s.EnableSynopsisSummary
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) GetFrameExtraction() *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction {
+	return s.FrameExtraction
 }
 
 func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) GetVlParsePrompt() *string {
 	return s.VlParsePrompt
 }
 
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) SetEnableDiarization(v bool) *SubmitDocParserJobAdvanceRequestMultimediaParameters {
+	s.EnableDiarization = &v
+	return s
+}
+
 func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) SetEnableSynopsisParse(v bool) *SubmitDocParserJobAdvanceRequestMultimediaParameters {
 	s.EnableSynopsisParse = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) SetEnableSynopsisSegments(v bool) *SubmitDocParserJobAdvanceRequestMultimediaParameters {
+	s.EnableSynopsisSegments = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) SetEnableSynopsisSummary(v bool) *SubmitDocParserJobAdvanceRequestMultimediaParameters {
+	s.EnableSynopsisSummary = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) SetFrameExtraction(v *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) *SubmitDocParserJobAdvanceRequestMultimediaParameters {
+	s.FrameExtraction = v
 	return s
 }
 
@@ -382,5 +422,65 @@ func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) SetVlParsePrompt(
 }
 
 func (s *SubmitDocParserJobAdvanceRequestMultimediaParameters) Validate() error {
+	if s.FrameExtraction != nil {
+		if err := s.FrameExtraction.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction struct {
+	FrameRate         *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Mode              *string  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	OutputImageHeight *int64   `json:"OutputImageHeight,omitempty" xml:"OutputImageHeight,omitempty"`
+	OutputImageWidth  *int64   `json:"OutputImageWidth,omitempty" xml:"OutputImageWidth,omitempty"`
+}
+
+func (s SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) GetFrameRate() *float32 {
+	return s.FrameRate
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) GetMode() *string {
+	return s.Mode
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) GetOutputImageHeight() *int64 {
+	return s.OutputImageHeight
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) GetOutputImageWidth() *int64 {
+	return s.OutputImageWidth
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) SetFrameRate(v float32) *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) SetMode(v string) *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction {
+	s.Mode = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) SetOutputImageHeight(v int64) *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction {
+	s.OutputImageHeight = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) SetOutputImageWidth(v int64) *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction {
+	s.OutputImageWidth = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestMultimediaParametersFrameExtraction) Validate() error {
 	return dara.Validate(s)
 }
