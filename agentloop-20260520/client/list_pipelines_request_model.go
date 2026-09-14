@@ -19,6 +19,8 @@ type iListPipelinesRequest interface {
 	GetScheduleStatus() *string
 	SetScheduleType(v string) *ListPipelinesRequest
 	GetScheduleType() *string
+	SetSinkName(v string) *ListPipelinesRequest
+	GetSinkName() *string
 }
 
 type ListPipelinesRequest struct {
@@ -42,6 +44,10 @@ type ListPipelinesRequest struct {
 	//
 	// RunOnce
 	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
+	// example:
+	//
+	// my-dataset
+	SinkName *string `json:"sinkName,omitempty" xml:"sinkName,omitempty"`
 }
 
 func (s ListPipelinesRequest) String() string {
@@ -72,6 +78,10 @@ func (s *ListPipelinesRequest) GetScheduleType() *string {
 	return s.ScheduleType
 }
 
+func (s *ListPipelinesRequest) GetSinkName() *string {
+	return s.SinkName
+}
+
 func (s *ListPipelinesRequest) SetMaxResults(v int32) *ListPipelinesRequest {
 	s.MaxResults = &v
 	return s
@@ -94,6 +104,11 @@ func (s *ListPipelinesRequest) SetScheduleStatus(v string) *ListPipelinesRequest
 
 func (s *ListPipelinesRequest) SetScheduleType(v string) *ListPipelinesRequest {
 	s.ScheduleType = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetSinkName(v string) *ListPipelinesRequest {
+	s.SinkName = &v
 	return s
 }
 

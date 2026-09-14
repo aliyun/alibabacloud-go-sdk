@@ -38,7 +38,12 @@ type ListAgentSpacesRequest struct {
 	//
 	// pEL20OGYeZQez8NdW7ve
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 }
 
 func (s ListAgentSpacesRequest) String() string {

@@ -26,7 +26,7 @@ type ExecuteQueryResponseBody struct {
   ColumnTypes []*string `json:"columnTypes,omitempty" xml:"columnTypes,omitempty" type:"Repeated"`
   // The result column information.
   Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-  // The metadata of the returned data.
+  // The metadata of the response.
   Meta *ExecuteQueryResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
   // The request ID.
   // 
@@ -125,6 +125,7 @@ type ExecuteQueryResponseBodyMeta struct {
   // 
   // Complete
   Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+  // The result truncation details.
   Truncation *ExecuteQueryResponseBodyMetaTruncation `json:"truncation,omitempty" xml:"truncation,omitempty" type:"Struct"`
 }
 
@@ -191,7 +192,9 @@ func (s *ExecuteQueryResponseBodyMeta) Validate() error {
 }
 
 type ExecuteQueryResponseBodyMetaTruncation struct {
+  // Indicates whether the result is truncated.
   Truncated *bool `json:"truncated,omitempty" xml:"truncated,omitempty"`
+  // The truncation details of result rows.
   TruncatedColumnIndexes [][]*int32 `json:"truncatedColumnIndexes,omitempty" xml:"truncatedColumnIndexes,omitempty" type:"Repeated"`
 }
 

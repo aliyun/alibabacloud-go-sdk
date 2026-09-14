@@ -25,17 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shenzhen":    dara.String("agentloop.cn-shenzhen.aliyuncs.com"),
-		"cn-beijing":     dara.String("agentloop.cn-beijing.aliyuncs.com"),
-		"cn-shanghai":    dara.String("agentloop.cn-shanghai.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("agentloop.cn-guangzhou.aliyuncs.com"),
-		"cn-hongkong":    dara.String("agentloop.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": dara.String("agentloop.ap-southeast-1.aliyuncs.com"),
-		"cn-zhangjiakou": dara.String("agentloop.cn-zhangjiakou.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("agentloop.cn-hangzhou.aliyuncs.com"),
-		"cn-chengdu":     dara.String("agentloop.cn-chengdu.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1937,6 +1926,12 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // Executes a query statement.
 //
+// Description:
+//
+// Calls CreateEvaluationTask to create an evaluation task in a specified AgentSpace. The server validates AgentSpace permissions, initializes evaluation result storage, checks task name uniqueness, and asynchronously creates and executes an EvaluationRun based on `taskMode` and `runStrategies`.
+//
+// This operation is applicable to running built-in or custom evaluators on Trace, Dataset, or SLS Log data. It supports two execution strategies: historical backfill and continuous evaluation.
+//
 // @param request - ExecuteQueryRequest
 //
 // @param headers - map
@@ -1952,6 +1947,10 @@ func (client *Client) ExecuteQueryWithOptions(agentSpace *string, datasetName *s
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AnnotationFilter) {
+		body["annotationFilter"] = request.AnnotationFilter
+	}
+
 	if !dara.IsNil(request.From) {
 		body["from"] = request.From
 	}
@@ -2011,6 +2010,12 @@ func (client *Client) ExecuteQueryWithOptions(agentSpace *string, datasetName *s
 // Summary:
 //
 // Executes a query statement.
+//
+// Description:
+//
+// Calls CreateEvaluationTask to create an evaluation task in a specified AgentSpace. The server validates AgentSpace permissions, initializes evaluation result storage, checks task name uniqueness, and asynchronously creates and executes an EvaluationRun based on `taskMode` and `runStrategies`.
+//
+// This operation is applicable to running built-in or custom evaluators on Trace, Dataset, or SLS Log data. It supports two execution strategies: historical backfill and continuous evaluation.
 //
 // @param request - ExecuteQueryRequest
 //
@@ -2661,7 +2666,7 @@ func (client *Client) GetExperimentRun(agentSpace *string, recordId *string, req
 
 // Summary:
 //
-// Queries a CI/CD pipeline.
+// Queries a pipeline.
 //
 // @param request - GetPipelineRequest
 //
@@ -2702,7 +2707,7 @@ func (client *Client) GetPipelineWithOptions(agentSpace *string, pipelineName *s
 
 // Summary:
 //
-// Queries a CI/CD pipeline.
+// Queries a pipeline.
 //
 // @param request - GetPipelineRequest
 //
@@ -2855,7 +2860,11 @@ func (client *Client) GetPipelineStats(agentSpace *string, pipelineName *string,
 
 // Summary:
 //
-// Queries the list of AgentSpaces.
+// Queries a list of AgentSpaces.
+//
+// Description:
+//
+// Supports filtering by region.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -2914,7 +2923,11 @@ func (client *Client) ListAgentSpacesWithOptions(request *ListAgentSpacesRequest
 
 // Summary:
 //
-// Queries the list of AgentSpaces.
+// Queries a list of AgentSpaces.
+//
+// Description:
+//
+// Supports filtering by region.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -3814,6 +3827,10 @@ func (client *Client) ListPipelinesWithOptions(agentSpace *string, request *List
 
 	if !dara.IsNil(request.ScheduleType) {
 		query["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.SinkName) {
+		query["sinkName"] = request.SinkName
 	}
 
 	req := &openapiutil.OpenApiRequest{

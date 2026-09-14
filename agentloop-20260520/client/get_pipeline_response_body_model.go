@@ -40,50 +40,82 @@ type iGetPipelineResponseBody interface {
 }
 
 type GetPipelineResponseBody struct {
+	// The committed watermark. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1735660800
 	CommittedWatermark *int64 `json:"committedWatermark,omitempty" xml:"committedWatermark,omitempty"`
+	// The time when the pipeline was created, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The pipeline description.
+	//
 	// example:
 	//
-	// 我的流水线
-	Description   *string                               `json:"description,omitempty" xml:"description,omitempty"`
+	// My pipeline
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The scheduling method.
 	ExecutePolicy *GetPipelineResponseBodyExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
+	// The next scheduling trigger time. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1735661100
-	NextTriggerTime *int64                           `json:"nextTriggerTime,omitempty" xml:"nextTriggerTime,omitempty"`
-	Pipeline        *GetPipelineResponseBodyPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	NextTriggerTime *int64 `json:"nextTriggerTime,omitempty" xml:"nextTriggerTime,omitempty"`
+	// The pipeline configuration for node orchestration.
+	Pipeline *GetPipelineResponseBodyPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	// The pipeline name.
+	//
 	// example:
 	//
 	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The scheduling status. Valid values:
+	//
+	// - None: No scheduling.
+	//
+	// - Active: Active.
+	//
+	// - Paused: Paused.
+	//
+	// - Terminated: Terminated.
+	//
 	// example:
 	//
 	// Active
-	ScheduleStatus *string                        `json:"scheduleStatus,omitempty" xml:"scheduleStatus,omitempty"`
-	Sink           *GetPipelineResponseBodySink   `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	Source         *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	ScheduleStatus *string `json:"scheduleStatus,omitempty" xml:"scheduleStatus,omitempty"`
+	// The pipeline sink, which is the data write destination.
+	Sink *GetPipelineResponseBodySink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	// The pipeline data source.
+	Source *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	// The time when the pipeline was last updated, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-02T00:00:00Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The workspace associated with the pipeline.
+	//
 	// example:
 	//
 	// my-workspace
@@ -249,11 +281,15 @@ func (s *GetPipelineResponseBody) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicy struct {
+	// The scheduling mode. For example, scheduled (timed scheduling) or runOnce (one-time execution).
+	//
 	// example:
 	//
 	// scheduled
-	Mode      *string                                        `json:"mode,omitempty" xml:"mode,omitempty"`
-	RunOnce   *GetPipelineResponseBodyExecutePolicyRunOnce   `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The configuration for one-time execution.
+	RunOnce *GetPipelineResponseBodyExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	// The timed scheduling configuration.
 	Scheduled *GetPipelineResponseBodyExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
 }
 
@@ -307,10 +343,14 @@ func (s *GetPipelineResponseBodyExecutePolicy) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicyRunOnce struct {
+	// The start time for data processing. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1735660800000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The end time for data processing. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1735747200000
@@ -348,10 +388,14 @@ func (s *GetPipelineResponseBodyExecutePolicyRunOnce) Validate() error {
 }
 
 type GetPipelineResponseBodyExecutePolicyScheduled struct {
+	// The scheduling start time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1735660800000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The scheduling interval. For example, 1h.
+	//
 	// example:
 	//
 	// 1h
@@ -389,6 +433,7 @@ func (s *GetPipelineResponseBodyExecutePolicyScheduled) Validate() error {
 }
 
 type GetPipelineResponseBodyPipeline struct {
+	// The list of nodes.
 	Nodes []*GetPipelineResponseBodyPipelineNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 }
 
@@ -423,11 +468,16 @@ func (s *GetPipelineResponseBodyPipeline) Validate() error {
 }
 
 type GetPipelineResponseBodyPipelineNodes struct {
+	// The node ID.
+	//
 	// example:
 	//
 	// node-1
-	Id         *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The node parameters in key-value structure, which vary depending on the node type.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// transform
@@ -474,8 +524,12 @@ func (s *GetPipelineResponseBodyPipelineNodes) Validate() error {
 }
 
 type GetPipelineResponseBodySink struct {
+	// The conditional routing configuration. This parameter is used only when sink.type is set to condition.
 	Condition *GetPipelineResponseBodySinkCondition `json:"condition,omitempty" xml:"condition,omitempty" type:"Struct"`
-	Dataset   *GetPipelineResponseBodySinkDataset   `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The target dataset configuration for the dataset sink. This parameter is used only when sink.type is set to dataset.
+	Dataset *GetPipelineResponseBodySinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The sink type. Valid values: dataset and condition.
+	//
 	// example:
 	//
 	// condition
@@ -532,12 +586,16 @@ func (s *GetPipelineResponseBodySink) Validate() error {
 }
 
 type GetPipelineResponseBodySinkCondition struct {
+	// The default write destination used when no conditional route is matched.
 	DefaultSink *GetPipelineResponseBodySinkConditionDefaultSink `json:"defaultSink,omitempty" xml:"defaultSink,omitempty" type:"Struct"`
+	// The route match mode. Currently, only all is supported.
+	//
 	// example:
 	//
 	// all
-	MatchMode *string                                       `json:"matchMode,omitempty" xml:"matchMode,omitempty"`
-	Routes    []*GetPipelineResponseBodySinkConditionRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	MatchMode *string `json:"matchMode,omitempty" xml:"matchMode,omitempty"`
+	// The list of conditional routes.
+	Routes []*GetPipelineResponseBodySinkConditionRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 
 func (s GetPipelineResponseBodySinkCondition) String() string {
@@ -594,7 +652,10 @@ func (s *GetPipelineResponseBodySinkCondition) Validate() error {
 }
 
 type GetPipelineResponseBodySinkConditionDefaultSink struct {
+	// The default destination dataset.
 	Dataset *GetPipelineResponseBodySinkConditionDefaultSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The default destination type. Currently, only dataset is supported.
+	//
 	// example:
 	//
 	// dataset
@@ -637,10 +698,14 @@ func (s *GetPipelineResponseBodySinkConditionDefaultSink) Validate() error {
 }
 
 type GetPipelineResponseBodySinkConditionDefaultSinkDataset struct {
+	// The name of the AgentSpace to which the default destination dataset belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The name of the default destination dataset.
+	//
 	// example:
 	//
 	// other-result
@@ -678,14 +743,19 @@ func (s *GetPipelineResponseBodySinkConditionDefaultSinkDataset) Validate() erro
 }
 
 type GetPipelineResponseBodySinkConditionRoutes struct {
+	// The route expression in SPL. Only where, project, and extend are supported.
+	//
 	// example:
 	//
 	// 	- | where intent = \\"refund\\"
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The route ID.
+	//
 	// example:
 	//
 	// refund
-	Id   *string                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The route write destination.
 	Sink *GetPipelineResponseBodySinkConditionRoutesSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 }
 
@@ -734,7 +804,10 @@ func (s *GetPipelineResponseBodySinkConditionRoutes) Validate() error {
 }
 
 type GetPipelineResponseBodySinkConditionRoutesSink struct {
+	// The route destination dataset.
 	Dataset *GetPipelineResponseBodySinkConditionRoutesSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The route destination type. Currently, only dataset is supported.
+	//
 	// example:
 	//
 	// dataset
@@ -777,10 +850,14 @@ func (s *GetPipelineResponseBodySinkConditionRoutesSink) Validate() error {
 }
 
 type GetPipelineResponseBodySinkConditionRoutesSinkDataset struct {
+	// The name of the AgentSpace to which the destination dataset belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The name of the destination dataset.
+	//
 	// example:
 	//
 	// refund-result
@@ -818,10 +895,14 @@ func (s *GetPipelineResponseBodySinkConditionRoutesSinkDataset) Validate() error
 }
 
 type GetPipelineResponseBodySinkDataset struct {
+	// The name of the AgentSpace to which the target dataset belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The target dataset name.
+	//
 	// example:
 	//
 	// my-dataset
@@ -859,9 +940,14 @@ func (s *GetPipelineResponseBodySinkDataset) Validate() error {
 }
 
 type GetPipelineResponseBodySource struct {
-	Dataset     *GetPipelineResponseBodySourceDataset       `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The dataset datasource config under the current AgentSpace.
+	Dataset *GetPipelineResponseBodySourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The input fields and field types, applicable to all data source types.
 	InputFields []*GetPipelineResponseBodySourceInputFields `json:"inputFields,omitempty" xml:"inputFields,omitempty" type:"Repeated"`
-	Logstore    *GetPipelineResponseBodySourceLogstore      `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	// The SLS Logstore datasource config.
+	Logstore *GetPipelineResponseBodySourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	// The data source type. Valid values: logstore and dataset.
+	//
 	// example:
 	//
 	// dataset
@@ -936,10 +1022,14 @@ func (s *GetPipelineResponseBodySource) Validate() error {
 }
 
 type GetPipelineResponseBodySourceDataset struct {
+	// The source dataset name.
+	//
 	// example:
 	//
 	// my-dataset
 	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+	// The dataset data filter condition.
+	//
 	// example:
 	//
 	// status = \\"pending\\"
@@ -977,10 +1067,14 @@ func (s *GetPipelineResponseBodySourceDataset) Validate() error {
 }
 
 type GetPipelineResponseBodySourceInputFields struct {
+	// The field name.
+	//
 	// example:
 	//
 	// question
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The field type. Valid values: text, long, double, and json.
+	//
 	// example:
 	//
 	// text
@@ -1018,14 +1112,20 @@ func (s *GetPipelineResponseBodySourceInputFields) Validate() error {
 }
 
 type GetPipelineResponseBodySourceLogstore struct {
+	// The SLS Logstore name.
+	//
 	// example:
 	//
 	// my-sls-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The SLS project name.
+	//
 	// example:
 	//
 	// my-sls-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The data filtered query statement in SLS query/analysis syntax.
+	//
 	// example:
 	//
 	// 	- | SELECT *

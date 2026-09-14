@@ -1399,6 +1399,12 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 //
 // Executes a query statement.
 //
+// Description:
+//
+// Calls CreateEvaluationTask to create an evaluation task in a specified AgentSpace. The server validates AgentSpace permissions, initializes evaluation result storage, checks task name uniqueness, and asynchronously creates and executes an EvaluationRun based on `taskMode` and `runStrategies`.
+//
+// This operation is applicable to running built-in or custom evaluators on Trace, Dataset, or SLS Log data. It supports two execution strategies: historical backfill and continuous evaluation.
+//
 // @param request - ExecuteQueryRequest
 //
 // @param headers - map
@@ -1414,6 +1420,10 @@ func (client *Client) ExecuteQueryWithContext(ctx context.Context, agentSpace *s
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AnnotationFilter) {
+		body["annotationFilter"] = request.AnnotationFilter
+	}
+
 	if !dara.IsNil(request.From) {
 		body["from"] = request.From
 	}
@@ -1906,7 +1916,7 @@ func (client *Client) GetExperimentRunWithContext(ctx context.Context, agentSpac
 
 // Summary:
 //
-// Queries a CI/CD pipeline.
+// Queries a pipeline.
 //
 // @param request - GetPipelineRequest
 //
@@ -2043,7 +2053,11 @@ func (client *Client) GetPipelineStatsWithContext(ctx context.Context, agentSpac
 
 // Summary:
 //
-// Queries the list of AgentSpaces.
+// Queries a list of AgentSpaces.
+//
+// Description:
+//
+// Supports filtering by region.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -2785,6 +2799,10 @@ func (client *Client) ListPipelinesWithContext(ctx context.Context, agentSpace *
 
 	if !dara.IsNil(request.ScheduleType) {
 		query["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.SinkName) {
+		query["sinkName"] = request.SinkName
 	}
 
 	req := &openapiutil.OpenApiRequest{
