@@ -11,6 +11,8 @@ type iModifySupabaseAutoScalePolicyRequest interface {
 	GoString() string
 	SetAutoScale(v bool) *ModifySupabaseAutoScalePolicyRequest
 	GetAutoScale() *bool
+	SetIdleTimeHours(v string) *ModifySupabaseAutoScalePolicyRequest
+	GetIdleTimeHours() *string
 	SetProjectId(v string) *ModifySupabaseAutoScalePolicyRequest
 	GetProjectId() *string
 	SetRegionId(v string) *ModifySupabaseAutoScalePolicyRequest
@@ -29,7 +31,8 @@ type ModifySupabaseAutoScalePolicyRequest struct {
 	// example:
 	//
 	// false
-	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	AutoScale     *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	IdleTimeHours *string `json:"IdleTimeHours,omitempty" xml:"IdleTimeHours,omitempty"`
 	// The ID of the Supabase project. You can obtain the workspace ID from the Supabase page in the console.
 	//
 	// This parameter is required.
@@ -58,6 +61,10 @@ func (s *ModifySupabaseAutoScalePolicyRequest) GetAutoScale() *bool {
 	return s.AutoScale
 }
 
+func (s *ModifySupabaseAutoScalePolicyRequest) GetIdleTimeHours() *string {
+	return s.IdleTimeHours
+}
+
 func (s *ModifySupabaseAutoScalePolicyRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -68,6 +75,11 @@ func (s *ModifySupabaseAutoScalePolicyRequest) GetRegionId() *string {
 
 func (s *ModifySupabaseAutoScalePolicyRequest) SetAutoScale(v bool) *ModifySupabaseAutoScalePolicyRequest {
 	s.AutoScale = &v
+	return s
+}
+
+func (s *ModifySupabaseAutoScalePolicyRequest) SetIdleTimeHours(v string) *ModifySupabaseAutoScalePolicyRequest {
+	s.IdleTimeHours = &v
 	return s
 }
 

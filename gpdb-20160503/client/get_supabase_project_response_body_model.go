@@ -9,6 +9,8 @@ type iGetSupabaseProjectResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppliedIdleTimeHours(v string) *GetSupabaseProjectResponseBody
+	GetAppliedIdleTimeHours() *string
 	SetAutoScale(v string) *GetSupabaseProjectResponseBody
 	GetAutoScale() *string
 	SetCreateTime(v string) *GetSupabaseProjectResponseBody
@@ -66,43 +68,45 @@ type iGetSupabaseProjectResponseBody interface {
 }
 
 type GetSupabaseProjectResponseBody struct {
-	// Indicates whether the **auto pause and resume*	- feature is enabled.
+	// example:
 	//
-	// Valid values:
+	// 0.5
+	AppliedIdleTimeHours *string `json:"AppliedIdleTimeHours,omitempty" xml:"AppliedIdleTimeHours,omitempty"`
+	// Indicates whether **auto start and stop*	- is enabled. Valid values:
 	//
-	// - `true`: The feature is enabled. The project automatically pauses and resumes based on traffic.
+	// - true: Enabled. After this feature is enabled, Supabase automatically pauses and resumes based on traffic conditions.
 	//
-	// - `false`: The feature is disabled.
+	// - false: Disabled. After this feature is disabled, the auto start and stop feature of Supabase is turned off.
 	//
 	// example:
 	//
 	// false
 	AutoScale *string `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// The creation time of the project.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The database IP address whitelist, specified as a comma-separated string.
+	// The database whitelist.
 	//
 	// example:
 	//
 	// 127.0.0.1,100.64.XX.XX/10
 	DBSecurityIpList *string `json:"DBSecurityIpList,omitempty" xml:"DBSecurityIpList,omitempty"`
-	// The password for the Supabase Dashboard. This parameter is not used.
+	// The Supabase Dashboard password. This parameter is not in use.
 	//
 	// example:
 	//
 	// xxpassword
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	// The username for the Supabase Dashboard. This parameter is not used.
+	// The Supabase Dashboard username. This parameter is not in use.
 	//
 	// example:
 	//
 	// username
 	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
-	// The performance level (PL) of the cloud disk. Valid values:
+	// The performance level of the cloud disk. Valid values:
 	//
 	// - PL0
 	//
@@ -112,19 +116,19 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
-	// The database engine.
+	// The database engine type.
 	//
 	// example:
 	//
 	// postgres
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 15
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The elastic network interface (ENI) ID.
+	// The elastic network interface (ENI) ID. The network interface controller (NIC) ID of the instance.
 	//
 	// example:
 	//
@@ -136,30 +140,35 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// v1.0.3
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
-	Lightweight     *string `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
-	// The billing method. Valid values:
+	// Indicates whether the project is a lightweight edition.
 	//
-	// - `POSTPAY`: pay-as-you-go
+	// example:
 	//
-	// - `PREPAY`: subscription
+	// false
+	Lightweight *string `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
+	// The billing type. Valid values:
+	//
+	// - POSTPAY: pay-as-you-go.
+	//
+	// - PREPAY: subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The private connection URL for the Supabase Dashboard.
+	// The internal network connection string of the Supabase Dashboard.
 	//
 	// example:
 	//
 	// 192.168.0.11
 	PrivateConnectUrl *string `json:"PrivateConnectUrl,omitempty" xml:"PrivateConnectUrl,omitempty"`
-	// The description of the Supabase project.
+	// The detailed description of the Supabase project.
 	//
 	// example:
 	//
 	// for-test-project
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	// The Supabase project ID.
+	// The Supabase instance ID.
 	//
 	// example:
 	//
@@ -171,13 +180,13 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// supabase_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The Supabase instance specification.
+	// The Supabase instance specifications.
 	//
 	// example:
 	//
 	// 1C1G
 	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
-	// The public connection URL for the Supabase Dashboard.
+	// The public network connection string of the Supabase Dashboard.
 	//
 	// example:
 	//
@@ -185,7 +194,7 @@ type GetSupabaseProjectResponseBody struct {
 	PublicConnectUrl *string `json:"PublicConnectUrl,omitempty" xml:"PublicConnectUrl,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//
@@ -197,7 +206,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IP address whitelist, specified as a comma-separated string.
+	// The list of IP addresses in the IP whitelist group, separated by commas (,).
 	//
 	// example:
 	//
@@ -209,7 +218,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage space, in GB.
+	// The storage size. Unit: GB.
 	//
 	// example:
 	//
@@ -229,7 +238,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// cloud_essd_pl0
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The vSwitch ID.
+	// The vSwitch ID. This parameter is required if a VPC ID is specified.
 	//
 	// example:
 	//
@@ -237,9 +246,7 @@ type GetSupabaseProjectResponseBody struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
-	// > - You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPCs.
-	//
-	// >
+	// >  - You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query available VPC IDs.
 	//
 	// > - This parameter is required.
 	//
@@ -249,7 +256,7 @@ type GetSupabaseProjectResponseBody struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available zones.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available zone IDs.
 	//
 	// example:
 	//
@@ -263,6 +270,10 @@ func (s GetSupabaseProjectResponseBody) String() string {
 
 func (s GetSupabaseProjectResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetSupabaseProjectResponseBody) GetAppliedIdleTimeHours() *string {
+	return s.AppliedIdleTimeHours
 }
 
 func (s *GetSupabaseProjectResponseBody) GetAutoScale() *string {
@@ -371,6 +382,11 @@ func (s *GetSupabaseProjectResponseBody) GetVpcId() *string {
 
 func (s *GetSupabaseProjectResponseBody) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *GetSupabaseProjectResponseBody) SetAppliedIdleTimeHours(v string) *GetSupabaseProjectResponseBody {
+	s.AppliedIdleTimeHours = &v
+	return s
 }
 
 func (s *GetSupabaseProjectResponseBody) SetAutoScale(v string) *GetSupabaseProjectResponseBody {

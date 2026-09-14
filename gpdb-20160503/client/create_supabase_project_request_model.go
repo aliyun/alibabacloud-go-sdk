@@ -70,7 +70,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// false
 	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// The idempotency token. Ensures that repeated requests do not execute the same operation more than once.
+	// The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type CreateSupabaseProjectRequest struct {
 	// PG15
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	Lightweight   *bool   `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
-	// The billing method. If this parameter is not specified, the default value Free is used.
+	// The billing type. If this parameter is not specified, the default value Free is used.
 	//
 	// Valid values:
 	//
@@ -169,7 +169,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// 0.0.0.0/0
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The storage size. Unit: GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
+	// The storage size, in GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
 	//
 	// example:
 	//

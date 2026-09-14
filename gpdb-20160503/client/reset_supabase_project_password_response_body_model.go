@@ -14,7 +14,7 @@ type iResetSupabaseProjectPasswordResponseBody interface {
 }
 
 type ResetSupabaseProjectPasswordResponseBody struct {
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

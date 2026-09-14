@@ -11,6 +11,8 @@ type iResetSupabaseProjectPasswordRequest interface {
 	GoString() string
 	SetAccountPassword(v string) *ResetSupabaseProjectPasswordRequest
 	GetAccountPassword() *string
+	SetDashboardPassword(v string) *ResetSupabaseProjectPasswordRequest
+	GetDashboardPassword() *string
 	SetProjectId(v string) *ResetSupabaseProjectPasswordRequest
 	GetProjectId() *string
 	SetRegionId(v string) *ResetSupabaseProjectPasswordRequest
@@ -20,19 +22,20 @@ type iResetSupabaseProjectPasswordRequest interface {
 type ResetSupabaseProjectPasswordRequest struct {
 	// The password of the database account.
 	//
-	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- Special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	// - The following special characters are supported: `!@#$%^&*()_+-=`
 	//
-	// 	- The password must be 8 to 32 characters in length.
+	// - The password must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Pw123456
-	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// Supabase Instance ID
+	AccountPassword   *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	// The Supabase instance ID.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +63,10 @@ func (s *ResetSupabaseProjectPasswordRequest) GetAccountPassword() *string {
 	return s.AccountPassword
 }
 
+func (s *ResetSupabaseProjectPasswordRequest) GetDashboardPassword() *string {
+	return s.DashboardPassword
+}
+
 func (s *ResetSupabaseProjectPasswordRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -70,6 +77,11 @@ func (s *ResetSupabaseProjectPasswordRequest) GetRegionId() *string {
 
 func (s *ResetSupabaseProjectPasswordRequest) SetAccountPassword(v string) *ResetSupabaseProjectPasswordRequest {
 	s.AccountPassword = &v
+	return s
+}
+
+func (s *ResetSupabaseProjectPasswordRequest) SetDashboardPassword(v string) *ResetSupabaseProjectPasswordRequest {
+	s.DashboardPassword = &v
 	return s
 }
 

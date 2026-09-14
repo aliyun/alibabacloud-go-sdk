@@ -3377,7 +3377,7 @@ func (client *Client) CreateStreamingJobWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// Creates a Supabase project in a specified region and zone. This operation supports Free, pay-as-you-go, and subscription billing methods. You can specify the network, specifications, storage, access IP address whitelist, DPI engine version, and auto start/stop configurations.
+// Creates a Supabase project in a specified region and zone. This operation supports the Free, pay-as-you-go, and subscription billing methods. You can specify the network, specifications, storage, access IP address whitelist, DPI engine version, and auto start/stop configurations.
 //
 // @param request - CreateSupabaseProjectRequest
 //
@@ -7287,6 +7287,54 @@ func (client *Client) DescribeDBResourceManagementModeWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDBResourceManagementModeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the kernel update version information.
+//
+// @param request - DescribeDBVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBVersionResponse
+func (client *Client) DescribeDBVersionWithContext(ctx context.Context, request *DescribeDBVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBVersion"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBVersionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11415,11 +11463,11 @@ func (client *Client) GetStatementResultWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves details of a Supabase instance.
+// Queries the details of a Supabase instance.
 //
 // Description:
 //
-// Gets the details of a Supabase instance.
+// Queries the details of a Supabase instance.
 //
 // @param request - GetSupabaseProjectRequest
 //
@@ -15900,6 +15948,10 @@ func (client *Client) ModifySupabaseAutoScalePolicyWithContext(ctx context.Conte
 		query["AutoScale"] = request.AutoScale
 	}
 
+	if !dara.IsNil(request.IdleTimeHours) {
+		query["IdleTimeHours"] = request.IdleTimeHours
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -17127,11 +17179,11 @@ func (client *Client) ResetIMVMonitorDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Reset the password of a Supabase database
+// Resets the password of a Supabase database.
 //
 // Description:
 //
-// Call this API to reset the password of the Supabase database.
+// Resets the password of a Supabase database.
 //
 // @param request - ResetSupabaseProjectPasswordRequest
 //
@@ -17148,6 +17200,10 @@ func (client *Client) ResetSupabaseProjectPasswordWithContext(ctx context.Contex
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountPassword) {
 		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !dara.IsNil(request.DashboardPassword) {
+		query["DashboardPassword"] = request.DashboardPassword
 	}
 
 	if !dara.IsNil(request.ProjectId) {

@@ -24,7 +24,7 @@ type CreateSupabaseProjectResponseBody struct {
 	//
 	// 278880417310796
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The Supabase instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
