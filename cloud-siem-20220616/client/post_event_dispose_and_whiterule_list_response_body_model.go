@@ -22,13 +22,13 @@ type iPostEventDisposeAndWhiteruleListResponseBody interface {
 }
 
 type PostEventDisposeAndWhiteruleListResponseBody struct {
-	// The HTTP status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response value.
+	// The response data.
 	//
 	// example:
 	//
@@ -40,15 +40,15 @@ type PostEventDisposeAndWhiteruleListResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: succeeded
+	// - true: successful
 	//
 	// - false: failed
 	//

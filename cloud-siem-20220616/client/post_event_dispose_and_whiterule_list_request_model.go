@@ -33,24 +33,26 @@ type iPostEventDisposeAndWhiteruleListRequest interface {
 	GetRoleType() *int32
 	SetStatus(v int32) *PostEventDisposeAndWhiteruleListRequest
 	GetStatus() *int32
+	SetSyncAlertStatus(v bool) *PostEventDisposeAndWhiteruleListRequest
+	GetSyncAlertStatus() *bool
 	SetThreatLevel(v string) *PostEventDisposeAndWhiteruleListRequest
 	GetThreatLevel() *string
 }
 
 type PostEventDisposeAndWhiteruleListRequest struct {
-	// 幂等令牌。
+	// The idempotency token.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426614174000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// A comma-separated list of response strategy IDs.
+	// The list of handling policy IDs.
 	//
 	// example:
 	//
 	// 12,13,14
 	DisposeStrategyIds *string `json:"DisposeStrategyIds,omitempty" xml:"DisposeStrategyIds,omitempty"`
-	// A JSON object that defines the incident response configuration.
+	// The incident handling configuration as a JSON object.
 	//
 	// example:
 	//
@@ -110,13 +112,13 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The UID of the incident owner.
+	// The account UID of the incident owner.
 	//
 	// example:
 	//
 	// 1234567890xxxxxx
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// A JSON object that defines the alert recipient configuration.
+	// The alert recipient configuration as a JSON object.
 	//
 	// example:
 	//
@@ -130,29 +132,29 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	//
 	// }
 	ReceiverInfo *string `json:"ReceiverInfo,omitempty" xml:"ReceiverInfo,omitempty"`
-	// The region where the Data Management service for threat analysis is deployed. Select a region based on where your assets are located. Valid values:
+	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou: Assets in the Chinese mainland or Hong Kong (China)
+	// - cn-hangzhou: Your assets reside in regions in the Chinese mainland or China (Hong Kong).
 	//
-	// - ap-southeast-1: Assets outside China
+	// - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A note about the incident.
+	// The remarks for the incident.
 	//
 	// example:
 	//
 	// dealed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The source of the response policy.
+	// The source of the handling policy.
 	//
 	// example:
 	//
 	// system
 	ResponseSource *string `json:"ResponseSource,omitempty" xml:"ResponseSource,omitempty"`
-	// The UID of the member whose perspective an administrator switches to.
+	// The ID of the user for whom the administrator switches to a member view.
 	//
 	// example:
 	//
@@ -160,9 +162,9 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: Current Alibaba Cloud account view
+	// - 0: the China account view.
 	//
-	// - 1: View for all accounts in your enterprise
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//
@@ -170,25 +172,27 @@ type PostEventDisposeAndWhiteruleListRequest struct {
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The incident status. Valid values:
 	//
-	// - 0: Not handled
+	// - 0: unhandled
 	//
-	// - 1: Handling
+	// - 1: handling
 	//
-	// - 5: Failed
+	// - 5: handling failed
 	//
-	// - 10: Handled
+	// - 10: handled
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether to restore associated handled alerts to unhandled status when reopening the incident.
+	SyncAlertStatus *bool `json:"SyncAlertStatus,omitempty" xml:"SyncAlertStatus,omitempty"`
 	// The threat level. Valid values:
 	//
-	// - serious: Important
+	// - serious: high
 	//
-	// - suspicious: Medium
+	// - suspicious: medium
 	//
-	// - remind: Low
+	// - remind: low
 	//
 	// example:
 	//
@@ -252,6 +256,10 @@ func (s *PostEventDisposeAndWhiteruleListRequest) GetStatus() *int32 {
 	return s.Status
 }
 
+func (s *PostEventDisposeAndWhiteruleListRequest) GetSyncAlertStatus() *bool {
+	return s.SyncAlertStatus
+}
+
 func (s *PostEventDisposeAndWhiteruleListRequest) GetThreatLevel() *string {
 	return s.ThreatLevel
 }
@@ -313,6 +321,11 @@ func (s *PostEventDisposeAndWhiteruleListRequest) SetRoleType(v int32) *PostEven
 
 func (s *PostEventDisposeAndWhiteruleListRequest) SetStatus(v int32) *PostEventDisposeAndWhiteruleListRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) SetSyncAlertStatus(v bool) *PostEventDisposeAndWhiteruleListRequest {
+	s.SyncAlertStatus = &v
 	return s
 }
 

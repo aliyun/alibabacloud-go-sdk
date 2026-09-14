@@ -1297,7 +1297,7 @@ func (client *Client) DescribeAlertsWithEntityWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves alerts associated with a specific event.
+// Retrieves the list of alerts associated with an incident.
 //
 // @param request - DescribeAlertsWithEventRequest
 //
@@ -2335,7 +2335,7 @@ func (client *Client) DescribeEntityInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can obtain the count for each event type.
+// Retrieves the count of events by type.
 //
 // @param request - DescribeEventCountByThreatLevelRequest
 //
@@ -2983,6 +2983,58 @@ func (client *Client) DescribeUserBuyStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Queries the purchase status of a user\\"s SIEM.
+//
+// @param request - DescribeUserSiemOrderStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserSiemOrderStatusResponse
+func (client *Client) DescribeUserSiemOrderStatusWithContext(ctx context.Context, request *DescribeUserSiemOrderStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserSiemOrderStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserSiemOrderStatus"),
+		Version:     dara.String("2022-06-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserSiemOrderStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of domain names protected by Web Application Firewall (WAF) instances.
 //
 // @param request - DescribeWafScopeRequest
@@ -3271,7 +3323,7 @@ func (client *Client) GetCapacityWithContext(ctx context.Context, request *GetCa
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The input parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetDataStorageRequest
 //
@@ -5243,7 +5295,7 @@ func (client *Client) PostCustomizeRuleTestWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Submit incident response information to update the incident status and severity level.
+// Submits incident handling information, updates the incident status, and updates the incident severity level.
 //
 // @param request - PostEventDisposeAndWhiteruleListRequest
 //
@@ -5304,6 +5356,10 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithContext(ctx context.Co
 
 	if !dara.IsNil(request.Status) {
 		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.SyncAlertStatus) {
+		body["SyncAlertStatus"] = request.SyncAlertStatus
 	}
 
 	if !dara.IsNil(request.ThreatLevel) {

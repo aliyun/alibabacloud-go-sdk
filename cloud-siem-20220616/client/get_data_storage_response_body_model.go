@@ -74,7 +74,7 @@ type GetDataStorageResponseBodyData struct {
 	//
 	// cn-shanghai
 	DataStorageRegionId *string `json:"DataStorageRegionId,omitempty" xml:"DataStorageRegionId,omitempty"`
-	// Indicates whether the storage region can be modified. By default, the storage region cannot be modified. Contact your product manager to reset the region. The region can be reset only once. Valid values:
+	// Indicates whether the storage region can be modified. By default, the storage region cannot be modified. Contact the product manager to reset the region. The region can be reset only once. Valid values:
 	//
 	// - allow: The storage region can be modified.
 	//
@@ -84,7 +84,7 @@ type GetDataStorageResponseBodyData struct {
 	//
 	// deny
 	DataStorageRegionPermission *string `json:"DataStorageRegionPermission,omitempty" xml:"DataStorageRegionPermission,omitempty"`
-	// The storage capacity purchased in the upfront billing scenario.
+	// The storage capacity purchased in the prepaid scenario.
 	//
 	// example:
 	//
@@ -434,15 +434,15 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The group to which the log belongs. Valid values:
 	//
-	// - host: host logs.
+	// - host: Host logs.
 	//
-	// - security: security logs.
+	// - security: Security logs.
 	//
 	// example:
 	//
 	// host
 	LogDeliveryGroup *string `json:"LogDeliveryGroup,omitempty" xml:"LogDeliveryGroup,omitempty"`
-	// Indicates whether log delivery is allowed. Log delivery is not available if the service is not purchased. Valid values:
+	// Indicates whether log delivery can be toggled. Log delivery cannot be enabled if the service is not purchased. Valid values:
 	//
 	// - allow: Allowed.
 	//
@@ -462,7 +462,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// enable
 	LogDeliveryStatus *string `json:"LogDeliveryStatus,omitempty" xml:"LogDeliveryStatus,omitempty"`
-	// The time of the most recent log delivery operation.
+	// The time when the log delivery was last modified. The time is in the YYYY-MM-DDTHH:mm:ss format.
 	//
 	// example:
 	//

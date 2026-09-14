@@ -1,3 +1,9 @@
+2026-09-14 Version: v6.3.0
+- Support API DescribeUserSiemOrderStatus.
+- Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.AlertStatus.
+- Update API PostEventDisposeAndWhiteruleList: add request parameters SyncAlertStatus.
+
+
 2026-08-31 Version: v6.2.4
 - Update API EnableAccessForCloudSiem: add request parameters ClientToken.
 - Update API PostEventDisposeAndWhiteruleList: add request parameters ClientToken.
