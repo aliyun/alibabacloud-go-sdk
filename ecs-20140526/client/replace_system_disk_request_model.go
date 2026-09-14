@@ -53,15 +53,15 @@ type iReplaceSystemDiskRequest interface {
 
 type ReplaceSystemDiskRequest struct {
 	SystemDisk *ReplaceSystemDiskRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// > This parameter is deprecated.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// i386
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// This parameter is not publicly available.
+	// This parameter is not available for use.
 	Arn []*ReplaceSystemDiskRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -73,7 +73,7 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// d-bp67acfmxazb4ph****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//
@@ -85,24 +85,23 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// - false: does not encrypt the disk.
 	//
-	//
 	// Default value: false.
 	//
-	// 	Notice: When you use a shared encrypted image to create a disk from an encrypted snapshot, you must set the request parameter Encrypted to true to ensure that the disk uses the key of the image recipient.
+	// 	Notice: When you use a shared encrypted image to create a disk based on an encrypted snapshot, you must set the request parameter Encrypted=true for the disk to ensure that the disk uses the key of the account that receives the shared image.
 	//
 	// example:
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the image to use when you reset the system. This parameter is required.
+	// The ID of the image to use when resetting the system disk. This parameter is required.
 	//
 	// example:
 	//
 	// m-bp67acfmxazb4ph****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of target instance.
+	// The ID of the target instance.
 	//
-	// > Before you send the request, make sure that the instance status of the target instance is `Stopped`.
+	// > Make sure that the target instance is in the `Stopped` instance status before you send the request.
 	//
 	// This parameter is required.
 	//
@@ -118,7 +117,7 @@ type ReplaceSystemDiskRequest struct {
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The name of the key pair.
 	//
-	// > This parameter takes effect only for Linux instances. You can bind an SSH key pair to the ECS instance as a logon credential. After an SSH key pair is used, the username and password logon method is disabled.
+	// > This parameter applies only to Linux ECS instances. You can bind an SSH key pair to an ECS instance as a logon credential. After an SSH key pair is bound, username and password-based logon is disabled.
 	//
 	// example:
 	//
@@ -126,7 +125,7 @@ type ReplaceSystemDiskRequest struct {
 	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to reset the username and password of the ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+	// Specifies whether to reset the password of the ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
 	// ```
 	//
@@ -138,23 +137,23 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// Default value: The password remains unchanged.
 	//
-	// > If you specify the `Password` parameter, send the request over HTTPS to prevent password leaks.
+	// > If you specify the `Password` parameter, use HTTPS to send the request to prevent password leaks.
 	//
 	// example:
 	//
 	// EcsV587!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether to use the password preset in the image.
+	// Specifies whether to use the preset password of the image.
 	//
 	// Default value: false.
 	//
-	// > If you use this parameter, the Password parameter must be empty. Make sure that the image you use has a password preset.
+	// > If you use this parameter, the Password parameter must be empty. Make sure that the image you use has a preset password.
 	//
 	// example:
 	//
 	// false
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// > This parameter is deprecated.
+	// > **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -162,11 +161,11 @@ type ReplaceSystemDiskRequest struct {
 	Platform             *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to use the free Security Center service after the system disk is replaced. Valid values:
+	// Specifies whether to use Security Center for free after the system disk is replaced. Valid values:
 	//
-	// - Active: Security Center is used. This value is applicable only to public images.
+	// - Active: Uses Security Center. This value is supported only for public images.
 	//
-	// - Deactive: Security Center is not used. This value is applicable to all images.
+	// - Deactive: Does not use Security Center. This value is supported for all images.
 	//
 	// Default value: Deactive.
 	//
@@ -174,9 +173,9 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// Active
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// Specifies whether to use the virtual machine system configuration provided by Alibaba Cloud (Windows: NTP and KMS. Linux: NTP and YUM).
+	// Specifies whether to use the virtual machine system configurations provided by Alibaba Cloud (Windows: NTP and KMS. Linux: NTP and YUM).
 	//
-	// > This parameter takes effect only when a system disk is attached (the device name is /dev/xvda).
+	// > This parameter takes effect only when the system disk is attached (that is, the device name is /dev/xvda).
 	//
 	// example:
 	//
@@ -391,27 +390,27 @@ func (s *ReplaceSystemDiskRequest) Validate() error {
 }
 
 type ReplaceSystemDiskRequestSystemDisk struct {
-	// The capacity of the new system disk. Unit: GiB. Valid values:
+	// The new capacity of the system disk. Unit: GiB. Valid values:
 	//
-	// - Basic disk: Max{20, size of the image specified by the ImageId parameter} to 500.
+	// - Basic disk: Max{20, image size specified by the ImageId parameter} to 500.
 	//
 	// - Enterprise SSD:
 	//
-	//   - PL0: Max{1, size of the image specified by the ImageId parameter} to 2048.
+	//   - PL0: Max{1, image size specified by the ImageId parameter} to 2048.
 	//
-	//   - PL1: Max{20, size of the image specified by the ImageId parameter} to 2048.
+	//   - PL1: Max{20, image size specified by the ImageId parameter} to 2048.
 	//
-	//   - PL2: Max{461, size of the image specified by the ImageId parameter} to 2048.
+	//   - PL2: Max{461, image size specified by the ImageId parameter} to 2048.
 	//
-	//   - PL3: Max{1261, size of the image specified by the ImageId parameter} to 2048.
+	//   - PL3: Max{1261, image size specified by the ImageId parameter} to 2048.
 	//
-	// - ESSD AutoPL disk: Max{1, size of the image specified by the ImageId parameter} to 2048.
+	// - ESSD AutoPL disk: Max{1, image size specified by the ImageId parameter} to 2048.
 	//
-	// - Standard SSD and other disk types: Max{20, size of the image specified by the ImageId parameter} to 2048.
+	// - Other disk types: Max{20, image size specified by the ImageId parameter} to 2048.
 	//
-	// Default value: Max{40, size of the image specified by the ImageId parameter}.
+	// Default value: Max{40, image size specified by the ImageId parameter}.
 	//
-	// > You are charged additional fees for the disk capacity that exceeds `Max{20, capacity of the original system disk}`.
+	// > Disk capacity that exceeds `Max{20, original system disk capacity}` incurs additional charges.
 	//
 	// example:
 	//
@@ -441,19 +440,19 @@ func (s *ReplaceSystemDiskRequestSystemDisk) Validate() error {
 }
 
 type ReplaceSystemDiskRequestArn struct {
-	// > This parameter is not publicly available.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//
 	// 0
 	AssumeRoleFor *int64 `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//
 	// null
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//

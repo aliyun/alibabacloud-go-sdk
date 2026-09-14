@@ -26,7 +26,7 @@ type AttachKeyPairResponseBody struct {
 	//
 	// example:
 	//
-	// 0
+	// 1
 	FailCount *string `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	// The name of the key pair.
 	//
@@ -38,7 +38,7 @@ type AttachKeyPairResponseBody struct {
 	//
 	// example:
 	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	// 473469C7-AA6F-4DC5-B3DB-A3*****83E
 	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Results   *AttachKeyPairResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 	// The total number of instances to which the key pair is attached.

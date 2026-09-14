@@ -25,6 +25,8 @@ type iCreateSimulatedSystemEventsRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *CreateSimulatedSystemEventsRequest
 	GetResourceOwnerId() *int64
+	SetTriggerRealOps(v bool) *CreateSimulatedSystemEventsRequest
+	GetTriggerRealOps() *bool
 }
 
 type CreateSimulatedSystemEventsRequest struct {
@@ -62,7 +64,7 @@ type CreateSimulatedSystemEventsRequest struct {
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	// The scheduled start time of the event. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// > For abnormal events caused by system errors or instance errors, the event is already in the Executing state after it is created. In this case, the NotBefore parameter specifies the time when the event enters the Executed state.
+	// > For unexpected events caused by system errors or instance errors, the event is already in the Executing state after it is created. In this case, the NotBefore parameter specifies the time when the event enters the Executed state.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +74,7 @@ type CreateSimulatedSystemEventsRequest struct {
 	NotBefore    *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -82,6 +84,12 @@ type CreateSimulatedSystemEventsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to trigger real O&M operations. Valid values:<br>- true: Triggers real O&M operations. The system actually stops or releases the instance. Exercise caution when you perform this operation, or use instances that do not run workloads for testing.<br>- false (default): Only simulates event notifications without affecting the actual lifecycle of the instance.
+	//
+	// example:
+	//
+	// false
+	TriggerRealOps *bool `json:"TriggerRealOps,omitempty" xml:"TriggerRealOps,omitempty"`
 }
 
 func (s CreateSimulatedSystemEventsRequest) String() string {
@@ -124,6 +132,10 @@ func (s *CreateSimulatedSystemEventsRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *CreateSimulatedSystemEventsRequest) GetTriggerRealOps() *bool {
+	return s.TriggerRealOps
+}
+
 func (s *CreateSimulatedSystemEventsRequest) SetEventType(v string) *CreateSimulatedSystemEventsRequest {
 	s.EventType = &v
 	return s
@@ -161,6 +173,11 @@ func (s *CreateSimulatedSystemEventsRequest) SetResourceOwnerAccount(v string) *
 
 func (s *CreateSimulatedSystemEventsRequest) SetResourceOwnerId(v int64) *CreateSimulatedSystemEventsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSimulatedSystemEventsRequest) SetTriggerRealOps(v bool) *CreateSimulatedSystemEventsRequest {
+	s.TriggerRealOps = &v
 	return s
 }
 

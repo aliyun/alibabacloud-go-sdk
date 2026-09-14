@@ -34,13 +34,13 @@ type iModifyDiskSpecRequest interface {
 }
 
 type ModifyDiskSpecRequest struct {
-	// > This parameter is in invitational preview and is not available for use.
+	// > This parameter is currently in invitational preview and is not available for use.
 	//
 	// example:
 	//
 	// cn-hangzhou-g
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	// The new type of the disk. Valid values:
+	// The new disk type. Valid values:
 	//
 	// - cloud_essd: enterprise SSD (ESSD).
 	//
@@ -54,13 +54,13 @@ type ModifyDiskSpecRequest struct {
 	//
 	// - cloud_efficiency: ultra disk.
 	//
-	// Default value: empty, which indicates that the disk type is not changed.
+	// Default value: empty, which means no specification change is performed.
 	//
-	// > - The valid values above are listed in descending order of disk performance. If the specified disk is a subscription disk, you cannot downgrade the disk type.
+	// > - The valid values above are listed in descending order of disk performance. If the specified disk is a subscription disk, you cannot decrease the quota of the disk type.
 	//
 	// <props="china">
 	//
-	// - ESSD Entry disks can be changed only to enterprise SSDs (ESSDs) or ESSD AutoPL disks. For more information, see [Change the disk type](https://help.aliyun.com/document_detail/161980.html).
+	// - ESSD Entry disks can only be changed to enterprise SSDs (ESSDs) or ESSD AutoPL disks. For more information, see [Change the disk type](https://help.aliyun.com/document_detail/161980.html).
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type ModifyDiskSpecRequest struct {
 	//
 	// d-bp131n0q38u3a4zi****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// Specifies whether to perform only a dry run. Valid values:
+	// Specifies whether to perform only a dry run for this request. Valid values:
 	//
-	// 	- true: performs only a dry run. The system checks whether your AccessKey pair is valid, whether RAM users are granted permissions, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+	// 	- true: performs a dry run. The system checks whether the required parameters are specified, the request format is valid, business limits are met, and ECS resources are sufficient. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
 	//
-	// 	- false: performs a dry run and performs the actual request. If the check succeeds, a 2XX HTTP status code is returned and the disk type or ESSD performance level is changed.
+	// 	- false: performs the actual request. After the check passes, a 2XX HTTP status code is returned and the disk type or ESSD performance level is changed immediately.
 	//
 	// Default value: false.
 	//
@@ -88,17 +88,17 @@ type ModifyDiskSpecRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The disk performance control parameters.
+	// The collection of disk performance control parameters.
 	PerformanceControlOptions *ModifyDiskSpecRequestPerformanceControlOptions `json:"PerformanceControlOptions,omitempty" xml:"PerformanceControlOptions,omitempty" type:"Struct"`
-	// The new performance level (PL) of an ESSD. Valid values:
+	// The new performance level (PL) of the enterprise SSD (ESSD). Valid values:
 	//
-	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+	// - PL0: maximum random read/write IOPS of 10,000 per standard SSD.
 	//
-	// - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
+	// - PL1: maximum random read/write IOPS of 50,000 per standard SSD.
 	//
-	// - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
+	// - PL2: maximum random read/write IOPS of 100,000 per standard SSD.
 	//
-	// - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: maximum random read/write IOPS of 1,000,000 per standard SSD.
 	//
 	// Default value: PL1.
 	//
@@ -106,13 +106,13 @@ type ModifyDiskSpecRequest struct {
 	//
 	// PL2
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// Specifies whether to modify the provisioned read/write IOPS of an ESSD AutoPL disk.
+	// Specifies whether to modify the provisioned read/write IOPS of the ESSD AutoPL disk.
 	//
-	// Valid values: 0 to min{50000, 1000 × Capacity - Baseline performance}.
+	// Valid values: 0 to min{50,000, 1,000 × capacity − baseline performance}.
 	//
-	// Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
+	// Baseline performance = min{1,800 + 50 × capacity, 50,000}.
 	//
-	// > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the provisioned performance of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
+	// > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disk](https://help.aliyun.com/document_detail/368372.html) and [Modify the provisioned performance of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
 	//
 	// example:
 	//
@@ -239,9 +239,9 @@ func (s *ModifyDiskSpecRequest) Validate() error {
 }
 
 type ModifyDiskSpecRequestPerformanceControlOptions struct {
-	// The target IOPS of the disk. Only the IOPS of disks in a dedicated storage cluster can be modified.
+	// The target IOPS of the disk. Only the IOPS of dedicated block storage cluster disks can be modified.
 	//
-	// Valid values: 900 to the maximum IOPS per disk, in increments of 100.
+	// Valid values: 900 to the maximum IOPS of a single disk, in increments of 100.
 	//
 	// For more information, see [Disk performance](https://help.aliyun.com/document_detail/25382.html).
 	//
@@ -249,19 +249,19 @@ type ModifyDiskSpecRequestPerformanceControlOptions struct {
 	//
 	// 2000
 	IOPS *int32 `json:"IOPS,omitempty" xml:"IOPS,omitempty"`
-	// Resets the disk performance. Only disks in a dedicated storage cluster are supported.
+	// Resets the disk performance. This parameter is supported only for dedicated block storage cluster disks.
 	//
-	// If this parameter is set, the PerformanceControlOptions.IOPS and PerformanceControlOptions.Throughput parameters do not take effect.
+	// If this parameter is specified, the PerformanceControlOptions.IOPS and PerformanceControlOptions.Throughput parameters do not take effect.
 	//
-	// Currently, only the value All is supported, which resets the disk IOPS and throughput to their initial values.
+	// Currently, only All is supported, which resets the disk IOPS and throughput to their initial values.
 	//
 	// example:
 	//
 	// All
 	Recover *string `json:"Recover,omitempty" xml:"Recover,omitempty"`
-	// The target throughput of the disk. Only the throughput of disks in a dedicated storage cluster can be modified. Unit: MB/s.
+	// The target throughput of the disk, in MB/s. Only the throughput of dedicated block storage cluster disks can be modified.
 	//
-	// Valid values: 60 to the maximum throughput per disk.
+	// Valid values: 60 to the maximum throughput of a single disk.
 	//
 	// For more information, see [Disk performance](https://help.aliyun.com/document_detail/25382.html).
 	//
