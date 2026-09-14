@@ -15,6 +15,8 @@ type iStartProcessInstanceRequest interface {
 	GetComments() *string
 	SetEmail(v string) *StartProcessInstanceRequest
 	GetEmail() *string
+	SetExpectedParallelismNumber(v int32) *StartProcessInstanceRequest
+	GetExpectedParallelismNumber() *int32
 	SetInterval(v string) *StartProcessInstanceRequest
 	GetInterval() *string
 	SetIsProd(v bool) *StartProcessInstanceRequest
@@ -25,6 +27,8 @@ type iStartProcessInstanceRequest interface {
 	GetProductNamespace() *string
 	SetRegionId(v string) *StartProcessInstanceRequest
 	GetRegionId() *string
+	SetRunMode(v string) *StartProcessInstanceRequest
+	GetRunMode() *string
 	SetRuntimeQueue(v string) *StartProcessInstanceRequest
 	GetRuntimeQueue() *string
 	SetVersionHashCode(v string) *StartProcessInstanceRequest
@@ -37,8 +41,14 @@ type StartProcessInstanceRequest struct {
 	Action   *string `json:"action,omitempty" xml:"action,omitempty"`
 	Comments *string `json:"comments,omitempty" xml:"comments,omitempty"`
 	Email    *string `json:"email,omitempty" xml:"email,omitempty"`
-	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
-	// Specifies whether the workflow runs in a production environment.
+	// The expected concurrency.
+	//
+	// example:
+	//
+	// 2
+	ExpectedParallelismNumber *int32  `json:"expectedParallelismNumber,omitempty" xml:"expectedParallelismNumber,omitempty"`
+	Interval                  *string `json:"interval,omitempty" xml:"interval,omitempty"`
+	// Specifies whether the workflow runs in the production environment.
 	//
 	// example:
 	//
@@ -66,19 +76,25 @@ type StartProcessInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The execution policy.
+	//
+	// example:
+	//
+	// RUN_MODE_PARALLEL
+	RunMode *string `json:"runMode,omitempty" xml:"runMode,omitempty"`
 	// The runtime queue.
 	//
 	// example:
 	//
 	// root_queue
 	RuntimeQueue *string `json:"runtimeQueue,omitempty" xml:"runtimeQueue,omitempty"`
-	// The hash code of the version.
+	// The version hash code.
 	//
 	// example:
 	//
 	// dh*********
 	VersionHashCode *string `json:"versionHashCode,omitempty" xml:"versionHashCode,omitempty"`
-	// The version number of the workflow definition.
+	// The workflow definition version number.
 	//
 	// example:
 	//
@@ -106,6 +122,10 @@ func (s *StartProcessInstanceRequest) GetEmail() *string {
 	return s.Email
 }
 
+func (s *StartProcessInstanceRequest) GetExpectedParallelismNumber() *int32 {
+	return s.ExpectedParallelismNumber
+}
+
 func (s *StartProcessInstanceRequest) GetInterval() *string {
 	return s.Interval
 }
@@ -124,6 +144,10 @@ func (s *StartProcessInstanceRequest) GetProductNamespace() *string {
 
 func (s *StartProcessInstanceRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *StartProcessInstanceRequest) GetRunMode() *string {
+	return s.RunMode
 }
 
 func (s *StartProcessInstanceRequest) GetRuntimeQueue() *string {
@@ -153,6 +177,11 @@ func (s *StartProcessInstanceRequest) SetEmail(v string) *StartProcessInstanceRe
 	return s
 }
 
+func (s *StartProcessInstanceRequest) SetExpectedParallelismNumber(v int32) *StartProcessInstanceRequest {
+	s.ExpectedParallelismNumber = &v
+	return s
+}
+
 func (s *StartProcessInstanceRequest) SetInterval(v string) *StartProcessInstanceRequest {
 	s.Interval = &v
 	return s
@@ -175,6 +204,11 @@ func (s *StartProcessInstanceRequest) SetProductNamespace(v string) *StartProces
 
 func (s *StartProcessInstanceRequest) SetRegionId(v string) *StartProcessInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *StartProcessInstanceRequest) SetRunMode(v string) *StartProcessInstanceRequest {
+	s.RunMode = &v
 	return s
 }
 

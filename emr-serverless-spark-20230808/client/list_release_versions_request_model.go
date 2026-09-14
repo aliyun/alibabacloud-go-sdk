@@ -30,19 +30,19 @@ type ListReleaseVersionsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The type of the version.
+	// The version type.
 	//
 	// example:
 	//
 	// stable
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
-	// The EMR Serverless Spark version.
+	// The Serverless Spark version.
 	//
 	// example:
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The status of the version.
+	// The version status.
 	//
 	// example:
 	//

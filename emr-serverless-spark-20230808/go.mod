@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/emr-serverless-spark-20230808
+module github.com/alibabacloud-go/emr-serverless-spark-20230808/v2
 
 go 1.14
 

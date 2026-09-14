@@ -14,7 +14,7 @@ type iGetJobRunRequest interface {
 }
 
 type GetJobRunRequest struct {
-	// The region ID. For example, cn-hangzhou represents the Hangzhou region.
+	// The region ID.
 	//
 	// example:
 	//

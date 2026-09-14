@@ -68,13 +68,13 @@ type iGetRayClusterResponseBody interface {
 }
 
 type GetRayClusterResponseBody struct {
-	// The ID of the Ray cluster.
+	// The Ray cluster ID.
 	//
 	// example:
 	//
 	// ray-k7nm8ahl5te4tg91
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The time when the cluster was created. This is a UNIX timestamp in milliseconds.
+	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -92,75 +92,77 @@ type GetRayClusterResponseBody struct {
 	//
 	// Alice
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// The URL of the Ray Dashboard for this cluster.
+	// The URL of the Ray cluster dashboard.
 	//
 	// example:
 	//
 	// https://emr-ray-gateway-cn-hangzhou.aliyuncs.com/workspace/w-xxxxxxxx/raycluster/ray-xxxxxx/dashboard?token=xxxxxx
 	DashboardUrl *string `json:"dashboardUrl,omitempty" xml:"dashboardUrl,omitempty"`
-	// The description of the Ray cluster.
+	// The description.
 	//
 	// example:
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version of the Ray engine.
+	// The Ray DPI engine version.
 	//
 	// example:
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// Additional parameters in JSON format.
+	// The extra parameters in JSON format.
 	//
 	// example:
 	//
 	// {}
 	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	// The gRPC endpoint for the internal network. You can also use the domain name in this endpoint to submit Ray jobs.
+	// The gRPC endpoint (internal network). The domain name in this endpoint can also be used to submit Ray jobs.
 	//
 	// example:
 	//
 	// ray://emr-spark-ray-gateway-cn-hangzhou-internal.emr.aliyuncs.com:80
 	GrpcEndpoint *string `json:"grpcEndpoint,omitempty" xml:"grpcEndpoint,omitempty"`
-	// The configuration of the head node.
+	// The parameters of the Ray cluster head node.
 	HeadSpec *GetRayClusterResponseBodyHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
-	// The ID of the Ray cluster node.
+	// The Ray cluster node IDs.
 	//
 	// example:
 	//
 	// ray-k7nm8ahl5te4tg93-xxxxxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The list of nodes in the Ray cluster.
+	// The Ray cluster node IDs.
 	Instances []*GetRayClusterResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	// The public endpoint for submitting Ray jobs.
+	// The public URL for submitting Ray Jobs.
 	//
 	// example:
 	//
 	// https://emr-spark-ray-gateway-cn-hangzhou.aliyuncs.com
 	JobUrl *string `json:"jobUrl,omitempty" xml:"jobUrl,omitempty"`
+	// The internal network URL for submitting Ray jobs.
+	//
 	// example:
 	//
 	// http://emr-spark-ray-gateway-cn-hangzhou-internal.emr.aliyuncs.com
 	JobUrlInner *string `json:"jobUrlInner,omitempty" xml:"jobUrlInner,omitempty"`
-	// The error message. Returned when `state` is `Error`.
+	// The error message returned when the status is Error.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Indicates whether the configuration was modified.
+	// Indicates whether the configuration has been modified.
 	//
 	// example:
 	//
 	// false
 	Modified *bool `json:"modified,omitempty" xml:"modified,omitempty"`
-	// The time when the cluster was last updated. This is a UNIX timestamp in milliseconds.
+	// The update time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1754274541693
 	ModifiedTime *int64 `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
-	// The UID of the user who last updated the cluster.
+	// The UID of the user who last modified the cluster.
 	//
 	// example:
 	//
@@ -172,13 +174,13 @@ type GetRayClusterResponseBody struct {
 	//
 	// Alice
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	// The name of the Ray cluster.
+	// The Ray cluster name.
 	//
 	// example:
 	//
 	// myRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the network connection.
+	// The network connectivity name.
 	//
 	// example:
 	//
@@ -190,42 +192,43 @@ type GetRayClusterResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The time when the cluster started. This is a UNIX timestamp in milliseconds.
+	// The start time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1750327083303
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The session state. Valid values:
+	// The session status. Valid values:
 	//
-	// - Starting: The session is starting.
+	// - Starting: Starting.
 	//
-	// - Running: The session is running.
+	// - Running: Running.
 	//
-	// - Stopping: The session is being stopped.
+	// - Stopping: Stopping.
 	//
-	// - Stopped: The session is stopped.
+	// - Stopped: Stopped.
 	//
-	// - Error: The session has failed.
+	// - Error: Failed.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The authentication token for submitting Ray jobs. Add this token to the request header in the format `"ray-token": "token"`.
+	// The authentication token for submitting Ray Jobs. Include this token in the request header as "ray-token": "token".
 	//
 	// example:
 	//
 	// 1d06484d3b424f7fa4ab7082a4076da2
 	SubmitToken *string `json:"submitToken,omitempty" xml:"submitToken,omitempty"`
-	// The ID of the Alibaba Cloud account that created the cluster.
+	// The Alibaba Cloud account ID of the creator.
 	//
 	// example:
 	//
 	// 123456789012
-	UserId    *string   `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The list of managed file IDs.
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	// The list of worker node group configurations.
+	// The Ray cluster worker node information.
 	WorkerSpec []*GetRayClusterResponseBodyWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -523,17 +526,38 @@ type GetRayClusterResponseBodyHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// Specifies whether auto scaling is enabled for worker nodes.
+	// The Ray DPI engine version.
+	//
+	// example:
+	//
+	// err-1.3.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Indicates whether automatic scaling is enabled for worker nodes.
 	//
 	// example:
 	//
 	// false
 	EnableAutoScaling *bool `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
+	// The environment variables.
+	//
+	// example:
+	//
+	// MY_ENV=123456
+	Env *string `json:"env,omitempty" xml:"env,omitempty"`
+	// The GCS Fault Tolerance configuration.
+	GftConfig *GetRayClusterResponseBodyHeadSpecGftConfig `json:"gftConfig,omitempty" xml:"gftConfig,omitempty" type:"Struct"`
+	// Indicates whether GCS Fault Tolerance is enabled.
+	//
+	// if can be null:
+	// true
+	GftEnabled *bool `json:"gftEnabled,omitempty" xml:"gftEnabled,omitempty"`
+	// The GPU instance type.
+	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The idle timeout period for worker nodes, in seconds. Applies only when auto scaling is enabled.
+	// The idle timeout period of worker nodes after automatic scaling is enabled.
 	//
 	// example:
 	//
@@ -545,12 +569,18 @@ type GetRayClusterResponseBodyHeadSpec struct {
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The name of the queue.
+	// The queue name.
 	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The Ray startup parameters.
+	//
+	// example:
+	//
+	// --num-cpus=0
+	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
 	// The number of nodes.
 	//
 	// example:
@@ -571,8 +601,24 @@ func (s *GetRayClusterResponseBodyHeadSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *GetRayClusterResponseBodyHeadSpec) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
 func (s *GetRayClusterResponseBodyHeadSpec) GetEnableAutoScaling() *bool {
 	return s.EnableAutoScaling
+}
+
+func (s *GetRayClusterResponseBodyHeadSpec) GetEnv() *string {
+	return s.Env
+}
+
+func (s *GetRayClusterResponseBodyHeadSpec) GetGftConfig() *GetRayClusterResponseBodyHeadSpecGftConfig {
+	return s.GftConfig
+}
+
+func (s *GetRayClusterResponseBodyHeadSpec) GetGftEnabled() *bool {
+	return s.GftEnabled
 }
 
 func (s *GetRayClusterResponseBodyHeadSpec) GetGpuSpec() *string {
@@ -591,6 +637,10 @@ func (s *GetRayClusterResponseBodyHeadSpec) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *GetRayClusterResponseBodyHeadSpec) GetRayStartParams() *string {
+	return s.RayStartParams
+}
+
 func (s *GetRayClusterResponseBodyHeadSpec) GetReplica() *int32 {
 	return s.Replica
 }
@@ -600,8 +650,28 @@ func (s *GetRayClusterResponseBodyHeadSpec) SetCpu(v string) *GetRayClusterRespo
 	return s
 }
 
+func (s *GetRayClusterResponseBodyHeadSpec) SetDisplayReleaseVersion(v string) *GetRayClusterResponseBodyHeadSpec {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
 func (s *GetRayClusterResponseBodyHeadSpec) SetEnableAutoScaling(v bool) *GetRayClusterResponseBodyHeadSpec {
 	s.EnableAutoScaling = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyHeadSpec) SetEnv(v string) *GetRayClusterResponseBodyHeadSpec {
+	s.Env = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyHeadSpec) SetGftConfig(v *GetRayClusterResponseBodyHeadSpecGftConfig) *GetRayClusterResponseBodyHeadSpec {
+	s.GftConfig = v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyHeadSpec) SetGftEnabled(v bool) *GetRayClusterResponseBodyHeadSpec {
+	s.GftEnabled = &v
 	return s
 }
 
@@ -625,41 +695,111 @@ func (s *GetRayClusterResponseBodyHeadSpec) SetQueueName(v string) *GetRayCluste
 	return s
 }
 
+func (s *GetRayClusterResponseBodyHeadSpec) SetRayStartParams(v string) *GetRayClusterResponseBodyHeadSpec {
+	s.RayStartParams = &v
+	return s
+}
+
 func (s *GetRayClusterResponseBodyHeadSpec) SetReplica(v int32) *GetRayClusterResponseBodyHeadSpec {
 	s.Replica = &v
 	return s
 }
 
 func (s *GetRayClusterResponseBodyHeadSpec) Validate() error {
+	if s.GftConfig != nil {
+		if err := s.GftConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetRayClusterResponseBodyHeadSpecGftConfig struct {
+	// The Redis password.
+	//
+	// example:
+	//
+	// 123456
+	RedisPassword *string `json:"redisPassword,omitempty" xml:"redisPassword,omitempty"`
+	// The Redis URL.
+	//
+	// example:
+	//
+	// 10.4.5.6:6789
+	RedisUrl *string `json:"redisUrl,omitempty" xml:"redisUrl,omitempty"`
+	// The Redis username.
+	//
+	// example:
+	//
+	// default
+	RedisUsername *string `json:"redisUsername,omitempty" xml:"redisUsername,omitempty"`
+}
+
+func (s GetRayClusterResponseBodyHeadSpecGftConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetRayClusterResponseBodyHeadSpecGftConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetRayClusterResponseBodyHeadSpecGftConfig) GetRedisPassword() *string {
+	return s.RedisPassword
+}
+
+func (s *GetRayClusterResponseBodyHeadSpecGftConfig) GetRedisUrl() *string {
+	return s.RedisUrl
+}
+
+func (s *GetRayClusterResponseBodyHeadSpecGftConfig) GetRedisUsername() *string {
+	return s.RedisUsername
+}
+
+func (s *GetRayClusterResponseBodyHeadSpecGftConfig) SetRedisPassword(v string) *GetRayClusterResponseBodyHeadSpecGftConfig {
+	s.RedisPassword = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyHeadSpecGftConfig) SetRedisUrl(v string) *GetRayClusterResponseBodyHeadSpecGftConfig {
+	s.RedisUrl = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyHeadSpecGftConfig) SetRedisUsername(v string) *GetRayClusterResponseBodyHeadSpecGftConfig {
+	s.RedisUsername = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyHeadSpecGftConfig) Validate() error {
 	return dara.Validate(s)
 }
 
 type GetRayClusterResponseBodyInstances struct {
-	// The exit code of the main container.
+	// The exit code of the primary container.
 	//
 	// example:
 	//
 	// 137
 	ContainerExitCode *int32 `json:"containerExitCode,omitempty" xml:"containerExitCode,omitempty"`
-	// The state of the main container.
+	// The status of the primary container.
 	//
 	// example:
 	//
 	// Running
 	ContainerState *string `json:"containerState,omitempty" xml:"containerState,omitempty"`
-	// The status message of the main container.
+	// The primary container status message.
 	//
 	// example:
 	//
 	// ContainerExit
 	ContainerStateMessage *string `json:"containerStateMessage,omitempty" xml:"containerStateMessage,omitempty"`
-	// Additional information about the main container state.
+	// The primary container information.
 	//
 	// example:
 	//
 	// ok
 	ContainerStateReason *string `json:"containerStateReason,omitempty" xml:"containerStateReason,omitempty"`
-	// The time when the node was created. This is a UNIX timestamp in milliseconds.
+	// The creation time.
 	//
 	// example:
 	//
@@ -671,25 +811,25 @@ type GetRayClusterResponseBodyInstances struct {
 	//
 	// ray-uiulpgow9xljim10-head-7cgta
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The status message of the node pod.
+	// The node pod status message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The phase of the node pod.
+	// The node pod status.
 	//
 	// example:
 	//
 	// Running
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
-	// Additional information about the node.
+	// The node information.
 	//
 	// example:
 	//
 	// OOMKilled
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// The time when the node started. This is a UNIX timestamp in milliseconds.
+	// The start time.
 	//
 	// example:
 	//
@@ -815,12 +955,26 @@ func (s *GetRayClusterResponseBodyInstances) Validate() error {
 }
 
 type GetRayClusterResponseBodyWorkerSpec struct {
-	// The number of CPU cores per worker node.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The database engine version.
+	//
+	// example:
+	//
+	// ray-1.2.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// The Ray environment variables.
+	//
+	// example:
+	//
+	// MY_ENV=12456
+	Env *string `json:"env,omitempty" xml:"env,omitempty"`
+	// The GPU instance type.
+	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
@@ -831,30 +985,36 @@ type GetRayClusterResponseBodyWorkerSpec struct {
 	//
 	// WorkerGroup1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The maximum number of worker nodes in the group.
+	// The maximum number of workers.
 	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size per worker node. Unit: Gi.
+	// The memory size. Unit: Gi.
 	//
 	// example:
 	//
 	// 8Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum number of worker nodes in the group.
+	// The minimum number of workers.
 	//
 	// example:
 	//
 	// 1
 	MinReplica *int32 `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
-	// The name of the queue.
+	// The queue name.
 	//
 	// example:
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The Ray startup parameters.
+	//
+	// example:
+	//
+	// --num-cpus=0
+	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
 	// The number of worker nodes.
 	//
 	// example:
@@ -881,6 +1041,14 @@ func (s *GetRayClusterResponseBodyWorkerSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *GetRayClusterResponseBodyWorkerSpec) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
+func (s *GetRayClusterResponseBodyWorkerSpec) GetEnv() *string {
+	return s.Env
+}
+
 func (s *GetRayClusterResponseBodyWorkerSpec) GetGpuSpec() *string {
 	return s.GpuSpec
 }
@@ -905,6 +1073,10 @@ func (s *GetRayClusterResponseBodyWorkerSpec) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *GetRayClusterResponseBodyWorkerSpec) GetRayStartParams() *string {
+	return s.RayStartParams
+}
+
 func (s *GetRayClusterResponseBodyWorkerSpec) GetReplica() *int32 {
 	return s.Replica
 }
@@ -915,6 +1087,16 @@ func (s *GetRayClusterResponseBodyWorkerSpec) GetWorkerType() *string {
 
 func (s *GetRayClusterResponseBodyWorkerSpec) SetCpu(v string) *GetRayClusterResponseBodyWorkerSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyWorkerSpec) SetDisplayReleaseVersion(v string) *GetRayClusterResponseBodyWorkerSpec {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyWorkerSpec) SetEnv(v string) *GetRayClusterResponseBodyWorkerSpec {
+	s.Env = &v
 	return s
 }
 
@@ -945,6 +1127,11 @@ func (s *GetRayClusterResponseBodyWorkerSpec) SetMinReplica(v int32) *GetRayClus
 
 func (s *GetRayClusterResponseBodyWorkerSpec) SetQueueName(v string) *GetRayClusterResponseBodyWorkerSpec {
 	s.QueueName = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyWorkerSpec) SetRayStartParams(v string) *GetRayClusterResponseBodyWorkerSpec {
+	s.RayStartParams = &v
 	return s
 }
 

@@ -16,7 +16,7 @@ type iListKyuubiServicesResponseBody interface {
 }
 
 type ListKyuubiServicesResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *ListKyuubiServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListKyuubiServicesResponseBody) Validate() error {
 }
 
 type ListKyuubiServicesResponseBodyData struct {
-	// A list of Kyuubi servers.
+	// The list of KyuubiServer instances.
 	KyuubiServices []*ListKyuubiServicesResponseBodyDataKyuubiServices `json:"kyuubiServices,omitempty" xml:"kyuubiServices,omitempty" type:"Repeated"`
 }
 
@@ -97,31 +97,31 @@ func (s *ListKyuubiServicesResponseBodyData) Validate() error {
 }
 
 type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
-	// The instance type of the Kyuubi server.
+	// The KyuubiServer instance type.
 	//
 	// example:
 	//
 	// 4C16G
 	ComputeInstance *string `json:"computeInstance,omitempty" xml:"computeInstance,omitempty"`
-	// The time when the server was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The UID of the user who created the server.
+	// The UID of the user who created the KyuubiServer.
 	//
 	// example:
 	//
 	// 103*******
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The internal endpoint.
+	// The internal network endpoint.
 	//
 	// example:
 	//
 	// kyuubi-cn-hangzhou-internal.spark.emr.aliyuncs.com
 	InnerEndpoint *string `json:"innerEndpoint,omitempty" xml:"innerEndpoint,omitempty"`
-	// The Kyuubi server configurations.
+	// The KyuubiServer configurations.
 	//
 	// example:
 	//
@@ -129,25 +129,25 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// kyuubi.conf.key1=value2
 	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
-	// The version of the Kyuubi server.
+	// The KyuubiServer version.
 	//
 	// example:
 	//
 	// 1.9.2-0.0.1
 	KyuubiReleaseVersion *string `json:"kyuubiReleaseVersion,omitempty" xml:"kyuubiReleaseVersion,omitempty"`
-	// The Kyuubi server ID.
+	// KyuubiServer ID。
 	//
 	// example:
 	//
 	// kb-070104e7631242448d12a1377c309f30
 	KyuubiServiceId *string `json:"kyuubiServiceId,omitempty" xml:"kyuubiServiceId,omitempty"`
-	// The name of the Kyuubi server.
+	// The KyuubiServer name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The public endpoint.
+	// The public domain name.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// dev_queue
 	Queue *string `json:"queue,omitempty" xml:"queue,omitempty"`
-	// The version number of the Spark engine.
+	// The Spark DPI engine database engine version number.
 	//
 	// example:
 	//
 	// esr-4.2.0 (Spark 3.5.2, Scala 2.12)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The number of replicas for the Kyuubi server.
+	// The number of KyuubiServer replicas.
 	//
 	// example:
 	//
 	// 3
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
-	// The default configurations for Spark applications launched by the Kyuubi server.
+	// The default configurations for Spark applications started by KyuubiServer.
 	//
 	// example:
 	//
@@ -179,18 +179,24 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	//
 	// spark.conf.key1=value2
 	SparkConfigs *string `json:"sparkConfigs,omitempty" xml:"sparkConfigs,omitempty"`
-	// The time when the Kyuubi server was last started.
+	// The most recent start time of KyuubiServer.
 	//
 	// example:
 	//
 	// 2024-11-23 09:22:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The status of the Kyuubi server.
+	// The KyuubiServer status.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The WebUI of the Kyuubi Gateway.
+	//
+	// example:
+	//
+	// http://pre-1-emr-spark-kyuubi-gateway-cn-hangzhou.data.aliyun.com/ui/?token=NkVTWG1LSWRYSExiZ1VrTTQreVZ0aFhmYW1BWEJHTW8vN3VEY0MrZzVrQUdXWWY1Rm41Zi9mUkNMRzhPL3o1dDJNbXkrd3cvUmRqck9OMmFlQ21JL002bFhQK1lSa29hZ2tvT0hhNVk3WU9tWHhINFAxL3BscURkUUpFd2E2QTdCUWpDSkVvcERUUlhhaGhlOXdxdWFYaEpwSU9STXVRaGJ6ZUg0d0dDeWhIVVRsRW9ucStZbkt0U3BrbmdsNys1N3ZNRU1qaTZ2aktvN1M1K1d0YU5TemkwRmwvNkdCOHR2LzVWZWNLNkJPND
+	WebUi *string `json:"webUi,omitempty" xml:"webUi,omitempty"`
 }
 
 func (s ListKyuubiServicesResponseBodyDataKyuubiServices) String() string {
@@ -259,6 +265,10 @@ func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetStartTime() *strin
 
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetState() *string {
 	return s.State
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetWebUi() *string {
+	return s.WebUi
 }
 
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetComputeInstance(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
@@ -333,6 +343,11 @@ func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetStartTime(v string
 
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetState(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
 	s.State = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetWebUi(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.WebUi = &v
 	return s
 }
 

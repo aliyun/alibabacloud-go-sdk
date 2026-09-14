@@ -22,7 +22,7 @@ type iListWorkspaceQueuesResponseBody interface {
 }
 
 type ListWorkspaceQueuesResponseBody struct {
-	// The maximum number of records returned at a time.
+	// The maximum number of records returned per request.
 	//
 	// example:
 	//
@@ -131,11 +131,18 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// 237109
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// test queue
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of queue environment types.
 	Environments  []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
 	GpuMachineNum *int32    `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
-	GpuSpec       []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
-	InstanceId    *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The list of GPU models.
+	GpuSpec    []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
+	InstanceId *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The maximum resource capacity of the queue.
 	//
 	// example:
@@ -148,23 +155,26 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// {"cpu": "2","memory": "2Gi"}
 	MinResource *string `json:"minResource,omitempty" xml:"minResource,omitempty"`
-	// The billing method. Valid values:
+	// The billing type. Valid values:
 	//
-	// - PayAsYouGo: pay-as-you-go
+	// - PayAsYouGo: pay-as-you-go.
 	//
-	// - Pre: subscription
+	// - Pre: subscription.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	Preheat     *bool   `json:"preheat,omitempty" xml:"preheat,omitempty"`
+	// Indicates whether resource prefetch is enabled.
+	Preheat *bool `json:"preheat,omitempty" xml:"preheat,omitempty"`
 	// The queue label.
 	//
 	// example:
 	//
 	// dev_queue
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
+	// The queue category, CPU or GPU.
+	//
 	// example:
 	//
 	// CPU
@@ -175,7 +185,7 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// dev_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The queue scope.
+	// The queue architecture.
 	//
 	// example:
 	//
@@ -235,6 +245,10 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) GetCreateTime() *int64 {
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetCreator() *string {
 	return s.Creator
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetEnvironments() []*string {
@@ -317,6 +331,11 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) SetCreateTime(v int64) *ListWork
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) SetCreator(v string) *ListWorkspaceQueuesResponseBodyQueues {
 	s.Creator = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetDescription(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.Description = &v
 	return s
 }
 
@@ -447,7 +466,7 @@ type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {
 	//
 	// example:
 	//
-	// 文件目录遍历、文件浏览
+	// File directory traversal, file browsing
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 

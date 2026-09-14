@@ -26,7 +26,7 @@ type iStartProcessInstanceResponseBody interface {
 }
 
 type StartProcessInstanceResponseBody struct {
-	// The return code from the backend.
+	// The return code of the API request backend.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type StartProcessInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The detailed description of the return code.
+	// The detailed description corresponding to the request code.
 	//
 	// example:
 	//

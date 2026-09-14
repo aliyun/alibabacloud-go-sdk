@@ -16,7 +16,7 @@ type iGetJobRunResponseBody interface {
 }
 
 type GetJobRunResponseBody struct {
-	// The details of the job.
+	// The job run details.
 	JobRun *GetJobRunResponseBodyJobRun `json:"jobRun,omitempty" xml:"jobRun,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,9 +74,9 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// SQL
 	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
-	// The Spark configurations of the job.
+	// The Spark job configuration.
 	ConfigurationOverrides *GetJobRunResponseBodyJobRunConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	// The version that is displayed in the console.
+	// The version displayed in the console.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// env-cpv569tlhtgndjl8****
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The timeout period for the job execution.
+	// The execution timeout period, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	// Indicates whether to enable the Fusion engine to accelerate the job execution.
+	// Indicates whether the Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
 	// false
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The Spark driver information.
+	// The Spark Driver information.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The job run ID.
 	//
@@ -116,43 +116,43 @@ type GetJobRunResponseBodyJobRun struct {
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// The path of the run log.
 	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// The name of the job.
+	// The job run name.
 	//
 	// example:
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The access URL for the notebook of the job run.
+	// The download URL of the NOTEBOOK file. This parameter is returned only when the job type is NOTEBOOK.
 	//
 	// example:
 	//
 	// http://workflow-ide-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/spark-notebook-output/w-xxxxxxxxx/xxxxxxx
 	NotebookAccessUrl *string `json:"notebookAccessUrl,omitempty" xml:"notebookAccessUrl,omitempty"`
-	// The priority of the job run.
+	// The job priority.
 	//
 	// example:
 	//
 	// 5
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The Spark engine version.
+	// The Spark DPI engine version used to run the job.
 	//
 	// example:
 	//
 	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// The UID of the user who creates the job.
+	// The UID of the user who created the job.
 	//
 	// example:
 	//
 	// 150978934701****
 	ResourceOwnerId *string `json:"resourceOwnerId,omitempty" xml:"resourceOwnerId,omitempty"`
-	// The name of the queue on which the job runs.
+	// The name of the queue used to run the job.
 	//
 	// example:
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The state of the job.
+	// The job run state.
 	//
 	// example:
 	//
@@ -166,8 +166,14 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The total number of tokens consumed.
+	//
+	// example:
+	//
+	// 10000
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 	// The web UI of the job.
 	//
 	// example:
@@ -268,6 +274,10 @@ func (s *GetJobRunResponseBodyJobRun) GetSubmitTime() *int64 {
 
 func (s *GetJobRunResponseBodyJobRun) GetTags() []*Tag {
 	return s.Tags
+}
+
+func (s *GetJobRunResponseBodyJobRun) GetTotalTokens() *int64 {
+	return s.TotalTokens
 }
 
 func (s *GetJobRunResponseBodyJobRun) GetWebUI() *string {
@@ -378,6 +388,11 @@ func (s *GetJobRunResponseBodyJobRun) SetTags(v []*Tag) *GetJobRunResponseBodyJo
 	return s
 }
 
+func (s *GetJobRunResponseBodyJobRun) SetTotalTokens(v int64) *GetJobRunResponseBodyJobRun {
+	s.TotalTokens = &v
+	return s
+}
+
 func (s *GetJobRunResponseBodyJobRun) SetWebUI(v string) *GetJobRunResponseBodyJobRun {
 	s.WebUI = &v
 	return s
@@ -422,7 +437,7 @@ func (s *GetJobRunResponseBodyJobRun) Validate() error {
 }
 
 type GetJobRunResponseBodyJobRunConfigurationOverrides struct {
-	// The configurations.
+	// The list of configurations.
 	Configurations []*Configuration `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 

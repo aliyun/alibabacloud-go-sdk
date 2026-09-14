@@ -25,23 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shenzhen":    dara.String("emr-serverless-spark.cn-shenzhen.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("emr-serverless-spark.cn-wulanchabu.aliyuncs.com"),
-		"cn-beijing":     dara.String("emr-serverless-spark.cn-beijing.aliyuncs.com"),
-		"ap-northeast-1": dara.String("emr-serverless-spark.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":     dara.String("emr-serverless-spark.cn-chengdu.aliyuncs.com"),
-		"cn-shanghai":    dara.String("emr-serverless-spark.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("emr-serverless-spark.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": dara.String("emr-serverless-spark.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5": dara.String("emr-serverless-spark.ap-southeast-5.aliyuncs.com"),
-		"cn-zhangjiakou": dara.String("emr-serverless-spark.cn-zhangjiakou.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("emr-serverless-spark.cn-hangzhou.aliyuncs.com"),
-		"us-west-1":      dara.String("emr-serverless-spark.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("emr-serverless-spark.us-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("emr-serverless-spark.eu-central-1.aliyuncs.com"),
-		"na-south-1":     dara.String("emr-serverless-spark.na-south-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1925,7 +1908,7 @@ func (client *Client) DeleteWorkspaceQueue(workspaceId *string, workspaceQueueNa
 
 // Summary:
 //
-// Modifies a workspace queue.
+// Edits a workspace queue.
 //
 // @param request - EditWorkspaceQueueRequest
 //
@@ -1947,6 +1930,10 @@ func (client *Client) EditWorkspaceQueueWithOptions(request *EditWorkspaceQueueR
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
 	if !dara.IsNil(request.Environments) {
 		body["environments"] = request.Environments
 	}
@@ -1998,7 +1985,7 @@ func (client *Client) EditWorkspaceQueueWithOptions(request *EditWorkspaceQueueR
 
 // Summary:
 //
-// Modifies a workspace queue.
+// Edits a workspace queue.
 //
 // @param request - EditWorkspaceQueueRequest
 //
@@ -2361,7 +2348,7 @@ func (client *Client) GetDoctorApplication(workspaceId *string, runId *string, r
 
 // Summary:
 //
-// Get the details of a job.
+// Retrieves the details of a job run by calling GetJobRun.
 //
 // @param request - GetJobRunRequest
 //
@@ -2408,7 +2395,7 @@ func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string
 
 // Summary:
 //
-// Get the details of a job.
+// Retrieves the details of a job run by calling GetJobRun.
 //
 // @param request - GetJobRunRequest
 //
@@ -2675,7 +2662,7 @@ func (client *Client) GetLivyComputeToken(workspaceBizId *string, livyComputeId 
 
 // Summary:
 //
-// Retrieves the details of a Ray cluster, including its configuration, runtime state, node information, and connection endpoints.
+// Retrieves a Ray cluster.
 //
 // @param headers - map
 //
@@ -2708,7 +2695,7 @@ func (client *Client) GetRayClusterWithOptions(workspaceId *string, clusterId *s
 
 // Summary:
 //
-// Retrieves the details of a Ray cluster, including its configuration, runtime state, node information, and connection endpoints.
+// Retrieves a Ray cluster.
 //
 // @return GetRayClusterResponse
 func (client *Client) GetRayCluster(workspaceId *string, clusterId *string) (_result *GetRayClusterResponse, _err error) {
@@ -3583,14 +3570,28 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 //
 // Lists Kyuubi Gateways.
 //
+// @param request - ListKyuubiServicesRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListKyuubiServicesResponse
-func (client *Client) ListKyuubiServicesWithOptions(workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiServicesResponse, _err error) {
+func (client *Client) ListKyuubiServicesWithOptions(workspaceId *string, request *ListKyuubiServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListKyuubiServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Token) {
+		query["token"] = request.Token
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListKyuubiServices"),
@@ -3616,12 +3617,14 @@ func (client *Client) ListKyuubiServicesWithOptions(workspaceId *string, headers
 //
 // Lists Kyuubi Gateways.
 //
+// @param request - ListKyuubiServicesRequest
+//
 // @return ListKyuubiServicesResponse
-func (client *Client) ListKyuubiServices(workspaceId *string) (_result *ListKyuubiServicesResponse, _err error) {
+func (client *Client) ListKyuubiServices(workspaceId *string, request *ListKyuubiServicesRequest) (_result *ListKyuubiServicesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListKyuubiServicesResponse{}
-	_body, _err := client.ListKyuubiServicesWithOptions(workspaceId, headers, runtime)
+	_body, _err := client.ListKyuubiServicesWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4971,6 +4974,126 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
+// Queries APM Grafana panel data for Serverless Spark.
+//
+// @param tmpReq - QueryApmGrafanaDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryApmGrafanaDataResponse
+func (client *Client) QueryApmGrafanaDataWithOptions(tmpReq *QueryApmGrafanaDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryApmGrafanaDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryApmGrafanaDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.QueryParams) {
+		request.QueryParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryParams, dara.String("queryParams"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentName) {
+		query["componentName"] = request.ComponentName
+	}
+
+	if !dara.IsNil(request.DashboardId) {
+		query["dashboardId"] = request.DashboardId
+	}
+
+	if !dara.IsNil(request.End) {
+		query["end"] = request.End
+	}
+
+	if !dara.IsNil(request.Provider) {
+		query["provider"] = request.Provider
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.QueryParamsShrink) {
+		query["queryParams"] = request.QueryParamsShrink
+	}
+
+	if !dara.IsNil(request.QueryUrl) {
+		query["queryUrl"] = request.QueryUrl
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["start"] = request.Start
+	}
+
+	if !dara.IsNil(request.Step) {
+		query["step"] = request.Step
+	}
+
+	if !dara.IsNil(request.Time) {
+		query["time"] = request.Time
+	}
+
+	if !dara.IsNil(request.Variables) {
+		query["variables"] = request.Variables
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryApmGrafanaData"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/apm/action/queryApmGrafanaData"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryApmGrafanaDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries APM Grafana panel data for Serverless Spark.
+//
+// @param request - QueryApmGrafanaDataRequest
+//
+// @return QueryApmGrafanaDataResponse
+func (client *Client) QueryApmGrafanaData(request *QueryApmGrafanaDataRequest) (_result *QueryApmGrafanaDataResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryApmGrafanaDataResponse{}
+	_body, _err := client.QueryApmGrafanaDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Refreshes the token for a Livy Gateway.
 //
 // @param request - RefreshLivyComputeTokenRequest
@@ -5349,7 +5472,7 @@ func (client *Client) StartLivyCompute(workspaceBizId *string, livyComputeId *st
 
 // Summary:
 //
-// Starts a workflow manually.
+// Manually runs a workflow.
 //
 // @param request - StartProcessInstanceRequest
 //
@@ -5378,6 +5501,10 @@ func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *St
 		query["email"] = request.Email
 	}
 
+	if !dara.IsNil(request.ExpectedParallelismNumber) {
+		query["expectedParallelismNumber"] = request.ExpectedParallelismNumber
+	}
+
 	if !dara.IsNil(request.Interval) {
 		query["interval"] = request.Interval
 	}
@@ -5396,6 +5523,10 @@ func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *St
 
 	if !dara.IsNil(request.RegionId) {
 		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RunMode) {
+		query["runMode"] = request.RunMode
 	}
 
 	if !dara.IsNil(request.RuntimeQueue) {
@@ -5436,7 +5567,7 @@ func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *St
 
 // Summary:
 //
-// Starts a workflow manually.
+// Manually runs a workflow.
 //
 // @param request - StartProcessInstanceRequest
 //
@@ -5940,6 +6071,10 @@ func (client *Client) SubmitRayJobWithOptions(workspaceId *string, request *Subm
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ActiveDeadlineSeconds) {
 		body["activeDeadlineSeconds"] = request.ActiveDeadlineSeconds
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["clusterId"] = request.ClusterId
 	}
 
 	if !dara.IsNil(request.DisplayReleaseVersion) {

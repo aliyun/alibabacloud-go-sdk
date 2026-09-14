@@ -9,6 +9,8 @@ type iEditWorkspaceQueueRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetDescription(v string) *EditWorkspaceQueueRequest
+  GetDescription() *string 
   SetEnvironments(v []*string) *EditWorkspaceQueueRequest
   GetEnvironments() []*string 
   SetGpuSpec(v []*string) *EditWorkspaceQueueRequest
@@ -26,11 +28,18 @@ type iEditWorkspaceQueueRequest interface {
 }
 
 type EditWorkspaceQueueRequest struct {
-  // The queue environment type.
+  // The description.
+  // 
+  // example:
+  // 
+  // test queue
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // The environment type of the queue.
   Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+  // The list of GPU models.
   GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
   InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-  // The resource specifications.
+  // The resource quota.
   ResourceSpec *EditWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
   // The workspace ID.
   // 
@@ -38,7 +47,7 @@ type EditWorkspaceQueueRequest struct {
   // 
   // w-975bcfda9625****
   WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-  // The workspace queue name.
+  // The name of the workspace queue.
   // 
   // example:
   // 
@@ -58,6 +67,10 @@ func (s EditWorkspaceQueueRequest) String() string {
 
 func (s EditWorkspaceQueueRequest) GoString() string {
   return s.String()
+}
+
+func (s *EditWorkspaceQueueRequest) GetDescription() *string  {
+  return s.Description
 }
 
 func (s *EditWorkspaceQueueRequest) GetEnvironments() []*string  {
@@ -86,6 +99,11 @@ func (s *EditWorkspaceQueueRequest) GetWorkspaceQueueName() *string  {
 
 func (s *EditWorkspaceQueueRequest) GetRegionId() *string  {
   return s.RegionId
+}
+
+func (s *EditWorkspaceQueueRequest) SetDescription(v string) *EditWorkspaceQueueRequest {
+  s.Description = &v
+  return s
 }
 
 func (s *EditWorkspaceQueueRequest) SetEnvironments(v []*string) *EditWorkspaceQueueRequest {
@@ -139,11 +157,16 @@ type EditWorkspaceQueueRequestResourceSpec struct {
   // 
   // 1000
   Cu *int64 `json:"cu,omitempty" xml:"cu,omitempty"`
+  // The number of GPU cards.
+  // 
   // example:
   // 
   // 100
   Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+  // The number of GPU machines.
   GpuMachineNum *int32 `json:"gpuMachineNum,omitempty" xml:"gpuMachineNum,omitempty"`
+  // The maximum number of CUs.
+  // 
   // example:
   // 
   // 0.5

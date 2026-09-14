@@ -146,7 +146,7 @@ type Task struct {
 	//
 	// This parameter is required.
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// The folder business ID.
+	// The business ID of the folder.
 	CategoryBizId *string `json:"categoryBizId,omitempty" xml:"categoryBizId,omitempty"`
 	// The Spark job content.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
@@ -154,13 +154,13 @@ type Task struct {
 	//
 	// This parameter is required.
 	Creator *int64 `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The OSS direct upload credentials.
+	// The credential for direct OSS upload.
 	Credential *TaskCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
 	// The default catalog ID.
 	DefaultCatalogId *string `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
 	// The default database.
 	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	// The default queue ID of the task.
+	// The ID of the default task queue.
 	DefaultResourceQueueId *string `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
 	// The default SQL session ID.
 	DefaultSqlComputeId *string `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
@@ -168,23 +168,23 @@ type Task struct {
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	// The environment ID.
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The IDs of extra Spark resources.
+	// The IDs of extra Spark artifacts.
 	ExtraArtifactIds []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
-	// The custom Spark submit configuration parameters.
+	// The custom spark-submit configuration parameters.
 	ExtraSparkSubmitParams *string `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
 	// The --files parameter.
 	Files []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// Indicates whether the fusion switch is enabled.
+	// Indicates whether the fusion feature is enabled.
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The creation time.
 	//
 	// This parameter is required.
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
-	// The last modification time.
+	// The last modified time.
 	//
 	// This parameter is required.
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Indicates whether the task has been changed since the last submission.
+	// Indicates whether the task has been changed after the last commit.
 	HasChanged *bool `json:"hasChanged,omitempty" xml:"hasChanged,omitempty"`
 	// Indicates whether the task has been submitted.
 	//
@@ -206,7 +206,7 @@ type Task struct {
 	// This parameter is required.
 	Name   *string            `json:"name,omitempty" xml:"name,omitempty"`
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// The Spark PySpark dependency pyfiles.
+	// The PySpark dependency pyfiles for the Spark task.
 	PyFiles                     []*string            `json:"pyFiles,omitempty" xml:"pyFiles,omitempty" type:"Repeated"`
 	RayActiveDeadlineSeconds    *int64               `json:"rayActiveDeadlineSeconds,omitempty" xml:"rayActiveDeadlineSeconds,omitempty"`
 	RayBackoffLimit             *int32               `json:"rayBackoffLimit,omitempty" xml:"rayBackoffLimit,omitempty"`
@@ -228,7 +228,7 @@ type Task struct {
 	RayWorkerSpec               []*TaskRayWorkerSpec `json:"rayWorkerSpec,omitempty" xml:"rayWorkerSpec,omitempty" type:"Repeated"`
 	RayWorkingDir               *string              `json:"rayWorkingDir,omitempty" xml:"rayWorkingDir,omitempty"`
 	SessionClusterId            *string              `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
-	// The Spark parameters.
+	// The Spark arguments.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type Task struct {
 	//
 	// This parameter is required.
 	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
-	// The Spark main class entry point.
+	// The Spark main class entrypoint.
 	SparkEntrypoint *string `json:"sparkEntrypoint,omitempty" xml:"sparkEntrypoint,omitempty"`
 	// The number of Spark executor cores.
 	//
@@ -262,7 +262,7 @@ type Task struct {
 	//
 	// This parameter is required.
 	SparkLogPath *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
-	// The Spark submit task submission statement.
+	// The spark-submit task submission clause.
 	SparkSubmitClause *string `json:"sparkSubmitClause,omitempty" xml:"sparkSubmitClause,omitempty"`
 	// The Spark version.
 	//
@@ -989,13 +989,31 @@ func (s *TaskCredential) Validate() error {
 }
 
 type TaskRayHeadSpec struct {
-	Cpu                *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	EnableAutoScaling  *bool   `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
+	Cpu               *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	EnableAutoScaling *bool   `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
+	// The environment variables of the Ray node.
+	//
+	// example:
+	//
+	// MY_ENV=123456
+	Env                *string `json:"env,omitempty" xml:"env,omitempty"`
 	GpuSpec            *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
 	IdleTimeoutSeconds *int64  `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
 	Memory             *string `json:"memory,omitempty" xml:"memory,omitempty"`
 	QueueName          *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	Replica            *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
+	// The startup parameters of Ray.
+	//
+	// example:
+	//
+	// --num-cpus=0
+	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
+	// The DPI engine version of Ray.
+	//
+	// example:
+	//
+	// err-1.3.0 (Ray 2.55.1, Python 3.12)
+	RayVersion *string `json:"rayVersion,omitempty" xml:"rayVersion,omitempty"`
+	Replica    *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
 }
 
 func (s TaskRayHeadSpec) String() string {
@@ -1014,6 +1032,10 @@ func (s *TaskRayHeadSpec) GetEnableAutoScaling() *bool {
 	return s.EnableAutoScaling
 }
 
+func (s *TaskRayHeadSpec) GetEnv() *string {
+	return s.Env
+}
+
 func (s *TaskRayHeadSpec) GetGpuSpec() *string {
 	return s.GpuSpec
 }
@@ -1030,6 +1052,14 @@ func (s *TaskRayHeadSpec) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *TaskRayHeadSpec) GetRayStartParams() *string {
+	return s.RayStartParams
+}
+
+func (s *TaskRayHeadSpec) GetRayVersion() *string {
+	return s.RayVersion
+}
+
 func (s *TaskRayHeadSpec) GetReplica() *int32 {
 	return s.Replica
 }
@@ -1041,6 +1071,11 @@ func (s *TaskRayHeadSpec) SetCpu(v string) *TaskRayHeadSpec {
 
 func (s *TaskRayHeadSpec) SetEnableAutoScaling(v bool) *TaskRayHeadSpec {
 	s.EnableAutoScaling = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetEnv(v string) *TaskRayHeadSpec {
+	s.Env = &v
 	return s
 }
 
@@ -1064,6 +1099,16 @@ func (s *TaskRayHeadSpec) SetQueueName(v string) *TaskRayHeadSpec {
 	return s
 }
 
+func (s *TaskRayHeadSpec) SetRayStartParams(v string) *TaskRayHeadSpec {
+	s.RayStartParams = &v
+	return s
+}
+
+func (s *TaskRayHeadSpec) SetRayVersion(v string) *TaskRayHeadSpec {
+	s.RayVersion = &v
+	return s
+}
+
 func (s *TaskRayHeadSpec) SetReplica(v int32) *TaskRayHeadSpec {
 	s.Replica = &v
 	return s
@@ -1074,13 +1119,31 @@ func (s *TaskRayHeadSpec) Validate() error {
 }
 
 type TaskRayWorkerSpec struct {
-	Cpu        *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The environment variables of Ray.
+	//
+	// example:
+	//
+	// MY_ENV=123456
+	Env        *string `json:"env,omitempty" xml:"env,omitempty"`
 	GpuSpec    *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
 	GroupName  *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	MaxReplica *int32  `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
 	Memory     *string `json:"memory,omitempty" xml:"memory,omitempty"`
 	MinReplica *int32  `json:"minReplica,omitempty" xml:"minReplica,omitempty"`
 	QueueName  *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The startup parameters of Ray.
+	//
+	// example:
+	//
+	// --num-cpus=0
+	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
+	// The DPI engine version of Ray.
+	//
+	// example:
+	//
+	// err-1.3.0 (Ray 2.55.1, Python 3.12)
+	RayVersion *string `json:"rayVersion,omitempty" xml:"rayVersion,omitempty"`
 	Replica    *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
 }
 
@@ -1094,6 +1157,10 @@ func (s TaskRayWorkerSpec) GoString() string {
 
 func (s *TaskRayWorkerSpec) GetCpu() *string {
 	return s.Cpu
+}
+
+func (s *TaskRayWorkerSpec) GetEnv() *string {
+	return s.Env
 }
 
 func (s *TaskRayWorkerSpec) GetGpuSpec() *string {
@@ -1120,12 +1187,25 @@ func (s *TaskRayWorkerSpec) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *TaskRayWorkerSpec) GetRayStartParams() *string {
+	return s.RayStartParams
+}
+
+func (s *TaskRayWorkerSpec) GetRayVersion() *string {
+	return s.RayVersion
+}
+
 func (s *TaskRayWorkerSpec) GetReplica() *int32 {
 	return s.Replica
 }
 
 func (s *TaskRayWorkerSpec) SetCpu(v string) *TaskRayWorkerSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetEnv(v string) *TaskRayWorkerSpec {
+	s.Env = &v
 	return s
 }
 
@@ -1156,6 +1236,16 @@ func (s *TaskRayWorkerSpec) SetMinReplica(v int32) *TaskRayWorkerSpec {
 
 func (s *TaskRayWorkerSpec) SetQueueName(v string) *TaskRayWorkerSpec {
 	s.QueueName = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetRayStartParams(v string) *TaskRayWorkerSpec {
+	s.RayStartParams = &v
+	return s
+}
+
+func (s *TaskRayWorkerSpec) SetRayVersion(v string) *TaskRayWorkerSpec {
+	s.RayVersion = &v
 	return s
 }
 

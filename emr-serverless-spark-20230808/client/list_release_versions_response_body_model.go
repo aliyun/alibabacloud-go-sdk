@@ -22,13 +22,13 @@ type iListReleaseVersionsResponseBody interface {
 }
 
 type ListReleaseVersionsResponseBody struct {
-	// The maximum number of records to return on a single page.
+	// The maximum number of records returned per request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListReleaseVersionsResponseBody) Validate() error {
 }
 
 type ListReleaseVersionsResponseBodyReleaseVersions struct {
-	// The community version number of Spark.
+	// The community Spark version number.
 	//
 	// example:
 	//
@@ -131,24 +131,26 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// Indicates whether the Fusion engine is enabled for acceleration.
+	// Indicates whether Fusion engine acceleration is enabled.
 	//
 	// example:
 	//
 	// true
 	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
-	// The time when the version was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1716215854101
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The type of the IaaS layer.
+	// The IaaS layer type.
 	//
 	// example:
 	//
 	// ASI
 	IaasType *string `json:"iaasType,omitempty" xml:"iaasType,omitempty"`
+	// Indicates whether the version is a custom image.
+	IsCustom *bool `json:"isCustom,omitempty" xml:"isCustom,omitempty"`
 	// The version number.
 	//
 	// example:
@@ -161,13 +163,13 @@ type ListReleaseVersionsResponseBodyReleaseVersions struct {
 	//
 	// 2.12
 	ScalaVersion *string `json:"scalaVersion,omitempty" xml:"scalaVersion,omitempty"`
-	// The status of the version.
+	// The version status.
 	//
 	// example:
 	//
 	// ONLINE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The type of the version.
+	// The version type.
 	//
 	// example:
 	//
@@ -205,6 +207,10 @@ func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetGmtCreate() *int64 {
 
 func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetIaasType() *string {
 	return s.IaasType
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetIsCustom() *bool {
+	return s.IsCustom
 }
 
 func (s *ListReleaseVersionsResponseBodyReleaseVersions) GetReleaseVersion() *string {
@@ -250,6 +256,11 @@ func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetGmtCreate(v int64) *
 
 func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetIaasType(v string) *ListReleaseVersionsResponseBodyReleaseVersions {
 	s.IaasType = &v
+	return s
+}
+
+func (s *ListReleaseVersionsResponseBodyReleaseVersions) SetIsCustom(v bool) *ListReleaseVersionsResponseBodyReleaseVersions {
+	s.IsCustom = &v
 	return s
 }
 

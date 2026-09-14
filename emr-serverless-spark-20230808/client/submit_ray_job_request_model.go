@@ -11,6 +11,8 @@ type iSubmitRayJobRequest interface {
 	GoString() string
 	SetActiveDeadlineSeconds(v int32) *SubmitRayJobRequest
 	GetActiveDeadlineSeconds() *int32
+	SetClusterId(v string) *SubmitRayJobRequest
+	GetClusterId() *string
 	SetDisplayReleaseVersion(v string) *SubmitRayJobRequest
 	GetDisplayReleaseVersion() *string
 	SetEntrypoint(v string) *SubmitRayJobRequest
@@ -58,6 +60,12 @@ type SubmitRayJobRequest struct {
 	//
 	// 3600
 	ActiveDeadlineSeconds *int32 `json:"activeDeadlineSeconds,omitempty" xml:"activeDeadlineSeconds,omitempty"`
+	// The ID of an existing Ray cluster to which the job is submitted.
+	//
+	// example:
+	//
+	// ray-xxxxxxxxx
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
 	// The Ray DPI engine version number.
 	//
 	// example:
@@ -94,7 +102,7 @@ type SubmitRayJobRequest struct {
 	//
 	// {"fpu": 1}
 	EntrypointResources *string `json:"entrypointResources,omitempty" xml:"entrypointResources,omitempty"`
-	// The extra parameter JSON string.
+	// The extra parameters in a JSON string.
 	//
 	// example:
 	//
@@ -126,7 +134,7 @@ type SubmitRayJobRequest struct {
 	//
 	// {"pip":["requests==2.26.0","pendulum==2.1.2"],"env_vars":{"KEY":"VALUE"}}
 	RuntimeEnvJson *string `json:"runtimeEnvJson,omitempty" xml:"runtimeEnvJson,omitempty"`
-	// Specifies whether to automatically destroy the temporary cluster after the job is completed. Default value: true.
+	// Specifies whether to automatically destroy the temporary cluster after the job finishes. Default value: true.
 	//
 	// example:
 	//
@@ -146,9 +154,9 @@ type SubmitRayJobRequest struct {
 	//
 	// 60
 	TtlSecondsAfterFinished *int32 `json:"ttlSecondsAfterFinished,omitempty" xml:"ttlSecondsAfterFinished,omitempty"`
-	// The list of mount volume IDs.
+	// The list of mounted volume IDs.
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	// The Ray cluster worker node parameters.
+	// The parameters of the worker nodes in the Ray cluster.
 	WorkerSpec []*SubmitRayJobRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 	// The URL of the job code working directory.
 	//
@@ -168,6 +176,10 @@ func (s SubmitRayJobRequest) GoString() string {
 
 func (s *SubmitRayJobRequest) GetActiveDeadlineSeconds() *int32 {
 	return s.ActiveDeadlineSeconds
+}
+
+func (s *SubmitRayJobRequest) GetClusterId() *string {
+	return s.ClusterId
 }
 
 func (s *SubmitRayJobRequest) GetDisplayReleaseVersion() *string {
@@ -248,6 +260,11 @@ func (s *SubmitRayJobRequest) GetWorkingDir() *string {
 
 func (s *SubmitRayJobRequest) SetActiveDeadlineSeconds(v int32) *SubmitRayJobRequest {
 	s.ActiveDeadlineSeconds = &v
+	return s
+}
+
+func (s *SubmitRayJobRequest) SetClusterId(v string) *SubmitRayJobRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -380,7 +397,13 @@ type SubmitRayJobRequestHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// Specifies whether to enable automatic worker scaling.
+	// The Ray DPI engine version.
+	//
+	// example:
+	//
+	// err-1.3.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Specifies whether to enable automatic scaling for workers.
 	//
 	// example:
 	//
@@ -398,7 +421,7 @@ type SubmitRayJobRequestHeadSpec struct {
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
-	// The memory size. Unit: Gi.
+	// The memory size. Unit: GiB.
 	//
 	// example:
 	//
@@ -424,6 +447,10 @@ func (s *SubmitRayJobRequestHeadSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *SubmitRayJobRequestHeadSpec) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
 func (s *SubmitRayJobRequestHeadSpec) GetEnableAutoScaling() *bool {
 	return s.EnableAutoScaling
 }
@@ -446,6 +473,11 @@ func (s *SubmitRayJobRequestHeadSpec) GetQueueName() *string {
 
 func (s *SubmitRayJobRequestHeadSpec) SetCpu(v string) *SubmitRayJobRequestHeadSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *SubmitRayJobRequestHeadSpec) SetDisplayReleaseVersion(v string) *SubmitRayJobRequestHeadSpec {
+	s.DisplayReleaseVersion = &v
 	return s
 }
 
@@ -530,6 +562,12 @@ type SubmitRayJobRequestWorkerSpec struct {
 	//
 	// 4
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The database engine version.
+	//
+	// example:
+	//
+	// ray-1.2.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	// The GPU instance type.
 	//
 	// example:
@@ -548,7 +586,7 @@ type SubmitRayJobRequestWorkerSpec struct {
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size. Unit: Gi.
+	// The memory size. Unit: GiB.
 	//
 	// example:
 	//
@@ -592,6 +630,10 @@ func (s *SubmitRayJobRequestWorkerSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *SubmitRayJobRequestWorkerSpec) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
 func (s *SubmitRayJobRequestWorkerSpec) GetGpuSpec() *string {
 	return s.GpuSpec
 }
@@ -626,6 +668,11 @@ func (s *SubmitRayJobRequestWorkerSpec) GetWorkerType() *string {
 
 func (s *SubmitRayJobRequestWorkerSpec) SetCpu(v string) *SubmitRayJobRequestWorkerSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *SubmitRayJobRequestWorkerSpec) SetDisplayReleaseVersion(v string) *SubmitRayJobRequestWorkerSpec {
+	s.DisplayReleaseVersion = &v
 	return s
 }
 

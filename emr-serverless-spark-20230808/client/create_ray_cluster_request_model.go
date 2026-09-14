@@ -28,25 +28,25 @@ type iCreateRayClusterRequest interface {
 }
 
 type CreateRayClusterRequest struct {
-	// The description of the cluster.
+	// The description.
 	//
 	// example:
 	//
 	// Ray Cluster for dev.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version of the Ray engine.
+	// The Ray DPI engine version.
 	//
 	// example:
 	//
 	// ray-1.0.0 (Ray 2.47.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// Additional parameters. The value must be in JSON format.
+	// The extra parameters. The value must be in JSON format.
 	//
 	// example:
 	//
 	// {}
 	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	// The parameters for the head node of the Ray cluster.
+	// The parameters of the Ray cluster head node.
 	HeadSpec *CreateRayClusterRequestHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
 	// The name of the Ray cluster. The name must be 1 to 64 characters in length.
 	//
@@ -54,14 +54,15 @@ type CreateRayClusterRequest struct {
 	//
 	// testRayCluster
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the network connection.
+	// The network connectivity name.
 	//
 	// example:
 	//
 	// vpc
-	NetworkServiceName *string   `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
-	VolumeIds          []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
-	// The parameters for the worker nodes of the Ray cluster. You can specify up to 50 worker groups.
+	NetworkServiceName *string `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
+	// The list of managed directory IDs to mount.
+	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
+	// The parameters of the Ray cluster worker nodes. A maximum of 50 groups are supported.
 	WorkerSpec []*CreateRayClusterRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -170,23 +171,44 @@ type CreateRayClusterRequestHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// Specifies whether to enable automatic scaling for worker nodes.
+	// The Ray DPI engine version.
+	//
+	// example:
+	//
+	// ray-1.2.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Specifies whether to enable automatic scaling for workers.
 	//
 	// example:
 	//
 	// false
 	EnableAutoScaling *bool `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
+	// The environment variables.
+	//
+	// example:
+	//
+	// MY_ENV=hello\\nMY_ENV2=hello2
+	Env *string `json:"env,omitempty" xml:"env,omitempty"`
+	// The GCS Fault Tolerance configuration.
+	GftConfig *CreateRayClusterRequestHeadSpecGftConfig `json:"gftConfig,omitempty" xml:"gftConfig,omitempty" type:"Struct"`
+	// Specifies whether to enable GCS Fault Tolerance.
+	//
+	// if can be null:
+	// true
+	GftEnabled *bool `json:"gftEnabled,omitempty" xml:"gftEnabled,omitempty"`
+	// The GPU model.
+	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The idle timeout period in seconds for worker nodes when automatic scaling is enabled.
+	// The idle timeout period of workers after automatic scaling is enabled.
 	//
 	// example:
 	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
-	// The memory size, in GiB.
+	// The memory size. Unit: Gi.
 	//
 	// example:
 	//
@@ -198,6 +220,12 @@ type CreateRayClusterRequestHeadSpec struct {
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The Ray node startup parameters.
+	//
+	// example:
+	//
+	// --num-cpus=0 --num-gpus=0
+	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
 }
 
 func (s CreateRayClusterRequestHeadSpec) String() string {
@@ -212,8 +240,24 @@ func (s *CreateRayClusterRequestHeadSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *CreateRayClusterRequestHeadSpec) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
 func (s *CreateRayClusterRequestHeadSpec) GetEnableAutoScaling() *bool {
 	return s.EnableAutoScaling
+}
+
+func (s *CreateRayClusterRequestHeadSpec) GetEnv() *string {
+	return s.Env
+}
+
+func (s *CreateRayClusterRequestHeadSpec) GetGftConfig() *CreateRayClusterRequestHeadSpecGftConfig {
+	return s.GftConfig
+}
+
+func (s *CreateRayClusterRequestHeadSpec) GetGftEnabled() *bool {
+	return s.GftEnabled
 }
 
 func (s *CreateRayClusterRequestHeadSpec) GetGpuSpec() *string {
@@ -232,13 +276,37 @@ func (s *CreateRayClusterRequestHeadSpec) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *CreateRayClusterRequestHeadSpec) GetRayStartParams() *string {
+	return s.RayStartParams
+}
+
 func (s *CreateRayClusterRequestHeadSpec) SetCpu(v string) *CreateRayClusterRequestHeadSpec {
 	s.Cpu = &v
 	return s
 }
 
+func (s *CreateRayClusterRequestHeadSpec) SetDisplayReleaseVersion(v string) *CreateRayClusterRequestHeadSpec {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
 func (s *CreateRayClusterRequestHeadSpec) SetEnableAutoScaling(v bool) *CreateRayClusterRequestHeadSpec {
 	s.EnableAutoScaling = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestHeadSpec) SetEnv(v string) *CreateRayClusterRequestHeadSpec {
+	s.Env = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestHeadSpec) SetGftConfig(v *CreateRayClusterRequestHeadSpecGftConfig) *CreateRayClusterRequestHeadSpec {
+	s.GftConfig = v
+	return s
+}
+
+func (s *CreateRayClusterRequestHeadSpec) SetGftEnabled(v bool) *CreateRayClusterRequestHeadSpec {
+	s.GftEnabled = &v
 	return s
 }
 
@@ -262,7 +330,77 @@ func (s *CreateRayClusterRequestHeadSpec) SetQueueName(v string) *CreateRayClust
 	return s
 }
 
+func (s *CreateRayClusterRequestHeadSpec) SetRayStartParams(v string) *CreateRayClusterRequestHeadSpec {
+	s.RayStartParams = &v
+	return s
+}
+
 func (s *CreateRayClusterRequestHeadSpec) Validate() error {
+	if s.GftConfig != nil {
+		if err := s.GftConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateRayClusterRequestHeadSpecGftConfig struct {
+	// The Redis password.
+	//
+	// example:
+	//
+	// redispasswd
+	RedisPassword *string `json:"redisPassword,omitempty" xml:"redisPassword,omitempty"`
+	// The Redis URL.
+	//
+	// example:
+	//
+	// 10.12.3.4:6379
+	RedisUrl *string `json:"redisUrl,omitempty" xml:"redisUrl,omitempty"`
+	// The Redis username.
+	//
+	// example:
+	//
+	// default
+	RedisUsername *string `json:"redisUsername,omitempty" xml:"redisUsername,omitempty"`
+}
+
+func (s CreateRayClusterRequestHeadSpecGftConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRayClusterRequestHeadSpecGftConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRayClusterRequestHeadSpecGftConfig) GetRedisPassword() *string {
+	return s.RedisPassword
+}
+
+func (s *CreateRayClusterRequestHeadSpecGftConfig) GetRedisUrl() *string {
+	return s.RedisUrl
+}
+
+func (s *CreateRayClusterRequestHeadSpecGftConfig) GetRedisUsername() *string {
+	return s.RedisUsername
+}
+
+func (s *CreateRayClusterRequestHeadSpecGftConfig) SetRedisPassword(v string) *CreateRayClusterRequestHeadSpecGftConfig {
+	s.RedisPassword = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestHeadSpecGftConfig) SetRedisUrl(v string) *CreateRayClusterRequestHeadSpecGftConfig {
+	s.RedisUrl = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestHeadSpecGftConfig) SetRedisUsername(v string) *CreateRayClusterRequestHeadSpecGftConfig {
+	s.RedisUsername = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestHeadSpecGftConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -273,29 +411,43 @@ type CreateRayClusterRequestWorkerSpec struct {
 	//
 	// 4
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The engine version. If this parameter is not specified, the value is the same as that of the head node.
+	//
+	// example:
+	//
+	// ray-1.2.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// The environment variables.
+	//
+	// example:
+	//
+	// MY_ENV=hello\\nMY_ENV2=hello2
+	Env *string `json:"env,omitempty" xml:"env,omitempty"`
+	// The GPU model.
+	//
 	// example:
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The name of the worker group.
+	// The worker group name.
 	//
 	// example:
 	//
 	// WorkerGroup1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The maximum number of worker nodes for automatic scaling. The minimum value is 1.
+	// The maximum number of workers after automatic scaling is enabled. Minimum value: 1.
 	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"maxReplica,omitempty" xml:"maxReplica,omitempty"`
-	// The memory size, in GiB.
+	// The memory size. Unit: Gi.
 	//
 	// example:
 	//
 	// 16Gi
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum number of worker nodes for automatic scaling. The minimum value is 1. This value must be less than or equal to maxReplica.
+	// The minimum number of workers after automatic scaling is enabled. Minimum value: 1. The value must be less than or equal to maxReplica.
 	//
 	// example:
 	//
@@ -307,7 +459,13 @@ type CreateRayClusterRequestWorkerSpec struct {
 	//
 	// root_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// The number of worker nodes. The minimum value is 1.
+	// The Ray node startup parameters.
+	//
+	// example:
+	//
+	// --num-cpus=0 --num-gpus=0
+	RayStartParams *string `json:"rayStartParams,omitempty" xml:"rayStartParams,omitempty"`
+	// The number of workers. Minimum value: 1.
 	//
 	// example:
 	//
@@ -331,6 +489,14 @@ func (s CreateRayClusterRequestWorkerSpec) GoString() string {
 
 func (s *CreateRayClusterRequestWorkerSpec) GetCpu() *string {
 	return s.Cpu
+}
+
+func (s *CreateRayClusterRequestWorkerSpec) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
+func (s *CreateRayClusterRequestWorkerSpec) GetEnv() *string {
+	return s.Env
 }
 
 func (s *CreateRayClusterRequestWorkerSpec) GetGpuSpec() *string {
@@ -357,6 +523,10 @@ func (s *CreateRayClusterRequestWorkerSpec) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *CreateRayClusterRequestWorkerSpec) GetRayStartParams() *string {
+	return s.RayStartParams
+}
+
 func (s *CreateRayClusterRequestWorkerSpec) GetReplica() *int32 {
 	return s.Replica
 }
@@ -367,6 +537,16 @@ func (s *CreateRayClusterRequestWorkerSpec) GetWorkerType() *string {
 
 func (s *CreateRayClusterRequestWorkerSpec) SetCpu(v string) *CreateRayClusterRequestWorkerSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestWorkerSpec) SetDisplayReleaseVersion(v string) *CreateRayClusterRequestWorkerSpec {
+	s.DisplayReleaseVersion = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestWorkerSpec) SetEnv(v string) *CreateRayClusterRequestWorkerSpec {
+	s.Env = &v
 	return s
 }
 
@@ -397,6 +577,11 @@ func (s *CreateRayClusterRequestWorkerSpec) SetMinReplica(v int32) *CreateRayClu
 
 func (s *CreateRayClusterRequestWorkerSpec) SetQueueName(v string) *CreateRayClusterRequestWorkerSpec {
 	s.QueueName = &v
+	return s
+}
+
+func (s *CreateRayClusterRequestWorkerSpec) SetRayStartParams(v string) *CreateRayClusterRequestWorkerSpec {
+	s.RayStartParams = &v
 	return s
 }
 

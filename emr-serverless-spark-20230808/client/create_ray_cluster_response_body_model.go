@@ -16,7 +16,7 @@ type iCreateRayClusterResponseBody interface {
 }
 
 type CreateRayClusterResponseBody struct {
-	// The ID of the Ray cluster.
+	// The Ray cluster ID.
 	//
 	// example:
 	//

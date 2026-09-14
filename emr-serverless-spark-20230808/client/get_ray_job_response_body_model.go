@@ -104,7 +104,7 @@ type GetRayJobResponseBody struct {
 	//
 	// - Deleted: Deleted.
 	//
-	// - Submitted: Submitted but not yet created.
+	// - Submitted: Submitted but creation has not started.
 	//
 	// - Pending: Being created.
 	//
@@ -126,13 +126,13 @@ type GetRayJobResponseBody struct {
 	//
 	// 1899
 	CuHours *float64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
-	// The Ray cluster dashboard URL. When the Ray cluster is in Running state, this is the Runtime UI. After the cluster is deleted, this is the History UI. History UI is supported only in err-1.2.0 and later versions.
+	// The dashboard URL of the Ray cluster. When the Ray cluster is in the Running state, this is the Runtime UI. After the cluster enters the Deleted state, this is the History UI. History UI is supported only in err-1.2.0 and later versions.
 	//
 	// example:
 	//
 	// https://emr-ray-gateway-cn-hangzhou.aliyuncs.com/workspace/w-xxxxxxxx/raycluster/ray-xxxxxx/dashboard?token=xxxxxx
 	DashboardUrl *string `json:"dashboardUrl,omitempty" xml:"dashboardUrl,omitempty"`
-	// The extra dashboard UI URLs. Currently empty.
+	// The extra dashboard UI URLs. This field is currently empty.
 	DashboardUrlExtra []*string `json:"dashboardUrlExtra,omitempty" xml:"dashboardUrlExtra,omitempty" type:"Repeated"`
 	// The Ray DPI engine version.
 	//
@@ -140,13 +140,13 @@ type GetRayJobResponseBody struct {
 	//
 	// err-1.2.0 (Ray 2.55.1, Python 3.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	// The job duration, in seconds.
+	// The task duration, in seconds.
 	//
 	// example:
 	//
 	// 2459764
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The job end time. This value is a UNIX timestamp in milliseconds.
+	// The task end time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -188,9 +188,9 @@ type GetRayJobResponseBody struct {
 	//
 	// {"userDefinedFiles": "oss://mybucket/artifact/config.json,oss://mybucket/artifact/config2.json", "userRequirementsFile": "oss://mybucket/requirements.txt"}
 	ExtraParam *string `json:"extraParam,omitempty" xml:"extraParam,omitempty"`
-	// The consumed GPU hours. Currently empty.
+	// The consumed GPU hours. This field is currently empty.
 	GuHours *GetRayJobResponseBodyGuHours `json:"guHours,omitempty" xml:"guHours,omitempty" type:"Struct"`
-	// The Ray cluster head node parameters.
+	// The parameters of the Ray cluster head node.
 	HeadSpec *GetRayJobResponseBodyHeadSpec `json:"headSpec,omitempty" xml:"headSpec,omitempty" type:"Struct"`
 	// The name of the bucket that stores logs.
 	//
@@ -204,19 +204,19 @@ type GetRayJobResponseBody struct {
 	//
 	// w-xxxxxxx/ray/logs/xxxxxx/
 	LogPath *string `json:"logPath,omitempty" xml:"logPath,omitempty"`
-	// The execution message.
+	// The execution information.
 	//
 	// example:
 	//
 	// Job finished successfully.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The job metadata JSON string.
+	// The task metadata JSON string.
 	//
 	// example:
 	//
 	// {"owner": "alice"}
 	MetadataJson *string `json:"metadataJson,omitempty" xml:"metadataJson,omitempty"`
-	// The Ray cluster name.
+	// The name of the Ray cluster.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type GetRayJobResponseBody struct {
 	//
 	// {"pip":["requests==2.26.0","pendulum==2.1.2"],"env_vars":{"KEY":"VALUE"}}
 	RuntimeEnvJson *string `json:"runtimeEnvJson,omitempty" xml:"runtimeEnvJson,omitempty"`
-	// Specifies whether to automatically destroy the temporary cluster after the job finishes. Default value: true.
+	// Specifies whether to automatically destroy the temporary cluster after the task is completed. Default value: true.
 	//
 	// example:
 	//
@@ -252,23 +252,23 @@ type GetRayJobResponseBody struct {
 	//
 	// 1750327083303
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The job status. Valid values:
+	// The task status. Valid values:
 	//
-	// - Submitted: Submitted.
+	// - Submitted: The task is submitted.
 	//
 	// - Pending: The cluster is being created.
 	//
-	// - Running: The job is running.
+	// - Running: The task is running.
 	//
-	// - Succeeded: The job succeeded.
+	// - Succeeded: The task succeeded.
 	//
-	// - Failed: The job failed.
+	// - Failed: The task failed.
 	//
-	// - Cancelling: Cancelling.
+	// - Cancelling: The task is being canceled.
 	//
-	// - Cancelled: Cancelled.
+	// - Cancelled: The task is canceled.
 	//
-	// - Timeout: Timed out and cancelled.
+	// - Timeout: The task timed out and was canceled.
 	//
 	// example:
 	//
@@ -286,7 +286,7 @@ type GetRayJobResponseBody struct {
 	//
 	// HTTPMode
 	SubmissionMode *string `json:"submissionMode,omitempty" xml:"submissionMode,omitempty"`
-	// The job submission time. This value is a UNIX timestamp in milliseconds.
+	// The task submission time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -294,7 +294,7 @@ type GetRayJobResponseBody struct {
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
 	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The data development task ID.
+	// The ID of the data development node.
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ type GetRayJobResponseBody struct {
 	VolumeIds []*string `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
 	// The Ray cluster worker node information.
 	WorkerSpecs []*GetRayJobResponseBodyWorkerSpecs `json:"workerSpecs,omitempty" xml:"workerSpecs,omitempty" type:"Repeated"`
-	// The URL of the job code working directory.
+	// The URL of the task code working directory.
 	//
 	// example:
 	//
@@ -752,7 +752,13 @@ type GetRayJobResponseBodyHeadSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// Indicates whether auto scaling is enabled for worker nodes.
+	// The Ray DPI engine version.
+	//
+	// example:
+	//
+	// err-1.3.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// Indicates whether automatic scaling is enabled for worker nodes.
 	//
 	// example:
 	//
@@ -764,7 +770,7 @@ type GetRayJobResponseBodyHeadSpec struct {
 	//
 	// ecs.gn6i-c4g1.xlarge
 	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
-	// The idle timeout in seconds for worker nodes when auto scaling is enabled.
+	// The idle timeout for worker nodes when automatic scaling is enabled.
 	//
 	// example:
 	//
@@ -802,6 +808,10 @@ func (s *GetRayJobResponseBodyHeadSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *GetRayJobResponseBodyHeadSpec) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
 func (s *GetRayJobResponseBodyHeadSpec) GetEnableAutoScaling() *bool {
 	return s.EnableAutoScaling
 }
@@ -828,6 +838,11 @@ func (s *GetRayJobResponseBodyHeadSpec) GetReplica() *int32 {
 
 func (s *GetRayJobResponseBodyHeadSpec) SetCpu(v string) *GetRayJobResponseBodyHeadSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *GetRayJobResponseBodyHeadSpec) SetDisplayReleaseVersion(v string) *GetRayJobResponseBodyHeadSpec {
+	s.DisplayReleaseVersion = &v
 	return s
 }
 
@@ -872,6 +887,12 @@ type GetRayJobResponseBodyWorkerSpecs struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The DPI engine version.
+	//
+	// example:
+	//
+	// ray-1.2.0 (Ray 2.55.1, Python 3.12)
+	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	// The GPU type.
 	//
 	// example:
@@ -928,6 +949,10 @@ func (s *GetRayJobResponseBodyWorkerSpecs) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *GetRayJobResponseBodyWorkerSpecs) GetDisplayReleaseVersion() *string {
+	return s.DisplayReleaseVersion
+}
+
 func (s *GetRayJobResponseBodyWorkerSpecs) GetGpuSpec() *string {
 	return s.GpuSpec
 }
@@ -958,6 +983,11 @@ func (s *GetRayJobResponseBodyWorkerSpecs) GetReplica() *int32 {
 
 func (s *GetRayJobResponseBodyWorkerSpecs) SetCpu(v string) *GetRayJobResponseBodyWorkerSpecs {
 	s.Cpu = &v
+	return s
+}
+
+func (s *GetRayJobResponseBodyWorkerSpecs) SetDisplayReleaseVersion(v string) *GetRayJobResponseBodyWorkerSpecs {
+	s.DisplayReleaseVersion = &v
 	return s
 }
 
