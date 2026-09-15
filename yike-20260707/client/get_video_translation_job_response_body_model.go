@@ -62,25 +62,25 @@ func (s *GetVideoTranslationJobResponseBody) Validate() error {
 }
 
 type GetVideoTranslationJobResponseBodyJob struct {
-	// The input video duration, in seconds.
+	// The duration of the input video, in seconds.
 	//
 	// example:
 	//
 	// 60.5
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The editing project ID for a single-target-language job. For multi-target-language results, retrieve the ID from Output.AiResult.ResultMap.
+	// The editing project ID for single-target-language jobs. For multi-target-language results, retrieve the value from Output.AiResult.ResultMap.
 	//
 	// example:
 	//
 	// editing-project-001
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
-	// The business error code returned when the job fails. This field is typically not returned for non-failed states.
+	// The business error code returned when the job fails. This field is not returned when the job is not in a failed state.
 	//
 	// example:
 	//
 	// InvalidInput
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The business error message returned when the job fails. This field is typically not returned for non-failed states.
+	// The business error message returned when the job fails. This field is not returned when the job is not in a failed state.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type GetVideoTranslationJobResponseBodyJob struct {
 	//
 	// VoiceTranslate
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The job output JSON string. When the job succeeds, AiResult.ResultMap organizes the final video, subtitle, and audio outputs by target language.
+	// The job output JSON string. On success, AiResult.ResultMap organizes the final video, subtitle, and audio outputs by target language.
 	//
 	// example:
 	//

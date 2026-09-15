@@ -34,11 +34,13 @@ type iSubmitImageGenerationJobRequest interface {
 type SubmitImageGenerationJobRequest struct {
 	// The aspect ratio. Valid values: 16:9 (default), 9:16, 4:3, 3:4, 1:1, and 21:9.
 	//
+	// - qwen-image-3.0 additionally supports: 4:5, 5:4, 2:3, and 3:2.
+	//
 	// example:
 	//
 	// 4:3
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The idempotency token. A unique, case-sensitive string of up to 32 characters. This token ensures that the request is completed no more than once, preventing duplicate operations caused by multiple retries.
+	// The idempotency token. A unique, case-sensitive string of up to 32 characters. This token ensures that the request is processed only once, preventing duplicate operations caused by multiple retries.
 	//
 	// example:
 	//
@@ -46,11 +48,11 @@ type SubmitImageGenerationJobRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The task input. This parameter is required. The value is a JSON string that contains the following fields:
 	//
-	// - Prompt: String. Required. The prompt for image generation.
+	// - Prompt: String. Required. The prompt text.
 	//
 	// - Medias: A list of media items. Required when the task type is `image_to_image`. A maximum of 9 items are supported.
 	//
-	// > The Media struct contains the following fields: Type, the media type, String, valid value: image. URL, the download URL of the media, String. MediaId, the media asset ID, String.
+	// > The Media structure contains the following fields: Type, the media type (String, valid value: image). URL, the media download URL (String). MediaId, the media asset ID (String).
 	//
 	// >
 	//
@@ -58,7 +60,7 @@ type SubmitImageGenerationJobRequest struct {
 	//
 	// {"Prompt":"xxx","Medias":[{"Type":"image","URL":"xxx"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The task feature parameters. The value is a JSON string. You do not need to set this parameter.
+	// The task feature parameters. The value is a JSON string. You do not need to set this parameter currently.
 	//
 	// example:
 	//

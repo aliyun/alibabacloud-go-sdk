@@ -69,6 +69,50 @@ func (client *Client) BatchGetMediasWithContext(ctx context.Context, request *Ba
 
 // Summary:
 //
+// 取消生成任务接口
+//
+// @param request - CancelGenerationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelGenerationJobResponse
+func (client *Client) CancelGenerationJobWithContext(ctx context.Context, request *CancelGenerationJobRequest, runtime *dara.RuntimeOptions) (_result *CancelGenerationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelGenerationJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a media asset category.
 //
 // Description:
@@ -895,7 +939,7 @@ func (client *Client) GetVideoRenderJobWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// Queries the status, input, parameters, and desired state results of a video translation job based on the `JobId`.
+// Queries the status, input, parameters, and final results of a video translation job by `JobId`.
 //
 // @param request - GetVideoTranslationJobRequest
 //
@@ -1578,11 +1622,11 @@ func (client *Client) SubmitRemakeScriptJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Submits an asynchronous video text erasure task that supports full-video erasure, time range-based erasure, and region-specific erasure.
+// Submits an asynchronous video text removal job. Supports full-frame removal, time range–based removal, and region-based removal.
 //
 // Description:
 //
-// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a Yike video media asset ID. You can configure the erasure time range and text regions.
+// Submits an asynchronous video text removal job. The input can be an accessible video URL or a Yike media asset ID. You can configure the removal time range and text regions.
 //
 // @param request - SubmitVideoDetextJobRequest
 //
