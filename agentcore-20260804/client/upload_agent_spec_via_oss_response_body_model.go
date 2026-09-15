@@ -16,7 +16,7 @@ type iUploadAgentSpecViaOssResponseBody interface {
 }
 
 type UploadAgentSpecViaOssResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

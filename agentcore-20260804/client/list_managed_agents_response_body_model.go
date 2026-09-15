@@ -54,13 +54,13 @@ type ListManagedAgentsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The message returned for the request.
+	// The result message of the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates that no more pages are available.
+	// The token for the next page. An empty value indicates that the last page has been reached.
 	//
 	// example:
 	//
@@ -219,19 +219,15 @@ type ListManagedAgentsResponseBodyItems struct {
 	//
 	// An agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The effective specification version number.
-	//
-	// example:
-	//
-	// 1
-	EffectiveSpecVersion *int64 `json:"effectiveSpecVersion,omitempty" xml:"effectiveSpecVersion,omitempty"`
+	// The agent runtime framework.
+	Harness *ListManagedAgentsResponseBodyItemsHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The latest specification version number.
 	//
 	// example:
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The managed agent name.
+	// The name of the managed agent.
 	//
 	// example:
 	//
@@ -243,7 +239,19 @@ type ListManagedAgentsResponseBodyItems struct {
 	//
 	// Managed
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the managed agent.
+	// The status of the managed agent. Valid values:
+	//
+	// - Creating: Being created.
+	//
+	// - Failed: Failed.
+	//
+	// - Running: Running.
+	//
+	// - Updating: Being updated.
+	//
+	// - Deleted: Deleted.
+	//
+	// - Deleting: Being deleted.
 	//
 	// example:
 	//
@@ -291,8 +299,8 @@ func (s *ListManagedAgentsResponseBodyItems) GetDescription() *string {
 	return s.Description
 }
 
-func (s *ListManagedAgentsResponseBodyItems) GetEffectiveSpecVersion() *int64 {
-	return s.EffectiveSpecVersion
+func (s *ListManagedAgentsResponseBodyItems) GetHarness() *ListManagedAgentsResponseBodyItemsHarness {
+	return s.Harness
 }
 
 func (s *ListManagedAgentsResponseBodyItems) GetLatestSpecVersion() *int64 {
@@ -344,8 +352,8 @@ func (s *ListManagedAgentsResponseBodyItems) SetDescription(v string) *ListManag
 	return s
 }
 
-func (s *ListManagedAgentsResponseBodyItems) SetEffectiveSpecVersion(v int64) *ListManagedAgentsResponseBodyItems {
-	s.EffectiveSpecVersion = &v
+func (s *ListManagedAgentsResponseBodyItems) SetHarness(v *ListManagedAgentsResponseBodyItemsHarness) *ListManagedAgentsResponseBodyItems {
+	s.Harness = v
 	return s
 }
 
@@ -380,5 +388,101 @@ func (s *ListManagedAgentsResponseBodyItems) SetWorkspaceId(v string) *ListManag
 }
 
 func (s *ListManagedAgentsResponseBodyItems) Validate() error {
+	if s.Harness != nil {
+		if err := s.Harness.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListManagedAgentsResponseBodyItemsHarness struct {
+	// The Connector binding configuration for the qodercli framework.
+	Configuration *ListManagedAgentsResponseBodyItemsHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// The runtime framework type. Valid values: qwenpaw and qodercli. The qodercli type binds by configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	//
+	// example:
+	//
+	// qodercli
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListManagedAgentsResponseBodyItemsHarness) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListManagedAgentsResponseBodyItemsHarness) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarness) GetConfiguration() *ListManagedAgentsResponseBodyItemsHarnessConfiguration {
+	return s.Configuration
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarness) GetType() *string {
+	return s.Type
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarness) SetConfiguration(v *ListManagedAgentsResponseBodyItemsHarnessConfiguration) *ListManagedAgentsResponseBodyItemsHarness {
+	s.Configuration = v
+	return s
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarness) SetType(v string) *ListManagedAgentsResponseBodyItemsHarness {
+	s.Type = &v
+	return s
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarness) Validate() error {
+	if s.Configuration != nil {
+		if err := s.Configuration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListManagedAgentsResponseBodyItemsHarnessConfiguration struct {
+	// Binds a Service Account Key of the QoderCLI Connector by Key ID. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+	//
+	// example:
+	//
+	// key-xxxx
+	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
+	// The Connector Key name populated during queries. This parameter is not used as a binding reference during writes.
+	//
+	// example:
+	//
+	// my-connector-key
+	ConnectorServiceAccountName *string `json:"connectorServiceAccountName,omitempty" xml:"connectorServiceAccountName,omitempty"`
+}
+
+func (s ListManagedAgentsResponseBodyItemsHarnessConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListManagedAgentsResponseBodyItemsHarnessConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarnessConfiguration) GetConnectorServiceAccountKey() *string {
+	return s.ConnectorServiceAccountKey
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarnessConfiguration) GetConnectorServiceAccountName() *string {
+	return s.ConnectorServiceAccountName
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarnessConfiguration) SetConnectorServiceAccountKey(v string) *ListManagedAgentsResponseBodyItemsHarnessConfiguration {
+	s.ConnectorServiceAccountKey = &v
+	return s
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarnessConfiguration) SetConnectorServiceAccountName(v string) *ListManagedAgentsResponseBodyItemsHarnessConfiguration {
+	s.ConnectorServiceAccountName = &v
+	return s
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarnessConfiguration) Validate() error {
 	return dara.Validate(s)
 }

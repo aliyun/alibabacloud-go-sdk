@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 批量删除模型
+// Deletes models in a specified workspace in batches. If any model is in use, the entire batch request fails.
 //
 // @param tmpReq - BatchDeleteModelsRequest
 //
@@ -117,7 +117,7 @@ func (client *Client) BatchDeleteModelsWithOptions(workspaceId *string, tmpReq *
 
 // Summary:
 //
-// 批量删除模型
+// Deletes models in a specified workspace in batches. If any model is in use, the entire batch request fails.
 //
 // @param request - BatchDeleteModelsRequest
 //
@@ -211,6 +211,80 @@ func (client *Client) BatchUploadSkillsViaOss(workspaceId *string, request *Batc
 	headers := make(map[string]*string)
 	_result = &BatchUploadSkillsViaOssResponse{}
 	_body, _err := client.BatchUploadSkillsViaOssWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Converts an MCP to free editing.
+//
+// Description:
+//
+// Disables template usage constraints. After the conversion, the MCP retains its source and tags but no longer appears on the usage page.
+//
+// @param request - ConvertMcpToFreeEditRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertMcpToFreeEditResponse
+func (client *Client) ConvertMcpToFreeEditWithOptions(workspaceId *string, mcpServerId *string, request *ConvertMcpToFreeEditRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConvertMcpToFreeEditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConvertMcpToFreeEdit"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/mcp-servers/" + dara.PercentEncode(dara.StringValue(mcpServerId)) + "/convert-to-free-edit"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConvertMcpToFreeEditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Converts an MCP to free editing.
+//
+// Description:
+//
+// Disables template usage constraints. After the conversion, the MCP retains its source and tags but no longer appears on the usage page.
+//
+// @param request - ConvertMcpToFreeEditRequest
+//
+// @return ConvertMcpToFreeEditResponse
+func (client *Client) ConvertMcpToFreeEdit(workspaceId *string, mcpServerId *string, request *ConvertMcpToFreeEditRequest) (_result *ConvertMcpToFreeEditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ConvertMcpToFreeEditResponse{}
+	_body, _err := client.ConvertMcpToFreeEditWithOptions(workspaceId, mcpServerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -474,7 +548,11 @@ func (client *Client) CreateAgentSpecVersion(workspaceId *string, agentSpecName 
 
 // Summary:
 //
-// 创建凭证
+// Creates a credential in a specified workspace for authentication when an agent accesses external services. Currently, only the apiKey type is supported. The credential content is passed in as a JSON string through credentialMetadata and can only be queried in masked form after being written.
+//
+// Description:
+//
+// Creates a credential in a workspace for authentication of services such as Connector.
 //
 // @param tmpReq - CreateCredentialRequest
 //
@@ -533,7 +611,11 @@ func (client *Client) CreateCredentialWithOptions(workspaceId *string, tmpReq *C
 
 // Summary:
 //
-// 创建凭证
+// Creates a credential in a specified workspace for authentication when an agent accesses external services. Currently, only the apiKey type is supported. The credential content is passed in as a JSON string through credentialMetadata and can only be queried in masked form after being written.
+//
+// Description:
+//
+// Creates a credential in a workspace for authentication of services such as Connector.
 //
 // @param request - CreateCredentialRequest
 //
@@ -1030,7 +1112,7 @@ func (client *Client) CreateModel(workspaceId *string, request *CreateModelReque
 
 // Summary:
 //
-// 创建模型连接
+// Creates a model connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials.
 //
 // @param tmpReq - CreateModelConnectionRequest
 //
@@ -1089,7 +1171,7 @@ func (client *Client) CreateModelConnectionWithOptions(workspaceId *string, tmpR
 
 // Summary:
 //
-// 创建模型连接
+// Creates a model connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials.
 //
 // @param request - CreateModelConnectionRequest
 //
@@ -1192,7 +1274,7 @@ func (client *Client) CreateSkillDraft(workspaceId *string, request *CreateSkill
 
 // Summary:
 //
-// 创建团队
+// Creates a team in a specified workspace and sets user members and agent members at the same time. The user members must include exactly one member with the ADMIN role. Agent members can only have the LEADER or WORKER role.
 //
 // @param tmpReq - CreateTeamRequest
 //
@@ -1251,7 +1333,7 @@ func (client *Client) CreateTeamWithOptions(workspaceId *string, tmpReq *CreateT
 
 // Summary:
 //
-// 创建团队
+// Creates a team in a specified workspace and sets user members and agent members at the same time. The user members must include exactly one member with the ADMIN role. Agent members can only have the LEADER or WORKER role.
 //
 // @param request - CreateTeamRequest
 //
@@ -1270,7 +1352,7 @@ func (client *Client) CreateTeam(workspaceId *string, request *CreateTeamRequest
 
 // Summary:
 //
-// 创建用户
+// Creates a user in a specified workspace. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. Reserved names such as manager, admin, or names starting with worker- cannot be used. If password is not specified, the server generates an initial password and returns it in the initialPassword field of the response.
 //
 // @param tmpReq - CreateUserRequest
 //
@@ -1329,7 +1411,7 @@ func (client *Client) CreateUserWithOptions(workspaceId *string, tmpReq *CreateU
 
 // Summary:
 //
-// 创建用户
+// Creates a user in a specified workspace. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. Reserved names such as manager, admin, or names starting with worker- cannot be used. If password is not specified, the server generates an initial password and returns it in the initialPassword field of the response.
 //
 // @param request - CreateUserRequest
 //
@@ -1434,7 +1516,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// 调试模型
+// Calls a specified model through a published model connection to verify whether the model call chain is available.
 //
 // @param tmpReq - DebugModelRequest
 //
@@ -1487,7 +1569,7 @@ func (client *Client) DebugModelWithOptions(workspaceId *string, modelId *string
 
 // Summary:
 //
-// 调试模型
+// Calls a specified model through a published model connection to verify whether the model call chain is available.
 //
 // @param request - DebugModelRequest
 //
@@ -1724,7 +1806,11 @@ func (client *Client) DeleteAgentSpecVersion(workspaceId *string, agentSpecName 
 
 // Summary:
 //
-// 删除凭证
+// Deletes a credential from a specified workspace and removes the ciphertext hosted in the credential service. After deletion, agents that are bound to this credential can no longer retrieve the 
+//
+// Description:
+//
+// Deletes an access credential from a specified workspace. A credential cannot be deleted while it is still bound to an MCP service.
 //
 // @param request - DeleteCredentialRequest
 //
@@ -1771,7 +1857,11 @@ func (client *Client) DeleteCredentialWithOptions(workspaceId *string, credentia
 
 // Summary:
 //
-// 删除凭证
+// Deletes a credential from a specified workspace and removes the ciphertext hosted in the credential service. After deletion, agents that are bound to this credential can no longer retrieve the credential content.
+//
+// Description:
+//
+// Deletes an access credential from a specified workspace. A credential cannot be deleted while it is still bound to an MCP service.
 //
 // @param request - DeleteCredentialRequest
 //
@@ -1858,7 +1948,7 @@ func (client *Client) DeleteExternalAgent(workspaceId *string, agentId *string, 
 
 // Summary:
 //
-// Unbinds the external identity provider from a specified workspace and cleans up users synchronized by that identity provider. The unbinding is an asynchronous operation. After the API returns, you can track the progress by querying the status through GetIdentityProvider.
+// Unbinds the external identity provider from a specified workspace and cleans up users synchronized by that identity provider. The unbinding is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track the progress.
 //
 // @param request - DeleteIdentityProviderRequest
 //
@@ -1905,7 +1995,7 @@ func (client *Client) DeleteIdentityProviderWithOptions(workspaceId *string, ide
 
 // Summary:
 //
-// Unbinds the external identity provider from a specified workspace and cleans up users synchronized by that identity provider. The unbinding is an asynchronous operation. After the API returns, you can track the progress by querying the status through GetIdentityProvider.
+// Unbinds the external identity provider from a specified workspace and cleans up users synchronized by that identity provider. The unbinding is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track the progress.
 //
 // @param request - DeleteIdentityProviderRequest
 //
@@ -1988,7 +2078,7 @@ func (client *Client) DeleteManagedAgent(workspaceId *string, agentId *string, r
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // Deletes a specified MCP service. The deletion is an asynchronous process. After the deletion is complete, the MCP service is no longer returned.
 //
@@ -2035,7 +2125,7 @@ func (client *Client) DeleteMcpWithOptions(mcpServerId *string, workspaceId *str
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // Deletes a specified MCP service. The deletion is an asynchronous process. After the deletion is complete, the MCP service is no longer returned.
 //
@@ -2056,7 +2146,7 @@ func (client *Client) DeleteMcp(mcpServerId *string, workspaceId *string, reques
 
 // Summary:
 //
-// 删除模型
+// Deletes a model from a specified workspace. Models that are currently in use cannot be deleted.
 //
 // @param request - DeleteModelRequest
 //
@@ -2103,7 +2193,7 @@ func (client *Client) DeleteModelWithOptions(workspaceId *string, modelId *strin
 
 // Summary:
 //
-// 删除模型
+// Deletes a model from a specified workspace. Models that are currently in use cannot be deleted.
 //
 // @param request - DeleteModelRequest
 //
@@ -2122,7 +2212,7 @@ func (client *Client) DeleteModel(workspaceId *string, modelId *string, request 
 
 // Summary:
 //
-// 删除模型连接
+// Submits an asynchronous deletion task for a specified model connection. The connection cannot be deleted if it has associated models or runtime references.
 //
 // @param request - DeleteModelConnectionRequest
 //
@@ -2169,7 +2259,7 @@ func (client *Client) DeleteModelConnectionWithOptions(workspaceId *string, conn
 
 // Summary:
 //
-// 删除模型连接
+// Submits an asynchronous deletion task for a specified model connection. The connection cannot be deleted if it has associated models or runtime references.
 //
 // @param request - DeleteModelConnectionRequest
 //
@@ -2332,7 +2422,7 @@ func (client *Client) DeleteSkillDraft(workspaceId *string, skillName *string, r
 
 // Summary:
 //
-// 删除团队
+// Deletes a team from a specified workspace. Deleting a team does not delete the users or agents within it. Only the membership associations are removed.
 //
 // @param request - DeleteTeamRequest
 //
@@ -2379,7 +2469,7 @@ func (client *Client) DeleteTeamWithOptions(workspaceId *string, teamId *string,
 
 // Summary:
 //
-// 删除团队
+// Deletes a team from a specified workspace. Deleting a team does not delete the users or agents within it. Only the membership associations are removed.
 //
 // @param request - DeleteTeamRequest
 //
@@ -2398,7 +2488,7 @@ func (client *Client) DeleteTeam(workspaceId *string, teamId *string, request *D
 
 // Summary:
 //
-// 删除用户
+// Deletes a user from a specified workspace. A user cannot be deleted while the user is still a member of any team. Remove the user from all teams before deleting the user.
 //
 // @param request - DeleteUserRequest
 //
@@ -2445,7 +2535,7 @@ func (client *Client) DeleteUserWithOptions(workspaceId *string, agentCoreUserId
 
 // Summary:
 //
-// 删除用户
+// Deletes a user from a specified workspace. A user cannot be deleted while the user is still a member of any team. Remove the user from all teams before deleting the user.
 //
 // @param request - DeleteUserRequest
 //
@@ -2523,6 +2613,74 @@ func (client *Client) DeleteWorkspace(workspaceId *string, request *DeleteWorksp
 	headers := make(map[string]*string)
 	_result = &DeleteWorkspaceResponse{}
 	_body, _err := client.DeleteWorkspaceWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a Connector.
+//
+// Description:
+//
+// Disables a specified Connector in a workspace.
+//
+// @param request - DisableConnectorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableConnectorResponse
+func (client *Client) DisableConnectorWithOptions(workspaceId *string, connectorName *string, request *DisableConnectorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableConnector"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/connectors/" + dara.PercentEncode(dara.StringValue(connectorName)) + "/actions/disable"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a Connector.
+//
+// Description:
+//
+// Disables a specified Connector in a workspace.
+//
+// @param request - DisableConnectorRequest
+//
+// @return DisableConnectorResponse
+func (client *Client) DisableConnector(workspaceId *string, connectorName *string, request *DisableConnectorRequest) (_result *DisableConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableConnectorResponse{}
+	_body, _err := client.DisableConnectorWithOptions(workspaceId, connectorName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2673,6 +2831,86 @@ func (client *Client) DownloadSkillVersionViaOss(workspaceId *string, skillName 
 	headers := make(map[string]*string)
 	_result = &DownloadSkillVersionViaOssResponse{}
 	_body, _err := client.DownloadSkillVersionViaOssWithOptions(workspaceId, skillName, skillVersion, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a Connector.
+//
+// Description:
+//
+// Enables a Connector in a specified workspace. Credential verification is required before enabling.
+//
+// @param tmpReq - EnableConnectorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableConnectorResponse
+func (client *Client) EnableConnectorWithOptions(workspaceId *string, connectorName *string, tmpReq *EnableConnectorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &EnableConnectorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableConnector"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/connectors/" + dara.PercentEncode(dara.StringValue(connectorName)) + "/actions/enable"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a Connector.
+//
+// Description:
+//
+// Enables a Connector in a specified workspace. Credential verification is required before enabling.
+//
+// @param request - EnableConnectorRequest
+//
+// @return EnableConnectorResponse
+func (client *Client) EnableConnector(workspaceId *string, connectorName *string, request *EnableConnectorRequest) (_result *EnableConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableConnectorResponse{}
+	_body, _err := client.EnableConnectorWithOptions(workspaceId, connectorName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2906,13 +3144,13 @@ func (client *Client) GetAgentSpec(workspaceId *string, agentSpecName *string, r
 
 // Summary:
 //
-// Retrieves the OSS pre-signed upload URL and object name required for importing an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
+// Retrieves the OSS pre-signed upload URL and object name required to import an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
 //
 // Description:
 //
 // ## Operation description
 //
-// Retrieves the OSS pre-signed upload URL and object name required for importing an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
+// Retrieves the OSS pre-signed upload URL and object name required to import an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
 //
 // @param request - GetAgentSpecImportFileUrlRequest
 //
@@ -2959,13 +3197,13 @@ func (client *Client) GetAgentSpecImportFileUrlWithOptions(workspaceId *string, 
 
 // Summary:
 //
-// Retrieves the OSS pre-signed upload URL and object name required for importing an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
+// Retrieves the OSS pre-signed upload URL and object name required to import an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
 //
 // Description:
 //
 // ## Operation description
 //
-// Retrieves the OSS pre-signed upload URL and object name required for importing an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
+// Retrieves the OSS pre-signed upload URL and object name required to import an AgentSpec ZIP package. After the upload is complete, call the AgentSpec OSS upload operation to complete the import.
 //
 // @param request - GetAgentSpecImportFileUrlRequest
 //
@@ -3128,7 +3366,11 @@ func (client *Client) GetAgentSpecVersion(workspaceId *string, agentSpecName *st
 
 // Summary:
 //
-// 查询凭证
+// Queries the details of a specified credential and returns the list of agents bound to the credential. The credential content is returned in masked form.
+//
+// Description:
+//
+// Queries the details of a single credential. Sensitive fields are not returned.
 //
 // @param request - GetCredentialRequest
 //
@@ -3169,7 +3411,11 @@ func (client *Client) GetCredentialWithOptions(workspaceId *string, credentialId
 
 // Summary:
 //
-// 查询凭证
+// Queries the details of a specified credential and returns the list of agents bound to the credential. The credential content is returned in masked form.
+//
+// Description:
+//
+// Queries the details of a single credential. Sensitive fields are not returned.
 //
 // @param request - GetCredentialRequest
 //
@@ -3444,13 +3690,13 @@ func (client *Client) GetManagedAgent(workspaceId *string, agentId *string, requ
 
 // Summary:
 //
-// Queries the details of a specified MCP service, including its address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
 //
 // Description:
 //
 // ## Operation description
 //
-// Queries the details of a specified MCP service, including its address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
 //
 // @param request - GetMcpRequest
 //
@@ -3491,13 +3737,13 @@ func (client *Client) GetMcpWithOptions(workspaceId *string, mcpServerId *string
 
 // Summary:
 //
-// Queries the details of a specified MCP service, including its address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
 //
 // Description:
 //
 // ## Operation description
 //
-// Queries the details of a specified MCP service, including its address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
 //
 // @param request - GetMcpRequest
 //
@@ -3507,6 +3753,74 @@ func (client *Client) GetMcp(workspaceId *string, mcpServerId *string, request *
 	headers := make(map[string]*string)
 	_result = &GetMcpResponse{}
 	_body, _err := client.GetMcpWithOptions(workspaceId, mcpServerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an MCP marketplace template.
+//
+// Description:
+//
+// Returns the current template version and installation form schema.
+//
+// @param request - GetMcpMarketItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcpMarketItemResponse
+func (client *Client) GetMcpMarketItemWithOptions(workspaceId *string, marketItemId *string, request *GetMcpMarketItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMcpMarketItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMcpMarketItem"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/mcp-market/items/" + dara.PercentEncode(dara.StringValue(marketItemId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMcpMarketItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an MCP marketplace template.
+//
+// Description:
+//
+// Returns the current template version and installation form schema.
+//
+// @param request - GetMcpMarketItemRequest
+//
+// @return GetMcpMarketItemResponse
+func (client *Client) GetMcpMarketItem(workspaceId *string, marketItemId *string, request *GetMcpMarketItemRequest) (_result *GetMcpMarketItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMcpMarketItemResponse{}
+	_body, _err := client.GetMcpMarketItemWithOptions(workspaceId, marketItemId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3576,7 +3890,7 @@ func (client *Client) GetModel(workspaceId *string, modelId *string, request *Ge
 
 // Summary:
 //
-// 查询模型连接
+// Queries the detailed configuration, credential configuration status, publish status, and region of a specified model connection.
 //
 // @param request - GetModelConnectionRequest
 //
@@ -3617,7 +3931,7 @@ func (client *Client) GetModelConnectionWithOptions(workspaceId *string, connect
 
 // Summary:
 //
-// 查询模型连接
+// Queries the detailed configuration, credential configuration status, publish status, and region of a specified model connection.
 //
 // @param request - GetModelConnectionRequest
 //
@@ -3994,7 +4308,7 @@ func (client *Client) GetSkillVersionDetail(workspaceId *string, skillName *stri
 
 // Summary:
 //
-// 查询团队
+// Queries the details of a specified team. The response includes the complete attributes and team roles of each user member and agent member in the team.
 //
 // @param request - GetTeamRequest
 //
@@ -4035,7 +4349,7 @@ func (client *Client) GetTeamWithOptions(workspaceId *string, teamId *string, re
 
 // Summary:
 //
-// 查询团队
+// Queries the details of a specified team. The response includes the complete attributes and team roles of each user member and agent member in the team.
 //
 // @param request - GetTeamRequest
 //
@@ -4054,7 +4368,7 @@ func (client *Client) GetTeam(workspaceId *string, teamId *string, request *GetT
 
 // Summary:
 //
-// 查询用户
+// Queries the details of a specified user in a workspace. Returns an error if the user does not exist.
 //
 // @param request - GetUserRequest
 //
@@ -4095,7 +4409,7 @@ func (client *Client) GetUserWithOptions(workspaceId *string, agentCoreUserId *s
 
 // Summary:
 //
-// 查询用户
+// Queries the details of a specified user in a workspace. Returns an error if the user does not exist.
 //
 // @param request - GetUserRequest
 //
@@ -4114,11 +4428,11 @@ func (client *Client) GetUser(workspaceId *string, agentCoreUserId *string, requ
 
 // Summary:
 //
-// Queries workspace details by workspace ID, including lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.
+// Queries the details of a workspace by workspace ID, including the lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.
 //
 // Description:
 //
-// ## Operation description\\nQueries workspace details by workspace ID, including lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.\\n.
+// ## Operation description\\nQueries the details of a workspace by workspace ID, including the lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.\\n.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -4159,11 +4473,11 @@ func (client *Client) GetWorkspaceWithOptions(workspaceId *string, request *GetW
 
 // Summary:
 //
-// Queries workspace details by workspace ID, including lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.
+// Queries the details of a workspace by workspace ID, including the lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.
 //
 // Description:
 //
-// ## Operation description\\nQueries workspace details by workspace ID, including lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.\\n.
+// ## Operation description\\nQueries the details of a workspace by workspace ID, including the lifecycle status, CMS Workspace, AIRegistry Namespace, and current network policy.\\n.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -4241,6 +4555,96 @@ func (client *Client) GetWorkspacePlugin(workspaceId *string, pluginName *string
 	headers := make(map[string]*string)
 	_result = &GetWorkspacePluginResponse{}
 	_body, _err := client.GetWorkspacePluginWithOptions(workspaceId, pluginName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs an MCP marketplace template.
+//
+// Description:
+//
+// Validates input based on the specified template version and creates an MCP in the workspace.
+//
+// @param tmpReq - InstallMcpMarketItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallMcpMarketItemResponse
+func (client *Client) InstallMcpMarketItemWithOptions(workspaceId *string, marketItemId *string, tmpReq *InstallMcpMarketItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InstallMcpMarketItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &InstallMcpMarketItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.TemplateVersion) {
+		query["templateVersion"] = request.TemplateVersion
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallMcpMarketItem"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/mcp-market/items/" + dara.PercentEncode(dara.StringValue(marketItemId)) + "/install"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallMcpMarketItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs an MCP marketplace template.
+//
+// Description:
+//
+// Validates input based on the specified template version and creates an MCP in the workspace.
+//
+// @param request - InstallMcpMarketItemRequest
+//
+// @return InstallMcpMarketItemResponse
+func (client *Client) InstallMcpMarketItem(workspaceId *string, marketItemId *string, request *InstallMcpMarketItemRequest) (_result *InstallMcpMarketItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InstallMcpMarketItemResponse{}
+	_body, _err := client.InstallMcpMarketItemWithOptions(workspaceId, marketItemId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4604,7 +5008,171 @@ func (client *Client) ListAgentTeams(workspaceId *string, request *ListAgentTeam
 
 // Summary:
 //
-// 查询凭证列表
+// Queries the list of models for a connector.
+//
+// Description:
+//
+// Queries the list of available models for a specified connector. Pagination is supported.
+//
+// @param request - ListConnectorModelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConnectorModelsResponse
+func (client *Client) ListConnectorModelsWithOptions(workspaceId *string, connectorName *string, request *ListConnectorModelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConnectorModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorKeyId) {
+		query["connectorKeyId"] = request.ConnectorKeyId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConnectorModels"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/connectors/" + dara.PercentEncode(dara.StringValue(connectorName)) + "/models"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConnectorModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of models for a connector.
+//
+// Description:
+//
+// Queries the list of available models for a specified connector. Pagination is supported.
+//
+// @param request - ListConnectorModelsRequest
+//
+// @return ListConnectorModelsResponse
+func (client *Client) ListConnectorModels(workspaceId *string, connectorName *string, request *ListConnectorModelsRequest) (_result *ListConnectorModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConnectorModelsResponse{}
+	_body, _err := client.ListConnectorModelsWithOptions(workspaceId, connectorName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of connectors.
+//
+// Description:
+//
+// Queries the list of connectors in a specified workspace.
+//
+// @param request - ListConnectorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConnectorsResponse
+func (client *Client) ListConnectorsWithOptions(workspaceId *string, request *ListConnectorsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConnectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConnectors"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/connectors"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConnectorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of connectors.
+//
+// Description:
+//
+// Queries the list of connectors in a specified workspace.
+//
+// @param request - ListConnectorsRequest
+//
+// @return ListConnectorsResponse
+func (client *Client) ListConnectors(workspaceId *string, request *ListConnectorsRequest) (_result *ListConnectorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConnectorsResponse{}
+	_body, _err := client.ListConnectorsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries credentials in a specified workspace with paging. Filter by type using credentialType, perform a fuzzy match on credential names using nameLike, specify the maximum number of records per page using maxResults, and retrieve the next page using nextToken. If maxResults is not specified, the server returns 10 records by default.
+//
+// Description:
+//
+// Queries the list of credentials in a workspace with paging. Supports filtering by type and name.
 //
 // @param request - ListCredentialsRequest
 //
@@ -4627,6 +5195,10 @@ func (client *Client) ListCredentialsWithOptions(workspaceId *string, request *L
 
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
 	}
 
 	if !dara.IsNil(request.NameLike) {
@@ -4663,7 +5235,11 @@ func (client *Client) ListCredentialsWithOptions(workspaceId *string, request *L
 
 // Summary:
 //
-// 查询凭证列表
+// Queries credentials in a specified workspace with paging. Filter by type using credentialType, perform a fuzzy match on credential names using nameLike, specify the maximum number of records per page using maxResults, and retrieve the next page using nextToken. If maxResults is not specified, the server returns 10 records by default.
+//
+// Description:
+//
+// Queries the list of credentials in a workspace with paging. Supports filtering by type and name.
 //
 // @param request - ListCredentialsRequest
 //
@@ -4834,7 +5410,7 @@ func (client *Client) ListIdentityProviders(workspaceId *string, request *ListId
 //
 // Description:
 //
-// Queries the list of managed agents in a specified workspace by using paging. Returns summary information for each agent, including the identity, name, status, template, and specifications.
+// Performs a paged query for the list of managed agents in a specified workspace. Returns summary information for each agent, including the identity, name, status, template, and specifications. Use paging parameters to navigate through results.
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -4889,7 +5465,7 @@ func (client *Client) ListManagedAgentsWithOptions(workspaceId *string, request 
 //
 // Description:
 //
-// Queries the list of managed agents in a specified workspace by using paging. Returns summary information for each agent, including the identity, name, status, template, and specifications.
+// Performs a paged query for the list of managed agents in a specified workspace. Returns summary information for each agent, including the identity, name, status, template, and specifications. Use paging parameters to navigate through results.
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -4899,6 +5475,96 @@ func (client *Client) ListManagedAgents(workspaceId *string, request *ListManage
 	headers := make(map[string]*string)
 	_result = &ListManagedAgentsResponse{}
 	_body, _err := client.ListManagedAgentsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries MCP marketplace templates.
+//
+// Description:
+//
+// Queries all online official MCP templates. You can filter results by keyword, usage tag, and MCP type.
+//
+// @param request - ListMcpMarketItemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcpMarketItemsResponse
+func (client *Client) ListMcpMarketItemsWithOptions(workspaceId *string, request *ListMcpMarketItemsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMcpMarketItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.McpType) {
+		query["mcpType"] = request.McpType
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OfficialTag) {
+		query["officialTag"] = request.OfficialTag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMcpMarketItems"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/mcp-market/items"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMcpMarketItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries MCP marketplace templates.
+//
+// Description:
+//
+// Queries all online official MCP templates. You can filter results by keyword, usage tag, and MCP type.
+//
+// @param request - ListMcpMarketItemsRequest
+//
+// @return ListMcpMarketItemsResponse
+func (client *Client) ListMcpMarketItems(workspaceId *string, request *ListMcpMarketItemsRequest) (_result *ListMcpMarketItemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMcpMarketItemsResponse{}
+	_body, _err := client.ListMcpMarketItemsWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5025,8 +5691,16 @@ func (client *Client) ListMcpsWithOptions(workspaceId *string, request *ListMcps
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.OfficialTag) {
+		query["officialTag"] = request.OfficialTag
+	}
+
 	if !dara.IsNil(request.SearchType) {
 		query["searchType"] = request.SearchType
+	}
+
+	if !dara.IsNil(request.UsageActive) {
+		query["usageActive"] = request.UsageActive
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5080,11 +5754,11 @@ func (client *Client) ListMcps(workspaceId *string, request *ListMcpsRequest) (_
 
 // Summary:
 //
-// 查询模型连接列表
+// Queries model connections in a specified workspace with paging. Supports filtering by name, provider type, and invoke protocol.
 //
 // Description:
 //
-// 查询指定 AgentCore 工作空间中的模型连接。支持通过 `Name` 按名称筛选，并通过 `SearchType` 选择精确匹配或模糊匹配；支持按模型提供商类型和调用协议筛选，并支持分页查询。
+// Queries model connections in a specified AgentCore workspace. Supports filtering by name through `Name` and selecting exact match or fuzzy match through `SearchType`. Also supports filtering by model provider type and invoke protocol, and supports paging.
 //
 // @param request - ListModelConnectionsRequest
 //
@@ -5155,11 +5829,11 @@ func (client *Client) ListModelConnectionsWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// 查询模型连接列表
+// Queries model connections in a specified workspace with paging. Supports filtering by name, provider type, and invoke protocol.
 //
 // Description:
 //
-// 查询指定 AgentCore 工作空间中的模型连接。支持通过 `Name` 按名称筛选，并通过 `SearchType` 选择精确匹配或模糊匹配；支持按模型提供商类型和调用协议筛选，并支持分页查询。
+// Queries model connections in a specified AgentCore workspace. Supports filtering by name through `Name` and selecting exact match or fuzzy match through `SearchType`. Also supports filtering by model provider type and invoke protocol, and supports paging.
 //
 // @param request - ListModelConnectionsRequest
 //
@@ -5367,6 +6041,170 @@ func (client *Client) ListPredefinedModels(providerType *string, request *ListPr
 	headers := make(map[string]*string)
 	_result = &ListPredefinedModelsResponse{}
 	_body, _err := client.ListPredefinedModelsWithOptions(providerType, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Sandbox sessions.
+//
+// Description:
+//
+// Queries the list of active sessions in the Sandbox of a specified managed agent.
+//
+// @param request - ListSandboxSessionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSandboxSessionsResponse
+func (client *Client) ListSandboxSessionsWithOptions(workspaceId *string, agentId *string, sandboxId *string, request *ListSandboxSessionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSandboxSessionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSandboxSessions"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/managed-agents/" + dara.PercentEncode(dara.StringValue(agentId)) + "/sandboxes/" + dara.PercentEncode(dara.StringValue(sandboxId)) + "/sessions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSandboxSessionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Sandbox sessions.
+//
+// Description:
+//
+// Queries the list of active sessions in the Sandbox of a specified managed agent.
+//
+// @param request - ListSandboxSessionsRequest
+//
+// @return ListSandboxSessionsResponse
+func (client *Client) ListSandboxSessions(workspaceId *string, agentId *string, sandboxId *string, request *ListSandboxSessionsRequest) (_result *ListSandboxSessionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSandboxSessionsResponse{}
+	_body, _err := client.ListSandboxSessionsWithOptions(workspaceId, agentId, sandboxId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of sandboxes.
+//
+// Description:
+//
+// Queries the sandbox list of a specified managed agent. The searchText parameter performs a fuzzy match on Sandbox ID fragments, and the sessionId parameter performs a fuzzy match on currently active Session ID fragments. Both parameters can be specified simultaneously and are combined with AND logic.
+//
+// @param request - ListSandboxesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSandboxesResponse
+func (client *Client) ListSandboxesWithOptions(workspaceId *string, agentId *string, request *ListSandboxesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSandboxesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchText) {
+		query["searchText"] = request.SearchText
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSandboxes"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/managed-agents/" + dara.PercentEncode(dara.StringValue(agentId)) + "/sandboxes"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSandboxesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of sandboxes.
+//
+// Description:
+//
+// Queries the sandbox list of a specified managed agent. The searchText parameter performs a fuzzy match on Sandbox ID fragments, and the sessionId parameter performs a fuzzy match on currently active Session ID fragments. Both parameters can be specified simultaneously and are combined with AND logic.
+//
+// @param request - ListSandboxesRequest
+//
+// @return ListSandboxesResponse
+func (client *Client) ListSandboxes(workspaceId *string, agentId *string, request *ListSandboxesRequest) (_result *ListSandboxesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSandboxesResponse{}
+	_body, _err := client.ListSandboxesWithOptions(workspaceId, agentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5588,7 +6426,7 @@ func (client *Client) ListSkills(workspaceId *string, request *ListSkillsRequest
 
 // Summary:
 //
-// 查询团队列表
+// Queries teams in a specified workspace by paging. Use nameLike to filter by team name with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. Member information in the list includes only the member identity, name, and team role.
 //
 // @param request - ListTeamsRequest
 //
@@ -5643,7 +6481,7 @@ func (client *Client) ListTeamsWithOptions(workspaceId *string, request *ListTea
 
 // Summary:
 //
-// 查询团队列表
+// Queries teams in a specified workspace by paging. Use nameLike to filter by team name with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. Member information in the list includes only the member identity, name, and team role.
 //
 // @param request - ListTeamsRequest
 //
@@ -5740,11 +6578,11 @@ func (client *Client) ListUsers(workspaceId *string, request *ListUsersRequest) 
 
 // Summary:
 //
-// Queries workspaces under the current tenant with paging. The list does not return soft-deleted records with a status of Deleted by default. Results are stably sorted by creation order on the server side.
+// Queries workspaces under the current tenant by paging. The list does not return soft-deleted records with a status of Deleted by default. Results are stably sorted by creation order on the server side.
 //
 // Description:
 //
-// ## Request description\\nQueries workspaces under the current tenant with paging. The list does not return soft-deleted records with a status of `Deleted` by default. Results are stably sorted by creation order on the server side. Use `nextToken` to retrieve the next page, `skip` to skip a specified number of workspaces, `maxResults` to specify the maximum number of records per page, and `nameLike` to filter workspaces by name using fuzzy match. If `maxResults` is not specified or is set to 0, the server returns 20 records by default.\\n
+// ## Operation description\\nQueries workspaces under the current tenant by paging. The list does not return soft-deleted records with a status of `Deleted` by default. Results are stably sorted by creation order on the server side. Use `nextToken` to retrieve the next page, `skip` to skip a specified number of workspaces, `maxResults` to specify the maximum number of records per paging request, and `nameLike` to filter workspaces by name using fuzzy match. If `maxResults` is not specified or is set to 0, the server returns 20 records by default.\\n
 //
 // @param request - ListWorkspacesRequest
 //
@@ -5799,11 +6637,11 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// Queries workspaces under the current tenant with paging. The list does not return soft-deleted records with a status of Deleted by default. Results are stably sorted by creation order on the server side.
+// Queries workspaces under the current tenant by paging. The list does not return soft-deleted records with a status of Deleted by default. Results are stably sorted by creation order on the server side.
 //
 // Description:
 //
-// ## Request description\\nQueries workspaces under the current tenant with paging. The list does not return soft-deleted records with a status of `Deleted` by default. Results are stably sorted by creation order on the server side. Use `nextToken` to retrieve the next page, `skip` to skip a specified number of workspaces, `maxResults` to specify the maximum number of records per page, and `nameLike` to filter workspaces by name using fuzzy match. If `maxResults` is not specified or is set to 0, the server returns 20 records by default.\\n
+// ## Operation description\\nQueries workspaces under the current tenant by paging. The list does not return soft-deleted records with a status of `Deleted` by default. Results are stably sorted by creation order on the server side. Use `nextToken` to retrieve the next page, `skip` to skip a specified number of workspaces, `maxResults` to specify the maximum number of records per paging request, and `nameLike` to filter workspaces by name using fuzzy match. If `maxResults` is not specified or is set to 0, the server returns 20 records by default.\\n
 //
 // @param request - ListWorkspacesRequest
 //
@@ -6242,7 +7080,7 @@ func (client *Client) RedraftSkillVersion(workspaceId *string, skillName *string
 
 // Summary:
 //
-// 重置用户密码
+// Resets the logon password of a specified user. Specify the user by agentCoreUserId or username. At least one of the two parameters must be specified. Only users who use workspace local password authentication can be reset. If password is not specified, the server generates a random password and returns it in the response.
 //
 // @param tmpReq - ResetUserPasswordRequest
 //
@@ -6295,7 +7133,7 @@ func (client *Client) ResetUserPasswordWithOptions(workspaceId *string, tmpReq *
 
 // Summary:
 //
-// 重置用户密码
+// Resets the logon password of a specified user. Specify the user by agentCoreUserId or username. At least one of the two parameters must be specified. Only users who use workspace local password authentication can be reset. If password is not specified, the server generates a random password and returns it in the response.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -6738,7 +7576,91 @@ func (client *Client) UpdateAgentSpec(workspaceId *string, agentSpecName *string
 
 // Summary:
 //
-// 更新凭证
+// Updates the credentials of a Connector.
+//
+// Description:
+//
+// Updates the sensitive configuration of a specified Connector and aligns the Service Account Key by ID.
+//
+// @param tmpReq - UpdateConnectorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConnectorResponse
+func (client *Client) UpdateConnectorWithOptions(workspaceId *string, connectorName *string, tmpReq *UpdateConnectorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateConnectorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateConnector"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/connectors/" + dara.PercentEncode(dara.StringValue(connectorName)) + "/actions/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the credentials of a Connector.
+//
+// Description:
+//
+// Updates the sensitive configuration of a specified Connector and aligns the Service Account Key by ID.
+//
+// @param request - UpdateConnectorRequest
+//
+// @return UpdateConnectorResponse
+func (client *Client) UpdateConnector(workspaceId *string, connectorName *string, request *UpdateConnectorRequest) (_result *UpdateConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConnectorResponse{}
+	_body, _err := client.UpdateConnectorWithOptions(workspaceId, connectorName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the content or description of a specified credential. At least one of credentialMetadata and description must be specified. Unspecified properties remain unchanged. The credential name and credential type cannot be modified after creation.
+//
+// Description:
+//
+// Updates the metadata or resource scope of a specified credential.
 //
 // @param tmpReq - UpdateCredentialRequest
 //
@@ -6797,7 +7719,11 @@ func (client *Client) UpdateCredentialWithOptions(workspaceId *string, credentia
 
 // Summary:
 //
-// 更新凭证
+// Updates the content or description of a specified credential. At least one of credentialMetadata and description must be specified. Unspecified properties remain unchanged. The credential name and credential type cannot be modified after creation.
+//
+// Description:
+//
+// Updates the metadata or resource scope of a specified credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -6902,7 +7828,7 @@ func (client *Client) UpdateExternalAgent(workspaceId *string, agentId *string, 
 
 // Summary:
 //
-// Updates the login switch, member synchronization switch, or application configuration of a specified external identity provider in a workspace. Unspecified properties remain unchanged. The update is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track progress.
+// Updates the login toggle, member synchronization toggle, or application configuration of a specified external identity provider in a workspace. Unspecified properties remain unchanged. The update is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track progress.
 //
 // @param tmpReq - UpdateIdentityProviderRequest
 //
@@ -6955,7 +7881,7 @@ func (client *Client) UpdateIdentityProviderWithOptions(workspaceId *string, ide
 
 // Summary:
 //
-// Updates the login switch, member synchronization switch, or application configuration of a specified external identity provider in a workspace. Unspecified properties remain unchanged. The update is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track progress.
+// Updates the login toggle, member synchronization toggle, or application configuration of a specified external identity provider in a workspace. Unspecified properties remain unchanged. The update is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track progress.
 //
 // @param request - UpdateIdentityProviderRequest
 //
@@ -7142,7 +8068,105 @@ func (client *Client) UpdateMcp(workspaceId *string, mcpServerId *string, reques
 
 // Summary:
 //
-// Updates the description of a specified model. Other model configurations cannot be modified through this operation.
+// Updates MCP parameters by template.
+//
+// Description:
+//
+// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created. This operation does not upgrade the template version.
+//
+// @param tmpReq - UpdateMcpTemplateConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMcpTemplateConfigResponse
+func (client *Client) UpdateMcpTemplateConfigWithOptions(workspaceId *string, mcpServerId *string, tmpReq *UpdateMcpTemplateConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMcpTemplateConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMcpTemplateConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.TemplateVersion) {
+		query["templateVersion"] = request.TemplateVersion
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMcpTemplateConfig"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/mcp-servers/" + dara.PercentEncode(dara.StringValue(mcpServerId)) + "/template-config"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMcpTemplateConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates MCP parameters by template.
+//
+// Description:
+//
+// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created. This operation does not upgrade the template version.
+//
+// @param request - UpdateMcpTemplateConfigRequest
+//
+// @return UpdateMcpTemplateConfigResponse
+func (client *Client) UpdateMcpTemplateConfig(workspaceId *string, mcpServerId *string, request *UpdateMcpTemplateConfigRequest) (_result *UpdateMcpTemplateConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMcpTemplateConfigResponse{}
+	_body, _err := client.UpdateMcpTemplateConfigWithOptions(workspaceId, mcpServerId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the description, context token limit, maximum output token count, or capability configuration of a specified model.
+//
+// Description:
+//
+// This operation supports updating description, contextSize, maxTokens, and capabilities. At least one non-null parameter must be provided. Parameters that are not provided or set to null retain their original values. The capabilities object is replaced as a whole. Capability fields not included in the object are treated as false.
+//
+// Modifying only description does not refresh the model configuration of associated Agents. When contextSize, maxTokens, or capabilities actually change, the system asynchronously refreshes managed Agents that reference the model within the same workspace, as well as external Agents whose model source is PLATFORM. External Agents whose model source is RUNTIME are not affected. Submitting the same configuration repeatedly does not trigger a new model configuration refresh.
+//
+// A successful response indicates that the model configuration has been saved. It does not indicate that associated Agents have completed the configuration refresh or that the runtime has loaded the new configuration. Call GetModel to query the saved model configuration.
 //
 // @param tmpReq - UpdateModelRequest
 //
@@ -7201,7 +8225,15 @@ func (client *Client) UpdateModelWithOptions(workspaceId *string, modelId *strin
 
 // Summary:
 //
-// Updates the description of a specified model. Other model configurations cannot be modified through this operation.
+// Updates the description, context token limit, maximum output token count, or capability configuration of a specified model.
+//
+// Description:
+//
+// This operation supports updating description, contextSize, maxTokens, and capabilities. At least one non-null parameter must be provided. Parameters that are not provided or set to null retain their original values. The capabilities object is replaced as a whole. Capability fields not included in the object are treated as false.
+//
+// Modifying only description does not refresh the model configuration of associated Agents. When contextSize, maxTokens, or capabilities actually change, the system asynchronously refreshes managed Agents that reference the model within the same workspace, as well as external Agents whose model source is PLATFORM. External Agents whose model source is RUNTIME are not affected. Submitting the same configuration repeatedly does not trigger a new model configuration refresh.
+//
+// A successful response indicates that the model configuration has been saved. It does not indicate that associated Agents have completed the configuration refresh or that the runtime has loaded the new configuration. Call GetModel to query the saved model configuration.
 //
 // @param request - UpdateModelRequest
 //
@@ -7550,7 +8582,7 @@ func (client *Client) UpdateSkillScope(workspaceId *string, skillName *string, r
 
 // Summary:
 //
-// 更新团队
+// Updates the description and members of a specified team. When users or agents are passed in, the corresponding member list is replaced using full overwrite semantics. Member lists that are not passed in remain unchanged. The team name cannot be modified after creation.
 //
 // @param tmpReq - UpdateTeamRequest
 //
@@ -7609,7 +8641,7 @@ func (client *Client) UpdateTeamWithOptions(workspaceId *string, teamId *string,
 
 // Summary:
 //
-// 更新团队
+// Updates the description and members of a specified team. When users or agents are passed in, the corresponding member list is replaced using full overwrite semantics. Member lists that are not passed in remain unchanged. The team name cannot be modified after creation.
 //
 // @param request - UpdateTeamRequest
 //
@@ -7628,7 +8660,7 @@ func (client *Client) UpdateTeam(workspaceId *string, teamId *string, request *U
 
 // Summary:
 //
-// 更新用户
+// Updates the display name, email address, or note of a specified user. At least one of displayName, email, and note must be specified. Unspecified properties remain unchanged. The username cannot be modified after creation.
 //
 // @param tmpReq - UpdateUserRequest
 //
@@ -7687,7 +8719,7 @@ func (client *Client) UpdateUserWithOptions(workspaceId *string, agentCoreUserId
 
 // Summary:
 //
-// 更新用户
+// Updates the display name, email address, or note of a specified user. At least one of displayName, email, and note must be specified. Unspecified properties remain unchanged. The username cannot be modified after creation.
 //
 // @param request - UpdateUserRequest
 //
@@ -7706,11 +8738,11 @@ func (client *Client) UpdateUser(workspaceId *string, agentCoreUserId *string, r
 
 // Summary:
 //
-// Updates the name or network configuration of a workspace. Only workspaces in the Initialized status can be updated. Status, TenantId, and RegionId are maintained by the server and cannot be modified through this operation.
+// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. The Status, TenantId, and RegionId fields are maintained by the server and cannot be modified through this operation.
 //
 // Description:
 //
-// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` status can be updated. `Status`, `TenantId`, and `RegionId` are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide `VpcId` and at least one `VSwitchIds`.\\n.
+// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` state can be updated. `Status`, `TenantId`, and `RegionId` are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide `VpcId` and at least one `VSwitchIds`.\\n.
 //
 // @param tmpReq - UpdateWorkspaceRequest
 //
@@ -7769,11 +8801,11 @@ func (client *Client) UpdateWorkspaceWithOptions(workspaceId *string, tmpReq *Up
 
 // Summary:
 //
-// Updates the name or network configuration of a workspace. Only workspaces in the Initialized status can be updated. Status, TenantId, and RegionId are maintained by the server and cannot be modified through this operation.
+// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. The Status, TenantId, and RegionId fields are maintained by the server and cannot be modified through this operation.
 //
 // Description:
 //
-// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` status can be updated. `Status`, `TenantId`, and `RegionId` are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide `VpcId` and at least one `VSwitchIds`.\\n.
+// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` state can be updated. `Status`, `TenantId`, and `RegionId` are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide `VpcId` and at least one `VSwitchIds`.\\n.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -7951,6 +8983,160 @@ func (client *Client) UploadSkillViaOss(workspaceId *string, request *UploadSkil
 	headers := make(map[string]*string)
 	_result = &UploadSkillViaOssResponse{}
 	_body, _err := client.UploadSkillViaOssWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates the credentials of a Connector.
+//
+// Description:
+//
+// Validates whether the credentials of a specified Connector are valid and returns a list of invalid Service Account Keys.
+//
+// @param tmpReq - VerifyConnectorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyConnectorResponse
+func (client *Client) VerifyConnectorWithOptions(workspaceId *string, connectorName *string, tmpReq *VerifyConnectorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *VerifyConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &VerifyConnectorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyConnector"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/connectors/" + dara.PercentEncode(dara.StringValue(connectorName)) + "/actions/verify"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyConnectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates the credentials of a Connector.
+//
+// Description:
+//
+// Validates whether the credentials of a specified Connector are valid and returns a list of invalid Service Account Keys.
+//
+// @param request - VerifyConnectorRequest
+//
+// @return VerifyConnectorResponse
+func (client *Client) VerifyConnector(workspaceId *string, connectorName *string, request *VerifyConnectorRequest) (_result *VerifyConnectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VerifyConnectorResponse{}
+	_body, _err := client.VerifyConnectorWithOptions(workspaceId, connectorName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the RAM authorization for an OSS mount in a workspace.
+//
+// Description:
+//
+// Queries whether the OSS mount role of a workspace is bound to the custom RAM policy for the target bucket. Returns AUTHORIZED or UNAUTHORIZED. If bucketName is not specified, the existing user-managed OSS binding of the workspace is used and the authorization status is saved. If bucketName is specified, only the authorization status of the specified bucket is queried without modifying the workspace OSS binding. This operation does not verify OSS data plane access permissions or resume workspace initialization tasks.
+//
+// @param request - VerifyWorkspaceOssMountRamAuthorizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyWorkspaceOssMountRamAuthorizationResponse
+func (client *Client) VerifyWorkspaceOssMountRamAuthorizationWithOptions(workspaceId *string, request *VerifyWorkspaceOssMountRamAuthorizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *VerifyWorkspaceOssMountRamAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketName) {
+		query["bucketName"] = request.BucketName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyWorkspaceOssMountRamAuthorization"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/oss-mount/authorize/verify"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyWorkspaceOssMountRamAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the RAM authorization for an OSS mount in a workspace.
+//
+// Description:
+//
+// Queries whether the OSS mount role of a workspace is bound to the custom RAM policy for the target bucket. Returns AUTHORIZED or UNAUTHORIZED. If bucketName is not specified, the existing user-managed OSS binding of the workspace is used and the authorization status is saved. If bucketName is specified, only the authorization status of the specified bucket is queried without modifying the workspace OSS binding. This operation does not verify OSS data plane access permissions or resume workspace initialization tasks.
+//
+// @param request - VerifyWorkspaceOssMountRamAuthorizationRequest
+//
+// @return VerifyWorkspaceOssMountRamAuthorizationResponse
+func (client *Client) VerifyWorkspaceOssMountRamAuthorization(workspaceId *string, request *VerifyWorkspaceOssMountRamAuthorizationRequest) (_result *VerifyWorkspaceOssMountRamAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VerifyWorkspaceOssMountRamAuthorizationResponse{}
+	_body, _err := client.VerifyWorkspaceOssMountRamAuthorizationWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

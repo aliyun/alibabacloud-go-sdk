@@ -50,7 +50,7 @@ type CreateWorkspaceResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,6 +130,36 @@ func (s *CreateWorkspaceResponseBody) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyData struct {
+	// The AI Registry namespace ID. This value is returned after the related resource binding is complete and may be empty during initialization.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// namespace-0123456789abcdef
+	AiRegistryNamespaceId *string `json:"aiRegistryNamespaceId,omitempty" xml:"aiRegistryNamespaceId,omitempty"`
+	// The OSS storage authorization status.
+	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
+	// The name of the private OSS bucket.
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The CloudMonitor workspace ID. This value is returned after the related resource binding is complete and may be empty during initialization.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// cms-ws-0123456789abcdef
+	CmsWorkspaceId *string `json:"cmsWorkspaceId,omitempty" xml:"cmsWorkspaceId,omitempty"`
+	// The time when the workspace was created, in ISO-8601 format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2026-08-28T10:00:00+08:00
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The workspace name.
 	//
 	// example:
@@ -144,12 +174,36 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The ID of the resource group to which the workspace belongs. This value may be empty if no resource group is specified.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// rg-acfm1234567890
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The workspace status.
 	//
 	// example:
 	//
 	// Initialized
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The supplementary reason for the current workspace status. This value is used to display the specific reason when initialization fails or authorization is pending, and may be empty under normal conditions.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// Waiting for OSS RAM authorization
+	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// The storage type of the workspace.
+	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	// The list of workspace tags. An empty array is returned if no tags are set.
+	//
+	// This parameter is required.
+	Tags []*CreateWorkspaceResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The ID of the tenant to which the workspace belongs.
 	//
 	// example:
@@ -172,6 +226,26 @@ func (s CreateWorkspaceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWorkspaceResponseBodyData) GetAiRegistryNamespaceId() *string {
+	return s.AiRegistryNamespaceId
+}
+
+func (s *CreateWorkspaceResponseBodyData) GetAuthorizationStatus() *string {
+	return s.AuthorizationStatus
+}
+
+func (s *CreateWorkspaceResponseBodyData) GetBucketName() *string {
+	return s.BucketName
+}
+
+func (s *CreateWorkspaceResponseBodyData) GetCmsWorkspaceId() *string {
+	return s.CmsWorkspaceId
+}
+
+func (s *CreateWorkspaceResponseBodyData) GetCreateTime() *string {
+	return s.CreateTime
+}
+
 func (s *CreateWorkspaceResponseBodyData) GetName() *string {
 	return s.Name
 }
@@ -184,8 +258,24 @@ func (s *CreateWorkspaceResponseBodyData) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CreateWorkspaceResponseBodyData) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *CreateWorkspaceResponseBodyData) GetStatus() *string {
 	return s.Status
+}
+
+func (s *CreateWorkspaceResponseBodyData) GetStatusReason() *string {
+	return s.StatusReason
+}
+
+func (s *CreateWorkspaceResponseBodyData) GetStorageType() *string {
+	return s.StorageType
+}
+
+func (s *CreateWorkspaceResponseBodyData) GetTags() []*CreateWorkspaceResponseBodyDataTags {
+	return s.Tags
 }
 
 func (s *CreateWorkspaceResponseBodyData) GetTenantId() *string {
@@ -194,6 +284,31 @@ func (s *CreateWorkspaceResponseBodyData) GetTenantId() *string {
 
 func (s *CreateWorkspaceResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetAiRegistryNamespaceId(v string) *CreateWorkspaceResponseBodyData {
+	s.AiRegistryNamespaceId = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetAuthorizationStatus(v string) *CreateWorkspaceResponseBodyData {
+	s.AuthorizationStatus = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetBucketName(v string) *CreateWorkspaceResponseBodyData {
+	s.BucketName = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetCmsWorkspaceId(v string) *CreateWorkspaceResponseBodyData {
+	s.CmsWorkspaceId = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetCreateTime(v string) *CreateWorkspaceResponseBodyData {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *CreateWorkspaceResponseBodyData) SetName(v string) *CreateWorkspaceResponseBodyData {
@@ -211,8 +326,28 @@ func (s *CreateWorkspaceResponseBodyData) SetRegionId(v string) *CreateWorkspace
 	return s
 }
 
+func (s *CreateWorkspaceResponseBodyData) SetResourceGroupId(v string) *CreateWorkspaceResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateWorkspaceResponseBodyData) SetStatus(v string) *CreateWorkspaceResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetStatusReason(v string) *CreateWorkspaceResponseBodyData {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetStorageType(v string) *CreateWorkspaceResponseBodyData {
+	s.StorageType = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyData) SetTags(v []*CreateWorkspaceResponseBodyDataTags) *CreateWorkspaceResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -230,6 +365,15 @@ func (s *CreateWorkspaceResponseBodyData) Validate() error {
 	if s.NetworkConfiguration != nil {
 		if err := s.NetworkConfiguration.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -275,7 +419,7 @@ type CreateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	// The ID of the user VPC.
 	//
 	// example:
 	//
@@ -319,5 +463,54 @@ func (s *CreateWorkspaceResponseBodyDataNetworkConfigurationVpc) SetVpcId(v stri
 }
 
 func (s *CreateWorkspaceResponseBodyDataNetworkConfigurationVpc) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWorkspaceResponseBodyDataTags struct {
+	// The tag key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// environment
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// development
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateWorkspaceResponseBodyDataTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWorkspaceResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkspaceResponseBodyDataTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateWorkspaceResponseBodyDataTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateWorkspaceResponseBodyDataTags) SetKey(v string) *CreateWorkspaceResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyDataTags) SetValue(v string) *CreateWorkspaceResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateWorkspaceResponseBodyDataTags) Validate() error {
 	return dara.Validate(s)
 }

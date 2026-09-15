@@ -70,6 +70,8 @@ type CreateManagedAgentRequestBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment configuration.
 	Environment *CreateManagedAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	// The runtime harness of the managed agent. Valid values: qwenpaw and qodercli.
+	Harness *CreateManagedAgentRequestBodyHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
 	//
 	// example:
@@ -90,6 +92,8 @@ type CreateManagedAgentRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration.
 	Network *CreateManagedAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
+	// The OSS mount list. A maximum of 10 entries are supported.
+	OssMounts []*CreateManagedAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The runtime configuration.
 	//
 	// This parameter is required.
@@ -120,6 +124,10 @@ func (s *CreateManagedAgentRequestBody) GetEnvironment() *CreateManagedAgentRequ
 	return s.Environment
 }
 
+func (s *CreateManagedAgentRequestBody) GetHarness() *CreateManagedAgentRequestBodyHarness {
+	return s.Harness
+}
+
 func (s *CreateManagedAgentRequestBody) GetInstruction() *string {
 	return s.Instruction
 }
@@ -134,6 +142,10 @@ func (s *CreateManagedAgentRequestBody) GetName() *string {
 
 func (s *CreateManagedAgentRequestBody) GetNetwork() *CreateManagedAgentRequestBodyNetwork {
 	return s.Network
+}
+
+func (s *CreateManagedAgentRequestBody) GetOssMounts() []*CreateManagedAgentRequestBodyOssMounts {
+	return s.OssMounts
 }
 
 func (s *CreateManagedAgentRequestBody) GetRuntime() *CreateManagedAgentRequestBodyRuntime {
@@ -166,6 +178,11 @@ func (s *CreateManagedAgentRequestBody) SetEnvironment(v *CreateManagedAgentRequ
 	return s
 }
 
+func (s *CreateManagedAgentRequestBody) SetHarness(v *CreateManagedAgentRequestBodyHarness) *CreateManagedAgentRequestBody {
+	s.Harness = v
+	return s
+}
+
 func (s *CreateManagedAgentRequestBody) SetInstruction(v string) *CreateManagedAgentRequestBody {
 	s.Instruction = &v
 	return s
@@ -183,6 +200,11 @@ func (s *CreateManagedAgentRequestBody) SetName(v string) *CreateManagedAgentReq
 
 func (s *CreateManagedAgentRequestBody) SetNetwork(v *CreateManagedAgentRequestBodyNetwork) *CreateManagedAgentRequestBody {
 	s.Network = v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBody) SetOssMounts(v []*CreateManagedAgentRequestBodyOssMounts) *CreateManagedAgentRequestBody {
+	s.OssMounts = v
 	return s
 }
 
@@ -217,6 +239,11 @@ func (s *CreateManagedAgentRequestBody) Validate() error {
 			return err
 		}
 	}
+	if s.Harness != nil {
+		if err := s.Harness.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Model != nil {
 		if err := s.Model.Validate(); err != nil {
 			return err
@@ -225,6 +252,15 @@ func (s *CreateManagedAgentRequestBody) Validate() error {
 	if s.Network != nil {
 		if err := s.Network.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.OssMounts != nil {
+		for _, item := range s.OssMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.Runtime != nil {
@@ -355,7 +391,7 @@ func (s *CreateManagedAgentRequestBodyEnvironmentCredentialReferences) Validate(
 }
 
 type CreateManagedAgentRequestBodyEnvironmentVariables struct {
-	// The environment variable name.
+	// The name of the environment variable.
 	//
 	// This parameter is required.
 	//
@@ -363,7 +399,7 @@ type CreateManagedAgentRequestBodyEnvironmentVariables struct {
 	//
 	// API_KEY
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The environment variable value.
+	// The value of the environment variable.
 	//
 	// This parameter is required.
 	//
@@ -403,6 +439,97 @@ func (s *CreateManagedAgentRequestBodyEnvironmentVariables) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateManagedAgentRequestBodyHarness struct {
+	// The Connector binding configuration for the qodercli harness.
+	Configuration *CreateManagedAgentRequestBodyHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// The runtime harness type. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is performed based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	//
+	// example:
+	//
+	// qodercli
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateManagedAgentRequestBodyHarness) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentRequestBodyHarness) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentRequestBodyHarness) GetConfiguration() *CreateManagedAgentRequestBodyHarnessConfiguration {
+	return s.Configuration
+}
+
+func (s *CreateManagedAgentRequestBodyHarness) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateManagedAgentRequestBodyHarness) SetConfiguration(v *CreateManagedAgentRequestBodyHarnessConfiguration) *CreateManagedAgentRequestBodyHarness {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyHarness) SetType(v string) *CreateManagedAgentRequestBodyHarness {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyHarness) Validate() error {
+	if s.Configuration != nil {
+		if err := s.Configuration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateManagedAgentRequestBodyHarnessConfiguration struct {
+	// The Key ID used to bind a Service Account Key of the QoderCLI Connector. This parameter is optional when only one key exists, but required when multiple keys exist.
+	//
+	// example:
+	//
+	// key-xxxx
+	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
+	// The Connector Key name that is populated during queries. This parameter is not used as a binding reference during writes.
+	//
+	// example:
+	//
+	// my-connector-key
+	ConnectorServiceAccountName *string `json:"connectorServiceAccountName,omitempty" xml:"connectorServiceAccountName,omitempty"`
+}
+
+func (s CreateManagedAgentRequestBodyHarnessConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentRequestBodyHarnessConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentRequestBodyHarnessConfiguration) GetConnectorServiceAccountKey() *string {
+	return s.ConnectorServiceAccountKey
+}
+
+func (s *CreateManagedAgentRequestBodyHarnessConfiguration) GetConnectorServiceAccountName() *string {
+	return s.ConnectorServiceAccountName
+}
+
+func (s *CreateManagedAgentRequestBodyHarnessConfiguration) SetConnectorServiceAccountKey(v string) *CreateManagedAgentRequestBodyHarnessConfiguration {
+	s.ConnectorServiceAccountKey = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyHarnessConfiguration) SetConnectorServiceAccountName(v string) *CreateManagedAgentRequestBodyHarnessConfiguration {
+	s.ConnectorServiceAccountName = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyHarnessConfiguration) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateManagedAgentRequestBodyModel struct {
 	// The model connection ID.
 	//
@@ -413,8 +540,6 @@ type CreateManagedAgentRequestBodyModel struct {
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
 	// The upstream model name.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -500,9 +625,7 @@ func (s *CreateManagedAgentRequestBodyNetwork) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyNetworkAccessInternet struct {
-	// Specifies whether to allow access to the Internet.
-	//
-	// This parameter is required.
+	// Specifies whether to allow public network access.
 	//
 	// example:
 	//
@@ -532,9 +655,7 @@ func (s *CreateManagedAgentRequestBodyNetworkAccessInternet) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyNetworkAccessVpc struct {
-	// Specifies whether to allow access to the VPC.
-	//
-	// This parameter is required.
+	// Specifies whether to allow VPC access.
 	//
 	// example:
 	//
@@ -563,11 +684,72 @@ func (s *CreateManagedAgentRequestBodyNetworkAccessVpc) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateManagedAgentRequestBodyOssMounts struct {
+	// The OSS bucket name. This parameter is required for each mount entry as validated by the backend.
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The absolute mount path in the container. This parameter is required for each mount entry as validated by the backend.
+	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
+	// The relative object prefix in the bucket. If this parameter is not specified, the entire bucket is mounted.
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// Specifies whether to mount as read-only. Default value: false.
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+}
+
+func (s CreateManagedAgentRequestBodyOssMounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentRequestBodyOssMounts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) GetBucketName() *string {
+	return s.BucketName
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) GetPath() *string {
+	return s.Path
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) GetReadOnly() *bool {
+	return s.ReadOnly
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) SetBucketName(v string) *CreateManagedAgentRequestBodyOssMounts {
+	s.BucketName = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) SetMountPath(v string) *CreateManagedAgentRequestBodyOssMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) SetPath(v string) *CreateManagedAgentRequestBodyOssMounts {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) SetReadOnly(v bool) *CreateManagedAgentRequestBodyOssMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyOssMounts) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateManagedAgentRequestBodyRuntime struct {
 	// The compute configuration.
 	//
 	// This parameter is required.
 	Compute *CreateManagedAgentRequestBodyRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
+	// The Sandbox auto-scaling and session configuration.
+	Hpa *CreateManagedAgentRequestBodyRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
 	// The session policy configuration.
 	//
 	// This parameter is required.
@@ -586,12 +768,21 @@ func (s *CreateManagedAgentRequestBodyRuntime) GetCompute() *CreateManagedAgentR
 	return s.Compute
 }
 
+func (s *CreateManagedAgentRequestBodyRuntime) GetHpa() *CreateManagedAgentRequestBodyRuntimeHpa {
+	return s.Hpa
+}
+
 func (s *CreateManagedAgentRequestBodyRuntime) GetSessionPolicy() *CreateManagedAgentRequestBodyRuntimeSessionPolicy {
 	return s.SessionPolicy
 }
 
 func (s *CreateManagedAgentRequestBodyRuntime) SetCompute(v *CreateManagedAgentRequestBodyRuntimeCompute) *CreateManagedAgentRequestBodyRuntime {
 	s.Compute = v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyRuntime) SetHpa(v *CreateManagedAgentRequestBodyRuntimeHpa) *CreateManagedAgentRequestBodyRuntime {
+	s.Hpa = v
 	return s
 }
 
@@ -603,6 +794,11 @@ func (s *CreateManagedAgentRequestBodyRuntime) SetSessionPolicy(v *CreateManaged
 func (s *CreateManagedAgentRequestBodyRuntime) Validate() error {
 	if s.Compute != nil {
 		if err := s.Compute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hpa != nil {
+		if err := s.Hpa.Validate(); err != nil {
 			return err
 		}
 	}
@@ -646,8 +842,78 @@ func (s *CreateManagedAgentRequestBodyRuntimeCompute) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateManagedAgentRequestBodyRuntimeHpa struct {
+	// Specifies whether to enable auto-scaling. This parameter is required when hpa is present as validated by the backend.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The maximum number of active sessions per Sandbox. This parameter is required when hpa is present as validated by the backend.
+	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
+	// The maximum number of Sandboxes. This parameter is required when HPA is enabled and must be no less than the minimum value.
+	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
+	// The minimum number of Sandboxes. This parameter is required when HPA is enabled.
+	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
+	// The session reclamation time after inactivity, in seconds. This parameter is required when hpa is present as validated by the backend.
+	SessionTtlSeconds *int32 `json:"sessionTtlSeconds,omitempty" xml:"sessionTtlSeconds,omitempty"`
+}
+
+func (s CreateManagedAgentRequestBodyRuntimeHpa) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentRequestBodyRuntimeHpa) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) GetMaxConcurrentSessionsPerSandbox() *int32 {
+	return s.MaxConcurrentSessionsPerSandbox
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) GetMaxSandboxCount() *int32 {
+	return s.MaxSandboxCount
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) GetMinSandboxCount() *int32 {
+	return s.MinSandboxCount
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) GetSessionTtlSeconds() *int32 {
+	return s.SessionTtlSeconds
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) SetEnabled(v bool) *CreateManagedAgentRequestBodyRuntimeHpa {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) SetMaxConcurrentSessionsPerSandbox(v int32) *CreateManagedAgentRequestBodyRuntimeHpa {
+	s.MaxConcurrentSessionsPerSandbox = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) SetMaxSandboxCount(v int32) *CreateManagedAgentRequestBodyRuntimeHpa {
+	s.MaxSandboxCount = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) SetMinSandboxCount(v int32) *CreateManagedAgentRequestBodyRuntimeHpa {
+	s.MinSandboxCount = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) SetSessionTtlSeconds(v int32) *CreateManagedAgentRequestBodyRuntimeHpa {
+	s.SessionTtlSeconds = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBodyRuntimeHpa) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateManagedAgentRequestBodyRuntimeSessionPolicy struct {
-	// The HTTP header name used for session affinity. This parameter takes effect only when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+	// The HTTP header name used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
 	//
 	// example:
 	//
@@ -747,7 +1013,7 @@ type CreateManagedAgentRequestBodySubAgents struct {
 	//
 	// example:
 	//
-	// Please review the code
+	// Review the code
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The sub-agent name.
 	//
@@ -830,6 +1096,8 @@ type CreateManagedAgentRequestBodyTemplateAiRegistry struct {
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The version of the template in the AI registry.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

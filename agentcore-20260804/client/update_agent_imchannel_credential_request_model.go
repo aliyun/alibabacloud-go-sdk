@@ -18,7 +18,7 @@ type iUpdateAgentIMChannelCredentialRequest interface {
 type UpdateAgentIMChannelCredentialRequest struct {
 	// The request body.
 	Body *UpdateAgentIMChannelCredentialRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// A reserved idempotency token. The backend does not provide persistent idempotence guarantee in the current version.
+	// Reserved idempotency token. The backend does not provide persistent idempotence guarantees in the current version.
 	//
 	// example:
 	//

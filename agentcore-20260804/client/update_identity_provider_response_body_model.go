@@ -38,7 +38,7 @@ type UpdateIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned if the request failed.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type UpdateIdentityProviderResponseBodyData struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+	// Specifies whether to enable organization member synchronization. When enabled, the external identity provider synchronizes organization members as workspace users.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
 	// The workspace ID.
 	//

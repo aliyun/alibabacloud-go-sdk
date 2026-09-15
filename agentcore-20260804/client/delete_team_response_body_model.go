@@ -24,24 +24,34 @@ type iDeleteTeamResponseBody interface {
 }
 
 type DeleteTeamResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The information about the deleted team.
 	Data *DeleteTeamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message. An error description is returned if the request failed.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteTeamResponseBody) String() string {
@@ -116,18 +126,38 @@ func (s *DeleteTeamResponseBody) Validate() error {
 }
 
 type DeleteTeamResponseBodyData struct {
+	// The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit and must be 1 to 128 characters in length.
+	//
 	// example:
 	//
 	// team-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The team status. Valid values:
+	//
+	// - Creating
+	//
+	// - Active
+	//
+	// - Updating
+	//
+	// - Deleting
+	//
+	// - Failed
+	//
+	// - Deleted
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The team ID.
+	//
 	// example:
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456

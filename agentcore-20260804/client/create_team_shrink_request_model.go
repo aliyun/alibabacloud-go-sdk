@@ -16,10 +16,13 @@ type iCreateTeamShrinkRequest interface {
 }
 
 type CreateTeamShrinkRequest struct {
+	// The request body for creating a team.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 

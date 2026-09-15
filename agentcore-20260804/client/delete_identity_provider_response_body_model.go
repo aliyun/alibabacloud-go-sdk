@@ -30,7 +30,7 @@ type DeleteIdentityProviderResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The binding information of the external identity provider after the unbinding operation is accepted.
+	// The binding information of the external identity provider after the unbinding request is accepted.
 	Data *DeleteIdentityProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type DeleteIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned if the request failed.
 	//
 	// example:
 	//
@@ -126,7 +126,11 @@ func (s *DeleteIdentityProviderResponseBody) Validate() error {
 }
 
 type DeleteIdentityProviderResponseBodyData struct {
-	// The type of the external identity provider. Valid values: DingTalk, Feishu.
+	// The type of the external identity provider. Valid values:
+	//
+	// - DingTalk
+	//
+	// - Feishu
 	//
 	// example:
 	//
@@ -146,9 +150,9 @@ type DeleteIdentityProviderResponseBodyData struct {
 	//
 	// - UPDATING: The configuration is being updated.
 	//
-	// - UPDATE_FAILED: Configuration update failed.
+	// - UPDATE_FAILED: The configuration update failed.
 	//
-	// - DISCONNECTING: The unbinding is in progress.
+	// - DISCONNECTING: The identity provider is being unbound.
 	//
 	// - DISCONNECT_FAILED: The unbinding failed.
 	//

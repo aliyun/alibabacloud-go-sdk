@@ -30,32 +30,48 @@ type iListModelConnectionsResponseBody interface {
 }
 
 type ListModelConnectionsResponseBody struct {
+	// The business status code. A value of SUCCESS indicates success.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                   `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Items          []*ListModelConnectionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The list of model connections.
+	Items []*ListModelConnectionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The number of records per page. Valid values: 0 to 100. If this parameter is not set or is set to 0, the default value 10 is used.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The request processing result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token. Pass the token returned in the previous query. An empty response indicates that no more pages are available.
+	//
 	// example:
 	//
 	// bW9kZWwtbWFuYWdlbWVudC1vZmZzZXQ6bW9kZWwtY29ubmVjdGlvbjoxMA
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of resources that match the query conditions.
+	//
 	// example:
 	//
 	// 1
@@ -165,52 +181,78 @@ func (s *ListModelConnectionsResponseBody) Validate() error {
 }
 
 type ListModelConnectionsResponseBodyItems struct {
+	// The number of API keys configured for the model connection.
+	//
 	// example:
 	//
 	// 1
 	ApiKeyCount *int32 `json:"apiKeyCount,omitempty" xml:"apiKeyCount,omitempty"`
+	// The model connection ID.
+	//
 	// example:
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
+	// The time when the resource was created, in RFC 3339 UTC format.
+	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
-	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CredentialConfigured *bool   `json:"credentialConfigured,omitempty" xml:"credentialConfigured,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Indicates whether access credentials have been configured for the model connection.
+	CredentialConfigured *bool `json:"credentialConfigured,omitempty" xml:"credentialConfigured,omitempty"`
+	// The description of the model connection. Maximum length: 255 characters.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The absolute HTTP or HTTPS address of the upstream model service. Maximum length: 1024 characters.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
-	Endpoint *string                                        `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Models   []*ListModelConnectionsResponseBodyItemsModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The list of model summaries associated with the model connection.
+	Models []*ListModelConnectionsResponseBodyItemsModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	// The model connection name. The name must be 1 to 128 non-whitespace characters in length.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The model invocation protocol. Currently only OpenAI/v1 is supported. If not configured in Settings when the model connection is created, this default value is used.
+	//
 	// example:
 	//
 	// OpenAI/v1
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The model provider type.
+	//
 	// example:
 	//
 	// qwen
 	ProviderType *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The failure summary returned when the model connection fails to be published or fails to be deleted but remains in the Deleting state. This value is empty for other states.
+	//
 	// example:
 	//
 	// GatewayOperationException
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// The time when the resource was last updated, in RFC 3339 UTC format.
+	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-1
@@ -365,10 +407,14 @@ func (s *ListModelConnectionsResponseBodyItems) Validate() error {
 }
 
 type ListModelConnectionsResponseBodyItemsModels struct {
+	// The model ID.
+	//
 	// example:
 	//
 	// model-1
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The upstream model name.
+	//
 	// example:
 	//
 	// qwen-max

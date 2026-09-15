@@ -24,7 +24,7 @@ type iUpdateExternalAgentResponseBody interface {
 }
 
 type UpdateExternalAgentResponseBody struct {
-	// The business status code. A value of SUCCESS indicates success.
+	// The business status code. The value is SUCCESS when the request succeeds.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type UpdateExternalAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The details of the updated external agent.
 	Data *UpdateExternalAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. A value of 200 indicates success.
+	// The HTTP status code. The value is 200 when the request succeeds.
 	//
 	// example:
 	//
@@ -156,14 +156,6 @@ type UpdateExternalAgentResponseBodyData struct {
 	//
 	// A code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The runtime result corresponding to the currently effective specification.
-	EffectiveResult *UpdateExternalAgentResponseBodyDataEffectiveResult `json:"effectiveResult,omitempty" xml:"effectiveResult,omitempty" type:"Struct"`
-	// The currently effective specification version number.
-	//
-	// example:
-	//
-	// 1
-	EffectiveSpecVersion *int64 `json:"effectiveSpecVersion,omitempty" xml:"effectiveSpecVersion,omitempty"`
 	// The runtime status information reported by the external agent.
 	ExternalAgentStatus *UpdateExternalAgentResponseBodyDataExternalAgentStatus `json:"externalAgentStatus,omitempty" xml:"externalAgentStatus,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
@@ -180,9 +172,9 @@ type UpdateExternalAgentResponseBodyData struct {
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
 	// The processing status of the latest specification version. Valid values:
 	//
-	// - pending: Pending processing.
+	// - pending: Pending.
 	//
-	// - processing: Being processed.
+	// - processing: Processing.
 	//
 	// - waiting_retry: Waiting for retry.
 	//
@@ -196,13 +188,13 @@ type UpdateExternalAgentResponseBodyData struct {
 	//
 	// pending
 	LatestVersionStatus *string `json:"latestVersionStatus,omitempty" xml:"latestVersionStatus,omitempty"`
-	// The model configuration. This parameter is available only when modelSource is set to PLATFORM.
+	// The model configuration. Available only when modelSource is set to PLATFORM.
 	Model *UpdateExternalAgentResponseBodyDataModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
 	// The source of the model configuration. Valid values:
 	//
-	// - PLATFORM: The model configuration is parsed and distributed by the platform. You can specify the model parameter.
+	// - PLATFORM: The platform parses and delivers the model configuration.
 	//
-	// - RUNTIME: The model is managed by the external runtime. You cannot specify the model parameter at the same time.
+	// - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
 	//
 	// example:
 	//
@@ -228,19 +220,19 @@ type UpdateExternalAgentResponseBodyData struct {
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The list of skill configurations.
 	Skills []*UpdateExternalAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
-	// The status of the external agent. Valid values:
+	// The external agent status. Valid values:
 	//
-	// - Creating: The agent is being created.
+	// - Creating: Being created.
 	//
-	// - Running: The agent is running.
+	// - Running: Running.
 	//
-	// - Failed: The agent has failed.
+	// - Failed: Failed.
 	//
-	// - Updating: The agent is being updated.
+	// - Updating: Being updated.
 	//
-	// - Deleting: The agent is being deleted.
+	// - Deleting: Being deleted.
 	//
-	// - Deleted: The agent has been deleted.
+	// - Deleted: Deleted.
 	//
 	// example:
 	//
@@ -290,14 +282,6 @@ func (s *UpdateExternalAgentResponseBodyData) GetDeployType() *string {
 
 func (s *UpdateExternalAgentResponseBodyData) GetDescription() *string {
 	return s.Description
-}
-
-func (s *UpdateExternalAgentResponseBodyData) GetEffectiveResult() *UpdateExternalAgentResponseBodyDataEffectiveResult {
-	return s.EffectiveResult
-}
-
-func (s *UpdateExternalAgentResponseBodyData) GetEffectiveSpecVersion() *int64 {
-	return s.EffectiveSpecVersion
 }
 
 func (s *UpdateExternalAgentResponseBodyData) GetExternalAgentStatus() *UpdateExternalAgentResponseBodyDataExternalAgentStatus {
@@ -385,16 +369,6 @@ func (s *UpdateExternalAgentResponseBodyData) SetDescription(v string) *UpdateEx
 	return s
 }
 
-func (s *UpdateExternalAgentResponseBodyData) SetEffectiveResult(v *UpdateExternalAgentResponseBodyDataEffectiveResult) *UpdateExternalAgentResponseBodyData {
-	s.EffectiveResult = v
-	return s
-}
-
-func (s *UpdateExternalAgentResponseBodyData) SetEffectiveSpecVersion(v int64) *UpdateExternalAgentResponseBodyData {
-	s.EffectiveSpecVersion = &v
-	return s
-}
-
 func (s *UpdateExternalAgentResponseBodyData) SetExternalAgentStatus(v *UpdateExternalAgentResponseBodyDataExternalAgentStatus) *UpdateExternalAgentResponseBodyData {
 	s.ExternalAgentStatus = v
 	return s
@@ -471,11 +445,6 @@ func (s *UpdateExternalAgentResponseBodyData) SetWorkspaceId(v string) *UpdateEx
 }
 
 func (s *UpdateExternalAgentResponseBodyData) Validate() error {
-	if s.EffectiveResult != nil {
-		if err := s.EffectiveResult.Validate(); err != nil {
-			return err
-		}
-	}
 	if s.ExternalAgentStatus != nil {
 		if err := s.ExternalAgentStatus.Validate(); err != nil {
 			return err
@@ -512,111 +481,6 @@ func (s *UpdateExternalAgentResponseBodyData) Validate() error {
 	return nil
 }
 
-type UpdateExternalAgentResponseBodyDataEffectiveResult struct {
-	// The user ID of the agent in Matrix.
-	//
-	// example:
-	//
-	// @agent-1:matrix.example.com
-	MatrixUserId *string `json:"matrixUserId,omitempty" xml:"matrixUserId,omitempty"`
-	// The Matrix personal room ID of the agent.
-	//
-	// example:
-	//
-	// !room:matrix.example.com
-	PersonalRoomId *string `json:"personalRoomId,omitempty" xml:"personalRoomId,omitempty"`
-	// The acceptance status of the runtime for the current request version.
-	//
-	// example:
-	//
-	// ACCEPTED
-	RuntimeAcceptStatus *string `json:"runtimeAcceptStatus,omitempty" xml:"runtimeAcceptStatus,omitempty"`
-	// The runtime instance ID.
-	//
-	// example:
-	//
-	// runtime-123
-	RuntimeId *string `json:"runtimeId,omitempty" xml:"runtimeId,omitempty"`
-	// The runtime request version number.
-	//
-	// example:
-	//
-	// 5
-	RuntimeRequestVersion *int64 `json:"runtimeRequestVersion,omitempty" xml:"runtimeRequestVersion,omitempty"`
-	// The storage prefix of the agent in the workspace.
-	//
-	// example:
-	//
-	// agents/agent-1
-	WorkspacePrefix *string `json:"workspacePrefix,omitempty" xml:"workspacePrefix,omitempty"`
-}
-
-func (s UpdateExternalAgentResponseBodyDataEffectiveResult) String() string {
-	return dara.Prettify(s)
-}
-
-func (s UpdateExternalAgentResponseBodyDataEffectiveResult) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) GetMatrixUserId() *string {
-	return s.MatrixUserId
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) GetPersonalRoomId() *string {
-	return s.PersonalRoomId
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) GetRuntimeAcceptStatus() *string {
-	return s.RuntimeAcceptStatus
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) GetRuntimeId() *string {
-	return s.RuntimeId
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) GetRuntimeRequestVersion() *int64 {
-	return s.RuntimeRequestVersion
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) GetWorkspacePrefix() *string {
-	return s.WorkspacePrefix
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) SetMatrixUserId(v string) *UpdateExternalAgentResponseBodyDataEffectiveResult {
-	s.MatrixUserId = &v
-	return s
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) SetPersonalRoomId(v string) *UpdateExternalAgentResponseBodyDataEffectiveResult {
-	s.PersonalRoomId = &v
-	return s
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) SetRuntimeAcceptStatus(v string) *UpdateExternalAgentResponseBodyDataEffectiveResult {
-	s.RuntimeAcceptStatus = &v
-	return s
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) SetRuntimeId(v string) *UpdateExternalAgentResponseBodyDataEffectiveResult {
-	s.RuntimeId = &v
-	return s
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) SetRuntimeRequestVersion(v int64) *UpdateExternalAgentResponseBodyDataEffectiveResult {
-	s.RuntimeRequestVersion = &v
-	return s
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) SetWorkspacePrefix(v string) *UpdateExternalAgentResponseBodyDataEffectiveResult {
-	s.WorkspacePrefix = &v
-	return s
-}
-
-func (s *UpdateExternalAgentResponseBodyDataEffectiveResult) Validate() error {
-	return dara.Validate(s)
-}
-
 type UpdateExternalAgentResponseBodyDataExternalAgentStatus struct {
 	// The heartbeat status. ONLINE indicates that the most recent heartbeat has not exceeded the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or has an invalid format. Valid values:
 	//
@@ -630,13 +494,13 @@ type UpdateExternalAgentResponseBodyDataExternalAgentStatus struct {
 	//
 	// ONLINE
 	HeartbeatStatus *string `json:"heartbeatStatus,omitempty" xml:"heartbeatStatus,omitempty"`
-	// The time when the external agent was last active in RFC 3339 format.
+	// The last active time of the external agent in RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	LastActiveAt *string `json:"lastActiveAt,omitempty" xml:"lastActiveAt,omitempty"`
-	// The time of the most recent heartbeat from the external agent in RFC 3339 format.
+	// The last heartbeat time of the external agent in RFC 3339 format.
 	//
 	// example:
 	//
@@ -850,6 +714,8 @@ type UpdateExternalAgentResponseBodyDataTemplateAiRegistry struct {
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The version of the template in AI Registry.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

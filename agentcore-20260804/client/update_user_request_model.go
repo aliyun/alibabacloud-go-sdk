@@ -16,10 +16,13 @@ type iUpdateUserRequest interface {
 }
 
 type UpdateUserRequest struct {
+	// The request body for updating a user.
 	Body *UpdateUserRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -59,17 +62,23 @@ func (s *UpdateUserRequest) Validate() error {
 }
 
 type UpdateUserRequestBody struct {
+	// The display name of the user. The name must be 1 to 32 characters in length. At least one of displayName, email, and note must be specified.
+	//
 	// example:
 	//
-	// 张三
+	// John
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user. The address can be up to 256 characters in length.
+	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The note for the user. The note can be up to 1,024 characters in length.
+	//
 	// example:
 	//
-	// 智能体运营组成员
+	// Agent operations team member
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
 }
 

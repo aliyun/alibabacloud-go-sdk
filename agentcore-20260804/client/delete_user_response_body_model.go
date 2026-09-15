@@ -24,24 +24,34 @@ type iDeleteUserResponseBody interface {
 }
 
 type DeleteUserResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The information about the deleted user.
 	Data *DeleteUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteUserResponseBody) String() string {
@@ -116,14 +126,20 @@ func (s *DeleteUserResponseBody) Validate() error {
 }
 
 type DeleteUserResponseBodyData struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
+	// The username. The username must be unique within the workspace. It can contain only lowercase letters, digits, and hyphens (-), and must start and end with a lowercase letter or digit. The username must be 1 to 32 characters in length.
+	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456

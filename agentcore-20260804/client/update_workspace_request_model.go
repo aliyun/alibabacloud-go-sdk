@@ -68,7 +68,7 @@ type UpdateWorkspaceRequestBody struct {
 	//
 	// production-agents-v2
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The updated workspace network configuration.
+	// The updated network configuration of the workspace.
 	NetworkConfiguration *UpdateWorkspaceRequestBodyNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
 }
 
@@ -108,7 +108,7 @@ func (s *UpdateWorkspaceRequestBody) Validate() error {
 }
 
 type UpdateWorkspaceRequestBodyNetworkConfiguration struct {
-	// The user VPC network configuration.
+	// The VPC network configuration.
 	//
 	// This parameter is required.
 	Vpc *UpdateWorkspaceRequestBodyNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
@@ -147,9 +147,9 @@ type UpdateWorkspaceRequestBodyNetworkConfigurationVpc struct {
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
+	// The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be specified, and all vSwitches must belong to the VPC specified by VpcId.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the user VPC.
+	// The VPC ID.
 	//
 	// example:
 	//

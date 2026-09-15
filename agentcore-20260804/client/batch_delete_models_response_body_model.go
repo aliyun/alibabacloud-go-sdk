@@ -24,24 +24,34 @@ type iBatchDeleteModelsResponseBody interface {
 }
 
 type BatchDeleteModelsResponseBody struct {
+	// The business status code. The value SUCCESS indicates success.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The batch deletion result.
 	Data *BatchDeleteModelsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code. The value 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request processing result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s BatchDeleteModelsResponseBody) String() string {
@@ -116,7 +126,10 @@ func (s *BatchDeleteModelsResponseBody) Validate() error {
 }
 
 type BatchDeleteModelsResponseBodyData struct {
+	// The list of model IDs.
 	ModelIds []*string `json:"modelIds,omitempty" xml:"modelIds,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-1

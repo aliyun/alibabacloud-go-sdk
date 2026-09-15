@@ -14,6 +14,7 @@ type iDebugModelShrinkRequest interface {
 }
 
 type DebugModelShrinkRequest struct {
+	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

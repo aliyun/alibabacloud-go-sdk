@@ -16,10 +16,13 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
+	// The request body for creating a user.
 	Body *CreateUserRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -59,26 +62,36 @@ func (s *CreateUserRequest) Validate() error {
 }
 
 type CreateUserRequestBody struct {
+	// The display name of the user. The display name must be 1 to 32 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 张三
+	// John Smith
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user. The email address can be up to 256 characters in length.
+	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or digit and be 1 to 32 characters in length. Reserved names such as manager, admin, or names starting with worker- cannot be used.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The remarks of the user. The remarks can be up to 1024 characters in length.
+	//
 	// example:
 	//
-	// 智能体运营组成员
+	// Member of the agent operations team
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
+	// The initial password of the user. The password must be 8 to 32 characters in length and contain uppercase letters, lowercase letters, digits, and special characters. The password cannot contain the username. If this parameter is not specified, the server generates a random password and returns it in the initialPassword field of the response.
+	//
 	// example:
 	//
 	// Example@2026

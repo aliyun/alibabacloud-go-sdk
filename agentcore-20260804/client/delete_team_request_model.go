@@ -14,9 +14,11 @@ type iDeleteTeamRequest interface {
 }
 
 type DeleteTeamRequest struct {
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 

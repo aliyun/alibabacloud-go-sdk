@@ -16,7 +16,10 @@ type iCreateModelConnectionRequest interface {
 }
 
 type CreateModelConnectionRequest struct {
+	// The request body.
 	Body *CreateModelConnectionRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// The client token used for idempotence. Not supported.
+	//
 	// example:
 	//
 	// client-token-1
@@ -59,28 +62,40 @@ func (s *CreateModelConnectionRequest) Validate() error {
 }
 
 type CreateModelConnectionRequestBody struct {
+	// The list of API keys used to access the upstream model service. The list must contain at least one non-empty value.
+	//
 	// This parameter is required.
 	ApiKeys []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	// The description of the model connection. The description can be up to 255 characters in length.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The absolute HTTP or HTTPS address of the upstream model service. The address can be up to 1024 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The model connection name. The name must be 1 to 128 non-whitespace characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The model invoke protocol. Currently, only OpenAI/v1 is supported. If this parameter is not configured in Settings during model creation, this default value is used.
+	//
 	// example:
 	//
 	// OpenAI/v1
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The model provider type.
+	//
 	// This parameter is required.
 	//
 	// example:

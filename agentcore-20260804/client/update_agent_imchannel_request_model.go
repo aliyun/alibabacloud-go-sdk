@@ -18,7 +18,7 @@ type iUpdateAgentIMChannelRequest interface {
 type UpdateAgentIMChannelRequest struct {
 	// The request body.
 	Body *UpdateAgentIMChannelRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not provide persistent idempotency guarantees in this phase.
+	// The reserved idempotency token. The backend does not provide persistent idempotency guarantees in the current phase.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *UpdateAgentIMChannelRequest) Validate() error {
 }
 
 type UpdateAgentIMChannelRequestBody struct {
-	// The channel behavior configuration. When provided, the entire configuration is replaced. An empty object restores default values.
+	// The channel behavior configuration. When specified, the entire configuration is replaced. An empty object restores default values.
 	ChannelConfig *UpdateAgentIMChannelRequestBodyChannelConfig `json:"channelConfig,omitempty" xml:"channelConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable the IM channel. Default value: true (when created).
+	// Specifies whether to enable the IM channel. Default value upon creation: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint address.
+	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint.
 	//
 	// example:
 	//

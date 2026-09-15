@@ -38,7 +38,7 @@ type UpdateAgentIMChannelResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type UpdateAgentIMChannelResponseBodyData struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The channel credential summary. Only non-sensitive fields and the names of configured secret fields are returned. Secret values are not returned.
 	CredentialSummary *UpdateAgentIMChannelResponseBodyDataCredentialSummary `json:"credentialSummary,omitempty" xml:"credentialSummary,omitempty" type:"Struct"`
-	// Specifies whether to enable the IM channel. Default value: true (when created).
+	// Specifies whether to enable the IM channel. Default value upon creation: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The public network access URL of the attached ServiceEndpoint.
 	//
@@ -168,7 +168,7 @@ type UpdateAgentIMChannelResponseBodyData struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint address.
+	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type UpdateAgentIMChannelResponseBodyData struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the current status of the IM channel.
+	// The reason for the current IM channel status.
 	//
 	// example:
 	//

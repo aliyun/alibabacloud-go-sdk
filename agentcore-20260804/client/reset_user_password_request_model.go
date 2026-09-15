@@ -14,6 +14,7 @@ type iResetUserPasswordRequest interface {
 }
 
 type ResetUserPasswordRequest struct {
+	// The request body for resetting the user password.
 	Body *ResetUserPasswordRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 
@@ -44,14 +45,20 @@ func (s *ResetUserPasswordRequest) Validate() error {
 }
 
 type ResetUserPasswordRequestBody struct {
+	// The user ID. At least one of agentCoreUserId and username must be specified. If both are specified, agentCoreUserId takes precedence.
+	//
 	// example:
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
+	// The new password after the reset. The password must be 8 to 32 characters in length and must contain uppercase letters, lowercase letters, digits, and special characters. The password cannot contain the username. If this parameter is not specified, the server generates a random password.
+	//
 	// example:
 	//
 	// Example@2026
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The username. At least one of username and agentCoreUserId must be specified.
+	//
 	// example:
 	//
 	// user-01

@@ -24,24 +24,34 @@ type iUpdateCredentialResponseBody interface {
 }
 
 type UpdateCredentialResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The updated credential information.
 	Data *UpdateCredentialResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateCredentialResponseBody) String() string {
@@ -116,38 +126,64 @@ func (s *UpdateCredentialResponseBody) Validate() error {
 }
 
 type UpdateCredentialResponseBodyData struct {
+	// The creation time in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The credential ID.
+	//
 	// example:
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// The masked credential content. If credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+	//
 	// example:
 	//
 	// {"apiKey":"****************"}
 	CredentialMetadata *string `json:"credentialMetadata,omitempty" xml:"credentialMetadata,omitempty"`
+	// The credential type. Currently, only apiKey is supported.
+	//
 	// example:
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
+	// The credential description. The description can be up to 256 characters in length.
+	//
 	// example:
 	//
-	// 线上环境调用模型服务使用的 API Key
+	// API Key used for calling model services in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	//
 	// example:
 	//
 	// model-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Each item contains resourceType, resourceId, and resourceName. resourceName is empty if the resource has been deleted.
+	ResourceRefs []*UpdateCredentialResponseBodyDataResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
+	// The credential resource scope.
+	//
+	// example:
+	//
+	// ALL
+	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
+	// The time of the last modification in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456
@@ -188,6 +224,14 @@ func (s *UpdateCredentialResponseBodyData) GetName() *string {
 
 func (s *UpdateCredentialResponseBodyData) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *UpdateCredentialResponseBodyData) GetResourceRefs() []*UpdateCredentialResponseBodyDataResourceRefs {
+	return s.ResourceRefs
+}
+
+func (s *UpdateCredentialResponseBodyData) GetResourceScope() *string {
+	return s.ResourceScope
 }
 
 func (s *UpdateCredentialResponseBodyData) GetUpdatedAt() *string {
@@ -233,6 +277,16 @@ func (s *UpdateCredentialResponseBodyData) SetRegionId(v string) *UpdateCredenti
 	return s
 }
 
+func (s *UpdateCredentialResponseBodyData) SetResourceRefs(v []*UpdateCredentialResponseBodyDataResourceRefs) *UpdateCredentialResponseBodyData {
+	s.ResourceRefs = v
+	return s
+}
+
+func (s *UpdateCredentialResponseBodyData) SetResourceScope(v string) *UpdateCredentialResponseBodyData {
+	s.ResourceScope = &v
+	return s
+}
+
 func (s *UpdateCredentialResponseBodyData) SetUpdatedAt(v string) *UpdateCredentialResponseBodyData {
 	s.UpdatedAt = &v
 	return s
@@ -244,5 +298,74 @@ func (s *UpdateCredentialResponseBodyData) SetWorkspaceId(v string) *UpdateCrede
 }
 
 func (s *UpdateCredentialResponseBodyData) Validate() error {
+	if s.ResourceRefs != nil {
+		for _, item := range s.ResourceRefs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateCredentialResponseBodyDataResourceRefs struct {
+	// The unique identifier of the resource.
+	//
+	// example:
+	//
+	// agent-xxxx
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource name. This value is empty if the resource has been deleted.
+	//
+	// example:
+	//
+	// my-agent
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The resource type, such as agent.
+	//
+	// example:
+	//
+	// agent
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s UpdateCredentialResponseBodyDataResourceRefs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateCredentialResponseBodyDataResourceRefs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCredentialResponseBodyDataResourceRefs) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *UpdateCredentialResponseBodyDataResourceRefs) GetResourceName() *string {
+	return s.ResourceName
+}
+
+func (s *UpdateCredentialResponseBodyDataResourceRefs) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *UpdateCredentialResponseBodyDataResourceRefs) SetResourceId(v string) *UpdateCredentialResponseBodyDataResourceRefs {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UpdateCredentialResponseBodyDataResourceRefs) SetResourceName(v string) *UpdateCredentialResponseBodyDataResourceRefs {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *UpdateCredentialResponseBodyDataResourceRefs) SetResourceType(v string) *UpdateCredentialResponseBodyDataResourceRefs {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UpdateCredentialResponseBodyDataResourceRefs) Validate() error {
 	return dara.Validate(s)
 }

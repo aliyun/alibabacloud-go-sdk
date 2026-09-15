@@ -16,7 +16,7 @@ type iCreateAgentSpecResponseBody interface {
 }
 
 type CreateAgentSpecResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

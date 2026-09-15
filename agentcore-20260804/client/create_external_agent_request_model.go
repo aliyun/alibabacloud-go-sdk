@@ -18,7 +18,7 @@ type iCreateExternalAgentRequest interface {
 type CreateExternalAgentRequest struct {
 	// The request body.
 	Body *CreateExternalAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not guarantee idempotence in the current version.
+	// The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type CreateExternalAgentRequestBody struct {
 	//
 	// You are a code review assistant
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
-	// The model configuration. This parameter is available only when modelSource is set to PLATFORM.
+	// The model configuration. Available only when modelSource is set to PLATFORM.
 	Model *CreateExternalAgentRequestBodyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
 	// The source of the model configuration. Valid values:
 	//
-	// - PLATFORM: The platform parses and delivers the model configuration. You can specify the model parameter.
+	// - PLATFORM: The platform parses and delivers the model configuration.
 	//
-	// - RUNTIME: The external runtime manages the model on its own. You cannot specify the model parameter at the same time.
+	// - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
 	//
 	// example:
 	//
@@ -351,6 +351,8 @@ type CreateExternalAgentRequestBodyTemplateAiRegistry struct {
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The version of the template in AI Registry.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

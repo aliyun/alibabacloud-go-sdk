@@ -49,7 +49,7 @@ type UpdateIdentityProviderRequestBody struct {
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
 	// The new application configuration of the external identity provider. If not specified, the existing configuration remains unchanged.
 	Metadata *UpdateIdentityProviderRequestBodyMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+	// Specifies whether to enable organization member synchronization. When enabled, the external identity provider synchronizes organization members as workspace users.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
 }
 
@@ -122,13 +122,13 @@ type UpdateIdentityProviderRequestBodyMetadata struct {
 	//
 	// dingexamplecorpid01
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// The data encryption key for event subscriptions. The value must be consistent with the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+	// The data encryption key for event subscriptions. The value must match the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
 	//
 	// example:
 	//
 	// example-encrypt-key
 	EncryptKey *string `json:"encryptKey,omitempty" xml:"encryptKey,omitempty"`
-	// The verification token for event subscriptions. The value must be consistent with the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+	// The verification token for event subscriptions. The value must match the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
 	//
 	// example:
 	//

@@ -16,10 +16,13 @@ type iUpdateCredentialShrinkRequest interface {
 }
 
 type UpdateCredentialShrinkRequest struct {
+	// The request body for updating the credential.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 

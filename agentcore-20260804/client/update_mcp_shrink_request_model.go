@@ -18,7 +18,7 @@ type iUpdateMcpShrinkRequest interface {
 type UpdateMcpShrinkRequest struct {
 	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client idempotency token.
+	// The client token that is used to ensure the idempotency of the request.
 	//
 	// example:
 	//

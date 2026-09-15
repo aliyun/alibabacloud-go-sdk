@@ -24,21 +24,21 @@ type iDeleteManagedAgentResponseBody interface {
 }
 
 type DeleteManagedAgentResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value SUCCESS is returned if the request succeeds.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The summary information of the managed agent after deletion.
+	// The summary information of the deleted managed agent.
 	Data *DeleteManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value 200 is returned if the request succeeds.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The message returned for the request processing result.
 	//
 	// example:
 	//
@@ -160,12 +160,6 @@ type DeleteManagedAgentResponseBodyData struct {
 	//
 	// An agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The effective specification version number.
-	//
-	// example:
-	//
-	// 1
-	EffectiveSpecVersion *int64 `json:"effectiveSpecVersion,omitempty" xml:"effectiveSpecVersion,omitempty"`
 	// The latest specification version number.
 	//
 	// example:
@@ -232,10 +226,6 @@ func (s *DeleteManagedAgentResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
-func (s *DeleteManagedAgentResponseBodyData) GetEffectiveSpecVersion() *int64 {
-	return s.EffectiveSpecVersion
-}
-
 func (s *DeleteManagedAgentResponseBodyData) GetLatestSpecVersion() *int64 {
 	return s.LatestSpecVersion
 }
@@ -282,11 +272,6 @@ func (s *DeleteManagedAgentResponseBodyData) SetDeployType(v string) *DeleteMana
 
 func (s *DeleteManagedAgentResponseBodyData) SetDescription(v string) *DeleteManagedAgentResponseBodyData {
 	s.Description = &v
-	return s
-}
-
-func (s *DeleteManagedAgentResponseBodyData) SetEffectiveSpecVersion(v int64) *DeleteManagedAgentResponseBodyData {
-	s.EffectiveSpecVersion = &v
 	return s
 }
 

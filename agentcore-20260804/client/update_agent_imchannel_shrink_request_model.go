@@ -18,7 +18,7 @@ type iUpdateAgentIMChannelShrinkRequest interface {
 type UpdateAgentIMChannelShrinkRequest struct {
 	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The reserved idempotency token. The backend does not provide persistent idempotency guarantees in this phase.
+	// The reserved idempotency token. The backend does not provide persistent idempotency guarantees in the current phase.
 	//
 	// example:
 	//

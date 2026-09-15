@@ -16,7 +16,7 @@ type iDeleteAgentSpecVersionResponseBody interface {
 }
 
 type DeleteAgentSpecVersionResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
 	// The request ID.
 	//

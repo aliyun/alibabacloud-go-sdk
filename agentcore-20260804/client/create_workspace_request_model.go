@@ -72,6 +72,7 @@ type CreateWorkspaceRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceRequestBodyNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
+	StorageType          *string                                         `json:"storageType,omitempty" xml:"storageType,omitempty"`
 }
 
 func (s CreateWorkspaceRequestBody) String() string {
@@ -90,6 +91,10 @@ func (s *CreateWorkspaceRequestBody) GetNetworkConfiguration() *CreateWorkspaceR
 	return s.NetworkConfiguration
 }
 
+func (s *CreateWorkspaceRequestBody) GetStorageType() *string {
+	return s.StorageType
+}
+
 func (s *CreateWorkspaceRequestBody) SetName(v string) *CreateWorkspaceRequestBody {
 	s.Name = &v
 	return s
@@ -97,6 +102,11 @@ func (s *CreateWorkspaceRequestBody) SetName(v string) *CreateWorkspaceRequestBo
 
 func (s *CreateWorkspaceRequestBody) SetNetworkConfiguration(v *CreateWorkspaceRequestBodyNetworkConfiguration) *CreateWorkspaceRequestBody {
 	s.NetworkConfiguration = v
+	return s
+}
+
+func (s *CreateWorkspaceRequestBody) SetStorageType(v string) *CreateWorkspaceRequestBody {
+	s.StorageType = &v
 	return s
 }
 
@@ -151,7 +161,7 @@ type CreateWorkspaceRequestBodyNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	// The ID of the user VPC.
 	//
 	// example:
 	//

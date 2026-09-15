@@ -14,6 +14,7 @@ type iDebugModelRequest interface {
 }
 
 type DebugModelRequest struct {
+	// The request body.
 	Body *DebugModelRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 
@@ -44,6 +45,8 @@ func (s *DebugModelRequest) Validate() error {
 }
 
 type DebugModelRequestBody struct {
+	// The prompt used to verify the model call chain.
+	//
 	// This parameter is required.
 	//
 	// example:

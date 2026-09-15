@@ -16,10 +16,13 @@ type iCreateTeamRequest interface {
 }
 
 type CreateTeamRequest struct {
+	// The request body for creating a team.
 	Body *CreateTeamRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -59,17 +62,23 @@ func (s *CreateTeamRequest) Validate() error {
 }
 
 type CreateTeamRequestBody struct {
+	// The list of agent members in the team.
 	Agents []*CreateTeamRequestBodyAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	// The team description.
+	//
 	// example:
 	//
-	// 负责智能客服业务的团队
+	// A team responsible for intelligent customer service
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// team-01
-	Name  *string                       `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The list of user members in the team. The list must include exactly one member with the ADMIN role.
 	Users []*CreateTeamRequestBodyUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
@@ -140,10 +149,14 @@ func (s *CreateTeamRequestBody) Validate() error {
 }
 
 type CreateTeamRequestBodyAgents struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The role of the agent in the team. Valid values: LEADER, WORKER.
+	//
 	// example:
 	//
 	// WORKER
@@ -181,10 +194,14 @@ func (s *CreateTeamRequestBodyAgents) Validate() error {
 }
 
 type CreateTeamRequestBodyUsers struct {
+	// The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must include exactly one ADMIN.
+	//
 	// example:
 	//
 	// ADMIN
 	TeamRole *string `json:"teamRole,omitempty" xml:"teamRole,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// usr-123456

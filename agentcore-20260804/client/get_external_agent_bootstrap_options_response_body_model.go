@@ -24,15 +24,15 @@ type iGetExternalAgentBootstrapOptionsResponseBody interface {
 }
 
 type GetExternalAgentBootstrapOptionsResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value SUCCESS is returned if the request succeeds.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The available network access information for the external agent.
+	// The network access information available for the external agent.
 	Data *GetExternalAgentBootstrapOptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value 200 is returned if the request succeeds.
 	//
 	// example:
 	//

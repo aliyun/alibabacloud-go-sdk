@@ -24,21 +24,21 @@ type iDeleteExternalAgentResponseBody interface {
 }
 
 type DeleteExternalAgentResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value SUCCESS is returned if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The summary information of the external agent after deletion.
+	// The summary information of the deleted external agent.
 	Data *DeleteExternalAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value 200 is returned if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The message returned for the request processing result.
 	//
 	// example:
 	//
@@ -156,12 +156,6 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// A code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The currently effective specification version number.
-	//
-	// example:
-	//
-	// 1
-	EffectiveSpecVersion *int64 `json:"effectiveSpecVersion,omitempty" xml:"effectiveSpecVersion,omitempty"`
 	// The latest specification version number.
 	//
 	// example:
@@ -240,10 +234,6 @@ func (s *DeleteExternalAgentResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
-func (s *DeleteExternalAgentResponseBodyData) GetEffectiveSpecVersion() *int64 {
-	return s.EffectiveSpecVersion
-}
-
 func (s *DeleteExternalAgentResponseBodyData) GetLatestSpecVersion() *int64 {
 	return s.LatestSpecVersion
 }
@@ -290,11 +280,6 @@ func (s *DeleteExternalAgentResponseBodyData) SetDeployType(v string) *DeleteExt
 
 func (s *DeleteExternalAgentResponseBodyData) SetDescription(v string) *DeleteExternalAgentResponseBodyData {
 	s.Description = &v
-	return s
-}
-
-func (s *DeleteExternalAgentResponseBodyData) SetEffectiveSpecVersion(v int64) *DeleteExternalAgentResponseBodyData {
-	s.EffectiveSpecVersion = &v
 	return s
 }
 

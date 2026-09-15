@@ -44,7 +44,7 @@ type ListWorkspacesResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of workspaces.
 	Items []*ListWorkspacesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page used for this request.
+	// The maximum number of records per page used in this request.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This value is empty if no more pages exist.
+	// The pagination token for the next page. This parameter is empty if no more pages are available.
 	//
 	// example:
 	//
@@ -185,13 +185,13 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItems struct {
-	// The creation time of the workspace.
+	// The time when the workspace was created.
 	//
 	// example:
 	//
 	// 2026-08-06T03:56:56Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

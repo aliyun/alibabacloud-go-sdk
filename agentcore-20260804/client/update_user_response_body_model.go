@@ -24,24 +24,34 @@ type iUpdateUserResponseBody interface {
 }
 
 type UpdateUserResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The updated user information.
 	Data *UpdateUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -116,46 +126,68 @@ func (s *UpdateUserResponseBody) Validate() error {
 }
 
 type UpdateUserResponseBodyData struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
+	// The authentication method of the user. password indicates local password authentication within the workspace. dingtalk and feishu indicate that the user is synchronized and authenticated by the corresponding external identity provider.
+	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
+	// The creation time in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The display name of the user. The name is 1 to 32 characters in length.
+	//
 	// example:
 	//
-	// 张三
+	// John
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user. The address can be up to 256 characters in length.
+	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The username. The name must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 32 characters in length.
+	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The note for the user. The note can be up to 1,024 characters in length.
+	//
 	// example:
 	//
-	// 智能体运营组成员
+	// Agent operations team member
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time of the last modification in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456

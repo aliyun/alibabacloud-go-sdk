@@ -30,32 +30,48 @@ type iListTeamsResponseBody interface {
 }
 
 type ListTeamsResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                        `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Items          []*ListTeamsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The list of teams.
+	Items []*ListTeamsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The maximum number of records per page that took effect for this query.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next page. This parameter is empty if no more pages are available.
+	//
 	// example:
 	//
 	// dGVhbS1vZmZzZXQ6MTA
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of teams that match the query conditions.
+	//
 	// example:
 	//
 	// 42
@@ -165,32 +181,60 @@ func (s *ListTeamsResponseBody) Validate() error {
 }
 
 type ListTeamsResponseBodyItems struct {
+	// The list of agent members in the team.
 	Agents []*ListTeamsResponseBodyItemsAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	// The time when the team was created, in UTC and RFC 3339 format.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The team description.
+	//
 	// example:
 	//
-	// 负责智能客服业务的团队
+	// Team responsible for the intelligent customer service business
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 128 characters in length.
+	//
 	// example:
 	//
 	// team-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The team status. Valid values:
+	//
+	// - Creating
+	//
+	// - Active
+	//
+	// - Updating
+	//
+	// - Deleting
+	//
+	// - Failed
+	//
+	// - Deleted
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The team ID.
+	//
 	// example:
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The time when the team was last modified, in UTC and RFC 3339 format.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
-	UpdatedAt *string                            `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	Users     []*ListTeamsResponseBodyItemsUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The list of user members in the team.
+	Users []*ListTeamsResponseBodyItemsUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456
@@ -309,14 +353,24 @@ func (s *ListTeamsResponseBodyItems) Validate() error {
 }
 
 type ListTeamsResponseBodyItemsAgents struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The agent name.
+	//
 	// example:
 	//
 	// agent-01
 	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
+	// The role of the agent in the team. Valid values:
+	//
+	// - LEADER
+	//
+	// - WORKER
+	//
 	// example:
 	//
 	// WORKER
@@ -363,14 +417,26 @@ func (s *ListTeamsResponseBodyItemsAgents) Validate() error {
 }
 
 type ListTeamsResponseBodyItemsUsers struct {
+	// The role of the user in the team. Valid values:
+	//
+	// - ADMIN
+	//
+	// - MEMBER
+	//
+	// Each team must have exactly one ADMIN.
+	//
 	// example:
 	//
 	// ADMIN
 	TeamRole *string `json:"teamRole,omitempty" xml:"teamRole,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// usr-123456
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// user-01

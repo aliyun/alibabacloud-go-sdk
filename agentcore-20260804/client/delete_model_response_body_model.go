@@ -24,24 +24,34 @@ type iDeleteModelResponseBody interface {
 }
 
 type DeleteModelResponseBody struct {
+	// The business status code. The value SUCCESS indicates success.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The identifier of the model that has been accepted for deletion.
 	Data *DeleteModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code. The value 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request processing result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteModelResponseBody) String() string {
@@ -116,10 +126,14 @@ func (s *DeleteModelResponseBody) Validate() error {
 }
 
 type DeleteModelResponseBodyData struct {
+	// The model ID.
+	//
 	// example:
 	//
 	// model-1
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-1

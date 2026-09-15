@@ -24,24 +24,34 @@ type iDebugModelResponseBody interface {
 }
 
 type DebugModelResponseBody struct {
+	// The business status code. The value SUCCESS indicates success.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The model debugging result.
 	Data *DebugModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code. The value 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request processing result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DebugModelResponseBody) String() string {
@@ -116,44 +126,57 @@ func (s *DebugModelResponseBody) Validate() error {
 }
 
 type DebugModelResponseBodyData struct {
+	// The model connection ID.
+	//
 	// example:
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	DebugSuccess *bool   `json:"debugSuccess,omitempty" xml:"debugSuccess,omitempty"`
-	// 调试失败时的错误码。取值：MODEL_CONNECTION_NOT_READY（模型连接尚未发布就绪）、MODEL_CONNECTION_TEST_FAILED（平台调用网关失败）、UPSTREAM_MODEL_NOT_FOUND（模型服务商侧不存在该模型）、UPSTREAM_UNAUTHORIZED（模型服务商拒绝所配置的凭证）、UPSTREAM_RATE_LIMITED（模型服务商限流）、UPSTREAM_SERVER_ERROR（模型服务商服务端错误）、UPSTREAM_HTTP_ERROR（模型服务商返回其它非成功状态）、UPSTREAM_EMPTY_RESPONSE（模型服务商返回空响应）、UPSTREAM_INVALID_RESPONSE（模型服务商响应格式非法）、UPSTREAM_MODEL_ERROR（模型服务商拒绝本次请求）、MODEL_RESPONSE_INVALID（响应解析失败）。
+	// Indicates whether the model debugging was successful.
+	DebugSuccess *bool `json:"debugSuccess,omitempty" xml:"debugSuccess,omitempty"`
+	// The error code returned when debugging fails.
 	//
 	// example:
 	//
 	// UPSTREAM_MODEL_ERROR
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 调试失败时的错误描述，为固定脱敏文案，不透传模型服务商的原始错误详情。
+	// The error message returned when debugging fails.
 	//
 	// example:
 	//
 	// The model endpoint rejected the debug request.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The number of input tokens consumed by this model debugging request.
+	//
 	// example:
 	//
 	// 3
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The time consumed by this model debugging call, in milliseconds.
+	//
 	// example:
 	//
 	// 12
 	LatencyMs *int64 `json:"latencyMs,omitempty" xml:"latencyMs,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// model-1
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The number of output tokens consumed by this model debugging response.
+	//
 	// example:
 	//
 	// 2
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The text response returned by the model when debugging succeeds. This value is empty when debugging fails.
+	//
 	// example:
 	//
 	// ok
 	Response *string `json:"response,omitempty" xml:"response,omitempty"`
-	// 调试结果状态。取值：NORMAL（正常）、ABNORMAL（异常）。
+	// The debug result status.
 	//
 	// example:
 	//

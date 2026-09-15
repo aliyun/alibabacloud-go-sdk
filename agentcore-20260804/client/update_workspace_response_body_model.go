@@ -130,13 +130,17 @@ func (s *UpdateWorkspaceResponseBody) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyData struct {
+	// The OSS storage authorization status.
+	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
+	// The name of the private OSS bucket.
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	// The workspace name.
 	//
 	// example:
 	//
 	// production-agents-v2
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The workspace network configuration.
+	// The network configuration of the workspace.
 	NetworkConfiguration *UpdateWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
 	// The region ID of the workspace.
 	//
@@ -150,6 +154,8 @@ type UpdateWorkspaceResponseBodyData struct {
 	//
 	// Initialized
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The storage type of the workspace.
+	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
 	// The ID of the tenant to which the workspace belongs.
 	//
 	// example:
@@ -172,6 +178,14 @@ func (s UpdateWorkspaceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateWorkspaceResponseBodyData) GetAuthorizationStatus() *string {
+	return s.AuthorizationStatus
+}
+
+func (s *UpdateWorkspaceResponseBodyData) GetBucketName() *string {
+	return s.BucketName
+}
+
 func (s *UpdateWorkspaceResponseBodyData) GetName() *string {
 	return s.Name
 }
@@ -188,12 +202,26 @@ func (s *UpdateWorkspaceResponseBodyData) GetStatus() *string {
 	return s.Status
 }
 
+func (s *UpdateWorkspaceResponseBodyData) GetStorageType() *string {
+	return s.StorageType
+}
+
 func (s *UpdateWorkspaceResponseBodyData) GetTenantId() *string {
 	return s.TenantId
 }
 
 func (s *UpdateWorkspaceResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *UpdateWorkspaceResponseBodyData) SetAuthorizationStatus(v string) *UpdateWorkspaceResponseBodyData {
+	s.AuthorizationStatus = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResponseBodyData) SetBucketName(v string) *UpdateWorkspaceResponseBodyData {
+	s.BucketName = &v
+	return s
 }
 
 func (s *UpdateWorkspaceResponseBodyData) SetName(v string) *UpdateWorkspaceResponseBodyData {
@@ -213,6 +241,11 @@ func (s *UpdateWorkspaceResponseBodyData) SetRegionId(v string) *UpdateWorkspace
 
 func (s *UpdateWorkspaceResponseBodyData) SetStatus(v string) *UpdateWorkspaceResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResponseBodyData) SetStorageType(v string) *UpdateWorkspaceResponseBodyData {
+	s.StorageType = &v
 	return s
 }
 
@@ -236,7 +269,7 @@ func (s *UpdateWorkspaceResponseBodyData) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// The user VPC network configuration.
+	// The VPC network configuration.
 	Vpc *UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -275,7 +308,7 @@ type UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the user VPC.
+	// The VPC ID.
 	//
 	// example:
 	//

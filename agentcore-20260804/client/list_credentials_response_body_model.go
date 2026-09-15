@@ -30,32 +30,48 @@ type iListCredentialsResponseBody interface {
 }
 
 type ListCredentialsResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                              `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Items          []*ListCredentialsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The list of credentials.
+	Items []*ListCredentialsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The maximum number of records per page that took effect for this query.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next page. This value is empty if there is no next page.
+	//
 	// example:
 	//
 	// 10
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of credentials that match the query conditions.
+	//
 	// example:
 	//
 	// 42
@@ -165,42 +181,70 @@ func (s *ListCredentialsResponseBody) Validate() error {
 }
 
 type ListCredentialsResponseBodyItems struct {
+	// The number of agents bound to this credential.
+	//
 	// example:
 	//
 	// 2
 	BoundAgentsCounts *int32 `json:"boundAgentsCounts,omitempty" xml:"boundAgentsCounts,omitempty"`
+	// The creation time in UTC, formatted according to RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The credential ID.
+	//
 	// example:
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// The masked content of the credential. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+	//
 	// example:
 	//
 	// {"apiKey":"****************"}
 	CredentialMetadata *string `json:"credentialMetadata,omitempty" xml:"credentialMetadata,omitempty"`
+	// The credential type. Currently, only apiKey is supported.
+	//
 	// example:
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
+	// The credential description. The description can be up to 256 characters in length.
+	//
 	// example:
 	//
-	// 线上环境调用模型服务使用的 API Key
+	// API Key used for calling model services in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	//
 	// example:
 	//
 	// model-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The region ID where the resource resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The list of resources to which the credential can be applied.
+	ResourceRefs []*ListCredentialsResponseBodyItemsResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
+	// The scope of resources to which the credential can be applied.
+	//
+	// example:
+	//
+	// ALL
+	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
+	// The time of the last modification in UTC, formatted according to RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456
@@ -245,6 +289,14 @@ func (s *ListCredentialsResponseBodyItems) GetName() *string {
 
 func (s *ListCredentialsResponseBodyItems) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListCredentialsResponseBodyItems) GetResourceRefs() []*ListCredentialsResponseBodyItemsResourceRefs {
+	return s.ResourceRefs
+}
+
+func (s *ListCredentialsResponseBodyItems) GetResourceScope() *string {
+	return s.ResourceScope
 }
 
 func (s *ListCredentialsResponseBodyItems) GetUpdatedAt() *string {
@@ -295,6 +347,16 @@ func (s *ListCredentialsResponseBodyItems) SetRegionId(v string) *ListCredential
 	return s
 }
 
+func (s *ListCredentialsResponseBodyItems) SetResourceRefs(v []*ListCredentialsResponseBodyItemsResourceRefs) *ListCredentialsResponseBodyItems {
+	s.ResourceRefs = v
+	return s
+}
+
+func (s *ListCredentialsResponseBodyItems) SetResourceScope(v string) *ListCredentialsResponseBodyItems {
+	s.ResourceScope = &v
+	return s
+}
+
 func (s *ListCredentialsResponseBodyItems) SetUpdatedAt(v string) *ListCredentialsResponseBodyItems {
 	s.UpdatedAt = &v
 	return s
@@ -306,5 +368,74 @@ func (s *ListCredentialsResponseBodyItems) SetWorkspaceId(v string) *ListCredent
 }
 
 func (s *ListCredentialsResponseBodyItems) Validate() error {
+	if s.ResourceRefs != nil {
+		for _, item := range s.ResourceRefs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListCredentialsResponseBodyItemsResourceRefs struct {
+	// The unique identifier of the resource.
+	//
+	// example:
+	//
+	// agent-xxxx
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource name. This value is empty if the resource has been deleted.
+	//
+	// example:
+	//
+	// my-agent
+	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The resource type, such as agent.
+	//
+	// example:
+	//
+	// agent
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s ListCredentialsResponseBodyItemsResourceRefs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListCredentialsResponseBodyItemsResourceRefs) GoString() string {
+	return s.String()
+}
+
+func (s *ListCredentialsResponseBodyItemsResourceRefs) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *ListCredentialsResponseBodyItemsResourceRefs) GetResourceName() *string {
+	return s.ResourceName
+}
+
+func (s *ListCredentialsResponseBodyItemsResourceRefs) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *ListCredentialsResponseBodyItemsResourceRefs) SetResourceId(v string) *ListCredentialsResponseBodyItemsResourceRefs {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBodyItemsResourceRefs) SetResourceName(v string) *ListCredentialsResponseBodyItemsResourceRefs {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBodyItemsResourceRefs) SetResourceType(v string) *ListCredentialsResponseBodyItemsResourceRefs {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListCredentialsResponseBodyItemsResourceRefs) Validate() error {
 	return dara.Validate(s)
 }

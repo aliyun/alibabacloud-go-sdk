@@ -24,24 +24,34 @@ type iDeleteCredentialResponseBody interface {
 }
 
 type DeleteCredentialResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The information about the deleted credential.
 	Data *DeleteCredentialResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteCredentialResponseBody) String() string {
@@ -116,14 +126,20 @@ func (s *DeleteCredentialResponseBody) Validate() error {
 }
 
 type DeleteCredentialResponseBodyData struct {
+	// The credential ID.
+	//
 	// example:
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
+	// The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+	//
 	// example:
 	//
 	// model-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456

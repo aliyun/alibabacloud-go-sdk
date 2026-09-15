@@ -38,7 +38,7 @@ type GetIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned if the request failed.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type GetIdentityProviderResponseBodyData struct {
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The event subscription callback URL. Configure this URL in the application on the external identity provider side to receive organization change events. An empty string is returned if the user pool has not been provisioned.
+	// The event subscription callback URL. Configure this URL in the external identity provider application to receive organization change events. An empty string is returned if the user pool has not been activated.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type GetIdentityProviderResponseBodyData struct {
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// The logon callback URL. Configure this URL in the application on the external identity provider side. An empty string is returned if the user pool has not been provisioned.
+	// The logon callback URL. Configure this URL in the external identity provider application. An empty string is returned if the user pool has not been activated.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetIdentityProviderResponseBodyData struct {
 	Metadata *GetIdentityProviderResponseBodyDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
 	// The status. Valid values:
 	//
-	// - CONFIGURED: The configuration has been accepted and is waiting for the user pool to be provisioned.
+	// - CONFIGURED: The configuration has been accepted and is waiting for user pool activation.
 	//
 	// - SYNCING: Organization members are being synchronized.
 	//

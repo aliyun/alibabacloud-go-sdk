@@ -62,7 +62,7 @@ func (s *GetAgentSpecImportFileUrlResponseBody) Validate() error {
 }
 
 type GetAgentSpecImportFileUrlResponseBodyData struct {
-	// The Content-Type used for the OSS PUT request.
+	// The Content-Type to use for the OSS PUT request.
 	//
 	// example:
 	//

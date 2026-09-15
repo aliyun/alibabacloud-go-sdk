@@ -16,10 +16,13 @@ type iCreateCredentialShrinkRequest interface {
 }
 
 type CreateCredentialShrinkRequest struct {
+	// The request body for creating a credential.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 

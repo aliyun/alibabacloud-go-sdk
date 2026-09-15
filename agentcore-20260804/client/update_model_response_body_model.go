@@ -24,7 +24,7 @@ type iUpdateModelResponseBody interface {
 }
 
 type UpdateModelResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value is SUCCESS when the request succeeds.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type UpdateModelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The updated model information.
 	Data *UpdateModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value is 200 when the request succeeds.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message of the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *UpdateModelResponseBody) Validate() error {
 }
 
 type UpdateModelResponseBodyData struct {
-	// The model capability configurations.
+	// The model capability configuration.
 	Capabilities *UpdateModelResponseBodyDataCapabilities `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Struct"`
 	// The model connection ID.
 	//
@@ -134,7 +134,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The model context window size, in tokens. Must be a positive integer.
+	// The model context window size, in tokens. The value must be a positive integer.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type UpdateModelResponseBodyData struct {
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The model description. Maximum length: 255 characters.
+	// The model description. The maximum length is 255 characters.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The maximum number of output tokens supported per model generation.
+	// The maximum number of output tokens supported per generation.
 	//
 	// example:
 	//
@@ -296,13 +296,13 @@ type UpdateModelResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model is able to invoke multiple tool calling requests in a single response.
+	// Indicates whether the model supports invoking multiple tools in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
-	// Indicates whether the model supports reasoning capabilities.
+	// Indicates whether the model supports reasoning.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Indicates whether the model supports streaming tool calling.
+	// Indicates whether the model supports streaming tool invocation.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
-	// Indicates whether the model supports tool calling.
+	// Indicates whether the model supports tool invocation.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`
 	// Indicates whether the model supports video input.
 	Video *bool `json:"video,omitempty" xml:"video,omitempty"`

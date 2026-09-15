@@ -24,7 +24,7 @@ type iUpdateManagedAgentResponseBody interface {
 }
 
 type UpdateManagedAgentResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value SUCCESS is returned if the request is successful.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UpdateManagedAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -160,8 +160,10 @@ type UpdateManagedAgentResponseBodyData struct {
 	//
 	// An agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The environment configuration information.
+	// The environment configuration.
 	Environment *UpdateManagedAgentResponseBodyDataEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	// The runtime harness of the managed agent. Valid values: qwenpaw and qodercli.
+	Harness *UpdateManagedAgentResponseBodyDataHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
 	//
 	// example:
@@ -174,13 +176,13 @@ type UpdateManagedAgentResponseBodyData struct {
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The latest version status.
+	// The status of the latest version.
 	//
 	// example:
 	//
 	// succeeded
 	LatestVersionStatus *string `json:"latestVersionStatus,omitempty" xml:"latestVersionStatus,omitempty"`
-	// The model configuration information.
+	// The model configuration.
 	Model *UpdateManagedAgentResponseBodyDataModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
 	// The name of the managed agent.
 	//
@@ -188,16 +190,20 @@ type UpdateManagedAgentResponseBodyData struct {
 	//
 	// my-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network configuration information.
+	// The network configuration.
 	Network *UpdateManagedAgentResponseBodyDataNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
+	// The list of OSS mounts. A maximum of 10 entries are supported.
+	OssMounts []*UpdateManagedAgentResponseBodyDataOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The runtime configuration information.
+	// The runtime configuration.
 	Runtime *UpdateManagedAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
+	// The instance count of the managed agent grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), and FAILED (runtime failure). Only phases that actually exist are returned. A missing key indicates a count of 0. This field is a dynamic map and new keys may be added in the future. You can use FAILED > 0 to determine whether abnormal instances exist.
+	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The list of skill configurations.
 	Skills []*UpdateManagedAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
 	// The status of the managed agent.
@@ -208,7 +214,7 @@ type UpdateManagedAgentResponseBodyData struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The list of sub-agent configurations.
 	SubAgents []*UpdateManagedAgentResponseBodyDataSubAgents `json:"subAgents,omitempty" xml:"subAgents,omitempty" type:"Repeated"`
-	// The template configuration information.
+	// The template configuration.
 	Template *UpdateManagedAgentResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 	// The list of tool configurations.
 	Tools []*UpdateManagedAgentResponseBodyDataTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
@@ -258,6 +264,10 @@ func (s *UpdateManagedAgentResponseBodyData) GetEnvironment() *UpdateManagedAgen
 	return s.Environment
 }
 
+func (s *UpdateManagedAgentResponseBodyData) GetHarness() *UpdateManagedAgentResponseBodyDataHarness {
+	return s.Harness
+}
+
 func (s *UpdateManagedAgentResponseBodyData) GetInstruction() *string {
 	return s.Instruction
 }
@@ -282,12 +292,20 @@ func (s *UpdateManagedAgentResponseBodyData) GetNetwork() *UpdateManagedAgentRes
 	return s.Network
 }
 
+func (s *UpdateManagedAgentResponseBodyData) GetOssMounts() []*UpdateManagedAgentResponseBodyDataOssMounts {
+	return s.OssMounts
+}
+
 func (s *UpdateManagedAgentResponseBodyData) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *UpdateManagedAgentResponseBodyData) GetRuntime() *UpdateManagedAgentResponseBodyDataRuntime {
 	return s.Runtime
+}
+
+func (s *UpdateManagedAgentResponseBodyData) GetSandboxPhaseCounts() map[string]*int64 {
+	return s.SandboxPhaseCounts
 }
 
 func (s *UpdateManagedAgentResponseBodyData) GetSkills() []*UpdateManagedAgentResponseBodyDataSkills {
@@ -348,6 +366,11 @@ func (s *UpdateManagedAgentResponseBodyData) SetEnvironment(v *UpdateManagedAgen
 	return s
 }
 
+func (s *UpdateManagedAgentResponseBodyData) SetHarness(v *UpdateManagedAgentResponseBodyDataHarness) *UpdateManagedAgentResponseBodyData {
+	s.Harness = v
+	return s
+}
+
 func (s *UpdateManagedAgentResponseBodyData) SetInstruction(v string) *UpdateManagedAgentResponseBodyData {
 	s.Instruction = &v
 	return s
@@ -378,6 +401,11 @@ func (s *UpdateManagedAgentResponseBodyData) SetNetwork(v *UpdateManagedAgentRes
 	return s
 }
 
+func (s *UpdateManagedAgentResponseBodyData) SetOssMounts(v []*UpdateManagedAgentResponseBodyDataOssMounts) *UpdateManagedAgentResponseBodyData {
+	s.OssMounts = v
+	return s
+}
+
 func (s *UpdateManagedAgentResponseBodyData) SetRegionId(v string) *UpdateManagedAgentResponseBodyData {
 	s.RegionId = &v
 	return s
@@ -385,6 +413,11 @@ func (s *UpdateManagedAgentResponseBodyData) SetRegionId(v string) *UpdateManage
 
 func (s *UpdateManagedAgentResponseBodyData) SetRuntime(v *UpdateManagedAgentResponseBodyDataRuntime) *UpdateManagedAgentResponseBodyData {
 	s.Runtime = v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyData) SetSandboxPhaseCounts(v map[string]*int64) *UpdateManagedAgentResponseBodyData {
+	s.SandboxPhaseCounts = v
 	return s
 }
 
@@ -429,6 +462,11 @@ func (s *UpdateManagedAgentResponseBodyData) Validate() error {
 			return err
 		}
 	}
+	if s.Harness != nil {
+		if err := s.Harness.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Model != nil {
 		if err := s.Model.Validate(); err != nil {
 			return err
@@ -437,6 +475,15 @@ func (s *UpdateManagedAgentResponseBodyData) Validate() error {
 	if s.Network != nil {
 		if err := s.Network.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.OssMounts != nil {
+		for _, item := range s.OssMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.Runtime != nil {
@@ -567,7 +614,7 @@ func (s *UpdateManagedAgentResponseBodyDataEnvironmentCredentialReferences) Vali
 }
 
 type UpdateManagedAgentResponseBodyDataEnvironmentVariables struct {
-	// The environment variable name.
+	// The name of the environment variable.
 	//
 	// This parameter is required.
 	//
@@ -575,7 +622,7 @@ type UpdateManagedAgentResponseBodyDataEnvironmentVariables struct {
 	//
 	// API_KEY
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The environment variable value.
+	// The value of the environment variable.
 	//
 	// This parameter is required.
 	//
@@ -615,6 +662,97 @@ func (s *UpdateManagedAgentResponseBodyDataEnvironmentVariables) Validate() erro
 	return dara.Validate(s)
 }
 
+type UpdateManagedAgentResponseBodyDataHarness struct {
+	// The Connector binding configuration for the qodercli harness.
+	Configuration *UpdateManagedAgentResponseBodyDataHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// The type of the runtime harness. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is performed based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	//
+	// example:
+	//
+	// qodercli
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateManagedAgentResponseBodyDataHarness) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentResponseBodyDataHarness) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarness) GetConfiguration() *UpdateManagedAgentResponseBodyDataHarnessConfiguration {
+	return s.Configuration
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarness) GetType() *string {
+	return s.Type
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarness) SetConfiguration(v *UpdateManagedAgentResponseBodyDataHarnessConfiguration) *UpdateManagedAgentResponseBodyDataHarness {
+	s.Configuration = v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarness) SetType(v string) *UpdateManagedAgentResponseBodyDataHarness {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarness) Validate() error {
+	if s.Configuration != nil {
+		if err := s.Configuration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateManagedAgentResponseBodyDataHarnessConfiguration struct {
+	// The Key ID used to bind a Service Account Key of the QoderCLI Connector. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+	//
+	// example:
+	//
+	// key-xxxx
+	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
+	// The Connector Key name that is populated during queries. This value is not used as a binding reference during writes.
+	//
+	// example:
+	//
+	// my-connector-key
+	ConnectorServiceAccountName *string `json:"connectorServiceAccountName,omitempty" xml:"connectorServiceAccountName,omitempty"`
+}
+
+func (s UpdateManagedAgentResponseBodyDataHarnessConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentResponseBodyDataHarnessConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarnessConfiguration) GetConnectorServiceAccountKey() *string {
+	return s.ConnectorServiceAccountKey
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarnessConfiguration) GetConnectorServiceAccountName() *string {
+	return s.ConnectorServiceAccountName
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarnessConfiguration) SetConnectorServiceAccountKey(v string) *UpdateManagedAgentResponseBodyDataHarnessConfiguration {
+	s.ConnectorServiceAccountKey = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarnessConfiguration) SetConnectorServiceAccountName(v string) *UpdateManagedAgentResponseBodyDataHarnessConfiguration {
+	s.ConnectorServiceAccountName = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarnessConfiguration) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateManagedAgentResponseBodyDataModel struct {
 	// The model connection ID.
 	//
@@ -625,8 +763,6 @@ type UpdateManagedAgentResponseBodyDataModel struct {
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
 	// The upstream model name.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -712,9 +848,7 @@ func (s *UpdateManagedAgentResponseBodyDataNetwork) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataNetworkAccessInternet struct {
-	// Specifies whether to allow access to the Internet.
-	//
-	// This parameter is required.
+	// Specifies whether public network access is allowed.
 	//
 	// example:
 	//
@@ -744,9 +878,7 @@ func (s *UpdateManagedAgentResponseBodyDataNetworkAccessInternet) Validate() err
 }
 
 type UpdateManagedAgentResponseBodyDataNetworkAccessVpc struct {
-	// Specifies whether to allow access to the VPC.
-	//
-	// This parameter is required.
+	// Specifies whether VPC access is allowed.
 	//
 	// example:
 	//
@@ -775,11 +907,72 @@ func (s *UpdateManagedAgentResponseBodyDataNetworkAccessVpc) Validate() error {
 	return dara.Validate(s)
 }
 
+type UpdateManagedAgentResponseBodyDataOssMounts struct {
+	// The OSS bucket name. Each mount item is validated as required by the backend.
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The absolute mount path in the container. Each mount item is validated as required by the backend.
+	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
+	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// Specifies whether to mount as read-only. Default value: false.
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+}
+
+func (s UpdateManagedAgentResponseBodyDataOssMounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentResponseBodyDataOssMounts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) GetBucketName() *string {
+	return s.BucketName
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) GetPath() *string {
+	return s.Path
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) GetReadOnly() *bool {
+	return s.ReadOnly
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) SetBucketName(v string) *UpdateManagedAgentResponseBodyDataOssMounts {
+	s.BucketName = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) SetMountPath(v string) *UpdateManagedAgentResponseBodyDataOssMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) SetPath(v string) *UpdateManagedAgentResponseBodyDataOssMounts {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) SetReadOnly(v bool) *UpdateManagedAgentResponseBodyDataOssMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataOssMounts) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateManagedAgentResponseBodyDataRuntime struct {
 	// The compute configuration.
 	//
 	// This parameter is required.
 	Compute *UpdateManagedAgentResponseBodyDataRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
+	// The Sandbox auto scaling and session configuration.
+	Hpa *UpdateManagedAgentResponseBodyDataRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
 	// The session policy configuration.
 	//
 	// This parameter is required.
@@ -798,12 +991,21 @@ func (s *UpdateManagedAgentResponseBodyDataRuntime) GetCompute() *UpdateManagedA
 	return s.Compute
 }
 
+func (s *UpdateManagedAgentResponseBodyDataRuntime) GetHpa() *UpdateManagedAgentResponseBodyDataRuntimeHpa {
+	return s.Hpa
+}
+
 func (s *UpdateManagedAgentResponseBodyDataRuntime) GetSessionPolicy() *UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy {
 	return s.SessionPolicy
 }
 
 func (s *UpdateManagedAgentResponseBodyDataRuntime) SetCompute(v *UpdateManagedAgentResponseBodyDataRuntimeCompute) *UpdateManagedAgentResponseBodyDataRuntime {
 	s.Compute = v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntime) SetHpa(v *UpdateManagedAgentResponseBodyDataRuntimeHpa) *UpdateManagedAgentResponseBodyDataRuntime {
+	s.Hpa = v
 	return s
 }
 
@@ -815,6 +1017,11 @@ func (s *UpdateManagedAgentResponseBodyDataRuntime) SetSessionPolicy(v *UpdateMa
 func (s *UpdateManagedAgentResponseBodyDataRuntime) Validate() error {
 	if s.Compute != nil {
 		if err := s.Compute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hpa != nil {
+		if err := s.Hpa.Validate(); err != nil {
 			return err
 		}
 	}
@@ -858,8 +1065,78 @@ func (s *UpdateManagedAgentResponseBodyDataRuntimeCompute) Validate() error {
 	return dara.Validate(s)
 }
 
+type UpdateManagedAgentResponseBodyDataRuntimeHpa struct {
+	// Specifies whether to enable auto scaling. Required when hpa is present as validated by the backend.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The maximum number of active sessions per Sandbox. Required when hpa is present as validated by the backend.
+	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
+	// The maximum number of Sandboxes. Required when HPA is enabled and must be no less than the minimum value.
+	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
+	// The minimum number of Sandboxes. Required when HPA is enabled.
+	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
+	// The session reclamation time after inactivity, in seconds. Required when hpa is present as validated by the backend.
+	SessionTtlSeconds *int32 `json:"sessionTtlSeconds,omitempty" xml:"sessionTtlSeconds,omitempty"`
+}
+
+func (s UpdateManagedAgentResponseBodyDataRuntimeHpa) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentResponseBodyDataRuntimeHpa) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) GetMaxConcurrentSessionsPerSandbox() *int32 {
+	return s.MaxConcurrentSessionsPerSandbox
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) GetMaxSandboxCount() *int32 {
+	return s.MaxSandboxCount
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) GetMinSandboxCount() *int32 {
+	return s.MinSandboxCount
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) GetSessionTtlSeconds() *int32 {
+	return s.SessionTtlSeconds
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) SetEnabled(v bool) *UpdateManagedAgentResponseBodyDataRuntimeHpa {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) SetMaxConcurrentSessionsPerSandbox(v int32) *UpdateManagedAgentResponseBodyDataRuntimeHpa {
+	s.MaxConcurrentSessionsPerSandbox = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) SetMaxSandboxCount(v int32) *UpdateManagedAgentResponseBodyDataRuntimeHpa {
+	s.MaxSandboxCount = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) SetMinSandboxCount(v int32) *UpdateManagedAgentResponseBodyDataRuntimeHpa {
+	s.MinSandboxCount = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) SetSessionTtlSeconds(v int32) *UpdateManagedAgentResponseBodyDataRuntimeHpa {
+	s.SessionTtlSeconds = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataRuntimeHpa) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy struct {
-	// The HTTP header name used for session affinity. This parameter takes effect only when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+	// The HTTP header name used for session affinity. Takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
 	//
 	// example:
 	//
@@ -959,7 +1236,7 @@ type UpdateManagedAgentResponseBodyDataSubAgents struct {
 	//
 	// example:
 	//
-	// Please review the code
+	// Review the code
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The sub-agent name.
 	//
@@ -1042,6 +1319,8 @@ type UpdateManagedAgentResponseBodyDataTemplateAiRegistry struct {
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The version of the template in the AI registry.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

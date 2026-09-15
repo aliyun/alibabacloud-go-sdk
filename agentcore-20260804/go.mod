@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/agentcore-20260804
+module github.com/alibabacloud-go/agentcore-20260804/v2
 
 go 1.14
 

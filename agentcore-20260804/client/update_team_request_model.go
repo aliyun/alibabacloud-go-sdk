@@ -16,10 +16,13 @@ type iUpdateTeamRequest interface {
 }
 
 type UpdateTeamRequest struct {
+	// The request body for updating the team.
 	Body *UpdateTeamRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// Not supported.
+	//
 	// example:
 	//
-	// 暂不支持
+	// Not supported
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -59,12 +62,16 @@ func (s *UpdateTeamRequest) Validate() error {
 }
 
 type UpdateTeamRequestBody struct {
+	// The new agent member list. Replaces the existing agent members using full overwrite semantics. If not specified, the existing agent members remain unchanged.
 	Agents []*UpdateTeamRequestBodyAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	// The new team description. If not specified, the existing description remains unchanged.
+	//
 	// example:
 	//
-	// 负责智能客服业务的团队
-	Description *string                       `json:"description,omitempty" xml:"description,omitempty"`
-	Users       []*UpdateTeamRequestBodyUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// A team responsible for intelligent customer service
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The new user member list. Replaces the existing user members using full overwrite semantics. When specified, the list must contain exactly one member with the ADMIN role. If not specified, the existing user members remain unchanged.
+	Users []*UpdateTeamRequestBodyUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
 func (s UpdateTeamRequestBody) String() string {
@@ -125,10 +132,18 @@ func (s *UpdateTeamRequestBody) Validate() error {
 }
 
 type UpdateTeamRequestBodyAgents struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The role of the agent in the team. Valid values:
+	//
+	// - LEADER
+	//
+	// - WORKER
+	//
 	// example:
 	//
 	// WORKER
@@ -166,10 +181,20 @@ func (s *UpdateTeamRequestBodyAgents) Validate() error {
 }
 
 type UpdateTeamRequestBodyUsers struct {
+	// The role of the user in the team. Valid values:
+	//
+	// - ADMIN
+	//
+	// - MEMBER
+	//
+	// Each team must have exactly one ADMIN.
+	//
 	// example:
 	//
 	// ADMIN
 	TeamRole *string `json:"teamRole,omitempty" xml:"teamRole,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// usr-123456

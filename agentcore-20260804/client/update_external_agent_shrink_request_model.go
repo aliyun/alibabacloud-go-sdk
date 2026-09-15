@@ -18,7 +18,7 @@ type iUpdateExternalAgentShrinkRequest interface {
 type UpdateExternalAgentShrinkRequest struct {
 	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// A reserved idempotency token. The backend does not guarantee idempotency in the current version.
+	// The reserved idempotency token. The backend does not guarantee idempotence in the current phase.
 	//
 	// example:
 	//

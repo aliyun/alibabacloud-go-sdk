@@ -24,24 +24,34 @@ type iGetTeamResponseBody interface {
 }
 
 type GetTeamResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The team details.
 	Data *GetTeamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetTeamResponseBody) String() string {
@@ -116,36 +126,54 @@ func (s *GetTeamResponseBody) Validate() error {
 }
 
 type GetTeamResponseBodyData struct {
+	// The list of agent members in the team.
 	Agents []*GetTeamResponseBodyDataAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	// The creation time in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The team description.
+	//
 	// example:
 	//
-	// 负责智能客服业务的团队
+	// A team responsible for intelligent customer service operations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 128 characters in length.
+	//
 	// example:
 	//
 	// team-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The team ID.
+	//
 	// example:
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
+	// The time of the last modification in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
-	UpdatedAt *string                         `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	Users     []*GetTeamResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The list of user members in the team.
+	Users []*GetTeamResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456
@@ -273,54 +301,74 @@ func (s *GetTeamResponseBodyData) Validate() error {
 }
 
 type GetTeamResponseBodyDataAgents struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The creation mode of the agent. CUSTOM indicates custom creation. TEMPLATE indicates creation from a template.
+	//
 	// example:
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
+	// The creation time in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The deployment type of the agent. MANAGED indicates platform-managed deployment. SELF_HOSTED indicates self-hosted deployment.
+	//
 	// example:
 	//
 	// MANAGED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
+	// The agent description.
+	//
 	// example:
 	//
-	// 处理售后咨询的智能体
+	// An agent that handles after-sales inquiries
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// example:
+	// The latest configuration version number of the agent.
 	//
-	// 1
-	EffectiveSpecVersion *int64 `json:"effectiveSpecVersion,omitempty" xml:"effectiveSpecVersion,omitempty"`
 	// example:
 	//
 	// 2
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
+	// The agent name.
+	//
 	// example:
 	//
 	// agent-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The runtime type of the agent.
+	//
 	// example:
 	//
 	// qwenpaw
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// The agent status. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The role of the agent in the team. Valid values: LEADER and WORKER.
+	//
 	// example:
 	//
 	// WORKER
 	TeamRole *string `json:"teamRole,omitempty" xml:"teamRole,omitempty"`
+	// The time of the last modification in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456
@@ -353,10 +401,6 @@ func (s *GetTeamResponseBodyDataAgents) GetDeployType() *string {
 
 func (s *GetTeamResponseBodyDataAgents) GetDescription() *string {
 	return s.Description
-}
-
-func (s *GetTeamResponseBodyDataAgents) GetEffectiveSpecVersion() *int64 {
-	return s.EffectiveSpecVersion
 }
 
 func (s *GetTeamResponseBodyDataAgents) GetLatestSpecVersion() *int64 {
@@ -412,11 +456,6 @@ func (s *GetTeamResponseBodyDataAgents) SetDescription(v string) *GetTeamRespons
 	return s
 }
 
-func (s *GetTeamResponseBodyDataAgents) SetEffectiveSpecVersion(v int64) *GetTeamResponseBodyDataAgents {
-	s.EffectiveSpecVersion = &v
-	return s
-}
-
 func (s *GetTeamResponseBodyDataAgents) SetLatestSpecVersion(v int64) *GetTeamResponseBodyDataAgents {
 	s.LatestSpecVersion = &v
 	return s
@@ -457,50 +496,74 @@ func (s *GetTeamResponseBodyDataAgents) Validate() error {
 }
 
 type GetTeamResponseBodyDataUsers struct {
+	// The authentication method of the user. password indicates local password authentication in the workspace. dingtalk and feishu indicate synchronization and authentication by the corresponding external identity provider.
+	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
+	// The creation time in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The display name of the user. The name must be 1 to 32 characters in length.
+	//
 	// example:
 	//
-	// 张三
+	// John Doe
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user. The address can be up to 256 characters in length.
+	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The initial password of the user. If a password was specified during creation, that password is returned. If no password was specified, a random password generated by the server is returned.
+	//
 	// example:
 	//
 	// Example@2026
 	InitialPassword *string `json:"initialPassword,omitempty" xml:"initialPassword,omitempty"`
+	// The username. The name must be unique within the workspace. It can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 32 characters in length.
+	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The user note. The note can be up to 1024 characters in length.
+	//
 	// example:
 	//
-	// 智能体运营组成员
+	// Member of the agent operations group
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
+	// The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
+	//
 	// example:
 	//
 	// ADMIN
 	TeamRole *string `json:"teamRole,omitempty" xml:"teamRole,omitempty"`
+	// The time of the last modification in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// usr-123456
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456

@@ -30,13 +30,13 @@ type iListExternalAgentsResponseBody interface {
 }
 
 type ListExternalAgentsResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value SUCCESS is returned for a successful request.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value 200 is returned for a successful request.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The message returned for the request.
+	// The message that indicates the result of the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates the last page.
+	// The token for the next page. An empty value indicates that the last page has been reached.
 	//
 	// example:
 	//
@@ -213,25 +213,19 @@ type ListExternalAgentsResponseBodyItems struct {
 	//
 	// SELF_HOSTED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The external agent description.
+	// The description of the external agent.
 	//
 	// example:
 	//
 	// A code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The currently effective specification version number.
-	//
-	// example:
-	//
-	// 1
-	EffectiveSpecVersion *int64 `json:"effectiveSpecVersion,omitempty" xml:"effectiveSpecVersion,omitempty"`
 	// The latest specification version number.
 	//
 	// example:
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The external agent name.
+	// The name of the external agent.
 	//
 	// example:
 	//
@@ -243,7 +237,7 @@ type ListExternalAgentsResponseBodyItems struct {
 	//
 	// qwenpaw
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The external agent status. Valid values:
+	// The status of the external agent. Valid values:
 	//
 	// - Creating: The agent is being created.
 	//
@@ -303,10 +297,6 @@ func (s *ListExternalAgentsResponseBodyItems) GetDescription() *string {
 	return s.Description
 }
 
-func (s *ListExternalAgentsResponseBodyItems) GetEffectiveSpecVersion() *int64 {
-	return s.EffectiveSpecVersion
-}
-
 func (s *ListExternalAgentsResponseBodyItems) GetLatestSpecVersion() *int64 {
 	return s.LatestSpecVersion
 }
@@ -353,11 +343,6 @@ func (s *ListExternalAgentsResponseBodyItems) SetDeployType(v string) *ListExter
 
 func (s *ListExternalAgentsResponseBodyItems) SetDescription(v string) *ListExternalAgentsResponseBodyItems {
 	s.Description = &v
-	return s
-}
-
-func (s *ListExternalAgentsResponseBodyItems) SetEffectiveSpecVersion(v int64) *ListExternalAgentsResponseBodyItems {
-	s.EffectiveSpecVersion = &v
 	return s
 }
 

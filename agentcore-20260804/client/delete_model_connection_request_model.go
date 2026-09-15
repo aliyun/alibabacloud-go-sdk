@@ -14,6 +14,8 @@ type iDeleteModelConnectionRequest interface {
 }
 
 type DeleteModelConnectionRequest struct {
+	// The client token for idempotence. Not currently supported.
+	//
 	// example:
 	//
 	// client-token-1
