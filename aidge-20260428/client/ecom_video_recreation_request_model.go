@@ -16,7 +16,7 @@ type iEcomVideoRecreationRequest interface {
 }
 
 type EcomVideoRecreationRequest struct {
-  // The input parameters for video remix.
+  // The input parameters for video multiplication.
   // 
   // This parameter is required.
   Input *EcomVideoRecreationRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
@@ -65,7 +65,7 @@ func (s *EcomVideoRecreationRequest) Validate() error {
 }
 
 type EcomVideoRecreationRequestInput struct {
-  // The description or supplementary constraints for the target person in person replacement mode. 1 to 500 characters. Required when PersonReferenceImageUrls is not provided.   
+  // The description or supplementary constraints for the target person in person replacement mode. The value must be 1 to 500 characters in length. This parameter is required if PersonReferenceImageUrls is not provided.   
   // 
   // Example: The target person is an adult male. Retain the original clothing and actions.
   // 
@@ -79,17 +79,17 @@ type EcomVideoRecreationRequestInput struct {
   // 
   // product_replacement
   Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-  // The URLs of target person reference images for person replacement. 1 to 5 images of the same person are supported. Arrange images in the following order: face close-up, front view, 45-degree angle, side view, and back view.  
+  // The URLs of reference images for the target person in person replacement mode. You can specify 1 to 5 images, which must be of the same person. Arrange the images in the following order: facial close-up, front view, 45-degree view, side view, and back view.  
   // 
   // Example: ["https://example.com/person.jpg"]
   PersonReferenceImageUrls []*string `json:"PersonReferenceImageUrls,omitempty" xml:"PersonReferenceImageUrls,omitempty" type:"Repeated"`
-  // The URL of the target product image. Required for product replacement. Exactly one image must be provided. A clear subject with no occlusion and a clean background is recommended.  
+  // The URLs of target product images. This parameter is required for product replacement mode. You can upload 1 to 8 images for the same SKU. Use images with a clear subject, no occlusion, and a clean background.   
   // 
   // Example: ["https://example.com/product.png"]
   ProductImageUrls []*string `json:"ProductImageUrls,omitempty" xml:"ProductImageUrls,omitempty" type:"Repeated"`
-  // The target product information. Provide this parameter to improve voiceover accuracy.
+  // The target product information. Specify this parameter to improve voiceover accuracy.
   ProductInfo *EcomVideoRecreationRequestInputProductInfo `json:"ProductInfo,omitempty" xml:"ProductInfo,omitempty" type:"Struct"`
-  // The HTTP(S) URL of the reference video. The video duration must be in the range of 2 to 360 seconds. The URL must remain accessible during task execution. Set the URL validity period to at least 24 hours.
+  // The HTTP(S) URL of the reference video. The video duration must be 2 to 360 seconds. The URL must remain accessible during task execution. A validity period of at least 24 hours is recommended.
   // 
   // This parameter is required.
   // 
@@ -173,7 +173,7 @@ func (s *EcomVideoRecreationRequestInput) Validate() error {
 type EcomVideoRecreationRequestInputProductInfo struct {
   // The product category.  
   // 
-  // Example: Women\\"s Clothing/Sun Protection Jacket
+  // Example: Womenswear/Sun-protective clothing
   // 
   // example:
   // 
@@ -181,15 +181,15 @@ type EcomVideoRecreationRequestInputProductInfo struct {
   Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
   // The actual product information (SKU, brand, color, material, size, specifications, logo, and usage), used to constrain voiceover facts.  
   // 
-  // Example: Light moon yellow, cool-touch fabric, sun protection to the back of the hand, UPF50+
+  // Example: Light yellow, cooling fabric, sun protection to the back of the hand, UPF50+
   // 
   // example:
   // 
   // Light moon yellow, cool-touch fabric, sun protection extending to the back of the hand, UPF50+
   Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-  // Required for product replacement. The name of the target product. Maximum length: 200 characters.  
+  // The name of the target product. This parameter is required for product replacement mode. Maximum length: 200 characters.  
   // 
-  // Example: Light Moon Yellow Cool-touch Sun Protection Jacket
+  // Example: Light yellow cooling sun-protective jacket
   // 
   // example:
   // 
@@ -237,11 +237,11 @@ func (s *EcomVideoRecreationRequestInputProductInfo) Validate() error {
 }
 
 type EcomVideoRecreationRequestOutput struct {
-  // The target duration in seconds. `"auto"` (default): determined by the system. For product replacement, an integer from 5 to 60 can be specified. For person replacement, only `"auto"` is supported.
+  // The target duration in seconds. Set to ``"auto"`` (default) to let the system decide. For product replacement, specify an integer from 5 to 60. For person replacement, only `"auto"` is supported.
   // 
   // example:
   // 
-  // auto
+  // -1
   Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
   // The output resolution. Default value: `720p`.
   // 

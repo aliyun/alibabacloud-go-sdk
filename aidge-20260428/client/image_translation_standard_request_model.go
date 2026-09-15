@@ -26,7 +26,7 @@ type iImageTranslationStandardRequest interface {
 }
 
 type ImageTranslationStandardRequest struct {
-	// The intervention glossary ID. Optional. Create the glossary separately in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
+	// The intervention glossary ID. Optional. You must create the glossary separately in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ImageTranslationStandardRequest struct {
 	//
 	// https://images-na.ssl-images-amazon.com/images/I/41bKsNBDcwL.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate text on the image subject. Optional. Default value: false. This helps protect information by avoiding translation of embedded information such as product names.
+	// Specifies whether to translate text on the product area of an image. Optional. Default value: false. This helps protect information by avoiding translation of embedded information such as product names.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iPrepaidTextTranslateResponseBody interface {
 }
 
 type PrepaidTextTranslateResponseBody struct {
-	// The response code. Returns "success" for normal calls.
+	// The response code. The value "success" is returned for successful calls.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type PrepaidTextTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data, including the translation list and usage information.
 	Data *PrepaidTextTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. Returns "Success" for normal calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
+	// The error message. The value "Success" is returned for successful calls. For exceptions, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used to identify a unique request call.
+	// The request ID, used to uniquely identify a request.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. true indicates success. false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *PrepaidTextTranslateResponseBody) Validate() error {
 type PrepaidTextTranslateResponseBodyData struct {
 	// The translation result list. Each element corresponds to a translation result for an entry in the input text list.
 	Translations []*PrepaidTextTranslateResponseBodyDataTranslations `json:"Translations,omitempty" xml:"Translations,omitempty" type:"Repeated"`
-	// The usage information, including the input character count.
+	// The usage information, including the number of input characters.
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 
@@ -159,7 +159,7 @@ func (s *PrepaidTextTranslateResponseBodyData) Validate() error {
 }
 
 type PrepaidTextTranslateResponseBodyDataTranslations struct {
-	// The character count of the source text.
+	// The number of characters in the source text.
 	//
 	// example:
 	//

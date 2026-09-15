@@ -36,7 +36,7 @@ type VisionFlowResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used to uniquely identify a single API call.
+	// The request ID, used to uniquely identify a single request.
 	//
 	// example:
 	//

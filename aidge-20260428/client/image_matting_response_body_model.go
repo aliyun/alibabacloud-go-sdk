@@ -123,13 +123,13 @@ type ImageMattingResponseBodyData struct {
 	//
 	// 800
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The URL of the matting result image.
+	// The URL of the image matting result.
 	//
 	// example:
 	//
 	// http://dashscope-7c2c.oss-cn-shanghai.aliyuncs.com/xxx.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The matting quality score.
+	// The quality score of the image matting result.
 	//
 	// example:
 	//

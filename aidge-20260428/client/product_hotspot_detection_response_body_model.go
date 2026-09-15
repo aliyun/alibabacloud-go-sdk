@@ -113,7 +113,7 @@ func (s *ProductHotspotDetectionResponseBody) Validate() error {
 }
 
 type ProductHotspotDetectionResponseBodyData struct {
-	// The list of recognized products and their bounding boxes.
+	// The list of detected products and their bounding boxes.
 	Products []*ProductHotspotDetectionResponseBodyDataProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
 	// The usage information.
 	//
@@ -163,7 +163,7 @@ func (s *ProductHotspotDetectionResponseBodyData) Validate() error {
 }
 
 type ProductHotspotDetectionResponseBodyDataProducts struct {
-	// The bounding boxes of the product instances.
+	// The bounding boxes of the detected product instances.
 	Boxes []*ProductHotspotDetectionResponseBodyDataProductsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
 	// The product name.
 	//

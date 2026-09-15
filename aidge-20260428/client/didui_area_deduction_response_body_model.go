@@ -42,7 +42,7 @@ type DiduiAreaDeductionResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *DiduiAreaDeductionResponseBody) Validate() error {
 }
 
 type DiduiAreaDeductionResponseBodyData struct {
-	// The number of downstream call attempts.
+	// The number of downstream calls.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DiduiAreaDeductionResponseBodyData struct {
 	//
 	// 1000
 	LatencyMs *int64 `json:"LatencyMs,omitempty" xml:"LatencyMs,omitempty"`
-	// The workflow description message.
+	// The workflow description.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DiduiAreaDeductionResponseBodyData struct {
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The workflow business status.
+	// Indicates whether the workflow execution is successful.
 	//
 	// example:
 	//

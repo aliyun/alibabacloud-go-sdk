@@ -34,7 +34,7 @@ type AssetOptimizeLiteRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Test
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
 	// Specifies whether product area translation is included.
 	//
@@ -42,7 +42,7 @@ type AssetOptimizeLiteRequest struct {
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// Specifies whether translation is needed.
+	// Specifies whether translation is required.
 	//
 	// This parameter is required.
 	//

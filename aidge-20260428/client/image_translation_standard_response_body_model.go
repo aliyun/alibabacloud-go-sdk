@@ -22,7 +22,7 @@ type iImageTranslationStandardResponseBody interface {
 }
 
 type ImageTranslationStandardResponseBody struct {
-	// The response code. 200 indicates success. For other response codes, refer to the error code information.
+	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ImageTranslationStandardResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used to uniquely identify a request.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
 	// 1CEC4D94-905A-1ED1-A7B4-1BFEFFB3D850
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. true indicates success. false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *ImageTranslationStandardResponseBody) Validate() error {
 type ImageTranslationStandardResponseBodyData struct {
 	// The edit information.
 	EditInfo *ImageTranslationStandardResponseBodyDataEditInfo `json:"EditInfo,omitempty" xml:"EditInfo,omitempty" type:"Struct"`
-	// The URL of the image generated from the image translation result.
+	// The URL of the image generated after image translation.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type ImageTranslationStandardResponseBodyDataEditInfo struct {
 	//
 	// ["NotoSansSC-Bold"]
 	Font []*string `json:"Font,omitempty" xml:"Font,omitempty" type:"Repeated"`
-	// The product area rectangle.
+	// The product area rectangles.
 	GoodsRects *ImageTranslationStandardResponseBodyDataEditInfoGoodsRects `json:"GoodsRects,omitempty" xml:"GoodsRects,omitempty" type:"Struct"`
 	// The product image URL.
 	//
@@ -194,13 +194,13 @@ type ImageTranslationStandardResponseBodyDataEditInfo struct {
 	//
 	// ["zh"]
 	Languages []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
-	// The URL of the original image.
+	// The original image URL.
 	//
 	// example:
 	//
 	// https://xiuxiu-pro.meitudata.com/posters/34d78f9157e5560a4d612949ca6f6485.jpg
 	PictUrl *string `json:"PictUrl,omitempty" xml:"PictUrl,omitempty"`
-	// The URL of the repaired image.
+	// The repaired image URL.
 	//
 	// example:
 	//

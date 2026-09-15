@@ -22,7 +22,7 @@ type iImageRecognitionResponseBody interface {
 }
 
 type ImageRecognitionResponseBody struct {
-	// The error code. This parameter is not returned for successful calls.
+	// The error code. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ImageRecognitionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The intelligent element recognition result.
 	Data *ImageRecognitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for successful calls.
+	// The error message. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ type ImageRecognitionResponseBodyData struct {
 	//
 	// false
 	ObjWatermark *bool `json:"ObjWatermark,omitempty" xml:"ObjWatermark,omitempty"`
-	// The product count.
+	// The number of products.
 	//
 	// example:
 	//
 	// 2
 	PdNum *int32 `json:"PdNum,omitempty" xml:"PdNum,omitempty"`
-	// The product proportion.
+	// The proportion of the product area in the image.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type ImageRecognitionResponseBodyData struct {
 	PdProp *string `json:"PdProp,omitempty" xml:"PdProp,omitempty"`
 	// The list of recognized text.
 	RecText []*string `json:"RecText,omitempty" xml:"RecText,omitempty" type:"Repeated"`
-	// The text proportion.
+	// The proportion of the text area in the image.
 	//
 	// example:
 	//

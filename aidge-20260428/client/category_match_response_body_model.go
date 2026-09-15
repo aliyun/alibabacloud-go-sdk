@@ -36,7 +36,7 @@ type CategoryMatchResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the API call.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
@@ -113,41 +113,41 @@ func (s *CategoryMatchResponseBody) Validate() error {
 }
 
 type CategoryMatchResponseBodyData struct {
-	// The matched category ID.
+	// The ID of the matched category.
 	//
 	// example:
 	//
 	// 1522
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The matched category name.
+	// The name of the matched category.
 	//
 	// example:
 	//
 	// 位置和活动跟踪器
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The full path of the category, separated by "/".
+	// The full path of the category, separated by forward slashes (/).
 	//
 	// example:
 	//
 	// 宠物用品/猫用品/猫挂饰、项圈、牵引带/位置和活动跟踪器
 	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
-	// The matching confidence score, ranging from 0 to 100.
+	// The match confidence score. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 96
 	Confidence *int32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Indicates whether the matching is successful.
+	// Indicates whether the category matching is successful.
 	//
 	// example:
 	//
 	// true
 	MatchSuccessful *bool `json:"MatchSuccessful,omitempty" xml:"MatchSuccessful,omitempty"`
-	// The explanation of the matching reason.
+	// The reason for the category match.
 	//
 	// example:
 	//
-	// The product core is a cat collar with AirTag positioning function, belonging to the \\"Location and Activity Trackers\\" category, with leaf node semantics precisely matching its tracking function and cat-use attributes
+	// The core product is a cat collar with AirTag positioning functionality, belonging to the \\"Location and Activity Trackers\\" category. The leaf node semantically matches its tracking functionality and cat-use attributes precisely
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The usage information.
 	UsageMap map[string]*int32 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`

@@ -16,7 +16,7 @@ type iEcomVideoRecreationShrinkRequest interface {
 }
 
 type EcomVideoRecreationShrinkRequest struct {
-  // The input parameters for video remix.
+  // The input parameters for video multiplication.
   // 
   // This parameter is required.
   InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`

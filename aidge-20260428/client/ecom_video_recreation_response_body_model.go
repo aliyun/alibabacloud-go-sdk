@@ -22,7 +22,7 @@ type iEcomVideoRecreationResponseBody interface {
 }
 
 type EcomVideoRecreationResponseBody struct {
-  // The result code. `success` indicates success. An error code is returned upon failure.
+  // The result code. A value of `success` indicates success. An error code is returned upon failure.
   // 
   // example:
   // 
@@ -113,7 +113,7 @@ func (s *EcomVideoRecreationResponseBody) Validate() error {
 }
 
 type EcomVideoRecreationResponseBodyData struct {
-  // The asynchronous task ID for QueryAsyncTaskResult queries.
+  // The asynchronous task ID used to query results with QueryAsyncTaskResult.
   // 
   // example:
   // 

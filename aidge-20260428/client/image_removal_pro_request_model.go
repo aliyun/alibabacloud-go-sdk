@@ -18,9 +18,9 @@ type iImageRemovalProRequest interface {
 type ImageRemovalProRequest struct {
 	// The call type. Valid values:
 	//
-	// - true: asynchronous.
+	// - true: Asynchronous.
 	//
-	// - false: synchronous.
+	// - false: Synchronous.
 	//
 	// Default value: false.
 	//

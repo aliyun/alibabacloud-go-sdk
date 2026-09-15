@@ -113,7 +113,7 @@ func (s *ImageRemoveResponseBody) Validate() error {
 }
 
 type ImageRemoveResponseBodyData struct {
-	// The height of the result image in pixels.
+	// The height of the result image, in pixels.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ImageRemoveResponseBodyData struct {
 	//
 	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
-	// The width of the result image in pixels.
+	// The width of the result image, in pixels.
 	//
 	// example:
 	//

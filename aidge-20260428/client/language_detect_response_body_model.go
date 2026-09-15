@@ -22,7 +22,7 @@ type iLanguageDetectResponseBody interface {
 }
 
 type LanguageDetectResponseBody struct {
-	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code documentation.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type LanguageDetectResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The language identification result data, including the detected language and usage information.
 	Data *LanguageDetectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. "Success" is returned for a successful call. A specific error message is returned for an exception, such as "The parameters contain sensitive information. Try other input."
+	// The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call, such as "The parameters contain sensitive information. Try other input."
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used to uniquely identify a request.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//

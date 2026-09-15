@@ -20,13 +20,13 @@ type iMerchandisePlacementDetectionRequest interface {
 }
 
 type MerchandisePlacementDetectionRequest struct {
-	// Specifies a custom API version. If you created a "My API" during the trial phase, you can find the corresponding ApiId in the product console under "Intelligent Inspection > API Management > My API".
+	// Specify this parameter to use a custom API version. If you created a custom API during the trial phase, you can find the corresponding ApiId in the product console under **Intelligent Inspection > API Management > My APIs**.
 	//
 	// example:
 	//
 	// api_xxx
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The URL of the shelf or floor-stack image to be recognized (accessible over the public network or from OSS).
+	// The URL of the shelf or floor-stack photo to be recognized (accessible over the Internet or from OSS).
 	//
 	// This parameter is required.
 	//
@@ -34,17 +34,17 @@ type MerchandisePlacementDetectionRequest struct {
 	//
 	// https://example.com/shelf.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The ID of the customer\\"s dedicated SKU vector library, which determines which library is used for retrieval. The library must be created in advance through the library creation process.
+	// The ID of the customer-specific SKU vector library, which determines which library is used for recall. The library must be created in advance through the library creation process.
 	//
 	// example:
 	//
 	// rag_xxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The business type (reserved for future routing by business line). The current phase supports skincare & lotion.
+	// The business type (reserved for future routing by business line). The current release supports skincare.
 	//
 	// example:
 	//
-	// 水乳
+	// skincare
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -113,7 +113,7 @@ func (s *AssetOptimizeLiteResponseBody) Validate() error {
 }
 
 type AssetOptimizeLiteResponseBodyData struct {
-	// The asynchronous task ID, used to query results later.
+	// The asynchronous task ID, which is used to query the result later.
 	//
 	// example:
 	//

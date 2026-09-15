@@ -32,19 +32,19 @@ type CategoryMatchRequest struct {
 	//
 	// example:
 	//
-	// Silk, new spring style
+	// Silk, Spring New Arrival
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The product attributes that describe the characteristics of the product, such as material. Provide the attribute names and values.
 	//
 	// example:
 	//
-	// 材质:涤纶,适用对象:通用,品牌:艾马逊AMASON PET
+	// Material:Polyester,Target Audience:General,Brand:AMASON PET
 	ItemSpec *string `json:"ItemSpec,omitempty" xml:"ItemSpec,omitempty"`
-	// The product SKU title.
+	// The SKU title of the product.
 	//
 	// example:
 	//
-	// 0:0:颜色:黑(不含定位器);0:1:颜色:智能定位(不含项圈);0:2:颜色:范围定位(不含项圈);0:3:颜色:蓝(不含定位器);0:4:颜色:橙(不含定位器);0:5:颜色:粉(不含定位器);0:6:颜色:红(不含定位器);0:7:颜色:黄(不含定位器);0:8:颜色:紫(不含定位器)
+	// 0:0:Color:Black(without locator);0:1:Color:Smart Locator(without collar);0:2:Color:Range Locator(without collar);0:3:Color:Blue(without locator);0:4:Color:Orange(without locator);0:5:Color:Pink(without locator);0:6:Color:Red(without locator);0:7:Color:Yellow(without locator);0:8:Color:Purple(without locator)
 	Sku *string `json:"Sku,omitempty" xml:"Sku,omitempty"`
 	// The product category on the source platform.
 	//
@@ -54,7 +54,7 @@ type CategoryMatchRequest struct {
 	//
 	// Clothing
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The source platform where products are sourced from.
+	// The source platform from which products are sourced.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CategoryMatchRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target listing platform. Currently only temu is supported.
+	// The target listing platform. Currently, only temu is supported.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CategoryMatchRequest struct {
 	//
 	// example:
 	//
-	// Women\\"s new spring clothing
+	// Women\\"s Spring New Arrival Clothing
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

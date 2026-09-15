@@ -30,7 +30,7 @@ type TextTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data, including the translation list and usage information.
 	Data *TextTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. The value "Success" is returned for successful calls. For exceptions, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
+	// The error message. The value "Success" is returned for successful calls. For failed calls, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
 	//
 	// example:
 	//

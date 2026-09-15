@@ -34,7 +34,7 @@ type CategoryAttributeMatchShrinkRequest struct {
 	//
 	// Silk, new spring style
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The product image URLs (up to 10 images are supported).
+	// The product image URLs. A maximum of 10 images are supported.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CategoryAttributeMatchShrinkRequest struct {
 	//
 	// example:
 	//
-	// 0:0:颜色:黑(不含定位器);0:1:颜色:智能定位(不含项圈);0:2:颜色:范围定位(不含项圈);0:3:颜色:蓝(不含定位器);0:4:颜色:橙(不含定位器);0:5:颜色:粉(不含定位器);0:6:颜色:红(不含定位器);0:7:颜色:黄(不含定位器);0:8:颜色:紫(不含定位器)
+	// 0:0:Color:Black (without locator);0:1:Color:Smart Locator (without collar);0:2:Color:Range Locator (without collar);0:3:Color:Blue (without locator);0:4:Color:Orange (without locator);0:5:Color:Pink (without locator);0:6:Color:Red (without locator);0:7:Color:Yellow (without locator);0:8:Color:Purple (without locator)
 	Sku *string `json:"Sku,omitempty" xml:"Sku,omitempty"`
 	// The product category on the source platform.
 	//
@@ -64,7 +64,7 @@ type CategoryAttributeMatchShrinkRequest struct {
 	//
 	// Clothing
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The source platform where the product originates.
+	// The source platform from which the product originates.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type CategoryAttributeMatchShrinkRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target listing platform. Currently only temu is supported.
+	// The target listing platform. Currently, only temu is supported.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CategoryAttributeMatchShrinkRequest struct {
 	//
 	// example:
 	//
-	// Women\\"s new spring clothing
+	// Women\\"s New Spring Clothing
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

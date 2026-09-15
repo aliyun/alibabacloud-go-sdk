@@ -26,13 +26,13 @@ type iPrepaidTextTranslateShrinkRequest interface {
 }
 
 type PrepaidTextTranslateShrinkRequest struct {
-	// The business scenario identifier. This parameter is optional. Valid values: e-commerce-title, e-commerce-description, e-commerce-chat, e-commerce-cpv, novel, game. If not specified or an invalid value is passed, the general translation strategy is used by default.
+	// The business scenario identifier. This parameter is optional. Valid values: e-commerce-title, e-commerce-description, e-commerce-chat, e-commerce-cpv, novel, game. If not specified or an invalid value is passed, the general translation policy is used by default.
 	//
 	// example:
 	//
 	// Alibaba-商品
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The format type of the source text. This parameter is optional. Supports text (plain text format) and html (web page format, preserving HTML tags).
+	// The format type of the source text. This parameter is optional. Valid values: text (plain text format) and html (web page format that preserves HTML tags).
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type PrepaidTextTranslateShrinkRequest struct {
 	//
 	// zh
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// The format of the translation text. html (web page format. This setting processes both the source text and translated text in HTML format) or text (text format. This setting processes both the source text and translated result as plain text without format processing).
+	// The format of the translation text. html (web page format. This setting processes the source text and translated text in HTML format). text (text format. This setting processes the source text and translated text as plain text without any format processing).
 	//
 	// example:
 	//

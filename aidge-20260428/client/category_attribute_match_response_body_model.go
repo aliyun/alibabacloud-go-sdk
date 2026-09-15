@@ -28,7 +28,7 @@ type CategoryAttributeMatchResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *CategoryAttributeMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. This parameter is not returned for successful calls.
 	//
@@ -125,13 +125,13 @@ type CategoryAttributeMatchResponseBodyData struct {
 	//
 	// example:
 	//
-	// 猫项圈
+	// Cat Collars
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The full path of the category, separated by "/".
 	//
 	// example:
 	//
-	// 宠物用品/猫用品/猫挂饰、项圈、牵引带/猫项圈
+	// Pet Supplies/Cat Supplies/Cat Charms, Collars & Leashes/Cat Collars
 	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
 	// The number of attributes that are successfully filled.
 	//
@@ -151,7 +151,7 @@ type CategoryAttributeMatchResponseBodyData struct {
 	//
 	// 10
 	TotalAttributes *int32 `json:"TotalAttributes,omitempty" xml:"TotalAttributes,omitempty"`
-	// The usage information.
+	// The usage fields.
 	UsageMap *CategoryAttributeMatchResponseBodyDataUsageMap `json:"UsageMap,omitempty" xml:"UsageMap,omitempty" type:"Struct"`
 }
 
@@ -270,7 +270,7 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	//
 	// example:
 	//
-	// 单选下拉
+	// Single-select dropdown
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
 	// Indicates whether the attribute is successfully matched. Valid values: true and false.
 	//
