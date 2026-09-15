@@ -11,26 +11,36 @@ type iListComputeInstancesInPageRequest interface {
 	GoString() string
 	SetCurrentPage(v int32) *ListComputeInstancesInPageRequest
 	GetCurrentPage() *int32
-	SetInstanceId(v string) *ListComputeInstancesInPageRequest
-	GetInstanceId() *string
 	SetInstanceIds(v []*string) *ListComputeInstancesInPageRequest
 	GetInstanceIds() []*string
-	SetOrderId(v string) *ListComputeInstancesInPageRequest
-	GetOrderId() *string
 	SetPageSize(v int32) *ListComputeInstancesInPageRequest
 	GetPageSize() *int32
 	SetRegionId(v string) *ListComputeInstancesInPageRequest
 	GetRegionId() *string
+	SetResourceGroupId(v string) *ListComputeInstancesInPageRequest
+	GetResourceGroupId() *string
 }
 
 type ListComputeInstancesInPageRequest struct {
+	// example:
+	//
+	// 1
 	CurrentPage *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListComputeInstancesInPageRequest) String() string {
@@ -45,16 +55,8 @@ func (s *ListComputeInstancesInPageRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
-func (s *ListComputeInstancesInPageRequest) GetInstanceId() *string {
-	return s.InstanceId
-}
-
 func (s *ListComputeInstancesInPageRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
-}
-
-func (s *ListComputeInstancesInPageRequest) GetOrderId() *string {
-	return s.OrderId
 }
 
 func (s *ListComputeInstancesInPageRequest) GetPageSize() *int32 {
@@ -65,23 +67,17 @@ func (s *ListComputeInstancesInPageRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListComputeInstancesInPageRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListComputeInstancesInPageRequest) SetCurrentPage(v int32) *ListComputeInstancesInPageRequest {
 	s.CurrentPage = &v
 	return s
 }
 
-func (s *ListComputeInstancesInPageRequest) SetInstanceId(v string) *ListComputeInstancesInPageRequest {
-	s.InstanceId = &v
-	return s
-}
-
 func (s *ListComputeInstancesInPageRequest) SetInstanceIds(v []*string) *ListComputeInstancesInPageRequest {
 	s.InstanceIds = v
-	return s
-}
-
-func (s *ListComputeInstancesInPageRequest) SetOrderId(v string) *ListComputeInstancesInPageRequest {
-	s.OrderId = &v
 	return s
 }
 
@@ -92,6 +88,11 @@ func (s *ListComputeInstancesInPageRequest) SetPageSize(v int32) *ListComputeIns
 
 func (s *ListComputeInstancesInPageRequest) SetRegionId(v string) *ListComputeInstancesInPageRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListComputeInstancesInPageRequest) SetResourceGroupId(v string) *ListComputeInstancesInPageRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

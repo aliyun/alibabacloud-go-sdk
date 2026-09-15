@@ -11,17 +11,22 @@ type iGetComputeInstanceRequest interface {
 	GoString() string
 	SetInstanceId(v string) *GetComputeInstanceRequest
 	GetInstanceId() *string
-	SetOrderId(v string) *GetComputeInstanceRequest
-	GetOrderId() *string
 	SetRegionId(v string) *GetComputeInstanceRequest
 	GetRegionId() *string
 }
 
 type GetComputeInstanceRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -37,21 +42,12 @@ func (s *GetComputeInstanceRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
-func (s *GetComputeInstanceRequest) GetOrderId() *string {
-	return s.OrderId
-}
-
 func (s *GetComputeInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *GetComputeInstanceRequest) SetInstanceId(v string) *GetComputeInstanceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetComputeInstanceRequest) SetOrderId(v string) *GetComputeInstanceRequest {
-	s.OrderId = &v
 	return s
 }
 

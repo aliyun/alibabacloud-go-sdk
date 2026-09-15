@@ -9,8 +9,6 @@ type iUpdateComputeInstanceNameRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *UpdateComputeInstanceNameRequest
-	GetClientToken() *string
 	SetInstanceId(v string) *UpdateComputeInstanceNameRequest
 	GetInstanceId() *string
 	SetInstanceName(v string) *UpdateComputeInstanceNameRequest
@@ -20,12 +18,23 @@ type iUpdateComputeInstanceNameRequest interface {
 }
 
 type UpdateComputeInstanceNameRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// streaming-prod
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -35,10 +44,6 @@ func (s UpdateComputeInstanceNameRequest) String() string {
 
 func (s UpdateComputeInstanceNameRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateComputeInstanceNameRequest) GetClientToken() *string {
-	return s.ClientToken
 }
 
 func (s *UpdateComputeInstanceNameRequest) GetInstanceId() *string {
@@ -51,11 +56,6 @@ func (s *UpdateComputeInstanceNameRequest) GetInstanceName() *string {
 
 func (s *UpdateComputeInstanceNameRequest) GetRegionId() *string {
 	return s.RegionId
-}
-
-func (s *UpdateComputeInstanceNameRequest) SetClientToken(v string) *UpdateComputeInstanceNameRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *UpdateComputeInstanceNameRequest) SetInstanceId(v string) *UpdateComputeInstanceNameRequest {

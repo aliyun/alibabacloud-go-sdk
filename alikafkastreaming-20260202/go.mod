@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/alikafkastreaming-20260202
+module github.com/alibabacloud-go/alikafkastreaming-20260202/v2
 
 go 1.14
 

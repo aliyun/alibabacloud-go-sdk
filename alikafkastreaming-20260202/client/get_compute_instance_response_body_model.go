@@ -20,10 +20,19 @@ type iGetComputeInstanceResponseBody interface {
 }
 
 type GetComputeInstanceResponseBody struct {
-	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetComputeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetComputeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 019F5939-507B-57C1-B82C-E55821456FA6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetComputeInstanceResponseBody) String() string {
@@ -80,24 +89,63 @@ func (s *GetComputeInstanceResponseBody) Validate() error {
 }
 
 type GetComputeInstanceResponseBodyData struct {
+	// example:
+	//
+	// POST_PAID
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime    *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CuLimitSum    *float64 `json:"CuLimitSum,omitempty" xml:"CuLimitSum,omitempty"`
+	//
+	// example:
+	//
+	// 2026-09-02T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 4.0
+	CuLimitSum *float64 `json:"CuLimitSum,omitempty" xml:"CuLimitSum,omitempty"`
+	// example:
+	//
+	// 2.0
 	CuReservedSum *float64 `json:"CuReservedSum,omitempty" xml:"CuReservedSum,omitempty"`
-	CuUsedSum     *float64 `json:"CuUsedSum,omitempty" xml:"CuUsedSum,omitempty"`
+	// example:
+	//
+	// 2.5
+	CuUsedSum *float64 `json:"CuUsedSum,omitempty" xml:"CuUsedSum,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	ExpireTime       *string   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OrderId          *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceStatus    *string   `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	ServiceVersion   *string   `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	TotalJobs        *int64    `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	//
+	// example:
+	//
+	// 2027-09-02T16:00:00Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// alikafka_streaming-cn-pe333xxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// streaming-prod
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TotalJobs *int64 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	// example:
+	//
+	// 2
 	TotalRunningJobs *int64    `json:"TotalRunningJobs,omitempty" xml:"TotalRunningJobs,omitempty"`
 	VSwitchIds       []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vpc-bp1abcdefg
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetComputeInstanceResponseBodyData) String() string {
@@ -140,20 +188,12 @@ func (s *GetComputeInstanceResponseBodyData) GetInstanceName() *string {
 	return s.InstanceName
 }
 
-func (s *GetComputeInstanceResponseBodyData) GetOrderId() *string {
-	return s.OrderId
-}
-
 func (s *GetComputeInstanceResponseBodyData) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *GetComputeInstanceResponseBodyData) GetServiceStatus() *string {
 	return s.ServiceStatus
-}
-
-func (s *GetComputeInstanceResponseBodyData) GetServiceVersion() *string {
-	return s.ServiceVersion
 }
 
 func (s *GetComputeInstanceResponseBodyData) GetTotalJobs() *int64 {
@@ -212,11 +252,6 @@ func (s *GetComputeInstanceResponseBodyData) SetInstanceName(v string) *GetCompu
 	return s
 }
 
-func (s *GetComputeInstanceResponseBodyData) SetOrderId(v string) *GetComputeInstanceResponseBodyData {
-	s.OrderId = &v
-	return s
-}
-
 func (s *GetComputeInstanceResponseBodyData) SetRegionId(v string) *GetComputeInstanceResponseBodyData {
 	s.RegionId = &v
 	return s
@@ -224,11 +259,6 @@ func (s *GetComputeInstanceResponseBodyData) SetRegionId(v string) *GetComputeIn
 
 func (s *GetComputeInstanceResponseBodyData) SetServiceStatus(v string) *GetComputeInstanceResponseBodyData {
 	s.ServiceStatus = &v
-	return s
-}
-
-func (s *GetComputeInstanceResponseBodyData) SetServiceVersion(v string) *GetComputeInstanceResponseBodyData {
-	s.ServiceVersion = &v
 	return s
 }
 

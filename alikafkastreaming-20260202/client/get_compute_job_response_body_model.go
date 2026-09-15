@@ -20,10 +20,19 @@ type iGetComputeJobResponseBody interface {
 }
 
 type GetComputeJobResponseBody struct {
-	Code      *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetComputeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetComputeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 062D8E8B-8D47-5DCC-BB12-5A1D93C3A66B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetComputeJobResponseBody) String() string {
@@ -81,22 +90,73 @@ func (s *GetComputeJobResponseBody) Validate() error {
 
 type GetComputeJobResponseBodyData struct {
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime   *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CuLimit      *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
-	CuReserved   *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
-	CuUsed       *float64 `json:"CuUsed,omitempty" xml:"CuUsed,omitempty"`
-	DebugMode    *int32   `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
-	DeployedSql  *string  `json:"DeployedSql,omitempty" xml:"DeployedSql,omitempty"`
-	DraftSql     *string  `json:"DraftSql,omitempty" xml:"DraftSql,omitempty"`
-	HistoryInfos *string  `json:"HistoryInfos,omitempty" xml:"HistoryInfos,omitempty"`
-	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobConfig    *string  `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	JobName      *string  `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Owner        *string  `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RegionId     *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark       *string  `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpgradeMode  *string  `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+	//
+	// example:
+	//
+	// 2026-09-02T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2.0
+	CuLimit *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	// example:
+	//
+	// 1.0
+	CuReserved *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
+	// example:
+	//
+	// 1.5
+	CuUsed *float64 `json:"CuUsed,omitempty" xml:"CuUsed,omitempty"`
+	// example:
+	//
+	// 0
+	DebugMode *int32 `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
+	// example:
+	//
+	// INSERT INTO sink_table SELECT 	- FROM source_table;
+	DeployedSql *string `json:"DeployedSql,omitempty" xml:"DeployedSql,omitempty"`
+	// example:
+	//
+	// INSERT INTO sink_table SELECT 	- FROM source_table;
+	DraftSql *string `json:"DraftSql,omitempty" xml:"DraftSql,omitempty"`
+	// example:
+	//
+	// SQL 校验或编译失败：Column \\"xxx\\" not found
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2026-09-11T04:33:03Z
+	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// example:
+	//
+	// alikafka_streaming-cn-hangzhou-a1b2c3d4
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// order_enrichment
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 订单流实时清洗
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// savepoint
+	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
 }
 
 func (s GetComputeJobResponseBodyData) String() string {
@@ -135,16 +195,16 @@ func (s *GetComputeJobResponseBodyData) GetDraftSql() *string {
 	return s.DraftSql
 }
 
-func (s *GetComputeJobResponseBodyData) GetHistoryInfos() *string {
-	return s.HistoryInfos
+func (s *GetComputeJobResponseBodyData) GetErrorMsg() *string {
+	return s.ErrorMsg
+}
+
+func (s *GetComputeJobResponseBodyData) GetExpirationTime() *string {
+	return s.ExpirationTime
 }
 
 func (s *GetComputeJobResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
-}
-
-func (s *GetComputeJobResponseBodyData) GetJobConfig() *string {
-	return s.JobConfig
 }
 
 func (s *GetComputeJobResponseBodyData) GetJobName() *string {
@@ -206,18 +266,18 @@ func (s *GetComputeJobResponseBodyData) SetDraftSql(v string) *GetComputeJobResp
 	return s
 }
 
-func (s *GetComputeJobResponseBodyData) SetHistoryInfos(v string) *GetComputeJobResponseBodyData {
-	s.HistoryInfos = &v
+func (s *GetComputeJobResponseBodyData) SetErrorMsg(v string) *GetComputeJobResponseBodyData {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetComputeJobResponseBodyData) SetExpirationTime(v string) *GetComputeJobResponseBodyData {
+	s.ExpirationTime = &v
 	return s
 }
 
 func (s *GetComputeJobResponseBodyData) SetInstanceId(v string) *GetComputeJobResponseBodyData {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetComputeJobResponseBodyData) SetJobConfig(v string) *GetComputeJobResponseBodyData {
-	s.JobConfig = &v
 	return s
 }
 

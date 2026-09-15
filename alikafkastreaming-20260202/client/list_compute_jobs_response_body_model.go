@@ -26,13 +26,31 @@ type iListComputeJobsResponseBody interface {
 }
 
 type ListComputeJobsResponseBody struct {
-	Code       *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       []*ListComputeJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	MaxResults *int32                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total      *int64                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListComputeJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJvZmZzZXQiOjIwfQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 062D8E8B-8D47-5DCC-BB12-5A1D93C3A66B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListComputeJobsResponseBody) String() string {
@@ -121,17 +139,51 @@ func (s *ListComputeJobsResponseBody) Validate() error {
 
 type ListComputeJobsResponseBodyData struct {
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CuLimit    *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	//
+	// example:
+	//
+	// 2026-09-02T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2.0
+	CuLimit *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	// example:
+	//
+	// 1.0
 	CuReserved *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
-	CuUsed     *float64 `json:"CuUsed,omitempty" xml:"CuUsed,omitempty"`
-	DebugMode  *int32   `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
-	InstanceId *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobName    *string  `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	Owner      *string  `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RegionId   *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark     *string  `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status     *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1.5
+	CuUsed *float64 `json:"CuUsed,omitempty" xml:"CuUsed,omitempty"`
+	// example:
+	//
+	// 0
+	DebugMode *int32 `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
+	// example:
+	//
+	// alikafka_streaming-cn-a1b2c3d4
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// order_enrichment
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 订单流实时清洗
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListComputeJobsResponseBodyData) String() string {

@@ -9,18 +9,12 @@ type iStartComputeInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *StartComputeInstanceRequest
-	GetClientToken() *string
 	SetInstanceId(v string) *StartComputeInstanceRequest
 	GetInstanceId() *string
 	SetInstanceName(v string) *StartComputeInstanceRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *StartComputeInstanceRequest
 	GetRegionId() *string
-	SetSelectedZones(v string) *StartComputeInstanceRequest
-	GetSelectedZones() *string
-	SetServiceVersion(v string) *StartComputeInstanceRequest
-	GetServiceVersion() *string
 	SetVSwitchIds(v []*string) *StartComputeInstanceRequest
 	GetVSwitchIds() []*string
 	SetVpcId(v string) *StartComputeInstanceRequest
@@ -28,17 +22,29 @@ type iStartComputeInstanceRequest interface {
 }
 
 type StartComputeInstanceRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-pe333xxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// streaming-prod
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// This parameter is required.
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SelectedZones  *string `json:"SelectedZones,omitempty" xml:"SelectedZones,omitempty"`
-	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is required.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp1abcdefg
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -48,10 +54,6 @@ func (s StartComputeInstanceRequest) String() string {
 
 func (s StartComputeInstanceRequest) GoString() string {
 	return s.String()
-}
-
-func (s *StartComputeInstanceRequest) GetClientToken() *string {
-	return s.ClientToken
 }
 
 func (s *StartComputeInstanceRequest) GetInstanceId() *string {
@@ -66,25 +68,12 @@ func (s *StartComputeInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *StartComputeInstanceRequest) GetSelectedZones() *string {
-	return s.SelectedZones
-}
-
-func (s *StartComputeInstanceRequest) GetServiceVersion() *string {
-	return s.ServiceVersion
-}
-
 func (s *StartComputeInstanceRequest) GetVSwitchIds() []*string {
 	return s.VSwitchIds
 }
 
 func (s *StartComputeInstanceRequest) GetVpcId() *string {
 	return s.VpcId
-}
-
-func (s *StartComputeInstanceRequest) SetClientToken(v string) *StartComputeInstanceRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *StartComputeInstanceRequest) SetInstanceId(v string) *StartComputeInstanceRequest {
@@ -99,16 +88,6 @@ func (s *StartComputeInstanceRequest) SetInstanceName(v string) *StartComputeIns
 
 func (s *StartComputeInstanceRequest) SetRegionId(v string) *StartComputeInstanceRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *StartComputeInstanceRequest) SetSelectedZones(v string) *StartComputeInstanceRequest {
-	s.SelectedZones = &v
-	return s
-}
-
-func (s *StartComputeInstanceRequest) SetServiceVersion(v string) *StartComputeInstanceRequest {
-	s.ServiceVersion = &v
 	return s
 }
 

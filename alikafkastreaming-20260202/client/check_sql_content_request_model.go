@@ -21,12 +21,28 @@ type iCheckSqlContentRequest interface {
 
 type CheckSqlContentRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// INSERT INTO sink_table SELECT 	- FROM source_table;
 	SqlContent *string `json:"SqlContent,omitempty" xml:"SqlContent,omitempty"`
 }
 

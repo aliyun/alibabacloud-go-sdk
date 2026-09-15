@@ -20,10 +20,19 @@ type iCreateComputeInstanceResponseBody interface {
 }
 
 type CreateComputeInstanceResponseBody struct {
-	Code      *int64                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateComputeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateComputeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 062D8E8B-8D47-5DCC-BB12-5A1D93C3A66B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateComputeInstanceResponseBody) String() string {
@@ -80,8 +89,14 @@ func (s *CreateComputeInstanceResponseBody) Validate() error {
 }
 
 type CreateComputeInstanceResponseBodyData struct {
+	// example:
+	//
+	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1234567890
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateComputeInstanceResponseBodyData) String() string {

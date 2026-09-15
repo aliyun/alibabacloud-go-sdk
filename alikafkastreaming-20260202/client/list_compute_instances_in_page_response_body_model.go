@@ -26,13 +26,31 @@ type iListComputeInstancesInPageResponseBody interface {
 }
 
 type ListComputeInstancesInPageResponseBody struct {
-	Code        *int64                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
 	CurrentPage *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Data        []*ListComputeInstancesInPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total       *int64                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 9079DD86-09F1-5303-A64F-D9089F96BC16
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListComputeInstancesInPageResponseBody) String() string {
@@ -120,27 +138,71 @@ func (s *ListComputeInstancesInPageResponseBody) Validate() error {
 }
 
 type ListComputeInstancesInPageResponseBodyData struct {
-	AutoRenewFlag *bool   `json:"AutoRenewFlag,omitempty" xml:"AutoRenewFlag,omitempty"`
-	ChargeType    *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" xml:"AutoRenewFlag,omitempty"`
+	// example:
+	//
+	// POST_PAID
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime    *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Cu            *int32   `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	CuLimitSum    *float64 `json:"CuLimitSum,omitempty" xml:"CuLimitSum,omitempty"`
+	//
+	// example:
+	//
+	// 2026-09-02T16:00:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 4.0
+	CuLimitSum *float64 `json:"CuLimitSum,omitempty" xml:"CuLimitSum,omitempty"`
+	// example:
+	//
+	// 2.0
 	CuReservedSum *float64 `json:"CuReservedSum,omitempty" xml:"CuReservedSum,omitempty"`
-	CuUsedSum     *float64 `json:"CuUsedSum,omitempty" xml:"CuUsedSum,omitempty"`
+	// example:
+	//
+	// 2.5
+	CuUsedSum *float64 `json:"CuUsedSum,omitempty" xml:"CuUsedSum,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
-	ExpireTime       *string   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName     *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Owner            *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceStatus    *string   `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	TotalJobs        *int64    `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	//
+	// example:
+	//
+	// 2027-09-02T16:00:00Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// alikafka_streaming-cn-xxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// streaming-prod
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// example:
+	//
+	// 3
+	TotalJobs *int64 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	// example:
+	//
+	// 2
 	TotalRunningJobs *int64    `json:"TotalRunningJobs,omitempty" xml:"TotalRunningJobs,omitempty"`
 	VSwitchIds       []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	Version          *string   `json:"Version,omitempty" xml:"Version,omitempty"`
-	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vpc-bp1abcdefg
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListComputeInstancesInPageResponseBodyData) String() string {
@@ -159,16 +221,8 @@ func (s *ListComputeInstancesInPageResponseBodyData) GetChargeType() *string {
 	return s.ChargeType
 }
 
-func (s *ListComputeInstancesInPageResponseBodyData) GetCommodityCode() *string {
-	return s.CommodityCode
-}
-
 func (s *ListComputeInstancesInPageResponseBodyData) GetCreateTime() *string {
 	return s.CreateTime
-}
-
-func (s *ListComputeInstancesInPageResponseBodyData) GetCu() *int32 {
-	return s.Cu
 }
 
 func (s *ListComputeInstancesInPageResponseBodyData) GetCuLimitSum() *float64 {
@@ -219,10 +273,6 @@ func (s *ListComputeInstancesInPageResponseBodyData) GetVSwitchIds() []*string {
 	return s.VSwitchIds
 }
 
-func (s *ListComputeInstancesInPageResponseBodyData) GetVersion() *string {
-	return s.Version
-}
-
 func (s *ListComputeInstancesInPageResponseBodyData) GetVpcId() *string {
 	return s.VpcId
 }
@@ -237,18 +287,8 @@ func (s *ListComputeInstancesInPageResponseBodyData) SetChargeType(v string) *Li
 	return s
 }
 
-func (s *ListComputeInstancesInPageResponseBodyData) SetCommodityCode(v string) *ListComputeInstancesInPageResponseBodyData {
-	s.CommodityCode = &v
-	return s
-}
-
 func (s *ListComputeInstancesInPageResponseBodyData) SetCreateTime(v string) *ListComputeInstancesInPageResponseBodyData {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *ListComputeInstancesInPageResponseBodyData) SetCu(v int32) *ListComputeInstancesInPageResponseBodyData {
-	s.Cu = &v
 	return s
 }
 
@@ -309,11 +349,6 @@ func (s *ListComputeInstancesInPageResponseBodyData) SetTotalRunningJobs(v int64
 
 func (s *ListComputeInstancesInPageResponseBodyData) SetVSwitchIds(v []*string) *ListComputeInstancesInPageResponseBodyData {
 	s.VSwitchIds = v
-	return s
-}
-
-func (s *ListComputeInstancesInPageResponseBodyData) SetVersion(v string) *ListComputeInstancesInPageResponseBodyData {
-	s.Version = &v
 	return s
 }
 

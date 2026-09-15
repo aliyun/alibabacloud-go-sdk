@@ -19,10 +19,22 @@ type iGetComputeJobRequest interface {
 
 type GetComputeJobRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

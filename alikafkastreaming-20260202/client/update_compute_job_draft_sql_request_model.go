@@ -9,8 +9,6 @@ type iUpdateComputeJobDraftSqlRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *UpdateComputeJobDraftSqlRequest
-	GetClientToken() *string
 	SetDraftSql(v string) *UpdateComputeJobDraftSqlRequest
 	GetDraftSql() *string
 	SetInstanceId(v string) *UpdateComputeJobDraftSqlRequest
@@ -22,14 +20,29 @@ type iUpdateComputeJobDraftSqlRequest interface {
 }
 
 type UpdateComputeJobDraftSqlRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// INSERT INTO sink_table SELECT 	- FROM source_table;
 	DraftSql *string `json:"DraftSql,omitempty" xml:"DraftSql,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -39,10 +52,6 @@ func (s UpdateComputeJobDraftSqlRequest) String() string {
 
 func (s UpdateComputeJobDraftSqlRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateComputeJobDraftSqlRequest) GetClientToken() *string {
-	return s.ClientToken
 }
 
 func (s *UpdateComputeJobDraftSqlRequest) GetDraftSql() *string {
@@ -59,11 +68,6 @@ func (s *UpdateComputeJobDraftSqlRequest) GetJobName() *string {
 
 func (s *UpdateComputeJobDraftSqlRequest) GetRegionId() *string {
 	return s.RegionId
-}
-
-func (s *UpdateComputeJobDraftSqlRequest) SetClientToken(v string) *UpdateComputeJobDraftSqlRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *UpdateComputeJobDraftSqlRequest) SetDraftSql(v string) *UpdateComputeJobDraftSqlRequest {

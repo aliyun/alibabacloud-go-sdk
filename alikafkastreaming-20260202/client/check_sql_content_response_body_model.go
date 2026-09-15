@@ -20,10 +20,19 @@ type iCheckSqlContentResponseBody interface {
 }
 
 type CheckSqlContentResponseBody struct {
-	Code      *int64                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CheckSqlContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CheckSqlContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 062D8E8B-8D47-5DCC-BB12-5A1D93C3A66B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckSqlContentResponseBody) String() string {
@@ -81,7 +90,10 @@ func (s *CheckSqlContentResponseBody) Validate() error {
 
 type CheckSqlContentResponseBodyData struct {
 	ErrorList []*CheckSqlContentResponseBodyDataErrorList `json:"ErrorList,omitempty" xml:"ErrorList,omitempty" type:"Repeated"`
-	Valid     *bool                                       `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	// example:
+	//
+	// false
+	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
 }
 
 func (s CheckSqlContentResponseBodyData) String() string {
@@ -124,13 +136,34 @@ func (s *CheckSqlContentResponseBodyData) Validate() error {
 }
 
 type CheckSqlContentResponseBodyDataErrorList struct {
-	CodeSnippet     *string `json:"CodeSnippet,omitempty" xml:"CodeSnippet,omitempty"`
-	ColumnNumber    *int32  `json:"ColumnNumber,omitempty" xml:"ColumnNumber,omitempty"`
-	EndColumnNumber *int32  `json:"EndColumnNumber,omitempty" xml:"EndColumnNumber,omitempty"`
-	EndLineNumber   *int32  `json:"EndLineNumber,omitempty" xml:"EndLineNumber,omitempty"`
-	ErrorType       *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
-	LineNumber      *int32  `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// SELECT FROM source_table
+	CodeSnippet *string `json:"CodeSnippet,omitempty" xml:"CodeSnippet,omitempty"`
+	// example:
+	//
+	// 8
+	ColumnNumber *int32 `json:"ColumnNumber,omitempty" xml:"ColumnNumber,omitempty"`
+	// example:
+	//
+	// 12
+	EndColumnNumber *int32 `json:"EndColumnNumber,omitempty" xml:"EndColumnNumber,omitempty"`
+	// example:
+	//
+	// 1
+	EndLineNumber *int32 `json:"EndLineNumber,omitempty" xml:"EndLineNumber,omitempty"`
+	// example:
+	//
+	// SYNTAX_ERROR
+	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	// example:
+	//
+	// 1
+	LineNumber *int32 `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
+	// example:
+	//
+	// SQL parse failed near FROM
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s CheckSqlContentResponseBodyDataErrorList) String() string {

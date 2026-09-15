@@ -15,17 +15,25 @@ type iCreateComputeInstanceRequest interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateComputeInstanceRequest
 	GetResourceGroupId() *string
-	SetResourceType(v string) *CreateComputeInstanceRequest
-	GetResourceType() *string
 }
 
 type CreateComputeInstanceRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	PaidType *int64 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// This parameter is required.
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s CreateComputeInstanceRequest) String() string {
@@ -48,10 +56,6 @@ func (s *CreateComputeInstanceRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
-func (s *CreateComputeInstanceRequest) GetResourceType() *string {
-	return s.ResourceType
-}
-
 func (s *CreateComputeInstanceRequest) SetPaidType(v int64) *CreateComputeInstanceRequest {
 	s.PaidType = &v
 	return s
@@ -64,11 +68,6 @@ func (s *CreateComputeInstanceRequest) SetRegionId(v string) *CreateComputeInsta
 
 func (s *CreateComputeInstanceRequest) SetResourceGroupId(v string) *CreateComputeInstanceRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateComputeInstanceRequest) SetResourceType(v string) *CreateComputeInstanceRequest {
-	s.ResourceType = &v
 	return s
 }
 

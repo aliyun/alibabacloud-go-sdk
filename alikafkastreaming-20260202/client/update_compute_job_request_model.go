@@ -9,8 +9,6 @@ type iUpdateComputeJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *UpdateComputeJobRequest
-	GetClientToken() *string
 	SetInstanceId(v string) *UpdateComputeJobRequest
 	GetInstanceId() *string
 	SetJobName(v string) *UpdateComputeJobRequest
@@ -19,20 +17,31 @@ type iUpdateComputeJobRequest interface {
 	GetRegionId() *string
 	SetRemark(v string) *UpdateComputeJobRequest
 	GetRemark() *string
-	SetUpgradeMode(v string) *UpdateComputeJobRequest
-	GetUpgradeMode() *string
 }
 
 type UpdateComputeJobRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// This parameter is required.
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 订单流实时清洗
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s UpdateComputeJobRequest) String() string {
@@ -41,10 +50,6 @@ func (s UpdateComputeJobRequest) String() string {
 
 func (s UpdateComputeJobRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateComputeJobRequest) GetClientToken() *string {
-	return s.ClientToken
 }
 
 func (s *UpdateComputeJobRequest) GetInstanceId() *string {
@@ -61,15 +66,6 @@ func (s *UpdateComputeJobRequest) GetRegionId() *string {
 
 func (s *UpdateComputeJobRequest) GetRemark() *string {
 	return s.Remark
-}
-
-func (s *UpdateComputeJobRequest) GetUpgradeMode() *string {
-	return s.UpgradeMode
-}
-
-func (s *UpdateComputeJobRequest) SetClientToken(v string) *UpdateComputeJobRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *UpdateComputeJobRequest) SetInstanceId(v string) *UpdateComputeJobRequest {
@@ -89,11 +85,6 @@ func (s *UpdateComputeJobRequest) SetRegionId(v string) *UpdateComputeJobRequest
 
 func (s *UpdateComputeJobRequest) SetRemark(v string) *UpdateComputeJobRequest {
 	s.Remark = &v
-	return s
-}
-
-func (s *UpdateComputeJobRequest) SetUpgradeMode(v string) *UpdateComputeJobRequest {
-	s.UpgradeMode = &v
 	return s
 }
 

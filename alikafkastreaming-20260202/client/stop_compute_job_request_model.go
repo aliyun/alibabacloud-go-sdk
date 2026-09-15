@@ -9,8 +9,6 @@ type iStopComputeJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *StopComputeJobRequest
-	GetClientToken() *string
 	SetInstanceId(v string) *StopComputeJobRequest
 	GetInstanceId() *string
 	SetJobName(v string) *StopComputeJobRequest
@@ -20,12 +18,23 @@ type iStopComputeJobRequest interface {
 }
 
 type StopComputeJobRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -35,10 +44,6 @@ func (s StopComputeJobRequest) String() string {
 
 func (s StopComputeJobRequest) GoString() string {
 	return s.String()
-}
-
-func (s *StopComputeJobRequest) GetClientToken() *string {
-	return s.ClientToken
 }
 
 func (s *StopComputeJobRequest) GetInstanceId() *string {
@@ -51,11 +56,6 @@ func (s *StopComputeJobRequest) GetJobName() *string {
 
 func (s *StopComputeJobRequest) GetRegionId() *string {
 	return s.RegionId
-}
-
-func (s *StopComputeJobRequest) SetClientToken(v string) *StopComputeJobRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *StopComputeJobRequest) SetInstanceId(v string) *StopComputeJobRequest {

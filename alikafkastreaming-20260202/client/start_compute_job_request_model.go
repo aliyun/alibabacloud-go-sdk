@@ -9,16 +9,12 @@ type iStartComputeJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *StartComputeJobRequest
-	GetClientToken() *string
 	SetCuLimit(v float64) *StartComputeJobRequest
 	GetCuLimit() *float64
 	SetCuReserved(v float64) *StartComputeJobRequest
 	GetCuReserved() *float64
 	SetDraftSql(v string) *StartComputeJobRequest
 	GetDraftSql() *string
-	SetDraftSqlStart(v bool) *StartComputeJobRequest
-	GetDraftSqlStart() *bool
 	SetInstanceId(v string) *StartComputeJobRequest
 	GetInstanceId() *string
 	SetJobName(v string) *StartComputeJobRequest
@@ -30,17 +26,39 @@ type iStartComputeJobRequest interface {
 }
 
 type StartComputeJobRequest struct {
-	ClientToken   *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CuLimit       *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
-	CuReserved    *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
-	DraftSql      *string  `json:"DraftSql,omitempty" xml:"DraftSql,omitempty"`
-	DraftSqlStart *bool    `json:"DraftSqlStart,omitempty" xml:"DraftSqlStart,omitempty"`
+	// example:
+	//
+	// 2.0
+	CuLimit *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	// example:
+	//
+	// 1.0
+	CuReserved *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
+	// example:
+	//
+	// CREATE TEMPORARY TABLE src (id BIGINT) WITH (\\"connector\\" = \\"datagen\\"); CREATE TEMPORARY TABLE sink (id BIGINT) WITH (\\"connector\\" = \\"print\\"); INSERT INTO sink SELECT id FROM src;
+	DraftSql *string `json:"DraftSql,omitempty" xml:"DraftSql,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
-	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	//
+	// example:
+	//
+	// order_enrichment
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// savepoint
 	RecoveryMode *string `json:"RecoveryMode,omitempty" xml:"RecoveryMode,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -50,10 +68,6 @@ func (s StartComputeJobRequest) String() string {
 
 func (s StartComputeJobRequest) GoString() string {
 	return s.String()
-}
-
-func (s *StartComputeJobRequest) GetClientToken() *string {
-	return s.ClientToken
 }
 
 func (s *StartComputeJobRequest) GetCuLimit() *float64 {
@@ -66,10 +80,6 @@ func (s *StartComputeJobRequest) GetCuReserved() *float64 {
 
 func (s *StartComputeJobRequest) GetDraftSql() *string {
 	return s.DraftSql
-}
-
-func (s *StartComputeJobRequest) GetDraftSqlStart() *bool {
-	return s.DraftSqlStart
 }
 
 func (s *StartComputeJobRequest) GetInstanceId() *string {
@@ -88,11 +98,6 @@ func (s *StartComputeJobRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *StartComputeJobRequest) SetClientToken(v string) *StartComputeJobRequest {
-	s.ClientToken = &v
-	return s
-}
-
 func (s *StartComputeJobRequest) SetCuLimit(v float64) *StartComputeJobRequest {
 	s.CuLimit = &v
 	return s
@@ -105,11 +110,6 @@ func (s *StartComputeJobRequest) SetCuReserved(v float64) *StartComputeJobReques
 
 func (s *StartComputeJobRequest) SetDraftSql(v string) *StartComputeJobRequest {
 	s.DraftSql = &v
-	return s
-}
-
-func (s *StartComputeJobRequest) SetDraftSqlStart(v bool) *StartComputeJobRequest {
-	s.DraftSqlStart = &v
 	return s
 }
 

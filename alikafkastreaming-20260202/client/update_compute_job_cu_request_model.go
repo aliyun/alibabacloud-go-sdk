@@ -9,8 +9,6 @@ type iUpdateComputeJobCuRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetClientToken(v string) *UpdateComputeJobCuRequest
-	GetClientToken() *string
 	SetCuLimit(v float64) *UpdateComputeJobCuRequest
 	GetCuLimit() *float64
 	SetCuReserved(v float64) *UpdateComputeJobCuRequest
@@ -24,14 +22,35 @@ type iUpdateComputeJobCuRequest interface {
 }
 
 type UpdateComputeJobCuRequest struct {
-	ClientToken *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CuLimit     *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
-	CuReserved  *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
+	CuLimit *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0
+	CuReserved *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -41,10 +60,6 @@ func (s UpdateComputeJobCuRequest) String() string {
 
 func (s UpdateComputeJobCuRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateComputeJobCuRequest) GetClientToken() *string {
-	return s.ClientToken
 }
 
 func (s *UpdateComputeJobCuRequest) GetCuLimit() *float64 {
@@ -65,11 +80,6 @@ func (s *UpdateComputeJobCuRequest) GetJobName() *string {
 
 func (s *UpdateComputeJobCuRequest) GetRegionId() *string {
 	return s.RegionId
-}
-
-func (s *UpdateComputeJobCuRequest) SetClientToken(v string) *UpdateComputeJobCuRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *UpdateComputeJobCuRequest) SetCuLimit(v float64) *UpdateComputeJobCuRequest {
