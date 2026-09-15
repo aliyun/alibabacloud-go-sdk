@@ -36,11 +36,11 @@ type CreateDataAgentSessionShrinkRequest struct {
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
 	// The session configuration.
 	SessionConfigShrink *string `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty"`
-	// The session title. Supports Chinese and English. Maximum length: 128 characters.
+	// The title. Chinese and English characters are supported. Maximum length: 128 characters.
 	//
 	// example:
 	//
-	// 帮我分析一下这份数据，给出报告。
+	// Help me analyze this data and generate a report
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The workspace ID.
 	//

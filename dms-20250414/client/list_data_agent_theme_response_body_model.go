@@ -36,19 +36,19 @@ type iListDataAgentThemeResponseBody interface {
 type ListDataAgentThemeResponseBody struct {
 	// The response struct.
 	Data []*ListDataAgentThemeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned when the request failed.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the request failed.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListDataAgentThemeResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The current page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ func (s *ListDataAgentThemeResponseBody) Validate() error {
 }
 
 type ListDataAgentThemeResponseBodyData struct {
-	// The common scenarios. Valid values: report, infographic, and others.
+	// The common scenario of the theme. Valid values: report, infographic, and others.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type ListDataAgentThemeResponseBodyData struct {
 	//
 	// 2025-06-20T10:15:30Z
 	ModifiedAt *string `json:"ModifiedAt,omitempty" xml:"ModifiedAt,omitempty"`
-	// The tracing reference that points to the UUID of the source theme.
+	// The traceability reference that points to the UUID of the source theme.
 	//
 	// example:
 	//
@@ -275,9 +275,9 @@ type ListDataAgentThemeResponseBodyData struct {
 	ThemeName *string `json:"ThemeName,omitempty" xml:"ThemeName,omitempty"`
 	// The theme stage. Valid values:
 	//
-	// - design: contains only design.md.
+	// - design: The theme contains only design.md.
 	//
-	// - template: complete and renderable.
+	// - template: The theme is complete and renderable.
 	//
 	// example:
 	//

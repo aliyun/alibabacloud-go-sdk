@@ -44,7 +44,7 @@ type DescribeDataAgentSessionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return value. Valid values:
 	//
-	// - **true**: Succeeded.
+	// - **true**: Successful.
 	//
 	// - **false**: Failed.
 	//
@@ -131,7 +131,7 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
 	// The list of artifacts produced by the session. Currently, only reports are included.
 	Artifacts []*DescribeDataAgentSessionResponseBodyDataArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
-	// The chat replay history.
+	// The chat history replay records.
 	ChatHistoryLocations []*DescribeDataAgentSessionResponseBodyDataChatHistoryLocations `json:"ChatHistoryLocations,omitempty" xml:"ChatHistoryLocations,omitempty" type:"Repeated"`
 	// The time when the session was created.
 	//
@@ -179,7 +179,7 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	//
 	// example:
 	//
-	// 分析一下这份文件，给出报告。
+	// Analyze this file and generate a report
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The ID of the session owner.
 	//
@@ -384,31 +384,31 @@ type DescribeDataAgentSessionResponseBodyDataArtifacts struct {
 	//
 	// a simple report
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the backend completed the artifact task. This is a UNIX timestamp accurate to the second.
+	// The time when the backend completed the artifact task. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
 	// 1778743587
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The globally unique artifact ID. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId in the response of the SendChatMessage operation.
+	// The artifact ID, which is globally unique. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId in the response of the SendChatMessage operation.
 	//
 	// example:
 	//
 	// bab******33e1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The artifact name. This is typically a string concatenated by the system and is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
+	// The artifact name, which is typically a string concatenated by the system. This name is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
 	//
 	// example:
 	//
 	// report_****_2026****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the backend received the artifact request. This is a UNIX timestamp accurate to the second.
+	// The time when the backend received the artifact request. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
 	// 1778743587
 	ReceiveTime *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
-	// The time when the backend actually started running the artifact task. This is a UNIX timestamp accurate to the second.
+	// The time when the backend actually started running the artifact task. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
@@ -521,13 +521,13 @@ func (s *DescribeDataAgentSessionResponseBodyDataArtifacts) Validate() error {
 }
 
 type DescribeDataAgentSessionResponseBodyDataChatHistoryLocations struct {
-	// The key of the chat replay history.
+	// The key of the chat history replay record.
 	//
 	// example:
 	//
 	// testKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The OSS download URL of the chat replay history.
+	// The OSS download URL of the chat history replay record.
 	//
 	// example:
 	//
@@ -568,9 +568,9 @@ func (s *DescribeDataAgentSessionResponseBodyDataChatHistoryLocations) Validate(
 type DescribeDataAgentSessionResponseBodyDataDataSources struct {
 	// The data source category. Valid values:
 	//
-	// - **CHAT**: specified through the CreateDataAgentSession or SendChatMessage operation during a conversation.
+	// - **CHAT**: Specified through the CreateDataAgentSession or SendChatMessage operation during a conversation.
 	//
-	// - **CUSTOM_AGENT**: from the preset analysis data scope in a custom agent.
+	// - **CUSTOM_AGENT**: From the preset analysis data scope in a custom agent.
 	//
 	// example:
 	//
@@ -623,7 +623,7 @@ type DescribeDataAgentSessionResponseBodyDataRecallResults struct {
 	//
 	// sky is blue
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The similarity score of this data entry. The scoring algorithm is related to the algorithm (l2/ip/cosine) specified when the index was created.
+	// The similarity score of this record. The scoring algorithm is related to the algorithm (l2/ip/cosine) specified when the index was created.
 	//
 	// example:
 	//
@@ -685,9 +685,9 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	// The stage of the custom agent. Valid values:
 	//
-	// - **debug**: test stage.
+	// - **debug**: The debug stage.
 	//
-	// - **prod**: production stage.
+	// - **prod**: The production stage.
 	//
 	// example:
 	//
@@ -727,11 +727,11 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// The mode. Valid values:
 	//
-	//  - **ASK_DATA**: ask data mode.
+	// - **ASK_DATA**: The ask-data mode.
 	//
-	//  - **ANALYSIS**: analysis mode.
+	// - **ANALYSIS**: The analysis mode.
 	//
-	//  - **INSIGHT**: insight mode.
+	// - **INSIGHT**: The insight mode.
 	//
 	// example:
 	//
@@ -749,9 +749,7 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// ""
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	// The name of the user OSS bucket.
-	//
-	// - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+	// The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
 	//
 	// example:
 	//

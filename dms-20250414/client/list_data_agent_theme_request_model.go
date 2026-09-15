@@ -23,26 +23,28 @@ type iListDataAgentThemeRequest interface {
 	GetThemeFrom() *string
 	SetThemeType(v string) *ListDataAgentThemeRequest
 	GetThemeType() *string
+	SetWorkspaceId(v string) *ListDataAgentThemeRequest
+	GetWorkspaceId() *string
 }
 
 type ListDataAgentThemeRequest struct {
-	// The common scenarios. Valid values: report, infographic, and others.
+	// The common scenario of the theme. Valid values: report, infographic, and others.
 	//
 	// example:
 	//
 	// report
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// **[Not supported]*	- The page size. Maximum value: 100.
+	// **[Not currently supported]*	- The maximum number of entries per page. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// **[Not supported]*	- The pagination token for the next query. Valid values:
+	// **[Not currently supported]*	- The pagination token for the next query. Valid values:
 	//
 	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If **NextToken*	- has a return value, the value indicates the token for the next query.
+	// - If **NextToken*	- has a return value, the value is the token for the next query.
 	//
 	// example:
 	//
@@ -54,7 +56,7 @@ type ListDataAgentThemeRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The current page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -74,14 +76,20 @@ type ListDataAgentThemeRequest struct {
 	ThemeFrom *string `json:"ThemeFrom,omitempty" xml:"ThemeFrom,omitempty"`
 	// The theme stage. Valid values:
 	//
-	// - design: contains only design.md.
+	// - design: The theme contains only design.md.
 	//
-	// - template: complete and renderable.
+	// - template: The theme is complete and renderable.
 	//
 	// example:
 	//
 	// template
 	ThemeType *string `json:"ThemeType,omitempty" xml:"ThemeType,omitempty"`
+	// The workspace context. If this parameter is left empty or set to personal, the personal workspace is used. To query themes in a collaborative workspace, specify the workspace ID.
+	//
+	// example:
+	//
+	// 99fad*******6c0l4nlacu
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataAgentThemeRequest) String() string {
@@ -120,6 +128,10 @@ func (s *ListDataAgentThemeRequest) GetThemeType() *string {
 	return s.ThemeType
 }
 
+func (s *ListDataAgentThemeRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListDataAgentThemeRequest) SetCategory(v string) *ListDataAgentThemeRequest {
 	s.Category = &v
 	return s
@@ -152,6 +164,11 @@ func (s *ListDataAgentThemeRequest) SetThemeFrom(v string) *ListDataAgentThemeRe
 
 func (s *ListDataAgentThemeRequest) SetThemeType(v string) *ListDataAgentThemeRequest {
 	s.ThemeType = &v
+	return s
+}
+
+func (s *ListDataAgentThemeRequest) SetWorkspaceId(v string) *ListDataAgentThemeRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

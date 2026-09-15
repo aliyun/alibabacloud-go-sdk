@@ -24,7 +24,7 @@ type iDescribeDataAgentThemeResponseBody interface {
 type DescribeDataAgentThemeResponseBody struct {
 	// The response struct.
 	Data *DescribeDataAgentThemeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when the request is abnormal.
+	// The error code returned when the request fails.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeDataAgentThemeResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -137,17 +137,13 @@ type DescribeDataAgentThemeResponseBodyData struct {
 	//
 	// 2025-06-20T10:15:30Z
 	ModifiedAt *string `json:"ModifiedAt,omitempty" xml:"ModifiedAt,omitempty"`
-	// The theme tracing information. This field is currently not enabled.
+	// The tracing information of the theme. This field is currently not enabled.
 	//
 	// example:
 	//
 	// 6d1e3f9a-****-****-****-2b8c4e6f0a1d
 	ReferTo *string `json:"ReferTo,omitempty" xml:"ReferTo,omitempty"`
-	// The source of the theme. Valid values:
-	//
-	// - system
-	//
-	// - custom
+	// The source of the theme. Valid values: system, custom.
 	//
 	// example:
 	//
@@ -165,11 +161,11 @@ type DescribeDataAgentThemeResponseBodyData struct {
 	//
 	// weekly report
 	ThemeName *string `json:"ThemeName,omitempty" xml:"ThemeName,omitempty"`
-	// The theme stage. Valid values:
+	// The stage of the theme. Valid values:
 	//
-	// - design: design.md only.
+	// - design: The theme contains only design.md.
 	//
-	// - template: complete and renderable.
+	// - template: The theme is complete and renderable.
 	//
 	// example:
 	//

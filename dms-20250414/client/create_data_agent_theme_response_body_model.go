@@ -24,13 +24,13 @@ type iCreateDataAgentThemeResponseBody interface {
 type CreateDataAgentThemeResponseBody struct {
 	// The response struct.
 	Data *CreateDataAgentThemeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when the request is abnormal.
+	// The error code returned when the request fails.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned when the request fails.
 	//
 	// example:
 	//

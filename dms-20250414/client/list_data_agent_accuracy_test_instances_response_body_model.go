@@ -236,7 +236,12 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	// example:
 	//
 	// 20282*****7591
-	Creator    *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The data source.
+	//
+	// example:
+	//
+	// null
 	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
 	// The ID of the test set file.
 	//
@@ -278,9 +283,9 @@ type ListDataAgentAccuracyTestInstancesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Agent测试名称
+	// AgentTestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether sessions are displayed after analysis. This parameter is not supported.
+	// Specifies whether sessions are displayed after analysis. This feature is not supported.
 	//
 	// example:
 	//

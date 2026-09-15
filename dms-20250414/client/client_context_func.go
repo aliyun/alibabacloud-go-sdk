@@ -508,6 +508,62 @@ func (client *Client) ConfigDataAgentMemoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 创建 Agent
+//
+// @param request - CreateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentResponse
+func (client *Client) CreateAgentWithContext(ctx context.Context, request *CreateAgentRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpireAfterSeconds) {
+		query["ExpireAfterSeconds"] = request.ExpireAfterSeconds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgent"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an Airflow instance in a workspace.
 //
 // Description:
@@ -1044,7 +1100,7 @@ func (client *Client) CreateDataAgentKnowledgeBaseWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Create a DataAgent session
+// Creates a DataAgent session.
 //
 // @param tmpReq - CreateDataAgentSessionRequest
 //
@@ -1203,6 +1259,10 @@ func (client *Client) CreateDataAgentThemeWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.ThemeType) {
 		query["ThemeType"] = request.ThemeType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2814,7 +2874,7 @@ func (client *Client) DescribeDataAgentSessionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Invokes the DescribeDataAgentTheme operation to query the details of a single DataAgent theme, including the theme name, stage, source, common scenarios, description, and creation and modification time.
+// Invokes the DescribeDataAgentTheme operation to query the details of a specific DataAgent theme, including the theme name, stage, source, common scenarios, description, and creation and modification time.
 //
 // @param request - DescribeDataAgentThemeRequest
 //
@@ -5319,7 +5379,7 @@ func (client *Client) ListDataAgentSkillMetaWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Invokes the ListDataAgentTheme operation to query the DataAgent theme list by paging. You can filter themes by theme stage, source, and common scenarios.
+// Calls the ListDataAgentTheme operation to query the DataAgent theme list by paging. You can filter results by theme stage, source, and common scenario.
 //
 // @param request - ListDataAgentThemeRequest
 //
@@ -5360,6 +5420,10 @@ func (client *Client) ListDataAgentThemeWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.ThemeType) {
 		query["ThemeType"] = request.ThemeType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{

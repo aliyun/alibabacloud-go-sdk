@@ -22,7 +22,7 @@ type iCreateDataAgentSessionResponseBody interface {
 }
 
 type CreateDataAgentSessionResponseBody struct {
-	// The response structure.
+	// The response struct.
 	Data *CreateDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -30,13 +30,13 @@ type CreateDataAgentSessionResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned when the request failed.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *CreateDataAgentSessionResponseBody) Validate() error {
 }
 
 type CreateDataAgentSessionResponseBodyData struct {
-	// The agent ID.
+	// Agent Id
 	//
 	// example:
 	//
@@ -129,19 +129,19 @@ type CreateDataAgentSessionResponseBodyData struct {
 	//
 	// RUNNING
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
-	// The time when the session was created, in Unix milliseconds.
+	// The time when the session was created.
 	//
 	// example:
 	//
 	// 1765262307992
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the associated file.
+	// The basic information about the file.
 	//
 	// example:
 	//
 	// f-8*******01m
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
-	// Indicates whether the current user has favorited the session.
+	// Indicates whether the session is saved to the favorites of the current user.
 	//
 	// example:
 	//
@@ -161,11 +161,11 @@ type CreateDataAgentSessionResponseBodyData struct {
 	//
 	// RUNNING
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// The session title.
+	// The title.
 	//
 	// example:
 	//
-	// 帮我分析一下这份数据，给出报告。
+	// Help me analyze this data and generate a report
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -276,52 +276,73 @@ type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	// The stage of the custom agent. Valid values:
 	//
-	// - **debug**: Debug stage
+	// - **debug**: Debug stage.
 	//
-	// - **prod**: Production stage
+	// - **prod**: Production stage.
 	//
 	// example:
 	//
 	// debug
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
-	// Indicates whether web search is enabled.
+	// Specifies whether to enable web search.
 	//
 	// example:
 	//
 	// true
-	EnableSearch *bool     `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	EncryptKey   *string   `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	EncryptType  *string   `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	KbUuidList   []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
+	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	// The encryption key.
+	//
+	// example:
+	//
+	// null
+	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
+	// The encryption type.
+	//
+	// example:
+	//
+	// null
+	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The list of knowledge base IDs.
+	KbUuidList []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
 	// The language. Valid values:
 	//
-	// - **CHINESE**: Chinese
+	// - **CHINESE**: Chinese.
 	//
-	// - **ENGLISH**: English
+	// - **ENGLISH**: English.
 	//
 	// example:
 	//
 	// CHINESE
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// A list of MCP server IDs.
+	// The list of MCP server IDs in the session configuration.
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// The mode. Valid values:
 	//
-	// - **ASK_DATA**: Quick Inquiry Mode
+	// - **ASK_DATA**: Ask data mode.
 	//
-	// - **ANALYSIS**: Analysis Mode
+	// - **ANALYSIS**: Analysis mode.
 	//
-	// - **INSIGHT**: Insight Mode
+	// - **INSIGHT**: Insight mode.
 	//
 	// example:
 	//
 	// ANALYSIS
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	ReportPageWidth *int64  `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
-	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	// The name of the user\\"s OSS bucket.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The report page width.
 	//
-	// - Analysis files and report artifacts can be uploaded to this OSS bucket.
+	// example:
+	//
+	// 0
+	ReportPageWidth *int64 `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
+	// The report watermark.
+	//
+	// example:
+	//
+	// null
+	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
+	// The name of the user OSS bucket.
+	//
+	// - Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
 	//
 	// example:
 	//

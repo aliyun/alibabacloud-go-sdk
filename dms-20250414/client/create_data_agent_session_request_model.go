@@ -36,11 +36,11 @@ type CreateDataAgentSessionRequest struct {
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
 	// The session configuration.
 	SessionConfig *CreateDataAgentSessionRequestSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
-	// The session title. Supports Chinese and English. Maximum length: 128 characters.
+	// The title. Chinese and English characters are supported. Maximum length: 128 characters.
 	//
 	// example:
 	//
-	// 帮我分析一下这份数据，给出报告。
+	// Help me analyze this data and generate a report
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The workspace ID.
 	//
@@ -119,9 +119,9 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	//
 	// ca-e*******ckd
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The custom agent stage. Valid values:
+	// The stage of the custom agent. Valid values:
 	//
-	// - **debug**: Test stage.
+	// - **debug**: Debug stage.
 	//
 	// - **prod**: Production stage.
 	//
@@ -134,25 +134,36 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	// example:
 	//
 	// false
-	EnableSearch *bool     `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	EncryptKey   *string   `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	EncryptType  *string   `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	KbUuidList   []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
+	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	// The encryption key.
+	//
+	// example:
+	//
+	// null
+	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
+	// The encryption type.
+	//
+	// example:
+	//
+	// null
+	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The list of knowledge base IDs.
+	KbUuidList []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
 	// The language. Valid values:
 	//
-	// - **CHINESE**: Chinese
+	// - **CHINESE**: Chinese.
 	//
-	// - **ENGLISH**: English
+	// - **ENGLISH**: English.
 	//
 	// example:
 	//
 	// CHINESE
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// A list of MCP server IDs.
+	// The list of MCP server IDs in the session configuration.
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// The mode. Valid values:
 	//
-	// - **ASK_DATA**: Quick inquiry mode.
+	// - **ASK_DATA**: Ask data mode.
 	//
 	// - **ANALYSIS**: Analysis mode.
 	//
@@ -161,12 +172,22 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	// example:
 	//
 	// ANALYSIS
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	ReportPageWidth *int64  `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
-	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	// The OSS bucket name.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The report page width.
 	//
-	// - This bucket stores intermediate files and report artifacts from the analysis.
+	// example:
+	//
+	// 0
+	ReportPageWidth *int64 `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
+	// The report watermark.
+	//
+	// example:
+	//
+	// null
+	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
+	// The name of the user OSS bucket.
+	//
+	// - Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
 	//
 	// example:
 	//
