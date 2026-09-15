@@ -22,14 +22,20 @@ type iAgenticBucketVolumeConfig interface {
 }
 
 type AgenticBucketVolumeConfig struct {
+	// AgenticBucket
+	//
 	// example:
 	//
 	// absx9f61c8a-1311999136518149-cn-hangzhou-ab-apsr
 	AgenticBucket *string `json:"agenticBucket,omitempty" xml:"agenticBucket,omitempty"`
+	// The BucketSpace of the agentic child.
+	//
 	// example:
 	//
 	// bs429pop1-1311999136518149-cn-hangzhou-bs-apsr
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The file path under the BucketSpace.
+	//
 	// if can be null:
 	// true
 	//
@@ -37,10 +43,14 @@ type AgenticBucketVolumeConfig struct {
 	//
 	// /test/
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	// Agentic Bucket Endpoint
+	//
 	// example:
 	//
 	// https://oss-cn-hangzhou-internal.aliyuncs.com"
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// Indicates whether the bucket is read-only.
+	//
 	// if can be null:
 	// true
 	//

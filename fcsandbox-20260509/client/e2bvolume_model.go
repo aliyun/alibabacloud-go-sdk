@@ -40,10 +40,11 @@ type iE2BVolume interface {
 }
 
 type E2BVolume struct {
+  // The AgenticBucket configuration.
   AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
   // The AgenticFS configuration.
   AgenticFSVolumeConfig *AgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty"`
-  // The time when the volume was created.
+  // The creation time.
   // 
   // example:
   // 
@@ -73,7 +74,7 @@ type E2BVolume struct {
   // 
   // CREATING
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
-  // The reason for the status.
+  // The status reason.
   // 
   // example:
   // 
@@ -95,7 +96,7 @@ type E2BVolume struct {
   // 
   // 88a4c762-b0ce-4661-9413-578b2309e60f
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-  // The time when the volume was last updated.
+  // The update time.
   // 
   // example:
   // 
@@ -280,13 +281,13 @@ func (s *E2BVolume) Validate() error {
 }
 
 type E2BVolumeMountConfig struct {
-  // The RAM role that the user grants to the sandboxed container. After this role is set, the sandboxed container assumes the role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the sandboxed container, such as OSS and AgenticFS.
+  // The RAM role that the user grants to the cloud sandbox. After this role is set, the cloud sandbox assumes the role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the cloud sandbox, such as OSS and AgenticFS.
   // 
   // example:
   // 
   // acs:ram::1673427197867277:role/aliyunfcdefaultrole
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
-  // The virtual private cloud (VPC) ID.
+  // The VPC ID.
   VpcConfig *E2BVolumeMountConfigVpcConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty" type:"Struct"`
 }
 
@@ -334,7 +335,7 @@ type E2BVolumeMountConfigVpcConfig struct {
   SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
   // The list of vSwitches.
   VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-  // The virtual private cloud (VPC) ID.
+  // The VPC ID.
   // 
   // example:
   // 

@@ -24,6 +24,7 @@ type iCreateVolumeInput interface {
 }
 
 type CreateVolumeInput struct {
+	// The AgenticBucket configuration.
 	AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
 	// The AgenticFS configuration.
 	AgenticFSVolumeConfig *AgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty"`
@@ -132,7 +133,7 @@ func (s *CreateVolumeInput) Validate() error {
 }
 
 type CreateVolumeInputMountConfig struct {
-	// The RAM role that the user grants to the cloud sandbox. After this role is set, the cloud sandbox assumes the role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the cloud sandbox, such as OSS and AgenticFS.
+	// The RAM role that the user grants to the cloud sandbox. After the role is set, the cloud sandbox assumes this role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the cloud sandbox, such as OSS and AgenticFS.
 	//
 	// example:
 	//
