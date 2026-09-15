@@ -34,13 +34,17 @@ type iCreateCycleTaskRequest interface {
 }
 
 type CreateCycleTaskRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable the task. Valid values:
 	//
-	// - **1**: enabled.
+	// - **1**: Enable.
 	//
-	// - **0**: disabled.
+	// - **0**: Disable.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +52,7 @@ type CreateCycleTaskRequest struct {
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The first execution time.
+	// The time of the first execution.
 	//
 	// This parameter is required.
 	//
@@ -65,6 +69,8 @@ type CreateCycleTaskRequest struct {
 	// 7
 	IntervalPeriod *int32 `json:"IntervalPeriod,omitempty" xml:"IntervalPeriod,omitempty"`
 	// The extended information field.
+	//
+	// Note: This parameter is actually required. If this parameter is not specified, the API returns an error. The value is a JSON-formatted string that must contain at least the targetInfo array.
 	//
 	// example:
 	//
@@ -96,7 +102,7 @@ type CreateCycleTaskRequest struct {
 	//
 	// }
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The unit of the scan interval. Valid values:
+	// The unit of the scan period. Valid values:
 	//
 	// - **day**: day.
 	//
@@ -130,21 +136,15 @@ type CreateCycleTaskRequest struct {
 	//
 	// 0
 	TargetStartTime *int32 `json:"TargetStartTime,omitempty" xml:"TargetStartTime,omitempty"`
-	// The task name. Valid values:
-	//
-	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
-	//
-	// - **IMAGE_SCAN**: image scan.
-	//
-	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
+	// The task name. This is a custom string used to identify the periodic scan task.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// EMG_VUL_SCHEDULE_SCAN
+	// test_virus_scan
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The task type. Valid values:
+	// The node type. Valid values:
 	//
 	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//

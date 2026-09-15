@@ -24,7 +24,7 @@ type iDescribeAlarmEventDetailRequest interface {
 type DescribeAlarmEventDetailRequest struct {
 	// The unique identifier of the alert event.
 	//
-	// > To query the details of an alert event, you must provide the unique identifier of the alert event. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the identifier.
+	// > To query the details of an alert event, you must provide the unique identifier of the alert event. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this identifier.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeAlarmEventDetailRequest struct {
 	//
 	// 9f62555666f177aa84ee1eaf465a****
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	// The ID of the request source. Set the value to **sas**.
+	// The source of the request. Set the value to **sas**.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +40,20 @@ type DescribeAlarmEventDetailRequest struct {
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	//
+	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//
 	// example:

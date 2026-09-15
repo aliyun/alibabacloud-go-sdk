@@ -9,6 +9,8 @@ type iDescribeImageGroupedVulListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentlessCanFix(v bool) *DescribeImageGroupedVulListRequest
+	GetAgentlessCanFix() *bool
 	SetAliasName(v string) *DescribeImageGroupedVulListRequest
 	GetAliasName() *string
 	SetClusterId(v string) *DescribeImageGroupedVulListRequest
@@ -60,6 +62,8 @@ type iDescribeImageGroupedVulListRequest interface {
 }
 
 type DescribeImageGroupedVulListRequest struct {
+	// Specifies whether to filter by agentless fix capability. true: queries only vulnerabilities that support agentless fix. false: queries vulnerabilities that are not marked as supporting agentless fix. If this parameter is not specified, no filtering is applied based on this condition.
+	AgentlessCanFix *bool `json:"AgentlessCanFix,omitempty" xml:"AgentlessCanFix,omitempty"`
 	// The alias of the vulnerability.
 	//
 	// example:
@@ -68,13 +72,13 @@ type DescribeImageGroupedVulListRequest struct {
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The ID of the container cluster to query.
 	//
-	// > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c60b77fe62093480db6164a3c2fa5****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The page number of the page to return in the query results. Default value: **1**, which indicates that the first page is returned.
+	// The page number of the page to return in a paginated query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
@@ -110,7 +114,7 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// oval
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// Specifies whether to query vulnerabilities of only the latest image. If this parameter is not set, vulnerabilities of all images are queried. Valid values:
+	// Specifies whether to query vulnerabilities only for the latest image. If this parameter is not set, vulnerabilities for all images are queried. Valid values:
 	//
 	// - **0**: No.
 	//
@@ -124,7 +128,7 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -138,17 +142,17 @@ type DescribeImageGroupedVulListRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The priority level for fixing the vulnerability. Valid values:
 	//
-	// - **asap**: high-priority vulnerability (typically a high-risk vulnerability)
+	// - **asap**: High-priority vulnerability that must be fixed as soon as possible.
 	//
-	// - **later**: medium-priority vulnerability (typically a medium-risk vulnerability)
+	// - **later**: Medium-priority vulnerability that can be fixed later.
 	//
-	// - **nntf**: low-priority vulnerability (typically a low-risk vulnerability).
+	// - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
 	//
 	// example:
 	//
 	// asap
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The number of image vulnerabilities to display on each page during a paging query. Default value: **20**, which indicates that 20 image vulnerabilities are displayed on each page.
+	// The number of image vulnerabilities to display on each page in a paging query. Default value: **20**, which indicates 20 image vulnerabilities per page.
 	//
 	// example:
 	//
@@ -189,11 +193,14 @@ type DescribeImageGroupedVulListRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RepoRegionId               *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The vulnerability tag. Valid values:
 	//
-	//  - **AI**: vulnerabilities related to AI components.
+	//  - **AI**: vulnerabilities related to AI components
 	//
 	// example:
 	//
@@ -205,7 +212,7 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// - **cve**: image system vulnerability
 	//
-	// - **sca**: image application vulnerability.
+	// - **sca**: image application vulnerability
 	//
 	// example:
 	//
@@ -225,6 +232,10 @@ func (s DescribeImageGroupedVulListRequest) String() string {
 
 func (s DescribeImageGroupedVulListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeImageGroupedVulListRequest) GetAgentlessCanFix() *bool {
+	return s.AgentlessCanFix
 }
 
 func (s *DescribeImageGroupedVulListRequest) GetAliasName() *string {
@@ -321,6 +332,11 @@ func (s *DescribeImageGroupedVulListRequest) GetType() *string {
 
 func (s *DescribeImageGroupedVulListRequest) GetUuids() *string {
 	return s.Uuids
+}
+
+func (s *DescribeImageGroupedVulListRequest) SetAgentlessCanFix(v bool) *DescribeImageGroupedVulListRequest {
+	s.AgentlessCanFix = &v
+	return s
 }
 
 func (s *DescribeImageGroupedVulListRequest) SetAliasName(v string) *DescribeImageGroupedVulListRequest {

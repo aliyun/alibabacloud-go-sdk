@@ -30,7 +30,7 @@ type ProcessSoarStrategyTaskRequest struct {
 	//
 	// - SCHEDULE: scheduling
 	//
-	// - PAUSE: pause.
+	// - PAUSE: pause
 	//
 	// This parameter is required.
 	//

@@ -24,17 +24,19 @@ type iCreateAttackPathWhitelistRequest interface {
 }
 
 type CreateAttackPathWhitelistRequest struct {
-	// List of cloud product assets in the attack path.
+	// The list of cloud service assets in the attack path.
 	AttackPathAssetList []*CreateAttackPathWhitelistRequestAttackPathAssetList `json:"AttackPathAssetList,omitempty" xml:"AttackPathAssetList,omitempty" type:"Repeated"`
-	// Path name.
+	// The path name.
 	//
 	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path name.
+	//
+	// > This parameter is required. If this parameter is not specified, the API returns a 400 InvalidParam error.
 	//
 	// example:
 	//
 	// ecs_get_credential_by_create_login_profile
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
-	// Path type.
+	// The path type.
 	//
 	// > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path type.
 	//
@@ -44,13 +46,13 @@ type CreateAttackPathWhitelistRequest struct {
 	//
 	// role_escalation
 	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	// Remark information.
+	// The remarks.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Whitelist name.
+	// The whitelist name.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +60,11 @@ type CreateAttackPathWhitelistRequest struct {
 	//
 	// test
 	WhitelistName *string `json:"WhitelistName,omitempty" xml:"WhitelistName,omitempty"`
-	// Whitelist type. Values:
+	// The whitelist type. Valid values:
 	//
-	// - **ALL_ASSET**: All assets
+	// - **ALL_ASSET**: all assets.
 	//
-	// - **PART_ASSET**: Partial assets
+	// - **PART_ASSET**: partial assets.
 	//
 	// This parameter is required.
 	//
@@ -148,51 +150,51 @@ func (s *CreateAttackPathWhitelistRequest) Validate() error {
 }
 
 type CreateAttackPathWhitelistRequestAttackPathAssetList struct {
-	// Subtype of the cloud product asset.
+	// The subtype of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud service asset.
 	//
 	// example:
 	//
 	// 0
 	AssetSubType *int32 `json:"AssetSubType,omitempty" xml:"AssetSubType,omitempty"`
-	// Type of the cloud product asset.
+	// The type of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud service asset.
 	//
 	// example:
 	//
 	// 0
 	AssetType *int32 `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// Cloud product asset instance ID.
+	// The instance ID of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the cloud product asset instance ID.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the instance ID of the cloud service asset.
 	//
 	// example:
 	//
 	// i-8vb0e8qdaj0yyxjo****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Node type, with values:
+	// The node type. Valid values:
 	//
-	// - **start**: Start point.
+	// - **start**: start node.
 	//
-	// - **end**: End point.
+	// - **end**: end node.
 	//
 	// example:
 	//
 	// start
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Region ID of the cloud product asset instance.
+	// The region ID of the cloud service asset instance.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud product asset instance.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud service asset instance.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Vendor of the cloud product asset.
+	// The vendor of the cloud service asset.
 	//
-	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud product asset.
+	// > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud service asset.
 	//
 	// example:
 	//

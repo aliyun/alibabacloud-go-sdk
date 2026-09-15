@@ -21,9 +21,12 @@ type iModifyStartVulScanRequest interface {
 
 type ModifyStartVulScanRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Settings for the types of vulnerabilities to detect by using the one-click scan feature. Valid values:
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// Settings for the vulnerability types to detect by using the one-click scan feature. Valid values:
 	//
 	// - **cve**: Linux software vulnerability.
 	//
@@ -31,13 +34,13 @@ type ModifyStartVulScanRequest struct {
 	//
 	// - **cms**: Web-CMS vulnerability.
 	//
-	// - **app**: application vulnerability detected by the web scanner.
+	// - **app**: Application vulnerability detected by the web scanner.
 	//
-	// - **emg**: urgent vulnerability.
+	// - **emg**: Emergency vulnerability.
 	//
-	// - **image**: container image vulnerability.
+	// - **image**: Container image vulnerability.
 	//
-	// - **sca**: application vulnerability detected by software constituency parsing.
+	// - **sca**: Application vulnerability detected by software constituency parsing.
 	//
 	// > If this parameter is left empty, all vulnerability types are detected.
 	//
@@ -46,6 +49,7 @@ type ModifyStartVulScanRequest struct {
 	// "cve,sys,cms,app,emg"
 	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
 	// The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+	//
 	//
 	// > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain this parameter.
 	//

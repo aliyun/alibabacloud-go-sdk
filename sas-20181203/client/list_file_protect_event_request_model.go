@@ -40,7 +40,7 @@ type iListFileProtectEventRequest interface {
 type ListFileProtectEventRequest struct {
 	// The list of alert notification levels.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	// The page number of the current page in a paging query.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
@@ -78,21 +78,21 @@ type ListFileProtectEventRequest struct {
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// The type of operation performed on the file. Valid values:
 	//
-	// - **DELETE**: deletes the file.
+	// - **DELETE**: Delete the file.
 	//
-	// - **WRITE**: writes to the file.
+	// - **WRITE**: Write to the file.
 	//
-	// - **READ**: reads the file.
+	// - **READ**: Read the file.
 	//
-	// - **RENAME**: renames the file.
+	// - **RENAME**: Rename the file.
 	//
-	// - **CHOWN**: changes the file owner and associated group.
+	// - **CHOWN**: Change the file owner and associated group.
 	//
 	// example:
 	//
 	// READ
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The maximum number of entries to return on each page in a paging query.
+	// The maximum number of entries to return on each page in a paged query.
 	//
 	// example:
 	//

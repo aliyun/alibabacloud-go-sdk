@@ -23,6 +23,8 @@ type iDescribeImageVulListRequest interface {
 	GetDealed() *string
 	SetDigest(v string) *DescribeImageVulListRequest
 	GetDigest() *string
+	SetGroupByAsset(v bool) *DescribeImageVulListRequest
+	GetGroupByAsset() *bool
 	SetImage(v string) *DescribeImageVulListRequest
 	GetImage() *string
 	SetInstanceId(v string) *DescribeImageVulListRequest
@@ -92,7 +94,7 @@ type DescribeImageVulListRequest struct {
 	//
 	// c08d5fc1a329a4b88950a253d082f****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The page number of the page to return in a paginated query. Default value: **1**, which indicates the first page.
+	// The page number of the page to return in the query results. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
@@ -100,9 +102,9 @@ type DescribeImageVulListRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Specifies whether the vulnerability has been handled. Valid values:
 	//
-	// - **y**: handled
+	// - **y**: Handled.
 	//
-	// - **n**: not handled.
+	// - **n**: Not handled.
 	//
 	// example:
 	//
@@ -114,6 +116,8 @@ type DescribeImageVulListRequest struct {
 	//
 	// 8f0fbdb41d3d1ade4ffdf21558443f4c03342010563bb8c43ccc09594d507012
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// Specifies whether to group results by image asset before pagination. If set to true, one vulnerability record is returned for each asset, and TotalCount indicates the total number of assets. If set to false or not specified, results are paginated by vulnerability record. Asset grouping is not applied when MaxId is specified.
+	GroupByAsset *bool `json:"GroupByAsset,omitempty" xml:"GroupByAsset,omitempty"`
 	// The name of the container image.
 	//
 	// example:
@@ -126,11 +130,11 @@ type DescribeImageVulListRequest struct {
 	//
 	// 1-qeqewqw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language type of the request and response messages. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -148,19 +152,19 @@ type DescribeImageVulListRequest struct {
 	//
 	// test-002
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The priority level of vulnerability fixing. Valid values:
+	// The priority level for fixing the vulnerability. Valid values:
 	//
-	// - **asap**: high-priority vulnerability
+	// - **asap**: High-priority vulnerability that must be fixed as soon as possible.
 	//
-	// - **later**: medium-priority vulnerability
+	// - **later**: Medium-priority vulnerability that can be fixed later.
 	//
-	// - **nntf**: low-priority vulnerability.
+	// - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
 	//
 	// example:
 	//
 	// asap
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// Settings for the number of vulnerabilities to display on each page in a paged query. Default value: **10**, which indicates that 10 vulnerabilities are displayed on each page.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates 10 vulnerability entries per page.
 	//
 	// example:
 	//
@@ -207,11 +211,14 @@ type DescribeImageVulListRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RepoRegionId               *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	//
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The vulnerability tag. Valid values:
 	//
-	// - **AI**: vulnerability related to AI components.
+	// - **AI**: vulnerabilities related to AI components
 	//
 	// example:
 	//
@@ -221,11 +228,11 @@ type DescribeImageVulListRequest struct {
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 	// The fix status of the vulnerability. Valid values:
 	//
-	// - **1**: unfixed
+	// - **1**: Unfixed.
 	//
-	// - **4**: being fixed
+	// - **4**: Being fixed.
 	//
-	// - **7**: fixed.
+	// - **7**: Fixed.
 	//
 	// example:
 	//
@@ -287,6 +294,10 @@ func (s *DescribeImageVulListRequest) GetDealed() *string {
 
 func (s *DescribeImageVulListRequest) GetDigest() *string {
 	return s.Digest
+}
+
+func (s *DescribeImageVulListRequest) GetGroupByAsset() *bool {
+	return s.GroupByAsset
 }
 
 func (s *DescribeImageVulListRequest) GetImage() *string {
@@ -405,6 +416,11 @@ func (s *DescribeImageVulListRequest) SetDealed(v string) *DescribeImageVulListR
 
 func (s *DescribeImageVulListRequest) SetDigest(v string) *DescribeImageVulListRequest {
 	s.Digest = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetGroupByAsset(v bool) *DescribeImageVulListRequest {
+	s.GroupByAsset = &v
 	return s
 }
 

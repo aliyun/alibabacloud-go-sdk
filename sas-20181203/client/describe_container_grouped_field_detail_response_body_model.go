@@ -16,7 +16,7 @@ type iDescribeContainerGroupedFieldDetailResponseBody interface {
 }
 
 type DescribeContainerGroupedFieldDetailResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DescribeContainerGroupedFieldDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,7 +68,7 @@ type DescribeContainerGroupedFieldDetailResponseBodyData struct {
 	//
 	// 1
 	AlarmCount *int32 `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -80,47 +80,47 @@ type DescribeContainerGroupedFieldDetailResponseBodyData struct {
 	//
 	// 1.14.8-aliyun.1
 	ClusterCurrentVersion *string `json:"ClusterCurrentVersion,omitempty" xml:"ClusterCurrentVersion,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c8ca91e0907d94efaba7fb0827eb9****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// zhhtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The status of the cluster. Valid values:
+	// The cluster status. Valid values:
 	//
-	// 	- STARTING: The cluster is being started.
+	// - STARTING: Starting.
 	//
-	// 	- START_FAILED: The cluster fails to be started.
+	// - START_FAILED: Failed to start.
 	//
-	// 	- BOOTSTRAPPING: The bootstrap action is being performed for the cluster.
+	// - BOOTSTRAPPING: Initializing bootstrap actions.
 	//
-	// 	- RUNNING: The cluster is running.
+	// - RUNNING: Running.
 	//
-	// 	- TERMINATING: The cluster is being terminated.
+	// - TERMINATING: Terminating.
 	//
-	// 	- TERMINATED: The cluster is terminated.
+	// - TERMINATED: Terminated.
 	//
-	// 	- TERMINATED_WITH_ERRORS: The cluster is terminated due to an exception.
+	// - TERMINATED_WITH_ERRORS: Terminated due to an exception.
 	//
-	// 	- TERMINATE_FAILED: The cluster fails to be terminated.
+	// - TERMINATE_FAILED: Failed to terminate.
 	//
 	// example:
 	//
 	// RUNNING
 	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// 	- **Kubernetes**: dedicated Kubernetes cluster.
+	// - **Kubernetes**: dedicated Kubernetes cluster.
 	//
-	// 	- **ManagedKubernetes**: standard managed cluster (edge cluster).
+	// - **ManagedKubernetes**: standard managed cluster (edge cluster).
 	//
-	// 	- **Ask**: serverless Kubernetes (ASK) cluster.
+	// - **Ask**: standard serverless cluster.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeContainerGroupedFieldDetailResponseBodyData struct {
 	//
 	// 1
 	ContainerCount *int32 `json:"ContainerCount,omitempty" xml:"ContainerCount,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -150,31 +150,31 @@ type DescribeContainerGroupedFieldDetailResponseBodyData struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// example:
 	//
 	// shangliang-test
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The name of the pod.
+	// The POD name.
 	//
 	// example:
 	//
 	// node-local-dns-zwsxl
 	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	// The number of pods.
+	// The number of PODs.
 	//
 	// example:
 	//
 	// 1
 	PodCount *int32 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	// The IP address of the pod.
+	// The IP address of the POD.
 	//
 	// example:
 	//
 	// 192.168.1.1
 	PodIp *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

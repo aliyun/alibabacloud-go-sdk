@@ -34,25 +34,25 @@ type iCreateHoneypotProbeRequest interface {
 }
 
 type CreateHoneypotProbeRequest struct {
-	// Specifies whether to enable Address Resolution Protocol (ARP) spoofing. Valid values:
+	// Specifies whether to enable ARP spoof detection. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Enabled.
 	//
-	// 	- **false**: no
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	Arp *bool `json:"Arp,omitempty" xml:"Arp,omitempty"`
-	// The ID of the business group.
+	// The business group.
 	//
 	// example:
 	//
 	// 2022011817324588686
 	BusinessGroupId *string `json:"BusinessGroupId,omitempty" xml:"BusinessGroupId,omitempty"`
-	// The ID of the management node.
+	// The management node ID.
 	//
-	// > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to query the IDs of management nodes.
+	// > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateHoneypotProbeRequest struct {
 	//
 	// a882e590-b87b-45a6-87b9-d0a3e5a0****
 	ControlNodeId *string `json:"ControlNodeId,omitempty" xml:"ControlNodeId,omitempty"`
-	// The name of the probe.
+	// The probe name.
 	//
 	// This parameter is required.
 	//
@@ -68,23 +68,23 @@ type CreateHoneypotProbeRequest struct {
 	//
 	// testHoneyPotProbe
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The configuration of the probe.
+	// The collection of service configurations.
 	HoneypotBindList []*CreateHoneypotProbeRequestHoneypotBindList `json:"HoneypotBindList,omitempty" xml:"HoneypotBindList,omitempty" type:"Repeated"`
-	// Specifies whether to enable ping scan. Valid values:
+	// Specifies whether to enable ping scan detection. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Enabled.
 	//
-	// 	- **false**: no
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	Ping *bool `json:"Ping,omitempty" xml:"Ping,omitempty"`
-	// The type of the probe. Valid values:
+	// The probe type. Valid values:
 	//
-	// 	- **host_probe**: host probe
+	// - **host_probe**: host probe
 	//
-	// 	- **vpc_black_hole_probe**: virtual private cloud (VPC) probe
+	// - **vpc_black_hole_probe**: VPC blackhole probe
 	//
 	// This parameter is required.
 	//
@@ -92,29 +92,29 @@ type CreateHoneypotProbeRequest struct {
 	//
 	// host_probe
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// The version of the probe.
+	// The probe version.
 	//
 	// example:
 	//
 	// 0.0.0
 	ProbeVersion *string `json:"ProbeVersion,omitempty" xml:"ProbeVersion,omitempty"`
-	// The IP address of the proxy.
+	// The proxy IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	ProxyIp *string `json:"ProxyIp,omitempty" xml:"ProxyIp,omitempty"`
-	// The UUID of the instance.
+	// The instance UUID.
 	//
-	// > If **ProbeType*	- is set to **host_probe**, this parameter is required.
+	// > This parameter is required when **ProbeType*	- is set to **host_probe**.
 	//
 	// example:
 	//
 	// e4af3620-6895-4e2f-a641-a9d8fb53****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The ID of the VPC.
+	// The ID of the virtual private cloud (VPC).
 	//
-	// > If **ProbeType*	- is set to **vpc_black_hole_probe**, this parameter is required. You can call the [DescribeVpcHoneyPotList](~~DescribeVpcHoneyPotList~~) operation to query the IDs of VPCs.
+	// > This parameter is required when **ProbeType*	- is set to **vpc_black_hole_probe**. You can call the [DescribeVpcHoneyPotList](~~DescribeVpcHoneyPotList~~) operation to obtain this value.
 	//
 	// example:
 	//
@@ -243,11 +243,11 @@ func (s *CreateHoneypotProbeRequest) Validate() error {
 }
 
 type CreateHoneypotProbeRequestHoneypotBindList struct {
-	// The listener ports.
+	// The list of listening ports.
 	BindPortList []*CreateHoneypotProbeRequestHoneypotBindListBindPortList `json:"BindPortList,omitempty" xml:"BindPortList,omitempty" type:"Repeated"`
-	// The ID of the honeypot.
+	// The honeypot ID.
 	//
-	// > You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
+	// > You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
 	//
 	// example:
 	//
@@ -295,33 +295,33 @@ func (s *CreateHoneypotProbeRequestHoneypotBindList) Validate() error {
 }
 
 type CreateHoneypotProbeRequestHoneypotBindListBindPortList struct {
-	// Specifies whether to bind a port. Valid values:
+	// Specifies whether to bind the port. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes.
 	//
-	// 	- **false**: no
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	BindPort *bool `json:"BindPort,omitempty" xml:"BindPort,omitempty"`
-	// The end of the port range.
+	// The end port.
 	//
 	// example:
 	//
 	// 90
 	EndPort *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// Specifies whether the port is a fixed port. Valid values:
+	// Specifies whether the port is fixed. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: No.
 	//
-	// 	- **1**: yes
+	// - **1**: Yes.
 	//
 	// example:
 	//
-	// 0
+	// false
 	Fixed *bool `json:"Fixed,omitempty" xml:"Fixed,omitempty"`
-	// The start of the port range.
+	// The start port.
 	//
 	// example:
 	//
@@ -329,7 +329,7 @@ type CreateHoneypotProbeRequestHoneypotBindListBindPortList struct {
 	StartPort *int32 `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
 	// The destination port.
 	//
-	// > If **HoneypotId*	- is specified, this parameter is required.
+	// > This parameter is required when **HoneypotId*	- is not empty.
 	//
 	// example:
 	//

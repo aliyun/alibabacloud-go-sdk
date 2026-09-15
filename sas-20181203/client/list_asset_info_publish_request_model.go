@@ -16,13 +16,13 @@ type iListAssetInfoPublishRequest interface {
 }
 
 type ListAssetInfoPublishRequest struct {
-	// An extended parameter. This parameter is temporarily unavailable.
+	// An extension field. This parameter is currently not used.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The UUIDs of the servers that you want to query.
+	// The list of server UUIDs to query.
 	//
 	// This parameter is required.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`

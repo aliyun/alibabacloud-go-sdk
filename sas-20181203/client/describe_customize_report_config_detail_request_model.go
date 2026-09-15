@@ -32,14 +32,17 @@ type DescribeCustomizeReportConfigDetailRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The report ID.\\
 	//
-	// The ReportId returned by calling the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation.
+	// Call the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation to obtain the value of ReportId from the response.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 619031
-	ReportId                   *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//

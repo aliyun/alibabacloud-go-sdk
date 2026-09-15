@@ -36,37 +36,37 @@ type iCreateJenkinsImageScanTaskRequest interface {
 }
 
 type CreateJenkinsImageScanTaskRequest struct {
-	// The digest of the image.
+	// The image summary.
 	//
 	// example:
 	//
 	// a8c9f3765684cd8d9053db9523eab58878e99a199217500efd9ae2a860a7****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The time when the image was created.
+	// The image creation time.
 	//
 	// example:
 	//
 	// 1717430400000
 	ImageCreate *int64 `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// b10ef7b245c34a0822055c74fc4a0e8b5baf0279306316b2c517a501ed25****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The size of the image. Unit: bytes.
+	// The image size. Unit: bytes.
 	//
 	// example:
 	//
 	// 6120340
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The time when the image was updated.
+	// The image update time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1717430498600
 	ImageUpdate *int64 `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
-	// The information about the Jenkins environment.
+	// The Jenkins environment context. Leave this parameter empty or set it to the fixed value: **release**.
 	//
 	// example:
 	//
@@ -78,25 +78,25 @@ type CreateJenkinsImageScanTaskRequest struct {
 	//
 	// lkl-zf-ss-ccss
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the image repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// sdk
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The source IP address of the request.
+	// The access source IP address.
 	//
 	// example:
 	//
 	// 119.136.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The tag of the image.
+	// The image label.
 	//
 	// example:
 	//
 	// 00f597223f-20210831-1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The token that is used to access the Jenkins image repository.
+	// The access token for the Jenkins image repository. Obtain the token from the homepage of the Chinese documentation center > Security Center > User Guide > Container Protection > CI/CD Access Settings. You can also invoke CreateJenkinsImageRegistry to create a CI/CD image repository and obtain the token from the response parameter Data.Token. For an existing repository, invoke PageImageRegistry to query the token.
 	//
 	// example:
 	//

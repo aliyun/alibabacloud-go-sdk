@@ -26,7 +26,7 @@ type iDescribeIdcProbeScanResultListRequest interface {
 }
 
 type DescribeIdcProbeScanResultListRequest struct {
-	// The search conditions for assets. This parameter is in JSON format. Parameter names are case-sensitive.
+	// The search conditions for assets. This parameter is in JSON format. The parameter names are case-sensitive.
 	//
 	// > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address.
 	//
@@ -34,25 +34,25 @@ type DescribeIdcProbeScanResultListRequest struct {
 	//
 	// [{\\"name\\":\\"scannedIp\\",\\"value\\":\\"192.168.2.11\\"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The page number of the current page in a paged query.
+	// The page number in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the scan discovery period.
+	// The end time of the scan discovery. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1720006819000
 	FoundEndTime *int64 `json:"FoundEndTime,omitempty" xml:"FoundEndTime,omitempty"`
-	// The start time of the scan discovery period.
+	// The start time of the scan discovery. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1720006818000
 	FoundStartTime *int64 `json:"FoundStartTime,omitempty" xml:"FoundStartTime,omitempty"`
-	// The logical relationship between multiple search conditions. Valid values:
+	// The logical relationship among multiple search conditions. Valid values:
 	//
 	// - **OR**: The search conditions are in a logical **OR*	- relationship.
 	//
@@ -62,9 +62,9 @@ type DescribeIdcProbeScanResultListRequest struct {
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+	// The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
-	// > Do not leave PageSize empty.
+	// > Specify a value for PageSize.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeIdcProbeScanResultListRequest struct {
 	//
 	// - **3**: expired
 	//
-	// - **4**: probe does not exist.
+	// - **4**: probe does not exist
 	//
 	// example:
 	//

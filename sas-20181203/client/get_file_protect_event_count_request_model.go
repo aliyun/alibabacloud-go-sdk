@@ -14,11 +14,11 @@ type iGetFileProtectEventCountRequest interface {
 }
 
 type GetFileProtectEventCountRequest struct {
-	// The status of the event. Valid values:
+	// The event filter status. Valid values:
 	//
-	// 	- 0: unhandled
+	// - 0: Unhandled.
 	//
-	// 	- 1: handled
+	// - 1: Handled.
 	//
 	// example:
 	//

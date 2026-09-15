@@ -38,13 +38,13 @@ type iCreateFileProtectClientRuleRequest interface {
 type CreateFileProtectClientRuleRequest struct {
 	// The alert notification level. Valid values:
 	//
-	// - 0: no alert
+	// - 0: No alert.
 	//
-	// - 1: reminder
+	// - 1: Reminder.
 	//
-	// - 2: suspicious
+	// - 2: Suspicious.
 	//
-	// - 3: high-risk.
+	// - 3: High-risk.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type CreateFileProtectClientRuleRequest struct {
 	//
 	// example:
 	//
-	// 规则****
+	// Rule****
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the rule. Valid values:
+	// The rule status. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -116,7 +116,7 @@ type CreateFileProtectClientRuleRequest struct {
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The switch ID associated with the rule.
+	// The switch ID that corresponds to the rule.
 	//
 	// example:
 	//

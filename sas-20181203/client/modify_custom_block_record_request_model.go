@@ -30,11 +30,13 @@ type ModifyCustomBlockRecordRequest struct {
 	//
 	// 10.12.XX.XX
 	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-	// The direction in which the brute-force attacks blocking policy blocks the IP address on the server. Valid values:
+	// The direction in which the server brute-force attacks blocking policy blocks the IP address.
+	//
+	// Valid values:
 	//
 	// - **in**: inbound
 	//
-	// - **out**: outbound.
+	// - **out**: outbound
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type ModifyCustomBlockRecordRequest struct {
 	//
 	// out
 	Bound *string `json:"Bound,omitempty" xml:"Bound,omitempty"`
-	// The expiration time of the blocking record.
+	// The expiration time of the blocking record. The value is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//

@@ -146,7 +146,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 10
 	AgentlessCapacity *int64 `json:"AgentlessCapacity,omitempty" xml:"AgentlessCapacity,omitempty"`
-	// Indicates whether pay-as-you-go purchases are allowed. Valid values:
+	// Indicates whether pay-as-you-go purchasing is allowed. Valid values:
 	//
 	// - **0**: Not allowed.
 	//
@@ -156,7 +156,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	AllowPartialBuy *int32 `json:"AllowPartialBuy,omitempty" xml:"AllowPartialBuy,omitempty"`
-	// The anti-ransomware backup capacity. Unit: GB.
+	// The anti-ransomware backup capacity, in GB.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribeVersionConfigResponseBody struct {
 	AntiRansomwareService *int32 `json:"AntiRansomwareService,omitempty" xml:"AntiRansomwareService,omitempty"`
 	// Indicates whether the application whitelist is enabled. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: Not enabled.
 	//
 	// - **2**: Enabled.
 	//
@@ -184,7 +184,7 @@ type DescribeVersionConfigResponseBody struct {
 	AppWhiteList *int32 `json:"AppWhiteList,omitempty" xml:"AppWhiteList,omitempty"`
 	// The number of application whitelist authorizations.
 	//
-	// > One authorization allows you to apply a whitelist policy to one server. After the application whitelist feature is enabled, the account has 20 authorizations by default.
+	// > One authorization allows you to apply an application whitelist policy to one server. After the application whitelist feature is enabled, the account has 20 authorizations by default.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 30
 	AssetLevel *int32 `json:"AssetLevel,omitempty" xml:"AssetLevel,omitempty"`
-	// Indicates whether Endpoint Detection and Response (EDR) is purchased.
+	// Indicates whether EDR is purchased.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	CanTryPostPaidPackage *int32 `json:"CanTryPostPaidPackage,omitempty" xml:"CanTryPostPaidPackage,omitempty"`
-	// The number of purchased Cloud Security Posture Management (CSPM) scans. Unit: times per month.
+	// The number of purchased Cloud Security Posture Management (CSPM) scans, in scans per month.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// - **10**: Value-added services only.
 	//
-	// > If a single version is purchased, this value indicates the corresponding version. If multiple versions are purchased, this value indicates the highest version among the purchased versions.
+	// > If a single version is purchased, this value indicates the corresponding version. If multiple versions are purchased, this value indicates the highest version among the purchased editions of Security Center.
 	//
 	// example:
 	//
@@ -284,7 +284,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// - **0**: Self-purchased.
 	//
-	// - **1**: Allocated through multi-account management.
+	// - **1**: Allocated from a multi-account setup.
 	//
 	// example:
 	//
@@ -312,11 +312,11 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// true
 	IsNewContainerVersion *bool `json:"IsNewContainerVersion,omitempty" xml:"IsNewContainerVersion,omitempty"`
-	// Indicates whether the instance is the new multi-version edition. Valid values:
+	// Indicates whether the instance is the new multi-version. Valid values:
 	//
-	// - **true**: The instance is the latest multi-version edition.
+	// - **true**: The instance is the latest multi-version.
 	//
-	// - **false**: The instance is not the latest multi-version edition.
+	// - **false**: The instance is not the latest multi-version.
 	//
 	// example:
 	//
@@ -324,9 +324,9 @@ type DescribeVersionConfigResponseBody struct {
 	IsNewMultiVersion *bool `json:"IsNewMultiVersion,omitempty" xml:"IsNewMultiVersion,omitempty"`
 	// Indicates whether the number of existing servers exceeds the maximum number of purchased authorizations. Valid values:
 	//
-	// - **false**: The number does not exceed the limit.
+	// - **false**: Not exceeded.
 	//
-	// - **true**: The number exceeds the limit.
+	// - **true**: Exceeded.
 	//
 	// 	Notice: This parameter is deprecated. You can ignore it.
 	//
@@ -336,7 +336,7 @@ type DescribeVersionConfigResponseBody struct {
 	IsOverBalance *bool `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
 	// Indicates whether pay-as-you-go billing is enabled. Valid values:
 	//
-	// - **false**: Disabled.
+	// - **false**: Not enabled.
 	//
 	// - **true**: Enabled.
 	//
@@ -354,7 +354,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 0
 	IsTrialVersion *int32 `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
-	// The timestamp when the last trial of Security Center ended. Unit: milliseconds.
+	// The end timestamp of the last trial of Security Center, in milliseconds.
 	//
 	// example:
 	//
@@ -372,7 +372,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 40
 	MVUnusedAuthCount *int32 `json:"MVUnusedAuthCount,omitempty" xml:"MVUnusedAuthCount,omitempty"`
-	// The higher protection edition between the subscription and pay-as-you-go services when both host protection and container protection of Security Center are activated. Valid values:
+	// The higher protection edition when both host protection and container protection are activated with subscription and pay-as-you-go billing methods in Security Center. Valid values:
 	//
 	// - **1**: Basic Edition.
 	//
@@ -400,11 +400,11 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 100
 	NewPostPaidCspm *int32 `json:"NewPostPaidCspm,omitempty" xml:"NewPostPaidCspm,omitempty"`
-	// Indicates whether the new version of Cloud Threat Detection and Response (CTDR) is enabled. The new version of CTDR supports purchasing log ingestion traffic and log storage capacity. Valid values:
+	// Indicates whether the new version of Cloud Threat Detection and Response (CTDR) is enabled. The new version of CTDR supports purchasing traffic ingestion and log storage capacity. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: No.
 	//
-	// - **1**: Enabled.
+	// - **1**: Yes.
 	//
 	// example:
 	//
@@ -416,7 +416,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 10
 	OnboardedAssets *int32 `json:"OnboardedAssets,omitempty" xml:"OnboardedAssets,omitempty"`
-	// The timestamp when the service was activated. Unit: milliseconds.
+	// The timestamp when the service was activated, in milliseconds.
 	//
 	// example:
 	//
@@ -470,7 +470,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// {"VUL":1}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// The time when pay-as-you-go billing was activated.
+	// The time when pay-as-you-go billing was activated. The value is a UNIX timestamp, in milliseconds.
 	//
 	// example:
 	//
@@ -486,21 +486,21 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	PostPayStatus *int32 `json:"PostPayStatus,omitempty" xml:"PostPayStatus,omitempty"`
-	// The number of purchased runtime application self-protection (RASP) licenses. Unit: licenses per month.
+	// The number of purchased application protection licenses, in licenses per month.
 	//
 	// example:
 	//
 	// 10
 	RaspCapacity *int64 `json:"RaspCapacity,omitempty" xml:"RaspCapacity,omitempty"`
-	// The timestamp when the Security Center instance expires. Unit: milliseconds.
+	// The UNIX timestamp when the Security Center instance expires, in milliseconds.
 	//
-	// > If you do not renew the instance within 7 days after it expires, your paid instance is downgraded to Free Edition. You can no longer use the features of the paid edition, and your Security Center configuration data and historical alert data (such as DDoS alerts) become inaccessible. In this case, you must repurchase Security Center to enable the paid edition. For more information, see [Purchase Security Center](https://help.aliyun.com/document_detail/42308.html).
+	// > If you do not complete renewal within 7 days after the instance expires, your paid edition instance is downgraded to Free Edition. You can no longer use the features of the paid edition, and your previous Security Center configuration data and historical alerting data (such as DDoS alerts) become inaccessible. In this case, you must repurchase Security Center to enable the paid edition. For more information, see [Purchase Security Center](https://help.aliyun.com/document_detail/42308.html).
 	//
 	// example:
 	//
 	// 1625846400000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The request ID.
+	// The unique request ID generated by Alibaba Cloud for this request.
 	//
 	// example:
 	//
@@ -568,19 +568,19 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 10
 	SdkCapacity *int64 `json:"SdkCapacity,omitempty" xml:"SdkCapacity,omitempty"`
-	// The purchased log storage capacity. Unit: GB. Valid values: 0 to 200000.
+	// The purchased log storage capacity, in GB. Valid values: 0 to 200000.
 	//
 	// example:
 	//
 	// 10240
 	SlsCapacity *int64 `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
-	// The purchased threat analysis capacity. Unit: GB.
+	// The purchased threat analysis capacity, in GB.
 	//
 	// example:
 	//
 	// 25
 	ThreatAnalysisCapacity *int64 `json:"ThreatAnalysisCapacity,omitempty" xml:"ThreatAnalysisCapacity,omitempty"`
-	// The purchased log ingestion traffic for Cloud Threat Detection and Response (CTDR). Unit: GB per day.
+	// The purchased log ingestion traffic for Cloud Threat Detection and Response (CTDR), in GB per day.
 	//
 	// example:
 	//
@@ -594,9 +594,9 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	TrialVersion *int32 `json:"TrialVersion,omitempty" xml:"TrialVersion,omitempty"`
-	// Indicates whether the custom alert feature is enabled. Valid values:
+	// Indicates whether the custom alerting feature is enabled. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: Not enabled.
 	//
 	// - **2**: Enabled.
 	//
@@ -616,7 +616,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// - **7**: Ultimate Edition.
 	//
-	// - **8**: Multi-version Edition.
+	// - **8**: Multi-version.
 	//
 	// - **10**: Value-added services only.
 	//
@@ -630,15 +630,15 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 10
 	VmCores *int32 `json:"VmCores,omitempty" xml:"VmCores,omitempty"`
-	// The number of purchased vulnerability fixes. Unit: times per month.
+	// The number of purchased vulnerability fixes, in fixes per month.
 	//
 	// example:
 	//
 	// 10
 	VulFixCapacity *int64 `json:"VulFixCapacity,omitempty" xml:"VulFixCapacity,omitempty"`
-	// Indicates whether web tamper proofing is enabled. Valid values:
+	// Indicates whether web tamper-proofing is enabled. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: Not enabled.
 	//
 	// - **1**: Enabled.
 	//
@@ -646,7 +646,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 0
 	WebLock *int32 `json:"WebLock,omitempty" xml:"WebLock,omitempty"`
-	// The number of purchased web tamper proofing authorizations. One authorization allows you to enable web tamper proofing for one server. Valid values: 0 to N.
+	// The number of purchased web tamper-proofing authorizations. One authorization enables web tamper-proofing protection for one server. Valid values: 0 to N.
 	//
 	// > N is the number of servers that you own.
 	//

@@ -18,10 +18,13 @@ type iDeleteSecurityEventMarkMissListRequest interface {
 }
 
 type DeleteSecurityEventMarkMissListRequest struct {
-	// The IDs of custom defense rule.
-	Ids                        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	ResourceDirectoryAccountId *int64   `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	ResourceOwnerId            *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The list of alert whitelisting rule IDs.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	ResourceOwnerId            *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteSecurityEventMarkMissListRequest) String() string {

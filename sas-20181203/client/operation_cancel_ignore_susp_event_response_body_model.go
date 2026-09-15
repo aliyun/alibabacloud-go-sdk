@@ -24,7 +24,7 @@ type iOperationCancelIgnoreSuspEventResponseBody interface {
 }
 
 type OperationCancelIgnoreSuspEventResponseBody struct {
-	// The status code returned. The status code **200*	- indicates that the request was is successful. Other status codes indicate that the request fails. You can identify the cause of the failure based on the status code.
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type OperationCancelIgnoreSuspEventResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The detailed information about the error code.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type OperationCancelIgnoreSuspEventResponseBody struct {
 	//
 	// CE500770-42D3-442E-9DDD-156E0F9F3B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The handling result of an exception. Valid values:
+	// The result of the alert event processing. Valid values:
 	//
-	// 	- **true**: successful
+	// - **true**: Successful.
 	//
-	// 	- **false**: failed
+	// - **false**: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The time consumed for the request. Unit: seconds.
+	// The time consumed by the task, in seconds.
 	//
 	// example:
 	//

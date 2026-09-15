@@ -15,6 +15,8 @@ type iChangeCheckScopeConfigInstanceRequest interface {
 	GetConfigId() *string
 	SetDeleteAssetUuids(v []*string) *ChangeCheckScopeConfigInstanceRequest
 	GetDeleteAssetUuids() []*string
+	SetSelectionKey(v string) *ChangeCheckScopeConfigInstanceRequest
+	GetSelectionKey() *string
 }
 
 type ChangeCheckScopeConfigInstanceRequest struct {
@@ -32,6 +34,12 @@ type ChangeCheckScopeConfigInstanceRequest struct {
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The list of unique IDs of cloud assets to delete.
 	DeleteAssetUuids []*string `json:"DeleteAssetUuids,omitempty" xml:"DeleteAssetUuids,omitempty" type:"Repeated"`
+	// The key for cross-page select-all.
+	//
+	// example:
+	//
+	// b6d1a39a-f020-4782-af2c-c4b6522*****
+	SelectionKey *string `json:"SelectionKey,omitempty" xml:"SelectionKey,omitempty"`
 }
 
 func (s ChangeCheckScopeConfigInstanceRequest) String() string {
@@ -54,6 +62,10 @@ func (s *ChangeCheckScopeConfigInstanceRequest) GetDeleteAssetUuids() []*string 
 	return s.DeleteAssetUuids
 }
 
+func (s *ChangeCheckScopeConfigInstanceRequest) GetSelectionKey() *string {
+	return s.SelectionKey
+}
+
 func (s *ChangeCheckScopeConfigInstanceRequest) SetAddAssetUuids(v []*string) *ChangeCheckScopeConfigInstanceRequest {
 	s.AddAssetUuids = v
 	return s
@@ -66,6 +78,11 @@ func (s *ChangeCheckScopeConfigInstanceRequest) SetConfigId(v string) *ChangeChe
 
 func (s *ChangeCheckScopeConfigInstanceRequest) SetDeleteAssetUuids(v []*string) *ChangeCheckScopeConfigInstanceRequest {
 	s.DeleteAssetUuids = v
+	return s
+}
+
+func (s *ChangeCheckScopeConfigInstanceRequest) SetSelectionKey(v string) *ChangeCheckScopeConfigInstanceRequest {
+	s.SelectionKey = &v
 	return s
 }
 

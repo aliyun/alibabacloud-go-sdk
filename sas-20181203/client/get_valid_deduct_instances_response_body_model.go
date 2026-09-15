@@ -74,7 +74,8 @@ type GetValidDeductInstancesResponseBodyData struct {
 	CanTry *bool `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
 	// The list of resource plan usage details.
 	DeductPackageList []*GetValidDeductInstancesResponseBodyDataDeductPackageList `json:"DeductPackageList,omitempty" xml:"DeductPackageList,omitempty" type:"Repeated"`
-	TrialVersion      *int32                                                      `json:"TrialVersion,omitempty" xml:"TrialVersion,omitempty"`
+	// The trial version.
+	TrialVersion *int32 `json:"TrialVersion,omitempty" xml:"TrialVersion,omitempty"`
 }
 
 func (s GetValidDeductInstancesResponseBodyData) String() string {
@@ -126,13 +127,13 @@ func (s *GetValidDeductInstancesResponseBodyData) Validate() error {
 }
 
 type GetValidDeductInstancesResponseBodyDataDeductPackageList struct {
-	// The number of consumed quotas in the current metering cycle.
+	// The number of consumed authorizations in the current metering cycle.
 	//
 	// example:
 	//
 	// 10
 	CurrentPeriodUsed *int64 `json:"CurrentPeriodUsed,omitempty" xml:"CurrentPeriodUsed,omitempty"`
-	// The end time.
+	// The end time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -144,7 +145,7 @@ type GetValidDeductInstancesResponseBodyDataDeductPackageList struct {
 	//
 	// 1000
 	InitCapacity *float64 `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
-	// The resource plan instance ID.
+	// The instance ID of the resource plan.
 	//
 	// example:
 	//
@@ -152,17 +153,17 @@ type GetValidDeductInstancesResponseBodyDataDeductPackageList struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The module code. Valid values:
 	//
-	// - **POST_HOST**: host and container protection
+	// - **POST_HOST**: Host and container protection.
 	//
-	// - **CSPM**: cloud product configuration check
+	// - **CSPM**: Cloud product configuration check.
 	//
-	// - **VUL**: vulnerability scanning
+	// - **VUL**: Vulnerability scanning.
 	//
 	// example:
 	//
 	// POST_HOST
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// The number of consumed quotas up to the previous billing cycle.
+	// The number of consumed authorizations up to the end of the previous billing cycle.
 	//
 	// example:
 	//

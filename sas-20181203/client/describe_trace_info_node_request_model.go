@@ -44,7 +44,7 @@ type DescribeTraceInfoNodeRequest struct {
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The time when the event was first detected.
+	// The time when the event was first detected. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type DescribeTraceInfoNodeRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
 	//
 	// example:
 	//
 	// 127.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The vertex type. You can call the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation to obtain this parameter.
+	// The vertex type. You can obtain this value by calling the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation. Valid values: **SAS_ASSET**: indicates a server asset. In this case, VertexId is the UUID of the server, which can be obtained by calling the DescribeCloudCenterInstances operation. If no security events exist for the account, you can obtain the VertexId by calling the DescribeCloudCenterInstances operation.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type DescribeTraceInfoNodeRequest struct {
 	//
 	// SAS_ASSET
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the server to query. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter.
+	// The UUID of the server to query. You can obtain this parameter by calling the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation.
 	//
 	// This parameter is required.
 	//

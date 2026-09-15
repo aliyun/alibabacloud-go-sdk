@@ -60,69 +60,69 @@ type iExportSuspEventsRequest interface {
 }
 
 type ExportSuspEventsRequest struct {
-  // The types of assets.
+  // The collection of asset types.
   AssetsTypeList []*string `json:"AssetsTypeList,omitempty" xml:"AssetsTypeList,omitempty" type:"Repeated"`
-  // The ID of the cluster that you want to query.
+  // The ID of the cluster to query.
   // 
-  // > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+  // > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
   // 
   // example:
   // 
   // c4af4fdf38a98496a9b63c2be5dae****
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-  // The key of the condition that is used to query alert events on containers. Valid values:
+  // The container search field. Valid values:
   // 
-  // 	- **instanceId**: the ID of the asset
+  // - **instanceId**: instance ID
   // 
-  // 	- **appName**: the name of the application
+  // - **appName**: application name
   // 
-  // 	- **clusterId**: the ID of the cluster
+  // - **clusterId**: cluster ID
   // 
-  // 	- **regionId**: the ID of the region
+  // - **regionId**: region
   // 
-  // 	- **nodeName**: the name of the node
+  // - **nodeName**: node name
   // 
-  // 	- **namespace**: the namespace
+  // - **namespace**: namespace
   // 
-  // 	- **clusterName**: the name of the cluster
+  // - **clusterName**: cluster name
   // 
-  // 	- **image**: the name of the image
+  // - **image**: image name
   // 
-  // 	- **imageRepoName**: the name of the image repository
+  // - **imageRepoName**: image repository name
   // 
-  // 	- **imageRepoNamespace**: the namespace to which the image repository belongs
+  // - **imageRepoNamespace**: image repository namespace
   // 
-  // 	- **imageRepoTag**: the tag that is added to the image
+  // - **imageRepoTag**: image tag
   // 
-  // 	- **imageDigest**: the digest of the image
+  // - **imageDigest**: image digest
   // 
   // example:
   // 
   // clusterId
   ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-  // The value of the condition that is used to query alert events on containers.
+  // The value of the container search field.
   // 
   // example:
   // 
   // c819391d2d520485fa3e81e2dc2ea****
   ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-  // The number of the page to return.
+  // The page number of the current page in a paged query.
   // 
   // example:
   // 
   // 1
   CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-  // The status of the alert event. Valid values:
+  // Specifies whether the alert event is handled. Valid values:
   // 
-  // 	- **N**: unhandled
+  // - **N**: Unhandled.
   // 
-  // 	- **Y**: handled
+  // - **Y**: Handled.
   // 
   // example:
   // 
   // Y
   Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-  // The data source of the exception. Set the value to sas.
+  // The data source identifier of the anomaly event. Set the value to sas.
   // 
   // example:
   // 
@@ -134,95 +134,95 @@ type ExportSuspEventsRequest struct {
   // 
   // 9454789
   GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-  // The unique ID of the alert event.
+  // The unique ID of the alert event record.
   // 
   // example:
   // 
   // 17821
   Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-  // The language of the content within the request and response. Default value: **zh**. Valid values:
+  // The language type for the request and response messages. Default value: **zh**. Valid values:
   // 
-  // 	- **zh**: Chinese
+  // - **zh**: Chinese.
   // 
-  // 	- **en**: English
+  // - **en**: English.
   // 
   // example:
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-  // The severity of the alert event. Separate multiple severities with commas (,). Valid values:
+  // The severity levels of the alert events to query. Separate multiple severity levels with commas (,). The severity levels are listed in descending order. Valid values:
   // 
-  // 	- **serious**
+  // - **serious**: Urgent.
   // 
-  // 	- **suspicious**
+  // - **suspicious**: Suspicious.
   // 
-  // 	- **remind**
+  // - **remind**: Reminder.
   // 
   // example:
   // 
   // serious,suspicious,remind
   Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
-  // The complete name of the exception.
+  // The full name of the anomaly event.
   // 
   // example:
   // 
   // WEBSHELL
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // The status codes of alert events.
+  // The collection of alert event handling result codes.
   OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
-  // The number of entries to return on each page. Default value: **20**.
+  // The maximum number of entries per page in a paged query. Default value: **20**.
   // 
   // example:
   // 
   // 20
   PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-  // The alert type of the alert event. Valid values:
+  // The Alarm Metric of the alerting events to query. Valid values:
   // 
-  // 	- **Suspicious process**
+  // - **Abnormal process behavior**
   // 
-  // 	- **Webshell**
+  // - **Web shell**
   // 
-  // 	- **Unusual logon**
+  // - **Unusual logon**
   // 
-  // 	- **Exception**
+  // - **Anomaly event**
   // 
-  // 	- **Sensitive file tampering**
+  // - **Sensitive file tampering**
   // 
-  // 	- **Malicious process (cloud threat detection)**
+  // - **Malicious process (cloud scan)**
   // 
-  // 	- **Suspicious network connection**
+  // - **Suspicious network connection**
   // 
-  // 	- **Suspicious account**
+  // - **Abnormal account**
   // 
-  // 	- **Application intrusion event**
+  // - **Application intrusion event**
   // 
-  // 	- **Cloud threat detection**
+  // - **Cloud service threat detection**
   // 
-  // 	- **Precise defense**
+  // - **Precise defense**
   // 
-  // 	- **Application whitelist**
+  // - **Application whitelist**
   // 
-  // 	- **Persistent webshell**
+  // - **Persistent backdoor**
   // 
-  // 	- **Web application threat detection**
+  // - **Web application threat detection**
   // 
-  // 	- **Malicious script**
+  // - **Malicious script**
   // 
-  // 	- **Threat intelligence**
+  // - **Threat intelligence**
   // 
-  // 	- **Malicious network activity**
+  // - **Malicious network connectivity behavior**
   // 
-  // 	- **Cluster exception**
+  // - **Container cluster exception**
   // 
-  // 	- **Webshell (on-premises threat detection)**
+  // - **Web shell (local scan)**
   // 
-  // 	- **Vulnerability exploitation**
+  // - **Vulnerability exploits**
   // 
-  // 	- **Malicious process (on-premises threat detection)**
+  // - **Malicious process (local scan)**
   // 
-  // 	- **Trusted exception**
+  // - **Trusted exception**
   // 
-  // 	- **Others**
+  // - **Other**
   // 
   // example:
   // 
@@ -234,68 +234,71 @@ type ExportSuspEventsRequest struct {
   // 
   // remark
   Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+  // The ID of the Alibaba Cloud account of the member accounts in the resource directory.
+  // 
+  // > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
   ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-  // The source IP address of the request. The value of this parameter is specified by the system.
+  // The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
   // 
   // example:
   // 
   // 127.0.XX.XX
   SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-  // The handling status of the exception. Valid values:
+  // The handling status of the anomaly event. Valid values:
   // 
-  // 	- **0**: all status
+  // - **0**: All.
   // 
-  // 	- **1**: pending handling
+  // - **1**: Unhandled.
   // 
-  // 	- **2**: ignored
+  // - **2**: Ignored.
   // 
-  // 	- **4**: confirmed
+  // - **4**: Confirmed.
   // 
-  // 	- **8**: marked as false positive
+  // - **8**: Marked as false positive.
   // 
-  // 	- **16**: handling
+  // - **16**: Handling.
   // 
-  // 	- **32**: handled
+  // - **32**: Handled.
   // 
-  // 	- **64**: expired
+  // - **64**: Expired.
   // 
-  // 	- **128**: deleted
+  // - **128**: Deleted.
   // 
   // example:
   // 
   // 0
   Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-  // The dimension from which you want to configure the feature. Valid values:
+  // The dimension of the target switch configuration. Valid values:
   // 
-  // 	- **uuid**: the UUID of the asset
+  // - **uuid**: asset UUID
   // 
-  // 	- **image_repo**: the ID of the image repository
+  // - **image_repo**: image repository ID
   // 
-  // 	- **Cluster**: the ID of the cluster
+  // - **Cluster**: cluster ID
   // 
   // example:
   // 
   // uuid
   TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-  // The end of the time range during which the exception is detected.
+  // The end time of the anomaly event. Format: YYYY-MM-DD HH:mm:ss.
   // 
   // example:
   // 
   // 2022-12-05 00:00:00
   TimeEnd *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-  // The beginning of the time range during which the exception is detected.
+  // The start time of the anomaly event occurrence. Format: YYYY-MM-DD HH:mm:ss.
   // 
   // example:
   // 
   // 2022-10-01 00:00:00
   TimeStart *string `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
-  // The unique key of the alert event.
+  // The unique key of the security alert.
   // 
   // example:
   // 
   // 1fbe8d16727f61d1478a674d6fa0****
   UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-  // The unique ID of the associated instance.
+  // The unique identifier of the associated instance.
   // 
   // example:
   // 

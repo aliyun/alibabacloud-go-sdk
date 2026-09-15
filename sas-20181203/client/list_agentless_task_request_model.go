@@ -42,7 +42,7 @@ type iListAgentlessTaskRequest interface {
 }
 
 type ListAgentlessTaskRequest struct {
-	// The page number of the current page in a paged query. Paging starts from page 1.
+	// The page number of the current page in a paged query. This parameter implements paging.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAgentlessTaskRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListAgentlessTaskRequest struct {
 	//
 	// oracle-win-001****
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	// The maximum number of entries per page in a paged query. Paging is performed based on this value.
+	// The maximum number of entries per page in a paged query. This parameter implements paging.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type ListAgentlessTaskRequest struct {
 	//
 	// - **1**: snapshot
 	//
-	// - **2**: image.
+	// - **2**: image
 	//
 	// example:
 	//

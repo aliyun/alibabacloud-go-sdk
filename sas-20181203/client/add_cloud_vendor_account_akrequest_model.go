@@ -38,11 +38,15 @@ type iAddCloudVendorAccountAKRequest interface {
 }
 
 type AddCloudVendorAccountAKRequest struct {
-	// The type of the account to which the AccessKey pair belongs. Valid values:
+	// The AccessKey (AK) type. Valid values:
 	//
-	// 	- **primary**: a primary account
+	// - **primary**: Primary account.
 	//
-	// 	- **sub**: a sub-account
+	// - **sub**: Sub-account.
+	//
+	// - **ctdr**: Agentic SOC.
+	//
+	// 	Warning: When the vendor is **CHAITIN**, **FORTINET**, **THREATBOOK**, or **WIZ**, set this parameter to ctdr.</warning>
 	//
 	// This parameter is required.
 	//
@@ -50,67 +54,83 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// primary
 	AkType *string `json:"AkType,omitempty" xml:"AkType,omitempty"`
-	// The modules that are associated with the AccessKey pair.
+	// The list of AK-associated modules.
 	AuthModules []*string `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
-	// Account ID. > The account ID of the cloud provider, required when permissions include threat analysis and response.
+	// The account ID.
+	//
+	// > The account ID of the connected cloud vendor. This parameter is required when the permission description includes Cloud Threat Detection and Response (CTDR).
 	//
 	// example:
 	//
 	// azure_demo_1
 	CtdrCloudUserId *string `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
-	// The Active Directory (AD) domain. This parameter takes effect only when Vendor is set to Azure. Valid values:
+	// The account domain for access. Valid values:
 	//
-	// 	- **china**
+	// - **china**: China
 	//
-	// 	- **global**
+	// - **global**: Global
+	//
+	// - **europe**: Huawei Cloud Europe
+	//
+	// > This parameter is valid only when **Vendor*	- is set to **HUAWEICLOUD**, **Azure**, **AWS**, **VOLCENGINE**, **KingsoftCloud**, **UCloud**, or **BaiduCloud**, and is required. Set this parameter to **china*	- for KingsoftCloud and BaiduCloud, and to **global*	- for UCloud.
 	//
 	// example:
 	//
 	// global
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Extended information.
+	// The extended information.
 	//
-	// > Used to record extended information from different vendors. > For Google Cloud, which is accessed via a service account, ExtendInfo stores the service key file in JSON format, excluding the private_key_id and zprivate_key fields. The file includes the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, universe_domain.
+	// > Used to record extended information for different vendors.
+	//
+	// >Google Cloud is accessed through a service account. ExtendInfo stores the JSON-formatted service key file, excluding the private_key_id and private_key fields. The file contains the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, and universe_domain.
 	//
 	// example:
 	//
 	// {\\"product\\":\\"webFirewall\\",\\"remark\\":\\"remark\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// The language of the content in the request and response messages. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The regions that are examined during AccessKey pair authentication. This parameter takes effect only when Vendor is set to AWS.
+	// The list of regions used for AK information verification. This parameter is valid only when Vendor is set to AWS.
 	//
-	// >  You can call the [ListCloudVendorRegions](~~ListCloudVendorRegions~~) operation to query regions.
+	// >Call the [ListCloudVendorRegions](~~ListCloudVendorRegions~~) operation to obtain this parameter.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The AccessKey ID. Valid values:
+	// The AK parameter ID. Valid values:
 	//
-	// 1\\. If AkType is set to primary, specify this parameter based on the following description:
+	// 1. When AkType is set to primary:
 	//
-	// 	- **Tencent**: Enter the AccessKey ID of a primary account on Tencent Cloud.
+	// - **Tencent**: AccessKeyId of the primary account
 	//
-	// 	- **HUAWEICLOUD**: Enter the AccessKey ID of a primary account on Huawei Cloud.
+	// - **HUAWEICLOUD**: AccessKeyId of the primary account
 	//
-	// 	- **Azure**: Enter the AccessKey ID of a primary account on Microsoft Azure.
+	// - **Azure**: ClientId
 	//
-	// 	- **AWS**: Enter the AccessKey ID of a primary account on AWS.
+	// - **AWS**: AccessKeyId of the primary account
 	//
-	// 2\\. If AkType is set to sub, specify this parameter based on the following description:
+	// - **VOLCENGINE**: AccessKeyId of the primary account
 	//
-	// 	- **Tencent**: Enter the AccessKey ID of a sub-account on Tencent Cloud.
+	// 2. When AkType is set to sub:
 	//
-	// 	- **HUAWEICLOUD**: Enter the AccessKey ID of a sub-account on Huawei Cloud.
+	// - **Tencent**: AccessKeyId of the sub-account
 	//
-	// 	- **Azure**: Enter the AccessKey ID of a sub-account on Microsoft Azure.
+	// - **HUAWEICLOUD**: AccessKeyId of the sub-account
 	//
-	// 	- **AWS**: Enter the AccessKey ID of a sub-account on AWS.
+	// - **Azure**: ClientId
+	//
+	// - **AWS**: AccessKeyId of the sub-account
+	//
+	// - **VOLCENGINE**: AccessKeyId of the sub-account
+	//
+	// - **google**: private_key_id
+	//
+	// >If AkType is set to **primary**, this value is the SecretID of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Access Key ID of the sub-account on the third-party cloud. For **Azure**, no distinction is made, and this value is the **appId*	- in the authentication information. Google Cloud is accessed through a service account. AkType defaults to sub, and this value is the private_key_id property value from the JSON-formatted service key file.
 	//
 	// This parameter is required.
 	//
@@ -118,27 +138,31 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// 45GLRV4SOT0YFB****
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The AccessKey secret. Valid values:
+	// The AK parameter secret. Valid values:
 	//
-	// 1\\. If AkType is set to primary, specify this parameter based on the following description:
+	// 1. When AkType is set to primary:
 	//
-	// 	- **Tencent**: Enter the AccessKey secret of a primary account on Tencent Cloud.
+	// - **Tencent**: SecretAccessKey of the primary account
 	//
-	// 	- **HUAWEICLOUD**: Enter the AccessKey secret of a primary account on Huawei Cloud.
+	// - **HUAWEICLOUD**: SecretAccessKey of the primary account
 	//
-	// 	- **Azure**: Enter the AccessKey secret of a primary account on Microsoft Azure.
+	// - **Azure**: ClientSecret
 	//
-	// 	- **AWS**: Enter the AccessKey secret of a primary account on AWS.
+	// - **AWS**: SecretAccessKey of the primary account
 	//
-	// 2\\. If AkType is set to sub, specify this parameter based on the following description:
+	// 2. When AkType is set to sub:
 	//
-	// 	- **Tencent**: Enter the AccessKey secret of a sub-account on Tencent Cloud.
+	// - **Tencent**: SecretAccessKey of the sub-account
 	//
-	// 	- **HUAWEICLOUD**: Enter the AccessKey secret of a sub-account on Huawei Cloud.
+	// - **HUAWEICLOUD**: SecretAccessKey of the sub-account
 	//
-	// 	- **Azure**: Enter the AccessKey secret of a sub-account on Microsoft Azure.
+	// - **Azure**: ClientSecret
 	//
-	// 	- **AWS**: Enter the AccessKey secret of a sub-account on AWS.
+	// - **AWS**: SecretAccessKey of the sub-account
+	//
+	// - **google**: private_key
+	//
+	// >If AkType is set to **primary**, this value is the Secret Access Key of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Secret Access Key of the sub-account on the third-party cloud. For **Azure**, no distinction is made, and this value is the **password*	- in the authentication information. Google Cloud is accessed through a service account. AkType defaults to sub, and this value is the private_key property value from the JSON-formatted service key file.
 	//
 	// This parameter is required.
 	//
@@ -146,23 +170,43 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// AE6SLd****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The subscription IDs. This parameter takes effect only when Vendor is set to Azure.
+	// The list of subscription IDs.
+	//
+	// > This parameter is no longer valid.
 	SubscriptionIds []*string `json:"SubscriptionIds,omitempty" xml:"SubscriptionIds,omitempty" type:"Repeated"`
-	// The tenant ID. This parameter takes effect only when Vendor is set to Azure.
+	// The tenant ID. This parameter is valid only when Vendor is set to Azure.
 	//
 	// example:
 	//
 	// 95304a97-339b-4de5-9a7d-cdbffaf****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The cloud service provider. Valid values:
+	// The cloud asset vendor. Valid values:
 	//
-	// 	- **Tencent**: Tencent Cloud
+	// - **Tencent**: Tencent Cloud
 	//
-	// 	- **HUAWEICLOUD**: Huawei Cloud
+	// - **HUAWEICLOUD**: Huawei Cloud
 	//
-	// 	- **Azure**: Microsoft Azure
+	// - **Azure**: Azure
 	//
-	// 	- **AWS**: Amazon Web Services (AWS)
+	// - **AWS**: AWS
+	//
+	// - **VOLCENGINE**: Volcengine
+	//
+	// - **google**: Google Cloud
+	//
+	// - **CHAITIN**: Chaitin Technology
+	//
+	// - **FORTINET**: Fortinet
+	//
+	// - **THREATBOOK**: ThreatBook
+	//
+	// - **KingsoftCloud**: Kingsoft Cloud
+	//
+	// - **UCloud**: UCloud
+	//
+	// - **BaiduCloud**: Baidu AI Cloud
+	//
+	// - **WIZ**: Wiz Security
 	//
 	// This parameter is required.
 	//
@@ -170,9 +214,9 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// AWS
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	// The name of the AccessKey pair.
+	// The AK account name.
 	//
-	// >  The account information of the third-party cloud servers.
+	// >Used to identify the account to which third-party host assets belong.
 	//
 	// example:
 	//

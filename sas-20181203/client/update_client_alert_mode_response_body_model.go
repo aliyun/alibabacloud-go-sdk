@@ -16,17 +16,17 @@ type iUpdateClientAlertModeResponseBody interface {
 }
 
 type UpdateClientAlertModeResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
+	// The returned data. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Succeeded.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type ListFileProtectEventResponseBody struct {
 	EventList []*ListFileProtectEventResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
 	// The pagination information of the query result.
 	PageInfo *ListFileProtectEventResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ func (s *ListFileProtectEventResponseBody) Validate() error {
 type ListFileProtectEventResponseBodyEventList struct {
 	// The alert notification level. Valid values:
 	//
-	// - 0: no alert
+	// - 0: No alert.
 	//
-	// - 1: reminder
+	// - 1: Reminder.
 	//
-	// - 2: suspicious
+	// - 2: Suspicious.
 	//
-	// - 3: high-risk.
+	// - 3: High-risk.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ListFileProtectEventResponseBodyEventList struct {
 	//
 	// ["touch","/test/aaaa"]
 	CmdLine *string `json:"CmdLine,omitempty" xml:"CmdLine,omitempty"`
-	// The file path on which the process operates.
+	// The file path on which the process operated.
 	//
 	// example:
 	//
 	// /etc/pam.d/su
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The time when the event was handled.
+	// The time when the event was handled. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type ListFileProtectEventResponseBodyEventList struct {
 	//
 	// 172.22.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The most recent time when the event occurred.
+	// The most recent time when the event occurred. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type ListFileProtectEventResponseBodyEventList struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The operating system type. Valid values:
 	//
-	// - **windows**: Windows
+	// - **windows**: Windows.
 	//
 	// - **linux**: Linux.
 	//
@@ -389,13 +389,13 @@ func (s *ListFileProtectEventResponseBodyEventList) Validate() error {
 }
 
 type ListFileProtectEventResponseBodyPageInfo struct {
-	// The page number of the current page in a paging query.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries returned per page in a paging query.
+	// The maximum number of entries returned per page in a paged query.
 	//
 	// example:
 	//

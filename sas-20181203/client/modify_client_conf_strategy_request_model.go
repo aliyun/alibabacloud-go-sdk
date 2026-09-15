@@ -22,7 +22,7 @@ type iModifyClientConfStrategyRequest interface {
 }
 
 type ModifyClientConfStrategyRequest struct {
-	// The key of the tag that is added to the agent configuration policy.
+	// The client configuration tag.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,19 @@ type ModifyClientConfStrategyRequest struct {
 	//
 	// machineResource
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The extended tag of the agent configuration policy.
+	// The extended tag.
 	//
 	// example:
 	//
 	// auto
 	TagExt *string `json:"TagExt,omitempty" xml:"TagExt,omitempty"`
-	// The value of the tag that is added to the agent configuration policy.
+	// The client tag value. Valid values:
 	//
-	// 	- major
+	// - major
 	//
-	// 	- advanced
+	// - advanced
 	//
-	// 	- basic
+	// - basic
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type ModifyClientConfStrategyRequest struct {
 	//
 	// advanced
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// The UUID of the server that you want to query.
+	// The UUID of the asset to query. You must specify at least one of the Uuid and Uuids parameters. Otherwise, the API returns a 400 error. The Uuid parameter specifies a single asset.
 	//
 	// example:
 	//
 	// 4fe8e1cd-3c37-4851-b9de-124da32c****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The UUID of the asset. You can specify a maximum of 500 UUIDs at a time.
+	// The UUIDs of asset instances. A maximum of 500 UUIDs can be specified at a time. You must specify at least one of the Uuids and Uuid parameters. Otherwise, the API returns a 400 error. The Uuids parameter specifies multiple assets in a batch.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

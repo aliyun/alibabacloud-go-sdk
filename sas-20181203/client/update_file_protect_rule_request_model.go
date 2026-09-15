@@ -28,49 +28,49 @@ type iUpdateFileProtectRuleRequest interface {
 }
 
 type UpdateFileProtectRuleRequest struct {
-	// The severity of alerts. Valid values:
+	// The alert notification level. Valid values:
 	//
-	// 	- 0: does not generate alerts
+	// - 0: no alert
 	//
-	// 	- 1: sends notifications
+	// - 1: reminder
 	//
-	// 	- 2: suspicious
+	// - 2: suspicious
 	//
-	// 	- 3: high-risk
+	// - 3: high-risk
 	//
 	// example:
 	//
 	// 0
 	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	// The operations that you want to perform on the files.
+	// The list of operations performed on files.
 	//
 	// This parameter is required.
 	FileOps []*string `json:"FileOps,omitempty" xml:"FileOps,omitempty" type:"Repeated"`
-	// The paths to the monitored files. Wildcard characters are supported.
+	// The list of monitored file paths. Wildcards are supported.
 	//
 	// This parameter is required.
 	FilePaths []*string `json:"FilePaths,omitempty" xml:"FilePaths,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 1062
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The paths to the monitored processes.
+	// The list of process listening paths.
 	//
 	// This parameter is required.
 	ProcPaths []*string `json:"ProcPaths,omitempty" xml:"ProcPaths,omitempty" type:"Repeated"`
-	// The handling method of the rule. Valid values:
+	// The behavior of the rule on the client. Valid values:
 	//
-	// 	- pass: allow
+	// - pass: allow
 	//
-	// 	- alert
+	// - alert: alert
 	//
 	// example:
 	//
 	// pass
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// This parameter is required.
 	//
@@ -78,11 +78,11 @@ type UpdateFileProtectRuleRequest struct {
 	//
 	// test-rule-1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the rule. Valid values:
+	// The rule status. Valid values:
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled
 	//
-	// 	- **1**: enabled
+	// - **1**: enabled
 	//
 	// example:
 	//

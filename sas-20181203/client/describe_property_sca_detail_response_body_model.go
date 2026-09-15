@@ -22,7 +22,7 @@ type DescribePropertyScaDetailResponseBody struct {
 	PageInfo *DescribePropertyScaDetailResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The details of the Asset Fingerprints list.
 	Propertys []*DescribePropertyScaDetailResponseBodyPropertys `json:"Propertys,omitempty" xml:"Propertys,omitempty" type:"Repeated"`
-	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
+	// The ID of the request. The China Chinese Cloud generates a unique identifier for the request, which can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribePropertyScaDetailResponseBodyPageInfo struct {
 	//
 	// B60***
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page in the paged query for Asset Fingerprints information. Default value: **10**, which indicates that 10 entries of Asset Fingerprints information are displayed per page.
+	// The number of entries per page in the paged query. Default value: **10**, which indicates that 10 entries of Asset Fingerprints information are displayed per page.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type DescribePropertyScaDetailResponseBodyPropertys struct {
 	//
 	// 5-rce_web_1
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The timestamp of the latest scan, which indicates the most recent time when Security Center collected middleware, database, or web service information. Unit: milliseconds.
+	// The timestamp of the latest scan, which is the most recent time when Security Center collected the middleware, database, or web service information. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -310,9 +310,9 @@ type DescribePropertyScaDetailResponseBodyPropertys struct {
 	ListenProtocol *string `json:"ListenProtocol,omitempty" xml:"ListenProtocol,omitempty"`
 	// The listening status of the process. Valid values:
 	//
-	// - **NONE**: not listening
+	// - **NONE**: Not listening.
 	//
-	// - **LISTEN**: listening
+	// - **LISTEN**: Listening.
 	//
 	// example:
 	//

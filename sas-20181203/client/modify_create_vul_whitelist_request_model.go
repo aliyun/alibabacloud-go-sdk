@@ -22,18 +22,21 @@ type iModifyCreateVulWhitelistRequest interface {
 }
 
 type ModifyCreateVulWhitelistRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The reason for adding the vulnerability to the whitelist.
+	// The reason for adding the vulnerability whitelist.
 	//
 	// example:
 	//
 	// This vulnerability is not harmful
-	Reason                     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The scope in which the whitelist takes effect. The value is a JSON string that contains the following fields:
 	//
-	// - **type**: The scope type. Valid values:
+	// - **type**: The type of the scope. Valid values:
 	//
 	//     - **GroupId**: server group
 	//
@@ -43,7 +46,7 @@ type ModifyCreateVulWhitelistRequest struct {
 	//
 	// - **groupIds**: The collection of server group IDs. The field type is Long.
 	//
-	// > If this parameter is left empty, the whitelist takes effect on all hosts. If **type*	- is set to **GroupId**, **groupIds*	- cannot be empty. If **type*	- is set to **Uuid**, **uuids*	- cannot be empty.
+	// > If this value is empty, the whitelist applies to all hosts. If **type*	- is set to **GroupId**, **groupIds*	- cannot be empty. If **type*	- is set to **Uuid**, **uuids*	- cannot be empty.
 	//
 	// example:
 	//

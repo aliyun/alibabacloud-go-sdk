@@ -44,7 +44,7 @@ type iListFileProtectClientEventRequest interface {
 type ListFileProtectClientEventRequest struct {
 	// The list of alert notification levels.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	// The page number of the current page when paging is used in a paged query.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
@@ -88,21 +88,21 @@ type ListFileProtectClientEventRequest struct {
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// The type of operation performed on the file. Valid values:
 	//
-	// - **DELETE**: deletes the file.
+	// - **DELETE**: File deletion.
 	//
-	// - **WRITE**: writes to the file.
+	// - **WRITE**: File write.
 	//
-	// - **READ**: reads the file.
+	// - **READ**: File read.
 	//
-	// - **RENAME**: renames the file.
+	// - **RENAME**: File rename.
 	//
-	// - **CHOWN**: changes the file owner and associated group.
+	// - **CHOWN**: Setting the file owner and file group.
 	//
 	// example:
 	//
 	// READ
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The maximum number of entries per page when paging is used in a paged query.
+	// The maximum number of entries to return on each page in a paged query.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ListFileProtectClientEventRequest struct {
 	//
 	// text-001
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The start time.
+	// The start time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type ListFileProtectClientEventRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The UUID of the server to query.
 	//
-	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
+	// >You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//

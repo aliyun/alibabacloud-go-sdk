@@ -14,7 +14,7 @@ type iProcessSoarStrategyTaskResponseBody interface {
 }
 
 type ProcessSoarStrategyTaskResponseBody struct {
-	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	// The ID of the request. The China Chinese Cloud generates a unique identifier for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

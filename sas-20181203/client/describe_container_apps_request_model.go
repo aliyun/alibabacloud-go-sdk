@@ -20,13 +20,13 @@ type iDescribeContainerAppsRequest interface {
 }
 
 type DescribeContainerAppsRequest struct {
-	// The ID of the container cluster.
+	// The ID of the container cluster. Note: This parameter is required. If this parameter is not specified, the service returns a 400 error.
 	//
 	// example:
 	//
 	// ca0a686115432429ca26cf780f5e9fff5
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The page number.
+	// The page number for a paged query.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,15 @@ type DescribeContainerAppsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The application value that you want to query. Fuzzy match is supported.
+	// The application value to query. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// cas-adad-qeqwe
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page for a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// This parameter is required.
 	//

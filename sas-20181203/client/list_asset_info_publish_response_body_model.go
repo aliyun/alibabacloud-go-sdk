@@ -16,9 +16,9 @@ type iListAssetInfoPublishResponseBody interface {
 }
 
 type ListAssetInfoPublishResponseBody struct {
-	// The servers.
+	// The server list information.
 	AssetList []*ListAssetInfoPublishResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,45 +66,45 @@ func (s *ListAssetInfoPublishResponseBody) Validate() error {
 }
 
 type ListAssetInfoPublishResponseBodyAssetList struct {
-	// The version of the Security Center agent.
+	// The current client version.
 	//
 	// example:
 	//
 	// 0.0.8
 	CurVersion *string `json:"CurVersion,omitempty" xml:"CurVersion,omitempty"`
-	// The time when the Security Center agent was last upgraded.
+	// The time of the last upgrade. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1724522400000
 	LastUpgradeTime *int64 `json:"LastUpgradeTime,omitempty" xml:"LastUpgradeTime,omitempty"`
-	// The publish status of the Security Center agent. Valid values:
+	// The client release status. Valid values:
 	//
-	// 	- **0**: not started.
+	// - **0**: Not started.
 	//
-	// 	- **1**: publishing.
+	// - **1**: Publishing.
 	//
-	// 	- **2**: published.
+	// - **2**: Publishing completed.
 	//
-	// 	- **3**: publish suspended.
+	// - **3**: Publishing paused.
 	//
-	// 	- **4**: forcibly upgrading.
+	// - **4**: Force upgrading.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether automatic upgrade is enabled. Valid values:
+	// Indicates whether the upgrade is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
 	// true
 	UpgradeEnable *bool `json:"UpgradeEnable,omitempty" xml:"UpgradeEnable,omitempty"`
-	// The UUID of the asset.
+	// The UUID of the Security Center asset.
 	//
 	// example:
 	//

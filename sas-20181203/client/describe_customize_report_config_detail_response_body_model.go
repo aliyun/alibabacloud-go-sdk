@@ -58,7 +58,7 @@ type iDescribeCustomizeReportConfigDetailResponseBody interface {
 }
 
 type DescribeCustomizeReportConfigDetailResponseBody struct {
-	// The report chart configuration IDs, separated by commas.
+	// The IDs of report chart configurations. Multiple IDs are separated by commas (,).
 	//
 	// example:
 	//
@@ -76,19 +76,19 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// Indicates whether the report is a default report. Valid values:
 	//
-	// - **0**: Not a default report.
+	// - **0**: The report is not a default report.
 	//
-	// - **1**: A default report.
+	// - **1**: The report is a default report.
 	//
 	// example:
 	//
 	// 1
 	IsDefault *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Specifies whether newly added accounts are included by default. Valid values:
+	// Indicates whether newly added accounts are included by default. Valid values:
 	//
-	// - **true**: Included.
+	// - **true**: Yes.
 	//
-	// - **false**: Not included.
+	// - **false**: No.
 	//
 	// > Only version 2.0.0 supports this parameter.
 	//
@@ -96,13 +96,13 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// true
 	MemberAccountSyncFlag *bool `json:"MemberAccountSyncFlag,omitempty" xml:"MemberAccountSyncFlag,omitempty"`
-	// The pinned time.
+	// The pinned time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1717430400000
 	PinnedTime *int64 `json:"PinnedTime,omitempty" xml:"PinnedTime,omitempty"`
-	// The recipient email addresses, separated by commas.
+	// The email addresses of contacts. Multiple email addresses are separated by commas (,).
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// 30
 	ReportDays *int32 `json:"ReportDays,omitempty" xml:"ReportDays,omitempty"`
-	// The end date for report delivery.
+	// The end date for report sending. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// zh
 	ReportLang *string `json:"ReportLang,omitempty" xml:"ReportLang,omitempty"`
-	// The report delivery time range. Valid values:
+	// The report sending type. Valid values:
 	//
 	// - **1**: 0:00 to 6:00.
 	//
@@ -150,7 +150,7 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// 2
 	ReportSendType *string `json:"ReportSendType,omitempty" xml:"ReportSendType,omitempty"`
-	// The start date for report delivery.
+	// The start date for report sending. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -186,19 +186,19 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// 379a9b8f-107b-4630-9e95-2299a1ea****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The delivery end time, in the format of HH:mm:ss.
+	// The end time for sending. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 10:00:00
 	SendEndTime *string `json:"SendEndTime,omitempty" xml:"SendEndTime,omitempty"`
-	// The specific execution dates within the delivery period.
+	// The specific execution dates within the sending period.
 	//
 	// example:
 	//
 	// 12
 	SendPeriodDays *int32 `json:"SendPeriodDays,omitempty" xml:"SendPeriodDays,omitempty"`
-	// The delivery period type. Valid values:
+	// The sending period type. Valid values:
 	//
 	// - **DAY**: day.
 	//
@@ -210,13 +210,13 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// MONTH
 	SendPeriodType *string `json:"SendPeriodType,omitempty" xml:"SendPeriodType,omitempty"`
-	// The delivery start time, in the format of HH:mm:ss.
+	// The start time for sending. Format: HH:mm:ss.
 	//
 	// example:
 	//
 	// 09:00:00
 	SendStartTime *string `json:"SendStartTime,omitempty" xml:"SendStartTime,omitempty"`
-	// The delivery time, in the format of HH:mm:ss.
+	// The sending time. Format: HH:mm:ss.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// 12125884,12140191
 	TargetGroups *string `json:"TargetGroups,omitempty" xml:"TargetGroups,omitempty"`
-	// The list of target UIDs, separated by commas.
+	// The list of target UIDs. Multiple UIDs are separated by commas (,).
 	//
 	// example:
 	//

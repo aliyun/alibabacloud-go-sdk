@@ -16,13 +16,16 @@ type iGetAlarmMachineCountRequest interface {
 }
 
 type GetAlarmMachineCountRequest struct {
-	// The source identifier of the request. Set this parameter to sas.
+	// The request source identifier. Set this parameter to sas.
 	//
 	// example:
 	//
 	// sas
-	From                       *string `json:"From,omitempty" xml:"From,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The Alibaba Cloud account ID of the member account in the resource directory.
+	//
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s GetAlarmMachineCountRequest) String() string {

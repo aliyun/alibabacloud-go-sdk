@@ -36,9 +36,9 @@ type iCreateCheckItemShrinkRequest interface {
 }
 
 type CreateCheckItemShrinkRequest struct {
-	// Help information for the check item.
+	// The help information of the check item.
 	AssistInfoShrink *string `json:"AssistInfo,omitempty" xml:"AssistInfo,omitempty"`
-	// Definition rule for the custom check item.
+	// The rule definition of the custom check item.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateCheckItemShrinkRequest struct {
 	//
 	// {"AssociatedData":{"ToDataList":[{"DataName":"ACS_ECS_Instance","PropertyPath":"InstanceId","FromPropertyPath":"InstanceId"}]},"MatchProperty":{"Operator":"AND","MatchProperties":[{"DataName":"ACS_ECS_Disk","PropertyPath":"InstanceId","MatchOperator":"EQ","MatchPropertyValue":"testId"},{"DataName":"ACS_ECS_Instance","PropertyPath":"InstanceId","MatchOperator":"EQ","MatchPropertyValue":"testInstanceId"}]}}
 	CheckRule *string `json:"CheckRule,omitempty" xml:"CheckRule,omitempty"`
-	// Name of the custom check item.
+	// The name of the custom check item.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type CreateCheckItemShrinkRequest struct {
 	//
 	// testCheckItemName
 	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
-	// Description information of the check item.
+	// The description of the check item.
 	DescriptionShrink *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Sub-asset type of the cloud product.
+	// The asset subtype of the cloud service.
 	//
-	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get this parameter.
+	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type CreateCheckItemShrinkRequest struct {
 	//
 	// DISK
 	InstanceSubType *string `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
-	// Asset type of the cloud product.
+	// The asset type of the cloud service.
 	//
-	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get this parameter.
+	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -76,19 +76,19 @@ type CreateCheckItemShrinkRequest struct {
 	//
 	// ECS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Remark information.
+	// The remarks.
 	//
 	// example:
 	//
 	// remark
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Risk level of the check item. Values:
+	// The risk level of the check item. Valid values:
 	//
-	// - **HIGH**: High risk
+	// - **HIGH**: High risk.
 	//
-	// - **MEDIUM**: Medium risk
+	// - **MEDIUM**: Medium risk.
 	//
-	// - **LOW**: Low risk
+	// - **LOW**: Low risk.
 	//
 	// This parameter is required.
 	//
@@ -96,21 +96,21 @@ type CreateCheckItemShrinkRequest struct {
 	//
 	// LOW
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Array of section IDs associated with the check item.
+	// The IDs of the sections associated with the check item.
 	//
 	// This parameter is required.
 	SectionIds []*int64 `json:"SectionIds,omitempty" xml:"SectionIds,omitempty" type:"Repeated"`
-	// Solution information for the check item.
+	// The solution information of the check item.
 	SolutionShrink *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	// Status of the check item. Values:
+	// The status of the check item. Valid values:
 	//
-	// - **EDIT**: In editing
+	// - **EDIT**: Being edited.
 	//
-	// - **RELEASE**: Released
+	// - **RELEASE**: Published.
 	//
-	// > - Changing from **Released*	- to **In editing*	- will clear all historical records
+	// > - Changing the status from **Published*	- to **Being edited*	- will purge all historical records.
 	//
-	// > - Only the **Released*	- status allows the use of the check item for inspection.
+	// > - Only check items in the **Published*	- status can be used for checks.
 	//
 	// This parameter is required.
 	//
@@ -118,9 +118,9 @@ type CreateCheckItemShrinkRequest struct {
 	//
 	// EDIT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Cloud asset vendor.
+	// The cloud asset vendor.
 	//
-	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get the available vendors.
+	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain the available vendors.
 	//
 	// This parameter is required.
 	//

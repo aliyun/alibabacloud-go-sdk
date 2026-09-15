@@ -23,9 +23,12 @@ type OperationCancelIgnoreSuspEventRequest struct {
 	// example:
 	//
 	// remark text
-	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The IDs of alert events.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The Alibaba Cloud account ID of the member account in the resource directory.
+	//
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The list of alert IDs.
 	//
 	// This parameter is required.
 	SecurityEventIds []*int64 `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`

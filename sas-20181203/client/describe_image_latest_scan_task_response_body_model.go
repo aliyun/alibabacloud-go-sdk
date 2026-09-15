@@ -78,7 +78,7 @@ type DescribeImageLatestScanTaskResponseBodyTask struct {
 	//
 	// 100
 	Finish *int32 `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	// The time when the task ended. This parameter is returned only when the task status is Finished. Otherwise, an empty value is returned.
+	// The time when the task ended. This parameter is returned only when the task status is Finished. Otherwise, an empty value is returned. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -102,17 +102,17 @@ type DescribeImageLatestScanTaskResponseBodyTask struct {
 	//
 	// IMAGE_SCAN
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The creation method. Valid values:
+	// The creation method. The task can be created from the console or by calling an API operation. Valid values:
 	//
 	// - **console_batch**: console
 	//
-	// - **openapi**: API.
+	// - **openapi**: API
 	//
 	// example:
 	//
 	// console_batch
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The time when the task started.
+	// The time when the task started. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeImageLatestScanTaskResponseBodyTask struct {
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The scan target type. Valid values:
 	//
-	// - **IMAGE**: image.
+	// - **IMAGE**: image
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type DescribeImageLatestScanTaskResponseBodyTask struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **IMAGE_SCAN**: image scan.
+	// - **IMAGE_SCAN**: image scan
 	//
 	// example:
 	//

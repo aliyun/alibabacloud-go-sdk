@@ -22,21 +22,23 @@ type iCreateHoneypotProbeBindRequest interface {
 }
 
 type CreateHoneypotProbeBindRequest struct {
-	// The ports that are bound to the probe.
+	// The list of port bindings.
 	BindPortList []*CreateHoneypotProbeBindRequestBindPortList `json:"BindPortList,omitempty" xml:"BindPortList,omitempty" type:"Repeated"`
 	// The honeypot ID.
 	//
-	// >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
+	// > Call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
+	//
+	// This parameter is required. If this parameter is not specified, the API returns InternalError (400).
 	//
 	// example:
 	//
 	// dba7d44775be8e0e5888ee3b1a62554a93d2512247cabc38ddeac17a3b3f****
 	HoneypotId *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -44,13 +46,15 @@ type CreateHoneypotProbeBindRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The probe ID.
 	//
-	// >  You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+	// >Call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to obtain this parameter.
+	//
+	// This parameter is required. If this parameter is not specified, the API returns InvalidParam (400).
 	//
 	// example:
 	//
 	// 36bad711-d1ac-4419-ac68-c1aa280f****
 	ProbeId *string `json:"ProbeId,omitempty" xml:"ProbeId,omitempty"`
-	// The IP addresses that are monitored.
+	// The list of listener IP addresses.
 	ServiceIpList []*string `json:"ServiceIpList,omitempty" xml:"ServiceIpList,omitempty" type:"Repeated"`
 }
 
@@ -123,41 +127,41 @@ func (s *CreateHoneypotProbeBindRequest) Validate() error {
 type CreateHoneypotProbeBindRequestBindPortList struct {
 	// Specifies whether to bind the port. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The port is bound.
 	//
-	// 	- **false**
+	// - **false**: The port is not bound.
 	//
 	// example:
 	//
 	// false
 	BindPort *bool `json:"BindPort,omitempty" xml:"BindPort,omitempty"`
-	// The end port on which the probe monitors.
+	// The end port of the probe listener.
 	//
 	// example:
 	//
 	// 80
 	EndPort *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// Specifies whether the port is a fixed port. Valid values:
+	// Specifies whether the port is fixed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The port is fixed.
 	//
-	// 	- **false**
+	// - **false**: The port is not fixed.
 	//
 	// example:
 	//
 	// false
 	Fixed *bool `json:"Fixed,omitempty" xml:"Fixed,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- **tcp**
+	// - **tcp**: TCP protocol.
 	//
-	// 	- **udp**
+	// - **udp**: UDP protocol.
 	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The start port on which the probe monitors.
+	// The start port of the probe listener.
 	//
 	// example:
 	//

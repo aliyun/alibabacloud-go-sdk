@@ -18,7 +18,7 @@ type iGetSasContainerWebDefenseRuleApplicationResponseBody interface {
 type GetSasContainerWebDefenseRuleApplicationResponseBody struct {
 	// The application list.
 	ContainerWebDefenseAppList []*GetSasContainerWebDefenseRuleApplicationResponseBodyContainerWebDefenseAppList `json:"ContainerWebDefenseAppList,omitempty" xml:"ContainerWebDefenseAppList,omitempty" type:"Repeated"`
-	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetSasContainerWebDefenseRuleApplicationResponseBodyContainerWebDefenseAppL
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	// The ID of the container cluster.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
+	// > Call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
 	//
 	// example:
 	//

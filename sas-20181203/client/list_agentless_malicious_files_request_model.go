@@ -36,7 +36,7 @@ type iListAgentlessMaliciousFilesRequest interface {
 }
 
 type ListAgentlessMaliciousFilesRequest struct {
-	// The page number of the current page in a paging query.
+	// The page number of the current page in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// - Y: handled
 	//
-	// - N: not handled.
+	// - N: not handled
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// - suspicious: suspicious
 	//
-	// - remind: reminder.
+	// - remind: reminder
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// d836968041f7683b5459****
 	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	// The Alarm Metric.
+	// The alerting type.
 	//
 	// If Lang is set to zh, valid values:
 	//
@@ -112,13 +112,13 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// - Malicious Software: malware
 	//
-	// - Malicious Script: malicious script.
+	// - Malicious Script: malicious script
 	//
 	// example:
 	//
 	// WebShell
 	MaliciousType *string `json:"MaliciousType,omitempty" xml:"MaliciousType,omitempty"`
-	// The maximum number of entries to return per page in a paging query.
+	// The maximum number of entries to return per page in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +132,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The file source.
+	// The file sources.
 	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 	// The unique identifier of the asset.
 	//

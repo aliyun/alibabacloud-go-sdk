@@ -18,15 +18,15 @@ type iDescribeVulCheckTaskStatusDetailResponseBody interface {
 }
 
 type DescribeVulCheckTaskStatusDetailResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// BE120DAB-F4E7-4C53-ADC3-A97578ABF384
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the status information about the vulnerability scan tasks on the server.
+	// The list of vulnerability task statuses for the server.
 	TaskStatuses []*DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses `json:"TaskStatuses,omitempty" xml:"TaskStatuses,omitempty" type:"Repeated"`
-	// The total number of vulnerability scan tasks on the server.
+	// The total number of vulnerability subtasks for the server.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeVulCheckTaskStatusDetailResponseBody) Validate() error {
 }
 
 type DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses struct {
-	// The ID of the main task.
+	// The main task ID.
 	//
 	// example:
 	//
 	// 16190385
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// An array that consists of status information about the vulnerability scan subtask.
+	// The list of vulnerability detection task statuses.
 	TaskStatusList []*DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList `json:"TaskStatusList,omitempty" xml:"TaskStatusList,omitempty" type:"Repeated"`
 }
 
@@ -133,37 +133,37 @@ func (s *DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses) Validate() er
 }
 
 type DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList struct {
-	// The error code returned.
+	// The failure code.
 	//
 	// example:
 	//
 	// push_command_failed
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The status of the subtask. Valid values:
+	// The completion status of the check. Valid values:
 	//
-	// 	- **0**: unhandled
+	// - **0**: Unprocessed.
 	//
-	// 	- **1**: collecting
+	// - **1**: Collecting.
 	//
-	// 	- **2**: collected
+	// - **2**: Collection completed.
 	//
-	// 	- **3**: matching
+	// - **3**: Matching.
 	//
-	// 	- **4**: complete
+	// - **4**: Completed.
 	//
 	// example:
 	//
 	// 4
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability
 	//
-	// 	- **cms**: Web-CMS vulnerability
+	// - **cms**: Web-CMS vulnerability
 	//
-	// 	- **sca**: vulnerability that is detected based on software component analysis
+	// - **sca**: sca vulnerability
 	//
 	// example:
 	//

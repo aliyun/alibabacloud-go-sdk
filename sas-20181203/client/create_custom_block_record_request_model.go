@@ -22,7 +22,7 @@ type iCreateCustomBlockRecordRequest interface {
 }
 
 type CreateCustomBlockRecordRequest struct {
-	// The IP address that you want to specify in the policy.
+	// The IP address to block. Traffic from this IP address to the server is blocked.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,13 @@ type CreateCustomBlockRecordRequest struct {
 	//
 	// 192.168.xx.xx
 	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-	// The traffic direction that you want to specify in the policy. Valid values:
+	// The direction of traffic to block between the custom IP address and the server.
 	//
-	// 	- **in**: inbound
+	// Valid values:
 	//
-	// 	- **out**: outbound
+	// - **in**: inbound
+	//
+	// - **out**: outbound
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type CreateCustomBlockRecordRequest struct {
 	//
 	// in
 	Bound *string `json:"Bound,omitempty" xml:"Bound,omitempty"`
-	// The expiration time of the policy.
+	// The expiration time of the policy. This value is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +53,7 @@ type CreateCustomBlockRecordRequest struct {
 	// 1859094550000
 	ExpireTime      *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the asset instances. Separate multiple UUIDs with commas (,). You can call DescribeCloudCenterInstances to obtain the UUIDs of asset instances.
 	//
 	// This parameter is required.
 	//

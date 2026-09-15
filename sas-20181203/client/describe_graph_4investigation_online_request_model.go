@@ -34,11 +34,11 @@ type DescribeGraph4InvestigationOnlineRequest struct {
 	//
 	// 3502e4b0-f362-4059-84a2-f47fa2b5exxx
 	AnomalyUuid *string `json:"AnomalyUuid,omitempty" xml:"AnomalyUuid,omitempty"`
-	// The language type for the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//

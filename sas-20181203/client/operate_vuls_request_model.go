@@ -29,8 +29,11 @@ type OperateVulsRequest struct {
 	// example:
 	//
 	// vul_fix
-	OperateType                *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	//
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of vulnerability to fix. Set the value to **cve**, which indicates a Linux software vulnerability.
 	//
 	// This parameter is required.
@@ -39,7 +42,7 @@ type OperateVulsRequest struct {
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUIDs of the servers on which you want to fix the vulnerabilities.
+	// The UUIDs of the servers on which you want to fix vulnerabilities.
 	//
 	// This parameter is required.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`

@@ -22,32 +22,35 @@ type iDescribeAllRegionsStatisticsRequest interface {
 }
 
 type DescribeAllRegionsStatisticsRequest struct {
-	// The source of the request. Default value: **aqs**. Valid values:
+	// The source of the data request. Default value: **aqs**. Valid values:
 	//
-	// 	- **sas**: Security Center.
+	// - **sas**: The data request comes from Security Center.
 	//
-	// 	- **aqs**: Server Guard.
+	// - **aqs**: The data request comes from Server Guard.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The ID of the asset group that you want to query.
+	// The ID of the asset group to query.
 	//
-	// >  You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to query the ID.
+	// > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1161****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name or public IP address of the asset.
+	// The asset name or public IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
-	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The source IP address of the request.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the Alibaba Cloud account of the member accounts in the resource folder.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The IP address of the access source.
 	//
 	// example:
 	//

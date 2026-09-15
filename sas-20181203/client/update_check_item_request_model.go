@@ -38,11 +38,11 @@ type iUpdateCheckItemRequest interface {
 }
 
 type UpdateCheckItemRequest struct {
-	// Help information for the check item.
+	// The help information for the check item.
 	AssistInfo *UpdateCheckItemRequestAssistInfo `json:"AssistInfo,omitempty" xml:"AssistInfo,omitempty" type:"Struct"`
-	// ID of the custom check item to be updated.
+	// The ID of the custom check item to update.
 	//
-	// > You can call the [ListCheckItems](~~ListCheckItems~~) API to get this parameter.
+	// > You can call the [ListCheckItems](~~ListCheckItems~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,75 +50,75 @@ type UpdateCheckItemRequest struct {
 	//
 	// 10000000001
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// Definition rule for the custom check item.
+	// The definition rule of the custom check item.
 	//
 	// example:
 	//
 	// {"AssociatedData":{"ToDataList":[{"DataName":"ACS_ECS_Instance","PropertyPath":"InstanceId","FromPropertyPath":"InstanceId"}]},"MatchProperty":{"Operator":"AND","MatchProperties":[{"DataName":"ACS_ECS_Disk","PropertyPath":"InstanceId","MatchOperator":"EQ","MatchPropertyValue":"testId"},{"DataName":"ACS_ECS_Instance","PropertyPath":"InstanceId","MatchOperator":"EQ","MatchPropertyValue":"testInstanceId"}]}}
 	CheckRule *string `json:"CheckRule,omitempty" xml:"CheckRule,omitempty"`
-	// Name of the custom check item.
+	// The name of the custom check item.
 	//
 	// example:
 	//
 	// testCheckItemName
 	CheckShowName *string `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
-	// Description of the check item.
+	// The description of the check item.
 	Description *UpdateCheckItemRequestDescription `json:"Description,omitempty" xml:"Description,omitempty" type:"Struct"`
-	// Sub-asset type of the cloud product.
+	// The asset subtype of the cloud service.
 	//
-	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get this parameter.
+	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// DISK
 	InstanceSubType *string `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
-	// Asset type of the cloud product.
+	// The asset type of the cloud service.
 	//
-	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get this parameter.
+	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// ECS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Remark information
+	// The remarks.
 	//
 	// example:
 	//
 	// remark.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Risk level of the check item. Values:
+	// The risk level of the check item. Valid values:
 	//
-	// - **HIGH**: High risk
+	// - **HIGH**: High.
 	//
-	// - **MEDIUM**: Medium risk
+	// - **MEDIUM**: Medium.
 	//
-	// - **LOW**: Low risk
+	// - **LOW**: Low.
 	//
 	// example:
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// Array of section IDs associated with the check item.
+	// The IDs of the sections associated with the check item.
 	SectionIds []*int64 `json:"SectionIds,omitempty" xml:"SectionIds,omitempty" type:"Repeated"`
-	// Solution information for the check item.
+	// The solution information for the check item.
 	Solution *UpdateCheckItemRequestSolution `json:"Solution,omitempty" xml:"Solution,omitempty" type:"Struct"`
-	// Status of the check item. Values:
+	// The status of the check item. Valid values:
 	//
-	// - **EDIT**: In editing
+	// - **EDIT**: Being edited.
 	//
-	// - **RELEASE**: Released
+	// - **RELEASE**: Published.
 	//
-	// > - Changing from **Released*	- to **In editing*	- will clear all historical records
+	// > - Changing the status from **Published*	- to **Being edited*	- purges all historical records.
 	//
-	// > - Only the **Released*	- status allows the use of the check item for inspection.
+	// > - Only check items in the **Published*	- status can be used for checks.
 	//
 	// example:
 	//
 	// RELEASE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Cloud asset vendor.
+	// The cloud asset vendor.
 	//
-	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get the available vendors.
+	// > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain the available vendors.
 	//
 	// example:
 	//
@@ -271,15 +271,15 @@ func (s *UpdateCheckItemRequest) Validate() error {
 }
 
 type UpdateCheckItemRequestAssistInfo struct {
-	// Type of the help information for the check item risk. Values:
+	// The type of the help information for the check item risk. Valid values:
 	//
-	// - **text**: Text
+	// - **text**: Text.
 	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Content of the help information for the check item risk.
+	// The content of the help information for the check item risk.
 	//
 	// example:
 	//
@@ -318,15 +318,15 @@ func (s *UpdateCheckItemRequestAssistInfo) Validate() error {
 }
 
 type UpdateCheckItemRequestDescription struct {
-	// Type of the check item description. Values:
+	// The type of the check item description. Valid values:
 	//
-	// - **text**: Text
+	// - **text**: Text.
 	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Description of the check item.
+	// The description of the check item.
 	//
 	// example:
 	//
@@ -365,15 +365,15 @@ func (s *UpdateCheckItemRequestDescription) Validate() error {
 }
 
 type UpdateCheckItemRequestSolution struct {
-	// Type of the solution information for the check item. Values:
+	// The type of the solution information for the check item. Valid values:
 	//
-	// - **text**: Text
+	// - **text**: Text.
 	//
 	// example:
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Content of the solution for the check item risk.
+	// The solution content for the check item risk.
 	//
 	// example:
 	//

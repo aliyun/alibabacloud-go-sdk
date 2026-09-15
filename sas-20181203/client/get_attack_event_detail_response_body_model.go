@@ -30,7 +30,7 @@ type GetAttackEventDetailResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *GetAttackEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code of the request.
 	//
@@ -38,7 +38,7 @@ type GetAttackEventDetailResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The result message. The value is fixed as **success**, which indicates that the export was successful.
+	// The result message. Fixed value: **success**. This value indicates that the operation was successful.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type GetAttackEventDetailResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The API call was successful.
+	// - **true**: The request was successful.
 	//
-	// - **false**: The API call failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type GetAttackEventDetailResponseBodyDataCveBeans struct {
 	//
 	// example:
 	//
-	// 1Panel loadfile 后台文件读取漏洞
+	// 1Panel loadfile backend file read vulnerability
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

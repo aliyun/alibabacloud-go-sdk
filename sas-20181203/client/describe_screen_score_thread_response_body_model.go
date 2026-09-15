@@ -62,9 +62,9 @@ func (s *DescribeScreenScoreThreadResponseBody) Validate() error {
 }
 
 type DescribeScreenScoreThreadResponseBodyData struct {
-	// The security score trend list.
+	// The list of security score trends.
 	SocreThread []*string `json:"SocreThread,omitempty" xml:"SocreThread,omitempty" type:"Repeated"`
-	// The security score trend date list.
+	// The list of dates for security score trends.
 	SocreThreadDate []*string `json:"SocreThreadDate,omitempty" xml:"SocreThreadDate,omitempty" type:"Repeated"`
 }
 

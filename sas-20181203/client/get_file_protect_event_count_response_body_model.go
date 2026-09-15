@@ -16,13 +16,13 @@ type iGetFileProtectEventCountResponseBody interface {
 }
 
 type GetFileProtectEventCountResponseBody struct {
-	// The data returned if the request is successful.
+	// The data returned when the API call is successful.
 	//
 	// example:
 	//
 	// 16
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//

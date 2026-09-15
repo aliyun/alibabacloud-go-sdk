@@ -28,7 +28,7 @@ type iUploadedHoneyPotFileRequest interface {
 type UploadedHoneyPotFileRequest struct {
 	// The FileKey used to upload the file.
 	//
-	// > Format: HONEYPOT_FILE/{timestamp}_{custom_file_name}.
+	// > Format: HONEYPOT_FILE/{timestamp}_{custom_file_name}
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type UploadedHoneyPotFileRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -74,11 +74,13 @@ type UploadedHoneyPotFileRequest struct {
 	//
 	// > Call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
 	//
+	// Note: This parameter is required. If this parameter is not specified, the API returns InvalidParam (400). Call ListHoneypotNode to obtain a valid NodeId.
+	//
 	// example:
 	//
 	// cc427e14-f257-4670-9d2b-d83bbbe*****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The template prompt corresponding to the uploaded file.
+	// The template prompt for the uploaded file.
 	//
 	// This parameter is required.
 	//

@@ -27,8 +27,11 @@ type GetSuspiciousStatisticsRequest struct {
 	// example:
 	//
 	// 9997897
-	GroupIdList                *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	GroupIdList *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//
 	// example:

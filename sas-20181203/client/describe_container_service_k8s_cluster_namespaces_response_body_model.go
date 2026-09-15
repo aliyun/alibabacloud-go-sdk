@@ -16,9 +16,9 @@ type iDescribeContainerServiceK8sClusterNamespacesResponseBody interface {
 }
 
 type DescribeContainerServiceK8sClusterNamespacesResponseBody struct {
-	// The namespaces.
+	// The list of namespaces.
 	K8sClusterNamespaces []*DescribeContainerServiceK8sClusterNamespacesResponseBodyK8sClusterNamespaces `json:"K8sClusterNamespaces,omitempty" xml:"K8sClusterNamespaces,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

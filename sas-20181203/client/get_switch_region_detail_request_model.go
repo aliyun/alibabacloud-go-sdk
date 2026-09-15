@@ -20,7 +20,7 @@ type GetSwitchRegionDetailRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//

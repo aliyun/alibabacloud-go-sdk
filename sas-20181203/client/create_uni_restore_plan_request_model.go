@@ -40,7 +40,7 @@ type CreateUniRestorePlanRequest struct {
 	//
 	// ac457b30598d11ed800000163e02****
 	InstanceUuid *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	// The ID of the database anti-ransomware backup policy.
+	// The ID of the anti-ransomware backup policy for the database.
 	//
 	// >Call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
 	//
@@ -60,7 +60,7 @@ type CreateUniRestorePlanRequest struct {
 	ResetScn *string `json:"ResetScn,omitempty" xml:"ResetScn,omitempty"`
 	// The **reset_time*	- value of the selected record from the recoverable points in time when you query backups for an Oracle database.
 	//
-	// >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter.
+	// >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateUniRestorePlanRequest struct {
 	RestoreInfo *string `json:"RestoreInfo,omitempty" xml:"RestoreInfo,omitempty"`
 	// The point in time to which you want to restore the database.
 	//
-	// >Call the [DescribeRestorePlans](~~DescribeRestorePlans~~) operation to obtain this parameter.
+	// >Call the [DescribeRestorePlans](~~DescribeRestorePlans~~) operation to obtain this parameter. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//

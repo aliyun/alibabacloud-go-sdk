@@ -22,7 +22,7 @@ type iGetServerlessAppAuthDetailRequest interface {
 type GetServerlessAppAuthDetailRequest struct {
 	// The SAE application ID.
 	//
-	// > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain the ID.
+	// > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain this value.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetServerlessAppAuthDetailRequest struct {
 	//
 	// - **RunD**
 	//
-	// - **ECI**.
+	// - **ECI**
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetServerlessAppAuthDetailRequest struct {
 	//
 	// - **SAE**
 	//
-	// - **ACS**.
+	// - **ACS**
 	//
 	// example:
 	//

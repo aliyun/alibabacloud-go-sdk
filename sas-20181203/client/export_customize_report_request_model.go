@@ -18,13 +18,13 @@ type iExportCustomizeReportRequest interface {
 }
 
 type ExportCustomizeReportRequest struct {
-  // The type of the security report that you want to export. Valid values:
+  // The type of the export. Valid values:
   // 
-  // 	- **HTML**
+  // - **HTML**
   // 
-  // 	- **PDF**
+  // - **PDF**
   // 
-  // >  The default value is HTML. PDF is supported only for security reports in version 2.0.0.
+  // > Default value: HTML. PDF is supported only for security reports of version 2.0.0.
   // 
   // example:
   // 
@@ -32,7 +32,7 @@ type ExportCustomizeReportRequest struct {
   ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
   // The ID of the security report.
   // 
-  // >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+  // > You can call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this value.
   // 
   // This parameter is required.
   // 
@@ -40,6 +40,9 @@ type ExportCustomizeReportRequest struct {
   // 
   // 1
   ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+  // The Alibaba Cloud account ID of the member accounts in the resource directory.
+  // 
+  // > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
   ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

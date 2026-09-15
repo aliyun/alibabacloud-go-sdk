@@ -92,7 +92,7 @@ type ListFileProtectClientEventResponseBodyEventList struct {
 	//
 	// - 2: suspicious
 	//
-	// - 3: high-risk.
+	// - 3: high-risk
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ListFileProtectClientEventResponseBodyEventList struct {
 	//
 	// 1694576692000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// The time when the event was handled.
+	// The time when the event was handled. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type ListFileProtectClientEventResponseBodyEventList struct {
 	//
 	// 172.22.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The most recent time the event occurred.
+	// The most recent time when the event occurred. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -160,15 +160,15 @@ type ListFileProtectClientEventResponseBodyEventList struct {
 	LatestTime *int64 `json:"LatestTime,omitempty" xml:"LatestTime,omitempty"`
 	// The type of operation performed on the file. Valid values:
 	//
-	// - **DELETE**: deletes the file.
+	// - **DELETE**: File deletion.
 	//
-	// - **WRITE**: writes to the file.
+	// - **WRITE**: File write.
 	//
-	// - **READ**: reads the file.
+	// - **READ**: File read.
 	//
-	// - **RENAME**: renames the file.
+	// - **RENAME**: File rename.
 	//
-	// - **CHOWN**: changes the file owner and associated group.
+	// - **CHOWN**: Setting the file owner and file group.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type ListFileProtectClientEventResponseBodyEventList struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The operating system type. Valid values:
 	//
-	// - **windows**: Windows
+	// - **windows**: Windows.
 	//
 	// - **linux**: Linux.
 	//
@@ -226,11 +226,11 @@ type ListFileProtectClientEventResponseBodyEventList struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The event status. Valid values:
 	//
-	// - 0: unhandled
+	// - 0: Unhandled.
 	//
-	// - 1: handled
+	// - 1: Handled.
 	//
-	// - 2: whitelisted.
+	// - 2: Whitelisted.
 	//
 	// example:
 	//
@@ -446,13 +446,13 @@ func (s *ListFileProtectClientEventResponseBodyEventList) Validate() error {
 }
 
 type ListFileProtectClientEventResponseBodyPageInfo struct {
-	// The page number of the current page when paging is used in a paged query.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page when paging is used in a paged query.
+	// The maximum number of entries to return on each page in a paged query.
 	//
 	// example:
 	//

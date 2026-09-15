@@ -30,47 +30,47 @@ type iCreateFileProtectRuleRequest interface {
 }
 
 type CreateFileProtectRuleRequest struct {
-	// The severity of alerts. Valid values:
+	// The alert notification level. Valid values:
 	//
-	// 	- 0: does not generate alerts
+	// - 0: no alert
 	//
-	// 	- 1: sends notifications
+	// - 1: reminder
 	//
-	// 	- 2: suspicious
+	// - 2: suspicious
 	//
-	// 	- 3: high-risk
+	// - 3: high-risk
 	//
 	// example:
 	//
 	// 0
 	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	// The operations that you want to perform on the files.
+	// The list of file operations.
 	//
 	// This parameter is required.
 	FileOps []*string `json:"FileOps,omitempty" xml:"FileOps,omitempty" type:"Repeated"`
-	// The paths to the files that you want to monitor. Wildcard characters are supported.
+	// The list of file paths to monitor. Wildcards are supported.
 	//
 	// This parameter is required.
 	FilePaths []*string `json:"FilePaths,omitempty" xml:"FilePaths,omitempty" type:"Repeated"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The paths to the processes that you want to monitor. Wildcard characters are supported.
+	// The list of process paths to monitor. Wildcards are supported.
 	//
 	// This parameter is required.
 	ProcPaths []*string `json:"ProcPaths,omitempty" xml:"ProcPaths,omitempty" type:"Repeated"`
-	// The handling method of the rule. Valid values:
+	// The action that the rule takes on the client. Valid values:
 	//
-	// 	- pass: allow
+	// - pass: allow
 	//
-	// 	- alert
+	// - alert: alert
 	//
 	// This parameter is required.
 	//
@@ -86,17 +86,17 @@ type CreateFileProtectRuleRequest struct {
 	//
 	// tetsRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Specifies whether to enable the rule. Valid values:
+	// The rule status. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The switch ID of the rule.
+	// The switch ID associated with the rule.
 	//
 	// example:
 	//

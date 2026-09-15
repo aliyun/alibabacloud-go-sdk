@@ -24,21 +24,23 @@ type iListOperationCheckRequest interface {
 }
 
 type ListOperationCheckRequest struct {
-	// Check item ID.
+	// The check item ID.
 	//
-	// > Obtain this parameter by calling the [ListCheckResult](~~ListCheckResult~~) interface.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain this parameter.
+	//
+	// This parameter is required. If you do not specify this parameter, the API returns a 400 error.
 	//
 	// example:
 	//
 	// 23
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// Timestamp (in milliseconds) of the end time of the queried task.
+	// The timestamp of the task end time to query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719923175001
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Language type for request and response messages, default value is zh. Values:
+	// The language of the request and response. Default value: zh. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -48,21 +50,21 @@ type ListOperationCheckRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Information about the operated instances.
+	// The information about the instances on which the operation is performed.
 	//
 	// This parameter is required.
 	OperationTaskInstances []*ListOperationCheckRequestOperationTaskInstances `json:"OperationTaskInstances,omitempty" xml:"OperationTaskInstances,omitempty" type:"Repeated"`
-	// Timestamp (in milliseconds) of the start time of the queried task.
+	// The timestamp of the task start time to query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719923175000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Task type corresponding to the task:
+	// The task type. Valid values:
 	//
-	// - **REPAIR**: Repair task
+	// - **REPAIR**: fix task
 	//
-	// - **ROLLBACK**: Rollback task
+	// - **ROLLBACK**: rollback task
 	//
 	// This parameter is required.
 	//
@@ -148,19 +150,19 @@ func (s *ListOperationCheckRequest) Validate() error {
 }
 
 type ListOperationCheckRequestOperationTaskInstances struct {
-	// Cloud asset instance ID.
+	// The cloud asset instance ID.
 	//
 	// example:
 	//
 	// r-bp1642ib4bg2bm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Asset vendor. Values:
+	// The asset vendor. Valid values:
 	//
 	// - **ALIYUN**: Alibaba Cloud
 	//

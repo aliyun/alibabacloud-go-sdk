@@ -24,13 +24,13 @@ type ExportSuspEventsResponseBody struct {
   // 
   // suspicious_event_20221209
   FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-  // The ID of the export record of the anomalous event.
+  // The export record ID of the anomaly event.
   // 
   // example:
   // 
   // 1
   Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

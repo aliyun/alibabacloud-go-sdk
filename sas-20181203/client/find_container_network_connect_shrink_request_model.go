@@ -28,13 +28,13 @@ type iFindContainerNetworkConnectShrinkRequest interface {
 type FindContainerNetworkConnectShrinkRequest struct {
 	// The query type of the element to query. Valid values:
 	//
-	// - **EDGE**: connection information.
+	// - **EDGE**: connection information
 	//
 	// example:
 	//
 	// EDGE
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+	// The page number of the page to return in a paged query. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type FindContainerNetworkConnectShrinkRequest struct {
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The destination node information, which is used to filter destination nodes.
 	DstNodeShrink *string `json:"DstNode,omitempty" xml:"DstNode,omitempty"`
-	// The end time of the network connectivity.
+	// The end time of the network connectivity. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type FindContainerNetworkConnectShrinkRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The source node information, which is used to filter source nodes.
 	SrcNodeShrink *string `json:"SrcNode,omitempty" xml:"SrcNode,omitempty"`
-	// The start time of the network connectivity.
+	// The start time of the network connectivity. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

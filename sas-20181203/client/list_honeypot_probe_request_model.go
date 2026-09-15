@@ -24,13 +24,13 @@ type iListHoneypotProbeRequest interface {
 }
 
 type ListHoneypotProbeRequest struct {
-	// The page number of the page to return. Minimum value: **1**. Default value: **1**.
+	// The page number of the page to return. Minimum value: **1**. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the probe.
+	// The probe name.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListHoneypotProbeRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page during paging.
+	// The maximum number of entries per page for a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
 	//
 	// > Do not leave PageSize empty.
 	//
@@ -84,7 +84,7 @@ type ListHoneypotProbeRequest struct {
 	//
 	// - **host_probe**: host probe
 	//
-	// - **vpc_black_hole_probe**: VPC blackhole probe.
+	// - **vpc_black_hole_probe**: VPC blackhole probe
 	//
 	// example:
 	//

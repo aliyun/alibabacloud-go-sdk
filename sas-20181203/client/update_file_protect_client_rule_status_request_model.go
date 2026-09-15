@@ -30,13 +30,13 @@ type iUpdateFileProtectClientRuleStatusRequest interface {
 type UpdateFileProtectClientRuleStatusRequest struct {
 	// The alert notification level. Valid values:
 	//
-	// - 0: no alert
+	// - 0: No alert.
 	//
-	// - 1: reminder
+	// - 1: Reminder.
 	//
-	// - 2: suspicious
+	// - 2: Suspicious.
 	//
-	// - 3: high-risk.
+	// - 3: High-risk.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateFileProtectClientRuleStatusRequest struct {
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
 	// The operating system type. Valid values:
 	//
-	// - **windows**: Windows
+	// - **windows**: Windows.
 	//
 	// - **linux**: Linux.
 	//
@@ -84,9 +84,9 @@ type UpdateFileProtectClientRuleStatusRequest struct {
 	SelectAll *bool `json:"SelectAll,omitempty" xml:"SelectAll,omitempty"`
 	// The policy status. Valid values:
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// This parameter is required.
 	//

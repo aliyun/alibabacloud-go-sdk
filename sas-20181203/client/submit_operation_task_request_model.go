@@ -26,7 +26,7 @@ type iSubmitOperationTaskRequest interface {
 type SubmitOperationTaskRequest struct {
 	// The ID of the check item.
 	//
-	// >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the check item ID.
 	//
 	// This parameter is required.
 	//
@@ -34,33 +34,33 @@ type SubmitOperationTaskRequest struct {
 	//
 	// 132
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The dimension of the task that you want to submit. Valid values:
+	// The task dimension for the submitted operation task. Valid values:
 	//
-	// 	- Instance dimension: INSTANCE
+	// - INSTANCE: instance dimension
 	//
-	// 	- Check item dimension: CHECK_ID
+	// - CHECK_ID: check item dimension
 	//
 	// example:
 	//
 	// CHECK_ID
 	DimensionType *string `json:"DimensionType,omitempty" xml:"DimensionType,omitempty"`
-	// The asset information required to submit the tasks for instances.
+	// The asset information required to submit instance tasks.
 	OperationTaskInstances []*SubmitOperationTaskRequestOperationTaskInstances `json:"OperationTaskInstances,omitempty" xml:"OperationTaskInstances,omitempty" type:"Repeated"`
-	// The key linked to cross-page selections during task submission.
+	// The relation key associated with cross-page selection when submitting the operation.
 	//
-	// >  You can call the [CreateAssetSelectionConfig](~~CreateAssetSelectionConfig~~) operation to query the associated key from the BusinessType field.
+	// > Call the [CreateAssetSelectionConfig](~~CreateAssetSelectionConfig~~) operation and use the BusinessType field to obtain the relation key.
 	//
 	// example:
 	//
 	// CSPM_OPERATION_RELATION_KEY_173***
 	RelationKey *string `json:"RelationKey,omitempty" xml:"RelationKey,omitempty"`
-	// The temporary parameters required for the repair task.
+	// The temporary parameters required for the remediation task.
 	RepairTempParam []*SubmitOperationTaskRequestRepairTempParam `json:"RepairTempParam,omitempty" xml:"RepairTempParam,omitempty" type:"Repeated"`
-	// The type of the task that you want to submit. Valid values:
+	// The task type for the submitted task. Valid values:
 	//
-	// 	- Repair task: REPAIR
+	// - REPAIR: remediation task
 	//
-	// 	- Rollback task: ROLLBACK
+	// - ROLLBACK: rollback task
 	//
 	// This parameter is required.
 	//
@@ -167,23 +167,23 @@ type SubmitOperationTaskRequestOperationTaskInstances struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the task that you want to roll back
+	// The task ID to roll back when performing a rollback task.
 	//
 	// example:
 	//
 	// 7d0b10e35e80c9e5ebac5f1054****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The service provider of the asset. Valid values:
+	// The asset vendor. Valid values:
 	//
-	// 	- **0**: an asset provided by Alibaba Cloud.
+	// - **0**: Alibaba Cloud asset
 	//
-	// 	- **1**: an asset outside Alibaba Cloud.
+	// - **1**: asset outside the cloud
 	//
-	// 	- **2**: an asset in a data center.
+	// - **2**: IDC asset
 	//
-	// 	- **3**, **4**, **5**, and **7**: an asset from a third-party cloud service provider.
+	// - **3**, **4**, **5**, **7**: asset from another cloud provider
 	//
-	// 	- **8**: a lightweight asset.
+	// - **8**: lightweight asset
 	//
 	// example:
 	//
@@ -240,13 +240,13 @@ func (s *SubmitOperationTaskRequestOperationTaskInstances) Validate() error {
 }
 
 type SubmitOperationTaskRequestRepairTempParam struct {
-	// The name of the temporary repair parameter.
+	// The name of the temporary remediation parameter.
 	//
 	// example:
 	//
 	// IPPort
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the temporary repair parameter.
+	// The value of the temporary remediation parameter.
 	//
 	// example:
 	//

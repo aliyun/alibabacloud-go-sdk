@@ -16,9 +16,9 @@ type iDescribeContainerGroupedFieldDetailRequest interface {
 }
 
 type DescribeContainerGroupedFieldDetailRequest struct {
-	// The search conditions that are used to query assets. The value of this parameter is in the JSON format. Separate multiple search conditions with commas (,). Example: `[{"name":"riskStatus","value":"YES"},{"name":"riskLevel","value":"2"}]`.
+	// The conditions for searching assets. This parameter is in JSON format. Separate multiple conditions with commas (,). Example: `[{"name":"riskStatus","value":"YES"},{"name":"riskLevel","value":"2"}]`.
 	//
-	// >  Supported search conditions include the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+	// > You can search for assets by conditions such as instance ID, instance name, VPC ID, region, and public IP address. Call [DescribeCriteria](~~DescribeCriteria~~) to query the supported search conditions.
 	//
 	// This parameter is required.
 	//
@@ -26,19 +26,19 @@ type DescribeContainerGroupedFieldDetailRequest struct {
 	//
 	// [{\\"name\\":\\"clusterId\\",\\"value\\":\\"cfd26658431084c73a48dd97328ba8acf\\"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The filter condition for a grouping and aggregation query. Valid values:
+	// The search item. Valid values:
 	//
-	// 	- **pod**
+	// - **pod**: pod.
 	//
-	// 	- **appName**
+	// - **appName**: application name.
 	//
-	// 	- **clusterId**
+	// - **clusterId**: cluster ID.
 	//
-	// 	- **namespace**
+	// - **namespace**: namespace.
 	//
-	// 	- **image**
+	// - **image**: image.
 	//
-	// 	- **containerScan**
+	// - **containerScan**: container scan.
 	//
 	// This parameter is required.
 	//

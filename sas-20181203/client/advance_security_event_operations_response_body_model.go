@@ -22,7 +22,7 @@ type AdvanceSecurityEventOperationsResponseBody struct {
 	//
 	// A4EB8B1C-1DEC-5E18-BCD0-XXXXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The operation performed on the alert event.
+	// The operation types for handling alert events.
 	SecurityEventOperationsResponse []*AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse `json:"SecurityEventOperationsResponse,omitempty" xml:"SecurityEventOperationsResponse,omitempty" type:"Repeated"`
 }
 
@@ -66,47 +66,47 @@ func (s *AdvanceSecurityEventOperationsResponseBody) Validate() error {
 }
 
 type AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse struct {
-	// The object on which the operation is performed. This parameter is required when you set the OperationCode parameter to **advance_mark_mis_info**.
+	// The configuration information when the handling method is **advance_mark_mis_info**.
 	MarkField []*AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField `json:"MarkField,omitempty" xml:"MarkField,omitempty" type:"Repeated"`
-	// The metadata configuration returned by the advanced whitelist rule.
+	// The metadata configuration information returned for the advanced whitelist.
 	MarkFieldsSource []*AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource `json:"MarkFieldsSource,omitempty" xml:"MarkFieldsSource,omitempty" type:"Repeated"`
-	// The operation performed to handle the alert. Valid values:
+	// The handling method for the alert. Valid values:
 	//
-	// 	- **block_ip**: blocks the alert.
+	// - **block_ip**: Block.
 	//
-	// 	- **advance_mark_mis_info**: adds the alert to the whitelist.
+	// - **advance_mark_mis_info**: Add to whitelist.
 	//
-	// 	- **ignore**: ignores the alert.
+	// - **ignore**: Ignore.
 	//
-	// 	- **manual_handled**: marks the alert as manually handled.
+	// - **manual_handled**: Manually handled.
 	//
-	// 	- **kill_process**: terminates the malicious process.
+	// - **kill_process**: Terminate process.
 	//
-	// 	- **cleanup**: performs in-depth virus detection and removal.
+	// - **cleanup**: Deep scan and removal.
 	//
-	// 	- **kill_and_quara**: performs virus detection and removal.
+	// - **kill_and_quara**: Virus scan and quarantine.
 	//
-	// 	- **disable_malicious_defense**: turns off malicious defense behavior.
+	// - **disable_malicious_defense**: Disable malicious behavior defense.
 	//
-	// 	- **client_problem_check**: performs troubleshooting.
+	// - **client_problem_check**: Troubleshoot.
 	//
-	// 	- **quara**: performs quarantine operations.
+	// - **quara**: Quarantine.
 	//
 	// example:
 	//
 	// advance_mark_mis_info
 	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
-	// The configuration of the operation performed to handle the alert event.
+	// The configuration of the sub-operation for the alert event handling method.
 	//
 	// example:
 	//
 	// {\\"subOperation\\":\\"killByMd5andPath\\"}
 	OperationParams *string `json:"OperationParams,omitempty" xml:"OperationParams,omitempty"`
-	// Indicates whether the operation can be performed.
+	// Indicates whether the operation is available.
 	//
-	// 	- **true**: The operation can be performed.
+	// - **true**: Available.
 	//
-	// 	- **false**: The operation cannot be performed.
+	// - **false**: Not available.
 	//
 	// example:
 	//
@@ -190,51 +190,51 @@ func (s *AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsRespon
 }
 
 type AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField struct {
-	// The alias of the field that is used in the whitelist rule.
+	// The name of the whitelist field in the configured whitelist rule.
 	//
 	// example:
 	//
 	// file path
 	FiledAliasName *string `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
-	// The field that is used in the whitelist rule.
+	// The whitelist field in the configured whitelist rule.
 	//
 	// example:
 	//
 	// filePath
 	FiledName *string `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
-	// The operation that is used in the whitelist rule. Valid values:
+	// The wildcard in the configured whitelist rule. Valid values:
 	//
-	// 	- **contains**: contains
+	// - **contains**: contains
 	//
-	// 	- **notContains**: does not contain
+	// - **notContains**: does not contain
 	//
-	// 	- **regex**: regular expression
+	// - **regex**: regular expression
 	//
-	// 	- **strEqual**: equals
+	// - **strEqual**: equals
 	//
-	// 	- **strNotEqual**: does not equal
+	// - **strNotEqual**: does not equal
 	//
 	// example:
 	//
 	// contains
 	MarkMisType *string `json:"MarkMisType,omitempty" xml:"MarkMisType,omitempty"`
-	// The value of the field that is used in the whitelist rule.
+	// The rule value of the configured whitelist rule.
 	//
 	// example:
 	//
 	// 2022-04-25 10:11:04
 	MarkMisValue *string `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
-	// The operation that is used and can be modified in the whitelist rule. Valid values:
+	// The wildcard types that can be modified in the configured whitelist rule. Valid values:
 	//
-	// 	- **contains**: contains
+	// - **contains**: contains
 	//
-	// 	- **notContains**: does not contain
+	// - **notContains**: does not contain
 	//
-	// 	- **regex**: regular expression
+	// - **regex**: regular expression
 	//
-	// 	- **strEqual**: equals
+	// - **strEqual**: equals
 	//
-	// 	- **strNotEqual**: does not equal
+	// - **strNotEqual**: does not equal
 	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 }
 
@@ -296,35 +296,35 @@ func (s *AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsRespon
 }
 
 type AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkFieldsSource struct {
-	// The alias of the field that can be used in the whitelist rule.
+	// The name of the whitelist field that can be configured in a whitelist rule.
 	//
 	// example:
 	//
 	// file path
 	FiledAliasName *string `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
-	// The field that can be used in the whitelist rule.
+	// The whitelist field that can be configured in a whitelist rule.
 	//
 	// example:
 	//
 	// filePath
 	FiledName *string `json:"FiledName,omitempty" xml:"FiledName,omitempty"`
-	// The value of the field that can be used in the whitelist rule.
+	// The rule value of the whitelist rule.
 	//
 	// example:
 	//
 	// contains
 	MarkMisValue *string `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
-	// The operation that is supported in the whitelist rule. Valid values:
+	// The supported wildcards in the whitelist rule. Valid values:
 	//
-	// 	- **contains**: contains
+	// - **contains**: contains
 	//
-	// 	- **notContains**: does not contain
+	// - **notContains**: does not contain
 	//
-	// 	- **regex**: regular expression
+	// - **regex**: regular expression
 	//
-	// 	- **strEqual**: equals
+	// - **strEqual**: equals
 	//
-	// 	- **strNotEqual**: does not equal
+	// - **strNotEqual**: does not equal
 	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
 }
 

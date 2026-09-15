@@ -14,7 +14,7 @@ type iDeleteSecurityEventMarkMissListResponseBody interface {
 }
 
 type DeleteSecurityEventMarkMissListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type GetLocalDefaultRegionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The access type of the multi-cloud site. Valid values:
 	//
-	// - **0**: No default site exists. You can select one.
+	// - **0**: No default site exists. You can select a site as the default site.
 	//
 	// - **1**: The current site is already the default site.
 	//

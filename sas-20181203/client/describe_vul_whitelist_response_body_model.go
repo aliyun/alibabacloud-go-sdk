@@ -24,19 +24,19 @@ type iDescribeVulWhitelistResponseBody interface {
 }
 
 type DescribeVulWhitelistResponseBody struct {
-	// The number of entries on the current page in paging.
+	// The number of entries on the current page when paging.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page in paging.
+	// The current page number when paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page in paging.
+	// The number of entries per page when paging.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeVulWhitelistResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of whitelisted vulnerabilities.
+	// The list of vulnerability whitelist entries.
 	VulWhitelists []*DescribeVulWhitelistResponseBodyVulWhitelists `json:"VulWhitelists,omitempty" xml:"VulWhitelists,omitempty" type:"Repeated"`
 }
 

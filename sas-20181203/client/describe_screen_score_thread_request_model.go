@@ -27,9 +27,12 @@ type DescribeScreenScoreThreadRequest struct {
 	// example:
 	//
 	// 1668064495000
-	EndTime                    *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory folder.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The source of the security score. If left empty, the default value is Security Center. Valid values:
+	// The source of the security score. If this parameter is left empty, the default value is Security Center. Valid values:
 	//
 	// 0: Security Center.
 	//

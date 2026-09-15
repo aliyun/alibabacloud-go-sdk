@@ -30,7 +30,7 @@ type DescribeGraph4InvestigationOnlineResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response data.
 	Data *DescribeGraph4InvestigationOnlineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeGraph4InvestigationOnlineResponseBody struct {
 	//
 	// C699E4E4-F2F4-58FC-A949-457FFE59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: The API call was successful.
 	//
-	// - **false**: The call failed.
+	// - **false**: The API call failed.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList struct {
 	//
 	// - **ip**: IP address
 	//
-	// - **domain**: domain name.
+	// - **domain**: domain name
 	//
 	// example:
 	//
@@ -256,13 +256,13 @@ type DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList struct {
 	//
 	// - **ip**: IP address
 	//
-	// - **domain**: domain name.
+	// - **domain**: domain name
 	//
 	// example:
 	//
 	// file
 	StartType *string `json:"StartType,omitempty" xml:"StartType,omitempty"`
-	// The time when the edge was created.
+	// The time when the edge was established. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -446,7 +446,7 @@ type DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList struct {
 	//
 	// - **1**: forward
 	//
-	// - **0**: reverse.
+	// - **0**: reverse
 	//
 	// example:
 	//
@@ -535,7 +535,7 @@ type DescribeGraph4InvestigationOnlineResponseBodyDataVertexList struct {
 	//
 	// {\\"DomainName\\": {\\"SupportScratchDetection\\": False, \\"Description\\": \\"The name of the domain.\\", \\"Required\\": True, \\"UpdateAllowed\\": False, \\"Type\\": \\"string\\", \\"Immutable\\": False}}
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The time.
+	// The time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

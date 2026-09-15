@@ -16,9 +16,9 @@ type iGetSwitchRegionDetailResponseBody interface {
 }
 
 type GetSwitchRegionDetailResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *GetSwitchRegionDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. The China Chinese mainland generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
+	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type GetSwitchRegionDetailResponseBodyDataRegionStatus struct {
 	//
 	// 27
 	EcsCount *int32 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	// The planned migration time.
+	// The planned migration time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type GetSwitchRegionDetailResponseBodyDataRegionStatus struct {
 	//
 	// - **0**: waiting for migration
 	//
-	// - **1**: switchover succeeded.
+	// - **1**: switchover succeeded
 	//
 	// example:
 	//

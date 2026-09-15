@@ -24,11 +24,11 @@ type iUpdatePostPaidBindRelRequest interface {
 }
 
 type UpdatePostPaidBindRelRequest struct {
-	// Specifies whether to enable automatic binding for new assets. Valid values:
+	// Specifies whether to automatically bind new assets. Valid values:
 	//
-	// - **0**: disabled
+	// - **0**: Disabled.
 	//
-	// - **1**: enabled
+	// - **1**: Enabled.
 	//
 	// example:
 	//
@@ -52,8 +52,11 @@ type UpdatePostPaidBindRelRequest struct {
 	AutoBindVersion *int32 `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
 	// The binding action parameter.
 	BindAction []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The abbreviated name of the cloud service. Valid values:
+	//
+	// - **sas**: Security Center
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// Specifies whether to forcibly upgrade the edition.
 	//
@@ -141,14 +144,15 @@ func (s *UpdatePostPaidBindRelRequest) Validate() error {
 type UpdatePostPaidBindRelRequestBindAction struct {
 	// Specifies whether to bind all servers. Default value: **false**. Valid values:
 	//
-	// - **true**: yes
+	// - **true**: Bind all servers.
 	//
-	// - **false**: no
+	// - **false**: Do not bind all servers.
 	//
 	// example:
 	//
 	// true
-	BindAll  *bool   `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	// The free quota type.
 	FreeType *string `json:"FreeType,omitempty" xml:"FreeType,omitempty"`
 	// The list of server UUIDs.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`

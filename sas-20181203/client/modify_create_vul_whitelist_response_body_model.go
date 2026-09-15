@@ -24,7 +24,7 @@ type ModifyCreateVulWhitelistResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The vulnerability whitelist information.
 	//
-	// 	Notice: This data is not returned when you add or update vulnerability whitelists in batches. It is returned only when you add or update a single vulnerability whitelist entry.
+	// 	Notice: This data is not returned when you add or update vulnerability whitelists in batches. This data is returned only when you add or update a single vulnerability whitelist entry.
 	VulWhitelistList *ModifyCreateVulWhitelistResponseBodyVulWhitelistList `json:"VulWhitelistList,omitempty" xml:"VulWhitelistList,omitempty" type:"Struct"`
 }
 

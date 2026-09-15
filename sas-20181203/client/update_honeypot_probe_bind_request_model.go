@@ -46,15 +46,15 @@ type UpdateHoneypotProbeBindRequest struct {
 	BindPortList []*UpdateHoneypotProbeBindRequestBindPortList `json:"BindPortList,omitempty" xml:"BindPortList,omitempty" type:"Repeated"`
 	// The service binding type. Valid values:
 	//
-	// - **forward_honey**: forward to honeypot
+	// - **forward_honey**: forwards traffic to the honeypot.
 	//
-	// - **scan_port**: listen for scans.
+	// - **scan_port**: listens for scans.
 	//
 	// example:
 	//
 	// forward_honey
 	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
-	// The page number of the page to return. Minimum value: **1**. Default value: **1**.
+	// The page number of the page to return. The value starts from **1**. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type UpdateHoneypotProbeBindRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The language of the request and response. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
 	// - **en**: English.
 	//
@@ -84,7 +84,7 @@ type UpdateHoneypotProbeBindRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page when using paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by paging.
+	// The maximum number of entries to return on each page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by default.
 	//
 	// > Do not leave PageSize empty.
 	//
@@ -270,7 +270,7 @@ type UpdateHoneypotProbeBindRequestBindPortList struct {
 	//
 	// example:
 	//
-	// 0
+	// false
 	Fixed *bool `json:"Fixed,omitempty" xml:"Fixed,omitempty"`
 	// The unique identifier of the bound port.
 	//
@@ -282,7 +282,7 @@ type UpdateHoneypotProbeBindRequestBindPortList struct {
 	//
 	// - **tcp**
 	//
-	// - **udp**.
+	// - **udp**
 	//
 	// example:
 	//

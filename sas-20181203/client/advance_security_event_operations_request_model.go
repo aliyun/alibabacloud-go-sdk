@@ -22,68 +22,75 @@ type iAdvanceSecurityEventOperationsRequest interface {
 }
 
 type AdvanceSecurityEventOperationsRequest struct {
-	// The alert name.
+	// The alert name. The EventName and EventType parameters must be specified together. If only one of them is specified, the API returns a 400 error.
 	//
 	// example:
 	//
-	// 恶意脚本代码执行
+	// Malicious script code execution
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The alert event type. Valid values:
+	// The type of the alerting event. Valid values:
 	//
-	// 	- Suspicious process
+	// - Abnormal process behavior
 	//
-	// 	- Webshell
+	// - Web shell
 	//
-	// 	- Unusual logon
+	// - Unusual logon
 	//
-	// 	- Exception
+	// - Abnormal event
 	//
-	// 	- Sensitive file tampering
+	// - Sensitive file tampering
 	//
-	// 	- Malicious process (cloud threat detection)
+	// - Malicious process (cloud scan)
 	//
-	// 	- Unusual network connection
+	// - Suspicious network connection
 	//
-	// 	- Abnormal account
+	// - Abnormal account
 	//
-	// 	- Application intrusion event
+	// - Application intrusion event
 	//
-	// 	- Cloud threat detection
+	// - Cloud service threat detection
 	//
-	// 	- Precision defense
+	// - Precise defense
 	//
-	// 	- Application whitelist
+	// - Application whitelist
 	//
-	// 	- Persistent webshell
+	// - Persistent backdoor
 	//
-	// 	- Web application threat detection
+	// - Web application threat detection
 	//
-	// 	- Malicious script
+	// - Malicious script
 	//
-	// 	- Threat intelligence
+	// - Threat intelligence
 	//
-	// 	- Malicious network activity
+	// - Malicious network behavior
 	//
-	// 	- Cluster exception
+	// - Container cluster exception
 	//
-	// 	- Webshell (on-premises threat detection)
+	// - Web shell (local scan)
 	//
-	// 	- Vulnerability exploitation
+	// - Vulnerability exploits
 	//
-	// 	- Malicious process (on-premises threat detection)
+	// - Malicious process (local scan)
 	//
-	// 	- Trusted exception
+	// - Trusted exception
 	//
-	// 	- Others
+	// - Other
 	//
-	// For more information about alert types, see [Alerts](https://help.aliyun.com/document_detail/68388.html).
+	// For more information about alert types, see [Security alert check items](https://help.aliyun.com/document_detail/68388.html).
+	//
+	// The EventName and EventType parameters must be specified together. If only one of them is specified, the API returns a 400 error.
 	//
 	// example:
 	//
-	// 恶意脚本
-	EventType                  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Malicious script
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The member account ID in the resource directory (Alibaba Cloud account).
+	//
+	// example:
+	//
+	// 1232428423234****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	ResourceOwnerId            *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The rule ID.
 	//
 	// example:

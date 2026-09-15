@@ -20,13 +20,15 @@ type iOperateBucketScanTaskRequest interface {
 type OperateBucketScanTaskRequest struct {
 	// The bucket name.
 	//
+	// > Note: This parameter is required. If this parameter is not specified, the API returns the InvalidBucketName (400) error.
+	//
 	// example:
 	//
 	// iboxpublic****
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	// The operation to perform on the bucket. Valid values:
 	//
-	// - **1**: Cancel detection.
+	// - **1**: Cancel the scan task.
 	//
 	// example:
 	//

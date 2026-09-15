@@ -24,6 +24,8 @@ type ValidateHcWarningsRequest struct {
 	//
 	// > You can call the [DescribeCheckWarningSummary](https://help.aliyun.com/document_detail/116179.html) operation to obtain check item IDs.
 	//
+	// Note: You must specify at least one of RiskIds and CheckIds. Otherwise, the API returns the HcIllegalParameter error.
+	//
 	// example:
 	//
 	// 695,234
@@ -32,17 +34,19 @@ type ValidateHcWarningsRequest struct {
 	//
 	// >  You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this parameter.
 	//
+	// Note: You must specify at least one of RiskIds and CheckIds. Otherwise, the API returns the HcIllegalParameter error.
+	//
 	// example:
 	//
 	// 43
 	RiskIds *string `json:"RiskIds,omitempty" xml:"RiskIds,omitempty"`
-	// The status of the check item to verify. Valid values:
+	// The status of the check items to verify.
 	//
-	// - 1: not passed
+	// - 1: Not passed
 	//
-	// - 3: passed
+	// - 3: Passed
 	//
-	// - 5: expired.
+	// - 5: Expired
 	//
 	// example:
 	//

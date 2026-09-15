@@ -30,7 +30,7 @@ type UpgradeHoneypotNodeRequest struct {
 	AllowHoneypotAccessInternet *bool `json:"AllowHoneypotAccessInternet,omitempty" xml:"AllowHoneypotAccessInternet,omitempty"`
 	// The language of the request and response. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
 	// - **en**: English.
 	//
@@ -40,7 +40,9 @@ type UpgradeHoneypotNodeRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the management node to upgrade.
 	//
-	// >You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this parameter.
+	// > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this parameter.
+	//
+	// Note: This parameter is actually required. If it is not provided, the API returns InvalidParam (400).
 	//
 	// example:
 	//

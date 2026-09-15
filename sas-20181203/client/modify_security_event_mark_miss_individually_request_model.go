@@ -24,36 +24,39 @@ type iModifySecurityEventMarkMissIndividuallyRequest interface {
 }
 
 type ModifySecurityEventMarkMissIndividuallyRequest struct {
-	// The alert handling rule that you want to delete.
+	// The alert whitelisting rule to delete.
 	//
 	// example:
 	//
 	// [{\\"field\\":\\"loginSourceIp\\",\\"operate\\":\\"contains\\",\\"eventType\\":\\"SIL_AI_ALERT\\",\\"eventName\\":\\"login_common_ip\\",\\"fieldValue\\":\\"10.12.XX.XX\\",\\"uuids\\":\\"\\"}]
 	DeleteMarkMissParam *string `json:"DeleteMarkMissParam,omitempty" xml:"DeleteMarkMissParam,omitempty"`
-	// The ID of the request source. Set the value to **sas**.
+	// The source identifier of the request. Set the value to **sas**.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The alert handling that you want to add.
+	// The alert whitelisting rule to add.
 	//
 	// example:
 	//
 	// [{\\"field\\":\\"location\\",\\"operate\\":\\"contains\\",\\"eventType\\":\\"SIL_AI_ALERT\\",\\"eventName\\":\\"login_common_ip\\",\\"fieldValue\\":\\"xx\\",\\"uuids\\":\\"4296ee47-bf19-4fa4-a4a6-6bxxxxxxxxx\\"}]
 	InsertMarkMissParam *string `json:"InsertMarkMissParam,omitempty" xml:"InsertMarkMissParam,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The source IP address of the request. You do not need to specify this parameter. It is automatically obtained by the system.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
 	//
 	// example:
 	//

@@ -72,7 +72,7 @@ type DescribeOnceTaskLeafRecordPageRequest struct {
 	//
 	// 1648438617000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The list of statuses.
+	// The status list.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 	// The ID of the task to retrieve.
 	//
@@ -82,7 +82,7 @@ type DescribeOnceTaskLeafRecordPageRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **IMAGE_SCAN**: image scanning
+	// - **IMAGE_SCAN**: image scanning.
 	//
 	// - **IMAGE_REGISTRY_PULL**: image asset synchronization.
 	//

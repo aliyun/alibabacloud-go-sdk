@@ -16,13 +16,13 @@ type iCreateFileProtectRuleResponseBody interface {
 }
 
 type CreateFileProtectRuleResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// EC7C8984-D108-516F-9D36-3DF1D1228CCA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//

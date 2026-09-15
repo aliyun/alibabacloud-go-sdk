@@ -28,37 +28,37 @@ type iExportCustomizeReportResponseBody interface {
 }
 
 type ExportCustomizeReportResponseBody struct {
-  // The download URL of the security report.
+  // The download URL of the report.
   // 
   // example:
   // 
   // https://xxxxxxxx.oss-cn-hangzhou-1.aliyuncs.com/xxxxx/xxxxxxxxxxxxxx?Expires=1671448125&OSSAccessKeyId=xxx
   DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-  // The time when the security report was exported.
+  // The time when the report was generated. Format: YYYY-MM-DD.
   // 
   // example:
   // 
   // 2023-01-10
   ExportDate *string `json:"ExportDate,omitempty" xml:"ExportDate,omitempty"`
-  // The ID of the export task.
+  // The ID of the export report task.
   // 
   // example:
   // 
   // 22
   ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
-  // The status of the export task. Valid values:
+  // The status of the export node. Valid values:
   // 
-  // 	- **fail**: The export task fails.
+  // - **fail**: The export failed.
   // 
-  // 	- **exporting**: The export task is being executed.
+  // - **exporting**: The export is in progress.
   // 
-  // 	- **success**: The export task is successful.
+  // - **success**: The export succeeded.
   // 
   // example:
   // 
   // exporting
   ExportStatus *string `json:"ExportStatus,omitempty" xml:"ExportStatus,omitempty"`
-  // The name of the report file that is exported.
+  // The name of the exported file.
   // 
   // example:
   // 
@@ -70,13 +70,13 @@ type ExportCustomizeReportResponseBody struct {
   // 
   // 123
   ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-  // The request ID.
+  // The request ID, which is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
   // 
   // example:
   // 
   // FFDFCEB3-A5EE-590A-8E70-283EBC5D****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The timestamp when the download URL expires. Unit: seconds.
+  // The UNIX timestamp when the report download URL expires. Unit: seconds.
   // 
   // example:
   // 

@@ -90,6 +90,8 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// 1678895999999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The extended information of the task. For image security fix subtasks, this field returns the selected vulnerability identifiers and the name of the fixed image. The keys include vulnerabilityIds and outputImageName.
+	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The instance ID of the asset.
 	//
 	// example:
@@ -114,7 +116,7 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// 172.25.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The amount of detected data, in MB.
+	// The amount of data scanned, in MB.
 	//
 	// example:
 	//
@@ -154,7 +156,7 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// SUCCESS
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The detection result.
+	// The check result.
 	//
 	// example:
 	//
@@ -190,7 +192,7 @@ type ListAgentlessTaskResponseBodyList struct {
 	//
 	// - **1**: snapshot
 	//
-	// - **2**: image.
+	// - **2**: image
 	//
 	// example:
 	//
@@ -226,6 +228,10 @@ func (s ListAgentlessTaskResponseBodyList) GoString() string {
 
 func (s *ListAgentlessTaskResponseBodyList) GetEndTime() *int64 {
 	return s.EndTime
+}
+
+func (s *ListAgentlessTaskResponseBodyList) GetExtension() map[string]*string {
+	return s.Extension
 }
 
 func (s *ListAgentlessTaskResponseBodyList) GetInstanceId() *string {
@@ -298,6 +304,11 @@ func (s *ListAgentlessTaskResponseBodyList) GetUuid() *string {
 
 func (s *ListAgentlessTaskResponseBodyList) SetEndTime(v int64) *ListAgentlessTaskResponseBodyList {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListAgentlessTaskResponseBodyList) SetExtension(v map[string]*string) *ListAgentlessTaskResponseBodyList {
+	s.Extension = v
 	return s
 }
 
@@ -391,13 +402,13 @@ func (s *ListAgentlessTaskResponseBodyList) Validate() error {
 }
 
 type ListAgentlessTaskResponseBodyPageInfo struct {
-	// The page number of the current page in a paged query. Paging starts from page 1.
+	// The page number of the current page in a paged query. This parameter implements paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page in a paged query. Paging is performed based on this value.
+	// The maximum number of entries per page in a paged query. This parameter implements paging.
 	//
 	// example:
 	//

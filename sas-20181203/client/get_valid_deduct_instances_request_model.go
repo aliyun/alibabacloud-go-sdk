@@ -36,7 +36,7 @@ type GetValidDeductInstancesRequest struct {
 	//
 	// sas_vul_dp_cn
 	Modules *string `json:"Modules,omitempty" xml:"Modules,omitempty"`
-	// The status of the resource plan. The default value is valid. This parameter does not support modification.
+	// The status of the resource plan. Default value: valid. This parameter does not support modification.
 	//
 	// example:
 	//

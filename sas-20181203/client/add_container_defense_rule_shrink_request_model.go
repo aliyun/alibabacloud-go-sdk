@@ -28,39 +28,39 @@ type iAddContainerDefenseRuleShrinkRequest interface {
 }
 
 type AddContainerDefenseRuleShrinkRequest struct {
-	// The description of the rule.
+	// The description.
 	//
 	// example:
 	//
 	// test-proc-defense
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The action that is performed when the rule is hit. Valid values:
+	// The action to take when the rule is matched. Valid values:
 	//
-	// 	- **1**: alert
+	// - **1**: Alert.
 	//
-	// 	- **2**: block
+	// - **2**: Block.
 	//
 	// example:
 	//
 	// 1
 	RuleAction *int32 `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The ID of the rule. You do not need to manually specify the ID.
+	// The rule ID. You do not need to specify this parameter when creating a rule.
 	//
 	// example:
 	//
 	// 500018
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// auto-test-rule-lt9umq
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The switch of the rule. Valid values:
+	// The rule switch. Valid values:
 	//
-	// 	- **0**: off
+	// - **0**: Disabled.
 	//
-	// 	- **1**: on
+	// - **1**: Enabled.
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ type AddContainerDefenseRuleShrinkRequest struct {
 	RuleSwitch *int32 `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
 	// The rule type. Valid values:
 	//
-	// 	- 2: user-defined rules
+	// - 2: user rule
 	//
-	// > Only the value 2 is supported.
+	// 	Notice: Only the value 2 is supported.
 	//
 	// example:
 	//
 	// 2
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The scope.
+	// The scope. This parameter is required. Specify at least one Scope entry, such as Scope.1.AllNamespace=1, which indicates that the rule applies to all namespaces. If this parameter is not specified, the API returns a 400 error.
 	Scope []*AddContainerDefenseRuleShrinkRequestScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
 	// The whitelist.
 	WhitelistShrink *string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
@@ -178,23 +178,23 @@ func (s *AddContainerDefenseRuleShrinkRequest) Validate() error {
 type AddContainerDefenseRuleShrinkRequestScope struct {
 	// Specifies whether to include all namespaces. Valid values:
 	//
-	// 	- **0**: You can use the Namespaces parameter to specify the namespaces to include.
+	// - **0**: Specifies the namespaces to include by using the Namespaces parameter.
 	//
-	// 	- **1**: All namespaces are included.
+	// - **1**: Includes all namespaces.
 	//
 	// example:
 	//
 	// 0
 	AllNamespace *int32 `json:"AllNamespace,omitempty" xml:"AllNamespace,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 8e2***75b
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The namespaces to include.
+	// The list of included namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 }
 

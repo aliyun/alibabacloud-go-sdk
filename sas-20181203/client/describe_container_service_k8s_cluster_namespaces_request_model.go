@@ -18,14 +18,14 @@ type iDescribeContainerServiceK8sClusterNamespacesRequest interface {
 }
 
 type DescribeContainerServiceK8sClusterNamespacesRequest struct {
-	// The cluster ID.
+	// The ID of the cluster. Note: This parameter is required. If this parameter is not specified, the API returns InvalidParam (400).
 	//
 	// example:
 	//
 	// cf4435fefd45d4b1b8643f3a0bea3****
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

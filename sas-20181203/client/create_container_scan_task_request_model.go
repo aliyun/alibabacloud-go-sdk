@@ -18,15 +18,15 @@ type iCreateContainerScanTaskRequest interface {
 }
 
 type CreateContainerScanTaskRequest struct {
-	// The ID of the cluster to which the container belongs.
+	// The ID of the container cluster.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of clusters.
+	// > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c22143730ab6e40b09ec7c1c51d4d****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the container.
+	// The container ID.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type CreateContainerScanTaskRequest struct {
 	ContainerIds *string `json:"ContainerIds,omitempty" xml:"ContainerIds,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

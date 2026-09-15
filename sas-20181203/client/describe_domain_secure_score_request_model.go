@@ -20,16 +20,19 @@ type iDescribeDomainSecureScoreRequest interface {
 type DescribeDomainSecureScoreRequest struct {
 	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The source IP address of the visitor.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The Alibaba Cloud account ID of the member account in the resource directory.
+	//
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The source IP address of the request.
 	//
 	// example:
 	//

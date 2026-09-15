@@ -34,31 +34,31 @@ type iGenerateK8sAccessInfoRequest interface {
 }
 
 type GenerateK8sAccessInfoRequest struct {
-	// This parameter is deprecated and does not need to be specified.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayApiName *string `json:"AliyunYundunGatewayApiName,omitempty" xml:"AliyunYundunGatewayApiName,omitempty"`
-	// This parameter is deprecated and does not need to be specified.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayPopName *string `json:"AliyunYundunGatewayPopName,omitempty" xml:"AliyunYundunGatewayPopName,omitempty"`
-	// This parameter is deprecated and does not need to be specified.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// None
 	AliyunYundunGatewayProjectName *string `json:"AliyunYundunGatewayProjectName,omitempty" xml:"AliyunYundunGatewayProjectName,omitempty"`
-	// The SLS Logstore of the audit log.
+	// The SLS Logstore for audit logs.
 	//
 	// example:
 	//
 	// audit-cf6baf6afa106eca665296fdf68b65bf
 	AuditLogStore *string `json:"AuditLogStore,omitempty" xml:"AuditLogStore,omitempty"`
-	// The SLS project of the audit log.
+	// The Simple Log Service (SLS) project for audit logs.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type GenerateK8sAccessInfoRequest struct {
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The CPU architecture, which can be ARM or x86.
+	// The CPU architecture, which can be ARM architecture or x86 architecture.
 	//
 	// example:
 	//
 	// arm
 	CpuArch *string `json:"CpuArch,omitempty" xml:"CpuArch,omitempty"`
-	// The expiration time for container access.
+	// The expiration time for container access. This value is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type GenerateK8sAccessInfoRequest struct {
 	//
 	// 1711951508388
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The queried group ID.
+	// The ID of the server group.
 	//
 	// This parameter is required.
 	//

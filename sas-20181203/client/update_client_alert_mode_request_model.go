@@ -18,15 +18,15 @@ type iUpdateClientAlertModeRequest interface {
 type UpdateClientAlertModeRequest struct {
 	// The protection mode. Valid values:
 	//
-	// 	- **strict**: The strict mode. False positives may be generated. We recommend that you enable this mode during major events.
+	// - **strict**: Strict mode. Defense mode has a risk of false positives. Use Defense mode during critical event protection periods.
 	//
-	// 	- **balance**: The balanced mode. More risks can be detected with less false positives in this mode.
+	// - **balance**: Balanced mode. Defense mode detects more suspicious risks while reducing false positives.
 	//
 	// example:
 	//
 	// balance
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The UUIDs of servers.
+	// The list of server UUIDs.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

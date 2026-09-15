@@ -16,13 +16,13 @@ type iDescribeContainerAppsResponseBody interface {
 }
 
 type DescribeContainerAppsResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 30CBF632-109F-596F-97F2-451C8B2A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tag values.
+	// The list of tag values.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 

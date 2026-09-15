@@ -22,88 +22,91 @@ type iRefreshAssetsRequest interface {
 }
 
 type RefreshAssetsRequest struct {
-	// The type of the asset that you want to synchronize. Valid values:
+	// The type of asset to synchronize. Default value: **ecs**. Valid values:
 	//
-	// 	- **cloud_product**: Alibaba Cloud service
+	// - **cloud_product**: cloud product
 	//
-	// 	- **ecs**: Elastic Compute Service (ECS) instance
+	// - **ecs**: server
 	//
-	// 	- **container_image**: container image
+	// - **container_image**: container image
 	//
 	// example:
 	//
 	// cloud_product
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The subtype of the cloud service.
+	// The subtype of the cloud product.
 	//
-	// >  The following list describes the subtypes of cloud services.
+	// > Refer to the following list for valid values.
 	//
 	// example:
 	//
 	// 0
 	CloudAssetSubType *int32 `json:"CloudAssetSubType,omitempty" xml:"CloudAssetSubType,omitempty"`
-	// The type of the cloud service. Valid values:
+	// The type of cloud product. Valid values:
 	//
-	// 	- **0**: ECS
+	// - **0**: server
 	//
-	// 	- **1**: Server Load Balancer (SLB)
+	// - **1**: load balancing
 	//
-	// 	- **3**: ApsaraDB RDS
+	// - **3**: ApsaraDB RDS database
 	//
-	// 	- **4**: ApsaraDB for MongoDB (MongoDB)
+	// - **4**: ApsaraDB for MongoDB database
 	//
-	// 	- **5**: ApsaraDB for Redis (Redis)
+	// - **5**: Tair (Redis® OSS-Compatible) database
 	//
-	// 	- **6**: Container Registry
+	// - **6**: Container Registry
 	//
-	// 	- **8**: Container Service for Kubernetes (ACK)
+	// - **8**: container service for Kubernetes
 	//
-	// 	- **9**: Virtual Private Cloud (VPC)
+	// - **9**: VPC
 	//
-	// 	- **11**: ActionTrail
+	// - **11**: ActionTrail
 	//
-	// 	- **12**: Alibaba Cloud CDN (CDN)
+	// - **12**: CDN
 	//
-	// 	- **13**: Certificate Management Service (formerly SSL Certificates Service)
+	// - **13**: Certificate Management Service (formerly SSL Certificates Service)
 	//
-	// 	- **14**: Apsara Devops
+	// - **14**: Apsara Devops
 	//
-	// 	- **15**: Resource Access Management (RAM)
+	// - **15**: access control
 	//
-	// 	- **16**: Anti-DDoS
+	// - **16**: Anti-DDoS
 	//
-	// 	- **17**: Web Application Firewall (WAF)
+	// - **17**: Web Application Firewall
 	//
-	// 	- **18**: Object Storage Service (OSS)
+	// - **18**: OSS
 	//
-	// 	- **19**: PolarDB
+	// - **19**: cloud-native relational database PolarDB
 	//
-	// 	- **20**: ApsaraDB RDS for PostgreSQL
+	// - **20**: ApsaraDB RDS for PostgreSQL database
 	//
-	// 	- **21**: Microservices Engine (MSE)
+	// - **21**: Microservices Engine
 	//
-	// 	- **22**: File Storage NAS (NAS)
+	// - **22**: File Storage NAS
 	//
-	// 	- **23**: Data Security Center (DSC)
+	// - **23**: Data Security Center
 	//
-	// 	- **24**: Elastic IP Address (EIP)
+	// - **24**: EIP
 	//
 	// example:
 	//
 	// 0
-	CloudAssetType             *int32 `json:"CloudAssetType,omitempty" xml:"CloudAssetType,omitempty"`
+	CloudAssetType *int32 `json:"CloudAssetType,omitempty" xml:"CloudAssetType,omitempty"`
+	// The ID of the Alibaba Cloud account of the member accounts in the resource directory.
+	//
+	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The type of the server. Valid values:
+	// The server vendor. Valid values:
 	//
-	// 	- **0**: an asset provided by Alibaba Cloud
+	// - **0**: Alibaba Cloud asset
 	//
-	// 	- **1**: a third-party cloud asset
+	// - **1**: asset outside the cloud
 	//
-	// 	- **2**: an asset in a data center
+	// - **2**: IDC asset
 	//
-	// 	- **3**, **4**, **5**, and **7**: an asset provided by another cloud
+	// - **3**, **4**, **5**, **7**: third-party cloud asset
 	//
-	// 	- **8**: a lightweight asset
+	// - **8**: lightweight asset
 	//
 	// example:
 	//

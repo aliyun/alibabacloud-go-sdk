@@ -94,11 +94,11 @@ type DescribeIdcProbeScanResultListResponseBodyInstances struct {
 	//
 	// online
 	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	// The name of the IDC server room.
+	// The IDC name.
 	//
 	// example:
 	//
-	// 3K机房广州
+	// 3K IDC Guangzhou
 	IdcName *string `json:"IdcName,omitempty" xml:"IdcName,omitempty"`
 	// The IP segment list.
 	//
@@ -106,7 +106,7 @@ type DescribeIdcProbeScanResultListResponseBodyInstances struct {
 	//
 	// 192.168.2.0/24
 	IpSegment *string `json:"IpSegment,omitempty" xml:"IpSegment,omitempty"`
-	// The timestamp of the latest scan, in milliseconds.
+	// The timestamp of the latest scan. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeIdcProbeScanResultListResponseBodyInstances struct {
 	//
 	// - **windows**
 	//
-	// - **linux**.
+	// - **linux**
 	//
 	// example:
 	//
@@ -293,7 +293,7 @@ type DescribeIdcProbeScanResultListResponseBodyPageInfo struct {
 	//
 	// 9
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page in a paged query.
+	// The page number in a paging query.
 	//
 	// example:
 	//

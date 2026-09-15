@@ -18,13 +18,17 @@ type iCreateVulAutoRepairConfigRequest interface {
 }
 
 type CreateVulAutoRepairConfigRequest struct {
-	// The reason why the vulnerability can be automatically fixed.
+	// The reason for adding the vulnerabilities that can be automatically fixed.
 	//
 	// example:
 	//
 	// TestAutoRepair
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The type of the vulnerability. Valid values: -**cve**: Linux software vulnerability -**sys**: Windows system vulnerability
+	// The type of the vulnerability. Valid values:
+	//
+	// - **cve**: Linux software vulnerability.
+	//
+	// - **sys**: Windows system vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +36,7 @@ type CreateVulAutoRepairConfigRequest struct {
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The vulnerabilities that can be automatically fixed.
+	// The list of vulnerabilities that can be automatically fixed.
 	//
 	// This parameter is required.
 	VulAutoRepairConfigList []*CreateVulAutoRepairConfigRequestVulAutoRepairConfigList `json:"VulAutoRepairConfigList,omitempty" xml:"VulAutoRepairConfigList,omitempty" type:"Repeated"`

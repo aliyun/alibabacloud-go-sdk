@@ -38,85 +38,87 @@ type iDescribePropertyProcDetailRequest interface {
 }
 
 type DescribePropertyProcDetailRequest struct {
-	// The startup parameter of the process.
+	// The startup parameters of the process.
 	//
 	// example:
 	//
 	// ./8888
 	Cmdline *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies whether fuzzy search by process name is supported. If you want to use fuzzy search, set the parameter to 1. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
+	// Specifies whether fuzzy match is supported for the process name. Set this parameter to 1 to enable fuzzy match. Other values or an empty value indicate that fuzzy match is not supported.
 	//
 	// example:
 	//
 	// 1
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The name of the process.
+	// The process name.
 	//
 	// example:
 	//
 	// 8888
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of NextToken that is returned when the NextToken method is used. You do not need to specify this parameter for the first request.
+	// The token that marks the current position from which to start reading. Leave this parameter empty to start reading from the beginning.
+	//
+	// > You do not need to specify this parameter for the first call. The NextToken value for the second call is included in the response of the first call. Each subsequent response contains the NextToken value for the next call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6k+AtdhNE3kgQEK36GujZ5on+tWdc+4WoaoMP/kUNxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates that 10 entries of process Asset Fingerprints information are displayed per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The timestamp when the process ends. Unit: milliseconds.
+	// The end timestamp of the process startup time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649587453000
 	ProcTimeEnd *int64 `json:"ProcTimeEnd,omitempty" xml:"ProcTimeEnd,omitempty"`
-	// The timestamp when the process starts. Unit: milliseconds.
+	// The start timestamp of the process startup time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1648809853000
 	ProcTimeStart *int64 `json:"ProcTimeStart,omitempty" xml:"ProcTimeStart,omitempty"`
-	// The name or IP address of the server.
+	// The name or IP address of the server that you want to query.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the account ID.
+	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Specifies whether to use the NextToken method to retrieve a new page of results. If you set UseNextToken to true, the value of TotalCount is not returned. Valid values:
+	// Specifies whether to use the NextToken method to retrieve the vulnerability list data. If this parameter is used, TotalCount is no longer returned. Valid values:
 	//
-	// - **true**: The NextToken method is used.
+	// - **true**: Use the NextToken method.
 	//
-	// - **false**: The NextToken method is not used.
+	// - **false**: Do not use the NextToken method.
 	//
 	// example:
 	//
 	// false
 	UseNextToken *bool `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
-	// The user who runs the process.
+	// The information about the user that runs the process.
 	//
 	// example:
 	//
 	// root
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The UUID of the server.
+	// The UUID of the server that you want to query.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iModifyOperateVulRequest interface {
 }
 
 type ModifyOperateVulRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The source identifier of the request. Set the value to **sas**.
 	//
@@ -48,15 +48,15 @@ type ModifyOperateVulRequest struct {
 	//
 	//     - **cms**: Web-CMS vulnerability.
 	//
-	// > For other vulnerability types, call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
+	// > For other vulnerability types, call the [DescribeVulList](~~DescribeVulList~~) operation to obtain the vulnerability information.
 	//
-	// - **isFront**: Specifies whether the Windows patch is a prerequisite patch. This parameter is required only when you handle Windows system vulnerabilities. You can ignore this parameter for other vulnerability types. Valid values:
+	// - **isFront**: Specifies whether the Windows patch is a prerequisite patch. This field is required only when handling Windows system vulnerabilities and can be ignored for other vulnerability types. Valid values:
 	//
 	//     - **0**: No.
 	//
 	//     - **1**: Yes.
 	//
-	// > Batch processing of vulnerabilities is supported. Separate multiple vulnerability entries with commas (,). Call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
+	// > Batch processing of vulnerabilities is supported. Separate multiple vulnerability entries with commas (,). Call the [DescribeVulList](~~DescribeVulList~~) operation to obtain the vulnerability information.
 	//
 	// This parameter is required.
 	//
@@ -66,15 +66,15 @@ type ModifyOperateVulRequest struct {
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
 	// The operation to perform on the vulnerability. Valid values:
 	//
-	// - **vul_fix**: fixes the vulnerability.
+	// - **vul_fix**: Fix the vulnerability.
 	//
-	// - **vul_verify**: verifies the vulnerability.
+	// - **vul_verify**: Verify the vulnerability.
 	//
-	// - **vul_ignore**: ignores the vulnerability.
+	// - **vul_ignore**: Ignore the vulnerability.
 	//
-	// - **vul_undo_ignore**: cancels ignoring the vulnerability.
+	// - **vul_undo_ignore**: Cancel ignoring the vulnerability.
 	//
-	// - **vul_delete**: deletes the vulnerability.
+	// - **vul_delete**: Delete the vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -89,8 +89,11 @@ type ModifyOperateVulRequest struct {
 	// example:
 	//
 	// not operate
-	Reason                     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the vulnerability to handle. Valid values:
 	//
 	// - **cve**: Linux software vulnerability.

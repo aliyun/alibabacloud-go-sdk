@@ -18,6 +18,8 @@ type iGetAttackEventDetailRequest interface {
 type GetAttackEventDetailRequest struct {
 	// The unique ID of the alert event.
 	//
+	// Note: This parameter is required. If this parameter is not specified, the API returns a 400 error.
+	//
 	// example:
 	//
 	// 18825544674********

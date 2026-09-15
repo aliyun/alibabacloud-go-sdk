@@ -20,13 +20,16 @@ type iDeleteVulWhitelistRequest interface {
 type DeleteVulWhitelistRequest struct {
 	// The ID of the vulnerability whitelist.
 	//
-	// > To delete a vulnerability whitelist, provide the vulnerability whitelist ID. You can obtain this ID by calling the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation.
+	// > To delete a vulnerability whitelist, provide the vulnerability whitelist ID. You can call the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation to obtain this ID.
 	//
 	// example:
 	//
 	// 131231
-	Id                         *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The Alibaba Cloud account ID of the member account in the resource directory.
+	//
+	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The vulnerability whitelist information to delete. The value is a JSON string that contains the following fields:
 	//
 	// - **Name**: The name of the vulnerability.

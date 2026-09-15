@@ -24,47 +24,47 @@ type iListFileProtectRuleRequest interface {
 }
 
 type ListFileProtectRuleRequest struct {
-	// The severity of alerts. Valid values:
+	// The alert notification level. Valid values:
 	//
-	// 	- 0: does not generate alerts
+	// - 0: No alert.
 	//
-	// 	- 1: sends notifications
+	// - 1: Reminder.
 	//
-	// 	- 2: suspicious
+	// - 2: Suspicious.
 	//
-	// 	- 3: high-risk
+	// - 3: High-risk.
 	//
 	// example:
 	//
 	// 0
 	AlertLevel *int32 `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	// The page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The handling method of the rule. Valid values:
+	// The action of the rule on the client. Valid values:
 	//
-	// 	- pass: allow
+	// - pass: allow
 	//
-	// 	- alert
+	// - alert: alert
 	//
 	// example:
 	//

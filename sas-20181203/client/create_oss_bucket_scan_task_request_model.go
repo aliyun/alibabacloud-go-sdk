@@ -40,17 +40,17 @@ type CreateOssBucketScanTaskRequest struct {
 	//
 	// true
 	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
-	// The list of bucket names.
+	// The list of bucket names. The specified buckets must already exist in OSS and must have been synchronized to Security Center by calling the RefreshOssBucketScanInfo operation. You can call the ListOssBucket operation to obtain the list of managed buckets.
 	//
 	// This parameter is required.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of files to decompress. The minimum value is 1 and the maximum value is 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+	// The maximum number of files to decompress. The minimum value is 1 and the maximum value is 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression layers when multiple levels of compressed packages are nested. The minimum value is 1 and the maximum value is 5. When the maximum number of decompression layers is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+	// The maximum number of decompression layers when multiple levels of nested compressed files exist. The minimum value is 1 and the maximum value is 5. When the maximum number of decompression layers is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
@@ -58,23 +58,23 @@ type CreateOssBucketScanTaskRequest struct {
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
 	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// The list of file suffixes to exclude from detection.
+	// The list of file suffixes to exclude from scanning.
 	ExcludeKeySuffixList []*string `json:"ExcludeKeySuffixList,omitempty" xml:"ExcludeKeySuffixList,omitempty" type:"Repeated"`
 	// The prefix list of files.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
 	// The list of file suffixes.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// Specifies that only files whose last modification time is after the specified timestamp are detected. Unit: milliseconds.
+	// Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1724301769834
 	LastModifiedStartTime *int64 `json:"LastModifiedStartTime,omitempty" xml:"LastModifiedStartTime,omitempty"`
-	// The detection mode. Valid values:
+	// The scan mode. Valid values:
 	//
-	// - **1**: Full file detection.
+	// - **1**: Full file scan.
 	//
-	// - **2**: Incremental file detection.
+	// - **2**: Incremental file scan.
 	//
 	// This parameter is required.
 	//
@@ -84,9 +84,9 @@ type CreateOssBucketScanTaskRequest struct {
 	ScanMode *int32 `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
 	// The business source. Valid values:
 	//
-	// - **OSS**: OSS
+	// - **OSS**: OSS.
 	//
-	// - **NAS**: NAS
+	// - **NAS**: NAS.
 	//
 	// example:
 	//

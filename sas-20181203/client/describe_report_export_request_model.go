@@ -20,7 +20,7 @@ type iDescribeReportExportRequest interface {
 type DescribeReportExportRequest struct {
 	// The ID of the export task.
 	//
-	// > Call [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain this parameter.
+	// > You can call [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,15 +30,18 @@ type DescribeReportExportRequest struct {
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
 	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
 	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	//
+	// > You can call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeReportExportRequest) String() string {

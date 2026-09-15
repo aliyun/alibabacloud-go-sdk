@@ -22,19 +22,19 @@ type iUpdateHoneypotProbeBindResponseBody interface {
 }
 
 type UpdateHoneypotProbeBindResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Any other value indicates failure.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code of the response.
+	// The HTTP status code of the request.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The detailed error message.
+	// The detailed information about the error code.
 	//
 	// example:
 	//

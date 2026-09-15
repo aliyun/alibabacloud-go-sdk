@@ -26,7 +26,7 @@ type iModifyNoticeConfigRequest interface {
 }
 
 type ModifyNoticeConfigRequest struct {
-	// The notification configuration type. By default, notifications are sent through SMS, email, or internal message. Valid values:
+	// The notification configuration type. By default, notifications are sent by SMS, email, or internal message. Valid values:
 	//
 	// - **cms**: CloudMonitor push.
 	//
@@ -68,9 +68,9 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **sas_healthcheck**: Baseline check
 	//
-	// - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage exceeded
+	// - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage space exceeded
 	//
-	// - **yundun_sas_cloudsiem_log**: Threat analysis log excess notification
+	// - **yundun_sas_cloudsiem_log**: Cloud Threat Detection and Response (CTDR) log excess notification
 	//
 	// - **sas_suspicious**: Security alert
 	//
@@ -92,7 +92,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **yundun_sas_anti_virus_config**: Virus scan notification
 	//
-	// - **yundun_sas_log**: Log excess
+	// - **yundun_sas_log**: Log storage exceeded
 	//
 	// - **yundun_honeypot_alarm**: Cloud honeypot alerting
 	//
@@ -102,7 +102,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **yundun_soar_incident_update**: Updated security incident
 	//
-	// > **yundun_security_Weekreport*	- sends a weekly report to notify about unresolved vulnerabilities.
+	// > **yundun_security_Weekreport*	- is sent as a weekly report to notify you of unresolved vulnerabilities.
 	//
 	// ---
 	//
@@ -166,13 +166,13 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// #### When the BizType field is empty: valid values
 	//
-	// - **0**: No limit
+	// - **0**: No limit.
 	//
-	// - **1**: Notifications are sent only during 08:00-22:00
+	// - **1**: Notifications are sent only between 08:00 and 22:00.
 	//
 	// #### When the BizType field is `cms`: description
 	//
-	// Specifies the push frequency limit in seconds. The minimum value is **60**.
+	// Specifies the push frequency limit, in seconds. The minimum value is **60**.
 	//
 	// example:
 	//

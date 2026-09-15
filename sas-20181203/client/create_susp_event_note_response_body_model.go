@@ -46,11 +46,11 @@ type CreateSuspEventNoteResponseBody struct {
 	//
 	// 7E0618A9-D5EF-4220-9471-C42B5E92719F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of processing the alert event. Valid values:
+	// The result of the alert event processing. Valid values:
 	//
-	// - **true**: Succeeded.
+	// - **true**: The processing was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The processing failed.
 	//
 	// example:
 	//

@@ -44,67 +44,67 @@ type iListCheckItemWarningSummaryRequest interface {
 }
 
 type ListCheckItemWarningSummaryRequest struct {
-	// The name of the check item. Fuzzy match is supported.
+	// The fuzzy match for the check item name.
 	//
 	// example:
 	//
 	// password
 	CheckItemFuzzy *string `json:"CheckItemFuzzy,omitempty" xml:"CheckItemFuzzy,omitempty"`
-	// The risk level. Default value: null, which indicates that check items at all risk levels are queried.Valid values:
+	// The risk level. Default value: null, which indicates that all levels are queried. Valid values:
 	//
-	// 	- **high**
+	// - **high**: High.
 	//
-	// 	- **medium**
+	// - **medium**: Medium.
 	//
-	// 	- **low**
+	// - **low**: Low.
 	//
 	// example:
 	//
 	// medium
 	CheckLevel *string `json:"CheckLevel,omitempty" xml:"CheckLevel,omitempty"`
-	// The type of the check item.
+	// The check item category name.
 	//
 	// example:
 	//
 	// hc.check.type.attack_defense
 	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The risk status. Default value is null, meaning check items in all states are queried. Valid values:
+	// The risk status. Default value: null, which indicates that all statuses are queried. Valid values:
 	//
-	// 	- **1**: failed
+	// - **1**: Failed.
 	//
-	// 	- **3**: passed
+	// - **3**: Passed.
 	//
-	// 	- **6**: whitelisted
+	// - **6**: Whitelisted.
 	//
-	// 	- **8**: fixed
+	// - **8**: Fixed.
 	//
 	// example:
 	//
 	// 3
 	CheckWarningStatus *int32 `json:"CheckWarningStatus,omitempty" xml:"CheckWarningStatus,omitempty"`
-	// The list of risk levels. If the CheckWarningStatus parameter is specified, only it takes effect.
+	// The list of risk statuses. If both this parameter and CheckWarningStatus are specified, only CheckWarningStatus takes effect.
 	CheckWarningStatusList []*int32 `json:"CheckWarningStatusList,omitempty" xml:"CheckWarningStatusList,omitempty" type:"Repeated"`
-	// The name of the field that is used to query containers.
+	// The container security query parameter name.
 	//
 	// example:
 	//
 	// clusterId
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// The value of the field that is used to query containers.
+	// The container security query parameter value.
 	//
 	// example:
 	//
 	// c471f0f61b9c04f8380556e922cf1****
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates that query results are displayed starting from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the asset group.
+	// The ID of the asset group to query.
 	//
-	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
+	// > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -112,55 +112,55 @@ type ListCheckItemWarningSummaryRequest struct {
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	// The maximum number of entries per page when paging. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned per page.
 	//
-	// > We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The Alibaba Cloud account ID of the member in the resource directory.
+	// The ID of the member accounts in the resource directory (Alibaba Cloud account).
 	//
-	// >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The type of the baseline.
+	// The baseline category name.
 	//
 	// example:
 	//
 	// weak_password
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
-	// The data source. Default value: **default**. Valid value:
+	// The data source. Default value: **default**. Valid values:
 	//
-	// 	- **agentless**: The check items of baselines for agentless detection.
+	// - **agentless**: agentless detection.
 	//
-	// 	- **default**: The check items of baselines for hosts.
+	// - **default**: host baseline.
 	//
 	// example:
 	//
 	// agentless
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Start of time range for filtering alerts, effective only for querying historically handled alerts.
+	// The start time for filtering alerts. This parameter takes effect only when you query historical processed alerts. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1732793158366
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The UUIDs of the servers.
+	// The list of server UUIDs to query.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of the servers.
+	// > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain the UUID of a server.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 

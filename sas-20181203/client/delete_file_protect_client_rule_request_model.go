@@ -28,13 +28,13 @@ type iDeleteFileProtectClientRuleRequest interface {
 type DeleteFileProtectClientRuleRequest struct {
 	// The alert notification level. Valid values:
 	//
-	// - 0: no alert
+	// - 0: No alerts.
 	//
-	// - 1: reminder
+	// - 1: Reminder.
 	//
-	// - 2: suspicious
+	// - 2: Suspicious.
 	//
-	// - 3: high-risk.
+	// - 3: High-risk.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteFileProtectClientRuleRequest struct {
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
 	// The type of the operating system. Valid values:
 	//
-	// - **windows**: Windows
+	// - **windows**: Windows.
 	//
 	// - **linux**: Linux.
 	//
@@ -54,7 +54,7 @@ type DeleteFileProtectClientRuleRequest struct {
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The action to take when the rule is triggered. Valid values:
+	// The action of the policy. Valid values:
 	//
 	// - **monitor**: Alert.
 	//
@@ -72,7 +72,7 @@ type DeleteFileProtectClientRuleRequest struct {
 	//
 	// text-001
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Specifies whether to select all rules.
+	// Specifies whether to select all.
 	//
 	// This parameter is required.
 	//

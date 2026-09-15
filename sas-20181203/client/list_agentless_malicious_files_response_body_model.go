@@ -98,7 +98,7 @@ type ListAgentlessMaliciousFilesResponseBodyList struct {
 	//
 	// /root/etc/g****
 	FilePath *int64 `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The timestamp of the first scan, in milliseconds.
+	// The timestamp of the first scan. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type ListAgentlessMaliciousFilesResponseBodyList struct {
 	//
 	// 172.25.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp of the latest scan, in milliseconds.
+	// The timestamp of the latest scan. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type ListAgentlessMaliciousFilesResponseBodyList struct {
 	//
 	// - suspicious: suspicious
 	//
-	// - remind: reminder.
+	// - remind: reminder
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type ListAgentlessMaliciousFilesResponseBodyList struct {
 	//
 	// addWhitelist.USER.Success
 	OperateResult *string `json:"OperateResult,omitempty" xml:"OperateResult,omitempty"`
-	// The timestamp when the alert was handled, in milliseconds.
+	// The timestamp when the alert was handled. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type ListAgentlessMaliciousFilesResponseBodyList struct {
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The object type of the scan target. Valid values:
 	//
-	// - 2: image.
+	// - 2: image
 	//
 	// example:
 	//
@@ -534,7 +534,7 @@ type ListAgentlessMaliciousFilesResponseBodyListNotes struct {
 	//
 	// 50****
 	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	// The time of the remark record.
+	// The time of the remark record. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -582,7 +582,7 @@ func (s *ListAgentlessMaliciousFilesResponseBodyListNotes) Validate() error {
 }
 
 type ListAgentlessMaliciousFilesResponseBodyPageInfo struct {
-	// The number of malicious file entries displayed on the current page in a paging query.
+	// The number of malicious files displayed on the current page in a paged query.
 	//
 	// example:
 	//
@@ -594,7 +594,7 @@ type ListAgentlessMaliciousFilesResponseBodyPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries returned per page in a paging query.
+	// The maximum number of entries to return per page in a paged query.
 	//
 	// example:
 	//

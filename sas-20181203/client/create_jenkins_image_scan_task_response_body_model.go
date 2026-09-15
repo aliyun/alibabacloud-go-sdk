@@ -16,7 +16,7 @@ type iCreateJenkinsImageScanTaskResponseBody interface {
 }
 
 type CreateJenkinsImageScanTaskResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *CreateJenkinsImageScanTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,31 +62,31 @@ func (s *CreateJenkinsImageScanTaskResponseBody) Validate() error {
 }
 
 type CreateJenkinsImageScanTaskResponseBodyData struct {
-	// The quota for image scan.
+	// The number of scan authorizations.
 	//
 	// example:
 	//
 	// 100
 	ImageScanCapacity *int64 `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	// The ID of the image repository.
+	// The repository ID.
 	//
 	// example:
 	//
 	// crr-upze3gcopm9c****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The instance ID of the image repository.
+	// The repository instance ID.
 	//
 	// example:
 	//
 	// cri-0gkaatghnmnt****
 	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The ID of the scan task.
+	// The scan node ID.
 	//
 	// example:
 	//

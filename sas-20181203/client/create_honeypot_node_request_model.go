@@ -20,17 +20,17 @@ type iCreateHoneypotNodeRequest interface {
 }
 
 type CreateHoneypotNodeRequest struct {
-	// Specifies whether to allow honeypots to access the Internet. Valid values:
+	// Specifies whether to allow the honeypot to access the Internet. Valid values:
 	//
-	// 	- **true**: allows honeypots to access the Internet.
+	// - **true**: Allowed.
 	//
-	// 	- **false**: does not allow honeypots to access the Internet.
+	// - **false**: Not allowed.
 	//
 	// example:
 	//
 	// true
 	AllowHoneypotAccessInternet *bool `json:"AllowHoneypotAccessInternet,omitempty" xml:"AllowHoneypotAccessInternet,omitempty"`
-	// The number of available probes.
+	// The number of available probes. This parameter is required. If this parameter is not specified, the API returns InvalidParam (400). The minimum value is 20. If the value is less than 20, the API returns InvalidProbeNum (400).
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateHoneypotNodeRequest struct {
 	//
 	// manageNode
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The CIDR blocks that are allowed to access the management node.
+	// The list of allowed CIDR blocks. This parameter is required. At least one allowed CIDR block must be specified (such as 0.0.0.0/0). If this parameter is not specified, the API returns InvalidParam (400).
 	SecurityGroupProbeIpList []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
 }
 

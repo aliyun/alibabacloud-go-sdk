@@ -18,7 +18,7 @@ type iCreateContainerScanTaskByAppNameResponseBody interface {
 }
 
 type CreateContainerScanTaskByAppNameResponseBody struct {
-	// The data returned if the request was successful.
+	// The data returned when the call is successful.
 	Data *CreateContainerScanTaskByAppNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -26,7 +26,7 @@ type CreateContainerScanTaskByAppNameResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -79,47 +79,47 @@ func (s *CreateContainerScanTaskByAppNameResponseBody) Validate() error {
 }
 
 type CreateContainerScanTaskByAppNameResponseBodyData struct {
-	// Indicates whether you can create more scan tasks. Valid values:
+	// Indicates whether more scan tasks can be created. Valid values:
 	//
-	// 	- **true**
+	// - **true**: More scan tasks can be created.
 	//
-	// 	- **false**
+	// - **false**: No more scan tasks can be created.
 	//
 	// example:
 	//
 	// true
 	CanCreate *bool `json:"CanCreate,omitempty" xml:"CanCreate,omitempty"`
-	// The timestamp generated when the image information was collected. Unit: milliseconds.
+	// The timestamp when image information was collected, in milliseconds.
 	//
 	// example:
 	//
 	// 1644286364150
 	CollectTime *int64 `json:"CollectTime,omitempty" xml:"CollectTime,omitempty"`
-	// The timestamp generated when the scan task started. Unit: milliseconds.
+	// The timestamp when the scan task started running, in milliseconds.
 	//
 	// example:
 	//
 	// 1644286364150
 	ExecTime *int64 `json:"ExecTime,omitempty" xml:"ExecTime,omitempty"`
-	// The number of container applications that are scanned.
+	// The number of containers that have been scanned.
 	//
 	// example:
 	//
 	// 5
 	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	// The progress of the scan task in percentage.
+	// The progress percentage of the scan task.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The result of the scan task. Valid values:
+	// The execution result of the scan task. Valid values:
 	//
-	// 	- **SUCCESS**: The task is successful.
+	// - **SUCCESS**: The scan task was executed successfully.
 	//
-	// 	- **TASK_NOT_SUPPORT_REGION**: The task is not supported in the region where the image is deployed.
+	// - **TASK_NOT_SUPPORT_REGION**: The image is in a region that does not support scanning.
 	//
-	// >
+	// > For the regions that support image security scanning, refer to the table of supported regions after the response parameters table in this document.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ type CreateContainerScanTaskByAppNameResponseBodyData struct {
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The status of the scan task. Valid values:
 	//
-	// 	- **INIT**: The task is being initialized.
+	// - **INIT**: Initializing.
 	//
-	// 	- **PRE_ANALYZER**: The task is being pre-processed.
+	// - **PRE_ANALYZER**: Pre-analyzing.
 	//
-	// 	- **SUCCESS**: The task succeeds.
+	// - **SUCCESS**: Execution succeeded.
 	//
-	// 	- **FAIL**: The task fails.
+	// - **FAIL**: Execution failed.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type CreateContainerScanTaskByAppNameResponseBodyData struct {
 	//
 	// fc98d58eb56f699d49bf7ebbd6d7****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The total number of container applications that you want to scan.
+	// The total number of containers to scan.
 	//
 	// example:
 	//

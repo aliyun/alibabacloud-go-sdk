@@ -38,93 +38,89 @@ type iUpdateFileProtectEventStatusRequest interface {
 }
 
 type UpdateFileProtectEventStatusRequest struct {
-	// The severities of alerts.
+	// The list of alert notification levels.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	// The end of the time range to query. Unit: milliseconds.
+	// The end timestamp of the query.
 	//
 	// example:
 	//
 	// 1649040221
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IDs of the events.
+	// The list of event IDs.
 	Id []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
-	// The instance ID of the asset.
+	// The ID of the asset instance.
 	//
 	// example:
 	//
 	// i-bp1g6wxdwps7s9dz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the server.
+	// The name of the asset instance.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public IP address of the server.
+	// The public IP address.
 	//
 	// example:
 	//
 	// 120.27.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the server.
+	// The internal IP address.
 	//
 	// example:
 	//
 	// 172.26.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// Type of operation on a file. eg:
+	// The type of operation performed on the file. Valid values:
 	//
-	// - **DELETE**: delete the file.
+	// - **DELETE**: Deletes a file.
 	//
-	// - **WRITE**: write the file.
+	// - **WRITE**: Writes to a file.
 	//
-	// - **READ**: read the file.
+	// - **READ**: Reads a file.
 	//
-	// - **RENAME**: rename the file.
+	// - **RENAME**: Renames a file.
 	//
-	// - **CHOWN**: set the file owner and file association group operations.
+	// - **CHOWN**: Changes the file owner and associated file group.
 	//
 	// example:
 	//
 	// READ
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The name of the defense rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// tetsRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Whether to choose all fields across industries.
+	// Specifies whether to select all items across pages. Valid values:
 	//
-	// - **true**: yes
+	// - **true**: Selected.
 	//
-	// - **false**: no
-	//
-	// example:
-	//
-	// true
+	// - **false**: Not selected.
 	SelectAllAcrossPages *bool `json:"SelectAllAcrossPages,omitempty" xml:"SelectAllAcrossPages,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The start timestamp of the query.
 	//
 	// example:
 	//
 	// 1680919232000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The handling status of the event. Valid values:
+	// The event handling status.
 	//
-	// 	- **0**: unhandled
+	// - **0**: Unhandled
 	//
-	// 	- **1**: handled
+	// - **1**: Manually handled
 	//
-	// 	- **2**: added to the whitelist
+	// - **2**: Added to whitelist
+	//
+	// - **3**: Ignored
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The UUID of the server.
-	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
 	//
 	// example:
 	//

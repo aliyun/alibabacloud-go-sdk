@@ -22,21 +22,21 @@ type iDescribeEventLevelCountResponseBody interface {
 }
 
 type DescribeEventLevelCountResponseBody struct {
-	// The status code returned. The status code **200*	- indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+	// The response code. The value **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The statistics of alerts by risk level.
+	// The statistics of security alerts by severity level.
 	EventLevels *DescribeEventLevelCountResponseBodyEventLevels `json:"EventLevels,omitempty" xml:"EventLevels,omitempty" type:"Struct"`
-	// The error message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeEventLevelCountResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *DescribeEventLevelCountResponseBody) Validate() error {
 }
 
 type DescribeEventLevelCountResponseBodyEventLevels struct {
-	// The number of alerts whose Emergency level is Reminder.
+	// The number of security alerts with the Reminder severity level.
 	//
 	// example:
 	//
 	// 2
 	Remind *int32 `json:"Remind,omitempty" xml:"Remind,omitempty"`
-	// The number of alerts whose Emergency level is Urgent.
+	// The number of security alerts with the Urgent severity level.
 	//
 	// example:
 	//
 	// 0
 	Serious *int32 `json:"Serious,omitempty" xml:"Serious,omitempty"`
-	// The number of alerts whose Emergency level is Suspicious.
+	// The number of security alerts with the Suspicious severity level.
 	//
 	// example:
 	//

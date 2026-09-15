@@ -24,25 +24,25 @@ type iDescribeSuspEventsResponseBody interface {
 }
 
 type DescribeSuspEventsResponseBody struct {
-	// The number of entries on the current page in a paging query.
+	// The number of entries returned on the current page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page in a paging query.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeSuspEventsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The security alert information.
 	SuspEvents []*DescribeSuspEventsResponseBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
-	// The total number of security alerts.
+	// The total number of alert events.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *DescribeSuspEventsResponseBody) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodySuspEvents struct {
-	// Indicates whether this is an offline analysis alert.
+	// Indicates whether the alert is from offline analysis.
 	//
 	// example:
 	//
 	// true
 	Advanced *bool `json:"Advanced,omitempty" xml:"Advanced,omitempty"`
-	// The name of the security alert.
+	// The name of the alert event.
 	//
 	// example:
 	//
 	// login_common_location
 	AlarmEventName *string `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
-	// The alert name.
+	// The display name of the alert.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// 8df914418f****
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	// The name of the application to which the security alert belongs.
+	// The name of the application to which the alert event belongs.
 	//
 	// example:
 	//
@@ -192,7 +192,11 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// true
 	CanBeDealOnLine *bool `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	// Indicates whether the false positive mark can be unmarked. Valid values:
+	// Indicates whether the false positive marking can be unmarked. Valid values:
+	//
+	// - **true**: Can be unmarked.
+	//
+	// - **false**: Cannot be unmarked.
 	//
 	// example:
 	//
@@ -232,17 +236,19 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// aegis_suspicious_****
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	// The download URL of the file deep analysis report.
+	// The download URL of the deep file analysis report.
+	//
+	// > Deep file analysis is triggered only for machines that have the AgenticEDR feature enabled.
 	DeepAnalyzeReportUrl *string `json:"DeepAnalyzeReportUrl,omitempty" xml:"DeepAnalyzeReportUrl,omitempty"`
-	// The description of the impact of the security alert.
+	// The description of the impact of the alert event.
 	//
 	// example:
 	//
 	// webshell
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The details of the security alert.
+	// The details of the alert event.
 	Details []*DescribeSuspEventsResponseBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The discovery source. This parameter is invalid.
+	// The discovery source. This is an invalid field.
 	//
 	// example:
 	//
@@ -250,25 +256,49 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
 	// Indicates whether cloud sandbox detection is supported. Valid values:
 	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
 	// example:
 	//
 	// true
 	DisplaySandboxResult *bool `json:"DisplaySandboxResult,omitempty" xml:"DisplaySandboxResult,omitempty"`
-	// The remarks of the security alert.
+	// The notes of the alert event.
 	EventNotes []*DescribeSuspEventsResponseBodySuspEventsEventNotes `json:"EventNotes,omitempty" xml:"EventNotes,omitempty" type:"Repeated"`
-	// The status of the security alert. Valid values:
+	// The status of the alert event. Valid values:
+	//
+	// - **1**: PENDING.
+	//
+	// - **2**: IGNORE (ignored).
+	//
+	// - **4**: HANDLED (confirmed).
+	//
+	// - **8**: FAULT (marked as false positive).
+	//
+	// - **16**: DEALING (being handled).
+	//
+	// - **32**: DONE (handling completed).
+	//
+	// - **64**: EXPIRE (expired).
+	//
+	// - **604**: SYSTEM_FAULT (marked as false positive by the system).
 	//
 	// example:
 	//
 	// 8
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The subtype of the security alert.
+	// The subtype of the alert event.
 	//
 	// example:
 	//
 	// login_common_location
 	EventSubType *string `json:"EventSubType,omitempty" xml:"EventSubType,omitempty"`
-	// Indicates whether the security alert has tracing information. Valid values:
+	// Indicates whether the alert event has tracing information. Valid values:
+	//
+	// - **true**: Has tracing information.
+	//
+	// - **false**: Does not have tracing information.
 	//
 	// example:
 	//
@@ -280,13 +310,13 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The image UUID.
+	// The UUID of the image.
 	//
 	// example:
 	//
 	// 70489fb520cea585ad9761d5a842****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The ID of the asset instance affected by the security alert.
+	// The ID of the asset instance affected by the alert event.
 	//
 	// example:
 	//
@@ -310,7 +340,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// 100.100.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The Kubernetes cluster ID.
+	// The ID of the Kubernetes cluster.
 	//
 	// example:
 	//
@@ -328,25 +358,25 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// default
 	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	// The Kubernetes node ID.
+	// The ID of the Kubernetes node.
 	//
 	// example:
 	//
 	// i-bp14a1ay8e0aa9t0****
 	K8sNodeId *string `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
-	// The Kubernetes node name.
+	// The name of the Kubernetes node.
 	//
 	// example:
 	//
 	// N/A
 	K8sNodeName *string `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
-	// The Kubernetes pod name.
+	// The name of the Kubernetes pod.
 	//
 	// example:
 	//
 	// myapp-pod
 	K8sPodName *string `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
-	// Indicates whether large model analysis tags are supported. Valid values:
+	// Indicates whether large model analysis tagging is supported. Valid values:
 	//
 	// - **true**: Supported.
 	//
@@ -356,7 +386,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// true
 	LargeModel *bool `json:"LargeModel,omitempty" xml:"LargeModel,omitempty"`
-	// The most recent time when the security alert occurred.
+	// The most recent time when the alert event occurred. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -368,13 +398,13 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// 1631699497000
 	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	// The risk level of the alert event. Valid values:
+	// The severity level of the alert event. Valid values:
 	//
-	// - **serious**: critical
+	// - **serious**: Critical.
 	//
-	// - **suspicious**: suspicious
+	// - **suspicious**: Suspicious.
 	//
-	// - **remind**: reminder
+	// - **remind**: Reminder.
 	//
 	// example:
 	//
@@ -382,11 +412,15 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The status of the malicious behavior defense rule. Valid values:
 	//
+	// - **open**: Enabled.
+	//
+	// - **close**: Disabled.
+	//
 	// example:
 	//
 	// open
 	MaliciousRuleStatus *string `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
-	// The collection of security alert tags.
+	// The collection of alert event tags.
 	MarkList []*string `json:"MarkList,omitempty" xml:"MarkList,omitempty" type:"Repeated"`
 	// The advanced whitelisting rules.
 	//
@@ -394,13 +428,13 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// <strong>1.</strong>&nbsp&nbsppath&nbsp&nbspcontain&nbsp&nbsp232&nbsp&nbsp
 	MarkMisRules *string `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
-	// The full name of the security alert.
+	// The full name of the alert event.
 	//
 	// example:
 	//
 	// Unusual Logon-Login with unusual location
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the security alert first occurred.
+	// The time when the alert event first occurred. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -412,31 +446,35 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// 1631699497000
 	OccurrenceTimeStamp *int64 `json:"OccurrenceTimeStamp,omitempty" xml:"OccurrenceTimeStamp,omitempty"`
-	// The error code of the security alert operation.
+	// The error code of the alert event operation.
 	//
 	// example:
 	//
 	// kill_and_quara.Success
 	OperateErrorCode *string `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	// The remarks of the security alert operation.
+	// The remarks of the alert event operation.
 	//
 	// example:
 	//
 	// success
 	OperateMsg *string `json:"OperateMsg,omitempty" xml:"OperateMsg,omitempty"`
-	// The timestamp of the security alert operation, in milliseconds.
+	// The timestamp of the alert event operation, in milliseconds.
 	//
 	// example:
 	//
 	// 1631699497000
 	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	// The product edition that supports the detection of this security alert. Valid values:
+	// The product edition that supports the alert event detection. Valid values:
+	//
+	// - **0**: Basic edition.
+	//
+	// - **1**: Enterprise edition.
 	//
 	// example:
 	//
 	// 1
 	SaleVersion *string `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	// The IDs of the security alerts associated with this security alert.
+	// The IDs of the alert events associated with this alert event.
 	//
 	// example:
 	//
@@ -448,25 +486,25 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	//
 	// 196072141348****
 	SourceAliUid *int64 `json:"SourceAliUid,omitempty" xml:"SourceAliUid,omitempty"`
-	// The attack stage.
+	// The attack stages.
 	//
 	// example:
 	//
 	// "["authority_maintenance"]"
 	Stages *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	// The operation types supported by the alert. Valid values:
+	// The operation type supported by the alert. Valid values:
 	//
-	// - **AI.false_positive**: suspected false positive.
+	// - **AI.false_positive**: Suspected false positive.
 	//
-	// - **AI.real_attack**: real attack.
+	// - **AI.real_attack**: Real attack.
 	//
-	// - **AI.Insufficient_information_to_evaluate**: unable to determine.
+	// - **AI.Insufficient_information_to_evaluate**: Unable to determine.
 	//
 	// example:
 	//
 	// AI.real_attack
 	SupportOperateCode *string `json:"SupportOperateCode,omitempty" xml:"SupportOperateCode,omitempty"`
-	// The display name of the attack stage.
+	// The display names of the attack stages.
 	TacticItems []*DescribeSuspEventsResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
 	// The unique key of the security alert.
 	//
@@ -1050,7 +1088,7 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodySuspEventsDetails struct {
-	// The display name of the security alert.
+	// The display name of the alert event.
 	//
 	// example:
 	//
@@ -1062,13 +1100,13 @@ type DescribeSuspEventsResponseBodySuspEventsDetails struct {
 	//
 	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The path where the security alert occurred.
+	// The path where the alert event occurred.
 	//
 	// example:
 	//
 	// /etc/crontab
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The path where the security alert occurred.
+	// The path where the alert event occurred.
 	//
 	// example:
 	//
@@ -1125,7 +1163,7 @@ func (s *DescribeSuspEventsResponseBodySuspEventsDetails) Validate() error {
 }
 
 type DescribeSuspEventsResponseBodySuspEventsEventNotes struct {
-	// The remark information.
+	// The note information.
 	//
 	// example:
 	//
@@ -1137,7 +1175,7 @@ type DescribeSuspEventsResponseBodySuspEventsEventNotes struct {
 	//
 	// 123
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	// The event record time.
+	// The event record time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

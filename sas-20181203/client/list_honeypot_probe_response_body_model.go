@@ -26,7 +26,7 @@ type iListHoneypotProbeResponseBody interface {
 }
 
 type ListHoneypotProbeResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of a failure.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type ListHoneypotProbeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The call failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ func (s *ListHoneypotProbeResponseBody) Validate() error {
 type ListHoneypotProbeResponseBodyList struct {
 	// The management node data.
 	ControlNode *ListHoneypotProbeResponseBodyListControlNode `json:"ControlNode,omitempty" xml:"ControlNode,omitempty" type:"Struct"`
-	// The deployment time.
+	// The deployment time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type ListHoneypotProbeResponseBodyList struct {
 	//
 	// prod-pinpoint-hd1b
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The local IP address bound to the probe.
+	// The local address bound to the probe.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type ListHoneypotProbeResponseBodyList struct {
 	//
 	// - **host_probe**: host probe
 	//
-	// - **vpc_black_hole_probe**: VPC blackhole probe.
+	// - **vpc_black_hole_probe**: VPC blackhole probe
 	//
 	// example:
 	//
@@ -234,13 +234,13 @@ type ListHoneypotProbeResponseBodyList struct {
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The UUID of the asset instance where the host probe is deployed.
+	// The UUID of the asset instance where the host probe resides.
 	//
 	// example:
 	//
 	// 49e25e0f-bb51-4a5a-a1b3-13a4ddaa****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The ID of the VPC-connected instance where the VPC probe is deployed.
+	// The ID of the VPC-connected instance where the VPC probe resides.
 	//
 	// example:
 	//
@@ -425,19 +425,19 @@ func (s *ListHoneypotProbeResponseBodyListControlNode) Validate() error {
 }
 
 type ListHoneypotProbeResponseBodyPageInfo struct {
-	// The number of honeypot probes displayed on the current page.
+	// The number of honeypot probes on the current page.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The current page number returned in the paged query during paging.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of honeypot probes displayed per page in the paged query during paging. Default value: **20**.
+	// The number of honeypot probes per page in a paged query. Default value: **20**, which indicates that 20 honeypot probes are displayed per page.
 	//
 	// example:
 	//

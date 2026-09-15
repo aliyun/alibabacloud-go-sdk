@@ -20,12 +20,15 @@ type iDescribeVulCheckTaskStatusDetailRequest interface {
 }
 
 type DescribeVulCheckTaskStatusDetailRequest struct {
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The task IDs.
+	// The list of task IDs.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The types of the vulnerabilities that are detected by the tasks.
+	// The list of vulnerability types for the one-click scan.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	// The UUID of the server.
+	// The UUID of the server to query.
 	//
 	// example:
 	//

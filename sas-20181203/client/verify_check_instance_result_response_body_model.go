@@ -18,7 +18,7 @@ type iVerifyCheckInstanceResultResponseBody interface {
 type VerifyCheckInstanceResultResponseBody struct {
 	// The returned data.
 	Data *VerifyCheckInstanceResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type VerifyCheckInstanceResultResponseBodyData struct {
 	FailInstances []*string `json:"FailInstances,omitempty" xml:"FailInstances,omitempty" type:"Repeated"`
 	// The operation code of the cloud service configuration check task. Valid values:
 	//
-	// - **Throttling**: rate limit.
+	// - **Throttling**: Rate limited.
 	//
-	// - **ActionTrialUnauthorized**: unauthorized error.
+	// - **ActionTrialUnauthorized**: Unauthorized error.
 	//
 	// example:
 	//

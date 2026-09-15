@@ -18,7 +18,7 @@ type iCreateContainerScanTaskByAppNameRequest interface {
 }
 
 type CreateContainerScanTaskByAppNameRequest struct {
-	// The name of the container application.
+	// The container application name.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type CreateContainerScanTaskByAppNameRequest struct {
 	//
 	// cfb7a55a81f7246b5ac18845ea79a****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The language of the content within the request and response.
+	// The language type of the request and response.
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

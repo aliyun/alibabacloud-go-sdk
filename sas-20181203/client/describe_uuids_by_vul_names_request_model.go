@@ -44,23 +44,23 @@ type iDescribeUuidsByVulNamesRequest interface {
 }
 
 type DescribeUuidsByVulNamesRequest struct {
-	// Specifies whether the vulnerability has been handled. Valid values:
+	// Specifies whether the vulnerability is handled. Valid values:
 	//
-	// - **y**: handled
+	// - **y**: Handled.
 	//
-	// - **n**: not handled.
+	// - **n**: Not handled.
 	//
 	// example:
 	//
 	// n
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	// The container search field name.
+	// The name of the container search field.
 	//
 	// example:
 	//
 	// namespace
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The container search field value.
+	// The value of the container search field.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeUuidsByVulNamesRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -84,23 +84,23 @@ type DescribeUuidsByVulNamesRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The vulnerability level. Separate multiple levels with commas (,). Valid values:
 	//
-	// - **high**: high
+	// - **high**: High.
 	//
-	// - **medium**: medium
+	// - **medium**: Medium.
 	//
-	// - **low**: low.
+	// - **low**: Low.
 	//
 	// example:
 	//
 	// high,low
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The priority level of vulnerability fixing. Separate multiple levels with commas (,). Valid values:
+	// The priority level of the vulnerability fix. Separate multiple levels with commas (,). Valid values:
 	//
-	// - **asap**: high
+	// - **asap**: High.
 	//
-	// - **later**: medium
+	// - **later**: Medium.
 	//
-	// - **nntf**: low.
+	// - **nntf**: Low.
 	//
 	// example:
 	//
@@ -111,8 +111,11 @@ type DescribeUuidsByVulNamesRequest struct {
 	// example:
 	//
 	// 10.7.
-	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	//
+	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The tag for querying vulnerabilities.
 	//
 	// example:
@@ -121,9 +124,9 @@ type DescribeUuidsByVulNamesRequest struct {
 	SearchTags *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
 	// The fix status of the vulnerability. Separate multiple statuses with commas (,). Valid values:
 	//
-	// - **1**: unfixed
+	// - **1**: Unfixed.
 	//
-	// - **2**: fix failed.
+	// - **2**: Fix failed.
 	//
 	// example:
 	//
@@ -139,7 +142,7 @@ type DescribeUuidsByVulNamesRequest struct {
 	//
 	// - **containerId**: container ID
 	//
-	// - **uuid**: asset ID.
+	// - **uuid**: asset ID
 	//
 	// example:
 	//
@@ -149,7 +152,7 @@ type DescribeUuidsByVulNamesRequest struct {
 	//
 	// - **cve**: Linux software vulnerability
 	//
-	// - **sys**: Windows system vulnerability.
+	// - **sys**: Windows system vulnerability
 	//
 	// This parameter is required.
 	//

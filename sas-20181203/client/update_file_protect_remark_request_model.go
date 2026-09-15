@@ -40,57 +40,57 @@ type iUpdateFileProtectRemarkRequest interface {
 }
 
 type UpdateFileProtectRemarkRequest struct {
-	// Alert notification level list.
+	// The list of alert notification levels.
 	AlertLevels []*int32 `json:"AlertLevels,omitempty" xml:"AlertLevels,omitempty" type:"Repeated"`
-	// End time timestamp.
+	// The timestamp of the end time.
 	//
 	// example:
 	//
 	// 1649040221
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the event.
+	// The event ID.
 	//
 	// example:
 	//
 	// 1764
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Event ID list.
+	// The list of event IDs.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
-	// Asset instance ID.
+	// The ID of the asset instance.
 	//
 	// example:
 	//
 	// i-bp1g6wxdwps7s9dz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Asset instance name.
+	// The name of the asset instance.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Public IP.
+	// The public IP address.
 	//
 	// example:
 	//
 	// 101.132.XX.XX
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// Private IP.
+	// The internal IP address.
 	//
 	// example:
 	//
 	// 172.26.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// File operation type. Values:
+	// The type of operation performed on the file. Valid values:
 	//
-	// - **DELETE**: File deletion operation.
+	// - **DELETE**: Delete the file.
 	//
-	// - **WRITE**: File write operation.
+	// - **WRITE**: Write to the file.
 	//
-	// - **READ**: File read operation.
+	// - **READ**: Read the file.
 	//
-	// - **RENAME**: File rename operation.
+	// - **RENAME**: Rename the file.
 	//
-	// - **CHOWN**: Set file owner and associated group operation.
+	// - **CHOWN**: Change the file owner and file group.
 	//
 	// example:
 	//
@@ -98,29 +98,29 @@ type UpdateFileProtectRemarkRequest struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The remarks.
 	Remark []*string `json:"Remark,omitempty" xml:"Remark,omitempty" type:"Repeated"`
-	// Rule name.
+	// The rule name.
 	//
 	// example:
 	//
 	// test-rule-1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Cross-page select all indicator. Values:
+	// Specifies whether to select all items across pages. Valid values:
 	//
-	// - **true**: Yes
+	// - **true**: Yes.
 	//
-	// - **false**: No
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	SelectAllAcrossPages *bool `json:"SelectAllAcrossPages,omitempty" xml:"SelectAllAcrossPages,omitempty"`
-	// Start time timestamp.
+	// The timestamp of the start time.
 	//
 	// example:
 	//
 	// 1651290987000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Server UUID.
+	// The UUID of the server.
 	//
 	// example:
 	//

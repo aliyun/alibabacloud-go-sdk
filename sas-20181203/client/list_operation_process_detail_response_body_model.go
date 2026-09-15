@@ -22,7 +22,7 @@ type ListOperationProcessDetailResponseBody struct {
 	PageInfo *ListOperationProcessDetailResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The list of operation subtask information.
 	ProcessDetails []*ListOperationProcessDetailResponseBodyProcessDetails `json:"ProcessDetails,omitempty" xml:"ProcessDetails,omitempty" type:"Repeated"`
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ListOperationProcessDetailResponseBodyPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type ListOperationProcessDetailResponseBodyProcessDetails struct {
 	AssetVendor *int32 `json:"AssetVendor,omitempty" xml:"AssetVendor,omitempty"`
 	// The list of check items associated with the operation subtask.
 	Checks []*ListOperationProcessDetailResponseBodyProcessDetailsChecks `json:"Checks,omitempty" xml:"Checks,omitempty" type:"Repeated"`
-	// The timestamp when the task was created, in milliseconds.
+	// The timestamp when the task was created. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -191,13 +191,13 @@ type ListOperationProcessDetailResponseBodyProcessDetails struct {
 	//
 	// fb4bcd41-a916-46bc-ab1a-65fd383be***
 	DetailTaskId *string `json:"DetailTaskId,omitempty" xml:"DetailTaskId,omitempty"`
-	// The timestamp when the operation subtask ended, in milliseconds.
+	// The timestamp when the operation subtask ended. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1706544199000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The timestamp when the operation subtask started, in milliseconds.
+	// The timestamp when the operation subtask started. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -205,15 +205,15 @@ type ListOperationProcessDetailResponseBodyProcessDetails struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The operation subtask status code. Valid values:
 	//
-	// - 0: not started.
+	// - 0: Not started.
 	//
-	// - 1: checking.
+	// - 1: Checking.
 	//
-	// - 2: succeeded.
+	// - 2: Succeeded.
 	//
-	// - 3: timed out.
+	// - 3: Timed out.
 	//
-	// - 4: failed.
+	// - 4: Failed.
 	//
 	// example:
 	//

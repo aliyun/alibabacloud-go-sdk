@@ -22,13 +22,13 @@ type iModifyEmgVulSubmitRequest interface {
 }
 
 type ModifyEmgVulSubmitRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type ModifyEmgVulSubmitRequest struct {
 	//
 	// scan:ASCV-2019-032401
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the member accounts in the resource directory (Alibaba Cloud account).
+	// The ID of the member account in the resource directory (Alibaba Cloud account).
 	//
-	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//

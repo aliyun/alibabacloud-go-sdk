@@ -22,9 +22,9 @@ type iCreateHoneypotRequest interface {
 }
 
 type CreateHoneypotRequest struct {
-	// The ID of the honeypot image.
+	// The honeypot image ID.
 	//
-	// > You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to query the IDs of images from the **HoneypotImageId*	- response parameter.
+	// > You can obtain this value from the **HoneypotImageId*	- field returned by the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type CreateHoneypotRequest struct {
 	//
 	// sha256:ebc4c102ac407d53733c2373e8888a733ddce86f163ccbe7492ae1cbf26****
 	HoneypotImageId *string `json:"HoneypotImageId,omitempty" xml:"HoneypotImageId,omitempty"`
-	// The name of the honeypot image.
+	// The honeypot image name.
 	//
-	// > You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to query the names of images from the **HoneypotImageName*	- response parameter.
+	// > You can obtain this value from the **HoneypotImageName*	- field returned by the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -50,39 +50,39 @@ type CreateHoneypotRequest struct {
 	//
 	// ruoyi
 	HoneypotName *string `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
-	// The custom configuration of the honeypot in the JSON format. The value contains the following fields:
+	// The custom configuration of the honeypot in JSON format. The following fields are included:
 	//
-	// 	- **trojan_git**: Git-specific Defense. Valid values:
+	// - **trojan_git**: The Git counter-intelligence method. Valid values:
 	//
-	//     	- **zip**: Git Source Code Package
+	//     -   **zip**: Git source code package.
 	//
-	//     	- **web**: Git Directory Leak
+	//     -  **web**: .git folder leak.
 	//
-	//     	- **close**: Disabled
+	//     -  **close**: Shutdown.
 	//
-	// 	- **trojan_git_addr**: Git Trojan Address.
+	// - **trojan_git_addr**: The Git counter-intelligence endpoint.
 	//
-	// 	- **trojan_git.zip**: Git Trojan.
+	// - **trojan_git.zip**: The Git counter-intelligence trojan package.
 	//
-	// 	- **burp**: Burp-specific Defense. Valid values:
+	// - **burp**: The Burp counter-intelligence method. Valid values:
 	//
-	//     	- **open**: Enable
+	//      - **open**: Enabled.
 	//
-	//     	- **close**: Disable
+	//     - **close**: Shutdown.
 	//
-	// 	- **portrait_option**: Source Tracing Configuration. Valid values:
+	// - **portrait_option**: The tracing configuration. Valid values:
 	//
-	//     	- **false**: Disable
+	//     - **false**: Shutdown.
 	//
-	//     	- **true**: Enable
+	//     - **true**: Enabled.
 	//
 	// example:
 	//
 	// {\\"trojan_git\\":\\"close\\",\\"burp\\":\\"close\\",\\"portrait_option\\":\\"false\\"}
 	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	// The ID of the management node.
+	// The ID of the honeypot management node.
 	//
-	// > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to query the IDs of management nodes.
+	// > Call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
 	//
 	// This parameter is required.
 	//

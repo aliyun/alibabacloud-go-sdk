@@ -18,9 +18,11 @@ type iAddCloudVendorTrialConfigRequest interface {
 }
 
 type AddCloudVendorTrialConfigRequest struct {
-	// The AccessKey ID.
+	// The unique ID of the AccessKey pair.
 	//
-	// >  [](#-describecloudvendoraccountaklist--authid)You can call the [DescribeCloudVendorAccountAKList](~~DescribeCloudVendorAccountAKList~~) operation to query the AccessKey ID.
+	// > You can call [DescribeCloudVendorAccountAKList](~~DescribeCloudVendorAccountAKList~~) to obtain the AuthId.
+	//
+	// > -
 	//
 	// This parameter is required.
 	//
@@ -28,11 +30,11 @@ type AddCloudVendorTrialConfigRequest struct {
 	//
 	// 2363
 	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	// The configurations of the third-party cloud asset. Valid values:
+	// The multi-cloud configuration information:
 	//
-	// 	- *AWS*: Configure the sqsQueueName and sqsRegion parameters.
+	// - *AWS*: Input parameters sqsQueueName and sqsRegion.
 	//
-	// 	- *Tencent*: Configure the kafkaUserName, kafkaBootstrapServers, and kafkaTopic parameters.
+	// - *Tencent*: Input parameters kafkaUserName, kafkaBootstrapServers, and kafkaTopic.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +42,25 @@ type AddCloudVendorTrialConfigRequest struct {
 	//
 	// {\\"sqsRegion\\":\\"us-west-2\\",\\"sqsQueueName\\":\\"****\\"}
 	AuthInfo *string `json:"AuthInfo,omitempty" xml:"AuthInfo,omitempty"`
-	// The service provider of the cloud asset. Valid values:
+	// The cloud asset vendor. Valid values:
 	//
-	// 	- **Tencent**: Tencent Cloud.
+	// - **Tencent**: Tencent Cloud.
 	//
-	// 	- **AWS**: Amazon Web Services (AWS).
+	// - **HUAWEICLOUD**: Huawei Cloud.
+	//
+	// - **Azure**: Azure.
+	//
+	// - **AWS**: AWS.
+	//
+	// - **VOLCENGINE**: Volcengine.
+	//
+	// - **google**: Google Cloud.
+	//
+	// - **CHAITIN**: Chaitin Technology.
+	//
+	// - **FORTINET**: Fortinet.
+	//
+	// - **THREATBOOK**: ThreatBook.
 	//
 	// This parameter is required.
 	//

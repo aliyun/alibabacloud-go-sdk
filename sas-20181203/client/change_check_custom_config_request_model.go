@@ -22,25 +22,25 @@ type iChangeCheckCustomConfigRequest interface {
 type ChangeCheckCustomConfigRequest struct {
 	// The ID of the check item.
 	//
-	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of check items.
+	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the check item ID.
 	//
 	// example:
 	//
 	// 76
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The custom configuration items of the check item.
+	// The list of custom configuration items for the check item.
 	CustomConfigs []*ChangeCheckCustomConfigRequestCustomConfigs `json:"CustomConfigs,omitempty" xml:"CustomConfigs,omitempty" type:"Repeated"`
-	// The region where the Security Center instance is deployed. Valid values:
+	// The region of the Security Center instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: International
+	// - **cn-hangzhou:*	- China
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1:*	- Singapore
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parameters required for fixing risk items.
+	// The repair parameters supported by the repair feature of the check item.
 	RepairConfigs []*ChangeCheckCustomConfigRequestRepairConfigs `json:"RepairConfigs,omitempty" xml:"RepairConfigs,omitempty" type:"Repeated"`
 }
 
@@ -111,19 +111,19 @@ func (s *ChangeCheckCustomConfigRequest) Validate() error {
 }
 
 type ChangeCheckCustomConfigRequestCustomConfigs struct {
-	// The name of the custom configuration item. The name of a custom configuration item is unique in a check item.
+	// The name of the custom configuration item, which is unique within the check item.
 	//
 	// example:
 	//
 	// SessionTimeMax
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The operation that you want to perform on the custom configuration item. This parameter is required only if you want to delete the custom configuration item. To delete the custom configuration item, set the value to DELETE.
+	// The operation type of the custom configuration item. Set this parameter to DELETE only when deleting a configuration item. You do not need to specify this parameter for create or update operations.
 	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The value of the custom configuration item. The value is a string.
+	// The user-configured value string of the custom configuration item.
 	//
 	// example:
 	//
@@ -171,25 +171,25 @@ func (s *ChangeCheckCustomConfigRequestCustomConfigs) Validate() error {
 }
 
 type ChangeCheckCustomConfigRequestRepairConfigs struct {
-	// The ID of the fixing process.
+	// The ID of the repair flow used during the repair process.
 	//
 	// example:
 	//
 	// ascgrmscyjgs*********
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The name of the parameter required for fixing a risk item, which is unique in a check item.
+	// The name of the repair parameter, which is unique within the check item.
 	//
 	// example:
 	//
 	// Port
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The operation that you want to perform on the custom configuration item. This parameter is required only if you want to delete the custom configuration item. To delete the custom configuration item, set the value to DELETE.
+	// The operation type of the custom configuration item. Set this parameter to DELETE only when deleting a configuration item. You do not need to specify this parameter for create or update operations.
 	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The value of the parameter required for fixing a risk item. The value is a string.
+	// The user-configured value string of the repair configuration item.
 	//
 	// example:
 	//

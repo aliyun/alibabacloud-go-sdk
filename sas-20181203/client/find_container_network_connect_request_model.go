@@ -28,13 +28,13 @@ type iFindContainerNetworkConnectRequest interface {
 type FindContainerNetworkConnectRequest struct {
 	// The query type of the element to query. Valid values:
 	//
-	// - **EDGE**: connection information.
+	// - **EDGE**: connection information
 	//
 	// example:
 	//
 	// EDGE
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+	// The page number of the page to return in a paged query. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type FindContainerNetworkConnectRequest struct {
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The destination node information, which is used to filter destination nodes.
 	DstNode *FindContainerNetworkConnectRequestDstNode `json:"DstNode,omitempty" xml:"DstNode,omitempty" type:"Struct"`
-	// The end time of the network connectivity.
+	// The end time of the network connectivity. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type FindContainerNetworkConnectRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The source node information, which is used to filter source nodes.
 	SrcNode *FindContainerNetworkConnectRequestSrcNode `json:"SrcNode,omitempty" xml:"SrcNode,omitempty" type:"Struct"`
-	// The start time of the network connectivity.
+	// The start time of the network connectivity. Specify a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ type FindContainerNetworkConnectRequestDstNode struct {
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 	// The node type. Valid values:
 	//
-	// - **app**: application. The node type is application.
+	// - **app**: Application. The node type is application.
 	//
 	// example:
 	//
 	// app
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The name of the pod.
+	// The pod name.
 	//
 	// example:
 	//
@@ -281,13 +281,13 @@ type FindContainerNetworkConnectRequestSrcNode struct {
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
 	// The node type. Valid values:
 	//
-	// - **app**: application. The node type is application.
+	// - **app**: Application. The node type is application.
 	//
 	// example:
 	//
 	// app
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The name of the pod.
+	// The pod name.
 	//
 	// example:
 	//

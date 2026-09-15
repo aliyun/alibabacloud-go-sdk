@@ -32,7 +32,7 @@ type iListCheckInstanceResultRequest interface {
 }
 
 type ListCheckInstanceResultRequest struct {
-	// The ID of the check item.
+	// The check item ID.
 	//
 	// This parameter is required.
 	//
@@ -40,27 +40,27 @@ type ListCheckInstanceResultRequest struct {
 	//
 	// 23
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The number of the page to return.
+	// The page number of the current page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the instance.
+	// The instance ID of the check item.
 	//
 	// example:
 	//
 	// i-uf64w4q6p9jti5gl****
 	InstanceIdKey *string `json:"InstanceIdKey,omitempty" xml:"InstanceIdKey,omitempty"`
-	// The instance IDs of cloud services.
+	// The collection of cloud service instance IDs to query.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The name of the instance.
+	// The instance name of the check item.
 	//
 	// example:
 	//
 	// i-uf64w4q6p9jti5gl****
 	InstanceNameKey *string `json:"InstanceNameKey,omitempty" xml:"InstanceNameKey,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -70,7 +70,7 @@ type ListCheckInstanceResultRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The maximum number of entries per page in a paged query. Maximum value: 100. This parameter is used for paging.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type ListCheckInstanceResultRequest struct {
 	//
 	// cn-qingdao
 	RegionIdKey *string `json:"RegionIdKey,omitempty" xml:"RegionIdKey,omitempty"`
-	// The types of the conditions based on which the check items are sorted.
+	// The list of sort types for the check item.
 	SortTypes []*string `json:"SortTypes,omitempty" xml:"SortTypes,omitempty" type:"Repeated"`
-	// The statuses of check items.
+	// The collection of check item statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

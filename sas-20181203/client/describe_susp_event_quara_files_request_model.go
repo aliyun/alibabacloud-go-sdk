@@ -28,13 +28,13 @@ type iDescribeSuspEventQuaraFilesRequest interface {
 }
 
 type DescribeSuspEventQuaraFilesRequest struct {
-	// The number of the page to return.
+	// The page number of the file list to view.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the request source. Set the value to **sas**.
+	// The identifier of the request source. Set the value to **sas**.
 	//
 	// example:
 	//
@@ -48,43 +48,43 @@ type DescribeSuspEventQuaraFilesRequest struct {
 	//
 	// 10541428
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the server group to which the server belongs. The quarantined file is located on the server.
+	// The ID of the server group where the quarantined file is located.
 	//
 	// example:
 	//
 	// 11472451
 	GroupingId *int64 `json:"GroupingId,omitempty" xml:"GroupingId,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the quarantined file.
+	// The unique identifier of the quarantined file.
 	//
 	// example:
 	//
 	// a31337789f64d39b2219733ec99f9af7
 	QuaraTag *string `json:"QuaraTag,omitempty" xml:"QuaraTag,omitempty"`
-	// The source IP address of the request.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 59.82.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The status of the quarantined file that you want to query. Valid values:
+	// The status of the quarantined files to query. Valid values:
 	//
-	// 	- **quaraFailed**: The file fails to be quarantined.
+	// - **quaraFailed**: Quarantine failed.
 	//
-	// 	- **quaraDone**: The file is quarantined.
+	// - **quaraDone**: Quarantine succeeded.
 	//
-	// 	- **quaraing**: The file is being quarantined.
+	// - **quaraing**: Quarantine in progress.
 	//
-	// 	- **rollbackFailed**: The system fails to cancel quarantining the file.
+	// - **rollbackFailed**: Quarantine rollback failed.
 	//
-	// 	- **rollbackDone**: The system cancelled quarantining the file.
+	// - **rollbackDone**: Quarantine rollback succeeded.
 	//
-	// 	- **rollbacking**: The system is cancelling quarantining the file.
+	// - **rollbacking**: Quarantine rollback in progress.
 	//
 	// example:
 	//

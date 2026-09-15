@@ -28,78 +28,81 @@ type iDescribeEventLevelCountRequest interface {
 }
 
 type DescribeEventLevelCountRequest struct {
-	// The ID of the container cluster.
+	// The ID of the container cluster that you want to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// c7e3c5b420a7947c2933303144688****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The key of the condition that is used to query alert events on containers. Valid values:
+	// The container search field. Valid values:
 	//
-	// 	- **instanceId**: the ID of the asset
+	// - **instanceId**: instance ID
 	//
-	// 	- **appName**: the name of the application
+	// - **appName**: application name
 	//
-	// 	- **clusterId**: the ID of the cluster
+	// - **clusterId**: cluster ID
 	//
-	// 	- **regionId**: the ID of the region
+	// - **regionId**: region
 	//
-	// 	- **nodeName**: the name of the node
+	// - **nodeName**: node name
 	//
-	// 	- **namespace**: the namespace
+	// - **namespace**: namespace
 	//
-	// 	- **clusterName**: the name of the cluster
+	// - **clusterName**: cluster name
 	//
-	// 	- **image**: the name of the image
+	// - **image**: image name
 	//
-	// 	- **imageRepoName**: the name of the image repository
+	// - **imageRepoName**: image repository name
 	//
-	// 	- **imageRepoNamespace**: the namespace to which the image repository belongs
+	// - **imageRepoNamespace**: image repository namespace
 	//
-	// 	- **imageRepoTag**: the tag that is added to the image
+	// - **imageRepoTag**: image tag
 	//
-	// 	- **imageDigest**: the digest of the image
+	// - **imageDigest**: image digest
 	//
 	// example:
 	//
 	// clusterId
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// The value of the condition that is used to query alert events on containers. If you specify multiple values, separate them with commas (,).
+	// The value of the field that you want to query. Separate multiple values with commas (,).
 	//
 	// example:
 	//
 	// c951761046a9c4afe92be0a7b5bexxxxx
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The ID of the container.
+	// The container IDs.
 	//
 	// example:
 	//
 	// xxxxxx30389a10c28f6d38f2398f0dcexxxxxxx922b9e8290dc7c3019d4a8,48b87f2c0662e334820f436cb9133f1ae4e053d39b6fad42xxxxxxxxxx
 	ContainerIds *string `json:"ContainerIds,omitempty" xml:"ContainerIds,omitempty"`
-	// The ID of the request source. Set the value to **sas**.
+	// The source identifier of the request. Set this parameter to **sas**.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The type of the accounts that you want to query. Default value: **0**. Valid values:
+	// The multi-account query type. Default value: **0**. Valid values:
 	//
-	// 	- **0**: the current account.
+	// - **0**: Query data of the current account.
 	//
-	// 	- **1**: all accounts.
+	// - **1**: Query data of all accounts.
 	//
 	// example:
 	//
 	// 0
-	MultiAccountActionType     *int32 `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
+	MultiAccountActionType *int32 `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
+	//
+	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The type of the query condition. Valid values:
+	// The query type. Valid values:
 	//
-	// 	- **containerId**: the ID of the container
+	// - **containerId**: container ID
 	//
-	// 	- **uuid**: the UUID of the asset
+	// - **uuid**: asset ID
 	//
 	// example:
 	//
