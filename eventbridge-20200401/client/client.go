@@ -86,7 +86,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Queries data by using natural language.
+// Queries data using natural language.
 //
 // @param request - AskLumaRequest
 //
@@ -142,7 +142,7 @@ func (client *Client) AskLumaWithOptions(request *AskLumaRequest, runtime *dara.
 
 // Summary:
 //
-// Queries data by using natural language.
+// Queries data using natural language.
 //
 // @param request - AskLumaRequest
 //
@@ -1752,7 +1752,7 @@ func (client *Client) DeleteEventStreaming(request *DeleteEventStreamingRequest)
 
 // Summary:
 //
-// # Delete Namespace
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -1806,7 +1806,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 // Summary:
 //
-// # Delete Namespace
+// Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -3022,6 +3022,588 @@ func (client *Client) GetGenerateAgentDataSemanticsProgress(request *GetGenerate
 
 // Summary:
 //
+// Retrieves the details of a specified data catalog bound to a Luma Agent. You can only query data catalogs that are already bound to the Agent. A ResourceNotFound error is returned for unbound catalogs.
+//
+// Description:
+//
+// Retrieves the details of a specified data catalog bound to a Luma Agent. You can only query data catalogs that are already bound to the Agent. A ResourceNotFound error is returned for unbound catalogs.
+//
+// @param request - GetLumaCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLumaCatalogResponse
+func (client *Client) GetLumaCatalogWithOptions(request *GetLumaCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetLumaCatalogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLumaCatalog"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLumaCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified data catalog bound to a Luma Agent. You can only query data catalogs that are already bound to the Agent. A ResourceNotFound error is returned for unbound catalogs.
+//
+// Description:
+//
+// Retrieves the details of a specified data catalog bound to a Luma Agent. You can only query data catalogs that are already bound to the Agent. A ResourceNotFound error is returned for unbound catalogs.
+//
+// @param request - GetLumaCatalogRequest
+//
+// @return GetLumaCatalogResponse
+func (client *Client) GetLumaCatalog(request *GetLumaCatalogRequest) (_result *GetLumaCatalogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLumaCatalogResponse{}
+	_body, _err := client.GetLumaCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the full content of a specified text chunk from a knowledge base bound to a Luma Agent.
+//
+// Description:
+//
+// Retrieves the full content of a specified text chunk from a knowledge base bound to a Luma Agent.
+//
+// @param request - GetLumaChunkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLumaChunkResponse
+func (client *Client) GetLumaChunkWithOptions(request *GetLumaChunkRequest, runtime *dara.RuntimeOptions) (_result *GetLumaChunkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.ChunkSeq) {
+		body["ChunkSeq"] = request.ChunkSeq
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		body["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		body["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLumaChunk"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLumaChunkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the full content of a specified text chunk from a knowledge base bound to a Luma Agent.
+//
+// Description:
+//
+// Retrieves the full content of a specified text chunk from a knowledge base bound to a Luma Agent.
+//
+// @param request - GetLumaChunkRequest
+//
+// @return GetLumaChunkResponse
+func (client *Client) GetLumaChunk(request *GetLumaChunkRequest) (_result *GetLumaChunkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLumaChunkResponse{}
+	_body, _err := client.GetLumaChunkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified document in the knowledge base bound to a Luma Agent.
+//
+// Description:
+//
+// Retrieves the details of a specified document in the knowledge base bound to a Luma Agent.
+//
+// @param request - GetLumaDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLumaDocumentResponse
+func (client *Client) GetLumaDocumentWithOptions(request *GetLumaDocumentRequest, runtime *dara.RuntimeOptions) (_result *GetLumaDocumentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		body["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		body["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLumaDocument"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLumaDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified document in the knowledge base bound to a Luma Agent.
+//
+// Description:
+//
+// Retrieves the details of a specified document in the knowledge base bound to a Luma Agent.
+//
+// @param request - GetLumaDocumentRequest
+//
+// @return GetLumaDocumentResponse
+func (client *Client) GetLumaDocument(request *GetLumaDocumentRequest) (_result *GetLumaDocumentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLumaDocumentResponse{}
+	_body, _err := client.GetLumaDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a temporary download URL for a specified document in the knowledge base bound to a Luma Agent. The URL is valid for one hour by default.
+//
+// Description:
+//
+// Retrieves a temporary download URL for a specified document in the knowledge base bound to a Luma Agent. The URL is valid for one hour by default.
+//
+// @param request - GetLumaDocumentDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLumaDocumentDownloadUrlResponse
+func (client *Client) GetLumaDocumentDownloadUrlWithOptions(request *GetLumaDocumentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetLumaDocumentDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		body["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		body["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NetworkType) {
+		body["NetworkType"] = request.NetworkType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLumaDocumentDownloadUrl"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLumaDocumentDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a temporary download URL for a specified document in the knowledge base bound to a Luma Agent. The URL is valid for one hour by default.
+//
+// Description:
+//
+// Retrieves a temporary download URL for a specified document in the knowledge base bound to a Luma Agent. The URL is valid for one hour by default.
+//
+// @param request - GetLumaDocumentDownloadUrlRequest
+//
+// @return GetLumaDocumentDownloadUrlResponse
+func (client *Client) GetLumaDocumentDownloadUrl(request *GetLumaDocumentDownloadUrlRequest) (_result *GetLumaDocumentDownloadUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLumaDocumentDownloadUrlResponse{}
+	_body, _err := client.GetLumaDocumentDownloadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified knowledge base bound to a Luma Agent, including the vector model, chunking configuration, and retrieval configuration.
+//
+// Description:
+//
+// Retrieves the details of a specified knowledge base bound to a Luma Agent, including the vector model, chunking configuration, and retrieval configuration.
+//
+// @param request - GetLumaKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLumaKnowledgeBaseResponse
+func (client *Client) GetLumaKnowledgeBaseWithOptions(request *GetLumaKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *GetLumaKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		body["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLumaKnowledgeBase"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLumaKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified knowledge base bound to a Luma Agent, including the vector model, chunking configuration, and retrieval configuration.
+//
+// Description:
+//
+// Retrieves the details of a specified knowledge base bound to a Luma Agent, including the vector model, chunking configuration, and retrieval configuration.
+//
+// @param request - GetLumaKnowledgeBaseRequest
+//
+// @return GetLumaKnowledgeBaseResponse
+func (client *Client) GetLumaKnowledgeBase(request *GetLumaKnowledgeBaseRequest) (_result *GetLumaKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLumaKnowledgeBaseResponse{}
+	_body, _err := client.GetLumaKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified namespace bound to a Luma Agent. Only namespaces that are already bound to the Agent can be queried.
+//
+// Description:
+//
+// Retrieves the details of a specified namespace bound to a Luma Agent. Only namespaces that are already bound to the Agent can be queried.
+//
+// @param request - GetLumaNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLumaNamespaceResponse
+func (client *Client) GetLumaNamespaceWithOptions(request *GetLumaNamespaceRequest, runtime *dara.RuntimeOptions) (_result *GetLumaNamespaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLumaNamespace"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLumaNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified namespace bound to a Luma Agent. Only namespaces that are already bound to the Agent can be queried.
+//
+// Description:
+//
+// Retrieves the details of a specified namespace bound to a Luma Agent. Only namespaces that are already bound to the Agent can be queried.
+//
+// @param request - GetLumaNamespaceRequest
+//
+// @return GetLumaNamespaceResponse
+func (client *Client) GetLumaNamespace(request *GetLumaNamespaceRequest) (_result *GetLumaNamespaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLumaNamespaceResponse{}
+	_body, _err := client.GetLumaNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified event table bound to a Luma Agent, including column definitions and the data retention policy. Only event tables that are already bound to the Agent can be queried.
+//
+// Description:
+//
+// Retrieves the details of a specified event table bound to a Luma Agent, including column definitions and the data retention policy. Only event tables that are already bound to the Agent can be queried.
+//
+// @param request - GetLumaTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLumaTableResponse
+func (client *Client) GetLumaTableWithOptions(request *GetLumaTableRequest, runtime *dara.RuntimeOptions) (_result *GetLumaTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLumaTable"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLumaTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified event table bound to a Luma Agent, including column definitions and the data retention policy. Only event tables that are already bound to the Agent can be queried.
+//
+// Description:
+//
+// Retrieves the details of a specified event table bound to a Luma Agent, including column definitions and the data retention policy. Only event tables that are already bound to the Agent can be queried.
+//
+// @param request - GetLumaTableRequest
+//
+// @return GetLumaTableResponse
+func (client *Client) GetLumaTable(request *GetLumaTableRequest) (_result *GetLumaTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLumaTableResponse{}
+	_body, _err := client.GetLumaTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get namespace
 //
 // @param request - GetNamespaceRequest
@@ -3831,6 +4413,506 @@ func (client *Client) ListEventStreamings(request *ListEventStreamingsRequest) (
 
 // Summary:
 //
+// Lists all data catalogs bound to a Luma Agent. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all data catalogs bound to a Luma Agent. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaCatalogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLumaCatalogsResponse
+func (client *Client) ListLumaCatalogsWithOptions(request *ListLumaCatalogsRequest, runtime *dara.RuntimeOptions) (_result *ListLumaCatalogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLumaCatalogs"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLumaCatalogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists all data catalogs bound to a Luma Agent. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all data catalogs bound to a Luma Agent. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaCatalogsRequest
+//
+// @return ListLumaCatalogsResponse
+func (client *Client) ListLumaCatalogs(request *ListLumaCatalogsRequest) (_result *ListLumaCatalogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLumaCatalogsResponse{}
+	_body, _err := client.ListLumaCatalogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists text chunks in a knowledge base bound to a Luma Agent, with support for filtering by document, keyword, and enabled status.
+//
+// Description:
+//
+// Lists text chunks in a knowledge base bound to a Luma Agent, with support for filtering by document, keyword, and enabled status.
+//
+// @param request - ListLumaChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLumaChunksResponse
+func (client *Client) ListLumaChunksWithOptions(request *ListLumaChunksRequest, runtime *dara.RuntimeOptions) (_result *ListLumaChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		body["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		body["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLumaChunks"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLumaChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists text chunks in a knowledge base bound to a Luma Agent, with support for filtering by document, keyword, and enabled status.
+//
+// Description:
+//
+// Lists text chunks in a knowledge base bound to a Luma Agent, with support for filtering by document, keyword, and enabled status.
+//
+// @param request - ListLumaChunksRequest
+//
+// @return ListLumaChunksResponse
+func (client *Client) ListLumaChunks(request *ListLumaChunksRequest) (_result *ListLumaChunksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLumaChunksResponse{}
+	_body, _err := client.ListLumaChunksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists documents in a knowledge base bound to a Luma Agent, with support for filtering by file name prefix and processing status.
+//
+// Description:
+//
+// Lists documents in a knowledge base bound to a Luma Agent, with support for filtering by file name prefix and processing status.
+//
+// @param request - ListLumaDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLumaDocumentsResponse
+func (client *Client) ListLumaDocumentsWithOptions(request *ListLumaDocumentsRequest, runtime *dara.RuntimeOptions) (_result *ListLumaDocumentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.FileNamePrefix) {
+		body["FileNamePrefix"] = request.FileNamePrefix
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		body["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLumaDocuments"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLumaDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists documents in a knowledge base bound to a Luma Agent, with support for filtering by file name prefix and processing status.
+//
+// Description:
+//
+// Lists documents in a knowledge base bound to a Luma Agent, with support for filtering by file name prefix and processing status.
+//
+// @param request - ListLumaDocumentsRequest
+//
+// @return ListLumaDocumentsResponse
+func (client *Client) ListLumaDocuments(request *ListLumaDocumentsRequest) (_result *ListLumaDocumentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLumaDocumentsResponse{}
+	_body, _err := client.ListLumaDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaKnowledgeBasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLumaKnowledgeBasesResponse
+func (client *Client) ListLumaKnowledgeBasesWithOptions(request *ListLumaKnowledgeBasesRequest, runtime *dara.RuntimeOptions) (_result *ListLumaKnowledgeBasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLumaKnowledgeBases"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLumaKnowledgeBasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaKnowledgeBasesRequest
+//
+// @return ListLumaKnowledgeBasesResponse
+func (client *Client) ListLumaKnowledgeBases(request *ListLumaKnowledgeBasesRequest) (_result *ListLumaKnowledgeBasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLumaKnowledgeBasesResponse{}
+	_body, _err := client.ListLumaKnowledgeBasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists all namespaces bound to a Luma Agent under a specified data catalog. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all namespaces bound to a Luma Agent under a specified data catalog. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaNamespacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLumaNamespacesResponse
+func (client *Client) ListLumaNamespacesWithOptions(request *ListLumaNamespacesRequest, runtime *dara.RuntimeOptions) (_result *ListLumaNamespacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLumaNamespaces"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLumaNamespacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists all namespaces bound to a Luma Agent under a specified data catalog. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all namespaces bound to a Luma Agent under a specified data catalog. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaNamespacesRequest
+//
+// @return ListLumaNamespacesResponse
+func (client *Client) ListLumaNamespaces(request *ListLumaNamespacesRequest) (_result *ListLumaNamespacesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLumaNamespacesResponse{}
+	_body, _err := client.ListLumaNamespacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLumaTablesResponse
+func (client *Client) ListLumaTablesWithOptions(request *ListLumaTablesRequest, runtime *dara.RuntimeOptions) (_result *ListLumaTablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLumaTables"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLumaTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// Description:
+//
+// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+//
+// @param request - ListLumaTablesRequest
+//
+// @return ListLumaTablesResponse
+func (client *Client) ListLumaTables(request *ListLumaTablesRequest) (_result *ListLumaTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLumaTablesResponse{}
+	_body, _err := client.ListLumaTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query namespace list
 //
 // @param request - ListNamespacesRequest
@@ -4287,7 +5369,7 @@ func (client *Client) PauseEventStreaming(request *PauseEventStreamingRequest) (
 
 // Summary:
 //
-// Polls for natural language query results.
+// Polls for the result of a natural language query.
 //
 // @param request - PollAskResultRequest
 //
@@ -4335,7 +5417,7 @@ func (client *Client) PollAskResultWithOptions(request *PollAskResultRequest, ru
 
 // Summary:
 //
-// Polls for natural language query results.
+// Polls for the result of a natural language query.
 //
 // @param request - PollAskResultRequest
 //
@@ -4887,6 +5969,84 @@ func (client *Client) QueryEventTraces(request *QueryEventTracesRequest) (_resul
 
 // Summary:
 //
+// Executes an SQL query directly on the EventHouse associated with a Luma Agent and returns structured results. Unlike AskLuma, this operation executes the SQL provided by the caller without natural language rewriting.
+//
+// Description:
+//
+// Executes an SQL query directly on the EventHouse associated with a Luma Agent and returns structured results. Unlike AskLuma, this operation executes the SQL provided by the caller without natural language rewriting.
+//
+// @param request - QueryLumaWithSQLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLumaWithSQLResponse
+func (client *Client) QueryLumaWithSQLWithOptions(request *QueryLumaWithSQLRequest, runtime *dara.RuntimeOptions) (_result *QueryLumaWithSQLResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.MaxRows) {
+		body["MaxRows"] = request.MaxRows
+	}
+
+	if !dara.IsNil(request.Sql) {
+		body["Sql"] = request.Sql
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryLumaWithSQL"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryLumaWithSQLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes an SQL query directly on the EventHouse associated with a Luma Agent and returns structured results. Unlike AskLuma, this operation executes the SQL provided by the caller without natural language rewriting.
+//
+// Description:
+//
+// Executes an SQL query directly on the EventHouse associated with a Luma Agent and returns structured results. Unlike AskLuma, this operation executes the SQL provided by the caller without natural language rewriting.
+//
+// @param request - QueryLumaWithSQLRequest
+//
+// @return QueryLumaWithSQLResponse
+func (client *Client) QueryLumaWithSQL(request *QueryLumaWithSQLRequest) (_result *QueryLumaWithSQLResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryLumaWithSQLResponse{}
+	_body, _err := client.QueryLumaWithSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries event traces by event ID.
 //
 // Description:
@@ -5154,6 +6314,108 @@ func (client *Client) SaveAgentDataSemantics(request *SaveAgentDataSemanticsRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &SaveAgentDataSemanticsResponse{}
 	_body, _err := client.SaveAgentDataSemanticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+//
+// Description:
+//
+// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+//
+// @param request - SearchLumaKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchLumaKnowledgeBaseResponse
+func (client *Client) SearchLumaKnowledgeBaseWithOptions(request *SearchLumaKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *SearchLumaKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.Catalog) {
+		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		body["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.MetadataFilter) {
+		body["MetadataFilter"] = request.MetadataFilter
+	}
+
+	if !dara.IsNil(request.Mode) {
+		body["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Rerank) {
+		body["Rerank"] = request.Rerank
+	}
+
+	if !dara.IsNil(request.TopK) {
+		body["TopK"] = request.TopK
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchLumaKnowledgeBase"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchLumaKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+//
+// Description:
+//
+// Retrieves content from a knowledge base bound to a Luma Agent and returns relevant text chunks along with their relevance scores.
+//
+// @param request - SearchLumaKnowledgeBaseRequest
+//
+// @return SearchLumaKnowledgeBaseResponse
+func (client *Client) SearchLumaKnowledgeBase(request *SearchLumaKnowledgeBaseRequest) (_result *SearchLumaKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchLumaKnowledgeBaseResponse{}
+	_body, _err := client.SearchLumaKnowledgeBaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

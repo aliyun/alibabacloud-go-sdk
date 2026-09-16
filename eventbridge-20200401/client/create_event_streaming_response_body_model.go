@@ -22,7 +22,11 @@ type iCreateEventStreamingResponseBody interface {
 }
 
 type CreateEventStreamingResponseBody struct {
-	// The response code:
+	// The returned code. Valid values:
+	//
+	// - Success: The request was successful.
+	//
+	// - Other values: An error occurred. For more information about error codes, see Error codes.
 	//
 	// example:
 	//

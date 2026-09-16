@@ -42,7 +42,7 @@ type UpdateEventStreamingRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns)
+	// The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns).
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type UpdateEventStreamingRequest struct {
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
 	// The generic JSON configurations for the event provider. This parameter is mutually exclusive with Source.
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The runtime environment parameters.
+	// The runtime parameters.
 	RunOptions *UpdateEventStreamingRequestRunOptions `json:"RunOptions,omitempty" xml:"RunOptions,omitempty" type:"Struct"`
-	// The event target. You must select exactly one Sink type.
+	// The event target. You must select exactly one type of Sink.
 	Sink *UpdateEventStreamingRequestSink `json:"Sink,omitempty" xml:"Sink,omitempty" type:"Struct"`
-	// The event provider. You must select one and only one type of Source.
+	// The event provider. You must select exactly one Source type.
 	Source *UpdateEventStreamingRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 	// The event transformer configurations.
 	Transforms []*UpdateEventStreamingRequestTransforms `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
@@ -201,22 +201,18 @@ func (s *UpdateEventStreamingRequest) Validate() error {
 }
 
 type UpdateEventStreamingRequestRunOptions struct {
-	// The batching window.
+	// The batch window.
 	BatchWindow    *UpdateEventStreamingRequestRunOptionsBatchWindow    `json:"BatchWindow,omitempty" xml:"BatchWindow,omitempty" type:"Struct"`
 	BusinessOption *UpdateEventStreamingRequestRunOptionsBusinessOption `json:"BusinessOption,omitempty" xml:"BusinessOption,omitempty" type:"Struct"`
 	// Specifies whether to enable the dead-letter queue. The dead-letter queue is disabled by default. Messages that exceed the retry policy are discarded.
 	DeadLetterQueue *UpdateEventStreamingRequestRunOptionsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
-	// The error tolerance policy. Valid values:
-	//
-	// - NONE: No tolerance for errors.
-	//
-	// - ALL: Tolerate all errors.
+	// The error tolerance policy. Valid values: NONE (no tolerance) and ALL (tolerate all errors).
 	//
 	// example:
 	//
 	// ALL
 	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
-	// The maximum number of concurrent tasks.
+	// The concurrency.
 	//
 	// example:
 	//
@@ -323,13 +319,13 @@ func (s *UpdateEventStreamingRequestRunOptions) Validate() error {
 }
 
 type UpdateEventStreamingRequestRunOptionsBatchWindow struct {
-	// The maximum number of events that the window can contain. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, a push is triggered when any window meets the threshold.
+	// The maximum number of events that the window can contain. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window meets the threshold.
 	//
 	// example:
 	//
 	// 100
 	CountBasedWindow *int32 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
-	// The maximum time range, in seconds, for events in the window. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, a push is triggered when any window meets the threshold.
+	// The maximum time range (in seconds) of events that the window can contain. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window meets the threshold.
 	//
 	// example:
 	//
@@ -413,13 +409,17 @@ func (s *UpdateEventStreamingRequestRunOptionsBusinessOption) Validate() error {
 }
 
 type UpdateEventStreamingRequestRunOptionsDeadLetterQueue struct {
-	// The ARN of the dead-letter queue.
+	// The Alibaba Cloud Resource Name (ARN) of the dead-letter queue.
 	//
 	// example:
 	//
 	// acs:ram::131733464781****:role/rdstoecsassumekms
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The network type of the dead-letter queue.
+	// The network type of the dead-letter queue. Valid values:
+	//
+	// - PrivateNetwork
+	//
+	// - PublicNetwork
 	//
 	// example:
 	//
@@ -503,7 +503,7 @@ func (s *UpdateEventStreamingRequestRunOptionsDeadLetterQueue) Validate() error 
 }
 
 type UpdateEventStreamingRequestRunOptionsRetryStrategy struct {
-	// The maximum retry time, in seconds.
+	// The maximum retry time.
 	//
 	// example:
 	//
@@ -515,11 +515,7 @@ type UpdateEventStreamingRequestRunOptionsRetryStrategy struct {
 	//
 	// 2
 	MaximumRetryAttempts *int64 `json:"MaximumRetryAttempts,omitempty" xml:"MaximumRetryAttempts,omitempty"`
-	// The retry policy. Valid values:
-	//
-	// - BACKOFF_RETRY: backoff retry.
-	//
-	// - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
+	// The retry policy. Valid values: BACKOFF_RETRY (backoff retry) and EXPONENTIAL_DECAY_RETRY (exponential decay retry).
 	//
 	// example:
 	//
@@ -591,12 +587,14 @@ type UpdateEventStreamingRequestSink struct {
 	SinkEventHouseParameters *UpdateEventStreamingRequestSinkSinkEventHouseParameters `json:"SinkEventHouseParameters,omitempty" xml:"SinkEventHouseParameters,omitempty" type:"Struct"`
 	// The function target.
 	SinkFcParameters *UpdateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
-	// The Sink CloudFlow parameters.
+	// The Sink Fnf parameters.
 	SinkFnfParameters *UpdateEventStreamingRequestSinkSinkFnfParameters `json:"SinkFnfParameters,omitempty" xml:"SinkFnfParameters,omitempty" type:"Struct"`
-	// The HTTPS event target parameters.
+	// The HTTPS target parameters.
 	SinkHttpsParameters *SinkHttpsParameters `json:"SinkHttpsParameters,omitempty" xml:"SinkHttpsParameters,omitempty"`
-	// The parameters for Sink Kafka.
+	// The Sink Kafka parameters.
 	SinkKafkaParameters *UpdateEventStreamingRequestSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
+	// The parameters for delivering the event stream to an EventHouse knowledge base. Specify this parameter only when the Sink type is knowledge base.
+	SinkKnowledgeBaseParameters *SinkKnowledgeBaseParameters `json:"SinkKnowledgeBaseParameters,omitempty" xml:"SinkKnowledgeBaseParameters,omitempty"`
 	// The Simple Message Queue (formerly MNS) event target.
 	SinkMNSParameters  *UpdateEventStreamingRequestSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
 	SinkMQTTParameters *SinkMQTTParameters                               `json:"SinkMQTTParameters,omitempty" xml:"SinkMQTTParameters,omitempty"`
@@ -607,7 +605,7 @@ type UpdateEventStreamingRequestSink struct {
 	SinkPrometheusParameters      *UpdateEventStreamingRequestSinkSinkPrometheusParameters `json:"SinkPrometheusParameters,omitempty" xml:"SinkPrometheusParameters,omitempty" type:"Struct"`
 	SinkRabbitMQMetaParameters    *SinkRabbitMQMetaParameters                              `json:"SinkRabbitMQMetaParameters,omitempty" xml:"SinkRabbitMQMetaParameters,omitempty"`
 	SinkRabbitMQMsgSyncParameters *SinkRabbitMQMsgSyncParameters                           `json:"SinkRabbitMQMsgSyncParameters,omitempty" xml:"SinkRabbitMQMsgSyncParameters,omitempty"`
-	// The parameters for Sink RabbitMQ.
+	// The Sink RabbitMQ parameters.
 	SinkRabbitMQParameters *UpdateEventStreamingRequestSinkSinkRabbitMQParameters `json:"SinkRabbitMQParameters,omitempty" xml:"SinkRabbitMQParameters,omitempty" type:"Struct"`
 	// Sink RocketMQ Checkpoint Parameters
 	SinkRocketMQCheckpointParameters *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParameters `json:"SinkRocketMQCheckpointParameters,omitempty" xml:"SinkRocketMQCheckpointParameters,omitempty" type:"Struct"`
@@ -687,6 +685,10 @@ func (s *UpdateEventStreamingRequestSink) GetSinkHttpsParameters() *SinkHttpsPar
 
 func (s *UpdateEventStreamingRequestSink) GetSinkKafkaParameters() *UpdateEventStreamingRequestSinkSinkKafkaParameters {
 	return s.SinkKafkaParameters
+}
+
+func (s *UpdateEventStreamingRequestSink) GetSinkKnowledgeBaseParameters() *SinkKnowledgeBaseParameters {
+	return s.SinkKnowledgeBaseParameters
 }
 
 func (s *UpdateEventStreamingRequestSink) GetSinkMNSParameters() *UpdateEventStreamingRequestSinkSinkMNSParameters {
@@ -810,6 +812,11 @@ func (s *UpdateEventStreamingRequestSink) SetSinkHttpsParameters(v *SinkHttpsPar
 
 func (s *UpdateEventStreamingRequestSink) SetSinkKafkaParameters(v *UpdateEventStreamingRequestSinkSinkKafkaParameters) *UpdateEventStreamingRequestSink {
 	s.SinkKafkaParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkKnowledgeBaseParameters(v *SinkKnowledgeBaseParameters) *UpdateEventStreamingRequestSink {
+	s.SinkKnowledgeBaseParameters = v
 	return s
 }
 
@@ -949,6 +956,11 @@ func (s *UpdateEventStreamingRequestSink) Validate() error {
 			return err
 		}
 	}
+	if s.SinkKnowledgeBaseParameters != nil {
+		if err := s.SinkKnowledgeBaseParameters.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SinkMNSParameters != nil {
 		if err := s.SinkMNSParameters.Validate(); err != nil {
 			return err
@@ -1011,7 +1023,11 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
 	Acks            *string `json:"Acks,omitempty" xml:"Acks,omitempty"`
 	Bootstraps      *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
 	CompressionType *string `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
-	// Specifies the target topic strategy for message routing. If both the Topic parameter and the DynamicTopic parameter are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
+	// Specifies the target Topic routing strategy for messages. If both the Topic parameter and the DynamicTopic parameter are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
+	//
+	//     1. **Static constant mode**: Specify a fixed Topic name string (for example, "order_created"). All messages are sent to this Topic.
+	//
+	//     2. **Dynamic extraction mode**: Specify a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matching field as the target Topic name.
 	DynamicTopic     *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic    `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
 	Headers          *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders         `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	Key              *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey             `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
@@ -1021,13 +1037,13 @@ type UpdateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
 	SaslUser         *string                                                                  `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
 	SecurityGroupId  *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	SecurityProtocol *string                                                                  `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	// [Required for encrypted private key] The Kafka client private key password. This parameter is required when the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" marker). Leave this parameter empty if the private key is not encrypted. Note: This password is used only to decrypt the private key and is not related to Kafka authentication.
+	// [Required for encrypted private keys] The password of the Kafka client private key. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" marker), provide the decryption password. Leave this parameter empty if the private key is not encrypted. This password is used only to decrypt the private key and is not related to Kafka authentication.
 	SslKeyPassword *string `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
-	// [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when the Kafka server enables mutual SSL authentication (ssl.client.auth=required). Format: Base64-encoded PEM format, containing the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Note: Ensure that the beginning and end of each PEM file content are \\"-----BEGIN CERTIFICATE-----\\" and \\"-----END CERTIFICATE-----\\" respectively, and then Base64-encode the concatenated content.
+	// [Required for mutual authentication] The Kafka client certificate chain. If the Kafka server enables mutual SSL authentication (ssl.client.auth=required), this parameter is required. Format: Base64-encoded PEM format, containing the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Ensure that each PEM file content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\", then Base64-encode the concatenated content.
 	SslKeystoreCertificateChain *string `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
-	// [Required for bidirectional authentication] The SSL private key configuration object. If the Kafka server has bidirectional SSL authentication enabled, provide the client private key. Only KMS pattern is supported for the key: specify the Key Management Service EPS resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:ap-southeast-1:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}
+	// [Required for bidirectional authentication] The SSL private key configuration object. When the Kafka server enables bidirectional SSL authentication, provide the client private key. Only KMS pattern is supported for the key: specify the EPS resource of the Key Management Service that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}
 	SslKeystoreKey *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
-	// [Required for SSL] The trusted certificate of the Kafka server. Signing certificate is used to verify the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format: Base64-encoded PEM format. Signing certificate typically contains the CA certificate or the server certificate of the Kafka server. Example: Base64-encode the content of the CA certificate PEM file. Make sure that the content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\". If Kafka uses a self-signed certificate, provide the CA certificate that was used to issue signing certificate.
+	// [Required for SSL scenarios] The trusted certificate of the Kafka server. This certificate is used to authenticate the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format requirement: Base64 encoding in PEM format. This typically contains the CA certificate or the server certificate of the Kafka server. Example: Base64-encode the content of the CA certificate PEM file (make sure the content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued the certificate.
 	SslTruststoreCertificates *string                                                             `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
 	Topic                     *string                                                             `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	VSwitchIds                *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
@@ -1273,7 +1289,11 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParameters) Validate() er
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic struct {
-	// The transformation type.
+	// The transformation type. Valid values:
+	//
+	// CONSTANT: constant value.
+	//
+	// JSONPATH: extracts the value from the upstream based on a path.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -1501,9 +1521,9 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey struct {
-	// [Required] The KMS resource ARN that stores the SSL private key. This parameter is used to locate the Key Management Service instance that stores the client private key. Format example: \\"acs:kms:ap-southeast-1:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
+	// [Required] The KMS resource ARN that stores the SSL private key. Used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". You can view the ARN information of the corresponding key in the KMS console.
 	KmsArn *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
-	// [KMS KV mode] The key name in the KMS credential. When the KMS credential is stored as a key-value (KV) structure, specify this parameter to indicate the key corresponding to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS credential is in plain text mode (directly storing the PEM content of the private key), leave this parameter empty.
+	// [KMS KV mode] The key name in the KMS credential. If the KMS credential is stored in a key-value (KV) structure, specify this parameter to indicate the key that corresponds to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", set this parameter to \\"ssl_keystore_key\\". If the KMS credential is in plain text mode (the PEM content of the private key is stored directly), leave this parameter empty.
 	KmsSecretValueKey *string `json:"KmsSecretValueKey,omitempty" xml:"KmsSecretValueKey,omitempty"`
 }
 
@@ -1673,7 +1693,7 @@ func (s *UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters struct {
-	// The timestamp of message consumption.
+	// The timestamp for message consumption.
 	ConsumeTimestamp *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersConsumeTimestamp `json:"ConsumeTimestamp,omitempty" xml:"ConsumeTimestamp,omitempty" type:"Struct"`
 	// The Group ID of the consumer group.
 	Group *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
@@ -1683,19 +1703,23 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters struc
 	//
 	// 192.168.1.1:9876
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The password of the username.
+	// The password for authentication.
 	//
 	// example:
 	//
 	// ****
 	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
-	// The username used for authentication.
+	// The username for authentication.
 	//
 	// example:
 	//
 	// admin
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
 	// The network type.
+	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
 	//
 	// example:
 	//
@@ -1707,7 +1731,7 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters struc
 	//
 	// sg-2ze5bmpw6adn0q******
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The topic of the RocketMQ instance.
+	// The Topic of the RocketMQ instance.
 	Topic *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	//
@@ -1961,7 +1985,7 @@ type UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersTopic 
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template style.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the topic of the RocketMQ instance.
+	// The name of the Topic of the RocketMQ instance.
 	//
 	// example:
 	//
@@ -2173,13 +2197,13 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParameters struct {
 	//
 	// Q34nExQH7sQ****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The name of the collection.
+	// The collection name.
 	//
 	// example:
 	//
 	// collection1
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The schema field definitions for table entries when inserting data into DashVector. The transformed event content must be in JSON format.
+	// The schema field definition of the table entry when data is inserted into DashVector. The result after event content transformation must be in JSON format.
 	DashVectorSchemaParameters []*UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -2187,13 +2211,21 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParameters struct {
 	//
 	// vrs-cn-lbj3ru1***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network type.
+	// The network type. Valid values:
+	//
+	// - PrivateNetwork
+	//
+	// - PublicNetwork
 	//
 	// example:
 	//
 	// PublicNetwork
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The operation type for the DashVector database.
+	// The DashVector database operation type. Valid values:
+	//
+	// - Delete
+	//
+	// - Upsert
 	//
 	// example:
 	//
@@ -2520,7 +2552,11 @@ func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchema
 }
 
 type UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition struct {
-	// The transformation format:
+	// The transformation format. Valid values:
+	//
+	// - JSONPATH
+	//
+	// - CONSTANT
 	//
 	// example:
 	//
@@ -2529,6 +2565,10 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition struct {
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// - If Form is set to CONSTANT: a constant value.
+	//
+	// - If Form is set to JSONPATH: the content extracted by using JSONPath.
+	//
+	// > The Value field cannot exceed 10,240 characters.
 	//
 	// example:
 	//
@@ -2576,19 +2616,27 @@ func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition) Valid
 }
 
 type UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId struct {
-	// The transformation format:
+	// The transformation format. Valid values:
+	//
+	// - JSONPATH
+	//
+	// - TEMPLATE
 	//
 	// example:
 	//
 	// JSONPATH
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The primary key ID template. This parameter is required only when Form is set to TEMPLATE.
+	// The primary key ID template. This field is required only when Form is set to TEMPLATE.
 	//
 	// example:
 	//
 	// ${ID}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// If Form is set to JSONPATH, this specifies the JSONPath expression used to extract content.
+	// If Form is set to JSONPATH: the content extracted by using JSONPath.
+	//
+	// If Form is set to TEMPLATE: the template variable.
+	//
+	// > The Value field cannot exceed 10,240 characters.
 	//
 	// example:
 	//
@@ -2644,7 +2692,9 @@ type UpdateEventStreamingRequestSinkSinkDashVectorParametersVector struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The JSONPath expression used to extract content.
+	// The content extracted by using JSONPath.
+	//
+	// > The Value field cannot exceed 10,240 characters.
 	//
 	// example:
 	//
@@ -2692,21 +2742,29 @@ func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector) Validate
 }
 
 type UpdateEventStreamingRequestSinkSinkDataHubParameters struct {
-	// The Record content template for the BLOB type.
+	// The record content template of the BLOB type.
 	Body *UpdateEventStreamingRequestSinkSinkDataHubParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The key-value pairs of the custom log. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
+	// The key-value pairs of custom logs. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
 	ContentSchema *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
-	// The data format. You can select the default format or configure a specified key-value pair:
+	// The data format. You can select the default format or specify key-value pairs. Valid values:
+	//
+	// - JSON
+	//
+	// - KeyValue
 	ContentType *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
-	// The DataHub project name.
+	// The name of the DataHub project.
 	Project *UpdateEventStreamingRequestSinkSinkDataHubParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The task role name.
+	// The role name of the task.
 	RoleName *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
-	// The DataHub topic name.
+	// The name of the DataHub topic.
 	Topic *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
-	// The topic content schema for the TUPLE type.
+	// The topic content schema of the TUPLE type.
 	TopicSchema *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema `json:"TopicSchema,omitempty" xml:"TopicSchema,omitempty" type:"Struct"`
-	// The topic type.
+	// The topic type. Valid values:
+	//
+	// - TUPLE
+	//
+	// - BLOB
 	TopicType *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType `json:"TopicType,omitempty" xml:"TopicType,omitempty" type:"Struct"`
 }
 
@@ -2843,7 +2901,7 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersBody struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The Record content template for the BLOB type.
+	// The record content template of the BLOB type.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3007,7 +3065,7 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersProject struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The DataHub project name.
+	// The name of the DataHub project.
 	//
 	// example:
 	//
@@ -3119,7 +3177,7 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersTopic struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The DataHub topic name.
+	// The name of the DataHub topic.
 	//
 	// example:
 	//
@@ -3179,7 +3237,7 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema struct {
 	//
 	// {"k1":"${k1}","k2":"${k2}"}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic content schema for the TUPLE type.
+	// The topic content schema of the TUPLE type.
 	//
 	// example:
 	//
@@ -3235,7 +3293,11 @@ type UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic type.
+	// The topic type. Valid values:
+	//
+	// - TUPLE
+	//
+	// - BLOB
 	//
 	// example:
 	//
@@ -4110,7 +4172,7 @@ type UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRules struct 
 	//
 	// text
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The column value extraction rule.
+	// The extraction rule for the column value.
 	ColumnValue *UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue `json:"ColumnValue,omitempty" xml:"ColumnValue,omitempty" type:"Struct"`
 }
 
@@ -4223,11 +4285,15 @@ type UpdateEventStreamingRequestSinkSinkFcParameters struct {
 	Body *UpdateEventStreamingRequestSinkSinkFcParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The delivery concurrency. The minimum value is 1.
 	Concurrency *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
-	// The format transformation rule for event content.
+	// The format conversion rule for event content.
 	DataFormat *UpdateEventStreamingRequestSinkSinkFcParametersDataFormat `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" type:"Struct"`
 	// The function name.
 	FunctionName *UpdateEventStreamingRequestSinkSinkFcParametersFunctionName `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
-	// Specifies whether the invocation is synchronous or asynchronous.
+	// Specifies whether the invocation is synchronous or asynchronous. Valid values:
+	//
+	// - Sync: Synchronous.
+	//
+	// - Async: Asynchronous.
 	InvocationType *UpdateEventStreamingRequestSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
 	// The alias of the service to which the function belongs.
 	Qualifier *UpdateEventStreamingRequestSinkSinkFcParametersQualifier `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
@@ -4466,7 +4532,15 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkFcParametersDataFormat struct {
-	// The transformation format:
+	// The conversion format. Valid values:
+	//
+	// - ORIGINAL: complete event
+	//
+	// - JSONPATH: partial event
+	//
+	// - CONSTANT: constant
+	//
+	// - TEMPLATE: template
 	//
 	// example:
 	//
@@ -5058,19 +5132,29 @@ func (s *UpdateEventStreamingRequestSinkSinkFnfParametersRoleName) Validate() er
 
 type UpdateEventStreamingRequestSinkSinkKafkaParameters struct {
 	// The acknowledgment mode for writing to Kafka:
+	//
+	// - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
+	//
+	// - acks=1: A response is returned after the primary node on the server writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
+	//
+	// - acks=all: A response is returned only after the primary node writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but provides higher data security. Data loss occurs only if both the primary and secondary nodes go down.
 	Acks            *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
 	CompressionType *string                                                 `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
-	// Specifies the target topic strategy for message routing. If both the Topic parameter and the DynamicTopic parameter are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
+	// Specifies the target Topic routing strategy for messages. If both the Topic parameter and the DynamicTopic parameter are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
+	//
+	//     1. **Static constant mode**: Specify a fixed Topic name string (for example, "order_created"). All messages are sent to this Topic.
+	//
+	//     2. **Dynamic extraction mode**: Specify a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matching field as the target Topic name.
 	DynamicTopic *UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
 	// The additional metadata of the Kafka message.
 	Headers *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The event target type is ApsaraMQ for Kafka.
+	// The target service type is ApsaraMQ for Kafka.
 	InstanceId *UpdateEventStreamingRequestSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The identifier of the message.
 	Key *UpdateEventStreamingRequestSinkSinkKafkaParametersKey `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
 	// The topic name.
 	Topic *UpdateEventStreamingRequestSinkSinkKafkaParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
-	// The message body content.
+	// The message body.
 	Value *UpdateEventStreamingRequestSinkSinkKafkaParametersValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
@@ -5204,6 +5288,12 @@ type UpdateEventStreamingRequestSinkSinkKafkaParametersAcks struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The acknowledgment mode for writing to Kafka:
 	//
+	// - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
+	//
+	// - acks=1: A response is returned after the primary node on the server writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
+	//
+	// - acks=all: A response is returned only after the primary node writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but provides higher data security. Data loss occurs only if both the primary and secondary nodes go down.
+	//
 	// example:
 	//
 	// 1
@@ -5250,7 +5340,11 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks) Validate() erro
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic struct {
-	// The transformation type.
+	// The transformation type. Valid values:
+	//
+	// CONSTANT: constant value.
+	//
+	// JSONPATH: extracts the value from the upstream based on a path.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -5298,7 +5392,15 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) Validat
 }
 
 type UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders struct {
-	// The transformation format:
+	// The conversion format. Valid values:
+	//
+	// - ORIGINAL: complete event
+	//
+	// - JSONPATH: partial event
+	//
+	// - CONSTANT: constant
+	//
+	// - TEMPLATE: template
 	//
 	// example:
 	//
@@ -5598,7 +5700,7 @@ type UpdateEventStreamingRequestSinkSinkMNSParameters struct {
 	Body *UpdateEventStreamingRequestSinkSinkMNSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// Specifies whether to enable Base64 encoding.
 	IsBase64Encode *UpdateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode `json:"IsBase64Encode,omitempty" xml:"IsBase64Encode,omitempty" type:"Struct"`
-	// The event target type is Simple Message Queue (formerly MNS).
+	// The target service type is Simple Message Queue (formerly MNS).
 	QueueName *UpdateEventStreamingRequestSinkSinkMNSParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
 }
 
@@ -5721,7 +5823,7 @@ func (s *UpdateEventStreamingRequestSinkSinkMNSParametersBody) Validate() error 
 }
 
 type UpdateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode struct {
-	// The event transformation format. Default value: CONSTANT.
+	// The format of the event transformation. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -5729,7 +5831,7 @@ type UpdateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// Specifies whether to enable Base64 encoding.
+	// Enables Base64 encoding.
 	//
 	// example:
 	//
@@ -5785,7 +5887,7 @@ type UpdateEventStreamingRequestSinkSinkMNSParametersQueueName struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the Simple Message Queue (formerly MNS) queue.
+	// The name of the queue in Simple Message Queue (formerly MNS).
 	//
 	// example:
 	//
@@ -5833,13 +5935,17 @@ func (s *UpdateEventStreamingRequestSinkSinkMNSParametersQueueName) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
-	// The authentication type.
+	// The authentication type:
+	//
+	// - ACL
+	//
+	// - No configuration required
 	//
 	// example:
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The message body content.
+	// The message body.
 	Body *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The endpoint.
 	//
@@ -5847,7 +5953,7 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	//
 	// 192.168.1.1:9876
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The name of the exchange in RabbitMQ. This parameter takes effect only when TargetType is set to Exchange.
+	// The exchange name in RabbitMQ. This parameter takes effect only when TargetType is set to Exchange.
 	//
 	// example:
 	//
@@ -5857,11 +5963,15 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	MessageId *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
 	// The network type.
 	//
+	// - PrivateNetwork
+	//
+	// - PublicNetwork
+	//
 	// example:
 	//
 	// PublicNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The password used to access the RabbitMQ instance.
+	// The password for accessing the RabbitMQ instance.
 	//
 	// example:
 	//
@@ -5869,7 +5979,7 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The additional properties of the message.
 	Properties *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The name of the queue in RabbitMQ. This parameter takes effect only when TargetType is set to Queue.
+	// The queue name in RabbitMQ. This parameter takes effect only when TargetType is set to Queue.
 	//
 	// example:
 	//
@@ -5885,11 +5995,15 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The target type for message delivery.
 	//
+	// - **Exchange:*	- Messages are routed through an exchange.
+	//
+	// - **Queue:*	- Messages are delivered directly to a specified queue.
+	//
 	// example:
 	//
 	// Exchange
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The username used to access the RabbitMQ instance.
+	// The username for accessing the RabbitMQ instance.
 	//
 	// example:
 	//
@@ -5901,7 +6015,7 @@ type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
 	//
 	// vsw-uf6of9452b2pba82c ****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The virtual host name of the RabbitMQ instance.
+	// The virtual host name of RabbitMQ.
 	//
 	// example:
 	//
@@ -6328,7 +6442,7 @@ func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingK
 }
 
 type UpdateEventStreamingRequestSinkSinkPrometheusParameters struct {
-	// The authentication type.
+	// The authentication method.
 	AuthorizationType *UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty" type:"Struct"`
 	// The metric content.
 	Data *UpdateEventStreamingRequestSinkSinkPrometheusParametersData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -6511,7 +6625,7 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType st
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The authentication type.
+	// The authentication method.
 	//
 	// example:
 	//
@@ -6617,11 +6731,19 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersData) Validate()
 type UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters struct {
 	// The transformation format.
 	//
+	// Valid values:
+	//
+	// - JSONPATH: JSONPATH.
+	//
+	// - CONSTANT: CONSTANT.
+	//
+	// - TEMPLATE: TEMPLATE.
+	//
 	// example:
 	//
 	// TEMPLATE
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The HTTP request header template. Specify this parameter when Form is set to TEMPLATE. The result after event content transformation must be in JSON format.
+	// The HTTP request header template. Specify this parameter when Form is set to TEMPLATE. The transformed event content must be in JSON format.
 	//
 	// example:
 	//
@@ -6632,6 +6754,12 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters str
 	// }
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// - If Form is set to CONSTANT: a constant value.
+	//
+	// - If Form is set to JSONPATH: a JSONPath expression used to extract content.
+	//
+	// - If Form is set to TEMPLATE: a template variable.
+	//
+	// Note: The Value field cannot exceed 10,240 characters.
 	//
 	// example:
 	//
@@ -6687,7 +6815,11 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The network type:
+	// The network type. Valid values:
+	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
 	//
 	// example:
 	//
@@ -7069,21 +7201,21 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId) Validate(
 type UpdateEventStreamingRequestSinkSinkRabbitMQParameters struct {
 	// The message content.
 	Body *UpdateEventStreamingRequestSinkSinkRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The Exchange mode.
+	// The Exchange mode. Configure this parameter only when TargetType is set to Exchange.
 	Exchange *UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
 	// The event target type is ApsaraMQ for RabbitMQ.
 	InstanceId *UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message ID.
 	MessageId *UpdateEventStreamingRequestSinkSinkRabbitMQParametersMessageId `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
-	// The filtering properties.
+	// The filter properties.
 	Properties *UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The Queue mode.
+	// The Queue mode. Configure this parameter only when TargetType is set to Queue.
 	QueueName *UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
-	// The routing rule of the message.
+	// The routing rule of the message. Configure this parameter only when TargetType is set to Exchange.
 	RoutingKey *UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
 	// The target type.
 	TargetType *UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType `json:"TargetType,omitempty" xml:"TargetType,omitempty" type:"Struct"`
-	// The name of the vhost of the ApsaraMQ for RabbitMQ instance.
+	// The name of the vhost in the ApsaraMQ for RabbitMQ instance.
 	VirtualHostName *UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty" type:"Struct"`
 }
 
@@ -7298,7 +7430,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the Exchange of the ApsaraMQ for RabbitMQ instance.
+	// The name of the exchange in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -7354,7 +7486,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The instance ID of ApsaraMQ for RabbitMQ.
+	// The instance ID of the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -7538,7 +7670,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the Queue of the instance.
+	// The name of the queue in the instance.
 	//
 	// example:
 	//
@@ -7652,6 +7784,10 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The target type. Valid values:
 	//
+	// - Exchange: Exchange mode.
+	//
+	// - Queue: Queue mode.
+	//
 	// example:
 	//
 	// Exchange/Queue
@@ -7706,7 +7842,7 @@ type UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName struct
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the vhost of the ApsaraMQ for RabbitMQ instance.
+	// The name of the vhost in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -7754,7 +7890,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName) V
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParameters struct {
-	// The timestamp of message consumption.
+	// The timestamp for message consumption.
 	ConsumeTimestamp *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTimestamp `json:"ConsumeTimestamp,omitempty" xml:"ConsumeTimestamp,omitempty" type:"Struct"`
 	// The Group ID of the consumer group.
 	Group *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
@@ -7765,6 +7901,10 @@ type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParameters struct {
 	// MQ_INST_164901546557****_BAAN****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance type. Valid values:
+	//
+	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance.
+	//
+	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
 	// example:
 	//
@@ -7959,7 +8099,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup) V
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic struct {
-	// The transformation format. Default value: CONSTANT.
+	// The format of the transformation. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -7967,7 +8107,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic struct
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template style.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the topic of the ApsaraMQ for RocketMQ instance.
+	// The topic name of the ApsaraMQ for RocketMQ instance.
 	//
 	// example:
 	//
@@ -8017,7 +8157,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic) V
 type UpdateEventStreamingRequestSinkSinkRocketMQParameters struct {
 	// The message content.
 	Body *UpdateEventStreamingRequestSinkSinkRocketMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The delivery order type of messages. This parameter is optional. By default, messages are delivered concurrently.
+	// The delivery order type of messages. This parameter is optional. Default value: concurrent delivery.
 	DeliveryOrderType *UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType `json:"DeliveryOrderType,omitempty" xml:"DeliveryOrderType,omitempty" type:"Struct"`
 	// The instance endpoint.
 	InstanceEndpoint *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty" type:"Struct"`
@@ -8029,23 +8169,29 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParameters struct {
 	InstanceType *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Struct"`
 	// The instance username.
 	InstanceUsername *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty" type:"Struct"`
-	// The filtering properties.
+	// The filter properties.
 	Keys *UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
 	// The network type.
+	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
 	Network *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The filtering properties.
+	// The filter properties.
 	Properties *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
 	// The security group ID.
 	SecurityGroupId *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	// The sharding key of the message.
+	//
+	// > When DeliveryOrderType is set to Orderly, this parameter specifies the event content transformation rule for the ShardingKey property when writing messages to the downstream. When the source is RocketMQ, ShardingKey can be left empty. In this case, the upstream BrokerName and QueueId are concatenated to generate the message ShardingKey.
 	ShardingKey *UpdateEventStreamingRequestSinkSinkRocketMQParametersShardingKey `json:"ShardingKey,omitempty" xml:"ShardingKey,omitempty" type:"Struct"`
-	// The filtering properties.
+	// The filter properties.
 	Tags *UpdateEventStreamingRequestSinkSinkRocketMQParametersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The topic of the ApsaraMQ for RocketMQ instance.
 	Topic *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	VSwitchIds *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The VPC ID.
+	// The ID of the VPC.
 	VpcId *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
@@ -8350,7 +8496,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersBody) Validate() e
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType struct {
-	// The transformation format. Default value: CONSTANT.
+	// The format of the transformation. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -8358,7 +8504,11 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType stru
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template style.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The delivery order type.
+	// The delivery order type. Valid values:
+	//
+	// - **Orderly:*	- Ordered delivery.
+	//
+	// - **Concurrently:*	- Concurrent delivery.
 	//
 	// example:
 	//
@@ -8584,6 +8734,12 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The instance type. Valid values:
 	//
+	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance (default).
+	//
+	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
+	//
+	// - SelfBuilt: self-managed Apache RocketMQ cluster.
+	//
 	// example:
 	//
 	// Cloud_4
@@ -8760,6 +8916,10 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The network type.
 	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
+	//
 	// example:
 	//
 	// PublicNetwork
@@ -8926,7 +9086,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) V
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersShardingKey struct {
-	// The transformation format. Default value: CONSTANT.
+	// The format of the transformation. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9158,7 +9318,7 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) Valida
 }
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId struct {
-	// The event transformation format. Default value: CONSTANT.
+	// The format of the event transformation. Default value: CONSTANT.
 	//
 	// example:
 	//
@@ -9166,7 +9326,7 @@ type UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -9214,19 +9374,23 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) Validate() 
 }
 
 type UpdateEventStreamingRequestSinkSinkSLSParameters struct {
-	// The content sent to Simple Log Service.
+	// The content sent to Simple Log Service (SLS).
 	Body *UpdateEventStreamingRequestSinkSinkSLSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The custom key-value pairs for logs. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
+	// The custom log key-value pairs. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
 	ContentSchema *UpdateEventStreamingRequestSinkSinkSLSParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
-	// The data format of Simple Log Service. You can select the default format or configure a specific key-value format.
+	// The SLS data format. You can select the default format or configure specified key-value pairs. Valid values:
+	//
+	// - JSON
+	//
+	// - KeyValue
 	ContentType *UpdateEventStreamingRequestSinkSinkSLSParametersContentType `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
-	// The Simple Log Service Logstore.
+	// The Logstore of SLS.
 	LogStore *UpdateEventStreamingRequestSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
-	// The Simple Log Service project.
+	// The project of SLS.
 	Project *UpdateEventStreamingRequestSinkSinkSLSParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The role that provides authorization for the event bus EventBridge to read Simple Log Service log content. To use this role, create a role for the service in the Resource Access Management (RAM) console. Set the trusted entity type to Alibaba Cloud Service and set the trusted service to event bus.
+	// The role used for authorization of the event bus EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role for the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service as the trusted entity, and set the trusted service to event bus.
 	RoleName *UpdateEventStreamingRequestSinkSinkSLSParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
-	// The topic in which the log resides. This corresponds to the reserved field "topic" in Simple Log Service.
+	// The topic of the log, which corresponds to the SLS reserved field "topic".
 	Topic *UpdateEventStreamingRequestSinkSinkSLSParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 }
 
@@ -9413,7 +9577,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersContentSchema struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template style.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The custom key-value pairs.
+	// The custom key-value pair.
 	//
 	// example:
 	//
@@ -9469,7 +9633,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersContentType struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template style.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The data format of Simple Log Service.
+	// The SLS data format.
 	//
 	// example:
 	//
@@ -9525,7 +9689,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersLogStore struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The Simple Log Service Logstore.
+	// The Logstore of SLS.
 	//
 	// example:
 	//
@@ -9581,7 +9745,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersProject struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The Simple Log Service project.
+	// The project of SLS.
 	//
 	// example:
 	//
@@ -9637,7 +9801,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersRoleName struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The role that provides authorization for the event bus EventBridge to read Simple Log Service log content. To use this role, create a role for the service in the Resource Access Management (RAM) console. Set the trusted entity type to Alibaba Cloud Service and set the trusted service to event bus.
+	// The role used for authorization of the event bus EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role for the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service as the trusted entity, and set the trusted service to event bus.
 	//
 	// example:
 	//
@@ -9693,7 +9857,7 @@ type UpdateEventStreamingRequestSinkSinkSLSParametersTopic struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic in which the log resides. This corresponds to the reserved field "topic" in Simple Log Service.
+	// The topic of the log, which corresponds to the SLS reserved field "topic".
 	//
 	// example:
 	//
@@ -9742,42 +9906,42 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersTopic) Validate() error
 
 type UpdateEventStreamingRequestSource struct {
 	SourceApacheKafkaParameters *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
-	// The parameters for RocketMQ checkpoint as the event source.
+	// The Source RocketMQ Checkpoint source.
 	SourceApacheRocketMQCheckpointParameters *UpdateEventStreamingRequestSourceSourceApacheRocketMQCheckpointParameters `json:"SourceApacheRocketMQCheckpointParameters,omitempty" xml:"SourceApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
 	// The custom connector Apache Kafka event source.
 	SourceCustomizedKafkaConnectorParameters *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	// The custom Kafka event source.
 	SourceCustomizedKafkaParameters *UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
-	// The source DTS event source.
+	// The Source DTS source.
 	SourceDTSParameters *UpdateEventStreamingRequestSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
-	// The source event bus event source.
+	// The Source EventBus source.
 	SourceEventBusParameters   *UpdateEventStreamingRequestSourceSourceEventBusParameters `json:"SourceEventBusParameters,omitempty" xml:"SourceEventBusParameters,omitempty" type:"Struct"`
 	SourceFeiShuDocsParameters *SourceFeiShuDocsParameters                                `json:"SourceFeiShuDocsParameters,omitempty" xml:"SourceFeiShuDocsParameters,omitempty"`
 	SourceJDBCParameters       *SourceJDBCParameters                                      `json:"SourceJDBCParameters,omitempty" xml:"SourceJDBCParameters,omitempty"`
-	// The parameters for Kafka as the event source.
+	// The Source Kafka source.
 	SourceKafkaParameters *UpdateEventStreamingRequestSourceSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The parameters for Simple Message Queue (formerly MNS) as the event source.
+	// The Source Simple Message Queue (formerly MNS) parameters.
 	SourceMNSParameters *UpdateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
-	// The source MQTT event source.
+	// The Source MQTT source.
 	SourceMQTTParameters *UpdateEventStreamingRequestSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
-	// The source MySQL event source.
+	// The Source MySQL source.
 	SourceMySQLParameters *SourceMySQLParameters `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
-	// The source OSS event source.
+	// The Source OSS event source.
 	SourceOSSParameters *UpdateEventStreamingRequestSourceSourceOSSParameters `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
-	// The source open-source RabbitMQ event source.
+	// The Source open source RabbitMQ event source.
 	SourceOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourcePostgreSQLParameters         *SourcePostgreSQLParameters                                          `json:"SourcePostgreSQLParameters,omitempty" xml:"SourcePostgreSQLParameters,omitempty"`
-	// The source Prometheus event source.
+	// The Source Prometheus event source.
 	SourcePrometheusParameters      *UpdateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	SourceRabbitMQMetaParameters    *SourceRabbitMQMetaParameters                                `json:"SourceRabbitMQMetaParameters,omitempty" xml:"SourceRabbitMQMetaParameters,omitempty"`
 	SourceRabbitMQMsgSyncParameters *SourceRabbitMQMsgSyncParameters                             `json:"SourceRabbitMQMsgSyncParameters,omitempty" xml:"SourceRabbitMQMsgSyncParameters,omitempty"`
-	// The parameters for RabbitMQ as the event source.
+	// The Source RabbitMQ event source.
 	SourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The parameters for RocketMQ checkpoint as the event source.
+	// The Source RocketMQ Checkpoint source.
 	SourceRocketMQCheckpointParameters *UpdateEventStreamingRequestSourceSourceRocketMQCheckpointParameters `json:"SourceRocketMQCheckpointParameters,omitempty" xml:"SourceRocketMQCheckpointParameters,omitempty" type:"Struct"`
-	// The parameters for RocketMQ as the event source.
+	// The Source RocketMQ event source.
 	SourceRocketMQParameters *UpdateEventStreamingRequestSourceSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
-	// The source SLS event source.
+	// The Source Simple Log Service (SLS) event source.
 	SourceSLSParameters *UpdateEventStreamingRequestSourceSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
 }
 
@@ -10111,13 +10275,13 @@ type UpdateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
 	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
 	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	// [Required for encrypted private key] The Kafka client private key password. This parameter is required when the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" marker). Leave this parameter empty if the private key is not encrypted. Note: This password is used only to decrypt the private key and is not related to Kafka authentication.
+	// [Required for encrypted private keys] The password of the Kafka client private key. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" marker), provide the decryption password. Leave this parameter empty if the private key is not encrypted. This password is used only to decrypt the private key and is not related to Kafka authentication.
 	SslKeyPassword *string `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
-	// [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when the Kafka server enables mutual SSL authentication (ssl.client.auth=required). Format: Base64-encoded PEM format, containing the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Note: Ensure that the beginning and end of each PEM file content are \\"-----BEGIN CERTIFICATE-----\\" and \\"-----END CERTIFICATE-----\\" respectively, and then Base64-encode the concatenated content.
+	// [Required for mutual authentication] The Kafka client certificate chain. If the Kafka server enables mutual SSL authentication (ssl.client.auth=required), this parameter is required. Format: Base64-encoded PEM format, containing the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Ensure that each PEM file content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\", then Base64-encode the concatenated content.
 	SslKeystoreCertificateChain *string `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
-	// [Required for bidirectional authentication] The SSL private key configuration object. When the Kafka server enables bidirectional SSL authentication, the client private key is required. Only KMS pattern is supported for the key: specify the Key Management Service EPS resource that stores the private key through KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:ap-southeast-1:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}
+	// [Required for bidirectional authentication] The SSL private key configuration object. If the Kafka server enables bidirectional SSL authentication, the client private key is required. Only KMS pattern is supported: specify the Key Management Service EPS resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}
 	SslKeystoreKey *UpdateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
-	// [Required for SSL] The Kafka server trust certificate. This certificate is used to authenticate the legitimacy of the Kafka Broker SSL certificate and prevent man-in-the-middle attacks. Format: Base64-encoded PEM format, typically containing the CA certificate of the Kafka server or the server certificate itself. Example: Base64-encode the PEM file content of the CA certificate (ensure that the beginning and end are \\"-----BEGIN CERTIFICATE-----\\" and \\"-----END CERTIFICATE-----\\" respectively). If Kafka uses a self-signed certificate, provide the CA certificate that issued the certificate.
+	// [Required for SSL] The Kafka server trust certificate. Used to authenticate the legitimacy of the Kafka Broker SSL certificate and prevent man-in-the-middle attacks. Format: Base64-encoded PEM format, typically containing the CA certificate of the Kafka server or the server certificate itself. Example: Base64-encode the PEM file content of the CA certificate (ensure it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued the certificate.
 	SslTruststoreCertificates *string `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
 	Topic                     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	VSwitchIds                *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
@@ -10296,9 +10460,9 @@ func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) Validate(
 }
 
 type UpdateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey struct {
-	// [Required] The KMS resource ARN that stores the SSL private key. This parameter is used to locate the Key Management Service instance that stores the client private key. Format example: \\"acs:kms:ap-southeast-1:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
+	// [Required] The KMS resource ARN that stores the SSL private key. Used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". You can view the ARN information of the corresponding key in the KMS console.
 	KmsArn *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
-	// [KMS KV mode] The key name in the KMS credential. When the KMS credential is stored as a key-value (KV) structure, specify this parameter to indicate the key corresponding to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS credential is in plain text mode (directly storing the PEM content of the private key), leave this parameter empty.
+	// [KMS KV mode] The key name in the KMS credential. If the KMS credential is stored in a key-value (KV) structure, specify this parameter to indicate the key that corresponds to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", set this parameter to \\"ssl_keystore_key\\". If the KMS credential is in plain text mode (the PEM content of the private key is stored directly), leave this parameter empty.
 	KmsSecretValueKey *string `json:"KmsSecretValueKey,omitempty" xml:"KmsSecretValueKey,omitempty"`
 }
 
@@ -10352,6 +10516,10 @@ type UpdateEventStreamingRequestSourceSourceApacheRocketMQCheckpointParameters s
 	// admin
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
 	// The network type.
+	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
 	//
 	// example:
 	//
@@ -10607,7 +10775,7 @@ func (s *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParamete
 }
 
 type UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters struct {
-	// The instance ID of MSMQ for Apache Kafka.
+	// The instance ID of ApsaraMQ for Kafka.
 	//
 	// example:
 	//
@@ -10669,7 +10837,7 @@ type UpdateEventStreamingRequestSourceSourceDTSParameters struct {
 	//
 	// LTC_CACHE_PRD
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The account of the consumer group.
+	// The username of the consumer group account.
 	//
 	// example:
 	//
@@ -10753,13 +10921,13 @@ func (s *UpdateEventStreamingRequestSourceSourceDTSParameters) Validate() error 
 }
 
 type UpdateEventStreamingRequestSourceSourceEventBusParameters struct {
-	// The event bus name.
+	// The name of the event bus.
 	//
 	// example:
 	//
 	// my-event-bus
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
-	// The event rule name.
+	// The name of the event rule.
 	//
 	// example:
 	//
@@ -10846,7 +11014,13 @@ type UpdateEventStreamingRequestSourceSourceKafkaParameters struct {
 	//
 	// vsw-wz9t1l1e8eu2om****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The encoding and decoding parameter. Valid values: 3 enumerated values.
+	// The encoding and decoding parameter. Valid values:
+	//
+	//   a. Json: The existing logic. Bytes are decoded to a character string by using UTF-8 and parsed as JSON.
+	//
+	//   b. Text: Bytes are decoded to a character string by using UTF-8 and directly placed into the payload.
+	//
+	//   c. Binary: Bytes are encoded to a character string by using Base64 encoding and placed into the payload.
 	//
 	// example:
 	//
@@ -11023,7 +11197,13 @@ func (s *UpdateEventStreamingRequestSourceSourceMNSParameters) Validate() error 
 }
 
 type UpdateEventStreamingRequestSourceSourceMQTTParameters struct {
-	// The message encoding format:
+	// The message encoding format. Valid values:
+	//
+	// - JSON
+	//
+	// - Text
+	//
+	// - Binary
 	//
 	// example:
 	//
@@ -11051,7 +11231,7 @@ type UpdateEventStreamingRequestSourceSourceMQTTParameters struct {
 	//
 	// topic_empower_1642400400779
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The vSwitch ID.
+	// The vSwitch IDs.
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	// VPC ID。
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -11142,20 +11322,26 @@ func (s *UpdateEventStreamingRequestSourceSourceMQTTParameters) Validate() error
 }
 
 type UpdateEventStreamingRequestSourceSourceOSSParameters struct {
-	// The bucket name in Object Storage Service (OSS).
+	// The name of the bucket in Object Storage Service (OSS).
 	//
 	// example:
 	//
 	// bucket_abc
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The delimiter. In chunked loading mode, this delimiter is used as the text chunking identifier. The default delimiter is the newline character
+	// The delimiter. In chunked loading mode, this delimiter is used as the chunk identifier for text. By default, the newline character
 	//
-	// .
+	//  is used as the delimiter.
 	//
 	// example:
 	//
 	// \\n
 	Delimiter *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
+	// The whitelist of OSS object file extensions. Objects are filtered during the scanning phase, and only objects whose extensions match the whitelist are imported into the knowledge base. Supported extensions: txt/md/markdown/html/htm/pdf/doc/docx/ppt/pptx/xls/xlsx (case-insensitive). If this parameter is not specified or is empty, no filtering by extension is applied.
+	//
+	// example:
+	//
+	// ["pdf","docx"]
+	FileExtensions []*string `json:"FileExtensions,omitempty" xml:"FileExtensions,omitempty" type:"Repeated"`
 	// The document loader.
 	//
 	// example:
@@ -11174,7 +11360,7 @@ type UpdateEventStreamingRequestSourceSourceOSSParameters struct {
 	//
 	// fun/document/
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The role name used for authorization of the event bus EventBridge to read OSS files. The role must have at least read-only permissions on OSS.
+	// The name of the role that provides authorization for the event bus EventBridge to read OSS files. The role must have at least read-only permissions on OSS.
 	//
 	// example:
 	//
@@ -11196,6 +11382,10 @@ func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) GetBucketName() *
 
 func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) GetDelimiter() *string {
 	return s.Delimiter
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) GetFileExtensions() []*string {
+	return s.FileExtensions
 }
 
 func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) GetLoadFormat() *string {
@@ -11221,6 +11411,11 @@ func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) SetBucketName(v s
 
 func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) SetDelimiter(v string) *UpdateEventStreamingRequestSourceSourceOSSParameters {
 	s.Delimiter = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) SetFileExtensions(v []*string) *UpdateEventStreamingRequestSourceSourceOSSParameters {
+	s.FileExtensions = v
 	return s
 }
 
@@ -11255,7 +11450,7 @@ type UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct 
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The message body data type.
+	// The data type of the message body.
 	//
 	// example:
 	//
@@ -11269,17 +11464,21 @@ type UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct 
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The network type.
 	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
+	//
 	// example:
 	//
 	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The password used to connect to the open-source RabbitMQ instance.
+	// The password used to connect to the open source RabbitMQ instance.
 	//
 	// example:
 	//
 	// ****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The queue name of the open-source RabbitMQ instance.
+	// The queue name of the open source RabbitMQ instance.
 	//
 	// example:
 	//
@@ -11291,7 +11490,7 @@ type UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct 
 	//
 	// sg-m5edtu24f12345****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The username used to connect to the open-source RabbitMQ instance.
+	// The username used to connect to the open source RabbitMQ instance.
 	//
 	// example:
 	//
@@ -11303,7 +11502,7 @@ type UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct 
 	//
 	// vsw-m5ev8asdc6h12345****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The virtual host name of the open-source RabbitMQ instance.
+	// The virtual host name of the open source RabbitMQ instance.
 	//
 	// example:
 	//
@@ -11540,7 +11739,7 @@ type UpdateEventStreamingRequestSourceSourceRabbitMQParameters struct {
 	//
 	// i-f8z9lqkldlb4oxsxwwub
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the queue of the ApsaraMQ for RabbitMQ instance.
+	// The name of the queue on the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -11552,7 +11751,7 @@ type UpdateEventStreamingRequestSourceSourceRabbitMQParameters struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the vhost of the ApsaraMQ for RabbitMQ instance.
+	// The name of the vhost on the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -11627,7 +11826,7 @@ type UpdateEventStreamingRequestSourceSourceRocketMQCheckpointParameters struct 
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The topic of the ApsaraMQ for RocketMQ instance.
+	// The topics of the ApsaraMQ for RocketMQ instance.
 	Topics []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
@@ -11686,7 +11885,13 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// ACL
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The message encoding format:
+	// The encoding format of the message body. Valid values:
+	//
+	// - Json
+	//
+	// - Text
+	//
+	// - Binary
 	//
 	// example:
 	//
@@ -11722,7 +11927,11 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// i-f8z9a9mcgwri1c1id****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network information of the instance:
+	// The instance network information. Valid values:
+	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
 	//
 	// example:
 	//
@@ -11740,7 +11949,13 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// sg-m5edtu24f12345****
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
-	// The instance type.
+	// The instance type. Valid values:
+	//
+	// - Cloud_4 (default): Alibaba Cloud RocketMQ 4.0 instance.
+	//
+	// - Cloud_5: Alibaba Cloud RocketMQ 5.0 instance.
+	//
+	// - SelfBuilt: self-managed Apache RocketMQ instance.
 	//
 	// example:
 	//
@@ -11766,11 +11981,23 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
 	// The network type.
 	//
+	// - PublicNetwork
+	//
+	// - PrivateNetwork
+	//
 	// example:
 	//
 	// PublicNetwork
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The consumption offset of the message. Valid values:
+	// The consumption offset of messages. Valid values:
+	//
+	// - CONSUMEFROMLASTOFFSET: starts consumption from the latest offset.
+	//
+	// - CONSUMEFROMFIRSTOFFSET: starts consumption from the earliest offset.
+	//
+	// - CONSUMEFROMTIMESTAMP: starts consumption from the offset at a specified point in time.
+	//
+	// Default value: CONSUMEFROMLAST_OFFSET.
 	//
 	// example:
 	//
@@ -11794,7 +12021,7 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// test
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The timestamp. This parameter is valid only when the Offset parameter is set to CONSUMEFROMTIMESTAMP.
+	// The timestamp. This parameter takes effect only when the Offset parameter is set to CONSUMEFROMTIMESTAMP.
 	//
 	// example:
 	//
@@ -12040,7 +12267,7 @@ func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) Validate() e
 }
 
 type UpdateEventStreamingRequestSourceSourceSLSParameters struct {
-	// The role name used for authorization of the event bus EventBridge to read SLS log content. The following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, select "Alibaba Cloud Service" and set "Trusted Service" to "event bus".
+	// The role that provides authorization for the event bus EventBridge to read SLS log content. When you create the role for the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service as the trusted entity and select event bus as the trusted service.
 	//
 	// example:
 	//
@@ -12070,7 +12297,7 @@ func (s *UpdateEventStreamingRequestSourceSourceSLSParameters) Validate() error 
 }
 
 type UpdateEventStreamingRequestTransforms struct {
-	// The Alibaba Cloud Resource Name (ARN) of the cloud service, such as the ARN of a function in Function Compute.
+	// The ARN of the Alibaba Cloud service, such as the ARN of a function in Function Compute.
 	//
 	// example:
 	//

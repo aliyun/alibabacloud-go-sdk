@@ -16,13 +16,13 @@ type iSchemaColumn interface {
 }
 
 type SchemaColumn struct {
-	// Column name
+	// The column name.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Column type
+	// The column type.
 	//
 	// example:
 	//

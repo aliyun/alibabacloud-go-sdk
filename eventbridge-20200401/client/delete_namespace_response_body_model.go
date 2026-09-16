@@ -20,25 +20,25 @@ type iDeleteNamespaceResponseBody interface {
 }
 
 type DeleteNamespaceResponseBody struct {
-	// Response code. 200 indicates success
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response message
+	// The response message.
 	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation was successful
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

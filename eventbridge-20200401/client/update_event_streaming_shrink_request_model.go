@@ -42,7 +42,7 @@ type UpdateEventStreamingShrinkRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns)
+	// The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns).
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type UpdateEventStreamingShrinkRequest struct {
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
 	// The generic JSON configurations for the event provider. This parameter is mutually exclusive with Source.
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The runtime environment parameters.
+	// The runtime parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
-	// The event target. You must select exactly one Sink type.
+	// The event target. You must select exactly one type of Sink.
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
-	// The event provider. You must select one and only one type of Source.
+	// The event provider. You must select exactly one Source type.
 	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The event transformer configurations.
 	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
