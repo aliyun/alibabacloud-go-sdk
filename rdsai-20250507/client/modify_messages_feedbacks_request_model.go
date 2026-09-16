@@ -18,25 +18,19 @@ type iModifyMessagesFeedbacksRequest interface {
 }
 
 type ModifyMessagesFeedbacksRequest struct {
-	// The rating of the message.
-	//
-	// Valid values:
-	//
-	// 	- like
-	//
-	// 	- dislike
+	// The feedback content.
 	//
 	// example:
 	//
-	// 无法理解上下文；答非所问
+	// Unable to understand context; irrelevant answer
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The operation that you want to perform. Set the value to **ModifyMessagesFeedbacks**.
+	// The message ID.
 	//
 	// example:
 	//
 	// yy9rkn6q-js75-0dka-0cc2-6b5o86uj****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The message ID.
+	// The rating.
 	//
 	// example:
 	//

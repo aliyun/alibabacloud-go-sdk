@@ -18,6 +18,11 @@ type iDescribeAppInstanceAttributeRequest interface {
 }
 
 type DescribeAppInstanceAttributeRequest struct {
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//
@@ -25,7 +30,7 @@ type DescribeAppInstanceAttributeRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//

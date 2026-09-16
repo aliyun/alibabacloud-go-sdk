@@ -106,7 +106,7 @@ type GetConversationsResponseBodyData struct {
 	//
 	// 1764055092
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The ID of the historical conversation.
+	// The historical conversation ID.
 	//
 	// example:
 	//
@@ -116,15 +116,29 @@ type GetConversationsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 测试搜索RDS资源
+	// Test searching for RDS resources
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
 	IsRunning    *bool   `json:"IsRunning,omitempty" xml:"IsRunning,omitempty"`
-	// The name of the historical conversation.
+	// The historical conversation name.
 	//
 	// example:
 	//
-	// 搜索RDS资源。
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Search for RDS resources
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The session status. Valid values:
+	//
+	// - idle: The session is idle.
+	//
+	// - running: The session is generating a response.
+	//
+	// - pending_approval: The session is waiting for approval or manual review.
+	//
+	// If both pending_approval and running conditions are met, pending_approval is returned.
+	//
+	// example:
+	//
+	// idle
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
@@ -156,6 +170,10 @@ func (s *GetConversationsResponseBodyData) GetName() *string {
 	return s.Name
 }
 
+func (s *GetConversationsResponseBodyData) GetStatus() *string {
+	return s.Status
+}
+
 func (s *GetConversationsResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
@@ -182,6 +200,11 @@ func (s *GetConversationsResponseBodyData) SetIsRunning(v bool) *GetConversation
 
 func (s *GetConversationsResponseBodyData) SetName(v string) *GetConversationsResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *GetConversationsResponseBodyData) SetStatus(v string) *GetConversationsResponseBodyData {
+	s.Status = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iGetConversationsRequest interface {
 	GetPinned() *string
 	SetSortBy(v string) *GetConversationsRequest
 	GetSortBy() *string
+	SetWorkspaceId(v string) *GetConversationsRequest
+	GetWorkspaceId() *string
 }
 
 type GetConversationsRequest struct {
@@ -32,7 +34,7 @@ type GetConversationsRequest struct {
 	//
 	// 10
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The favorite pinning flag for the application.
+	// The pinned bookmark flag for the application.
 	//
 	// example:
 	//
@@ -44,6 +46,12 @@ type GetConversationsRequest struct {
 	//
 	// CreatedAt
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ContextDB workspace ID.
+	//
+	// example:
+	//
+	// 00000000-0000-4000-8000-000000000001
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetConversationsRequest) String() string {
@@ -70,6 +78,10 @@ func (s *GetConversationsRequest) GetSortBy() *string {
 	return s.SortBy
 }
 
+func (s *GetConversationsRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *GetConversationsRequest) SetLastId(v string) *GetConversationsRequest {
 	s.LastId = &v
 	return s
@@ -87,6 +99,11 @@ func (s *GetConversationsRequest) SetPinned(v string) *GetConversationsRequest {
 
 func (s *GetConversationsRequest) SetSortBy(v string) *GetConversationsRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *GetConversationsRequest) SetWorkspaceId(v string) *GetConversationsRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

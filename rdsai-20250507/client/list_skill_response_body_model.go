@@ -22,7 +22,7 @@ type iListSkillResponseBody interface {
 }
 
 type ListSkillResponseBody struct {
-	// The list of skills.
+	// The skill list.
 	Data []*ListSkillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -30,19 +30,19 @@ type ListSkillResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request identifier.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,45 +117,86 @@ func (s *ListSkillResponseBody) Validate() error {
 }
 
 type ListSkillResponseBodyData struct {
-	// The content of the skill.
+	// The ID of the currently active version.
 	//
 	// example:
 	//
-	// {"MySQL": "MySQL 优化指南...","PostgreSQL": "PostgreSQL 优化指南..."}
+	// version-example
+	ActiveVersionId *string `json:"ActiveVersionId,omitempty" xml:"ActiveVersionId,omitempty"`
+	// The skill category.
+	//
+	// example:
+	//
+	// productivity
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The data content.
+	//
+	// example:
+	//
+	// {"MySQL": "MySQL optimization guide...","PostgreSQL": "PostgreSQL optimization guide..."}
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The creation time of the skill.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-02-04T21:14:45Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The list of database engines.
+	// The list of database types.
 	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	// The description of the skill.
+	// The description.
 	//
 	// example:
 	//
-	// SQL审查专家：全面审核SQL的安全性、性能与规范性，识别风险并提供优化建议。用户提交SQL或询问“SQL审核”“SQL Review”“有风险吗”“如何优化”时，立即启用。
+	// SQL Review Expert: Comprehensively reviews SQL for security, performance, and compliance, identifies risks, and provides optimization suggestions. Activated immediately when a user submits SQL or asks about "SQL review", "SQL Review", "any risks", or "how to optimize"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the skill.
+	//
+	// example:
+	//
+	// Example Skill
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The public HTTPS URL of the current icon. Empty if not configured.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// https://example.com/skill-icon.png
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	// The unique identifier of the skill.
 	//
 	// example:
 	//
 	// 9a2ba261-7bb2-41a7-9c6e-1799fb5b****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the skill.
+	// Indicates whether the skill is deleted.
+	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// The skill name.
 	//
 	// example:
 	//
 	// sql-review
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the skill.
+	// The visibility scope of the skill.
+	//
+	// example:
+	//
+	// PRIVATE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The skill type.
 	//
 	// example:
 	//
 	// system
 	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
-	// The update time of the skill.
+	// The stable identifier of the skill.
+	//
+	// example:
+	//
+	// example-skill
+	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
+	// The update time.
 	//
 	// example:
 	//
@@ -169,6 +210,14 @@ func (s ListSkillResponseBodyData) String() string {
 
 func (s ListSkillResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListSkillResponseBodyData) GetActiveVersionId() *string {
+	return s.ActiveVersionId
+}
+
+func (s *ListSkillResponseBodyData) GetCategory() *string {
+	return s.Category
 }
 
 func (s *ListSkillResponseBodyData) GetContent() map[string]interface{} {
@@ -187,20 +236,50 @@ func (s *ListSkillResponseBodyData) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListSkillResponseBodyData) GetDisplayName() *string {
+	return s.DisplayName
+}
+
+func (s *ListSkillResponseBodyData) GetIcon() *string {
+	return s.Icon
+}
+
 func (s *ListSkillResponseBodyData) GetId() *string {
 	return s.Id
+}
+
+func (s *ListSkillResponseBodyData) GetIsDeleted() *bool {
+	return s.IsDeleted
 }
 
 func (s *ListSkillResponseBodyData) GetName() *string {
 	return s.Name
 }
 
+func (s *ListSkillResponseBodyData) GetScope() *string {
+	return s.Scope
+}
+
 func (s *ListSkillResponseBodyData) GetSkillType() *string {
 	return s.SkillType
 }
 
+func (s *ListSkillResponseBodyData) GetSlug() *string {
+	return s.Slug
+}
+
 func (s *ListSkillResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
+}
+
+func (s *ListSkillResponseBodyData) SetActiveVersionId(v string) *ListSkillResponseBodyData {
+	s.ActiveVersionId = &v
+	return s
+}
+
+func (s *ListSkillResponseBodyData) SetCategory(v string) *ListSkillResponseBodyData {
+	s.Category = &v
+	return s
 }
 
 func (s *ListSkillResponseBodyData) SetContent(v map[string]interface{}) *ListSkillResponseBodyData {
@@ -223,8 +302,23 @@ func (s *ListSkillResponseBodyData) SetDescription(v string) *ListSkillResponseB
 	return s
 }
 
+func (s *ListSkillResponseBodyData) SetDisplayName(v string) *ListSkillResponseBodyData {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListSkillResponseBodyData) SetIcon(v string) *ListSkillResponseBodyData {
+	s.Icon = &v
+	return s
+}
+
 func (s *ListSkillResponseBodyData) SetId(v string) *ListSkillResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *ListSkillResponseBodyData) SetIsDeleted(v bool) *ListSkillResponseBodyData {
+	s.IsDeleted = &v
 	return s
 }
 
@@ -233,8 +327,18 @@ func (s *ListSkillResponseBodyData) SetName(v string) *ListSkillResponseBodyData
 	return s
 }
 
+func (s *ListSkillResponseBodyData) SetScope(v string) *ListSkillResponseBodyData {
+	s.Scope = &v
+	return s
+}
+
 func (s *ListSkillResponseBodyData) SetSkillType(v string) *ListSkillResponseBodyData {
 	s.SkillType = &v
+	return s
+}
+
+func (s *ListSkillResponseBodyData) SetSlug(v string) *ListSkillResponseBodyData {
+	s.Slug = &v
 	return s
 }
 

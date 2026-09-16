@@ -14,7 +14,7 @@ type iDeleteCustomAgentRequest interface {
 }
 
 type DeleteCustomAgentRequest struct {
-	// The operation that you want to perform. Set the value to **DeleteCustomAgent**.
+	// AgentId。
 	//
 	// example:
 	//

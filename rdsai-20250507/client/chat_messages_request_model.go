@@ -30,14 +30,14 @@ type ChatMessagesRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of the event = message response. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
 	//
 	// example:
 	//
 	// inline
 	EventMode *string                     `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	Files     []*ChatMessagesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// The task input.
+	// The task inputs.
 	Inputs *ChatMessagesRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The parent message ID.
 	//
@@ -47,11 +47,9 @@ type ChatMessagesRequest struct {
 	ParentMessageId *string `json:"ParentMessageId,omitempty" xml:"ParentMessageId,omitempty"`
 	// The query content.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
-	// Disk usage of instance rm-bp14as9914vd3****, is capacity expansion needed
+	// Check the disk usage of instance rm-bp14as9914vd3***	- and whether storage expansion is needed
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -211,6 +209,12 @@ type ChatMessagesRequestInputs struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tool approval call ID for resuming execution. Pass this parameter after all decisions in the current approval round are completed in the console to continue the interrupted ChatMessage Loop. Do not pass this parameter for regular conversations.
+	//
+	// example:
+	//
+	// call-example
+	ResumeCallId *string `json:"ResumeCallId,omitempty" xml:"ResumeCallId,omitempty"`
 	// The thinking depth.
 	//
 	// example:
@@ -223,6 +227,18 @@ type ChatMessagesRequestInputs struct {
 	//
 	// UTC
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The tool approval mode for the current conversation. Valid values: read_only (read-only, write tools are rejected), manual (write tools require manual approval), and auto (the approval sub-agent automatically determines the action. If the result is needs_human, the approval is escalated to manual review). When this parameter is passed, the approval mode of the current conversation is updated.
+	//
+	// example:
+	//
+	// manual
+	ToolApprovalMode *string `json:"ToolApprovalMode,omitempty" xml:"ToolApprovalMode,omitempty"`
+	// The ContextDB workspace ID.
+	//
+	// example:
+	//
+	// 00000000-0000-4000-8000-000000000001
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ChatMessagesRequestInputs) String() string {
@@ -253,12 +269,24 @@ func (s *ChatMessagesRequestInputs) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ChatMessagesRequestInputs) GetResumeCallId() *string {
+	return s.ResumeCallId
+}
+
 func (s *ChatMessagesRequestInputs) GetThinkEffort() *string {
 	return s.ThinkEffort
 }
 
 func (s *ChatMessagesRequestInputs) GetTimezone() *string {
 	return s.Timezone
+}
+
+func (s *ChatMessagesRequestInputs) GetToolApprovalMode() *string {
+	return s.ToolApprovalMode
+}
+
+func (s *ChatMessagesRequestInputs) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ChatMessagesRequestInputs) SetCustomAgentId(v string) *ChatMessagesRequestInputs {
@@ -286,6 +314,11 @@ func (s *ChatMessagesRequestInputs) SetRegionId(v string) *ChatMessagesRequestIn
 	return s
 }
 
+func (s *ChatMessagesRequestInputs) SetResumeCallId(v string) *ChatMessagesRequestInputs {
+	s.ResumeCallId = &v
+	return s
+}
+
 func (s *ChatMessagesRequestInputs) SetThinkEffort(v string) *ChatMessagesRequestInputs {
 	s.ThinkEffort = &v
 	return s
@@ -293,6 +326,16 @@ func (s *ChatMessagesRequestInputs) SetThinkEffort(v string) *ChatMessagesReques
 
 func (s *ChatMessagesRequestInputs) SetTimezone(v string) *ChatMessagesRequestInputs {
 	s.Timezone = &v
+	return s
+}
+
+func (s *ChatMessagesRequestInputs) SetToolApprovalMode(v string) *ChatMessagesRequestInputs {
+	s.ToolApprovalMode = &v
+	return s
+}
+
+func (s *ChatMessagesRequestInputs) SetWorkspaceId(v string) *ChatMessagesRequestInputs {
+	s.WorkspaceId = &v
 	return s
 }
 

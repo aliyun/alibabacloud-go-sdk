@@ -17,6 +17,8 @@ type iGetMessagesRequest interface {
 	GetFirstId() *string
 	SetLimit(v int64) *GetMessagesRequest
 	GetLimit() *int64
+	SetWorkspaceId(v string) *GetMessagesRequest
+	GetWorkspaceId() *string
 }
 
 type GetMessagesRequest struct {
@@ -33,12 +35,18 @@ type GetMessagesRequest struct {
 	//
 	// 038866af-a050-4bc5-bfad-b7bfc838****
 	FirstId *string `json:"FirstId,omitempty" xml:"FirstId,omitempty"`
-	// The number of entries per page in a paging query. Valid values: 1 to 100. Default value: 100.
+	// The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The ContextDB workspace ID.
+	//
+	// example:
+	//
+	// 00000000-0000-4000-8000-000000000001
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetMessagesRequest) String() string {
@@ -65,6 +73,10 @@ func (s *GetMessagesRequest) GetLimit() *int64 {
 	return s.Limit
 }
 
+func (s *GetMessagesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *GetMessagesRequest) SetConversationId(v string) *GetMessagesRequest {
 	s.ConversationId = &v
 	return s
@@ -82,6 +94,11 @@ func (s *GetMessagesRequest) SetFirstId(v string) *GetMessagesRequest {
 
 func (s *GetMessagesRequest) SetLimit(v int64) *GetMessagesRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *GetMessagesRequest) SetWorkspaceId(v string) *GetMessagesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

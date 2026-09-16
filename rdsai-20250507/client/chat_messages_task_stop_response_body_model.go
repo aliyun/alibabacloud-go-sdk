@@ -22,7 +22,7 @@ type ChatMessagesTaskStopResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The returned result.
 	//
 	// example:
 	//

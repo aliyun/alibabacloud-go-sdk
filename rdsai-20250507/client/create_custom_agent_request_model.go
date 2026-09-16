@@ -32,8 +32,9 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// 查询实例列表Agent
-	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// QueryInstanceListAgent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of associated skill IDs.
 	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
 	// The system prompt.
 	//
@@ -41,7 +42,7 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// 我是您用来查询实例列表的专属Agent
+	// I am your dedicated agent for querying instance lists
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`

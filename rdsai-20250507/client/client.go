@@ -26,20 +26,12 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-wulanchabu":  dara.String("rdsai.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("rdsai.aliyuncs.com"),
-		"cn-beijing":     dara.String("rdsai.aliyuncs.com"),
-		"ap-northeast-1": dara.String("rdsai.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":     dara.String("rdsai.cn-chengdu.aliyuncs.com"),
-		"cn-shanghai":    dara.String("rdsai.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("rdsai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("rdsai.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": dara.String("rdsai.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3": dara.String("rdsai.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5": dara.String("rdsai.ap-southeast-5.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("rdsai.aliyuncs.com"),
-		"us-west-1":      dara.String("rdsai.us-west-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("rdsai.eu-central-1.aliyuncs.com"),
+		"cn-wulanchabu": dara.String("rdsai.aliyuncs.com"),
+		"cn-shenzhen":   dara.String("rdsai.aliyuncs.com"),
+		"cn-beijing":    dara.String("rdsai.aliyuncs.com"),
+		"cn-shanghai":   dara.String("rdsai.aliyuncs.com"),
+		"cn-guangzhou":  dara.String("rdsai.aliyuncs.com"),
+		"cn-hangzhou":   dara.String("rdsai.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -198,6 +190,10 @@ func (client *Client) ChatMessagesTaskStopWithOptions(request *ChatMessagesTaskS
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1269,7 +1265,7 @@ func (client *Client) CreateScheduledTask(request *CreateScheduledTaskRequest) (
 
 // Summary:
 //
-// Create a user-defined skill.
+// Creates a user-defined Skill.
 //
 // @param tmpReq - CreateSkillRequest
 //
@@ -1310,6 +1306,18 @@ func (client *Client) CreateSkillWithOptions(tmpReq *CreateSkillRequest, runtime
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.UploadId) {
+		query["UploadId"] = request.UploadId
+	}
+
+	if !dara.IsNil(request.UploadToken) {
+		query["UploadToken"] = request.UploadToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1335,7 +1343,7 @@ func (client *Client) CreateSkillWithOptions(tmpReq *CreateSkillRequest, runtime
 
 // Summary:
 //
-// Create a user-defined skill.
+// Creates a user-defined Skill.
 //
 // @param request - CreateSkillRequest
 //
@@ -1677,7 +1685,7 @@ func (client *Client) DeleteContextDatabaseWorkspace(request *DeleteContextDatab
 
 // Summary:
 //
-// Deletes the dedicated agent created by a user.
+// Deletes a dedicated agent created by the user.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -1721,7 +1729,7 @@ func (client *Client) DeleteCustomAgentWithOptions(request *DeleteCustomAgentReq
 
 // Summary:
 //
-// Deletes the dedicated agent created by a user.
+// Deletes a dedicated agent created by the user.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -1891,7 +1899,7 @@ func (client *Client) DeleteScheduledTask(request *DeleteScheduledTaskRequest) (
 
 // Summary:
 //
-// Deletes the specified skill.
+// Deletes a specified Skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -1908,6 +1916,10 @@ func (client *Client) DeleteSkillWithOptions(request *DeleteSkillRequest, runtim
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SkillId) {
 		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1935,7 +1947,7 @@ func (client *Client) DeleteSkillWithOptions(request *DeleteSkillRequest, runtim
 
 // Summary:
 //
-// Deletes the specified skill.
+// Deletes a specified Skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -3123,13 +3135,13 @@ func (client *Client) DescribeMOUsageDetailExport(request *DescribeMOUsageDetail
 
 // Summary:
 //
-// View basic information and usage for the RDS AI Assistant Ultimate Edition.
+// Queries the basic information and usage of RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeModelOperatorRequest
 //
@@ -3146,6 +3158,10 @@ func (client *Client) DescribeModelOperatorWithOptions(request *DescribeModelOpe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3173,13 +3189,13 @@ func (client *Client) DescribeModelOperatorWithOptions(request *DescribeModelOpe
 
 // Summary:
 //
-// View basic information and usage for the RDS AI Assistant Ultimate Edition.
+// Queries the basic information and usage of RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeModelOperatorRequest
 //
@@ -3833,6 +3849,10 @@ func (client *Client) GetConversationsWithOptions(request *GetConversationsReque
 		query["SortBy"] = request.SortBy
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4039,6 +4059,10 @@ func (client *Client) GetMessagesWithOptions(request *GetMessagesRequest, runtim
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4082,11 +4106,13 @@ func (client *Client) GetMessages(request *GetMessagesRequest) (_result *GetMess
 
 // Summary:
 //
-// # Obtain RDS AI Assistant Ultimate order information
+// Retrieves order information for the RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
-// ### Applicable DPI engine
+// ### Applicable engine
+//
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - GetModelOperatorOrderRequest
 //
@@ -4100,7 +4126,14 @@ func (client *Client) GetModelOperatorOrderWithOptions(request *GetModelOperator
 			return _result, _err
 		}
 	}
-	req := &openapiutil.OpenApiRequest{}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetModelOperatorOrder"),
 		Version:     dara.String("2025-05-07"),
@@ -4123,11 +4156,13 @@ func (client *Client) GetModelOperatorOrderWithOptions(request *GetModelOperator
 
 // Summary:
 //
-// # Obtain RDS AI Assistant Ultimate order information
+// Retrieves order information for the RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
-// ### Applicable DPI engine
+// ### Applicable engine
+//
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - GetModelOperatorOrderRequest
 //
@@ -4293,7 +4328,7 @@ func (client *Client) GetScheduledReports(request *GetScheduledReportsRequest) (
 
 // Summary:
 //
-// Obtains the details of a specified skill. You can obtain the details of user-defined skills or the system preset skills.
+// Retrieves the details of a specified Skill. You can retrieve your own Skills or system preset Skills.
 //
 // @param request - GetSkillRequest
 //
@@ -4314,6 +4349,10 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dar
 
 	if !dara.IsNil(request.SkillId) {
 		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4341,7 +4380,7 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dar
 
 // Summary:
 //
-// Obtains the details of a specified skill. You can obtain the details of user-defined skills or the system preset skills.
+// Retrieves the details of a specified Skill. You can retrieve your own Skills or system preset Skills.
 //
 // @param request - GetSkillRequest
 //
@@ -5032,7 +5071,7 @@ func (client *Client) ListScheduledTasks(request *ListScheduledTasksRequest) (_r
 
 // Summary:
 //
-// Obtains the user-defined skills and all system preset skills of the current user.
+// Retrieves the custom skills of the current user and all system-preset skills.
 //
 // @param request - ListSkillRequest
 //
@@ -5057,6 +5096,10 @@ func (client *Client) ListSkillWithOptions(request *ListSkillRequest, runtime *d
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5084,7 +5127,7 @@ func (client *Client) ListSkillWithOptions(request *ListSkillRequest, runtime *d
 
 // Summary:
 //
-// Obtains the user-defined skills and all system preset skills of the current user.
+// Retrieves the custom skills of the current user and all system-preset skills.
 //
 // @param request - ListSkillRequest
 //
@@ -5912,7 +5955,7 @@ func (client *Client) ModifyInstancesSSL(request *ModifyInstancesSSLRequest) (_r
 
 // Summary:
 //
-// Modifies the returned messages.
+// Modifies message feedback.
 //
 // @param request - ModifyMessagesFeedbacksRequest
 //
@@ -5964,7 +6007,7 @@ func (client *Client) ModifyMessagesFeedbacksWithOptions(request *ModifyMessages
 
 // Summary:
 //
-// Modifies the returned messages.
+// Modifies message feedback.
 //
 // @param request - ModifyMessagesFeedbacksRequest
 //
@@ -7484,7 +7527,7 @@ func (client *Client) UpdateMOQuotaAlertThreshold(request *UpdateMOQuotaAlertThr
 
 // Summary:
 //
-// Updates the information about a specified skill.
+// Updates the information of a specified skill.
 //
 // @param tmpReq - UpdateSkillRequest
 //
@@ -7554,7 +7597,7 @@ func (client *Client) UpdateSkillWithOptions(tmpReq *UpdateSkillRequest, runtime
 
 // Summary:
 //
-// Updates the information about a specified skill.
+// Updates the information of a specified skill.
 //
 // @param request - UpdateSkillRequest
 //

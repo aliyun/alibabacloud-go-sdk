@@ -20,7 +20,7 @@ type iDescribeModelOperatorResponseBody interface {
 }
 
 type DescribeModelOperatorResponseBody struct {
-	// The response data.
+	// The request result.
 	Data *DescribeModelOperatorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -28,13 +28,13 @@ type DescribeModelOperatorResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The request result.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *DescribeModelOperatorResponseBody) Validate() error {
 }
 
 type DescribeModelOperatorResponseBodyData struct {
-	// The API key.
+	// The system API key.
 	//
 	// example:
 	//
@@ -104,29 +104,29 @@ type DescribeModelOperatorResponseBodyData struct {
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// Indicates whether auto-renewal is enabled for the instance. Valid values:
 	//
-	// - **true**: Enabled.
+	// 	- **true**: Enabled.
 	//
-	// - **false*	- (default): Disabled.
+	// 	- **false*	- (default): Disabled.
 	//
 	// example:
 	//
 	// False
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The endpoint URL for model requests.
+	// The URL for model invocation.
 	//
 	// example:
 	//
 	// http://xxx.yy/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	// The billing method. Valid values: `PREPAY` (subscription) and `POSTPAY` (pay-as-you-go).
+	// The billing type.
 	//
 	// example:
 	//
 	// PREPAY / POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The daily token usage.
+	// The daily usage list.
 	DailyUsage []*DescribeModelOperatorResponseBodyDataDailyUsage `json:"DailyUsage,omitempty" xml:"DailyUsage,omitempty" type:"Repeated"`
-	// The UNIX timestamp, in milliseconds, indicating when the instance expires.
+	// The end time of the instance. Format: Timestamp.
 	//
 	// example:
 	//
@@ -138,40 +138,41 @@ type DescribeModelOperatorResponseBodyData struct {
 	//
 	// xlarge
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The usage of each API key, including deleted keys.
+	// The usage of each key (including deleted keys).
 	KeyUsageList []*DescribeModelOperatorResponseBodyDataKeyUsageList `json:"KeyUsageList,omitempty" xml:"KeyUsageList,omitempty" type:"Repeated"`
-	// Indicates whether prefix caching is enabled.
+	// Indicates whether the prefix routing persistence feature is enabled.
 	//
 	// example:
 	//
 	// false
-	PrefixCacheEnabled *bool     `json:"PrefixCacheEnabled,omitempty" xml:"PrefixCacheEnabled,omitempty"`
-	SessionIds         []*string `json:"SessionIds,omitempty" xml:"SessionIds,omitempty" type:"Repeated"`
-	// The UNIX timestamp, in milliseconds, indicating when the instance started.
+	PrefixCacheEnabled *bool `json:"PrefixCacheEnabled,omitempty" xml:"PrefixCacheEnabled,omitempty"`
+	// The list of headers used for routing persistence. The headers consist of lowercase letters, digits, and hyphens (-).
+	SessionIds []*string `json:"SessionIds,omitempty" xml:"SessionIds,omitempty" type:"Repeated"`
+	// The start time of the instance. Format: Timestamp.
 	//
 	// example:
 	//
 	// 1772439028000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status.
+	// The module status.
 	//
 	// example:
 	//
 	// active/creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total quota for the current cycle, such as the monthly quota.
+	// The total quota for the current cycle (such as the monthly total).
 	//
 	// example:
 	//
 	// 200000000
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The usage in the current cycle, such as the monthly usage.
+	// The used quota for the current cycle (such as the monthly usage).
 	//
 	// example:
 	//
@@ -345,13 +346,13 @@ func (s *DescribeModelOperatorResponseBodyData) Validate() error {
 }
 
 type DescribeModelOperatorResponseBodyDataDailyUsage struct {
-	// The date of the usage record.
+	// The date (accurate to the day).
 	//
 	// example:
 	//
 	// 2026-03-31
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The number of tokens used on this date.
+	// The token usage.
 	//
 	// example:
 	//
@@ -390,39 +391,39 @@ func (s *DescribeModelOperatorResponseBodyDataDailyUsage) Validate() error {
 }
 
 type DescribeModelOperatorResponseBodyDataKeyUsageList struct {
-	// The API key.
+	// API Key
 	//
 	// example:
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The daily usage for the API key.
+	// The daily usage of the API key.
 	DailyUsage []*DescribeModelOperatorResponseBodyDataKeyUsageListDailyUsage `json:"DailyUsage,omitempty" xml:"DailyUsage,omitempty" type:"Repeated"`
-	// Indicates whether the API key has been deleted.
+	// Indicates whether the API key is deleted.
 	//
 	// example:
 	//
 	// fase
 	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The name of the API key.
+	// The API key name.
 	//
 	// example:
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The type of the API key.
+	// The key type.
 	//
 	// example:
 	//
 	// fixed
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The total number of tokens used by this API key.
+	// The total token usage.
 	//
 	// example:
 	//
 	// 100000
 	KeyUsed *string `json:"KeyUsed,omitempty" xml:"KeyUsed,omitempty"`
-	// The token usage for the current cycle.
+	// The used token quota.
 	//
 	// example:
 	//
@@ -515,13 +516,13 @@ func (s *DescribeModelOperatorResponseBodyDataKeyUsageList) Validate() error {
 }
 
 type DescribeModelOperatorResponseBodyDataKeyUsageListDailyUsage struct {
-	// The date of the usage record.
+	// The date (accurate to the day).
 	//
 	// example:
 	//
 	// 2026-03-31
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The number of tokens used by the API key on this date.
+	// The number of tokens used.
 	//
 	// example:
 	//

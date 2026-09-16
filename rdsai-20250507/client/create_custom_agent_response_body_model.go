@@ -50,7 +50,7 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// 查询实例列表Agent
+	// QueryInstanceListAgent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
@@ -63,7 +63,7 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// 我是您用来查询实例列表的专属Agent
+	// I am your dedicated agent for querying instance lists
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`

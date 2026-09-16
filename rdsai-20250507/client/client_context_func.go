@@ -118,6 +118,10 @@ func (client *Client) ChatMessagesTaskStopWithContext(ctx context.Context, reque
 		query["TaskId"] = request.TaskId
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -933,7 +937,7 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Create a user-defined skill.
+// Creates a user-defined Skill.
 //
 // @param tmpReq - CreateSkillRequest
 //
@@ -972,6 +976,18 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, tmpReq *Create
 
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.UploadId) {
+		query["UploadId"] = request.UploadId
+	}
+
+	if !dara.IsNil(request.UploadToken) {
+		query["UploadToken"] = request.UploadToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1223,7 +1239,7 @@ func (client *Client) DeleteContextDatabaseWorkspaceWithContext(ctx context.Cont
 
 // Summary:
 //
-// Deletes the dedicated agent created by a user.
+// Deletes a dedicated agent created by the user.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -1373,7 +1389,7 @@ func (client *Client) DeleteScheduledTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes the specified skill.
+// Deletes a specified Skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -1390,6 +1406,10 @@ func (client *Client) DeleteSkillWithContext(ctx context.Context, request *Delet
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SkillId) {
 		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2253,13 +2273,13 @@ func (client *Client) DescribeMOUsageDetailExportWithContext(ctx context.Context
 
 // Summary:
 //
-// View basic information and usage for the RDS AI Assistant Ultimate Edition.
+// Queries the basic information and usage of RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
-// [RDS AI Assistant Enterprise Edition](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - DescribeModelOperatorRequest
 //
@@ -2276,6 +2296,10 @@ func (client *Client) DescribeModelOperatorWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2771,6 +2795,10 @@ func (client *Client) GetConversationsWithContext(ctx context.Context, request *
 		query["SortBy"] = request.SortBy
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2923,6 +2951,10 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2948,11 +2980,13 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 
 // Summary:
 //
-// # Obtain RDS AI Assistant Ultimate order information
+// Retrieves order information for the RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
-// ### Applicable DPI engine
+// ### Applicable engine
+//
+// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - GetModelOperatorOrderRequest
 //
@@ -2966,7 +3000,14 @@ func (client *Client) GetModelOperatorOrderWithContext(ctx context.Context, requ
 			return _result, _err
 		}
 	}
-	req := &openapiutil.OpenApiRequest{}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetModelOperatorOrder"),
 		Version:     dara.String("2025-05-07"),
@@ -3101,7 +3142,7 @@ func (client *Client) GetScheduledReportsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains the details of a specified skill. You can obtain the details of user-defined skills or the system preset skills.
+// Retrieves the details of a specified Skill. You can retrieve your own Skills or system preset Skills.
 //
 // @param request - GetSkillRequest
 //
@@ -3122,6 +3163,10 @@ func (client *Client) GetSkillWithContext(ctx context.Context, request *GetSkill
 
 	if !dara.IsNil(request.SkillId) {
 		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3609,7 +3654,7 @@ func (client *Client) ListScheduledTasksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Obtains the user-defined skills and all system preset skills of the current user.
+// Retrieves the custom skills of the current user and all system-preset skills.
 //
 // @param request - ListSkillRequest
 //
@@ -3634,6 +3679,10 @@ func (client *Client) ListSkillWithContext(ctx context.Context, request *ListSki
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4265,7 +4314,7 @@ func (client *Client) ModifyInstancesSSLWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Modifies the returned messages.
+// Modifies message feedback.
 //
 // @param request - ModifyMessagesFeedbacksRequest
 //
@@ -5405,7 +5454,7 @@ func (client *Client) UpdateMOQuotaAlertThresholdWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates the information about a specified skill.
+// Updates the information of a specified skill.
 //
 // @param tmpReq - UpdateSkillRequest
 //

@@ -24,7 +24,7 @@ type iUpdateCustomAgentRequest interface {
 }
 
 type UpdateCustomAgentRequest struct {
-	// The agent ID.
+	// AgentId。
 	//
 	// This parameter is required.
 	//
@@ -38,20 +38,20 @@ type UpdateCustomAgentRequest struct {
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// The name of the custom agent.
+	// The name of the dedicated agent.
 	//
 	// example:
 	//
-	// 查询实例列表Agent
+	// QueryInstanceListAgent
 	Name     *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
 	// The system prompt.
 	//
 	// example:
 	//
-	// 我是您用来查询实例列表的专属Agent
+	// I am your dedicated agent for querying instance lists
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The tools that the custom agent can use.
+	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 }
 

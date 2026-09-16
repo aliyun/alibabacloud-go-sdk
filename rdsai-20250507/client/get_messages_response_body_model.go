@@ -104,9 +104,9 @@ type GetMessagesResponseBodyData struct {
 	//
 	// example:
 	//
-	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and scaling is not required for now. If you need to view the detailed configurations or performance monitoring of a specific instance, or perform other operations, let me know your specific requirements!
+	// The disk usage of the instance rm-bp14as9914vd3***	- you queried is 23%, and no capacity expansion is needed at this time. If you need to view the detailed configurations or performance monitoring of a specific instance, or perform other operations, let me know your specific requirements!
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The conversation ID.
+	// The session ID.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetMessagesResponseBodyData struct {
 	//
 	// example:
 	//
-	// What is the disk usage of instance rm-bp14as9914vd3****, and is scaling required?
+	// Disk usage of instance rm-bp14as9914vd3****, is capacity expansion needed
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The retrieval resources.
 	RetrieverResources []interface{} `json:"RetrieverResources,omitempty" xml:"RetrieverResources,omitempty" type:"Repeated"`
@@ -304,8 +304,52 @@ func (s *GetMessagesResponseBodyData) Validate() error {
 }
 
 type GetMessagesResponseBodyDataEvents struct {
-	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
-	Event  *string `json:"event,omitempty" xml:"event,omitempty"`
+	// The approval status of the tool calling.
+	//
+	// example:
+	//
+	// pending
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The tool calling ID.
+	//
+	// example:
+	//
+	// call-example
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The session ID.
+	//
+	// example:
+	//
+	// conversation-example
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The description of the tool calling.
+	//
+	// example:
+	//
+	// Search ContextDB records
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The message ID.
+	//
+	// example:
+	//
+	// message-example
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The tool approval round ID.
+	//
+	// example:
+	//
+	// round-example
+	RoundId *string `json:"RoundId,omitempty" xml:"RoundId,omitempty"`
+	// The parameters of the tool calling.
+	ToolArguments map[string]interface{} `json:"ToolArguments,omitempty" xml:"ToolArguments,omitempty"`
+	// The tool name.
+	//
+	// example:
+	//
+	// contextdb.search
+	ToolName *string `json:"ToolName,omitempty" xml:"ToolName,omitempty"`
+	Answer   *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	Event    *string `json:"event,omitempty" xml:"event,omitempty"`
 }
 
 func (s GetMessagesResponseBodyDataEvents) String() string {
@@ -316,12 +360,84 @@ func (s GetMessagesResponseBodyDataEvents) GoString() string {
 	return s.String()
 }
 
+func (s *GetMessagesResponseBodyDataEvents) GetApprovalStatus() *string {
+	return s.ApprovalStatus
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetCallId() *string {
+	return s.CallId
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetConversationId() *string {
+	return s.ConversationId
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetDescription() *string {
+	return s.Description
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetMessageId() *string {
+	return s.MessageId
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetRoundId() *string {
+	return s.RoundId
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetToolArguments() map[string]interface{} {
+	return s.ToolArguments
+}
+
+func (s *GetMessagesResponseBodyDataEvents) GetToolName() *string {
+	return s.ToolName
+}
+
 func (s *GetMessagesResponseBodyDataEvents) GetAnswer() *string {
 	return s.Answer
 }
 
 func (s *GetMessagesResponseBodyDataEvents) GetEvent() *string {
 	return s.Event
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetApprovalStatus(v string) *GetMessagesResponseBodyDataEvents {
+	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetCallId(v string) *GetMessagesResponseBodyDataEvents {
+	s.CallId = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetConversationId(v string) *GetMessagesResponseBodyDataEvents {
+	s.ConversationId = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetDescription(v string) *GetMessagesResponseBodyDataEvents {
+	s.Description = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetMessageId(v string) *GetMessagesResponseBodyDataEvents {
+	s.MessageId = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetRoundId(v string) *GetMessagesResponseBodyDataEvents {
+	s.RoundId = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetToolArguments(v map[string]interface{}) *GetMessagesResponseBodyDataEvents {
+	s.ToolArguments = v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataEvents) SetToolName(v string) *GetMessagesResponseBodyDataEvents {
+	s.ToolName = &v
+	return s
 }
 
 func (s *GetMessagesResponseBodyDataEvents) SetAnswer(v string) *GetMessagesResponseBodyDataEvents {
@@ -342,6 +458,12 @@ type GetMessagesResponseBodyDataMessageFiles struct {
 	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
 	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The upload file ID.
+	//
+	// example:
+	//
+	// file-example
+	UploadFileId *string `json:"UploadFileId,omitempty" xml:"UploadFileId,omitempty"`
 }
 
 func (s GetMessagesResponseBodyDataMessageFiles) String() string {
@@ -364,6 +486,10 @@ func (s *GetMessagesResponseBodyDataMessageFiles) GetType() *string {
 	return s.Type
 }
 
+func (s *GetMessagesResponseBodyDataMessageFiles) GetUploadFileId() *string {
+	return s.UploadFileId
+}
+
 func (s *GetMessagesResponseBodyDataMessageFiles) SetId(v string) *GetMessagesResponseBodyDataMessageFiles {
 	s.Id = &v
 	return s
@@ -376,6 +502,11 @@ func (s *GetMessagesResponseBodyDataMessageFiles) SetPreviewUrl(v string) *GetMe
 
 func (s *GetMessagesResponseBodyDataMessageFiles) SetType(v string) *GetMessagesResponseBodyDataMessageFiles {
 	s.Type = &v
+	return s
+}
+
+func (s *GetMessagesResponseBodyDataMessageFiles) SetUploadFileId(v string) *GetMessagesResponseBodyDataMessageFiles {
+	s.UploadFileId = &v
 	return s
 }
 

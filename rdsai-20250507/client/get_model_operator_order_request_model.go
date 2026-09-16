@@ -9,9 +9,12 @@ type iGetModelOperatorOrderRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetRegion(v string) *GetModelOperatorOrderRequest
+	GetRegion() *string
 }
 
 type GetModelOperatorOrderRequest struct {
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s GetModelOperatorOrderRequest) String() string {
@@ -20,6 +23,15 @@ func (s GetModelOperatorOrderRequest) String() string {
 
 func (s GetModelOperatorOrderRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetModelOperatorOrderRequest) GetRegion() *string {
+	return s.Region
+}
+
+func (s *GetModelOperatorOrderRequest) SetRegion(v string) *GetModelOperatorOrderRequest {
+	s.Region = &v
+	return s
 }
 
 func (s *GetModelOperatorOrderRequest) Validate() error {

@@ -22,21 +22,21 @@ type iUpdateSkillShrinkRequest interface {
 }
 
 type UpdateSkillShrinkRequest struct {
-	// The content of the skill.
+	// The content.
 	//
 	// example:
 	//
-	// {"MySQL": "MySQL 优化指南...","PostgreSQL": "PostgreSQL 优化指南..."}
+	// {"MySQL": "MySQL optimization guide...","PostgreSQL": "PostgreSQL optimization guide..."}
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The list of database engines.
+	// The list of database types.
 	DbtypesShrink *string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty"`
-	// The description of the Skill. It can be up to 1000 characters in length.
+	// The skill description. The description can be up to 1000 characters in length.
 	//
 	// example:
 	//
-	// SQL审查专家：全面审核SQL的安全性、性能与规范性，识别风险并提供优化建议。用户提交SQL或询问“SQL审核”“SQL Review”“有风险吗”“如何优化”时，立即启用。
+	// SQL Review Expert: Comprehensively reviews SQL for security, performance, and compliance, identifies risks, and provides optimization suggestions. Activated immediately when a user submits SQL or asks about "SQL review", "SQL audit", "any risks", or "how to optimize"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+	// The skill name. The name can contain only lowercase letters, digits, and hyphens.
 	//
 	// example:
 	//

@@ -11,10 +11,16 @@ type iChatMessagesResponseBody interface {
 	GoString() string
 	SetAnswer(v string) *ChatMessagesResponseBody
 	GetAnswer() *string
+	SetApprovalStatus(v string) *ChatMessagesResponseBody
+	GetApprovalStatus() *string
+	SetCallId(v string) *ChatMessagesResponseBody
+	GetCallId() *string
 	SetConversationId(v string) *ChatMessagesResponseBody
 	GetConversationId() *string
 	SetCreatedAt(v int64) *ChatMessagesResponseBody
 	GetCreatedAt() *int64
+	SetDescription(v string) *ChatMessagesResponseBody
+	GetDescription() *string
 	SetEvent(v string) *ChatMessagesResponseBody
 	GetEvent() *string
 	SetId(v string) *ChatMessagesResponseBody
@@ -25,8 +31,14 @@ type iChatMessagesResponseBody interface {
 	GetMode() *string
 	SetRequestId(v string) *ChatMessagesResponseBody
 	GetRequestId() *string
+	SetRoundId(v string) *ChatMessagesResponseBody
+	GetRoundId() *string
 	SetTaskId(v string) *ChatMessagesResponseBody
 	GetTaskId() *string
+	SetToolArguments(v map[string]interface{}) *ChatMessagesResponseBody
+	GetToolArguments() map[string]interface{}
+	SetToolName(v string) *ChatMessagesResponseBody
+	GetToolName() *string
 }
 
 type ChatMessagesResponseBody struct {
@@ -34,8 +46,20 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and capacity expansion is not needed at this time. If you need to view the detailed configuration, performance monitoring, or perform other operations for a specific instance, please let me know your specific requirements!
+	// The disk usage of instance rm-bp14as9914vd3***	- is 23%, and storage expansion is not needed at this time. If you need to view the detailed configuration, performance monitoring, or perform other operations for an instance, let me know your specific requirements!
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The tool invocation approval status.
+	//
+	// example:
+	//
+	// pending
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The tool invocation ID.
+	//
+	// example:
+	//
+	// call-example
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The conversation ID.
 	//
 	// example:
@@ -48,6 +72,12 @@ type ChatMessagesResponseBody struct {
 	//
 	// 1763986004
 	CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The tool invocation description.
+	//
+	// example:
+	//
+	// Search ContextDB records
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The event.
 	//
 	// example:
@@ -70,7 +100,7 @@ type ChatMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// Will be deprecated in the future, no need to pay attention
+	// This field will be deprecated in the future. Ignore it
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The request ID.
 	//
@@ -78,12 +108,26 @@ type ChatMessagesResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tool approval round ID.
+	//
+	// example:
+	//
+	// round-example
+	RoundId *string `json:"RoundId,omitempty" xml:"RoundId,omitempty"`
 	// The asynchronous task ID.
 	//
 	// example:
 	//
 	// 01c3d43d-9466-4bd5-8196-4cbbce08****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The tool invocation parameters.
+	ToolArguments map[string]interface{} `json:"ToolArguments,omitempty" xml:"ToolArguments,omitempty"`
+	// The tool name.
+	//
+	// example:
+	//
+	// contextdb.search
+	ToolName *string `json:"ToolName,omitempty" xml:"ToolName,omitempty"`
 }
 
 func (s ChatMessagesResponseBody) String() string {
@@ -98,12 +142,24 @@ func (s *ChatMessagesResponseBody) GetAnswer() *string {
 	return s.Answer
 }
 
+func (s *ChatMessagesResponseBody) GetApprovalStatus() *string {
+	return s.ApprovalStatus
+}
+
+func (s *ChatMessagesResponseBody) GetCallId() *string {
+	return s.CallId
+}
+
 func (s *ChatMessagesResponseBody) GetConversationId() *string {
 	return s.ConversationId
 }
 
 func (s *ChatMessagesResponseBody) GetCreatedAt() *int64 {
 	return s.CreatedAt
+}
+
+func (s *ChatMessagesResponseBody) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ChatMessagesResponseBody) GetEvent() *string {
@@ -126,12 +182,34 @@ func (s *ChatMessagesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ChatMessagesResponseBody) GetRoundId() *string {
+	return s.RoundId
+}
+
 func (s *ChatMessagesResponseBody) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *ChatMessagesResponseBody) GetToolArguments() map[string]interface{} {
+	return s.ToolArguments
+}
+
+func (s *ChatMessagesResponseBody) GetToolName() *string {
+	return s.ToolName
+}
+
 func (s *ChatMessagesResponseBody) SetAnswer(v string) *ChatMessagesResponseBody {
 	s.Answer = &v
+	return s
+}
+
+func (s *ChatMessagesResponseBody) SetApprovalStatus(v string) *ChatMessagesResponseBody {
+	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *ChatMessagesResponseBody) SetCallId(v string) *ChatMessagesResponseBody {
+	s.CallId = &v
 	return s
 }
 
@@ -142,6 +220,11 @@ func (s *ChatMessagesResponseBody) SetConversationId(v string) *ChatMessagesResp
 
 func (s *ChatMessagesResponseBody) SetCreatedAt(v int64) *ChatMessagesResponseBody {
 	s.CreatedAt = &v
+	return s
+}
+
+func (s *ChatMessagesResponseBody) SetDescription(v string) *ChatMessagesResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -170,8 +253,23 @@ func (s *ChatMessagesResponseBody) SetRequestId(v string) *ChatMessagesResponseB
 	return s
 }
 
+func (s *ChatMessagesResponseBody) SetRoundId(v string) *ChatMessagesResponseBody {
+	s.RoundId = &v
+	return s
+}
+
 func (s *ChatMessagesResponseBody) SetTaskId(v string) *ChatMessagesResponseBody {
 	s.TaskId = &v
+	return s
+}
+
+func (s *ChatMessagesResponseBody) SetToolArguments(v map[string]interface{}) *ChatMessagesResponseBody {
+	s.ToolArguments = v
+	return s
+}
+
+func (s *ChatMessagesResponseBody) SetToolName(v string) *ChatMessagesResponseBody {
+	s.ToolName = &v
 	return s
 }
 

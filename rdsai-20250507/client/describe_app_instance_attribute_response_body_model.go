@@ -27,12 +27,16 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetEipStatus() *string
 	SetInstanceClass(v string) *DescribeAppInstanceAttributeResponseBody
 	GetInstanceClass() *string
+	SetInstanceLatestVersion(v string) *DescribeAppInstanceAttributeResponseBody
+	GetInstanceLatestVersion() *string
 	SetInstanceMinorVersion(v string) *DescribeAppInstanceAttributeResponseBody
 	GetInstanceMinorVersion() *string
 	SetInstanceName(v string) *DescribeAppInstanceAttributeResponseBody
 	GetInstanceName() *string
 	SetLoginToken(v string) *DescribeAppInstanceAttributeResponseBody
 	GetLoginToken() *string
+	SetMinorVersionDetail(v string) *DescribeAppInstanceAttributeResponseBody
+	GetMinorVersionDetail() *string
 	SetNatCreatedBy(v string) *DescribeAppInstanceAttributeResponseBody
 	GetNatCreatedBy() *string
 	SetNatGatewayId(v string) *DescribeAppInstanceAttributeResponseBody
@@ -75,24 +79,51 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// supabase
-	AppType          *string                                               `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	BranchName       *string                                               `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	BranchingEnabled *string                                               `json:"BranchingEnabled,omitempty" xml:"BranchingEnabled,omitempty"`
-	Components       []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The instance ID of the RDS PostgreSQL database to which the AI application is connected.
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	BranchingEnabled *string `json:"BranchingEnabled,omitempty" xml:"BranchingEnabled,omitempty"`
+	// The list of components.
+	Components []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The ID of the RDS PostgreSQL database instance that the AI application is connected to.
 	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	EipId          *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
-	EipStatus      *string `json:"EipStatus,omitempty" xml:"EipStatus,omitempty"`
-	// The instance type of the AI application.
+	// The instance ID of the EIP.
+	//
+	// example:
+	//
+	// eip-wz9sfo01afag4hxc0utq0
+	EipId *string `json:"EipId,omitempty" xml:"EipId,omitempty"`
+	// The activation status of the EIP.
+	//
+	// example:
+	//
+	// on
+	EipStatus *string `json:"EipStatus,omitempty" xml:"EipStatus,omitempty"`
+	// The instance class of the AI application.
 	//
 	// example:
 	//
 	// rdsai.supabase.basic
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The latest minor version of the RDS AI application instance.
+	//
+	// example:
+	//
+	// 20260903
+	InstanceLatestVersion *string `json:"InstanceLatestVersion,omitempty" xml:"InstanceLatestVersion,omitempty"`
 	// The minor version of the RDS AI application instance.
 	//
 	// example:
@@ -105,11 +136,37 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	LoginToken   *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The minor version details of each component of the RDS AI application instance.
+	//
+	// example:
+	//
+	// {\\"studio\\":\\"20260602r1\\",\\"storage\\":\\"v1.48.9\\",\\"auth\\":\\"v2.188.1\\",\\"kong\\":\\"3.9.0\\",\\"rest\\":\\"v12.2.12\\",\\"meta\\":\\"v0.89.3\\",\\"realtime-dev\\":\\"v2.34.47\\",\\"postgres\\":\\"rds_postgres_1700_20260830\\"}
+	MinorVersionDetail *string `json:"MinorVersionDetail,omitempty" xml:"MinorVersionDetail,omitempty"`
+	// The creator of the NAT gateway.
+	//
+	// example:
+	//
+	// user
 	NatCreatedBy *string `json:"NatCreatedBy,omitempty" xml:"NatCreatedBy,omitempty"`
+	// The ID of the NAT gateway.
+	//
+	// example:
+	//
+	// ngw-bp1l82hw87m2y77ci1hie
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NatStatus    *string `json:"NatStatus,omitempty" xml:"NatStatus,omitempty"`
-	// The public endpoint of the AI application.
+	// The activation status of the NAT gateway.
+	//
+	// example:
+	//
+	// off
+	NatStatus *string `json:"NatStatus,omitempty" xml:"NatStatus,omitempty"`
+	// The public connection string of the AI application.
 	//
 	// example:
 	//
@@ -126,16 +183,32 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RetentionHours        *string `json:"RetentionHours,omitempty" xml:"RetentionHours,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	RetentionHours *string `json:"RetentionHours,omitempty" xml:"RetentionHours,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	SqlExtendMoInstanceId *string `json:"SqlExtendMoInstanceId,omitempty" xml:"SqlExtendMoInstanceId,omitempty"`
-	// The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
+	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
 	//
 	// example:
 	//
 	// Running
-	Status        *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UploadKey     *string                                                  `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	// Reserved parameter.
 	UploadKeyList []*DescribeAppInstanceAttributeResponseBodyUploadKeyList `json:"UploadKeyList,omitempty" xml:"UploadKeyList,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -143,7 +216,7 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// vsw-2zeaepb8k4ku05ov2****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The internal endpoint of the AI application.
+	// The internal connection string of the AI application.
 	//
 	// example:
 	//
@@ -201,6 +274,10 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetInstanceClass() *string {
 	return s.InstanceClass
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) GetInstanceLatestVersion() *string {
+	return s.InstanceLatestVersion
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) GetInstanceMinorVersion() *string {
 	return s.InstanceMinorVersion
 }
@@ -211,6 +288,10 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetInstanceName() *string {
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetLoginToken() *string {
 	return s.LoginToken
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetMinorVersionDetail() *string {
+	return s.MinorVersionDetail
 }
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetNatCreatedBy() *string {
@@ -314,6 +395,11 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetInstanceClass(v string) *D
 	return s
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) SetInstanceLatestVersion(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.InstanceLatestVersion = &v
+	return s
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) SetInstanceMinorVersion(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.InstanceMinorVersion = &v
 	return s
@@ -326,6 +412,11 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetInstanceName(v string) *De
 
 func (s *DescribeAppInstanceAttributeResponseBody) SetLoginToken(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.LoginToken = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetMinorVersionDetail(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.MinorVersionDetail = &v
 	return s
 }
 
@@ -422,8 +513,18 @@ func (s *DescribeAppInstanceAttributeResponseBody) Validate() error {
 }
 
 type DescribeAppInstanceAttributeResponseBodyComponents struct {
+	// The component status.
+	//
+	// example:
+	//
+	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The component type.
+	//
+	// example:
+	//
+	// supabase
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAppInstanceAttributeResponseBodyComponents) String() string {
@@ -457,11 +558,36 @@ func (s *DescribeAppInstanceAttributeResponseBodyComponents) Validate() error {
 }
 
 type DescribeAppInstanceAttributeResponseBodyUploadKeyList struct {
-	IsSystemKey     *bool   `json:"IsSystemKey,omitempty" xml:"IsSystemKey,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SlsStorageBytes *int64  `json:"SlsStorageBytes,omitempty" xml:"SlsStorageBytes,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UploadKey       *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	IsSystemKey *bool `json:"IsSystemKey,omitempty" xml:"IsSystemKey,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	SlsStorageBytes *int64 `json:"SlsStorageBytes,omitempty" xml:"SlsStorageBytes,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
 }
 
 func (s DescribeAppInstanceAttributeResponseBodyUploadKeyList) String() string {

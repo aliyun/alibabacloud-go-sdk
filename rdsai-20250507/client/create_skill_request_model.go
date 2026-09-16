@@ -17,35 +17,53 @@ type iCreateSkillRequest interface {
 	GetDescription() *string
 	SetName(v string) *CreateSkillRequest
 	GetName() *string
+	SetUploadId(v string) *CreateSkillRequest
+	GetUploadId() *string
+	SetUploadToken(v string) *CreateSkillRequest
+	GetUploadToken() *string
+	SetWorkspaceId(v string) *CreateSkillRequest
+	GetWorkspaceId() *string
 }
 
 type CreateSkillRequest struct {
-	// The content of the skill.
+	// The content.
 	//
 	// example:
 	//
-	// {"MySQL": "MySQL 优化指南...","PostgreSQL": "PostgreSQL 优化指南..."}
+	// {"MySQL": "MySQL optimization guide...","PostgreSQL": "PostgreSQL optimization guide..."}
 	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The list of database engines.
-	//
-	// This parameter is required.
+	// The list of database types.
 	Dbtypes []*string `json:"Dbtypes,omitempty" xml:"Dbtypes,omitempty" type:"Repeated"`
-	// The description of the skill. It can be up to 1000 characters in length.
-	//
-	// This parameter is required.
+	// The Skill description. The description can be up to 1000 characters in length.
 	//
 	// example:
 	//
-	// SQL 查询优化技能。
+	// SQL query optimization skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
-	//
-	// This parameter is required.
+	// The Skill name. The name can contain only lowercase letters, digits, and hyphens.
 	//
 	// example:
 	//
 	// query-optimization
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Skill upload session ID.
+	//
+	// example:
+	//
+	// upload-example
+	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// The Skill upload session token.
+	//
+	// example:
+	//
+	// token-example
+	UploadToken *string `json:"UploadToken,omitempty" xml:"UploadToken,omitempty"`
+	// The ContextDB workspace ID.
+	//
+	// example:
+	//
+	// 00000000-0000-4000-8000-000000000001
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateSkillRequest) String() string {
@@ -72,6 +90,18 @@ func (s *CreateSkillRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateSkillRequest) GetUploadId() *string {
+	return s.UploadId
+}
+
+func (s *CreateSkillRequest) GetUploadToken() *string {
+	return s.UploadToken
+}
+
+func (s *CreateSkillRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *CreateSkillRequest) SetContent(v map[string]interface{}) *CreateSkillRequest {
 	s.Content = v
 	return s
@@ -89,6 +119,21 @@ func (s *CreateSkillRequest) SetDescription(v string) *CreateSkillRequest {
 
 func (s *CreateSkillRequest) SetName(v string) *CreateSkillRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateSkillRequest) SetUploadId(v string) *CreateSkillRequest {
+	s.UploadId = &v
+	return s
+}
+
+func (s *CreateSkillRequest) SetUploadToken(v string) *CreateSkillRequest {
+	s.UploadToken = &v
+	return s
+}
+
+func (s *CreateSkillRequest) SetWorkspaceId(v string) *CreateSkillRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
