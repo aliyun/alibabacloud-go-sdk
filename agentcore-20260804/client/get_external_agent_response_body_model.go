@@ -580,20 +580,17 @@ func (s *GetExternalAgentResponseBodyDataExternalAgentStatus) Validate() error {
 type GetExternalAgentResponseBodyDataModel struct {
 	// The model connection ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
 	// The upstream model name.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// qwen-max
-	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	ModelName *string                                     `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	Quota     *GetExternalAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s GetExternalAgentResponseBodyDataModel) String() string {
@@ -612,6 +609,10 @@ func (s *GetExternalAgentResponseBodyDataModel) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *GetExternalAgentResponseBodyDataModel) GetQuota() *GetExternalAgentResponseBodyDataModelQuota {
+	return s.Quota
+}
+
 func (s *GetExternalAgentResponseBodyDataModel) SetModelConnectionId(v string) *GetExternalAgentResponseBodyDataModel {
 	s.ModelConnectionId = &v
 	return s
@@ -622,7 +623,123 @@ func (s *GetExternalAgentResponseBodyDataModel) SetModelName(v string) *GetExter
 	return s
 }
 
+func (s *GetExternalAgentResponseBodyDataModel) SetQuota(v *GetExternalAgentResponseBodyDataModelQuota) *GetExternalAgentResponseBodyDataModel {
+	s.Quota = v
+	return s
+}
+
 func (s *GetExternalAgentResponseBodyDataModel) Validate() error {
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetExternalAgentResponseBodyDataModelQuota struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// token
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// example:
+	//
+	// false
+	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// example:
+	//
+	// 1000000
+	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
+	// example:
+	//
+	// 12345
+	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
+}
+
+func (s GetExternalAgentResponseBodyDataModelQuota) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetExternalAgentResponseBodyDataModelQuota) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) GetLimitType() *string {
+	return s.LimitType
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) GetOverLimit() *bool {
+	return s.OverLimit
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) GetPeriodType() *string {
+	return s.PeriodType
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) GetRuleStatus() *string {
+	return s.RuleStatus
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) GetUsageLimit() *int64 {
+	return s.UsageLimit
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) GetUsedAmount() *int64 {
+	return s.UsedAmount
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) SetEnabled(v bool) *GetExternalAgentResponseBodyDataModelQuota {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) SetLimitType(v string) *GetExternalAgentResponseBodyDataModelQuota {
+	s.LimitType = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) SetOverLimit(v bool) *GetExternalAgentResponseBodyDataModelQuota {
+	s.OverLimit = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) SetPeriodType(v string) *GetExternalAgentResponseBodyDataModelQuota {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) SetRuleStatus(v string) *GetExternalAgentResponseBodyDataModelQuota {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) SetUsageLimit(v int64) *GetExternalAgentResponseBodyDataModelQuota {
+	s.UsageLimit = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) SetUsedAmount(v int64) *GetExternalAgentResponseBodyDataModelQuota {
+	s.UsedAmount = &v
+	return s
+}
+
+func (s *GetExternalAgentResponseBodyDataModelQuota) Validate() error {
 	return dara.Validate(s)
 }
 

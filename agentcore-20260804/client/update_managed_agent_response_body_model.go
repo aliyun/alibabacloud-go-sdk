@@ -756,8 +756,6 @@ func (s *UpdateManagedAgentResponseBodyDataHarnessConfiguration) Validate() erro
 type UpdateManagedAgentResponseBodyDataModel struct {
 	// The model connection ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// mc-1
@@ -767,7 +765,8 @@ type UpdateManagedAgentResponseBodyDataModel struct {
 	// example:
 	//
 	// qwen-max
-	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	ModelName *string                                       `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	Quota     *UpdateManagedAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s UpdateManagedAgentResponseBodyDataModel) String() string {
@@ -786,6 +785,10 @@ func (s *UpdateManagedAgentResponseBodyDataModel) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *UpdateManagedAgentResponseBodyDataModel) GetQuota() *UpdateManagedAgentResponseBodyDataModelQuota {
+	return s.Quota
+}
+
 func (s *UpdateManagedAgentResponseBodyDataModel) SetModelConnectionId(v string) *UpdateManagedAgentResponseBodyDataModel {
 	s.ModelConnectionId = &v
 	return s
@@ -796,7 +799,123 @@ func (s *UpdateManagedAgentResponseBodyDataModel) SetModelName(v string) *Update
 	return s
 }
 
+func (s *UpdateManagedAgentResponseBodyDataModel) SetQuota(v *UpdateManagedAgentResponseBodyDataModelQuota) *UpdateManagedAgentResponseBodyDataModel {
+	s.Quota = v
+	return s
+}
+
 func (s *UpdateManagedAgentResponseBodyDataModel) Validate() error {
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateManagedAgentResponseBodyDataModelQuota struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// token
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// example:
+	//
+	// false
+	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// example:
+	//
+	// 1000000
+	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
+	// example:
+	//
+	// 12345
+	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
+}
+
+func (s UpdateManagedAgentResponseBodyDataModelQuota) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentResponseBodyDataModelQuota) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) GetLimitType() *string {
+	return s.LimitType
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) GetOverLimit() *bool {
+	return s.OverLimit
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) GetPeriodType() *string {
+	return s.PeriodType
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) GetRuleStatus() *string {
+	return s.RuleStatus
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) GetUsageLimit() *int64 {
+	return s.UsageLimit
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) GetUsedAmount() *int64 {
+	return s.UsedAmount
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) SetEnabled(v bool) *UpdateManagedAgentResponseBodyDataModelQuota {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) SetLimitType(v string) *UpdateManagedAgentResponseBodyDataModelQuota {
+	s.LimitType = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) SetOverLimit(v bool) *UpdateManagedAgentResponseBodyDataModelQuota {
+	s.OverLimit = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) SetPeriodType(v string) *UpdateManagedAgentResponseBodyDataModelQuota {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) SetRuleStatus(v string) *UpdateManagedAgentResponseBodyDataModelQuota {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) SetUsageLimit(v int64) *UpdateManagedAgentResponseBodyDataModelQuota {
+	s.UsageLimit = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) SetUsedAmount(v int64) *UpdateManagedAgentResponseBodyDataModelQuota {
+	s.UsedAmount = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModelQuota) Validate() error {
 	return dara.Validate(s)
 }
 

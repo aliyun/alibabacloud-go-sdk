@@ -538,7 +538,8 @@ type UpdateManagedAgentRequestBodyModel struct {
 	// example:
 	//
 	// qwen-max
-	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	ModelName *string                                  `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	Quota     *UpdateManagedAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s UpdateManagedAgentRequestBodyModel) String() string {
@@ -557,6 +558,10 @@ func (s *UpdateManagedAgentRequestBodyModel) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *UpdateManagedAgentRequestBodyModel) GetQuota() *UpdateManagedAgentRequestBodyModelQuota {
+	return s.Quota
+}
+
 func (s *UpdateManagedAgentRequestBodyModel) SetModelConnectionId(v string) *UpdateManagedAgentRequestBodyModel {
 	s.ModelConnectionId = &v
 	return s
@@ -567,7 +572,84 @@ func (s *UpdateManagedAgentRequestBodyModel) SetModelName(v string) *UpdateManag
 	return s
 }
 
+func (s *UpdateManagedAgentRequestBodyModel) SetQuota(v *UpdateManagedAgentRequestBodyModelQuota) *UpdateManagedAgentRequestBodyModel {
+	s.Quota = v
+	return s
+}
+
 func (s *UpdateManagedAgentRequestBodyModel) Validate() error {
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateManagedAgentRequestBodyModelQuota struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// token
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// example:
+	//
+	// 1000000
+	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
+}
+
+func (s UpdateManagedAgentRequestBodyModelQuota) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentRequestBodyModelQuota) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) GetLimitType() *string {
+	return s.LimitType
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) GetPeriodType() *string {
+	return s.PeriodType
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) GetUsageLimit() *int64 {
+	return s.UsageLimit
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) SetEnabled(v bool) *UpdateManagedAgentRequestBodyModelQuota {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) SetLimitType(v string) *UpdateManagedAgentRequestBodyModelQuota {
+	s.LimitType = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) SetPeriodType(v string) *UpdateManagedAgentRequestBodyModelQuota {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) SetUsageLimit(v int64) *UpdateManagedAgentRequestBodyModelQuota {
+	s.UsageLimit = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyModelQuota) Validate() error {
 	return dara.Validate(s)
 }
 

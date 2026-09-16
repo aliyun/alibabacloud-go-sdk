@@ -38,7 +38,7 @@ type CreateExternalAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message that indicates the result of the request.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -190,11 +190,11 @@ type CreateExternalAgentResponseBodyData struct {
 	LatestVersionStatus *string `json:"latestVersionStatus,omitempty" xml:"latestVersionStatus,omitempty"`
 	// The model configuration. Available only when modelSource is set to PLATFORM.
 	Model *CreateExternalAgentResponseBodyDataModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The source of the model configuration. Valid values:
+	// The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be specified at the same time. Valid values:
 	//
-	// - PLATFORM: The platform parses and delivers the model configuration.
+	// - PLATFORM: platform model.
 	//
-	// - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
+	// - RUNTIME: runtime model.
 	//
 	// example:
 	//
@@ -494,13 +494,13 @@ type CreateExternalAgentResponseBodyDataExternalAgentStatus struct {
 	//
 	// ONLINE
 	HeartbeatStatus *string `json:"heartbeatStatus,omitempty" xml:"heartbeatStatus,omitempty"`
-	// The last active time of the external agent in RFC 3339 format.
+	// The time when the external agent was last active, in RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	LastActiveAt *string `json:"lastActiveAt,omitempty" xml:"lastActiveAt,omitempty"`
-	// The last heartbeat time of the external agent in RFC 3339 format.
+	// The time of the last heartbeat from the external agent, in RFC 3339 format.
 	//
 	// example:
 	//
@@ -580,20 +580,18 @@ func (s *CreateExternalAgentResponseBodyDataExternalAgentStatus) Validate() erro
 type CreateExternalAgentResponseBodyDataModel struct {
 	// The model connection ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
 	// The upstream model name.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model token quota configuration and the quota usage status in the current cycle. This field is empty if no quota is configured.
+	Quota *CreateExternalAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s CreateExternalAgentResponseBodyDataModel) String() string {
@@ -612,6 +610,10 @@ func (s *CreateExternalAgentResponseBodyDataModel) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *CreateExternalAgentResponseBodyDataModel) GetQuota() *CreateExternalAgentResponseBodyDataModelQuota {
+	return s.Quota
+}
+
 func (s *CreateExternalAgentResponseBodyDataModel) SetModelConnectionId(v string) *CreateExternalAgentResponseBodyDataModel {
 	s.ModelConnectionId = &v
 	return s
@@ -622,7 +624,137 @@ func (s *CreateExternalAgentResponseBodyDataModel) SetModelName(v string) *Creat
 	return s
 }
 
+func (s *CreateExternalAgentResponseBodyDataModel) SetQuota(v *CreateExternalAgentResponseBodyDataModelQuota) *CreateExternalAgentResponseBodyDataModel {
+	s.Quota = v
+	return s
+}
+
 func (s *CreateExternalAgentResponseBodyDataModel) Validate() error {
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateExternalAgentResponseBodyDataModelQuota struct {
+	// Indicates whether the quota is enabled. This field is not returned if no quota is configured.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The quota limit type. Currently, only token is supported.
+	//
+	// example:
+	//
+	// token
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Indicates whether the quota has been exceeded in the current cycle. This is a read-only field returned by the backend.
+	//
+	// example:
+	//
+	// false
+	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
+	// The quota statistical period. day indicates a daily period. month indicates a monthly period.
+	//
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The gateway quota rule status. This is a read-only field returned by the backend.
+	//
+	// example:
+	//
+	// ACTIVE
+	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// The maximum number of tokens that can be consumed within a single cycle.
+	//
+	// example:
+	//
+	// 1000000
+	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
+	// The number of tokens consumed in the current cycle. This is a read-only field returned by the backend.
+	//
+	// example:
+	//
+	// 12345
+	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
+}
+
+func (s CreateExternalAgentResponseBodyDataModelQuota) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateExternalAgentResponseBodyDataModelQuota) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) GetLimitType() *string {
+	return s.LimitType
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) GetOverLimit() *bool {
+	return s.OverLimit
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) GetPeriodType() *string {
+	return s.PeriodType
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) GetRuleStatus() *string {
+	return s.RuleStatus
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) GetUsageLimit() *int64 {
+	return s.UsageLimit
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) GetUsedAmount() *int64 {
+	return s.UsedAmount
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) SetEnabled(v bool) *CreateExternalAgentResponseBodyDataModelQuota {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) SetLimitType(v string) *CreateExternalAgentResponseBodyDataModelQuota {
+	s.LimitType = &v
+	return s
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) SetOverLimit(v bool) *CreateExternalAgentResponseBodyDataModelQuota {
+	s.OverLimit = &v
+	return s
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) SetPeriodType(v string) *CreateExternalAgentResponseBodyDataModelQuota {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) SetRuleStatus(v string) *CreateExternalAgentResponseBodyDataModelQuota {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) SetUsageLimit(v int64) *CreateExternalAgentResponseBodyDataModelQuota {
+	s.UsageLimit = &v
+	return s
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) SetUsedAmount(v int64) *CreateExternalAgentResponseBodyDataModelQuota {
+	s.UsedAmount = &v
+	return s
+}
+
+func (s *CreateExternalAgentResponseBodyDataModelQuota) Validate() error {
 	return dara.Validate(s)
 }
 

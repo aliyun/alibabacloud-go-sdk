@@ -18,7 +18,7 @@ type iUpdateExternalAgentRequest interface {
 type UpdateExternalAgentRequest struct {
 	// The request body.
 	Body *UpdateExternalAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not guarantee idempotence in the current phase.
+	// The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type UpdateExternalAgentRequestBody struct {
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The model configuration. Available only when modelSource is set to PLATFORM.
 	Model *UpdateExternalAgentRequestBodyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The source of the model configuration. Valid values:
+	// The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be specified at the same time. Valid values:
 	//
-	// - PLATFORM: The platform parses and delivers the model configuration.
+	// - PLATFORM: platform model.
 	//
-	// - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
+	// - RUNTIME: runtime model.
 	//
 	// example:
 	//
@@ -229,6 +229,8 @@ type UpdateExternalAgentRequestBodyModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model token quota configuration. If not specified, no quota is configured.
+	Quota *UpdateExternalAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s UpdateExternalAgentRequestBodyModel) String() string {
@@ -247,6 +249,10 @@ func (s *UpdateExternalAgentRequestBodyModel) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *UpdateExternalAgentRequestBodyModel) GetQuota() *UpdateExternalAgentRequestBodyModelQuota {
+	return s.Quota
+}
+
 func (s *UpdateExternalAgentRequestBodyModel) SetModelConnectionId(v string) *UpdateExternalAgentRequestBodyModel {
 	s.ModelConnectionId = &v
 	return s
@@ -257,7 +263,92 @@ func (s *UpdateExternalAgentRequestBodyModel) SetModelName(v string) *UpdateExte
 	return s
 }
 
+func (s *UpdateExternalAgentRequestBodyModel) SetQuota(v *UpdateExternalAgentRequestBodyModelQuota) *UpdateExternalAgentRequestBodyModel {
+	s.Quota = v
+	return s
+}
+
 func (s *UpdateExternalAgentRequestBodyModel) Validate() error {
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateExternalAgentRequestBodyModelQuota struct {
+	// Specifies whether to enable token quota. Defaults to true if not specified. Set to false to disable and delete existing quota rules.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The quota limit type. Required by backend validation when quota is enabled. Fixed value: token.
+	//
+	// example:
+	//
+	// token
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// The quota statistical period. Required by backend validation when quota is enabled. Valid values: day (daily) and month (monthly).
+	//
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The maximum number of tokens that can be consumed within a single period. Required by backend validation when quota is enabled. The value must be greater than 0.
+	//
+	// example:
+	//
+	// 1000000
+	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
+}
+
+func (s UpdateExternalAgentRequestBodyModelQuota) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateExternalAgentRequestBodyModelQuota) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) GetLimitType() *string {
+	return s.LimitType
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) GetPeriodType() *string {
+	return s.PeriodType
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) GetUsageLimit() *int64 {
+	return s.UsageLimit
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) SetEnabled(v bool) *UpdateExternalAgentRequestBodyModelQuota {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) SetLimitType(v string) *UpdateExternalAgentRequestBodyModelQuota {
+	s.LimitType = &v
+	return s
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) SetPeriodType(v string) *UpdateExternalAgentRequestBodyModelQuota {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) SetUsageLimit(v int64) *UpdateExternalAgentRequestBodyModelQuota {
+	s.UsageLimit = &v
+	return s
+}
+
+func (s *UpdateExternalAgentRequestBodyModelQuota) Validate() error {
 	return dara.Validate(s)
 }
 

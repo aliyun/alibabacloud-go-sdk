@@ -32,7 +32,7 @@ type GetManagedAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The details of the managed agent.
 	Data *GetManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. A value of 200 indicates success.
+	// The HTTP status code. The value 200 indicates success.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type GetManagedAgentResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration.
 	Network *GetManagedAgentResponseBodyDataNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The OSS mount list. A maximum of 10 entries are supported.
+	// The list of OSS mounts. A maximum of 10 entries are supported.
 	OssMounts []*GetManagedAgentResponseBodyDataOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -202,7 +202,7 @@ type GetManagedAgentResponseBodyData struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The runtime configuration.
 	Runtime *GetManagedAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The instance count of the managed agent grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), FAILED (runtime failure). Only phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic map and new keys may be added in the future. Use FAILED > 0 to determine whether abnormal instances exist.
+	// The instance counts of managed agents grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), FAILED (runtime failure). Only phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic mapping and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The list of skill configurations.
 	Skills []*GetManagedAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
@@ -218,7 +218,7 @@ type GetManagedAgentResponseBodyData struct {
 	Template *GetManagedAgentResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 	// The list of tool configurations.
 	Tools []*GetManagedAgentResponseBodyDataTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
-	// The update time in RFC 3339 format.
+	// The time when the managed agent was last updated, in RFC 3339 format.
 	//
 	// example:
 	//
@@ -665,7 +665,7 @@ func (s *GetManagedAgentResponseBodyDataEnvironmentVariables) Validate() error {
 type GetManagedAgentResponseBodyDataHarness struct {
 	// The Connector binding configuration for the qodercli harness.
 	Configuration *GetManagedAgentResponseBodyDataHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The runtime harness type. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	// The runtime harness type. Valid values: qwenpaw and qodercli. The qodercli type binds by configuration.connectorServiceAccountKey, and the name is also backfilled during queries.
 	//
 	// example:
 	//
@@ -715,7 +715,7 @@ type GetManagedAgentResponseBodyDataHarnessConfiguration struct {
 	//
 	// key-xxxx
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The Connector Key name populated during queries. This value is not used as a binding reference during writes.
+	// The Connector Key name that is backfilled during queries. This parameter is not used as a binding reference during writes.
 	//
 	// example:
 	//
@@ -756,8 +756,6 @@ func (s *GetManagedAgentResponseBodyDataHarnessConfiguration) Validate() error {
 type GetManagedAgentResponseBodyDataModel struct {
 	// The model connection ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// mc-1
@@ -768,6 +766,8 @@ type GetManagedAgentResponseBodyDataModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model token quota configuration and quota usage status for the current period. This parameter is empty when no quota is configured.
+	Quota *GetManagedAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s GetManagedAgentResponseBodyDataModel) String() string {
@@ -786,6 +786,10 @@ func (s *GetManagedAgentResponseBodyDataModel) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *GetManagedAgentResponseBodyDataModel) GetQuota() *GetManagedAgentResponseBodyDataModelQuota {
+	return s.Quota
+}
+
 func (s *GetManagedAgentResponseBodyDataModel) SetModelConnectionId(v string) *GetManagedAgentResponseBodyDataModel {
 	s.ModelConnectionId = &v
 	return s
@@ -796,7 +800,137 @@ func (s *GetManagedAgentResponseBodyDataModel) SetModelName(v string) *GetManage
 	return s
 }
 
+func (s *GetManagedAgentResponseBodyDataModel) SetQuota(v *GetManagedAgentResponseBodyDataModelQuota) *GetManagedAgentResponseBodyDataModel {
+	s.Quota = v
+	return s
+}
+
 func (s *GetManagedAgentResponseBodyDataModel) Validate() error {
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetManagedAgentResponseBodyDataModelQuota struct {
+	// Indicates whether the quota is enabled. This parameter is not returned when no quota is configured.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The quota limit type. Currently, only token is supported.
+	//
+	// example:
+	//
+	// token
+	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Indicates whether the quota has been exceeded in the current period. This parameter is read-only and returned by the backend.
+	//
+	// example:
+	//
+	// false
+	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
+	// The quota statistical period. Valid values: day (daily) and month (monthly).
+	//
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The gateway quota rule status. This parameter is read-only and returned by the backend.
+	//
+	// example:
+	//
+	// ACTIVE
+	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// The maximum number of tokens allowed per period.
+	//
+	// example:
+	//
+	// 1000000
+	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
+	// The number of tokens consumed in the current period. This parameter is read-only and returned by the backend.
+	//
+	// example:
+	//
+	// 12345
+	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
+}
+
+func (s GetManagedAgentResponseBodyDataModelQuota) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetManagedAgentResponseBodyDataModelQuota) GoString() string {
+	return s.String()
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) GetLimitType() *string {
+	return s.LimitType
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) GetOverLimit() *bool {
+	return s.OverLimit
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) GetPeriodType() *string {
+	return s.PeriodType
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) GetRuleStatus() *string {
+	return s.RuleStatus
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) GetUsageLimit() *int64 {
+	return s.UsageLimit
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) GetUsedAmount() *int64 {
+	return s.UsedAmount
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) SetEnabled(v bool) *GetManagedAgentResponseBodyDataModelQuota {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) SetLimitType(v string) *GetManagedAgentResponseBodyDataModelQuota {
+	s.LimitType = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) SetOverLimit(v bool) *GetManagedAgentResponseBodyDataModelQuota {
+	s.OverLimit = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) SetPeriodType(v string) *GetManagedAgentResponseBodyDataModelQuota {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) SetRuleStatus(v string) *GetManagedAgentResponseBodyDataModelQuota {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) SetUsageLimit(v int64) *GetManagedAgentResponseBodyDataModelQuota {
+	s.UsageLimit = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) SetUsedAmount(v int64) *GetManagedAgentResponseBodyDataModelQuota {
+	s.UsedAmount = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModelQuota) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -912,7 +1046,7 @@ type GetManagedAgentResponseBodyDataOssMounts struct {
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	// The absolute mount path in the container. This parameter is required for each mount entry as validated by the backend.
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+	// The relative object prefix within the bucket. If this parameter is not specified, the entire bucket is mounted.
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 	// Specifies whether to mount as read-only. Default value: false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
@@ -971,7 +1105,7 @@ type GetManagedAgentResponseBodyDataRuntime struct {
 	//
 	// This parameter is required.
 	Compute *GetManagedAgentResponseBodyDataRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
-	// The sandbox auto scaling and session configuration.
+	// The Sandbox auto scaling and session configuration.
 	Hpa *GetManagedAgentResponseBodyDataRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
 	// The session policy configuration.
 	//
@@ -1034,7 +1168,7 @@ func (s *GetManagedAgentResponseBodyDataRuntime) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataRuntimeCompute struct {
-	// The compute class.
+	// The compute specification.
 	//
 	// This parameter is required.
 	//
@@ -1066,13 +1200,13 @@ func (s *GetManagedAgentResponseBodyDataRuntimeCompute) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataRuntimeHpa struct {
-	// Specifies whether to enable auto scaling. This parameter is required when hpa is present as validated by the backend.
+	// Specifies whether auto scaling is enabled. This parameter is required when hpa is present as validated by the backend.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of active sessions per sandbox. This parameter is required when hpa is present as validated by the backend.
+	// The maximum number of active sessions per Sandbox. This parameter is required when hpa is present as validated by the backend.
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of sandboxes. This parameter is required when HPA is enabled and must be no less than the minimum value.
+	// The maximum number of Sandboxes. This parameter is required when HPA is enabled and must be no less than the minimum value.
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of sandboxes. This parameter is required when HPA is enabled.
+	// The minimum number of Sandboxes. This parameter is required when HPA is enabled.
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
 	// The session reclamation time after inactivity, in seconds. This parameter is required when hpa is present as validated by the backend.
 	SessionTtlSeconds *int32 `json:"sessionTtlSeconds,omitempty" xml:"sessionTtlSeconds,omitempty"`
@@ -1230,7 +1364,7 @@ func (s *GetManagedAgentResponseBodyDataSkills) Validate() error {
 }
 
 type GetManagedAgentResponseBodyDataSubAgents struct {
-	// The sub-agent instruction.
+	// The instruction of the sub-agent.
 	//
 	// This parameter is required.
 	//
@@ -1238,7 +1372,7 @@ type GetManagedAgentResponseBodyDataSubAgents struct {
 	//
 	// Review the code
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
-	// The sub-agent name.
+	// The name of the sub-agent.
 	//
 	// This parameter is required.
 	//
