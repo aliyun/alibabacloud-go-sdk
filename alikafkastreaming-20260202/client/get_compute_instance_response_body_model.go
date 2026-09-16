@@ -131,6 +131,10 @@ type GetComputeInstanceResponseBodyData struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
+	// rg-aek53bg4tl6fgma
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
 	// RUNNING
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// example:
@@ -190,6 +194,10 @@ func (s *GetComputeInstanceResponseBodyData) GetInstanceName() *string {
 
 func (s *GetComputeInstanceResponseBodyData) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *GetComputeInstanceResponseBodyData) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *GetComputeInstanceResponseBodyData) GetServiceStatus() *string {
@@ -254,6 +262,11 @@ func (s *GetComputeInstanceResponseBodyData) SetInstanceName(v string) *GetCompu
 
 func (s *GetComputeInstanceResponseBodyData) SetRegionId(v string) *GetComputeInstanceResponseBodyData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetComputeInstanceResponseBodyData) SetResourceGroupId(v string) *GetComputeInstanceResponseBodyData {
+	s.ResourceGroupId = &v
 	return s
 }
 
