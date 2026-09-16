@@ -80,7 +80,7 @@ type UpdateEventStreamingShrinkRequest struct {
 	//
 	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	// The generic JSON configurations for the event provider. This parameter is mutually exclusive with Source.
+	// The generic JSON Configurations for the event source. This parameter is mutually exclusive with Source.
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The runtime parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
@@ -88,7 +88,7 @@ type UpdateEventStreamingShrinkRequest struct {
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
 	// The event provider. You must select exactly one Source type.
 	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The event transformer configurations.
+	// The transform-related configurations.
 	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
 }
 

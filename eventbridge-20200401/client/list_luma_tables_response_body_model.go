@@ -22,27 +22,27 @@ type iListLumaTablesResponseBody interface {
 }
 
 type ListLumaTablesResponseBody struct {
-	// The response code of the operation. A value of Success indicates success. An error code is returned if the call fails.
+	// The response code. A value of Success indicates a successful call. If the call fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of event tables bound to the Agent. All results are returned at once without pagination.
+	// The list of event tables bound to the agent, including entries and pagination information.
 	Data *ListLumaTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the operation. The value is Operation success if the call succeeds, or a specific error description if the call fails.
+	// The message returned by the operation. The value Operation success is returned if the call succeeds. A specific error description is returned if the call fails.
 	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request, used for troubleshooting and ticket feedback.
+	// The unique identifier of this request, which is used for troubleshooting and ticket submission.
 	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates success.
+	// Indicates whether the call was successful. A value of true indicates a successful call.
 	//
 	// example:
 	//
@@ -113,12 +113,30 @@ func (s *ListLumaTablesResponseBody) Validate() error {
 }
 
 type ListLumaTablesResponseBodyData struct {
-	// The list of event tables bound to the Agent.
+	// The effective page size for this request. If the Limit parameter is not specified, the server default value is used. If the specified value exceeds the upper limit, the value is adjusted to the maximum allowed value.
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The token for the next page. Pass this value as the NextToken parameter in the next request to retrieve the next page. An empty value indicates that no more data is available.
+	//
+	// example:
+	//
+	// 10
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of event tables bound to the agent.
 	//
 	// example:
 	//
 	// [{"Name":"my_table","Namespace":"my_namespace"}]
 	Tables []*LumaTable `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The total number of event tables bound to the agent, regardless of the number of entries returned on the current page.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLumaTablesResponseBodyData) String() string {
@@ -129,12 +147,39 @@ func (s ListLumaTablesResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListLumaTablesResponseBodyData) GetLimit() *int32 {
+	return s.Limit
+}
+
+func (s *ListLumaTablesResponseBodyData) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListLumaTablesResponseBodyData) GetTables() []*LumaTable {
 	return s.Tables
 }
 
+func (s *ListLumaTablesResponseBodyData) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
+func (s *ListLumaTablesResponseBodyData) SetLimit(v int32) *ListLumaTablesResponseBodyData {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListLumaTablesResponseBodyData) SetNextToken(v string) *ListLumaTablesResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListLumaTablesResponseBodyData) SetTables(v []*LumaTable) *ListLumaTablesResponseBodyData {
 	s.Tables = v
+	return s
+}
+
+func (s *ListLumaTablesResponseBodyData) SetTotalCount(v int32) *ListLumaTablesResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 

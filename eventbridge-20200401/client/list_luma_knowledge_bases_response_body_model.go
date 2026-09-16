@@ -22,27 +22,27 @@ type iListLumaKnowledgeBasesResponseBody interface {
 }
 
 type ListLumaKnowledgeBasesResponseBody struct {
-	// The response code. A value of Success indicates a successful call. Otherwise, a specific error code is returned.
+	// The response code. A value of Success indicates that the call was successful. If the call fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of knowledge bases bound to the agent. All results are returned at once without pagination.
+	// The list of knowledge bases bound to the agent, including entries and pagination information.
 	Data *ListLumaKnowledgeBasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the operation. The value is Operation success if the call succeeds, or a specific error description if the call fails.
+	// The message returned by the operation. The value Operation success is returned if the call was successful. A specific error description is returned if the call fails.
 	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request, used for troubleshooting and ticket feedback.
+	// The unique ID of the request. Use this ID for troubleshooting and when you submit a ticket.
 	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates success.
+	// Indicates whether the call was successful. A value of true indicates that the call was successful.
 	//
 	// example:
 	//
@@ -119,6 +119,24 @@ type ListLumaKnowledgeBasesResponseBodyData struct {
 	//
 	// [{"KnowledgeBaseName":"my-knowledge-base"}]
 	KnowledgeBases []*KnowledgeBase `json:"KnowledgeBases,omitempty" xml:"KnowledgeBases,omitempty" type:"Repeated"`
+	// The maximum number of results per page that takes effect for this request. If MaxResults is not specified, this value is the server default. If the specified value exceeds the upper limit, this value is the adjusted value.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page (an opaque string). Pass this value as the NextToken parameter in the next request to retrieve the next page. An empty value indicates that no more data is available.
+	//
+	// example:
+	//
+	// ca1eb85f5d99c7d6a97e6****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of knowledge bases bound to the agent, regardless of the number of entries returned on the current page.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLumaKnowledgeBasesResponseBodyData) String() string {
@@ -133,8 +151,35 @@ func (s *ListLumaKnowledgeBasesResponseBodyData) GetKnowledgeBases() []*Knowledg
 	return s.KnowledgeBases
 }
 
+func (s *ListLumaKnowledgeBasesResponseBodyData) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListLumaKnowledgeBasesResponseBodyData) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ListLumaKnowledgeBasesResponseBodyData) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
 func (s *ListLumaKnowledgeBasesResponseBodyData) SetKnowledgeBases(v []*KnowledgeBase) *ListLumaKnowledgeBasesResponseBodyData {
 	s.KnowledgeBases = v
+	return s
+}
+
+func (s *ListLumaKnowledgeBasesResponseBodyData) SetMaxResults(v int32) *ListLumaKnowledgeBasesResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListLumaKnowledgeBasesResponseBodyData) SetNextToken(v string) *ListLumaKnowledgeBasesResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLumaKnowledgeBasesResponseBodyData) SetTotalCount(v int32) *ListLumaKnowledgeBasesResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 

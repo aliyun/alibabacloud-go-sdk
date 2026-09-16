@@ -13,6 +13,10 @@ type iAgent interface {
 	GetCreatedAt() *int64
 	SetDescription(v string) *Agent
 	GetDescription() *string
+	SetMcpServerId(v string) *Agent
+	GetMcpServerId() *string
+	SetMcpServerName(v string) *Agent
+	GetMcpServerName() *string
 	SetMetadata(v *Metadata) *Agent
 	GetMetadata() *Metadata
 	SetName(v string) *Agent
@@ -24,12 +28,20 @@ type iAgent interface {
 }
 
 type Agent struct {
-	CreatedAt   *int64    `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Metadata    *Metadata `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Prompt      *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	UpdatedAt   *int64    `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	CreatedAt   *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 8vHW4mDRxxxxx
+	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
+	// example:
+	//
+	// data-analyze-agent
+	McpServerName *string   `json:"McpServerName,omitempty" xml:"McpServerName,omitempty"`
+	Metadata      *Metadata `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Prompt        *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	UpdatedAt     *int64    `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
 func (s Agent) String() string {
@@ -46,6 +58,14 @@ func (s *Agent) GetCreatedAt() *int64 {
 
 func (s *Agent) GetDescription() *string {
 	return s.Description
+}
+
+func (s *Agent) GetMcpServerId() *string {
+	return s.McpServerId
+}
+
+func (s *Agent) GetMcpServerName() *string {
+	return s.McpServerName
 }
 
 func (s *Agent) GetMetadata() *Metadata {
@@ -71,6 +91,16 @@ func (s *Agent) SetCreatedAt(v int64) *Agent {
 
 func (s *Agent) SetDescription(v string) *Agent {
 	s.Description = &v
+	return s
+}
+
+func (s *Agent) SetMcpServerId(v string) *Agent {
+	s.McpServerId = &v
+	return s
+}
+
+func (s *Agent) SetMcpServerName(v string) *Agent {
+	s.McpServerName = &v
 	return s
 }
 

@@ -26,7 +26,7 @@ type iListEventStreamingsRequest interface {
 type ListEventStreamingsRequest struct {
 	// The maximum number of entries to return per request. You can use this parameter together with NextToken to implement paging.
 	//
-	// 	Notice: The maximum number of entries returned per request cannot exceed 100.
+	// 	Notice: The maximum number of entries to return per request cannot exceed 100.
 	//
 	// example:
 	//

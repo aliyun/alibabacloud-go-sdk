@@ -113,12 +113,30 @@ func (s *ListLumaNamespacesResponseBody) Validate() error {
 }
 
 type ListLumaNamespacesResponseBodyData struct {
+	// 本次请求实际生效的每页数量。未传 Limit 时为服务端默认值，超出上限时为收敛后的值
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The list of namespaces bound to the Agent.
 	//
 	// example:
 	//
 	// [{"Name":"my_namespace"}]
 	Namespaces []*Namespace `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// 下一页起始Token，传入下次请求的 NextToken 可获取下一页；为空表示已无更多数据
+	//
+	// example:
+	//
+	// 10
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Agent 绑定的命名空间总数，与本页返回条数无关
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLumaNamespacesResponseBodyData) String() string {
@@ -129,12 +147,39 @@ func (s ListLumaNamespacesResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListLumaNamespacesResponseBodyData) GetLimit() *int32 {
+	return s.Limit
+}
+
 func (s *ListLumaNamespacesResponseBodyData) GetNamespaces() []*Namespace {
 	return s.Namespaces
 }
 
+func (s *ListLumaNamespacesResponseBodyData) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ListLumaNamespacesResponseBodyData) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
+func (s *ListLumaNamespacesResponseBodyData) SetLimit(v int32) *ListLumaNamespacesResponseBodyData {
+	s.Limit = &v
+	return s
+}
+
 func (s *ListLumaNamespacesResponseBodyData) SetNamespaces(v []*Namespace) *ListLumaNamespacesResponseBodyData {
 	s.Namespaces = v
+	return s
+}
+
+func (s *ListLumaNamespacesResponseBodyData) SetNextToken(v string) *ListLumaNamespacesResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLumaNamespacesResponseBodyData) SetTotalCount(v int32) *ListLumaNamespacesResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 

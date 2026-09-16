@@ -11,6 +11,8 @@ type iListConnectionsRequest interface {
 	GoString() string
 	SetConnectionNamePrefix(v string) *ListConnectionsRequest
 	GetConnectionNamePrefix() *string
+	SetExcludeType(v string) *ListConnectionsRequest
+	GetExcludeType() *string
 	SetMaxResults(v int64) *ListConnectionsRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListConnectionsRequest
@@ -26,6 +28,12 @@ type ListConnectionsRequest struct {
 	//
 	// connection-name
 	ConnectionNamePrefix *string `json:"ConnectionNamePrefix,omitempty" xml:"ConnectionNamePrefix,omitempty"`
+	// 排除单个连接类型，取值范围与 Type 相同。传入单个类型名称，不支持数组或逗号分隔的多个值。例如传入 Http 可排除 HTTP 类型的连接。未传或传入空字符串时不排除任何类型；与 Type 相同时返回空列表。分页与总数均在过滤后计算。
+	//
+	// example:
+	//
+	// Http
+	ExcludeType *string `json:"ExcludeType,omitempty" xml:"ExcludeType,omitempty"`
 	// The maximum number of entries to return per request. You can use this parameter together with NextToken to implement paging.
 	//
 	// - Default value: 10.
@@ -62,6 +70,10 @@ func (s *ListConnectionsRequest) GetConnectionNamePrefix() *string {
 	return s.ConnectionNamePrefix
 }
 
+func (s *ListConnectionsRequest) GetExcludeType() *string {
+	return s.ExcludeType
+}
+
 func (s *ListConnectionsRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -76,6 +88,11 @@ func (s *ListConnectionsRequest) GetType() *string {
 
 func (s *ListConnectionsRequest) SetConnectionNamePrefix(v string) *ListConnectionsRequest {
 	s.ConnectionNamePrefix = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetExcludeType(v string) *ListConnectionsRequest {
+	s.ExcludeType = &v
 	return s
 }
 

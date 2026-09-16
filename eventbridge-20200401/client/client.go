@@ -4120,6 +4120,10 @@ func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest
 		body["ConnectionNamePrefix"] = request.ConnectionNamePrefix
 	}
 
+	if !dara.IsNil(request.ExcludeType) {
+		body["ExcludeType"] = request.ExcludeType
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -4436,6 +4440,14 @@ func (client *Client) ListLumaCatalogsWithOptions(request *ListLumaCatalogsReque
 		body["AgentName"] = request.AgentName
 	}
 
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -4683,11 +4695,11 @@ func (client *Client) ListLumaDocuments(request *ListLumaDocumentsRequest) (_res
 
 // Summary:
 //
-// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists all knowledge bases bound to a Luma Agent in a specified namespace. Returns the complete set of bindings without pagination.
 //
 // Description:
 //
-// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists the knowledge bases bound to a Luma Agent in a specified namespace. Results are returned in pages. To retrieve the next page, pass the NextToken value from the previous response. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than MaxResults. Do not determine whether the last page is reached based on an insufficient number of entries on the current page.
 //
 // @param request - ListLumaKnowledgeBasesRequest
 //
@@ -4710,8 +4722,16 @@ func (client *Client) ListLumaKnowledgeBasesWithOptions(request *ListLumaKnowled
 		body["Catalog"] = request.Catalog
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
 	if !dara.IsNil(request.Namespace) {
 		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4739,11 +4759,11 @@ func (client *Client) ListLumaKnowledgeBasesWithOptions(request *ListLumaKnowled
 
 // Summary:
 //
-// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists all knowledge bases bound to a Luma Agent in a specified namespace. Returns the complete set of bindings without pagination.
 //
 // Description:
 //
-// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists the knowledge bases bound to a Luma Agent in a specified namespace. Results are returned in pages. To retrieve the next page, pass the NextToken value from the previous response. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than MaxResults. Do not determine whether the last page is reached based on an insufficient number of entries on the current page.
 //
 // @param request - ListLumaKnowledgeBasesRequest
 //
@@ -4786,6 +4806,14 @@ func (client *Client) ListLumaNamespacesWithOptions(request *ListLumaNamespacesR
 
 	if !dara.IsNil(request.Catalog) {
 		body["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4835,11 +4863,11 @@ func (client *Client) ListLumaNamespaces(request *ListLumaNamespacesRequest) (_r
 
 // Summary:
 //
-// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists all event tables bound to a Luma Agent in a specified namespace. Returns the complete set of bindings without pagination.
 //
 // Description:
 //
-// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists the event tables bound to a Luma Agent in a specified namespace. Results are returned in pages. Pass the NextToken from the previous response to retrieve the next page. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than the Limit value. Do not use an insufficient number of entries on the current page to determine that the last page has been reached.
 //
 // @param request - ListLumaTablesRequest
 //
@@ -4862,8 +4890,16 @@ func (client *Client) ListLumaTablesWithOptions(request *ListLumaTablesRequest, 
 		body["Catalog"] = request.Catalog
 	}
 
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
 	if !dara.IsNil(request.Namespace) {
 		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4891,11 +4927,11 @@ func (client *Client) ListLumaTablesWithOptions(request *ListLumaTablesRequest, 
 
 // Summary:
 //
-// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists all event tables bound to a Luma Agent in a specified namespace. Returns the complete set of bindings without pagination.
 //
 // Description:
 //
-// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists the event tables bound to a Luma Agent in a specified namespace. Results are returned in pages. Pass the NextToken from the previous response to retrieve the next page. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than the Limit value. Do not use an insufficient number of entries on the current page to determine that the last page has been reached.
 //
 // @param request - ListLumaTablesRequest
 //
@@ -6672,6 +6708,14 @@ func (client *Client) UpdateAgentWithOptions(tmpReq *UpdateAgentRequest, runtime
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.McpServerId) {
+		body["McpServerId"] = request.McpServerId
+	}
+
+	if !dara.IsNil(request.McpServerName) {
+		body["McpServerName"] = request.McpServerName
 	}
 
 	if !dara.IsNil(request.MetadataShrink) {

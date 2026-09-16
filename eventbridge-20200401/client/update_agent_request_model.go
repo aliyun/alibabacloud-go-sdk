@@ -13,6 +13,10 @@ type iUpdateAgentRequest interface {
 	GetClientToken() *string
 	SetDescription(v string) *UpdateAgentRequest
 	GetDescription() *string
+	SetMcpServerId(v string) *UpdateAgentRequest
+	GetMcpServerId() *string
+	SetMcpServerName(v string) *UpdateAgentRequest
+	GetMcpServerName() *string
 	SetMetadata(v *UpdateAgentRequestMetadata) *UpdateAgentRequest
 	GetMetadata() *UpdateAgentRequestMetadata
 	SetName(v string) *UpdateAgentRequest
@@ -34,6 +38,14 @@ type UpdateAgentRequest struct {
 	//
 	// MNS的过滤规则
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// bGXX51ULuGl10xrr
+	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
+	// example:
+	//
+	// eventhouse-agentbridge
+	McpServerName *string `json:"McpServerName,omitempty" xml:"McpServerName,omitempty"`
 	// The associated metadata.
 	Metadata *UpdateAgentRequestMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
 	// The name of the agent.
@@ -68,6 +80,14 @@ func (s *UpdateAgentRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAgentRequest) GetMcpServerId() *string {
+	return s.McpServerId
+}
+
+func (s *UpdateAgentRequest) GetMcpServerName() *string {
+	return s.McpServerName
+}
+
 func (s *UpdateAgentRequest) GetMetadata() *UpdateAgentRequestMetadata {
 	return s.Metadata
 }
@@ -87,6 +107,16 @@ func (s *UpdateAgentRequest) SetClientToken(v string) *UpdateAgentRequest {
 
 func (s *UpdateAgentRequest) SetDescription(v string) *UpdateAgentRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAgentRequest) SetMcpServerId(v string) *UpdateAgentRequest {
+	s.McpServerId = &v
+	return s
+}
+
+func (s *UpdateAgentRequest) SetMcpServerName(v string) *UpdateAgentRequest {
+	s.McpServerName = &v
 	return s
 }
 

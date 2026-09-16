@@ -2944,6 +2944,10 @@ func (client *Client) ListConnectionsWithContext(ctx context.Context, request *L
 		body["ConnectionNamePrefix"] = request.ConnectionNamePrefix
 	}
 
+	if !dara.IsNil(request.ExcludeType) {
+		body["ExcludeType"] = request.ExcludeType
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -3176,6 +3180,14 @@ func (client *Client) ListLumaCatalogsWithContext(ctx context.Context, request *
 		body["AgentName"] = request.AgentName
 	}
 
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -3357,11 +3369,11 @@ func (client *Client) ListLumaDocumentsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists all knowledge bases bound to a Luma Agent in a specified namespace. Returns the complete set of bindings without pagination.
 //
 // Description:
 //
-// Lists all knowledge bases bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists the knowledge bases bound to a Luma Agent in a specified namespace. Results are returned in pages. To retrieve the next page, pass the NextToken value from the previous response. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than MaxResults. Do not determine whether the last page is reached based on an insufficient number of entries on the current page.
 //
 // @param request - ListLumaKnowledgeBasesRequest
 //
@@ -3384,8 +3396,16 @@ func (client *Client) ListLumaKnowledgeBasesWithContext(ctx context.Context, req
 		body["Catalog"] = request.Catalog
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
 	if !dara.IsNil(request.Namespace) {
 		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3440,6 +3460,14 @@ func (client *Client) ListLumaNamespacesWithContext(ctx context.Context, request
 		body["Catalog"] = request.Catalog
 	}
 
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -3465,11 +3493,11 @@ func (client *Client) ListLumaNamespacesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists all event tables bound to a Luma Agent in a specified namespace. Returns the complete set of bindings without pagination.
 //
 // Description:
 //
-// Lists all event tables bound to a Luma Agent under a specified namespace. Returns the complete set of bindings without pagination.
+// Lists the event tables bound to a Luma Agent in a specified namespace. Results are returned in pages. Pass the NextToken from the previous response to retrieve the next page. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than the Limit value. Do not use an insufficient number of entries on the current page to determine that the last page has been reached.
 //
 // @param request - ListLumaTablesRequest
 //
@@ -3492,8 +3520,16 @@ func (client *Client) ListLumaTablesWithContext(ctx context.Context, request *Li
 		body["Catalog"] = request.Catalog
 	}
 
+	if !dara.IsNil(request.Limit) {
+		body["Limit"] = request.Limit
+	}
+
 	if !dara.IsNil(request.Namespace) {
 		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4824,6 +4860,14 @@ func (client *Client) UpdateAgentWithContext(ctx context.Context, tmpReq *Update
 
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.McpServerId) {
+		body["McpServerId"] = request.McpServerId
+	}
+
+	if !dara.IsNil(request.McpServerName) {
+		body["McpServerName"] = request.McpServerName
 	}
 
 	if !dara.IsNil(request.MetadataShrink) {

@@ -13,6 +13,10 @@ type iUpdateAgentShrinkRequest interface {
 	GetClientToken() *string
 	SetDescription(v string) *UpdateAgentShrinkRequest
 	GetDescription() *string
+	SetMcpServerId(v string) *UpdateAgentShrinkRequest
+	GetMcpServerId() *string
+	SetMcpServerName(v string) *UpdateAgentShrinkRequest
+	GetMcpServerName() *string
 	SetMetadataShrink(v string) *UpdateAgentShrinkRequest
 	GetMetadataShrink() *string
 	SetName(v string) *UpdateAgentShrinkRequest
@@ -34,6 +38,14 @@ type UpdateAgentShrinkRequest struct {
 	//
 	// MNS的过滤规则
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// bGXX51ULuGl10xrr
+	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
+	// example:
+	//
+	// eventhouse-agentbridge
+	McpServerName *string `json:"McpServerName,omitempty" xml:"McpServerName,omitempty"`
 	// The associated metadata.
 	MetadataShrink *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The name of the agent.
@@ -68,6 +80,14 @@ func (s *UpdateAgentShrinkRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAgentShrinkRequest) GetMcpServerId() *string {
+	return s.McpServerId
+}
+
+func (s *UpdateAgentShrinkRequest) GetMcpServerName() *string {
+	return s.McpServerName
+}
+
 func (s *UpdateAgentShrinkRequest) GetMetadataShrink() *string {
 	return s.MetadataShrink
 }
@@ -87,6 +107,16 @@ func (s *UpdateAgentShrinkRequest) SetClientToken(v string) *UpdateAgentShrinkRe
 
 func (s *UpdateAgentShrinkRequest) SetDescription(v string) *UpdateAgentShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAgentShrinkRequest) SetMcpServerId(v string) *UpdateAgentShrinkRequest {
+	s.McpServerId = &v
+	return s
+}
+
+func (s *UpdateAgentShrinkRequest) SetMcpServerName(v string) *UpdateAgentShrinkRequest {
+	s.McpServerName = &v
 	return s
 }
 

@@ -119,6 +119,24 @@ type ListLumaCatalogsResponseBodyData struct {
 	//
 	// [{"Name":"my_catalog"}]
 	Catalogs []*Catalog `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
+	// 本次请求实际生效的每页数量。未传 Limit 时为服务端默认值，超出上限时为收敛后的值
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// 下一页起始Token，传入下次请求的 NextToken 可获取下一页；为空表示已无更多数据
+	//
+	// example:
+	//
+	// 10
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Agent 绑定的数据目录总数，与本页返回条数无关
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLumaCatalogsResponseBodyData) String() string {
@@ -133,8 +151,35 @@ func (s *ListLumaCatalogsResponseBodyData) GetCatalogs() []*Catalog {
 	return s.Catalogs
 }
 
+func (s *ListLumaCatalogsResponseBodyData) GetLimit() *int32 {
+	return s.Limit
+}
+
+func (s *ListLumaCatalogsResponseBodyData) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ListLumaCatalogsResponseBodyData) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
 func (s *ListLumaCatalogsResponseBodyData) SetCatalogs(v []*Catalog) *ListLumaCatalogsResponseBodyData {
 	s.Catalogs = v
+	return s
+}
+
+func (s *ListLumaCatalogsResponseBodyData) SetLimit(v int32) *ListLumaCatalogsResponseBodyData {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListLumaCatalogsResponseBodyData) SetNextToken(v string) *ListLumaCatalogsResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLumaCatalogsResponseBodyData) SetTotalCount(v int32) *ListLumaCatalogsResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 

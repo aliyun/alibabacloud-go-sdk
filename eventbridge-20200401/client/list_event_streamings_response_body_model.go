@@ -26,7 +26,7 @@ type ListEventStreamingsResponseBody struct {
 	//
 	// Success: The request was successful.
 	//
-	// Other values: An error occurred. For more information about error codes, see error codes.
+	// Other values: An error occurred. For more information about error codes, see Error codes.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListEventStreamingsResponseBody struct {
 	//
 	// 283FF852-C4B8-58C9-9777-F88A5A16****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. The value true indicates success.
+	// Indicates whether the operation was successful. The value true is returned if the operation was successful.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *ListEventStreamingsResponseBody) Validate() error {
 type ListEventStreamingsResponseBodyData struct {
 	// The event stream list.
 	EventStreamings []*ListEventStreamingsResponseBodyDataEventStreamings `json:"EventStreamings,omitempty" xml:"EventStreamings,omitempty" type:"Repeated"`
-	// Indicates the position from which the current call starts to read data. A value of empty string indicates that all data has been read. Set this value to the NextToken request parameter in the next call.
+	// Indicates whether there is more data to return. A value of empty string indicates that all data has been returned. If the value is not empty, set this value to the NextToken request parameter in the next call.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListEventStreamingsResponseBodyDataEventStreamings struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The transformation configurations.
+	// The event transformer configurations.
 	Transforms []*ListEventStreamingsResponseBodyDataEventStreamingsTransforms `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
 }
 
@@ -331,10 +331,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamings) Validate() error {
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsRunOptions struct {
-	// The batch window.
+	// The batching window.
 	BatchWindow    *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBatchWindow    `json:"BatchWindow,omitempty" xml:"BatchWindow,omitempty" type:"Struct"`
 	BusinessOption *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsBusinessOption `json:"BusinessOption,omitempty" xml:"BusinessOption,omitempty" type:"Struct"`
-	// Specifies whether to enable the dead-letter queue. By default, the dead-letter queue is disabled, and messages that exceed the retry policy are discarded.
+	// Indicates whether the dead-letter queue is enabled. By default, the dead-letter queue is disabled, and messages that exceed the retry policy are discarded.
 	DeadLetterQueue *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
 	// The fault tolerance policy. Valid values: NONE (no fault tolerance) and ALL (tolerate all faults).
 	//
@@ -681,17 +681,17 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkFcParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
 	// The Sink Fnf parameters.
 	SinkFnfParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters `json:"SinkFnfParameters,omitempty" xml:"SinkFnfParameters,omitempty" type:"Struct"`
-	// The HTTPS event target parameters.
+	// The HTTPS target parameters.
 	SinkHttpsParameters *SinkHttpsParameters `json:"SinkHttpsParameters,omitempty" xml:"SinkHttpsParameters,omitempty"`
-	// The Sink Kafka parameters.
+	// The sink Kafka parameters.
 	SinkKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
-	// The parameters for delivering the event stream to an EventHouse knowledge base. Specify this parameter only when the Sink type is knowledge base.
+	// The target parameters for delivering event streams to an EventHouse knowledge base. Specify this parameter only when the sink type is knowledge base.
 	SinkKnowledgeBaseParameters *SinkKnowledgeBaseParameters `json:"SinkKnowledgeBaseParameters,omitempty" xml:"SinkKnowledgeBaseParameters,omitempty"`
-	// The Simple Message Queue (formerly MNS) event target.
+	// The Simple MSMQ (formerly MNS) event target.
 	SinkMNSParameters  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
 	SinkMQTTParameters *SinkMQTTParameters                                                      `json:"SinkMQTTParameters,omitempty" xml:"SinkMQTTParameters,omitempty"`
 	SinkOSSParameters  *SinkOSSParameters                                                       `json:"SinkOSSParameters,omitempty" xml:"SinkOSSParameters,omitempty"`
-	// The Sink open source RabbitMQ parameters.
+	// The sink open-source RabbitMQ parameters.
 	SinkOpenSourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SinkRabbitMQMetaParameters       *SinkRabbitMQMetaParameters                                                             `json:"SinkRabbitMQMetaParameters,omitempty" xml:"SinkRabbitMQMetaParameters,omitempty"`
 	SinkRabbitMQMsgSyncParameters    *SinkRabbitMQMsgSyncParameters                                                          `json:"SinkRabbitMQMsgSyncParameters,omitempty" xml:"SinkRabbitMQMsgSyncParameters,omitempty"`
@@ -699,7 +699,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameters `json:"SinkRabbitMQParameters,omitempty" xml:"SinkRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters for the sink RocketMQ checkpoint.
 	SinkRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpointParameters `json:"SinkRocketMQCheckpointParameters,omitempty" xml:"SinkRocketMQCheckpointParameters,omitempty" type:"Struct"`
-	// The parameters for the sink ApsaraMQ for RocketMQ.
+	// The parameters for the sink RocketMQ source.
 	SinkRocketMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters `json:"SinkRocketMQParameters,omitempty" xml:"SinkRocketMQParameters,omitempty" type:"Struct"`
 	// Sink SLS Parameters
 	SinkSLSParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters `json:"SinkSLSParameters,omitempty" xml:"SinkSLSParameters,omitempty" type:"Struct"`
@@ -2097,17 +2097,17 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorPar
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters struct {
-	// The BLOB type record content template.
+	// The BLOB type. The record content template.
 	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The DataHub project name.
 	Project *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// To grant authorization to the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, set the trusted entity type to Alibaba Cloud Service and set the trusted service to event bus.
+	// To grant authorization to the event bus EventBridge to use this role to read Simple Log Service (SLS) log content, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, set the trusted entity type to "Alibaba Cloud Service" and set the trusted service to "event bus".
 	RoleName *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
 	// The name of the DataHub topic.
 	Topic *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
-	// The content schema of the topic. This parameter is of the TUPLE type.
+	// The content schema of the topic. This parameter applies to the TUPLE type.
 	TopicSchema *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema `json:"TopicSchema,omitempty" xml:"TopicSchema,omitempty" type:"Struct"`
-	// The topic type. Valid values:
+	// The type of the topic. Valid values:
 	//
 	// - TUPLE
 	//
@@ -2220,7 +2220,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The BLOB type record content template.
+	// The BLOB type. The record content template.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2328,7 +2328,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// To grant authorization to the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, set the trusted entity type to Alibaba Cloud Service and set the trusted service to event bus.
+	// To grant authorization to the event bus EventBridge to use this role to read Simple Log Service (SLS) log content, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, set the trusted entity type to "Alibaba Cloud Service" and set the trusted service to "event bus".
 	//
 	// example:
 	//
@@ -2440,7 +2440,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The content schema of the topic. This parameter is of the TUPLE type.
+	// The content schema of the topic. This parameter applies to the TUPLE type.
 	//
 	// example:
 	//
@@ -2496,7 +2496,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic type. Valid values:
+	// The type of the topic. Valid values:
 	//
 	// - TUPLE
 	//
@@ -4332,11 +4332,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters struct {
 	// The acknowledgment mode for writing to Kafka:
 	//
-	// - acks=0: No response is required from the server. This mode offers high performance but a high risk of data loss.
+	// - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
 	//
-	// - acks=1: A response is returned after the primary node on the server writes the data. This mode offers moderate performance and a moderate risk of data loss. Data loss may occur if the primary node goes down.
+	// - acks=1: A response is returned after the primary node on the server successfully writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
 	//
-	// - acks=all: A response is returned only after the primary node writes the data and the secondary nodes complete synchronization. This mode offers lower performance but higher data safety. Data loss occurs only if both the primary and secondary nodes go down.
+	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes complete synchronization. This mode delivers lower performance but provides higher data safety. Data loss occurs only if both the primary and secondary nodes go down.
 	Acks            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
 	CompressionType *string                                                                        `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
 	// The target topic strategy for message routing. If both the topic parameter and the topics parameter are specified, the value of the topics parameter takes precedence. The following two configuration modes are supported:
@@ -4345,7 +4345,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters s
 	//
 	//     2. **Dynamic extraction mode**: Enter a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matching field as the target topic name.
 	DynamicTopic *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
-	// The target service type is ApsaraMQ for Kafka.
+	// The target service type is MSMQ for Apache Kafka.
 	InstanceId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message key.
 	Key *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersKey `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
@@ -4471,11 +4471,11 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAc
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The acknowledgment mode for writing to Kafka:
 	//
-	// - acks=0: No response is required from the server. This mode offers high performance but a high risk of data loss.
+	// - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
 	//
-	// - acks=1: A response is returned after the primary node on the server writes the data. This mode offers moderate performance and a moderate risk of data loss. Data loss may occur if the primary node goes down.
+	// - acks=1: A response is returned after the primary node on the server successfully writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
 	//
-	// - acks=all: A response is returned only after the primary node writes the data and the secondary nodes complete synchronization. This mode offers lower performance but higher data safety. Data loss occurs only if both the primary and secondary nodes go down.
+	// - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes complete synchronization. This mode delivers lower performance but provides higher data safety. Data loss occurs only if both the primary and secondary nodes go down.
 	//
 	// example:
 	//
@@ -4523,11 +4523,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic struct {
-	// The transformation type. Valid values:
+	// The transformation type.
 	//
-	// - CONSTANT: constant
+	// CONSTANT: a constant.
 	//
-	// - JSONPATH: extracts a value from the upstream event based on a JSONPath expression
+	// JSONPATH: extracts a value from the upstream source based on a path.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -4809,9 +4809,9 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters struct {
 	// The message body.
 	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// Specifies whether to enable Base64 encoding.
+	// Indicates whether Base64 encoding is enabled.
 	IsBase64Encode *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersIsBase64Encode `json:"IsBase64Encode,omitempty" xml:"IsBase64Encode,omitempty" type:"Struct"`
-	// The target service type is Simple Message Queue (formerly MNS).
+	// The target service type is Simple MSMQ (formerly MNS).
 	QueueName *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
 }
 
@@ -4998,7 +4998,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParametersQueu
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the queue in Simple Message Queue (formerly MNS).
+	// The name of the Simple MSMQ (formerly MNS) queue.
 	//
 	// example:
 	//
@@ -5054,7 +5054,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitM
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// The message body.
 	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The endpoint of the RabbitMQ instance.
+	// The RabbitMQ instance endpoint.
 	//
 	// example:
 	//
@@ -5074,7 +5074,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitM
 	//
 	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The username and password used for authentication.
+	// The username and password used for identity verification.
 	//
 	// example:
 	//
@@ -5559,7 +5559,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameters struct {
 	// The message body.
 	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The Exchange mode. This parameter is required only when TargetType is set to Exchange.
+	// The Exchange mode. This parameter is required only when the TargetType parameter is set to Exchange.
 	Exchange *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersExchange `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
 	// The event target type is ApsaraMQ for RabbitMQ.
 	InstanceId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
@@ -5567,9 +5567,9 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameter
 	MessageId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersMessageId `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
 	// The filter properties.
 	Properties *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The Queue mode. This parameter is required only when TargetType is set to Queue.
+	// The Queue mode. This parameter is required only when the TargetType parameter is set to Queue.
 	QueueName *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
-	// The routing rule of the message. This parameter is required only when TargetType is set to Exchange.
+	// The routing rule for messages. This parameter is required only when the TargetType parameter is set to Exchange.
 	RoutingKey *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
 	// The target type.
 	TargetType *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParametersTargetType `json:"TargetType,omitempty" xml:"TargetType,omitempty" type:"Struct"`
@@ -5844,7 +5844,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameter
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The instance ID of the ApsaraMQ for RabbitMQ instance.
+	// The instance ID of ApsaraMQ for RabbitMQ.
 	//
 	// example:
 	//
@@ -6142,9 +6142,9 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParameter
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The target type. Valid values:
 	//
-	// Exchange: Exchange mode.
+	// - Exchange: Exchange mode.
 	//
-	// Queue: Queue mode.
+	// - Queue: Queue mode.
 	//
 	// example:
 	//
@@ -6252,7 +6252,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpoin
 	ConsumeTimestamp *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpointParametersConsumeTimestamp `json:"ConsumeTimestamp,omitempty" xml:"ConsumeTimestamp,omitempty" type:"Struct"`
 	// The consumer group information of ApsaraMQ for RocketMQ.
 	Group *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheckpointParametersGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The instance ID of the RocketMQ instance.
+	// The instance ID of ApsaraMQ for RocketMQ.
 	//
 	// example:
 	//
@@ -6511,7 +6511,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQCheck
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters struct {
 	// The message body.
 	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The delivery order type of the message.
+	// The delivery order type of messages.
 	DeliveryOrderType *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersDeliveryOrderType `json:"DeliveryOrderType,omitempty" xml:"DeliveryOrderType,omitempty" type:"Struct"`
 	// The instance endpoint.
 	InstanceEndpoint *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty" type:"Struct"`
@@ -6539,7 +6539,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameter
 	ShardingKey *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersShardingKey `json:"ShardingKey,omitempty" xml:"ShardingKey,omitempty" type:"Struct"`
 	// The filter properties.
 	Tags *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The topic of the MSMQ RocketMQ instance.
+	// The topic of the MSMQ for RocketMQ instance.
 	Topic *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	VSwitchIds *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
@@ -6968,7 +6968,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameter
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The instance ID of the ApsaraMQ for RocketMQ instance.
+	// The instance ID of ApsaraMQ for RocketMQ.
 	//
 	// example:
 	//
@@ -7086,7 +7086,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameter
 	//
 	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
-	// - SelfBuilt: Self-managed Apache RocketMQ cluster.
+	// - SelfBuilt: self-managed Apache RocketMQ cluster.
 	//
 	// example:
 	//
@@ -7562,7 +7562,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameter
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic of the MSMQ RocketMQ instance.
+	// The topic of the MSMQ for RocketMQ instance.
 	//
 	// example:
 	//
@@ -7726,7 +7726,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters str
 	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The custom log key-value pairs. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
 	ContentSchema *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
-	// The data format of SLS. You can use the default format or specify key-value pairs. Valid values:
+	// The SLS data format. You can use the default format or specify key-value pairs. Valid values:
 	//
 	// - JSON
 	//
@@ -7736,7 +7736,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters str
 	LogStore *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
 	// The project of Simple Log Service (SLS).
 	Project *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The role that grants authorization to the event bus EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role in the Resource Access Management (RAM) console, select Alibaba Cloud Service as the trusted entity, and select event bus as the trusted service.
+	// The role used for authorization of EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service, and set the trusted service to EventBridge.
 	RoleName *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
 	// The topic of the log, which corresponds to the SLS reserved field "topic".
 	Topic *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
@@ -7981,7 +7981,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersCont
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The data format of SLS. You can use the default format or specify key-value pairs. Valid values:
+	// The SLS data format. You can use the default format or specify key-value pairs. Valid values:
 	//
 	// - JSON
 	//
@@ -8153,7 +8153,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersRole
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The role that grants authorization to the event bus EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role in the Resource Access Management (RAM) console, select Alibaba Cloud Service as the trusted entity, and select event bus as the trusted service.
+	// The role used for authorization of EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role used by the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service, and set the trusted service to EventBridge.
 	//
 	// example:
 	//
@@ -8257,7 +8257,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
-	// The Source RocketMQ checkpoint.
+	// The Source RocketMQ checkpoint parameters.
 	SourceApacheRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters `json:"SourceApacheRocketMQCheckpointParameters,omitempty" xml:"SourceApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
 	// The custom connector Apache Kafka event source.
 	SourceCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
@@ -8265,13 +8265,13 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
 	SourceCustomizedKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
 	// The Source DTS event source.
 	SourceDTSParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
-	// The Source EventBus event source.
+	// The Source event bus event source.
 	SourceEventBusParameters   *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceEventBusParameters `json:"SourceEventBusParameters,omitempty" xml:"SourceEventBusParameters,omitempty" type:"Struct"`
 	SourceFeiShuDocsParameters *SourceFeiShuDocsParameters                                                       `json:"SourceFeiShuDocsParameters,omitempty" xml:"SourceFeiShuDocsParameters,omitempty"`
 	SourceJDBCParameters       *SourceJDBCParameters                                                             `json:"SourceJDBCParameters,omitempty" xml:"SourceJDBCParameters,omitempty"`
 	// The Source Kafka event source.
 	SourceKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The Source Simple Message Queue (formerly MNS) event source.
+	// The Source Simple Message Queue (formerly MNS) message event source.
 	SourceMNSParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The Source MQTT event source.
 	SourceMQTTParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
@@ -8288,7 +8288,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
 	SourceRabbitMQMsgSyncParameters *SourceRabbitMQMsgSyncParameters                                                    `json:"SourceRabbitMQMsgSyncParameters,omitempty" xml:"SourceRabbitMQMsgSyncParameters,omitempty"`
 	// The Source RabbitMQ event source.
 	SourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The Source RocketMQ checkpoint.
+	// The Source RocketMQ checkpoint parameters.
 	SourceRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQCheckpointParameters `json:"SourceRocketMQCheckpointParameters,omitempty" xml:"SourceRocketMQCheckpointParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event source is ApsaraMQ for RocketMQ.
 	SourceRocketMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
@@ -9128,7 +9128,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParamete
 	//
 	// JSON
 	ValueDataType *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
-	// The VPC ID of the user.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -9239,13 +9239,13 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaPara
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParameters struct {
-	// Specifies whether to enable Base64 encoding.
+	// Indicates whether Base64 encoding is enabled.
 	//
 	// example:
 	//
 	// true
 	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
-	// The name of the Simple Message Queue (formerly MNS) queue.
+	// The name of the Simple Message Queue (formerly MNS) message queue.
 	//
 	// example:
 	//
@@ -9333,7 +9333,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameter
 	//
 	// migration_instance
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The vSwitch IDs.
+	// The vSwitch ID.
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	// VPC ID。
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -9430,7 +9430,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOSSParameters
 	//
 	// bucket_abc
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The delimiter used in chunked loading mode as the text chunk identifier. By default, the newline character
+	// The delimiter. In chunked loading mode, this delimiter is used as the chunk identifier for the text. By default, the newline character
 	//
 	//  is used as the delimiter.
 	//
@@ -9822,7 +9822,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQParam
 	//
 	// dbaudit-cn-7mz2hqo****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the queue on the ApsaraMQ for RabbitMQ instance.
+	// The queue name of the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -9834,7 +9834,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRabbitMQParam
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the vhost on the ApsaraMQ for RabbitMQ instance.
+	// The vhost name of the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -10010,7 +10010,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	//
 	// i-f8zbher64dlm58pl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network type of the instance. Valid values:
+	// The instance network information. Valid values:
 	//
 	// - PublicNetwork
 	//
@@ -10038,7 +10038,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	//
 	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
-	// - SelfBuilt: Self-managed Apache RocketMQ cluster.
+	// - SelfBuilt: self-managed Apache RocketMQ cluster.
 	//
 	// example:
 	//
@@ -10114,7 +10114,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	//
 	// topic_add_anima
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The vSwitch IDs.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -10372,7 +10372,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameters
 	//
 	// dmmzk
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The role name for authorization of the event bus EventBridge to read Simple Log Service log content. To use this role, create a role for the service in the Resource Access Management (RAM) console, select "Alibaba Cloud Service", and set "Trusted Service" to "event bus".
+	// The role name for authorization of the event bus EventBridge to read Simple Log Service log content. To use this role, create a role in the Resource Access Management (RAM) console, select "Alibaba Cloud Service" as the trusted entity, and select "event bus" as the trusted service.
 	//
 	// example:
 	//
@@ -10438,6 +10438,26 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParame
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsTransforms struct {
+	// The AI local text chunking parameters.
+	AiChunkTransformParameters *AiChunkTransformParameters `json:"AiChunkTransformParameters,omitempty" xml:"AiChunkTransformParameters,omitempty"`
+	// The AI text classification parameters.
+	AiClassifyTransformParameters *AiClassifyTransformParameters `json:"AiClassifyTransformParameters,omitempty" xml:"AiClassifyTransformParameters,omitempty"`
+	// The AI embedding parameters.
+	AiEmbedTransformParameters *AiEmbedTransformParameters `json:"AiEmbedTransformParameters,omitempty" xml:"AiEmbedTransformParameters,omitempty"`
+	// The AI information extraction parameters.
+	AiExtractTransformParameters *AiExtractTransformParameters `json:"AiExtractTransformParameters,omitempty" xml:"AiExtractTransformParameters,omitempty"`
+	// The AI conditional filtering parameters.
+	AiFilterTransformParameters *AiFilterTransformParameters `json:"AiFilterTransformParameters,omitempty" xml:"AiFilterTransformParameters,omitempty"`
+	// The AI semantic chunking parameters.
+	AiPrepSearchTransformParameters *AiPrepSearchTransformParameters `json:"AiPrepSearchTransformParameters,omitempty" xml:"AiPrepSearchTransformParameters,omitempty"`
+	// The AI data masking parameters.
+	AiRedactTransformParameters *AiRedactTransformParameters `json:"AiRedactTransformParameters,omitempty" xml:"AiRedactTransformParameters,omitempty"`
+	// The AI emotion analysis parameters.
+	AiSentimentAnalysisTransformParameters *AiSentimentAnalysisTransformParameters `json:"AiSentimentAnalysisTransformParameters,omitempty" xml:"AiSentimentAnalysisTransformParameters,omitempty"`
+	// The AI summarization parameters.
+	AiSummarizeTransformParameters *AiSummarizeTransformParameters `json:"AiSummarizeTransformParameters,omitempty" xml:"AiSummarizeTransformParameters,omitempty"`
+	// The AI translation parameters.
+	AiTranslateTransformParameters *AiTranslateTransformParameters `json:"AiTranslateTransformParameters,omitempty" xml:"AiTranslateTransformParameters,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the cloud service, such as the ARN of a function in Function Compute.
 	//
 	// example:
@@ -10456,6 +10476,46 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GoString()
 	return s.String()
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiChunkTransformParameters() *AiChunkTransformParameters {
+	return s.AiChunkTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiClassifyTransformParameters() *AiClassifyTransformParameters {
+	return s.AiClassifyTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiEmbedTransformParameters() *AiEmbedTransformParameters {
+	return s.AiEmbedTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiExtractTransformParameters() *AiExtractTransformParameters {
+	return s.AiExtractTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiFilterTransformParameters() *AiFilterTransformParameters {
+	return s.AiFilterTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiPrepSearchTransformParameters() *AiPrepSearchTransformParameters {
+	return s.AiPrepSearchTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiRedactTransformParameters() *AiRedactTransformParameters {
+	return s.AiRedactTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiSentimentAnalysisTransformParameters() *AiSentimentAnalysisTransformParameters {
+	return s.AiSentimentAnalysisTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiSummarizeTransformParameters() *AiSummarizeTransformParameters {
+	return s.AiSummarizeTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetAiTranslateTransformParameters() *AiTranslateTransformParameters {
+	return s.AiTranslateTransformParameters
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetArn() *string {
 	return s.Arn
 }
@@ -10466,6 +10526,56 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetBaiLia
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) GetDashScopeTransformParameters() *DashScopeTransformParameters {
 	return s.DashScopeTransformParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiChunkTransformParameters(v *AiChunkTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiChunkTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiClassifyTransformParameters(v *AiClassifyTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiClassifyTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiEmbedTransformParameters(v *AiEmbedTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiEmbedTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiExtractTransformParameters(v *AiExtractTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiExtractTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiFilterTransformParameters(v *AiFilterTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiFilterTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiPrepSearchTransformParameters(v *AiPrepSearchTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiPrepSearchTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiRedactTransformParameters(v *AiRedactTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiRedactTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiSentimentAnalysisTransformParameters(v *AiSentimentAnalysisTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiSentimentAnalysisTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiSummarizeTransformParameters(v *AiSummarizeTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiSummarizeTransformParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetAiTranslateTransformParameters(v *AiTranslateTransformParameters) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
+	s.AiTranslateTransformParameters = v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetArn(v string) *ListEventStreamingsResponseBodyDataEventStreamingsTransforms {
@@ -10484,6 +10594,56 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) SetDashSc
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsTransforms) Validate() error {
+	if s.AiChunkTransformParameters != nil {
+		if err := s.AiChunkTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiClassifyTransformParameters != nil {
+		if err := s.AiClassifyTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiEmbedTransformParameters != nil {
+		if err := s.AiEmbedTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiExtractTransformParameters != nil {
+		if err := s.AiExtractTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiFilterTransformParameters != nil {
+		if err := s.AiFilterTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiPrepSearchTransformParameters != nil {
+		if err := s.AiPrepSearchTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiRedactTransformParameters != nil {
+		if err := s.AiRedactTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiSentimentAnalysisTransformParameters != nil {
+		if err := s.AiSentimentAnalysisTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiSummarizeTransformParameters != nil {
+		if err := s.AiSummarizeTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiTranslateTransformParameters != nil {
+		if err := s.AiTranslateTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.BaiLianAgentTransformParameters != nil {
 		if err := s.BaiLianAgentTransformParameters.Validate(); err != nil {
 			return err

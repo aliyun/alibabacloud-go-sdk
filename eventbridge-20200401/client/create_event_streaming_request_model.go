@@ -86,13 +86,13 @@ type CreateEventStreamingRequest struct {
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The runtime parameters.
 	RunOptions *CreateEventStreamingRequestRunOptions `json:"RunOptions,omitempty" xml:"RunOptions,omitempty" type:"Struct"`
-	// The event target. You must specify exactly one type of Sink.
+	// The event target. You must select exactly one type of Sink.
 	Sink *CreateEventStreamingRequestSink `json:"Sink,omitempty" xml:"Sink,omitempty" type:"Struct"`
-	// The event provider. You must specify one Source, and you can specify only one Source.
+	// The event provider. You must select exactly one Source type.
 	Source *CreateEventStreamingRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 	// The list of tags. A maximum of 20 tags can be specified.
 	Tags []*CreateEventStreamingRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The transform configurations.
+	// The Transform-related configurations.
 	Transforms []*CreateEventStreamingRequestTransforms `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
 }
 
@@ -223,22 +223,22 @@ func (s *CreateEventStreamingRequest) Validate() error {
 }
 
 type CreateEventStreamingRequestRunOptions struct {
-	// The batch window.
+	// The batching window.
 	BatchWindow    *CreateEventStreamingRequestRunOptionsBatchWindow    `json:"BatchWindow,omitempty" xml:"BatchWindow,omitempty" type:"Struct"`
 	BusinessOption *CreateEventStreamingRequestRunOptionsBusinessOption `json:"BusinessOption,omitempty" xml:"BusinessOption,omitempty" type:"Struct"`
 	// Specifies whether to enable the dead-letter queue. The dead-letter queue is disabled by default. Messages that exceed the retry policy are discarded.
 	DeadLetterQueue *CreateEventStreamingRequestRunOptionsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
 	// The error tolerance policy. Valid values:
 	//
-	// - NONE: No tolerance for errors.
+	// - NONE: No errors are tolerated.
 	//
-	// - ALL: Tolerate all errors.
+	// - ALL: All errors are tolerated.
 	//
 	// example:
 	//
 	// ALL
 	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
-	// The concurrency.
+	// The concurrency level.
 	//
 	// example:
 	//
@@ -345,13 +345,13 @@ func (s *CreateEventStreamingRequestRunOptions) Validate() error {
 }
 
 type CreateEventStreamingRequestRunOptionsBatchWindow struct {
-	// The maximum number of events that the window can contain. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window meets the threshold.
+	// The maximum number of events that the window can contain. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, a push is triggered when any one window meets the condition.
 	//
 	// example:
 	//
 	// 100
 	CountBasedWindow *int32 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
-	// The maximum time range, in seconds, of events that the window can contain. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window meets the threshold.
+	// The maximum time range (in seconds) of events that the window can contain. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, a push is triggered when any one window meets the condition.
 	//
 	// example:
 	//
@@ -591,7 +591,7 @@ type CreateEventStreamingRequestSink struct {
 	SinkEventHouseParameters *CreateEventStreamingRequestSinkSinkEventHouseParameters `json:"SinkEventHouseParameters,omitempty" xml:"SinkEventHouseParameters,omitempty" type:"Struct"`
 	// The function target.
 	SinkFcParameters *CreateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
-	// The Sink FnF parameters.
+	// The Sink Fnf parameters.
 	SinkFnfParameters   *CreateEventStreamingRequestSinkSinkFnfParameters `json:"SinkFnfParameters,omitempty" xml:"SinkFnfParameters,omitempty" type:"Struct"`
 	SinkHttpsParameters *SinkHttpsParameters                              `json:"SinkHttpsParameters,omitempty" xml:"SinkHttpsParameters,omitempty"`
 	// The Sink Kafka parameters.
@@ -1042,11 +1042,11 @@ type CreateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
 	SecurityProtocol *string                                                                  `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
 	// [Required for encrypted private keys] The Kafka client private key password. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" marker), provide the decryption password. Leave this parameter empty if the private key is not encrypted. This password is used only to decrypt the private key and is unrelated to Kafka authentication.
 	SslKeyPassword *string `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
-	// [Required for mutual authentication] The Kafka client certificate chain. If the Kafka server enables mutual SSL authentication (ssl.client.auth=required), provide this parameter. Format: Base64-encoded PEM format, containing the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Ensure that each PEM file content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\", then Base64-encode the concatenated content.
+	// [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when the Kafka server enables mutual SSL authentication (ssl.client.auth=required). Format: Base64-encoded PEM format that contains the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Make sure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\", and then Base64-encode the concatenated content.
 	SslKeystoreCertificateChain *string `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
 	// [Required for bidirectional authentication] The SSL private key configuration object. When the Kafka server enables bidirectional SSL authentication, you must provide the client private key. Only KMS pattern is supported for the key: specify the Key Management Service EPS resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}
 	SslKeystoreKey *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
-	// [Required for SSL scenarios] The Kafka server trust certificate. This certificate is used to authenticate the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format requirement: Base64 encoding in PEM format. This typically contains the CA certificate or the signing certificate of the Kafka server. Example: Base64-encode the content of the CA certificate PEM file (make sure the content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued the certificate.
+	// [Required for SSL scenarios] The Kafka server trust certificate. This certificate is used to authenticate the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format requirement: Base64-encoded PEM format, which typically contains the CA certificate or the server certificate of the Kafka server. Example: Base64-encode the content of the CA certificate PEM file (make sure the content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued the certificate.
 	SslTruststoreCertificates *string                                                             `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
 	Topic                     *string                                                             `json:"Topic,omitempty" xml:"Topic,omitempty"`
 	VSwitchIds                *CreateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
@@ -1294,7 +1294,7 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) Validate() er
 type CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic struct {
 	// The transformation type.
 	//
-	// CONSTANT: a constant value.
+	// CONSTANT: a fixed value.
 	//
 	// JSONPATH: extracts content from the upstream based on a path.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
@@ -1524,9 +1524,9 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId
 }
 
 type CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey struct {
-	// [Required] The KMS resource ARN that stores the SSL private key. This parameter is used to locate the Key Management Service instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". You can view the ARN information of the corresponding key in the KMS console.
+	// [Required] The Alibaba Cloud Resource Name (ARN) of the KMS resource that stores the SSL private key. This parameter is used to locate the Key Management Service instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". You can view the ARN information of the corresponding key in the KMS console.
 	KmsArn *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
-	// [KMS KV mode] The key name in the KMS credential. If the KMS credential is stored as a key-value (KV) structure, specify this parameter to indicate the key that corresponds to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", set this parameter to \\"ssl_keystore_key\\". If the KMS credential is in plaintext mode (the PEM content of the private key is stored directly), leave this parameter empty.
+	// [KMS KV mode] The key name in the KMS credential. If the KMS credential is stored as a key-value (KV) structure, specify this parameter to indicate the key that corresponds to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", set this parameter to \\"ssl_keystore_key\\". If the KMS credential is in plain text mode (the PEM content of the private key is stored directly), leave this parameter empty.
 	KmsSecretValueKey *string `json:"KmsSecretValueKey,omitempty" xml:"KmsSecretValueKey,omitempty"`
 }
 
@@ -2131,7 +2131,7 @@ type CreateEventStreamingRequestSinkSinkDashVectorParameters struct {
 	//
 	// collection1
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The schema field definition for table entries when inserting data into DashVector. The event content must be in JSON format after transformation.
+	// The schema field definition for table entries when inserting data into DashVector. The result after event content transformation must be in JSON format.
 	DashVectorSchemaParameters []*CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -2153,11 +2153,11 @@ type CreateEventStreamingRequestSinkSinkDashVectorParameters struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The partition. Default value: default.
 	Partition *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
-	// The primary key ID used when inserting or deleting records.
+	// The primary key ID for inserting or deleting records.
 	//
 	// > If this field is not specified, a random primary key ID is used.
 	PrimaryKeyId *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId `json:"PrimaryKeyId,omitempty" xml:"PrimaryKeyId,omitempty" type:"Struct"`
-	// The vector for the DashVector record to be inserted.
+	// The vector of the DashVector record to insert.
 	Vector *CreateEventStreamingRequestSinkSinkDashVectorParametersVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
 }
 
@@ -2528,7 +2528,7 @@ type CreateEventStreamingRequestSinkSinkDashVectorParametersPartition struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// - If Form is set to CONSTANT: a constant value.
 	//
-	// - If Form is set to JSONPATH: the JSONPath expression used to extract content.
+	// - If Form is set to JSONPATH: JSONPath-extracted content.
 	//
 	// > The Value field cannot exceed 10,240 characters.
 	//
@@ -2590,9 +2590,9 @@ type CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId struct 
 	//
 	// ${ID}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// - If Form is set to JSONPATH: the JSONPath expression used to extract content.
+	// - If Form is set to JSONPATH: JSONPath-extracted content.
 	//
-	// - If Form is set to TEMPLATE: the template variable.
+	// - If Form is set to TEMPLATE: template variable.
 	//
 	// > The Value field cannot exceed 10,240 characters.
 	//
@@ -2654,7 +2654,7 @@ type CreateEventStreamingRequestSinkSinkDashVectorParametersVector struct {
 	//
 	// ${vector}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The JSONPath expression used to extract content.
+	// The JSONPath-extracted content.
 	//
 	// > The Value field cannot exceed 10,240 characters.
 	//
@@ -2704,11 +2704,11 @@ func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersVector) Validate
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParameters struct {
-	// The Record content template for the BLOB type.
+	// The record content template for the BLOB type.
 	Body *CreateEventStreamingRequestSinkSinkDataHubParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The DataHub project name.
 	Project *CreateEventStreamingRequestSinkSinkDataHubParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The role name for the task.
+	// The role name of the task.
 	RoleName *CreateEventStreamingRequestSinkSinkDataHubParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
 	// The DataHub topic name.
 	Topic *CreateEventStreamingRequestSinkSinkDataHubParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
@@ -2827,7 +2827,7 @@ type CreateEventStreamingRequestSinkSinkDataHubParametersBody struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The Record content template for the BLOB type.
+	// The record content template for the BLOB type.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2935,7 +2935,7 @@ type CreateEventStreamingRequestSinkSinkDataHubParametersRoleName struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The role name for the task.
+	// The role name of the task.
 	//
 	// example:
 	//
@@ -4097,16 +4097,16 @@ func (s *CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColu
 type CreateEventStreamingRequestSinkSinkFcParameters struct {
 	// The content body sent to the function.
 	Body *CreateEventStreamingRequestSinkSinkFcParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The delivery concurrency. The minimum value is 1.
+	// The delivery concurrency. Minimum value: 1.
 	Concurrency *CreateEventStreamingRequestSinkSinkFcParametersConcurrency `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
 	DataFormat  *CreateEventStreamingRequestSinkSinkFcParametersDataFormat  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty" type:"Struct"`
 	// The function name.
 	FunctionName *CreateEventStreamingRequestSinkSinkFcParametersFunctionName `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
 	// Specifies whether the invocation is synchronous or asynchronous. Valid values:
 	//
-	// - Sync: synchronous.
+	// - Sync: synchronous
 	//
-	// - Async: asynchronous.
+	// - Async: asynchronous
 	InvocationType *CreateEventStreamingRequestSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
 	// The service version.
 	Qualifier *CreateEventStreamingRequestSinkSinkFcParametersQualifier `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
@@ -4311,7 +4311,7 @@ type CreateEventStreamingRequestSinkSinkFcParametersConcurrency struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The delivery concurrency. The minimum value is 1.
+	// The delivery concurrency. Minimum value: 1.
 	//
 	// example:
 	//
@@ -4478,9 +4478,9 @@ type CreateEventStreamingRequestSinkSinkFcParametersInvocationType struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// Specifies whether the invocation is synchronous or asynchronous. Valid values:
 	//
-	// - Sync: synchronous.
+	// - Sync: synchronous
 	//
-	// - Async: asynchronous.
+	// - Async: asynchronous
 	//
 	// example:
 	//
@@ -4975,9 +4975,9 @@ type CreateEventStreamingRequestSinkSinkKafkaParameters struct {
 	//
 	// - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
 	//
-	// - acks=1: A response is returned after the primary node on the server writes data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
+	// - acks=1: A response is returned after the primary node on the server writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
 	//
-	// - acks=all: A response is returned only after the primary node on the server writes data and the secondary nodes complete synchronization. This mode delivers lower performance but provides higher data security. Data loss occurs only if both the primary and secondary nodes go down.
+	// - acks=all: A response is returned only after the primary node on the server writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but provides higher data security. Data loss occurs only if both the primary and secondary nodes go down.
 	Acks            *CreateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
 	CompressionType *string                                                 `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
 	// Specifies the target topic strategy for message routing. If both the Topic parameter and the DynamicTopic parameter are specified, the value of DynamicTopic takes precedence. The following two configuration modes are supported:
@@ -5133,9 +5133,9 @@ type CreateEventStreamingRequestSinkSinkKafkaParametersAcks struct {
 	//
 	// - acks=0: No response is required from the server. This mode delivers high performance but has a high risk of data loss.
 	//
-	// - acks=1: A response is returned after the primary node on the server writes data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
+	// - acks=1: A response is returned after the primary node on the server writes the data. This mode delivers moderate performance and has a moderate risk of data loss. Data loss may occur if the primary node goes down.
 	//
-	// - acks=all: A response is returned only after the primary node on the server writes data and the secondary nodes complete synchronization. This mode delivers lower performance but provides higher data security. Data loss occurs only if both the primary and secondary nodes go down.
+	// - acks=all: A response is returned only after the primary node on the server writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but provides higher data security. Data loss occurs only if both the primary and secondary nodes go down.
 	//
 	// example:
 	//
@@ -5185,7 +5185,7 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersAcks) Validate() erro
 type CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic struct {
 	// The transformation type.
 	//
-	// CONSTANT: a constant value.
+	// CONSTANT: a fixed value.
 	//
 	// JSONPATH: extracts content from the upstream based on a path.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
@@ -6377,7 +6377,7 @@ func (s *CreateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationTyp
 }
 
 type CreateEventStreamingRequestSinkSinkPrometheusParametersData struct {
-	// The format of the transformation. Default value: JSONPATH.
+	// The transformation format. Default value: JSONPATH.
 	//
 	// example:
 	//
@@ -6439,7 +6439,7 @@ type CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters str
 	//
 	// TEMPLATE
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The HTTP request header template. Specify this parameter when Form is set to TEMPLATE. The result after event content transformation must be in JSON format.
+	// The HTTP request header template. Specify this parameter when Form is set to TEMPLATE. The transformed event content must be in JSON format.
 	//
 	// example:
 	//
@@ -6451,11 +6451,11 @@ type CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters str
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// - If Form is set to CONSTANT: the constant value.
 	//
-	// - If Form is set to JSONPATH: the content extracted by using JSONPath.
+	// - If Form is set to JSONPATH: the JSONPath expression used to extract content.
 	//
 	// - If Form is set to TEMPLATE: the template variable.
 	//
-	// Note: The Value field cannot exceed 10,240 characters.
+	// > Note: The Value field cannot exceed 10,240 characters.
 	//
 	// example:
 	//
@@ -6895,7 +6895,7 @@ type CreateEventStreamingRequestSinkSinkRabbitMQParameters struct {
 	Body *CreateEventStreamingRequestSinkSinkRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// The Exchange mode. Configure this parameter only when TargetType is set to Exchange.
 	Exchange *CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
-	// The event target type is MSMQ RabbitMQ message.
+	// The event target type is ApsaraMQ for RabbitMQ.
 	InstanceId *CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message ID.
 	MessageId   *CreateEventStreamingRequestSinkSinkRabbitMQParametersMessageId   `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
@@ -6910,7 +6910,7 @@ type CreateEventStreamingRequestSinkSinkRabbitMQParameters struct {
 	// The target type.
 	TargetType *CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType `json:"TargetType,omitempty" xml:"TargetType,omitempty" type:"Struct"`
 	VSwitchIds *CreateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The name of the Vhost in the MSMQ RabbitMQ message instance.
+	// The name of the Vhost in the ApsaraMQ for RabbitMQ instance.
 	VirtualHostName *CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty" type:"Struct"`
 	VpcId           *CreateEventStreamingRequestSinkSinkRabbitMQParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
@@ -7186,7 +7186,7 @@ type CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the Exchange in the MSMQ RabbitMQ message instance.
+	// The name of the Exchange in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -7246,7 +7246,7 @@ type CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId struct {
 	//
 	// The value of ${key} is ${value}!
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The instance ID of the MSMQ RabbitMQ message instance.
+	// The instance ID of the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -7749,7 +7749,7 @@ type CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName struct
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// The template style.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the Vhost in the MSMQ RabbitMQ message instance.
+	// The name of the Vhost in the ApsaraMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -8621,9 +8621,9 @@ type CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceType struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - Cloud_4: Alibaba Cloud RocketMQ 4.0 instance (default).
+	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance (default).
 	//
-	// - Cloud_5: Alibaba Cloud RocketMQ 5.0 instance.
+	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
 	// - SelfBuilt: self-managed Apache RocketMQ cluster.
 	//
@@ -9268,9 +9268,9 @@ type CreateEventStreamingRequestSinkSinkSLSParameters struct {
 	LogStore *CreateEventStreamingRequestSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
 	// The project of Simple Log Service (SLS).
 	Project *CreateEventStreamingRequestSinkSinkSLSParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The role used for authorization of the event bus EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role for the service in the Resource Access Management (RAM) console, select "Alibaba Cloud Service" as the trusted entity, and select "event bus" as the trusted service.
+	// The role used for authorization of the event bus EventBridge to read SLS log content. When you create the role in the Resource Access Management (RAM) console, set the trusted entity type to Alibaba Cloud Service and set the trusted service to event bus.
 	RoleName *CreateEventStreamingRequestSinkSinkSLSParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
-	// The topic of the log, which corresponds to the SLS reserved field "__topic__".
+	// The topic of the log, which corresponds to the SLS reserved field __topic__.
 	Topic *CreateEventStreamingRequestSinkSinkSLSParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 }
 
@@ -9681,7 +9681,7 @@ type CreateEventStreamingRequestSinkSinkSLSParametersRoleName struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The role used for authorization of the event bus EventBridge to read SLS log content. To use this role, the following conditions must be met: when you create the role for the service in the Resource Access Management (RAM) console, select "Alibaba Cloud Service" as the trusted entity, and select "event bus" as the trusted service.
+	// The role used for authorization of the event bus EventBridge to read SLS log content. When you create the role in the Resource Access Management (RAM) console, set the trusted entity type to Alibaba Cloud Service and set the trusted service to event bus.
 	//
 	// example:
 	//
@@ -9737,7 +9737,7 @@ type CreateEventStreamingRequestSinkSinkSLSParametersTopic struct {
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic of the log, which corresponds to the SLS reserved field "__topic__".
+	// The topic of the log, which corresponds to the SLS reserved field __topic__.
 	//
 	// example:
 	//
@@ -10150,11 +10150,11 @@ type CreateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
 	// The Kafka network type.
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The consumer offset. Valid values:
+	// The offset reset policy. Valid values:
 	//
 	// - latest: The system reads data from the latest offset.
 	//
-	// - earliest: The system reads data from the earliest offset. This configuration is supported only for the first initialization of an unused group.
+	// - earliest: The system reads data from the earliest offset. This value is supported only for the first initialization of an unused consumer group.
 	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
 	// The Kafka SASL authentication mechanism.
 	SaslMechanism *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
@@ -10174,11 +10174,11 @@ type CreateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
 	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
 	// [Required for encrypted private keys] The Kafka client private key password. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" marker), provide the decryption password. Leave this parameter empty if the private key is not encrypted. This password is used only to decrypt the private key and is unrelated to Kafka authentication.
 	SslKeyPassword *string `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
-	// [Required for mutual authentication] The Kafka client certificate chain. If the Kafka server enables mutual SSL authentication (ssl.client.auth=required), provide this parameter. Format: Base64-encoded PEM format, containing the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Ensure that each PEM file content starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\", then Base64-encode the concatenated content.
+	// [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when the Kafka server enables mutual SSL authentication (ssl.client.auth=required). Format: Base64-encoded PEM format that contains the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, with the root CA certificate being optional). Make sure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\", and then Base64-encode the concatenated content.
 	SslKeystoreCertificateChain *string `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
-	// [Required for bidirectional authentication] The SSL private key configuration object. If the Kafka server enables bidirectional SSL authentication, provide the client private key. Only KMS pattern is supported: specify the Key Management Service EPS resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}
+	// [Required for bidirectional authentication] The SSL private key configuration object. When the Kafka server enables bidirectional SSL authentication, you must provide the client private key. Only KMS pattern is supported: specify the Key Management Service EPS resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}
 	SslKeystoreKey *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
-	// [Required for SSL] The Kafka server trust certificate. This parameter is used to authenticate the legitimacy of the Kafka broker SSL certificate and prevent man-in-the-middle attacks. Format: Base64 encoding of PEM format, typically containing the CA certificate of the Kafka server or the server certificate itself. Example: Base64-encode the PEM file content of the CA certificate (ensure it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued the certificate.
+	// [Required for SSL] The Kafka server trust certificate. This certificate is used to authenticate the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format: Base64-encoded PEM format that typically contains the CA certificate or the server certificate of the Kafka server. Example: Base64-encode the PEM file content of the CA certificate (make sure that it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued the certificate.
 	SslTruststoreCertificates *string `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
 	// The topic name.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
@@ -10367,9 +10367,9 @@ func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) Validate(
 }
 
 type CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey struct {
-	// [Required] The KMS resource ARN that stores the SSL private key. This parameter is used to locate the Key Management Service instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". You can view the ARN information of the corresponding key in the KMS console.
+	// [Required] The Alibaba Cloud Resource Name (ARN) of the KMS resource that stores the SSL private key. This parameter is used to locate the Key Management Service instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". You can view the ARN information of the corresponding key in the KMS console.
 	KmsArn *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
-	// [KMS KV mode] The key name in the KMS credential. If the KMS credential is stored as a key-value (KV) structure, specify this parameter to indicate the key that corresponds to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", set this parameter to \\"ssl_keystore_key\\". If the KMS credential is in plaintext mode (the PEM content of the private key is stored directly), leave this parameter empty.
+	// [KMS KV mode] The key name in the KMS credential. If the KMS credential is stored as a key-value (KV) structure, specify this parameter to indicate the key that corresponds to the SSL private key. Example: if the KMS credential is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", set this parameter to \\"ssl_keystore_key\\". If the KMS credential is in plain text mode (the PEM content of the private key is stored directly), leave this parameter empty.
 	KmsSecretValueKey *string `json:"KmsSecretValueKey,omitempty" xml:"KmsSecretValueKey,omitempty"`
 }
 
@@ -10678,7 +10678,7 @@ func (s *CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters) Valid
 type CreateEventStreamingRequestSourceSourceDTSParameters struct {
 	// The network address and port number of the data subscription channel.
 	BrokerUrl *string `json:"BrokerUrl,omitempty" xml:"BrokerUrl,omitempty"`
-	// The consumer offset, which is the timestamp of the first data record consumed by the SDK client. The value is a UNIX timestamp.
+	// The consumer offset, which is the timestamp when the SDK client consumes the first data record. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -10839,7 +10839,7 @@ type CreateEventStreamingRequestSourceSourceKafkaParameters struct {
 	//
 	// r-8vb64581862c****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network configuration. Default value: Default. The value for VPC networks is PublicNetwork.
+	// The network configuration. The default value is Default. For VPC networks, the value is PublicNetwork.
 	//
 	// example:
 	//
@@ -11185,9 +11185,9 @@ type CreateEventStreamingRequestSourceSourceOSSParameters struct {
 	//
 	// bucket_abc
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The delimiter. In chunked loading mode, this delimiter is used as the text chunk identifier. By default, the newline character
+	// The delimiter. In chunked loading mode, this delimiter is used as the text chunk identifier. The default delimiter is the newline character
 	//
-	//  is used as the delimiter.
+	// .
 	//
 	// example:
 	//
@@ -11525,14 +11525,14 @@ func (s *CreateEventStreamingRequestSourceSourcePrometheusParameters) Validate()
 }
 
 type CreateEventStreamingRequestSourceSourceRabbitMQParameters struct {
-	// The instance ID of the ApsaraMQ for RabbitMQ instance.
+	// The instance ID of the MSMQ for RabbitMQ instance.
 	//
 	// example:
 	//
 	// gtm-cn-k2c2yfg****
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The name of the queue in the ApsaraMQ for RabbitMQ instance.
+	// The name of the queue in the MSMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -11546,7 +11546,7 @@ type CreateEventStreamingRequestSourceSourceRabbitMQParameters struct {
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The name of the vhost in the ApsaraMQ for RabbitMQ instance.
+	// The name of the vhost in the MSMQ for RabbitMQ instance.
 	//
 	// example:
 	//
@@ -11729,7 +11729,7 @@ type CreateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// Tag
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	// The Group ID of ApsaraMQ for RocketMQ.
+	// The Group ID of the MSMQ for RocketMQ instance.
 	//
 	// example:
 	//
@@ -11741,7 +11741,7 @@ type CreateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// reg****-vpc.cn-zhangjiakou.aliyuncs.com
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The region where the ApsaraMQ for RocketMQ instance resides.
+	// The region where the MSMQ for RocketMQ instance resides.
 	//
 	// example:
 	//
@@ -11771,9 +11771,9 @@ type CreateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - Cloud_4: Alibaba Cloud RocketMQ 4.0 instance (default).
+	// - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance (default).
 	//
-	// - Cloud_5: Alibaba Cloud RocketMQ 5.0 instance.
+	// - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
 	//
 	// - SelfBuilt: self-managed Apache RocketMQ cluster.
 	//
@@ -11811,11 +11811,11 @@ type CreateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The consumption offset of the message. Valid values:
 	//
-	// - CONSUME_FROM_LAST_OFFSET: Consumption starts from the latest offset.
+	// - CONSUME_FROM_LAST_OFFSET: Start consuming from the latest offset.
 	//
-	// - CONSUME_FROM_FIRST_OFFSET: Consumption starts from the earliest offset.
+	// - CONSUME_FROM_FIRST_OFFSET: Start consuming from the earliest offset.
 	//
-	// - CONSUME_FROM_TIMESTAMP: Consumption starts from the offset at a specified point in time.
+	// - CONSUME_FROM_TIMESTAMP: Start consuming from the offset at a specified point in time.
 	//
 	// Default value: CONSUME_FROM_LAST_OFFSET.
 	//
@@ -12087,7 +12087,7 @@ func (s *CreateEventStreamingRequestSourceSourceRocketMQParameters) Validate() e
 }
 
 type CreateEventStreamingRequestSourceSourceSLSParameters struct {
-	// The initial consumption offset. You can select the earliest or latest offset, which corresponds to "begin" and "end" respectively. You can also start consumption from a specified time, in seconds.
+	// The initial consumption offset. You can select the earliest or latest offset, which corresponds to "begin" and "end" respectively. You can also start consuming from a specified time in seconds.
 	//
 	// example:
 	//
@@ -12105,7 +12105,7 @@ type CreateEventStreamingRequestSourceSourceSLSParameters struct {
 	//
 	// test
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The role that provides authorization for the event bus EventBridge to read SLS log content. When you create the role used by the service in the Resource Access Management (RAM) console, select "Alibaba Cloud Service" and set "Trusted Service" to "event bus".
+	// The role that provides authorization for the event bus EventBridge to read SLS log content. When you create the role used by the service in the Resource Access Management (RAM) console, select Alibaba Cloud Service as the trusted entity and select event bus as the trusted service.
 	//
 	// example:
 	//
@@ -12199,7 +12199,27 @@ func (s *CreateEventStreamingRequestTags) Validate() error {
 }
 
 type CreateEventStreamingRequestTransforms struct {
-	// The ARN of the Alibaba Cloud service, such as the ARN of a function in Function Compute.
+	// The AI local text chunking parameters.
+	AiChunkTransformParameters *AiChunkTransformParameters `json:"AiChunkTransformParameters,omitempty" xml:"AiChunkTransformParameters,omitempty"`
+	// The AI text classification parameters.
+	AiClassifyTransformParameters *AiClassifyTransformParameters `json:"AiClassifyTransformParameters,omitempty" xml:"AiClassifyTransformParameters,omitempty"`
+	// The AI embedding parameters.
+	AiEmbedTransformParameters *AiEmbedTransformParameters `json:"AiEmbedTransformParameters,omitempty" xml:"AiEmbedTransformParameters,omitempty"`
+	// The AI information extraction parameters.
+	AiExtractTransformParameters *AiExtractTransformParameters `json:"AiExtractTransformParameters,omitempty" xml:"AiExtractTransformParameters,omitempty"`
+	// The AI conditional filtering parameters.
+	AiFilterTransformParameters *AiFilterTransformParameters `json:"AiFilterTransformParameters,omitempty" xml:"AiFilterTransformParameters,omitempty"`
+	// The AI semantic chunking parameters.
+	AiPrepSearchTransformParameters *AiPrepSearchTransformParameters `json:"AiPrepSearchTransformParameters,omitempty" xml:"AiPrepSearchTransformParameters,omitempty"`
+	// The AI data masking parameters.
+	AiRedactTransformParameters *AiRedactTransformParameters `json:"AiRedactTransformParameters,omitempty" xml:"AiRedactTransformParameters,omitempty"`
+	// The AI emotion analysis parameters.
+	AiSentimentAnalysisTransformParameters *AiSentimentAnalysisTransformParameters `json:"AiSentimentAnalysisTransformParameters,omitempty" xml:"AiSentimentAnalysisTransformParameters,omitempty"`
+	// The AI summarization parameters.
+	AiSummarizeTransformParameters *AiSummarizeTransformParameters `json:"AiSummarizeTransformParameters,omitempty" xml:"AiSummarizeTransformParameters,omitempty"`
+	// The AI translation parameters.
+	AiTranslateTransformParameters *AiTranslateTransformParameters `json:"AiTranslateTransformParameters,omitempty" xml:"AiTranslateTransformParameters,omitempty"`
+	// The ARN of the cloud service, such as the ARN of a function in Function Compute.
 	//
 	// example:
 	//
@@ -12218,6 +12238,46 @@ func (s CreateEventStreamingRequestTransforms) GoString() string {
 	return s.String()
 }
 
+func (s *CreateEventStreamingRequestTransforms) GetAiChunkTransformParameters() *AiChunkTransformParameters {
+	return s.AiChunkTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiClassifyTransformParameters() *AiClassifyTransformParameters {
+	return s.AiClassifyTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiEmbedTransformParameters() *AiEmbedTransformParameters {
+	return s.AiEmbedTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiExtractTransformParameters() *AiExtractTransformParameters {
+	return s.AiExtractTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiFilterTransformParameters() *AiFilterTransformParameters {
+	return s.AiFilterTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiPrepSearchTransformParameters() *AiPrepSearchTransformParameters {
+	return s.AiPrepSearchTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiRedactTransformParameters() *AiRedactTransformParameters {
+	return s.AiRedactTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiSentimentAnalysisTransformParameters() *AiSentimentAnalysisTransformParameters {
+	return s.AiSentimentAnalysisTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiSummarizeTransformParameters() *AiSummarizeTransformParameters {
+	return s.AiSummarizeTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) GetAiTranslateTransformParameters() *AiTranslateTransformParameters {
+	return s.AiTranslateTransformParameters
+}
+
 func (s *CreateEventStreamingRequestTransforms) GetArn() *string {
 	return s.Arn
 }
@@ -12232,6 +12292,56 @@ func (s *CreateEventStreamingRequestTransforms) GetDashScopeTransformParameters(
 
 func (s *CreateEventStreamingRequestTransforms) GetEmbeddingTransformParameters() *EmbeddingTransformParameters {
 	return s.EmbeddingTransformParameters
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiChunkTransformParameters(v *AiChunkTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiChunkTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiClassifyTransformParameters(v *AiClassifyTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiClassifyTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiEmbedTransformParameters(v *AiEmbedTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiEmbedTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiExtractTransformParameters(v *AiExtractTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiExtractTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiFilterTransformParameters(v *AiFilterTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiFilterTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiPrepSearchTransformParameters(v *AiPrepSearchTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiPrepSearchTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiRedactTransformParameters(v *AiRedactTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiRedactTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiSentimentAnalysisTransformParameters(v *AiSentimentAnalysisTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiSentimentAnalysisTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiSummarizeTransformParameters(v *AiSummarizeTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiSummarizeTransformParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTransforms) SetAiTranslateTransformParameters(v *AiTranslateTransformParameters) *CreateEventStreamingRequestTransforms {
+	s.AiTranslateTransformParameters = v
+	return s
 }
 
 func (s *CreateEventStreamingRequestTransforms) SetArn(v string) *CreateEventStreamingRequestTransforms {
@@ -12255,6 +12365,56 @@ func (s *CreateEventStreamingRequestTransforms) SetEmbeddingTransformParameters(
 }
 
 func (s *CreateEventStreamingRequestTransforms) Validate() error {
+	if s.AiChunkTransformParameters != nil {
+		if err := s.AiChunkTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiClassifyTransformParameters != nil {
+		if err := s.AiClassifyTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiEmbedTransformParameters != nil {
+		if err := s.AiEmbedTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiExtractTransformParameters != nil {
+		if err := s.AiExtractTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiFilterTransformParameters != nil {
+		if err := s.AiFilterTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiPrepSearchTransformParameters != nil {
+		if err := s.AiPrepSearchTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiRedactTransformParameters != nil {
+		if err := s.AiRedactTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiSentimentAnalysisTransformParameters != nil {
+		if err := s.AiSentimentAnalysisTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiSummarizeTransformParameters != nil {
+		if err := s.AiSummarizeTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AiTranslateTransformParameters != nil {
+		if err := s.AiTranslateTransformParameters.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.BaiLianAgentTransformParameters != nil {
 		if err := s.BaiLianAgentTransformParameters.Validate(); err != nil {
 			return err
