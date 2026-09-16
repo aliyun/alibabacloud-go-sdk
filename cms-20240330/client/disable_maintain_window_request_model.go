@@ -14,9 +14,11 @@ type iDisableMaintainWindowRequest interface {
 }
 
 type DisableMaintainWindowRequest struct {
+	// The workspace name. This parameter is required by the backend and is used to isolate silence policy resources across different business workspaces.
+	//
 	// example:
 	//
-	// workspace-test
+	// default-cms-xxxx-cn-hangzhou
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

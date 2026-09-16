@@ -22,9 +22,9 @@ type iListAlertActionsRequest interface {
 }
 
 type ListAlertActionsRequest struct {
-	// The unique IDs of the alert action integrations.
+	// The unique IDs of the action integrations.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// The name of the alert action integration.
+	// The name of the action integration.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAlertActionsRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The type of the alert action integration.
+	// The type of the action integration.
 	//
 	// example:
 	//

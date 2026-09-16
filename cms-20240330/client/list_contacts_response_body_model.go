@@ -22,7 +22,7 @@ type iListContactsResponseBody interface {
 }
 
 type ListContactsResponseBody struct {
-	// The list of contacts.
+	// The list of alert contacts.
 	Contacts []*ListContactsResponseBodyContacts `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -36,7 +36,7 @@ type ListContactsResponseBody struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListContactsResponseBody) Validate() error {
 }
 
 type ListContactsResponseBodyContacts struct {
-	// The contact ID.
+	// The ID of the on-duty contact.
 	//
 	// example:
 	//
 	// test
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// The email address of the contact.
+	// The email address of the alert contact.
 	//
 	// example:
 	//
@@ -135,9 +135,9 @@ type ListContactsResponseBodyContacts struct {
 	//
 	// true
 	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
-	// The contact groups to which the contact belongs.
+	// The contact groups to which the alert contact belongs.
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
-	// The instant messaging user ID mappings. Multiple instant messaging tools are supported.
+	// The mapping of instant messaging user IDs. Multiple instant messaging tools are supported.
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
 	// The language.
 	//
@@ -145,25 +145,25 @@ type ListContactsResponseBodyContacts struct {
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The contact name.
+	// The name of the alert contact.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The phone number of the contact.
+	// The phone number of the alert contact.
 	//
 	// example:
 	//
 	// 130123456789
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// Indicates whether the phone number of the contact is verified.
+	// Indicates whether the phone number of the alert contact is verified.
 	//
 	// example:
 	//
 	// true
 	PhoneVerify *bool `json:"phoneVerify,omitempty" xml:"phoneVerify,omitempty"`
-	// The update time.
+	// The time when the alert contact was last updated. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//

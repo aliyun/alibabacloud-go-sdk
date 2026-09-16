@@ -24,7 +24,7 @@ type iListAlertRobotsRequest interface {
 }
 
 type ListAlertRobotsRequest struct {
-	// The robot name. Prefix fuzzy match is supported.
+	// The robot name. Supports prefix fuzzy match.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAlertRobotsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The robot IDs.
+	// The robot ID.
 	RobotIds []*string `json:"robotIds,omitempty" xml:"robotIds,omitempty" type:"Repeated"`
 	// The robot type.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`

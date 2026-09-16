@@ -58,21 +58,21 @@ type iTriggers interface {
 }
 
 type Triggers struct {
-	// The comparison operator for CLOUD_MONITORING_CONDITION.
+	// The comparison operator when the condition type is CLOUD_MONITORING_CONDITION.
 	//
 	// example:
 	//
 	// SampleValue
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	// The match expression for SLS_MULTI_CONDITION. Corresponds to the V1 condition field and is preserved as-is without parsing.
+	// The match expression when the condition type is SLS_MULTI_CONDITION. This corresponds to the V1 condition and is preserved as-is without parsing.
 	//
 	// example:
 	//
 	// SampleValue
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The list of sub-conditions for UMODEL_METRICSET_MULTI / PROMETHEUS_MULTI with expressionType=COMPOSITE. Each item contains queryName, operator, and threshold.
+	// The list of sub-conditions when the condition type is UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=COMPOSITE. Each item contains queryName, operator, and threshold.
 	Conditions []*TriggerConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The count match expression for SLS_MULTI_CONDITION. Corresponds to the V1 countCondition field and is preserved as-is without parsing.
+	// The count match expression when the condition type is SLS_MULTI_CONDITION. This corresponds to the V1 countCondition and is preserved as-is without parsing.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type Triggers struct {
 	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION countOperator is disabled. Use countCondition instead.
+	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION has been disabled. Use countCondition instead.
 	//
 	// example:
 	//
@@ -88,25 +88,25 @@ type Triggers struct {
 	CountOperator *string `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION countOperator is disabled. Use countCondition instead.
+	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION has been disabled. Use countCondition instead.
 	//
 	// example:
 	//
 	// 100
 	CountThreshold *int64 `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
-	// The duration in seconds for which data must continuously meet the condition to fire an alert. If not specified, the value is inherited from conditionConfig.durationSecs. Used by UMODEL_METRICSET_MULTI_CONDITION / PROMETHEUS_MULTI_CONDITION.
+	// The duration in seconds during which data must continuously meet the condition before an alert is triggered. If not specified, the value is inherited from conditionConfig.durationSecs. This parameter is used by UMODEL_METRICSET_MULTI_CONDITION and PROMETHEUS_MULTI_CONDITION.
 	//
 	// example:
 	//
 	// 1
 	DurationSecs *int32 `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
-	// The expression type. For UMODEL_METRICSET_MULTI_CONDITION / PROMETHEUS_MULTI_CONDITION, valid values are SIMPLE and COMPOSITE.
+	// The expression type. Set to SIMPLE or COMPOSITE when the condition type is UMODEL_METRICSET_MULTI_CONDITION or PROMETHEUS_MULTI_CONDITION.
 	//
 	// example:
 	//
 	// default
 	ExpressionType *string `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
-	// The logic operator for UMODEL_METRICSET_MULTI / PROMETHEUS_MULTI with expressionType=COMPOSITE. Valid values: AND, OR, and UNLESS.
+	// The logical operator when the condition type is UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=COMPOSITE. Valid values: AND, OR, and UNLESS.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type Triggers struct {
 	LogicOperator *string `json:"logicOperator,omitempty" xml:"logicOperator,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION matchField is disabled. Use condition instead.
+	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION has been disabled. Use condition instead.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type Triggers struct {
 	MatchField *string `json:"matchField,omitempty" xml:"matchField,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION matchField is disabled. Use condition instead.
+	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION has been disabled. Use condition instead.
 	//
 	// example:
 	//
@@ -130,69 +130,73 @@ type Triggers struct {
 	MatchOperator *string `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION matchField is disabled. Use condition instead.
+	// **[Deprecated]*	- The write path for SLS_MULTI_CONDITION has been disabled. Use condition instead.
 	//
 	// example:
 	//
 	// SampleValue
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
-	// The upper bound of the range for UMODEL_METRICSET_MULTI with expressionType=SIMPLE. Required when operator is IN_RANGE or OUT_OF_RANGE. The value must be greater than or equal to min.
+	// The upper bound of the range when the condition type is UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE. The value must be greater than or equal to min.
 	//
 	// example:
 	//
 	// 1.0
 	Max *float64 `json:"max,omitempty" xml:"max,omitempty"`
-	// The metric name for CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the metric name is specified at the conditionConfig level.
+	// The metric name when the condition type is CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE expression type, the metric name is specified at the conditionConfig level by the metricName parameter.
 	//
 	// example:
 	//
 	// SampleMetricName
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// The lower bound of the range for UMODEL_METRICSET_MULTI with expressionType=SIMPLE. Required when operator is IN_RANGE or OUT_OF_RANGE.
+	// The lower bound of the range when the condition type is UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE.
 	//
 	// example:
 	//
 	// 1.0
 	Min *float64 `json:"min,omitempty" xml:"min,omitempty"`
-	// The operator. For UMODEL_METRICSET_MULTI / PROMETHEUS_MULTI with expressionType=SIMPLE, this is a comparison operator. Valid values: GT, GE, LT, LE, EQ, NE, IN_RANGE, OUT_OF_RANGE, PRESENT, NOT_PRESENT, ABOVE_UPPER, BELOW_LOWER, and OUT_OF_BAND. For SLS_MULTI_CONDITION, this aligns with the V1 caseList.type. Valid values: HAS_DATA, HAS_DATA_COUNT, HAS_DATA_MATCH, and HAS_DATA_MATCH_COUNT.
+	// The operator. For UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=SIMPLE, this is a comparison operator (GT/GE/LT/LE/EQ/NE/IN_RANGE/OUT_OF_RANGE/PRESENT/NOT_PRESENT/ABOVE_UPPER/BELOW_LOWER/OUT_OF_BAND). For SLS_MULTI_CONDITION, this is aligned with the V1 caseList.type (HAS_DATA/HAS_DATA_COUNT/HAS_DATA_MATCH/HAS_DATA_MATCH_COUNT).
 	//
 	// example:
 	//
 	// GT
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The collection period in seconds for CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the period is specified at the conditionConfig level.
+	// The collection period in seconds when the condition type is CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE expression type, the period is specified at the conditionConfig level by the period parameter.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"period,omitempty" xml:"period,omitempty"`
-	// The precondition for CLOUD_MONITORING_CONDITION.
+	// The precondition when the condition type is CLOUD_MONITORING_CONDITION.
 	//
 	// example:
 	//
 	// SampleValue
 	PreCondition *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
-	// The referenced query name for UMODEL_METRICSET_MULTI / PROMETHEUS_MULTI with expressionType=SIMPLE. Corresponds to QueryConfigUnified.queries[].name.
+	// The referenced query name when the condition type is UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=SIMPLE. This corresponds to QueryConfigUnified.queries[].name.
 	//
 	// example:
 	//
 	// SampleMetricName
 	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
-	// The severity level. Priority order: CRITICAL > ERROR > WARN / WARNING > INFO. When multiple triggers exist, they are sorted by this priority, and the first match fires. This takes effect for SLS_MULTI_CONDITION and CLOUD_MONITORING_CONDITION with expressionType=SIMPLE.
+	// The severity level. The priority order is CRITICAL > ERROR > WARN / WARNING > INFO. When multiple triggers exist, they are sorted by this priority, and the first match triggers the alert. This parameter takes effect when the condition type is SLS_MULTI_CONDITION or CLOUD_MONITORING_CONDITION with expressionType=SIMPLE.
 	//
 	// example:
 	//
 	// INFO
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// The statistics method for CLOUD_MONITORING_CONDITION.
+	// The statistical method when the condition type is CLOUD_MONITORING_CONDITION.
 	//
 	// example:
 	//
 	// SampleValue
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	// The threshold. For CLOUD_MONITORING_CONDITION, this is a string. For UMODEL_METRICSET_MULTI / PROMETHEUS_MULTI, this is a numeric value.
+	// The threshold value. For CLOUD_MONITORING_CONDITION, this is a string. For UMODEL_METRICSET_MULTI and PROMETHEUS_MULTI, this is a numeric value.
+	//
+	// example:
+	//
+	// 90
 	Threshold interface{} `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// The number of consecutive triggers for CLOUD_MONITORING_CONDITION with expressionType=SIMPLE. Each entry is configured independently.
+	// The number of consecutive times the condition must be met before an alert is triggered when the condition type is CLOUD_MONITORING_CONDITION with expressionType=SIMPLE. Each entry has its own independent setting.
 	//
 	// example:
 	//

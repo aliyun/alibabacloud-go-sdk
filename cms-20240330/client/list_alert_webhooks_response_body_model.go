@@ -171,6 +171,11 @@ type ListAlertWebhooksResponseBodyWebhooks struct {
 	//
 	// test
 	WebhookId *string `json:"webhookId,omitempty" xml:"webhookId,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// default-cms-0000000000000000-cn-hangzhou
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

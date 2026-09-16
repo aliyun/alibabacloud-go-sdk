@@ -42,7 +42,12 @@ type ListAlertWebhooksRequest struct {
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The unique ID of the webhook.
 	WebhookIds []*string `json:"webhookIds,omitempty" xml:"webhookIds,omitempty" type:"Repeated"`
-	Workspace  *string   `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// default-cms-0000000000000000-cn-hangzhou
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListAlertWebhooksRequest) String() string {

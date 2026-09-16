@@ -16,11 +16,13 @@ type iEnableMaintainWindowResponseBody interface {
 }
 
 type EnableMaintainWindowResponseBody struct {
+  // The ID of the enabled silence policy.
+  // 
   // example:
   // 
-  // 123-12-312-31-23123
+  // 3ff3fbd0-8a0b-4b31-9b1c-8e3f0a2c5d71
   MaintainWindowId *string `json:"maintainWindowId,omitempty" xml:"maintainWindowId,omitempty"`
-  // Id of the request
+  // The unique ID of the request. You can use this ID for troubleshooting and ticket diagnostics.
   // 
   // example:
   // 

@@ -30,21 +30,21 @@ type iListContactsRequest interface {
 }
 
 type ListContactsRequest struct {
-	// The contact IDs.
+	// The IDs of the alert contacts.
 	ContactIds []*string `json:"contactIds,omitempty" xml:"contactIds,omitempty" type:"Repeated"`
-	// The email address of the contact.
+	// The email address of the alert contact.
 	//
 	// example:
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The ID of the contact group to which the contact belongs.
+	// The ID of the contact group to which the alert contact belongs.
 	//
 	// example:
 	//
 	// group-id-123
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The contact name.
+	// The name of the alert contact.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type ListContactsRequest struct {
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The phone number of the contact.
+	// The phone number of the alert contact.
 	//
 	// example:
 	//
 	// 15012345678
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// Specifies whether to query only ungrouped contacts.
+	// Specifies whether to query only ungrouped alert contacts.
 	//
 	// example:
 	//

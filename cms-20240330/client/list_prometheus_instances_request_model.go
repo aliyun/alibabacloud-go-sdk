@@ -32,7 +32,9 @@ type iListPrometheusInstancesRequest interface {
 }
 
 type ListPrometheusInstancesRequest struct {
-	// The region IDs for filtering, separated by commas.
+	// Deprecated
+	//
+	// The region IDs for filtering, separated by commas. Currently, only a single region ID is supported.
 	//
 	// if can be null:
 	// true
@@ -83,6 +85,8 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// rg-aek2bhocin5e2na
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// The resource type of the instance.
 	//
 	// if can be null:
@@ -94,11 +98,7 @@ type ListPrometheusInstancesRequest struct {
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The tags.
 	Tag []*ListPrometheusInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The instance version. Valid values:
-	//
-	// - V1: V1 version.
-	//
-	// - V2: V2 version.
+	// The instance version. Valid values: V1 and V2.
 	//
 	// if can be null:
 	// true

@@ -42,6 +42,11 @@ type QueryAlertRulesRequest struct {
 	//
 	// 123456
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The query filter condition. The value is a JSON string whose fields have the same semantics as the request body. Supported fields include filter (uuid, displayName, labels, status, enabled, and more. Fields at the same level have an AND relationship), pagination (pageNumber and pageSize), and workspace. Specify either this parameter or the request body. If both are specified, the request body takes precedence.
+	//
+	// example:
+	//
+	// {"filter":{"displayName":{"contains":"my-rule"}},"pagination":{"pageNumber":1,"pageSize":20}}
 	QueryJson *string `json:"queryJson,omitempty" xml:"queryJson,omitempty"`
 }
 

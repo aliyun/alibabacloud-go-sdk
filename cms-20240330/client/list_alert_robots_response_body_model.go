@@ -28,7 +28,7 @@ type ListAlertRobotsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListAlertRobotsResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The robot IDs.
+	// The robot ID.
 	Robots []*ListAlertRobotsResponseBodyRobots `json:"robots,omitempty" xml:"robots,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -117,7 +117,7 @@ func (s *ListAlertRobotsResponseBody) Validate() error {
 }
 
 type ListAlertRobotsResponseBodyRobots struct {
-	// The digital employee name.
+	// The name of the digital employee.
 	//
 	// example:
 	//
@@ -140,7 +140,12 @@ type ListAlertRobotsResponseBodyRobots struct {
 	// example:
 	//
 	// test
-	RobotId      *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
+	RobotId *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
+	// The signature key of the robot.
+	//
+	// example:
+	//
+	// abc123
 	RobotSignKey *string `json:"robotSignKey,omitempty" xml:"robotSignKey,omitempty"`
 	// The robot type.
 	//

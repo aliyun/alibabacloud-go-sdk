@@ -16,13 +16,17 @@ type iListPrometheusDashboardsRequest interface {
 }
 
 type ListPrometheusDashboardsRequest struct {
-	// The language of the response. Valid values: zh and en. The default value is zh.
+	// The language. Default value: zh. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

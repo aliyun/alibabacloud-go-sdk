@@ -18,9 +18,9 @@ type iListPrometheusDashboardsResponseBody interface {
 }
 
 type ListPrometheusDashboardsResponseBody struct {
-	// A list of dashboards for the Prometheus instance.
+	// The list of dashboards for the Managed Service for Prometheus instance.
 	PrometheusDashboards []*ListPrometheusDashboardsResponseBodyPrometheusDashboards `json:"prometheusDashboards,omitempty" xml:"prometheusDashboards,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -83,6 +83,12 @@ func (s *ListPrometheusDashboardsResponseBody) Validate() error {
 }
 
 type ListPrometheusDashboardsResponseBodyPrometheusDashboards struct {
+	// The UID of the dashboard folder.
+	//
+	// example:
+	//
+	// abc
+	FolderUid *string `json:"folderUid,omitempty" xml:"folderUid,omitempty"`
 	// The dashboard ID.
 	//
 	// example:
@@ -109,7 +115,7 @@ type ListPrometheusDashboardsResponseBodyPrometheusDashboards struct {
 	//
 	// 1987395500251724
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// The URL of the dashboard.
+	// The dashboard URL.
 	//
 	// example:
 	//
@@ -123,6 +129,10 @@ func (s ListPrometheusDashboardsResponseBodyPrometheusDashboards) String() strin
 
 func (s ListPrometheusDashboardsResponseBodyPrometheusDashboards) GoString() string {
 	return s.String()
+}
+
+func (s *ListPrometheusDashboardsResponseBodyPrometheusDashboards) GetFolderUid() *string {
+	return s.FolderUid
 }
 
 func (s *ListPrometheusDashboardsResponseBodyPrometheusDashboards) GetId() *string {
@@ -147,6 +157,11 @@ func (s *ListPrometheusDashboardsResponseBodyPrometheusDashboards) GetUid() *str
 
 func (s *ListPrometheusDashboardsResponseBodyPrometheusDashboards) GetUrl() *string {
 	return s.Url
+}
+
+func (s *ListPrometheusDashboardsResponseBodyPrometheusDashboards) SetFolderUid(v string) *ListPrometheusDashboardsResponseBodyPrometheusDashboards {
+	s.FolderUid = &v
+	return s
 }
 
 func (s *ListPrometheusDashboardsResponseBodyPrometheusDashboards) SetId(v string) *ListPrometheusDashboardsResponseBodyPrometheusDashboards {

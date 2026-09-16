@@ -64,7 +64,7 @@ type PrometheusMultiTrigger struct {
 	//
 	// SampleName
 	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
-	// The alert severity level. Severity levels in descending priority: CRITICAL > ERROR > WARN / WARNING > INFO. When multiple triggers are configured, they are sorted by this priority, and the first match fires the alert.
+	// The alert severity level. The priority order is CRITICAL > ERROR > WARN / WARNING > INFO. When multiple triggers are defined, they are sorted by this priority, and the first match fires the alert.
 	//
 	// example:
 	//

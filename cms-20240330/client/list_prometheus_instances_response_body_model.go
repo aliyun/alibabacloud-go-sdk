@@ -144,15 +144,15 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// remote-write
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The billing method. Valid values:
+	// The payment type. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go by metric volume.
+	// - POSTPAY: Pay-as-you-go by metric volume.
 	//
-	// - POSTPAY_GB: pay-as-you-go by write volume.
+	// - POSTPAY_GB: Pay-as-you-go by write volume.
 	//
-	// - PREPAY: subscription.
+	// - PREPAY: Subscription.
 	//
-	// - FREE: free.
+	// - FREE: Free.
 	//
 	// example:
 	//

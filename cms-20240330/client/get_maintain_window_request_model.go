@@ -14,9 +14,11 @@ type iGetMaintainWindowRequest interface {
 }
 
 type GetMaintainWindowRequest struct {
+	// The workspace name. This parameter is required by the backend and is used to isolate silence policy resources across different business spaces.
+	//
 	// example:
 	//
-	// workspace-test
+	// default-cms-xxxx-cn-hangzhou
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

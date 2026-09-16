@@ -16,15 +16,17 @@ type iDeleteMaintainWindowResponseBody interface {
 }
 
 type DeleteMaintainWindowResponseBody struct {
+	// The ID of the deleted silence policy.
+	//
 	// example:
 	//
-	// 123-12-312-31-23123
+	// 3ff3fbd0-8a0b-4b31-9b1c-8e3f0a2c5d71
 	MaintainWindowId *string `json:"maintainWindowId,omitempty" xml:"maintainWindowId,omitempty"`
-	// Id of the request
+	// The unique ID of the request. You can use this ID for troubleshooting and ticket tracking.
 	//
 	// example:
 	//
-	// 8FDE2569-626B-5176-9844-28877A*****
+	// 8FDE2569-626B-5176-9844-28877A0D1C36
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

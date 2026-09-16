@@ -22,7 +22,7 @@ type iListAlertActionsResponseBody interface {
 }
 
 type ListAlertActionsResponseBody struct {
-	// The list of alert action integration configurations.
+	// The list of action integration configurations.
 	AlertActions []*ListAlertActionsResponseBodyAlertActions `json:"alertActions,omitempty" xml:"alertActions,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -117,33 +117,33 @@ func (s *ListAlertActionsResponseBody) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActions struct {
-	// The unique ID of the alert action integration.
+	// The unique IDs of the action integrations.
 	//
 	// example:
 	//
 	// test
 	AlertActionId *string `json:"alertActionId,omitempty" xml:"alertActionId,omitempty"`
-	// The name of the alert action integration.
+	// The name of the action integration.
 	//
 	// example:
 	//
 	// testName
 	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
-	// Specifies the event bus.
+	// The EventBridge parameters.
 	EbParam *ListAlertActionsResponseBodyAlertActionsEbParam `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
-	// The parameters of Auto Scaling.
+	// The elastic scaling parameters.
 	EssParam *ListAlertActionsResponseBodyAlertActionsEssParam `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
-	// The parameters of Function Compute 3.0.
+	// The Function Compute 3.0 parameters.
 	Fc3Param *ListAlertActionsResponseBodyAlertActionsFc3Param `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
-	// The parameters of Function Compute.
+	// The Function Compute parameters.
 	FcParam *ListAlertActionsResponseBodyAlertActionsFcParam `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
-	// The parameters of Simple Message Queue (formerly MNS).
+	// The Simple Message Queue (formerly MNS) parameters.
 	MnsParam *ListAlertActionsResponseBodyAlertActionsMnsParam `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
 	// The PagerDuty parameters.
 	PagerDutyParam *ListAlertActionsResponseBodyAlertActionsPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
-	// The parameters of Simple Log Service.
+	// The Simple Log Service parameters.
 	SlsParam *ListAlertActionsResponseBodyAlertActionsSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The type of the alert action integration.
+	// The type of the action integration.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ func (s *ListAlertActionsResponseBodyAlertActions) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsEbParam struct {
-	// The event provider.
+	// The event source.
 	//
 	// example:
 	//
@@ -380,13 +380,13 @@ func (s *ListAlertActionsResponseBodyAlertActionsEbParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsEssParam struct {
-	// The ID of the Auto Scaling group.
+	// The ID of the elastic scaling group.
 	//
 	// example:
 	//
 	// testId
 	EssGroupId *string `json:"essGroupId,omitempty" xml:"essGroupId,omitempty"`
-	// The ID of the scaling rule.
+	// The ID of the elastic scaling rule.
 	//
 	// example:
 	//
@@ -566,11 +566,11 @@ type ListAlertActionsResponseBodyAlertActionsMnsParam struct {
 	//
 	// queue
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
-	// - If the resource type is \\`queue\\`, this parameter specifies the queue name.
+	// - If the resource type is queue, the resource name is the queue name.
 	//
-	// - If the resource type is \\`topic\\`, this parameter specifies the topic name.
+	// - If the resource type is topic, the resource name is the topic name.
 	//
 	// example:
 	//
@@ -630,7 +630,7 @@ type ListAlertActionsResponseBodyAlertActionsPagerDutyParam struct {
 	//
 	// fsfer4543t5t65g4t4
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook of PagerDuty. Versions 1 and 2 are supported.
+	// The integration webhook of PagerDuty. V1 and V2 versions are supported.
 	//
 	// example:
 	//
@@ -729,7 +729,7 @@ func (s *ListAlertActionsResponseBodyAlertActionsSlsParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsWebhookParam struct {
-	// The data format. This parameter is valid only when the request method is POST.
+	// The data format. This parameter takes effect only when the request method is POST.
 	//
 	// example:
 	//
@@ -737,13 +737,13 @@ type ListAlertActionsResponseBodyAlertActionsWebhookParam struct {
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// The request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The request method of the webhook.
+	// The webhook request method.
 	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The callback URL for alerts.
+	// The alert callback URL.
 	//
 	// example:
 	//

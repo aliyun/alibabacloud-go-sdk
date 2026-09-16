@@ -16,8 +16,14 @@ type iCreateMaintainWindowRequest interface {
 }
 
 type CreateMaintainWindowRequest struct {
-	Body      *MaintainWindowForModify `json:"body,omitempty" xml:"body,omitempty"`
-	Workspace *string                  `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The request body. This parameter is required by the backend. Pass in a complete MaintainWindowForModify configuration object.
+	Body *MaintainWindowForModify `json:"body,omitempty" xml:"body,omitempty"`
+	// The workspace name. This parameter is required by the backend and is used to isolate silence policy resources across different business spaces.
+	//
+	// example:
+	//
+	// default-cms-xxxx-cn-hangzhou
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s CreateMaintainWindowRequest) String() string {

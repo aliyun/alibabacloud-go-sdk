@@ -33,6 +33,8 @@ type iAlertRuleV2 interface {
 	GetEnabled() *bool
 	SetLabels(v map[string]*string) *AlertRuleV2
 	GetLabels() map[string]*string
+	SetManagedBy(v string) *AlertRuleV2
+	GetManagedBy() *string
 	SetNotifyConfig(v *NotifyConfigUnified) *AlertRuleV2
 	GetNotifyConfig() *NotifyConfigUnified
 	SetNotifyStrategyId(v string) *AlertRuleV2
@@ -72,15 +74,15 @@ type AlertRuleV2 struct {
 	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
 	// The annotations.
 	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	// The ARMS integration configuration.
+	// The Application Real-Time Monitoring Service (ARMS) integration configuration.
 	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	// The business source. This value is read-only. Example values: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
+	// The business source (read-only), such as managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, or sls.
 	//
 	// example:
 	//
-	// Sample value
+	// 示例值
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	// The detection condition configuration. Supported types: Prometheus simple, UModel, APM simple, and APM composite.
+	// The detection condition configuration aggregation (Prometheus simple, UModel, APM simple, or APM composite).
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
 	// The content template.
 	//
@@ -88,15 +90,15 @@ type AlertRuleV2 struct {
 	//
 	// Alert triggered: ${metricName} current value ${currentValue} exceeds threshold ${threshold}
 	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	// The creation time in ISO 8601 format. This value is read-only.
+	// The creation time (read-only), in ISO 8601 format.
 	//
 	// example:
 	//
 	// 1751595283143
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The datasource configuration. This is a unified object shared by PROMETHEUS, UMODEL, and APM. Fields are selected based on the type.
+	// The datasource config aggregation (PROMETHEUS, UMODEL, and APM share a single object. Fields are selected based on the type).
 	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	// The datasource type. This value is read-only and derived.
+	// The data source type (read-only, derived).
 	//
 	// example:
 	//
@@ -116,9 +118,15 @@ type AlertRuleV2 struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The labels.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The notification configuration. Currently, only DIRECT_NOTIFY is supported, which corresponds to DirectNotifyConfig.
+	// The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates the rule is created and managed by the corresponding cloud service.
+	//
+	// example:
+	//
+	// integrationCenter
+	ManagedBy *string `json:"managedBy,omitempty" xml:"managedBy,omitempty"`
+	// The notification configuration aggregation (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
 	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	// The notification policy ID. This value is read-only and derived from the first entry in the notification policy list.
+	// The notification policy ID (read-only, derived). The value is the first entry in the notification policy list.
 	//
 	// example:
 	//
@@ -128,59 +136,59 @@ type AlertRuleV2 struct {
 	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Indicates whether the rule applies to all resources of this type. This value is read-only and derived. For new integrations, use observeResourceConfig.relationType and check whether it is set to ALL for equivalent semantics.
+	// **[Deprecated]*	- Specifies whether the rule takes effect on all resources of this type (read-only, derived). For new integrations, use observeResourceConfig.relationType and check whether the value is ALL for equivalent semantics.
 	//
 	// example:
 	//
 	// true
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	// The list of observable resource IDs. This value is read-only and derived.
+	// The list of observable resource IDs (read-only, derived).
 	ObserveResourceList []*string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The observable resource type. This value is read-only and derived. Use observeResourceConfig.entityType instead for new integrations.
+	// **[Deprecated]*	- The observable resource type (read-only, derived). For new integrations, use observeResourceConfig.entityType instead.
 	//
 	// example:
 	//
 	// default
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	// The partition key. This value is read-only and maintained by the system for rule routing and sharding.
+	// The partition key (read-only). Maintained by the system for rule routing and sharding.
 	//
 	// example:
 	//
-	// Sample value
+	// 示例值
 	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	// The query configuration. Valid types: PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, and APM_MULTI_QUERY.
+	// The query configuration aggregation (PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, or APM_MULTI_QUERY).
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	// The RCA (root cause analysis) configuration.
+	// The root cause analysis (RCA) configuration.
 	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// The region ID, aligned with V1 AlertRule.regionId. Priority: the regionId in the request body takes precedence over the gateway callerRegionId.
+	// The region ID, aligned with V1 AlertRule.regionId. Priority: regionId in the request body takes precedence over callerRegionId from the gateway.
 	//
 	// example:
 	//
 	// example-id-001
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The scheduling configuration. Currently, only the FIXED type is supported.
+	// The scheduling configuration aggregation (currently only FIXED is supported).
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// The severity levels covered by this rule, in comma-separated format. This value is read-only and derived. The format is consistent with the filter.severityLevels query parameter.
+	// The severity levels covered by this rule, separated by commas (read-only, derived). The format is consistent with the filter.severityLevels query parameter.
 	//
 	// example:
 	//
 	// 1
 	SeverityLevels *string `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
-	// The alert status. This value is read-only.
+	// The alert status (read-only).
 	//
 	// example:
 	//
 	// Alarm
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time in ISO 8601 format. This value is read-only.
+	// The update time (read-only), in ISO 8601 format.
 	//
 	// example:
 	//
 	// 1764556086388
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The rule UUID. This value is system-generated and read-only.
+	// The rule UUID (system-generated, read-only).
 	//
 	// example:
 	//
@@ -248,6 +256,10 @@ func (s *AlertRuleV2) GetEnabled() *bool {
 
 func (s *AlertRuleV2) GetLabels() map[string]*string {
 	return s.Labels
+}
+
+func (s *AlertRuleV2) GetManagedBy() *string {
+	return s.ManagedBy
 }
 
 func (s *AlertRuleV2) GetNotifyConfig() *NotifyConfigUnified {
@@ -371,6 +383,11 @@ func (s *AlertRuleV2) SetEnabled(v bool) *AlertRuleV2 {
 
 func (s *AlertRuleV2) SetLabels(v map[string]*string) *AlertRuleV2 {
 	s.Labels = v
+	return s
+}
+
+func (s *AlertRuleV2) SetManagedBy(v string) *AlertRuleV2 {
+	s.ManagedBy = &v
 	return s
 }
 
