@@ -121,9 +121,9 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	// The stage of the custom agent. Valid values:
 	//
-	// - **debug**: Debug stage.
+	// - **debug**: the debugging stage.
 	//
-	// - **prod**: Production stage.
+	// - **prod**: the production stage.
 	//
 	// example:
 	//
@@ -159,15 +159,17 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	//
 	// CHINESE
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The list of MCP header configurations.
+	McpHeaders []*CreateDataAgentSessionRequestSessionConfigMcpHeaders `json:"McpHeaders,omitempty" xml:"McpHeaders,omitempty" type:"Repeated"`
 	// The list of MCP server IDs in the session configuration.
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// The mode. Valid values:
 	//
-	// - **ASK_DATA**: Ask data mode.
+	//  - **ASK_DATA**: the data query mode.
 	//
-	// - **ANALYSIS**: Analysis mode.
+	//  - **ANALYSIS**: the analysis mode.
 	//
-	// - **INSIGHT**: Insight mode.
+	//  - **INSIGHT**: the insight mode.
 	//
 	// example:
 	//
@@ -185,9 +187,7 @@ type CreateDataAgentSessionRequestSessionConfig struct {
 	//
 	// null
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	// The name of the user OSS bucket.
-	//
-	// - Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
+	// The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
 	//
 	// example:
 	//
@@ -229,6 +229,10 @@ func (s *CreateDataAgentSessionRequestSessionConfig) GetKbUuidList() []*string {
 
 func (s *CreateDataAgentSessionRequestSessionConfig) GetLanguage() *string {
 	return s.Language
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfig) GetMcpHeaders() []*CreateDataAgentSessionRequestSessionConfigMcpHeaders {
+	return s.McpHeaders
 }
 
 func (s *CreateDataAgentSessionRequestSessionConfig) GetMcpServerIds() []*string {
@@ -286,6 +290,11 @@ func (s *CreateDataAgentSessionRequestSessionConfig) SetLanguage(v string) *Crea
 	return s
 }
 
+func (s *CreateDataAgentSessionRequestSessionConfig) SetMcpHeaders(v []*CreateDataAgentSessionRequestSessionConfigMcpHeaders) *CreateDataAgentSessionRequestSessionConfig {
+	s.McpHeaders = v
+	return s
+}
+
 func (s *CreateDataAgentSessionRequestSessionConfig) SetMcpServerIds(v []*string) *CreateDataAgentSessionRequestSessionConfig {
 	s.McpServerIds = v
 	return s
@@ -312,5 +321,109 @@ func (s *CreateDataAgentSessionRequestSessionConfig) SetUserOssBucket(v string) 
 }
 
 func (s *CreateDataAgentSessionRequestSessionConfig) Validate() error {
+	if s.McpHeaders != nil {
+		for _, item := range s.McpHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateDataAgentSessionRequestSessionConfigMcpHeaders struct {
+	// The MCP header configuration.
+	McpHeader []*CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader `json:"McpHeader,omitempty" xml:"McpHeader,omitempty" type:"Repeated"`
+	// The ID of the MCP server.
+	//
+	// example:
+	//
+	// 1fl4r*****1qi
+	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
+}
+
+func (s CreateDataAgentSessionRequestSessionConfigMcpHeaders) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataAgentSessionRequestSessionConfigMcpHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeaders) GetMcpHeader() []*CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader {
+	return s.McpHeader
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeaders) GetMcpServerId() *string {
+	return s.McpServerId
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeaders) SetMcpHeader(v []*CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) *CreateDataAgentSessionRequestSessionConfigMcpHeaders {
+	s.McpHeader = v
+	return s
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeaders) SetMcpServerId(v string) *CreateDataAgentSessionRequestSessionConfigMcpHeaders {
+	s.McpServerId = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeaders) Validate() error {
+	if s.McpHeader != nil {
+		for _, item := range s.McpHeader {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader struct {
+	// The key to add to the header.
+	//
+	// example:
+	//
+	// UserId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value to add to the header.
+	//
+	// example:
+	//
+	// 421****571
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) SetKey(v string) *CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) SetValue(v string) *CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader) Validate() error {
 	return dara.Validate(s)
 }

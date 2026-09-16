@@ -22,11 +22,28 @@ type iCreateAgentResponseBody interface {
 }
 
 type CreateAgentResponseBody struct {
-	Data         *CreateAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *string                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The agent information and the automatically issued API key returned after the agent is created.
+	Data *CreateAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code of the request result. A value of success indicates success. A specific error code is returned upon failure.
+	//
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the request fails. This parameter is empty when the request succeeds.
+	//
+	// example:
+	//
+	// agentName must not be blank
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The unique ID of the request. You can use this ID for troubleshooting and tracing.
+	//
+	// example:
+	//
+	// 67E910F2-4B62-5B0C-ACA3-7547695C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAgentResponseBody) String() string {
@@ -92,15 +109,56 @@ func (s *CreateAgentResponseBody) Validate() error {
 }
 
 type CreateAgentResponseBodyData struct {
-	AgentId      *string                            `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentName    *string                            `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	AgentType    *string                            `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	ApiKey       *CreateAgentResponseBodyDataApiKey `json:"ApiKey,omitempty" xml:"ApiKey,omitempty" type:"Struct"`
-	CreatedAt    *string                            `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	CreationType *string                            `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
-	Description  *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	OwnerId      *string                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Status       *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The globally unique ID of the agent.
+	//
+	// example:
+	//
+	// agt-1a2b3c4d5e6f
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent name.
+	//
+	// example:
+	//
+	// order-analysis-agent
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The permission inheritance type of the agent. Valid values: HUMAN_BOUND (inherits user permissions), PERMISSION_NARROW (narrows permissions), STANDALONE (operates as an independent identity principal without inheriting permissions from other principals).
+	//
+	// example:
+	//
+	// HUMAN_BOUND
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The automatically issued API key for the new agent. The plaintext secret is returned only once in this response.
+	ApiKey *CreateAgentResponseBodyDataApiKey `json:"ApiKey,omitempty" xml:"ApiKey,omitempty" type:"Struct"`
+	// The time when the agent was created. The value is a time string in RFC 3339 format.
+	//
+	// example:
+	//
+	// 2025-12-11T14:04:32Z
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The creation method of the agent. Valid values: manual (manually created in the console), auto (automatic creation by the system). Agents created by this operation are always manual.
+	//
+	// example:
+	//
+	// manual
+	CreationType *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
+	// The description of the agent.
+	//
+	// example:
+	//
+	// An agent for querying and analyzing order data
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user ID of the agent owner, which is the current user who initiated the creation request.
+	//
+	// example:
+	//
+	// usr-1a2b3c4d
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The status of the agent. Valid values: active (enabled), disabled (disabled), deleted (deleted). A newly created agent is always active.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateAgentResponseBodyData) String() string {
@@ -202,21 +260,92 @@ func (s *CreateAgentResponseBodyData) Validate() error {
 }
 
 type CreateAgentResponseBodyDataApiKey struct {
-	AgentId      *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentName    *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	AgentType    *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	CreatedAt    *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	CreatorId    *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorName  *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsRevoked    *bool   `json:"IsRevoked,omitempty" xml:"IsRevoked,omitempty"`
-	KeyPrefix    *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// The ID of the agent to which the API key belongs.
+	//
+	// example:
+	//
+	// agt-1a2b3c4d5e6f
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The name of the agent to which the API key belongs.
+	//
+	// example:
+	//
+	// order-analysis-agent
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The permission inheritance type of the agent to which the API key belongs.
+	//
+	// example:
+	//
+	// HUMAN_BOUND
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The time when the API key was created. The value is a time string in RFC 3339 format.
+	//
+	// example:
+	//
+	// 2025-12-11T14:04:32Z
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The user ID of the user who created the API key.
+	//
+	// example:
+	//
+	// usr-1a2b3c4d
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The name of the user who created the API key.
+	//
+	// example:
+	//
+	// John Doe
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The description of the API key.
+	//
+	// example:
+	//
+	// Access Token automatically issued when the Agent is created
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The expiration time of the API key. The value is a time string in RFC 3339 format.
+	//
+	// example:
+	//
+	// 2026-12-11T14:04:32Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The primary key ID of the API key.
+	//
+	// example:
+	//
+	// 1001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the API key has been revoked.
+	IsRevoked *bool `json:"IsRevoked,omitempty" xml:"IsRevoked,omitempty"`
+	// The non-sensitive visible prefix of the API key plaintext, used to identify the credential. The plaintext secret is not returned again.
+	//
+	// example:
+	//
+	// dms_sk_1a2b
+	KeyPrefix *string `json:"KeyPrefix,omitempty" xml:"KeyPrefix,omitempty"`
+	// The time when the API key was last used. The value is a time string in RFC 3339 format. This parameter is empty if the API key has never been used.
+	//
+	// example:
+	//
+	// 2025-12-12T09:30:00Z
 	LastUsedTime *string `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Secret       *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	Source       *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The name of the API key.
+	//
+	// example:
+	//
+	// order-analysis-agent-default
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The plaintext secret of the API key. This value is returned only once in this creation response. Store it securely. Subsequent API calls do not return the plaintext secret again.
+	//
+	// example:
+	//
+	// dms_sk_1a2b3c4d****
+	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	// The credential source. Valid values: console (issued from the console), oauth (issued through the OAuth flow), install_token (issued through the install-and-authenticate flow). The API key automatically issued by this operation is always console.
+	//
+	// example:
+	//
+	// console
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s CreateAgentResponseBodyDataApiKey) String() string {

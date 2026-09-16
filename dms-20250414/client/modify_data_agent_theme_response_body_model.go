@@ -20,13 +20,13 @@ type iModifyDataAgentThemeResponseBody interface {
 }
 
 type ModifyDataAgentThemeResponseBody struct {
-	// The error code returned when the request is abnormal.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//

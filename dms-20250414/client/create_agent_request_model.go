@@ -20,11 +20,32 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
+	// The agent name. The name must be unique within the same tenant. Maximum length: 128 characters.
+	//
 	// This parameter is required.
-	AgentName          *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	AgentType          *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpireAfterSeconds *int32  `json:"ExpireAfterSeconds,omitempty" xml:"ExpireAfterSeconds,omitempty"`
+	//
+	// example:
+	//
+	// order-analysis-agent
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The permission inheritance type of the agent, which specifies the permission source. Default value: HUMAN_BOUND.
+	//
+	// example:
+	//
+	// HUMAN_BOUND
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The description of the agent. Maximum length: 512 characters.
+	//
+	// example:
+	//
+	// An agent for querying and analyzing order data
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The validity period of the automatically issued API key, in seconds. Valid values: 1 to 31536000 (up to 1 year).
+	//
+	// example:
+	//
+	// 2592000
+	ExpireAfterSeconds *int32 `json:"ExpireAfterSeconds,omitempty" xml:"ExpireAfterSeconds,omitempty"`
 }
 
 func (s CreateAgentRequest) String() string {

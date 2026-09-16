@@ -24,13 +24,13 @@ type iGetDataAgentThemeUploadSignatureResponseBody interface {
 type GetDataAgentThemeUploadSignatureResponseBody struct {
 	// The response struct.
 	Data *GetDataAgentThemeUploadSignatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when the request fails.
+	// The error code. This parameter is returned only if the request fails.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned if the request fails.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type GetDataAgentThemeUploadSignatureResponseBodyData struct {
 	//
 	// 2026-01-01T14:53:41Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The target object key, which is exactly locked by the policy.
+	// The target object key that is exactly locked by the policy.
 	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
 	// The parameter set that specifies the derived key.
 	OssCredential *string `json:"OssCredential,omitempty" xml:"OssCredential,omitempty"`
@@ -153,7 +153,7 @@ type GetDataAgentThemeUploadSignatureResponseBodyData struct {
 	//
 	// eyJjb25kaXRpb25zIjpbeyJ4LW9zcy1jcmVkZW50aWFsIjoiU1RTLk5YeldyTEo2ZnA5RlNuUTN6OGthQjFFWH**********
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The theme business identifier generated or reused for this request. Pass this identifier to the CreateDataAgentTheme operation after the upload is complete to register the metadata.
+	// The theme business ID generated or reused for this request. After the upload is complete, pass this ID to the CreateDataAgentTheme operation to register the metadata.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type GetDataAgentThemeUploadSignatureResponseBodyData struct {
 	ThemeId *string `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
 	// The upload directory prefix.
 	UploadDir *string `json:"UploadDir,omitempty" xml:"UploadDir,omitempty"`
-	// The PostObject destination address over the public network.
+	// The PostObject target address over the public network.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type CreateDataAgentSessionResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the request failed.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type CreateDataAgentSessionResponseBodyData struct {
 	//
 	// RUNNING
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
-	// The time when the session was created.
+	// The creation time of the session.
 	//
 	// example:
 	//
 	// 1765262307992
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The basic information about the file.
+	// The basic information of the file.
 	//
 	// example:
 	//
@@ -276,9 +276,9 @@ type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	// The stage of the custom agent. Valid values:
 	//
-	// - **debug**: Debug stage.
+	// - **debug**: the debugging stage.
 	//
-	// - **prod**: Production stage.
+	// - **prod**: the production stage.
 	//
 	// example:
 	//
@@ -318,11 +318,11 @@ type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// The mode. Valid values:
 	//
-	// - **ASK_DATA**: Ask data mode.
+	//  - **ASK_DATA**: the data query mode.
 	//
-	// - **ANALYSIS**: Analysis mode.
+	//  - **ANALYSIS**: the analysis mode.
 	//
-	// - **INSIGHT**: Insight mode.
+	//  - **INSIGHT**: the insight mode.
 	//
 	// example:
 	//
@@ -340,9 +340,7 @@ type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// null
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	// The name of the user OSS bucket.
-	//
-	// - Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
+	// The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
 	//
 	// example:
 	//
