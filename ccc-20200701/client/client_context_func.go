@@ -1387,6 +1387,58 @@ func (client *Client) ChangeWorkModeWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
+// 假期工作日检查
+//
+// Description:
+//
+// 拥有RAM权限的账号可以到RAM控制台查询阿里云主账号下管理的所有RAM子账号，RAM控制台地址：https://ram.console.aliyun.com/users
+//
+// @param request - CheckBusinessHoursRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckBusinessHoursResponse
+func (client *Client) CheckBusinessHoursWithContext(ctx context.Context, request *CheckBusinessHoursRequest, runtime *dara.RuntimeOptions) (_result *CheckBusinessHoursResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Time) {
+		query["Time"] = request.Time
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckBusinessHours"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckBusinessHoursResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Call the `ClaimCall` API to assign a call to an agent.
 //
 // @param request - ClaimCallRequest
