@@ -407,6 +407,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 		body["DispatcherSize"] = request.DispatcherSize
 	}
 
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.ExecuteMode) {
 		body["ExecuteMode"] = request.ExecuteMode
 	}
@@ -1585,7 +1589,7 @@ func (client *Client) GetAppGroupWithContext(ctx context.Context, request *GetAp
 
 // Summary:
 //
-// Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
+// Retrieves the details of a specified node by job ID. This operation is typically used to update a node.
 //
 // @param request - GetJobInfoRequest
 //
@@ -2139,7 +2143,7 @@ func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves a list of nodes.
+// Retrieves a list of jobs.
 //
 // Description:
 //
@@ -3257,7 +3261,7 @@ func (client *Client) UpdateAppGroupWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields to modify.
+// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields before making modifications.
 //
 // @param request - UpdateJobRequest
 //
@@ -3315,6 +3319,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJ
 
 	if !dara.IsNil(request.DispatcherSize) {
 		body["DispatcherSize"] = request.DispatcherSize
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
 	}
 
 	if !dara.IsNil(request.ExecuteMode) {

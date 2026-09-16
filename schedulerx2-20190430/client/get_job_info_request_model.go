@@ -24,7 +24,7 @@ type iGetJobInfoRequest interface {
 }
 
 type GetJobInfoRequest struct {
-	// The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	// The application ID. You can obtain the ID on the Application Management page in the console.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetJobInfoRequest struct {
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The job ID. You can obtain the job ID on the Task Management page in the SchedulerX console.
+	// The node ID. You can obtain the ID on the Task Management page in the console.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type GetJobInfoRequest struct {
 	//
 	// 92583
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job name.
+	// The node name.
 	//
 	// example:
 	//
 	// simpleJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+	// The namespace ID. You can obtain the ID on the Namespace page in the console.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type GetJobInfoRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The namespace source. This parameter is required only for a special third party.
+	// This parameter is required only for special third-party users.
 	//
 	// example:
 	//

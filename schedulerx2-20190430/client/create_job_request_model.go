@@ -27,6 +27,8 @@ type iCreateJobRequest interface {
 	GetDescription() *string
 	SetDispatcherSize(v int32) *CreateJobRequest
 	GetDispatcherSize() *int32
+	SetEndTime(v int64) *CreateJobRequest
+	GetEndTime() *int64
 	SetExecuteMode(v string) *CreateJobRequest
 	GetExecuteMode() *string
 	SetFailEnable(v bool) *CreateJobRequest
@@ -94,17 +96,21 @@ type CreateJobRequest struct {
 	//
 	// 30
 	AttemptInterval *int32 `json:"AttemptInterval,omitempty" xml:"AttemptInterval,omitempty"`
-	// The custom calendar. This parameter is available for the cron time type.
+	// The custom calendar. This parameter is optional for the cron time type.
+	//
+	// example:
+	//
+	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
 	// The full path of the node interface class.
 	//
-	// This field is required only when you select the Java node type. Specify the full path.
+	// This field is available and required only when you select the Java node type. Specify the full path.
 	//
 	// example:
 	//
 	// com.alibaba.schedulerx.test.helloworld
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The advanced configuration for parallel grid nodes. The number of threads triggered for a single execution on a single machine. Default value: 5.
+	// Advanced configuration for parallel grid nodes. The number of threads for a single trigger on a single machine. Default value: 5.
 	//
 	// example:
 	//
@@ -112,7 +118,7 @@ type CreateJobRequest struct {
 	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
 	// The node contact information.
 	//
-	// 	Notice: This field is deprecated.</notice>
+	// 	Notice: This parameter is deprecated.
 	ContactInfo []*CreateJobRequestContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
 	// - If the node type is python, shell, or k8s, specify the corresponding script content.
 	//
@@ -122,7 +128,7 @@ type CreateJobRequest struct {
 	//
 	// echo \\"hello\\"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time offset. Unit: seconds. This parameter is available for the cron time type.
+	// The time offset for the cron time type. Unit: seconds.
 	//
 	// example:
 	//
@@ -134,12 +140,18 @@ type CreateJobRequest struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The advanced configuration for parallel grid nodes. The number of subtask dispatch threads. Default value: 5.
+	// Advanced configuration for parallel grid nodes. The number of threads for subtask dispatching. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
+	// The node expiration timestamp in milliseconds. The value must be greater than the current time and the start time. A value of -1 indicates no expiration.
+	//
+	// example:
+	//
+	// 1789454134000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The node execution mode. The following execution modes are supported:
 	//
 	// - **Standalone**: standalone
@@ -214,7 +226,7 @@ type CreateJobRequest struct {
 	//
 	// 0
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is not performed even if the scheduled time arrives.
+	// The maximum number of concurrently running instances. Default value: 1. A value of 1 indicates that if the previous trigger has not finished running, the next trigger is skipped even if the scheduled time has arrived.
 	//
 	// example:
 	//
@@ -252,7 +264,7 @@ type CreateJobRequest struct {
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The advanced configuration for parallel grid nodes. The number of subtasks pulled in a single request. Default value: 100.
+	// Advanced configuration for parallel grid nodes. The number of subtasks pulled per request. Default value: 100.
 	//
 	// example:
 	//
@@ -278,7 +290,7 @@ type CreateJobRequest struct {
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The advanced configuration for parallel grid nodes. The maximum cache size of the subtask queue. Default value: 10000.
+	// Advanced configuration for parallel grid nodes. The maximum number of subtasks that can be cached in the queue. Default value: 10000.
 	//
 	// example:
 	//
@@ -296,14 +308,19 @@ type CreateJobRequest struct {
 	//
 	// - Use the default channel of the application group: default.
 	//
-	// - Specify a notification channel for the node: sms, mail, phone, or webhook.
+	// - Specify the notification channel for the node: sms,mail,phone,webhook.
 	//
 	// example:
 	//
 	// sms
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The node status. Valid values: 0: disabled. 1: enabled. Default value: 1 (enabled).
+	// The start timestamp in milliseconds. The value must be greater than the current time. A value of -1 indicates immediate start.
+	//
+	// example:
+	//
+	// 1789454134000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The node status. 0: disabled. 1: enabled. Default value: enabled.
 	//
 	// example:
 	//
@@ -315,13 +332,13 @@ type CreateJobRequest struct {
 	//
 	// false
 	SuccessNoticeEnable *bool `json:"SuccessNoticeEnable,omitempty" xml:"SuccessNoticeEnable,omitempty"`
-	// The advanced configuration for parallel grid nodes. The retry interval for a failed subtask. Default value: 0.
+	// Advanced configuration for parallel grid nodes. The retry interval for a subtask on failure. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	// The advanced configuration for parallel grid nodes. The number of retries for a failed subtask. Default value: 0.
+	// Advanced configuration for parallel grid nodes. The maximum number of retries for a subtask on failure. Default value: 0.
 	//
 	// example:
 	//
@@ -335,9 +352,9 @@ type CreateJobRequest struct {
 	//
 	// - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// - **second_delay**: Specify a fixed delay in seconds before each execution (1s to 60s).
+	// - **second_delay**: Specify a fixed delay in seconds before each execution (valid values: 1 to 60).
 	//
-	// - **one_time**: Specify a time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - **one_time**: Specify a time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -449,6 +466,10 @@ func (s *CreateJobRequest) GetDescription() *string {
 
 func (s *CreateJobRequest) GetDispatcherSize() *int32 {
 	return s.DispatcherSize
+}
+
+func (s *CreateJobRequest) GetEndTime() *int64 {
+	return s.EndTime
 }
 
 func (s *CreateJobRequest) GetExecuteMode() *string {
@@ -612,6 +633,11 @@ func (s *CreateJobRequest) SetDispatcherSize(v int32) *CreateJobRequest {
 	return s
 }
 
+func (s *CreateJobRequest) SetEndTime(v int64) *CreateJobRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *CreateJobRequest) SetExecuteMode(v string) *CreateJobRequest {
 	s.ExecuteMode = &v
 	return s
@@ -771,7 +797,7 @@ func (s *CreateJobRequest) Validate() error {
 }
 
 type CreateJobRequestContactInfo struct {
-	// The webhook URL of the DingTalk chatbot for the alert contact\\"s DingTalk group. References: [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
+	// The webhook URL of the DingTalk chatbot in the DingTalk group for alert contacts. References: [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
 	//
 	// example:
 	//
@@ -789,7 +815,7 @@ type CreateJobRequestContactInfo struct {
 	//
 	// John Smith
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The mobile phone number of the alert recipient.
+	// The phone number for receiving alerts.
 	//
 	// example:
 	//

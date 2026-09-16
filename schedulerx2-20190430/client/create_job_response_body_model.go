@@ -42,9 +42,9 @@ type CreateJobResponseBody struct {
 	//
 	// 39090022-1F3B-4797-8518-6B61095F1AF0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the node was created successfully. Valid values:
+	// Indicates whether the node was created. Valid values:
 	//
-	// - **true**: The node was created successfully.
+	// - **true**: The node was created.
 	//
 	// - **false**: The node failed to be created.
 	//

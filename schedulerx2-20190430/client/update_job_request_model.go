@@ -27,6 +27,8 @@ type iUpdateJobRequest interface {
 	GetDescription() *string
 	SetDispatcherSize(v int32) *UpdateJobRequest
 	GetDispatcherSize() *int32
+	SetEndTime(v int64) *UpdateJobRequest
+	GetEndTime() *int64
 	SetExecuteMode(v string) *UpdateJobRequest
 	GetExecuteMode() *string
 	SetFailEnable(v bool) *UpdateJobRequest
@@ -104,13 +106,13 @@ type UpdateJobRequest struct {
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
 	// The full path of the node interface class.
 	//
-	// This field is required only for Java node types, and the full path must be specified.
+	// This field is required and must contain the full path only for Java node types.
 	//
 	// example:
 	//
 	// com.alibaba.test.helloworld
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The advanced configuration for parallel grid tasks. The number of threads for a single trigger on a single machine. Default value: 5.
+	// Advanced configuration for parallel grid tasks. The number of threads for a single trigger on a single machine. Default value: 5.
 	//
 	// example:
 	//
@@ -118,7 +120,7 @@ type UpdateJobRequest struct {
 	ConsumerSize *int32 `json:"ConsumerSize,omitempty" xml:"ConsumerSize,omitempty"`
 	// The contact information for the node.
 	//
-	// 	Notice: This field is deprecated.</notice>
+	// 	Notice: This parameter is deprecated.</notice>
 	ContactInfo []*UpdateJobRequestContactInfo `json:"ContactInfo,omitempty" xml:"ContactInfo,omitempty" type:"Repeated"`
 	// - If the node type is python, shell, or k8s, specify the corresponding script content.
 	//
@@ -140,23 +142,27 @@ type UpdateJobRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The advanced configuration for parallel grid tasks. The number of subtask dispatch threads. Default value: 5.
+	// Advanced configuration for parallel grid tasks. The number of subtask dispatch threads. Default value: 5.
 	//
 	// example:
 	//
 	// 5
 	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
-	// The node execution mode. Valid values:
+	// example:
 	//
-	// - **standalone**: standalone
+	// 1789454134000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The node execution mode. The following execution modes are supported:
 	//
-	// - **broadcatst**: broadcast
+	// - **Standalone**: standalone
 	//
-	// - **parallel**: visual MapReduce
+	// - **Broadcast**: broadcatst
 	//
-	// - **batch**: MapReduce
+	// - **Visual MapReduce**: parallel
 	//
-	// - **shard**: shard
+	// - **MapReduce**: batch
+	//
+	// - **Sharding**: shard
 	//
 	// example:
 	//
@@ -164,9 +170,9 @@ type UpdateJobRequest struct {
 	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
 	// Specifies whether to enable the failure alert. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enables the failure alert.
 	//
-	// - **false**: Disabled.
+	// - **false**: disables the failure alert.
 	//
 	// example:
 	//
@@ -200,7 +206,7 @@ type UpdateJobRequest struct {
 	//
 	// 0
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is not performed even if the scheduled time has arrived.
+	// The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is skipped even if the scheduled time has arrived.
 	//
 	// example:
 	//
@@ -208,9 +214,9 @@ type UpdateJobRequest struct {
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// Specifies whether to enable the no-available-machine alert. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enables the no-available-machine alert.
 	//
-	// - **false**: Disabled.
+	// - **false**: disables the no-available-machine alert.
 	//
 	// example:
 	//
@@ -236,7 +242,7 @@ type UpdateJobRequest struct {
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The advanced configuration for parallel grid tasks. The number of subtasks pulled per request. Default value: 100.
+	// Advanced configuration for parallel grid tasks. The number of subtasks pulled per request. Default value: 100.
 	//
 	// example:
 	//
@@ -262,7 +268,7 @@ type UpdateJobRequest struct {
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The advanced configuration for parallel grid tasks. The maximum cache size of the subtask queue. Default value: 10000.
+	// Advanced configuration for parallel grid tasks. The maximum cache size of the subtask queue. Default value: 10000.
 	//
 	// example:
 	//
@@ -282,26 +288,31 @@ type UpdateJobRequest struct {
 	//
 	// sms
 	SendChannel *string `json:"SendChannel,omitempty" xml:"SendChannel,omitempty"`
-	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start timestamp in milliseconds. The value must be greater than the current time. A value of -1 indicates immediate start.
+	//
+	// example:
+	//
+	// 1789454134000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Specifies whether to enable the success notification.
 	//
 	// example:
 	//
 	// false
 	SuccessNoticeEnable *bool `json:"SuccessNoticeEnable,omitempty" xml:"SuccessNoticeEnable,omitempty"`
-	// The advanced configuration for parallel grid tasks. The retry interval for failed subtasks.
+	// Advanced configuration for parallel grid tasks. The retry interval for failed subtasks.
 	//
 	// example:
 	//
 	// 0
 	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	// The advanced configuration for parallel grid tasks. Specifies the push model or pull model.
+	// Advanced configuration for parallel grid tasks. Specifies the push model or pull model.
 	//
 	// example:
 	//
 	// push
 	TaskDispatchMode *string `json:"TaskDispatchMode,omitempty" xml:"TaskDispatchMode,omitempty"`
-	// The advanced configuration for parallel grid tasks. The number of retries for failed subtasks.
+	// Advanced configuration for parallel grid tasks. The number of retries for failed subtasks.
 	//
 	// example:
 	//
@@ -357,29 +368,29 @@ type UpdateJobRequest struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The time expression. Set the time expression based on the selected time type.
 	//
-	// - **cron**: Specify a standard cron expression. Online verification is supported.
+	// - **cron**: specify a standard cron expression, which supports online verification.
 	//
-	// - **api**: No time expression is required.
+	// - **api**: no time expression is required.
 	//
-	// - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+	// - **fixed_rate**: specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// - **second_delay**: Specify a fixed delay in seconds before each execution (1s to 60s).
+	// - **second_delay**: specify a fixed delay in seconds before each execution (1s to 60s).
 	//
 	// example:
 	//
 	// 30
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	// The time configuration type. Valid values:
+	// The time configuration type. The following configuration types are supported:
 	//
-	// - **1**: cron
+	// - **cron**: 1
 	//
-	// - **3**: fix_rate
+	// - **fix_rate**: 3
 	//
-	// - **4**: second_delay
+	// - **second_delay**: 4
 	//
-	// - **5**: one_time
+	// - **one_time**: 5
 	//
-	// - **100**: api
+	// - **api**: 100
 	//
 	// example:
 	//
@@ -393,9 +404,9 @@ type UpdateJobRequest struct {
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// Specifies whether to enable the timeout alert. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enables the timeout alert.
 	//
-	// - **false**: Disabled.
+	// - **false**: disables the timeout alert.
 	//
 	// example:
 	//
@@ -403,9 +414,9 @@ type UpdateJobRequest struct {
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
 	// Specifies whether to enable the timeout termination for the current trigger. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enables the timeout termination.
 	//
-	// - **false**: Disabled.
+	// - **false**: disables the timeout termination.
 	//
 	// example:
 	//
@@ -417,7 +428,7 @@ type UpdateJobRequest struct {
 	//
 	// GMT+8
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The parameter that must be configured for k8s node types.
+	// The extended attributes. This parameter is required for k8s node types.
 	//
 	// Job task: {"resource":"job"}
 	//
@@ -471,6 +482,10 @@ func (s *UpdateJobRequest) GetDescription() *string {
 
 func (s *UpdateJobRequest) GetDispatcherSize() *int32 {
 	return s.DispatcherSize
+}
+
+func (s *UpdateJobRequest) GetEndTime() *int64 {
+	return s.EndTime
 }
 
 func (s *UpdateJobRequest) GetExecuteMode() *string {
@@ -635,6 +650,11 @@ func (s *UpdateJobRequest) SetDescription(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetDispatcherSize(v int32) *UpdateJobRequest {
 	s.DispatcherSize = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetEndTime(v int64) *UpdateJobRequest {
+	s.EndTime = &v
 	return s
 }
 

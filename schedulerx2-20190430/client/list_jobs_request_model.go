@@ -36,7 +36,7 @@ type ListJobsRequest struct {
 	//
 	// DocTest.Group
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The node name.
+	// The job name.
 	//
 	// example:
 	//
@@ -57,8 +57,16 @@ type ListJobsRequest struct {
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of records per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
@@ -68,7 +76,7 @@ type ListJobsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The node status.
+	// The job status. Valid values:
 	//
 	// - **0**: disabled
 	//

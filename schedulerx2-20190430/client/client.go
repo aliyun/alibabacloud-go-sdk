@@ -30,26 +30,26 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-hangzhou":           dara.String("schedulerx.cn-hangzhou.aliyuncs.com"),
 		"cn-shanghai":           dara.String("schedulerx.cn-shanghai.aliyuncs.com"),
 		"cn-shenzhen":           dara.String("schedulerx.cn-shenzhen.aliyuncs.com"),
+		"ap-southeast-8":        dara.String("schedulerx.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("schedulerx.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("schedulerx.aliyuncs.com"),
+		"cn-chengdu":            dara.String("schedulerx.aliyuncs.com"),
+		"cn-qingdao":            dara.String("schedulerx.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("schedulerx.aliyuncs.com"),
+		"cn-hongkong":           dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("schedulerx.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("schedulerx.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("schedulerx.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("schedulerx.aliyuncs.com"),
 		"us-west-1":             dara.String("schedulerx.aliyuncs.com"),
 		"us-east-1":             dara.String("schedulerx.aliyuncs.com"),
-		"public":                dara.String("schedulerx.aliyuncs.com"),
-		"eu-west-1":             dara.String("schedulerx.aliyuncs.com"),
 		"eu-central-1":          dara.String("schedulerx.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("schedulerx.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("schedulerx.aliyuncs.com"),
+		"eu-west-1":             dara.String("schedulerx.aliyuncs.com"),
+		"public":                dara.String("schedulerx.aliyuncs.com"),
 		"cn-shanghai-finance-1": dara.String("schedulerx.aliyuncs.com"),
-		"cn-qingdao":            dara.String("schedulerx.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("schedulerx.aliyuncs.com"),
-		"cn-hongkong":           dara.String("schedulerx.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("schedulerx.aliyuncs.com"),
-		"cn-chengdu":            dara.String("schedulerx.aliyuncs.com"),
-		"ap-southeast-8":        dara.String("schedulerx.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("schedulerx.aliyuncs.com"),
-		"ap-southeast-6":        dara.String("schedulerx.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("schedulerx.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("schedulerx.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("schedulerx.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("schedulerx.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -624,6 +624,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *d
 
 	if !dara.IsNil(request.DispatcherSize) {
 		body["DispatcherSize"] = request.DispatcherSize
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
 	}
 
 	if !dara.IsNil(request.ExecuteMode) {
@@ -2208,7 +2212,7 @@ func (client *Client) GetAppGroup(request *GetAppGroupRequest) (_result *GetAppG
 
 // Summary:
 //
-// Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
+// Retrieves the details of a specified node by job ID. This operation is typically used to update a node.
 //
 // @param request - GetJobInfoRequest
 //
@@ -2248,7 +2252,7 @@ func (client *Client) GetJobInfoWithOptions(request *GetJobInfoRequest, runtime 
 
 // Summary:
 //
-// Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
+// Retrieves the details of a specified node by job ID. This operation is typically used to update a node.
 //
 // @param request - GetJobInfoRequest
 //
@@ -2978,7 +2982,7 @@ func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest)
 
 // Summary:
 //
-// Retrieves a list of nodes.
+// Retrieves a list of jobs.
 //
 // Description:
 //
@@ -3036,7 +3040,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 
 // Summary:
 //
-// Retrieves a list of nodes.
+// Retrieves a list of jobs.
 //
 // Description:
 //
@@ -4452,7 +4456,7 @@ func (client *Client) UpdateAppGroup(request *UpdateAppGroupRequest) (_result *U
 
 // Summary:
 //
-// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields to modify.
+// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields before making modifications.
 //
 // @param request - UpdateJobRequest
 //
@@ -4510,6 +4514,10 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *d
 
 	if !dara.IsNil(request.DispatcherSize) {
 		body["DispatcherSize"] = request.DispatcherSize
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
 	}
 
 	if !dara.IsNil(request.ExecuteMode) {
@@ -4650,7 +4658,7 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *d
 
 // Summary:
 //
-// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields to modify.
+// Updates the configuration of a node. By default, call the get node operation first to find the corresponding fields before making modifications.
 //
 // @param request - UpdateJobRequest
 //
