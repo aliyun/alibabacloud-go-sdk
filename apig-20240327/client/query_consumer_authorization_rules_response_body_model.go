@@ -96,7 +96,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBody) Validate() error {
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyData struct {
-	// The list of consumer rules.
+	// The list of consumer authorization rules.
 	Items []*QueryConsumerAuthorizationRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,7 +176,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyData) Validate() error {
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
-	// The API information details.
+	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
 	// The consumer authorization rule ID.
 	//
@@ -198,7 +198,7 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// cs-csheiftlhtgmp0j0hp4g
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer information details.
+	// The consumer information.
 	ConsumerInfo *ConsumerInfo `json:"consumerInfo,omitempty" xml:"consumerInfo,omitempty"`
 	// The creation timestamp. Unit: milliseconds.
 	//
@@ -206,7 +206,7 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The publish status of the API in the current environment.
+	// The deployment status of the API in the current environment.
 	//
 	// example:
 	//
@@ -214,11 +214,7 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// The expiration mode. Valid values:
-	//
-	// - LongTerm
-	//
-	// - ShortTerm
+	// The expiration mode. Valid values: LongTerm and ShortTerm.
 	//
 	// example:
 	//
@@ -238,7 +234,7 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The principal type. Valid values: Consumer or ConsumerGroup.
+	// The principal type. Valid values: Consumer and ConsumerGroup.
 	//
 	// example:
 	//
@@ -250,7 +246,7 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// 2351944
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource information details.
+	// The resource information.
 	ResourceInfo *QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo `json:"resourceInfo,omitempty" xml:"resourceInfo,omitempty" type:"Struct"`
 	// The resource type.
 	//
@@ -471,7 +467,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error 
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo struct {
-	// The operation information.
+	// The API operation information.
 	OperationInfo *HttpApiOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty"`
 	// The routing rule.
 	Route *HttpRoute `json:"route,omitempty" xml:"route,omitempty"`

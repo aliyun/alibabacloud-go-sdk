@@ -130,7 +130,7 @@ func (s *GetDashboardResponseBody) Validate() error {
 }
 
 type GetDashboardResponseBodyData struct {
-	// The unique identifier of the gateway.
+	// The unique ID of the gateway.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type GetDashboardResponseBodyData struct {
 	//
 	// APIG Plugin
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The dashboard URL.
+	// The URL of the dashboard.
 	//
 	// example:
 	//

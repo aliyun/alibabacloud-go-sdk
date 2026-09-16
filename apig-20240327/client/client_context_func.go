@@ -1343,6 +1343,11 @@ func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *Cre
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AgentProtocols) {
 		body["agentProtocols"] = request.AgentProtocols
@@ -1422,6 +1427,7 @@ func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *Cre
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -1446,7 +1452,7 @@ func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates an operation for an HTTP API.
+// Creates operations for an HTTP API.
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -2717,7 +2723,7 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, gatewayId *s
 //
 // Description:
 //
-// Deletes a quota rule based on an API consumer or consumer group for an AI gateway. This operation only takes effect on AI gateways with a version later than 2.1.19.
+// Deletes a quota rule based on an API consumer or consumer group from an AI gateway. This operation only takes effect on AI gateways with a version later than 2.1.19.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -4220,7 +4226,7 @@ func (client *Client) GetHttpApiWithContext(ctx context.Context, httpApiId *stri
 
 // Summary:
 //
-// Retrieves the API operation information.
+// Retrieves operation information.
 //
 // @param headers - map
 //

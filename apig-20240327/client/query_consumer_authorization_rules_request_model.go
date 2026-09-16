@@ -46,7 +46,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// api-xx
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
-	// The consumer group ID. If specified, the authorization rules of this consumer group are queried.
+	// The consumer group ID. If specified, the authorization rules of the consumer group are queried. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// team
 	ConsumerGroupNameLike *string `json:"consumerGroupNameLike,omitempty" xml:"consumerGroupNameLike,omitempty"`
-	// The consumer ID.
+	// The consumer ID. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The parent resource ID.
+	// The parent resource ID. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
 	//
 	// example:
 	//
 	// ha-cn-li942gy8p01
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
-	// The principal type. Valid values: Consumer or ConsumerGroup.
+	// The principal type. Valid values: Consumer and ConsumerGroup.
 	//
 	// example:
 	//
 	// ConsumerGroup
 	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
-	// The resource ID.
+	// The resource ID. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The service source types.
+	// The service source type.
 	//
 	// example:
 	//

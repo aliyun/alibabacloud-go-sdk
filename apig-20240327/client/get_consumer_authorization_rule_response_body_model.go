@@ -68,9 +68,9 @@ type GetConsumerAuthorizationRuleResponseBody struct {
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
 	// The expiration mode. Valid values:
 	//
-	// - LongTerm
+	// - LongTerm: long-term
 	//
-	// - ShortTerm
+	// - ShortTerm: short-term
 	//
 	// example:
 	//

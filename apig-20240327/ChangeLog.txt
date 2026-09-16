@@ -1,3 +1,7 @@
+2026-09-16 Version: v11.2.4
+- Update API CreateHttpApi: add request parameters clientToken.
+
+
 2026-09-14 Version: v11.2.3
 - Update API CreateConsumer: add request parameters clientToken.
 - Update API CreateConsumer: add request parameters dryRun.

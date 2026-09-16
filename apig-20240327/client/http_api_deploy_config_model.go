@@ -121,9 +121,9 @@ type HttpApiDeployConfig struct {
 	RouteBackend *Backend `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
 	// The list of service configurations.
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The list of subdomain content.
+	// The list of second-level domain name content.
 	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
-	// The set of explicitly enabled gateway system model capability tiers. Takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, premium. An explicit empty array indicates that no system model is enabled.
+	// The set of explicitly enabled gateway system model capability tiers. Takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium. An explicitly empty array indicates that no system models are enabled.
 	//
 	// example:
 	//
@@ -495,7 +495,7 @@ func (s *HttpApiDeployConfigEnvDomainInfos) Validate() error {
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
-	// The capability tier of the intelligent routing candidate. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+	// The capability tier for intelligent routing candidates. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
 	//
 	// example:
 	//

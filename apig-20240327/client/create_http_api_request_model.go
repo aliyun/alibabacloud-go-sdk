@@ -47,16 +47,18 @@ type iCreateHttpApiRequest interface {
 	GetType() *string
 	SetVersionConfig(v *HttpApiVersionConfig) *CreateHttpApiRequest
 	GetVersionConfig() *HttpApiVersionConfig
+	SetClientToken(v string) *CreateHttpApiRequest
+	GetClientToken() *string
 }
 
 type CreateHttpApiRequest struct {
-	// The list of protocols supported by the agent. Required when type is Agent. This field is not required for other types.
+	// The list of protocols supported by the agent. This parameter is required when type is set to Agent. You do not need to specify this parameter for other types.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The list of AI API protocols. Required when type is LLM (only one protocol allowed) or Ai (multiple protocols allowed). Not required for other types. Example protocol: OpenAI/v1.
+	// The list of AI API protocols. This parameter is required when type is set to LLM, and only one protocol can be specified. This parameter is required when type is set to Ai, and multiple protocols can be specified. You do not need to specify this parameter for other types. Example protocol entry: OpenAI/v1.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	// The authentication configuration. Required when enableAuth is set to true.
+	// The authentication configuration. This parameter is required when enableAuth is set to true.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The base path of the API. Must start with a forward slash (/), cannot exceed 256 bytes in length, and cannot contain spaces. Required when type is Rest. Optional when type is LLM, Ai, or Agent. Defaults to /.
+	// The base path of the API. The value must start with a forward slash (/), cannot exceed 256 bytes in length, and cannot contain spaces. This parameter is required when type is set to Rest. When type is set to LLM, Ai, or Agent, this parameter is optional and defaults to /.
 	//
 	// example:
 	//
@@ -68,9 +70,9 @@ type CreateHttpApiRequest struct {
 	//
 	// gw-abc123xyz789
 	BelongGatewayId *string `json:"belongGatewayId,omitempty" xml:"belongGatewayId,omitempty"`
-	// The list of deployment configurations for the HTTP API. Required when type is LLM or Ai (only one deployment configuration allowed). Not validated at the request level for other types.
+	// The list of deployment configurations for the HTTP API. This parameter is required when type is set to LLM or Ai, and only one deployment configuration can be specified. This parameter is not validated at the request level for other types.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The API description.
+	// The description of the API.
 	//
 	// example:
 	//
@@ -78,27 +80,27 @@ type CreateHttpApiRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to preview only without executing.
+	// Specifies whether to perform a dry run without executing the operation.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Specifies whether to enable authentication. Validated when type is LLM, Ai, or Agent. Not validated at the request level when type is Rest.
+	// Specifies whether to enable authentication. This parameter is validated when type is set to LLM, Ai, or Agent. This parameter is not validated at the request level when type is set to Rest.
 	//
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The timeout period for waiting for the backend to return the first byte.
+	// The timeout period for waiting for the first byte from the backend.
 	//
 	// example:
 	//
 	// 30
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// The HTTP Ingress API configuration. Required when type is HttpIngress and cannot be null. Not required for other types.
+	// The HTTP Ingress API configuration. This parameter is required and cannot be nil when type is set to HttpIngress. You do not need to specify this parameter for other types.
 	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// The AI model category. Optional when type is LLM or Ai. Not required for other types. Valid values:
+	// The AI model category. This parameter is optional when type is set to LLM or Ai. You do not need to specify this parameter for other types. Valid values:
 	//
 	// - Text: text generation.
 	//
@@ -106,21 +108,21 @@ type CreateHttpApiRequest struct {
 	//
 	// - Audio: audio processing.
 	//
-	// - Video: video generation.
+	// - Video: AI video generation.
 	//
 	// - MultiModal: multimodal.
 	//
-	// - Embedding: vector embedding.
+	// - Embedding: embedding.
 	//
 	// - Rerank: reranking.
 	//
-	// - Others: others.
+	// - Others: other.
 	//
 	// example:
 	//
 	// Text
 	ModelCategory *string `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
-	// The name of the HTTP API, used to identify the current API resource. For example, test-api.
+	// The name of the HTTP API, which identifies the API resource. Example: test-api.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +144,7 @@ type CreateHttpApiRequest struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The conflict resolution strategy for imports.
+	// The conflict merge strategy for import.
 	//
 	// example:
 	//
@@ -160,7 +162,7 @@ type CreateHttpApiRequest struct {
 	//
 	// - LLM: a large language model API.
 	//
-	// - Agent: an Agent proxy API.
+	// - Agent: an agent proxy API.
 	//
 	// This parameter is required.
 	//
@@ -170,6 +172,12 @@ type CreateHttpApiRequest struct {
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
+	// The idempotency token, which is a globally unique value generated by the caller. We recommend that you use a UUID. The value cannot exceed 64 characters in length. Within approximately 24 hours after the first successful request, a duplicate request that carries the same ClientToken and identical request parameters directly returns the httpApiId created by the first request without creating a duplicate HTTP API. If the same ClientToken is carried but the request parameters are different, the IdempotentParameterMismatch error is returned. If the first request is still being processed, the IdempotentProcessing error is returned. If this parameter is not specified, idempotency control is not enabled, and the behavior is consistent with the existing version.
+	//
+	// example:
+	//
+	// 5f7a2c1e-9b3d-4e8f-a1c6-0d2b8e4f7a13
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s CreateHttpApiRequest) String() string {
@@ -254,6 +262,10 @@ func (s *CreateHttpApiRequest) GetType() *string {
 
 func (s *CreateHttpApiRequest) GetVersionConfig() *HttpApiVersionConfig {
 	return s.VersionConfig
+}
+
+func (s *CreateHttpApiRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateHttpApiRequest) SetAgentProtocols(v []*string) *CreateHttpApiRequest {
@@ -348,6 +360,11 @@ func (s *CreateHttpApiRequest) SetType(v string) *CreateHttpApiRequest {
 
 func (s *CreateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *CreateHttpApiRequest {
 	s.VersionConfig = v
+	return s
+}
+
+func (s *CreateHttpApiRequest) SetClientToken(v string) *CreateHttpApiRequest {
+	s.ClientToken = &v
 	return s
 }
 

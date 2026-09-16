@@ -56,7 +56,7 @@ type UpdateHttpApiRequest struct {
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
 	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The description of the API.
+	// The API description.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type UpdateHttpApiRequest struct {
 	//
 	// true
 	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
-	// The versioning configuration of the API.
+	// The API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
-	// Specifies whether to perform only a dry run. If set to true, all synchronous validations identical to a real update are performed without updating any configurations or producing side effects. If not specified or set to false, the behavior is the same as the existing version.
+	// Specifies whether to perform only a dry run. If set to true, all synchronous validations identical to an actual update are performed, but no configurations are modified and no side effects are produced. If set to false or left empty, the behavior is the same as the existing version.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -265,13 +265,13 @@ type UpdateHttpApiRequestIngressConfig struct {
 	//
 	// env-cr6ql0tlhtgmc****
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The Ingress Class to listen on.
+	// The Ingress class to listen on.
 	//
 	// example:
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// Specifies whether to update the address in the Ingress Status.
+	// Specifies whether to update the address in the Ingress status.
 	//
 	// example:
 	//

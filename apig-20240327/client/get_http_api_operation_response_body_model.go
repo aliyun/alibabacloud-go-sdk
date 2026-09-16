@@ -26,7 +26,7 @@ type GetHttpApiOperationResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The API operation information.
+	// The operation information.
 	Data *HttpApiOperationInfo `json:"data,omitempty" xml:"data,omitempty"`
 	// The response message.
 	//
