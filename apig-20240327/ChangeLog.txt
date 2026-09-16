@@ -1,3 +1,7 @@
+2026-09-16 Version: v11.2.5
+- Update API UpdateHttpApi: add request parameters clientToken.
+
+
 2026-09-16 Version: v11.2.4
 - Update API CreateHttpApi: add request parameters clientToken.
 

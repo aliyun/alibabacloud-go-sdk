@@ -9588,6 +9588,10 @@ func (client *Client) UpdateHttpApiWithContext(ctx context.Context, httpApiId *s
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["dryRun"] = request.DryRun
 	}

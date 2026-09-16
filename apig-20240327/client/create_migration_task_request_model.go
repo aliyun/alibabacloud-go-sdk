@@ -36,6 +36,8 @@ type CreateMigrationTaskRequest struct {
 	//
 	// migration from Nginx
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// env-xxxx

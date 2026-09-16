@@ -35,6 +35,8 @@ type iUpdateHttpApiRequest interface {
 	GetRemoveBasePathOnForward() *bool
 	SetVersionConfig(v *HttpApiVersionConfig) *UpdateHttpApiRequest
 	GetVersionConfig() *HttpApiVersionConfig
+	SetClientToken(v string) *UpdateHttpApiRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *UpdateHttpApiRequest
 	GetDryRun() *bool
 }
@@ -76,7 +78,7 @@ type UpdateHttpApiRequest struct {
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
 	// The configuration of the HTTP Ingress API.
 	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// Specifies whether to only modify the configuration. If set to true, only the configuration is modified without triggering a redeployment.
+	// Specifies whether to only modify the configuration. If this parameter is set to true, only the configuration is modified without triggering redeployment.
 	//
 	// example:
 	//
@@ -92,7 +94,13 @@ type UpdateHttpApiRequest struct {
 	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
 	// The API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
-	// Specifies whether to perform only a dry run. If set to true, all synchronous validations identical to an actual update are performed, but no configurations are modified and no side effects are produced. If set to false or left empty, the behavior is the same as the existing version.
+	// The idempotent request identifier. If you call this operation for the same HTTP API with the same clientToken value and request parameters, the result of the first successful call is returned.
+	//
+	// example:
+	//
+	// update-http-api-client-token-001
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// Specifies whether to perform only a dry run. If this parameter is set to true, all synchronous validations identical to an actual update are performed, but no configurations are updated and no side effects are produced. If this parameter is not specified or is set to false, the behavior is the same as the existing version.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -154,6 +162,10 @@ func (s *UpdateHttpApiRequest) GetRemoveBasePathOnForward() *bool {
 
 func (s *UpdateHttpApiRequest) GetVersionConfig() *HttpApiVersionConfig {
 	return s.VersionConfig
+}
+
+func (s *UpdateHttpApiRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *UpdateHttpApiRequest) GetDryRun() *bool {
@@ -222,6 +234,11 @@ func (s *UpdateHttpApiRequest) SetRemoveBasePathOnForward(v bool) *UpdateHttpApi
 
 func (s *UpdateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *UpdateHttpApiRequest {
 	s.VersionConfig = v
+	return s
+}
+
+func (s *UpdateHttpApiRequest) SetClientToken(v string) *UpdateHttpApiRequest {
+	s.ClientToken = &v
 	return s
 }
 
