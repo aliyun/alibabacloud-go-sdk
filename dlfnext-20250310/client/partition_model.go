@@ -21,6 +21,8 @@ type iPartition interface {
 	GetFileSizeInBytes() *int64
 	SetLastFileCreationTime(v int64) *Partition
 	GetLastFileCreationTime() *int64
+	SetOptions(v map[string]*string) *Partition
+	GetOptions() map[string]*string
 	SetRecordCount(v int64) *Partition
 	GetRecordCount() *int64
 	SetSpec(v map[string]interface{}) *Partition
@@ -75,7 +77,8 @@ type Partition struct {
 	// example:
 	//
 	// 1741701564261
-	LastFileCreationTime *int64 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	LastFileCreationTime *int64             `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	Options              map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
 	// The number of records.
 	//
 	// example:
@@ -158,6 +161,10 @@ func (s *Partition) GetLastFileCreationTime() *int64 {
 	return s.LastFileCreationTime
 }
 
+func (s *Partition) GetOptions() map[string]*string {
+	return s.Options
+}
+
 func (s *Partition) GetRecordCount() *int64 {
 	return s.RecordCount
 }
@@ -217,6 +224,11 @@ func (s *Partition) SetFileSizeInBytes(v int64) *Partition {
 
 func (s *Partition) SetLastFileCreationTime(v int64) *Partition {
 	s.LastFileCreationTime = &v
+	return s
+}
+
+func (s *Partition) SetOptions(v map[string]*string) *Partition {
+	s.Options = v
 	return s
 }
 

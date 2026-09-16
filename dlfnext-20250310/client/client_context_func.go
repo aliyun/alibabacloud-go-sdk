@@ -2421,7 +2421,7 @@ func (client *Client) ListPartitionSummariesWithContext(ctx context.Context, cat
 
 // Summary:
 //
-// Lists partitions.
+// Lists the partitions of a data table.
 //
 // @param request - ListPartitionsRequest
 //

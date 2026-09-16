@@ -16,13 +16,13 @@ type iListPartitionsResponseBody interface {
 }
 
 type ListPartitionsResponseBody struct {
-	// The pagination token that is used to retrieve the next page of results.
+	// The pagination token used to retrieve the next page of data.
 	//
 	// example:
 	//
 	// E8ABEB1C3DB893D16576269017992F57
 	NextPageToken *string `json:"nextPageToken,omitempty" xml:"nextPageToken,omitempty"`
-	// The partitions.
+	// The list of partitions.
 	Partitions []*Partition `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
 }
 

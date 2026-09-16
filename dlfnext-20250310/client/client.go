@@ -3462,7 +3462,7 @@ func (client *Client) ListPartitionSummaries(catalogId *string, database *string
 
 // Summary:
 //
-// Lists partitions.
+// Lists the partitions of a data table.
 //
 // @param request - ListPartitionsRequest
 //
@@ -3517,7 +3517,7 @@ func (client *Client) ListPartitionsWithOptions(catalogId *string, database *str
 
 // Summary:
 //
-// Lists partitions.
+// Lists the partitions of a data table.
 //
 // @param request - ListPartitionsRequest
 //
