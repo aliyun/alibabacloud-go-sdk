@@ -27,6 +27,8 @@ type iModifyServerlessAuthToMachineRequest interface {
 	GetClientToken() *string
 	SetCriteria(v string) *ModifyServerlessAuthToMachineRequest
 	GetCriteria() *string
+	SetDryRun(v bool) *ModifyServerlessAuthToMachineRequest
+	GetDryRun() *bool
 	SetLogicalExp(v string) *ModifyServerlessAuthToMachineRequest
 	GetLogicalExp() *string
 	SetNtmVersion(v string) *ModifyServerlessAuthToMachineRequest
@@ -82,7 +84,7 @@ type ModifyServerlessAuthToMachineRequest struct {
 	//
 	// > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
 	BindAppList []*string `json:"BindAppList,omitempty" xml:"BindAppList,omitempty" type:"Repeated"`
-	// The Asset Type. Valid values:
+	// The Asset Type for the operation. Valid values:
 	//
 	// - **INSTANCE**: Instance.
 	//
@@ -94,9 +96,9 @@ type ModifyServerlessAuthToMachineRequest struct {
 	BindAssetType *string `json:"BindAssetType,omitempty" xml:"BindAssetType,omitempty"`
 	// The list of asset UUIDs to bind.
 	BindUuidList []*string `json:"BindUuidList,omitempty" xml:"BindUuidList,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The search conditions for assets. This parameter is in JSON format. Pay attention to the letter case when you enter the parameter.
+	// The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
 	//
 	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
@@ -104,6 +106,8 @@ type ModifyServerlessAuthToMachineRequest struct {
 	//
 	// [{"name":"vulStatus","value":"YES","logicalExp":"AND"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// Specifies whether to perform a dry run. true: performs only a check without executing the actual operation. false: performs the actual operation. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The logical relationship among multiple search conditions. Valid values:
 	//
 	// - **OR**: Multiple conditions are evaluated using a logical OR.
@@ -197,6 +201,10 @@ func (s *ModifyServerlessAuthToMachineRequest) GetCriteria() *string {
 	return s.Criteria
 }
 
+func (s *ModifyServerlessAuthToMachineRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyServerlessAuthToMachineRequest) GetLogicalExp() *string {
 	return s.LogicalExp
 }
@@ -267,6 +275,11 @@ func (s *ModifyServerlessAuthToMachineRequest) SetClientToken(v string) *ModifyS
 
 func (s *ModifyServerlessAuthToMachineRequest) SetCriteria(v string) *ModifyServerlessAuthToMachineRequest {
 	s.Criteria = &v
+	return s
+}
+
+func (s *ModifyServerlessAuthToMachineRequest) SetDryRun(v bool) *ModifyServerlessAuthToMachineRequest {
+	s.DryRun = &v
 	return s
 }
 

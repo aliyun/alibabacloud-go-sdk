@@ -17,6 +17,8 @@ type iUpdatePostPaidBindRelRequest interface {
 	GetBindAction() []*UpdatePostPaidBindRelRequestBindAction
 	SetClientToken(v string) *UpdatePostPaidBindRelRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *UpdatePostPaidBindRelRequest
+	GetDryRun() *bool
 	SetProductCode(v string) *UpdatePostPaidBindRelRequest
 	GetProductCode() *string
 	SetUpdateIfNecessary(v bool) *UpdatePostPaidBindRelRequest
@@ -54,6 +56,8 @@ type UpdatePostPaidBindRelRequest struct {
 	BindAction []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The abbreviated name of the cloud service. Valid values:
 	//
 	// - **sas**: Security Center
@@ -90,6 +94,10 @@ func (s *UpdatePostPaidBindRelRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *UpdatePostPaidBindRelRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *UpdatePostPaidBindRelRequest) GetProductCode() *string {
 	return s.ProductCode
 }
@@ -115,6 +123,11 @@ func (s *UpdatePostPaidBindRelRequest) SetBindAction(v []*UpdatePostPaidBindRelR
 
 func (s *UpdatePostPaidBindRelRequest) SetClientToken(v string) *UpdatePostPaidBindRelRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdatePostPaidBindRelRequest) SetDryRun(v bool) *UpdatePostPaidBindRelRequest {
+	s.DryRun = &v
 	return s
 }
 

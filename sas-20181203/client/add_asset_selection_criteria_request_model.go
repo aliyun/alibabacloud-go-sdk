@@ -15,6 +15,8 @@ type iAddAssetSelectionCriteriaRequest interface {
 	GetCriteria() *string
 	SetCriteriaOperation(v string) *AddAssetSelectionCriteriaRequest
 	GetCriteriaOperation() *string
+	SetDryRun(v bool) *AddAssetSelectionCriteriaRequest
+	GetDryRun() *bool
 	SetSelectionKey(v string) *AddAssetSelectionCriteriaRequest
 	GetSelectionKey() *string
 	SetTargetOperationList(v []*AddAssetSelectionCriteriaRequestTargetOperationList) *AddAssetSelectionCriteriaRequest
@@ -42,6 +44,8 @@ type AddAssetSelectionCriteriaRequest struct {
 	//
 	// add
 	CriteriaOperation *string `json:"CriteriaOperation,omitempty" xml:"CriteriaOperation,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The unique identifier of the asset selection.
 	//
 	// This parameter is required.
@@ -74,6 +78,10 @@ func (s *AddAssetSelectionCriteriaRequest) GetCriteriaOperation() *string {
 	return s.CriteriaOperation
 }
 
+func (s *AddAssetSelectionCriteriaRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *AddAssetSelectionCriteriaRequest) GetSelectionKey() *string {
 	return s.SelectionKey
 }
@@ -94,6 +102,11 @@ func (s *AddAssetSelectionCriteriaRequest) SetCriteria(v string) *AddAssetSelect
 
 func (s *AddAssetSelectionCriteriaRequest) SetCriteriaOperation(v string) *AddAssetSelectionCriteriaRequest {
 	s.CriteriaOperation = &v
+	return s
+}
+
+func (s *AddAssetSelectionCriteriaRequest) SetDryRun(v bool) *AddAssetSelectionCriteriaRequest {
+	s.DryRun = &v
 	return s
 }
 

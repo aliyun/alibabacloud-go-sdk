@@ -15,6 +15,8 @@ type iVerifyCheckInstanceResultRequest interface {
 	GetCheckIds() []*int64
 	SetClientToken(v string) *VerifyCheckInstanceResultRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *VerifyCheckInstanceResultRequest
+	GetDryRun() *bool
 	SetInstanceIds(v []*string) *VerifyCheckInstanceResultRequest
 	GetInstanceIds() []*string
 	SetTaskSource(v string) *VerifyCheckInstanceResultRequest
@@ -38,9 +40,11 @@ type VerifyCheckInstanceResultRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run of the request. Valid values: true: checks the request without performing the actual operation. false: performs the actual operation after the request passes the check. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The list of instance IDs of the affected assets for the check item.
 	//
-	// Note: This parameter is actually required. If this parameter is not specified, the API returns a 400 error (Code: -101).
+	// Note: This parameter is actually required. If it is not provided, the API returns a 400 error (Code: -101).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The task source. Valid values:
 	//
@@ -72,6 +76,10 @@ func (s *VerifyCheckInstanceResultRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *VerifyCheckInstanceResultRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *VerifyCheckInstanceResultRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -92,6 +100,11 @@ func (s *VerifyCheckInstanceResultRequest) SetCheckIds(v []*int64) *VerifyCheckI
 
 func (s *VerifyCheckInstanceResultRequest) SetClientToken(v string) *VerifyCheckInstanceResultRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *VerifyCheckInstanceResultRequest) SetDryRun(v bool) *VerifyCheckInstanceResultRequest {
+	s.DryRun = &v
 	return s
 }
 

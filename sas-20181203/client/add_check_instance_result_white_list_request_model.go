@@ -15,6 +15,8 @@ type iAddCheckInstanceResultWhiteListRequest interface {
 	GetCheckId() *int64
 	SetClientToken(v string) *AddCheckInstanceResultWhiteListRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *AddCheckInstanceResultWhiteListRequest
+	GetDryRun() *bool
 	SetInstanceIds(v []*string) *AddCheckInstanceResultWhiteListRequest
 	GetInstanceIds() []*string
 	SetInstanceList(v []*AddCheckInstanceResultWhiteListRequestInstanceList) *AddCheckInstanceResultWhiteListRequest
@@ -42,6 +44,8 @@ type AddCheckInstanceResultWhiteListRequest struct {
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The collection of asset instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The collection of asset instance information.
@@ -82,6 +86,10 @@ func (s *AddCheckInstanceResultWhiteListRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *AddCheckInstanceResultWhiteListRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *AddCheckInstanceResultWhiteListRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -110,6 +118,11 @@ func (s *AddCheckInstanceResultWhiteListRequest) SetCheckId(v int64) *AddCheckIn
 
 func (s *AddCheckInstanceResultWhiteListRequest) SetClientToken(v string) *AddCheckInstanceResultWhiteListRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *AddCheckInstanceResultWhiteListRequest) SetDryRun(v bool) *AddCheckInstanceResultWhiteListRequest {
+	s.DryRun = &v
 	return s
 }
 

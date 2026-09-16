@@ -11,6 +11,8 @@ type iCreateServiceLinkedRoleRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateServiceLinkedRoleRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *CreateServiceLinkedRoleRequest
+	GetDryRun() *bool
 	SetServiceLinkedRole(v string) *CreateServiceLinkedRoleRequest
 	GetServiceLinkedRole() *string
 }
@@ -18,6 +20,8 @@ type iCreateServiceLinkedRoleRequest interface {
 type CreateServiceLinkedRoleRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The service-linked role. Default value: **AliyunServiceRoleForSas**. Valid values:
 	//
 	// - **AliyunServiceRoleForSas**: the service-linked role for Security Center (SAS). Security Center uses this role to access your resources in other cloud services.
@@ -42,12 +46,21 @@ func (s *CreateServiceLinkedRoleRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateServiceLinkedRoleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateServiceLinkedRoleRequest) GetServiceLinkedRole() *string {
 	return s.ServiceLinkedRole
 }
 
 func (s *CreateServiceLinkedRoleRequest) SetClientToken(v string) *CreateServiceLinkedRoleRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceLinkedRoleRequest) SetDryRun(v bool) *CreateServiceLinkedRoleRequest {
+	s.DryRun = &v
 	return s
 }
 

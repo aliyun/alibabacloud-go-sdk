@@ -13,18 +13,20 @@ type iModifyVulConfigRequest interface {
 	GetClientToken() *string
 	SetConfig(v string) *ModifyVulConfigRequest
 	GetConfig() *string
+	SetDryRun(v bool) *ModifyVulConfigRequest
+	GetDryRun() *bool
 	SetType(v string) *ModifyVulConfigRequest
 	GetType() *string
 }
 
 type ModifyVulConfigRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable or disable vulnerability detection. Valid values:
 	//
-	// - **on**: Enable vulnerability detection.
+	// - **on**: Enables vulnerability detection.
 	//
-	// - **off**: Disable vulnerability detection.
+	// - **off**: Disables vulnerability detection.
 	//
 	// > If the type is set to real risk, valid values:
 	//
@@ -36,6 +38,8 @@ type ModifyVulConfigRequest struct {
 	//
 	// on
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Specifies whether to perform only a dry run of the request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The type of vulnerability to modify. Valid values:
 	//
 	// - **cve**: Linux software vulnerability
@@ -74,6 +78,10 @@ func (s *ModifyVulConfigRequest) GetConfig() *string {
 	return s.Config
 }
 
+func (s *ModifyVulConfigRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyVulConfigRequest) GetType() *string {
 	return s.Type
 }
@@ -85,6 +93,11 @@ func (s *ModifyVulConfigRequest) SetClientToken(v string) *ModifyVulConfigReques
 
 func (s *ModifyVulConfigRequest) SetConfig(v string) *ModifyVulConfigRequest {
 	s.Config = &v
+	return s
+}
+
+func (s *ModifyVulConfigRequest) SetDryRun(v bool) *ModifyVulConfigRequest {
+	s.DryRun = &v
 	return s
 }
 

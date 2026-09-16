@@ -13,6 +13,8 @@ type iUpdateSelectionKeyByTypeRequest interface {
 	GetBusinessType() *string
 	SetClientToken(v string) *UpdateSelectionKeyByTypeRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *UpdateSelectionKeyByTypeRequest
+	GetDryRun() *bool
 	SetSelectionKey(v string) *UpdateSelectionKeyByTypeRequest
 	GetSelectionKey() *string
 }
@@ -36,6 +38,14 @@ type UpdateSelectionKeyByTypeRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// - true: performs only a dry run without performing the actual operation.
+	//
+	// - false: performs the actual request.
+	//
+	// Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The unique identifier of the asset selection.
 	//
 	// example:
@@ -60,6 +70,10 @@ func (s *UpdateSelectionKeyByTypeRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *UpdateSelectionKeyByTypeRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *UpdateSelectionKeyByTypeRequest) GetSelectionKey() *string {
 	return s.SelectionKey
 }
@@ -71,6 +85,11 @@ func (s *UpdateSelectionKeyByTypeRequest) SetBusinessType(v string) *UpdateSelec
 
 func (s *UpdateSelectionKeyByTypeRequest) SetClientToken(v string) *UpdateSelectionKeyByTypeRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateSelectionKeyByTypeRequest) SetDryRun(v bool) *UpdateSelectionKeyByTypeRequest {
+	s.DryRun = &v
 	return s
 }
 

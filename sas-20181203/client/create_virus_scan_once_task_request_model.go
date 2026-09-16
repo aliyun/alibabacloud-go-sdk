@@ -11,6 +11,8 @@ type iCreateVirusScanOnceTaskRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateVirusScanOnceTaskRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *CreateVirusScanOnceTaskRequest
+	GetDryRun() *bool
 	SetParam(v string) *CreateVirusScanOnceTaskRequest
 	GetParam() *string
 	SetScanPath(v []*string) *CreateVirusScanOnceTaskRequest
@@ -24,6 +26,14 @@ type iCreateVirusScanOnceTaskRequest interface {
 type CreateVirusScanOnceTaskRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run of the request. Valid values:
+	//
+	// - true: performs only a dry run without executing the actual operation.
+	//
+	// - false: performs the actual request.
+	//
+	// Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The extended information field:
 	//
 	// - **additionType**: the extended scan type
@@ -38,7 +48,7 @@ type CreateVirusScanOnceTaskRequest struct {
 	//
 	// - **system**: system scan
 	//
-	// - **user**: custom scan.
+	// - **user**: custom scan
 	//
 	// example:
 	//
@@ -66,6 +76,10 @@ func (s *CreateVirusScanOnceTaskRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateVirusScanOnceTaskRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateVirusScanOnceTaskRequest) GetParam() *string {
 	return s.Param
 }
@@ -84,6 +98,11 @@ func (s *CreateVirusScanOnceTaskRequest) GetSelectionKey() *string {
 
 func (s *CreateVirusScanOnceTaskRequest) SetClientToken(v string) *CreateVirusScanOnceTaskRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateVirusScanOnceTaskRequest) SetDryRun(v bool) *CreateVirusScanOnceTaskRequest {
+	s.DryRun = &v
 	return s
 }
 

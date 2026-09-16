@@ -11,6 +11,8 @@ type iModifyCreateVulWhitelistRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyCreateVulWhitelistRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *ModifyCreateVulWhitelistRequest
+	GetDryRun() *bool
 	SetReason(v string) *ModifyCreateVulWhitelistRequest
 	GetReason() *string
 	SetResourceDirectoryAccountId(v int64) *ModifyCreateVulWhitelistRequest
@@ -22,8 +24,16 @@ type iModifyCreateVulWhitelistRequest interface {
 }
 
 type ModifyCreateVulWhitelistRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run. Valid values:
+	//
+	// - true: performs only a dry run without executing the actual operation.
+	//
+	// - false: performs the actual operation.
+	//
+	// Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The reason for adding the vulnerability whitelist.
 	//
 	// example:
@@ -46,7 +56,7 @@ type ModifyCreateVulWhitelistRequest struct {
 	//
 	// - **groupIds**: The collection of server group IDs. The field type is Long.
 	//
-	// > If this value is empty, the whitelist applies to all hosts. If **type*	- is set to **GroupId**, **groupIds*	- cannot be empty. If **type*	- is set to **Uuid**, **uuids*	- cannot be empty.
+	// > If this parameter is left empty, the whitelist takes effect on all hosts. If **type*	- is set to **GroupId**, **groupIds*	- cannot be empty. If **type*	- is set to **Uuid**, **uuids*	- cannot be empty.
 	//
 	// example:
 	//
@@ -54,7 +64,7 @@ type ModifyCreateVulWhitelistRequest struct {
 	TargetInfo *string `json:"TargetInfo,omitempty" xml:"TargetInfo,omitempty"`
 	// The information about the vulnerability to add to the whitelist. The value is a JSON string that contains the following fields:
 	//
-	// - **Status**: The vulnerability status.
+	// - **Status**: The status of the vulnerability.
 	//
 	// - **GmtLast**: The timestamp when the vulnerability was last detected. Unit: milliseconds.
 	//
@@ -62,9 +72,9 @@ type ModifyCreateVulWhitelistRequest struct {
 	//
 	// - **AsapCount**: The number of high-priority vulnerabilities.
 	//
-	// - **Name**: The vulnerability name.
+	// - **Name**: The name of the vulnerability.
 	//
-	// - **Type**: The vulnerability type. Valid values:
+	// - **Type**: The type of the vulnerability. Valid values:
 	//
 	//     - **cve**: Linux software vulnerability
 	//
@@ -88,7 +98,7 @@ type ModifyCreateVulWhitelistRequest struct {
 	//
 	// - **TotalFixCount**: The total number of fixed vulnerabilities.
 	//
-	// - **Tags**: The vulnerability tags.
+	// - **Tags**: The tags of the vulnerability.
 	//
 	// > You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to obtain the vulnerability information to add to the whitelist.
 	//
@@ -112,6 +122,10 @@ func (s *ModifyCreateVulWhitelistRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyCreateVulWhitelistRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyCreateVulWhitelistRequest) GetReason() *string {
 	return s.Reason
 }
@@ -130,6 +144,11 @@ func (s *ModifyCreateVulWhitelistRequest) GetWhitelist() *string {
 
 func (s *ModifyCreateVulWhitelistRequest) SetClientToken(v string) *ModifyCreateVulWhitelistRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyCreateVulWhitelistRequest) SetDryRun(v bool) *ModifyCreateVulWhitelistRequest {
+	s.DryRun = &v
 	return s
 }
 

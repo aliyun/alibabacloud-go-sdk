@@ -11,6 +11,8 @@ type iModifyPostPayModuleSwitchRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyPostPayModuleSwitchRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *ModifyPostPayModuleSwitchRequest
+	GetDryRun() *bool
 	SetEdrModuleSwitch(v *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) *ModifyPostPayModuleSwitchRequest
 	GetEdrModuleSwitch() *ModifyPostPayModuleSwitchRequestEdrModuleSwitch
 	SetPostPaidHostAutoBind(v int32) *ModifyPostPayModuleSwitchRequest
@@ -27,7 +29,9 @@ type iModifyPostPayModuleSwitchRequest interface {
 
 type ModifyPostPayModuleSwitchRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
-	ClientToken     *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Valid values: true: performs a check without executing the operation. false: executes the operation. Default value: false.
+	DryRun          *bool                                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EdrModuleSwitch *ModifyPostPayModuleSwitchRequestEdrModuleSwitch `json:"EdrModuleSwitch,omitempty" xml:"EdrModuleSwitch,omitempty" type:"Struct"`
 	// Specifies whether to automatically bind new assets for host and container protection. Valid values:
 	//
@@ -115,6 +119,10 @@ func (s *ModifyPostPayModuleSwitchRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyPostPayModuleSwitchRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyPostPayModuleSwitchRequest) GetEdrModuleSwitch() *ModifyPostPayModuleSwitchRequestEdrModuleSwitch {
 	return s.EdrModuleSwitch
 }
@@ -141,6 +149,11 @@ func (s *ModifyPostPayModuleSwitchRequest) GetPostPayModuleSwitchObj() *ModifyPo
 
 func (s *ModifyPostPayModuleSwitchRequest) SetClientToken(v string) *ModifyPostPayModuleSwitchRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchRequest) SetDryRun(v bool) *ModifyPostPayModuleSwitchRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -256,7 +269,7 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	//
 	// - **1**: Enabled.
 	//
-	// 	Notice: The basic service module switch cannot be manually modified. This module is enabled when any other module is enabled, and is disabled when all other modules are disabled.
+	// 	Notice: The basic service module switch cannot be manually modified. This module is in the enabling status when any other module is enabled, and is in the shutdown status only when all other modules are disabled.</notice>
 	//
 	// example:
 	//

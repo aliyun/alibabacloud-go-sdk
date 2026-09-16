@@ -11,6 +11,8 @@ type iCreateCycleTaskRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateCycleTaskRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *CreateCycleTaskRequest
+	GetDryRun() *bool
 	SetEnable(v int32) *CreateCycleTaskRequest
 	GetEnable() *int32
 	SetFirstDateStr(v int64) *CreateCycleTaskRequest
@@ -40,6 +42,8 @@ type CreateCycleTaskRequest struct {
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the task. Valid values:
 	//
 	// - **1**: Enable.
@@ -70,7 +74,7 @@ type CreateCycleTaskRequest struct {
 	IntervalPeriod *int32 `json:"IntervalPeriod,omitempty" xml:"IntervalPeriod,omitempty"`
 	// The extended information field.
 	//
-	// Note: This parameter is actually required. If this parameter is not specified, the API returns an error. The value is a JSON-formatted string that must contain at least the targetInfo array.
+	// > Note: This parameter is required. If you do not specify this parameter, the API returns an error. The value is a JSON-formatted string that must contain at least the targetInfo array.
 	//
 	// example:
 	//
@@ -114,13 +118,13 @@ type CreateCycleTaskRequest struct {
 	//
 	// day
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The source from which the task is added.
+	// The source from which the task is created.
 	//
 	// example:
 	//
 	// console_batch
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The task end time, in hours.
+	// The end time of the task, in hours.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +132,7 @@ type CreateCycleTaskRequest struct {
 	//
 	// 6
 	TargetEndTime *int32 `json:"TargetEndTime,omitempty" xml:"TargetEndTime,omitempty"`
-	// The task start time, in hours.
+	// The start time of the task, in hours.
 	//
 	// This parameter is required.
 	//
@@ -144,13 +148,13 @@ type CreateCycleTaskRequest struct {
 	//
 	// test_virus_scan
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The node type. Valid values:
+	// The task type. Valid values:
 	//
 	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
 	// - **IMAGE_SCAN**: image scan.
 	//
-	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
+	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scan.
 	//
 	// This parameter is required.
 	//
@@ -170,6 +174,10 @@ func (s CreateCycleTaskRequest) GoString() string {
 
 func (s *CreateCycleTaskRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateCycleTaskRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateCycleTaskRequest) GetEnable() *int32 {
@@ -214,6 +222,11 @@ func (s *CreateCycleTaskRequest) GetTaskType() *string {
 
 func (s *CreateCycleTaskRequest) SetClientToken(v string) *CreateCycleTaskRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCycleTaskRequest) SetDryRun(v bool) *CreateCycleTaskRequest {
+	s.DryRun = &v
 	return s
 }
 

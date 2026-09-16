@@ -11,6 +11,8 @@ type iCreateSasTrialShrinkRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateSasTrialShrinkRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *CreateSasTrialShrinkRequest
+	GetDryRun() *bool
 	SetFromEcs(v bool) *CreateSasTrialShrinkRequest
 	GetFromEcs() *bool
 	SetLang(v string) *CreateSasTrialShrinkRequest
@@ -26,6 +28,8 @@ type iCreateSasTrialShrinkRequest interface {
 type CreateSasTrialShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether the request is from the ECS console. Valid values:
 	//
 	// - **true**: yes.
@@ -89,6 +93,10 @@ func (s *CreateSasTrialShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateSasTrialShrinkRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateSasTrialShrinkRequest) GetFromEcs() *bool {
 	return s.FromEcs
 }
@@ -111,6 +119,11 @@ func (s *CreateSasTrialShrinkRequest) GetTryVersion() *int32 {
 
 func (s *CreateSasTrialShrinkRequest) SetClientToken(v string) *CreateSasTrialShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateSasTrialShrinkRequest) SetDryRun(v bool) *CreateSasTrialShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 

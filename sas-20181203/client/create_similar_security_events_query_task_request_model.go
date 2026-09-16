@@ -11,6 +11,8 @@ type iCreateSimilarSecurityEventsQueryTaskRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateSimilarSecurityEventsQueryTaskRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *CreateSimilarSecurityEventsQueryTaskRequest
+	GetDryRun() *bool
 	SetResourceDirectoryAccountId(v int64) *CreateSimilarSecurityEventsQueryTaskRequest
 	GetResourceDirectoryAccountId() *int64
 	SetResourceOwnerId(v int64) *CreateSimilarSecurityEventsQueryTaskRequest
@@ -25,10 +27,18 @@ type iCreateSimilarSecurityEventsQueryTaskRequest interface {
 
 type CreateSimilarSecurityEventsQueryTaskRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
-	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the security alert.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run of the request. Valid values:
+	//
+	// - true: performs only a dry run without executing the actual operation.
+	//
+	// - false: performs the actual operation.
+	//
+	// Default value: false.
+	DryRun                     *bool  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	ResourceOwnerId            *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the alert event.
 	//
 	// This parameter is required.
 	//
@@ -62,6 +72,10 @@ func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetResourceDirectoryAccountId() *int64 {
 	return s.ResourceDirectoryAccountId
 }
@@ -84,6 +98,11 @@ func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetSourceIp() *string {
 
 func (s *CreateSimilarSecurityEventsQueryTaskRequest) SetClientToken(v string) *CreateSimilarSecurityEventsQueryTaskRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateSimilarSecurityEventsQueryTaskRequest) SetDryRun(v bool) *CreateSimilarSecurityEventsQueryTaskRequest {
+	s.DryRun = &v
 	return s
 }
 

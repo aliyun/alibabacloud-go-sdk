@@ -13,6 +13,8 @@ type iCreateAssetSelectionConfigRequest interface {
 	GetBusinessType() *string
 	SetClientToken(v string) *CreateAssetSelectionConfigRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *CreateAssetSelectionConfigRequest
+	GetDryRun() *bool
 	SetPlatform(v string) *CreateAssetSelectionConfigRequest
 	GetPlatform() *string
 	SetTargetType(v string) *CreateAssetSelectionConfigRequest
@@ -40,6 +42,8 @@ type CreateAssetSelectionConfigRequest struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The operating system of the target asset. Valid values:
 	//
 	// - **all**: all operating systems.
@@ -98,6 +102,10 @@ func (s *CreateAssetSelectionConfigRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateAssetSelectionConfigRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateAssetSelectionConfigRequest) GetPlatform() *string {
 	return s.Platform
 }
@@ -113,6 +121,11 @@ func (s *CreateAssetSelectionConfigRequest) SetBusinessType(v string) *CreateAss
 
 func (s *CreateAssetSelectionConfigRequest) SetClientToken(v string) *CreateAssetSelectionConfigRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAssetSelectionConfigRequest) SetDryRun(v bool) *CreateAssetSelectionConfigRequest {
+	s.DryRun = &v
 	return s
 }
 

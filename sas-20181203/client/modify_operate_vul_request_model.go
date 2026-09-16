@@ -11,6 +11,8 @@ type iModifyOperateVulRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyOperateVulRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *ModifyOperateVulRequest
+	GetDryRun() *bool
 	SetFrom(v string) *ModifyOperateVulRequest
 	GetFrom() *string
 	SetInfo(v string) *ModifyOperateVulRequest
@@ -28,6 +30,8 @@ type iModifyOperateVulRequest interface {
 type ModifyOperateVulRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The source identifier of the request. Set the value to **sas**.
 	//
 	// example:
@@ -130,6 +134,10 @@ func (s *ModifyOperateVulRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyOperateVulRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyOperateVulRequest) GetFrom() *string {
 	return s.From
 }
@@ -156,6 +164,11 @@ func (s *ModifyOperateVulRequest) GetType() *string {
 
 func (s *ModifyOperateVulRequest) SetClientToken(v string) *ModifyOperateVulRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyOperateVulRequest) SetDryRun(v bool) *ModifyOperateVulRequest {
+	s.DryRun = &v
 	return s
 }
 

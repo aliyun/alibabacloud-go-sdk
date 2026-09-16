@@ -66,9 +66,9 @@ type VerifyCheckInstanceResultResponseBodyData struct {
 	FailInstances []*string `json:"FailInstances,omitempty" xml:"FailInstances,omitempty" type:"Repeated"`
 	// The operation code of the cloud service configuration check task. Valid values:
 	//
-	// - **Throttling**: Rate limited.
+	// - **Throttling**: rate limit.
 	//
-	// - **ActionTrialUnauthorized**: Unauthorized error.
+	// - **ActionTrialUnauthorized**: unauthorized error.
 	//
 	// example:
 	//

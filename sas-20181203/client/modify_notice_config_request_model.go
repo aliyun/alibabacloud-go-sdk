@@ -13,6 +13,8 @@ type iModifyNoticeConfigRequest interface {
 	GetBizType() *string
 	SetClientToken(v string) *ModifyNoticeConfigRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *ModifyNoticeConfigRequest
+	GetDryRun() *bool
 	SetFocusLevel(v string) *ModifyNoticeConfigRequest
 	GetFocusLevel() *string
 	SetProject(v string) *ModifyNoticeConfigRequest
@@ -34,11 +36,19 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// cms
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - true: performs a dry run without executing the actual operation.
+	//
+	// - false: performs the actual operation.
+	//
+	// Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The focus level. Separate multiple levels with commas (,).
 	//
-	// When **Project*	- is **yundun_soar_incident_generate*	- or **yundun_soar_incident_update**, valid values:
+	// When **Project*	- is set to **yundun_soar_incident_generate*	- or **yundun_soar_incident_update**, valid values:
 	//
 	// - **CRITICAL**: Critical.
 	//
@@ -50,7 +60,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **INFO**: Informational.
 	//
-	// When **Project*	- is **yundun_sas_antiransomware_task**, valid values:
+	// When **Project*	- is set to **yundun_sas_antiransomware_task**, valid values:
 	//
 	// - **Success**: Execution succeeded.
 	//
@@ -70,7 +80,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage space exceeded
 	//
-	// - **yundun_sas_cloudsiem_log**: Cloud Threat Detection and Response (CTDR) log excess notification
+	// - **yundun_sas_cloudsiem_log**: Threat analysis log excess notification
 	//
 	// - **sas_suspicious**: Security alert
 	//
@@ -168,9 +178,9 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **0**: No limit.
 	//
-	// - **1**: Notifications are sent only between 08:00 and 22:00.
+	// - **1**: Notifications are sent only during 08:00-22:00.
 	//
-	// #### When the BizType field is `cms`: description
+	// #### When the BizType field is `cms`
 	//
 	// Specifies the push frequency limit, in seconds. The minimum value is **60**.
 	//
@@ -194,6 +204,10 @@ func (s *ModifyNoticeConfigRequest) GetBizType() *string {
 
 func (s *ModifyNoticeConfigRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *ModifyNoticeConfigRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ModifyNoticeConfigRequest) GetFocusLevel() *string {
@@ -223,6 +237,11 @@ func (s *ModifyNoticeConfigRequest) SetBizType(v string) *ModifyNoticeConfigRequ
 
 func (s *ModifyNoticeConfigRequest) SetClientToken(v string) *ModifyNoticeConfigRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyNoticeConfigRequest) SetDryRun(v bool) *ModifyNoticeConfigRequest {
+	s.DryRun = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iAddCheckResultWhiteListRequest interface {
 	GetCheckIds() []*int64
 	SetClientToken(v string) *AddCheckResultWhiteListRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *AddCheckResultWhiteListRequest
+	GetDryRun() *bool
 	SetInstanceIds(v []*string) *AddCheckResultWhiteListRequest
 	GetInstanceIds() []*string
 	SetRemark(v string) *AddCheckResultWhiteListRequest
@@ -26,8 +28,10 @@ type AddCheckResultWhiteListRequest struct {
 	//
 	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain this parameter.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run. Valid values: true: performs only a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The instance IDs of the cloud service instances to add to the whitelist. Separate multiple instance IDs with commas (,).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The remarks. Maximum length: 65,535 bytes.
@@ -38,7 +42,7 @@ type AddCheckResultWhiteListRequest struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The rule type. Default value: **WHITE**. Valid values:
 	//
-	// - **WHITE**: adds to the whitelist.
+	// - **WHITE**: Add to whitelist.
 	//
 	// example:
 	//
@@ -62,6 +66,10 @@ func (s *AddCheckResultWhiteListRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *AddCheckResultWhiteListRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *AddCheckResultWhiteListRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -81,6 +89,11 @@ func (s *AddCheckResultWhiteListRequest) SetCheckIds(v []*int64) *AddCheckResult
 
 func (s *AddCheckResultWhiteListRequest) SetClientToken(v string) *AddCheckResultWhiteListRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *AddCheckResultWhiteListRequest) SetDryRun(v bool) *AddCheckResultWhiteListRequest {
+	s.DryRun = &v
 	return s
 }
 

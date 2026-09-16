@@ -13,6 +13,8 @@ type iOperateCommonOverallConfigRequest interface {
 	GetClientToken() *string
 	SetConfig(v string) *OperateCommonOverallConfigRequest
 	GetConfig() *string
+	SetDryRun(v bool) *OperateCommonOverallConfigRequest
+	GetDryRun() *bool
 	SetNoTargetAsOn(v bool) *OperateCommonOverallConfigRequest
 	GetNoTargetAsOn() *bool
 	SetSourceIp(v string) *OperateCommonOverallConfigRequest
@@ -22,13 +24,13 @@ type iOperateCommonOverallConfigRequest interface {
 }
 
 type OperateCommonOverallConfigRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The switch status. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enabled
 	//
-	// - **off**: Disabled.
+	// - **off**: disabled
 	//
 	// This parameter is required.
 	//
@@ -36,6 +38,8 @@ type OperateCommonOverallConfigRequest struct {
 	//
 	// on
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual request. false: performs the actual request. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether asset configuration is required. Default value: **false**. Valid values:
 	//
 	// - **true**: Required.
@@ -56,9 +60,9 @@ type OperateCommonOverallConfigRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The configuration type. Valid values:
 	//
-	// - **kdump_switch**: proactive defense experience optimization
+	// - **kdump_switch**: proactive defense optimization
 	//
-	// - **threat_detect**: adaptive threat detection capability
+	// - **threat_detect**: adaptive threat detection
 	//
 	// - **suspicious_aggregation**: alert association
 	//
@@ -134,9 +138,9 @@ type OperateCommonOverallConfigRequest struct {
 	//
 	// - **USER-ENABLE-SWITCH-TYPE_53272**: Linux kernel vulnerability exploitation for privilege escalation
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54395**: Linux privilege escalation to read/write sensitive files
+	// - **USER-ENABLE-SWITCH-TYPE_54395**: Linux privilege escalation to read or write sensitive files
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_57897**: Linux suspected privilege escalation behavior
+	// - **USER-ENABLE-SWITCH-TYPE_57897**: Linux suspected privilege escalation
 	//
 	// - **USER-ENABLE-SWITCH-TYPE_52825**: Windows privilege escalation to execute high-risk commands
 	//
@@ -220,6 +224,10 @@ func (s *OperateCommonOverallConfigRequest) GetConfig() *string {
 	return s.Config
 }
 
+func (s *OperateCommonOverallConfigRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *OperateCommonOverallConfigRequest) GetNoTargetAsOn() *bool {
 	return s.NoTargetAsOn
 }
@@ -239,6 +247,11 @@ func (s *OperateCommonOverallConfigRequest) SetClientToken(v string) *OperateCom
 
 func (s *OperateCommonOverallConfigRequest) SetConfig(v string) *OperateCommonOverallConfigRequest {
 	s.Config = &v
+	return s
+}
+
+func (s *OperateCommonOverallConfigRequest) SetDryRun(v bool) *OperateCommonOverallConfigRequest {
+	s.DryRun = &v
 	return s
 }
 

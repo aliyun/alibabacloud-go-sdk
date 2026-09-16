@@ -11,6 +11,8 @@ type iModifyEmgVulSubmitRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyEmgVulSubmitRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *ModifyEmgVulSubmitRequest
+	GetDryRun() *bool
 	SetLang(v string) *ModifyEmgVulSubmitRequest
 	GetLang() *string
 	SetName(v string) *ModifyEmgVulSubmitRequest
@@ -22,13 +24,15 @@ type iModifyEmgVulSubmitRequest interface {
 }
 
 type ModifyEmgVulSubmitRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The language of the request and response. Default value: **zh**. Valid values:
+	// Specifies whether to perform a dry run. Valid values: true: performs a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -44,7 +48,7 @@ type ModifyEmgVulSubmitRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the member account in the resource directory (Alibaba Cloud account).
 	//
-	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -76,6 +80,10 @@ func (s *ModifyEmgVulSubmitRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyEmgVulSubmitRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyEmgVulSubmitRequest) GetLang() *string {
 	return s.Lang
 }
@@ -94,6 +102,11 @@ func (s *ModifyEmgVulSubmitRequest) GetUserAgreement() *string {
 
 func (s *ModifyEmgVulSubmitRequest) SetClientToken(v string) *ModifyEmgVulSubmitRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyEmgVulSubmitRequest) SetDryRun(v bool) *ModifyEmgVulSubmitRequest {
+	s.DryRun = &v
 	return s
 }
 

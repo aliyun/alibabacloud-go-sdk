@@ -11,6 +11,8 @@ type iModifyStartVulScanRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyStartVulScanRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *ModifyStartVulScanRequest
+	GetDryRun() *bool
 	SetResourceDirectoryAccountId(v int64) *ModifyStartVulScanRequest
 	GetResourceDirectoryAccountId() *int64
 	SetTypes(v string) *ModifyStartVulScanRequest
@@ -22,11 +24,19 @@ type iModifyStartVulScanRequest interface {
 type ModifyStartVulScanRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// - true: performs only a dry run without performing the actual operation.
+	//
+	// - false: performs the actual request.
+	//
+	// Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Settings for the vulnerability types to detect by using the one-click scan feature. Valid values:
+	// Settings for the vulnerability types to be detected by the one-click scan feature. Valid values:
 	//
 	// - **cve**: Linux software vulnerability.
 	//
@@ -48,7 +58,7 @@ type ModifyStartVulScanRequest struct {
 	//
 	// "cve,sys,cms,app,emg"
 	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
-	// The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+	// The list of server UUIDs. Separate multiple UUIDs with commas (,).
 	//
 	//
 	// > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain this parameter.
@@ -71,6 +81,10 @@ func (s *ModifyStartVulScanRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyStartVulScanRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyStartVulScanRequest) GetResourceDirectoryAccountId() *int64 {
 	return s.ResourceDirectoryAccountId
 }
@@ -85,6 +99,11 @@ func (s *ModifyStartVulScanRequest) GetUuids() *string {
 
 func (s *ModifyStartVulScanRequest) SetClientToken(v string) *ModifyStartVulScanRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyStartVulScanRequest) SetDryRun(v bool) *ModifyStartVulScanRequest {
+	s.DryRun = &v
 	return s
 }
 

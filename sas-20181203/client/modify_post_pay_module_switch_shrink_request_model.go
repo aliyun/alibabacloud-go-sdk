@@ -11,6 +11,8 @@ type iModifyPostPayModuleSwitchShrinkRequest interface {
 	GoString() string
 	SetClientToken(v string) *ModifyPostPayModuleSwitchShrinkRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *ModifyPostPayModuleSwitchShrinkRequest
+	GetDryRun() *bool
 	SetEdrModuleSwitchShrink(v string) *ModifyPostPayModuleSwitchShrinkRequest
 	GetEdrModuleSwitchShrink() *string
 	SetPostPaidHostAutoBind(v int32) *ModifyPostPayModuleSwitchShrinkRequest
@@ -27,7 +29,9 @@ type iModifyPostPayModuleSwitchShrinkRequest interface {
 
 type ModifyPostPayModuleSwitchShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Valid values: true: performs a check without executing the operation. false: executes the operation. Default value: false.
+	DryRun                *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	EdrModuleSwitchShrink *string `json:"EdrModuleSwitch,omitempty" xml:"EdrModuleSwitch,omitempty"`
 	// Specifies whether to automatically bind new assets for host and container protection. Valid values:
 	//
@@ -115,6 +119,10 @@ func (s *ModifyPostPayModuleSwitchShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ModifyPostPayModuleSwitchShrinkRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyPostPayModuleSwitchShrinkRequest) GetEdrModuleSwitchShrink() *string {
 	return s.EdrModuleSwitchShrink
 }
@@ -141,6 +149,11 @@ func (s *ModifyPostPayModuleSwitchShrinkRequest) GetPostPayModuleSwitchObjShrink
 
 func (s *ModifyPostPayModuleSwitchShrinkRequest) SetClientToken(v string) *ModifyPostPayModuleSwitchShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchShrinkRequest) SetDryRun(v bool) *ModifyPostPayModuleSwitchShrinkRequest {
+	s.DryRun = &v
 	return s
 }
 

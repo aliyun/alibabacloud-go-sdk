@@ -21,6 +21,8 @@ type iChangeCheckConfigRequest interface {
 	GetConfigure() *string
 	SetCycleDays(v []*int32) *ChangeCheckConfigRequest
 	GetCycleDays() []*int32
+	SetDryRun(v bool) *ChangeCheckConfigRequest
+	GetDryRun() *bool
 	SetEnableAddCheck(v bool) *ChangeCheckConfigRequest
 	GetEnableAddCheck() *bool
 	SetEnableAutoCheck(v bool) *ChangeCheckConfigRequest
@@ -46,29 +48,31 @@ type iChangeCheckConfigRequest interface {
 type ChangeCheckConfigRequest struct {
 	// The list of check items to add to the policy.
 	//
-	// <notice> If ConfigStandardIds or ConfigRequirementIds is specified, this parameter does not take effect.
+	// <notice> If the ConfigStandardIds or ConfigRequirementIds parameter is specified, this parameter does not take effect.
 	AddedCheck []*ChangeCheckConfigRequestAddedCheck `json:"AddedCheck,omitempty" xml:"AddedCheck,omitempty" type:"Repeated"`
-	// The client token used to ensure request idempotency. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Configures the check policy by specifying requirement IDs.
 	//
-	// > Call [ListCheckResult](~~ListCheckResult~~) to obtain requirement IDs. If ConfigStandardIds is specified, this parameter does not take effect.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain requirement IDs. If the ConfigStandardIds parameter is specified, this parameter does not take effect.
 	ConfigRequirementIds *ChangeCheckConfigRequestConfigRequirementIds `json:"ConfigRequirementIds,omitempty" xml:"ConfigRequirementIds,omitempty" type:"Struct"`
 	// Configures the check policy by specifying standard IDs.
 	//
-	// > Call [ListCheckResult](~~ListCheckResult~~) to obtain standard IDs.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain standard IDs.
 	ConfigStandardIds *ChangeCheckConfigRequestConfigStandardIds `json:"ConfigStandardIds,omitempty" xml:"ConfigStandardIds,omitempty" type:"Struct"`
 	// The field configuration. Valid values:
 	//
-	// - **all:*	- Adds all check items.
+	// - **all**: adds all check items.
 	//
 	// example:
 	//
 	// all
 	Configure *string `json:"Configure,omitempty" xml:"Configure,omitempty"`
-	// The scheduled check days.
+	// The periodic check schedule.
 	CycleDays []*int32 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
-	// Specifies whether to automatically include newly added check items from the selected requirements. Valid values:
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to automatically check newly added check items in the selected requirements. Valid values:
 	//
 	// - **true:*	- Enabled.
 	//
@@ -78,7 +82,7 @@ type ChangeCheckConfigRequest struct {
 	//
 	// false
 	EnableAddCheck *bool `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
-	// Specifies whether to enable automatic scheduled checks. Valid values:
+	// Specifies whether to enable automatic periodic checks. Valid values:
 	//
 	// - **true:*	- Enabled.
 	//
@@ -88,15 +92,15 @@ type ChangeCheckConfigRequest struct {
 	//
 	// true
 	EnableAutoCheck *bool `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
-	// The end hour of the check time window, expressed as an hour of the day. The start and end times must fall within one of the following time ranges. Valid values: 6, 12, 18, 24.
+	// The end hour of the check time window, indicating the hour of the day. The start time and end time must fall within one of the following time ranges. Valid values: 6, 12, 18, and 24.
 	//
-	// - **0~6:*	- If the start time is 0, set the end time to 6.
+	// - **0~6**: If the start time is 0, the end time must be set to 6 on the same day.
 	//
-	// - **6~12:*	- If the start time is 6, set the end time to 12.
+	// - **6~12**: If the start time is 6, the end time must be set to 12 on the same day.
 	//
-	// - **12~18:*	- If the start time is 12, set the end time to 18.
+	// - **12~18**: If the start time is 12, the end time must be set to 18 on the same day.
 	//
-	// - **18~24:*	- If the start time is 18, set the end time to 24.
+	// - **18~24**: If the start time is 18, the end time must be set to 24 on the same day.
 	//
 	// example:
 	//
@@ -104,7 +108,7 @@ type ChangeCheckConfigRequest struct {
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region of the Security Center instance. Valid values:
 	//
-	// - **cn-hangzhou:*	- China (Hangzhou)
+	// - **cn-hangzhou:*	- China
 	//
 	// - **ap-southeast-1:*	- Singapore
 	//
@@ -114,27 +118,27 @@ type ChangeCheckConfigRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of check items to remove from the policy.
 	//
-	// <notice> If ConfigStandardIds or ConfigRequirementIds is specified, this parameter does not take effect.
+	// <notice> If the ConfigStandardIds or ConfigRequirementIds parameter is specified, this parameter does not take effect.
 	RemovedCheck []*ChangeCheckConfigRequestRemovedCheck `json:"RemovedCheck,omitempty" xml:"RemovedCheck,omitempty" type:"Repeated"`
-	// The ID of the resource directory member accounts (Alibaba Cloud account).
+	// The ID of the member account in the resource directory (Alibaba Cloud account).
 	//
-	// > Call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// This parameter is deprecated. You do not need to configure it.
+	// This parameter is deprecated and does not need to be specified.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
-	// The start hour of the check time window, expressed as an hour of the day. The start and end times must fall within one of the following time ranges. Valid values: 0, 6, 12, 18.
+	// The start hour of the check time window, indicating the hour of the day. The start time and end time must fall within one of the following time ranges. Valid values: 0, 6, 12, and 18.
 	//
-	// - **0~6:*	- If the start time is 0, set the end time to 6.
+	// - **0~6**: If the start time is 0, the end time must be set to 6 on the same day.
 	//
-	// - **6~12:*	- If the start time is 6, set the end time to 12.
+	// - **6~12**: If the start time is 6, the end time must be set to 12 on the same day.
 	//
-	// - **12~18:*	- If the start time is 12, set the end time to 18.
+	// - **12~18**: If the start time is 12, the end time must be set to 18 on the same day.
 	//
-	// - **18~24:*	- If the start time is 18, set the end time to 24.
+	// - **18~24**: If the start time is 18, the end time must be set to 24 on the same day.
 	//
 	// example:
 	//
@@ -142,15 +146,15 @@ type ChangeCheckConfigRequest struct {
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Specifies whether to use the system-generated configuration. Valid values:
 	//
-	// - **true:*	- Yes.
+	// - **true**: Yes.
 	//
-	// - **false:*	- No.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	SystemConfig *bool `json:"SystemConfig,omitempty" xml:"SystemConfig,omitempty"`
-	// The list of cloud vendors.
+	// The list of cloud service providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 
@@ -184,6 +188,10 @@ func (s *ChangeCheckConfigRequest) GetConfigure() *string {
 
 func (s *ChangeCheckConfigRequest) GetCycleDays() []*int32 {
 	return s.CycleDays
+}
+
+func (s *ChangeCheckConfigRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ChangeCheckConfigRequest) GetEnableAddCheck() *bool {
@@ -253,6 +261,11 @@ func (s *ChangeCheckConfigRequest) SetConfigure(v string) *ChangeCheckConfigRequ
 
 func (s *ChangeCheckConfigRequest) SetCycleDays(v []*int32) *ChangeCheckConfigRequest {
 	s.CycleDays = v
+	return s
+}
+
+func (s *ChangeCheckConfigRequest) SetDryRun(v bool) *ChangeCheckConfigRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -341,7 +354,7 @@ func (s *ChangeCheckConfigRequest) Validate() error {
 type ChangeCheckConfigRequestAddedCheck struct {
 	// The ID of the check item.
 	//
-	// > Call [ListCheckResult](~~ListCheckResult~~) to obtain check item IDs.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain check item IDs.
 	//
 	// example:
 	//
@@ -462,7 +475,7 @@ func (s *ChangeCheckConfigRequestConfigStandardIds) Validate() error {
 type ChangeCheckConfigRequestRemovedCheck struct {
 	// The ID of the check item.
 	//
-	// > Call [ListCheckResult](~~ListCheckResult~~) to obtain check item IDs.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain check item IDs.
 	//
 	// example:
 	//

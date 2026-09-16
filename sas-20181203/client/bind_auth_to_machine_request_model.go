@@ -21,6 +21,8 @@ type iBindAuthToMachineRequest interface {
 	GetClientToken() *string
 	SetCriteria(v string) *BindAuthToMachineRequest
 	GetCriteria() *string
+	SetDryRun(v bool) *BindAuthToMachineRequest
+	GetDryRun() *bool
 	SetIsPreBind(v int32) *BindAuthToMachineRequest
 	GetIsPreBind() *int32
 	SetLogicalExp(v string) *BindAuthToMachineRequest
@@ -40,15 +42,15 @@ type iBindAuthToMachineRequest interface {
 type BindAuthToMachineRequest struct {
 	// The authorization version of the asset. Valid values:
 	//
-	// - **6**: Anti-virus Edition.
+	// - **6**: Anti-virus Edition
 	//
-	// - **5**: Premium Edition.
+	// - **5**: Advanced Edition
 	//
-	// - **3**: Enterprise Edition.
+	// - **3**: Enterprise Edition
 	//
-	// - **7**: Ultimate Edition.
+	// - **7**: Ultimate Edition
 	//
-	// - **10**: Value-added service Edition.
+	// - **10**: Value-added Service Edition
 	//
 	// example:
 	//
@@ -56,9 +58,9 @@ type BindAuthToMachineRequest struct {
 	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
 	// Specifies whether to enable automatic binding. Valid values:
 	//
-	// - **0**: Disable automatic binding.
+	// - **0**: Disabled.
 	//
-	// - **1**: Enable automatic binding.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
@@ -80,14 +82,16 @@ type BindAuthToMachineRequest struct {
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The conditions for searching assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
+	// The conditions for searching for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
 	//
-	// > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
 	// [{"name":"riskStatus","value":"YES"},{"name":"internetIp","value":"1.2.XX.XX"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// Specifies whether to perform a dry run. Valid values: true: performs a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether this is a pre-binding operation. Valid values:
 	//
 	// - **0**: No.
@@ -103,40 +107,40 @@ type BindAuthToMachineRequest struct {
 	IsPreBind *int32 `json:"IsPreBind,omitempty" xml:"IsPreBind,omitempty"`
 	// The logical relationship among multiple search conditions. Default value: **OR**. Valid values:
 	//
-	// - **OR**: The search conditions are evaluated using a logical OR.
+	// - **OR**: The search conditions are evaluated with a logical OR.
 	//
-	// - **AND**: The search conditions are evaluated using a logical AND.
+	// - **AND**: The search conditions are evaluated with a logical AND.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The order version associated with the pre-binding operation. Valid values:
+	// The order version associated with the pre-binding. Valid values:
 	//
-	// - **level7**: Anti-virus Edition.
+	// - **level7**: Anti-virus Edition
 	//
-	// - **level3**: Premium Edition.
+	// - **level3**: Advanced Edition
 	//
-	// - **level2**: Enterprise Edition.
+	// - **level2**: Enterprise Edition
 	//
-	// - **level8**: Ultimate Edition.
+	// - **level8**: Ultimate Edition
 	//
-	// - **level10**: Value-added service only.
+	// - **level10**: Value-added service only
 	//
 	// example:
 	//
 	// level2
 	NtmVersion *string `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
-	// The order ID associated with the pre-binding operation.
+	// The order ID associated with the pre-binding.
 	//
 	// example:
 	//
 	// 233016**0482
 	PreBindOrderId *int64  `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
 	ProductCode    *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the member accounts (Alibaba Cloud account) in the resource directory.
+	// The ID of the member account in the resource folder (Alibaba Cloud account).
 	//
-	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -178,6 +182,10 @@ func (s *BindAuthToMachineRequest) GetClientToken() *string {
 
 func (s *BindAuthToMachineRequest) GetCriteria() *string {
 	return s.Criteria
+}
+
+func (s *BindAuthToMachineRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *BindAuthToMachineRequest) GetIsPreBind() *int32 {
@@ -235,6 +243,11 @@ func (s *BindAuthToMachineRequest) SetClientToken(v string) *BindAuthToMachineRe
 
 func (s *BindAuthToMachineRequest) SetCriteria(v string) *BindAuthToMachineRequest {
 	s.Criteria = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetDryRun(v bool) *BindAuthToMachineRequest {
+	s.DryRun = &v
 	return s
 }
 

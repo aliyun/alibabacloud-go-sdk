@@ -11,6 +11,8 @@ type iCreateSasTrialRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateSasTrialRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *CreateSasTrialRequest
+	GetDryRun() *bool
 	SetFromEcs(v bool) *CreateSasTrialRequest
 	GetFromEcs() *bool
 	SetLang(v string) *CreateSasTrialRequest
@@ -26,6 +28,8 @@ type iCreateSasTrialRequest interface {
 type CreateSasTrialRequest struct {
 	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether the request is from the ECS console. Valid values:
 	//
 	// - **true**: yes.
@@ -89,6 +93,10 @@ func (s *CreateSasTrialRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateSasTrialRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateSasTrialRequest) GetFromEcs() *bool {
 	return s.FromEcs
 }
@@ -111,6 +119,11 @@ func (s *CreateSasTrialRequest) GetTryVersion() *int32 {
 
 func (s *CreateSasTrialRequest) SetClientToken(v string) *CreateSasTrialRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateSasTrialRequest) SetDryRun(v bool) *CreateSasTrialRequest {
+	s.DryRun = &v
 	return s
 }
 

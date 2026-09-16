@@ -23,6 +23,8 @@ type iCreateOssScanConfigRequest interface {
 	GetDecompressMaxLayer() *int32
 	SetDecryptionList(v []*string) *CreateOssScanConfigRequest
 	GetDecryptionList() []*string
+	SetDryRun(v bool) *CreateOssScanConfigRequest
+	GetDryRun() *bool
 	SetEnable(v int32) *CreateOssScanConfigRequest
 	GetEnable() *int32
 	SetEndTime(v string) *CreateOssScanConfigRequest
@@ -84,6 +86,8 @@ type CreateOssScanConfigRequest struct {
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
 	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
+	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the policy. Valid values:
 	//
 	// - **1**: Enabled.
@@ -178,6 +182,10 @@ func (s *CreateOssScanConfigRequest) GetDecryptionList() []*string {
 	return s.DecryptionList
 }
 
+func (s *CreateOssScanConfigRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateOssScanConfigRequest) GetEnable() *int32 {
 	return s.Enable
 }
@@ -250,6 +258,11 @@ func (s *CreateOssScanConfigRequest) SetDecompressMaxLayer(v int32) *CreateOssSc
 
 func (s *CreateOssScanConfigRequest) SetDecryptionList(v []*string) *CreateOssScanConfigRequest {
 	s.DecryptionList = v
+	return s
+}
+
+func (s *CreateOssScanConfigRequest) SetDryRun(v bool) *CreateOssScanConfigRequest {
+	s.DryRun = &v
 	return s
 }
 

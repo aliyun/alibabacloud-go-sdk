@@ -18,11 +18,11 @@ type iListUnknownThreatDetectProcessResponseBody interface {
 }
 
 type ListUnknownThreatDetectProcessResponseBody struct {
-	// An array of process details.
+	// The returned data.
 	Data []*ListUnknownThreatDetectProcessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListUnknownThreatDetectProcessResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -86,11 +86,11 @@ func (s *ListUnknownThreatDetectProcessResponseBody) Validate() error {
 type ListUnknownThreatDetectProcessResponseBodyData struct {
 	// The analysis result. Valid values:
 	//
-	// - **black**: A malicious process.
+	// - **black**: Malicious process.
 	//
-	// - **white**: A normal process.
+	// - **white**: Normal process.
 	//
-	// - **abnormal**: An abnormal process.
+	// - **abnormal**: Abnormal process.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
 	ExplanationEn *string `json:"ExplanationEn,omitempty" xml:"ExplanationEn,omitempty"`
 	ExplanationZh *string `json:"ExplanationZh,omitempty" xml:"ExplanationZh,omitempty"`
-	// The timestamp of the first occurrence.
+	// The timestamp when the process was first detected.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	//
 	// 5b394b54ca632fe51c4ab4a6dbaf****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The process ID.
+	// The process ID of the event.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	//
 	// /usr/bin/tar
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
-	// Remarks about the process.
+	// The remarks.
 	//
 	// example:
 	//
@@ -134,6 +134,8 @@ type ListUnknownThreatDetectProcessResponseBodyData struct {
 	//
 	// 3a6fed5fc11392b3ee9f81caf017b48640d7458766a8eb0382899a605b41****
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
+	// The process labels.
+	Tags []*ListUnknownThreatDetectProcessResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListUnknownThreatDetectProcessResponseBodyData) String() string {
@@ -178,6 +180,10 @@ func (s *ListUnknownThreatDetectProcessResponseBodyData) GetRemark() *string {
 
 func (s *ListUnknownThreatDetectProcessResponseBodyData) GetSha256() *string {
 	return s.Sha256
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyData) GetTags() []*ListUnknownThreatDetectProcessResponseBodyDataTags {
+	return s.Tags
 }
 
 func (s *ListUnknownThreatDetectProcessResponseBodyData) SetAnalyzeResult(v string) *ListUnknownThreatDetectProcessResponseBodyData {
@@ -225,7 +231,66 @@ func (s *ListUnknownThreatDetectProcessResponseBodyData) SetSha256(v string) *Li
 	return s
 }
 
+func (s *ListUnknownThreatDetectProcessResponseBodyData) SetTags(v []*ListUnknownThreatDetectProcessResponseBodyDataTags) *ListUnknownThreatDetectProcessResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListUnknownThreatDetectProcessResponseBodyData) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListUnknownThreatDetectProcessResponseBodyDataTags struct {
+	// The English label of the process.
+	//
+	// example:
+	//
+	// System Process
+	TagEn *string `json:"TagEn,omitempty" xml:"TagEn,omitempty"`
+	// The Chinese label of the process.
+	//
+	// example:
+	//
+	// System Process
+	TagZh *string `json:"TagZh,omitempty" xml:"TagZh,omitempty"`
+}
+
+func (s ListUnknownThreatDetectProcessResponseBodyDataTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListUnknownThreatDetectProcessResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyDataTags) GetTagEn() *string {
+	return s.TagEn
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyDataTags) GetTagZh() *string {
+	return s.TagZh
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyDataTags) SetTagEn(v string) *ListUnknownThreatDetectProcessResponseBodyDataTags {
+	s.TagEn = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyDataTags) SetTagZh(v string) *ListUnknownThreatDetectProcessResponseBodyDataTags {
+	s.TagZh = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectProcessResponseBodyDataTags) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -236,13 +301,13 @@ type ListUnknownThreatDetectProcessResponseBodyPageInfo struct {
 	//
 	// 2
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The current page number.
+	// The page number of the current page in a paged query. This is used for paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page in a paged query. This is used for paging.
 	//
 	// example:
 	//

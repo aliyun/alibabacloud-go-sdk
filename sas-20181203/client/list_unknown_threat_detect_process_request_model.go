@@ -29,6 +29,8 @@ type iListUnknownThreatDetectProcessRequest interface {
 	GetRemark() *string
 	SetSha256(v string) *ListUnknownThreatDetectProcessRequest
 	GetSha256() *string
+	SetTag(v string) *ListUnknownThreatDetectProcessRequest
+	GetTag() *string
 	SetUuid(v string) *ListUnknownThreatDetectProcessRequest
 	GetUuid() *string
 }
@@ -44,31 +46,31 @@ type ListUnknownThreatDetectProcessRequest struct {
 	//
 	// white
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
-	// The page number to return.
+	// The page number of the current page when using paged query. This is used for paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range for the first detection, in milliseconds.
+	// The end of the time range during which the process was first detected. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1768891966345
 	FirstTimeEnd *int64 `json:"FirstTimeEnd,omitempty" xml:"FirstTimeEnd,omitempty"`
-	// The start of the time range for the first detection, in milliseconds.
+	// The start of the time range during which the process was first detected. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1768891966344
 	FirstTimeStart *int64 `json:"FirstTimeStart,omitempty" xml:"FirstTimeStart,omitempty"`
-	// The MD5 value of the file.
+	// The MD5 hash of the file.
 	//
 	// example:
 	//
 	// 0552c44e243abdea1729d4507bce****
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The number of entries to return per page.
+	// The maximum number of entries per page when using paged query. This is used for paging.
 	//
 	// example:
 	//
@@ -92,12 +94,18 @@ type ListUnknownThreatDetectProcessRequest struct {
 	//
 	// 172.20.XX.XX
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The SHA-256 value of the file.
+	// The SHA-256 hash of the file.
 	//
 	// example:
 	//
 	// f204693a7d2ce99d6c4434e550d985ee1c7be7cb5dd9a76094369af0d2******
 	Sha256 *string `json:"Sha256,omitempty" xml:"Sha256,omitempty"`
+	// The label.
+	//
+	// example:
+	//
+	// Process Tag
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The UUID of the server to query.
 	//
 	// example:
@@ -154,6 +162,10 @@ func (s *ListUnknownThreatDetectProcessRequest) GetSha256() *string {
 	return s.Sha256
 }
 
+func (s *ListUnknownThreatDetectProcessRequest) GetTag() *string {
+	return s.Tag
+}
+
 func (s *ListUnknownThreatDetectProcessRequest) GetUuid() *string {
 	return s.Uuid
 }
@@ -205,6 +217,11 @@ func (s *ListUnknownThreatDetectProcessRequest) SetRemark(v string) *ListUnknown
 
 func (s *ListUnknownThreatDetectProcessRequest) SetSha256(v string) *ListUnknownThreatDetectProcessRequest {
 	s.Sha256 = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectProcessRequest) SetTag(v string) *ListUnknownThreatDetectProcessRequest {
+	s.Tag = &v
 	return s
 }
 

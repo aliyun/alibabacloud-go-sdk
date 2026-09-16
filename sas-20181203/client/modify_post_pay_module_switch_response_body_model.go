@@ -22,19 +22,19 @@ type iModifyPostPayModuleSwitchResponseBody interface {
 }
 
 type ModifyPostPayModuleSwitchResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. Use this field to determine the cause of failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code of the request result.
+	// The HTTP status code of the request.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message of the request result.
+	// The message returned for the request.
 	//
 	// example:
 	//

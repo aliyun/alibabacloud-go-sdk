@@ -36,6 +36,10 @@ func (client *Client) AddAssetSelectionCriteriaWithContext(ctx context.Context, 
 		query["CriteriaOperation"] = request.CriteriaOperation
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.SelectionKey) {
 		query["SelectionKey"] = request.SelectionKey
 	}
@@ -156,6 +160,10 @@ func (client *Client) AddCheckInstanceResultWhiteListWithContext(ctx context.Con
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -218,6 +226,10 @@ func (client *Client) AddCheckResultWhiteListWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceIds) {
@@ -1774,6 +1786,10 @@ func (client *Client) BindAuthToMachineWithContext(ctx context.Context, request 
 		query["Criteria"] = request.Criteria
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.IsPreBind) {
 		query["IsPreBind"] = request.IsPreBind
 	}
@@ -1967,7 +1983,7 @@ func (client *Client) ChangeAssetRefreshTaskConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the configuration of a cloud platform configuration check.
+// Modifies the configuration items for cloud platform configuration checks.
 //
 // @param tmpReq - ChangeCheckConfigRequest
 //
@@ -2014,6 +2030,10 @@ func (client *Client) ChangeCheckConfigWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.CycleDays) {
 		query["CycleDays"] = request.CycleDays
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.EnableAddCheck) {
@@ -2740,6 +2760,10 @@ func (client *Client) CreateAssetSelectionConfigWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Platform) {
@@ -3519,7 +3543,7 @@ func (client *Client) CreateCustomizedDictWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates an epoch-based scan node, including image scans, emergency vulnerability scanning, and virus scans.
+// Creates an epoch scan task, including image scans, emergency vulnerability scans, and virus scans.
 //
 // @param request - CreateCycleTaskRequest
 //
@@ -3536,6 +3560,10 @@ func (client *Client) CreateCycleTaskWithContext(ctx context.Context, request *C
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Enable) {
@@ -5412,6 +5440,10 @@ func (client *Client) CreateOssScanConfigWithContext(ctx context.Context, reques
 		query["DecryptionList"] = request.DecryptionList
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.Enable) {
 		query["Enable"] = request.Enable
 	}
@@ -5622,6 +5654,10 @@ func (client *Client) CreateSasTrialWithContext(ctx context.Context, tmpReq *Cre
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FromEcs) {
 		body["FromEcs"] = request.FromEcs
@@ -5690,6 +5726,10 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.ServiceLinkedRole) {
@@ -5775,7 +5815,7 @@ func (client *Client) CreateServiceTrailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a node to query alerting events triggered by the same rule hits or Alarm Metric.
+// Creates a node to query alerting events triggered by the same rule or Alarm Metric.
 //
 // @param request - CreateSimilarSecurityEventsQueryTaskRequest
 //
@@ -5792,6 +5832,10 @@ func (client *Client) CreateSimilarSecurityEventsQueryTaskWithContext(ctx contex
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
@@ -6250,6 +6294,10 @@ func (client *Client) CreateVirusScanOnceTaskWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Param) {
@@ -39252,7 +39300,7 @@ func (client *Client) ListUnknownThreatDetectMachineWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieve the list of processes from unknown threat detections.
+// Queries the process list of intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectProcessRequest
 //
@@ -39305,6 +39353,10 @@ func (client *Client) ListUnknownThreatDetectProcessWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.Sha256) {
 		query["Sha256"] = request.Sha256
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
 	}
 
 	if !dara.IsNil(request.Uuid) {
@@ -41421,6 +41473,10 @@ func (client *Client) ModifyCreateVulWhitelistWithContext(ctx context.Context, r
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.Reason) {
 		query["Reason"] = request.Reason
 	}
@@ -41671,6 +41727,10 @@ func (client *Client) ModifyEmgVulSubmitWithContext(ctx context.Context, request
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Lang) {
@@ -42497,6 +42557,10 @@ func (client *Client) ModifyNoticeConfigWithContext(ctx context.Context, request
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.FocusLevel) {
 		query["FocusLevel"] = request.FocusLevel
 	}
@@ -42623,6 +42687,10 @@ func (client *Client) ModifyOperateVulWithContext(ctx context.Context, request *
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.From) {
 		query["From"] = request.From
 	}
@@ -42699,6 +42767,10 @@ func (client *Client) ModifyPostPayModuleSwitchWithContext(ctx context.Context, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.EdrModuleSwitchShrink) {
@@ -43253,6 +43325,10 @@ func (client *Client) ModifyServerlessAuthToMachineWithContext(ctx context.Conte
 		query["Criteria"] = request.Criteria
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.LogicalExp) {
 		query["LogicalExp"] = request.LogicalExp
 	}
@@ -43375,6 +43451,10 @@ func (client *Client) ModifyStartVulScanWithContext(ctx context.Context, request
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
@@ -43771,6 +43851,10 @@ func (client *Client) ModifyVulConfigWithContext(ctx context.Context, request *M
 
 	if !dara.IsNil(request.Config) {
 		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Type) {
@@ -44861,6 +44945,10 @@ func (client *Client) OperateCommonOverallConfigWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.Config) {
 		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.NoTargetAsOn) {
@@ -50597,6 +50685,10 @@ func (client *Client) UpdatePostPaidBindRelWithContext(ctx context.Context, requ
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.ProductCode) {
 		query["ProductCode"] = request.ProductCode
 	}
@@ -50857,6 +50949,10 @@ func (client *Client) UpdateSelectionKeyByTypeWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.SelectionKey) {
@@ -51573,6 +51669,10 @@ func (client *Client) VerifyCheckInstanceResultWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceIds) {
