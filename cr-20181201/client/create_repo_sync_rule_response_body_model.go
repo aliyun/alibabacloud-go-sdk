@@ -20,13 +20,13 @@ type iCreateRepoSyncRuleResponseBody interface {
 }
 
 type CreateRepoSyncRuleResponseBody struct {
-	// The HTTP status code.
+	// The response code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

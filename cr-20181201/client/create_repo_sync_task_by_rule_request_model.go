@@ -22,7 +22,7 @@ type iCreateRepoSyncTaskByRuleRequest interface {
 }
 
 type CreateRepoSyncTaskByRuleRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,8 +30,17 @@ type CreateRepoSyncTaskByRuleRequest struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the image repository.
+	// The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Synchronization tasks with the same priority are executed in random order.
+	//
+	// Valid values: 1 to 5.
+	//
+	// Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +48,7 @@ type CreateRepoSyncTaskByRuleRequest struct {
 	//
 	// crr-hnoq7j93or3k****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the synchronization rule.
+	// The synchronization rule ID.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +56,7 @@ type CreateRepoSyncTaskByRuleRequest struct {
 	//
 	// crsr-o8n4dijbumgq****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	// The version of the image to be synchronized.
+	// The image version to be synchronized.
 	//
 	// This parameter is required.
 	//

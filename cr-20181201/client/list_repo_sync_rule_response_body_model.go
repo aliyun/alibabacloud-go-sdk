@@ -26,7 +26,7 @@ type iListRepoSyncRuleResponseBody interface {
 }
 
 type ListRepoSyncRuleResponseBody struct {
-	// The response code.
+	// The return value.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListRepoSyncRuleResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -151,32 +151,37 @@ func (s *ListRepoSyncRuleResponseBody) Validate() error {
 }
 
 type ListRepoSyncRuleResponseBodySyncRules struct {
-	// The time when the synchronization rule was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1572604642000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether images are synchronized across different Alibaba Cloud accounts. Valid values:
+	// Indicates whether images are synchronized across accounts. Valid values:
 	//
-	// - `true`
+	// - `true`: Images are synchronized across accounts.
 	//
-	// - `false`
+	// - `false`: Images are synchronized within the same account.
 	//
-	// Default value: `false`.
+	// Default value: `false`
 	//
 	// example:
 	//
 	// true
-	CrossUser *bool   `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
-	LinkId    *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	// The ID of the source instance.
+	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	// The custom synchronization link ID.
+	//
+	// example:
+	//
+	// stl-w7b1tdlq1mfrw***
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// The source instance ID.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	LocalInstanceId *string `json:"LocalInstanceId,omitempty" xml:"LocalInstanceId,omitempty"`
-	// The name of the namespace in the source instance.
+	// The namespace name of the source instance.
 	//
 	// example:
 	//
@@ -188,23 +193,35 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	//
 	// cn-shanghai
 	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	// The name of the repository in the source instance.
+	// The repository name of the source instance.
 	//
 	// example:
 	//
 	// test-repo-local
 	LocalRepoName *string `json:"LocalRepoName,omitempty" xml:"LocalRepoName,omitempty"`
-	// The time when the synchronization rule was last modified. This value is a UNIX timestamp. Unit: milliseconds.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1572604642000
-	ModifiedTime        *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	NamespaceNameFilter *string `json:"NamespaceNameFilter,omitempty" xml:"NamespaceNameFilter,omitempty"`
-	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The regular expression that is used to filter repositories.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The namespace regex at the instance level.
 	//
-	// > This parameter is valid only when `SyncScope` is set to `NAMESPACE`.
+	// > This parameter is valid only when SyncScope is set to `INSTANCE`.
+	NamespaceNameFilter *string `json:"NamespaceNameFilter,omitempty" xml:"NamespaceNameFilter,omitempty"`
+	// The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
+	//
+	// Valid values: 1 to 5.
+	//
+	// Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The repository filtering rule.
+	//
+	// > This parameter is valid only when SyncScope is set to `INSTANCE` or `NAMESPACE`.
 	//
 	// example:
 	//
@@ -212,21 +229,21 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	RepoNameFilter *string `json:"RepoNameFilter,omitempty" xml:"RepoNameFilter,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// - `FROM`: from the source instance to the target instance.
+	// - `FROM`: synchronizes from the source instance to the target instance
 	//
-	// - `TO`: from the target instance to the source instance.
+	// - `TO`: synchronizes from the target instance to the source instance
 	//
 	// example:
 	//
 	// FROM
 	SyncDirection *string `json:"SyncDirection,omitempty" xml:"SyncDirection,omitempty"`
-	// The ID of the synchronization rule.
+	// The synchronization rule ID.
 	//
 	// example:
 	//
 	// crsr-7lph66uloi6h****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	// The name of the synchronization rule.
+	// The synchronization rule name.
 	//
 	// example:
 	//
@@ -234,9 +251,11 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
 	// The synchronization scope. Valid values:
 	//
-	// - `NAMESPACE`: Synchronizes resources by namespace.
+	// - `INSTANCE`: synchronizes based on namespace regex and repository regex rules
 	//
-	// - `REPO`: Synchronizes resources by repository.
+	// - `NAMESPACE`: synchronizes by namespace
+	//
+	// - `REPO`: synchronizes by image repository
 	//
 	// example:
 	//
@@ -244,27 +263,27 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
 	// The trigger policy. Valid values:
 	//
-	// - `INITIATIVE`: The synchronization is actively triggered.
+	// - `INITIATIVE`: proactive trigger
 	//
-	// - `PASSIVE`: The synchronization is passively triggered.
+	// - `PASSIVE`: passive trigger
 	//
 	// example:
 	//
 	// PASSIVE
 	SyncTrigger *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
-	// The regular expression that is used to filter tags.
+	// The tag filtering rule.
 	//
 	// example:
 	//
 	// .*
 	TagFilter *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
-	// The ID of the target instance.
+	// The target instance ID.
 	//
 	// example:
 	//
 	// cri-k77rd2eo9ztt****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The name of the namespace in the target instance.
+	// The namespace name of the target instance.
 	//
 	// example:
 	//
@@ -276,7 +295,7 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	//
 	// cn-shenzhen
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	// The name of the repository in the target instance.
+	// The repository name of the target instance.
 	//
 	// example:
 	//

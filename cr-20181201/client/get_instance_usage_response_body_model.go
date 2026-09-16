@@ -25,6 +25,8 @@ type iGetInstanceUsageResponseBody interface {
 	GetNamespaceQuota() *string
 	SetNamespaceUsage(v string) *GetInstanceUsageResponseBody
 	GetNamespaceUsage() *string
+	SetPerformanceUnits(v int32) *GetInstanceUsageResponseBody
+	GetPerformanceUnits() *int32
 	SetRepoQuota(v string) *GetInstanceUsageResponseBody
 	GetRepoQuota() *string
 	SetRepoUsage(v string) *GetInstanceUsageResponseBody
@@ -38,25 +40,25 @@ type iGetInstanceUsageResponseBody interface {
 }
 
 type GetInstanceUsageResponseBody struct {
-	// The quota of chart namespaces.
+	// The quota of Chart namespaces.
 	//
 	// example:
 	//
 	// 50
 	ChartNamespaceQuota *string `json:"ChartNamespaceQuota,omitempty" xml:"ChartNamespaceQuota,omitempty"`
-	// The number of chart namespaces that are created in the instance.
+	// The number of Chart namespaces created.
 	//
 	// example:
 	//
 	// 2
 	ChartNamespaceUsage *string `json:"ChartNamespaceUsage,omitempty" xml:"ChartNamespaceUsage,omitempty"`
-	// The quota of chart repositories for the instance.
+	// The quota of Chart repositories.
 	//
 	// example:
 	//
 	// 5000
 	ChartRepoQuota *string `json:"ChartRepoQuota,omitempty" xml:"ChartRepoQuota,omitempty"`
-	// The number of chart repositories that are created.
+	// The number of Chart repositories created.
 	//
 	// example:
 	//
@@ -68,53 +70,59 @@ type GetInstanceUsageResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The call was successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The quota of image namespaces for the instance.
+	// The quota of image namespaces.
 	//
 	// example:
 	//
 	// 100
 	NamespaceQuota *string `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
-	// The number of image namespaces that are created in the instance.
+	// The number of image namespaces used.
 	//
 	// example:
 	//
 	// 4
 	NamespaceUsage *string `json:"NamespaceUsage,omitempty" xml:"NamespaceUsage,omitempty"`
-	// The quota of image repositories for the instance.
+	// The number of performance units, which indicates the additional instance capacity purchased on top of the Advanced Edition.
+	//
+	// example:
+	//
+	// 10
+	PerformanceUnits *int32 `json:"PerformanceUnits,omitempty" xml:"PerformanceUnits,omitempty"`
+	// The quota of image repositories.
 	//
 	// example:
 	//
 	// 1000
 	RepoQuota *string `json:"RepoQuota,omitempty" xml:"RepoQuota,omitempty"`
-	// The number of image repositories that are created in the instance.
+	// The number of image repositories used.
 	//
 	// example:
 	//
 	// 2
 	RepoUsage *string `json:"RepoUsage,omitempty" xml:"RepoUsage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A726E801-7FCF-43F9-AF1C-51B3E65D3E7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// VPC quota
+	// The VPC quota.
 	//
 	// example:
 	//
 	// 5
 	VpcQuota *string `json:"VpcQuota,omitempty" xml:"VpcQuota,omitempty"`
-	// Number of bound VPCs
+	// The number of bound VPCs.
 	//
 	// example:
 	//
@@ -160,6 +168,10 @@ func (s *GetInstanceUsageResponseBody) GetNamespaceQuota() *string {
 
 func (s *GetInstanceUsageResponseBody) GetNamespaceUsage() *string {
 	return s.NamespaceUsage
+}
+
+func (s *GetInstanceUsageResponseBody) GetPerformanceUnits() *int32 {
+	return s.PerformanceUnits
 }
 
 func (s *GetInstanceUsageResponseBody) GetRepoQuota() *string {
@@ -219,6 +231,11 @@ func (s *GetInstanceUsageResponseBody) SetNamespaceQuota(v string) *GetInstanceU
 
 func (s *GetInstanceUsageResponseBody) SetNamespaceUsage(v string) *GetInstanceUsageResponseBody {
 	s.NamespaceUsage = &v
+	return s
+}
+
+func (s *GetInstanceUsageResponseBody) SetPerformanceUnits(v int32) *GetInstanceUsageResponseBody {
+	s.PerformanceUnits = &v
 	return s
 }
 

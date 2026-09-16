@@ -26,23 +26,23 @@ type CreateRepoSyncTaskByRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 17A4C658-AE8F-4A08-821F-EDCB5FC74EE8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the synchronization task.
+	// The synchronization task ID.
 	//
 	// example:
 	//

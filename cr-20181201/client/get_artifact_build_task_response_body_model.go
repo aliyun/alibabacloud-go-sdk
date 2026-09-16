@@ -11,6 +11,8 @@ type iGetArtifactBuildTaskResponseBody interface {
 	GoString() string
 	SetArtifactBuildType(v string) *GetArtifactBuildTaskResponseBody
 	GetArtifactBuildType() *string
+	SetArtifactCompression(v *GetArtifactBuildTaskResponseBodyArtifactCompression) *GetArtifactBuildTaskResponseBody
+	GetArtifactCompression() *GetArtifactBuildTaskResponseBodyArtifactCompression
 	SetBuildTaskId(v string) *GetArtifactBuildTaskResponseBody
 	GetBuildTaskId() *string
 	SetCode(v string) *GetArtifactBuildTaskResponseBody
@@ -21,6 +23,8 @@ type iGetArtifactBuildTaskResponseBody interface {
 	GetInstructions() []*string
 	SetIsSuccess(v bool) *GetArtifactBuildTaskResponseBody
 	GetIsSuccess() *bool
+	SetPriority(v int32) *GetArtifactBuildTaskResponseBody
+	GetPriority() *int32
 	SetRequestId(v string) *GetArtifactBuildTaskResponseBody
 	GetRequestId() *string
 	SetSourceArtifact(v *GetArtifactBuildTaskResponseBodySourceArtifact) *GetArtifactBuildTaskResponseBody
@@ -36,40 +40,47 @@ type iGetArtifactBuildTaskResponseBody interface {
 type GetArtifactBuildTaskResponseBody struct {
 	// The artifact build type. Valid values:
 	//
-	// - `IMAGE_TO_ACCELERATED_IMAGE`: an accelerated image for ACK.
+	// - `IMAGE_TO_ACCELERATED_IMAGE`: Accelerated image creation optimized for ACK scenarios.
 	//
-	// - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: an accelerated image for ECI.
+	// - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: Accelerated image artifact optimized for ECI scenarios.
 	//
 	// example:
 	//
 	// IMAGE_TO_ACCELERATED_IMAGE
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The artifact compression parameters.
+	ArtifactCompression *GetArtifactBuildTaskResponseBodyArtifactCompression `json:"ArtifactCompression,omitempty" xml:"ArtifactCompression,omitempty" type:"Struct"`
 	// The ID of the artifact build task.
 	//
 	// example:
 	//
 	// i2a-1yu****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The Unix timestamp in seconds when the task ended.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1685415871
-	EndTime      *int32    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The reserved field list of the artifact build task. The list elements should be empty.
 	Instructions []*string `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// example:
+	//
+	// 3
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
@@ -77,7 +88,7 @@ type GetArtifactBuildTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The source artifact.
 	SourceArtifact *GetArtifactBuildTaskResponseBodySourceArtifact `json:"SourceArtifact,omitempty" xml:"SourceArtifact,omitempty" type:"Struct"`
-	// The Unix timestamp in seconds when the task started.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -85,15 +96,15 @@ type GetArtifactBuildTaskResponseBody struct {
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The target artifact.
 	TargetArtifact *GetArtifactBuildTaskResponseBodyTargetArtifact `json:"TargetArtifact,omitempty" xml:"TargetArtifact,omitempty" type:"Struct"`
-	// The status of the artifact build task. Valid values:
+	// The artifact build status. Valid values:
 	//
-	// - `PENDING`: The task is being scheduled.
+	// - `PENDING`: Scheduling in progress.
 	//
-	// - `BUILDING`: The task is in progress.
+	// - `BUILDING`: Building in progress.
 	//
-	// - `SUCCESS`: The task is successful.
+	// - `SUCCESS`: Build succeeded.
 	//
-	// - `FAILED`: The task failed.
+	// - `FAILED`: Build failed.
 	//
 	// example:
 	//
@@ -111,6 +122,10 @@ func (s GetArtifactBuildTaskResponseBody) GoString() string {
 
 func (s *GetArtifactBuildTaskResponseBody) GetArtifactBuildType() *string {
 	return s.ArtifactBuildType
+}
+
+func (s *GetArtifactBuildTaskResponseBody) GetArtifactCompression() *GetArtifactBuildTaskResponseBodyArtifactCompression {
+	return s.ArtifactCompression
 }
 
 func (s *GetArtifactBuildTaskResponseBody) GetBuildTaskId() *string {
@@ -131,6 +146,10 @@ func (s *GetArtifactBuildTaskResponseBody) GetInstructions() []*string {
 
 func (s *GetArtifactBuildTaskResponseBody) GetIsSuccess() *bool {
 	return s.IsSuccess
+}
+
+func (s *GetArtifactBuildTaskResponseBody) GetPriority() *int32 {
+	return s.Priority
 }
 
 func (s *GetArtifactBuildTaskResponseBody) GetRequestId() *string {
@@ -158,6 +177,11 @@ func (s *GetArtifactBuildTaskResponseBody) SetArtifactBuildType(v string) *GetAr
 	return s
 }
 
+func (s *GetArtifactBuildTaskResponseBody) SetArtifactCompression(v *GetArtifactBuildTaskResponseBodyArtifactCompression) *GetArtifactBuildTaskResponseBody {
+	s.ArtifactCompression = v
+	return s
+}
+
 func (s *GetArtifactBuildTaskResponseBody) SetBuildTaskId(v string) *GetArtifactBuildTaskResponseBody {
 	s.BuildTaskId = &v
 	return s
@@ -180,6 +204,11 @@ func (s *GetArtifactBuildTaskResponseBody) SetInstructions(v []*string) *GetArti
 
 func (s *GetArtifactBuildTaskResponseBody) SetIsSuccess(v bool) *GetArtifactBuildTaskResponseBody {
 	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBody) SetPriority(v int32) *GetArtifactBuildTaskResponseBody {
+	s.Priority = &v
 	return s
 }
 
@@ -209,6 +238,11 @@ func (s *GetArtifactBuildTaskResponseBody) SetTaskStatus(v string) *GetArtifactB
 }
 
 func (s *GetArtifactBuildTaskResponseBody) Validate() error {
+	if s.ArtifactCompression != nil {
+		if err := s.ArtifactCompression.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SourceArtifact != nil {
 		if err := s.SourceArtifact.Validate(); err != nil {
 			return err
@@ -222,20 +256,92 @@ func (s *GetArtifactBuildTaskResponseBody) Validate() error {
 	return nil
 }
 
+type GetArtifactBuildTaskResponseBodyArtifactCompression struct {
+	// The operating system and architecture.
+	//
+	// example:
+	//
+	// linux/arm64
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The number of layers to retain after compression.
+	//
+	// example:
+	//
+	// 10
+	SquashKeepLayers *int32 `json:"SquashKeepLayers,omitempty" xml:"SquashKeepLayers,omitempty"`
+	// The digest of the starting layer for compression.
+	//
+	// example:
+	//
+	// sha256:xxxxx
+	StartLayerDigest *string `json:"StartLayerDigest,omitempty" xml:"StartLayerDigest,omitempty"`
+}
+
+func (s GetArtifactBuildTaskResponseBodyArtifactCompression) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetArtifactBuildTaskResponseBodyArtifactCompression) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) GetPlatform() *string {
+	return s.Platform
+}
+
+func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) GetSquashKeepLayers() *int32 {
+	return s.SquashKeepLayers
+}
+
+func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) GetStartLayerDigest() *string {
+	return s.StartLayerDigest
+}
+
+func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) SetPlatform(v string) *GetArtifactBuildTaskResponseBodyArtifactCompression {
+	s.Platform = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) SetSquashKeepLayers(v int32) *GetArtifactBuildTaskResponseBodyArtifactCompression {
+	s.SquashKeepLayers = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) SetStartLayerDigest(v string) *GetArtifactBuildTaskResponseBodyArtifactCompression {
+	s.StartLayerDigest = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetArtifactBuildTaskResponseBodySourceArtifact struct {
-	// The artifact type. Currently, only `IMAGE` is supported.
+	// The artifact type. Only IMAGE is supported.
 	//
 	// example:
 	//
 	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The repository ID. Currently, only image repositories are supported.
+	// The number of artifact layers.
+	//
+	// example:
+	//
+	// 10
+	LayerCount *int32 `json:"LayerCount,omitempty" xml:"LayerCount,omitempty"`
+	// The repository ID. Only image repositories are supported.
 	//
 	// example:
 	//
 	// cri-shac42yvqzvq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The artifact version. Currently, only image versions are supported.
+	// The artifact size, in bytes.
+	//
+	// example:
+	//
+	// 5
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The artifact version. Only image versions are supported.
 	//
 	// example:
 	//
@@ -255,8 +361,16 @@ func (s *GetArtifactBuildTaskResponseBodySourceArtifact) GetArtifactType() *stri
 	return s.ArtifactType
 }
 
+func (s *GetArtifactBuildTaskResponseBodySourceArtifact) GetLayerCount() *int32 {
+	return s.LayerCount
+}
+
 func (s *GetArtifactBuildTaskResponseBodySourceArtifact) GetRepoId() *string {
 	return s.RepoId
+}
+
+func (s *GetArtifactBuildTaskResponseBodySourceArtifact) GetSize() *int64 {
+	return s.Size
 }
 
 func (s *GetArtifactBuildTaskResponseBodySourceArtifact) GetVersion() *string {
@@ -268,8 +382,18 @@ func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetArtifactType(v strin
 	return s
 }
 
+func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetLayerCount(v int32) *GetArtifactBuildTaskResponseBodySourceArtifact {
+	s.LayerCount = &v
+	return s
+}
+
 func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetRepoId(v string) *GetArtifactBuildTaskResponseBodySourceArtifact {
 	s.RepoId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetSize(v int64) *GetArtifactBuildTaskResponseBodySourceArtifact {
+	s.Size = &v
 	return s
 }
 
@@ -283,19 +407,31 @@ func (s *GetArtifactBuildTaskResponseBodySourceArtifact) Validate() error {
 }
 
 type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
-	// The artifact type. Currently, only `IMAGE` is supported.
+	// The artifact type. Only IMAGE is supported.
 	//
 	// example:
 	//
 	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The repository ID. It must be the same as the repository ID of the source artifact. Only image repositories are supported.
+	// The number of artifact layers.
+	//
+	// example:
+	//
+	// 5
+	LayerCount *int32 `json:"LayerCount,omitempty" xml:"LayerCount,omitempty"`
+	// The repository ID. Only image repositories are supported. The repository ID of the target artifact must be the same as that of the source artifact.
 	//
 	// example:
 	//
 	// crr-1234567
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The artifact version. Currently, only image versions are supported.
+	// The artifact size, in bytes.
+	//
+	// example:
+	//
+	// 10
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The artifact version. Only images are supported.
 	//
 	// example:
 	//
@@ -315,8 +451,16 @@ func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) GetArtifactType() *stri
 	return s.ArtifactType
 }
 
+func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) GetLayerCount() *int32 {
+	return s.LayerCount
+}
+
 func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) GetRepoId() *string {
 	return s.RepoId
+}
+
+func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) GetSize() *int64 {
+	return s.Size
 }
 
 func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) GetVersion() *string {
@@ -328,8 +472,18 @@ func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetArtifactType(v strin
 	return s
 }
 
+func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetLayerCount(v int32) *GetArtifactBuildTaskResponseBodyTargetArtifact {
+	s.LayerCount = &v
+	return s
+}
+
 func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetRepoId(v string) *GetArtifactBuildTaskResponseBodyTargetArtifact {
 	s.RepoId = &v
+	return s
+}
+
+func (s *GetArtifactBuildTaskResponseBodyTargetArtifact) SetSize(v int64) *GetArtifactBuildTaskResponseBodyTargetArtifact {
+	s.Size = &v
 	return s
 }
 

@@ -34,7 +34,7 @@ type iCreateRepoSyncTaskRequest interface {
 }
 
 type CreateRepoSyncTaskRequest struct {
-	// Source instance ID
+	// The source instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,18 +42,27 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to overwrite an existing image:
+	// Specifies whether to forcibly overwrite existing images. Valid values:
 	//
-	// - `true`: Overwrite the existing image.
+	// - `true`: Forcibly overwrites existing images.
 	//
-	// - `false`: Do not overwrite the existing image.
+	// - `false`: Does not forcibly overwrite existing images.
 	//
 	// example:
 	//
 	// true
-	Override *bool  `json:"Override,omitempty" xml:"Override,omitempty"`
+	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
+	// The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
+	//
+	// Valid values: 1 to 5.
+	//
+	// Default value: 3.
+	//
+	// example:
+	//
+	// 3
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Image repository ID in the source instance
+	// The ID of the image repository in the source instance.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +70,7 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// crr-iql7jalx4g0****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// Image tag in the source instance
+	// The image tag in the source instance.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +78,7 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// tag1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// Target instance ID
+	// The target instance ID.
 	//
 	// This parameter is required.
 	//
@@ -77,7 +86,7 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// cri-ibxs3piklys3****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// Namespace in the target instance
+	// The namespace of the target instance.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +94,7 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// ns1
 	TargetNamespace *string `json:"TargetNamespace,omitempty" xml:"TargetNamespace,omitempty"`
-	// Region ID of the target instance
+	// The region ID of the target instance.
 	//
 	// This parameter is required.
 	//
@@ -93,7 +102,7 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// cn-hangzhou
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	// Name of the image repository in the target instance
+	// The name of the image repository in the target instance.
 	//
 	// This parameter is required.
 	//
@@ -101,7 +110,7 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// repo1
 	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
-	// Image tag in the target instance
+	// The image tag in the target instance.
 	//
 	// This parameter is required.
 	//
@@ -109,7 +118,7 @@ type CreateRepoSyncTaskRequest struct {
 	//
 	// tag1
 	TargetTag *string `json:"TargetTag,omitempty" xml:"TargetTag,omitempty"`
-	// UID of the account to which the target instance belongs
+	// The UID of the account to which the target instance belongs.
 	//
 	// example:
 	//

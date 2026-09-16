@@ -28,41 +28,41 @@ type iGetArtifactBuildRuleResponseBody interface {
 }
 
 type GetArtifactBuildRuleResponseBody struct {
-	// The type of the artifact. Valid values:
+	// The type of the accelerated image. Valid values:
 	//
-	// 	- `ACCELERATED_IMAGE`: accelerated images.
+	// - `ACCELERATED_IMAGE`: generates an accelerated image.
 	//
 	// example:
 	//
 	// ACCELERATED_IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The ID of the artifact building rule.
+	// The build rule ID.
 	//
 	// example:
 	//
 	// crabr-o2670wqz2n70****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	// The API return code:
+	// The response code. Valid values:
 	//
-	// - **200**: Indicates success.
+	// - **200**: success.
 	//
-	// - Others: Indicate error codes.
+	// - Other values: error codes.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API request is successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Additional parameters.
+	// The additional parameters.
 	Parameters *GetArtifactBuildRuleResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,17 +70,17 @@ type GetArtifactBuildRuleResponseBody struct {
 	//
 	// 7A3E98F6-296C-54AC-A612-B75E7777D4C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the effective range of the artifact building rule.
+	// The ID of the scope in which the rule takes effect. Valid values:
 	//
-	// 	- The parameter value is the ID of the image repository.
+	// - ScopeId: the image repository ID.
 	//
 	// example:
 	//
 	// crr-8dz3aedjqlmk****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	// The effective range of the artifact building rule. Valid values:
+	// The scope of the rule. Valid values:
 	//
-	// 	- `REPOSITORY`: The artifact building rule is effective in the repository level.
+	// - `REPOSITORY`: repository level.
 	//
 	// example:
 	//
@@ -184,7 +184,13 @@ type GetArtifactBuildRuleResponseBodyParameters struct {
 	//
 	// false
 	ImageIndexOnly *bool `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
-	// The list of files that you want to prefetch when you use the image acceleration feature. Each entry contains the Base64-encoded absolute path of a file.
+	// The task priority. Valid values: [1, 5].
+	//
+	// example:
+	//
+	// 3
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The list of prefetch files for the accelerated image. Each line contains an absolute path. The list is Base64-encoded.
 	//
 	// example:
 	//
@@ -204,12 +210,21 @@ func (s *GetArtifactBuildRuleResponseBodyParameters) GetImageIndexOnly() *bool {
 	return s.ImageIndexOnly
 }
 
+func (s *GetArtifactBuildRuleResponseBodyParameters) GetPriority() *int32 {
+	return s.Priority
+}
+
 func (s *GetArtifactBuildRuleResponseBodyParameters) GetPriorityFile() *string {
 	return s.PriorityFile
 }
 
 func (s *GetArtifactBuildRuleResponseBodyParameters) SetImageIndexOnly(v bool) *GetArtifactBuildRuleResponseBodyParameters {
 	s.ImageIndexOnly = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBodyParameters) SetPriority(v int32) *GetArtifactBuildRuleResponseBodyParameters {
+	s.Priority = &v
 	return s
 }
 

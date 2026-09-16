@@ -25,49 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("cr.us-west-1.aliyuncs.com"),
-		"us-southeast-1":        dara.String("cr.us-southeast-1.aliyuncs.com"),
-		"us-east-1":             dara.String("cr.us-east-1.aliyuncs.com"),
-		"na-south-1":            dara.String("cr.na-south-1.aliyuncs.com"),
-		"me-east-1":             dara.String("cr.me-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("cr.me-central-1.aliyuncs.com"),
-		"eu-west-2":             dara.String("cr.eu-west-2.aliyuncs.com"),
-		"eu-west-1":             dara.String("cr.eu-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("cr.eu-central-1.aliyuncs.com"),
-		"cn-zhongwei":           dara.String("cr.cn-zhongwei.aliyuncs.com"),
-		"cn-zhengzhou-jva":      dara.String("cr.cn-zhengzhou-jva.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("cr.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu-gic-1":   dara.String("cr.cn-wulanchabu-gic-1.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("cr.cn-wulanchabu.aliyuncs.com"),
-		"cn-wuhan-lr":           dara.String("cr.cn-wuhan-lr.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("cr.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("cr.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("cr.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("cr.cn-shanghai.aliyuncs.com"),
-		"cn-qingdao":            dara.String("cr.cn-qingdao.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("cr.cn-north-2-gov-1.aliyuncs.com"),
-		"cn-nanjing":            dara.String("cr.cn-nanjing.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("cr.cn-huhehaote.aliyuncs.com"),
-		"cn-hongkong":           dara.String("cr.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan-acdr-1":      dara.String("cr.cn-heyuan-acdr-1.aliyuncs.com"),
-		"cn-heyuan":             dara.String("cr.cn-heyuan.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("cr.cn-hangzhou-finance.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("cr.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("cr.cn-guangzhou.aliyuncs.com"),
-		"cn-fuzhou":             dara.String("cr.cn-fuzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("cr.cn-chengdu.aliyuncs.com"),
-		"cn-beijing-finance-1":  dara.String("cr.cn-beijing-finance-1.aliyuncs.com"),
-		"cn-beijing":            dara.String("cr.cn-beijing.aliyuncs.com"),
-		"ap-southeast-8":        dara.String("cr.ap-southeast-8.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("cr.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-6":        dara.String("cr.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("cr.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("cr.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("cr.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2":        dara.String("cr.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("cr.ap-northeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -488,8 +445,16 @@ func (client *Client) CreateArtifactLifecycleRuleWithOptions(request *CreateArti
 		query["Auto"] = request.Auto
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.EnableDeleteTag) {
 		query["EnableDeleteTag"] = request.EnableDeleteTag
+	}
+
+	if !dara.IsNil(request.EnableDeleteUntaggedManifest) {
+		query["EnableDeleteUntaggedManifest"] = request.EnableDeleteUntaggedManifest
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -1629,7 +1594,7 @@ func (client *Client) CreateRepoSourceCodeRepo(request *CreateRepoSourceCodeRepo
 
 // Summary:
 //
-// Creates an image synchronization rule for an image repository.
+// Creates a synchronization rule for an image repository.
 //
 // @param request - CreateRepoSyncRuleRequest
 //
@@ -1733,7 +1698,7 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 
 // Summary:
 //
-// Creates an image synchronization rule for an image repository.
+// Creates a synchronization rule for an image repository.
 //
 // @param request - CreateRepoSyncRuleRequest
 //
@@ -1751,7 +1716,7 @@ func (client *Client) CreateRepoSyncRule(request *CreateRepoSyncRuleRequest) (_r
 
 // Summary:
 //
-// Manually create a sync task.
+// Manually creates a synchronization task.
 //
 // @param request - CreateRepoSyncTaskRequest
 //
@@ -1835,7 +1800,7 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 
 // Summary:
 //
-// Manually create a sync task.
+// Manually creates a synchronization task.
 //
 // @param request - CreateRepoSyncTaskRequest
 //
@@ -1853,7 +1818,7 @@ func (client *Client) CreateRepoSyncTask(request *CreateRepoSyncTaskRequest) (_r
 
 // Summary:
 //
-// Creates an image replication task based on a manual replication rule.
+// Creates a synchronization task for an image repository based on a synchronization rule (manual synchronization rules only).
 //
 // @param request - CreateRepoSyncTaskByRuleRequest
 //
@@ -1913,7 +1878,7 @@ func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyn
 
 // Summary:
 //
-// Creates an image replication task based on a manual replication rule.
+// Creates a synchronization task for an image repository based on a synchronization rule (manual synchronization rules only).
 //
 // @param request - CreateRepoSyncTaskByRuleRequest
 //
@@ -3741,7 +3706,7 @@ func (client *Client) DeleteStorageDomainRoutingRule(request *DeleteStorageDomai
 
 // Summary:
 //
-// Queries the details of an artifact building rule.
+// Retrieves an artifact build rule.
 //
 // @param request - GetArtifactBuildRuleRequest
 //
@@ -3781,7 +3746,7 @@ func (client *Client) GetArtifactBuildRuleWithOptions(request *GetArtifactBuildR
 
 // Summary:
 //
-// Queries the details of an artifact building rule.
+// Retrieves an artifact build rule.
 //
 // @param request - GetArtifactBuildRuleRequest
 //
@@ -3799,7 +3764,7 @@ func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest)
 
 // Summary:
 //
-// Retrieves the details of an artifact build task.
+// Retrieves the build task of an artifact.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -3839,7 +3804,7 @@ func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildT
 
 // Summary:
 //
-// Retrieves the details of an artifact build task.
+// Retrieves the build task of an artifact.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -3857,7 +3822,7 @@ func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest)
 
 // Summary:
 //
-// Lists artifact lifecycle management rules.
+// Queries the lifecycle management rules of artifacts.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -3897,7 +3862,7 @@ func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLi
 
 // Summary:
 //
-// Lists artifact lifecycle management rules.
+// Queries the lifecycle management rules of artifacts.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -5032,7 +4997,7 @@ func (client *Client) GetRepoSourceCodeRepo(request *GetRepoSourceCodeRepoReques
 
 // Summary:
 //
-// Queries an image synchronization task in an instance.
+// Queries a repository synchronization task.
 //
 // @param request - GetRepoSyncTaskRequest
 //
@@ -5080,7 +5045,7 @@ func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest
 
 // Summary:
 //
-// Queries an image synchronization task in an instance.
+// Queries a repository synchronization task.
 //
 // @param request - GetRepoSyncTaskRequest
 //
@@ -6794,7 +6759,7 @@ func (client *Client) ListRepoBuildRule(request *ListRepoBuildRuleRequest) (_res
 
 // Summary:
 //
-// Returns a list of repository synchronization rules.
+// Queries the list of repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -6862,7 +6827,7 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 
 // Summary:
 //
-// Returns a list of repository synchronization rules.
+// Queries the list of repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -6880,7 +6845,7 @@ func (client *Client) ListRepoSyncRule(request *ListRepoSyncRuleRequest) (_resul
 
 // Summary:
 //
-// Lists repository synchronization tasks.
+// Queries the list of repository synchronization tasks.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -6948,7 +6913,7 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 
 // Summary:
 //
-// Lists repository synchronization tasks.
+// Queries the list of repository synchronization tasks.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -7824,7 +7789,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Updates a lifecycle management rule of an artifact.
+// Updates an artifact lifecycle management rule.
 //
 // @param request - UpdateArtifactLifecycleRuleRequest
 //
@@ -7843,8 +7808,16 @@ func (client *Client) UpdateArtifactLifecycleRuleWithOptions(request *UpdateArti
 		query["Auto"] = request.Auto
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.EnableDeleteTag) {
 		query["EnableDeleteTag"] = request.EnableDeleteTag
+	}
+
+	if !dara.IsNil(request.EnableDeleteUntaggedManifest) {
+		query["EnableDeleteUntaggedManifest"] = request.EnableDeleteUntaggedManifest
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -7904,7 +7877,7 @@ func (client *Client) UpdateArtifactLifecycleRuleWithOptions(request *UpdateArti
 
 // Summary:
 //
-// Updates a lifecycle management rule of an artifact.
+// Updates an artifact lifecycle management rule.
 //
 // @param request - UpdateArtifactLifecycleRuleRequest
 //

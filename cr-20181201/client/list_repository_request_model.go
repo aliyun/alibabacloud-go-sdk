@@ -36,14 +36,32 @@ type ListRepositoryRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return.
+	//
+	// Use this parameter together with NextToken. This parameter takes priority over PageNo and PageSize.
+	//
+	// example:
+	//
+	// 30
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+	//
+	// Use this parameter together with MaxResults. This parameter takes priority over PageNo and PageSize.
+	//
+	// example:
+	//
+	// *****V3MpHK1AP0pfERHZN5pu6lESTRpd5hnHNnmKOP/+w9F
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Deprecated
+	//
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Deprecated
+	//
 	// The number of entries per page. The maximum value is 100. If the specified value exceeds 100, the system returns a parameter error or uses 100 as the actual maximum number of entries returned.
 	//
 	// example:

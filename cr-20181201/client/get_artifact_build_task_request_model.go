@@ -24,7 +24,7 @@ type GetArtifactBuildTaskRequest struct {
 	//
 	// i2a-1yu****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

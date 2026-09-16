@@ -30,22 +30,32 @@ type iListRepoTagResponseBody interface {
 }
 
 type ListRepoTagResponseBody struct {
-	// The return code.
+	// The return value.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The image list.
+	// The list of images.
 	Images []*ListRepoTagResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
-	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 30
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+	//
+	// example:
+	//
+	// *****V3MpHK1AP0pfERHZN5pu6lESTRpd5hnHNnmKOP/+w9F
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -199,7 +209,7 @@ type ListRepoTagResponseBodyImages struct {
 	//
 	// 27107966
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The time when the image was updated.
+	// The time when the image was last updated.
 	//
 	// example:
 	//

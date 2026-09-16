@@ -26,7 +26,7 @@ type iListRepoSyncRuleRequest interface {
 }
 
 type ListRepoSyncRuleRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,37 +34,37 @@ type ListRepoSyncRuleRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// test-namespace
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the image repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The ID of the target instance.
+	// The target instance ID.
 	//
 	// example:
 	//
 	// cri-k77rd2eo9ztt****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The ID of the target region.
+	// The target region ID.
 	//
 	// example:
 	//

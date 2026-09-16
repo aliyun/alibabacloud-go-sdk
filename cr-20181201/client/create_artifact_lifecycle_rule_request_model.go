@@ -11,8 +11,12 @@ type iCreateArtifactLifecycleRuleRequest interface {
 	GoString() string
 	SetAuto(v bool) *CreateArtifactLifecycleRuleRequest
 	GetAuto() *bool
+	SetDryRun(v bool) *CreateArtifactLifecycleRuleRequest
+	GetDryRun() *bool
 	SetEnableDeleteTag(v bool) *CreateArtifactLifecycleRuleRequest
 	GetEnableDeleteTag() *bool
+	SetEnableDeleteUntaggedManifest(v bool) *CreateArtifactLifecycleRuleRequest
+	GetEnableDeleteUntaggedManifest() *bool
 	SetInstanceId(v string) *CreateArtifactLifecycleRuleRequest
 	GetInstanceId() *string
 	SetNamespaceName(v string) *CreateArtifactLifecycleRuleRequest
@@ -35,13 +39,15 @@ type CreateArtifactLifecycleRuleRequest struct {
 	// example:
 	//
 	// false
-	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	Auto   *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specify whether to enable lifecycle management for the artifact.
 	//
 	// example:
 	//
 	// true
-	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	EnableDeleteTag              *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	EnableDeleteUntaggedManifest *bool `json:"EnableDeleteUntaggedManifest,omitempty" xml:"EnableDeleteUntaggedManifest,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -100,8 +106,16 @@ func (s *CreateArtifactLifecycleRuleRequest) GetAuto() *bool {
 	return s.Auto
 }
 
+func (s *CreateArtifactLifecycleRuleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateArtifactLifecycleRuleRequest) GetEnableDeleteTag() *bool {
 	return s.EnableDeleteTag
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) GetEnableDeleteUntaggedManifest() *bool {
+	return s.EnableDeleteUntaggedManifest
 }
 
 func (s *CreateArtifactLifecycleRuleRequest) GetInstanceId() *string {
@@ -137,8 +151,18 @@ func (s *CreateArtifactLifecycleRuleRequest) SetAuto(v bool) *CreateArtifactLife
 	return s
 }
 
+func (s *CreateArtifactLifecycleRuleRequest) SetDryRun(v bool) *CreateArtifactLifecycleRuleRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *CreateArtifactLifecycleRuleRequest) SetEnableDeleteTag(v bool) *CreateArtifactLifecycleRuleRequest {
 	s.EnableDeleteTag = &v
+	return s
+}
+
+func (s *CreateArtifactLifecycleRuleRequest) SetEnableDeleteUntaggedManifest(v bool) *CreateArtifactLifecycleRuleRequest {
+	s.EnableDeleteUntaggedManifest = &v
 	return s
 }
 

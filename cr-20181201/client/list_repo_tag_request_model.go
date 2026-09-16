@@ -32,15 +32,33 @@ type ListRepoTagRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return.
+	//
+	// Use this parameter together with NextToken. This parameter takes priority over PageNo and PageSize.
+	//
+	// example:
+	//
+	// 30
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+	//
+	// Use this parameter together with MaxResults. This parameter takes priority over PageNo and PageSize.
+	//
+	// example:
+	//
+	// *****V3MpHK1AP0pfERHZN5pu6lESTRpd5hnHNnmKOP/+w9F
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Deprecated
+	//
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. The maximum value is 100.
+	// Deprecated
+	//
+	// The number of entries per page. A maximum of 100 entries can be returned per page.
 	//
 	// example:
 	//

@@ -18,17 +18,17 @@ type iUpdateArtifactLifecycleRuleResponseBody interface {
 }
 
 type UpdateArtifactLifecycleRuleResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API request is successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//

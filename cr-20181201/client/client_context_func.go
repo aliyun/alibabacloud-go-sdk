@@ -300,8 +300,16 @@ func (client *Client) CreateArtifactLifecycleRuleWithContext(ctx context.Context
 		query["Auto"] = request.Auto
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.EnableDeleteTag) {
 		query["EnableDeleteTag"] = request.EnableDeleteTag
+	}
+
+	if !dara.IsNil(request.EnableDeleteUntaggedManifest) {
+		query["EnableDeleteUntaggedManifest"] = request.EnableDeleteUntaggedManifest
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -1185,7 +1193,7 @@ func (client *Client) CreateRepoSourceCodeRepoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates an image synchronization rule for an image repository.
+// Creates a synchronization rule for an image repository.
 //
 // @param request - CreateRepoSyncRuleRequest
 //
@@ -1289,7 +1297,7 @@ func (client *Client) CreateRepoSyncRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Manually create a sync task.
+// Manually creates a synchronization task.
 //
 // @param request - CreateRepoSyncTaskRequest
 //
@@ -1373,7 +1381,7 @@ func (client *Client) CreateRepoSyncTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates an image replication task based on a manual replication rule.
+// Creates a synchronization task for an image repository based on a synchronization rule (manual synchronization rules only).
 //
 // @param request - CreateRepoSyncTaskByRuleRequest
 //
@@ -2783,7 +2791,7 @@ func (client *Client) DeleteStorageDomainRoutingRuleWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the details of an artifact building rule.
+// Retrieves an artifact build rule.
 //
 // @param request - GetArtifactBuildRuleRequest
 //
@@ -2823,7 +2831,7 @@ func (client *Client) GetArtifactBuildRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the details of an artifact build task.
+// Retrieves the build task of an artifact.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -2863,7 +2871,7 @@ func (client *Client) GetArtifactBuildTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Lists artifact lifecycle management rules.
+// Queries the lifecycle management rules of artifacts.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -3673,7 +3681,7 @@ func (client *Client) GetRepoSourceCodeRepoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries an image synchronization task in an instance.
+// Queries a repository synchronization task.
 //
 // @param request - GetRepoSyncTaskRequest
 //
@@ -4977,7 +4985,7 @@ func (client *Client) ListRepoBuildRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Returns a list of repository synchronization rules.
+// Queries the list of repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -5045,7 +5053,7 @@ func (client *Client) ListRepoSyncRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Lists repository synchronization tasks.
+// Queries the list of repository synchronization tasks.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -5749,7 +5757,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Updates a lifecycle management rule of an artifact.
+// Updates an artifact lifecycle management rule.
 //
 // @param request - UpdateArtifactLifecycleRuleRequest
 //
@@ -5768,8 +5776,16 @@ func (client *Client) UpdateArtifactLifecycleRuleWithContext(ctx context.Context
 		query["Auto"] = request.Auto
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.EnableDeleteTag) {
 		query["EnableDeleteTag"] = request.EnableDeleteTag
+	}
+
+	if !dara.IsNil(request.EnableDeleteUntaggedManifest) {
+		query["EnableDeleteUntaggedManifest"] = request.EnableDeleteUntaggedManifest
 	}
 
 	if !dara.IsNil(request.InstanceId) {

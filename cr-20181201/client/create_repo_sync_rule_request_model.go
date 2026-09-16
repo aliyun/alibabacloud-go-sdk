@@ -44,7 +44,7 @@ type iCreateRepoSyncRuleRequest interface {
 }
 
 type CreateRepoSyncRuleRequest struct {
-	// The source instance ID.
+	// The ID of the source instance.
 	//
 	// This parameter is required.
 	//
@@ -52,33 +52,51 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LinkId     *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// The ID of the custom synchronization link.
+	//
+	// example:
+	//
+	// stl-72cjfd3fayno8***
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
 	// The namespace name of the source instance.
 	//
 	// example:
 	//
 	// ns1
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The instance-level namespace regex filter.
+	//
+	// > This parameter takes effect only when SyncScope is set to `INSTANCE`.
+	//
 	// example:
 	//
 	// .*
 	NamespaceNameFilter *string `json:"NamespaceNameFilter,omitempty" xml:"NamespaceNameFilter,omitempty"`
-	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The name of the image repository in the source instance.
+	// The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
+	//
+	// Valid values: 1 to 5.
+	//
+	// Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The repository name of the source instance.
 	//
 	// example:
 	//
 	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The regular expression that is used to filter repositories.
+	// The repository filter rule.
 	//
-	// >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
+	// > This parameter takes effect only when SyncScope is set to `INSTANCE` or `NAMESPACE`.
 	//
 	// example:
 	//
 	// .*
 	RepoNameFilter *string `json:"RepoNameFilter,omitempty" xml:"RepoNameFilter,omitempty"`
-	// The name of the image synchronization rule.
+	// The name of the synchronization rule.
 	//
 	// This parameter is required.
 	//
@@ -86,11 +104,13 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// rule
 	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
-	// The synchronization scope. Valid values:
+	// The synchronization type. Valid values:
 	//
-	// 	- `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
+	// - `REPO`: Synchronizes by image repository.
 	//
-	// 	- `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+	// - `NAMESPACE`: Synchronizes by namespace.
+	//
+	// - `INSTANCE`: Synchronizes by namespace regex and repository regex.
 	//
 	// This parameter is required.
 	//
@@ -98,17 +118,19 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// REPO
 	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
-	// The mode of triggering the synchronization rule. Valid values:
+	// The trigger for the synchronization action. Valid values:
 	//
-	// 	- `INITIATIVE`: manually triggers the synchronization rule.
+	// - `INITIATIVE`: Manual trigger.
 	//
-	// 	- `PASSIVE`: automatically triggers the synchronization rule.
+	//
+	//
+	// - `PASSIVE`: Automatic trigger.
 	//
 	// example:
 	//
 	// PASSIVE
 	SyncTrigger *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
-	// The regular expression that is used to filter image tags.
+	// The tag filter rule.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +138,7 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// .*
 	TagFilter *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
-	// The destination instance ID.
+	// The ID of the target instance.
 	//
 	// This parameter is required.
 	//
@@ -124,13 +146,13 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// cri-ibxs3piklys3****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The namespace name of the destination instance.
+	// The namespace name of the target instance.
 	//
 	// example:
 	//
 	// ns1
 	TargetNamespaceName *string `json:"TargetNamespaceName,omitempty" xml:"TargetNamespaceName,omitempty"`
-	// The region ID of the destination instance.
+	// The region ID of the target instance.
 	//
 	// This parameter is required.
 	//
@@ -138,15 +160,15 @@ type CreateRepoSyncRuleRequest struct {
 	//
 	// cn-shanghai
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	// The name of the image repository in the destination instance.
+	// The image repository name of the target instance.
 	//
 	// example:
 	//
 	// repo1
 	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
-	// The user ID (UID) of the account to which the destination instance belongs.
+	// The UID of the account to which the target instance belongs.
 	//
-	// >  If you synchronize images across accounts, you must use the UID.
+	// > This parameter is required for cross-account image synchronization.
 	//
 	// example:
 	//

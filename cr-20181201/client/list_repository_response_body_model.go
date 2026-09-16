@@ -36,14 +36,24 @@ type ListRepositoryResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
-	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 30
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+	//
+	// example:
+	//
+	// *****V3MpHK1AP0pfERHZN5pu6lESTRpd5hnHNnmKOP/+w9F
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -175,7 +185,7 @@ func (s *ListRepositoryResponseBody) Validate() error {
 }
 
 type ListRepositoryResponseBodyRepositories struct {
-	// The creation time.
+	// The time when the repository was created.
 	//
 	// example:
 	//
@@ -187,7 +197,7 @@ type ListRepositoryResponseBodyRepositories struct {
 	//
 	// cri-kmsiwlxxdcv****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last modification time.
+	// The time when the repository was last modified.
 	//
 	// example:
 	//
@@ -243,13 +253,13 @@ type ListRepositoryResponseBodyRepositories struct {
 	//
 	// rg-acfm4n5kzyfxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The summary information.
+	// The summary.
 	//
 	// example:
 	//
 	// test OK
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The image tag immutability.
+	// The tag immutability of the image.
 	//
 	// example:
 	//

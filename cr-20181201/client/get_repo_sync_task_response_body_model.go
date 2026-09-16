@@ -52,15 +52,15 @@ type GetRepoSyncTaskResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the synchronization task is performed across Alibaba Cloud accounts.
+	// Indicates whether the synchronization is cross-account.
 	//
 	// example:
 	//
 	// true
 	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
-	// The source address of the image.
+	// The source image.
 	ImageFrom *GetRepoSyncTaskResponseBodyImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	// The destination address of the image.
+	// The destination image.
 	ImageTo *GetRepoSyncTaskResponseBodyImageTo `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
 	//
@@ -68,88 +68,97 @@ type GetRepoSyncTaskResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The synchronization tasks for the image layer.
+	// The list of image layer synchronization tasks.
 	LayerTasks []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
-	Priority   *int32                                   `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
+	//
+	// Valid values: 1 to 5.
+	//
+	// Default value: 3.
+	//
+	// example:
+	//
+	// 3
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The synchronization progress. Valid values:
 	//
-	// 	- `0`: The synchronization starts or failed.
+	// - `0`: The synchronization has just started or failed.
 	//
-	// 	- `1`: The synchronization is successful.
+	// - `1`: The synchronization succeeded.
 	//
 	// example:
 	//
 	// 1
 	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A6DEF8B0-5D45-46D6-867D-8C7FF0966B07
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the synchronization task in which multiple images are synchronized at a time.
+	// The synchronization batch task ID.
 	//
 	// example:
 	//
 	// a9434731-95ef-4087-9cf4-369c8e90****
 	SyncBatchTaskId *string `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
-	// The ID of the synchronization rule.
+	// The synchronization rule ID.
 	//
 	// example:
 	//
 	// crsr-cllro6ho3wne****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	// The ID of the synchronization task.
+	// The synchronization task ID.
 	//
 	// example:
 	//
 	// rst-zxjkiv5oil6f****
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
-	// Indicates whether transfer acceleration is enabled in the synchronization process.
+	// Indicates whether transfer acceleration is enabled for synchronization.
 	//
 	// example:
 	//
 	// true
 	SyncTransAccelerate *bool `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
-	// The size of the image layer that is synchronized. Unit: bytes.
+	// The synchronized size, in bytes.
 	//
 	// example:
 	//
 	// 23655489
 	SyncedSize *int64 `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
-	// The error message that is returned if the synchronization task fails.
+	// The task failure information.
 	//
-	// >  The system uses this parameter to return an error message if the synchronization task fails.
-	//
-	// Valid values:
-	//
-	// 	- OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to use Object Storage Service (OSS).
-	//
-	// 	- TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
-	//
-	// 	- UNSUPPORTED_FORMAT: The manifest and config formats of the image to be synchronized are not supported.
-	//
-	// 	- INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
-	//
-	// 	- NETWORK_ERROR: The synchronization task failed due to unstable network connection.
-	//
-	// 	- DATA_LENGTH_EXCEEDED: The manifest or config of the image is oversized.
+	// > When the synchronization task fails, this field returns information about the failure.
 	//
 	// example:
 	//
 	// NETWORK_ERROR
 	TaskIssue *string `json:"TaskIssue,omitempty" xml:"TaskIssue,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
+	//
+	// `PENDING`: The synchronization is pending.
+	//
+	// `SYNCHRONIZING`: The synchronization is in progress.
+	//
+	// `SUCCESS`: The synchronization succeeded.
+	//
+	// `ERROR`: The synchronization failed.
+	//
+	// `CANCELED`: The synchronization task is canceled.
 	//
 	// example:
 	//
 	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The policy that is used to trigger the synchronization task.
+	// The trigger type of the synchronization task. Valid values:
+	//
+	// `PASSIVE`: The synchronization task is automatically triggered.
+	//
+	// `INITIATIVE`: The synchronization task is manually triggered.
 	//
 	// example:
 	//
-	// null
+	// PASSIVE
 	TaskTrigger *string `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 
@@ -338,31 +347,31 @@ func (s *GetRepoSyncTaskResponseBody) Validate() error {
 }
 
 type GetRepoSyncTaskResponseBodyImageFrom struct {
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
 	// master
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-sgedpenzw80e****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the image repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
@@ -428,31 +437,31 @@ func (s *GetRepoSyncTaskResponseBodyImageFrom) Validate() error {
 }
 
 type GetRepoSyncTaskResponseBodyImageTo struct {
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
 	// master
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-leqzomz5vijc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
 	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the image repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
@@ -518,37 +527,37 @@ func (s *GetRepoSyncTaskResponseBodyImageTo) Validate() error {
 }
 
 type GetRepoSyncTaskResponseBodyLayerTasks struct {
-	// The digest of the artifact.
+	// The digest value of the artifact.
 	//
 	// example:
 	//
 	// sha256:36fb85fcb5e919cb60e782397a6be04201868fe7b38ef7669fc01caec1c8fc4e
 	ArtifactDigest *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
-	// The digest of the image layer.
+	// The image digest value.
 	//
 	// example:
 	//
 	// sha256:36fb85fcb5e919cb60e782397a6be04201868fe7b38ef7669fc01caec1c8fc4e
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The size of synchronized image layers.
+	// The size.
 	//
 	// example:
 	//
 	// 23655489
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the synchronization task for the image layer.
+	// The synchronization layer task ID.
 	//
 	// example:
 	//
 	// rslt-074x4q20fx2d****
 	SyncLayerTaskId *string `json:"SyncLayerTaskId,omitempty" xml:"SyncLayerTaskId,omitempty"`
-	// The size of the image layer that is synchronized.
+	// The synchronized size.
 	//
 	// example:
 	//
 	// 23655489
 	SyncedSize *int64 `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
-	// The status of the synchronization task. Valid values:
+	// The task status.
 	//
 	// example:
 	//

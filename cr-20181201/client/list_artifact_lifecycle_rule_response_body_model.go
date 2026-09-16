@@ -32,11 +32,11 @@ type ListArtifactLifecycleRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The request succeeded.
+	// - `true`: The call was successful.
 	//
-	// - `false`: The request failed.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListArtifactLifecycleRuleResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned on each page.
+	// The page size.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListArtifactLifecycleRuleResponseBody struct {
 	//
 	// F92D82F9-A4C4-5A4A-97B9-E495BF1B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of lifecycle management rules.
+	// The list of rules.
 	Rules []*ListArtifactLifecycleRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,31 +155,47 @@ func (s *ListArtifactLifecycleRuleResponseBody) Validate() error {
 }
 
 type ListArtifactLifecycleRuleResponseBodyRules struct {
-	// Indicates whether the rule runs automatically.
+	// Indicates whether the rule is automatically executed.
 	//
 	// example:
 	//
 	// false
 	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	// The creation time of the rule.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1638187989000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the rule is configured to delete tags.
+	// Indicates whether DryRun mode is enabled. When DryRun mode is enabled, only lifecycle task scanning is performed and no actual data cleanup is executed. This mode is disabled by default.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Indicates whether lifecycle management is enabled.
+	//
+	// Only one of this parameter and EnableDeleteUntaggedManifest can be set to true.
 	//
 	// example:
 	//
 	// true
 	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// Indicates whether artifact cleanup is enabled.
+	//
+	// Only one of this parameter and EnableDeleteTag can be set to true.
+	//
+	// example:
+	//
+	// false
+	EnableDeleteUntaggedManifest *bool `json:"EnableDeleteUntaggedManifest,omitempty" xml:"EnableDeleteUntaggedManifest,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// cri-brlg4cbj2yl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last modification time of the rule.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -191,12 +207,13 @@ type ListArtifactLifecycleRuleResponseBodyRules struct {
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The next execution time.
+	// The next execution time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1638187989000
-	NextTime *int64                                                `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
+	NextTime *int64 `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
+	// The list of lifecycle policies.
 	Policies []*ListArtifactLifecycleRuleResponseBodyRulesPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The repository name.
 	//
@@ -204,7 +221,7 @@ type ListArtifactLifecycleRuleResponseBodyRules struct {
 	//
 	// test_1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The number of image tags to retain.
+	// The number of retained images.
 	//
 	// example:
 	//
@@ -216,19 +233,19 @@ type ListArtifactLifecycleRuleResponseBodyRules struct {
 	//
 	// cralr-yqx1q5sir6d****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The execution schedule.
+	// The execution cycle.
 	//
 	// example:
 	//
 	// WEEK
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The scope of the rule.
+	// The cleanup scope.
 	//
 	// example:
 	//
 	// INSTANCE
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The regular expression that matches image tags to retain.
+	// The regular expression for retaining image versions.
 	//
 	// example:
 	//
@@ -252,8 +269,16 @@ func (s *ListArtifactLifecycleRuleResponseBodyRules) GetCreateTime() *int64 {
 	return s.CreateTime
 }
 
+func (s *ListArtifactLifecycleRuleResponseBodyRules) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ListArtifactLifecycleRuleResponseBodyRules) GetEnableDeleteTag() *bool {
 	return s.EnableDeleteTag
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) GetEnableDeleteUntaggedManifest() *bool {
+	return s.EnableDeleteUntaggedManifest
 }
 
 func (s *ListArtifactLifecycleRuleResponseBodyRules) GetInstanceId() *string {
@@ -310,8 +335,18 @@ func (s *ListArtifactLifecycleRuleResponseBodyRules) SetCreateTime(v int64) *Lis
 	return s
 }
 
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetDryRun(v bool) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.DryRun = &v
+	return s
+}
+
 func (s *ListArtifactLifecycleRuleResponseBodyRules) SetEnableDeleteTag(v bool) *ListArtifactLifecycleRuleResponseBodyRules {
 	s.EnableDeleteTag = &v
+	return s
+}
+
+func (s *ListArtifactLifecycleRuleResponseBodyRules) SetEnableDeleteUntaggedManifest(v bool) *ListArtifactLifecycleRuleResponseBodyRules {
+	s.EnableDeleteUntaggedManifest = &v
 	return s
 }
 
@@ -384,9 +419,12 @@ func (s *ListArtifactLifecycleRuleResponseBodyRules) Validate() error {
 }
 
 type ListArtifactLifecycleRuleResponseBodyRulesPolicies struct {
+	// The trigger condition of the lifecycle policy.
 	Condition *ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
-	Filter    *ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter    `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	Type      *string                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The image version filter condition.
+	Filter *ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The lifecycle policy type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListArtifactLifecycleRuleResponseBodyRulesPolicies) String() string {
@@ -439,9 +477,24 @@ func (s *ListArtifactLifecycleRuleResponseBodyRulesPolicies) Validate() error {
 }
 
 type ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition struct {
+	// The number of days since the last pull.
+	//
+	// example:
+	//
+	// 0
 	LastPullOlderThanDays *int32 `json:"LastPullOlderThanDays,omitempty" xml:"LastPullOlderThanDays,omitempty"`
+	// The number of days since the last push.
+	//
+	// example:
+	//
+	// 0
 	LastPushOlderThanDays *int32 `json:"LastPushOlderThanDays,omitempty" xml:"LastPushOlderThanDays,omitempty"`
-	LatestTagCount        *int32 `json:"LatestTagCount,omitempty" xml:"LatestTagCount,omitempty"`
+	// The number of latest image versions to retain.
+	//
+	// example:
+	//
+	// 0
+	LatestTagCount *int32 `json:"LatestTagCount,omitempty" xml:"LatestTagCount,omitempty"`
 }
 
 func (s ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition) String() string {
@@ -484,6 +537,7 @@ func (s *ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition) Validate()
 }
 
 type ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter struct {
+	// The wildcard used to match image versions.
 	TagWildcard *string `json:"TagWildcard,omitempty" xml:"TagWildcard,omitempty"`
 }
 

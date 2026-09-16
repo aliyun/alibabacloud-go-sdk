@@ -20,13 +20,13 @@ type iListArtifactLifecycleRuleRequest interface {
 }
 
 type ListArtifactLifecycleRuleRequest struct {
-	// Indicates whether automatic tag deletion is enabled.
+	// Specifies whether lifecycle management is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
-	// The ID of the Enterprise Edition instance.
+	// The ID of the Enterprise instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListArtifactLifecycleRuleRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return per page. The maximum value is 100. If you specify a value greater than 100, the system may return a parameter error or use a page size of 100.
+	// The number of entries per page. Maximum value: 100. If the specified value exceeds 100, the system returns a parameter error or uses 100 as the actual maximum number of entries returned.
 	//
 	// example:
 	//
