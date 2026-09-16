@@ -46,7 +46,7 @@ type InitAiAppScanResponseBody struct {
 	//
 	// enabled
 	ReadyStatus *string `json:"ReadyStatus,omitempty" xml:"ReadyStatus,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. Used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type ListAiAppRiskEventByPageResponseBody struct {
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. An empty value indicates that no more pages exist.
+	// The token for the next page. An empty value indicates that no more pages exist.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListAiAppRiskEventByPageResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListAiAppRiskEventByPageResponseBodyItems struct {
 	//
 	// bailian
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The end time that indicates when the event was resolved.
+	// The time when the event was resolved. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -199,19 +199,19 @@ type ListAiAppRiskEventByPageResponseBodyItems struct {
 	//
 	// e-a7gvnv3vid536dfxj
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The brief name that describes the risk event.
+	// The name that briefly describes the risk event.
 	//
 	// example:
 	//
 	// ALL
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The time when the event was handled.
+	// The time when the event was handled. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-01-10 11:42:31
 	HandleTime *string `json:"HandleTime,omitempty" xml:"HandleTime,omitempty"`
-	// The label used to mark or categorize the event.
+	// The label used to tag or categorize the event.
 	//
 	// example:
 	//
@@ -229,13 +229,13 @@ type ListAiAppRiskEventByPageResponseBodyItems struct {
 	//
 	// normal
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The start time that indicates when the event occurred.
+	// The time when the event occurred. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-12-21 15:30:19
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The event status that indicates the current processing state of the event, such as pending or resolved.
+	// The event status that indicates the current processing state, such as pending or resolved.
 	//
 	// example:
 	//

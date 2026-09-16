@@ -141,7 +141,7 @@ type ListAiAppByPageResponseBodyItems struct {
 	//
 	// bailian
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The last active time.
+	// The last active time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -311,9 +311,9 @@ type ListAiAppByPageResponseBodyItemsRiskEvents struct {
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The event status. Valid values:
 	//
-	// - **unhandled**: Not handled.
+	// - **unhandled**: Unhandled.
 	//
-	// - **resolved**: Handled.
+	// - **resolved**: Resolved.
 	//
 	// example:
 	//

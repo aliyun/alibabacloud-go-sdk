@@ -1816,7 +1816,7 @@ func (client *Client) DescribeOnlineTestResultWithContext(ctx context.Context, r
 //
 // Description:
 //
-// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation information. API operation is free of charge.
+// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation details. API operation is free of charge.
 //
 // @param request - DescribeOssV2ResultRequest
 //
@@ -2408,7 +2408,7 @@ func (client *Client) GetAiAppDetailWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Retrieves statistics for AI application details.
+// Retrieves statistics for the details of an AI application.
 //
 // @param request - GetAiAppDetailStatRequest
 //
@@ -2642,7 +2642,7 @@ func (client *Client) GetAiAppOverviewWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves statistics data for AI applications.
+// Retrieves statistics for AI application risk reports.
 //
 // @param request - GetAiAppStatsRequest
 //
@@ -3058,7 +3058,7 @@ func (client *Client) GetBucketsListWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the call volume.
+// Queries the call volume statistics.
 //
 // @param request - GetCipStatsRequest
 //
@@ -3260,7 +3260,14 @@ func (client *Client) GetGuardLogStatsWithContext(ctx context.Context, request *
 			return _result, _err
 		}
 	}
-	req := &openapiutil.OpenApiRequest{}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetGuardLogStats"),
 		Version:     dara.String("2022-09-26"),
@@ -4879,7 +4886,7 @@ func (client *Client) ListAiAppByPageWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Retrieves the list of risk events for AI applications.
+// Retrieves the list of risk events for an AI application.
 //
 // @param request - ListAiAppRiskEventRequest
 //
@@ -5728,7 +5735,7 @@ func (client *Client) LlmStreamChatWithContext(ctx context.Context, request *Llm
 //
 // Description:
 //
-// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, results are automatically deleted.
+// This operation is free of charge. Set the query interval to 30 seconds (that is, query results 30 seconds after you submit an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, the results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -6440,7 +6447,7 @@ func (client *Client) QueryCallbackWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// Message notification.
+// Queries the list of message notifications by paging.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -7402,6 +7409,14 @@ func (client *Client) UpdateServiceConfigWithContext(ctx context.Context, reques
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.FileConfig) {
 		body["FileConfig"] = request.FileConfig
 	}

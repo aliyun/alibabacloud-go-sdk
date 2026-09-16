@@ -38,13 +38,13 @@ type DescribeOssV2ResultRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time.
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-09-14 16:08:38
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeOssV2ResultRequest struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The start time.
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeOssV2ResultRequest struct {
 	//
 	// example:
 	//
-	// Image stock task 20240914100517757
+	// Image batch task 20240914100517757
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

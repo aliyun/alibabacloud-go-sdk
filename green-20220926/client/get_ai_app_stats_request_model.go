@@ -24,13 +24,13 @@ type iGetAiAppStatsRequest interface {
 }
 
 type GetAiAppStatsRequest struct {
-	// Specifies whether to aggregate by month. Default value: false.
+	// Specifies whether to aggregate statistics by month. Default value: false.
 	//
 	// example:
 	//
 	// false
 	ByMonth *bool `json:"ByMonth,omitempty" xml:"ByMonth,omitempty"`
-	// The query end date.
+	// The end date of the query. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetAiAppStatsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The query start date.
+	// The start date of the query. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

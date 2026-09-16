@@ -34,7 +34,7 @@ type GetAiAppNodeDetailRequest struct {
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end time of the query.
+	// The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type GetAiAppNodeDetailRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the query.
+	// The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//

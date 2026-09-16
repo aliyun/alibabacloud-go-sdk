@@ -87,13 +87,13 @@ type GetAiAppDetailTopoRequestTimeQuery struct {
 	//
 	// DAY
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The end time.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-07-28 17:04:08
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

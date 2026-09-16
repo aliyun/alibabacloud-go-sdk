@@ -188,7 +188,7 @@ type GetAiAppNodeDetailResponseBodyEventData struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The time when the event occurred.
+	// The time when the event occurred. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//

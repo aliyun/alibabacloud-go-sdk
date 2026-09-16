@@ -24,7 +24,7 @@ type iMarkOssV2ResultRequest interface {
 }
 
 type MarkOssV2ResultRequest struct {
-	// The end time.
+	// The end time. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type MarkOssV2ResultRequest struct {
 	//
 	// - ACL: Modify file permissions.
 	//
-	// - COPY: Move the file to a directory. The destination directory is determined as follows: 1. The directory selected when the task was created takes priority. 2. If automatic freezing was not enabled during creation, or ACL freezing was configured, the directory selected during freezing in the console is used. 3. The default directory is alicip_riskfile_backup/.
+	// - COPY: Move the file directory. Description of the destination directory: 1. The file directory selected when the task was created takes priority. 2. If automatic freezing was not enabled during creation, or ACL freezing was configured, the directory selected during freezing in the console is used. 3. The default directory is alicip_riskfile_backup/.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type MarkOssV2ResultRequest struct {
 	FreezeType *string `json:"FreezeType,omitempty" xml:"FreezeType,omitempty"`
 	// The processing operation. Valid values:
 	//
-	// - freeze: freeze.
+	// - freeze: Freeze.
 	//
-	// - unfreeze: unfreeze.
+	// - unfreeze: Unfreeze.
 	//
-	// - misreport: false positive (not in violation).
+	// - misreport: Non-violation false positive.
 	//
-	// - missOut: missed violation.
+	// - missOut: Violation missed.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type MarkOssV2ResultRequest struct {
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestIds *string `json:"RequestIds,omitempty" xml:"RequestIds,omitempty"`
-	// The start time.
+	// The start time. The time format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

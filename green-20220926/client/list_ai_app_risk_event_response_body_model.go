@@ -18,7 +18,7 @@ type iListAiAppRiskEventResponseBody interface {
 type ListAiAppRiskEventResponseBody struct {
 	// The returned data.
 	Data []*ListAiAppRiskEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
+	// The ID assigned by the backend that uniquely identifies a request. This ID can be used for troubleshooting.
 	//
 	// example:
 	//

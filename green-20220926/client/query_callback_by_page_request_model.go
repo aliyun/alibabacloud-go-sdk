@@ -28,7 +28,7 @@ type QueryCallbackByPageRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//

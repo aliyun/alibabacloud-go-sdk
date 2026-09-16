@@ -34,9 +34,9 @@ type QueryCallbackByPageResponseBody struct {
 	//
 	// example:
 	//
-	// 10
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -127,25 +127,25 @@ type QueryCallbackByPageResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 2024-06-03 15:20:14
+	// 2025-06-03 15:20:14
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The modification time.
 	//
 	// example:
 	//
-	// 2024-06-03 15:20:14
+	// 2025-06-03 15:20:14
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The primary key ID.
 	//
 	// example:
 	//
-	// 1697
+	// 1554
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name.
 	//
 	// example:
 	//
-	// 消息通知
+	// callback_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The result scope.
 	//
@@ -157,13 +157,13 @@ type QueryCallbackByPageResponseBodyItems struct {
 	//
 	// example:
 	//
-	// cb6gYS8GXj4Vn4Y4FN0Y8R5M-1x46Mq
+	// cb6gYS*******x46Mq
 	Seed *string `json:"Seed,omitempty" xml:"Seed,omitempty"`
 	// UID。
 	//
 	// example:
 	//
-	// 12161*****398900
+	// 12*****00
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 	// The callback URL.
 	//

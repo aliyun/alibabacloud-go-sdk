@@ -9,9 +9,17 @@ type iGetGuardLogStatsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCommodityCode(v string) *GetGuardLogStatsRequest
+	GetCommodityCode() *string
 }
 
 type GetGuardLogStatsRequest struct {
+	// The commodity code.
+	//
+	// example:
+	//
+	// lvwang_guardrail_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 }
 
 func (s GetGuardLogStatsRequest) String() string {
@@ -20,6 +28,15 @@ func (s GetGuardLogStatsRequest) String() string {
 
 func (s GetGuardLogStatsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetGuardLogStatsRequest) GetCommodityCode() *string {
+	return s.CommodityCode
+}
+
+func (s *GetGuardLogStatsRequest) SetCommodityCode(v string) *GetGuardLogStatsRequest {
+	s.CommodityCode = &v
+	return s
 }
 
 func (s *GetGuardLogStatsRequest) Validate() error {

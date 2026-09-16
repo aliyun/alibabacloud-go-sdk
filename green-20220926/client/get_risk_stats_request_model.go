@@ -28,7 +28,7 @@ type GetRiskStatsRequest struct {
 	//
 	// guard-scene
 	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	// The end time.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetRiskStatsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

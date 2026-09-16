@@ -24,7 +24,7 @@ type iGetCipStatsResponseBody interface {
 }
 
 type GetCipStatsResponseBody struct {
-	// The error code, which is the same as the HTTP status code.
+	// The error code, which is consistent with the HTTP status code.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type GetCipStatsResponseBody struct {
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The request ID assigned by the backend. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -254,9 +254,9 @@ type GetCipStatsResponseBodyDataLabelStatChart struct {
 	//
 	// 117
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The tree view.
+	// The tree chart.
 	TreeChart []*GetCipStatsResponseBodyDataLabelStatChartTreeChart `json:"TreeChart,omitempty" xml:"TreeChart,omitempty" type:"Repeated"`
-	// The audio tree view.
+	// The audio tree chart.
 	VoiceTreeChart []*GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart `json:"VoiceTreeChart,omitempty" xml:"VoiceTreeChart,omitempty" type:"Repeated"`
 	// The X value of the coordinate point.
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
@@ -398,7 +398,7 @@ type GetCipStatsResponseBodyDataLabelStatChartImageTreeChar struct {
 	//
 	// example:
 	//
-	// 未检测出风险
+	// No risk detected
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -458,7 +458,7 @@ type GetCipStatsResponseBodyDataLabelStatChartTextTreeChart struct {
 	//
 	// example:
 	//
-	// 未检测出风险
+	// No risk detected
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -518,7 +518,7 @@ type GetCipStatsResponseBodyDataLabelStatChartTreeChart struct {
 	//
 	// example:
 	//
-	// 疑似政治人物
+	// Suspected political figure
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -578,7 +578,7 @@ type GetCipStatsResponseBodyDataLabelStatChartVoiceTreeChart struct {
 	//
 	// example:
 	//
-	// 疑似特定歌曲
+	// Suspected specific song
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//

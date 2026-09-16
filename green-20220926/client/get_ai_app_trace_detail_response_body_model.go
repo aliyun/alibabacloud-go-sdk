@@ -54,19 +54,19 @@ type GetAiAppTraceDetailResponseBody struct {
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The list of labels.
 	Labels []*GetAiAppTraceDetailResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The backend-assigned ID that uniquely identifies a request. You can use this ID for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The trace ID used to correlate and track alert events.
+	// The trace ID, which is used to correlate and track alert events.
 	//
 	// example:
 	//
 	// 0abb7ee117615311812886711e0a15
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// The alert time.
+	// The alert time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

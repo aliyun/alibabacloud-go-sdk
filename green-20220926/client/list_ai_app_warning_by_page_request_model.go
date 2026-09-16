@@ -44,7 +44,7 @@ type ListAiAppWarningByPageRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query condition. This parameter is required and cannot be empty.
+	// The query condition. This parameter is required.
 	//
 	// This parameter is required.
 	//

@@ -30,13 +30,13 @@ type DescribeOssV2ResultResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data on the current page.
 	Items []*DescribeOssV2ResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+	// The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeOssV2ResultResponseBody) Validate() error {
 }
 
 type DescribeOssV2ResultResponseBodyItems struct {
-	// The storage bucket.
+	// The OSS bucket.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type DescribeOssV2ResultResponseBodyItems struct {
 	//
 	// FREEZE
 	ManualFreezeAction *string `json:"ManualFreezeAction,omitempty" xml:"ManualFreezeAction,omitempty"`
-	// The disposition time.
+	// The disposition time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -227,7 +227,7 @@ type DescribeOssV2ResultResponseBodyItems struct {
 	//
 	// baselineCheck
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The automatic system freeze operation.
+	// The automatic freeze operation performed by the system.
 	//
 	// example:
 	//
@@ -494,7 +494,7 @@ func (s *DescribeOssV2ResultResponseBodyItems) Validate() error {
 }
 
 type DescribeOssV2ResultResponseBodyItemsLabelDetails struct {
-	// The confidence score.
+	// The confidence level.
 	//
 	// example:
 	//
@@ -504,7 +504,7 @@ type DescribeOssV2ResultResponseBodyItemsLabelDetails struct {
 	//
 	// example:
 	//
-	// 涉政
+	// Political sensitivity
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -554,7 +554,7 @@ func (s *DescribeOssV2ResultResponseBodyItemsLabelDetails) Validate() error {
 }
 
 type DescribeOssV2ResultResponseBodyItemsLabelDetails2 struct {
-	// The confidence score.
+	// The confidence level.
 	//
 	// example:
 	//
@@ -564,7 +564,7 @@ type DescribeOssV2ResultResponseBodyItemsLabelDetails2 struct {
 	//
 	// example:
 	//
-	// 涉政
+	// Political sensitivity
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//

@@ -30,13 +30,13 @@ type ListAiAppRiskEventByPageRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of results to return per request.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query.
+	// The token for the next query.
 	//
 	// example:
 	//

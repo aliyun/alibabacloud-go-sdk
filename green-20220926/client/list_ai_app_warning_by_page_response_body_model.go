@@ -193,7 +193,7 @@ type ListAiAppWarningByPageResponseBodyItems struct {
 	//
 	// 10
 	WarningCount *int64 `json:"WarningCount,omitempty" xml:"WarningCount,omitempty"`
-	// The time when the alert was triggered.
+	// The alert time in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

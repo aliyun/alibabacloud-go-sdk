@@ -28,7 +28,7 @@ type ListAiAppRiskEventRequest struct {
 	//
 	// id-xxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end time.
+	// The end time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListAiAppRiskEventRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time.
+	// The start time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGetAiAppStatsResponseBody interface {
 type GetAiAppStatsResponseBody struct {
 	// The returned data.
 	Data *GetAiAppStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID assigned by the backend to uniquely identify a request. Used for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -9,6 +9,10 @@ type iUpdateServiceConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *UpdateServiceConfigRequest
+	GetClientToken() *string
+	SetDryRun(v bool) *UpdateServiceConfigRequest
+	GetDryRun() *bool
 	SetFileConfig(v string) *UpdateServiceConfigRequest
 	GetFileConfig() *string
 	SetKeywordFilterLibs(v string) *UpdateServiceConfigRequest
@@ -34,6 +38,14 @@ type iUpdateServiceConfigRequest interface {
 }
 
 type UpdateServiceConfigRequest struct {
+	// The client-generated idempotency token used to prevent duplicate operations caused by network retries. The token must be unique across requests and contain only printable ASCII characters (ASCII 32-126).
+	//
+	// example:
+	//
+	// 550e8400-e29b-41d4-a716-446655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. When set to true, only parameter validation and business logic checks are performed without actually creating or updating resources.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The document configuration.
 	//
 	// example:
@@ -52,7 +64,7 @@ type UpdateServiceConfigRequest struct {
 	//
 	// []
 	KeywordHitLibs *string `json:"KeywordHitLibs,omitempty" xml:"KeywordHitLibs,omitempty"`
-	// The machine-assisted moderation configuration.
+	// The human-machine moderation configuration.
 	//
 	// example:
 	//
@@ -110,6 +122,14 @@ func (s UpdateServiceConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateServiceConfigRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpdateServiceConfigRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *UpdateServiceConfigRequest) GetFileConfig() *string {
 	return s.FileConfig
 }
@@ -152,6 +172,16 @@ func (s *UpdateServiceConfigRequest) GetServiceConfig() *string {
 
 func (s *UpdateServiceConfigRequest) GetVideoConfig() *string {
 	return s.VideoConfig
+}
+
+func (s *UpdateServiceConfigRequest) SetClientToken(v string) *UpdateServiceConfigRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceConfigRequest) SetDryRun(v bool) *UpdateServiceConfigRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *UpdateServiceConfigRequest) SetFileConfig(v string) *UpdateServiceConfigRequest {

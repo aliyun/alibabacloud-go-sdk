@@ -1,3 +1,6 @@
+2026-09-16 Version: v1.13.1
+- Generated golang 2022-09-26 for Green.
+
 2026-08-11 Version: v1.13.0
 - Support API AddAppConfig.
 - Support API GetAiAppDetail.

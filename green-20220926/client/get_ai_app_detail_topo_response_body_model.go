@@ -80,13 +80,13 @@ type GetAiAppDetailTopoResponseBodyData struct {
 	//
 	// LLM
 	NodeCategory *string `json:"NodeCategory,omitempty" xml:"NodeCategory,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
 	// idxxx
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type GetAiAppDetailTopoResponseBodyData struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The number of alerts.
+	// The alert count.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iUpdateServiceConfigResponseBody interface {
 }
 
 type UpdateServiceConfigResponseBody struct {
-	// The error code, which is consistent with the HTTP status code.
+	// The error code, consistent with the HTTP status code.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type UpdateServiceConfigResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The further description of the error code.
+	// The detailed description of the error code.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The ID assigned by the backend to uniquely identify the request. You can use this ID for troubleshooting.
+	// The ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
 	//
 	// example:
 	//

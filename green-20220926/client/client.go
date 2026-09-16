@@ -2421,7 +2421,7 @@ func (client *Client) DescribeOnlineTestResult(request *DescribeOnlineTestResult
 //
 // Description:
 //
-// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation information. API operation is free of charge.
+// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation details. API operation is free of charge.
 //
 // @param request - DescribeOssV2ResultRequest
 //
@@ -2493,7 +2493,7 @@ func (client *Client) DescribeOssV2ResultWithOptions(request *DescribeOssV2Resul
 //
 // Description:
 //
-// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation information. API operation is free of charge.
+// API operation is used together with the Image Moderation Enhanced API. After you call the Image Moderation Enhanced API, you can call API operation to obtain more moderation details. API operation is free of charge.
 //
 // @param request - DescribeOssV2ResultRequest
 //
@@ -3179,7 +3179,7 @@ func (client *Client) GetAiAppDetail(request *GetAiAppDetailRequest) (_result *G
 
 // Summary:
 //
-// Retrieves statistics for AI application details.
+// Retrieves statistics for the details of an AI application.
 //
 // @param request - GetAiAppDetailStatRequest
 //
@@ -3235,7 +3235,7 @@ func (client *Client) GetAiAppDetailStatWithOptions(request *GetAiAppDetailStatR
 
 // Summary:
 //
-// Retrieves statistics for AI application details.
+// Retrieves statistics for the details of an AI application.
 //
 // @param request - GetAiAppDetailStatRequest
 //
@@ -3485,7 +3485,7 @@ func (client *Client) GetAiAppOverview(request *GetAiAppOverviewRequest) (_resul
 
 // Summary:
 //
-// Retrieves statistics data for AI applications.
+// Retrieves statistics for AI application risk reports.
 //
 // @param request - GetAiAppStatsRequest
 //
@@ -3549,7 +3549,7 @@ func (client *Client) GetAiAppStatsWithOptions(request *GetAiAppStatsRequest, ru
 
 // Summary:
 //
-// Retrieves statistics data for AI applications.
+// Retrieves statistics for AI application risk reports.
 //
 // @param request - GetAiAppStatsRequest
 //
@@ -4045,7 +4045,7 @@ func (client *Client) GetBucketsList(request *GetBucketsListRequest) (_result *G
 
 // Summary:
 //
-// Queries the call volume.
+// Queries the call volume statistics.
 //
 // @param request - GetCipStatsRequest
 //
@@ -4127,7 +4127,7 @@ func (client *Client) GetCipStatsWithOptions(request *GetCipStatsRequest, runtim
 
 // Summary:
 //
-// Queries the call volume.
+// Queries the call volume statistics.
 //
 // @param request - GetCipStatsRequest
 //
@@ -4301,7 +4301,14 @@ func (client *Client) GetGuardLogStatsWithOptions(request *GetGuardLogStatsReque
 			return _result, _err
 		}
 	}
-	req := &openapiutil.OpenApiRequest{}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetGuardLogStats"),
 		Version:     dara.String("2022-09-26"),
@@ -6446,7 +6453,7 @@ func (client *Client) ListAiAppByPage(request *ListAiAppByPageRequest) (_result 
 
 // Summary:
 //
-// Retrieves the list of risk events for AI applications.
+// Retrieves the list of risk events for an AI application.
 //
 // @param request - ListAiAppRiskEventRequest
 //
@@ -6502,7 +6509,7 @@ func (client *Client) ListAiAppRiskEventWithOptions(request *ListAiAppRiskEventR
 
 // Summary:
 //
-// Retrieves the list of risk events for AI applications.
+// Retrieves the list of risk events for an AI application.
 //
 // @param request - ListAiAppRiskEventRequest
 //
@@ -7547,7 +7554,7 @@ func (client *Client) LlmStreamChat(request *LlmStreamChatRequest) (_result *Llm
 //
 // Description:
 //
-// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, results are automatically deleted.
+// This operation is free of charge. Set the query interval to 30 seconds (that is, query results 30 seconds after you submit an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, the results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -7615,7 +7622,7 @@ func (client *Client) MarkOssV2ResultWithOptions(request *MarkOssV2ResultRequest
 //
 // Description:
 //
-// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, results are automatically deleted.
+// This operation is free of charge. Set the query interval to 30 seconds (that is, query results 30 seconds after you submit an asynchronous detection task). The maximum interval cannot exceed 24 hours. Otherwise, the results are automatically deleted.
 //
 // @param request - MarkOssV2ResultRequest
 //
@@ -8461,7 +8468,7 @@ func (client *Client) QueryCallback(request *QueryCallbackRequest) (_result *Que
 
 // Summary:
 //
-// Message notification.
+// Queries the list of message notifications by paging.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -8515,7 +8522,7 @@ func (client *Client) QueryCallbackByPageWithOptions(request *QueryCallbackByPag
 
 // Summary:
 //
-// Message notification.
+// Queries the list of message notifications by paging.
 //
 // @param request - QueryCallbackByPageRequest
 //
@@ -9711,6 +9718,14 @@ func (client *Client) UpdateServiceConfigWithOptions(request *UpdateServiceConfi
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.FileConfig) {
 		body["FileConfig"] = request.FileConfig
 	}
