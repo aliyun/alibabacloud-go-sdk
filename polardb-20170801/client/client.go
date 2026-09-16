@@ -9003,6 +9003,76 @@ func (client *Client) DeleteAIDBClusterApiKey(request *DeleteAIDBClusterApiKeyRe
 
 // Summary:
 //
+// Deletes a custom model registration from an AI cluster.
+//
+// @param request - DeleteAIDBClusterCustomModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAIDBClusterCustomModelResponse
+func (client *Client) DeleteAIDBClusterCustomModelWithOptions(request *DeleteAIDBClusterCustomModelRequest, runtime *dara.RuntimeOptions) (_result *DeleteAIDBClusterCustomModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAIDBClusterCustomModel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAIDBClusterCustomModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a custom model registration from an AI cluster.
+//
+// @param request - DeleteAIDBClusterCustomModelRequest
+//
+// @return DeleteAIDBClusterCustomModelResponse
+func (client *Client) DeleteAIDBClusterCustomModel(request *DeleteAIDBClusterCustomModelRequest) (_result *DeleteAIDBClusterCustomModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAIDBClusterCustomModelResponse{}
+	_body, _err := client.DeleteAIDBClusterCustomModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a dataset.
 //
 // @param request - DeleteAIDBClusterDatasetRequest
@@ -30973,6 +31043,84 @@ func (client *Client) ModifyAIDBClusterDescription(request *ModifyAIDBClusterDes
 
 // Summary:
 //
+// Changes the model or the customer-facing invocation name of an AI cluster.
+//
+// @param request - ModifyAIDBClusterModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAIDBClusterModelResponse
+func (client *Client) ModifyAIDBClusterModelWithOptions(request *ModifyAIDBClusterModelRequest, runtime *dara.RuntimeOptions) (_result *ModifyAIDBClusterModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DisplayModelName) {
+		query["DisplayModelName"] = request.DisplayModelName
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAIDBClusterModel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAIDBClusterModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the model or the customer-facing invocation name of an AI cluster.
+//
+// @param request - ModifyAIDBClusterModelRequest
+//
+// @return ModifyAIDBClusterModelResponse
+func (client *Client) ModifyAIDBClusterModel(request *ModifyAIDBClusterModelRequest) (_result *ModifyAIDBClusterModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyAIDBClusterModelResponse{}
+	_body, _err := client.ModifyAIDBClusterModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the description of a PolarDB database account.
 //
 // @param request - ModifyAccountDescriptionRequest
@@ -38248,6 +38396,88 @@ func (client *Client) RefreshDBClusterStorageUsage(request *RefreshDBClusterStor
 	runtime := &dara.RuntimeOptions{}
 	_result = &RefreshDBClusterStorageUsageResponse{}
 	_body, _err := client.RefreshDBClusterStorageUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers a custom model for an AI cluster.
+//
+// @param request - RegisterAIDBClusterCustomModelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterAIDBClusterCustomModelResponse
+func (client *Client) RegisterAIDBClusterCustomModelWithOptions(request *RegisterAIDBClusterCustomModelRequest, runtime *dara.RuntimeOptions) (_result *RegisterAIDBClusterCustomModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomOssBucketName) {
+		query["CustomOssBucketName"] = request.CustomOssBucketName
+	}
+
+	if !dara.IsNil(request.CustomOssBucketPath) {
+		query["CustomOssBucketPath"] = request.CustomOssBucketPath
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DisplayModelName) {
+		query["DisplayModelName"] = request.DisplayModelName
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RegisterAIDBClusterCustomModel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RegisterAIDBClusterCustomModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Registers a custom model for an AI cluster.
+//
+// @param request - RegisterAIDBClusterCustomModelRequest
+//
+// @return RegisterAIDBClusterCustomModelResponse
+func (client *Client) RegisterAIDBClusterCustomModel(request *RegisterAIDBClusterCustomModelRequest) (_result *RegisterAIDBClusterCustomModelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RegisterAIDBClusterCustomModelResponse{}
+	_body, _err := client.RegisterAIDBClusterCustomModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
