@@ -174,6 +174,10 @@ func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, requ
 		body["attributes"] = request.Attributes
 	}
 
+	if !dara.IsNil(request.Channel) {
+		body["channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.DefaultRule) {
 		body["defaultRule"] = request.DefaultRule
 	}

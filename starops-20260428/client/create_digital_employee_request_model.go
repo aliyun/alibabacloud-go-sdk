@@ -11,6 +11,8 @@ type iCreateDigitalEmployeeRequest interface {
 	GoString() string
 	SetAttributes(v map[string]*string) *CreateDigitalEmployeeRequest
 	GetAttributes() map[string]*string
+	SetChannel(v string) *CreateDigitalEmployeeRequest
+	GetChannel() *string
 	SetDefaultRule(v string) *CreateDigitalEmployeeRequest
 	GetDefaultRule() *string
 	SetDescription(v string) *CreateDigitalEmployeeRequest
@@ -36,6 +38,12 @@ type iCreateDigitalEmployeeRequest interface {
 type CreateDigitalEmployeeRequest struct {
 	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// 数字员工渠道类型。不填时使用默认渠道。
+	//
+	// example:
+	//
+	// default
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	// The default rule of the digital employee.
 	//
 	// example:
@@ -106,6 +114,10 @@ func (s *CreateDigitalEmployeeRequest) GetAttributes() map[string]*string {
 	return s.Attributes
 }
 
+func (s *CreateDigitalEmployeeRequest) GetChannel() *string {
+	return s.Channel
+}
+
 func (s *CreateDigitalEmployeeRequest) GetDefaultRule() *string {
 	return s.DefaultRule
 }
@@ -148,6 +160,11 @@ func (s *CreateDigitalEmployeeRequest) GetToolPolicy() *CreateDigitalEmployeeReq
 
 func (s *CreateDigitalEmployeeRequest) SetAttributes(v map[string]*string) *CreateDigitalEmployeeRequest {
 	s.Attributes = v
+	return s
+}
+
+func (s *CreateDigitalEmployeeRequest) SetChannel(v string) *CreateDigitalEmployeeRequest {
+	s.Channel = &v
 	return s
 }
 
