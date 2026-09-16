@@ -26,7 +26,7 @@ type iGetInstanceDetailResponseBody interface {
 }
 
 type GetInstanceDetailResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *GetInstanceDetailResponseBody) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyData struct {
-	// The ACL ID for public network access control.
+	// The public network access control ACL ID.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// aliyun-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Indicates whether high availability is enabled.
+	// Indicates whether high availability (HA) is enabled.
 	//
 	// example:
 	//
@@ -201,6 +201,18 @@ type GetInstanceDetailResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
+	// - creating: Being created.
+	//
+	// - running: Running.
+	//
+	// - updating: Being upgraded. This includes specification changes, configuration changes, and public network access toggling.
+	//
+	// - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+	//
+	// - deleting: Being deleted.
+	//
+	// - deleted: Deleted.
+	//
 	// example:
 	//
 	// running
@@ -209,8 +221,13 @@ type GetInstanceDetailResponseBodyData struct {
 	MaintainablePeriod *string `json:"MaintainablePeriod,omitempty" xml:"MaintainablePeriod,omitempty"`
 	// The configuration information.
 	MeasureConfig *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
-	MultiZoneMode *string                                         `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
+	// Single,Two,Three
+	MultiZoneMode *string `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
 	// The node type. Valid values:
+	//
+	// 	- perf: compute-optimized instance.
+	//
+	// 	- cap: storage-optimized.
 	//
 	// example:
 	//
@@ -222,13 +239,21 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// true
 	OpenPublicNet *bool `json:"OpenPublicNet,omitempty" xml:"OpenPublicNet,omitempty"`
-	// The specification details. Valid values:
+	// The edition. Valid values:
+	//
+	// - trial: Trial Edition.
+	//
+	// - standard: Standard Edition.
 	//
 	// example:
 	//
 	// standard
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The billing type. Valid values:
+	//
+	// - 0: pay-as-you-go.
+	//
+	// - 1: subscription.
 	//
 	// example:
 	//
@@ -240,7 +265,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// milvus_milvuspre_public_cn
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -297,7 +322,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// vsw-123xxx
 	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
-	// The zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -664,13 +689,25 @@ type GetInstanceDetailResponseBodyDataClusterInfo struct {
 	//
 	// 3000
 	AttuPort *int32 `json:"AttuPort,omitempty" xml:"AttuPort,omitempty"`
-	// The public network address.
+	// The HTTPS download URL of the CA certificate.
+	//
+	// example:
+	//
+	// https://example.com/ca.pem
+	CaCertUrl *string `json:"CaCertUrl,omitempty" xml:"CaCertUrl,omitempty"`
+	// The certificate trust type.
+	//
+	// example:
+	//
+	// privateCA
+	CertificateTrust *string `json:"CertificateTrust,omitempty" xml:"CertificateTrust,omitempty"`
+	// The public endpoint.
 	//
 	// example:
 	//
 	// c-123xxx-.milvus.aliyuncs.com
 	InternetUrl *string `json:"InternetUrl,omitempty" xml:"InternetUrl,omitempty"`
-	// The internal network address.
+	// The internal endpoint.
 	//
 	// example:
 	//
@@ -684,7 +721,7 @@ type GetInstanceDetailResponseBodyDataClusterInfo struct {
 	//
 	// 125.15 GB
 	OssStorageSize *string `json:"OssStorageSize,omitempty" xml:"OssStorageSize,omitempty"`
-	// The timestamp of the OSS storage metric.
+	// The OSS storage metric timestamp.
 	//
 	// example:
 	//
@@ -696,6 +733,24 @@ type GetInstanceDetailResponseBodyDataClusterInfo struct {
 	//
 	// 19530
 	ProxyPort *int32 `json:"ProxyPort,omitempty" xml:"ProxyPort,omitempty"`
+	// The TLS public domain name.
+	//
+	// example:
+	//
+	// c-example.secure.milvus.aliyuncs.com
+	SecureInternetUrl *string `json:"SecureInternetUrl,omitempty" xml:"SecureInternetUrl,omitempty"`
+	// The TLS internal domain name.
+	//
+	// example:
+	//
+	// c-example-internal.secure.milvus.aliyuncs.com
+	SecureIntranetUrl *string `json:"SecureIntranetUrl,omitempty" xml:"SecureIntranetUrl,omitempty"`
+	// The TLS connection port.
+	//
+	// example:
+	//
+	// 443
+	SecureProxyPort *int32 `json:"SecureProxyPort,omitempty" xml:"SecureProxyPort,omitempty"`
 	// The total number of CUs.
 	//
 	// example:
@@ -722,6 +777,14 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetAttuPort() *int32 {
 	return s.AttuPort
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetCaCertUrl() *string {
+	return s.CaCertUrl
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetCertificateTrust() *string {
+	return s.CertificateTrust
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetInternetUrl() *string {
 	return s.InternetUrl
 }
@@ -746,6 +809,18 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetProxyPort() *int32 {
 	return s.ProxyPort
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetSecureInternetUrl() *string {
+	return s.SecureInternetUrl
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetSecureIntranetUrl() *string {
+	return s.SecureIntranetUrl
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetSecureProxyPort() *int32 {
+	return s.SecureProxyPort
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetTotalCuNum() *int32 {
 	return s.TotalCuNum
 }
@@ -756,6 +831,16 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfo) GetTotalDiskSize() *int32
 
 func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetAttuPort(v int32) *GetInstanceDetailResponseBodyDataClusterInfo {
 	s.AttuPort = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetCaCertUrl(v string) *GetInstanceDetailResponseBodyDataClusterInfo {
+	s.CaCertUrl = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetCertificateTrust(v string) *GetInstanceDetailResponseBodyDataClusterInfo {
+	s.CertificateTrust = &v
 	return s
 }
 
@@ -789,6 +874,21 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetProxyPort(v int32) *Ge
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetSecureInternetUrl(v string) *GetInstanceDetailResponseBodyDataClusterInfo {
+	s.SecureInternetUrl = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetSecureIntranetUrl(v string) *GetInstanceDetailResponseBodyDataClusterInfo {
+	s.SecureIntranetUrl = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetSecureProxyPort(v int32) *GetInstanceDetailResponseBodyDataClusterInfo {
+	s.SecureProxyPort = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfo) SetTotalCuNum(v int32) *GetInstanceDetailResponseBodyDataClusterInfo {
 	s.TotalCuNum = &v
 	return s
@@ -815,6 +915,18 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfo) Validate() error {
 type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	// The component type. Valid values:
 	//
+	// - standalone
+	//
+	// - proxy
+	//
+	// - mix_coordinator
+	//
+	// - query
+	//
+	// - index
+	//
+	// - data
+	//
 	// example:
 	//
 	// standalone
@@ -825,7 +937,11 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	//
 	// 8
 	CuNum *int32 `json:"CuNum,omitempty" xml:"CuNum,omitempty"`
-	// The CU specifications. Valid values:
+	// The CU specification. Valid values:
+	//
+	// 	- 4: 1 core corresponds to 4 GB.
+	//
+	// 	- 8: 1 core corresponds to 8 GB.
 	//
 	// example:
 	//
@@ -851,14 +967,20 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	// 2
 	Replica *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
 	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Indicates whether the data cloud disk is enabled.
+	//
 	// example:
 	//
 	// true
 	DataDiskEnabled *bool `json:"dataDiskEnabled,omitempty" xml:"dataDiskEnabled,omitempty"`
+	// The data cloud disk capacity, in GiB.
+	//
 	// example:
 	//
 	// 100
 	DataDiskSize *int32 `json:"dataDiskSize,omitempty" xml:"dataDiskSize,omitempty"`
+	// The StorageClass of the data cloud disk.
+	//
 	// example:
 	//
 	// alicloud-disk-essd-pl1
@@ -1086,61 +1208,61 @@ func (s *GetInstanceDetailResponseBodyDataHighAvailability) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDataMeasureConfig struct {
-	// The number of CUs for the Data node.
+	// The number of CUs for data nodes.
 	//
 	// example:
 	//
 	// 4
 	DataNodeCuNum *int32 `json:"DataNodeCuNum,omitempty" xml:"DataNodeCuNum,omitempty"`
-	// The number of replicas for the Data node.
+	// The number of replicas for data nodes.
 	//
 	// example:
 	//
 	// 2
 	DataNodeReplica *int32 `json:"DataNodeReplica,omitempty" xml:"DataNodeReplica,omitempty"`
-	// The number of CUs for the Index node.
+	// The number of CUs for index nodes.
 	//
 	// example:
 	//
 	// 4
 	IndexNodeCuNum *int32 `json:"IndexNodeCuNum,omitempty" xml:"IndexNodeCuNum,omitempty"`
-	// The number of replicas for the Index node.
+	// The number of replicas for index nodes.
 	//
 	// example:
 	//
 	// 2
 	IndexNodeReplica *int32 `json:"IndexNodeReplica,omitempty" xml:"IndexNodeReplica,omitempty"`
-	// The number of CUs for the MixCoordinator node.
+	// The number of CUs for MixCoordinator nodes.
 	//
 	// example:
 	//
 	// 4
 	MixCoodinatorNodeCuNum *int32 `json:"MixCoodinatorNodeCuNum,omitempty" xml:"MixCoodinatorNodeCuNum,omitempty"`
-	// The number of replicas for the MixCoordinator node.
+	// The number of replicas for MixCoordinator nodes.
 	//
 	// example:
 	//
 	// 2
 	MixCoodinatorNodeReplica *int32 `json:"MixCoodinatorNodeReplica,omitempty" xml:"MixCoodinatorNodeReplica,omitempty"`
-	// The number of CUs for the Proxy node.
+	// The number of CUs for proxy nodes.
 	//
 	// example:
 	//
 	// 4
 	ProxyNodeCuNum *int32 `json:"ProxyNodeCuNum,omitempty" xml:"ProxyNodeCuNum,omitempty"`
-	// The number of replicas for the Proxy node.
+	// The number of replicas for proxy nodes.
 	//
 	// example:
 	//
 	// 2
 	ProxyNodeReplica *int32 `json:"ProxyNodeReplica,omitempty" xml:"ProxyNodeReplica,omitempty"`
-	// The number of CUs for the Query node.
+	// The number of CUs for query nodes.
 	//
 	// example:
 	//
 	// 4
 	QueryNodeCuNum *int32 `json:"QueryNodeCuNum,omitempty" xml:"QueryNodeCuNum,omitempty"`
-	// The number of replicas for the Query node.
+	// The number of replicas for query nodes.
 	//
 	// example:
 	//

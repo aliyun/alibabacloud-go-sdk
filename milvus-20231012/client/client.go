@@ -25,17 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"eu-central-1":   dara.String("milvus.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou": dara.String("milvus.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("milvus.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("milvus.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":    dara.String("milvus.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("milvus.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("milvus.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":     dara.String("milvus.cn-beijing.aliyuncs.com"),
-		"ap-southeast-1": dara.String("milvus.ap-southeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -367,6 +356,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !dara.IsNil(request.MultiZoneMode) {
 		body["multiZoneMode"] = request.MultiZoneMode
+	}
+
+	if !dara.IsNil(request.NodeType) {
+		body["nodeType"] = request.NodeType
 	}
 
 	if !dara.IsNil(request.PaymentDuration) {

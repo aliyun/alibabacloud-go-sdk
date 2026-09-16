@@ -43,6 +43,8 @@ type iCreateInstanceRequest interface {
 	GetLoadReplicas() *int32
 	SetMultiZoneMode(v string) *CreateInstanceRequest
 	GetMultiZoneMode() *string
+	SetNodeType(v string) *CreateInstanceRequest
+	GetNodeType() *string
 	SetPaymentDuration(v int32) *CreateInstanceRequest
 	GetPaymentDuration() *int32
 	SetPaymentDurationUnit(v string) *CreateInstanceRequest
@@ -82,11 +84,15 @@ type CreateInstanceRequest struct {
 	AutoBackup *bool `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
 	// Specifies whether to enable automatic payment. Default value: true. Valid values:
 	//
+	// - true: Automatic payment is enabled.
+	//
+	// - false: Only an order is generated. No payment is made.
+	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when the payment type is set to Subscription.
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when the billing method of the instance is Subscription.
 	//
 	// example:
 	//
@@ -106,7 +112,7 @@ type CreateInstanceRequest struct {
 	//
 	//     maxPartitionNum: 4096
 	Configuration *string `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// The database administrator password.
+	// The database password.
 	//
 	// example:
 	//
@@ -126,7 +132,7 @@ type CreateInstanceRequest struct {
 	//
 	// false
 	Encrypted *bool `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// Specifies whether to enable high availability.
+	// Specifies whether to enable high availability (HA).
 	//
 	// example:
 	//
@@ -158,13 +164,19 @@ type CreateInstanceRequest struct {
 	//
 	// Single
 	MultiZoneMode *string `json:"multiZoneMode,omitempty" xml:"multiZoneMode,omitempty"`
+	// The node type. Valid values for Milvus standalone: perf, enhanced, and cap. Default value: perf.
+	//
+	// example:
+	//
+	// perf
+	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 	// The payment duration.
 	//
 	// example:
 	//
 	// 1
 	PaymentDuration *int32 `json:"paymentDuration,omitempty" xml:"paymentDuration,omitempty"`
-	// The payment duration unit.
+	// The unit of the payment duration.
 	//
 	// example:
 	//
@@ -298,6 +310,10 @@ func (s *CreateInstanceRequest) GetMultiZoneMode() *string {
 	return s.MultiZoneMode
 }
 
+func (s *CreateInstanceRequest) GetNodeType() *string {
+	return s.NodeType
+}
+
 func (s *CreateInstanceRequest) GetPaymentDuration() *int32 {
 	return s.PaymentDuration
 }
@@ -423,6 +439,11 @@ func (s *CreateInstanceRequest) SetMultiZoneMode(v string) *CreateInstanceReques
 	return s
 }
 
+func (s *CreateInstanceRequest) SetNodeType(v string) *CreateInstanceRequest {
+	s.NodeType = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetPaymentDuration(v int32) *CreateInstanceRequest {
 	s.PaymentDuration = &v
 	return s
@@ -522,7 +543,7 @@ type CreateInstanceRequestBackupRestoreInfo struct {
 	//
 	// Backup1
 	BackupName *string `json:"backupName,omitempty" xml:"backupName,omitempty"`
-	// The ID of the source backup cluster.
+	// The ID of the source cluster for the backup.
 	//
 	// example:
 	//
@@ -583,9 +604,10 @@ type CreateInstanceRequestComponents struct {
 	// example:
 	//
 	// general
-	CuType   *string                                  `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	CuType *string `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	// The QueryNode data cloud disk configuration. This parameter is supported only when type is set to query.
 	DataDisk *CreateInstanceRequestComponentsDataDisk `json:"dataDisk,omitempty" xml:"dataDisk,omitempty" type:"Struct"`
-	// The disk size type for Query Node. Set to Large for storage-optimized, and Normal for compute-optimized or other configurations.
+	// The disk size type for the Query Node. Set this parameter to Large for storage-optimized instances, and to Normal for compute-optimized and other instance types.
 	//
 	// example:
 	//
@@ -681,18 +703,26 @@ func (s *CreateInstanceRequestComponents) Validate() error {
 }
 
 type CreateInstanceRequestComponentsDataDisk struct {
+	// Specifies whether to enable the QueryNode data cloud disk.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The ESSD performance level (PL). Valid values: PL0, PL1, PL2, and PL3. If StorageClass is not specified, this parameter is used for parsing.
+	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+	// The data cloud disk capacity. Unit: GiB.
+	//
 	// example:
 	//
 	// 100
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The StorageClass of the data cloud disk. Valid values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
+	//
 	// example:
 	//
 	// alicloud-disk-essd-pl1

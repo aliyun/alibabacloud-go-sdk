@@ -254,6 +254,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		body["multiZoneMode"] = request.MultiZoneMode
 	}
 
+	if !dara.IsNil(request.NodeType) {
+		body["nodeType"] = request.NodeType
+	}
+
 	if !dara.IsNil(request.PaymentDuration) {
 		body["paymentDuration"] = request.PaymentDuration
 	}
