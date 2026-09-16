@@ -34,7 +34,7 @@ type DescribeDBResourceGroupRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	//
-	// > If you do not specify this parameter, information about all resource groups in the specified cluster is returned.
+	// > If you do not specify this parameter, the information about all resource groups in the specified cluster is returned.
 	//
 	// example:
 	//

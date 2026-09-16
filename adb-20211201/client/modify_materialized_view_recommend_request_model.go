@@ -56,7 +56,7 @@ type ModifyMaterializedViewRecommendRequest struct {
 	//
 	// task desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The minimum number of slow queries matched by a pattern.
+	// The minimum number of slow queries that a pattern must match.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ModifyMaterializedViewRecommendRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scan time range, in days. Default value: 3.
+	// The time range to scan, in days. Default value: 3.
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type ModifyMaterializedViewRecommendRequest struct {
 	SchedulingDay *string `json:"SchedulingDay,omitempty" xml:"SchedulingDay,omitempty"`
 	// The recommendation policy. Valid values:
 	//
-	// - daliy: scheduled on a daily basis.
+	// - daily: schedules the task on a daily basis.
 	//
-	// - weekly: scheduled on a weekly basis.
+	// - weekly: schedules the task on a weekly basis.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ModifyMaterializedViewRecommendRequest struct {
 	//
 	// 2
 	SlowQueryThreshold *int32 `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
-	// The execution time of the task in the format HH:MM:SS.
+	// The execution time of the task in HH:MM:SS format.
 	//
 	// example:
 	//

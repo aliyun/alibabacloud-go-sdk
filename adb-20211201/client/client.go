@@ -14645,7 +14645,7 @@ func (client *Client) GetFormationCrawler(request *GetFormationCrawlerRequest) (
 
 // Summary:
 //
-// Adds a knowledge base document.
+// Performs knowledge base recall.
 //
 // @param request - GetKnowledgeRecallRequest
 //
@@ -14664,8 +14664,16 @@ func (client *Client) GetKnowledgeRecallWithOptions(request *GetKnowledgeRecallR
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
 	if !dara.IsNil(request.Question) {
 		query["Question"] = request.Question
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	if !dara.IsNil(request.Topk) {
@@ -14701,7 +14709,7 @@ func (client *Client) GetKnowledgeRecallWithOptions(request *GetKnowledgeRecallR
 
 // Summary:
 //
-// Adds a knowledge base document.
+// Performs knowledge base recall.
 //
 // @param request - GetKnowledgeRecallRequest
 //
@@ -20365,7 +20373,7 @@ func (client *Client) ModifyMaterializedView(request *ModifyMaterializedViewRequ
 
 // Summary:
 //
-// Modifies an automatic materialized view recommendation task.
+// Modifies a materialized view automatic recommendation task.
 //
 // @param request - ModifyMaterializedViewRecommendRequest
 //
@@ -20465,7 +20473,7 @@ func (client *Client) ModifyMaterializedViewRecommendWithOptions(request *Modify
 
 // Summary:
 //
-// Modifies an automatic materialized view recommendation task.
+// Modifies a materialized view automatic recommendation task.
 //
 // @param request - ModifyMaterializedViewRecommendRequest
 //
@@ -21280,6 +21288,76 @@ func (client *Client) RemoveKnowledgeTags(request *RemoveKnowledgeTagsRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &RemoveKnowledgeTagsResponse{}
 	_body, _err := client.RemoveKnowledgeTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes authorized users from a knowledge base document.
+//
+// @param request - RemoveKnowledgeUploadUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveKnowledgeUploadUserResponse
+func (client *Client) RemoveKnowledgeUploadUserWithOptions(request *RemoveKnowledgeUploadUserRequest, runtime *dara.RuntimeOptions) (_result *RemoveKnowledgeUploadUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Users) {
+		query["Users"] = request.Users
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveKnowledgeUploadUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveKnowledgeUploadUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes authorized users from a knowledge base document.
+//
+// @param request - RemoveKnowledgeUploadUserRequest
+//
+// @return RemoveKnowledgeUploadUserResponse
+func (client *Client) RemoveKnowledgeUploadUser(request *RemoveKnowledgeUploadUserRequest) (_result *RemoveKnowledgeUploadUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveKnowledgeUploadUserResponse{}
+	_body, _err := client.RemoveKnowledgeUploadUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,6 @@
+2026-09-16 Version: v5.2.1
+- Generated golang 2021-12-01 for adb.
+
 2026-09-07 Version: v5.2.0
 - Support API AddKnowledgeTags.
 - Support API AddKnowledgeUploadUser.

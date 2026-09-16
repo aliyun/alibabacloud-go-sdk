@@ -112,7 +112,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// 16ACU
 	ElasticMinComputeResource *string `json:"ElasticMinComputeResource,omitempty" xml:"ElasticMinComputeResource,omitempty"`
-	// Indicates whether the spot instance feature is enabled for the resource group. When the spot instance feature is enabled, the unit price of resources is reduced, but instances may be released. Valid values:
+	// Indicates whether the spot instance feature is enabled for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Valid values:
 	//
 	// - **True**: The spot instance feature is enabled.
 	//
@@ -146,7 +146,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// - **Job**
 	//
-	// > For more information about resource groups in Data Lakehouse Edition, see [Resource group introduction (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups of the Data Lakehouse Edition, see [Resource group introduction (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//
@@ -232,15 +232,19 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 	// The resource group status. Valid values:
 	//
-	// - **creating**: being created
+	// - **Pending**: being created.
 	//
-	// - **ok**: created
+	// - **Running**: running.
 	//
-	// - **pendingdelete**: pending deletion
+	// - **Scaling**: being scaled.
+	//
+	// - **Deleting**: being deleted.
+	//
+	// - **Deleted**: deleted.
 	//
 	// example:
 	//
-	// ok
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the target resource group.
 	//
@@ -560,7 +564,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
 	//
 	// 2
 	AuthNodeNum *string `json:"AuthNodeNum,omitempty" xml:"AuthNodeNum,omitempty"`
-	// The authentication node specifications.
+	// The node specifications of authentication nodes.
 	//
 	// example:
 	//
@@ -572,7 +576,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
 	//
 	// 1
 	InsertNodeNum *string `json:"InsertNodeNum,omitempty" xml:"InsertNodeNum,omitempty"`
-	// The write node specifications.
+	// The node specifications of write nodes.
 	//
 	// example:
 	//
@@ -590,7 +594,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
 	//
 	// 1
 	SelectNodeNum *string `json:"SelectNodeNum,omitempty" xml:"SelectNodeNum,omitempty"`
-	// The query node specifications.
+	// The node specifications of query nodes.
 	//
 	// example:
 	//
@@ -614,7 +618,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
 	//
 	// 2
 	StorageNodeNum *string `json:"StorageNodeNum,omitempty" xml:"StorageNodeNum,omitempty"`
-	// The storage node specifications.
+	// The node specifications of storage nodes.
 	//
 	// example:
 	//
@@ -784,13 +788,13 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) Validate()
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules struct {
-	// The end time in Cron expression format. The interval must be at least 1 hour.
+	// The end time in cron expression format. The interval must be at least 1 hour.
 	//
 	// example:
 	//
 	// 0 0 3 	- 	- ?
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	// The start time in Cron expression format. The interval must be at least 1 hour.
+	// The start time in cron expression format. The interval must be at least 1 hour.
 	//
 	// example:
 	//
@@ -836,9 +840,9 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
 	AppConfig *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig `json:"AppConfig,omitempty" xml:"AppConfig,omitempty" type:"Struct"`
 	// The Ray cluster type. Valid values:
 	//
-	// - BASIC: basic type, non-high-availability
+	// - BASIC: basic type, non-high-availability.
 	//
-	// - HIGH_AVAILABILITY: high-availability type
+	// - HIGH_AVAILABILITY: high-availability type.
 	//
 	// example:
 	//
@@ -1251,7 +1255,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups struct {
 	//
 	// 1
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
-	// The Ray worker group name.
+	// The name of the Ray worker group.
 	//
 	// example:
 	//
