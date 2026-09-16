@@ -58,11 +58,11 @@ type CreateVpnRouteEntryRequest struct {
 	//
 	// mytest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	//
-	// - **true**: performs a dry run without creating the route. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateVpnRouteEntryRequest struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling).
+	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type CreateVpnRouteEntryRequest struct {
 	//
 	// vpn-bp1a3kqjiiq9legfx****
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" xml:"VpnGatewayId,omitempty"`
-	// The weight of the destination route.
+	// The weight of the destination routing.
 	//
 	// If you use the same VPN gateway instance to establish active/standby IPsec-VPN connections, you can specify the active and standby links by configuring the weight of the destination routing. A destination route with a weight of 100 is the active link by default, and a destination route with a weight of 0 is the standby link by default.
 	//
@@ -138,9 +138,9 @@ type CreateVpnRouteEntryRequest struct {
 	//
 	// - **0**: The IPsec-VPN connection associated with the destination route serves as the standby link.
 	//
-	// > - When you specify active and standby links, the active and standby destination routes must have the same destination CIDR block, different next hops, and different weights.
+	// > - When you specify active/standby links, the active and standby destination routes must have the same destination CIDR block, different next hops, and different weights.
 	//
-	// > - For VPN gateway instances that support dual-tunnel pattern IPsec-VPN connections, you do not need to configure this parameter. A dual-tunnel pattern IPsec-VPN connection contains two tunnels that automatically form active/standby links. You do not need to specify active/standby links by using the parameter settings. If you configure this parameter, the parameter settings do not take effect.
+	// > - For VPN gateway instances that support dual-tunnel pattern IPsec-VPN connections, you do not need to configure this parameter. A dual-tunnel pattern IPsec-VPN connection contains two tunnels that automatically form active/standby links. You do not need to specify active/standby links by configuring the parameter settings. If you configure this parameter, the parameter settings do not take effect.
 	//
 	// This parameter is required.
 	//

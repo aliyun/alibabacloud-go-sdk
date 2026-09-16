@@ -42,7 +42,7 @@ type GetDhcpOptionsSetResponseBody struct {
 	//
 	// 2025-08-21 ***
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The DHCP options configuration.
+	// The DHCP options configuration information.
 	DhcpOptions *GetDhcpOptionsSetResponseBodyDhcpOptions `json:"DhcpOptions,omitempty" xml:"DhcpOptions,omitempty" type:"Struct"`
 	// The description of the DHCP options set.
 	//

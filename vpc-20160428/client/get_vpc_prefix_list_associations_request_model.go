@@ -34,11 +34,11 @@ type GetVpcPrefixListAssociationsRequest struct {
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - Leave this parameter empty for the first query or if no subsequent query is required.
+	// - Leave this parameter empty for the first query or if no next query exists.
 	//
-	// - If a subsequent query is required, set this parameter to the NextToken value returned in the previous API call.
+	// - If a next query exists, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//

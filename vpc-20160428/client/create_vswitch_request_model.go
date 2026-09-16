@@ -11,12 +11,16 @@ type iCreateVSwitchRequest interface {
 	GoString() string
 	SetCidrBlock(v string) *CreateVSwitchRequest
 	GetCidrBlock() *string
+	SetCidrMask(v int32) *CreateVSwitchRequest
+	GetCidrMask() *int32
 	SetClientToken(v string) *CreateVSwitchRequest
 	GetClientToken() *string
 	SetDescription(v string) *CreateVSwitchRequest
 	GetDescription() *string
 	SetIpv6CidrBlock(v int32) *CreateVSwitchRequest
 	GetIpv6CidrBlock() *int32
+	SetIpv6CidrMask(v int32) *CreateVSwitchRequest
+	GetIpv6CidrMask() *int32
 	SetOwnerAccount(v string) *CreateVSwitchRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *CreateVSwitchRequest
@@ -40,29 +44,35 @@ type iCreateVSwitchRequest interface {
 }
 
 type CreateVSwitchRequest struct {
-	// The CIDR block of the vSwitch. The following requirements apply:
+	// The CIDR block of the vSwitch. The vSwitch CIDR block must meet the following requirements:
 	//
 	// - The mask length of the vSwitch CIDR block must be 16 to 29 bits.
 	//
-	// - The CIDR block of the vSwitch must be a subset of the CIDR block of the VPC to which the vSwitch belongs.
+	// - The vSwitch CIDR block must be a subset of the CIDR block of the VPC to which the vSwitch belongs.
 	//
-	// - The CIDR block of the vSwitch cannot be the same as the destination CIDR block of a route in the VPC, but can be a subset of the destination CIDR block.
+	// - The vSwitch CIDR block cannot be the same as the destination CIDR block of a route entry in the VPC, but can be a subset of the destination CIDR block.
 	//
-	// - The CIDR block of the vSwitch cannot be within the following reserved address ranges: 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, or 224.0.0.0/4.
+	// - The vSwitch CIDR block cannot be within the following reserved address ranges: 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, or 224.0.0.0/4.
 	//
 	// > After a vSwitch is created, you cannot modify its CIDR block.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
 	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The mask length of the IPv4 CIDR block of the vSwitch.
+	//
+	// > The mask length of the vSwitch IPv4 CIDR block must be 16 to 29 bits. You must specify at least one of CidrBlock and CidrMask.
+	//
+	// example:
+	//
+	// 24
+	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may vary for each API request.
 	//
 	// example:
 	//
@@ -78,15 +88,23 @@ type CreateVSwitchRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The last 8 bits of the IPv6 CIDR block of the vSwitch. Valid values: **0*	- to **255**.
 	//
-	// You can specify this parameter only when the VPC to which the vSwitch belongs has IPv6 enabled. This allows you to assign an IPv6 CIDR block to the vSwitch. After the IPv6 CIDR block is allocated, it cannot be changed. Make sure that the CIDR block does not overlap with those of other vSwitches in the VPC.
+	// You can specify this parameter to assign an IPv6 CIDR block to the vSwitch only when the VPC to which the vSwitch belongs has IPv6 enabled. After the IPv6 CIDR block is assigned, it cannot be changed to another CIDR block. Make sure that the CIDR block does not overlap with those of other vSwitches in the VPC.
 	//
 	// example:
 	//
 	// 12
-	Ipv6CidrBlock *int32  `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the vSwitch that you want to create.
+	Ipv6CidrBlock *int32 `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// The subnet mask of the IPv6 CIDR block of the vSwitch. You can specify this parameter to assign an IPv6 CIDR block to the vSwitch only when the VPC to which the vSwitch belongs has IPv6 enabled.
+	//
+	// > Only 64 is supported.
+	//
+	// example:
+	//
+	// 64
+	Ipv6CidrMask *int32  `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the vSwitch to create.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
@@ -144,6 +162,10 @@ func (s *CreateVSwitchRequest) GetCidrBlock() *string {
 	return s.CidrBlock
 }
 
+func (s *CreateVSwitchRequest) GetCidrMask() *int32 {
+	return s.CidrMask
+}
+
 func (s *CreateVSwitchRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -154,6 +176,10 @@ func (s *CreateVSwitchRequest) GetDescription() *string {
 
 func (s *CreateVSwitchRequest) GetIpv6CidrBlock() *int32 {
 	return s.Ipv6CidrBlock
+}
+
+func (s *CreateVSwitchRequest) GetIpv6CidrMask() *int32 {
+	return s.Ipv6CidrMask
 }
 
 func (s *CreateVSwitchRequest) GetOwnerAccount() *string {
@@ -201,6 +227,11 @@ func (s *CreateVSwitchRequest) SetCidrBlock(v string) *CreateVSwitchRequest {
 	return s
 }
 
+func (s *CreateVSwitchRequest) SetCidrMask(v int32) *CreateVSwitchRequest {
+	s.CidrMask = &v
+	return s
+}
+
 func (s *CreateVSwitchRequest) SetClientToken(v string) *CreateVSwitchRequest {
 	s.ClientToken = &v
 	return s
@@ -213,6 +244,11 @@ func (s *CreateVSwitchRequest) SetDescription(v string) *CreateVSwitchRequest {
 
 func (s *CreateVSwitchRequest) SetIpv6CidrBlock(v int32) *CreateVSwitchRequest {
 	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *CreateVSwitchRequest) SetIpv6CidrMask(v int32) *CreateVSwitchRequest {
+	s.Ipv6CidrMask = &v
 	return s
 }
 

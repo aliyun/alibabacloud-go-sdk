@@ -22,7 +22,7 @@ type GetVpcRouteEntrySummaryResponseBody struct {
 	//
 	// DC668356-BCB4-42FD-9BC3-FA2B2E04B634
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about all route tables returned.
+	// The information about all queried route tables.
 	RouteEntrySummarys []*GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarys `json:"RouteEntrySummarys,omitempty" xml:"RouteEntrySummarys,omitempty" type:"Repeated"`
 }
 
@@ -126,21 +126,21 @@ type GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys struct {
 	//
 	// - **all**: all route types.
 	//
-	// - **custom**: custom route.
+	// - **custom**: custom routes.
 	//
-	// - **system**: system route.
+	// - **system**: system routes.
 	//
-	// - **bgp**: BGP route.
+	// - **bgp**: BGP routes.
 	//
-	// - **cen**: Cloud Enterprise Network (CEN) route.
+	// - **cen**: Cloud Enterprise Network (CEN) routes.
 	//
-	// - **type_vpn_bgp_internal**: VPN BGP route.
+	// - **type_vpn_bgp_internal**: BGP routes of VPN.
 	//
-	// - **ECR**: Express Connect Router (ECR) route.
+	// - **ECR**: Express Connect Router (ECR) routes.
 	//
 	//
 	//
-	// > The returned system routes are the system routes in the system route table.
+	// > The returned system routes are the system routes under the system route table.
 	//
 	// example:
 	//

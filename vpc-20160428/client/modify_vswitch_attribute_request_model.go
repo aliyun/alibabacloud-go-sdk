@@ -15,6 +15,8 @@ type iModifyVSwitchAttributeRequest interface {
 	GetEnableIPv6() *bool
 	SetIpv6CidrBlock(v int32) *ModifyVSwitchAttributeRequest
 	GetIpv6CidrBlock() *int32
+	SetIpv6CidrMask(v int32) *ModifyVSwitchAttributeRequest
+	GetIpv6CidrMask() *int32
 	SetOwnerAccount(v string) *ModifyVSwitchAttributeRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyVSwitchAttributeRequest
@@ -44,9 +46,9 @@ type ModifyVSwitchAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable IPv6 for the vSwitch. Valid values:
 	//
-	// - **true**: enables IPv6. The VPC to which the vSwitch belongs must have IPv6 enabled. You must also specify Ipv6CidrBlock to assign an IPv6 CIDR block to the vSwitch.
+	// - **true**: Enables IPv6. IPv6 must be enabled for the VPC to which the vSwitch belongs. You must also specify Ipv6CidrBlock to allocate an IPv6 CIDR block to the vSwitch.
 	//
-	// - **false*	- (default): disables IPv6. When you disable IPv6 for the vSwitch, make sure that no IPv6 addresses are in use. You cannot specify Ipv6CidrBlock at the same time.
+	// - **false*	- (default): Disables IPv6. Before you disable IPv6 for the vSwitch, make sure that no IPv6 addresses are in use. You cannot specify Ipv6CidrBlock at the same time.
 	//
 	// example:
 	//
@@ -54,14 +56,22 @@ type ModifyVSwitchAttributeRequest struct {
 	EnableIPv6 *bool `json:"EnableIPv6,omitempty" xml:"EnableIPv6,omitempty"`
 	// The last 8 bits of the IPv6 CIDR block of the vSwitch. Valid values: **0*	- to **255**.
 	//
-	// You can specify this parameter only when the VPC to which the vSwitch belongs has IPv6 enabled. This parameter is used to assign an IPv6 CIDR block to the vSwitch. After the IPv6 CIDR block is allocated, it cannot be changed to another CIDR block. Make sure that the CIDR block does not overlap with those of other vSwitches in the same VPC.
+	// You can set this parameter only when IPv6 is enabled for the VPC to which the vSwitch belongs. This parameter allows you to allocate an IPv6 CIDR block to the vSwitch. After the IPv6 CIDR block is allocated, it cannot be changed to another CIDR block. Make sure that the CIDR block does not overlap with those of other vSwitches in the same VPC.
 	//
 	// example:
 	//
 	// 10
-	Ipv6CidrBlock *int32  `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Ipv6CidrBlock *int32 `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// The IPv6 CIDR block mask of the vSwitch. You can set this parameter only when IPv6 is enabled for the VPC to which the vSwitch belongs.
+	//
+	// > Only 64 is supported.
+	//
+	// example:
+	//
+	// 64
+	Ipv6CidrMask *int32  `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the vSwitch. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// example:
@@ -116,6 +126,10 @@ func (s *ModifyVSwitchAttributeRequest) GetIpv6CidrBlock() *int32 {
 	return s.Ipv6CidrBlock
 }
 
+func (s *ModifyVSwitchAttributeRequest) GetIpv6CidrMask() *int32 {
+	return s.Ipv6CidrMask
+}
+
 func (s *ModifyVSwitchAttributeRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -160,6 +174,11 @@ func (s *ModifyVSwitchAttributeRequest) SetEnableIPv6(v bool) *ModifyVSwitchAttr
 
 func (s *ModifyVSwitchAttributeRequest) SetIpv6CidrBlock(v int32) *ModifyVSwitchAttributeRequest {
 	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *ModifyVSwitchAttributeRequest) SetIpv6CidrMask(v int32) *ModifyVSwitchAttributeRequest {
+	s.Ipv6CidrMask = &v
 	return s
 }
 

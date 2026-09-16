@@ -127,9 +127,9 @@ type CreateFlowLogRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource whose traffic you want to catch. Valid values:
+	// The type of the resource whose traffic you want to capture. Valid values:
 	//
-	// - **NetworkInterface**: network interface controller (NIC).
+	// - **NetworkInterface**: network interface controllers (NICs).
 	//
 	//
 	//
@@ -147,11 +147,27 @@ type CreateFlowLogRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of the resource.
 	Tag []*CreateFlowLogRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The traffic path to capture. Valid values:
+	// The traffic path to collect. Valid values:
 	//
-	// - **all**: captures all traffic.
+	// - **all*	- (default): all scenarios.
 	//
-	// - **internetGateway**: captures Internet traffic.
+	// - **internetGateway**: traffic to access the Internet.
+	//
+	// - **natGateway**: traffic through NAT gateway.
+	//
+	// - **vpnGateway**: traffic through VPN gateway.
+	//
+	// - **transitRouter**: traffic through TR.
+	//
+	// - **gatewayEndpoint**: traffic through gateway endpoint to access Alibaba Cloud services.
+	//
+	// - **vbr**: traffic through Virtual Border Router (VBR) to access Express Connect circuits.
+	//
+	// - **ecr**: traffic through Express Connect Router (ECR).
+	//
+	// - **ipv4Gateway**: traffic through IPv4 gateway to access the Internet.
+	//
+	// - **gatewayLoadBalancerEndpoint**: traffic through Gateway Load Balancer endpoint (GWLBe).
 	TrafficPath []*string `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Repeated"`
 	// The traffic type to collect. Valid values:
 	//
@@ -163,7 +179,7 @@ type CreateFlowLogRequest struct {
 	//
 	//
 	//
-	// - **Drop**: traffic deny by access control.
+	// - **Drop**: traffic denied by access control.
 	//
 	// This parameter is required.
 	//
@@ -357,7 +373,7 @@ func (s *CreateFlowLogRequest) Validate() error {
 }
 
 type CreateFlowLogRequestTag struct {
-	// The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string for this parameter.
 	//
 	// A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
@@ -365,7 +381,7 @@ type CreateFlowLogRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. You can specify an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//

@@ -52,13 +52,13 @@ type UpdateDhcpOptionsSetAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the DHCP options set.
 	//
-	// The description can be empty or 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+	// The description can be empty or 2 to 256 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// description
 	DhcpOptionsSetDescription *string `json:"DhcpOptionsSetDescription,omitempty" xml:"DhcpOptionsSetDescription,omitempty"`
-	// The ID of the DHCP options set to modify.
+	// The ID of the DHCP options set to be modified.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type UpdateDhcpOptionsSetAttributeRequest struct {
 	DhcpOptionsSetId *string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
 	// The name of the DHCP options set.
 	//
-	// The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -76,25 +76,25 @@ type UpdateDhcpOptionsSetAttributeRequest struct {
 	DhcpOptionsSetName *string `json:"DhcpOptionsSetName,omitempty" xml:"DhcpOptionsSetName,omitempty"`
 	// The hostname suffix, such as example.com.
 	//
-	// After you attach the DHCP options set to associate VPC, the hostname suffix is automatically subject to synchronization to ECS instances in the VPC.
+	// After the DHCP options set is associated with a VPC, the hostname suffix is automatically synchronized to the ECS instances in the VPC.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The IP addresses of DNS servers. You can specify up to four DNS server IP addresses, separated by commas (,).
+	// The IP addresses of DNS servers. You can specify up to four DNS server IP addresses. Separate multiple IP addresses with commas (,).
 	//
-	// >If you do not specify any DNS server IP addresses, ECS instances use the DNS server IP addresses provided by Alibaba Cloud (100.100.2.136 and 100.100.2.138) by default.
+	// >If you do not specify any DNS server IP addresses, ECS instances use the DNS server IP addresses provided by Alibaba Cloud by default (100.100.2.136 and 100.100.2.138).
 	//
 	// example:
 	//
 	// 192.XX.XX.123
 	DomainNameServers *string `json:"DomainNameServers,omitempty" xml:"DomainNameServers,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// **true**: performs a dry run without modifying the DHCP options set configuration. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
 	//
-	// **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the DHCP options set configuration is modified.
+	// **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the DHCP options set configuration is modified.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type UpdateDhcpOptionsSetAttributeRequest struct {
 	LeaseTime    *string `json:"LeaseTime,omitempty" xml:"LeaseTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the DHCP options set to modify. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The region where the DHCP options set to be modified resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

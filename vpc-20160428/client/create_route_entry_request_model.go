@@ -42,9 +42,9 @@ type iCreateRouteEntryRequest interface {
 type CreateRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client. Make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateRouteEntryRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the custom route entry. IPv4 CIDR blocks, IPv6 CIDR blocks, prefix list destination CIDR blocks, and prefix list instance IDs are supported. The following requirements must be met:
+	// The destination CIDR block of the custom route entry. IPv4 CIDR blocks, IPv6 CIDR blocks, destination CIDR blocks of prefix lists, and instance IDs of prefix lists are supported. The following requirements must be met:
 	//
 	//
 	//
@@ -76,9 +76,9 @@ type CreateRouteEntryRequest struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request format, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the route entry. The system checks required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a normal request. After the request passes the dry run, an HTTP 2xx status code is returned and the route is created.
+	// - **false*	- (default): sends the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type CreateRouteEntryRequest struct {
 	//
 	// i-j6c2fp57q8rr4jlu****
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The information about the next hops.
+	// The information about the next hop.
 	NextHopList []*CreateRouteEntryRequestNextHopList `json:"NextHopList,omitempty" xml:"NextHopList,omitempty" type:"Repeated"`
 	// The type of next hop for the custom route entry. Valid values:
 	//
@@ -102,7 +102,7 @@ type CreateRouteEntryRequest struct {
 	//
 	// - **HaVip**: high-availability virtual IP address.
 	//
-	// - **RouterInterface**: router interface.
+	// - **RouterInterface**: vRouter interface.
 	//
 	// - **NetworkInterface**: network interface controller (NIC).
 	//
@@ -320,7 +320,7 @@ type CreateRouteEntryRequestNextHopList struct {
 	//
 	// RouterInterface
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The weight of the next hop of the ECMP route.
+	// The weight of the next hop for the ECMP route.
 	//
 	// example:
 	//

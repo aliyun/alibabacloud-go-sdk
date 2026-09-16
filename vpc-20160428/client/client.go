@@ -62,42 +62,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("vpc-nebula.cn-qingdao-nebula.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("vpc-nebula.cn-shenzhen-cloudstone.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("vpc.aliyuncs.com"),
-		"cn-beijing":                  dara.String("vpc.cn-beijing.aliyuncs.com"),
-		"cn-heyuan":                   dara.String("vpc.cn-heyuan.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("vpc.cn-zhangjiakou.aliyuncs.com"),
-		"ap-northeast-2":              dara.String("vpc.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("vpc.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("vpc.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("vpc.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("vpc.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-6":              dara.String("vpc.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("vpc.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("vpc.ap-southeast-8.aliyuncs.com"),
-		"cn-zhongwei":                 dara.String("vpc.cn-zhongwei.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("vpc.cn-wulanchabu.aliyuncs.com"),
-		"cn-qingdao":                  dara.String("vpc.cn-qingdao.aliyuncs.com"),
-		"cn-wuhan-lr":                 dara.String("vpc.cn-wuhan-lr.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("vpc.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("vpc.cn-hongkong.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("vpc.cn-shenzhen.aliyuncs.com"),
-		"cn-nanjing":                  dara.String("vpc.cn-nanjing.aliyuncs.com"),
-		"cn-fuzhou":                   dara.String("vpc.cn-fuzhou.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("vpc.cn-chengdu.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("vpc.cn-guangzhou.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("vpc.cn-huhehaote.aliyuncs.com"),
-		"us-southeast-1":              dara.String("vpc.us-southeast-1.aliyuncs.com"),
-		"eu-west-1":                   dara.String("vpc.eu-west-1.aliyuncs.com"),
-		"eu-west-2":                   dara.String("vpc.eu-west-2.aliyuncs.com"),
-		"eu-central-1":                dara.String("vpc.eu-central-1.aliyuncs.com"),
-		"us-east-1":                   dara.String("vpc.us-east-1.aliyuncs.com"),
-		"sa-east-1":                   dara.String("vpc.sa-east-1.aliyuncs.com"),
-		"us-west-1":                   dara.String("vpc.us-west-1.aliyuncs.com"),
-		"na-south-1":                  dara.String("vpc.na-south-1.aliyuncs.com"),
-		"me-east-1":                   dara.String("vpc.me-east-1.aliyuncs.com"),
-		"me-central-1":                dara.String("vpc.me-central-1.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("vpc.cn-beijing-finance-1.aliyuncs.com"),
-		"cn-heyuan-acdr-1":            dara.String("vpc.cn-heyuan-acdr-1.aliyuncs.com"),
-		"cn-wulanchabu-gic-1":         dara.String("vpc.cn-wulanchabu-gic-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -426,17 +390,17 @@ func (client *Client) AddBgpNetwork(request *AddBgpNetworkRequest) (_result *Add
 //
 // Description:
 //
-// Before invoking this operation, note the following:
+// Before you invoke this operation, take note of the following items:
 //
 // - When you invoke this operation to add an EIP to an Internet Shared Bandwidth instance, the EIP must meet the following conditions:
 //
-//   - The EIP uses the pay-as-you-go billing method.
+//   - The billing method of the EIP is pay-as-you-go.
 //
 //   - The EIP is in the same region as the Internet Shared Bandwidth instance.
 //
 //   - The line type of the EIP is the same as that of the Internet Shared Bandwidth instance.
 //
-// - The **AddCommonBandwidthPackageIp*	- operation is asynchronous. After you send a request, the system returns a request ID, but the EIP is not yet added to the Internet Shared Bandwidth instance. The addition task is still running in the background. You can invoke [DescribeCommonBandwidthPackages](https://help.aliyun.com/document_detail/120309.html) to query the association status between the Internet Shared Bandwidth instance and the EIP.
+// - The **AddCommonBandwidthPackageIp*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the EIP is not yet added to the Internet Shared Bandwidth instance. The addition node is still running in the background. You can invoke [DescribeCommonBandwidthPackages](https://help.aliyun.com/document_detail/120309.html) to query the association status between the Internet Shared Bandwidth instance and the EIP.
 //
 //   - If the association status is **BINDING**, the Internet Shared Bandwidth instance is being associated with the EIP. In this state, you can only execute query operations.
 //
@@ -524,17 +488,17 @@ func (client *Client) AddCommonBandwidthPackageIpWithOptions(request *AddCommonB
 //
 // Description:
 //
-// Before invoking this operation, note the following:
+// Before you invoke this operation, take note of the following items:
 //
 // - When you invoke this operation to add an EIP to an Internet Shared Bandwidth instance, the EIP must meet the following conditions:
 //
-//   - The EIP uses the pay-as-you-go billing method.
+//   - The billing method of the EIP is pay-as-you-go.
 //
 //   - The EIP is in the same region as the Internet Shared Bandwidth instance.
 //
 //   - The line type of the EIP is the same as that of the Internet Shared Bandwidth instance.
 //
-// - The **AddCommonBandwidthPackageIp*	- operation is asynchronous. After you send a request, the system returns a request ID, but the EIP is not yet added to the Internet Shared Bandwidth instance. The addition task is still running in the background. You can invoke [DescribeCommonBandwidthPackages](https://help.aliyun.com/document_detail/120309.html) to query the association status between the Internet Shared Bandwidth instance and the EIP.
+// - The **AddCommonBandwidthPackageIp*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the EIP is not yet added to the Internet Shared Bandwidth instance. The addition node is still running in the background. You can invoke [DescribeCommonBandwidthPackages](https://help.aliyun.com/document_detail/120309.html) to query the association status between the Internet Shared Bandwidth instance and the EIP.
 //
 //   - If the association status is **BINDING**, the Internet Shared Bandwidth instance is being associated with the EIP. In this state, you can only execute query operations.
 //
@@ -5294,7 +5258,7 @@ func (client *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (_resul
 //
 //   - If the vSwitch is in the **Pending*	- state, the DHCP options set is being configured.
 //
-//   - If the vSwitch is in the **Available*	- state, the DHCP options set is active.
+//   - If the vSwitch is in the **Active*	- state, the DHCP options set is active.
 //
 // @param request - CreateDhcpOptionsSetRequest
 //
@@ -5402,7 +5366,7 @@ func (client *Client) CreateDhcpOptionsSetWithOptions(request *CreateDhcpOptions
 //
 //   - If the vSwitch is in the **Pending*	- state, the DHCP options set is being configured.
 //
-//   - If the vSwitch is in the **Available*	- state, the DHCP options set is active.
+//   - If the vSwitch is in the **Active*	- state, the DHCP options set is active.
 //
 // @param request - CreateDhcpOptionsSetRequest
 //
@@ -6252,7 +6216,7 @@ func (client *Client) CreateFailoverTestJob(request *CreateFailoverTestJobReques
 //
 // Description:
 //
-// *CreateFlowLog*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the flow log is not yet created. The creation node is still running in the background. You can invoke [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
+// *CreateFlowLog*	- is an asynchronous operation. After you call this operation, the system returns an instance ID, but the flow log has not been created yet. The creation task is still running in the background. You can call [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
 //
 // - If the flow log is in the **Activating*	- state, the flow log is being created.
 //
@@ -6372,7 +6336,7 @@ func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, ru
 //
 // Description:
 //
-// *CreateFlowLog*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the flow log is not yet created. The creation node is still running in the background. You can invoke [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
+// *CreateFlowLog*	- is an asynchronous operation. After you call this operation, the system returns an instance ID, but the flow log has not been created yet. The creation task is still running in the background. You can call [DescribeFlowLogs](https://help.aliyun.com/document_detail/448670.html) to query the creation status of the flow log:
 //
 // - If the flow log is in the **Activating*	- state, the flow log is being created.
 //
@@ -9012,25 +8976,25 @@ func (client *Client) CreatePublicIpAddressPool(request *CreatePublicIpAddressPo
 
 // Summary:
 //
-// Creates custom route entries in a route table of a VPC vRouter in a batch.
+// Creates custom route entries in a route table of a vRouter in bulk.
 //
 // Description:
 //
-// - **CreateRouteEntries*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the route has not been created yet. The system continues to run the task in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the creation status of the route:
+// - **CreateRouteEntries*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the custom route entry has not been created yet. The system is still running the task in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the creation status of the custom route entry:
 //
-//   - If the route is in the **Creating*	- state, the route is being created.
+//   - If the custom route entry is in the **Creating*	- state, the custom route entry is being created.
 //
-//   - If the route is in the **Created*	- state, the route is created.
+//   - If the custom route entry is in the **Created*	- state, the custom route entry has been created.
 //
-// - **CreateRouteEntries*	- does not support concurrent batch creation of custom route entries in the same VPC.
+// - **CreateRouteEntries*	- does not support concurrent bulk creation of custom route entries in the same VPC.
 //
-// **Before you add custom route entries to a route table of a VPC vRouter, take note of the following items:**
+// **When you use this operation to add custom route entries to a route table of a vRouter, take note of the following items:**
 //
 // - A route table can contain a maximum of 200 custom route entries.
 //
 // - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be the same as, contain, or be contained by the CIDR block of a vSwitch in the VPC.
 //
-// - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot point to or be contained by 100.64.0.0/10.
+// - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot point to 100.64.0.0/10 or be contained by 100.64.0.0/10.
 //
 // - The destination CIDR blocks (**DstCidrBlock**) of route entries in the same route table must be unique.
 //
@@ -9110,25 +9074,25 @@ func (client *Client) CreateRouteEntriesWithOptions(request *CreateRouteEntriesR
 
 // Summary:
 //
-// Creates custom route entries in a route table of a VPC vRouter in a batch.
+// Creates custom route entries in a route table of a vRouter in bulk.
 //
 // Description:
 //
-// - **CreateRouteEntries*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the route has not been created yet. The system continues to run the task in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the creation status of the route:
+// - **CreateRouteEntries*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the custom route entry has not been created yet. The system is still running the task in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the creation status of the custom route entry:
 //
-//   - If the route is in the **Creating*	- state, the route is being created.
+//   - If the custom route entry is in the **Creating*	- state, the custom route entry is being created.
 //
-//   - If the route is in the **Created*	- state, the route is created.
+//   - If the custom route entry is in the **Created*	- state, the custom route entry has been created.
 //
-// - **CreateRouteEntries*	- does not support concurrent batch creation of custom route entries in the same VPC.
+// - **CreateRouteEntries*	- does not support concurrent bulk creation of custom route entries in the same VPC.
 //
-// **Before you add custom route entries to a route table of a VPC vRouter, take note of the following items:**
+// **When you use this operation to add custom route entries to a route table of a vRouter, take note of the following items:**
 //
 // - A route table can contain a maximum of 200 custom route entries.
 //
 // - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot be the same as, contain, or be contained by the CIDR block of a vSwitch in the VPC.
 //
-// - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot point to or be contained by 100.64.0.0/10.
+// - The destination CIDR block (**DstCidrBlock**) of a custom route entry cannot point to 100.64.0.0/10 or be contained by 100.64.0.0/10.
 //
 // - The destination CIDR blocks (**DstCidrBlock**) of route entries in the same route table must be unique.
 //
@@ -9158,31 +9122,31 @@ func (client *Client) CreateRouteEntries(request *CreateRouteEntriesRequest) (_r
 //
 // Description:
 //
-// - **CreateRouteEntry*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the route has not been created yet. The system is still running the task in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the route creation status:
+// - The **CreateRouteEntry*	- operation is asynchronous. After you send a request, the system returns an instance ID while the custom route entry is still being added in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the status of the custom route entry:
 //
-//   - If the route is in the **Creating*	- state, the route is being created.
+//   - If the custom route entry is in the **Creating*	- state, the custom route entry is being added.
 //
-//   - If the route is in the **Created*	- state, the route has been created.
+//   - If the custom route entry is in the **Created*	- state, the custom route entry has been added.
 //
-// - **CreateRouteEntry*	- does not support concurrent creation of custom route entries in the same VPC or the same VBR.
+// - The **CreateRouteEntry*	- operation does not support concurrent addition of custom route entries in the same VPC or the same VBR.
 //
-// - **CreateRouteEntry*	- may return the **TaskConflict*	- error code in concurrent scenarios. Retry the operation as needed.
+// - The **CreateRouteEntry*	- operation may return the **TaskConflict*	- error code in concurrent scenarios. Retry the request as appropriate.
 //
-// **When you use this operation to add a custom route entry to a route table of a vRouter, take note of the following items:**
+// **When you use this operation to add custom route entries to a route table of a vRouter, take note of the following items:**
 //
-// > When the route to be added is a prefix list route, the route quota is calculated based on the sum of existing routes and the maximum number of entries in the prefix list route. The sum cannot exceed the route quota.
+// > When the route to be added is a prefix list route, the route quota is calculated based on the sum of existing routes and the maximum number of route entries in the prefix list route. The sum cannot exceed the route quota limit.
 //
-// - A route table can contain up to 200 custom route entries.
+// - A route table can contain a maximum of 200 custom route entries.
 //
-// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as a vSwitch CIDR block in the VPC. It can contain a vSwitch CIDR block but cannot be contained by a vSwitch CIDR block.
+// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as the CIDR block of a vSwitch in the VPC. The destination CIDR block can contain the CIDR block of a vSwitch but cannot be contained by the CIDR block of a vSwitch.
 //
-// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the cloud service system route CIDR block `100.64.0.0/10`, but cannot be the same as this CIDR block.
+// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the system route CIDR block `100.64.0.0/10` used by cloud services, but cannot be the same as this CIDR block.
 //
 // <notice>The system route with the destination CIDR block `100.64.0.0/10` is used for communication among cloud services within the VPC. Exercise caution when you configure a more specific route. Incorrect configurations may cause cloud services to become inaccessible.</notice>
 //
-// - The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
+// - Route entries in the same route table cannot have the same destination CIDR block (**DestinationCidrBlock**).
 //
-// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, it is treated as a CIDR block with a 32-bit mask.
+// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, the system processes it with a 32-bit mask.
 //
 // - Multiple custom route entries can point to the same next hop (**NextHopId**).
 //
@@ -9194,27 +9158,27 @@ func (client *Client) CreateRouteEntries(request *CreateRouteEntriesRequest) (_r
 //
 //   - To add an ECMP route, specify the **DestinationCidrBlock*	- and **NextHopList*	- parameters. Do not specify the **NextHopType*	- or **NextHopId*	- parameter.
 //
-// **When you use this operation to add a custom route entry to a route table of a VBR, take note of the following items:**
+// **When you use this operation to add custom route entries to a route table of a Virtual Border Router (VBR), take note of the following items:**
 //
-// - A route table can contain up to 200 custom route entries.
+// - A route table can contain a maximum of 200 custom route entries.
 //
 // - The **NextHopList*	- parameter is not supported.
 //
-// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the cloud service system route CIDR block `100.64.0.0/10`, but cannot be the same as this CIDR block.
+// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the system route CIDR block `100.64.0.0/10` used by cloud services, but cannot be the same as this CIDR block.
 //
 // <notice>The system route with the destination CIDR block `100.64.0.0/10` is used for communication among cloud services within the VPC. Exercise caution when you configure a more specific route. Incorrect configurations may cause cloud services to become inaccessible.</notice>
 //
-// - The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
+// - Route entries in the same route table cannot have the same destination CIDR block (**DestinationCidrBlock**).
 //
-// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, it is treated as a CIDR block with a 32-bit mask.
+// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, the system processes it with a 32-bit mask.
 //
 // - Multiple custom route entries can point to the same next hop (**NextHopId**).
 //
-// - The next hop (**NextHopId**) of a custom route entry must be a vRouter interface associated with the VBR.
+// - The next hop (**NextHopId**) of a custom route entry must be the vRouter interface associated with the VBR.
 //
-// - You can create route entries on a VBR only when the VBR is in the **Active*	- state, the corresponding Express Connect circuit is in the **Enabled*	- state, and the circuit is not locked due to overdue payment.
+// - You can add route entries to a VBR only when the VBR is in the **Active*	- state, the corresponding Express Connect circuit is in the **Enabled*	- state, and the circuit is not locked due to overdue payment.
 //
-// - Only Normal (non-ECMP) routes are supported. Specify the **DestinationCidrBlock**, **NextHopType**, and **NextHopId*	- parameters. Do not specify the **NextHopList*	- parameter.
+// - Only non-ECMP route entries are supported. Specify the **DestinationCidrBlock**, **NextHopType**, and **NextHopId*	- parameters. Do not specify the **NextHopList*	- parameter.
 //
 // @param request - CreateRouteEntryRequest
 //
@@ -9314,31 +9278,31 @@ func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryReque
 //
 // Description:
 //
-// - **CreateRouteEntry*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the route has not been created yet. The system is still running the task in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the route creation status:
+// - The **CreateRouteEntry*	- operation is asynchronous. After you send a request, the system returns an instance ID while the custom route entry is still being added in the background. You can invoke [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the status of the custom route entry:
 //
-//   - If the route is in the **Creating*	- state, the route is being created.
+//   - If the custom route entry is in the **Creating*	- state, the custom route entry is being added.
 //
-//   - If the route is in the **Created*	- state, the route has been created.
+//   - If the custom route entry is in the **Created*	- state, the custom route entry has been added.
 //
-// - **CreateRouteEntry*	- does not support concurrent creation of custom route entries in the same VPC or the same VBR.
+// - The **CreateRouteEntry*	- operation does not support concurrent addition of custom route entries in the same VPC or the same VBR.
 //
-// - **CreateRouteEntry*	- may return the **TaskConflict*	- error code in concurrent scenarios. Retry the operation as needed.
+// - The **CreateRouteEntry*	- operation may return the **TaskConflict*	- error code in concurrent scenarios. Retry the request as appropriate.
 //
-// **When you use this operation to add a custom route entry to a route table of a vRouter, take note of the following items:**
+// **When you use this operation to add custom route entries to a route table of a vRouter, take note of the following items:**
 //
-// > When the route to be added is a prefix list route, the route quota is calculated based on the sum of existing routes and the maximum number of entries in the prefix list route. The sum cannot exceed the route quota.
+// > When the route to be added is a prefix list route, the route quota is calculated based on the sum of existing routes and the maximum number of route entries in the prefix list route. The sum cannot exceed the route quota limit.
 //
-// - A route table can contain up to 200 custom route entries.
+// - A route table can contain a maximum of 200 custom route entries.
 //
-// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as a vSwitch CIDR block in the VPC. It can contain a vSwitch CIDR block but cannot be contained by a vSwitch CIDR block.
+// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry cannot be the same as the CIDR block of a vSwitch in the VPC. The destination CIDR block can contain the CIDR block of a vSwitch but cannot be contained by the CIDR block of a vSwitch.
 //
-// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the cloud service system route CIDR block `100.64.0.0/10`, but cannot be the same as this CIDR block.
+// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the system route CIDR block `100.64.0.0/10` used by cloud services, but cannot be the same as this CIDR block.
 //
 // <notice>The system route with the destination CIDR block `100.64.0.0/10` is used for communication among cloud services within the VPC. Exercise caution when you configure a more specific route. Incorrect configurations may cause cloud services to become inaccessible.</notice>
 //
-// - The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
+// - Route entries in the same route table cannot have the same destination CIDR block (**DestinationCidrBlock**).
 //
-// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, it is treated as a CIDR block with a 32-bit mask.
+// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, the system processes it with a 32-bit mask.
 //
 // - Multiple custom route entries can point to the same next hop (**NextHopId**).
 //
@@ -9350,27 +9314,27 @@ func (client *Client) CreateRouteEntryWithOptions(request *CreateRouteEntryReque
 //
 //   - To add an ECMP route, specify the **DestinationCidrBlock*	- and **NextHopList*	- parameters. Do not specify the **NextHopType*	- or **NextHopId*	- parameter.
 //
-// **When you use this operation to add a custom route entry to a route table of a VBR, take note of the following items:**
+// **When you use this operation to add custom route entries to a route table of a Virtual Border Router (VBR), take note of the following items:**
 //
-// - A route table can contain up to 200 custom route entries.
+// - A route table can contain a maximum of 200 custom route entries.
 //
 // - The **NextHopList*	- parameter is not supported.
 //
-// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the cloud service system route CIDR block `100.64.0.0/10`, but cannot be the same as this CIDR block.
+// - The destination CIDR block (**DestinationCidrBlock**) of a custom route entry can be a more specific CIDR block than the system route CIDR block `100.64.0.0/10` used by cloud services, but cannot be the same as this CIDR block.
 //
 // <notice>The system route with the destination CIDR block `100.64.0.0/10` is used for communication among cloud services within the VPC. Exercise caution when you configure a more specific route. Incorrect configurations may cause cloud services to become inaccessible.</notice>
 //
-// - The destination CIDR blocks (**DestinationCidrBlock**) of route entries in the same route table must be unique.
+// - Route entries in the same route table cannot have the same destination CIDR block (**DestinationCidrBlock**).
 //
-// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, it is treated as a CIDR block with a 32-bit mask.
+// - If the specified destination CIDR block (**DestinationCidrBlock**) is an IP address, the system processes it with a 32-bit mask.
 //
 // - Multiple custom route entries can point to the same next hop (**NextHopId**).
 //
-// - The next hop (**NextHopId**) of a custom route entry must be a vRouter interface associated with the VBR.
+// - The next hop (**NextHopId**) of a custom route entry must be the vRouter interface associated with the VBR.
 //
-// - You can create route entries on a VBR only when the VBR is in the **Active*	- state, the corresponding Express Connect circuit is in the **Enabled*	- state, and the circuit is not locked due to overdue payment.
+// - You can add route entries to a VBR only when the VBR is in the **Active*	- state, the corresponding Express Connect circuit is in the **Enabled*	- state, and the circuit is not locked due to overdue payment.
 //
-// - Only Normal (non-ECMP) routes are supported. Specify the **DestinationCidrBlock**, **NextHopType**, and **NextHopId*	- parameters. Do not specify the **NextHopList*	- parameter.
+// - Only non-ECMP route entries are supported. Specify the **DestinationCidrBlock**, **NextHopType**, and **NextHopId*	- parameters. Do not specify the **NextHopList*	- parameter.
 //
 // @param request - CreateRouteEntryRequest
 //
@@ -9518,17 +9482,17 @@ func (client *Client) CreateRouteTable(request *CreateRouteTableRequest) (_resul
 //
 // Description:
 //
-// - **CreateRouteTargetGroup*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the routing target group instance is not yet created. The creation node continues in the background. You can invoke **ListRouteTargetGroup*	- to query the creation status of the routing target group:
+// - **CreateRouteTargetGroup*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the routing target group instance is not yet created. The creation task continues in the background. You can invoke **ListRouteTargetGroup*	- to query the creation status of the routing target group:
 //
 //   - If the routing target group is in the **Pending*	- state, the routing target group is being created.
 //
 //   - If the routing target group is in the **Available**, **Unavailable**, **Switched**, or **Abnormal*	- state, the routing target group is created.
 //
-// - **Active/standby pattern**: When you create a routing target group, you must configure primary and secondary instances that are in different zones and of the same type.
+// - **Active/standby mode**: When you create a routing target group, configure primary and secondary instances that are in different zones and of the same type.
 //
-// - **Primary instance**: The weight is 100. The primary instance carries all traffic under normal conditions and takes effect when health checks are successful.
+// - **Primary instance**: The weight is 100. The primary instance handles all traffic under normal conditions and takes effect when health checks are successful.
 //
-// - **Secondary instance**: The weight is 0. The secondary instance takes over traffic after the primary instance fails and serves as disaster recovery and backup.
+// - **Secondary instance**: The weight is 0. The secondary instance takes over traffic when the primary instance fails, serving as disaster recovery and backup.
 //
 // @param request - CreateRouteTargetGroupRequest
 //
@@ -9608,17 +9572,17 @@ func (client *Client) CreateRouteTargetGroupWithOptions(request *CreateRouteTarg
 //
 // Description:
 //
-// - **CreateRouteTargetGroup*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the routing target group instance is not yet created. The creation node continues in the background. You can invoke **ListRouteTargetGroup*	- to query the creation status of the routing target group:
+// - **CreateRouteTargetGroup*	- is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the routing target group instance is not yet created. The creation task continues in the background. You can invoke **ListRouteTargetGroup*	- to query the creation status of the routing target group:
 //
 //   - If the routing target group is in the **Pending*	- state, the routing target group is being created.
 //
 //   - If the routing target group is in the **Available**, **Unavailable**, **Switched**, or **Abnormal*	- state, the routing target group is created.
 //
-// - **Active/standby pattern**: When you create a routing target group, you must configure primary and secondary instances that are in different zones and of the same type.
+// - **Active/standby mode**: When you create a routing target group, configure primary and secondary instances that are in different zones and of the same type.
 //
-// - **Primary instance**: The weight is 100. The primary instance carries all traffic under normal conditions and takes effect when health checks are successful.
+// - **Primary instance**: The weight is 100. The primary instance handles all traffic under normal conditions and takes effect when health checks are successful.
 //
-// - **Secondary instance**: The weight is 0. The secondary instance takes over traffic after the primary instance fails and serves as disaster recovery and backup.
+// - **Secondary instance**: The weight is 0. The secondary instance takes over traffic when the primary instance fails, serving as disaster recovery and backup.
 //
 // @param request - CreateRouteTargetGroupRequest
 //
@@ -10666,7 +10630,7 @@ func (client *Client) CreateTrafficMirrorSession(request *CreateTrafficMirrorSes
 //
 // - The number of vSwitches in each VPC cannot exceed 150.
 //
-// - The first IP address and the last three IP addresses of each vSwitch CIDR block are reserved by the system. For example, the system reserved IP addresses of 192.168.1.0/24 are 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+// - The first and last three IP addresses of each vSwitch CIDR block are reserved by the system. For example, the system reserved IP addresses of 192.168.1.0/24 are 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
 //
 // - The number of cloud service instances in a vSwitch cannot exceed the remaining available cloud service instances in the VPC (15,000 minus the current number of cloud service instances).
 //
@@ -10703,6 +10667,10 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 		query["CidrBlock"] = request.CidrBlock
 	}
 
+	if !dara.IsNil(request.CidrMask) {
+		query["CidrMask"] = request.CidrMask
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -10713,6 +10681,10 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 
 	if !dara.IsNil(request.Ipv6CidrBlock) {
 		query["Ipv6CidrBlock"] = request.Ipv6CidrBlock
+	}
+
+	if !dara.IsNil(request.Ipv6CidrMask) {
+		query["Ipv6CidrMask"] = request.Ipv6CidrMask
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -10788,7 +10760,7 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 //
 // - The number of vSwitches in each VPC cannot exceed 150.
 //
-// - The first IP address and the last three IP addresses of each vSwitch CIDR block are reserved by the system. For example, the system reserved IP addresses of 192.168.1.0/24 are 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+// - The first and last three IP addresses of each vSwitch CIDR block are reserved by the system. For example, the system reserved IP addresses of 192.168.1.0/24 are 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
 //
 // - The number of cloud service instances in a vSwitch cannot exceed the remaining available cloud service instances in the VPC (15,000 minus the current number of cloud service instances).
 //
@@ -10824,21 +10796,21 @@ func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a reserved CIDR block for a vSwitch.
+// Creates a reserved CIDR block for a vSwitch by calling the CreateVSwitchCidrReservation operation.
 //
 // Description:
 //
 // When you invoke this operation to create a reserved CIDR block for a vSwitch, take note of the following items:
 //
-// - The maximum number of reserved IPv4 and IPv6 CIDR blocks in a VPC is 100 each.
+// - The maximum number of reserved IPv4 CIDR blocks and reserved IPv6 CIDR blocks in a VPC is 100 each.
 //
 // - A reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
 //
-//   - IPv4 CIDR block: The first and last three IP addresses of the vSwitch are system reserved IP addresses.
+//   - IPv4 CIDR block: The first IP address and the last three IP addresses of the vSwitch are system reserved IP addresses.
 //
-//   - IPv6 CIDR block: The first and last nine IP addresses of the vSwitch are system reserved IP addresses.
+//   - IPv6 CIDR block: The first IP address and the last nine IP addresses of the vSwitch are system reserved IP addresses.
 //
-// - The **CreateVSwitchCidrReservation*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the reserved CIDR block for a vSwitch has not been created. The background node is still in progress. You can invoke [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the creation status of the reserved CIDR block for a vSwitch:
+// - The **CreateVSwitchCidrReservation*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the reserved CIDR block for a vSwitch has not been created. The system continues to run the background node. You can invoke [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the creation status of the reserved CIDR block for a vSwitch:
 //
 //   - If the reserved CIDR block for a vSwitch is in the **Assigning*	- state, the reserved CIDR block for a vSwitch is being allocated.
 //
@@ -10946,21 +10918,21 @@ func (client *Client) CreateVSwitchCidrReservationWithOptions(request *CreateVSw
 
 // Summary:
 //
-// Creates a reserved CIDR block for a vSwitch.
+// Creates a reserved CIDR block for a vSwitch by calling the CreateVSwitchCidrReservation operation.
 //
 // Description:
 //
 // When you invoke this operation to create a reserved CIDR block for a vSwitch, take note of the following items:
 //
-// - The maximum number of reserved IPv4 and IPv6 CIDR blocks in a VPC is 100 each.
+// - The maximum number of reserved IPv4 CIDR blocks and reserved IPv6 CIDR blocks in a VPC is 100 each.
 //
 // - A reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
 //
-//   - IPv4 CIDR block: The first and last three IP addresses of the vSwitch are system reserved IP addresses.
+//   - IPv4 CIDR block: The first IP address and the last three IP addresses of the vSwitch are system reserved IP addresses.
 //
-//   - IPv6 CIDR block: The first and last nine IP addresses of the vSwitch are system reserved IP addresses.
+//   - IPv6 CIDR block: The first IP address and the last nine IP addresses of the vSwitch are system reserved IP addresses.
 //
-// - The **CreateVSwitchCidrReservation*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the reserved CIDR block for a vSwitch has not been created. The background node is still in progress. You can invoke [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the creation status of the reserved CIDR block for a vSwitch:
+// - The **CreateVSwitchCidrReservation*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the reserved CIDR block for a vSwitch has not been created. The system continues to run the background node. You can invoke [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the creation status of the reserved CIDR block for a vSwitch:
 //
 //   - If the reserved CIDR block for a vSwitch is in the **Assigning*	- state, the reserved CIDR block for a vSwitch is being allocated.
 //
@@ -12618,11 +12590,13 @@ func (client *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (_resul
 //
 // ### Limits
 //
-// - Policy-based routes whose destination CIDR block is 0.0.0.0/0 are not supported.
+// - For single-tunnel VPN gateways:
 //
-// - Do not add policy-based routes whose destination CIDR block is 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. Such policy-based routes may cause the console to fail to display instance status of IPsec-VPN connections or cause IPsec-VPN connection negotiation to be failed.
+//   - 0.0.0.0/0 is not supported as the destination CIDR block of a policy-based route.
 //
-// - The **CreateVpnPbrRouteEntry*	- operation is asynchronous. After you invoke this operation, the system returns the information about the policy-based route, but the routing has not been created. The creation node is still running in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query instance status of the VPN gateway instance to determine the creation status of the policy-based route:
+//   - CIDR blocks that overlap with 100.64.0.0/10 (including 100.64.0.0/10 itself, its subnets, and parent CIDR blocks that contain it) are not supported as the destination CIDR block of a policy-based route.
+//
+// - **CreateVpnPbrRouteEntry*	- is an asynchronous operation. After you send a request, the system returns the policy-based route information, but the route has not been created yet. The system continues to create the route in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the instance status of the VPN gateway to determine the creation status of the policy-based routing node:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the policy-based route is being created.
 //
@@ -12744,11 +12718,13 @@ func (client *Client) CreateVpnPbrRouteEntryWithOptions(request *CreateVpnPbrRou
 //
 // ### Limits
 //
-// - Policy-based routes whose destination CIDR block is 0.0.0.0/0 are not supported.
+// - For single-tunnel VPN gateways:
 //
-// - Do not add policy-based routes whose destination CIDR block is 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. Such policy-based routes may cause the console to fail to display instance status of IPsec-VPN connections or cause IPsec-VPN connection negotiation to be failed.
+//   - 0.0.0.0/0 is not supported as the destination CIDR block of a policy-based route.
 //
-// - The **CreateVpnPbrRouteEntry*	- operation is asynchronous. After you invoke this operation, the system returns the information about the policy-based route, but the routing has not been created. The creation node is still running in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query instance status of the VPN gateway instance to determine the creation status of the policy-based route:
+//   - CIDR blocks that overlap with 100.64.0.0/10 (including 100.64.0.0/10 itself, its subnets, and parent CIDR blocks that contain it) are not supported as the destination CIDR block of a policy-based route.
+//
+// - **CreateVpnPbrRouteEntry*	- is an asynchronous operation. After you send a request, the system returns the policy-based route information, but the route has not been created yet. The system continues to create the route in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the instance status of the VPN gateway to determine the creation status of the policy-based routing node:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the policy-based route is being created.
 //
@@ -12772,7 +12748,7 @@ func (client *Client) CreateVpnPbrRouteEntry(request *CreateVpnPbrRouteEntryRequ
 
 // Summary:
 //
-// Creates a destination route for a VPN gateway instance by calling the CreateVpnRouteEntry operation. After a destination route is created, the VPN gateway instance matches the destination route based on the destination IP address of the traffic and then forwards the traffic based on the matched destination route.
+// Creates a destination route for a VPN gateway instance. After the destination route is created, the VPN gateway instance matches the destination route based on the destination IP address of the traffic and then forwards the traffic based on the matched destination route.
 //
 // Description:
 //
@@ -12784,11 +12760,11 @@ func (client *Client) CreateVpnPbrRouteEntry(request *CreateVpnPbrRouteEntryRequ
 //
 // ### Limits
 //
-// - Destination routes whose destination CIDR block is 0.0.0.0/0 are not supported.
+// - 0.0.0.0/0 is not supported as the destination CIDR block of a destination route.
 //
-// - Do not add destination routes whose destination CIDR block is 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. These routes may cause the console to fail to display the status of IPsec-VPN connections or cause IPsec-VPN connection negotiation to be failed.
+// - For single-tunnel VPN gateways, CIDR blocks that overlap with 100.64.0.0/10 (including 100.64.0.0/10 itself, its subnets, and parent CIDR blocks that contain it) are not supported as the destination CIDR block of a destination route.
 //
-// - The **CreateVpnRouteEntry*	- operation is asynchronous. After you send a request, the system returns the destination route configuration but the destination route is not yet created. The creation node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the creation status of the destination route:
+// - The **CreateVpnRouteEntry*	- operation is asynchronous. After you send a request, the system returns the destination routing configuration but the destination route is not yet created. The creation node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the creation status of the destination route:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the destination route is being created.
 //
@@ -12890,7 +12866,7 @@ func (client *Client) CreateVpnRouteEntryWithOptions(request *CreateVpnRouteEntr
 
 // Summary:
 //
-// Creates a destination route for a VPN gateway instance by calling the CreateVpnRouteEntry operation. After a destination route is created, the VPN gateway instance matches the destination route based on the destination IP address of the traffic and then forwards the traffic based on the matched destination route.
+// Creates a destination route for a VPN gateway instance. After the destination route is created, the VPN gateway instance matches the destination route based on the destination IP address of the traffic and then forwards the traffic based on the matched destination route.
 //
 // Description:
 //
@@ -12902,11 +12878,11 @@ func (client *Client) CreateVpnRouteEntryWithOptions(request *CreateVpnRouteEntr
 //
 // ### Limits
 //
-// - Destination routes whose destination CIDR block is 0.0.0.0/0 are not supported.
+// - 0.0.0.0/0 is not supported as the destination CIDR block of a destination route.
 //
-// - Do not add destination routes whose destination CIDR block is 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. These routes may cause the console to fail to display the status of IPsec-VPN connections or cause IPsec-VPN connection negotiation to be failed.
+// - For single-tunnel VPN gateways, CIDR blocks that overlap with 100.64.0.0/10 (including 100.64.0.0/10 itself, its subnets, and parent CIDR blocks that contain it) are not supported as the destination CIDR block of a destination route.
 //
-// - The **CreateVpnRouteEntry*	- operation is asynchronous. After you send a request, the system returns the destination route configuration but the destination route is not yet created. The creation node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the creation status of the destination route:
+// - The **CreateVpnRouteEntry*	- operation is asynchronous. After you send a request, the system returns the destination routing configuration but the destination route is not yet created. The creation node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the creation status of the destination route:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the destination route is being created.
 //
@@ -16364,23 +16340,23 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlock(request *DeletePublicIp
 
 // Summary:
 //
-// Calls DeleteRouteEntries to batch delete custom route entries.
+// Deletes custom route entries in a batch.
 //
 // Description:
 //
-// When you call this operation to delete routing entries, note the following items:
+// When you call this operation to delete route entries, take note of the following items:
 //
-// - Only routing entries in the **Available*	- state can be deleted.
+// - Only route entries in the **Available*	- state can be deleted.
 //
-// - Routing entries cannot be deleted if the VPC that contains the route table is creating or deleting a vSwitch or routing entry.
+// - Route entries cannot be deleted if the VPC to which the route table belongs has a vSwitch or route entry being created or deleted.
 //
-// - The **DeleteRouteEntries*	- operation is asynchronous. After you send a request, the system returns a request ID, but the routing entry is not yet deleted. The deletion task is still running in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the routing entry:
+// - The **DeleteRouteEntries*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the route entry is not yet deleted. The deletion task runs in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the route entry:
 //
-//   - If the routing entry is in the **Deleting*	- state, the routing entry is being deleted.
+//   - If the route entry is in the **Deleting*	- state, the route entry is being deleted.
 //
-//   - If the specified routing entry cannot be found, the routing entry is deleted.
+//   - If the specified route entry cannot be found, the route entry is deleted.
 //
-// - The **DeleteRouteEntries*	- operation does not support concurrent batch deletion of routing entries in route tables within the same VPC.
+// - The **DeleteRouteEntries*	- operation does not support concurrent batch deletion of route entries from route tables in the same VPC.
 //
 // @param request - DeleteRouteEntriesRequest
 //
@@ -16452,23 +16428,23 @@ func (client *Client) DeleteRouteEntriesWithOptions(request *DeleteRouteEntriesR
 
 // Summary:
 //
-// Calls DeleteRouteEntries to batch delete custom route entries.
+// Deletes custom route entries in a batch.
 //
 // Description:
 //
-// When you call this operation to delete routing entries, note the following items:
+// When you call this operation to delete route entries, take note of the following items:
 //
-// - Only routing entries in the **Available*	- state can be deleted.
+// - Only route entries in the **Available*	- state can be deleted.
 //
-// - Routing entries cannot be deleted if the VPC that contains the route table is creating or deleting a vSwitch or routing entry.
+// - Route entries cannot be deleted if the VPC to which the route table belongs has a vSwitch or route entry being created or deleted.
 //
-// - The **DeleteRouteEntries*	- operation is asynchronous. After you send a request, the system returns a request ID, but the routing entry is not yet deleted. The deletion task is still running in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the routing entry:
+// - The **DeleteRouteEntries*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the route entry is not yet deleted. The deletion task runs in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the route entry:
 //
-//   - If the routing entry is in the **Deleting*	- state, the routing entry is being deleted.
+//   - If the route entry is in the **Deleting*	- state, the route entry is being deleted.
 //
-//   - If the specified routing entry cannot be found, the routing entry is deleted.
+//   - If the specified route entry cannot be found, the route entry is deleted.
 //
-// - The **DeleteRouteEntries*	- operation does not support concurrent batch deletion of routing entries in route tables within the same VPC.
+// - The **DeleteRouteEntries*	- operation does not support concurrent batch deletion of route entries from route tables in the same VPC.
 //
 // @param request - DeleteRouteEntriesRequest
 //
@@ -16486,19 +16462,19 @@ func (client *Client) DeleteRouteEntries(request *DeleteRouteEntriesRequest) (_r
 
 // Summary:
 //
-// Invokes the DeleteRouteEntry operation to delete a route from the route table of a VPC vRouter or Virtual Border Router (VBR).
+// Invokes the DeleteRouteEntry operation to delete a route from the route table of a vRouter or Virtual Border Router (VBR).
 //
 // Description:
 //
-// When you call this operation to delete a route, note the following items:
+// When you call this operation to delete a route, take note of the following items:
 //
 // - Only routes in the **Available*	- state can be deleted.
 //
-// - A route cannot be deleted if the VPC that contains the route table is creating or deleting a vSwitch or route entry.
+// - A route cannot be deleted while the VPC that contains the route table is creating or deleting a vSwitch or route.
 //
 // - To delete a route from the route table of a VBR, call the [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) operation to query the **NextHopId*	- of the route that you want to delete, and then call this operation to delete the route.
 //
-// - The **DeleteRouteEntry*	- operation is asynchronous. After you send a request, the system returns a request ID, but the route has not been deleted yet. The deletion task is still running in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the route:
+// - The **DeleteRouteEntry*	- operation is asynchronous. After you send a request, the system returns a request ID, but the route has not been deleted yet. The deletion task runs in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the route:
 //
 //   - If the route is in the **Deleting*	- state, the route is being deleted.
 //
@@ -16588,19 +16564,19 @@ func (client *Client) DeleteRouteEntryWithOptions(request *DeleteRouteEntryReque
 
 // Summary:
 //
-// Invokes the DeleteRouteEntry operation to delete a route from the route table of a VPC vRouter or Virtual Border Router (VBR).
+// Invokes the DeleteRouteEntry operation to delete a route from the route table of a vRouter or Virtual Border Router (VBR).
 //
 // Description:
 //
-// When you call this operation to delete a route, note the following items:
+// When you call this operation to delete a route, take note of the following items:
 //
 // - Only routes in the **Available*	- state can be deleted.
 //
-// - A route cannot be deleted if the VPC that contains the route table is creating or deleting a vSwitch or route entry.
+// - A route cannot be deleted while the VPC that contains the route table is creating or deleting a vSwitch or route.
 //
 // - To delete a route from the route table of a VBR, call the [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) operation to query the **NextHopId*	- of the route that you want to delete, and then call this operation to delete the route.
 //
-// - The **DeleteRouteEntry*	- operation is asynchronous. After you send a request, the system returns a request ID, but the route has not been deleted yet. The deletion task is still running in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the route:
+// - The **DeleteRouteEntry*	- operation is asynchronous. After you send a request, the system returns a request ID, but the route has not been deleted yet. The deletion task runs in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the route:
 //
 //   - If the route is in the **Deleting*	- state, the route is being deleted.
 //
@@ -36011,7 +35987,7 @@ func (client *Client) ModifyPhysicalConnectionAttribute(request *ModifyPhysicalC
 
 // Summary:
 //
-// Invokes the ModifyRouteEntry operation to modify custom route entry name, description, and route next hop.
+// Calls the ModifyRouteEntry operation to modify the name, description, and next hop of a custom route entry.
 //
 // Description:
 //
@@ -36109,7 +36085,7 @@ func (client *Client) ModifyRouteEntryWithOptions(request *ModifyRouteEntryReque
 
 // Summary:
 //
-// Invokes the ModifyRouteEntry operation to modify custom route entry name, description, and route next hop.
+// Calls the ModifyRouteEntry operation to modify the name, description, and next hop of a custom route entry.
 //
 // Description:
 //
@@ -37088,6 +37064,10 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 
 	if !dara.IsNil(request.Ipv6CidrBlock) {
 		query["Ipv6CidrBlock"] = request.Ipv6CidrBlock
+	}
+
+	if !dara.IsNil(request.Ipv6CidrMask) {
+		query["Ipv6CidrMask"] = request.Ipv6CidrMask
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -40739,25 +40719,25 @@ func (client *Client) ReplaceVpcDhcpOptionsSet(request *ReplaceVpcDhcpOptionsSet
 
 // Summary:
 //
-// Retries the delivery of the latest prefix list by calling the RetryVpcPrefixListAssociation operation.
+// Redeploys the latest prefix list by calling the RetryVpcPrefixListAssociation operation.
 //
 // Description:
 //
-// - After you modify the information of a prefix list instance, if the route table associated with the prefix list instance does not automatically update the prefix list instance information, you can call this operation to redeliver the latest prefix list instance to the associated route table.
+// - After you modify the information of a prefix list instance, if the route table associated with the prefix list instance does not automatically update the prefix list instance information, you can call this operation to redeploy the latest prefix list instance to the associated route table.
 //
-// - The **RetryVpcPrefixListAssociation*	- operation is asynchronous. After you send a request, the system returns a request ID, but the latest prefix list instance has not been redelivered yet. The redelivery task is still running in the background. You can call [GetVpcPrefixListAssociations](https://help.aliyun.com/document_detail/445478.html) to query the latest delivery status of the prefix list instance:
+// - The **RetryVpcPrefixListAssociation*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the latest prefix list instance is not yet redeployed, and the redeployment task is still running in the background. You can call [GetVpcPrefixListAssociations](https://help.aliyun.com/document_detail/445478.html) to query the latest deployment status of the prefix list instance:
 //
-//   - If the delivery status is **Modifying**, the latest prefix list instance is being redelivered.
+//   - If the deployment status of the prefix list instance is **Modifying**, the latest prefix list instance is being redeployed.
 //
-//   - If the delivery status is **ModifyFailed**, the latest prefix list instance failed to be redelivered.
+//   - If the deployment status of the prefix list instance is **ModifyFailed**, the latest prefix list instance failed to be redeployed.
 //
-//   - If the delivery status is **Created**, the latest prefix list instance is redelivered.
+//   - If the deployment status of the prefix list instance is **Created**, the latest prefix list instance is redeployed.
 //
-// - The **RetryVpcPrefixListAssociation*	- operation does not support concurrent retry delivery of the latest prefix list instance for the same prefix list.
+// - The **RetryVpcPrefixListAssociation*	- operation does not support concurrent retry of redeploying the latest prefix list instance for the same prefix list.
 //
 // ## Scenarios
 //
-// When you modify a prefix list instance, the modification succeeds as long as the CIDR blocks are valid, no conflicting CIDR blocks exist, and the maximum number of entries for the prefix list instance is not exceeded. However, the reference may fail due to issues on the referencing side, such as quota limits or a route conflict with existing routing entries. After you resolve the failed issue on the referencing side, invoke the **RetryVpcPrefixListAssociation*	- operation to redeliver the latest prefix list instance.
+// When you modify a prefix list instance, the modification succeeds as long as the CIDR blocks are valid, no conflicting CIDR blocks exist, and the maximum number of entries for the prefix list instance is not exceeded. However, the reference may fail due to issues on the referencing side, such as quota limits or a route conflict with existing routing entries. After you resolve the issue on the referencing side, call the **RetryVpcPrefixListAssociation*	- operation to redeploy the latest prefix list instance.
 //
 // @param request - RetryVpcPrefixListAssociationRequest
 //
@@ -40837,25 +40817,25 @@ func (client *Client) RetryVpcPrefixListAssociationWithOptions(request *RetryVpc
 
 // Summary:
 //
-// Retries the delivery of the latest prefix list by calling the RetryVpcPrefixListAssociation operation.
+// Redeploys the latest prefix list by calling the RetryVpcPrefixListAssociation operation.
 //
 // Description:
 //
-// - After you modify the information of a prefix list instance, if the route table associated with the prefix list instance does not automatically update the prefix list instance information, you can call this operation to redeliver the latest prefix list instance to the associated route table.
+// - After you modify the information of a prefix list instance, if the route table associated with the prefix list instance does not automatically update the prefix list instance information, you can call this operation to redeploy the latest prefix list instance to the associated route table.
 //
-// - The **RetryVpcPrefixListAssociation*	- operation is asynchronous. After you send a request, the system returns a request ID, but the latest prefix list instance has not been redelivered yet. The redelivery task is still running in the background. You can call [GetVpcPrefixListAssociations](https://help.aliyun.com/document_detail/445478.html) to query the latest delivery status of the prefix list instance:
+// - The **RetryVpcPrefixListAssociation*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the latest prefix list instance is not yet redeployed, and the redeployment task is still running in the background. You can call [GetVpcPrefixListAssociations](https://help.aliyun.com/document_detail/445478.html) to query the latest deployment status of the prefix list instance:
 //
-//   - If the delivery status is **Modifying**, the latest prefix list instance is being redelivered.
+//   - If the deployment status of the prefix list instance is **Modifying**, the latest prefix list instance is being redeployed.
 //
-//   - If the delivery status is **ModifyFailed**, the latest prefix list instance failed to be redelivered.
+//   - If the deployment status of the prefix list instance is **ModifyFailed**, the latest prefix list instance failed to be redeployed.
 //
-//   - If the delivery status is **Created**, the latest prefix list instance is redelivered.
+//   - If the deployment status of the prefix list instance is **Created**, the latest prefix list instance is redeployed.
 //
-// - The **RetryVpcPrefixListAssociation*	- operation does not support concurrent retry delivery of the latest prefix list instance for the same prefix list.
+// - The **RetryVpcPrefixListAssociation*	- operation does not support concurrent retry of redeploying the latest prefix list instance for the same prefix list.
 //
 // ## Scenarios
 //
-// When you modify a prefix list instance, the modification succeeds as long as the CIDR blocks are valid, no conflicting CIDR blocks exist, and the maximum number of entries for the prefix list instance is not exceeded. However, the reference may fail due to issues on the referencing side, such as quota limits or a route conflict with existing routing entries. After you resolve the failed issue on the referencing side, invoke the **RetryVpcPrefixListAssociation*	- operation to redeliver the latest prefix list instance.
+// When you modify a prefix list instance, the modification succeeds as long as the CIDR blocks are valid, no conflicting CIDR blocks exist, and the maximum number of entries for the prefix list instance is not exceeded. However, the reference may fail due to issues on the referencing side, such as quota limits or a route conflict with existing routing entries. After you resolve the issue on the referencing side, call the **RetryVpcPrefixListAssociation*	- operation to redeploy the latest prefix list instance.
 //
 // @param request - RetryVpcPrefixListAssociationRequest
 //
@@ -43045,7 +43025,7 @@ func (client *Client) UntagResourcesForExpressConnect(request *UntagResourcesFor
 
 // Summary:
 //
-// Modifies the configuration of a DHCP options set.
+// Modifies the configuration of a DHCP options set by calling the UpdateDhcpOptionsSetAttribute operation.
 //
 // @param request - UpdateDhcpOptionsSetAttributeRequest
 //
@@ -43141,7 +43121,7 @@ func (client *Client) UpdateDhcpOptionsSetAttributeWithOptions(request *UpdateDh
 
 // Summary:
 //
-// Modifies the configuration of a DHCP options set.
+// Modifies the configuration of a DHCP options set by calling the UpdateDhcpOptionsSetAttribute operation.
 //
 // @param request - UpdateDhcpOptionsSetAttributeRequest
 //

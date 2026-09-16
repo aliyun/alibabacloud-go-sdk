@@ -15,12 +15,14 @@ type iDescribeRouteEntryListResponseBody interface {
 	GetRequestId() *string
 	SetRouteEntrys(v *DescribeRouteEntryListResponseBodyRouteEntrys) *DescribeRouteEntryListResponseBody
 	GetRouteEntrys() *DescribeRouteEntryListResponseBodyRouteEntrys
+	SetTotalCount(v int32) *DescribeRouteEntryListResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeRouteEntryListResponseBody struct {
-	// The pagination token. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query exists.
+	// - If **NextToken*	- is empty, no subsequent request exists.
 	//
 	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
@@ -35,6 +37,7 @@ type DescribeRouteEntryListResponseBody struct {
 	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteEntrys *DescribeRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Struct"`
+	TotalCount  *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRouteEntryListResponseBody) String() string {
@@ -57,6 +60,10 @@ func (s *DescribeRouteEntryListResponseBody) GetRouteEntrys() *DescribeRouteEntr
 	return s.RouteEntrys
 }
 
+func (s *DescribeRouteEntryListResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
 func (s *DescribeRouteEntryListResponseBody) SetNextToken(v string) *DescribeRouteEntryListResponseBody {
 	s.NextToken = &v
 	return s
@@ -69,6 +76,11 @@ func (s *DescribeRouteEntryListResponseBody) SetRequestId(v string) *DescribeRou
 
 func (s *DescribeRouteEntryListResponseBody) SetRouteEntrys(v *DescribeRouteEntryListResponseBodyRouteEntrys) *DescribeRouteEntryListResponseBody {
 	s.RouteEntrys = v
+	return s
+}
+
+func (s *DescribeRouteEntryListResponseBody) SetTotalCount(v int32) *DescribeRouteEntryListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 

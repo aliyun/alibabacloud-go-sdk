@@ -28,11 +28,11 @@ type GetVpcPrefixListAssociationsResponseBody struct {
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The pagination token. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query is required.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- has a return value, the value is the token for the next query.
 	//
 	// example:
 	//
@@ -175,22 +175,28 @@ type GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation struct {
 	ResourceUid *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
 	// The association status of the prefix list. Valid values:
 	//
-	// - **Created**: succeeded.
+	// - **Created**: Succeeded.
 	//
-	// - **ModifyFailed**: not associated with the latest version.
+	// - **ModifyFailed**: Not associated with the latest version.
 	//
-	// - **Creating**: being created.
+	// - **Creating**: Being created.
 	//
-	// - **Modifying**: being modified.
+	// - **Modifying**: Being modified.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: Being deleted.
 	//
-	// - **Deleted**: deleted.
+	// - **Deleted**: Deleted.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of CIDR blocks in the prefix list that are not effective for the associated resource.
+	//
+	// example:
+	//
+	// 192.124.0.0/16
+	SuppressedList *string `json:"SuppressedList,omitempty" xml:"SuppressedList,omitempty"`
 }
 
 func (s GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) String() string {
@@ -237,6 +243,10 @@ func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) GetStatu
 	return s.Status
 }
 
+func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) GetSuppressedList() *string {
+	return s.SuppressedList
+}
+
 func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetCidrList(v string) *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation {
 	s.CidrList = &v
 	return s
@@ -279,6 +289,11 @@ func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetResou
 
 func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetStatus(v string) *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation {
 	s.Status = &v
+	return s
+}
+
+func (s *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation) SetSuppressedList(v string) *GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation {
+	s.SuppressedList = &v
 	return s
 }
 

@@ -60,9 +60,9 @@ type ModifyRouteEntryRequest struct {
 	//
 	// **true**: performs a dry run without modifying the route. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// **false*	- (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the route is modified.
+	// **false*	- (default): sends a normal request. If the check succeeds, a 2xx HTTP status code is returned and the route is modified.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The new next hop instance ID of the route entry.
+	// The instance ID of the new next hop of the route entry.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ModifyRouteEntryRequest struct {
 	//
 	// - **RouterInterface**: vRouter interface.
 	//
-	// - **NetworkInterface**: elastic network interfaces (ENIs).
+	// - **NetworkInterface**: elastic network interface (ENI).
 	//
 	// - **VpnGateway**: VPN gateway.
 	//
@@ -84,7 +84,7 @@ type ModifyRouteEntryRequest struct {
 	//
 	// - **NatGateway**: NAT gateway.
 	//
-	// - **Attachment**: forward router.
+	// - **Attachment**: transit router.
 	//
 	// - **VpcPeer**: VPC peering connection.
 	//

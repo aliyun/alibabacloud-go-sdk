@@ -34,7 +34,7 @@ type DeleteRouteEntriesResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of route entries that were successfully deleted.
+	// The number of route entries that were deleted.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type DeleteRouteEntriesResponseBodyFailedRouteEntries struct {
 	//
 	// 47.100.XX.XX/24
 	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
-	// The error code of the failure.
+	// The error code returned for the failure.
 	//
 	// example:
 	//
 	// VPC_ROUTER_ENTRY_NOT_EXIST
 	FailedCode *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
-	// The error message of the failure.
+	// The error message returned for the failure.
 	//
 	// example:
 	//

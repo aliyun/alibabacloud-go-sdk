@@ -36,7 +36,7 @@ type CreateRouteEntriesResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The instance IDs returned for the successfully added custom route entries. The routing information is included.
+	// The routing instance IDs returned for the custom route entries that were successfully added.
 	RouteEntryIds []*string `json:"RouteEntryIds,omitempty" xml:"RouteEntryIds,omitempty" type:"Repeated"`
 	// The number of route entries that were successfully added.
 	//
@@ -119,13 +119,13 @@ type CreateRouteEntriesResponseBodyFailedRouteEntries struct {
 	//
 	// 192.168.0.0/24
 	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
-	// The error code.
+	// The error code of the failure.
 	//
 	// example:
 	//
 	// VPC_ROUTE_ENTRY_CIDR_BLOCK_DUPLICATE
 	FailedCode *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
-	// The error message.
+	// The error message of the failure.
 	//
 	// example:
 	//

@@ -44,13 +44,13 @@ type AddCommonBandwidthPackageIpRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run without actually executing the operation.
+	// Specifies whether to perform a dry run, without performing the actual request.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type AddCommonBandwidthPackageIpRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the EIP instance.
 	//
-	// You can call [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) to query the ID of the EIP instance.
+	// You can call [DescribeEipAddresses](https://www.alibabacloud.com/help/en/eip/developer-reference/api-vpc-2016-04-28-describeeipaddresses-eips) to query the ID of the EIP instance.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type AddCommonBandwidthPackageIpRequest struct {
 	//
 	// eip-2zeerraiwb7uqwed****
 	IpInstanceId *string `json:"IpInstanceId,omitempty" xml:"IpInstanceId,omitempty"`
-	// The IP type. Valid values: **EIP**, which indicates that an EIP is added to the Internet Shared Bandwidth instance.
+	// The IP type. Set the value to **EIP**, which specifies that an EIP is added to the Internet Shared Bandwidth instance.
 	//
 	// example:
 	//

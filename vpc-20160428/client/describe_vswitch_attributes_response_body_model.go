@@ -50,7 +50,7 @@ type iDescribeVSwitchAttributesResponseBody interface {
 }
 
 type DescribeVSwitchAttributesResponseBody struct {
-	// The number of active IP addresses.
+	// The active IP address count.
 	//
 	// example:
 	//

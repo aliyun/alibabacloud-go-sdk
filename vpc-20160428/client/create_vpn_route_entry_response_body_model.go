@@ -32,7 +32,7 @@ type iCreateVpnRouteEntryResponseBody interface {
 type CreateVpnRouteEntryResponseBody struct {
 	// The timestamp when the destination route was created. Unit: milliseconds.
 	//
-	// The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the destination route was created.
+	// The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC, to the time when the destination route was created.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateVpnRouteEntryResponseBody struct {
 	//
 	// vco-bp15oes1py4i66rmd****
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
-	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling).
+	// The tunneling protocol. Set the value to **Ipsec*	- (IPsec tunneling protocol).
 	//
 	// example:
 	//

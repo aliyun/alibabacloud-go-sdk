@@ -54,11 +54,11 @@ type CreateVSwitchCidrReservationRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: sends a check request without creating the reserved CIDR block for a vSwitch. The system checks whether the required parameters are specified, the request format is valid, and the service limits are not exceeded. If the check fails, the corresponding error message is returned. If the check passes, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a Normal request. After the check passes, an HTTP 2xx status code is returned and the vSwitch reserved CIDR block for a vSwitch is created.
+	// - **false*	- (default): sends a Normal request. If the check succeeds, an HTTP 2xx status code is returned and the reserved CIDR block for a vSwitch is created.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateVSwitchCidrReservationRequest struct {
 	//
 	// - **IPv6**
 	//
-	// > You do not need to specify this parameter when creating an IPv4 reserved CIDR block for a vSwitch. This parameter is required when creating an IPv6 reserved CIDR block for a vSwitch.
+	// > You do not need to specify this parameter when you create an IPv4 reserved CIDR block for a vSwitch. This parameter is required when you create an IPv6 reserved CIDR block for a vSwitch.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type CreateVSwitchCidrReservationRequest struct {
 	//
 	// > - You must specify either the **VSwitchCidrReservationMask*	- parameter or the **VSwitchCidrReservationCidr*	- parameter.
 	//
-	// > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch.
+	// > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type CreateVSwitchCidrReservationRequest struct {
 	VSwitchCidrReservationDescription *string `json:"VSwitchCidrReservationDescription,omitempty" xml:"VSwitchCidrReservationDescription,omitempty"`
 	// The mask of the reserved CIDR block for a vSwitch.
 	//
-	// - If **IpVersion*	- is set to **IPv4**, the mask length of the reserved CIDR block must be at least 2 bits longer than the IPv4 CIDR block mask of the vSwitch and cannot exceed 28.
+	// - If **IpVersion*	- is set to **IPv4**, the mask length of the reserved CIDR block for a vSwitch must be at least 2 bits longer than the mask of the IPv4 CIDR block of the vSwitch and cannot exceed 28.
 	//
-	// - If **IpVersion*	- is set to **IPv6**, the mask length of the reserved CIDR block must be longer than the IPv6 CIDR block mask of the vSwitch and cannot exceed 80.
+	// - If **IpVersion*	- is set to **IPv6**, the mask length of the reserved CIDR block for a vSwitch must be longer than the mask of the IPv6 CIDR block of the vSwitch and cannot exceed 80.
 	//
 	// > - You must specify either the **VSwitchCidrReservationMask*	- parameter or the **VSwitchCidrReservationCidr*	- parameter.
 	//
-	// > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch.
+	// > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type CreateVSwitchCidrReservationRequest struct {
 	VSwitchCidrReservationName *string `json:"VSwitchCidrReservationName,omitempty" xml:"VSwitchCidrReservationName,omitempty"`
 	// The type of the reserved CIDR block for a vSwitch. Valid values: **prefix**, which indicates that IP addresses are allocated by CIDR block.
 	//
-	// > When users or cloud services automatically assign CIDR blocks to elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR block for a vSwitch. If the IP addresses in the reserved CIDR block for a vSwitch are exhausted, the system returns an error.
+	// > When users or cloud services automatically assign CIDR blocks to elastic network interface controllers (NICs), the CIDR blocks must be allocated from the reserved CIDR block. If the IP addresses in the reserved CIDR block are exhausted, the system returns an error.
 	//
 	// example:
 	//
 	// prefix
 	VSwitchCidrReservationType *string `json:"VSwitchCidrReservationType,omitempty" xml:"VSwitchCidrReservationType,omitempty"`
-	// The ID of the vSwitch for which you want to create a reserved CIDR block for a vSwitch.
+	// The ID of the vSwitch to which the reserved CIDR block for a vSwitch belongs.
 	//
 	// This parameter is required.
 	//
@@ -334,7 +334,7 @@ type CreateVSwitchCidrReservationRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, the value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain `http://` or `https://`.
 	//
