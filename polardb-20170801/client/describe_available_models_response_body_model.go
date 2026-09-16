@@ -15,8 +15,12 @@ type iDescribeAvailableModelsResponseBody interface {
 	GetEngineVersion() *string
 	SetItems(v []*DescribeAvailableModelsResponseBodyItems) *DescribeAvailableModelsResponseBody
 	GetItems() []*DescribeAvailableModelsResponseBodyItems
+	SetModelType(v string) *DescribeAvailableModelsResponseBody
+	GetModelType() *string
 	SetRequestId(v string) *DescribeAvailableModelsResponseBody
 	GetRequestId() *string
+	SetTuneArch(v string) *DescribeAvailableModelsResponseBody
+	GetTuneArch() *string
 }
 
 type DescribeAvailableModelsResponseBody struct {
@@ -34,12 +38,24 @@ type DescribeAvailableModelsResponseBody struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The list of models.
 	Items []*DescribeAvailableModelsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The model type corresponding to the request.
+	//
+	// example:
+	//
+	// custom
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 3AA69096-757C-4647-B36C-29EBC2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The model fine-tuning architecture.
+	//
+	// example:
+	//
+	// swift
+	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 }
 
 func (s DescribeAvailableModelsResponseBody) String() string {
@@ -62,8 +78,16 @@ func (s *DescribeAvailableModelsResponseBody) GetItems() []*DescribeAvailableMod
 	return s.Items
 }
 
+func (s *DescribeAvailableModelsResponseBody) GetModelType() *string {
+	return s.ModelType
+}
+
 func (s *DescribeAvailableModelsResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeAvailableModelsResponseBody) GetTuneArch() *string {
+	return s.TuneArch
 }
 
 func (s *DescribeAvailableModelsResponseBody) SetEngine(v string) *DescribeAvailableModelsResponseBody {
@@ -81,8 +105,18 @@ func (s *DescribeAvailableModelsResponseBody) SetItems(v []*DescribeAvailableMod
 	return s
 }
 
+func (s *DescribeAvailableModelsResponseBody) SetModelType(v string) *DescribeAvailableModelsResponseBody {
+	s.ModelType = &v
+	return s
+}
+
 func (s *DescribeAvailableModelsResponseBody) SetRequestId(v string) *DescribeAvailableModelsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBody) SetTuneArch(v string) *DescribeAvailableModelsResponseBody {
+	s.TuneArch = &v
 	return s
 }
 
@@ -100,6 +134,24 @@ func (s *DescribeAvailableModelsResponseBody) Validate() error {
 }
 
 type DescribeAvailableModelsResponseBodyItems struct {
+	// The custom model registration key.
+	//
+	// example:
+	//
+	// Qwen3-32B
+	CustomModelName *string `json:"CustomModelName,omitempty" xml:"CustomModelName,omitempty"`
+	// The display name of the model.
+	//
+	// example:
+	//
+	// My Qwen3 32B
+	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
+	// The last modified time of the registration.
+	//
+	// example:
+	//
+	// 2026-09-07 20:57:20
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The supported GPU types.
 	GpuRequired []*DescribeAvailableModelsResponseBodyItemsGpuRequired `json:"GpuRequired,omitempty" xml:"GpuRequired,omitempty" type:"Repeated"`
 	// The minimum number of CPUs.
@@ -126,6 +178,18 @@ type DescribeAvailableModelsResponseBodyItems struct {
 	//
 	// BERT
 	ModelSeries *string `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
+	// The model type.
+	//
+	// example:
+	//
+	// custom
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The OSS path of the custom model.
+	//
+	// example:
+	//
+	// /my-model-bucket/models
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
 	// The supported GPU models.
 	SupportedGpuModels []*string `json:"SupportedGpuModels,omitempty" xml:"SupportedGpuModels,omitempty" type:"Repeated"`
 	TuneArch           *string   `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
@@ -137,6 +201,18 @@ func (s DescribeAvailableModelsResponseBodyItems) String() string {
 
 func (s DescribeAvailableModelsResponseBodyItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetCustomModelName() *string {
+	return s.CustomModelName
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetDisplayModelName() *string {
+	return s.DisplayModelName
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetGmtModified() *string {
+	return s.GmtModified
 }
 
 func (s *DescribeAvailableModelsResponseBodyItems) GetGpuRequired() []*DescribeAvailableModelsResponseBodyItemsGpuRequired {
@@ -159,12 +235,35 @@ func (s *DescribeAvailableModelsResponseBodyItems) GetModelSeries() *string {
 	return s.ModelSeries
 }
 
+func (s *DescribeAvailableModelsResponseBodyItems) GetModelType() *string {
+	return s.ModelType
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) GetOssPath() *string {
+	return s.OssPath
+}
+
 func (s *DescribeAvailableModelsResponseBodyItems) GetSupportedGpuModels() []*string {
 	return s.SupportedGpuModels
 }
 
 func (s *DescribeAvailableModelsResponseBodyItems) GetTuneArch() *string {
 	return s.TuneArch
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetCustomModelName(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.CustomModelName = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetDisplayModelName(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.DisplayModelName = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetGmtModified(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.GmtModified = &v
+	return s
 }
 
 func (s *DescribeAvailableModelsResponseBodyItems) SetGpuRequired(v []*DescribeAvailableModelsResponseBodyItemsGpuRequired) *DescribeAvailableModelsResponseBodyItems {
@@ -189,6 +288,16 @@ func (s *DescribeAvailableModelsResponseBodyItems) SetModelName(v string) *Descr
 
 func (s *DescribeAvailableModelsResponseBodyItems) SetModelSeries(v string) *DescribeAvailableModelsResponseBodyItems {
 	s.ModelSeries = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetModelType(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.ModelType = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsResponseBodyItems) SetOssPath(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.OssPath = &v
 	return s
 }
 

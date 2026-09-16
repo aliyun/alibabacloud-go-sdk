@@ -13275,7 +13275,7 @@ func (client *Client) DescribeAIDBClusterApiKeys(request *DescribeAIDBClusterApi
 
 // Summary:
 //
-// Queries the detailed attributes of a custom instance.
+// Queries the details of a custom instance.
 //
 // @param request - DescribeAIDBClusterAttributeRequest
 //
@@ -13335,7 +13335,7 @@ func (client *Client) DescribeAIDBClusterAttributeWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries the detailed attributes of a custom instance.
+// Queries the details of a custom instance.
 //
 // @param request - DescribeAIDBClusterAttributeRequest
 //
@@ -16497,7 +16497,7 @@ func (client *Client) DescribeAvailableCrossRegions(request *DescribeAvailableCr
 
 // Summary:
 //
-// Retrieves the list of AI cluster models.
+// Retrieves the list of models in an AI cluster.
 //
 // @param request - DescribeAvailableModelsRequest
 //
@@ -16514,6 +16514,10 @@ func (client *Client) DescribeAvailableModelsWithOptions(request *DescribeAvaila
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KubeType) {
 		query["KubeType"] = request.KubeType
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		query["ModelType"] = request.ModelType
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -16545,7 +16549,7 @@ func (client *Client) DescribeAvailableModelsWithOptions(request *DescribeAvaila
 
 // Summary:
 //
-// Retrieves the list of AI cluster models.
+// Retrieves the list of models in an AI cluster.
 //
 // @param request - DescribeAvailableModelsRequest
 //

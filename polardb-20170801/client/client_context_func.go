@@ -10334,7 +10334,7 @@ func (client *Client) DescribeAIDBClusterApiKeysWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the detailed attributes of a custom instance.
+// Queries the details of a custom instance.
 //
 // @param request - DescribeAIDBClusterAttributeRequest
 //
@@ -12866,7 +12866,7 @@ func (client *Client) DescribeAvailableCrossRegionsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves the list of AI cluster models.
+// Retrieves the list of models in an AI cluster.
 //
 // @param request - DescribeAvailableModelsRequest
 //
@@ -12883,6 +12883,10 @@ func (client *Client) DescribeAvailableModelsWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KubeType) {
 		query["KubeType"] = request.KubeType
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		query["ModelType"] = request.ModelType
 	}
 
 	if !dara.IsNil(request.RegionId) {

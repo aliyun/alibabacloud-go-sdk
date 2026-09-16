@@ -11,6 +11,8 @@ type iDescribeAvailableModelsRequest interface {
 	GoString() string
 	SetKubeType(v string) *DescribeAvailableModelsRequest
 	GetKubeType() *string
+	SetModelType(v string) *DescribeAvailableModelsRequest
+	GetModelType() *string
 	SetRegionId(v string) *DescribeAvailableModelsRequest
 	GetRegionId() *string
 }
@@ -22,6 +24,12 @@ type DescribeAvailableModelsRequest struct {
 	//
 	// aideploy
 	KubeType *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
+	// The model type. Valid values: custom or public. If this parameter is not specified, all models are returned.
+	//
+	// example:
+	//
+	// custom
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -42,12 +50,21 @@ func (s *DescribeAvailableModelsRequest) GetKubeType() *string {
 	return s.KubeType
 }
 
+func (s *DescribeAvailableModelsRequest) GetModelType() *string {
+	return s.ModelType
+}
+
 func (s *DescribeAvailableModelsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DescribeAvailableModelsRequest) SetKubeType(v string) *DescribeAvailableModelsRequest {
 	s.KubeType = &v
+	return s
+}
+
+func (s *DescribeAvailableModelsRequest) SetModelType(v string) *DescribeAvailableModelsRequest {
+	s.ModelType = &v
 	return s
 }
 
