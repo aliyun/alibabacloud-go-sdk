@@ -16,7 +16,7 @@ type iDescribeVerifyFailStatisticsResponseBody interface {
 }
 
 type DescribeVerifyFailStatisticsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ type DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems struct {
 	//
 	// 404
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned count data.
+	// The count data returned.
 	Data []*DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 }
 
@@ -331,7 +331,7 @@ type DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData struct {
 	//
 	// 9
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The date.
+	// The date. Format: YYYY-MM-DD, such as 2025-10-16.
 	//
 	// example:
 	//

@@ -15,6 +15,12 @@ type iCreateAntCloudAuthSceneRequest interface {
 	GetCheckFileBody() *string
 	SetCheckFileName(v string) *CreateAntCloudAuthSceneRequest
 	GetCheckFileName() *string
+	SetDegradeAppScheme(v string) *CreateAntCloudAuthSceneRequest
+	GetDegradeAppScheme() *string
+	SetDegradeSubCodes(v string) *CreateAntCloudAuthSceneRequest
+	GetDegradeSubCodes() *string
+	SetDegradeType(v string) *CreateAntCloudAuthSceneRequest
+	GetDegradeType() *string
 	SetDeviceRiskPlus(v string) *CreateAntCloudAuthSceneRequest
 	GetDeviceRiskPlus() *string
 	SetMiniProgramName(v string) *CreateAntCloudAuthSceneRequest
@@ -29,14 +35,16 @@ type iCreateAntCloudAuthSceneRequest interface {
 	GetSceneName() *string
 	SetStoreImage(v string) *CreateAntCloudAuthSceneRequest
 	GetStoreImage() *string
+	SetUseDegrade(v string) *CreateAntCloudAuthSceneRequest
+	GetUseDegrade() *string
 }
 
 type CreateAntCloudAuthSceneRequest struct {
 	// Specifies whether to enable mini program binding. Valid values:
 	//
-	// - **Y**: enabled
+	// - **Y**: Enabled.
 	//
-	// - **N (default)**: disabled.
+	// - **N (default)**: Disabled.
 	//
 	// example:
 	//
@@ -52,13 +60,31 @@ type CreateAntCloudAuthSceneRequest struct {
 	//
 	// example:
 	//
-	// 测试.txt
+	// test.txt
 	CheckFileName *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
+	// The iOS app scheme for degradation redirect.
+	//
+	// example:
+	//
+	// cloudauth://callback
+	DegradeAppScheme *string `json:"DegradeAppScheme,omitempty" xml:"DegradeAppScheme,omitempty"`
+	// The SubCode that triggers degradation.
+	//
+	// example:
+	//
+	// 201,202
+	DegradeSubCodes *string `json:"DegradeSubCodes,omitempty" xml:"DegradeSubCodes,omitempty"`
+	// The degradation verification type.
+	//
+	// example:
+	//
+	// ALIPAY
+	DegradeType *string `json:"DegradeType,omitempty" xml:"DegradeType,omitempty"`
 	// Specifies whether to enable enhanced device risk detection. Valid values:
 	//
-	// - **Y**: enabled
+	// - **Y**: Enabled.
 	//
-	// - **N**: disabled.
+	// - **N**: Disabled.
 	//
 	// example:
 	//
@@ -68,13 +94,13 @@ type CreateAntCloudAuthSceneRequest struct {
 	//
 	// example:
 	//
-	// 测试APP
+	// TestApp
 	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
 	// The mini program platform to bind. Valid values:
 	//
-	// - **WECHAT**: WeChat
+	// - **WECHAT**: WeChat.
 	//
-	// - **ALIPAY**: Alipay
+	// - **ALIPAY**: Alipay.
 	//
 	// - **TIKTOK**: TikTok.
 	//
@@ -100,9 +126,9 @@ type CreateAntCloudAuthSceneRequest struct {
 	//
 	// example:
 	//
-	// 测试场景
+	// TestScenario
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Specifies whether to deliver the files generated during authentication to the customer\\"s OSS. Valid values:
+	// Specifies whether to deliver files generated during verification to the customer\\"s OSS. Valid values:
 	//
 	// - **Y**: Yes.
 	//
@@ -112,6 +138,12 @@ type CreateAntCloudAuthSceneRequest struct {
 	//
 	// Y
 	StoreImage *string `json:"StoreImage,omitempty" xml:"StoreImage,omitempty"`
+	// Specifies whether to enable degradation.
+	//
+	// example:
+	//
+	// Y
+	UseDegrade *string `json:"UseDegrade,omitempty" xml:"UseDegrade,omitempty"`
 }
 
 func (s CreateAntCloudAuthSceneRequest) String() string {
@@ -132,6 +164,18 @@ func (s *CreateAntCloudAuthSceneRequest) GetCheckFileBody() *string {
 
 func (s *CreateAntCloudAuthSceneRequest) GetCheckFileName() *string {
 	return s.CheckFileName
+}
+
+func (s *CreateAntCloudAuthSceneRequest) GetDegradeAppScheme() *string {
+	return s.DegradeAppScheme
+}
+
+func (s *CreateAntCloudAuthSceneRequest) GetDegradeSubCodes() *string {
+	return s.DegradeSubCodes
+}
+
+func (s *CreateAntCloudAuthSceneRequest) GetDegradeType() *string {
+	return s.DegradeType
 }
 
 func (s *CreateAntCloudAuthSceneRequest) GetDeviceRiskPlus() *string {
@@ -162,6 +206,10 @@ func (s *CreateAntCloudAuthSceneRequest) GetStoreImage() *string {
 	return s.StoreImage
 }
 
+func (s *CreateAntCloudAuthSceneRequest) GetUseDegrade() *string {
+	return s.UseDegrade
+}
+
 func (s *CreateAntCloudAuthSceneRequest) SetBindMiniProgram(v string) *CreateAntCloudAuthSceneRequest {
 	s.BindMiniProgram = &v
 	return s
@@ -174,6 +222,21 @@ func (s *CreateAntCloudAuthSceneRequest) SetCheckFileBody(v string) *CreateAntCl
 
 func (s *CreateAntCloudAuthSceneRequest) SetCheckFileName(v string) *CreateAntCloudAuthSceneRequest {
 	s.CheckFileName = &v
+	return s
+}
+
+func (s *CreateAntCloudAuthSceneRequest) SetDegradeAppScheme(v string) *CreateAntCloudAuthSceneRequest {
+	s.DegradeAppScheme = &v
+	return s
+}
+
+func (s *CreateAntCloudAuthSceneRequest) SetDegradeSubCodes(v string) *CreateAntCloudAuthSceneRequest {
+	s.DegradeSubCodes = &v
+	return s
+}
+
+func (s *CreateAntCloudAuthSceneRequest) SetDegradeType(v string) *CreateAntCloudAuthSceneRequest {
+	s.DegradeType = &v
 	return s
 }
 
@@ -209,6 +272,11 @@ func (s *CreateAntCloudAuthSceneRequest) SetSceneName(v string) *CreateAntCloudA
 
 func (s *CreateAntCloudAuthSceneRequest) SetStoreImage(v string) *CreateAntCloudAuthSceneRequest {
 	s.StoreImage = &v
+	return s
+}
+
+func (s *CreateAntCloudAuthSceneRequest) SetUseDegrade(v string) *CreateAntCloudAuthSceneRequest {
+	s.UseDegrade = &v
 	return s
 }
 

@@ -66,7 +66,7 @@ func (s *DescribeMetaStatisticsListResponseBody) Validate() error {
 }
 
 type DescribeMetaStatisticsListResponseBodyItems struct {
-	// The commodity (product) code.
+	// The product code.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeMetaStatisticsListResponseBodyItems struct {
 	//
 	// - **BANK_CARD_N_META**: bank card verification (detailed edition)
 	//
-	// - **MOBILE_DETECT**: phone number detection
+	// - **MOBILE_DETECT**: number detection
 	//
 	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
 	//
@@ -100,11 +100,11 @@ type DescribeMetaStatisticsListResponseBodyItems struct {
 	//
 	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query
 	//
-	// - **VEHICLE_CHECK**: vehicle element verification.
+	// - **VEHICLE_CHECK**: vehicle element verification
 	//
 	// example:
 	//
-	// 身份证二要素
+	// ID card two-element verification
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The number of successful queries (billable).
 	//
@@ -118,31 +118,31 @@ type DescribeMetaStatisticsListResponseBodyItems struct {
 	//
 	// 0
 	BillRate *string `json:"BillRate,omitempty" xml:"BillRate,omitempty"`
-	// The number of successful phone number queries (exclusive to phone number detection).
+	// The number of successful mobile number queries (exclusive to number detection).
 	//
 	// example:
 	//
 	// 0
 	ChargeCount *int64 `json:"ChargeCount,omitempty" xml:"ChargeCount,omitempty"`
-	// The date.
+	// The date. Format: YYYY-MM-DD, such as 2015-08-24.
 	//
 	// example:
 	//
-	// 11/8
+	// 2015-08-24
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The name of the telecommunications service provider. Valid values:
+	// The carrier name. Valid values:
 	//
 	// - **CMCC**: China Mobile
 	//
 	// - **CUCC**: China Unicom
 	//
-	// - **CTCC**: China Telecom.
+	// - **CTCC**: China Telecom
 	//
 	// example:
 	//
 	// CUCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The number of calls with no education information found.
+	// The number of calls with no education record information.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type PageQueryWhiteListSettingRequest struct {
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// The unique identifier of the ID Verification request.
+	// The unique identifier of the ID Verification.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type PageQueryWhiteListSettingRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For more information about how to create a verification scenario, refer to Add a verification scenario.
+	// The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For information about how to create a verification scenario, see Add a verification scenario.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type PageQueryWhiteListSettingRequest struct {
 	//
 	// - VALID: Not deleted and within the validity period (valid).
 	//
-	// - INVALID: Not deleted but outside the validity period (invalid).
+	// - INVALID: Not deleted but not within the validity period (invalid).
 	//
 	// example:
 	//

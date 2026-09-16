@@ -94,14 +94,14 @@ type iInitFaceVerifyRequest interface {
 type InitFaceVerifyRequest struct {
 	// Specifies whether the SDK enables strict face quality detection:
 	//
-	// - **Y**: enabled.
+	// - **Y**: Enabled.
 	//
-	// - **N**: disabled (default).
+	// - **N**: Disabled (default).
 	//
 	//
 	// >
 	//
-	// > - If this parameter is enabled, the SDK must integrate the [strict face quality detection module](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/description-of-sdk-package-clipping). Strict quality detection may reduce the face authentication success rate.
+	// > - If this parameter is enabled, the SDK must integrate the [strict face quality detection module](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/description-of-sdk-package-clipping). Strict quality detection may reduce the face recognition success rate.
 	//
 	// > - Only Android SDK 2.3.24 and later versions are supported.
 	//
@@ -117,7 +117,7 @@ type InitFaceVerifyRequest struct {
 	AuthId *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
 	// The date of birth on the certificate.
 	//
-	// This field is required when **CertType*	- is set to **PASSPORT*	- and **Mode*	- is set to **3**.
+	// This field is required when the certificate type **CertType*	- is set to **PASSPORT*	- and **Mode*	- is set to **3**.
 	//
 	// example:
 	//
@@ -131,15 +131,15 @@ type InitFaceVerifyRequest struct {
 	//
 	// NMjvQanQgplBSaEI0sL86WnQplB
 	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	// The callback URL for the authentication result. The callback request method is GET by default, and the callback URL must start with `https`. After authentication is complete, the platform calls back this URL and automatically appends the `certifyId` and `passed` fields. The `passed` field returns the subcode value. Example: `https://www.alibabacloud.com?callbackToken=1000004826&certifyId=shaxxxx&passed=200.`
+	// The callback notification URL for the authentication result. The default callback request method is GET, and the callback URL must start with `https`. After authentication is complete, the platform calls back this URL and automatically appends the `certifyId` and `passed` fields. The `passed` field returns the subcode value. Example: `https://www.aliyun.com?callbackToken=1000004826&certifyId=shaxxxx&passed=200.`
 	//
 	// <notice>
 	//
-	// - The callback is triggered only when authentication is complete (including both passed and failed). If the user abandons authentication, an abnormal break occurs, or authentication is not performed, no notification is sent. After receiving the callback notification, invoke the query operation to obtain authentication details if needed.
+	// - The callback is triggered only when authentication is complete (including both passed and failed). If authentication is abandoned, abnormally breaks, or is not performed, no notification is sent. After receiving the callback notification, you can use the query operation to obtain authentication details if needed.
 	//
-	// - The URL is validated for public network access before the operation is invoked. If the URL is not accessible over the public network, a 401 error is returned.
+	// - The accessibility of the provided URL is verified before the operation is invoked. If the URL cannot be accessed through public network access, error 401 is returned.
 	//
-	// - After receiving the callback, return HTTP status code 200. Otherwise, a retry is triggered with two callbacks within 3 seconds.
+	// - After receiving the callback, your service must return HTTP status code 200. Otherwise, a retry is triggered with two callbacks within 3 seconds.
 	//
 	// </notice>
 	//
@@ -149,11 +149,11 @@ type InitFaceVerifyRequest struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// Specifies whether to enable the camera selection feature:
 	//
-	// - **Y**: enabled.
+	// - **Y**: Enabled.
 	//
-	// - **N**: disabled (default).
+	// - **N**: Disabled (default).
 	//
-	// > This feature takes effect only for PC integration mode. After this feature is enabled, users can select a camera for authentication.
+	// > This feature takes effect only for PC integration mode. After it is enabled, users can select a camera for authentication.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type InitFaceVerifyRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// Wang Shanshan
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The certificate number.
 	//
@@ -181,9 +181,9 @@ type InitFaceVerifyRequest struct {
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// 	Warning: This parameter will be deprecated.</warning>
 	//
-	// The CertifyId from a previous successful ID Verification. The photo from that authentication is used as the comparison photo.
+	// The CertifyId from a previous successful ID Verification session. The photo from that authentication is used as the comparison photo.
 	//
-	// > You can use one of the following four methods to submit a photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select only one method.
+	// > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
@@ -191,9 +191,9 @@ type InitFaceVerifyRequest struct {
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	// The type of the returned **CertifyUrl**. Valid values:
 	//
-	// - **L**: original long URL.
+	// - **L**: Original long URL.
 	//
-	// - **S*	- (default): short URL.
+	// - **S*	- (default): Short URL.
 	//
 	// example:
 	//
@@ -207,25 +207,27 @@ type InitFaceVerifyRequest struct {
 	//
 	// WEB
 	CertifyUrlType *string `json:"CertifyUrlType,omitempty" xml:"CertifyUrlType,omitempty"`
-	// Specifies whether to allow cropping of the face photo. By default, cropping is not allowed.
+	// Specifies whether to allow cropping of face images. Cropping is not allowed by default.
 	//
-	// - T: allows cropping.
+	// - T: Cropping is allowed.
 	//
-	// - F: does not allow cropping.
+	// - F: Cropping is not allowed.
 	//
-	// > If the requested image is not captured by a standard liveness detection SDK, allow cropping of the face photo. After this feature is enabled, the requested image is cropped and corrected before the request is sent to the service.
+	// > If the requested image is not captured by a standard liveness detection SDK, allow cropping of face images. After this feature is enabled, the requested image is first cropped and corrected before the request is sent to the service.
 	//
 	// example:
 	//
 	// T
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// Specifies whether to enable beauty mode: Y/N.
+	//
 	// example:
 	//
 	// Y
 	EnableBeauty *string `json:"EnableBeauty,omitempty" xml:"EnableBeauty,omitempty"`
-	// The encryption algorithm. Currently, only the SM2 algorithm is supported.
+	// The encryption algorithm. Currently, only the SM2 national cryptographic algorithm is supported.
 	//
-	// After encrypted transmission is enabled, pass in the encrypted CertName and CertNo. For more information about encryption, refer to [Parameter encryption description](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/description-of-parameter-encryption#task-2229332).
+	// After encrypted transmission is enabled, pass in the encrypted CertName and CertNo. For encryption instructions, refer to [Parameter encryption description](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/description-of-parameter-encryption#task-2229332).
 	//
 	// example:
 	//
@@ -233,7 +235,7 @@ type InitFaceVerifyRequest struct {
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	// The Base64-encoded photo.
 	//
-	// > You can use one of the following four methods to submit a photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select only one method.
+	// > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
@@ -241,7 +243,7 @@ type InitFaceVerifyRequest struct {
 	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
 	// The OSS photo URL. Currently, only authorized OSS photo URLs are supported.
 	//
-	// > You can use one of the following four methods to submit a photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select only one method.
+	// > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
@@ -259,11 +261,11 @@ type InitFaceVerifyRequest struct {
 	//
 	// DeviceRisk
 	FaceGuardOutput *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
-	// Specifies whether to display the "I have completed authentication" button on the H5 fallback page after authentication is complete:
+	// Specifies whether to display the "I have completed authentication" button on the H5 degradation page after authentication is complete:
 	//
-	// - **Y**: enabled.
+	// - **Y**: Enabled.
 	//
-	// - **N*	- (default): disabled.
+	// - **N*	- (default): Disabled.
 	//
 	// example:
 	//
@@ -289,11 +291,11 @@ type InitFaceVerifyRequest struct {
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The method for obtaining passport NFC verification elements:
 	//
-	// - **1**: user input. The end user manually enters certificate element information using the UI provided by the Alibaba Cloud SDK.
+	// - **1**: User input. The end user manually enters certificate element information using the UI provided by the Alibaba Cloud SDK.
 	//
-	// - **3**: external parameter input. Certificate element information is passed in externally.
+	// - **3**: External parameter input. Certificate element information is passed in externally.
 	//
-	// > To decode the encrypted information on the passport chip through NFC, three passport elements are required: name, date of birth, and certificate expiration date.
+	// > NFC decoding of passport chip encrypted information requires three passport elements: name, date of birth, and certificate expiration date.
 	//
 	// example:
 	//
@@ -307,15 +309,15 @@ type InitFaceVerifyRequest struct {
 	//
 	// The liveness detection type supports only the following values. Custom actions or combinations are not supported.
 	//
-	// - **LIVENESS*	- (default): blink
+	// - **LIVENESS*	- (default): Blink.
 	//
-	// - **PHOTINUS_LIVENESS**: blink + colorful light
+	// - **PHOTINUS_LIVENESS**: Blink + colorful light.
 	//
-	// - **MULTI_ACTION**: blink + head shake (the order of blink and head shake is random)
+	// - **MULTI_ACTION**: Blink + head shake (the order of blink and head shake is random).
 	//
-	// - **MOVE_ACTION*	- (recommended): move closer/farther + blink
+	// - **MOVE_ACTION*	- (recommended): Move closer/farther + blink.
 	//
-	// - **MOVE_PHOTINUS**: move closer/farther + colorful light
+	// - **MOVE_PHOTINUS**: Move closer/farther + colorful light.
 	//
 	// >
 	//
@@ -335,9 +337,9 @@ type InitFaceVerifyRequest struct {
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// Specifies whether to block authentication when multiple faces are detected on the device. Valid values:
 	//
-	// - **Y**: blocked. The client prompts the user to redo face authentication.
+	// - **Y**: Block. The client prompts the user to redo face recognition.
 	//
-	// - **N*	- (default): not blocked. The largest face in the frame is sent to the server for security detection.
+	// - **N*	- (default): Do not block. The largest face in the frame is sent to the server for security detection.
 	//
 	// example:
 	//
@@ -345,7 +347,7 @@ type InitFaceVerifyRequest struct {
 	NeedMultiFaceCheck *string `json:"NeedMultiFaceCheck,omitempty" xml:"NeedMultiFaceCheck,omitempty"`
 	// The bucket name of the authorized OSS space.
 	//
-	// > You can use one of the following four methods to submit a photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select only one method.
+	// > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
@@ -353,7 +355,7 @@ type InitFaceVerifyRequest struct {
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
 	// The file name in the authorized OSS space.
 	//
-	// > You can use one of the following four methods to submit a photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select only one method.
+	// > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
@@ -361,24 +363,24 @@ type InitFaceVerifyRequest struct {
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
 	// The unique identifier of the merchant request.
 	//
-	// The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can be a time segment, and the last part can be a random or incremental sequence.
+	// The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can use a time segment, and the last part can use a random or incremental sequence.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// The fallback configuration when WebRTC or WebAssembly is incompatible during mobile H5 authentication.
+	// The degradation configuration when WebRTC or WebAssembly incompatibility occurs during mobile H5 authentication.
 	//
-	// - **keep**: fallback is not supported. The system returns directly.
+	// - **keep**: Degradation is not supported. The system returns directly.
 	//
-	// - **url*	- (default): fallback is supported. An authentication URL is returned. The user opens or switches to a browser to authenticate using this URL.
+	// - **url*	- (default): Degradation is supported. An authentication URL is returned. The user opens or switches to a browser to authenticate using this URL.
 	//
-	// - **video**: fallback is supported. The system camera records a 3 to 5 second blink video for authentication.
+	// - **video**: Degradation is supported. The system camera is used to record a 3-5 second blink video for authentication.
 	//
 	//
 	// >
 	//
-	// > When the fallback mode is Video, the following features are disabled and product security is reduced. Configure this mode only for security scenarios.
+	// > When the degradation mode is Video, the following features become ineffective and product security is reduced. Configure this mode only for security scenarios.
 	//
 	// > - The liveness detection type setting does not take effect.
 	//
@@ -390,11 +392,11 @@ type InitFaceVerifyRequest struct {
 	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	// A fixed value. This parameter varies depending on the product plan:
 	//
-	// - APP authentication plan: set to ID_PRO.
+	// - APP authentication plan: The fixed value is ID_PRO.
 	//
-	// - Face liveness verification plan: set to PV_FV.
+	// - Face liveness verification plan: The fixed value is PV_FV.
 	//
-	// - Liveness detection plan: set to LR_FR.
+	// - Liveness detection plan: The fixed value is LR_FR.
 	//
 	// example:
 	//
@@ -402,9 +404,9 @@ type InitFaceVerifyRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// Specifies whether to enable the rare character mode:
 	//
-	// - **Y**: enabled. An information input box is displayed before authentication. The user must enter the name with rare characters and the ID card number, and agree to the protocol before starting the authentication process.
+	// - **Y**: Enabled. An information input box pops up before authentication, requiring the user to enter the rare character name and ID card number and agree to the agreement before starting the authentication process.
 	//
-	// - **N**: disabled (default).
+	// - **N**: Disabled (default).
 	//
 	// example:
 	//
@@ -412,9 +414,9 @@ type InitFaceVerifyRequest struct {
 	RarelyCharacters *string `json:"RarelyCharacters,omitempty" xml:"RarelyCharacters,omitempty"`
 	// Specifies whether to read the certificate photo:
 	//
-	// - **Y**: read.
+	// - **Y**: Read.
 	//
-	// - **N**: do not read.
+	// - **N**: Do not read.
 	//
 	// > If the certificate face photo is needed in subsequent authentication steps, set this parameter to Y.
 	//
@@ -422,28 +424,28 @@ type InitFaceVerifyRequest struct {
 	//
 	// Y
 	ReadImg *string `json:"ReadImg,omitempty" xml:"ReadImg,omitempty"`
-	// The redirect URL for the merchant business page.
+	// The target URL to which the merchant business page redirects.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	ReturnUrl *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
-	// The authentication scenario ID.
+	// The authentication scene ID.
 	//
 	// example:
 	//
 	// 1000000006
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The elderly-friendly configuration parameter. This parameter takes effect for each authentication request. You can select different parameters for each authentication request based on the business attributes, customer distribution, and operational characteristics of your app. Valid values (default: 0):
+	// The elderly-friendly configuration parameter. This parameter takes effect for each authentication request. You can select different parameters for each authentication request based on the business attributes, customer distribution, and operational characteristics of your app. Valid values:
 	//
-	// - **0**: disabled. The elderly-friendly mode is not enabled for the current authentication request.
+	// - **0*	- (default): Disabled. The current authentication request does not enable elderly-friendly mode.
 	//
-	// - **1**: enabled. The elderly-friendly mode is enabled for the current authentication request.
+	// - **1**: Enabled. The current authentication request enables elderly-friendly mode.
 	//
-	// - **2**: user choice.
+	// - **2**: User choice.
 	//
 	//
-	// Allows the end user to select the authentication mode. The product guide page provides two authentication entries: "Start Authentication" and "Elderly Authentication Mode". When the user selects "Elderly Authentication Mode", the system enters elderly-friendly mode.
+	// Allows end users to select the authentication mode. The product guide page provides two authentication entries: "Start Authentication" and "Senior Authentication Mode". When the user selects "Senior Authentication Mode", the system enters elderly-friendly mode.
 	//
 	// >
 	//
@@ -469,7 +471,7 @@ type InitFaceVerifyRequest struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The certificate expiration date.
 	//
-	// This field is required when **CertType*	- is set to **PASSPORT*	- and **Mode*	- is set to **3**.
+	// This field is required when the certificate type **CertType*	- is set to **PASSPORT*	- and **Mode*	- is set to **3**.
 	//
 	// example:
 	//
@@ -477,9 +479,9 @@ type InitFaceVerifyRequest struct {
 	ValidityDate *string `json:"ValidityDate,omitempty" xml:"ValidityDate,omitempty"`
 	// Specifies whether to enable video evidence:
 	//
-	// - **true**: enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: disabled (default).
+	// - **false**: Disabled (default).
 	//
 	// > Because video files are large, the system discards video files to prioritize the transmission of essential authentication images when the network is unstable. Set video as a weak dependency in your business logic.
 	//
@@ -489,13 +491,13 @@ type InitFaceVerifyRequest struct {
 	VideoEvidence *string `json:"VideoEvidence,omitempty" xml:"VideoEvidence,omitempty"`
 	// The custom voluntary content. This parameter is required when personalized settings are enabled. The format is a JSON string of a String List.
 	//
-	// - For read-aloud scenarios: the content cannot exceed 60 Chinese characters (excluding punctuation), and the List contains only 1 element.
+	// - For read-aloud scenarios: The content cannot exceed 60 Chinese characters (excluding punctuation), and the List contains only 1 element.
 	//
-	// - For Q&A scenarios: a maximum of 3 questions can be set. Each question cannot exceed 30 Chinese characters, and each question is a separate element in the List.
+	// - For Q&A scenarios: A maximum of 3 questions can be set. Each question cannot exceed 30 Chinese characters. Each question is a separate element in the List.
 	//
 	// example:
 	//
-	// ["本人王先生同意***协议。"]
+	// ["I, Mr. Wang, agree to the **	- agreement."]
 	VoluntaryCustomizedContent *string `json:"VoluntaryCustomizedContent,omitempty" xml:"VoluntaryCustomizedContent,omitempty"`
 }
 

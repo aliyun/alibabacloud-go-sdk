@@ -74,7 +74,7 @@ type DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject struct {
 	//
 	// 0
 	IdFakeRate *string `json:"IdFakeRate,omitempty" xml:"IdFakeRate,omitempty"`
-	// The data items in the response.
+	// The data items of the returned result.
 	Items []*DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of risks.
 	//
@@ -193,7 +193,7 @@ type DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems struct {
 	//
 	// 11
 	DailyCallCount *int64 `json:"DailyCallCount,omitempty" xml:"DailyCallCount,omitempty"`
-	// The date.
+	// The date. Format: YYYY-MM-DD, such as 2025-10-10.
 	//
 	// example:
 	//

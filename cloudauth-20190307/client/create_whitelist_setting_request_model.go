@@ -52,7 +52,7 @@ type CreateWhitelistSettingRequest struct {
 	//
 	// example:
 	//
-	// 测试白名单。
+	// Test whitelist
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The scene ID.
 	//
@@ -86,6 +86,8 @@ type CreateWhitelistSettingRequest struct {
 	//
 	// 7
 	ValidDay *int32 `json:"ValidDay,omitempty" xml:"ValidDay,omitempty"`
+	// The whitelist type.
+	//
 	// example:
 	//
 	// SUPER

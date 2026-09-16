@@ -62,13 +62,13 @@ func (s *DescribeVerifyPersonasOsStatisticsResponseBody) Validate() error {
 }
 
 type DescribeVerifyPersonasOsStatisticsResponseBodyResultObject struct {
-	// The total number of devices used for ID Verification.
+	// The total number of authenticated devices.
 	//
 	// example:
 	//
 	// 24
 	AllDeviceCnt *int64 `json:"AllDeviceCnt,omitempty" xml:"AllDeviceCnt,omitempty"`
-	// The number of Android devices used for ID Verification.
+	// The number of authenticated Android devices.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeVerifyPersonasOsStatisticsResponseBodyResultObject struct {
 	//
 	// 58.33
 	DeviceAndroidRate *string `json:"DeviceAndroidRate,omitempty" xml:"DeviceAndroidRate,omitempty"`
-	// The number of iOS devices used for ID Verification.
+	// The number of authenticated iOS devices.
 	//
 	// example:
 	//

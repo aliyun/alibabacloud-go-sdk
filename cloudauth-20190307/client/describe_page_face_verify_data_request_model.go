@@ -30,7 +30,7 @@ type DescribePageFaceVerifyDataRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Required. The end time in the yyyy-MM-dd format. The default value is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
+	// Required. The end time in the format of yyyy-MM-dd. The default time is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribePageFaceVerifyDataRequest struct {
 	//
 	// 36**01
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Required. The start time in the yyyy-MM-dd format. The default value is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
+	// Required. The start time in the format of yyyy-MM-dd. The default time is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
 	//
 	// example:
 	//

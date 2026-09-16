@@ -68,7 +68,7 @@ type DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject struct 
 	//
 	// 31
 	AllDeviceCnt *int64 `json:"AllDeviceCnt,omitempty" xml:"AllDeviceCnt,omitempty"`
-	// The list of data for different phone models.
+	// The data list of different phone models.
 	Items []*DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -124,7 +124,7 @@ type DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems st
 	//
 	// iPhone15,2
 	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	// The ratio of devices of this model to the total number of devices.
+	// The ratio of this device model to the total number of devices.
 	//
 	// example:
 	//

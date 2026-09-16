@@ -135,7 +135,7 @@ type DescribeWhitelistSettingResponseBodyItems struct {
 	//
 	// 2025-10-16 17:28:03
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type DescribeWhitelistSettingResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 测试白名单
+	// Test whitelist
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The scene ID.
 	//
@@ -171,7 +171,7 @@ type DescribeWhitelistSettingResponseBodyItems struct {
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The expiration date.
+	// The effective end date. Format: YYYY-MM-DD HH:mm:ss. Example: 2025-10-16 17:28:03.
 	//
 	// example:
 	//
@@ -183,6 +183,8 @@ type DescribeWhitelistSettingResponseBodyItems struct {
 	//
 	// 2025-10-16 17:28:03
 	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+	// The whitelist type.
+	//
 	// example:
 	//
 	// SUPER

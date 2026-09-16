@@ -28,9 +28,9 @@ type iDescribeVerifyFailStatisticsRequest interface {
 type DescribeVerifyFailStatisticsRequest struct {
 	// Specifies whether the age is greater than 14. Valid values:
 	//
-	// - **T**: greater than 14.
+	// - **T**: Greater than 14.
 	//
-	// - **F**: less than 14.
+	// - **F**: Less than 14.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type DescribeVerifyFailStatisticsRequest struct {
 	AgeGt *string `json:"AgeGt,omitempty" xml:"AgeGt,omitempty"`
 	// The API code. Valid values:
 	//
-	// - **INIT_SERVICE**: server-side initialization failure.
+	// - **INIT_SERVICE**: Server-side initialization failure.
 	//
-	// - **INIT_DEVICE**: client-side failure.
+	// - **INIT_DEVICE**: Client-side failure.
 	//
-	// - **VERIFY_DEVICE**: authentication not passed.
+	// - **VERIFY_DEVICE**: Authentication not passed.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type DescribeVerifyFailStatisticsRequest struct {
 	//
 	// - android
 	//
-	// - websdk.
+	// - websdk
 	//
 	// example:
 	//
 	// ios
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The end time of the query.
+	// The end time of the query. The value is a UNIX timestamp in milliseconds, such as 1760630399999.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type DescribeVerifyFailStatisticsRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The service type. Valid values:
 	//
-	// - **antcloudauth**: financial-grade ID Verification.
+	// - **antcloudauth**: Financial-grade ID Verification.
 	//
 	// - **cloudauthst*	- (discontinued): ID Verification Enhanced Edition.
 	//
@@ -92,7 +92,7 @@ type DescribeVerifyFailStatisticsRequest struct {
 	//
 	// cloudauthst
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The start time of the query.
+	// The start time of the query. The value is a UNIX timestamp in milliseconds, such as 1760025600000.
 	//
 	// This parameter is required.
 	//

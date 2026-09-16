@@ -158,11 +158,11 @@ type DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos struct {
 	//
 	// sha8ff58e964152c4c4d21005fb98ecb
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// The creation time of the facial recognition record.
+	// The creation time of the facial recognition record. The value is a UNIX timestamp in milliseconds (ms), such as 1740389697000.
 	//
 	// example:
 	//
-	// 2022-10-02T11:16:06Z
+	// 1740389697000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The scene ID.
 	//

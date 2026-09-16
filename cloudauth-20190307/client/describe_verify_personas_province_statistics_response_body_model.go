@@ -122,7 +122,7 @@ type DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems struc
 	//
 	// example:
 	//
-	// 浙江
+	// Zhejiang
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 	// The percentage of the province relative to the total.
 	//

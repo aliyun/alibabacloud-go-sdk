@@ -42,9 +42,9 @@ type DescribeInfoCheckExportRecordResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of results.
+	// The result list.
 	Items []*DescribeInfoCheckExportRecordResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The error code.
+	// The error message.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeInfoCheckExportRecordResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *DescribeInfoCheckExportRecordResponseBody) Validate() error {
 }
 
 type DescribeInfoCheckExportRecordResponseBodyItems struct {
-	// The download date.
+	// The download time. The value is a UNIX timestamp in milliseconds (ms), for example, 1758250979000.
 	//
 	// example:
 	//
@@ -221,41 +221,41 @@ type DescribeInfoCheckExportRecordResponseBodyItems struct {
 	//
 	// - **ID_PERIOD**: ID card validity period verification.
 	//
-	// - **MOBILE_ONLINE_LENGTH**: mobile number online duration.
+	// - **MOBILE_ONLINE_LENGTH**: Mobile number online duration.
 	//
-	// - **MOBILE_ONLINE_STATUS**: mobile number online status.
+	// - **MOBILE_ONLINE_STATUS**: Mobile number online status.
 	//
-	// - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition).
+	// - **MOBILE_3_META_SIMPLE**: Mobile number three-element verification (simple edition).
 	//
-	// - **MOBILE_3_META**: mobile number three-element verification (detailed edition).
+	// - **MOBILE_3_META**: Mobile number three-element verification (detailed edition).
 	//
-	// - **MOBILE_2_META**: mobile number two-element verification.
+	// - **MOBILE_2_META**: Mobile number two-element verification.
 	//
-	// - **BANK_CARD_N_META**: bank card verification (detailed edition).
+	// - **BANK_CARD_N_META**: Bank card verification (detailed edition).
 	//
-	// - **MOBILE_DETECT**: phone number detection.
+	// - **MOBILE_DETECT**: Number detection.
 	//
-	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition).
+	// - **VEHICLE_N_META**: Vehicle element verification (enhanced edition).
 	//
-	// - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition.
+	// - **VEHICLE_PENTA_INFO**: Vehicle five-element information recognition.
 	//
-	// - **VEHICLE_LICENSE_INFO**: vehicle information recognition.
+	// - **VEHICLE_LICENSE_INFO**: Vehicle information recognition.
 	//
-	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query.
+	// - **VEHICLE_INSURE_DATE**: Vehicle insurance date query.
 	//
-	// - **VEHICLE_CHECK**: vehicle element verification.
+	// - **VEHICLE_CHECK**: Vehicle element verification.
 	//
 	// example:
 	//
-	// 身份证二要素
+	// ID_CARD_2_META
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **1**: The file is being generated.
+	// - **1**: File is being generated.
 	//
-	// - **2**: The file has been generated.
+	// - **2**: File generation is complete.
 	//
-	// - **3**: The file failed to be generated.
+	// - **3**: File generation failed.
 	//
 	// example:
 	//

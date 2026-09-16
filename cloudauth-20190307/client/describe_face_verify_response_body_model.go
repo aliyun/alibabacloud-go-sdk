@@ -38,7 +38,7 @@ type DescribeFaceVerifyResponseBody struct {
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result information.
+	// The result information.
 	ResultObject *DescribeFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,6 +96,12 @@ func (s *DescribeFaceVerifyResponseBody) Validate() error {
 }
 
 type DescribeFaceVerifyResponseBodyResultObject struct {
+	// The result of degraded verification.
+	//
+	// example:
+	//
+	// {\\"certifyId\\":\\"ab110b7bbfea6631b37bc472797ac923\\",\\"degradeType\\":\\"ALIPAY\\",\\"passed\\":\\"T\\"}
+	DegradeInfo *string `json:"DegradeInfo,omitempty" xml:"DegradeInfo,omitempty"`
 	// The device risk label.
 	//
 	// example:
@@ -108,7 +114,7 @@ type DescribeFaceVerifyResponseBodyResultObject struct {
 	//
 	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// The identity information of the verification subject. This field is empty in common verification scenarios.
+	// The identity information of the verification subject. This field is empty for common verification scenarios.
 	//
 	// example:
 	//
@@ -138,13 +144,13 @@ type DescribeFaceVerifyResponseBodyResultObject struct {
 	//
 	// True
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The identity information and corresponding encoding entered by the user in rare character mode. The value is a JSON-formatted string. An empty string is returned if the name does not contain rare characters.
+	// Records the identity information and corresponding encoding entered by the user in rare character mode. The return data is a JSON-formatted string. An empty string is returned if the name does not contain rare characters.
 	//
 	// - name: the name entered by the user.
 	//
-	// - verifyName: the final name encoding that passed verification. For example, if a rare character is verified through transcoding: "王先生", the actual verified name is "王先升".
+	// - verifyName: the final name encoding that passed verification. For example, if a rare character is verified through transcoding: "Wang Xiansheng", the actual verified name is "Wang Xiansheng" (with a different character).
 	//
-	// - number: the ID number entered by the user.
+	// - number: the ID card number entered by the user.
 	//
 	// example:
 	//
@@ -166,6 +172,10 @@ func (s DescribeFaceVerifyResponseBodyResultObject) String() string {
 
 func (s DescribeFaceVerifyResponseBodyResultObject) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFaceVerifyResponseBodyResultObject) GetDegradeInfo() *string {
+	return s.DegradeInfo
 }
 
 func (s *DescribeFaceVerifyResponseBodyResultObject) GetDeviceRisk() *string {
@@ -198,6 +208,11 @@ func (s *DescribeFaceVerifyResponseBodyResultObject) GetSuccess() *string {
 
 func (s *DescribeFaceVerifyResponseBodyResultObject) GetUserInfo() *string {
 	return s.UserInfo
+}
+
+func (s *DescribeFaceVerifyResponseBodyResultObject) SetDegradeInfo(v string) *DescribeFaceVerifyResponseBodyResultObject {
+	s.DegradeInfo = &v
+	return s
 }
 
 func (s *DescribeFaceVerifyResponseBodyResultObject) SetDeviceRisk(v string) *DescribeFaceVerifyResponseBodyResultObject {

@@ -62,91 +62,91 @@ func (s *DescribeVerifyPersonasSexStatisticsResponseBody) Validate() error {
 }
 
 type DescribeVerifyPersonasSexStatisticsResponseBodyResultObject struct {
-	// The number of authenticated users aged 14 and under.
+	// The number of users aged 14 and under.
 	//
 	// example:
 	//
 	// 0
 	Age0To14Cnt *int64 `json:"Age0To14Cnt,omitempty" xml:"Age0To14Cnt,omitempty"`
-	// The proportion of authenticated users aged 14 and under.
+	// The proportion of users aged 14 and under.
 	//
 	// example:
 	//
 	// 0
 	Age0To14Rate *string `json:"Age0To14Rate,omitempty" xml:"Age0To14Rate,omitempty"`
-	// The number of authenticated users aged 14 to 18.
+	// The number of users aged 14 to 18.
 	//
 	// example:
 	//
 	// 0
 	Age14To18Cnt *int64 `json:"Age14To18Cnt,omitempty" xml:"Age14To18Cnt,omitempty"`
-	// The proportion of authenticated users aged 14 to 18.
+	// The proportion of users aged 14 to 18.
 	//
 	// example:
 	//
 	// 0
 	Age14To18Rate *string `json:"Age14To18Rate,omitempty" xml:"Age14To18Rate,omitempty"`
-	// The number of authenticated users aged 18 to 35.
+	// The number of verified users aged 18 to 35.
 	//
 	// example:
 	//
 	// 9
 	Age18To35Cnt *int64 `json:"Age18To35Cnt,omitempty" xml:"Age18To35Cnt,omitempty"`
-	// The proportion of authenticated users aged 18 to 35.
+	// The proportion of verified users aged 18 to 35.
 	//
 	// example:
 	//
 	// 64.29
 	Age18To35Rate *string `json:"Age18To35Rate,omitempty" xml:"Age18To35Rate,omitempty"`
-	// The number of authenticated users aged 35 to 50.
+	// The number of verified users aged 35 to 50.
 	//
 	// example:
 	//
 	// 5
 	Age35To50Cnt *int64 `json:"Age35To50Cnt,omitempty" xml:"Age35To50Cnt,omitempty"`
-	// The proportion of authenticated users aged 35 to 50.
+	// The proportion of verified users aged 35 to 50.
 	//
 	// example:
 	//
 	// 35.71
 	Age35To50Rate *string `json:"Age35To50Rate,omitempty" xml:"Age35To50Rate,omitempty"`
-	// The number of authenticated users aged 50 and over.
+	// The number of verified users aged 50 and over.
 	//
 	// example:
 	//
 	// 0
 	Age50To999Cnt *int64 `json:"Age50To999Cnt,omitempty" xml:"Age50To999Cnt,omitempty"`
-	// The number of authenticated users aged 50 and over.
+	// The number of verified users aged 50 and over.
 	//
 	// example:
 	//
 	// 0
 	Age50To999Rate *string `json:"Age50To999Rate,omitempty" xml:"Age50To999Rate,omitempty"`
-	// The total number of authenticated users.
+	// The total number of verified users.
 	//
 	// example:
 	//
 	// 14
 	AllUserCnt *int64 `json:"AllUserCnt,omitempty" xml:"AllUserCnt,omitempty"`
-	// The number of female authenticated users.
+	// The number of female users.
 	//
 	// example:
 	//
 	// 4
 	FemaleCnt *int64 `json:"FemaleCnt,omitempty" xml:"FemaleCnt,omitempty"`
-	// The proportion of female authenticated users.
+	// The proportion of female verified users.
 	//
 	// example:
 	//
 	// 28.57
 	FemaleRate *string `json:"FemaleRate,omitempty" xml:"FemaleRate,omitempty"`
-	// The number of male authenticated users.
+	// The number of male users.
 	//
 	// example:
 	//
 	// 10
 	MaleCnt *int64 `json:"MaleCnt,omitempty" xml:"MaleCnt,omitempty"`
-	// The proportion of male authenticated users.
+	// The proportion of male users.
 	//
 	// example:
 	//

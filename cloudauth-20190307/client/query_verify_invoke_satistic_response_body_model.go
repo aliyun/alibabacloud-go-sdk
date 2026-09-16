@@ -54,7 +54,7 @@ type QueryVerifyInvokeSatisticResponseBody struct {
 	//
 	// 2FA2C773-47DB-4156-B1EE-5B047321A939
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the response is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ func (s *QueryVerifyInvokeSatisticResponseBody) Validate() error {
 type QueryVerifyInvokeSatisticResponseBodyItems struct {
 	// The list of statistics data.
 	Data []*QueryVerifyInvokeSatisticResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The statistics date.
+	// The statistics date. Format: YYYY-MM-DD. Example: 2025-10-16.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ func (s *QueryVerifyInvokeSatisticResponseBodyItems) Validate() error {
 }
 
 type QueryVerifyInvokeSatisticResponseBodyItemsData struct {
-	// The count of the statistical value.
+	// The count of the statistics value.
 	//
 	// example:
 	//

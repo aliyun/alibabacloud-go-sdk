@@ -50,7 +50,7 @@ type QueryVerifyFlowPackageResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type QueryVerifyFlowPackageResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 实人认证流量包
+	// ID Verification data transfer plan
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The current remaining available capacity.
 	//
@@ -152,7 +152,7 @@ type QueryVerifyFlowPackageResponseBodyItems struct {
 	//
 	// 0%
 	CurrProportion *string `json:"CurrProportion,omitempty" xml:"CurrProportion,omitempty"`
-	// The data transfer plan details.
+	// The details of the data transfer plan.
 	FlowDetails []*QueryVerifyFlowPackageResponseBodyItemsFlowDetails `json:"FlowDetails,omitempty" xml:"FlowDetails,omitempty" type:"Repeated"`
 	// The total quota.
 	//
@@ -254,7 +254,7 @@ type QueryVerifyFlowPackageResponseBodyItemsFlowDetails struct {
 	//
 	// example:
 	//
-	// 实人认证流量包
+	// ID Verification data transfer plan
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The remaining capacity.
 	//
@@ -268,11 +268,11 @@ type QueryVerifyFlowPackageResponseBodyItemsFlowDetails struct {
 	//
 	// 100%
 	CurrProportion *string `json:"CurrProportion,omitempty" xml:"CurrProportion,omitempty"`
-	// The expiration time.
+	// The expiration time. Format: YYYY-MM-DD HH:mm:ss, for example, 2025-10-10 00:00:00.
 	//
 	// example:
 	//
-	// -
+	// 2025-10-10 00:00:00
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// The instance name.
 	//
@@ -286,11 +286,11 @@ type QueryVerifyFlowPackageResponseBodyItemsFlowDetails struct {
 	//
 	// -
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The effective period.
+	// The effective period. Format: YYYY-MM-DD HH:mm:ss, for example, 2025-10-10 00:00:00.
 	//
 	// example:
 	//
-	// -
+	// 2025-10-10 00:00:00
 	TakeEffectDate *string `json:"TakeEffectDate,omitempty" xml:"TakeEffectDate,omitempty"`
 }
 

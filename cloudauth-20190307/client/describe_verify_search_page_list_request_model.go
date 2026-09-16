@@ -62,7 +62,7 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 3203212000XXXX701X
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// The certification ID.
+	// The authentication ID.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 3
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The query end time. The format is a Unix timestamp in milliseconds.
+	// The end time of the query. Format: YYYY-MM-DD HH:mm:ss, such as 2025-10-16 23:59:59.
 	//
 	// example:
 	//
-	// 2025-10-16 23:59:59 +0800
+	// 2025-10-16 23:59:59
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Specifies whether there is a device risk. Setting this parameter to true indicates that root = 1, simulator = 1, or virtual_video = 1.
+	// Specifies whether device risk exists. Set this parameter to true to indicate root = 1, simulator = 1, or virtual_video = 1.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The unique identifier for the customer request.
+	// The unique identifier of the customer request.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether the authentication passed:
+	// Indicates whether the authentication is passed. Valid values:
 	//
 	// - **T**: Passed.
 	//
-	// - **F**: Failed.
+	// - **F**: Not passed.
 	//
 	// example:
 	//
@@ -124,57 +124,57 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The business scenario risk:
+	// The business scenario risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskBizScenario *int32 `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
-	// The device risk:
+	// The device risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskDevice *int32 `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
-	// The DeviceToken risk:
+	// The DeviceToken risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 0
 	RiskDeviceToken *int32 `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
-	// The generic risk:
+	// The generic risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskGeneric *int32 `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
-	// The large model mining risk:
+	// The large model mining risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskModelMining *int32 `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
-	// Specifies whether the device is rooted. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the identity tag risk type.
+	// Specifies whether the device is rooted. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the identity tag risk type.
 	//
 	// example:
 	//
@@ -186,31 +186,31 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 10000072xx
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Specifies whether the device is a simulator. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the device tag risk type.
+	// Specifies whether the device is a simulator. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the device tag risk type.
 	//
 	// example:
 	//
 	// 1
 	Simulator *int32 `json:"Simulator,omitempty" xml:"Simulator,omitempty"`
-	// The query start time.
+	// The start time of the query. Format: YYYY-MM-DD HH:mm:ss, such as 2025-10-10 00:00:00.
 	//
 	// example:
 	//
-	// 2025-10-10 00:00:00 +0800
+	// 2025-10-10 00:00:00
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The result code. For details, see [SubCode Description](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+	// The result code. For more information about valid values, see [SubCode description](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/error-code-person-verify#d88910e172fgg).
 	//
 	// example:
 	//
 	// 201
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// Comma-separated result codes. For details, see [SubCode Description](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+	// Comma-separated result codes. For more information about valid values, see [SubCode description](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/error-code-person-verify#d88910e172fgg).
 	//
 	// example:
 	//
 	// 201,202
 	SubCodes *string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty"`
-	// Specifies whether virtual video is used. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the behavior tag risk type.
+	// Specifies whether virtual video adaptation is used. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the behavior tag risk type.
 	//
 	// example:
 	//

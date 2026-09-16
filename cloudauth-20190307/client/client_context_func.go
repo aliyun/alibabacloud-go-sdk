@@ -544,6 +544,18 @@ func (client *Client) CreateAntCloudAuthSceneWithContext(ctx context.Context, re
 		query["CheckFileName"] = request.CheckFileName
 	}
 
+	if !dara.IsNil(request.DegradeAppScheme) {
+		query["DegradeAppScheme"] = request.DegradeAppScheme
+	}
+
+	if !dara.IsNil(request.DegradeSubCodes) {
+		query["DegradeSubCodes"] = request.DegradeSubCodes
+	}
+
+	if !dara.IsNil(request.DegradeType) {
+		query["DegradeType"] = request.DegradeType
+	}
+
 	if !dara.IsNil(request.DeviceRiskPlus) {
 		query["DeviceRiskPlus"] = request.DeviceRiskPlus
 	}
@@ -570,6 +582,10 @@ func (client *Client) CreateAntCloudAuthSceneWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.StoreImage) {
 		query["StoreImage"] = request.StoreImage
+	}
+
+	if !dara.IsNil(request.UseDegrade) {
+		query["UseDegrade"] = request.UseDegrade
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -845,7 +861,7 @@ func (client *Client) CreateVerifySettingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an authentication whitelist.
+// Creates a whitelist for ID Verification.
 //
 // Description:
 //
@@ -2063,7 +2079,7 @@ func (client *Client) DescribeFaceGuardRiskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// After the China site (Chinese mainland) mobile client receives a callback, the China site (Chinese mainland) server can call this operation to obtain the corresponding verification status and verification materials.
+// Retrieves the verification status and verification materials after the China-based mobile client receives a callback.
 //
 // Description:
 //
@@ -2121,11 +2137,11 @@ func (client *Client) DescribeFaceVerifyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries information verification export tasks by page.
+// Queries export tasks for information verification in a paged manner.
 //
 // Description:
 //
-// Request method: Supports sending requests by using the HTTPS POST and GET methods.
+// Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // @param request - DescribeInfoCheckExportRecordRequest
 //
@@ -2185,11 +2201,11 @@ func (client *Client) DescribeInfoCheckExportRecordWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a specified.
+// Queries the list of financial-grade authentication scenarios.
 //
 // Description:
 //
-// Request method: Supports HTTPS POST and GET methods.
+// Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // > The authorization key is valid for 30 minutes and cannot be reused. Obtain a new key before each activation.
 //
@@ -2375,7 +2391,7 @@ func (client *Client) DescribeListFaceVerifyInfosWithContext(ctx context.Context
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -2473,11 +2489,11 @@ func (client *Client) DescribeMetaSearchPageListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries statistics information for information verification and authentication.
+// Queries statistics information for information verification authentication.
 //
 // Description:
 //
-// - Request method: HTTPS POST and GET methods are supported.
+// - Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // - Service address: cloudauth.aliyuncs.com.
 //
@@ -2531,11 +2547,11 @@ func (client *Client) DescribeMetaStatisticsListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries information verification and authentication data with pagination.
+// Queries information verification data by paging.
 //
 // Description:
 //
-// - Request method: Supports sending requests using HTTPS POST and GET methods.
+// - Request method: HTTPS POST and GET methods are supported.
 //
 // - Service address: cloudauth.aliyuncs.com.
 //
@@ -2701,7 +2717,7 @@ func (client *Client) DescribeOssStatusV2WithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries financial-grade ID Verification call statistics by using a paging query operation.
+// Queries the paging statistics of financial-grade ID Verification invocations.
 //
 // @param request - DescribePageFaceVerifyDataRequest
 //
@@ -2833,7 +2849,7 @@ func (client *Client) DescribeSmartStatisticsPageListWithContext(ctx context.Con
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -3031,11 +3047,11 @@ func (client *Client) DescribeVerifyPersonasDeviceModelStatisticsWithContext(ctx
 
 // Summary:
 //
-// Queries the distribution data of ID Verification devices.
+// Queries the distribution data of authenticated devices.
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -3093,11 +3109,11 @@ func (client *Client) DescribeVerifyPersonasOsStatisticsWithContext(ctx context.
 
 // Summary:
 //
-// Queries authentication statistics by province of the individual.
+// Queries authentication statistics by province where individuals are located.
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -3159,7 +3175,7 @@ func (client *Client) DescribeVerifyPersonasProvinceStatisticsWithContext(ctx co
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -3327,13 +3343,13 @@ func (client *Client) DescribeVerifySDKWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Query authentication details by page with conditions.
+// Queries the details of authentication records with paging and conditional query.
 //
 // Description:
 //
 // - Service endpoint: cloudauth.aliyuncs.com.
 //
-// - Request methods: HTTPS POST and GET.
+// - Request method: HTTPS POST and GET.
 //
 // @param request - DescribeVerifySearchPageListRequest
 //
@@ -3649,7 +3665,7 @@ func (client *Client) DescribeVerifyTokenWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the whitelist of a scenario.
+// Queries the whitelist of a specified scenario.
 //
 // Description:
 //
@@ -4173,11 +4189,93 @@ func (client *Client) Id3MetaVerifyWithContext(ctx context.Context, request *Id3
 
 // Summary:
 //
-// Accepts images of the front and back of an ID card, extracts the name, ID number, and facial photo by using OCR, and verifies the authenticity and consistency of the three facial elements against an authoritative source.
+// Three-factor verification (premium edition).
 //
 // Description:
 //
-// Submits images of the front and back of an ID card and returns the verification result of the three facial elements from an authoritative data source.
+// Verifies the authenticity and consistency of a name, ID card number, and facial photo against an authoritative source.
+//
+// @param request - Id3MetaVerifyPRORequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id3MetaVerifyPROResponse
+func (client *Client) Id3MetaVerifyPROWithContext(ctx context.Context, request *Id3MetaVerifyPRORequest, runtime *dara.RuntimeOptions) (_result *Id3MetaVerifyPROResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableFallback) {
+		query["EnableFallback"] = request.EnableFallback
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Crop) {
+		body["Crop"] = request.Crop
+	}
+
+	if !dara.IsNil(request.FaceFile) {
+		body["FaceFile"] = request.FaceFile
+	}
+
+	if !dara.IsNil(request.FacePicture) {
+		body["FacePicture"] = request.FacePicture
+	}
+
+	if !dara.IsNil(request.FaceUrl) {
+		body["FaceUrl"] = request.FaceUrl
+	}
+
+	if !dara.IsNil(request.IdentifyNum) {
+		body["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !dara.IsNil(request.LivenessCheck) {
+		body["LivenessCheck"] = request.LivenessCheck
+	}
+
+	if !dara.IsNil(request.ParamType) {
+		body["ParamType"] = request.ParamType
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Id3MetaVerifyPRO"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &Id3MetaVerifyPROResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the authenticity and consistency of facial recognition three-factor elements by accepting front and back images of an ID card, extracting the name, ID number, and facial photo through OCR, and checking them against an authoritative source.
+//
+// Description:
+//
+// Accepts front and back images of an ID card and returns the verification result of the facial recognition three-factor elements from an authoritative data source.
 //
 // @param request - Id3MetaVerifyWithOCRRequest
 //
@@ -4397,7 +4495,7 @@ func (client *Client) InitCardVerifyWithContext(ctx context.Context, request *In
 
 // Summary:
 //
-// Obtains a CertifyId before each authentication to link the interfaces in the authentication request.
+// Obtains a CertifyId before each authentication session, which is used to correlate the various API operations in the authentication request.
 //
 // Description:
 //
@@ -4411,15 +4509,15 @@ func (client *Client) InitCardVerifyWithContext(ctx context.Context, request *In
 //
 // When performing ID Verification, submit images that meet all of the following conditions:
 //
-// - A recent photo with a complete, clear, and unobstructed face, a natural expression, and the subject facing the camera directly.
+// - A recent photo with a complete, clear, and unobstructed face, natural expression, and facing the camera directly.
 //
-// - A clear photo with normal exposure. The face must not be too dark, too bright, or have glare, and the angle must not deviate significantly.
+// - Clear photo with normal exposure. The face must not be too dark, too bright, or have glare, and the angle must not deviate significantly.
 //
-// - Resolution must not exceed 1920×1080 and must be at least 640×480. Scale the short side to 720 pixels and use a compression ratio greater than 0.9.
+// - Resolution must not exceed 1920×1080, must be at least 640×480. We recommend scaling the short edge to 720 pixels with a compression ratio greater than 0.9.
 //
 // - Photo size: < 1 MB.
 //
-// - Photos rotated 90, 180, and 270 degrees are supported. For photos with multiple faces, the largest face is selected.
+// - Photos rotated 90, 180, and 270 degrees are supported. For multiple faces, the largest face is selected.
 //
 // @param request - InitFaceVerifyRequest
 //
@@ -5541,7 +5639,7 @@ func (client *Client) ModifyDeviceInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries ID Verification whitelist configurations by using paging.
+// Queries ID Verification whitelist configurations by paging.
 //
 // @param request - PageQueryWhiteListSettingRequest
 //
@@ -5893,7 +5991,7 @@ func (client *Client) QueryVerifyDownloadTaskWithContext(ctx context.Context, re
 //
 // - Request method: HTTPS POST and GET.
 //
-// - This operation uses different parameters for different product plans. For more information, see [official documentation](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/product-overview/introduction/).
+// - This operation uses different parameters for different product plans. For more information, refer to the [official documentation](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/product-overview/introduction/).
 //
 // @param request - QueryVerifyFlowPackageRequest
 //
@@ -5945,7 +6043,7 @@ func (client *Client) QueryVerifyFlowPackageWithContext(ctx context.Context, req
 //
 // - Request method: HTTPS POST and GET.
 //
-// > ID Verification counts call volume by CertifyId. To facilitate reconciliation, retain the CertifyId field in your system.
+// > ID Verification products use CertifyId to calculate call volume. To facilitate reconciliation, retain the CertifyId field in your system.
 //
 // @param request - QueryVerifyInvokeSatisticRequest
 //
@@ -6071,11 +6169,11 @@ func (client *Client) RemoveWhiteListSettingWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Updates a China Finance Certification Initiative (CFCI) scenario.
+// Updates a China Finance Certification scenario.
 //
 // Description:
 //
-// Updates the information of a China Finance Certification Initiative (CFCI) scenario based on the scenario ID.
+// Updates the information of a China Finance Certification scenario based on the scenario ID.
 //
 // - Service endpoint: cloudauth.aliyuncs.com.
 //
@@ -6104,6 +6202,18 @@ func (client *Client) UpdateAntCloudAuthSceneWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.CheckFileName) {
 		query["CheckFileName"] = request.CheckFileName
+	}
+
+	if !dara.IsNil(request.DegradeAppScheme) {
+		query["DegradeAppScheme"] = request.DegradeAppScheme
+	}
+
+	if !dara.IsNil(request.DegradeSubCodes) {
+		query["DegradeSubCodes"] = request.DegradeSubCodes
+	}
+
+	if !dara.IsNil(request.DegradeType) {
+		query["DegradeType"] = request.DegradeType
 	}
 
 	if !dara.IsNil(request.DeviceRiskPlus) {
@@ -6140,6 +6250,10 @@ func (client *Client) UpdateAntCloudAuthSceneWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.StoreImage) {
 		query["StoreImage"] = request.StoreImage
+	}
+
+	if !dara.IsNil(request.UseDegrade) {
+		query["UseDegrade"] = request.UseDegrade
 	}
 
 	req := &openapiutil.OpenApiRequest{

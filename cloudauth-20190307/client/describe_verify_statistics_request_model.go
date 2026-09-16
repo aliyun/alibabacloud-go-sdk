@@ -26,13 +26,13 @@ type DescribeVerifyStatisticsRequest struct {
 	//
 	// - **T**: older than 14
 	//
-	// - **F**: younger than 14.
+	// - **F**: younger than 14
 	//
 	// example:
 	//
 	// T
 	AgeGt *string `json:"AgeGt,omitempty" xml:"AgeGt,omitempty"`
-	// The end time of the query.
+	// The end time of the query. Format: UNIX timestamp. Unit: milliseconds. Example: 1760630399999.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeVerifyStatisticsRequest struct {
 	//
 	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): enhanced ID Verification.
+	// - **cloudauthst*	- (discontinued): ID Verification - Enhanced Edition.
 	//
 	// - **cloudauth*	- (discontinued): ID Verification.
 	//
@@ -60,7 +60,7 @@ type DescribeVerifyStatisticsRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The start time of the query.
+	// The start time of the query. Format: UNIX timestamp. Unit: milliseconds. Example: 1760025600000.
 	//
 	// This parameter is required.
 	//

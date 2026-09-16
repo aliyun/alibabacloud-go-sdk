@@ -36,7 +36,7 @@ type DescribeVerifyPersonasOsStatisticsRequest struct {
 	//
 	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): enhanced ID Verification.
+	// - **cloudauthst*	- (discontinued): ID Verification Enhanced Edition.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeVerifyPersonasOsStatisticsRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The time range for the query, which specifies the number of preceding days.
+	// The time range for the query, indicating the number of preceding days. Format: a numeric string. Unit: days (d). A value of 7 indicates the preceding 7 days.
 	//
 	// This parameter is required.
 	//

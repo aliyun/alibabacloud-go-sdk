@@ -18,7 +18,7 @@ type iDescribeMetaStatisticsListRequest interface {
 }
 
 type DescribeMetaStatisticsListRequest struct {
-	// The commodity code. Valid values:
+	// The product code. Valid values:
 	//
 	// - **ID_CARD_2_META**: ID card two-element verification
 	//
@@ -36,7 +36,7 @@ type DescribeMetaStatisticsListRequest struct {
 	//
 	// - **BANK_CARD_N_META**: bank card verification (detailed edition)
 	//
-	// - **MOBILE_DETECT**: phone number detection
+	// - **MOBILE_DETECT**: number detection
 	//
 	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
 	//
@@ -46,7 +46,7 @@ type DescribeMetaStatisticsListRequest struct {
 	//
 	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query
 	//
-	// - **VEHICLE_CHECK**: vehicle element verification.
+	// - **VEHICLE_CHECK**: vehicle element verification
 	//
 	// This parameter is required.
 	//

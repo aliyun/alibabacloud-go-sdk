@@ -56,7 +56,7 @@ type DescribePageFaceVerifyDataResponseBody struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The ID of this request.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *DescribePageFaceVerifyDataResponseBody) Validate() error {
 }
 
 type DescribePageFaceVerifyDataResponseBodyItems struct {
-	// The date.
+	// The date. The value is in ISO 8601/RFC 3339 format, UTC time zone (Z indicates +00:00), with millisecond precision, such as 2024-03-24T00:00:00.000Z.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type DescribePageFaceVerifyDataResponseBodyItems struct {
 	//
 	// example:
 	//
-	// ****实名认证
+	// ****Real-name verification
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 	// The number of successful calls.
 	//

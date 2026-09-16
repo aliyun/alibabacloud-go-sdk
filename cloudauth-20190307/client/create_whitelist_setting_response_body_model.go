@@ -16,7 +16,7 @@ type iCreateWhitelistSettingResponseBody interface {
 }
 
 type CreateWhitelistSettingResponseBody struct {
-	// The ID of the request.
+	// The ID of this request.
 	//
 	// example:
 	//

@@ -20,23 +20,23 @@ type iId3MetaVerifyResponseBody interface {
 }
 
 type Id3MetaVerifyResponseBody struct {
-	// The response code. A value of 200 indicates success. Other values indicate failure.
+	// The response code. 200 indicates success. Other values indicate failure.
 	//
 	// **Important**
 	//
-	// - This parameter indicates only whether the API call is successful. For more information about return codes, see error codes.
+	// - This parameter indicates whether the API call is successful. For more information about return codes, see error codes.
 	//
-	// - Check the fields in ResultObject for the business verification result.
+	// - Check the business verification result in the fields of ResultObject.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message of the API call.
+	// The response message.
 	//
 	// **Important**
 	//
-	// This parameter indicates only whether the API call is abnormal.
+	// This parameter only indicates whether the API call is abnormal.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ func (s *Id3MetaVerifyResponseBody) Validate() error {
 type Id3MetaVerifyResponseBodyResultObject struct {
 	// The identity verification result. Valid values:
 	//
-	// - 1: Consistent.
+	// - 1: verification is consistent.
 	//
-	// - 2: Inconsistent.
+	// - 2: verification is inconsistent.
 	//
-	// - 3: No record found.
+	// - 3: no record found.
 	//
 	// example:
 	//
@@ -128,6 +128,30 @@ type Id3MetaVerifyResponseBodyResultObject struct {
 	//
 	// }
 	FaceDetail *string `json:"FaceDetail,omitempty" xml:"FaceDetail,omitempty"`
+	// The authoritative source verification details. Valid values:
+	//
+	// - 101: authentication passed.
+	//
+	// - 201: authentication failed. The name does not match the ID card number.
+	//
+	// - 202: authentication failed. The person is suspected to be the ID holder.
+	//
+	// - 203: authentication failed. No photo exists in the database.
+	//
+	// - 204: authentication failed. The person is not the same individual.
+	//
+	// - 205: authentication failed. Modeling of the image to be compared failed.
+	//
+	// - 206: authentication failed. The image format is incorrect.
+	//
+	// - 207: authentication failed. The uploaded image is too small. Upload a new image.
+	//
+	// - 208: authentication failed. The quality of the uploaded portrait photo is poor. Upload a new photo.
+	//
+	// - 301: no record found. The ID number does not exist in the database.
+	//
+	// - 302: no record found. Verification cannot be performed.
+	//
 	// example:
 	//
 	// 101

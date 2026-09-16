@@ -42,31 +42,31 @@ type iDescribeMetaSearchPageListRequest interface {
 type DescribeMetaSearchPageListRequest struct {
 	// The product API. Valid values:
 	//
-	// - **ID_CARD_2_META**: ID card two-element verification
+	// - **ID_CARD_2_META**: ID card two-element verification.
 	//
-	// - **ID_PERIOD**: ID card validity period verification
+	// - **ID_PERIOD**: ID card validity period verification.
 	//
-	// - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+	// - **MOBILE_ONLINE_LENGTH**: mobile number online duration.
 	//
-	// - **MOBILE_ONLINE_STATUS**: mobile number online status
+	// - **MOBILE_ONLINE_STATUS**: mobile number online status.
 	//
-	// - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
+	// - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition).
 	//
-	// - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
+	// - **MOBILE_3_META**: mobile number three-element verification (detailed edition).
 	//
-	// - **MOBILE_2_META**: mobile number two-element verification
+	// - **MOBILE_2_META**: mobile number two-element verification.
 	//
-	// - **BANK_CARD_N_META**: bank card verification (detailed edition)
+	// - **BANK_CARD_N_META**: bank card verification (detailed edition).
 	//
-	// - **MOBILE_DETECT**: phone number detection
+	// - **MOBILE_DETECT**: phone number detection.
 	//
-	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
+	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition).
 	//
-	// - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+	// - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition.
 	//
-	// - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+	// - **VEHICLE_LICENSE_INFO**: vehicle information recognition.
 	//
-	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query.
 	//
 	// - **VEHICLE_CHECK**: vehicle element verification.
 	//
@@ -82,11 +82,11 @@ type DescribeMetaSearchPageListRequest struct {
 	//
 	// 610*************1181
 	BankCard *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
-	// The verification status. Valid values:
+	// The authentication status. Valid values:
 	//
-	// - **1**: Verification passed.
+	// - **1**: Authentication passed.
 	//
-	// - **2**: Verification failed.
+	// - **2**: Authentication failed.
 	//
 	// - **3**: No record found.
 	//
@@ -116,11 +116,11 @@ type DescribeMetaSearchPageListRequest struct {
 	//
 	// 522132197411184XXX
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// The name of the telecommunications service provider. Valid values:
+	// The telecommunications service provider name. Valid values:
 	//
-	// - **CMCC**: China Mobile
+	// - **CMCC**: China Mobile.
 	//
-	// - **CUCC**: China Unicom
+	// - **CUCC**: China Unicom.
 	//
 	// - **CTCC**: China Telecom.
 	//
@@ -128,7 +128,7 @@ type DescribeMetaSearchPageListRequest struct {
 	//
 	// CTCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The mobile phone number.
+	// The mobile number.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type DescribeMetaSearchPageListRequest struct {
 	//
 	// 1760198400000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The result code. For more information, see [official documentation](https://www.alibabacloud.com/help/en/id-verification/information-verification/).
+	// The result code. For more information, refer to the [official documentation](https://www.alibabacloud.com/help/en/id-verification/information-verification/).
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribeMetaSearchPageListRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// John Smith
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The license plate number.
 	//

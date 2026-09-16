@@ -16,13 +16,13 @@ type iDescribeListAntCloudAuthScenesResponseBody interface {
 }
 
 type DescribeListAntCloudAuthScenesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CC1AB3F5-22A2-589F-ABDD-B766694AA671
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of scenes.
+	// The list of scenarios.
 	Scenes []*DescribeListAntCloudAuthScenesResponseBodyScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
 }
 
@@ -82,11 +82,11 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	//
 	// Y
 	BindMiniProgram *string `json:"BindMiniProgram,omitempty" xml:"BindMiniProgram,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds (ms), such as 1740389697000.
 	//
 	// example:
 	//
-	// 1260051251634779
+	// 1740389697000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The creator.
 	//
@@ -94,6 +94,24 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	//
 	// 189884094677xxxx
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The iOS scheme for degradation.
+	//
+	// example:
+	//
+	// cloudauth://callback
+	DegradeAppScheme *string `json:"DegradeAppScheme,omitempty" xml:"DegradeAppScheme,omitempty"`
+	// The list of SubCodes that trigger degradation.
+	//
+	// example:
+	//
+	// 201,202
+	DegradeSubCodes *string `json:"DegradeSubCodes,omitempty" xml:"DegradeSubCodes,omitempty"`
+	// The degraded authentication type.
+	//
+	// example:
+	//
+	// ALIPAY
+	DegradeType *string `json:"DegradeType,omitempty" xml:"DegradeType,omitempty"`
 	// Specifies whether to enable enhanced device risk detection. Valid values:
 	//
 	// - **Y**: Enabled.
@@ -114,7 +132,7 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	//
 	// example:
 	//
-	// 测试APP
+	// TestApp
 	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
 	// The modifier.
 	//
@@ -124,9 +142,9 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
 	// The mini program platform. Valid values:
 	//
-	// - **WECHAT**: WeChat
+	// - **WECHAT**: WeChat.
 	//
-	// - **ALIPAY**: Alipay
+	// - **ALIPAY**: Alipay.
 	//
 	// - **TIKTOK**: TikTok.
 	//
@@ -134,31 +152,31 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	//
 	// WECHAT
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The number of evidence face photos (1 to 5).
+	// The number of evidence face photos (1-5).
 	//
 	// example:
 	//
 	// 1
 	ReturnPicCount *int64 `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
-	// The duration of the evidence video, in seconds.
+	// The evidence video duration in seconds.
 	//
 	// example:
 	//
 	// 1
 	ReturnVideoLength *int64 `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
-	// The scene ID.
+	// The scenario ID.
 	//
 	// example:
 	//
 	// 100001xxxx
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The scene name.
+	// The scenario name.
 	//
 	// example:
 	//
-	// 测试场景
+	// TestScenario
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Indicates whether the scene is enabled. The value 1 indicates enabled.
+	// Indicates whether the scenario is enabled. The value is 1.
 	//
 	// example:
 	//
@@ -174,12 +192,18 @@ type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
 	//
 	// Y
 	StoreImage *string `json:"StoreImage,omitempty" xml:"StoreImage,omitempty"`
-	// The time when the instance was last updated.
+	// The last update time of the instance. The value is a UNIX timestamp in milliseconds (ms), such as 1740541510000.
 	//
 	// example:
 	//
-	// 1260051251634779
+	// 1740541510000
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Specifies whether to enable degraded authentication.
+	//
+	// example:
+	//
+	// Y
+	UseDegrade *string `json:"UseDegrade,omitempty" xml:"UseDegrade,omitempty"`
 }
 
 func (s DescribeListAntCloudAuthScenesResponseBodyScenes) String() string {
@@ -204,6 +228,18 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetCreateTime() *stri
 
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetCreator() *string {
 	return s.Creator
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetDegradeAppScheme() *string {
+	return s.DegradeAppScheme
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetDegradeSubCodes() *string {
+	return s.DegradeSubCodes
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetDegradeType() *string {
+	return s.DegradeType
 }
 
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetDeviceRiskPlus() *string {
@@ -254,6 +290,10 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetUpdateTime() *stri
 	return s.UpdateTime
 }
 
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) GetUseDegrade() *string {
+	return s.UseDegrade
+}
+
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetAppId(v int64) *DescribeListAntCloudAuthScenesResponseBodyScenes {
 	s.AppId = &v
 	return s
@@ -271,6 +311,21 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetCreateTime(v strin
 
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetCreator(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
 	s.Creator = &v
+	return s
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetDegradeAppScheme(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
+	s.DegradeAppScheme = &v
+	return s
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetDegradeSubCodes(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
+	s.DegradeSubCodes = &v
+	return s
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetDegradeType(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
+	s.DegradeType = &v
 	return s
 }
 
@@ -331,6 +386,11 @@ func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetStoreImage(v strin
 
 func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetUpdateTime(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeListAntCloudAuthScenesResponseBodyScenes) SetUseDegrade(v string) *DescribeListAntCloudAuthScenesResponseBodyScenes {
+	s.UseDegrade = &v
 	return s
 }
 

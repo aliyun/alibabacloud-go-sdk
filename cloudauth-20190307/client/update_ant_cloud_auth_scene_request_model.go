@@ -15,6 +15,12 @@ type iUpdateAntCloudAuthSceneRequest interface {
 	GetCheckFileBody() *string
 	SetCheckFileName(v string) *UpdateAntCloudAuthSceneRequest
 	GetCheckFileName() *string
+	SetDegradeAppScheme(v string) *UpdateAntCloudAuthSceneRequest
+	GetDegradeAppScheme() *string
+	SetDegradeSubCodes(v string) *UpdateAntCloudAuthSceneRequest
+	GetDegradeSubCodes() *string
+	SetDegradeType(v string) *UpdateAntCloudAuthSceneRequest
+	GetDegradeType() *string
 	SetDeviceRiskPlus(v string) *UpdateAntCloudAuthSceneRequest
 	GetDeviceRiskPlus() *string
 	SetMiniProgramName(v string) *UpdateAntCloudAuthSceneRequest
@@ -33,6 +39,8 @@ type iUpdateAntCloudAuthSceneRequest interface {
 	GetStatus() *int32
 	SetStoreImage(v string) *UpdateAntCloudAuthSceneRequest
 	GetStoreImage() *string
+	SetUseDegrade(v string) *UpdateAntCloudAuthSceneRequest
+	GetUseDegrade() *string
 }
 
 type UpdateAntCloudAuthSceneRequest struct {
@@ -42,7 +50,7 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// - **N (default)**: disabled.
 	//
-	// 	Notice: If you enable mini program binding, make sure that you specify all parameters related to the mini program binding..
+	// 	Notice: If you enable mini program binding, make sure that you specify all parameters related to the mini program binding.
 	//
 	// example:
 	//
@@ -58,8 +66,26 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// example:
 	//
-	// 测试.txt
+	// test.txt
 	CheckFileName *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
+	// The iOS app scheme for degradation.
+	//
+	// example:
+	//
+	// cloudauth://callback
+	DegradeAppScheme *string `json:"DegradeAppScheme,omitempty" xml:"DegradeAppScheme,omitempty"`
+	// The SubCode that triggers degradation.
+	//
+	// example:
+	//
+	// 201,202
+	DegradeSubCodes *string `json:"DegradeSubCodes,omitempty" xml:"DegradeSubCodes,omitempty"`
+	// Specifies whether to enable degraded authentication.
+	//
+	// example:
+	//
+	// ALIPAY
+	DegradeType *string `json:"DegradeType,omitempty" xml:"DegradeType,omitempty"`
 	// Specifies whether to enable enhanced device risk detection. Valid values:
 	//
 	// - **Y**: enabled.
@@ -74,7 +100,7 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// example:
 	//
-	// 测试APP
+	// TestApp
 	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
 	// The mini program platform. Valid values:
 	//
@@ -82,19 +108,19 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// - **ALIPAY**: Alipay
 	//
-	// - **TIKTOK**: TikTok.
+	// - **TIKTOK**: TikTok
 	//
 	// example:
 	//
 	// IOS
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The number of returned photos (1 to 5). This parameter takes effect only after StoreImage is enabled for certification file retention.
+	// The number of returned photos (1 to 5). This parameter takes effect after StoreImage is enabled for authentication file retention.
 	//
 	// example:
 	//
 	// 1
 	ReturnPicCount *int64 `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
-	// The duration of the returned video (1 to 2 seconds). This parameter takes effect only after StoreImage is enabled.
+	// The duration of the returned video (1 to 2 seconds). This parameter takes effect after StoreImage is enabled.
 	//
 	// example:
 	//
@@ -114,13 +140,13 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// test
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// This parameter is not used. You do not need to specify this parameter.
+	// This parameter has no effect. You do not need to specify this parameter.
 	//
 	// example:
 	//
-	// -
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Specifies whether to deliver certification files generated during the certification process to the user\\"s OSS bucket. Valid values:
+	// Specifies whether to deliver authentication files generated during the authentication process to your OSS bucket. Valid values:
 	//
 	// - **Y**: enabled.
 	//
@@ -130,6 +156,12 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// Y
 	StoreImage *string `json:"StoreImage,omitempty" xml:"StoreImage,omitempty"`
+	// Specifies whether to enable degraded authentication.
+	//
+	// example:
+	//
+	// Y
+	UseDegrade *string `json:"UseDegrade,omitempty" xml:"UseDegrade,omitempty"`
 }
 
 func (s UpdateAntCloudAuthSceneRequest) String() string {
@@ -150,6 +182,18 @@ func (s *UpdateAntCloudAuthSceneRequest) GetCheckFileBody() *string {
 
 func (s *UpdateAntCloudAuthSceneRequest) GetCheckFileName() *string {
 	return s.CheckFileName
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) GetDegradeAppScheme() *string {
+	return s.DegradeAppScheme
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) GetDegradeSubCodes() *string {
+	return s.DegradeSubCodes
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) GetDegradeType() *string {
+	return s.DegradeType
 }
 
 func (s *UpdateAntCloudAuthSceneRequest) GetDeviceRiskPlus() *string {
@@ -188,6 +232,10 @@ func (s *UpdateAntCloudAuthSceneRequest) GetStoreImage() *string {
 	return s.StoreImage
 }
 
+func (s *UpdateAntCloudAuthSceneRequest) GetUseDegrade() *string {
+	return s.UseDegrade
+}
+
 func (s *UpdateAntCloudAuthSceneRequest) SetBindMiniProgram(v string) *UpdateAntCloudAuthSceneRequest {
 	s.BindMiniProgram = &v
 	return s
@@ -200,6 +248,21 @@ func (s *UpdateAntCloudAuthSceneRequest) SetCheckFileBody(v string) *UpdateAntCl
 
 func (s *UpdateAntCloudAuthSceneRequest) SetCheckFileName(v string) *UpdateAntCloudAuthSceneRequest {
 	s.CheckFileName = &v
+	return s
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) SetDegradeAppScheme(v string) *UpdateAntCloudAuthSceneRequest {
+	s.DegradeAppScheme = &v
+	return s
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) SetDegradeSubCodes(v string) *UpdateAntCloudAuthSceneRequest {
+	s.DegradeSubCodes = &v
+	return s
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) SetDegradeType(v string) *UpdateAntCloudAuthSceneRequest {
+	s.DegradeType = &v
 	return s
 }
 
@@ -245,6 +308,11 @@ func (s *UpdateAntCloudAuthSceneRequest) SetStatus(v int32) *UpdateAntCloudAuthS
 
 func (s *UpdateAntCloudAuthSceneRequest) SetStoreImage(v string) *UpdateAntCloudAuthSceneRequest {
 	s.StoreImage = &v
+	return s
+}
+
+func (s *UpdateAntCloudAuthSceneRequest) SetUseDegrade(v string) *UpdateAntCloudAuthSceneRequest {
+	s.UseDegrade = &v
 	return s
 }
 

@@ -36,7 +36,7 @@ type DescribeVerifyPersonasProvinceStatisticsRequest struct {
 	//
 	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): enhanced ID Verification.
+	// - **cloudauthst*	- (discontinued): ID Verification enhanced edition.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeVerifyPersonasProvinceStatisticsRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The time range. The search scope is the previous N days. For example, a value of 1 indicates the previous day.
+	// The time range. The search range is the previous N days. Format: a numeric string. Unit: days (d). A value of 1 indicates the previous 1 day.
 	//
 	// This parameter is required.
 	//

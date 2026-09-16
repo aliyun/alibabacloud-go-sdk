@@ -30,7 +30,7 @@ type DescribeFaceVerifyRequest struct {
 	//
 	// JPG
 	PictureReturnType *string `json:"PictureReturnType,omitempty" xml:"PictureReturnType,omitempty"`
-	// The ID of the verification scenario.
+	// The verification scenario ID.
 	//
 	// example:
 	//

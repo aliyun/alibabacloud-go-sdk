@@ -56,7 +56,7 @@ type DescribeWhitelistSettingRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the query result. Valid values:
+	// The language of the query results. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -82,9 +82,9 @@ type DescribeWhitelistSettingRequest struct {
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// The service code. Valid values:
 	//
-	// - **cloudauthst**: enhanced financial-grade edition.
+	// - **cloudauthst**: Enhanced Finance Edition.
 	//
-	// - **antcloudauth**: financial-grade edition.
+	// - **antcloudauth**: Finance Edition.
 	//
 	// This parameter is required.
 	//
@@ -110,18 +110,20 @@ type DescribeWhitelistSettingRequest struct {
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end time of the validity period.
+	// The end time of the validity period. Format: UNIX timestamp. Unit: milliseconds. Example: 1730304000000.
 	//
 	// example:
 	//
 	// 1730304000000
 	ValidEndDate *int64 `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	// The start time of the validity period. The value is a UNIX timestamp in seconds.
+	// The start time of the validity period. Format: UNIX timestamp. Unit: milliseconds. Example: 1759939200000.
 	//
 	// example:
 	//
 	// 1759939200000
 	ValidStartDate *int64 `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+	// The whitelist type.
+	//
 	// example:
 	//
 	// SUPER

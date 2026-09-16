@@ -191,7 +191,7 @@ type PageQueryWhiteListSettingResponseBodyResultObject struct {
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// The unique identifier of the ID Verification request.
+	// The unique identifier of the ID Verification.
 	//
 	// example:
 	//
@@ -239,19 +239,19 @@ type PageQueryWhiteListSettingResponseBodyResultObject struct {
 	//
 	// - VALID: Not deleted and within the validity period (valid).
 	//
-	// - INVALID: Not deleted but outside the validity period (invalid).
+	// - INVALID: Not deleted but not within the validity period (invalid).
 	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end date of the validity period.
+	// The end date of the validity period. Format: YYYY-MM-DD HH:mm:ss, for example, 2024-09-02 13:57:51.
 	//
 	// example:
 	//
 	// 2024-09-02 13:57:51
 	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	// The start date of the validity period.
+	// The start date of the validity period. Format: YYYY-MM-DD HH:mm:ss, for example, 2024-08-30 13:57:51.
 	//
 	// example:
 	//

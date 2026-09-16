@@ -44,7 +44,7 @@ type DescribeVerifySearchPageListResponseBody struct {
 	//
 	// 47D87BC1-D956-573A-8A15-A9007A76F56C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *DescribeVerifySearchPageListResponseBody) Validate() error {
 }
 
 type DescribeVerifySearchPageListResponseBodyItems struct {
-	// The desensitized ID card number.
+	// The masked ID card number.
 	//
 	// example:
 	//
 	// 3****************2
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// The certification ID.
+	// The authentication ID.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	// The extended information.
 	ExtInfo *DescribeVerifySearchPageListResponseBodyItemsExtInfo `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty" type:"Struct"`
-	// The verification time of this authentication record.
+	// The verification time of the authentication record.
 	//
 	// example:
 	//
@@ -160,17 +160,17 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	//
 	// MULTI_ACTION
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The unique identifier for the customer request.
+	// The unique identifier of the customer request.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// Specifies whether the authentication passed. Valid values:
+	// Indicates whether the authentication is passed. Valid values:
 	//
 	// - **T**: Passed.
 	//
-	// - **F**: Failed.
+	// - **F**: Not passed.
 	//
 	// example:
 	//
@@ -182,57 +182,57 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The business scenario risk:
+	// The business scenario risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskBizScenario *int32 `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
-	// The device risk:
+	// The device risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskDevice *int32 `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
-	// The DeviceToken risk:
+	// The DeviceToken risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 0
 	RiskDeviceToken *int32 `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
-	// The generic risk:
+	// The generic risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskGeneric *int32 `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
-	// The large model mining risk:
+	// The large model mining risk. Valid values:
 	//
 	// - **0**: No risk.
 	//
-	// - **1**: Risk detected.
+	// - **1**: Risk exists.
 	//
 	// example:
 	//
 	// 1
 	RiskModelMining *int32 `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
-	// Specifies whether the device is rooted. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the identity tag risk type.
+	// Specifies whether the device is rooted. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the identity tag risk type.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	//
 	// 1000015352
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Specifies whether the device is a simulator. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the device tag risk type.
+	// Specifies whether the device is a simulator. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the device tag risk type.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	//
 	// 198123xxxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Specifies whether virtual video is used. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the behavior tag risk type.
+	// Specifies whether virtual video adaptation is used. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the behavior tag risk type.
 	//
 	// example:
 	//
@@ -459,19 +459,19 @@ func (s *DescribeVerifySearchPageListResponseBodyItems) Validate() error {
 }
 
 type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
-	// The desensitized name.
+	// The masked name.
 	//
 	// example:
 	//
 	// 何*
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The Face Guard tags.
+	// The face guard label.
 	//
 	// example:
 	//
 	// HOOK,ROOT
 	DeviceRisk *string `json:"DeviceRisk,omitempty" xml:"DeviceRisk,omitempty"`
-	// Specifies whether a face attack is detected:
+	// Indicates whether a face attack is detected. Valid values:
 	//
 	// - **T**: Yes.
 	//
@@ -481,19 +481,19 @@ type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
 	//
 	// T
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The face attack score. The value ranges from 0 to 1. A value closer to 1 indicates a higher likelihood of an attack.
+	// The face attack score. Valid values: 0 to 1. A value closer to 1 indicates a higher likelihood of an attack.
 	//
 	// example:
 	//
 	// 0.0000445161
 	FaceAttackScore *float32 `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// Specifies whether the face is occluded. T indicates occlusion detected. F indicates no occlusion.
+	// Indicates whether the face is occluded. T indicates occluded. F indicates not occluded.
 	//
 	// example:
 	//
 	// T
 	FaceOcclusion *string `json:"FaceOcclusion,omitempty" xml:"FaceOcclusion,omitempty"`
-	// The face-to-ID card comparison score.
+	// The face-to-ID-card comparison score.
 	//
 	// example:
 	//
@@ -505,13 +505,13 @@ type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
 	//
 	// cn-shanghai-aliyun-cloudauth-XXX
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The file name of the OCR ID card face image.
+	// The OSS file name of the OCR ID card face image.
 	//
 	// example:
 	//
 	// -
 	OssIdFaceObjectName *string `json:"OssIdFaceObjectName,omitempty" xml:"OssIdFaceObjectName,omitempty"`
-	// The file name of the OCR ID card national emblem image.
+	// The OSS file name of the OCR ID card national emblem image.
 	//
 	// example:
 	//
@@ -523,7 +523,7 @@ type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
 	//
 	// verify/XXXXX1251634779/sha6a0a0cab01288c7aa8ac3f45220eb_0_normal.jpeg
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	// The liveness face quality score.
+	// The face quality score from liveness detection.
 	//
 	// example:
 	//

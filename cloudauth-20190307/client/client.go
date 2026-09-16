@@ -24,32 +24,9 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("regional")
+	client.EndpointRule = dara.String("central")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("cloudauth.aliyuncs.com"),
-		"us-east-1":             dara.String("cloudauth.aliyuncs.com"),
-		"me-east-1":             dara.String("cloudauth.aliyuncs.com"),
-		"eu-west-1":             dara.String("cloudauth.aliyuncs.com"),
-		"eu-central-1":          dara.String("cloudauth.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("cloudauth.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("cloudauth.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("cloudauth.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("cloudauth.aliyuncs.com"),
-		"cn-shanghai":           dara.String("cloudauth.aliyuncs.com"),
-		"cn-qingdao":            dara.String("cloudauth.cn-qingdao.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("cloudauth.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("cloudauth.aliyuncs.com"),
-		"cn-hongkong":           dara.String("cloudauth.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("cloudauth.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("cloudauth.aliyuncs.com"),
-		"cn-chengdu":            dara.String("cloudauth.aliyuncs.com"),
-		"cn-beijing":            dara.String("cloudauth.cn-beijing.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("cloudauth.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("cloudauth.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("cloudauth.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("cloudauth.aliyuncs.com"),
-		"ap-south-1":            dara.String("cloudauth.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("cloudauth.aliyuncs.com"),
+		"cn-beijing": dara.String("cloudauth.cn-beijing.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -987,6 +964,18 @@ func (client *Client) CreateAntCloudAuthSceneWithOptions(request *CreateAntCloud
 		query["CheckFileName"] = request.CheckFileName
 	}
 
+	if !dara.IsNil(request.DegradeAppScheme) {
+		query["DegradeAppScheme"] = request.DegradeAppScheme
+	}
+
+	if !dara.IsNil(request.DegradeSubCodes) {
+		query["DegradeSubCodes"] = request.DegradeSubCodes
+	}
+
+	if !dara.IsNil(request.DegradeType) {
+		query["DegradeType"] = request.DegradeType
+	}
+
 	if !dara.IsNil(request.DeviceRiskPlus) {
 		query["DeviceRiskPlus"] = request.DeviceRiskPlus
 	}
@@ -1013,6 +1002,10 @@ func (client *Client) CreateAntCloudAuthSceneWithOptions(request *CreateAntCloud
 
 	if !dara.IsNil(request.StoreImage) {
 		query["StoreImage"] = request.StoreImage
+	}
+
+	if !dara.IsNil(request.UseDegrade) {
+		query["UseDegrade"] = request.UseDegrade
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1408,7 +1401,7 @@ func (client *Client) CreateVerifySetting(request *CreateVerifySettingRequest) (
 
 // Summary:
 //
-// Creates an authentication whitelist.
+// Creates a whitelist for ID Verification.
 //
 // Description:
 //
@@ -1488,7 +1481,7 @@ func (client *Client) CreateWhitelistSettingWithOptions(request *CreateWhitelist
 
 // Summary:
 //
-// Creates an authentication whitelist.
+// Creates a whitelist for ID Verification.
 //
 // Description:
 //
@@ -3333,7 +3326,7 @@ func (client *Client) DescribeFaceGuardRisk(request *DescribeFaceGuardRiskReques
 
 // Summary:
 //
-// After the China site (Chinese mainland) mobile client receives a callback, the China site (Chinese mainland) server can call this operation to obtain the corresponding verification status and verification materials.
+// Retrieves the verification status and verification materials after the China-based mobile client receives a callback.
 //
 // Description:
 //
@@ -3391,7 +3384,7 @@ func (client *Client) DescribeFaceVerifyWithOptions(request *DescribeFaceVerifyR
 
 // Summary:
 //
-// After the China site (Chinese mainland) mobile client receives a callback, the China site (Chinese mainland) server can call this operation to obtain the corresponding verification status and verification materials.
+// Retrieves the verification status and verification materials after the China-based mobile client receives a callback.
 //
 // Description:
 //
@@ -3415,11 +3408,11 @@ func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest) (_r
 
 // Summary:
 //
-// Queries information verification export tasks by page.
+// Queries export tasks for information verification in a paged manner.
 //
 // Description:
 //
-// Request method: Supports sending requests by using the HTTPS POST and GET methods.
+// Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // @param request - DescribeInfoCheckExportRecordRequest
 //
@@ -3479,11 +3472,11 @@ func (client *Client) DescribeInfoCheckExportRecordWithOptions(request *Describe
 
 // Summary:
 //
-// Queries information verification export tasks by page.
+// Queries export tasks for information verification in a paged manner.
 //
 // Description:
 //
-// Request method: Supports sending requests by using the HTTPS POST and GET methods.
+// Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // @param request - DescribeInfoCheckExportRecordRequest
 //
@@ -3501,11 +3494,11 @@ func (client *Client) DescribeInfoCheckExportRecord(request *DescribeInfoCheckEx
 
 // Summary:
 //
-// Queries a specified.
+// Queries the list of financial-grade authentication scenarios.
 //
 // Description:
 //
-// Request method: Supports HTTPS POST and GET methods.
+// Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // > The authorization key is valid for 30 minutes and cannot be reused. Obtain a new key before each activation.
 //
@@ -3551,11 +3544,11 @@ func (client *Client) DescribeListAntCloudAuthScenesWithOptions(request *Describ
 
 // Summary:
 //
-// Queries a specified.
+// Queries the list of financial-grade authentication scenarios.
 //
 // Description:
 //
-// Request method: Supports HTTPS POST and GET methods.
+// Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // > The authorization key is valid for 30 minutes and cannot be reused. Obtain a new key before each activation.
 //
@@ -3763,7 +3756,7 @@ func (client *Client) DescribeListFaceVerifyInfos(request *DescribeListFaceVerif
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -3865,7 +3858,7 @@ func (client *Client) DescribeMetaSearchPageListWithOptions(request *DescribeMet
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -3885,11 +3878,11 @@ func (client *Client) DescribeMetaSearchPageList(request *DescribeMetaSearchPage
 
 // Summary:
 //
-// Queries statistics information for information verification and authentication.
+// Queries statistics information for information verification authentication.
 //
 // Description:
 //
-// - Request method: HTTPS POST and GET methods are supported.
+// - Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // - Service address: cloudauth.aliyuncs.com.
 //
@@ -3943,11 +3936,11 @@ func (client *Client) DescribeMetaStatisticsListWithOptions(request *DescribeMet
 
 // Summary:
 //
-// Queries statistics information for information verification and authentication.
+// Queries statistics information for information verification authentication.
 //
 // Description:
 //
-// - Request method: HTTPS POST and GET methods are supported.
+// - Request method: Supports sending requests by using HTTPS POST and GET methods.
 //
 // - Service address: cloudauth.aliyuncs.com.
 //
@@ -3967,11 +3960,11 @@ func (client *Client) DescribeMetaStatisticsList(request *DescribeMetaStatistics
 
 // Summary:
 //
-// Queries information verification and authentication data with pagination.
+// Queries information verification data by paging.
 //
 // Description:
 //
-// - Request method: Supports sending requests using HTTPS POST and GET methods.
+// - Request method: HTTPS POST and GET methods are supported.
 //
 // - Service address: cloudauth.aliyuncs.com.
 //
@@ -4033,11 +4026,11 @@ func (client *Client) DescribeMetaStatisticsPageListWithOptions(request *Describ
 
 // Summary:
 //
-// Queries information verification and authentication data with pagination.
+// Queries information verification data by paging.
 //
 // Description:
 //
-// - Request method: Supports sending requests using HTTPS POST and GET methods.
+// - Request method: HTTPS POST and GET methods are supported.
 //
 // - Service address: cloudauth.aliyuncs.com.
 //
@@ -4254,7 +4247,7 @@ func (client *Client) DescribeOssUploadToken() (_result *DescribeOssUploadTokenR
 
 // Summary:
 //
-// Queries financial-grade ID Verification call statistics by using a paging query operation.
+// Queries the paging statistics of financial-grade ID Verification invocations.
 //
 // @param request - DescribePageFaceVerifyDataRequest
 //
@@ -4318,7 +4311,7 @@ func (client *Client) DescribePageFaceVerifyDataWithOptions(request *DescribePag
 
 // Summary:
 //
-// Queries financial-grade ID Verification call statistics by using a paging query operation.
+// Queries the paging statistics of financial-grade ID Verification invocations.
 //
 // @param request - DescribePageFaceVerifyDataRequest
 //
@@ -4528,7 +4521,7 @@ func (client *Client) DescribeSmartStatisticsPageList(request *DescribeSmartStat
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -4594,7 +4587,7 @@ func (client *Client) DescribeVerifyDeviceRiskStatisticsWithOptions(request *Des
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -4798,11 +4791,11 @@ func (client *Client) DescribeVerifyPersonasDeviceModelStatistics(request *Descr
 
 // Summary:
 //
-// Queries the distribution data of ID Verification devices.
+// Queries the distribution data of authenticated devices.
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -4860,11 +4853,11 @@ func (client *Client) DescribeVerifyPersonasOsStatisticsWithOptions(request *Des
 
 // Summary:
 //
-// Queries the distribution data of ID Verification devices.
+// Queries the distribution data of authenticated devices.
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -4884,11 +4877,11 @@ func (client *Client) DescribeVerifyPersonasOsStatistics(request *DescribeVerify
 
 // Summary:
 //
-// Queries authentication statistics by province of the individual.
+// Queries authentication statistics by province where individuals are located.
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -4946,11 +4939,11 @@ func (client *Client) DescribeVerifyPersonasProvinceStatisticsWithOptions(reques
 
 // Summary:
 //
-// Queries authentication statistics by province of the individual.
+// Queries authentication statistics by province where individuals are located.
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -4974,7 +4967,7 @@ func (client *Client) DescribeVerifyPersonasProvinceStatistics(request *Describe
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -5036,7 +5029,7 @@ func (client *Client) DescribeVerifyPersonasSexStatisticsWithOptions(request *De
 //
 // Description:
 //
-// - Service endpoint: cloudauth.aliyuncs.com.
+// - Service address: cloudauth.aliyuncs.com.
 //
 // - Request method: HTTPS POST and GET.
 //
@@ -5220,13 +5213,13 @@ func (client *Client) DescribeVerifySDK(request *DescribeVerifySDKRequest) (_res
 
 // Summary:
 //
-// Query authentication details by page with conditions.
+// Queries the details of authentication records with paging and conditional query.
 //
 // Description:
 //
 // - Service endpoint: cloudauth.aliyuncs.com.
 //
-// - Request methods: HTTPS POST and GET.
+// - Request method: HTTPS POST and GET.
 //
 // @param request - DescribeVerifySearchPageListRequest
 //
@@ -5354,13 +5347,13 @@ func (client *Client) DescribeVerifySearchPageListWithOptions(request *DescribeV
 
 // Summary:
 //
-// Query authentication details by page with conditions.
+// Queries the details of authentication records with paging and conditional query.
 //
 // Description:
 //
 // - Service endpoint: cloudauth.aliyuncs.com.
 //
-// - Request methods: HTTPS POST and GET.
+// - Request method: HTTPS POST and GET.
 //
 // @param request - DescribeVerifySearchPageListRequest
 //
@@ -5630,7 +5623,7 @@ func (client *Client) DescribeVerifyToken(request *DescribeVerifyTokenRequest) (
 
 // Summary:
 //
-// Queries the whitelist of a scenario.
+// Queries the whitelist of a specified scenario.
 //
 // Description:
 //
@@ -5722,7 +5715,7 @@ func (client *Client) DescribeWhitelistSettingWithOptions(request *DescribeWhite
 
 // Summary:
 //
-// Queries the whitelist of a scenario.
+// Queries the whitelist of a specified scenario.
 //
 // Description:
 //
@@ -6594,11 +6587,222 @@ func (client *Client) Id3MetaVerifyAdvance(request *Id3MetaVerifyAdvanceRequest,
 
 // Summary:
 //
-// Accepts images of the front and back of an ID card, extracts the name, ID number, and facial photo by using OCR, and verifies the authenticity and consistency of the three facial elements against an authoritative source.
+// Three-factor verification (premium edition).
 //
 // Description:
 //
-// Submits images of the front and back of an ID card and returns the verification result of the three facial elements from an authoritative data source.
+// Verifies the authenticity and consistency of a name, ID card number, and facial photo against an authoritative source.
+//
+// @param request - Id3MetaVerifyPRORequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id3MetaVerifyPROResponse
+func (client *Client) Id3MetaVerifyPROWithOptions(request *Id3MetaVerifyPRORequest, runtime *dara.RuntimeOptions) (_result *Id3MetaVerifyPROResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableFallback) {
+		query["EnableFallback"] = request.EnableFallback
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Crop) {
+		body["Crop"] = request.Crop
+	}
+
+	if !dara.IsNil(request.FaceFile) {
+		body["FaceFile"] = request.FaceFile
+	}
+
+	if !dara.IsNil(request.FacePicture) {
+		body["FacePicture"] = request.FacePicture
+	}
+
+	if !dara.IsNil(request.FaceUrl) {
+		body["FaceUrl"] = request.FaceUrl
+	}
+
+	if !dara.IsNil(request.IdentifyNum) {
+		body["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !dara.IsNil(request.LivenessCheck) {
+		body["LivenessCheck"] = request.LivenessCheck
+	}
+
+	if !dara.IsNil(request.ParamType) {
+		body["ParamType"] = request.ParamType
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Id3MetaVerifyPRO"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &Id3MetaVerifyPROResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Three-factor verification (premium edition).
+//
+// Description:
+//
+// Verifies the authenticity and consistency of a name, ID card number, and facial photo against an authoritative source.
+//
+// @param request - Id3MetaVerifyPRORequest
+//
+// @return Id3MetaVerifyPROResponse
+func (client *Client) Id3MetaVerifyPRO(request *Id3MetaVerifyPRORequest) (_result *Id3MetaVerifyPROResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &Id3MetaVerifyPROResponse{}
+	_body, _err := client.Id3MetaVerifyPROWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Id3MetaVerifyPROAdvance(request *Id3MetaVerifyPROAdvanceRequest, runtime *dara.RuntimeOptions) (_result *Id3MetaVerifyPROResponse, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	id3MetaVerifyPROReq := &Id3MetaVerifyPRORequest{}
+	openapiutil.Convert(request, id3MetaVerifyPROReq)
+	if !dara.IsNil(request.FaceFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.FaceFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		id3MetaVerifyPROReq.FaceFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	id3MetaVerifyPROResp, _err := client.Id3MetaVerifyPROWithOptions(id3MetaVerifyPROReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = id3MetaVerifyPROResp
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the authenticity and consistency of facial recognition three-factor elements by accepting front and back images of an ID card, extracting the name, ID number, and facial photo through OCR, and checking them against an authoritative source.
+//
+// Description:
+//
+// Accepts front and back images of an ID card and returns the verification result of the facial recognition three-factor elements from an authoritative data source.
 //
 // @param request - Id3MetaVerifyWithOCRRequest
 //
@@ -6654,11 +6858,11 @@ func (client *Client) Id3MetaVerifyWithOCRWithOptions(request *Id3MetaVerifyWith
 
 // Summary:
 //
-// Accepts images of the front and back of an ID card, extracts the name, ID number, and facial photo by using OCR, and verifies the authenticity and consistency of the three facial elements against an authoritative source.
+// Verifies the authenticity and consistency of facial recognition three-factor elements by accepting front and back images of an ID card, extracting the name, ID number, and facial photo through OCR, and checking them against an authoritative source.
 //
 // Description:
 //
-// Submits images of the front and back of an ID card and returns the verification result of the three facial elements from an authoritative data source.
+// Accepts front and back images of an ID card and returns the verification result of the facial recognition three-factor elements from an authoritative data source.
 //
 // @param request - Id3MetaVerifyWithOCRRequest
 //
@@ -7017,7 +7221,7 @@ func (client *Client) InitCardVerify(request *InitCardVerifyRequest) (_result *I
 
 // Summary:
 //
-// Obtains a CertifyId before each authentication to link the interfaces in the authentication request.
+// Obtains a CertifyId before each authentication session, which is used to correlate the various API operations in the authentication request.
 //
 // Description:
 //
@@ -7031,15 +7235,15 @@ func (client *Client) InitCardVerify(request *InitCardVerifyRequest) (_result *I
 //
 // When performing ID Verification, submit images that meet all of the following conditions:
 //
-// - A recent photo with a complete, clear, and unobstructed face, a natural expression, and the subject facing the camera directly.
+// - A recent photo with a complete, clear, and unobstructed face, natural expression, and facing the camera directly.
 //
-// - A clear photo with normal exposure. The face must not be too dark, too bright, or have glare, and the angle must not deviate significantly.
+// - Clear photo with normal exposure. The face must not be too dark, too bright, or have glare, and the angle must not deviate significantly.
 //
-// - Resolution must not exceed 1920×1080 and must be at least 640×480. Scale the short side to 720 pixels and use a compression ratio greater than 0.9.
+// - Resolution must not exceed 1920×1080, must be at least 640×480. We recommend scaling the short edge to 720 pixels with a compression ratio greater than 0.9.
 //
 // - Photo size: < 1 MB.
 //
-// - Photos rotated 90, 180, and 270 degrees are supported. For photos with multiple faces, the largest face is selected.
+// - Photos rotated 90, 180, and 270 degrees are supported. For multiple faces, the largest face is selected.
 //
 // @param request - InitFaceVerifyRequest
 //
@@ -7241,7 +7445,7 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 // Summary:
 //
-// Obtains a CertifyId before each authentication to link the interfaces in the authentication request.
+// Obtains a CertifyId before each authentication session, which is used to correlate the various API operations in the authentication request.
 //
 // Description:
 //
@@ -7255,15 +7459,15 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 //
 // When performing ID Verification, submit images that meet all of the following conditions:
 //
-// - A recent photo with a complete, clear, and unobstructed face, a natural expression, and the subject facing the camera directly.
+// - A recent photo with a complete, clear, and unobstructed face, natural expression, and facing the camera directly.
 //
-// - A clear photo with normal exposure. The face must not be too dark, too bright, or have glare, and the angle must not deviate significantly.
+// - Clear photo with normal exposure. The face must not be too dark, too bright, or have glare, and the angle must not deviate significantly.
 //
-// - Resolution must not exceed 1920×1080 and must be at least 640×480. Scale the short side to 720 pixels and use a compression ratio greater than 0.9.
+// - Resolution must not exceed 1920×1080, must be at least 640×480. We recommend scaling the short edge to 720 pixels with a compression ratio greater than 0.9.
 //
 // - Photo size: < 1 MB.
 //
-// - Photos rotated 90, 180, and 270 degrees are supported. For photos with multiple faces, the largest face is selected.
+// - Photos rotated 90, 180, and 270 degrees are supported. For multiple faces, the largest face is selected.
 //
 // @param request - InitFaceVerifyRequest
 //
@@ -8531,7 +8735,7 @@ func (client *Client) ModifyDeviceInfo(request *ModifyDeviceInfoRequest) (_resul
 
 // Summary:
 //
-// Queries ID Verification whitelist configurations by using paging.
+// Queries ID Verification whitelist configurations by paging.
 //
 // @param request - PageQueryWhiteListSettingRequest
 //
@@ -8607,7 +8811,7 @@ func (client *Client) PageQueryWhiteListSettingWithOptions(request *PageQueryWhi
 
 // Summary:
 //
-// Queries ID Verification whitelist configurations by using paging.
+// Queries ID Verification whitelist configurations by paging.
 //
 // @param request - PageQueryWhiteListSettingRequest
 //
@@ -9031,7 +9235,7 @@ func (client *Client) QueryVerifyDownloadTask(request *QueryVerifyDownloadTaskRe
 //
 // - Request method: HTTPS POST and GET.
 //
-// - This operation uses different parameters for different product plans. For more information, see [official documentation](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/product-overview/introduction/).
+// - This operation uses different parameters for different product plans. For more information, refer to the [official documentation](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/product-overview/introduction/).
 //
 // @param request - QueryVerifyFlowPackageRequest
 //
@@ -9083,7 +9287,7 @@ func (client *Client) QueryVerifyFlowPackageWithOptions(request *QueryVerifyFlow
 //
 // - Request method: HTTPS POST and GET.
 //
-// - This operation uses different parameters for different product plans. For more information, see [official documentation](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/product-overview/introduction/).
+// - This operation uses different parameters for different product plans. For more information, refer to the [official documentation](https://www.alibabacloud.com/help/en/id-verification/financial-grade-id-verification/product-overview/introduction/).
 //
 // @param request - QueryVerifyFlowPackageRequest
 //
@@ -9109,7 +9313,7 @@ func (client *Client) QueryVerifyFlowPackage(request *QueryVerifyFlowPackageRequ
 //
 // - Request method: HTTPS POST and GET.
 //
-// > ID Verification counts call volume by CertifyId. To facilitate reconciliation, retain the CertifyId field in your system.
+// > ID Verification products use CertifyId to calculate call volume. To facilitate reconciliation, retain the CertifyId field in your system.
 //
 // @param request - QueryVerifyInvokeSatisticRequest
 //
@@ -9189,7 +9393,7 @@ func (client *Client) QueryVerifyInvokeSatisticWithOptions(request *QueryVerifyI
 //
 // - Request method: HTTPS POST and GET.
 //
-// > ID Verification counts call volume by CertifyId. To facilitate reconciliation, retain the CertifyId field in your system.
+// > ID Verification products use CertifyId to calculate call volume. To facilitate reconciliation, retain the CertifyId field in your system.
 //
 // @param request - QueryVerifyInvokeSatisticRequest
 //
@@ -9279,11 +9483,11 @@ func (client *Client) RemoveWhiteListSetting(request *RemoveWhiteListSettingRequ
 
 // Summary:
 //
-// Updates a China Finance Certification Initiative (CFCI) scenario.
+// Updates a China Finance Certification scenario.
 //
 // Description:
 //
-// Updates the information of a China Finance Certification Initiative (CFCI) scenario based on the scenario ID.
+// Updates the information of a China Finance Certification scenario based on the scenario ID.
 //
 // - Service endpoint: cloudauth.aliyuncs.com.
 //
@@ -9312,6 +9516,18 @@ func (client *Client) UpdateAntCloudAuthSceneWithOptions(request *UpdateAntCloud
 
 	if !dara.IsNil(request.CheckFileName) {
 		query["CheckFileName"] = request.CheckFileName
+	}
+
+	if !dara.IsNil(request.DegradeAppScheme) {
+		query["DegradeAppScheme"] = request.DegradeAppScheme
+	}
+
+	if !dara.IsNil(request.DegradeSubCodes) {
+		query["DegradeSubCodes"] = request.DegradeSubCodes
+	}
+
+	if !dara.IsNil(request.DegradeType) {
+		query["DegradeType"] = request.DegradeType
 	}
 
 	if !dara.IsNil(request.DeviceRiskPlus) {
@@ -9350,6 +9566,10 @@ func (client *Client) UpdateAntCloudAuthSceneWithOptions(request *UpdateAntCloud
 		query["StoreImage"] = request.StoreImage
 	}
 
+	if !dara.IsNil(request.UseDegrade) {
+		query["UseDegrade"] = request.UseDegrade
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9375,11 +9595,11 @@ func (client *Client) UpdateAntCloudAuthSceneWithOptions(request *UpdateAntCloud
 
 // Summary:
 //
-// Updates a China Finance Certification Initiative (CFCI) scenario.
+// Updates a China Finance Certification scenario.
 //
 // Description:
 //
-// Updates the information of a China Finance Certification Initiative (CFCI) scenario based on the scenario ID.
+// Updates the information of a China Finance Certification scenario based on the scenario ID.
 //
 // - Service endpoint: cloudauth.aliyuncs.com.
 //

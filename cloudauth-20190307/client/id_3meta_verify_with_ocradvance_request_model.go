@@ -25,21 +25,21 @@ type Id3MetaVerifyWithOCRAdvanceRequest struct {
 	//
 	// example:
 	//
-	// 无
+	// None.
 	CertFileObject io.Reader `json:"CertFile,omitempty" xml:"CertFile,omitempty"`
 	// The image of the national emblem side of the ID card. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
 	//
 	// example:
 	//
-	// 无
+	// None.
 	CertNationalFileObject io.Reader `json:"CertNationalFile,omitempty" xml:"CertNationalFile,omitempty"`
-	// The URL of the national emblem side image of the ID card. Specify a publicly accessible HTTP or HTTPS URL. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
+	// The URL of the national emblem side image of the ID card. A publicly accessible HTTP or HTTPS URL. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
 	//
 	// example:
 	//
 	// https://www.aliyun.com/cert.jpeg
 	CertNationalUrl *string `json:"CertNationalUrl,omitempty" xml:"CertNationalUrl,omitempty"`
-	// The image of the portrait side of the ID card. Specify a publicly accessible HTTP or HTTPS URL. Specify either CertUrl or CertFile.
+	// The image of the portrait side of the ID card. A publicly accessible HTTP or HTTPS URL. Specify either CertUrl or CertFile.
 	//
 	// example:
 	//

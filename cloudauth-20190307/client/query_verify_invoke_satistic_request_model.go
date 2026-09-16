@@ -34,7 +34,7 @@ type QueryVerifyInvokeSatisticRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the query.
+	// The query end time. Format: UNIX timestamp. Unit: milliseconds. Example: 1761926399999.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type QueryVerifyInvokeSatisticRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of product codes to query. For more information, refer to the productCode under the corresponding ProductType.
+	// The list of product codes to query. For specific values, refer to the productCode under the corresponding ProductType.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type QueryVerifyInvokeSatisticRequest struct {
 	ProductProgramList *string `json:"ProductProgramList,omitempty" xml:"ProductProgramList,omitempty"`
 	// The product type. Valid values:
 	//
-	// - **FINANCE_VERIFY**: financial-grade ID Verification
+	// - **FINANCE_VERIFY**: Finance-grade ID Verification.
 	//
-	// - **SMART_VERIFY**: enhanced ID Verification (discontinued)
+	// - **SMART_VERIFY**: Enhanced ID Verification (discontinued).
 	//
 	// - **FACE_VERIFY**: ID Verification (discontinued).
 	//
@@ -70,15 +70,15 @@ type QueryVerifyInvokeSatisticRequest struct {
 	//
 	// []
 	SceneIdList *string `json:"SceneIdList,omitempty" xml:"SceneIdList,omitempty"`
-	// The start time of the query.
+	// The query start time. Format: UNIX timestamp. Unit: milliseconds. Example: 1743436800000.
 	//
 	// example:
 	//
 	// 1743436800000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The statistical dimension. Valid values:
+	// The statistics dimension. Valid values:
 	//
-	// - **day**: daily
+	// - **day**: daily.
 	//
 	// - **month**: monthly.
 	//
