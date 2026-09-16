@@ -16,7 +16,7 @@ type iCreateTicketRequest interface {
 }
 
 type CreateTicketRequest struct {
-	// - The access token expiration time, in seconds. This specifies the expiration time for the user to access page operations. Default value: 86400 (one day). Valid values: 0 to 86400 (one day).
+	// - The expiration time (in seconds) of the access token, which specifies how long the user can access page operations. Default value: 86400 (one day). Valid values: 0 to 86400 (one day).
 	//
 	// - The actual access token expiration time is the minimum value of accessTokenExpirationTime and expirationTime.
 	//
@@ -26,7 +26,7 @@ type CreateTicketRequest struct {
 	//
 	// 600
 	AccessTokenExpirationTime *int64 `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
-	// - The expiration time, in seconds. This specifies the expiration time of the embedded page URL. Default value: 86400 (one day). Valid values: 0 to 2592000 (30 days).
+	// - The expiration time (in seconds) of the embedded page URL. Default value: 86400 (one day). Valid values: 0 to 2592000 (30 days).
 	//
 	// example:
 	//

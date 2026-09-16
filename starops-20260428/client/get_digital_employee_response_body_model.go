@@ -11,6 +11,8 @@ type iGetDigitalEmployeeResponseBody interface {
 	GoString() string
 	SetAttributes(v map[string]*string) *GetDigitalEmployeeResponseBody
 	GetAttributes() map[string]*string
+	SetChannel(v string) *GetDigitalEmployeeResponseBody
+	GetChannel() *string
 	SetCreateTime(v string) *GetDigitalEmployeeResponseBody
 	GetCreateTime() *string
 	SetDefaultRule(v string) *GetDigitalEmployeeResponseBody
@@ -46,6 +48,12 @@ type iGetDigitalEmployeeResponseBody interface {
 type GetDigitalEmployeeResponseBody struct {
 	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The channel type.
+	//
+	// example:
+	//
+	// default
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -104,13 +112,13 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The ARN of the RAM role.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The sandbox network ACL policy configuration for the digital employee.
+	// The sandbox network ACL policy configuration of the digital employee.
 	//
 	// example:
 	//
@@ -124,7 +132,7 @@ type GetDigitalEmployeeResponseBody struct {
 	//
 	// {"aliyun":{"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
 	ToolPolicy *GetDigitalEmployeeResponseBodyToolPolicy `json:"toolPolicy,omitempty" xml:"toolPolicy,omitempty" type:"Struct"`
-	// The update time.
+	// The modification time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -144,6 +152,10 @@ func (s GetDigitalEmployeeResponseBody) GoString() string {
 
 func (s *GetDigitalEmployeeResponseBody) GetAttributes() map[string]*string {
 	return s.Attributes
+}
+
+func (s *GetDigitalEmployeeResponseBody) GetChannel() *string {
+	return s.Channel
 }
 
 func (s *GetDigitalEmployeeResponseBody) GetCreateTime() *string {
@@ -208,6 +220,11 @@ func (s *GetDigitalEmployeeResponseBody) GetUpdateTime() *string {
 
 func (s *GetDigitalEmployeeResponseBody) SetAttributes(v map[string]*string) *GetDigitalEmployeeResponseBody {
 	s.Attributes = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBody) SetChannel(v string) *GetDigitalEmployeeResponseBody {
+	s.Channel = &v
 	return s
 }
 
@@ -488,7 +505,7 @@ func (s *GetDigitalEmployeeResponseBodySandboxNetworkPolicy) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyToolPolicy struct {
-	// The security policy configuration for Aliyun CLI tool calling.
+	// The security policy configuration for Alibaba Cloud CLI tool calling invokes.
 	//
 	// example:
 	//
@@ -523,13 +540,27 @@ func (s *GetDigitalEmployeeResponseBodyToolPolicy) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyToolPolicyAliyun struct {
+	// The auto-pass policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically approved without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically approved. Unmatched actions require human-in-the-loop (HIL) confirmation.
+	//
+	// example:
+	//
+	// ["log:Get*","log:List*"]
+	AutoPassPolicy []*string `json:"autoPassPolicy,omitempty" xml:"autoPassPolicy,omitempty" type:"Repeated"`
+	// The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no actions are actively denied. STAROps directly denies matched actions. The Pop side performs secondary fallback enforcement.
+	//
+	// example:
+	//
+	// ["ecs:RunCommand","ecs:Delete*"]
+	DenyPolicy []*string `json:"denyPolicy,omitempty" xml:"denyPolicy,omitempty" type:"Repeated"`
 	// Indicates whether the policy is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The list of Aliyun CLI tool policy statements.
+	// Deprecated
+	//
+	// The list of Alibaba Cloud CLI tool policy statements.
 	//
 	// example:
 	//
@@ -545,12 +576,30 @@ func (s GetDigitalEmployeeResponseBodyToolPolicyAliyun) GoString() string {
 	return s.String()
 }
 
+func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) GetAutoPassPolicy() []*string {
+	return s.AutoPassPolicy
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) GetDenyPolicy() []*string {
+	return s.DenyPolicy
+}
+
 func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) GetEnable() *bool {
 	return s.Enable
 }
 
 func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) GetStatements() []*GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements {
 	return s.Statements
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) SetAutoPassPolicy(v []*string) *GetDigitalEmployeeResponseBodyToolPolicyAliyun {
+	s.AutoPassPolicy = v
+	return s
+}
+
+func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) SetDenyPolicy(v []*string) *GetDigitalEmployeeResponseBodyToolPolicyAliyun {
+	s.DenyPolicy = v
+	return s
 }
 
 func (s *GetDigitalEmployeeResponseBodyToolPolicyAliyun) SetEnable(v bool) *GetDigitalEmployeeResponseBodyToolPolicyAliyun {

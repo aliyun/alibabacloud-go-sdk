@@ -34,6 +34,7 @@ type iCreateDigitalEmployeeRequest interface {
 }
 
 type CreateDigitalEmployeeRequest struct {
+	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	// The default rule of the digital employee.
 	//
@@ -53,7 +54,7 @@ type CreateDigitalEmployeeRequest struct {
 	//
 	// digial-employee-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The list of knowledge bases.
+	// The knowledge base list.
 	Knowledges *CreateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// The name of the digital employee.
 	//
@@ -89,7 +90,7 @@ type CreateDigitalEmployeeRequest struct {
 	//
 	// example:
 	//
-	// {"aliyun":{"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
+	// {"aliyun":{"enable":true,"denyPolicy":["ecs:RunCommand","ecs:Delete*"],"autoPassPolicy":["log:Get*","log:List*"],"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}}
 	ToolPolicy *CreateDigitalEmployeeRequestToolPolicy `json:"toolPolicy,omitempty" xml:"toolPolicy,omitempty" type:"Struct"`
 }
 
@@ -229,9 +230,9 @@ func (s *CreateDigitalEmployeeRequest) Validate() error {
 }
 
 type CreateDigitalEmployeeRequestKnowledges struct {
-	// The list of Bailian knowledge bases.
+	// The Bailian knowledge base list.
 	Bailian []*CreateDigitalEmployeeRequestKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	// The list of SOP knowledge bases.
+	// The SOP knowledge base list.
 	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
@@ -275,7 +276,7 @@ func (s *CreateDigitalEmployeeRequestKnowledges) Validate() error {
 }
 
 type CreateDigitalEmployeeRequestKnowledgesBailian struct {
-	// The attributes of the knowledge base.
+	// The knowledge base attributes.
 	//
 	// example:
 	//
@@ -352,7 +353,7 @@ func (s *CreateDigitalEmployeeRequestKnowledgesBailian) Validate() error {
 type CreateDigitalEmployeeRequestSandboxNetworkPolicy struct {
 	// The list of allowed CIDRs or IP addresses. A maximum of 50 entries are supported.
 	AllowCidrs []*string `json:"allowCidrs,omitempty" xml:"allowCidrs,omitempty" type:"Repeated"`
-	// The list of allowed FQDNs. A maximum of 50 FQDNs are supported.
+	// The list of allowed FQDNs. A maximum of 50 entries are supported.
 	AllowFqdns []*string `json:"allowFqdns,omitempty" xml:"allowFqdns,omitempty" type:"Repeated"`
 	// Specifies whether to enable the sandbox network ACL.
 	//
@@ -406,7 +407,7 @@ type CreateDigitalEmployeeRequestToolPolicy struct {
 	//
 	// example:
 	//
-	// {"enable":true,"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}
+	// {"enable":true,"denyPolicy":["ecs:RunCommand","ecs:Delete*"],"autoPassPolicy":["log:Get*","log:List*"],"statements":[{"decision":"user_ack","product":"Sls","apiVersion":"2020-12-30","actions":["log:GetProject","log:CreateDashboard"]}]}
 	Aliyun *CreateDigitalEmployeeRequestToolPolicyAliyun `json:"aliyun,omitempty" xml:"aliyun,omitempty" type:"Struct"`
 }
 
@@ -437,13 +438,27 @@ func (s *CreateDigitalEmployeeRequestToolPolicy) Validate() error {
 }
 
 type CreateDigitalEmployeeRequestToolPolicyAliyun struct {
-	// Specifies whether to enable the Aliyun MCP tool policy.
+	// The auto-pass policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically approved without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically approved. Unmatched actions require human-in-the-loop (HIL) confirmation.
+	//
+	// example:
+	//
+	// ["log:Get*","log:List*"]
+	AutoPassPolicy []*string `json:"autoPassPolicy,omitempty" xml:"autoPassPolicy,omitempty" type:"Repeated"`
+	// The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no actions are actively denied. STAROps directly denies matched actions. The Pop side performs secondary fallback enforcement.
+	//
+	// example:
+	//
+	// ["ecs:RunCommand","ecs:Delete*"]
+	DenyPolicy []*string `json:"denyPolicy,omitempty" xml:"denyPolicy,omitempty" type:"Repeated"`
+	// Specifies whether to enable the Aliyun MCP tool policy. The policy is enabled by default and is disabled only when this parameter is explicitly set to false.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The list of Aliyun OpenAPI tool policy statements.
+	// Deprecated
+	//
+	// **[Deprecated]*	- Use denyPolicy and autoPassPolicy instead. This parameter is still returned during the transition period. Original description: The list of Aliyun OpenAPI tool policy statements.
 	//
 	// example:
 	//
@@ -459,12 +474,30 @@ func (s CreateDigitalEmployeeRequestToolPolicyAliyun) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) GetAutoPassPolicy() []*string {
+	return s.AutoPassPolicy
+}
+
+func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) GetDenyPolicy() []*string {
+	return s.DenyPolicy
+}
+
 func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) GetEnable() *bool {
 	return s.Enable
 }
 
 func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) GetStatements() []*CreateDigitalEmployeeRequestToolPolicyAliyunStatements {
 	return s.Statements
+}
+
+func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) SetAutoPassPolicy(v []*string) *CreateDigitalEmployeeRequestToolPolicyAliyun {
+	s.AutoPassPolicy = v
+	return s
+}
+
+func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) SetDenyPolicy(v []*string) *CreateDigitalEmployeeRequestToolPolicyAliyun {
+	s.DenyPolicy = v
+	return s
 }
 
 func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) SetEnable(v bool) *CreateDigitalEmployeeRequestToolPolicyAliyun {
@@ -491,7 +524,7 @@ func (s *CreateDigitalEmployeeRequestToolPolicyAliyun) Validate() error {
 }
 
 type CreateDigitalEmployeeRequestToolPolicyAliyunStatements struct {
-	// The list of Aliyun OpenAPI actions. The format is product:ApiName, product:Prefix*, or product:*.
+	// The list of Aliyun OpenAPI actions in the format of product:ApiName, product:Prefix*, or product:*.
 	//
 	// example:
 	//
@@ -505,7 +538,7 @@ type CreateDigitalEmployeeRequestToolPolicyAliyunStatements struct {
 	//
 	// 2020-12-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The execution policy when the API is matched.
+	// The execution policy when this API is matched.
 	//
 	// example:
 	//

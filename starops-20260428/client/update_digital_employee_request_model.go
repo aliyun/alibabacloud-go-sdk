@@ -48,7 +48,7 @@ type UpdateDigitalEmployeeRequest struct {
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The list of knowledge bases.
+	// The knowledge base list.
 	Knowledges *UpdateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// The ARN of the RAM role.
 	//
@@ -62,7 +62,7 @@ type UpdateDigitalEmployeeRequest struct {
 	//
 	// {"allowFqdns":["api.example.com"],"allowCidrs":["1.2.3.0/24","8.8.8.8"],"enableAcl":false}
 	SandboxNetworkPolicy *UpdateDigitalEmployeeRequestSandboxNetworkPolicy `json:"sandboxNetworkPolicy,omitempty" xml:"sandboxNetworkPolicy,omitempty" type:"Struct"`
-	// The security policy configuration for tool calling of the digital employee.
+	// The tool calling security policy configuration of the digital employee.
 	//
 	// example:
 	//
@@ -170,9 +170,9 @@ func (s *UpdateDigitalEmployeeRequest) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledges struct {
-	// The list of Bailian knowledge bases.
+	// The Bailian knowledge base list.
 	Bailian []*UpdateDigitalEmployeeRequestKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	// The list of SOP knowledge bases.
+	// The SOP knowledge base list.
 	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
@@ -216,7 +216,7 @@ func (s *UpdateDigitalEmployeeRequestKnowledges) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledgesBailian struct {
-	// The attributes of the knowledge base.
+	// The knowledge base attributes.
 	//
 	// example:
 	//
@@ -343,7 +343,7 @@ func (s *UpdateDigitalEmployeeRequestSandboxNetworkPolicy) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestToolPolicy struct {
-	// The security policy configuration for Aliyun CLI tool calling.
+	// The Aliyun CLI tool calling security policy configuration.
 	//
 	// example:
 	//
@@ -378,12 +378,26 @@ func (s *UpdateDigitalEmployeeRequestToolPolicy) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestToolPolicyAliyun struct {
+	// The automatic pass-through policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically allowed without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically allowed. Unmatched actions require human-in-the-loop (HIL) confirmation.
+	//
+	// example:
+	//
+	// ["log:Get*","log:List*"]
+	AutoPassPolicy []*string `json:"autoPassPolicy,omitempty" xml:"autoPassPolicy,omitempty" type:"Repeated"`
+	// The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are actively denied. STAROps directly denies matched actions. Pop performs secondary enforcement.
+	//
+	// example:
+	//
+	// ["ecs:RunCommand","ecs:Delete*"]
+	DenyPolicy []*string `json:"denyPolicy,omitempty" xml:"denyPolicy,omitempty" type:"Repeated"`
 	// Specifies whether to enable the policy.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Deprecated
+	//
 	// The list of Aliyun CLI tool policy statements.
 	//
 	// example:
@@ -400,12 +414,30 @@ func (s UpdateDigitalEmployeeRequestToolPolicyAliyun) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) GetAutoPassPolicy() []*string {
+	return s.AutoPassPolicy
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) GetDenyPolicy() []*string {
+	return s.DenyPolicy
+}
+
 func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) GetEnable() *bool {
 	return s.Enable
 }
 
 func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) GetStatements() []*UpdateDigitalEmployeeRequestToolPolicyAliyunStatements {
 	return s.Statements
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) SetAutoPassPolicy(v []*string) *UpdateDigitalEmployeeRequestToolPolicyAliyun {
+	s.AutoPassPolicy = v
+	return s
+}
+
+func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) SetDenyPolicy(v []*string) *UpdateDigitalEmployeeRequestToolPolicyAliyun {
+	s.DenyPolicy = v
+	return s
 }
 
 func (s *UpdateDigitalEmployeeRequestToolPolicyAliyun) SetEnable(v bool) *UpdateDigitalEmployeeRequestToolPolicyAliyun {
@@ -440,7 +472,7 @@ type UpdateDigitalEmployeeRequestToolPolicyAliyunStatements struct {
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The API version. This parameter is deprecated.
+	// **[Deprecated]*	- The API version.
 	//
 	// example:
 	//
@@ -452,7 +484,7 @@ type UpdateDigitalEmployeeRequestToolPolicyAliyunStatements struct {
 	//
 	// user_ack
 	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
-	// The cloud service code.
+	// The cloud product code.
 	//
 	// example:
 	//

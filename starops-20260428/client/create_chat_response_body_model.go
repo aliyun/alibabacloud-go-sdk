@@ -18,15 +18,15 @@ type iCreateChatResponseBody interface {
 }
 
 type CreateChatResponseBody struct {
-	// A list of message objects in the session.
+	// The list of messages in the session.
 	Messages []*CreateChatResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	// A unique identifier for the API request, useful for troubleshooting.
+	// The ID data of the current message request. The first request ID in the root data.
 	//
 	// example:
 	//
 	// 0CEC5375-XXXX-XXXX-XXXX-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Uniquely identifies the request chain for tracing.
+	// The ID data of the current message request. The first trace ID in the root data.
 	//
 	// example:
 	//
@@ -83,59 +83,59 @@ func (s *CreateChatResponseBody) Validate() error {
 }
 
 type CreateChatResponseBodyMessages struct {
-	// A list of invoked agents.
+	// The list of invoked agents.
 	Agents []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	// A list of generated artifacts.
+	// The artifact output information.
 	Artifacts []map[string]interface{} `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
-	// The ID of the current call.
+	// The current execution ID.
 	//
 	// example:
 	//
 	// call_search_001
 	CallId *string `json:"callId,omitempty" xml:"callId,omitempty"`
-	// A list of content objects.
+	// The content information.
 	Contents []map[string]interface{} `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
-	// Message details.
+	// The message details.
 	//
 	// example:
 	//
 	// test
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// A list of events.
+	// The list of events.
 	Events []map[string]interface{} `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// The ID of the parent call.
+	// The execution ID of the parent level.
 	//
 	// example:
 	//
 	// sess_abc123
 	ParentCallId *string `json:"parentCallId,omitempty" xml:"parentCallId,omitempty"`
-	// The role of the message sender.
+	// The role that initiated the message.
 	//
 	// example:
 	//
 	// tool
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The message sequence number.
+	// The sequence number of the message.
 	//
 	// example:
 	//
 	// 1
 	Seq *int32 `json:"seq,omitempty" xml:"seq,omitempty"`
-	// The timestamp, in nanoseconds.
+	// The timestamp in nanoseconds.
 	//
 	// example:
 	//
 	// 1765000005
 	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	// A list of tool calls.
+	// The list of tools used.
 	Tools []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
-	// The message type.
+	// The specific type of the message.
 	//
 	// example:
 	//
 	// done
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The message version.
+	// The version number of the message.
 	//
 	// example:
 	//

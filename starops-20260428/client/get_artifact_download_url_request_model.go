@@ -14,6 +14,8 @@ type iGetArtifactDownloadUrlRequest interface {
 }
 
 type GetArtifactDownloadUrlRequest struct {
+	// The artifact file path, relative to the digital worker artifact root directory.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -9,6 +9,8 @@ type iListDigitalEmployeesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChannel(v string) *ListDigitalEmployeesRequest
+	GetChannel() *string
 	SetDisplayName(v string) *ListDigitalEmployeesRequest
 	GetDisplayName() *string
 	SetEmployeeType(v string) *ListDigitalEmployeesRequest
@@ -26,6 +28,12 @@ type iListDigitalEmployeesRequest interface {
 }
 
 type ListDigitalEmployeesRequest struct {
+	// Filters digital employees by channel type. If this parameter is not specified, the default channel is used.
+	//
+	// example:
+	//
+	// default
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	// The display name of the digital employee.
 	//
 	// example:
@@ -38,7 +46,7 @@ type ListDigitalEmployeesRequest struct {
 	//
 	// custom
 	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
+	// The page size. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
@@ -50,13 +58,13 @@ type ListDigitalEmployeesRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -72,6 +80,10 @@ func (s ListDigitalEmployeesRequest) String() string {
 
 func (s ListDigitalEmployeesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDigitalEmployeesRequest) GetChannel() *string {
+	return s.Channel
 }
 
 func (s *ListDigitalEmployeesRequest) GetDisplayName() *string {
@@ -100,6 +112,11 @@ func (s *ListDigitalEmployeesRequest) GetResourceGroupId() *string {
 
 func (s *ListDigitalEmployeesRequest) GetTags() []*Tag {
 	return s.Tags
+}
+
+func (s *ListDigitalEmployeesRequest) SetChannel(v string) *ListDigitalEmployeesRequest {
+	s.Channel = &v
+	return s
 }
 
 func (s *ListDigitalEmployeesRequest) SetDisplayName(v string) *ListDigitalEmployeesRequest {

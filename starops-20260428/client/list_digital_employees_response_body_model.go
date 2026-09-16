@@ -22,27 +22,27 @@ type iListDigitalEmployeesResponseBody interface {
 }
 
 type ListDigitalEmployeesResponseBody struct {
-	// A list of digital employees.
+	// The list of digital employees.
 	DigitalEmployees []*ListDigitalEmployeesResponseBodyDigitalEmployees `json:"digitalEmployees,omitempty" xml:"digitalEmployees,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of results returned.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total count.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,8 +117,14 @@ func (s *ListDigitalEmployeesResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
-	// The custom attributes of the digital employee.
+	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The channel type of the digital employee.
+	//
+	// example:
+	//
+	// default
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -151,7 +157,7 @@ type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
 	//
 	// custom
 	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	// A list of knowledge bases.
+	// The list of knowledge bases.
 	Knowledges *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// The name of the digital employee.
 	//
@@ -159,21 +165,21 @@ type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The RAM role ARN.
+	// The ARN of the RAM role.
 	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// A list of tags.
+	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The modification time.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -193,6 +199,10 @@ func (s ListDigitalEmployeesResponseBodyDigitalEmployees) GoString() string {
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetAttributes() map[string]*string {
 	return s.Attributes
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetChannel() *string {
+	return s.Channel
 }
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetCreateTime() *string {
@@ -241,6 +251,11 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) GetUpdateTime() *stri
 
 func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetAttributes(v map[string]*string) *ListDigitalEmployeesResponseBodyDigitalEmployees {
 	s.Attributes = v
+	return s
+}
+
+func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) SetChannel(v string) *ListDigitalEmployeesResponseBodyDigitalEmployees {
+	s.Channel = &v
 	return s
 }
 
@@ -318,9 +333,9 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges struct {
-	// A list of Model Studio knowledge bases.
+	// The list of Bailian knowledge bases.
 	Bailian []*ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	// A list of SOP knowledge bases.
+	// The list of SOP knowledge bases.
 	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
@@ -364,13 +379,13 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) Validate() 
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian struct {
-	// The attributes of the knowledge base.
+	// The knowledge base attributes.
 	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The ID of the Model Studio index.
+	// The Bailian index ID.
 	//
 	// example:
 	//
@@ -382,7 +397,7 @@ type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The ID of the Model Studio workspace.
+	// The Bailian workspace ID.
 	//
 	// example:
 	//

@@ -22,7 +22,15 @@ type iCreateChatRequest interface {
 }
 
 type CreateChatRequest struct {
-	// The operation type. Valid values: `create` (default), `reconnect`, and `stop`.
+	// The action type. Valid values:
+	//
+	// - create: creates a conversation.
+	//
+	// - reconnect: reconnects to an existing conversation.
+	//
+	// - stop: stops the conversation.
+	//
+	// Default value: create.
 	//
 	// example:
 	//
@@ -34,15 +42,15 @@ type CreateChatRequest struct {
 	//
 	// test
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The message list.
+	// The list of messages.
 	Messages []*CreateChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	// The session thread ID.
+	// The conversation thread ID.
 	//
 	// example:
 	//
 	// thread_id01
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
-	// The set of variables.
+	// The list of variables.
 	//
 	// example:
 	//
@@ -137,9 +145,9 @@ func (s *CreateChatRequest) Validate() error {
 }
 
 type CreateChatRequestMessages struct {
-	// The multimodal content of the message.
+	// The text or multimodal array.
 	Contents []*CreateChatRequestMessagesContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
-	// A unique identifier for the message.
+	// The unique identifier of the current message.
 	//
 	// example:
 	//
@@ -151,7 +159,7 @@ type CreateChatRequestMessages struct {
 	//
 	// system
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The tool call list.
+	// The list of tool invocations.
 	Tools []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 

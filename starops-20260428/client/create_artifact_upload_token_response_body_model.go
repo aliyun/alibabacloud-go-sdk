@@ -32,42 +32,62 @@ type iCreateArtifactUploadTokenResponseBody interface {
 }
 
 type CreateArtifactUploadTokenResponseBody struct {
+	// The AccessKey ID used for OSS uploads.
+	//
 	// example:
 	//
 	// LTAI******
 	AccessId *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	// The normalized logical upload directory on the server side, relative to the digital human artifact root directory.
+	//
 	// example:
 	//
 	// upload/2026-05-25/
 	ArtifactPath *string `json:"artifactPath,omitempty" xml:"artifactPath,omitempty"`
+	// The allowed OSS object prefix for uploads.
+	//
 	// example:
 	//
 	// agents/123/sample-agent/home/starops/upload/2026-05-25/
 	Dir *string `json:"dir,omitempty" xml:"dir,omitempty"`
+	// The expiration time of the upload credential. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1770000000
 	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
+	// The OSS form upload URL.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The maximum size of a single file upload, in bytes.
+	//
 	// example:
 	//
 	// 104857600
 	MaxSize *int64 `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
+	// The Base64-encoded OSS Post Policy.
+	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNi0wNS0yMVQwODowMDowMFoifQ==
 	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0A1B2C3D-4E5F-6789-ABCD-1234567890AB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The OSS Post Policy signature.
+	//
 	// example:
 	//
 	// abc123signature
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// The status code returned upon a successful OSS upload.
+	//
 	// example:
 	//
 	// 200

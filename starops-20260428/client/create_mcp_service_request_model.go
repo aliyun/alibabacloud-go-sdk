@@ -34,13 +34,13 @@ type CreateMcpServiceRequest struct {
 	//
 	// example:
 	//
-	// 通过 MCP 调用日志查询工具。
+	// Call the log query tool through MCP
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MCP service.
 	//
 	// example:
 	//
-	// 日志查询
+	// Log Query
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Specifies whether to enable the MCP service.
 	//
@@ -176,8 +176,9 @@ type CreateMcpServiceRequestConnection struct {
 	// example:
 	//
 	// https://example.com/mcp
-	Endpoint *string            `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The custom headers.
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The platform type of the MCP service. Valid values: AIGateway and Custom.
 	//
 	// This parameter is required.
@@ -487,13 +488,13 @@ type CreateMcpServiceRequestTools struct {
 	//
 	// example:
 	//
-	// 查询指定日志库中的日志。
+	// Query logs in a specified Logstore
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the MCP tool.
 	//
 	// example:
 	//
-	// 日志查询工具
+	// Log Query Tool
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Specifies whether to enable the MCP tool.
 	//
@@ -539,7 +540,7 @@ type CreateMcpServiceRequestTools struct {
 	//
 	// example:
 	//
-	// 查询日志
+	// Query Logs
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

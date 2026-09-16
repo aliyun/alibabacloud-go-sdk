@@ -10,11 +10,11 @@ import (
 
 // Summary:
 //
-// 创建产物上传凭证
+// Creates an artifact upload credential.
 //
 // Description:
 //
-// 获取上传内容所需链接，适用于大文件。
+// Obtains the link required to upload content. This operation is applicable to large files.
 //
 // @param request - CreateArtifactUploadTokenRequest
 //
@@ -61,11 +61,11 @@ func (client *Client) CreateArtifactUploadTokenWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # New conversation
+// Creates a conversation.
 //
 // Description:
 //
-// Starts a session.
+// Initiates a conversation.
 //
 // @param request - CreateChatRequest
 //
@@ -82,11 +82,11 @@ func (client *Client) CreateChatWithSSECtx(ctx context.Context, request *CreateC
 
 // Summary:
 //
-// # New conversation
+// Creates a conversation.
 //
 // Description:
 //
-// Starts a session.
+// Initiates a conversation.
 //
 // @param request - CreateChatRequest
 //
@@ -149,7 +149,7 @@ func (client *Client) CreateChatWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// Creates a digital employee.
+// Creates a DigitalEmployee.
 //
 // Description:
 //
@@ -586,6 +586,47 @@ func (client *Client) DeleteDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
+// Deletes a public schema reference from a digital employee UModel.
+//
+// @param request - DeleteDigitalEmployeeUmodelCommonSchemaRefRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDigitalEmployeeUmodelCommonSchemaRefResponse
+func (client *Client) DeleteDigitalEmployeeUmodelCommonSchemaRefWithContext(ctx context.Context, name *string, group *string, request *DeleteDigitalEmployeeUmodelCommonSchemaRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeUmodelCommonSchemaRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDigitalEmployeeUmodelCommonSchemaRef"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/umodel/commonSchemaRefs/" + dara.PercentEncode(dara.StringValue(group))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDigitalEmployeeUmodelCommonSchemaRefResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an MCP service.
 //
 // @param request - DeleteMcpServiceRequest
@@ -791,7 +832,11 @@ func (client *Client) GetArtifactWithContext(ctx context.Context, name *string, 
 
 // Summary:
 //
-// 获取产物下载链接
+// Retrieves the download URL for an artifact.
+//
+// Description:
+//
+// Retrieves the download URL for artifact content. This operation is suitable for large files.
 //
 // @param request - GetArtifactDownloadUrlRequest
 //
@@ -883,6 +928,61 @@ func (client *Client) GetDigitalEmployeeWithContext(ctx context.Context, name *s
 
 // Summary:
 //
+// Queries the entity data of a digital employee.
+//
+// @param request - GetDigitalEmployeeEntityDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDigitalEmployeeEntityDataResponse
+func (client *Client) GetDigitalEmployeeEntityDataWithContext(ctx context.Context, name *string, request *GetDigitalEmployeeEntityDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDigitalEmployeeEntityDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.From) {
+		body["from"] = request.From
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.To) {
+		body["to"] = request.To
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDigitalEmployeeEntityData"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/entities/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDigitalEmployeeEntityDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a specific skill.
 //
 // Description:
@@ -924,6 +1024,47 @@ func (client *Client) GetDigitalEmployeeSkillWithContext(ctx context.Context, na
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDigitalEmployeeSkillResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the UModel of a digital employee.
+//
+// @param request - GetDigitalEmployeeUmodelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDigitalEmployeeUmodelResponse
+func (client *Client) GetDigitalEmployeeUmodelWithContext(ctx context.Context, name *string, request *GetDigitalEmployeeUmodelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDigitalEmployeeUmodelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDigitalEmployeeUmodel"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/umodel"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDigitalEmployeeUmodelResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1238,7 +1379,7 @@ func (client *Client) ListDigitalEmployeeSkillsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Returns a list of digital employees.
+// Lists digital employees.
 //
 // Description:
 //
@@ -1265,6 +1406,10 @@ func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, tmpRe
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		query["channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.DisplayName) {
 		query["displayName"] = request.DisplayName
 	}
@@ -1593,6 +1738,53 @@ func (client *Client) UpdateDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
+// Updates the UModel of a digital human.
+//
+// @param request - UpdateDigitalEmployeeUmodelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDigitalEmployeeUmodelResponse
+func (client *Client) UpdateDigitalEmployeeUmodelWithContext(ctx context.Context, name *string, request *UpdateDigitalEmployeeUmodelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDigitalEmployeeUmodelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDigitalEmployeeUmodel"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/umodel"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDigitalEmployeeUmodelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an MCP service.
 //
 // @param request - UpdateMcpServiceRequest
@@ -1709,6 +1901,53 @@ func (client *Client) UpdateThreadWithContext(ctx context.Context, name *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateThreadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or updates a public schema reference for a digital employee UModel.
+//
+// @param request - UpsertDigitalEmployeeUmodelCommonSchemaRefRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertDigitalEmployeeUmodelCommonSchemaRefResponse
+func (client *Client) UpsertDigitalEmployeeUmodelCommonSchemaRefWithContext(ctx context.Context, name *string, group *string, request *UpsertDigitalEmployeeUmodelCommonSchemaRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpsertDigitalEmployeeUmodelCommonSchemaRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertDigitalEmployeeUmodelCommonSchemaRef"),
+		Version:     dara.String("2026-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/digitalEmployee/" + dara.PercentEncode(dara.StringValue(name)) + "/umodel/commonSchemaRefs/" + dara.PercentEncode(dara.StringValue(group))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertDigitalEmployeeUmodelCommonSchemaRefResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
