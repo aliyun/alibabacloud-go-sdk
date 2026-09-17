@@ -25,12 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hongkong":    dara.String("cloudauth-intl.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-5": dara.String("cloudauth-intl.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3": dara.String("cloudauth-intl.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1": dara.String("cloudauth-intl.ap-southeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1034,11 +1028,11 @@ func (client *Client) CredentialGetResultIntl(request *CredentialGetResultIntlRe
 
 // Summary:
 //
-// An API operation that uploads credential images, including utility bills and credit card statements, and uses Qwen-VL to intelligently fetch billing addresses and names.
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
 //
 // Description:
 //
-// Uses AI technology to detect whether credentials (such as water, electricity, gas, and credit card electronic bills) are forged, and extracts key information from the credentials.
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1055,6 +1049,10 @@ func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
 		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
 	}
 
 	if !dara.IsNil(request.FraudCheck) {
@@ -1120,11 +1118,11 @@ func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRe
 
 // Summary:
 //
-// An API operation that uploads credential images, including utility bills and credit card statements, and uses Qwen-VL to intelligently fetch billing addresses and names.
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
 //
 // Description:
 //
-// Uses AI technology to detect whether credentials (such as water, electricity, gas, and credit card electronic bills) are forged, and extracts key information from the credentials.
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1142,11 +1140,234 @@ func (client *Client) CredentialRecognitionIntl(request *CredentialRecognitionIn
 
 // Summary:
 //
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
+//
+// Description:
+//
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) is forged, and extracts key information from the credential.
+//
+// @param request - CredentialRecognitionIntlV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialRecognitionIntlV2Response
+func (client *Client) CredentialRecognitionIntlV2WithOptions(request *CredentialRecognitionIntlV2Request, runtime *dara.RuntimeOptions) (_result *CredentialRecognitionIntlV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialOcrPictureFile) {
+		query["CredentialOcrPictureFile"] = request.CredentialOcrPictureFile
+	}
+
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
+	}
+
+	if !dara.IsNil(request.FraudCheck) {
+		query["FraudCheck"] = request.FraudCheck
+	}
+
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
+	if !dara.IsNil(request.OcrArea) {
+		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureBase64) {
+		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureUrl) {
+		body["CredentialOcrPictureUrl"] = request.CredentialOcrPictureUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CredentialRecognitionIntlV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CredentialRecognitionIntlV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
+//
+// Description:
+//
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) is forged, and extracts key information from the credential.
+//
+// @param request - CredentialRecognitionIntlV2Request
+//
+// @return CredentialRecognitionIntlV2Response
+func (client *Client) CredentialRecognitionIntlV2(request *CredentialRecognitionIntlV2Request) (_result *CredentialRecognitionIntlV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CredentialRecognitionIntlV2Response{}
+	_body, _err := client.CredentialRecognitionIntlV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CredentialRecognitionIntlV2Advance(request *CredentialRecognitionIntlV2AdvanceRequest, runtime *dara.RuntimeOptions) (_result *CredentialRecognitionIntlV2Response, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	credentialRecognitionIntlV2Req := &CredentialRecognitionIntlV2Request{}
+	openapiutil.Convert(request, credentialRecognitionIntlV2Req)
+	if !dara.IsNil(request.CredentialOcrPictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.CredentialOcrPictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		credentialRecognitionIntlV2Req.CredentialOcrPictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	credentialRecognitionIntlV2Resp, _err := client.CredentialRecognitionIntlV2WithOptions(credentialRecognitionIntlV2Req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = credentialRecognitionIntlV2Resp
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits credential recognition information.
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation and returns a transactionId.
+// Initializes the credential recognition OCR operation and retrieves a transactionId through this operation.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -1163,6 +1384,10 @@ func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitI
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
 		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
 	}
 
 	if !dara.IsNil(request.FraudCheck) {
@@ -1240,7 +1465,7 @@ func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitI
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation and returns a transactionId.
+// Initializes the credential recognition OCR operation and retrieves a transactionId through this operation.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -1253,6 +1478,237 @@ func (client *Client) CredentialSubmitIntl(request *CredentialSubmitIntlRequest)
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a credential recognition request.
+//
+// Description:
+//
+// Initializes the credential recognition OCR operation. Call this operation to obtain a transactionId.
+//
+// @param request - CredentialSubmitIntlV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialSubmitIntlV2Response
+func (client *Client) CredentialSubmitIntlV2WithOptions(request *CredentialSubmitIntlV2Request, runtime *dara.RuntimeOptions) (_result *CredentialSubmitIntlV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialOcrPictureFile) {
+		query["CredentialOcrPictureFile"] = request.CredentialOcrPictureFile
+	}
+
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
+	}
+
+	if !dara.IsNil(request.FraudCheck) {
+		query["FraudCheck"] = request.FraudCheck
+	}
+
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.OcrArea) {
+		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureBase64) {
+		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureUrl) {
+		body["CredentialOcrPictureUrl"] = request.CredentialOcrPictureUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CredentialSubmitIntlV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CredentialSubmitIntlV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a credential recognition request.
+//
+// Description:
+//
+// Initializes the credential recognition OCR operation. Call this operation to obtain a transactionId.
+//
+// @param request - CredentialSubmitIntlV2Request
+//
+// @return CredentialSubmitIntlV2Response
+func (client *Client) CredentialSubmitIntlV2(request *CredentialSubmitIntlV2Request) (_result *CredentialSubmitIntlV2Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CredentialSubmitIntlV2Response{}
+	_body, _err := client.CredentialSubmitIntlV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CredentialSubmitIntlV2Advance(request *CredentialSubmitIntlV2AdvanceRequest, runtime *dara.RuntimeOptions) (_result *CredentialSubmitIntlV2Response, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	credentialSubmitIntlV2Req := &CredentialSubmitIntlV2Request{}
+	openapiutil.Convert(request, credentialSubmitIntlV2Req)
+	if !dara.IsNil(request.CredentialOcrPictureFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.CredentialOcrPictureFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		credentialSubmitIntlV2Req.CredentialOcrPictureFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	credentialSubmitIntlV2Resp, _err := client.CredentialSubmitIntlV2WithOptions(credentialSubmitIntlV2Req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = credentialSubmitIntlV2Resp
 	return _result, _err
 }
 

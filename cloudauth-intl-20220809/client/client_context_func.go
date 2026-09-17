@@ -607,11 +607,11 @@ func (client *Client) CredentialGetResultIntlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// An API operation that uploads credential images, including utility bills and credit card statements, and uses Qwen-VL to intelligently fetch billing addresses and names.
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
 //
 // Description:
 //
-// Uses AI technology to detect whether credentials (such as water, electricity, gas, and credit card electronic bills) are forged, and extracts key information from the credentials.
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -628,6 +628,10 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
 		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
 	}
 
 	if !dara.IsNil(request.FraudCheck) {
@@ -693,11 +697,105 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 
 // Summary:
 //
+// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name.
+//
+// Description:
+//
+// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) is forged, and extracts key information from the credential.
+//
+// @param request - CredentialRecognitionIntlV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialRecognitionIntlV2Response
+func (client *Client) CredentialRecognitionIntlV2WithContext(ctx context.Context, request *CredentialRecognitionIntlV2Request, runtime *dara.RuntimeOptions) (_result *CredentialRecognitionIntlV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialOcrPictureFile) {
+		query["CredentialOcrPictureFile"] = request.CredentialOcrPictureFile
+	}
+
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
+	}
+
+	if !dara.IsNil(request.FraudCheck) {
+		query["FraudCheck"] = request.FraudCheck
+	}
+
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
+	if !dara.IsNil(request.OcrArea) {
+		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureBase64) {
+		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureUrl) {
+		body["CredentialOcrPictureUrl"] = request.CredentialOcrPictureUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CredentialRecognitionIntlV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CredentialRecognitionIntlV2Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits credential recognition information.
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation and returns a transactionId.
+// Initializes the credential recognition OCR operation and retrieves a transactionId through this operation.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -714,6 +812,10 @@ func (client *Client) CredentialSubmitIntlWithContext(ctx context.Context, reque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocType) {
 		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
 	}
 
 	if !dara.IsNil(request.FraudCheck) {
@@ -777,6 +879,108 @@ func (client *Client) CredentialSubmitIntlWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CredentialSubmitIntlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a credential recognition request.
+//
+// Description:
+//
+// Initializes the credential recognition OCR operation. Call this operation to obtain a transactionId.
+//
+// @param request - CredentialSubmitIntlV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialSubmitIntlV2Response
+func (client *Client) CredentialSubmitIntlV2WithContext(ctx context.Context, request *CredentialSubmitIntlV2Request, runtime *dara.RuntimeOptions) (_result *CredentialSubmitIntlV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialOcrPictureFile) {
+		query["CredentialOcrPictureFile"] = request.CredentialOcrPictureFile
+	}
+
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FileInputType) {
+		query["FileInputType"] = request.FileInputType
+	}
+
+	if !dara.IsNil(request.FraudCheck) {
+		query["FraudCheck"] = request.FraudCheck
+	}
+
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.OcrArea) {
+		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureBase64) {
+		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureUrl) {
+		body["CredentialOcrPictureUrl"] = request.CredentialOcrPictureUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CredentialSubmitIntlV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CredentialSubmitIntlV2Response{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -17,6 +17,8 @@ type iCredentialRecognitionIntlRequest interface {
 	GetCredentialOcrPictureUrl() *string
 	SetDocType(v string) *CredentialRecognitionIntlRequest
 	GetDocType() *string
+	SetFileInputType(v string) *CredentialRecognitionIntlRequest
+	GetFileInputType() *string
 	SetFraudCheck(v string) *CredentialRecognitionIntlRequest
 	GetFraudCheck() *string
 	SetIdQuality(v string) *CredentialRecognitionIntlRequest
@@ -38,11 +40,11 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// {
 	//
-	// 	"address_rule": "Includes Adrress 杭州市***",
+	// 	"address_rule": "Includes Address Hangzhou ***",
 	//
-	// 	"name_rule": "Includes Name  张*",
+	// 	"name_rule": "Includes Name Zhang*",
 	//
-	// 	"date_of_issue_rule": "Whthin 2026.05.20"
+	// 	"date_of_issue_rule": "Within 2026.05.20"
 	//
 	// }
 	CheckRuleConfig *string `json:"CheckRuleConfig,omitempty" xml:"CheckRuleConfig,omitempty"`
@@ -58,9 +60,9 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// https://***
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
-	// The credential type.
+	// The credential type. Valid values:
 	//
-	// - Transaction credential: 01 (includes various electronic bill images such as water, electricity, gas, and credit card bills)
+	// - 01: transaction credential (including electronic bill images for water, electricity, gas, credit card, and other types)
 	//
 	// This parameter is required.
 	//
@@ -68,6 +70,16 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// 01
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The input file type. Valid values:
+	//
+	// - IMAGE (default): image.
+	//
+	// - PDF: PDF format.
+	//
+	// example:
+	//
+	// IMAGE
+	FileInputType *string `json:"FileInputType,omitempty" xml:"FileInputType,omitempty"`
 	// Specifies whether to enable tampering detection. Valid values:
 	//
 	// - true: Enabled.
@@ -80,15 +92,19 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// true
 	FraudCheck *string `json:"FraudCheck,omitempty" xml:"FraudCheck,omitempty"`
-	// Specifies whether to enable quality detection. Valid values: Y (enabled) and N (disabled).
+	// Specifies whether to enable quality detection. Valid values:
+	//
+	// - Y: Enabled.
+	//
+	// - N: Disabled.
 	//
 	// example:
 	//
 	// Y
 	IdQuality *string `json:"IdQuality,omitempty" xml:"IdQuality,omitempty"`
-	// The extraction type:
+	// The extraction type. Valid values:
 	//
-	// - 0101: Electronic bill address and name module (extracts address and name through intelligent analysis)
+	// - 0101: electronic bill address and name module (extracts the address and name module through intelligent analysis)
 	//
 	// This parameter is required.
 	//
@@ -96,19 +112,27 @@ type CredentialRecognitionIntlRequest struct {
 	//
 	// 0101
 	OcrArea *string `json:"OcrArea,omitempty" xml:"OcrArea,omitempty"`
-	// Specifies whether to enable translation. Valid values: 0 (disabled) and 1 (enabled).
+	// Specifies whether to enable translation. Valid values:
+	//
+	// - 0: Disabled.
+	//
+	// - 1: Enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrTranslation *string `json:"OcrTranslation,omitempty" xml:"OcrTranslation,omitempty"`
-	// Specifies whether to enable OCR result standardization. Valid values: 0 (disabled) and 1 (enabled).
+	// Specifies whether to enable OCR result normalization. Valid values:
+	//
+	// - 0: Disabled.
+	//
+	// - 1: Enabled.
 	//
 	// example:
 	//
 	// 1
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The product solution to use. Set this to CREDENTIAL_RECOGNITION.
+	// The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//
@@ -140,6 +164,10 @@ func (s *CredentialRecognitionIntlRequest) GetCredentialOcrPictureUrl() *string 
 
 func (s *CredentialRecognitionIntlRequest) GetDocType() *string {
 	return s.DocType
+}
+
+func (s *CredentialRecognitionIntlRequest) GetFileInputType() *string {
+	return s.FileInputType
 }
 
 func (s *CredentialRecognitionIntlRequest) GetFraudCheck() *string {
@@ -183,6 +211,11 @@ func (s *CredentialRecognitionIntlRequest) SetCredentialOcrPictureUrl(v string) 
 
 func (s *CredentialRecognitionIntlRequest) SetDocType(v string) *CredentialRecognitionIntlRequest {
 	s.DocType = &v
+	return s
+}
+
+func (s *CredentialRecognitionIntlRequest) SetFileInputType(v string) *CredentialRecognitionIntlRequest {
+	s.FileInputType = &v
 	return s
 }
 

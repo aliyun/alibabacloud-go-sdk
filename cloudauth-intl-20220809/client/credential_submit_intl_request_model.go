@@ -17,6 +17,8 @@ type iCredentialSubmitIntlRequest interface {
 	GetCredentialOcrPictureUrl() *string
 	SetDocType(v string) *CredentialSubmitIntlRequest
 	GetDocType() *string
+	SetFileInputType(v string) *CredentialSubmitIntlRequest
+	GetFileInputType() *string
 	SetFraudCheck(v string) *CredentialSubmitIntlRequest
 	GetFraudCheck() *string
 	SetIdQuality(v string) *CredentialSubmitIntlRequest
@@ -64,7 +66,7 @@ type CredentialSubmitIntlRequest struct {
 	CredentialOcrPictureUrl *string `json:"CredentialOcrPictureUrl,omitempty" xml:"CredentialOcrPictureUrl,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - 02: vehicle registration certificate
+	// - 02: vehicle registration certificate.
 	//
 	// This parameter is required.
 	//
@@ -72,6 +74,16 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// 02
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The input file type. Valid values:
+	//
+	// - IMAGE (default): image.
+	//
+	// - PDF: PDF format.
+	//
+	// example:
+	//
+	// IMAGE
+	FileInputType *string `json:"FileInputType,omitempty" xml:"FileInputType,omitempty"`
 	// Specifies whether to enable tampering detection. Valid values:
 	//
 	// - true: Enabled.
@@ -94,7 +106,7 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// Y
 	IdQuality *string `json:"IdQuality,omitempty" xml:"IdQuality,omitempty"`
-	// The merchant-defined unique business identifier, used for subsequent troubleshooting. The value can be a combination of letters and numbers with a maximum length of 32 characters. Ensure that the value is unique.
+	// The custom business unique identifier on the merchant side, used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +116,7 @@ type CredentialSubmitIntlRequest struct {
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	// The extraction type. Valid values:
 	//
-	// - 0201: Thailand vehicle registration certificate
+	// - 0201: Thailand vehicle registration certificate.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +144,7 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// 1
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
-	// The product solution to use. Set this to CREDENTIAL_RECOGNITION.
+	// The product solution to use. Set this parameter to CREDENTIAL_RECOGNITION.
 	//
 	// This parameter is required.
 	//
@@ -140,7 +152,7 @@ type CredentialSubmitIntlRequest struct {
 	//
 	// CREDENTIAL_RECOGNITION
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The custom authentication scenario ID. You can use this ID to query related records in the console. The value can be a combination of letters, numbers, or underscores with a maximum length of 10 characters.
+	// The custom authentication scenario ID. You can use this scenario ID to query related records in the console. The value can be a combination of letters, digits, or underscores with a maximum length of 10 characters.
 	//
 	// This parameter is required.
 	//
@@ -172,6 +184,10 @@ func (s *CredentialSubmitIntlRequest) GetCredentialOcrPictureUrl() *string {
 
 func (s *CredentialSubmitIntlRequest) GetDocType() *string {
 	return s.DocType
+}
+
+func (s *CredentialSubmitIntlRequest) GetFileInputType() *string {
+	return s.FileInputType
 }
 
 func (s *CredentialSubmitIntlRequest) GetFraudCheck() *string {
@@ -223,6 +239,11 @@ func (s *CredentialSubmitIntlRequest) SetCredentialOcrPictureUrl(v string) *Cred
 
 func (s *CredentialSubmitIntlRequest) SetDocType(v string) *CredentialSubmitIntlRequest {
 	s.DocType = &v
+	return s
+}
+
+func (s *CredentialSubmitIntlRequest) SetFileInputType(v string) *CredentialSubmitIntlRequest {
+	s.FileInputType = &v
 	return s
 }
 
