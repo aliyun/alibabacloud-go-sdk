@@ -1544,6 +1544,110 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
+// Creates a workspace queue.
+//
+// @param request - CreateWorkspaceQueueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceQueueResponse
+func (client *Client) CreateWorkspaceQueueWithOptions(request *CreateWorkspaceQueueRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateWorkspaceQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GpuSpec) {
+		body["gpuSpec"] = request.GpuSpec
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		body["paymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.Preheat) {
+		body["preheat"] = request.Preheat
+	}
+
+	if !dara.IsNil(request.QueueCategory) {
+		body["queueCategory"] = request.QueueCategory
+	}
+
+	if !dara.IsNil(request.ResourceSpec) {
+		body["resourceSpec"] = request.ResourceSpec
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceQueueName) {
+		body["workspaceQueueName"] = request.WorkspaceQueueName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkspaceQueue"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/queues"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkspaceQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a workspace queue.
+//
+// @param request - CreateWorkspaceQueueRequest
+//
+// @return CreateWorkspaceQueueResponse
+func (client *Client) CreateWorkspaceQueue(request *CreateWorkspaceQueueRequest) (_result *CreateWorkspaceQueueResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWorkspaceQueueResponse{}
+	_body, _err := client.CreateWorkspaceQueueWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Kyuubi gateway.
 //
 // @param headers - map
