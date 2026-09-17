@@ -32,11 +32,11 @@ type PublicTemplateRuntimeConfig struct {
 	//
 	// 1
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The disk size. Unit: GB.
+	// The disk size. Unit: MB.
 	//
 	// example:
 	//
-	// 10
+	// 10240
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// Specifies whether to allow access to the Internet.
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
