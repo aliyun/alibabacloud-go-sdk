@@ -1619,17 +1619,17 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // - This operation creates a new agent session.
 //
-// - Use `_meta.agent.agentName` to specify the bound agent name. This parameter is required.
+// - Use `_meta.agent.agentName` to specify the agent name to bind. This parameter is required.
 //
-//   - dataworks_data_agent: DataWorks built-in agent — Data Agent, which provides intelligent data development AI capabilities covering the entire workflow of data integration, development, O&M, governance, and analytics.
+//   - dataworks_data_agent: DataWorks built-in agent — Data Agent. Provides intelligent data development AI capabilities that cover the entire pipeline of data integration, development, O&M, governance, and analytics.
 //
-//   - dataworks_chatbi_agent: DataWorks built-in agent — ChatBI, which uses natural language processing and intelligent analytics technologies to automate the entire analysis workflow from requirement parsing, data extraction, and automatic code generation to visualization report output through conversational interaction.
+//   - dataworks_chatbi_agent: DataWorks built-in agent — ChatBI. Uses natural language processing and intelligent analytics to automate the entire analysis workflow through conversational interaction, from requirement parsing, data extraction, and automatic code generation to visualization report output.
 //
-//   - dataworks_ai_assistant_agent: DataWorks built-in agent — AI Assistant Service, which is a DataWorks enterprise-grade dedicated AI assistant built on open source frameworks such as OpenClaw and Hermes Agent.
+//   - dataworks_ai_assistant_agent: DataWorks built-in agent — AI Assistant Service. A DataWorks enterprise-grade dedicated AI assistant built on open source frameworks such as OpenClaw and Hermes Agent.
 //
 // - Use `_meta.config.sessionSource` to pass through a session source identifier for subsequent retrieval by source.
 //
@@ -1695,17 +1695,17 @@ func (client *Client) CreateAgentSessionWithOptions(tmpReq *CreateAgentSessionRe
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // - This operation creates a new agent session.
 //
-// - Use `_meta.agent.agentName` to specify the bound agent name. This parameter is required.
+// - Use `_meta.agent.agentName` to specify the agent name to bind. This parameter is required.
 //
-//   - dataworks_data_agent: DataWorks built-in agent — Data Agent, which provides intelligent data development AI capabilities covering the entire workflow of data integration, development, O&M, governance, and analytics.
+//   - dataworks_data_agent: DataWorks built-in agent — Data Agent. Provides intelligent data development AI capabilities that cover the entire pipeline of data integration, development, O&M, governance, and analytics.
 //
-//   - dataworks_chatbi_agent: DataWorks built-in agent — ChatBI, which uses natural language processing and intelligent analytics technologies to automate the entire analysis workflow from requirement parsing, data extraction, and automatic code generation to visualization report output through conversational interaction.
+//   - dataworks_chatbi_agent: DataWorks built-in agent — ChatBI. Uses natural language processing and intelligent analytics to automate the entire analysis workflow through conversational interaction, from requirement parsing, data extraction, and automatic code generation to visualization report output.
 //
-//   - dataworks_ai_assistant_agent: DataWorks built-in agent — AI Assistant Service, which is a DataWorks enterprise-grade dedicated AI assistant built on open source frameworks such as OpenClaw and Hermes Agent.
+//   - dataworks_ai_assistant_agent: DataWorks built-in agent — AI Assistant Service. A DataWorks enterprise-grade dedicated AI assistant built on open source frameworks such as OpenClaw and Hermes Agent.
 //
 // - Use `_meta.config.sessionSource` to pass through a session source identifier for subsequent retrieval by source.
 //
@@ -27279,6 +27279,90 @@ func (client *Client) RenameWorkflowDefinition(request *RenameWorkflowDefinition
 	runtime := &dara.RuntimeOptions{}
 	_result = &RenameWorkflowDefinitionResponse{}
 	_body, _err := client.RenameWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Replies to a pending user interaction in a DataAgent session.
+//
+// Description:
+//
+// Replies to a permission_request issued by the DataAgent daemon. You can submit an answer to an ask_user_question or cancel the current interaction. The PermissionRequestId must come from the params.data.requestId field in the _qwen/notify event (params.kind=permission_request) of the original PromptAgentSession SSE. The reply only returns whether it was accepted. Subsequent execution events are still returned through the original PromptAgentSession SSE. Do not resubmit the same prompt round.
+//
+// @param tmpReq - ReplyAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplyAgentSessionResponse
+func (client *Client) ReplyAgentSessionWithOptions(tmpReq *ReplyAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *ReplyAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ReplyAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReplyAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReplyAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Replies to a pending user interaction in a DataAgent session.
+//
+// Description:
+//
+// Replies to a permission_request issued by the DataAgent daemon. You can submit an answer to an ask_user_question or cancel the current interaction. The PermissionRequestId must come from the params.data.requestId field in the _qwen/notify event (params.kind=permission_request) of the original PromptAgentSession SSE. The reply only returns whether it was accepted. Subsequent execution events are still returned through the original PromptAgentSession SSE. Do not resubmit the same prompt round.
+//
+// @param request - ReplyAgentSessionRequest
+//
+// @return ReplyAgentSessionResponse
+func (client *Client) ReplyAgentSession(request *ReplyAgentSessionRequest) (_result *ReplyAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReplyAgentSessionResponse{}
+	_body, _err := client.ReplyAgentSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
