@@ -16,7 +16,7 @@ type iUpdateCloudAppInfoResponseBody interface {
 }
 
 type UpdateCloudAppInfoResponseBody struct {
-	// The ID of the patch package.
+	// The patch ID.
 	//
 	// example:
 	//

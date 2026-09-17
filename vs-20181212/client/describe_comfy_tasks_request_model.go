@@ -9,6 +9,8 @@ type iDescribeComfyTasksRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetHiveId(v string) *DescribeComfyTasksRequest
+	GetHiveId() *string
 	SetPageNumber(v int32) *DescribeComfyTasksRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeComfyTasksRequest
@@ -22,13 +24,19 @@ type iDescribeComfyTasksRequest interface {
 }
 
 type DescribeComfyTasksRequest struct {
+	// The HiveId used as a filter condition to query tasks executed under the specified HiveId.
+	//
+	// example:
+	//
+	// hive-26cd567b35c04a0a90f0xxxxx
+	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to display per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -58,6 +66,10 @@ func (s DescribeComfyTasksRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeComfyTasksRequest) GetHiveId() *string {
+	return s.HiveId
+}
+
 func (s *DescribeComfyTasksRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -76,6 +88,11 @@ func (s *DescribeComfyTasksRequest) GetTaskState() *string {
 
 func (s *DescribeComfyTasksRequest) GetWorkflowId() *string {
 	return s.WorkflowId
+}
+
+func (s *DescribeComfyTasksRequest) SetHiveId(v string) *DescribeComfyTasksRequest {
+	s.HiveId = &v
+	return s
 }
 
 func (s *DescribeComfyTasksRequest) SetPageNumber(v int32) *DescribeComfyTasksRequest {

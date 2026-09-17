@@ -2809,7 +2809,7 @@ func (client *Client) CreateTemplateWithContext(ctx context.Context, request *Cr
 //
 // - **InstanceIds*	- is a required parameter that specifies a list of workload IDs to unbind from the cluster.
 //
-// - After the unbind operation succeeds, the response returns lists of successful and failed workload instances along with related information.
+// - After the unbind operation is complete, the response returns lists of successful and failed workload instances along with related information.
 //
 // @param tmpReq - DelHiveEdgeWorkersRequest
 //
@@ -3245,9 +3245,9 @@ func (client *Client) DeleteGroupWithContext(ctx context.Context, request *Delet
 //
 // ## Operation description
 //
-// - Ensure that all application services in the cluster have been removed. Otherwise, the delete operation cannot be performed.
+// - Ensure that all workloads in the cluster have been cleared. Otherwise, the delete operation cannot be performed.
 //
-// - `HiveId` is a required parameter that identifies the cluster to be deleted.
+// - HiveId is a required parameter that identifies the cluster to be deleted.
 //
 // @param request - DeleteHiveRequest
 //
@@ -3945,11 +3945,55 @@ func (client *Client) DescribeComfyProductionsWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Queries the waiting queue information of Comfy tasks. The maximum length of a single Hive waiting queue is 100 by default.
+//
+// @param request - DescribeComfyTaskWaitingQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComfyTaskWaitingQueueResponse
+func (client *Client) DescribeComfyTaskWaitingQueueWithContext(ctx context.Context, request *DescribeComfyTaskWaitingQueueRequest, runtime *dara.RuntimeOptions) (_result *DescribeComfyTaskWaitingQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComfyTaskWaitingQueue"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComfyTaskWaitingQueueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of Comfy tasks.
 //
 // Description:
 //
-// > Currently, screenshot queries do not support pagination. Only iterative queries are supported. Use the extStartTime parameter value from the response as the StartTime for a new request to retrieve the next page.
+// > Screenshot queries do not support pagination. Only iteration-based queries are supported. Use the extStartTime parameter value from the response as the StartTime for a new request to retrieve the next page.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -3964,6 +4008,10 @@ func (client *Client) DescribeComfyTasksWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.HiveId) {
+		query["HiveId"] = request.HiveId
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -7785,11 +7833,11 @@ func (client *Client) ListCloudAppInstallationsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of patches for a cloud application.
+// Queries the patch list of a cloud application.
 //
 // Description:
 //
-// > Specify at least one of the template ID or the template type.
+// >You must specify at least one of the template ID and templatetype.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -7857,7 +7905,7 @@ func (client *Client) ListCloudAppPatchesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of cloud applications. This operation supports paged queries.
+// Queries a list of cloud applications. Paging is supported.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -7897,19 +7945,19 @@ func (client *Client) ListCloudAppsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries workload information with pagination.
+// Queries load information with paged query and paging support.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// - This API operation queries workload information and supports filtering and pagination by using multiple parameters.
+// - This API operation queries load information. You can filter results by using various parameters and perform paged query operations.
 //
 // - Optional parameters include Spec (specification), Statuses (status list), InstanceIds (instance ID list), PlanIds (plan ID list), and HiveIds (cluster ID list).
 //
-// - For pagination, use the PageNumber and PageSize parameters to control the amount of returned data. By default, 10 records are returned per page and a maximum of 100 records are supported per page.
+// - For paged query operations, use the PageNumber and PageSize parameters to control the data volume of returned results. The default page size is 10 records, and the maximum is 100 records. Paging is supported.
 //
-// - Use the StartTime and EndTime parameters to specify the time range for queries.
+// - To query by time range, specify the StartTime and EndTime parameters.
 //
 // @param tmpReq - ListEdgeWorkersRequest
 //
@@ -8083,7 +8131,7 @@ func (client *Client) ListFilesWithContext(ctx context.Context, request *ListFil
 
 // Summary:
 //
-// Queries all cluster information by using paging and supports filtering by conditions.
+// Queries all cluster information by paging and supports filtering by conditions.
 //
 // Description:
 //
@@ -8093,9 +8141,9 @@ func (client *Client) ListFilesWithContext(ctx context.Context, request *ListFil
 //
 // - You can use the `HiveId` and `Name` parameters to filter query results.
 //
-// - The pagination parameters `PageNumber` and `PageSize` control the number of results and page number. By default, 10 records are displayed per page, with a maximum of 100.
+// - The `PageNumber` and `PageSize` pagination parameters control the number of results and page number. By default, 10 records are displayed per page, with a maximum of 100.
 //
-// - The `StartTime` and `EndTime` parameters specify a time range for querying cluster information, but they are optional.
+// - The `StartTime` and `EndTime` parameters specify a time range for querying cluster information. These parameters are optional.
 //
 // @param request - ListHivesRequest
 //
@@ -8261,6 +8309,66 @@ func (client *Client) ListRenderingDataPackagesWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRenderingDataPackagesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of images.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation supports filtering and paged query of rendering session lists by using various parameter combinations.
+//
+// - You must specify at least one of the `SessionId` and `ClientId` parameters, but neither is required. If both parameters are specified, more precise matching is performed based on the two parameters.
+//
+// @param request - ListRenderingImagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRenderingImagesResponse
+func (client *Client) ListRenderingImagesWithContext(ctx context.Context, request *ListRenderingImagesRequest, runtime *dara.RuntimeOptions) (_result *ListRenderingImagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRenderingImages"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRenderingImagesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8617,7 +8725,7 @@ func (client *Client) ListRenderingSessionsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries all cloud application service specification information. Paging is supported.
+// Queries the specifications of all cloud application services. Paging is supported.
 //
 // Description:
 //
@@ -9247,13 +9355,13 @@ func (client *Client) ModifyGroupWithContext(ctx context.Context, request *Modif
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// - This API modifies the name and/or description of an existing cluster.
+// - This API operation modifies the basic attributes of an existing cluster, including the name and description.
 //
-// - `HiveId` is a required parameter that identifies the cluster to modify.
+// - HiveId is a required parameter that identifies the cluster to modify.
 //
-// - The `Name` and `Description` parameters are optional. You can specify either or both to update the corresponding attributes of the cluster.
+// - The Name and Description parameters are optional. You can specify either or both to update the corresponding attributes of the cluster.
 //
 // @param request - ModifyHiveAttributeRequest
 //
@@ -9729,15 +9837,15 @@ func (client *Client) ModifyTemplateWithContext(ctx context.Context, request *Mo
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - **HiveId**: The target cluster ID. Required.
+// - **HiveId**: The ID of the target cluster. This parameter is required.
 //
-// - **InstanceIds**: The list of workload IDs to move. Required.
+// - **InstanceIds**: The list of workload IDs to move. This parameter is required.
 //
 // - This operation moves the specified workloads from the current cluster to the target cluster.
 //
-// - Ensure that the target cluster exists to accept the new workloads.
+// - Make sure the target cluster exists to accept the new workloads.
 //
 // @param tmpReq - MoveHiveEdgeWorkersRequest
 //
@@ -9883,7 +9991,7 @@ func (client *Client) RebootRenderingInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Restarts the host of a cloud application service instance.
+// Restarts the hosts of cloud application service instances.
 //
 // @param tmpReq - RebootRenderingServerRequest
 //
@@ -9904,6 +10012,10 @@ func (client *Client) RebootRenderingServerWithContext(ctx context.Context, tmpR
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Precheck) {
+		query["Precheck"] = request.Precheck
+	}
+
 	if !dara.IsNil(request.RenderingInstanceIdsShrink) {
 		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
 	}
@@ -11769,7 +11881,9 @@ func (client *Client) UnlockDeviceWithContext(ctx context.Context, request *Unlo
 
 // Summary:
 //
-// Updates information for a cloud application, such as its description and tags. You can upload patch or hotfix packages and create hotfix packages for the Android cloud application marketplace. A cloud application supports up to 20 patch packages, but only one package can be in the uploading state at a time.
+// Updates the information of a cloud application, such as the description, application labels, and patches.
+//
+// You can upload patches or hot update packages, and create hot update packages for Android cloud application marketplace applications. Each cloud application supports up to 20 patches, and only one patch can be in the uploading state at a time for a single cloud application.
 //
 // @param tmpReq - UpdateCloudAppInfoRequest
 //
@@ -12137,7 +12251,61 @@ func (client *Client) UpdateVsPullStreamInfoConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Upload or list a cloud application package. This is an asynchronous API. Use the ListCloudApps API to check upload progress.
+// Upgrades instance images in batch.
+//
+// @param tmpReq - UpgradeRenderingInstanceImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeRenderingInstanceImageResponse
+func (client *Client) UpgradeRenderingInstanceImageWithContext(ctx context.Context, tmpReq *UpgradeRenderingInstanceImageRequest, runtime *dara.RuntimeOptions) (_result *UpgradeRenderingInstanceImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpgradeRenderingInstanceImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RenderingInstanceIds) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, dara.String("RenderingInstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.RenderingInstanceIdsShrink) {
+		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeRenderingInstanceImage"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeRenderingInstanceImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a cloud application package for listing. This is an asynchronous operation. You can call the ListCloudApps operation to query the upload progress.
 //
 // @param tmpReq - UploadCloudAppRequest
 //
@@ -12188,6 +12356,14 @@ func (client *Client) UploadCloudAppWithContext(ctx context.Context, tmpReq *Upl
 
 	if !dara.IsNil(request.PkgType) {
 		query["PkgType"] = request.PkgType
+	}
+
+	if !dara.IsNil(request.PostCommandPath) {
+		query["PostCommandPath"] = request.PostCommandPath
+	}
+
+	if !dara.IsNil(request.PostCommandTimeoutSec) {
+		query["PostCommandTimeoutSec"] = request.PostCommandTimeoutSec
 	}
 
 	req := &openapiutil.OpenApiRequest{

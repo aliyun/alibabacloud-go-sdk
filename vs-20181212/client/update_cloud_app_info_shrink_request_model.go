@@ -22,7 +22,7 @@ type iUpdateCloudAppInfoShrinkRequest interface {
 }
 
 type UpdateCloudAppInfoShrinkRequest struct {
-	// The ID of the cloud application, which corresponds to a unique application package.
+	// The cloud application ID, which corresponds to a unique application package.
 	//
 	// This parameter is required.
 	//
@@ -34,29 +34,33 @@ type UpdateCloudAppInfoShrinkRequest struct {
 	//
 	// example:
 	//
-	// 用于测试使用
+	// For testing purposes
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Information about the patch package to upload.
+	// The information about the patch package to upload.
 	//
-	// 1. This parameter is not supported when PkgType is android.
+	// 1. Not supported when PkgType is set to android.
 	//
-	// 2. For the same AppId, only one patch can be in the process of uploading at a time. This means only one patch can be in a state other than its desired state.
+	// 2. Only one patch can be in the uploading state at a time for the same AppId (only one patch in a non-final state is allowed per AppId).
 	PatchShrink *string `json:"Patch,omitempty" xml:"Patch,omitempty"`
-	// The tags for the cloud application. You can select multiple tags. This action resets all existing tags for the cloud application.
+	// The cloud application labels. You can select multiple labels. This operation resets the cloud application labels.
 	//
 	// 1. Valid values:
 	//
-	//    hot, game, and app.
+	//   a. hot
 	//
-	// 2. Special case:
+	//   b. game
 	//
-	//    To delete all tags, enter ["NULL"].
+	//   c. app
+	//
+	// 2. Special cases:
+	//
+	//   a. To delete all labels, set this parameter to ["NULL"].
 	PkgLabelsShrink *string `json:"PkgLabels,omitempty" xml:"PkgLabels,omitempty"`
-	// The ID of the stable patch. This patch is used by default if you do not specify a PatchId when the application is in use, such as during a session startup. This parameter is not supported when PkgType is android.
+	// The stable PatchId. When a PatchId is not specified during business operations (such as session startup), this PatchId is used by default. Not supported when PkgType is set to android.
 	//
-	// Special value:
+	// Special values:
 	//
-	// 1. If you set this parameter to origin, the patch version is removed and the initial version is used.
+	// 1. origin: cancels the patch version and uses the initial version by default.
 	//
 	// example:
 	//

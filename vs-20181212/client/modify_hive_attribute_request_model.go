@@ -18,13 +18,13 @@ type iModifyHiveAttributeRequest interface {
 }
 
 type ModifyHiveAttributeRequest struct {
-	// The new description of the cluster.
+	// The description.
 	//
 	// example:
 	//
 	// gb-test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cluster.
+	// ID
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ModifyHiveAttributeRequest struct {
 	//
 	// hive-3b506f0868a7451ba15e0e890706033a
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// The new name of the cluster.
+	// The name.
 	//
 	// example:
 	//

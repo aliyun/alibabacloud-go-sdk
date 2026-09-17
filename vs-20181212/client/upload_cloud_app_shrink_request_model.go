@@ -25,18 +25,22 @@ type iUploadCloudAppShrinkRequest interface {
 	GetPkgLabelsShrink() *string
 	SetPkgType(v string) *UploadCloudAppShrinkRequest
 	GetPkgType() *string
+	SetPostCommandPath(v string) *UploadCloudAppShrinkRequest
+	GetPostCommandPath() *string
+	SetPostCommandTimeoutSec(v int32) *UploadCloudAppShrinkRequest
+	GetPostCommandTimeoutSec() *int32
 }
 
 type UploadCloudAppShrinkRequest struct {
-	// The application name. For Android apps, use the package name, such as com.aaa.bbb.
+	// The application name. For Android applications, use the package name, such as com.aaa.bbb.
 	//
-	// Value requirements:
+	// Value rules:
 	//
-	// 1. Length: 4–50 characters
+	// 1. Length: 4 to 50 characters.
 	//
-	// 2. Allowed characters: lowercase letters, digits, underscores (_), hyphens (-), and dots (.)
+	// 2. Lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
 	//
-	// 3. The first and last characters must be a letter or digit
+	// 3. The first and last characters must be letters or digits.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +48,15 @@ type UploadCloudAppShrinkRequest struct {
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Value requirements:
+	// The application version. For Android applications, use the VersionName, such as 1.1.1.
 	//
-	// 1. Length: 1–50 characters
+	// Value rules:
 	//
-	// 2. Allowed characters: lowercase letters, digits, underscores (_), hyphens (-), and dots (.)
+	// 1. Length: 1 to 50 characters.
 	//
-	// 3. The first and last characters must be a letter or digit
+	// 2. Lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	//
+	// 3. The first and last characters must be letters or digits.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +64,11 @@ type UploadCloudAppShrinkRequest struct {
 	//
 	// 1.1.1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// A description of the application.
+	// The description of the application.
 	//
 	// example:
 	//
-	// 测试应用包
+	// Test application package
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The download URL of the application package.
 	//
@@ -72,7 +78,7 @@ type UploadCloudAppShrinkRequest struct {
 	//
 	// https://xxx.xxx.xxx.apk
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The MD5 hash of the application package, used to verify package integrity.
+	// The MD5 checksum of the application package, used to verify package integrity.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +86,7 @@ type UploadCloudAppShrinkRequest struct {
 	//
 	// 0CFBB7BD10CDD7279642ADAB8FEF3DEE
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The package format. By default, this is inferred from the file extension in the DownloadUrl. Valid values:
+	// The package format. The default value is the file extension of the download URL. Valid values:
 	//
 	// 1. apk
 	//
@@ -96,7 +102,7 @@ type UploadCloudAppShrinkRequest struct {
 	//
 	// apk
 	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
-	// Cloud application labels. You can select multiple. Valid values:
+	// The cloud application labels. You can select multiple values. Valid values:
 	//
 	// 1. hot
 	//
@@ -112,26 +118,38 @@ type UploadCloudAppShrinkRequest struct {
 	//
 	// 2. win
 	//
-	// 3. android_appmarket: for Android app marketplace scenarios. This scenario enforces real APK PackageName restrictions:
+	// 3. android_appmarket: corresponds to the Android app marketplace scenario. In this scenario, the actual APK PackageName is restricted:
 	//
-	//    a. PackageNames must be unique across different AppNames.
+	// a. Different AppName values cannot share the same PackageName.
 	//
-	//    b. The same AppName with different AppVersions can map to different PackageNames.
+	// b. The same AppName with different AppVersion values can be associated with different PackageName values.
 	//
-	// ## Default behavior:
+	// ## Default value:
 	//
-	// If not specified, the system automatically maps the package type based on PkgFormat (or infers PkgFormat from the DownloadUrl file extension). The default mapping is:
+	// If not specified, the package type is automatically mapped based on PkgFormat (or the file extension of DownloadUrl). Default mappings between PkgFormat and package type:
 	//
-	// 1. android: apk
+	// 1. android: apk (the apk format is mapped to android by default).
 	//
-	// 2. win: tar.gz, tar, zip, rar
+	// 2. win: tar.gz, tar, zip, rar.
 	//
-	// 3. android_appmarket: apk
+	// 3. android_appmarket: apk.
 	//
 	// example:
 	//
 	// android
 	PkgType *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
+	// The relative path of the post-installation command within the application package. Only supported for win type applications.
+	//
+	// example:
+	//
+	// install.ps1
+	PostCommandPath *string `json:"PostCommandPath,omitempty" xml:"PostCommandPath,omitempty"`
+	// The timeout period (in seconds) for the post-installation command. Only supported for win type applications.
+	//
+	// example:
+	//
+	// 10
+	PostCommandTimeoutSec *int32 `json:"PostCommandTimeoutSec,omitempty" xml:"PostCommandTimeoutSec,omitempty"`
 }
 
 func (s UploadCloudAppShrinkRequest) String() string {
@@ -174,6 +192,14 @@ func (s *UploadCloudAppShrinkRequest) GetPkgType() *string {
 	return s.PkgType
 }
 
+func (s *UploadCloudAppShrinkRequest) GetPostCommandPath() *string {
+	return s.PostCommandPath
+}
+
+func (s *UploadCloudAppShrinkRequest) GetPostCommandTimeoutSec() *int32 {
+	return s.PostCommandTimeoutSec
+}
+
 func (s *UploadCloudAppShrinkRequest) SetAppName(v string) *UploadCloudAppShrinkRequest {
 	s.AppName = &v
 	return s
@@ -211,6 +237,16 @@ func (s *UploadCloudAppShrinkRequest) SetPkgLabelsShrink(v string) *UploadCloudA
 
 func (s *UploadCloudAppShrinkRequest) SetPkgType(v string) *UploadCloudAppShrinkRequest {
 	s.PkgType = &v
+	return s
+}
+
+func (s *UploadCloudAppShrinkRequest) SetPostCommandPath(v string) *UploadCloudAppShrinkRequest {
+	s.PostCommandPath = &v
+	return s
+}
+
+func (s *UploadCloudAppShrinkRequest) SetPostCommandTimeoutSec(v int32) *UploadCloudAppShrinkRequest {
+	s.PostCommandTimeoutSec = &v
 	return s
 }
 

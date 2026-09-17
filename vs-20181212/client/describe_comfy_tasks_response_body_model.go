@@ -46,7 +46,7 @@ type DescribeComfyTasksResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The page size.
 	//
-	// > Only applicable to recording queries.
+	// > Only available for recording queries.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeComfyTasksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task list.
 	Tasks []*DescribeComfyTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The number of tasks.
+	// The total number of tasks.
 	//
 	// example:
 	//

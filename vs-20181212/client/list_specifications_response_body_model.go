@@ -121,7 +121,7 @@ type ListSpecificationsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 4090CU
+	// G49\\G59
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
 	// The number of cores.
 	//
@@ -135,17 +135,17 @@ type ListSpecificationsResponseBodyItems struct {
 	//
 	// 8
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The number of cards per single load.
+	// The number of cards per workload.
 	//
 	// example:
 	//
 	// 1
 	Shard *int32 `json:"Shard,omitempty" xml:"Shard,omitempty"`
-	// `RenderingSpec`
+	// The specification.
 	//
 	// example:
 	//
-	// crs.xic.s1
+	// ew.gn8t6xlarge-rb.x1p
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	// The maximum storage capacity. Unit: GB.
 	//

@@ -36,31 +36,31 @@ type ListEdgeWorkersRequest struct {
 	//
 	// 2025-05-14T15:20:37+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cluster ID list.
+	// The list of cluster IDs.
 	//
 	// example:
 	//
 	// ["hive-4fbf3928d40e43948b98acdb4fb5aaed"]
 	HiveIds []*string `json:"HiveIds,omitempty" xml:"HiveIds,omitempty" type:"Repeated"`
-	// The workload ID list.
+	// The list of load IDs.
 	//
 	// example:
 	//
 	// ew-xxxxxx
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The page number of the query list. Minimum value: 1. Default value: 1.
+	// The page number of the query list. The value starts from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paginated query. Maximum value: 100. Default value: 10.
+	// The number of entries per page in a paged query. Settings for paging. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plan ID list.
+	// The list of plan IDs.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListEdgeWorkersRequest struct {
 	//
 	// ew.gn8t6xlarge-rb.x1p
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The time range filter parameter. The value is in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2026-05-25T06:35:26+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status list.
+	// The list of statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

@@ -22,27 +22,27 @@ type iListCloudAppsResponseBody interface {
 }
 
 type ListCloudAppsResponseBody struct {
-	// List of cloud application information.
+	// The list of cloud application information.
 	CloudApps []*ListCloudAppsResponseBodyCloudApps `json:"CloudApps,omitempty" xml:"CloudApps,omitempty" type:"Repeated"`
-	// Page number of the query list.
+	// The page number of the query list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of rows per page for paged queries.
+	// The number of entries per page for the paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of matching cloud application entries.
+	// The total number of matched cloud applications.
 	//
 	// example:
 	//
@@ -117,43 +117,55 @@ func (s *ListCloudAppsResponseBody) Validate() error {
 }
 
 type ListCloudAppsResponseBodyCloudApps struct {
-	// Application ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Application name.
+	// The application name.
 	//
 	// example:
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Application version.
+	// The application version.
 	//
 	// example:
 	//
 	// 1.5.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// Application description.
+	// The application description.
 	//
 	// example:
 	//
 	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Package format.
+	// The installation package format.
 	//
 	// example:
 	//
 	// apk
 	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
-	// Package type: android/win.
+	// The installation package type. Valid values: android and win.
 	//
 	// example:
 	//
 	// android
 	PkgType *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
-	// Stable patch package ID.
+	// The relative path of the post-command within the application package. Only win type applications are supported.
+	//
+	// example:
+	//
+	// install.ps1
+	PostCommandPath *string `json:"PostCommandPath,omitempty" xml:"PostCommandPath,omitempty"`
+	// The timeout period for post-command execution, in seconds. Only win type applications are supported.
+	//
+	// example:
+	//
+	// 10
+	PostCommandTimeoutSec *int32 `json:"PostCommandTimeoutSec,omitempty" xml:"PostCommandTimeoutSec,omitempty"`
+	// The ID of the stable version patch package.
 	//
 	// example:
 	//
@@ -165,27 +177,31 @@ type ListCloudAppsResponseBodyCloudApps struct {
 	//
 	// 2. Doing
 	//
-	// 3. Success: The desired state.
+	// 3. Success: desired state.
 	//
-	// 4. Failed: The desired state.
+	// 4. Failed: desired state.
+	//
+	// 5. Deleting
+	//
+	// 6. DeleteFailed: desired state.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Status description.
+	// The status description.
 	//
 	// example:
 	//
 	// upload success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// Latest status update time.
+	// The latest status update time.
 	//
 	// example:
 	//
 	// 2024-05-28T14:48:34+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Application upload time.
+	// The application upload time.
 	//
 	// example:
 	//
@@ -223,6 +239,14 @@ func (s *ListCloudAppsResponseBodyCloudApps) GetPkgFormat() *string {
 
 func (s *ListCloudAppsResponseBodyCloudApps) GetPkgType() *string {
 	return s.PkgType
+}
+
+func (s *ListCloudAppsResponseBodyCloudApps) GetPostCommandPath() *string {
+	return s.PostCommandPath
+}
+
+func (s *ListCloudAppsResponseBodyCloudApps) GetPostCommandTimeoutSec() *int32 {
+	return s.PostCommandTimeoutSec
 }
 
 func (s *ListCloudAppsResponseBodyCloudApps) GetStablePatchId() *string {
@@ -272,6 +296,16 @@ func (s *ListCloudAppsResponseBodyCloudApps) SetPkgFormat(v string) *ListCloudAp
 
 func (s *ListCloudAppsResponseBodyCloudApps) SetPkgType(v string) *ListCloudAppsResponseBodyCloudApps {
 	s.PkgType = &v
+	return s
+}
+
+func (s *ListCloudAppsResponseBodyCloudApps) SetPostCommandPath(v string) *ListCloudAppsResponseBodyCloudApps {
+	s.PostCommandPath = &v
+	return s
+}
+
+func (s *ListCloudAppsResponseBodyCloudApps) SetPostCommandTimeoutSec(v int32) *ListCloudAppsResponseBodyCloudApps {
+	s.PostCommandTimeoutSec = &v
 	return s
 }
 

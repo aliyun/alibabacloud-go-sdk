@@ -14,13 +14,13 @@ type iDeleteHiveRequest interface {
 }
 
 type DeleteHiveRequest struct {
-	// The ID of the cloud application service group.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// g-xxxx
+	// hive-xxxx
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
 }
 

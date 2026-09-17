@@ -22,19 +22,19 @@ type iListCloudAppPatchesResponseBody interface {
 }
 
 type ListCloudAppPatchesResponseBody struct {
-	// The page number of the returned page.
+	// The page number of the query list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page for the paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of cloud application patches.
+	// The list of patches for the cloud application.
 	Patches []*ListCloudAppPatchesResponseBodyPatches `json:"Patches,omitempty" xml:"Patches,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -129,31 +129,43 @@ type ListCloudAppPatchesResponseBodyPatches struct {
 	//
 	// patch-1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
-	// The upload status of the application. Valid values:
+	// The relative path of the post-command within the application package. Only Windows-type applications are supported.
+	//
+	// example:
+	//
+	// install.ps1
+	PostCommandPath *string `json:"PostCommandPath,omitempty" xml:"PostCommandPath,omitempty"`
+	// The timeout period for the post-command execution, in seconds. Only Windows-type applications are supported.
+	//
+	// example:
+	//
+	// 10
+	PostCommandTimeoutSec *int32 `json:"PostCommandTimeoutSec,omitempty" xml:"PostCommandTimeoutSec,omitempty"`
+	// The application upload status. Valid values:
 	//
 	// 1. Created
 	//
 	// 2. Doing
 	//
-	// 3. Success: A final state.
+	// 3. Success: desired state.
 	//
-	// 4. Failed: A final state.
+	// 4. Failed: desired state.
 	//
 	// 5. Deleting
 	//
-	// 6. DeleteFailed: A final state.
+	// 6. DeleteFailed: desired state.
 	//
 	// example:
 	//
 	// Doing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the status.
+	// The status description.
 	//
 	// example:
 	//
 	// Uploading
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The time when the status was last updated.
+	// The most recent time when the status was updated.
 	//
 	// example:
 	//
@@ -183,6 +195,14 @@ func (s *ListCloudAppPatchesResponseBodyPatches) GetPatchName() *string {
 	return s.PatchName
 }
 
+func (s *ListCloudAppPatchesResponseBodyPatches) GetPostCommandPath() *string {
+	return s.PostCommandPath
+}
+
+func (s *ListCloudAppPatchesResponseBodyPatches) GetPostCommandTimeoutSec() *int32 {
+	return s.PostCommandTimeoutSec
+}
+
 func (s *ListCloudAppPatchesResponseBodyPatches) GetStatus() *string {
 	return s.Status
 }
@@ -206,6 +226,16 @@ func (s *ListCloudAppPatchesResponseBodyPatches) SetPatchId(v string) *ListCloud
 
 func (s *ListCloudAppPatchesResponseBodyPatches) SetPatchName(v string) *ListCloudAppPatchesResponseBodyPatches {
 	s.PatchName = &v
+	return s
+}
+
+func (s *ListCloudAppPatchesResponseBodyPatches) SetPostCommandPath(v string) *ListCloudAppPatchesResponseBodyPatches {
+	s.PostCommandPath = &v
+	return s
+}
+
+func (s *ListCloudAppPatchesResponseBodyPatches) SetPostCommandTimeoutSec(v int32) *ListCloudAppPatchesResponseBodyPatches {
+	s.PostCommandTimeoutSec = &v
 	return s
 }
 

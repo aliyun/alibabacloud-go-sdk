@@ -22,7 +22,7 @@ type iMoveHiveEdgeWorkersResponseBody interface {
 }
 
 type MoveHiveEdgeWorkersResponseBody struct {
-	// The number of failed operations.
+	// The number of workloads that failed to be moved.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type MoveHiveEdgeWorkersResponseBody struct {
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of successful operations.
+	// The number of workloads that were successfully moved.
 	//
 	// example:
 	//
