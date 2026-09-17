@@ -1,3 +1,7 @@
+2026-09-17 Version: v11.3.0
+- Support API GetGatewayResourceQuotaUsage.
+
+
 2026-09-16 Version: v11.2.5
 - Update API UpdateHttpApi: add request parameters clientToken.
 

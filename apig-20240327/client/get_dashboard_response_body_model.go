@@ -136,13 +136,13 @@ type GetDashboardResponseBodyData struct {
 	//
 	// gw-co370icmjeu****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The dashboard name.
+	// The name of the dashboard.
 	//
 	// example:
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The dashboard title.
+	// The title of the dashboard.
 	//
 	// example:
 	//

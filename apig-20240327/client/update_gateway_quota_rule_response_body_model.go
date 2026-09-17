@@ -26,13 +26,13 @@ type UpdateGatewayQuotaRuleResponseBody struct {
 	//
 	// 200, 404, 500
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data content.
+	// The response data.
 	//
 	// example:
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *UpdateGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message content.
+	// The response message.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *UpdateGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type UpdateGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
+	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type UpdateGatewayQuotaRuleResponseBodyData struct {
 	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
 	// The conflict preview.
 	ConflictPreview *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
-	// Indicates whether the request is a dry run.
+	// Indicates whether this is a dry run.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *UpdateGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type UpdateGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The hash of the conflict snapshot.
+	// The conflict hash.
 	//
 	// example:
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541f50xxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
-	// The list of conflicting principals (consumers or consumer groups).
+	// The list of conflicting subjects (consumers or consumer groups).
 	Items []*UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The total number of conflicts.
 	//
@@ -241,43 +241,43 @@ func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error
 }
 
 type UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
-	// The period type of the existing conflicting rule on the consumer principal. Valid values: day, week, and month, which indicate that the period of the conflicting rule is daily, weekly, or monthly.
+	// The period type of the existing conflicting rule on the consumer subject. Valid values: day (daily), week (weekly), month (monthly).
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumer principal. Valid values: calendar (the conflicting rule uses a calendar period) and epoch (the conflicting rule uses a custom period).
+	// The type of the existing conflicting rule on the consumer subject. Valid values: calendar (calendar period) and epoch (custom period).
 	//
 	// example:
 	//
 	// calendar
 	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
-	// The consumer ID. You can use subjectId instead.
+	// The consumer ID. Use subjectId instead.
 	//
 	// example:
 	//
 	// cs-d82n1g6m1hkm375xxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer name. You can use subjectName instead.
+	// The consumer name. Use subjectName instead.
 	//
 	// example:
 	//
 	// consumer-a
 	ConsumerName *string `json:"consumerName,omitempty" xml:"consumerName,omitempty"`
-	// The ID of the conflicting principal.
+	// The ID of the conflicting subject.
 	//
 	// example:
 	//
 	// cs-xxx
 	SubjectId *string `json:"subjectId,omitempty" xml:"subjectId,omitempty"`
-	// The name of the conflicting principal.
+	// The name of the conflicting subject.
 	//
 	// example:
 	//
 	// consumer-a
 	SubjectName *string `json:"subjectName,omitempty" xml:"subjectName,omitempty"`
-	// The type of the conflicting principal. Valid values: consumer and consumer_group.
+	// The type of the conflicting subject. Valid values: consumer and consumer_group.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetGatewayQuotaRuleSubjectUsageRequest interface {
 }
 
 type GetGatewayQuotaRuleSubjectUsageRequest struct {
-	// The end time for querying consumption record details, in UNIX timestamp format (seconds). If only this parameter is specified, the system automatically calculates startTime based on the rule cycle.
+	// The end time for querying consumption record details. Specify a UNIX timestamp in seconds. If only this parameter is specified, the system automatically calculates startTime based on the rule cycle.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type GetGatewayQuotaRuleSubjectUsageRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of detailed consumption (request) records per page for the subject within the cycle. Maximum value: 10.
+	// The number of entries per page for the detailed consumption (request) records of the subject within the cycle. Maximum value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start time for querying consumption record details, in UNIX timestamp format (seconds). If only this parameter is specified, the system automatically calculates endTime based on the rule cycle.
+	// The start time for querying consumption record details. Specify a UNIX timestamp in seconds. If only this parameter is specified, the system automatically calculates endTime based on the rule cycle.
 	//
 	// example:
 	//
