@@ -6504,6 +6504,108 @@ func (client *Client) PostInnerUploadConvertPackage(request *PostInnerUploadConv
 
 // Summary:
 //
+// Retains SQL audit records.
+//
+// @param request - SaveSkillAuditRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSkillAuditRecordResponse
+func (client *Client) SaveSkillAuditRecordWithOptions(request *SaveSkillAuditRecordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SaveSkillAuditRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BatchId) {
+		body["batchId"] = request.BatchId
+	}
+
+	if !dara.IsNil(request.Cid) {
+		body["cid"] = request.Cid
+	}
+
+	if !dara.IsNil(request.DryRunStatus) {
+		body["dryRunStatus"] = request.DryRunStatus
+	}
+
+	if !dara.IsNil(request.ExtInfo) {
+		body["extInfo"] = request.ExtInfo
+	}
+
+	if !dara.IsNil(request.RecordType) {
+		body["recordType"] = request.RecordType
+	}
+
+	if !dara.IsNil(request.ScriptTransformResult) {
+		body["scriptTransformResult"] = request.ScriptTransformResult
+	}
+
+	if !dara.IsNil(request.ScriptTransformStatus) {
+		body["scriptTransformStatus"] = request.ScriptTransformStatus
+	}
+
+	if !dara.IsNil(request.SourceDialect) {
+		body["sourceDialect"] = request.SourceDialect
+	}
+
+	if !dara.IsNil(request.SourceSqlScript) {
+		body["sourceSqlScript"] = request.SourceSqlScript
+	}
+
+	if !dara.IsNil(request.TargetDialect) {
+		body["targetDialect"] = request.TargetDialect
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveSkillAuditRecord"),
+		Version:     dara.String("2025-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/bigdata/sql-translator/open/skill-audit/save"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveSkillAuditRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retains SQL audit records.
+//
+// @param request - SaveSkillAuditRecordRequest
+//
+// @return SaveSkillAuditRecordResponse
+func (client *Client) SaveSkillAuditRecord(request *SaveSkillAuditRecordRequest) (_result *SaveSkillAuditRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SaveSkillAuditRecordResponse{}
+	_body, _err := client.SaveSkillAuditRecordWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a Dry Run validation on a single converted SQL statement to verify syntax and execution permissions without actually writing data.
 //
 // Description:
