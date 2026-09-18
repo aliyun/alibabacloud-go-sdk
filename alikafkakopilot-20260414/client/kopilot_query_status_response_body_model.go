@@ -20,10 +20,26 @@ type iKopilotQueryStatusResponseBody interface {
 }
 
 type KopilotQueryStatusResponseBody struct {
-	Code      *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *KopilotQueryStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code. A value of 200 indicates success.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status information returned when the call is successful.
+	Data *KopilotQueryStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2DF166F2-F581-5254-AAB6-B482083FA7B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s KopilotQueryStatusResponseBody) String() string {
@@ -80,11 +96,36 @@ func (s *KopilotQueryStatusResponseBody) Validate() error {
 }
 
 type KopilotQueryStatusResponseBodyData struct {
-	ActivateTime *int64  `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LifeStatus   *string `json:"LifeStatus,omitempty" xml:"LifeStatus,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uid          *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The UNIX timestamp when the instance was activated, in milliseconds.
+	//
+	// example:
+	//
+	// 17346565678778
+	ActivateTime *int64 `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// instanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance status.
+	//
+	// example:
+	//
+	// NotActivated
+	LifeStatus *string `json:"LifeStatus,omitempty" xml:"LifeStatus,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The UID of the user.
+	//
+	// example:
+	//
+	// 206022063004684756
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s KopilotQueryStatusResponseBodyData) String() string {

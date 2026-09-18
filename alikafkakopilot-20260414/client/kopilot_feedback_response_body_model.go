@@ -20,10 +20,26 @@ type iKopilotFeedbackResponseBody interface {
 }
 
 type KopilotFeedbackResponseBody struct {
-	Code      *int64            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]*int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The return code. A value of 200 indicates success.
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned when the call is successful.
+	Data map[string]*int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E522C7AB-AA99-53B1-BEE7-8BA83ED678F7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s KopilotFeedbackResponseBody) String() string {

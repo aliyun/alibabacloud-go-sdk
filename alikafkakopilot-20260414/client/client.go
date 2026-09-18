@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 智能体 stream chat
+// Initiates a streaming chat session with an agent.
 //
 // @param request - KopilotChatStreamRequest
 //
@@ -73,7 +73,7 @@ func (client *Client) KopilotChatStreamWithSSE(request *KopilotChatStreamRequest
 
 // Summary:
 //
-// 智能体 stream chat
+// Initiates a streaming chat session with an agent.
 //
 // @param request - KopilotChatStreamRequest
 //
@@ -88,6 +88,10 @@ func (client *Client) KopilotChatStreamWithOptions(request *KopilotChatStreamReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !dara.IsNil(request.Message) {
 		query["Message"] = request.Message
 	}
@@ -125,7 +129,7 @@ func (client *Client) KopilotChatStreamWithOptions(request *KopilotChatStreamReq
 
 // Summary:
 //
-// 智能体 stream chat
+// Initiates a streaming chat session with an agent.
 //
 // @param request - KopilotChatStreamRequest
 //
@@ -143,7 +147,7 @@ func (client *Client) KopilotChatStream(request *KopilotChatStreamRequest) (_res
 
 // Summary:
 //
-// 评价
+// Evaluates a user session.
 //
 // @param request - KopilotFeedbackRequest
 //
@@ -203,7 +207,7 @@ func (client *Client) KopilotFeedbackWithOptions(request *KopilotFeedbackRequest
 
 // Summary:
 //
-// 评价
+// Evaluates a user session.
 //
 // @param request - KopilotFeedbackRequest
 //
@@ -221,7 +225,7 @@ func (client *Client) KopilotFeedback(request *KopilotFeedbackRequest) (_result 
 
 // Summary:
 //
-// 历史会话
+// Queries historical conversations.
 //
 // @param request - KopilotListConversationChatMessagesRequest
 //
@@ -252,6 +256,14 @@ func (client *Client) KopilotListConversationChatMessagesWithOptions(request *Ko
 		query["SessionId"] = request.SessionId
 	}
 
+	if !dara.IsNil(request.TaskCursor) {
+		query["TaskCursor"] = request.TaskCursor
+	}
+
+	if !dara.IsNil(request.TaskPageSize) {
+		query["TaskPageSize"] = request.TaskPageSize
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -277,7 +289,7 @@ func (client *Client) KopilotListConversationChatMessagesWithOptions(request *Ko
 
 // Summary:
 //
-// 历史会话
+// Queries historical conversations.
 //
 // @param request - KopilotListConversationChatMessagesRequest
 //
@@ -295,7 +307,7 @@ func (client *Client) KopilotListConversationChatMessages(request *KopilotListCo
 
 // Summary:
 //
-// 智能体
+// Queries the session IDs of the current user in the Console channel, sorted by creation time in descending order. Pagination is supported.
 //
 // @param request - KopilotListConversationsRequest
 //
@@ -310,6 +322,18 @@ func (client *Client) KopilotListConversationsWithOptions(request *KopilotListCo
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DestinationCursor) {
+		query["DestinationCursor"] = request.DestinationCursor
+	}
+
+	if !dara.IsNil(request.DestinationPageSize) {
+		query["DestinationPageSize"] = request.DestinationPageSize
+	}
+
+	if !dara.IsNil(request.IncludeAutomationOverview) {
+		query["IncludeAutomationOverview"] = request.IncludeAutomationOverview
+	}
+
 	if !dara.IsNil(request.Page) {
 		query["Page"] = request.Page
 	}
@@ -320,6 +344,14 @@ func (client *Client) KopilotListConversationsWithOptions(request *KopilotListCo
 
 	if !dara.IsNil(request.Size) {
 		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.TaskCursor) {
+		query["TaskCursor"] = request.TaskCursor
+	}
+
+	if !dara.IsNil(request.TaskPageSize) {
+		query["TaskPageSize"] = request.TaskPageSize
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -347,7 +379,7 @@ func (client *Client) KopilotListConversationsWithOptions(request *KopilotListCo
 
 // Summary:
 //
-// 智能体
+// Queries the session IDs of the current user in the Console channel, sorted by creation time in descending order. Pagination is supported.
 //
 // @param request - KopilotListConversationsRequest
 //
@@ -365,7 +397,7 @@ func (client *Client) KopilotListConversations(request *KopilotListConversations
 
 // Summary:
 //
-// 状态
+// Queries the enabling status of an instance.
 //
 // @param request - KopilotQueryStatusRequest
 //
@@ -413,7 +445,7 @@ func (client *Client) KopilotQueryStatusWithOptions(request *KopilotQueryStatusR
 
 // Summary:
 //
-// 状态
+// Queries the enabling status of an instance.
 //
 // @param request - KopilotQueryStatusRequest
 //
@@ -438,6 +470,10 @@ func (client *Client) kopilotChatStreamWithSSE_opYieldFunc(_yield chan *KopilotC
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !dara.IsNil(request.Message) {
 		query["Message"] = request.Message
 	}

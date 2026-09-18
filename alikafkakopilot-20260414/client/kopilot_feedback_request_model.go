@@ -22,12 +22,44 @@ type iKopilotFeedbackRequest interface {
 }
 
 type KopilotFeedbackRequest struct {
-	Comment  *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The user feedback comment.
+	//
+	// example:
+	//
+	// good
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The user satisfaction level. Valid values:
+	//
+	// - 1: satisfied
+	//
+	// - -1: not satisfied
+	//
+	// - 0: cancel the evaluation
+	//
+	// example:
+	//
+	// 1
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
+	// example:
+	//
+	// e356c91c-8220-425c-9d86-********
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TurnId    *string `json:"TurnId,omitempty" xml:"TurnId,omitempty"`
+	// The primary key ID.
+	//
+	// example:
+	//
+	// 5243231*****
+	TurnId *string `json:"TurnId,omitempty" xml:"TurnId,omitempty"`
 }
 
 func (s KopilotFeedbackRequest) String() string {

@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// 智能体 stream chat
+// Initiates a streaming chat session with an agent.
 //
 // @param request - KopilotChatStreamRequest
 //
@@ -25,7 +25,7 @@ func (client *Client) KopilotChatStreamWithSSECtx(ctx context.Context, request *
 
 // Summary:
 //
-// 智能体 stream chat
+// Initiates a streaming chat session with an agent.
 //
 // @param request - KopilotChatStreamRequest
 //
@@ -40,6 +40,10 @@ func (client *Client) KopilotChatStreamWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !dara.IsNil(request.Message) {
 		query["Message"] = request.Message
 	}
@@ -77,7 +81,7 @@ func (client *Client) KopilotChatStreamWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 评价
+// Evaluates a user session.
 //
 // @param request - KopilotFeedbackRequest
 //
@@ -137,7 +141,7 @@ func (client *Client) KopilotFeedbackWithContext(ctx context.Context, request *K
 
 // Summary:
 //
-// 历史会话
+// Queries historical conversations.
 //
 // @param request - KopilotListConversationChatMessagesRequest
 //
@@ -168,6 +172,14 @@ func (client *Client) KopilotListConversationChatMessagesWithContext(ctx context
 		query["SessionId"] = request.SessionId
 	}
 
+	if !dara.IsNil(request.TaskCursor) {
+		query["TaskCursor"] = request.TaskCursor
+	}
+
+	if !dara.IsNil(request.TaskPageSize) {
+		query["TaskPageSize"] = request.TaskPageSize
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -193,7 +205,7 @@ func (client *Client) KopilotListConversationChatMessagesWithContext(ctx context
 
 // Summary:
 //
-// 智能体
+// Queries the session IDs of the current user in the Console channel, sorted by creation time in descending order. Pagination is supported.
 //
 // @param request - KopilotListConversationsRequest
 //
@@ -208,6 +220,18 @@ func (client *Client) KopilotListConversationsWithContext(ctx context.Context, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DestinationCursor) {
+		query["DestinationCursor"] = request.DestinationCursor
+	}
+
+	if !dara.IsNil(request.DestinationPageSize) {
+		query["DestinationPageSize"] = request.DestinationPageSize
+	}
+
+	if !dara.IsNil(request.IncludeAutomationOverview) {
+		query["IncludeAutomationOverview"] = request.IncludeAutomationOverview
+	}
+
 	if !dara.IsNil(request.Page) {
 		query["Page"] = request.Page
 	}
@@ -218,6 +242,14 @@ func (client *Client) KopilotListConversationsWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.Size) {
 		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.TaskCursor) {
+		query["TaskCursor"] = request.TaskCursor
+	}
+
+	if !dara.IsNil(request.TaskPageSize) {
+		query["TaskPageSize"] = request.TaskPageSize
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -245,7 +277,7 @@ func (client *Client) KopilotListConversationsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 状态
+// Queries the enabling status of an instance.
 //
 // @param request - KopilotQueryStatusRequest
 //
@@ -300,6 +332,10 @@ func (client *Client) kopilotChatStreamWithSSECtx_opYieldFunc(_yield chan *Kopil
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	if !dara.IsNil(request.Message) {
 		query["Message"] = request.Message
 	}

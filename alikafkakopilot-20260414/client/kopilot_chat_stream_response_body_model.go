@@ -34,17 +34,72 @@ type iKopilotChatStreamResponseBody interface {
 }
 
 type KopilotChatStreamResponseBody struct {
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Delta        *string `json:"Delta,omitempty" xml:"Delta,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	MessageId    *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	RunId        *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	ThreadId     *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	ToolCallId   *string `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
+	// The actual content.
+	//
+	// example:
+	//
+	// test
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The streaming incremental content.
+	//
+	// example:
+	//
+	// hello
+	Delta *string `json:"Delta,omitempty" xml:"Delta,omitempty"`
+	// The message body.
+	//
+	// example:
+	//
+	// test
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique message ID.
+	//
+	// example:
+	//
+	// 4b209618fd066c4354037b4b0634ffc9
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 76E1F1AA-6046-5074-96E2-79A37AFBD2FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The role identifier.
+	//
+	// example:
+	//
+	// assistant
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The run task ID.
+	//
+	// example:
+	//
+	// 5737d000********
+	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	// The session thread ID.
+	//
+	// example:
+	//
+	// thread_abc123xyz
+	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	// The unique tool calling invoke ID.
+	//
+	// example:
+	//
+	// call_xyz789012
+	ToolCallId *string `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
+	// The tool or function name.
+	//
+	// example:
+	//
+	// search_knowledge_base
 	ToolCallName *string `json:"ToolCallName,omitempty" xml:"ToolCallName,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The event or message type.
+	//
+	// example:
+	//
+	// delta
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s KopilotChatStreamResponseBody) String() string {

@@ -16,9 +16,21 @@ type iKopilotQueryStatusRequest interface {
 }
 
 type KopilotQueryStatusRequest struct {
+	// The account ID of the owner.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1590639435720201
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
