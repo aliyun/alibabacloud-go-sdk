@@ -11,6 +11,8 @@ type iModifyAppInfoRequest interface {
 	GoString() string
 	SetAppId(v string) *ModifyAppInfoRequest
 	GetAppId() *string
+	SetCustomOrderNum(v int32) *ModifyAppInfoRequest
+	GetCustomOrderNum() *int32
 	SetName(v string) *ModifyAppInfoRequest
 	GetName() *string
 	SetRegionId(v string) *ModifyAppInfoRequest
@@ -26,6 +28,12 @@ type ModifyAppInfoRequest struct {
 	//
 	// txt_check_agent_01
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The sort number.
+	//
+	// example:
+	//
+	// 1
+	CustomOrderNum *int32 `json:"CustomOrderNum,omitempty" xml:"CustomOrderNum,omitempty"`
 	// The app name.
 	//
 	// example:
@@ -58,6 +66,10 @@ func (s *ModifyAppInfoRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *ModifyAppInfoRequest) GetCustomOrderNum() *int32 {
+	return s.CustomOrderNum
+}
+
 func (s *ModifyAppInfoRequest) GetName() *string {
 	return s.Name
 }
@@ -72,6 +84,11 @@ func (s *ModifyAppInfoRequest) GetResourceType() *string {
 
 func (s *ModifyAppInfoRequest) SetAppId(v string) *ModifyAppInfoRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppInfoRequest) SetCustomOrderNum(v int32) *ModifyAppInfoRequest {
+	s.CustomOrderNum = &v
 	return s
 }
 

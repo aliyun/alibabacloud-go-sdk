@@ -7815,6 +7815,10 @@ func (client *Client) ModifyAppInfoWithOptions(request *ModifyAppInfoRequest, ru
 		query["AppId"] = request.AppId
 	}
 
+	if !dara.IsNil(request.CustomOrderNum) {
+		query["CustomOrderNum"] = request.CustomOrderNum
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}

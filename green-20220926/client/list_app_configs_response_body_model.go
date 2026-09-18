@@ -84,13 +84,19 @@ type ListAppConfigsResponseBodyData struct {
 	//
 	// {"agentItemConfigs": "[{\\"agentId\\":\\"ag.abcxxx\\",\\"enable\\":true,\\"name\\":\\"Agent 1\\"}]"}
 	CustomConfig map[string]interface{} `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
+	// The sort number.
+	//
+	// example:
+	//
+	// 1
+	CustomOrderNum *int32 `json:"CustomOrderNum,omitempty" xml:"CustomOrderNum,omitempty"`
 	// The publish status.
 	//
 	// example:
 	//
 	// editing
 	DeployStatus *string `json:"DeployStatus,omitempty" xml:"DeployStatus,omitempty"`
-	// The last modification time.
+	// The last modified time.
 	//
 	// example:
 	//
@@ -144,6 +150,10 @@ func (s *ListAppConfigsResponseBodyData) GetCustomConfig() map[string]interface{
 	return s.CustomConfig
 }
 
+func (s *ListAppConfigsResponseBodyData) GetCustomOrderNum() *int32 {
+	return s.CustomOrderNum
+}
+
 func (s *ListAppConfigsResponseBodyData) GetDeployStatus() *string {
 	return s.DeployStatus
 }
@@ -184,6 +194,11 @@ func (s *ListAppConfigsResponseBodyData) SetClassify(v string) *ListAppConfigsRe
 
 func (s *ListAppConfigsResponseBodyData) SetCustomConfig(v map[string]interface{}) *ListAppConfigsResponseBodyData {
 	s.CustomConfig = v
+	return s
+}
+
+func (s *ListAppConfigsResponseBodyData) SetCustomOrderNum(v int32) *ListAppConfigsResponseBodyData {
+	s.CustomOrderNum = &v
 	return s
 }
 
