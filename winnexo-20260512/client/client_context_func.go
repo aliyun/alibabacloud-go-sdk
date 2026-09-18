@@ -731,6 +731,83 @@ func (client *Client) CreateGroupAliDingChatWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// Collects an Alibaba DingTalk online document to a collaborative share.
+//
+// Description:
+//
+// An authorized member collects a document to a physical folder in the collaborative share. Uses the fixed ALI_DING/Vacuum channel and processes the request asynchronously. Query the resource status after submission.
+//
+// @param request - CreateGroupAliDingDocRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupAliDingDocResponse
+func (client *Client) CreateGroupAliDingDocWithContext(ctx context.Context, request *CreateGroupAliDingDocRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupAliDingDocResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.FilePublicUrl) {
+		body["filePublicUrl"] = request.FilePublicUrl
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupAliDingDoc"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupAliDingDoc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupAliDingDocResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates knowledge from a standard DingTalk group chat for a group.
 //
 // Description:
@@ -840,6 +917,170 @@ func (client *Client) CreateGroupDingtalkChatWithContext(ctx context.Context, tm
 
 // Summary:
 //
+// Creates a folder in the collaborative share resource directory.
+//
+// Description:
+//
+// Active space members can create physical subdirectories. If the parent folder is omitted or set to root, the internal root is used and lazily created on first access. The parent folder must belong to the current space.
+//
+// @param request - CreateGroupDirectoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupDirectoryResponse
+func (client *Client) CreateGroupDirectoryWithContext(ctx context.Context, request *CreateGroupDirectoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ParentDirectoryId) {
+		body["parentDirectoryId"] = request.ParentDirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupDirectory"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupDirectory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupDirectoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 采集飞书群聊到协作空间
+//
+// Description:
+//
+// 可信平台用户作为飞书连接器用户；空间鉴权通过后异步采集，前端通过详情查询实际状态。
+//
+// @param tmpReq - CreateGroupFeishuChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupFeishuChatResponse
+func (client *Client) CreateGroupFeishuChatWithContext(ctx context.Context, tmpReq *CreateGroupFeishuChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupFeishuChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateGroupFeishuChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateFrequency) {
+		request.UpdateFrequencyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateFrequency, dara.String("updateFrequency"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.HistoryStartTime) {
+		body["historyStartTime"] = request.HistoryStartTime
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.UpdateFrequencyShrink) {
+		body["updateFrequency"] = request.UpdateFrequencyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupFeishuChat"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupFeishuChat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupFeishuChatResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a group knowledge resource from a single Lark online document using the current user\\"s Lark authorization.
 //
 // Description:
@@ -933,6 +1174,245 @@ func (client *Client) CreateGroupFeishuDocWithContext(ctx context.Context, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGroupFeishuDocResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传本地文件到协作空间
+//
+// Description:
+//
+// 先使用getSourceUploadSignature完成本地文件PUT，再提交当前租户本人SOURCE/OSS的fileRecordId。文件路径和名称由服务端读取，固定FILE/LOCAL/GROUP。有效成员可写空间物理目录，省略directoryId或root时使用空间根。返回创建结果，后续解析状态需查询。
+//
+// @param request - CreateGroupFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupFileResponse
+func (client *Client) CreateGroupFileWithContext(ctx context.Context, request *CreateGroupFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.FileRecordId) {
+		body["fileRecordId"] = request.FileRecordId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupFile"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupFile"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Collects public web pages to a collaborative share.
+//
+// Description:
+//
+// An active member collects web pages to a physical directory in the collaborative share. The type is fixed to PUBLIC_URL/GROUP. Use getGroupSource to query the background status.
+//
+// @param request - CreateGroupPublicUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupPublicUrlResponse
+func (client *Client) CreateGroupPublicUrlWithContext(ctx context.Context, request *CreateGroupPublicUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupPublicUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.OriginalUrl) {
+		body["originalUrl"] = request.OriginalUrl
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupPublicUrl"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupPublicUrl"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupPublicUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传纯文本到协作空间
+//
+// Description:
+//
+// 有效空间成员上传纯文本到物理目录。固定TEXT/GROUP，省略directoryId或root时解析空间根。正文与最终名称沿用Provider处理规则，返回实际状态和真实目录，不代表解析完成。
+//
+// @param request - CreateGroupTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupTextResponse
+func (client *Client) CreateGroupTextWithContext(ctx context.Context, request *CreateGroupTextRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupTextResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.TextContent) {
+		body["textContent"] = request.TextContent
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupText"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupText"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupTextResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1313,6 +1793,87 @@ func (client *Client) CreateKnowledgeBaseFileWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateKnowledgeBaseFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Collects a single public web page into the enterprise knowledge base of the current user.
+//
+// Description:
+//
+// ## Operation description\\n\\nFixed to `PUBLIC_URL + TENANT`. The user is determined by the trusted OpenAPI identity. Creation only indicates acceptance. Invoke getKnowledgeBaseSource to query the background collection status. `directoryId` is required. The caller must have knowledge base management permissions on the destination knowledge base.
+//
+// @param request - CreateKnowledgeBasePublicUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBasePublicUrlResponse
+func (client *Client) CreateKnowledgeBasePublicUrlWithContext(ctx context.Context, request *CreateKnowledgeBasePublicUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBasePublicUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.OriginalUrl) {
+		body["originalUrl"] = request.OriginalUrl
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBasePublicUrl"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createKnowledgeBasePublicUrl"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBasePublicUrlResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2497,13 +3058,11 @@ func (client *Client) CreatePersonalFeishuMinuteWithContext(ctx context.Context,
 //
 // - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the caller.
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically bound to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the caller.
 //
-// - Security authentication is supported through multiple authentication methods (AK, BearerToken, and APP) to authenticate requests.
+// - Security authentication is supported through multiple methods (AK, BearerToken, and APP).
 //
 // - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
-//
-// To invoke this operation, you can use AK, BearerToken, or APP authentication.
 //
 // @param request - CreatePersonalFileRequest
 //
@@ -2592,6 +3151,87 @@ func (client *Client) CreatePersonalFileWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Collects a single public web page into the current user\\"s personal knowledge base.
+//
+// Description:
+//
+// ## Request description\\n\\nFixed to `PUBLIC_URL + PERSONAL`. The user is determined by the trusted OpenAPI identity. Creation only indicates acceptance. Use getSource to query the background collection status. If `directoryId` is omitted, the current user\\"s default personal root directory is used.
+//
+// @param request - CreatePersonalPublicUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePersonalPublicUrlResponse
+func (client *Client) CreatePersonalPublicUrlWithContext(ctx context.Context, request *CreatePersonalPublicUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePersonalPublicUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.OriginalUrl) {
+		body["originalUrl"] = request.OriginalUrl
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePersonalPublicUrl"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createPersonalPublicUrl"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePersonalPublicUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Uploads plain text content to the personal resource library of the current digital employee.
 //
 // Description:
@@ -2604,9 +3244,9 @@ func (client *Client) CreatePersonalFileWithContext(ctx context.Context, request
 //
 // - If `directoryId` is not provided, the content is bound to the root directory of the current digital employee by default. If provided, it must be an existing personal directory of the caller under the digital employee.
 //
-// - `tenant_id` and `user_id` can only be obtained from the authentication identity information. These parameters are ignored if passed in the request body.
+// - `tenant_id` and `user_id` can only be obtained from the authentication identity information. These parameters are ignored if passed through the request body.
 //
-// - The call initiates metering and generates a corresponding `billing_id`.
+// - A metering process is initiated during the call, and a corresponding `billing_id` is generated.
 //
 // - The text content is written to `unstructured_docs`, and an initial resource record is generated.
 //
@@ -3926,6 +4566,67 @@ func (client *Client) GetGraphSchemaDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 获取协作空间资料详情
+//
+// Description:
+//
+// 只读查询指定空间可见资料；未授权和无效引用拒绝读取，不初始化空间目录。
+//
+// @param request - GetGroupSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupSourceResponse
+func (client *Client) GetGroupSourceWithContext(ctx context.Context, request *GetGroupSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGroupSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGroupSource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getGroupSource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGroupSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the expiration time of the most recently created standard package instance for a tenant.
 //
 // Description:
@@ -4062,21 +4763,21 @@ func (client *Client) GetKnowledgeBaseSourceWithContext(ctx context.Context, req
 //
 // Description:
 //
-// ## Operation description
+// ## Description
 //
 // - This operation uploads a file to an enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
 //
 // - You must provide the OSS persistent address (`filePath`) of the file when uploading.
 //
-// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
 //
-// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+// - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionDetailRequest
 //
@@ -4370,11 +5071,11 @@ func (client *Client) GetScheduledTaskUnderstandDetailWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves skill details.
+// Retrieves the details of a skill.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // Queries skill details by SkillCode or SkillName, including metadata, input parameter schema, and SKILL.md summary.
 //
@@ -4384,7 +5085,7 @@ func (client *Client) GetScheduledTaskUnderstandDetailWithContext(ctx context.Co
 //
 // - **SkillName**: Mutually exclusive with SkillCode. If the name is not unique within the tenant, `ERR.SkillHub.SkillNameAmbiguous` is returned.
 //
-// - **ViewMode**: Optional. Valid values: `draft` (draft/editing view) or `published` (published view, default).
+// - **ViewMode**: Optional. Set to `draft` (draft/editing view) or `published` (published view, default).
 //
 // - **IncludeSkillFiles**: Optional. Specifies whether to return the complete skill file tree (SKILL.md / scripts / templates). Default value: `false`.
 //
@@ -4528,11 +5229,11 @@ func (client *Client) GetSkillRunWithContext(ctx context.Context, request *GetSk
 //
 // ## Operation description
 //
-// - `tenant_id` is derived from the authenticated identity only. Any value passed in the body is ignored.
+// - `tenant_id` is derived from the authenticated identity only. Any value passed in the request body is ignored.
 //
-// - Response parameters do not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large responses.
+// - Response elements do not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large responses.
 //
-// - Set the `includeDetails` parameter to `True` to retrieve additional details including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`.
+// - Set the `includeDetails` parameter to `True` to retrieve additional details, including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`.
 //
 // @param request - GetSourceRequest
 //
@@ -4603,7 +5304,7 @@ func (client *Client) GetSourceWithContext(ctx context.Context, request *GetSour
 //
 // - **Content-Type**: If `contentType` is not provided, the system attempts to automatically infer the file type.
 //
-// - **Scope**: The `scope` parameter defines whether the data source belongs to a personal or enterprise knowledge base. In most cases, this does not need to be set.
+// - **Scope**: The `scope` parameter defines whether the data source belongs to a personal or enterprise knowledge base. By default, this parameter may not need to be set.
 //
 // @param request - GetSourceUploadSignatureRequest
 //
@@ -4635,6 +5336,10 @@ func (client *Client) GetSourceUploadSignatureWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.Filename) {
 		body["filename"] = request.Filename
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
 	}
 
 	if !dara.IsNil(request.OperatingObjectName) {
@@ -4824,7 +5529,7 @@ func (client *Client) GetTokenInfoWithContext(ctx context.Context, request *GetT
 //
 //	1. Locate the user by wnUserId or accountId.
 //
-//	2. Query the user mapping information in the current tenant (status, join time, and last logon time).
+//	2. Query the mapping information of the user in the current tenant, including status, join time, and last logon time.
 //
 //	3. Query the role list of the user in the current tenant.
 //
@@ -4958,7 +5663,7 @@ func (client *Client) GetUserCreditUsageWithContext(ctx context.Context, request
 //
 // - This operation retrieves the details of a specified user group, including the basic information of the user group, parent user group information, direct child user group list, and direct member list.
 //
-// - `userGroupId` is a required parameter that must be provided in the request body.
+// - `userGroupId` is a required parameter and must be provided in the request body.
 //
 // - `tenantId` is an optional parameter that can be passed through the query string.
 //
@@ -4966,7 +5671,7 @@ func (client *Client) GetUserCreditUsageWithContext(ctx context.Context, request
 //
 // - The content type for both requests and responses is `application/json`.
 //
-// - Ensure that you have the required permissions (such as `winnexo:GetUserGroup`) before calling this operation.
+// - Make sure you have the required permissions (such as `winnexo:GetUserGroup`) before calling this operation.
 //
 // @param request - GetUserGroupRequest
 //
@@ -5187,7 +5892,7 @@ func (client *Client) GrantAgentUsersWithContext(ctx context.Context, tmpReq *Gr
 //
 // ## Operation description
 //
-// Performs a paging query for published platform announcements that are effective within the current database time window. The caller must be a real user in the system O&M tenant who has the permission to view announcements.
+// Performs a paging query for published platform announcements that are effective within the current database time window. The caller must be a real user who has the announcement viewing permission in the system O&M tenant.
 //
 // @param request - ListActiveAnnouncementsRequest
 //
@@ -5556,11 +6261,11 @@ func (client *Client) ListAliDingMinutesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the list of digital human names for which the caller has specified permissions.
+// Queries the list of digital human names for which the caller has the specified permission.
 //
 // Description:
 //
-// Queries the list of digital human names for which the current caller (or a specified target user) has specified permissions (USE/MANAGE).
+// Queries the list of digital human names for which the current caller (or a specified target user) has the specified permission (USE/MANAGE).
 //
 //	Business logic:
 //
@@ -5568,7 +6273,7 @@ func (client *Client) ListAliDingMinutesWithContext(ctx context.Context, request
 //
 //	2. Delegates to AgentAuthorizationAuthorizedService.list_authorized_agents to execute the query.
 //
-//	3. When skip_permission=True, returns all active agents for the tenant.
+//	3. When skip_permission=True, returns all active agents of the tenant.
 //
 //	4. Regular users are filtered based on authorization records and auth_mode.
 //
@@ -5643,7 +6348,7 @@ func (client *Client) ListAuthorizedAgentsWithContext(ctx context.Context, reque
 //
 //	3. Permission verification is performed at the AuthorizedService layer by @require_permission(APPLICATION_AGENT_VIEW).
 //
-//	4. When auth_mode=ALL_USERS, only records with MANAGE permissions are displayed.
+//	4. When auth_mode is set to ALL_USERS, only records with the MANAGE permission are displayed.
 //
 // @param request - ListAuthorizedUsersRequest
 //
@@ -5880,11 +6585,11 @@ func (client *Client) ListBillingWithContext(ctx context.Context, request *ListB
 //
 // ## Operation description
 //
-// - This API supports filtering and sorting by multiple parameters, including tenant ID, page size, pagination token, keyword search, digital employee name, and update time range.
+// - This API operation supports filtering and sorting by multiple parameters, including tenant ID, page size, pagination token, keyword search, digital employee name, and update time range.
 //
 // - By default, results are sorted in descending order by the `UpdatedAt` field.
 //
-// - If an invalid `NextToken` is provided or `PageSize` exceeds the allowed range (1-100), the API returns a 400 error.
+// - If an invalid `NextToken` is provided or `PageSize` exceeds the allowed range (1-100), the API operation returns a 400 error.
 //
 // @param request - ListChatSessionsRequest
 //
@@ -6022,17 +6727,17 @@ func (client *Client) ListGraphDraftResourcesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 管理视角图谱列表
+// Queries the list of semantic graphs from the management perspective.
 //
 // Description:
 //
-// OpenAPI 管理视角图谱列表（含草稿/发布中状态）。
+// Queries the list of semantic graphs from the management perspective through OpenAPI, including graphs in draft or publishing status.
 //
-//	返回租户级 active 图谱；graphStatus 三态：PUBLISHED / DEVELOPING（当前用户有活动草稿）/
+//	Returns tenant-level active graphs. graphStatus has three states: PUBLISHED, DEVELOPING (the current user has an active draft), and
 //
-//	PUBLISHING（当前用户发布中）；部署/系统级 Token 无个人身份，hasDraft 恒 false。
+//	PUBLISHING (the current user is publishing). Deploy-level or system-level tokens have no personal identity, so hasDraft is always false.
 //
-//	keyword 匹配 graphName / displayName（忽略大小写）；semanticTags 命中任一标签即保留。
+//	keyword matches graphName or displayName (case-insensitive). semanticTags retains a graph if any tag matches.
 //
 // @param tmpReq - ListGraphSchemasRequest
 //
@@ -6152,19 +6857,179 @@ func (client *Client) ListGraphsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// Queries the category directory tree of an enterprise knowledge base, with support for sorting by a specified field.
+// Lists the resource directories of a collaborative share.
 //
 // Description:
 //
-// ## Request description
+// Valid members can list the query root itself and all its descendant directories, including visible referenced directories marked as readOnly. The results are not paginated and do not return resources. The first query reuses the existing service-initialized internal root.
 //
-// - This API retrieves the category list (subdirectory tree) of an enterprise knowledge base. You must have the knowledge base view permission.
+// @param request - ListGroupDirectoriesRequest
 //
-// - If the `directoryId` parameter is not provided, the API returns all category trees under the root directory of the enterprise knowledge base. If `directoryId` is provided, the API returns the subdirectory tree rooted at the specified directory.
+// @param headers - map
 //
-// - You can sort results by using the `sortField` and `sortOrder` parameters. By default, results are sorted by creation time in descending order.
+// @param runtime - runtime options for this request RuntimeOptions
 //
-// - Security constraints: `tenant_id` and `user_id` are derived only from the authenticated identity, and the caller must have the `DEVELOPMENT_KB_VIEW` feature permission.
+// @return ListGroupDirectoriesResponse
+func (client *Client) ListGroupDirectoriesWithContext(ctx context.Context, request *ListGroupDirectoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupDirectoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SortField) {
+		body["sortField"] = request.SortField
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		body["sortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGroupDirectories"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listGroupDirectories"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGroupDirectoriesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the contents of a collaboration space folder.
+//
+// Description:
+//
+// Corresponds to the space list-resources operation. Active members can query immediate subdirectories and resources based on directory visibility scope. Results are paginated with directories listed first and include read-only references. If the directory is omitted or set to root, the existing root initialization is used. If sourceTypes has values, only resources are returned. sourceStatus follows the existing behavior where physical directories are retained and immediate reference directories are not returned.
+//
+// @param tmpReq - ListGroupDirectoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupDirectoryResponse
+func (client *Client) ListGroupDirectoryWithContext(ctx context.Context, tmpReq *ListGroupDirectoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListGroupDirectoryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SourceTypes) {
+		request.SourceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceTypes, dara.String("sourceTypes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortField) {
+		body["sortField"] = request.SortField
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		body["sortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.SourceStatus) {
+		body["sourceStatus"] = request.SourceStatus
+	}
+
+	if !dara.IsNil(request.SourceTypesShrink) {
+		body["sourceTypes"] = request.SourceTypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGroupDirectory"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listGroupDirectory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGroupDirectoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the category directory tree of an enterprise knowledge base. Sorting by a specified field is supported.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API operation retrieves the category list (subdirectory tree) of an enterprise knowledge base. You must have the knowledge base view permission.
+//
+// - If the `directoryId` parameter is not specified, all category trees under the root directory of the enterprise knowledge base are returned. If `directoryId` is specified, the subdirectory tree rooted at the specified directory is returned.
+//
+// - You can use the `sortField` and `sortOrder` parameters to sort the results. By default, results are sorted by creation time in descending order.
+//
+// - Security constraint: `tenant_id` and `user_id` are derived only from the authenticated identity, and the caller must have the `DEVELOPMENT_KB_VIEW` feature permission.
 //
 // @param request - ListKnowledgeBaseDirectoriesRequest
 //
@@ -6298,7 +7163,7 @@ func (client *Client) ListOperatingObjectFavoritesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the output list of the current user, with support for conditional filtering and pagination.
+// Queries the output list of the current user. Filtering by conditions and pagination are supported.
 //
 // Description:
 //
@@ -6308,15 +7173,15 @@ func (client *Client) ListOperatingObjectFavoritesWithContext(ctx context.Contex
 //
 // - `tenantId` is a common parameter. If not specified, the default tenant of the caller is used.
 //
-// - Supports filtering by parameters such as `operatingObjectName`, `itemType`, and `keyword`.
+// - Filtering is supported through parameters such as `operatingObjectName`, `itemType`, and `keyword`.
 //
 // - Set `sharedOnly` to `true` to display only outputs with sharing enabled.
 //
-// - Pagination is controlled by `page` (page number) and `pageSize` (number of items per page). By default, results start from page 1 with 20 records per page.
+// - Pagination is controlled by `page` (page number) and `pageSize` (number of items per page). By default, the first page is returned with 20 records per page.
 //
 // - Results are sorted by update time in descending order by default.
 //
-// - The `tenant_id` or `user_id` passed in the request body by the caller is ignored. This information is derived only from the authenticated identity.
+// - The `tenant_id` or `user_id` values passed in the request body by the caller are ignored. This information is derived only from the authenticated identity.
 //
 // @param request - ListOutputFilesRequest
 //
@@ -6496,9 +7361,9 @@ func (client *Client) ListPersonalDirectoryContentsWithContext(ctx context.Conte
 //
 //	Business logic:
 //
-//	1. Constructs AuthContext from identity.
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. Delegates to UserManagementAuthorizedService.list_system_roles for permission verification (PLATFORM_USER_VIEW).
+//	2. Delegates to UserManagementAuthorizedService.list_system_roles to perform permission verification (PLATFORM_USER_VIEW).
 //
 //	3. Renders role names and descriptions based on the request Accept-Language header.
 //
@@ -6557,17 +7422,17 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 //
 // ## Operation description
 //
-// - This operation uploads a file to an enterprise knowledge base.
+// - This operation is used to upload files to an enterprise knowledge base.
 //
-// - The DEVELOPMENT_KB_MANAGE permission is required to call this operation.
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this operation.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - Provide the OSS persistent address (`filePath`) of the file when uploading.
 //
 // - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
 //
 // - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
 //
-// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+// - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
 //
 // - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
 //
@@ -6769,15 +7634,15 @@ func (client *Client) ListSkillsWithContext(ctx context.Context, tmpReq *ListSki
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API is used to perform a paging query on the folder content and resources in an enterprise knowledge base.
+// - This API is used for paging query of folder content and resources in an enterprise knowledge base.
 //
-// - Multiple parameters are supported for filtering and sorting, such as `directoryId`, `page`, `pageSize`, `sortField`, `sortOrder`, and others.
+// - Multiple parameters are supported for filtering and sorting, such as `directoryId`, `page`, `pageSize`, `sortField`, `sortOrder`, and more.
 //
 // - The `sourceTypes` parameter allows you to filter by resource type. Separate multiple types with commas.
 //
-// - When `directoryId` is not specified or set to `root`, the root folder list of the knowledge base is queried by default.
+// - If `directoryId` is not specified or is set to `root`, the root folder list of the knowledge base is queried by default.
 //
 // - The default sort field is `name`, and the default sort order is ascending (`asc`).
 //
@@ -7327,6 +8192,75 @@ func (client *Client) ListVisibleKnowledgeBasesWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 移动协作空间资料
+//
+// Description:
+//
+// 有效成员且为资料创建者或空间管理员才能在同一空间物理目录树内移动资料。源目标必须是真实且不同的目录ID，资料必须在源目录。引用资料只读。保持sourceId，不重新解析；本地绑定成功不保证下游路径已同步。重复请求可能报资料不在源目录，请先查询位置。
+//
+// @param request - MoveGroupResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveGroupResourceResponse
+func (client *Client) MoveGroupResourceWithContext(ctx context.Context, request *MoveGroupResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MoveGroupResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SourceDirectoryId) {
+		body["sourceDirectoryId"] = request.SourceDirectoryId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.TargetDirectoryId) {
+		body["targetDirectoryId"] = request.TargetDirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MoveGroupResource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/moveGroupResource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MoveGroupResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves a specified resource between enterprise knowledge base directories. Management permissions are required.
 //
 // Description:
@@ -7548,6 +8482,67 @@ func (client *Client) OfflineAnnouncementWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &OfflineAnnouncementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews a resource in a collaborative workspace.
+//
+// Description:
+//
+// Active members can preview physical or referenced resources in a specified workspace. Requests to read resources that are cross-workspace, de-referenced, or invisible are rejected.
+//
+// @param request - PreviewGroupSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewGroupSourceResponse
+func (client *Client) PreviewGroupSourceWithContext(ctx context.Context, request *PreviewGroupSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewGroupSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewGroupSource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/previewGroupSource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewGroupSourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8295,6 +9290,71 @@ func (client *Client) RenameSourceWithContext(ctx context.Context, request *Rena
 
 // Summary:
 //
+// 重新解析协作空间资料
+//
+// Description:
+//
+// 有效成员且为创建者或空间管理员可重新解析物理资料；引用只读。默认异步；forceSync仅等待不等于强制重抓，在线文档未变化可能直接返回。
+//
+// @param request - ReparseGroupSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReparseGroupSourceResponse
+func (client *Client) ReparseGroupSourceWithContext(ctx context.Context, request *ReparseGroupSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReparseGroupSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ForceSync) {
+		body["forceSync"] = request.ForceSync
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReparseGroupSource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/reparseGroupSource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReparseGroupSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Re-parses a resource.
 //
 // Description:
@@ -8352,6 +9412,87 @@ func (client *Client) ReparseSourceWithContext(ctx context.Context, request *Rep
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReparseSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 替换协作空间资料文件
+//
+// Description:
+//
+// 有效成员且为创建者或空间管理员可替换物理GROUP资料；引用只读。先上传新文件再提交上传结果，仅FILE。保留SourceID并触发解析，默认异步。空操作结果可能发生在写入之后，返回执行错误而非不存在。
+//
+// @param request - ReplaceGroupSourceFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplaceGroupSourceFileResponse
+func (client *Client) ReplaceGroupSourceFileWithContext(ctx context.Context, request *ReplaceGroupSourceFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReplaceGroupSourceFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		body["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.FilePath) {
+		body["filePath"] = request.FilePath
+	}
+
+	if !dara.IsNil(request.FilePublicUrl) {
+		body["filePublicUrl"] = request.FilePublicUrl
+	}
+
+	if !dara.IsNil(request.FileRecordId) {
+		body["fileRecordId"] = request.FileRecordId
+	}
+
+	if !dara.IsNil(request.ForceSync) {
+		body["forceSync"] = request.ForceSync
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReplaceGroupSourceFile"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/replaceGroupSourceFile"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReplaceGroupSourceFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9162,31 +10303,132 @@ func (client *Client) RunSkillWithContext(ctx context.Context, tmpReq *RunSkillR
 
 // Summary:
 //
-// 保存单个语义资源草稿
+// Batch saves personal semantic drafts.
 //
 // Description:
 //
-// OpenAPI 保存单个语义资源草稿（仅个人 Token）。
+// Batch saves personal semantic drafts through OpenAPI (personal token only).
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 草稿域身份校验（仅个人 Token；部署/系统级 Token 被拒绝）
+//	1. Draft domain identity verification (personal token only; deployment/system-level tokens are rejected)
 //
-//	   与语义管理权限校验
+//	   and semantic management permission verification.
 //
-//	2. 委托个人草稿服务保存（来源固定 YAML），底层含资源级写权限校验；
+//	2. saveMode dispatch: FULL_YAML (default) performs full-graph YAML differential save,
 //
-//	   内容与在线完全一致时跳过落库，摘要字段返回 null
+//	   including invalidated draft discard and order collection write permission verification.
 //
-//	错误码：
+//	   PARTIAL_YAML performs partial YAML save scoped by draftChangeIds.
 //
-//	- ERR.User.TokenUserOnly: 个人草稿仅支持用户 Token
+//	3. The diff baseline is always read from the online active version by the backend (the base input parameter is not trusted).
 //
-//	- ERR.Robject.Global.InvalidParameter: resourceType/elementType 组合不合法
+//	Error codes:
 //
-//	- ERR.GraphSchema.*: 图谱不存在 / 资源命名与归属校验失败
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
 //
-//	- ERR.Robject.Global.ResourceNotFound: 资源不存在等底层校验失败
+//	- ERR.Robject.Global.InvalidParameter: Invalid saveMode / draftChangeIds not provided for PARTIAL_YAML.
+//
+//	- ERR.GraphSchema.*: Graph does not exist / YAML structure validation failed / Custom physical table contract is invalid.
+//
+//	- ERR.Robject.Global.BusinessStateConflict: Related resources are being published.
+//
+//	- ERR.Robject.Permission.*: Order collection write permission verification failed.
+//
+// @param tmpReq - SaveGraphDraftBatchDefineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveGraphDraftBatchDefineResponse
+func (client *Client) SaveGraphDraftBatchDefineWithContext(ctx context.Context, tmpReq *SaveGraphDraftBatchDefineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SaveGraphDraftBatchDefineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SaveGraphDraftBatchDefineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DraftChangeIds) {
+		request.DraftChangeIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DraftChangeIds, dara.String("draftChangeIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DraftChangeIdsShrink) {
+		body["draftChangeIds"] = request.DraftChangeIdsShrink
+	}
+
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	if !dara.IsNil(request.SaveMode) {
+		body["saveMode"] = request.SaveMode
+	}
+
+	if !dara.IsNil(request.YamlEdit) {
+		body["yamlEdit"] = request.YamlEdit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveGraphDraftBatchDefine"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/saveGraphDraftBatchDefine"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveGraphDraftBatchDefineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves a single semantic resource draft.
+//
+// Description:
+//
+// Saves a single semantic resource draft through OpenAPI (personal token only).
+//
+//	Business orchestration:
+//
+//	1. Draft domain identity verification (personal token only; deployment/system-level tokens are rejected)
+//
+//	   and semantic management permission verification.
+//
+//	2. Delegates to the personal draft service for saving (source is fixed YAML). The underlying layer includes resource-level write permission verification.
+//
+//	   If the content is identical to the online version, the database write is skipped and the summary field returns null.
+//
+//	Error codes:
+//
+//	- ERR.User.TokenUserOnly: Personal drafts support only user tokens.
+//
+//	- ERR.Robject.Global.InvalidParameter: The resourceType/elementType combination is invalid.
+//
+//	- ERR.GraphSchema.*: The graph does not exist, or resource naming and ownership verification failed.
+//
+//	- ERR.Robject.Global.ResourceNotFound: The resource does not exist or other underlying verification failed.
 //
 // @param request - SaveGraphDraftResourceRequest
 //
@@ -9342,21 +10584,21 @@ func (client *Client) SaveGroupOutputFileToGroupResourceWithContext(ctx context.
 
 // Summary:
 //
-// Batch saves group outputs to the current operator\\"s personal knowledge base.
+// Batch saves group outputs to the personal knowledge base of the current operator.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - Saves specified group outputs to the current operator\\"s personal knowledge base.
+// - Saves specified group outputs to the personal knowledge base of the current operator.
 //
-// - Supports two modes: `link` (maintains output association) and `copy` (creates an independent snapshot).
+// - Two modes are supported: `link` (maintains the association with the output) and `copy` (creates an independent snapshot).
 //
-// - The caller must be a member of the target group who is associated with a platform user. Regular members can only archive outputs they created, while group administrators can archive visible outputs from other members. Personal ownership is always derived from the gateway authentication identity.
+// - The caller must be a member of the target group who is associated with a platform user. Regular members can archive only outputs they created. Group administrators can archive visible outputs of other members. The personal ownership is always derived from the gateway authentication identity.
 //
-// - If `directoryId` is not specified, the current operator\\"s default personal directory is used.
+// - If `directoryId` is not specified, the default personal directory of the current operator is used.
 //
-// - A maximum of 50 outputs can be processed per batch. All entries are validated before saving. The entire batch fails if any entry does not exist, is not visible, or cannot be operated on.
+// - A maximum of 50 outputs can be processed per batch. All entries are validated before saving. If any entry does not exist, is not visible, or cannot be operated on, the entire batch fails.
 //
 // - After unified validation passes, entries are saved one by one. The response results maintain the same order as `itemIds`. A failure to save a single entry does not affect other entries.
 //
@@ -9429,19 +10671,19 @@ func (client *Client) SaveGroupOutputFileToPersonalResourceWithContext(ctx conte
 
 // Summary:
 //
-// Saves output details in batch as personal resources. Supports link or copy mode.
+// Saves output details in batches as personal resources. Supports link or copy mode.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API saves a batch of output details as personal resources for the user.
+// - This API saves a batch of output details as personal resources for a user.
 //
 // - Two save modes are supported: `link` and `copy`. When `link` is selected, edits to the output are synchronized to the resource. When `copy` is selected, a snapshot is created with no limit on the number of copies.
 //
 // - `tenant_id` and `user_id` are derived only from the authenticated identity.
 //
-// - If `operating_object` values are inconsistent within the batch and `directoryId` is not specified, the entire batch fails with a pre-check error.
+// - If the `operating_object` values within the batch are inconsistent and `directoryId` is not specified, the entire batch fails with a pre-check error.
 //
 // - The processing result of a single record does not affect other records. Failure information for individual records is returned in the response.
 //
@@ -9589,11 +10831,11 @@ func (client *Client) SearchAliDingGroupChatsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Asynchronously sends a session message.
+// Sends a session message asynchronously.
 //
 // Description:
 //
-// Asynchronously sends a session message.
+// Sends a session message asynchronously.
 //
 // @param tmpReq - SendAsyncChatMessageRequest
 //
@@ -9673,6 +10915,10 @@ func (client *Client) SendAsyncChatMessageWithContext(ctx context.Context, tmpRe
 		body["taskExecution"] = request.TaskExecutionShrink
 	}
 
+	if !dara.IsNil(request.WorkMode) {
+		body["workMode"] = request.WorkMode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9706,17 +10952,17 @@ func (client *Client) SendAsyncChatMessageWithContext(ctx context.Context, tmpRe
 //
 // ## Operation description
 //
-// - This API operation is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
+// - You must provide an OSS persistent address (`filePath`) for the file. Other information such as the public access URL and original file name is optional.
 //
-// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the invoker.
+// - If you do not specify a target folder ID (`directoryId`), the file is automatically attached to the default root folder of the current digital employee. If you specify a folder ID, make sure the folder belongs to the invoker\\"s personal folder.
 //
-// - Multiple authentication methods (AK, BearerToken, APP) are supported for security authentication.
+// - Multiple authentication methods (AK, BearerToken, and APP) are supported for security authentication.
 //
-// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
+// - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -9739,17 +10985,17 @@ func (client *Client) SendChatMessageWithSSECtx(ctx context.Context, tmpReq *Sen
 //
 // ## Operation description
 //
-// - This API operation is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
+// - You must provide an OSS persistent address (`filePath`) for the file. Other information such as the public access URL and original file name is optional.
 //
-// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the invoker.
+// - If you do not specify a target folder ID (`directoryId`), the file is automatically attached to the default root folder of the current digital employee. If you specify a folder ID, make sure the folder belongs to the invoker\\"s personal folder.
 //
-// - Multiple authentication methods (AK, BearerToken, APP) are supported for security authentication.
+// - Multiple authentication methods (AK, BearerToken, and APP) are supported for security authentication.
 //
-// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
+// - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -9827,6 +11073,10 @@ func (client *Client) SendChatMessageWithContext(ctx context.Context, tmpReq *Se
 
 	if !dara.IsNil(request.TaskExecutionShrink) {
 		body["taskExecution"] = request.TaskExecutionShrink
+	}
+
+	if !dara.IsNil(request.WorkMode) {
+		body["workMode"] = request.WorkMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -10499,23 +11749,23 @@ func (client *Client) UpdateDirectoryWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 快更图谱元信息
+// Updates the basic information of a knowledge graph.
 //
 // Description:
 //
-// OpenAPI 快更图谱元信息（displayName / businessProfile），同步更新 active 记录。
+// Updates the metadata of a knowledge graph (displayName / businessProfile) through OpenAPI and synchronously updates the active record.
 //
-//	displayName 与 businessProfile 至少传其一，否则返回 ERR.GraphSchema.QuickUpdateNoFieldsToUpdate。
+//	At least one of displayName and businessProfile must be specified. Otherwise, ERR.GraphSchema.QuickUpdateNoFieldsToUpdate is returned.
 //
-//	错误码：
+//	Error codes:
 //
-//	- ERR.GraphSchema.QuickUpdateNoFieldsToUpdate: 未传任何可更新字段
+//	- ERR.GraphSchema.QuickUpdateNoFieldsToUpdate: No updatable fields are specified.
 //
-//	- ERR.GraphSchema.GraphNameInvalid: 图谱名称不合法
+//	- ERR.GraphSchema.GraphNameInvalid: The graph name is invalid.
 //
-//	- ERR.GraphSchema.GraphSchemaNotFound: 图谱不存在
+//	- ERR.GraphSchema.GraphSchemaNotFound: The graph does not exist.
 //
-//	- ERR.GraphSchema.DisplayNameInvalid: 展示名不合法或重复
+//	- ERR.GraphSchema.DisplayNameInvalid: The display name is invalid or duplicate.
 //
 // @param request - UpdateGraphInfoRequest
 //
@@ -10566,6 +11816,144 @@ func (client *Client) UpdateGraphInfoWithContext(ctx context.Context, request *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGraphInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a folder in the materials section of a collaborative share.
+//
+// Description:
+//
+// The folder creator or a storage management administrator who is an active member can modify the folder. Modifying the internal root folder or reference folders is prohibited. If description is set to an empty character string, the description is cleared. If description is set to null or omitted, the description remains unchanged. At least one of name or description must be non-null.
+//
+// @param request - UpdateGroupDirectoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupDirectoryResponse
+func (client *Client) UpdateGroupDirectoryWithContext(ctx context.Context, request *UpdateGroupDirectoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGroupDirectoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGroupDirectory"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateGroupDirectory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGroupDirectoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改协作空间资料正文
+//
+// Description:
+//
+// 有效成员且为创建者或空间管理员可编辑物理资料；引用只读。通常支持TEXT及本地txt/md；TEXT去首尾空白，已有skip_parse资料沿用免解析和本地文件扩展名规则。
+//
+// @param request - UpdateGroupSourceContentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupSourceContentResponse
+func (client *Client) UpdateGroupSourceContentWithContext(ctx context.Context, request *UpdateGroupSourceContentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGroupSourceContentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["content"] = request.Content
+	}
+
+	if !dara.IsNil(request.ForceSync) {
+		body["forceSync"] = request.ForceSync
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGroupSourceContent"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateGroupSourceContent"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGroupSourceContentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11496,6 +12884,10 @@ func (client *Client) sendChatMessageWithSSECtx_opYieldFunc(_yield chan *SendCha
 
 	if !dara.IsNil(request.TaskExecutionShrink) {
 		body["taskExecution"] = request.TaskExecutionShrink
+	}
+
+	if !dara.IsNil(request.WorkMode) {
+		body["workMode"] = request.WorkMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -60,7 +60,7 @@ type iGetSkillResponseBody interface {
 }
 
 type GetSkillResponseBody struct {
-	// The simplified parameter schema that describes what needs to be passed in runSkill.arguments. This is automatically extracted from inputConfigFormatted.
+	// The simplified parameter schema that describes what to pass in runSkill.arguments. Automatically extracted from inputConfigFormatted.
 	Arguments []*GetSkillResponseBodyArguments `json:"arguments,omitempty" xml:"arguments,omitempty" type:"Repeated"`
 	// The response status code.
 	//
@@ -74,7 +74,7 @@ type GetSkillResponseBody struct {
 	//
 	// 2023-10-01T12:00:00Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The skill description, which has been resolved through internationalization (i18n).
+	// The skill description. The value is resolved through i18n.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type GetSkillResponseBody struct {
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The skill name, which has been resolved through internationalization (i18n).
+	// The skill name. The value is resolved through i18n.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetSkillResponseBody struct {
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// The nested tree of skill files. This is returned only when includeSkillFiles is set to True.
+	// The nested skill file tree. This parameter is returned only when includeSkillFiles is set to True.
 	SkillFiles []map[string]interface{} `json:"skillFiles,omitempty" xml:"skillFiles,omitempty" type:"Repeated"`
 	// The skill definition ID.
 	//
@@ -168,13 +168,13 @@ type GetSkillResponseBody struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag list, which has been resolved through internationalization (i18n).
+	// The label list. The values are resolved through i18n.
 	//
 	// example:
 	//
 	// string_value
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The modification time in ISO 8601 format.
+	// The update time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -444,13 +444,13 @@ type GetSkillResponseBodyArguments struct {
 	//
 	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of valid values, which is available when the options are limited.
+	// The list of valid values when options are limited.
 	//
 	// example:
 	//
 	// string_value
 	Enum []*string `json:"enum,omitempty" xml:"enum,omitempty" type:"Repeated"`
-	// The parameter name, which corresponds to the key in runSkill.arguments.
+	// The parameter name, corresponding to the key in runSkill.arguments.
 	//
 	// example:
 	//

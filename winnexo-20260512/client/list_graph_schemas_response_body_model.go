@@ -20,21 +20,21 @@ type iListGraphSchemasResponseBody interface {
 }
 
 type ListGraphSchemasResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 租户下 active 图谱摘要列表
+	// The location clustering.
 	Items []*ListGraphSchemasResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The prompt message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,25 +100,25 @@ func (s *ListGraphSchemasResponseBody) Validate() error {
 }
 
 type ListGraphSchemasResponseBodyItems struct {
-	// active Schema 版本
+	// The currently active schema version number. The value is 0.0.0 for a quick-created placeholder graph.
 	//
 	// example:
 	//
 	// 0.0.0
 	ActiveVersion *string `json:"activeVersion,omitempty" xml:"activeVersion,omitempty"`
-	// 业务说明，未设置时为空字符串
+	// The business description of the graph. An empty string is returned if this parameter is not configured.
 	//
 	// example:
 	//
-	// 客户域语义图谱
+	// Customer domain semantic graph
 	BusinessProfile *string `json:"businessProfile,omitempty" xml:"businessProfile,omitempty"`
-	// 图谱展示名，空值时兜底 graphName
+	// The display name of the tool.
 	//
 	// example:
 	//
-	// CRM 图谱
+	// CRM Graph
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 图谱名称
+	// The graph name.
 	//
 	// This parameter is required.
 	//
@@ -126,7 +126,7 @@ type ListGraphSchemasResponseBodyItems struct {
 	//
 	// crm_graph
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// 图谱状态：PUBLISHED / DEVELOPING（当前用户有活动草稿）/ PUBLISHING（当前用户发布中）
+	// The status of the semantic graph.
 	//
 	// This parameter is required.
 	//
@@ -134,7 +134,7 @@ type ListGraphSchemasResponseBodyItems struct {
 	//
 	// PUBLISHED
 	GraphStatus *string `json:"graphStatus,omitempty" xml:"graphStatus,omitempty"`
-	// 当前调用者视角是否存在个人活动草稿；部署/系统级 Token 恒 false
+	// Indicates whether the graph contains a draft.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ type ListGraphSchemasResponseBodyItems struct {
 	//
 	// false
 	HasDraft *bool `json:"hasDraft,omitempty" xml:"hasDraft,omitempty"`
-	// 是否为租户默认图谱
+	// Indicates whether this is the default group.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +150,7 @@ type ListGraphSchemasResponseBodyItems struct {
 	//
 	// false
 	IsDefault *bool `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
-	// object_type 数量，解析失败兜底 0
+	// The number of object types. The value falls back to 0 if parsing fails.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +158,7 @@ type ListGraphSchemasResponseBodyItems struct {
 	//
 	// 12
 	ObjectTypeCount *int64 `json:"objectTypeCount,omitempty" xml:"objectTypeCount,omitempty"`
-	// relation 数量，解析失败兜底 0
+	// The number of relations. The value falls back to 0 if parsing fails.
 	//
 	// This parameter is required.
 	//
@@ -166,7 +166,7 @@ type ListGraphSchemasResponseBodyItems struct {
 	//
 	// 5
 	RelationCount *int64 `json:"relationCount,omitempty" xml:"relationCount,omitempty"`
-	// 语义标签列表，未配置时为空数组
+	// The list of semantic tags. An empty array [] is returned if this parameter is not configured.
 	//
 	// This parameter is required.
 	SemanticTags []*string `json:"semanticTags,omitempty" xml:"semanticTags,omitempty" type:"Repeated"`

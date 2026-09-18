@@ -40,13 +40,13 @@ type CreatePersonalFileRequest struct {
 	//
 	// created by eventbridge
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The directory ID.
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The file extension (optional, such as pdf or docx).
+	// The file name extension (optional, such as pdf or docx).
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreatePersonalFileRequest struct {
 	//
 	// bi/batch-query-service.app.yaml
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// The publicly accessible URL of the Alibaba DingTalk online document.
+	// The publicly accessible URL of the DingTalk online document.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type CreatePersonalFileRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 资源标签 JSON 字符串列表
+	// The list of resource tag JSON strings.
 	//
 	// example:
 	//
-	// ["重点","文件"]
+	// ["Important","File"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//

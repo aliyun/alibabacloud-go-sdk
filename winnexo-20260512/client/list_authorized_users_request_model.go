@@ -22,7 +22,13 @@ type iListAuthorizedUsersRequest interface {
 }
 
 type ListAuthorizedUsersRequest struct {
-	// The filter type. Valid values: USER, USER_GROUP. If not specified, all types are returned.
+	// The filter type. Valid values:
+	//
+	// - USER
+	//
+	// - USER_GROUP
+	//
+	// If this parameter is not specified, all types are returned.
 	//
 	// example:
 	//
@@ -48,7 +54,7 @@ type ListAuthorizedUsersRequest struct {
 	//
 	// USE
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

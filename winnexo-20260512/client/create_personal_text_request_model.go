@@ -32,7 +32,7 @@ type CreatePersonalTextRequest struct {
 	//
 	// PublicApplication
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type CreatePersonalTextRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 资源标签 JSON 字符串列表
+	// The list of resource tag JSON strings.
 	//
 	// example:
 	//
-	// ["重点","文本"]
+	// ["Key","Text"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//

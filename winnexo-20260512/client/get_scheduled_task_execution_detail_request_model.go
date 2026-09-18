@@ -24,7 +24,7 @@ type GetScheduledTaskExecutionDetailRequest struct {
 	//
 	// exampleExecutionId
 	ExecutionId *string `json:"executionId,omitempty" xml:"executionId,omitempty"`
-	// The tenant ID that takes effect.
+	// The ID of the effective tenant.
 	//
 	// example:
 	//

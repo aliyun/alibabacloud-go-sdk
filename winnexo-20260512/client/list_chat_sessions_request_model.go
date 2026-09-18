@@ -46,7 +46,7 @@ type ListChatSessionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The tenant ID to which the task belongs.
+	// The ID of the tenant to which the node belongs.
 	//
 	// example:
 	//

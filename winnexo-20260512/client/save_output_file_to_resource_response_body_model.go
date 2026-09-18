@@ -20,13 +20,13 @@ type iSaveOutputFileToResourceResponseBody interface {
 }
 
 type SaveOutputFileToResourceResponseBody struct {
-	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- / InvalidParameter.*).
+	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- or InvalidParameter.*).
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error description. This value is empty on success.
+	// The error description. This value is empty when the operation succeeds.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type SaveOutputFileToResourceResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The per-record results in the same order as the input itemIds. A single record failure does not affect other records.
+	// The per-record results, in the same order as the input itemIds. A failure of a single record does not affect other records.
 	Results []*SaveOutputFileToResourceResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -100,13 +100,13 @@ func (s *SaveOutputFileToResourceResponseBody) Validate() error {
 }
 
 type SaveOutputFileToResourceResponseBodyResults struct {
-	// The business error code (i18n key). Returned on failure.
+	// The business error code (i18n key) returned on failure.
 	//
 	// example:
 	//
 	// string_value
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error description, localized based on the request Accept-Language header. Returned on failure.
+	// The error description returned on failure, localized based on the request locale.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type SaveOutputFileToResourceResponseBodyResults struct {
 	//
 	// exampleItemId
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// The sourceId of the newly created resource. Returned on success.
+	// The sourceId of the newly created resource, returned on success.
 	//
 	// example:
 	//

@@ -106,7 +106,7 @@ type GetScheduledTaskExecutionDetailResponseBody struct {
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type GetScheduledTaskExecutionDetailResponseBody struct {
 	//
 	// string_value
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// The visibility scope of the execution record, which is always equal to the visibility scope of the associated task. Valid values: PRIVATE, COLLABORATIVE, and PUBLIC. This field is empty for personal task executions.
+	// The visibility scope of the execution record, which is always the same as the visibility scope of the associated task. Valid values: PRIVATE, COLLABORATIVE, and PUBLIC. This value is empty for personal task executions.
 	//
 	// example:
 	//
@@ -498,7 +498,7 @@ func (s *GetScheduledTaskExecutionDetailResponseBodyMetadata) Validate() error {
 }
 
 type GetScheduledTaskExecutionDetailResponseBodyTriggerInfo struct {
-	// The user identifier that triggered the execution.
+	// The identifier of the user who triggered the execution.
 	//
 	// example:
 	//

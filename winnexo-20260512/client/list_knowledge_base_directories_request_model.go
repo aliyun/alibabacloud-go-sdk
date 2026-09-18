@@ -28,23 +28,23 @@ type ListKnowledgeBaseDirectoriesRequest struct {
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
 	// The field by which the results are sorted. Valid values:
 	//
-	// - event_time: event creation time
+	// - event_time: the event creation time.
 	//
-	// - event_execute_start_time: event execution time
+	// - event_execute_start_time: the event execution time.
 	//
-	// - event_execute_finish_time: event completion time
+	// - event_execute_finish_time: the event completion time.
 	//
 	// example:
 	//
 	// name
 	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
-	// The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
+	// The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC (case-insensitive).
 	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The tenant ID. This is a common parameter. You can pass it explicitly by using --tenant-id in winnexo-cli.
+	// The tenant ID. This is a common parameter. You can pass this parameter explicitly by using --tenant-id in winnexo-cli.
 	//
 	// example:
 	//

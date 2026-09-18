@@ -102,7 +102,7 @@ type GetSourceResponseBody struct {
 	//
 	// true
 	HasNotes *bool `json:"hasNotes,omitempty" xml:"hasNotes,omitempty"`
-	// Indicates whether settings configuration exists.
+	// Indicates whether settings configurations exist.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetSourceResponseBody struct {
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
 	// The object bindings.
 	ObjectBindings []*GetSourceResponseBodyObjectBindings `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// The associated variable ID.
+	// The ID of the associated variable.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetSourceResponseBody struct {
 	//
 	// string_value
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// The digital employee name (operating object name, optional).
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
@@ -170,9 +170,9 @@ type GetSourceResponseBody struct {
 	//
 	// PERSONAL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The user profile settings.
+	// The user card information settings.
 	Settings map[string]interface{} `json:"settings,omitempty" xml:"settings,omitempty"`
-	// The skill output ID (carried when the output is saved as a resource).
+	// The skill output ID. This ID is included when the output is saved as a resource.
 	//
 	// example:
 	//
@@ -188,13 +188,13 @@ type GetSourceResponseBody struct {
 	//
 	// - aliding_kb_doc: DingTalk knowledge base document.
 	//
-	// - normal: common knowledge.
+	// - normal: standard knowledge.
 	//
 	// example:
 	//
 	// string_value
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// The resource tags (optional, a JSON string list such as ["tagA","tagB"]).
+	// The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type GetSourceResponseBody struct {
 	//
 	// string_value
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The final status of the message.
+	// The final message status.
 	//
 	// example:
 	//
@@ -496,13 +496,13 @@ func (s *GetSourceResponseBody) Validate() error {
 }
 
 type GetSourceResponseBodyObjectBindings struct {
-	// The semantic graph name to which the object belongs.
+	// The name of the semantic graph to which the object belongs.
 	//
 	// example:
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// The ID of the recommended item, which can be a **feedId*	- or a micro-application ID.
+	// The ID of the recommended item. The value can be a **feedId*	- or a mini-app ID.
 	//
 	// example:
 	//
@@ -568,7 +568,7 @@ type GetSourceResponseBodyUnstructuredDocs struct {
 	//
 	// example.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The file record ID (optional, corresponding to settings.file_record_id).
+	// The file record ID (optional). This value corresponds to settings.file_record_id.
 	//
 	// example:
 	//
@@ -584,7 +584,7 @@ type GetSourceResponseBodyUnstructuredDocs struct {
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// The session analysis result in OSS URL format. The URL expires in one hour.
+	// The session analysis result in OSS URL format. The URL expires after one hour.
 	//
 	// example:
 	//

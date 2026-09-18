@@ -62,7 +62,7 @@ type ListOutputFilesRequest struct {
 	//
 	// False
 	SharedOnly *bool `json:"sharedOnly,omitempty" xml:"sharedOnly,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly by using --tenant-id.
 	//
 	// example:
 	//

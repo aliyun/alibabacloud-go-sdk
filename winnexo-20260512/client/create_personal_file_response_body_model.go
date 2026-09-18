@@ -36,7 +36,7 @@ type CreatePersonalFileResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The directory ID.
+	// The folder ID.
 	//
 	// example:
 	//

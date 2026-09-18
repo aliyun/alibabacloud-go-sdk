@@ -58,7 +58,7 @@ type ListOutputFilesResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of outputs that match the specified conditions.
+	// The total number of outputs that meet the specified conditions.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListOutputFilesResponseBody) Validate() error {
 }
 
 type ListOutputFilesResponseBodyItems struct {
-	// The conversation ID.
+	// The session ID.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListOutputFilesResponseBodyItems struct {
 	OutputId *string `json:"outputId,omitempty" xml:"outputId,omitempty"`
 	// The output detail list.
 	OutputItems []*ListOutputFilesResponseBodyItemsOutputItems `json:"outputItems,omitempty" xml:"outputItems,omitempty" type:"Repeated"`
-	// The output type: `conversation/skill/task`.
+	// The output type. Valid values: `conversation/skill/task`.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type ListOutputFilesResponseBodyItems struct {
 	//
 	// exampleSkillOutputId
 	SkillOutputId *string `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
-	// The task ID.
+	// The node ID.
 	//
 	// example:
 	//
@@ -342,9 +342,9 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// 2023-10-01T12:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The email information. This field is present when the output type is email.
+	// The email information. This field is present only when the output type is email.
 	EmailInfo *ListOutputFilesResponseBodyItemsOutputItemsEmailInfo `json:"emailInfo,omitempty" xml:"emailInfo,omitempty" type:"Struct"`
-	// The file information. This field is present when the output type is file.
+	// The file information. This field is present only when the output type is file.
 	FileInfo *ListOutputFilesResponseBodyItemsOutputItemsFileInfo `json:"fileInfo,omitempty" xml:"fileInfo,omitempty" type:"Struct"`
 	// The database creation time in ISO 8601 format.
 	//
@@ -394,7 +394,7 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// true
 	ShareEnabled *bool `json:"shareEnabled,omitempty" xml:"shareEnabled,omitempty"`
-	// The share token that is present when sharing is enabled. You can use this token to access the public share preview API.
+	// The share token. This field is present only when sharing is enabled. You can use this token to access the public share preview endpoint.
 	//
 	// example:
 	//
@@ -406,7 +406,7 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// exampleSkillOutputId
 	SkillOutputId *string `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
-	// The slides information. This field is present when the output type is slides.
+	// The slides information. This field is present only when the output type is slides.
 	SlidesInfo *ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo `json:"slidesInfo,omitempty" xml:"slidesInfo,omitempty" type:"Struct"`
 	// The task execution ID.
 	//
@@ -585,7 +585,7 @@ type ListOutputFilesResponseBodyItemsOutputItemsEmailInfo struct {
 	//
 	// string_value
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The content type, such as MARKDOWN/JSONML/HTML.
+	// The content type, such as MARKDOWN, JSONML, or HTML.
 	//
 	// example:
 	//

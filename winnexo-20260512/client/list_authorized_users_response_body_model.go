@@ -134,7 +134,7 @@ func (s *ListAuthorizedUsersResponseBody) Validate() error {
 }
 
 type ListAuthorizedUsersResponseBodyItems struct {
-	// The authorization expiration timestamp in milliseconds. If not specified, the authorization never expires.
+	// The authorization expiration timestamp in milliseconds. If this parameter is not specified, the authorization never expires.
 	//
 	// example:
 	//
@@ -146,25 +146,29 @@ type ListAuthorizedUsersResponseBodyItems struct {
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last update time.
+	// The last modification time.
 	//
 	// example:
 	//
 	// string_value
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The user ID of the person who granted the authorization.
+	// The user ID of the grantor.
 	//
 	// example:
 	//
 	// 1
 	GrantedBy *int64 `json:"grantedBy,omitempty" xml:"grantedBy,omitempty"`
-	// The ID of the authorized object.
+	// The ID of the grantee.
 	//
 	// example:
 	//
 	// exampleGranteeId
 	GranteeId *string `json:"granteeId,omitempty" xml:"granteeId,omitempty"`
-	// The authorization object type. Valid values: USER, USER_GROUP.
+	// The object type of the authorization target. Valid values:
+	//
+	// - USER
+	//
+	// - USER_GROUP
 	//
 	// example:
 	//
@@ -184,15 +188,15 @@ type ListAuthorizedUsersResponseBodyItems struct {
 	MemberCount *int64 `json:"memberCount,omitempty" xml:"memberCount,omitempty"`
 	// The permission member type. Valid values:
 	//
-	// - **ORG**: Enterprise.
+	// - **ORG**: enterprise.
 	//
-	// - **DEPT**: Department.
+	// - **DEPT**: department.
 	//
-	// - **TAG**: Custom tag.
+	// - **TAG**: custom tag.
 	//
-	// - **CONVERSATION**: Conversation.
+	// - **CONVERSATION**: conversation.
 	//
-	// - **USER**: User.
+	// - **USER**: user.
 	//
 	// example:
 	//
@@ -204,7 +208,7 @@ type ListAuthorizedUsersResponseBodyItems struct {
 	//
 	// exampleUserGroupId
 	UserGroupId *string `json:"userGroupId,omitempty" xml:"userGroupId,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//

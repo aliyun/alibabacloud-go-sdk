@@ -206,31 +206,31 @@ func (s *ListScheduledTasksResponseBody) Validate() error {
 }
 
 type ListScheduledTasksResponseBodyItems struct {
-	// The reason for the exception. This field has a value only when status is abnormal.
+	// The reason for the exception. This parameter has a value only when status is abnormal.
 	//
 	// example:
 	//
 	// string_value
 	AbnormalReason *string `json:"abnormalReason,omitempty" xml:"abnormalReason,omitempty"`
-	// Indicates whether the current caller can delete the task (only the task creator and group owner can do so). Always returns true for personal tasks.
+	// Indicates whether the current caller can delete the task. Only the task creator and group owner can delete the task. For personal tasks, this value is always true.
 	//
 	// example:
 	//
 	// true
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// Indicates whether the task can be edited or deleted.
+	// Indicates whether the course can be edited or deleted.
 	//
 	// example:
 	//
 	// true
 	CanEdit *bool `json:"canEdit,omitempty" xml:"canEdit,omitempty"`
-	// Indicates whether the current caller can immediately execute the task (anyone with visibility can operate. Returns false for abnormal tasks). Always returns true for personal tasks.
+	// Indicates whether the current caller can immediately execute the task. A task is executable if it is visible to the caller, except for abnormal tasks which return false. For personal tasks, this value is always true.
 	//
 	// example:
 	//
 	// true
 	CanExecute *bool `json:"canExecute,omitempty" xml:"canExecute,omitempty"`
-	// Indicates whether the current caller can start or stop the task (only the task creator and group owner can do so. Returns false for abnormal tasks). Always returns true for personal tasks.
+	// Indicates whether the current caller can start or stop the task. Only the task creator and group owner can toggle the task. Abnormal tasks return false. For personal tasks, this value is always true.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// SampleDescription
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of digital employee names.
 	//
@@ -272,7 +272,7 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// The total number of executions.
+	// The cumulative number of executions.
 	//
 	// example:
 	//
@@ -320,7 +320,7 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The trigger type.
+	// The type of the trigger.
 	//
 	// example:
 	//
@@ -334,13 +334,13 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// - PUBLIC: visible to all group members.
 	//
-	// For group tasks, the default value is PRIVATE if not specified. This field is ignored for personal tasks.
+	// If not specified for a group task, the default value is PRIVATE. This parameter is ignored for personal tasks.
 	//
 	// example:
 	//
 	// PRIVATE
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// The list of collaborators (excluding the task creator and group creator, who are covered by the authentication layer). This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility.
+	// The list of collaborator members, excluding the task creator and group creator whose access is governed by the authentication layer. This parameter is returned only for group tasks. An empty list is returned for PRIVATE and PUBLIC visibility.
 	//
 	// example:
 	//

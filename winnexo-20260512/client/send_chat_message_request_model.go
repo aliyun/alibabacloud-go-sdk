@@ -33,6 +33,8 @@ type iSendChatMessageRequest interface {
 	GetTaskExecution() *SendChatMessageRequestTaskExecution
 	SetTenantId(v string) *SendChatMessageRequest
 	GetTenantId() *string
+	SetWorkMode(v string) *SendChatMessageRequest
+	GetWorkMode() *string
 }
 
 type SendChatMessageRequest struct {
@@ -56,13 +58,13 @@ type SendChatMessageRequest struct {
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// Specifies whether to enable direct connection mode. If set to true, the regular scenario routing is skipped and the direct conversation scenario is entered.
+	// Specifies whether to enable direct connection mode. If set to true, the standard scenario routing is skipped and the direct conversation scenario is entered directly.
 	//
 	// example:
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
-	// Specifies whether to enable web search. Default value: False. In task execution scenarios (when taskExecution is passed), the task configuration takes precedence.
+	// Specifies whether to enable web search. Default value: False. In task execution scenarios (when taskExecution is provided), the task configuration takes precedence.
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type SendChatMessageRequest struct {
 	//
 	// quick
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// Specifies whether to reuse the most recent session of the digital employee when sessionId is not passed (CLI scenario). Default value: false, which creates a new session.
+	// Specifies whether to reuse the most recent session of the digital employee when sessionId is not provided (CLI scenario). Default value: false, which creates a new session.
 	//
 	// example:
 	//
@@ -102,6 +104,20 @@ type SendChatMessageRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The session work mode. Valid values:
+	//
+	// - ask: Quick Q&A. Tools, skills, and connectors are trimmed, and single-turn direct answers are provided.
+	//
+	// - work: Deep work. This is the default value.
+	//
+	// - direct: Direct connection mode (request-level). The sandbox is not started and no context pollution occurs. This is equivalent to directChat=true.
+	//
+	// The ask and work modes are session-level: the mode is selected and fixed when a session is created. By default, follow-up messages inherit the session mode. If an explicitly provided value is inconsistent with the session mode, a parameter error is returned. To switch modes, create a new session or fork the existing one. In multi-digital-employee or task execution scenarios, if ask is provided, work takes effect instead. When directChat=true, this parameter is ignored.
+	//
+	// example:
+	//
+	// work
+	WorkMode *string `json:"workMode,omitempty" xml:"workMode,omitempty"`
 }
 
 func (s SendChatMessageRequest) String() string {
@@ -158,6 +174,10 @@ func (s *SendChatMessageRequest) GetTaskExecution() *SendChatMessageRequestTaskE
 
 func (s *SendChatMessageRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *SendChatMessageRequest) GetWorkMode() *string {
+	return s.WorkMode
 }
 
 func (s *SendChatMessageRequest) SetContent(v string) *SendChatMessageRequest {
@@ -217,6 +237,11 @@ func (s *SendChatMessageRequest) SetTaskExecution(v *SendChatMessageRequestTaskE
 
 func (s *SendChatMessageRequest) SetTenantId(v string) *SendChatMessageRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *SendChatMessageRequest) SetWorkMode(v string) *SendChatMessageRequest {
+	s.WorkMode = &v
 	return s
 }
 

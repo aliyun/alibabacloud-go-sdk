@@ -26,43 +26,43 @@ type iUpdateGraphInfoResponseBody interface {
 }
 
 type UpdateGraphInfoResponseBody struct {
-	// 更新后的业务说明，未设置时为空
+	// The business description of the knowledge graph. If not configured, the value is an empty string.
 	//
 	// example:
 	//
-	// 客户域语义图谱
+	// Customer domain knowledge graph
 	BusinessProfile *string `json:"businessProfile,omitempty" xml:"businessProfile,omitempty"`
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// SUCCESS indicates success. In failure cases, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 更新后的图谱展示名，未设置时为空
+	// The display name of the knowledge graph.
 	//
 	// example:
 	//
-	// CRM 图谱
+	// CRM Graph
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 图谱名称
+	// The name of the knowledge graph.
 	//
 	// example:
 	//
 	// crm_graph
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 是否更新成功
+	// The updated items.
 	//
 	// example:
 	//

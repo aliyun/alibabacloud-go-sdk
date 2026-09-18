@@ -21,6 +21,8 @@ type iSendChatMessageResponseBody interface {
 	GetRequestId() *string
 	SetType(v string) *SendChatMessageResponseBody
 	GetType() *string
+	SetWorkMode(v string) *SendChatMessageResponseBody
+	GetWorkMode() *string
 }
 
 type SendChatMessageResponseBody struct {
@@ -66,6 +68,20 @@ type SendChatMessageResponseBody struct {
 	//
 	// think
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The session work mode that takes effect for the current turn. Valid values:
+	//
+	// - ask: Quick Q&A.
+	//
+	// - work: Deep work.
+	//
+	// - direct: Direct connection (request-level).
+	//
+	// In multi-digital-employee or task execution scenarios, if ask is provided, work takes effect instead.
+	//
+	// example:
+	//
+	// work
+	WorkMode *string `json:"workMode,omitempty" xml:"workMode,omitempty"`
 }
 
 func (s SendChatMessageResponseBody) String() string {
@@ -100,6 +116,10 @@ func (s *SendChatMessageResponseBody) GetType() *string {
 	return s.Type
 }
 
+func (s *SendChatMessageResponseBody) GetWorkMode() *string {
+	return s.WorkMode
+}
+
 func (s *SendChatMessageResponseBody) SetCode(v string) *SendChatMessageResponseBody {
 	s.Code = &v
 	return s
@@ -127,6 +147,11 @@ func (s *SendChatMessageResponseBody) SetRequestId(v string) *SendChatMessageRes
 
 func (s *SendChatMessageResponseBody) SetType(v string) *SendChatMessageResponseBody {
 	s.Type = &v
+	return s
+}
+
+func (s *SendChatMessageResponseBody) SetWorkMode(v string) *SendChatMessageResponseBody {
+	s.WorkMode = &v
 	return s
 }
 

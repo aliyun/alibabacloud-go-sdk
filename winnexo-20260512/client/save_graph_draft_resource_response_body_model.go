@@ -34,67 +34,67 @@ type iSaveGraphDraftResourceResponseBody interface {
 }
 
 type SaveGraphDraftResourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- / InvalidParameter.*).
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 草稿变更 ID；内容与在线完全一致被跳过时为 null
+	// The draft change ID (the draftChangeId returned by listGraphDraftResources).
 	//
 	// example:
 	//
 	// 401001
 	DraftChangeId *int64 `json:"draftChangeId,omitempty" xml:"draftChangeId,omitempty"`
-	// 草稿内容哈希；被跳过时为 null
+	// The online content hash on which the draft save is based (draft starting point), a 64-character SHA-256 hexadecimal string.
 	//
 	// example:
 	//
 	// sha256:abc123
 	DraftContentHash *string `json:"draftContentHash,omitempty" xml:"draftContentHash,omitempty"`
-	// 资源小类：resourceType=object 时固定 object_type；resourceType=element 时为 indicator / logic / process / rule / analysis 之一
+	// The element type. Currently, only text is supported.
 	//
 	// example:
 	//
 	// object_type
 	ElementType *string `json:"elementType,omitempty" xml:"elementType,omitempty"`
-	// 最后修改时间（ISO8601）；被跳过时为 null
+	// The last modified time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-09-08T10:30:00+00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 图谱名称
+	// The graph name.
 	//
 	// example:
 	//
 	// crm_graph
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
 	//
 	// example:
 	//
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 操作类型：CREATE / UPDATE（由底层判定）；被跳过时为 null
+	// The operation type.
 	//
 	// example:
 	//
 	// UPDATE
 	OperationType *string `json:"operationType,omitempty" xml:"operationType,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源名
+	// The resource name.
 	//
 	// example:
 	//
 	// customer
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// 资源大类：object（对象）/ element（业务元素）
+	// The resource type.
 	//
 	// example:
 	//

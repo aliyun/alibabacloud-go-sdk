@@ -36,13 +36,13 @@ type ListChatSessionsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Indicates whether there is a next page.
+	// Indicates whether more pages are available.
 	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//

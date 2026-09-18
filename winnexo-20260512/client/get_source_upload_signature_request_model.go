@@ -15,6 +15,8 @@ type iGetSourceUploadSignatureRequest interface {
 	GetExpires() *int64
 	SetFilename(v string) *GetSourceUploadSignatureRequest
 	GetFilename() *string
+	SetGroupId(v string) *GetSourceUploadSignatureRequest
+	GetGroupId() *string
 	SetOperatingObjectName(v string) *GetSourceUploadSignatureRequest
 	GetOperatingObjectName() *string
 	SetScope(v string) *GetSourceUploadSignatureRequest
@@ -24,7 +26,11 @@ type iGetSourceUploadSignatureRequest interface {
 }
 
 type GetSourceUploadSignatureRequest struct {
-	// The content type. Valid values: Text and Markdown.
+	// The content type. Valid values:
+	//
+	// - Text
+	//
+	// - Markdown
 	//
 	// example:
 	//
@@ -44,7 +50,13 @@ type GetSourceUploadSignatureRequest struct {
 	//
 	// example.pdf
 	Filename *string `json:"filename,omitempty" xml:"filename,omitempty"`
-	// The name of the digital employee (operating object name). This parameter is optional.
+	// The collaboration space ID passed from the frontend. This parameter is required when scope is set to group. The value must be a space accessible to the current user and is used in the OSS path for locating. The value must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). This parameter is not used for other scope values.
+	//
+	// example:
+	//
+	// group_example
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
@@ -84,6 +96,10 @@ func (s *GetSourceUploadSignatureRequest) GetFilename() *string {
 	return s.Filename
 }
 
+func (s *GetSourceUploadSignatureRequest) GetGroupId() *string {
+	return s.GroupId
+}
+
 func (s *GetSourceUploadSignatureRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
@@ -108,6 +124,11 @@ func (s *GetSourceUploadSignatureRequest) SetExpires(v int64) *GetSourceUploadSi
 
 func (s *GetSourceUploadSignatureRequest) SetFilename(v string) *GetSourceUploadSignatureRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *GetSourceUploadSignatureRequest) SetGroupId(v string) *GetSourceUploadSignatureRequest {
+	s.GroupId = &v
 	return s
 }
 

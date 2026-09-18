@@ -38,7 +38,7 @@ type SaveOutputFileToResourceShrinkRequest struct {
 	//
 	// - link: Links the resource to the output in a 1:1 idempotent manner. Edits to the output are synchronized to the resource.
 	//
-	// - copy: Creates a snapshot copy with no limit on the number of copies.
+	// - copy: Creates a snapshot copy. No limit on the number of copies.
 	//
 	// example:
 	//

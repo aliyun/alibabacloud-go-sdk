@@ -30,7 +30,7 @@ type ListAuthorizedAgentsRequest struct {
 	//
 	// 1
 	TargetUserId *int64 `json:"targetUserId,omitempty" xml:"targetUserId,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListRolesRequest interface {
 }
 
 type ListRolesRequest struct {
-	// The tenant ID. This is a common parameter. You can pass it explicitly by using --tenant-id in winnexo-cli.
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
 	//
 	// example:
 	//

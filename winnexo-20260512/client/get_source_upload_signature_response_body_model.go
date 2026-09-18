@@ -40,7 +40,11 @@ type GetSourceUploadSignatureResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The content type. Valid values: Text and Markdown.
+	// The content type. Valid values:
+	//
+	// - Text
+	//
+	// - Markdown
 	//
 	// example:
 	//
@@ -58,7 +62,7 @@ type GetSourceUploadSignatureResponseBody struct {
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// The file record ID. This parameter is optional and corresponds to settings.file_record_id.
+	// The file record ID (optional, corresponding to settings.file_record_id).
 	//
 	// example:
 	//

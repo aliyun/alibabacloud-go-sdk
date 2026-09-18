@@ -30,13 +30,13 @@ type GetScheduledTaskPushOptionsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The prompt displayed when no third-party accounts are bound.
+	// The hint displayed when no third-party accounts are bound.
 	//
 	// example:
 	//
-	// No push channels available
+	// No push channels are available
 	EmptyHint *string `json:"emptyHint,omitempty" xml:"emptyHint,omitempty"`
-	// The prompt message.
+	// The response message.
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type GetScheduledTaskPushOptionsResponseBodyChannelsImGroups struct {
 	//
 	// example:
 	//
-	// Project collaboration group
+	// Project Collaboration Group
 	ImGroupName *string `json:"imGroupName,omitempty" xml:"imGroupName,omitempty"`
 	// The binding record ID of the IM group.
 	//
@@ -284,7 +284,7 @@ type GetScheduledTaskPushOptionsResponseBodyChannelsMethods struct {
 	//
 	// No push channel is bound
 	DisabledReason *string `json:"disabledReason,omitempty" xml:"disabledReason,omitempty"`
-	// The feature switch. This parameter is optional when type is set to web_search.
+	// Specifies whether the feature is enabled. This parameter is optional when type is set to web_search.
 	//
 	// This parameter is required.
 	//
@@ -306,7 +306,7 @@ type GetScheduledTaskPushOptionsResponseBodyChannelsMethods struct {
 	//
 	// example:
 	//
-	// Group chatbot
+	// Group Chatbot
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

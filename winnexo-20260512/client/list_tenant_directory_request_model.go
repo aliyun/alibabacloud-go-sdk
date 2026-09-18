@@ -56,7 +56,7 @@ type ListTenantDirectoryRequest struct {
 	//
 	// name
 	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
-	// The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
+	// The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC (case-insensitive).
 	//
 	// example:
 	//

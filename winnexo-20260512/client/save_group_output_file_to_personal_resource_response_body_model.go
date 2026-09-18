@@ -26,7 +26,7 @@ type SaveGroupOutputFileToPersonalResourceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type SaveGroupOutputFileToPersonalResourceResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result list.
+	// The list of results.
 	Results []*SaveGroupOutputFileToPersonalResourceResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -100,13 +100,13 @@ func (s *SaveGroupOutputFileToPersonalResourceResponseBody) Validate() error {
 }
 
 type SaveGroupOutputFileToPersonalResourceResponseBodyResults struct {
-	// The business error code (i18n key), returned on failure.
+	// The business error code (i18n key) returned upon failure.
 	//
 	// example:
 	//
 	// ERR.Robject.UserOutput.ItemNotFound
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error description (internationalized based on the request locale), returned on failure.
+	// The error description returned upon failure. The description is internationalized based on the request locale.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type SaveGroupOutputFileToPersonalResourceResponseBodyResults struct {
 	//
 	// item-1
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// The sourceId of the newly created resource, returned on success.
+	// The sourceId of the newly created resource, returned upon success.
 	//
 	// example:
 	//

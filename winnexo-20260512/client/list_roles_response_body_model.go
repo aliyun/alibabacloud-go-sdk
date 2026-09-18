@@ -26,7 +26,7 @@ type ListRolesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The MCP card list.
+	// The list of MCP cards.
 	Items []*ListRolesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The prompt message.
 	//
@@ -118,7 +118,7 @@ type ListRolesResponseBodyItems struct {
 	//
 	// string_value
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	// Indicates whether the enable/disable operation is allowed. Super administrators and application users cannot be switched.
+	// Indicates whether the enable/disable operation is allowed. Super administrators and application users cannot be toggled.
 	//
 	// example:
 	//

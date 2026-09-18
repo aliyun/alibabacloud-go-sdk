@@ -36,7 +36,7 @@ type CreatePersonalTextResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreatePersonalTextResponseBody struct {
 	//
 	// 04EE99E6-A0D9-5B04-81D1-7BEC0CB0AFDF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The travel scale of the integration partner.
+	// The travel scale of the partner.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type CreatePersonalTextResponseBody struct {
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 	// The filter status.
 	//
-	// - 0: All
+	// - 0: All.
 	//
-	// - 1: Unconfirmed
+	// - 1: Unconfirmed.
 	//
-	// - 3: Ignored
+	// - 3: Ignored.
 	//
-	// - 4: Rejected
+	// - 4: Rejected.
 	//
 	// example:
 	//

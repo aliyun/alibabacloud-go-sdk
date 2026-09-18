@@ -32,7 +32,7 @@ type GetSourceRequest struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The tenant ID to which the task belongs.
+	// The ID of the tenant to which the task belongs.
 	//
 	// example:
 	//

@@ -33,6 +33,8 @@ type iSendAsyncChatMessageRequest interface {
 	GetTaskExecution() *SendAsyncChatMessageRequestTaskExecution
 	SetTenantId(v string) *SendAsyncChatMessageRequest
 	GetTenantId() *string
+	SetWorkMode(v string) *SendAsyncChatMessageRequest
+	GetWorkMode() *string
 }
 
 type SendAsyncChatMessageRequest struct {
@@ -50,19 +52,19 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// Text
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The list of digital employee names. A single string can be passed for backward compatibility with the legacy format.
+	// The list of digital employee names. A single string is also accepted for backward compatibility with the legacy format.
 	//
 	// example:
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// Specifies whether to enable direct chat mode. If set to true, the regular scenario routing is skipped and the direct chat scenario is entered.
+	// Specifies whether to enable direct connection mode. If set to true, the regular scenario routing is skipped and the direct conversation scenario is entered.
 	//
 	// example:
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
-	// 是否启用联网搜索，默认 False；任务执行场景（传 taskExecution）下以任务配置为准
+	// Specifies whether to enable web search. Default value: False. In task execution scenarios where taskExecution is specified, the task configuration takes precedence.
 	//
 	// example:
 	//
@@ -88,13 +90,13 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// Specifies whether to use streaming generation. This operation always generates backend content in streaming mode and writes it to the message stream. The value does not change the response structure.
+	// Specifies whether to use streaming generation. This operation always generates backend content in streaming mode and writes it to the message stream. The value of this parameter does not change the response structure.
 	//
 	// example:
 	//
 	// true
 	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
-	// The task execution metadata returned by executeScheduledTask. When provided, the request is processed through the task execution pipeline.
+	// The task execution metadata returned by executeScheduledTask. If specified, the request is processed through the task execution pipeline.
 	TaskExecution *SendAsyncChatMessageRequestTaskExecution `json:"taskExecution,omitempty" xml:"taskExecution,omitempty" type:"Struct"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
@@ -102,6 +104,20 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The session work mode. Valid values:
+	//
+	// - ask: Quick Q&A. Tools, skills, and connectors are trimmed, and a single-turn direct answer is returned.
+	//
+	// - work: Deep work. This is the default value.
+	//
+	// - direct: Direct connection mode at the request level. No sandbox is started and no context pollution occurs. This is equivalent to setting directChat to true.
+	//
+	// The ask and work modes are session-level settings. The mode is fixed when a session is created. By default, follow-up messages in the same session inherit the session mode. If an explicit value conflicts with the session mode, a parameter error is returned. To switch modes, create a new session or fork the existing one. In multi-digital-employee or task execution scenarios, specifying ask causes the work mode to take effect. If directChat is set to true, this parameter is ignored.
+	//
+	// example:
+	//
+	// work
+	WorkMode *string `json:"workMode,omitempty" xml:"workMode,omitempty"`
 }
 
 func (s SendAsyncChatMessageRequest) String() string {
@@ -158,6 +174,10 @@ func (s *SendAsyncChatMessageRequest) GetTaskExecution() *SendAsyncChatMessageRe
 
 func (s *SendAsyncChatMessageRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *SendAsyncChatMessageRequest) GetWorkMode() *string {
+	return s.WorkMode
 }
 
 func (s *SendAsyncChatMessageRequest) SetContent(v string) *SendAsyncChatMessageRequest {
@@ -217,6 +237,11 @@ func (s *SendAsyncChatMessageRequest) SetTaskExecution(v *SendAsyncChatMessageRe
 
 func (s *SendAsyncChatMessageRequest) SetTenantId(v string) *SendAsyncChatMessageRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetWorkMode(v string) *SendAsyncChatMessageRequest {
+	s.WorkMode = &v
 	return s
 }
 

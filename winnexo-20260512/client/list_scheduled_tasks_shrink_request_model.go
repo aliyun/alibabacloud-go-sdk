@@ -36,13 +36,13 @@ type ListScheduledTasksShrinkRequest struct {
 	//
 	// exampleCollaborationGroupId
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// Specifies whether to return only tasks created by the caller. This parameter takes effect only in the group dimension (in the personal dimension, only the caller\\"s own tasks are returned). If not specified, no filtering is applied.
+	// Specifies whether to return only tasks created by the caller. This parameter takes effect only in the group dimension. In the personal dimension, only the caller\\"s own tasks are always returned. If not specified, no filtering is applied.
 	//
 	// example:
 	//
 	// true
 	CreatorOnly *bool `json:"creatorOnly,omitempty" xml:"creatorOnly,omitempty"`
-	// The keyword of the rule name for fuzzy match.
+	// The keyword of the rule name, used for fuzzy match.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListScheduledTasksShrinkRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The tenant ID that takes effect.
+	// The ID of the effective tenant.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iListGraphSchemasShrinkRequest interface {
 }
 
 type ListGraphSchemasShrinkRequest struct {
-	// 关键词，匹配 graphName / displayName（可选，忽略大小写）
+	// The keyword for fuzzy match of component data in the form.
 	//
 	// example:
 	//
 	// crm
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 语义标签过滤（可选，命中任一标签即保留）
+	// The semantic tags used for filtering. A graph is retained if any tag matches.
 	//
 	// example:
 	//
-	// ["销售"]
+	// ["Sales"]
 	SemanticTagsShrink *string `json:"semanticTags,omitempty" xml:"semanticTags,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
