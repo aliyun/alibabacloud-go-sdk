@@ -20,18 +20,25 @@ type iModifySupabaseAutoScalePolicyRequest interface {
 }
 
 type ModifySupabaseAutoScalePolicyRequest struct {
-	// Specifies whether to enable **automatic start and stop**. Valid values:
+	// Specifies whether to enable **auto start/stop**.
+	//
+	// Valid values:
 	//
 	// - true: Enabled. After this feature is enabled, Supabase automatically pauses and resumes based on traffic conditions.
 	//
-	// - false: Disabled. After this feature is disabled, the automatic start and stop feature of Supabase is turned off.
+	// - false: Disabled. After this feature is disabled, the auto start/stop feature of Supabase is turned off.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
-	AutoScale     *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	// The idle time before auto stop, in hours.
+	//
+	// example:
+	//
+	// 0.5
 	IdleTimeHours *string `json:"IdleTimeHours,omitempty" xml:"IdleTimeHours,omitempty"`
 	// The ID of the Supabase project. You can obtain the workspace ID from the Supabase page in the console.
 	//

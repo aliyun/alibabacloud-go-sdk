@@ -11,6 +11,8 @@ type iUpgradeDBVersionRequest interface {
 	GoString() string
 	SetDBInstanceId(v string) *UpgradeDBVersionRequest
 	GetDBInstanceId() *string
+	SetEffectiveTime(v string) *UpgradeDBVersionRequest
+	GetEffectiveTime() *string
 	SetMajorVersion(v string) *UpgradeDBVersionRequest
 	GetMajorVersion() *string
 	SetMinorVersion(v string) *UpgradeDBVersionRequest
@@ -26,7 +28,9 @@ type iUpgradeDBVersionRequest interface {
 }
 
 type UpgradeDBVersionRequest struct {
-	// The ID of the instance.
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,32 +38,44 @@ type UpgradeDBVersionRequest struct {
 	//
 	// gp-wz9kmr708m155j***
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// This parameter is no longer used and does not need to be specified.
+	// The effective period. Valid values:
+	//
+	// 	- **Immediate*	- (default): The upgrade takes effect immediately.
+	//
+	// 	- **MaintainTime**: The upgrade takes effect during the O&M window. For more information, see ModifyDBInstanceMaintainTime.
+	//
+	// example:
+	//
+	// Immediate
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// null
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	// The minor version of the instance.
+	// The minor version.
 	//
 	// example:
 	//
 	// 6.3.6.1-202112012048
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is no longer used and does not need to be specified.
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// null
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// This parameter is no longer used and does not need to be specified.
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -77,6 +93,10 @@ func (s UpgradeDBVersionRequest) GoString() string {
 
 func (s *UpgradeDBVersionRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *UpgradeDBVersionRequest) GetEffectiveTime() *string {
+	return s.EffectiveTime
 }
 
 func (s *UpgradeDBVersionRequest) GetMajorVersion() *string {
@@ -105,6 +125,11 @@ func (s *UpgradeDBVersionRequest) GetSwitchTimeMode() *string {
 
 func (s *UpgradeDBVersionRequest) SetDBInstanceId(v string) *UpgradeDBVersionRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpgradeDBVersionRequest) SetEffectiveTime(v string) *UpgradeDBVersionRequest {
+	s.EffectiveTime = &v
 	return s
 }
 

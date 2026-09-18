@@ -20264,13 +20264,13 @@ func (client *Client) ModifyJDBCDataSource(request *ModifyJDBCDataSourceRequest)
 
 // Summary:
 //
-// Changes the specifications of coordinator node resources for an AnalyticDB for PostgreSQL instance.
+// Modifies the master node specifications.
 //
 // Description:
 //
-// This operation is not available for instances in reserved storage mode.
+// This operation does not support instances in storage reservation mode.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - ModifyMasterSpecRequest
 //
@@ -20291,6 +20291,10 @@ func (client *Client) ModifyMasterSpecWithOptions(request *ModifyMasterSpecReque
 
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		query["EffectiveTime"] = request.EffectiveTime
 	}
 
 	if !dara.IsNil(request.MasterAISpec) {
@@ -20330,13 +20334,13 @@ func (client *Client) ModifyMasterSpecWithOptions(request *ModifyMasterSpecReque
 
 // Summary:
 //
-// Changes the specifications of coordinator node resources for an AnalyticDB for PostgreSQL instance.
+// Modifies the master node specifications.
 //
 // Description:
 //
-// This operation is not available for instances in reserved storage mode.
+// This operation does not support instances in storage reservation mode.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - ModifyMasterSpecRequest
 //
@@ -21088,11 +21092,11 @@ func (client *Client) ModifyStreamingJob(request *ModifyStreamingJobRequest) (_r
 
 // Summary:
 //
-// Modifies the automatic start and stop policy for a Supabase instance.
+// Modifies the auto start/stop policy for a Supabase instance.
 //
 // Description:
 //
-// - Only ADBPG Supabase instances are supported.
+// - Only AnalyticDB for PostgreSQL Supabase instances are supported.
 //
 // @param request - ModifySupabaseAutoScalePolicyRequest
 //
@@ -21148,11 +21152,11 @@ func (client *Client) ModifySupabaseAutoScalePolicyWithOptions(request *ModifySu
 
 // Summary:
 //
-// Modifies the automatic start and stop policy for a Supabase instance.
+// Modifies the auto start/stop policy for a Supabase instance.
 //
 // Description:
 //
-// - Only ADBPG Supabase instances are supported.
+// - Only AnalyticDB for PostgreSQL Supabase instances are supported.
 //
 // @param request - ModifySupabaseAutoScalePolicyRequest
 //
@@ -25000,6 +25004,10 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !dara.IsNil(request.EffectiveTime) {
+		query["EffectiveTime"] = request.EffectiveTime
+	}
+
 	if !dara.IsNil(request.InstanceSpec) {
 		query["InstanceSpec"] = request.InstanceSpec
 	}
@@ -25097,7 +25105,7 @@ func (client *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (_res
 
 // Summary:
 //
-// Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+// Upgrades the minor engine version of a specified AnalyticDB for PostgreSQL instance.
 //
 // @param request - UpgradeDBVersionRequest
 //
@@ -25114,6 +25122,10 @@ func (client *Client) UpgradeDBVersionWithOptions(request *UpgradeDBVersionReque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		query["EffectiveTime"] = request.EffectiveTime
 	}
 
 	if !dara.IsNil(request.MajorVersion) {
@@ -25165,7 +25177,7 @@ func (client *Client) UpgradeDBVersionWithOptions(request *UpgradeDBVersionReque
 
 // Summary:
 //
-// Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+// Upgrades the minor engine version of a specified AnalyticDB for PostgreSQL instance.
 //
 // @param request - UpgradeDBVersionRequest
 //

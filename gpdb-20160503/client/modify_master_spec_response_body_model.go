@@ -26,9 +26,9 @@ type ModifyMasterSpecResponseBody struct {
 	//
 	// gp-bp12ga6v69h86****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The returned message.
+	// The error message.
 	//
-	// This parameter is returned only if the request fails.
+	// This parameter is returned only when the API call fails.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ModifyMasterSpecResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the operation. Valid values:
 	//
-	// 	- **false**
+	// - **false**: The operation failed.
 	//
-	// 	- **true**
+	// - **true**: The operation succeeded.
 	//
 	// example:
 	//

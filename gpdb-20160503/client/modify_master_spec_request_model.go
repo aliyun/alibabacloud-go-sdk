@@ -13,6 +13,8 @@ type iModifyMasterSpecRequest interface {
 	GetDBInstanceDescription() *string
 	SetDBInstanceId(v string) *ModifyMasterSpecRequest
 	GetDBInstanceId() *string
+	SetEffectiveTime(v string) *ModifyMasterSpecRequest
+	GetEffectiveTime() *string
 	SetMasterAISpec(v string) *ModifyMasterSpecRequest
 	GetMasterAISpec() *string
 	SetMasterCU(v int32) *ModifyMasterSpecRequest
@@ -30,7 +32,7 @@ type ModifyMasterSpecRequest struct {
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a region.
 	//
 	// This parameter is required.
 	//
@@ -38,39 +40,49 @@ type ModifyMasterSpecRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// This parameter must be specified if you want to change coordinator nodes to AI coordinator nodes.
+	// The effective period of the specification change. Valid values:
 	//
-	// >-  You cannot specify the MasterAISpec and MasterCU parameters at the same time.
+	// - **Immediately*	- (default): The change takes effect immediately.
 	//
-	// >- You can change coordinator nodes to AI coordinator nodes only in specific regions and zones.
+	// - **MaintainTime**: The change takes effect during the maintenance window of the instance.
 	//
-	// >- Only AnalyticDB for PostgreSQL V7.0 instances of Basic Edition support AI coordinator nodes.
+	// example:
 	//
-	// >- You can view the valid values of this parameter on the configuration change page of coordinator nodes.
+	// Immediate
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// If you want to change the master node to a MasterAI node, specify this parameter.
+	//
+	// > - This parameter and MasterCU cannot be specified at the same time.
+	//
+	// >- Only specific regions and zones support changing the master node to a MasterAI node.
+	//
+	// >- Only AnalyticDB for PostgreSQL V7.0 Basic Edition instances support MasterAI nodes.
+	//
+	// >- You can view all valid values of this parameter on the specification change page for the master node.
 	//
 	// example:
 	//
 	// ADB.AIMedium.2
 	MasterAISpec *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
-	// The specifications of coordinator node resources. Valid values:
+	// The master resources. Valid values:
 	//
-	// 	- 2 CU
+	// - 2 CU
 	//
-	// 	- 4 CU
+	// - 4 CU
 	//
-	// 	- 8 CU
+	// - 8 CU
 	//
-	// 	- 16 CU
+	// - 16 CU
 	//
-	// 	- 32 CU
+	// - 32 CU
 	//
-	// >  You are charged for coordinator node resources of more than 8 compute units (CUs).
+	// > Master resources greater than 8 CU incur additional fees.
 	//
 	// example:
 	//
 	// 8 CU
 	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The ID of the resource group to which the instance belongs. For information about how to obtain the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -94,6 +106,10 @@ func (s *ModifyMasterSpecRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
+func (s *ModifyMasterSpecRequest) GetEffectiveTime() *string {
+	return s.EffectiveTime
+}
+
 func (s *ModifyMasterSpecRequest) GetMasterAISpec() *string {
 	return s.MasterAISpec
 }
@@ -113,6 +129,11 @@ func (s *ModifyMasterSpecRequest) SetDBInstanceDescription(v string) *ModifyMast
 
 func (s *ModifyMasterSpecRequest) SetDBInstanceId(v string) *ModifyMasterSpecRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyMasterSpecRequest) SetEffectiveTime(v string) *ModifyMasterSpecRequest {
+	s.EffectiveTime = &v
 	return s
 }
 

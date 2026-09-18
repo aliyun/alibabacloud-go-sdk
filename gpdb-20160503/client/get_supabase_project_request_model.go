@@ -16,7 +16,7 @@ type iGetSupabaseProjectRequest interface {
 }
 
 type GetSupabaseProjectRequest struct {
-	// The Supabase instance ID. You can obtain the ID from the Supabase page in the console.
+	// The Supabase instance ID. You can obtain this value from the Supabase page in the console.
 	//
 	// This parameter is required.
 	//

@@ -24,16 +24,19 @@ type ResetSupabaseProjectPasswordRequest struct {
 	//
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - The following special characters are supported: `!@#$%^&*()_+-=`
+	// - The supported special characters are: `!@#$%^&*()_+-=`
 	//
 	// - The password must be 8 to 32 characters in length.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
 	// Pw123456
-	AccountPassword   *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The Supabase Dashboard password.
+	//
+	// example:
+	//
+	// zaQBjed6d4ubV4o
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
 	// The Supabase instance ID.
 	//

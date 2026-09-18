@@ -15295,13 +15295,13 @@ func (client *Client) ModifyJDBCDataSourceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Changes the specifications of coordinator node resources for an AnalyticDB for PostgreSQL instance.
+// Modifies the master node specifications.
 //
 // Description:
 //
-// This operation is not available for instances in reserved storage mode.
+// This operation does not support instances in storage reservation mode.
 //
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+// Before you call this operation, make sure that you fully understand the [billing methods](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of AnalyticDB for PostgreSQL.
 //
 // @param request - ModifyMasterSpecRequest
 //
@@ -15322,6 +15322,10 @@ func (client *Client) ModifyMasterSpecWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		query["EffectiveTime"] = request.EffectiveTime
 	}
 
 	if !dara.IsNil(request.MasterAISpec) {
@@ -15925,11 +15929,11 @@ func (client *Client) ModifyStreamingJobWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Modifies the automatic start and stop policy for a Supabase instance.
+// Modifies the auto start/stop policy for a Supabase instance.
 //
 // Description:
 //
-// - Only ADBPG Supabase instances are supported.
+// - Only AnalyticDB for PostgreSQL Supabase instances are supported.
 //
 // @param request - ModifySupabaseAutoScalePolicyRequest
 //
@@ -18816,6 +18820,10 @@ func (client *Client) UpgradeDBInstanceWithContext(ctx context.Context, request 
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !dara.IsNil(request.EffectiveTime) {
+		query["EffectiveTime"] = request.EffectiveTime
+	}
+
 	if !dara.IsNil(request.InstanceSpec) {
 		query["InstanceSpec"] = request.InstanceSpec
 	}
@@ -18889,7 +18897,7 @@ func (client *Client) UpgradeDBInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+// Upgrades the minor engine version of a specified AnalyticDB for PostgreSQL instance.
 //
 // @param request - UpgradeDBVersionRequest
 //
@@ -18906,6 +18914,10 @@ func (client *Client) UpgradeDBVersionWithContext(ctx context.Context, request *
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		query["EffectiveTime"] = request.EffectiveTime
 	}
 
 	if !dara.IsNil(request.MajorVersion) {

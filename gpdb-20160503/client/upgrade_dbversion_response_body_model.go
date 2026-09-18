@@ -20,25 +20,25 @@ type iUpgradeDBVersionResponseBody interface {
 }
 
 type UpgradeDBVersionResponseBody struct {
-	// This parameter is no longer returned.
+	// **[Deprecated]*	- This parameter is deprecated. No value is returned for this parameter.
 	//
 	// example:
 	//
-	// gp-wz9kmr708m155j***
+	// null
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// gp-wz9kmr708m155j***
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 25C11EE5-B7E8-481A-A07C-BD619971A570
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

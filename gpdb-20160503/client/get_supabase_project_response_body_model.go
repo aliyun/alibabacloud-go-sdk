@@ -68,15 +68,19 @@ type iGetSupabaseProjectResponseBody interface {
 }
 
 type GetSupabaseProjectResponseBody struct {
+	// The auto-pause duration in hours.
+	//
 	// example:
 	//
 	// 0.5
 	AppliedIdleTimeHours *string `json:"AppliedIdleTimeHours,omitempty" xml:"AppliedIdleTimeHours,omitempty"`
-	// Indicates whether **auto start and stop*	- is enabled. Valid values:
+	// Specifies whether **auto start/stop*	- is enabled.
+	//
+	// Valid values:
 	//
 	// - true: Enabled. After this feature is enabled, Supabase automatically pauses and resumes based on traffic conditions.
 	//
-	// - false: Disabled. After this feature is disabled, the auto start and stop feature of Supabase is turned off.
+	// - false: Disabled. After this feature is disabled, the auto start/stop feature of Supabase is turned off.
 	//
 	// example:
 	//
@@ -94,19 +98,19 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// 127.0.0.1,100.64.XX.XX/10
 	DBSecurityIpList *string `json:"DBSecurityIpList,omitempty" xml:"DBSecurityIpList,omitempty"`
-	// The Supabase Dashboard password. This parameter is not in use.
+	// The Supabase Dashboard password (not currently used).
 	//
 	// example:
 	//
 	// xxpassword
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	// The Supabase Dashboard username. This parameter is not in use.
+	// The Supabase Dashboard username (not currently used).
 	//
 	// example:
 	//
 	// username
 	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
-	// The performance level of the cloud disk. Valid values:
+	// The cloud disk performance level. Valid values:
 	//
 	// - PL0
 	//
@@ -122,13 +126,13 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// postgres
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
+	// The database DPI engine version.
 	//
 	// example:
 	//
 	// 15
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The elastic network interface (ENI) ID. The network interface controller (NIC) ID of the instance.
+	// The elastic network interface controller (NIC) ID.
 	//
 	// example:
 	//
@@ -146,7 +150,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// false
 	Lightweight *string `json:"Lightweight,omitempty" xml:"Lightweight,omitempty"`
-	// The billing type. Valid values:
+	// The billing method. Valid values:
 	//
 	// - POSTPAY: pay-as-you-go.
 	//
@@ -156,7 +160,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The internal network connection string of the Supabase Dashboard.
+	// The Supabase Dashboard internal network connection string.
 	//
 	// example:
 	//
@@ -186,7 +190,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// 1C1G
 	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
-	// The public network connection string of the Supabase Dashboard.
+	// The Supabase Dashboard public network connection string.
 	//
 	// example:
 	//
@@ -206,7 +210,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of IP addresses in the IP whitelist group, separated by commas (,).
+	// The list of IP addresses in the IP whitelist group, separated by commas.
 	//
 	// example:
 	//
@@ -218,7 +222,7 @@ type GetSupabaseProjectResponseBody struct {
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage size. Unit: GB.
+	// The storage size, in GB.
 	//
 	// example:
 	//

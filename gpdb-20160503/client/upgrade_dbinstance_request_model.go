@@ -17,6 +17,8 @@ type iUpgradeDBInstanceRequest interface {
 	GetDBInstanceGroupCount() *string
 	SetDBInstanceId(v string) *UpgradeDBInstanceRequest
 	GetDBInstanceId() *string
+	SetEffectiveTime(v string) *UpgradeDBInstanceRequest
+	GetEffectiveTime() *string
 	SetInstanceSpec(v string) *UpgradeDBInstanceRequest
 	GetInstanceSpec() *string
 	SetMasterNodeNum(v string) *UpgradeDBInstanceRequest
@@ -74,6 +76,10 @@ type UpgradeDBInstanceRequest struct {
 	//
 	// gp-rj***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// Immediate
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The specifications of segment nodes. For information about supported node specifications, see [Instance specifications](https://help.aliyun.com/document_detail/35406.html).
 	//
 	// > This parameter is supported only for elastic storage mode instances.
@@ -217,6 +223,10 @@ func (s *UpgradeDBInstanceRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
+func (s *UpgradeDBInstanceRequest) GetEffectiveTime() *string {
+	return s.EffectiveTime
+}
+
 func (s *UpgradeDBInstanceRequest) GetInstanceSpec() *string {
 	return s.InstanceSpec
 }
@@ -282,6 +292,11 @@ func (s *UpgradeDBInstanceRequest) SetDBInstanceGroupCount(v string) *UpgradeDBI
 
 func (s *UpgradeDBInstanceRequest) SetDBInstanceId(v string) *UpgradeDBInstanceRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetEffectiveTime(v string) *UpgradeDBInstanceRequest {
+	s.EffectiveTime = &v
 	return s
 }
 
