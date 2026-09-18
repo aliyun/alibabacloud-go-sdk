@@ -15,6 +15,8 @@ type iModifyMessagesFeedbacksRequest interface {
 	GetMessageId() *string
 	SetRating(v string) *ModifyMessagesFeedbacksRequest
 	GetRating() *string
+	SetWorkspaceId(v string) *ModifyMessagesFeedbacksRequest
+	GetWorkspaceId() *string
 }
 
 type ModifyMessagesFeedbacksRequest struct {
@@ -36,6 +38,12 @@ type ModifyMessagesFeedbacksRequest struct {
 	//
 	// like
 	Rating *string `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	// The ContextDB workspace ID. Required only for ContextDB Manager App requests.
+	//
+	// example:
+	//
+	// 00000000-0000-4000-8000-000000000001
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ModifyMessagesFeedbacksRequest) String() string {
@@ -58,6 +66,10 @@ func (s *ModifyMessagesFeedbacksRequest) GetRating() *string {
 	return s.Rating
 }
 
+func (s *ModifyMessagesFeedbacksRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ModifyMessagesFeedbacksRequest) SetContent(v string) *ModifyMessagesFeedbacksRequest {
 	s.Content = &v
 	return s
@@ -70,6 +82,11 @@ func (s *ModifyMessagesFeedbacksRequest) SetMessageId(v string) *ModifyMessagesF
 
 func (s *ModifyMessagesFeedbacksRequest) SetRating(v string) *ModifyMessagesFeedbacksRequest {
 	s.Rating = &v
+	return s
+}
+
+func (s *ModifyMessagesFeedbacksRequest) SetWorkspaceId(v string) *ModifyMessagesFeedbacksRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

@@ -5982,6 +5982,10 @@ func (client *Client) ModifyMessagesFeedbacksWithOptions(request *ModifyMessages
 		query["Rating"] = request.Rating
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
