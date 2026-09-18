@@ -22,22 +22,36 @@ type iPostInnerReaderResponseBody interface {
 }
 
 type PostInnerReaderResponseBody struct {
+	// The business data returned by the operation (in string format). The specific content varies by operation.
+	//
 	// example:
 	//
 	// demo
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code. This value is an empty string if the call is successful.
+	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message. This value is an empty string if the call is successful.
+	//
 	// example:
 	//
 	// success
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The request ID, which uniquely identifies this call. Provide this value when troubleshooting issues.
+	//
 	// example:
 	//
 	// 4C467B38-3910-4477-9B0B-6963D83B4E72
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed. Troubleshoot by using errCode and errMessage.
+	//
 	// example:
 	//
 	// true

@@ -18,16 +18,22 @@ type iListDataCheckReportStepByJobIdRequest interface {
 }
 
 type ListDataCheckReportStepByJobIdRequest struct {
+	// The verification sub-job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10001
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20

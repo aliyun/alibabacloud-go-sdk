@@ -28,28 +28,42 @@ type iListDataCheckConfigResponseBody interface {
 }
 
 type ListDataCheckConfigResponseBody struct {
+	// The data list returned by the operation. For the element structure, see the child field descriptions.
 	Data []*ListDataCheckConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code. An empty string is returned if the call is successful.
+	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message. An empty string is returned if the call is successful.
+	//
 	// example:
 	//
 	// success
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The page size, which is the number of records returned per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 4C467B38-3910-4477-9B0B-6963D83B4E72
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure. If the call fails, check errCode and errMessage for details.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records that match the query conditions. This value is used for pagination.
+	//
 	// example:
 	//
 	// 100
@@ -150,144 +164,230 @@ func (s *ListDataCheckConfigResponseBody) Validate() error {
 }
 
 type ListDataCheckConfigResponseBodyData struct {
+	// The check algorithm.
+	//
 	// example:
 	//
 	// 1
 	Algorithm *int32 `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+	// The batch size.
+	//
 	// example:
 	//
 	// 1000
 	BatchSize *int32 `json:"batchSize,omitempty" xml:"batchSize,omitempty"`
+	// The check type.
+	//
 	// example:
 	//
 	// 1
 	CheckType *int32 `json:"checkType,omitempty" xml:"checkType,omitempty"`
+	// The compare type. Valid values: =, !=, >, <, >=, <=, contains, not contains, and ==.
+	//
 	// example:
 	//
 	// =
 	Comparator *string `json:"comparator,omitempty" xml:"comparator,omitempty"`
+	// The reserved field.
+	//
 	// example:
 	//
 	// {}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// The group data volume compare threshold.
+	//
 	// example:
 	//
 	// 0.5
 	GroupCountThreshold *float32 `json:"groupCountThreshold,omitempty" xml:"groupCountThreshold,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Indicates whether a full table count is performed.
+	//
 	// example:
 	//
 	// 1
 	IsFullTableCount *int32 `json:"isFullTableCount,omitempty" xml:"isFullTableCount,omitempty"`
+	// Indicates whether the check is skipped.
+	//
 	// example:
 	//
 	// 0
 	IsSkipped *int32 `json:"isSkipped,omitempty" xml:"isSkipped,omitempty"`
+	// The metric type. Valid values:
+	//
+	// - CUSTOM_METRIC_NUM: built-in NUM mode.
+	//
+	// - CUSTOM_METRIC_LEN: built-in LEN mode.
+	//
+	// - CUSTOM_METRIC_MIX: built-in MIX mode.
+	//
 	// example:
 	//
 	// CUSTOM_METRIC_MIX
 	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// Indicates whether all columns of the source are checked. Valid values:
+	//
+	// - 0: No.
+	//
+	// - 1: Yes.
+	//
 	// example:
 	//
 	// 1
 	SourceCheckAllColumn *int32 `json:"sourceCheckAllColumn,omitempty" xml:"sourceCheckAllColumn,omitempty"`
+	// The source table fields. You can specify multiple fields separated by commas (,).
+	//
 	// example:
 	//
 	// col_a,col_b
 	SourceColumns *string `json:"sourceColumns,omitempty" xml:"sourceColumns,omitempty"`
+	// The source compare key.
+	//
 	// example:
 	//
 	// id
 	SourceCompareKey *string `json:"sourceCompareKey,omitempty" xml:"sourceCompareKey,omitempty"`
+	// The name of the source data source.
+	//
 	// example:
 	//
 	// ds_demo
 	SourceDataSource *string `json:"sourceDataSource,omitempty" xml:"sourceDataSource,omitempty"`
+	// The GROUP BY clause for the source table.
+	//
 	// example:
 	//
 	// col_a,col_b
 	SourceGroupClause *string `json:"sourceGroupClause,omitempty" xml:"sourceGroupClause,omitempty"`
-	SourceHint        *string `json:"sourceHint,omitempty" xml:"sourceHint,omitempty"`
+	// The hint for the source.
+	SourceHint *string `json:"sourceHint,omitempty" xml:"sourceHint,omitempty"`
+	// The ID of the source data source.
+	//
 	// example:
 	//
 	// 1001
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The source partition.
+	//
 	// example:
 	//
 	// ds=20260116
 	SourcePartition *string `json:"sourcePartition,omitempty" xml:"sourcePartition,omitempty"`
+	// The SQL statement for the source.
+	//
 	// example:
 	//
 	// SELECT 	- FROM t;
 	SourceSql *string `json:"sourceSql,omitempty" xml:"sourceSql,omitempty"`
+	// The source table.
+	//
 	// example:
 	//
 	// table_demo
 	SourceTable *string `json:"sourceTable,omitempty" xml:"sourceTable,omitempty"`
+	// The type of the source data source.
+	//
 	// example:
 	//
 	// Hive
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The WHERE clause for the source table.
+	//
 	// example:
 	//
 	// col_a > 0 and col_b = \\"x\\"
 	SourceWhereClause *string `json:"sourceWhereClause,omitempty" xml:"sourceWhereClause,omitempty"`
+	// Indicates whether all columns of the target are checked. Valid values:
+	//
+	// - 0: No.
+	//
+	// - 1: Yes.
+	//
 	// example:
 	//
 	// 1
 	TargetCheckAllColumn *int32 `json:"targetCheckAllColumn,omitempty" xml:"targetCheckAllColumn,omitempty"`
+	// The target table fields. You can specify multiple fields separated by commas (,).
+	//
 	// example:
 	//
 	// col_a,col_b
 	TargetColumns *string `json:"targetColumns,omitempty" xml:"targetColumns,omitempty"`
+	// The target compare key.
+	//
 	// example:
 	//
 	// id
 	TargetCompareKey *string `json:"targetCompareKey,omitempty" xml:"targetCompareKey,omitempty"`
+	// The target data source.
+	//
 	// example:
 	//
 	// ds_demo
 	TargetDataSource *string `json:"targetDataSource,omitempty" xml:"targetDataSource,omitempty"`
+	// The GROUP BY clause for the target table.
+	//
 	// example:
 	//
 	// col_a,col_b
 	TargetGroupClause *string `json:"targetGroupClause,omitempty" xml:"targetGroupClause,omitempty"`
-	TargetHint        *string `json:"targetHint,omitempty" xml:"targetHint,omitempty"`
+	// The hint for the target.
+	TargetHint *string `json:"targetHint,omitempty" xml:"targetHint,omitempty"`
+	// The ID of the target data source.
+	//
 	// example:
 	//
 	// 2001
 	TargetId *string `json:"targetId,omitempty" xml:"targetId,omitempty"`
+	// The target partition.
+	//
 	// example:
 	//
 	// ds=20260116
 	TargetPartition *string `json:"targetPartition,omitempty" xml:"targetPartition,omitempty"`
+	// The SQL statement for the target.
+	//
 	// example:
 	//
 	// SELECT 	- FROM t;
 	TargetSql *string `json:"targetSql,omitempty" xml:"targetSql,omitempty"`
+	// The target table.
+	//
 	// example:
 	//
 	// table_demo
 	TargetTable *string `json:"targetTable,omitempty" xml:"targetTable,omitempty"`
+	// The type of the target data source.
+	//
 	// example:
 	//
 	// hive
 	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// The WHERE clause for the target table.
+	//
 	// example:
 	//
 	// col_a > 0 and col_b = \\"x\\"
 	TargetWhereClause *string `json:"targetWhereClause,omitempty" xml:"targetWhereClause,omitempty"`
+	// The configuration details.
+	//
 	// example:
 	//
 	// lhm|lhm_dw|*
 	TaskConfigInfo *string `json:"taskConfigInfo,omitempty" xml:"taskConfigInfo,omitempty"`
+	// The batch ID.
+	//
 	// example:
 	//
 	// 10001
 	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The total data volume compare threshold.
+	//
 	// example:
 	//
 	// 0.5

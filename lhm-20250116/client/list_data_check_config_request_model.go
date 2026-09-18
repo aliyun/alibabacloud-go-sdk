@@ -20,18 +20,26 @@ type iListDataCheckConfigRequest interface {
 }
 
 type ListDataCheckConfigRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The source table name for fuzzy search.
+	//
 	// example:
 	//
 	// table_demo
 	SrcTable *string `json:"srcTable,omitempty" xml:"srcTable,omitempty"`
+	// The ID of the data validation task.
+	//
 	// This parameter is required.
 	//
 	// example:

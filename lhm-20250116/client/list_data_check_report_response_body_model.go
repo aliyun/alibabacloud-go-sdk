@@ -28,28 +28,42 @@ type iListDataCheckReportResponseBody interface {
 }
 
 type ListDataCheckReportResponseBody struct {
+	// The data list returned by the operation. For the structure of each element, see the child field descriptions.
 	Data []*ListDataCheckReportResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code. An empty string is returned if the call is successful.
+	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// The error message. An empty string is returned if the call is successful.
+	//
 	// example:
 	//
 	// success
 	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// The page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The page size, which is the number of records returned per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues with this call.
+	//
 	// example:
 	//
 	// 4C467B38-3910-4477-9B0B-6963D83B4E72
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure. If the call fails, check errCode and errMessage for details.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records that match the query conditions. This value is used for pagination.
+	//
 	// example:
 	//
 	// 100
@@ -150,194 +164,310 @@ func (s *ListDataCheckReportResponseBody) Validate() error {
 }
 
 type ListDataCheckReportResponseBodyData struct {
+	// The validation job (batch) ID.
+	//
 	// example:
 	//
 	// 20001
 	BatchId *int64 `json:"batchId,omitempty" xml:"batchId,omitempty"`
+	// The number of columns checked.
+	//
 	// example:
 	//
 	// 10
 	CheckColumCount *int64 `json:"checkColumCount,omitempty" xml:"checkColumCount,omitempty"`
+	// The check result. Valid values:
+	//
+	// - 0: No records.
+	//
+	// - 1: Passed.
+	//
+	// - 2: Failed.
+	//
 	// example:
 	//
 	// 1
 	CheckResult *int32 `json:"checkResult,omitempty" xml:"checkResult,omitempty"`
+	// The number of rows compared.
+	//
 	// example:
 	//
 	// 1000
 	CompareRowCount *int64 `json:"compareRowCount,omitempty" xml:"compareRowCount,omitempty"`
+	// The job completion rate.
+	//
 	// example:
 	//
 	// 95.00%
 	CompletionRate *string `json:"completionRate,omitempty" xml:"completionRate,omitempty"`
+	// The difference rate.
+	//
 	// example:
 	//
 	// 0.00%
 	DiffRate *string `json:"diffRate,omitempty" xml:"diffRate,omitempty"`
+	// The primary key or composite primary key of the destination. This is the comparison column on the destination used during row-by-row, column-by-column comparison.
+	//
 	// example:
 	//
 	// id
 	DstCompareColumn *string `json:"dstCompareColumn,omitempty" xml:"dstCompareColumn,omitempty"`
 	DstHint          *string `json:"dstHint,omitempty" xml:"dstHint,omitempty"`
+	// The metric field of the destination.
+	//
 	// example:
 	//
 	// amount
-	DstMetricName *string   `json:"dstMetricName,omitempty" xml:"dstMetricName,omitempty"`
-	DstSqlList    []*string `json:"dstSqlList,omitempty" xml:"dstSqlList,omitempty" type:"Repeated"`
+	DstMetricName *string `json:"dstMetricName,omitempty" xml:"dstMetricName,omitempty"`
+	// The SQL list of the destination.
+	DstSqlList []*string `json:"dstSqlList,omitempty" xml:"dstSqlList,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// connection timeout
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The execution time of this check report detail.
+	//
 	// example:
 	//
 	// 2026-01-16 10:00:00
 	ExecTime *string `json:"execTime,omitempty" xml:"execTime,omitempty"`
+	// The expected number of different rows.
+	//
 	// example:
 	//
 	// 0
 	ExpDiffCount *string `json:"expDiffCount,omitempty" xml:"expDiffCount,omitempty"`
+	// The completion time.
+	//
 	// example:
 	//
 	// 2026-01-16T10:00:00Z
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	// Indicates whether the check is skipped.
+	//
 	// example:
 	//
 	// 0
 	IsSkipped *int32 `json:"isSkipped,omitempty" xml:"isSkipped,omitempty"`
+	// The ID of the check sub-job.
+	//
 	// example:
 	//
 	// 10001
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The job status. Valid values:
+	//
+	// - 0: INIT (pending).
+	//
+	// - 1: RUNNING (running).
+	//
+	// - 2: FINISHED (completed).
+	//
+	// - 3: STOPPED (stopped).
+	//
+	// - 4: FAIL (failed).
+	//
+	// - 6: READY (ready).
+	//
+	// - 7: SKIPPED (skipped).
+	//
 	// example:
 	//
 	// 2
 	JobStatus *int32 `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	// The number of metrics checked.
+	//
 	// example:
 	//
 	// 10
 	MetricColumCount *int64 `json:"metricColumCount,omitempty" xml:"metricColumCount,omitempty"`
+	// The number of metrics that passed the check.
+	//
 	// example:
 	//
 	// 8
 	MetricPassColumCount *int64 `json:"metricPassColumCount,omitempty" xml:"metricPassColumCount,omitempty"`
+	// The number of rows that exist only on the destination.
+	//
 	// example:
 	//
 	// 0
 	OnlyDstCount *int64 `json:"onlyDstCount,omitempty" xml:"onlyDstCount,omitempty"`
+	// The number of rows that exist only on the source.
+	//
 	// example:
 	//
 	// 0
 	OnlySrcCount *int64 `json:"onlySrcCount,omitempty" xml:"onlySrcCount,omitempty"`
+	// The number of columns that passed the check.
+	//
 	// example:
 	//
 	// 8
 	PassColumCount *int64 `json:"passColumCount,omitempty" xml:"passColumCount,omitempty"`
+	// The actual number of different rows.
+	//
 	// example:
 	//
 	// 0
 	RealDiffCount *int64 `json:"realDiffCount,omitempty" xml:"realDiffCount,omitempty"`
+	// The actual number of identical rows.
+	//
 	// example:
 	//
 	// 1000
 	RealSameCount *int64 `json:"realSameCount,omitempty" xml:"realSameCount,omitempty"`
+	// The ID of the check result.
+	//
 	// example:
 	//
 	// 30001
 	ResultId *string `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	// The name of the source column.
+	//
 	// example:
 	//
 	// amount
 	SourceColumn *string `json:"sourceColumn,omitempty" xml:"sourceColumn,omitempty"`
+	// The number of rows in the source data.
+	//
 	// example:
 	//
 	// 1000
 	SourceCount *string `json:"sourceCount,omitempty" xml:"sourceCount,omitempty"`
+	// The source data source.
+	//
 	// example:
 	//
 	// ds_demo
 	SourceDataSource *string `json:"sourceDataSource,omitempty" xml:"sourceDataSource,omitempty"`
+	// The error message of the source.
+	//
 	// example:
 	//
 	// Table \\"src_db.src_table\\" doesn\\"t exist
 	SourceError *string `json:"sourceError,omitempty" xml:"sourceError,omitempty"`
+	// The GROUP BY clause of the source.
+	//
 	// example:
 	//
 	// col_a,col_b
 	SourceGroupClause *string `json:"sourceGroupClause,omitempty" xml:"sourceGroupClause,omitempty"`
+	// The source partition.
+	//
 	// example:
 	//
 	// ds=20260116
 	SourcePartition *string `json:"sourcePartition,omitempty" xml:"sourcePartition,omitempty"`
+	// The name of the source table.
+	//
 	// example:
 	//
 	// table_demo
 	SourceTable *string `json:"sourceTable,omitempty" xml:"sourceTable,omitempty"`
+	// The data type of the source.
+	//
 	// example:
 	//
 	// Hive
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The WHERE clause of the source.
+	//
 	// example:
 	//
 	// col_a > 0 and col_b = \\"x\\"
 	SourceWhereClause *string `json:"sourceWhereClause,omitempty" xml:"sourceWhereClause,omitempty"`
+	// The primary key or composite primary key of the source. This is the comparison column on the source used during row-by-row, column-by-column comparison.
+	//
 	// example:
 	//
 	// id
 	SrcCompareColumn *string `json:"srcCompareColumn,omitempty" xml:"srcCompareColumn,omitempty"`
 	SrcHint          *string `json:"srcHint,omitempty" xml:"srcHint,omitempty"`
+	// The metric field of the source.
+	//
 	// example:
 	//
 	// amount
-	SrcMetricName *string   `json:"srcMetricName,omitempty" xml:"srcMetricName,omitempty"`
-	SrcSqlList    []*string `json:"srcSqlList,omitempty" xml:"srcSqlList,omitempty" type:"Repeated"`
+	SrcMetricName *string `json:"srcMetricName,omitempty" xml:"srcMetricName,omitempty"`
+	// The SQL list of the source.
+	SrcSqlList []*string `json:"srcSqlList,omitempty" xml:"srcSqlList,omitempty" type:"Repeated"`
+	// The column of the destination.
+	//
 	// example:
 	//
 	// amount
 	TargetColumn *string `json:"targetColumn,omitempty" xml:"targetColumn,omitempty"`
+	// The number of rows in the destination data.
+	//
 	// example:
 	//
 	// 1000
 	TargetCount *string `json:"targetCount,omitempty" xml:"targetCount,omitempty"`
+	// The data source of the destination.
+	//
 	// example:
 	//
 	// ds_demo
 	TargetDataSource *string `json:"targetDataSource,omitempty" xml:"targetDataSource,omitempty"`
+	// The error message of the destination.
+	//
 	// example:
 	//
 	// Table \\"dst_db.dst_table\\" doesn\\"t exist
 	TargetError *string `json:"targetError,omitempty" xml:"targetError,omitempty"`
+	// The GROUP BY clause of the destination.
+	//
 	// example:
 	//
 	// col_a,col_b
 	TargetGroupClause *string `json:"targetGroupClause,omitempty" xml:"targetGroupClause,omitempty"`
+	// The destination partition.
+	//
 	// example:
 	//
 	// ds=20260116
 	TargetPartition *string `json:"targetPartition,omitempty" xml:"targetPartition,omitempty"`
+	// The destination table.
+	//
 	// example:
 	//
 	// table_demo
 	TargetTable *string `json:"targetTable,omitempty" xml:"targetTable,omitempty"`
+	// The destination data source type.
+	//
 	// example:
 	//
 	// hive
 	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
+	// The destination WHERE clause.
+	//
 	// example:
 	//
 	// col_a > 0 and col_b = \\"x\\"
 	TargetWhereClause *string `json:"targetWhereClause,omitempty" xml:"targetWhereClause,omitempty"`
+	// The ID of the validation task configuration.
+	//
 	// example:
 	//
 	// 1001
 	TaskConfigId *int64 `json:"taskConfigId,omitempty" xml:"taskConfigId,omitempty"`
+	// The validation template name.
+	//
 	// example:
 	//
-	// 数据量校验模板
+	// Data Volume Validation Template
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	// The threshold.
+	//
 	// example:
 	//
 	// 0.0
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The threshold for comparing grouped data volumes.
+	//
 	// example:
 	//
 	// 0.5

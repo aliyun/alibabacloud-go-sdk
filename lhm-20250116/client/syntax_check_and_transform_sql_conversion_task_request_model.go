@@ -14,6 +14,8 @@ type iSyntaxCheckAndTransformSqlConversionTaskRequest interface {
 }
 
 type SyntaxCheckAndTransformSqlConversionTaskRequest struct {
+	// The task ID that uniquely identifies a task.
+	//
 	// This parameter is required.
 	//
 	// example:
