@@ -68,13 +68,13 @@ type CreateSkillFileCheckResponseBodyData struct {
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The ID of the root task returned after the task is submitted.
+	// The root task ID returned after the task is submitted.
 	//
 	// example:
 	//
 	// c6e7fa8a77df6e182ac3fcf1478ab83a
 	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
-	// The number of files that are uploaded.
+	// The number of files that are uploaded successfully.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type CreateSkillFileCheckResponseBodyDataUploadResults struct {
 	//
 	// Network error.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The SHA256 value of the uploaded file.
+	// The SHA256 hash of the uploaded file.
 	//
 	// example:
 	//

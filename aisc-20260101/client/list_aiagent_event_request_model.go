@@ -27,8 +27,14 @@ type iListAIAgentEventRequest interface {
 	GetInfraRegionId() *string
 	SetLang(v string) *ListAIAgentEventRequest
 	GetLang() *string
+	SetOrder(v string) *ListAIAgentEventRequest
+	GetOrder() *string
+	SetOrderBy(v string) *ListAIAgentEventRequest
+	GetOrderBy() *string
 	SetPageSize(v int32) *ListAIAgentEventRequest
 	GetPageSize() *int32
+	SetResourceDirectoryAccountId(v int64) *ListAIAgentEventRequest
+	GetResourceDirectoryAccountId() *int64
 	SetRiskLevel(v string) *ListAIAgentEventRequest
 	GetRiskLevel() *string
 	SetRiskName(v string) *ListAIAgentEventRequest
@@ -118,12 +124,25 @@ type ListAIAgentEventRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sort order. Valid values: asc indicates ascending order. desc indicates descending order.
+	//
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field by which to sort results. Currently, only sorting by check time is supported.
+	//
+	// example:
+	//
+	// CheckTime
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize                   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The risk level of the check item to query. Valid values:
 	//
 	// - **high**: High.
@@ -178,17 +197,17 @@ type ListAIAgentEventRequest struct {
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 	// The cloud asset vendor. Valid values:
 	//
-	// - **DIFY**: DIFY.
+	// - *	- DIFY**: DIFY
 	//
-	// - **BAILIAN**: BAILIAN.
+	// - *	- BAILIAN**: BAILIAN
 	//
-	// - **VOLCAI**: VOLCAI.
+	// - *	- VOLCAI**: VOLCAI
 	//
-	// - **AGENTRUN**: AGENTRUN.
+	// - *	- AGENTRUN**: AGENTRUN
 	//
-	// - **PAI**: PAI.
+	// - *	- PAI**: PAI
 	//
-	// - **OpenClaw**: OpenClaw.
+	// - *	- OpenClaw**: OpenClaw
 	//
 	// example:
 	//
@@ -240,8 +259,20 @@ func (s *ListAIAgentEventRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ListAIAgentEventRequest) GetOrder() *string {
+	return s.Order
+}
+
+func (s *ListAIAgentEventRequest) GetOrderBy() *string {
+	return s.OrderBy
+}
+
 func (s *ListAIAgentEventRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListAIAgentEventRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
 }
 
 func (s *ListAIAgentEventRequest) GetRiskLevel() *string {
@@ -313,8 +344,23 @@ func (s *ListAIAgentEventRequest) SetLang(v string) *ListAIAgentEventRequest {
 	return s
 }
 
+func (s *ListAIAgentEventRequest) SetOrder(v string) *ListAIAgentEventRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListAIAgentEventRequest) SetOrderBy(v string) *ListAIAgentEventRequest {
+	s.OrderBy = &v
+	return s
+}
+
 func (s *ListAIAgentEventRequest) SetPageSize(v int32) *ListAIAgentEventRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAIAgentEventRequest) SetResourceDirectoryAccountId(v int64) *ListAIAgentEventRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

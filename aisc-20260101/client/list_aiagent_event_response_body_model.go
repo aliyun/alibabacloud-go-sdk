@@ -124,13 +124,13 @@ type ListAIAgentEventResponseBodyData struct {
 	//
 	// tool
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The check time.
+	// The check time, in UNIX timestamp format. Unit: seconds.
 	//
 	// example:
 	//
 	// 1763949968
 	CheckTime *string `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
-	// The event handling time.
+	// The event handling time, in UNIX timestamp format. Unit: seconds.
 	//
 	// example:
 	//
@@ -202,7 +202,12 @@ type ListAIAgentEventResponseBodyData struct {
 	//
 	// Weak password
 	RiskName *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
-	SkillId  *int64  `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The associated skill ID.
+	//
+	// example:
+	//
+	// 0
+	SkillId *int64 `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 	// The event source. Valid values:
 	//
 	// 1. cspm
@@ -237,17 +242,17 @@ type ListAIAgentEventResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The cloud asset vendor. Valid values:
 	//
-	// - **DIFY**: DIFY.
+	// - *	- DIFY**: DIFY
 	//
-	// - **BAILIAN**: BAILIAN.
+	// - *	- BAILIAN**: BAILIAN
 	//
-	// - **VOLCAI**: VOLCAI.
+	// - *	- VOLCAI**: VOLCAI
 	//
-	// - **AGENTRUN**: AGENTRUN.
+	// - *	- AGENTRUN**: AGENTRUN
 	//
-	// - **PAI**: PAI.
+	// - *	- PAI**: PAI
 	//
-	// - **OpenClaw**: OpenClaw.
+	// - *	- OpenClaw**: OpenClaw
 	//
 	// example:
 	//
