@@ -24,37 +24,37 @@ type iQueryAiCallTaskDetailResponseBody interface {
 }
 
 type QueryAiCallTaskDetailResponseBody struct {
-	// The access denial details. This parameter is returned only if RAM validation fails.
+	// The access denial details. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code.
+	// The error code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryAiCallTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is returned only if the call fails.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
-	// 参数无效
+	// Invalid parameter
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 23822ECB-8CAA-5C52-9C9E-807FD82A5A7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: Successful.
 	//
-	// - **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -134,37 +134,63 @@ func (s *QueryAiCallTaskDetailResponseBody) Validate() error {
 }
 
 type QueryAiCallTaskDetailResponseBodyData struct {
-	// The ID of the deployed agent.
+	// The ID of the published agent.
 	//
 	// example:
 	//
 	// 1180**************
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The name of the agent.
+	// The agent name.
 	//
 	// example:
 	//
-	// 测试智能体
+	// TestAgent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// example:
 	//
-	// 示例值
+	// SampleValue
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
 	// example:
 	//
-	// 示例值
+	// SampleValue
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The days of the week on which calls are permitted.
+	// The list of callable days.
 	CallDays []*string `json:"CallDays,omitempty" xml:"CallDays,omitempty" type:"Repeated"`
-	// The allowed call time windows.
+	// The expiration date of outbound call details (specific deadline).
+	//
+	// example:
+	//
+	// 2026-07-30 20:00:20
+	CallExpireDate *string `json:"CallExpireDate,omitempty" xml:"CallExpireDate,omitempty"`
+	// The expiration duration of outbound call details, in minutes.
+	//
+	// example:
+	//
+	// 20
+	CallExpireMinutes *int64 `json:"CallExpireMinutes,omitempty" xml:"CallExpireMinutes,omitempty"`
+	// The outbound call validity type. Valid values:
+	//
+	// 0: Permanently valid.
+	//
+	// 1: Valid for a period of time after import.
+	//
+	// 2: Valid until a specified time.
+	//
+	// example:
+	//
+	// 0
+	CallExpireType *int64 `json:"CallExpireType,omitempty" xml:"CallExpireType,omitempty"`
+	// The allowed call time periods.
 	CallTimes []*QueryAiCallTaskDetailResponseBodyDataCallTimes `json:"CallTimes,omitempty" xml:"CallTimes,omitempty" type:"Repeated"`
-	// The caller ID.
+	// The callable time periods for the current outbound call instance.
+	CallableTimes []*QueryAiCallTaskDetailResponseBodyDataCallableTimes `json:"CallableTimes,omitempty" xml:"CallableTimes,omitempty" type:"Repeated"`
+	// The caller number.
 	//
 	// example:
 	//
 	// 05370124****
 	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	// The number of concurrent tasks.
+	// The task concurrency.
 	//
 	// example:
 	//
@@ -172,23 +198,23 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	ConcurrentCount *int64 `json:"ConcurrentCount,omitempty" xml:"ConcurrentCount,omitempty"`
 	// example:
 	//
-	// 示例值
+	// SampleValue
 	LineEncoding *string `json:"LineEncoding,omitempty" xml:"LineEncoding,omitempty"`
 	// example:
 	//
-	// 示例值
+	// SampleValue
 	LinePhoneNum *string `json:"LinePhoneNum,omitempty" xml:"LinePhoneNum,omitempty"`
 	// example:
 	//
 	// 17
 	PhoneType *int64 `json:"PhoneType,omitempty" xml:"PhoneType,omitempty"`
-	// The actual start time of the task. This value is a Unix timestamp in milliseconds.
+	// The actual start time of the task. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748932499000
 	RealStartTime *int64 `json:"RealStartTime,omitempty" xml:"RealStartTime,omitempty"`
-	// The number of retries.
+	// The number of retry attempts.
 	//
 	// example:
 	//
@@ -196,9 +222,9 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	// Indicates whether call retry is enabled. Valid values:
 	//
-	// - `true`
+	// - true: Enabled.
 	//
-	// - `false`
+	// - false: Not enabled.
 	//
 	// example:
 	//
@@ -210,35 +236,35 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	//
 	// 1
 	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	// The reasons for which a failed call can be retried.
+	// The list of reasons that allow retry on failure.
 	RetryReasons []*string `json:"RetryReasons,omitempty" xml:"RetryReasons,omitempty" type:"Repeated"`
-	// The scheduled start time of the task. This value is a Unix timestamp in milliseconds.
+	// The scheduled start time of the task. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748932499000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The start mode. Valid values:
+	// The start type. Valid values:
 	//
-	// - `IMMEDIATE`: The task starts immediately.
+	// - IMMEDIATE: Start immediately.
 	//
-	// - `SCHEDULE`: The task starts at a scheduled time.
+	// - SCHEDULE: Start at a scheduled time.
 	//
 	// example:
 	//
 	// IMMEDIATE
 	StartType *string `json:"StartType,omitempty" xml:"StartType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
-	// 测试任务
+	// TestTask
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -270,8 +296,24 @@ func (s *QueryAiCallTaskDetailResponseBodyData) GetCallDays() []*string {
 	return s.CallDays
 }
 
+func (s *QueryAiCallTaskDetailResponseBodyData) GetCallExpireDate() *string {
+	return s.CallExpireDate
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyData) GetCallExpireMinutes() *int64 {
+	return s.CallExpireMinutes
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyData) GetCallExpireType() *int64 {
+	return s.CallExpireType
+}
+
 func (s *QueryAiCallTaskDetailResponseBodyData) GetCallTimes() []*QueryAiCallTaskDetailResponseBodyDataCallTimes {
 	return s.CallTimes
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyData) GetCallableTimes() []*QueryAiCallTaskDetailResponseBodyDataCallableTimes {
+	return s.CallableTimes
 }
 
 func (s *QueryAiCallTaskDetailResponseBodyData) GetCallerNumber() *string {
@@ -355,8 +397,28 @@ func (s *QueryAiCallTaskDetailResponseBodyData) SetCallDays(v []*string) *QueryA
 	return s
 }
 
+func (s *QueryAiCallTaskDetailResponseBodyData) SetCallExpireDate(v string) *QueryAiCallTaskDetailResponseBodyData {
+	s.CallExpireDate = &v
+	return s
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyData) SetCallExpireMinutes(v int64) *QueryAiCallTaskDetailResponseBodyData {
+	s.CallExpireMinutes = &v
+	return s
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyData) SetCallExpireType(v int64) *QueryAiCallTaskDetailResponseBodyData {
+	s.CallExpireType = &v
+	return s
+}
+
 func (s *QueryAiCallTaskDetailResponseBodyData) SetCallTimes(v []*QueryAiCallTaskDetailResponseBodyDataCallTimes) *QueryAiCallTaskDetailResponseBodyData {
 	s.CallTimes = v
+	return s
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyData) SetCallableTimes(v []*QueryAiCallTaskDetailResponseBodyDataCallableTimes) *QueryAiCallTaskDetailResponseBodyData {
+	s.CallableTimes = v
 	return s
 }
 
@@ -440,17 +502,26 @@ func (s *QueryAiCallTaskDetailResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.CallableTimes != nil {
+		for _, item := range s.CallableTimes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type QueryAiCallTaskDetailResponseBodyDataCallTimes struct {
-	// The end of the time window.
+	// The end time.
 	//
 	// example:
 	//
 	// 09:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time window.
+	// The start time.
 	//
 	// example:
 	//
@@ -485,5 +556,50 @@ func (s *QueryAiCallTaskDetailResponseBodyDataCallTimes) SetStartTime(v string) 
 }
 
 func (s *QueryAiCallTaskDetailResponseBodyDataCallTimes) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryAiCallTaskDetailResponseBodyDataCallableTimes struct {
+	// The end time.
+	//
+	// example:
+	//
+	// 18:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 10:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryAiCallTaskDetailResponseBodyDataCallableTimes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryAiCallTaskDetailResponseBodyDataCallableTimes) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyDataCallableTimes) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyDataCallableTimes) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyDataCallableTimes) SetEndTime(v string) *QueryAiCallTaskDetailResponseBodyDataCallableTimes {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyDataCallableTimes) SetStartTime(v string) *QueryAiCallTaskDetailResponseBodyDataCallableTimes {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryAiCallTaskDetailResponseBodyDataCallableTimes) Validate() error {
 	return dara.Validate(s)
 }

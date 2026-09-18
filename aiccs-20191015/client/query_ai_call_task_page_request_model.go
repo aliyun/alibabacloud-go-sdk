@@ -34,24 +34,26 @@ type iQueryAiCallTaskPageRequest interface {
 }
 
 type QueryAiCallTaskPageRequest struct {
-	// The agent name. The system performs a fuzzy search based on this name.
+	// The agent name. The system performs a fuzzy match based on the agent name.
 	//
 	// example:
 	//
-	// 测试智能体
+	// TestAgent.
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The application code.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 025****C98
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than **0**. The default value is **1**.
+	// The current page number. The value must be greater than **0**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in paging. Settings for the number of rows per page.
 	//
 	// example:
 	//
@@ -59,35 +61,41 @@ type QueryAiCallTaskPageRequest struct {
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The creation source. Valid values:
+	//
+	// 0: created by agent.
+	//
+	// 1: created by engine.
+	//
 	// example:
 	//
-	// 68
+	// 0
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **INIT**: The task is initialized but has not started.
+	// - INIT: init (not started).
 	//
-	// - **FAILED**: The task failed to start.
+	// - FAILED: startup failed.
 	//
-	// - **RUNNING**: The task is running.
+	// - RUNNING: running.
 	//
-	// - **STOPPED**: The task is stopped.
+	// - STOPPED: stopped.
 	//
 	// example:
 	//
 	// INIT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The unique ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name. The system performs a fuzzy search based on this name.
+	// The task name. The system performs a fuzzy match based on the task name.
 	//
 	// example:
 	//
-	// 测试任务
+	// TestTask.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

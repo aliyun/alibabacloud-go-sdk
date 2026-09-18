@@ -63,6 +63,8 @@ type iUpdateModelApplicationShrinkRequest interface {
 	GetMutePushMode() *string
 	SetOwnerId(v int64) *UpdateModelApplicationShrinkRequest
 	GetOwnerId() *int64
+	SetPauseTime(v int64) *UpdateModelApplicationShrinkRequest
+	GetPauseTime() *int64
 	SetPrompt(v string) *UpdateModelApplicationShrinkRequest
 	GetPrompt() *string
 	SetQualificationId(v int64) *UpdateModelApplicationShrinkRequest
@@ -114,7 +116,7 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// 测试应用
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// Specifies whether to hang up the call when a call assistant is detected.
+	// Specifies whether to hang up when an intelligent answering service is detected.
 	//
 	// example:
 	//
@@ -126,49 +128,53 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// true
 	CallAssistantRecognize *bool `json:"CallAssistantRecognize,omitempty" xml:"CallAssistantRecognize,omitempty"`
-	// Specifies whether to trigger the model immediately after the call is connected.
+	// Specifies whether to enable call-connected event push. Disabled by default.
 	//
 	// example:
 	//
 	// false
 	CallConnectedTriggerModel *bool `json:"CallConnectedTriggerModel,omitempty" xml:"CallConnectedTriggerModel,omitempty"`
-	// The allowed DTMF digits, specified as a comma-separated string such as `1,2,3`. You can specify a maximum of 20 digits.
+	// The enumeration of allowed key digits, separated by commas, such as 1,2,3. Maximum of 20 values.
 	//
 	// example:
 	//
 	// 1
 	DtmfAllowedDigits *string `json:"DtmfAllowedDigits,omitempty" xml:"DtmfAllowedDigits,omitempty"`
-	// Specifies whether to automatically validate the DTMF digits.
+	// Specifies whether to enable automatic validation of key values.
 	//
 	// example:
 	//
 	// true
 	DtmfAutoValidateEnable *bool `json:"DtmfAutoValidateEnable,omitempty" xml:"DtmfAutoValidateEnable,omitempty"`
-	// The number of DTMF digits to collect. The value must be between 1 and 12.
+	// The number of DTMF key digits. Valid values: 1 to 12.
 	//
 	// example:
 	//
 	// 1
 	DtmfDigitCount *int64 `json:"DtmfDigitCount,omitempty" xml:"DtmfDigitCount,omitempty"`
-	// The timeout for DTMF input, in seconds. The value must be between 1 and 10.
+	// The DTMF input timeout period in seconds. Valid values: 1 to 10.
 	//
 	// example:
 	//
 	// 1
 	DtmfInputTimeout *int64 `json:"DtmfInputTimeout,omitempty" xml:"DtmfInputTimeout,omitempty"`
-	// The action to take when the input is outside the allowed range. Valid values: `RETURN_MODEL` and `AUTO_RETRY`.
+	// The action to take when the input is out of range. Valid values:
+	//
+	// - RETURN_MODEL: return to the model
+	//
+	// - AUTO_RETRY: automatically retry
 	//
 	// example:
 	//
 	// RETURN_MODEL
 	DtmfOutOfRangeAction *string `json:"DtmfOutOfRangeAction,omitempty" xml:"DtmfOutOfRangeAction,omitempty"`
-	// The number of retry attempts. The value must be between 1 and 3. This parameter is effective only when `DtmfOutOfRangeAction` is set to `AUTO_RETRY`.
+	// The number of retry attempts (PlayTimes). Valid values: 1 to 3. Takes effect only when DtmfOutOfRangeAction is set to AUTO_RETRY.
 	//
 	// example:
 	//
 	// 1
 	DtmfRetryPlayTimes *int64 `json:"DtmfRetryPlayTimes,omitempty" xml:"DtmfRetryPlayTimes,omitempty"`
-	// The custom text for the retry prompt. The text can contain a maximum of 50 characters. If this parameter is empty, the system uses the default prompt: "Invalid input. Please try again."
+	// The custom retry prompt text. Maximum length: 50 characters. If left empty, the default message is used.
 	//
 	// example:
 	//
@@ -182,13 +188,13 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// 58
 	DtmfSendWaitTimeout *int64 `json:"DtmfSendWaitTimeout,omitempty" xml:"DtmfSendWaitTimeout,omitempty"`
-	// The scene name.
+	// The scenario name.
 	//
 	// example:
 	//
 	// 测试场景
 	DyvmsSceneName *string `json:"DyvmsSceneName,omitempty" xml:"DyvmsSceneName,omitempty"`
-	// Specifies whether to enable the collection of DTMF signals. The default value is `false`.
+	// Specifies whether to enable DTMF key collection. Default value: false.
 	//
 	// example:
 	//
@@ -198,7 +204,7 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// true
 	EnableDtmfSend *bool `json:"EnableDtmfSend,omitempty" xml:"EnableDtmfSend,omitempty"`
-	// Specifies whether to enable the Morse code configuration. The default value is `false`.
+	// Specifies whether to enable Morse code configuration. Disabled by default.
 	//
 	// example:
 	//
@@ -230,19 +236,25 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// 85
 	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
-	// The number of consecutive mute events that trigger an automatic hang-up.
+	// The number of consecutive mute events after which the system proactively hangs up.
 	//
 	// example:
 	//
 	// 70
 	MuteHangupNum *int64 `json:"MuteHangupNum,omitempty" xml:"MuteHangupNum,omitempty"`
-	// 静音事件推送模式
+	// The push mode for mute events.
 	//
 	// example:
 	//
 	// FIRST_ONLY
 	MutePushMode *string `json:"MutePushMode,omitempty" xml:"MutePushMode,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ASR recognition pause duration.
+	//
+	// example:
+	//
+	// 350
+	PauseTime *int64 `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
 	// The prompt.
 	//
 	// example:
@@ -255,13 +267,13 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// 61
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	// The name of the qualification.
+	// The qualification name.
 	//
 	// example:
 	//
 	// 测试质检
 	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
-	// The URL of the recording file.
+	// The URL of the recording audio file.
 	//
 	// example:
 	//
@@ -269,25 +281,25 @@ type UpdateModelApplicationShrinkRequest struct {
 	RecordingFile        *string `json:"RecordingFile,omitempty" xml:"RecordingFile,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The session timeout, which is the maximum duration of a call.
+	// The maximum call duration.
 	//
 	// example:
 	//
 	// 49
 	SessionTimeout *int64 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	// The value must be `USER`.
+	// The source. Fixed value: USER.
 	//
 	// example:
 	//
 	// USER
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The content of the speech.
+	// The speech script content.
 	//
 	// example:
 	//
 	// 测试话术
 	SpeechContent *string `json:"SpeechContent,omitempty" xml:"SpeechContent,omitempty"`
-	// The speech ID.
+	// The speech script ID.
 	//
 	// example:
 	//
@@ -299,7 +311,7 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// 你好，这是个测试开场白
 	StartWord *string `json:"StartWord,omitempty" xml:"StartWord,omitempty"`
-	// The type of the opening statement. Valid values:
+	// The type of the opening statement.
 	//
 	// example:
 	//
@@ -307,9 +319,9 @@ type UpdateModelApplicationShrinkRequest struct {
 	//
 	// 1：录音
 	StartWordType *int64 `json:"StartWordType,omitempty" xml:"StartWordType,omitempty"`
-	// The TTS configuration, such as voice, volume, and speech rate.
+	// The text-to-speech (TTS) configuration, including voice, volume, and speed.
 	TtsConfigShrink *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
-	// The purpose of the application.
+	// The usage description.
 	//
 	// example:
 	//
@@ -431,6 +443,10 @@ func (s *UpdateModelApplicationShrinkRequest) GetMutePushMode() *string {
 
 func (s *UpdateModelApplicationShrinkRequest) GetOwnerId() *int64 {
 	return s.OwnerId
+}
+
+func (s *UpdateModelApplicationShrinkRequest) GetPauseTime() *int64 {
+	return s.PauseTime
 }
 
 func (s *UpdateModelApplicationShrinkRequest) GetPrompt() *string {
@@ -621,6 +637,11 @@ func (s *UpdateModelApplicationShrinkRequest) SetMutePushMode(v string) *UpdateM
 
 func (s *UpdateModelApplicationShrinkRequest) SetOwnerId(v int64) *UpdateModelApplicationShrinkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateModelApplicationShrinkRequest) SetPauseTime(v int64) *UpdateModelApplicationShrinkRequest {
+	s.PauseTime = &v
 	return s
 }
 

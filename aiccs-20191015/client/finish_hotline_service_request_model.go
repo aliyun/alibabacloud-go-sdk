@@ -18,7 +18,7 @@ type iFinishHotlineServiceRequest interface {
 }
 
 type FinishHotlineServiceRequest struct {
-	// Agent account name, which is the phone number or mailbox entered during account registration. It is unique within the instance.
+	// The agent account name, which is the mobile phone number or email address specified during account registration. This value is unique within the instance.
 	//
 	// This parameter is required.
 	//
@@ -26,15 +26,15 @@ type FinishHotlineServiceRequest struct {
 	//
 	// username@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
+	// The unique client request ID. Used for idempotence verification. You can use a UUID to generate this ID.
 	//
 	// example:
 	//
 	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	// The AICCS instance ID.
 	//
-	// You can obtain it in the <b>Instance Management</b> section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	// You can obtain this ID from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
 	//
 	// This parameter is required.
 	//

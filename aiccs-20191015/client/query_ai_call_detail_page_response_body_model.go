@@ -24,7 +24,7 @@ type iQueryAiCallDetailPageResponseBody interface {
 }
 
 type QueryAiCallDetailPageResponseBody struct {
-	// The reason why the access request was denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type QueryAiCallDetailPageResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryAiCallDetailPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// A description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
-	// 成功
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -50,11 +50,11 @@ type QueryAiCallDetailPageResponseBody struct {
 	//
 	// A57441B2-8EB6-5B93-9F37-0A51B8E2C9F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values are:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: failed.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *QueryAiCallDetailPageResponseBody) Validate() error {
 }
 
 type QueryAiCallDetailPageResponseBodyData struct {
-	// A list of task details.
+	// The list of task detail data.
 	List []*QueryAiCallDetailPageResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -220,23 +220,41 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// 1183**************
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The branch ID.
+	//
 	// example:
 	//
 	// 49
 	BranchId *int64 `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	// The branch name.
+	//
 	// example:
 	//
-	// example
+	// Default branch
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The version ID.
+	//
 	// example:
 	//
 	// 9
 	BranchVersionId *int64 `json:"BranchVersionId,omitempty" xml:"BranchVersionId,omitempty"`
+	// The expiration time of the outbound call detail.
+	//
+	// example:
+	//
+	// 2026-07-30 20:00:20
+	CallExpireTime *int64 `json:"CallExpireTime,omitempty" xml:"CallExpireTime,omitempty"`
+	// The call ID.
+	//
+	// example:
+	//
+	// 123*****456^123*****456
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The call result.
 	//
 	// example:
 	//
-	// 用户接通
+	// Answered
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
 	// The called number.
 	//
@@ -244,19 +262,19 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// 0537101****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// The call time, formatted as a timestamp in milliseconds.
+	// The calling time. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748948749000
 	CallingTime *int64 `json:"CallingTime,omitempty" xml:"CallingTime,omitempty"`
-	// The conversation duration, in seconds.
+	// The conversation duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 100
 	ConversationDuration *int64 `json:"ConversationDuration,omitempty" xml:"ConversationDuration,omitempty"`
-	// The conversation record, formatted as a chronologically sorted JSON array. Each object has the following structure:
+	// The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The format is as follows:
 	//
 	// ```json
 	//
@@ -264,9 +282,9 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	//     {
 	//
-	//         "content":"The content of the message.",
+	//         "content":"Chat content",
 	//
-	//         "role":"The role of the speaker.", // Valid values: user, assistant
+	//         "role":"Role",//Valid values: user, assistant (bot)
 	//
 	//     }
 	//
@@ -376,7 +394,7 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// ]
 	ConversationRecord *string `json:"ConversationRecord,omitempty" xml:"ConversationRecord,omitempty"`
-	// The conversation turn count.
+	// The number of conversation turns.
 	//
 	// example:
 	//
@@ -388,19 +406,19 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// 9662*************
 	DetailId *string `json:"DetailId,omitempty" xml:"DetailId,omitempty"`
-	// The encryption type. Valid values are: 0 (no encryption), 1 (MD5), 2 (SHA256), and 3 (SM3).
+	// The encryption type. Valid values: 0: no encryption. 1: MD5. 2: SHA256. 3: SM3.
 	//
 	// example:
 	//
 	// 1
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The failure reason. Provided only if the call fails.
+	// The reason for call failure. This field is available only when the call fails.
 	//
 	// example:
 	//
-	// 账户停机
+	// Account suspended
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The import time, formatted as a timestamp in milliseconds.
+	// The import time. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -412,7 +430,7 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
-	// A JSON object of key-value pairs for runtime variables.
+	// The variable information used at runtime, stored in this field as key-value pairs.
 	//
 	// example:
 	//
@@ -426,7 +444,7 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	//   "mendian": "444",
 	//
-	//   "sex": "男",
+	//   "sex": "male",
 	//
 	//   "name": "111",
 	//
@@ -434,31 +452,33 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The external business serial number reserved for external input. A unique ID can be used for business association.
+	//
 	// example:
 	//
 	// outId
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// The recording file path. Provided only after the recording file is generated.
+	// The download path of the recording file. This field is available only after the recording file is generated.
 	//
 	// example:
 	//
 	// https://*******
 	RecordingFilePath *string `json:"RecordingFilePath,omitempty" xml:"RecordingFilePath,omitempty"`
-	// The task detail status.
+	// The task detail status. Valid values:
 	//
-	// - 0: Initializing
+	// - 0: initialized.
 	//
-	// - 1: Waiting to call
+	// - 1: waiting to call.
 	//
-	// - 2: Waiting to retry
+	// - 2: waiting to retry.
 	//
-	// - 3: Calling
+	// - 3: calling.
 	//
-	// - 4: Call ended
+	// - 4: call ended.
 	//
-	// - 5: Call failed
+	// - 5: call failed.
 	//
-	// Only statuses 4 and 5 are terminal states.
+	// Only 4 and 5 are desired states.
 	//
 	// example:
 	//
@@ -470,13 +490,17 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
-	// example
+	// Default version
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
-	// 55
+	// 1
 	VersionNo *int64 `json:"VersionNo,omitempty" xml:"VersionNo,omitempty"`
 }
 
@@ -502,6 +526,14 @@ func (s *QueryAiCallDetailPageResponseBodyDataList) GetBranchName() *string {
 
 func (s *QueryAiCallDetailPageResponseBodyDataList) GetBranchVersionId() *int64 {
 	return s.BranchVersionId
+}
+
+func (s *QueryAiCallDetailPageResponseBodyDataList) GetCallExpireTime() *int64 {
+	return s.CallExpireTime
+}
+
+func (s *QueryAiCallDetailPageResponseBodyDataList) GetCallId() *string {
+	return s.CallId
 }
 
 func (s *QueryAiCallDetailPageResponseBodyDataList) GetCallResult() *string {
@@ -593,6 +625,16 @@ func (s *QueryAiCallDetailPageResponseBodyDataList) SetBranchName(v string) *Que
 
 func (s *QueryAiCallDetailPageResponseBodyDataList) SetBranchVersionId(v int64) *QueryAiCallDetailPageResponseBodyDataList {
 	s.BranchVersionId = &v
+	return s
+}
+
+func (s *QueryAiCallDetailPageResponseBodyDataList) SetCallExpireTime(v int64) *QueryAiCallDetailPageResponseBodyDataList {
+	s.CallExpireTime = &v
+	return s
+}
+
+func (s *QueryAiCallDetailPageResponseBodyDataList) SetCallId(v string) *QueryAiCallDetailPageResponseBodyDataList {
+	s.CallId = &v
 	return s
 }
 

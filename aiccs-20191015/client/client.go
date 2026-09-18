@@ -24,33 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("aiccs.aliyuncs.com"),
-		"us-east-1":             dara.String("aiccs.aliyuncs.com"),
-		"me-east-1":             dara.String("aiccs.aliyuncs.com"),
-		"eu-west-1":             dara.String("aiccs.aliyuncs.com"),
-		"eu-central-1":          dara.String("aiccs.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("aiccs.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("aiccs.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("aiccs.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("aiccs.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("aiccs.aliyuncs.com"),
-		"cn-shanghai":           dara.String("aiccs.aliyuncs.com"),
-		"cn-qingdao":            dara.String("aiccs.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("aiccs.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("aiccs.aliyuncs.com"),
-		"cn-hongkong":           dara.String("aiccs.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("aiccs.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("aiccs.aliyuncs.com"),
-		"cn-chengdu":            dara.String("aiccs.aliyuncs.com"),
-		"cn-beijing-finance-1":  dara.String("aiccs.aliyuncs.com"),
-		"cn-beijing":            dara.String("aiccs.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("aiccs.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("aiccs.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("aiccs.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("aiccs.aliyuncs.com"),
-	}
+	client.EndpointRule = dara.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1697,11 +1671,11 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates a call task.
+// Creates a voice call task.
 //
 // Description:
 //
-// Before creating a call task, make a test call with an agent to ensure the results meet your requirements.
+// Before creating a voice call task, use an agent to perform a test call to confirm that the results meet your requirements.
 //
 // @param tmpReq - CreateAiCallTaskRequest
 //
@@ -1729,6 +1703,10 @@ func (client *Client) CreateAiCallTaskWithOptions(tmpReq *CreateAiCallTaskReques
 		request.CallTimeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTime, dara.String("CallTime"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.CallableTime) {
+		request.CallableTimeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallableTime, dara.String("CallableTime"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		query["AgentId"] = request.AgentId
@@ -1740,6 +1718,18 @@ func (client *Client) CreateAiCallTaskWithOptions(tmpReq *CreateAiCallTaskReques
 
 	if !dara.IsNil(request.CallDayShrink) {
 		query["CallDay"] = request.CallDayShrink
+	}
+
+	if !dara.IsNil(request.CallExpireDate) {
+		query["CallExpireDate"] = request.CallExpireDate
+	}
+
+	if !dara.IsNil(request.CallExpireMinutes) {
+		query["CallExpireMinutes"] = request.CallExpireMinutes
+	}
+
+	if !dara.IsNil(request.CallExpireType) {
+		query["CallExpireType"] = request.CallExpireType
 	}
 
 	if !dara.IsNil(request.CallRetryInterval) {
@@ -1756,6 +1746,10 @@ func (client *Client) CreateAiCallTaskWithOptions(tmpReq *CreateAiCallTaskReques
 
 	if !dara.IsNil(request.CallTimeShrink) {
 		query["CallTime"] = request.CallTimeShrink
+	}
+
+	if !dara.IsNil(request.CallableTimeShrink) {
+		query["CallableTime"] = request.CallableTimeShrink
 	}
 
 	if !dara.IsNil(request.LineEncoding) {
@@ -1835,11 +1829,11 @@ func (client *Client) CreateAiCallTaskWithOptions(tmpReq *CreateAiCallTaskReques
 
 // Summary:
 //
-// Creates a call task.
+// Creates a voice call task.
 //
 // Description:
 //
-// Before creating a call task, make a test call with an agent to ensure the results meet your requirements.
+// Before creating a voice call task, use an agent to perform a test call to confirm that the results meet your requirements.
 //
 // @param request - CreateAiCallTaskRequest
 //
@@ -3944,17 +3938,17 @@ func (client *Client) FetchCall(request *FetchCallRequest) (_result *FetchCallRe
 
 // Summary:
 //
-// End the hotline service by instance ID and agent account name.
+// Ends a hotline service based on the instance ID and agent account name.
 //
 // Description:
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user API call frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
 // - API frequency: 100 calls per second.
 //
-// > If the total number of calls from multiple users exceeds the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - FinishHotlineServiceRequest
 //
@@ -4006,17 +4000,17 @@ func (client *Client) FinishHotlineServiceWithOptions(request *FinishHotlineServ
 
 // Summary:
 //
-// End the hotline service by instance ID and agent account name.
+// Ends a hotline service based on the instance ID and agent account name.
 //
 // Description:
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user API call frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
 // - API frequency: 100 calls per second.
 //
-// > If the total number of calls from multiple users exceeds the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - FinishHotlineServiceRequest
 //
@@ -6626,29 +6620,29 @@ func (client *Client) GetHotlineWaitingNumber(request *GetHotlineWaitingNumberRe
 
 // Summary:
 //
-// You can obtain the current statistical metrics (real-time data) and query them by instance ID, department, or skill group.
+// Retrieves current data statistics metrics (real-time data), supporting queries grouped by instance ID, department, or skill group.
 //
 // Description:
 //
-// - The current data statistics metrics include cumulative metrics for the day and real-time metrics.
+// - Current data statistics metrics include cumulative metrics for the current day and real-time metrics.
 //
-// - If you need to specify department or skill group information, refer to the instructions in the [Request Parameters](#api-detail-35) section.
+// - To specify department or skill group information, follow the instructions in the [request parameters](#api-detail-35) descriptions to obtain the required values.
 //
 // > Query logic priority:
 //
-// > - If GroupIds is not empty, query the data metrics for the specified skill groups.
+// > - If GroupIds is not empty, the data metrics for the corresponding skill group list are queried.
 //
-// > - Otherwise, if DepIds is not empty, query the data metrics for the specified departments.
+// > - Otherwise, if DepIds is not empty, the data metrics for the corresponding department list are queried.
 //
-// > - Otherwise, query the data metrics for the Artificial Intelligence Cloud Call Service (AICCS) instance.
+// > - Otherwise, the data metrics for the AICCS instance are queried.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: No throttling.
 //
-// - API frequency: 100 times per second.
+// - API frequency: 100 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - GetIndexCurrentValueRequest
 //
@@ -6700,29 +6694,29 @@ func (client *Client) GetIndexCurrentValueWithOptions(request *GetIndexCurrentVa
 
 // Summary:
 //
-// You can obtain the current statistical metrics (real-time data) and query them by instance ID, department, or skill group.
+// Retrieves current data statistics metrics (real-time data), supporting queries grouped by instance ID, department, or skill group.
 //
 // Description:
 //
-// - The current data statistics metrics include cumulative metrics for the day and real-time metrics.
+// - Current data statistics metrics include cumulative metrics for the current day and real-time metrics.
 //
-// - If you need to specify department or skill group information, refer to the instructions in the [Request Parameters](#api-detail-35) section.
+// - To specify department or skill group information, follow the instructions in the [request parameters](#api-detail-35) descriptions to obtain the required values.
 //
 // > Query logic priority:
 //
-// > - If GroupIds is not empty, query the data metrics for the specified skill groups.
+// > - If GroupIds is not empty, the data metrics for the corresponding skill group list are queried.
 //
-// > - Otherwise, if DepIds is not empty, query the data metrics for the specified departments.
+// > - Otherwise, if DepIds is not empty, the data metrics for the corresponding department list are queried.
 //
-// > - Otherwise, query the data metrics for the Artificial Intelligence Cloud Call Service (AICCS) instance.
+// > - Otherwise, the data metrics for the AICCS instance are queried.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: No throttling.
 //
-// - API frequency: 100 times per second.
+// - API frequency: 100 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - GetIndexCurrentValueRequest
 //
@@ -9014,19 +9008,19 @@ func (client *Client) HoldCall(request *HoldCallRequest) (_result *HoldCallRespo
 
 // Summary:
 //
-// Query call details by instance ID.
+// Queries call details by instance ID.
 //
 // Description:
 //
-// Call details include the total number of records, call result, agent name, call time, and other information.
+// Call details include the total number of records, call results, agent names, call time, and other information.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No Rate Limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 80 queries per second (QPS).
+// - API frequency: 80 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - HotlineSessionQueryRequest
 //
@@ -9174,19 +9168,19 @@ func (client *Client) HotlineSessionQueryWithOptions(request *HotlineSessionQuer
 
 // Summary:
 //
-// Query call details by instance ID.
+// Queries call details by instance ID.
 //
 // Description:
 //
-// Call details include the total number of records, call result, agent name, call time, and other information.
+// Call details include the total number of records, call results, agent names, call time, and other information.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No Rate Limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 80 queries per second (QPS).
+// - API frequency: 80 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - HotlineSessionQueryRequest
 //
@@ -9204,7 +9198,7 @@ func (client *Client) HotlineSessionQuery(request *HotlineSessionQueryRequest) (
 
 // Summary:
 //
-// Imports a single phone number to a task.
+// Imports a single phone number record.
 //
 // @param tmpReq - ImportOneTaskPhoneNumberRequest
 //
@@ -9227,6 +9221,10 @@ func (client *Client) ImportOneTaskPhoneNumberWithOptions(tmpReq *ImportOneTaskP
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EncryptionType) {
 		query["EncryptionType"] = request.EncryptionType
+	}
+
+	if !dara.IsNil(request.Extension) {
+		query["Extension"] = request.Extension
 	}
 
 	if !dara.IsNil(request.OutId) {
@@ -9282,7 +9280,7 @@ func (client *Client) ImportOneTaskPhoneNumberWithOptions(tmpReq *ImportOneTaskP
 
 // Summary:
 //
-// Imports a single phone number to a task.
+// Imports a single phone number record.
 //
 // @param request - ImportOneTaskPhoneNumberRequest
 //
@@ -9760,21 +9758,21 @@ func (client *Client) ListAgentBySkillGroupId(request *ListAgentBySkillGroupIdRe
 
 // Summary:
 //
-// Retrieve the list of robot scripts, including robot type, robot name, robot ID, associated business, and industry information.
+// Retrieves the list of robot scripts, including the robot type, robot name, robot ID, associated business, and industry information.
 //
 // Description:
 //
-// - Before invoking this API, ensure that you already have scripts that have passed the Review.
+// - Before calling this operation, make sure you have scripts that have passed review.
 //
-// - If you do not have any scripts that have passed the Review, add a script and submit it for Review in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface first.
+// - If you do not have any approved scripts, first add scripts and submit them for review on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No Rate Limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 500 queries per second.
+// - API frequency: 500 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttle will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - ListAiccsRobotRequest
 //
@@ -9830,21 +9828,21 @@ func (client *Client) ListAiccsRobotWithOptions(request *ListAiccsRobotRequest, 
 
 // Summary:
 //
-// Retrieve the list of robot scripts, including robot type, robot name, robot ID, associated business, and industry information.
+// Retrieves the list of robot scripts, including the robot type, robot name, robot ID, associated business, and industry information.
 //
 // Description:
 //
-// - Before invoking this API, ensure that you already have scripts that have passed the Review.
+// - Before calling this operation, make sure you have scripts that have passed review.
 //
-// - If you do not have any scripts that have passed the Review, add a script and submit it for Review in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface first.
+// - If you do not have any approved scripts, first add scripts and submit them for review on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No Rate Limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 500 queries per second.
+// - API frequency: 500 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttle will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - ListAiccsRobotRequest
 //
@@ -10366,21 +10364,21 @@ func (client *Client) ListOutboundPhoneNumber(request *ListOutboundPhoneNumberRe
 
 // Summary:
 //
-// Query Intelligent Contact Robot call records.
+// Queries the call records of an intelligent contact robot.
 //
 // Description:
 //
-// - Before invoking this API, ensure that you have already initiated an outbound job using the Intelligent Contact Robot.
+// - Before calling this operation, make sure that you have initiated an outbound call task by using the intelligent contact robot.
 //
-// - If you have not yet initiated an outbound job using the Intelligent Contact Robot, you can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API to start one.
+// - If you have not initiated an outbound call task by using the intelligent contact robot, call the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) operation to initiate an outbound call task.
 //
-// ### Queries per second (QPS) Limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 500 queries per second.
+// - API frequency: 500 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is triggered.
 //
 // @param request - ListRobotCallDialogRequest
 //
@@ -10440,21 +10438,21 @@ func (client *Client) ListRobotCallDialogWithOptions(request *ListRobotCallDialo
 
 // Summary:
 //
-// Query Intelligent Contact Robot call records.
+// Queries the call records of an intelligent contact robot.
 //
 // Description:
 //
-// - Before invoking this API, ensure that you have already initiated an outbound job using the Intelligent Contact Robot.
+// - Before calling this operation, make sure that you have initiated an outbound call task by using the intelligent contact robot.
 //
-// - If you have not yet initiated an outbound job using the Intelligent Contact Robot, you can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API to start one.
+// - If you have not initiated an outbound call task by using the intelligent contact robot, call the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) operation to initiate an outbound call task.
 //
-// ### Queries per second (QPS) Limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 500 queries per second.
+// - API frequency: 500 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is triggered.
 //
 // @param request - ListRobotCallDialogRequest
 //
@@ -10938,25 +10936,25 @@ func (client *Client) ListTask(request *ListTaskRequest) (_result *ListTaskRespo
 
 // Summary:
 //
-// Obtain the detail information of Intelligent Contact Robot call jobs.
+// Retrieves the details of a call task for an intelligent contact robot.
 //
 // Description:
 //
-// - You can invoke this API to obtain the detail information of Intelligent Contact Robot call jobs. Alternatively, you can view this information in the **Detail*	- interface under [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+// - Call this operation to retrieve the details of a call task for an intelligent contact robot. You can also view the details on the [**Task Management**](https://aiccs.console.aliyun.com/job/list) > **Details*	- page.
 //
-// - Before invoking this API, ensure that you have created an Intelligent Contact Robot and successfully started a job.
+// - Before calling this operation, make sure that the intelligent contact robot you created has successfully started a task.
 //
-// - If you do not have any successfully created Intelligent Contact Robot call jobs, you can create and start a job in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface, or use the [CreateTask](https://help.aliyun.com/document_detail/2718003.html) and [StartTask](https://help.aliyun.com/document_detail/2718005.html) APIs to create and start a job.
+// - If you do not have a created call task, create and start a task on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or by calling the [CreateTask](https://help.aliyun.com/document_detail/2718003.html) and [StartTask](https://help.aliyun.com/document_detail/2718005.html) operations.
 //
-// - The optional parameters in this API serve as filter conditions for the detail information of Intelligent Contact Robot call jobs. If these parameters are not specified, all job details will be queried.
+// - The optional parameters in this operation are filter conditions for the call task details. If you do not specify them, all task details are returned.
 //
-// ### queries per second (QPS) Limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 500 queries per second.
+// - API frequency: 500 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is triggered.
 //
 // @param request - ListTaskDetailRequest
 //
@@ -11036,25 +11034,25 @@ func (client *Client) ListTaskDetailWithOptions(request *ListTaskDetailRequest, 
 
 // Summary:
 //
-// Obtain the detail information of Intelligent Contact Robot call jobs.
+// Retrieves the details of a call task for an intelligent contact robot.
 //
 // Description:
 //
-// - You can invoke this API to obtain the detail information of Intelligent Contact Robot call jobs. Alternatively, you can view this information in the **Detail*	- interface under [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+// - Call this operation to retrieve the details of a call task for an intelligent contact robot. You can also view the details on the [**Task Management**](https://aiccs.console.aliyun.com/job/list) > **Details*	- page.
 //
-// - Before invoking this API, ensure that you have created an Intelligent Contact Robot and successfully started a job.
+// - Before calling this operation, make sure that the intelligent contact robot you created has successfully started a task.
 //
-// - If you do not have any successfully created Intelligent Contact Robot call jobs, you can create and start a job in the [Task Management](https://aiccs.console.aliyun.com/job/list) interface, or use the [CreateTask](https://help.aliyun.com/document_detail/2718003.html) and [StartTask](https://help.aliyun.com/document_detail/2718005.html) APIs to create and start a job.
+// - If you do not have a created call task, create and start a task on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or by calling the [CreateTask](https://help.aliyun.com/document_detail/2718003.html) and [StartTask](https://help.aliyun.com/document_detail/2718005.html) operations.
 //
-// - The optional parameters in this API serve as filter conditions for the detail information of Intelligent Contact Robot call jobs. If these parameters are not specified, all job details will be queried.
+// - The optional parameters in this operation are filter conditions for the call task details. If you do not specify them, all task details are returned.
 //
-// ### queries per second (QPS) Limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 500 queries per second.
+// - API frequency: 500 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is triggered.
 //
 // @param request - ListTaskDetailRequest
 //
@@ -11866,13 +11864,13 @@ func (client *Client) PageQueryAgentListNew(request *PageQueryAgentListNewReques
 
 // Summary:
 //
-// Runs a paginated query for call task details.
+// Queries call task details by page.
 //
 // Description:
 //
-// - You must create a call task before you can query its details.
+// - Before querying call task details, make sure that you have created a call task.
 //
-// - You can create a call task on the **call task management*	- page or by calling the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) API.
+// - If you have not created a call task, create one on the **Call Task Management*	- page or by calling the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) operation.
 //
 // @param tmpReq - QueryAiCallDetailPageRequest
 //
@@ -11998,13 +11996,13 @@ func (client *Client) QueryAiCallDetailPageWithOptions(tmpReq *QueryAiCallDetail
 
 // Summary:
 //
-// Runs a paginated query for call task details.
+// Queries call task details by page.
 //
 // Description:
 //
-// - You must create a call task before you can query its details.
+// - Before querying call task details, make sure that you have created a call task.
 //
-// - You can create a call task on the **call task management*	- page or by calling the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) API.
+// - If you have not created a call task, create one on the **Call Task Management*	- page or by calling the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) operation.
 //
 // @param request - QueryAiCallDetailPageRequest
 //
@@ -12022,7 +12020,7 @@ func (client *Client) QueryAiCallDetailPage(request *QueryAiCallDetailPageReques
 
 // Summary:
 //
-// Gets basic information for a call task.
+// Queries the basic information of a call task.
 //
 // @param request - QueryAiCallTaskDetailRequest
 //
@@ -12078,7 +12076,7 @@ func (client *Client) QueryAiCallTaskDetailWithOptions(request *QueryAiCallTaskD
 
 // Summary:
 //
-// Gets basic information for a call task.
+// Queries the basic information of a call task.
 //
 // @param request - QueryAiCallTaskDetailRequest
 //
@@ -12096,7 +12094,7 @@ func (client *Client) QueryAiCallTaskDetail(request *QueryAiCallTaskDetailReques
 
 // Summary:
 //
-// Retrieves a list of call tasks.
+// Queries the list of voice call tasks.
 //
 // @param request - QueryAiCallTaskPageRequest
 //
@@ -12180,7 +12178,7 @@ func (client *Client) QueryAiCallTaskPageWithOptions(request *QueryAiCallTaskPag
 
 // Summary:
 //
-// Retrieves a list of call tasks.
+// Queries the list of voice call tasks.
 //
 // @param request - QueryAiCallTaskPageRequest
 //
@@ -12468,15 +12466,15 @@ func (client *Client) QueryConversationDetailInfo(request *QueryConversationDeta
 
 // Summary:
 //
-// Queries the details of a call task and call records.
+// Queries the details of a call task and call conversation information.
 //
 // Description:
 //
-// - You can call this operation to query call details. You can also view call details in the **Call Task Management*	- > **Details*	- > **Execution Records*	- > **Completed*	- > **Call Details*	- console.
+// - You can use this operation to query call details. You can also view call details in the **Call Task Management*	- > **Details*	- > **Execution Records*	- > **Completed*	- > **Call Details*	- console.
 //
 // - Before calling this operation, make sure that you have created a call task and imported callee data.
 //
-// - If you do not have a created call task, create a call task and import callee data in the **Call Task Management*	- console, or call the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) and [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) operations to create a call task and import callee data.
+// - If you do not have a created call task, create a call task and import callee data in the **Call Task Management*	- console, or use the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) and [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) operations to create a call task and import callee data.
 //
 // @param request - QueryConversationDetailInfoNewRequest
 //
@@ -12544,15 +12542,15 @@ func (client *Client) QueryConversationDetailInfoNewWithOptions(request *QueryCo
 
 // Summary:
 //
-// Queries the details of a call task and call records.
+// Queries the details of a call task and call conversation information.
 //
 // Description:
 //
-// - You can call this operation to query call details. You can also view call details in the **Call Task Management*	- > **Details*	- > **Execution Records*	- > **Completed*	- > **Call Details*	- console.
+// - You can use this operation to query call details. You can also view call details in the **Call Task Management*	- > **Details*	- > **Execution Records*	- > **Completed*	- > **Call Details*	- console.
 //
 // - Before calling this operation, make sure that you have created a call task and imported callee data.
 //
-// - If you do not have a created call task, create a call task and import callee data in the **Call Task Management*	- console, or call the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) and [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) operations to create a call task and import callee data.
+// - If you do not have a created call task, create a call task and import callee data in the **Call Task Management*	- console, or use the [CreateAiCallTask](https://help.aliyun.com/document_detail/2926796.html) and [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) operations to create a call task and import callee data.
 //
 // @param request - QueryConversationDetailInfoNewRequest
 //
@@ -13774,23 +13772,23 @@ func (client *Client) RestartOutboundTask(request *RestartOutboundTaskRequest) (
 
 // Summary:
 //
-// Initiate an outbound call using the Intelligent Contact Robot.
+// Initiates an outbound call from an intelligent contact robot.
 //
 // Description:
 //
-// - Before initiating an outbound call using the Intelligent Contact Robot, ensure that you already have a reviewed and approved script in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface and an approved real number in the Voice Service [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) interface.
+// - Before initiating an outbound call from an intelligent contact robot, make sure that you have an approved script on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page and an approved real number on the [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) page of the voice messaging service.
 //
-// - You can obtain the creation time of the call from the **date*	- parameter in the **Response Header*	- after invoking this API.
+// - You can obtain the creation time of the call from the **date*	- parameter in the **Response Header*	- after calling this operation.
 //
-// > For example, if the **date*	- parameter is: `"date": "Mon, 24 Jun 2024 03:40:31 GMT"`, then the call creation time is: `"2024-06-24 03:40:31"`.
+// > For example, if the **date*	- parameter is "date": "Mon, 24 Jun 2024 03:40:31 GMT", the creation time of the call is "2024-06-24 03:40:31".
 //
-// ### queries per second (QPS) Limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 1000 calls per second.
+// - API frequency: 1,000 calls per second.
 //
-// > If the total calls from multiple users exceed the API frequency limit, throttle will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - RobotCallRequest
 //
@@ -13870,23 +13868,23 @@ func (client *Client) RobotCallWithOptions(request *RobotCallRequest, runtime *d
 
 // Summary:
 //
-// Initiate an outbound call using the Intelligent Contact Robot.
+// Initiates an outbound call from an intelligent contact robot.
 //
 // Description:
 //
-// - Before initiating an outbound call using the Intelligent Contact Robot, ensure that you already have a reviewed and approved script in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface and an approved real number in the Voice Service [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) interface.
+// - Before initiating an outbound call from an intelligent contact robot, make sure that you have an approved script on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page and an approved real number on the [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) page of the voice messaging service.
 //
-// - You can obtain the creation time of the call from the **date*	- parameter in the **Response Header*	- after invoking this API.
+// - You can obtain the creation time of the call from the **date*	- parameter in the **Response Header*	- after calling this operation.
 //
-// > For example, if the **date*	- parameter is: `"date": "Mon, 24 Jun 2024 03:40:31 GMT"`, then the call creation time is: `"2024-06-24 03:40:31"`.
+// > For example, if the **date*	- parameter is "date": "Mon, 24 Jun 2024 03:40:31 GMT", the creation time of the call is "2024-06-24 03:40:31".
 //
-// ### queries per second (QPS) Limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 1000 calls per second.
+// - API frequency: 1,000 calls per second.
 //
-// > If the total calls from multiple users exceed the API frequency limit, throttle will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - RobotCallRequest
 //
@@ -13904,21 +13902,21 @@ func (client *Client) RobotCall(request *RobotCallRequest) (_result *RobotCallRe
 
 // Summary:
 //
-// Initiate an Intelligent Speech Interaction call based on the callee\\"s caller ID, callee number, and intelligent outbound call audio file.
+// Initiates an intelligent interactive voice response call based on the China-only caller ID, called number, and intelligent outbound call audio file.
 //
 // Description:
 //
-// - The following characters cannot appear in the Intelligent Speech Interaction SendCcoSmartCall callback: `@ = : "" $ { } ^ 	- ￥`.
+// - The following characters cannot appear in the intelligent interactive voice response SendCcoSmartCall callback: `@ = : "" $ { } ^ 	- ￥`.
 //
-// - After invoking this API, the **Data*	- field in the response contains the unique receipt ID for this call, which can be used when invoking the [SendCcoSmartCallOperate](https://help.aliyun.com/document_detail/2718013.html) API.
+// - After you invoke this operation, the **Data*	- response parameter returns the unique receipt ID for this call, which can be used to invoke the [SendCcoSmartCallOperate](https://help.aliyun.com/document_detail/2718013.html) operation.
 //
-// ### Queries Per Second (QPS) Limits
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: No throttling.
 //
-// - API frequency: 100 queries per second (QPS).
+// - API frequency: 100 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - SendCcoSmartCallRequest
 //
@@ -14086,21 +14084,21 @@ func (client *Client) SendCcoSmartCallWithOptions(request *SendCcoSmartCallReque
 
 // Summary:
 //
-// Initiate an Intelligent Speech Interaction call based on the callee\\"s caller ID, callee number, and intelligent outbound call audio file.
+// Initiates an intelligent interactive voice response call based on the China-only caller ID, called number, and intelligent outbound call audio file.
 //
 // Description:
 //
-// - The following characters cannot appear in the Intelligent Speech Interaction SendCcoSmartCall callback: `@ = : "" $ { } ^ 	- ￥`.
+// - The following characters cannot appear in the intelligent interactive voice response SendCcoSmartCall callback: `@ = : "" $ { } ^ 	- ￥`.
 //
-// - After invoking this API, the **Data*	- field in the response contains the unique receipt ID for this call, which can be used when invoking the [SendCcoSmartCallOperate](https://help.aliyun.com/document_detail/2718013.html) API.
+// - After you invoke this operation, the **Data*	- response parameter returns the unique receipt ID for this call, which can be used to invoke the [SendCcoSmartCallOperate](https://help.aliyun.com/document_detail/2718013.html) operation.
 //
-// ### Queries Per Second (QPS) Limits
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: No throttling.
 //
-// - API frequency: 100 queries per second (QPS).
+// - API frequency: 100 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is also triggered.
 //
 // @param request - SendCcoSmartCallRequest
 //
@@ -14736,21 +14734,21 @@ func (client *Client) StartChatWork(request *StartChatWorkRequest) (_result *Sta
 
 // Summary:
 //
-// Sign in a hotline agent by instance ID and agent account name to start the hotline service.
+// Signs in a hotline agent based on the instance ID and agent account name to start the hotline service.
 //
 // Description:
 //
-// - The **Data*	- parameter returned by this API is the token required to initiate a heartbeat.
+// - The **Data*	- parameter returned by this operation is the token required to initiate a heartbeat.
 //
-// - If the agent takes a break, you can pause the hotline service by invoking the [SuspendHotlineService](https://help.aliyun.com/document_detail/2718046.html) API.
+// - To pause the hotline service when an agent takes a short break, call the [SuspendHotlineService](https://help.aliyun.com/document_detail/2718046.html) operation.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 100 queries per second.
+// - API frequency: 100 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is triggered.
 //
 // @param request - StartHotlineServiceRequest
 //
@@ -14802,21 +14800,21 @@ func (client *Client) StartHotlineServiceWithOptions(request *StartHotlineServic
 
 // Summary:
 //
-// Sign in a hotline agent by instance ID and agent account name to start the hotline service.
+// Signs in a hotline agent based on the instance ID and agent account name to start the hotline service.
 //
 // Description:
 //
-// - The **Data*	- parameter returned by this API is the token required to initiate a heartbeat.
+// - The **Data*	- parameter returned by this operation is the token required to initiate a heartbeat.
 //
-// - If the agent takes a break, you can pause the hotline service by invoking the [SuspendHotlineService](https://help.aliyun.com/document_detail/2718046.html) API.
+// - To pause the hotline service when an agent takes a short break, call the [SuspendHotlineService](https://help.aliyun.com/document_detail/2718046.html) operation.
 //
-// ### Queries per second (QPS) limit
+// ### QPS limit
 //
-// - Per-user invocation frequency: No rate limiting.
+// - Per-user call frequency: not throttled.
 //
-// - API frequency: 100 queries per second.
+// - API frequency: 100 calls per second.
 //
-// > If the total invocations from multiple users exceed the API frequency limit, throttling will be triggered.
+// > If the total calls from multiple users exceed the API frequency, throttling is triggered.
 //
 // @param request - StartHotlineServiceRequest
 //
@@ -15952,11 +15950,11 @@ func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateA
 
 // Summary:
 //
-// Updates a call task configuration.
+// Updates the configuration of a voice call task.
 //
 // Description:
 //
-// Ensure the call task is stopped before you update its configuration.
+// Before updating the configuration of a call task, make sure that the task status is stopped.
 //
 // @param tmpReq - UpdateAiCallTaskRequest
 //
@@ -15984,9 +15982,25 @@ func (client *Client) UpdateAiCallTaskWithOptions(tmpReq *UpdateAiCallTaskReques
 		request.CallTimeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallTime, dara.String("CallTime"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.CallableTime) {
+		request.CallableTimeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallableTime, dara.String("CallableTime"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallDayShrink) {
 		query["CallDay"] = request.CallDayShrink
+	}
+
+	if !dara.IsNil(request.CallExpireDate) {
+		query["CallExpireDate"] = request.CallExpireDate
+	}
+
+	if !dara.IsNil(request.CallExpireMinutes) {
+		query["CallExpireMinutes"] = request.CallExpireMinutes
+	}
+
+	if !dara.IsNil(request.CallExpireType) {
+		query["CallExpireType"] = request.CallExpireType
 	}
 
 	if !dara.IsNil(request.CallRetryInterval) {
@@ -16003,6 +16017,10 @@ func (client *Client) UpdateAiCallTaskWithOptions(tmpReq *UpdateAiCallTaskReques
 
 	if !dara.IsNil(request.CallTimeShrink) {
 		query["CallTime"] = request.CallTimeShrink
+	}
+
+	if !dara.IsNil(request.CallableTimeShrink) {
+		query["CallableTime"] = request.CallableTimeShrink
 	}
 
 	if !dara.IsNil(request.LineEncoding) {
@@ -16086,11 +16104,11 @@ func (client *Client) UpdateAiCallTaskWithOptions(tmpReq *UpdateAiCallTaskReques
 
 // Summary:
 //
-// Updates a call task configuration.
+// Updates the configuration of a voice call task.
 //
 // Description:
 //
-// Ensure the call task is stopped before you update its configuration.
+// Before updating the configuration of a call task, make sure that the task status is stopped.
 //
 // @param request - UpdateAiCallTaskRequest
 //
@@ -16454,7 +16472,7 @@ func (client *Client) UpdateLargeModel(request *UpdateLargeModelRequest) (_resul
 
 // Summary:
 //
-// # Edit Model Application
+// Modifies a model application.
 //
 // @param tmpReq - UpdateModelApplicationRequest
 //
@@ -16587,6 +16605,10 @@ func (client *Client) UpdateModelApplicationWithOptions(tmpReq *UpdateModelAppli
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !dara.IsNil(request.PauseTime) {
+		query["PauseTime"] = request.PauseTime
+	}
+
 	if !dara.IsNil(request.Prompt) {
 		query["Prompt"] = request.Prompt
 	}
@@ -16668,7 +16690,7 @@ func (client *Client) UpdateModelApplicationWithOptions(tmpReq *UpdateModelAppli
 
 // Summary:
 //
-// # Edit Model Application
+// Modifies a model application.
 //
 // @param request - UpdateModelApplicationRequest
 //

@@ -24,7 +24,7 @@ type iUpdateAiCallTaskResponseBody interface {
 }
 
 type UpdateAiCallTaskResponseBody struct {
-	// The reason why access was denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
@@ -36,21 +36,21 @@ type UpdateAiCallTaskResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the task was updated successfully. Valid values:
+	// The update result. Valid values:
 	//
-	// - **true**: The update is successful.
+	// - **true**: Updated.
 	//
-	// - **false**: The update failed.
+	// - **false**: Failed to update.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message that is returned when an error occurs.
+	// The error message. This parameter is returned only when an exception occurs.
 	//
 	// example:
 	//
-	// 参数不合法
+	// Invalid parameter
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -58,7 +58,7 @@ type UpdateAiCallTaskResponseBody struct {
 	//
 	// FCD94A7F-316D-54D1-9BFC-814006CB1C34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
 	// - **true**: Successful.
 	//

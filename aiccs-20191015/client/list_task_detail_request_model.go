@@ -32,13 +32,13 @@ type iListTaskDetailRequest interface {
 }
 
 type ListTaskDetailRequest struct {
-	// The callee number. You can view the callee number on the **Detail*	- interface of [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+	// The called number. You can view the called number on the [**Task Management**](https://aiccs.console.aliyun.com/job/list) > **Details*	- page.
 	//
 	// example:
 	//
 	// 186****0000
 	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
-	// The detail ID. You can view the detail ID on the **Detail*	- interface of [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+	// The detail ID. You can view the detail ID on the [**Task Management**](https://aiccs.console.aliyun.com/job/list) > **Details*	- page.
 	//
 	// example:
 	//
@@ -59,7 +59,7 @@ type ListTaskDetailRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Detail status. Valid values:
+	// The detail status. Valid values:
 	//
 	// - **SUCCESS**: The outbound call succeeded.
 	//
@@ -71,13 +71,13 @@ type ListTaskDetailRequest struct {
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The call status code. For more information, see [Call Status Codes](https://help.aliyun.com/document_detail/112804.html) in Voice Service.
+	// The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in Voice Messaging.
 	//
 	// example:
 	//
 	// 200100
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The job ID. You can view the job ID on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or obtain it by using the [ListTask](https://help.aliyun.com/document_detail/2718008.html) API.
+	// The task ID. You can view the task ID on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or obtain it by calling the [ListTask](https://help.aliyun.com/document_detail/2718008.html) operation.
 	//
 	// This parameter is required.
 	//

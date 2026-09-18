@@ -24,7 +24,7 @@ type iQueryAiCallTaskPageResponseBody interface {
 }
 
 type QueryAiCallTaskPageResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type QueryAiCallTaskPageResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the tasks.
+	// The task details.
 	Data *QueryAiCallTaskPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is returned only if the call fails.
+	// The error message. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
-	// 参数不合法
+	// Invalid parameter.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -50,11 +50,11 @@ type QueryAiCallTaskPageResponseBody struct {
 	//
 	// B99C5955-5664-573D-97BE-A7CC1AFD8401
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: failed.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *QueryAiCallTaskPageResponseBody) Validate() error {
 }
 
 type QueryAiCallTaskPageResponseBodyData struct {
-	// The tasks.
+	// The task data.
 	List []*QueryAiCallTaskPageResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type QueryAiCallTaskPageResponseBodyData struct {
 	//
 	// 74
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -224,35 +224,47 @@ type QueryAiCallTaskPageResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 测试智能体
+	// TestAgent.
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// example:
 	//
-	// 示例值示例值示例值
+	// Sample value.
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
 	// example:
 	//
-	// 示例值
+	// Sample value.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The number of calls in progress.
+	// example:
+	//
+	// Sample value.
+	CallExpireDate *string `json:"CallExpireDate,omitempty" xml:"CallExpireDate,omitempty"`
+	// example:
+	//
+	// 39
+	CallExpireMinutes *int64 `json:"CallExpireMinutes,omitempty" xml:"CallExpireMinutes,omitempty"`
+	// example:
+	//
+	// 72
+	CallExpireType *int64 `json:"CallExpireType,omitempty" xml:"CallExpireType,omitempty"`
+	// The number of ongoing calls.
 	//
 	// example:
 	//
 	// 72
 	CallingCount *int64 `json:"CallingCount,omitempty" xml:"CallingCount,omitempty"`
-	// The completion rate of the task.
+	// The task completion rate.
 	//
 	// example:
 	//
 	// 70%
 	CompleteRate *string `json:"CompleteRate,omitempty" xml:"CompleteRate,omitempty"`
-	// The number of concurrent tasks.
+	// The task concurrency.
 	//
 	// example:
 	//
 	// 10
 	ConcurrentCount *int64 `json:"ConcurrentCount,omitempty" xml:"ConcurrentCount,omitempty"`
-	// The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -264,55 +276,55 @@ type QueryAiCallTaskPageResponseBodyDataList struct {
 	//
 	// 22
 	DayCallCount *int64 `json:"DayCallCount,omitempty" xml:"DayCallCount,omitempty"`
-	// The connection rate of the current day. This is the number of connected calls on the current day divided by the total number of calls on the current day (`DayCallCount`).
+	// The daily connection rate. Daily connection rate = number of connections on the current day ÷ number of calls on the current day (DayCallCount).
 	//
 	// example:
 	//
 	// 74.14%
 	DayConnectRate *string `json:"DayConnectRate,omitempty" xml:"DayConnectRate,omitempty"`
-	// The number of data entries imported on the current day.
+	// The amount of data imported on the current day.
 	//
 	// example:
 	//
 	// 400
 	DayImportCount *int64 `json:"DayImportCount,omitempty" xml:"DayImportCount,omitempty"`
-	// The total number of failed tasks.
+	// The total number of failed task executions.
 	//
 	// example:
 	//
 	// 61
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The historical connection rate. This is the historical number of connected calls divided by the total number of calls (`TotalCallCount`).
+	// The historical connection rate. Historical connection rate = historical number of connections ÷ total number of calls (TotalCallCount).
 	//
 	// example:
 	//
 	// 95.89%
 	HistoryConnectRate *string `json:"HistoryConnectRate,omitempty" xml:"HistoryConnectRate,omitempty"`
-	// The time when the task actually starts. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The actual start time of the task. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748932499000
 	RealStartTime *int64 `json:"RealStartTime,omitempty" xml:"RealStartTime,omitempty"`
-	// The reason why the task failed to start.
+	// The reason for startup failure.
 	//
 	// example:
 	//
-	// 智能体不在线
+	// Agent is offline.
 	StartFailedReason *string `json:"StartFailedReason,omitempty" xml:"StartFailedReason,omitempty"`
-	// The time when the task is scheduled to start. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The scheduled start time of the task. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748932499000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of successful tasks.
+	// The total number of successful task executions.
 	//
 	// example:
 	//
@@ -328,15 +340,15 @@ type QueryAiCallTaskPageResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 测试任务
+	// TestTask.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The total number of calls.
+	// The total number of calls made by the task.
 	//
 	// example:
 	//
 	// 58
 	TotalCallCount *int64 `json:"TotalCallCount,omitempty" xml:"TotalCallCount,omitempty"`
-	// The total number of tasks.
+	// The total number of task items.
 	//
 	// example:
 	//
@@ -366,6 +378,18 @@ func (s *QueryAiCallTaskPageResponseBodyDataList) GetApplicationCode() *string {
 
 func (s *QueryAiCallTaskPageResponseBodyDataList) GetApplicationName() *string {
 	return s.ApplicationName
+}
+
+func (s *QueryAiCallTaskPageResponseBodyDataList) GetCallExpireDate() *string {
+	return s.CallExpireDate
+}
+
+func (s *QueryAiCallTaskPageResponseBodyDataList) GetCallExpireMinutes() *int64 {
+	return s.CallExpireMinutes
+}
+
+func (s *QueryAiCallTaskPageResponseBodyDataList) GetCallExpireType() *int64 {
+	return s.CallExpireType
 }
 
 func (s *QueryAiCallTaskPageResponseBodyDataList) GetCallingCount() *int64 {
@@ -457,6 +481,21 @@ func (s *QueryAiCallTaskPageResponseBodyDataList) SetApplicationCode(v string) *
 
 func (s *QueryAiCallTaskPageResponseBodyDataList) SetApplicationName(v string) *QueryAiCallTaskPageResponseBodyDataList {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *QueryAiCallTaskPageResponseBodyDataList) SetCallExpireDate(v string) *QueryAiCallTaskPageResponseBodyDataList {
+	s.CallExpireDate = &v
+	return s
+}
+
+func (s *QueryAiCallTaskPageResponseBodyDataList) SetCallExpireMinutes(v int64) *QueryAiCallTaskPageResponseBodyDataList {
+	s.CallExpireMinutes = &v
+	return s
+}
+
+func (s *QueryAiCallTaskPageResponseBodyDataList) SetCallExpireType(v int64) *QueryAiCallTaskPageResponseBodyDataList {
+	s.CallExpireType = &v
 	return s
 }
 

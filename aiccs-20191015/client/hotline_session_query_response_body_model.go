@@ -22,27 +22,27 @@ type iHotlineSessionQueryResponseBody interface {
 }
 
 type HotlineSessionQueryResponseBody struct {
-	// Status code. A value of "Success" indicates that the request succeeded.
+	// The status code. A value of Success indicates that the request was successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Call data.
+	// The call data.
 	Data *HotlineSessionQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE339D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call succeeded.
+	// Indicates whether the API call was successful.
 	//
 	// example:
 	//
@@ -113,21 +113,21 @@ func (s *HotlineSessionQueryResponseBody) Validate() error {
 }
 
 type HotlineSessionQueryResponseBodyData struct {
-	// Call detail records.
+	// The call detail records.
 	CallDetailRecord []*HotlineSessionQueryResponseBodyDataCallDetailRecord `json:"CallDetailRecord,omitempty" xml:"CallDetailRecord,omitempty" type:"Repeated"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -193,263 +193,263 @@ func (s *HotlineSessionQueryResponseBodyData) Validate() error {
 }
 
 type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
-	// Session ID. The acid in WebSocket after an incoming call.
+	// The session ID. The acid in the websocket after an inbound call.
 	//
 	// example:
 	//
 	// 7719786
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	// Agent ID.
+	// The agent ID.
 	//
-	// > This field is null in non–change owner scenarios.
+	// > This value is Null in non-transfer scenarios.
 	//
 	// example:
 	//
 	// 12
 	ActiveTransferId *string `json:"ActiveTransferId,omitempty" xml:"ActiveTransferId,omitempty"`
-	// Call duration, in seconds.
+	// The call duration. Unit: seconds.
 	//
-	// > Unconnected calls do not include call duration.
+	// > No call duration is available for unanswered calls.
 	//
 	// example:
 	//
 	// 37
 	CallContinueTime *int32 `json:"CallContinueTime,omitempty" xml:"CallContinueTime,omitempty"`
-	// Call result. Valid values:
+	// The call result. Valid values:
 	//
-	// - **normal**: Normal hang-up.
+	// - **normal**: The call ended normally.
 	//
-	// - **touchRouteError**: Queue hang-up.
+	// - **touchRouteError**: The call was terminated in the queue.
 	//
-	// - **touchInQueue**: Queue hang-up.
+	// - **touchInQueue**: The call was terminated in the queue.
 	//
-	// - **touchInLoss**: Queue hang-up.
+	// - **touchInLoss**: The call was terminated in the queue.
 	//
-	// - **userHangup**: User hang-up or IVR hang-up.
+	// - **userHangup**: The user hung up or the call was terminated in the IVR.
 	//
-	// - **sysHangup**: System hang-up or IVR hang-up.
+	// - **sysHangup**: The system hung up or the call was terminated in the IVR.
 	//
-	// - **transferAgent**: User hang-up or IVR hang-up.
+	// - **transferAgent**: The user hung up or the call was terminated in the IVR.
 	//
-	// - **dailing**: Agent hang-up or ring-off hang-up.
+	// - **dailing**: The agent hung up or the call was terminated during ringing.
 	//
-	// - **TouchRingCallLoss**: Queue hang-up or ring-off hang-up.
+	// - **TouchRingCallLoss**: The call was terminated in the queue or during ringing.
 	//
 	// example:
 	//
 	// normal
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
-	// Call type. Valid values:
+	// The call type. Valid values:
 	//
-	// - **1**: Outbound call
+	// - **1**: outbound call
 	//
-	// - **2**: Inbound call
+	// - **2**: inbound call
 	//
-	// - **3**: Change owner
+	// - **3**: transferred call
 	//
 	// example:
 	//
 	// 1
 	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	// Called number.
+	// The called number.
 	//
 	// example:
 	//
 	// 135615*****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// Calling party number, such as a user\\"s phone number, agent number, or machine number.
+	// The number of the caller. For example, a mobile phone number, an agent number, or a robot number.
 	//
 	// example:
 	//
 	// 0571773
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// Call creation time.
+	// The time when the call was created.
 	//
-	// > - In outbound scenarios, this is the time when the outbound call was initiated.
+	// > - For outbound calls, this is the time when the outbound call was initiated.
 	//
-	// > - In inbound scenarios, this is the time when the call entered the ACC system.
+	// - For inbound calls, this is the time when the call entered the ACC system.
 	//
 	// example:
 	//
 	// 2020-10-02 22:32:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Satisfaction rating, indicated by star level. Valid values:
+	// The satisfaction rating level. Valid values:
 	//
-	// - **2**: Two-star satisfaction
+	// - **2**: level-2 satisfaction
 	//
-	// - **3**: Three-star satisfaction
+	// - **3**: level-3 satisfaction
 	//
-	// - **4**: Four-star satisfaction
+	// - **4**: level-4 satisfaction
 	//
-	// - **5**: Five-star satisfaction
+	// - **5**: level-5 satisfaction
 	//
-	// > This field has no data in outbound scenarios or scenarios where the call was not answered.
+	// > No data is available for outbound calls or unanswered calls.
 	//
 	// example:
 	//
 	// 4
 	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	// Satisfaction score. Valid values:
+	// The satisfaction score. Valid values:
 	//
-	// - **1**: Very dissatisfied
+	// - **1**: Very dissatisfied.
 	//
-	// - **2**: Dissatisfied
+	// - **2**: Dissatisfied.
 	//
-	// - **3**: Neutral
+	// - **3**: Average.
 	//
-	// - **4**: Satisfied
+	// - **4**: Satisfied.
 	//
-	// - **5**: Very satisfied
+	// - **5**: Very satisfied.
 	//
-	// > This field has no data in outbound scenarios or scenarios where the call was not answered.
+	// > No data is available for outbound calls or unanswered calls.
 	//
 	// example:
 	//
 	// 4
 	EvaluationScore *int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
-	// Skill group ID.
+	// The skill group ID.
 	//
-	// > When CallType is **1**, outbound call scenarios do not include skill group information.
+	// > When CallType is set to **1**, no skill group information is available for outbound calls.
 	//
 	// example:
 	//
 	// 123456
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Skill group name.
+	// The skill group name.
 	//
-	// > When CallType is **1**, outbound call scenarios do not include skill group information.
+	// > When CallType is set to **1**, no skill group information is available for outbound calls.
 	//
 	// example:
 	//
-	// 自动化技能组
+	// AutomationSkillGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Party that hung up. Valid values:
+	// The party that hung up. Valid values:
 	//
-	// - **1**: System hung up
+	// - **1**: System hung up.
 	//
-	// - **2**: Customer hung up
+	// - **2**: Customer hung up.
 	//
-	// - **3**: Agent hung up
+	// - **3**: Agent hung up.
 	//
-	// - **null**: Unknown
+	// - **null**: Unknown.
 	//
 	// example:
 	//
 	// 2
 	HangUpRole *string `json:"HangUpRole,omitempty" xml:"HangUpRole,omitempty"`
-	// Hang-up time.
+	// The hang-up time.
 	//
 	// example:
 	//
 	// 2020-10-02 22:33:46
 	HangUpTime *string `json:"HangUpTime,omitempty" xml:"HangUpTime,omitempty"`
-	// The GUID of the call detail record.
+	// The globally unique ID of the call details.
 	//
 	// example:
 	//
 	// acc1c58dab4a4dd280e3813c66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Time when the call entered the queue for assignment.
+	// The time when the call entered the queue for hotline assignment.
 	//
-	// > Outbound call scenarios do not include queue entry time.
+	// > No queue entry time is available for outbound calls.
 	//
 	// example:
 	//
 	// 2020-10-02 22:32:55
 	InQueueTime *string `json:"InQueueTime,omitempty" xml:"InQueueTime,omitempty"`
-	// Membership ID.
+	// The member ID.
 	//
 	// example:
 	//
 	// 7856876
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// Membership name.
+	// The member name.
 	//
 	// example:
 	//
-	// 匿名会员
+	// AnonymousMember
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// The time when the hotline call is assigned and dequeued.
+	// The time when the call left the queue for hotline assignment.
 	//
-	// > Outbound scenarios do not have a dequeue time.
+	// > No queue exit time is available for outbound calls.
 	//
 	// example:
 	//
 	// 2020-10-02 22:32:59
 	OutQueueTime *string `json:"OutQueueTime,omitempty" xml:"OutQueueTime,omitempty"`
-	// Agent ID. The phone number to which the call is transferred.
+	// The agent ID or transferred phone number.
 	//
-	// > This field is null in non-transfer scenarios.
+	// > This value is Null in non-transfer scenarios.
 	//
 	// example:
 	//
 	// 12
 	PassiveTransferId *string `json:"PassiveTransferId,omitempty" xml:"PassiveTransferId,omitempty"`
-	// The recipient of the transferred session. Valid values:
+	// The type of the party to which the session was transferred. Valid values:
 	//
 	// - **1**: Agent ID.
 	//
 	// - **2**: Transferred phone number.
 	//
-	// > This field is null in non-transfer scenarios.
+	// > This value is Null in non-transfer scenarios.
 	//
 	// example:
 	//
 	// 1
 	PassiveTransferIdType *string `json:"PassiveTransferIdType,omitempty" xml:"PassiveTransferIdType,omitempty"`
-	// The time when the call is answered.
+	// The time when the call was answered.
 	//
 	// example:
 	//
 	// 2020-10-02 22:33:09
 	PickUpTime *string `json:"PickUpTime,omitempty" xml:"PickUpTime,omitempty"`
-	// Queue duration.
+	// The queue wait duration.
 	//
 	// example:
 	//
 	// 4
 	QueueUpContinueTime *int32 `json:"QueueUpContinueTime,omitempty" xml:"QueueUpContinueTime,omitempty"`
-	// Ringing duration, in seconds.
+	// The ringing duration. Unit: seconds.
 	//
-	// > Outbound scenarios do not have ringing duration.
+	// > No ringing duration is available for outbound calls.
 	//
 	// example:
 	//
 	// 10
 	RingContinueTime *int32 `json:"RingContinueTime,omitempty" xml:"RingContinueTime,omitempty"`
-	// The time when ringing ends.
+	// The time when ringing ended.
 	//
-	// > Outbound scenarios do not have a ring end time.
+	// > No ringing end time is available for outbound calls.
 	//
 	// example:
 	//
 	// 2020-10-02 22:33:09
 	RingEndTime *string `json:"RingEndTime,omitempty" xml:"RingEndTime,omitempty"`
-	// Ringing start time.
+	// The time when ringing started.
 	//
-	// > Outbound call scenarios do not include ringing start time.
+	// > No ringing start time is available for outbound calls.
 	//
 	// example:
 	//
 	// 2020-10-02 22:32:59
 	RingStartTime *string `json:"RingStartTime,omitempty" xml:"RingStartTime,omitempty"`
-	// Agent ID.
+	// The agent ID.
 	//
-	// > In inbound scenarios, agent information is unavailable until the call is assigned to an agent.
+	// > No agent information is available before an agent is assigned for inbound calls.
 	//
 	// example:
 	//
 	// 555555
 	ServicerId *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
-	// Agent name.
+	// The agent name.
 	//
-	// > Agent information is unavailable before the call is assigned to an agent in inbound scenarios.
+	// > No agent information is available before an agent is assigned for inbound calls.
 	//
 	// example:
 	//
-	// 刘测试
+	// TestAgent
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	// Long-distance call.
+	// The long-distance call.
 	//
 	// example:
 	//

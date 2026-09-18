@@ -24,25 +24,25 @@ type iUpdateModelApplicationResponseBody interface {
 }
 
 type UpdateModelApplicationResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code. A value of OK indicates that the request was successful.
+	// The request status code. OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned by the request.
+	// The data list.
 	//
 	// example:
 	//
 	// DKSDLSA
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type UpdateModelApplicationResponseBody struct {
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

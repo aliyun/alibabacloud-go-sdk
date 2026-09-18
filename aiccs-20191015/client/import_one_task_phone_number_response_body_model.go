@@ -24,7 +24,7 @@ type iImportOneTaskPhoneNumberResponseBody interface {
 }
 
 type ImportOneTaskPhoneNumberResponseBody struct {
-	// The detailed reason why the access is denied.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ImportOneTaskPhoneNumberResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *ImportOneTaskPhoneNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the status code.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -52,9 +52,9 @@ type ImportOneTaskPhoneNumberResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the API call was successful. Valid values:
 	//
-	// - **true**: The API call was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The API call failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

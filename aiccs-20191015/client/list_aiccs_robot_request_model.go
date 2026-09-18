@@ -23,11 +23,11 @@ type ListAiccsRobotRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The robot name. You can view the robot name in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
+	// The robot name. View the robot name on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page.
 	//
 	// example:
 	//
-	// 测试机器人
+	// TestRobot
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 }
 

@@ -22,29 +22,29 @@ type iListRobotCallDialogResponseBody interface {
 }
 
 type ListRobotCallDialogResponseBody struct {
-	// Request status code. A return value of OK indicates that the request succeeded.
+	// The request status code. OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Conversation records.
+	// The conversation records.
 	Data []*ListRobotCallDialogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API invocation succeeded. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - **true**: Succeeded.
+	// - **true**: Successful.
 	//
 	// - **false**: Failed.
 	//
@@ -121,31 +121,31 @@ func (s *ListRobotCallDialogResponseBody) Validate() error {
 }
 
 type ListRobotCallDialogResponseBodyData struct {
-	// Script content.
+	// The script content.
 	//
 	// example:
 	//
-	// 我是某某的客服，看您之前在我们家找过工作，做个回访，现在工作怎么样？
+	// I am a customer service representative from XX. I noticed that you previously looked for a job with us. I am doing a follow-up. How is your work going?
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// File Type.
+	// The node type.
 	//
 	// example:
 	//
-	// 开场白
+	// Opening
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// Role in the conversation content.
+	// The role in the conversation.
 	//
 	// example:
 	//
 	// robot
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// Intent label.
+	// The intent label.
 	//
 	// example:
 	//
-	// 拒绝
+	// Rejection
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// Start Time. UNIX timestamp in milliseconds.
+	// The start time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

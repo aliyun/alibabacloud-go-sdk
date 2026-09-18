@@ -32,7 +32,7 @@ type QueryConversationDetailInfoNewRequest struct {
 	//
 	// 1552********^1420********
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// The task detail ID. View the task detail ID in the upper-left corner of the **Call Task Management*	- > **Details*	- > **Execution Records*	- > **Completed*	- > **Call Details*	- console, or call the [QueryAiCallDetailPage](https://help.aliyun.com/document_detail/2926853.html) operation to obtain the task detail ID.
+	// The task detail ID. View the task detail ID in the upper-left corner of the **Call Task Management*	- > **Details*	- > **Execution Records*	- > **Completed*	- > **Call Details*	- console, or retrieve it by calling the [QueryAiCallDetailPage](https://help.aliyun.com/document_detail/2926853.html) operation.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type QueryConversationDetailInfoNewRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The task ID. View the task ID in the **Call Task Management*	- console or call the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation to obtain the task ID.
+	// The task ID. View the task ID in the **Call Task Management*	- console or retrieve it by calling the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation.
 	//
 	// This parameter is required.
 	//

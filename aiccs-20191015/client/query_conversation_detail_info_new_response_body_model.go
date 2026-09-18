@@ -24,7 +24,7 @@ type iQueryConversationDetailInfoNewResponseBody interface {
 }
 
 type QueryConversationDetailInfoNewResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type QueryConversationDetailInfoNewResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result data.
 	Data *QueryConversationDetailInfoNewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the status code.
 	//
@@ -50,11 +50,11 @@ type QueryConversationDetailInfoNewResponseBody struct {
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - **true**: successful.
+	// - **true**: Successful.
 	//
-	// - **false**: failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -140,6 +140,10 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// 1234******
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// 68
+	BranchId *int64 `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
 	// The unique ID of the call.
 	//
 	// example:
@@ -148,35 +152,35 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The call result. Valid values:
 	//
-	// - CALL_FORWARDING: call forwarding.
+	// - CALL_FORWARDING: Call forwarding.
 	//
-	// - INCOMING_CALL_BARRED: incoming call barred.
+	// - INCOMING_CALL_BARRED: Incoming call barred.
 	//
-	// - CALL_REJECTED: call rejected.
+	// - CALL_REJECTED: Call rejected.
 	//
-	// - ANSWERED: the user answered.
+	// - ANSWERED: User answered.
 	//
-	// - USER_BUSY: the callee is busy.
+	// - USER_BUSY: Callee busy.
 	//
-	// - POWERED_OFF: the phone is powered off.
+	// - POWERED_OFF: Powered off.
 	//
-	// - NO_USER_RESPONSE: out of service area.
+	// - NO_USER_RESPONSE: Out of service area.
 	//
-	// - OPERATOR_BLOCK: blocked by the carrier.
+	// - OPERATOR_BLOCK: Operator blocked.
 	//
-	// - OTHERS: other status.
+	// - OTHERS: Other status.
 	//
-	// - SUSPEND: the phone is suspended.
+	// - SUSPEND: Service suspended.
 	//
-	// - CANCEL: the caller canceled.
+	// - CANCEL: Caller canceled.
 	//
-	// - INVALID_NUMBER: invalid number.
+	// - INVALID_NUMBER: Invalid number.
 	//
-	// - UNAVAILABLE: temporarily unavailable.
+	// - UNAVAILABLE: Temporarily unavailable.
 	//
-	// - NETWORK_BUSY: network busy.
+	// - NETWORK_BUSY: Network busy.
 	//
-	// - NO_ANSWER: no answer.
+	// - NO_ANSWER: No answer.
 	//
 	// example:
 	//
@@ -194,7 +198,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// 0571*******
 	CallerPhone *string `json:"CallerPhone,omitempty" xml:"CallerPhone,omitempty"`
-	// The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The structure is as follows:
+	// The chat record information. The structure is a JSON array, sorted in chronological order. The format is as follows:
 	//
 	// ```json
 	//
@@ -202,15 +206,15 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	//     {
 	//
-	//         "content":"聊天内容",
+	//         "content":"Chat content",
 	//
-	//         "role":"角色",//Valid values: user and assistant (robot).
+	//         "role":"Role",//Valid values: user, assistant (robot)
 	//
 	//     }
 	//
 	// ]
 	//
-	// ```.
+	// ```
 	//
 	// example:
 	//
@@ -218,7 +222,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	//   {
 	//
-	//     "content": "111您好，年龄222，性别男，我这边是**汽车的官方顾问，我们新出了一款车型为**；**已经上市了，售价**万元起，**分钟破*台，您看要不了解一下？",
+	//     "content": "111Hello, age 222, gender male, I am the official consultant of *	- Auto, we have a new model **; *	- is now available, starting at *	- yuan, *	- minutes to break 	- units, would you like to learn more?",
 	//
 	//     "role": "assistant"
 	//
@@ -226,7 +230,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	//   {
 	//
-	//     "content": "<客户打断>哎，你是谁？",
+	//     "content": "<Customer interruption> Hey, who are you?",
 	//
 	//     "role": "user"
 	//
@@ -234,7 +238,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	//   {
 	//
-	//     "content": "<客户打断>你再说一遍。",
+	//     "content": "<Customer interruption> Say that again.",
 	//
 	//     "role": "user"
 	//
@@ -252,7 +256,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// 1234*******
 	DetailId *string `json:"DetailId,omitempty" xml:"DetailId,omitempty"`
-	// The call duration. The value is 0 if the call is not connected. Unit: seconds.
+	// The call duration in seconds. The value is 0 if the call is not connected.
 	//
 	// example:
 	//
@@ -266,19 +270,19 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// example:
 	//
-	// 主动取消
+	// Actively canceled.
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
 	// The hangup direction. Valid values:
 	//
-	// - **0**: the user.
+	// - **0**: User.
 	//
-	// - **1**: the robot.
+	// - **1**: Robot.
 	//
 	// example:
 	//
 	// 0
 	HangupDirection *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
-	// The import time. This value is a UNIX timestamp. Unit: milliseconds.
+	// The import time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -290,7 +294,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
-	// The variable information used at runtime. The information is stored in this field as key-value pairs.
+	// The variable information used at runtime, stored in this field as key-value pairs.
 	//
 	// example:
 	//
@@ -304,7 +308,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	//   "mendian": "444",
 	//
-	//   "sex": "男",
+	//   "sex": "male",
 	//
 	//   "name": "111",
 	//
@@ -320,7 +324,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	// The output tag information.
 	OutputTags []*QueryConversationDetailInfoNewResponseBodyDataOutputTags `json:"OutputTags,omitempty" xml:"OutputTags,omitempty" type:"Repeated"`
-	// The time when the call was answered. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the call was answered. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -332,13 +336,13 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// recording.oss.file
 	RecordingFileDownloadUrl *string `json:"RecordingFileDownloadUrl,omitempty" xml:"RecordingFileDownloadUrl,omitempty"`
-	// The time when the call ended. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the call ended. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 7
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The time when the call started. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the call started. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -350,7 +354,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// 72
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in voice messaging.
+	// The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in Voice Messaging.
 	//
 	// example:
 	//
@@ -360,7 +364,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// example:
 	//
-	// 呼叫结束（双呼）
+	// Call ended (dual call)
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
 	// The task ID.
 	//
@@ -382,6 +386,10 @@ func (s QueryConversationDetailInfoNewResponseBodyData) GoString() string {
 
 func (s *QueryConversationDetailInfoNewResponseBodyData) GetBatchId() *string {
 	return s.BatchId
+}
+
+func (s *QueryConversationDetailInfoNewResponseBodyData) GetBranchId() *int64 {
+	return s.BranchId
 }
 
 func (s *QueryConversationDetailInfoNewResponseBodyData) GetCallId() *string {
@@ -486,6 +494,11 @@ func (s *QueryConversationDetailInfoNewResponseBodyData) GetVariables() []*Query
 
 func (s *QueryConversationDetailInfoNewResponseBodyData) SetBatchId(v string) *QueryConversationDetailInfoNewResponseBodyData {
 	s.BatchId = &v
+	return s
+}
+
+func (s *QueryConversationDetailInfoNewResponseBodyData) SetBranchId(v int64) *QueryConversationDetailInfoNewResponseBodyData {
+	s.BranchId = &v
 	return s
 }
 
@@ -647,19 +660,19 @@ type QueryConversationDetailInfoNewResponseBodyDataOutputTags struct {
 	//
 	// example:
 	//
-	// 评估客户对车型的兴趣和购买可能性
+	// Evaluate the customer\\"s interest in the model and purchase likelihood.
 	OutputTagDescription *string `json:"OutputTagDescription,omitempty" xml:"OutputTagDescription,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 客户意向度
+	// Customer intent level.
 	OutputTagName *string `json:"OutputTagName,omitempty" xml:"OutputTagName,omitempty"`
 	// The tag value.
 	//
 	// example:
 	//
-	// ["高（非常积极，大概率转化）"]
+	// ["High (very positive, high probability of conversion)"]
 	OutputTagValue *string `json:"OutputTagValue,omitempty" xml:"OutputTagValue,omitempty"`
 }
 

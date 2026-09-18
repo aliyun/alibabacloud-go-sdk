@@ -20,25 +20,25 @@ type iRobotCallResponseBody interface {
 }
 
 type RobotCallResponseBody struct {
-	// Request status code. A return value of "OK" indicates that the request succeeded.
+	// The request status code. OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The unique receipt ID of this call, which is also the unique call ID.
+	// The unique receipt ID of this call, which is the unique call ID.
 	//
 	// example:
 	//
 	// 1160128*****^10281427*****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

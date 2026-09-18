@@ -66,93 +66,93 @@ type iHotlineSessionQueryRequest interface {
 }
 
 type HotlineSessionQueryRequest struct {
-	// Session ID. The acid received via WebSocket after an inbound call.
+	// The session ID. The acid in the websocket after an inbound call.
 	//
 	// example:
 	//
 	// 7719786****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	// Session ID List.
+	// The list of session IDs.
 	AcidList []*string `json:"AcidList,omitempty" xml:"AcidList,omitempty" type:"Repeated"`
-	// Call result. Valid values:
+	// The call result. Valid values:
 	//
-	// - **normal**: Normal hang-up.
+	// - **normal**: The call ended normally.
 	//
-	// - **touchRouteError**: Queue hang-up.
+	// - **touchRouteError**: The call was terminated in the queue.
 	//
-	// - **touchInQueue**: Queue hang-up.
+	// - **touchInQueue**: The call was terminated in the queue.
 	//
-	// - **touchInLoss**: Queue hang-up.
+	// - **touchInLoss**: The call was terminated in the queue.
 	//
-	// - **userHangup**: User hang-up or IVR hang-up.
+	// - **userHangup**: The user hung up or the call was terminated in the IVR.
 	//
-	// - **sysHangup**: System hang-up or IVR hang-up.
+	// - **sysHangup**: The system hung up or the call was terminated in the IVR.
 	//
-	// - **transferAgent**: User hang-up or IVR hang-up.
+	// - **transferAgent**: The user hung up or the call was terminated in the IVR.
 	//
-	// - **dailing**: Agent hang-up during ringing.
+	// - **dailing**: The agent hung up or the call was terminated during ringing.
 	//
-	// - **TouchRingCallLoss**: Queue hang-up during ringing.
+	// - **TouchRingCallLoss**: The call was terminated in the queue or during ringing.
 	//
 	// example:
 	//
 	// normal
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
-	// List of call results.
+	// The list of call results.
 	CallResultList []*string `json:"CallResultList,omitempty" xml:"CallResultList,omitempty" type:"Repeated"`
-	// Call Type. Valid values:
+	// The call type. Valid values:
 	//
-	// - **1**: Outbound call.
+	// - **1**: outbound call.
 	//
-	// - **2**: Inbound call.
+	// - **2**: inbound call.
 	//
-	// - **3**: Change owner.
+	// - **3**: transferred call.
 	//
 	// example:
 	//
 	// 1
 	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	// Call Type List.
+	// The list of call types.
 	CallTypeList []*int32 `json:"CallTypeList,omitempty" xml:"CallTypeList,omitempty" type:"Repeated"`
-	// Calling party number, such as a user\\"s phone number, agent number, or machine number.
+	// The number of the caller. For example, a mobile phone number, an agent number, or a robot number.
 	//
 	// example:
 	//
 	// 135615****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// List of called numbers.
+	// The list of called numbers.
 	CalledNumberList []*string `json:"CalledNumberList,omitempty" xml:"CalledNumberList,omitempty" type:"Repeated"`
-	// Calling party number, such as a user\\"s phone number, customer service agent number, or machine number.
+	// The number of the callee. For example, a mobile phone number, an agent number, or a robot number.
 	//
 	// example:
 	//
 	// 057177****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// List of calling numbers.
+	// The list of calling numbers.
 	CallingNumberList []*string `json:"CallingNumberList,omitempty" xml:"CallingNumberList,omitempty" type:"Repeated"`
-	// Skill group ID.
+	// The ID of the skill group.
 	//
 	// example:
 	//
 	// 123456
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// List of skill group IDs.
+	// The list of skill group IDs.
 	GroupIdList []*int64 `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
-	// Skill group name.
+	// The name of the skill group.
 	//
 	// example:
 	//
-	// 自动化技能组
+	// AutomationSkillGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Global unique ID (GUID) of the call detail.
+	// The globally unique ID of the call details.
 	//
 	// example:
 	//
 	// acc1c58dab4a4****0e3813c66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// AICCS instance ID.
+	// The ID of the Artificial Intelligence Cloud Call Service (AICCS) instance.
 	//
-	// You can obtain it in the **Instance Management*	- section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	// You can obtain the instance ID from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
 	//
 	// This parameter is required.
 	//
@@ -160,69 +160,69 @@ type HotlineSessionQueryRequest struct {
 	//
 	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Membership ID.
+	// The member ID.
 	//
 	// example:
 	//
 	// 7856****
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// Membership List.
+	// The list of member IDs.
 	MemberIdList []*string `json:"MemberIdList,omitempty" xml:"MemberIdList,omitempty" type:"Repeated"`
-	// Membership name.
+	// The member name.
 	//
 	// example:
 	//
-	// 匿名会员
+	// AnonymousMember
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// Current page number. The value must be greater than **0**. Default Value: **1**.
+	// The current page number. The value must be greater than **0**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size. The value must be greater than **0**. Default value: **20**.
+	// The number of entries per page. The value must be greater than **0**. Default value: **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Extension parameters.
+	// The extended parameters.
 	//
 	// example:
 	//
 	// xxxx
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// End UNIX timestamp. Unit: milliseconds.
+	// The end timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614829721
 	QueryEndTime *int64 `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
-	// Start UNIX timestamp. Unit: ms.
+	// The start timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614828721
 	QueryStartTime *int64 `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Agent ID.
+	// The agent ID.
 	//
 	// example:
 	//
 	// 555555
 	ServicerId *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
-	// List of agent IDs.
+	// The list of agent IDs.
 	ServicerIdList []*string `json:"ServicerIdList,omitempty" xml:"ServicerIdList,omitempty" type:"Repeated"`
-	// Agent Name.
+	// The agent name.
 	//
 	// example:
 	//
-	// 刘测试
+	// TestAgent
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
 }
 

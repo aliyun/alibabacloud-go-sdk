@@ -15,6 +15,12 @@ type iCreateAiCallTaskShrinkRequest interface {
 	GetApplicationCode() *string
 	SetCallDayShrink(v string) *CreateAiCallTaskShrinkRequest
 	GetCallDayShrink() *string
+	SetCallExpireDate(v string) *CreateAiCallTaskShrinkRequest
+	GetCallExpireDate() *string
+	SetCallExpireMinutes(v int64) *CreateAiCallTaskShrinkRequest
+	GetCallExpireMinutes() *int64
+	SetCallExpireType(v int64) *CreateAiCallTaskShrinkRequest
+	GetCallExpireType() *int64
 	SetCallRetryInterval(v int64) *CreateAiCallTaskShrinkRequest
 	GetCallRetryInterval() *int64
 	SetCallRetryReasonShrink(v string) *CreateAiCallTaskShrinkRequest
@@ -23,6 +29,8 @@ type iCreateAiCallTaskShrinkRequest interface {
 	GetCallRetryTimes() *int64
 	SetCallTimeShrink(v string) *CreateAiCallTaskShrinkRequest
 	GetCallTimeShrink() *string
+	SetCallableTimeShrink(v string) *CreateAiCallTaskShrinkRequest
+	GetCallableTimeShrink() *string
 	SetLineEncoding(v string) *CreateAiCallTaskShrinkRequest
 	GetLineEncoding() *string
 	SetLinePhoneNum(v string) *CreateAiCallTaskShrinkRequest
@@ -52,12 +60,14 @@ type iCreateAiCallTaskShrinkRequest interface {
 }
 
 type CreateAiCallTaskShrinkRequest struct {
-	// The ID of a published agent.
+	// The code of the agent that is already online.
 	//
 	// example:
 	//
 	// 1180**************
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The application code. This parameter is used when the creation source is engine.
+	//
 	// example:
 	//
 	// 025****C98
@@ -66,13 +76,37 @@ type CreateAiCallTaskShrinkRequest struct {
 	//
 	// This parameter is required.
 	CallDayShrink *string `json:"CallDay,omitempty" xml:"CallDay,omitempty"`
-	// The retry interval, in minutes. The maximum value is 720.
+	// The expiration date of outbound call details (specific deadline).
+	//
+	// example:
+	//
+	// 2026-07-30 20:00:20
+	CallExpireDate *string `json:"CallExpireDate,omitempty" xml:"CallExpireDate,omitempty"`
+	// The expiration duration of outbound call details. Unit: minutes.
+	//
+	// example:
+	//
+	// 10
+	CallExpireMinutes *int64 `json:"CallExpireMinutes,omitempty" xml:"CallExpireMinutes,omitempty"`
+	// The outbound call validity type. Valid values:
+	//
+	// 0: permanently valid.
+	//
+	// 1: valid for a specified duration after import.
+	//
+	// 2: valid until a specified date.
+	//
+	// example:
+	//
+	// 0
+	CallExpireType *int64 `json:"CallExpireType,omitempty" xml:"CallExpireType,omitempty"`
+	// The retry interval. Unit: minutes. The maximum value is 720 minutes.
 	//
 	// example:
 	//
 	// 32
 	CallRetryInterval *int64 `json:"CallRetryInterval,omitempty" xml:"CallRetryInterval,omitempty"`
-	// The failure reasons that trigger a retry.
+	// The list of failure retry reasons.
 	CallRetryReasonShrink *string `json:"CallRetryReason,omitempty" xml:"CallRetryReason,omitempty"`
 	// The number of retries. The maximum value is 3.
 	//
@@ -83,41 +117,58 @@ type CreateAiCallTaskShrinkRequest struct {
 	// The list of callable time periods.
 	//
 	// This parameter is required.
-	CallTimeShrink *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	CallTimeShrink     *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	CallableTimeShrink *string `json:"CallableTime,omitempty" xml:"CallableTime,omitempty"`
+	// The line encoding.
+	//
 	// example:
 	//
 	// JILIANG_***_***_NET
 	LineEncoding *string `json:"LineEncoding,omitempty" xml:"LineEncoding,omitempty"`
+	// The customer-provided line number.
+	//
 	// example:
 	//
 	// 152****3120
 	LinePhoneNum *string `json:"LinePhoneNum,omitempty" xml:"LinePhoneNum,omitempty"`
 	// Specifies whether to enable retry. Valid values:
 	//
-	// - `true`: Enables retry.
+	// - true: enabled.
 	//
-	// - `false` (default): Disables retry.
+	// - false (default): disabled.
 	//
 	// example:
 	//
 	// false
 	MissCallRetry *bool  `json:"MissCallRetry,omitempty" xml:"MissCallRetry,omitempty"`
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number type. This parameter is used when the creation source is engine. Valid values:
+	//
+	// - 0: Alibaba Cloud number.
+	//
+	// - 1: customer-provided line.
+	//
 	// example:
 	//
 	// 0
 	PhoneType            *int64  `json:"PhoneType,omitempty" xml:"PhoneType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The creation source. Valid values:
+	//
+	// - 0: created by agent.
+	//
+	// - 1: created by engine.
+	//
 	// example:
 	//
 	// 0
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The startup mode. Valid values:
+	// The start mode. Valid values:
 	//
-	// - `IMMEDIATE`: Starts the task immediately.
+	// - IMMEDIATE: starts immediately.
 	//
-	// - `SCHEDULE`: Starts the task at a scheduled time.
+	// - SCHEDULE: starts at a scheduled time.
 	//
 	// This parameter is required.
 	//
@@ -131,15 +182,15 @@ type CreateAiCallTaskShrinkRequest struct {
 	//
 	// 75
 	TaskCps *int64 `json:"TaskCps,omitempty" xml:"TaskCps,omitempty"`
-	// The name of the task. It must be unique within an account.
+	// The task name. The name must be unique within the same account.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试任务
+	// TestTask
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The scheduled start time for the task, specified as a timestamp in milliseconds. This parameter is required and applies only when `StartType` is set to `SCHEDULE`.
+	// The preset start time of the task. The value is a UNIX timestamp in milliseconds. This parameter is valid and required when the StartType parameter is set to SCHEDULE. The task automatically starts at the time specified by this parameter.
 	//
 	// example:
 	//
@@ -173,6 +224,18 @@ func (s *CreateAiCallTaskShrinkRequest) GetCallDayShrink() *string {
 	return s.CallDayShrink
 }
 
+func (s *CreateAiCallTaskShrinkRequest) GetCallExpireDate() *string {
+	return s.CallExpireDate
+}
+
+func (s *CreateAiCallTaskShrinkRequest) GetCallExpireMinutes() *int64 {
+	return s.CallExpireMinutes
+}
+
+func (s *CreateAiCallTaskShrinkRequest) GetCallExpireType() *int64 {
+	return s.CallExpireType
+}
+
 func (s *CreateAiCallTaskShrinkRequest) GetCallRetryInterval() *int64 {
 	return s.CallRetryInterval
 }
@@ -187,6 +250,10 @@ func (s *CreateAiCallTaskShrinkRequest) GetCallRetryTimes() *int64 {
 
 func (s *CreateAiCallTaskShrinkRequest) GetCallTimeShrink() *string {
 	return s.CallTimeShrink
+}
+
+func (s *CreateAiCallTaskShrinkRequest) GetCallableTimeShrink() *string {
+	return s.CallableTimeShrink
 }
 
 func (s *CreateAiCallTaskShrinkRequest) GetLineEncoding() *string {
@@ -256,6 +323,21 @@ func (s *CreateAiCallTaskShrinkRequest) SetCallDayShrink(v string) *CreateAiCall
 	return s
 }
 
+func (s *CreateAiCallTaskShrinkRequest) SetCallExpireDate(v string) *CreateAiCallTaskShrinkRequest {
+	s.CallExpireDate = &v
+	return s
+}
+
+func (s *CreateAiCallTaskShrinkRequest) SetCallExpireMinutes(v int64) *CreateAiCallTaskShrinkRequest {
+	s.CallExpireMinutes = &v
+	return s
+}
+
+func (s *CreateAiCallTaskShrinkRequest) SetCallExpireType(v int64) *CreateAiCallTaskShrinkRequest {
+	s.CallExpireType = &v
+	return s
+}
+
 func (s *CreateAiCallTaskShrinkRequest) SetCallRetryInterval(v int64) *CreateAiCallTaskShrinkRequest {
 	s.CallRetryInterval = &v
 	return s
@@ -273,6 +355,11 @@ func (s *CreateAiCallTaskShrinkRequest) SetCallRetryTimes(v int64) *CreateAiCall
 
 func (s *CreateAiCallTaskShrinkRequest) SetCallTimeShrink(v string) *CreateAiCallTaskShrinkRequest {
 	s.CallTimeShrink = &v
+	return s
+}
+
+func (s *CreateAiCallTaskShrinkRequest) SetCallableTimeShrink(v string) *CreateAiCallTaskShrinkRequest {
+	s.CallableTimeShrink = &v
 	return s
 }
 

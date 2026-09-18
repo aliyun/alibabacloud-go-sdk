@@ -32,7 +32,7 @@ type iRobotCallRequest interface {
 }
 
 type RobotCallRequest struct {
-	// Called number.
+	// The called number.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type RobotCallRequest struct {
 	//
 	// 131****2204
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// Outbound caller number. View it in the Voice Service [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) interface.
+	// The caller number for the outbound call. You can view this number on the [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) page of the voice messaging service.
 	//
 	// This parameter is required.
 	//
@@ -48,38 +48,38 @@ type RobotCallRequest struct {
 	//
 	// 132****0849
 	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	// Whether to enable the number status detection identity. Valid values:
+	// Specifies whether to enable the number status identification feature. Valid values:
 	//
-	// - **false*	- (Default Value): Disable.
+	// - **false*	- (default): Disabled.
 	//
-	// - **true**: Enable.
+	// - **true**: Enabled.
 	//
-	// > When enabled, the reason for unanswered calls will be recorded.
+	// >After this feature is enabled, the reason why a call is not answered is recorded.
 	//
 	// example:
 	//
 	// false
 	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	// An ID reserved for the caller. This ID will be returned to the caller through the receipt message. It must be 1 to 15 bytes in length.
+	// The ID reserved for the caller. This ID is returned to the caller through a receipt message. The value is 1 to 15 bytes in length.
 	//
 	// example:
 	//
 	// 222356****
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Parameter list for the robot, in JSON format. The total length must not exceed 512 bytes. You can view the parameters in [Script Management](https://aiccs.console.aliyun.com/patter/list) > **Details*	- > **Input Parameters**, or by using the [ListRobotParams](https://help.aliyun.com/document_detail/2717999.html) API.
+	// The parameter list of the robot in JSON format. The total length cannot exceed 512 bytes. You can view the parameters on the [Script Management](https://aiccs.console.aliyun.com/patter/list) > **Details*	- > **Input/Output Parameters*	- page or by calling the [ListRobotParams](https://help.aliyun.com/document_detail/2717999.html) operation.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "name": "张三",
+	//   "name": "Zhang San",
 	//
 	//   "age": "25"
 	//
 	// }
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// Whether to record the call. Valid values:
+	// Specifies whether to record the call. Valid values:
 	//
 	// - **false*	- (default): Do not record.
 	//
@@ -91,7 +91,7 @@ type RobotCallRequest struct {
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Robot ID, which is the script ID. View the reviewed and approved script ID in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
+	// The robot ID, which is the script ID. You can view approved script IDs on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page.
 	//
 	// This parameter is required.
 	//

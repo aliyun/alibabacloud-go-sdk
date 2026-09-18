@@ -22,33 +22,33 @@ type iFinishHotlineServiceResponseBody interface {
 }
 
 type FinishHotlineServiceResponseBody struct {
-	// Status code. A return value of "Success" indicates that the request succeeded.
+	// The status code. A value of Success indicates that the request was successful.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call succeeded.
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - **true**: Succeeded.
+	// - **true**: Successful.
 	//
 	// - **false**: Failed.
 	//

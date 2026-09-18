@@ -11,6 +11,12 @@ type iUpdateAiCallTaskRequest interface {
 	GoString() string
 	SetCallDay(v []*string) *UpdateAiCallTaskRequest
 	GetCallDay() []*string
+	SetCallExpireDate(v string) *UpdateAiCallTaskRequest
+	GetCallExpireDate() *string
+	SetCallExpireMinutes(v int64) *UpdateAiCallTaskRequest
+	GetCallExpireMinutes() *int64
+	SetCallExpireType(v int64) *UpdateAiCallTaskRequest
+	GetCallExpireType() *int64
 	SetCallRetryInterval(v int64) *UpdateAiCallTaskRequest
 	GetCallRetryInterval() *int64
 	SetCallRetryReason(v []*string) *UpdateAiCallTaskRequest
@@ -19,6 +25,8 @@ type iUpdateAiCallTaskRequest interface {
 	GetCallRetryTimes() *int64
 	SetCallTime(v []*string) *UpdateAiCallTaskRequest
 	GetCallTime() []*string
+	SetCallableTime(v []*string) *UpdateAiCallTaskRequest
+	GetCallableTime() []*string
 	SetLineEncoding(v string) *UpdateAiCallTaskRequest
 	GetLineEncoding() *string
 	SetLinePhoneNum(v string) *UpdateAiCallTaskRequest
@@ -50,17 +58,41 @@ type iUpdateAiCallTaskRequest interface {
 }
 
 type UpdateAiCallTaskRequest struct {
-	// The days of the week when calls can be made.
+	// The available call days.
 	//
 	// This parameter is required.
 	CallDay []*string `json:"CallDay,omitempty" xml:"CallDay,omitempty" type:"Repeated"`
-	// The retry interval in minutes. The maximum value is 120.
+	// The expiration date of outbound call details (the specific deadline).
+	//
+	// example:
+	//
+	// 2026-07-30 20:00:20
+	CallExpireDate *string `json:"CallExpireDate,omitempty" xml:"CallExpireDate,omitempty"`
+	// The expiration duration of outbound call details. Unit: minutes.
+	//
+	// example:
+	//
+	// 10
+	CallExpireMinutes *int64 `json:"CallExpireMinutes,omitempty" xml:"CallExpireMinutes,omitempty"`
+	// The outbound call validity type. Valid values:
+	//
+	// 0: permanently valid.
+	//
+	// 1: valid for a specified duration after import.
+	//
+	// 2: valid until a specified date.
+	//
+	// example:
+	//
+	// 0
+	CallExpireType *int64 `json:"CallExpireType,omitempty" xml:"CallExpireType,omitempty"`
+	// The retry interval. Unit: minutes. The maximum value is 120 minutes.
 	//
 	// example:
 	//
 	// 25
 	CallRetryInterval *int64 `json:"CallRetryInterval,omitempty" xml:"CallRetryInterval,omitempty"`
-	// The call failure statuses that trigger a retry.
+	// The reasons for retry upon failure.
 	CallRetryReason []*string `json:"CallRetryReason,omitempty" xml:"CallRetryReason,omitempty" type:"Repeated"`
 	// The number of retries. The maximum value is 3.
 	//
@@ -68,44 +100,61 @@ type UpdateAiCallTaskRequest struct {
 	//
 	// 2
 	CallRetryTimes *int64 `json:"CallRetryTimes,omitempty" xml:"CallRetryTimes,omitempty"`
-	// The callable time windows.
+	// The available call time periods.
 	//
 	// This parameter is required.
-	CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
+	CallTime     []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
+	CallableTime []*string `json:"CallableTime,omitempty" xml:"CallableTime,omitempty" type:"Repeated"`
+	// The line encoding.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// JILIANG_***_***_NET
 	LineEncoding *string `json:"LineEncoding,omitempty" xml:"LineEncoding,omitempty"`
+	// The customer-provided line number.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 152****3120
 	LinePhoneNum *string `json:"LinePhoneNum,omitempty" xml:"LinePhoneNum,omitempty"`
 	// Specifies whether to enable retry. Valid values:
 	//
-	// - `true`: Yes.
+	// - true: Enabled.
 	//
-	// - `false` (default): No.
+	// - false (default): Disabled.
 	//
 	// example:
 	//
 	// true
 	MissCallRetry *bool  `json:"MissCallRetry,omitempty" xml:"MissCallRetry,omitempty"`
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number type. This parameter is used when the creation source is engine-based.
+	//
+	// 0: Alibaba Cloud number.
+	//
+	// 1: Customer-provided line.
+	//
 	// example:
 	//
-	// 53
+	// 0
 	PhoneType            *int64  `json:"PhoneType,omitempty" xml:"PhoneType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The creation source. Valid values:
+	//
+	// 0: created by agent.
+	//
+	// 1: created by engine.
+	//
 	// example:
 	//
-	// 31
+	// Cannot be modified. Leave this parameter empty
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The startup method. Valid values:
+	// The start mode. Valid values:
 	//
-	// - `IMMEDIATE`: Start immediately.
+	// - IMMEDIATE: starts immediately.
 	//
-	// - `SCHEDULE`: Start at a specified time.
+	// - SCHEDULE: starts at a scheduled time.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +162,7 @@ type UpdateAiCallTaskRequest struct {
 	//
 	// IMMEDIATE
 	StartType *string `json:"StartType,omitempty" xml:"StartType,omitempty"`
-	// The number of concurrent calls per second (CPS) for the task. The maximum value is 500.
+	// The task concurrency. The maximum value is 500.
 	//
 	// This parameter is required.
 	//
@@ -129,15 +178,15 @@ type UpdateAiCallTaskRequest struct {
 	//
 	// 1187**************
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name. The name must be unique within an Alibaba Cloud account.
+	// The task name. The name must be unique within the same account.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试任务
+	// TestTask
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The scheduled start time for the task, specified as a Unix timestamp in milliseconds. This parameter is required when `StartType` is set to `SCHEDULE`.
+	// The preset start time of the task. The value is a UNIX timestamp in milliseconds. This parameter is valid and required when the StartType parameter is set to SCHEDULE. The task automatically starts at the time specified by this parameter.
 	//
 	// example:
 	//
@@ -163,6 +212,18 @@ func (s *UpdateAiCallTaskRequest) GetCallDay() []*string {
 	return s.CallDay
 }
 
+func (s *UpdateAiCallTaskRequest) GetCallExpireDate() *string {
+	return s.CallExpireDate
+}
+
+func (s *UpdateAiCallTaskRequest) GetCallExpireMinutes() *int64 {
+	return s.CallExpireMinutes
+}
+
+func (s *UpdateAiCallTaskRequest) GetCallExpireType() *int64 {
+	return s.CallExpireType
+}
+
 func (s *UpdateAiCallTaskRequest) GetCallRetryInterval() *int64 {
 	return s.CallRetryInterval
 }
@@ -177,6 +238,10 @@ func (s *UpdateAiCallTaskRequest) GetCallRetryTimes() *int64 {
 
 func (s *UpdateAiCallTaskRequest) GetCallTime() []*string {
 	return s.CallTime
+}
+
+func (s *UpdateAiCallTaskRequest) GetCallableTime() []*string {
+	return s.CallableTime
 }
 
 func (s *UpdateAiCallTaskRequest) GetLineEncoding() *string {
@@ -240,6 +305,21 @@ func (s *UpdateAiCallTaskRequest) SetCallDay(v []*string) *UpdateAiCallTaskReque
 	return s
 }
 
+func (s *UpdateAiCallTaskRequest) SetCallExpireDate(v string) *UpdateAiCallTaskRequest {
+	s.CallExpireDate = &v
+	return s
+}
+
+func (s *UpdateAiCallTaskRequest) SetCallExpireMinutes(v int64) *UpdateAiCallTaskRequest {
+	s.CallExpireMinutes = &v
+	return s
+}
+
+func (s *UpdateAiCallTaskRequest) SetCallExpireType(v int64) *UpdateAiCallTaskRequest {
+	s.CallExpireType = &v
+	return s
+}
+
 func (s *UpdateAiCallTaskRequest) SetCallRetryInterval(v int64) *UpdateAiCallTaskRequest {
 	s.CallRetryInterval = &v
 	return s
@@ -257,6 +337,11 @@ func (s *UpdateAiCallTaskRequest) SetCallRetryTimes(v int64) *UpdateAiCallTaskRe
 
 func (s *UpdateAiCallTaskRequest) SetCallTime(v []*string) *UpdateAiCallTaskRequest {
 	s.CallTime = v
+	return s
+}
+
+func (s *UpdateAiCallTaskRequest) SetCallableTime(v []*string) *UpdateAiCallTaskRequest {
+	s.CallableTime = v
 	return s
 }
 

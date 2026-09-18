@@ -22,31 +22,31 @@ type iListAiccsRobotResponseBody interface {
 }
 
 type ListAiccsRobotResponseBody struct {
-	// Request status code. A return value of OK indicates that the request Succeeded.
+	// The request status code. OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Robot scripts.
+	// The robot scripts.
 	Data []*ListAiccsRobotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API invocation Succeeded. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Succeeded.
+	// - **true**: Successful.
 	//
-	// - **false**: failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -121,31 +121,31 @@ func (s *ListAiccsRobotResponseBody) Validate() error {
 }
 
 type ListAiccsRobotResponseBodyData struct {
-	// Associated industry.
+	// The industry.
 	//
 	// example:
 	//
-	// 房地产
+	// RealEstate
 	AtProfession *string `json:"AtProfession,omitempty" xml:"AtProfession,omitempty"`
-	// Associated business.
+	// The associated business.
 	//
 	// example:
 	//
-	// 新房销售
+	// NewHomeSales
 	AtSence *string `json:"AtSence,omitempty" xml:"AtSence,omitempty"`
-	// Robot ID.
+	// The robot ID.
 	//
 	// example:
 	//
 	// 12****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Robot name.
+	// The robot name.
 	//
 	// example:
 	//
-	// 测试机器人
+	// TestRobot
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	// Robot type.
+	// The robot type.
 	//
 	// example:
 	//

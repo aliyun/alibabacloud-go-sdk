@@ -11,6 +11,8 @@ type iImportOneTaskPhoneNumberShrinkRequest interface {
 	GoString() string
 	SetEncryptionType(v int64) *ImportOneTaskPhoneNumberShrinkRequest
 	GetEncryptionType() *int64
+	SetExtension(v string) *ImportOneTaskPhoneNumberShrinkRequest
+	GetExtension() *string
 	SetOutId(v string) *ImportOneTaskPhoneNumberShrinkRequest
 	GetOutId() *string
 	SetOwnerId(v int64) *ImportOneTaskPhoneNumberShrinkRequest
@@ -32,14 +34,20 @@ type ImportOneTaskPhoneNumberShrinkRequest struct {
 	//
 	// 81
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The external ID. We recommend that you use a unique ID to ensure idempotency. The value cannot exceed 128 characters.
+	// The extension number.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The external serial number. We recommend that you use a unique ID. The value cannot exceed 128 characters.
 	//
 	// example:
 	//
 	// 94ba739b-xxxx-ef91-335d-4be006c34899
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number of the callee.
+	// The called phone number.
 	//
 	// This parameter is required.
 	//
@@ -57,19 +65,17 @@ type ImportOneTaskPhoneNumberShrinkRequest struct {
 	//
 	// 1231231212****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// A list of variables in a map.
+	// The variable list in Map format.
 	//
-	// > The format of variables for an engine-based call task is as follows:
+	// > Variable format for engine-based voice call tasks:
 	//
-	// >
-	//
-	// > - {"startWordParam.variable_key1":"variable_value1","promptParam.variable_key2":"variable_value2","bizParam.variable_key3":"variable_value3"}
+	// > - {"startWordParam.VariableKey1":"VariableValue1","promptParam.VariableKey2":"VariableValue2","bizParam.VariableKey3":"VariableValue3"}
 	//
 	// example:
 	//
-	// {"变量key1":"变量值1","变量key2":"变量值2"}
+	// {"VariableKey1":"VariableValue1","VariableKey2":"VariableValue2"}
 	//
-	// 引擎呼叫任务示例值请看左侧描述
+	// For example values of engine-based voice call tasks, refer to the description on the left
 	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
@@ -83,6 +89,10 @@ func (s ImportOneTaskPhoneNumberShrinkRequest) GoString() string {
 
 func (s *ImportOneTaskPhoneNumberShrinkRequest) GetEncryptionType() *int64 {
 	return s.EncryptionType
+}
+
+func (s *ImportOneTaskPhoneNumberShrinkRequest) GetExtension() *string {
+	return s.Extension
 }
 
 func (s *ImportOneTaskPhoneNumberShrinkRequest) GetOutId() *string {
@@ -115,6 +125,11 @@ func (s *ImportOneTaskPhoneNumberShrinkRequest) GetVariablesShrink() *string {
 
 func (s *ImportOneTaskPhoneNumberShrinkRequest) SetEncryptionType(v int64) *ImportOneTaskPhoneNumberShrinkRequest {
 	s.EncryptionType = &v
+	return s
+}
+
+func (s *ImportOneTaskPhoneNumberShrinkRequest) SetExtension(v string) *ImportOneTaskPhoneNumberShrinkRequest {
+	s.Extension = &v
 	return s
 }
 

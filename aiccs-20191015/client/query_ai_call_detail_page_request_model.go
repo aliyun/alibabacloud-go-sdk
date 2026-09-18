@@ -52,7 +52,7 @@ type iQueryAiCallDetailPageRequest interface {
 }
 
 type QueryAiCallDetailPageRequest struct {
-	// The batch ID. You can find this ID by clicking Details on the **Call Task Management*	- page.
+	// The batch ID. On the **Call Task Management*	- page, click Details to view the batch ID.
 	//
 	// example:
 	//
@@ -60,35 +60,35 @@ type QueryAiCallDetailPageRequest struct {
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The call result. Valid values:
 	//
-	// - CALL_FORWARDING: Call Forwarding.
+	// - CALL_FORWARDING: call forwarding.
 	//
-	// - INCOMING_CALL_BARRED: Incoming Call Barred.
+	// - INCOMING_CALL_BARRED: incoming call barred.
 	//
-	// - CALL_REJECTED: Call Rejected.
+	// - CALL_REJECTED: call rejected.
 	//
-	// - ANSWERED: Answered.
+	// - ANSWERED: answered.
 	//
-	// - USER_BUSY: User Busy.
+	// - USER_BUSY: user busy.
 	//
-	// - POWERED_OFF: Powered Off.
+	// - POWERED_OFF: powered off.
 	//
-	// - NO_USER_RESPONSE: No User Response.
+	// - NO_USER_RESPONSE: out of service area.
 	//
-	// - OPERATOR_BLOCK: Operator Block.
+	// - OPERATOR_BLOCK: blocked by carrier.
 	//
-	// - OTHERS: Others.
+	// - OTHERS: other status.
 	//
-	// - SUSPEND: Suspend.
+	// - SUSPEND: suspended.
 	//
-	// - CANCEL: Canceled by the caller.
+	// - CANCEL: canceled by caller.
 	//
-	// - INVALID_NUMBER: Invalid Number.
+	// - INVALID_NUMBER: invalid number.
 	//
-	// - UNAVAILABLE: Unavailable.
+	// - UNAVAILABLE: temporarily unavailable.
 	//
-	// - NETWORK_BUSY: Network Busy.
+	// - NETWORK_BUSY: network busy.
 	//
-	// - NO_ANSWER: No Answer.
+	// - NO_ANSWER: no answer.
 	//
 	// example:
 	//
@@ -100,62 +100,58 @@ type QueryAiCallDetailPageRequest struct {
 	//
 	// 053714454****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// A list of up to 100 detail IDs.
-	//
-	// example:
-	//
-	// Sample value Sample value
+	// The list of task detail IDs. A maximum of 100 IDs can be specified.
 	DetailIds []*int64 `json:"DetailIds,omitempty" xml:"DetailIds,omitempty" type:"Repeated"`
-	// The encryption method. Valid values: 0 (None), 1 (MD5), 2 (SHA256), and 3 (SM3).
+	// The encryption type. Valid values: 0: no encryption. 1: MD5. 2: SHA256. 3: SM3.
 	//
 	// example:
 	//
 	// 1
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The end of the call time range. This value is a timestamp in milliseconds.
+	// The end calling time. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748948749000
 	EndCallingTime *int64 `json:"EndCallingTime,omitempty" xml:"EndCallingTime,omitempty"`
-	// The end of the import time range. This value is a timestamp in milliseconds.
+	// The end import time. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748948749000
 	EndImportedTime *int64 `json:"EndImportedTime,omitempty" xml:"EndImportedTime,omitempty"`
-	// The major intent. You can find this intent by clicking Agent Details on the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page.
+	// The major intent. On the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page, click agent details to view the major intent.
 	//
 	// example:
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
-	// The maximum conversation duration, in minutes.
+	// The maximum conversation duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 20
 	MaxConversationDuration *int64 `json:"MaxConversationDuration,omitempty" xml:"MaxConversationDuration,omitempty"`
-	// The minimum conversation duration, in minutes.
+	// The minimum conversation duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 0
 	MinConversationDuration *int64 `json:"MinConversationDuration,omitempty" xml:"MinConversationDuration,omitempty"`
-	// A custom ID provided by the caller. This ID is returned in the receipt message for request tracking.
+	// The ID reserved for the caller. This ID is returned to the caller in the receipt message.
 	//
 	// example:
 	//
 	// 94ba739b-c01a-ef91-335d-4be006c34899
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than **0**. The default value is **1**.
+	// The current page number. The value must be greater than **0**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. The default value is **10**.
+	// The number of entries per page. Default value: **10**.
 	//
 	// example:
 	//
@@ -163,13 +159,13 @@ type QueryAiCallDetailPageRequest struct {
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start of the call time range. This value is a timestamp in milliseconds.
+	// The start calling time. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1748948749000
 	StartCallingTime *int64 `json:"StartCallingTime,omitempty" xml:"StartCallingTime,omitempty"`
-	// The start of the import time range. This value is a timestamp in milliseconds.
+	// The start import time. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -177,11 +173,11 @@ type QueryAiCallDetailPageRequest struct {
 	StartImportedTime *int64 `json:"StartImportedTime,omitempty" xml:"StartImportedTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// - 0: Pending.
+	// - 0: pending.
 	//
-	// - 1: Completed.
+	// - 1: completed.
 	//
-	// - 2: Failed.
+	// - 2: failed.
 	//
 	// This parameter is required.
 	//
