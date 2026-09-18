@@ -31,6 +31,8 @@ type iGetCertificateDetailResponseBody interface {
 	GetContactId() *int64
 	SetCsr(v string) *GetCertificateDetailResponseBody
 	GetCsr() *string
+	SetDeploymentDesc(v string) *GetCertificateDetailResponseBody
+	GetDeploymentDesc() *string
 	SetDomain(v string) *GetCertificateDetailResponseBody
 	GetDomain() *string
 	SetExistPrivateKey(v bool) *GetCertificateDetailResponseBody
@@ -60,25 +62,25 @@ type iGetCertificateDetailResponseBody interface {
 }
 
 type GetCertificateDetailResponseBody struct {
-	// The certificate algorithm. Valid values:
+	// The certificate algorithm.
 	//
 	// - **RSA**: RSA algorithm.
 	//
 	// - **ECC**: ECC algorithm.
 	//
-	// - **SM2**: SM2 encryption algorithm.
+	// - **SM2**: SM2 algorithm.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The global certificate ID in the format of certificate ID + "-" + site region ID. This is commonly used across Alibaba Cloud services.
+	// The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
 	//
-	//   --For the China site, the format is certificate ID + "-cn-hangzhou".
+	//   --For the China site, the value is certificate ID + "-cn-hangzhou".
 	//
-	// For the China site, the format is certificate ID + "-ap-southeast-1".
+	// For the International site, the value is certificate ID + "-ap-southeast-1".
 	//
-	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
+	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the International site is "123-ap-southeast-1".
 	//
 	// example:
 	//
@@ -98,27 +100,27 @@ type GetCertificateDetailResponseBody struct {
 	//
 	// 123
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The certificate source. Valid values:
+	// The certificate source.
 	//
-	// - BUY: purchased certificate.
+	// - BUY: Purchased certificate.
 	//
-	// - TEST: test certificate.
+	// - TEST: Test certificate.
 	//
-	// - UPLOAD: uploaded certificate.
+	// - UPLOAD: Uploaded certificate.
 	//
 	// example:
 	//
 	// BUY
 	CertificateSource *string `json:"CertificateSource,omitempty" xml:"CertificateSource,omitempty"`
-	// The certificate status. Valid values:
+	// The certificate status.
 	//
-	// - **issued**: issued.
+	// - **issued**: Issued.
 	//
-	// - **revoked**: revoked.
+	// - **revoked**: Revoked.
 	//
-	// - **willExpire**: about to expire.
+	// - **willExpire**: About to expire.
 	//
-	// - **expired**: expired.
+	// - **expired**: Expired.
 	//
 	// example:
 	//
@@ -130,7 +132,7 @@ type GetCertificateDetailResponseBody struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The company information ID associated with the certificate application. This field is empty for DV certificates.
+	// The company information ID associated with the certificate application. This value is empty for DV certificates.
 	//
 	// example:
 	//
@@ -148,7 +150,27 @@ type GetCertificateDetailResponseBody struct {
 	//
 	// -----BEGIN CERTIFICATE REQUEST----- ...... -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	// All domain names contained in the certificate. Multiple domain names are separated by commas.
+	// The deployment information in JSON format:
+	//
+	// --Scope: Valid values are all/server. The value is all if the certificate has a private key, or server if it does not.
+	//
+	// --ServerName: The name of the server associated with the certificate instance.
+	//
+	// --ResourceInstanceId: The resource identifier of the server associated with the certificate instance.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "Scope": "all",
+	//
+	//        "ServerName": "acmeServerName",
+	//
+	//        "ResourceInstanceId": "cas_dv-cn-XXX"
+	//
+	// }
+	DeploymentDesc *string `json:"DeploymentDesc,omitempty" xml:"DeploymentDesc,omitempty"`
+	// All domain names included in the certificate. Multiple domain names are separated by commas (,).
 	//
 	// example:
 	//
@@ -176,7 +198,7 @@ type GetCertificateDetailResponseBody struct {
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The entity that issued the certificate.
+	// The certificate issue authority.
 	//
 	// example:
 	//
@@ -204,7 +226,7 @@ type GetCertificateDetailResponseBody struct {
 	//
 	// 17321613180000
 	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -220,7 +242,7 @@ type GetCertificateDetailResponseBody struct {
 	SubjectAlternativeNames []*string `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
 	// The tag list.
 	Tags []*GetCertificateDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The list of cloud services to which the current certificate is deployed.
+	// The list of Alibaba Cloud services to which the certificate is currently deployed.
 	UsingProductList []*string `json:"UsingProductList,omitempty" xml:"UsingProductList,omitempty" type:"Repeated"`
 }
 
@@ -274,6 +296,10 @@ func (s *GetCertificateDetailResponseBody) GetContactId() *int64 {
 
 func (s *GetCertificateDetailResponseBody) GetCsr() *string {
 	return s.Csr
+}
+
+func (s *GetCertificateDetailResponseBody) GetDeploymentDesc() *string {
+	return s.DeploymentDesc
 }
 
 func (s *GetCertificateDetailResponseBody) GetDomain() *string {
@@ -383,6 +409,11 @@ func (s *GetCertificateDetailResponseBody) SetCsr(v string) *GetCertificateDetai
 	return s
 }
 
+func (s *GetCertificateDetailResponseBody) SetDeploymentDesc(v string) *GetCertificateDetailResponseBody {
+	s.DeploymentDesc = &v
+	return s
+}
+
 func (s *GetCertificateDetailResponseBody) SetDomain(v string) *GetCertificateDetailResponseBody {
 	s.Domain = &v
 	return s
@@ -471,7 +502,7 @@ func (s *GetCertificateDetailResponseBody) Validate() error {
 }
 
 type GetCertificateDetailResponseBodyCertificateChainList struct {
-	// The issuer name in the certificate chain.
+	// The issuer name of the certificate chain.
 	//
 	// example:
 	//
@@ -495,7 +526,7 @@ type GetCertificateDetailResponseBodyCertificateChainList struct {
 	//
 	// 10
 	RemainDay *int32 `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
-	// The common name in the certificate chain.
+	// The common name of the certificate chain.
 	//
 	// example:
 	//

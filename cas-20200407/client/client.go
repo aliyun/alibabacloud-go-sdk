@@ -2995,7 +2995,11 @@ func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaRes
 
 // Summary:
 //
-// Queries the details of a certificate without returning the certificate content or private key content.
+// Queries the details of a certificate. The certificate content and private key content are not returned.
+//
+// Description:
+//
+// The per-user queries per second (QPS) limit for this operation is 100. If this limit is exceeded, the API calls are throttled, which may affect your business. Use this operation as appropriate.
 //
 // @param request - GetCertificateDetailRequest
 //
@@ -3039,7 +3043,11 @@ func (client *Client) GetCertificateDetailWithOptions(request *GetCertificateDet
 
 // Summary:
 //
-// Queries the details of a certificate without returning the certificate content or private key content.
+// Queries the details of a certificate. The certificate content and private key content are not returned.
+//
+// Description:
+//
+// The per-user queries per second (QPS) limit for this operation is 100. If this limit is exceeded, the API calls are throttled, which may affect your business. Use this operation as appropriate.
 //
 // @param request - GetCertificateDetailRequest
 //
@@ -4035,7 +4043,13 @@ func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_res
 
 // Summary:
 //
-// Queries the certificates managed by Certificate Management Service.
+// Retrieves a list of certificates.
+//
+// Description:
+//
+// Queries the operation logs of CA certificates, including root CA certificates and subordinate CA certificates. For example, you can query the creation logs and status change logs of CA certificates.
+//
+// The per-user queries per second (QPS) limit for this operation is 10. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - ListCertificatesRequest
 //
@@ -4103,7 +4117,13 @@ func (client *Client) ListCertificatesWithOptions(request *ListCertificatesReque
 
 // Summary:
 //
-// Queries the certificates managed by Certificate Management Service.
+// Retrieves a list of certificates.
+//
+// Description:
+//
+// Queries the operation logs of CA certificates, including root CA certificates and subordinate CA certificates. For example, you can query the creation logs and status change logs of CA certificates.
+//
+// The per-user queries per second (QPS) limit for this operation is 10. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - ListCertificatesRequest
 //
@@ -6879,23 +6899,11 @@ func (client *Client) UploadPCACert(request *UploadPCACertRequest) (_result *Upl
 
 // Summary:
 //
-// Uploads a certificate, including a standard Chinese national cryptographic (China SM) certificate or a non-China SM certificate.
+// Uploads a certificate, including a standard SM certificate or a non-SM certificate.
 //
 // Description:
 //
-// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms. The China SM certificate includes an encryption certificate and a signing certificate. The China SM certificate is used in China to comply with the national cryptographic standards.
-//
-// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
-//
-// The China SM certificate includes an encryption certificate and a signing certificate.
-//
-// The China SM certificate is used in China to comply with the national cryptographic standards.
-//
-// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
-//
-// The China SM certificate includes an encryption certificate and a signing certificate.
-//
-// The throttling limit for this API is 100 queries per second (QPS) per user. If this limit is exceeded, API calls are throttled, which may affect your business. Call this API at a reasonable frequency.
+// The maximum number of calls per user is 100 per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - UploadUserCertificateRequest
 //
@@ -6975,23 +6983,11 @@ func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertif
 
 // Summary:
 //
-// Uploads a certificate, including a standard Chinese national cryptographic (China SM) certificate or a non-China SM certificate.
+// Uploads a certificate, including a standard SM certificate or a non-SM certificate.
 //
 // Description:
 //
-// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms. The China SM certificate includes an encryption certificate and a signing certificate. The China SM certificate is used in China to comply with the national cryptographic standards.
-//
-// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
-//
-// The China SM certificate includes an encryption certificate and a signing certificate.
-//
-// The China SM certificate is used in China to comply with the national cryptographic standards.
-//
-// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
-//
-// The China SM certificate includes an encryption certificate and a signing certificate.
-//
-// The throttling limit for this API is 100 queries per second (QPS) per user. If this limit is exceeded, API calls are throttled, which may affect your business. Call this API at a reasonable frequency.
+// The maximum number of calls per user is 100 per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - UploadUserCertificateRequest
 //

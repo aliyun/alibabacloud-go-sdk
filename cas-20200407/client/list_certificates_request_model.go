@@ -26,33 +26,33 @@ type iListCertificatesRequest interface {
 }
 
 type ListCertificatesRequest struct {
-	// The source of the certificate.
+	// The source of the certificate. Valid values:
 	//
-	// - BUY: A purchased certificate.
+	// - BUY: a formal certificate.
 	//
-	// - TEST: A test certificate.
+	// - TEST: a test certificate.
 	//
-	// - UPLOAD: An uploaded certificate.
+	// - UPLOAD: an uploaded certificate.
 	//
 	// example:
 	//
 	// BUY
 	CertificateSource *string `json:"CertificateSource,omitempty" xml:"CertificateSource,omitempty"`
-	// The status of the certificate.
+	// The status of the certificate. Valid values:
 	//
-	// - **issued**: The certificate is issued.
+	// - **issued**: Issued.
 	//
-	// - **revoked**: The certificate is revoked.
+	// - **revoked**: Revoked.
 	//
-	// - **willExpire**: The certificate is about to expire.
+	// - **willExpire**: About to expire.
 	//
-	// - **expired**: The certificate has expired.
+	// - **expired**: Expired.
 	//
 	// example:
 	//
 	// issued
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// The page number. Default value: 1.
+	// The page number of the current page.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListCertificatesRequest struct {
 	//
 	// cas-ivauto-hqito6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A keyword for a fuzzy query. The keyword can be a domain name, a certificate name, or a resource ID.
+	// The keyword for fuzzy match. The keyword is matched against domain names, names, and corresponding resource IDs.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListCertificatesRequest struct {
 	//
 	// rg-aek****wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//

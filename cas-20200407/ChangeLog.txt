@@ -1,3 +1,6 @@
+2026-09-18 Version: v4.7.2
+- Generated golang 2020-04-07 for cas.
+
 2026-09-07 Version: v4.7.1
 - Update API GetInstanceDetail: add response parameters Body.AutoReissueFlag.
 - Update API GetInstanceDetail: add response parameters Body.DeploymentResourceCount.
