@@ -130,7 +130,7 @@ func (s *UpdateConnectorResponseBody) Validate() error {
 }
 
 type UpdateConnectorResponseBodyData struct {
-	// The number of Agents attached to the Connector.
+	// The number of bound agents.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ type UpdateConnectorResponseBodyData struct {
 	//
 	// 2026-09-01T08:00:00Z
 	EnabledAt *string `json:"enabledAt,omitempty" xml:"enabledAt,omitempty"`
-	// A JSON string. For qodercli: {"site":"global|cn","organizationId":"...","apiKey":"...","serviceAccountKeys":[{"id":"ckey-xxx","name":"default","serviceAccountKey":"..."}]}. This field is empty when the Connector is not enabled.
+	// The updated Connector configuration JSON string. This is sensitive information.
 	//
 	// example:
 	//
 	// {"site":"global","organizationId":"org-xxxx"}
 	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The Connector name.
+	// The Connector name. Currently, the value is qodercli.
 	//
 	// example:
 	//

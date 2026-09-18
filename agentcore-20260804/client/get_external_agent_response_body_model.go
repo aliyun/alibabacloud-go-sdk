@@ -24,7 +24,7 @@ type iGetExternalAgentResponseBody interface {
 }
 
 type GetExternalAgentResponseBody struct {
-	// The business status code. The value SUCCESS is returned when the request succeeds.
+	// The business status code. The value is SUCCESS when the request succeeds.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetExternalAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The details of the external agent.
 	Data *GetExternalAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 is returned when the request succeeds.
+	// The HTTP status code. The value is 200 when the request succeeds.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message that indicates the result of the request.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type GetExternalAgentResponseBodyData struct {
 	LatestVersionStatus *string `json:"latestVersionStatus,omitempty" xml:"latestVersionStatus,omitempty"`
 	// The model configuration. This parameter is available only when modelSource is set to PLATFORM.
 	Model *GetExternalAgentResponseBodyDataModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The source of the model configuration. PLATFORM indicates that the model configuration is parsed and delivered by the platform. RUNTIME indicates that the model is managed by the external runtime, and the model parameter cannot be specified at the same time. Valid values:
+	// The model configuration source. PLATFORM indicates that the model configuration is parsed and distributed by the platform. RUNTIME indicates that the model is managed by the external runtime, and the model parameter cannot be specified at the same time. Valid values:
 	//
 	// - PLATFORM: Platform model.
 	//
@@ -494,13 +494,13 @@ type GetExternalAgentResponseBodyDataExternalAgentStatus struct {
 	//
 	// ONLINE
 	HeartbeatStatus *string `json:"heartbeatStatus,omitempty" xml:"heartbeatStatus,omitempty"`
-	// The last active time of the external agent in RFC 3339 format.
+	// The most recent active time of the external agent in RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	LastActiveAt *string `json:"lastActiveAt,omitempty" xml:"lastActiveAt,omitempty"`
-	// The last heartbeat time of the external agent in RFC 3339 format.
+	// The most recent heartbeat time of the external agent in RFC 3339 format.
 	//
 	// example:
 	//
@@ -589,8 +589,9 @@ type GetExternalAgentResponseBodyDataModel struct {
 	// example:
 	//
 	// qwen-max
-	ModelName *string                                     `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	Quota     *GetExternalAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model token quota configuration and the quota usage status in the current cycle. This parameter is empty if no quota is configured.
+	Quota *GetExternalAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s GetExternalAgentResponseBodyDataModel) String() string {
@@ -638,30 +639,44 @@ func (s *GetExternalAgentResponseBodyDataModel) Validate() error {
 }
 
 type GetExternalAgentResponseBodyDataModelQuota struct {
+	// Indicates whether the quota is enabled. This parameter is not returned if no quota is configured.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The quota limit type. Currently, only token is supported.
+	//
 	// example:
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// Indicates whether the quota has been exceeded in the current cycle. This is a read-only field returned by the backend.
+	//
 	// example:
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
+	// The quota statistical period. day indicates daily and month indicates monthly.
+	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The gateway quota rule status. This is a read-only field returned by the backend.
+	//
 	// example:
 	//
 	// ACTIVE
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// The maximum number of tokens that can be consumed within a single cycle.
+	//
 	// example:
 	//
 	// 1000000
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
+	// The number of tokens consumed in the current cycle. This is a read-only field returned by the backend.
+	//
 	// example:
 	//
 	// 12345

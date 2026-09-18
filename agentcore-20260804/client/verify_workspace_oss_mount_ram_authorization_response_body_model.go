@@ -25,14 +25,30 @@ type iVerifyWorkspaceOssMountRamAuthorizationResponseBody interface {
 
 type VerifyWorkspaceOssMountRamAuthorizationResponseBody struct {
 	// The business status code.
+	//
+	// example:
+	//
+	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *VerifyWorkspaceOssMountRamAuthorizationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The response message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request was successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
@@ -111,6 +127,10 @@ func (s *VerifyWorkspaceOssMountRamAuthorizationResponseBody) Validate() error {
 
 type VerifyWorkspaceOssMountRamAuthorizationResponseBodyData struct {
 	// The OSS storage authorization status.
+	//
+	// example:
+	//
+	// AUTHORIZED
 	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
 }
 

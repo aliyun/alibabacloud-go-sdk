@@ -464,13 +464,13 @@ func (client *Client) CreateAgentSpec(workspaceId *string, request *CreateAgentS
 
 // Summary:
 //
-// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must not be a draft currently being edited.
+// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must be no draft currently being edited.
 //
 // Description:
 //
 // ## Request description
 //
-// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must not be a draft currently being edited.
+// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must be no draft currently being edited.
 //
 // @param tmpReq - CreateAgentSpecVersionRequest
 //
@@ -523,13 +523,13 @@ func (client *Client) CreateAgentSpecVersionWithOptions(workspaceId *string, age
 
 // Summary:
 //
-// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must not be a draft currently being edited.
+// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must be no draft currently being edited.
 //
 // Description:
 //
 // ## Request description
 //
-// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must not be a draft currently being edited.
+// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist, and there must be no draft currently being edited.
 //
 // @param request - CreateAgentSpecVersionRequest
 //
@@ -720,11 +720,11 @@ func (client *Client) CreateExternalAgent(workspaceId *string, request *CreateEx
 
 // Summary:
 //
-// Creates a Bootstrap Token and CMS configuration required for connecting a specified external agent.
+// Creates a bootstrap token and CMS configuration required for connecting a specified external agent.
 //
 // Description:
 //
-// Creates a Bootstrap Token and CMS configuration required for connecting a specified external agent.
+// Creates a bootstrap token and CMS configuration required for connecting a specified external agent.
 //
 // @param request - CreateExternalAgentBootstrapTokenRequest
 //
@@ -771,11 +771,11 @@ func (client *Client) CreateExternalAgentBootstrapTokenWithOptions(workspaceId *
 
 // Summary:
 //
-// Creates a Bootstrap Token and CMS configuration required for connecting a specified external agent.
+// Creates a bootstrap token and CMS configuration required for connecting a specified external agent.
 //
 // Description:
 //
-// Creates a Bootstrap Token and CMS configuration required for connecting a specified external agent.
+// Creates a bootstrap token and CMS configuration required for connecting a specified external agent.
 //
 // @param request - CreateExternalAgentBootstrapTokenRequest
 //
@@ -794,7 +794,7 @@ func (client *Client) CreateExternalAgentBootstrapToken(workspaceId *string, age
 
 // Summary:
 //
-// Binds an external identity provider to a specified workspace for single sign-on and organization member synchronization. Each workspace can be bound to at most one external identity provider. The binding is an asynchronous operation. After the API returns, you can track the progress by querying the status through GetIdentityProvider.
+// Binds an external identity provider to a specified workspace for single sign-on and organization member synchronization. Each workspace can be bound to at most one external identity provider. The binding is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track the progress.
 //
 // @param tmpReq - CreateIdentityProviderRequest
 //
@@ -847,7 +847,7 @@ func (client *Client) CreateIdentityProviderWithOptions(workspaceId *string, tmp
 
 // Summary:
 //
-// Binds an external identity provider to a specified workspace for single sign-on and organization member synchronization. Each workspace can be bound to at most one external identity provider. The binding is an asynchronous operation. After the API returns, you can track the progress by querying the status through GetIdentityProvider.
+// Binds an external identity provider to a specified workspace for single sign-on and organization member synchronization. Each workspace can be bound to at most one external identity provider. The binding is an asynchronous operation. After the API returns, you can call GetIdentityProvider to query the status and track the progress.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -1434,7 +1434,7 @@ func (client *Client) CreateUser(workspaceId *string, request *CreateUserRequest
 //
 // Description:
 //
-// ## Operation description\\nCreates an AgentCore workspace control plane record. The server completes the state transition from `Initializing` to `Initialized` within the same transaction. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must provide `VpcId` and at least one `VSwitchIds`.\\n.
+// ## Operation description\\nCreates an AgentCore workspace control plane record. The server completes the state transition from `Initializing` to `Initialized` within the same transaction. Use `Enabled` in the network configuration to specify whether to enable VPC networking. If VPC networking is enabled, you must provide a `VpcId` and at least one entry in `VSwitchIds`.\\n.
 //
 // @param tmpReq - CreateWorkspaceRequest
 //
@@ -1497,7 +1497,7 @@ func (client *Client) CreateWorkspaceWithOptions(tmpReq *CreateWorkspaceRequest,
 //
 // Description:
 //
-// ## Operation description\\nCreates an AgentCore workspace control plane record. The server completes the state transition from `Initializing` to `Initialized` within the same transaction. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must provide `VpcId` and at least one `VSwitchIds`.\\n.
+// ## Operation description\\nCreates an AgentCore workspace control plane record. The server completes the state transition from `Initializing` to `Initialized` within the same transaction. Use `Enabled` in the network configuration to specify whether to enable VPC networking. If VPC networking is enabled, you must provide a `VpcId` and at least one entry in `VSwitchIds`.\\n.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -2622,11 +2622,11 @@ func (client *Client) DeleteWorkspace(workspaceId *string, request *DeleteWorksp
 
 // Summary:
 //
-// Disables a Connector.
+// Disables a QoderCLI Connector in a specified workspace. The Connector can be disabled only when no Agent is using it. After the Connector is disabled, the Connector and its Service Account Key configuration are removed.
 //
 // Description:
 //
-// Disables a specified Connector in a workspace.
+// Disables a Connector in a specified workspace.
 //
 // @param request - DisableConnectorRequest
 //
@@ -2667,11 +2667,11 @@ func (client *Client) DisableConnectorWithOptions(workspaceId *string, connector
 
 // Summary:
 //
-// Disables a Connector.
+// Disables a QoderCLI Connector in a specified workspace. The Connector can be disabled only when no Agent is using it. After the Connector is disabled, the Connector and its Service Account Key configuration are removed.
 //
 // Description:
 //
-// Disables a specified Connector in a workspace.
+// Disables a Connector in a specified workspace.
 //
 // @param request - DisableConnectorRequest
 //
@@ -2690,7 +2690,7 @@ func (client *Client) DisableConnector(workspaceId *string, connectorName *strin
 
 // Summary:
 //
-// Retrieves a pre-signed OSS download URL for a specified AgentSpec ZIP package.
+// Retrieves a pre-signed OSS download URL for a specified AgentSpec, which is used to download the AgentSpec ZIP package.
 //
 // Description:
 //
@@ -2743,7 +2743,7 @@ func (client *Client) DownloadAgentSpecViaOssWithOptions(workspaceId *string, ag
 
 // Summary:
 //
-// Retrieves a pre-signed OSS download URL for a specified AgentSpec ZIP package.
+// Retrieves a pre-signed OSS download URL for a specified AgentSpec, which is used to download the AgentSpec ZIP package.
 //
 // Description:
 //
@@ -2840,11 +2840,11 @@ func (client *Client) DownloadSkillVersionViaOss(workspaceId *string, skillName 
 
 // Summary:
 //
-// Enables a Connector.
+// Enables a QoderCLI Connector in a specified workspace. The request must include the site, API key, and at least one service account key. The service validates all account keys before saving the configuration.
 //
 // Description:
 //
-// Enables a Connector in a specified workspace. Credential verification is required before enabling.
+// Enables a Connector in a specified workspace. Credential verification is required before the Connector can be enabled.
 //
 // @param tmpReq - EnableConnectorRequest
 //
@@ -2897,11 +2897,11 @@ func (client *Client) EnableConnectorWithOptions(workspaceId *string, connectorN
 
 // Summary:
 //
-// Enables a Connector.
+// Enables a QoderCLI Connector in a specified workspace. The request must include the site, API key, and at least one service account key. The service validates all account keys before saving the configuration.
 //
 // Description:
 //
-// Enables a Connector in a specified workspace. Credential verification is required before enabling.
+// Enables a Connector in a specified workspace. Credential verification is required before the Connector can be enabled.
 //
 // @param request - EnableConnectorRequest
 //
@@ -4368,7 +4368,7 @@ func (client *Client) GetTeam(workspaceId *string, teamId *string, request *GetT
 
 // Summary:
 //
-// Queries the details of a specified user in a workspace. Returns an error if the user does not exist.
+// Queries the details of a specified user in a specified workspace. Returns an error if the user does not exist.
 //
 // @param request - GetUserRequest
 //
@@ -4409,7 +4409,7 @@ func (client *Client) GetUserWithOptions(workspaceId *string, agentCoreUserId *s
 
 // Summary:
 //
-// Queries the details of a specified user in a workspace. Returns an error if the user does not exist.
+// Queries the details of a specified user in a specified workspace. Returns an error if the user does not exist.
 //
 // @param request - GetUserRequest
 //
@@ -4487,6 +4487,88 @@ func (client *Client) GetWorkspace(workspaceId *string, request *GetWorkspaceReq
 	headers := make(map[string]*string)
 	_result = &GetWorkspaceResponse{}
 	_body, _err := client.GetWorkspaceWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the ACR RAM authorization URL for a workspace.
+//
+// Description:
+//
+// ACR and user OSS mounts share the same workspace role. If no existing role is found, the system uses AliyunAgentCoreWorkspace-{workspaceId}. If a valid legacy OSS mount role exists, the system reuses it and only appends permissions without overwriting existing OSS policies. Previously pinned shared roles continue to be reused and are not rebuilt or renamed because of new naming templates. The acrInstanceId, namespace, and repository parameters are required. The region and account are derived from the workspace context. The response contains the backend-resolved role and the authorization URL for the target repository. This operation does not create ACR or Agent execution versions or deliver runtime configurations. After authorization is complete, you can call Verify, and then create or update an Agent without calling a separate Ensure operation.
+//
+// @param request - GetWorkspaceAcrRamAuthorizeUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceAcrRamAuthorizeUrlResponse
+func (client *Client) GetWorkspaceAcrRamAuthorizeUrlWithOptions(workspaceId *string, request *GetWorkspaceAcrRamAuthorizeUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceAcrRamAuthorizeUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcrInstanceId) {
+		query["acrInstanceId"] = request.AcrInstanceId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.Repository) {
+		query["repository"] = request.Repository
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceAcrRamAuthorizeUrl"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/acr/authorize"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceAcrRamAuthorizeUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the ACR RAM authorization URL for a workspace.
+//
+// Description:
+//
+// ACR and user OSS mounts share the same workspace role. If no existing role is found, the system uses AliyunAgentCoreWorkspace-{workspaceId}. If a valid legacy OSS mount role exists, the system reuses it and only appends permissions without overwriting existing OSS policies. Previously pinned shared roles continue to be reused and are not rebuilt or renamed because of new naming templates. The acrInstanceId, namespace, and repository parameters are required. The region and account are derived from the workspace context. The response contains the backend-resolved role and the authorization URL for the target repository. This operation does not create ACR or Agent execution versions or deliver runtime configurations. After authorization is complete, you can call Verify, and then create or update an Agent without calling a separate Ensure operation.
+//
+// @param request - GetWorkspaceAcrRamAuthorizeUrlRequest
+//
+// @return GetWorkspaceAcrRamAuthorizeUrlResponse
+func (client *Client) GetWorkspaceAcrRamAuthorizeUrl(workspaceId *string, request *GetWorkspaceAcrRamAuthorizeUrlRequest) (_result *GetWorkspaceAcrRamAuthorizeUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkspaceAcrRamAuthorizeUrlResponse{}
+	_body, _err := client.GetWorkspaceAcrRamAuthorizeUrlWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4740,11 +4822,11 @@ func (client *Client) InstallWorkspacePlugin(workspaceId *string, pluginName *st
 
 // Summary:
 //
-// Queries the IM channel list of a specified agent.
+// Queries the list of IM channels for a specified agent.
 //
 // Description:
 //
-// Queries the IM channel list of a specified agent.
+// Queries the list of IM channels for a specified agent.
 //
 // @param request - ListAgentIMChannelsRequest
 //
@@ -4803,11 +4885,11 @@ func (client *Client) ListAgentIMChannelsWithOptions(workspaceId *string, agentI
 
 // Summary:
 //
-// Queries the IM channel list of a specified agent.
+// Queries the list of IM channels for a specified agent.
 //
 // Description:
 //
-// Queries the IM channel list of a specified agent.
+// Queries the list of IM channels for a specified agent.
 //
 // @param request - ListAgentIMChannelsRequest
 //
@@ -4936,7 +5018,7 @@ func (client *Client) ListAgentSpecs(workspaceId *string, request *ListAgentSpec
 
 // Summary:
 //
-// Queries the list of teams to which specified agents belong. Specify the agent IDs through agentIds to retrieve the membership information between each agent and its teams, including the team ID, team name, and the role that the agent assumes in the team.
+// Queries the list of teams to which specified agents belong. Specify the agent IDs by using agentIds. The response includes the membership information between each agent and its teams, such as the team ID, team name, and the role that the agent assumes in the team.
 //
 // @param tmpReq - ListAgentTeamsRequest
 //
@@ -4989,7 +5071,7 @@ func (client *Client) ListAgentTeamsWithOptions(workspaceId *string, tmpReq *Lis
 
 // Summary:
 //
-// Queries the list of teams to which specified agents belong. Specify the agent IDs through agentIds to retrieve the membership information between each agent and its teams, including the team ID, team name, and the role that the agent assumes in the team.
+// Queries the list of teams to which specified agents belong. Specify the agent IDs by using agentIds. The response includes the membership information between each agent and its teams, such as the team ID, team name, and the role that the agent assumes in the team.
 //
 // @param request - ListAgentTeamsRequest
 //
@@ -5008,11 +5090,11 @@ func (client *Client) ListAgentTeams(workspaceId *string, request *ListAgentTeam
 
 // Summary:
 //
-// Queries the list of models for a connector.
+// Queries the available official models and enterprise models for an enabled QoderCLI Connector. The service retrieves models in real time by using the saved API key and organization ID, and deduplicates the results by model ID.
 //
 // Description:
 //
-// Queries the list of available models for a specified connector. Pagination is supported.
+// Queries the list of available models for a specified Connector. Pagination is supported.
 //
 // @param request - ListConnectorModelsRequest
 //
@@ -5067,11 +5149,11 @@ func (client *Client) ListConnectorModelsWithOptions(workspaceId *string, connec
 
 // Summary:
 //
-// Queries the list of models for a connector.
+// Queries the available official models and enterprise models for an enabled QoderCLI Connector. The service retrieves models in real time by using the saved API key and organization ID, and deduplicates the results by model ID.
 //
 // Description:
 //
-// Queries the list of available models for a specified connector. Pagination is supported.
+// Queries the list of available models for a specified Connector. Pagination is supported.
 //
 // @param request - ListConnectorModelsRequest
 //
@@ -5090,7 +5172,7 @@ func (client *Client) ListConnectorModels(workspaceId *string, connectorName *st
 
 // Summary:
 //
-// Queries the list of connectors.
+// Queries the list of connectors supported by a specified workspace, including their status, number of bound agents, and configurations. The current version returns the QoderCLI connector.
 //
 // Description:
 //
@@ -5145,7 +5227,7 @@ func (client *Client) ListConnectorsWithOptions(workspaceId *string, request *Li
 
 // Summary:
 //
-// Queries the list of connectors.
+// Queries the list of connectors supported by a specified workspace, including their status, number of bound agents, and configurations. The current version returns the QoderCLI connector.
 //
 // Description:
 //
@@ -5168,11 +5250,11 @@ func (client *Client) ListConnectors(workspaceId *string, request *ListConnector
 
 // Summary:
 //
-// Queries credentials in a specified workspace with paging. Filter by type using credentialType, perform a fuzzy match on credential names using nameLike, specify the maximum number of records per page using maxResults, and retrieve the next page using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Queries credentials in a specified workspace with paging. Use credentialType to filter by type, nameLike to perform a fuzzy match on credential names, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default.
 //
 // Description:
 //
-// Queries the list of credentials in a workspace with paging. Supports filtering by type and name.
+// Queries credentials in a workspace with paging. Supports filtering by type and name.
 //
 // @param request - ListCredentialsRequest
 //
@@ -5235,11 +5317,11 @@ func (client *Client) ListCredentialsWithOptions(workspaceId *string, request *L
 
 // Summary:
 //
-// Queries credentials in a specified workspace with paging. Filter by type using credentialType, perform a fuzzy match on credential names using nameLike, specify the maximum number of records per page using maxResults, and retrieve the next page using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Queries credentials in a specified workspace with paging. Use credentialType to filter by type, nameLike to perform a fuzzy match on credential names, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default.
 //
 // Description:
 //
-// Queries the list of credentials in a workspace with paging. Supports filtering by type and name.
+// Queries credentials in a workspace with paging. Supports filtering by type and name.
 //
 // @param request - ListCredentialsRequest
 //
@@ -5410,7 +5492,7 @@ func (client *Client) ListIdentityProviders(workspaceId *string, request *ListId
 //
 // Description:
 //
-// Performs a paged query for the list of managed agents in a specified workspace. Returns summary information for each agent, including the identity, name, status, template, and specifications. Use paging parameters to navigate through results.
+// Queries the list of managed agents in a specified workspace by using paging. Returns summary information for each agent, including the identity, name, status, template, and specifications.
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -5465,7 +5547,7 @@ func (client *Client) ListManagedAgentsWithOptions(workspaceId *string, request 
 //
 // Description:
 //
-// Performs a paged query for the list of managed agents in a specified workspace. Returns summary information for each agent, including the identity, name, status, template, and specifications. Use paging parameters to navigate through results.
+// Queries the list of managed agents in a specified workspace by using paging. Returns summary information for each agent, including the identity, name, status, template, and specifications.
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -6050,11 +6132,11 @@ func (client *Client) ListPredefinedModels(providerType *string, request *ListPr
 
 // Summary:
 //
-// Queries the list of Sandbox sessions.
+// Queries the list of active sessions in the sandbox of a specified managed agent by paging, and returns the session source and external channel type.
 //
 // Description:
 //
-// Queries the list of active sessions in the Sandbox of a specified managed agent.
+// Queries the list of active sessions in the sandbox of a specified managed agent.
 //
 // @param request - ListSandboxSessionsRequest
 //
@@ -6105,11 +6187,11 @@ func (client *Client) ListSandboxSessionsWithOptions(workspaceId *string, agentI
 
 // Summary:
 //
-// Queries the list of Sandbox sessions.
+// Queries the list of active sessions in the sandbox of a specified managed agent by paging, and returns the session source and external channel type.
 //
 // Description:
 //
-// Queries the list of active sessions in the Sandbox of a specified managed agent.
+// Queries the list of active sessions in the sandbox of a specified managed agent.
 //
 // @param request - ListSandboxSessionsRequest
 //
@@ -6128,11 +6210,11 @@ func (client *Client) ListSandboxSessions(workspaceId *string, agentId *string, 
 
 // Summary:
 //
-// Queries a list of sandboxes.
+// Queries the list of sandboxes for a managed agent in a specified workspace. You can filter results by sandbox ID and active session ID fragments.
 //
 // Description:
 //
-// Queries the sandbox list of a specified managed agent. The searchText parameter performs a fuzzy match on Sandbox ID fragments, and the sessionId parameter performs a fuzzy match on currently active Session ID fragments. Both parameters can be specified simultaneously and are combined with AND logic.
+// Queries the list of sandboxes for a specified managed agent. The searchText parameter performs a fuzzy match on sandbox ID fragments, and the sessionId parameter performs a fuzzy match on active session ID fragments. Both parameters are case-insensitive and can be used together with AND logic.
 //
 // @param request - ListSandboxesRequest
 //
@@ -6191,11 +6273,11 @@ func (client *Client) ListSandboxesWithOptions(workspaceId *string, agentId *str
 
 // Summary:
 //
-// Queries a list of sandboxes.
+// Queries the list of sandboxes for a managed agent in a specified workspace. You can filter results by sandbox ID and active session ID fragments.
 //
 // Description:
 //
-// Queries the sandbox list of a specified managed agent. The searchText parameter performs a fuzzy match on Sandbox ID fragments, and the sessionId parameter performs a fuzzy match on currently active Session ID fragments. Both parameters can be specified simultaneously and are combined with AND logic.
+// Queries the list of sandboxes for a specified managed agent. The searchText parameter performs a fuzzy match on sandbox ID fragments, and the sessionId parameter performs a fuzzy match on active session ID fragments. Both parameters are case-insensitive and can be used together with AND logic.
 //
 // @param request - ListSandboxesRequest
 //
@@ -6218,7 +6300,7 @@ func (client *Client) ListSandboxes(workspaceId *string, agentId *string, reques
 //
 // Description:
 //
-// ## Request description\\nQueries service endpoints in a specified workspace by using paging. Filter results by targetType, agentId, agentVersion, resourceBindingId, collaborationComponent, and status. Use maxResults to specify the maximum number of records per page, and use nextToken to retrieve the next page. If maxResults is not specified, the server returns 20 records by default.\\n
+// ## Operation description\\nQueries service endpoints in a specified workspace by using paging. Filter results by targetType, agentId, agentVersion, resourceBindingId, collaborationComponent, and status. Use maxResults to specify the maximum number of records per page and nextToken to retrieve the next page. If maxResults is not specified, the server returns 20 records by default.\\n
 //
 // @param request - ListServiceEndpointsRequest
 //
@@ -6297,7 +6379,7 @@ func (client *Client) ListServiceEndpointsWithOptions(workspaceId *string, reque
 //
 // Description:
 //
-// ## Request description\\nQueries service endpoints in a specified workspace by using paging. Filter results by targetType, agentId, agentVersion, resourceBindingId, collaborationComponent, and status. Use maxResults to specify the maximum number of records per page, and use nextToken to retrieve the next page. If maxResults is not specified, the server returns 20 records by default.\\n
+// ## Operation description\\nQueries service endpoints in a specified workspace by using paging. Filter results by targetType, agentId, agentVersion, resourceBindingId, collaborationComponent, and status. Use maxResults to specify the maximum number of records per page and nextToken to retrieve the next page. If maxResults is not specified, the server returns 20 records by default.\\n
 //
 // @param request - ListServiceEndpointsRequest
 //
@@ -6426,7 +6508,7 @@ func (client *Client) ListSkills(workspaceId *string, request *ListSkillsRequest
 
 // Summary:
 //
-// Queries teams in a specified workspace by paging. Use nameLike to filter by team name with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. Member information in the list includes only the member identity, name, and team role.
+// Performs a paged query of teams in a specified workspace. Use nameLike to filter by team name with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. Member information in the list includes only the member identity, name, and team role.
 //
 // @param request - ListTeamsRequest
 //
@@ -6481,7 +6563,7 @@ func (client *Client) ListTeamsWithOptions(workspaceId *string, request *ListTea
 
 // Summary:
 //
-// Queries teams in a specified workspace by paging. Use nameLike to filter by team name with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. Member information in the list includes only the member identity, name, and team role.
+// Performs a paged query of teams in a specified workspace. Use nameLike to filter by team name with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. Member information in the list includes only the member identity, name, and team role.
 //
 // @param request - ListTeamsRequest
 //
@@ -6500,7 +6582,7 @@ func (client *Client) ListTeams(workspaceId *string, request *ListTeamsRequest) 
 
 // Summary:
 //
-// 查询用户列表
+// Queries users in a specified workspace with paging. Use nameLike to filter by username with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default.
 //
 // @param request - ListUsersRequest
 //
@@ -6559,7 +6641,7 @@ func (client *Client) ListUsersWithOptions(workspaceId *string, request *ListUse
 
 // Summary:
 //
-// 查询用户列表
+// Queries users in a specified workspace with paging. Use nameLike to filter by username with fuzzy match, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default.
 //
 // @param request - ListUsersRequest
 //
@@ -7576,11 +7658,11 @@ func (client *Client) UpdateAgentSpec(workspaceId *string, agentSpecName *string
 
 // Summary:
 //
-// Updates the credentials of a Connector.
+// Updates the API Key or Service Account Key collection for an enabled QoderCLI Connector. When serviceAccountKeys is submitted, the service treats it as the complete updated key collection and performs additions, renames, rotations, and deletions accordingly.
 //
 // Description:
 //
-// Updates the sensitive configuration of a specified Connector and aligns the Service Account Key by ID.
+// Updates the sensitive configuration of a specified Connector and aligns Service Account Keys by ID.
 //
 // @param tmpReq - UpdateConnectorRequest
 //
@@ -7633,11 +7715,11 @@ func (client *Client) UpdateConnectorWithOptions(workspaceId *string, connectorN
 
 // Summary:
 //
-// Updates the credentials of a Connector.
+// Updates the API Key or Service Account Key collection for an enabled QoderCLI Connector. When serviceAccountKeys is submitted, the service treats it as the complete updated key collection and performs additions, renames, rotations, and deletions accordingly.
 //
 // Description:
 //
-// Updates the sensitive configuration of a specified Connector and aligns the Service Account Key by ID.
+// Updates the sensitive configuration of a specified Connector and aligns Service Account Keys by ID.
 //
 // @param request - UpdateConnectorRequest
 //
@@ -8738,11 +8820,11 @@ func (client *Client) UpdateUser(workspaceId *string, agentCoreUserId *string, r
 
 // Summary:
 //
-// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. The Status, TenantId, and RegionId fields are maintained by the server and cannot be modified through this operation.
+// Updates the name or network configuration of a workspace. Only workspaces in the Initialized status can be updated. The Status, TenantId, and RegionId fields are maintained by the server and cannot be modified through this operation.
 //
 // Description:
 //
-// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` state can be updated. `Status`, `TenantId`, and `RegionId` are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide `VpcId` and at least one `VSwitchIds`.\\n.
+// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` status can be updated. The `Status`, `TenantId`, and `RegionId` fields are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide a `VpcId` and at least one entry in `VSwitchIds`.\\n.
 //
 // @param tmpReq - UpdateWorkspaceRequest
 //
@@ -8801,11 +8883,11 @@ func (client *Client) UpdateWorkspaceWithOptions(workspaceId *string, tmpReq *Up
 
 // Summary:
 //
-// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. The Status, TenantId, and RegionId fields are maintained by the server and cannot be modified through this operation.
+// Updates the name or network configuration of a workspace. Only workspaces in the Initialized status can be updated. The Status, TenantId, and RegionId fields are maintained by the server and cannot be modified through this operation.
 //
 // Description:
 //
-// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` state can be updated. `Status`, `TenantId`, and `RegionId` are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide `VpcId` and at least one `VSwitchIds`.\\n.
+// ## Operation description\\nUpdates the name or network configuration of a workspace. Only workspaces in the `Initialized` status can be updated. The `Status`, `TenantId`, and `RegionId` fields are maintained by the server and cannot be modified through this operation. The network configuration uses `Enabled` to specify whether to enable VPC networking. When enabled, you must also provide a `VpcId` and at least one entry in `VSwitchIds`.\\n.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -8992,7 +9074,7 @@ func (client *Client) UploadSkillViaOss(workspaceId *string, request *UploadSkil
 
 // Summary:
 //
-// Validates the credentials of a Connector.
+// Validates whether one or more Qoder Service Account Keys are available at a specified site. This operation does not save keys or modify the Connector status.
 //
 // Description:
 //
@@ -9049,7 +9131,7 @@ func (client *Client) VerifyConnectorWithOptions(workspaceId *string, connectorN
 
 // Summary:
 //
-// Validates the credentials of a Connector.
+// Validates whether one or more Qoder Service Account Keys are available at a specified site. This operation does not save keys or modify the Connector status.
 //
 // Description:
 //
@@ -9072,11 +9154,93 @@ func (client *Client) VerifyConnector(workspaceId *string, connectorName *string
 
 // Summary:
 //
-// Verifies the RAM authorization for an OSS mount in a workspace.
+// Verifies the ACR RAM authorization of a workspace.
 //
 // Description:
 //
-// Queries whether the OSS mount role of a workspace is bound to the custom RAM policy for the target bucket. Returns AUTHORIZED or UNAUTHORIZED. If bucketName is not specified, the existing user-managed OSS binding of the workspace is used and the authorization status is saved. If bucketName is specified, only the authorization status of the specified bucket is queried without modifying the workspace OSS binding. This operation does not verify OSS data plane access permissions or resume workspace initialization tasks.
+// ACR and user OSS mounts share the same workspace role. When no existing role is found, the system uses AliyunAgentCoreWorkspace-{workspaceId}. When a valid legacy OSS mount role exists, the system reuses it and only appends permissions without overwriting existing OSS policies. Previously pinned shared roles continue to be reused and are not rebuilt or renamed because of new naming templates. This operation performs a read-only check to verify whether the custom policies corresponding to the target instance, namespace, and repository are attached to the shared role, and checks the workspace prerequisite status. It does not create execution versions or trigger configuration delivery. AUTHORIZED only indicates that the custom policy for the target name is attached. It does not parse policy content or simulate final permissions. ELIGIBLE does not indicate that RuntimeManager capacity or template admission is complete, nor does it require that ACR configurations have been delivered. Creating or updating an Agent re-verifies permissions and processes ACR dependencies on the backend. Configuration waiting, failures, and retries are reported through Agent details.
+//
+// @param request - VerifyWorkspaceAcrRamAuthorizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyWorkspaceAcrRamAuthorizationResponse
+func (client *Client) VerifyWorkspaceAcrRamAuthorizationWithOptions(workspaceId *string, request *VerifyWorkspaceAcrRamAuthorizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *VerifyWorkspaceAcrRamAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcrInstanceId) {
+		query["acrInstanceId"] = request.AcrInstanceId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.Repository) {
+		query["repository"] = request.Repository
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyWorkspaceAcrRamAuthorization"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/acr/authorize/verify"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyWorkspaceAcrRamAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the ACR RAM authorization of a workspace.
+//
+// Description:
+//
+// ACR and user OSS mounts share the same workspace role. When no existing role is found, the system uses AliyunAgentCoreWorkspace-{workspaceId}. When a valid legacy OSS mount role exists, the system reuses it and only appends permissions without overwriting existing OSS policies. Previously pinned shared roles continue to be reused and are not rebuilt or renamed because of new naming templates. This operation performs a read-only check to verify whether the custom policies corresponding to the target instance, namespace, and repository are attached to the shared role, and checks the workspace prerequisite status. It does not create execution versions or trigger configuration delivery. AUTHORIZED only indicates that the custom policy for the target name is attached. It does not parse policy content or simulate final permissions. ELIGIBLE does not indicate that RuntimeManager capacity or template admission is complete, nor does it require that ACR configurations have been delivered. Creating or updating an Agent re-verifies permissions and processes ACR dependencies on the backend. Configuration waiting, failures, and retries are reported through Agent details.
+//
+// @param request - VerifyWorkspaceAcrRamAuthorizationRequest
+//
+// @return VerifyWorkspaceAcrRamAuthorizationResponse
+func (client *Client) VerifyWorkspaceAcrRamAuthorization(workspaceId *string, request *VerifyWorkspaceAcrRamAuthorizationRequest) (_result *VerifyWorkspaceAcrRamAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VerifyWorkspaceAcrRamAuthorizationResponse{}
+	_body, _err := client.VerifyWorkspaceAcrRamAuthorizationWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the RAM authorization for a workspace to access an OSS bucket and returns the current authorization status. When bucketName is specified, verifies the authorization for an agent-mounted bucket. When bucketName is not specified, verifies and updates the authorization status of the workspace\\"s private OSS storage.
+//
+// Description:
+//
+// Queries whether the workspace OSS mount role is bound to the custom RAM policy corresponding to the target bucket, and returns AUTHORIZED or UNAUTHORIZED. When bucketName is not specified, the existing user-managed OSS binding of the workspace is used and the authorization status is saved. When bucketName is specified, only the authorization status of the specified bucket is queried without modifying the workspace OSS binding. This operation does not verify OSS data plane access permissions or resume workspace initialization tasks. Alibaba Cloud Container Registry (ACR) and user OSS mounts share the workspace role. If no existing role is available, AliyunAgentCoreWorkspace-{workspaceId} is used. If a valid legacy OSS mount role exists, it is reused and permissions are only appended without overwriting existing OSS policies. Previously pinned shared roles continue to be reused and are not recreated or renamed due to new naming templates.
 //
 // @param request - VerifyWorkspaceOssMountRamAuthorizationRequest
 //
@@ -9123,11 +9287,11 @@ func (client *Client) VerifyWorkspaceOssMountRamAuthorizationWithOptions(workspa
 
 // Summary:
 //
-// Verifies the RAM authorization for an OSS mount in a workspace.
+// Verifies the RAM authorization for a workspace to access an OSS bucket and returns the current authorization status. When bucketName is specified, verifies the authorization for an agent-mounted bucket. When bucketName is not specified, verifies and updates the authorization status of the workspace\\"s private OSS storage.
 //
 // Description:
 //
-// Queries whether the OSS mount role of a workspace is bound to the custom RAM policy for the target bucket. Returns AUTHORIZED or UNAUTHORIZED. If bucketName is not specified, the existing user-managed OSS binding of the workspace is used and the authorization status is saved. If bucketName is specified, only the authorization status of the specified bucket is queried without modifying the workspace OSS binding. This operation does not verify OSS data plane access permissions or resume workspace initialization tasks.
+// Queries whether the workspace OSS mount role is bound to the custom RAM policy corresponding to the target bucket, and returns AUTHORIZED or UNAUTHORIZED. When bucketName is not specified, the existing user-managed OSS binding of the workspace is used and the authorization status is saved. When bucketName is specified, only the authorization status of the specified bucket is queried without modifying the workspace OSS binding. This operation does not verify OSS data plane access permissions or resume workspace initialization tasks. Alibaba Cloud Container Registry (ACR) and user OSS mounts share the workspace role. If no existing role is available, AliyunAgentCoreWorkspace-{workspaceId} is used. If a valid legacy OSS mount role exists, it is reused and permissions are only appended without overwriting existing OSS policies. Previously pinned shared roles continue to be reused and are not recreated or renamed due to new naming templates.
 //
 // @param request - VerifyWorkspaceOssMountRamAuthorizationRequest
 //

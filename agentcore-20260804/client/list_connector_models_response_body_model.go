@@ -44,7 +44,7 @@ type ListConnectorModelsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of available models.
 	Items []*ListConnectorModelsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The number of entries returned in this request.
+	// The number of models returned in this request.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListConnectorModelsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page.
+	// The next page token. This field is not returned in the current version.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListConnectorModelsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of models.
+	// The total number of models returned.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListConnectorModelsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 通义千问旗舰模型
+	// Qwen flagship model
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the model.
 	//
@@ -197,13 +197,13 @@ type ListConnectorModelsResponseBodyItems struct {
 	//
 	// Qwen3 Max
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Key ID
+	// The associated Connector Key ID. This field is not returned in the current version.
 	//
 	// example:
 	//
 	// ckey-xxxx
 	KeyId *string `json:"keyId,omitempty" xml:"keyId,omitempty"`
-	// The key name.
+	// The associated Connector Key name. This field is not returned in the current version.
 	//
 	// example:
 	//
@@ -215,11 +215,7 @@ type ListConnectorModelsResponseBodyItems struct {
 	//
 	// qwen3-max
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The source of the model. Valid values:
-	//
-	// - official: an official model.
-	//
-	// - enterprise: an enterprise-specific model.
+	// The source of the model.
 	//
 	// example:
 	//

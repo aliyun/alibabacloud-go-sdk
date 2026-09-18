@@ -130,7 +130,7 @@ func (s *CreateWorkspaceResponseBody) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyData struct {
-	// The AI Registry namespace ID. This value is returned after the related resource binding is complete and may be empty during initialization.
+	// The AI Registry namespace ID. This value is returned after the related resources are bound. It may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -140,10 +140,18 @@ type CreateWorkspaceResponseBodyData struct {
 	// namespace-0123456789abcdef
 	AiRegistryNamespaceId *string `json:"aiRegistryNamespaceId,omitempty" xml:"aiRegistryNamespaceId,omitempty"`
 	// The OSS storage authorization status.
+	//
+	// example:
+	//
+	// AUTHORIZED
 	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
 	// The name of the private OSS bucket.
+	//
+	// example:
+	//
+	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The CloudMonitor workspace ID. This value is returned after the related resource binding is complete and may be empty during initialization.
+	// The CloudMonitor workspace ID. This value is returned after the related resources are bound. It may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -152,7 +160,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// cms-ws-0123456789abcdef
 	CmsWorkspaceId *string `json:"cmsWorkspaceId,omitempty" xml:"cmsWorkspaceId,omitempty"`
-	// The time when the workspace was created, in ISO-8601 format.
+	// The time when the workspace was created, in ISO 8601 format.
 	//
 	// This parameter is required.
 	//
@@ -189,7 +197,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// Initialized
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The supplementary reason for the current workspace status. This value is used to display the specific reason when initialization fails or authorization is pending, and may be empty under normal conditions.
+	// The supplementary reason for the current workspace status. This value is used to display the specific reason when initialization fails or authorization is pending. It may be empty under normal conditions.
 	//
 	// if can be null:
 	// true
@@ -199,6 +207,10 @@ type CreateWorkspaceResponseBodyData struct {
 	// Waiting for OSS RAM authorization
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	// The storage type of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
 	// The list of workspace tags. An empty array is returned if no tags are set.
 	//

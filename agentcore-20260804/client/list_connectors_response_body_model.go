@@ -44,7 +44,7 @@ type ListConnectorsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of connectors.
 	Items []*ListConnectorsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The number of entries returned in this request.
+	// The number of connectors returned in this request.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListConnectorsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page.
+	// The next page token. The current version does not return this field.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListConnectorsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of connectors.
+	// The total number of connectors returned.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *ListConnectorsResponseBody) Validate() error {
 }
 
 type ListConnectorsResponseBodyItems struct {
-	// The number of agents bound to the connector.
+	// The number of bound agents.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ type ListConnectorsResponseBodyItems struct {
 	//
 	// 2026-09-01T08:00:00Z
 	EnabledAt *string `json:"enabledAt,omitempty" xml:"enabledAt,omitempty"`
-	// A JSON string. qodercli: {"site":"global|cn","organizationId":"...","apiKey":"...","serviceAccountKeys":[{"id":"ckey-xxx","name":"default","serviceAccountKey":"..."}]}. This field is absent when the connector is not enabled.
+	// The connector configuration JSON string. After the connector is enabled, this string may contain sensitive credentials.
 	//
 	// example:
 	//
 	// {"site":"global","organizationId":"org-xxxx"}
 	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The connector name.
+	// The connector name. The current value is qodercli.
 	//
 	// example:
 	//

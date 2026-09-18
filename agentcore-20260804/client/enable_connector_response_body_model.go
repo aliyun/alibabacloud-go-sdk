@@ -50,7 +50,7 @@ type EnableConnectorResponseBody struct {
   // 
   // request-123456
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // Indicates whether the request is successful.
+  // Indicates whether the request was successful.
   // 
   // example:
   // 
@@ -130,7 +130,7 @@ func (s *EnableConnectorResponseBody) Validate() error {
 }
 
 type EnableConnectorResponseBodyData struct {
-  // The number of agents attached to the Connector.
+  // The number of bound agents.
   // 
   // example:
   // 
@@ -142,13 +142,13 @@ type EnableConnectorResponseBodyData struct {
   // 
   // 2026-09-01T08:00:00Z
   EnabledAt *string `json:"enabledAt,omitempty" xml:"enabledAt,omitempty"`
-  // A JSON string. For qodercli: {"site":"global|cn","organizationId":"...","apiKey":"...","serviceAccountKeys":[{"id":"ckey-xxx","name":"default","serviceAccountKey":"..."}]}. This field is empty when the Connector is not enabled.
+  // The Connector configuration JSON string. This is sensitive information.
   // 
   // example:
   // 
   // {"site":"global","organizationId":"org-xxxx"}
   Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-  // The Connector name.
+  // The Connector name. The current value is qodercli.
   // 
   // example:
   // 

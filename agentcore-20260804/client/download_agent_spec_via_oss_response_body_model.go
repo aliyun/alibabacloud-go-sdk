@@ -16,7 +16,7 @@ type iDownloadAgentSpecViaOssResponseBody interface {
 }
 
 type DownloadAgentSpecViaOssResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

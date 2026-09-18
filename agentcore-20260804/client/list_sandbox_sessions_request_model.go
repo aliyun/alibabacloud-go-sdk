@@ -22,7 +22,11 @@ type ListSandboxSessionsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The cursor used to query the next page.
+	// The pagination token for querying the next page.
+	//
+	// example:
+	//
+	// next-token-1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 

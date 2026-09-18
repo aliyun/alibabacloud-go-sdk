@@ -131,8 +131,16 @@ func (s *UpdateWorkspaceResponseBody) Validate() error {
 
 type UpdateWorkspaceResponseBodyData struct {
 	// The OSS storage authorization status.
+	//
+	// example:
+	//
+	// AUTHORIZED
 	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
 	// The name of the private OSS bucket.
+	//
+	// example:
+	//
+	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	// The workspace name.
 	//
@@ -148,15 +156,19 @@ type UpdateWorkspaceResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The workspace status. Valid values: Initializing, Initialized, Deleting, Deleted.
+	// The workspace status. Valid values: Initializing, Initialized, Deleting, and Deleted.
 	//
 	// example:
 	//
 	// Initialized
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The storage type of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	// The ID of the tenant to which the workspace belongs.
+	// The tenant ID to which the workspace belongs.
 	//
 	// example:
 	//
@@ -269,7 +281,7 @@ func (s *UpdateWorkspaceResponseBodyData) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// The VPC network configuration.
+	// The VPC network configuration of the user.
 	Vpc *UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -308,7 +320,7 @@ type UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The VPC ID of the user.
 	//
 	// example:
 	//

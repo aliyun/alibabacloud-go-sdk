@@ -18,19 +18,19 @@ type iListConnectorModelsRequest interface {
 }
 
 type ListConnectorModelsRequest struct {
-	// The ID of a service account key. This parameter is required when multiple keys exist. You can leave this parameter empty if only one key exists.
+	// The Connector Key ID. This parameter is not supported in the current version.
 	//
 	// example:
 	//
 	// ckey-xxxx
 	ConnectorKeyId *string `json:"connectorKeyId,omitempty" xml:"connectorKeyId,omitempty"`
-	// The number of entries per page.
+	// The page size. This parameter is not supported in the current version.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page.
+	// The next page token. This parameter is not supported in the current version.
 	//
 	// example:
 	//

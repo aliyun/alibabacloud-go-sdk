@@ -50,13 +50,13 @@ type ListTeamsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned if the request failed.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This parameter is empty if no more pages are available.
+	// The pagination token for the next page. This value is empty if no more pages are available.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ func (s *ListTeamsResponseBody) Validate() error {
 type ListTeamsResponseBodyItems struct {
 	// The list of agent members in the team.
 	Agents []*ListTeamsResponseBodyItemsAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	// The time when the team was created, in UTC and RFC 3339 format.
+	// The creation time in UTC, formatted according to RFC 3339.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type ListTeamsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Team responsible for the intelligent customer service business
+	// A team responsible for intelligent customer service
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 128 characters in length.
 	//
@@ -225,7 +225,7 @@ type ListTeamsResponseBodyItems struct {
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
-	// The time when the team was last modified, in UTC and RFC 3339 format.
+	// The time of the last modification in UTC, formatted according to RFC 3339.
 	//
 	// example:
 	//

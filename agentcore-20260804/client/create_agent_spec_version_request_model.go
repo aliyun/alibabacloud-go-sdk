@@ -45,13 +45,13 @@ func (s *CreateAgentSpecVersionRequest) Validate() error {
 }
 
 type CreateAgentSpecVersionRequestBody struct {
-	// The existing version on which to base the draft.
+	// The existing version on which the draft is based.
 	//
 	// example:
 	//
 	// 1.0.0
 	BasedOnVersion *string `json:"basedOnVersion,omitempty" xml:"basedOnVersion,omitempty"`
-	// The version number for the draft. If not specified, the version number is automatically incremented.
+	// The version number of the draft. If this parameter is not specified, the version number is automatically incremented.
 	//
 	// example:
 	//

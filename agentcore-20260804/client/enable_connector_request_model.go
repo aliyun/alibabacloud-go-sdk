@@ -47,7 +47,7 @@ func (s *EnableConnectorRequest) Validate() error {
 }
 
 type EnableConnectorRequestBody struct {
-  // A JSON string. qodercli uses apiKey. This field is write-only and is not returned in responses.
+  // The Connector configuration JSON string. Set site to global or cn. apiKey is required. serviceAccountKeys must contain at least one named service account key. organizationId is optional.
   // 
   // This parameter is required.
   // 

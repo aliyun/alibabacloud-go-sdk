@@ -138,7 +138,7 @@ type UpdateCredentialResponseBodyData struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The masked credential content. If credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+	// The masked credential content. If credentialType is set to apiKey, the apiKey value is returned as asterisks (*) of equal length.
 	//
 	// example:
 	//

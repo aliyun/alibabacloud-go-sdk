@@ -46,17 +46,17 @@ type ListAgentIMChannelsRequest struct {
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The IM channel status. Valid values:
 	//
-	// - CREATING: being created.
+	// - CREATING: The channel is being created.
 	//
-	// - READY: ready.
+	// - READY: The channel is ready.
 	//
-	// - UPDATING: being updated.
+	// - UPDATING: The channel is being updated.
 	//
-	// - FAILED: failed.
+	// - FAILED: The channel creation or update failed.
 	//
-	// - DELETING: being deleted.
+	// - DELETING: The channel is being deleted.
 	//
-	// - DELETE_FAILED: deletion failed.
+	// - DELETE_FAILED: The channel deletion failed.
 	//
 	// example:
 	//

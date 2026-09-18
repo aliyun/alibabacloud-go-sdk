@@ -60,7 +60,7 @@ type ListManagedAgentsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates that the last page has been reached.
+	// The token for the next page. An empty value indicates the last page.
 	//
 	// example:
 	//
@@ -239,19 +239,7 @@ type ListManagedAgentsResponseBodyItems struct {
 	//
 	// Managed
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the managed agent. Valid values:
-	//
-	// - Creating: Being created.
-	//
-	// - Failed: Failed.
-	//
-	// - Running: Running.
-	//
-	// - Updating: Being updated.
-	//
-	// - Deleted: Deleted.
-	//
-	// - Deleting: Being deleted.
+	// The status of the managed agent.
 	//
 	// example:
 	//
@@ -449,7 +437,7 @@ type ListManagedAgentsResponseBodyItemsHarnessConfiguration struct {
 	//
 	// key-xxxx
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The Connector Key name populated during queries. This parameter is not used as a binding reference during writes.
+	// The Connector Key name populated during queries. This value is not used as a binding reference during writes.
 	//
 	// example:
 	//

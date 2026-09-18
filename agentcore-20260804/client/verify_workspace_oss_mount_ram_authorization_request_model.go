@@ -14,7 +14,11 @@ type iVerifyWorkspaceOssMountRamAuthorizationRequest interface {
 }
 
 type VerifyWorkspaceOssMountRamAuthorizationRequest struct {
-	// The name of the OSS bucket.
+	// The OSS bucket name.
+	//
+	// example:
+	//
+	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 }
 

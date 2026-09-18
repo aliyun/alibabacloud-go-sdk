@@ -18,7 +18,7 @@ type iListTeamsRequest interface {
 }
 
 type ListTeamsRequest struct {
-	// The maximum number of records to return per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of records per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTeamsRequest struct {
 	//
 	// team
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, set this parameter to the nextToken value returned in the previous response.
+	// The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned in the previous response.
 	//
 	// example:
 	//

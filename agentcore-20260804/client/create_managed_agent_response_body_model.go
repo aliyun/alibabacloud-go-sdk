@@ -162,7 +162,7 @@ type CreateManagedAgentResponseBodyData struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment configuration information.
 	Environment *CreateManagedAgentResponseBodyDataEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The harness for the managed agent. Valid values: qwenpaw and qodercli.
+	// The agent harness.
 	Harness *CreateManagedAgentResponseBodyDataHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
 	//
@@ -192,7 +192,7 @@ type CreateManagedAgentResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration information.
 	Network *CreateManagedAgentResponseBodyDataNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The list of OSS mounts. A maximum of 10 entries are supported.
+	// The OSS mount list. A maximum of 10 entries are supported.
 	OssMounts []*CreateManagedAgentResponseBodyDataOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -202,7 +202,7 @@ type CreateManagedAgentResponseBodyData struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The runtime configuration information.
 	Runtime *CreateManagedAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The number of managed agent instances grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), and FAILED (runtime failure). Only phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic mapping, and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
+	// The number of managed agent instances grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), and FAILED (runtime failure). Only phases that actually occur are returned. Missing keys should be treated as 0. This field is a dynamic map, and new keys may be added in the future. You can use FAILED > 0 to determine whether any instances have failed.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The list of skill configurations.
 	Skills []*CreateManagedAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
@@ -216,7 +216,7 @@ type CreateManagedAgentResponseBodyData struct {
 	SubAgents []*CreateManagedAgentResponseBodyDataSubAgents `json:"subAgents,omitempty" xml:"subAgents,omitempty" type:"Repeated"`
 	// The template configuration.
 	Template *CreateManagedAgentResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
-	// The tool configuration list.
+	// The list of tool configurations.
 	Tools []*CreateManagedAgentResponseBodyDataTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 	// The time when the managed agent was last updated, in RFC 3339 format.
 	//
@@ -663,9 +663,9 @@ func (s *CreateManagedAgentResponseBodyDataEnvironmentVariables) Validate() erro
 }
 
 type CreateManagedAgentResponseBodyDataHarness struct {
-	// The Connector binding configuration for the qodercli harness.
+	// The harness configuration.
 	Configuration *CreateManagedAgentResponseBodyDataHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The harness type. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is performed based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	// The harness type.
 	//
 	// example:
 	//
@@ -709,13 +709,13 @@ func (s *CreateManagedAgentResponseBodyDataHarness) Validate() error {
 }
 
 type CreateManagedAgentResponseBodyDataHarnessConfiguration struct {
-	// The Key ID used to bind a Service Account Key of the QoderCLI Connector. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+	// The connector service account key.
 	//
 	// example:
 	//
 	// key-xxxx
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The Connector Key name that is populated during queries. This parameter is not used as a binding criterion during writes.
+	// The connector service account name.
 	//
 	// example:
 	//
@@ -766,7 +766,7 @@ type CreateManagedAgentResponseBodyDataModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration and the quota usage status in the current cycle. This parameter is empty if no quota is configured.
+	// The model token quota configuration and the quota usage status in the current period. This field is empty if no quota is configured.
 	Quota *CreateManagedAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -815,7 +815,7 @@ func (s *CreateManagedAgentResponseBodyDataModel) Validate() error {
 }
 
 type CreateManagedAgentResponseBodyDataModelQuota struct {
-	// Indicates whether the quota is enabled. This parameter is not returned if no quota is configured.
+	// Indicates whether the quota is enabled. This field is not returned if no quota is configured.
 	//
 	// example:
 	//
@@ -827,31 +827,31 @@ type CreateManagedAgentResponseBodyDataModelQuota struct {
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// Indicates whether the quota has been exceeded in the current cycle. This is a read-only field returned by the backend.
+	// Indicates whether the quota has been exceeded in the current period. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
-	// The quota statistical period. A value of day indicates a daily period. A value of month indicates a monthly period.
+	// The quota statistical period. The value day indicates a daily period, and the value month indicates a monthly period.
 	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The gateway quota rule status. This is a read-only field returned by the backend.
+	// The gateway quota rule status. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
 	// ACTIVE
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The maximum number of tokens that can be consumed within a single cycle.
+	// The maximum number of tokens that can be consumed within a single period.
 	//
 	// example:
 	//
 	// 1000000
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
-	// The number of tokens consumed in the current cycle. This is a read-only field returned by the backend.
+	// The number of tokens consumed in the current period. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
@@ -1043,10 +1043,22 @@ func (s *CreateManagedAgentResponseBodyDataNetworkAccessVpc) Validate() error {
 
 type CreateManagedAgentResponseBodyDataOssMounts struct {
 	// The OSS bucket name. This parameter is required by backend validation for each mount entry.
+	//
+	// example:
+	//
+	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The absolute mount path inside the container. This parameter is required by backend validation for each mount entry.
+	// The absolute mount path in the container. This parameter is required by backend validation for each mount entry.
+	//
+	// example:
+	//
+	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix within the bucket. If this parameter is not specified, the entire bucket is mounted.
+	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+	//
+	// example:
+	//
+	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 	// Specifies whether to mount in read-only mode. Default value: false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
@@ -1168,7 +1180,7 @@ func (s *CreateManagedAgentResponseBodyDataRuntime) Validate() error {
 }
 
 type CreateManagedAgentResponseBodyDataRuntimeCompute struct {
-	// The compute class.
+	// The compute specification.
 	//
 	// This parameter is required.
 	//
@@ -1203,12 +1215,28 @@ type CreateManagedAgentResponseBodyDataRuntimeHpa struct {
 	// Specifies whether to enable auto scaling. This parameter is required by backend validation when hpa is present.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The maximum number of active sessions per sandbox. This parameter is required by backend validation when hpa is present.
+	//
+	// example:
+	//
+	// 5
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
 	// The maximum number of sandboxes. This parameter is required when HPA is enabled and the value must be no less than the minimum value.
+	//
+	// example:
+	//
+	// 3
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
 	// The minimum number of sandboxes. This parameter is required when HPA is enabled.
+	//
+	// example:
+	//
+	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The session reclamation time after inactivity, in seconds. This parameter is required by backend validation when hpa is present.
+	// The time in seconds before an inactive session is reclaimed. This parameter is required by backend validation when hpa is present.
+	//
+	// example:
+	//
+	// 3600
 	SessionTtlSeconds *int32 `json:"sessionTtlSeconds,omitempty" xml:"sessionTtlSeconds,omitempty"`
 }
 

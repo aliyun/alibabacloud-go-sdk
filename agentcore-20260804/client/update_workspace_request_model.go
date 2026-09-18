@@ -108,7 +108,7 @@ func (s *UpdateWorkspaceRequestBody) Validate() error {
 }
 
 type UpdateWorkspaceRequestBodyNetworkConfiguration struct {
-	// The VPC network configuration.
+	// The VPC network configuration of the user.
 	//
 	// This parameter is required.
 	Vpc *UpdateWorkspaceRequestBodyNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
@@ -149,7 +149,7 @@ type UpdateWorkspaceRequestBodyNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be specified, and all vSwitches must belong to the VPC specified by VpcId.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The VPC ID of the user.
 	//
 	// example:
 	//

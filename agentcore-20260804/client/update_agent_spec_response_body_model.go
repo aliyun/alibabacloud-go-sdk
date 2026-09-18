@@ -16,7 +16,7 @@ type iUpdateAgentSpecResponseBody interface {
 }
 
 type UpdateAgentSpecResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
 	// The request ID.
 	//

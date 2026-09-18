@@ -16,13 +16,13 @@ type iListConnectorsRequest interface {
 }
 
 type ListConnectorsRequest struct {
-	// The number of entries per page.
+	// The page size. The current version does not support this parameter.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page.
+	// The next page token. The current version does not support this parameter.
 	//
 	// example:
 	//

@@ -131,8 +131,16 @@ func (s *GetWorkspaceResponseBody) Validate() error {
 
 type GetWorkspaceResponseBodyData struct {
 	// The OSS storage authorization status.
+	//
+	// example:
+	//
+	// AUTHORIZED
 	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
 	// The name of the private OSS bucket.
+	//
+	// example:
+	//
+	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	// The time when the workspace was created.
 	//
@@ -146,7 +154,7 @@ type GetWorkspaceResponseBodyData struct {
 	//
 	// production-agents
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network configuration of the workspace.
+	// The workspace network configuration.
 	NetworkConfiguration *GetWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
 	// The region ID of the workspace.
 	//
@@ -154,17 +162,7 @@ type GetWorkspaceResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The workspace status. Valid values:
-	//
-	// - Initializing
-	//
-	// - InitializationFailed
-	//
-	// - Initialized
-	//
-	// - Deleting
-	//
-	// - Deleted
+	// The workspace status. Valid values: Initializing, InitializationFailed, Initialized, Deleting, and Deleted.
 	//
 	// example:
 	//
@@ -176,7 +174,11 @@ type GetWorkspaceResponseBodyData struct {
 	//
 	// InitializationFailed: VPC not found
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The storage type of the workspace.
+	// The workspace storage type.
+	//
+	// example:
+	//
+	// PRIVATE
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
 	// The ID of the tenant to which the workspace belongs.
 	//
@@ -309,13 +311,13 @@ func (s *GetWorkspaceResponseBodyData) Validate() error {
 }
 
 type GetWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// The public egress IP address allocated to the workspace. You can use this IP address to configure IP address whitelists for external services. This field is returned only when the public egress resource is attached and an address is allocated. The field is empty if no address is allocated, the attachment is failed, or the address is being released. This address is independent of whether VPC networking is active.
+	// The public egress IP address of the workspace.
 	//
 	// example:
 	//
 	// 203.0.113.10
 	PublicEgressIp *string `json:"publicEgressIp,omitempty" xml:"publicEgressIp,omitempty"`
-	// The VPC network configuration of the user.
+	// The user VPC network configuration.
 	Vpc *GetWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -355,7 +357,7 @@ func (s *GetWorkspaceResponseBodyDataNetworkConfiguration) Validate() error {
 }
 
 type GetWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
-	// Indicates whether VPC networking is enabled.
+	// Indicates whether the VPC network is enabled.
 	//
 	// example:
 	//
@@ -363,7 +365,7 @@ type GetWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the user VPC.
+	// The user VPC ID.
 	//
 	// example:
 	//

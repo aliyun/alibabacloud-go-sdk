@@ -72,7 +72,16 @@ type CreateWorkspaceRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceRequestBodyNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	StorageType          *string                                         `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	// The storage type of the workspace. Valid values:
+	//
+	// - PLATFORM: Platform-managed storage.
+	//
+	// - PRIVATE: User-owned private OSS storage.
+	//
+	// example:
+	//
+	// PRIVATE
+	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
 }
 
 func (s CreateWorkspaceRequestBody) String() string {

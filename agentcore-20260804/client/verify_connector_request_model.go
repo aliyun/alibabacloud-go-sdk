@@ -47,7 +47,7 @@ func (s *VerifyConnectorRequest) Validate() error {
 }
 
 type VerifyConnectorRequestBody struct {
-	// A JSON string. qodercli uses apiKey. This parameter is used only for validation and is not persisted.
+	// The Connector configuration JSON string to validate. Set site to global or cn. The serviceAccountKeys field must contain at least one item with a serviceAccountKey.
 	//
 	// This parameter is required.
 	//

@@ -30,32 +30,48 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
+	// The business status code.
+	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                        `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Items          []*ListUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The list of users.
+	Items []*ListUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The maximum number of records per page that takes effect for this query.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message. An error description is returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next page. This value is empty if no more pages are available.
+	//
 	// example:
 	//
 	// dXNlci1vZmZzZXQ6MTA
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of users that match the query conditions.
+	//
 	// example:
 	//
 	// 42
@@ -165,46 +181,68 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyItems struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
+	// The authentication method of the user. A value of password indicates local password authentication in the workspace. Values of dingtalk and feishu indicate that the user is synchronized and authenticated by the corresponding external identity provider.
+	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
+	// The creation time in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The display name of the user. The value is 1 to 32 characters in length.
+	//
 	// example:
 	//
-	// 张三
+	// John Smith
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user. The value can be up to 256 characters in length.
+	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// The username. The value must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The value is 1 to 32 characters in length.
+	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The remarks of the user. The value can be up to 1024 characters in length.
+	//
 	// example:
 	//
-	// 智能体运营组成员
+	// Agent operations team member
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The user status. Valid values: Creating, Active, Updating, Deleting, Failed, DeleteFailed.
+	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time of the last modification in UTC, formatted in RFC 3339.
+	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-123456

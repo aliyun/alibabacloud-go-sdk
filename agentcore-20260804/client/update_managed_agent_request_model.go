@@ -18,7 +18,7 @@ type iUpdateManagedAgentRequest interface {
 type UpdateManagedAgentRequest struct {
 	// The request body.
 	Body *UpdateManagedAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not guarantee idempotence in the current phase.
+	// The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type UpdateManagedAgentRequestBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment configuration.
 	Environment *UpdateManagedAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The runtime harness of the managed agent. Valid values: qwenpaw and qodercli.
+	// The agent harness configuration.
 	Harness *UpdateManagedAgentRequestBodyHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
 	//
@@ -88,7 +88,7 @@ type UpdateManagedAgentRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration.
 	Network *UpdateManagedAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The OSS mount list. A maximum of 10 items are supported. Pass an empty array to clear existing mounts.
+	// The list of OSS mounts. A maximum of 10 entries are supported. Pass an empty array to clear existing mounts.
 	OssMounts []*UpdateManagedAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The runtime configuration.
 	Runtime *UpdateManagedAgentRequestBodyRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
@@ -434,9 +434,9 @@ func (s *UpdateManagedAgentRequestBodyEnvironmentVariables) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyHarness struct {
-	// The Connector binding configuration for the qodercli harness.
+	// The harness configuration.
 	Configuration *UpdateManagedAgentRequestBodyHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The type of the runtime harness. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is performed based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	// The harness type.
 	//
 	// example:
 	//
@@ -480,13 +480,13 @@ func (s *UpdateManagedAgentRequestBodyHarness) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyHarnessConfiguration struct {
-	// The Key ID used to bind a Service Account Key of the QoderCLI Connector. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+	// The connector service account key.
 	//
 	// example:
 	//
 	// key-xxxx
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The Connector Key name that is populated during queries. This value is not used as a binding reference during writes.
+	// The connector service account name.
 	//
 	// example:
 	//
@@ -538,8 +538,9 @@ type UpdateManagedAgentRequestBodyModel struct {
 	// example:
 	//
 	// qwen-max
-	ModelName *string                                  `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	Quota     *UpdateManagedAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The model token quota configuration. If this parameter is not specified, no quota is configured.
+	Quota *UpdateManagedAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s UpdateManagedAgentRequestBodyModel) String() string {
@@ -587,18 +588,30 @@ func (s *UpdateManagedAgentRequestBodyModel) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyModelQuota struct {
+	// Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the token quota is disabled and existing quota rules are deleted.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The quota limit type. This parameter is required by backend validation when the quota is enabled. Fixed value: token.
+	//
 	// example:
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
+	// The quota statistical period. This parameter is required by backend validation when the quota is enabled. Valid values:
+	//
+	// - day: daily.
+	//
+	// - month: monthly.
+	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The maximum number of tokens that can be consumed within a single period. This parameter is required by backend validation when the quota is enabled. The value must be greater than 0.
+	//
 	// example:
 	//
 	// 1000000
@@ -701,7 +714,7 @@ func (s *UpdateManagedAgentRequestBodyNetwork) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyNetworkAccessInternet struct {
-	// Specifies whether public network access is allowed.
+	// Specifies whether to allow public network access.
 	//
 	// example:
 	//
@@ -731,7 +744,7 @@ func (s *UpdateManagedAgentRequestBodyNetworkAccessInternet) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyNetworkAccessVpc struct {
-	// Specifies whether VPC access is allowed.
+	// Specifies whether to allow VPC access.
 	//
 	// example:
 	//
@@ -761,13 +774,25 @@ func (s *UpdateManagedAgentRequestBodyNetworkAccessVpc) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyOssMounts struct {
-	// The OSS bucket name. Each mount item is validated as required by the backend.
+	// The OSS bucket name. This parameter is required by backend validation for each mount entry.
+	//
+	// example:
+	//
+	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The absolute mount path in the container. Each mount item is validated as required by the backend.
+	// The absolute mount path in the container. This parameter is required by backend validation for each mount entry.
+	//
+	// example:
+	//
+	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+	// The relative object prefix within the bucket. If this parameter is not specified, the entire bucket is mounted.
+	//
+	// example:
+	//
+	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether to mount as read-only. Default value: false.
+	// Specifies whether to mount in read-only mode. Default value: false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -824,7 +849,7 @@ type UpdateManagedAgentRequestBodyRuntime struct {
 	//
 	// This parameter is required.
 	Compute *UpdateManagedAgentRequestBodyRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
-	// The Sandbox auto scaling and session configuration.
+	// The sandbox auto scaling and session configuration.
 	Hpa *UpdateManagedAgentRequestBodyRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
 	// The session policy configuration.
 	//
@@ -919,15 +944,31 @@ func (s *UpdateManagedAgentRequestBodyRuntimeCompute) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeHpa struct {
-	// Specifies whether to enable auto scaling. Required when hpa is present as validated by the backend.
+	// Specifies whether to enable auto scaling. This parameter is required by backend validation when hpa is specified.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of active sessions per Sandbox. Required when hpa is present as validated by the backend.
+	// The maximum number of active sessions per sandbox. This parameter is required by backend validation when hpa is specified.
+	//
+	// example:
+	//
+	// 5
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of Sandboxes. Required when HPA is enabled and must be no less than the minimum value.
+	// The maximum number of sandboxes. This parameter is required when HPA is enabled and the value must be no less than the minimum value.
+	//
+	// example:
+	//
+	// 3
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of Sandboxes. Required when HPA is enabled.
+	// The minimum number of sandboxes. This parameter is required when HPA is enabled.
+	//
+	// example:
+	//
+	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The session reclamation time after inactivity, in seconds. Required when hpa is present as validated by the backend.
+	// The session reclamation time after inactivity, in seconds. This parameter is required by backend validation when hpa is specified.
+	//
+	// example:
+	//
+	// 3600
 	SessionTtlSeconds *int32 `json:"sessionTtlSeconds,omitempty" xml:"sessionTtlSeconds,omitempty"`
 }
 
@@ -989,7 +1030,7 @@ func (s *UpdateManagedAgentRequestBodyRuntimeHpa) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeSessionPolicy struct {
-	// The HTTP header name used for session affinity. Takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+	// The name of the HTTP header used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
 	//
 	// example:
 	//

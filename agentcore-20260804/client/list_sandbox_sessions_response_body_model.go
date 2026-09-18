@@ -30,15 +30,56 @@ type iListSandboxSessionsResponseBody interface {
 }
 
 type ListSandboxSessionsResponseBody struct {
-	Code           *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	HttpStatusCode *int32                                  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Items          []*ListSandboxSessionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	MaxResults     *int32                                  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Message        *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	NextToken      *string                                 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RequestId      *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
-	TotalCount     *int64                                  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The business status code. The value SUCCESS is returned if the request was successful.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The HTTP status code. The value 200 is returned if the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The list of active sessions in the sandbox.
+	Items []*ListSandboxSessionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The maximum number of records per page for this query.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message. The value success is returned if the request was successful.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next page. An empty value indicates that no more results are available.
+	//
+	// example:
+	//
+	// next-token-1
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
+	// example:
+	//
+	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of records that match the query conditions.
+	//
+	// example:
+	//
+	// 27
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListSandboxSessionsResponseBody) String() string {
@@ -145,9 +186,31 @@ func (s *ListSandboxSessionsResponseBody) Validate() error {
 
 type ListSandboxSessionsResponseBodyItems struct {
 	// The external channel type, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
+	//
+	// example:
+	//
+	// DINGTALK
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	SessionId   *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The unique identifier of the active session.
+	//
+	// example:
+	//
+	// sess-2
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// The session source type. Valid values:
+	//
+	// - API: API call.
+	//
+	// - CONSOLE_DEBUG: Console debugging.
+	//
+	// - EXTERNAL_CHANNEL: External channel.
+	//
+	// - UNKNOWN: Unknown source.
+	//
+	// example:
+	//
+	// EXTERNAL_CHANNEL
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
 func (s ListSandboxSessionsResponseBodyItems) String() string {

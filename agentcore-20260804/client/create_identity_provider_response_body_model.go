@@ -38,7 +38,7 @@ type CreateIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned if the request failed.
 	//
 	// example:
 	//
@@ -126,7 +126,11 @@ func (s *CreateIdentityProviderResponseBody) Validate() error {
 }
 
 type CreateIdentityProviderResponseBodyData struct {
-	// The type of the external identity provider. Valid values: DingTalk, Feishu.
+	// The type of the external identity provider. Valid values:
+	//
+	// - DingTalk
+	//
+	// - Feishu
 	//
 	// example:
 	//

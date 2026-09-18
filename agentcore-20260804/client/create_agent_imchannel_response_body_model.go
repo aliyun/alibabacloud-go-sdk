@@ -24,7 +24,7 @@ type iCreateAgentIMChannelResponseBody interface {
 }
 
 type CreateAgentIMChannelResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value is SUCCESS when the request succeeds.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateAgentIMChannelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The IM channel information after creation.
 	Data *CreateAgentIMChannelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value is 200 when the request succeeds.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type CreateAgentIMChannelResponseBodyData struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
 	CredentialSummary *CreateAgentIMChannelResponseBodyDataCredentialSummary `json:"credentialSummary,omitempty" xml:"credentialSummary,omitempty" type:"Struct"`
-	// Specifies whether to enable the IM channel. Default value: true.
+	// Specifies whether to enable the IM channel. Default value during creation: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The public network access URL of the attached ServiceEndpoint.
 	//
@@ -168,7 +168,7 @@ type CreateAgentIMChannelResponseBodyData struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the ServiceEndpoint to bind. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
+	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type CreateAgentIMChannelResponseBodyData struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the current IM channel status.
+	// The reason for the current status of the IM channel.
 	//
 	// example:
 	//

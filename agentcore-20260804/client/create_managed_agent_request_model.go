@@ -70,7 +70,7 @@ type CreateManagedAgentRequestBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment configuration.
 	Environment *CreateManagedAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The harness for the managed agent. Valid values: qwenpaw and qodercli.
+	// The agent harness.
 	Harness *CreateManagedAgentRequestBodyHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
 	//
@@ -92,7 +92,7 @@ type CreateManagedAgentRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration.
 	Network *CreateManagedAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The list of OSS mounts. A maximum of 10 entries are supported.
+	// The OSS mount list. A maximum of 10 entries are supported.
 	OssMounts []*CreateManagedAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The runtime configuration.
 	//
@@ -104,7 +104,7 @@ type CreateManagedAgentRequestBody struct {
 	SubAgents []*CreateManagedAgentRequestBodySubAgents `json:"subAgents,omitempty" xml:"subAgents,omitempty" type:"Repeated"`
 	// The agent template configuration.
 	Template *CreateManagedAgentRequestBodyTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
-	// The tool configuration list.
+	// The list of tool configurations.
 	Tools []*CreateManagedAgentRequestBodyTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
@@ -440,9 +440,9 @@ func (s *CreateManagedAgentRequestBodyEnvironmentVariables) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyHarness struct {
-	// The Connector binding configuration for the qodercli harness.
+	// The harness configuration.
 	Configuration *CreateManagedAgentRequestBodyHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The harness type. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is performed based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	// The harness type.
 	//
 	// example:
 	//
@@ -486,13 +486,13 @@ func (s *CreateManagedAgentRequestBodyHarness) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyHarnessConfiguration struct {
-	// The Key ID used to bind a Service Account Key of the QoderCLI Connector. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+	// The connector service account key.
 	//
 	// example:
 	//
 	// key-xxxx
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The Connector Key name that is populated during queries. This parameter is not used as a binding criterion during writes.
+	// The connector service account name.
 	//
 	// example:
 	//
@@ -545,7 +545,7 @@ type CreateManagedAgentRequestBodyModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration. If this parameter is not specified, no quota is configured.
+	// The model token quota configuration. If not specified, no quota is configured.
 	Quota *CreateManagedAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -781,10 +781,22 @@ func (s *CreateManagedAgentRequestBodyNetworkAccessVpc) Validate() error {
 
 type CreateManagedAgentRequestBodyOssMounts struct {
 	// The OSS bucket name. This parameter is required by backend validation for each mount entry.
+	//
+	// example:
+	//
+	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The absolute mount path inside the container. This parameter is required by backend validation for each mount entry.
+	// The absolute mount path in the container. This parameter is required by backend validation for each mount entry.
+	//
+	// example:
+	//
+	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix within the bucket. If this parameter is not specified, the entire bucket is mounted.
+	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+	//
+	// example:
+	//
+	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
 	// Specifies whether to mount in read-only mode. Default value: false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
@@ -906,7 +918,7 @@ func (s *CreateManagedAgentRequestBodyRuntime) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyRuntimeCompute struct {
-	// The compute class.
+	// The compute specification.
 	//
 	// This parameter is required.
 	//
@@ -941,12 +953,28 @@ type CreateManagedAgentRequestBodyRuntimeHpa struct {
 	// Specifies whether to enable auto scaling. This parameter is required by backend validation when hpa is present.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The maximum number of active sessions per sandbox. This parameter is required by backend validation when hpa is present.
+	//
+	// example:
+	//
+	// 5
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
 	// The maximum number of sandboxes. This parameter is required when HPA is enabled and the value must be no less than the minimum value.
+	//
+	// example:
+	//
+	// 3
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
 	// The minimum number of sandboxes. This parameter is required when HPA is enabled.
+	//
+	// example:
+	//
+	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The session reclamation time after inactivity, in seconds. This parameter is required by backend validation when hpa is present.
+	// The time in seconds before an inactive session is reclaimed. This parameter is required by backend validation when hpa is present.
+	//
+	// example:
+	//
+	// 3600
 	SessionTtlSeconds *int32 `json:"sessionTtlSeconds,omitempty" xml:"sessionTtlSeconds,omitempty"`
 }
 

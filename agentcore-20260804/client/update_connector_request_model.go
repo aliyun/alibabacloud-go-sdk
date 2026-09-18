@@ -47,7 +47,7 @@ func (s *UpdateConnectorRequest) Validate() error {
 }
 
 type UpdateConnectorRequestBody struct {
-	// A JSON string. qodercli uses a new apiKey. The value is write-only and is not returned in responses.
+	// The Connector configuration JSON string. The site value must match the value specified when the Connector was enabled. The organizationId value, if provided, must match the value specified when the Connector was enabled. If apiKey is omitted, the original value is retained. If serviceAccountKeys is provided, it represents the complete updated key collection.
 	//
 	// This parameter is required.
 	//

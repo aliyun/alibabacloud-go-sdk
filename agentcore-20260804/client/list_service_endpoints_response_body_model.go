@@ -50,13 +50,13 @@ type ListServiceEndpointsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned when the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This value is empty if no more pages exist.
+	// The pagination token for the next page. This value is empty when no more pages are available.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type ListServiceEndpointsResponseBodyItems struct {
 	AccessUrls []*ListServiceEndpointsResponseBodyItemsAccessUrls `json:"accessUrls,omitempty" xml:"accessUrls,omitempty" type:"Repeated"`
 	// The authentication configuration of the service endpoint.
 	Authentication *ListServiceEndpointsResponseBodyItemsAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty" type:"Struct"`
-	// The creation time in UTC, formatted according to RFC 3339.
+	// The creation time in UTC, formatted in RFC 3339.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type ListServiceEndpointsResponseBodyItems struct {
 	//
 	// my-agent-endpoint
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The region ID where the service endpoint is located.
+	// The region ID of the service endpoint.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ type ListServiceEndpointsResponseBodyItems struct {
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	// The target routing configuration of the service endpoint.
 	Target *ListServiceEndpointsResponseBodyItemsTarget `json:"target,omitempty" xml:"target,omitempty" type:"Struct"`
-	// The last modification time in UTC, formatted according to RFC 3339.
+	// The time of the last modification in UTC, formatted in RFC 3339.
 	//
 	// example:
 	//
@@ -488,25 +488,25 @@ func (s *ListServiceEndpointsResponseBodyItemsAuthentication) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsTarget struct {
-	// The target agent ID. This parameter is returned when the target type is AGENT_VERSION.
+	// The target agent ID. Returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The target agent version number. This parameter is returned when the target type is AGENT_VERSION.
+	// The target agent version number. Returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// The collaboration component type. This parameter is returned when the target type is TEAM_COLLABORATION.
+	// The collaboration component type. Returned when the target type is TEAM_COLLABORATION.
 	//
 	// example:
 	//
 	// ELEMENT_WEB
 	CollaborationComponent *string `json:"collaborationComponent,omitempty" xml:"collaborationComponent,omitempty"`
-	// The workspace resource binding ID associated with the target collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
+	// The workspace resource binding ID associated with the target collaboration component. Returned when the target type is TEAM_COLLABORATION.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type ListCredentialsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of credentials.
 	Items []*ListCredentialsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that took effect for this query.
+	// The maximum number of records per page that takes effect for this query.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type ListCredentialsResponseBodyItems struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The list of resources to which the credential can be applied.
 	ResourceRefs []*ListCredentialsResponseBodyItemsResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The scope of resources to which the credential can be applied.
+	// The resource scope of the credential.
 	//
 	// example:
 	//

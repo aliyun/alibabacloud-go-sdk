@@ -14,7 +14,7 @@ type iDeleteAgentIMChannelRequest interface {
 }
 
 type DeleteAgentIMChannelRequest struct {
-	// A reserved idempotence token. The backend does not provide persistent idempotence guarantee in the current version.
+	// The reserved idempotence token. The backend does not provide persistent idempotence guarantee in the current version.
 	//
 	// example:
 	//

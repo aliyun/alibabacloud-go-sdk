@@ -18,7 +18,7 @@ type iCreateAgentIMChannelRequest interface {
 type CreateAgentIMChannelRequest struct {
 	// The request body.
 	Body *CreateAgentIMChannelRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// A reserved idempotency token. The backend does not provide persistent idempotency guarantees in the current phase.
+	// The reserved idempotency token. The backend does not provide persistent idempotency guarantees in the current phase.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type CreateAgentIMChannelRequestBody struct {
 	//
 	// DINGTALK
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// The channel credentials. All fields must be provided and field values must be non-empty strings. DingTalk uses clientID and clientSecret. Lark uses appId and appSecret. WeCom uses botId and secret.
+	// The channel credential. All fields must be provided and field values must be non-empty strings. DingTalk uses clientID and clientSecret. Lark uses appId and appSecret. WeCom uses botId and secret.
 	//
 	// This parameter is required.
 	Credential map[string]*string `json:"credential,omitempty" xml:"credential,omitempty"`
-	// Specifies whether to enable the IM channel. Default value: true.
+	// Specifies whether to enable the IM channel. Default value during creation: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The ID of the ServiceEndpoint to bind. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
+	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
 	//
 	// This parameter is required.
 	//

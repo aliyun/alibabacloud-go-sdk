@@ -24,21 +24,21 @@ type iCreateExternalAgentBootstrapTokenResponseBody interface {
 }
 
 type CreateExternalAgentBootstrapTokenResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value SUCCESS is returned if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The Bootstrap Token and CMS configuration required for connecting the external agent.
+	// The bootstrap token and CMS configuration required for connecting the external agent.
 	Data *CreateExternalAgentBootstrapTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value 200 is returned if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message indicating the request processing result.
+	// The message that indicates the result of the request.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type CreateExternalAgentBootstrapTokenResponseBodyData struct {
 	//
 	// agent-1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The Bootstrap Token used for connecting the external agent.
+	// The bootstrap token used for connecting the external agent.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type CreateExternalAgentBootstrapTokenResponseBodyData struct {
 	//
 	// INTERNET
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The fingerprint of the Bootstrap Token.
+	// The fingerprint of the bootstrap token.
 	//
 	// example:
 	//
