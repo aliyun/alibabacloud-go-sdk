@@ -22,7 +22,7 @@ type StopJobResponseBody struct {
 	//
 	// dlc-20210126170216-xxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID. You can troubleshoot issues based on the request ID.
+	// The request ID, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

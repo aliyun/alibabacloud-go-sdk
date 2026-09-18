@@ -26,63 +26,63 @@ type iListEcsSpecsRequest interface {
 }
 
 type ListEcsSpecsRequest struct {
-	// Filter by accelerator type. Valid values:
+	// Filters by accelerator type. Valid values:
 	//
-	// 	- CPU
+	// - CPU
 	//
-	// 	- GPU
+	// - GPU
 	//
 	// example:
 	//
 	// GPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// The instance types to query. Separate the types with commas (,).
+	// The list of instance types to query. Separate multiple instance types with commas (,).
 	//
 	// example:
 	//
 	// ecs.g6.large,ecs.g6.xlarge
 	InstanceTypes *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- desc: descending order.
+	// - desc: descending order.
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of the page to query. The start value is 1.
+	// The page number. The minimum value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries to return on each page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- ECS
+	// - ECS
 	//
-	// 	- Lingjun
+	// - Lingjun
 	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The field based on which the results are sorted. Valid values:
+	// Sorts by return field. Valid values:
 	//
-	// 	- CPU
+	// - CPU
 	//
-	// 	- GPU
+	// - GPU
 	//
-	// 	- Memory
+	// - Memory
 	//
-	// 	- GmtCreateTime
+	// - GmtCreateTime
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListJobTemplatesResponseBody interface {
 }
 
 type ListJobTemplatesResponseBody struct {
-	// The list of job templates.
+	// The list of templates.
 	JobTemplates []*ListJobTemplatesResponseBodyJobTemplates `json:"JobTemplates,omitempty" xml:"JobTemplates,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -30,19 +30,19 @@ type ListJobTemplatesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of results on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the request. Use this ID to troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0D*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of job templates that match the filter conditions.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type ListJobTemplatesResponseBodyJobTemplates struct {
 	//
 	// 2
 	DefaultVersion *int32 `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the job template.
+	// The template description.
 	//
 	// example:
 	//
 	// job description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time of the template, in UTC and ISO 8601 format.
+	// The time when the template was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -137,7 +137,7 @@ type ListJobTemplatesResponseBodyJobTemplates struct {
 	//
 	// 2026-01-23T07:29:06Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The modification time of the template, in UTC and ISO 8601 format.
+	// The time when the template was last modified.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -145,43 +145,51 @@ type ListJobTemplatesResponseBodyJobTemplates struct {
 	//
 	// 2026-03-03T05:48:02Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// Custom metadata, represented as a collection of key-value pairs.
+	// The most recent time when a task was successfully created by using this template.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2026-09-03T11:30:00Z
+	LastUsedTime *string `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
+	// The custom metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The ID of the modifier.
+	// The ID of the user who last modified the template.
 	//
 	// example:
 	//
 	// 20**************26
 	ModifiedBy *string `json:"ModifiedBy,omitempty" xml:"ModifiedBy,omitempty"`
-	// The ID of the job template.
+	// The template ID.
 	//
 	// example:
 	//
 	// tpl1r5g9ait7****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the job template.
+	// The template name.
 	//
 	// example:
 	//
 	// job-template-1772516653885
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
 	// example:
 	//
 	// 142388383837****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the creator.
+	// The ID of the user who created the template.
 	//
 	// example:
 	//
 	// 20**************26
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -211,6 +219,10 @@ func (s *ListJobTemplatesResponseBodyJobTemplates) GetGmtCreateTime() *string {
 
 func (s *ListJobTemplatesResponseBodyJobTemplates) GetGmtModifyTime() *string {
 	return s.GmtModifyTime
+}
+
+func (s *ListJobTemplatesResponseBodyJobTemplates) GetLastUsedTime() *string {
+	return s.LastUsedTime
 }
 
 func (s *ListJobTemplatesResponseBodyJobTemplates) GetMetadata() map[string]interface{} {
@@ -258,6 +270,11 @@ func (s *ListJobTemplatesResponseBodyJobTemplates) SetGmtCreateTime(v string) *L
 
 func (s *ListJobTemplatesResponseBodyJobTemplates) SetGmtModifyTime(v string) *ListJobTemplatesResponseBodyJobTemplates {
 	s.GmtModifyTime = &v
+	return s
+}
+
+func (s *ListJobTemplatesResponseBodyJobTemplates) SetLastUsedTime(v string) *ListJobTemplatesResponseBodyJobTemplates {
+	s.LastUsedTime = &v
 	return s
 }
 

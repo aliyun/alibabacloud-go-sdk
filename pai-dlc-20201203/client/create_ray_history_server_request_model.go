@@ -28,15 +28,15 @@ type iCreateRayHistoryServerRequest interface {
 type CreateRayHistoryServerRequest struct {
 	// The visibility of the job. Valid values:
 	//
-	// - PUBLIC: visible to all members in the workspace.
+	// - PUBLIC: Visible to all users in the workspace.
 	//
-	// - PRIVATE: visible only to you and administrators in the workspace.
+	// - PRIVATE: Visible only to you and administrators in the workspace.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The display name of the job.
+	// The display name of the node.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateRayHistoryServerRequest struct {
 	//
 	// my-ray-history-server
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The hardware specifications of the public resource group. To access the detailed list of specifications, see [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html).	Notice: Prices vary depending on the specifications..
+	// The hardware specifications of the public resource group. To access a detailed list of specifications, see [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html).	Notice: Prices vary by specification.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CreateRayHistoryServerRequest struct {
 	//
 	// - If this parameter is left empty, the job is committed to the public resource group.
 	//
-	// - If the current workspace is attached to a resource quota, you can specify the corresponding resource quota ID. For details about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+	// - If the current workspace is already attached to a resource quota, you can specify the corresponding resource quota ID here. For details about how to query a resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateRayHistoryServerRequest struct {
 	//
 	// oss://bucket-test-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/tmp
 	StoragePath *string `json:"StoragePath,omitempty" xml:"StoragePath,omitempty"`
-	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
+	// The workspace ID.<props="china">For information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// This parameter is required.
 	//

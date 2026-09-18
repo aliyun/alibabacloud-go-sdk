@@ -52,11 +52,11 @@ type iListTensorboardsRequest interface {
 }
 
 type ListTensorboardsRequest struct {
-	// The visibility of the Tensorboard instance. Valid values:
+	// The visibility of the job. Valid values:
 	//
-	// - PUBLIC: visible to all members in the workspace.
+	// - PUBLIC: Visible to all users in this workspace.
 	//
-	// - PRIVATE: visible only to you and administrators in the workspace.
+	// - PRIVATE: Visible only to you and administrators in this workspace.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListTensorboardsRequest struct {
 	//
 	// TestTensorboard
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The end time of the query range. Tensorboard instances are filtered by their creation time in UTC. If this parameter is left empty, the default value is the current time.
+	// The end time of the query range. The creation time of the Tensorboard instance in UTC is used for filtering. If this parameter is left empty, the default value is the current time.
 	//
 	// example:
 	//
 	// 2020-11-09T14:45:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The DLC job ID used to filter Tensorboard instances. Call [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
+	// Filters Tensorboard instances by DLC job ID. See [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
 	//
 	// example:
 	//
@@ -82,31 +82,31 @@ type ListTensorboardsRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - desc: descending order.
+	// - desc: Descending order.
 	//
-	// - asc: ascending order.
+	// - asc: Ascending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number for paging. The value starts from 1.
+	// The page number of the page to return in a paged query. The value starts from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of Tensorboard instances to return on each page for paging.
+	// The number of Tensorboard instances to return per page in a paged query.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The billing method of the Tensorboard instance. Valid values:
+	// The billing type of the Tensorboard instance. Valid values:
 	//
-	// - Free: a Tensorboard instance that uses free resources.
+	// - Free: The Tensorboard instance uses free resources.
 	//
-	// - Postpaid: a Tensorboard instance that uses pay-as-you-go resources.
+	// - Postpaid: The Tensorboard instance uses pay-as-you-go resources.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ListTensorboardsRequest struct {
 	//
 	// > - Currently, only whitelisted users can use resource quota resources to create Tensorboard instances. To use this feature, contact us.
 	//
-	// > - This parameter takes effect only when the Tensorboard instance uses resource quota resources.
+	// > - This value is valid only when the Tensorboard instance uses resource quota resources.
 	//
 	// example:
 	//
@@ -128,17 +128,17 @@ type ListTensorboardsRequest struct {
 	//
 	// false
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// The field by which the results are sorted. Valid values:
+	// Sorts the results by the following fields. Valid values:
 	//
-	// - DisplayName: the job name.
+	// - DisplayName: The job name.
 	//
-	// - GmtCreateTime: the job creation time.
+	// - GmtCreateTime: The job creation time.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The data source ID. Call [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
+	// The data source ID. See [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListTensorboardsRequest struct {
 	//
 	// job
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the query range. Tensorboard instances are filtered by their creation time in UTC. If this parameter is left empty, the default value is 7 days before the current time.
+	// The start time of the query range. The creation time of the Tensorboard instance in UTC is used for filtering. If this parameter is left empty, the default value is 7 days before the current time.
 	//
 	// example:
 	//
@@ -158,21 +158,21 @@ type ListTensorboardsRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The Tensorboard status. Valid values:
 	//
-	// - Creating: being created.
+	// - Creating: Being created.
 	//
-	// - Running: running.
+	// - Running: Running.
 	//
-	// - Stopped: stopped.
+	// - Stopped: Stopped.
 	//
-	// - Succeeded: succeeded.
+	// - Succeeded: Succeeded.
 	//
-	// - Failed: failed.
+	// - Failed: Failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Tensorboard ID used to filter the Tensorboard list.
+	// Filters the Tensorboard list by Tensorboard ID.
 	//
 	// example:
 	//
@@ -190,17 +190,17 @@ type ListTensorboardsRequest struct {
 	//
 	// she****mo
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// Specifies whether to display details.
+	// Specifies whether to show details. Valid values:
 	//
-	// - true: Display details.
+	// - true: Show details.
 	//
-	// - false: Do not display details.
+	// - false: Do not show details.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The workspace ID. Tensorboard instances are filtered by workspace ID. <props="china">Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID..
+	// The workspace ID. The Tensorboard list is retrieved based on the workspace ID. <props="china">See [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
 	//
 	// example:
 	//

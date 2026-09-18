@@ -32,13 +32,13 @@ type iGetMetricsRequest interface {
 }
 
 type GetMetricsRequest struct {
-	// (Required) Request parameter.
+	// (Required) The request parameters.
 	//
 	// example:
 	//
 	// [{\\"jobId\\":\\"dlcdpfpc96mh63mg\\",\\"pod\\":\\"dlcdpfpc96mh63mg-worker-748\\",\\"regionId\\":\\"cn-wulanchabu\\",\\"userId\\":\\"1458867964644701\\"}]
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The end time of the query. Default value: current time.
+	// The end time of the query. Default value: the current time.
 	//
 	// example:
 	//
@@ -50,43 +50,43 @@ type GetMetricsRequest struct {
 	//
 	// dlckjd5hm84tmjec
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The number of records per query for paged queries. Default value: 1000.
+	// The number of entries per query. This parameter is used for paged query with paging. Default value: 1000.
 	//
 	// example:
 	//
 	// 5000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// Metric name. Not filled. Not in use.
+	// The metric name. Not populated. Not in use.
 	//
 	// example:
 	//
 	// JOB_MEMORY_FREE
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace for cloud service monitoring data. For more information about namespaces, see cloud service monitoring metrics.
+	// The data namespace of the cloud service. For information about the data namespaces of cloud services, see cloud service monitoring items.
 	//
 	// example:
 	//
 	// acs_pai_dlc
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The pagination cursor token. If you do not set this parameter, the first page of data is returned. When a NextToken value is returned, more data is available. Use the returned NextToken as a parameter in your next request to retrieve the next page. Repeat until NextToken returns null, which means all data has been retrieved.
+	// The pagination token. If you do not set this parameter, data on the first page is returned. If a value is returned for this parameter, more pages are available. You can set NextToken to the returned value to retrieve the next page. Repeat this process until a null value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
 	// 2c6b65b6f9d625d4716568ca19b2064be0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The statistical period for monitoring data. Unit: seconds. Valid values: 15, 60, 900, and 3600.
+	// The statistical period of the monitoring data. Unit: seconds. Valid values: 15, 60, 900, and 3600.
 	//
 	// example:
 	//
 	// 5
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The start time of the monitoring data query interval (UTC). Default value: one hour ago.
+	// The start time (UTC) of the time range for querying monitoring data. Default value: one hour before the current time.
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// A temporary token used for authentication.
+	// The temporary token used for authentication.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iListJobTemplatesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDescription(v string) *ListJobTemplatesRequest
+	GetDescription() *string
 	SetOrder(v string) *ListJobTemplatesRequest
 	GetOrder() *string
 	SetPageNumber(v int32) *ListJobTemplatesRequest
@@ -28,49 +30,55 @@ type iListJobTemplatesRequest interface {
 }
 
 type ListJobTemplatesRequest struct {
-	// The sort order. Valid values: `asc` for ascending and `desc` for descending. Default value: `desc`.
+	// Filters the list by a fuzzy match of the template description.
+	//
+	// example:
+	//
+	// PyTorch training template
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The sort order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number to retrieve.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of results to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort the results by. Default value: `GmtCreateTime`.
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The job template ID. Use this parameter to filter for an exact match.
+	// Filters the list by an exact match of the template ID.
 	//
 	// example:
 	//
 	// tpl1****6jcq2q
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The job template name. Use this parameter to filter for a partial match.
+	// Filters the list by a fuzzy match of the template name.
 	//
 	// example:
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the creator. Use this parameter to filter results by a specific creator.
+	// The user ID.
 	//
 	// example:
 	//
 	// 20**************02
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -86,6 +94,10 @@ func (s ListJobTemplatesRequest) String() string {
 
 func (s ListJobTemplatesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobTemplatesRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ListJobTemplatesRequest) GetOrder() *string {
@@ -118,6 +130,11 @@ func (s *ListJobTemplatesRequest) GetUserId() *string {
 
 func (s *ListJobTemplatesRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListJobTemplatesRequest) SetDescription(v string) *ListJobTemplatesRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *ListJobTemplatesRequest) SetOrder(v string) *ListJobTemplatesRequest {

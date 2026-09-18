@@ -52,23 +52,23 @@ type iCreateTensorboardRequest interface {
 }
 
 type CreateTensorboardRequest struct {
-	// The job visibility. Valid values:
+	// The visibility of the job. Valid values:
 	//
-	// 	- PUBLIC: Visible to all members in the workspace.
+	// - PUBLIC: Visible to all members in the workspace.
 	//
-	// 	- PRIVATE: Visible only to you and the administrator of the workspace.
+	// - PRIVATE: Visible only to you and administrators in the workspace.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The number of vCPU cores.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The dataset ID.
+	// The dataset ID. <props="china">For information about how to obtain the dataset ID, see [ListDatasets](https://help.aliyun.com/document_detail/457222.html).
 	//
 	// example:
 	//
@@ -76,23 +76,23 @@ type CreateTensorboardRequest struct {
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The dataset type. Valid values:
 	//
-	// 	- OSS
+	// - OSS
 	//
-	// 	- NAS
+	// - NAS
 	//
 	// example:
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The configurations of the data source.
+	// The datasource configurations.
 	DataSources []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// The TensorBoard name
+	// The TensorBoard name.
 	//
 	// example:
 	//
 	// tensorboard
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The job ID. For more information about how to query the job ID, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
+	// The job ID. For information about how to obtain the job ID, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
 	//
 	// example:
 	//
@@ -110,25 +110,27 @@ type CreateTensorboardRequest struct {
 	//
 	// 1000
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The extended fields of the dataset are in the JSON format. MountPath: the path to mount the dataset.
+	// The extended field of custom dataset in JSON format. Currently, MountPath is supported, which specifies the custom mount path of custom dataset.
 	//
 	// example:
 	//
 	// {"mountpath":"/root/data/"}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The priority of the job. Default value: 1. Valid values: 1 to 9.
+	// The priority of the job. This is an optional parameter. Default value: 1. Valid values: 1 to 9.
 	//
-	// 	- 1 is the lowest priority.
+	// - 1: the lowest priority.
 	//
-	// 	- 9 is the highest priority.
+	// - 9: the highest priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The resource quota ID. This parameter is required when you create a TensorBoard job by using a resource quota.
+	// The resource quota ID. This parameter is required when you create a TensorBoard job by using resources from a resource quota. <props="china">For information about how to obtain the resource quota ID, see [ListQuotas](https://help.aliyun.com/document_detail/2628071.html).
 	//
-	// This feature is currently limited to whitelisted users. If you need to use this feature, contact us.
+	// <props="china">Published only on China site.
+	//
+	// Currently, only whitelisted users can create TensorBoard jobs by using resource quota resources. To use this feature, contact us.
 	//
 	// example:
 	//
@@ -146,33 +148,33 @@ type CreateTensorboardRequest struct {
 	//
 	// job
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The directory of summary.
+	// The summary directory.
 	//
 	// example:
 	//
 	// /root/data/
 	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
-	// The relative path of summary.
+	// The summary relative directory.
 	//
 	// example:
 	//
 	// /summary/
 	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
-	// The configurations of datasets mounted with the TensorBoard job.
+	// The list of dataset configurations mounted to the TensorBoard job.
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
-	// The pay-as-you-go configuration of TensorBoard, which is used to create TensorBoard jobs that use pay-as-you-go resources.
+	// The pay-as-you-go configuration for TensorBoard, which is used to create a TensorBoard job that uses pay-as-you-go resources.
 	TensorboardSpec *TensorboardSpec `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
-	// The dataset URI:
+	// The URI of the dataset:
 	//
-	// 	- Value format when DataSourceType is set to OSS: `oss://[oss-bucket].[endpoint]/[path]`.
+	// - If DataSourceType is set to OSS, the format is `oss://[oss-bucket].[endpoint]/[path]`.
 	//
-	// 	- Value format when DataSourceType is set to NAS:`nas://[nas-filesystem-id].[region]/[path]`.
+	// - If DataSourceType is set to NAS, the format is `nas://[nas-filesystem-id].[region]/[path]`.
 	//
 	// example:
 	//
 	// oss://.oss-cn-shanghai-finance-1.aliyuncs.com/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The workspace ID.
+	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

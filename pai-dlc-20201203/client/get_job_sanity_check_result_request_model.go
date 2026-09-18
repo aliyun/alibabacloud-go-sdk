@@ -18,7 +18,7 @@ type iGetJobSanityCheckResultRequest interface {
 }
 
 type GetJobSanityCheckResultRequest struct {
-	// The nth time for which the job sanity check is performed.
+	// The sequence number of the computing power health check for the job.
 	//
 	// This parameter is required.
 	//
@@ -26,23 +26,23 @@ type GetJobSanityCheckResultRequest struct {
 	//
 	// 1
 	SanityCheckNumber *int32 `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
-	// The phase in which the job sanity check is performed.
+	// The phase of the computing power health check. Valid values:
 	//
-	// 	- CheckInit
+	// - CheckInit: environment preparation check.
 	//
-	// 	- DeviceCheck
+	// - DeviceCheck: single-card computing power check.
 	//
-	// 	- SingleNodeCommCheck
+	// - SingleNodeCommCheck: intra-node communication check.
 	//
-	// 	- TwoNodeCommCheck
+	// - TwoNodeCommCheck: two-node communication check.
 	//
-	// 	- AllNodeCommCheck
+	// - AllNodeCommCheck: all-node communication check.
 	//
 	// example:
 	//
 	// DeviceCheck
 	SanityCheckPhase *string `json:"SanityCheckPhase,omitempty" xml:"SanityCheckPhase,omitempty"`
-	// The token information for job sharing. For more information about how to obtain the token information, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
+	// The token information in the job sharing token. To obtain the token, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
 	//
 	// example:
 	//

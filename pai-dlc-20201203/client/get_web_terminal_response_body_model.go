@@ -16,77 +16,81 @@ type iGetWebTerminalResponseBody interface {
 }
 
 type GetWebTerminalResponseBody struct {
-	// The request ID which is used for diagnostics and Q\\&A.
+	// The request ID for this call, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The WebSocket URI for accessing the container. You must build a WebSocket client. For more information about the communication format, see the following code:
+	// The WebSocket link for accessing the container. You need to build a WebSocket client. For the detailed communication format, refer to the following code:
 	//
-	//     ws = new WebSocket(
+	//   ```
 	//
-	//       `wss://xxxxx`,
+	//   ws = new WebSocket(
 	//
-	//     );
+	//     `wss://xxxxx`,
 	//
-	//     ws.onopen = function open() {
+	//   );
 	//
-	//       console.warn(\\"connected\\");
+	//   ws.onopen = function open() {
 	//
-	//       term.write(\\"\\r\\");
+	//     console.warn(\\"connected\\");
 	//
-	//     };
+	//     term.write(\\"\\");
 	//
-	//     ws.onclose = function close() {
+	//   };
 	//
-	//       console.warn(\\"disconnected\\");
+	//   ws.onclose = function close() {
 	//
-	//       term.write(\\"Connection closed\\");
+	//     console.warn(\\"disconnected\\");
 	//
-	//     };
+	//     term.write(\\"Connection closed\\");
 	//
-	//     // Return the following information in the backend.
+	//   };
 	//
-	//     ws.onmessage = function incoming(event) {
+	//   // Receive response from the backend
 	//
-	//       const msg = JSON.parse(event.data);
+	//   ws.onmessage = function incoming(event) {
 	//
-	//       console.warn(msg);
+	//     const msg = JSON.parse(event.data);
 	//
-	//       if (msg.operation === \\"stdout\\") {
+	//     console.warn(msg);
 	//
-	//         term.write(msg.data);
+	//     if (msg.operation === \\"stdout\\") {
 	//
-	//       } else {
+	//       term.write(msg.data);
 	//
-	//         console.warn(\\"invalid msg operation: \\" + msg);
+	//     } else {
 	//
-	//       }
+	//       console.warn(\\"invalid msg operation: \\" + msg);
 	//
-	//     };
+	//     }
 	//
-	//     // Enter the following code in the console.
+	//   };
 	//
-	//     term.onData(data => {
+	//   // Console input
 	//
-	//       const msg = { operation: \\"stdin\\", data: data };
+	//   term.onData(data => {
 	//
-	//       ws.send(JSON.stringify(msg));
+	//     const msg = { operation: \\"stdin\\", data: data };
 	//
-	//     });
+	//     ws.send(JSON.stringify(msg));
 	//
-	//     term.onResize(size => {
+	//   });
 	//
-	//       const msg = { operation: \\"resize\\", cols: size.cols, rows: size.rows };
+	//   term.onResize(size => {
 	//
-	//       ws.send(JSON.stringify(msg));
+	//     const msg = { operation: \\"resize\\", cols: size.cols, rows: size.rows };
 	//
-	//     });
+	//     ws.send(JSON.stringify(msg));
 	//
-	//     fitAddon.fit();
+	//   });
 	//
-	//     };
+	//   fitAddon.fit();
+	//
+	// };
+	//
+	// ```
 	//
 	// example:
 	//

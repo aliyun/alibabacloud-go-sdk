@@ -20,25 +20,25 @@ type iGetPodEventsRequest interface {
 }
 
 type GetPodEventsRequest struct {
-	// The end time (UTC).
+	// The end time in UTC.
 	//
 	// example:
 	//
 	// 2020-11-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of events that can be returned.
+	// The maximum number of events to return.
 	//
 	// example:
 	//
 	// 100
 	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
-	// The node UID. Call [GetJob](https://help.aliyun.com/document_detail/459677.html) to get the node UID.
+	// The node UID. You can call [GetJob](https://help.aliyun.com/document_detail/459677.html) to obtain the node UID.
 	//
 	// example:
 	//
 	// dlc-20210126170216-*****-chief-0
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// The start time (UTC).
+	// The start time in UTC.
 	//
 	// example:
 	//

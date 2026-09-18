@@ -14,11 +14,11 @@ type iListJobSanityCheckResultsRequest interface {
 }
 
 type ListJobSanityCheckResultsRequest struct {
-	// The sorting order:
+	// The sort order. Valid values:
 	//
-	// 	- desc: descending order
+	// - desc: descending order
 	//
-	// 	- asc: ascending order
+	// - asc: ascending order
 	//
 	// example:
 	//

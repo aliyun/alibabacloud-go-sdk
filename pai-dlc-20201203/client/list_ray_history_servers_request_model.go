@@ -46,13 +46,13 @@ type iListRayHistoryServersRequest interface {
 }
 
 type ListRayHistoryServersRequest struct {
-	// The display name of the job.
+	// The display name of the node.
 	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The end time of the query range. The job creation time is used for filtering.
+	// The end time of the query range. The node creation time is used for filtering.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type ListRayHistoryServersRequest struct {
 	//
 	// example:
 	//
-	// 按ID前缀过滤
+	// Filter by ID prefix
 	IdPrefix *string `json:"IdPrefix,omitempty" xml:"IdPrefix,omitempty"`
-	// Filters results by the time after which they were modified.
+	// Filters results by the time after which the resource was last modified.
 	//
 	// example:
 	//
@@ -72,49 +72,49 @@ type ListRayHistoryServersRequest struct {
 	ModifiedAfter *string `json:"ModifiedAfter,omitempty" xml:"ModifiedAfter,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - desc: descending order.
+	// - desc: descending order
 	//
-	// - asc: ascending order.
+	// - asc: ascending order
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number of the page to return in a paged query. Paging starts from page 1.
+	// The page number for a paging query. Paging starts from page 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of RayHistoryServer entries to return on each page in a paged query. Paging is used to return results in batches.
+	// The number of RayHistoryServers to return per page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The billing method. Valid values:
+	// The payment method. Valid values:
 	//
 	// - PrePaid
 	//
-	// - PostPaid.
+	// - PostPaid
 	//
 	// example:
 	//
 	// Postpaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The resource group ID. For information about how to query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+	// The resource group ID. To query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
 	//
 	// example:
 	//
 	// quotaxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Specifies whether to return only the RayHistoryServer entries created by the current user.
+	// Specifies whether to return only the RayHistoryServers created by the current user.
 	//
 	// example:
 	//
 	// true
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// The field by which to sort the returned results. Valid values:
+	// The field by which to sort the results. Valid values:
 	//
 	// - DisplayName
 	//
@@ -126,7 +126,7 @@ type ListRayHistoryServersRequest struct {
 	//
 	// - Status
 	//
-	// - GmtModifyTime.
+	// - GmtModifyTime
 	//
 	// example:
 	//
@@ -138,23 +138,23 @@ type ListRayHistoryServersRequest struct {
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The RayHistoryServer status. Valid values:
+	// The status of the RayHistoryServer. Valid values:
 	//
-	// - Creating: being created.
+	// - Creating: The RayHistoryServer is being created.
 	//
-	// - Queuing: waiting in queue.
+	// - Queuing: The RayHistoryServer is queuing.
 	//
-	// - Running: running.
+	// - Running: The RayHistoryServer is running.
 	//
-	// - Stopped: stopped.
+	// - Stopped: The RayHistoryServer is stopped.
 	//
-	// - Failed: failed.
+	// - Failed: The RayHistoryServer has failed.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage path of Ray logs.
+	// The storage path for Ray logs.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type ListRayHistoryServersRequest struct {
 	//
 	// myusername
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
+	// The workspace ID. <props="china">To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

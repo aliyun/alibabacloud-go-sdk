@@ -24,9 +24,9 @@ type ListJobSanityCheckResultsResponseBody struct {
 	//
 	// 1AC9xxx-3xxx-5xxx2-xxxx-FA5
 	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// The sanity check results.
+	// All computing power health check results.
 	SanityCheckResults [][]*SanityCheckResultItem `json:"SanityCheckResults,omitempty" xml:"SanityCheckResults,omitempty" type:"Repeated"`
-	// The total number of results that meet the filter conditions.
+	// The total number of check results that match the filter conditions.
 	//
 	// example:
 	//

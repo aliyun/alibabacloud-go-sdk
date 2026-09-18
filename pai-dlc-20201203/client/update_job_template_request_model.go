@@ -26,47 +26,47 @@ type iUpdateJobTemplateRequest interface {
 }
 
 type UpdateJobTemplateRequest struct {
-	// The field constraints. The key is a JSONPath expression and the value is the constraint type. Valid values are `locked`, `overridable`, and `required`. This parameter must be specified with `Content` and cannot be updated on its own.
+	// The field constraint rules. The key is a JSONPath expression and the value is the constraint type: locked (cannot be overridden), overridable (can be overridden), or required (mandatory). Must be provided together with Content. You cannot update this field independently.
 	//
 	// example:
 	//
 	// {\\"JobSpecs[0].Image\\":\\"locked\\",\\"UserCommand\\":\\"locked\\",\\"JobType\\":\\"locked\\"}
 	Constraints map[string]interface{} `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// The configuration content of the job template. This parameter supports all fields from the `CreateJob` operation and must be in JSON format. Specifying this parameter creates a new version.
+	// The configuration content of the task template. Supports all parameter fields of the CreateJob operation, passed in JSON format. Providing this field creates a new version.
 	//
 	// example:
 	//
 	// {\\"WorkspaceId\\":\\"15****05\\",\\"JobType\\":\\"PyTorchJob\\",\\"UserCommand\\":\\"echo hello\\",\\"JobSpecs\\":[{\\"Type\\":\\"Worker\\",\\"PodCount\\":1,\\"Image\\":\\"dsw-registry-vpc.cn-hangzhou.cr.aliyuncs.com/pai/pytorch:2.8.0-gpu-py313-cu129-ubuntu22.04-3995b779-1764361782\\",\\"EcsSpec\\":\\"ecs.gn7i-c8g1.2xlarge\\"}],\\"ResourceType\\":\\"ECS\\",\\"_ResourcePaymentType\\":\\"PostPaid\\",\\"CredentialConfig\\":{\\"EnableCredentialInject\\":false},\\"Accessibility\\":\\"PRIVATE\\",\\"Settings\\":{\\"JobReservedMinutes\\":0,\\"Tags\\":{}}}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The description of the job template.
+	// The description of the task template.
 	//
 	// example:
 	//
 	// Template description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// User-defined key-value pairs.
+	// The user-defined key-value pair metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// If `true`, the new version becomes the default version.
+	// Specifies whether to set the new version as the default version when a new version is created.
 	//
 	// example:
 	//
 	// true
 	SetAsDefault *bool `json:"SetAsDefault,omitempty" xml:"SetAsDefault,omitempty"`
-	// The name of the job template.
+	// The name of the task template.
 	//
 	// example:
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// This field is not supported.
+	// Invalid field.
 	//
 	// example:
 	//
-	// 无效字段
+	// Invalid field
 	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 

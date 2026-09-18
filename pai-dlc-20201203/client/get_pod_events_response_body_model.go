@@ -22,7 +22,7 @@ type iGetPodEventsResponseBody interface {
 }
 
 type GetPodEventsResponseBody struct {
-	// The events returned.
+	// The list of events.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	// The job ID.
 	//
@@ -38,13 +38,13 @@ type GetPodEventsResponseBody struct {
 	//
 	// dlc-20210126170216-*****-chief-0
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	// The node UID.
+	// The instance UID.
 	//
 	// example:
 	//
 	// 94a7cc7c-0033-48b5-85bd-71c63592c268
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// The request ID, which can be used for troubleshooting.
+	// The request ID, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

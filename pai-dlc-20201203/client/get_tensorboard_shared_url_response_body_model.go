@@ -16,13 +16,13 @@ type iGetTensorboardSharedUrlResponseBody interface {
 }
 
 type GetTensorboardSharedUrlResponseBody struct {
-	// The request ID which is used for troubleshooting.
+	// The request ID. Used for troubleshooting and support inquiries.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The shareable link of the TensorBoard task.
+	// The sharing link for the TensorBoard task.
 	//
 	// example:
 	//

@@ -22,29 +22,29 @@ type iGetJobMetricsRequest interface {
 }
 
 type GetJobMetricsRequest struct {
-	// The end time of the time range to query monitoring data. The time is displayed in UTC. The default value is the current time.
+	// The end time (UTC) of the time range for querying monitoring data. Default value: the current time.
 	//
 	// example:
 	//
 	// 2020-11-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the monitoring metrics. Valid values:
+	// The metric type of the monitoring data to query. Valid values:
 	//
-	// 	- GpuCoreUsage: GPU utilization
+	// - GpuCoreUsage: GPU utilization.
 	//
-	// 	- GpuMemoryUsage: GPU memory utilization
+	// - GpuMemoryUsage: GPU memory usage.
 	//
-	// 	- CpuCoreUsage: CPU utilization
+	// - CpuCoreUsage: CPU utilization.
 	//
-	// 	- MemoryUsage: memory utilization
+	// - MemoryUsage: memory usage.
 	//
-	// 	- NetworkInputRate: the network write in rate.
+	// - NetworkInputRate: network input rate.
 	//
-	// 	- NetworkOutputRate: the network write out rate
+	// - NetworkOutputRate: network output rate.
 	//
-	// 	- DiskReadRate: the disk read rate
+	// - DiskReadRate: disk read rate.
 	//
-	// 	- DiskWriteRate: the disk write rate
+	// - DiskWriteRate: disk write rate.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type GetJobMetricsRequest struct {
 	//
 	// GpuMemoryUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The beginning of the time range to query monitoring data. The time is displayed in UTC. The default value is the time 1 hour before the current time.
+	// The start time (UTC) of the time range for querying monitoring data. Default value: one hour before the current time.
 	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The interval at which monitoring data is returned. Default value: 5. Unit: minutes.
+	// The time interval at which monitoring data is returned. Default value: 5 minutes.
 	//
 	// example:
 	//

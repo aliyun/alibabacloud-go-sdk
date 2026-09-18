@@ -52,7 +52,7 @@ type GetPodLogsRequest struct {
 	//
 	// 100
 	MaxLines *int32 `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
-	// The node UID. For information about how to obtain the node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
+	// The node UID. To obtain the node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
 	//
 	// example:
 	//

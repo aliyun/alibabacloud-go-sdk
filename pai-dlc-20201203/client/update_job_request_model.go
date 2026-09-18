@@ -30,7 +30,10 @@ type UpdateJobRequest struct {
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// This is a training job
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The job specification definition.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// The priority of the job. Valid values: 1 to 9.
@@ -44,6 +47,10 @@ type UpdateJobRequest struct {
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The user command.
+	//
+	// example:
+	//
+	// sleep 1d
 	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
 }
 

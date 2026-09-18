@@ -26,7 +26,7 @@ type ListTensorboardsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list and details of Tensorboard instances.
 	Tensorboards []*Tensorboard `json:"Tensorboards,omitempty" xml:"Tensorboards,omitempty" type:"Repeated"`
-	// The total number of Tensorboard instances that match the specified conditions.
+	// The total number of data sources that match the specified conditions.
 	//
 	// example:
 	//

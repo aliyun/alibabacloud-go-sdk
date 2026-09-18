@@ -14,7 +14,7 @@ type iStartRayHistoryServerResponseBody interface {
 }
 
 type StartRayHistoryServerResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

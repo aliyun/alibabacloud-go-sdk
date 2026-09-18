@@ -30,7 +30,7 @@ type GetJobSanityCheckResultResponseBody struct {
 	//
 	// B3789344-F1xxxBE-5xx2-A04D-xxxxx
 	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// The job sanity check result.
+	// The result of the computing power health check.
 	SanityCheckResult []*SanityCheckResultItem `json:"SanityCheckResult,omitempty" xml:"SanityCheckResult,omitempty" type:"Repeated"`
 }
 

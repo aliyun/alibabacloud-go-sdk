@@ -54,7 +54,7 @@ type GetPodLogsResponseBody struct {
 	//
 	// 94a7cc7c-0033-48b5-85bd-71c63592c268
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// The request ID for this call, used for diagnostics and troubleshooting.
+	// The request ID of this call, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

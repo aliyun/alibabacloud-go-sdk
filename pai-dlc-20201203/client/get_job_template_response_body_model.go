@@ -17,6 +17,8 @@ type iGetJobTemplateResponseBody interface {
 	GetGmtCreateTime() *string
 	SetGmtModifyTime(v string) *GetJobTemplateResponseBody
 	GetGmtModifyTime() *string
+	SetLastUsedTime(v string) *GetJobTemplateResponseBody
+	GetLastUsedTime() *string
 	SetMetadata(v map[string]interface{}) *GetJobTemplateResponseBody
 	GetMetadata() map[string]interface{}
 	SetModifiedBy(v string) *GetJobTemplateResponseBody
@@ -40,19 +42,19 @@ type iGetJobTemplateResponseBody interface {
 }
 
 type GetJobTemplateResponseBody struct {
-	// The default version of the job template.
+	// The default version number currently in use.
 	//
 	// example:
 	//
 	// 2
 	DefaultVersion *int32 `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// A description of the job template.
+	// The description of the task template.
 	//
 	// example:
 	//
 	// job template description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time the job template was created.
+	// The time when the template was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -60,7 +62,7 @@ type GetJobTemplateResponseBody struct {
 	//
 	// 2026-01-08T14:17:55Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time the job template was last modified.
+	// The time when the template was last modified.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -68,57 +70,65 @@ type GetJobTemplateResponseBody struct {
 	//
 	// 2026-03-03T05:48:02Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// A collection of user-defined key-value pairs.
+	// The most recent time when a task was successfully created by using this template. This parameter is not returned if the template has not been used.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2026-09-03T11:30:00Z
+	LastUsedTime *string `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
+	// The custom key-value pair metadata defined by the user.
 	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The ID of the user who last modified the job template.
+	// The ID of the user who last modified the template.
 	//
 	// example:
 	//
 	// 20**************26
 	ModifiedBy *string `json:"ModifiedBy,omitempty" xml:"ModifiedBy,omitempty"`
-	// The ID of the request.
+	// The ID of the request. This ID is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the job template.
+	// The unique identifier of the task template.
 	//
 	// example:
 	//
 	// tplmceolmf2****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the job template.
+	// The name of the task template.
 	//
 	// example:
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the tenant that owns the job template.
+	// The ID of the tenant to which the template belongs.
 	//
 	// example:
 	//
 	// 142388383837****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The total number of versions returned. This value is 1 if a specific version is queried, or the total count if all versions are queried.
+	// The total number of versions. If a single version is queried, the value 1 is returned. If all versions are queried, the actual total number is returned.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The ID of the user who created the job template.
+	// The ID of the user who created the template.
 	//
 	// example:
 	//
 	// 20**************26
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// An array of template versions. This array contains only one version if a specific version is requested, or all versions if `all` is specified.
+	// The list of template version details. If a single version is queried, one element is returned. If all versions are queried, all elements are returned.
 	Versions []*GetJobTemplateResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
-	// The ID of the workspace that contains the job template.
+	// The ID of the workspace to which the template belongs.
 	//
 	// example:
 	//
@@ -148,6 +158,10 @@ func (s *GetJobTemplateResponseBody) GetGmtCreateTime() *string {
 
 func (s *GetJobTemplateResponseBody) GetGmtModifyTime() *string {
 	return s.GmtModifyTime
+}
+
+func (s *GetJobTemplateResponseBody) GetLastUsedTime() *string {
+	return s.LastUsedTime
 }
 
 func (s *GetJobTemplateResponseBody) GetMetadata() map[string]interface{} {
@@ -207,6 +221,11 @@ func (s *GetJobTemplateResponseBody) SetGmtCreateTime(v string) *GetJobTemplateR
 
 func (s *GetJobTemplateResponseBody) SetGmtModifyTime(v string) *GetJobTemplateResponseBody {
 	s.GmtModifyTime = &v
+	return s
+}
+
+func (s *GetJobTemplateResponseBody) SetLastUsedTime(v string) *GetJobTemplateResponseBody {
+	s.LastUsedTime = &v
 	return s
 }
 
@@ -274,13 +293,13 @@ func (s *GetJobTemplateResponseBody) Validate() error {
 }
 
 type GetJobTemplateResponseBodyVersions struct {
-	// The field constraint rules. The key is a JSONPath expression and the value is a constraint type.
+	// The field constraint rules. The key is a JSONPath expression, and the value is the constraint type.
 	//
 	// example:
 	//
 	// {\\"JobSpecs[0].Image\\":\\"locked\\",\\"UserCommand\\":\\"locked\\",\\"JobType\\":\\"locked\\"}
 	Constraints map[string]interface{} `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// The configuration of the version, in JSON format.
+	// The template configuration content of this version in JSON format.
 	//
 	// example:
 	//
@@ -292,7 +311,7 @@ type GetJobTemplateResponseBodyVersions struct {
 	//
 	// 20**************26
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The time the version was created.
+	// The time when the version was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//

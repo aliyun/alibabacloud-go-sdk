@@ -16,13 +16,13 @@ type iGetRayDashboardRequest interface {
 }
 
 type GetRayDashboardRequest struct {
-	// Set to true to generate a shareable link. If you set this parameter to true, you must also specify the token parameter.
+	// Specifies whether the link is a shared link. If set to true, the token parameter is also required.
 	//
 	// example:
 	//
 	// false
 	IsShared *bool `json:"isShared,omitempty" xml:"isShared,omitempty"`
-	// The token returned by GetToken
+	// The token obtained from the GetToken operation.
 	//
 	// example:
 	//

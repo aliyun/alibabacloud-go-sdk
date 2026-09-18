@@ -22,7 +22,7 @@ type DeleteJobResponseBody struct {
 	//
 	// dlc*************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID. You can troubleshoot issues based on the request ID.
+	// The request ID, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

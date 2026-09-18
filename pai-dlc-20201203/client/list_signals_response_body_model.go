@@ -36,7 +36,7 @@ type ListSignalsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type ListSignalsResponseBodySignals struct {
 	//
 	// 2025-12-30T14:07:38+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The message returned with the result.
+	// The message of the returned result.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type ListSignalsResponseBodySignals struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The list of role types.
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The delivery scope.
+	// The sending scope.
 	//
 	// example:
 	//

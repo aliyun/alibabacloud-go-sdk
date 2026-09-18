@@ -17,6 +17,8 @@ type iCreateJobTemplateResponseBody interface {
 	GetGmtCreateTime() *string
 	SetGmtModifyTime(v string) *CreateJobTemplateResponseBody
 	GetGmtModifyTime() *string
+	SetLastUsedTime(v string) *CreateJobTemplateResponseBody
+	GetLastUsedTime() *string
 	SetMetadata(v map[string]interface{}) *CreateJobTemplateResponseBody
 	GetMetadata() map[string]interface{}
 	SetRequestId(v string) *CreateJobTemplateResponseBody
@@ -36,19 +38,19 @@ type iCreateJobTemplateResponseBody interface {
 }
 
 type CreateJobTemplateResponseBody struct {
-	// The default version number of the job template.
+	// The default version number currently in use.
 	//
 	// example:
 	//
 	// 1
 	DefaultVersion *int32 `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the job template.
+	// The description of the task template.
 	//
 	// example:
 	//
 	// Template description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time of the job template.
+	// The time when the template was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -56,7 +58,7 @@ type CreateJobTemplateResponseBody struct {
 	//
 	// 2025-12-31T02:18:09Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time of the job template.
+	// The time when the template was last modified.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -64,49 +66,57 @@ type CreateJobTemplateResponseBody struct {
 	//
 	// 2026-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// User-defined key-value metadata.
+	// The most recent time when a node was successfully created by using this template. This parameter is not returned if you create a template that has not been used.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2026-09-03T11:30:00Z
+	LastUsedTime *string `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
+	// The custom key-value pair metadata defined by the user.
 	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The ID of the request, used for troubleshooting.
+	// The ID of the request, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
 	// 8762921A-911C-515F-A3A4-*********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The unique ID of the job template.
+	// The unique identifier of the task template.
 	//
 	// example:
 	//
 	// tplmceolmf2****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the job template.
+	// The name of the task template.
 	//
 	// example:
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the tenant that contains the job template.
+	// The ID of the tenant to which the template belongs.
 	//
 	// example:
 	//
 	// 10**************14
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the user who created the job template.
+	// The ID of the user who created the template.
 	//
 	// example:
 	//
 	// 20**************02
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The version number of the created job template.
+	// The version number of the currently returned version.
 	//
 	// example:
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The ID of the workspace that contains the job template.
+	// The ID of the workspace to which the template belongs.
 	//
 	// example:
 	//
@@ -136,6 +146,10 @@ func (s *CreateJobTemplateResponseBody) GetGmtCreateTime() *string {
 
 func (s *CreateJobTemplateResponseBody) GetGmtModifyTime() *string {
 	return s.GmtModifyTime
+}
+
+func (s *CreateJobTemplateResponseBody) GetLastUsedTime() *string {
+	return s.LastUsedTime
 }
 
 func (s *CreateJobTemplateResponseBody) GetMetadata() map[string]interface{} {
@@ -187,6 +201,11 @@ func (s *CreateJobTemplateResponseBody) SetGmtCreateTime(v string) *CreateJobTem
 
 func (s *CreateJobTemplateResponseBody) SetGmtModifyTime(v string) *CreateJobTemplateResponseBody {
 	s.GmtModifyTime = &v
+	return s
+}
+
+func (s *CreateJobTemplateResponseBody) SetLastUsedTime(v string) *CreateJobTemplateResponseBody {
+	s.LastUsedTime = &v
 	return s
 }
 

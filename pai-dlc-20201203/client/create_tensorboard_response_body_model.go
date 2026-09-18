@@ -32,13 +32,13 @@ type CreateTensorboardResponseBody struct {
 	//
 	// dlc-20210126170216-xxxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TensorBoard ID
+	// Tensorboard ID。
 	//
 	// example:
 	//

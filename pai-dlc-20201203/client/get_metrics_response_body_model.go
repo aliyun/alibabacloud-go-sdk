@@ -32,13 +32,13 @@ type GetMetricsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The monitoring metric data.
+	// The monitoring metrics data.
 	//
 	// example:
 	//
 	// [{\\"Content\\": \\"\\", \\"OperationName\\": \\"purchase\\", \\"Success\\": 1, \\"Id\\": \\"217\\", \\"LogDatetime\\": 1687679582923}]
 	DataPoints *string `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
-	// Detailed result message.
+	// The detailed information about the detection result.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetMetricsResponseBody struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6lESTRpd5hnHNnmKOP/+w9F
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The statistical period for monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds. If you do not specify a statistical period, the system uses the reporting period registered for the metric. Each cloud service metric (MetricName) may have a different statistical period. For more information, see cloud service monitoring metrics.
+	// The statistical period of the monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds. If you do not set the statistical period, monitoring data is queried based on the reporting period that was specified when the monitoring metric was registered. The statistical period varies for each monitoring metric (MetricName) of each cloud service. For more information, see cloud service monitoring items.
 	//
 	// example:
 	//
@@ -62,7 +62,11 @@ type GetMetricsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded. Valid values: true (success) and false (failure).
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
 	//
 	// example:
 	//

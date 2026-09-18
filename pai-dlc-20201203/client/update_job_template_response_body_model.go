@@ -22,13 +22,13 @@ type iUpdateJobTemplateResponseBody interface {
 }
 
 type UpdateJobTemplateResponseBody struct {
-	// The default version number.
+	// The default version number currently in use.
 	//
 	// example:
 	//
 	// 2
 	DefaultVersion *int32 `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The time the template was last modified.
+	// The last modification time of the template.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -36,7 +36,7 @@ type UpdateJobTemplateResponseBody struct {
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// The request ID, used for diagnostics and troubleshooting.
+	// The ID of the request, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

@@ -281,7 +281,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// Creates a job template.
+// Creates a task template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -348,7 +348,7 @@ func (client *Client) CreateJobTemplateWithOptions(request *CreateJobTemplateReq
 
 // Summary:
 //
-// Creates a job template.
+// Creates a task template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -371,9 +371,9 @@ func (client *Client) CreateJobTemplate(request *CreateJobTemplateRequest) (_res
 //
 // Description:
 //
-// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and the [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before using this operation.
 //
-//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
+//	Notice: The total length of the CreateJob operation parameters (including system-generated parameters) cannot exceed 65536 bytes.
 //
 // @param request - CreateRayHistoryServerRequest
 //
@@ -448,9 +448,9 @@ func (client *Client) CreateRayHistoryServerWithOptions(request *CreateRayHistor
 //
 // Description:
 //
-// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and the [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before using this operation.
 //
-//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
+//	Notice: The total length of the CreateJob operation parameters (including system-generated parameters) cannot exceed 65536 bytes.
 //
 // @param request - CreateRayHistoryServerRequest
 //
@@ -469,17 +469,17 @@ func (client *Client) CreateRayHistoryServer(request *CreateRayHistoryServerRequ
 
 // Summary:
 //
-// Sends a signal to the Pods of a specified job and retrieves the signal ID.
+// Sends a signal to the pods of a specified job and retrieves the signal ID.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API operation sends a specific signal to one or more Pods of a specified job.
+// - This API operation sends a specific signal to one or more pods of a specified job.
 //
 // - After the signal is sent, the API immediately returns a `SignalId`. The actual signal delivery is processed by a background worker.
 //
-// - Query the signal status by calling the `GetSignal` or `ListSignals` operation.
+// - You can query the signal status by calling the `GetSignal` or `ListSignals` operation.
 //
 // @param request - CreateSignalRequest
 //
@@ -530,17 +530,17 @@ func (client *Client) CreateSignalWithOptions(JobId *string, request *CreateSign
 
 // Summary:
 //
-// Sends a signal to the Pods of a specified job and retrieves the signal ID.
+// Sends a signal to the pods of a specified job and retrieves the signal ID.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API operation sends a specific signal to one or more Pods of a specified job.
+// - This API operation sends a specific signal to one or more pods of a specified job.
 //
 // - After the signal is sent, the API immediately returns a `SignalId`. The actual signal delivery is processed by a background worker.
 //
-// - Query the signal status by calling the `GetSignal` or `ListSignals` operation.
+// - You can query the signal status by calling the `GetSignal` or `ListSignals` operation.
 //
 // @param request - CreateSignalRequest
 //
@@ -559,7 +559,7 @@ func (client *Client) CreateSignal(JobId *string, request *CreateSignalRequest) 
 
 // Summary:
 //
-// Creates a TensorBoard by using a job or specifying a data source configuration.
+// Creates a TensorBoard instance. You can create a TensorBoard instance from a job or by specifying a datasource config.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -682,7 +682,7 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 
 // Summary:
 //
-// Creates a TensorBoard by using a job or specifying a data source configuration.
+// Creates a TensorBoard instance. You can create a TensorBoard instance from a job or by specifying a datasource config.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -701,7 +701,7 @@ func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_res
 
 // Summary:
 //
-// Deletes a completed or stopped job.
+// Deletes a job that has completed or been stopped.
 //
 // @param headers - map
 //
@@ -734,7 +734,7 @@ func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*st
 
 // Summary:
 //
-// Deletes a completed or stopped job.
+// Deletes a job that has completed or been stopped.
 //
 // @return DeleteJobResponse
 func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err error) {
@@ -751,7 +751,7 @@ func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err
 
 // Summary:
 //
-// Deletes a job template. You cannot delete a job template that is in use by a job.
+// Deletes an unused task template. If the template is already in use by a node, it cannot be deleted.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -792,7 +792,7 @@ func (client *Client) DeleteJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// Deletes a job template. You cannot delete a job template that is in use by a job.
+// Deletes an unused task template. If the template is already in use by a node, it cannot be deleted.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -879,7 +879,7 @@ func (client *Client) DeleteRayHistoryServer(RayHistoryServerId *string, request
 
 // Summary:
 //
-// Deletes a stopped TensorBoard.
+// Deletes a stopped Tensorboard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -926,7 +926,7 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 
 // Summary:
 //
-// Deletes a stopped TensorBoard.
+// Deletes a stopped Tensorboard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -945,11 +945,11 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 
 // Summary:
 //
-// Retrieves the Dashboard URL for a DLC job, if available.
+// Retrieves the dashboard URL of a DLC job, if available.
 //
 // Description:
 //
-// Before using this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.
+// Before using this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetDashboardRequest
 //
@@ -1000,11 +1000,11 @@ func (client *Client) GetDashboardWithOptions(jobId *string, request *GetDashboa
 
 // Summary:
 //
-// Retrieves the Dashboard URL for a DLC job, if available.
+// Retrieves the dashboard URL of a DLC job, if available.
 //
 // Description:
 //
-// Before using this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.
+// Before using this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetDashboardRequest
 //
@@ -1023,7 +1023,7 @@ func (client *Client) GetDashboard(jobId *string, request *GetDashboardRequest) 
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a task.
+// Retrieves the detailed configuration and runtime information of a node.
 //
 // @param request - GetJobRequest
 //
@@ -1070,7 +1070,7 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a task.
+// Retrieves the detailed configuration and runtime information of a node.
 //
 // @param request - GetJobRequest
 //
@@ -1089,7 +1089,7 @@ func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *Ge
 
 // Summary:
 //
-// Obtains the system events of a job.
+// Retrieves system events for a job.
 //
 // @param request - GetJobEventsRequest
 //
@@ -1144,7 +1144,7 @@ func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEven
 
 // Summary:
 //
-// Obtains the system events of a job.
+// Retrieves system events for a job.
 //
 // @param request - GetJobEventsRequest
 //
@@ -1163,7 +1163,9 @@ func (client *Client) GetJobEvents(JobId *string, request *GetJobEventsRequest) 
 
 // Summary:
 //
-// Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate. ⚠️ Note: Except for pay-as-you-go tasks based on general-purpose computing resources, all task types are connected to CloudMonitor. Use the CloudMonitor API to call related monitoring. The overwritten features in the original API are no longer maintained. For more information, see \\[Training monitoring and alerting]\\\\(https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
+// Retrieves monitoring data for a node, including CPU, GPU, and memory usage, as well as network and disk read/write rates.
+//
+// ⚠️ Note: All node types except pay-as-you-go (postpaid) nodes based on general computing resources are integrated with CloudMonitor. Use CloudMonitor API operations for monitoring calls. Features already covered by the new API operations will no longer undergo maintenance in the original API operations. For more information, see [Training Monitoring and Alerts](https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
 //
 // @param request - GetJobMetricsRequest
 //
@@ -1226,7 +1228,9 @@ func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMet
 
 // Summary:
 //
-// Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate. ⚠️ Note: Except for pay-as-you-go tasks based on general-purpose computing resources, all task types are connected to CloudMonitor. Use the CloudMonitor API to call related monitoring. The overwritten features in the original API are no longer maintained. For more information, see \\[Training monitoring and alerting]\\\\(https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
+// Retrieves monitoring data for a node, including CPU, GPU, and memory usage, as well as network and disk read/write rates.
+//
+// ⚠️ Note: All node types except pay-as-you-go (postpaid) nodes based on general computing resources are integrated with CloudMonitor. Use CloudMonitor API operations for monitoring calls. Features already covered by the new API operations will no longer undergo maintenance in the original API operations. For more information, see [Training Monitoring and Alerts](https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
 //
 // @param request - GetJobMetricsRequest
 //
@@ -1245,7 +1249,7 @@ func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest
 
 // Summary:
 //
-// Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
+// Retrieves the computing power health check result for a specific run of a DLC job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -1300,7 +1304,7 @@ func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request 
 
 // Summary:
 //
-// Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
+// Retrieves the computing power health check result for a specific run of a DLC job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -1319,7 +1323,7 @@ func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSani
 
 // Summary:
 //
-// Retrieves the details of a job template.
+// Retrieves the details of a task template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -1366,7 +1370,7 @@ func (client *Client) GetJobTemplateWithOptions(TemplateId *string, request *Get
 
 // Summary:
 //
-// Retrieves the details of a job template.
+// Retrieves the details of a task template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -1385,23 +1389,23 @@ func (client *Client) GetJobTemplate(TemplateId *string, request *GetJobTemplate
 
 // Summary:
 //
-// Retrieve metrics data.
+// Retrieves metrics data.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API retrieves monitoring metrics for a specific job (JobId) or dimensions under a given namespace.
+// - This operation queries monitoring metrics for a specific job (JobId) or dimension (Dimensions) under a specified namespace (Namespace).
 //
-// - It supports custom time ranges. By default, it returns data from the last hour.
+// - Custom query time ranges are supported. By default, data from the last hour is returned.
 //
-// - Select different time intervals (Period) to obtain data points with finer or coarser granularity.
+// - You can select different time intervals (Period) to retrieve data points at a finer or coarser granularity.
 //
-// - To paginate through large datasets, use the `NextToken` parameter.
+// - To retrieve large amounts of data with paging, use the `NextToken` parameter for paging operations.
 //
-// - The `MetricName` parameter is required and specifies the monitoring metric to query.
+// - `MetricName` is required and specifies the name of the monitoring metric to query.
 //
-// - For advanced features or specific metric types, see the related documentation.
+// - For advanced features or specific types of monitoring metrics, refer to the relevant documentation for more information.
 //
 // @param request - GetMetricsRequest
 //
@@ -1484,23 +1488,23 @@ func (client *Client) GetMetricsWithOptions(request *GetMetricsRequest, headers 
 
 // Summary:
 //
-// Retrieve metrics data.
+// Retrieves metrics data.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API retrieves monitoring metrics for a specific job (JobId) or dimensions under a given namespace.
+// - This operation queries monitoring metrics for a specific job (JobId) or dimension (Dimensions) under a specified namespace (Namespace).
 //
-// - It supports custom time ranges. By default, it returns data from the last hour.
+// - Custom query time ranges are supported. By default, data from the last hour is returned.
 //
-// - Select different time intervals (Period) to obtain data points with finer or coarser granularity.
+// - You can select different time intervals (Period) to retrieve data points at a finer or coarser granularity.
 //
-// - To paginate through large datasets, use the `NextToken` parameter.
+// - To retrieve large amounts of data with paging, use the `NextToken` parameter for paging operations.
 //
-// - The `MetricName` parameter is required and specifies the monitoring metric to query.
+// - `MetricName` is required and specifies the name of the monitoring metric to query.
 //
-// - For advanced features or specific metric types, see the related documentation.
+// - For advanced features or specific types of monitoring metrics, refer to the relevant documentation for more information.
 //
 // @param request - GetMetricsRequest
 //
@@ -1519,7 +1523,7 @@ func (client *Client) GetMetrics(request *GetMetricsRequest) (_result *GetMetric
 
 // Summary:
 //
-// Obtains the system events of a specific node in a job to locate and troubleshoot issues.
+// Retrieves system events for a specific node in a job to locate and troubleshoot issues.
 //
 // @param request - GetPodEventsRequest
 //
@@ -1578,7 +1582,7 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 
 // Summary:
 //
-// Obtains the system events of a specific node in a job to locate and troubleshoot issues.
+// Retrieves system events for a specific node in a job to locate and troubleshoot issues.
 //
 // @param request - GetPodEventsRequest
 //
@@ -1683,11 +1687,11 @@ func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLo
 
 // Summary:
 //
-// Retrieve the Ray Dashboard URL.
+// Retrieves the Ray Dashboard URL.
 //
 // Description:
 //
-// Before you use this operation, review the PAI-DLC billing model and [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -1738,11 +1742,11 @@ func (client *Client) GetRayDashboardWithOptions(jobId *string, request *GetRayD
 
 // Summary:
 //
-// Retrieve the Ray Dashboard URL.
+// Retrieves the Ray Dashboard URL.
 //
 // Description:
 //
-// Before you use this operation, review the PAI-DLC billing model and [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -1761,11 +1765,13 @@ func (client *Client) GetRayDashboard(jobId *string, request *GetRayDashboardReq
 
 // Summary:
 //
-// Retrieves the details of a specific RayHistoryServer.
+// Queries a RayHistoryServer.
 //
 // Description:
 //
-// Before you call this API operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the parameters for the CreateJob API, including system-generated parameters, cannot exceed 65,536 bytes.
+// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and have read the [pricing](https://help.aliyun.com/document_detail/171758.html).
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - GetRayHistoryServerRequest
 //
@@ -1806,11 +1812,13 @@ func (client *Client) GetRayHistoryServerWithOptions(RayHistoryServerId *string,
 
 // Summary:
 //
-// Retrieves the details of a specific RayHistoryServer.
+// Queries a RayHistoryServer.
 //
 // Description:
 //
-// Before you call this API operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the parameters for the CreateJob API, including system-generated parameters, cannot exceed 65,536 bytes.
+// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and have read the [pricing](https://help.aliyun.com/document_detail/171758.html).
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - GetRayHistoryServerRequest
 //
@@ -1835,7 +1843,7 @@ func (client *Client) GetRayHistoryServer(RayHistoryServerId *string, request *G
 //
 // ## Operation description
 //
-// This API allows you to retrieve the signal details for the specified `JobId` and `SignalId`, including the signal status and delivery scope. Note that the response no longer contains the raw result structure for each pod. Instead, the `Status`, `Reason`, and `Message` fields describe the overall signal processing status.
+// You can call this operation to retrieve the details of a signal that corresponds to a specified `JobId` and `SignalId`, including the signal status and delivery scope. Note that the response no longer contains the raw result structure for each pod. Instead, the `Status`, `Reason`, and `Message` fields describe the overall signal processing result.
 //
 // @param request - GetSignalRequest
 //
@@ -1888,7 +1896,7 @@ func (client *Client) GetSignalWithOptions(JobId *string, SignalId *string, requ
 //
 // ## Operation description
 //
-// This API allows you to retrieve the signal details for the specified `JobId` and `SignalId`, including the signal status and delivery scope. Note that the response no longer contains the raw result structure for each pod. Instead, the `Status`, `Reason`, and `Message` fields describe the overall signal processing status.
+// You can call this operation to retrieve the details of a signal that corresponds to a specified `JobId` and `SignalId`, including the signal status and delivery scope. Note that the response no longer contains the raw result structure for each pod. Instead, the `Status`, `Reason`, and `Message` fields describe the overall signal processing result.
 //
 // @param request - GetSignalRequest
 //
@@ -1907,7 +1915,7 @@ func (client *Client) GetSignal(JobId *string, SignalId *string, request *GetSig
 
 // Summary:
 //
-// Retrieves the details of a Tensorboard instance.
+// Retrieves the details of a Tensorboard.
 //
 // @param request - GetTensorboardRequest
 //
@@ -1962,7 +1970,7 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 
 // Summary:
 //
-// Retrieves the details of a Tensorboard instance.
+// Retrieves the details of a Tensorboard.
 //
 // @param request - GetTensorboardRequest
 //
@@ -1981,7 +1989,7 @@ func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorbo
 
 // Summary:
 //
-// Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
+// Retrieves the sharing link for a TensorBoard task. The link contains a digital token. You can use the sharing link to access the shared TensorBoard task.
 //
 // @param request - GetTensorboardSharedUrlRequest
 //
@@ -2028,7 +2036,7 @@ func (client *Client) GetTensorboardSharedUrlWithOptions(TensorboardId *string, 
 
 // Summary:
 //
-// Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
+// Retrieves the sharing link for a TensorBoard task. The link contains a digital token. You can use the sharing link to access the shared TensorBoard task.
 //
 // @param request - GetTensorboardSharedUrlRequest
 //
@@ -2125,7 +2133,7 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 
 // Summary:
 //
-// Provides methods and steps to obtain a HTTP link for accessing a container.
+// Provides the method and steps to obtain an HTTP link for accessing a container.
 //
 // @param request - GetWebTerminalRequest
 //
@@ -2176,7 +2184,7 @@ func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, re
 
 // Summary:
 //
-// Provides methods and steps to obtain a HTTP link for accessing a container.
+// Provides the method and steps to obtain an HTTP link for accessing a container.
 //
 // @param request - GetWebTerminalRequest
 //
@@ -2195,7 +2203,7 @@ func (client *Client) GetWebTerminal(JobId *string, PodId *string, request *GetW
 
 // Summary:
 //
-// Queries the list of supported instance types.
+// Queries the list of currently supported machine resource configurations.
 //
 // @param request - ListEcsSpecsRequest
 //
@@ -2266,7 +2274,7 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 
 // Summary:
 //
-// Queries the list of supported instance types.
+// Queries the list of currently supported machine resource configurations.
 //
 // @param request - ListEcsSpecsRequest
 //
@@ -2285,7 +2293,7 @@ func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListE
 
 // Summary:
 //
-// Obtains the results of all sanity checks for a DLC job.
+// Retrieves all computing power health check results for a specific DLC job.
 //
 // @param request - ListJobSanityCheckResultsRequest
 //
@@ -2332,7 +2340,7 @@ func (client *Client) ListJobSanityCheckResultsWithOptions(JobId *string, reques
 
 // Summary:
 //
-// Obtains the results of all sanity checks for a DLC job.
+// Retrieves all computing power health check results for a specific DLC job.
 //
 // @param request - ListJobSanityCheckResultsRequest
 //
@@ -2351,7 +2359,7 @@ func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobS
 
 // Summary:
 //
-// Lists job templates in a specified workspace. You can paginate, sort, and filter the results by creator, `TemplateId`, or `TemplateName`.
+// Lists task templates by workspace with support for pagination and sorting. You can filter results by creator, TemplateId, or TemplateName.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -2368,6 +2376,10 @@ func (client *Client) ListJobTemplatesWithOptions(request *ListJobTemplatesReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.Order) {
 		query["Order"] = request.Order
 	}
@@ -2426,7 +2438,7 @@ func (client *Client) ListJobTemplatesWithOptions(request *ListJobTemplatesReque
 
 // Summary:
 //
-// Lists job templates in a specified workspace. You can paginate, sort, and filter the results by creator, `TemplateId`, or `TemplateName`.
+// Lists task templates by workspace with support for pagination and sorting. You can filter results by creator, TemplateId, or TemplateName.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -2665,9 +2677,9 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 //
 // Description:
 //
-// Before you use this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of Platform for AI - Deep Learning Containers (PAI-DLC).
+// Before using this operation, make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
 //
-//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes..
+//	Notice: The total length of parameters for the CreateJob operation (including system-generated parameters) cannot exceed 65536 bytes.
 //
 // @param request - ListRayHistoryServersRequest
 //
@@ -2782,9 +2794,9 @@ func (client *Client) ListRayHistoryServersWithOptions(request *ListRayHistorySe
 //
 // Description:
 //
-// Before you use this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of Platform for AI - Deep Learning Containers (PAI-DLC).
+// Before using this operation, make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
 //
-//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes..
+//	Notice: The total length of parameters for the CreateJob operation (including system-generated parameters) cannot exceed 65536 bytes.
 //
 // @param request - ListRayHistoryServersRequest
 //
@@ -2809,7 +2821,7 @@ func (client *Client) ListRayHistoryServers(request *ListRayHistoryServersReques
 //
 // ## Operation description
 //
-// You can call this API operation to retrieve the details of all signal records for a specific job, including signal IDs, statuses, and creation times. You can use query parameters to further filter or sort the results.
+// You can call this operation to retrieve the details of all signal records for a specific job, including the signal ID, status, and creation time. You can use query parameters to further filter or sort the results.
 //
 // @param request - ListSignalsRequest
 //
@@ -2882,7 +2894,7 @@ func (client *Client) ListSignalsWithOptions(JobId *string, request *ListSignals
 //
 // ## Operation description
 //
-// You can call this API operation to retrieve the details of all signal records for a specific job, including signal IDs, statuses, and creation times. You can use query parameters to further filter or sort the results.
+// You can call this operation to retrieve the details of all signal records for a specific job, including the signal ID, status, and creation time. You can use query parameters to further filter or sort the results.
 //
 // @param request - ListSignalsRequest
 //
@@ -3113,7 +3125,9 @@ func (client *Client) SetJobTemplateDefaultVersion(TemplateId *string, request *
 //
 // Description:
 //
-// Before calling this operation, familiarize yourself with the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the API parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
+// Before using this operation, make sure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StartRayHistoryServerRequest
 //
@@ -3158,7 +3172,9 @@ func (client *Client) StartRayHistoryServerWithOptions(RayHistoryServerId *strin
 //
 // Description:
 //
-// Before calling this operation, familiarize yourself with the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the API parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
+// Before using this operation, make sure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StartRayHistoryServerRequest
 //
@@ -3177,7 +3193,7 @@ func (client *Client) StartRayHistoryServer(RayHistoryServerId *string, request 
 
 // Summary:
 //
-// Starts a TensorBoard instance.
+// Starts a Tensorboard.
 //
 // @param request - StartTensorboardRequest
 //
@@ -3224,7 +3240,7 @@ func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request
 
 // Summary:
 //
-// Starts a TensorBoard instance.
+// Starts a Tensorboard.
 //
 // @param request - StartTensorboardRequest
 //
@@ -3361,7 +3377,7 @@ func (client *Client) StopRayHistoryServer(RayHistoryServerId *string, request *
 
 // Summary:
 //
-// Stops a TensorBoard instance.
+// Stops a TensorBoard.
 //
 // @param request - StopTensorboardRequest
 //
@@ -3408,7 +3424,7 @@ func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request 
 
 // Summary:
 //
-// Stops a TensorBoard instance.
+// Stops a TensorBoard.
 //
 // @param request - StopTensorboardRequest
 //
@@ -3683,7 +3699,7 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 
 // Summary:
 //
-// Updates a job template.
+// Updates a task template.
 //
 // @param request - UpdateJobTemplateRequest
 //
@@ -3754,7 +3770,7 @@ func (client *Client) UpdateJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// Updates a job template.
+// Updates a task template.
 //
 // @param request - UpdateJobTemplateRequest
 //

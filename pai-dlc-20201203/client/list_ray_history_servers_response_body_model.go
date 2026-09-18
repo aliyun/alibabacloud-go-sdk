@@ -18,15 +18,15 @@ type iListRayHistoryServersResponseBody interface {
 }
 
 type ListRayHistoryServersResponseBody struct {
-	// The list of RayHistoryServer entries.
+	// The list of RayHistoryServers.
 	RayHistoryServers []*ListRayHistoryServersResponseBodyRayHistoryServers `json:"RayHistoryServers,omitempty" xml:"RayHistoryServers,omitempty" type:"Repeated"`
-	// The request ID, which is used for diagnostics and troubleshooting.
+	// The request ID of this call, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the filter conditions.
+	// The total number of nodes that match the filter conditions.
 	//
 	// example:
 	//
@@ -85,21 +85,21 @@ func (s *ListRayHistoryServersResponseBody) Validate() error {
 type ListRayHistoryServersResponseBodyRayHistoryServers struct {
 	// The visibility of the job. Valid values:
 	//
-	// - PUBLIC: visible to all users in the workspace.
+	// - PUBLIC: Visible to all users in the workspace.
 	//
-	// - PRIVATE (default): visible only to you and administrators in the workspace.
+	// - PRIVATE (default): Visible only to you and administrators in the workspace.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The display name of the job.
+	// The display name of the node.
 	//
 	// example:
 	//
 	// AEB-RECHARGE-TASK-14478-1778466397-main-4-
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The hardware specifications of the public resource group. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for a detailed list of specifications.	Notice: Prices vary depending on the specifications..
+	// The hardware specifications of the public resource group. To access a detailed list of specifications, see [PAI-DLC billing overview](https://help.aliyun.com/document_detail/171758.html).	Notice: Prices vary by specification.
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type ListRayHistoryServersResponseBodyRayHistoryServers struct {
 	//
 	// 2025-12-30T02:43:52Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the job ended, in UTC.
+	// The time when the job finished, in UTC.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListRayHistoryServersResponseBodyRayHistoryServers struct {
 	//
 	// 1000
 	MaxRuntimeMinutes *int32 `json:"MaxRuntimeMinutes,omitempty" xml:"MaxRuntimeMinutes,omitempty"`
-	// The ID of the created RayHistoryServer.
+	// The ID of the created Ray History Server.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type ListRayHistoryServersResponseBodyRayHistoryServers struct {
 	//
 	// PyTorchJob dlc1tx4b9lw3ntb9 is running.
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// The resource group ID. For information about how to query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+	// The resource group ID. To query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
 	//
 	// example:
 	//
@@ -165,23 +165,23 @@ type ListRayHistoryServersResponseBodyRayHistoryServers struct {
 	//
 	// OWNER_REPO
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The RayHistoryServer status. Valid values:
+	// The status of the Tensorboard. Valid values:
 	//
-	// - Creating: being created.
+	// - Creating: The Tensorboard is being created.
 	//
-	// - Running: running.
+	// - Running: The Tensorboard is running.
 	//
-	// - Stopped: stopped.
+	// - Stopped: The Tensorboard is stopped.
 	//
-	// - Succeeded: succeeded.
+	// - Succeeded: The Tensorboard has succeeded.
 	//
-	// - Failed: failed.
+	// - Failed: The Tensorboard has failed.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage path of Ray logs.
+	// The storage path for Ray logs.
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type ListRayHistoryServersResponseBodyRayHistoryServers struct {
 	//
 	// myusername
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
+	// The workspace ID. <props="china">To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

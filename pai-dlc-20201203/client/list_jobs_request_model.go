@@ -109,7 +109,7 @@ type ListJobsRequest struct {
 	// local
 	Caller      *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The job name. Supports fuzzy search. Case-insensitive. Wildcards are not supported.
+	// The job name. Supports fuzzy match and is case-insensitive. Wildcards are not supported.
 	//
 	// For example, entering test matches test-job1, job-test, job-test2, or job-Test, but does not match job-t1.
 	//
@@ -119,13 +119,13 @@ type ListJobsRequest struct {
 	//
 	// tf-mnist-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The search mode for DisplayName. Default value: wildcard matching.
+	// The search mode for DisplayName. Default value: wildcard match.
 	//
 	// example:
 	//
 	// wildcard
 	DisplayNameSearchMode *string `json:"DisplayNameSearchMode,omitempty" xml:"DisplayNameSearchMode,omitempty"`
-	// Filters jobs based on whether assigned-node execution is enabled.
+	// Specifies whether to filter jobs that have assigned node execution enabled.
 	//
 	// example:
 	//
@@ -137,19 +137,19 @@ type ListJobsRequest struct {
 	//
 	// 2025-04-16T07:26:41Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to retrieve jobs across all workspaces. Use this parameter together with `ShowOwn=true` to query the jobs recently submitted by the current user.
+	// Specifies whether to retrieve jobs across all workspaces. This parameter must be used together with `ShowOwn=true` to query the jobs recently submitted by the current user.
 	//
 	// example:
 	//
 	// false
 	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
-	// Performs a full-text search in the image (images) field. Supports Chinese and English word segmentation.
+	// Performs a full-text index retrieve on the image (images) field. Supports Chinese and English tokenization.
 	//
 	// example:
 	//
 	// pytorch
 	ImageSearch *string `json:"ImageSearch,omitempty" xml:"ImageSearch,omitempty"`
-	// The job ID. Fuzzy search is not supported. Case-insensitive. Wildcards are not supported.
+	// The job ID. Fuzzy match is not supported. Case-insensitive. Wildcards are not supported.
 	//
 	// Default value: empty, which indicates all job IDs.
 	//
@@ -157,7 +157,7 @@ type ListJobsRequest struct {
 	//
 	// dlc********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The list of job IDs, separated by commas (,). If both JobIds and JobId are specified, JobId takes precedence.
+	// A list of job IDs separated by commas. If both JobIds and JobId are specified, JobId takes precedence.
 	//
 	// example:
 	//
@@ -179,19 +179,19 @@ type ListJobsRequest struct {
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The field name for numeric range filtering. Use this parameter together with NumericRangeMin/NumericRangeMax.
+	// The field name for numeric range filtering. Must be used together with NumericRangeMin or NumericRangeMax.
 	//
 	// example:
 	//
 	// RequestGPU
 	NumericRangeField *string `json:"NumericRangeField,omitempty" xml:"NumericRangeField,omitempty"`
-	// The maximum value (inclusive) for numeric range filtering. Use this parameter together with NumericRangeField.
+	// The maximum value (inclusive) for numeric range filtering. Must be used together with NumericRangeField.
 	//
 	// example:
 	//
 	// 8
 	NumericRangeMax *int64 `json:"NumericRangeMax,omitempty" xml:"NumericRangeMax,omitempty"`
-	// The minimum value (inclusive) for numeric range filtering. Use this parameter together with NumericRangeField.
+	// The minimum value (inclusive) for numeric range filtering. Must be used together with NumericRangeField.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type ListJobsRequest struct {
 	//
 	// ForbiddenQuotaOverSold
 	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
-	// The page number to return. Minimum value: 1. Default value: 1.
+	// The page number to return in a paged query. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -235,23 +235,23 @@ type ListJobsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The resource type. Valid values:
 	//
-	// - PrePaid: Resource quota.
+	// - PrePaid: resource quota.
 	//
-	// - Spot: Spot resource.
+	// - Spot: preemptible resources.
 	//
-	// - PostPaid: Public resource.
+	// - PostPaid: public resources.
 	//
 	// example:
 	//
 	// PostPaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Filters jobs created by the specified pipeline ID.
+	// Filters jobs created by the specified workflow ID.
 	//
 	// example:
 	//
 	// flow-*******
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// Performs a full-text search in the job failure reason (reason) field. Supports Chinese and English word segmentation.
+	// Performs a full-text index retrieve on the node failed reason (reason) field. Supports Chinese and English tokenization.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type ListJobsRequest struct {
 	// r*****
 	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The resource quota name, used to filter the job list. Supports fuzzy search. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
+	// The name of the resource quota, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
 	//
 	// example:
 	//
@@ -344,7 +344,7 @@ type ListJobsRequest struct {
 	//
 	// GmtFinishTime
 	TimeRangeField *string `json:"TimeRangeField,omitempty" xml:"TimeRangeField,omitempty"`
-	// Performs a full-text search in the user command (user_command) field. Supports Chinese and English word segmentation.
+	// Performs a full-text index retrieve on the user command (user_command) field. Supports Chinese and English tokenization.
 	//
 	// example:
 	//
@@ -356,7 +356,7 @@ type ListJobsRequest struct {
 	//
 	// 20**************
 	UserIdForFilter *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
-	// The username of the job submitter, used to filter the job list. Supports fuzzy search. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
+	// The username of the job submitter, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
 	//
 	// example:
 	//

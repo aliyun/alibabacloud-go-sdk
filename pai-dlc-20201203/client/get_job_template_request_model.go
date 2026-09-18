@@ -14,7 +14,7 @@ type iGetJobTemplateRequest interface {
 }
 
 type GetJobTemplateRequest struct {
-	// The version to retrieve. If omitted, the default version is returned. Specify `all` to retrieve all versions.
+	// If this parameter is not specified, the default version is returned. If a specific number is specified, the corresponding version is returned. If all is specified, all versions are returned.
 	//
 	// example:
 	//

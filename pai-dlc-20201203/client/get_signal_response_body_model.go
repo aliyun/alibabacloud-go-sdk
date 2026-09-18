@@ -54,7 +54,7 @@ type GetSignalResponseBody struct {
 	//
 	// oper***********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The status description, which contains a summary for each pod (number of successful deliveries, names of failed or pending pods, etc.).
+	// The status description, which contains a summary for each pod, such as the number of successful deliveries and the names of failed or pending pods.
 	//
 	// example:
 	//

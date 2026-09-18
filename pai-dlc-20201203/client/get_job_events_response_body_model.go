@@ -26,7 +26,7 @@ type GetJobEventsResponseBody struct {
 	//
 	// dlc-20210126170216-******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID, which can be used for troubleshooting.
+	// The request ID, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//

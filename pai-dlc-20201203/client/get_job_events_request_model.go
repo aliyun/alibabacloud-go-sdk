@@ -18,19 +18,19 @@ type iGetJobEventsRequest interface {
 }
 
 type GetJobEventsRequest struct {
-	// The end time (UTC) of the time range for querying events. The default value is the current time.
+	// The end time (UTC) of the event query interval. Default value: current time.
 	//
 	// example:
 	//
 	// 2020-11-08T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of events that can be returned. Default value: 2000.
+	// The maximum number of events to retrieve. Default value: 2000.
 	//
 	// example:
 	//
 	// 100
 	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
-	// The start time (UTC) of the time range for querying events. The default value is 7 days ago.
+	// The start time (UTC) of the event query interval. Default value: 7 days ago.
 	//
 	// example:
 	//

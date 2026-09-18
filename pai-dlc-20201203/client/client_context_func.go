@@ -162,7 +162,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 // Summary:
 //
-// Creates a job template.
+// Creates a task template.
 //
 // @param request - CreateJobTemplateRequest
 //
@@ -233,9 +233,9 @@ func (client *Client) CreateJobTemplateWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and the [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before using this operation.
 //
-//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes..
+//	Notice: The total length of the CreateJob operation parameters (including system-generated parameters) cannot exceed 65536 bytes.
 //
 // @param request - CreateRayHistoryServerRequest
 //
@@ -306,17 +306,17 @@ func (client *Client) CreateRayHistoryServerWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Sends a signal to the Pods of a specified job and retrieves the signal ID.
+// Sends a signal to the pods of a specified job and retrieves the signal ID.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API operation sends a specific signal to one or more Pods of a specified job.
+// - This API operation sends a specific signal to one or more pods of a specified job.
 //
 // - After the signal is sent, the API immediately returns a `SignalId`. The actual signal delivery is processed by a background worker.
 //
-// - Query the signal status by calling the `GetSignal` or `ListSignals` operation.
+// - You can query the signal status by calling the `GetSignal` or `ListSignals` operation.
 //
 // @param request - CreateSignalRequest
 //
@@ -367,7 +367,7 @@ func (client *Client) CreateSignalWithContext(ctx context.Context, JobId *string
 
 // Summary:
 //
-// Creates a TensorBoard by using a job or specifying a data source configuration.
+// Creates a TensorBoard instance. You can create a TensorBoard instance from a job or by specifying a datasource config.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -490,7 +490,7 @@ func (client *Client) CreateTensorboardWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a completed or stopped job.
+// Deletes a job that has completed or been stopped.
 //
 // @param headers - map
 //
@@ -523,7 +523,7 @@ func (client *Client) DeleteJobWithContext(ctx context.Context, JobId *string, h
 
 // Summary:
 //
-// Deletes a job template. You cannot delete a job template that is in use by a job.
+// Deletes an unused task template. If the template is already in use by a node, it cannot be deleted.
 //
 // @param request - DeleteJobTemplateRequest
 //
@@ -609,7 +609,7 @@ func (client *Client) DeleteRayHistoryServerWithContext(ctx context.Context, Ray
 
 // Summary:
 //
-// Deletes a stopped TensorBoard.
+// Deletes a stopped Tensorboard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -656,11 +656,11 @@ func (client *Client) DeleteTensorboardWithContext(ctx context.Context, Tensorbo
 
 // Summary:
 //
-// Retrieves the Dashboard URL for a DLC job, if available.
+// Retrieves the dashboard URL of a DLC job, if available.
 //
 // Description:
 //
-// Before using this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) for PAI-DLC.
+// Before using this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetDashboardRequest
 //
@@ -711,7 +711,7 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a task.
+// Retrieves the detailed configuration and runtime information of a node.
 //
 // @param request - GetJobRequest
 //
@@ -758,7 +758,7 @@ func (client *Client) GetJobWithContext(ctx context.Context, JobId *string, requ
 
 // Summary:
 //
-// Obtains the system events of a job.
+// Retrieves system events for a job.
 //
 // @param request - GetJobEventsRequest
 //
@@ -813,7 +813,9 @@ func (client *Client) GetJobEventsWithContext(ctx context.Context, JobId *string
 
 // Summary:
 //
-// Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate. ⚠️ Note: Except for pay-as-you-go tasks based on general-purpose computing resources, all task types are connected to CloudMonitor. Use the CloudMonitor API to call related monitoring. The overwritten features in the original API are no longer maintained. For more information, see \\[Training monitoring and alerting]\\\\(https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
+// Retrieves monitoring data for a node, including CPU, GPU, and memory usage, as well as network and disk read/write rates.
+//
+// ⚠️ Note: All node types except pay-as-you-go (postpaid) nodes based on general computing resources are integrated with CloudMonitor. Use CloudMonitor API operations for monitoring calls. Features already covered by the new API operations will no longer undergo maintenance in the original API operations. For more information, see [Training Monitoring and Alerts](https://www.alibabacloud.com/help/zh/pai/user-guide/training-monitoring-and-alerting).
 //
 // @param request - GetJobMetricsRequest
 //
@@ -876,7 +878,7 @@ func (client *Client) GetJobMetricsWithContext(ctx context.Context, JobId *strin
 
 // Summary:
 //
-// Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
+// Retrieves the computing power health check result for a specific run of a DLC job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -931,7 +933,7 @@ func (client *Client) GetJobSanityCheckResultWithContext(ctx context.Context, Jo
 
 // Summary:
 //
-// Retrieves the details of a job template.
+// Retrieves the details of a task template.
 //
 // @param request - GetJobTemplateRequest
 //
@@ -978,23 +980,23 @@ func (client *Client) GetJobTemplateWithContext(ctx context.Context, TemplateId 
 
 // Summary:
 //
-// Retrieve metrics data.
+// Retrieves metrics data.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - This API retrieves monitoring metrics for a specific job (JobId) or dimensions under a given namespace.
+// - This operation queries monitoring metrics for a specific job (JobId) or dimension (Dimensions) under a specified namespace (Namespace).
 //
-// - It supports custom time ranges. By default, it returns data from the last hour.
+// - Custom query time ranges are supported. By default, data from the last hour is returned.
 //
-// - Select different time intervals (Period) to obtain data points with finer or coarser granularity.
+// - You can select different time intervals (Period) to retrieve data points at a finer or coarser granularity.
 //
-// - To paginate through large datasets, use the `NextToken` parameter.
+// - To retrieve large amounts of data with paging, use the `NextToken` parameter for paging operations.
 //
-// - The `MetricName` parameter is required and specifies the monitoring metric to query.
+// - `MetricName` is required and specifies the name of the monitoring metric to query.
 //
-// - For advanced features or specific metric types, see the related documentation.
+// - For advanced features or specific types of monitoring metrics, refer to the relevant documentation for more information.
 //
 // @param request - GetMetricsRequest
 //
@@ -1077,7 +1079,7 @@ func (client *Client) GetMetricsWithContext(ctx context.Context, request *GetMet
 
 // Summary:
 //
-// Obtains the system events of a specific node in a job to locate and troubleshoot issues.
+// Retrieves system events for a specific node in a job to locate and troubleshoot issues.
 //
 // @param request - GetPodEventsRequest
 //
@@ -1203,11 +1205,11 @@ func (client *Client) GetPodLogsWithContext(ctx context.Context, JobId *string, 
 
 // Summary:
 //
-// Retrieve the Ray Dashboard URL.
+// Retrieves the Ray Dashboard URL.
 //
 // Description:
 //
-// Before you use this operation, review the PAI-DLC billing model and [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -1258,11 +1260,13 @@ func (client *Client) GetRayDashboardWithContext(ctx context.Context, jobId *str
 
 // Summary:
 //
-// Retrieves the details of a specific RayHistoryServer.
+// Queries a RayHistoryServer.
 //
 // Description:
 //
-// Before you call this API operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the parameters for the CreateJob API, including system-generated parameters, cannot exceed 65,536 bytes.
+// Before you use this operation, make sure that you are familiar with the billing of PAI-DLC and have read the [pricing](https://help.aliyun.com/document_detail/171758.html).
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - GetRayHistoryServerRequest
 //
@@ -1309,7 +1313,7 @@ func (client *Client) GetRayHistoryServerWithContext(ctx context.Context, RayHis
 //
 // ## Operation description
 //
-// This API allows you to retrieve the signal details for the specified `JobId` and `SignalId`, including the signal status and delivery scope. Note that the response no longer contains the raw result structure for each pod. Instead, the `Status`, `Reason`, and `Message` fields describe the overall signal processing status.
+// You can call this operation to retrieve the details of a signal that corresponds to a specified `JobId` and `SignalId`, including the signal status and delivery scope. Note that the response no longer contains the raw result structure for each pod. Instead, the `Status`, `Reason`, and `Message` fields describe the overall signal processing result.
 //
 // @param request - GetSignalRequest
 //
@@ -1356,7 +1360,7 @@ func (client *Client) GetSignalWithContext(ctx context.Context, JobId *string, S
 
 // Summary:
 //
-// Retrieves the details of a Tensorboard instance.
+// Retrieves the details of a Tensorboard.
 //
 // @param request - GetTensorboardRequest
 //
@@ -1411,7 +1415,7 @@ func (client *Client) GetTensorboardWithContext(ctx context.Context, Tensorboard
 
 // Summary:
 //
-// Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
+// Retrieves the sharing link for a TensorBoard task. The link contains a digital token. You can use the sharing link to access the shared TensorBoard task.
 //
 // @param request - GetTensorboardSharedUrlRequest
 //
@@ -1517,7 +1521,7 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 
 // Summary:
 //
-// Provides methods and steps to obtain a HTTP link for accessing a container.
+// Provides the method and steps to obtain an HTTP link for accessing a container.
 //
 // @param request - GetWebTerminalRequest
 //
@@ -1568,7 +1572,7 @@ func (client *Client) GetWebTerminalWithContext(ctx context.Context, JobId *stri
 
 // Summary:
 //
-// Queries the list of supported instance types.
+// Queries the list of currently supported machine resource configurations.
 //
 // @param request - ListEcsSpecsRequest
 //
@@ -1639,7 +1643,7 @@ func (client *Client) ListEcsSpecsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Obtains the results of all sanity checks for a DLC job.
+// Retrieves all computing power health check results for a specific DLC job.
 //
 // @param request - ListJobSanityCheckResultsRequest
 //
@@ -1686,7 +1690,7 @@ func (client *Client) ListJobSanityCheckResultsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Lists job templates in a specified workspace. You can paginate, sort, and filter the results by creator, `TemplateId`, or `TemplateName`.
+// Lists task templates by workspace with support for pagination and sorting. You can filter results by creator, TemplateId, or TemplateName.
 //
 // @param request - ListJobTemplatesRequest
 //
@@ -1703,6 +1707,10 @@ func (client *Client) ListJobTemplatesWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.Order) {
 		query["Order"] = request.Order
 	}
@@ -1962,9 +1970,9 @@ func (client *Client) ListJobsWithContext(ctx context.Context, tmpReq *ListJobsR
 //
 // Description:
 //
-// Before you use this operation, make sure that you are familiar with the billing and [pricing](https://help.aliyun.com/document_detail/171758.html) of Platform for AI - Deep Learning Containers (PAI-DLC).
+// Before using this operation, make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
 //
-//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes..
+//	Notice: The total length of parameters for the CreateJob operation (including system-generated parameters) cannot exceed 65536 bytes.
 //
 // @param request - ListRayHistoryServersRequest
 //
@@ -2081,7 +2089,7 @@ func (client *Client) ListRayHistoryServersWithContext(ctx context.Context, requ
 //
 // ## Operation description
 //
-// You can call this API operation to retrieve the details of all signal records for a specific job, including signal IDs, statuses, and creation times. You can use query parameters to further filter or sort the results.
+// You can call this operation to retrieve the details of all signal records for a specific job, including the signal ID, status, and creation time. You can use query parameters to further filter or sort the results.
 //
 // @param request - ListSignalsRequest
 //
@@ -2322,7 +2330,9 @@ func (client *Client) SetJobTemplateDefaultVersionWithContext(ctx context.Contex
 //
 // Description:
 //
-// Before calling this operation, familiarize yourself with the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.	Notice: The total length of the API parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
+// Before using this operation, make sure that you fully understand the billing method and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - StartRayHistoryServerRequest
 //
@@ -2363,7 +2373,7 @@ func (client *Client) StartRayHistoryServerWithContext(ctx context.Context, RayH
 
 // Summary:
 //
-// Starts a TensorBoard instance.
+// Starts a Tensorboard.
 //
 // @param request - StartTensorboardRequest
 //
@@ -2488,7 +2498,7 @@ func (client *Client) StopRayHistoryServerWithContext(ctx context.Context, RayHi
 
 // Summary:
 //
-// Stops a TensorBoard instance.
+// Stops a TensorBoard.
 //
 // @param request - StopTensorboardRequest
 //
@@ -2730,7 +2740,7 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, JobId *string, r
 
 // Summary:
 //
-// Updates a job template.
+// Updates a task template.
 //
 // @param request - UpdateJobTemplateRequest
 //

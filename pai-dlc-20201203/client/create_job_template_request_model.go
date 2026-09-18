@@ -24,13 +24,13 @@ type iCreateJobTemplateRequest interface {
 }
 
 type CreateJobTemplateRequest struct {
-	// The field constraint rules. The key is a JSONPath expression, and the value is a constraint type: `locked` (cannot be overridden), `overridable` (can be overridden), or `required` (must be specified).
+	// The field constraint rules. The key is a JSONPath expression, and the value is the constraint type: locked (locked and cannot be overridden), overridable (can be overridden), or required (required).
 	//
 	// example:
 	//
 	// {\\"JobSpecs[0].Image\\":\\"locked\\",\\"UserCommand\\":\\"locked\\",\\"JobType\\":\\"locked\\"}
 	Constraints map[string]interface{} `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// The configuration of the job template, which must be a JSON string containing the job configuration parameters.
+	// The configuration content of the task template, which contains job configuration parameters. Pass the value in JSON string format.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,19 @@ type CreateJobTemplateRequest struct {
 	//
 	// {\\"WorkspaceId\\":\\"15****05\\",\\"JobType\\":\\"PyTorchJob\\",\\"UserCommand\\":\\"echo hello\\",\\"JobSpecs\\":[{\\"Type\\":\\"Worker\\",\\"PodCount\\":1,\\"Image\\":\\"dsw-registry-vpc.cn-hangzhou.cr.aliyuncs.com/pai/pytorch:2.8.0-gpu-py313-cu129-ubuntu22.04-3995b779-1764361782\\",\\"EcsSpec\\":\\"ecs.gn7i-c8g1.2xlarge\\"}],\\"ResourceType\\":\\"ECS\\",\\"_ResourcePaymentType\\":\\"PostPaid\\",\\"CredentialConfig\\":{\\"EnableCredentialInject\\":false},\\"Accessibility\\":\\"PRIVATE\\",\\"Settings\\":{\\"JobReservedMinutes\\":0,\\"Tags\\":{}}}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The description of the job template.
+	// The description of the task template.
 	//
 	// example:
 	//
 	// Template description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// User-defined key-value metadata.
+	// The custom key-value pair metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The name of the job template.
+	// The name of the task template.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateJobTemplateRequest struct {
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The ID of the workspace that contains the job template.
+	// The ID of the workspace to which the template belongs.
 	//
 	// This parameter is required.
 	//

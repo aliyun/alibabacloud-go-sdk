@@ -16,13 +16,13 @@ type iGetRayDashboardResponseBody interface {
 }
 
 type GetRayDashboardResponseBody struct {
-	// Indicates whether Cloud Monitor is enabled for this dashboard to display Ray metrics
+	// Indicates whether the dashboard has integrated CloudMonitor to display Ray metrics.
 	//
 	// example:
 	//
 	// true
 	MetricsEnabled *string `json:"metricsEnabled,omitempty" xml:"metricsEnabled,omitempty"`
-	// The Ray Dashboard URL
+	// The URL of the Ray Dashboard.
 	//
 	// example:
 	//

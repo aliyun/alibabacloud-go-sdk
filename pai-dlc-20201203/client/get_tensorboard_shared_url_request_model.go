@@ -14,7 +14,7 @@ type iGetTensorboardSharedUrlRequest interface {
 }
 
 type GetTensorboardSharedUrlRequest struct {
-	// The validity period of the shareable link. Unit: seconds. Maximum value: 604800.
+	// The validity period of the sharing link. Unit: seconds. Maximum value: 604800.
 	//
 	// example:
 	//
