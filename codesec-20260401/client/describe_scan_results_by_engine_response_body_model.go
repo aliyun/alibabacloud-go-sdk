@@ -46,7 +46,7 @@ type DescribeScanResultsByEngineResponseBody struct {
 	//
 	// 10
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Do not pass nextToken or pass an empty string for the first page. To retrieve the next page, pass the nextToken value from the previous response without any modification. When the nextToken in the response is empty, you have reached the last page.
+	// The pagination token. Do not specify this parameter for the first page or set it to an empty string. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken value in the response is empty, the last page has been reached.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ func (s *DescribeScanResultsByEngineResponseBody) Validate() error {
 }
 
 type DescribeScanResultsByEngineResponseBodyItems struct {
-	// Filters results by incremental scan baseline status. Valid values: new, unchanged, absent, updated.
+	// Filters results by the baseline state of incremental scans. Valid values: new, unchanged, absent, and updated.
 	//
 	// example:
 	//
 	// new
 	BaselineState *string `json:"baselineState,omitempty" xml:"baselineState,omitempty"`
-	// The category. The system classifies files based on file name extensions and MIME types. Common categories include doc, image, audio, and video.
+	// The category. PDS classifies files based on their file name extensions and MIME types. Main categories include doc, image, audio, and video.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type DescribeScanResultsByEngineResponseBodyItems struct {
 	//
 	// 1
 	CodeSnippet *string `json:"codeSnippet,omitempty" xml:"codeSnippet,omitempty"`
-	// The rule confidence level, ranging from 0 to 1. This field is common in SAST results and is omitted if not applicable.
+	// The rule confidence level, ranging from 0 to 1. This is common in SAST results and is omitted if not available.
 	//
 	// example:
 	//
 	// 1
 	Confidence *float64 `json:"confidence,omitempty" xml:"confidence,omitempty"`
-	// The time when the finding record was created (RFC 3339 format).
+	// The time when the finding record was created, in RFC 3339 format.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type DescribeScanResultsByEngineResponseBodyItems struct {
 	//
 	// 934
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The brief summary of the finding. Unlike description, this field is more of a conclusion statement.
+	// The brief summary of the finding. Unlike description, this is more of a conclusion statement.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type DescribeScanResultsByEngineResponseBodyItems struct {
 	//
 	// java-sqli-001
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// The SCA component information. This field is returned only when engine is set to sca.
+	// The SCA component information. This is returned only when engine is set to sca.
 	ScaComponent *DescribeScanResultsByEngineResponseBodyItemsScaComponent `json:"scaComponent,omitempty" xml:"scaComponent,omitempty" type:"Struct"`
 	// The task ID.
 	//
@@ -314,9 +314,9 @@ type DescribeScanResultsByEngineResponseBodyItems struct {
 	//
 	// completed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The SAST taint analysis call chain that describes the complete propagation path of sensitive data from the taint source to the dangerous sink. This field is returned only when engine is set to sast.
+	// The SAST taint analysis call chain, which describes the complete propagation path of sensitive data from the taint source to the dangerous sink. This is returned only when engine is set to sast.
 	TaintFlow []*DescribeScanResultsByEngineResponseBodyItemsTaintFlow `json:"taintFlow,omitempty" xml:"taintFlow,omitempty" type:"Repeated"`
-	// The text summary of the taint call chain. This field is returned only when engine is set to sast.
+	// The text summary of the taint call chain. This is returned only when engine is set to sast.
 	//
 	// example:
 	//
@@ -582,6 +582,12 @@ func (s *DescribeScanResultsByEngineResponseBodyItems) Validate() error {
 }
 
 type DescribeScanResultsByEngineResponseBodyItemsScaComponent struct {
+	// The component type, such as library, application, or framework.
+	//
+	// example:
+	//
+	// library
+	ComponentType *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
 	// The number of CVEs.
 	//
 	// example:
@@ -590,26 +596,52 @@ type DescribeScanResultsByEngineResponseBodyItemsScaComponent struct {
 	CveCount *int64 `json:"cveCount,omitempty" xml:"cveCount,omitempty"`
 	// The list of CVE details associated with a component in the SCA finding.
 	CveDetails []*DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails `json:"cveDetails,omitempty" xml:"cveDetails,omitempty" type:"Repeated"`
-	// The list of dependency introduction paths in the SCA component information. This field is returned only when engine is set to sca.
+	// The manifest file in which the dependency is declared.
+	//
+	// example:
+	//
+	// node_modules/semver
+	DeclaredIn *string `json:"declaredIn,omitempty" xml:"declaredIn,omitempty"`
+	// The component ecosystem, such as npm, maven, pypi, or go.
+	//
+	// example:
+	//
+	// maven
+	Ecosystem *string `json:"ecosystem,omitempty" xml:"ecosystem,omitempty"`
+	// The list of dependency introduction paths in the SCA component information. This is returned only when engine is set to sca.
 	IntroPaths []*string `json:"introPaths,omitempty" xml:"introPaths,omitempty" type:"Repeated"`
-	// Indicates whether the component is a direct dependency.
+	// Indicates whether the dependency is a direct dependency.
 	//
 	// example:
 	//
 	// false
 	IsDirect *bool `json:"isDirect,omitempty" xml:"isDirect,omitempty"`
+	// The license determination result.
+	License *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense `json:"license,omitempty" xml:"license,omitempty" type:"Struct"`
 	// The component coordinate.
 	//
 	// example:
 	//
 	// org.apache.logging.log4j:log4j-core
 	PackageName *string `json:"packageName,omitempty" xml:"packageName,omitempty"`
+	// The Package URL, which serves as the unique coordinate of the component within the scan.
+	//
+	// example:
+	//
+	// pkg:npm/glob-parent@3.1.0
+	Purl *string `json:"purl,omitempty" xml:"purl,omitempty"`
 	// The component-level remediation suggestion.
 	//
 	// example:
 	//
 	// Upgrade log4j-core to version 2.17.1 or later
 	Remediation *string `json:"remediation,omitempty" xml:"remediation,omitempty"`
+	// The dependency scope, such as runtime, required, optional, or dev.
+	//
+	// example:
+	//
+	// runtime
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	// The component version.
 	//
 	// example:
@@ -626,12 +658,24 @@ func (s DescribeScanResultsByEngineResponseBodyItemsScaComponent) GoString() str
 	return s.String()
 }
 
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetComponentType() *string {
+	return s.ComponentType
+}
+
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetCveCount() *int64 {
 	return s.CveCount
 }
 
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetCveDetails() []*DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails {
 	return s.CveDetails
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetDeclaredIn() *string {
+	return s.DeclaredIn
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetEcosystem() *string {
+	return s.Ecosystem
 }
 
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetIntroPaths() []*string {
@@ -642,16 +686,33 @@ func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetIsDirect()
 	return s.IsDirect
 }
 
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetLicense() *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense {
+	return s.License
+}
+
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetPackageName() *string {
 	return s.PackageName
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetPurl() *string {
+	return s.Purl
 }
 
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetRemediation() *string {
 	return s.Remediation
 }
 
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetScope() *string {
+	return s.Scope
+}
+
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) GetVersion() *string {
 	return s.Version
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetComponentType(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
+	s.ComponentType = &v
+	return s
 }
 
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetCveCount(v int64) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
@@ -661,6 +722,16 @@ func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetCveCount(v
 
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetCveDetails(v []*DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
 	s.CveDetails = v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetDeclaredIn(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
+	s.DeclaredIn = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetEcosystem(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
+	s.Ecosystem = &v
 	return s
 }
 
@@ -674,13 +745,28 @@ func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetIsDirect(v
 	return s
 }
 
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetLicense(v *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
+	s.License = v
+	return s
+}
+
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetPackageName(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
 	s.PackageName = &v
 	return s
 }
 
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetPurl(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
+	s.Purl = &v
+	return s
+}
+
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetRemediation(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
 	s.Remediation = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) SetScope(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponent {
+	s.Scope = &v
 	return s
 }
 
@@ -697,6 +783,11 @@ func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponent) Validate() er
 					return err
 				}
 			}
+		}
+	}
+	if s.License != nil {
+		if err := s.License.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil
@@ -721,12 +812,24 @@ type DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails struct {
 	//
 	// v2.0
 	CvssVersion *string `json:"cvssVersion,omitempty" xml:"cvssVersion,omitempty"`
+	// The associated CWE ID. This value can be absent or an empty string.
+	//
+	// example:
+	//
+	// CWE-79
+	CweId *string `json:"cweId,omitempty" xml:"cweId,omitempty"`
 	// The description.
 	//
 	// example:
 	//
 	// Apache Log4j2 JNDI features do not protect against attacker-controlled LDAP and other JNDI-related endpoints.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The target version for the fix. This value can be absent or an empty string.
+	//
+	// example:
+	//
+	// 1
+	FixedVersion *string `json:"fixedVersion,omitempty" xml:"fixedVersion,omitempty"`
 	// The reference information.
 	References []*string `json:"references,omitempty" xml:"references,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
@@ -765,8 +868,16 @@ func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) Get
 	return s.CvssVersion
 }
 
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) GetCweId() *string {
+	return s.CweId
+}
+
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) GetFixedVersion() *string {
+	return s.FixedVersion
 }
 
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) GetReferences() []*string {
@@ -792,8 +903,18 @@ func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) Set
 	return s
 }
 
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) SetCweId(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails {
+	s.CweId = &v
+	return s
+}
+
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) SetDescription(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) SetFixedVersion(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails {
+	s.FixedVersion = &v
 	return s
 }
 
@@ -808,6 +929,131 @@ func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) Set
 }
 
 func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense struct {
+	// The concluded license expression (SPDX expression, which may contain OR or AND). This is an identifier string only, without full names or OSI/FSF annotations.
+	//
+	// example:
+	//
+	// AFL-2.1 OR BSD-3-Clause
+	Concluded *string `json:"concluded,omitempty" xml:"concluded,omitempty"`
+	// The list of detected licenses.
+	Detected []*DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected `json:"detected,omitempty" xml:"detected,omitempty" type:"Repeated"`
+}
+
+func (s DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) GetConcluded() *string {
+	return s.Concluded
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) GetDetected() []*DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected {
+	return s.Detected
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) SetConcluded(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense {
+	s.Concluded = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) SetDetected(v []*DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense {
+	s.Detected = v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense) Validate() error {
+	if s.Detected != nil {
+		for _, item := range s.Detected {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected struct {
+	// Indicates whether the license is listed as a free license by the FSF. If this key is absent, it means the license is not annotated, which differs from an explicit false value.
+	//
+	// example:
+	//
+	// true
+	IsFsfLibre *bool `json:"isFsfLibre,omitempty" xml:"isFsfLibre,omitempty"`
+	// Indicates whether the license is OSI-approved.
+	//
+	// example:
+	//
+	// true
+	IsOsiApproved *bool `json:"isOsiApproved,omitempty" xml:"isOsiApproved,omitempty"`
+	// The full name of the license.
+	//
+	// example:
+	//
+	// ISC License
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The SPDX license identifier. If the license cannot be determined, the value is NOASSERTION. The value may be in a non-standard format, such as Apache 2.0.
+	//
+	// example:
+	//
+	// AFL-2.1
+	SpdxId *string `json:"spdxId,omitempty" xml:"spdxId,omitempty"`
+}
+
+func (s DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) GetIsFsfLibre() *bool {
+	return s.IsFsfLibre
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) GetIsOsiApproved() *bool {
+	return s.IsOsiApproved
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) GetSpdxId() *string {
+	return s.SpdxId
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) SetIsFsfLibre(v bool) *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected {
+	s.IsFsfLibre = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) SetIsOsiApproved(v bool) *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected {
+	s.IsOsiApproved = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) SetName(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) SetSpdxId(v string) *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected {
+	s.SpdxId = &v
+	return s
+}
+
+func (s *DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -826,13 +1072,13 @@ type DescribeScanResultsByEngineResponseBodyItemsTaintFlow struct {
 	File *string `json:"file,omitempty" xml:"file,omitempty"`
 	// The role type in the taint propagation chain. Valid values:
 	//
-	// 	- source: taint source.
+	// 	- source: taint source
 	//
-	// 	- propagator: propagation node.
+	// 	- propagator: propagation node
 	//
-	// 	- validation: validation or scrubbing center.
+	// 	- validation: validation or scrubbing center
 	//
-	// 	- sink: dangerous sink.
+	// 	- sink: dangerous sink
 	//
 	// example:
 	//
@@ -850,7 +1096,7 @@ type DescribeScanResultsByEngineResponseBodyItemsTaintFlow struct {
 	//
 	// Sink: SQL query executed
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
-	// The step number, starting from 0 and incrementing.
+	// The step sequence number, starting from 0 and incrementing.
 	//
 	// example:
 	//

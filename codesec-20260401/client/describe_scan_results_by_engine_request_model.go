@@ -22,7 +22,7 @@ type iDescribeScanResultsByEngineRequest interface {
 }
 
 type DescribeScanResultsByEngineRequest struct {
-	// Filters results by incremental scan baseline status. Valid values: new, unchanged, absent, updated.
+	// Filters results by the baseline state of incremental scans. Valid values: new, unchanged, absent, and updated.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type DescribeScanResultsByEngineRequest struct {
 	//
 	// 50
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Do not pass nextToken or pass an empty string for the first page. To retrieve the next page, pass the nextToken value from the previous response without any modification. When the nextToken in the response is empty, you have reached the last page.
+	// The pagination token. Do not specify this parameter for the first page or set it to an empty string. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken value in the response is empty, the last page has been reached.
 	//
 	// example:
 	//
 	// eyJ0IjoiMjAyNi0wNy0xNlQwNzo1MzozOC4wMjFaIiwiaSI6MTAwMDQ0OH0
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Performs a fuzzy match by component name. This parameter takes effect only when engine is set to sca.
+	// The component name for fuzzy match. This parameter takes effect only when engine is set to sca.
 	//
 	// example:
 	//

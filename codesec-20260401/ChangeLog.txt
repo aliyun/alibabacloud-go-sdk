@@ -1,3 +1,25 @@
+2026-09-18 Version: v1.1.0
+- Support API CompleteCodeBundle.
+- Support API CreateCodeBundle.
+- Support API CreateProject.
+- Support API CreateScan.
+- Support API CreateScanSbomExport.
+- Support API DescribeScan.
+- Update API DescribeProjects: add request parameters sortBy.
+- Update API DescribeProjects: add request parameters sortOrder.
+- Update API DescribeProjects: add response parameters Body.items.$.lastScanTime.
+- Update API DescribeProjects: add response parameters Body.items.$.engines.sastConfig.
+- Update API DescribeProjects: add response parameters Body.items.$.engines.scaConfig.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.componentType.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.declaredIn.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.ecosystem.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.license.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.purl.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.scope.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.cveDetails.$.cweId.
+- Update API DescribeScanResultsByEngine: add response parameters Body.items.$.scaComponent.cveDetails.$.fixedVersion.
+
+
 2026-08-31 Version: v1.0.1
 - Update API DescribeScans: add response parameters Body.items.$.currentPhase.
 

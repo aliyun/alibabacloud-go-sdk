@@ -26,7 +26,7 @@ type DescribeProjectsResponseBody struct {
 	Items []*DescribeProjectsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page size.
 	//
-	// > If not specified, all projects are displayed.
+	// > If this parameter is not specified, all projects are returned.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeProjectsResponseBody struct {
 	//
 	// eyJ0IjoiMjAyNi0wNy0xNlQwNzo1MzozOC4wMjFaIiwiaSI6MTAwMDQ0OH0
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type DescribeProjectsResponseBodyItems struct {
 	//
 	// 111
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The engine switches for the project or scan snapshot (SAST and SCA only).
+	// The engine switches in the project or scan snapshot. Only SAST and SCA are supported.
 	Engines *DescribeProjectsResponseBodyItemsEngines `json:"engines,omitempty" xml:"engines,omitempty" type:"Struct"`
 	// The project ID.
 	//
@@ -151,12 +151,18 @@ type DescribeProjectsResponseBodyItems struct {
 	//
 	// 934
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The natural language prompt provided by the user that describes scanning or result processing preferences, such as ignoring low-risk vulnerabilities.
+	// The natural language prompt provided by the user that describes scanning or result processing preferences, such as ignoring low-severity vulnerabilities.
 	//
 	// example:
 	//
 	// 1111
 	InstructionPrompt *string `json:"instructionPrompt,omitempty" xml:"instructionPrompt,omitempty"`
+	// The time when a task was last created.
+	//
+	// example:
+	//
+	// 2026-07-28T03:36:31.573Z
+	LastScanTime *string `json:"lastScanTime,omitempty" xml:"lastScanTime,omitempty"`
 	// The project name.
 	//
 	// example:
@@ -209,6 +215,10 @@ func (s *DescribeProjectsResponseBodyItems) GetInstructionPrompt() *string {
 	return s.InstructionPrompt
 }
 
+func (s *DescribeProjectsResponseBodyItems) GetLastScanTime() *string {
+	return s.LastScanTime
+}
+
 func (s *DescribeProjectsResponseBodyItems) GetName() *string {
 	return s.Name
 }
@@ -256,6 +266,11 @@ func (s *DescribeProjectsResponseBodyItems) SetInstructionPrompt(v string) *Desc
 	return s
 }
 
+func (s *DescribeProjectsResponseBodyItems) SetLastScanTime(v string) *DescribeProjectsResponseBodyItems {
+	s.LastScanTime = &v
+	return s
+}
+
 func (s *DescribeProjectsResponseBodyItems) SetName(v string) *DescribeProjectsResponseBodyItems {
 	s.Name = &v
 	return s
@@ -292,12 +307,16 @@ type DescribeProjectsResponseBodyItemsEngines struct {
 	//
 	// true
 	Sast *bool `json:"sast,omitempty" xml:"sast,omitempty"`
+	// The engine-level configuration.
+	SastConfig *DescribeProjectsResponseBodyItemsEnginesSastConfig `json:"sastConfig,omitempty" xml:"sastConfig,omitempty" type:"Struct"`
 	// Indicates whether SCA is supported.
 	//
 	// example:
 	//
 	// true
 	Sca *bool `json:"sca,omitempty" xml:"sca,omitempty"`
+	// The engine-level configuration.
+	ScaConfig *DescribeProjectsResponseBodyItemsEnginesScaConfig `json:"scaConfig,omitempty" xml:"scaConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeProjectsResponseBodyItemsEngines) String() string {
@@ -312,12 +331,25 @@ func (s *DescribeProjectsResponseBodyItemsEngines) GetSast() *bool {
 	return s.Sast
 }
 
+func (s *DescribeProjectsResponseBodyItemsEngines) GetSastConfig() *DescribeProjectsResponseBodyItemsEnginesSastConfig {
+	return s.SastConfig
+}
+
 func (s *DescribeProjectsResponseBodyItemsEngines) GetSca() *bool {
 	return s.Sca
 }
 
+func (s *DescribeProjectsResponseBodyItemsEngines) GetScaConfig() *DescribeProjectsResponseBodyItemsEnginesScaConfig {
+	return s.ScaConfig
+}
+
 func (s *DescribeProjectsResponseBodyItemsEngines) SetSast(v bool) *DescribeProjectsResponseBodyItemsEngines {
 	s.Sast = &v
+	return s
+}
+
+func (s *DescribeProjectsResponseBodyItemsEngines) SetSastConfig(v *DescribeProjectsResponseBodyItemsEnginesSastConfig) *DescribeProjectsResponseBodyItemsEngines {
+	s.SastConfig = v
 	return s
 }
 
@@ -326,7 +358,74 @@ func (s *DescribeProjectsResponseBodyItemsEngines) SetSca(v bool) *DescribeProje
 	return s
 }
 
+func (s *DescribeProjectsResponseBodyItemsEngines) SetScaConfig(v *DescribeProjectsResponseBodyItemsEnginesScaConfig) *DescribeProjectsResponseBodyItemsEngines {
+	s.ScaConfig = v
+	return s
+}
+
 func (s *DescribeProjectsResponseBodyItemsEngines) Validate() error {
+	if s.SastConfig != nil {
+		if err := s.SastConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScaConfig != nil {
+		if err := s.ScaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeProjectsResponseBodyItemsEnginesSastConfig struct {
+	// Specifies whether to generate remediation suggestions.
+	Remediation *bool `json:"remediation,omitempty" xml:"remediation,omitempty"`
+}
+
+func (s DescribeProjectsResponseBodyItemsEnginesSastConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeProjectsResponseBodyItemsEnginesSastConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectsResponseBodyItemsEnginesSastConfig) GetRemediation() *bool {
+	return s.Remediation
+}
+
+func (s *DescribeProjectsResponseBodyItemsEnginesSastConfig) SetRemediation(v bool) *DescribeProjectsResponseBodyItemsEnginesSastConfig {
+	s.Remediation = &v
+	return s
+}
+
+func (s *DescribeProjectsResponseBodyItemsEnginesSastConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeProjectsResponseBodyItemsEnginesScaConfig struct {
+	// Specifies whether to generate remediation suggestions.
+	Remediation *bool `json:"remediation,omitempty" xml:"remediation,omitempty"`
+}
+
+func (s DescribeProjectsResponseBodyItemsEnginesScaConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeProjectsResponseBodyItemsEnginesScaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectsResponseBodyItemsEnginesScaConfig) GetRemediation() *bool {
+	return s.Remediation
+}
+
+func (s *DescribeProjectsResponseBodyItemsEnginesScaConfig) SetRemediation(v bool) *DescribeProjectsResponseBodyItemsEnginesScaConfig {
+	s.Remediation = &v
+	return s
+}
+
+func (s *DescribeProjectsResponseBodyItemsEnginesScaConfig) Validate() error {
 	return dara.Validate(s)
 }
 
