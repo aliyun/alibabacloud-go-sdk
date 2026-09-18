@@ -30,10 +30,14 @@ type iAgent interface {
 type Agent struct {
 	CreatedAt   *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the MCP server associated with the agent.
+	//
 	// example:
 	//
 	// 8vHW4mDRxxxxx
 	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
+	// The name of the MCP server.
+	//
 	// example:
 	//
 	// data-analyze-agent

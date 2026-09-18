@@ -14,7 +14,7 @@ type iGetAgentRequest interface {
 }
 
 type GetAgentRequest struct {
-	// The agent name.
+	// The Agent name.
 	//
 	// This parameter is required.
 	//

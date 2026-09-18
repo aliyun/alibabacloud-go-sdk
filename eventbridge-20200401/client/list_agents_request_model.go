@@ -18,13 +18,13 @@ type iListAgentsRequest interface {
 }
 
 type ListAgentsRequest struct {
-	// The name of the agent from which the next page of results starts.
+	// The name of the agent from which to start querying the next page.
 	//
 	// example:
 	//
 	// my-agent
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
-	// The maximum number of entries to return per request. You can use this parameter together with NextToken to implement paging.
+	// The maximum number of entries to return per request. You can use this parameter together with NextToken to implement pagination.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListAgentsRequest struct {
 	//
 	// - desc
 	//
-	// - asc.
+	// - asc
 	//
 	// example:
 	//

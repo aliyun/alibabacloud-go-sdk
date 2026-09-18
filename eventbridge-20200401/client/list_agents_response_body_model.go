@@ -22,7 +22,7 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
-	// The API status code or POP error code. Valid values: Success: The operation was successful.
+	// The API status or POP error code. Valid values: Success: The operation was successful.
 	//
 	// example:
 	//
@@ -115,23 +115,23 @@ func (s *ListAgentsResponseBody) Validate() error {
 type ListAgentsResponseBodyData struct {
 	// The list of agents.
 	Agents []*Agent `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
-	// The ID of the first record.
+	// The ID of the first entry.
 	//
 	// example:
 	//
 	// uat-agent
 	FirstId *string `json:"FirstId,omitempty" xml:"FirstId,omitempty"`
-	// Indicates whether more pages are available. Valid values:
+	// Indicates whether there is a next page. Valid values:
 	//
-	// - true: More pages are available.
+	// - true: There is a next page.
 	//
-	// - false: No more pages are available.
+	// - false: There is no next page.
 	//
 	// example:
 	//
 	// false
 	HasMore *string `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The ID of the last record.
+	// The ID of the last conversation record.
 	//
 	// example:
 	//

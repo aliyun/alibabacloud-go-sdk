@@ -22,27 +22,27 @@ type iListLumaNamespacesResponseBody interface {
 }
 
 type ListLumaNamespacesResponseBody struct {
-	// The response code. A value of Success indicates a successful call. A specific error code is returned upon failure.
+	// The response code. A value of Success indicates a successful operation. If the operation fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of namespaces bound to the Agent. All results are returned at once without pagination.
+	// The list of namespaces bound to the agent, including entries and pagination information.
 	Data *ListLumaNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned by the operation. The value is Operation success when the call succeeds, or a specific error description when the call fails.
+	// The response message. A value of Operation success is returned if the operation succeeds. A specific error description is returned if the operation fails.
 	//
 	// example:
 	//
 	// Operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request, used for troubleshooting and ticket feedback.
+	// The unique ID of the request. Use this ID for troubleshooting and when submitting a ticket.
 	//
 	// example:
 	//
 	// 34AD682D-5B91-5773-8132-AA38C130****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of true indicates success.
+	// Indicates whether the call is successful. A value of true indicates success.
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ func (s *ListLumaNamespacesResponseBody) Validate() error {
 }
 
 type ListLumaNamespacesResponseBodyData struct {
-	// 本次请求实际生效的每页数量。未传 Limit 时为服务端默认值，超出上限时为收敛后的值
+	// The effective page size for this request. If the Limit parameter is not specified, the server default value is used. If the specified value exceeds the upper limit, the value is adjusted to the maximum allowed value.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The list of namespaces bound to the Agent.
+	// The list of namespaces bound to the agent.
 	//
 	// example:
 	//
 	// [{"Name":"my_namespace"}]
 	Namespaces []*Namespace `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// 下一页起始Token，传入下次请求的 NextToken 可获取下一页；为空表示已无更多数据
+	// The token for the next page. Pass this value as the NextToken parameter in the next request to retrieve the next page. An empty value indicates that no more data is available.
 	//
 	// example:
 	//
 	// 10
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Agent 绑定的命名空间总数，与本页返回条数无关
+	// The total number of namespaces bound to the agent, regardless of the number of entries returned on the current page.
 	//
 	// example:
 	//

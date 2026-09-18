@@ -20,15 +20,22 @@ type iAiTranslateTransformParameters interface {
 }
 
 type AiTranslateTransformParameters struct {
+	// The input text field.
 	InputField *AiTransformField `json:"InputField,omitempty" xml:"InputField,omitempty"`
+	// The source language. If left empty, the language is automatically detected.
+	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// The field name attached to the CloudEvent output. Default value: transform0.
+	//
 	// example:
 	//
 	// translation
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The target language.
+	//
 	// example:
 	//
 	// en

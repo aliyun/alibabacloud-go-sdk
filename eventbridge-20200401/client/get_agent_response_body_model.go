@@ -22,7 +22,7 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
-	// The API status or POP error code. Valid values: Success: succeeded.
+	// The API status or POP error code. Valid values: Success: The operation was successful.
 	//
 	// example:
 	//

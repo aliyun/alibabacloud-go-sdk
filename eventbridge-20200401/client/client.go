@@ -856,6 +856,114 @@ func (client *Client) CreateEventStreaming(request *CreateEventStreamingRequest)
 
 // Summary:
 //
+// Creates a knowledge base.
+//
+// @param tmpReq - CreateKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBaseWithOptions(tmpReq *CreateKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateKnowledgeBaseShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChunkConfiguration) {
+		request.ChunkConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChunkConfiguration, dara.String("ChunkConfiguration"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MetadataSchema) {
+		request.MetadataSchemaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetadataSchema, dara.String("MetadataSchema"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchConfiguration) {
+		request.SearchConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchConfiguration, dara.String("SearchConfiguration"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.ChunkConfigurationShrink) {
+		query["ChunkConfiguration"] = request.ChunkConfigurationShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EmbeddingDimension) {
+		query["EmbeddingDimension"] = request.EmbeddingDimension
+	}
+
+	if !dara.IsNil(request.EmbeddingModel) {
+		query["EmbeddingModel"] = request.EmbeddingModel
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.MetadataSchemaShrink) {
+		query["MetadataSchema"] = request.MetadataSchemaShrink
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.SearchConfigurationShrink) {
+		query["SearchConfiguration"] = request.SearchConfigurationShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBase"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a knowledge base.
+//
+// @param request - CreateKnowledgeBaseRequest
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (_result *CreateKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CreateKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Namespace
 //
 // @param request - CreateNamespaceRequest
@@ -1752,6 +1860,76 @@ func (client *Client) DeleteEventStreaming(request *DeleteEventStreamingRequest)
 
 // Summary:
 //
+// Deletes a knowledge base.
+//
+// @param request - DeleteKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBaseWithOptions(request *DeleteKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeBase"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a knowledge base.
+//
+// @param request - DeleteKnowledgeBaseRequest
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.DeleteKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a namespace.
 //
 // @param request - DeleteNamespaceRequest
@@ -2426,7 +2604,7 @@ func (client *Client) GenerateAgentDataSemantics(request *GenerateAgentDataSeman
 
 // Summary:
 //
-// Retrieves agent metadata.
+// Retrieves Agent metadata.
 //
 // @param request - GetAgentRequest
 //
@@ -2470,7 +2648,7 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *dar
 
 // Summary:
 //
-// Retrieves agent metadata.
+// Retrieves Agent metadata.
 //
 // @param request - GetAgentRequest
 //
@@ -2688,6 +2866,84 @@ func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalo
 
 // Summary:
 //
+// Queries the details of a chunk.
+//
+// @param request - GetChunkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChunkResponse
+func (client *Client) GetChunkWithOptions(request *GetChunkRequest, runtime *dara.RuntimeOptions) (_result *GetChunkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.ChunkSeq) {
+		query["ChunkSeq"] = request.ChunkSeq
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		query["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChunk"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChunkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a chunk.
+//
+// @param request - GetChunkRequest
+//
+// @return GetChunkResponse
+func (client *Client) GetChunk(request *GetChunkRequest) (_result *GetChunkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetChunkResponse{}
+	_body, _err := client.GetChunkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the configuration of a single connection.
 //
 // Description:
@@ -2749,6 +3005,158 @@ func (client *Client) GetConnection(request *GetConnectionRequest) (_result *Get
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetConnectionResponse{}
 	_body, _err := client.GetConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a document.
+//
+// @param request - GetDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocumentResponse
+func (client *Client) GetDocumentWithOptions(request *GetDocumentRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		query["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocument"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a document.
+//
+// @param request - GetDocumentRequest
+//
+// @return GetDocumentResponse
+func (client *Client) GetDocument(request *GetDocumentRequest) (_result *GetDocumentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDocumentResponse{}
+	_body, _err := client.GetDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the download URL of a document.
+//
+// @param request - GetDocumentDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocumentDownloadUrlResponse
+func (client *Client) GetDocumentDownloadUrlWithOptions(request *GetDocumentDownloadUrlRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentDownloadUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		query["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NetworkType) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocumentDownloadUrl"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDocumentDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the download URL of a document.
+//
+// @param request - GetDocumentDownloadUrlRequest
+//
+// @return GetDocumentDownloadUrlResponse
+func (client *Client) GetDocumentDownloadUrl(request *GetDocumentDownloadUrlRequest) (_result *GetDocumentDownloadUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDocumentDownloadUrlResponse{}
+	_body, _err := client.GetDocumentDownloadUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3013,6 +3421,76 @@ func (client *Client) GetGenerateAgentDataSemanticsProgress(request *GetGenerate
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetGenerateAgentDataSemanticsProgressResponse{}
 	_body, _err := client.GetGenerateAgentDataSemanticsProgressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a knowledge base.
+//
+// @param request - GetKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKnowledgeBaseResponse
+func (client *Client) GetKnowledgeBaseWithOptions(request *GetKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *GetKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKnowledgeBase"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a knowledge base.
+//
+// @param request - GetKnowledgeBaseRequest
+//
+// @return GetKnowledgeBaseResponse
+func (client *Client) GetKnowledgeBase(request *GetKnowledgeBaseRequest) (_result *GetKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKnowledgeBaseResponse{}
+	_body, _err := client.GetKnowledgeBaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4097,6 +4575,96 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 
 // Summary:
 //
+// Queries the list of document chunks.
+//
+// @param request - ListChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChunksResponse
+func (client *Client) ListChunksWithOptions(request *ListChunksRequest, runtime *dara.RuntimeOptions) (_result *ListChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.DocumentId) {
+		query["DocumentId"] = request.DocumentId
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListChunks"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of document chunks.
+//
+// @param request - ListChunksRequest
+//
+// @return ListChunksResponse
+func (client *Client) ListChunks(request *ListChunksRequest) (_result *ListChunksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListChunksResponse{}
+	_body, _err := client.ListChunksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of connection configurations.
 //
 // Description:
@@ -4174,6 +4742,92 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListConnectionsResponse{}
 	_body, _err := client.ListConnectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of documents.
+//
+// @param request - ListDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocumentsResponse
+func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, runtime *dara.RuntimeOptions) (_result *ListDocumentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.FileNamePrefix) {
+		query["FileNamePrefix"] = request.FileNamePrefix
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDocuments"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of documents.
+//
+// @param request - ListDocumentsRequest
+//
+// @return ListDocumentsResponse
+func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *ListDocumentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.ListDocumentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4417,11 +5071,85 @@ func (client *Client) ListEventStreamings(request *ListEventStreamingsRequest) (
 
 // Summary:
 //
+// Queries a list of knowledge bases.
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeBasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeBases"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of knowledge bases.
+//
+// @param request - ListKnowledgeBasesRequest
+//
+// @return ListKnowledgeBasesResponse
+func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_result *ListKnowledgeBasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeBasesResponse{}
+	_body, _err := client.ListKnowledgeBasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists all data catalogs bound to a Luma Agent. Returns the complete set of bindings without pagination.
 //
 // Description:
 //
-// Lists all data catalogs bound to a Luma Agent. Returns the complete set of bindings without pagination.
+// Lists the data catalogs bound to a Luma Agent. Results are returned in pages. Pass the NextToken from the previous response to retrieve the next page. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than the Limit value. Do not use an insufficient page count to determine whether the last page has been reached.
 //
 // @param request - ListLumaCatalogsRequest
 //
@@ -4477,7 +5205,7 @@ func (client *Client) ListLumaCatalogsWithOptions(request *ListLumaCatalogsReque
 //
 // Description:
 //
-// Lists all data catalogs bound to a Luma Agent. Returns the complete set of bindings without pagination.
+// Lists the data catalogs bound to a Luma Agent. Results are returned in pages. Pass the NextToken from the previous response to retrieve the next page. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than the Limit value. Do not use an insufficient page count to determine whether the last page has been reached.
 //
 // @param request - ListLumaCatalogsRequest
 //
@@ -4785,7 +5513,7 @@ func (client *Client) ListLumaKnowledgeBases(request *ListLumaKnowledgeBasesRequ
 //
 // Description:
 //
-// Lists all namespaces bound to a Luma Agent under a specified data catalog. Returns the complete set of bindings without pagination.
+// Lists the namespaces bound to a Luma Agent under a specified data catalog. Results are returned in pages. Pass the NextToken from the previous response to retrieve the next page. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than the Limit value. Do not use an insufficient number of entries on the current page to determine whether the last page has been reached.
 //
 // @param request - ListLumaNamespacesRequest
 //
@@ -4845,7 +5573,7 @@ func (client *Client) ListLumaNamespacesWithOptions(request *ListLumaNamespacesR
 //
 // Description:
 //
-// Lists all namespaces bound to a Luma Agent under a specified data catalog. Returns the complete set of bindings without pagination.
+// Lists the namespaces bound to a Luma Agent under a specified data catalog. Results are returned in pages. Pass the NextToken from the previous response to retrieve the next page. An empty NextToken indicates that no more data is available. Expired bindings are skipped, so the number of entries on a single page may be less than the Limit value. Do not use an insufficient number of entries on the current page to determine whether the last page has been reached.
 //
 // @param request - ListLumaNamespacesRequest
 //
@@ -6263,6 +6991,80 @@ func (client *Client) QueryTracedEvents(request *QueryTracedEventsRequest) (_res
 
 // Summary:
 //
+// Executes a SQL statement to query event warehouse data. This operation is suitable for scenarios where the exact SQL is known, without natural language conversion or conversation context. Returns a structured result set.
+//
+// Description:
+//
+// Queries event content.
+//
+// @param request - QueryWithSQLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryWithSQLResponse
+func (client *Client) QueryWithSQLWithOptions(request *QueryWithSQLRequest, runtime *dara.RuntimeOptions) (_result *QueryWithSQLResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryWithSQL"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryWithSQLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes a SQL statement to query event warehouse data. This operation is suitable for scenarios where the exact SQL is known, without natural language conversion or conversation context. Returns a structured result set.
+//
+// Description:
+//
+// Queries event content.
+//
+// @param request - QueryWithSQLRequest
+//
+// @return QueryWithSQLResponse
+func (client *Client) QueryWithSQL(request *QueryWithSQLRequest) (_result *QueryWithSQLResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryWithSQLResponse{}
+	_body, _err := client.QueryWithSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Saves data semantics for an agent.
 //
 // @param tmpReq - SaveAgentDataSemanticsRequest
@@ -6350,6 +7152,112 @@ func (client *Client) SaveAgentDataSemantics(request *SaveAgentDataSemanticsRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &SaveAgentDataSemanticsResponse{}
 	_body, _err := client.SaveAgentDataSemanticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves knowledge base search results.
+//
+// @param request - SearchKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchKnowledgeBaseResponse
+func (client *Client) SearchKnowledgeBaseWithOptions(request *SearchKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *SearchKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.MetadataFilter) {
+		query["MetadataFilter"] = request.MetadataFilter
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RankAlgorithm) {
+		query["RankAlgorithm"] = request.RankAlgorithm
+	}
+
+	if !dara.IsNil(request.Rerank) {
+		query["Rerank"] = request.Rerank
+	}
+
+	if !dara.IsNil(request.RerankModel) {
+		query["RerankModel"] = request.RerankModel
+	}
+
+	if !dara.IsNil(request.RrfK) {
+		query["RrfK"] = request.RrfK
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.VectorWeight) {
+		query["VectorWeight"] = request.VectorWeight
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchKnowledgeBase"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves knowledge base search results.
+//
+// @param request - SearchKnowledgeBaseRequest
+//
+// @return SearchKnowledgeBaseResponse
+func (client *Client) SearchKnowledgeBase(request *SearchKnowledgeBaseRequest) (_result *SearchKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchKnowledgeBaseResponse{}
+	_body, _err := client.SearchKnowledgeBaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7454,6 +8362,98 @@ func (client *Client) UpdateEventStreamingBusinessOption(request *UpdateEventStr
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateEventStreamingBusinessOptionResponse{}
 	_body, _err := client.UpdateEventStreamingBusinessOptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a knowledge base.
+//
+// @param tmpReq - UpdateKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBaseWithOptions(tmpReq *UpdateKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKnowledgeBaseShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChunkConfiguration) {
+		request.ChunkConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChunkConfiguration, dara.String("ChunkConfiguration"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchConfiguration) {
+		request.SearchConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchConfiguration, dara.String("SearchConfiguration"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.ChunkConfigurationShrink) {
+		query["ChunkConfiguration"] = request.ChunkConfigurationShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseName) {
+		query["KnowledgeBaseName"] = request.KnowledgeBaseName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.SearchConfigurationShrink) {
+		query["SearchConfiguration"] = request.SearchConfigurationShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBase"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a knowledge base.
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBase(request *UpdateKnowledgeBaseRequest) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.UpdateKnowledgeBaseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
