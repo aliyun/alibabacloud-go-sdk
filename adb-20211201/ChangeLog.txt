@@ -1,3 +1,6 @@
+2026-09-18 Version: v5.3.1
+- Generated golang 2021-12-01 for adb.
+
 2026-09-16 Version: v5.3.0
 - Support API ListKnowledgeFiles.
 

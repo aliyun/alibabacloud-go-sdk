@@ -659,6 +659,74 @@ func (client *Client) CancelSparkWarehouseBatchSQLWithContext(ctx context.Contex
 
 // Summary:
 //
+// Cancels an SQL Pattern comparison report.
+//
+// Description:
+//
+// Cancels a specified SQL Pattern comparison report. Reports in the following statuses can be canceled:
+//
+// - `PENDING`: Waiting to be generated.
+//
+// - `RUNNING`: Being generated.
+//
+// > - Only reports with `CancelAvailable` set to `true` can be canceled.
+//
+// > - Reports that are completed, failed, or expired cannot be canceled.
+//
+// > - When you cancel an already canceled report again, `Canceled` still returns `true`, and `CancelTime` retains the time of the first cancellation.
+//
+// > - Reports are isolated by instance and Alibaba Cloud account.
+//
+// @param request - CancelSqlPatternCompareReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelSqlPatternCompareReportResponse
+func (client *Client) CancelSqlPatternCompareReportWithContext(ctx context.Context, request *CancelSqlPatternCompareReportRequest, runtime *dara.RuntimeOptions) (_result *CancelSqlPatternCompareReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReportId) {
+		query["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelSqlPatternCompareReport"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelSqlPatternCompareReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether a database account of an AnalyticDB for MySQL cluster is associated with a Resource Access Management (RAM) user.
 //
 // Description:
@@ -2821,6 +2889,86 @@ func (client *Client) CreateSparkTemplateWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSparkTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a SQL pattern comparison report.
+//
+// Description:
+//
+// Compares two time windows and asynchronously generates a SQL pattern comparison report.
+//
+// > - The start time of each window must be earlier than the end time, and the duration must not exceed 24 hours. Select windows of the same duration and similar business cycles.
+//
+// > - The returned `ReportId` only indicates that the request has been accepted. Call `DescribeSqlPatternCompareReports` to query the report status, and query the details when `DetailEnabled` is `true`.
+//
+// > - Only one report can be generated for an instance at a time.
+//
+// > - Reports are valid for 7 days and are isolated by instance and Alibaba Cloud account.
+//
+// @param request - CreateSqlPatternCompareReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSqlPatternCompareReportResponse
+func (client *Client) CreateSqlPatternCompareReportWithContext(ctx context.Context, request *CreateSqlPatternCompareReportRequest, runtime *dara.RuntimeOptions) (_result *CreateSqlPatternCompareReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CompareEndTime) {
+		query["CompareEndTime"] = request.CompareEndTime
+	}
+
+	if !dara.IsNil(request.CompareStartTime) {
+		query["CompareStartTime"] = request.CompareStartTime
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PatternType) {
+		query["PatternType"] = request.PatternType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSqlPatternCompareReport"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSqlPatternCompareReportResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9649,6 +9797,198 @@ func (client *Client) DescribeSqlPatternWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Queries the details of an SQL Pattern comparison report.
+//
+// Description:
+//
+// Performs a paged query of SQL Pattern comparison report details based on `MetricType` by using paging. Report type descriptions:
+//
+// - NEW: Returns Patterns that are new in time window 2. `MetricValues` returns `Time2`.
+//
+// - CHANGED: Returns Patterns that exist in both time windows and have increased average values for the current metric. `MetricValues` returns `Avg`, `Sum`, and `Max`.
+//
+// Metric calculation methods:
+//
+// - `Sum`: The sum of metric values across valid query minute buckets.
+//
+// - `Avg`: The average of metric values across valid query minute buckets.
+//
+// - `Max`: The peak metric value within a single minute bucket.
+//
+// Metric units:
+//
+// - `QUERY_COUNT`: count.
+//
+// - `CPU_COST`: seconds.
+//
+// - `SHUFFLE_SIZE`, `PEAK_MEMORY`, `SCAN_SIZE`: GB.
+//
+// > - Only reports with `DetailEnabled` set to `true` can be queried for details. Reports that are incomplete, canceled, or expired cannot be queried.
+//
+// > - Fields ending with `Percent` are already expressed as percentages. When the time window 1 metric value is 0, `ChangeRatePercent` may not be returned and should not be treated as 0%.
+//
+// > - Reports are isolated by instance and Alibaba Cloud account.
+//
+// @param request - DescribeSqlPatternCompareReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlPatternCompareReportResponse
+func (client *Client) DescribeSqlPatternCompareReportWithContext(ctx context.Context, request *DescribeSqlPatternCompareReportRequest, runtime *dara.RuntimeOptions) (_result *DescribeSqlPatternCompareReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChangeRate) {
+		query["ChangeRate"] = request.ChangeRate
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.IncludePattern) {
+		query["IncludePattern"] = request.IncludePattern
+	}
+
+	if !dara.IsNil(request.MetricType) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReportId) {
+		query["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSqlPatternCompareReport"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSqlPatternCompareReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of SQL Pattern comparison reports.
+//
+// Description:
+//
+// Queries the SQL Pattern comparison reports created by the current Alibaba Cloud account for a specified instance. RAM users can query reports that belong to their parent Alibaba Cloud account.
+//
+// The following pagination methods are supported:
+//
+// - Page number-based pagination (recommended): Use `PageNumber` and `PageSize`.
+//
+// - Token-based pagination: Use `MaxResults` and `NextToken`.
+//
+// > - The two pagination methods cannot be used together. When you use page number-based pagination, the `MaxResults` parameter that is automatically included by the platform does not take effect.
+//
+// > - The list returns only unexpired reports in the `PENDING`, `RUNNING`, or `SUCCESS` state.
+//
+// > - Use `DetailEnabled` to determine whether report details can be queried. Use `CancelAvailable` to determine whether a report can be canceled.
+//
+// > - Reports are valid for 7 days and are isolated by instance and Alibaba Cloud account.
+//
+// @param request - DescribeSqlPatternCompareReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlPatternCompareReportsResponse
+func (client *Client) DescribeSqlPatternCompareReportsWithContext(ctx context.Context, request *DescribeSqlPatternCompareReportsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSqlPatternCompareReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSqlPatternCompareReports"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSqlPatternCompareReportsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the storage resource usage of an AnalyticDB for MySQL cluster.
 //
 // Description:
@@ -12971,7 +13311,7 @@ func (client *Client) ListApsWebhookWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询知识库文件
+// Queries knowledge base files.
 //
 // @param request - ListKnowledgeFilesRequest
 //

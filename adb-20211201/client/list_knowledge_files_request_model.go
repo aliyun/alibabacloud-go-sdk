@@ -24,28 +24,52 @@ type iListKnowledgeFilesRequest interface {
 }
 
 type ListKnowledgeFilesRequest struct {
+	// The ID of the AnalyticDB for MySQL instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The JSON string of the file ID array. A maximum of 200 positive integers are supported.
+	//
 	// example:
 	//
 	// [1001,1002,1003]
 	FileIds *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
+	// The page number, starting from 1. If this parameter is not specified, Ray uses a default value of 1.
+	//
 	// example:
 	//
 	// 1
 	Page *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. If this parameter is not specified, Ray uses a default value of 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The processing status. Valid values:
+	//
+	// - PENDING
+	//
+	// - PROCESSING
+	//
+	// - COMPLETED
+	//
+	// - FAILED
+	//
+	// - DUPLICATED
+	//
+	// - SKIPPED
+	//
 	// example:
 	//
 	// FAILED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The stable ID of the authorized user. If this parameter is not specified, all files in the knowledge base can be queried.
+	//
 	// example:
 	//
 	// u123

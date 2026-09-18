@@ -16,7 +16,10 @@ type iListKnowledgeFilesResponseBody interface {
 }
 
 type ListKnowledgeFilesResponseBody struct {
+	// The returned data.
 	Data *ListKnowledgeFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -59,23 +62,38 @@ func (s *ListKnowledgeFilesResponseBody) Validate() error {
 }
 
 type ListKnowledgeFilesResponseBodyData struct {
+	// The list of file information.
 	Files []*ListKnowledgeFilesResponseBodyDataFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The message returned by the request.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -158,46 +176,72 @@ func (s *ListKnowledgeFilesResponseBodyData) Validate() error {
 }
 
 type ListKnowledgeFilesResponseBodyDataFiles struct {
+	// The time when the file was added to the knowledge base.
+	//
 	// example:
 	//
 	// 2026-06-09 10:27:35
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The ID of the file.
+	//
 	// example:
 	//
 	// 137
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The size of the file, in bytes.
+	//
 	// example:
 	//
 	// 1024
 	FileSizeBytes *int64 `json:"FileSizeBytes,omitempty" xml:"FileSizeBytes,omitempty"`
+	// The Object Storage Service (OSS) URL of the file.
+	//
 	// example:
 	//
 	// oss://bucketName/path/to/file
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The format of the file.
+	//
 	// example:
 	//
 	// mp4
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Indicates whether the file is a directory.
+	//
 	// example:
 	//
 	// false
 	IsDirectory *bool `json:"IsDirectory,omitempty" xml:"IsDirectory,omitempty"`
+	// The file_id of the content host.
+	//
 	// example:
 	//
 	// 122
 	OwnerFileId *int64 `json:"OwnerFileId,omitempty" xml:"OwnerFileId,omitempty"`
+	// The total number of pages in the file, such as the number of pages in a PDF file.
+	//
 	// example:
 	//
 	// 2
 	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The processing message of the knowledge base file.
+	//
 	// example:
 	//
 	// successful
 	ProcessMessage *string `json:"ProcessMessage,omitempty" xml:"ProcessMessage,omitempty"`
+	// The status of the file in the knowledge base. Valid values:
+	//
+	// - Processing: The file is being processed.
+	//
+	// - Finished: The file has been processed.
+	//
 	// example:
 	//
 	// Finished
 	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// The time when the file was last updated.
+	//
 	// example:
 	//
 	// 2026-06-10 10:23:46
