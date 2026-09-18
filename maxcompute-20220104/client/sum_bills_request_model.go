@@ -22,19 +22,28 @@ type iSumBillsRequest interface {
 }
 
 type SumBillsRequest struct {
+	// The end time of the billing cycle.
+	//
 	// example:
 	//
 	// 1776232895313
-	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// A list of instance names. This parameter is not required if `statsType` is set to `FEE_ITEM`.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The start time of the billing cycle.
+	//
 	// example:
 	//
 	// 1715393576201
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The dimension by which to summarize costs. Valid values: `PROJECT` (by instance) and `FEE_ITEM` (by billable item).
+	//
 	// example:
 	//
 	// PROJECT
 	StatsType *string `json:"statsType,omitempty" xml:"statsType,omitempty"`
+	// The number of top results to return after sorting by cost.
+	//
 	// example:
 	//
 	// 5

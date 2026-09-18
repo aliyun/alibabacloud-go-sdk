@@ -62,24 +62,25 @@ func (s *UpdateProjectBasicMetaRequest) Validate() error {
 }
 
 type UpdateProjectBasicMetaRequestProperties struct {
-	// Indicates whether a full table scan is allowed in the project. A full table scan occupies a large number of resources, which reduces data processing efficiency. By default, the full table scan feature is disabled.
+	// Specifies whether to allow full table scans in the project. Full table scans consume a large amount of resources. To improve processing efficiency, this feature is disabled by default.
 	//
 	// example:
 	//
 	// false
-	AllowFullScan *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
-	// Indicates whether the DECIMAL type of the MaxCompute V2.0 data type edition is enabled.
+	AllowFullScan     *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
+	EnableDataMasking *bool `json:"enableDataMasking,omitempty" xml:"enableDataMasking,omitempty"`
+	// Specifies whether to enable the Decimal data type of MaxCompute 2.0 for the project.
 	//
 	// example:
 	//
 	// true
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
 	EnableDr       *bool `json:"enableDr,omitempty" xml:"enableDr,omitempty"`
-	// Indicates whether the routing of the Tunnel resource group is enabled.
+	// Specifies whether to enable resource group routing for the data transfer service.
 	//
-	// - true: The data transfer tasks that are submitted by the project by default use the Tunnel resource group that is bound to the project.
+	// - true: The data transfer tasks submitted by this project use the bound data transfer service resource group by default.
 	//
-	// - false: The data transfer tasks that are submitted by the project by default use the Tunnel shared resource group.
+	// - false: The data transfer tasks submitted by this project use the shared data transfer service resource group by default.
 	//
 	// example:
 	//
@@ -87,33 +88,37 @@ type UpdateProjectBasicMetaRequestProperties struct {
 	EnableTunnelQuotaRoute *bool `json:"enableTunnelQuotaRoute,omitempty" xml:"enableTunnelQuotaRoute,omitempty"`
 	// The storage encryption properties.
 	Encryption *UpdateProjectBasicMetaRequestPropertiesEncryption `json:"encryption,omitempty" xml:"encryption,omitempty" type:"Struct"`
-	// The retention period for backup data. Unit: days. During the retention period, you can restore data of the version in use to the backup data of any version. Valid values: [0,30]. Default value: 1. The value 0 indicates that the backup feature is disabled.
+	// The number of days to retain backup data. During this period, you can restore the current version to any backed-up data version.
+	//
+	// Valid values: [0, 30]. Default value: 1. A value of 0 indicates that the backup feature is disabled.
 	//
 	// example:
 	//
 	// 1
 	RetentionDays *int64 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
-	// The maximum consumption threshold of a single SQL statement. Formula: Amount of scanned data (GB) × Complexity.
+	// The maximum threshold for a single SQL statement consumption.
+	//
+	// Unit: scan volume (GB) × complexity.
 	//
 	// example:
 	//
 	// 1500
 	SqlMeteringMax *string `json:"sqlMeteringMax,omitempty" xml:"sqlMeteringMax,omitempty"`
-	// The table lifecycle properties.
+	// The lifecycle properties of tables.
 	TableLifecycle *UpdateProjectBasicMetaRequestPropertiesTableLifecycle `json:"tableLifecycle,omitempty" xml:"tableLifecycle,omitempty" type:"Struct"`
-	// The time zone that is used by your project. The time zone is the same as the time zone specified by `odps.sql.timezone` .
+	// The time zone of the project, which is the `odps.sql.timezone` property.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The <props="china">[Data Transmission Service](https://help.aliyun.com/zh/maxcompute/user-guide/overview-of-dts)
+	// The <props="china">[Data Transfer Service](https://help.aliyun.com/zh/maxcompute/user-guide/overview-of-dts)
 	//
-	// <props="intl">[Data Transmission Service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group that is bound to the project.
+	// <props="intl">[Data Transfer Service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group bound to the project.
 	//
-	// - Default resource group: The Tunnel shared resource group is used. You cannot use the subscription-based Tunnel resource group for the project. The default resource group is automatically used by the Tunnel service of your project, regardless of the parameter setting.
+	// - Default (shared data transfer service resource group): The project is not allowed to use subscription-based data transfer service resource groups. Regardless of the default data transfer service resource group setting, data transfer tasks submitted by this project automatically use the Default resource group.
 	//
-	// - Subscription-based Tunnel resource group: You can use the subscription-based Tunnel resource group for the project.
+	// - Subscription-based data transfer service resource group: The project is allowed to use subscription-based data transfer service resource groups.
 	//
 	// example:
 	//
@@ -121,15 +126,15 @@ type UpdateProjectBasicMetaRequestProperties struct {
 	TunnelQuota *string `json:"tunnelQuota,omitempty" xml:"tunnelQuota,omitempty"`
 	// The data type edition. Valid values:
 	//
-	// - *1*: MaxCompute V1.0 data type edition
+	// - **1**: Edition 1.0
 	//
-	// - *2*: MaxCompute V2.0 data type edition
+	// - **2**: Edition 2.0
 	//
-	// - *hive*: Hive-compatible data type edition
+	// - **hive**: Hive-compatible type
 	//
-	// For more information about the differences among the three data type editions, see <props="china">[Data Type Versions](https://help.aliyun.com/zh/maxcompute/user-guide/data-type-editions)
+	// For more information about the differences among the three data type editions, see <props="china">[Data Type Editions](https://help.aliyun.com/zh/maxcompute/user-guide/data-type-editions)
 	//
-	// <props="intl">[Data Type Versions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
+	// <props="intl">[Data Type Editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
 	//
 	// example:
 	//
@@ -147,6 +152,10 @@ func (s UpdateProjectBasicMetaRequestProperties) GoString() string {
 
 func (s *UpdateProjectBasicMetaRequestProperties) GetAllowFullScan() *bool {
 	return s.AllowFullScan
+}
+
+func (s *UpdateProjectBasicMetaRequestProperties) GetEnableDataMasking() *bool {
+	return s.EnableDataMasking
 }
 
 func (s *UpdateProjectBasicMetaRequestProperties) GetEnableDecimal2() *bool {
@@ -191,6 +200,11 @@ func (s *UpdateProjectBasicMetaRequestProperties) GetTypeSystem() *string {
 
 func (s *UpdateProjectBasicMetaRequestProperties) SetAllowFullScan(v bool) *UpdateProjectBasicMetaRequestProperties {
 	s.AllowFullScan = &v
+	return s
+}
+
+func (s *UpdateProjectBasicMetaRequestProperties) SetEnableDataMasking(v bool) *UpdateProjectBasicMetaRequestProperties {
+	s.EnableDataMasking = &v
 	return s
 }
 
@@ -259,13 +273,13 @@ func (s *UpdateProjectBasicMetaRequestProperties) Validate() error {
 }
 
 type UpdateProjectBasicMetaRequestPropertiesEncryption struct {
-	// The data encryption algorithm that is supported by the key. Valid values: AES256, AESCTR, and RC4.
+	// The data encryption algorithm. The supported encryption algorithms include AES256, AESCTR, and RC4.
 	//
 	// example:
 	//
 	// AES256
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	// Indicates whether the data encryption feature needs to be enabled for the project. For more information about data encryption, see
+	// Specifies whether to enable data encryption for the project. For more information about data encryption, see
 	//
 	// <props="china">[Storage Encryption](https://help.aliyun.com/zh/maxcompute/security-and-compliance/storage-encryption)
 	//
@@ -275,7 +289,7 @@ type UpdateProjectBasicMetaRequestPropertiesEncryption struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The type of key that is used for data encryption. You can select MaxCompute Default Key or Bring Your Own Key (BYOK) as the key type. If you select MaxCompute Default Key, the default key that is created by MaxCompute is used.
+	// The type of key used for data encryption, including the default key (MaxCompute Default Key) and Bring Your Own Key (BYOK). The default key (MaxCompute Default Key) is a default key created internally by MaxCompute.
 	//
 	// example:
 	//
@@ -325,17 +339,17 @@ func (s *UpdateProjectBasicMetaRequestPropertiesEncryption) Validate() error {
 type UpdateProjectBasicMetaRequestPropertiesTableLifecycle struct {
 	// The lifecycle type. Valid values:
 	//
-	// - *mandatory*: The lifecycle clause is required in a table creation statement.
+	// - **mandatory**: The Lifecycle clause is required. You must configure the lifecycle of a table.
 	//
-	// - *optional*: The lifecycle clause is optional in a table creation statement. If you do not configure a lifecycle for a table, the table does not expire.
+	// - **optional**: The Lifecycle clause is optional when you create a table. If the lifecycle of a table is not configured, the table is permanently valid.
 	//
-	// - *inherit*: If you do not configure a lifecycle for a table when you create the table, the value of the odps.table.lifecycle.value parameter is used as the table lifecycle by default.
+	// - **inherit**: If the lifecycle of a table is not configured when you create a table, the lifecycle of the table is set to the value of odps.table.lifecycle.value.
 	//
 	// example:
 	//
 	// optional
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The table lifecycle. Unit: days. Valid values: 1 to 37231. Default value: 37231.
+	// The lifecycle of a table. Unit: days. Valid values: 1 to 37231. Default value: 37231.
 	//
 	// example:
 	//

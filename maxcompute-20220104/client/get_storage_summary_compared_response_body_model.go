@@ -22,19 +22,38 @@ type iGetStorageSummaryComparedResponseBody interface {
 }
 
 type GetStorageSummaryComparedResponseBody struct {
+	// The data returned.
 	Data *GetStorageSummaryComparedResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// plan \\"***\\" does not exist
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	//
+	// - 1xx: informational response. The request is received and is being processed.
+	//
+	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
+	//
+	// - 3xx: redirection. The request is redirected. You must take further action to complete the request.
+	//
+	// - 4xx: client error. The request contains invalid parameters or syntax, or fails to meet specific conditions.
+	//
+	// - 5xx: server error. The server cannot fulfill the request for other reasons.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc3b4b016674434996033675e71ee
@@ -104,17 +123,48 @@ func (s *GetStorageSummaryComparedResponseBody) Validate() error {
 }
 
 type GetStorageSummaryComparedResponseBodyData struct {
+	// The start date.
+	//
 	// example:
 	//
 	// 20250601
 	BeginDate *string `json:"beginDate,omitempty" xml:"beginDate,omitempty"`
+	// The end date.
+	//
 	// example:
 	//
 	// 20250604
-	EndDate *string             `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	Rate    map[string]*float64 `json:"rate,omitempty" xml:"rate,omitempty"`
-	Unit    map[string]*string  `json:"unit,omitempty" xml:"unit,omitempty"`
-	Value   map[string]*float64 `json:"value,omitempty" xml:"value,omitempty"`
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The year-on-year (YoY) change rate of the storage usage from the start date to the end date. Valid values:
+	//
+	// - lowFreqStorageRate
+	//
+	// - totalStorageRate
+	//
+	// - standardStorageRate
+	//
+	// - longTermStorageRate
+	Rate map[string]*float64 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The unit of the change in the storage usage from the start date to the end date. Valid values:
+	//
+	// - lowFreqStorageUnit
+	//
+	// - totalStorageUnit
+	//
+	// - standardStorageUnit
+	//
+	// - longTermStorageUnit
+	Unit map[string]*string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The change in the storage usage from the start date to the end date. Valid values:
+	//
+	// - lowFreqStorage
+	//
+	// - totalStorage
+	//
+	// - standardStorage
+	//
+	// - longTermStorage
+	Value map[string]*float64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetStorageSummaryComparedResponseBodyData) String() string {

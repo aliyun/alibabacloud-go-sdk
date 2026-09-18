@@ -24,24 +24,33 @@ type iUpdateMmsTablesRequest interface {
 }
 
 type UpdateMmsTablesRequest struct {
+	// The name of the database that contains the source tables to be updated.
+	//
 	// example:
 	//
 	// default
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// The destination MaxCompute project.
+	//
 	// example:
 	//
 	// pj
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// The destination MaxCompute schema.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// The migration status.
+	//
 	// example:
 	//
 	// INIT
-	Status     *string   `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of source tables to be updated.
 	TableNames []*string `json:"tableNames,omitempty" xml:"tableNames,omitempty" type:"Repeated"`
-	// Deprecated
+	// This parameter is deprecated.
 	Tables []*int64 `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
 }
 

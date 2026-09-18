@@ -16,7 +16,10 @@ type iListMmsTimersResponseBody interface {
 }
 
 type ListMmsTimersResponseBody struct {
+	// The returned data.
 	Data *ListMmsTimersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0b87b7e716665825896565060e87a4
@@ -59,15 +62,22 @@ func (s *ListMmsTimersResponseBody) Validate() error {
 }
 
 type ListMmsTimersResponseBodyData struct {
+	// A list of timers.
 	ObjectList []*ListMmsTimersResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 13
@@ -132,42 +142,62 @@ func (s *ListMmsTimersResponseBodyData) Validate() error {
 }
 
 type ListMmsTimersResponseBodyDataObjectList struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-12-17 09:29:58
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The source database ID.
+	//
 	// example:
 	//
 	// 196
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The timer ID.
+	//
 	// example:
 	//
 	// 18
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The timer name.
+	//
 	// example:
 	//
 	// migrate_db_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The schedule type.
+	//
 	// example:
 	//
 	// Daily
 	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000015
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The source database name.
+	//
 	// example:
 	//
 	// db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// Indicates whether the timer is stopped.
+	//
 	// example:
 	//
 	// false
 	Stopped *bool `json:"stopped,omitempty" xml:"stopped,omitempty"`
+	// The job type.
+	//
 	// example:
 	//
 	// TABLES
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The schedule time.
+	//
 	// example:
 	//
 	// 00:00

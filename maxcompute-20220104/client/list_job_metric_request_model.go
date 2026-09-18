@@ -32,13 +32,21 @@ type ListJobMetricRequest struct {
 	//
 	// > Available values: project, quota, type, status. Meanings:
 	//
-	// >- project: Group and aggregate by project;
+	// >
 	//
-	// >- quota: Group and aggregate by quota;
+	// > - project: Group and aggregate by project;
 	//
-	// >- type: Group and aggregate by job type;
+	// >
 	//
-	// >- status: Group and aggregate by job status.
+	// > - quota: Group and aggregate by quota;
+	//
+	// >
+	//
+	// > - type: Group and aggregate by job type;
+	//
+	// >
+	//
+	// > - status: Group and aggregate by job status.
 	//
 	// example:
 	//

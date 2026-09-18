@@ -30,40 +30,68 @@ type iListStorageProjectsInfoRequest interface {
 }
 
 type ListStorageProjectsInfoRequest struct {
+	// Specifies whether to sort the results in ascending order.
+	//
 	// example:
 	//
 	// false
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	// The statistics collection date. The date is accurate to the day. The date must be in the `YYYYMMdd` format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The column to sort by. Valid values:
+	//
+	// - totalStorage
+	//
+	// - longTermStorage
+	//
+	// - lowFreqStorage
+	//
+	// - standardStorage
+	//
+	// - recycleBinStorage
+	//
 	// example:
 	//
 	// totalStorage
 	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The prefix of the MaxCompute project name.
+	//
 	// example:
 	//
 	// odps_project
 	ProjectPrefix *string `json:"projectPrefix,omitempty" xml:"projectPrefix,omitempty"`
+	// The number of days for year-over-year comparison.
+	//
 	// example:
 	//
 	// 1
 	RecentDays *int32 `json:"recentDays,omitempty" xml:"recentDays,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID. You can log on to the MaxCompute console and choose **Tenant Property*	- in the navigation pane on the left to view the tenant ID.
+	//
 	// example:
 	//
 	// 28074710977****

@@ -18,14 +18,20 @@ type iGetStorageSizeSummaryRequest interface {
 }
 
 type GetStorageSizeSummaryRequest struct {
+	// The date of statistics. The value is at the day level. The format is YYYYMMdd.
+	//
 	// example:
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 483212237127906

@@ -35,42 +35,62 @@ type iListMmsJobsRequest interface {
 
 type ListMmsJobsRequest struct {
 	Sorter *ListMmsJobsRequestSorter `json:"sorter,omitempty" xml:"sorter,omitempty" type:"Struct"`
+	// The destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_test
 	DstDbName *string `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
+	// The destination MaxCompute table.
+	//
 	// example:
 	//
 	// test_table_1
 	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of items to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The name of the source database.
+	//
 	// example:
 	//
 	// test_db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// The name of the source table.
+	//
 	// example:
 	//
 	// test_table_1
 	SrcTableName *string `json:"srcTableName,omitempty" xml:"srcTableName,omitempty"`
+	// The status of the migration job.
+	//
 	// example:
 	//
 	// DOING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the job is stopped.
+	//
 	// example:
 	//
 	// false
 	Stopped *int64 `json:"stopped,omitempty" xml:"stopped,omitempty"`
+	// The timer ID.
+	//
 	// example:
 	//
 	// 1
@@ -194,6 +214,8 @@ func (s *ListMmsJobsRequest) Validate() error {
 }
 
 type ListMmsJobsRequestSorter struct {
+	// Sorting by status
+	//
 	// example:
 	//
 	// desc

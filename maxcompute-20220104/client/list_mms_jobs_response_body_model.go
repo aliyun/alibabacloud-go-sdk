@@ -16,7 +16,10 @@ type iListMmsJobsResponseBody interface {
 }
 
 type ListMmsJobsResponseBody struct {
+	// The details of the returned data.
 	Data *ListMmsJobsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1112E7C7-C65F-57A2-A7C7-3B178AA257B6
@@ -59,15 +62,22 @@ func (s *ListMmsJobsResponseBody) Validate() error {
 }
 
 type ListMmsJobsResponseBodyData struct {
+	// The list of migration jobs.
 	ObjectList []*ListMmsJobsResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -132,64 +142,100 @@ func (s *ListMmsJobsResponseBodyData) Validate() error {
 }
 
 type ListMmsJobsResponseBodyDataObjectList struct {
+	// The configuration of the migration job.
 	Config *ListMmsJobsResponseBodyDataObjectListConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// Indicates whether the migration job is stopped.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:17
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The source database ID.
+	//
 	// example:
 	//
 	// 196
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_test
 	DstDbName *string `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
+	// The destination MaxCompute schema.
+	//
 	// example:
 	//
 	// test_table_1
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
-	Eta           *string `json:"eta,omitempty" xml:"eta,omitempty"`
+	// The estimated completion time of the migration. A smaller eta value increases the priority of the migration job.
+	//
+	// example:
+	//
+	// 2025-05-06
+	Eta *string `json:"eta,omitempty" xml:"eta,omitempty"`
+	// The migration job ID.
+	//
 	// example:
 	//
 	// 18
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the migration job.
+	//
 	// example:
 	//
 	// migrate_db_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000015
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The name of the source database.
+	//
 	// example:
 	//
 	// test_db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// The source schema name. This is the schema in a Layer 3 namespace.
+	//
 	// example:
 	//
 	// test_table_1
 	SrcSchemaName *string `json:"srcSchemaName,omitempty" xml:"srcSchemaName,omitempty"`
+	// The status of the migration job.
+	//
 	// example:
 	//
 	// DONE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the migration job is stopped.
+	//
 	// example:
 	//
 	// false
 	Stopped *bool `json:"stopped,omitempty" xml:"stopped,omitempty"`
+	// The number of completed migration tasks.
+	//
 	// example:
 	//
 	// 10
 	TaskDone *int32 `json:"taskDone,omitempty" xml:"taskDone,omitempty"`
+	// The number of migration tasks in the job.
+	//
 	// example:
 	//
 	// 10
 	TaskNum *int32 `json:"taskNum,omitempty" xml:"taskNum,omitempty"`
+	// The migration scope. Valid values: Database, Tables, and Partitions.
+	//
 	// example:
 	//
 	// Tables
@@ -367,19 +413,56 @@ func (s *ListMmsJobsResponseBodyDataObjectList) Validate() error {
 }
 
 type ListMmsJobsResponseBodyDataObjectListConfig struct {
-	ColumnMapping      map[string]*string     `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
-	EnableVerification *bool                  `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
-	Increment          *bool                  `json:"increment,omitempty" xml:"increment,omitempty"`
-	Others             map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
-	PartitionFilters   map[string]*string     `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
-	Partitions         []*int64               `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
-	SchemaOnly         *bool                  `json:"schemaOnly,omitempty" xml:"schemaOnly,omitempty"`
-	TableBlackList     []*string              `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
-	TableMapping       map[string]*string     `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
-	TableWhiteList     []*string              `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
-	Tables             []*string              `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
-	TaskType           *string                `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	TunnelQuota        *string                `json:"tunnelQuota,omitempty" xml:"tunnelQuota,omitempty"`
+	// The mapping from source column names to destination column names.
+	ColumnMapping map[string]*string `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
+	// Enable verification. The current method runs SELECT COUNT on both the source and destination and compares the row counts.
+	//
+	// example:
+	//
+	// true
+	EnableVerification *bool `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
+	// Enable incremental migration. Only new or modified partitions are migrated. Modified partitions are re-migrated.
+	//
+	// example:
+	//
+	// true
+	Increment *bool `json:"increment,omitempty" xml:"increment,omitempty"`
+	// Other configuration settings.
+	//
+	// example:
+	//
+	// {"spark.executor.mem": "2g"}
+	Others map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
+	// The partition filter expression. Specify the partition filter expression for each table.
+	PartitionFilters map[string]*string `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
+	// When type is set to Partitions, specify the partition IDs of the tables to migrate.
+	Partitions []*int64 `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+	// Deprecated.
+	//
+	// example:
+	//
+	// false
+	SchemaOnly *bool `json:"schemaOnly,omitempty" xml:"schemaOnly,omitempty"`
+	// When type is set to Database, specify the tables to exclude from migration.
+	TableBlackList []*string `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
+	// The mapping from source table names to destination table names.
+	TableMapping map[string]*string `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
+	// When type is set to Database, specify the tables to migrate. If you do not specify tableWhiteList, all tables in the specified database are migrated.
+	TableWhiteList []*string `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
+	// When type is set to Tables, specify the names of the tables to migrate.
+	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	// Deprecated. Valid values: MOCK, HIVE (hive udtf task), HIVE_DATAX (hive datax task), COPY_TASK (ODPS Copy Task), ODPS_INSERT_OVERWRITE (ODPS simple insert overwrite task), MC2MC_VERIFY, OSS, HIVE_OSS, HIVE_SPARK, and BIGQUERY.
+	//
+	// example:
+	//
+	// BIGQUERY
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// Deprecated.
+	//
+	// example:
+	//
+	// Depcreated
+	TunnelQuota *string `json:"tunnelQuota,omitempty" xml:"tunnelQuota,omitempty"`
 }
 
 func (s ListMmsJobsResponseBodyDataObjectListConfig) String() string {

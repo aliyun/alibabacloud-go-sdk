@@ -22,19 +22,28 @@ type iQueryTunnelMetricResponseBody interface {
 }
 
 type QueryTunnelMetricResponseBody struct {
+	// The returned data.
 	Data *QueryTunnelMetricResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 0A3B1E82006A23A918C70905BF08AEC7
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Indicates whether the operation was successful. If this parameter is not empty and the value is not 200, the operation failed.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc3b4b016674434996033675e71ee
@@ -104,15 +113,22 @@ func (s *QueryTunnelMetricResponseBody) Validate() error {
 }
 
 type QueryTunnelMetricResponseBodyData struct {
+	// The category of the metric.
+	//
 	// example:
 	//
 	// tunnel
-	Category *string                                     `json:"category,omitempty" xml:"category,omitempty"`
-	Metrics  []*QueryTunnelMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The metric values.
+	Metrics []*QueryTunnelMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// slot_usage
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The step size of the monitoring data.
+	//
 	// example:
 	//
 	// 60
@@ -177,8 +193,10 @@ func (s *QueryTunnelMetricResponseBodyData) Validate() error {
 }
 
 type QueryTunnelMetricResponseBodyDataMetrics struct {
+	// The metadata of the metric.
 	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
-	Values [][]*float64       `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	// A list of metric values.
+	Values [][]*float64 `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s QueryTunnelMetricResponseBodyDataMetrics) String() string {

@@ -16,7 +16,10 @@ type iListMmsTimerLogsResponseBody interface {
 }
 
 type ListMmsTimerLogsResponseBody struct {
+	// The returned data.
 	Data *ListMmsTimerLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0b87b7e716665825896565060e87a4
@@ -59,15 +62,22 @@ func (s *ListMmsTimerLogsResponseBody) Validate() error {
 }
 
 type ListMmsTimerLogsResponseBodyData struct {
+	// The list of logs.
 	ObjectList []*ListMmsTimerLogsResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -132,26 +142,38 @@ func (s *ListMmsTimerLogsResponseBodyData) Validate() error {
 }
 
 type ListMmsTimerLogsResponseBodyDataObjectList struct {
+	// The logged action for the migration job created by the scheduled task.
+	//
 	// example:
 	//
 	// start job
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The creation time of the log entry.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:17
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the asynchronous task for the migration job created by the scheduled task.
+	//
 	// example:
 	//
 	// 1003476
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// A detailed message about the action.
+	//
 	// example:
 	//
 	// start job success
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 200018
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The status of the migration job created by the scheduled task.
+	//
 	// example:
 	//
 	// DOING

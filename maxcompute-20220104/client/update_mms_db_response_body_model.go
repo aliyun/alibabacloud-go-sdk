@@ -16,10 +16,14 @@ type iUpdateMmsDbResponseBody interface {
 }
 
 type UpdateMmsDbResponseBody struct {
+	// The returned result.
+	//
 	// example:
 	//
 	// success
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0b87b7e716665825896565060e87a4

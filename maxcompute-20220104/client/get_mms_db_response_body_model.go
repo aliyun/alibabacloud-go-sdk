@@ -16,7 +16,10 @@ type iGetMmsDbResponseBody interface {
 }
 
 type GetMmsDbResponseBody struct {
+	// The data returned.
 	Data *GetMmsDbResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 90D64EB6-2962-5B1C-A039-BC41C8176C7F
@@ -59,100 +62,146 @@ func (s *GetMmsDbResponseBody) Validate() error {
 }
 
 type GetMmsDbResponseBodyData struct {
+	// The database description.
+	//
 	// example:
 	//
 	// for mms_test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The MaxCompute schema corresponding to the source database. If the destination MaxCompute project does not enable the schema layer, this value is null. By default, this value matches the source database name.
+	//
 	// example:
 	//
 	// default
 	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// The name of the destination MaxCompute project.
+	//
 	// example:
 	//
 	// mma_test
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// Other information stored in JSON format.
+	//
 	// example:
 	//
 	// {}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// The database ID.
+	//
 	// example:
 	//
 	// 63
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// last ddl time
+	// The last DDL time.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	LastDdlTime *string `json:"lastDdlTime,omitempty" xml:"lastDdlTime,omitempty"`
+	// The storage location of the database.
+	//
 	// example:
 	//
 	// hdfs://master-1-1.c-6fc187819ed6bae0.cn-shanghai.emr.aliyuncs.com:9000/user/hive/warehouse
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// mms_test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of rows in the database.
+	//
 	// example:
 	//
 	// 2323
 	NumRows *int64 `json:"numRows,omitempty" xml:"numRows,omitempty"`
+	// The database owner.
+	//
 	// example:
 	//
 	// System user
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The number of partitions.
+	//
 	// example:
 	//
 	// 2000
 	Partitions *int32 `json:"partitions,omitempty" xml:"partitions,omitempty"`
+	// The partitions that are being migrated.
+	//
 	// example:
 	//
 	// 200
 	PartitionsDoing *int32 `json:"partitionsDoing,omitempty" xml:"partitionsDoing,omitempty"`
+	// The number of partitions whose migration is complete.
+	//
 	// example:
 	//
 	// 1400
 	PartitionsDone *int32 `json:"partitionsDone,omitempty" xml:"partitionsDone,omitempty"`
+	// The partitions that failed during migration.
+	//
 	// example:
 	//
 	// 400
 	PartitionsFailed *int32 `json:"partitionsFailed,omitempty" xml:"partitionsFailed,omitempty"`
+	// The size of the database in bytes.
+	//
 	// example:
 	//
 	// 323232332
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 2000017
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The migration status. Valid values: INIT, DOING, FAILED, DONE, and PART_DONE.
+	//
 	// example:
 	//
 	// DOING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The number of tables.
+	//
 	// example:
 	//
 	// 200
 	Tables *int32 `json:"tables,omitempty" xml:"tables,omitempty"`
+	// The tables that are being migrated.
+	//
 	// example:
 	//
 	// 20
 	TablesDoing *int32 `json:"tablesDoing,omitempty" xml:"tablesDoing,omitempty"`
+	// Tables for which migration has completed
+	//
 	// example:
 	//
 	// 120
 	TablesDone *int32 `json:"tablesDone,omitempty" xml:"tablesDone,omitempty"`
+	// The tables that failed to migrate.
+	//
 	// example:
 	//
 	// 20
 	TablesFailed *int32 `json:"tablesFailed,omitempty" xml:"tablesFailed,omitempty"`
+	// The tables whose migration is partially complete.
+	//
 	// example:
 	//
 	// 20
 	TablesPartDone *int32 `json:"tablesPartDone,omitempty" xml:"tablesPartDone,omitempty"`
+	// Indicates whether the metadata is updated.
+	//
 	// example:
 	//
 	// true

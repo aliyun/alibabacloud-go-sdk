@@ -22,19 +22,32 @@ type iGetStorageSizeSummaryResponseBody interface {
 }
 
 type GetStorageSizeSummaryResponseBody struct {
+	// The returned data.
 	Data *GetStorageSizeSummaryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The business error code or an empty value.
+	//
+	// - If success is false, a business error code is returned.
+	//
+	// - If success is true, an empty value is returned.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The description of the error.
+	//
 	// example:
 	//
 	// this quota is not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Indicates whether the business is successful. If this parameter is not empty and the value is not 200, the business fails.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0be3e0aa16667684362147582e038f
@@ -104,16 +117,38 @@ func (s *GetStorageSizeSummaryResponseBody) Validate() error {
 }
 
 type GetStorageSizeSummaryResponseBodyData struct {
+	// The date of statistics.
+	//
 	// example:
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The timestamp of the last data update.
+	//
 	// example:
 	//
 	// 1749090705919
-	Timestamp *int64              `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Unit      map[string]*string  `json:"unit,omitempty" xml:"unit,omitempty"`
-	Value     map[string]*float64 `json:"value,omitempty" xml:"value,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The unit of the storage metric usage. It includes:
+	//
+	// - lowFreqStorage
+	//
+	// - standardStorage
+	//
+	// - longTermStorage
+	//
+	// - totalStorage
+	Unit map[string]*string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The storage metrics. It includes:
+	//
+	// - lowFreqStorage
+	//
+	// - standardStorage
+	//
+	// - longTermStorage
+	//
+	// - totalStorage
+	Value map[string]*float64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetStorageSizeSummaryResponseBodyData) String() string {

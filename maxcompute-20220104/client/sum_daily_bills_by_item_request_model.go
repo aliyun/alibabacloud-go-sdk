@@ -26,28 +26,13 @@ type iSumDailyBillsByItemRequest interface {
 }
 
 type SumDailyBillsByItemRequest struct {
-	// example:
-	//
-	// 1718590596556
-	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
+	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	PageNumber   *int64    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize     *int64    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1715393576201
-	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// example:
-	//
-	// PROJECT
-	StatsType *string   `json:"statsType,omitempty" xml:"statsType,omitempty"`
-	Types     []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
+	StartDate    *int64    `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	StatsType    *string   `json:"statsType,omitempty" xml:"statsType,omitempty"`
+	Types        []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
 func (s SumDailyBillsByItemRequest) String() string {

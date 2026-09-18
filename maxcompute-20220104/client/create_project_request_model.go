@@ -15,6 +15,38 @@ type iCreateProjectRequest interface {
 
 type CreateProjectRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "name":"project_name",
+	//
+	//     "comment":"",
+	//
+	//     "productType":"payasyougo/subscription/dev",
+	//
+	//     "defaultQuota":"quota_nick_name",
+	//
+	//     "properties":{
+	//
+	//         "sqlMeteringMax":"",
+	//
+	//         "typeSystem":"",
+	//
+	//         "encryption":{
+	//
+	//             "enable":true,
+	//
+	//             "algorithm":"",
+	//
+	//             "key":""
+	//
+	//         }
+	//
+	//     }
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

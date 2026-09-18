@@ -20,18 +20,26 @@ type iUpdateMmsTableRequest interface {
 }
 
 type UpdateMmsTableRequest struct {
+	// The name of the destination MaxCompute table. If you do not specify this parameter, the source table name is used.
+	//
 	// example:
 	//
 	// dst_table_name
 	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// The name of the destination MaxCompute project.
+	//
 	// example:
 	//
 	// dst_project_name
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// The schema of the destination MaxCompute project.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// The migration status.
+	//
 	// example:
 	//
 	// INIT

@@ -20,15 +20,26 @@ type iSumStorageMetricsByDateRequest interface {
 }
 
 type SumStorageMetricsByDateRequest struct {
+	// The end of the time range to query. The value must be a timestamp in milliseconds. This parameter is required.
+	//
 	// example:
 	//
 	// 1718590596556
-	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The project names. If this parameter is not specified, the data of all projects is returned.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The beginning of the time range to query. The value must be a timestamp in milliseconds. This parameter is required.
+	//
 	// example:
 	//
 	// 1715393576201
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The dimension for aggregating storage metrics. This parameter is required. Valid values:
+	//
+	// - `PROJECT`
+	//
+	// - `STORAGE_TYPE`
+	//
 	// example:
 	//
 	// PROJECT

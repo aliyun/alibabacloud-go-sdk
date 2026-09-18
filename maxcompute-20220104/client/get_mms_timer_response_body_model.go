@@ -16,7 +16,10 @@ type iGetMmsTimerResponseBody interface {
 }
 
 type GetMmsTimerResponseBody struct {
+	// The data returned.
 	Data *GetMmsTimerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0a06dfe716674588654372173ec0da
@@ -59,47 +62,70 @@ func (s *GetMmsTimerResponseBody) Validate() error {
 }
 
 type GetMmsTimerResponseBodyData struct {
+	// The configuration of the migration job.
 	Config *GetMmsTimerResponseBodyDataConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The creation time of the scheduled task. This is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1730946421757
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the source database.
+	//
 	// example:
 	//
 	// 23
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The ID of the scheduled task.
+	//
 	// example:
 	//
 	// 2523
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the scheduled task.
+	//
 	// example:
 	//
 	// sale_detail
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling type of the scheduled task. Valid values: `Daily` and `Hourly`.
+	//
 	// example:
 	//
 	// Daily
 	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 2000017
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The name of the source database.
+	//
 	// example:
 	//
 	// mms_test
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// Indicates whether the scheduled task is stopped.
+	//
 	// example:
 	//
 	// false
 	Stopped *bool `json:"stopped,omitempty" xml:"stopped,omitempty"`
+	// The type of the scheduled task.
+	//
 	// example:
 	//
 	// Daily, Hourly
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The last update time of the scheduled task, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-04-01T02:18:01Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The scheduling time. If `scheduleType` is `Daily`, the value is in the `HH:MM` format. If `scheduleType` is `Hourly`, the value is in the `MM` format.
+	//
 	// example:
 	//
 	// p1=1/p2=abc
@@ -232,20 +258,32 @@ func (s *GetMmsTimerResponseBodyData) Validate() error {
 }
 
 type GetMmsTimerResponseBodyDataConfig struct {
-	ColumnMapping         map[string]*string `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
-	EnableDataMigration   *bool              `json:"enableDataMigration,omitempty" xml:"enableDataMigration,omitempty"`
-	EnableSchemaMigration *bool              `json:"enableSchemaMigration,omitempty" xml:"enableSchemaMigration,omitempty"`
+	// A map of source column names to destination column names.
+	ColumnMapping map[string]*string `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
+	// Whether to migrate table data.
+	EnableDataMigration *bool `json:"enableDataMigration,omitempty" xml:"enableDataMigration,omitempty"`
+	// Whether to migrate the table schema.
+	EnableSchemaMigration *bool `json:"enableSchemaMigration,omitempty" xml:"enableSchemaMigration,omitempty"`
+	// Whether to enable verification. The system performs verification by running a `SELECT COUNT(*)` query on both the source and destination to compare the row count.
+	//
 	// example:
 	//
 	// true
-	EnableVerification *bool                  `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
-	Others             map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
-	PartitionFilters   map[string]*string     `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
-	Partitions         []*int64               `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
-	TableBlackList     []*string              `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
-	TableMapping       map[string]*string     `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
-	TableWhiteList     []*string              `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
-	Tables             []*string              `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	EnableVerification *bool `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
+	// Other configurations.
+	Others map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
+	// A map of table names to their corresponding partition filter expressions.
+	PartitionFilters map[string]*string `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
+	// If `type` is set to `Partitions`, this parameter specifies a list of partition IDs to migrate.
+	Partitions []*int64 `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+	// If `type` is set to `Database`, this parameter specifies a table deny list. Tables on this list are excluded from the migration.
+	TableBlackList []*string `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
+	// A map of source table names to destination table names.
+	TableMapping map[string]*string `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
+	// If `type` is set to `Database`, this parameter specifies a table allowlist. If this parameter is not specified, all tables in the database are migrated.
+	TableWhiteList []*string `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
+	// If `type` is set to `Tables`, this parameter specifies a list of table names to migrate.
+	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
 }
 
 func (s GetMmsTimerResponseBodyDataConfig) String() string {

@@ -32,19 +32,19 @@ type iListComputeMetricsByInstanceRequest interface {
 }
 
 type ListComputeMetricsByInstanceRequest struct {
-	// The end time for the period.
+	// The end date. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1718590596556
 	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// The job(instance) ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 20240730****ddlr
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The Alibaba Cloud account that is used to run the MaxCompute job.
+	// The job owner.
 	//
 	// example:
 	//
@@ -56,29 +56,29 @@ type ListComputeMetricsByInstanceRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The name of MaxCompute project.
+	// The project name.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
-	// The signature of the SQL job.
+	// The SQL job signature.
 	//
 	// example:
 	//
 	// ghijkl789012
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// Specification types.
+	// The specification types.
 	SpecCodes []*string `json:"specCodes,omitempty" xml:"specCodes,omitempty" type:"Repeated"`
-	// The start time for the period.
+	// The start date. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1715393576201
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// Metering types.
+	// The metering types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 

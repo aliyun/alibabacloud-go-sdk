@@ -16,7 +16,10 @@ type iListMmsDataSourceConfigItemsResponseBody interface {
 }
 
 type ListMmsDataSourceConfigItemsResponseBody struct {
+	// A list of configuration items.
 	Data []*ListMmsDataSourceConfigItemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 688003E1-D1B4-5468-957E-2FFB3AC8D79B
@@ -63,40 +66,60 @@ func (s *ListMmsDataSourceConfigItemsResponseBody) Validate() error {
 }
 
 type ListMmsDataSourceConfigItemsResponseBodyData struct {
+	// The description of the configuration item.
+	//
 	// example:
 	//
 	// MaxCompute Default Project
-	Desc  *string   `json:"desc,omitempty" xml:"desc,omitempty"`
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The enumerated values for the configuration item.
 	Enums []*string `json:"enums,omitempty" xml:"enums,omitempty" type:"Repeated"`
+	// The group to which the configuration item belongs.
+	//
 	// example:
 	//
 	// group.basic
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The key of the configuration item.
+	//
 	// example:
 	//
 	// mc.default.project
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The name of the configuration item.
+	//
 	// example:
 	//
 	// MaxCompute Default Project
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The placeholder for the configuration value.
+	//
 	// example:
 	//
 	// project
 	PlaceHolder *string `json:"placeHolder,omitempty" xml:"placeHolder,omitempty"`
+	// Indicates whether the configuration item is required.
+	//
 	// example:
 	//
 	// true
-	Required *bool                  `json:"required,omitempty" xml:"required,omitempty"`
+	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
+	// The sub-items of the configuration item.
 	SubItems map[string]interface{} `json:"subItems,omitempty" xml:"subItems,omitempty"`
+	// The file type. This parameter is valid only when `type` is `file`. For example, .keytab.
+	//
 	// example:
 	//
 	// .keytab
 	SubType *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	// The data type of the configuration item.
+	//
 	// example:
 	//
 	// STRING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// p1=1/p2=abc

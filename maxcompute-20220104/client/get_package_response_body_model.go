@@ -34,7 +34,7 @@ type GetPackageResponseBody struct {
 	//
 	// example:
 	//
-	// error message.
+	// Exception information
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
 	//

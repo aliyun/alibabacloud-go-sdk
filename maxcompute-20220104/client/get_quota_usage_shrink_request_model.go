@@ -38,9 +38,9 @@ type GetQuotaUsageShrinkRequest struct {
 	AggMethod *string `json:"aggMethod,omitempty" xml:"aggMethod,omitempty"`
 	// The time when the query starts. The value is the log time that is specified when log data is written.
 	//
-	// 	- The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from*	- parameter, but does not include the end time specified by the **to*	- parameter. If you set the **from*	- and **to*	- parameters to the same value, the time range is invalid and an error message is returned.
+	// - The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from*	- parameter, but does not include the end time specified by the **to*	- parameter. If you set the **from*	- and **to*	- parameters to the same value, the time range is invalid and an error message is returned.
 	//
-	// 	- This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type GetQuotaUsageShrinkRequest struct {
 	PlotTypesShrink *string `json:"plotTypes,omitempty" xml:"plotTypes,omitempty"`
 	// The quota type. Default value: ODPS.
 	//
-	// 	- ODPS: computing quota
+	// - ODPS: computing quota
 	//
-	// 	- TUNNEL: Tunnel quota
+	// - TUNNEL: Tunnel quota
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type GetQuotaUsageShrinkRequest struct {
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The time when the query ends. The value is the log time that is specified when log data is written.
 	//
-	// 	- The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from*	- parameter, but does not include the end time specified by the **to*	- parameter. If you set the **from*	- and **to*	- parameters to the same value, the time range is invalid and an error message is returned.
+	// - The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from*	- parameter, but does not include the end time specified by the **to*	- parameter. If you set the **from*	- and **to*	- parameters to the same value, the time range is invalid and an error message is returned.
 	//
-	// 	- This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// - This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//

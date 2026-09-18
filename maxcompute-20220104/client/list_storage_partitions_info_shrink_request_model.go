@@ -32,13 +32,13 @@ type iListStoragePartitionsInfoShrinkRequest interface {
 }
 
 type ListStoragePartitionsInfoShrinkRequest struct {
-	// Specifies whether to sort data in ascending order.
+	// Specifies whether to sort the results in ascending order.
 	//
 	// example:
 	//
 	// false
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	// The date on which the statistics are collected, in days. Set this parameter to a value in the YYYYMMdd format.
+	// The date for which to retrieve statistics. The date must be in `YYYYMMdd` format.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ListStoragePartitionsInfoShrinkRequest struct {
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The sorting column.
+	// The column to sort by.
 	//
 	// example:
 	//
@@ -58,17 +58,17 @@ type ListStoragePartitionsInfoShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The name of the partition that you want to use for fuzzy match.
+	// The partition name. This parameter supports fuzzy matching.
 	//
 	// example:
 	//
-	// ds=20241201
+	// 20241201
 	PartitionPrefix *string `json:"partitionPrefix,omitempty" xml:"partitionPrefix,omitempty"`
 	// The region ID.
 	//
@@ -76,13 +76,13 @@ type ListStoragePartitionsInfoShrinkRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The name of the schema.
+	// The schema that contains the table.
 	//
 	// example:
 	//
 	// schema
 	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants*	- > **Tenant Property*	- from the left-side navigation pane to view the tenant ID.
+	// The tenant ID. You can find this ID in the MaxCompute console by navigating to **Tenant Management*	- > **Tenant Properties**.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iRetryMmsJobResponseBody interface {
 }
 
 type RetryMmsJobResponseBody struct {
+	// The returned result.
+	//
 	// example:
 	//
 	// 78
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7F5DAD1C-9EC2-5FE5-97CF-BCE21B4ABA29

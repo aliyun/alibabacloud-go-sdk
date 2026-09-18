@@ -34,36 +34,60 @@ type iQueryTunnelMetricDetailRequest interface {
 }
 
 type QueryTunnelMetricDetailRequest struct {
+	// Specifies whether to sort the results in ascending order. If you set this parameter to `true`, the results are sorted in ascending order. If you set this to `false` or leave it unspecified, the results are sorted in descending order.
+	//
 	// example:
 	//
 	// false
-	AscOrder  *bool     `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	CodeList  []*int64  `json:"codeList,omitempty" xml:"codeList,omitempty" type:"Repeated"`
+	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	// A list of error codes to filter the results.
+	CodeList []*int64 `json:"codeList,omitempty" xml:"codeList,omitempty" type:"Repeated"`
+	// The list of grouping dimensions.
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
+	// The maximum number of entries to return. Default: 10. Maximum: 100.
+	//
 	// example:
 	//
 	// 10
-	Limit         *int64    `json:"limit,omitempty" xml:"limit,omitempty"`
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// A list of operation types.
 	OperationList []*string `json:"operationList,omitempty" xml:"operationList,omitempty" type:"Repeated"`
+	// The sort column.
+	//
 	// example:
 	//
 	// maxValue
 	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// project_a
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The nickname of the level-2 tunnel quota.
+	//
+	// The nickname for a shared quota is `default`.
+	//
+	// For an exclusive quota, the nickname is in the `quotaNickname#subQuotaNickname` format.
+	//
 	// example:
 	//
 	// quota_A
-	QuotaNickname *string   `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	TableList     []*string `json:"tableList,omitempty" xml:"tableList,omitempty" type:"Repeated"`
+	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	// A list of table names.
+	//
+	// The `project` parameter is required if you specify a list of tables. All tables must belong to the specified project.
+	TableList []*string `json:"tableList,omitempty" xml:"tableList,omitempty" type:"Repeated"`
+	// The end of the query time range. This is a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1735536322
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The start of the query time range. This is a Unix timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

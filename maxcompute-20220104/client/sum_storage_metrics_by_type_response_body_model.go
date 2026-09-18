@@ -18,11 +18,26 @@ type iSumStorageMetricsByTypeResponseBody interface {
 }
 
 type SumStorageMetricsByTypeResponseBody struct {
+	// The returned data.
 	Data []*SumStorageMetricsByTypeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
+	// - `1xx`: Informational response - The request has been received and is being processed.
+	//
+	// - `2xx`: Success - The request was successfully received, understood, and accepted.
+	//
+	// - `3xx`: Redirection - Further action is needed to complete the request.
+	//
+	// - `4xx`: Client error - The request contains invalid syntax or cannot be fulfilled.
+	//
+	// - `5xx`: Server error - The server failed to fulfill a valid request.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0a06dc0917476202205161986edbbc
@@ -78,15 +93,34 @@ func (s *SumStorageMetricsByTypeResponseBody) Validate() error {
 }
 
 type SumStorageMetricsByTypeResponseBodyData struct {
+	// A list of daily storage usage metrics.
 	DailyStorageMetrics []*SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics `json:"dailyStorageMetrics,omitempty" xml:"dailyStorageMetrics,omitempty" type:"Repeated"`
+	// The storage type. Valid values:
+	//
+	// - `Storage`: standard storage.
+	//
+	// - `LowFreqStorage`: infrequent access storage.
+	//
+	// - `ColdStorage`: archive storage.
+	//
+	// - `$sum`: total storage.
+	//
+	// - `RecycleBinStorage`: recycle bin storage.
+	//
+	// - `DRStorage`: multi-AZ storage.
+	//
 	// example:
 	//
 	// Storage
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	// The unit of the storage metric.
+	//
 	// example:
 	//
 	// GB
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The total storage usage.
+	//
 	// example:
 	//
 	// 329.503338
@@ -151,22 +185,44 @@ func (s *SumStorageMetricsByTypeResponseBodyData) Validate() error {
 }
 
 type SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics struct {
+	// The date of the metric, in `yyyyMMdd` format.
+	//
 	// example:
 	//
 	// 20260410
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// The percentage of total daily storage that this storage type accounts for.
+	//
 	// example:
 	//
 	// 50
 	Percentage *float64 `json:"percentage,omitempty" xml:"percentage,omitempty"`
+	// The storage type. Valid values:
+	//
+	// - `Storage`: standard storage.
+	//
+	// - `LowFreqStorage`: infrequent access storage.
+	//
+	// - `ColdStorage`: archive storage.
+	//
+	// - `$sum`: total storage.
+	//
+	// - `RecycleBinStorage`: recycle bin storage.
+	//
+	// - `DRStorage`: multi-AZ storage.
+	//
 	// example:
 	//
 	// Storage
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	// The unit of the storage metric.
+	//
 	// example:
 	//
 	// GB
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The storage usage for this day.
+	//
 	// example:
 	//
 	// 30

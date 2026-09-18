@@ -146,7 +146,7 @@ type ListUsersResponseBodyDataUsers struct {
 	//
 	// example:
 	//
-	// 167835629082
+	// 16783562****
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	// The username of the account.
 	//

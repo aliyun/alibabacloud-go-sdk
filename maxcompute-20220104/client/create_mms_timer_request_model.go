@@ -44,42 +44,66 @@ type iCreateMmsTimerRequest interface {
 }
 
 type CreateMmsTimerRequest struct {
+	// A map of source column names to target column names.
 	ColumnMapping map[string]*string `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
+	// Specifies whether to migrate table data.
+	//
 	// example:
 	//
 	// true
 	EnableDataMigration *bool `json:"enableDataMigration,omitempty" xml:"enableDataMigration,omitempty"`
+	// Specifies whether to migrate the table schema.
+	//
 	// example:
 	//
 	// true
 	EnableSchemaMigration *bool `json:"enableSchemaMigration,omitempty" xml:"enableSchemaMigration,omitempty"`
+	// Specifies whether to enable data verification. If set to `true`, the system runs a `SELECT COUNT(*)` query on both the source and target tables and compares the row counts.
+	//
 	// example:
 	//
 	// false
 	EnableVerification *bool `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
+	// The name of the scheduled task.
+	//
 	// example:
 	//
 	// planA
-	Name             *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Others           map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
-	PartitionFilters map[string]*string     `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
-	Partitions       []*int64               `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Other configuration settings.
+	Others map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
+	// A map of table names to their corresponding partition filter expressions.
+	PartitionFilters map[string]*string `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
+	// A list of IDs for the table partitions to migrate. This parameter takes effect only when the `type` parameter is set to `Partitions`.
+	Partitions []*int64 `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+	// The schedule type for the task.
+	//
 	// example:
 	//
 	// Daily
 	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 2000014
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The name of the source database.
+	//
 	// example:
 	//
 	// src_db
-	SrcDbName      *string            `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
-	TableBlackList []*string          `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
-	TableMapping   map[string]*string `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
-	TableWhiteList []*string          `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
-	Tables         []*string          `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// A blacklist of tables to exclude from the migration. This parameter takes effect only when the `type` parameter is set to `Database`.
+	TableBlackList []*string `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
+	// A map of source table names to target table names.
+	TableMapping map[string]*string `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
+	// A whitelist of tables to migrate. This parameter takes effect only when the `type` parameter is set to `Database`. If omitted, all tables in the source database are migrated.
+	TableWhiteList []*string `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
+	// A list of table names to migrate. This parameter takes effect only when the `type` parameter is set to `Tables`.
+	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	// The time to run the scheduled task. If `scheduleType` is set to `Daily`, the value is the time in `HH:MM` format. If `scheduleType` is set to `Hourly`, the value is the minute of the hour (`MM`).
+	//
 	// example:
 	//
 	// 12:00

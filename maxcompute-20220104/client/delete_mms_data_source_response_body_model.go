@@ -16,10 +16,14 @@ type iDeleteMmsDataSourceResponseBody interface {
 }
 
 type DeleteMmsDataSourceResponseBody struct {
+	// The ID of the deleted data source.
+	//
 	// example:
 	//
 	// 2000015
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EA1320AB-7766-5EC7-B0F6-8B20E2298567

@@ -22,19 +22,38 @@ type iListStorageProjectsInfoResponseBody interface {
 }
 
 type ListStorageProjectsInfoResponseBody struct {
+	// The data.
 	Data *ListStorageProjectsInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// OBJECT_NOT_EXIST
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// this quota is not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	//
+	// - 1xx: an informational response. The request has been received and is being processed.
+	//
+	// - 2xx: a success response. The request has been successfully received, understood, and accepted by the server.
+	//
+	// - 3xx: a redirection response. The request is redirected. You must take further action to complete the request.
+	//
+	// - 4xx: a client error. The request contains invalid request parameters or syntax, or cannot be fulfilled.
+	//
+	// - 5xx: a server error. The server fails to fulfill the request for other reasons.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc3b4b016674434996033675e71ee
@@ -104,19 +123,28 @@ func (s *ListStorageProjectsInfoResponseBody) Validate() error {
 }
 
 type ListStorageProjectsInfoResponseBodyData struct {
+	// The statistics collection date.
+	//
 	// example:
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries on each page.
+	//
 	// example:
 	//
 	// 10
-	PageSize               *int64                                                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The list of project-level storage information.
 	StorageProjectInfoList []*ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList `json:"storageProjectInfoList,omitempty" xml:"storageProjectInfoList,omitempty" type:"Repeated"`
+	// The total number of returned entries.
+	//
 	// example:
 	//
 	// 60
@@ -190,58 +218,86 @@ func (s *ListStorageProjectsInfoResponseBodyData) Validate() error {
 }
 
 type ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList struct {
+	// The statistics collection date. The date is accurate to the day. The date must be in the `YYYYMMdd` format.
+	//
 	// example:
 	//
 	// 20250528
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The Long Term storage usage.
+	//
 	// example:
 	//
 	// 300
 	LongTermStorage *float64 `json:"longTermStorage,omitempty" xml:"longTermStorage,omitempty"`
+	// The unit of the Long Term storage usage.
+	//
 	// example:
 	//
 	// GB
 	LongTermStorageUnit *string `json:"longTermStorageUnit,omitempty" xml:"longTermStorageUnit,omitempty"`
+	// The IA storage class usage.
+	//
 	// example:
 	//
 	// 200
 	LowFreqStorage *float64 `json:"lowFreqStorage,omitempty" xml:"lowFreqStorage,omitempty"`
+	// The unit of the IA storage class usage.
+	//
 	// example:
 	//
 	// GB
 	LowFreqStorageUnit *string `json:"lowFreqStorageUnit,omitempty" xml:"lowFreqStorageUnit,omitempty"`
+	// The name of the MaxCompute project.
+	//
 	// example:
 	//
 	// max_testproject
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// The year-over-year change rate of the total storage usage in the last {$recentDays} days.
+	//
 	// example:
 	//
 	// 0.011872406445069006
 	Rate *float64 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The recycle bin storage usage.
+	//
 	// example:
 	//
 	// 0
 	RecycleBinStorage *float64 `json:"recycleBinStorage,omitempty" xml:"recycleBinStorage,omitempty"`
+	// The unit of the recycle bin storage usage.
+	//
 	// example:
 	//
 	// B
 	RecycleBinStorageUnit *string `json:"recycleBinStorageUnit,omitempty" xml:"recycleBinStorageUnit,omitempty"`
+	// The Standard storage usage.
+	//
 	// example:
 	//
 	// 500
 	StandardStorage *float64 `json:"standardStorage,omitempty" xml:"standardStorage,omitempty"`
+	// The unit of the Standard storage usage.
+	//
 	// example:
 	//
 	// GB
 	StandardStorageUnit *string `json:"standardStorageUnit,omitempty" xml:"standardStorageUnit,omitempty"`
+	// The timestamp of the last data update.
+	//
 	// example:
 	//
 	// 1749105045512
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The total storage usage.
+	//
 	// example:
 	//
 	// 1
 	TotalStorage *float64 `json:"totalStorage,omitempty" xml:"totalStorage,omitempty"`
+	// The unit of the total storage usage.
+	//
 	// example:
 	//
 	// TB

@@ -16,7 +16,10 @@ type iCreateMmsTimerResponseBody interface {
 }
 
 type CreateMmsTimerResponseBody struct {
+	// The response data.
 	Data *CreateMmsTimerResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0be3e0b716671885050924814e3623
@@ -59,7 +62,7 @@ func (s *CreateMmsTimerResponseBody) Validate() error {
 }
 
 type CreateMmsTimerResponseBodyData struct {
-	// timer id
+	// The ID of the timer.
 	//
 	// example:
 	//

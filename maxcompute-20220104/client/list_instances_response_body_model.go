@@ -18,11 +18,16 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
+	// The returned data.
 	Data []*ListInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. If the value of this parameter is not 200, the request failed.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0FC8BA40-C712-5FFD-9AA5-24C8F47F86E9
@@ -78,6 +83,8 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyData struct {
+	// The project name.
+	//
 	// example:
 	//
 	// projectAbc

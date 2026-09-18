@@ -16,10 +16,14 @@ type iRetryMmsTaskResponseBody interface {
 }
 
 type RetryMmsTaskResponseBody struct {
+	// The returned data.
+	//
 	// example:
 	//
 	// success
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0a06dd4516687375802853481ec9fd

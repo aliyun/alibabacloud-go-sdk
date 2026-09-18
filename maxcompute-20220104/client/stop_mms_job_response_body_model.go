@@ -16,10 +16,14 @@ type iStopMmsJobResponseBody interface {
 }
 
 type StopMmsJobResponseBody struct {
+	// The data migration ID.
+	//
 	// example:
 	//
 	// 88
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8023D058-62B7-5C49-8EB6-AD9BA7942BC5

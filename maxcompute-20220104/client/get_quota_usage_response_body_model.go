@@ -38,15 +38,15 @@ type GetQuotaUsageResponseBody struct {
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
-	// 	- 1xx: informational response. The request is received and is being processed.
+	// - 1xx: informational response. The request is received and is being processed.
 	//
-	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
+	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
 	//
-	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
 	//
-	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+	// - 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
 	//
-	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
+	// - 5xx: server error. The server cannot meet requirements due to other reasons.
 	//
 	// example:
 	//
@@ -124,6 +124,20 @@ func (s *GetQuotaUsageResponseBody) Validate() error {
 
 type GetQuotaUsageResponseBodyData struct {
 	// The metric results.
+	//
+	// example:
+	//
+	// "timestamps": [1668046140000, 1668065220000], //milliseconds
+	//
+	//     "project1#upload#request": [10, 20],
+	//
+	//     "project1#download#request": [20, 30],
+	//
+	//     "project1#upload#throughput": [50, 50],
+	//
+	//     "project1#download#throughput": [60, 70],
+	//
+	//     "pro2#errorNum": [5, 10]
 	Metrics map[string]interface{} `json:"metrics,omitempty" xml:"metrics,omitempty"`
 	// The information about the chart.
 	Plot []*GetQuotaUsageResponseBodyDataPlot `json:"plot,omitempty" xml:"plot,omitempty" type:"Repeated"`
@@ -173,7 +187,7 @@ type GetQuotaUsageResponseBodyDataPlot struct {
 	//
 	// example:
 	//
-	// request
+	// Project request concurrency
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// The type of the chart.
 	//

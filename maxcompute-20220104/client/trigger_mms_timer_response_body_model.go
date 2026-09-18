@@ -16,12 +16,14 @@ type iTriggerMmsTimerResponseBody interface {
 }
 
 type TriggerMmsTimerResponseBody struct {
-	// timer id
+	// The ID of the timer.
 	//
 	// example:
 	//
 	// 1
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0be3e0b716671885050924814e3623

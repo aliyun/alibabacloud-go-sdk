@@ -20,14 +20,30 @@ type iQueryStorageMetricRequest interface {
 }
 
 type QueryStorageMetricRequest struct {
+	// The names of the projects.
 	ProjectList []*string `json:"projectList,omitempty" xml:"projectList,omitempty" type:"Repeated"`
-	TypeList    []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
+	// The storage class. Valid values include the following:
+	//
+	// - totalStorage
+	//
+	// - longTermStorage
+	//
+	// - lowFreqStorage
+	//
+	// - standardStorage
+	//
+	// - recycleBinStorage
+	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1735536322
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The start of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:

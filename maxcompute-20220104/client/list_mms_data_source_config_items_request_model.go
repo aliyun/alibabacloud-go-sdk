@@ -16,10 +16,14 @@ type iListMmsDataSourceConfigItemsRequest interface {
 }
 
 type ListMmsDataSourceConfigItemsRequest struct {
+	// The language for the descriptions of the configuration items. Defaults to Chinese (`zh_CN`).
+	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The data source type.
+	//
 	// This parameter is required.
 	//
 	// example:

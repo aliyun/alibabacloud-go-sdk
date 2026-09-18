@@ -18,11 +18,16 @@ type iSumBillsByDateResponseBody interface {
 }
 
 type SumBillsByDateResponseBody struct {
+	// The list of results.
 	Data []*SumBillsByDateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BB66A390-4EF7-557E-9489-7F98D6F44002
@@ -78,18 +83,25 @@ func (s *SumBillsByDateResponseBody) Validate() error {
 }
 
 type SumBillsByDateResponseBodyData struct {
+	// The total cost for the specified `dateTime`.
+	//
 	// example:
 	//
 	// 2000
 	Cost *string `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The currency. This is a fixed value.
+	//
 	// example:
 	//
 	// RMB
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The date of the statistics, in `yyyyMMdd` format.
+	//
 	// example:
 	//
 	// 20250719
-	DateTime  *string                                    `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// A list of billable items.
 	ItemBills []*SumBillsByDateResponseBodyDataItemBills `json:"itemBills,omitempty" xml:"itemBills,omitempty" type:"Repeated"`
 }
 
@@ -151,18 +163,26 @@ func (s *SumBillsByDateResponseBodyData) Validate() error {
 }
 
 type SumBillsByDateResponseBodyDataItemBills struct {
+	// The cost.
+	//
 	// example:
 	//
 	// 1000
 	Cost *string `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The currency. This is a fixed value.
+	//
 	// example:
 	//
 	// RMB
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The name of the item. The value of this parameter depends on the `statsType` parameter in the request. If `statsType` is `PROJECT`, this parameter indicates the instance name. If `statsType` is `FEE_ITEM`, this parameter can be a value such as `DRStorage`, `ComputationSql`, or `Storage`.
+	//
 	// example:
 	//
 	// projectName
 	ItemName *string `json:"itemName,omitempty" xml:"itemName,omitempty"`
+	// The item\\"s cost as a percentage of the total daily cost. This value does not include a percent sign (%).
+	//
 	// example:
 	//
 	// 50

@@ -18,14 +18,11 @@ type iSumDailyBillsByItemResponseBody interface {
 }
 
 type SumDailyBillsByItemResponseBody struct {
+	// The response data.
 	Data *SumDailyBillsByItemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
+	// The HTTP status code.
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// example:
-	//
-	// 0bc3b4ab17217876841756121e1349
+	// The unique identifier for the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -74,18 +71,13 @@ func (s *SumDailyBillsByItemResponseBody) Validate() error {
 }
 
 type SumDailyBillsByItemResponseBodyData struct {
+	// An array of item-level cost summaries.
 	ItemSummaryBills []*SumDailyBillsByItemResponseBodyDataItemSummaryBills `json:"itemSummaryBills,omitempty" xml:"itemSummaryBills,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2
+	// The current page number.
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
+	// The number of entries per page.
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 60
+	// The total number of entries returned.
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -147,26 +139,17 @@ func (s *SumDailyBillsByItemResponseBodyData) Validate() error {
 }
 
 type SumDailyBillsByItemResponseBodyDataItemSummaryBills struct {
-	// example:
-	//
-	// RMB
-	Currency      *string                                                             `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The currency of the cost.
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// An array of daily cost summaries for the item.
 	DailySumBills []*SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBills `json:"dailySumBills,omitempty" xml:"dailySumBills,omitempty" type:"Repeated"`
-	// example:
-	//
-	// DRStorage
+	// The name of the billable item.
 	ItemName *string `json:"itemName,omitempty" xml:"itemName,omitempty"`
-	// example:
-	//
-	// 50
+	// The item\\"s percentage of the total cost.
 	Percentage *float64 `json:"percentage,omitempty" xml:"percentage,omitempty"`
-	// example:
-	//
-	// OdpsStandard
+	// The specification code of the item.
 	SpecCode *string `json:"specCode,omitempty" xml:"specCode,omitempty"`
-	// example:
-	//
-	// 10000
+	// The total cost of the item.
 	TotalCost *string `json:"totalCost,omitempty" xml:"totalCost,omitempty"`
 }
 
@@ -246,18 +229,13 @@ func (s *SumDailyBillsByItemResponseBodyDataItemSummaryBills) Validate() error {
 }
 
 type SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBills struct {
-	// example:
-	//
-	// 31
+	// The cost for the day.
 	Cost *string `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// RMB
+	// The currency of the cost.
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	// example:
-	//
-	// 20260409
-	DateTime  *string                                                                      `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// The date. Format: YYYYMMDD.
+	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// An array of detailed bills for the item on the specified day.
 	ItemBills []*SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBillsItemBills `json:"itemBills,omitempty" xml:"itemBills,omitempty" type:"Repeated"`
 }
 
@@ -319,21 +297,13 @@ func (s *SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBills) Valid
 }
 
 type SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBillsItemBills struct {
-	// example:
-	//
-	// 433
+	// The cost of the item.
 	Cost *string `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// RMB
+	// The currency of the cost.
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	// example:
-	//
-	// empty
+	// The name of the billable item.
 	ItemName *string `json:"itemName,omitempty" xml:"itemName,omitempty"`
-	// example:
-	//
-	// 60
+	// The item\\"s percentage of the daily total cost.
 	Percentage *float64 `json:"percentage,omitempty" xml:"percentage,omitempty"`
 }
 

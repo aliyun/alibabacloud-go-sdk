@@ -56,14 +56,15 @@ type iListJobInfosRequest interface {
 }
 
 type ListJobInfosRequest struct {
-	// Specifies whether to sort query results in ascending or descending order.
+	// Specifies whether to sort in ascending or descending order.
 	//
 	// example:
 	//
 	// true
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	// The ancestor node IDs.
-	ExtNodeIdList   []*string `json:"extNodeIdList,omitempty" xml:"extNodeIdList,omitempty" type:"Repeated"`
+	// The upstream node IDs.
+	ExtNodeIdList []*string `json:"extNodeIdList,omitempty" xml:"extNodeIdList,omitempty" type:"Repeated"`
+	// The upstream node names.
 	ExtNodeNameList []*string `json:"extNodeNameList,omitempty" xml:"extNodeNameList,omitempty" type:"Repeated"`
 	// The start timestamp.
 	//
@@ -87,16 +88,17 @@ type ListJobInfosRequest struct {
 	//
 	// quota_nickname
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	// The intelligent diagnostics tags.
+	// The intelligent diagnosis labels.
 	SceneTagList []*string `json:"sceneTagList,omitempty" xml:"sceneTagList,omitempty" type:"Repeated"`
 	// The job signatures.
 	SignatureList []*string `json:"signatureList,omitempty" xml:"signatureList,omitempty" type:"Repeated"`
-	// The sorting columns.
+	// The fields used for multi-column sorting.
 	SortByList []*string `json:"sortByList,omitempty" xml:"sortByList,omitempty" type:"Repeated"`
-	// The orders for the sorting columns.
+	// The sort orders for multi-column sorting.
 	SortOrderList []*string `json:"sortOrderList,omitempty" xml:"sortOrderList,omitempty" type:"Repeated"`
-	// The job states.
-	StatusList   []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+	// The job statuses.
+	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+	// The job names.
 	TaskNameList []*string `json:"taskNameList,omitempty" xml:"taskNameList,omitempty" type:"Repeated"`
 	// The end timestamp.
 	//
@@ -108,7 +110,7 @@ type ListJobInfosRequest struct {
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
 	// The job types.
 	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
-	// The column based on which you want to sort query results.
+	// The column used for sorting.
 	//
 	// example:
 	//

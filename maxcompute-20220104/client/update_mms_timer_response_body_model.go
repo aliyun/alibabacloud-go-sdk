@@ -16,10 +16,14 @@ type iUpdateMmsTimerResponseBody interface {
 }
 
 type UpdateMmsTimerResponseBody struct {
+	// The response data.
+	//
 	// example:
 	//
 	// success
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EA1320AB-7766-5EC7-B0F6-8B20E2298567

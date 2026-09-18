@@ -16,13 +16,13 @@ type iCreateProjectResponseBody interface {
 }
 
 type CreateProjectResponseBody struct {
-	// The returned result.
+	// The response result.
 	//
 	// example:
 	//
 	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

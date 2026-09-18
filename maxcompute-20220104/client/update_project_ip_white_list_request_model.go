@@ -18,7 +18,9 @@ type UpdateProjectIpWhiteListRequest struct {
 	//
 	// example:
 	//
-	// json {"ipWhiteList":{"ipList": "", // The IP address whitelists are of the STRING data type. Separate multiple IP address whitelists with commas (,). "vpcIpList": "", //} }
+	// {"ipWhiteList":{"ipList": "", //string, separate multiple values with commas
+	//
+	//                 "vpcIpList": ""}}
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

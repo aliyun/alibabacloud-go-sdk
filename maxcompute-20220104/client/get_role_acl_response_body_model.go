@@ -34,7 +34,7 @@ type GetRoleAclResponseBody struct {
 	//
 	// example:
 	//
-	// error message
+	// Exception information
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//

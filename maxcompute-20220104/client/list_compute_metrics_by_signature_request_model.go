@@ -30,36 +30,54 @@ type iListComputeMetricsBySignatureRequest interface {
 }
 
 type ListComputeMetricsBySignatureRequest struct {
+	// The end time for the query. This value is a UNIX timestamp representing milliseconds.
+	//
 	// example:
 	//
 	// 1718590596556
 	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 20240730****ddlr
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The job owner.
+	//
 	// example:
 	//
 	// ALIYUN$7632***@aliyun.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize     *int64    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The project names.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The SQL job signature.
+	//
 	// example:
 	//
-	// ghijkl789012
+	// m4S/2HipBVngCX94MNIAqmM7Ov4=
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// The start time for the query. This value is a UNIX timestamp representing milliseconds.
+	//
 	// example:
 	//
 	// 1715393576201
-	StartDate *int64    `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Types     []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
+	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The metering type.
+	//
+	// - `ComputationSql`: the metering data of SQL jobs that are performed on internal tables.
+	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
 func (s ListComputeMetricsBySignatureRequest) String() string {

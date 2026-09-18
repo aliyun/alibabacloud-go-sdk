@@ -20,15 +20,22 @@ type iSumStorageMetricsByTypeRequest interface {
 }
 
 type SumStorageMetricsByTypeRequest struct {
+	// Required. The query end time, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1718590596556
-	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// An array of project names.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// Required. The query start time, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1715393576201
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The dimension for aggregating statistics. Valid values: `PROJECT` (by project) and `STORAGE_TYPE` (by storage type).
+	//
 	// example:
 	//
 	// PROJECT

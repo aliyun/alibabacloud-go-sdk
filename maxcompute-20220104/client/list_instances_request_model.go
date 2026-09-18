@@ -16,12 +16,16 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	// The end time of the time range for cost analysis.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1759975856382
 	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The start time of the time range for cost analysis.
+	//
 	// This parameter is required.
 	//
 	// example:

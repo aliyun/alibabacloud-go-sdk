@@ -22,7 +22,59 @@ type UpdateQuotaScheduleRequest struct {
 	//
 	// example:
 	//
-	// \\# The quota plan immediately takes effect. [ { "type": "once", "plan": "planA", "operator":"userA" } ] # The quota plan is scheduled on a regular basis. [ { "id": "etl_time", "type": "daily", "condition": { "at": "0800", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planA" }, { "id": "bi", "type": "daily", "condition": { "at": "0900", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planB" }, ]
+	// # The quota plan immediately takes effect.
+	//
+	// [
+	//
+	//   {
+	//
+	//     "type": "once",
+	//
+	//     "plan": "planA",
+	//
+	//     "operator": "userA"
+	//
+	//   }
+	//
+	// ]
+	//
+	// # The quota plan is scheduled on a regular basis.
+	//
+	// [
+	//
+	//   {
+	//
+	//     "id": "etl_time",
+	//
+	//     "type": "daily",
+	//
+	//     "condition": {
+	//
+	//       "at": "0800"
+	//
+	//     },
+	//
+	//     "plan": "planA"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "id": "bi",
+	//
+	//     "type": "daily",
+	//
+	//     "condition": {
+	//
+	//       "at": "0900"
+	//
+	//     },
+	//
+	//     "plan": "planB"
+	//
+	//   }
+	//
+	// ]
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The ID of the region.
 	//

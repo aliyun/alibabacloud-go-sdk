@@ -20,15 +20,22 @@ type iSumComputeMetricsByUsageRequest interface {
 }
 
 type SumComputeMetricsByUsageRequest struct {
+	// The end timestamp for the query, in milliseconds.
+	//
 	// example:
 	//
 	// 1718590596556
-	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The project names.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The start timestamp for the query, in milliseconds.
+	//
 	// example:
 	//
 	// 1715393576201
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The usage type. Valid values: `CU` (CU usage) and `SCAN` (scanned data volume).
+	//
 	// example:
 	//
 	// SCAN

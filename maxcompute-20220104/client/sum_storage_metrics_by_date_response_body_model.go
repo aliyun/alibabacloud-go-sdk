@@ -18,11 +18,26 @@ type iSumStorageMetricsByDateResponseBody interface {
 }
 
 type SumStorageMetricsByDateResponseBody struct {
+	// The returned data.
 	Data []*SumStorageMetricsByDateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
+	// - 1xx: Informational. The request is received and the process is continuing.
+	//
+	// - 2xx: Success. The request is successfully received, understood, and accepted.
+	//
+	// - 3xx: Redirection. Further action needs to be taken to complete the request.
+	//
+	// - 4xx: Client Error. The request contains bad syntax or cannot be fulfilled.
+	//
+	// - 5xx: Server Error. The server fails to fulfill an apparently valid request.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0abb781a17411408145995819e0dae
@@ -78,19 +93,34 @@ func (s *SumStorageMetricsByDateResponseBody) Validate() error {
 }
 
 type SumStorageMetricsByDateResponseBodyData struct {
+	// The date of the statistics. The format is yyyyMMdd.
+	//
 	// example:
 	//
 	// 20250719
-	DateTime           *string                                                      `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// The list of storage usage of a specified type.
 	ItemStorageMetrics []*SumStorageMetricsByDateResponseBodyDataItemStorageMetrics `json:"itemStorageMetrics,omitempty" xml:"itemStorageMetrics,omitempty" type:"Repeated"`
+	// The storage type. Valid values:
+	//
+	// - Storage: Standard.
+	//
+	// - LowFreqStorage: Infrequent Access (IA).
+	//
+	// - ColdStorage: Archive.
+	//
 	// example:
 	//
 	// Storage
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	// The unit of the total storage.
+	//
 	// example:
 	//
 	// GB
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The total storage.
+	//
 	// example:
 	//
 	// 329.503338
@@ -164,14 +194,20 @@ func (s *SumStorageMetricsByDateResponseBodyData) Validate() error {
 }
 
 type SumStorageMetricsByDateResponseBodyDataItemStorageMetrics struct {
+	// If the type is PROJECT, this parameter indicates the project name. If the type is STORAGE_TYPE, this parameter indicates the storage type.
+	//
 	// example:
 	//
 	// prj
 	ItemName *string `json:"itemName,omitempty" xml:"itemName,omitempty"`
+	// The percentage of the storage usage.
+	//
 	// example:
 	//
 	// 91.22
 	Percentage *float64 `json:"percentage,omitempty" xml:"percentage,omitempty"`
+	// The storage usage.
+	//
 	// example:
 	//
 	// 300.560392

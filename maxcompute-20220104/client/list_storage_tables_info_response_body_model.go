@@ -38,15 +38,15 @@ type ListStorageTablesInfoResponseBody struct {
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
-	// 	- 1xx: informational response. The request is received and is being processed.
+	// - 1xx: informational response. The request is received and is being processed.
 	//
-	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
+	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
 	//
-	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
 	//
-	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+	// - 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
 	//
-	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
+	// - 5xx: server error. The server cannot meet requirements due to other reasons.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type ListStorageTablesInfoResponseBodyDataStorageTableInfoList struct {
 	IsPartitioned *bool `json:"isPartitioned,omitempty" xml:"isPartitioned,omitempty"`
 	// The time when the table was last accessed. This value is returned when the table is a non-partitioned table.
 	//
-	// >  The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the last access time cannot be collected.
+	// > The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the last access time cannot be collected.
 	//
 	// example:
 	//
@@ -312,13 +312,13 @@ type ListStorageTablesInfoResponseBodyDataStorageTableInfoList struct {
 	StandardStorageUnit *string `json:"standardStorageUnit,omitempty" xml:"standardStorageUnit,omitempty"`
 	// The table storage type.
 	//
-	// 	- standard
+	// - standard
 	//
-	// 	- lowfrequency
+	// - lowfrequency
 	//
-	// 	- longterm
+	// - longterm
 	//
-	// 	- unknown: This value is returned when the table is a partitioned table. You can call the ListStoragePartitionsInfo operation to query the storage type of each partition.
+	// - unknown: This value is returned when the table is a partitioned table. You can call the ListStoragePartitionsInfo operation to query the storage type of each partition.
 	//
 	// example:
 	//
@@ -334,15 +334,15 @@ type ListStorageTablesInfoResponseBodyDataStorageTableInfoList struct {
 	//
 	// >
 	//
-	// 	- Access behaviors include:
+	// - Access behaviors include:
 	//
-	// 	- The table is used as the input table of an SQL task.
+	// - The table is used as the input table of an SQL task.
 	//
-	// 	- The table is downloaded by Tunnel.
+	// - The table is downloaded by Tunnel.
 	//
-	// 	- The table is read by calling the Storage API. The partition granularity of the partitioned table is not available. Each time an access operation is performed, the access frequency is incremented by 1.
+	// - The table is read by calling the Storage API. The partition granularity of the partitioned table is not available. Each time an access operation is performed, the access frequency is incremented by 1.
 	//
-	// 	- The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the access frequency cannot be collected.
+	// - The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the access frequency cannot be collected.
 	//
 	// example:
 	//
@@ -350,7 +350,7 @@ type ListStorageTablesInfoResponseBodyDataStorageTableInfoList struct {
 	TotalFrequency *int64 `json:"totalFrequency,omitempty" xml:"totalFrequency,omitempty"`
 	// The total amount of accessed data.
 	//
-	// >  The amount of data that is read by all access behaviors.
+	// > The amount of data that is read by all access behaviors.
 	//
 	// example:
 	//

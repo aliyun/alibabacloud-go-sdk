@@ -219,11 +219,11 @@ type CreateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter struct {
 	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
 	// The value of minCU in Reserved CUs.
 	//
+	// > - The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.
+	//
 	// >
 	//
-	// >- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.
-	//
-	// >- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+	// > - The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
 	//
 	// This parameter is required.
 	//

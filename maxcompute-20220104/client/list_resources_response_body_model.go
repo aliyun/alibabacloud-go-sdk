@@ -131,7 +131,7 @@ type ListResourcesResponseBodyDataResources struct {
 	//
 	// example:
 	//
-	// file
+	// Filr type resource
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The Base64-encoded 128-bit MD5 hash value of the HTTP request body.
 	//
@@ -191,45 +191,45 @@ type ListResourcesResponseBodyDataResources struct {
 	//
 	// Valid values:
 	//
-	// 	- file
+	// - file
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- py
+	// - py
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- jar
+	// - jar
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- volumefile
+	// - volumefile
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	// 	- table
+	// - table
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
-	//     <!-- -->
+	//   <!-- -->
 	//
 	// example:
 	//

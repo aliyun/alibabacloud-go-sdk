@@ -38,7 +38,7 @@ type DeleteComputeQuotaPlanResponseBody struct {
 	//
 	// example:
 	//
-	// this quota plan is not exist.
+	// 0A3B1E82006A23A918C70905BF08AEC7
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//

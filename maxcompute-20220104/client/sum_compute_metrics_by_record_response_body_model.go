@@ -18,11 +18,26 @@ type iSumComputeMetricsByRecordResponseBody interface {
 }
 
 type SumComputeMetricsByRecordResponseBody struct {
+	// The response data.
 	Data []*SumComputeMetricsByRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
+	// - 1xx: Informational. The server has received the request and is processing it.
+	//
+	// - 2xx: Success. The server successfully received, understood, and accepted the request.
+	//
+	// - 3xx: Redirection. The client must take further action to complete the request.
+	//
+	// - 4xx: Client-side error. The request contains invalid syntax or parameters and cannot be fulfilled.
+	//
+	// - 5xx: Server-side error. The server failed to fulfill a valid request.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0a06dfe517540143853845404e83af
@@ -78,7 +93,10 @@ func (s *SumComputeMetricsByRecordResponseBody) Validate() error {
 }
 
 type SumComputeMetricsByRecordResponseBodyData struct {
+	// A list of daily usage records.
 	DailyComputeRecords []*SumComputeMetricsByRecordResponseBodyDataDailyComputeRecords `json:"dailyComputeRecords,omitempty" xml:"dailyComputeRecords,omitempty" type:"Repeated"`
+	// The usage type. For example: ComputationSql
+	//
 	// example:
 	//
 	// ComputationSql
@@ -125,14 +143,20 @@ func (s *SumComputeMetricsByRecordResponseBodyData) Validate() error {
 }
 
 type SumComputeMetricsByRecordResponseBodyDataDailyComputeRecords struct {
+	// The statistics date. The format is yyyyMMdd.
+	//
 	// example:
 	//
 	// 20260411
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// This day\\"s usage as a percentage of the total usage for the specified period. The value does not include a percent sign (%).
+	//
 	// example:
 	//
 	// 50
 	Percentage *float64 `json:"percentage,omitempty" xml:"percentage,omitempty"`
+	// The record count.
+	//
 	// example:
 	//
 	// 1200

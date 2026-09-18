@@ -24,13 +24,13 @@ type GetTableInfoRequest struct {
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 	// The type of the table or view that you want to view. Valid values:
 	//
-	// 	- **internal**: internal table
+	// - **internal**: internal table
 	//
-	// 	- **external**: external table
+	// - **external**: external table
 	//
-	// 	- **view**: view
+	// - **view**: view
 	//
-	// 	- **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
+	// - **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
 	//
 	// example:
 	//

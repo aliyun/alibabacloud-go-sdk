@@ -16,7 +16,10 @@ type iGetMmsTableResponseBody interface {
 }
 
 type GetMmsTableResponseBody struct {
+	// The returned data.
 	Data *GetMmsTableResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7FB14F1-4ACD-5C73-A755-B302D70AB9AD
@@ -59,117 +62,160 @@ func (s *GetMmsTableResponseBody) Validate() error {
 }
 
 type GetMmsTableResponseBodyData struct {
+	// The database ID.
+	//
 	// example:
 	//
 	// 3
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// mms_test
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// The destination MaxCompute table name. By default, this name matches the original table name.
+	//
 	// example:
 	//
 	// test
 	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// The destination MaxCompute project name.
+	//
 	// example:
 	//
 	// mms_test
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// The destination MaxCompute schema name. This value is null if the destination MaxCompute project does not enable the schema layer.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// Other information stored in JSON format.
+	//
 	// example:
 	//
 	// {"mapkey.delim":":","collection.delim":",","serialization.format":"|","field.delim":"|"}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// Indicates whether the table is a partitioned table.
+	//
 	// example:
 	//
 	// true
 	HasPartitions *bool `json:"hasPartitions,omitempty" xml:"hasPartitions,omitempty"`
-	// table ID
+	// The table ID.
 	//
 	// example:
 	//
 	// 22
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// inputFormat
+	// The input format.
 	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
 	InputFormat *string `json:"inputFormat,omitempty" xml:"inputFormat,omitempty"`
-	// lastDdlTime
+	// The last DDL time.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	LastDdlTime *string `json:"lastDdlTime,omitempty" xml:"lastDdlTime,omitempty"`
+	// The storage location of the table.
+	//
 	// example:
 	//
 	// | hdfs://master-1-1.c-c127cd184bb029ea.cn-zhangjiakou.emr.aliyuncs.com:9000/user/hive/warehouse/demo
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of rows.
+	//
 	// example:
 	//
 	// 233232
 	NumRows *int64 `json:"numRows,omitempty" xml:"numRows,omitempty"`
-	// outputFormat
+	// The output format.
 	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
 	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	// The owner of the table.
+	//
 	// example:
 	//
 	// Hive
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The number of partitions.
+	//
 	// example:
 	//
 	// 100
 	Partitions *int32 `json:"partitions,omitempty" xml:"partitions,omitempty"`
+	// The number of partitions that are being migrated.
+	//
 	// example:
 	//
 	// 20
 	PartitionsDoing *int32 `json:"partitionsDoing,omitempty" xml:"partitionsDoing,omitempty"`
+	// The number of partitions that are migrated.
+	//
 	// example:
 	//
 	// 80
 	PartitionsDone *int32 `json:"partitionsDone,omitempty" xml:"partitionsDone,omitempty"`
+	// The number of partitions that failed to be migrated.
+	//
 	// example:
 	//
 	// 0
-	PartitionsFailed *int32                             `json:"partitionsFailed,omitempty" xml:"partitionsFailed,omitempty"`
-	Schema           *GetMmsTableResponseBodyDataSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
-	// serde
+	PartitionsFailed *int32 `json:"partitionsFailed,omitempty" xml:"partitionsFailed,omitempty"`
+	// The table schema.
+	Schema *GetMmsTableResponseBodyDataSchema `json:"schema,omitempty" xml:"schema,omitempty" type:"Struct"`
+	// The serializer/deserializer (SerDe).
 	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
 	Serde *string `json:"serde,omitempty" xml:"serde,omitempty"`
+	// The data size in bytes.
+	//
 	// example:
 	//
 	// 23232
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000028
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The migration status.
+	//
 	// example:
 	//
 	// DONE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The table type.
+	//
 	// example:
 	//
 	// MANAGED_TABLED
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Indicates whether the metadata is updated.
+	//
 	// example:
 	//
 	// false
@@ -437,15 +483,21 @@ func (s *GetMmsTableResponseBodyData) Validate() error {
 }
 
 type GetMmsTableResponseBodyDataSchema struct {
+	// All common columns.
 	Columns []*GetMmsTableResponseBodyDataSchemaColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// The comment of the table.
+	//
 	// example:
 	//
 	// for mms test
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test
-	Name       *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// All partition key columns.
 	Partitions []*GetMmsTableResponseBodyDataSchemaPartitions `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
 }
 
@@ -516,22 +568,32 @@ func (s *GetMmsTableResponseBodyDataSchema) Validate() error {
 }
 
 type GetMmsTableResponseBodyDataSchemaColumns struct {
+	// The comment of the column.
+	//
 	// example:
 	//
 	// user id
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The default value of the column.
+	//
 	// example:
 	//
 	// 10
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
+	// The column name.
+	//
 	// example:
 	//
 	// user_id
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the column can be null.
+	//
 	// example:
 	//
 	// false
 	Nullable *bool `json:"nullable,omitempty" xml:"nullable,omitempty"`
+	// The data type of the column.
+	//
 	// example:
 	//
 	// bigint
@@ -596,22 +658,32 @@ func (s *GetMmsTableResponseBodyDataSchemaColumns) Validate() error {
 }
 
 type GetMmsTableResponseBodyDataSchemaPartitions struct {
+	// The comment of the column.
+	//
 	// example:
 	//
 	// first partition level
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// The default value of the column.
+	//
 	// example:
 	//
 	// abc
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
+	// The column name.
+	//
 	// example:
 	//
 	// p1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the column can be null.
+	//
 	// example:
 	//
 	// false
 	Nullable *bool `json:"nullable,omitempty" xml:"nullable,omitempty"`
+	// The data type of the column.
+	//
 	// example:
 	//
 	// string

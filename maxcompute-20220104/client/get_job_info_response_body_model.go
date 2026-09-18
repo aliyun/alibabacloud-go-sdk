@@ -22,7 +22,7 @@ type iGetJobInfoResponseBody interface {
 }
 
 type GetJobInfoResponseBody struct {
-	// The returned result.
+	// The returned data.
 	Data *GetJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -38,15 +38,15 @@ type GetJobInfoResponseBody struct {
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
-	// 	- 1xx: informational response. The request is received and is being processed.
+	// - 1xx: informational. The request is received and being processed.
 	//
-	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
+	// - 2xx: success. The request was received, understood, and accepted.
 	//
-	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	// - 3xx: redirection. Further action is required to complete the request.
 	//
-	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+	// - 4xx: client error. The request contains invalid parameters or syntax, or a precondition cannot be met.
 	//
-	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
+	// - 5xx: server error. The server failed to fulfill the request.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ func (s *GetJobInfoResponseBody) Validate() error {
 }
 
 type GetJobInfoResponseBodyData struct {
-	// The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
+	// The resources consumed by the job. Returned only for completed jobs. Unit: 100\\*Core\\*s.
 	//
 	// example:
 	//
@@ -165,27 +165,27 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// 20230410****60gg
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The owner of the job.
+	// The job owner.
 	//
 	// example:
 	//
 	// ALIYUN$7632***@aliyun.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The substatuses of the job lifecycle.
+	// The job lifecycle substatuses.
 	JobSubStatusList []*GetJobInfoResponseBodyDataJobSubStatusList `json:"jobSubStatusList,omitempty" xml:"jobSubStatusList,omitempty" type:"Repeated"`
-	// The type of the job.
+	// The job type.
 	//
 	// example:
 	//
 	// SQL
 	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	// The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
+	// The memory consumed by the job. Returned only for completed jobs. Unit: MB\\*s.
 	//
 	// example:
 	//
 	// 40
 	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
-	// The priority of the job.
+	// The job priority.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// dp_cdm_prod
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The nickname of the computing quota that is used by the job.
+	// The nickname of the computing quota used by the job.
 	//
 	// example:
 	//
@@ -215,21 +215,21 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The start time, which is the time when the job received the first batch of computing resources. For jobs that run for a short period of time or do not consume computing resources, such as the jobs that involve DDL statements, the job submission time is used instead.
+	// The time when the job received its first computing resources. For short-lived or resource-free jobs (such as DDL jobs), the submission time is used instead.
 	//
 	// example:
 	//
 	// 1672112113
 	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
-	// The execution duration, which is the duration from the start time to the end time of the job.
+	// The duration from job start to job end.
 	//
 	// example:
 	//
 	// 800
 	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
-	// The intelligent diagnostics result.
+	// The intelligent diagnostics results.
 	SceneResults []*GetJobInfoResponseBodyDataSceneResults `json:"sceneResults,omitempty" xml:"sceneResults,omitempty" type:"Repeated"`
-	// The signature of the SQL job. You can use the signature to find the instances on which each time an SQL statement is executed.
+	// The SQL job signature. Use this value to locate all instances where an SQL statement was executed.
 	//
 	// example:
 	//
@@ -253,13 +253,13 @@ type GetJobInfoResponseBodyData struct {
 	//
 	// 4784****5249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The total duration from the time a job is submitted to the time the job is terminated.
+	// The total duration from job submission to termination.
 	//
 	// example:
 	//
 	// 900
 	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
-	// The wait time, which is the duration from the time the job is submitted to the time the job starts to run.
+	// The duration from job submission to execution start.
 	//
 	// example:
 	//
@@ -523,7 +523,7 @@ func (s *GetJobInfoResponseBodyData) Validate() error {
 }
 
 type GetJobInfoResponseBodyDataJobSubStatusList struct {
-	// The encoding of the substatus.
+	// The substatus code.
 	//
 	// example:
 	//
@@ -589,9 +589,9 @@ type GetJobInfoResponseBodyDataSceneResults struct {
 	//
 	// This job uses annual and monthly computing resources. It may be that the job is waiting for resources due to the large amount of overall job running data, many resources requested, and low job priority. Please go to Resource Consumption to view the specific situation. You can also go to Cost Optimization to see if you need to adjust resource configuration.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
+	// Node information for data skew or data expansion diagnostics. Returned only when the scenario is data skew or data expansion.
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// The intelligent diagnostics result scenario.
+	// The intelligent diagnostics scenario.
 	//
 	// example:
 	//

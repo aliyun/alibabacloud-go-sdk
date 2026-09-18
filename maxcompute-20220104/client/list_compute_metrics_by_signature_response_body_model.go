@@ -18,14 +18,29 @@ type iListComputeMetricsBySignatureResponseBody interface {
 }
 
 type ListComputeMetricsBySignatureResponseBody struct {
+	// The data payload of the response.
 	Data *ListComputeMetricsBySignatureResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
+	// - `1xx`: Informational - The server has received the request and is processing it.
+	//
+	// - `2xx`: Success - The server successfully received, understood, and accepted the request.
+	//
+	// - `3xx`: Redirection - Further action is required to complete the request.
+	//
+	// - `4xx`: Client Error - The request contains invalid syntax or cannot be fulfilled.
+	//
+	// - `5xx`: Server Error - The server failed to fulfill a valid request.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 0adbef0f17600626304764284d0001
+	// 0a06dc0a17495216593736061e45a3
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -74,18 +89,25 @@ func (s *ListComputeMetricsBySignatureResponseBody) Validate() error {
 }
 
 type ListComputeMetricsBySignatureResponseBodyData struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
-	PageSize                *int64                                                                  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// An array containing the compute metrics for each signature.
 	SignatureComputeMetrics []*ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetrics `json:"signatureComputeMetrics,omitempty" xml:"signatureComputeMetrics,omitempty" type:"Repeated"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
-	// 57
+	// 60
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -147,19 +169,27 @@ func (s *ListComputeMetricsBySignatureResponseBodyData) Validate() error {
 }
 
 type ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetrics struct {
-	Instances    []*ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetricsInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	ProjectNames []*string                                                                        `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// A list of instances.
+	Instances []*ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetricsInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// A list of project names.
+	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The signature of the SQL job.
+	//
 	// example:
 	//
-	// oC0HkG5aTRscH3BDrttrLwHf8XA=
+	// YF3JMiEXEvZVmGzUXz6G4MtWVJk=
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// The unit of compute usage.
+	//
 	// example:
 	//
 	// GBCplx
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The compute usage.
+	//
 	// example:
 	//
-	// 100
+	// 32.67767215706408
 	Usage *float64 `json:"usage,omitempty" xml:"usage,omitempty"`
 }
 
@@ -230,17 +260,23 @@ func (s *ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetrics) V
 }
 
 type ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetricsInstances struct {
+	// The end time of the instance.
+	//
 	// example:
 	//
-	// 1770886999000
+	// 1766780295000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
-	// 20250910185415772gu7vl8vwk22
+	// 20260124052241299gdxd3wveqsj
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The start time of the instance.
+	//
 	// example:
 	//
-	// 1762946698000
+	// 1765765291000
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 

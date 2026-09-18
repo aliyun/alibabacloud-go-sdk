@@ -431,9 +431,9 @@ func (s *QueryQuotaResponseBodyData) Validate() error {
 type QueryQuotaResponseBodyDataBillingPolicy struct {
 	// The billing method. Valid values:
 	//
-	// 	- subscription: the subscription quota.
+	// - subscription: the subscription quota.
 	//
-	// 	- payasyougo: the pay-as-you-go quota.
+	// - payasyougo: the pay-as-you-go quota.
 	//
 	// example:
 	//
@@ -974,9 +974,9 @@ func (s *QueryQuotaResponseBodyDataSubQuotaInfoList) Validate() error {
 type QueryQuotaResponseBodyDataSubQuotaInfoListBillingPolicy struct {
 	// The billing method. Valid values:
 	//
-	// 	- subscription: the subscription quota.
+	// - subscription: the subscription quota.
 	//
-	// 	- payasyougo: the pay-as-you-go quota.
+	// - payasyougo: the pay-as-you-go quota.
 	//
 	// example:
 	//

@@ -16,7 +16,10 @@ type iListMmsTaskLogsResponseBody interface {
 }
 
 type ListMmsTaskLogsResponseBody struct {
+	// A list of logs.
 	Data []*ListMmsTaskLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A3AE5649-EF90-54BD-86D0-C632FA950988
@@ -63,30 +66,44 @@ func (s *ListMmsTaskLogsResponseBody) Validate() error {
 }
 
 type ListMmsTaskLogsResponseBodyData struct {
+	// The operation performed by the migration task.
+	//
 	// example:
 	//
 	// create schema if not exists mms_test.default;
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The time when the log was created.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The log ID.
+	//
 	// example:
 	//
 	// 10000
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The result of the migration task operation.
+	//
 	// example:
 	//
 	// ok
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000015
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The migration task status.
+	//
 	// example:
 	//
 	// DATA_DOING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The migration task ID.
+	//
 	// example:
 	//
 	// 4023

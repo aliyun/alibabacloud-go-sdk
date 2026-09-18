@@ -258,7 +258,7 @@ func (client *Client) CreateComputeQuotaPlan(nickname *string, request *CreateCo
 
 // Summary:
 //
-// Creates a data source and uses MaxCompute Migration Assist (MMA) to migrate data from the data source to MaxCompute.
+// Creates a data source to perform data migration from the data source to MaxCompute through Migration Service (MMA 4.0).
 //
 // @param request - CreateMmsDataSourceRequest
 //
@@ -317,7 +317,7 @@ func (client *Client) CreateMmsDataSourceWithOptions(request *CreateMmsDataSourc
 
 // Summary:
 //
-// Creates a data source and uses MaxCompute Migration Assist (MMA) to migrate data from the data source to MaxCompute.
+// Creates a data source to perform data migration from the data source to MaxCompute through Migration Service (MMA 4.0).
 //
 // @param request - CreateMmsDataSourceRequest
 //
@@ -336,7 +336,7 @@ func (client *Client) CreateMmsDataSource(request *CreateMmsDataSourceRequest) (
 
 // Summary:
 //
-// Creates a MaxCompute Migration Assist (MMA) job to pull the metadata from a data source.
+// Creates a job to pull metadata from a data source.
 //
 // @param request - CreateMmsFetchMetadataJobRequest
 //
@@ -387,7 +387,7 @@ func (client *Client) CreateMmsFetchMetadataJobWithOptions(sourceId *string, req
 
 // Summary:
 //
-// Creates a MaxCompute Migration Assist (MMA) job to pull the metadata from a data source.
+// Creates a job to pull metadata from a data source.
 //
 // @param request - CreateMmsFetchMetadataJobRequest
 //
@@ -558,6 +558,10 @@ func (client *Client) CreateMmsJob(sourceId *string, request *CreateMmsJobReques
 //
 // # CreateMmsTimer
 //
+// Description:
+//
+// Before you call this API, make sure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for dedicated resource groups and elastic reserved computing resources in the Data Transmission Service.
+//
 // @param request - CreateMmsTimerRequest
 //
 // @param headers - map
@@ -664,6 +668,10 @@ func (client *Client) CreateMmsTimerWithOptions(sourceId *string, request *Creat
 // Summary:
 //
 // # CreateMmsTimer
+//
+// Description:
+//
+// Before you call this API, make sure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for dedicated resource groups and elastic reserved computing resources in the Data Transmission Service.
 //
 // @param request - CreateMmsTimerRequest
 //
@@ -810,7 +818,11 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// # CreateQuota
+// Creates a quota. When you activate MaxCompute for the first time, you must first create a pay-as-you-go quota. If you create a subscription quota, automatic payment is deducted.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/product/maxcompute/pricing?spm=5176.30275541.J_ZGek9Blx07Hclc3Ddt9dg.2.19502f3dPPfezu&scm=20140722.S_card@@%E4%BA%A7%E5%93%81@@143540.S_new~UND~card.ID_card@@%E4%BA%A7%E5%93%81@@143540-RL_MaxCompute-LOC_2024SPSearchCard-OR_ser-PAR1_213c994b17738148516424527d0d07-V_4-RE_new9-P0_0-P1_0) of MaxCompute.**
 //
 // @param request - CreateQuotaRequest
 //
@@ -869,7 +881,11 @@ func (client *Client) CreateQuotaWithOptions(request *CreateQuotaRequest, header
 
 // Summary:
 //
-// # CreateQuota
+// Creates a quota. When you activate MaxCompute for the first time, you must first create a pay-as-you-go quota. If you create a subscription quota, automatic payment is deducted.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/product/maxcompute/pricing?spm=5176.30275541.J_ZGek9Blx07Hclc3Ddt9dg.2.19502f3dPPfezu&scm=20140722.S_card@@%E4%BA%A7%E5%93%81@@143540.S_new~UND~card.ID_card@@%E4%BA%A7%E5%93%81@@143540-RL_MaxCompute-LOC_2024SPSearchCard-OR_ser-PAR1_213c994b17738148516424527d0d07-V_4-RE_new9-P0_0-P1_0) of MaxCompute.**
 //
 // @param request - CreateQuotaRequest
 //
@@ -1070,7 +1086,7 @@ func (client *Client) DeleteComputeQuotaPlan(nickname *string, planName *string)
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data source. For example, you can call this operation to delete the migration plan or metadata of a data source.
+// Deletes a MaxCompute Migration Assist (MMA) data source and its associated migration plans and metadata.
 //
 // @param headers - map
 //
@@ -1103,7 +1119,7 @@ func (client *Client) DeleteMmsDataSourceWithOptions(sourceId *string, headers m
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data source. For example, you can call this operation to delete the migration plan or metadata of a data source.
+// Deletes a MaxCompute Migration Assist (MMA) data source and its associated migration plans and metadata.
 //
 // @return DeleteMmsDataSourceResponse
 func (client *Client) DeleteMmsDataSource(sourceId *string) (_result *DeleteMmsDataSourceResponse, _err error) {
@@ -1120,7 +1136,7 @@ func (client *Client) DeleteMmsDataSource(sourceId *string) (_result *DeleteMmsD
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) migration job.
+// Deletes a MaxCompute Migration Assist (MMA) data migration plan.
 //
 // @param headers - map
 //
@@ -1153,7 +1169,7 @@ func (client *Client) DeleteMmsJobWithOptions(sourceId *string, jobId *string, h
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) migration job.
+// Deletes a MaxCompute Migration Assist (MMA) data migration plan.
 //
 // @return DeleteMmsJobResponse
 func (client *Client) DeleteMmsJob(sourceId *string, jobId *string) (_result *DeleteMmsJobResponse, _err error) {
@@ -1170,7 +1186,13 @@ func (client *Client) DeleteMmsJob(sourceId *string, jobId *string) (_result *De
 
 // Summary:
 //
-// # DeleteMmsTimer
+// Deletes a timer from a specified data source.
+//
+// Description:
+//
+// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive resource groups and elastic reserved computing resources of the Data Transfer Service.
 //
 // @param headers - map
 //
@@ -1203,7 +1225,13 @@ func (client *Client) DeleteMmsTimerWithOptions(sourceId *string, timerId *strin
 
 // Summary:
 //
-// # DeleteMmsTimer
+// Deletes a timer from a specified data source.
+//
+// Description:
+//
+// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive resource groups and elastic reserved computing resources of the Data Transfer Service.
 //
 // @return DeleteMmsTimerResponse
 func (client *Client) DeleteMmsTimer(sourceId *string, timerId *string) (_result *DeleteMmsTimerResponse, _err error) {
@@ -1220,7 +1248,7 @@ func (client *Client) DeleteMmsTimer(sourceId *string, timerId *string) (_result
 
 // Summary:
 //
-// Deletes a MaxCompute project.
+// Deletes a MaxCompute project. This operation is irreversible. Use this API with caution.
 //
 // @param request - DeleteProjectRequest
 //
@@ -1267,7 +1295,7 @@ func (client *Client) DeleteProjectWithOptions(projectName *string, request *Del
 
 // Summary:
 //
-// Deletes a MaxCompute project.
+// Deletes a MaxCompute project. This operation is irreversible. Use this API with caution.
 //
 // @param request - DeleteProjectRequest
 //
@@ -1354,6 +1382,10 @@ func (client *Client) DeleteQuotaPlan(nickname *string, planName *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a project-level role in MaxCompute.
+//
 // @param request - DeleteRoleRequest
 //
 // @param headers - map
@@ -1391,6 +1423,10 @@ func (client *Client) DeleteRoleWithOptions(projectName *string, roleName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a project-level role in MaxCompute.
+//
 // @param request - DeleteRoleRequest
 //
 // @return DeleteRoleResponse
@@ -1574,7 +1610,7 @@ func (client *Client) GetComputeQuotaSchedule(nickname *string, request *GetComp
 
 // Summary:
 //
-// Queries the basic information about a job.
+// Queries basic information about a job.
 //
 // @param headers - map
 //
@@ -1607,7 +1643,7 @@ func (client *Client) GetJobInfoWithOptions(instanceId *string, headers map[stri
 
 // Summary:
 //
-// Queries the basic information about a job.
+// Queries basic information about a job.
 //
 // @return GetJobInfoResponse
 func (client *Client) GetJobInfo(instanceId *string) (_result *GetJobInfoResponse, _err error) {
@@ -1716,7 +1752,7 @@ func (client *Client) GetJobResourceUsage(request *GetJobResourceUsageRequest) (
 
 // Summary:
 //
-// Queries a MaxCompute Migration Assist (MMA) asynchronous task.
+// Retrieves a single MMA asynchronous task.
 //
 // @param headers - map
 //
@@ -1749,7 +1785,7 @@ func (client *Client) GetMmsAsyncTaskWithOptions(sourceId *string, asyncTaskId *
 
 // Summary:
 //
-// Queries a MaxCompute Migration Assist (MMA) asynchronous task.
+// Retrieves a single MMA asynchronous task.
 //
 // @return GetMmsAsyncTaskResponse
 func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_result *GetMmsAsyncTaskResponse, _err error) {
@@ -1766,7 +1802,7 @@ func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_r
 
 // Summary:
 //
-// Queries the information about a MaxCompute Migration Assist (MMA) data source.
+// Retrieves the details of a single MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - GetMmsDataSourceRequest
 //
@@ -1817,7 +1853,7 @@ func (client *Client) GetMmsDataSourceWithOptions(sourceId *string, request *Get
 
 // Summary:
 //
-// Queries the information about a MaxCompute Migration Assist (MMA) data source.
+// Retrieves the details of a single MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - GetMmsDataSourceRequest
 //
@@ -1836,7 +1872,7 @@ func (client *Client) GetMmsDataSource(sourceId *string, request *GetMmsDataSour
 
 // Summary:
 //
-// Queries a database in a MaxCompute Migration Assist (MMA) data source.
+// Retrieves a database from a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -1869,7 +1905,7 @@ func (client *Client) GetMmsDbWithOptions(sourceId *string, dbId *string, header
 
 // Summary:
 //
-// Queries a database in a MaxCompute Migration Assist (MMA) data source.
+// Retrieves a database from a MaxCompute Migration Assist (MMA) data source.
 //
 // @return GetMmsDbResponse
 func (client *Client) GetMmsDb(sourceId *string, dbId *string) (_result *GetMmsDbResponse, _err error) {
@@ -1886,7 +1922,7 @@ func (client *Client) GetMmsDb(sourceId *string, dbId *string) (_result *GetMmsD
 
 // Summary:
 //
-// Queries the details of a MaxCompute Migration Assist (MMA) job that is used to query the metadata of a data source.
+// Retrieves the details of a MaxCompute Migration Assist (MMA) job that fetches metadata.
 //
 // @param headers - map
 //
@@ -1919,7 +1955,7 @@ func (client *Client) GetMmsFetchMetadataJobWithOptions(sourceId *string, scanId
 
 // Summary:
 //
-// Queries the details of a MaxCompute Migration Assist (MMA) job that is used to query the metadata of a data source.
+// Retrieves the details of a MaxCompute Migration Assist (MMA) job that fetches metadata.
 //
 // @return GetMmsFetchMetadataJobResponse
 func (client *Client) GetMmsFetchMetadataJob(sourceId *string, scanId *string) (_result *GetMmsFetchMetadataJobResponse, _err error) {
@@ -1936,7 +1972,7 @@ func (client *Client) GetMmsFetchMetadataJob(sourceId *string, scanId *string) (
 
 // Summary:
 //
-// Queries the details of a MaxCompute Migration Assist (MMA) migration job.
+// Retrieves the details of a single MMA migration plan.
 //
 // @param headers - map
 //
@@ -1969,7 +2005,7 @@ func (client *Client) GetMmsJobWithOptions(sourceId *string, jobId *string, head
 
 // Summary:
 //
-// Queries the details of a MaxCompute Migration Assist (MMA) migration job.
+// Retrieves the details of a single MMA migration plan.
 //
 // @return GetMmsJobResponse
 func (client *Client) GetMmsJob(sourceId *string, jobId *string) (_result *GetMmsJobResponse, _err error) {
@@ -1986,7 +2022,7 @@ func (client *Client) GetMmsJob(sourceId *string, jobId *string) (_result *GetMm
 
 // Summary:
 //
-// Queries a partition from a MaxCompute Migration Assist (MMA) data source.
+// Retrieves a partition from a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -2019,7 +2055,7 @@ func (client *Client) GetMmsPartitionWithOptions(sourceId *string, partitionId *
 
 // Summary:
 //
-// Queries a partition from a MaxCompute Migration Assist (MMA) data source.
+// Retrieves a partition from a MaxCompute Migration Assist (MMA) data source.
 //
 // @return GetMmsPartitionResponse
 func (client *Client) GetMmsPartition(sourceId *string, partitionId *string) (_result *GetMmsPartitionResponse, _err error) {
@@ -2036,7 +2072,7 @@ func (client *Client) GetMmsPartition(sourceId *string, partitionId *string) (_r
 
 // Summary:
 //
-// Queries a table in a MaxCompute Migration Assist (MMA) data source.
+// Retrieves a table from a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -2069,7 +2105,7 @@ func (client *Client) GetMmsTableWithOptions(sourceId *string, tableId *string, 
 
 // Summary:
 //
-// Queries a table in a MaxCompute Migration Assist (MMA) data source.
+// Retrieves a table from a MaxCompute Migration Assist (MMA) data source.
 //
 // @return GetMmsTableResponse
 func (client *Client) GetMmsTable(sourceId *string, tableId *string) (_result *GetMmsTableResponse, _err error) {
@@ -2086,7 +2122,7 @@ func (client *Client) GetMmsTable(sourceId *string, tableId *string) (_result *G
 
 // Summary:
 //
-// Queries the details of a migration task.
+// Retrieves the details of a specific migration task.
 //
 // @param headers - map
 //
@@ -2119,7 +2155,7 @@ func (client *Client) GetMmsTaskWithOptions(sourceId *string, taskId *string, he
 
 // Summary:
 //
-// Queries the details of a migration task.
+// Retrieves the details of a specific migration task.
 //
 // @return GetMmsTaskResponse
 func (client *Client) GetMmsTask(sourceId *string, taskId *string) (_result *GetMmsTaskResponse, _err error) {
@@ -2137,6 +2173,10 @@ func (client *Client) GetMmsTask(sourceId *string, taskId *string) (_result *Get
 // Summary:
 //
 // # GetMmsTimer
+//
+// Description:
+//
+// Before using this API, review the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for dedicated resource groups and elastic reserved computing resources used for data transfer.
 //
 // @param headers - map
 //
@@ -2170,6 +2210,10 @@ func (client *Client) GetMmsTimerWithOptions(sourceId *string, timerId *string, 
 // Summary:
 //
 // # GetMmsTimer
+//
+// Description:
+//
+// Before using this API, review the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for dedicated resource groups and elastic reserved computing resources used for data transfer.
 //
 // @return GetMmsTimerResponse
 func (client *Client) GetMmsTimer(sourceId *string, timerId *string) (_result *GetMmsTimerResponse, _err error) {
@@ -2252,7 +2296,7 @@ func (client *Client) GetPackage(projectName *string, packageName *string, reque
 
 // Summary:
 //
-// Queries the information about a MaxCompute project.
+// Queries the basic information of a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //
@@ -2307,7 +2351,7 @@ func (client *Client) GetProjectWithOptions(projectName *string, request *GetPro
 
 // Summary:
 //
-// Queries the information about a MaxCompute project.
+// Queries the basic information of a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //
@@ -2326,7 +2370,7 @@ func (client *Client) GetProject(projectName *string, request *GetProjectRequest
 
 // Summary:
 //
-// Obtains the information about a specified level-1 quota.
+// Retrieve information for the specified level-1 quota group. Warning: This operation will be decommissioned on July 31, 2024. It will be replaced by the `QueryQuota` operation. The request parameters, response parameters, and features of the two operations are the same.
 //
 // @param request - GetQuotaRequest
 //
@@ -2385,7 +2429,7 @@ func (client *Client) GetQuotaWithOptions(nickname *string, request *GetQuotaReq
 
 // Summary:
 //
-// Obtains the information about a specified level-1 quota.
+// Retrieve information for the specified level-1 quota group. Warning: This operation will be decommissioned on July 31, 2024. It will be replaced by the `QueryQuota` operation. The request parameters, response parameters, and features of the two operations are the same.
 //
 // @param request - GetQuotaRequest
 //
@@ -2920,6 +2964,10 @@ func (client *Client) GetRunningJobs(request *GetRunningJobsRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the total storage information.
+//
 // @param request - GetStorageAmountSummaryRequest
 //
 // @param headers - map
@@ -2971,6 +3019,10 @@ func (client *Client) GetStorageAmountSummaryWithOptions(request *GetStorageAmou
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the total storage information.
+//
 // @param request - GetStorageAmountSummaryRequest
 //
 // @return GetStorageAmountSummaryResponse
@@ -2986,6 +3038,10 @@ func (client *Client) GetStorageAmountSummary(request *GetStorageAmountSummaryRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a summary of storage usage.
+//
 // @param request - GetStorageSizeSummaryRequest
 //
 // @param headers - map
@@ -3037,6 +3093,10 @@ func (client *Client) GetStorageSizeSummaryWithOptions(request *GetStorageSizeSu
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a summary of storage usage.
+//
 // @param request - GetStorageSizeSummaryRequest
 //
 // @return GetStorageSizeSummaryResponse
@@ -3052,6 +3112,10 @@ func (client *Client) GetStorageSizeSummary(request *GetStorageSizeSummaryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the year-on-year (YoY) change in storage usage.
+//
 // @param tmpReq - GetStorageSummaryComparedRequest
 //
 // @param headers - map
@@ -3117,6 +3181,10 @@ func (client *Client) GetStorageSummaryComparedWithOptions(_type *string, tmpReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the year-on-year (YoY) change in storage usage.
+//
 // @param request - GetStorageSummaryComparedRequest
 //
 // @return GetStorageSummaryComparedResponse
@@ -3325,7 +3393,7 @@ func (client *Client) KillJobs(request *KillJobsRequest) (_result *KillJobsRespo
 
 // Summary:
 //
-// Queries a list of computing resources used by a pay-as-you-go job.
+// Lists job compute usage at the instance level.
 //
 // @param request - ListComputeMetricsByInstanceRequest
 //
@@ -3408,7 +3476,7 @@ func (client *Client) ListComputeMetricsByInstanceWithOptions(request *ListCompu
 
 // Summary:
 //
-// Queries a list of computing resources used by a pay-as-you-go job.
+// Lists job compute usage at the instance level.
 //
 // @param request - ListComputeMetricsByInstanceRequest
 //
@@ -3427,7 +3495,11 @@ func (client *Client) ListComputeMetricsByInstance(request *ListComputeMetricsBy
 
 // Summary:
 //
-// 按Signature查看作业计算使用量明细
+// View detailed compute usage for jobs by Signature.
+//
+// Description:
+//
+// Gets job details by signature.
 //
 // @param request - ListComputeMetricsBySignatureRequest
 //
@@ -3506,7 +3578,11 @@ func (client *Client) ListComputeMetricsBySignatureWithOptions(request *ListComp
 
 // Summary:
 //
-// 按Signature查看作业计算使用量明细
+// View detailed compute usage for jobs by Signature.
+//
+// Description:
+//
+// Gets job details by signature.
 //
 // @param request - ListComputeMetricsBySignatureRequest
 //
@@ -3525,7 +3601,7 @@ func (client *Client) ListComputeMetricsBySignature(request *ListComputeMetricsB
 
 // Summary:
 //
-// Get computeQuotaPlan list.
+// Lists compute quota plans.
 //
 // @param headers - map
 //
@@ -3558,7 +3634,7 @@ func (client *Client) ListComputeQuotaPlanWithOptions(nickname *string, headers 
 
 // Summary:
 //
-// Get computeQuotaPlan list.
+// Lists compute quota plans.
 //
 // @return ListComputeQuotaPlanResponse
 func (client *Client) ListComputeQuotaPlan(nickname *string) (_result *ListComputeQuotaPlanResponse, _err error) {
@@ -3653,7 +3729,11 @@ func (client *Client) ListFunctions(projectName *string, request *ListFunctionsR
 
 // Summary:
 //
-// 获取需要进行成本分析的项目或者实例
+// Retrieves a list of projects for cost analysis over a specified time period.
+//
+// Description:
+//
+// Retrieves the projects for which cost analysis is required.
 //
 // @param request - ListInstancesRequest
 //
@@ -3704,7 +3784,11 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 // Summary:
 //
-// 获取需要进行成本分析的项目或者实例
+// Retrieves a list of projects for cost analysis over a specified time period.
+//
+// Description:
+//
+// Retrieves the projects for which cost analysis is required.
 //
 // @param request - ListInstancesRequest
 //
@@ -3723,7 +3807,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Views a list of jobs.
+// Queries the list of jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -3856,7 +3940,7 @@ func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, head
 
 // Summary:
 //
-// Views a list of jobs.
+// Queries the list of jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -3971,7 +4055,7 @@ func (client *Client) ListJobMetric(request *ListJobMetricRequest) (_result *Lis
 
 // Summary:
 //
-// Views a list of job snapshot data at a specific point in time.
+// Retrieves job snapshot data at a specific point in time.
 //
 // @param request - ListJobSnapshotInfosRequest
 //
@@ -4092,7 +4176,7 @@ func (client *Client) ListJobSnapshotInfosWithOptions(request *ListJobSnapshotIn
 
 // Summary:
 //
-// Views a list of job snapshot data at a specific point in time.
+// Retrieves job snapshot data at a specific point in time.
 //
 // @param request - ListJobSnapshotInfosRequest
 //
@@ -4111,7 +4195,13 @@ func (client *Client) ListJobSnapshotInfos(request *ListJobSnapshotInfosRequest)
 
 // Summary:
 //
-// # ListMmsDataSourceConfigItems
+// Lists the configuration items for a specified data source type.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the <props="china">[billing methods and price](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[billing methods and price](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) for MaxCompute Reserved CUs.
 //
 // @param request - ListMmsDataSourceConfigItemsRequest
 //
@@ -4162,7 +4252,13 @@ func (client *Client) ListMmsDataSourceConfigItemsWithOptions(request *ListMmsDa
 
 // Summary:
 //
-// # ListMmsDataSourceConfigItems
+// Lists the configuration items for a specified data source type.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the <props="china">[billing methods and price](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[billing methods and price](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) for MaxCompute Reserved CUs.
 //
 // @param request - ListMmsDataSourceConfigItemsRequest
 //
@@ -4181,7 +4277,7 @@ func (client *Client) ListMmsDataSourceConfigItems(request *ListMmsDataSourceCon
 
 // Summary:
 //
-// Queries a list of MaxCompute Migration Assist (MMA) data sources.
+// # MaxCompute Migration Assist (MMA) data sources
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -4244,7 +4340,7 @@ func (client *Client) ListMmsDataSourcesWithOptions(request *ListMmsDataSourcesR
 
 // Summary:
 //
-// Queries a list of MaxCompute Migration Assist (MMA) data sources.
+// # MaxCompute Migration Assist (MMA) data sources
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -4263,7 +4359,7 @@ func (client *Client) ListMmsDataSources(request *ListMmsDataSourcesRequest) (_r
 
 // Summary:
 //
-// Queries a list of databases in a MaxCompute Migration Assist (MMA) data source.
+// List databases in the MMA data source.
 //
 // @param tmpReq - ListMmsDbsRequest
 //
@@ -4332,7 +4428,7 @@ func (client *Client) ListMmsDbsWithOptions(sourceId *string, tmpReq *ListMmsDbs
 
 // Summary:
 //
-// Queries a list of databases in a MaxCompute Migration Assist (MMA) data source.
+// List databases in the MMA data source.
 //
 // @param request - ListMmsDbsRequest
 //
@@ -4351,7 +4447,7 @@ func (client *Client) ListMmsDbs(sourceId *string, request *ListMmsDbsRequest) (
 
 // Summary:
 //
-// Queries a list of migration jobs.
+// Lists migration jobs.
 //
 // @param request - ListMmsJobsRequest
 //
@@ -4438,7 +4534,7 @@ func (client *Client) ListMmsJobsWithOptions(sourceId *string, request *ListMmsJ
 
 // Summary:
 //
-// Queries a list of migration jobs.
+// Lists migration jobs.
 //
 // @param request - ListMmsJobsRequest
 //
@@ -4457,7 +4553,7 @@ func (client *Client) ListMmsJobs(sourceId *string, request *ListMmsJobsRequest)
 
 // Summary:
 //
-// Queries a list of partitions in a MaxCompute Migration Assist (MMA) data source.
+// Lists the partitions in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsPartitionsRequest
 //
@@ -4554,7 +4650,7 @@ func (client *Client) ListMmsPartitionsWithOptions(sourceId *string, tmpReq *Lis
 
 // Summary:
 //
-// Queries a list of partitions in a MaxCompute Migration Assist (MMA) data source.
+// Lists the partitions in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - ListMmsPartitionsRequest
 //
@@ -4573,7 +4669,7 @@ func (client *Client) ListMmsPartitions(sourceId *string, request *ListMmsPartit
 
 // Summary:
 //
-// Queries a list of tables in a MaxCompute Migration Assist (MMA) data source.
+// Lists the tables in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsTablesRequest
 //
@@ -4682,7 +4778,7 @@ func (client *Client) ListMmsTablesWithOptions(sourceId *string, tmpReq *ListMms
 
 // Summary:
 //
-// Queries a list of tables in a MaxCompute Migration Assist (MMA) data source.
+// Lists the tables in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - ListMmsTablesRequest
 //
@@ -4701,7 +4797,7 @@ func (client *Client) ListMmsTables(sourceId *string, request *ListMmsTablesRequ
 
 // Summary:
 //
-// Queries a list of the execution logs of a single migration task.
+// Lists the execution logs for a specific migration task.
 //
 // @param headers - map
 //
@@ -4734,7 +4830,7 @@ func (client *Client) ListMmsTaskLogsWithOptions(sourceId *string, taskId *strin
 
 // Summary:
 //
-// Queries a list of the execution logs of a single migration task.
+// Lists the execution logs for a specific migration task.
 //
 // @return ListMmsTaskLogsResponse
 func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result *ListMmsTaskLogsResponse, _err error) {
@@ -4751,7 +4847,7 @@ func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result
 
 // Summary:
 //
-// Queries a list of migration tasks.
+// Retrieves a list of data migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -4838,7 +4934,7 @@ func (client *Client) ListMmsTasksWithOptions(sourceId *string, request *ListMms
 
 // Summary:
 //
-// Queries a list of migration tasks.
+// Retrieves a list of data migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -4857,7 +4953,13 @@ func (client *Client) ListMmsTasks(sourceId *string, request *ListMmsTasksReques
 
 // Summary:
 //
-// # ListMmsTimerLogs
+// Lists the logs of a scheduled task for a specific data source.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for the data transfer service, exclusive resource groups, and elastic reserved computing resources.
 //
 // @param request - ListMmsTimerLogsRequest
 //
@@ -4908,7 +5010,13 @@ func (client *Client) ListMmsTimerLogsWithOptions(sourceId *string, timerId *str
 
 // Summary:
 //
-// # ListMmsTimerLogs
+// Lists the logs of a scheduled task for a specific data source.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for the data transfer service, exclusive resource groups, and elastic reserved computing resources.
 //
 // @param request - ListMmsTimerLogsRequest
 //
@@ -4927,7 +5035,13 @@ func (client *Client) ListMmsTimerLogs(sourceId *string, timerId *string, reques
 
 // Summary:
 //
-// # ListMmsTimers
+// Lists the timers for a specified data source.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive resource groups and elastic reserved computing resources for Data Transmission Service.
 //
 // @param request - ListMmsTimersRequest
 //
@@ -4994,7 +5108,13 @@ func (client *Client) ListMmsTimersWithOptions(sourceId *string, request *ListMm
 
 // Summary:
 //
-// # ListMmsTimers
+// Lists the timers for a specified data source.
+//
+// Description:
+//
+// Before calling this operation, ensure you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive resource groups and elastic reserved computing resources for Data Transmission Service.
 //
 // @param request - ListMmsTimersRequest
 //
@@ -5113,7 +5233,7 @@ func (client *Client) ListProjectUsers(projectName *string) (_result *ListProjec
 
 // Summary:
 //
-// Queries a list of MaxCompute projects.
+// Retrieves a list of MaxCompute projects.
 //
 // @param request - ListProjectsRequest
 //
@@ -5162,6 +5282,14 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, head
 		query["saleTags"] = request.SaleTags
 	}
 
+	if !dara.IsNil(request.SortBy) {
+		query["sortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["sortOrder"] = request.SortOrder
+	}
+
 	if !dara.IsNil(request.TenantId) {
 		query["tenantId"] = request.TenantId
 	}
@@ -5196,7 +5324,7 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, head
 
 // Summary:
 //
-// Queries a list of MaxCompute projects.
+// Retrieves a list of MaxCompute projects.
 //
 // @param request - ListProjectsRequest
 //
@@ -5215,7 +5343,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
-// Queries quotas.
+// Retrieves a list of quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -5286,7 +5414,7 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 
 // Summary:
 //
-// Queries quotas.
+// Retrieves a list of quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -5503,7 +5631,7 @@ func (client *Client) ListRoles(projectName *string) (_result *ListRolesResponse
 
 // Summary:
 //
-// Queries the storage details of a specific partition in a partitioned table in a MaxCompute project.
+// Retrieves storage details for the partitions of a partitioned table in a MaxCompute project.
 //
 // @param tmpReq - ListStoragePartitionsInfoRequest
 //
@@ -5592,7 +5720,7 @@ func (client *Client) ListStoragePartitionsInfoWithOptions(project *string, tabl
 
 // Summary:
 //
-// Queries the storage details of a specific partition in a partitioned table in a MaxCompute project.
+// Retrieves storage details for the partitions of a partitioned table in a MaxCompute project.
 //
 // @param request - ListStoragePartitionsInfoRequest
 //
@@ -5609,6 +5737,10 @@ func (client *Client) ListStoragePartitionsInfo(project *string, table *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the storage details of projects.
+//
 // @param request - ListStorageProjectsInfoRequest
 //
 // @param headers - map
@@ -5684,6 +5816,10 @@ func (client *Client) ListStorageProjectsInfoWithOptions(request *ListStoragePro
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the storage details of projects.
+//
 // @param request - ListStorageProjectsInfoRequest
 //
 // @return ListStorageProjectsInfoResponse
@@ -6143,7 +6279,7 @@ func (client *Client) QueryQuota(nickname *string, request *QueryQuotaRequest) (
 
 // Summary:
 //
-// 查询quota的资源使用信息
+// Queries the time series data of resource consumption for a quota.
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -6216,7 +6352,7 @@ func (client *Client) QueryQuotaMetricWithOptions(metric *string, request *Query
 
 // Summary:
 //
-// 查询quota的资源使用信息
+// Queries the time series data of resource consumption for a quota.
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -6235,7 +6371,7 @@ func (client *Client) QueryQuotaMetric(metric *string, request *QueryQuotaMetric
 
 // Summary:
 //
-// Queries time series metrics of stored data.
+// Queries time-series metrics of data storage.
 //
 // @param request - QueryStorageMetricRequest
 //
@@ -6296,7 +6432,7 @@ func (client *Client) QueryStorageMetricWithOptions(metric *string, request *Que
 
 // Summary:
 //
-// Queries time series metrics of stored data.
+// Queries time-series metrics of data storage.
 //
 // @param request - QueryStorageMetricRequest
 //
@@ -6315,7 +6451,23 @@ func (client *Client) QueryStorageMetric(metric *string, request *QueryStorageMe
 
 // Summary:
 //
-// Queries the metrics of the Tunnel service within a specified time range.
+// Queries metric data for the Tunnel Data Transmission Service within a specified time range.
+//
+// Description:
+//
+// - You can use this API to query various Tunnel metrics, such as slot usage (`slot_usage`), slot usage limit (`slot_max`), throughput (`throughput`), throughput rate (`throughput_speed`), and number of requests (`request`).
+//
+// - The `startTime` and `endTime` parameters are required. They specify the start and end of the time range for the query. The values are UNIX timestamps in seconds.
+//
+// - The `metric` parameter is also required. It specifies the type of metric to query.
+//
+// - Depending on the value of `metric`, you may need to specify additional parameters for filtering to refine your query. These parameters include `quotaNickname`, `project`, `tableList`, `operationList`, `codeList`, `groupList`, and `topN`.
+//
+// - For some `metric` values, you must specify other parameters. For example, if `groupList` contains `table` or `ip`, you must specify the `project` parameter and other required parameters. In this case, the system returns only the top N results.
+//
+// - The `strategy` parameter defines the data aggregation logic. This logic is used when the automatic step size exceeds 60 seconds over a long time range. The default value is `max`.
+//
+// - Ensure all parameters meet the requirements in this document to prevent request failures.
 //
 // @param request - QueryTunnelMetricRequest
 //
@@ -6400,7 +6552,23 @@ func (client *Client) QueryTunnelMetricWithOptions(metric *string, request *Quer
 
 // Summary:
 //
-// Queries the metrics of the Tunnel service within a specified time range.
+// Queries metric data for the Tunnel Data Transmission Service within a specified time range.
+//
+// Description:
+//
+// - You can use this API to query various Tunnel metrics, such as slot usage (`slot_usage`), slot usage limit (`slot_max`), throughput (`throughput`), throughput rate (`throughput_speed`), and number of requests (`request`).
+//
+// - The `startTime` and `endTime` parameters are required. They specify the start and end of the time range for the query. The values are UNIX timestamps in seconds.
+//
+// - The `metric` parameter is also required. It specifies the type of metric to query.
+//
+// - Depending on the value of `metric`, you may need to specify additional parameters for filtering to refine your query. These parameters include `quotaNickname`, `project`, `tableList`, `operationList`, `codeList`, `groupList`, and `topN`.
+//
+// - For some `metric` values, you must specify other parameters. For example, if `groupList` contains `table` or `ip`, you must specify the `project` parameter and other required parameters. In this case, the system returns only the top N results.
+//
+// - The `strategy` parameter defines the data aggregation logic. This logic is used when the automatic step size exceeds 60 seconds over a long time range. The default value is `max`.
+//
+// - Ensure all parameters meet the requirements in this document to prevent request failures.
 //
 // @param request - QueryTunnelMetricRequest
 //
@@ -6419,7 +6587,23 @@ func (client *Client) QueryTunnelMetric(metric *string, request *QueryTunnelMetr
 
 // Summary:
 //
-// Queries the metrics of the Tunnel service within a specified time range.
+// Queries details about the Tunnel Data Transmission Service for a specified time range.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - You can use this API to query Tunnel metrics, including slot usage details (`slot_usage_detail`), throughput details (`throughput_detail`), and a throughput summary (`throughput_summary`).
+//
+// - The `quotaNickname` and `project` parameters cannot both be empty.
+//
+// - If the `groupList` parameter includes `table` or `ip`, the `project` parameter is required. If groupList includes `ip`, the `tableList` parameter is also required.
+//
+// - The `orderColumn` parameter supports `maxValue`, `minValue`, `avgValue`, and `sumValue` (only for `throughput_summary`). If this parameter is omitted, the results are not sorted.
+//
+// - The `ascOrder` parameter defaults to `false` (descending order).
+//
+// - The `limit` parameter specifies the number of results to return, with a default of 10 and a maximum of 100.
 //
 // @param request - QueryTunnelMetricDetailRequest
 //
@@ -6508,7 +6692,23 @@ func (client *Client) QueryTunnelMetricDetailWithOptions(metric *string, request
 
 // Summary:
 //
-// Queries the metrics of the Tunnel service within a specified time range.
+// Queries details about the Tunnel Data Transmission Service for a specified time range.
+//
+// Description:
+//
+// ## Usage notes
+//
+// - You can use this API to query Tunnel metrics, including slot usage details (`slot_usage_detail`), throughput details (`throughput_detail`), and a throughput summary (`throughput_summary`).
+//
+// - The `quotaNickname` and `project` parameters cannot both be empty.
+//
+// - If the `groupList` parameter includes `table` or `ip`, the `project` parameter is required. If groupList includes `ip`, the `tableList` parameter is also required.
+//
+// - The `orderColumn` parameter supports `maxValue`, `minValue`, `avgValue`, and `sumValue` (only for `throughput_summary`). If this parameter is omitted, the results are not sorted.
+//
+// - The `ascOrder` parameter defaults to `false` (descending order).
+//
+// - The `limit` parameter specifies the number of results to return, with a default of 10 and a maximum of 100.
 //
 // @param request - QueryTunnelMetricDetailRequest
 //
@@ -6527,7 +6727,7 @@ func (client *Client) QueryTunnelMetricDetail(metric *string, request *QueryTunn
 
 // Summary:
 //
-// Retries a migration job.
+// Retries a data migration job.
 //
 // @param headers - map
 //
@@ -6560,7 +6760,7 @@ func (client *Client) RetryMmsJobWithOptions(sourceId *string, jobId *string, he
 
 // Summary:
 //
-// Retries a migration job.
+// Retries a data migration job.
 //
 // @return RetryMmsJobResponse
 func (client *Client) RetryMmsJob(sourceId *string, jobId *string) (_result *RetryMmsJobResponse, _err error) {
@@ -6577,7 +6777,13 @@ func (client *Client) RetryMmsJob(sourceId *string, jobId *string) (_result *Ret
 
 // Summary:
 //
-// # RetryMmsTask
+// Retries a migration task.
+//
+// Description:
+//
+// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for the data transfer service, dedicated resource groups, and elastic reserved compute resources.
 //
 // @param request - RetryMmsTaskRequest
 //
@@ -6618,7 +6824,13 @@ func (client *Client) RetryMmsTaskWithOptions(sourceId *string, taskId *string, 
 
 // Summary:
 //
-// # RetryMmsTask
+// Retries a migration task.
+//
+// Description:
+//
+// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for the data transfer service, dedicated resource groups, and elastic reserved compute resources.
 //
 // @param request - RetryMmsTaskRequest
 //
@@ -6637,7 +6849,7 @@ func (client *Client) RetryMmsTask(sourceId *string, taskId *string, request *Re
 
 // Summary:
 //
-// Starts a migration job.
+// Starts a data migration job.
 //
 // @param headers - map
 //
@@ -6670,7 +6882,7 @@ func (client *Client) StartMmsJobWithOptions(sourceId *string, jobId *string, he
 
 // Summary:
 //
-// Starts a migration job.
+// Starts a data migration job.
 //
 // @return StartMmsJobResponse
 func (client *Client) StartMmsJob(sourceId *string, jobId *string) (_result *StartMmsJobResponse, _err error) {
@@ -6687,7 +6899,7 @@ func (client *Client) StartMmsJob(sourceId *string, jobId *string) (_result *Sta
 
 // Summary:
 //
-// Stops a migration job.
+// Stops a data migration job.
 //
 // @param headers - map
 //
@@ -6720,7 +6932,7 @@ func (client *Client) StopMmsJobWithOptions(sourceId *string, jobId *string, hea
 
 // Summary:
 //
-// Stops a migration job.
+// Stops a data migration job.
 //
 // @return StopMmsJobResponse
 func (client *Client) StopMmsJob(sourceId *string, jobId *string) (_result *StopMmsJobResponse, _err error) {
@@ -6737,7 +6949,11 @@ func (client *Client) StopMmsJob(sourceId *string, jobId *string) (_result *Stop
 
 // Summary:
 //
-// 按实例统计或者按计费项统计费用信息
+// Summarizes cost information by instance or billable item.
+//
+// Description:
+//
+// Summarizes cost information by instance or billable item.
 //
 // @param request - SumBillsRequest
 //
@@ -6800,7 +7016,11 @@ func (client *Client) SumBillsWithOptions(request *SumBillsRequest, headers map[
 
 // Summary:
 //
-// 按实例统计或者按计费项统计费用信息
+// Summarizes cost information by instance or billable item.
+//
+// Description:
+//
+// Summarizes cost information by instance or billable item.
 //
 // @param request - SumBillsRequest
 //
@@ -6819,7 +7039,11 @@ func (client *Client) SumBills(request *SumBillsRequest) (_result *SumBillsRespo
 
 // Summary:
 //
-// 按实例统计或者按计费项逐日进行费用统计
+// Retrieves a daily summary of costs, grouped by instance or billable item.
+//
+// Description:
+//
+// Retrieves a daily summary of costs, grouped by instance or billable item.
 //
 // @param request - SumBillsByDateRequest
 //
@@ -6882,7 +7106,11 @@ func (client *Client) SumBillsByDateWithOptions(request *SumBillsByDateRequest, 
 
 // Summary:
 //
-// 按实例统计或者按计费项逐日进行费用统计
+// Retrieves a daily summary of costs, grouped by instance or billable item.
+//
+// Description:
+//
+// Retrieves a daily summary of costs, grouped by instance or billable item.
 //
 // @param request - SumBillsByDateRequest
 //
@@ -6901,7 +7129,11 @@ func (client *Client) SumBillsByDate(request *SumBillsByDateRequest) (_result *S
 
 // Summary:
 //
-// 按项目或者实例统计计算用量
+// Calculates the total number of usage records.
+//
+// Description:
+//
+// Calculates the total number of usage records over a specified time range.
 //
 // @param request - SumComputeMetricsByRecordRequest
 //
@@ -6956,7 +7188,11 @@ func (client *Client) SumComputeMetricsByRecordWithOptions(request *SumComputeMe
 
 // Summary:
 //
-// 按项目或者实例统计计算用量
+// Calculates the total number of usage records.
+//
+// Description:
+//
+// Calculates the total number of usage records over a specified time range.
 //
 // @param request - SumComputeMetricsByRecordRequest
 //
@@ -6975,7 +7211,11 @@ func (client *Client) SumComputeMetricsByRecord(request *SumComputeMetricsByReco
 
 // Summary:
 //
-// 统计扫描量计算类的使用量或者CU时计算类使用量
+// Aggregates compute usage by scanned data volume or CU usage.
+//
+// Description:
+//
+// Aggregates compute usage by scanned data volume or CU usage.
 //
 // @param request - SumComputeMetricsByUsageRequest
 //
@@ -7034,7 +7274,11 @@ func (client *Client) SumComputeMetricsByUsageWithOptions(request *SumComputeMet
 
 // Summary:
 //
-// 统计扫描量计算类的使用量或者CU时计算类使用量
+// Aggregates compute usage by scanned data volume or CU usage.
+//
+// Description:
+//
+// Aggregates compute usage by scanned data volume or CU usage.
 //
 // @param request - SumComputeMetricsByUsageRequest
 //
@@ -7053,7 +7297,7 @@ func (client *Client) SumComputeMetricsByUsage(request *SumComputeMetricsByUsage
 
 // Summary:
 //
-// 按实例统或者按计费项统计的明细信息
+// View a daily breakdown of costs by instance or billable item.
 //
 // @param request - SumDailyBillsByItemRequest
 //
@@ -7124,7 +7368,7 @@ func (client *Client) SumDailyBillsByItemWithOptions(request *SumDailyBillsByIte
 
 // Summary:
 //
-// 按实例统或者按计费项统计的明细信息
+// View a daily breakdown of costs by instance or billable item.
 //
 // @param request - SumDailyBillsByItemRequest
 //
@@ -7143,7 +7387,7 @@ func (client *Client) SumDailyBillsByItem(request *SumDailyBillsByItemRequest) (
 
 // Summary:
 //
-// 按照project或者存储类型按天统计存储用量
+// Retrieves aggregated storage metrics over a specified date range, grouped by project or storage class.
 //
 // @param request - SumStorageMetricsByDateRequest
 //
@@ -7202,7 +7446,7 @@ func (client *Client) SumStorageMetricsByDateWithOptions(request *SumStorageMetr
 
 // Summary:
 //
-// 按照project或者存储类型按天统计存储用量
+// Retrieves aggregated storage metrics over a specified date range, grouped by project or storage class.
 //
 // @param request - SumStorageMetricsByDateRequest
 //
@@ -7221,7 +7465,11 @@ func (client *Client) SumStorageMetricsByDate(request *SumStorageMetricsByDateRe
 
 // Summary:
 //
-// 按项目统计各种类型存储使用量统计
+// Aggregates storage usage by storage type.
+//
+// Description:
+//
+// Aggregates storage usage by storage type.
 //
 // @param request - SumStorageMetricsByTypeRequest
 //
@@ -7280,7 +7528,11 @@ func (client *Client) SumStorageMetricsByTypeWithOptions(request *SumStorageMetr
 
 // Summary:
 //
-// 按项目统计各种类型存储使用量统计
+// Aggregates storage usage by storage type.
+//
+// Description:
+//
+// Aggregates storage usage by storage type.
 //
 // @param request - SumStorageMetricsByTypeRequest
 //
@@ -7299,7 +7551,7 @@ func (client *Client) SumStorageMetricsByType(request *SumStorageMetricsByTypeRe
 
 // Summary:
 //
-// # TriggerMmsTimer
+// Triggers a timer for a specific datasource.
 //
 // @param request - TriggerMmsTimerRequest
 //
@@ -7340,7 +7592,7 @@ func (client *Client) TriggerMmsTimerWithOptions(sourceId *string, timerId *stri
 
 // Summary:
 //
-// # TriggerMmsTimer
+// Triggers a timer for a specific datasource.
 //
 // @param request - TriggerMmsTimerRequest
 //
@@ -7441,13 +7693,11 @@ func (client *Client) UpdateComputeQuotaPlan(nickname *string, request *UpdateCo
 
 // Summary:
 //
-// Update the time-based plan for computing quota.
+// Updates the time-based schedule for a computing quota.
 //
 // Description:
 //
-// Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
-//
-// <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of reserved compute units (CUs) in MaxCompute.
 //
 // @param request - UpdateComputeQuotaScheduleRequest
 //
@@ -7495,13 +7745,11 @@ func (client *Client) UpdateComputeQuotaScheduleWithOptions(nickname *string, re
 
 // Summary:
 //
-// Update the time-based plan for computing quota.
+// Updates the time-based schedule for a computing quota.
 //
 // Description:
 //
-// Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
-//
-// <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of reserved compute units (CUs) in MaxCompute.
 //
 // @param request - UpdateComputeQuotaScheduleRequest
 //
@@ -7520,7 +7768,7 @@ func (client *Client) UpdateComputeQuotaSchedule(nickname *string, request *Upda
 
 // Summary:
 //
-// Updates the basic configuration of a MaxCompute quota. For example, you can call this operation to add or delete a level-2 quota, define the basic attributes of a level-2 quota, and define the configuration of compute units (CUs) for a quota plan that is in effect.
+// Updates the basic configuration of a MaxCompute quota, including adding or deleting level-2 quotas, defining the basic attributes of a level-2 quota, and configuring compute units (CUs) for a quota plan that is in effect.
 //
 // @param request - UpdateComputeSubQuotaRequest
 //
@@ -7567,7 +7815,7 @@ func (client *Client) UpdateComputeSubQuotaWithOptions(nickname *string, request
 
 // Summary:
 //
-// Updates the basic configuration of a MaxCompute quota. For example, you can call this operation to add or delete a level-2 quota, define the basic attributes of a level-2 quota, and define the configuration of compute units (CUs) for a quota plan that is in effect.
+// Updates the basic configuration of a MaxCompute quota, including adding or deleting level-2 quotas, defining the basic attributes of a level-2 quota, and configuring compute units (CUs) for a quota plan that is in effect.
 //
 // @param request - UpdateComputeSubQuotaRequest
 //
@@ -7586,7 +7834,7 @@ func (client *Client) UpdateComputeSubQuota(nickname *string, request *UpdateCom
 
 // Summary:
 //
-// Updates the metadata of a MaxCompute Migration Assist (MMA) data source.
+// Refreshes the metadata of a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - UpdateMmsDataSourceRequest
 //
@@ -7645,7 +7893,7 @@ func (client *Client) UpdateMmsDataSourceWithOptions(sourceId *string, request *
 
 // Summary:
 //
-// Updates the metadata of a MaxCompute Migration Assist (MMA) data source.
+// Refreshes the metadata of a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - UpdateMmsDataSourceRequest
 //
@@ -7664,7 +7912,11 @@ func (client *Client) UpdateMmsDataSource(sourceId *string, request *UpdateMmsDa
 
 // Summary:
 //
-// 功能：
+// Updates the metadata of a specified database.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of Data Transmission Service dedicated resource groups and elastic reserved computing resources.
 //
 // @param request - UpdateMmsDbRequest
 //
@@ -7719,7 +7971,11 @@ func (client *Client) UpdateMmsDbWithOptions(sourceId *string, dbId *string, req
 
 // Summary:
 //
-// 功能：
+// Updates the metadata of a specified database.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of Data Transmission Service dedicated resource groups and elastic reserved computing resources.
 //
 // @param request - UpdateMmsDbRequest
 //
@@ -7738,7 +7994,13 @@ func (client *Client) UpdateMmsDb(sourceId *string, dbId *string, request *Updat
 
 // Summary:
 //
-// 更新表元数据
+// Updates table metadata.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups for data transmission and elastic reserved computing resources.
 //
 // @param request - UpdateMmsTableRequest
 //
@@ -7797,7 +8059,13 @@ func (client *Client) UpdateMmsTableWithOptions(sourceId *string, tableId *strin
 
 // Summary:
 //
-// 更新表元数据
+// Updates table metadata.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of exclusive resource groups for data transmission and elastic reserved computing resources.
 //
 // @param request - UpdateMmsTableRequest
 //
@@ -7816,7 +8084,13 @@ func (client *Client) UpdateMmsTable(sourceId *string, tableId *string, request 
 
 // Summary:
 //
-// 更新表元数据
+// Updates table metadata.
+//
+// Description:
+//
+// Before you call this API, make sure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for Data Transmission Service exclusive resource groups and elastic reserved computing resources.
 //
 // @param request - UpdateMmsTablesRequest
 //
@@ -7883,7 +8157,13 @@ func (client *Client) UpdateMmsTablesWithOptions(sourceId *string, request *Upda
 
 // Summary:
 //
-// 更新表元数据
+// Updates table metadata.
+//
+// Description:
+//
+// Before you call this API, make sure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)
+//
+// <props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for Data Transmission Service exclusive resource groups and elastic reserved computing resources.
 //
 // @param request - UpdateMmsTablesRequest
 //
@@ -7902,7 +8182,11 @@ func (client *Client) UpdateMmsTables(sourceId *string, request *UpdateMmsTables
 
 // Summary:
 //
-// # UpdateMmsTimer
+// Updates a scheduled task.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of dedicated resource groups and elastic reserved compute resources for Data Transmission Service.
 //
 // @param request - UpdateMmsTimerRequest
 //
@@ -7925,6 +8209,14 @@ func (client *Client) UpdateMmsTimerWithOptions(sourceId *string, timerId *strin
 
 	if !dara.IsNil(request.Stopped) {
 		body["stopped"] = request.Stopped
+	}
+
+	if !dara.IsNil(request.TableBlackList) {
+		body["tableBlackList"] = request.TableBlackList
+	}
+
+	if !dara.IsNil(request.TableWhiteList) {
+		body["tableWhiteList"] = request.TableWhiteList
 	}
 
 	if !dara.IsNil(request.Value) {
@@ -7957,7 +8249,11 @@ func (client *Client) UpdateMmsTimerWithOptions(sourceId *string, timerId *strin
 
 // Summary:
 //
-// # UpdateMmsTimer
+// Updates a scheduled task.
+//
+// Description:
+//
+// Before you call this operation, make sure that you fully understand the <props="china">[billing methods and pricing](https://www.alibabacloud.com/help/en/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of dedicated resource groups and elastic reserved compute resources for Data Transmission Service.
 //
 // @param request - UpdateMmsTimerRequest
 //
@@ -8037,7 +8333,7 @@ func (client *Client) UpdatePackage(projectName *string, packageName *string, re
 
 // Summary:
 //
-// # Update Project Basic Information
+// Modifies the basic information of a project.
 //
 // @param request - UpdateProjectBasicMetaRequest
 //
@@ -8088,7 +8384,7 @@ func (client *Client) UpdateProjectBasicMetaWithOptions(projectName *string, req
 
 // Summary:
 //
-// # Update Project Basic Information
+// Modifies the basic information of a project.
 //
 // @param request - UpdateProjectBasicMetaRequest
 //
@@ -8234,7 +8530,7 @@ func (client *Client) UpdateProjectIpWhiteList(projectName *string, request *Upd
 
 // Summary:
 //
-// 将project的二层模型升级为三层模型
+// Upgrades a project\\"s Layer 2 model to a Layer 3 model.
 //
 // @param headers - map
 //
@@ -8267,7 +8563,7 @@ func (client *Client) UpdateProjectModelTierWithOptions(projectName *string, hea
 
 // Summary:
 //
-// 将project的二层模型升级为三层模型
+// Upgrades a project\\"s Layer 2 model to a Layer 3 model.
 //
 // @return UpdateProjectModelTierResponse
 func (client *Client) UpdateProjectModelTier(projectName *string) (_result *UpdateProjectModelTierResponse, _err error) {
@@ -8426,11 +8722,11 @@ func (client *Client) UpdateQuotaSchedule(nickname *string, request *UpdateQuota
 
 // Summary:
 //
-// Updates the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
+// Updates the time-based auto-scaling configuration for an exclusive resource group for Data Transmission Service (Tunnel Quota).
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the [billing and prices](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of Tunnel quotas and elastically reserved computing resources.
+// Before you call this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive Data Transmission Service resource groups and elastic reserved computing resources.
 //
 // @param request - UpdateTunnelQuotaTimerRequest
 //
@@ -8478,11 +8774,11 @@ func (client *Client) UpdateTunnelQuotaTimerWithOptions(nickname *string, reques
 
 // Summary:
 //
-// Updates the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
+// Updates the time-based auto-scaling configuration for an exclusive resource group for Data Transmission Service (Tunnel Quota).
 //
 // Description:
 //
-// Before you call this operation, make sure that you are familiar with the [billing and prices](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of Tunnel quotas and elastically reserved computing resources.
+// Before you call this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive Data Transmission Service resource groups and elastic reserved computing resources.
 //
 // @param request - UpdateTunnelQuotaTimerRequest
 //
@@ -8501,7 +8797,7 @@ func (client *Client) UpdateTunnelQuotaTimer(nickname *string, request *UpdateTu
 
 // Summary:
 //
-// Add or remove users from a project role.
+// Adds or removes users from a project role.
 //
 // @param request - UpdateUsersToRoleRequest
 //
@@ -8552,7 +8848,7 @@ func (client *Client) UpdateUsersToRoleWithOptions(projectName *string, roleName
 
 // Summary:
 //
-// Add or remove users from a project role.
+// Adds or removes users from a project role.
 //
 // @param request - UpdateUsersToRoleRequest
 //

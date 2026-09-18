@@ -131,8 +131,6 @@ type GetComputeQuotaPlanResponseBodyData struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// Whether it is currently effective.
 	//
-	// >
-	//
 	// > - A Quota plan that has taken effect cannot be deleted, i.e., isEffective=true
 	//
 	// example:

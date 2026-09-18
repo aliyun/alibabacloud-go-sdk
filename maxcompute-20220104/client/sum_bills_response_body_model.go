@@ -18,11 +18,16 @@ type iSumBillsResponseBody interface {
 }
 
 type SumBillsResponseBody struct {
+	// The returned result.
 	Data *SumBillsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BB66A390-4EF7-557E-9489-7F98D6F44002
@@ -74,11 +79,16 @@ func (s *SumBillsResponseBody) Validate() error {
 }
 
 type SumBillsResponseBodyData struct {
+	// The currency used for all cost values.
+	//
 	// example:
 	//
 	// CNY
-	Currency  *string                              `json:"currency,omitempty" xml:"currency,omitempty"`
+	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// A list of billable items.
 	ItemBills []*SumBillsResponseBodyDataItemBills `json:"itemBills,omitempty" xml:"itemBills,omitempty" type:"Repeated"`
+	// The total cost of all returned billable items.
+	//
 	// example:
 	//
 	// 123.56
@@ -134,18 +144,26 @@ func (s *SumBillsResponseBodyData) Validate() error {
 }
 
 type SumBillsResponseBodyDataItemBills struct {
+	// The cost.
+	//
 	// example:
 	//
 	// 123.56
 	Cost *string `json:"cost,omitempty" xml:"cost,omitempty"`
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The item name. When the request\\"s `statsType` is `PROJECT`, this is the instance name. When `statsType` is `FEE_ITEM`, this is the billable item type (for example, `DRStorage`, `ComputationSql`, or `Storage`).
+	//
 	// example:
 	//
 	// projectName
 	ItemName *string `json:"itemName,omitempty" xml:"itemName,omitempty"`
+	// The percentage of the total cost that this item represents. The value does not include a percent sign (%).
+	//
 	// example:
 	//
 	// 56.12

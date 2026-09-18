@@ -20,15 +20,22 @@ type iCreateMmsDataSourceRequest interface {
 }
 
 type CreateMmsDataSourceRequest struct {
+	// The data source configurations. Call ListMmsDataSourceConfigItems first to retrieve the valid and required configuration items for the target data source type, and then construct this object accordingly.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the MaxCompute network connectivity.
+	//
 	// example:
 	//
 	// vpc-uf6pc2vordian33gobzfr:cn-shanghai
 	Networklink *string `json:"networklink,omitempty" xml:"networklink,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// BIGQUERY

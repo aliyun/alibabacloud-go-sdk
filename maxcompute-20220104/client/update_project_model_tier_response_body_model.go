@@ -22,6 +22,8 @@ type iUpdateProjectModelTierResponseBody interface {
 }
 
 type UpdateProjectModelTierResponseBody struct {
+	// The data returned.
+	//
 	// example:
 	//
 	// "data":{
@@ -32,18 +34,28 @@ type UpdateProjectModelTierResponseBody struct {
 	//
 	// 	}
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// - If the request fails, an error code is returned.
+	//
+	// - If the request is successful, this parameter is empty.
+	//
 	// example:
 	//
 	// OBJECT_NOT_EXIST
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// this project is not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Indicates whether the operation was successful. A value other than 200 indicates that the operation failed.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 73207140-0FD5-588A-B11A-3CE093924196

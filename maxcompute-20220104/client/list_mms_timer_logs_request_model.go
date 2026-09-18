@@ -16,10 +16,14 @@ type iListMmsTimerLogsRequest interface {
 }
 
 type ListMmsTimerLogsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

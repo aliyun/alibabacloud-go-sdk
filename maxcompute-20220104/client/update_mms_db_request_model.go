@@ -18,14 +18,20 @@ type iUpdateMmsDbRequest interface {
 }
 
 type UpdateMmsDbRequest struct {
+	// The name of the destination schema in MaxCompute.
+	//
 	// example:
 	//
 	// default
 	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// The name of the destination MaxCompute project.
+	//
 	// example:
 	//
 	// dst_project_name
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// The migration status.
+	//
 	// example:
 	//
 	// INIT

@@ -143,13 +143,13 @@ type ListTablesResponseBodyDataTables struct {
 	//
 	// example:
 	//
-	// dim_odps
+	// sale_detail
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the table.
 	//
 	// example:
 	//
-	// 1887853961230110
+	// 188785396123****
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The schema to which the table belongs.
 	//

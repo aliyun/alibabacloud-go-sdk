@@ -22,19 +22,38 @@ type iQueryStorageMetricResponseBody interface {
 }
 
 type QueryStorageMetricResponseBody struct {
+	// The data returned.
 	Data *QueryStorageMetricResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 0A3B1FD2006A24C8D8BE65CDAC028298
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	//
+	// - 1xx: Informational - The request was received and is being processed.
+	//
+	// - 2xx: Success - The request was successfully received, understood, and accepted by the server.
+	//
+	// - 3xx: Redirection - The request was redirected. Further action is needed to complete the request.
+	//
+	// - 4xx: Client error - The request contains incorrect parameters or syntax, or cannot be fulfilled.
+	//
+	// - 5xx: Server error - The server failed to fulfill the request for other reasons.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0be3e0bb16654558425251398e27a9
@@ -104,15 +123,22 @@ func (s *QueryStorageMetricResponseBody) Validate() error {
 }
 
 type QueryStorageMetricResponseBodyData struct {
+	// The category of the metric.
+	//
 	// example:
 	//
 	// storage
-	Category *string                                      `json:"category,omitempty" xml:"category,omitempty"`
-	Metrics  []*QueryStorageMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The metric values.
+	Metrics []*QueryStorageMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// summary
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The step size of the monitoring data.
+	//
 	// example:
 	//
 	// 3600
@@ -177,8 +203,10 @@ func (s *QueryStorageMetricResponseBodyData) Validate() error {
 }
 
 type QueryStorageMetricResponseBodyDataMetrics struct {
+	// The metadata of the metric.
 	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
-	Values [][]*float64       `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	// The time series data.
+	Values [][]*float64 `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s QueryStorageMetricResponseBodyDataMetrics) String() string {

@@ -22,19 +22,28 @@ type iSumBillsByDateRequest interface {
 }
 
 type SumBillsByDateRequest struct {
+	// The end time of the cost statistics period.
+	//
 	// example:
 	//
 	// 1718590596556
-	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// A list of instance names. In this context, an instance is a MaxCompute project.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The start time of the cost statistics period.
+	//
 	// example:
 	//
 	// 1715393576201
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The statistics type. Valid values: `PROJECT` (by instance) and `FEE_ITEM` (by billable item).
+	//
 	// example:
 	//
 	// PROJECT
 	StatsType *string `json:"statsType,omitempty" xml:"statsType,omitempty"`
+	// The number of top results to return, sorted by cost.
+	//
 	// example:
 	//
 	// 8

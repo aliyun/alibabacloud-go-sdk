@@ -24,26 +24,38 @@ type iListMmsTimersRequest interface {
 }
 
 type ListMmsTimersRequest struct {
+	// The timer name.
+	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The source database name.
+	//
 	// example:
 	//
 	// test_db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// The source table name.
+	//
 	// example:
 	//
 	// test_table_1
 	SrcTableName *string `json:"srcTableName,omitempty" xml:"srcTableName,omitempty"`
+	// Filters timers by their stopped state.
+	//
 	// example:
 	//
 	// false

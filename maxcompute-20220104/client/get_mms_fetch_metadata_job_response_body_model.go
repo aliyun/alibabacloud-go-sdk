@@ -16,7 +16,10 @@ type iGetMmsFetchMetadataJobResponseBody interface {
 }
 
 type GetMmsFetchMetadataJobResponseBody struct {
+	// The returned data.
 	Data *GetMmsFetchMetadataJobResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5CA6292A-E301-5CD8-B4E2-AF060F99147B
@@ -59,34 +62,50 @@ func (s *GetMmsFetchMetadataJobResponseBody) Validate() error {
 }
 
 type GetMmsFetchMetadataJobResponseBodyData struct {
+	// The time when metadata synchronization ended.
+	//
 	// example:
 	//
 	// 2024-12-16 19:10:07
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// unexpected exception
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// 1000002
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The progress of metadata synchronization. Valid values: 1 to 10000.
+	//
 	// example:
 	//
 	// 5000
 	Progress *float32 `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The result of metadata synchronization.
+	//
 	// example:
 	//
 	// {"databases":5,"tables":75,"partitions":215}
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000015
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The time when metadata synchronization started.
+	//
 	// example:
 	//
 	// 2024-12-16 19:09:37
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The status of the asynchronous task for metadata synchronization.
+	//
 	// example:
 	//
 	// SCAN_DOING

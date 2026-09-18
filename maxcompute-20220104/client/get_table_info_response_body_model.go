@@ -92,7 +92,7 @@ type GetTableInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// project_name.schema_name.table_name
+	// odps_project.default.sale_detail
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The number of file of the table.
 	//
@@ -178,7 +178,7 @@ type GetTableInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// 188785396123****
+	// ALIYUN$odps****@aliyunid.com
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The information about partition key columns. This response parameter is returned only for partitioned tables.
 	PartitionColumns []*GetTableInfoResponseBodyDataPartitionColumns `json:"partitionColumns,omitempty" xml:"partitionColumns,omitempty" type:"Repeated"`
@@ -192,7 +192,7 @@ type GetTableInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// projectA
+	// odps_project
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
 	// Indicates whether the query rewrite operation can be performed by using the materialized view. This response parameter is returned when type is set to materializedView.
 	//
@@ -234,17 +234,17 @@ type GetTableInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// :o_orderkey,:o_orderdate,o_custkey,o_orderstatus,o_totalprice
+	// o_orderkey,o_orderdate,o_custkey,o_orderstatus,o_totalprice
 	TablestoreColumnsMapping *string `json:"tablestoreColumnsMapping,omitempty" xml:"tablestoreColumnsMapping,omitempty"`
 	// The type of the table or view. Valid values:
 	//
-	// 	- **internal**: internal table
+	// - **internal**: internal table
 	//
-	// 	- **external**: external table
+	// - **external**: external table
 	//
-	// 	- **view**: view
+	// - **view**: view
 	//
-	// 	- **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
+	// - **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
 	//
 	// example:
 	//
@@ -718,7 +718,7 @@ type GetTableInfoResponseBodyDataNativeColumns struct {
 	//
 	// example:
 	//
-	// The name of shop.
+	// Store name
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The sensitivity-level label of the column. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
 	//
@@ -793,7 +793,7 @@ type GetTableInfoResponseBodyDataPartitionColumns struct {
 	//
 	// example:
 	//
-	// Sale date.
+	// Sales date
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The sensitivity-level label of the column. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
 	//
@@ -805,7 +805,7 @@ type GetTableInfoResponseBodyDataPartitionColumns struct {
 	//
 	// example:
 	//
-	// sale_date
+	// ds=\\"20190130\\"
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The partition column type.
 	//

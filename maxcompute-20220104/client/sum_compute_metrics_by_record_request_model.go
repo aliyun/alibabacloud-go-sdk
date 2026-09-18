@@ -18,11 +18,16 @@ type iSumComputeMetricsByRecordRequest interface {
 }
 
 type SumComputeMetricsByRecordRequest struct {
+	// The end of the time range to query, specified as a required Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1718590596556
-	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The list of project names.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The start of the time range to query, specified as a required Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1715393576201

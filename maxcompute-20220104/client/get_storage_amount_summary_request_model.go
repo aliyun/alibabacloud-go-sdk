@@ -18,14 +18,20 @@ type iGetStorageAmountSummaryRequest interface {
 }
 
 type GetStorageAmountSummaryRequest struct {
+	// The date for statistics collection. The value is at the day level and must be in the YYYYMMdd format.
+	//
 	// example:
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management*	- > **Tenant Properties*	- in the left-side navigation pane.
+	//
 	// example:
 	//
 	// 478403690625249

@@ -16,10 +16,14 @@ type iDeleteRoleResponseBody interface {
 }
 
 type DeleteRoleResponseBody struct {
+	// The returned data. A value of `success` indicates that the operation succeeded.
+	//
 	// example:
 	//
 	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0adb901117579891946416405d0409

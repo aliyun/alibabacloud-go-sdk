@@ -22,31 +22,31 @@ type iGetProjectResponseBody interface {
 }
 
 type GetProjectResponseBody struct {
-	// The data returned.
+	// The response result.
 	Data *GetProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
 	//
 	// example:
 	//
-	// 040002
+	// OBJECT_NOT_EXIST
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// error message.
+	// This object does not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
-	// 	- 1xx: informational response. The request is received and is being processed.
+	// - 1xx: Informational response - The request has been received and is being processed.
 	//
-	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
+	// - 2xx: Success - The request has been successfully received, understood, and accepted by the server.
 	//
-	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	// - 3xx: Redirection - The request has been redirected. Further action is required to complete the request.
 	//
-	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+	// - 4xx: Client error - The request contains incorrect parameters, syntax errors, or specific request conditions cannot be met.
 	//
-	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
+	// - 5xx: Server error - The server is unable to fulfill the request due to other reasons.
 	//
 	// example:
 	//
@@ -127,9 +127,11 @@ type GetProjectResponseBodyData struct {
 	//
 	// example:
 	//
-	// maxcompute project
+	// BI_Analysis
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The total storage usage. The storage space that is occupied by your project, which is the logical storage space after your project data is collected and compressed.
+	// The total storage size.
+	//
+	// Views the current storage size of the project. This storage size is consistent with the metering caliber, which is the logical storage size after compression at the Project level.
 	//
 	// example:
 	//
@@ -141,13 +143,17 @@ type GetProjectResponseBodyData struct {
 	//
 	// 1704380838000
 	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The default computing quota that is used to allocate computing resources. If you do not specify a computing quota for your project, the jobs that are initiated by your project consume the computing resources in the default quota. For more information about how to use computing resources, see [Use quota groups for computing resources](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources).
+	// The default computing quota.
+	//
+	// Used to allocate computing resources. If no computing quota is specified, jobs initiated by this project will consume resources from the default quota. For more information about computing resource usage, see <props="china">[Computing Resources - Quota Usage](https://help.aliyun.com/zh/maxcompute/user-guide/use-of-computing-resources)
+	//
+	// <props="intl">[Computing Resources - Quota Usage](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources).
 	//
 	// example:
 	//
-	// quota_a
+	// os_PayAsYouGoQuota
 	DefaultQuota *string `json:"defaultQuota,omitempty" xml:"defaultQuota,omitempty"`
-	// The information about the IP address whitelist.
+	// The IP whitelist.
 	IpWhiteList *GetProjectResponseBodyDataIpWhiteList `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Struct"`
 	// The project name.
 	//
@@ -159,9 +165,9 @@ type GetProjectResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1565950907343451
+	// ALIYUN$odps****@aliyunid.com
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The billing method of the default computing quota.
+	// The billing mode of the default computing quota.
 	//
 	// example:
 	//
@@ -175,27 +181,31 @@ type GetProjectResponseBodyData struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The instance ID and billing method of the default computing quota.
+	// The instance ID and billing type of the default computing quota.
 	SaleTag *GetProjectResponseBodyDataSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The permission properties.
 	SecurityProperties *GetProjectResponseBodyDataSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
 	// The project status. Valid values:
 	//
-	// 	- **AVAILABLE**
+	// - **AVAILABLE**: normal.
 	//
-	// 	- **READONLY**
+	// - **READONLY**: read-only.
 	//
-	// 	- **FROZEN**
+	// - **FROZEN**: frozen.
 	//
-	// 	- **DELETING**
+	// - **DELETING**: being deleted.
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The list of `Super_Administrator` role members of the project.
+	// The list of members with the `Super_Administrator` role in the project.
 	SuperAdmins []*string `json:"superAdmins,omitempty" xml:"superAdmins,omitempty" type:"Repeated"`
-	// Indicates whether data storage by schema is supported. MaxCompute supports the schema feature. This feature allows you to classify objects such as tables, resources, and user-defined functions (UDFs) in a project by schema. You can create multiple schemas in a project. For more information, see [Schema-related operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations).
+	// Whether schema-based storage is supported.
+	//
+	// MaxCompute supports Schema, which is an object between Project and Table/Resource/UDF for categorizing Tables, Resources, and UDFs. A Project can contain multiple Schemas. For more information, see <props="china">[Schema Operations](https://help.aliyun.com/zh/maxcompute/user-guide/schema-related-operations)
+	//
+	// <props="intl">[Schema Operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations).
 	//
 	// example:
 	//
@@ -203,9 +213,9 @@ type GetProjectResponseBodyData struct {
 	ThreeTierModel *bool `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
 	// The project type. Valid values:
 	//
-	// 	- **managed**: internal project
+	// - **managed**: internal project.
 	//
-	// 	- **external**: external project
+	// - **external**: external project.
 	//
 	// example:
 	//
@@ -390,17 +400,17 @@ func (s *GetProjectResponseBodyData) Validate() error {
 }
 
 type GetProjectResponseBodyDataIpWhiteList struct {
-	// The IP address whitelist for access over the Internet or the network for interconnecting with other Alibaba Cloud services.
+	// The IP whitelist for public network and cloud product interconnection network.
 	//
-	// >  If you configure only the IP address whitelist for access over the Internet or the network for interconnecting with other Alibaba Cloud services, the access over the Internet or the network for interconnecting with other Alibaba Cloud services is subject to configurations, and access over a virtual private cloud (VPC) is not allowed.
+	// > If only the public network and cloud product interconnection network IP whitelist is configured, access through the public network and cloud product interconnection network is restricted by the configuration, and all VPC network access is prohibited.
 	//
 	// example:
 	//
 	// 10.88.111.3
 	IpList *string `json:"ipList,omitempty" xml:"ipList,omitempty"`
-	// The IP address whitelist for access over a VPC.
+	// The VPC network IP whitelist.
 	//
-	// >  If you configure only the IP address whitelist for access over a VPC, the access over a VPC is subject to configurations, and the access over the Internet or the network for interconnecting with other Alibaba Cloud services is not allowed.
+	// > If only the VPC network IP whitelist is configured, VPC network access is restricted by the configuration, and all public network and cloud product interconnection network access is prohibited.
 	//
 	// example:
 	//
@@ -439,44 +449,47 @@ func (s *GetProjectResponseBodyDataIpWhiteList) Validate() error {
 }
 
 type GetProjectResponseBodyDataProperties struct {
-	// Indicates whether a full table scan is allowed in the project. A full table scan occupies a large number of resources, which reduces data processing efficiency. By default, the full table scan feature is disabled.
+	// Whether full table scans are allowed in the project. Full table scans consume significant resources, so this feature is disabled by default to improve processing efficiency.
 	//
 	// example:
 	//
 	// false
 	AllowFullScan *bool  `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
 	AutoMvQuotaGb *int64 `json:"autoMvQuotaGb,omitempty" xml:"autoMvQuotaGb,omitempty"`
-	// The Tunnel parent resource group that is bound to the project. You do not need to pay attention to this group.
+	// The parent group of the Data Transfer Service resource group bound to the project (can be ignored).
 	//
 	// example:
 	//
-	// No value
-	ElderTunnelQuota *string `json:"elderTunnelQuota,omitempty" xml:"elderTunnelQuota,omitempty"`
-	EnableAutoMv     *bool   `json:"enableAutoMv,omitempty" xml:"enableAutoMv,omitempty"`
-	// Indicates whether the DECIMAL type of the MaxCompute V2.0 data type edition is enabled.
+	// Default_p
+	ElderTunnelQuota  *string `json:"elderTunnelQuota,omitempty" xml:"elderTunnelQuota,omitempty"`
+	EnableAutoMv      *bool   `json:"enableAutoMv,omitempty" xml:"enableAutoMv,omitempty"`
+	EnableDataMasking *bool   `json:"enableDataMasking,omitempty" xml:"enableDataMasking,omitempty"`
+	// Whether the MaxCompute 2.0 Decimal data type is enabled for the project.
 	//
 	// example:
 	//
 	// true
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
 	EnableDr       *bool `json:"enableDr,omitempty" xml:"enableDr,omitempty"`
-	// Indicates whether external table caching is forcefully enabled.
+	// Whether to force enable external table caching.
 	//
 	// example:
 	//
 	// true
 	EnableFdcCacheForce *bool `json:"enableFdcCacheForce,omitempty" xml:"enableFdcCacheForce,omitempty"`
-	// Indicates whether [tiered storage](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage) is enabled.
+	// Whether <props="china">[tiered storage](https://help.aliyun.com/zh/maxcompute/user-guide/tiered-storage)
+	//
+	// <props="intl">[tiered storage](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage) is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableTieredStorage *bool `json:"enableTieredStorage,omitempty" xml:"enableTieredStorage,omitempty"`
-	// Indicates whether the routing of the Tunnel resource group is enabled.
+	// Whether the Data Transfer Service resource group routing is enabled.
 	//
-	// 	- true: The data transfer tasks that are submitted by the project by default use the Tunnel resource group that is bound to the project.
+	// - true: Data Transfer Service tasks submitted by this project will use the bound Data Transfer Service resource group by default.
 	//
-	// 	- false: The data transfer tasks that are submitted by the project by default use the Tunnel shared resource group.
+	// - false: Data Transfer Service tasks submitted by this project will use the Data Transfer Service shared resource group by default.
 	//
 	// example:
 	//
@@ -484,57 +497,69 @@ type GetProjectResponseBodyDataProperties struct {
 	EnableTunnelQuotaRoute *bool `json:"enableTunnelQuotaRoute,omitempty" xml:"enableTunnelQuotaRoute,omitempty"`
 	// The storage encryption properties.
 	Encryption *GetProjectResponseBodyDataPropertiesEncryption `json:"encryption,omitempty" xml:"encryption,omitempty" type:"Struct"`
-	// The properties of the external project.
+	// The external project properties.
 	ExternalProjectProperties *GetProjectResponseBodyDataPropertiesExternalProjectProperties `json:"externalProjectProperties,omitempty" xml:"externalProjectProperties,omitempty" type:"Struct"`
-	// The quota for external table caching.
+	// The external table cache quota.
 	//
 	// example:
 	//
 	// fdc_quota
 	FdcQuota *string `json:"fdcQuota,omitempty" xml:"fdcQuota,omitempty"`
-	// The retention period for backup data. Unit: days. During the retention period, you can restore data of the version in use to the backup data of any version. Valid values: [0,30]. Default value: 1. The value 0 indicates that the backup feature is disabled.
+	// The number of days to retain backup data. During this period, you can restore the current version to any backed-up data version.
+	//
+	// Valid values: [0, 30]. Default value: 1. A value of 0 indicates that the backup feature is disabled.
 	//
 	// example:
 	//
 	// 1
 	RetentionDays *int64 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
-	// The maximum consumption threshold of a single SQL statement. Formula: Amount of scanned data (GB) × Complexity.
+	// The maximum threshold for single SQL consumption.
+	//
+	// Unit: scan volume (GB) × complexity.
 	//
 	// example:
 	//
 	// 1500
 	SqlMeteringMax *string `json:"sqlMeteringMax,omitempty" xml:"sqlMeteringMax,omitempty"`
-	// The [storage tier](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage) information.
+	// The <props="china">[tiered storage](https://help.aliyun.com/zh/maxcompute/user-guide/tiered-storage)
+	//
+	// <props="intl">[tiered storage](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage) information.
 	StorageTierInfo *GetProjectResponseBodyDataPropertiesStorageTierInfo `json:"storageTierInfo,omitempty" xml:"storageTierInfo,omitempty" type:"Struct"`
-	// The table lifecycle properties.
+	// The lifecycle properties of tables.
 	TableLifecycle *GetProjectResponseBodyDataPropertiesTableLifecycle `json:"tableLifecycle,omitempty" xml:"tableLifecycle,omitempty" type:"Struct"`
-	// The [properties of tiered storage lifecycle rules](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage#f61fc9db76nna). After you configure the properties, the system triggers automatic switching of storage tiers based on the rules.
+	// The <props="china">[tiered storage lifecycle rules](https://help.aliyun.com/zh/maxcompute/user-guide/tiered-storage#f61fc9db76nna)
+	//
+	// <props="intl">[tiered storage lifecycle rules](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage#f61fc9db76nna) properties. After configuration, the system will trigger automatic storage tier conversion based on these rules.
 	TableLifecycleConfig *GetProjectResponseBodyDataPropertiesTableLifecycleConfig `json:"tableLifecycleConfig,omitempty" xml:"tableLifecycleConfig,omitempty" type:"Struct"`
-	// The time zone that is used by your project. The time zone is the same as the time zone specified by `odps.sql.timezone`.
+	// The project timezone, which is the `odps.sql.timezone` property.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The [Tunnel](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group that is bound to the project.
+	// The <props="china">[Data Transfer Service](https://help.aliyun.com/zh/maxcompute/user-guide/overview-of-dts)
 	//
-	// 	- Default resource group: The Tunnel shared resource group is used. You cannot use the subscription-based Tunnel resource group for the project. The default resource group is automatically used by the Tunnel service of your project, regardless of the parameter setting.
+	// <props="intl">[Data Transfer Service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group bound to the project.
 	//
-	// 	- Subscription-based Tunnel resource group: You can use the subscription-based Tunnel resource group for the project.
+	// - Default (Data Transfer Service shared resource group): This project is not allowed to use the Data Transfer Service (subscription) resource group. Regardless of the default Data Transfer Service resource group setting, Data Transfer Service tasks submitted by this project will automatically use the Default resource group.
+	//
+	// - Data Transfer Service (subscription) resource group: This project is allowed to use the Data Transfer Service (subscription) resource group.
 	//
 	// example:
 	//
-	// Quota
+	// Default
 	TunnelQuota *string `json:"tunnelQuota,omitempty" xml:"tunnelQuota,omitempty"`
 	// The data type edition. Valid values:
 	//
-	// 	- **1**: MaxCompute V1.0 data type edition
+	// - **1**: Edition 1.0.
 	//
-	// 	- **2**: MaxCompute V2.0 data type edition
+	// - **2**: Edition 2.0.
 	//
-	// 	- **hive**: Hive-compatible data type edition
+	// - **hive**: Hive-compatible type.
 	//
-	// For more information about the differences among the three data type editions, see [Data type editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
+	// For differences among the three data type editions, see <props="china">[Data Type Editions](https://help.aliyun.com/zh/maxcompute/user-guide/data-type-editions)
+	//
+	// <props="intl">[Data Type Editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
 	//
 	// example:
 	//
@@ -564,6 +589,10 @@ func (s *GetProjectResponseBodyDataProperties) GetElderTunnelQuota() *string {
 
 func (s *GetProjectResponseBodyDataProperties) GetEnableAutoMv() *bool {
 	return s.EnableAutoMv
+}
+
+func (s *GetProjectResponseBodyDataProperties) GetEnableDataMasking() *bool {
+	return s.EnableDataMasking
 }
 
 func (s *GetProjectResponseBodyDataProperties) GetEnableDecimal2() *bool {
@@ -647,6 +676,11 @@ func (s *GetProjectResponseBodyDataProperties) SetElderTunnelQuota(v string) *Ge
 
 func (s *GetProjectResponseBodyDataProperties) SetEnableAutoMv(v bool) *GetProjectResponseBodyDataProperties {
 	s.EnableAutoMv = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataProperties) SetEnableDataMasking(v bool) *GetProjectResponseBodyDataProperties {
+	s.EnableDataMasking = &v
 	return s
 }
 
@@ -760,21 +794,23 @@ func (s *GetProjectResponseBodyDataProperties) Validate() error {
 }
 
 type GetProjectResponseBodyDataPropertiesEncryption struct {
-	// The data encryption algorithm that is supported by the key. Valid values: AES256, AESCTR, and RC4.
+	// The data encryption algorithm. Supported encryption algorithms include AES256, AESCTR, and RC4.
 	//
 	// example:
 	//
-	// SHA1
+	// AES256
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
-	// Indicates whether the data encryption feature needs to be enabled for the project. For more information about data encryption, see
+	// Whether data encryption is enabled for the project. For more information about data encryption, see
 	//
-	// [Storage encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption).
+	// <props="china">[Storage Encryption](https://help.aliyun.com/zh/maxcompute/security-and-compliance/storage-encryption)
+	//
+	// <props="intl">[Storage Encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption).
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The type of key that is used for data encryption. You can select MaxCompute Default Key or Bring Your Own Key (BYOK) as the key type. If you select MaxCompute Default Key, the default key that is created by MaxCompute is used.
+	// The key type used for data encryption, including the default key (MaxCompute Default Key) and Bring Your Own Key (BYOK). The default key (MaxCompute Default Key) is created internally by MaxCompute.
 	//
 	// example:
 	//
@@ -825,7 +861,9 @@ type GetProjectResponseBodyDataPropertiesExternalProjectProperties struct {
 	ExternalCatalogId *string `json:"externalCatalogId,omitempty" xml:"externalCatalogId,omitempty"`
 	ForeignServerName *string `json:"foreignServerName,omitempty" xml:"foreignServerName,omitempty"`
 	ForeignServerType *string `json:"foreignServerType,omitempty" xml:"foreignServerType,omitempty"`
-	// Indicates whether the external project is an external project for [data lakehouse solution 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
+	// Whether this is a <props="china">[Lakehouse 2.0](https://help.aliyun.com/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide)
+	//
+	// <props="intl">[Lakehouse 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide) external project.
 	//
 	// example:
 	//
@@ -902,7 +940,7 @@ func (s *GetProjectResponseBodyDataPropertiesExternalProjectProperties) Validate
 }
 
 type GetProjectResponseBodyDataPropertiesStorageTierInfo struct {
-	// The backup storage usage.
+	// The backup storage size.
 	//
 	// example:
 	//
@@ -914,7 +952,9 @@ type GetProjectResponseBodyDataPropertiesStorageTierInfo struct {
 	//
 	// 56066037
 	ProjectTotalSize *int64 `json:"projectTotalSize,omitempty" xml:"projectTotalSize,omitempty"`
-	// The [storage tier](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage) information.
+	// The <props="china">[tiered storage](https://help.aliyun.com/zh/maxcompute/user-guide/tiered-storage)
+	//
+	// <props="intl">[tiered storage](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tiered-storage) information.
 	StorageTierSize *GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize `json:"storageTierSize,omitempty" xml:"storageTierSize,omitempty" type:"Struct"`
 }
 
@@ -963,19 +1003,19 @@ func (s *GetProjectResponseBodyDataPropertiesStorageTierInfo) Validate() error {
 }
 
 type GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize struct {
-	// The storage usage at the long-term storage tier.
+	// The long-term storage usage.
 	//
 	// example:
 	//
 	// 21764917
 	LongTermSize *int64 `json:"longTermSize,omitempty" xml:"longTermSize,omitempty"`
-	// The storage usage at the Infrequent Access (IA) layer.
+	// The infrequent access storage usage.
 	//
 	// example:
 	//
 	// 767693
 	LowFrequencySize *int64 `json:"lowFrequencySize,omitempty" xml:"lowFrequencySize,omitempty"`
-	// The storage usage at the standard storage tier.
+	// The standard storage usage.
 	//
 	// example:
 	//
@@ -1025,17 +1065,17 @@ func (s *GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize) Val
 type GetProjectResponseBodyDataPropertiesTableLifecycle struct {
 	// The lifecycle type. Valid values:
 	//
-	// 	- **mandatory**: The lifecycle clause is required in a table creation statement.
+	// - **mandatory**: The Lifecycle clause is mandatory. Users must set the table lifecycle.
 	//
-	// 	- **optional**: The lifecycle clause is optional in a table creation statement. If you do not configure a lifecycle for a table, the table does not expire.
+	// - **optional**: The Lifecycle clause is optional when creating a table. If the table lifecycle is not set, the table is permanently valid.
 	//
-	// 	- **inherit**: If you do not configure a lifecycle for a table when you create the table, the value of the odps.table.lifecycle.value parameter is used as the table lifecycle by default.
+	// - **inherit**: If the table lifecycle is not set when creating a table, the table lifecycle defaults to the value of odps.table.lifecycle.value.
 	//
 	// example:
 	//
 	// optional
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The table lifecycle. Unit: days. Valid values: 1 to 37231. Default value: 37231.
+	// The table lifecycle in days. Valid values: 1 to 37231. Default value: 37231.
 	//
 	// example:
 	//
@@ -1074,9 +1114,9 @@ func (s *GetProjectResponseBodyDataPropertiesTableLifecycle) Validate() error {
 }
 
 type GetProjectResponseBodyDataPropertiesTableLifecycleConfig struct {
-	// The information about the long-term storage tier.
+	// The long-term storage identifier.
 	TierToLongterm *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm `json:"TierToLongterm,omitempty" xml:"TierToLongterm,omitempty" type:"Struct"`
-	// The information about the IA storage tier.
+	// The infrequent access storage identifier.
 	TierToLowFrequency *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency `json:"TierToLowFrequency,omitempty" xml:"TierToLowFrequency,omitempty" type:"Struct"`
 }
 
@@ -1121,25 +1161,25 @@ func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfig) Validate() er
 }
 
 type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm struct {
-	// The system triggers an automatic storage tier change N days after the last access time of data. N is specified by this parameter and corresponds to `LastAccessTime` that is configured for the table or partition.
+	// The number of days after the last data access before automatic conversion, corresponding to the `LastAccessTime` of the table or partition.
 	//
-	// >  If LastAccessTime of a table or partition is left empty, the following rules are applied:
+	// > If the LastAccessTime of the table or partition is empty:
 	//
-	// 	- For tables or partitions that you created before October 1, 2023, 2023.10.01 00:00:00 in UTC+0 is considered as the last access time.
+	// > - For tables or partitions created before October 1, 2023, the default time is 2023.10.01 00:00:00 in the UTC+0 timezone.
 	//
-	// 	- For tables or partitions that you created on or after October 1, 2023, if no data is accessed, the table or partition creation time is considered as the last access time.
+	// > - For tables or partitions created after October 1, 2023, if the data has not been accessed, the CreateTime is used for calculation.
 	//
 	// example:
 	//
 	// 180
 	DaysAfterLastAccessGreaterThan *int64 `json:"DaysAfterLastAccessGreaterThan,omitempty" xml:"DaysAfterLastAccessGreaterThan,omitempty"`
-	// The system triggers an automatic storage tier change N days after the last modification time of data. N is specified by this parameter and corresponds to `LastModifiedTime` that is configured for the table or partition.
+	// The number of days after the last data modification before automatic conversion, corresponding to the `LastModifiedTime` of the table or partition.
 	//
 	// example:
 	//
 	// 180
 	DaysAfterLastModificationGreaterThan *int64 `json:"DaysAfterLastModificationGreaterThan,omitempty" xml:"DaysAfterLastModificationGreaterThan,omitempty"`
-	// The period after the previous storage tier change time.
+	// The number of days since the last storage tier conversion.
 	//
 	// example:
 	//
@@ -1187,25 +1227,25 @@ func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm)
 }
 
 type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency struct {
-	// The system triggers an automatic storage tier change N days after the last access time of data. N is specified by this parameter and corresponds to `LastAccessTime` that is configured for the table or partition.
+	// The number of days after the last data access before automatic conversion, corresponding to the `LastAccessTime` of the table or partition.
 	//
-	// >  If LastAccessTime of a table or partition is left empty, the following rules are applied:
+	// > If the LastAccessTime of the table or partition is empty:
 	//
-	// 	- For tables or partitions that you created before October 1, 2023, 2023.10.01 00:00:00 in UTC+0 is considered as the last access time.
+	// > - For tables or partitions created before October 1, 2023, the default time is 2023.10.01 00:00:00 in the UTC+0 timezone.
 	//
-	// 	- For tables or partitions that you created on or after October 1, 2023, if no data is accessed, the table or partition creation time is considered as the last access time.
+	// > - For tables or partitions created after October 1, 2023, if the data has not been accessed, the CreateTime is used for calculation.
 	//
 	// example:
 	//
 	// 30
 	DaysAfterLastAccessGreaterThan *int64 `json:"DaysAfterLastAccessGreaterThan,omitempty" xml:"DaysAfterLastAccessGreaterThan,omitempty"`
-	// The system triggers an automatic storage tier change N days after the last modification time of data. N is specified by this parameter and corresponds to `LastModifiedTime` that is configured for the table or partition.
+	// The number of days after the last data modification before automatic conversion, corresponding to the `LastModifiedTime` of the table or partition.
 	//
 	// example:
 	//
 	// 30
 	DaysAfterLastModificationGreaterThan *int64 `json:"DaysAfterLastModificationGreaterThan,omitempty" xml:"DaysAfterLastModificationGreaterThan,omitempty"`
-	// The period after the previous storage tier change time.
+	// The number of days since the last storage tier conversion.
 	//
 	// example:
 	//
@@ -1257,13 +1297,13 @@ type GetProjectResponseBodyDataSaleTag struct {
 	//
 	// example:
 	//
-	// project_name
+	// b7afb7d1-****-****-****-c393669c307b
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The billing method of the default computing quota.
+	// The billing type of the default computing quota.
 	//
 	// example:
 	//
-	// project
+	// PayAsYouGo
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -1298,39 +1338,49 @@ func (s *GetProjectResponseBodyDataSaleTag) Validate() error {
 }
 
 type GetProjectResponseBodyDataSecurityProperties struct {
-	// Indicates whether the [download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature is enabled. By default, this feature is disabled.
+	// Whether the <props="china">[download control](https://help.aliyun.com/zh/maxcompute/user-guide/download-control)
+	//
+	// <props="intl">[download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature is enabled. It is disabled by default.
 	//
 	// example:
 	//
 	// false
 	EnableDownloadPrivilege *bool `json:"enableDownloadPrivilege,omitempty" xml:"enableDownloadPrivilege,omitempty"`
-	// Indicates whether the [label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature is enabled. By default, this feature is disabled.
+	// Whether the <props="china">[label-based access control](https://help.aliyun.com/zh/maxcompute/user-guide/label-based-access-control)
+	//
+	// <props="intl">[label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature is enabled. It is disabled by default.
 	//
 	// example:
 	//
 	// false
 	LabelSecurity *bool `json:"labelSecurity,omitempty" xml:"labelSecurity,omitempty"`
-	// Indicates whether to allow the object creator to have the access permissions on the object. The default value is true, which indicates that the object creator has the access permissions on the object.
+	// Whether the object creator is allowed to have access permissions on the object. This is allowed by default.
 	//
 	// example:
 	//
 	// true
 	ObjectCreatorHasAccessPermission *bool `json:"objectCreatorHasAccessPermission,omitempty" xml:"objectCreatorHasAccessPermission,omitempty"`
-	// Indicates whether the object creator has the authorization permissions on the object. The default value is true, which indicates that the object creator has the authorization permissions on the object.
+	// Whether the object creator is allowed to have grant permissions on the object. This is allowed by default.
 	//
 	// example:
 	//
 	// true
 	ObjectCreatorHasGrantPermission *bool `json:"objectCreatorHasGrantPermission,omitempty" xml:"objectCreatorHasGrantPermission,omitempty"`
-	// The properties of the [data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection).
+	// The <props="china">[data protection](https://help.aliyun.com/zh/maxcompute/security-and-compliance/project-data-protection)
+	//
+	// <props="intl">[data protection](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) properties.
 	ProjectProtection *GetProjectResponseBodyDataSecurityPropertiesProjectProtection `json:"projectProtection,omitempty" xml:"projectProtection,omitempty" type:"Struct"`
-	// Indicates whether the [ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control) feature is enabled. By default, this feature is enabled.
+	// Whether the <props="china">[ACL-based access control](https://help.aliyun.com/zh/maxcompute/user-guide/acl-based-access-control)
+	//
+	// <props="intl">[ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control) feature is enabled. It is enabled by default.
 	//
 	// example:
 	//
 	// true
 	UsingAcl *bool `json:"usingAcl,omitempty" xml:"usingAcl,omitempty"`
-	// Indicates whether the [policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1) feature is enabled. By default, this feature is enabled.
+	// Whether the <props="china">[policy-based access control](https://help.aliyun.com/zh/maxcompute/user-guide/policy-based-access-control-1)
+	//
+	// <props="intl">[policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1) feature is enabled. It is enabled by default.
 	//
 	// example:
 	//
@@ -1419,41 +1469,53 @@ func (s *GetProjectResponseBodyDataSecurityProperties) Validate() error {
 }
 
 type GetProjectResponseBodyDataSecurityPropertiesProjectProtection struct {
-	// If you enable the project data protection mechanism, you can configure exception or trusted projects. This allows specified users to transfer data of a specified object to a specified project. The project data protection mechanism does not take effect in all the situations that are specified in the exception policy.
+	// If project data protection is enabled, you can set exceptions or trusted projects to allow specified users to export data of specified objects to specified projects. All scenarios described in the Exception Policy can override the data protection mechanism.
 	//
 	// example:
 	//
 	// {
 	//
-	//     "Version": "1",
+	//       "Version": "1",
 	//
-	//     "Statement":
+	//       "Statement": [
 	//
-	//     [{
+	//             {
 	//
-	//         "Effect":"Allow",
+	//                   "Effect": "Allow",
 	//
-	//         "Principal":"<Principal>",
+	//                   "Principal": "",
 	//
-	//         "Action":["odps:<Action1>[, <Action2>, ...]"],
+	//                   "Action": [
 	//
-	//         "Resource":"acs:odps:*:<Resource>",
+	//                         "odps:[, , ...]"
 	//
-	//         "Condition":{
+	//                   ],
 	//
-	//             "StringEquals": {
+	//                   "Resource": "acs:odps:*:",
 	//
-	//                 "odps:TaskType":["<Tasktype>"]
+	//                   "Condition": {
+	//
+	//                         "StringEquals": {
+	//
+	//                               "odps:TaskType": [
+	//
+	//                                     ""
+	//
+	//                               ]
+	//
+	//                         }
+	//
+	//                   }
 	//
 	//             }
 	//
-	//         }
+	//       ]
 	//
-	//     }]
-	//
-	//     }
+	// }
 	ExceptionPolicy *string `json:"exceptionPolicy,omitempty" xml:"exceptionPolicy,omitempty"`
-	// Indicates whether the [data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) is enabled for the project. This allows or denies data transfer across projects. By default, the data protection mechanism is disabled.
+	// Whether the project <props="china">[data protection mechanism](https://help.aliyun.com/zh/maxcompute/security-and-compliance/project-data-protection)
+	//
+	// <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) is enabled to prohibit or allow data to flow out of the project. It is disabled by default.
 	//
 	// example:
 	//

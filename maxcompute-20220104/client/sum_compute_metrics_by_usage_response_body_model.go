@@ -18,11 +18,26 @@ type iSumComputeMetricsByUsageResponseBody interface {
 }
 
 type SumComputeMetricsByUsageResponseBody struct {
+	// The usage data for each metering type.
 	Data []*SumComputeMetricsByUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
+	// - `1xx`: Informational response. The request is received and is being processed.
+	//
+	// - `2xx`: Success. The request was successfully received, understood, and accepted.
+	//
+	// - `3xx`: Redirection. Further action is required to complete the request.
+	//
+	// - `4xx`: Client error. The request has invalid syntax or cannot be fulfilled.
+	//
+	// - `5xx`: Server error. The server failed to fulfill an otherwise valid request.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc0598d17544456742466519e6611
@@ -78,7 +93,22 @@ func (s *SumComputeMetricsByUsageResponseBody) Validate() error {
 }
 
 type SumComputeMetricsByUsageResponseBodyData struct {
+	// The daily usage statistics.
 	DailyComputeMetrics []*SumComputeMetricsByUsageResponseBodyDataDailyComputeMetrics `json:"dailyComputeMetrics,omitempty" xml:"dailyComputeMetrics,omitempty" type:"Repeated"`
+	// The metering type.
+	//
+	// `ComputationSql`: Metering data for SQL jobs on internal tables.
+	//
+	// `ComputationSqlOTS`: Metering data for SQL jobs on OTS external tables.
+	//
+	// `ComputationSqlOSS`: Metering data for SQL jobs on OSS external tables.
+	//
+	// `MapReduce`: Metering data for MapReduce jobs.
+	//
+	// `spark`: Metering data for Spark jobs.
+	//
+	// `mars`: Metering data for Mars jobs.
+	//
 	// example:
 	//
 	// ComputationSql
@@ -125,14 +155,20 @@ func (s *SumComputeMetricsByUsageResponseBodyData) Validate() error {
 }
 
 type SumComputeMetricsByUsageResponseBodyDataDailyComputeMetrics struct {
+	// The date of the usage, in `yyyyMMdd` format.
+	//
 	// example:
 	//
 	// 20260413
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// The unit of compute usage.
+	//
 	// example:
 	//
 	// GBCplx
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The total usage for the day.
+	//
 	// example:
 	//
 	// 1.149683987

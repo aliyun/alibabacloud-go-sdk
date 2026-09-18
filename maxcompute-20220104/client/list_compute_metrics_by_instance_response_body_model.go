@@ -18,25 +18,25 @@ type iListComputeMetricsByInstanceResponseBody interface {
 }
 
 type ListComputeMetricsByInstanceResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *ListComputeMetricsByInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// The HTTP status code. Valid values:
 	//
-	// - 1xx: informational response. The request is received and is being processed.
+	// - 1xx: Informational response. The request has been received and is being processed.
 	//
-	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
+	// - 2xx: Success. The request has been successfully received, understood, and accepted by the server.
 	//
-	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	// - 3xx: Redirection. The request is redirected, and further action is required to complete the request.
 	//
-	// - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+	// - 4xx: Client error. The request contains invalid parameters, bad syntax, or specific request conditions cannot be fulfilled.
 	//
-	// - 5xx: server error. The server cannot meet requirements due to other reasons.
+	// - 5xx: Server error. The server cannot fulfill the request due to other reasons.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ func (s *ListComputeMetricsByInstanceResponseBody) Validate() error {
 }
 
 type ListComputeMetricsByInstanceResponseBodyData struct {
-	// List of pay-as-you-go job compute usage.
+	// The list of pay-as-you-go job compute usage.
 	InstanceComputeMetrics []*ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics `json:"instanceComputeMetrics,omitempty" xml:"instanceComputeMetrics,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -103,7 +103,7 @@ type ListComputeMetricsByInstanceResponseBodyData struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of results returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -169,81 +169,81 @@ func (s *ListComputeMetricsByInstanceResponseBodyData) Validate() error {
 }
 
 type ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics struct {
-	// The end time of the job execution.
+	// The job end time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The job(instance) ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 20240730****ddlr
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The owner of the job.
+	// The job owner.
 	//
 	// example:
 	//
 	// ALIYUN$7632***@aliyun.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The name of the project.
+	// The project name.
 	//
 	// example:
 	//
 	// odps_porject
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// The signature of the SQL job.
+	// The SQL job signature.
 	//
 	// example:
 	//
 	// pqrs12345tuv
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// Specifications Type, specifies the resource package that you select when you purchase the MaxCompute service.
+	// The specification type. Valid values:
 	//
-	// - OdpsStandard: the pay-as-you-go resource package.
+	// - OdpsStandard: the pay-as-you-go billing method Standard Edition.
 	//
-	// - OdpsSpot: the pay-as-you-go spot resource package.
+	// - OdpsSpot: the pay-as-you-go billing method Off-peak Edition.
 	//
 	// example:
 	//
 	// OdpsStandard
 	SpecCode *string `json:"specCode,omitempty" xml:"specCode,omitempty"`
-	// The submission time of the job.
+	// The job submit time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1610432000000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// Metering types.
+	// The metering type. Valid values:
 	//
-	// - ComputationSql: the metering data of SQL jobs that involve internal tables.
+	// - ComputationSql: metering data of SQL jobs that operate on internal tables.
 	//
-	// - ComputationSqlOTS: the metering data of SQL jobs that involve Tablestore external tables.
+	// - ComputationSqlOTS: metering data of SQL jobs that operate on OTS external tables.
 	//
-	// - ComputationSqlOSS: the metering data of SQL jobs that involve OSS external tables.
+	// - ComputationSqlOSS: metering data of SQL jobs that operate on OSS external tables.
 	//
-	// - MapReduce: the metering data of MapReduce jobs.
+	// - MapReduce: metering data of MapReduce jobs.
 	//
-	// - spark: the metering data of Spark jobs.
+	// - spark: metering data of Spark jobs.
 	//
-	// - mars: the metering data of Mars jobs.
+	// - mars: metering data of Mars jobs.
 	//
 	// example:
 	//
 	// ComputationSql
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The unit of computing resource usage
+	// The unit of compute usage.
 	//
 	// example:
 	//
 	// GB
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
-	// The computing resource usage is calculated based on the following items:
+	// The compute usage.
 	//
-	// - Amount of scanned data in the unit of GB. For the jobs whose metering types are ComputationSql, ComputationSqlOTS, or ComputationSqlOSS, they are billed based on the amount of scanned data. The computing resource usage of such a job is calculated by using the following formula: Amount of scanned data × Complexity. The complexity is fixed at 1 for the jobs whose metering types are ComputationSqlOTS or ComputationSqlOSS.
+	// - For scan-based billing types, the unit is GB. This includes the ComputationSql, ComputationSqlOTS, and ComputationSqlOSS billing types, which are billed based on the amount of data scanned. The compute usage is calculated as the scan volume × complexity for each job. The complexity for ComputationSqlOTS and ComputationSqlOSS types is fixed at 1.
 	//
-	// - CU-hours. For the jobs whose metering types are MapReduce, spark, or mars, they are billed based on CU-hours.
+	// - For CU-hour-based billing types, the unit is CU-hours. This includes the MapReduce, spark, and mars billing types, which are billed based on CU-hours.
 	//
 	// example:
 	//

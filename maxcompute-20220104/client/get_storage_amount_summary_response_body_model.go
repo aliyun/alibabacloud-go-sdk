@@ -22,19 +22,34 @@ type iGetStorageAmountSummaryResponseBody interface {
 }
 
 type GetStorageAmountSummaryResponseBody struct {
+	// The returned data.
 	Data *GetStorageAmountSummaryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The business error code, or an empty value.
+	//
+	// - If success is false, a business error code is returned.
+	//
+	//
+	//
+	// - If success is true, an empty value is returned.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// this quota is not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code that indicates whether the business request was successful. A non-empty value other than 200 indicates a business processing failure.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 688003E1-D1B4-5468-957E-2FFB3AC8D79B
@@ -104,16 +119,30 @@ func (s *GetStorageAmountSummaryResponseBody) Validate() error {
 }
 
 type GetStorageAmountSummaryResponseBodyData struct {
+	// The date for statistics collection, in the YYYYMMdd format.
+	//
 	// example:
 	//
 	// 20241205
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
+	// The timestamp. This API operation does not return this field.
+	//
 	// example:
 	//
 	// -
-	Timestamp *int64             `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Unit      map[string]*string `json:"unit,omitempty" xml:"unit,omitempty"`
-	Value     map[string]*int64  `json:"value,omitempty" xml:"value,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The unit of the storage metric. This API operation does not return this field.
+	Unit map[string]*string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The storage metrics. Valid values:
+	//
+	// - projectAmount
+	//
+	// - schemaAmount
+	//
+	// - tableAmount
+	//
+	// - partitionAmount
+	Value map[string]*int64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s GetStorageAmountSummaryResponseBodyData) String() string {

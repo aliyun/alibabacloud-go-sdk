@@ -25,6 +25,10 @@ type iListProjectsRequest interface {
 	GetRegion() *string
 	SetSaleTags(v string) *ListProjectsRequest
 	GetSaleTags() *string
+	SetSortBy(v string) *ListProjectsRequest
+	GetSortBy() *string
+	SetSortOrder(v string) *ListProjectsRequest
+	GetSortOrder() *string
 	SetTenantId(v string) *ListProjectsRequest
 	GetTenantId() *string
 	SetType(v string) *ListProjectsRequest
@@ -32,47 +36,41 @@ type iListProjectsRequest interface {
 }
 
 type ListProjectsRequest struct {
-	// Specifies whether to list the built-in **SYSTEM_CATALOG*	- projects that are used to provide data such as project metadata and historical usage data. For more information, see [Tenant-level Information Schema](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tenant-level-information-schema).
-	//
-	// Valid values:
-	//
-	// 	- true: The built-in SYSTEM_CATALOG projects are listed.
-	//
-	// 	- false: The built-in SYSTEM_CATALOG projects are not listed.
+	// Specifies whether to list the built-in **SYSTEM_CATALOG*	- project. This project provides information such as project metadata and usage history. For more information, see <props="intl">[Information Schema](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tenant-level-information-schema).
 	//
 	// example:
 	//
 	// true
 	ListSystemCatalog *bool `json:"listSystemCatalog,omitempty" xml:"listSystemCatalog,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The token that specifies the starting point of the query. The results are returned in alphabetical order, starting from the entry that immediately follows the marker.
 	//
 	// example:
 	//
 	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries per page. Default value: 10.
+	// The maximum number of entries to return on each page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
-	// Specifies the marker after which the returned list begins.
+	// The prefix of the resource names to query. For example, if you specify `a` for this parameter, only resources whose names start with "a" are returned.
 	//
 	// example:
 	//
 	// a
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The quota name that is automatically generated. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), choose **Workspace*	- > **Quotas*	- from the left-side navigation pane, and then view the quota name on the **Quotas*	- page.
+	// The quota name. The system automatically generates this name. To obtain the quota name, log in to the [MaxCompute console](https://maxcompute.console.aliyun.com) and select **Workspace*	- > **Quota*	- **Management*	- from the navigation pane on the left.
 	//
 	// example:
 	//
-	// "hsajkdgbkaubh"
+	// aliyun_5495***3697
 	QuotaName *string `json:"quotaName,omitempty" xml:"quotaName,omitempty"`
-	// The quota nickname. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), choose **Workspace*	- > **Quotas*	- from the left-side navigation pane, and then view the quota nickname on the **Quotas*	- page.
+	// The quota nickname. To obtain the quota nickname, log in to the [MaxCompute console](https://maxcompute.console.aliyun.com) and select **Workspace*	- > **Quota*	- **Management*	- from the navigation pane on the left.
 	//
 	// example:
 	//
-	// quotaA
+	// os_PayAsYouGoQuota
 	QuotaNickName *string `json:"quotaNickName,omitempty" xml:"quotaNickName,omitempty"`
 	// The region ID.
 	//
@@ -80,27 +78,45 @@ type ListProjectsRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The instance ID and billing method of the default computing quota.
+	// The instance ID and billing method of the default compute quota.
 	//
 	// example:
 	//
-	// "aaaa-bbbb"
+	// {
+	//
+	//       "resourceId": "b7afb7d1-****-****-****-c393669c307b",
+	//
+	//       "resourceType": "PayAsYouGo"
+	//
+	//     }
 	SaleTags *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
-	// The tenant ID. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), and choose **Tenants*	- > **Tenant Property*	- from the left-side navigation pane to view the tenant ID.
+	// The sort field. The only supported value is `createdTime`.
 	//
 	// example:
 	//
-	// 549532154333697
+	// createdTime
+	SortBy *string `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
+	// The sort order. This parameter takes effect only when `sortBy` is specified. Valid values are `ASC` and `DESC`. The values are case-insensitive.
+	//
+	// example:
+	//
+	// DESC
+	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
+	// The tenant ID. To obtain the ID, log in to the [MaxCompute console](https://maxcompute.console.aliyun.com) and select **Tenant Management*	- > **Tenant Properties*	- from the navigation pane on the left.
+	//
+	// example:
+	//
+	// 5495****3697
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The project type. Valid values:
 	//
-	// 	- **managed**: internal project
+	// - **managed**: a managed project.
 	//
-	// 	- **external**: external project
+	// - **external**: an external project.
 	//
 	// example:
 	//
-	// "managed"
+	// managed
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -142,6 +158,14 @@ func (s *ListProjectsRequest) GetRegion() *string {
 
 func (s *ListProjectsRequest) GetSaleTags() *string {
 	return s.SaleTags
+}
+
+func (s *ListProjectsRequest) GetSortBy() *string {
+	return s.SortBy
+}
+
+func (s *ListProjectsRequest) GetSortOrder() *string {
+	return s.SortOrder
 }
 
 func (s *ListProjectsRequest) GetTenantId() *string {
@@ -189,6 +213,16 @@ func (s *ListProjectsRequest) SetRegion(v string) *ListProjectsRequest {
 
 func (s *ListProjectsRequest) SetSaleTags(v string) *ListProjectsRequest {
 	s.SaleTags = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetSortBy(v string) *ListProjectsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetSortOrder(v string) *ListProjectsRequest {
+	s.SortOrder = &v
 	return s
 }
 
