@@ -3037,7 +3037,7 @@ func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves a list of jobs.
+// Retrieves a list of tasks.
 //
 // @param request - ListJobsRequest
 //

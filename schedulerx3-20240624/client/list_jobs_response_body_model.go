@@ -198,6 +198,10 @@ func (s *ListJobsResponseBodyData) Validate() error {
 
 type ListJobsResponseBodyDataRecords struct {
 	// The application ID.
+	//
+	// example:
+	//
+	// 1625
 	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
 	// The application name.
 	//
@@ -205,7 +209,7 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The retry interval on error. Unit: seconds.
+	// The error retry interval, in seconds.
 	//
 	// example:
 	//
@@ -217,7 +221,7 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// work-day
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	// The child job ID.
+	// The child task ID.
 	//
 	// example:
 	//
@@ -229,6 +233,12 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// {"cleanMode":"NUM_ONLY","totalRemain":300}
 	CleanMode *string `json:"CleanMode,omitempty" xml:"CleanMode,omitempty"`
+	// The timestamp when the task was created.
+	//
+	// example:
+	//
+	// 1786354281000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The creator.
 	//
 	// example:
@@ -255,25 +265,25 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// 3
 	DataOffset *int32 `json:"DataOffset,omitempty" xml:"DataOffset,omitempty"`
-	// The dependency check strategy.
+	// The dependency check policy.
 	//
 	// example:
 	//
 	// 1
 	DependentStrategy *int32 `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
-	// The job description.
+	// The task description.
 	//
 	// example:
 	//
-	// job01 standalone job
+	// job01 standalone task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The client blocking strategy. Valid values:
 	//
 	// - 1: Serial execution on a single machine.
 	//
-	// - 2: Ignore subsequent schedules.
+	// - 2: Ignore subsequent scheduling.
 	//
-	// - 3: Override previous schedules.
+	// - 3: Override previous scheduling.
 	//
 	// example:
 	//
@@ -285,19 +295,19 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// jobDemoHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job type.
+	// The task type.
 	//
 	// example:
 	//
 	// xxljob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The job label information.
+	// The task label information.
 	//
 	// example:
 	//
@@ -319,19 +329,19 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// 4
 	LastExecuteStatus *int32 `json:"LastExecuteStatus,omitempty" xml:"LastExecuteStatus,omitempty"`
-	// The maximum number of retry attempts on error. Set this based on your business requirements.
+	// The maximum number of error retries. Set this parameter based on your business requirements.
 	//
 	// example:
 	//
 	// 5
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum concurrency threshold.
+	// The overall concurrency threshold.
 	//
 	// example:
 	//
 	// 100
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// The job name.
+	// The task name.
 	//
 	// example:
 	//
@@ -353,15 +363,15 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// example:
 	//
-	// [{"contactType":1,"name":"恰橙"}]
+	// [{"contactType":1,"name":"John"}]
 	NoticeContacts *string `json:"NoticeContacts,omitempty" xml:"NoticeContacts,omitempty"`
-	// The job parameters.
+	// The task parameters.
 	//
 	// example:
 	//
 	// name=10
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The job execution priority.
+	// The execution job priority.
 	//
 	// example:
 	//
@@ -369,21 +379,21 @@ type ListJobsResponseBodyDataRecords struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The routing strategy. Valid values:
 	//
-	// - 1: polling.
+	// - 1: Round-robin.
 	//
-	// - 2: random.
+	// - 2: Random.
 	//
-	// - 3: first.
+	// - 3: First.
 	//
-	// - 4: last.
+	// - 4: Last.
 	//
-	// - 5: least frequently used.
+	// - 5: Least frequently used.
 	//
-	// - 6: least recently used.
+	// - 6: Least recently used.
 	//
-	// - 7: consistent hashing.
+	// - 7: Consistent hashing.
 	//
-	// - 8: shard broadcast.
+	// - 8: Shard broadcast.
 	//
 	// example:
 	//
@@ -407,11 +417,11 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// 1
 	StartTimeType *int32 `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
-	// The job status. Valid values:
+	// The task status. Valid values:
 	//
-	// - 0: DISABLE (disabled).
+	// - 0: DISABLE (Disabled).
 	//
-	// - 1: ENABLE (enabled).
+	// - 1: ENABLE (Enabled).
 	//
 	// example:
 	//
@@ -423,7 +433,7 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// 0 0 12 	- 	- ?
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
-	// The time type. Valid values:
+	// The time type. The following types are supported:
 	//
 	// - -1: none.
 	//
@@ -451,13 +461,19 @@ type ListJobsResponseBodyDataRecords struct {
 	//
 	// HangKong
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The timestamp when the task was last updated.
+	//
+	// example:
+	//
+	// 1786354281000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The updater.
 	//
 	// example:
 	//
 	// 1963096506470832
 	Updater *string `json:"Updater,omitempty" xml:"Updater,omitempty"`
-	// The job weight.
+	// The task weight.
 	//
 	// example:
 	//
@@ -471,11 +487,11 @@ type ListJobsResponseBodyDataRecords struct {
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 	// The extended attributes.
 	//
-	// > Not supported currently.
+	// > Not supported.
 	//
 	// example:
 	//
-	// 暂无
+	// N/A
 	Xattrs *string `json:"Xattrs,omitempty" xml:"Xattrs,omitempty"`
 }
 
@@ -509,6 +525,10 @@ func (s *ListJobsResponseBodyDataRecords) GetChildJobId() *string {
 
 func (s *ListJobsResponseBodyDataRecords) GetCleanMode() *string {
 	return s.CleanMode
+}
+
+func (s *ListJobsResponseBodyDataRecords) GetCreateTime() *int64 {
+	return s.CreateTime
 }
 
 func (s *ListJobsResponseBodyDataRecords) GetCreator() *string {
@@ -623,6 +643,10 @@ func (s *ListJobsResponseBodyDataRecords) GetTimezone() *string {
 	return s.Timezone
 }
 
+func (s *ListJobsResponseBodyDataRecords) GetUpdateTime() *int64 {
+	return s.UpdateTime
+}
+
 func (s *ListJobsResponseBodyDataRecords) GetUpdater() *string {
 	return s.Updater
 }
@@ -666,6 +690,11 @@ func (s *ListJobsResponseBodyDataRecords) SetChildJobId(v string) *ListJobsRespo
 
 func (s *ListJobsResponseBodyDataRecords) SetCleanMode(v string) *ListJobsResponseBodyDataRecords {
 	s.CleanMode = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataRecords) SetCreateTime(v int64) *ListJobsResponseBodyDataRecords {
+	s.CreateTime = &v
 	return s
 }
 
@@ -806,6 +835,11 @@ func (s *ListJobsResponseBodyDataRecords) SetTimeZone(v string) *ListJobsRespons
 
 func (s *ListJobsResponseBodyDataRecords) SetTimezone(v string) *ListJobsResponseBodyDataRecords {
 	s.Timezone = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyDataRecords) SetUpdateTime(v int64) *ListJobsResponseBodyDataRecords {
+	s.UpdateTime = &v
 	return s
 }
 

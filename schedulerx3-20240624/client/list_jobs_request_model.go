@@ -52,7 +52,7 @@ type ListJobsRequest struct {
 	//
 	// example:
 	//
-	// job01 standalone job
+	// job01 standalone task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The `jobhandler` name.
 	//
@@ -60,19 +60,19 @@ type ListJobsRequest struct {
 	//
 	// jobDemoHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
-	// The job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 10
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job name.
+	// The task name.
 	//
 	// example:
 	//
 	// job01
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The job label filter condition.
+	// The task label filter condition.
 	//
 	// example:
 	//
