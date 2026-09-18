@@ -16,9 +16,17 @@ type iQueryAlertRulesResult interface {
 }
 
 type QueryAlertRulesResult struct {
-	// The list of alert rules for the current page.
+	// The list of alert rules returned by the query. Each element contains the complete configuration information of an alert rule.
+	//
+	// example:
+	//
+	// [{"uuid":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","displayName":"CPU usage alert","status":"OK"}]
 	AlertRules []*AlertRuleV2 `json:"alertRules,omitempty" xml:"alertRules,omitempty" type:"Repeated"`
-	// The total number of alert rules that match the query.
+	// The total number of alert rules that match the query conditions.
+	//
+	// example:
+	//
+	// 5
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 

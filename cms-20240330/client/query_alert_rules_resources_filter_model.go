@@ -16,7 +16,17 @@ type iQueryAlertRulesResourcesFilter interface {
 }
 
 type QueryAlertRulesResourcesFilter struct {
-	Contains    []*string `json:"contains,omitempty" xml:"contains,omitempty" type:"Repeated"`
+	// Matches any item in the list (OR semantics).
+	//
+	// example:
+	//
+	// ["i-bp1a2b3c4d5e6f7g8h9i","i-bp9h8g7f6e5d4c3b2a1"]
+	Contains []*string `json:"contains,omitempty" xml:"contains,omitempty" type:"Repeated"`
+	// Filters out alert rules by resource instance ID blacklist. Alert rules whose associated resources contains any instance ID in the array are excluded.
+	//
+	// example:
+	//
+	// ["i-bp0z9y8x7w6v5u4t3s2"]
 	NotContains []*string `json:"notContains,omitempty" xml:"notContains,omitempty" type:"Repeated"`
 }
 

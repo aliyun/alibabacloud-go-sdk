@@ -16,7 +16,17 @@ type iQueryAlertRulesRelationTypeFilter interface {
 }
 
 type QueryAlertRulesRelationTypeFilter struct {
-	In    []*string `json:"in,omitempty" xml:"in,omitempty" type:"Repeated"`
+	// Matches any value in the set with OR semantics. Valid values: ALL, UMODEL_ENTITY, CLOUD_INSTANCE, GROUP_V1, GROUP_V2, and TAG.
+	//
+	// example:
+	//
+	// ["ALL","CLOUD_INSTANCE"]
+	In []*string `json:"in,omitempty" xml:"in,omitempty" type:"Repeated"`
+	// Excludes any value in the set with NOT IN semantics.
+	//
+	// example:
+	//
+	// ["TAG","GROUP_V1"]
 	NotIn []*string `json:"notIn,omitempty" xml:"notIn,omitempty" type:"Repeated"`
 }
 

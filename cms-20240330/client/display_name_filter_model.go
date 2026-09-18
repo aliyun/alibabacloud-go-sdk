@@ -16,9 +16,17 @@ type iDisplayNameFilter interface {
 }
 
 type DisplayNameFilter struct {
-	// Returns only resources whose display name contains the specified string. The match is case-sensitive.
+	// The inclusion keyword for the display name. Only alert rules whose display names contain this keyword are returned. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// CPU monitoring
 	Contains *string `json:"contains,omitempty" xml:"contains,omitempty"`
-	// Returns only resources whose display name does not contain the specified string. The match is case-sensitive.
+	// The exclusion keyword for the display name. Alert rules whose display names contain this keyword are excluded. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// ARM
 	NotContains *string `json:"notContains,omitempty" xml:"notContains,omitempty"`
 }
 

@@ -40,7 +40,7 @@ type ListAlertRobotsResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The robot ID.
+	// The robot IDs.
 	Robots []*ListAlertRobotsResponseBodyRobots `json:"robots,omitempty" xml:"robots,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -141,13 +141,13 @@ type ListAlertRobotsResponseBodyRobots struct {
 	//
 	// test
 	RobotId *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
-	// The signature key of the robot.
+	// The signing key of the robot.
 	//
 	// example:
 	//
 	// abc123
 	RobotSignKey *string `json:"robotSignKey,omitempty" xml:"robotSignKey,omitempty"`
-	// The robot type.
+	// The robot types.
 	//
 	// example:
 	//

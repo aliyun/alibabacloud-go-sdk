@@ -42,7 +42,7 @@ type NotifyStrategyForSNSModify struct {
 	//
 	// This parameter is required.
 	GroupingSetting *NotifyStrategyForSNSModifyGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	// Specifies whether to send a notification when the alert is recovered.
+	// Specifies whether to send a notification when the alert is restored.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ func (s *NotifyStrategyForSNSModify) Validate() error {
 }
 
 type NotifyStrategyForSNSModifyCustomTemplateEntries struct {
-	// **[Deprecated]*	- This parameter is deprecated and does not take effect. The actual purpose of the template is determined by the type field of the template object referenced by templateUuid.
+	// **[Deprecated]*	- This parameter is deprecated and does not take effect. The actual purpose of the template is determined by the type of the template object referenced by templateUuid.
 	//
 	// example:
 	//
@@ -263,12 +263,16 @@ type NotifyStrategyForSNSModifyRoutes struct {
 	// The notification channels.
 	Channels []*NotifyStrategyForSNSModifyRoutesChannels `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
 	// The digital employee name.
+	//
+	// example:
+	//
+	// apsara-ops
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// The effective time range.
 	EffectTimeRange *NotifyStrategyForSNSModifyRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Specifies whether to enable root cause analysis (RCA).
+	// Specifies whether to enable Root Cause Analysis (RCA).
 	EnableRca *bool `json:"enableRca,omitempty" xml:"enableRca,omitempty"`
-	// The route-level filter. This is different from the top-level subscription.filterSetting.
+	// The route-level filter. This is at a different level from the top-level subscription.filterSetting.
 	FilterSetting *NotifyStrategyForSNSModifyRoutesFilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty" type:"Struct"`
 	// **[Deprecated]*	- This parameter is deprecated and does not take effect. Route matching only checks filterSetting and effectTimeRange.
 	Severities []*string `json:"severities,omitempty" xml:"severities,omitempty" type:"Repeated"`
@@ -501,7 +505,7 @@ func (s *NotifyStrategyForSNSModifyRoutesEffectTimeRange) Validate() error {
 type NotifyStrategyForSNSModifyRoutesFilterSetting struct {
 	// The subscription conditions.
 	Conditions []*NotifyStrategyForSNSModifyRoutesFilterSettingConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// If expression is not empty, it takes precedence and relation is ignored. If expression is empty or not specified, the system uses relation (AND or OR) to perform a simple AND/OR operation on all conditions. Condition numbers correspond to the indexes of the conditions array (starting from 1). Each condition evaluates whether a single event field matches by using field (the event field path, which supports dot-separated nesting such as resource.tags.pod), op (the operator, such as CONTAIN, EQ, or IN), and value (the match value).
+	// If expression is not empty, it takes precedence and relation is ignored. If expression is empty or not specified, the relation (AND or OR) is used to perform a simple AND/OR operation on all conditions. Condition numbers correspond to the indexes of the conditions array (starting from 1). Each condition evaluates whether a single event field matches by using field (the event field path, which supports dot-separated nesting such as resource.tags.pod), op (the operator, such as CONTAIN, EQ, or IN), and value (the match value).
 	//
 	// example:
 	//

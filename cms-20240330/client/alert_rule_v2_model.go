@@ -76,11 +76,11 @@ type AlertRuleV2 struct {
 	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
 	// The Application Real-Time Monitoring Service (ARMS) integration configuration.
 	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	// The business source (read-only), such as managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, or sls.
+	// The business source (read-only, such as managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, or sls).
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
 	// The detection condition configuration aggregation (Prometheus simple, UModel, APM simple, or APM composite).
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
@@ -96,7 +96,7 @@ type AlertRuleV2 struct {
 	//
 	// 1751595283143
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The datasource config aggregation (PROMETHEUS, UMODEL, and APM share a single object. Fields are selected based on the type).
+	// The datasource config aggregation (PROMETHEUS, UMODEL, and APM share a single object, with fields selected based on type).
 	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
 	// The data source type (read-only, derived).
 	//
@@ -110,7 +110,7 @@ type AlertRuleV2 struct {
 	//
 	// CPU usage alert 95%
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Specifies whether the alert rule is enabled.
+	// Indicates whether the alert rule is enabled.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type AlertRuleV2 struct {
 	ManagedBy *string `json:"managedBy,omitempty" xml:"managedBy,omitempty"`
 	// The notification configuration aggregation (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
 	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	// The notification policy ID (read-only, derived). The value is the first entry in the notification policy list.
+	// The notification policy ID (read-only, derived, the first entry in the notification policy list).
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type AlertRuleV2 struct {
 	ObserveResourceConfig *ObserveResourceConfig `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- Specifies whether the rule takes effect on all resources of this type (read-only, derived). For new integrations, use observeResourceConfig.relationType and check whether the value is ALL for equivalent semantics.
+	// **[Deprecated]*	- Indicates whether the rule takes effect on all resources of this type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
 	//
 	// example:
 	//
@@ -152,17 +152,17 @@ type AlertRuleV2 struct {
 	//
 	// default
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	// The partition key (read-only). Maintained by the system for rule routing and sharding.
+	// The partition key (read-only, maintained by the system for rule routing and sharding).
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
 	// The query configuration aggregation (PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, or APM_MULTI_QUERY).
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	// The root cause analysis (RCA) configuration.
+	// The Root Cause Analysis (RCA) configuration.
 	RcaConfig *AlertRuleRcaConfig `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// The region ID, aligned with V1 AlertRule.regionId. Priority: regionId in the request body takes precedence over callerRegionId from the gateway.
+	// The region ID (aligned with V1 AlertRule.regionId. Priority: regionId in the request body > callerRegionId from the gateway).
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type AlertRuleV2 struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The scheduling configuration aggregation (currently only FIXED is supported).
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// The severity levels covered by this rule, separated by commas (read-only, derived). The format is consistent with the filter.severityLevels query parameter.
+	// The severity levels covered by this rule, comma-separated (read-only, derived. Same format as the filter.severityLevels query parameter).
 	//
 	// example:
 	//

@@ -74,7 +74,7 @@ type SubscriptionForView struct {
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// The push settings.
 	PushingSetting *SubscriptionForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// Indicates whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: Subscribed. false or null: Not subscribed.
+	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribe. false or null: Do not subscribe.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type SubscriptionForView struct {
 	//
 	// 123123123123
 	SubscriptionId *string `json:"subscriptionId,omitempty" xml:"subscriptionId,omitempty"`
-	// The name.
+	// The name of the subscription.
 	//
 	// This parameter is required.
 	//

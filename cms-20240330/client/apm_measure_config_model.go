@@ -18,15 +18,27 @@ type iApmMeasureConfig interface {
 }
 
 type ApmMeasureConfig struct {
-	// The grouping dimension.
+	// The list of grouping dimensions for the APM metric. This parameter specifies the dimension keys by which to perform grouping and aggregation on metric data.
+	//
+	// example:
+	//
+	// ["host.name", "service.name"]
 	GroupBy []*string `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
-	// The metric code.
+	// The code identifier of the APM metric. This parameter specifies the metric type to collect and query.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CPU
 	MeasureCode *string `json:"measureCode,omitempty" xml:"measureCode,omitempty"`
-	// The query time window in seconds.
+	// The query time window, in seconds.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	WindowSecs *int32 `json:"windowSecs,omitempty" xml:"windowSecs,omitempty"`
 }
 

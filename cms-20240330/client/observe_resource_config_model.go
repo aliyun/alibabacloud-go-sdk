@@ -55,6 +55,10 @@ type ObserveResourceConfig struct {
 	// ALL
 	RelationType *string `json:"relationType,omitempty" xml:"relationType,omitempty"`
 	// The list of resources. If relationType is set to ALL, this parameter can be left empty, which indicates all resources. If relationType is set to TAG, this parameter is a list of labels in key=value format (such as ["env=prod", "app=foo"]). This is supported only for APM data sources with APM_MULTI_QUERY.
+	//
+	// example:
+	//
+	// ["i-bp1a2b3c4d5e6f7g8h9i","i-bp9h8g7f6e5d4c3b2a1"]
 	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 

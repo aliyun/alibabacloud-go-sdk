@@ -68,13 +68,13 @@ type IncidentResponsePlanForSNSView struct {
 	//
 	// example:
 	//
-	// Sample response plan
+	// SampleResponsePlan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The push settings.
 	PushingSetting *IncidentResponsePlanForSNSViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// The repeat notification configuration.
+	// The repeat notification settings.
 	RepeatNotifySetting *IncidentResponsePlanForSNSViewRepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty" type:"Struct"`
-	// The source. The value must be CUSTOM within SNS.
+	// The source. This value must be CUSTOM within SNS.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type IncidentResponsePlanForSNSView struct {
 	//
 	// CUSTOM
 	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	// The response plan type. The value must be NOTIFY_STRATEGY_DEFINED within SNS.
+	// The response plan type. This value must be NOTIFY_STRATEGY_DEFINED within SNS.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type iIncidentResponsePlanForModify interface {
 }
 
 type IncidentResponsePlanForModify struct {
-	// The auto-recovery time in seconds when no events occur.
+	// The auto-recovery time when no events occur, in seconds.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type IncidentResponsePlanForModify struct {
 	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// The name.
 	//
 	// example:
 	//
-	// SampleName
+	// Sample name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The push settings.
 	PushingSetting *PushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty"`
@@ -76,7 +76,7 @@ type IncidentResponsePlanForModify struct {
 	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The synchronization source type.
 	//
@@ -90,7 +90,7 @@ type IncidentResponsePlanForModify struct {
 	//
 	// default
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Required for Update. Can be omitted for Create, in which case the backend generates it. The UUID is shared with NotifyStrategy.
+	// Required for Update. Can be omitted for Create, in which case the backend generates it. Shared with NotifyStrategy.
 	//
 	// example:
 	//

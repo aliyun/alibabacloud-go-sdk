@@ -38,7 +38,7 @@ type DatasourceConfigUnified struct {
 	//
 	// rw-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The raw V1 datasource JSON string returned as a read-path fallback when type is set to UNKNOWN and parsing fails. The frontend displays this field as read-only when the value is not empty.
+	// The raw V1 datasource JSON string returned as a read-path fallback when type is set to UNKNOWN and parsing fails. When this field is not empty, the frontend displays it as read-only.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DatasourceConfigUnified struct {
 	//
 	// selectdb
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The Alibaba Cloud service category. Optional when type is set to CLOUD_MONITORING. Returns unknown when the source does not contain this information.
+	// The Alibaba Cloud service category. Optional when type is set to CLOUD_MONITORING. Outputs unknown when the source does not contain this information.
 	//
 	// example:
 	//
@@ -74,7 +74,11 @@ type DatasourceConfigUnified struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The list of SLS stores. Used when type is set to SLS. At least one store is required. Each store contains store and storeType fields. The project and regionId fields have been moved to the top level. The deprecated fields with the same names that remain in stores return a 400 error if used in write paths.
+	// The list of SLS stores. Used when type is set to SLS. At least one store is required. Each store contains the store and storeType fields. The project and regionId fields have been moved to the top level. The fields with the same names that remain in stores are deprecated. Using them in write paths returns a 400 error.
+	//
+	// example:
+	//
+	// [{"store":"cms-alert-log","storeType":"log"}]
 	Stores []*Stores `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
 	// The tenant ID. Optional when type is set to VIRTUAL_PROMETHEUS. Identifies the tenant to which the virtual Prometheus instance belongs.
 	//

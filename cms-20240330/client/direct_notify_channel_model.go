@@ -16,9 +16,17 @@ type iDirectNotifyChannel interface {
 }
 
 type DirectNotifyChannel struct {
+	// The list of Notification Recipient identifiers.
+	//
 	// This parameter is required.
 	Identifiers []*string `json:"identifiers,omitempty" xml:"identifiers,omitempty" type:"Repeated"`
+	// The notification channel type.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// CONTACT
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

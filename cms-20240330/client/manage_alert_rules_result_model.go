@@ -39,6 +39,10 @@ type ManageAlertRulesResult struct {
 	// 1
 	UpdatedCount *int32 `json:"updatedCount,omitempty" xml:"updatedCount,omitempty"`
 	// The list of UUIDs of rules that were successfully enabled or disabled.
+	//
+	// example:
+	//
+	// ["a1b2c3d4-e5f6-7890-abcd-ef1234567890","b2c3d4e5-f6a7-8901-bcde-f12345678901"]
 	UpdatedUuidList []*string `json:"updatedUuidList,omitempty" xml:"updatedUuidList,omitempty" type:"Repeated"`
 }
 

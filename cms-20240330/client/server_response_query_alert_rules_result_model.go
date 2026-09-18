@@ -30,15 +30,60 @@ type iServerResponseQueryAlertRulesResult interface {
 }
 
 type ServerResponseQueryAlertRulesResult struct {
-	Code       *string                `json:"code,omitempty" xml:"code,omitempty"`
-	Data       *QueryAlertRulesResult `json:"data,omitempty" xml:"data,omitempty"`
-	Message    *string                `json:"message,omitempty" xml:"message,omitempty"`
-	NextToken  *string                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	PageNumber *int32                 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	RequestId  *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success    *bool                  `json:"success,omitempty" xml:"success,omitempty"`
-	Total      *int32                 `json:"total,omitempty" xml:"total,omitempty"`
+	// The status code of the API response. A value of 200 indicates a successful request. Other values indicate an exception.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The business data returned by the API, including the list of alert rule query results and pagination information.
+	//
+	// example:
+	//
+	// {"alertRules":[],"totalCount":0}
+	Data *QueryAlertRulesResult `json:"data,omitempty" xml:"data,omitempty"`
+	// The detailed error description returned when the request fails. This parameter is empty when the request succeeds.
+	//
+	// example:
+	//
+	// The request is invalid.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The token for the next page. A value of null indicates that no more pages are available.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number of the current response.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of records per page in the current response.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The unique ID of the API request, used for troubleshooting and server-side log tracing.
+	//
+	// example:
+	//
+	// A1B2C3D4-E5F6-7890-ABCD-EF1234567890
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of alert rules that match the query conditions.
+	//
+	// example:
+	//
+	// 1
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ServerResponseQueryAlertRulesResult) String() string {

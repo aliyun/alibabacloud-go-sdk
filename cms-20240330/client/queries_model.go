@@ -43,6 +43,10 @@ type Queries struct {
 	// SampleValue
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// The label filter conditions for UMODEL_METRICSET_MULTI_QUERY. This parameter is optional and independent for each query.
+	//
+	// example:
+	//
+	// [{"key":"host.name","value":"web-server-01","type":"eq"}]
 	LabelFilters []*LabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
 	// The metric name for UMODEL_METRICSET_MULTI_QUERY.
 	//

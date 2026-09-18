@@ -18,7 +18,11 @@ type iMeasureList interface {
 }
 
 type MeasureList struct {
-	// The grouping dimension.
+	// The list of grouping dimensions for metric data. Specifies the dimension keys by which metric results are computed through grouping and aggregation.
+	//
+	// example:
+	//
+	// ["host.name", "region"]
 	GroupBy []*string `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
 	// The metric code.
 	//

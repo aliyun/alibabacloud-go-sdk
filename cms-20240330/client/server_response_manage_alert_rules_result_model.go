@@ -30,22 +30,59 @@ type iServerResponseManageAlertRulesResult interface {
 }
 
 type ServerResponseManageAlertRulesResult struct {
-	// The response code.
-	Code *string                 `json:"code,omitempty" xml:"code,omitempty"`
+	// The status code of the API response. A value of 200 indicates a successful request. Other values indicate a request exception.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The business data returned by the API, which contains the execution result details of alert rule management operations such as batch enabling or disabling.
+	//
+	// example:
+	//
+	// {"updatedUuidList":["a1b2c3d4-e5f6-7890-abcd-ef1234567890"]}
 	Data *ManageAlertRulesResult `json:"data,omitempty" xml:"data,omitempty"`
-	// The error message.
+	// The error description returned when the request fails. This parameter is empty when the request succeeds.
+	//
+	// example:
+	//
+	// The specified alert rule UUID does not exist.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token.
+	// The cursor for the next page in keyset-based pagination. A value of null indicates that no more data is available. Use this value to retrieve the next page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The page number.
+	// The page number of the returned data.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page in the returned data.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The unique ID of the API request, which is used for troubleshooting and correlating server-side logs.
+	//
+	// example:
+	//
+	// A1B2C3D4-E5F6-7890-ABCD-EF1234567890
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of entries.
+	// The total number of alert rules actually affected by the operation.
+	//
+	// example:
+	//
+	// 8
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 

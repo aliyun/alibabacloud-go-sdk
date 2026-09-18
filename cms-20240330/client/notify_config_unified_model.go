@@ -48,7 +48,7 @@ type NotifyConfigUnified struct {
 	ActiveStartTime *string `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
 	// The list of notification channels.
 	Channels []*DirectNotifyChannel `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// The list of notification policy IDs (type=NOTIFY_POLICY, currently a maximum of 1 is supported. Mutually exclusive with the DIRECT_NOTIFY fields channels/silenceTimeSecs/activeDays/activeStartTime/activeEndTime/utcOffset).
+	// The list of notification policy IDs (type=NOTIFY_POLICY, currently a maximum of 1 per service. Mutually exclusive with channels/silenceTimeSecs/activeDays/activeStartTime/activeEndTime/utcOffset of DIRECT_NOTIFY).
 	NotifyStrategies []*string `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
 	// Specifies whether to send recovery notifications (type=DIRECT_NOTIFY). Default value: true. Each severity level in severityChannels can independently override this setting.
 	//

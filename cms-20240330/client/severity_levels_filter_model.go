@@ -14,7 +14,11 @@ type iSeverityLevelsFilter interface {
 }
 
 type SeverityLevelsFilter struct {
-	// Matches a log entry if its severity level appears in this array of strings.
+	// The hit condition: the set of severity levels covered by the rule contains at least one level in the array (OR semantics).
+	//
+	// example:
+	//
+	// ["CRITICAL","ERROR"]
 	Contains []*string `json:"contains,omitempty" xml:"contains,omitempty" type:"Repeated"`
 }
 

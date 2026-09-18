@@ -26,13 +26,48 @@ type iNotificationChannelsFilter interface {
 }
 
 type NotificationChannelsFilter struct {
-	ContainsContacts       []*string `json:"containsContacts,omitempty" xml:"containsContacts,omitempty" type:"Repeated"`
+	// The alert contact list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.contacts.
+	//
+	// example:
+	//
+	// ["John","Jane"]
+	ContainsContacts []*string `json:"containsContacts,omitempty" xml:"containsContacts,omitempty" type:"Repeated"`
+	// The custom webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.customWebhooks.
+	//
+	// example:
+	//
+	// ["https://my-service.example.com/webhook/alert"]
 	ContainsCustomWebhooks []*string `json:"containsCustomWebhooks,omitempty" xml:"containsCustomWebhooks,omitempty" type:"Repeated"`
-	ContainsDingWebhooks   []*string `json:"containsDingWebhooks,omitempty" xml:"containsDingWebhooks,omitempty" type:"Repeated"`
-	ContainsFsWebhooks     []*string `json:"containsFsWebhooks,omitempty" xml:"containsFsWebhooks,omitempty" type:"Repeated"`
-	ContainsGroups         []*string `json:"containsGroups,omitempty" xml:"containsGroups,omitempty" type:"Repeated"`
-	ContainsSlackWebhooks  []*string `json:"containsSlackWebhooks,omitempty" xml:"containsSlackWebhooks,omitempty" type:"Repeated"`
-	ContainsWxWebhooks     []*string `json:"containsWxWebhooks,omitempty" xml:"containsWxWebhooks,omitempty" type:"Repeated"`
+	// The DingTalk webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.dingWebhooks.
+	//
+	// example:
+	//
+	// ["https://oapi.dingtalk.com/robot/send?access_token=abc123"]
+	ContainsDingWebhooks []*string `json:"containsDingWebhooks,omitempty" xml:"containsDingWebhooks,omitempty" type:"Repeated"`
+	// The Lark webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.fsWebhooks.
+	//
+	// example:
+	//
+	// ["https://open.feishu.cn/open-apis/bot/v2/hook/abc123"]
+	ContainsFsWebhooks []*string `json:"containsFsWebhooks,omitempty" xml:"containsFsWebhooks,omitempty" type:"Repeated"`
+	// The alert contact group list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.groups.
+	//
+	// example:
+	//
+	// ["OpsTeam","SRETeam"]
+	ContainsGroups []*string `json:"containsGroups,omitempty" xml:"containsGroups,omitempty" type:"Repeated"`
+	// The Slack webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.slackWebhooks.
+	//
+	// example:
+	//
+	// ["https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXX"]
+	ContainsSlackWebhooks []*string `json:"containsSlackWebhooks,omitempty" xml:"containsSlackWebhooks,omitempty" type:"Repeated"`
+	// The WeCom webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.wxWebhooks.
+	//
+	// example:
+	//
+	// ["https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=abc123"]
+	ContainsWxWebhooks []*string `json:"containsWxWebhooks,omitempty" xml:"containsWxWebhooks,omitempty" type:"Repeated"`
 }
 
 func (s NotificationChannelsFilter) String() string {

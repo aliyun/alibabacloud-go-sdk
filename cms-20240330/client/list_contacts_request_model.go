@@ -74,7 +74,7 @@ type ListContactsRequest struct {
 	//
 	// true
 	QueryUngroupedContacts *bool `json:"queryUngroupedContacts,omitempty" xml:"queryUngroupedContacts,omitempty"`
-	// The workspace name.
+	// The workspace name. Format: `default-cms-{accountId}-{region}`. Example: `default-cms-1744108686100472-cn-hangzhou`. You can call the ListWorkspaces API to obtain valid workspace names.
 	//
 	// example:
 	//

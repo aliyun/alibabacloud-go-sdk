@@ -117,7 +117,7 @@ func (s *ListContactsResponseBody) Validate() error {
 }
 
 type ListContactsResponseBodyContacts struct {
-	// The ID of the on-duty contact.
+	// The ID of the alert contact.
 	//
 	// example:
 	//

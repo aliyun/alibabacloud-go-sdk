@@ -16,7 +16,17 @@ type iUuidFilter interface {
 }
 
 type UuidFilter struct {
-	Eq *string   `json:"eq,omitempty" xml:"eq,omitempty"`
+	// The exact match condition for the alert rule UUID. Only the alert rule whose UUID equals the specified value is returned.
+	//
+	// example:
+	//
+	// a1b2c3d4-e5f6-7890-abcd-ef1234567890
+	Eq *string `json:"eq,omitempty" xml:"eq,omitempty"`
+	// The set match condition for alert rule UUIDs. All alert rules whose UUIDs are in the specified list are returned.
+	//
+	// example:
+	//
+	// ["a1b2c3d4-e5f6-7890-abcd-ef1234567890","b2c3d4e5-f6a7-8901-bcde-f12345678901"]
 	In []*string `json:"in,omitempty" xml:"in,omitempty" type:"Repeated"`
 }
 

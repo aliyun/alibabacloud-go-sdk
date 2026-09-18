@@ -16,11 +16,19 @@ type iScheduleConfigUnified interface {
 }
 
 type ScheduleConfigUnified struct {
-	// The interval between scheduled runs, in seconds.
+	// The scheduling interval in seconds. This parameter is used when type is set to FIXED.
+	//
+	// example:
+	//
+	// 30
 	IntervalSecs *int32 `json:"intervalSecs,omitempty" xml:"intervalSecs,omitempty"`
-	// The type of the schedule.
+	// The type of the scheduling configuration. FIXED indicates fixed-interval scheduling, which executes periodically based on the interval specified by intervalSecs.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// FIXED
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

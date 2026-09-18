@@ -38,7 +38,7 @@ type SubscriptionForModify struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// The UUID of the notification policy.
+	// The UUID of the notification strategy.
 	//
 	// example:
 	//
@@ -46,11 +46,7 @@ type SubscriptionForModify struct {
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// The push settings.
 	PushingSetting *SubscriptionForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
-	//
-	// - true: Subscribe.
-	//
-	// - false or null: Do not subscribe.
+	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribe. false or null: Do not subscribe.
 	//
 	// example:
 	//

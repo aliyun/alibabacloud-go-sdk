@@ -402,6 +402,81 @@ func (client *Client) CreateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
+// Creates an alert robot.
+//
+// @param request - CreateAlertRobotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlertRobotResponse
+func (client *Client) CreateAlertRobotWithContext(ctx context.Context, request *CreateAlertRobotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAlertRobotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DigitalEmployeeName) {
+		body["digitalEmployeeName"] = request.DigitalEmployeeName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RobotId) {
+		body["robotId"] = request.RobotId
+	}
+
+	if !dara.IsNil(request.RobotSignKey) {
+		body["robotSignKey"] = request.RobotSignKey
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["url"] = request.Url
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAlertRobot"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/robot"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAlertRobotResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a webhook.
 //
 // Description:
@@ -1919,6 +1994,63 @@ func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAggTaskGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an alert chatbot.
+//
+// @param tmpReq - DeleteAlertRobotsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertRobotsResponse
+func (client *Client) DeleteAlertRobotsWithContext(ctx context.Context, tmpReq *DeleteAlertRobotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAlertRobotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAlertRobotsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RobotIds) {
+		request.RobotIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RobotIds, dara.String("robotIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RobotIdsShrink) {
+		query["robotIds"] = request.RobotIdsShrink
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAlertRobots"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/robots"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAlertRobotsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5623,9 +5755,7 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 //
 // Description:
 //
-// This operation can only query alert history from the last year.
-//
-// This topic provides an example of querying the alert history of Elastic Computing Service from the `product` dimension of a cloud service.
+// Queries the list of alert robots under the current account. Alert robots are webhook receivers for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter results by robot ID, name, type, and workspace.
 //
 // @param tmpReq - ListAlertRobotsRequest
 //
@@ -8518,6 +8648,73 @@ func (client *Client) UpdateAggTaskGroupStatusWithContext(ctx context.Context, i
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAggTaskGroupStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an alert robot.
+//
+// @param request - UpdateAlertRobotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertRobotResponse
+func (client *Client) UpdateAlertRobotWithContext(ctx context.Context, robotId *string, request *UpdateAlertRobotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAlertRobotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DigitalEmployeeName) {
+		body["digitalEmployeeName"] = request.DigitalEmployeeName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RobotSignKey) {
+		body["robotSignKey"] = request.RobotSignKey
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAlertRobot"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/robot/" + dara.PercentEncode(dara.StringValue(robotId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAlertRobotResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

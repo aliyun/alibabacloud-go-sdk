@@ -16,7 +16,11 @@ type iSlsQueryJoin interface {
 }
 
 type SlsQueryJoin struct {
-	// The list of join conditions.
+	// The list of join conditions for SLS query result sets. The conditions define the matching rules between multiple SLS query results for cross-Logstore data correlation analysis.
+	//
+	// example:
+	//
+	// [{"leftField":"traceId","operator":"eq","rightField":"trace_id"}]
 	Conditions []*SlsJoinCondition `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// The set operation type. Valid values: InnerJoin, LeftJoin, RightJoin, FullJoin, LeftExclude, RightExclude, CrossJoin, NoJoin, and Concat.
 	//

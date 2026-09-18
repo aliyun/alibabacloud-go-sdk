@@ -16,9 +16,17 @@ type iPagination interface {
 }
 
 type Pagination struct {
-	// The current page number.
+	// The page number, starting from 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of records per page. This parameter controls the amount of data returned in a single request. Recommended value range: 1 to 100.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 

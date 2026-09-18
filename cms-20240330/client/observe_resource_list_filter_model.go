@@ -14,7 +14,11 @@ type iObserveResourceListFilter interface {
 }
 
 type ObserveResourceListFilter struct {
-	// Returns resources if a specified property contains any string in this array.
+	// The match condition that requires the observeResourceList of a rule to contain at least one instance ID from the array (OR semantics).
+	//
+	// example:
+	//
+	// ["i-bp1a2b3c4d5e6f7g8h9i"]
 	Contains []*string `json:"contains,omitempty" xml:"contains,omitempty" type:"Repeated"`
 }
 

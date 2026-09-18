@@ -56,7 +56,7 @@ type NotifyStrategyForSNSView struct {
 	//
 	// example:
 	//
-	// Sample description
+	// SampleDescription
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the notification policy is enabled.
 	//
@@ -72,13 +72,13 @@ type NotifyStrategyForSNSView struct {
 	EnableIncidentManagement *bool `json:"enableIncidentManagement,omitempty" xml:"enableIncidentManagement,omitempty"`
 	// The grouping settings.
 	GroupingSetting *NotifyStrategyForSNSViewGroupingSetting `json:"groupingSetting,omitempty" xml:"groupingSetting,omitempty" type:"Struct"`
-	// Indicates whether recovery notifications are sent.
+	// Indicates whether to send a notification upon recovery.
 	//
 	// example:
 	//
 	// true
 	IgnoreRestoredNotification *bool `json:"ignoreRestoredNotification,omitempty" xml:"ignoreRestoredNotification,omitempty"`
-	// The UUID of the associated response plan, which equals notifyStrategyId.
+	// The associated response plan UUID, which equals notifyStrategyId.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type NotifyStrategyForSNSView struct {
 	//
 	// example:
 	//
-	// Sample value
+	// SampleValue
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// The notification policy ID.
 	//
@@ -100,11 +100,11 @@ type NotifyStrategyForSNSView struct {
 	//
 	// example:
 	//
-	// Sample name
+	// SampleName
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
 	// The notification channel routing settings.
 	Routes []*NotifyStrategyForSNSViewRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
-	// The synchronization source. For SNS creation, this value is always OBS.
+	// The sync source. For SNS creation, this value is always OBS.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type NotifyStrategyForSNSView struct {
 	//
 	// example:
 	//
-	// Sample value
+	// SampleValue
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
@@ -432,7 +432,7 @@ type NotifyStrategyForSNSViewRoutes struct {
 	//
 	// example:
 	//
-	// Sample name
+	// SampleName
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
 	// The effective time range.
 	EffectTimeRange *NotifyStrategyForSNSViewRoutesEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
@@ -586,15 +586,15 @@ func (s *NotifyStrategyForSNSViewRoutesChannels) Validate() error {
 }
 
 type NotifyStrategyForSNSViewRoutesEffectTimeRange struct {
-	// The effective days, from Monday to Sunday.
+	// The effective days (Monday to Sunday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// The start time in minutes.
+	// The start time (in minutes).
 	//
 	// example:
 	//
 	// 1
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// The start time in minutes.
+	// The start time (in minutes).
 	//
 	// example:
 	//

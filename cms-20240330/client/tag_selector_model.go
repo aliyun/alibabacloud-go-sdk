@@ -20,13 +20,13 @@ type iTagSelector interface {
 type TagSelector struct {
 	// The list of label filter conditions.
 	Conditions []*TagCondition `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The custom expression in advanced mode, which overwrites conditions and relation.
+	// The custom expression in advanced mode. This overrides the conditions and relation settings.
 	//
 	// example:
 	//
 	// env=prod AND region=cn-hangzhou
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// The condition relationship.
+	// The relationship between conditions.
 	//
 	// example:
 	//

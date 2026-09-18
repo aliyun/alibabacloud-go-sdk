@@ -73,7 +73,7 @@ type NotifyRouteForSubscriptionChannels struct {
 	//
 	// default
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// The list of enabled sub-channels.
+	// The list of enabled subchannels.
 	EnabledSubChannels []*string `json:"enabledSubChannels,omitempty" xml:"enabledSubChannels,omitempty" type:"Repeated"`
 	// The list of receivers.
 	Receivers []*string `json:"receivers,omitempty" xml:"receivers,omitempty" type:"Repeated"`

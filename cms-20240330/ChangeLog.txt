@@ -1,3 +1,6 @@
+2026-09-18 Version: v10.5.2
+- Generated golang 2024-03-30 for Cms.
+
 2026-09-16 Version: v10.5.1
 - Generated golang 2024-03-30 for Cms.
 

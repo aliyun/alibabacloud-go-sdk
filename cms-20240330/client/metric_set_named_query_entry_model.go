@@ -21,6 +21,10 @@ type iMetricSetNamedQueryEntry interface {
 
 type MetricSetNamedQueryEntry struct {
 	// The label filter conditions. This parameter is optional and independent for each query.
+	//
+	// example:
+	//
+	// [{"key":"host.name","value":"web-server-01","type":"eq"}]
 	LabelFilters []*LabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
 	// The metric name.
 	//
