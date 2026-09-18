@@ -34,7 +34,7 @@ type ListEvaluationRunsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. An empty value indicates that no more pages exist.
+	// The pagination token for the next page. An empty value indicates that no more pages are available.
 	//
 	// example:
 	//

@@ -66,7 +66,7 @@ func (s *GetEvaluatorSkillResponseBody) Validate() error {
 }
 
 type GetEvaluatorSkillResponseBodySkill struct {
-	// The time when the skill was created. This value is a UNIX timestamp in seconds.
+	// The creation time, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type GetEvaluatorSkillResponseBodySkill struct {
 	//
 	// example:
 	//
-	// 读取链路上下文辅助评估
+	// Read trace context to assist evaluation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name.
 	//
 	// example:
 	//
-	// Trace 上下文读取
+	// Trace Context Loader
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Indicates whether the skill is enabled.
 	//
@@ -100,7 +100,7 @@ type GetEvaluatorSkillResponseBodySkill struct {
 	//
 	// example:
 	//
-	// [{"name":"SKILL.md","content":"# Trace Context Loader","remark":"主技能说明"}]
+	// [{"name":"SKILL.md","content":"# Trace Context Loader","remark":"Main skill description"}]
 	Files []*GetEvaluatorSkillResponseBodySkillFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 	// The latest version.
 	//
@@ -114,7 +114,7 @@ type GetEvaluatorSkillResponseBodySkill struct {
 	//
 	// trace_context_loader
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The time when the skill was last updated. This value is a UNIX timestamp in seconds.
+	// The update time, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type GetEvaluatorSkillResponseBodySkill struct {
 	//
 	// example:
 	//
-	// [{"version":"1782816000000","versionDescription":"首次发布版本"}]
+	// [{"version":"1782816000000","versionDescription":"Initial release version"}]
 	Versions []*GetEvaluatorSkillResponseBodySkillVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -261,11 +261,11 @@ type GetEvaluatorSkillResponseBodySkillFiles struct {
 	//
 	// SKILL.md
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The file remarks.
+	// The file remark.
 	//
 	// example:
 	//
-	// 主技能说明
+	// Main skill description
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
@@ -309,7 +309,7 @@ func (s *GetEvaluatorSkillResponseBodySkillFiles) Validate() error {
 }
 
 type GetEvaluatorSkillResponseBodySkillVersions struct {
-	// The time when the version was created. This value is a UNIX timestamp in seconds.
+	// The version creation time, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -325,7 +325,7 @@ type GetEvaluatorSkillResponseBodySkillVersions struct {
 	//
 	// example:
 	//
-	// 首次发布版本
+	// Initial release version
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 }
 

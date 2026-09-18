@@ -48,13 +48,13 @@ type ListExperimentPlansRequest struct {
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// Fuzzy match by plan name.
+	// Fuzzy matches experiment plans by plan name.
 	//
 	// example:
 	//
 	// arms_agent
 	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
-	// Filters by exact status.
+	// Filters experiment plans by exact status.
 	//
 	// example:
 	//

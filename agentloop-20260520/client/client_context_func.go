@@ -355,7 +355,7 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, agentSpace *
 //
 // Description:
 //
-// Calls the CreateEvaluationTask operation to create an evaluation task under a specified AgentSpace. The server verifies AgentSpace permissions, initializes evaluation result storage, checks the uniqueness of the task name, and asynchronously creates and executes an EvaluationRun based on `taskMode` and `runStrategies`.
+// Calls the CreateEvaluationTask operation to create an evaluation task under a specified AgentSpace. The server validates AgentSpace permissions, initializes evaluation result storage, checks task name uniqueness, and asynchronously creates and executes an EvaluationRun based on `taskMode` and `runStrategies`.
 //
 // This operation is applicable to running built-in or custom evaluators on Trace, Dataset, or SLS Log data. It supports two execution strategies: historical backfill and continuous evaluation.
 //
@@ -612,7 +612,7 @@ func (client *Client) CreateEvaluatorSkillWithContext(ctx context.Context, name 
 //
 // Description:
 //
-// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. Use this operation to define the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start the execution.
+// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. This operation defines the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start the execution.
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -699,7 +699,7 @@ func (client *Client) CreateExperimentPlanWithContext(ctx context.Context, agent
 //
 // Description:
 //
-// Calls CreateExperimentRun to initiate an experiment execution based on an existing experiment plan. For online experiments, you typically only need to pass `experimentPlanId`. For offline experiments, you need to pass `offlineExperiments` (1 to 5 items).
+// Calls CreateExperimentRun to initiate an experiment run based on an existing experiment plan. For online experiments, you typically only need to pass `experimentPlanId`. For offline experiments, you must pass `offlineExperiments` (1 to 5).
 //
 // @param request - CreateExperimentRunRequest
 //
@@ -1076,7 +1076,7 @@ func (client *Client) DeleteEvaluationRunWithContext(ctx context.Context, agentS
 
 // Summary:
 //
-// Deletes an evaluation task.
+// Deletes a model evaluation task.
 //
 // @param request - DeleteEvaluationTaskRequest
 //
@@ -1260,7 +1260,7 @@ func (client *Client) DeleteExperimentPlanWithContext(ctx context.Context, agent
 //
 // Description:
 //
-// Calls DeleteExperimentRun to delete a specified experiment run record. Deleting the record does not delete the experiment plan to which it belongs.
+// Calls DeleteExperimentRun to delete a specified experiment run record. Deleting a record does not delete the experiment plan to which it belongs.
 //
 // @param request - DeleteExperimentRunRequest
 //
@@ -2425,7 +2425,7 @@ func (client *Client) ListEvaluationTasksWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the skill list of an evaluator.
+// Queries the list of skills for an evaluator.
 //
 // @param request - ListEvaluatorSkillsRequest
 //
@@ -2551,7 +2551,7 @@ func (client *Client) ListEvaluatorsWithContext(ctx context.Context, request *Li
 //
 // Description:
 //
-// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. Supports fuzzy match by plan name, filtering by status, and pagination using `offset`/`limit`.
+// Calls ListExperimentPlans to query the list of experiment plans under a specified AgentSpace for the current account. Supports fuzzy match by plan name, filtering by status, and pagination by using `offset`/`limit`.
 //
 // @param request - ListExperimentPlansRequest
 //
@@ -2764,7 +2764,7 @@ func (client *Client) ListPipelineRunsWithContext(ctx context.Context, agentSpac
 
 // Summary:
 //
-// Lists CI/CD pipelines.
+// Queries a list of pipelines. Supports filtering by name, schedule type, and schedule status with cursor-based pagination.
 //
 // @param request - ListPipelinesRequest
 //
@@ -3705,7 +3705,7 @@ func (client *Client) UpdateExperimentPlanWithContext(ctx context.Context, agent
 //
 // Description:
 //
-// Calls UpdateExperimentRun to update the name, status, and task counts of an experiment record. Fields that are not specified remain unchanged. Typical sequence for offline experiments: running → progress writeback → completed.
+// Calls UpdateExperimentRun to update the name, status, and task counts of an experiment record. Fields that are not specified remain unchanged. Typical sequence for an offline experiment: running → progress writeback → completed.
 //
 // @param request - UpdateExperimentRunRequest
 //

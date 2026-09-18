@@ -28,7 +28,7 @@ type iUpdateExperimentRunRequest interface {
 }
 
 type UpdateExperimentRunRequest struct {
-	// The experiment completion time. A millisecond-level UNIX timestamp.
+	// The experiment completion time. This value is a millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type UpdateExperimentRunRequest struct {
 	//
 	// 10
 	CompletedTasks *int32 `json:"completedTasks,omitempty" xml:"completedTasks,omitempty"`
-	// The experiment execution time. A millisecond-level UNIX timestamp.
+	// The experiment execution time. This value is a millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type UpdateExperimentRunRequest struct {
 	//
 	// rca_benchmark_eval_experiment 2026/07/22 19:23:59
 	RecordName *string `json:"recordName,omitempty" xml:"recordName,omitempty"`
-	// The experiment record status. Set to cancelled to cancel execution.
+	// The experiment record status. Set this parameter to cancelled to cancel the execution.
 	//
 	// example:
 	//

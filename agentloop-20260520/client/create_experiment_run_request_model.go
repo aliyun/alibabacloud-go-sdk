@@ -32,19 +32,19 @@ type iCreateExperimentRunRequest interface {
 }
 
 type CreateExperimentRunRequest struct {
-	// The completion time, in millisecond-level UNIX timestamp.
+	// The completion time. The value is a millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
 	// 1784721811392
 	CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// The number of completed tasks. If not specified, the default value is 0.
+	// The number of completed tasks. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	CompletedTasks *int32 `json:"completedTasks,omitempty" xml:"completedTasks,omitempty"`
-	// The execution time, in millisecond-level UNIX timestamp.
+	// The execution time. The value is a millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -58,25 +58,25 @@ type CreateExperimentRunRequest struct {
 	//
 	// exp-plan-0242d983f5d340fd8479cf2c19eb279e
 	ExperimentPlanId *string `json:"experimentPlanId,omitempty" xml:"experimentPlanId,omitempty"`
-	// The number of failed tasks. If not specified, the default value is 0.
+	// The number of failed tasks. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	FailedTasks *int32 `json:"failedTasks,omitempty" xml:"failedTasks,omitempty"`
-	// The list of offline experiment configurations. Required when the plan type is offline. The number of items ranges from 1 to 5.
+	// The list of offline experiment configurations. This parameter is required when the plan type is offline. You can specify 1 to 5 configurations.
 	//
 	// example:
 	//
 	// [{"label": "experimentA", "name": "experimentA"}]
 	OfflineExperiments []*OfflineExperimentConfig `json:"offlineExperiments,omitempty" xml:"offlineExperiments,omitempty" type:"Repeated"`
-	// The experiment record name. If not specified, the default value is the plan name plus a timestamp.
+	// The experiment record name. If not specified, the default value is the plan name followed by a timestamp.
 	//
 	// example:
 	//
 	// arms_agent_experiment 2026/07/22 20:02:55
 	RecordName *string `json:"recordName,omitempty" xml:"recordName,omitempty"`
-	// The initial status. If not specified, the default value is `pending`.
+	// The initial status. Default value: `pending`.
 	//
 	// example:
 	//

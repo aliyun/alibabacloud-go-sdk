@@ -28,29 +28,29 @@ type iUpdateEvaluatorRequest interface {
 }
 
 type UpdateEvaluatorRequest struct {
-	// The list of annotation marks.
+	// The list of annotation tags.
 	//
 	// example:
 	//
 	// ["__en"]
 	Annotations []*string `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
-	// The new version configuration. This parameter is typically required when `version` is specified.
+	// The configuration of the new version. This parameter is typically required when `version` is specified.
 	//
 	// example:
 	//
-	// {"prompt":"请更严格地评估任务完成度"}
+	// {"prompt":"Evaluate task completion more strictly"}
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
 	// The evaluator description.
 	//
 	// example:
 	//
-	// 判断 Agent 是否完成用户任务
+	// Determines whether the agent completes the user task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name.
 	//
 	// example:
 	//
-	// 链路任务完成度
+	// Task completion of the chain
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The evaluator properties.
 	//
@@ -58,7 +58,7 @@ type UpdateEvaluatorRequest struct {
 	//
 	// {"agentEvaluatorMode":"raw_prompt"}
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
-	// The new version number. If specified, a new version is created.
+	// The new version number. A new version is created when this parameter is specified.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type UpdateEvaluatorRequest struct {
 	//
 	// example:
 	//
-	// 优化评分说明
+	// Optimized scoring instructions
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 	// The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency comparison.
 	//

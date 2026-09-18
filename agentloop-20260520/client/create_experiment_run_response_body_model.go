@@ -24,9 +24,9 @@ type CreateExperimentRunResponseBody struct {
 	//
 	// example:
 	//
-	// Experiment created, execution started.
+	// Experiment created, execution started
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The experiment record ID. For online experiments, the format is typically exp-run-{uuid32}. For offline experiments, the format may also be a standard UUID.
+	// The experiment record ID. For online experiments, the ID is typically in the format exp-run-{uuid32}. For offline experiments, the ID may also be a standard UUID.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateExperimentRunResponseBody struct {
 	//
 	// 019F89B5-1B07-3BB3-A32E-F5B007029E9C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The experiment record status. After creation, the status is typically pending.
+	// The experiment record status. The value is typically pending after creation.
 	//
 	// example:
 	//

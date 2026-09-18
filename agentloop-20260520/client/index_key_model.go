@@ -11,6 +11,8 @@ type iIndexKey interface {
 	GoString() string
 	SetChn(v bool) *IndexKey
 	GetChn() *bool
+	SetDescription(v string) *IndexKey
+	GetDescription() *string
 	SetEmbedding(v string) *IndexKey
 	GetEmbedding() *string
 	SetJsonKeys(v map[string]*IndexJsonKey) *IndexKey
@@ -20,10 +22,36 @@ type iIndexKey interface {
 }
 
 type IndexKey struct {
-	Chn       *bool                    `json:"chn,omitempty" xml:"chn,omitempty"`
-	Embedding *string                  `json:"embedding,omitempty" xml:"embedding,omitempty"`
-	JsonKeys  map[string]*IndexJsonKey `json:"jsonKeys,omitempty" xml:"jsonKeys,omitempty"`
-	Type      *string                  `json:"type,omitempty" xml:"type,omitempty"`
+	// Specifies whether Chinese is included. This parameter is required only when the **type*	- parameter is set to **text**. Valid values:
+	//
+	//   - true: Chinese is included.
+	//
+	//   - false: Chinese is not included.
+	//
+	// example:
+	//
+	// true
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The field embedding type.
+	//
+	// example:
+	//
+	// agentloop-embedding-v4
+	Embedding *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
+	// The JSON subfields. This parameter takes effect only when type is set to json.
+	JsonKeys map[string]*IndexJsonKey `json:"jsonKeys,omitempty" xml:"jsonKeys,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s IndexKey) String() string {
@@ -36,6 +64,10 @@ func (s IndexKey) GoString() string {
 
 func (s *IndexKey) GetChn() *bool {
 	return s.Chn
+}
+
+func (s *IndexKey) GetDescription() *string {
+	return s.Description
 }
 
 func (s *IndexKey) GetEmbedding() *string {
@@ -52,6 +84,11 @@ func (s *IndexKey) GetType() *string {
 
 func (s *IndexKey) SetChn(v bool) *IndexKey {
 	s.Chn = &v
+	return s
+}
+
+func (s *IndexKey) SetDescription(v string) *IndexKey {
+	s.Description = &v
 	return s
 }
 

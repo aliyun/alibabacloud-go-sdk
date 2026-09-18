@@ -25,19 +25,36 @@ type iExperimentConfig interface {
   GetPromptTemplate() []*PromptTemplateItem 
   SetRequestBodyTemplate(v string) *ExperimentConfig
   GetRequestBodyTemplate() *string 
+  SetRequestHeaderTemplate(v string) *ExperimentConfig
+  GetRequestHeaderTemplate() *string 
   SetRequestMethod(v string) *ExperimentConfig
   GetRequestMethod() *string 
 }
 
 type ExperimentConfig struct {
+  // The endpoint connector ID. This parameter is required in user/agent mode.
   EndpointConnectorId *string `json:"endpointConnectorId,omitempty" xml:"endpointConnectorId,omitempty"`
+  // The experiment label (A/B/C/D/E).
   Label *string `json:"label,omitempty" xml:"label,omitempty"`
+  // The model name. You can set this parameter to agent in agent scenarios.
   ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+  // The model parameters.
   ModelParameters *ModelParameters `json:"modelParameters,omitempty" xml:"modelParameters,omitempty"`
+  // The model provider. Valid values: dashscope (default), user, and agent.
   ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
+  // The experiment name.
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // The prompt message template. Supports {{variable name}} placeholders.
   PromptTemplate []*PromptTemplateItem `json:"promptTemplate,omitempty" xml:"promptTemplate,omitempty" type:"Repeated"`
+  // The agent request body template. This parameter is required in agent mode. Supports {{variable name}} placeholders.
   RequestBodyTemplate *string `json:"requestBodyTemplate,omitempty" xml:"requestBodyTemplate,omitempty"`
+  // The agent request header template. This parameter is optional in agent mode. Supports {{variable name}} placeholders.
+  // 
+  // example:
+  // 
+  // {"Content-Type: application/json" }
+  RequestHeaderTemplate *string `json:"requestHeaderTemplate,omitempty" xml:"requestHeaderTemplate,omitempty"`
+  // The agent request method. Valid values: POST (default) and GET.
   RequestMethod *string `json:"requestMethod,omitempty" xml:"requestMethod,omitempty"`
 }
 
@@ -81,6 +98,10 @@ func (s *ExperimentConfig) GetRequestBodyTemplate() *string  {
   return s.RequestBodyTemplate
 }
 
+func (s *ExperimentConfig) GetRequestHeaderTemplate() *string  {
+  return s.RequestHeaderTemplate
+}
+
 func (s *ExperimentConfig) GetRequestMethod() *string  {
   return s.RequestMethod
 }
@@ -122,6 +143,11 @@ func (s *ExperimentConfig) SetPromptTemplate(v []*PromptTemplateItem) *Experimen
 
 func (s *ExperimentConfig) SetRequestBodyTemplate(v string) *ExperimentConfig {
   s.RequestBodyTemplate = &v
+  return s
+}
+
+func (s *ExperimentConfig) SetRequestHeaderTemplate(v string) *ExperimentConfig {
+  s.RequestHeaderTemplate = &v
   return s
 }
 

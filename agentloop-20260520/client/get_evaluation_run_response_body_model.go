@@ -48,31 +48,31 @@ type GetEvaluationRunResponseBody struct {
 	//
 	// 1782816000
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The end time of the data window for the run, in seconds-level UNIX timestamp.
+	// The end time of the run data window, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
 	// 1782902400
 	DataEndTime *int64 `json:"dataEndTime,omitempty" xml:"dataEndTime,omitempty"`
-	// The start time of the data window for the run, in seconds-level UNIX timestamp.
+	// The start time of the run data window, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
 	// 1782816000
 	DataStartTime *int64 `json:"dataStartTime,omitempty" xml:"dataStartTime,omitempty"`
-	// The list of progress details by evaluator.
+	// The list of progress entries by evaluator.
 	//
 	// example:
 	//
 	// [{"evaluatorName":"Builtin.agent_task_completion","totalCount":100,"successCount":96,"failedCount":4}]
 	EvaluatorProgress []*GetEvaluationRunResponseBodyEvaluatorProgress `json:"evaluatorProgress,omitempty" xml:"evaluatorProgress,omitempty" type:"Repeated"`
-	// The evaluator configuration snapshot at the time the run was created, in JSON string format.
+	// The snapshot of the evaluator configuration at the time the run was created, in JSON string format.
 	//
 	// example:
 	//
 	// [{"evaluatorRef":"Builtin.agent_task_completion"}]
 	Evaluators *string `json:"evaluators,omitempty" xml:"evaluators,omitempty"`
-	// The number of failed entries.
+	// The number of failed items.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GetEvaluationRunResponseBody struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The number of successful entries.
+	// The number of successful items.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetEvaluationRunResponseBody struct {
 	//
 	// eval-task-8b36f2e2b1f94f9c91ce7a4b0f6d9c25
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The total number of evaluation entries.
+	// The total number of evaluation items.
 	//
 	// example:
 	//
@@ -297,19 +297,19 @@ type GetEvaluationRunResponseBodyEvaluatorProgress struct {
 	//
 	// Builtin.agent_task_completion
 	EvaluatorName *string `json:"evaluatorName,omitempty" xml:"evaluatorName,omitempty"`
-	// The number of failed entries for this evaluator.
+	// The number of failed items for this evaluator.
 	//
 	// example:
 	//
 	// 4
 	FailedCount *int32 `json:"failedCount,omitempty" xml:"failedCount,omitempty"`
-	// The number of successful entries for this evaluator.
+	// The number of successful items for this evaluator.
 	//
 	// example:
 	//
 	// 96
 	SuccessCount *int32 `json:"successCount,omitempty" xml:"successCount,omitempty"`
-	// The total number of entries for this evaluator.
+	// The total number of items for this evaluator.
 	//
 	// example:
 	//

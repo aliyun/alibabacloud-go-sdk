@@ -52,25 +52,25 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// prod-agentspace
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The task source.
+	// The source of the task.
 	//
 	// example:
 	//
 	// default
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The data source and execution configuration. Tasks with `dataType=trace` typically contain `project`, `storeName`, and `dataScope` fields that are populated by the backend.
+	// The data source and execution configuration. Tasks with `dataType=trace` typically contain backend-populated `project`, `storeName`, and `dataScope` fields.
 	//
 	// example:
 	//
 	// {"project":"agentspace-project","storeName":"logstore-tracing","dataScope":"trace"}
 	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	// The creation time, in seconds-level UNIX timestamp.
+	// The creation time, in seconds as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1782816000
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The evaluation data filter condition, returned by the backend as a JSON string.
+	// The evaluation data filter conditions, returned by the backend as a JSON string.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// trace
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// The evaluation task description.
+	// The description of the evaluation task.
 	//
 	// example:
 	//
-	// Evaluate the task completion rate of the online Agent pipeline
+	// Evaluate the task completion of the online Agent pipeline
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of evaluator configurations.
 	//
@@ -106,7 +106,7 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The structured configuration of the run strategy, including the parsed backfill strategy and continuous evaluation strategy.
+	// The structured run strategy configuration, including the parsed backfill strategy and continuous evaluation strategy.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// trace_task_completion_eval
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The last update time, in seconds-level UNIX timestamp.
+	// The last update time, in seconds as a UNIX timestamp.
 	//
 	// example:
 	//

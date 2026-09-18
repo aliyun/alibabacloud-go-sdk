@@ -22,19 +22,28 @@ type iListPipelinesResponseBody interface {
 }
 
 type ListPipelinesResponseBody struct {
+	// The maximum number of entries per page that was specified in the request. This value is echoed back.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page. An empty string indicates that the current page is the last page.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg5MA==
-	NextToken *string                               `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of pipelines.
 	Pipelines []*ListPipelinesResponseBodyPipelines `json:"pipelines,omitempty" xml:"pipelines,omitempty" type:"Repeated"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of pipelines that match the filter conditions.
+	//
 	// example:
 	//
 	// 100
@@ -108,41 +117,72 @@ func (s *ListPipelinesResponseBody) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelines struct {
+	// The time when the pipeline was created, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the pipeline.
+	//
 	// example:
 	//
-	// 我的流水线
-	Description   *string                                          `json:"description,omitempty" xml:"description,omitempty"`
+	// My pipeline
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The execution policy.
 	ExecutePolicy *ListPipelinesResponseBodyPipelinesExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
+	// The name of the pipeline.
+	//
 	// example:
 	//
 	// my-pipeline
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The scheduling status. Valid values:
+	//
+	// - None: no scheduling. This value is returned for RunOnce pipelines.
+	//
+	// - Active: active.
+	//
+	// - Paused: paused.
+	//
+	// - Terminated: terminated.
+	//
 	// example:
 	//
 	// None
 	ScheduleStatus *string `json:"scheduleStatus,omitempty" xml:"scheduleStatus,omitempty"`
+	// The scheduling type. Valid values:
+	//
+	// - RunOnce: one-time execution.
+	//
+	// - Scheduled: periodic scheduling.
+	//
 	// example:
 	//
 	// RunOnce
-	ScheduleType *string                                   `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
-	Sink         *ListPipelinesResponseBodyPipelinesSink   `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	Source       *ListPipelinesResponseBodyPipelinesSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	ScheduleType *string `json:"scheduleType,omitempty" xml:"scheduleType,omitempty"`
+	// The pipeline sink (data write destination).
+	Sink *ListPipelinesResponseBodyPipelinesSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	// The pipeline data source.
+	Source *ListPipelinesResponseBodyPipelinesSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	// The time when the pipeline was last updated, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-02T00:00:00Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The workspace associated with the pipeline.
+	//
 	// example:
 	//
 	// my-workspace
@@ -276,11 +316,19 @@ func (s *ListPipelinesResponseBodyPipelines) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicy struct {
+	// The scheduling mode. Valid values:
+	//
+	// - RunOnce: one-time execution.
+	//
+	// - Scheduled: periodic scheduling.
+	//
 	// example:
 	//
 	// RunOnce
-	Mode      *string                                                   `json:"mode,omitempty" xml:"mode,omitempty"`
-	RunOnce   *ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce   `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The parameters for one-time execution. This parameter has a value only when mode is set to RunOnce.
+	RunOnce *ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
+	// The parameters for periodic scheduling. This parameter has a value only when mode is set to Scheduled.
 	Scheduled *ListPipelinesResponseBodyPipelinesExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
 }
 
@@ -334,10 +382,14 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce struct {
+	// The start of the time slice, in UNIX millisecond timestamp format.
+	//
 	// example:
 	//
 	// 1735660800000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The end of the time slice, in UNIX millisecond timestamp format.
+	//
 	// example:
 	//
 	// 1735747200000
@@ -375,10 +427,14 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce) Validate() erro
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicyScheduled struct {
+	// The scheduling start time, in UNIX millisecond timestamp format.
+	//
 	// example:
 	//
 	// 1735660800000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The scheduling interval, such as 1h or 30m.
+	//
 	// example:
 	//
 	// 1h
@@ -416,8 +472,12 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicyScheduled) Validate() er
 }
 
 type ListPipelinesResponseBodyPipelinesSink struct {
+	// The conditional routing configuration. This parameter is used only when sink.type is set to condition.
 	Condition *ListPipelinesResponseBodyPipelinesSinkCondition `json:"condition,omitempty" xml:"condition,omitempty" type:"Struct"`
-	Dataset   *ListPipelinesResponseBodyPipelinesSinkDataset   `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The destination dataset configuration for the dataset sink. This parameter is used only when sink.type is set to dataset.
+	Dataset *ListPipelinesResponseBodyPipelinesSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The destination type. Valid values: dataset or condition.
+	//
 	// example:
 	//
 	// condition
@@ -474,12 +534,16 @@ func (s *ListPipelinesResponseBodyPipelinesSink) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSinkCondition struct {
+	// The default write destination that is used when no condition route is matched.
 	DefaultSink *ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink `json:"defaultSink,omitempty" xml:"defaultSink,omitempty" type:"Struct"`
+	// The route matching mode. Currently, only all is supported.
+	//
 	// example:
 	//
 	// all
-	MatchMode *string                                                  `json:"matchMode,omitempty" xml:"matchMode,omitempty"`
-	Routes    []*ListPipelinesResponseBodyPipelinesSinkConditionRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	MatchMode *string `json:"matchMode,omitempty" xml:"matchMode,omitempty"`
+	// The list of condition routes.
+	Routes []*ListPipelinesResponseBodyPipelinesSinkConditionRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
 }
 
 func (s ListPipelinesResponseBodyPipelinesSinkCondition) String() string {
@@ -536,7 +600,10 @@ func (s *ListPipelinesResponseBodyPipelinesSinkCondition) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink struct {
+	// The default destination dataset.
 	Dataset *ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The type of the default destination. Currently, only dataset is supported.
+	//
 	// example:
 	//
 	// dataset
@@ -579,10 +646,14 @@ func (s *ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink) Validate() 
 }
 
 type ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset struct {
+	// The name of the AgentSpace to which the default destination dataset belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The name of the default destination dataset.
+	//
 	// example:
 	//
 	// other-result
@@ -620,14 +691,19 @@ func (s *ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset) Vali
 }
 
 type ListPipelinesResponseBodyPipelinesSinkConditionRoutes struct {
+	// The route expression in SPL. Only where, project, and extend are supported.
+	//
 	// example:
 	//
 	// 	- | where intent = \\"refund\\"
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The route ID.
+	//
 	// example:
 	//
 	// refund
-	Id   *string                                                    `json:"id,omitempty" xml:"id,omitempty"`
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The write destination of the route.
 	Sink *ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 }
 
@@ -676,7 +752,10 @@ func (s *ListPipelinesResponseBodyPipelinesSinkConditionRoutes) Validate() error
 }
 
 type ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink struct {
+	// The destination dataset of the route.
 	Dataset *ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The type of the route destination. Currently, only dataset is supported.
+	//
 	// example:
 	//
 	// dataset
@@ -719,10 +798,14 @@ func (s *ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink) Validate() e
 }
 
 type ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset struct {
+	// The name of the AgentSpace to which the destination dataset belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The name of the destination dataset.
+	//
 	// example:
 	//
 	// refund-result
@@ -760,10 +843,14 @@ func (s *ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset) Valid
 }
 
 type ListPipelinesResponseBodyPipelinesSinkDataset struct {
+	// The name of the AgentSpace to which the destination dataset belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The name of the destination dataset.
+	//
 	// example:
 	//
 	// my-dataset
@@ -801,8 +888,12 @@ func (s *ListPipelinesResponseBodyPipelinesSinkDataset) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSource struct {
-	Dataset  *ListPipelinesResponseBodyPipelinesSourceDataset  `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The dataset datasource config in the current AgentSpace.
+	Dataset *ListPipelinesResponseBodyPipelinesSourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The Simple Log Service (SLS) Logstore datasource config.
 	Logstore *ListPipelinesResponseBodyPipelinesSourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	// The data source type. Valid values: logstore or dataset.
+	//
 	// example:
 	//
 	// dataset
@@ -859,10 +950,14 @@ func (s *ListPipelinesResponseBodyPipelinesSource) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSourceDataset struct {
+	// The name of the source dataset.
+	//
 	// example:
 	//
 	// my-dataset
 	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+	// The data filter condition for the dataset.
+	//
 	// example:
 	//
 	// status = \\"pending\\"
@@ -900,14 +995,20 @@ func (s *ListPipelinesResponseBodyPipelinesSourceDataset) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesSourceLogstore struct {
+	// The name of the SLS Logstore.
+	//
 	// example:
 	//
 	// my-sls-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the SLS project.
+	//
 	// example:
 	//
 	// my-sls-project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The data filtered query statement in SLS query/analysis syntax.
+	//
 	// example:
 	//
 	// 	- | SELECT *

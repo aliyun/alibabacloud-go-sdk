@@ -52,7 +52,7 @@ type UpdateExperimentPlanRequest struct {
 	//
 	// rca_benchmark_eval_experiment offline experiment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of evaluators. Omitting this field indicates no modification. Passing an empty array clears the list.
+	// The list of evaluators. Omitting this field means no modification. Passing an empty array clears the list.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type UpdateExperimentPlanRequest struct {
 	//
 	// OFFLINE
 	ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
-	// The list of experiment configurations. When specified, the entire list is replaced. The number of configurations must be 1 to 5.
+	// The list of experiment configurations. When provided, the entire list is replaced. The number of configurations must be 1 to 5.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type UpdateExperimentPlanRequest struct {
 	//
 	// {"question": "How do I request a refund?"}
 	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
-	// The name of the associated data processing pipeline. This parameter is optional. If not specified, the value is not updated. If an empty character string is specified, the association is dissociated. After association, when an experiment under this plan finishes execution and writes results to the experiment result Logstore, the system filters by the traceId of the experiment trace and calls PreviewPipeline. The pipeline-processed results are then written together.
+	// The name of the associated data processing pipeline. This parameter is optional. If not specified, the value is not updated. If an empty character string is specified, the association is dissociated. After association, when an experiment under this plan completes execution and writes results to the experiment result Logstore, the system filters by the traceId of the experiment trace and invokes PreviewPipeline. The pipeline-processed results are then written together.
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 	// The name of the experiment plan.
 	//

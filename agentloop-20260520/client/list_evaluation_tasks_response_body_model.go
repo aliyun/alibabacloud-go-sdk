@@ -46,7 +46,7 @@ type ListEvaluationTasksResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of records. The total count is returned only on the first page. This value may be empty on subsequent pages.
+	// The total number of records. The total count is calculated only on the first page. This value may be empty on subsequent pages.
 	//
 	// example:
 	//
@@ -139,11 +139,11 @@ type ListEvaluationTasksResponseBodyEvaluationTasks struct {
 	//
 	// trace
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// The evaluation task description.
+	// The description of the evaluation task.
 	//
 	// example:
 	//
-	// 评估线上 Agent 链路任务完成度
+	// Evaluate the task completion of the online Agent trace
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The evaluator configuration summary, in JSON string format.
 	//

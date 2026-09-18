@@ -24,7 +24,7 @@ type UpdateExperimentRunResponseBody struct {
 	//
 	// example:
 	//
-	// Experiment record updated successfully.
+	// Experiment record updated successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The experiment record ID.
 	//

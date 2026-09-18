@@ -44,7 +44,7 @@ type ListEvaluatorSkillsResponseBody struct {
 	//
 	// example:
 	//
-	// [{"skillName":"trace_context_loader","displayName":"Trace 上下文读取","enable":true}]
+	// [{"skillName":"trace_context_loader","displayName":"Trace Context Loader","enable":true}]
 	Skills []*ListEvaluatorSkillsResponseBodySkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
 	// The total number of skills.
 	//
@@ -121,7 +121,7 @@ func (s *ListEvaluatorSkillsResponseBody) Validate() error {
 }
 
 type ListEvaluatorSkillsResponseBodySkills struct {
-	// The creation time. This field is declared as int64 in CloudSpec, but the backend currently returns the StarOps `createTime` string field.
+	// The creation time. Declared as int64 in CloudSpec. The backend currently returns the StarOps `createTime` string field.
 	//
 	// example:
 	//
@@ -131,13 +131,13 @@ type ListEvaluatorSkillsResponseBodySkills struct {
 	//
 	// example:
 	//
-	// 读取链路上下文辅助评估
+	// Reads trace context to assist evaluation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name.
 	//
 	// example:
 	//
-	// Trace 上下文读取
+	// Trace Context Loader
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Indicates whether the skill is enabled.
 	//
@@ -157,7 +157,7 @@ type ListEvaluatorSkillsResponseBodySkills struct {
 	//
 	// trace_context_loader
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The update time. This field is declared as int64 in CloudSpec, but the backend currently returns the StarOps `updateTime` string field.
+	// The update time. Declared as int64 in CloudSpec. The backend currently returns the StarOps `updateTime` string field.
 	//
 	// example:
 	//

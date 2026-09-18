@@ -82,9 +82,9 @@ type GetEvaluatorResponseBodyEvaluator struct {
 	//
 	// example:
 	//
-	// {"prompt":"请评估任务完成度"}
+	// {"prompt":"Please evaluate the task completion"}
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The time when the evaluator was created. The value is a UNIX timestamp in seconds.
+	// The creation time, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type GetEvaluatorResponseBodyEvaluator struct {
 	//
 	// example:
 	//
-	// 判断 Agent 是否完成用户任务
+	// Determines whether the Agent has completed the user task
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name.
 	//
 	// example:
 	//
-	// 链路任务完成度
+	// Trace task completion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The latest version number.
 	//
@@ -138,7 +138,7 @@ type GetEvaluatorResponseBodyEvaluator struct {
 	//
 	// AGENT
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the evaluator was last updated. The value is a UNIX timestamp in seconds.
+	// The update time, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -300,7 +300,7 @@ func (s *GetEvaluatorResponseBodyEvaluator) Validate() error {
 }
 
 type GetEvaluatorResponseBodyEvaluatorVersions struct {
-	// The time when the version was created. The value is a UNIX timestamp in seconds.
+	// The version creation time, in seconds-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -316,7 +316,7 @@ type GetEvaluatorResponseBodyEvaluatorVersions struct {
 	//
 	// example:
 	//
-	// 初始版本
+	// Initial version
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 }
 

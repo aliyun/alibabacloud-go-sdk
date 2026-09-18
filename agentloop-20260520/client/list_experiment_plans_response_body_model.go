@@ -38,7 +38,7 @@ type ListExperimentPlansResponseBody struct {
 	//
 	// eyJsYXN0SWQiOjEwMX0=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The page number.
+	// The page number information.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListExperimentPlansResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of records that match the filter criteria.
+	// The total number of records that match the filter conditions.
 	//
 	// example:
 	//

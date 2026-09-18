@@ -40,7 +40,7 @@ type CreateEvaluationTaskRequest struct {
 	//
 	// default
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The data source and execution configuration. When `dataType=trace`, the backend automatically populates the SLS Project and sets `storeName=logstore-tracing`. For trace-level evaluation, set `dataScope=trace`.
+	// The data source and execution configuration. When `dataType=trace`, the backend automatically populates the SLS Project and `storeName=logstore-tracing`. For trace-level Trace evaluation, set `dataScope=trace`.
 	//
 	// example:
 	//
@@ -52,27 +52,27 @@ type CreateEvaluationTaskRequest struct {
 	//
 	// {"query":"serviceName=\\"checkout-service\\"","maxRecords":10,"samplingRate":100}
 	DataFilter *string `json:"dataFilter,omitempty" xml:"dataFilter,omitempty"`
-	// The data source type of the evaluation target. Use `trace` for trace-based evaluation.
+	// The data source type of the evaluation object. Use `trace` for trace-based evaluation.
 	//
 	// example:
 	//
 	// trace
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// The evaluation task description.
+	// The description of the evaluation task.
 	//
 	// example:
 	//
 	// Evaluate the task completion of online Agent traces
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The evaluator configuration list. This parameter cannot be empty. Within the same task, `evaluatorRef` takes precedence as the unique identifier. Otherwise, `name` is used.
+	// The list of evaluator configurations. This parameter cannot be empty. Within the same task, `evaluatorRef` takes precedence. Otherwise, `name` is used as the unique identifier.
 	//
 	// example:
 	//
 	// [{"evaluatorRef":"Builtin.agent_task_completion","resultName":"agent_task_completion","resultType":"score","variableMapping":{"input":"trace.input","output":"trace.output","agent_trajectory":"trace.agent_trajectory"}}]
 	Evaluators []*Evaluator `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
-	// The task execution strategies. Supports a JSON object or JSON string. `backfill` is used for historical data backfill, and `continuous` is used for continuous evaluation of new data.
+	// The task execution strategies. Supports a JSON object or JSON string. `backfill` is used for historical data backfill. `continuous` is used for continuous evaluation of new data.
 	RunStrategies *RunStrategies `json:"runStrategies,omitempty" xml:"runStrategies,omitempty"`
-	// The task tag key-value pairs. You do not need to specify this parameter by default. Specify this parameter only when you need to associate or filter tasks by business tags.
+	// The task tag key-value pairs. No tags need to be specified by default. Specify tags only when you need to associate or filter tasks by business tags.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateEvaluationTaskRequest struct {
 	//
 	// trace_task_completion_eval
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The idempotency token. This query parameter is declared in CloudSpec, but the backend does not currently perform idempotency comparison.
+	// The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency comparison.
 	//
 	// example:
 	//
