@@ -1,3 +1,6 @@
+2026-09-18 Version: v9.3.1
+- Generated golang 2017-08-01 for polardb.
+
 2026-09-16 Version: v9.3.0
 - Support API DeleteAIDBClusterCustomModel.
 - Support API ModifyAIDBClusterModel.

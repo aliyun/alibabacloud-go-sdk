@@ -540,7 +540,7 @@ func (client *Client) AddSQLRateLimitingRulesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Performs a single-round knowledge base question answering.
+// Performs a single-turn knowledge base question answering.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -5597,6 +5597,10 @@ func (client *Client) CreateKBSyncLinkWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.TenantId) {
 		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.UserAccessToken) {
+		query["UserAccessToken"] = request.UserAccessToken
 	}
 
 	if !dara.IsNil(request.UserId) {
@@ -18112,7 +18116,7 @@ func (client *Client) DescribeKBSyncLinksWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the result of a single-turn Q&A task in a knowledge base.
+// Queries the result of a single-round knowledge base question answering task.
 //
 // @param request - DescribeKnowledgeBaseAnswerRequest
 //
@@ -24189,7 +24193,7 @@ func (client *Client) ModifyAIDBClusterDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Changes the model or the customer-facing invocation name of an AI cluster.
+// Changes the model or the client-facing invocation name of an AI cluster.
 //
 // @param request - ModifyAIDBClusterModelRequest
 //
@@ -24222,6 +24226,14 @@ func (client *Client) ModifyAIDBClusterModelWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RestartMode) {
+		query["RestartMode"] = request.RestartMode
+	}
+
+	if !dara.IsNil(request.WorkerBatchSize) {
+		query["WorkerBatchSize"] = request.WorkerBatchSize
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -32584,6 +32596,10 @@ func (client *Client) UpdateKBSyncLinkWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.SyncIntervalMinutes) {
 		query["SyncIntervalMinutes"] = request.SyncIntervalMinutes
+	}
+
+	if !dara.IsNil(request.UserAccessToken) {
+		query["UserAccessToken"] = request.UserAccessToken
 	}
 
 	if !dara.IsNil(request.UserId) {

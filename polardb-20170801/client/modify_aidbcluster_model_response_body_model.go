@@ -30,7 +30,7 @@ type iModifyAIDBClusterModelResponseBody interface {
 }
 
 type ModifyAIDBClusterModelResponseBody struct {
-	// Indicates whether the request is a dry run.
+	// Indicates whether the request is a dry-run request.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ModifyAIDBClusterModelResponseBody struct {
 	//
 	// 1
 	TotalBatches *int64 `json:"TotalBatches,omitempty" xml:"TotalBatches,omitempty"`
-	// The number of affected model service instances.
+	// The number of affected model serving instances.
 	//
 	// example:
 	//
 	// 2
 	TotalMsds *int64 `json:"TotalMsds,omitempty" xml:"TotalMsds,omitempty"`
-	// The change warnings returned by the upstream service. The caller must display these warnings.
+	// The change warnings returned by the upstream. The caller must display these warnings.
 	Warnings []*string `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
 }
 

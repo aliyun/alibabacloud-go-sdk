@@ -38,7 +38,7 @@ type CreateKBSyncLinkResponseBody struct {
 	//
 	// cli_xxxxxxbe8
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The creation time.
+	// The time when the synchronization link was created.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CreateKBSyncLinkResponseBody struct {
 	//
 	// FEISHU
 	ImPlatform *string `json:"ImPlatform,omitempty" xml:"ImPlatform,omitempty"`
-	// The synchronization link ID.
+	// The ID of the synchronization link.
 	//
 	// example:
 	//

@@ -19,6 +19,10 @@ type iModifyAIDBClusterModelRequest interface {
 	GetModelName() *string
 	SetRegionId(v string) *ModifyAIDBClusterModelRequest
 	GetRegionId() *string
+	SetRestartMode(v string) *ModifyAIDBClusterModelRequest
+	GetRestartMode() *string
+	SetWorkerBatchSize(v int64) *ModifyAIDBClusterModelRequest
+	GetWorkerBatchSize() *int64
 }
 
 type ModifyAIDBClusterModelRequest struct {
@@ -30,13 +34,13 @@ type ModifyAIDBClusterModelRequest struct {
 	//
 	// pm-2ze4x2mwo81knj08a
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The new customer-facing invocation name. If this parameter is not specified, the existing invocation name is retained.
+	// The new client-facing invocation name. If this parameter is not specified, the existing invocation name is retained.
 	//
 	// example:
 	//
 	// my-flagship-chat
 	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
-	// Specifies whether to only preview the change.
+	// Specifies whether to only preview the change without actually performing it.
 	//
 	// example:
 	//
@@ -58,6 +62,22 @@ type ModifyAIDBClusterModelRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The restart mode for workers. Valid values:
+	//
+	// - inPlace
+	//
+	// - recreate
+	//
+	// example:
+	//
+	// inPlace
+	RestartMode *string `json:"RestartMode,omitempty" xml:"RestartMode,omitempty"`
+	// The maximum number of workers to restart per batch within a single MSD. Valid values: 1 to 30. This parameter takes effect only when RestartMode is set to inPlace.
+	//
+	// example:
+	//
+	// 8
+	WorkerBatchSize *int64 `json:"WorkerBatchSize,omitempty" xml:"WorkerBatchSize,omitempty"`
 }
 
 func (s ModifyAIDBClusterModelRequest) String() string {
@@ -88,6 +108,14 @@ func (s *ModifyAIDBClusterModelRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ModifyAIDBClusterModelRequest) GetRestartMode() *string {
+	return s.RestartMode
+}
+
+func (s *ModifyAIDBClusterModelRequest) GetWorkerBatchSize() *int64 {
+	return s.WorkerBatchSize
+}
+
 func (s *ModifyAIDBClusterModelRequest) SetDBClusterId(v string) *ModifyAIDBClusterModelRequest {
 	s.DBClusterId = &v
 	return s
@@ -110,6 +138,16 @@ func (s *ModifyAIDBClusterModelRequest) SetModelName(v string) *ModifyAIDBCluste
 
 func (s *ModifyAIDBClusterModelRequest) SetRegionId(v string) *ModifyAIDBClusterModelRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyAIDBClusterModelRequest) SetRestartMode(v string) *ModifyAIDBClusterModelRequest {
+	s.RestartMode = &v
+	return s
+}
+
+func (s *ModifyAIDBClusterModelRequest) SetWorkerBatchSize(v int64) *ModifyAIDBClusterModelRequest {
+	s.WorkerBatchSize = &v
 	return s
 }
 

@@ -134,8 +134,14 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBody) Validate() error {
 }
 
 type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
+	// The list of figure or table captions associated with the shard.
+	Captions []*string `json:"Captions,omitempty" xml:"Captions,omitempty" type:"Repeated"`
+	// The list of Docling source document structured element references associated with the shard. You can use these references to precisely locate original document elements.
+	DocItems []*string `json:"DocItems,omitempty" xml:"DocItems,omitempty" type:"Repeated"`
 	// The chain of section headings to which the shard belongs.
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
+	// The list of image resources referenced by the shard.
+	ImageResources []*DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources `json:"ImageResources,omitempty" xml:"ImageResources,omitempty" type:"Repeated"`
 	// The list of page numbers to which the shard belongs.
 	PageNumbers []*string `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty" type:"Repeated"`
 	// The text content of the shard.
@@ -144,7 +150,7 @@ type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
 	//
 	// ******
 	ShardContent *string `json:"ShardContent,omitempty" xml:"ShardContent,omitempty"`
-	// The shard index.
+	// The index of the shard.
 	//
 	// example:
 	//
@@ -160,8 +166,20 @@ func (s DescribeKnowledgeBaseFileShardsResponseBodyShards) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetCaptions() []*string {
+	return s.Captions
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetDocItems() []*string {
+	return s.DocItems
+}
+
 func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetHeadings() []*string {
 	return s.Headings
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetImageResources() []*DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources {
+	return s.ImageResources
 }
 
 func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetPageNumbers() []*string {
@@ -176,8 +194,23 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) GetShardIndex() *int
 	return s.ShardIndex
 }
 
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetCaptions(v []*string) *DescribeKnowledgeBaseFileShardsResponseBodyShards {
+	s.Captions = v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetDocItems(v []*string) *DescribeKnowledgeBaseFileShardsResponseBodyShards {
+	s.DocItems = v
+	return s
+}
+
 func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetHeadings(v []*string) *DescribeKnowledgeBaseFileShardsResponseBodyShards {
 	s.Headings = v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetImageResources(v []*DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) *DescribeKnowledgeBaseFileShardsResponseBodyShards {
+	s.ImageResources = v
 	return s
 }
 
@@ -197,5 +230,104 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) SetShardIndex(v int3
 }
 
 func (s *DescribeKnowledgeBaseFileShardsResponseBodyShards) Validate() error {
+	if s.ImageResources != nil {
+		for _, item := range s.ImageResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources struct {
+	// The index of the source document to which the image belongs, starting from 0.
+	//
+	// example:
+	//
+	// 0
+	DocumentIndex *int32 `json:"DocumentIndex,omitempty" xml:"DocumentIndex,omitempty"`
+	// The unique ID of the image resource.
+	//
+	// example:
+	//
+	// document-0/pictures/1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The element reference of the image in the Docling source document structure.
+	//
+	// example:
+	//
+	// #/pictures/1
+	ItemRef *string `json:"ItemRef,omitempty" xml:"ItemRef,omitempty"`
+	// The media type of the image resource.
+	//
+	// example:
+	//
+	// image/png
+	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
+	// The OSS URI of the image resource.
+	//
+	// example:
+	//
+	// oss://my-bucket/results/my-space/doc-001/artifacts/image-1.png
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) GetDocumentIndex() *int32 {
+	return s.DocumentIndex
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) GetId() *string {
+	return s.Id
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) GetItemRef() *string {
+	return s.ItemRef
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) GetMimeType() *string {
+	return s.MimeType
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) GetUri() *string {
+	return s.Uri
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) SetDocumentIndex(v int32) *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources {
+	s.DocumentIndex = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) SetId(v string) *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) SetItemRef(v string) *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources {
+	s.ItemRef = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) SetMimeType(v string) *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources {
+	s.MimeType = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) SetUri(v string) *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources {
+	s.Uri = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources) Validate() error {
 	return dara.Validate(s)
 }

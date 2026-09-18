@@ -33,6 +33,8 @@ type iCreateKBSyncLinkRequest interface {
 	GetSyncIntervalMinutes() *int32
 	SetTenantId(v string) *CreateKBSyncLinkRequest
 	GetTenantId() *string
+	SetUserAccessToken(v string) *CreateKBSyncLinkRequest
+	GetUserAccessToken() *string
 	SetUserId(v string) *CreateKBSyncLinkRequest
 	GetUserId() *string
 }
@@ -60,7 +62,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique identifier of the knowledge base.
+	// The unique ID of the knowledge base.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +78,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// testName
 	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
-	// The DingTalk document MCP Server endpoint.
+	// The MCP Server address for DingTalk documents.
 	//
 	// example:
 	//
@@ -90,7 +92,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The DingTalk spreadsheet MCP Server endpoint.
+	// The MCP Server address for DingTalk sheets.
 	//
 	// example:
 	//
@@ -124,7 +126,13 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// 63eexxxx-xxxx-xxxx-xxxx-xxxxxx090f82
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The DingTalk operator user ID.
+	// The Lark user access token. This token is used only when the application identity cannot expand group members because the bot is not in the group chat.
+	//
+	// example:
+	//
+	// ******
+	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
+	// The DingTalk user ID of the operator.
 	//
 	// example:
 	//
@@ -188,6 +196,10 @@ func (s *CreateKBSyncLinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *CreateKBSyncLinkRequest) GetUserAccessToken() *string {
+	return s.UserAccessToken
+}
+
 func (s *CreateKBSyncLinkRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -249,6 +261,11 @@ func (s *CreateKBSyncLinkRequest) SetSyncIntervalMinutes(v int32) *CreateKBSyncL
 
 func (s *CreateKBSyncLinkRequest) SetTenantId(v string) *CreateKBSyncLinkRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *CreateKBSyncLinkRequest) SetUserAccessToken(v string) *CreateKBSyncLinkRequest {
+	s.UserAccessToken = &v
 	return s
 }
 

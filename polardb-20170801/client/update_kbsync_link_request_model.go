@@ -27,6 +27,8 @@ type iUpdateKBSyncLinkRequest interface {
 	GetSyncEnabled() *bool
 	SetSyncIntervalMinutes(v int32) *UpdateKBSyncLinkRequest
 	GetSyncIntervalMinutes() *int32
+	SetUserAccessToken(v string) *UpdateKBSyncLinkRequest
+	GetUserAccessToken() *string
 	SetUserId(v string) *UpdateKBSyncLinkRequest
 	GetUserId() *string
 }
@@ -44,7 +46,7 @@ type UpdateKBSyncLinkRequest struct {
 	//
 	// ******
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// The unique identifier of the knowledge base.
+	// The unique ID of the knowledge base.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +62,7 @@ type UpdateKBSyncLinkRequest struct {
 	//
 	// pkbl-xxxxx
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	// The MCP Server address for DingTalk documents.
+	// The DingTalk document MCP Server endpoint.
 	//
 	// example:
 	//
@@ -74,7 +76,7 @@ type UpdateKBSyncLinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The MCP Server address for DingTalk spreadsheets.
+	// The DingTalk spreadsheet MCP Server endpoint.
 	//
 	// example:
 	//
@@ -92,7 +94,13 @@ type UpdateKBSyncLinkRequest struct {
 	//
 	// 20
 	SyncIntervalMinutes *int32 `json:"SyncIntervalMinutes,omitempty" xml:"SyncIntervalMinutes,omitempty"`
-	// The DingTalk user ID for the operation.
+	// The new Lark user access token.
+	//
+	// example:
+	//
+	// ******
+	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
+	// The DingTalk user ID of the operator.
 	//
 	// example:
 	//
@@ -144,6 +152,10 @@ func (s *UpdateKBSyncLinkRequest) GetSyncIntervalMinutes() *int32 {
 	return s.SyncIntervalMinutes
 }
 
+func (s *UpdateKBSyncLinkRequest) GetUserAccessToken() *string {
+	return s.UserAccessToken
+}
+
 func (s *UpdateKBSyncLinkRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -190,6 +202,11 @@ func (s *UpdateKBSyncLinkRequest) SetSyncEnabled(v bool) *UpdateKBSyncLinkReques
 
 func (s *UpdateKBSyncLinkRequest) SetSyncIntervalMinutes(v int32) *UpdateKBSyncLinkRequest {
 	s.SyncIntervalMinutes = &v
+	return s
+}
+
+func (s *UpdateKBSyncLinkRequest) SetUserAccessToken(v string) *UpdateKBSyncLinkRequest {
+	s.UserAccessToken = &v
 	return s
 }
 

@@ -48,7 +48,7 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// 16000
 	MaxContextChars *int32 `json:"MaxContextChars,omitempty" xml:"MaxContextChars,omitempty"`
-	// The user query text.
+	// The user question.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable reranking. Default value: false.
+	// Specifies whether to enable reranking. Disabled by default.
 	//
 	// example:
 	//
 	// false
 	RerankEnabled *bool `json:"RerankEnabled,omitempty" xml:"RerankEnabled,omitempty"`
-	// Specifies whether to return citation sources. Default value: true.
+	// Specifies whether to return citation sources. Enabled by default.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// This is a minimal test prompt for security verification.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The number of results to recall during retrieval.
+	// The number of recall results to retrieve.
 	//
 	// example:
 	//
 	// 10
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// The supplementary user instructions.
+	// The user supplementary instructions.
 	//
 	// example:
 	//

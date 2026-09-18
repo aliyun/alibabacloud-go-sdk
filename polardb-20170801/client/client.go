@@ -809,7 +809,7 @@ func (client *Client) AddSQLRateLimitingRules(request *AddSQLRateLimitingRulesRe
 
 // Summary:
 //
-// Performs a single-round knowledge base question answering.
+// Performs a single-turn knowledge base question answering.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -893,7 +893,7 @@ func (client *Client) AnswerKnowledgeBaseWithOptions(request *AnswerKnowledgeBas
 
 // Summary:
 //
-// Performs a single-round knowledge base question answering.
+// Performs a single-turn knowledge base question answering.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -7064,6 +7064,10 @@ func (client *Client) CreateKBSyncLinkWithOptions(request *CreateKBSyncLinkReque
 
 	if !dara.IsNil(request.TenantId) {
 		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.UserAccessToken) {
+		query["UserAccessToken"] = request.UserAccessToken
 	}
 
 	if !dara.IsNil(request.UserId) {
@@ -23147,7 +23151,7 @@ func (client *Client) DescribeKBSyncLinks(request *DescribeKBSyncLinksRequest) (
 
 // Summary:
 //
-// Queries the result of a single-turn Q&A task in a knowledge base.
+// Queries the result of a single-round knowledge base question answering task.
 //
 // @param request - DescribeKnowledgeBaseAnswerRequest
 //
@@ -23199,7 +23203,7 @@ func (client *Client) DescribeKnowledgeBaseAnswerWithOptions(request *DescribeKn
 
 // Summary:
 //
-// Queries the result of a single-turn Q&A task in a knowledge base.
+// Queries the result of a single-round knowledge base question answering task.
 //
 // @param request - DescribeKnowledgeBaseAnswerRequest
 //
@@ -31043,7 +31047,7 @@ func (client *Client) ModifyAIDBClusterDescription(request *ModifyAIDBClusterDes
 
 // Summary:
 //
-// Changes the model or the customer-facing invocation name of an AI cluster.
+// Changes the model or the client-facing invocation name of an AI cluster.
 //
 // @param request - ModifyAIDBClusterModelRequest
 //
@@ -31078,6 +31082,14 @@ func (client *Client) ModifyAIDBClusterModelWithOptions(request *ModifyAIDBClust
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.RestartMode) {
+		query["RestartMode"] = request.RestartMode
+	}
+
+	if !dara.IsNil(request.WorkerBatchSize) {
+		query["WorkerBatchSize"] = request.WorkerBatchSize
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31103,7 +31115,7 @@ func (client *Client) ModifyAIDBClusterModelWithOptions(request *ModifyAIDBClust
 
 // Summary:
 //
-// Changes the model or the customer-facing invocation name of an AI cluster.
+// Changes the model or the client-facing invocation name of an AI cluster.
 //
 // @param request - ModifyAIDBClusterModelRequest
 //
@@ -41650,6 +41662,10 @@ func (client *Client) UpdateKBSyncLinkWithOptions(request *UpdateKBSyncLinkReque
 
 	if !dara.IsNil(request.SyncIntervalMinutes) {
 		query["SyncIntervalMinutes"] = request.SyncIntervalMinutes
+	}
+
+	if !dara.IsNil(request.UserAccessToken) {
+		query["UserAccessToken"] = request.UserAccessToken
 	}
 
 	if !dara.IsNil(request.UserId) {
