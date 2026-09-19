@@ -135,6 +135,48 @@ func (client *Client) CreateTemplateWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 创建模板缓存
+//
+// @param request - CreateTemplateCacheRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTemplateCacheResponse
+func (client *Client) CreateTemplateCacheWithContext(ctx context.Context, request *CreateTemplateCacheRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTemplateCacheResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTemplateCache"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/template-caches"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTemplateCacheResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a volume.
 //
 // @param request - CreateVolumeRequest
@@ -353,6 +395,53 @@ func (client *Client) DeleteTemplateWithContext(ctx context.Context, templateID 
 
 // Summary:
 //
+// 删除模板缓存
+//
+// @param request - DeleteTemplateCacheRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplateCacheResponse
+func (client *Client) DeleteTemplateCacheWithContext(ctx context.Context, templateID *string, request *DeleteTemplateCacheRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTemplateCacheResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTemplateCache"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/template-caches/" + dara.PercentEncode(dara.StringValue(templateID))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTemplateCacheResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Volume.
 //
 // @param request - DeleteVolumeRequest
@@ -478,6 +567,53 @@ func (client *Client) DescribeQuotaWithContext(ctx context.Context, request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the template cache.
+//
+// @param request - DescribeTemplateCacheRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTemplateCacheResponse
+func (client *Client) DescribeTemplateCacheWithContext(ctx context.Context, templateID *string, request *DescribeTemplateCacheRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTemplateCacheResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTemplateCache"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/template-caches/" + dara.PercentEncode(dara.StringValue(templateID))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTemplateCacheResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -798,6 +934,69 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTeamsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries template caches by using paging.
+//
+// @param request - ListTemplateCacheRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplateCacheResponse
+func (client *Client) ListTemplateCacheWithContext(ctx context.Context, request *ListTemplateCacheRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplateCacheResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	if !dara.IsNil(request.TemplateID) {
+		query["templateID"] = request.TemplateID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTemplateCache"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/template-caches"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTemplateCacheResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
