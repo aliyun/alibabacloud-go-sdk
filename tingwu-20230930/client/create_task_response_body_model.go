@@ -26,15 +26,15 @@ type CreateTaskResponseBody struct {
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The response object.
 	Data *CreateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status message.
+	// The status description.
 	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used for troubleshooting only.
+	// The request ID, used only for troubleshooting.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateTaskResponseBody) Validate() error {
 }
 
 type CreateTaskResponseBodyData struct {
-	// The stream ingestion URL. Push audio streams to this URL for real-time transcription.
+	// The audio stream push URL generated in the real-time recording scenario. You can use this URL for subsequent real-time audio stream recognition.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type CreateTaskResponseBodyData struct {
 	//
 	// c5394c6ee0fb474899d42215a3925c7e
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The custom identifier specified during task creation.
+	// The custom identifier set by the user when creating the task.
 	//
 	// example:
 	//

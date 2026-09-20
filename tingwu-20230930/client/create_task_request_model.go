@@ -22,35 +22,37 @@ type iCreateTaskRequest interface {
 }
 
 type CreateTaskRequest struct {
-	// The AppKey of the project that you created in the console.
+	// The AppKey of the project created in the console.
 	//
 	// example:
 	//
 	// JV1sRTisRMi****
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The basic input parameters for creating a task. The required parameters vary based on the task type.
+	// The basic parameters set when creating a task. The required parameters vary depending on the task type.
 	//
-	// - For an offline task (`type="offline"`), you must specify the `SourceLanguage` and `FileUrl` parameters.
+	// - When type=offline (offline task), you must set the SourceLanguage and FileUrl parameters.
 	//
-	// - For a real-time task (`type="realtime"`), you must also specify the `SourceLanguage`, `Format`, and `SampleRate` parameters.
+	// - When type=realtime (real-time meeting task), you must additionally set the SourceLanguage, Format, and SampleRate parameters.
 	Input *CreateTaskRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// Algorithm-related parameters for customizing task processing.
+	// The algorithm-related parameters set when creating a task. You can set these as needed.
 	Parameters *CreateTaskRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	// The operation to perform. Valid values:
+	// The operation. Valid values:
 	//
-	// - **start**: Creates a task. This is the default value and does not typically need to be set.
+	// - start: creates a task. This is the default value. In most cases, you do not need to explicitly set this parameter.
 	//
-	// - **stop**: Stops a real-time recording task. This value is used only for real-time tasks. To end the recording, set this parameter to `stop`.
+	// - stop: stops a real-time meeting task. This value is used in real-time meeting scenarios. After a meeting ends, set this parameter to stop and trigger the call.
+	//
+	// > Note: When ending a real-time recording, you must set this parameter to stop.
 	//
 	// example:
 	//
 	// stop
 	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// - **offline**: An offline task, such as an offline transcription.
+	// - **offline**: offline task, such as offline transcription.
 	//
-	// - **realtime**: A real-time task, such as a real-time recording.
+	// - **realtime**: real-time task, such as creating a real-time recording.
 	//
 	// This parameter is required.
 	//
@@ -128,15 +130,15 @@ func (s *CreateTaskRequest) Validate() error {
 }
 
 type CreateTaskRequestInput struct {
-	// Multi-channel audio or video processing mode.
+	// The multi-channel audio and video processing mode.
 	AudioChannelMode *string `json:"AudioChannelMode,omitempty" xml:"AudioChannelMode,omitempty"`
-	// The HTTP or HTTPS URL of the source audio or video file. This parameter is required when you create an offline transcription task.
+	// The HTTP or HTTPS URL of the original audio or video file. This parameter is required when you create an offline transcription task.
 	//
 	// example:
 	//
 	// http://xxx.com/zzz/1.wav
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The encoding format of the audio stream data. This parameter is required when you create a real-time recording task. The following values are supported:
+	// The encoding format of the audio stream data when you create a real-time meeting, such as pcm. Valid values:
 	//
 	// - **pcm**
 	//
@@ -152,39 +154,41 @@ type CreateTaskRequestInput struct {
 	//
 	// pcm
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Preferred languages. This applies only when SourceLanguage is multilingual. It restricts the output language of the model.
+	// The preferred languages. This parameter takes effect only when SourceLanguage is set to "multilingual". It restricts the output languages of the model.
 	LanguageHints []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
-	// Specifies whether to enable multi-channel audio stream recognition. This parameter applies only to real-time recording scenarios. The default value is `false`.
+	// Specifies whether to enable multi-channel audio stream recognition. This parameter needs to be set only in real-time recording scenarios. Default value: false.
 	//
 	// example:
 	//
 	// false
 	MultipleStreamsEnabled *bool `json:"MultipleStreamsEnabled,omitempty" xml:"MultipleStreamsEnabled,omitempty"`
-	// After you configure OSS settings in the console, specify an OSS path to save results directly to your OSS bucket.
+	// After configuring OSS information in the console, you can specify an OSS write path to save results directly to your custom OSS bucket.
 	OutputPath *string `json:"OutputPath,omitempty" xml:"OutputPath,omitempty"`
-	// Specifies whether to enable callbacks. To receive callbacks, you must configure the callback type and URL in the console and set this parameter to `true`.
+	// Specifies whether to enable the callback feature.
+	//
+	// To enable the callback feature, configure the callback type and address in the console, and set this parameter to true when creating a task.
 	//
 	// example:
 	//
 	// false
 	ProgressiveCallbacksEnabled *bool `json:"ProgressiveCallbacksEnabled,omitempty" xml:"ProgressiveCallbacksEnabled,omitempty"`
-	// The sample rate of the audio stream data. This parameter is required when you create a real-time recording task. The supported values are 8000 and 16000.
+	// The sample rate of the audio stream data when you create a real-time meeting. Valid values: 8000 and 16000.
 	//
-	// - **8000**: Suitable for telephony and customer service scenarios.
+	// - **8000**: telephone customer service scenarios.
 	//
-	// - **16000**: Suitable for real-time meeting audio capture scenarios.
+	// - **16000**: real-time meeting audio capture scenarios.
 	//
 	// example:
 	//
 	// 16000
 	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// The language model for speech transcription. The following values are supported:
+	// The language model used for audio transcription. Valid values:
 	//
 	// - **cn**: Chinese
 	//
 	// - **en**: English
 	//
-	// - **fspk**: Chinese-English code-switching
+	// - **fspk**: Chinese-English free speaking
 	//
 	// - **ja**: Japanese
 	//
@@ -196,13 +200,13 @@ type CreateTaskRequestInput struct {
 	//
 	// cn
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The task ID that is returned when you create a real-time recording. This ID is required to stop the recording. Specify this parameter only when stopping a real-time recording.
+	// The TaskId returned when you create a real-time recording. You can use this ID to end the real-time recording. Set this parameter only when ending a real-time recording. Do not set it at other times.
 	//
 	// example:
 	//
 	// 9922c84c087044eda18659c128b56c84
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// A custom identifier that you can set for the task.
+	// The custom identifier set by the user to associate with this task.
 	//
 	// example:
 	//
@@ -323,68 +327,69 @@ func (s *CreateTaskRequestInput) Validate() error {
 
 type CreateTaskRequestParameters struct {
 	AutoChapters *CreateTaskRequestParametersAutoChapters `json:"AutoChapters,omitempty" xml:"AutoChapters,omitempty" type:"Struct"`
-	// Specifies whether to generate a chapter summary, which includes chapter titles and summaries for each chapter.
+	// Specifies whether to enable the chapter overview feature. When enabled, chapter titles and chapter summaries are generated.
 	//
 	// example:
 	//
 	// true
 	AutoChaptersEnabled *bool `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
-	// Conversation content extraction parameters.
-	ContentExtraction        *CreateTaskRequestParametersContentExtraction `json:"ContentExtraction,omitempty" xml:"ContentExtraction,omitempty" type:"Struct"`
-	ContentExtractionEnabled *bool                                         `json:"ContentExtractionEnabled,omitempty" xml:"ContentExtractionEnabled,omitempty"`
-	// Parameters to control the custom prompt feature.
+	// The conversation content extraction parameter object.
+	ContentExtraction *CreateTaskRequestParametersContentExtraction `json:"ContentExtraction,omitempty" xml:"ContentExtraction,omitempty" type:"Struct"`
+	// The business user ID.
+	ContentExtractionEnabled *bool `json:"ContentExtractionEnabled,omitempty" xml:"ContentExtractionEnabled,omitempty"`
+	// The custom prompt control parameter object.
 	CustomPrompt *CreateTaskRequestParametersCustomPrompt `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
-	// Specifies whether to enable the custom prompt feature.
+	// Specifies whether to enable the custom prompt feature. When enabled, you can enter a personalized custom prompt.
 	//
 	// example:
 	//
 	// false
 	CustomPromptEnabled *bool `json:"CustomPromptEnabled,omitempty" xml:"CustomPromptEnabled,omitempty"`
-	// Extended parameters for advanced use cases. You do not typically need to configure these parameters.
+	// The extra parameters. In most cases, you do not need to set this parameter.
 	ExtraParams *CreateTaskRequestParametersExtraParams `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
-	// Identity recognition parameters.
+	// The identity recognition parameter object.
 	IdentityRecognition *CreateTaskRequestParametersIdentityRecognition `json:"IdentityRecognition,omitempty" xml:"IdentityRecognition,omitempty" type:"Struct"`
-	// Enable identity recognition.
+	// Specifies whether to enable the identity recognition feature.
 	IdentityRecognitionEnabled *bool   `json:"IdentityRecognitionEnabled,omitempty" xml:"IdentityRecognitionEnabled,omitempty"`
 	LlmOutputLanguage          *string `json:"LlmOutputLanguage,omitempty" xml:"LlmOutputLanguage,omitempty"`
-	// Parameters for the intelligent minutes feature, which supports processing for action items, keywords, and key points. If `MeetingAssistanceEnabled` is set to `true` but you do not specify this object, all analysis types are enabled by default.
+	// The control parameters for the intelligent meeting notes feature, which supports algorithm processing for action items, keywords, and key content. If you enable MeetingAssistanceEnabled but do not specify algorithm types through MeetingAssistance, all types are called and returned by default.
 	MeetingAssistance *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
-	// Specifies whether to generate intelligent minutes, which include keywords, key points, and action items.
+	// Specifies whether to enable the intelligent meeting notes feature. When enabled, results such as keywords, key content, and action items are generated.
 	//
 	// example:
 	//
 	// false
 	MeetingAssistanceEnabled *bool   `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
 	Model                    *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Specifies whether to enable PPT extraction. If enabled, the service extracts slides from the video file and generates corresponding summaries. This feature applies only to offline transcription tasks with a video source file and has no effect on other task types.
+	// Specifies whether to enable PPT extraction and PPT summarization. When enabled, PPT frames are extracted from the video file and corresponding summaries are generated. Enable this parameter only for offline transcription when the source file is a video file. Results cannot be generated in real-time recording scenarios or offline transcription scenarios where the source file is audio only.
 	//
 	// example:
 	//
 	// false
 	PptExtractionEnabled *bool `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
-	// Service quality inspection parameters.
+	// The service inspection parameter object.
 	ServiceInspection *CreateTaskRequestParametersServiceInspection `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty" type:"Struct"`
-	// Enable service quality inspection. Default is false.
+	// Specifies whether to enable the service inspection feature. Default value: false.
 	ServiceInspectionEnabled *bool `json:"ServiceInspectionEnabled,omitempty" xml:"ServiceInspectionEnabled,omitempty"`
-	// Parameters for the summarization feature.
+	// The summarization control parameters.
 	Summarization *CreateTaskRequestParametersSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
-	// Specifies whether to enable the summarization feature, which can generate results such as a full-text summary and a speaker summary.
+	// Specifies whether to enable the summarization feature. When enabled, results such as full-text summaries and speaker summaries can be generated.
 	//
 	// example:
 	//
 	// false
 	SummarizationEnabled *bool `json:"SummarizationEnabled,omitempty" xml:"SummarizationEnabled,omitempty"`
-	// Specifies whether to enable the spoken-to-written conversion feature.
+	// Specifies whether to enable the spoken-to-written text conversion feature.
 	//
 	// example:
 	//
 	// false
 	TextPolishEnabled *bool `json:"TextPolishEnabled,omitempty" xml:"TextPolishEnabled,omitempty"`
-	// Parameters for transcoding source audio/video files or audio streams.
+	// The audio/video or audio stream transcoding module.
 	Transcoding *CreateTaskRequestParametersTranscoding `json:"Transcoding,omitempty" xml:"Transcoding,omitempty" type:"Struct"`
-	// Parameters to control the speech transcription process.
+	// The speech transcription control parameters.
 	Transcription *CreateTaskRequestParametersTranscription `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
-	// Parameters to control the translation feature.
+	// The translation control parameters.
 	Translation *CreateTaskRequestParametersTranslation `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
 	// Specifies whether to enable the translation feature.
 	//
@@ -694,9 +699,9 @@ func (s *CreateTaskRequestParametersAutoChapters) Validate() error {
 }
 
 type CreateTaskRequestParametersContentExtraction struct {
-	// List of content extraction dimensions. Each dimension includes a name and definition.
+	// The list of extraction dimensions for conversation content extraction, including the name and definition of each extraction item.
 	ExtractionContents []*CreateTaskRequestParametersContentExtractionExtractionContents `json:"ExtractionContents,omitempty" xml:"ExtractionContents,omitempty" type:"Repeated"`
-	// Description of the conversation scenario for content extraction.
+	// The scene description for conversation content extraction.
 	SceneIntroduction *string                `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
 	SpeakerMap        map[string]interface{} `json:"SpeakerMap,omitempty" xml:"SpeakerMap,omitempty"`
 }
@@ -750,10 +755,10 @@ func (s *CreateTaskRequestParametersContentExtraction) Validate() error {
 }
 
 type CreateTaskRequestParametersContentExtractionExtractionContents struct {
-	// Definition of the content extraction dimension.
+	// The extraction dimension definition for conversation content extraction.
 	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	// Name of the content extraction dimension.
+	// The extraction dimension name for conversation content extraction.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -797,7 +802,7 @@ func (s *CreateTaskRequestParametersContentExtractionExtractionContents) Validat
 }
 
 type CreateTaskRequestParametersCustomPrompt struct {
-	// A list of custom prompt parameters.
+	// The list of custom prompt parameters.
 	Contents []*CreateTaskRequestParametersCustomPromptContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
 }
 
@@ -832,13 +837,13 @@ func (s *CreateTaskRequestParametersCustomPrompt) Validate() error {
 }
 
 type CreateTaskRequestParametersCustomPromptContents struct {
-	// The model to use for the prompt.
+	// The model specified for the prompt.
 	//
 	// example:
 	//
 	// tingwu-turbo
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// A custom name for the prompt, used to identify the corresponding output.
+	// The custom name of the prompt, used to match output results.
 	//
 	// This parameter is required.
 	//
@@ -846,15 +851,15 @@ type CreateTaskRequestParametersCustomPromptContents struct {
 	//
 	// summary-demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The content of the custom prompt.
+	// The custom content of the prompt.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 总结一下下面的对话内容:{Transcription}
+	// Summarize the following conversation:{Transcription}
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// Specifies the format for the `{Transcription}` tag.
+	// The format of the {Transcription} tag.
 	//
 	// example:
 	//
@@ -912,19 +917,20 @@ func (s *CreateTaskRequestParametersCustomPromptContents) Validate() error {
 
 type CreateTaskRequestParametersExtraParams struct {
 	DomainEducationEnabled *bool `json:"DomainEducationEnabled,omitempty" xml:"DomainEducationEnabled,omitempty"`
-	// Full-text summary format.
+	// The return format of the full-text summary.
 	FullTextSummaryFormat *string `json:"FullTextSummaryFormat,omitempty" xml:"FullTextSummaryFormat,omitempty"`
-	// Maximum number of keywords.
+	// The number of keywords to extract.
 	MaxKeywords *int32 `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
-	// Specifies whether to enable nfix. You do not typically need to configure this parameter.
+	// Specifies whether to enable Nfix. In most cases, you do not need to set this parameter.
 	//
 	// example:
 	//
 	// true
-	NfixEnabled              *bool                                                        `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
-	OcrAuxiliaryEnabled      *bool                                                        `json:"OcrAuxiliaryEnabled,omitempty" xml:"OcrAuxiliaryEnabled,omitempty"`
-	TranslateLlmSceneEnabled *bool                                                        `json:"TranslateLlmSceneEnabled,omitempty" xml:"TranslateLlmSceneEnabled,omitempty"`
-	TranslationHotwordMap    *CreateTaskRequestParametersExtraParamsTranslationHotwordMap `json:"TranslationHotwordMap,omitempty" xml:"TranslationHotwordMap,omitempty" type:"Struct"`
+	NfixEnabled              *bool `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
+	OcrAuxiliaryEnabled      *bool `json:"OcrAuxiliaryEnabled,omitempty" xml:"OcrAuxiliaryEnabled,omitempty"`
+	TranslateLlmSceneEnabled *bool `json:"TranslateLlmSceneEnabled,omitempty" xml:"TranslateLlmSceneEnabled,omitempty"`
+	// The translation hotword configuration.
+	TranslationHotwordMap *CreateTaskRequestParametersExtraParamsTranslationHotwordMap `json:"TranslationHotwordMap,omitempty" xml:"TranslationHotwordMap,omitempty" type:"Struct"`
 }
 
 func (s CreateTaskRequestParametersExtraParams) String() string {
@@ -1008,6 +1014,7 @@ func (s *CreateTaskRequestParametersExtraParams) Validate() error {
 }
 
 type CreateTaskRequestParametersExtraParamsTranslationHotwordMap struct {
+	// The business scenario type.
 	BizType   *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
 	BizUserId *string `json:"bizUserId,omitempty" xml:"bizUserId,omitempty"`
 }
@@ -1043,9 +1050,9 @@ func (s *CreateTaskRequestParametersExtraParamsTranslationHotwordMap) Validate()
 }
 
 type CreateTaskRequestParametersIdentityRecognition struct {
-	// List of identities, including identity name and description.
+	// The list of identity contents for identity recognition, including the identity name and description.
 	IdentityContents []*CreateTaskRequestParametersIdentityRecognitionIdentityContents `json:"IdentityContents,omitempty" xml:"IdentityContents,omitempty" type:"Repeated"`
-	// Description of the scenario for identity recognition.
+	// The scene description for identity recognition.
 	SceneIntroduction *string `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
 }
 
@@ -1089,9 +1096,9 @@ func (s *CreateTaskRequestParametersIdentityRecognition) Validate() error {
 }
 
 type CreateTaskRequestParametersIdentityRecognitionIdentityContents struct {
-	// Identity description.
+	// The identity description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Identity name.
+	// The identity name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1126,7 +1133,7 @@ func (s *CreateTaskRequestParametersIdentityRecognitionIdentityContents) Validat
 }
 
 type CreateTaskRequestParametersMeetingAssistance struct {
-	// The types of analysis to perform when the intelligent minutes feature is enabled. Supported values: `Actions` (action items) and `KeyInformation` (key information, including keywords and key points).
+	// When the intelligent meeting notes feature is enabled, pass in the expected feature parameter types. Supported types: action items (Actions) and key information (KeyInformation). Key information includes keywords and key content (key sentences).
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
@@ -1152,11 +1159,11 @@ func (s *CreateTaskRequestParametersMeetingAssistance) Validate() error {
 }
 
 type CreateTaskRequestParametersServiceInspection struct {
-	// List of inspection dimensions for service quality inspection. Each dimension includes a name and definition, which tells the Large Language Model how to evaluate whether the dimension is met.
+	// The list of inspection dimensions for service inspection, including the dimension name and definition. The definition specifies the criteria that the large language model uses to determine whether a dimension is matched.
 	InspectionContents []*CreateTaskRequestParametersServiceInspectionInspectionContents `json:"InspectionContents,omitempty" xml:"InspectionContents,omitempty" type:"Repeated"`
-	// Description of the inspection goals and focus areas for service quality inspection.
+	// The description of the inspection target and focus for service inspection.
 	InspectionIntroduction *string `json:"InspectionIntroduction,omitempty" xml:"InspectionIntroduction,omitempty"`
-	// Description of the conversation scenario for service quality inspection.
+	// The conversation scene description for service inspection.
 	SceneIntroduction *string                `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
 	SpeakerMap        map[string]interface{} `json:"SpeakerMap,omitempty" xml:"SpeakerMap,omitempty"`
 }
@@ -1219,9 +1226,9 @@ func (s *CreateTaskRequestParametersServiceInspection) Validate() error {
 }
 
 type CreateTaskRequestParametersServiceInspectionInspectionContents struct {
-	// Definition of the inspection dimension.
+	// The inspection dimension definition for service inspection.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Name of the inspection dimension.
+	// The inspection dimension name for service inspection.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -1256,7 +1263,7 @@ func (s *CreateTaskRequestParametersServiceInspectionInspectionContents) Validat
 }
 
 type CreateTaskRequestParametersSummarization struct {
-	// The types of summaries to generate. This parameter is required when summarization is enabled. Supported types include `Paragraph` (full-text summary), `Conversational` (speaker summary), and `QuestionsAnswering` (Q\\&A summary).
+	// When the summarization feature is enabled, pass in the expected summarization types. Supported types: full-text summary (Paragraph), speaker summary (Conversational), and Q&A review summary (QuestionsAnswering).
 	//
 	// example:
 	//
@@ -1286,25 +1293,25 @@ func (s *CreateTaskRequestParametersSummarization) Validate() error {
 }
 
 type CreateTaskRequestParametersTranscoding struct {
-	// Specifies whether to generate and save an audio waveform from the source audio/video file or audio stream. This parameter is optional for offline transcription and real-time recording tasks.
+	// Specifies whether to generate an audio waveform from the original audio/video file or audio stream and save it. Currently, only MP3 format is supported. This parameter is optional when creating offline file transcription or real-time meetings.
 	//
 	// example:
 	//
 	// false
 	SpectrumEnabled *bool `json:"SpectrumEnabled,omitempty" xml:"SpectrumEnabled,omitempty"`
-	// Specifies the target format for the transcoded audio. Set to `mp3` to transcode the source audio into MP3 format for storage. This parameter is optional for offline transcription and real-time recording tasks.
+	// Specifies whether to convert the original audio/video file or audio stream to MP3 format for storage. Currently, only MP3 format is supported. This parameter is optional when creating offline file transcription or real-time meetings.
 	//
 	// example:
 	//
 	// mp3
 	TargetAudioFormat *string `json:"TargetAudioFormat,omitempty" xml:"TargetAudioFormat,omitempty"`
-	// Specifies the target format for the transcoded video. Set to `mp4` to transcode the source video into MP4 format for storage. This parameter applies only to offline transcription tasks with a video source file.
+	// Specifies whether to convert the original video file to MP4 format for storage. Currently, only MP4 format is supported. This parameter is meaningful only when creating offline file transcription and the original file is in video format. Typically, you do not need to set this parameter.
 	//
 	// example:
 	//
 	// mp4
 	TargetVideoFormat *string `json:"TargetVideoFormat,omitempty" xml:"TargetVideoFormat,omitempty"`
-	// Specifies whether to extract and save video thumbnails from the source video file. This parameter applies only to offline transcription tasks with a video source file.
+	// Specifies whether to extract video thumbnails from the original video file and save them. This parameter is meaningful only when creating offline file transcription and the original file is in video format. Typically, you do not need to set this parameter.
 	//
 	// example:
 	//
@@ -1361,25 +1368,25 @@ func (s *CreateTaskRequestParametersTranscoding) Validate() error {
 }
 
 type CreateTaskRequestParametersTranscription struct {
-	// Specifies the level of detail for speech transcription results for the active speaker in a real-time recording scenario.
+	// Sets the output level for speech recognition results of the active speaker in real-time recording scenarios.
 	//
-	// - **1**: Returns results only when a complete sentence is recognized.
+	// - **1**: Returns results when a complete sentence is recognized.
 	//
-	// - **2**: Returns both intermediate and final results as they are recognized.
+	// - **2**: Returns results for both intermediate results and complete sentences.
 	//
-	// This parameter applies only to real-time recordings when `MultipleStreamsEnabled` is set to `true`.
+	// Set this parameter as needed only in real-time recording scenarios when MultipleStreamsEnabled is set to true. This parameter does not need to be set for offline transcription scenarios.
 	//
 	// example:
 	//
 	// 1
 	AdditionalStreamOutputLevel *int32 `json:"AdditionalStreamOutputLevel,omitempty" xml:"AdditionalStreamOutputLevel,omitempty"`
-	// Specifies whether to enable sound event detection, which identifies non-speech events in the audio, such as music.
+	// Specifies whether to enable audio event detection during speech transcription to determine whether events such as music exist in the audio.
 	//
 	// example:
 	//
 	// false
 	AudioEventDetectionEnabled *bool `json:"AudioEventDetectionEnabled,omitempty" xml:"AudioEventDetectionEnabled,omitempty"`
-	// Parameters for the speaker diarization feature.
+	// The speaker diarization parameters.
 	Diarization *CreateTaskRequestParametersTranscriptionDiarization `json:"Diarization,omitempty" xml:"Diarization,omitempty" type:"Struct"`
 	// Specifies whether to enable speaker diarization.
 	//
@@ -1387,26 +1394,28 @@ type CreateTaskRequestParametersTranscription struct {
 	//
 	// false
 	DiarizationEnabled *bool `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
-	DisfluencyEnabled  *bool `json:"DisfluencyEnabled,omitempty" xml:"DisfluencyEnabled,omitempty"`
-	// Set the speech transcription model to improve accuracy for specific domains.
+	// Specifies whether to enable disfluency removal during speech transcription. Enabled by default.
+	DisfluencyEnabled *bool `json:"DisfluencyEnabled,omitempty" xml:"DisfluencyEnabled,omitempty"`
+	// Sets the speech transcription model to improve transcription accuracy in specific domains.
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Specifies the level of detail for the speech transcription results. Default value: `1`.
+	// Sets the output level for speech recognition results. Default value: 1.
 	//
-	// - **1**: Returns results only when a complete sentence is recognized.
+	// - **1**: Returns results when a complete sentence is recognized.
 	//
-	// - **2**: Returns both intermediate and final results as they are recognized.
+	// - **2**: Returns results for both intermediate results and complete sentences.
 	//
 	// example:
 	//
 	// 2
-	OutputLevel *int32 `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
-	// The ID of the hotword list.
+	OutputLevel *int32                 `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
+	Phrase      map[string]interface{} `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
+	// The vocabulary ID of the hot words.
 	//
 	// example:
 	//
 	// ce9c2a34b6d847bf92a77d0a196f****
 	PhraseId *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
-	// Enable sensitive word filtering during speech transcription. Enabled by default.
+	// Specifies whether to enable profanity filtering during speech transcription. Enabled by default.
 	ProfanityFilterEnabled     *bool `json:"ProfanityFilterEnabled,omitempty" xml:"ProfanityFilterEnabled,omitempty"`
 	RealtimeDiarizationEnabled *bool `json:"RealtimeDiarizationEnabled,omitempty" xml:"RealtimeDiarizationEnabled,omitempty"`
 }
@@ -1445,6 +1454,10 @@ func (s *CreateTaskRequestParametersTranscription) GetModel() *string {
 
 func (s *CreateTaskRequestParametersTranscription) GetOutputLevel() *int32 {
 	return s.OutputLevel
+}
+
+func (s *CreateTaskRequestParametersTranscription) GetPhrase() map[string]interface{} {
+	return s.Phrase
 }
 
 func (s *CreateTaskRequestParametersTranscription) GetPhraseId() *string {
@@ -1494,6 +1507,11 @@ func (s *CreateTaskRequestParametersTranscription) SetOutputLevel(v int32) *Crea
 	return s
 }
 
+func (s *CreateTaskRequestParametersTranscription) SetPhrase(v map[string]interface{}) *CreateTaskRequestParametersTranscription {
+	s.Phrase = v
+	return s
+}
+
 func (s *CreateTaskRequestParametersTranscription) SetPhraseId(v string) *CreateTaskRequestParametersTranscription {
 	s.PhraseId = &v
 	return s
@@ -1519,13 +1537,13 @@ func (s *CreateTaskRequestParametersTranscription) Validate() error {
 }
 
 type CreateTaskRequestParametersTranscriptionDiarization struct {
-	// Specifies the number of speakers to identify.
+	// Sets the speaker diarization parameter.
 	//
-	// If this parameter is not set, speakers are not differentiated in the transcript.
+	// If not set: speaker role differentiation is not used.
 	//
-	// Set the value to `0` to identify an unknown number of speakers.
+	// 0: the number of speakers is undetermined.
 	//
-	// Set the value to `2` to identify two speakers.
+	// 2: the number of speakers is 2.
 	//
 	// example:
 	//
@@ -1555,33 +1573,34 @@ func (s *CreateTaskRequestParametersTranscriptionDiarization) Validate() error {
 }
 
 type CreateTaskRequestParametersTranslation struct {
-	// Specifies the level of detail for real-time translation results for the active speaker.
+	// Sets the output level for translation results of the active speaker in real-time recording scenarios.
 	//
-	// - **1**: Returns results only for complete sentences.
+	// - **1**: Returns results when a complete sentence is recognized.
 	//
-	// - **2**: Returns both intermediate and final results.
+	// - **2**: Returns results for both intermediate results and complete sentences.
 	//
-	// This parameter applies only to real-time recordings when `MultipleStreamsEnabled` is set to `true`.
+	// Set this parameter as needed only in real-time recording scenarios when MultipleStreamsEnabled is set to true. This parameter does not need to be set for offline transcription scenarios.
 	//
 	// example:
 	//
 	// 1
 	AdditionalStreamOutputLevel *int32 `json:"AdditionalStreamOutputLevel,omitempty" xml:"AdditionalStreamOutputLevel,omitempty"`
-	// Specifies the level of detail for real-time translation results. Default value: `1`.
+	// Sets the output level for real-time translation results. Default value: 1.
 	//
-	// - **1**: Returns results only for complete sentences.
+	// - **1**: Returns results when a complete sentence is recognized.
 	//
-	// - **2**: Returns both intermediate and final results.
+	// - **2**: Returns results for both intermediate results and complete sentences.
 	//
-	// This parameter applies only to real-time recordings.
+	// Set this parameter as needed only in real-time recording scenarios. This parameter does not need to be set for offline transcription scenarios.
 	//
 	// example:
 	//
 	// 2
 	OutputLevel *int32 `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
-	// The target languages for translation. This parameter is required if translation is enabled. Supported languages include Chinese, English, and Japanese.
-	TargetLanguages          []*string `json:"TargetLanguages,omitempty" xml:"TargetLanguages,omitempty" type:"Repeated"`
-	TranslateLlmSceneEnabled *bool     `json:"TranslateLlmSceneEnabled,omitempty" xml:"TranslateLlmSceneEnabled,omitempty"`
+	// The target languages to set when the translation feature is enabled. Chinese, English, and Japanese are supported.
+	TargetLanguages []*string `json:"TargetLanguages,omitempty" xml:"TargetLanguages,omitempty" type:"Repeated"`
+	// Specifies whether to use large language model-based translation. Default value: false.
+	TranslateLlmSceneEnabled *bool `json:"TranslateLlmSceneEnabled,omitempty" xml:"TranslateLlmSceneEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParametersTranslation) String() string {

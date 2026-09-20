@@ -25,9 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing": dara.String("tingwu.cn-beijing.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -61,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Create offline transcription and real-time meeting tasks in Tingwu.
+// Creates a Tingwu task, including offline transcription tasks and real-time meeting tasks.
 //
 // @param request - CreateTaskRequest
 //
@@ -126,7 +123,7 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 
 // Summary:
 //
-// Create offline transcription and real-time meeting tasks in Tingwu.
+// Creates a Tingwu task, including offline transcription tasks and real-time meeting tasks.
 //
 // @param request - CreateTaskRequest
 //
