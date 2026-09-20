@@ -20,7 +20,7 @@ type iGetProjectDetailResponseBody interface {
 }
 
 type GetProjectDetailResponseBody struct {
-	// The information about the workspace.
+	// The description of the workspace.
 	Data *GetProjectDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -34,7 +34,7 @@ type GetProjectDetailResponseBody struct {
 	//
 	// 0bc1411515937635973****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the workspace information was queried successfully.
 	//
 	// example:
 	//
@@ -96,29 +96,29 @@ func (s *GetProjectDetailResponseBody) Validate() error {
 }
 
 type GetProjectDetailResponseBodyData struct {
-	// The identifier of the shared resource group for Data Integration on which nodes are run.
+	// The identifier of the default data integration resource group for nodes.
 	//
 	// example:
 	//
 	// group_280749521****
 	DefaultDiResourceGroupIdentifier *string `json:"DefaultDiResourceGroupIdentifier,omitempty" xml:"DefaultDiResourceGroupIdentifier,omitempty"`
-	// The development type of the workspace. The value is fixed to 4.
+	// The project development type. The value is 4.
 	//
 	// example:
 	//
 	// 4
 	DevelopmentType *int32 `json:"DevelopmentType,omitempty" xml:"DevelopmentType,omitempty"`
-	// Indicates whether the Develop role is disabled. Valid values:
+	// Indicates whether the development role is disabled. Valid values:
 	//
-	// 	- **false*	- (default)
+	//  - **false*	- (default): The development role is enabled.
 	//
-	// 	- **true**
+	//  - **true**: The development role is disabled.
 	//
 	// example:
 	//
 	// true
 	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
-	// The environments of workspaces in different modes. Workspaces in basic mode provide only the production environment. Workspaces in standard mode provide both the development environment and the production environment.
+	// The environments contained in the workspace. A workspace in basic mode contains only the production environment (PROD). A workspace in standard mode contains the development environment (DEV) and the production environment (PROD).
 	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
 	// The time when the workspace was created.
 	//
@@ -132,17 +132,17 @@ type GetProjectDetailResponseBodyData struct {
 	//
 	// Dec 3, 2019 9:12:20 PM
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the download operation is allowed.
+	// Indicates whether downloads are allowed.
 	//
 	// example:
 	//
 	// 1
 	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	// Indicates whether the workspace is a default workspace. Valid values:
+	// Indicates whether the workspace is the default workspace. Valid values:
 	//
-	// 	- 1: The workspace is a default workspace.
+	// - 1: Yes.
 	//
-	// 	- 0: The workspace is not a default workspace.
+	// - 0: No.
 	//
 	// example:
 	//
@@ -154,19 +154,19 @@ type GetProjectDetailResponseBodyData struct {
 	//
 	// abc
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// 27
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the workspace.
+	// The identifier of the workspace.
 	//
 	// example:
 	//
 	// abc
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	// The mode of the workspace. The value 2 indicates that the workspace is in basic mode. The value 3 indicates that the workspace is in standard mode.
+	// The workspace mode. A value of 2 indicates basic mode. A value of 3 indicates standard mode.
 	//
 	// example:
 	//
@@ -178,19 +178,19 @@ type GetProjectDetailResponseBodyData struct {
 	//
 	// abc
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the workspace owner.
+	// The Alibaba Cloud ID of the workspace owner.
 	//
 	// example:
 	//
 	// 18229311****
 	ProjectOwnerBaseId *string `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
-	// Indicates whether the workspace protection feature is enabled.
+	// Indicates whether protected mode is enabled for the workspace.
 	//
 	// example:
 	//
 	// 1
 	ProtectedMode *int32 `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
-	// The type of the workspace. Valid values: private and swap.
+	// The type of the workspace. A value of private indicates a private zone. A value of swap indicates a swap zone.
 	//
 	// example:
 	//
@@ -202,13 +202,13 @@ type GetProjectDetailResponseBodyData struct {
 	//
 	// rg-acfmzbn7pti3zfa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The default maximum number of automatic reruns that are allowed after an error occurs.
+	// The default maximum number of automatic reruns upon an error.
 	//
 	// example:
 	//
 	// 3
 	SchedulerMaxRetryTimes *int32 `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
-	// The interval between automatic reruns after an error occurs.
+	// The default interval between automatic reruns upon an error.
 	//
 	// example:
 	//
@@ -220,11 +220,11 @@ type GetProjectDetailResponseBodyData struct {
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
+	// The visibility of MaxCompute tables. Valid values:
 	//
-	// 	- 0: The MaxCompute tables in the workspace are not visible to the users within a tenant.
+	// - 0: MaxCompute tables are not visible to tenant users.
 	//
-	// 	- 1: The MaxCompute tables in the workspace are visible to the users within a tenant.
+	// - 1: MaxCompute tables are visible to tenant users.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type GetProjectDetailResponseBodyData struct {
 	//
 	// 280749521950784
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// Indicates whether a proxy account is used to access the MaxCompute compute engine.
+	// Indicates whether a proxy account is used to access the MaxCompute engine.
 	//
 	// example:
 	//

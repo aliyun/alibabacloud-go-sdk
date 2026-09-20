@@ -56,49 +56,71 @@ type iUpdateQualityRuleRequest interface {
 }
 
 type UpdateQualityRuleRequest struct {
-	// The strength of the quality rule. You can specify a rule as a strong or weak rule based on the importance of the rule. Valid values:
+	// The strength of the quality check rule. The strength indicates the importance of the rule. Valid values:
 	//
-	// - 1: strong rule
+	// - 1: strong rule.
 	//
-	// - 0: weak rule
+	// - 0: weak rule.
 	//
-	//   If you specify a rule as a strong rule and a critical alert is triggered for the rule, the scheduling of the associated task is blocked.
+	// You can set important rules as strong rules based on your business requirements. If a strong rule is used and a red alert is triggered, the scheduling task is blocked.
 	//
 	// example:
 	//
 	// 0
 	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The checker ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the checker ID.
+	// The checker ID.
+	//
+	// 2: 7-day average fluctuation.
+	//
+	// 3: 30-day average fluctuation.
+	//
+	// 4: 1-day cycle comparison.
+	//
+	// 5: 7-day cycle comparison.
+	//
+	// 6: 30-day cycle comparison.
+	//
+	// 7: 7-day variance fluctuation.
+	//
+	// 8: 30-day variance fluctuation.
+	//
+	// 9: comparison with a fixed value.
+	//
+	// 10: 1-, 7-, and 30-day fluctuation detection.
+	//
+	// 11: previous cycle comparison.
+	//
+	// You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the checker ID.
 	//
 	// example:
 	//
 	// 9
 	Checker *int32 `json:"Checker,omitempty" xml:"Checker,omitempty"`
-	// The description of the quality rule.
+	// The description of the quality check rule.
 	//
 	// example:
 	//
 	// Verify the number of table rows
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The threshold for a critical alert. The threshold specifies the deviation of a check result from the expected value. You can customize the threshold based on your business requirements. If you use a strong rule and a critical alert is triggered, the scheduling of the associated task is blocked.
+	// The red alert threshold. This value indicates the degree of deviation from the expected sample value. You can customize this threshold based on your business requirements. If a strong rule is used and the red threshold is triggered, the scheduling task is blocked.
 	//
 	// example:
 	//
 	// 10
 	CriticalThreshold *string `json:"CriticalThreshold,omitempty" xml:"CriticalThreshold,omitempty"`
-	// The ID of the partition filter expression. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID of the partition filter expression.
+	// The ID of the partition expression. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the partition expression ID.
 	//
 	// example:
 	//
 	// 123
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The expected value.
+	// The expected value of the check result.
 	//
 	// example:
 	//
 	// 300
 	ExpectValue *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	// The rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the rule ID.
+	// The ID of the quality check rule. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the rule ID.
 	//
 	// This parameter is required.
 	//
@@ -114,11 +136,11 @@ type UpdateQualityRuleRequest struct {
 	//
 	// table_count
 	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	// Specifies whether to enable or disable the quality rule. This parameter specifies whether to run the quality rule in the production environment.
+	// The enabled or disabled status of the rule, which controls whether the quality rule runs in the production environment.
 	//
-	// - true: The quality rule is triggered when the scheduling task that is associated with the output table of the rule runs.
+	// - true: When the scheduling task associated with the output table data of the data quality rule is executed, the quality rule check is triggered.
 	//
-	// - false: The quality rule is not triggered when the scheduling task that is associated with the output table of the rule runs.
+	// - false: When the scheduling task associated with the output table data of the data quality rule is executed, the quality rule check is not triggered.
 	//
 	// if can be null:
 	// false
@@ -127,31 +149,31 @@ type UpdateQualityRuleRequest struct {
 	//
 	// true
 	OpenSwitch *bool `json:"OpenSwitch,omitempty" xml:"OpenSwitch,omitempty"`
-	// The comparison operator. Valid values: >, >=, =, !=, <, and <=.
+	// The comparison operator. Valid values: >, >=, =, ≠, <, and <=.
 	//
-	// > This parameter is required if you set the Checker parameter to 9.
+	// > When Checker is set to 9, Operator is a required parameter.
 	//
 	// example:
 	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Specifies whether to use a dynamic threshold. Valid values:
+	// Specifies whether the threshold is dynamic. Valid values:
 	//
-	// - 0: no
+	// - 0: non-dynamic threshold.
 	//
-	// - 2: yes
+	// - 2: dynamic threshold.
 	//
 	// example:
 	//
 	// 0
 	PredictType *int32 `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 26
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the engine or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the name.
+	// The name of the engine or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the name.
 	//
 	// This parameter is required.
 	//
@@ -167,13 +189,13 @@ type UpdateQualityRuleRequest struct {
 	//
 	// id
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The data type of the field.
+	// The type of the field.
 	//
 	// example:
 	//
 	// bigint
 	PropertyType *string `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	// The name of the quality rule.
+	// The name of the quality check rule.
 	//
 	// example:
 	//
@@ -181,23 +203,23 @@ type UpdateQualityRuleRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// - 0: system template
+	// - 0: system template rule.
 	//
-	// - 1: custom SQL
+	// - 1: custom SQL rule.
 	//
-	// - 2: custom template
+	// - 4: custom template rule.
 	//
 	// example:
 	//
 	// 0
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The variable settings that are inserted before a custom rule. The settings are in the format of x=a,y=b.
+	// The variable settings inserted before the custom rule, in the format of x=a,y=b.
 	//
 	// example:
 	//
 	// x=a,y=b
 	TaskSetting *string `json:"TaskSetting,omitempty" xml:"TaskSetting,omitempty"`
-	// The ID of the template that is used for the check. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the template ID.
+	// The ID of the check template. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the check template ID.
 	//
 	// example:
 	//
@@ -205,23 +227,23 @@ type UpdateQualityRuleRequest struct {
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The trend of the check result. Valid values:
 	//
-	// - up: upward trend
+	// - up: upward trend.
 	//
-	// - down: downward trend
+	// - down: downward trend.
 	//
-	// - abs: absolute value
+	// - abs: absolute value.
 	//
 	// example:
 	//
 	// up
 	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	// The threshold for a warning alert. The threshold specifies the deviation of a check result from the expected value. You can customize the threshold based on your business requirements.
+	// The orange alert threshold. This value indicates the degree of deviation from the expected sample value. You can customize this threshold based on your business requirements.
 	//
 	// example:
 	//
 	// 5
 	WarningThreshold *string `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
-	// The filter condition or custom SQL statement that is used for the check.
+	// The filter condition or custom SQL statement used by the check task.
 	//
 	// example:
 	//

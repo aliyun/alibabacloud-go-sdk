@@ -30,39 +30,39 @@ type iCreateProjectShrinkRequest interface {
 }
 
 type CreateProjectShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. This parameter can be left empty.
+	// The idempotency parameter. This parameter can be left empty.
 	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to disable the Develop role. Valid values:
+	// Specifies whether to disable the development role. Valid values:
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): enables the development role.
 	//
-	// 	- **true**
+	// - **true**: disables the development role.
 	//
 	// example:
 	//
 	// false
 	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
-	// Specifies whether to allow you to download the query result from DataStudio. Valid values:
+	// Specifies whether to allow downloading query results from the IDE. Valid values:
 	//
-	// 	- **1*	- (default): allows you to download the query result from DataStudio.
+	// - **1*	- (default): allows downloading.
 	//
-	// 	- **0**: does not allow you to download the query result from DataStudio.
+	// - **0**: does not allow downloading.
 	//
 	// example:
 	//
 	// 1
 	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	// The description of the workspace.
+	// The detailed description of the workspace.
 	//
 	// example:
 	//
 	// test_describe
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	// The name of the workspace. The name can contain only letters, digits, and underscores (_) and must start with a letter or digit.
+	// The name of the workspace. The name can contain only letters, digits, and underscores (_), and must start with a letter or digit.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type CreateProjectShrinkRequest struct {
 	//
 	// test_project
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
-	// The mode of the workspace. For more information about the differences between the modes of workspaces, see [Differences between workspaces in basic mode and workspaces in standard mode](https://help.aliyun.com/document_detail/85772.html).
+	// The mode of the workspace. For more information about the differences between modes, see [Must-read: Differences between simple mode and standard mode](https://help.aliyun.com/document_detail/85772.html).
 	//
 	// Valid values:
 	//
-	// 	- **2*	- (default): basic mode
+	// - **2*	- (default): simple workspace mode.
 	//
-	// 	- **3**: standard mode
+	// - **3**: standard workspace mode.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type CreateProjectShrinkRequest struct {
 	//
 	// rg-acfmzbn7pti3****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags added to the workspace.
+	// The list of tags bound to the workspace.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

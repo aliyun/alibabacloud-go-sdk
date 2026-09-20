@@ -31,6 +31,10 @@ type DsgUpdateDesensStatusListRequest struct {
 	// The list of switch IDs.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// DsgUpdateDesensStatusList
 	Ids []*int32 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 }
 

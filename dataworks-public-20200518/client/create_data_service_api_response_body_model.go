@@ -24,7 +24,7 @@ type iCreateDataServiceApiResponseBody interface {
 }
 
 type CreateDataServiceApiResponseBody struct {
-	// The ID of the API.
+	// The ID of the created API.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreateDataServiceApiResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. A unique identifier for the request.
 	//
 	// example:
 	//

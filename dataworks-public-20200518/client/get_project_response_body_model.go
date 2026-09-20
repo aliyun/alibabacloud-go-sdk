@@ -20,7 +20,7 @@ type iGetProjectResponseBody interface {
 }
 
 type GetProjectResponseBody struct {
-	// The information about the workspace.
+	// The details of the workspace.
 	Data *GetProjectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -36,9 +36,9 @@ type GetProjectResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetProjectResponseBodyData struct {
 	//
 	// false
 	BaseProject *bool `json:"BaseProject,omitempty" xml:"BaseProject,omitempty"`
-	// The ID of the resource group that was allocated by default when you purchased an exclusive resource group for MaxCompute.
+	// The identifier of the default resource group that is automatically assigned when you purchase a MaxCompute exclusive resource group.
 	//
 	// example:
 	//
@@ -136,17 +136,17 @@ type GetProjectResponseBodyData struct {
 	//
 	// 4
 	DevelopmentType *int32 `json:"DevelopmentType,omitempty" xml:"DevelopmentType,omitempty"`
-	// Indicates whether the Develop role is disabled. Valid values:
+	// Indicates whether the development role is disabled. Valid values:
 	//
-	// 	- **false*	- (default)
+	//  - **false*	- (default): The development role is enabled.
 	//
-	// 	- **true**
+	//  - **true**: The development role is disabled.
 	//
 	// example:
 	//
 	// true
 	DisableDevelopment *bool `json:"DisableDevelopment,omitempty" xml:"DisableDevelopment,omitempty"`
-	// The environment information of the workspace.
+	// The environment context of the workspace.
 	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
 	// The time when the workspace was created. Example: `Dec 3, 2019 9:12:20 PM`.
 	//
@@ -160,21 +160,21 @@ type GetProjectResponseBodyData struct {
 	//
 	// Dec 3, 2019 9:12:20 PM
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether you are allowed to download the query result from DataStudio. Valid values:
+	// Indicates whether downloading query results from the IDE is allowed. Valid values:
 	//
-	// 	- **1**: You are allowed to download the query result from DataStudio.
+	// - **1**: Downloading is allowed.
 	//
-	// 	- **0**: You are not allowed to download the query result from DataStudio.
+	// - **0**: Downloading is not allowed.
 	//
 	// example:
 	//
 	// 1
 	IsAllowDownload *int32 `json:"IsAllowDownload,omitempty" xml:"IsAllowDownload,omitempty"`
-	// Indicates whether the workspace is a default workspace. Valid values:
+	// Indicates whether the workspace is the default workspace. Valid values:
 	//
-	// 	- **1**: The workspace is a default workspace.
+	// - **1**: Yes.
 	//
-	// 	- **0**: The workspace is not a default workspace.
+	// - **0**: No.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type GetProjectResponseBodyData struct {
 	//
 	// test_describe
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -212,9 +212,9 @@ type GetProjectResponseBodyData struct {
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// The mode of the workspace. Valid values:
 	//
-	// 	- **2**: The workspace is in basic mode.
+	// - **2**: basic mode.
 	//
-	// 	- **3**: The workspace is in standard mode.
+	// - **3**: standard mode.
 	//
 	// example:
 	//
@@ -226,17 +226,17 @@ type GetProjectResponseBodyData struct {
 	//
 	// test_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the workspace owner.
+	// The Alibaba Cloud ID of the workspace owner.
 	//
 	// example:
 	//
 	// 18229311****
 	ProjectOwnerBaseId *string `json:"ProjectOwnerBaseId,omitempty" xml:"ProjectOwnerBaseId,omitempty"`
-	// Indicates whether the workspace protection feature is enabled. Valid values:
+	// Indicates whether protected mode is enabled for the workspace. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: Protected mode is enabled.
 	//
-	// 	- **0**: disabled
+	// - **0**: Protected mode is not enabled.
 	//
 	// example:
 	//
@@ -244,9 +244,9 @@ type GetProjectResponseBodyData struct {
 	ProtectedMode *int32 `json:"ProtectedMode,omitempty" xml:"ProtectedMode,omitempty"`
 	// The type of the workspace. Valid values:
 	//
-	// 	- **private**
+	// - **private**: private zone.
 	//
-	// 	- **swap**
+	// - **swap**: swap zone.
 	//
 	// example:
 	//
@@ -258,13 +258,13 @@ type GetProjectResponseBodyData struct {
 	//
 	// rg-acfmzbn7****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The default maximum number of automatic reruns that are allowed after an error occurs.
+	// The default maximum number of automatic reruns upon an error.
 	//
 	// example:
 	//
 	// 3
 	SchedulerMaxRetryTimes *int32 `json:"SchedulerMaxRetryTimes,omitempty" xml:"SchedulerMaxRetryTimes,omitempty"`
-	// The default interval between automatic reruns after an error occurs. Unit: milliseconds. The maximum interval is 30 minutes. You must pay attention to the conversion between units.
+	// The default interval between automatic reruns upon an error. Unit: ms. The maximum value is 30 minutes. Note the unit conversion.
 	//
 	// example:
 	//
@@ -272,41 +272,41 @@ type GetProjectResponseBodyData struct {
 	SchedulerRetryInterval *int32 `json:"SchedulerRetryInterval,omitempty" xml:"SchedulerRetryInterval,omitempty"`
 	// The status of the workspace. Valid values:
 	//
-	// 	- **0**: AVAILABLE, which indicates that the workspace runs as expected.
+	// - **0**: AVAILABLE. The workspace is running normally.
 	//
-	// 	- **1**: DELETED, which indicates that the workspace is deleted.
+	// - **1**: DELETED. The workspace has been deleted.
 	//
-	// 	- **2**: INITIALIZING, which indicates that the workspace is being initialized.
+	// - **2**: INITIALIZING. The workspace is being initialized.
 	//
-	// 	- **3**: INIT_FAILED, which indicates that the workspace fails to be initialized.
+	// - **3**: INIT_FAILED. The workspace failed to be initialized.
 	//
-	// 	- **4**: FORBIDDEN, which indicates that the workspace is manually disabled.
+	// - **4**: FORBIDDEN. The workspace is manually disabled.
 	//
-	// 	- **5**: DELETING, which indicates that the workspace is being deleted.
+	// - **5**: DELETING. The workspace is being deleted.
 	//
-	// 	- **6**: DEL_FAILED, which indicates that the workspace fails to be deleted.
+	// - **6**: DEL_FAILED. The workspace failed to be deleted.
 	//
-	// 	- **7**: FROZEN, which indicates that the workspace is frozen due to overdue payments.
+	// - **7**: FROZEN. The workspace is frozen due to overdue payment.
 	//
-	// 	- **8**: UPDATING, which indicates that the workspace is being updated. The workspace enters this state after you associate a new compute engine with the workspace and the compute engine is initialized.
+	// - **8**: UPDATING. The workspace is being updated (a compute engine is being added and initialized).
 	//
-	// 	- **9**: UPDATE_FAILED, which indicates that the workspace fails to be updated.
+	// - **9**: UPDATE_FAILED. The workspace failed to be updated (a compute engine failed to be added and initialized).
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
+	// The visibility of MaxCompute tables. Valid values:
 	//
-	// 	- **0**: invisible
+	// - **0**: MaxCompute tables are not visible to users within the tenant.
 	//
-	// 	- **1**: visible
+	// - **1**: MaxCompute tables are visible to users within the tenant.
 	//
 	// example:
 	//
 	// 1
 	TablePrivacyMode *int32 `json:"TablePrivacyMode,omitempty" xml:"TablePrivacyMode,omitempty"`
-	// The tags added to the workspace.
+	// The list of tags bound to the workspace.
 	Tags []*GetProjectResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
@@ -314,7 +314,7 @@ type GetProjectResponseBodyData struct {
 	//
 	// 280749521
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// Indicates whether a proxy account is used to access the MaxCompute compute engine associated with the workspace.
+	// Indicates whether a proxy account is used to access the MaxCompute engine.
 	//
 	// example:
 	//

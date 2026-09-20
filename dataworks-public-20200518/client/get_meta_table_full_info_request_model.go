@@ -26,49 +26,49 @@ type iGetMetaTableFullInfoRequest interface {
 }
 
 type GetMetaTableFullInfoRequest struct {
-	// The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	// The ID of the EMR cluster. This parameter is required only when the data source type is EMR.
 	//
-	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to query the ID.
+	// You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the cluster ID.
 	//
 	// example:
 	//
 	// C-010A704DA760****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Set the value to emr.
+	// The data source type. Currently, only EMR is supported.
 	//
 	// example:
 	//
 	// emr
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the database. This parameter is required only if you set the DataSourceType parameter to emr.
+	// The name of the database. This parameter is required only when the data source type is EMR.
 	//
-	// You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the database name.
+	// You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to obtain the database name.
 	//
 	// example:
 	//
 	// abc
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The page number requested for pagination.
+	// The page number for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of items per page, with a default of 10 and a maximum of 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the table. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the unique identifier of the table.
+	// The globally unique identifier (GUID) of the table. You can call [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) to obtain the GUID of the table.
 	//
 	// example:
 	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the table in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+	// The name of the EMR table. This parameter is required only when the data source type is EMR.
 	//
-	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the table name.
+	// You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to obtain the table name.
 	//
 	// example:
 	//

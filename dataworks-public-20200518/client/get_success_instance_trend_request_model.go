@@ -14,7 +14,7 @@ type iGetSuccessInstanceTrendRequest interface {
 }
 
 type GetSuccessInstanceTrendRequest struct {
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// This parameter is required.
 	//

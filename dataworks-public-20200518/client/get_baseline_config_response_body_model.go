@@ -130,7 +130,7 @@ func (s *GetBaselineConfigResponseBody) Validate() error {
 }
 
 type GetBaselineConfigResponseBodyData struct {
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// example:
 	//
@@ -142,49 +142,49 @@ type GetBaselineConfigResponseBodyData struct {
 	//
 	// Baseline name
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The type of the baseline. Valid values: DAILY and HOURLY.
+	// The type of the baseline. Valid values: DAILY (daily baseline) and HOURLY (hourly baseline).
 	//
 	// example:
 	//
 	// DAILY
 	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	// The hour in the alerting time of the day-level baseline. Valid values: [0, 47].
+	// The alert hour of the daily baseline. Valid values: [0, 47\\].
 	//
 	// example:
 	//
 	// 7
 	ExpHour *int32 `json:"ExpHour,omitempty" xml:"ExpHour,omitempty"`
-	// The minute in the alerting time of the day-level baseline. Valid values: [0, 59].
+	// The alert minute of the daily baseline. Valid values: [0, 59\\].
 	//
 	// example:
 	//
 	// 30
 	ExpMinu *int32 `json:"ExpMinu,omitempty" xml:"ExpMinu,omitempty"`
-	// The alerting time of the hour-level baseline. This parameter is presented as key-value pairs in the JSON format. The key indicates the ID of the cycle, and the value is presented in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	// The alert time configuration of the hourly baseline in JSON format. The key is the cycle number, and the value is in hh:mm format. Valid values of hh: [0,47\\]. Valid values of mm: [0,59\\].
 	//
 	// example:
 	//
 	// {"1":"03:28","2":"04:28","3":"05:28","4":"06:28","5":"07:28","6":"08:28","7":"09:28","8":"10:28","9":"11:28","10":"12:28","11":"13:28","12":"14:28","13":"15:28","14":"16:28","15":"17:28","16":"18:28","17":"19:28","18":"20:28","19":"21:28","20":"22:28","21":"23:28","22":"24:28","23":"25:28","24":"26:28"}
 	HourExpDetail *string `json:"HourExpDetail,omitempty" xml:"HourExpDetail,omitempty"`
-	// The committed completion time of the hour-level baseline. This parameter is presented as key-value pairs in the JSON format. The key indicates the ID of the cycle, and the value is presented in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	// The committed time configuration of the hourly baseline in JSON format. The key is the cycle number, and the value is in hh:mm format. Valid values of hh: [0,47\\]. Valid values of mm: [0,59\\].
 	//
 	// example:
 	//
 	// {"1":"03:58","2":"04:58","3":"05:58","4":"06:58","5":"07:58","6":"08:58","7":"09:58","8":"10:58","9":"11:58","10":"12:58","11":"13:58","12":"14:58","13":"15:58","14":"16:58","15":"17:58","16":"18:58","17":"19:58","18":"20:58","19":"21:58","20":"22:58","21":"23:58","22":"24:58","23":"25:58","24":"26:58"}
 	HourSlaDetail *string `json:"HourSlaDetail,omitempty" xml:"HourSlaDetail,omitempty"`
-	// Indicates whether the baseline is a default baseline of the workspace. Valid values: true and false.
+	// Indicates whether this is the default baseline of the workspace. Valid values: true and false.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs can be specified. The IDs are separated by commas (,).
+	// The Alibaba Cloud UID of the baseline owner. If multiple owners exist, they are separated by commas (,).
 	//
 	// example:
 	//
 	// 9527952****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the baseline. Valid values: {1,3,5,7,8}.
+	// The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
 	//
 	// example:
 	//
@@ -196,19 +196,19 @@ type GetBaselineConfigResponseBodyData struct {
 	//
 	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The hour in the committed completion time of the day-level baseline. Valid values: [0, 47].
+	// The committed hour of the daily baseline. Valid values: [0, 47\\].
 	//
 	// example:
 	//
 	// 9
 	SlaHour *int32 `json:"SlaHour,omitempty" xml:"SlaHour,omitempty"`
-	// The minute in the committed completion time of the day-level baseline. Valid values: [0, 59].
+	// The committed minute of the daily baseline. Valid values: [0, 59\\].
 	//
 	// example:
 	//
 	// 30
 	SlaMinu *int32 `json:"SlaMinu,omitempty" xml:"SlaMinu,omitempty"`
-	// Indicates whether the baseline is enabled. Valid values: true and false.
+	// Indicates whether the baseline is enabled. Valid values: true (enabled) and false (disabled).
 	//
 	// example:
 	//

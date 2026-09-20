@@ -26,7 +26,7 @@ type GetBaselineStatusRequest struct {
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The data timestamp of the baseline instance. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format. The time must be in UTC.
+	// The business date in UTC format (yyyy-MM-dd\\"T\\"HH:mm:ssZ).
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetBaselineStatusRequest struct {
 	//
 	// 2020-07-07T00:00:00+0800
 	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+	// The cycle number of the baseline instance. The value is 1 for daily baselines. The value ranges from [1,24\\] for hourly baselines.
 	//
 	// This parameter is required.
 	//

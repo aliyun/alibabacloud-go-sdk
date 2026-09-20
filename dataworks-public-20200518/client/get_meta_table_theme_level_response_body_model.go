@@ -44,7 +44,7 @@ type GetMetaTableThemeLevelResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can troubleshoot issues based on the ID.
+	// The request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *GetMetaTableThemeLevelResponseBody) Validate() error {
 }
 
 type GetMetaTableThemeLevelResponseBodyEntity struct {
-	// The information about the levels of the metatable.
+	// The level information.
 	Level []*GetMetaTableThemeLevelResponseBodyEntityLevel `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
-	// The information about the themes of the metatable.
+	// The theme information.
 	Theme []*GetMetaTableThemeLevelResponseBodyEntityTheme `json:"Theme,omitempty" xml:"Theme,omitempty" type:"Repeated"`
 }
 
@@ -191,23 +191,23 @@ type GetMetaTableThemeLevelResponseBodyEntityLevel struct {
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the level.
+	// The level ID.
 	//
 	// example:
 	//
 	// 1
 	LevelId *int64 `json:"LevelId,omitempty" xml:"LevelId,omitempty"`
-	// The name of the level.
+	// The level name.
 	//
 	// example:
 	//
 	// level1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the level. Valid values:
+	// The level type. Valid values:
 	//
-	// - 1: indicates the logical level.
+	// - 1: logical level.
 	//
-	// - 2: indicates the physical level.
+	// - 2: physical level.
 	//
 	// example:
 	//
@@ -264,17 +264,17 @@ func (s *GetMetaTableThemeLevelResponseBodyEntityLevel) Validate() error {
 }
 
 type GetMetaTableThemeLevelResponseBodyEntityTheme struct {
-	// The level of the theme. Valid values:
+	// The theme type. Valid values:
 	//
-	// - 1
+	// - 1: primary theme.
 	//
-	// - 2
+	// - 2: secondary theme.
 	//
 	// example:
 	//
 	// 1
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of the theme.
+	// The theme name.
 	//
 	// example:
 	//
@@ -286,7 +286,7 @@ type GetMetaTableThemeLevelResponseBodyEntityTheme struct {
 	//
 	// 0
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The ID of the theme.
+	// The theme ID.
 	//
 	// example:
 	//

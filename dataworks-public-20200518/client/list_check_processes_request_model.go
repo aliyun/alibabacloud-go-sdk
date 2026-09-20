@@ -26,7 +26,7 @@ type iListCheckProcessesRequest interface {
 }
 
 type ListCheckProcessesRequest struct {
-	// Extension point event encoding.
+	// The event code of the extension point.
 	//
 	// This parameter is required.
 	//
@@ -34,25 +34,27 @@ type ListCheckProcessesRequest struct {
 	//
 	// commit-file
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// The message ID in DataWorks OpenEvent. You can obtain the ID from a received message when an extension point event is triggered.
+	// The message ID of the DataWorks open message. After an extension point event is triggered, you can obtain the message ID from the received event message.
+	//
+	// <props="china">For the message format, refer to [Message format](https://help.aliyun.com/document_detail/215367.html).
 	//
 	// example:
 	//
 	// 03400b03-b721-4c34-8727-2****1
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The operator ID.
+	// The ID of the operator.
 	//
 	// example:
 	//
-	// 123333232
+	// 123333
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The page number. Default value: 1.
+	// The page number in a paged query. This parameter is used for paging. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
@@ -66,11 +68,11 @@ type ListCheckProcessesRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The check status of the extension. Valid values:
 	//
-	// 	- CHECKING
+	// - CHECKING: The check is in progress.
 	//
-	// 	- PASSED
+	// - PASSED: The check is passed.
 	//
-	// 	- BLOCKED
+	// - BLOCKED: The check is not passed.
 	//
 	// example:
 	//

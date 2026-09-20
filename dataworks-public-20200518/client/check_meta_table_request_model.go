@@ -22,31 +22,31 @@ type iCheckMetaTableRequest interface {
 }
 
 type CheckMetaTableRequest struct {
-	// The E-MapReduce (EMR) cluster ID.
+	// The ID of the EMR cluster.
 	//
 	// example:
 	//
 	// abc
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
+	// The data source type. Valid values: odps and emr.
 	//
 	// example:
 	//
 	// emr
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase of the EMR cluster.
+	// The name of the EMR database.
 	//
 	// example:
 	//
 	// abc
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The GUID of the metatable.
+	// The globally unique identifier of the table.
 	//
 	// example:
 	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the EMR metatable.
+	// The name of the EMR table.
 	//
 	// example:
 	//

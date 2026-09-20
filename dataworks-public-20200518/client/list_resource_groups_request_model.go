@@ -24,39 +24,39 @@ type iListResourceGroupsRequest interface {
 type ListResourceGroupsRequest struct {
 	// The category of the resource group. Valid values:
 	//
-	// 	- default (default): shared resource group
+	// - default: public resource group.
 	//
-	// 	- single: exclusive resource group
+	// - single: dedicated resource group.
 	//
 	// example:
 	//
 	// default
 	BizExtKey *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
-	// The keyword that is used for fuzzy match by resource group name and identifier.
+	// The keyword. Used for fuzzy matching of resource group names and resource group identifiers.
 	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The type of the resource group that you want to query. Valid values:
+	// The type ID of the resource group to query. Valid values:
 	//
-	// 	- 0: DataWorks
+	// - 0: DataWorks
 	//
-	// 	- 1: scheduling
+	// - 1: scheduling
 	//
-	// 	- 2: MaxCompute
+	// - 2: MaxCompute
 	//
-	// 	- 3: Platform for AI (PAI)
+	// - 3: PAI
 	//
-	// 	- 4: Data Integration
+	// - 4: data integration
 	//
-	// 	- 7: exclusive resource group for scheduling (An ID is generated for the purchased resource when you purchase an exclusive resource group for scheduling.)
+	// - 7: the purchase resource ID generated when you purchase a dedicated schedule resource group
 	//
-	// 	- 9: DataService Studio
+	// - 9: dataService
 	//
-	// 	- Default value: 1
+	// - Default value: 1 (scheduling).
 	//
-	// If the value indicates a compute engine, the resource groups to query are the ones that were created when you purchased the compute engine.
+	// When the value represents an engine, the returned resource group list contains the resource groups created when you purchased that type of engine.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListResourceGroupsRequest struct {
 	//
 	// rg-acfmzbn7pti3zfa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListResourceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

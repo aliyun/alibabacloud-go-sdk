@@ -22,11 +22,11 @@ type iListLineageRequest interface {
 }
 
 type ListLineageRequest struct {
-	// The lineage type. Valid values:
+	// The lineage direction. Valid values:
 	//
-	// 	- up: ancestor lineage
+	// - up: upstream.
 	//
-	// 	- down: descendant lineage
+	// - down: downstream.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type ListLineageRequest struct {
 	//
 	// name-keyword
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token that specifies the starting point of the current read operation.
 	//
 	// example:
 	//
 	// next-token-from-previous-request
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The page size. Maximum value: 100.
 	//
 	// example:
 	//

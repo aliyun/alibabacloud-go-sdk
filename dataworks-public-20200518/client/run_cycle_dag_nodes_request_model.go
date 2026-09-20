@@ -44,47 +44,47 @@ type iRunCycleDagNodesRequest interface {
 type RunCycleDagNodesRequest struct {
 	// The alert notification method. Valid values:
 	//
-	// 	- SMS
+	// - SMS: text message.
 	//
-	// 	- MAIL
+	// - MAIL: email.
 	//
-	// 	- SMS_MAIL
+	// - SMS_MAIL: text message and email.
 	//
 	// example:
 	//
 	// SMS
 	AlertNoticeType *string `json:"AlertNoticeType,omitempty" xml:"AlertNoticeType,omitempty"`
-	// The alert type. Valid values:
+	// The Alarm Metric. Valid values:
 	//
-	// 	- SUCCESS: An alert is generated when data backfill succeeds.
+	// - SUCCESS: Alerting on success.
 	//
-	// 	- FAILURE: An alert is generated when data backfill fails.
+	// - FAILURE: Alerting on failed.
 	//
-	// 	- SUCCESS_FAILURE: An alert is generated regardless of whether data backfill succeeds or fails.
+	// - SUCCESS_FAILURE: Alerting on success or failed.
 	//
 	// example:
 	//
 	// FAILURE
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The time when the node starts to run. This parameter is required only for auto triggered nodes that are scheduled by hour. Specify the value in the HH:mm:ss format. Valid values: 00:00:00 to 23:59:59.
+	// The start time of the node. This parameter is required only for hourly scheduled nodes. Format: HH:mm:ss. Valid values: 00:00:00 to 23:59:59.
 	//
 	// example:
 	//
 	// 00:00:00
 	BizBeginTime *string `json:"BizBeginTime,omitempty" xml:"BizBeginTime,omitempty"`
-	// The time when the node stops running. This parameter is required only for auto triggered nodes that are scheduled by hour. Specify the value in the HH:mm:ss format. Valid values: 00:00:00 to 23:59:59.
+	// The end time of the node. This parameter is required only for hourly scheduled nodes. Format: HH:mm:ss. Valid values: 00:00:00 to 23:59:59.
 	//
 	// example:
 	//
 	// 01:00:00
 	BizEndTime *string `json:"BizEndTime,omitempty" xml:"BizEndTime,omitempty"`
-	// The number of nodes that can run in parallel. Valid values: 2 to 10.
+	// The number of concurrent nodes. Valid values: 2 to 10.
 	//
 	// example:
 	//
 	// 5
 	ConcurrentRuns *int32 `json:"ConcurrentRuns,omitempty" xml:"ConcurrentRuns,omitempty"`
-	// The data timestamp at which data is no longer backfilled. Specify the value in the yyyy-MM-dd 00:00:00 format.
+	// The end business date for data backfill. Format: yyyy-MM-dd 00:00:00.
 	//
 	// This parameter is required.
 	//
@@ -92,13 +92,13 @@ type RunCycleDagNodesRequest struct {
 	//
 	// 2020-05-21 00:00:00
 	EndBizDate *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
-	// The IDs of the nodes for which no data needs to be backfilled. The system generates dry-run instances for all these nodes. After these dry-run instances are scheduled, the statuses of these instances are directly set to successful, but the script is not run.
+	// The list of node IDs that do not require data backfill. Nodes in this list generate dry-run instances. After a dry-run instance is scheduled, it directly succeeds without executing the script content.
 	//
 	// example:
 	//
 	// 1234,123465
 	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
-	// The ID of the node for which you want to backfill data. If you want to backfill data for multiple nodes, separate the IDs of the nodes with commas (,). You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to obtain the node ID.
+	// The node IDs for data backfill. Separate multiple node IDs with commas (,). You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to obtain node IDs.
 	//
 	// This parameter is required.
 	//
@@ -114,13 +114,13 @@ type RunCycleDagNodesRequest struct {
 	//
 	// xm_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameters that need to be configured for the node. Set this parameter to a JSON string. The key indicates the ID of the node, and the value indicates the actual values of the parameters.
+	// A JSON string in which the key is the node ID and the value is the actual parameter value.
 	//
 	// example:
 	//
-	// {74324:"a=123 b=456"}
+	// {"74324":"a=123 b=456"}
 	NodeParams *string `json:"NodeParams,omitempty" xml:"NodeParams,omitempty"`
-	// Specifies whether data can be backfilled for multiple nodes at the same time.
+	// Specifies whether nodes across multiple business dates can run in parallel.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type RunCycleDagNodesRequest struct {
 	//
 	// false
 	Parallelism *bool `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV. The value PROD indicates the production environment, and the value DEV indicates the development environment.
+	// The environment of the workspace. PROD indicates the production environment. DEV indicates the development environment.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +136,7 @@ type RunCycleDagNodesRequest struct {
 	//
 	// PROD
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The ID of the node for which data is first backfilled. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to obtain the node ID.
+	// The ID of the start node for data backfill. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to obtain the node ID.
 	//
 	// This parameter is required.
 	//
@@ -144,7 +144,7 @@ type RunCycleDagNodesRequest struct {
 	//
 	// 1234
 	RootNodeId *int64 `json:"RootNodeId,omitempty" xml:"RootNodeId,omitempty"`
-	// The data timestamp at which data starts to be backfilled. Specify the value in the yyyy-MM-dd 00:00:00 format.
+	// The start business date for data backfill. Format: yyyy-MM-dd 00:00:00.
 	//
 	// This parameter is required.
 	//
@@ -152,7 +152,7 @@ type RunCycleDagNodesRequest struct {
 	//
 	// 2020-05-20 00:00:00
 	StartBizDate *string `json:"StartBizDate,omitempty" xml:"StartBizDate,omitempty"`
-	// Specifies whether to immediately run an instance that is scheduled to run in the future. If you set this parameter to true, the instance that is scheduled to run in the future is run immediately. Otherwise, the instance is run as scheduled.
+	// Specifies whether to immediately run instances whose scheduling time is in the future. If this parameter is set to true, instances with a scheduling time later than the current time run immediately. Otherwise, the instances wait until the scheduling time.
 	//
 	// example:
 	//

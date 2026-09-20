@@ -24,7 +24,7 @@ type iListEntitiesByTagsResponseBody interface {
 }
 
 type ListEntitiesByTagsResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *ListEntitiesByTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type ListEntitiesByTagsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ListEntitiesByTagsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true\\
+	// - true: The request was successful.
 	//
-	// false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *ListEntitiesByTagsResponseBody) Validate() error {
 }
 
 type ListEntitiesByTagsResponseBodyData struct {
-	// The entities.
+	// The list of entities.
 	EntityList []*Entity `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token that specifies the start point of the next read operation.
 	//
 	// example:
 	//

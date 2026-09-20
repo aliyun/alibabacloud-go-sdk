@@ -16,7 +16,7 @@ type iGetNodeParentsRequest interface {
 }
 
 type GetNodeParentsRequest struct {
-	// The node ID. You can go to the Operation Center page in the DataWorks console to query the node ID.
+	// The node ID. You can view the node ID in the Operation Center of the DataWorks console.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetNodeParentsRequest struct {
 	//
 	// 12345456211234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The environment type of Operation Center. Valid values: PROD and DEV. The value PROD indicates the production environment, and the value DEV indicates the development environment.
+	// The environment identifier of the Operation Center. PROD indicates the production environment. DEV indicates the development environment.
 	//
 	// This parameter is required.
 	//

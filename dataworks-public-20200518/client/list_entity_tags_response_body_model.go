@@ -24,7 +24,7 @@ type iListEntityTagsResponseBody interface {
 }
 
 type ListEntityTagsResponseBody struct {
-	// The tags.
+	// The list of tags.
 	Data []*UserEntityTag `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type ListEntityTagsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ListEntityTagsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true\\
+	// - true: The request was successful.
 	//
-	// false
+	// - false: The request failed.
 	//
 	// example:
 	//

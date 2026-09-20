@@ -28,19 +28,19 @@ type ListEntitiesByTagsRequest struct {
 	//
 	// maxcompute-table
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token that specifies the start point of the current read operation.
 	//
 	// example:
 	//
 	// 12345
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tags.
+	// The list of tags.
 	//
 	// This parameter is required.
 	Tags []*UserEntityTag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`

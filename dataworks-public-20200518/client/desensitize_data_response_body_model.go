@@ -16,13 +16,13 @@ type iDesensitizeDataResponseBody interface {
 }
 
 type DesensitizeDataResponseBody struct {
-	// The data returned after masking.
+	// The masked result data.
 	//
 	// example:
 	//
 	// {     "desensData": "**198807120510**"   }
 	DesensitizeData *string `json:"DesensitizeData,omitempty" xml:"DesensitizeData,omitempty"`
-	// The request ID.
+	// The request ID. A unique identifier for the request.
 	//
 	// example:
 	//

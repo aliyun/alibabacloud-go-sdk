@@ -16,17 +16,17 @@ type iRunTriggerNodeResponseBody interface {
 }
 
 type RunTriggerNodeResponseBody struct {
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 9BA675F1-F848-4752-A6E3-92ABA0616005
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- true
+	// - true: The call was successful.
 	//
-	// 	- false
+	// - false: The call failed.
 	//
 	// example:
 	//

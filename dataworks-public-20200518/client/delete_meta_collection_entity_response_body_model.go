@@ -42,27 +42,27 @@ type DeleteMetaCollectionEntityResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Id of the request
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
+	// The operation result. Valid values:
 	//
-	// true: succeeded
+	// - true: Succeeded.
 	//
-	// false: failed
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// true
+	// - true: The call was successful.
 	//
-	// false
+	// - false: The call failed.
 	//
 	// example:
 	//

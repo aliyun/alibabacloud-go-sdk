@@ -16,7 +16,7 @@ type iGetMetaTableThemeLevelRequest interface {
 }
 
 type GetMetaTableThemeLevelRequest struct {
-	// The type of the data source. Set the value to odps.
+	// The data type. Currently, only odps is supported.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetMetaTableThemeLevelRequest struct {
 	//
 	// odps
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The GUID of the metatable. Specify the GUID in the format of odps.${projectName}.${tableName}.
+	// The unique ID of the table. Format: odps.${projectName}.${tableName}.
 	//
 	// This parameter is required.
 	//

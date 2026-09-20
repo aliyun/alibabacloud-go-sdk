@@ -24,7 +24,7 @@ type iCreateRemindResponseBody interface {
 }
 
 type CreateRemindResponseBody struct {
-	// The ID of the custom alert rule.
+	// The ID of the custom rule returned after the custom monitoring rule is created.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreateRemindResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

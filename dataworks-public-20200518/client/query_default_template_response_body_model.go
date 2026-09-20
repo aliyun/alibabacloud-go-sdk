@@ -24,7 +24,7 @@ type iQueryDefaultTemplateResponseBody interface {
 }
 
 type QueryDefaultTemplateResponseBody struct {
-	// The returned data about the default data category and data sensitivity level template. The data is in the JSON array format.
+	// The default data classification template returned. The value is in JSON format.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type QueryDefaultTemplateResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type QueryDefaultTemplateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// This parameter is required.
 	//

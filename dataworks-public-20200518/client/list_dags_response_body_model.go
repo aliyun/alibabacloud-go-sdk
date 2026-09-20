@@ -24,7 +24,7 @@ type iListDagsResponseBody interface {
 }
 
 type ListDagsResponseBody struct {
-	// The details of DAGs.
+	// The details of the DAGs.
 	Data *ListDagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,13 +44,13 @@ type ListDagsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 7782a299-b291-4fee-8424-cf8058efa8e8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListDagsResponseBody) Validate() error {
 }
 
 type ListDagsResponseBodyData struct {
-	// The entities returned.
+	// The returned entities.
 	Dags []*ListDagsResponseBodyDataDags `json:"Dags,omitempty" xml:"Dags,omitempty" type:"Repeated"`
 }
 
@@ -165,13 +165,17 @@ func (s *ListDagsResponseBodyData) Validate() error {
 }
 
 type ListDagsResponseBodyDataDags struct {
-	// The data timestamp.
+	// The business date.
+	//
+	// The value is a 13-digit number, for example, `1605052800000`.
 	//
 	// example:
 	//
 	// 1605052800000
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	// The creation time.
+	//
+	// The value is a 13-digit number, for example, `1605052800000`.
 	//
 	// example:
 	//
@@ -183,7 +187,7 @@ type ListDagsResponseBodyDataDags struct {
 	//
 	// 1736629400048545
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The DAG ID.
+	// DagId。
 	//
 	// example:
 	//
@@ -191,17 +195,23 @@ type ListDagsResponseBodyDataDags struct {
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
 	// The end time.
 	//
+	// The value is a 13-digit number, for example, `1605052800000`.
+	//
 	// example:
 	//
 	// 1605052800000
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The actual running time.
+	// The GMT date.
+	//
+	// The value is a 13-digit number, for example, `1605052800000`.
 	//
 	// example:
 	//
 	// 1605052800000
 	Gmtdate *int64 `json:"Gmtdate,omitempty" xml:"Gmtdate,omitempty"`
 	// The modification time.
+	//
+	// The value is a 13-digit number, for example, `1605052800000`.
 	//
 	// example:
 	//
@@ -213,7 +223,7 @@ type ListDagsResponseBodyDataDags struct {
 	//
 	// test_dag
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sequence number of the operation.
+	// The operation sequence code.
 	//
 	// example:
 	//
@@ -227,19 +237,21 @@ type ListDagsResponseBodyDataDags struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The start time.
 	//
+	// The value is a 13-digit number, for example, `1605052800000`.
+	//
 	// example:
 	//
 	// 1605052800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the DAG. Valid values:
 	//
-	// - CREATED
+	// - CREATED: created
 	//
-	// - RUNNING
+	// - RUNNING: running
 	//
-	// - FAILURE
+	// - FAILURE: failed
 	//
-	// - SUCCESS
+	// - SUCCESS: succeeded
 	//
 	// example:
 	//
@@ -247,13 +259,13 @@ type ListDagsResponseBodyDataDags struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the DAG. Valid values:
 	//
-	// - MANUAL: DAG for a manually triggered workflow
+	// - MANUAL: manual task workflow
 	//
-	// - SMOKE_TEST: DAG for a smoke testing workflow
+	// - SMOKE_TEST: smoke test workflow
 	//
-	// - SUPPLY_DATA: DAG for a data backfill instance
+	// - SUPPLY_DATA: data backfill
 	//
-	// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+	// - BUSINESS_PROCESS_DAG: one-time business process workflow
 	//
 	// example:
 	//

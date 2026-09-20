@@ -32,7 +32,7 @@ type GetQualityFollowerRequest struct {
 	//
 	// 27
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the engine or data source.
+	// The name of the compute engine or data source.
 	//
 	// This parameter is required.
 	//

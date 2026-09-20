@@ -42,87 +42,87 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	// The parameters related to the node.
+	// The start date for which to retrieve the instance list. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2020-02-02 00:00:00
 	BeginBizdate *string `json:"BeginBizdate,omitempty" xml:"BeginBizdate,omitempty"`
-	// The ID of the instance.
+	// The name of the workflow. You can call [ListBusiness](https://help.aliyun.com/document_detail/173945.html) to query workflow information.
 	//
 	// example:
 	//
 	// test_bizName
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	// The date for which to retrieve the instance list. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2020-02-02 00:00:00
 	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV. The value PROD indicates the production environment. The value DEV indicates the development environment.
+	// The DAG ID. The DagId can be the DagId returned by operations such as [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html) for data backfill, [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html) for smoke testing, and [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) for manual workflows.
 	//
 	// example:
 	//
 	// 11111
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The ID of the workflow.
+	// The end date for which to retrieve the instance list. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2020-02-03 00:00:00
 	EndBizdate *string `json:"EndBizdate,omitempty" xml:"EndBizdate,omitempty"`
-	// Indicates whether the instance is associated with a monitoring rule in Data Quality. Valid values:
-	//
-	// 	- 0: The instance is associated with a monitoring rule in Data Quality.
-	//
-	// 	- 1: The instance is not associated with a monitoring rule in Data Quality.
+	// The node ID. You can call [ListNodes](https://help.aliyun.com/document_detail/173979.html) to query the node ID.
 	//
 	// example:
 	//
 	// 100000000000
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Indicates whether the node can be rerun.
+	// The node name. You can call [ListNodes](https://help.aliyun.com/document_detail/173979.html) to query the node name.
 	//
 	// example:
 	//
 	// openmr_8****
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The sorting rule of the instances to be returned. Valid values:
+	// The sorting rule for the returned results. Valid values:
 	//
-	// 	- CREATE_TIME_DESC: The instances are sorted in descending order of their creation time.
+	// - CREATE_TIME_DESC: sorted by creation time in descending order.
 	//
-	// 	- INSTANCE_ID_DESC (default): The instances are sorted in descending order of their IDs.
+	// - INSTANCE_ID_DESC: default value. Sorted by instance ID in descending order.
 	//
 	// example:
 	//
 	// INSTANCE_ID_DESC
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The connection string.
+	// The ID of the owner, which is the UID of the workspace administrator. You can logon to the Alibaba Cloud Management Console and view the UID in the Security Settings section of the storage management page.
 	//
 	// example:
 	//
 	// 193379****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The operation that you want to perform.
+	// The page number. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the node.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The error code returned.
+	// The node type. You can call [ListNodes](https://help.aliyun.com/document_detail/173979.html) to query the node type.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	// The environment in which the node runs. Valid values: DEV and PROD.
+	// The runtime environment. Valid values:
+	//
+	// - PROD: production environment.
+	//
+	// - DEV: development environment.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type ListInstancesRequest struct {
 	//
 	// PROD
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The ID of the baseline.
+	// The workspace ID. You can call [ListProjects](https://help.aliyun.com/document_detail/178393.html) to query the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -140,21 +140,21 @@ type ListInstancesRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The status of the node. Valid values:
 	//
-	// 	- NOT_RUN: The node is not run.
+	// - NOT_RUN: The node is not run.
 	//
-	// 	- WAIT_TIME: The node is waiting for the scheduling time to arrive.
+	// - WAIT_TIME: The node is waiting for the scheduled time (DueTime or CycTime) to arrive.
 	//
-	// 	- WAIT_RESOURCE: The node is waiting for resources.
+	// - WAIT_RESOURCE: The node is waiting for resources.
 	//
-	// 	- RUNNING: The node is running.
+	// - RUNNING: The node is running.
 	//
-	// 	- CHECKING: Data quality is being checked for the node.
+	// - CHECKING: The node has been sent to Data Quality for data validation.
 	//
-	// 	- CHECKING_CONDITION: Branch conditions are being checked for the node.
+	// - CHECKING_CONDITION: The node is undergoing branch condition verification.
 	//
-	// 	- FAILURE: The node fails to run.
+	// - FAILURE: Failed to execute.
 	//
-	// 	- SUCCESS: The node is successfully run.
+	// - SUCCESS: Execute successfully.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iGetMetaDBInfoRequest interface {
 }
 
 type GetMetaDBInfoRequest struct {
-	// The compute engine instance ID. Specify the ID in the `Engine type.Engine name` format.
+	// The engine ID, in the format of `Engine type.Engine name`.
 	//
 	// example:
 	//
 	// odps.some_engine_name
 	AppGuid *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	// The E-MapReduce (EMR) cluster ID.
+	// The cluster ID of the EMR cluster.
 	//
 	// example:
 	//
 	// abc
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Valid values: odps and emr.
+	// The data type. Valid values: odps and emr.
 	//
 	// example:
 	//
 	// emr
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase of the EMR cluster.
+	// The database of the EMR cluster.
 	//
 	// example:
 	//

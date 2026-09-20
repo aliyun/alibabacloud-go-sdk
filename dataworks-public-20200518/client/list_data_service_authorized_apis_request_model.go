@@ -22,25 +22,25 @@ type iListDataServiceAuthorizedApisRequest interface {
 }
 
 type ListDataServiceAuthorizedApisRequest struct {
-	// The keyword in API names. The keyword is used to search for the APIs whose names contain the keyword.
+	// The keyword of the API name. This parameter is used to filter APIs whose names contain the specified keyword.
 	//
 	// example:
 	//
-	// My API name
+	// MyAPIName
 	ApiNameKeyword *string `json:"ApiNameKeyword,omitempty" xml:"ApiNameKeyword,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
-	// PageNumber
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace ID.
+	// The workspace ID. You can obtain this value from the PageResult.ProjectList[].ProjectId field returned by the ListProjects operation.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListDataServiceAuthorizedApisRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The tenant ID. This parameter is deprecated.
+	// **[Deprecated]*	- The tenant ID.
 	//
 	// example:
 	//

@@ -34,19 +34,25 @@ type iCreateDagComplementRequest interface {
 }
 
 type CreateDagComplementRequest struct {
-	// An optional parameter. The start time of the task. This parameter is required for hour-level scheduled tasks.
+	// Optional. The start time of the task. This parameter is required for hourly scheduled tasks.
+	//
+	// Format: `HH:mm:ss`. Example: `00:00:00`.
 	//
 	// example:
 	//
 	// 00:00:00
 	BizBeginTime *string `json:"BizBeginTime,omitempty" xml:"BizBeginTime,omitempty"`
-	// An optional parameter. The end time of the task. This parameter is required for hour-level scheduled tasks.
+	// Optional. The end time of the task. This parameter is required for hourly scheduled tasks.
+	//
+	// Format: `HH:mm:ss`. Example: `23:00:00`.
 	//
 	// example:
 	//
 	// 23:00:00
 	BizEndTime *string `json:"BizEndTime,omitempty" xml:"BizEndTime,omitempty"`
-	// The end business date of data backfill.
+	// The end business date for the data backfill.
+	//
+	// Format: `yyyy-MM-dd HH:mm:ss`. Example: `2020-05-21 00:00:00`.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +60,13 @@ type CreateDagComplementRequest struct {
 	//
 	// 2020-05-21 00:00:00
 	EndBizDate *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
-	// An optional parameter. The list of node IDs to exclude from data backfill.
+	// Optional. The list of node IDs to exclude from the data backfill.
 	//
 	// example:
 	//
 	// 1234
 	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
-	// The list of node IDs to include. If you backfill data for only one node, that node must be included in includeNodeIds.
+	// The list of included node IDs. If you want to backfill data for only one node, the node must be included in includeNodeIds.
 	//
 	// This parameter is required.
 	//
@@ -76,13 +82,13 @@ type CreateDagComplementRequest struct {
 	//
 	// xm_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A JSON string. The key is the node ID, and the value is the actual parameter value.
+	// A JSON string in which the key is the node ID and the value is the actual parameter value.
 	//
 	// example:
 	//
 	// {74324:"key1=val1 key2=val"}
 	NodeParams *string `json:"NodeParams,omitempty" xml:"NodeParams,omitempty"`
-	// Specifies whether the task can be executed concurrently.
+	// Specifies whether tasks can execute concurrently.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +96,11 @@ type CreateDagComplementRequest struct {
 	//
 	// false
 	Parallelism *bool `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// The environment of the workspace, including PROD and DEV.
+	// The environment of the workspace. Valid values:
+	//
+	// - PROD: production environment.
+	//
+	// - DEV: development environment.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +108,7 @@ type CreateDagComplementRequest struct {
 	//
 	// PROD
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The ID of the start node for data backfill.
+	// The ID of the root node for the data backfill.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +116,9 @@ type CreateDagComplementRequest struct {
 	//
 	// 1234
 	RootNodeId *int64 `json:"RootNodeId,omitempty" xml:"RootNodeId,omitempty"`
-	// The start business date of data backfill.
+	// The start business date for the data backfill.
+	//
+	// Format: `yyyy-MM-dd HH:mm:ss`. Example: `2020-05-20 00:00:00`.
 	//
 	// This parameter is required.
 	//

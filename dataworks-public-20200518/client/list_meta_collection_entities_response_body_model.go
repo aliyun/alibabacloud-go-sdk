@@ -24,7 +24,7 @@ type iListMetaCollectionEntitiesResponseBody interface {
 }
 
 type ListMetaCollectionEntitiesResponseBody struct {
-	// The response parameters.
+	// The response structure.
 	Data *ListMetaCollectionEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,17 +44,17 @@ type ListMetaCollectionEntitiesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// E25887B7-579C-54A5-9C4F-83A0DE367DD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// true: The request was successful.
+	// true: The call was successful.
 	//
-	// false: The request failed.
+	// false: The call failed.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *ListMetaCollectionEntitiesResponseBody) Validate() error {
 }
 
 type ListMetaCollectionEntitiesResponseBodyData struct {
-	// The entities.
+	// The entity array.
 	EntityList []*Entity `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next page.
 	//
 	// example:
 	//

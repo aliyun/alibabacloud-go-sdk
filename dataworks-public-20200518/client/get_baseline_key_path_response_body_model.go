@@ -24,33 +24,33 @@ type iGetBaselineKeyPathResponseBody interface {
 }
 
 type GetBaselineKeyPathResponseBody struct {
-	// The information about the key path.
+	// The critical path information.
 	Data []*GetBaselineKeyPathResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 1031203110005
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The timestamp when the event was found.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The unique ID of the call. After an error occurs, you can troubleshoot the problem based on the ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the call is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *GetBaselineKeyPathResponseBody) Validate() error {
 }
 
 type GetBaselineKeyPathResponseBodyData struct {
-	// The data timestamp of the instance.
+	// The timestamp of the business date of the instance.
 	//
 	// example:
 	//
 	// 1553443200000
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The ID of the scheduling cycle of the instance. Valid values: 1 to 288.
+	// The cycle number of the instance. Valid values: [1,288\\].
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetBaselineKeyPathResponseBodyData struct {
 	//
 	// 123456
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type GetBaselineKeyPathResponseBodyData struct {
 	//
 	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//
 	// 9527952****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The type of the node. Valid values: 23, 10, 6, and 99. The value 23 indicates that the node is a Data Integration node. The value 10 indicates that the node is a MaxCompute SQL node. The value 6 indicates that the node is a Shell node. The value 99 indicates that the node is a zero load node.
+	// The node type. Common node types include Data Integration (23), MaxCompute SQL (10), Shell (6), and virtual node (99).
 	//
 	// example:
 	//
@@ -182,9 +182,9 @@ type GetBaselineKeyPathResponseBodyData struct {
 	//
 	// 1234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The running records of the instance.
+	// The run records of the instance.
 	Runs []*GetBaselineKeyPathResponseBodyDataRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
-	// The information about the events that are associated with the instance.
+	// The event information associated with the instance.
 	Topics []*GetBaselineKeyPathResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
@@ -309,49 +309,65 @@ func (s *GetBaselineKeyPathResponseBodyData) Validate() error {
 }
 
 type GetBaselineKeyPathResponseBodyDataRuns struct {
-	// The timestamp obtained by adding the predicted time when the instance started to run to the historical average running duration of the instance.
+	// The timestamp calculated by adding the historical average run duration to the estimated start time of the instance.
 	//
 	// example:
 	//
 	// 1553531402000
 	AbsTime *int64 `json:"AbsTime,omitempty" xml:"AbsTime,omitempty"`
-	// The timestamp of the predicted time when the instance started to run.
+	// The estimated start time of the instance.
 	//
 	// example:
 	//
 	// 1553531686000
 	BeginCast *int64 `json:"BeginCast,omitempty" xml:"BeginCast,omitempty"`
-	// The timestamp of the actual time when the instance started to run.
+	// The timestamp when the instance actually started running.
 	//
 	// example:
 	//
 	// 1553531401000
 	BeginRunningTime *int64 `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
-	// The timestamp when the instance started to wait for resources.
+	// The timestamp when the instance entered the waiting-for-resources state.
 	//
 	// example:
 	//
 	// 1553531401000
 	BeginWaitResTime *int64 `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
-	// The timestamp when the instance started to wait for the scheduling time.
+	// The timestamp when the instance entered the waiting-for-time state.
 	//
 	// example:
 	//
 	// 1553531400000
 	BeginWaitTimeTime *int64 `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
-	// The timestamp of the predicted time when the instance finished running.
+	// The estimated end time of the instance.
 	//
 	// example:
 	//
 	// 1553531687000
 	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	// The timestamp of the actual time when the instance finished running.
+	// The timestamp when the instance actually finished running.
 	//
 	// example:
 	//
 	// 1553531401000
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+	// The status of the instance. Valid values:
+	//
+	// - NOT_RUN: not run.
+	//
+	// - WAIT_TIME: waiting for the scheduled time.
+	//
+	// - WAIT_RESOURCE: waiting for resources.
+	//
+	// - RUNNING: running.
+	//
+	// - CHECKING: checking.
+	//
+	// - CHECKING_CONDITION: checking conditions.
+	//
+	// - FAILURE: failed.
+	//
+	// - SUCCESS: succeeded.
 	//
 	// example:
 	//
@@ -444,19 +460,19 @@ func (s *GetBaselineKeyPathResponseBodyDataRuns) Validate() error {
 }
 
 type GetBaselineKeyPathResponseBodyDataTopics struct {
-	// The timestamp when the event was found.
+	// The timestamp when the event was detected.
 	//
 	// example:
 	//
 	// 1553531401000
 	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// 1234
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListExtensionsRequest interface {
 }
 
 type ListExtensionsRequest struct {
-	// The page number.
+	// The page number of the request, used for pagination.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ func (s *GetMetaDBInfoResponseBody) Validate() error {
 }
 
 type GetMetaDBInfoResponseBodyData struct {
-	// The compute engine instance ID. Specify the ID in the `Engine type.Engine name` format.
+	// The engine ID, in the format of `Engine type.Engine name`.
 	//
 	// example:
 	//
@@ -78,45 +78,49 @@ type GetMetaDBInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// Remarks
+	// Comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the compute engine instance was created.
+	// The time when the engine was created.
+	//
+	// The value is a 13-digit number, for example, `1541576644000`.
 	//
 	// example:
 	//
 	// 1541576644000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The endpoint of the service.
+	// The service endpoint.
 	//
 	// example:
 	//
 	// http://service.odpsstg.aliyun-inc.com/
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The type of the environment. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
+	// The environment type. A value of 0 indicates a non-production table. A value of 1 indicates a production table.
 	//
 	// example:
 	//
 	// 1
 	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The storage path of the metadatabase of the EMR cluster.
+	// The data storage address of the EMR database.
 	//
 	// example:
 	//
 	// hdfs://
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The time when the compute engine instance was modified.
+	// The time when the engine was modified.
+	//
+	// The value is a 13-digit number, for example, `1541576644000`.
 	//
 	// example:
 	//
 	// 1541576644000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Alibaba Cloud account used by the workspace owner.
+	// The Alibaba Cloud account ID of the workspace owner.
 	//
 	// example:
 	//
@@ -144,7 +148,7 @@ type GetMetaDBInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// 测试项目
+	// Test project
 	ProjectNameCn *string `json:"ProjectNameCn,omitempty" xml:"ProjectNameCn,omitempty"`
 	// The tenant ID.
 	//
@@ -152,7 +156,7 @@ type GetMetaDBInfoResponseBodyData struct {
 	//
 	// 233
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The type of the metadatabase.
+	// The database type.
 	//
 	// example:
 	//

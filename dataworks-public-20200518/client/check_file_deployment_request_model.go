@@ -18,13 +18,13 @@ type iCheckFileDeploymentRequest interface {
 }
 
 type CheckFileDeploymentRequest struct {
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
 	// https://result.aliyun.com/?checkerInstanceId=
 	CheckDetailUrl *string `json:"CheckDetailUrl,omitempty" xml:"CheckDetailUrl,omitempty"`
-	// The ID of the instance to which the file checker belongs. You can obtain the ID from the CheckerInstanceId parameter in the check event logs returned by DataWorks.
+	// The instance ID to which the file checker belongs. You can obtain this value from the CheckerInstanceId field in the file publish check event.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type CheckFileDeploymentRequest struct {
 	//
 	// 66_123455623_2
 	CheckerInstanceId *string `json:"CheckerInstanceId,omitempty" xml:"CheckerInstanceId,omitempty"`
-	// The check status of the file that you want to deploy. Valid values:
+	// The check status of the file pending deployment. Valid values:
 	//
-	// - OK: The file passes the check.
+	// - OK: The file passed the check.
 	//
-	// - WARN: The file passes the check, but an alert is reported.
+	// - WARN: The file passed the check but has warnings.
 	//
-	// - FAIL: The file fails the check.
+	// - FAIL: The file failed the check.
 	//
 	// This parameter is required.
 	//

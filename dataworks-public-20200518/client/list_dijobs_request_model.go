@@ -24,13 +24,13 @@ type iListDIJobsRequest interface {
 }
 
 type ListDIJobsRequest struct {
-	// The destination type. If you do not configure this parameter, no limits are imposed on the tasks.
+	// The destination data source type. If this parameter is not specified, no filtering is applied.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
-	// The name of the task. Fuzzy match is supported. If you do not configure this parameter, no limits are imposed on the tasks.
+	// The task name. If this parameter is not specified, no filtering is applied. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ListDIJobsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The page size. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ListDIJobsRequest struct {
 	//
 	// 1967
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The source type. If you do not configure this parameter, no limits are imposed on the tasks.
+	// The source data source type. If this parameter is not specified, no filtering is applied.
 	//
 	// example:
 	//

@@ -24,9 +24,11 @@ type iSetEntityTagsResponseBody interface {
 }
 
 type SetEntityTagsResponseBody struct {
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// true and false.
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -50,7 +52,7 @@ type SetEntityTagsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -58,7 +60,9 @@ type SetEntityTagsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true and false.
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iListProjectsRequest interface {
 }
 
 type ListProjectsRequest struct {
-	// The page number. Valid values: 1 to 100.
+	// The page number. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListProjectsRequest struct {
 	//
 	// rg-acfmzbn7pt****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags to add to the workspace.
+	// The list of tags bound to the workspace.
 	Tags []*ListProjectsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -100,13 +100,13 @@ func (s *ListProjectsRequest) Validate() error {
 }
 
 type ListProjectsRequestTags struct {
-	// The key of tag N to add to the workspace.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the workspace.
+	// The tag value.
 	//
 	// example:
 	//

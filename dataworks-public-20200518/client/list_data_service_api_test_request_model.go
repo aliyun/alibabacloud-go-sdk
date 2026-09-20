@@ -16,7 +16,7 @@ type iListDataServiceApiTestRequest interface {
 }
 
 type ListDataServiceApiTestRequest struct {
-	// The ID of the DataService Studio API on which tests are performed.
+	// The ID of the API to test.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListDataServiceApiTestRequest struct {
 	//
 	// 12345
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100.
+	// The page size. Maximum value: 100.
 	//
 	// example:
 	//

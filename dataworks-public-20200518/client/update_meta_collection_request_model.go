@@ -18,7 +18,7 @@ type iUpdateMetaCollectionRequest interface {
 }
 
 type UpdateMetaCollectionRequest struct {
-	// The comment of the collection. The comment must be 1 to 64 characters in length.
+	// The comment of the collection. Length limit: 1 to 64 characters.
 	//
 	// example:
 	//

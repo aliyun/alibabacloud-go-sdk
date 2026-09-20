@@ -24,7 +24,7 @@ type iDeleteDataServiceApiResponseBody interface {
 }
 
 type DeleteDataServiceApiResponseBody struct {
-	// Indicates whether the API was deleted.
+	// Indicates whether the deletion was successful.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DeleteDataServiceApiResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. It is a unique identifier for the request.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

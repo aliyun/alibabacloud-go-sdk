@@ -130,9 +130,9 @@ func (s *GetMetaColumnLineageResponseBody) Validate() error {
 }
 
 type GetMetaColumnLineageResponseBodyData struct {
-	// The returned result.
+	// The list of instance data.
 	DataEntityList []*GetMetaColumnLineageResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number. Used for pagination.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *GetMetaColumnLineageResponseBodyData) Validate() error {
 }
 
 type GetMetaColumnLineageResponseBodyDataDataEntityList struct {
-	// The EMR cluster ID.
+	// The ID of the EMR cluster.
 	//
 	// example:
 	//

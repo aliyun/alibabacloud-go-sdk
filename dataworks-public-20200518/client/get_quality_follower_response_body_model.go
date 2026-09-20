@@ -24,7 +24,7 @@ type iGetQualityFollowerResponseBody interface {
 }
 
 type GetQualityFollowerResponseBody struct {
-	// An array of follower objects.
+	// The subscription information.
 	Data []*GetQualityFollowerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -50,7 +50,7 @@ type GetQualityFollowerResponseBody struct {
 	//
 	// 38cbdef0-f6cf-49
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -134,21 +134,23 @@ func (s *GetQualityFollowerResponseBody) Validate() error {
 }
 
 type GetQualityFollowerResponseBodyData struct {
-	// The alarm notification method. Valid values:
+	// The alert mode. Valid values:
 	//
-	// - 1: by email
+	// - 1: email
 	//
-	// - 2: by email and SMS
+	// - 2: email and text message
 	//
-	// - 4: by DingTalk chatbot or webhook
+	// - 4: DingTalk chatbot or webhook
 	//
-	// - 5: by DingTalk chatbot with the @all keyword
+	// - 5: DingTalk chatbot @ALL
 	//
 	// example:
 	//
 	// 1
 	AlarmMode *int32 `json:"AlarmMode,omitempty" xml:"AlarmMode,omitempty"`
-	// The time when the subscription was created. This value is a UNIX timestamp in milliseconds.
+	// The time when the data quality rule subscription was created.
+	//
+	// The value is a 13-digit number, for example, `1541576644000`.
 	//
 	// example:
 	//
@@ -160,31 +162,33 @@ type GetQualityFollowerResponseBodyData struct {
 	//
 	// 1234
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The follower who receives alarm notifications.
+	// The subscriber who receives alert notifications.
 	//
 	// example:
 	//
 	// 1234
 	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
-	// The Alibaba Cloud account name of the follower.
+	// The Alibaba Cloud account name of the subscriber.
 	//
 	// example:
 	//
 	// test
 	FollowerAccountName *string `json:"FollowerAccountName,omitempty" xml:"FollowerAccountName,omitempty"`
-	// The subscription ID.
+	// The ID of the subscription.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the subscription was last updated. This value is a UNIX timestamp in milliseconds.
+	// The time when the data quality rule subscription was last updated.
+	//
+	// The value is a 13-digit number, for example, `1541576644000`.
 	//
 	// example:
 	//
 	// 1541576644000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the engine or data source.
+	// The name of the compute engine or data source.
 	//
 	// example:
 	//

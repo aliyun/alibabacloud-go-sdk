@@ -20,7 +20,7 @@ type iListProjectsShrinkRequest interface {
 }
 
 type ListProjectsShrinkRequest struct {
-	// The page number. Valid values: 1 to 100.
+	// The page number. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListProjectsShrinkRequest struct {
 	//
 	// rg-acfmzbn7pt****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags to add to the workspace.
+	// The list of tags bound to the workspace.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

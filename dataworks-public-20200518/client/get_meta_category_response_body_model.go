@@ -130,9 +130,9 @@ func (s *GetMetaCategoryResponseBody) Validate() error {
 }
 
 type GetMetaCategoryResponseBodyData struct {
-	// The information about the category tree.
+	// The list of data entities.
 	DataEntityList []*GetMetaCategoryResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number. Used for pagination.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type GetMetaCategoryResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of categories returned.
+	// The total number of categories.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *GetMetaCategoryResponseBodyData) Validate() error {
 }
 
 type GetMetaCategoryResponseBodyDataDataEntityList struct {
-	// The category ID.
+	// The ID of the category.
 	//
 	// example:
 	//
@@ -224,23 +224,27 @@ type GetMetaCategoryResponseBodyDataDataEntityList struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The time when the category was created.
 	//
+	// The value is a 13-digit number, such as `1541576644000`.
+	//
 	// example:
 	//
 	// 1541576644000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of category levels.
+	// The depth level of the category.
 	//
 	// example:
 	//
 	// 1
 	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
-	// The ID of the user that performed the last operation.
+	// The ID of the user who last performed an operation.
 	//
 	// example:
 	//
 	// 12345
 	LastOperatorId *string `json:"LastOperatorId,omitempty" xml:"LastOperatorId,omitempty"`
 	// The time when the category was last modified.
+	//
+	// The value is a 13-digit number, such as `1541576644000`.
 	//
 	// example:
 	//
@@ -252,13 +256,13 @@ type GetMetaCategoryResponseBodyDataDataEntityList struct {
 	//
 	// category 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The category owner ID.
+	// The ID of the category owner.
 	//
 	// example:
 	//
 	// 123
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The parent category ID.
+	// The ID of the parent category.
 	//
 	// example:
 	//

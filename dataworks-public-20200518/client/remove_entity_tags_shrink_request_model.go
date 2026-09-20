@@ -24,7 +24,7 @@ type RemoveEntityTagsShrinkRequest struct {
 	//
 	// maxcompute-table.projectA.tableA
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	// The tag keys.
+	// The list of tag keys.
 	//
 	// This parameter is required.
 	TagKeysShrink *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`

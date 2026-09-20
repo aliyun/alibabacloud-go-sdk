@@ -20,7 +20,7 @@ type iCreateMetaCollectionRequest interface {
 }
 
 type CreateMetaCollectionRequest struct {
-	// The type of the collection.
+	// The collection type.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,17 @@ type CreateMetaCollectionRequest struct {
 	//
 	// ALBUM
 	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// The comment of the collection. The comment must be 1 to 64 characters in length.
+	// The comment for the collection.
+	//
+	// Length limit: 1 to 64 characters.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the collection. The name must be 1 to 32 characters in length.
+	// The collection name.
+	//
+	// Length limit: 1 to 32 characters.
 	//
 	// This parameter is required.
 	//

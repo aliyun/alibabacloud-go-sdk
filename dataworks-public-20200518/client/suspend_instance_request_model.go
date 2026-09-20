@@ -16,7 +16,7 @@ type iSuspendInstanceRequest interface {
 }
 
 type SuspendInstanceRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,11 @@ type SuspendInstanceRequest struct {
 	//
 	// 1234
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
+	// The environment of the workspace. Valid values:
+	//
+	// - PROD: production environment
+	//
+	// - DEV: development environment
 	//
 	// This parameter is required.
 	//

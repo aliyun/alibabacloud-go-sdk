@@ -16,9 +16,9 @@ type iListDataServiceFoldersResponseBody interface {
 }
 
 type ListDataServiceFoldersResponseBody struct {
-	// The paging result for the folders.
+	// The pagination result of the folder list.
 	FolderPagingResult *ListDataServiceFoldersResponseBodyFolderPagingResult `json:"FolderPagingResult,omitempty" xml:"FolderPagingResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. A unique identifier for the request.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *ListDataServiceFoldersResponseBody) Validate() error {
 }
 
 type ListDataServiceFoldersResponseBodyFolderPagingResult struct {
-	// The folders.
+	// The folder list.
 	Folders []*ListDataServiceFoldersResponseBodyFolderPagingResultFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Repeated"`
-	// The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
+	// The page number, which is the same as the PageNumber parameter in the request.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListDataServiceFoldersResponseBodyFolderPagingResult struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -144,6 +144,8 @@ func (s *ListDataServiceFoldersResponseBodyFolderPagingResult) Validate() error 
 type ListDataServiceFoldersResponseBodyFolderPagingResultFolders struct {
 	// The time when the folder was created.
 	//
+	// The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
+	//
 	// example:
 	//
 	// 2020-09-24T18:37:51+0800
@@ -154,7 +156,7 @@ type ListDataServiceFoldersResponseBodyFolderPagingResultFolders struct {
 	//
 	// 11
 	FolderId *int64 `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The name of the folder.
+	// The folder name.
 	//
 	// example:
 	//
@@ -168,11 +170,13 @@ type ListDataServiceFoldersResponseBodyFolderPagingResultFolders struct {
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The time when the folder was last modified.
 	//
+	// The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
+	//
 	// example:
 	//
 	// 2020-09-24T18:37:51+0800
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the parent folder. The ID of the root folder in a business process is 0, and the ID of a folder created by a user in a business process is greater than 0.
+	// The ID of the parent folder. The root folder ID under a business process is 0. User-created folder IDs are greater than 0.
 	//
 	// example:
 	//

@@ -16,15 +16,15 @@ type iQueryRecognizeDataByRuleTypeRequest interface {
 }
 
 type QueryRecognizeDataByRuleTypeRequest struct {
-	// The type of a sensitive data identification rule. You can call the [QueryRecognizeRulesType](https://help.aliyun.com/document_detail/2746905.html) operation to obtain the type of the rule.
+	// The recognition rule type. You can call the [QueryRecognizeRulesType](https://help.aliyun.com/document_detail/2746905.html) operation to obtain the rule types.
 	//
-	// 	- 1: regular expression
+	// - 1: regular expression
 	//
-	// 	- 2: built-in rule
+	// - 2: built-in model
 	//
-	// 	- 3: sample library
+	// - 3: sample library
 	//
-	// 	- 4: self-generated data identification model
+	// - 4: auto-generated model
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,9 @@ type QueryRecognizeDataByRuleTypeRequest struct {
 	//
 	// 2
 	RecognizeRulesType *string `json:"RecognizeRulesType,omitempty" xml:"RecognizeRulesType,omitempty"`
-	// The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the DataStudio page, click the logon username in the upper-right corner and click User Info in the Menu section.
+	// The tenant ID. Log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the DataStudio page, click the username in the upper-right corner, and choose Menu > User Info to obtain the tenant ID.
+	//
+	// You can also obtain the tenant ID from Data.TenantId in the response of the GetProject operation.
 	//
 	// This parameter is required.
 	//

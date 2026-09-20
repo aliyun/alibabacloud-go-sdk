@@ -24,7 +24,7 @@ type iSuspendInstanceResponseBody interface {
 }
 
 type SuspendInstanceResponseBody struct {
-	// The data returned.
+	// The result details returned after the SuspendInstance operation is called.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type SuspendInstanceResponseBody struct {
 	//
 	// 0baf87f0159376****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

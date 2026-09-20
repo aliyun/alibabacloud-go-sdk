@@ -14,7 +14,7 @@ type iRegisterLineageRelationRequest interface {
 }
 
 type RegisterLineageRelationRequest struct {
-	// The structure whose lineage you want to register to DataWorks.
+	// The lineage registration structure.
 	//
 	// This parameter is required.
 	LineageRelationRegisterVO *LineageRelationRegisterVO `json:"LineageRelationRegisterVO,omitempty" xml:"LineageRelationRegisterVO,omitempty"`

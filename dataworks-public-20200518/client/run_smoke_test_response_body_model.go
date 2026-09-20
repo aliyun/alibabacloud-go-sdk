@@ -24,7 +24,7 @@ type iRunSmokeTestResponseBody interface {
 }
 
 type RunSmokeTestResponseBody struct {
-	// The workflow ID.
+	// The ID of the workflow.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type RunSmokeTestResponseBody struct {
 	//
 	// E6F0DBDD-5AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

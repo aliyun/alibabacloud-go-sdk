@@ -16,9 +16,9 @@ type iListDataServiceApiTestResponseBody interface {
 }
 
 type ListDataServiceApiTestResponseBody struct {
-	// The list of test records.
+	// The data list.
 	Data []*ListDataServiceApiTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,49 +66,55 @@ func (s *ListDataServiceApiTestResponseBody) Validate() error {
 }
 
 type ListDataServiceApiTestResponseBodyData struct {
-	// The ID of the DataService Studio API on which the test is performed.
+	// The ID of the API to test.
 	//
 	// example:
 	//
 	// 2343
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The time that is consumed to complete the test.
+	// The time consumed by the API request.
 	//
 	// example:
 	//
 	// 10
 	CostTime *int32 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	// The time when the test was initiated.
+	// The time when the task was created.
+	//
+	// The value is a 13-digit number, such as `1651824913000`.
 	//
 	// example:
 	//
 	// 1651824913000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The request parameters configured for the test.
+	// The request parameters of the test API.
 	//
 	// example:
 	//
 	// {"name":"test"}
 	ParamMap *string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
-	// The status code returned for the test. If the test is not complete, this parameter is not returned.
+	// The return code of the test API. This field is empty if the test is not completed.
 	//
 	// example:
 	//
 	// 0
 	RetCode *int64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	// The result returned for the test.
+	// The returned data.
 	//
 	// example:
 	//
 	// {"id":2}
 	RetResult *string `json:"RetResult,omitempty" xml:"RetResult,omitempty"`
-	// The status of the test. Valid values: RUNNING and FINISHED.
+	// Indicates whether the task is completed. Valid values:
+	//
+	// - RUNNING
+	//
+	// - FINISHED
 	//
 	// example:
 	//
 	// FINISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the test.
+	// The test ID.
 	//
 	// example:
 	//

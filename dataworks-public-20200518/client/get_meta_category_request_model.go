@@ -18,19 +18,19 @@ type iGetMetaCategoryRequest interface {
 }
 
 type GetMetaCategoryRequest struct {
-	// The number of the page to return.
+	// The page number. Used for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The category tree ID.
+	// The ID of the tree category.
 	//
 	// example:
 	//

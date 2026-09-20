@@ -16,7 +16,7 @@ type iListDIAlarmRulesResponseBody interface {
 }
 
 type ListDIAlarmRulesResponseBody struct {
-	// The pagination information.
+	// The paginated result of alert rules.
 	DIAlarmRulePaging *ListDIAlarmRulesResponseBodyDIAlarmRulePaging `json:"DIAlarmRulePaging,omitempty" xml:"DIAlarmRulePaging,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListDIAlarmRulesResponseBody) Validate() error {
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePaging struct {
-	// The alert rules.
+	// The list of alert rules.
 	DIJobAlarmRules []*ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules `json:"DIJobAlarmRules,omitempty" xml:"DIJobAlarmRules,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -70,13 +70,13 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePaging struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules struct {
 	//
 	// 41998
 	DIAlarmRuleId *int64 `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
-	// The ID of the task with which the alert rule is associated.
+	// The task ID. This is the task ID associated with the alert rule.
 	//
 	// example:
 	//
 	// 11260
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The description of the alert rule.
+	// The description.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The metric type in the alert rule. Valid values:
+	// The alert metric type. Valid values:
 	//
-	// - Heartbeat
+	// - Heartbeat: task status alert.
 	//
-	// - FailoverCount
+	// - FailoverCount: failover count alert.
 	//
-	// - Delay
+	// - Delay: task delay alert.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules struct {
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	// The alert notification settings.
 	NotificationSettings *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettings `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty" type:"Struct"`
-	// The conditions that are used to trigger the alert rule.
+	// The list of alert trigger conditions. Multiple conditions are supported.
 	TriggerConditions []*ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditions `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
 }
 
@@ -274,15 +274,15 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules) Validate(
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettings struct {
-	// The duration of the alert suppression interval. Unit: minutes.
+	// The alert suppression interval. Unit: minutes.
 	//
 	// example:
 	//
 	// 5
 	InhibitionInterval *int32 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	// The alert notification methods.
+	// The alert notification channels. Multiple values are supported.
 	NotificationChannels []*ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// The settings of alert notification recipients.
+	// The alert notification receivers. Multiple values are supported.
 	NotificationReceivers []*ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -344,7 +344,7 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificatio
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationChannels struct {
-	// The alert notification methods.
+	// The list of channels.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
@@ -389,17 +389,17 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificatio
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationReceivers struct {
-	// The recipient type. Valid values: AliyunUid and DingToken.
+	// The receiver type.
 	//
-	// - If the alert notification method is Mail, Phone, or Sms, the value of this parameter is **AliyunUid**, which indicates the Alibaba Cloud account ID.
+	// - If the alert notification channel is email, phone call, or text message, the receiver type is Alibaba Cloud user ID (**AliyunUid**).
 	//
-	// - If the alert notification method is Ding, the value of this parameter is **DingToken**, which indicates the DingTalk chatbot token.
+	// - If the alert notification channel is DingTalk, the receiver type is DingTalk token (**DingToken**).
 	//
 	// example:
 	//
 	// DingToken
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The recipients.
+	// The list of receiver values.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -434,7 +434,7 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificatio
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditions struct {
-	// The time interval for alert calculation. Unit: minutes.
+	// The time window for alert calculation. Unit: minutes.
 	//
 	// example:
 	//
@@ -452,11 +452,11 @@ type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditio
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The alert threshold.
 	//
-	// - If the alert rule is for task status, no threshold is used.
+	// - Task status alert: no threshold.
 	//
-	// - If the alert rule is for failovers, the threshold is the number of failovers.
+	// - Failover count alert: the threshold is the number of failovers.
 	//
-	// - If the alert rule is for latency, the threshold is the latency duration, in seconds.
+	// - Task delay alert: the threshold is the delay duration. Unit: seconds.
 	//
 	// example:
 	//

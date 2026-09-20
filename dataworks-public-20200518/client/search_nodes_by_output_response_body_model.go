@@ -24,7 +24,7 @@ type iSearchNodesByOutputResponseBody interface {
 }
 
 type SearchNodesByOutputResponseBody struct {
-	// The map returned. The key in the map indicates an output name, and the value in the map indicates the information about the node that generates the output.
+	// The returned data, which is a map. The key is each output that you specify, and the value is the node information that corresponds to the output.
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code.
 	//
@@ -44,13 +44,13 @@ type SearchNodesByOutputResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// SDFSDFSDF-asdfDFSDF-SDFSDf-SDfSFD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

@@ -130,31 +130,35 @@ func (s *GetMetaTableIntroWikiResponseBody) Validate() error {
 }
 
 type GetMetaTableIntroWikiResponseBodyData struct {
-	// The description of the metatable.
+	// The description of the table.
 	//
 	// example:
 	//
 	// # Business requirements\\n\\n&lt;a name=&quot;xiw5n&quot;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the metatable was created.
+	// The time when the table was created.
+	//
+	// The value is a 13-digit number, such as `1584444247000`.
 	//
 	// example:
 	//
 	// 1584444247000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator of the metatable.
+	// The creator of the table.
 	//
 	// example:
 	//
 	// abc
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The name of the user who creates the metatable.
+	// The name of the table creator.
 	//
 	// example:
 	//
 	// abc
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The time when the metatable was last modified.
+	// The time when the table was modified.
+	//
+	// The value is a 13-digit number, such as `1584444247000`.
 	//
 	// example:
 	//

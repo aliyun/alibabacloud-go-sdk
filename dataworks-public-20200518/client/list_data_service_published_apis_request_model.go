@@ -26,37 +26,37 @@ type iListDataServicePublishedApisRequest interface {
 }
 
 type ListDataServicePublishedApisRequest struct {
-	// The keyword in API names. The keyword is used to search for the APIs whose names contain the keyword.
+	// The keyword used to filter APIs by name. APIs whose names contain this keyword are returned.
 	//
 	// example:
 	//
 	// My API name
 	ApiNameKeyword *string `json:"ApiNameKeyword,omitempty" xml:"ApiNameKeyword,omitempty"`
-	// The keyword in API paths. The keyword is used to search for the APIs whose paths contain the keyword.
+	// The keyword used to filter APIs by path. APIs whose paths contain this keyword are returned.
 	//
 	// example:
 	//
 	// /test/
 	ApiPathKeyword *string `json:"ApiPathKeyword,omitempty" xml:"ApiPathKeyword,omitempty"`
-	// The ID of the Alibaba Cloud account used by the creator of the APIs. The ID is used to search for the APIs created by the creator.
+	// The Alibaba Cloud ID of the API creator. Only APIs created by this user are returned.
 	//
 	// example:
 	//
 	// 12345
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default is 10, and the maximum is 100.
+	// The number of entries per page. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ListDataServicePublishedApisRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the DataStudio page, click the logon username in the upper-right corner and click User Info in the Menu section.
+	// The tenant ID. To obtain the tenant ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the DataStudio page, click your username in the upper-right corner, and select Menu > User Info.
 	//
 	// example:
 	//

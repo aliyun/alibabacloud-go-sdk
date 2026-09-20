@@ -24,7 +24,7 @@ type SetEntityTagsRequest struct {
 	//
 	// maxcompute-table.projectA.tableA
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	// The tags.
+	// The list of labels.
 	Tags []*UserEntityTag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

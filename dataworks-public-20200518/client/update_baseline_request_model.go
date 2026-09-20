@@ -38,21 +38,25 @@ type iUpdateBaselineRequest interface {
 }
 
 type UpdateBaselineRequest struct {
-	// Specifies whether to enable the alerting feature. Valid values: true and false.
+	// Specifies whether alerting is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	AlertEnabled *bool `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
-	// The alert margin threshold of the baseline. Unit: minutes.
+	// The baseline alert margin. Unit: minutes.
 	//
 	// example:
 	//
 	// 30
 	AlertMarginThreshold *int32 `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
-	// The alert settings of the baseline.
+	// The baseline alert configurations.
 	AlertSettings []*UpdateBaselineRequestAlertSettings `json:"AlertSettings,omitempty" xml:"AlertSettings,omitempty" type:"Repeated"`
-	// The baseline ID. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+	// The ID of the baseline. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -60,45 +64,53 @@ type UpdateBaselineRequest struct {
 	//
 	// 1000010800007
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The name of the baseline.
+	// The baseline name.
 	//
 	// example:
 	//
 	// BaselineName
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The type of the baseline. Valid values: DAILY and HOURLY.
+	// The baseline type. Valid values:
+	//
+	// - DAILY: daily baseline.
+	//
+	// - HOURLY: hourly baseline.
 	//
 	// example:
 	//
 	// DAILY
 	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	// Specifies whether to enable the baseline. Valid values: true and false.
+	// Specifies whether the baseline is enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ancestor nodes of nodes in the baseline. Separate the ancestor nodes with commas (,). If a large number of ancestor nodes exist, we recommend that you create a zero load node and configure the zero load node as the descendant node of nodes in the baseline to facilitate node management.
+	// The list of upstream node IDs for the baseline, separated by commas. If there are many nodes, we recommend that you add a virtual node downstream for easier management.
 	//
 	// example:
 	//
 	// 1,2,3
 	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
-	// The settings of the committed completion time of the baseline.
+	// The baseline committed time configurations.
 	OvertimeSettings []*UpdateBaselineRequestOvertimeSettings `json:"OvertimeSettings,omitempty" xml:"OvertimeSettings,omitempty" type:"Repeated"`
-	// The ID of the Alibaba Cloud account used by the baseline owner.
+	// The Alibaba Cloud UID of the baseline owner.
 	//
 	// example:
 	//
 	// 3726346****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the baseline. Valid values: {1,3,5,7,8}.
+	// The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
 	//
 	// example:
 	//
 	// 7
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The workspace ID. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+	// The project ID. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +118,7 @@ type UpdateBaselineRequest struct {
 	//
 	// 2043
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the node that you want to disassociate from the baseline. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+	// The IDs of nodes to remove from the baseline. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -262,61 +274,87 @@ func (s *UpdateBaselineRequest) Validate() error {
 }
 
 type UpdateBaselineRequestAlertSettings struct {
-	// The interval at which an event alert notification is sent. Unit: minutes. Minimum value: 5. Maximum value: 1,440.
+	// The event alerting interval. Unit: minutes. Minimum value: 5. Maximum value: 1440.
 	//
 	// example:
 	//
-	// 1800
+	// 30
 	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
-	// The maximum number of times an event alert notification is sent. Maximum value: 24.
+	// The maximum number of event alerting notifications. Maximum value: 288.
 	//
 	// example:
 	//
 	// 1
 	AlertMaximum *int32 `json:"AlertMaximum,omitempty" xml:"AlertMaximum,omitempty"`
-	// The alert notification methods. Valid values: MAIL, SMS, PHONE, DINGROBOTS, and Webhooks. The value MAIL indicates that alert notifications are sent by email. The value SMS indicates that alert notifications are sent by text message. The value PHONE indicates that alert notifications are sent by phone call. You can use this notification method only in DataWorks Professional Edition or a more advanced edition. The value DINGROBOTS indicates that alert notifications are sent by using a DingTalk chatbot. You can use this notification method only if the RobotUrls parameter is configured. The value Webhooks indicates that alert notifications are sent by WeCom or Lark. You can use this notification method only if the Webhooks parameter is configured.
+	// Valid values:
+	//
+	// - MAIL: email.
+	//
+	// - SMS: text message.
+	//
+	// - PHONE: phone call. Only DataWorks Professional Edition and higher support phone call alerts.
+	//
+	// - DINGROBOTS: DingTalk chatbot. This alert method takes effect only after the RobotUrls parameter is configured.
+	//
+	// - Webhooks: WeCom or Lark chatbot. This alert method takes effect only after the Webhooks parameter is configured.
 	AlertMethods []*string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
-	// The details of the alert recipient. If you set AlertRecipientType to OWNER, leave this parameter empty. If you set AlertRecipientType to SHIFT_SCHEDULE, set this parameter to the name of the shift schedule. If you set AlertRecipientType to OTHER, set this parameter to the employee IDs of specified personnel.
+	// The alert recipient details. For specified users: a list of employee IDs. For on-duty schedule: the schedule name. For owner: leave empty.
 	//
 	// example:
 	//
 	// 123123
 	AlertRecipient *string `json:"AlertRecipient,omitempty" xml:"AlertRecipient,omitempty"`
-	// The type of the alert recipient. Valid values: OWNER, OTHER, and SHIFT_SCHEDULE. The value OWNER indicates the node owner. The value OTHER indicates specified personnel. The value SHIFT_SCHEDULE indicates personnel in a shift schedule.
+	// The alert recipient type. Valid values:
+	//
+	// - OWNER: node owner.
+	//
+	// - OTHER: specified users.
+	//
+	// - SHIFT_SCHEDULE: on-duty schedule.
 	//
 	// example:
 	//
 	// OWNER
 	AlertRecipientType *string `json:"AlertRecipientType,omitempty" xml:"AlertRecipientType,omitempty"`
-	// The type of the alert. Valid values: BASELINE and TOPIC. The value BASELINE indicates a baseline alert. The value TOPIC indicates an event alert.
+	// The alert type. Valid values:
+	//
+	// - BASELINE: baseline alerting.
+	//
+	// - TOPIC: event alerting.
 	//
 	// example:
 	//
 	// BASELINE
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// Specifies whether to enable the baseline alerting feature. This feature is specific to baselines. Valid values: true and false.
+	// Specifies whether baseline alerting is enabled. This is a baseline-specific configuration. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	BaselineAlertEnabled *bool `json:"BaselineAlertEnabled,omitempty" xml:"BaselineAlertEnabled,omitempty"`
-	// The DingTalk chatbots.
+	// The list of DingTalk chatbots.
 	DingRobots []*UpdateBaselineRequestAlertSettingsDingRobots `json:"DingRobots,omitempty" xml:"DingRobots,omitempty" type:"Repeated"`
-	// The end time of silence.
+	// The silence end time.
 	//
 	// example:
 	//
-	// 00:00:00
+	// 00:00
 	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
-	// The start time of silence.
+	// The silence start time.
 	//
 	// example:
 	//
-	// 00:00:00
+	// 00:00
 	SilenceStartTime *string `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
-	// The types of event alerts, which are event-specific configurations.
+	// The threshold configuration for event slowdown alerts.
+	TopicSlowConfig *UpdateBaselineRequestAlertSettingsTopicSlowConfig `json:"TopicSlowConfig,omitempty" xml:"TopicSlowConfig,omitempty" type:"Struct"`
+	// The event alerting type. This is an event-specific configuration.
 	TopicTypes []*string `json:"TopicTypes,omitempty" xml:"TopicTypes,omitempty" type:"Repeated"`
-	// The webhook URLs.
+	// The webhook list.
 	Webhooks []*string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
 }
 
@@ -366,6 +404,10 @@ func (s *UpdateBaselineRequestAlertSettings) GetSilenceEndTime() *string {
 
 func (s *UpdateBaselineRequestAlertSettings) GetSilenceStartTime() *string {
 	return s.SilenceStartTime
+}
+
+func (s *UpdateBaselineRequestAlertSettings) GetTopicSlowConfig() *UpdateBaselineRequestAlertSettingsTopicSlowConfig {
+	return s.TopicSlowConfig
 }
 
 func (s *UpdateBaselineRequestAlertSettings) GetTopicTypes() []*string {
@@ -426,6 +468,11 @@ func (s *UpdateBaselineRequestAlertSettings) SetSilenceStartTime(v string) *Upda
 	return s
 }
 
+func (s *UpdateBaselineRequestAlertSettings) SetTopicSlowConfig(v *UpdateBaselineRequestAlertSettingsTopicSlowConfig) *UpdateBaselineRequestAlertSettings {
+	s.TopicSlowConfig = v
+	return s
+}
+
 func (s *UpdateBaselineRequestAlertSettings) SetTopicTypes(v []*string) *UpdateBaselineRequestAlertSettings {
 	s.TopicTypes = v
 	return s
@@ -446,17 +493,26 @@ func (s *UpdateBaselineRequestAlertSettings) Validate() error {
 			}
 		}
 	}
+	if s.TopicSlowConfig != nil {
+		if err := s.TopicSlowConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type UpdateBaselineRequestAlertSettingsDingRobots struct {
-	// Specifies whether to remind all members by using the at sign (@). Valid values: true and false.
+	// Specifies whether to @all members. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
 	//
 	// example:
 	//
 	// false
 	AtAll *bool `json:"AtAll,omitempty" xml:"AtAll,omitempty"`
-	// The webhook URL of the DingTalk chatbot.
+	// The webhook URL of the DingTalk group chatbot.
 	//
 	// example:
 	//
@@ -494,14 +550,59 @@ func (s *UpdateBaselineRequestAlertSettingsDingRobots) Validate() error {
 	return dara.Validate(s)
 }
 
+type UpdateBaselineRequestAlertSettingsTopicSlowConfig struct {
+	// The minimum slowdown threshold. Unit: seconds. Valid values: 300 to 18000.
+	//
+	// example:
+	//
+	// 3600
+	MinOver *int32 `json:"MinOver,omitempty" xml:"MinOver,omitempty"`
+	// The ratio used to calculate the slowdown threshold based on the historical average execution duration of the node. Valid values: 0.1 to 2.
+	//
+	// example:
+	//
+	// 0.2
+	OverFactor *float64 `json:"OverFactor,omitempty" xml:"OverFactor,omitempty"`
+}
+
+func (s UpdateBaselineRequestAlertSettingsTopicSlowConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateBaselineRequestAlertSettingsTopicSlowConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBaselineRequestAlertSettingsTopicSlowConfig) GetMinOver() *int32 {
+	return s.MinOver
+}
+
+func (s *UpdateBaselineRequestAlertSettingsTopicSlowConfig) GetOverFactor() *float64 {
+	return s.OverFactor
+}
+
+func (s *UpdateBaselineRequestAlertSettingsTopicSlowConfig) SetMinOver(v int32) *UpdateBaselineRequestAlertSettingsTopicSlowConfig {
+	s.MinOver = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettingsTopicSlowConfig) SetOverFactor(v float64) *UpdateBaselineRequestAlertSettingsTopicSlowConfig {
+	s.OverFactor = &v
+	return s
+}
+
+func (s *UpdateBaselineRequestAlertSettingsTopicSlowConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateBaselineRequestOvertimeSettings struct {
-	// The cycle that corresponds to the committed completion time. For a day-level baseline, set this parameter to 1. For an hour-level baseline, set this parameter to a value that is no more than 24.
+	// The epoch corresponding to the committed time. For daily baselines, the value is 1. For hourly baselines, you can configure up to 24 epochs.
 	//
 	// example:
 	//
 	// 1
 	Cycle *int32 `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The committed completion time in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	// The committed time in hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
 	//
 	// example:
 	//

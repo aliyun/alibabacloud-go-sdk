@@ -16,7 +16,7 @@ type iGetBaselineRequest interface {
 }
 
 type GetBaselineRequest struct {
-	// The baseline ID. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+	// The ID of the baseline. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetBaselineRequest struct {
 	//
 	// 123456
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The ID of the workspace to which the baseline belongs. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+	// The ID of the workspace monitored by the baseline. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//

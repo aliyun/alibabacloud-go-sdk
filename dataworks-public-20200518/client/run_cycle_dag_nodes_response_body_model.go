@@ -24,7 +24,7 @@ type iRunCycleDagNodesResponseBody interface {
 }
 
 type RunCycleDagNodesResponseBody struct {
-	// The IDs of the nodes in the workflow. You can query instances based on the IDs.
+	// The DagId returned by the data backfill instance. You can use this DagId to query the corresponding instances.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -44,13 +44,13 @@ type RunCycleDagNodesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the request ID to query logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// >E6F0DBDD-5AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

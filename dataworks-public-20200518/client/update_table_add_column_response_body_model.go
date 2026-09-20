@@ -22,11 +22,13 @@ type UpdateTableAddColumnResponseBody struct {
 	//
 	// abc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the request task. After a request task is submitted, it is divided into multiple subtasks that are run in sequence. After the current subtask is complete, the next subtask starts to run. After all subtasks are complete, the request task is complete. If a request task is aborted due to one of the following issues, address the issue based on the error code and initiate the request task again:
+	// The information about the request task.
 	//
-	// 	- The request task fails to be submitted.
+	// After the request task is submitted, it is divided into multiple subtasks that are executed in sequence. The next subtask is executed only after the current subtask succeeds. The request task ends when all subtasks are completed. The request task terminates in the following situations. You must resolve the issue based on the error code and resubmit the request task:
 	//
-	// 	- After the request task is submitted, a subtask fails to run.
+	// - The request task fails to be submitted.
+	//
+	// - After the request task is submitted, any subtask fails.
 	TaskInfo *UpdateTableAddColumnResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
@@ -66,17 +68,17 @@ func (s *UpdateTableAddColumnResponseBody) Validate() error {
 }
 
 type UpdateTableAddColumnResponseBodyTaskInfo struct {
-	// The details about the status of the current subtask.
+	// The detailed execution status of the current subtask:
 	//
-	// 	- If the current subtask is successful, success is returned.
+	// - If the execution succeeds, "success" is returned.
 	//
-	// 	- If the current subtask fails, the error details are displayed.
+	// - If the execution fails, the corresponding error details are returned.
 	//
 	// example:
 	//
 	// success
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the subtask that you want to run. If this parameter is left empty, all subtasks are complete.
+	// The ID of the subtask to be executed next. If this field is empty, all subtasks have been completed.
 	//
 	// example:
 	//
@@ -84,11 +86,11 @@ type UpdateTableAddColumnResponseBodyTaskInfo struct {
 	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
 	// The status of the current subtask. Valid values:
 	//
-	// 	- operating: The subtask is running.
+	// - operating: The subtask is being executed.
 	//
-	// 	- success: The subtask succeeds.
+	// - success: The subtask is executed.
 	//
-	// 	- failure: The subtask fails to run. For more information about the error details, see the Content parameter.
+	// - failure: The subtask failed to be executed. For detailed error information, see the Content parameter.
 	//
 	// example:
 	//

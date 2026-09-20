@@ -20,7 +20,7 @@ type iListResourceGroupsResponseBody interface {
 }
 
 type ListResourceGroupsResponseBody struct {
-	// The resource groups.
+	// The list of resource groups.
 	Data []*ListResourceGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -102,37 +102,39 @@ func (s *ListResourceGroupsResponseBody) Validate() error {
 type ListResourceGroupsResponseBodyData struct {
 	// The category of the resource group. Valid values:
 	//
-	// 	- default: shared resource group
+	// - default: public resource group.
 	//
-	// 	- single: exclusive resource group
+	// - single: dedicated resource group.
 	//
 	// example:
 	//
 	// default
 	BizExtKey *string `json:"BizExtKey,omitempty" xml:"BizExtKey,omitempty"`
-	// The name of the cluster. This parameter is returned only if the type of the resource group is MaxCompute or PAI.
+	// The name of the cluster. This parameter is valid only for MaxCompute and PAI resource group types.
 	//
 	// example:
 	//
 	// AY18G
 	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	// The time when the cluster was created. Example: Jul 9, 2018 2:43:37 PM.
+	// The time when the cluster was created. The format is Jul 9, 2018 2:43:37 PM.
 	//
 	// example:
 	//
 	// Jul 9, 2018 2:43:37 PM
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the UID of an Alibaba Cloud account is used for access. Valid values:
+	// Indicates whether Kp (key person) access is used. Valid values:
 	//
-	// 	- true: The MaxCompute compute engine uses the UID of the Alibaba Cloud account as the display name of the account for access.
+	// - true: The MaxCompute engine uses the Alibaba Cloud account UID as the display name of the access account.
 	//
-	// 	- false: The MaxCompute compute engine uses the name of the Alibaba Cloud account as the display name of the account for access. The remaining values are useless. This parameter is returned only if the type of the resource group is MaxCompute.
+	// - false: The MaxCompute engine uses the Alibaba Cloud account name as the display name of the access account.
+	//
+	// This parameter is meaningless for other types and is valid only for the MaxCompute engine.
 	//
 	// example:
 	//
 	// false
 	EnableKp *bool `json:"EnableKp,omitempty" xml:"EnableKp,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -146,21 +148,21 @@ type ListResourceGroupsResponseBodyData struct {
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// Indicates whether the resource group is the default resource group. Valid values:
 	//
-	// 	- true: The resource group is the default resource group.
+	// - true: The resource group is the default resource group.
 	//
-	// 	- false: The resource group is not the default resource group.
+	// - false: The resource group is not the default resource group.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The mode of the resource group. Valid values:
+	// The type of the resource group. Valid values:
 	//
-	// 	- ISOLATE: exclusive resource group that adopts the subscription billing method
+	// - ISOLATE: an upfront dedicated resource group.
 	//
-	// 	- SHARE: shared resource group that adopts the pay-as-you-go billing method
+	// - SHARE: a pay-as-you-go public resource group.
 	//
-	// 	- DEVELOP: resource group for developers
+	// - DEVELOP: a developer edition.
 	//
 	// example:
 	//
@@ -174,35 +176,35 @@ type ListResourceGroupsResponseBodyData struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- 0: DataWorks
+	// - 0: DataWorks
 	//
-	// 	- 2: MaxCompute
+	// - 2: MaxCompute
 	//
-	// 	- 3: PAI
+	// - 3: PAI
 	//
-	// 	- 4: Data Integration
+	// - 4: data integration
 	//
-	// 	- 7: scheduling
+	// - 7: scheduling
 	//
-	// 	- 9: DataService Studio
+	// - 9: dataService
 	//
 	// example:
 	//
 	// 3
 	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	// The ID of your Alibaba Cloud resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzbn7pti3zfa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The sequence number of the resource group. Created resource groups are sorted in ascending order by sequence number.
+	// The sequence field. Used to sort created resource groups in ascending order by creation sequence number.
 	//
 	// example:
 	//
 	// 300
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The details of the resource group. The content enclosed in braces {} is the details of the resource group.
+	// The detailed information of the resource group. The content displayed in {} is the detailed information of the resource group.
 	//
 	// example:
 	//
@@ -210,31 +212,31 @@ type ListResourceGroupsResponseBodyData struct {
 	Specs map[string]interface{} `json:"Specs,omitempty" xml:"Specs,omitempty"`
 	// The status of the resource group. Valid values:
 	//
-	// 	- 0: NORMAL, which indicates that the resource group is running or in service.
+	// - NORMAL(0): The resource group is running or in service.
 	//
-	// 	- 1: STOP, which indicates that the resource group has expired and is frozen.
+	// - STOP(1): The resource group has expired and is frozen.
 	//
-	// 	- 2: DELETED, which indicates that the resource group is released or destroyed.
+	// - DELETED(2): The resource group has been released or destroyed.
 	//
-	// 	- 3: CREATING, which indicates that the resource group is being created or started.
+	// - CREATING(3): The resource group is being created or started.
 	//
-	// 	- 4: CREATE_FAILED, which indicates that the resource group fails to be created or started.
+	// - CREATE_FAILED(4): The resource group failed to be created or started.
 	//
-	// 	- 5: UPDATING, which indicates that the resource group is being scaled out or upgraded.
+	// - UPDATING(5): The resource group is being scaled out or upgraded.
 	//
-	// 	- 6: UPDATE_FAILED, which indicates that the resource group fails to be scaled out or upgraded.
+	// - UPDATE_FAILED(6): The resource group failed to be scaled out or upgraded.
 	//
-	// 	- 7: DELETING, which indicates that the resource group is being released or destroyed.
+	// - DELETING(7): The resource group is being released or destroyed.
 	//
-	// 	- 8: DELETE_FAILED, which indicates that the resource group fails to be released or destroyed.
+	// - DELETE_FAILED(8): The resource group failed to be released or destroyed.
 	//
-	// 	- 9: TIMEOUT, which indicates that the operation performed on the resource group times out. All operations may time out. This value is temporarily available only for DataService Studio.
+	// - TIMEOUT(9): The operation performed on the resource group timed out. All change operations may time out. This value is temporarily available only for DataService.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListResourceGroupsResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
@@ -243,6 +245,8 @@ type ListResourceGroupsResponseBodyData struct {
 	// 1234567
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The time when the resource group was last updated.
+	//
+	// The format is `MMM d, yyyy h:mm:ss a`, for example, `Jul 9, 2018 2:43:37 PM`.
 	//
 	// example:
 	//

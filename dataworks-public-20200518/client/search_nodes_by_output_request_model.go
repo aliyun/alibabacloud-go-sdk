@@ -16,7 +16,7 @@ type iSearchNodesByOutputRequest interface {
 }
 
 type SearchNodesByOutputRequest struct {
-	// The output names of the node. If you specify multiple output names, separate them with commas (,).
+	// The output strings of the node. You can specify multiple values. Separate multiple values with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,11 @@ type SearchNodesByOutputRequest struct {
 	//
 	// aaaaa.1231412_out,bbbb.12313123_out
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// The environment of Operation Center. Valid values: PROD and DEV.
+	// The environment identifier in Operation Center. Valid values:
+	//
+	// - PROD: production environment.
+	//
+	// - DEV: development environment.
 	//
 	// This parameter is required.
 	//

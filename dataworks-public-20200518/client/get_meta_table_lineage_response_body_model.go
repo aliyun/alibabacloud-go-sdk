@@ -130,15 +130,15 @@ func (s *GetMetaTableLineageResponseBody) Validate() error {
 }
 
 type GetMetaTableLineageResponseBodyData struct {
-	// The information about the table.
+	// The table information.
 	DataEntityList []*GetMetaTableLineageResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// Indicates whether the next page exists.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// The logic of paging. If the value true is returned for the HasNext parameter and a value is returned for the NextPrimaryKey parameter in the response of the previous request, you must use the value of the NextPrimaryKey parameter for the next request.
+	// The pagination key. Set this parameter based on the HasNext and key values returned in the response.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ func (s *GetMetaTableLineageResponseBodyData) Validate() error {
 }
 
 type GetMetaTableLineageResponseBodyDataDataEntityList struct {
-	// The time when the table was created.
+	// The creation time.
 	//
 	// example:
 	//

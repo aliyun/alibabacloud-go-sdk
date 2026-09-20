@@ -22,31 +22,35 @@ type iUpdateTableModelInfoRequest interface {
 }
 
 type UpdateTableModelInfoRequest struct {
-	// The ID of the first-level table folder.
+	// The first-level topic ID.
 	//
 	// example:
 	//
 	// 101
 	FirstLevelThemeId *int64 `json:"FirstLevelThemeId,omitempty" xml:"FirstLevelThemeId,omitempty"`
-	// The table level ID.
+	// The level ID.
 	//
 	// example:
 	//
 	// 101
 	LevelId *int64 `json:"LevelId,omitempty" xml:"LevelId,omitempty"`
-	// The type of the table level. Valid values: 1 and 2. The value 1 indicates the logical level. The value 2 indicates the physical level.
+	// The level type. Valid values:
+	//
+	// - 1: logical level.
+	//
+	// - 2: physical level.
 	//
 	// example:
 	//
 	// 1
 	LevelType *int32 `json:"LevelType,omitempty" xml:"LevelType,omitempty"`
-	// The ID of the second-level table folder.
+	// The second-level topic ID.
 	//
 	// example:
 	//
 	// 101
 	SecondLevelThemeId *int64 `json:"SecondLevelThemeId,omitempty" xml:"SecondLevelThemeId,omitempty"`
-	// The GUID of the table. Specify the GUID in the odps.{projectName}.{tableName} format.
+	// The unique identifier of the table, in the format of odps.{projectName}.{tableName}.
 	//
 	// This parameter is required.
 	//

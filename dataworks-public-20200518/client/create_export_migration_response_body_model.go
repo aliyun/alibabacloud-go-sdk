@@ -18,23 +18,23 @@ type iCreateExportMigrationResponseBody interface {
 }
 
 type CreateExportMigrationResponseBody struct {
-	// The export task ID.
+	// The ID of the export task.
 	//
 	// example:
 	//
 	// 1234
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 34267E2E-0335-1A60-A1F0-ADA530890CBA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: The call was successful.
 	//
-	// 	- false
+	// - false: The call failed. You can locate the issue based on the request ID.
 	//
 	// example:
 	//

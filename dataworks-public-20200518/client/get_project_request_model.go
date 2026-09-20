@@ -16,13 +16,15 @@ type iGetProjectRequest interface {
 }
 
 type GetProjectRequest struct {
-	// The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to query the ID.
+	// The DataWorks workspace ID.
+	//
+	// You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to obtain the workspace ID.
 	//
 	// example:
 	//
 	// 466230
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to query the name.
+	// The name of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to obtain the workspace name.
 	//
 	// example:
 	//

@@ -26,31 +26,31 @@ type iGetNodeResponseBody interface {
 type GetNodeResponseBody struct {
 	// The details of the node.
 	Data *GetNodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the node. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the node ID.
+	// The error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The connection string.
+	// The error message.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The operation that you want to perform. Set the value to **GetNode**.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Other parameters.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// E6F0DBDD-5AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the workflow.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *GetNodeResponseBody) Validate() error {
 }
 
 type GetNodeResponseBodyData struct {
-	// The description of the node.
+	// The baseline ID. The baseline ID configured for the node as a leaf node is returned. If no baseline is configured, a workspace default value is returned.
 	//
 	// example:
 	//
 	// 123456
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The operation that you want to perform. Set the value to **GetNode**.
+	// The ID of the workflow.
 	//
 	// example:
 	//
 	// 123
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
+	// The connection string.
 	//
 	// example:
 	//
@@ -150,11 +150,13 @@ type GetNodeResponseBodyData struct {
 	Connection *string `json:"Connection,omitempty" xml:"Connection,omitempty"`
 	// The creation time.
 	//
+	// The value is a 13-digit number, such as `1727280000000`.
+	//
 	// example:
 	//
 	// 1727280000000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
+	// The CRON expression.
 	//
 	// example:
 	//
@@ -162,45 +164,43 @@ type GetNodeResponseBodyData struct {
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
 	// The deployment date.
 	//
+	// The value is a 13-digit number, such as `1727280000000`.
+	//
 	// example:
 	//
 	// 1727280000000
 	DeployDate *int64 `json:"DeployDate,omitempty" xml:"DeployDate,omitempty"`
-	// The name of the resource group.
+	// The description of the node.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the node. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the node ID.
+	// The DQC partitioning rule string.
 	//
 	// example:
 	//
 	// [{"projectName":"test_0923001","tableName":"test_table_001","partition":"ds\\u003d$[yyyymmdd]"},{"projectName":"test_0923001","tableName":"test_table_002","partition":"NOTAPARTITIONTABLE"}]
 	DqcDescription *string `json:"DqcDescription,omitempty" xml:"DqcDescription,omitempty"`
-	// The error message returned.
+	// The DQC type. A value of 0 indicates that no DQC rule is associated. A value of 1 indicates that a DQC rule is associated.
 	//
 	// example:
 	//
 	// 1
 	DqcType *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
-	// The file ID.
-	//
-	// \\*\\*
-	//
-	// **Warning*	- The field is deprecated.
+	// The file ID. <warning>This field is deprecated.</warning>
 	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The file type. Different file types have different codes. For more information, see [DataWorks node collection](https://help.aliyun.com/document_detail/600169.html).
+	// The file type. Different file types have different codes. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
 	// 10
 	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The version of the file.
+	// The file version.
 	//
 	// example:
 	//
@@ -208,79 +208,73 @@ type GetNodeResponseBodyData struct {
 	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
 	// The modification time.
 	//
+	// The value is a 13-digit number, such as `1727280000000`.
+	//
 	// example:
 	//
 	// 1727280000000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The HTTP status code returned.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The scheduling type of the node. Valid values:
-	//
-	// - NORMAL: The node is an auto triggered node.
-	//
-	// - MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
-	//
-	// - PAUSE: The node is a paused node.
-	//
-	// - SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
+	// The name of the node.
 	//
 	// example:
 	//
-	// Sql node
+	// sql_node
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the node.
+	// The ID of the node owner.
 	//
 	// example:
 	//
 	// 17366294****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The CRON expression returned.
+	// The additional parameters.
 	//
 	// example:
 	//
 	// a=b
 	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
-	// The HTTP status code returned.
+	// The priority of the node. Valid values: 1, 3, 5, 7, and 8.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the owner of the node.
+	// The type of the node.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	ProgramType *string `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	// Indicates whether the node can be rerun.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// 1234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Indicates whether the node is associated with Data Quality. Valid values: 0 and 1. A value of 0 indicates that the node is associated with Data Quality. A value of 1 indicates that the node is not associated with Data Quality.
+	// The ID of the associated workflow.
 	//
 	// example:
 	//
 	// 123
 	RelatedFlowId *int64 `json:"RelatedFlowId,omitempty" xml:"RelatedFlowId,omitempty"`
-	// The ID of the workflow to which the node belongs.
+	// The interval at which the node is rescheduled after a failure.
 	//
 	// example:
 	//
 	// 60
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
-	// Rerun mode. 0 indicates that you can rerun only if you fail, 1 indicates that you can rerun in all cases, and 2 indicates that you cannot rerun in all cases.
+	// The rerun mode. A value of 0 indicates that the node can be rerun only upon failure. A value of 1 indicates that the node can be rerun in all cases. A value of 2 indicates that the node cannot be rerun in any case.
 	//
 	// example:
 	//
 	// 1
 	RepeatMode *int32 `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	// The type of the node.
+	// Indicates whether the node can be rerun.
 	//
 	// example:
 	//
@@ -292,13 +286,21 @@ type GetNodeResponseBodyData struct {
 	//
 	// group_123
 	ResGroupIdentifier *string `json:"ResGroupIdentifier,omitempty" xml:"ResGroupIdentifier,omitempty"`
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	// The name of the resource group.
 	//
 	// example:
 	//
-	// Default resource group
+	// Default Resource Group
 	ResGroupName *string `json:"ResGroupName,omitempty" xml:"ResGroupName,omitempty"`
-	// The ID of the workspace.
+	// The scheduling type. Valid values:
+	//
+	// - NORMAL: normal scheduling node.
+	//
+	// - MANUAL: manual node that is not scheduled on a regular basis.
+	//
+	// - PAUSE: paused node.
+	//
+	// - SKIP: dry-run node that is scheduled on a regular basis but is directly set to successful when scheduling starts.
 	//
 	// example:
 	//

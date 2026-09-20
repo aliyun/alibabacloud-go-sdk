@@ -18,7 +18,7 @@ type iGetBaselineKeyPathRequest interface {
 }
 
 type GetBaselineKeyPathRequest struct {
-	// The name of the event.
+	// The ID of the baseline.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetBaselineKeyPathRequest struct {
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The ID of the instance.
+	// The business date in the yyyy-MM-dd\\"T\\"HH:mm:ssZ UTC format.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetBaselineKeyPathRequest struct {
 	//
 	// 2020-07-07T00:00:00+0800
 	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The ID of the event.
+	// The cycle number of the baseline instance. The value is 1 for a daily baseline. Valid values for an hourly baseline: [1,24\\].
 	//
 	// This parameter is required.
 	//

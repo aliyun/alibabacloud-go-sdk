@@ -24,6 +24,8 @@ type iCreateDagTestRequest interface {
 type CreateDagTestRequest struct {
 	// The business date.
 	//
+	// The format is `yyyy-MM-dd HH:mm:ss`. Example: `2020-05-26 00:00:00`.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -48,7 +48,7 @@ type CreateDagTestResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

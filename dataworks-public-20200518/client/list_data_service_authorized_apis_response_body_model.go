@@ -24,7 +24,7 @@ type iListDataServiceAuthorizedApisResponseBody interface {
 }
 
 type ListDataServiceAuthorizedApisResponseBody struct {
-	// The information about the APIs that you are authorized to access.
+	// The information about authorized APIs.
 	Data *ListDataServiceAuthorizedApisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,13 +44,13 @@ type ListDataServiceAuthorizedApisResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. A unique identifier for the request.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *ListDataServiceAuthorizedApisResponseBody) Validate() error {
 }
 
 type ListDataServiceAuthorizedApisResponseBodyData struct {
-	// The APIs that you are authorized to access.
+	// The list of authorized APIs.
 	ApiAuthorizedList []*ListDataServiceAuthorizedApisResponseBodyDataApiAuthorizedList `json:"ApiAuthorizedList,omitempty" xml:"ApiAuthorizedList,omitempty" type:"Repeated"`
-	// The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
+	// The page number, which is the same as the PageNumber value in the request.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListDataServiceAuthorizedApisResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *ListDataServiceAuthorizedApisResponseBodyData) Validate() error {
 }
 
 type ListDataServiceAuthorizedApisResponseBodyDataApiAuthorizedList struct {
-	// The API ID.
+	// The ID of the API.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ type ListDataServiceAuthorizedApisResponseBodyDataApiAuthorizedList struct {
 	//
 	// example:
 	//
-	// My API name
+	// MyAPIName
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The path of the API.
 	//
@@ -228,37 +228,41 @@ type ListDataServiceAuthorizedApisResponseBodyDataApiAuthorizedList struct {
 	//
 	// /test/1
 	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
+	// The status of the API. Valid values:
+	//
+	// - 0: unpublished.
+	//
+	// - 1: published.
 	//
 	// example:
 	//
 	// 0
 	ApiStatus *int32 `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
-	// The time when the API was created.
+	// The time when the API was created. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
 	//
 	// example:
 	//
 	// 2020-06-23T00:21:01+0800
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the Alibaba Cloud account used by the API owner.
+	// The Alibaba Cloud ID of the API owner.
 	//
 	// example:
 	//
 	// 12345
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The time when the access permissions on the API were granted.
+	// The time when the API was authorized. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
 	//
 	// example:
 	//
 	// 2020-06-23T00:21:01+0800
 	GrantCreatedTime *string `json:"GrantCreatedTime,omitempty" xml:"GrantCreatedTime,omitempty"`
-	// The expiration time of the access permissions granted on the API.
+	// The expiration time of the API authorization. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
 	//
 	// example:
 	//
 	// 2020-06-24T00:21:01+0800
 	GrantEndTime *string `json:"GrantEndTime,omitempty" xml:"GrantEndTime,omitempty"`
-	// The ID of the Alibaba Cloud account used by the user who granted the access permissions on the API.
+	// The Alibaba Cloud ID of the user who granted the authorization.
 	//
 	// example:
 	//
@@ -270,7 +274,7 @@ type ListDataServiceAuthorizedApisResponseBodyDataApiAuthorizedList struct {
 	//
 	// abcde123456789
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The time when the API was last updated.
+	// The last modification time of the API. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
 	//
 	// example:
 	//

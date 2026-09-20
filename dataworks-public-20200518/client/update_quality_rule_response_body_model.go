@@ -24,19 +24,19 @@ type iUpdateQualityRuleResponseBody interface {
 }
 
 type UpdateQualityRuleResponseBody struct {
-	// Indicates whether the validation rule was successfully updated.
+	// Indicates whether the quality check rule is updated.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned when the request fails.
+	// The error code.
 	//
 	// example:
 	//
 	// 0
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the request fails.
+	// The error message.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type UpdateQualityRuleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request, used for troubleshooting.
+	// The request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 576b9457-2cf5-4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//

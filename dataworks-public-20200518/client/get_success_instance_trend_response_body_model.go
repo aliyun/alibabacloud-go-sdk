@@ -16,9 +16,9 @@ type iGetSuccessInstanceTrendResponseBody interface {
 }
 
 type GetSuccessInstanceTrendResponseBody struct {
-	// The trend of statistics on the instance status in different time periods.
+	// The statistical trends of instance status by time period.
 	InstanceStatusTrend *GetSuccessInstanceTrendResponseBodyInstanceStatusTrend `json:"InstanceStatusTrend,omitempty" xml:"InstanceStatusTrend,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID generated for each request.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *GetSuccessInstanceTrendResponseBody) Validate() error {
 }
 
 type GetSuccessInstanceTrendResponseBodyInstanceStatusTrend struct {
-	// The average trend.
+	// The historical average trends.
 	AvgTrend []*GetSuccessInstanceTrendResponseBodyInstanceStatusTrendAvgTrend `json:"AvgTrend,omitempty" xml:"AvgTrend,omitempty" type:"Repeated"`
-	// The trend on the current day.
+	// The trends for today.
 	TodayTrend []*GetSuccessInstanceTrendResponseBodyInstanceStatusTrendTodayTrend `json:"TodayTrend,omitempty" xml:"TodayTrend,omitempty" type:"Repeated"`
-	// The trend on the previous day.
+	// The trends for yesterday.
 	YesterdayTrend []*GetSuccessInstanceTrendResponseBodyInstanceStatusTrendYesterdayTrend `json:"YesterdayTrend,omitempty" xml:"YesterdayTrend,omitempty" type:"Repeated"`
 }
 
@@ -143,7 +143,9 @@ type GetSuccessInstanceTrendResponseBodyInstanceStatusTrendAvgTrend struct {
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The point in time. Valid values: 00:00 to 23:00.
+	// The time point, ranging from 00:00 to 23:00.
+	//
+	// The format is `HH:mm`, for example, `01:00`.
 	//
 	// example:
 	//
@@ -188,7 +190,9 @@ type GetSuccessInstanceTrendResponseBodyInstanceStatusTrendTodayTrend struct {
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The point in time. Valid values: 00:00 to 23:00.
+	// The time point, ranging from 00:00 to 23:00.
+	//
+	// The format is `HH:mm`, for example, `01:00`.
 	//
 	// example:
 	//
@@ -233,7 +237,9 @@ type GetSuccessInstanceTrendResponseBodyInstanceStatusTrendYesterdayTrend struct
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The point in time. Valid values: 00:00 to 23:00.
+	// The time point, ranging from 00:00 to 23:00.
+	//
+	// The format is `HH:mm`, for example, `01:00`.
 	//
 	// example:
 	//

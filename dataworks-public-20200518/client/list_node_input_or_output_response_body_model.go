@@ -24,7 +24,7 @@ type iListNodeInputOrOutputResponseBody interface {
 }
 
 type ListNodeInputOrOutputResponseBody struct {
-	// The ancestor or descendant nodes.
+	// The list of input and output nodes.
 	Data []*ListNodeInputOrOutputResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type ListNodeInputOrOutputResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListNodeInputOrOutputResponseBody) Validate() error {
 }
 
 type ListNodeInputOrOutputResponseBodyData struct {
-	// The name of the ancestor or descendant node.
+	// The name of the input or output node.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type ListNodeInputOrOutputResponseBodyData struct {
 	//
 	// 12314567
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// This parameter does not take effect. You cannot obtain the parameter settings.
+	// This parameter is not in use and cannot be queried.
 	//
 	// example:
 	//

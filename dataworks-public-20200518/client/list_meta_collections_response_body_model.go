@@ -24,7 +24,7 @@ type iListMetaCollectionsResponseBody interface {
 }
 
 type ListMetaCollectionsResponseBody struct {
-	// The returned result.
+	// The returned object.
 	Data *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,17 +44,17 @@ type ListMetaCollectionsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//
 	// E25887B7-579C-54A5-9C4F-83A0DE367DDE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true
+	// - true: The call was successful.
 	//
-	// - false
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *ListMetaCollectionsResponseBody) Validate() error {
 }
 
 type ListMetaCollectionsResponseBodyData struct {
-	// The collections.
+	// The array object.
 	CollectionList []*Collection `json:"CollectionList,omitempty" xml:"CollectionList,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next page.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListNodesByBaselineRequest interface {
 }
 
 type ListNodesByBaselineRequest struct {
-	// The baseline ID. You can call the [ListBaselineConfigs](https://help.aliyun.com/document_detail/173964.html) operation to query the baseline ID.
+	// The ID of the baseline. You can call the [ListBaselineConfigs](https://help.aliyun.com/document_detail/173964.html) operation to obtain the baseline ID.
 	//
 	// This parameter is required.
 	//

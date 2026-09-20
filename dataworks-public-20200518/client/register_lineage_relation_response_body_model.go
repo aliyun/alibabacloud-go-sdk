@@ -42,9 +42,9 @@ type RegisterLineageRelationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The lineage.
+	// The lineage relationship object.
 	LineageRelation *RegisterLineageRelationResponseBodyLineageRelation `json:"LineageRelation,omitempty" xml:"LineageRelation,omitempty" type:"Struct"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type RegisterLineageRelationResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true
+	// - true: The request was successful.
 	//
-	// - false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type RegisterLineageRelationResponseBodyLineageRelation struct {
 	//
 	// custom-report.month_stat_user
 	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
-	// The ID of the lineage between entities.
+	// The lineage relationship ID between entities.
 	//
 	// example:
 	//

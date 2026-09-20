@@ -18,7 +18,9 @@ type iListDIAlarmRulesRequest interface {
 }
 
 type ListDIAlarmRulesRequest struct {
-	// The ID of the task with which the alert rules are associated.
+	// The task ID. This is the task ID associated with the alert rule.
+	//
+	// You can obtain this value from DIJobPaging.DIJobs[].DIJobId in the ListDIJobs response.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +34,7 @@ type ListDIAlarmRulesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The page size. Default value: 10.
 	//
 	// example:
 	//

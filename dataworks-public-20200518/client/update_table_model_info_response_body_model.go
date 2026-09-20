@@ -22,7 +22,7 @@ type UpdateTableModelInfoResponseBody struct {
 	//
 	// abcde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the table is updated.
 	//
 	// example:
 	//

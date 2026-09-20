@@ -24,7 +24,7 @@ type iListLineageResponseBody interface {
 }
 
 type ListLineageResponseBody struct {
-	// The structure returned.
+	// The response structure.
 	Data *ListLineageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,7 +44,7 @@ type ListLineageResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ListLineageResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *ListLineageResponseBody) Validate() error {
 }
 
 type ListLineageResponseBodyData struct {
-	// The array of the entity structure.
+	// The array of entity structures.
 	DataEntityList []*ListLineageResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token that specifies the starting point of the next read operation.
 	//
 	// example:
 	//
@@ -184,15 +184,15 @@ func (s *ListLineageResponseBodyData) Validate() error {
 }
 
 type ListLineageResponseBodyDataDataEntityList struct {
-	// The time when the lineage was generated.
+	// The time when the lineage was created.
 	//
 	// example:
 	//
 	// 1686215809269
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The information about the entity.
+	// The entity information.
 	Entity *Entity `json:"Entity,omitempty" xml:"Entity,omitempty"`
-	// The array of the relationship structure.
+	// The array of relation structures.
 	RelationList []*ListLineageResponseBodyDataDataEntityListRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
 }
 
@@ -252,9 +252,9 @@ func (s *ListLineageResponseBodyDataDataEntityList) Validate() error {
 type ListLineageResponseBodyDataDataEntityListRelationList struct {
 	// The data channel. Valid values:
 	//
-	// 	- **FIRST_PARTY: DataWorks platform**
+	// - **FIRST_PARTY**: DataWorks platform data.
 	//
-	// 	- **THIRD_PARTY: user registration**
+	// - **THIRD_PARTY**: User-registered data.
 	//
 	// example:
 	//
@@ -264,15 +264,15 @@ type ListLineageResponseBodyDataDataEntityListRelationList struct {
 	//
 	// example:
 	//
-	// mysql
+	// maxcompute,mysql
 	Datasource *string `json:"Datasource,omitempty" xml:"Datasource,omitempty"`
-	// The unique relationship ID.
+	// The unique ID of the relation.
 	//
 	// example:
 	//
 	// aaabbccddguid
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The task type, which is used to describe the relationship between entities, such as SQL-based calculation, mapping based on report fields, or API operation definition.
+	// The task type, which describes the relationship type between entities. For example, computed by SQL, mapped by report fields, or defined by API.
 	//
 	// example:
 	//

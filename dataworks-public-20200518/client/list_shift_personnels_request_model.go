@@ -22,7 +22,7 @@ type iListShiftPersonnelsRequest interface {
 }
 
 type ListShiftPersonnelsRequest struct {
-	// The time when the on-duty engineer starts a shift. Set the value to a UNIX timestamp.
+	// The start time of the on-duty period. This value is a timestamp.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListShiftPersonnelsRequest struct {
 	//
 	// 1593950832000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The time when the on-duty engineer ends a shift. Set the value to a UNIX timestamp.
+	// The end time of the on-duty period. This value is a timestamp.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListShiftPersonnelsRequest struct {
 	//
 	// 1593950832000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the Alibaba Cloud account. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to view the ID.
+	// The Alibaba Cloud account ID. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to view the account ID.
 	//
 	// example:
 	//
@@ -52,7 +52,15 @@ type ListShiftPersonnelsRequest struct {
 	//
 	// 2ab6456ada634b2f938ee******9b45b
 	ShiftScheduleIdentifier *string `json:"ShiftScheduleIdentifier,omitempty" xml:"ShiftScheduleIdentifier,omitempty"`
-	// The type of the on-duty engineer that you want to query. Valid values: ALL, PRIMARY, BACKUP, and DESIGNATED_USER.
+	// The query condition for on-duty personnel. Valid values:
+	//
+	// - ALL: all on-duty personnel.
+	//
+	// - PRIMARY: primary on-duty personnel.
+	//
+	// - BACKUP: backup on-duty personnel.
+	//
+	// - DESIGNATED_USER: designated personnel.
 	//
 	// example:
 	//

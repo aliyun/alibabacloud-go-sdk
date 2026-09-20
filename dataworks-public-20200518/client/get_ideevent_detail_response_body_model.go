@@ -16,11 +16,11 @@ type iGetIDEEventDetailResponseBody interface {
 }
 
 type GetIDEEventDetailResponseBody struct {
-	// The data snapshot that is generated when an extension point event is triggered.
+	// The data snapshot at the time the extension point event was triggered.
 	//
-	// The fields contained in data snapshots vary based on the types of the triggered extension point events. For more information, see the description of the fields.
+	// Different types of message events have different valid fields in the data snapshot. For details, refer to the field descriptions of each message event.
 	EventDetail *GetIDEEventDetailResponseBodyEventDetail `json:"EventDetail,omitempty" xml:"EventDetail,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request, which can be used for troubleshooting.
 	//
 	// example:
 	//
@@ -64,15 +64,15 @@ func (s *GetIDEEventDetailResponseBody) Validate() error {
 }
 
 type GetIDEEventDetailResponseBodyEventDetail struct {
-	// The data snapshot when the file is committed and deployed.
+	// The snapshot when a file is committed or deployed.
 	//
-	// This parameter is valid only if the message type is IDE_FILE_SUBMIT_BEFORE or IDE_FILE_DEPLOY_BEFORE.
+	// This field is valid only when the Message type is IDE_FILE_SUBMIT_BEFORE or IDE_FILE_DEPLOY_BEFORE.
 	CommittedFile *GetIDEEventDetailResponseBodyEventDetailCommittedFile `json:"CommittedFile,omitempty" xml:"CommittedFile,omitempty" type:"Struct"`
-	// The data snapshot when the file is deleted. This parameter is valid only if the message type is IDE_FILE_DELETE_BEFORE.
+	// The snapshot information when a file is deleted. This field is valid only when the Message type is IDE_FILE_DELETE_BEFORE.
 	DeletedFile *GetIDEEventDetailResponseBodyEventDetailDeletedFile `json:"DeletedFile,omitempty" xml:"DeletedFile,omitempty" type:"Struct"`
-	// The data snapshot when the code in the file is run. This parameter is valid only if the message type is IDE_FILE_EXECUTE_BEFORE.
+	// The snapshot when file code is executed. This field is valid only when the Message type is IDE_FILE_EXECUTE_BEFORE.
 	FileExecutionCommand *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand `json:"FileExecutionCommand,omitempty" xml:"FileExecutionCommand,omitempty" type:"Struct"`
-	// The data snapshot when the table is committed and deployed. This parameter is valid only if the message type is IDE_TABLE_SUBMIT_BEFORE or IDE_TABLE_DEPLOY_BEFORE.
+	// The snapshot when a table is committed or deployed. This field is valid only when the Message type is IDE_TABLE_SUBMIT_BEFORE or IDE_TABLE_DEPLOY_BEFORE.
 	TableModel *GetIDEEventDetailResponseBodyEventDetailTableModel `json:"TableModel,omitempty" xml:"TableModel,omitempty" type:"Struct"`
 }
 
@@ -145,31 +145,31 @@ func (s *GetIDEEventDetailResponseBodyEventDetail) Validate() error {
 }
 
 type GetIDEEventDetailResponseBodyEventDetailCommittedFile struct {
-	// The type of the change to the file of the current version. Valid values: CREATE, UPDATE, and DELETE.
+	// The change type of this file version. Valid values: CREATE, UPDATE, and DELETE.
 	//
 	// example:
 	//
 	// UPDATE
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The description of the file version.
+	// The description of this file version.
 	//
 	// example:
 	//
 	// Second version submission
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to generate the file of the current version.
+	// The Alibaba Cloud user ID that generated this file version.
 	//
 	// example:
 	//
 	// 7384234****
 	Committor *string `json:"Committor,omitempty" xml:"Committor,omitempty"`
-	// The code in the file of the current version.
+	// The file code that generated this file version.
 	//
 	// example:
 	//
 	// SHOW TABLES;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The file ID.
+	// The ID of the file.
 	//
 	// example:
 	//
@@ -181,35 +181,35 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFile struct {
 	//
 	// hello_dataworks.sql
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The details of the file.
+	// The additional properties of the file.
 	FilePropertyContent *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent `json:"FilePropertyContent,omitempty" xml:"FilePropertyContent,omitempty" type:"Struct"`
-	// The type of the code for the file. The code of files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+	// The file type. Different file types have different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
 	// 10
 	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The scheduling properties of the node that corresponds to the file.
+	// The scheduling configuration of the file.
 	NodeConfiguration *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration `json:"NodeConfiguration,omitempty" xml:"NodeConfiguration,omitempty" type:"Struct"`
-	// The ID of the node that is scheduled.
+	// The ID of the scheduling node.
 	//
 	// example:
 	//
 	// 421429
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The module to which the file belongs. Valid values:
+	// The functional module to which the file belongs. Valid values:
 	//
-	// 	- NORMAL: The file is used for DataStudio.
+	// - NORMAL: DataStudio.
 	//
-	// 	- MANUAL: The file is used for a manually triggered node.
+	// - MANUAL: manual task.
 	//
-	// 	- MANUAL_BIZ: The file is used for a manually triggered workflow.
+	// - MANUAL_BIZ: manual workflow.
 	//
-	// 	- SKIP: The file is used for a dry-run DataStudio node.
+	// - SKIP: dry-run scheduling in DataStudio.
 	//
-	// 	- ADHOCQUERY: The file is used for an ad hoc query.
+	// - ADHOCQUERY: ad hoc query.
 	//
-	// 	- COMPONENT: The file is used for a snippet.
+	// - COMPONENT: component management.
 	//
 	// example:
 	//
@@ -345,31 +345,31 @@ type GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent st
 	//
 	// 74328
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The latest version number of the file.
+	// The latest version of the file.
 	//
 	// example:
 	//
 	// 1
 	CurrentVersion *int64 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The name of the data source with which the file is associated.
+	// The unique identifier of the data source associated with the file.
 	//
 	// example:
 	//
 	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query the details of the file based on the folder ID.
+	// The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query file details by folder ID.
 	//
 	// example:
 	//
 	// aldurie78l2falure
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The file owner.
+	// The owner of the file.
 	//
 	// example:
 	//
 	// 7384234****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the do-while node or for-each node that corresponds to the file.
+	// The node ID of the loop node or traversal node to which the file belongs.
 	//
 	// example:
 	//
@@ -444,97 +444,97 @@ func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyConten
 }
 
 type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration struct {
-	// The interval at which the node corresponding to the file is rerun. Unit: milliseconds.
+	// The interval between automatic reruns, in milliseconds.
 	//
 	// example:
 	//
 	// 120000
 	AutoRerunIntervalMillis *int64 `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
-	// The number of times that the node corresponding to the file can be rerun.
+	// The number of automatic reruns.
 	//
 	// example:
 	//
 	// 3
 	AutoRerunTimes *int64 `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
-	// The CRON expression that is used to schedule the node corresponding to the file.
+	// The scheduling cron expression.
 	//
 	// example:
 	//
 	// 00 05 00 	- 	- ?
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
-	// The type of the scheduling cycle of the node that corresponds to the file. Valid values: NOT_DAY and DAY. The value NOT_DAY indicates that the node is scheduled to run by minute or hour. The value DAY indicates that the node is scheduled to run by day, week, or month.
+	// The type of the scheduling cycle. Valid values: NOT_DAY (minute or hour) and DAY (day, week, or month).
 	//
-	// This parameter corresponds to the Scheduling Cycle parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// This parameter corresponds to the "Schedule Configuration > Time Properties > Scheduling Cycle" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
 	// DAY
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The ID of the node on which the node that corresponds to the file depends when the DependentType parameter is set to USER_DEFINE. Multiple IDs are separated by commas (,).
+	// The IDs of the nodes on which the current file depends when the DependentType parameter settings are set to USER_DEFINE. Separate multiple node IDs with commas (,).
 	//
-	// The value of this parameter is equivalent to the ID of the node that you specified after you select Other Nodes for Cross-Cycle Dependency (Original Previous-Cycle Dependency) in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// This parameter corresponds to the "Settings > Scheduling Dependencies > Cross-epoch Dependencies (Previous Epoch)" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console), when the dependency is set to "Other Nodes".
 	//
 	// example:
 	//
 	// 5,10,15,20
 	DependentNodeIdList *string `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
-	// The type of the cross-cycle scheduling dependency of the node. Valid values:
+	// The method of depending on the previous cycle. Valid values:
 	//
-	// 	- SELF: The instance generated for the node in the current cycle depends on the instance generated for the node in the previous cycle.
+	// - SELF: the dependency is set to the current node.
 	//
-	// 	- CHILD: The instance generated for the node in the current cycle depends on the instances generated for the descendant nodes at the nearest level of the node in the previous cycle.
+	// - CHILD: the dependency is set to first-level child nodes.
 	//
-	// 	- USER_DEFINE: The instance generated for the node in the current cycle depends on the instances generated for one or more specified nodes in the previous cycle.
+	// - USER_DEFINE: the dependency is set to other nodes.
 	//
-	// 	- NONE: No cross-cycle scheduling dependency type is selected for the node.
+	// - NONE: no dependency is selected, meaning the node does not depend on the previous cycle.
 	//
 	// example:
 	//
 	// USER_DEFINE
 	DependentType *string `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
-	// The output names of the parent files on which the current file depends.
+	// The upstream file outputs on which the file depends.
 	InputList []*GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
-	// The output names of the current file.
+	// The outputs of the file.
 	//
-	// This parameter corresponds to the Output Name of Current Node parameter in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// This parameter corresponds to the "Schedule Configuration > Scheduling Dependencies > Output Name of Current Node" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	OutputList []*GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList `json:"OutputList,omitempty" xml:"OutputList,omitempty" type:"Repeated"`
-	// The scheduling parameters of the node.
+	// The scheduling parameters.
 	//
-	// This parameter corresponds to the Scheduling Parameter section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information about the configurations of the scheduling parameters, see [Configure scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
+	// This parameter corresponds to the "Schedule Configuration > Parameters" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
 	//
 	// example:
 	//
 	// a=x b=y
 	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
-	// Indicates whether the node that corresponds to the file can be rerun. Valid values:
+	// The rerun property. Valid values:
 	//
-	// 	- ALL_ALLOWED: The node can be rerun regardless of whether it is successfully run or fails to run.
+	// - ALL_ALLOWED: The node can be rerun regardless of whether it runs successfully or fails.
 	//
-	// 	- FAILURE_ALLOWED: The node can be rerun only after it fails to run.
+	// - FAILURE_ALLOWED: The node can be rerun only after it fails.
 	//
-	// 	- ALL_DENIED: The node cannot be rerun regardless of whether it is successfully run or fails to run.
+	// - ALL_DENIED: The node cannot be rerun regardless of whether it runs successfully or fails.
 	//
-	// This parameter corresponds to the Rerun parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// This parameter corresponds to the "Schedule Configuration > Time Properties > Rerun Properties" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
 	// ALL_ALLOWED
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The ID of the resource group that is used to run the node that corresponds to the file. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the available resource groups in the workspace.
+	// The resource group used when the task is executed after the file is deployed. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to obtain the list of available resource groups for the workspace.
 	//
 	// example:
 	//
 	// 375827434852437
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The scheduling type of the node. Valid values:
+	// The scheduling type. Valid values:
 	//
-	// 	- NORMAL: The node is an auto triggered node.
+	// - NORMAL: normal scheduling task.
 	//
-	// 	- MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered. They correspond to the nodes in the Manually Triggered Workflows pane.
+	// - MANUAL: manual task that is not scheduled on a regular basis. This corresponds to nodes in a manual workflow.
 	//
-	// 	- PAUSE: The node is a paused node.
+	// - PAUSE: paused task.
 	//
-	// 	- SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
+	// - SKIP: dry-run task that is scheduled on a regular basis but is directly set to successful when scheduling starts.
 	//
 	// example:
 	//
@@ -681,19 +681,19 @@ func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration)
 }
 
 type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList struct {
-	// The output name of the parent file on which the current file depends.
+	// The output name of the upstream file on which the file depends.
 	//
-	// This parameter corresponds to the Output Name of Ancestor Node parameter under Parent Nodes in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// This parameter corresponds to the "Output Name of Upstream Node" in the "Schedule Configuration > Scheduling Dependencies > Depends On Upstream Nodes" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
 	// dw_project_root
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The mode of the configuration file dependency. Valid values:
+	// The method used to configure file dependencies. Valid values:
 	//
-	// 	- MANUAL: Scheduling dependencies are manually configured.
+	// - MANUAL: manual configuration.
 	//
-	// 	- AUTO: Scheduling dependencies are automatically parsed.
+	// - AUTO: automatic parsing.
 	//
 	// example:
 	//
@@ -732,17 +732,17 @@ func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationI
 }
 
 type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList struct {
-	// The output name of the current file.
+	// The output name of the file.
 	//
-	// This parameter corresponds to the Output Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// This parameter corresponds to the "Output Name" in the "Schedule Configuration > Scheduling Dependencies > Output Name of Current Node" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
 	// dw_project.002_out
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The output table name of the current file.
+	// The output table name of the file.
 	//
-	// This parameter corresponds to the Output Table Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// This parameter corresponds to the "Output Table Name" in the "Schedule Configuration > Scheduling Dependencies > Output Name of Current Node" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -787,25 +787,25 @@ type GetIDEEventDetailResponseBodyEventDetailDeletedFile struct {
 	//
 	// 74328
 	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	// The code in the file of the current version.
+	// The file code that generated this file version.
 	//
 	// example:
 	//
 	// SHOW TABLES;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The latest version number of the file.
+	// The latest version of the file.
 	//
 	// example:
 	//
 	// 1
 	CurrentVersion *int64 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The name of the data source with which the file is associated.
+	// The unique identifier of the data source associated with the file.
 	//
 	// example:
 	//
 	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The file ID.
+	// The ID of the file.
 	//
 	// example:
 	//
@@ -817,49 +817,49 @@ type GetIDEEventDetailResponseBodyEventDetailDeletedFile struct {
 	//
 	// hello_dataworks.sql
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The type of the code for the file. The code of files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+	// The file type. Different file types have different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
 	// 10
 	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query the details of the file based on the folder ID.
+	// The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query file details by folder ID.
 	//
 	// example:
 	//
 	// aldurie78l2falure
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the node that is scheduled.
+	// The ID of the scheduling node.
 	//
 	// example:
 	//
 	// 421429
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The file owner.
+	// The owner of the file.
 	//
 	// example:
 	//
 	// 7384234****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the do-while node or for-each node that corresponds to the file.
+	// The node ID of the loop node or traversal node to which the file belongs.
 	//
 	// example:
 	//
 	// 1234122
 	ParentFileId *int64 `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
-	// The module to which the file belongs. Valid values:
+	// The functional module to which the file belongs. Valid values:
 	//
-	// 	- NORMAL: The file is used for DataStudio.
+	// - NORMAL: DataStudio.
 	//
-	// 	- MANUAL: The file is used for a manually triggered node.
+	// - MANUAL: manual task.
 	//
-	// 	- MANUAL_BIZ: The file is used for a manually triggered workflow.
+	// - MANUAL_BIZ: manual workflow.
 	//
-	// 	- SKIP: The file is used for a dry-run DataStudio node.
+	// - SKIP: dry-run scheduling in DataStudio.
 	//
-	// 	- ADHOCQUERY: The file is used for an ad hoc query.
+	// - ADHOCQUERY: ad hoc query.
 	//
-	// 	- COMPONENT: The file is used for a snippet.
+	// - COMPONENT: component management.
 	//
 	// example:
 	//
@@ -988,25 +988,25 @@ func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) Validate() error {
 }
 
 type GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand struct {
-	// The code in the file of the current version.
+	// The file code that generated this file version.
 	//
 	// example:
 	//
 	// SHOW TABLES;
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The name of the data source with which the file is associated.
+	// The unique identifier of the data source associated with the file.
 	//
 	// example:
 	//
 	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The file ID.
+	// The ID of the file.
 	//
 	// example:
 	//
 	// 1234123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The type of the code for the file. The code for files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+	// The file type. Different file types have different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
@@ -1063,37 +1063,37 @@ func (s *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) Validate(
 }
 
 type GetIDEEventDetailResponseBodyEventDetailTableModel struct {
-	// The columns in the table.
+	// The list of columns.
 	Columns []*GetIDEEventDetailResponseBodyEventDetailTableModelColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The remarks of the table.
+	// The comment of the table.
 	//
 	// example:
 	//
 	// A new table
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the data source to which the table belongs.
+	// The unique identifier of the data source to which the table belongs.
 	//
 	// example:
 	//
 	// odps_source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The environment in which the table is used. Valid values:
+	// The environment to which the table belongs. Valid values:
 	//
-	// 	- DEV
+	// - DEV: development environment.
 	//
-	// 	- PROD
+	// - PROD: production environment.
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The lifecycle of the metatable. Unit: day.
+	// The lifecycle of the table. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	LifeCycle *int64 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	// The path of the table.
+	// The location information of the external table.
 	//
 	// example:
 	//
@@ -1198,23 +1198,23 @@ type GetIDEEventDetailResponseBodyEventDetailTableModelColumns struct {
 	//
 	// ID
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the column.
+	// The type of the column.
 	//
 	// example:
 	//
 	// BIGINT
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The remarks of the column.
+	// The comment of the column.
 	//
 	// example:
 	//
 	// ID
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether the column is a partition key column. Valid values:
+	// Indicates whether the column is a partition column. Valid values:
 	//
-	// 	- true: The column is a partition key column.
+	// - true: The column is a partition column.
 	//
-	// 	- false: The column is not a partition key column.
+	// - false: The column is not a partition column.
 	//
 	// example:
 	//

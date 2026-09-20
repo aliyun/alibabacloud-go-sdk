@@ -42,25 +42,27 @@ type AddMetaCollectionEntityResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the request ID to query logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
+	// The operation result. Valid values:
 	//
-	// 	- true: succeeded
+	// - true: Succeeded.
 	//
-	// 	- false: failed
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// true false
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//

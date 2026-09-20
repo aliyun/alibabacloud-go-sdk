@@ -16,7 +16,7 @@ type iUpdateMetaTableIntroWikiRequest interface {
 }
 
 type UpdateMetaTableIntroWikiRequest struct {
-	// The details of the instructions on how to use the metatable.
+	// The details of the table description.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpdateMetaTableIntroWikiRequest struct {
 	//
 	// abc
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The GUID of the table. Specify the GUID in the odps.{projectName}.{tableName} format.
+	// The globally unique identifier (GUID) of the table, in the format of odps.{projectName}.{tableName}.
 	//
 	// This parameter is required.
 	//

@@ -24,33 +24,33 @@ type iListTopicsResponseBody interface {
 }
 
 type ListTopicsResponseBody struct {
-	// The information about the events returned.
+	// The returned event list.
 	Data *ListTopicsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// 1031203110005
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -130,21 +130,21 @@ func (s *ListTopicsResponseBody) Validate() error {
 }
 
 type ListTopicsResponseBodyData struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The events returned.
+	// The list of events.
 	Topics []*ListTopicsResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
-	// The total number of the events returned.
+	// The total number of events.
 	//
 	// example:
 	//
@@ -210,31 +210,31 @@ func (s *ListTopicsResponseBodyData) Validate() error {
 }
 
 type ListTopicsResponseBodyDataTopics struct {
-	// The timestamp when the event was found.
+	// The timestamp when the event was discovered.
 	//
 	// example:
 	//
 	// 1553524393000
 	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// The timestamp when the event was processed.
+	// The timestamp when the event was recovered.
 	//
 	// example:
 	//
 	// 1553508465000
 	FixTime *int64 `json:"FixTime,omitempty" xml:"FixTime,omitempty"`
-	// The timestamp when the event occurred. A time difference may exist between the time when the event occurred and the time when the event was found.
+	// The timestamp when the event occurred. There is a time difference between when the event occurs and when it is discovered.
 	//
 	// example:
 	//
 	// 1553508465000
 	HappenTime *int64 `json:"HappenTime,omitempty" xml:"HappenTime,omitempty"`
-	// The ID of the node instance that triggers the event.
+	// The instance ID associated with the event.
 	//
 	// example:
 	//
 	// 12345
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node that triggers the event.
+	// The ID of the node associated with the event.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type ListTopicsResponseBodyDataTopics struct {
 	//
 	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account that is used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//
@@ -268,15 +268,15 @@ type ListTopicsResponseBodyDataTopics struct {
 	//
 	// example:
 	//
-	// Error 1234
+	// 1234 error
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// The status of the event. Valid values: IGNORE, NEW, FIXING, and RECOVER. The value IGNORE indicates that the event is ignored. The value NEW indicates that the event is a new event. The value FIXING indicates that the event is being processed. The value RECOVER indicates that the event is processed.
+	// The status of the event. Valid values: IGNORE (ignored), NEW (newly discovered), FIXING (being processed), and RECOVER (recovered).
 	//
 	// example:
 	//
 	// NEW
 	TopicStatus *string `json:"TopicStatus,omitempty" xml:"TopicStatus,omitempty"`
-	// The type of the event. Valid values: SLOW and ERROR. The value SLOW indicates that the running duration of the node in the current scheduling cycle is significantly longer than the average running duration of the node in previous scheduling cycles. The value ERROR indicates that the node fails to run.
+	// The type of the event. Valid values: SLOW (slow) and ERROR (error).
 	//
 	// example:
 	//

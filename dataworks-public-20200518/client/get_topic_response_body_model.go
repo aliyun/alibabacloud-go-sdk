@@ -44,13 +44,13 @@ type GetTopicResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFGH-IJKLMNOPQ
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -130,121 +130,121 @@ func (s *GetTopicResponseBody) Validate() error {
 }
 
 type GetTopicResponseBodyData struct {
-	// The timestamp when the event was found.
+	// The timestamp when the event was discovered.
 	//
 	// example:
 	//
 	// 1553524393000
 	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// The timestamp when the first alert was reported.
+	// The timestamp of the first alert.
 	//
 	// example:
 	//
 	// 1553524393000
 	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	// The ID of the Alibaba Cloud account used by the alert recipient.
+	// The Alibaba Cloud UID of the assigner.
 	//
 	// example:
 	//
 	// 952795****
 	Assigner *string `json:"Assigner,omitempty" xml:"Assigner,omitempty"`
-	// The margin of the worst baseline instance. Unit: seconds.
+	// The buffer of the worst baseline instance, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	BaselineBuffer *int64 `json:"BaselineBuffer,omitempty" xml:"BaselineBuffer,omitempty"`
-	// The ID of the baseline to which the worst baseline instance belongs.
+	// The baseline ID of the worst baseline instance.
 	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The ID of the cycle of the worst baseline instance.
+	// The cycle number of the worst baseline instance.
 	//
 	// example:
 	//
 	// 1
 	BaselineInGroupId *int32 `json:"BaselineInGroupId,omitempty" xml:"BaselineInGroupId,omitempty"`
-	// The name of the baseline to which the worst baseline instance belongs.
+	// The baseline name of the worst baseline instance.
 	//
 	// example:
 	//
 	// Baseline name
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The status of the baseline. Valid values: ERROR, SAFE, DANGROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes are run before the alert duration begins. The value DANGROUS indicates that nodes are still running after the alert duration ends but the committed completion time does not arrive. The value OVER indicates that nodes are still running after the committed completion time.
+	// The status of the baseline. Valid values: ERROR, SAFE, DANGROUS (warning), and OVER (exceeded).
 	//
 	// example:
 	//
 	// SAFE
 	BaselineStatus *string `json:"BaselineStatus,omitempty" xml:"BaselineStatus,omitempty"`
-	// The margin of the event. Unit: seconds.
+	// The buffer of the event, in seconds.
 	//
 	// example:
 	//
 	// 1200
 	Buffer *int64 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
-	// The timestamp when the event was last processed.
+	// The timestamp of the last handling.
 	//
 	// example:
 	//
 	// 1553524393000
 	DealTime *int64 `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
-	// The ID of the Alibaba Cloud account used by the user who last processed the event.
+	// The Alibaba Cloud UID of the last handler.
 	//
 	// example:
 	//
 	// 952795****
 	DealUser *string `json:"DealUser,omitempty" xml:"DealUser,omitempty"`
-	// The timestamp when the event was processed.
+	// The timestamp when the event was resolved.
 	//
 	// example:
 	//
 	// 1553524393000
 	FixTime *int64 `json:"FixTime,omitempty" xml:"FixTime,omitempty"`
-	// The timestamp when the event occurred. A time difference may exist between the time when the event occurred and the time when the event was found.
+	// The timestamp when the event occurred. There may be a time difference between when the event occurred and when it was discovered.
 	//
 	// example:
 	//
 	// 1553524393000
 	HappenTime *int64 `json:"HappenTime,omitempty" xml:"HappenTime,omitempty"`
-	// The ID of the instance that triggered the event.
+	// The instance ID associated with the event.
 	//
 	// example:
 	//
 	// 12345
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The timestamp when the system reports the next alert.
+	// The timestamp of the next alert.
 	//
 	// example:
 	//
 	// 1553524393000
 	NextAlertTime *int64 `json:"NextAlertTime,omitempty" xml:"NextAlertTime,omitempty"`
-	// The ID of the node that triggered the event.
+	// The ID of the node associated with the event.
 	//
 	// example:
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node that triggered the event.
+	// The name of the node associated with the event.
 	//
 	// example:
 	//
 	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the event owner.
+	// The Alibaba Cloud UID of the event owner.
 	//
 	// example:
 	//
 	// 952795****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the workspace to which the node that triggered the event belongs.
+	// The ID of the workspace to which the node associated with the event belongs.
 	//
 	// example:
 	//
 	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
@@ -256,13 +256,13 @@ type GetTopicResponseBodyData struct {
 	//
 	// 1234 error
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// The status of the event. Valid values: IGNORE, NEW, FIXING, and RECOVER.
+	// The status of the event. Valid values: IGNORE (ignored), NEW (newly discovered), FIXING (being handled), and RECOVER (recovered).
 	//
 	// example:
 	//
 	// FIXING
 	TopicStatus *string `json:"TopicStatus,omitempty" xml:"TopicStatus,omitempty"`
-	// The type of the event. Valid values: SLOW and ERROR. The value SLOW indicates that the duration of the task is significantly longer than the average duration of the task in previous cycles. The value ERROR indicates that the task fails to run.
+	// The type of the event. Valid values: SLOW and ERROR.
 	//
 	// example:
 	//

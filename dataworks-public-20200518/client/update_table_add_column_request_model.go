@@ -16,11 +16,11 @@ type iUpdateTableAddColumnRequest interface {
 }
 
 type UpdateTableAddColumnRequest struct {
-	// The fields.
+	// The list of columns.
 	//
 	// This parameter is required.
 	Column []*UpdateTableAddColumnRequestColumn `json:"Column,omitempty" xml:"Column,omitempty" type:"Repeated"`
-	// The globally unique identifier (GUID) of the MaxCompute table. Specify the GUID in the odps.projectName.tableName format.
+	// The unique identifier of the MaxCompute table. Format: odps.projectName.tableName.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ func (s *UpdateTableAddColumnRequest) Validate() error {
 }
 
 type UpdateTableAddColumnRequestColumn struct {
-	// The name of the field.
+	// The name of the column.
 	//
 	// This parameter is required.
 	//
@@ -78,13 +78,13 @@ type UpdateTableAddColumnRequestColumn struct {
 	//
 	// abc
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The display name of the field.
+	// The Chinese name of the column.
 	//
 	// example:
 	//
 	// 中文
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
-	// The type of the field. For more information, see MaxCompute field types.
+	// The type of the column. For more information, see the column types supported by MaxCompute.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type UpdateTableAddColumnRequestColumn struct {
 	//
 	// string
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The comment of the field.
+	// The comment of the column.
 	//
 	// example:
 	//

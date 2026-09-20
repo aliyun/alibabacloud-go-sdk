@@ -24,7 +24,7 @@ type iGetMetaCollectionDetailResponseBody interface {
 }
 
 type GetMetaCollectionDetailResponseBody struct {
-	// The information about the collection.
+	// The collection object.
 	Collection *Collection `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The error code.
 	//
@@ -44,17 +44,17 @@ type GetMetaCollectionDetailResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// true
+	// - true: The call was successful.
 	//
-	// false
+	// - false: The call failed.
 	//
 	// example:
 	//

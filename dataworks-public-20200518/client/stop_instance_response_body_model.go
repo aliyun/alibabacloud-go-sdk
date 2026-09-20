@@ -24,7 +24,7 @@ type iStopInstanceResponseBody interface {
 }
 
 type StopInstanceResponseBody struct {
-	// The result returned.
+	// The result details returned after the stop instance operation is called.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type StopInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// E6F0DBDD-5AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

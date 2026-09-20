@@ -130,9 +130,9 @@ func (s *GetMetaTableOutputResponseBody) Validate() error {
 }
 
 type GetMetaTableOutputResponseBodyData struct {
-	// The partitions.
+	// The list of instances.
 	DataEntityList []*GetMetaTableOutputResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number. Valid values: 1 to 30. Default value: 1.
+	// The page number. Default value: 1. Minimum value: 1. Maximum value: 30.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type GetMetaTableOutputResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of tables.
 	//
 	// example:
 	//
@@ -212,6 +212,8 @@ func (s *GetMetaTableOutputResponseBodyData) Validate() error {
 type GetMetaTableOutputResponseBodyDataDataEntityList struct {
 	// The end time.
 	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, for example, `2020-01-01 00:01:00`.
+	//
 	// example:
 	//
 	// 2020-01-01 00:01:00
@@ -224,11 +226,13 @@ type GetMetaTableOutputResponseBodyDataDataEntityList struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The start time.
 	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, for example, `2020-01-01 00:00:00`.
+	//
 	// example:
 	//
 	// 2020-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The GUID of the MaxCompute table.
+	// The unique identifier of the ODPS table.
 	//
 	// example:
 	//
@@ -246,7 +250,7 @@ type GetMetaTableOutputResponseBodyDataDataEntityList struct {
 	//
 	// 3521
 	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
-	// The waiting time.
+	// The task wait duration, in seconds.
 	//
 	// example:
 	//

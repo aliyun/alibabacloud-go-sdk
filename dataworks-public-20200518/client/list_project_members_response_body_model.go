@@ -16,7 +16,7 @@ type iListProjectMembersResponseBody interface {
 }
 
 type ListProjectMembersResponseBody struct {
-	// The returned results.
+	// The query result.
 	Data *ListProjectMembersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListProjectMembersResponseBody) Validate() error {
 }
 
 type ListProjectMembersResponseBodyData struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListProjectMembersResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about members in the DataWorks workspace.
+	// The list of workspace members.
 	ProjectMemberList []*ListProjectMembersResponseBodyDataProjectMemberList `json:"ProjectMemberList,omitempty" xml:"ProjectMemberList,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -142,13 +142,13 @@ func (s *ListProjectMembersResponseBodyData) Validate() error {
 }
 
 type ListProjectMembersResponseBodyDataProjectMemberList struct {
-	// The nickname of the member.
+	// The nickname of the workspace member.
 	//
 	// example:
 	//
 	// zhangsan
 	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	// The member ID.
+	// The user ID of the member.
 	//
 	// example:
 	//
@@ -162,25 +162,27 @@ type ListProjectMembersResponseBodyDataProjectMemberList struct {
 	ProjectMemberName *string `json:"ProjectMemberName,omitempty" xml:"ProjectMemberName,omitempty"`
 	// The type of the member. Valid values:
 	//
-	// - 1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
+	// - 1: Alibaba Cloud account (USER_ALIYUN).
 	//
-	// - 5: USER_UBACCOUNT, which indicates that the member is a RAM user.
+	// - 5: RAM user (USER_UBACCOUNT).
 	//
-	// - 6: USER_STS_ROLE, which indicates that the member is a RAM role.
+	// - 6: RAM role (USER_STS_ROLE).
 	//
 	// example:
 	//
 	// 1
 	ProjectMemberType *string `json:"ProjectMemberType,omitempty" xml:"ProjectMemberType,omitempty"`
-	// The roles that are assigned to the member.
+	// The list of roles assigned to the member.
 	ProjectRoleList []*ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
-	// The status of the member. Valid values:
+	// The query status. Valid values:
 	//
-	// - 0: NORMAL, which indicates that the member is in a normal state.
 	//
-	// - 1: FORBIDDEN, which indicates that the member is disabled.
 	//
-	// - 2: DELETED, which indicates that the member is deleted.
+	// - 0: Normal (NORMAL).
+	//
+	// - 1: Disabled (FORBIDDEN).
+	//
+	// - 2: Deleted (DELETED).
 	//
 	// example:
 	//
@@ -264,7 +266,7 @@ func (s *ListProjectMembersResponseBodyDataProjectMemberList) Validate() error {
 }
 
 type ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList struct {
-	// The code of the role. DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
+	// The role code. DataWorks provides preset roles. You can also create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
 	//
 	// example:
 	//
@@ -276,7 +278,7 @@ type ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList struct {
 	//
 	// 1
 	ProjectRoleId *int32 `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
-	// The name of the role. DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
+	// The name of the role. DataWorks provides preset roles. You can also create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
 	//
 	// example:
 	//
@@ -284,9 +286,9 @@ type ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList struct {
 	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
 	// The type of the role. Valid values:
 	//
-	// - 0: SYSTEM, which indicates that the role is a built-in role.
+	// - SYSTEM (0): system role.
 	//
-	// - 2: USER_CUSTOM, which indicates that the role is a custom role.
+	// - USER_CUSTOM (2): custom role.
 	//
 	// example:
 	//

@@ -31,6 +31,10 @@ type DsgUpdateDesensStatusListShrinkRequest struct {
 	// The list of switch IDs.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// DsgUpdateDesensStatusList
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 }
 

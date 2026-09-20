@@ -16,13 +16,13 @@ type iUpdateMetaTableIntroWikiResponseBody interface {
 }
 
 type UpdateMetaTableIntroWikiResponseBody struct {
-	// The request ID. You can troubleshoot issues based on the ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// abcde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instructions on how to use the table are updated.
+	// The update result of the table.
 	//
 	// example:
 	//

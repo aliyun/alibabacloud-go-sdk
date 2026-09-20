@@ -22,7 +22,7 @@ type ListExtensionsResponseBody struct {
 	//
 	// example:
 	//
-	// 0000-ABCD-EFG
+	// 0000-ABCD-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -64,7 +64,7 @@ func (s *ListExtensionsResponseBody) Validate() error {
 type ListExtensionsResponseBodyPagingInfo struct {
 	// The list of extensions.
 	Extensions []*ListExtensionsResponseBodyPagingInfoExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the request, used for pagination.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListExtensionsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ func (s *ListExtensionsResponseBodyPagingInfo) Validate() error {
 type ListExtensionsResponseBodyPagingInfoExtensions struct {
 	// The list of extension point events.
 	BindEventList []*ListExtensionsResponseBodyPagingInfoExtensionsBindEventList `json:"BindEventList,omitempty" xml:"BindEventList,omitempty" type:"Repeated"`
-	// The unique code of the extension.
+	// The unique extension code.
 	//
 	// example:
 	//
@@ -162,13 +162,25 @@ type ListExtensionsResponseBodyPagingInfoExtensions struct {
 	//
 	// Extension name
 	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
-	// The ID of the RAM user.
+	// The RAM user ID.
 	//
 	// example:
 	//
 	// 2003****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The state of the extension. Valid values: 0: Testing 1: Publishing 3: Disabled 4: Processing 5: Approved 6: Approve Failed
+	// The extension status. Valid values:
+	//
+	// 0: testing.
+	//
+	// 1: online.
+	//
+	// 3: disabled.
+	//
+	// 4: pending approval.
+	//
+	// 5: approved.
+	//
+	// 6: rejected.
 	//
 	// example:
 	//
@@ -252,13 +264,13 @@ func (s *ListExtensionsResponseBodyPagingInfoExtensions) Validate() error {
 }
 
 type ListExtensionsResponseBodyPagingInfoExtensionsBindEventList struct {
-	// The code of the event.
+	// The event code.
 	//
 	// example:
 	//
 	// commit-file
 	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// The name of the event.
+	// The event name.
 	//
 	// example:
 	//

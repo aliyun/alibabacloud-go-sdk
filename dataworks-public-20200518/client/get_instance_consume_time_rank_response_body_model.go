@@ -140,7 +140,7 @@ type GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRankConsumeTimeRan
 	//
 	// example:
 	//
-	// Node name
+	// 节点名称
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The Alibaba Cloud UID of the node owner.
 	//

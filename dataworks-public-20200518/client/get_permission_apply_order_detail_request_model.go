@@ -14,7 +14,7 @@ type iGetPermissionApplyOrderDetailRequest interface {
 }
 
 type GetPermissionApplyOrderDetailRequest struct {
-	// The ID of the permission request order. You can call the [ListPermissionApplyOrders](https://help.aliyun.com/document_detail/211008.html) operation to obtain the ID.
+	// The ID of the permission application order. You can call the [ListPermissionApplyOrders](https://help.aliyun.com/document_detail/211008.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

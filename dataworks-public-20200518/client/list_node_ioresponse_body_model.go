@@ -24,7 +24,7 @@ type iListNodeIOResponseBody interface {
 }
 
 type ListNodeIOResponseBody struct {
-	// The node information.
+	// The upstream and downstream information.
 	Data []*ListNodeIOResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -44,13 +44,13 @@ type ListNodeIOResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// E6F0DBDD-5AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListNodeIOResponseBody) Validate() error {
 }
 
 type ListNodeIOResponseBodyData struct {
-	// The name of the ancestor or descendant node.
+	// The name of the input or output.
 	//
 	// example:
 	//

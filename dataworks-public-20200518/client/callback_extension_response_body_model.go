@@ -22,11 +22,11 @@ type CallbackExtensionResponseBody struct {
 	//
 	// 7C352CB7-CD88-50CF-9D0D-E81BDF020E7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// true
+	// true: The call was successful.
 	//
-	// false
+	// false: The call failed.
 	//
 	// example:
 	//

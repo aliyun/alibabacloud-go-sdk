@@ -24,7 +24,7 @@ type iUpdateRemindResponseBody interface {
 }
 
 type UpdateRemindResponseBody struct {
-	// Indicates whether the modification to the custom alert rule succeeds.
+	// The result of updating the custom monitoring rule.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type UpdateRemindResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to troubleshoot issues.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

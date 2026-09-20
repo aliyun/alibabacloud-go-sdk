@@ -26,13 +26,15 @@ type iGetMetaTableOutputRequest interface {
 type GetMetaTableOutputRequest struct {
 	// The end date.
 	//
+	// The format is `yyyy-MM-dd`, for example, `2020-05-27`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-05-27
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The page number. Valid values: 1 to 30. Default value: 1.
+	// The page number. Default value: 1. Minimum value: 1. Maximum value: 30.
 	//
 	// example:
 	//
@@ -46,13 +48,15 @@ type GetMetaTableOutputRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The start date.
 	//
+	// The format is `yyyy-MM-dd`, for example, `2020-06-27`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-06-27
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The GUID of the metatable.
+	// The unique identifier of the table.
 	//
 	// This parameter is required.
 	//

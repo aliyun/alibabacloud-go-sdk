@@ -24,7 +24,7 @@ type iGetNodeChildrenResponseBody interface {
 }
 
 type GetNodeChildrenResponseBody struct {
-	// The information about the descendant nodes.
+	// The list of node information returned.
 	Data *GetNodeChildrenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -44,13 +44,13 @@ type GetNodeChildrenResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to troubleshoot issues.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// adsfasdf-adf-asdf-asdf-asdfadfasdd
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetNodeChildrenResponseBody) Validate() error {
 }
 
 type GetNodeChildrenResponseBodyData struct {
-	// The descendant nodes.
+	// The list of nodes.
 	Nodes []*GetNodeChildrenResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -171,7 +171,7 @@ type GetNodeChildrenResponseBodyDataNodes struct {
 	//
 	// 12345656
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The CRON expression. CRON expressions are used to run auto triggered nodes.
+	// The CRON expression. The expression is used for timed scheduling to execute the node task.
 	//
 	// example:
 	//
@@ -183,25 +183,25 @@ type GetNodeChildrenResponseBodyDataNodes struct {
 	//
 	// 1244564565
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// example:
 	//
 	// test_Node
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The DataWorks UID of the node owner.
 	//
 	// example:
 	//
 	// 123124561341251321
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority. Valid values: 1 to 8. A large value indicates a high priority.
+	// The priority. Valid values: 1 to 8. A larger value indicates a higher priority.
 	//
 	// example:
 	//
 	// 3
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the node.
+	// The node type.
 	//
 	// example:
 	//
@@ -213,25 +213,25 @@ type GetNodeChildrenResponseBodyDataNodes struct {
 	//
 	// 12315412412
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Indicates whether the node can be rerun if the node fails to run. Valid values:
+	// Indicates whether the node can be rerun upon failure. Valid values:
 	//
-	// 	- true
+	// - true: The node can be rerun.
 	//
-	// 	- false
+	// - false: The node cannot be rerun.
 	//
 	// example:
 	//
 	// true
 	Repeatability *bool `json:"Repeatability,omitempty" xml:"Repeatability,omitempty"`
-	// The scheduling type of the node. Valid values:
+	// The scheduling type. Valid values:
 	//
-	// 	- NORMAL: The node is an auto triggered node.
+	// - NORMAL: normal scheduling node.
 	//
-	// 	- MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
+	// - MANUAL: manual node. The node is not scheduled on a regular basis.
 	//
-	// 	- PAUSE: The node is a paused node. Paused nodes are started as scheduled but the system sets the status of the nodes to failed when it starts to run them.
+	// - PAUSE: paused node. The node is scheduled on a regular basis but is set to failed when scheduling starts.
 	//
-	// 	- SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
+	// - SKIP: dry-run node. The node is scheduled on a regular basis but is set to successful when scheduling starts.
 	//
 	// example:
 	//
@@ -239,9 +239,9 @@ type GetNodeChildrenResponseBodyDataNodes struct {
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 	// The scheduling dependency type. Valid values:
 	//
-	// 	- **0**: same-cycle scheduling dependency
+	// - **0**: same-cycle dependency.
 	//
-	// 	- **3**: cross-cycle scheduling dependency
+	// - **3**: cross-cycle dependency.
 	//
 	// example:
 	//

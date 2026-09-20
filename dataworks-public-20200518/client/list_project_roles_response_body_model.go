@@ -16,7 +16,7 @@ type iListProjectRolesResponseBody interface {
 }
 
 type ListProjectRolesResponseBody struct {
-	// The roles in the DataWorks workspace.
+	// The list of roles in the workspace.
 	ProjectRoleList []*ListProjectRolesResponseBodyProjectRoleList `json:"ProjectRoleList,omitempty" xml:"ProjectRoleList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,25 +66,25 @@ func (s *ListProjectRolesResponseBody) Validate() error {
 }
 
 type ListProjectRolesResponseBodyProjectRoleList struct {
-	// The code of the role in the DataWorks workspace.
+	// The code of the workspace role.
 	//
 	// example:
 	//
 	// role_project_guest
 	ProjectRoleCode *string `json:"ProjectRoleCode,omitempty" xml:"ProjectRoleCode,omitempty"`
-	// The ID of the role in the DataWorks workspace.
+	// The ID of the workspace role.
 	//
 	// example:
 	//
 	// 1
 	ProjectRoleId *int32 `json:"ProjectRoleId,omitempty" xml:"ProjectRoleId,omitempty"`
-	// The name of the role in the DataWorks workspace.
+	// The name of the workspace role.
 	//
 	// example:
 	//
 	// Visitor
 	ProjectRoleName *string `json:"ProjectRoleName,omitempty" xml:"ProjectRoleName,omitempty"`
-	// The type of the role in the DataWorks workspace.
+	// The type of the workspace role.
 	//
 	// example:
 	//

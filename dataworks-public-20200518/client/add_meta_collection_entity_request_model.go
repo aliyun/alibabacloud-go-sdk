@@ -26,7 +26,7 @@ type AddMetaCollectionEntityRequest struct {
 	//
 	// album.2222
 	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
-	// The unique identifier of the entity. Example: maxcompute-table.projectA.tableA.
+	// The unique identifier of the entity.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AddMetaCollectionEntityRequest struct {
 	//
 	// maxcompute-table.projectA.tableB
 	EntityQualifiedName *string `json:"EntityQualifiedName,omitempty" xml:"EntityQualifiedName,omitempty"`
-	// The remarks of the entity. Example: latest product table.
+	// The remarks on the entity.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iRestartInstanceResponseBody interface {
 }
 
 type RestartInstanceResponseBody struct {
-	// The data returned.
+	// The details of the result returned after the instance is restarted.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type RestartInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// q32ety****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

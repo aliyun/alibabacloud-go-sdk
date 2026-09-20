@@ -16,7 +16,7 @@ type iGetMetaTableIntroWikiRequest interface {
 }
 
 type GetMetaTableIntroWikiRequest struct {
-	// The GUID of the metatable.
+	// The unique identifier of the table.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetMetaTableIntroWikiRequest struct {
 	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The version of the instructions.
+	// The version of the usage instructions.
 	//
 	// example:
 	//

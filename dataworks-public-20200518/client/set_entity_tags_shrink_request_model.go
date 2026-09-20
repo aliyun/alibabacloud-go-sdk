@@ -24,7 +24,7 @@ type SetEntityTagsShrinkRequest struct {
 	//
 	// maxcompute-table.projectA.tableA
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	// The tags.
+	// The list of labels.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

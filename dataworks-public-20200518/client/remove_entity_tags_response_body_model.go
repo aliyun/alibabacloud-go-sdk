@@ -24,11 +24,11 @@ type iRemoveEntityTagsResponseBody interface {
 }
 
 type RemoveEntityTagsResponseBody struct {
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// true\\
+	// true: Successful.
 	//
-	// false
+	// false: Failed.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type RemoveEntityTagsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type RemoveEntityTagsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true\\
+	// true: Successful.
 	//
-	// false
+	// false: Failed.
 	//
 	// example:
 	//

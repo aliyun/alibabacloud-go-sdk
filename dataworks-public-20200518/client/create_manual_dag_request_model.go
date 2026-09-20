@@ -28,7 +28,9 @@ type iCreateManualDagRequest interface {
 }
 
 type CreateManualDagRequest struct {
-	// The value of the business date must be less than or equal to the current date minus one day. For example, if today is November 11, 2020, the business date must be 2020-11-10 00:00:00 or an earlier date. The hour, minute, and second fields of the business date must all be set to 00.
+	// The business date. The value must be less than or equal to the current date minus 1 day. For example, if today is November 11, 2020, the business date must be 00:00:00 on November 10, 2020 or an earlier date. The hour, minute, and second values of the business date must all be set to 00.
+	//
+	// Format example: `yyyy-MM-dd HH:mm:ss`, such as `2020-11-11 00:00:00`.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +38,19 @@ type CreateManualDagRequest struct {
 	//
 	// 2020-11-11 00:00:00
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The workflow parameters. These parameters are synchronized to all instances of the current DAG. If the scheduling parameters of an internal node reference the workflow parameters in DagParameters, the corresponding parameter values of the node are replaced with the workflow parameters in DagParameters.
+	// The business process parameters. These parameters are synchronized to all instances of the current dagrun. If the scheduling parameters of internal nodes reference the business process parameters in DagParameters, the corresponding parameter values of the nodes are replaced with the business process parameters in DagParameters.
 	//
 	// example:
 	//
 	// {"kaaaa": "vaaaaa", "kbbbb": "vbbbbb"}
 	DagParameters *string `json:"DagParameters,omitempty" xml:"DagParameters,omitempty"`
-	// The list of IDs of the nodes that do not need to be run.
+	// The list of node IDs that do not need to be executed.
 	//
 	// example:
 	//
 	// 123,456
 	ExcludeNodeIds *string `json:"ExcludeNodeIds,omitempty" xml:"ExcludeNodeIds,omitempty"`
-	// The name of the manual workflow.
+	// The name of the manual business process.
 	//
 	// This parameter is required.
 	//
@@ -56,21 +58,21 @@ type CreateManualDagRequest struct {
 	//
 	// test_workflow
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// The list of IDs of the nodes to be run.
+	// The list of node IDs that need to be executed.
 	//
 	// example:
 	//
 	// 74324,74325
 	IncludeNodeIds *string `json:"IncludeNodeIds,omitempty" xml:"IncludeNodeIds,omitempty"`
-	// The node parameter information passed when the manual workflow is executed, in JSON format:
+	// The node parameter information passed when the manual business process is executed. The value is in JSON format:
 	//
 	// `
 	//
 	// {
 	//
-	//      "<A node ID inside the manual workflow>": "The scheduling parameter information of the node, consistent with the parameter format in the data development scheduling configuration",
+	//      "<Node ID within the manual business process>": "Scheduling parameter information of the node, in the same format as the parameters in the scheduling configuration of DataStudio",
 	//
-	//      "<A node ID inside the manual workflow>": "The scheduling parameter information of the node, consistent with the parameter format in the data development scheduling configuration"
+	//      "<Node ID within the manual business process>": "Scheduling parameter information of the node, in the same format as the parameters in the scheduling configuration of DataStudio"
 	//
 	// }
 	//
@@ -80,7 +82,7 @@ type CreateManualDagRequest struct {
 	//
 	// {"20000123121": "key1=val2 key2=val2", "20000123124": "kkkk=vvvvv aaaa=bbbb"}
 	NodeParameters *string `json:"NodeParameters,omitempty" xml:"NodeParameters,omitempty"`
-	// The environment identifier of the Scheduling Operation Center. PROD indicates the production environment, and DEV indicates the development environment.
+	// The environment identifier of the O&M center. PROD indicates the production environment. DEV indicates the development environment.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +90,7 @@ type CreateManualDagRequest struct {
 	//
 	// PROD or DEV
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The English name of the workspace to which the manual workflow belongs.
+	// The English name of the workspace to which the manual business process belongs.
 	//
 	// This parameter is required.
 	//

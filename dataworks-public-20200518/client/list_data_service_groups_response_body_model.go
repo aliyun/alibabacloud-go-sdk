@@ -16,9 +16,9 @@ type iListDataServiceGroupsResponseBody interface {
 }
 
 type ListDataServiceGroupsResponseBody struct {
-	// The paging result for the business processes.
+	// The pagination result of business processes.
 	GroupPagingResult *ListDataServiceGroupsResponseBodyGroupPagingResult `json:"GroupPagingResult,omitempty" xml:"GroupPagingResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. A unique identifier for the request.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListDataServiceGroupsResponseBody) Validate() error {
 }
 
 type ListDataServiceGroupsResponseBodyGroupPagingResult struct {
-	// The business processes.
+	// The list of business processes.
 	Groups []*ListDataServiceGroupsResponseBodyGroupPagingResultGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
+	// The page number, which is the same as the PageNumber value in the request.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListDataServiceGroupsResponseBodyGroupPagingResult) Validate() error {
 }
 
 type ListDataServiceGroupsResponseBodyGroupPagingResultGroups struct {
-	// The ID of the API Gateway group to which the workflow is bound.
+	// The ID of the API Gateway group associated with the business process.
 	//
 	// example:
 	//
@@ -150,11 +150,13 @@ type ListDataServiceGroupsResponseBodyGroupPagingResultGroups struct {
 	ApiGatewayGroupId *string `json:"ApiGatewayGroupId,omitempty" xml:"ApiGatewayGroupId,omitempty"`
 	// The time when the business process was created.
 	//
+	// The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
+	//
 	// example:
 	//
 	// 2020-09-24T18:37:51+0800
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The user identifier (UID) of the creator of the business process. The value of this parameter may be empty for creators of some existing business processes.
+	// The UID of the creator. The creator UID may be empty for some legacy business processes.
 	//
 	// example:
 	//
@@ -164,9 +166,9 @@ type ListDataServiceGroupsResponseBodyGroupPagingResultGroups struct {
 	//
 	// example:
 	//
-	// Workflow description
+	// Business process description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The business process ID.
+	// The ID of the business process.
 	//
 	// example:
 	//
@@ -176,9 +178,11 @@ type ListDataServiceGroupsResponseBodyGroupPagingResultGroups struct {
 	//
 	// example:
 	//
-	// Workflow name
+	// Business process name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the business process was modified.
+	// The time when the business process was last modified.
+	//
+	// The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
 	//
 	// example:
 	//

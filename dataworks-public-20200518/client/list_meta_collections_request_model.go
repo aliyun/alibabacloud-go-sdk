@@ -36,9 +36,11 @@ type ListMetaCollectionsRequest struct {
 	//
 	// 1200759642363000
 	Administrator *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
-	// - ALBUM: data album
+	// The type of collection to query. Valid values:
 	//
-	// - ALBUM_CATEGORY: category in a data album
+	// - **ALBUM**: album collection.
+	//
+	// - **ALBUM_CATEGORY**: subcategory within an album.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +48,7 @@ type ListMetaCollectionsRequest struct {
 	//
 	// ALBUM
 	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// The ID of the collection creator.
+	// The user ID of the creator.
 	//
 	// example:
 	//
@@ -64,13 +66,13 @@ type ListMetaCollectionsRequest struct {
 	//
 	// Keyword
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token that specifies the start point of the current read operation.
 	//
 	// example:
 	//
 	// 12345
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The name of the sorting field.
+	// The name of the field used for sorting.
 	//
 	// example:
 	//

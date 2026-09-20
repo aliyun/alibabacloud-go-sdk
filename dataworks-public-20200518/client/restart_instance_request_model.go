@@ -16,7 +16,9 @@ type iRestartInstanceRequest interface {
 }
 
 type RestartInstanceRequest struct {
-	// The instance ID.
+	// The ID of the instance.
+	//
+	// You can obtain the ID from Data.Instances[].InstanceId in the ListInstances response.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +26,11 @@ type RestartInstanceRequest struct {
 	//
 	// 1234
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
+	// The environment of the workspace. Valid values:
+	//
+	// - PROD: production environment
+	//
+	// - DEV: development environment
 	//
 	// This parameter is required.
 	//

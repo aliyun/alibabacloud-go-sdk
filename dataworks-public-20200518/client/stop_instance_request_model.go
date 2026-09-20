@@ -16,7 +16,7 @@ type iStopInstanceRequest interface {
 }
 
 type StopInstanceRequest struct {
-	// The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/173982.html) operation to obtain the ID.
+	// The ID of the instance. You can call [ListInstances](https://help.aliyun.com/document_detail/173982.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//

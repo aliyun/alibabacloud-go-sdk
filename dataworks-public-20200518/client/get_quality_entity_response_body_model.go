@@ -24,7 +24,7 @@ type iGetQualityEntityResponseBody interface {
 }
 
 type GetQualityEntityResponseBody struct {
-	// The data returned.
+	// The returned information.
 	Data []*GetQualityEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -50,7 +50,7 @@ type GetQualityEntityResponseBody struct {
 	//
 	// 6d739ef6-098a-47****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -134,17 +134,19 @@ func (s *GetQualityEntityResponseBody) Validate() error {
 }
 
 type GetQualityEntityResponseBodyData struct {
-	// The time when the partition filter expression was created.
+	// The time when the partition expression was created.
+	//
+	// The value is a 13-digit number, for example, `1593964800000`.
 	//
 	// example:
 	//
 	// 1593964800000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The level of the partition filter expression. Valid values:
+	// The level of the partition expression. Valid values:
 	//
-	// - 0 (SQL-level): A data quality check is triggered after each SQL statement is run.
+	// - 0 (SQL level): DQC verification is triggered after each SQL statement is executed.
 	//
-	// - 1 (Task-level): A data quality check is triggered after all SQL statements are run.
+	// - 1 (Task level): Verification is performed after all SQL statements are executed.
 	//
 	// example:
 	//
@@ -156,53 +158,55 @@ type GetQualityEntityResponseBodyData struct {
 	//
 	// odps
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The subscribers who receive alert notifications. The value is the ID of an Alibaba Cloud account.
+	// The subscribers. The Alibaba Cloud account IDs that receive alert notifications.
 	//
 	// example:
 	//
 	// 1822931****
 	Followers *string `json:"Followers,omitempty" xml:"Followers,omitempty"`
-	// Indicates whether the partition filter expression is associated with a scheduling node. Valid values:
+	// Indicates whether the partition expression is associated with scheduling. Valid values:
 	//
-	// - true: The partition filter expression is associated with a scheduling node.
+	// - true: Associated with scheduling.
 	//
-	// - false: The partition filter expression is not associated with a scheduling node.
+	// - false: Not associated with scheduling.
 	//
 	// example:
 	//
 	// true
 	HasRelativeNode *bool `json:"HasRelativeNode,omitempty" xml:"HasRelativeNode,omitempty"`
-	// The ID of the partition filter expression.
+	// The ID of the partition expression.
 	//
 	// example:
 	//
 	// 4003918
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The partition filter expression.
+	// The partition expression.
 	//
 	// example:
 	//
 	// dt=$[yyyymmdd-1]
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
-	// The time when the partition filter expression was last updated.
+	// The time when the partition expression was updated.
+	//
+	// The value is a 13-digit number, for example, `1593964800000`.
 	//
 	// example:
 	//
 	// 1593964800000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The user who updates the partition filter expression. The value is the ID of an Alibaba Cloud account.
+	// The account ID of the user who updated the partition expression.
 	//
 	// example:
 	//
 	// 1822931****
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The owner who configures the partition filter expression. The value is the ID of an Alibaba Cloud account.
+	// The owner. The account ID of the user who configured the partition expression.
 	//
 	// example:
 	//
 	// 1822931****
 	OnDuty *string `json:"OnDuty,omitempty" xml:"OnDuty,omitempty"`
-	// The name of the Alibaba Cloud account of the owner.
+	// The Alibaba Cloud account name of the owner.
 	//
 	// example:
 	//
@@ -214,17 +218,17 @@ type GetQualityEntityResponseBodyData struct {
 	//
 	// autotest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The scheduling node that is associated with the partition filter expression. This parameter includes the following sub-parameters:
+	// The information about the scheduling node associated with the partition expression, including:
 	//
-	// - ProjectName: The name of the workspace to which the scheduling node belongs.
+	// - ProjectName: the name of the project to which the scheduling node belongs.
 	//
-	// - NodeID: The ID of the scheduling node.
+	// - NodeID: the node ID of the scheduling node.
 	//
 	// example:
 	//
 	// [{"projectName":"xc_DP****","nodeId":7000026****}]
 	RelativeNode *string `json:"RelativeNode,omitempty" xml:"RelativeNode,omitempty"`
-	// The SQL-level partition filter expression.
+	// The SQL-level partition expression.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListDIJobsResponseBody interface {
 }
 
 type ListDIJobsResponseBody struct {
-	// The pagination information.
+	// The paginated task results.
 	DIJobPaging *ListDIJobsResponseBodyDIJobPaging `json:"DIJobPaging,omitempty" xml:"DIJobPaging,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListDIJobsResponseBody) Validate() error {
 }
 
 type ListDIJobsResponseBodyDIJobPaging struct {
-	// The list of tasks.
+	// The task list.
 	DIJobs []*ListDIJobsResponseBodyDIJobPagingDIJobs `json:"DIJobs,omitempty" xml:"DIJobs,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -70,13 +70,13 @@ type ListDIJobsResponseBodyDIJobPaging struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ListDIJobsResponseBodyDIJobPagingDIJobs struct {
 	//
 	// 16626
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The type of the destination. The value Hologres is returned.
+	// The destination data source type. Valid values: Hologres.
 	//
 	// example:
 	//
@@ -160,19 +160,19 @@ type ListDIJobsResponseBodyDIJobPagingDIJobs struct {
 	//
 	// mysql_to_holo_sync_8772
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The task status. Valid values:
+	// The synchronization status. Valid values:
 	//
-	// - Finished
+	// - Finished: Completed successfully.
 	//
-	// - Initialized
+	// - Initialized: Initialization completed.
 	//
-	// - Stopped
+	// - Stopped: Stopped.
 	//
-	// - Failed
+	// - Failed: Failed.
 	//
-	// - Running
+	// - Running: Running.
 	//
-	// - Stopping
+	// - Stopping: Stopping.
 	//
 	// example:
 	//
@@ -180,11 +180,11 @@ type ListDIJobsResponseBodyDIJobPagingDIJobs struct {
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// - FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	// - FullAndRealtimeIncremental: Full and real-time incremental.
 	//
-	// - RealtimeIncremental: real-time incremental synchronization
+	// - RealtimeIncremental: Real-time incremental.
 	//
-	// - Full: one-time full synchronization
+	// - Full: Full.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type ListDIJobsResponseBodyDIJobPagingDIJobs struct {
 	//
 	// 1967
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the source. The value MySQL is returned.
+	// The source data source type. Valid values: MySQL.
 	//
 	// example:
 	//

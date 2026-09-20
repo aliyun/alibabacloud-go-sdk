@@ -18,7 +18,7 @@ type iListProjectMembersRequest interface {
 }
 
 type ListProjectMembersRequest struct {
-	// The page number. Valid values: 1 to 30. Default value: 1.
+	// The page number. Default value: 1. Minimum value: 1. Maximum value: 30.
 	//
 	// example:
 	//

@@ -68,7 +68,7 @@ type GetDDLJobStatusResponseBodyData struct {
 	//
 	// success
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the ongoing task. If no value is returned for this parameter, all subtasks are complete.
+	// The ID of the task that is in progress. If this parameter is empty, all tasks are completed.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetDDLJobStatusResponseBodyData struct {
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

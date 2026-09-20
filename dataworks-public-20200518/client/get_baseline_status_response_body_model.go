@@ -26,31 +26,31 @@ type iGetBaselineStatusResponseBody interface {
 type GetBaselineStatusResponseBody struct {
 	// The details of the baseline instance.
 	Data *GetBaselineStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// 1031203110005
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -142,53 +142,53 @@ type GetBaselineStatusResponseBodyData struct {
 	//
 	// Baseline name
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The data timestamp of the baseline instance.
+	// The business date timestamp.
 	//
 	// example:
 	//
 	// 1553443200000
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The information about the key instance.
+	// The information about the critical instance.
 	BlockInstance *GetBaselineStatusResponseBodyDataBlockInstance `json:"BlockInstance,omitempty" xml:"BlockInstance,omitempty" type:"Struct"`
-	// The margin of the baseline instance. Unit: seconds.
+	// The buffer time of the baseline instance, in seconds.
 	//
 	// example:
 	//
 	// 1200
 	Buffer *float32 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
-	// The timestamp of the predicted time when the baseline instance finished running.
+	// The estimated completion timestamp of the baseline instance.
 	//
 	// example:
 	//
 	// 1553443200000
 	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	// The timestamp of the alerting time of the baseline instance.
+	// The warning timestamp of the baseline instance.
 	//
 	// example:
 	//
 	// 1553443200000
 	ExpTime *int64 `json:"ExpTime,omitempty" xml:"ExpTime,omitempty"`
-	// The status of the baseline instance. Valid values: UNFINISH and FINISH. The value UNFINISH indicates that the baseline instance is still running. The value FINISH indicates that the baseline instance finishes running.
+	// Indicates whether the baseline instance is completed. Valid values: UNFINISH and FINISH.
 	//
 	// example:
 	//
 	// UNFINISH
 	FinishStatus *string `json:"FinishStatus,omitempty" xml:"FinishStatus,omitempty"`
-	// The timestamp of the actual time when the baseline instance finished running. This parameter is returned if the value of the FinishStatus parameter is FINISH.
+	// The completion timestamp of the baseline instance. This parameter is returned only when FinishStatus is FINISH.
 	//
 	// example:
 	//
 	// 1553443200000
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+	// The cycle number of the baseline instance. The value is 1 for daily baselines. The value ranges from [1,24\\] for hourly baselines.
 	//
 	// example:
 	//
 	// 1
 	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	// The information about the last generated instance.
+	// The information about the latest instance.
 	LastInstance *GetBaselineStatusResponseBodyDataLastInstance `json:"LastInstance,omitempty" xml:"LastInstance,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
+	// The Alibaba Cloud UID of the baseline owner. Multiple owners are separated by commas (,).
 	//
 	// example:
 	//
@@ -206,13 +206,13 @@ type GetBaselineStatusResponseBodyData struct {
 	//
 	// 1234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The timestamp of the committed completion time of the baseline instance.
+	// The committed completion timestamp of the baseline instance.
 	//
 	// example:
 	//
 	// 1553443200000
 	SlaTime *int64 `json:"SlaTime,omitempty" xml:"SlaTime,omitempty"`
-	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes finish running before the alerting time. The value DANGEROUS indicates that nodes are still running after the alerting time but before the committed completion time. The value OVER indicates that nodes are still running after the committed completion time.
+	// The status of the baseline. Valid values: ERROR, SAFE, DANGROUS (warning), and OVER (exceeded).
 	//
 	// example:
 	//
@@ -387,13 +387,13 @@ func (s *GetBaselineStatusResponseBodyData) Validate() error {
 }
 
 type GetBaselineStatusResponseBodyDataBlockInstance struct {
-	// The timestamp of the predicted time when the instance finished running.
+	// The estimated completion timestamp of the instance.
 	//
 	// example:
 	//
 	// 1553443200000
 	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	// The timestamp of the actual time when the instance finished running.
+	// The actual completion timestamp of the instance.
 	//
 	// example:
 	//
@@ -415,9 +415,9 @@ type GetBaselineStatusResponseBodyDataBlockInstance struct {
 	//
 	// example:
 	//
-	// 节点名称
+	// NodeName
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//
@@ -429,7 +429,7 @@ type GetBaselineStatusResponseBodyDataBlockInstance struct {
 	//
 	// 1234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS.
 	//
 	// example:
 	//
@@ -522,13 +522,13 @@ func (s *GetBaselineStatusResponseBodyDataBlockInstance) Validate() error {
 }
 
 type GetBaselineStatusResponseBodyDataLastInstance struct {
-	// The timestamp of the predicted time when the instance finished running.
+	// The estimated completion timestamp of the instance.
 	//
 	// example:
 	//
 	// 1553443200000
 	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	// The timestamp of the actual time when the instance finished running.
+	// The actual completion timestamp of the instance.
 	//
 	// example:
 	//
@@ -552,7 +552,7 @@ type GetBaselineStatusResponseBodyDataLastInstance struct {
 	//
 	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//
@@ -564,7 +564,7 @@ type GetBaselineStatusResponseBodyDataLastInstance struct {
 	//
 	// 1234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS.
 	//
 	// example:
 	//

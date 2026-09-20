@@ -22,7 +22,23 @@ type iUpdateQualityFollowerRequest interface {
 }
 
 type UpdateQualityFollowerRequest struct {
-	// The notification method. Valid values: 1 (email), 2 (email and SMS), 4 (DingTalk group chatbot), 5 (DingTalk group chatbot with an @all reminder), 6 (Lark), 7 (WeCom), 8 (webhook), and 9 (phone call).
+	// The notification method. Valid values:
+	//
+	// - 1: email
+	//
+	// - 2: email and SMS
+	//
+	// - 4: DingTalk chatbot
+	//
+	// - 5: DingTalk chatbot @ALL
+	//
+	// - 6: Lark
+	//
+	// - 7: WeCom
+	//
+	// - 8: WEBHOOK
+	//
+	// - 9: phone call alert
 	//
 	// This parameter is required.
 	//
@@ -38,7 +54,7 @@ type UpdateQualityFollowerRequest struct {
 	//
 	// 1912232****
 	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
-	// The ID of the subscription.
+	// The ID of the subscription relationship.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +62,7 @@ type UpdateQualityFollowerRequest struct {
 	//
 	// 1234
 	FollowerId *int64 `json:"FollowerId,omitempty" xml:"FollowerId,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the DataWorks console to obtain the ID.
+	// The ID of the DataWorks workspace. You can obtain the ID from the DataWorks console.
 	//
 	// example:
 	//

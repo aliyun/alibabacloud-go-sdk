@@ -24,7 +24,7 @@ type iQueryRecognizeDataByRuleTypeResponseBody interface {
 }
 
 type QueryRecognizeDataByRuleTypeResponseBody struct {
-	// The returned result in the JSON format.
+	// The returned data in JSON format.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type QueryRecognizeDataByRuleTypeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
-	// 10000001
+	// 100000012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListMetaDBResponseBody interface {
 }
 
 type ListMetaDBResponseBody struct {
-	// The information about the metadatabases.
+	// The database information.
 	DatabaseInfo *ListMetaDBResponseBodyDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *ListMetaDBResponseBody) Validate() error {
 }
 
 type ListMetaDBResponseBodyDatabaseInfo struct {
-	// The metadatabases.
+	// The list of databases.
 	DbList []*ListMetaDBResponseBodyDatabaseInfoDbList `json:"DbList,omitempty" xml:"DbList,omitempty" type:"Repeated"`
-	// The total number of the metadatabases returned.
+	// The total number of databases.
 	//
 	// example:
 	//
@@ -112,43 +112,43 @@ func (s *ListMetaDBResponseBodyDatabaseInfo) Validate() error {
 }
 
 type ListMetaDBResponseBodyDatabaseInfoDbList struct {
-	// The timestamp at which the metadatabase was created. You can convert the timestamp to the date based on the time zone that you use.
+	// The time when the database was created. The value is a timestamp. You can convert the timestamp to a date based on your time zone.
 	//
 	// example:
 	//
 	// 1388776825
 	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The URL of the metadatabase.
+	// The storage address of the database.
 	//
 	// example:
 	//
 	// hdfs://localhost:777/user/hadoop/test.txt
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The timestamp at which the metadatabase was updated.
+	// The time when the database was last updated.
 	//
 	// example:
 	//
 	// 1388776837
 	ModifiedTimeStamp *int64 `json:"ModifiedTimeStamp,omitempty" xml:"ModifiedTimeStamp,omitempty"`
-	// The name of the metadatabase.
+	// The name of the database.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner ID.
+	// The ID of the owner.
 	//
 	// example:
 	//
 	// 1232
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the metadatabase.
+	// The type of the database.
 	//
 	// example:
 	//
 	// HIVE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the metadatabase.
+	// The unique identifier of the database.
 	//
 	// example:
 	//

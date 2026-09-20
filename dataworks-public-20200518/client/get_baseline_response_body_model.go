@@ -24,7 +24,7 @@ type iGetBaselineResponseBody interface {
 }
 
 type GetBaselineResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *GetBaselineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -52,9 +52,9 @@ type GetBaselineResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -134,17 +134,17 @@ func (s *GetBaselineResponseBody) Validate() error {
 }
 
 type GetBaselineResponseBodyData struct {
-	// Indicates whether the alerting feature is enabled. Valid values:
+	// Indicates whether alerting is started. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	AlertEnabled *bool `json:"AlertEnabled,omitempty" xml:"AlertEnabled,omitempty"`
-	// The alert margin threshold. Unit: minutes.
+	// The alert margin threshold, in minutes.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetBaselineResponseBodyData struct {
 	AlertMarginThreshold *int32 `json:"AlertMarginThreshold,omitempty" xml:"AlertMarginThreshold,omitempty"`
 	// The alert settings.
 	AlertSettings []*GetBaselineResponseBodyDataAlertSettings `json:"AlertSettings,omitempty" xml:"AlertSettings,omitempty" type:"Repeated"`
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// example:
 	//
@@ -166,23 +166,23 @@ type GetBaselineResponseBodyData struct {
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	// The type of the baseline. Valid values:
 	//
-	// 	- DAILY
+	// - DAILY: daily baseline.
 	//
-	// 	- HOURLY
+	// - HOURLY: hourly baseline.
 	//
 	// example:
 	//
 	// DAILY
 	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	// Indicates whether the baseline is enabled.
+	// Indicates whether the baseline is started.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The node IDs.
+	// The list of upstream nodes of the baseline.
 	NodeIds []*int64 `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// The settings of the committed completion time of the baseline.
+	// The baseline committed time settings.
 	OverTimeSettings []*GetBaselineResponseBodyDataOverTimeSettings `json:"OverTimeSettings,omitempty" xml:"OverTimeSettings,omitempty" type:"Repeated"`
 	// The owner.
 	//
@@ -196,7 +196,7 @@ type GetBaselineResponseBodyData struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
@@ -343,81 +343,82 @@ func (s *GetBaselineResponseBodyData) Validate() error {
 }
 
 type GetBaselineResponseBodyDataAlertSettings struct {
-	// The event alert interval, in seconds.
+	// The event alerting interval, in seconds.
 	//
 	// example:
 	//
 	// 900
 	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
-	// The maximum number of event alerts.
+	// The maximum number of event alerting notifications.
 	//
 	// example:
 	//
 	// 1
 	AlertMaximum *int32 `json:"AlertMaximum,omitempty" xml:"AlertMaximum,omitempty"`
-	// Alert method list
+	// The list of alert methods.
 	AlertMethods []*string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty" type:"Repeated"`
-	// Alert recipient details.
+	// The alert recipient details.
 	//
-	// AlertRecipientType is OWNER: empty
+	// - If AlertRecipientType is set to OWNER: empty.
 	//
-	// AlertRecipientType is SHIFT_SCHEDULE: duty table uid
+	// - If AlertRecipientType is set to SHIFT_SCHEDULE: the UID of the shift schedule.
 	//
-	// AlertRecipientType is OTHER: uid list, multiple UIDs are in English, split
+	// - If AlertRecipientType is set to OTHER: a list of UIDs. Separate multiple UIDs with commas (,).
 	//
 	// example:
 	//
 	// 123123
 	AlertRecipient *string `json:"AlertRecipient,omitempty" xml:"AlertRecipient,omitempty"`
-	// The type of alert recipient.
+	// The type of alert recipient. Valid values:
 	//
-	// - OWNER: task owner
+	// - OWNER: node owner.
 	//
-	// - OTHER: designated person
+	// - OTHER: specified users.
 	//
-	// - SHIFT: SCHEDULE-duty table
+	// - SHIFT_SCHEDULE: shift schedule.
 	//
 	// example:
 	//
 	// OWNER
 	AlertRecipientType *string `json:"AlertRecipientType,omitempty" xml:"AlertRecipientType,omitempty"`
-	// Alert type
+	// The alerting type. Valid values:
 	//
-	// - BASELINE: baseline
+	// - BASELINE: baseline.
 	//
-	// - TOPIC: event
+	// - TOPIC: event.
 	//
 	// example:
 	//
 	// BASELINE
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The baseline alarm switch.
+	// The baseline alert switch. This is a baseline-specific configuration. Valid values:
 	//
-	// - true
+	// - true: started.
 	//
-	// - false
+	// - false: stopped.
 	//
 	// example:
 	//
 	// false
 	BaselineAlertEnabled *bool `json:"BaselineAlertEnabled,omitempty" xml:"BaselineAlertEnabled,omitempty"`
-	// DingTalk robot list.
+	// The list of DingTalk chatbots.
 	DingRobots []*GetBaselineResponseBodyDataAlertSettingsDingRobots `json:"DingRobots,omitempty" xml:"DingRobots,omitempty" type:"Repeated"`
-	// The end time of the silence. The format is HH:mm:ss.
+	// The silence end time, in the HH:mm:ss format.
 	//
 	// example:
 	//
 	// 00:00:00
 	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
-	// The start time of the silence. Format: HH:mm:ss
+	// The silence start time, in the HH:mm:ss format.
 	//
 	// example:
 	//
 	// 00:00:00
-	SilenceStartTime *string `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
-	// The list of Event Alert types.
+	SilenceStartTime *string                                                  `json:"SilenceStartTime,omitempty" xml:"SilenceStartTime,omitempty"`
+	TopicSlowConfig  *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig `json:"TopicSlowConfig,omitempty" xml:"TopicSlowConfig,omitempty" type:"Struct"`
+	// The list of event alerting types. This is an event-specific configuration.
 	TopicTypes []*string `json:"TopicTypes,omitempty" xml:"TopicTypes,omitempty" type:"Repeated"`
-	// webhook list.
+	// The list of webhooks.
 	Webhooks []*string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty" type:"Repeated"`
 }
 
@@ -467,6 +468,10 @@ func (s *GetBaselineResponseBodyDataAlertSettings) GetSilenceEndTime() *string {
 
 func (s *GetBaselineResponseBodyDataAlertSettings) GetSilenceStartTime() *string {
 	return s.SilenceStartTime
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettings) GetTopicSlowConfig() *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig {
+	return s.TopicSlowConfig
 }
 
 func (s *GetBaselineResponseBodyDataAlertSettings) GetTopicTypes() []*string {
@@ -527,6 +532,11 @@ func (s *GetBaselineResponseBodyDataAlertSettings) SetSilenceStartTime(v string)
 	return s
 }
 
+func (s *GetBaselineResponseBodyDataAlertSettings) SetTopicSlowConfig(v *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) *GetBaselineResponseBodyDataAlertSettings {
+	s.TopicSlowConfig = v
+	return s
+}
+
 func (s *GetBaselineResponseBodyDataAlertSettings) SetTopicTypes(v []*string) *GetBaselineResponseBodyDataAlertSettings {
 	s.TopicTypes = v
 	return s
@@ -547,17 +557,22 @@ func (s *GetBaselineResponseBodyDataAlertSettings) Validate() error {
 			}
 		}
 	}
+	if s.TopicSlowConfig != nil {
+		if err := s.TopicSlowConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type GetBaselineResponseBodyDataAlertSettingsDingRobots struct {
-	// Whether @ everyone.
+	// Indicates whether to @ all members.
 	//
 	// example:
 	//
 	// true
 	AtAll *bool `json:"AtAll,omitempty" xml:"AtAll,omitempty"`
-	// DingTalk robot address
+	// The webhook URL of the DingTalk chatbot.
 	//
 	// example:
 	//
@@ -595,14 +610,55 @@ func (s *GetBaselineResponseBodyDataAlertSettingsDingRobots) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig struct {
+	// example:
+	//
+	// 3600
+	MinOver *int32 `json:"MinOver,omitempty" xml:"MinOver,omitempty"`
+	// example:
+	//
+	// 0.2
+	OverFactor *float64 `json:"OverFactor,omitempty" xml:"OverFactor,omitempty"`
+}
+
+func (s GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) GetMinOver() *int32 {
+	return s.MinOver
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) GetOverFactor() *float64 {
+	return s.OverFactor
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) SetMinOver(v int32) *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig {
+	s.MinOver = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) SetOverFactor(v float64) *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig {
+	s.OverFactor = &v
+	return s
+}
+
+func (s *GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetBaselineResponseBodyDataOverTimeSettings struct {
-	// The period corresponding to the commitment time. The space-based line is 1, and the hourly baseline can be configured for up to 24 cycles.
+	// The cycle corresponding to the committed time. The value is 1 for daily baselines. You can configure up to 24 cycles for hourly baselines.
 	//
 	// example:
 	//
 	// 1
 	Cycle *int32 `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// Commitment time, hh:mm format, hh value range is [0,47],mm value range is [0,59].
+	// The committed time in hh:mm format, where hh ranges from 0 to 47 and mm ranges from 0 to 59.
 	//
 	// example:
 	//

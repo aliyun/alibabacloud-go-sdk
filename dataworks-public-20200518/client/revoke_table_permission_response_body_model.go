@@ -22,7 +22,7 @@ type RevokeTablePermissionResponseBody struct {
 	//
 	// 0bc1ec92159376****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the permissions are revoked.
+	// Indicates whether the revocation was successful.
 	//
 	// example:
 	//

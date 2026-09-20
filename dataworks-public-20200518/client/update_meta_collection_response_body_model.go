@@ -30,7 +30,7 @@ type UpdateMetaCollectionResponseBody struct {
 	//
 	// 9999
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,23 +42,27 @@ type UpdateMetaCollectionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values: true false
+	// The update result. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The call was successful.
 	//
-	// - false: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

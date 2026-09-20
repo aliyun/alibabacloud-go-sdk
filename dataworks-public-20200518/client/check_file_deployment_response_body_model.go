@@ -14,7 +14,7 @@ type iCheckFileDeploymentResponseBody interface {
 }
 
 type CheckFileDeploymentResponseBody struct {
-	// The request ID. You can use the ID to troubleshoot issues.
+	// The request ID, which is used for subsequent troubleshooting.
 	//
 	// example:
 	//

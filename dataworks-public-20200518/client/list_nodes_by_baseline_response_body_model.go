@@ -24,7 +24,7 @@ type iListNodesByBaselineResponseBody interface {
 }
 
 type ListNodesByBaselineResponseBody struct {
-	// The nodes in the baseline.
+	// The list of nodes in the baseline.
 	Data []*ListNodesByBaselineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -44,13 +44,13 @@ type ListNodesByBaselineResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to troubleshoot issues.
+	// The request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListNodesByBaselineResponseBody) Validate() error {
 }
 
 type ListNodesByBaselineResponseBodyData struct {
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type ListNodesByBaselineResponseBodyData struct {
 	//
 	// Node name
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the Alibaba Cloud account used by the node owner.
+	// The Alibaba Cloud UID of the node owner.
 	//
 	// example:
 	//

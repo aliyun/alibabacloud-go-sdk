@@ -44,13 +44,13 @@ type GetMetaTableFullInfoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 0bc1411515937****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -130,27 +130,27 @@ func (s *GetMetaTableFullInfoResponseBody) Validate() error {
 }
 
 type GetMetaTableFullInfoResponseBodyData struct {
-	// The EMR cluster ID.
+	// The ID of the EMR cluster.
 	//
 	// example:
 	//
 	// C-010A704DA760****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The fields in the table.
+	// The list of fields.
 	ColumnList []*GetMetaTableFullInfoResponseBodyDataColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
-	// The comment on the table.
+	// The comment of the table.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the table was created. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+	// The time when the table was created. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
 	//
 	// example:
 	//
 	// 1589870293000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The size of the storage space that is consumed by the table. Unit: bytes.
+	// The storage space occupied by the table, in bytes.
 	//
 	// example:
 	//
@@ -162,49 +162,49 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	//
 	// abc
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The type of the environment. Valid values:
+	// The environment type. Valid values:
 	//
-	// - 0: indicates that the table resides in the development environment.
+	// - 0: The table is in the development environment.
 	//
-	// - 1: indicates that the table resides in the production environment.
+	// - 1: The table is in the production environment.
 	//
 	// example:
 	//
 	// 1
 	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The scope in which the table is visible. Valid values:
+	// The visibility of the table. Valid values:
 	//
-	// - 0: indicates that the table is visible to workspace members.
+	// - 0: The table is visible to workspace members.
 	//
-	// - 1: indicates that the table is visible to users within a tenant.
+	// - 1: The table is visible within the tenant.
 	//
-	// - 2: indicates that the table is visible to all tenants.
+	// - 2: The table is visible across tenants.
 	//
-	// - 3: indicates that the table is visible only to the table owner.
+	// - 3: The table is visible only to the owner.
 	//
 	// example:
 	//
 	// 1
 	IsVisible *int32 `json:"IsVisible,omitempty" xml:"IsVisible,omitempty"`
-	// The time when the table was last accessed. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+	// The time when the table was last accessed. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastAccessTime *int64 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	// The time when the schema of the table was last changed. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+	// The time when the table schema was last changed. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastDdlTime *int64 `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	// The time when the table was last updated. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+	// The time when the table was last updated. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The lifecycle of the table. Unit: days.
+	// The lifecycle of the table, in days.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	//
 	// 123
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The partition key column.
+	// The partition keys.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	//
 	// default
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The unique identifier of the table.
+	// The GUID of the table.
 	//
 	// example:
 	//
@@ -498,7 +498,7 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	//
 	// data comment
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The unique identifier of the field.
+	// The GUID of the field.
 	//
 	// example:
 	//
@@ -510,13 +510,13 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	//
 	// 1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the field.
+	// The type of the field.
 	//
 	// example:
 	//
 	// string
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The remarks of the field.
+	// The comment of the field.
 	//
 	// example:
 	//
@@ -524,9 +524,9 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Indicates whether the field is a foreign key. Valid values:
 	//
-	// - true
+	// - true: The field is a foreign key.
 	//
-	// - false
+	// - false: The field is not a foreign key.
 	//
 	// example:
 	//
@@ -534,9 +534,9 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	IsForeignKey *bool `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
 	// Indicates whether the field is a partition field. Valid values:
 	//
-	// - true
+	// - true: The field is a partition field.
 	//
-	// - false
+	// - false: The field is not a partition field.
 	//
 	// example:
 	//
@@ -544,15 +544,15 @@ type GetMetaTableFullInfoResponseBodyDataColumnList struct {
 	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
 	// Indicates whether the field is a primary key. Valid values:
 	//
-	// - true
+	// - true: The field is a primary key.
 	//
-	// - false
+	// - false: The field is not a primary key.
 	//
 	// example:
 	//
 	// false
 	IsPrimaryKey *bool `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
-	// The sequence number of the field.
+	// The ordinal position of the field.
 	//
 	// example:
 	//

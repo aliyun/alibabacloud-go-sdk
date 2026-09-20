@@ -54,7 +54,7 @@ type UpdateQualityFollowerResponseBody struct {
 	//
 	// 576b9457-2cf5-4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

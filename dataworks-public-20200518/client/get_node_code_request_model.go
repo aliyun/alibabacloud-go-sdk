@@ -24,7 +24,11 @@ type GetNodeCodeRequest struct {
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The environment of the workspace. Valid values: PROD and DEV.
+	// The environment of the workspace. Valid values:
+	//
+	// - PROD: production environment
+	//
+	// - DEV: development environment
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iListNodeIORequest interface {
 }
 
 type ListNodeIORequest struct {
-	// Specifies whether to query the information about ancestor or descendant nodes of the current node. Valid values: input and output.
+	// Specifies whether to query upstream or downstream nodes. Valid values: input and output.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ListNodeIORequest struct {
 	//
 	// output
 	IoType *string `json:"IoType,omitempty" xml:"IoType,omitempty"`
-	// The node ID. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the ID.
+	// The ID of the node. You can call [ListNodes](https://help.aliyun.com/document_detail/173979.html) to query the NodeId.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListNodeIORequest struct {
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The runtime environment. Valid values: DEV and PROD.
+	// The environment in which the node runs. Valid values: DEV (development environment) and PROD (production environment).
 	//
 	// This parameter is required.
 	//

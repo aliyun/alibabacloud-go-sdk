@@ -16,7 +16,7 @@ type iCheckMetaTableResponseBody interface {
 }
 
 type CheckMetaTableResponseBody struct {
-	// Indicates whether the metatable exists.
+	// Indicates whether the table exists.
 	//
 	// example:
 	//

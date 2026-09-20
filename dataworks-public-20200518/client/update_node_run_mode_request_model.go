@@ -26,11 +26,7 @@ type UpdateNodeRunModeRequest struct {
 	//
 	// 1234
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The environment in which the node runs. Valid values: DEV and PROD. The value DEV indicates the development environment, and the value PROD indicates the production environment.
-	//
-	// 	- PROD
-	//
-	// 	- DEV
+	// The environment in which the node runs. Valid values: DEV (development environment) and PROD (production environment).
 	//
 	// This parameter is required.
 	//
@@ -38,11 +34,11 @@ type UpdateNodeRunModeRequest struct {
 	//
 	// PROD
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The operation that you want to perform on the node. Valid values:
+	// The operation to perform on the specified node. Valid values:
 	//
-	// 	- 0: indicates that you want to unfreeze the node.
+	// - 0: unfreezes the specified node.
 	//
-	// 	- 2: indicates that you want to freeze the node.
+	// - 2: freezes the specified node.
 	//
 	// This parameter is required.
 	//

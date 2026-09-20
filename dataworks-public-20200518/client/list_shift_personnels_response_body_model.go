@@ -16,9 +16,9 @@ type iListShiftPersonnelsResponseBody interface {
 }
 
 type ListShiftPersonnelsResponseBody struct {
-	// The pagination information.
+	// The pagination result.
 	Paging *ListShiftPersonnelsResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// The request ID. You can use the ID to troubleshoot issues.
+	// The request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListShiftPersonnelsResponseBody) Validate() error {
 }
 
 type ListShiftPersonnelsResponseBodyPaging struct {
-	// The page number. Valid values: 1 to 100. Default value: 1.
+	// The page number. Minimum value: 1. Maximum value: 100. Default value: 1.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListShiftPersonnelsResponseBodyPaging struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The on-duty engineers in the shift schedule.
+	// The list of on-duty personnel.
 	ShiftPersons []*ListShiftPersonnelsResponseBodyPagingShiftPersons `json:"ShiftPersons,omitempty" xml:"ShiftPersons,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -142,25 +142,29 @@ func (s *ListShiftPersonnelsResponseBodyPaging) Validate() error {
 }
 
 type ListShiftPersonnelsResponseBodyPagingShiftPersons struct {
-	// The time when the on-duty engineer starts the shift.
+	// The start time of the on-duty cycle.
+	//
+	// The value is a 13-digit timestamp, for example, `1593950832000`.
 	//
 	// example:
 	//
 	// 1593950832000
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The time when the on-duty engineer ends the shift.
+	// The end time of the on-duty cycle.
+	//
+	// The value is a 13-digit timestamp, for example, `1593950832000`.
 	//
 	// example:
 	//
 	// 1593950832000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the on-duty engineer.
+	// The name of the on-duty person.
 	//
 	// example:
 	//
 	// Zhang San
 	ShiftPersonName *string `json:"ShiftPersonName,omitempty" xml:"ShiftPersonName,omitempty"`
-	// The UID of the on-duty engineer.
+	// The UID of the on-duty person.
 	//
 	// example:
 	//

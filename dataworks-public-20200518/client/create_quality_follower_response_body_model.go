@@ -24,7 +24,7 @@ type iCreateQualityFollowerResponseBody interface {
 }
 
 type CreateQualityFollowerResponseBody struct {
-	// The subscription ID.
+	// The ID of the newly created subscription.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateQualityFollowerResponseBody struct {
 	//
 	// ecb967ec-c137-48****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

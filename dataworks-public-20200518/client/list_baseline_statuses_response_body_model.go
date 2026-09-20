@@ -24,33 +24,33 @@ type iListBaselineStatusesResponseBody interface {
 }
 
 type ListBaselineStatusesResponseBody struct {
-	// The data returned.
+	// The list of baseline instances returned.
 	Data *ListBaselineStatusesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to troubleshoot issues.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ func (s *ListBaselineStatusesResponseBody) Validate() error {
 type ListBaselineStatusesResponseBodyData struct {
 	// The list of baseline instances.
 	BaselineStatuses []*ListBaselineStatusesResponseBodyDataBaselineStatuses `json:"BaselineStatuses,omitempty" xml:"BaselineStatuses,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *ListBaselineStatusesResponseBodyData) Validate() error {
 }
 
 type ListBaselineStatusesResponseBodyDataBaselineStatuses struct {
-	// The baseline ID.
+	// The ID of the baseline.
 	//
 	// example:
 	//
@@ -220,81 +220,85 @@ type ListBaselineStatusesResponseBodyDataBaselineStatuses struct {
 	//
 	// example:
 	//
-	// Baseline name
+	// BaselineName
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	// The type of the baseline, including DAILY and HOURLY. Separate multiple types with commas (,).
+	// The type of the baseline. Valid values: DAILY and HOURLY.
 	//
 	// example:
 	//
-	// Baseline type
+	// BaselineType
 	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
-	// The data timestamp.
+	// The business date timestamp.
 	//
 	// example:
 	//
 	// 1553443200000
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The margin of the baseline instance. Unit: seconds.
+	// The buffer time of the baseline instance, in seconds.
 	//
 	// example:
 	//
 	// 1800
 	Buffer *int64 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
-	// The timestamp of the predicted time when the baseline instance finished running.
+	// The estimated completion time of the baseline instance.
 	//
 	// example:
 	//
 	// 1553531400000
 	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	// The timestamp of the alerting time of the baseline instance.
+	// The warning time of the baseline instance.
+	//
+	// The format is a 13-digit number, such as `1553531400000`.
 	//
 	// example:
 	//
 	// 1553531400000
 	ExpTime *int64 `json:"ExpTime,omitempty" xml:"ExpTime,omitempty"`
-	// The status of the baseline instance. Valid values: UNFINISH and FINISH.
+	// The completion status of the baseline instance. Valid values: UNFINISH and FINISH.
 	//
 	// example:
 	//
 	// UNFINISH
 	FinishStatus *string `json:"FinishStatus,omitempty" xml:"FinishStatus,omitempty"`
-	// The timestamp of the actual time when the baseline instance finished running. This parameter is returned if the value of the FinishStatus parameter is FINISH.
+	// The completion timestamp of the baseline instance. This parameter is returned only when FinishStatus is FINISH.
 	//
 	// example:
 	//
 	// 1553531400000
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the cycle of the baseline instance. Valid values of the ID of an hour-level cycle: [1,24]. The ID of a day-level cycle is 1.
+	// The cycle number of the baseline instance. The value is 1 for daily baselines. The value ranges from 1 to 24 for hourly baselines.
 	//
 	// example:
 	//
 	// 1
 	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	// The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
+	// The Alibaba Cloud UID of the baseline owner. Separate multiple owners with commas (,).
 	//
 	// example:
 	//
 	// 9527952795****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the baseline. Valid values: {1,3,5,7,8}.
+	// The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the workspace to which the baseline belongs.
+	// The ID of the workspace where the baseline resides.
 	//
 	// example:
 	//
 	// 1234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The timestamp of the actual time when the baseline instance finished running.
+	// The actual completion time of the baseline instance.
+	//
+	// The format is a 13-digit number, such as `1553531400000`.
 	//
 	// example:
 	//
 	// 1553531400000
 	SlaTime *int64 `json:"SlaTime,omitempty" xml:"SlaTime,omitempty"`
-	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes are run before the alert duration begins. The value DANGEROUS indicates that nodes are still running after the alert duration ends but the committed completion time does not arrive. The value OVER indicates that nodes are still running after the committed completion time.
+	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER.
 	//
 	// example:
 	//

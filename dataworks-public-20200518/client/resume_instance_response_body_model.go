@@ -24,7 +24,7 @@ type iResumeInstanceResponseBody interface {
 }
 
 type ResumeInstanceResponseBody struct {
-	// The result returned.
+	// The result returned after the ResumeInstance operation is called.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ResumeInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// E6F0DBDD-5AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

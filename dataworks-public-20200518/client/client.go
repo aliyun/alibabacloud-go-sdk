@@ -83,8 +83,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("dataworks.aliyuncs.com"),
 		"us-east-1":                   dara.String("dataworks.us-east-1.aliyuncs.com"),
 		"us-west-1":                   dara.String("dataworks.us-west-1.aliyuncs.com"),
-		"me-central-1":                dara.String("dataworks.me-central-1.aliyuncs.com"),
 		"ap-northeast-2":              dara.String("dataworks.ap-northeast-2.aliyuncs.com"),
+		"me-central-1":                dara.String("dataworks.me-central-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -272,6 +272,10 @@ func (client *Client) AbolishDataServiceApi(request *AbolishDataServiceApiReques
 //
 // Adds an entity to a collection.
 //
+// Description:
+//
+// Before you begin: Before calling this operation, activate DataWorks Professional Edition or a higher edition. The Basic Edition and Standard Edition do not support the metadata collection feature.
+//
 // @param request - AddMetaCollectionEntityRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -324,6 +328,10 @@ func (client *Client) AddMetaCollectionEntityWithOptions(request *AddMetaCollect
 //
 // Adds an entity to a collection.
 //
+// Description:
+//
+// Before you begin: Before calling this operation, activate DataWorks Professional Edition or a higher edition. The Basic Edition and Standard Edition do not support the metadata collection feature.
+//
 // @param request - AddMetaCollectionEntityRequest
 //
 // @return AddMetaCollectionEntityResponse
@@ -340,13 +348,13 @@ func (client *Client) AddMetaCollectionEntity(request *AddMetaCollectionEntityRe
 
 // Summary:
 //
-// Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
+// Adds a DataWorks workspace user to a role. Before calling this operation, you must first add the target account as a member of the DataWorks workspace.
 //
 // Description:
 //
-// - Add the target account as a member of the DataWorks workspace. For more information, see [Add members to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+// - To add the target account as a member of the DataWorks workspace, refer to [Add members to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
 //
-// - When you add a user to a preset role in a DataWorks workspace, the user is also added as a project role member in the MaxCompute project of the development environment of the workspace. For more information, see [Mappings between workspace-level preset roles and MaxCompute engine permissions](https://help.aliyun.com/document_detail/449397.html).
+// - When you add a user to a preset role in a DataWorks workspace, the user is also added as a project role member in the MaxCompute project of the development environment of the workspace. For more information, refer to [Mapping between workspace-level preset roles and MaxCompute engine permissions](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -402,13 +410,13 @@ func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMembe
 
 // Summary:
 //
-// Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
+// Adds a DataWorks workspace user to a role. Before calling this operation, you must first add the target account as a member of the DataWorks workspace.
 //
 // Description:
 //
-// - Add the target account as a member of the DataWorks workspace. For more information, see [Add members to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+// - To add the target account as a member of the DataWorks workspace, refer to [Add members to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
 //
-// - When you add a user to a preset role in a DataWorks workspace, the user is also added as a project role member in the MaxCompute project of the development environment of the workspace. For more information, see [Mappings between workspace-level preset roles and MaxCompute engine permissions](https://help.aliyun.com/document_detail/449397.html).
+// - When you add a user to a preset role in a DataWorks workspace, the user is also added as a project role member in the MaxCompute project of the development environment of the workspace. For more information, refer to [Mapping between workspace-level preset roles and MaxCompute engine permissions](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -624,11 +632,11 @@ func (client *Client) AddToMetaCategory(request *AddToMetaCategoryRequest) (_res
 //
 // Approves a permission request order.
 //
-// Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI ApproveProcessInstance as soon as possible.
+// Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition of OpenAPI as soon as possible — ApproveProcessInstance.
 //
 // Description:
 //
-// *Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI [ApproveProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-approveprocessinstance) as soon as possible.**.
+// *Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition of OpenAPI as soon as possible — [ApproveProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-approveprocessinstance).**
 //
 // @param request - ApprovePermissionApplyOrderRequest
 //
@@ -682,11 +690,11 @@ func (client *Client) ApprovePermissionApplyOrderWithOptions(request *ApprovePer
 //
 // Approves a permission request order.
 //
-// Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI ApproveProcessInstance as soon as possible.
+// Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition of OpenAPI as soon as possible — ApproveProcessInstance.
 //
 // Description:
 //
-// *Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition OpenAPI [ApproveProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-approveprocessinstance) as soon as possible.**.
+// *Note: The 2020 edition of OpenAPI will be discontinued. Migrate to the 2024 edition of OpenAPI as soon as possible — [ApproveProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-approveprocessinstance).**
 //
 // @param request - ApprovePermissionApplyOrderRequest
 //
@@ -704,7 +712,7 @@ func (client *Client) ApprovePermissionApplyOrder(request *ApprovePermissionAppl
 
 // Summary:
 //
-// Sends the processing result of an extension point event by an extension to DataWorks.
+// Returns the check result of an extension program for an extension point event to the DataWorks platform by calling the CallbackExtension operation when an extension point is triggered during the use of the DataWorks platform.
 //
 // @param request - CallbackExtensionRequest
 //
@@ -760,7 +768,7 @@ func (client *Client) CallbackExtensionWithOptions(request *CallbackExtensionReq
 
 // Summary:
 //
-// Sends the processing result of an extension point event by an extension to DataWorks.
+// Returns the check result of an extension program for an extension point event to the DataWorks platform by calling the CallbackExtension operation when an extension point is triggered during the use of the DataWorks platform.
 //
 // @param request - CallbackExtensionRequest
 //
@@ -848,7 +856,7 @@ func (client *Client) ChangeResourceManagerResourceGroup(request *ChangeResource
 
 // Summary:
 //
-// Returns the check events for a file that is pending deployment in DataStudio. After a file is committed, DataWorks checks the file and generates events before deployment. Use the returned events to determine whether the file can proceed with deployment validation.
+// Returns the check result of a file pending deployment to DataWorks. After a file created on the DataWorks DataStudio page is submitted, the file enters the deployment check state. DataWorks returns a file deployment check event to you, and you need to determine whether the file can proceed with deployment verification based on the event content. You can call this operation to return the check result of the file pending deployment to DataWorks.
 //
 // @param request - CheckFileDeploymentRequest
 //
@@ -900,7 +908,7 @@ func (client *Client) CheckFileDeploymentWithOptions(request *CheckFileDeploymen
 
 // Summary:
 //
-// Returns the check events for a file that is pending deployment in DataStudio. After a file is committed, DataWorks checks the file and generates events before deployment. Use the returned events to determine whether the file can proceed with deployment validation.
+// Returns the check result of a file pending deployment to DataWorks. After a file created on the DataWorks DataStudio page is submitted, the file enters the deployment check state. DataWorks returns a file deployment check event to you, and you need to determine whether the file can proceed with deployment verification based on the event content. You can call this operation to return the check result of the file pending deployment to DataWorks.
 //
 // @param request - CheckFileDeploymentRequest
 //
@@ -1000,7 +1008,11 @@ func (client *Client) CheckMetaPartition(request *CheckMetaPartitionRequest) (_r
 
 // Summary:
 //
-// Checks whether a metatable exists.
+// Checks whether a table exists.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns 403 Forbidden.Access.
 //
 // @param request - CheckMetaTableRequest
 //
@@ -1060,7 +1072,11 @@ func (client *Client) CheckMetaTableWithOptions(request *CheckMetaTableRequest, 
 
 // Summary:
 //
-// Checks whether a metatable exists.
+// Checks whether a table exists.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns 403 Forbidden.Access.
 //
 // @param request - CheckMetaTableRequest
 //
@@ -1168,7 +1184,7 @@ func (client *Client) CreateBaseline(request *CreateBaselineRequest) (_result *C
 
 // Summary:
 //
-// Creates a workflow in DataStudio.
+// Creates a business process in DataStudio for data development.
 //
 // @param request - CreateBusinessRequest
 //
@@ -1232,7 +1248,7 @@ func (client *Client) CreateBusinessWithOptions(request *CreateBusinessRequest, 
 
 // Summary:
 //
-// Creates a workflow in DataStudio.
+// Creates a business process in DataStudio for data development.
 //
 // @param request - CreateBusinessRequest
 //
@@ -1673,7 +1689,7 @@ func (client *Client) CreateDISyncTask(request *CreateDISyncTaskRequest) (_resul
 //
 // Summary:
 //
-// Calls CreateDagComplement to create a data backfill workflow.
+// Creates a data backfill workflow by calling CreateDagComplement.
 //
 // @param request - CreateDagComplementRequest
 //
@@ -1759,7 +1775,7 @@ func (client *Client) CreateDagComplementWithOptions(request *CreateDagComplemen
 //
 // Summary:
 //
-// Calls CreateDagComplement to create a data backfill workflow.
+// Creates a data backfill workflow by calling CreateDagComplement.
 //
 // @param request - CreateDagComplementRequest
 //
@@ -1861,7 +1877,7 @@ func (client *Client) CreateDagTest(request *CreateDagTestRequest) (_result *Cre
 
 // Summary:
 //
-// Creates an API.
+// Creates a Data Service API by calling CreateDataServiceApi.
 //
 // @param request - CreateDataServiceApiRequest
 //
@@ -1977,7 +1993,7 @@ func (client *Client) CreateDataServiceApiWithOptions(request *CreateDataService
 
 // Summary:
 //
-// Creates an API.
+// Creates a Data Service API by calling CreateDataServiceApi.
 //
 // @param request - CreateDataServiceApiRequest
 //
@@ -2315,7 +2331,7 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 
 // Summary:
 //
-// Creates an export task. You can use this operation to create an export task but cannot use this operation to start the created export task.
+// Creates an export task in DataWorks. This API operation only creates the export task and does not start the export task.
 //
 // @param request - CreateExportMigrationRequest
 //
@@ -2379,7 +2395,7 @@ func (client *Client) CreateExportMigrationWithOptions(request *CreateExportMigr
 
 // Summary:
 //
-// Creates an export task. You can use this operation to create an export task but cannot use this operation to start the created export task.
+// Creates an export task in DataWorks. This API operation only creates the export task and does not start the export task.
 //
 // @param request - CreateExportMigrationRequest
 //
@@ -2936,7 +2952,7 @@ func (client *Client) CreateImportMigrationAdvance(request *CreateImportMigratio
 //
 // Summary:
 //
-// The manual workflow must have already been submitted and deployed in the UI, and the Operation Center must be able to find the corresponding manual workflow. Only then can this API be used.
+// Triggers the execution of a manual business process. The manual business process must have been submitted and published in the console, and the O&M center must be able to find the corresponding manual business process before you can call this operation.
 //
 // @param request - CreateManualDagRequest
 //
@@ -3010,7 +3026,7 @@ func (client *Client) CreateManualDagWithOptions(request *CreateManualDagRequest
 //
 // Summary:
 //
-// The manual workflow must have already been submitted and deployed in the UI, and the Operation Center must be able to find the corresponding manual workflow. Only then can this API be used.
+// Triggers the execution of a manual business process. The manual business process must have been submitted and published in the console, and the O&M center must be able to find the corresponding manual business process before you can call this operation.
 //
 // @param request - CreateManualDagRequest
 //
@@ -3099,11 +3115,11 @@ func (client *Client) CreateMetaCategory(request *CreateMetaCategoryRequest) (_r
 
 // Summary:
 //
-// Creates a collection.
+// Creates a collection object.
 //
 // Description:
 //
-// Collections are classified into various types. The names of collections of the same type must be different.
+// Collections have multiple types. The name must be unique within the same collection type.
 //
 // @param request - CreateMetaCollectionRequest
 //
@@ -3159,11 +3175,11 @@ func (client *Client) CreateMetaCollectionWithOptions(request *CreateMetaCollect
 
 // Summary:
 //
-// Creates a collection.
+// Creates a collection object.
 //
 // Description:
 //
-// Collections are classified into various types. The names of collections of the same type must be different.
+// Collections have multiple types. The name must be unique within the same collection type.
 //
 // @param request - CreateMetaCollectionRequest
 //
@@ -3183,11 +3199,11 @@ func (client *Client) CreateMetaCollection(request *CreateMetaCollectionRequest)
 //
 // Creates a permission request order.
 //
-// Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — ApplyResourceAccessPermission.
+// Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI — ApplyResourceAccessPermission as soon as possible.
 //
 // Description:
 //
-// *Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — [ApplyResourceAccessPermission](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-applyresourceaccesspermission).**
+// *Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI — [ApplyResourceAccessPermission](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-applyresourceaccesspermission) as soon as possible.**
 //
 // @param request - CreatePermissionApplyOrderRequest
 //
@@ -3269,11 +3285,11 @@ func (client *Client) CreatePermissionApplyOrderWithOptions(request *CreatePermi
 //
 // Creates a permission request order.
 //
-// Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — ApplyResourceAccessPermission.
+// Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI — ApplyResourceAccessPermission as soon as possible.
 //
 // Description:
 //
-// *Note: The 2020 edition of OpenAPI will be deprecated soon. Migrate to the 2024 edition of OpenAPI as soon as possible — [ApplyResourceAccessPermission](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-applyresourceaccesspermission).**
+// *Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI — [ApplyResourceAccessPermission](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-applyresourceaccesspermission) as soon as possible.**
 //
 // @param request - CreatePermissionApplyOrderRequest
 //
@@ -3554,7 +3570,7 @@ func (client *Client) CreateQualityEntity(request *CreateQualityEntityRequest) (
 //
 // Summary:
 //
-// Adds a follower to a partition expression to receive data quality alerts.
+// Creates a subscriber for a partition expression by calling CreateQualityFollower.
 //
 // @param request - CreateQualityFollowerRequest
 //
@@ -3616,7 +3632,7 @@ func (client *Client) CreateQualityFollowerWithOptions(request *CreateQualityFol
 //
 // Summary:
 //
-// Adds a follower to a partition expression to receive data quality alerts.
+// Creates a subscriber for a partition expression by calling CreateQualityFollower.
 //
 // @param request - CreateQualityFollowerRequest
 //
@@ -3873,7 +3889,7 @@ func (client *Client) CreateQualityRule(request *CreateQualityRuleRequest) (_res
 
 // Summary:
 //
-// Creates a custom alert rule.
+// Creates a custom alert rule by calling CreateRemind.
 //
 // @param request - CreateRemindRequest
 //
@@ -3977,7 +3993,7 @@ func (client *Client) CreateRemindWithOptions(request *CreateRemindRequest, runt
 
 // Summary:
 //
-// Creates a custom alert rule.
+// Creates a custom alert rule by calling CreateRemind.
 //
 // @param request - CreateRemindRequest
 //
@@ -4501,7 +4517,7 @@ func (client *Client) CreateTableTheme(request *CreateTableThemeRequest) (_resul
 
 // Summary:
 //
-// Creates a file for a function in DataStudio.
+// Creates a function type file in DataStudio.
 //
 // @param request - CreateUdfFileRequest
 //
@@ -4593,7 +4609,7 @@ func (client *Client) CreateUdfFileWithOptions(request *CreateUdfFileRequest, ru
 
 // Summary:
 //
-// Creates a file for a function in DataStudio.
+// Creates a function type file in DataStudio.
 //
 // @param request - CreateUdfFileRequest
 //
@@ -5024,7 +5040,7 @@ func (client *Client) DeleteDISyncTask(request *DeleteDISyncTaskRequest) (_resul
 
 // Summary:
 //
-// Deletes an API in DataService Studio.
+// Deletes a DataService API.
 //
 // @param request - DeleteDataServiceApiRequest
 //
@@ -5076,7 +5092,7 @@ func (client *Client) DeleteDataServiceApiWithOptions(request *DeleteDataService
 
 // Summary:
 //
-// Deletes an API in DataService Studio.
+// Deletes a DataService API.
 //
 // @param request - DeleteDataServiceApiRequest
 //
@@ -6601,7 +6617,7 @@ func (client *Client) DeployFile(request *DeployFileRequest) (_result *DeployFil
 
 // Summary:
 //
-// Masks data.
+// Submits data for masking and returns the masked result.
 //
 // @param request - DesensitizeDataRequest
 //
@@ -6641,7 +6657,7 @@ func (client *Client) DesensitizeDataWithOptions(request *DesensitizeDataRequest
 
 // Summary:
 //
-// Masks data.
+// Submits data for masking and returns the masked result.
 //
 // @param request - DesensitizeDataRequest
 //
@@ -9092,7 +9108,7 @@ func (client *Client) GetAlertMessage(request *GetAlertMessageRequest) (_result 
 
 // Summary:
 //
-// Queries the information about a baseline based on its ID.
+// Retrieves the baseline configuration based on a baseline ID.
 //
 // @param request - GetBaselineRequest
 //
@@ -9140,7 +9156,7 @@ func (client *Client) GetBaselineWithOptions(request *GetBaselineRequest, runtim
 
 // Summary:
 //
-// Queries the information about a baseline based on its ID.
+// Retrieves the baseline configuration based on a baseline ID.
 //
 // @param request - GetBaselineRequest
 //
@@ -9158,7 +9174,7 @@ func (client *Client) GetBaseline(request *GetBaselineRequest) (_result *GetBase
 
 // Summary:
 //
-// Queries the configurations of a baseline.
+// Retrieves the configuration details of a baseline by calling GetBaselineConfig.
 //
 // @param request - GetBaselineConfigRequest
 //
@@ -9202,7 +9218,7 @@ func (client *Client) GetBaselineConfigWithOptions(request *GetBaselineConfigReq
 
 // Summary:
 //
-// Queries the configurations of a baseline.
+// Retrieves the configuration details of a baseline by calling GetBaselineConfig.
 //
 // @param request - GetBaselineConfigRequest
 //
@@ -9220,7 +9236,11 @@ func (client *Client) GetBaselineConfig(request *GetBaselineConfigRequest) (_res
 
 // Summary:
 //
-// The information about the events that are associated with the instance.
+// Retrieves the critical path of a baseline instance.
+//
+// Description:
+//
+// 调用前需准备有效的 BaselineId：可先通过 ListProjects 获取 ProjectId，再调用 ListBaselines，并从其 Data.Baselines[].BaselineId 获取。
 //
 // @param request - GetBaselineKeyPathRequest
 //
@@ -9272,7 +9292,11 @@ func (client *Client) GetBaselineKeyPathWithOptions(request *GetBaselineKeyPathR
 
 // Summary:
 //
-// The information about the events that are associated with the instance.
+// Retrieves the critical path of a baseline instance.
+//
+// Description:
+//
+// 调用前需准备有效的 BaselineId：可先通过 ListProjects 获取 ProjectId，再调用 ListBaselines，并从其 Data.Baselines[].BaselineId 获取。
 //
 // @param request - GetBaselineKeyPathRequest
 //
@@ -9290,7 +9314,7 @@ func (client *Client) GetBaselineKeyPath(request *GetBaselineKeyPathRequest) (_r
 
 // Summary:
 //
-// Retrieves the status of a baseline instance.
+// Retrieves the details of a baseline instance.
 //
 // @param request - GetBaselineStatusRequest
 //
@@ -9342,7 +9366,7 @@ func (client *Client) GetBaselineStatusWithOptions(request *GetBaselineStatusReq
 
 // Summary:
 //
-// Retrieves the status of a baseline instance.
+// Retrieves the details of a baseline instance.
 //
 // @param request - GetBaselineStatusRequest
 //
@@ -9432,7 +9456,7 @@ func (client *Client) GetBusiness(request *GetBusinessRequest) (_result *GetBusi
 //
 // Summary:
 //
-// Queries the status of a table creation, update, or deletion task.
+// Retrieves the status of tasks for creating, updating, and deleting tables.
 //
 // @param request - GetDDLJobStatusRequest
 //
@@ -9474,7 +9498,7 @@ func (client *Client) GetDDLJobStatusWithOptions(request *GetDDLJobStatusRequest
 //
 // Summary:
 //
-// Queries the status of a table creation, update, or deletion task.
+// Retrieves the status of tasks for creating, updating, and deleting tables.
 //
 // @param request - GetDDLJobStatusRequest
 //
@@ -10219,6 +10243,10 @@ func (client *Client) GetDataServiceGroup(request *GetDataServiceGroupRequest) (
 //
 // Retrieves the details of a published DataService Studio API.
 //
+// Description:
+//
+// 前置条件：请先开通 DataWorks 企业版或旗舰版，并准备已发布的数据服务 API。ProjectId 可通过 ListProjects 获取，ApiId 可通过 ListDataServicePublishedApis 的 Data.Apis[].ApiId 获取；未开通所需版本时会返回 403 Forbidden.Access。
+//
 // @param request - GetDataServicePublishedApiRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10270,6 +10298,10 @@ func (client *Client) GetDataServicePublishedApiWithOptions(request *GetDataServ
 // Summary:
 //
 // Retrieves the details of a published DataService Studio API.
+//
+// Description:
+//
+// 前置条件：请先开通 DataWorks 企业版或旗舰版，并准备已发布的数据服务 API。ProjectId 可通过 ListProjects 获取，ApiId 可通过 ListDataServicePublishedApis 的 Data.Apis[].ApiId 获取；未开通所需版本时会返回 403 Forbidden.Access。
 //
 // @param request - GetDataServicePublishedApiRequest
 //
@@ -10785,7 +10817,11 @@ func (client *Client) GetFolder(request *GetFolderRequest) (_result *GetFolderRe
 
 // Summary:
 //
-// Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
+// Queries the extension point data snapshot at the time an extension point event was triggered, based on the message ID of a DataWorks open message.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns a 403 Forbidden.Access error.
 //
 // @param request - GetIDEEventDetailRequest
 //
@@ -10833,7 +10869,11 @@ func (client *Client) GetIDEEventDetailWithOptions(request *GetIDEEventDetailReq
 
 // Summary:
 //
-// Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
+// Queries the extension point data snapshot at the time an extension point event was triggered, based on the message ID of a DataWorks open message.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns a 403 Forbidden.Access error.
 //
 // @param request - GetIDEEventDetailRequest
 //
@@ -11367,7 +11407,7 @@ func (client *Client) GetInstanceStatusStatistic(request *GetInstanceStatusStati
 //
 // Summary:
 //
-// Queries the information about instances in a manually triggered workflow.
+// Queries information about instances of a manually triggered workflow.
 //
 // @param request - GetManualDagInstancesRequest
 //
@@ -11421,7 +11461,7 @@ func (client *Client) GetManualDagInstancesWithOptions(request *GetManualDagInst
 //
 // Summary:
 //
-// Queries the information about instances in a manually triggered workflow.
+// Queries information about instances of a manually triggered workflow.
 //
 // @param request - GetManualDagInstancesRequest
 //
@@ -11440,7 +11480,7 @@ func (client *Client) GetManualDagInstances(request *GetManualDagInstancesReques
 
 // Summary:
 //
-// Queries the information about a category tree.
+// Queries the tree categories.
 //
 // @param request - GetMetaCategoryRequest
 //
@@ -11492,7 +11532,7 @@ func (client *Client) GetMetaCategoryWithOptions(request *GetMetaCategoryRequest
 
 // Summary:
 //
-// Queries the information about a category tree.
+// Queries the tree categories.
 //
 // @param request - GetMetaCategoryRequest
 //
@@ -11510,7 +11550,7 @@ func (client *Client) GetMetaCategory(request *GetMetaCategoryRequest) (_result 
 
 // Summary:
 //
-// Queries the information about a collection.
+// Queries the details of a collection.
 //
 // @param request - GetMetaCollectionDetailRequest
 //
@@ -11554,7 +11594,7 @@ func (client *Client) GetMetaCollectionDetailWithOptions(request *GetMetaCollect
 
 // Summary:
 //
-// Queries the information about a collection.
+// Queries the details of a collection.
 //
 // @param request - GetMetaCollectionDetailRequest
 //
@@ -11572,7 +11612,7 @@ func (client *Client) GetMetaCollectionDetail(request *GetMetaCollectionDetailRe
 
 // Summary:
 //
-// Queries the lineage of a field in a metatable.
+// Queries the lineage of a field by calling GetMetaColumnLineage.
 //
 // @param request - GetMetaColumnLineageRequest
 //
@@ -11648,7 +11688,7 @@ func (client *Client) GetMetaColumnLineageWithOptions(request *GetMetaColumnLine
 
 // Summary:
 //
-// Queries the lineage of a field in a metatable.
+// Queries the lineage of a field by calling GetMetaColumnLineage.
 //
 // @param request - GetMetaColumnLineageRequest
 //
@@ -11666,7 +11706,11 @@ func (client *Client) GetMetaColumnLineage(request *GetMetaColumnLineageRequest)
 
 // Summary:
 //
-// Queries the basic metadata information about a compute engine instance.
+// Retrieves the basic metadata information of an engine instance.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns 403 Forbidden.Access.
 //
 // @param request - GetMetaDBInfoRequest
 //
@@ -11706,7 +11750,11 @@ func (client *Client) GetMetaDBInfoWithOptions(request *GetMetaDBInfoRequest, ru
 
 // Summary:
 //
-// Queries the basic metadata information about a compute engine instance.
+// Retrieves the basic metadata information of an engine instance.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns 403 Forbidden.Access.
 //
 // @param request - GetMetaDBInfoRequest
 //
@@ -11808,6 +11856,10 @@ func (client *Client) GetMetaDBTableList(request *GetMetaDBTableListRequest) (_r
 //
 // Queries the basic information about a metatable.
 //
+// Description:
+//
+// 前置条件：调用本接口前，请先开通 DataWorks 企业版或旗舰版；未开通时服务会返回 403 Forbidden.Access。
+//
 // @param request - GetMetaTableBasicInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11848,6 +11900,10 @@ func (client *Client) GetMetaTableBasicInfoWithOptions(request *GetMetaTableBasi
 //
 // Queries the basic information about a metatable.
 //
+// Description:
+//
+// 前置条件：调用本接口前，请先开通 DataWorks 企业版或旗舰版；未开通时服务会返回 403 Forbidden.Access。
+//
 // @param request - GetMetaTableBasicInfoRequest
 //
 // @return GetMetaTableBasicInfoResponse
@@ -11864,11 +11920,11 @@ func (client *Client) GetMetaTableBasicInfo(request *GetMetaTableBasicInfoReques
 
 // Summary:
 //
-// Queries the change logs of a metatable.
+// Retrieves the change log of a table.
 //
 // Description:
 //
-// > This API operation is not recommended. A new API operation that provides the same capability will be released soon.
+// > We do not recommend that you use this API operation. A new API operation will be released to replace it.
 //
 // @param request - GetMetaTableChangeLogRequest
 //
@@ -11936,11 +11992,11 @@ func (client *Client) GetMetaTableChangeLogWithOptions(request *GetMetaTableChan
 
 // Summary:
 //
-// Queries the change logs of a metatable.
+// Retrieves the change log of a table.
 //
 // Description:
 //
-// > This API operation is not recommended. A new API operation that provides the same capability will be released soon.
+// > We do not recommend that you use this API operation. A new API operation will be released to replace it.
 //
 // @param request - GetMetaTableChangeLogRequest
 //
@@ -12018,11 +12074,11 @@ func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_r
 //
 // Summary:
 //
-// Retrieves complete metadata for a table, including field details.
+// Retrieves the complete information about a table, including field information.
 //
 // Description:
 //
-// You can call this operation to query only the information about a table of the E-MapReduce (EMR) compute engine type.
+// Only tables of the EMR engine type are supported.
 //
 // @param request - GetMetaTableFullInfoRequest
 //
@@ -12064,11 +12120,11 @@ func (client *Client) GetMetaTableFullInfoWithOptions(request *GetMetaTableFullI
 //
 // Summary:
 //
-// Retrieves complete metadata for a table, including field details.
+// Retrieves the complete information about a table, including field information.
 //
 // Description:
 //
-// You can call this operation to query only the information about a table of the E-MapReduce (EMR) compute engine type.
+// Only tables of the EMR engine type are supported.
 //
 // @param request - GetMetaTableFullInfoRequest
 //
@@ -12087,7 +12143,7 @@ func (client *Client) GetMetaTableFullInfo(request *GetMetaTableFullInfoRequest)
 
 // Summary:
 //
-// Queries the instructions on how to use a table.
+// Retrieves the usage instructions for a table.
 //
 // @param request - GetMetaTableIntroWikiRequest
 //
@@ -12135,7 +12191,7 @@ func (client *Client) GetMetaTableIntroWikiWithOptions(request *GetMetaTableIntr
 
 // Summary:
 //
-// Queries the instructions on how to use a table.
+// Retrieves the usage instructions for a table.
 //
 // @param request - GetMetaTableIntroWikiRequest
 //
@@ -12153,7 +12209,7 @@ func (client *Client) GetMetaTableIntroWiki(request *GetMetaTableIntroWikiReques
 
 // Summary:
 //
-// Queries the lineage of a metatable.
+// Queries the data lineage of a table.
 //
 // @param request - GetMetaTableLineageRequest
 //
@@ -12225,7 +12281,7 @@ func (client *Client) GetMetaTableLineageWithOptions(request *GetMetaTableLineag
 
 // Summary:
 //
-// Queries the lineage of a metatable.
+// Queries the data lineage of a table.
 //
 // @param request - GetMetaTableLineageRequest
 //
@@ -12301,7 +12357,7 @@ func (client *Client) GetMetaTableListByCategory(request *GetMetaTableListByCate
 
 // Summary:
 //
-// Queries the output information of a metatable.
+// Retrieves the output information of a table.
 //
 // @param request - GetMetaTableOutputRequest
 //
@@ -12365,7 +12421,7 @@ func (client *Client) GetMetaTableOutputWithOptions(request *GetMetaTableOutputR
 
 // Summary:
 //
-// Queries the output information of a metatable.
+// Retrieves the output information of a table.
 //
 // @param request - GetMetaTableOutputRequest
 //
@@ -12569,7 +12625,11 @@ func (client *Client) GetMetaTableProducingTasks(request *GetMetaTableProducingT
 
 // Summary:
 //
-// # Fetches topics and hierarchy metadata for tables
+// Queries the theme and level information of a table.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) to activate or upgrade to the required edition.
 //
 // @param request - GetMetaTableThemeLevelRequest
 //
@@ -12609,7 +12669,11 @@ func (client *Client) GetMetaTableThemeLevelWithOptions(request *GetMetaTableThe
 
 // Summary:
 //
-// # Fetches topics and hierarchy metadata for tables
+// Queries the theme and level information of a table.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) to activate or upgrade to the required edition.
 //
 // @param request - GetMetaTableThemeLevelRequest
 //
@@ -12759,7 +12823,7 @@ func (client *Client) GetMigrationSummary(request *GetMigrationSummaryRequest) (
 
 // Summary:
 //
-// Indicates whether the request is successful.
+// Retrieves the details of a node.
 //
 // @param request - GetNodeRequest
 //
@@ -12807,7 +12871,7 @@ func (client *Client) GetNodeWithOptions(request *GetNodeRequest, runtime *dara.
 
 // Summary:
 //
-// Indicates whether the request is successful.
+// Retrieves the details of a node.
 //
 // @param request - GetNodeRequest
 //
@@ -12825,7 +12889,7 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 
 // Summary:
 //
-// Queries a list of instances.
+// Calls GetNodeChildren to retrieve the downstream node list of a node.
 //
 // @param request - GetNodeChildrenRequest
 //
@@ -12873,7 +12937,7 @@ func (client *Client) GetNodeChildrenWithOptions(request *GetNodeChildrenRequest
 
 // Summary:
 //
-// Queries a list of instances.
+// Calls GetNodeChildren to retrieve the downstream node list of a node.
 //
 // @param request - GetNodeChildrenRequest
 //
@@ -12891,7 +12955,7 @@ func (client *Client) GetNodeChildren(request *GetNodeChildrenRequest) (_result 
 
 // Summary:
 //
-// Queries the code of a node.
+// Retrieves the code of a node.
 //
 // @param request - GetNodeCodeRequest
 //
@@ -12939,7 +13003,7 @@ func (client *Client) GetNodeCodeWithOptions(request *GetNodeCodeRequest, runtim
 
 // Summary:
 //
-// Queries the code of a node.
+// Retrieves the code of a node.
 //
 // @param request - GetNodeCodeRequest
 //
@@ -13024,7 +13088,7 @@ func (client *Client) GetNodeOnBaseline(request *GetNodeOnBaselineRequest) (_res
 
 // Summary:
 //
-// Queries a list of ancestor nodes of a node.
+// Calls GetNodeParents to retrieve the list of upstream nodes.
 //
 // @param request - GetNodeParentsRequest
 //
@@ -13072,7 +13136,7 @@ func (client *Client) GetNodeParentsWithOptions(request *GetNodeParentsRequest, 
 
 // Summary:
 //
-// Queries a list of ancestor nodes of a node.
+// Calls GetNodeParents to retrieve the list of upstream nodes.
 //
 // @param request - GetNodeParentsRequest
 //
@@ -13359,13 +13423,13 @@ func (client *Client) GetOptionValueForProject(request *GetOptionValueForProject
 
 // Summary:
 //
-// Queries the details of a permission request order.
+// Queries the details of a permission application order.
 //
-// Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — GetApplicationContents/GetProcessInstance.
+// Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI as soon as possible: GetApplicationContents/GetProcessInstance.
 //
 // Description:
 //
-// *Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — [GetApplicationContents](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getapplicationcontents?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_3.75985eba2pEw9l&scm=20140722.H_3040926._.OR_help-T_cn~zh-V_1)/[GetProcessInstance](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getprocessinstance?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_4.64e62414k6cKri&scm=20140722.H_3040933._.OR_help-T_cn~zh-V_1).**
+// *Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI as soon as possible: [GetApplicationContents](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-getapplicationcontents)/[GetProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-getprocessinstance).**
 //
 // @param request - GetPermissionApplyOrderDetailRequest
 //
@@ -13409,13 +13473,13 @@ func (client *Client) GetPermissionApplyOrderDetailWithOptions(request *GetPermi
 
 // Summary:
 //
-// Queries the details of a permission request order.
+// Queries the details of a permission application order.
 //
-// Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — GetApplicationContents/GetProcessInstance.
+// Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI as soon as possible: GetApplicationContents/GetProcessInstance.
 //
 // Description:
 //
-// *Note: The 2020 version of OpenAPI will be discontinued. Please migrate to the 2024 version of OpenAPI as soon as possible — [GetApplicationContents](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getapplicationcontents?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_3.75985eba2pEw9l&scm=20140722.H_3040926._.OR_help-T_cn~zh-V_1)/[GetProcessInstance](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-getprocessinstance?spm=a2c4g.11186623.help-menu-72772.d_1_1_3_12_0_4.64e62414k6cKri&scm=20140722.H_3040933._.OR_help-T_cn~zh-V_1).**
+// *Note: The 2020 version of OpenAPI will be discontinued. Migrate to the 2024 version of OpenAPI as soon as possible: [GetApplicationContents](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-getapplicationcontents)/[GetProcessInstance](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-getprocessinstance).**
 //
 // @param request - GetPermissionApplyOrderDetailRequest
 //
@@ -13433,7 +13497,7 @@ func (client *Client) GetPermissionApplyOrderDetail(request *GetPermissionApplyO
 
 // Summary:
 //
-// Queries the information about a DataWorks workspace.
+// Queries the details of a DataWorks workspace.
 //
 // @param request - GetProjectRequest
 //
@@ -13481,7 +13545,7 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 
 // Summary:
 //
-// Queries the information about a DataWorks workspace.
+// Queries the details of a DataWorks workspace.
 //
 // @param request - GetProjectRequest
 //
@@ -13497,7 +13561,7 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 	return _result, _err
 }
 
-// Deprecated: OpenAPI GetProjectDetail is deprecated
+// Deprecated: OpenAPI GetProjectDetail is deprecated, please use dataworks-public::2020-05-18::GetProject instead.
 //
 // Summary:
 //
@@ -13543,7 +13607,7 @@ func (client *Client) GetProjectDetailWithOptions(request *GetProjectDetailReque
 	return _result, _err
 }
 
-// Deprecated: OpenAPI GetProjectDetail is deprecated
+// Deprecated: OpenAPI GetProjectDetail is deprecated, please use dataworks-public::2020-05-18::GetProject instead.
 //
 // Summary:
 //
@@ -13568,7 +13632,7 @@ func (client *Client) GetProjectDetail(request *GetProjectDetailRequest) (_resul
 //
 // Summary:
 //
-// Call `GetQualityEntity` to retrieve the partition expression.
+// Retrieves a partition expression.
 //
 // @param request - GetQualityEntityRequest
 //
@@ -13630,7 +13694,7 @@ func (client *Client) GetQualityEntityWithOptions(request *GetQualityEntityReque
 //
 // Summary:
 //
-// Call `GetQualityEntity` to retrieve the partition expression.
+// Retrieves a partition expression.
 //
 // @param request - GetQualityEntityRequest
 //
@@ -13651,7 +13715,7 @@ func (client *Client) GetQualityEntity(request *GetQualityEntityRequest) (_resul
 //
 // Summary:
 //
-// Retrieves the followers of a Partition Expression.
+// Retrieves the subscribers of a partition expression.
 //
 // @param request - GetQualityFollowerRequest
 //
@@ -13705,7 +13769,7 @@ func (client *Client) GetQualityFollowerWithOptions(request *GetQualityFollowerR
 //
 // Summary:
 //
-// Retrieves the followers of a Partition Expression.
+// Retrieves the subscribers of a partition expression.
 //
 // @param request - GetQualityFollowerRequest
 //
@@ -13921,7 +13985,7 @@ func (client *Client) GetSensitiveData(request *GetSensitiveDataRequest) (_resul
 //
 // Summary:
 //
-// Queries the statistics of instances in different periods of a day.
+// Retrieves the hourly statistical trends of instances for the current day.
 //
 // @param request - GetSuccessInstanceTrendRequest
 //
@@ -13967,7 +14031,7 @@ func (client *Client) GetSuccessInstanceTrendWithOptions(request *GetSuccessInst
 //
 // Summary:
 //
-// Queries the statistics of instances in different periods of a day.
+// Retrieves the hourly statistical trends of instances for the current day.
 //
 // @param request - GetSuccessInstanceTrendRequest
 //
@@ -13986,7 +14050,7 @@ func (client *Client) GetSuccessInstanceTrend(request *GetSuccessInstanceTrendRe
 
 // Summary:
 //
-// Queries the information about an event.
+// Retrieves the details of an event.
 //
 // Description:
 //
@@ -14034,7 +14098,7 @@ func (client *Client) GetTopicWithOptions(request *GetTopicRequest, runtime *dar
 
 // Summary:
 //
-// Queries the information about an event.
+// Retrieves the details of an event.
 //
 // Description:
 //
@@ -14384,7 +14448,7 @@ func (client *Client) ListBaselineConfigs(request *ListBaselineConfigsRequest) (
 
 // Summary:
 //
-// Queries a list of baseline instances.
+// Retrieves a list of baseline instances.
 //
 // @param request - ListBaselineStatusesRequest
 //
@@ -14464,7 +14528,7 @@ func (client *Client) ListBaselineStatusesWithOptions(request *ListBaselineStatu
 
 // Summary:
 //
-// Queries a list of baseline instances.
+// Retrieves a list of baseline instances.
 //
 // @param request - ListBaselineStatusesRequest
 //
@@ -14732,7 +14796,7 @@ func (client *Client) ListCalcEngines(request *ListCalcEnginesRequest) (_result 
 
 // Summary:
 //
-// Queries the check results of extension point events.
+// Queries the check list of extension events.
 //
 // @param request - ListCheckProcessesRequest
 //
@@ -14800,7 +14864,7 @@ func (client *Client) ListCheckProcessesWithOptions(request *ListCheckProcessesR
 
 // Summary:
 //
-// Queries the check results of extension point events.
+// Queries the check list of extension events.
 //
 // @param request - ListCheckProcessesRequest
 //
@@ -14997,11 +15061,11 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 
 // Summary:
 //
-// Retrieves a list of alert rules configured for a synchronization task.
+// Queries the list of alerting rules for data integration new-version nodes. Currently supported node types include the MySQL-to-Hologres full-database real-time Solutions.
 //
 // Description:
 //
-// Alert rules can be configured when your task includes real-time synchronization.
+// When your task synchronization type includes real-time synchronization, you can configure alert rules.
 //
 // @param request - ListDIAlarmRulesRequest
 //
@@ -15053,11 +15117,11 @@ func (client *Client) ListDIAlarmRulesWithOptions(request *ListDIAlarmRulesReque
 
 // Summary:
 //
-// Retrieves a list of alert rules configured for a synchronization task.
+// Queries the list of alerting rules for data integration new-version nodes. Currently supported node types include the MySQL-to-Hologres full-database real-time Solutions.
 //
 // Description:
 //
-// Alert rules can be configured when your task includes real-time synchronization.
+// When your task synchronization type includes real-time synchronization, you can configure alert rules.
 //
 // @param request - ListDIAlarmRulesRequest
 //
@@ -15075,11 +15139,13 @@ func (client *Client) ListDIAlarmRules(request *ListDIAlarmRulesRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of synchronization tasks.
+// Queries the list of new-version data integration tasks. Currently supported task types include MySQL-to-Hologres full-database real-time synchronization tasks.
 //
 // Description:
 //
-// You can call this operation to obtain only the basic information about the tasks. If you want to obtain the details of a task, call the GetDIJob operation.
+// This list operation returns only basic task information. To view detailed task information, call the GetDIJob operation.
+//
+// Prerequisites: Activate DataWorks Enterprise Edition or Ultimate Edition first. The required ProjectId can be obtained from PageResult.ProjectList[].ProjectId in the ListProjects response. If the required edition is not activated, this operation returns 403 Forbidden.Access.
 //
 // @param request - ListDIJobsRequest
 //
@@ -15143,11 +15209,13 @@ func (client *Client) ListDIJobsWithOptions(request *ListDIJobsRequest, runtime 
 
 // Summary:
 //
-// Retrieves a list of synchronization tasks.
+// Queries the list of new-version data integration tasks. Currently supported task types include MySQL-to-Hologres full-database real-time synchronization tasks.
 //
 // Description:
 //
-// You can call this operation to obtain only the basic information about the tasks. If you want to obtain the details of a task, call the GetDIJob operation.
+// This list operation returns only basic task information. To view detailed task information, call the GetDIJob operation.
+//
+// Prerequisites: Activate DataWorks Enterprise Edition or Ultimate Edition first. The required ProjectId can be obtained from PageResult.ProjectList[].ProjectId in the ListProjects response. If the required edition is not activated, this operation returns 403 Forbidden.Access.
 //
 // @param request - ListDIJobsRequest
 //
@@ -15243,29 +15311,29 @@ func (client *Client) ListDIProjectConfig(request *ListDIProjectConfigRequest) (
 
 // Summary:
 //
-// Retrieves a list of directed acyclic graphs (DAGs) for a data backfill instance by operation sequence number (OpSeq).
+// Calls the ListDags operation to retrieve the details of all DAGs for a single data backfill instance based on the OpSeq (unique identifier of the data backfill instance).
 //
 // Description:
 //
-// Supported DAG types:
+// Dag Type values:
 //
-// - MANUAL: DAG for a manually triggered workflow
+// - MANUAL: manual task workflow
 //
-// - SMOKE_TEST: DAG for a smoke testing workflow
+// - SMOKE_TEST: smoke test workflow
 //
-// - SUPPLY_DATA: DAG for a data backfill instance
+// - SUPPLY_DATA: data backfill
 //
-// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+// - BUSINESS_PROCESS_DAG: one-time business process workflow
 //
-// Supported DAG states:
+// Dag Status values:
 //
-// - CREATED: The DAG is created.
+// - CREATED: created
 //
-// - RUNNING: The DAG is running.
+// - RUNNING: running
 //
-// - FAILURE: The DAG fails to run.
+// - FAILURE: failed
 //
-// - SUCCESS: The DAG is successfully run.
+// - SUCCESS: succeeded
 //
 // @param request - ListDagsRequest
 //
@@ -15313,29 +15381,29 @@ func (client *Client) ListDagsWithOptions(request *ListDagsRequest, runtime *dar
 
 // Summary:
 //
-// Retrieves a list of directed acyclic graphs (DAGs) for a data backfill instance by operation sequence number (OpSeq).
+// Calls the ListDags operation to retrieve the details of all DAGs for a single data backfill instance based on the OpSeq (unique identifier of the data backfill instance).
 //
 // Description:
 //
-// Supported DAG types:
+// Dag Type values:
 //
-// - MANUAL: DAG for a manually triggered workflow
+// - MANUAL: manual task workflow
 //
-// - SMOKE_TEST: DAG for a smoke testing workflow
+// - SMOKE_TEST: smoke test workflow
 //
-// - SUPPLY_DATA: DAG for a data backfill instance
+// - SUPPLY_DATA: data backfill
 //
-// - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+// - BUSINESS_PROCESS_DAG: one-time business process workflow
 //
-// Supported DAG states:
+// Dag Status values:
 //
-// - CREATED: The DAG is created.
+// - CREATED: created
 //
-// - RUNNING: The DAG is running.
+// - RUNNING: running
 //
-// - FAILURE: The DAG fails to run.
+// - FAILURE: failed
 //
-// - SUCCESS: The DAG is successfully run.
+// - SUCCESS: succeeded
 //
 // @param request - ListDagsRequest
 //
@@ -15353,7 +15421,7 @@ func (client *Client) ListDags(request *ListDagsRequest) (_result *ListDagsRespo
 
 // Summary:
 //
-// Retrieves a list of APIs on which other users are granted access permissions.
+// Retrieves the list of APIs that have been authorized to other users.
 //
 // @param request - ListDataServiceApiAuthoritiesRequest
 //
@@ -15415,7 +15483,7 @@ func (client *Client) ListDataServiceApiAuthoritiesWithOptions(request *ListData
 
 // Summary:
 //
-// Retrieves a list of APIs on which other users are granted access permissions.
+// Retrieves the list of APIs that have been authorized to other users.
 //
 // @param request - ListDataServiceApiAuthoritiesRequest
 //
@@ -15433,7 +15501,7 @@ func (client *Client) ListDataServiceApiAuthorities(request *ListDataServiceApiA
 
 // Summary:
 //
-// Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the previous month.
+// Lists the test records of a DataService API. Only data from the last month can be queried.
 //
 // @param request - ListDataServiceApiTestRequest
 //
@@ -15473,7 +15541,7 @@ func (client *Client) ListDataServiceApiTestWithOptions(request *ListDataService
 
 // Summary:
 //
-// Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the previous month.
+// Lists the test records of a DataService API. Only data from the last month can be queried.
 //
 // @param request - ListDataServiceApiTestRequest
 //
@@ -15651,7 +15719,7 @@ func (client *Client) ListDataServiceApplications(request *ListDataServiceApplic
 
 // Summary:
 //
-// Retrieves a list of APIs that you are authorized to access.
+// Retrieves a list of authorized APIs in DataService.
 //
 // @param request - ListDataServiceAuthorizedApisRequest
 //
@@ -15713,7 +15781,7 @@ func (client *Client) ListDataServiceAuthorizedApisWithOptions(request *ListData
 
 // Summary:
 //
-// Retrieves a list of APIs that you are authorized to access.
+// Retrieves a list of authorized APIs in DataService.
 //
 // @param request - ListDataServiceAuthorizedApisRequest
 //
@@ -15731,7 +15799,7 @@ func (client *Client) ListDataServiceAuthorizedApis(request *ListDataServiceAuth
 
 // Summary:
 //
-// Retrieves a list of folders.
+// Queries the list of Data Service folders.
 //
 // @param request - ListDataServiceFoldersRequest
 //
@@ -15795,7 +15863,7 @@ func (client *Client) ListDataServiceFoldersWithOptions(request *ListDataService
 
 // Summary:
 //
-// Retrieves a list of folders.
+// Queries the list of Data Service folders.
 //
 // @param request - ListDataServiceFoldersRequest
 //
@@ -15813,7 +15881,7 @@ func (client *Client) ListDataServiceFolders(request *ListDataServiceFoldersRequ
 
 // Summary:
 //
-// Retrieves a list of business processes.
+// Queries the list of Data Service business processes.
 //
 // @param request - ListDataServiceGroupsRequest
 //
@@ -15873,7 +15941,7 @@ func (client *Client) ListDataServiceGroupsWithOptions(request *ListDataServiceG
 
 // Summary:
 //
-// Retrieves a list of business processes.
+// Queries the list of Data Service business processes.
 //
 // @param request - ListDataServiceGroupsRequest
 //
@@ -15891,7 +15959,7 @@ func (client *Client) ListDataServiceGroups(request *ListDataServiceGroupsReques
 
 // Summary:
 //
-// Retrieves a list of published APIs.
+// Queries the list of published Data Service APIs.
 //
 // @param request - ListDataServicePublishedApisRequest
 //
@@ -15959,7 +16027,7 @@ func (client *Client) ListDataServicePublishedApisWithOptions(request *ListDataS
 
 // Summary:
 //
-// Retrieves a list of published APIs.
+// Queries the list of published Data Service APIs.
 //
 // @param request - ListDataServicePublishedApisRequest
 //
@@ -16211,7 +16279,7 @@ func (client *Client) ListEnabledExtensionsForProject(request *ListEnabledExtens
 
 // Summary:
 //
-// Queries a list of entities by tag. Only entities of the maxcompute-table type are supported.
+// Lists entities by tag. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param tmpReq - ListEntitiesByTagsRequest
 //
@@ -16257,7 +16325,7 @@ func (client *Client) ListEntitiesByTagsWithOptions(tmpReq *ListEntitiesByTagsRe
 
 // Summary:
 //
-// Queries a list of entities by tag. Only entities of the maxcompute-table type are supported.
+// Lists entities by tag. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param request - ListEntitiesByTagsRequest
 //
@@ -16275,7 +16343,7 @@ func (client *Client) ListEntitiesByTags(request *ListEntitiesByTagsRequest) (_r
 
 // Summary:
 //
-// Queries a list of tags of an entity. Only entities of the maxcompute-table type are supported.
+// Lists the tags of an entity. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param request - ListEntityTagsRequest
 //
@@ -16315,7 +16383,7 @@ func (client *Client) ListEntityTagsWithOptions(request *ListEntityTagsRequest, 
 
 // Summary:
 //
-// Queries a list of tags of an entity. Only entities of the maxcompute-table type are supported.
+// Lists the tags of an entity. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param request - ListEntityTagsRequest
 //
@@ -16333,7 +16401,7 @@ func (client *Client) ListEntityTags(request *ListEntityTagsRequest) (_result *L
 
 // Summary:
 //
-// Queries a list of extensions.
+// Retrieves the list of extensions from the open platform.
 //
 // @param request - ListExtensionsRequest
 //
@@ -16381,7 +16449,7 @@ func (client *Client) ListExtensionsWithOptions(request *ListExtensionsRequest, 
 
 // Summary:
 //
-// Queries a list of extensions.
+// Retrieves the list of extensions from the open platform.
 //
 // @param request - ListExtensionsRequest
 //
@@ -16911,7 +16979,7 @@ func (client *Client) ListInstanceAmount(request *ListInstanceAmountRequest) (_r
 
 // Summary:
 //
-// Retrieves the run history of an instance. Each rerun generates a new historical record.
+// Retrieves all history records of an instance. A history record is generated each time a node is rerun.
 //
 // @param request - ListInstanceHistoryRequest
 //
@@ -16959,7 +17027,7 @@ func (client *Client) ListInstanceHistoryWithOptions(request *ListInstanceHistor
 
 // Summary:
 //
-// Retrieves the run history of an instance. Each rerun generates a new historical record.
+// Retrieves all history records of an instance. A history record is generated each time a node is rerun.
 //
 // @param request - ListInstanceHistoryRequest
 //
@@ -16977,7 +17045,7 @@ func (client *Client) ListInstanceHistory(request *ListInstanceHistoryRequest) (
 
 // Summary:
 //
-// Queries a list of instances.
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -17077,7 +17145,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 // Summary:
 //
-// Queries a list of instances.
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -17095,7 +17163,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the ancestor or descendant lineage of an entity.
+// Queries the upstream and downstream lineage relationships of an entity.
 //
 // @param request - ListLineageRequest
 //
@@ -17155,7 +17223,7 @@ func (client *Client) ListLineageWithOptions(request *ListLineageRequest, runtim
 
 // Summary:
 //
-// Queries the ancestor or descendant lineage of an entity.
+// Queries the upstream and downstream lineage relationships of an entity.
 //
 // @param request - ListLineageRequest
 //
@@ -17317,7 +17385,7 @@ func (client *Client) ListMeasureData(request *ListMeasureDataRequest) (_result 
 
 // Summary:
 //
-// Queries the entities in a collection.
+// Queries entities in a collection.
 //
 // @param request - ListMetaCollectionEntitiesRequest
 //
@@ -17377,7 +17445,7 @@ func (client *Client) ListMetaCollectionEntitiesWithOptions(request *ListMetaCol
 
 // Summary:
 //
-// Queries the entities in a collection.
+// Queries entities in a collection.
 //
 // @param request - ListMetaCollectionEntitiesRequest
 //
@@ -17395,11 +17463,11 @@ func (client *Client) ListMetaCollectionEntities(request *ListMetaCollectionEnti
 
 // Summary:
 //
-// Retrieves a list of collections. Collections include data albums displayed on the Data Map page and categories created in data albums. You can filter collections by type.
+// Queries collection information. Collections include albums and subcategories within albums on the Data Map page. You can call this operation to query collection information by specifying a collection type.
 //
 // Description:
 //
-// Collections include ALBUM (data album) and ALBUM_CATEGORY (category within a data album).
+// Collections include: ALBUM (album collection) and ALBUM_CATEGORY (subcategory within an album).
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -17475,11 +17543,11 @@ func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollection
 
 // Summary:
 //
-// Retrieves a list of collections. Collections include data albums displayed on the Data Map page and categories created in data albums. You can filter collections by type.
+// Queries collection information. Collections include albums and subcategories within albums on the Data Map page. You can call this operation to query collection information by specifying a collection type.
 //
 // Description:
 //
-// Collections include ALBUM (data album) and ALBUM_CATEGORY (category within a data album).
+// Collections include: ALBUM (album collection) and ALBUM_CATEGORY (subcategory within an album).
 //
 // @param request - ListMetaCollectionsRequest
 //
@@ -17497,7 +17565,7 @@ func (client *Client) ListMetaCollections(request *ListMetaCollectionsRequest) (
 
 // Summary:
 //
-// Queries a list of metadatabases.
+// Queries a list of databases.
 //
 // @param request - ListMetaDBRequest
 //
@@ -17537,7 +17605,7 @@ func (client *Client) ListMetaDBWithOptions(request *ListMetaDBRequest, runtime 
 
 // Summary:
 //
-// Queries a list of metadatabases.
+// Queries a list of databases.
 //
 // @param request - ListMetaDBRequest
 //
@@ -17635,7 +17703,7 @@ func (client *Client) ListMigrations(request *ListMigrationsRequest) (_result *L
 //
 // Summary:
 //
-// Queries the information about one level of ancestor or descendant nodes of a node.
+// Queries the information of upstream and downstream nodes. Only one level can be queried.
 //
 // @param request - ListNodeIORequest
 //
@@ -17689,7 +17757,7 @@ func (client *Client) ListNodeIOWithOptions(request *ListNodeIORequest, runtime 
 //
 // Summary:
 //
-// Queries the information about one level of ancestor or descendant nodes of a node.
+// Queries the information of upstream and downstream nodes. Only one level can be queried.
 //
 // @param request - ListNodeIORequest
 //
@@ -17708,7 +17776,7 @@ func (client *Client) ListNodeIO(request *ListNodeIORequest) (_result *ListNodeI
 
 // Summary:
 //
-// Queries the input and output information about a node. Only the ancestor or descendant nodes at the nearest level can be queried each time.
+// Queries the input and output information of the current node.
 //
 // @param request - ListNodeInputOrOutputRequest
 //
@@ -17760,7 +17828,7 @@ func (client *Client) ListNodeInputOrOutputWithOptions(request *ListNodeInputOrO
 
 // Summary:
 //
-// Queries the input and output information about a node. Only the ancestor or descendant nodes at the nearest level can be queried each time.
+// Queries the input and output information of the current node.
 //
 // @param request - ListNodeInputOrOutputRequest
 //
@@ -17872,7 +17940,7 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// Queries nodes in a baseline.
+// Retrieves the nodes in a baseline (excluding the upstream nodes of these nodes).
 //
 // @param request - ListNodesByBaselineRequest
 //
@@ -17916,7 +17984,7 @@ func (client *Client) ListNodesByBaselineWithOptions(request *ListNodesByBaselin
 
 // Summary:
 //
-// Queries nodes in a baseline.
+// Retrieves the nodes in a baseline (excluding the upstream nodes of these nodes).
 //
 // @param request - ListNodesByBaselineRequest
 //
@@ -18263,7 +18331,7 @@ func (client *Client) ListProjectIds(request *ListProjectIdsRequest) (_result *L
 
 // Summary:
 //
-// Queries a list of existing members in a DataWorks workspace.
+// Queries the list of existing members in a DataWorks workspace.
 //
 // @param request - ListProjectMembersRequest
 //
@@ -18315,7 +18383,7 @@ func (client *Client) ListProjectMembersWithOptions(request *ListProjectMembersR
 
 // Summary:
 //
-// Queries a list of existing members in a DataWorks workspace.
+// Queries the list of existing members in a DataWorks workspace.
 //
 // @param request - ListProjectMembersRequest
 //
@@ -18333,7 +18401,7 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 
 // Summary:
 //
-// Queries a list of roles in a DataWorks workspace.
+// Retrieves a list of all roles in a workspace.
 //
 // @param request - ListProjectRolesRequest
 //
@@ -18377,7 +18445,7 @@ func (client *Client) ListProjectRolesWithOptions(request *ListProjectRolesReque
 
 // Summary:
 //
-// Queries a list of roles in a DataWorks workspace.
+// Retrieves a list of all roles in a workspace.
 //
 // @param request - ListProjectRolesRequest
 //
@@ -18395,7 +18463,7 @@ func (client *Client) ListProjectRoles(request *ListProjectRolesRequest) (_resul
 
 // Summary:
 //
-// Queries a list of DataWorks workspaces of the tenant to which a user belongs.
+// Queries the list of DataWorks workspaces under the tenant to which the current user belongs.
 //
 // @param tmpReq - ListProjectsRequest
 //
@@ -18457,7 +18525,7 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runti
 
 // Summary:
 //
-// Queries a list of DataWorks workspaces of the tenant to which a user belongs.
+// Queries the list of DataWorks workspaces under the tenant to which the current user belongs.
 //
 // @param request - ListProjectsRequest
 //
@@ -18916,7 +18984,7 @@ func (client *Client) ListReminds(request *ListRemindsRequest) (_result *ListRem
 
 // Summary:
 //
-// Queries a list of resource groups of a specific type.
+// Queries the list of resource groups of a specified type.
 //
 // @param tmpReq - ListResourceGroupsRequest
 //
@@ -18982,7 +19050,7 @@ func (client *Client) ListResourceGroupsWithOptions(tmpReq *ListResourceGroupsRe
 
 // Summary:
 //
-// Queries a list of resource groups of a specific type.
+// Queries the list of resource groups of a specified type.
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -19000,7 +19068,7 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 
 // Summary:
 //
-// Queries a list of on-duty engineers in a shift schedule.
+// Retrieves the list of on-duty personnel for a shift schedule.
 //
 // @param request - ListShiftPersonnelsRequest
 //
@@ -19060,7 +19128,7 @@ func (client *Client) ListShiftPersonnelsWithOptions(request *ListShiftPersonnel
 
 // Summary:
 //
-// Queries a list of on-duty engineers in a shift schedule.
+// Retrieves the list of on-duty personnel for a shift schedule.
 //
 // @param request - ListShiftPersonnelsRequest
 //
@@ -19152,7 +19220,7 @@ func (client *Client) ListShiftSchedules(request *ListShiftSchedulesRequest) (_r
 
 // Summary:
 //
-// Queries the trend of the number of auto triggered node instances that are successfully run every hour on the hour of the current day.
+// Retrieves the trend of successfully completed instance counts at different hours on the business date for periodic instances generated on that date.
 //
 // @param request - ListSuccessInstanceAmountRequest
 //
@@ -19196,7 +19264,7 @@ func (client *Client) ListSuccessInstanceAmountWithOptions(request *ListSuccessI
 
 // Summary:
 //
-// Queries the trend of the number of auto triggered node instances that are successfully run every hour on the hour of the current day.
+// Retrieves the trend of successfully completed instance counts at different hours on the business date for periodic instances generated on that date.
 //
 // @param request - ListSuccessInstanceAmountRequest
 //
@@ -19400,7 +19468,11 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 
 // Summary:
 //
-// Queries events.
+// Queries or searches for a list of events.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns 403 Forbidden.Access.
 //
 // @param request - ListTopicsRequest
 //
@@ -19476,7 +19548,11 @@ func (client *Client) ListTopicsWithOptions(request *ListTopicsRequest, runtime 
 
 // Summary:
 //
-// Queries events.
+// Queries or searches for a list of events.
+//
+// Description:
+//
+// Before you begin: Activate DataWorks Enterprise Edition or Ultimate Edition before calling this operation. If the edition is not activated, the service returns 403 Forbidden.Access.
 //
 // @param request - ListTopicsRequest
 //
@@ -19712,7 +19788,7 @@ func (client *Client) QueryDISyncTaskConfigProcessResult(request *QueryDISyncTas
 
 // Summary:
 //
-// Queries the default data category and data sensitivity level template defined by Data Security Guard.
+// Queries the default data classification template defined by Data Security Guard.
 //
 // @param request - QueryDefaultTemplateRequest
 //
@@ -19756,7 +19832,7 @@ func (client *Client) QueryDefaultTemplateWithOptions(request *QueryDefaultTempl
 
 // Summary:
 //
-// Queries the default data category and data sensitivity level template defined by Data Security Guard.
+// Queries the default data classification template defined by Data Security Guard.
 //
 // @param request - QueryDefaultTemplateRequest
 //
@@ -19856,7 +19932,7 @@ func (client *Client) QueryPublicModelEngine(request *QueryPublicModelEngineRequ
 
 // Summary:
 //
-// Queries the type of a sensitive data identification rule.
+// Queries the list of sensitive field recognition methods in Data Protection Umbrella by calling the QueryRecognizeDataByRuleType operation.
 //
 // @param request - QueryRecognizeDataByRuleTypeRequest
 //
@@ -19904,7 +19980,7 @@ func (client *Client) QueryRecognizeDataByRuleTypeWithOptions(request *QueryReco
 
 // Summary:
 //
-// Queries the type of a sensitive data identification rule.
+// Queries the list of sensitive field recognition methods in Data Protection Umbrella by calling the QueryRecognizeDataByRuleType operation.
 //
 // @param request - QueryRecognizeDataByRuleTypeRequest
 //
@@ -20251,11 +20327,11 @@ func (client *Client) QuerySensNodeInfo(request *QuerySensNodeInfoRequest) (_res
 
 // Summary:
 //
-// Registers the lineage between self-managed entities to DataWorks.
+// Registers entity relationships. You can register custom entity relationships.
 //
 // Description:
 //
-// This API operation is currently in trial. Users who want to try it out can submit an application. After the administrator adds the user to the trial list, the user can call this operation.
+// This operation is currently in trial. To use this operation, submit a request. After an administrator adds you to the trial list, you can call this operation.
 //
 // @param tmpReq - RegisterLineageRelationRequest
 //
@@ -20305,11 +20381,11 @@ func (client *Client) RegisterLineageRelationWithOptions(tmpReq *RegisterLineage
 
 // Summary:
 //
-// Registers the lineage between self-managed entities to DataWorks.
+// Registers entity relationships. You can register custom entity relationships.
 //
 // Description:
 //
-// This API operation is currently in trial. Users who want to try it out can submit an application. After the administrator adds the user to the trial list, the user can call this operation.
+// This operation is currently in trial. To use this operation, submit a request. After an administrator adds you to the trial list, you can call this operation.
 //
 // @param request - RegisterLineageRelationRequest
 //
@@ -20327,7 +20403,7 @@ func (client *Client) RegisterLineageRelation(request *RegisterLineageRelationRe
 
 // Summary:
 //
-// Removes tags from an entity. Only entities of the maxcompute-table type are supported.
+// Removes tags from an entity. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param tmpReq - RemoveEntityTagsRequest
 //
@@ -20383,7 +20459,7 @@ func (client *Client) RemoveEntityTagsWithOptions(tmpReq *RemoveEntityTagsReques
 
 // Summary:
 //
-// Removes tags from an entity. Only entities of the maxcompute-table type are supported.
+// Removes tags from an entity. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param request - RemoveEntityTagsRequest
 //
@@ -20401,7 +20477,7 @@ func (client *Client) RemoveEntityTags(request *RemoveEntityTagsRequest) (_resul
 
 // Summary:
 //
-// Removes a role from a user in a DataWorks workspace.
+// Removes a user from a DataWorks role in a DataWorks workspace.
 //
 // @param request - RemoveProjectMemberFromRoleRequest
 //
@@ -20453,7 +20529,7 @@ func (client *Client) RemoveProjectMemberFromRoleWithOptions(request *RemoveProj
 
 // Summary:
 //
-// Removes a role from a user in a DataWorks workspace.
+// Removes a user from a DataWorks role in a DataWorks workspace.
 //
 // @param request - RemoveProjectMemberFromRoleRequest
 //
@@ -20537,7 +20613,7 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
-// Resumes a suspended instance.
+// Resumes a paused instance.
 //
 // @param request - ResumeInstanceRequest
 //
@@ -20585,7 +20661,7 @@ func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, 
 
 // Summary:
 //
-// Resumes a suspended instance.
+// Resumes a paused instance.
 //
 // @param request - ResumeInstanceRequest
 //
@@ -20603,7 +20679,7 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 
 // Summary:
 //
-// Revokes permissions on a table from a user.
+// Revokes table permissions from a user.
 //
 // @param request - RevokeTablePermissionRequest
 //
@@ -20667,7 +20743,7 @@ func (client *Client) RevokeTablePermissionWithOptions(request *RevokeTablePermi
 
 // Summary:
 //
-// Revokes permissions on a table from a user.
+// Revokes table permissions from a user.
 //
 // @param request - RevokeTablePermissionRequest
 //
@@ -20685,11 +20761,11 @@ func (client *Client) RevokeTablePermission(request *RevokeTablePermissionReques
 
 // Summary:
 //
-// Creates a workflow to backfill data.
+// Creates a data backfill workflow by calling RunCycleDagNodes.
 //
 // Description:
 //
-// For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
+// For more information about data backfill, see [Data backfill](https://help.aliyun.com/document_detail/137937.html).
 //
 // @param request - RunCycleDagNodesRequest
 //
@@ -20789,11 +20865,11 @@ func (client *Client) RunCycleDagNodesWithOptions(request *RunCycleDagNodesReque
 
 // Summary:
 //
-// Creates a workflow to backfill data.
+// Creates a data backfill workflow by calling RunCycleDagNodes.
 //
 // Description:
 //
-// For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
+// For more information about data backfill, see [Data backfill](https://help.aliyun.com/document_detail/137937.html).
 //
 // @param request - RunCycleDagNodesRequest
 //
@@ -20811,7 +20887,7 @@ func (client *Client) RunCycleDagNodes(request *RunCycleDagNodesRequest) (_resul
 
 // Summary:
 //
-// Runs nodes in a manually triggered workflow. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find a manually triggered workflow in Operation Center only after the manually triggered workflow is committed and deployed.
+// Triggers a manual workflow to run. The manual workflow must have been submitted and published in the environment page before it appears in the Operation Center and can be triggered by this operation.
 //
 // @param request - RunManualDagNodesRequest
 //
@@ -20895,7 +20971,7 @@ func (client *Client) RunManualDagNodesWithOptions(request *RunManualDagNodesReq
 
 // Summary:
 //
-// Runs nodes in a manually triggered workflow. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find a manually triggered workflow in Operation Center only after the manually triggered workflow is committed and deployed.
+// Triggers a manual workflow to run. The manual workflow must have been submitted and published in the environment page before it appears in the Operation Center and can be triggered by this operation.
 //
 // @param request - RunManualDagNodesRequest
 //
@@ -20913,7 +20989,7 @@ func (client *Client) RunManualDagNodes(request *RunManualDagNodesRequest) (_res
 
 // Summary:
 //
-// Creates a workflow to perform smoke testing.
+// Creates a smoke test workflow by calling the RunSmokeTest operation.
 //
 // @param request - RunSmokeTestRequest
 //
@@ -20973,7 +21049,7 @@ func (client *Client) RunSmokeTestWithOptions(request *RunSmokeTestRequest, runt
 
 // Summary:
 //
-// Creates a workflow to perform smoke testing.
+// Creates a smoke test workflow by calling the RunSmokeTest operation.
 //
 // @param request - RunSmokeTestRequest
 //
@@ -20991,7 +21067,7 @@ func (client *Client) RunSmokeTest(request *RunSmokeTestRequest) (_result *RunSm
 
 // Summary:
 //
-// Runs a manually triggered node.
+// Runs a trigger node.
 //
 // @param request - RunTriggerNodeRequest
 //
@@ -21047,7 +21123,7 @@ func (client *Client) RunTriggerNodeWithOptions(request *RunTriggerNodeRequest, 
 
 // Summary:
 //
-// Runs a manually triggered node.
+// Runs a trigger node.
 //
 // @param request - RunTriggerNodeRequest
 //
@@ -21301,7 +21377,7 @@ func (client *Client) SearchMetaTables(request *SearchMetaTablesRequest) (_resul
 //
 // Summary:
 //
-// Queries a node based on the output.
+// Queries nodes by exact match based on output.
 //
 // @param request - SearchNodesByOutputRequest
 //
@@ -21351,7 +21427,7 @@ func (client *Client) SearchNodesByOutputWithOptions(request *SearchNodesByOutpu
 //
 // Summary:
 //
-// Queries a node based on the output.
+// Queries nodes by exact match based on output.
 //
 // @param request - SearchNodesByOutputRequest
 //
@@ -21453,7 +21529,7 @@ func (client *Client) SetDataSourceShare(request *SetDataSourceShareRequest) (_r
 
 // Summary:
 //
-// Configures tags for an entity. Only entities of the maxcompute-table type are supported.
+// Sets labels for an entity. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param tmpReq - SetEntityTagsRequest
 //
@@ -21509,7 +21585,7 @@ func (client *Client) SetEntityTagsWithOptions(tmpReq *SetEntityTagsRequest, run
 
 // Summary:
 //
-// Configures tags for an entity. Only entities of the maxcompute-table type are supported.
+// Sets labels for an entity. Currently, only entities of the maxcompute-table type are supported.
 //
 // @param request - SetEntityTagsRequest
 //
@@ -21941,7 +22017,7 @@ func (client *Client) StopDISyncInstance(request *StopDISyncInstanceRequest) (_r
 
 // Summary:
 //
-// Terminates an instance.
+// Stops an instance.
 //
 // @param request - StopInstanceRequest
 //
@@ -21989,7 +22065,7 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 
 // Summary:
 //
-// Terminates an instance.
+// Stops an instance.
 //
 // @param request - StopInstanceRequest
 //
@@ -22163,7 +22239,7 @@ func (client *Client) SubmitFile(request *SubmitFileRequest) (_result *SubmitFil
 
 // Summary:
 //
-// Suspends an instance.
+// Pauses an instance.
 //
 // @param request - SuspendInstanceRequest
 //
@@ -22211,7 +22287,7 @@ func (client *Client) SuspendInstanceWithOptions(request *SuspendInstanceRequest
 
 // Summary:
 //
-// Suspends an instance.
+// Pauses an instance.
 //
 // @param request - SuspendInstanceRequest
 //
@@ -23504,11 +23580,11 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 
 // Summary:
 //
-// Updates a file.
+// Updates a created file.
 //
 // Description:
 //
-// When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
+// When you debug or call this operation, the parameter values that you specify must be different from the existing file configurations of the node. For example, if a parameter of the source node is set to A, you must change the value to B before you submit the request. If you still specify A, an invalid exception is returned.
 //
 // @param request - UpdateFileRequest
 //
@@ -23680,11 +23756,11 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime 
 
 // Summary:
 //
-// Updates a file.
+// Updates a created file.
 //
 // Description:
 //
-// When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
+// When you debug or call this operation, the parameter values that you specify must be different from the existing file configurations of the node. For example, if a parameter of the source node is set to A, you must change the value to B before you submit the request. If you still specify A, an invalid exception is returned.
 //
 // @param request - UpdateFileRequest
 //
@@ -23920,11 +23996,11 @@ func (client *Client) UpdateMetaCategory(request *UpdateMetaCategoryRequest) (_r
 
 // Summary:
 //
-// Updates the name and comment of a collection.
+// Updates the name and comment of a collection object.
 //
 // Description:
 //
-// Only the Name and Comment fields can be updated.
+// Currently, only the name (Name) and comment (Comment) can be updated.
 //
 // @param request - UpdateMetaCollectionRequest
 //
@@ -23976,11 +24052,11 @@ func (client *Client) UpdateMetaCollectionWithOptions(request *UpdateMetaCollect
 
 // Summary:
 //
-// Updates the name and comment of a collection.
+// Updates the name and comment of a collection object.
 //
 // Description:
 //
-// Only the Name and Comment fields can be updated.
+// Currently, only the name (Name) and comment (Comment) can be updated.
 //
 // @param request - UpdateMetaCollectionRequest
 //
@@ -24110,7 +24186,7 @@ func (client *Client) UpdateMetaTable(request *UpdateMetaTableRequest) (_result 
 
 // Summary:
 //
-// Updates the instructions on how to use a table. If no instruction on how to use the table is available, the instructions that are configured by calling this operation are added.
+// Updates the description of a table. If the data does not exist, the description is added.
 //
 // @param request - UpdateMetaTableIntroWikiRequest
 //
@@ -24160,7 +24236,7 @@ func (client *Client) UpdateMetaTableIntroWikiWithOptions(request *UpdateMetaTab
 
 // Summary:
 //
-// Updates the instructions on how to use a table. If no instruction on how to use the table is available, the instructions that are configured by calling this operation are added.
+// Updates the description of a table. If the data does not exist, the description is added.
 //
 // @param request - UpdateMetaTableIntroWikiRequest
 //
@@ -24248,7 +24324,7 @@ func (client *Client) UpdateNodeOwner(request *UpdateNodeOwnerRequest) (_result 
 
 // Summary:
 //
-// Freezes or unfreezes a node.
+// Freezes or unfreezes a specified node.
 //
 // @param request - UpdateNodeRunModeRequest
 //
@@ -24300,7 +24376,7 @@ func (client *Client) UpdateNodeRunModeWithOptions(request *UpdateNodeRunModeReq
 
 // Summary:
 //
-// Freezes or unfreezes a node.
+// Freezes or unfreezes a specified node.
 //
 // @param request - UpdateNodeRunModeRequest
 //
@@ -24320,7 +24396,7 @@ func (client *Client) UpdateNodeRunMode(request *UpdateNodeRunModeRequest) (_res
 //
 // Summary:
 //
-// Updates a subscription.
+// Updates a subscription relationship.
 //
 // @param request - UpdateQualityFollowerRequest
 //
@@ -24382,7 +24458,7 @@ func (client *Client) UpdateQualityFollowerWithOptions(request *UpdateQualityFol
 //
 // Summary:
 //
-// Updates a subscription.
+// Updates a subscription relationship.
 //
 // @param request - UpdateQualityFollowerRequest
 //
@@ -24403,7 +24479,7 @@ func (client *Client) UpdateQualityFollower(request *UpdateQualityFollowerReques
 //
 // Summary:
 //
-// Updates a specified quality rule.
+// Calls UpdateQualityRule to update the information of a quality check rule.
 //
 // @param request - UpdateQualityRuleRequest
 //
@@ -24533,7 +24609,7 @@ func (client *Client) UpdateQualityRuleWithOptions(request *UpdateQualityRuleReq
 //
 // Summary:
 //
-// Updates a specified quality rule.
+// Calls UpdateQualityRule to update the information of a quality check rule.
 //
 // @param request - UpdateQualityRuleRequest
 //
@@ -24552,7 +24628,7 @@ func (client *Client) UpdateQualityRule(request *UpdateQualityRuleRequest) (_res
 
 // Summary:
 //
-// Modifies a custom alert rule.
+// Updates a custom monitoring rule.
 //
 // @param request - UpdateRemindRequest
 //
@@ -24664,7 +24740,7 @@ func (client *Client) UpdateRemindWithOptions(request *UpdateRemindRequest, runt
 
 // Summary:
 //
-// Modifies a custom alert rule.
+// Updates a custom monitoring rule.
 //
 // @param request - UpdateRemindRequest
 //
@@ -24829,7 +24905,7 @@ func (client *Client) UpdateTable(request *UpdateTableRequest) (_result *UpdateT
 //
 // Summary:
 //
-// Updates the fields in a MaxCompute table.
+// Updates the column information of a MaxCompute table.
 //
 // @param request - UpdateTableAddColumnRequest
 //
@@ -24881,7 +24957,7 @@ func (client *Client) UpdateTableAddColumnWithOptions(request *UpdateTableAddCol
 //
 // Summary:
 //
-// Updates the fields in a MaxCompute table.
+// Updates the column information of a MaxCompute table.
 //
 // @param request - UpdateTableAddColumnRequest
 //
@@ -24978,7 +25054,7 @@ func (client *Client) UpdateTableLevel(request *UpdateTableLevelRequest) (_resul
 
 // Summary:
 //
-// Modifies the information about a table, such as the table folder, level, and category.
+// Modifies the topic, level, and physical category information of a table.
 //
 // @param request - UpdateTableModelInfoRequest
 //
@@ -25038,7 +25114,7 @@ func (client *Client) UpdateTableModelInfoWithOptions(request *UpdateTableModelI
 
 // Summary:
 //
-// Modifies the information about a table, such as the table folder, level, and category.
+// Modifies the topic, level, and physical category information of a table.
 //
 // @param request - UpdateTableModelInfoRequest
 //
@@ -25126,7 +25202,7 @@ func (client *Client) UpdateTableTheme(request *UpdateTableThemeRequest) (_resul
 
 // Summary:
 //
-// Updates the file information about a function.
+// Updates the file information of a function.
 //
 // @param request - UpdateUdfFileRequest
 //
@@ -25214,7 +25290,7 @@ func (client *Client) UpdateUdfFileWithOptions(request *UpdateUdfFileRequest, ru
 
 // Summary:
 //
-// Updates the file information about a function.
+// Updates the file information of a function.
 //
 // @param request - UpdateUdfFileRequest
 //

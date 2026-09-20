@@ -30,9 +30,7 @@ type ListMetaCollectionEntitiesRequest struct {
 	//
 	// album.12345
 	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
-	// The type of the entities.
-	//
-	// For example, if this parameter is set to maxcompute-table, the entity is a MaxCompute table.
+	// The entity type. Example: maxcompute-table indicates the MaxCompute table type.
 	//
 	// example:
 	//
@@ -44,13 +42,13 @@ type ListMetaCollectionEntitiesRequest struct {
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token that specifies the starting point of the current read operation.
 	//
 	// example:
 	//
 	// 12222
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

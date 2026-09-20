@@ -132,7 +132,7 @@ func (s *GetMetaTableChangeLogResponseBody) Validate() error {
 type GetMetaTableChangeLogResponseBodyData struct {
 	// The list of instances.
 	DataEntityList []*GetMetaTableChangeLogResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number. Used for pagination.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type GetMetaTableChangeLogResponseBodyData struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of metatables.
+	// The total number of tables.
 	//
 	// example:
 	//
@@ -222,19 +222,23 @@ type GetMetaTableChangeLogResponseBodyDataDataEntityList struct {
 	//
 	// CREATE_TABLE
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The time when the metatable was created.
+	// The time when the table was created.
+	//
+	// The format is a 13-digit number, for example, `1590722845000`.
 	//
 	// example:
 	//
 	// 1590722845000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the metatable was modified.
+	// The time when the table was modified.
+	//
+	// The format is a 13-digit number, for example, `1590722845000`.
 	//
 	// example:
 	//
 	// 1590722845000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The entity on which the change was made. Valid values: TABLE and PARTITION.
+	// The type of the changed object. Valid values: TABLE and PARTITION.
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iListDataServiceGroupsRequest interface {
 }
 
 type ListDataServiceGroupsRequest struct {
-	// The keyword of a business process name. The keyword is used to search for business processes whose names contain this keyword.
+	// The keyword of the business process name. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// Test workflow
+	// TestBusinessProcess
 	GroupNameKeyword *string `json:"GroupNameKeyword,omitempty" xml:"GroupNameKeyword,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//
@@ -42,13 +42,15 @@ type ListDataServiceGroupsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The workspace ID.
 	//
+	// You can obtain this value from PageResult.ProjectList[].ProjectId in the response of the ListProjects operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The tenant ID. This parameter is deprecated.
+	// **[Deprecated]*	- The tenant ID.
 	//
 	// example:
 	//

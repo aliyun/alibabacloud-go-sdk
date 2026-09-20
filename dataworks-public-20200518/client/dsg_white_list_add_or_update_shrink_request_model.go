@@ -17,6 +17,10 @@ type DsgWhiteListAddOrUpdateShrinkRequest struct {
 	// A collection of whitelists.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// DsgWhiteListAddOrUpdate
 	WhiteListsShrink *string `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty"`
 }
 

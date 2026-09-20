@@ -20,7 +20,7 @@ type iCreateProjectResponseBody interface {
 }
 
 type CreateProjectResponseBody struct {
-	// The workspace ID.
+	// The ID of the DataWorks workspace that was created.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type CreateProjectResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

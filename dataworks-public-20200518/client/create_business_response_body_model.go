@@ -24,7 +24,7 @@ type iCreateBusinessResponseBody interface {
 }
 
 type CreateBusinessResponseBody struct {
-	// The workflow ID.
+	// The ID of the business process.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreateBusinessResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
