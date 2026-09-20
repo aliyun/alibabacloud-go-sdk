@@ -16,7 +16,17 @@ type iCreateSkillDraftResponseBody interface {
 }
 
 type CreateSkillDraftResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The Skill version.
+	//
+	// example:
+	//
+	// 3aa3fb14dddd4bdb941cf4536e4e918b
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

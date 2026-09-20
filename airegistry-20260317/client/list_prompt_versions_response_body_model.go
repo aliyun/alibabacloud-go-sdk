@@ -16,8 +16,14 @@ type iListPromptVersionsResponseBody interface {
 }
 
 type ListPromptVersionsResponseBody struct {
-	Data      *ListPromptVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *ListPromptVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPromptVersionsResponseBody) String() string {
@@ -56,10 +62,26 @@ func (s *ListPromptVersionsResponseBody) Validate() error {
 }
 
 type ListPromptVersionsResponseBodyData struct {
-	PageItems      []*ListPromptVersionsResponseBodyDataPageItems `json:"PageItems,omitempty" xml:"PageItems,omitempty" type:"Repeated"`
-	PageNumber     *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PagesAvailable *int32                                         `json:"PagesAvailable,omitempty" xml:"PagesAvailable,omitempty"`
-	TotalCount     *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of prompt versions.
+	PageItems []*ListPromptVersionsResponseBodyDataPageItems `json:"PageItems,omitempty" xml:"PageItems,omitempty" type:"Repeated"`
+	// The page number. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of available pages.
+	//
+	// example:
+	//
+	// 1
+	PagesAvailable *int32 `json:"PagesAvailable,omitempty" xml:"PagesAvailable,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPromptVersionsResponseBodyData) String() string {
@@ -120,12 +142,42 @@ func (s *ListPromptVersionsResponseBodyData) Validate() error {
 }
 
 type ListPromptVersionsResponseBodyDataPageItems struct {
-	CommitMsg   *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	PromptKey   *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
-	SrcUser     *string `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The commit message of the prompt version.
+	//
+	// example:
+	//
+	// This is a test version
+	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// The modification date.
+	//
+	// example:
+	//
+	// 2026-01-04T16:09:29+08:00
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The unique identifier of the prompt.
+	//
+	// example:
+	//
+	// customer-service-qa
+	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// The creator of the prompt version.
+	//
+	// example:
+	//
+	// admin
+	SrcUser *string `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
+	// The status of the prompt version.
+	//
+	// example:
+	//
+	// draft
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version number.
+	//
+	// example:
+	//
+	// 0.0.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListPromptVersionsResponseBodyDataPageItems) String() string {

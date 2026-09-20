@@ -20,22 +20,34 @@ type iOfflineSkillRequest interface {
 }
 
 type OfflineSkillRequest struct {
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The operation scope. Valid values:
+	//
+	// - skill: the entire Skill.
+	//
+	// - version: a specified version.
+	//
 	// example:
 	//
 	// version
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The Skill name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customer-service-skill
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// The version number. This parameter is required when scope is set to version.
+	//
 	// example:
 	//
 	// 0.0.2

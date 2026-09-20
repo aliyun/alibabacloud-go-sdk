@@ -16,7 +16,17 @@ type iDownloadSkillVersionViaOssResponseBody interface {
 }
 
 type DownloadSkillVersionViaOssResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The OSS URL for downloading the skill.
+	//
+	// example:
+	//
+	// https://sample-bucket.oss-region.aliyuncs.com/xxxxxx
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

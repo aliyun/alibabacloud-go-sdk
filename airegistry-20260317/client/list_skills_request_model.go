@@ -28,36 +28,60 @@ type iListSkillsRequest interface {
 }
 
 type ListSkillsRequest struct {
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The field by which to sort the results. Set the value to download_count. Default value: gmt_modified.
+	//
 	// example:
 	//
 	// download_count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The owner by which to filter the results.
+	//
 	// example:
 	//
 	// user123
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The visibility by which to filter the results. Valid values:
+	//
+	// - PUBLIC
+	//
+	// - PRIVATE
+	//
 	// example:
 	//
 	// PUBLIC
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The search mode. Valid values:
+	//
+	// - accurate: exact match.
+	//
+	// - blur: fuzzy match.
+	//
 	// example:
 	//
 	// blur
 	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	// The filter keyword.
+	//
 	// example:
 	//
 	// customer

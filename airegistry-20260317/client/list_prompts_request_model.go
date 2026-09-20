@@ -24,28 +24,44 @@ type iListPromptsRequest interface {
 }
 
 type ListPromptsRequest struct {
+	// The business tags used to filter prompts. Separate multiple tags with commas (,).
+	//
 	// example:
 	//
 	// cs,qa
 	BizTags *string `json:"BizTags,omitempty" xml:"BizTags,omitempty"`
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The identifier of the prompt to search for. This parameter is optional.
+	//
 	// example:
 	//
 	// customer
 	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// The search mode. Valid values:
+	//
+	// - accurate: exact match.
+	//
+	// - blur: fuzzy match.
+	//
 	// example:
 	//
 	// blur

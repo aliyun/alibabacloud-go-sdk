@@ -14,6 +14,11 @@ type iForcePublishSkillVersionResponseBody interface {
 }
 
 type ForcePublishSkillVersionResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

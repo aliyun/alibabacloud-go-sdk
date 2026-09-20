@@ -16,8 +16,14 @@ type iCreateNamespaceResponseBody interface {
 }
 
 type CreateNamespaceResponseBody struct {
-	Data      *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The namespace creation result.
+	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -56,6 +62,11 @@ func (s *CreateNamespaceResponseBody) Validate() error {
 }
 
 type CreateNamespaceResponseBodyData struct {
+	// The namespace ID. The default namespace cannot be queried, modified, or deleted.
+	//
+	// example:
+	//
+	// a2a9310a-9d91-4283-b4e2-844f6d45fe64
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 

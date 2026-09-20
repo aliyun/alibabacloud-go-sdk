@@ -22,28 +22,38 @@ type iUpdatePromptVersionRequest interface {
 }
 
 type UpdatePromptVersionRequest struct {
+	// The commit message.
+	//
 	// example:
 	//
-	// 优化回答语气
+	// Optimize response tone.
 	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The unique identifier of the prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customer-service-qa
 	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// The updated template content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 你是一个客服助手，请回答：{question}
+	// You are a customer service assistant. Please answer: {question}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// The updated variable definition in JSON format.
+	//
 	// example:
 	//
 	// [{"name":"question","defaultValue":"Hello"}]

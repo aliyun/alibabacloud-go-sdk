@@ -16,8 +16,14 @@ type iGetPromptResponseBody interface {
 }
 
 type GetPromptResponseBody struct {
-	Data      *GetPromptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Data *GetPromptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPromptResponseBody) String() string {
@@ -56,18 +62,62 @@ func (s *GetPromptResponseBody) Validate() error {
 }
 
 type GetPromptResponseBodyData struct {
-	BizTags          []*string                                  `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
-	Description      *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	EditingVersion   *string                                    `json:"EditingVersion,omitempty" xml:"EditingVersion,omitempty"`
-	GmtModified      *int64                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Labels           map[string]*string                         `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LatestVersion    *string                                    `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	OnlineCnt        *int32                                     `json:"OnlineCnt,omitempty" xml:"OnlineCnt,omitempty"`
-	PromptKey        *string                                    `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
-	ReviewingVersion *string                                    `json:"ReviewingVersion,omitempty" xml:"ReviewingVersion,omitempty"`
-	SchemaVersion    *int32                                     `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
-	VersionDetails   []*GetPromptResponseBodyDataVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Repeated"`
-	Versions         []*string                                  `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	// The list of business tags.
+	BizTags []*string `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
+	// The description of the prompt.
+	//
+	// example:
+	//
+	// Prompt for test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The version number of the draft version. This value is empty if no draft version exists.
+	//
+	// example:
+	//
+	// 0.0.1
+	EditingVersion *string `json:"EditingVersion,omitempty" xml:"EditingVersion,omitempty"`
+	// The time when the prompt was last modified.
+	//
+	// example:
+	//
+	// 2025-11-13T02:11:53Z
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The mapping between prompt labels and versions.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The version number of the latest version of the prompt.
+	//
+	// example:
+	//
+	// 0.0.1
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The number of online versions of the prompt.
+	//
+	// example:
+	//
+	// 1
+	OnlineCnt *int32 `json:"OnlineCnt,omitempty" xml:"OnlineCnt,omitempty"`
+	// The unique identifier of the prompt.
+	//
+	// example:
+	//
+	// customer-service-qa
+	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// The version number of the prompt version that is under review.
+	//
+	// example:
+	//
+	// 0.0.1
+	ReviewingVersion *string `json:"ReviewingVersion,omitempty" xml:"ReviewingVersion,omitempty"`
+	// The schema version.
+	//
+	// example:
+	//
+	// 1.0
+	SchemaVersion *int32 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+	// The list of version details.
+	VersionDetails []*GetPromptResponseBodyDataVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Repeated"`
+	// The list of version numbers.
+	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s GetPromptResponseBodyData) String() string {
@@ -200,12 +250,42 @@ func (s *GetPromptResponseBodyData) Validate() error {
 }
 
 type GetPromptResponseBodyDataVersionDetails struct {
-	CommitMsg   *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	PromptKey   *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
-	SrcUser     *string `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The commit message of the version.
+	//
+	// example:
+	//
+	// This is a test Version
+	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// The time when the version was last modified.
+	//
+	// example:
+	//
+	// 1627545952000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The unique identifier of the prompt.
+	//
+	// example:
+	//
+	// customer-service-qa
+	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// The creator of the version.
+	//
+	// example:
+	//
+	// admin
+	SrcUser *string `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
+	// The version status. Valid values: draft and online.
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version number.
+	//
+	// example:
+	//
+	// 0.0.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetPromptResponseBodyDataVersionDetails) String() string {

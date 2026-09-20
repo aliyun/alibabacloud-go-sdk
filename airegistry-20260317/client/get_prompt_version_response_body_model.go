@@ -16,8 +16,14 @@ type iGetPromptVersionResponseBody interface {
 }
 
 type GetPromptVersionResponseBody struct {
-	Data      *GetPromptVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Query result
+	Data *GetPromptVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPromptVersionResponseBody) String() string {
@@ -56,15 +62,56 @@ func (s *GetPromptVersionResponseBody) Validate() error {
 }
 
 type GetPromptVersionResponseBodyData struct {
-	CommitMsg   *string                                      `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
-	GmtModified *int64                                       `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Md5         *string                                      `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	PromptKey   *string                                      `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
-	SrcUser     *string                                      `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
-	Status      *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Template    *string                                      `json:"Template,omitempty" xml:"Template,omitempty"`
-	Variables   []*GetPromptVersionResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
-	Version     *string                                      `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Commit message of this version
+	//
+	// example:
+	//
+	// This is a test version
+	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// Last modified time of the prompt
+	//
+	// example:
+	//
+	// 1605345828000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// MD5 hash of the prompt content for this version
+	//
+	// example:
+	//
+	// 93EF3AC0C56DDACB5A9E528BB1C825C8
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// Unique identifier of the prompt
+	//
+	// example:
+	//
+	// customer-service-qa
+	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// Creator of this version
+	//
+	// example:
+	//
+	// admin
+	SrcUser *string `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
+	// Version status. Draft: draft / Published: online
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Template content of the prompt version
+	//
+	// example:
+	//
+	// You are a {{domain}} expert.
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// List of variables for this version
+	Variables []*GetPromptVersionResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+	// Version number
+	//
+	// example:
+	//
+	// 0.0.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetPromptVersionResponseBodyData) String() string {
@@ -170,9 +217,24 @@ func (s *GetPromptVersionResponseBodyData) Validate() error {
 }
 
 type GetPromptVersionResponseBodyDataVariables struct {
+	// Default value
+	//
+	// example:
+	//
+	// code
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Variable description
+	//
+	// example:
+	//
+	// domain
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Variable name
+	//
+	// example:
+	//
+	// domain
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetPromptVersionResponseBodyDataVariables) String() string {

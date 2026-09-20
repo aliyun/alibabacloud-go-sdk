@@ -22,21 +22,46 @@ type iUpdateNamespaceRequest interface {
 }
 
 type UpdateNamespaceRequest struct {
+	// The workspace description.
+	//
 	// example:
 	//
 	// 用于管理客服场景的Prompt
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// 我的Prompt空间
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	ScanPolicy  *string `json:"ScanPolicy,omitempty" xml:"ScanPolicy,omitempty"`
+	// The scan policy.
+	//
+	// The policy contains two configuration items:
+	//
+	// - minBlockRiskLevel: the risk level for blocking.
+	//
+	//   - high: blocks high-risk items.
+	//
+	//   - medium: blocks medium-risk and high-risk items.
+	//
+	//   - low: blocks all risk levels including high, medium, and low.
+	//
+	// - maxSkipRatio: the max false positive rate. If the scan skip ratio exceeds this value, the scan is considered failed.
+	//
+	// example:
+	//
+	// {"minBlockRiskLevel":"medium","maxSkipRatio":0.2}
+	ScanPolicy *string `json:"ScanPolicy,omitempty" xml:"ScanPolicy,omitempty"`
+	// The tags, separated by commas. Pass an empty string to clear all tags.
+	//
 	// example:
 	//
 	// customer-service,production

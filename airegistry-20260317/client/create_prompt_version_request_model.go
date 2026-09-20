@@ -26,34 +26,48 @@ type iCreatePromptVersionRequest interface {
 }
 
 type CreatePromptVersionRequest struct {
+	// Fork from this version. Either this parameter or Template must be specified.
+	//
 	// example:
 	//
 	// 0.0.1
 	BasedOnVersion *string `json:"BasedOnVersion,omitempty" xml:"BasedOnVersion,omitempty"`
+	// Commit message.
+	//
 	// example:
 	//
 	// 初始版本
 	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// Unique identifier of the prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customer-service-qa
 	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// Draft version number. If not specified, the version number is automatically incremented.
+	//
 	// example:
 	//
 	// 0.0.2
 	TargetVersion *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
+	// Prompt template content. Either this parameter or BasedOnVersion must be specified.
+	//
 	// example:
 	//
 	// 你是一个客服助手，请回答：{question}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// Variable definitions in a JSON array string.
+	//
 	// example:
 	//
 	// [{"name":"question","defaultValue":"Hello"}]

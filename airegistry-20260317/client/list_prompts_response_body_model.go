@@ -16,8 +16,14 @@ type iListPromptsResponseBody interface {
 }
 
 type ListPromptsResponseBody struct {
-	Data      *ListPromptsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Data *ListPromptsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPromptsResponseBody) String() string {
@@ -56,10 +62,26 @@ func (s *ListPromptsResponseBody) Validate() error {
 }
 
 type ListPromptsResponseBodyData struct {
-	PageItems      []*ListPromptsResponseBodyDataPageItems `json:"PageItems,omitempty" xml:"PageItems,omitempty" type:"Repeated"`
-	PageNumber     *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PagesAvailable *int32                                  `json:"PagesAvailable,omitempty" xml:"PagesAvailable,omitempty"`
-	TotalCount     *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of prompts.
+	PageItems []*ListPromptsResponseBodyDataPageItems `json:"PageItems,omitempty" xml:"PageItems,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of available pages.
+	//
+	// example:
+	//
+	// 1
+	PagesAvailable *int32 `json:"PagesAvailable,omitempty" xml:"PagesAvailable,omitempty"`
+	// The total number of prompts.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPromptsResponseBodyData) String() string {
@@ -120,16 +142,58 @@ func (s *ListPromptsResponseBodyData) Validate() error {
 }
 
 type ListPromptsResponseBodyDataPageItems struct {
-	BizTags          []*string          `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
-	Description      *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	EditingVersion   *string            `json:"EditingVersion,omitempty" xml:"EditingVersion,omitempty"`
-	GmtModified      *int64             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Labels           map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LatestVersion    *string            `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	OnlineCnt        *int32             `json:"OnlineCnt,omitempty" xml:"OnlineCnt,omitempty"`
-	PromptKey        *string            `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
-	ReviewingVersion *string            `json:"ReviewingVersion,omitempty" xml:"ReviewingVersion,omitempty"`
-	SchemaVersion    *int32             `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+	// The list of business tags.
+	BizTags []*string `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
+	// The description.
+	//
+	// example:
+	//
+	// test prompt
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The version number of the draft version of the prompt. This value is empty if no draft version exists.
+	//
+	// example:
+	//
+	// 0.0.1
+	EditingVersion *string `json:"EditingVersion,omitempty" xml:"EditingVersion,omitempty"`
+	// The time when the prompt was last modified.
+	//
+	// example:
+	//
+	// 2026-04-22 11:51:03
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The mapping between prompt versions and labels.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The latest version number of the prompt.
+	//
+	// example:
+	//
+	// 0.0.1
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The number of online versions of the prompt.
+	//
+	// example:
+	//
+	// 1
+	OnlineCnt *int32 `json:"OnlineCnt,omitempty" xml:"OnlineCnt,omitempty"`
+	// The unique identifier of the prompt.
+	//
+	// example:
+	//
+	// customer
+	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// The version number of the prompt version that is under review. This value is empty if no version is under review.
+	//
+	// example:
+	//
+	// 0.0.1
+	ReviewingVersion *string `json:"ReviewingVersion,omitempty" xml:"ReviewingVersion,omitempty"`
+	// The schema version of the prompt.
+	//
+	// example:
+	//
+	// 1
+	SchemaVersion *int32 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
 }
 
 func (s ListPromptsResponseBodyDataPageItems) String() string {

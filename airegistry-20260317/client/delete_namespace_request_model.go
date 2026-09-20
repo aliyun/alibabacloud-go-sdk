@@ -14,6 +14,8 @@ type iDeleteNamespaceRequest interface {
 }
 
 type DeleteNamespaceRequest struct {
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

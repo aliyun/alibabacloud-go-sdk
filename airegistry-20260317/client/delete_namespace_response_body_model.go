@@ -16,7 +16,17 @@ type iDeleteNamespaceResponseBody interface {
 }
 
 type DeleteNamespaceResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The namespace deletion result.
+	//
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -14,6 +14,8 @@ type iGetNamespaceRequest interface {
 }
 
 type GetNamespaceRequest struct {
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

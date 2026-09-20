@@ -18,18 +18,24 @@ type iUpdateSkillScopeRequest interface {
 }
 
 type UpdateSkillScopeRequest struct {
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The visibility.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PUBLIC
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The skill name.
+	//
 	// This parameter is required.
 	//
 	// example:

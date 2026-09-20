@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建 AI Registry 命名空间
+// Creates a namespace in AI Registry and returns the corresponding namespace ID.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -114,7 +114,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 // Summary:
 //
-// 创建 AI Registry 命名空间
+// Creates a namespace in AI Registry and returns the corresponding namespace ID.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
-// 创建 Prompt
+// # Create a prompt and create the initial draft version content of that prompt
 //
 // @param request - CreatePromptRequest
 //
@@ -204,7 +204,7 @@ func (client *Client) CreatePromptWithOptions(request *CreatePromptRequest, runt
 
 // Summary:
 //
-// 创建 Prompt
+// # Create a prompt and create the initial draft version content of that prompt
 //
 // @param request - CreatePromptRequest
 //
@@ -222,7 +222,7 @@ func (client *Client) CreatePrompt(request *CreatePromptRequest) (_result *Creat
 
 // Summary:
 //
-// 创建 Prompt 草稿版本。Prompt 必须已存在，且当前没有正在编辑的草稿。只对草稿版本生效。
+// Creates a new version of a prompt. The new version defaults to draft status. An error is returned if a draft version already exists.
 //
 // @param request - CreatePromptVersionRequest
 //
@@ -290,7 +290,7 @@ func (client *Client) CreatePromptVersionWithOptions(request *CreatePromptVersio
 
 // Summary:
 //
-// 创建 Prompt 草稿版本。Prompt 必须已存在，且当前没有正在编辑的草稿。只对草稿版本生效。
+// Creates a new version of a prompt. The new version defaults to draft status. An error is returned if a draft version already exists.
 //
 // @param request - CreatePromptVersionRequest
 //
@@ -308,7 +308,7 @@ func (client *Client) CreatePromptVersion(request *CreatePromptVersionRequest) (
 
 // Summary:
 //
-// 创建 Skill 草稿版本
+// Creates a Skill draft and returns the Skill version.
 //
 // @param request - CreateSkillDraftRequest
 //
@@ -372,7 +372,7 @@ func (client *Client) CreateSkillDraftWithOptions(request *CreateSkillDraftReque
 
 // Summary:
 //
-// 创建 Skill 草稿版本
+// Creates a Skill draft and returns the Skill version.
 //
 // @param request - CreateSkillDraftRequest
 //
@@ -390,7 +390,7 @@ func (client *Client) CreateSkillDraft(request *CreateSkillDraftRequest) (_resul
 
 // Summary:
 //
-// 删除命名空间
+// Deletes a specified namespace from the AI Governance Center. The system checks whether the namespace contains any resources in use (such as Skills or Prompts) before deletion. If such resources exist, the deletion fails.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -434,7 +434,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 // Summary:
 //
-// 删除命名空间
+// Deletes a specified namespace from the AI Governance Center. The system checks whether the namespace contains any resources in use (such as Skills or Prompts) before deletion. If such resources exist, the deletion fails.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -452,7 +452,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 
 // Summary:
 //
-// 删除 Prompt
+// Deletes a specified prompt.
 //
 // @param request - DeletePromptRequest
 //
@@ -500,7 +500,7 @@ func (client *Client) DeletePromptWithOptions(request *DeletePromptRequest, runt
 
 // Summary:
 //
-// 删除 Prompt
+// Deletes a specified prompt.
 //
 // @param request - DeletePromptRequest
 //
@@ -518,7 +518,7 @@ func (client *Client) DeletePrompt(request *DeletePromptRequest) (_result *Delet
 
 // Summary:
 //
-// 删除 Skill
+// Deletes a specified Skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -566,7 +566,7 @@ func (client *Client) DeleteSkillWithOptions(request *DeleteSkillRequest, runtim
 
 // Summary:
 //
-// 删除 Skill
+// Deletes a specified Skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -584,7 +584,7 @@ func (client *Client) DeleteSkill(request *DeleteSkillRequest) (_result *DeleteS
 
 // Summary:
 //
-// 通过 OSS 下载 Skill 版本 - 返回 OSS 下载 URL
+// Downloads a skill version through OSS and returns the OSS download URL.
 //
 // @param request - DownloadSkillVersionViaOssRequest
 //
@@ -636,7 +636,7 @@ func (client *Client) DownloadSkillVersionViaOssWithOptions(request *DownloadSki
 
 // Summary:
 //
-// 通过 OSS 下载 Skill 版本 - 返回 OSS 下载 URL
+// Downloads a skill version through OSS and returns the OSS download URL.
 //
 // @param request - DownloadSkillVersionViaOssRequest
 //
@@ -654,7 +654,7 @@ func (client *Client) DownloadSkillVersionViaOss(request *DownloadSkillVersionVi
 
 // Summary:
 //
-// 强制发布版本
+// Force-publishes a version.
 //
 // @param request - ForcePublishSkillVersionRequest
 //
@@ -710,7 +710,7 @@ func (client *Client) ForcePublishSkillVersionWithOptions(request *ForcePublishS
 
 // Summary:
 //
-// 强制发布版本
+// Force-publishes a version.
 //
 // @param request - ForcePublishSkillVersionRequest
 //
@@ -728,7 +728,7 @@ func (client *Client) ForcePublishSkillVersion(request *ForcePublishSkillVersion
 
 // Summary:
 //
-// 获取命名空间详细信息
+// Queries the details of an AI Governance Center namespace.
 //
 // @param request - GetNamespaceRequest
 //
@@ -772,7 +772,7 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 
 // Summary:
 //
-// 获取命名空间详细信息
+// Queries the details of an AI Governance Center namespace.
 //
 // @param request - GetNamespaceRequest
 //
@@ -790,7 +790,7 @@ func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNa
 
 // Summary:
 //
-// 获取 Prompt 详情信息
+// Retrieves the details of a prompt.
 //
 // @param request - GetPromptRequest
 //
@@ -838,7 +838,7 @@ func (client *Client) GetPromptWithOptions(request *GetPromptRequest, runtime *d
 
 // Summary:
 //
-// 获取 Prompt 详情信息
+// Retrieves the details of a prompt.
 //
 // @param request - GetPromptRequest
 //
@@ -856,7 +856,7 @@ func (client *Client) GetPrompt(request *GetPromptRequest) (_result *GetPromptRe
 
 // Summary:
 //
-// 获取 Prompt 某个版本的信息
+// Query the detailed information of a specified version of a prompt.
 //
 // @param request - GetPromptVersionRequest
 //
@@ -908,7 +908,7 @@ func (client *Client) GetPromptVersionWithOptions(request *GetPromptVersionReque
 
 // Summary:
 //
-// 获取 Prompt 某个版本的信息
+// Query the detailed information of a specified version of a prompt.
 //
 // @param request - GetPromptVersionRequest
 //
@@ -926,7 +926,7 @@ func (client *Client) GetPromptVersion(request *GetPromptVersionRequest) (_resul
 
 // Summary:
 //
-// 获取 Skill 详情
+// Retrieves the metadata and version information of a skill.
 //
 // @param request - GetSkillDetailRequest
 //
@@ -974,7 +974,7 @@ func (client *Client) GetSkillDetailWithOptions(request *GetSkillDetailRequest, 
 
 // Summary:
 //
-// 获取 Skill 详情
+// Retrieves the metadata and version information of a skill.
 //
 // @param request - GetSkillDetailRequest
 //
@@ -992,7 +992,7 @@ func (client *Client) GetSkillDetail(request *GetSkillDetailRequest) (_result *G
 
 // Summary:
 //
-// 获取 Skill 导入用 OSS 上传 URL。客户端使用返回的 uploadUrl 执行 PUT 上传后，
+// Retrieves a pre-signed URL for uploading a Skill to OSS. The client uses the returned URL to perform a PUT request to upload the Skill.
 //
 // @param request - GetSkillImportFileUrlRequest
 //
@@ -1040,7 +1040,7 @@ func (client *Client) GetSkillImportFileUrlWithOptions(request *GetSkillImportFi
 
 // Summary:
 //
-// 获取 Skill 导入用 OSS 上传 URL。客户端使用返回的 uploadUrl 执行 PUT 上传后，
+// Retrieves a pre-signed URL for uploading a Skill to OSS. The client uses the returned URL to perform a PUT request to upload the Skill.
 //
 // @param request - GetSkillImportFileUrlRequest
 //
@@ -1058,7 +1058,7 @@ func (client *Client) GetSkillImportFileUrl(request *GetSkillImportFileUrlReques
 
 // Summary:
 //
-// 获取指定版本详情
+// Retrieves the details of a specified version.
 //
 // @param request - GetSkillVersionDetailRequest
 //
@@ -1110,7 +1110,7 @@ func (client *Client) GetSkillVersionDetailWithOptions(request *GetSkillVersionD
 
 // Summary:
 //
-// 获取指定版本详情
+// Retrieves the details of a specified version.
 //
 // @param request - GetSkillVersionDetailRequest
 //
@@ -1128,7 +1128,7 @@ func (client *Client) GetSkillVersionDetail(request *GetSkillVersionDetailReques
 
 // Summary:
 //
-// 获取命名空间列表
+// Lists the namespaces in the AI Governance Center.
 //
 // @param request - ListNamespacesRequest
 //
@@ -1184,7 +1184,7 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 
 // Summary:
 //
-// 获取命名空间列表
+// Lists the namespaces in the AI Governance Center.
 //
 // @param request - ListNamespacesRequest
 //
@@ -1202,7 +1202,7 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 
 // Summary:
 //
-// 列出Prompt版本列表
+// Lists the versions of a prompt.
 //
 // @param request - ListPromptVersionsRequest
 //
@@ -1258,7 +1258,7 @@ func (client *Client) ListPromptVersionsWithOptions(request *ListPromptVersionsR
 
 // Summary:
 //
-// 列出Prompt版本列表
+// Lists the versions of a prompt.
 //
 // @param request - ListPromptVersionsRequest
 //
@@ -1276,7 +1276,7 @@ func (client *Client) ListPromptVersions(request *ListPromptVersionsRequest) (_r
 
 // Summary:
 //
-// 获取Prompt列表
+// Lists the prompts in a namespace.
 //
 // @param request - ListPromptsRequest
 //
@@ -1340,7 +1340,7 @@ func (client *Client) ListPromptsWithOptions(request *ListPromptsRequest, runtim
 
 // Summary:
 //
-// 获取Prompt列表
+// Lists the prompts in a namespace.
 //
 // @param request - ListPromptsRequest
 //
@@ -1358,7 +1358,7 @@ func (client *Client) ListPrompts(request *ListPromptsRequest) (_result *ListPro
 
 // Summary:
 //
-// 列出 Skills
+// Lists skills.
 //
 // @param request - ListSkillsRequest
 //
@@ -1430,7 +1430,7 @@ func (client *Client) ListSkillsWithOptions(request *ListSkillsRequest, runtime 
 
 // Summary:
 //
-// 列出 Skills
+// Lists skills.
 //
 // @param request - ListSkillsRequest
 //
@@ -1448,7 +1448,7 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 
 // Summary:
 //
-// 下线版本
+// Offlines a Skill or a specific version of a Skill.
 //
 // @param request - OfflineSkillRequest
 //
@@ -1504,7 +1504,7 @@ func (client *Client) OfflineSkillWithOptions(request *OfflineSkillRequest, runt
 
 // Summary:
 //
-// 下线版本
+// Offlines a Skill or a specific version of a Skill.
 //
 // @param request - OfflineSkillRequest
 //
@@ -1522,7 +1522,7 @@ func (client *Client) OfflineSkill(request *OfflineSkillRequest) (_result *Offli
 
 // Summary:
 //
-// 上线 Skill
+// Publishes a skill or a specific version of a skill.
 //
 // @param request - OnlineSkillRequest
 //
@@ -1578,7 +1578,7 @@ func (client *Client) OnlineSkillWithOptions(request *OnlineSkillRequest, runtim
 
 // Summary:
 //
-// 上线 Skill
+// Publishes a skill or a specific version of a skill.
 //
 // @param request - OnlineSkillRequest
 //
@@ -1596,7 +1596,7 @@ func (client *Client) OnlineSkill(request *OnlineSkillRequest) (_result *OnlineS
 
 // Summary:
 //
-// 发布版本
+// Publishes a specific version of a Skill.
 //
 // @param request - PublishSkillVersionRequest
 //
@@ -1652,7 +1652,7 @@ func (client *Client) PublishSkillVersionWithOptions(request *PublishSkillVersio
 
 // Summary:
 //
-// 发布版本
+// Publishes a specific version of a Skill.
 //
 // @param request - PublishSkillVersionRequest
 //
@@ -1670,7 +1670,7 @@ func (client *Client) PublishSkillVersion(request *PublishSkillVersionRequest) (
 
 // Summary:
 //
-// 提交 Prompt 版本, 将 Prompt 的草稿版本转化为正式版本
+// Publishes a draft version of a prompt as an official version. The specified version must be a draft version.
 //
 // @param request - SubmitPromptVersionRequest
 //
@@ -1722,7 +1722,7 @@ func (client *Client) SubmitPromptVersionWithOptions(request *SubmitPromptVersio
 
 // Summary:
 //
-// 提交 Prompt 版本, 将 Prompt 的草稿版本转化为正式版本
+// Publishes a draft version of a prompt as an official version. The specified version must be a draft version.
 //
 // @param request - SubmitPromptVersionRequest
 //
@@ -1740,7 +1740,7 @@ func (client *Client) SubmitPromptVersion(request *SubmitPromptVersionRequest) (
 
 // Summary:
 //
-// 提交 Skill Draft 审核
+// Submits a specific version of a skill for review.
 //
 // @param request - SubmitSkillVersionRequest
 //
@@ -1792,7 +1792,7 @@ func (client *Client) SubmitSkillVersionWithOptions(request *SubmitSkillVersionR
 
 // Summary:
 //
-// 提交 Skill Draft 审核
+// Submits a specific version of a skill for review.
 //
 // @param request - SubmitSkillVersionRequest
 //
@@ -1810,7 +1810,7 @@ func (client *Client) SubmitSkillVersion(request *SubmitSkillVersionRequest) (_r
 
 // Summary:
 //
-// 更新命名空间信息
+// Updates namespace information.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -1870,7 +1870,7 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 
 // Summary:
 //
-// 更新命名空间信息
+// Updates namespace information.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -1888,7 +1888,7 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 
 // Summary:
 //
-// 更新 Prompt 元数据，支持同时更新 description、bizTags、labels。
+// Modifies the metadata of a prompt, such as the description and business tags.
 //
 // @param tmpReq - UpdatePromptRequest
 //
@@ -1958,7 +1958,7 @@ func (client *Client) UpdatePromptWithOptions(tmpReq *UpdatePromptRequest, runti
 
 // Summary:
 //
-// 更新 Prompt 元数据，支持同时更新 description、bizTags、labels。
+// Modifies the metadata of a prompt, such as the description and business tags.
 //
 // @param request - UpdatePromptRequest
 //
@@ -1976,7 +1976,7 @@ func (client *Client) UpdatePrompt(request *UpdatePromptRequest) (_result *Updat
 
 // Summary:
 //
-// 更新 Prompt 草稿版本内容。只对草稿版本生效，已发布的版本不可修改。
+// Updates the content of a prompt version. Only the draft version of a prompt can be modified.
 //
 // @param request - UpdatePromptVersionRequest
 //
@@ -2036,7 +2036,7 @@ func (client *Client) UpdatePromptVersionWithOptions(request *UpdatePromptVersio
 
 // Summary:
 //
-// 更新 Prompt 草稿版本内容。只对草稿版本生效，已发布的版本不可修改。
+// Updates the content of a prompt version. Only the draft version of a prompt can be modified.
 //
 // @param request - UpdatePromptVersionRequest
 //
@@ -2054,7 +2054,7 @@ func (client *Client) UpdatePromptVersion(request *UpdatePromptVersionRequest) (
 
 // Summary:
 //
-// 更新业务标签
+// Updates business tags for a skill.
 //
 // @param request - UpdateSkillBizTagsRequest
 //
@@ -2106,7 +2106,7 @@ func (client *Client) UpdateSkillBizTagsWithOptions(request *UpdateSkillBizTagsR
 
 // Summary:
 //
-// 更新业务标签
+// Updates business tags for a skill.
 //
 // @param request - UpdateSkillBizTagsRequest
 //
@@ -2124,7 +2124,7 @@ func (client *Client) UpdateSkillBizTags(request *UpdateSkillBizTagsRequest) (_r
 
 // Summary:
 //
-// 更新 Draft
+// Updates a draft.
 //
 // @param request - UpdateSkillDraftRequest
 //
@@ -2180,7 +2180,7 @@ func (client *Client) UpdateSkillDraftWithOptions(request *UpdateSkillDraftReque
 
 // Summary:
 //
-// 更新 Draft
+// Updates a draft.
 //
 // @param request - UpdateSkillDraftRequest
 //
@@ -2198,7 +2198,7 @@ func (client *Client) UpdateSkillDraft(request *UpdateSkillDraftRequest) (_resul
 
 // Summary:
 //
-// 更新版本标签
+// Updates version labels.
 //
 // @param request - UpdateSkillLabelsRequest
 //
@@ -2250,7 +2250,7 @@ func (client *Client) UpdateSkillLabelsWithOptions(request *UpdateSkillLabelsReq
 
 // Summary:
 //
-// 更新版本标签
+// Updates version labels.
 //
 // @param request - UpdateSkillLabelsRequest
 //
@@ -2268,7 +2268,7 @@ func (client *Client) UpdateSkillLabels(request *UpdateSkillLabelsRequest) (_res
 
 // Summary:
 //
-// 更新可见性
+// Updates the visibility.
 //
 // @param request - UpdateSkillScopeRequest
 //
@@ -2320,7 +2320,7 @@ func (client *Client) UpdateSkillScopeWithOptions(request *UpdateSkillScopeReque
 
 // Summary:
 //
-// 更新可见性
+// Updates the visibility.
 //
 // @param request - UpdateSkillScopeRequest
 //
@@ -2338,7 +2338,7 @@ func (client *Client) UpdateSkillScope(request *UpdateSkillScopeRequest) (_resul
 
 // Summary:
 //
-// 通过 OSS 上传 Skill (ZIP) - 从 OSS 拉取文件内容后上传到 Nacos
+// Uploads a skill (ZIP) from OSS by pulling the file content from OSS and uploading it to Nacos.
 //
 // @param request - UploadSkillViaOssRequest
 //
@@ -2369,6 +2369,10 @@ func (client *Client) UploadSkillViaOssWithOptions(request *UploadSkillViaOssReq
 		query["Overwrite"] = request.Overwrite
 	}
 
+	if !dara.IsNil(request.TargetVersion) {
+		query["TargetVersion"] = request.TargetVersion
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2394,7 +2398,7 @@ func (client *Client) UploadSkillViaOssWithOptions(request *UploadSkillViaOssReq
 
 // Summary:
 //
-// 通过 OSS 上传 Skill (ZIP) - 从 OSS 拉取文件内容后上传到 Nacos
+// Uploads a skill (ZIP) from OSS by pulling the file content from OSS and uploading it to Nacos.
 //
 // @param request - UploadSkillViaOssRequest
 //

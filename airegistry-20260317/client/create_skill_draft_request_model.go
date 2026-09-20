@@ -24,30 +24,42 @@ type iCreateSkillDraftRequest interface {
 }
 
 type CreateSkillDraftRequest struct {
+	// The version to fork from. If not specified, a new Skill is created based on the latest version.
+	//
 	// example:
 	//
 	// 0.0.1
 	BasedOnVersion *string `json:"BasedOnVersion,omitempty" xml:"BasedOnVersion,omitempty"`
+	// The commit message.
+	//
 	// example:
 	//
-	// 初始版本
+	// Initial version
 	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The Skill card JSON string that contains complete Skill information.
+	//
 	// example:
 	//
-	// {"name":"customer-service-skill","description":"..."}
+	// {"name":"customer-service-skill","description":"customer-skill-desc","skillMd":"---\\nname: customer-service-skill\\ndescription: customer-skill-desc\\n---\\ncustomer-skill-content"}
 	SkillCard *string `json:"SkillCard,omitempty" xml:"SkillCard,omitempty"`
+	// The Skill name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customer-service-skill
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
+	// The specified draft version number. If not specified, the version number auto-increments.
+	//
 	// example:
 	//
 	// 0.0.2

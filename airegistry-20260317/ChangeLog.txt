@@ -1,3 +1,15 @@
+2026-09-20 Version: v1.0.1
+- Update API GetNamespace: add response parameters Body.Data.IpWhitelist.
+- Update API GetNamespace: add response parameters Body.Data.PublicAccessEnabled.
+- Update API GetNamespace: add response parameters Body.Data.PublicDomain.
+- Update API GetSkillDetail: add response parameters Body.Data.DraftMode.
+- Update API ListNamespaces: add response parameters Body.Data.Items.$.IpWhitelist.
+- Update API ListNamespaces: add response parameters Body.Data.Items.$.PublicAccessEnabled.
+- Update API ListNamespaces: add response parameters Body.Data.Items.$.PublicDomain.
+- Update API ListSkills: add response parameters Body.Data.PageItems.$.DraftMode.
+- Update API UploadSkillViaOss: add request parameters TargetVersion.
+
+
 2026-06-11 Version: v1.0.0
 - Generated golang 2026-03-17 for AIRegistry.
 

@@ -20,18 +20,26 @@ type iListNamespacesRequest interface {
 }
 
 type ListNamespacesRequest struct {
+	// Performs a fuzzy search by name.
+	//
 	// example:
 	//
-	// 客服
+	// test-namespace
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filters by tags. Separate multiple tags with commas. Results are matched by intersection.
+	//
 	// example:
 	//
 	// production,customer-service

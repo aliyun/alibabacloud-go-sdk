@@ -20,22 +20,30 @@ type iUpdateSkillDraftRequest interface {
 }
 
 type UpdateSkillDraftRequest struct {
+	// The commit message.
+	//
 	// example:
 	//
-	// 更新说明
+	// Update description
 	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The skill card JSON string that contains complete skill information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"name":"customer-service-skill","description":"..."}
 	SkillCard *string `json:"SkillCard,omitempty" xml:"SkillCard,omitempty"`
+	// The skill name.
+	//
 	// This parameter is required.
 	//
 	// example:

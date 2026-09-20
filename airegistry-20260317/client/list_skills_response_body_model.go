@@ -16,8 +16,16 @@ type iListSkillsResponseBody interface {
 }
 
 type ListSkillsResponseBody struct {
-	Data      *ListSkillsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of rule information returned when the call succeeds. For more information, see **RuleInfo**.
+	//
+	// > The returned rule information is sorted by rule creation time in descending order.
+	Data *ListSkillsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 195BF118-9AEF-5F3F-9A58-D88A77EB07DE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSkillsResponseBody) String() string {
@@ -56,10 +64,26 @@ func (s *ListSkillsResponseBody) Validate() error {
 }
 
 type ListSkillsResponseBodyData struct {
-	PageItems      []*ListSkillsResponseBodyDataPageItems `json:"PageItems,omitempty" xml:"PageItems,omitempty" type:"Repeated"`
-	PageNumber     *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PagesAvailable *int32                                 `json:"PagesAvailable,omitempty" xml:"PagesAvailable,omitempty"`
-	TotalCount     *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The MCP server information.
+	PageItems []*ListSkillsResponseBodyDataPageItems `json:"PageItems,omitempty" xml:"PageItems,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pagesAvailable.
+	//
+	// example:
+	//
+	// 10
+	PagesAvailable *int32 `json:"PagesAvailable,omitempty" xml:"PagesAvailable,omitempty"`
+	// The total number of tasks.
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSkillsResponseBodyData) String() string {
@@ -120,21 +144,98 @@ func (s *ListSkillsResponseBodyData) Validate() error {
 }
 
 type ListSkillsResponseBodyDataPageItems struct {
-	BizTags          *string            `json:"BizTags,omitempty" xml:"BizTags,omitempty"`
-	Description      *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	DownloadCount    *int64             `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
-	EditingVersion   *string            `json:"EditingVersion,omitempty" xml:"EditingVersion,omitempty"`
-	Enable           *bool              `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	From             *string            `json:"From,omitempty" xml:"From,omitempty"`
-	Labels           map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Name             *string            `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId      *string            `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	OnlineCnt        *int32             `json:"OnlineCnt,omitempty" xml:"OnlineCnt,omitempty"`
-	Owner            *string            `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ReviewingVersion *string            `json:"ReviewingVersion,omitempty" xml:"ReviewingVersion,omitempty"`
-	Scope            *string            `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	UpdateTime       *int64             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Writeable        *bool              `json:"Writeable,omitempty" xml:"Writeable,omitempty"`
+	// The business label JSON array string.
+	//
+	// example:
+	//
+	// test
+	BizTags *string `json:"BizTags,omitempty" xml:"BizTags,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// secret for bbtadmin
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The total number of downloads.
+	//
+	// example:
+	//
+	// 100
+	DownloadCount *int64 `json:"DownloadCount,omitempty" xml:"DownloadCount,omitempty"`
+	// The draft mode. Valid values:
+	//
+	// - VERSIONED: numbered mode. Each draft corresponds to a specific version number.
+	//
+	// - HEAD: workspace mode. A permanent draft workspace that overwrites in place and publishes version snapshots.
+	//
+	// example:
+	//
+	// HEAD
+	DraftMode *string `json:"DraftMode,omitempty" xml:"DraftMode,omitempty"`
+	// The version that is being edited.
+	//
+	// example:
+	//
+	// 0.0.3
+	EditingVersion *string `json:"EditingVersion,omitempty" xml:"EditingVersion,omitempty"`
+	// Indicates whether the skill is enabled.
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The source tag.
+	//
+	// example:
+	//
+	// aqs
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The label mapping.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// OCR Brand
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the group or workspace to which the repository belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou:creatulize-test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The number of online versions.
+	//
+	// example:
+	//
+	// 1
+	OnlineCnt *int32 `json:"OnlineCnt,omitempty" xml:"OnlineCnt,omitempty"`
+	// The account ID of the owner.
+	//
+	// example:
+	//
+	// manual
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The version that is under review.
+	//
+	// example:
+	//
+	// 0.0.2
+	ReviewingVersion *string `json:"ReviewingVersion,omitempty" xml:"ReviewingVersion,omitempty"`
+	// The visibility scope.
+	//
+	// example:
+	//
+	// rd-yORclL
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2025-03-05T19:24:43.798
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Indicates whether the skill can be edited.
+	Writeable *bool `json:"Writeable,omitempty" xml:"Writeable,omitempty"`
 }
 
 func (s ListSkillsResponseBodyDataPageItems) String() string {
@@ -155,6 +256,10 @@ func (s *ListSkillsResponseBodyDataPageItems) GetDescription() *string {
 
 func (s *ListSkillsResponseBodyDataPageItems) GetDownloadCount() *int64 {
 	return s.DownloadCount
+}
+
+func (s *ListSkillsResponseBodyDataPageItems) GetDraftMode() *string {
+	return s.DraftMode
 }
 
 func (s *ListSkillsResponseBodyDataPageItems) GetEditingVersion() *string {
@@ -217,6 +322,11 @@ func (s *ListSkillsResponseBodyDataPageItems) SetDescription(v string) *ListSkil
 
 func (s *ListSkillsResponseBodyDataPageItems) SetDownloadCount(v int64) *ListSkillsResponseBodyDataPageItems {
 	s.DownloadCount = &v
+	return s
+}
+
+func (s *ListSkillsResponseBodyDataPageItems) SetDraftMode(v string) *ListSkillsResponseBodyDataPageItems {
+	s.DraftMode = &v
 	return s
 }
 

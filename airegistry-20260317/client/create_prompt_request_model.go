@@ -28,40 +28,56 @@ type iCreatePromptRequest interface {
 }
 
 type CreatePromptRequest struct {
+	// Business tags, comma-separated
+	//
 	// example:
 	//
 	// cs,qa,support
 	BizTags *string `json:"BizTags,omitempty" xml:"BizTags,omitempty"`
+	// Commit message
+	//
 	// example:
 	//
 	// 初始版本
 	CommitMsg *string `json:"CommitMsg,omitempty" xml:"CommitMsg,omitempty"`
+	// Prompt description
+	//
 	// example:
 	//
 	// 客服问答 Prompt
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Workspace ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// Prompt unique identifier
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customer-service-qa
 	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// Version number for the initial draft version of the prompt. Defaults to 0.0.1 if not specified.
+	//
 	// example:
 	//
 	// 0.0.1
 	TargetVersion *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
+	// Template content for the initial draft version of the prompt
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 你是一个客服助手，请回答：{question}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// Variable definitions, JSON array string, supporting name, description, and defaultValue parameters
+	//
 	// example:
 	//
 	// [{"name":"question","defaultValue":"Hello"}]

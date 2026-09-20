@@ -20,18 +20,38 @@ type iCreateNamespaceRequest interface {
 }
 
 type CreateNamespaceRequest struct {
+	// The workspace description.
+	//
 	// example:
 	//
 	// 用于管理客服场景的Prompt
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// 我的Prompt空间
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scan policy.
+	//
+	// This parameter contains two configuration items:
+	//
+	// - minBlockRiskLevel: the risk level for blocking.
+	//
+	//   - high: blocks high-risk items.
+	//
+	//   - medium: blocks medium-risk and high-risk items.
+	//
+	//   - low: blocks all risk levels including high, medium, and low.
+	//
+	// - maxSkipRatio: the max false positive rate. If the scan skip ratio exceeds this value, the scan is considered as failed.
+	//
 	// example:
 	//
 	// {"minBlockRiskLevel":"medium","maxSkipRatio":0.2}
 	ScanPolicy *string `json:"ScanPolicy,omitempty" xml:"ScanPolicy,omitempty"`
+	// The tags. Separate multiple tags with commas.
+	//
 	// example:
 	//
 	// customer-service,production

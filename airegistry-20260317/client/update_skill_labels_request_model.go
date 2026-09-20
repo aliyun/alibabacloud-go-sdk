@@ -18,18 +18,24 @@ type iUpdateSkillLabelsRequest interface {
 }
 
 type UpdateSkillLabelsRequest struct {
+	// The JSON string of the version label mapping.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"latest":"0.0.2","stable":"0.0.1"}
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The Skill name.
+	//
 	// This parameter is required.
 	//
 	// example:

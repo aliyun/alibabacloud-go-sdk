@@ -18,18 +18,24 @@ type iGetPromptVersionRequest interface {
 }
 
 type GetPromptVersionRequest struct {
+	// Workspace ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// Unique identifier of the prompt
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customer-service-qa
 	PromptKey *string `json:"PromptKey,omitempty" xml:"PromptKey,omitempty"`
+	// Version number
+	//
 	// This parameter is required.
 	//
 	// example:

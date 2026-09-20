@@ -16,7 +16,17 @@ type iSubmitSkillVersionResponseBody interface {
 }
 
 type SubmitSkillVersionResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The skill version.
+	//
+	// example:
+	//
+	// ba9b5c2466dc408c9fcd9df72bcd762a
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// BE66410A-37F8-55C5-8471-589CA195760C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

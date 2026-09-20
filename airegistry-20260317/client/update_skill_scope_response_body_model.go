@@ -14,6 +14,11 @@ type iUpdateSkillScopeResponseBody interface {
 }
 
 type UpdateSkillScopeResponseBody struct {
+	// The unique identifier that Alibaba Cloud generates for the request.
+	//
+	// example:
+	//
+	// F4BFD370-7466-5F56-ACE5-A2D11A26C6BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

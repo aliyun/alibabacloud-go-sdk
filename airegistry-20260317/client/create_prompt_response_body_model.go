@@ -16,7 +16,17 @@ type iCreatePromptResponseBody interface {
 }
 
 type CreatePromptResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Draft version number of the created prompt
+	//
+	// example:
+	//
+	// 0.0.1
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

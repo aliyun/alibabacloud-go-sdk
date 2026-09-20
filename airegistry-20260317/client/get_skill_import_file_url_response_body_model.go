@@ -16,8 +16,14 @@ type iGetSkillImportFileUrlResponseBody interface {
 }
 
 type GetSkillImportFileUrlResponseBody struct {
-	Data      *GetSkillImportFileUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Data *GetSkillImportFileUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D9E87E66-9EF0-5C10-A5E6-924020A0C9B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSkillImportFileUrlResponseBody) String() string {
@@ -56,10 +62,32 @@ func (s *GetSkillImportFileUrlResponseBody) Validate() error {
 }
 
 type GetSkillImportFileUrlResponseBodyData struct {
-	ContentType   *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	MaxSize       *string `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	// The file type.
+	//
+	// example:
+	//
+	// application/zip
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The maximum allowed file size for upload, in MB.
+	//
+	// example:
+	//
+	// 10
+	MaxSize *string `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	// The file name in the authorized OSS bucket.
+	//
+	// > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select one to use.
+	//
+	// example:
+	//
+	// 1190239587066411/skill/import/5e993afe-f629-4619-9ac2-51b125300cdd/2026/06/09/35059076-5992-4a71-a706-89230e57f2a2/ui-ux-pro-max.zip
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	UploadUrl     *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
+	// The file upload URL. The client uses this URL to upload the file.
+	//
+	// example:
+	//
+	// https://mse-shared-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/skill/import/199xxxxxxxx0842/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/2026/06/10/xxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/1781082579097.zip?Expires=1781083479&OSSAccessKeyId=STS.NZXGXTD2yoDLd5PfsYxjFrvBJ&Signature=Loyyzzzzzzzz%3D&security-token=CAIStgxxxxxxx
+	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
 }
 
 func (s GetSkillImportFileUrlResponseBodyData) String() string {

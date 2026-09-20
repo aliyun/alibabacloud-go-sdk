@@ -20,9 +20,25 @@ type iDataResourceValue interface {
 }
 
 type DataResourceValue struct {
-	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type     *string                `json:"Type,omitempty" xml:"Type,omitempty"`
-	Content  *string                `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The resource name (including the file name extension).
+	//
+	// example:
+	//
+	// sample.md
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource type, such as template, data, or script.
+	//
+	// example:
+	//
+	// script
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The resource content.
+	//
+	// example:
+	//
+	// This is a sample file
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The resource metadata.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 }
 

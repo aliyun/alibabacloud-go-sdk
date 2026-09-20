@@ -16,8 +16,14 @@ type iGetSkillVersionDetailResponseBody interface {
 }
 
 type GetSkillVersionDetailResponseBody struct {
-	Data      *GetSkillVersionDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The detailed information about the Skill version.
+	Data *GetSkillVersionDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The unique identifier that Alibaba Cloud generated for the request.
+	//
+	// example:
+	//
+	// 3EF4C9EC-0D5B-5AD6-8585-4D2AAA22B1E3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSkillVersionDetailResponseBody) String() string {
@@ -56,11 +62,40 @@ func (s *GetSkillVersionDetailResponseBody) Validate() error {
 }
 
 type GetSkillVersionDetailResponseBodyData struct {
-	Description *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	NamespaceId *string                       `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Resource    map[string]*DataResourceValue `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	SkillMd     *string                       `json:"SkillMd,omitempty" xml:"SkillMd,omitempty"`
+	// The description of the Skill for the current version.
+	//
+	// example:
+	//
+	// secret for bbtadmin
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Skill name.
+	//
+	// example:
+	//
+	// BusinessModel
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace ID to which the application belongs.
+	//
+	// example:
+	//
+	// f52aea1c-774e-4cc1-9dd1-d91432484d44
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The resource mapping (key is the resource name).
+	Resource map[string]*DataResourceValue `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The Skill card content (SKILL.md).
+	//
+	// example:
+	//
+	// ---
+	//
+	// name: hello-world
+	//
+	// description: Say hello to users
+	//
+	// ---
+	//
+	// Hello World Skill
+	SkillMd *string `json:"SkillMd,omitempty" xml:"SkillMd,omitempty"`
 }
 
 func (s GetSkillVersionDetailResponseBodyData) String() string {

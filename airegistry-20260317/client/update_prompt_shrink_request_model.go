@@ -22,21 +22,34 @@ type iUpdatePromptShrinkRequest interface {
 }
 
 type UpdatePromptShrinkRequest struct {
+	// The list of business tags. The value is a string array.
+	//
 	// example:
 	//
 	// ["cs","qa","support"]
 	BizTagsShrink *string `json:"BizTags,omitempty" xml:"BizTags,omitempty"`
+	// The description of the prompt.
+	//
 	// example:
 	//
 	// 客服问答 Prompt
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The mapping between prompt versions and labels.
+	//
+	// example:
+	//
+	// {"latest":"0.0.1","stable":"0.0.1"}
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The unique identifier of the prompt.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,11 @@ type iDeleteSkillResponseBody interface {
 }
 
 type DeleteSkillResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 195BF118-9AEF-5F3F-9A58-D88A77EB07DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

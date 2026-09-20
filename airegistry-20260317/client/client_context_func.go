@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建 AI Registry 命名空间
+// Creates a namespace in AI Registry and returns the corresponding namespace ID.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -65,7 +65,7 @@ func (client *Client) CreateNamespaceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建 Prompt
+// # Create a prompt and create the initial draft version content of that prompt
 //
 // @param request - CreatePromptRequest
 //
@@ -137,7 +137,7 @@ func (client *Client) CreatePromptWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建 Prompt 草稿版本。Prompt 必须已存在，且当前没有正在编辑的草稿。只对草稿版本生效。
+// Creates a new version of a prompt. The new version defaults to draft status. An error is returned if a draft version already exists.
 //
 // @param request - CreatePromptVersionRequest
 //
@@ -205,7 +205,7 @@ func (client *Client) CreatePromptVersionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建 Skill 草稿版本
+// Creates a Skill draft and returns the Skill version.
 //
 // @param request - CreateSkillDraftRequest
 //
@@ -269,7 +269,7 @@ func (client *Client) CreateSkillDraftWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除命名空间
+// Deletes a specified namespace from the AI Governance Center. The system checks whether the namespace contains any resources in use (such as Skills or Prompts) before deletion. If such resources exist, the deletion fails.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -313,7 +313,7 @@ func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除 Prompt
+// Deletes a specified prompt.
 //
 // @param request - DeletePromptRequest
 //
@@ -361,7 +361,7 @@ func (client *Client) DeletePromptWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除 Skill
+// Deletes a specified Skill.
 //
 // @param request - DeleteSkillRequest
 //
@@ -409,7 +409,7 @@ func (client *Client) DeleteSkillWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 通过 OSS 下载 Skill 版本 - 返回 OSS 下载 URL
+// Downloads a skill version through OSS and returns the OSS download URL.
 //
 // @param request - DownloadSkillVersionViaOssRequest
 //
@@ -461,7 +461,7 @@ func (client *Client) DownloadSkillVersionViaOssWithContext(ctx context.Context,
 
 // Summary:
 //
-// 强制发布版本
+// Force-publishes a version.
 //
 // @param request - ForcePublishSkillVersionRequest
 //
@@ -517,7 +517,7 @@ func (client *Client) ForcePublishSkillVersionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取命名空间详细信息
+// Queries the details of an AI Governance Center namespace.
 //
 // @param request - GetNamespaceRequest
 //
@@ -561,7 +561,7 @@ func (client *Client) GetNamespaceWithContext(ctx context.Context, request *GetN
 
 // Summary:
 //
-// 获取 Prompt 详情信息
+// Retrieves the details of a prompt.
 //
 // @param request - GetPromptRequest
 //
@@ -609,7 +609,7 @@ func (client *Client) GetPromptWithContext(ctx context.Context, request *GetProm
 
 // Summary:
 //
-// 获取 Prompt 某个版本的信息
+// Query the detailed information of a specified version of a prompt.
 //
 // @param request - GetPromptVersionRequest
 //
@@ -661,7 +661,7 @@ func (client *Client) GetPromptVersionWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取 Skill 详情
+// Retrieves the metadata and version information of a skill.
 //
 // @param request - GetSkillDetailRequest
 //
@@ -709,7 +709,7 @@ func (client *Client) GetSkillDetailWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取 Skill 导入用 OSS 上传 URL。客户端使用返回的 uploadUrl 执行 PUT 上传后，
+// Retrieves a pre-signed URL for uploading a Skill to OSS. The client uses the returned URL to perform a PUT request to upload the Skill.
 //
 // @param request - GetSkillImportFileUrlRequest
 //
@@ -757,7 +757,7 @@ func (client *Client) GetSkillImportFileUrlWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取指定版本详情
+// Retrieves the details of a specified version.
 //
 // @param request - GetSkillVersionDetailRequest
 //
@@ -809,7 +809,7 @@ func (client *Client) GetSkillVersionDetailWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取命名空间列表
+// Lists the namespaces in the AI Governance Center.
 //
 // @param request - ListNamespacesRequest
 //
@@ -865,7 +865,7 @@ func (client *Client) ListNamespacesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 列出Prompt版本列表
+// Lists the versions of a prompt.
 //
 // @param request - ListPromptVersionsRequest
 //
@@ -921,7 +921,7 @@ func (client *Client) ListPromptVersionsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取Prompt列表
+// Lists the prompts in a namespace.
 //
 // @param request - ListPromptsRequest
 //
@@ -985,7 +985,7 @@ func (client *Client) ListPromptsWithContext(ctx context.Context, request *ListP
 
 // Summary:
 //
-// 列出 Skills
+// Lists skills.
 //
 // @param request - ListSkillsRequest
 //
@@ -1057,7 +1057,7 @@ func (client *Client) ListSkillsWithContext(ctx context.Context, request *ListSk
 
 // Summary:
 //
-// 下线版本
+// Offlines a Skill or a specific version of a Skill.
 //
 // @param request - OfflineSkillRequest
 //
@@ -1113,7 +1113,7 @@ func (client *Client) OfflineSkillWithContext(ctx context.Context, request *Offl
 
 // Summary:
 //
-// 上线 Skill
+// Publishes a skill or a specific version of a skill.
 //
 // @param request - OnlineSkillRequest
 //
@@ -1169,7 +1169,7 @@ func (client *Client) OnlineSkillWithContext(ctx context.Context, request *Onlin
 
 // Summary:
 //
-// 发布版本
+// Publishes a specific version of a Skill.
 //
 // @param request - PublishSkillVersionRequest
 //
@@ -1225,7 +1225,7 @@ func (client *Client) PublishSkillVersionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 提交 Prompt 版本, 将 Prompt 的草稿版本转化为正式版本
+// Publishes a draft version of a prompt as an official version. The specified version must be a draft version.
 //
 // @param request - SubmitPromptVersionRequest
 //
@@ -1277,7 +1277,7 @@ func (client *Client) SubmitPromptVersionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 提交 Skill Draft 审核
+// Submits a specific version of a skill for review.
 //
 // @param request - SubmitSkillVersionRequest
 //
@@ -1329,7 +1329,7 @@ func (client *Client) SubmitSkillVersionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新命名空间信息
+// Updates namespace information.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -1389,7 +1389,7 @@ func (client *Client) UpdateNamespaceWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 更新 Prompt 元数据，支持同时更新 description、bizTags、labels。
+// Modifies the metadata of a prompt, such as the description and business tags.
 //
 // @param tmpReq - UpdatePromptRequest
 //
@@ -1459,7 +1459,7 @@ func (client *Client) UpdatePromptWithContext(ctx context.Context, tmpReq *Updat
 
 // Summary:
 //
-// 更新 Prompt 草稿版本内容。只对草稿版本生效，已发布的版本不可修改。
+// Updates the content of a prompt version. Only the draft version of a prompt can be modified.
 //
 // @param request - UpdatePromptVersionRequest
 //
@@ -1519,7 +1519,7 @@ func (client *Client) UpdatePromptVersionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新业务标签
+// Updates business tags for a skill.
 //
 // @param request - UpdateSkillBizTagsRequest
 //
@@ -1571,7 +1571,7 @@ func (client *Client) UpdateSkillBizTagsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新 Draft
+// Updates a draft.
 //
 // @param request - UpdateSkillDraftRequest
 //
@@ -1627,7 +1627,7 @@ func (client *Client) UpdateSkillDraftWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新版本标签
+// Updates version labels.
 //
 // @param request - UpdateSkillLabelsRequest
 //
@@ -1679,7 +1679,7 @@ func (client *Client) UpdateSkillLabelsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新可见性
+// Updates the visibility.
 //
 // @param request - UpdateSkillScopeRequest
 //
@@ -1731,7 +1731,7 @@ func (client *Client) UpdateSkillScopeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 通过 OSS 上传 Skill (ZIP) - 从 OSS 拉取文件内容后上传到 Nacos
+// Uploads a skill (ZIP) from OSS by pulling the file content from OSS and uploading it to Nacos.
 //
 // @param request - UploadSkillViaOssRequest
 //
@@ -1760,6 +1760,10 @@ func (client *Client) UploadSkillViaOssWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.Overwrite) {
 		query["Overwrite"] = request.Overwrite
+	}
+
+	if !dara.IsNil(request.TargetVersion) {
+		query["TargetVersion"] = request.TargetVersion
 	}
 
 	req := &openapiutil.OpenApiRequest{

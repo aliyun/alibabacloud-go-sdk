@@ -16,10 +16,14 @@ type iGetSkillImportFileUrlRequest interface {
 }
 
 type GetSkillImportFileUrlRequest struct {
+	// The Content-Type of the upload file. Default value: application/zip.
+	//
 	// example:
 	//
 	// application/zip
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
