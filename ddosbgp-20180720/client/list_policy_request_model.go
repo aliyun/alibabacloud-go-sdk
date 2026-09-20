@@ -28,13 +28,13 @@ type ListPolicyRequest struct {
 	//
 	// test**
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Settings the page number of the current page in a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**.
+	// The number of entries per page in a paging query. Default value: **10**.
 	//
 	// example:
 	//
@@ -42,11 +42,27 @@ type ListPolicyRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The applicable product type. Valid values:
 	//
+	//  - **ecs**: queries the default policy applicable to ECS.
+	//
+	// -  **slb**: queries the default policy applicable to SLB.
+	//
+	// -  **eip**: queries the default policy applicable to EIP.
+	//
+	//  - **gf-eip**: queries the default policy applicable to elastic IP addresses (EIPs) with Anti-DDoS Proxy Enabled.
+	//
+	// > This parameter takes effect only when the policy type is `default`.
+	//
 	// example:
 	//
 	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The policy type. Valid values:
+	//
+	// - **default**: the default mitigation policy.
+	//
+	// - **l3**: the IP-specific mitigation policy.
+	//
+	// - **l4**: the port-specific mitigation policy.
 	//
 	// example:
 	//

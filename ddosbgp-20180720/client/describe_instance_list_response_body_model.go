@@ -20,7 +20,7 @@ type iDescribeInstanceListResponseBody interface {
 type DescribeInstanceListResponseBody struct {
 	// The details of the Anti-DDoS Origin instances.
 	InstanceList []*DescribeInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The number of assets that are assigned public IP addresses protected by the instance that are in blackhole filtering status.
+	// The number of IP addresses that are in blackhole filtering status among the assets that are assigned public IP addresses protected by the instance.
 	//
 	// > You can invoke [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) to deactivate blackhole filtering for a single protected IP address.
 	//
@@ -115,13 +115,13 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	CommodityType *string `json:"CommodityType,omitempty" xml:"CommodityType,omitempty"`
 	// The asset overwrite type of the instance.
 	//
-	// - **1**: Supports assets that are assigned public IP addresses in multiple regions worldwide.
+	// - **1**: Supports assets that are assigned public IP addresses in multiple regions globally.
 	//
 	// - **2**: Supports assets that are assigned public IP addresses in multiple regions in the Chinese mainland.
 	//
 	// - **3**: Supports assets that are assigned public IP addresses in multiple regions outside the Chinese mainland.
 	//
-	// - **4**: Supports assets that are assigned public IP addresses in a single region worldwide.
+	// - **4**: Supports assets that are assigned public IP addresses in a single region globally.
 	//
 	// example:
 	//
@@ -137,13 +137,13 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	//
 	// 0
 	DebtStatus *int64 `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
-	// The expiration time of the instance. The value is a timestamp. Unit: milliseconds.
+	// The expiration time of the instance. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1640275200000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The purchase time of the instance. The value is a timestamp. Unit: milliseconds.
+	// The purchase time of the instance. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -175,6 +175,11 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	//
 	// IPv4
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The full logs property.
+	//
+	// example:
+	//
+	// {\\"mitigationAnalysis\\":\\"on\\",\\"mitigationAnalysisCapacity\\":1,\\"ttl\\":180}
 	LogExt *string `json:"LogExt,omitempty" xml:"LogExt,omitempty"`
 	// The type of the cloud service associated with the instance. This parameter is not returned by default. It is returned only when the Anti-DDoS Origin instance is created by another cloud service, with the corresponding cloud service code.
 	//

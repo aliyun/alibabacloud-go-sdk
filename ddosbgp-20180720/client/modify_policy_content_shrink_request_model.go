@@ -38,6 +38,12 @@ type ModifyPolicyContentShrinkRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version of the port-specific mitigation policy. Valid values:
 	//
+	// - **Not specified**: modifies the default surf mitigation engine policy.
+	//
+	// - **2**: modifies the new stream mitigation engine policy.
+	//
+	// > Only port-specific mitigation policies are supported.
+	//
 	// example:
 	//
 	// 2

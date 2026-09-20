@@ -56,7 +56,7 @@ type DescribeInstanceListRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The mitigation plan types of the Anti-DDoS Origin instances to query.
 	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
-	// The IP address of the protected object for the Anti-DDoS Origin instance to query.
+	// The protected IP address of the Anti-DDoS Origin instance to query.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeInstanceListRequest struct {
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The field used to sort the Anti-DDoS Origin instance list. The value is fixed as **expireTime**, which indicates that instances are sorted by expiration time.
+	// The sort field for the Anti-DDoS Origin instance list. The value is fixed as **expireTime**, which indicates sorting by instance expiration time.
 	//
 	// You can use the **Orderdire*	- parameter to specify the sort order.
 	//
@@ -90,7 +90,7 @@ type DescribeInstanceListRequest struct {
 	//
 	// desc
 	Orderdire *string `json:"Orderdire,omitempty" xml:"Orderdire,omitempty"`
-	// The number of the page to return when paging is used.
+	// The page number of the current page in a paging query. Settings the current page number.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type DescribeInstanceListRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of instances on each page when paging is used.
+	// The number of instances on each page in a paging query. Settings the number of instances per page.
 	//
 	// This parameter is required.
 	//
@@ -109,6 +109,10 @@ type DescribeInstanceListRequest struct {
 	// The region ID of the Anti-DDoS Origin instance to query.
 	//
 	// > You can call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query all region IDs supported by Anti-DDoS Origin.
+	//
+	// >-
+	//
+	// 	Notice: This parameter is required. If it is not specified, the API returns DDosBgp.CheckError.InvalidRegion(400).</notice>
 	//
 	// example:
 	//
@@ -122,13 +126,13 @@ type DescribeInstanceListRequest struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
 	//
-	// If you do not specify this parameter, the instance belongs to the default resource group.
+	// If you do not specify this parameter, the default resource group is used.
 	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags bound to the Anti-DDoS Origin instance to query.
+	// The tags bound to the Anti-DDoS Origin instances to query.
 	Tag []*DescribeInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

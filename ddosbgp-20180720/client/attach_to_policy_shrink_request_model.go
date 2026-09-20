@@ -32,9 +32,9 @@ type AttachToPolicyShrinkRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The version of the port-specific mitigation policy. Valid values:
 	//
-	// - **Not specified**: Associates the default surf anti-DDoS engine policy.
+	// - **Not specified**: Binds the default surf protection engine policy.
 	//
-	// - **2**: Associates the new stream anti-DDoS engine policy.
+	// - **2**: Binds the new stream protection engine policy.
 	//
 	// > Only port-specific mitigation policies support this parameter.
 	//

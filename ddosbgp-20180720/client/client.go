@@ -26,30 +26,61 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-qingdao":            dara.String("ddosbgp.aliyuncs.com"),
-		"cn-beijing":            dara.String("ddosbgp.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("ddosbgp.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("ddosbgp.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shanghai":           dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("ddosbgp.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"cn-chengdu":            dara.String("ddosbgp.aliyuncs.com"),
-		"eu-central-1":          dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"me-east-1":             dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("ddosbgp.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("ddosbgp.aliyuncs.com"),
-		"cn-hongkong":           dara.String("ddosbgp.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"us-west-1":             dara.String("ddosbgp.us-west-1.aliyuncs.com"),
-		"us-east-1":             dara.String("ddosbgp.us-east-1.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("ddosbgp.aliyuncs.com"),
+		"cn-beijing":                  dara.String("ddosbgp.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("ddosbgp.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("ddosbgp.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou":                 dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("ddosbgp.aliyuncs.com"),
+		"cn-heyuan":                   dara.String("ddosbgp.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("ddosbgp.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("ddosbgp.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("ddosbgp.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("ddosbgp.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("ddosbgp.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("ddosbgp.aliyuncs.com"),
+		"eu-west-1":                   dara.String("ddosbgp.aliyuncs.com"),
+		"eu-central-1":                dara.String("ddosbgp.aliyuncs.com"),
+		"ap-south-1":                  dara.String("ddosbgp.aliyuncs.com"),
+		"me-east-1":                   dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("ddosbgp.aliyuncs.com"),
+		"ap-northeast-2-pop":          dara.String("ddosbgp.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("ddosbgp.aliyuncs.com"),
+		"cn-beijing-finance-pop":      dara.String("ddosbgp.aliyuncs.com"),
+		"cn-beijing-gov-1":            dara.String("ddosbgp.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         dara.String("ddosbgp.aliyuncs.com"),
+		"cn-edge-1":                   dara.String("ddosbgp.aliyuncs.com"),
+		"cn-fujian":                   dara.String("ddosbgp.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou-finance":         dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hangzhou-test-306":        dara.String("ddosbgp.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     dara.String("ddosbgp.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       dara.String("ddosbgp.aliyuncs.com"),
+		"cn-north-2-gov-1":            dara.String("ddosbgp.aliyuncs.com"),
+		"cn-qingdao-nebula":           dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shanghai-inner":           dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shenzhen-inner":           dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         dara.String("ddosbgp.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        dara.String("ddosbgp.aliyuncs.com"),
+		"cn-wuhan":                    dara.String("ddosbgp.aliyuncs.com"),
+		"cn-yushanfang":               dara.String("ddosbgp.aliyuncs.com"),
+		"cn-zhangbei":                 dara.String("ddosbgp.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        dara.String("ddosbgp.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     dara.String("ddosbgp.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       dara.String("ddosbgp.aliyuncs.com"),
+		"eu-west-1-oxs":               dara.String("ddosbgp.aliyuncs.com"),
+		"rus-west-1-pop":              dara.String("ddosbgp.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1356,7 +1387,7 @@ func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequ
 //
 // ### QPS limit
 //
-// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DescribeInstanceListRequest
 //
@@ -1456,7 +1487,7 @@ func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceL
 //
 // ### QPS limit
 //
-// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DescribeInstanceListRequest
 //
@@ -1548,11 +1579,11 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 //
 // Description:
 //
-// This operation is used to perform a paged query of the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account. Paging is supported.
+// This operation is used to query the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account by using paging.
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API invokes are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Invoke this operation at an appropriate frequency.
 //
 // @param request - DescribeNetworkLayerInterceptsRequest
 //
@@ -1581,6 +1612,10 @@ func (client *Client) DescribeNetworkLayerInterceptsWithOptions(request *Describ
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InterceptModule) {
+		query["InterceptModule"] = request.InterceptModule
 	}
 
 	if !dara.IsNil(request.NetworkProtocol) {
@@ -1640,11 +1675,11 @@ func (client *Client) DescribeNetworkLayerInterceptsWithOptions(request *Describ
 //
 // Description:
 //
-// This operation is used to perform a paged query of the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account. Paging is supported.
+// This operation is used to query the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account by using paging.
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API invokes are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Invoke this operation at an appropriate frequency.
 //
 // @param request - DescribeNetworkLayerInterceptsRequest
 //
@@ -2903,7 +2938,7 @@ func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *Modif
 //
 // Description:
 //
-// Make sure that you pass all parameters when you call this operation. If a parameter is left empty, the corresponding configuration is deleted.
+// Ensure that all parameters are specified when you call this operation. If a parameter is not specified, the corresponding configuration is deleted.
 //
 // @param tmpReq - ModifyPolicyContentRequest
 //
@@ -2969,7 +3004,7 @@ func (client *Client) ModifyPolicyContentWithOptions(tmpReq *ModifyPolicyContent
 //
 // Description:
 //
-// Make sure that you pass all parameters when you call this operation. If a parameter is left empty, the corresponding configuration is deleted.
+// Ensure that all parameters are specified when you call this operation. If a parameter is not specified, the corresponding configuration is deleted.
 //
 // @param request - ModifyPolicyContentRequest
 //

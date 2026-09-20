@@ -17,6 +17,8 @@ type iDescribeNetworkLayerInterceptsRequest interface {
 	GetEndTime() *int64
 	SetInstanceId(v string) *DescribeNetworkLayerInterceptsRequest
 	GetInstanceId() *string
+	SetInterceptModule(v string) *DescribeNetworkLayerInterceptsRequest
+	GetInterceptModule() *string
 	SetNetworkProtocol(v string) *DescribeNetworkLayerInterceptsRequest
 	GetNetworkProtocol() *string
 	SetPage(v int64) *DescribeNetworkLayerInterceptsRequest
@@ -62,6 +64,12 @@ type DescribeNetworkLayerInterceptsRequest struct {
 	//
 	// ddosbgp-cn-z2q1qzxb****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The interception module.
+	//
+	// example:
+	//
+	// src
+	InterceptModule *string `json:"InterceptModule,omitempty" xml:"InterceptModule,omitempty"`
 	// The network protocol.
 	//
 	// example:
@@ -74,7 +82,7 @@ type DescribeNetworkLayerInterceptsRequest struct {
 	//
 	// 1
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Settings for the number of interception logs to return on each page when you perform a paged query. Paging is used to return results.
+	// The number of interception log entries per page in a paged query.
 	//
 	// example:
 	//
@@ -132,6 +140,10 @@ func (s *DescribeNetworkLayerInterceptsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeNetworkLayerInterceptsRequest) GetInterceptModule() *string {
+	return s.InterceptModule
+}
+
 func (s *DescribeNetworkLayerInterceptsRequest) GetNetworkProtocol() *string {
 	return s.NetworkProtocol
 }
@@ -177,6 +189,11 @@ func (s *DescribeNetworkLayerInterceptsRequest) SetEndTime(v int64) *DescribeNet
 
 func (s *DescribeNetworkLayerInterceptsRequest) SetInstanceId(v string) *DescribeNetworkLayerInterceptsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeNetworkLayerInterceptsRequest) SetInterceptModule(v string) *DescribeNetworkLayerInterceptsRequest {
+	s.InterceptModule = &v
 	return s
 }
 

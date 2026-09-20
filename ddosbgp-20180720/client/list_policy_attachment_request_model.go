@@ -32,7 +32,7 @@ type ListPolicyAttachmentRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of rows per page in a paging query. Default value: **10**.
+	// The number of entries per page in a paging query. Default value: **10**.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type ListPolicyAttachmentRequest struct {
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The version of the port-specific mitigation policy. Valid values:
 	//
-	// - **Not specified**: queries the policy associations that attach to the default surf DPI engine.
+	// - **Not specified**: queries the policy associations of the default surf DPI engine.
 	//
-	// - **2**: queries the policy associations that attach to the new stream DPI engine.
+	// - **2**: queries the policy associations of the new stream DPI engine.
 	//
 	// example:
 	//

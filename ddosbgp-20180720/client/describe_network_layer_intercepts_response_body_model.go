@@ -34,7 +34,7 @@ type DescribeNetworkLayerInterceptsResponseBody struct {
 	//
 	// B4B379C2-9319-4C6B-B579-FE36831B09F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of interception logs that match the current filter conditions.
+	// The total number of interception log entries that match the current filter conditions.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeNetworkLayerInterceptsResponseBodyInterceptionRecords struct {
 	//
 	// 1
 	InterceptCount *int64 `json:"InterceptCount,omitempty" xml:"InterceptCount,omitempty"`
-	// The end time of the interception.
+	// The interception end time.
 	//
 	//  > The value is a Unix/POSIX timestamp. Unit: seconds.
 	//
@@ -138,7 +138,7 @@ type DescribeNetworkLayerInterceptsResponseBodyInterceptionRecords struct {
 	//
 	// dip_blacklist
 	InterceptModule *string `json:"InterceptModule,omitempty" xml:"InterceptModule,omitempty"`
-	// The start time of the interception.
+	// The interception start time.
 	//
 	// > The value is a Unix/POSIX timestamp. Unit: seconds.
 	//

@@ -937,7 +937,7 @@ func (client *Client) DescribeExcpetionCountWithContext(ctx context.Context, req
 //
 // ### QPS limit
 //
-// You can invoke this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation within the limit.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DescribeInstanceListRequest
 //
@@ -1085,11 +1085,11 @@ func (client *Client) DescribeInstanceSpecsWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// This operation is used to perform a paged query of the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account. Paging is supported.
+// This operation is used to query the details of Layer 3 and Layer 4 packet interception records for all Anti-DDoS Origin instances owned by the current Alibaba Cloud account by using paging.
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API invokes are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Invoke this operation at an appropriate frequency.
 //
 // @param request - DescribeNetworkLayerInterceptsRequest
 //
@@ -1118,6 +1118,10 @@ func (client *Client) DescribeNetworkLayerInterceptsWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InterceptModule) {
+		query["InterceptModule"] = request.InterceptModule
 	}
 
 	if !dara.IsNil(request.NetworkProtocol) {
@@ -2079,7 +2083,7 @@ func (client *Client) ModifyPolicyWithContext(ctx context.Context, tmpReq *Modif
 //
 // Description:
 //
-// Make sure that you pass all parameters when you call this operation. If a parameter is left empty, the corresponding configuration is deleted.
+// Ensure that all parameters are specified when you call this operation. If a parameter is not specified, the corresponding configuration is deleted.
 //
 // @param tmpReq - ModifyPolicyContentRequest
 //

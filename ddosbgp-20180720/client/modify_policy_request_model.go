@@ -22,7 +22,51 @@ type iModifyPolicyRequest interface {
 }
 
 type ModifyPolicyRequest struct {
-	// The action type.
+	// The action type. Valid values:
+	//
+	// - **10**: modifies the name (Name is required).
+	//
+	// - **11**: modifies the blacklist timeout period (BlackIpListExpireAt is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **12**: modifies the switch for whitelisting back-to-origin IP addresses of Anti-DDoS Pro and Anti-DDoS Premium (WhitenGfbrNets is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **13**: modifies the switch for ICMP Blocking (EnableDropIcmp is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **20**: adds entries to blacklists and whitelists (WhiteIpList and BlackIpList are optional). Only IP-specific mitigation policy is supported.
+	//
+	// - **21**: deletes entries from blacklists and whitelists (WhiteIpList and BlackIpList are optional). Only IP-specific mitigation policy is supported.
+	//
+	// - **22**: clears the whitelist. Only IP-specific mitigation policy is supported.
+	//
+	// - **23**: clears the blacklist. Only IP-specific mitigation policy is supported.
+	//
+	// - **30**: modifies the AI-based intelligent protection switch and level (EnableIntelligence and IntelligenceLevel are required). Only IP-specific mitigation policy is supported.
+	//
+	// - **31**: modifies the Location Blacklist configuration (RegionBlockCountryList and RegionBlockProvinceList are optional). Only IP-specific mitigation policy is supported.
+	//
+	// - **32**: modifies the source rate limiting configuration (SourceLimit and SourceBlockList are required). Only IP-specific mitigation policy is supported.
+	//
+	// - **33**: modifies the reflection attack port filtering (ReflectBlockUdpPortList is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **40**: creates a port blocking rule (PortRuleList is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **41**: modifies a port blocking rule (PortRuleList is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **42**: deletes a port blocking rule (PortRuleList is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **50**: creates a byte-match filter rule (FingerPrintRuleList is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **51**: modifies a byte-match filter rule (FingerPrintRuleList is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **52**: deletes a byte-match filter rule (FingerPrintRuleList is required). Only IP-specific mitigation policy is supported.
+	//
+	// - **60**: modifies the port-specific mitigation switch (EnableL4Defense is required). Only port-specific mitigation policy is supported.
+	//
+	// - **61**: creates a port-specific mitigation rule (L4RuleList is required). Only port-specific mitigation policy is supported.
+	//
+	// - **62**: modifies a port-specific mitigation rule (L4RuleList is required). Only port-specific mitigation policy is supported.
+	//
+	// - **63**: deletes a port-specific mitigation rule (L4RuleList is required). Only port-specific mitigation policy is supported.
 	//
 	// This parameter is required.
 	//
@@ -47,6 +91,12 @@ type ModifyPolicyRequest struct {
 	// demo**
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version of the port-specific mitigation policy. Valid values:
+	//
+	// - **Not specified**: Modifies the default surf mitigation engine policy.
+	//
+	// - **2**: Modifies the new stream mitigation engine policy.
+	//
+	// > Only port-specific mitigation policies are supported.
 	//
 	// example:
 	//
@@ -119,7 +169,7 @@ func (s *ModifyPolicyRequest) Validate() error {
 type ModifyPolicyRequestContent struct {
 	// The IP blacklist.
 	BlackIpList []*string `json:"BlackIpList,omitempty" xml:"BlackIpList,omitempty" type:"Repeated"`
-	// The expiration time of the IP blacklist (UNIX timestamp).
+	// The timeout period of the IP blacklist (UNIX timestamp).
 	//
 	// example:
 	//
@@ -137,15 +187,21 @@ type ModifyPolicyRequestContent struct {
 	//
 	// true
 	EnableIntelligence *bool `json:"EnableIntelligence,omitempty" xml:"EnableIntelligence,omitempty"`
-	// Specifies whether to enable port protection.
+	// Specifies whether to enable port-specific mitigation.
 	//
 	// example:
 	//
 	// true
 	EnableL4Defense *bool `json:"EnableL4Defense,omitempty" xml:"EnableL4Defense,omitempty"`
-	// The list of byte-match filter rules.
+	// The list of Byte-Match Filter rules.
 	FingerPrintRuleList []*ModifyPolicyRequestContentFingerPrintRuleList `json:"FingerPrintRuleList,omitempty" xml:"FingerPrintRuleList,omitempty" type:"Repeated"`
 	// The protection level of AI-based intelligent protection. Valid values:
+	//
+	// - **default**: Normal.
+	//
+	// - **weak**: Loose.
+	//
+	// - **hard**: Strict.
 	//
 	// example:
 	//
@@ -157,11 +213,11 @@ type ModifyPolicyRequestContent struct {
 	PortRuleList []*ModifyPolicyRequestContentPortRuleList `json:"PortRuleList,omitempty" xml:"PortRuleList,omitempty" type:"Repeated"`
 	// The list of ports filtered by reflection attack prevention.
 	ReflectBlockUdpPortList []*int32 `json:"ReflectBlockUdpPortList,omitempty" xml:"ReflectBlockUdpPortList,omitempty" type:"Repeated"`
-	// The list of countries for location blacklist.
+	// The list of countries for the location blacklist.
 	RegionBlockCountryList []*int32 `json:"RegionBlockCountryList,omitempty" xml:"RegionBlockCountryList,omitempty" type:"Repeated"`
-	// The list of provinces for location blacklist.
+	// The list of provinces for the location blacklist.
 	RegionBlockProvinceList []*int32 `json:"RegionBlockProvinceList,omitempty" xml:"RegionBlockProvinceList,omitempty" type:"Repeated"`
-	// The SIP protection settings.
+	// The SIP Protection Settings.
 	SipDefense *ModifyPolicyRequestContentSipDefense `json:"SipDefense,omitempty" xml:"SipDefense,omitempty" type:"Struct"`
 	// The source rate limiting blacklist.
 	SourceBlockList []*ModifyPolicyRequestContentSourceBlockList `json:"SourceBlockList,omitempty" xml:"SourceBlockList,omitempty" type:"Repeated"`
@@ -169,7 +225,7 @@ type ModifyPolicyRequestContent struct {
 	SourceLimit *ModifyPolicyRequestContentSourceLimit `json:"SourceLimit,omitempty" xml:"SourceLimit,omitempty" type:"Struct"`
 	// The IP whitelist.
 	WhiteIpList []*string `json:"WhiteIpList,omitempty" xml:"WhiteIpList,omitempty" type:"Repeated"`
-	// Specifies whether to whitelist the back-to-origin IP addresses of Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland & outside the Chinese mainland).
+	// Specifies whether to enable whitelisting of back-to-origin IP addresses for Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland and outside the Chinese mainland).
 	//
 	// example:
 	//
@@ -389,17 +445,19 @@ func (s *ModifyPolicyRequestContent) Validate() error {
 }
 
 type ModifyPolicyRequestContentFingerPrintRuleList struct {
-	// The end value of the destination port range. Valid values: **0*	- to **65535**.
+	// The rule comment.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The end value of the destination port range. Valid values: **0*	- to **65535**.
 	//
 	// example:
 	//
 	// 65535
 	DstPortEnd *int32 `json:"DstPortEnd,omitempty" xml:"DstPortEnd,omitempty"`
 	// The start value of the destination port range. Valid values: **0*	- to **65535**.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -413,6 +471,14 @@ type ModifyPolicyRequestContentFingerPrintRuleList struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The match action. Valid values:
 	//
+	// - **accept**: Allows traffic that matches the fingerprint.
+	//
+	// - **drop**: Drops traffic that matches the fingerprint.
+	//
+	// - **ip_rate**: Rate-limits the source IP address of traffic that matches the fingerprint. The rate limit value is specified by the **RateValue*	- parameter.
+	//
+	// - **session_rate**: Rate-limits the source session of traffic that matches the fingerprint. The rate limit value is specified by the **RateValue*	- parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -421,27 +487,29 @@ type ModifyPolicyRequestContentFingerPrintRuleList struct {
 	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
 	// The maximum packet length. Valid values: **1*	- to **1500**.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1500
 	MaxPktLen *int32 `json:"MaxPktLen,omitempty" xml:"MaxPktLen,omitempty"`
 	// The minimum packet length. Valid values: **1*	- to **1500**.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
 	MinPktLen *int32 `json:"MinPktLen,omitempty" xml:"MinPktLen,omitempty"`
+	// The rule mode.
+	//
+	// example:
+	//
+	// 1
+	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The offset. Valid values: **0*	- to **1500**.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The detection payload. Represented in hexadecimal string format.
+	// The detection payload. The value is in hexadecimal string format.
 	//
 	// example:
 	//
@@ -449,7 +517,9 @@ type ModifyPolicyRequestContentFingerPrintRuleList struct {
 	PayloadBytes *string `json:"PayloadBytes,omitempty" xml:"PayloadBytes,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// This parameter is required.
+	// - **tcp**: Transmission Control Protocol.
+	//
+	// - **udp**: User Datagram Protocol.
 	//
 	// example:
 	//
@@ -457,11 +527,21 @@ type ModifyPolicyRequestContentFingerPrintRuleList struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The rate limit value. Valid values: **1*	- to **100000**.
 	//
+	// > This parameter is required when the match action is source IP rate limiting or source session rate limiting (**MatchAction*	- is **ip_rate*	- or **session_rate**).
+	//
 	// example:
 	//
 	// 100
 	RateValue *int32 `json:"RateValue,omitempty" xml:"RateValue,omitempty"`
-	// The priority number, represented as an integer.
+	// The rule.
+	//
+	// example:
+	//
+	// (ip.version == 4)
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The priority, expressed as an integer.
+	//
+	// > A smaller value indicates a higher priority.
 	//
 	// This parameter is required.
 	//
@@ -471,20 +551,22 @@ type ModifyPolicyRequestContentFingerPrintRuleList struct {
 	SeqNo *int32 `json:"SeqNo,omitempty" xml:"SeqNo,omitempty"`
 	// The end value of the source port range. Valid values: **0*	- to **65535**.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 65535
 	SrcPortEnd *int32 `json:"SrcPortEnd,omitempty" xml:"SrcPortEnd,omitempty"`
 	// The start value of the source port range. Valid values: **0*	- to **65535**.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 0
 	SrcPortStart *int32 `json:"SrcPortStart,omitempty" xml:"SrcPortStart,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ModifyPolicyRequestContentFingerPrintRuleList) String() string {
@@ -493,6 +575,10 @@ func (s ModifyPolicyRequestContentFingerPrintRuleList) String() string {
 
 func (s ModifyPolicyRequestContentFingerPrintRuleList) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetComment() *string {
+	return s.Comment
 }
 
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetDstPortEnd() *int32 {
@@ -519,6 +605,10 @@ func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetMinPktLen() *int32 {
 	return s.MinPktLen
 }
 
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetMode() *int32 {
+	return s.Mode
+}
+
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetOffset() *int32 {
 	return s.Offset
 }
@@ -535,6 +625,10 @@ func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetRateValue() *int32 {
 	return s.RateValue
 }
 
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetRule() *string {
+	return s.Rule
+}
+
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetSeqNo() *int32 {
 	return s.SeqNo
 }
@@ -545,6 +639,15 @@ func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetSrcPortEnd() *int32 {
 
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetSrcPortStart() *int32 {
 	return s.SrcPortStart
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) GetType() *int32 {
+	return s.Type
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetComment(v string) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.Comment = &v
+	return s
 }
 
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetDstPortEnd(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
@@ -577,6 +680,11 @@ func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetMinPktLen(v int32) *M
 	return s
 }
 
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetMode(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.Mode = &v
+	return s
+}
+
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetOffset(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
 	s.Offset = &v
 	return s
@@ -597,6 +705,11 @@ func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetRateValue(v int32) *M
 	return s
 }
 
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetRule(v string) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.Rule = &v
+	return s
+}
+
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetSeqNo(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
 	s.SeqNo = &v
 	return s
@@ -612,6 +725,11 @@ func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetSrcPortStart(v int32)
 	return s
 }
 
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetType(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.Type = &v
+	return s
+}
+
 func (s *ModifyPolicyRequestContentFingerPrintRuleList) Validate() error {
 	return dara.Validate(s)
 }
@@ -621,11 +739,11 @@ type ModifyPolicyRequestContentL4RuleList struct {
 	//
 	// example:
 	//
-	// 2
+	// block
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The list of detection conditions.
 	ConditionList []*ModifyPolicyRequestContentL4RuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
-	// The minimum number of bytes in a session flow that triggers rule matching. Valid values: **0*	- to **2048**.
+	// The minimum number of bytes in a session flow to trigger rule matching. Valid values: **0*	- to **2048**.
 	//
 	// example:
 	//
@@ -633,11 +751,19 @@ type ModifyPolicyRequestContentL4RuleList struct {
 	Limited *int32 `json:"Limited,omitempty" xml:"Limited,omitempty"`
 	// The logical operator. Valid values:
 	//
+	// - **0**: Executes the action when the rule is hit.
+	//
+	// - **1**: Executes the action when the rule is not hit.
+	//
 	// example:
 	//
 	// 0
 	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
 	// The rule type. Valid values:
+	//
+	// - **hex**: Hexadecimal matching.
+	//
+	// - **char**: String matching.
 	//
 	// example:
 	//
@@ -652,6 +778,8 @@ type ModifyPolicyRequestContentL4RuleList struct {
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The rule priority. Valid values: **1*	- to **100**.
+	//
+	// > A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -746,11 +874,29 @@ func (s *ModifyPolicyRequestContentL4RuleList) Validate() error {
 type ModifyPolicyRequestContentL4RuleListConditionList struct {
 	// The detection content.
 	//
+	// > If the rule type is **char**, the value must be an ASCII string. If the rule type is **hex**, the value must be a hexadecimal string. Maximum length: 2048.
+	//
 	// example:
 	//
 	// abcd
 	Arg *string `json:"Arg,omitempty" xml:"Arg,omitempty"`
 	// The matching content.
+	//
+	// 1. When **Encode*	- is set to **str**, the value must meet the following requirements:
+	//
+	// - The length of **Content*	- does not exceed 1500.
+	//
+	// - **End*	- - **Start*	- >= the length of **Content**.
+	//
+	// 2. When **Encode*	- is set to **hex**, the value must meet the following requirements:
+	//
+	// - **Content*	- must be hexadecimal characters.
+	//
+	// - The length of **Content*	- must be an even number.
+	//
+	// - The length of **Content*	- does not exceed 3000.
+	//
+	// - **End*	- - **Start*	- + 1 >= the length of **Content*	- / 2.
 	//
 	// example:
 	//
@@ -764,13 +910,31 @@ type ModifyPolicyRequestContentL4RuleListConditionList struct {
 	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
 	// The character type. Valid values:
 	//
+	// - **str**: String.
+	//
+	// - **hex**: Hexadecimal.
+	//
 	// example:
 	//
 	// str
 	Encode *string `json:"Encode,omitempty" xml:"Encode,omitempty"`
 	// The matching range.
 	Offset *ModifyPolicyRequestContentL4RuleListConditionListOffset `json:"Offset,omitempty" xml:"Offset,omitempty" type:"Struct"`
-	// The matching pattern.
+	// The matching pattern. Valid values depend on the **Encode*	- field:
+	//
+	// (1) When **Encode*	- is set to **str**:
+	//
+	// - **contain**: Contains.
+	//
+	// - **not_contain**: Does not contain.
+	//
+	// - **regex**: Regular expression.
+	//
+	// (2) When **Encode*	- is set to **hex**:
+	//
+	// - **contain**: Contains.
+	//
+	// - **not_contain**: Does not contain.
 	//
 	// example:
 	//
@@ -867,6 +1031,8 @@ func (s *ModifyPolicyRequestContentL4RuleListConditionList) Validate() error {
 type ModifyPolicyRequestContentL4RuleListConditionListOffset struct {
 	// The end position. Valid values: **0*	- to **1499**.
 	//
+	// > The end position must be greater than or equal to the start position.
+	//
 	// example:
 	//
 	// 1499
@@ -934,6 +1100,8 @@ type ModifyPolicyRequestContentPortRuleList struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The match action. Valid values:
 	//
+	// - **drop**: Drop.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -942,13 +1110,19 @@ type ModifyPolicyRequestContentPortRuleList struct {
 	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
 	// The protocol type. Valid values:
 	//
+	// - **tcp**: Transmission Control Protocol.
+	//
+	// - **udp**: User Datagram Protocol.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The priority number, represented as an integer.
+	// The priority, expressed as an integer.
+	//
+	// > A smaller value indicates a higher priority.
 	//
 	// This parameter is required.
 	//
@@ -1061,6 +1235,10 @@ func (s *ModifyPolicyRequestContentPortRuleList) Validate() error {
 type ModifyPolicyRequestContentSipDefense struct {
 	// Specifies whether to enable SIP protection. Valid values:
 	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
@@ -1083,19 +1261,19 @@ type ModifyPolicyRequestContentSipDefense struct {
 	//
 	// 5060
 	SipPort *string `json:"SipPort,omitempty" xml:"SipPort,omitempty"`
-	// The SIP source rate limit value in PPS.
+	// The SIP source rate limit value (PPS).
 	//
 	// example:
 	//
 	// 1000
 	SipRate *int64 `json:"SipRate,omitempty" xml:"SipRate,omitempty"`
-	// The SIP activation threshold in Mbit/s.
+	// The SIP activation threshold (Mbit/s).
 	//
 	// example:
 	//
 	// 100
 	SipStartMbps *int64 `json:"SipStartMbps,omitempty" xml:"SipStartMbps,omitempty"`
-	// The SIP activation threshold in PPS.
+	// The SIP activation threshold (PPS).
 	//
 	// example:
 	//
@@ -1223,6 +1401,14 @@ type ModifyPolicyRequestContentSourceBlockList struct {
 	ExceedLimitTimes *int32 `json:"ExceedLimitTimes,omitempty" xml:"ExceedLimitTimes,omitempty"`
 	// The source rate limiting type. Valid values:
 	//
+	// - **3**: source PPS rate limiting.
+	//
+	// - **4**: source bandwidth throttling.
+	//
+	// - **5**: source SYN PPS rate limiting.
+	//
+	// - **6**: source SYN bandwidth throttling.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1280,25 +1466,25 @@ func (s *ModifyPolicyRequestContentSourceBlockList) Validate() error {
 }
 
 type ModifyPolicyRequestContentSourceLimit struct {
-	// The source bandwidth throttling. Unit: Byte/s.
+	// The source bandwidth throttling rate limit, in bytes per second.
 	//
 	// example:
 	//
 	// 2048
 	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The source PPS rate limit. Unit: Packet/s.
+	// The source PPS rate limit, in packets per second.
 	//
 	// example:
 	//
 	// 64
 	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
-	// The source SYN bandwidth throttling. Unit: Byte/s.
+	// The source SYN bandwidth throttling rate limit, in bytes per second.
 	//
 	// example:
 	//
 	// 2048
 	SynBps *int32 `json:"SynBps,omitempty" xml:"SynBps,omitempty"`
-	// The source SYN PPS rate limit. Unit: Packet/s.
+	// The source SYN PPS rate limit, in packets per second.
 	//
 	// example:
 	//
