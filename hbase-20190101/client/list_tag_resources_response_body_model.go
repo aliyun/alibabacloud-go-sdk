@@ -18,10 +18,14 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
+	// The token used to start the next query. An empty value of NextToken indicates that no more pages exist.
+	//
 	// example:
 	//
 	// 1d2db86sca4384811e0b5e8707e68****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 74F02441-9A8D-48F6-933F-E317AEB28DBF
@@ -108,22 +112,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// example:
-	//
-	// bds-bp15e022622f****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// example:
-	//
-	// ALIYUN::MULTIMOD::CLUSTER
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// example:
-	//
-	// k1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// example:
-	//
-	// v2
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

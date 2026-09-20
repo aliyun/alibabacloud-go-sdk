@@ -16,12 +16,16 @@ type iModifyDiskWarningLineRequest interface {
 }
 
 type ModifyDiskWarningLineRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The alert threshold. Valid values: 50 to 90.
+	//
 	// This parameter is required.
 	//
 	// example:

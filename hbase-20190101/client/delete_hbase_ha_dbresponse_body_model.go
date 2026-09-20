@@ -14,6 +14,8 @@ type iDeleteHBaseHaDBResponseBody interface {
 }
 
 type DeleteHBaseHaDBResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B409CF51-E01F-4551-BE40-123678FA9026

@@ -18,8 +18,12 @@ type iDescribeBackupSummaryResponseBody interface {
 }
 
 type DescribeBackupSummaryResponseBody struct {
+	// The details of the full backup.
 	Full *DescribeBackupSummaryResponseBodyFull `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
+	// The details of the incremental backup.
 	Incr *DescribeBackupSummaryResponseBodyIncr `json:"Incr,omitempty" xml:"Incr,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 168793CB-7B31-43E7-ADAB-FE3E8D584D6E
@@ -76,23 +80,37 @@ func (s *DescribeBackupSummaryResponseBody) Validate() error {
 }
 
 type DescribeBackupSummaryResponseBodyFull struct {
+	// Indicates whether there is a next page. Valid values:
+	//
+	// - true: There is a next page.
+	//
+	// - false: There is no next page.
+	//
 	// example:
 	//
 	// false
 	HasMore *string `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// The time of the next full backup.
+	//
 	// example:
 	//
 	// 2020-11-09T18:00:00Z
 	NextFullBackupDate *string `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Records  *DescribeBackupSummaryResponseBodyFullRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 2
@@ -205,34 +223,13 @@ func (s *DescribeBackupSummaryResponseBodyFullRecords) Validate() error {
 }
 
 type DescribeBackupSummaryResponseBodyFullRecordsRecord struct {
-	// example:
-	//
-	// 2020-11-02T18:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1.2 kB
-	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// example:
-	//
-	// 2020-11-02T18:02:04Z
+	DataSize   *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// example:
-	//
-	// 1/1
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// example:
-	//
-	// 20201103020000
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// example:
-	//
-	// 0.00 MB/s
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Process    *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Speed      *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupSummaryResponseBodyFullRecordsRecord) String() string {
@@ -311,26 +308,38 @@ func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) Validate() error {
 }
 
 type DescribeBackupSummaryResponseBodyIncr struct {
+	// The data size.
+	//
 	// example:
 	//
 	// 266 B
 	BackupLogSize *string `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
+	// The synchronization point.
+	//
 	// example:
 	//
 	// 2020-11-05T01:20:31Z
 	Pos *string `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	// The number of logs in the queue.
+	//
 	// example:
 	//
 	// 0
 	QueueLogNum *string `json:"QueueLogNum,omitempty" xml:"QueueLogNum,omitempty"`
+	// The number of logs being backed up.
+	//
 	// example:
 	//
 	// 2
 	RunningLogNum *string `json:"RunningLogNum,omitempty" xml:"RunningLogNum,omitempty"`
+	// The current write speed of the incremental backup.
+	//
 	// example:
 	//
 	// 0.00 MB/s
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The status of the incremental backup.
+	//
 	// example:
 	//
 	// RUNNING

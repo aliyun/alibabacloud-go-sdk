@@ -23,18 +23,26 @@ type iListInstanceServiceConfigurationsResponseBody interface {
 
 type ListInstanceServiceConfigurationsResponseBody struct {
 	ConfigureList *ListInstanceServiceConfigurationsResponseBodyConfigureList `json:"ConfigureList,omitempty" xml:"ConfigureList,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5B381E36-BCA3-4377-8638-B65C236617D5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 42
@@ -138,34 +146,13 @@ func (s *ListInstanceServiceConfigurationsResponseBodyConfigureList) Validate() 
 }
 
 type ListInstanceServiceConfigurationsResponseBodyConfigureListConfig struct {
-	// example:
-	//
-	// hbase#hbase-site.xml#hbase.client.keyvalue.maxsize
 	ConfigureName *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
-	// example:
-	//
-	// INT
 	ConfigureUnit *string `json:"ConfigureUnit,omitempty" xml:"ConfigureUnit,omitempty"`
-	// example:
-	//
-	// 10485760
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// example:
-	//
-	// hbase client keyvalue maxsize
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// true
-	NeedRestart *string `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
-	// example:
-	//
-	// 10485760
-	RunningValue *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
-	// example:
-	//
-	// R[10485760,52428800]
-	ValueRange *string `json:"ValueRange,omitempty" xml:"ValueRange,omitempty"`
+	DefaultValue  *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NeedRestart   *string `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
+	RunningValue  *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
+	ValueRange    *string `json:"ValueRange,omitempty" xml:"ValueRange,omitempty"`
 }
 
 func (s ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) String() string {

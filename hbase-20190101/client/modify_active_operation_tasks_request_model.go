@@ -28,12 +28,22 @@ type iModifyActiveOperationTasksRequest interface {
 }
 
 type ModifyActiveOperationTasksRequest struct {
+	// The O&M task IDs. Separate multiple IDs with commas (,).
+	//
+	// > You can call [DescribeActiveOperationTasks](https://help.aliyun.com/document_detail/414458.html) to obtain O&M task IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1111,2222
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Specifies whether to immediately execute the O&M task. Valid values:
+	//
+	// - **1**: immediately executes the task.
+	//
+	// - **0**: executes the task at the specified time.
+	//
 	// example:
 	//
 	// 1
@@ -43,6 +53,10 @@ type ModifyActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The scheduled switchover time to set. Specify the time in the _yyyy-MM-ddTHH:mm:ssZ_ format (UTC).
+	//
+	// > The time cannot be later than the deadline. You can call [DescribeActiveOperationTasks](https://help.aliyun.com/document_detail/414458.html) and check the value of the **Deadline*	- response parameter to obtain the deadline.
+	//
 	// This parameter is required.
 	//
 	// example:

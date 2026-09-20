@@ -16,12 +16,16 @@ type iDeleteUserHdfsInfoRequest interface {
 }
 
 type DeleteUserHdfsInfoRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp16o0pd52e3y****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The value of dfs.nameservices in addUserHdfsInfo. This value is returned when you call the [QueryXpackRelateDB](https://help.aliyun.com/document_detail/144509.html) operation with relateDB set to hdfs.
+	//
 	// This parameter is required.
 	//
 	// example:

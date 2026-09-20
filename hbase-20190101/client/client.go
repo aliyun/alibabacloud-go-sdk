@@ -92,6 +92,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a self-managed HDFS address to Xpack.
+//
 // @param request - AddUserHdfsInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -140,6 +144,10 @@ func (client *Client) AddUserHdfsInfoWithOptions(request *AddUserHdfsInfoRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a self-managed HDFS address to Xpack.
+//
 // @param request - AddUserHdfsInfoRequest
 //
 // @return AddUserHdfsInfoResponse
@@ -154,6 +162,10 @@ func (client *Client) AddUserHdfsInfo(request *AddUserHdfsInfoRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a public endpoint.
+//
 // @param request - AllocatePublicNetworkAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -198,6 +210,10 @@ func (client *Client) AllocatePublicNetworkAddressWithOptions(request *AllocateP
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a public endpoint.
+//
 // @param request - AllocatePublicNetworkAddressRequest
 //
 // @return AllocatePublicNetworkAddressResponse
@@ -212,6 +228,10 @@ func (client *Client) AllocatePublicNetworkAddress(request *AllocatePublicNetwor
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels O&M event tasks by calling the CancelActiveOperationTasks operation.
+//
 // @param request - CancelActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -272,6 +292,10 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels O&M event tasks by calling the CancelActiveOperationTasks operation.
+//
 // @param request - CancelActiveOperationTasksRequest
 //
 // @return CancelActiveOperationTasksResponse
@@ -286,6 +310,10 @@ func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationT
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the versions of components are the latest versions by calling CheckComponentsVersion.
+//
 // @param request - CheckComponentsVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -330,6 +358,10 @@ func (client *Client) CheckComponentsVersionWithOptions(request *CheckComponents
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the versions of components are the latest versions by calling CheckComponentsVersion.
+//
 // @param request - CheckComponentsVersionRequest
 //
 // @return CheckComponentsVersionResponse
@@ -344,6 +376,10 @@ func (client *Client) CheckComponentsVersion(request *CheckComponentsVersionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the backup and recovery feature for an HBase cluster by calling CloseBackup.
+//
 // @param request - CloseBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -384,6 +420,10 @@ func (client *Client) CloseBackupWithOptions(request *CloseBackupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the backup and recovery feature for an HBase cluster by calling CloseBackup.
+//
 // @param request - CloseBackupRequest
 //
 // @return CloseBackupResponse
@@ -398,6 +438,14 @@ func (client *Client) CloseBackup(request *CloseBackupRequest) (_result *CloseBa
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts an instance from pay-as-you-go to subscription billing.
+//
+// Description:
+//
+// Note: This operation can be called only when payType is set to Postpaid.
+//
 // @param request - ConvertInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -450,6 +498,14 @@ func (client *Client) ConvertInstanceWithOptions(request *ConvertInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts an instance from pay-as-you-go to subscription billing.
+//
+// Description:
+//
+// Note: This operation can be called only when payType is set to Postpaid.
+//
 // @param request - ConvertInstanceRequest
 //
 // @return ConvertInstanceResponse
@@ -466,7 +522,11 @@ func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result 
 
 // Summary:
 //
-// 新建账户
+// Creates a wide table account.
+//
+// Description:
+//
+// Only ApsaraDB for HBase Performance-enhanced Edition is supported.
 //
 // @param request - CreateAccountRequest
 //
@@ -518,7 +578,11 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 // Summary:
 //
-// 新建账户
+// Creates a wide table account.
+//
+// Description:
+//
+// Only ApsaraDB for HBase Performance-enhanced Edition is supported.
 //
 // @param request - CreateAccountRequest
 //
@@ -534,6 +598,14 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a backup plan. Currently, only HBaseue is supported.
+//
+// Description:
+//
+// Currently, this operation supports only HBaseue clusters. The EnableHBaseueBackup operation is compatible with this operation and performs automatic creation of a backup plan after a BDS cluster is created.
+//
 // @param request - CreateBackupPlanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -574,6 +646,14 @@ func (client *Client) CreateBackupPlanWithOptions(request *CreateBackupPlanReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a backup plan. Currently, only HBaseue is supported.
+//
+// Description:
+//
+// Currently, this operation supports only HBaseue clusters. The EnableHBaseueBackup operation is compatible with this operation and performs automatic creation of a backup plan after a BDS cluster is created.
+//
 // @param request - CreateBackupPlanRequest
 //
 // @return CreateBackupPlanResponse
@@ -588,6 +668,10 @@ func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an ApsaraDB for HBase cluster by calling CreateCluster.
+//
 // @param request - CreateClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -708,6 +792,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an ApsaraDB for HBase cluster by calling CreateCluster.
+//
 // @param request - CreateClusterRequest
 //
 // @return CreateClusterResponse
@@ -722,6 +810,10 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global resource in a cluster by calling CreateGlobalResource.
+//
 // @param request - CreateGlobalResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -778,6 +870,10 @@ func (client *Client) CreateGlobalResourceWithOptions(request *CreateGlobalResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global resource in a cluster by calling CreateGlobalResource.
+//
 // @param request - CreateGlobalResourceRequest
 //
 // @return CreateGlobalResourceResponse
@@ -792,6 +888,10 @@ func (client *Client) CreateGlobalResource(request *CreateGlobalResourceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a load balancing service by calling CreateHBaseSlbServer.
+//
 // @param request - CreateHBaseSlbServerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -840,6 +940,10 @@ func (client *Client) CreateHBaseSlbServerWithOptions(request *CreateHBaseSlbSer
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a load balancing service by calling CreateHBaseSlbServer.
+//
 // @param request - CreateHBaseSlbServerRequest
 //
 // @return CreateHBaseSlbServerResponse
@@ -854,6 +958,10 @@ func (client *Client) CreateHBaseSlbServer(request *CreateHBaseSlbServerRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a high-availability Thrift or Phoenix service for a BDS cluster that already has a high-availability HBase setup.
+//
 // @param request - CreateHbaseHaSlbRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -910,6 +1018,10 @@ func (client *Client) CreateHbaseHaSlbWithOptions(request *CreateHbaseHaSlbReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a high-availability Thrift or Phoenix service for a BDS cluster that already has a high-availability HBase setup.
+//
 // @param request - CreateHbaseHaSlbRequest
 //
 // @return CreateHbaseHaSlbResponse
@@ -924,6 +1036,14 @@ func (client *Client) CreateHbaseHaSlb(request *CreateHbaseHaSlbRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a multi-zone cluster by calling CreateMultiZoneCluster.
+//
+// Description:
+//
+// Currently, only version 2.0 of the HBaseue engine is supported.
+//
 // @param request - CreateMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1076,6 +1196,14 @@ func (client *Client) CreateMultiZoneClusterWithOptions(request *CreateMultiZone
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a multi-zone cluster by calling CreateMultiZoneCluster.
+//
+// Description:
+//
+// Currently, only version 2.0 of the HBaseue engine is supported.
+//
 // @param request - CreateMultiZoneClusterRequest
 //
 // @return CreateMultiZoneClusterResponse
@@ -1090,6 +1218,14 @@ func (client *Client) CreateMultiZoneCluster(request *CreateMultiZoneClusterRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores backed-up data from a cluster with the backup and restore feature enabled to another ApsaraDB for HBase Performance-enhanced Edition cluster in the same region.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and restore feature is enabled for the ApsaraDB for HBase Performance-enhanced Edition cluster and that the target ApsaraDB for HBase Performance-enhanced Edition cluster is associated with the corresponding BDS.
+//
 // @param request - CreateRestorePlanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1150,6 +1286,14 @@ func (client *Client) CreateRestorePlanWithOptions(request *CreateRestorePlanReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores backed-up data from a cluster with the backup and restore feature enabled to another ApsaraDB for HBase Performance-enhanced Edition cluster in the same region.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and restore feature is enabled for the ApsaraDB for HBase Performance-enhanced Edition cluster and that the target ApsaraDB for HBase Performance-enhanced Edition cluster is associated with the corresponding BDS.
+//
 // @param request - CreateRestorePlanRequest
 //
 // @return CreateRestorePlanResponse
@@ -1164,6 +1308,10 @@ func (client *Client) CreateRestorePlan(request *CreateRestorePlanRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an HBase Serverless cluster.
+//
 // @param request - CreateServerlessClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1272,6 +1420,10 @@ func (client *Client) CreateServerlessClusterWithOptions(request *CreateServerle
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an HBase Serverless cluster.
+//
 // @param request - CreateServerlessClusterRequest
 //
 // @return CreateServerlessClusterResponse
@@ -1288,7 +1440,11 @@ func (client *Client) CreateServerlessCluster(request *CreateServerlessClusterRe
 
 // Summary:
 //
-// 删除账户
+// # Delete Wide Table Database Account
+//
+// Description:
+//
+// Only supported for HBase Enhanced Edition (HBaseue).
 //
 // @param request - DeleteAccountRequest
 //
@@ -1336,7 +1492,11 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 
 // Summary:
 //
-// 删除账户
+// # Delete Wide Table Database Account
+//
+// Description:
+//
+// Only supported for HBase Enhanced Edition (HBaseue).
 //
 // @param request - DeleteAccountRequest
 //
@@ -1352,6 +1512,10 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global resource from a cluster by calling DeleteGlobalResource.
+//
 // @param request - DeleteGlobalResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1404,6 +1568,10 @@ func (client *Client) DeleteGlobalResourceWithOptions(request *DeleteGlobalResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global resource from a cluster by calling DeleteGlobalResource.
+//
 // @param request - DeleteGlobalResourceRequest
 //
 // @return DeleteGlobalResourceResponse
@@ -1418,6 +1586,10 @@ func (client *Client) DeleteGlobalResource(request *DeleteGlobalResourceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a created HA instance.
+//
 // @param request - DeleteHBaseHaDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1462,6 +1634,10 @@ func (client *Client) DeleteHBaseHaDBWithOptions(request *DeleteHBaseHaDBRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a created HA instance.
+//
 // @param request - DeleteHBaseHaDBRequest
 //
 // @return DeleteHBaseHaDBResponse
@@ -1476,6 +1652,10 @@ func (client *Client) DeleteHBaseHaDB(request *DeleteHBaseHaDBRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteHBaseSlbServer to delete an activated load balancing service.
+//
 // @param request - DeleteHBaseSlbServerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1520,6 +1700,10 @@ func (client *Client) DeleteHBaseSlbServerWithOptions(request *DeleteHBaseSlbSer
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteHBaseSlbServer to delete an activated load balancing service.
+//
 // @param request - DeleteHBaseSlbServerRequest
 //
 // @return DeleteHBaseSlbServerResponse
@@ -1534,6 +1718,10 @@ func (client *Client) DeleteHBaseSlbServer(request *DeleteHBaseSlbServerRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the corresponding high-availability Thrift or high-availability Phoenix configuration. This operation is the counterpart of the CreateHbaseHaSlb operation.
+//
 // @param request - DeleteHbaseHaSlbRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1582,6 +1770,10 @@ func (client *Client) DeleteHbaseHaSlbWithOptions(request *DeleteHbaseHaSlbReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the corresponding high-availability Thrift or high-availability Phoenix configuration. This operation is the counterpart of the CreateHbaseHaSlb operation.
+//
 // @param request - DeleteHbaseHaSlbRequest
 //
 // @return DeleteHbaseHaSlbResponse
@@ -1596,6 +1788,20 @@ func (client *Client) DeleteHbaseHaSlb(request *DeleteHbaseHaSlbRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteInstance to release an HBase instance.
+//
+// Description:
+//
+// When you call this operation, the instance must meet the following conditions:
+//
+// - The instance status is **Running**.
+//
+// - The billing method of the instance is **pay-as-you-go**.
+//
+// > Subscription instances cannot be deleted by calling this operation. They are automatically released upon expiration. To release a subscription instance in advance, submit a ticket.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1640,6 +1846,20 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteInstance to release an HBase instance.
+//
+// Description:
+//
+// When you call this operation, the instance must meet the following conditions:
+//
+// - The instance status is **Running**.
+//
+// - The billing method of the instance is **pay-as-you-go**.
+//
+// > Subscription instances cannot be deleted by calling this operation. They are automatically released upon expiration. To release a subscription instance in advance, submit a ticket.
+//
 // @param request - DeleteInstanceRequest
 //
 // @return DeleteInstanceResponse
@@ -1654,6 +1874,10 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a multi-zone instance by calling the DeleteMultiZoneCluster operation.
+//
 // @param request - DeleteMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1698,6 +1922,10 @@ func (client *Client) DeleteMultiZoneClusterWithOptions(request *DeleteMultiZone
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a multi-zone instance by calling the DeleteMultiZoneCluster operation.
+//
 // @param request - DeleteMultiZoneClusterRequest
 //
 // @return DeleteMultiZoneClusterResponse
@@ -1712,6 +1940,10 @@ func (client *Client) DeleteMultiZoneCluster(request *DeleteMultiZoneClusterRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an HBase Serverless cluster.
+//
 // @param request - DeleteServerlessClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1760,6 +1992,10 @@ func (client *Client) DeleteServerlessClusterWithOptions(request *DeleteServerle
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an HBase Serverless cluster.
+//
 // @param request - DeleteServerlessClusterRequest
 //
 // @return DeleteServerlessClusterResponse
@@ -1774,6 +2010,10 @@ func (client *Client) DeleteServerlessCluster(request *DeleteServerlessClusterRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteUserHdfsInfo to delete user-created HDFS information in Xpack.
+//
 // @param request - DeleteUserHdfsInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1818,6 +2058,10 @@ func (client *Client) DeleteUserHdfsInfoWithOptions(request *DeleteUserHdfsInfoR
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteUserHdfsInfo to delete user-created HDFS information in Xpack.
+//
 // @param request - DeleteUserHdfsInfoRequest
 //
 // @return DeleteUserHdfsInfoResponse
@@ -1834,7 +2078,7 @@ func (client *Client) DeleteUserHdfsInfo(request *DeleteUserHdfsInfoRequest) (_r
 
 // Summary:
 //
-// 查询账户列表
+// Queries the list of database accounts.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -1878,7 +2122,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 
 // Summary:
 //
-// 查询账户列表
+// Queries the list of database accounts.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -1894,6 +2138,10 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeActiveOperationTaskType operation to query the O&M task types, the number of tasks of each type, and the details of an HBase instance.
+//
 // @param request - DescribeActiveOperationTaskTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1954,6 +2202,10 @@ func (client *Client) DescribeActiveOperationTaskTypeWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeActiveOperationTaskType operation to query the O&M task types, the number of tasks of each type, and the details of an HBase instance.
+//
 // @param request - DescribeActiveOperationTaskTypeRequest
 //
 // @return DescribeActiveOperationTaskTypeResponse
@@ -1968,6 +2220,10 @@ func (client *Client) DescribeActiveOperationTaskType(request *DescribeActiveOpe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeActiveOperationTasks operation to query details of O&M tasks for HBase instances.
+//
 // @param request - DescribeActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2068,6 +2324,10 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeActiveOperationTasks operation to query details of O&M tasks for HBase instances.
+//
 // @param request - DescribeActiveOperationTasksRequest
 //
 // @return DescribeActiveOperationTasksResponse
@@ -2082,6 +2342,10 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available resources by calling DescribeAvailableResource.
+//
 // @param request - DescribeAvailableResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2146,6 +2410,10 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available resources by calling DescribeAvailableResource.
+//
 // @param request - DescribeAvailableResourceRequest
 //
 // @return DescribeAvailableResourceResponse
@@ -2160,6 +2428,14 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration of a backup plan by calling the DescribeBackupPlanConfig operation.
+//
+// Description:
+//
+// This operation currently supports only HBaseue. Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue instance.
+//
 // @param request - DescribeBackupPlanConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2200,6 +2476,14 @@ func (client *Client) DescribeBackupPlanConfigWithOptions(request *DescribeBacku
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration of a backup plan by calling the DescribeBackupPlanConfig operation.
+//
+// Description:
+//
+// This operation currently supports only HBaseue. Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue instance.
+//
 // @param request - DescribeBackupPlanConfigRequest
 //
 // @return DescribeBackupPlanConfigResponse
@@ -2214,6 +2498,10 @@ func (client *Client) DescribeBackupPlanConfig(request *DescribeBackupPlanConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup policy of an HBase cluster by calling DescribeBackupPolicy.
+//
 // @param request - DescribeBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2254,6 +2542,10 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup policy of an HBase cluster by calling DescribeBackupPolicy.
+//
 // @param request - DescribeBackupPolicyRequest
 //
 // @return DescribeBackupPolicyResponse
@@ -2268,6 +2560,10 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the status of a backup task by calling the DescribeBackupStatus operation.
+//
 // @param request - DescribeBackupStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2308,6 +2604,10 @@ func (client *Client) DescribeBackupStatusWithOptions(request *DescribeBackupSta
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the status of a backup task by calling the DescribeBackupStatus operation.
+//
 // @param request - DescribeBackupStatusRequest
 //
 // @return DescribeBackupStatusResponse
@@ -2322,6 +2622,14 @@ func (client *Client) DescribeBackupStatus(request *DescribeBackupStatusRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// After HBase Enhanced Edition backup is enabled, you can call the DescribeBackupSummary operation to query backup details.
+//
+// Description:
+//
+// The backup and restore feature of the HBase Enhanced Edition instance is enabled. For more information, see [Enable backup and restore](https://help.aliyun.com/document_detail/145767.html).
+//
 // @param request - DescribeBackupSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2370,6 +2678,14 @@ func (client *Client) DescribeBackupSummaryWithOptions(request *DescribeBackupSu
 	return _result, _err
 }
 
+// Summary:
+//
+// After HBase Enhanced Edition backup is enabled, you can call the DescribeBackupSummary operation to query backup details.
+//
+// Description:
+//
+// The backup and restore feature of the HBase Enhanced Edition instance is enabled. For more information, see [Enable backup and restore](https://help.aliyun.com/document_detail/145767.html).
+//
 // @param request - DescribeBackupSummaryRequest
 //
 // @return DescribeBackupSummaryResponse
@@ -2384,6 +2700,14 @@ func (client *Client) DescribeBackupSummary(request *DescribeBackupSummaryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup table information of a specific backup record by calling the DescribeBackupTables operation.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that backup records exist. You can call the DescribeBackupSummary operation to obtain backup records.
+//
 // @param request - DescribeBackupTablesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2436,6 +2760,14 @@ func (client *Client) DescribeBackupTablesWithOptions(request *DescribeBackupTab
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup table information of a specific backup record by calling the DescribeBackupTables operation.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that backup records exist. You can call the DescribeBackupSummary operation to obtain backup records.
+//
 // @param request - DescribeBackupTablesRequest
 //
 // @return DescribeBackupTablesResponse
@@ -2450,6 +2782,10 @@ func (client *Client) DescribeBackupTables(request *DescribeBackupTablesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves backup records of an ApsaraDB for HBase cluster by calling DescribeBackups.
+//
 // @param request - DescribeBackupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2518,6 +2854,10 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves backup records of an ApsaraDB for HBase cluster by calling DescribeBackups.
+//
 // @param request - DescribeBackupsRequest
 //
 // @return DescribeBackupsResponse
@@ -2532,6 +2872,10 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the connection list of a cluster by calling DescribeClusterConnection.
+//
 // @param request - DescribeClusterConnectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2576,6 +2920,10 @@ func (client *Client) DescribeClusterConnectionWithOptions(request *DescribeClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the connection list of a cluster by calling DescribeClusterConnection.
+//
 // @param request - DescribeClusterConnectionRequest
 //
 // @return DescribeClusterConnectionResponse
@@ -2590,6 +2938,10 @@ func (client *Client) DescribeClusterConnection(request *DescribeClusterConnecti
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeColdStorage to retrieve the cold storage information of an instance.
+//
 // @param request - DescribeColdStorageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2630,6 +2982,10 @@ func (client *Client) DescribeColdStorageWithOptions(request *DescribeColdStorag
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeColdStorage to retrieve the cold storage information of an instance.
+//
 // @param request - DescribeColdStorageRequest
 //
 // @return DescribeColdStorageResponse
@@ -2644,6 +3000,10 @@ func (client *Client) DescribeColdStorage(request *DescribeColdStorageRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeDBInstanceUsage to retrieve the running watermark status of an HBase cluster by cluster ID.
+//
 // @param request - DescribeDBInstanceUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2684,6 +3044,10 @@ func (client *Client) DescribeDBInstanceUsageWithOptions(request *DescribeDBInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeDBInstanceUsage to retrieve the running watermark status of an HBase cluster by cluster ID.
+//
 // @param request - DescribeDBInstanceUsageRequest
 //
 // @return DescribeDBInstanceUsageResponse
@@ -2698,6 +3062,14 @@ func (client *Client) DescribeDBInstanceUsage(request *DescribeDBInstanceUsageRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of clusters that have been deleted but not fully released.
+//
+// Description:
+//
+// By default, cluster resources are fully cleaned up 7 days after deletion. If you have called the PurgeInstance operation or set ImmediateDeleteFlag to true when calling the delete operation, the resources have already been fully cleaned up.
+//
 // @param request - DescribeDeletedInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2746,6 +3118,14 @@ func (client *Client) DescribeDeletedInstancesWithOptions(request *DescribeDelet
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of clusters that have been deleted but not fully released.
+//
+// Description:
+//
+// By default, cluster resources are fully cleaned up 7 days after deletion. If you have called the PurgeInstance operation or set ImmediateDeleteFlag to true when calling the delete operation, the resources have already been fully cleaned up.
+//
 // @param request - DescribeDeletedInstancesRequest
 //
 // @return DescribeDeletedInstancesResponse
@@ -2760,6 +3140,10 @@ func (client *Client) DescribeDeletedInstances(request *DescribeDeletedInstances
 	return _result, _err
 }
 
+// Summary:
+//
+// Currently, only HBase and HBaseue are supported.
+//
 // @param request - DescribeDiskWarningLineRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2800,6 +3184,10 @@ func (client *Client) DescribeDiskWarningLineWithOptions(request *DescribeDiskWa
 	return _result, _err
 }
 
+// Summary:
+//
+// Currently, only HBase and HBaseue are supported.
+//
 // @param request - DescribeDiskWarningLineRequest
 //
 // @return DescribeDiskWarningLineResponse
@@ -2814,6 +3202,10 @@ func (client *Client) DescribeDiskWarningLine(request *DescribeDiskWarningLineRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the database connection information of an ApsaraDB for HBase instance by calling DescribeEndpoints.
+//
 // @param request - DescribeEndpointsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2854,6 +3246,10 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the database connection information of an ApsaraDB for HBase instance by calling DescribeEndpoints.
+//
 // @param request - DescribeEndpointsRequest
 //
 // @return DescribeEndpointsResponse
@@ -2868,6 +3264,10 @@ func (client *Client) DescribeEndpoints(request *DescribeEndpointsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an ApsaraDB for HBase instance.
+//
 // @param request - DescribeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2908,6 +3308,10 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an ApsaraDB for HBase instance.
+//
 // @param request - DescribeInstanceRequest
 //
 // @return DescribeInstanceResponse
@@ -2922,6 +3326,16 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instance specifications (CPU and memory) by calling DescribeInstanceType.
+//
+// Description:
+//
+// The complete specification mapping table is based on the list returned by this operation.
+//
+// If the response returns an "instanceType is not found" error, the specification has been deprecated. If you have a strong dependency on this specification, contact the Alibaba Cloud HBase management team.
+//
 // @param request - DescribeInstanceTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2962,6 +3376,16 @@ func (client *Client) DescribeInstanceTypeWithOptions(request *DescribeInstanceT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instance specifications (CPU and memory) by calling DescribeInstanceType.
+//
+// Description:
+//
+// The complete specification mapping table is based on the list returned by this operation.
+//
+// If the response returns an "instanceType is not found" error, the specification has been deprecated. If you have a strong dependency on this specification, contact the Alibaba Cloud HBase management team.
+//
 // @param request - DescribeInstanceTypeRequest
 //
 // @return DescribeInstanceTypeResponse
@@ -2976,6 +3400,10 @@ func (client *Client) DescribeInstanceType(request *DescribeInstanceTypeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of ApsaraDB for HBase instances in a specified region by calling DescribeInstances.
+//
 // @param request - DescribeInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3044,6 +3472,10 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of ApsaraDB for HBase instances in a specified region by calling DescribeInstances.
+//
 // @param request - DescribeInstancesRequest
 //
 // @return DescribeInstancesResponse
@@ -3058,6 +3490,10 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the IP whitelist information of a cluster by cluster ID.
+//
 // @param request - DescribeIpWhitelistRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3098,6 +3534,10 @@ func (client *Client) DescribeIpWhitelistWithOptions(request *DescribeIpWhitelis
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the IP whitelist information of a cluster by cluster ID.
+//
 // @param request - DescribeIpWhitelistRequest
 //
 // @return DescribeIpWhitelistResponse
@@ -3112,6 +3552,10 @@ func (client *Client) DescribeIpWhitelist(request *DescribeIpWhitelistRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available region and zone combinations for multi-zone deployment by calling DescribeMultiZoneAvailableRegions.
+//
 // @param request - DescribeMultiZoneAvailableRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3152,6 +3596,10 @@ func (client *Client) DescribeMultiZoneAvailableRegionsWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available region and zone combinations for multi-zone deployment by calling DescribeMultiZoneAvailableRegions.
+//
 // @param request - DescribeMultiZoneAvailableRegionsRequest
 //
 // @return DescribeMultiZoneAvailableRegionsResponse
@@ -3166,6 +3614,10 @@ func (client *Client) DescribeMultiZoneAvailableRegions(request *DescribeMultiZo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries purchasable resources in multiple zones by calling DescribeMultiZoneAvailableResource.
+//
 // @param request - DescribeMultiZoneAvailableResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3214,6 +3666,10 @@ func (client *Client) DescribeMultiZoneAvailableResourceWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries purchasable resources in multiple zones by calling DescribeMultiZoneAvailableResource.
+//
 // @param request - DescribeMultiZoneAvailableResourceRequest
 //
 // @return DescribeMultiZoneAvailableResourceResponse
@@ -3228,6 +3684,10 @@ func (client *Client) DescribeMultiZoneAvailableResource(request *DescribeMultiZ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a multi-zone instance.
+//
 // @param request - DescribeMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3268,6 +3728,10 @@ func (client *Client) DescribeMultiZoneClusterWithOptions(request *DescribeMulti
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a multi-zone instance.
+//
 // @param request - DescribeMultiZoneClusterRequest
 //
 // @return DescribeMultiZoneClusterResponse
@@ -3282,6 +3746,14 @@ func (client *Client) DescribeMultiZoneCluster(request *DescribeMultiZoneCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the recoverable time range after backup is enabled for an HBaseue cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster.
+//
 // @param request - DescribeRecoverableTimeRangeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3322,6 +3794,14 @@ func (client *Client) DescribeRecoverableTimeRangeWithOptions(request *DescribeR
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the recoverable time range after backup is enabled for an HBaseue cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster.
+//
 // @param request - DescribeRecoverableTimeRangeRequest
 //
 // @return DescribeRecoverableTimeRangeResponse
@@ -3336,6 +3816,10 @@ func (client *Client) DescribeRecoverableTimeRange(request *DescribeRecoverableT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions by calling DescribeRegions.
+//
 // @param request - DescribeRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3380,6 +3864,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions by calling DescribeRegions.
+//
 // @param request - DescribeRegionsRequest
 //
 // @return DescribeRegionsResponse
@@ -3394,6 +3882,14 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specific full restoration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist. You can call DescribeRestoreSummary to obtain restoration records.
+//
 // @param request - DescribeRestoreFullDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3446,6 +3942,14 @@ func (client *Client) DescribeRestoreFullDetailsWithOptions(request *DescribeRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specific full restoration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist. You can call DescribeRestoreSummary to obtain restoration records.
+//
 // @param request - DescribeRestoreFullDetailsRequest
 //
 // @return DescribeRestoreFullDetailsResponse
@@ -3460,6 +3964,14 @@ func (client *Client) DescribeRestoreFullDetails(request *DescribeRestoreFullDet
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an incremental restoration by calling the DescribeRestoreIncrDetail operation.
+//
+// Description:
+//
+// Before you call this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist. You can call the DescribeRestoreSummary operation to obtain restoration records.
+//
 // @param request - DescribeRestoreIncrDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3504,6 +4016,14 @@ func (client *Client) DescribeRestoreIncrDetailWithOptions(request *DescribeRest
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an incremental restoration by calling the DescribeRestoreIncrDetail operation.
+//
+// Description:
+//
+// Before you call this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist. You can call the DescribeRestoreSummary operation to obtain restoration records.
+//
 // @param request - DescribeRestoreIncrDetailRequest
 //
 // @return DescribeRestoreIncrDetailResponse
@@ -3518,6 +4038,14 @@ func (client *Client) DescribeRestoreIncrDetail(request *DescribeRestoreIncrDeta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of schema restoration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist.
+//
 // @param request - DescribeRestoreSchemaDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3570,6 +4098,14 @@ func (client *Client) DescribeRestoreSchemaDetailsWithOptions(request *DescribeR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of schema restoration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist.
+//
 // @param request - DescribeRestoreSchemaDetailsRequest
 //
 // @return DescribeRestoreSchemaDetailsResponse
@@ -3584,6 +4120,14 @@ func (client *Client) DescribeRestoreSchemaDetails(request *DescribeRestoreSchem
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the data recovery summary for an HBaseue cluster that has backup and recovery enabled by calling the DescribeRestoreSummary operation.
+//
+// Description:
+//
+// Before calling this operation, make sure that backup and recovery is enabled for the HBaseue cluster.
+//
 // @param request - DescribeRestoreSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3632,6 +4176,14 @@ func (client *Client) DescribeRestoreSummaryWithOptions(request *DescribeRestore
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the data recovery summary for an HBaseue cluster that has backup and recovery enabled by calling the DescribeRestoreSummary operation.
+//
+// Description:
+//
+// Before calling this operation, make sure that backup and recovery is enabled for the HBaseue cluster.
+//
 // @param request - DescribeRestoreSummaryRequest
 //
 // @return DescribeRestoreSummaryResponse
@@ -3646,6 +4198,14 @@ func (client *Client) DescribeRestoreSummary(request *DescribeRestoreSummaryRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a restore record for a cluster that has been restored from a backup.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restore records exist. You can call DescribeRestoreSummary to obtain restore records.
+//
 // @param request - DescribeRestoreTablesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3690,6 +4250,14 @@ func (client *Client) DescribeRestoreTablesWithOptions(request *DescribeRestoreT
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a restore record for a cluster that has been restored from a backup.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restore records exist. You can call DescribeRestoreSummary to obtain restore records.
+//
 // @param request - DescribeRestoreTablesRequest
 //
 // @return DescribeRestoreTablesResponse
@@ -3704,6 +4272,10 @@ func (client *Client) DescribeRestoreTables(request *DescribeRestoreTablesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeSecurityGroups to retrieve the security group information of a cluster by cluster ID.
+//
 // @param request - DescribeSecurityGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3744,6 +4316,10 @@ func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurit
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeSecurityGroups to retrieve the security group information of a cluster by cluster ID.
+//
 // @param request - DescribeSecurityGroupsRequest
 //
 // @return DescribeSecurityGroupsResponse
@@ -3758,6 +4334,10 @@ func (client *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a serverless cluster by calling DescribeServerlessCluster.
+//
 // @param request - DescribeServerlessClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3802,6 +4382,10 @@ func (client *Client) DescribeServerlessClusterWithOptions(request *DescribeServ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a serverless cluster by calling DescribeServerlessCluster.
+//
 // @param request - DescribeServerlessClusterRequest
 //
 // @return DescribeServerlessClusterResponse
@@ -3816,6 +4400,10 @@ func (client *Client) DescribeServerlessCluster(request *DescribeServerlessClust
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeSubDomain to retrieve an available subdomain.
+//
 // @param request - DescribeSubDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3860,6 +4448,10 @@ func (client *Client) DescribeSubDomainWithOptions(request *DescribeSubDomainReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeSubDomain to retrieve an available subdomain.
+//
 // @param request - DescribeSubDomainRequest
 //
 // @return DescribeSubDomainResponse
@@ -3874,6 +4466,10 @@ func (client *Client) DescribeSubDomain(request *DescribeSubDomainRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables backup and recovery for an HBaseue cluster.
+//
 // @param request - EnableHBaseueBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3926,6 +4522,10 @@ func (client *Client) EnableHBaseueBackupWithOptions(request *EnableHBaseueBacku
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables backup and recovery for an HBaseue cluster.
+//
 // @param request - EnableHBaseueBackupRequest
 //
 // @return EnableHBaseueBackupResponse
@@ -3940,6 +4540,10 @@ func (client *Client) EnableHBaseueBackup(request *EnableHBaseueBackupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the EnableHBaseueModule operation to enable an extension service.
+//
 // @param request - EnableHBaseueModuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4048,6 +4652,10 @@ func (client *Client) EnableHBaseueModuleWithOptions(request *EnableHBaseueModul
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the EnableHBaseueModule operation to enable an extension service.
+//
 // @param request - EnableHBaseueModuleRequest
 //
 // @return EnableHBaseueModuleResponse
@@ -4062,6 +4670,10 @@ func (client *Client) EnableHBaseueModule(request *EnableHBaseueModuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the EvaluateMultiZoneResource operation to evaluate whether available resources exist.
+//
 // @param request - EvaluateMultiZoneResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4210,6 +4822,10 @@ func (client *Client) EvaluateMultiZoneResourceWithOptions(request *EvaluateMult
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the EvaluateMultiZoneResource operation to evaluate whether available resources exist.
+//
 // @param request - EvaluateMultiZoneResourceRequest
 //
 // @return EvaluateMultiZoneResourceResponse
@@ -4224,6 +4840,14 @@ func (client *Client) EvaluateMultiZoneResource(request *EvaluateMultiZoneResour
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the monitoring URL based on the cluster ID.
+//
+// Description:
+//
+// CloudMonitor has been migrated. This operation is no longer in use. Access monitoring from the Monitoring and Alerts page in cluster management.
+//
 // @param request - GetMultimodeCmsUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4268,6 +4892,14 @@ func (client *Client) GetMultimodeCmsUrlWithOptions(request *GetMultimodeCmsUrlR
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the monitoring URL based on the cluster ID.
+//
+// Description:
+//
+// CloudMonitor has been migrated. This operation is no longer in use. Access monitoring from the Monitoring and Alerts page in cluster management.
+//
 // @param request - GetMultimodeCmsUrlRequest
 //
 // @return GetMultimodeCmsUrlResponse
@@ -4284,7 +4916,7 @@ func (client *Client) GetMultimodeCmsUrl(request *GetMultimodeCmsUrlRequest) (_r
 
 // Summary:
 //
-// 授权账户权限
+// Grants permissions to an account.
 //
 // @param request - GrantRequest
 //
@@ -4344,7 +4976,7 @@ func (client *Client) GrantWithOptions(request *GrantRequest, runtime *dara.Runt
 
 // Summary:
 //
-// 授权账户权限
+// Grants permissions to an account.
 //
 // @param request - GrantRequest
 //
@@ -4360,6 +4992,10 @@ func (client *Client) Grant(request *GrantRequest) (_result *GrantResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ListHBaseInstances to retrieve ApsaraDB for HBase instances within the same VPC.
+//
 // @param request - ListHBaseInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4400,6 +5036,10 @@ func (client *Client) ListHBaseInstancesWithOptions(request *ListHBaseInstancesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ListHBaseInstances to retrieve ApsaraDB for HBase instances within the same VPC.
+//
 // @param request - ListHBaseInstancesRequest
 //
 // @return ListHBaseInstancesResponse
@@ -4414,6 +5054,10 @@ func (client *Client) ListHBaseInstances(request *ListHBaseInstancesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the modification history of cluster parameters by calling ListInstanceServiceConfigHistories.
+//
 // @param request - ListInstanceServiceConfigHistoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4462,6 +5106,10 @@ func (client *Client) ListInstanceServiceConfigHistoriesWithOptions(request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the modification history of cluster parameters by calling ListInstanceServiceConfigHistories.
+//
 // @param request - ListInstanceServiceConfigHistoriesRequest
 //
 // @return ListInstanceServiceConfigHistoriesResponse
@@ -4476,6 +5124,10 @@ func (client *Client) ListInstanceServiceConfigHistories(request *ListInstanceSe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the configuration items of a cluster by calling ListInstanceServiceConfigurations.
+//
 // @param request - ListInstanceServiceConfigurationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4524,6 +5176,10 @@ func (client *Client) ListInstanceServiceConfigurationsWithOptions(request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the configuration items of a cluster by calling ListInstanceServiceConfigurations.
+//
 // @param request - ListInstanceServiceConfigurationsRequest
 //
 // @return ListInstanceServiceConfigurationsResponse
@@ -4538,6 +5194,14 @@ func (client *Client) ListInstanceServiceConfigurations(request *ListInstanceSer
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of tags by ResourceId or Tag (query by Key only, or by both Key and Value).
+//
+// Description:
+//
+// You must specify at least one of the ResourceId and Tag parameters. Otherwise, an error is returned.
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4590,6 +5254,14 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of tags by ResourceId or Tag (query by Key only, or by both Key and Value).
+//
+// Description:
+//
+// You must specify at least one of the ResourceId and Tag parameters. Otherwise, an error is returned.
+//
 // @param request - ListTagResourcesRequest
 //
 // @return ListTagResourcesResponse
@@ -4604,6 +5276,10 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves all labels in a specified region.
+//
 // @param request - ListTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4644,6 +5320,10 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves all labels in a specified region.
+//
 // @param request - ListTagsRequest
 //
 // @return ListTagsResponse
@@ -4660,7 +5340,7 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 
 // Summary:
 //
-// 更改账户密码
+// Changes the password of a database access account.
 //
 // @param request - ModifyAccountPasswordRequest
 //
@@ -4712,7 +5392,7 @@ func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPas
 
 // Summary:
 //
-// 更改账户密码
+// Changes the password of a database access account.
 //
 // @param request - ModifyAccountPasswordRequest
 //
@@ -4728,6 +5408,14 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyActiveOperationTasks operation to modify the scheduled switchover time of O&M tasks.
+//
+// Description:
+//
+// In addition to notifications sent by text message, phone call, email, or internal message, O&M events of ApsaraDB for HBase (such as minor engine version updates) are also displayed in the console. In addition to calling this operation to modify the scheduled switchover time, you can also modify it in the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/405057.html).
+//
 // @param request - ModifyActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4796,6 +5484,14 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyActiveOperationTasks operation to modify the scheduled switchover time of O&M tasks.
+//
+// Description:
+//
+// In addition to notifications sent by text message, phone call, email, or internal message, O&M events of ApsaraDB for HBase (such as minor engine version updates) are also displayed in the console. In addition to calling this operation to modify the scheduled switchover time, you can also modify it in the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/405057.html).
+//
 // @param request - ModifyActiveOperationTasksRequest
 //
 // @return ModifyActiveOperationTasksResponse
@@ -4810,6 +5506,14 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the backup configuration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster.
+//
 // @param request - ModifyBackupPlanConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4866,6 +5570,14 @@ func (client *Client) ModifyBackupPlanConfigWithOptions(request *ModifyBackupPla
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the backup configuration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster.
+//
 // @param request - ModifyBackupPlanConfigRequest
 //
 // @return ModifyBackupPlanConfigResponse
@@ -4880,6 +5592,10 @@ func (client *Client) ModifyBackupPlanConfig(request *ModifyBackupPlanConfigRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyBackupPolicy to modify the backup plan of an HBase cluster.
+//
 // @param request - ModifyBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4936,6 +5652,10 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyBackupPolicy to modify the backup plan of an HBase cluster.
+//
 // @param request - ModifyBackupPolicyRequest
 //
 // @return ModifyBackupPolicyResponse
@@ -4950,6 +5670,10 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the deletion protection attribute of an instance by calling ModifyClusterDeletionProtection.
+//
 // @param request - ModifyClusterDeletionProtectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4994,6 +5718,10 @@ func (client *Client) ModifyClusterDeletionProtectionWithOptions(request *Modify
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the deletion protection attribute of an instance by calling ModifyClusterDeletionProtection.
+//
 // @param request - ModifyClusterDeletionProtectionRequest
 //
 // @return ModifyClusterDeletionProtectionResponse
@@ -5008,6 +5736,10 @@ func (client *Client) ModifyClusterDeletionProtection(request *ModifyClusterDele
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the disk capacity alert threshold for HBase Cluster Edition and HBaseue clusters. The default alert threshold is 80%.
+//
 // @param request - ModifyDiskWarningLineRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5052,6 +5784,10 @@ func (client *Client) ModifyDiskWarningLineWithOptions(request *ModifyDiskWarnin
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the disk capacity alert threshold for HBase Cluster Edition and HBaseue clusters. The default alert threshold is 80%.
+//
 // @param request - ModifyDiskWarningLineRequest
 //
 // @return ModifyDiskWarningLineResponse
@@ -5066,6 +5802,10 @@ func (client *Client) ModifyDiskWarningLine(request *ModifyDiskWarningLineReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyInstanceMaintainTime operation to modify the O&M window start time of an instance.
+//
 // @param request - ModifyInstanceMaintainTimeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5114,6 +5854,10 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyInstanceMaintainTime operation to modify the O&M window start time of an instance.
+//
 // @param request - ModifyInstanceMaintainTimeRequest
 //
 // @return ModifyInstanceMaintainTimeResponse
@@ -5128,6 +5872,10 @@ func (client *Client) ModifyInstanceMaintainTime(request *ModifyInstanceMaintain
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of an instance by calling ModifyInstanceName.
+//
 // @param request - ModifyInstanceNameRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5184,6 +5932,10 @@ func (client *Client) ModifyInstanceNameWithOptions(request *ModifyInstanceNameR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of an instance by calling ModifyInstanceName.
+//
 // @param request - ModifyInstanceNameRequest
 //
 // @return ModifyInstanceNameResponse
@@ -5198,6 +5950,10 @@ func (client *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyInstanceServiceConfig to modify cluster configurations. You can call the ListInstanceServiceConfigurations operation to query the configuration items that can be modified.
+//
 // @param request - ModifyInstanceServiceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5254,6 +6010,10 @@ func (client *Client) ModifyInstanceServiceConfigWithOptions(request *ModifyInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyInstanceServiceConfig to modify cluster configurations. You can call the ListInstanceServiceConfigurations operation to query the configuration items that can be modified.
+//
 // @param request - ModifyInstanceServiceConfigRequest
 //
 // @return ModifyInstanceServiceConfigResponse
@@ -5268,6 +6028,10 @@ func (client *Client) ModifyInstanceServiceConfig(request *ModifyInstanceService
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyInstanceType to change the specifications of an instance.
+//
 // @param request - ModifyInstanceTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5316,6 +6080,10 @@ func (client *Client) ModifyInstanceTypeWithOptions(request *ModifyInstanceTypeR
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyInstanceType to change the specifications of an instance.
+//
 // @param request - ModifyInstanceTypeRequest
 //
 // @return ModifyInstanceTypeResponse
@@ -5330,6 +6098,10 @@ func (client *Client) ModifyInstanceType(request *ModifyInstanceTypeRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP whitelist group of an instance by calling ModifyIpWhitelist.
+//
 // @param request - ModifyIpWhitelistRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5382,6 +6154,10 @@ func (client *Client) ModifyIpWhitelistWithOptions(request *ModifyIpWhitelistReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP whitelist group of an instance by calling ModifyIpWhitelist.
+//
 // @param request - ModifyIpWhitelistRequest
 //
 // @return ModifyIpWhitelistResponse
@@ -5396,6 +6172,10 @@ func (client *Client) ModifyIpWhitelist(request *ModifyIpWhitelistRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the node specifications of a multi-zone instance by calling ModifyMultiZoneClusterNodeType.
+//
 // @param request - ModifyMultiZoneClusterNodeTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5448,6 +6228,10 @@ func (client *Client) ModifyMultiZoneClusterNodeTypeWithOptions(request *ModifyM
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the node specifications of a multi-zone instance by calling ModifyMultiZoneClusterNodeType.
+//
 // @param request - ModifyMultiZoneClusterNodeTypeRequest
 //
 // @return ModifyMultiZoneClusterNodeTypeResponse
@@ -5462,6 +6246,10 @@ func (client *Client) ModifyMultiZoneClusterNodeType(request *ModifyMultiZoneClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifySecurityGroups to modify the security groups associated with a cluster.
+//
 // @param request - ModifySecurityGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5506,6 +6294,10 @@ func (client *Client) ModifySecurityGroupsWithOptions(request *ModifySecurityGro
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifySecurityGroups to modify the security groups associated with a cluster.
+//
 // @param request - ModifySecurityGroupsRequest
 //
 // @return ModifySecurityGroupsResponse
@@ -5520,6 +6312,10 @@ func (client *Client) ModifySecurityGroups(request *ModifySecurityGroupsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password for accessing the cluster management UI by calling ModifyUIProxyAccountPassword.
+//
 // @param request - ModifyUIAccountPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5568,6 +6364,10 @@ func (client *Client) ModifyUIAccountPasswordWithOptions(request *ModifyUIAccoun
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password for accessing the cluster management UI by calling ModifyUIProxyAccountPassword.
+//
 // @param request - ModifyUIAccountPasswordRequest
 //
 // @return ModifyUIAccountPasswordResponse
@@ -5582,6 +6382,10 @@ func (client *Client) ModifyUIAccountPassword(request *ModifyUIAccountPasswordRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a target instance to a target resource group.
+//
 // @param request - MoveResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5626,6 +6430,10 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a target instance to a target resource group.
+//
 // @param request - MoveResourceGroupRequest
 //
 // @return MoveResourceGroupResponse
@@ -5640,6 +6448,10 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the backup and recovery feature for an ApsaraDB for HBase cluster by calling OpenBackup.
+//
 // @param request - OpenBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5680,6 +6492,10 @@ func (client *Client) OpenBackupWithOptions(request *OpenBackupRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the backup and recovery feature for an ApsaraDB for HBase cluster by calling OpenBackup.
+//
 // @param request - OpenBackupRequest
 //
 // @return OpenBackupResponse
@@ -5694,6 +6510,10 @@ func (client *Client) OpenBackup(request *OpenBackupRequest) (_result *OpenBacku
 	return _result, _err
 }
 
+// Summary:
+//
+// Completely cleans up an instance that has been deleted (within the last 7 days) but not fully cleaned up.
+//
 // @param request - PurgeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5734,6 +6554,10 @@ func (client *Client) PurgeInstanceWithOptions(request *PurgeInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Completely cleans up an instance that has been deleted (within the last 7 days) but not fully cleaned up.
+//
 // @param request - PurgeInstanceRequest
 //
 // @return PurgeInstanceResponse
@@ -5748,6 +6572,10 @@ func (client *Client) PurgeInstance(request *PurgeInstanceRequest) (_result *Pur
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the high-availability HBase list for a BDS cluster. This operation corresponds to CreateHaCluster and CreateHbaseHaSlb. It returns the corresponding high-availability list.
+//
 // @param request - QueryHBaseHaDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5788,6 +6616,10 @@ func (client *Client) QueryHBaseHaDBWithOptions(request *QueryHBaseHaDBRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the high-availability HBase list for a BDS cluster. This operation corresponds to CreateHaCluster and CreateHbaseHaSlb. It returns the corresponding high-availability list.
+//
 // @param request - QueryHBaseHaDBRequest
 //
 // @return QueryHBaseHaDBResponse
@@ -5802,6 +6634,10 @@ func (client *Client) QueryHBaseHaDB(request *QueryHBaseHaDBRequest) (_result *Q
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of databases that can be associated with the current instance by calling QueryXpackRelateDB.
+//
 // @param request - QueryXpackRelateDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5850,6 +6686,10 @@ func (client *Client) QueryXpackRelateDBWithOptions(request *QueryXpackRelateDBR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of databases that can be associated with the current instance by calling QueryXpackRelateDB.
+//
 // @param request - QueryXpackRelateDBRequest
 //
 // @return QueryXpackRelateDBResponse
@@ -5864,6 +6704,10 @@ func (client *Client) QueryXpackRelateDB(request *QueryXpackRelateDBRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an active-active instance pair to a BDS cluster.
+//
 // @param request - RelateDbForHBaseHaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5984,6 +6828,10 @@ func (client *Client) RelateDbForHBaseHaWithOptions(request *RelateDbForHBaseHaR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an active-active instance pair to a BDS cluster.
+//
 // @param request - RelateDbForHBaseHaRequest
 //
 // @return RelateDbForHBaseHaResponse
@@ -5998,6 +6846,10 @@ func (client *Client) RelateDbForHBaseHa(request *RelateDbForHBaseHaRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an instance.
+//
 // @param request - ReleasePublicNetworkAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6038,6 +6890,10 @@ func (client *Client) ReleasePublicNetworkAddressWithOptions(request *ReleasePub
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an instance.
+//
 // @param request - ReleasePublicNetworkAddressRequest
 //
 // @return ReleasePublicNetworkAddressResponse
@@ -6052,6 +6908,14 @@ func (client *Client) ReleasePublicNetworkAddress(request *ReleasePublicNetworkA
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews a subscription for an HBase instance.
+//
+// Description:
+//
+// This operation applies only to subscription HBase instances.
+//
 // @param request - RenewInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6100,6 +6964,14 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews a subscription for an HBase instance.
+//
+// Description:
+//
+// This operation applies only to subscription HBase instances.
+//
 // @param request - RenewInstanceRequest
 //
 // @return RenewInstanceResponse
@@ -6114,6 +6986,10 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the cold storage size.
+//
 // @param request - ResizeColdStorageSizeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6158,6 +7034,10 @@ func (client *Client) ResizeColdStorageSizeWithOptions(request *ResizeColdStorag
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the cold storage size.
+//
 // @param request - ResizeColdStorageSizeRequest
 //
 // @return ResizeColdStorageSizeResponse
@@ -6172,6 +7052,10 @@ func (client *Client) ResizeColdStorageSize(request *ResizeColdStorageSizeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ResizeDiskSize to resize a disk.
+//
 // @param request - ResizeDiskSizeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6216,6 +7100,10 @@ func (client *Client) ResizeDiskSizeWithOptions(request *ResizeDiskSizeRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ResizeDiskSize to resize a disk.
+//
 // @param request - ResizeDiskSizeRequest
 //
 // @return ResizeDiskSizeResponse
@@ -6230,6 +7118,10 @@ func (client *Client) ResizeDiskSize(request *ResizeDiskSizeRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ResizeMultiZoneClusterDiskSize operation to modify the disk size of a multi-zone instance.
+//
 // @param request - ResizeMultiZoneClusterDiskSizeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6278,6 +7170,10 @@ func (client *Client) ResizeMultiZoneClusterDiskSizeWithOptions(request *ResizeM
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ResizeMultiZoneClusterDiskSize operation to modify the disk size of a multi-zone instance.
+//
 // @param request - ResizeMultiZoneClusterDiskSizeRequest
 //
 // @return ResizeMultiZoneClusterDiskSizeResponse
@@ -6292,6 +7188,10 @@ func (client *Client) ResizeMultiZoneClusterDiskSize(request *ResizeMultiZoneClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Scales out nodes for a multi-zone instance by calling the ResizeMultiZoneClusterNodeCount operation.
+//
 // @param request - ResizeMultiZoneClusterNodeCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6360,6 +7260,10 @@ func (client *Client) ResizeMultiZoneClusterNodeCountWithOptions(request *Resize
 	return _result, _err
 }
 
+// Summary:
+//
+// Scales out nodes for a multi-zone instance by calling the ResizeMultiZoneClusterNodeCount operation.
+//
 // @param request - ResizeMultiZoneClusterNodeCountRequest
 //
 // @return ResizeMultiZoneClusterNodeCountResponse
@@ -6374,6 +7278,14 @@ func (client *Client) ResizeMultiZoneClusterNodeCount(request *ResizeMultiZoneCl
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ResizeNodeCount to adjust the number of nodes for an instance.
+//
+// Description:
+//
+// Scales up the number of core nodes in a cluster. You can add up to 50 nodes at a time, and the total number of nodes can be scaled up to 250. If you have additional requirements, submit a ticket.
+//
 // @param request - ResizeNodeCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6426,6 +7338,14 @@ func (client *Client) ResizeNodeCountWithOptions(request *ResizeNodeCountRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ResizeNodeCount to adjust the number of nodes for an instance.
+//
+// Description:
+//
+// Scales up the number of core nodes in a cluster. You can add up to 50 nodes at a time, and the total number of nodes can be scaled up to 250. If you have additional requirements, submit a ticket.
+//
 // @param request - ResizeNodeCountRequest
 //
 // @return ResizeNodeCountResponse
@@ -6440,6 +7360,10 @@ func (client *Client) ResizeNodeCount(request *ResizeNodeCountRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts an HBase cluster by calling RestartInstance.
+//
 // @param request - RestartInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6484,6 +7408,10 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts an HBase cluster by calling RestartInstance.
+//
 // @param request - RestartInstanceRequest
 //
 // @return RestartInstanceResponse
@@ -6500,7 +7428,7 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
-// 回收账户权限
+// Revokes permissions from a wide table account.
 //
 // @param request - RevokeRequest
 //
@@ -6560,7 +7488,7 @@ func (client *Client) RevokeWithOptions(request *RevokeRequest, runtime *dara.Ru
 
 // Summary:
 //
-// 回收账户权限
+// Revokes permissions from a wide table account.
 //
 // @param request - RevokeRequest
 //
@@ -6576,6 +7504,10 @@ func (client *Client) Revoke(request *RevokeRequest) (_result *RevokeResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a primary/secondary switchover for high-availability Thrift or high-availability Phoenix. This operation corresponds to the CreateHbaseHaSlb operation.
+//
 // @param request - SwitchHbaseHaSlbRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6628,6 +7560,10 @@ func (client *Client) SwitchHbaseHaSlbWithOptions(request *SwitchHbaseHaSlbReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a primary/secondary switchover for high-availability Thrift or high-availability Phoenix. This operation corresponds to the CreateHbaseHaSlb operation.
+//
 // @param request - SwitchHbaseHaSlbRequest
 //
 // @return SwitchHbaseHaSlbResponse
@@ -6644,7 +7580,13 @@ func (client *Client) SwitchHbaseHaSlb(request *SwitchHbaseHaSlbRequest) (_resul
 
 // Summary:
 //
-// 开通/关闭 扩展服务
+// # Enable or disable an extension service
+//
+// Description:
+//
+// # Extension service
+//
+// For example: the Lindorm service compatible with the HBaseProxy protocol.
 //
 // @param request - SwitchServiceRequest
 //
@@ -6696,7 +7638,13 @@ func (client *Client) SwitchServiceWithOptions(request *SwitchServiceRequest, ru
 
 // Summary:
 //
-// 开通/关闭 扩展服务
+// # Enable or disable an extension service
+//
+// Description:
+//
+// # Extension service
+//
+// For example: the Lindorm service compatible with the HBaseProxy protocol.
 //
 // @param request - SwitchServiceRequest
 //
@@ -6712,6 +7660,10 @@ func (client *Client) SwitchService(request *SwitchServiceRequest) (_result *Swi
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instances.
+//
 // @param request - TagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6760,6 +7712,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instances.
+//
 // @param request - TagResourcesRequest
 //
 // @return TagResourcesResponse
@@ -6774,6 +7730,10 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Untags resources. This operation is the counterpart of TagResources.
+//
 // @param request - UnTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6826,6 +7786,10 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Untags resources. This operation is the counterpart of TagResources.
+//
 // @param request - UnTagResourcesRequest
 //
 // @return UnTagResourcesResponse
@@ -6840,6 +7804,10 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of a cluster by calling UpgradeMinorVersion.
+//
 // @param request - UpgradeMinorVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6884,6 +7852,10 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of a cluster by calling UpgradeMinorVersion.
+//
 // @param request - UpgradeMinorVersionRequest
 //
 // @return UpgradeMinorVersionResponse
@@ -6898,6 +7870,10 @@ func (client *Client) UpgradeMinorVersion(request *UpgradeMinorVersionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of components for a multi-zone instance by calling the UpgradeMultiZoneCluster operation.
+//
 // @param request - UpgradeMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6958,6 +7934,10 @@ func (client *Client) UpgradeMultiZoneClusterWithOptions(request *UpgradeMultiZo
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of components for a multi-zone instance by calling the UpgradeMultiZoneCluster operation.
+//
 // @param request - UpgradeMultiZoneClusterRequest
 //
 // @return UpgradeMultiZoneClusterResponse
@@ -6972,6 +7952,10 @@ func (client *Client) UpgradeMultiZoneCluster(request *UpgradeMultiZoneClusterRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a database by calling XpackRelateDB.
+//
 // @param request - XpackRelateDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7020,6 +8004,10 @@ func (client *Client) XpackRelateDBWithOptions(request *XpackRelateDBRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a database by calling XpackRelateDB.
+//
 // @param request - XpackRelateDBRequest
 //
 // @return XpackRelateDBResponse

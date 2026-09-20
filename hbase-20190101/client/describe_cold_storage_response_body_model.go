@@ -28,34 +28,64 @@ type iDescribeColdStorageResponseBody interface {
 }
 
 type DescribeColdStorageResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// ld-bp1uoihlf82e8****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The total storage capacity of cold storage, in GB.
+	//
+	// > This parameter is returned only when **OpenStatus*	- is **open**.
+	//
 	// example:
 	//
 	// 800
 	ColdStorageSize *string `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// The cold storage type. For newly created BDS instances, the cold storage type is **BdsColdStorage**. This parameter is not returned for other instances by default.
+	//
 	// example:
 	//
 	// BdsColdStorage
 	ColdStorageType *string `json:"ColdStorageType,omitempty" xml:"ColdStorageType,omitempty"`
+	// The amount of cold storage space used, in GB.
+	//
+	// > This parameter is returned only when **OpenStatus*	- is **open**.
+	//
 	// example:
 	//
 	// 20.00
 	ColdStorageUseAmount *string `json:"ColdStorageUseAmount,omitempty" xml:"ColdStorageUseAmount,omitempty"`
+	// The usage of the cold storage space, in percentage (%).
+	//
+	// > This parameter is returned only when **OpenStatus*	- is **open**.
+	//
 	// example:
 	//
 	// 20.00
 	ColdStorageUsePercent *string `json:"ColdStorageUsePercent,omitempty" xml:"ColdStorageUsePercent,omitempty"`
+	// The enabling status of cold storage. Valid values:
+	//
+	// - **open**: Cold storage is enabled.
+	//
+	// - **close**: Cold storage is not enabled.
+	//
 	// example:
 	//
 	// open
 	OpenStatus *string `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **PREPAY**: subscription.
+	//
+	// - **POSTPAY**: pay-as-you-go.
+	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DCB9479E-F05F-4D1C-AFB7-C639B87764B7

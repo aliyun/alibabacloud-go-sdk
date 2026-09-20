@@ -16,12 +16,16 @@ type iModifySecurityGroupsRequest interface {
 }
 
 type ModifySecurityGroupsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp16f1441y6p2kv**
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The IDs of the security groups, separated by commas.
+	//
 	// This parameter is required.
 	//
 	// example:

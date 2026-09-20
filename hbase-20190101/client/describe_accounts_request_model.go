@@ -14,6 +14,8 @@ type iDescribeAccountsRequest interface {
 }
 
 type DescribeAccountsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iResizeDiskSizeRequest interface {
 }
 
 type ResizeDiskSizeRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp16o0pd52e3y****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The disk size of a single node. Unit: GB.
+	//
 	// This parameter is required.
 	//
 	// example:

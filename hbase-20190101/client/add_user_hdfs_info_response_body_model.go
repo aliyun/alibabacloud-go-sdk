@@ -14,6 +14,8 @@ type iAddUserHdfsInfoResponseBody interface {
 }
 
 type AddUserHdfsInfoResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FB0B7918-198C-46A8-AB9B-FE15403B1F0A

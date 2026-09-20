@@ -18,18 +18,28 @@ type iDeleteHbaseHaSlbRequest interface {
 }
 
 type DeleteHbaseHaSlbRequest struct {
+	// The ID of the BDS cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bds-t4n3496whj23ia4k
 	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// The high availability ID in BDS high availability management.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ha-v21tmnxjwh2yuy1il
 	HaId *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	// The high availability type. Valid values:
+	//
+	// 1. thrift
+	//
+	// 2. phoenix.
+	//
 	// This parameter is required.
 	//
 	// example:

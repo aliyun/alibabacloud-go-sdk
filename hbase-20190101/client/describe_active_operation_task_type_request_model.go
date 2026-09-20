@@ -24,6 +24,14 @@ type iDescribeActiveOperationTaskTypeRequest interface {
 }
 
 type DescribeActiveOperationTaskTypeRequest struct {
+	// Specifies whether to return historical O&M tasks. Valid values:
+	//
+	// - **0**: Returns only the current pending O&M tasks.
+	//
+	// - **1**: Returns historical O&M tasks.
+	//
+	// Default value: **0**.
+	//
 	// example:
 	//
 	// 0

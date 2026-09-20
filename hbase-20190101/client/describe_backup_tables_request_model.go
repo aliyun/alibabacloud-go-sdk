@@ -20,22 +20,30 @@ type iDescribeBackupTablesRequest interface {
 }
 
 type DescribeBackupTablesRequest struct {
+	// The backup record ID. You can call the DescribeBackupSummary operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020110302xxxx
 	BackupRecordId *string `json:"BackupRecordId,omitempty" xml:"BackupRecordId,omitempty"`
+	// The ID of the backup cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

@@ -25,19 +25,27 @@ type iDescribeBackupTablesResponseBody interface {
 
 type DescribeBackupTablesResponseBody struct {
 	BackupRecords *DescribeBackupTablesResponseBodyBackupRecords `json:"BackupRecords,omitempty" xml:"BackupRecords,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 01262E9C-B0CC-4663-82FA-D50173649F92
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tables    *DescribeBackupTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -155,38 +163,14 @@ func (s *DescribeBackupTablesResponseBodyBackupRecords) Validate() error {
 }
 
 type DescribeBackupTablesResponseBodyBackupRecordsBackupRecord struct {
-	// example:
-	//
-	// 1.2 kB
-	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// example:
-	//
-	// 2020-11-02T18:00:05Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// null
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 14/14
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// example:
-	//
-	// 0.00 MB/s
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// example:
-	//
-	// 2020-11-02T18:00:00Z
+	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// SUCCEEDED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// default:test1
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) String() string {

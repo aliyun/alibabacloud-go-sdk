@@ -17,6 +17,8 @@ type iQueryXpackRelateDBResponseBody interface {
 
 type QueryXpackRelateDBResponseBody struct {
 	ClusterList *QueryXpackRelateDBResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 288E9010-36DD-499C-B4DA-61E4362DA4CC
@@ -93,34 +95,13 @@ func (s *QueryXpackRelateDBResponseBodyClusterList) Validate() error {
 }
 
 type QueryXpackRelateDBResponseBodyClusterListCluster struct {
-	// example:
-	//
-	// hb-bp16o0pd52e3y582s
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// example:
-	//
-	// hbase_test
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// example:
-	//
-	// hbase
-	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// example:
-	//
-	// 2.0
-	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// example:
-	//
-	// false
-	IsRelated *bool `json:"IsRelated,omitempty" xml:"IsRelated,omitempty"`
-	// example:
-	//
-	// ..
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// example:
-	//
-	// ACTIVATION
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DBType      *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion   *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	IsRelated   *bool   `json:"IsRelated,omitempty" xml:"IsRelated,omitempty"`
+	LockMode    *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryXpackRelateDBResponseBodyClusterListCluster) String() string {

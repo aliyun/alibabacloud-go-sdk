@@ -16,11 +16,14 @@ type iDescribeActiveOperationTaskTypeResponseBody interface {
 }
 
 type DescribeActiveOperationTaskTypeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EC7E27FC-58F8-4722-89CF-D1B6B0971956
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TypeList  []*DescribeActiveOperationTaskTypeResponseBodyTypeList `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task list.
+	TypeList []*DescribeActiveOperationTaskTypeResponseBodyTypeList `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeActiveOperationTaskTypeResponseBody) String() string {
@@ -63,18 +66,29 @@ func (s *DescribeActiveOperationTaskTypeResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTaskTypeResponseBodyTypeList struct {
+	// The number of pending tasks.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The task type. The return value **rds_apsaradb_upgrade*	- indicates a minor engine version update.
+	//
 	// example:
 	//
 	// rds_apsaradb_upgrade
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The task type in English.
+	//
 	// example:
 	//
 	// rds_apsaradb_upgrade
 	TaskTypeInfoEn *string `json:"TaskTypeInfoEn,omitempty" xml:"TaskTypeInfoEn,omitempty"`
+	// The task type in Chinese.
+	//
+	// example:
+	//
+	// 小版本升级
 	TaskTypeInfoZh *string `json:"TaskTypeInfoZh,omitempty" xml:"TaskTypeInfoZh,omitempty"`
 }
 

@@ -16,12 +16,20 @@ type iDeleteHBaseSlbServerRequest interface {
 }
 
 type DeleteHBaseSlbServerRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The load balancing service. Valid values:
+	//
+	// thrift
+	//
+	// rest.
+	//
 	// This parameter is required.
 	//
 	// example:

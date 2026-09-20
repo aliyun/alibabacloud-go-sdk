@@ -16,12 +16,16 @@ type iMoveResourceGroupRequest interface {
 }
 
 type MoveResourceGroupRequest struct {
+	// The ID of the target instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-bp169l540vc6c****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the target resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the list of resource groups.
+	//
 	// This parameter is required.
 	//
 	// example:

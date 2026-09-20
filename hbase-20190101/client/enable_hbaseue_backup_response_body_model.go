@@ -18,14 +18,20 @@ type iEnableHBaseueBackupResponseBody interface {
 }
 
 type EnableHBaseueBackupResponseBody struct {
+  // The cluster ID of the activated BDS backup service.
+  // 
   // example:
   // 
   // bds-m5e54q06ceyhxxxx
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+  // The order ID.
+  // 
   // example:
   // 
   // 1449xxx
   OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 15272D5D-46E8-4400-9CC8-A7E7B589F575

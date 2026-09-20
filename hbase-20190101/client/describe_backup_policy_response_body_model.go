@@ -24,26 +24,38 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
+	// The number of days for which backups are retained.
+	//
 	// example:
 	//
 	// 10
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The UTC time when the backup ends.
+	//
 	// example:
 	//
 	// 18:00Z
 	PreferredBackupEndTimeUTC *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
+	// The backup cycle. For example, Friday indicates that the backup is performed every Friday.
+	//
 	// example:
 	//
 	// Friday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The UTC time when the backup starts.
+	//
 	// example:
 	//
 	// 17:00Z
 	PreferredBackupStartTimeUTC *string `json:"PreferredBackupStartTimeUTC,omitempty" xml:"PreferredBackupStartTimeUTC,omitempty"`
+	// The backup time range in the current time zone.
+	//
 	// example:
 	//
 	// 01:00-02:00
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 94AC38B6-7C6D-45B2-BC03-B8750071A482

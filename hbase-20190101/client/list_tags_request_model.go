@@ -14,6 +14,8 @@ type iListTagsRequest interface {
 }
 
 type ListTagsRequest struct {
+	// The region ID. You can call DescribeRegions to obtain the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

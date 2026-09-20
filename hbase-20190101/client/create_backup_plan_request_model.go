@@ -14,6 +14,8 @@ type iCreateBackupPlanRequest interface {
 }
 
 type CreateBackupPlanRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

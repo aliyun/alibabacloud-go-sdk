@@ -18,16 +18,22 @@ type iDescribeBackupSummaryRequest interface {
 }
 
 type DescribeBackupSummaryRequest struct {
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to query the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-bp169l540vc6c****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of entries per page. Maximum value: 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10

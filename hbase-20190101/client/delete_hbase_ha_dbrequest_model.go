@@ -16,12 +16,16 @@ type iDeleteHBaseHaDBRequest interface {
 }
 
 type DeleteHBaseHaDBRequest struct {
+	// The ID of the BDS cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bds-bp14112fd7g52s1****
 	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// The ID of the HA instance. You can call the QueryHBaseHaDB operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:

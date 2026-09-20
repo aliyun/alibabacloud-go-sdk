@@ -64,103 +64,194 @@ type iDescribeServerlessClusterResponseBody interface {
 }
 
 type DescribeServerlessClusterResponseBody struct {
+	// Indicates whether auto-renewal is enabled. Valid values:
+	//
+	// - **true**: Auto-renewal is enabled.
+	//
+	// - **false**: Auto-renewal is not enabled.
+	//
 	// example:
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The cluster type. Valid values:
+	//
+	// - **Cluster**: Cluster Edition.
+	//
+	// - **Single**: single-node.
+	//
 	// example:
 	//
 	// single
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The time when the cluster was created.
+	//
 	// example:
 	//
 	// 2019-10-12T14:40:46
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The compute unit (CU) size.
+	//
 	// example:
 	//
 	// 150
 	CuSize *string `json:"CuSize,omitempty" xml:"CuSize,omitempty"`
+	// The disk size of the node. Unit: GB.
+	//
 	// example:
 	//
 	// 200
 	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2019-10-12T14:40:46
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates whether high availability (HA) is enabled. Valid values:
+	//
+	// - **true**: HA is enabled.
+	//
+	// - **false**: HA is not enabled.
+	//
 	// example:
 	//
 	// false
 	HaType *string `json:"HaType,omitempty" xml:"HaType,omitempty"`
+	// Indicates whether the cluster has users. Valid values:
+	//
+	// - **true**: The cluster has users.
+	//
+	// - **false**: The cluster does not have users.
+	//
 	// example:
 	//
 	// false
 	HasUser *string `json:"HasUser,omitempty" xml:"HasUser,omitempty"`
+	// The internal endpoint.
+	//
 	// example:
 	//
 	// https://sh-wz91452kg946i****-lindorm-serverless-in.lindorm.rds.aliyuncs.com:443
 	InnerEndpoint *string `json:"InnerEndpoint,omitempty" xml:"InnerEndpoint,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// hb-bp16f1441y6p2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates whether deletion protection is enabled.
+	//
 	// example:
 	//
 	// true
 	IsDeletionProtection *string `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The lock type of the cluster.
+	//
+	// > This parameter does not return a value.
+	//
+	// example:
+	//
+	// 过期
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The major version.
+	//
 	// example:
 	//
 	// 2.0.8
 	MainVersion *string `json:"MainVersion,omitempty" xml:"MainVersion,omitempty"`
+	// The public endpoint.
+	//
 	// example:
 	//
 	// https://sh-wz91452kg946i****-lindorm-serverless.lindorm.rds.aliyuncs.com:443
 	OuterEndpoint *string `json:"OuterEndpoint,omitempty" xml:"OuterEndpoint,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - **Prepaid**: subscription.
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 89F81C30-320B-4550-91DB-C37C81D2358F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum reserved QPS.
+	//
 	// example:
 	//
 	// 100
 	ReserverMaxQpsNum *string `json:"ReserverMaxQpsNum,omitempty" xml:"ReserverMaxQpsNum,omitempty"`
+	// The minimum reserved QPS.
+	//
 	// example:
 	//
 	// 50
 	ReserverMinQpsNum *string `json:"ReserverMinQpsNum,omitempty" xml:"ReserverMinQpsNum,omitempty"`
+	// The ID of the resource group to which the resource belongs.
+	//
 	// example:
 	//
 	// rg-fjm2d4v7sf****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The current status. Valid values:
+	//
+	// - **CREATING**: being created.
+	//
+	// - **ACTIVATION**: running.
+	//
+	// - **DELETING**: being deleted.
+	//
+	// - **RESTARTING**: being restarted.
+	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The minor version upgrade status. Valid values:
+	//
+	// - **YES**: An upgrade is available.
+	//
+	// - **NO**: No upgrade is available.
+	//
+	// - **PENDING**: An upgrade is in progress.
+	//
 	// example:
 	//
 	// NO
 	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp191ipotqf****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the instance belongs.
+	//
 	// example:
 	//
 	// vpc-bp120k6ixs4eoghz****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou-f

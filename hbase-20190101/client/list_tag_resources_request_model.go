@@ -20,21 +20,28 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
+	// The token used to start the next query. If the amount of data exceeds the limit, this parameter is returned for you to query the next page.
+	//
 	// example:
 	//
 	// NextToken
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of resource N. In this context, the resource ID is the cluster ID. You can query multiple resources at a time by specifying ResourceId.2, ResourceId.3, and so on. N is a positive integer.
+	//
 	// example:
 	//
 	// bds-bp15e022622f****
-	ResourceId []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	Tag        []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The list of tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -95,10 +102,14 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
+	// The key of the tag to query. You can specify multiple keys. N is a positive integer.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag to query. You can specify multiple values. N is a positive integer.
+	//
 	// example:
 	//
 	// value1

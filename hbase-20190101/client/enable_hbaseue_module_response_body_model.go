@@ -18,14 +18,20 @@ type iEnableHBaseueModuleResponseBody interface {
 }
 
 type EnableHBaseueModuleResponseBody struct {
+  // The ID of the extension cluster.
+  // 
   // example:
   // 
   // ld-bp150tns0sjxs****-m1-ps
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+  // The order ID.
+  // 
   // example:
   // 
   // 21474915573****
   OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // 407075EA-47F5-5A2D-888F-C1F90B8F3FCA

@@ -16,10 +16,14 @@ type iUpgradeMultiZoneClusterResponseBody interface {
 }
 
 type UpgradeMultiZoneClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C532A4D4-9451-4460-BB3E-300FEC852D3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The components that triggered the upgrade among the multiple components to be upgraded.
+	//
 	// example:
 	//
 	// LINDORM

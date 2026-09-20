@@ -1,3 +1,9 @@
+2026-09-20 Version: v3.1.5
+- Update API DescribeInstance: add response parameters Body.InitialRootPassword.
+- Update API DescribeInstance: add response parameters Body.SingleZoneRiskAlert.
+- Update API DescribeMultiZoneCluster: add response parameters Body.InitialRootPassword.
+
+
 2025-12-03 Version: v3.1.4
 - Update SDK.
 

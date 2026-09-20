@@ -16,10 +16,14 @@ type iResizeMultiZoneClusterDiskSizeResponseBody interface {
 }
 
 type ResizeMultiZoneClusterDiskSizeResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 123412341****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 568339C4-9F71-43D0-994E-E039CD826E56

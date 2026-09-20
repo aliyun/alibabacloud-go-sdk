@@ -53,6 +53,8 @@ type iDescribeInstanceResponseBody interface {
 	GetExpireTime() *string
 	SetExpireTimeUTC(v string) *DescribeInstanceResponseBody
 	GetExpireTimeUTC() *string
+	SetInitialRootPassword(v string) *DescribeInstanceResponseBody
+	GetInitialRootPassword() *string
 	SetInstanceId(v string) *DescribeInstanceResponseBody
 	GetInstanceId() *string
 	SetInstanceName(v string) *DescribeInstanceResponseBody
@@ -103,6 +105,8 @@ type iDescribeInstanceResponseBody interface {
 	GetRequestId() *string
 	SetResourceGroupId(v string) *DescribeInstanceResponseBody
 	GetResourceGroupId() *string
+	SetSingleZoneRiskAlert(v *DescribeInstanceResponseBodySingleZoneRiskAlert) *DescribeInstanceResponseBody
+	GetSingleZoneRiskAlert() *DescribeInstanceResponseBodySingleZoneRiskAlert
 	SetStatus(v string) *DescribeInstanceResponseBody
 	GetStatus() *string
 	SetTags(v *DescribeInstanceResponseBodyTags) *DescribeInstanceResponseBody
@@ -120,211 +124,446 @@ type iDescribeInstanceResponseBody interface {
 }
 
 type DescribeInstanceResponseBody struct {
+	// Indicates whether auto-renewal is enabled for the instance. Valid values:
+	//
+	// - **true**: Auto-renewal is enabled.
+	//
+	// - **false**: Auto-renewal is not enabled.
+	//
+	// > This parameter is returned only when PayType is set to Prepaid (subscription).
+	//
 	// example:
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// Indicates whether the backup feature is supported. Valid values:
+	//
+	// - **open**: The backup feature is supported.
+	//
+	// - **close**: The backup feature is not supported.
+	//
 	// example:
 	//
 	// open
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ld-bp150tns0sjxs****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// testhbase
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **cluster**: Cluster Edition.
+	//
+	// - **single**: single-node.
+	//
 	// example:
 	//
 	// cluster
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The cold storage size. Unit: GB.
+	//
 	// example:
 	//
 	// 800
 	ColdStorageSize *int32 `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// Indicates whether the cold storage feature is supported. Valid values:
+	//
+	// - **open**: The cold storage feature is supported.
+	//
+	// - **close**: The cold storage feature is not supported.
+	//
 	// example:
 	//
 	// open
 	ColdStorageStatus *string `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
+	// Indicates whether the O&M window of the instance has been confirmed for the first time. Valid values:
+	//
+	// - **true**: Confirmed.
+	//
+	// - **false**: Not confirmed.
+	//
+	// > The **Confirm the O&M window for the first time*	- dialog box appears only when you access the **Basic Information*	- page of the instance for the first time.
+	//
 	// example:
 	//
 	// true
 	ConfirmMaintainTime *string `json:"ConfirmMaintainTime,omitempty" xml:"ConfirmMaintainTime,omitempty"`
+	// The number of core node disks.
+	//
 	// example:
 	//
 	// 4
 	CoreDiskCount *string `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	// The disk capacity of core nodes. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// The disk type of core nodes. Valid values:
+	//
+	// - **cloud_efficiency**: ultra cloud disk.
+	//
+	// - **cloud_ssd**: standard SSD.
+	//
+	// - **local_hdd**: local HDD.
+	//
+	// - **local__ssd**: local SSD.
+	//
 	// example:
 	//
 	// cloud_ssd
 	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// The node specifications of core nodes.
+	//
 	// example:
 	//
 	// hbase.sn2.2xlarge
 	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// The number of core nodes.
+	//
 	// example:
 	//
 	// 2
 	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2021-07-19T11:23:22
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The time when the instance was created, in UTC format.
+	//
 	// example:
 	//
 	// 2021-07-19T03:23:22Z
 	CreatedTimeUTC *string `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	// The Unified Auto Renewal Cycle.
+	//
+	// - Monthly subscription: The auto-renewal epoch is 1 month.
+	//
+	// - Yearly subscription: The auto-renewal epoch is 1 year (12 months).
+	//
+	// > This parameter is returned only when PayType is set to Prepaid (subscription).
+	//
 	// example:
 	//
 	// 12
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Indicates whether access from the HBase open source client is supported. Valid values:
+	//
+	// - **true**: Access is supported.
+	//
+	// - **false**: Access is not supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	EnableHbaseProxy *bool `json:"EnableHbaseProxy,omitempty" xml:"EnableHbaseProxy,omitempty"`
+	// The encryption key.
+	//
+	// > This parameter is returned only when the encryption type is **CloudDisk**.
+	//
 	// example:
 	//
 	// 0d2470df-da7b-4786-b981-9a164dae****
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The encryption type. Valid values:
+	//
+	// - **NoEncryption**: Encryption is not enabled.
+	//
+	// - **CloudDisk**: Cloud disk encryption is enabled.
+	//
+	// - **EncryptionKey**: The encryption key specified by the parameter.
+	//
+	// > Cloud disk encryption cannot be disabled after it is enabled.
+	//
 	// example:
 	//
 	// NoEncryption
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The database engine type. Valid values:
+	//
+	// - **hbase**: ApsaraDB for HBase Standard Edition or ApsaraDB for HBase single-node.
+	//
+	// - **hbaseue**: ApsaraDB for HBase Performance-enhanced Edition.
+	//
+	// - **serverlesshbase**: ApsaraDB for HBase Serverless Edition.
+	//
+	// - **bds**: BDS instance.
+	//
 	// example:
 	//
 	// hbaseue
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The time when the instance expires.
+	//
 	// example:
 	//
 	// 2022-02-24T00:00:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The time when the instance expires, in UTC format.
+	//
 	// example:
 	//
 	// 2022-02-23T16:00:00Z
 	ExpireTimeUTC *string `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	// The initial default password.
+	//
+	// example:
+	//
+	// LFuVlAvSKsbo
+	InitialRootPassword *string `json:"InitialRootPassword,omitempty" xml:"InitialRootPassword,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ld-bp150tns0sjxs****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// testhbase
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates whether deletion protection is enabled. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Not enabled.
+	//
 	// example:
 	//
 	// false
 	IsDeletionProtection *bool `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	// Indicates whether the instance is configured for high availability. Valid values:
+	//
+	// - **true**: Configured for high availability.
+	//
+	// - **false**: Not configured for high availability.
+	//
+	// > - Cluster Edition instances are configured for high availability with default configurations and use 2 master nodes.
+	//
+	// - Single-node instances are configured with the actual active capacity.
+	//
 	// example:
 	//
 	// true
 	IsHa *bool `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
+	// Indicates whether the instance is the latest version. Valid values:
+	//
+	// - **true**: The instance is the latest version.
+	//
+	// - **false**: The instance is not the latest version.
+	//
 	// example:
 	//
 	// true
 	IsLatestVersion *bool `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	// Indicates whether the instance is a multi-model Cluster Edition instance. Valid values:
+	//
+	// - **true**: The instance is a multi-model Cluster Edition instance.
+	//
+	// - **false**: The instance is not a multi-model Cluster Edition instance.
+	//
 	// example:
 	//
 	// true
 	IsMultiModel *bool `json:"IsMultiModel,omitempty" xml:"IsMultiModel,omitempty"`
+	// The minor version of the LPROXY service.
+	//
 	// example:
 	//
 	// 2.3.2
 	LproxyMinorVersion *string `json:"LproxyMinorVersion,omitempty" xml:"LproxyMinorVersion,omitempty"`
+	// The end time of the O&M window.
+	//
 	// example:
 	//
 	// 22:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the O&M window.
+	//
 	// example:
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The major version number.
+	//
 	// example:
 	//
 	// 2.0
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// The disk capacity of master nodes. Unit: GB.
+	//
 	// example:
 	//
 	// 0
 	MasterDiskSize *int32 `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	// The disk type of master nodes. Valid values:
+	//
+	// - **cloud_efficiency**: ultra cloud disk.
+	//
+	// - **cloud_ssd**: standard SSD.
+	//
+	// > This parameter is returned for single-node instances.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	MasterDiskType *string `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	// The node specifications of master nodes.
+	//
 	// example:
 	//
 	// hbase.sn2.large
 	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// The master node type. Valid values:
+	//
+	// - **0**: The master node is a single node.
+	//
+	// - **2**: The master node is in Cluster Edition.
+	//
 	// example:
 	//
 	// 2
 	MasterNodeCount *int32 `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	// The minor version number of the instance.
+	//
 	// example:
 	//
 	// 2.2.9.1
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The module ID.
+	//
 	// example:
 	//
 	// 0
 	ModuleId *int32 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// The module type version.
+	//
 	// example:
 	//
 	// phoenxi:4.0
 	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	// Indicates whether the instance components need to be upgraded. Valid values:
+	//
+	// - **true**: Upgrade is required.
+	//
+	// - **false**: Upgrade is not required.
+	//
 	// example:
 	//
 	// false
 	NeedUpgrade      *bool                                         `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
 	NeedUpgradeComps *DescribeInstanceResponseBodyNeedUpgradeComps `json:"NeedUpgradeComps,omitempty" xml:"NeedUpgradeComps,omitempty" type:"Struct"`
+	// The network type. Valid values:
+	//
+	// - **VPC**: Virtual Private Cloud. If the network type is VPC, the VswitchId and VpcId parameters are returned.
+	//
+	// - **CLASSIC**: classic network.
+	//
 	// example:
 	//
 	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The parent instance ID.
+	//
 	// example:
 	//
 	// ld-uf699153o1m2l****
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Prepaid**: subscription.
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3F429923-B6F6-52C5-9C2A-5B8A8C6BBA66
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmyiu4ekp****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The single-zone risk alert information.
+	SingleZoneRiskAlert *DescribeInstanceResponseBodySingleZoneRiskAlert `json:"SingleZoneRiskAlert,omitempty" xml:"SingleZoneRiskAlert,omitempty" type:"Struct"`
+	// The instance status. Valid values:
+	//
+	// - **CREATING**: The instance is being created.
+	//
+	// - **ACTIVATION**: The instance is running.
+	//
+	// - **DELETING**: The instance is being deleted.
+	//
+	// - **RESTARTING**: The instance is being restarted.
+	//
+	// - **MINOR_VERSION_TRANSING**: A minor engine version update is in progress.
+	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The task progress of the instance, in percentage (%). Tasks initiated from the ApsaraDB for HBase console include specification changes, node scale-out, node scale-in, instance restart, and minor engine version updates.
+	//
 	// example:
 	//
 	// 25.00
 	TaskProgress *string `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The task status. Valid values:
+	//
+	// - running: The task is running.
+	//
+	// - pause: The task is paused.
+	//
+	// - fail: The task is interrupted.
+	//
+	// - finish: The task is completed.
+	//
+	// example:
+	//
+	// running
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The VPC ID. This parameter is returned when **NetworkType*	- is **2**.
+	//
 	// example:
 	//
 	// vpc-bp15s22y1a7sff5gj****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID. This parameter is returned when **NetworkType*	- is **2**.
+	//
 	// example:
 	//
 	// vsw-bp1foll427ze3d4ps****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-f
@@ -427,6 +666,10 @@ func (s *DescribeInstanceResponseBody) GetExpireTimeUTC() *string {
 	return s.ExpireTimeUTC
 }
 
+func (s *DescribeInstanceResponseBody) GetInitialRootPassword() *string {
+	return s.InitialRootPassword
+}
+
 func (s *DescribeInstanceResponseBody) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -525,6 +768,10 @@ func (s *DescribeInstanceResponseBody) GetRequestId() *string {
 
 func (s *DescribeInstanceResponseBody) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *DescribeInstanceResponseBody) GetSingleZoneRiskAlert() *DescribeInstanceResponseBodySingleZoneRiskAlert {
+	return s.SingleZoneRiskAlert
 }
 
 func (s *DescribeInstanceResponseBody) GetStatus() *string {
@@ -665,6 +912,11 @@ func (s *DescribeInstanceResponseBody) SetExpireTimeUTC(v string) *DescribeInsta
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetInitialRootPassword(v string) *DescribeInstanceResponseBody {
+	s.InitialRootPassword = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBody) SetInstanceId(v string) *DescribeInstanceResponseBody {
 	s.InstanceId = &v
 	return s
@@ -790,6 +1042,11 @@ func (s *DescribeInstanceResponseBody) SetResourceGroupId(v string) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetSingleZoneRiskAlert(v *DescribeInstanceResponseBodySingleZoneRiskAlert) *DescribeInstanceResponseBody {
+	s.SingleZoneRiskAlert = v
+	return s
+}
+
 func (s *DescribeInstanceResponseBody) SetStatus(v string) *DescribeInstanceResponseBody {
 	s.Status = &v
 	return s
@@ -831,6 +1088,11 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 			return err
 		}
 	}
+	if s.SingleZoneRiskAlert != nil {
+		if err := s.SingleZoneRiskAlert.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		if err := s.Tags.Validate(); err != nil {
 			return err
@@ -861,6 +1123,85 @@ func (s *DescribeInstanceResponseBodyNeedUpgradeComps) SetComps(v []*string) *De
 }
 
 func (s *DescribeInstanceResponseBodyNeedUpgradeComps) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceResponseBodySingleZoneRiskAlert struct {
+	// The confirmation date.
+	//
+	// example:
+	//
+	// 2026-09-01
+	ConfirmDate *string `json:"ConfirmDate,omitempty" xml:"ConfirmDate,omitempty"`
+	// The disposition type.
+	//
+	// example:
+	//
+	// NO_SET: Not set.
+	//
+	// PLAN_MIGRATION: Plan to migrate to Lindorm multi-zone edition.
+	//
+	// EXTERNAL_BIZ_HA: Business-level disaster recovery
+	DispositionType *string `json:"DispositionType,omitempty" xml:"DispositionType,omitempty"`
+	// Indicates whether an alert is required.
+	//
+	// example:
+	//
+	// false
+	NeedAlert *bool `json:"NeedAlert,omitempty" xml:"NeedAlert,omitempty"`
+	// The planned completion date.
+	//
+	// example:
+	//
+	// 2027-01-01
+	PlannedCompletionDate *string `json:"PlannedCompletionDate,omitempty" xml:"PlannedCompletionDate,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodySingleZoneRiskAlert) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodySingleZoneRiskAlert) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) GetConfirmDate() *string {
+	return s.ConfirmDate
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) GetDispositionType() *string {
+	return s.DispositionType
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) GetNeedAlert() *bool {
+	return s.NeedAlert
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) GetPlannedCompletionDate() *string {
+	return s.PlannedCompletionDate
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) SetConfirmDate(v string) *DescribeInstanceResponseBodySingleZoneRiskAlert {
+	s.ConfirmDate = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) SetDispositionType(v string) *DescribeInstanceResponseBodySingleZoneRiskAlert {
+	s.DispositionType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) SetNeedAlert(v bool) *DescribeInstanceResponseBodySingleZoneRiskAlert {
+	s.NeedAlert = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) SetPlannedCompletionDate(v string) *DescribeInstanceResponseBodySingleZoneRiskAlert {
+	s.PlannedCompletionDate = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodySingleZoneRiskAlert) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -899,13 +1240,7 @@ func (s *DescribeInstanceResponseBodyTags) Validate() error {
 }
 
 type DescribeInstanceResponseBodyTagsTag struct {
-	// example:
-	//
-	// test_key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// test_value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

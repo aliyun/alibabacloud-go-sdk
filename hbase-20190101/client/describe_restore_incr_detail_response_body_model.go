@@ -16,10 +16,13 @@ type iDescribeRestoreIncrDetailResponseBody interface {
 }
 
 type DescribeRestoreIncrDetailResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D0FE2717-E194-465A-B27B-7373F96E580B
-	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The incremental restoration details.
 	RestoreIncrDetail *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail `json:"RestoreIncrDetail,omitempty" xml:"RestoreIncrDetail,omitempty" type:"Struct"`
 }
 
@@ -59,30 +62,44 @@ func (s *DescribeRestoreIncrDetailResponseBody) Validate() error {
 }
 
 type DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2020-11-05T06:45:44Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The progress.
+	//
 	// example:
 	//
 	// 0/0
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// The synchronization latency.
+	//
 	// example:
 	//
 	// 0 ms
 	RestoreDelay *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	// The synchronization start point.
+	//
 	// example:
 	//
 	// 2020-11-02T18:00:00Z
 	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
+	// The synchronization point.
+	//
 	// example:
 	//
 	// \\"\\"
 	RestoredTs *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2020-11-05T06:45:44Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// SUCCEEDED

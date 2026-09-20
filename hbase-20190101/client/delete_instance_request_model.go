@@ -16,12 +16,20 @@ type iDeleteInstanceRequest interface {
 }
 
 type DeleteInstanceRequest struct {
+	// The instance ID of the instance to be released.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp16o0pd52e3y****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to immediately release the instance. Valid values:
+	//
+	// - **true**: The instance is immediately released.
+	//
+	// - **false**: The instance is not immediately released and is stored in the recycle bin. This is the default value.
+	//
 	// example:
 	//
 	// false

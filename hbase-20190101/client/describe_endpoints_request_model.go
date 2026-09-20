@@ -14,6 +14,8 @@ type iDescribeEndpointsRequest interface {
 }
 
 type DescribeEndpointsRequest struct {
+	// The ID of the instance that you want to query. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

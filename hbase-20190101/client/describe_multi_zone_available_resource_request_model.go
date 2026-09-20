@@ -18,18 +18,28 @@ type iDescribeMultiZoneAvailableResourceRequest interface {
 }
 
 type DescribeMultiZoneAvailableResourceRequest struct {
+	// The billing method. Valid values:
+	//
+	// - Prepaid: subscription.
+	//
+	// - Postpaid: pay-as-you-go.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Prepaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone combination. If this parameter is not specified, all zone combinations in the region are queried.
+	//
 	// example:
 	//
 	// cn-hangzhou-bef-aliyun

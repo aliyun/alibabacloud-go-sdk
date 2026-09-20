@@ -14,9 +14,11 @@ type iModifyAccountPasswordResponseBody interface {
 }
 
 type ModifyAccountPasswordResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// AFAA617B-3268-5883-982B-DB8EC8CC1F1B
+	// AFAA617B-3268-5883-982B-DB8EC8C*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

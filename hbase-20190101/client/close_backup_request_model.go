@@ -14,6 +14,8 @@ type iCloseBackupRequest interface {
 }
 
 type CloseBackupRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

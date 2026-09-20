@@ -44,40 +44,76 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
+	// Specifies whether the task can be canceled. Valid values:
+	//
+	// - **0**: The task cannot be canceled.
+	//
+	// - **1**: The task can be canceled.
+	//
 	// example:
 	//
 	// 1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// Specifies whether the time can be modified. Valid values:
+	//
+	// - **0**: The time cannot be modified.
+	//
+	// - **1**: The time can be modified.
+	//
 	// example:
 	//
 	// 1
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The change level. Valid values:
+	//
+	// - **S0**: Exception fix.
+	//
+	// - **S1**: System O&M.
+	//
 	// example:
 	//
 	// S1
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The database type. Valid values:
+	//
+	// - **hbaseue**: ApsaraDB for HBase Enhanced Edition.
+	//
+	// - **hbase**: ApsaraDB for HBase Standard Edition.
+	//
+	// - **bds**: BDS data synchronization service.
+	//
 	// example:
 	//
 	// hbaseue
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The HBase instance ID.
+	//
 	// example:
 	//
 	// ld-bp150tns0sjxs****
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of records that can be displayed per page. The value must be greater than **10**. Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product name. Default value: **hbase**.
+	//
 	// example:
 	//
 	// hbase
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region ID of the event to be processed. You can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html) to obtain the region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -85,10 +121,26 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The task running status. Valid values:
+	//
+	// - **2**: Waiting for the user to specify a time.
+	//
+	// - **3**: Waiting for processing.
+	//
+	// - **4**: Processing.
+	//
+	// - **5**: Succeeded.
+	//
+	// - **6**: Failed.
+	//
+	// - **7**: Canceled.
+	//
 	// example:
 	//
 	// 5
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type. Set the value to **rds_apsaradb_upgrade**, which indicates a minor version upgrade.
+	//
 	// example:
 	//
 	// rds_apsaradb_upgrade

@@ -14,6 +14,8 @@ type iQueryHBaseHaDBRequest interface {
 }
 
 type QueryHBaseHaDBRequest struct {
+	// The ID of the BDS cluster.
+	//
 	// This parameter is required.
 	//
 	// example:

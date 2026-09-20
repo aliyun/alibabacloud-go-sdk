@@ -17,6 +17,8 @@ type iDescribeRegionsResponseBody interface {
 
 type DescribeRegionsResponseBody struct {
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14D3924C-4FD8-4EE9-9B34-DA949D104F42
@@ -93,16 +95,10 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// example:
-	//
-	// hbase.aliyuncs.com
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Zones    *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	LocalName      *string                                        `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	RegionEndpoint *string                                        `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Zones          *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -193,9 +189,6 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
-	// example:
-	//
-	// cn-hangzhou-b
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

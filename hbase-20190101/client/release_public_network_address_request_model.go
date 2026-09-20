@@ -14,6 +14,8 @@ type iReleasePublicNetworkAddressRequest interface {
 }
 
 type ReleasePublicNetworkAddressRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

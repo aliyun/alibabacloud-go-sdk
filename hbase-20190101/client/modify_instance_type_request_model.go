@@ -18,16 +18,26 @@ type iModifyInstanceTypeRequest interface {
 }
 
 type ModifyInstanceTypeRequest struct {
+	// The ID of target instance. You can call [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) to obtain target instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp1x940uh********
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The new node specifications of the core node. You can invoke [DescribeInstanceType](https://help.aliyun.com/document_detail/145796.html) to obtain the available node specifications.
+	//
+	// > You must specify either the MasterInstanceType parameter or the CoreInstanceType parameter.
+	//
 	// example:
 	//
 	// hbase.sn1.8xlarge
 	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// The new node specifications of the master node. You can invoke [DescribeInstanceType](https://help.aliyun.com/document_detail/145796.html) to obtain the available node specifications.
+	//
+	// > You must specify either the MasterInstanceType parameter or the CoreInstanceType parameter.
+	//
 	// example:
 	//
 	// hbase.sn1.large

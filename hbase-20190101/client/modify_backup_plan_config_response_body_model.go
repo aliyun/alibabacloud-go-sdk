@@ -14,6 +14,8 @@ type iModifyBackupPlanConfigResponseBody interface {
 }
 
 type ModifyBackupPlanConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 50F4A8C2-076F-4703-9813-2FCD7FBB91C2

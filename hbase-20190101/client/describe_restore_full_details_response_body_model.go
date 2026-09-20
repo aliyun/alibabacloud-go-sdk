@@ -16,10 +16,13 @@ type iDescribeRestoreFullDetailsResponseBody interface {
 }
 
 type DescribeRestoreFullDetailsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CFE525CF-C691-4140-A981-D004DAA7A840
-	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The full restoration details.
 	RestoreFull *DescribeRestoreFullDetailsResponseBodyRestoreFull `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
 }
 
@@ -59,31 +62,45 @@ func (s *DescribeRestoreFullDetailsResponseBody) Validate() error {
 }
 
 type DescribeRestoreFullDetailsResponseBodyRestoreFull struct {
+	// The total data size.
+	//
 	// example:
 	//
 	// 1.2 kB
 	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The number of failed restorations.
+	//
 	// example:
 	//
 	// 0
 	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize           *int32                                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreFullDetails *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
+	// The total restoration speed.
+	//
 	// example:
 	//
 	// 0.00 MB/s
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The number of successful restorations.
+	//
 	// example:
 	//
 	// 1
 	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -214,38 +231,14 @@ func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails) Va
 }
 
 type DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail struct {
-	// example:
-	//
-	// 1.2 kB
-	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:51Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// null
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 14/14
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// example:
-	//
-	// 0.00 MB/s
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:45Z
+	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// SUCCEEDED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// default:test1
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) String() string {

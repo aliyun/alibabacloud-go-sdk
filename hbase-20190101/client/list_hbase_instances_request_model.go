@@ -14,6 +14,8 @@ type iListHBaseInstancesRequest interface {
 }
 
 type ListHBaseInstancesRequest struct {
+	// The VPC ID.
+	//
 	// This parameter is required.
 	//
 	// example:

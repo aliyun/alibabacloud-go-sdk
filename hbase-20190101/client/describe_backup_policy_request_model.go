@@ -14,6 +14,8 @@ type iDescribeBackupPolicyRequest interface {
 }
 
 type DescribeBackupPolicyRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

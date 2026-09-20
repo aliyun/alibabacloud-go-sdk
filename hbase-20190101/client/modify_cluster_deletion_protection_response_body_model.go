@@ -14,6 +14,8 @@ type iModifyClusterDeletionProtectionResponseBody interface {
 }
 
 type ModifyClusterDeletionProtectionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 24C80BD8-C710-4138-893A-D2AFED4FC13D

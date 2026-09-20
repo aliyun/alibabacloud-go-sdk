@@ -22,23 +22,46 @@ type iCreateGlobalResourceRequest interface {
 }
 
 type CreateGlobalResourceRequest struct {
+	// This parameter is automatically populated when the request is sent. You do not need to specify this parameter.
+	//
 	// example:
 	//
 	// xxxxx-xxxxx-xxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the target instance. You can call the DescribeInstances operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource name. Valid values:
+	//
+	// - HbaseSLBThriftVip: Thrift SLB EPS resource.
+	//
+	// - SolrSlbVip: Solr SLB EPS resource.
+	//
+	// - PhoenixSLBQueryServerVip: Phoenix SLB EPS resource.
+	//
+	// - PubHbaseSLBThriftVip: Thrift SLB public network resource.
+	//
+	// - PubPhoenixSLBQueryServerVip: Phoenix SLB public network resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PubPhoenixSLBQueryServerVip
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type. Set the value to **GLOBAL_VIP**.
+	//
 	// This parameter is required.
 	//
 	// example:

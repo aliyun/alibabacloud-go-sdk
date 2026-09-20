@@ -16,10 +16,14 @@ type iDescribeSubDomainRequest interface {
 }
 
 type DescribeSubDomainRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-f

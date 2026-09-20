@@ -17,6 +17,8 @@ type iDescribeAvailableResourceResponseBody interface {
 
 type DescribeAvailableResourceResponseBody struct {
 	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EA76F208-E334-592A-A0C6-41E15EC87ED0
@@ -93,16 +95,10 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) Validate() error {
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	MasterResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
-	// example:
-	//
-	// cn-shenzhen
+	MasterResources  *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources  `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
 	RegionId         *string                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	// example:
-	//
-	// cn-shenzhen-e
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId           *string                                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -198,9 +194,6 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterR
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource struct {
-	// example:
-	//
-	// hbase.sn1.medium
 	InstanceType       *string                                                                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InstanceTypeDetail *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
 }
@@ -241,13 +234,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterR
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail struct {
-	// example:
-	//
-	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// example:
-	//
-	// 8
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 }
 
@@ -316,9 +303,6 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
-	// example:
-	//
-	// hbase
 	Engine                  *string                                                                                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 }
@@ -394,10 +378,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion struct {
 	SupportedCategories *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories `json:"SupportedCategories,omitempty" xml:"SupportedCategories,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2.0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version             *string                                                                                                                                                          `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) String() string {
@@ -470,9 +451,6 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories struct {
-	// example:
-	//
-	// cluster
 	Category              *string                                                                                                                                                                                                  `json:"Category,omitempty" xml:"Category,omitempty"`
 	SupportedStorageTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 }
@@ -548,10 +526,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageType struct {
 	CoreResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResources `json:"CoreResources,omitempty" xml:"CoreResources,omitempty" type:"Struct"`
-	// example:
-	//
-	// cloud_ssd
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType   *string                                                                                                                                                                                                                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageType) String() string {
@@ -625,15 +600,9 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource struct {
 	DBInstanceStorageRange *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
-	// example:
-	//
-	// hbase.sn1.large
-	InstanceType       *string                                                                                                                                                                                                                                                                 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceTypeDetail *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
-	// example:
-	//
-	// 16
-	MaxCoreCount *int32 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
+	InstanceType           *string                                                                                                                                                                                                                                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeDetail     *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail     `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
+	MaxCoreCount           *int32                                                                                                                                                                                                                                                                      `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) String() string {
@@ -695,17 +664,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange struct {
-	// example:
-	//
-	// 8000
-	MaxSize *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	// example:
-	//
-	// 400
-	MinSize *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
-	// example:
-	//
-	// 40
+	MaxSize  *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	MinSize  *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
 	StepSize *int32 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
 }
 
@@ -749,13 +709,7 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail struct {
-	// example:
-	//
-	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// example:
-	//
-	// 8
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 }
 

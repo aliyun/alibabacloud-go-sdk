@@ -47,6 +47,8 @@ type iDescribeMultiZoneClusterResponseBody interface {
 	GetExpireTime() *string
 	SetExpireTimeUTC(v string) *DescribeMultiZoneClusterResponseBody
 	GetExpireTimeUTC() *string
+	SetInitialRootPassword(v string) *DescribeMultiZoneClusterResponseBody
+	GetInitialRootPassword() *string
 	SetInstanceId(v string) *DescribeMultiZoneClusterResponseBody
 	GetInstanceId() *string
 	SetInstanceName(v string) *DescribeMultiZoneClusterResponseBody
@@ -118,199 +120,370 @@ type iDescribeMultiZoneClusterResponseBody interface {
 }
 
 type DescribeMultiZoneClusterResponseBody struct {
+	// The vSwitch ID of the arbiter zone.
+	//
 	// example:
 	//
 	// vsw-t4nax9mp3wk0czn****
 	ArbiterVSwitchIds *string `json:"ArbiterVSwitchIds,omitempty" xml:"ArbiterVSwitchIds,omitempty"`
+	// The zone ID of the arbiter zone.
+	//
 	// example:
 	//
 	// ap-southeast-1c
 	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// Indicates whether auto-renewal is enabled for the multi-zone instance when PayType is set to Prepaid. Valid values:
+	//
+	// - True: Auto-renewal is enabled.
+	//
+	// - False: Auto-renewal is disabled.
+	//
 	// example:
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// ld-t4nn71xa0yn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// mz_test
-	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ColdStorageSize *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The cold storage size. Unit: GB.
+	//
+	// example:
+	//
+	// 800
+	ColdStorageSize *int32 `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// The number of core node disks.
+	//
 	// example:
 	//
 	// 4
 	CoreDiskCount *string `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	// The disk size of a core node. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// The disk type of core nodes. Valid values:
+	//
+	// - cloud_efficiency: ultra cloud disk.
+	//
+	// - cloud_ssd: standard SSD.
+	//
+	// - local_hdd_pro: throughput-intensive local disk.
+	//
+	// - local_ssd_pro: I/O-intensive local disk.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// The node specifications of core nodes.
+	//
 	// example:
 	//
 	// hbase.sn1.large
 	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// The number of core nodes. The minimum value is 4, and the increment is a multiple of 2.
+	//
 	// example:
 	//
 	// 6
 	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// The creation time in the current time zone.
+	//
 	// example:
 	//
 	// 2020-10-15T18:04:52
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The creation time in UTC.
+	//
 	// example:
 	//
 	// 2020-10-15T10:04:52Z
 	CreatedTimeUTC *string `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	// The Unified Auto Renewal Cycle. This parameter is not returned for pay-as-you-go instances.
+	//
+	// - Monthly subscription: The auto-renewal epoch is 1 month.
+	//
+	// - Yearly subscription: The auto-renewal epoch is 1 year (12 months).
+	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the encryption key. This parameter is empty if encryption is not enabled.
+	//
+	// > Cloud disk encryption cannot be disabled after it is enabled.
+	//
 	// example:
 	//
 	// 2a****
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The encryption type. Valid values:
+	//
+	// - NULL: Encryption is not enabled. This is the default value.
+	//
+	// - CloudDisk: Cloud disk encryption. The encryption key is specified by the **EncryptionKey*	- parameter.
+	//
 	// example:
 	//
 	// CloudDisk
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// The service type. Currently, only hbaseue is supported.
+	//
 	// example:
 	//
 	// hbaseue
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The expiration time in the current time zone. This parameter is returned only when PayType is set to Prepaid.
+	//
 	// example:
 	//
 	// 2020-11-16T08:00:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The expiration time in UTC. This parameter is returned only when PayType is set to Prepaid.
+	//
 	// example:
 	//
 	// 2020-11-16T00:00:00Z
 	ExpireTimeUTC *string `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	// The initial default password.
+	//
+	// example:
+	//
+	// yKcYVkFsULmC
+	InitialRootPassword *string `json:"InitialRootPassword,omitempty" xml:"InitialRootPassword,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// ld-t4nn71xa0yn****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The cluster name.
+	//
 	// example:
 	//
 	// mz_test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates whether deletion protection is enabled. Valid values:
+	//
+	// - True: Deletion protection is enabled. The instance cannot be deleted. An error message is returned if you attempt to delete the instance.
+	//
+	// - False: Deletion protection is disabled. The instance can be deleted.
+	//
 	// example:
 	//
 	// false
 	IsDeletionProtection *bool `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	// The number of disks per log node.
+	//
 	// example:
 	//
 	// 4
 	LogDiskCount *string `json:"LogDiskCount,omitempty" xml:"LogDiskCount,omitempty"`
+	// The size of a single disk on a log node. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	LogDiskSize *int32 `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	// The disk type of log nodes. Valid values:
+	//
+	// - cloud_efficiency: ultra cloud disk.
+	//
+	// - cloud_ssd: standard SSD.
+	//
+	// - local_hdd_pro: throughput-intensive local disk.
+	//
+	// - local_ssd_pro: I/O-intensive local disk.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	LogDiskType *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	// The node specifications of log nodes. You can call [DescribeInstanceType](https://help.aliyun.com/document_detail/145796.html) to query the exact information.
+	//
 	// example:
 	//
 	// hbase.sn1.large
 	LogInstanceType *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// The number of log nodes. The minimum value is 4, and the value must be a multiple of 4.
+	//
 	// example:
 	//
 	// 4
 	LogNodeCount *int32 `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	// The end time of the O&M window. The format is HH:MMZ, such as 20:00Z.
+	//
 	// example:
 	//
 	// 06:00:00
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the O&M window. The format is HH:MMZ, such as 20:00Z.
+	//
 	// example:
 	//
 	// 02:00:00
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The major version based on the engine type. Currently, only version 2.0 of hbaseue is supported.
+	//
 	// example:
 	//
 	// 2.0
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// The disk size of master nodes.
+	//
 	// example:
 	//
 	// 50
 	MasterDiskSize *int32 `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	// The disk type of master nodes.
+	//
 	// example:
 	//
 	// cloud_efficiency
 	MasterDiskType *string `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	// The node specifications of master nodes.
+	//
 	// example:
 	//
 	// hbase.sn1.large
 	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// The number of master nodes.
+	//
 	// example:
 	//
 	// 2
 	MasterNodeCount *int32 `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	// The module ID.
+	//
 	// example:
 	//
 	// 0
 	ModuleId *int32 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// The module software stack version.
+	//
 	// example:
 	//
 	// 2.0
 	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	// The zone combination of the multi-zone instance.
+	//
 	// example:
 	//
 	// ap-southeast-1-abc-aliyun
 	MultiZoneCombination    *string                                                      `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
 	MultiZoneInstanceModels *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels `json:"MultiZoneInstanceModels,omitempty" xml:"MultiZoneInstanceModels,omitempty" type:"Struct"`
+	// The network type. Currently, only VPC is supported.
+	//
 	// example:
 	//
 	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The instance ID of the primary instance. This parameter is returned only when the instance is a component instance.
+	//
 	// example:
 	//
 	// ld-fls1gf31y5s35****
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - Prepaid: subscription.
+	//
+	// - Postpaid: pay-as-you-go.
+	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The vSwitch ID of the primary zone instance.
+	//
 	// example:
 	//
 	// vsw-t4n3s1zd2gtidg****
 	PrimaryVSwitchIds *string `json:"PrimaryVSwitchIds,omitempty" xml:"PrimaryVSwitchIds,omitempty"`
+	// The zone ID of the primary zone instance.
+	//
 	// example:
 	//
 	// ap-southeast-1a
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// ap-southeast-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A02C0E6D-3A47-4FA0-BA7E-60793CE256DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the resource belongs.
+	//
 	// example:
 	//
 	// rg-lk51f5fer315e****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The vSwitch ID of the secondary zone instance.
+	//
 	// example:
 	//
 	// vsw-t4nvvk7xur3rdi****
 	StandbyVSwitchIds *string `json:"StandbyVSwitchIds,omitempty" xml:"StandbyVSwitchIds,omitempty"`
+	// The zone ID of the secondary zone instance.
+	//
 	// example:
 	//
 	// ap-southeast-1b
 	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The cluster status. Valid values:
+	//
+	// - CREATING: The cluster is being created.
+	//
+	// - ACTIVATION: The cluster is running.
+	//
+	// - DELETING: The cluster is being deleted.
+	//
+	// - RESTARTING: The cluster is being restarted.
+	//
 	// example:
 	//
 	// ACTIVATION
-	Status       *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags         *DescribeMultiZoneClusterResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	TaskProgress *string                                   `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-	TaskStatus   *string                                   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeMultiZoneClusterResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The progress of the task running on the instance, in percentage (%). Tasks initiated from the ApsaraDB for HBase console include specification changes, node scale-out, node scale-in, instance restart, and minor engine version update.
+	//
+	// example:
+	//
+	// 42
+	TaskProgress *string `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	// The task status. Valid values:
+	//
+	// - running: The task is running.
+	//
+	// - pause: The task is paused.
+	//
+	// - fail: The task is interrupted.
+	//
+	// - finish: The task is completed.
+	//
+	// example:
+	//
+	// running
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-t4nx81tmlixcq5****
@@ -399,6 +572,10 @@ func (s *DescribeMultiZoneClusterResponseBody) GetExpireTime() *string {
 
 func (s *DescribeMultiZoneClusterResponseBody) GetExpireTimeUTC() *string {
 	return s.ExpireTimeUTC
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) GetInitialRootPassword() *string {
+	return s.InitialRootPassword
 }
 
 func (s *DescribeMultiZoneClusterResponseBody) GetInstanceId() *string {
@@ -632,6 +809,11 @@ func (s *DescribeMultiZoneClusterResponseBody) SetExpireTimeUTC(v string) *Descr
 	return s
 }
 
+func (s *DescribeMultiZoneClusterResponseBody) SetInitialRootPassword(v string) *DescribeMultiZoneClusterResponseBody {
+	s.InitialRootPassword = &v
+	return s
+}
+
 func (s *DescribeMultiZoneClusterResponseBody) SetInstanceId(v string) *DescribeMultiZoneClusterResponseBody {
 	s.InstanceId = &v
 	return s
@@ -851,30 +1033,15 @@ func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) Validate()
 }
 
 type DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel struct {
-	HdfsMinorVersion *string `json:"HdfsMinorVersion,omitempty" xml:"HdfsMinorVersion,omitempty"`
-	// example:
-	//
-	// ld-t4nn71xa0yn****-az-a
-	InsName             *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	IsHdfsLatestVersion *string `json:"IsHdfsLatestVersion,omitempty" xml:"IsHdfsLatestVersion,omitempty"`
-	// example:
-	//
-	// true
+	HdfsMinorVersion       *string `json:"HdfsMinorVersion,omitempty" xml:"HdfsMinorVersion,omitempty"`
+	InsName                *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	IsHdfsLatestVersion    *string `json:"IsHdfsLatestVersion,omitempty" xml:"IsHdfsLatestVersion,omitempty"`
 	IsLatestVersion        *bool   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 	LatestHdfsMinorVersion *string `json:"LatestHdfsMinorVersion,omitempty" xml:"LatestHdfsMinorVersion,omitempty"`
 	LatestMinorVersion     *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
-	// example:
-	//
-	// 2.1.24
-	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// example:
-	//
-	// primary
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// example:
-	//
-	// ACTIVATION
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	MinorVersion           *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	Role                   *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) String() string {
@@ -1005,13 +1172,7 @@ func (s *DescribeMultiZoneClusterResponseBodyTags) Validate() error {
 }
 
 type DescribeMultiZoneClusterResponseBodyTagsTag struct {
-	// example:
-	//
-	// test_key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// test_value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

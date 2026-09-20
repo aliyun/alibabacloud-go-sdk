@@ -18,18 +18,24 @@ type iDeleteServerlessClusterRequest interface {
 }
 
 type DeleteServerlessClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sh-bp1pj13wh9****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -25,22 +25,38 @@ type iDescribeBackupsResponseBody interface {
 
 type DescribeBackupsResponseBody struct {
 	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	// The backup enabling status. Valid values:
+	//
+	// - enable: Enabled.
+	//
+	// - disable: Not enabled.
+	//
+	// - opening: Being enabled.
+	//
 	// example:
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A93CE373-0FDE-4CCB-9DBA-6700906825ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -153,54 +169,18 @@ func (s *DescribeBackupsResponseBodyBackups) Validate() error {
 }
 
 type DescribeBackupsResponseBodyBackupsBackup struct {
-	// example:
-	//
-	// 1
-	BackupDBNames *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
-	// example:
-	//
-	// 1
-	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// example:
-	//
-	// 2020-12-23 17:25:24
-	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// example:
-	//
-	// 2020-12-23T09:25:24Z
-	BackupEndTimeUTC *string `json:"BackupEndTimeUTC,omitempty" xml:"BackupEndTimeUTC,omitempty"`
-	// example:
-	//
-	// 511876087
-	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// example:
-	//
-	// P
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// example:
-	//
-	// 0
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// example:
-	//
-	// 0.00
-	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// example:
-	//
-	// 2020-12-23 17:25:08
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// example:
-	//
-	// 2020-12-23T09:25:08Z
+	BackupDBNames      *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
+	BackupDownloadURL  *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime      *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupEndTimeUTC   *string `json:"BackupEndTimeUTC,omitempty" xml:"BackupEndTimeUTC,omitempty"`
+	BackupId           *int32  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupMethod       *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode         *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSize         *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime    *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	BackupStartTimeUTC *string `json:"BackupStartTimeUTC,omitempty" xml:"BackupStartTimeUTC,omitempty"`
-	// example:
-	//
-	// 0
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// example:
-	//
-	// F
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupStatus       *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType         *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyBackupsBackup) String() string {

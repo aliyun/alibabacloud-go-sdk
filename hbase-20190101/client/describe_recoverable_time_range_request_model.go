@@ -14,6 +14,8 @@ type iDescribeRecoverableTimeRangeRequest interface {
 }
 
 type DescribeRecoverableTimeRangeRequest struct {
+	// The ID of the HBaseue cluster for which you want to query the recoverable time range.
+	//
 	// This parameter is required.
 	//
 	// example:

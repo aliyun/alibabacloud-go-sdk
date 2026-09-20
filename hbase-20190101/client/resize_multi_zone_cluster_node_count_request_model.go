@@ -28,36 +28,52 @@ type iResizeMultiZoneClusterNodeCountRequest interface {
 }
 
 type ResizeMultiZoneClusterNodeCountRequest struct {
+	// The vSwitch ID of the arbitration node.
+	//
 	// example:
 	//
 	// vsw-hangxzhouxb*****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// The ID of the multi-zone cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-f5d8d6s4s2a1****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of core nodes. The minimum value is 4, and the increment must be a multiple of 2.
+	//
 	// example:
 	//
 	// 6
 	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// The number of log nodes. The minimum value is 4, and the value must be a multiple of 4.
+	//
 	// example:
 	//
 	// 8
 	LogNodeCount *int32 `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	// The number of core nodes in the primary zone instance. The minimum value is 4, and the increment must be a multiple of 2.
+	//
 	// example:
 	//
 	// 6
 	PrimaryCoreNodeCount *int32 `json:"PrimaryCoreNodeCount,omitempty" xml:"PrimaryCoreNodeCount,omitempty"`
+	// The vSwitch ID of the instance in the primary zone.
+	//
 	// example:
 	//
 	// vsw-hangxzhouxe*****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// The number of core nodes in the secondary zone instance. The minimum value is 4, and the increment must be a multiple of 2.
+	//
 	// example:
 	//
 	// 6
 	StandbyCoreNodeCount *int32 `json:"StandbyCoreNodeCount,omitempty" xml:"StandbyCoreNodeCount,omitempty"`
+	// The vSwitch ID of the instance in the secondary zone.
+	//
 	// example:
 	//
 	// vsw-hangxzhouxf****

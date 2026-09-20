@@ -20,20 +20,28 @@ type iEnableHBaseueBackupRequest interface {
 }
 
 type EnableHBaseueBackupRequest struct {
+  // The client token that is used to ensure the idempotence of the request.
+  // 
   // example:
   // 
   // xxx
   ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+  // The cold storage size for the backup service. The minimum value is 800 GB.
+  // 
   // example:
   // 
   // 800
   ColdStorageSize *int32 `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+  // The ID of the HBaseue cluster.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // ld-m5eznlga4k5bcxxxx
   HbaseueClusterId *string `json:"HbaseueClusterId,omitempty" xml:"HbaseueClusterId,omitempty"`
+  // The number of backup nodes.
+  // 
   // This parameter is required.
   // 
   // example:

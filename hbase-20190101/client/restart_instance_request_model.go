@@ -16,12 +16,26 @@ type iRestartInstanceRequest interface {
 }
 
 type RestartInstanceRequest struct {
+	// The ID of target instance. You can call [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) to obtain target instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-bp150tns0sjxs****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the component in the target instance. Valid values:
+	//
+	// - **HBASE**
+	//
+	// - **HADOOP**
+	//
+	// - **PHOENIX**
+	//
+	// - **SOLR**
+	//
+	// - **THRIFT**
+	//
 	// example:
 	//
 	// THRIFT

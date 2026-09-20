@@ -20,24 +20,40 @@ type iSwitchHbaseHaSlbRequest interface {
 }
 
 type SwitchHbaseHaSlbRequest struct {
+	// The ID of the BDS cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bds-t4n3496whj23ia4k
 	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// The high-availability ID in BDS high-availability management.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ha-v21tmnxjwh2yuy1il
 	HaId *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	// The high-availability type. Valid values:
+	//
+	// 1. thrift
+	//
+	// 2. phoenix.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// thrift
 	HaTypes *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
+	// Specifies whether to switch to the primary or secondary instance. Valid values:
+	//
+	// 1. Active: Switch to the primary instance.
+	//
+	// 2. Standby: Switch to the secondary instance.
+	//
 	// This parameter is required.
 	//
 	// example:

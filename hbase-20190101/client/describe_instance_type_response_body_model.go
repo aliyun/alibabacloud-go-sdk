@@ -17,6 +17,8 @@ type iDescribeInstanceTypeResponseBody interface {
 
 type DescribeInstanceTypeResponseBody struct {
 	InstanceTypeSpecList *DescribeInstanceTypeResponseBodyInstanceTypeSpecList `json:"InstanceTypeSpecList,omitempty" xml:"InstanceTypeSpecList,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD23BBB4-64C2-42A4-B2E2-7E56C7AA815A
@@ -93,18 +95,9 @@ func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecList) Validate() error 
 }
 
 type DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec struct {
-	// example:
-	//
-	// 8
-	CpuSize *int64 `json:"CpuSize,omitempty" xml:"CpuSize,omitempty"`
-	// example:
-	//
-	// hbase.n2.4xlarge
+	CpuSize      *int64  `json:"CpuSize,omitempty" xml:"CpuSize,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// example:
-	//
-	// 16
-	MemSize *int64 `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
+	MemSize      *int64  `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
 }
 
 func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) String() string {

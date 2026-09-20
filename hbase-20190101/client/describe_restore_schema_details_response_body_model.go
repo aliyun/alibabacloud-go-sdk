@@ -16,10 +16,13 @@ type iDescribeRestoreSchemaDetailsResponseBody interface {
 }
 
 type DescribeRestoreSchemaDetailsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BC682A80-7677-4294-975C-CFEA425381DE
-	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The schema restoration details.
 	RestoreSchema *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
 }
 
@@ -59,23 +62,33 @@ func (s *DescribeRestoreSchemaDetailsResponseBody) Validate() error {
 }
 
 type DescribeRestoreSchemaDetailsResponseBodyRestoreSchema struct {
+	// The number of failed restorations.
+	//
 	// example:
 	//
 	// 0
 	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize             *int32                                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreSchemaDetails *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
+	// The number of successful restorations.
+	//
 	// example:
 	//
 	// 1
 	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -188,26 +201,11 @@ func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetai
 }
 
 type DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail struct {
-	// example:
-	//
-	// 2020-11-05T06:45:18Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// null
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:14Z
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// SUCCEEDED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// default:test1
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) String() string {

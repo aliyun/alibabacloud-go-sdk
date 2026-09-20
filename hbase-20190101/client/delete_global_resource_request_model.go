@@ -20,6 +20,8 @@ type iDeleteGlobalResourceRequest interface {
 }
 
 type DeleteGlobalResourceRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27,12 +29,16 @@ type DeleteGlobalResourceRequest struct {
 	// hb-t4naqsay5gn******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource name. PubPhoenixSLBQueryServerVip releases the public endpoint of the HBase SQL service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PubPhoenixSLBQueryServerVip
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:

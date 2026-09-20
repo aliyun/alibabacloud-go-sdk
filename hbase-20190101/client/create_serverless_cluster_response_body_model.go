@@ -20,18 +20,26 @@ type iCreateServerlessClusterResponseBody interface {
 }
 
 type CreateServerlessClusterResponseBody struct {
+	// The instance ID of the HBase Serverless instance.
+	//
 	// example:
 	//
 	// sh-bp1a969y7681****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 23232453233*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The password used to access the cluster.
+	//
 	// example:
 	//
 	// *********
 	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E19E345-101D-4014-946C-************

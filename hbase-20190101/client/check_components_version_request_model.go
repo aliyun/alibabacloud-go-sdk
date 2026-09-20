@@ -16,12 +16,26 @@ type iCheckComponentsVersionRequest interface {
 }
 
 type CheckComponentsVersionRequest struct {
+	// The cluster ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to obtain the cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The component to check. Valid values:
+	//
+	// - **HBASE**
+	//
+	// - **HADOOP**
+	//
+	// - **PHOENIX**
+	//
+	// - **SOLR**
+	//
+	// - **THRIFT**.
+	//
 	// This parameter is required.
 	//
 	// example:

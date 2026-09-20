@@ -24,23 +24,33 @@ type iDescribeRestoreSummaryResponseBody interface {
 }
 
 type DescribeRestoreSummaryResponseBody struct {
+	// Indicates whether there is a next page. This parameter is currently not used.
+	//
 	// example:
 	//
 	// 0
 	HasMoreRestoreRecord *int32 `json:"HasMoreRestoreRecord,omitempty" xml:"HasMoreRestoreRecord,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AE639ED7-F0F3-4A71-911E-CF8EC088816E
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Rescords  *DescribeRestoreSummaryResponseBodyRescords `json:"Rescords,omitempty" xml:"Rescords,omitempty" type:"Struct"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -153,38 +163,14 @@ func (s *DescribeRestoreSummaryResponseBodyRescords) Validate() error {
 }
 
 type DescribeRestoreSummaryResponseBodyRescordsRescord struct {
-	// example:
-	//
-	// 1/1
-	BulkLoadProcess *string `json:"BulkLoadProcess,omitempty" xml:"BulkLoadProcess,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:14Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:51Z
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// example:
-	//
-	// 1/1
+	BulkLoadProcess     *string `json:"BulkLoadProcess,omitempty" xml:"BulkLoadProcess,omitempty"`
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime          *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	HfileRestoreProcess *string `json:"HfileRestoreProcess,omitempty" xml:"HfileRestoreProcess,omitempty"`
-	// example:
-	//
-	// 0/0
-	LogProcess *string `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
-	// example:
-	//
-	// 20201105144514
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// example:
-	//
-	// 1/1
-	SchemaProcess *string `json:"SchemaProcess,omitempty" xml:"SchemaProcess,omitempty"`
-	// example:
-	//
-	// SUCCEEDED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	LogProcess          *string `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
+	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	SchemaProcess       *string `json:"SchemaProcess,omitempty" xml:"SchemaProcess,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRestoreSummaryResponseBodyRescordsRescord) String() string {

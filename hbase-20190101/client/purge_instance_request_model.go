@@ -14,6 +14,8 @@ type iPurgeInstanceRequest interface {
 }
 
 type PurgeInstanceRequest struct {
+	// The ID of the deleted cluster to be cleaned up. You can call the DescribeDeletedInstances operation to obtain the cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

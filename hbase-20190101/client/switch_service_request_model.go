@@ -18,18 +18,26 @@ type iSwitchServiceRequest interface {
 }
 
 type SwitchServiceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-uf6r2hn2zrxxxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// - open: Enable
+	//
+	// - close: Shutdown
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// open
 	Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
+	// Service name.
+	//
 	// This parameter is required.
 	//
 	// example:

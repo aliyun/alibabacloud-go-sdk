@@ -17,6 +17,8 @@ type iCheckComponentsVersionResponseBody interface {
 
 type CheckComponentsVersionResponseBody struct {
 	Components *CheckComponentsVersionResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E3537EB4-1100-41CA-A147-C74CCC8BB12C
@@ -93,13 +95,7 @@ func (s *CheckComponentsVersionResponseBodyComponents) Validate() error {
 }
 
 type CheckComponentsVersionResponseBodyComponentsComponent struct {
-	// example:
-	//
-	// HBASE
-	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
-	// example:
-	//
-	// true
+	Component       *string `json:"Component,omitempty" xml:"Component,omitempty"`
 	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 }
 

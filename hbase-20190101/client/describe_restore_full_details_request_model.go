@@ -20,20 +20,28 @@ type iDescribeRestoreFullDetailsRequest interface {
 }
 
 type DescribeRestoreFullDetailsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The restoration record ID. You can call DescribeRestoreSummary to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:

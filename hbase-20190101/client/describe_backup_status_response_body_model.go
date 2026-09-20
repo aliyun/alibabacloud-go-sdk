@@ -20,18 +20,32 @@ type iDescribeBackupStatusResponseBody interface {
 }
 
 type DescribeBackupStatusResponseBody struct {
+	// The enabling status of backup. Valid values:
+	//
+	// - closed: not enabled.
+	//
+	// - opened: enabled.
+	//
+	// - opening: being enabled.
+	//
 	// example:
 	//
 	// opened
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The instance ID of the BDS instance used for backup.
+	//
 	// example:
 	//
 	// bds-m5e54q06ceyhxxxx
 	BdsClusterId *string `json:"BdsClusterId,omitempty" xml:"BdsClusterId,omitempty"`
+	// The ID of the backup cluster.
+	//
 	// example:
 	//
 	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F7E71430-A825-470A-B40B-DF3F3AAC9BEE

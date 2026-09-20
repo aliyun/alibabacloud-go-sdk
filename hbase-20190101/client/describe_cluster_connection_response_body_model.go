@@ -34,30 +34,60 @@ type iDescribeClusterConnectionResponseBody interface {
 }
 
 type DescribeClusterConnectionResponseBody struct {
+	// The database engine type. Valid values:
+	//
+	// - **hbaseue**: ApsaraDB for HBase Performance-enhanced Edition.
+	//
+	// - **hbase**: ApsaraDB for HBase Standard Edition or ApsaraDB for HBase single-node edition.
+	//
+	// - **bds**: a BDS instance.
+	//
 	// example:
 	//
 	// hbaseue
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// Indicates whether multi-model management is enabled. Valid values:
+	//
+	// - **true**: Multi-model management is enabled.
+	//
+	// - **false**: Multi-model management is not enabled.
+	//
 	// example:
 	//
 	// true
 	IsMultimod *string `json:"IsMultimod,omitempty" xml:"IsMultimod,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// - **VPC**: Virtual Private Cloud (VPC).
+	//
+	// - **CLASSIC**: classic network.
+	//
 	// example:
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 70220050-A465-5DCC-8C0C-C38C6E3DB24D
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceConnAddrs    *DescribeClusterConnectionResponseBodyServiceConnAddrs    `json:"ServiceConnAddrs,omitempty" xml:"ServiceConnAddrs,omitempty" type:"Struct"`
-	SlbConnAddrs        *DescribeClusterConnectionResponseBodySlbConnAddrs        `json:"SlbConnAddrs,omitempty" xml:"SlbConnAddrs,omitempty" type:"Struct"`
-	ThriftConn          *DescribeClusterConnectionResponseBodyThriftConn          `json:"ThriftConn,omitempty" xml:"ThriftConn,omitempty" type:"Struct"`
+	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceConnAddrs *DescribeClusterConnectionResponseBodyServiceConnAddrs `json:"ServiceConnAddrs,omitempty" xml:"ServiceConnAddrs,omitempty" type:"Struct"`
+	SlbConnAddrs     *DescribeClusterConnectionResponseBodySlbConnAddrs     `json:"SlbConnAddrs,omitempty" xml:"SlbConnAddrs,omitempty" type:"Struct"`
+	// The Thrift endpoint information list.
+	//
+	// > This parameter list is returned only when the database DPI engine type is **hbase**.
+	ThriftConn *DescribeClusterConnectionResponseBodyThriftConn `json:"ThriftConn,omitempty" xml:"ThriftConn,omitempty" type:"Struct"`
+	// The WebUI connection information list.
 	UiProxyConnAddrInfo *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo `json:"UiProxyConnAddrInfo,omitempty" xml:"UiProxyConnAddrInfo,omitempty" type:"Struct"`
+	// The vSwitch ID in the VPC.
+	//
 	// example:
 	//
 	// vsw-bp1foll427ze3d4ps****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp15s22y1a7sff5gj****
@@ -237,10 +267,7 @@ func (s *DescribeClusterConnectionResponseBodyServiceConnAddrs) Validate() error
 
 type DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddr struct {
 	ConnAddrInfo *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo `json:"ConnAddrInfo,omitempty" xml:"ConnAddrInfo,omitempty" type:"Struct"`
-	// example:
-	//
-	// PhoenixConnAddr
-	ConnType *string `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
+	ConnType     *string                                                                           `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddr) String() string {
@@ -279,18 +306,9 @@ func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddr) V
 }
 
 type DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo struct {
-	// example:
-	//
-	// hb-****-proxy-phoenix.hbase.rds.aliyuncs.com
-	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
-	// example:
-	//
-	// 8765
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	// example:
-	//
-	// 2
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo) String() string {
@@ -368,10 +386,7 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrs) Validate() error {
 
 type DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddr struct {
 	ConnAddrInfo *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo `json:"ConnAddrInfo,omitempty" xml:"ConnAddrInfo,omitempty" type:"Struct"`
-	// example:
-	//
-	// hbaseue
-	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	SlbType      *string                                                                   `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddr) String() string {
@@ -410,18 +425,9 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddr) Validate(
 }
 
 type DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo struct {
-	// example:
-	//
-	// ld-bp150tns0sjxs****-proxy-hbaseue-pub.hbaseue.rds.aliyuncs.com
-	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
-	// example:
-	//
-	// 9190
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	// example:
-	//
-	// 0
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo) String() string {
@@ -464,14 +470,24 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInf
 }
 
 type DescribeClusterConnectionResponseBodyThriftConn struct {
+	// The endpoint.
+	//
 	// example:
 	//
 	// hb-bp1u0639js2h7****-proxy-thrift.hbase.rds.aliyuncs.com
 	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// The connection port.
+	//
 	// example:
 	//
 	// 9099
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
+	// The access type of the endpoint. Valid values:
+	//
+	// - **2**: internal network access.
+	//
+	// - **0**: public network access.
+	//
 	// example:
 	//
 	// 2
@@ -518,14 +534,20 @@ func (s *DescribeClusterConnectionResponseBodyThriftConn) Validate() error {
 }
 
 type DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo struct {
+	// The endpoint.
+	//
 	// example:
 	//
 	// ld-bp150tns0sjxs****-master1-001.hbaseue.rds.aliyuncs.com
 	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// The connection port.
+	//
 	// example:
 	//
 	// 443
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
+	// The access type of the endpoint, which is public network access.
+	//
 	// example:
 	//
 	// PUBLIC
@@ -606,18 +628,9 @@ func (s *DescribeClusterConnectionResponseBodyZkConnAddrs) Validate() error {
 }
 
 type DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr struct {
-	// example:
-	//
-	// ld-bp150tns0sjxs****-master1-001.hbaseue.rds.aliyuncs.com
-	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
-	// example:
-	//
-	// 2181
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	// example:
-	//
-	// 2
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) String() string {

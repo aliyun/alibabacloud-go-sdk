@@ -16,6 +16,8 @@ type iListTagsResponseBody interface {
 }
 
 type ListTagsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 36D1BE9B-3C4A-425B-947A-69E3D77999C4
@@ -93,13 +95,7 @@ func (s *ListTagsResponseBodyTags) Validate() error {
 }
 
 type ListTagsResponseBodyTagsTag struct {
-	// example:
-	//
-	// k1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// example:
-	//
-	// v2
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

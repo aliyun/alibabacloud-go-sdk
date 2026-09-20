@@ -22,30 +22,40 @@ type iModifyBackupPlanConfigRequest interface {
 }
 
 type ModifyBackupPlanConfigRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The full backup cycle, in days. Valid values: 3 to 9.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7
 	FullBackupCycle *string `json:"FullBackupCycle,omitempty" xml:"FullBackupCycle,omitempty"`
+	// The number of full backups to retain. Valid values: 3 to 8.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	MinHFileBackupCount *string `json:"MinHFileBackupCount,omitempty" xml:"MinHFileBackupCount,omitempty"`
+	// The time of the next full backup. The specified time must be at least 6 minutes later than the current time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-11-09T18:00:00Z
 	NextFullBackupDate *string `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
+	// The tables to back up. Specify one table name per line. Wildcards are supported. An asterisk (*) indicates all tables.
+	//
 	// This parameter is required.
 	//
 	// example:

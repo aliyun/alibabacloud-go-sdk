@@ -14,6 +14,8 @@ type iCloseBackupResponseBody interface {
 }
 
 type CloseBackupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F1A11940-0C34-4385-864F-A01E29B55F6A

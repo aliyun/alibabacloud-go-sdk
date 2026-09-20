@@ -24,15 +24,21 @@ type iDescribeRestoreTablesResponseBody interface {
 }
 
 type DescribeRestoreTablesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 18D9CC47-D913-48BF-AB6B-4FA9B28FBDB1
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RestoreFull       *DescribeRestoreTablesResponseBodyRestoreFull       `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The full restore details.
+	RestoreFull *DescribeRestoreTablesResponseBodyRestoreFull `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
+	// The incremental restore details.
 	RestoreIncrDetail *DescribeRestoreTablesResponseBodyRestoreIncrDetail `json:"RestoreIncrDetail,omitempty" xml:"RestoreIncrDetail,omitempty" type:"Struct"`
-	RestoreSchema     *DescribeRestoreTablesResponseBodyRestoreSchema     `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
-	RestoreSummary    *DescribeRestoreTablesResponseBodyRestoreSummary    `json:"RestoreSummary,omitempty" xml:"RestoreSummary,omitempty" type:"Struct"`
-	Tables            *DescribeRestoreTablesResponseBodyTables            `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	// The schema restore details.
+	RestoreSchema *DescribeRestoreTablesResponseBodyRestoreSchema `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
+	// The restore summary.
+	RestoreSummary *DescribeRestoreTablesResponseBodyRestoreSummary `json:"RestoreSummary,omitempty" xml:"RestoreSummary,omitempty" type:"Struct"`
+	Tables         *DescribeRestoreTablesResponseBodyTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
 func (s DescribeRestoreTablesResponseBody) String() string {
@@ -127,31 +133,45 @@ func (s *DescribeRestoreTablesResponseBody) Validate() error {
 }
 
 type DescribeRestoreTablesResponseBodyRestoreFull struct {
+	// The total data size.
+	//
 	// example:
 	//
 	// 1.2 kB
 	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The number of failed full restores.
+	//
 	// example:
 	//
 	// 0
 	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize           *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreFullDetails *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
+	// The total speed.
+	//
 	// example:
 	//
 	// 0.00 MB/s
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The number of successful restores.
+	//
 	// example:
 	//
 	// 1
 	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -282,38 +302,14 @@ func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) Validat
 }
 
 type DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail struct {
-	// example:
-	//
-	// 1.2 kB
-	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:51Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// “”
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 14/14
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// example:
-	//
-	// 0.00 MB/s
-	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:45Z
+	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// SUCCEEDED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// default:test1
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) String() string {
@@ -401,30 +397,44 @@ func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFu
 }
 
 type DescribeRestoreTablesResponseBodyRestoreIncrDetail struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2020-11-05T06:45:44Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The completion progress.
+	//
 	// example:
 	//
 	// 0/0
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// The synchronization latency.
+	//
 	// example:
 	//
 	// 0 ms
 	RestoreDelay *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	// The synchronization start position.
+	//
 	// example:
 	//
 	// 2020-11-02T18:00:00Z
 	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
+	// The synchronization position.
+	//
 	// example:
 	//
 	// “”
 	RestoredTs *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2020-11-05T06:45:44Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// SUCCEEDED
@@ -507,23 +517,33 @@ func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) Validate() error {
 }
 
 type DescribeRestoreTablesResponseBodyRestoreSchema struct {
+	// The number of failed restores.
+	//
 	// example:
 	//
 	// 0
 	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize             *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreSchemaDetails *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
+	// The number of successful restores.
+	//
 	// example:
 	//
 	// 1
 	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -636,26 +656,11 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails) Val
 }
 
 type DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail struct {
-	// example:
-	//
-	// 2020-11-05T06:45:18Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// null
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 2020-11-05T06:45:14Z
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// SUCCEEDED
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// default:test1
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) String() string {
@@ -716,26 +721,38 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsResto
 }
 
 type DescribeRestoreTablesResponseBodyRestoreSummary struct {
+	// The completion time.
+	//
 	// example:
 	//
 	// 2020-11-05T06:45:51Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 20201105144514
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The point in time to which data is restored.
+	//
 	// example:
 	//
 	// 2020-11-04T05:15:00Z
 	RestoreToDate *string `json:"RestoreToDate,omitempty" xml:"RestoreToDate,omitempty"`
+	// The restore start time.
+	//
 	// example:
 	//
 	// 2020-11-05T06:45:14Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// SUCCEEDED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The target cluster for the restore.
+	//
 	// example:
 	//
 	// ld-m5e2t34kr54wgxxxx

@@ -22,19 +22,28 @@ type iDescribeActiveOperationTasksResponseBody interface {
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
+	// The list of O&M tasks.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of records per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C634E813-42FA-53D2-A7EB-B881C4B264CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -108,97 +117,182 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
+	// Indicates whether the task can be canceled. Valid values:
+	//
+	// - **0**: The task cannot be canceled.
+	//
+	// - **1**: The task can be canceled.
+	//
 	// example:
 	//
 	// 1
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// Indicates whether the time can be modified. Valid values:
+	//
+	// - **0**: The time cannot be modified.
+	//
+	// - **1**: The time can be modified.
+	//
 	// example:
 	//
 	// 1
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The change level.
+	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The change level name in English.
+	//
 	// example:
 	//
 	// Risk repairment
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
+	// The change level name in Chinese.
+	//
+	// example:
+	//
+	// 风险修复
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
+	// The time when the O&M task was created.
+	//
 	// example:
 	//
 	// 2022-02-15 23:59:59
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The current availability zone.
+	//
 	// example:
 	//
 	// cn-shanghai-et-a
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
+	// The database type. Valid values:
+	//
+	// - **hbaseue**: ApsaraDB for HBase Enhanced Edition.
+	//
+	// - **hbase**: ApsaraDB for HBase Standard Edition.
+	//
+	// - **bds**: BDS data synchronization service.
+	//
 	// example:
 	//
 	// hbaseue
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The database version.
+	//
 	// example:
 	//
 	// 2.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// The latest time to which the O&M task execution time can be adjusted.
+	//
 	// example:
 	//
 	// 2022-02-19 23:59:59
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	// The O&M task ID.
+	//
 	// example:
 	//
 	// 111111
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The business impact in English.
+	//
 	// example:
 	//
 	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
+	// The business impact in Chinese.
+	//
+	// example:
+	//
+	// 中断
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
 	// --
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
+	// The HBase instance ID.
+	//
 	// example:
 	//
 	// ld-bp150tns0sjxs****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The time when the O&M task was modified.
+	//
 	// example:
 	//
 	// 2022-02-19 14:00:00
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The preparation time required between the start time of the O&M task and the switchover time.
+	//
 	// example:
 	//
 	// 14:00:00
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hanghzou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The description of the execution result.
+	//
 	// example:
 	//
 	// --
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
+	// The time when the O&M task starts to be executed.
+	//
 	// example:
 	//
 	// 2022-02-19 10:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task running status. Valid values:
+	//
+	// - **2**: Waiting for the user to specify a time.
+	//
+	// - **3**: Waiting for processing.
+	//
+	// - **4**: Processing.
+	//
+	// - **5**: Succeeded.
+	//
+	// - **6**: Failed.
+	//
+	// - **7**: Canceled.
+	//
 	// example:
 	//
 	// 5
 	Status      *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
+	// The time when the system initiates the switchover.
+	//
 	// example:
 	//
 	// 2022-02-19 14:00:00
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The task type. The value **rds_apsaradb_upgrade*	- indicates a minor version upgrade.
+	//
 	// example:
 	//
 	// rds_apsaradb_upgrade
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The task type in English.
+	//
 	// example:
 	//
 	// rds_apsaradb_upgrade
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
+	// The task type in Chinese.
+	//
+	// example:
+	//
+	// 小版本升级
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 

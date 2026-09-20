@@ -20,22 +20,32 @@ type iResizeNodeCountRequest interface {
 }
 
 type ResizeNodeCountRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp16o0pd52e3y****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of core nodes in the cluster.
+	//
+	// You can add up to 50 nodes at a time, and the total number of nodes can be scaled up to 250. If you have additional requirements, submit a ticket.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp191otqj1ssyl****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-f

@@ -14,6 +14,8 @@ type iRelateDbForHBaseHaResponseBody interface {
 }
 
 type RelateDbForHBaseHaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DC654531-0799-4502-AFA5-80EE1C16829A

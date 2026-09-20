@@ -7,6 +7,10 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Adds a self-managed HDFS address to Xpack.
+//
 // @param request - AddUserHdfsInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -55,6 +59,10 @@ func (client *Client) AddUserHdfsInfoWithContext(ctx context.Context, request *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a public endpoint.
+//
 // @param request - AllocatePublicNetworkAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -99,6 +107,10 @@ func (client *Client) AllocatePublicNetworkAddressWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels O&M event tasks by calling the CancelActiveOperationTasks operation.
+//
 // @param request - CancelActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -159,6 +171,10 @@ func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the versions of components are the latest versions by calling CheckComponentsVersion.
+//
 // @param request - CheckComponentsVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -203,6 +219,10 @@ func (client *Client) CheckComponentsVersionWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the backup and recovery feature for an HBase cluster by calling CloseBackup.
+//
 // @param request - CloseBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -243,6 +263,14 @@ func (client *Client) CloseBackupWithContext(ctx context.Context, request *Close
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts an instance from pay-as-you-go to subscription billing.
+//
+// Description:
+//
+// Note: This operation can be called only when payType is set to Postpaid.
+//
 // @param request - ConvertInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -297,7 +325,11 @@ func (client *Client) ConvertInstanceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 新建账户
+// Creates a wide table account.
+//
+// Description:
+//
+// Only ApsaraDB for HBase Performance-enhanced Edition is supported.
 //
 // @param request - CreateAccountRequest
 //
@@ -347,6 +379,14 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a backup plan. Currently, only HBaseue is supported.
+//
+// Description:
+//
+// Currently, this operation supports only HBaseue clusters. The EnableHBaseueBackup operation is compatible with this operation and performs automatic creation of a backup plan after a BDS cluster is created.
+//
 // @param request - CreateBackupPlanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -387,6 +427,10 @@ func (client *Client) CreateBackupPlanWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an ApsaraDB for HBase cluster by calling CreateCluster.
+//
 // @param request - CreateClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -507,6 +551,10 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global resource in a cluster by calling CreateGlobalResource.
+//
 // @param request - CreateGlobalResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -563,6 +611,10 @@ func (client *Client) CreateGlobalResourceWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a load balancing service by calling CreateHBaseSlbServer.
+//
 // @param request - CreateHBaseSlbServerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -611,6 +663,10 @@ func (client *Client) CreateHBaseSlbServerWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a high-availability Thrift or Phoenix service for a BDS cluster that already has a high-availability HBase setup.
+//
 // @param request - CreateHbaseHaSlbRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -667,6 +723,14 @@ func (client *Client) CreateHbaseHaSlbWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a multi-zone cluster by calling CreateMultiZoneCluster.
+//
+// Description:
+//
+// Currently, only version 2.0 of the HBaseue engine is supported.
+//
 // @param request - CreateMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -819,6 +883,14 @@ func (client *Client) CreateMultiZoneClusterWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores backed-up data from a cluster with the backup and restore feature enabled to another ApsaraDB for HBase Performance-enhanced Edition cluster in the same region.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and restore feature is enabled for the ApsaraDB for HBase Performance-enhanced Edition cluster and that the target ApsaraDB for HBase Performance-enhanced Edition cluster is associated with the corresponding BDS.
+//
 // @param request - CreateRestorePlanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -879,6 +951,10 @@ func (client *Client) CreateRestorePlanWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an HBase Serverless cluster.
+//
 // @param request - CreateServerlessClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -989,7 +1065,11 @@ func (client *Client) CreateServerlessClusterWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除账户
+// # Delete Wide Table Database Account
+//
+// Description:
+//
+// Only supported for HBase Enhanced Edition (HBaseue).
 //
 // @param request - DeleteAccountRequest
 //
@@ -1035,6 +1115,10 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global resource from a cluster by calling DeleteGlobalResource.
+//
 // @param request - DeleteGlobalResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1087,6 +1171,10 @@ func (client *Client) DeleteGlobalResourceWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a created HA instance.
+//
 // @param request - DeleteHBaseHaDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1131,6 +1219,10 @@ func (client *Client) DeleteHBaseHaDBWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteHBaseSlbServer to delete an activated load balancing service.
+//
 // @param request - DeleteHBaseSlbServerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1175,6 +1267,10 @@ func (client *Client) DeleteHBaseSlbServerWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the corresponding high-availability Thrift or high-availability Phoenix configuration. This operation is the counterpart of the CreateHbaseHaSlb operation.
+//
 // @param request - DeleteHbaseHaSlbRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1223,6 +1319,20 @@ func (client *Client) DeleteHbaseHaSlbWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteInstance to release an HBase instance.
+//
+// Description:
+//
+// When you call this operation, the instance must meet the following conditions:
+//
+// - The instance status is **Running**.
+//
+// - The billing method of the instance is **pay-as-you-go**.
+//
+// > Subscription instances cannot be deleted by calling this operation. They are automatically released upon expiration. To release a subscription instance in advance, submit a ticket.
+//
 // @param request - DeleteInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1267,6 +1377,10 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a multi-zone instance by calling the DeleteMultiZoneCluster operation.
+//
 // @param request - DeleteMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1311,6 +1425,10 @@ func (client *Client) DeleteMultiZoneClusterWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an HBase Serverless cluster.
+//
 // @param request - DeleteServerlessClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1359,6 +1477,10 @@ func (client *Client) DeleteServerlessClusterWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DeleteUserHdfsInfo to delete user-created HDFS information in Xpack.
+//
 // @param request - DeleteUserHdfsInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1405,7 +1527,7 @@ func (client *Client) DeleteUserHdfsInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询账户列表
+// Queries the list of database accounts.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -1447,6 +1569,10 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeActiveOperationTaskType operation to query the O&M task types, the number of tasks of each type, and the details of an HBase instance.
+//
 // @param request - DescribeActiveOperationTaskTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1507,6 +1633,10 @@ func (client *Client) DescribeActiveOperationTaskTypeWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the DescribeActiveOperationTasks operation to query details of O&M tasks for HBase instances.
+//
 // @param request - DescribeActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1607,6 +1737,10 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available resources by calling DescribeAvailableResource.
+//
 // @param request - DescribeAvailableResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1671,6 +1805,14 @@ func (client *Client) DescribeAvailableResourceWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration of a backup plan by calling the DescribeBackupPlanConfig operation.
+//
+// Description:
+//
+// This operation currently supports only HBaseue. Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue instance.
+//
 // @param request - DescribeBackupPlanConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1711,6 +1853,10 @@ func (client *Client) DescribeBackupPlanConfigWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup policy of an HBase cluster by calling DescribeBackupPolicy.
+//
 // @param request - DescribeBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1751,6 +1897,10 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Describes the status of a backup task by calling the DescribeBackupStatus operation.
+//
 // @param request - DescribeBackupStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1791,6 +1941,14 @@ func (client *Client) DescribeBackupStatusWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// After HBase Enhanced Edition backup is enabled, you can call the DescribeBackupSummary operation to query backup details.
+//
+// Description:
+//
+// The backup and restore feature of the HBase Enhanced Edition instance is enabled. For more information, see [Enable backup and restore](https://help.aliyun.com/document_detail/145767.html).
+//
 // @param request - DescribeBackupSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1839,6 +1997,14 @@ func (client *Client) DescribeBackupSummaryWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup table information of a specific backup record by calling the DescribeBackupTables operation.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that backup records exist. You can call the DescribeBackupSummary operation to obtain backup records.
+//
 // @param request - DescribeBackupTablesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1891,6 +2057,10 @@ func (client *Client) DescribeBackupTablesWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves backup records of an ApsaraDB for HBase cluster by calling DescribeBackups.
+//
 // @param request - DescribeBackupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1959,6 +2129,10 @@ func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the connection list of a cluster by calling DescribeClusterConnection.
+//
 // @param request - DescribeClusterConnectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2003,6 +2177,10 @@ func (client *Client) DescribeClusterConnectionWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeColdStorage to retrieve the cold storage information of an instance.
+//
 // @param request - DescribeColdStorageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2043,6 +2221,10 @@ func (client *Client) DescribeColdStorageWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeDBInstanceUsage to retrieve the running watermark status of an HBase cluster by cluster ID.
+//
 // @param request - DescribeDBInstanceUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2083,6 +2265,14 @@ func (client *Client) DescribeDBInstanceUsageWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of clusters that have been deleted but not fully released.
+//
+// Description:
+//
+// By default, cluster resources are fully cleaned up 7 days after deletion. If you have called the PurgeInstance operation or set ImmediateDeleteFlag to true when calling the delete operation, the resources have already been fully cleaned up.
+//
 // @param request - DescribeDeletedInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2131,6 +2321,10 @@ func (client *Client) DescribeDeletedInstancesWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Currently, only HBase and HBaseue are supported.
+//
 // @param request - DescribeDiskWarningLineRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2171,6 +2365,10 @@ func (client *Client) DescribeDiskWarningLineWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the database connection information of an ApsaraDB for HBase instance by calling DescribeEndpoints.
+//
 // @param request - DescribeEndpointsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2211,6 +2409,10 @@ func (client *Client) DescribeEndpointsWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an ApsaraDB for HBase instance.
+//
 // @param request - DescribeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2251,6 +2453,16 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instance specifications (CPU and memory) by calling DescribeInstanceType.
+//
+// Description:
+//
+// The complete specification mapping table is based on the list returned by this operation.
+//
+// If the response returns an "instanceType is not found" error, the specification has been deprecated. If you have a strong dependency on this specification, contact the Alibaba Cloud HBase management team.
+//
 // @param request - DescribeInstanceTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2291,6 +2503,10 @@ func (client *Client) DescribeInstanceTypeWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of ApsaraDB for HBase instances in a specified region by calling DescribeInstances.
+//
 // @param request - DescribeInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2359,6 +2575,10 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the IP whitelist information of a cluster by cluster ID.
+//
 // @param request - DescribeIpWhitelistRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2399,6 +2619,10 @@ func (client *Client) DescribeIpWhitelistWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available region and zone combinations for multi-zone deployment by calling DescribeMultiZoneAvailableRegions.
+//
 // @param request - DescribeMultiZoneAvailableRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2439,6 +2663,10 @@ func (client *Client) DescribeMultiZoneAvailableRegionsWithContext(ctx context.C
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries purchasable resources in multiple zones by calling DescribeMultiZoneAvailableResource.
+//
 // @param request - DescribeMultiZoneAvailableResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2487,6 +2715,10 @@ func (client *Client) DescribeMultiZoneAvailableResourceWithContext(ctx context.
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a multi-zone instance.
+//
 // @param request - DescribeMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2527,6 +2759,14 @@ func (client *Client) DescribeMultiZoneClusterWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the recoverable time range after backup is enabled for an HBaseue cluster.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster.
+//
 // @param request - DescribeRecoverableTimeRangeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2567,6 +2807,10 @@ func (client *Client) DescribeRecoverableTimeRangeWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions by calling DescribeRegions.
+//
 // @param request - DescribeRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2611,6 +2855,14 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a specific full restoration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist. You can call DescribeRestoreSummary to obtain restoration records.
+//
 // @param request - DescribeRestoreFullDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2663,6 +2915,14 @@ func (client *Client) DescribeRestoreFullDetailsWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an incremental restoration by calling the DescribeRestoreIncrDetail operation.
+//
+// Description:
+//
+// Before you call this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist. You can call the DescribeRestoreSummary operation to obtain restoration records.
+//
 // @param request - DescribeRestoreIncrDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2707,6 +2967,14 @@ func (client *Client) DescribeRestoreIncrDetailWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of schema restoration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restoration records exist.
+//
 // @param request - DescribeRestoreSchemaDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2759,6 +3027,14 @@ func (client *Client) DescribeRestoreSchemaDetailsWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the data recovery summary for an HBaseue cluster that has backup and recovery enabled by calling the DescribeRestoreSummary operation.
+//
+// Description:
+//
+// Before calling this operation, make sure that backup and recovery is enabled for the HBaseue cluster.
+//
 // @param request - DescribeRestoreSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2807,6 +3083,14 @@ func (client *Client) DescribeRestoreSummaryWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of a restore record for a cluster that has been restored from a backup.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster and that restore records exist. You can call DescribeRestoreSummary to obtain restore records.
+//
 // @param request - DescribeRestoreTablesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2851,6 +3135,10 @@ func (client *Client) DescribeRestoreTablesWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeSecurityGroups to retrieve the security group information of a cluster by cluster ID.
+//
 // @param request - DescribeSecurityGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2891,6 +3179,10 @@ func (client *Client) DescribeSecurityGroupsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a serverless cluster by calling DescribeServerlessCluster.
+//
 // @param request - DescribeServerlessClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2935,6 +3227,10 @@ func (client *Client) DescribeServerlessClusterWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeSubDomain to retrieve an available subdomain.
+//
 // @param request - DescribeSubDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2979,6 +3275,10 @@ func (client *Client) DescribeSubDomainWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables backup and recovery for an HBaseue cluster.
+//
 // @param request - EnableHBaseueBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3031,6 +3331,10 @@ func (client *Client) EnableHBaseueBackupWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the EnableHBaseueModule operation to enable an extension service.
+//
 // @param request - EnableHBaseueModuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3139,6 +3443,10 @@ func (client *Client) EnableHBaseueModuleWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the EvaluateMultiZoneResource operation to evaluate whether available resources exist.
+//
 // @param request - EvaluateMultiZoneResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3287,6 +3595,14 @@ func (client *Client) EvaluateMultiZoneResourceWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the monitoring URL based on the cluster ID.
+//
+// Description:
+//
+// CloudMonitor has been migrated. This operation is no longer in use. Access monitoring from the Monitoring and Alerts page in cluster management.
+//
 // @param request - GetMultimodeCmsUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3333,7 +3649,7 @@ func (client *Client) GetMultimodeCmsUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 授权账户权限
+// Grants permissions to an account.
 //
 // @param request - GrantRequest
 //
@@ -3391,6 +3707,10 @@ func (client *Client) GrantWithContext(ctx context.Context, request *GrantReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ListHBaseInstances to retrieve ApsaraDB for HBase instances within the same VPC.
+//
 // @param request - ListHBaseInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3431,6 +3751,10 @@ func (client *Client) ListHBaseInstancesWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the modification history of cluster parameters by calling ListInstanceServiceConfigHistories.
+//
 // @param request - ListInstanceServiceConfigHistoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3479,6 +3803,10 @@ func (client *Client) ListInstanceServiceConfigHistoriesWithContext(ctx context.
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the configuration items of a cluster by calling ListInstanceServiceConfigurations.
+//
 // @param request - ListInstanceServiceConfigurationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3527,6 +3855,14 @@ func (client *Client) ListInstanceServiceConfigurationsWithContext(ctx context.C
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of tags by ResourceId or Tag (query by Key only, or by both Key and Value).
+//
+// Description:
+//
+// You must specify at least one of the ResourceId and Tag parameters. Otherwise, an error is returned.
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3579,6 +3915,10 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves all labels in a specified region.
+//
 // @param request - ListTagsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3621,7 +3961,7 @@ func (client *Client) ListTagsWithContext(ctx context.Context, request *ListTags
 
 // Summary:
 //
-// 更改账户密码
+// Changes the password of a database access account.
 //
 // @param request - ModifyAccountPasswordRequest
 //
@@ -3671,6 +4011,14 @@ func (client *Client) ModifyAccountPasswordWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyActiveOperationTasks operation to modify the scheduled switchover time of O&M tasks.
+//
+// Description:
+//
+// In addition to notifications sent by text message, phone call, email, or internal message, O&M events of ApsaraDB for HBase (such as minor engine version updates) are also displayed in the console. In addition to calling this operation to modify the scheduled switchover time, you can also modify it in the console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/405057.html).
+//
 // @param request - ModifyActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3739,6 +4087,14 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the backup configuration for an HBaseue cluster that has backup and recovery enabled.
+//
+// Description:
+//
+// Before calling this operation, make sure that the backup and recovery feature is enabled for the HBaseue cluster.
+//
 // @param request - ModifyBackupPlanConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3795,6 +4151,10 @@ func (client *Client) ModifyBackupPlanConfigWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyBackupPolicy to modify the backup plan of an HBase cluster.
+//
 // @param request - ModifyBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3851,6 +4211,10 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the deletion protection attribute of an instance by calling ModifyClusterDeletionProtection.
+//
 // @param request - ModifyClusterDeletionProtectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3895,6 +4259,10 @@ func (client *Client) ModifyClusterDeletionProtectionWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the disk capacity alert threshold for HBase Cluster Edition and HBaseue clusters. The default alert threshold is 80%.
+//
 // @param request - ModifyDiskWarningLineRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3939,6 +4307,10 @@ func (client *Client) ModifyDiskWarningLineWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ModifyInstanceMaintainTime operation to modify the O&M window start time of an instance.
+//
 // @param request - ModifyInstanceMaintainTimeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3987,6 +4359,10 @@ func (client *Client) ModifyInstanceMaintainTimeWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of an instance by calling ModifyInstanceName.
+//
 // @param request - ModifyInstanceNameRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4043,6 +4419,10 @@ func (client *Client) ModifyInstanceNameWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyInstanceServiceConfig to modify cluster configurations. You can call the ListInstanceServiceConfigurations operation to query the configuration items that can be modified.
+//
 // @param request - ModifyInstanceServiceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4099,6 +4479,10 @@ func (client *Client) ModifyInstanceServiceConfigWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifyInstanceType to change the specifications of an instance.
+//
 // @param request - ModifyInstanceTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4147,6 +4531,10 @@ func (client *Client) ModifyInstanceTypeWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP whitelist group of an instance by calling ModifyIpWhitelist.
+//
 // @param request - ModifyIpWhitelistRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4199,6 +4587,10 @@ func (client *Client) ModifyIpWhitelistWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the node specifications of a multi-zone instance by calling ModifyMultiZoneClusterNodeType.
+//
 // @param request - ModifyMultiZoneClusterNodeTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4251,6 +4643,10 @@ func (client *Client) ModifyMultiZoneClusterNodeTypeWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ModifySecurityGroups to modify the security groups associated with a cluster.
+//
 // @param request - ModifySecurityGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4295,6 +4691,10 @@ func (client *Client) ModifySecurityGroupsWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password for accessing the cluster management UI by calling ModifyUIProxyAccountPassword.
+//
 // @param request - ModifyUIAccountPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4343,6 +4743,10 @@ func (client *Client) ModifyUIAccountPasswordWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a target instance to a target resource group.
+//
 // @param request - MoveResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4387,6 +4791,10 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the backup and recovery feature for an ApsaraDB for HBase cluster by calling OpenBackup.
+//
 // @param request - OpenBackupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4427,6 +4835,10 @@ func (client *Client) OpenBackupWithContext(ctx context.Context, request *OpenBa
 	return _result, _err
 }
 
+// Summary:
+//
+// Completely cleans up an instance that has been deleted (within the last 7 days) but not fully cleaned up.
+//
 // @param request - PurgeInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4467,6 +4879,10 @@ func (client *Client) PurgeInstanceWithContext(ctx context.Context, request *Pur
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the high-availability HBase list for a BDS cluster. This operation corresponds to CreateHaCluster and CreateHbaseHaSlb. It returns the corresponding high-availability list.
+//
 // @param request - QueryHBaseHaDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4507,6 +4923,10 @@ func (client *Client) QueryHBaseHaDBWithContext(ctx context.Context, request *Qu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of databases that can be associated with the current instance by calling QueryXpackRelateDB.
+//
 // @param request - QueryXpackRelateDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4555,6 +4975,10 @@ func (client *Client) QueryXpackRelateDBWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an active-active instance pair to a BDS cluster.
+//
 // @param request - RelateDbForHBaseHaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4675,6 +5099,10 @@ func (client *Client) RelateDbForHBaseHaWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an instance.
+//
 // @param request - ReleasePublicNetworkAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4715,6 +5143,14 @@ func (client *Client) ReleasePublicNetworkAddressWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews a subscription for an HBase instance.
+//
+// Description:
+//
+// This operation applies only to subscription HBase instances.
+//
 // @param request - RenewInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4763,6 +5199,10 @@ func (client *Client) RenewInstanceWithContext(ctx context.Context, request *Ren
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the cold storage size.
+//
 // @param request - ResizeColdStorageSizeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4807,6 +5247,10 @@ func (client *Client) ResizeColdStorageSizeWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ResizeDiskSize to resize a disk.
+//
 // @param request - ResizeDiskSizeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4851,6 +5295,10 @@ func (client *Client) ResizeDiskSizeWithContext(ctx context.Context, request *Re
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the ResizeMultiZoneClusterDiskSize operation to modify the disk size of a multi-zone instance.
+//
 // @param request - ResizeMultiZoneClusterDiskSizeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4899,6 +5347,10 @@ func (client *Client) ResizeMultiZoneClusterDiskSizeWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Scales out nodes for a multi-zone instance by calling the ResizeMultiZoneClusterNodeCount operation.
+//
 // @param request - ResizeMultiZoneClusterNodeCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4967,6 +5419,14 @@ func (client *Client) ResizeMultiZoneClusterNodeCountWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls ResizeNodeCount to adjust the number of nodes for an instance.
+//
+// Description:
+//
+// Scales up the number of core nodes in a cluster. You can add up to 50 nodes at a time, and the total number of nodes can be scaled up to 250. If you have additional requirements, submit a ticket.
+//
 // @param request - ResizeNodeCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5019,6 +5479,10 @@ func (client *Client) ResizeNodeCountWithContext(ctx context.Context, request *R
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts an HBase cluster by calling RestartInstance.
+//
 // @param request - RestartInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5065,7 +5529,7 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 回收账户权限
+// Revokes permissions from a wide table account.
 //
 // @param request - RevokeRequest
 //
@@ -5123,6 +5587,10 @@ func (client *Client) RevokeWithContext(ctx context.Context, request *RevokeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a primary/secondary switchover for high-availability Thrift or high-availability Phoenix. This operation corresponds to the CreateHbaseHaSlb operation.
+//
 // @param request - SwitchHbaseHaSlbRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5177,7 +5645,13 @@ func (client *Client) SwitchHbaseHaSlbWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 开通/关闭 扩展服务
+// # Enable or disable an extension service
+//
+// Description:
+//
+// # Extension service
+//
+// For example: the Lindorm service compatible with the HBaseProxy protocol.
 //
 // @param request - SwitchServiceRequest
 //
@@ -5227,6 +5701,10 @@ func (client *Client) SwitchServiceWithContext(ctx context.Context, request *Swi
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instances.
+//
 // @param request - TagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5275,6 +5753,10 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 	return _result, _err
 }
 
+// Summary:
+//
+// Untags resources. This operation is the counterpart of TagResources.
+//
 // @param request - UnTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5327,6 +5809,10 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, request *Un
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of a cluster by calling UpgradeMinorVersion.
+//
 // @param request - UpgradeMinorVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5371,6 +5857,10 @@ func (client *Client) UpgradeMinorVersionWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the minor version of components for a multi-zone instance by calling the UpgradeMultiZoneCluster operation.
+//
 // @param request - UpgradeMultiZoneClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5431,6 +5921,10 @@ func (client *Client) UpgradeMultiZoneClusterWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a database by calling XpackRelateDB.
+//
 // @param request - XpackRelateDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

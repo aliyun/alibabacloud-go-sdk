@@ -16,10 +16,14 @@ type iRenewInstanceResponseBody interface {
 }
 
 type RenewInstanceResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 211235614240728
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 729CB2A7-3065-53A9-B27C-7033CA4881D9

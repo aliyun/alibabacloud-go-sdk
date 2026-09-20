@@ -18,16 +18,22 @@ type iListInstanceServiceConfigurationsRequest interface {
 }
 
 type ListInstanceServiceConfigurationsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1

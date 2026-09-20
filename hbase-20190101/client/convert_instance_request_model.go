@@ -20,20 +20,40 @@ type iConvertInstanceRequest interface {
 }
 
 type ConvertInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp16o0pd52e3y****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The subscription duration. Valid values:
+	//
+	// - If PricingCycle is set to year, the value ranges from 1 to 3.
+	//
+	// - If PricingCycle is set to month, the value ranges from 1 to 9.
+	//
 	// example:
 	//
 	// 7
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Prepaid**: subscription.
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription period. Valid values:
+	//
+	// - year: year.
+	//
+	// - month: month.
+	//
 	// example:
 	//
 	// month

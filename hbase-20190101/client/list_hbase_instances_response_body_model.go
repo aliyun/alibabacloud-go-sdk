@@ -17,6 +17,8 @@ type iListHBaseInstancesResponseBody interface {
 
 type ListHBaseInstancesResponseBody struct {
 	Instances *ListHBaseInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 89F81C30-320B-4550-91DB-C37C81D2358F
@@ -93,18 +95,9 @@ func (s *ListHBaseInstancesResponseBodyInstances) Validate() error {
 }
 
 type ListHBaseInstancesResponseBodyInstancesInstance struct {
-	// example:
-	//
-	// hb-t4naqsay5gn****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// name_test
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// example:
-	//
-	// false
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 }
 
 func (s ListHBaseInstancesResponseBodyInstancesInstance) String() string {

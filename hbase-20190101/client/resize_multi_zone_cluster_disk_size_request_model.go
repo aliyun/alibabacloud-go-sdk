@@ -18,16 +18,22 @@ type iResizeMultiZoneClusterDiskSizeRequest interface {
 }
 
 type ResizeMultiZoneClusterDiskSizeRequest struct {
+	// The ID of the multi-zone instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-f5d6vc2r8d6****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The disk size of core nodes. The value must be greater than the current disk size and must be a multiple of 40. Unit: GB. Maximum value: 64000.
+	//
 	// example:
 	//
 	// 480
 	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// The disk size of log nodes. The value must be greater than the current disk size of log nodes and must be a multiple of 40. Unit: GB. Maximum value: 8000.
+	//
 	// example:
 	//
 	// 440

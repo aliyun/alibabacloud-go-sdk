@@ -23,18 +23,26 @@ type iDescribeDeletedInstancesResponseBody interface {
 
 type DescribeDeletedInstancesResponseBody struct {
 	Instances *DescribeDeletedInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0CAC5702-C862-44C0-AD54-C9CE70F4B246
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -138,54 +146,18 @@ func (s *DescribeDeletedInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeDeletedInstancesResponseBodyInstancesInstance struct {
-	// example:
-	//
-	// cluster
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// example:
-	//
-	// 2020-11-02T07:16:07Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// example:
-	//
-	// 2020-11-02T07:27:24Z
-	DeleteTime *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
-	// example:
-	//
-	// hbase
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// example:
-	//
-	// hb-bp10q7n2zdw12xxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// e2e-test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// example:
-	//
-	// 2.0
-	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	// example:
-	//
-	// null
+	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DeleteTime         *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MajorVersion       *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	// example:
-	//
-	// null
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// DELETED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-f
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ParentId           *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDeletedInstancesResponseBodyInstancesInstance) String() string {

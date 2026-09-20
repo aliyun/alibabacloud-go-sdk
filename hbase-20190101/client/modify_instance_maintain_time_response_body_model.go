@@ -14,6 +14,8 @@ type iModifyInstanceMaintainTimeResponseBody interface {
 }
 
 type ModifyInstanceMaintainTimeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C9085433-A56A-4089-B49A-DF5A4E2B7B06

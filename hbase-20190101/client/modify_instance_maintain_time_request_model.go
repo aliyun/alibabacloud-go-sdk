@@ -18,18 +18,24 @@ type iModifyInstanceMaintainTimeRequest interface {
 }
 
 type ModifyInstanceMaintainTimeRequest struct {
+	// The ID of the instance for which you want to modify the O&M window. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-bp1b**6jco89****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end time of the instance O&M window. Specify the time in the HH:mmZ format in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 06:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the instance O&M window. Specify the time in the HH:mmZ format in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:

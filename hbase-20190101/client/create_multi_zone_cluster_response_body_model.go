@@ -18,14 +18,20 @@ type iCreateMultiZoneClusterResponseBody interface {
 }
 
 type CreateMultiZoneClusterResponseBody struct {
+	// The instance ID of the ApsaraDB for HBase multi-zone database instance that is active.
+	//
 	// example:
 	//
 	// ld-t4nn71xa0yn56****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 23232453****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F68E8F5-0377-4CF8-8B1D-FFFD6F5804D5

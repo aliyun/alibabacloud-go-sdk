@@ -14,6 +14,8 @@ type iModifyInstanceNameResponseBody interface {
 }
 
 type ModifyInstanceNameResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 959DA199-54E5-569D-AD46-92BED8515E62

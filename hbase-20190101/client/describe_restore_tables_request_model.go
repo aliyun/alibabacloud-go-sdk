@@ -16,12 +16,16 @@ type iDescribeRestoreTablesRequest interface {
 }
 
 type DescribeRestoreTablesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The restore record ID. You can call the DescribeRestoreSummary operation to obtain this value.
+	//
 	// This parameter is required.
 	//
 	// example:

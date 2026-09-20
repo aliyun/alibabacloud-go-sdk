@@ -14,6 +14,8 @@ type iDescribeBackupPlanConfigRequest interface {
 }
 
 type DescribeBackupPlanConfigRequest struct {
+	// The ID of the cluster for which the backup plan is executed.
+	//
 	// This parameter is required.
 	//
 	// example:

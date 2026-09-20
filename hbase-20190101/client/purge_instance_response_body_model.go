@@ -14,6 +14,8 @@ type iPurgeInstanceResponseBody interface {
 }
 
 type PurgeInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 276F899F-E952-496F-81B8-BD46D86854E3

@@ -25,22 +25,44 @@ type iDescribeEndpointsResponseBody interface {
 
 type DescribeEndpointsResponseBody struct {
 	ConnAddrs *DescribeEndpointsResponseBodyConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Struct"`
+	// The engine type of the instance. Valid values:
+	//
+	// - **hbaseue**
+	//
+	// - **hbase**
+	//
+	// - **spark**
+	//
+	// - **geomesa**.
+	//
 	// example:
 	//
 	// hbaseue
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// - **VPC**: virtual private cloud.
+	//
+	// - **CLASSIC**: classic network.
+	//
 	// example:
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F072593C-5234-5B56-9F63-3C7A3AD85D66
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The vSwitch ID. This parameter is returned only when NetType is set to **VPC**.
+	//
 	// example:
 	//
 	// vsw-bp1foll427ze3d4ps****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID. This parameter is returned only when NetType is set to **VPC**.
+	//
 	// example:
 	//
 	// vpc-bp15s22y1a7sff5gj****
@@ -153,22 +175,10 @@ func (s *DescribeEndpointsResponseBodyConnAddrs) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyConnAddrsConnAddrInfo struct {
-	// example:
-	//
-	// ****
-	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
-	// example:
-	//
-	// ****
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	// example:
-	//
-	// zkConn
-	ConnType *string `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
-	// example:
-	//
-	// 2
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	ConnType     *string `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) String() string {

@@ -14,6 +14,8 @@ type iModifyDiskWarningLineResponseBody interface {
 }
 
 type ModifyDiskWarningLineResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FC4A930D-3AEE-4C9D-BC70-C0F2EEEAA174

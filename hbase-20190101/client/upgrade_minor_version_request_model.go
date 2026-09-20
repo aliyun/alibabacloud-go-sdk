@@ -16,12 +16,16 @@ type iUpgradeMinorVersionRequest interface {
 }
 
 type UpgradeMinorVersionRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The names of the components to upgrade. Separate multiple component names with commas (,).
+	//
 	// example:
 	//
 	// HADOOP

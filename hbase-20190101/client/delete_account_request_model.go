@@ -16,12 +16,16 @@ type iDeleteAccountRequest interface {
 }
 
 type DeleteAccountRequest struct {
+	// The name of the existing account to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test01
+	// test01****
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,14 +18,20 @@ type iCreateClusterResponseBody interface {
 }
 
 type CreateClusterResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// hb-bp1hy2sjf8gd****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 23232069786****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E19E345-101D-4014-946C-A205

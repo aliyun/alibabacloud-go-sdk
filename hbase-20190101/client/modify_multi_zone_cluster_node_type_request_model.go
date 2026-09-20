@@ -20,20 +20,28 @@ type iModifyMultiZoneClusterNodeTypeRequest interface {
 }
 
 type ModifyMultiZoneClusterNodeTypeRequest struct {
+	// The ID of the multi-zone instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-dj45g7d6rbrd****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The node specifications of the core node. For valid values, refer to DescribeInstanceType.
+	//
 	// example:
 	//
 	// hbase.sn1.large
 	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// The node specifications of the log node. For valid values, refer to DescribeInstanceType.
+	//
 	// example:
 	//
 	// hbase.sn1.2xlarge
 	LogInstanceType *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// The node specifications of the master node. For valid values, refer to DescribeInstanceType.
+	//
 	// example:
 	//
 	// hbase.sn1.8xlarge

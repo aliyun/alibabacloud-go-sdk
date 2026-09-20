@@ -14,6 +14,8 @@ type iRestartInstanceResponseBody interface {
 }
 
 type RestartInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F744E939-D08D-5623-82C8-9D1F9F7685D1

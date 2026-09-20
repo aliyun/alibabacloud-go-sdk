@@ -16,12 +16,16 @@ type iDescribeClusterConnectionRequest interface {
 }
 
 type DescribeClusterConnectionRequest struct {
+	// The ID of target instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to obtain target instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-bp150tns0sjxs****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/144489.html) operation to obtain the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

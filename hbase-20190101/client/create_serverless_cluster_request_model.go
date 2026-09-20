@@ -48,78 +48,146 @@ type iCreateServerlessClusterRequest interface {
 }
 
 type CreateServerlessClusterRequest struct {
+	// The auto-renewal period of the instance. Unit: months.
+	//
+	// > <ul><li>The default value of the auto-renewal period is 0, which indicates that the instance is not automatically renewed after the instance expires.</li>
+	//
+	// <li>For example, if the auto-renewal period is set to 2, the instance is automatically renewed for two months after the instance expires.</li></ul>
+	//
 	// example:
 	//
 	// 2
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The parameter that identifies the source of the creation request. For public cloud, leave this parameter empty.
+	//
 	// example:
 	//
 	// xx
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// serverless-name
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The disk type of the instance. Valid values:
+	//
+	// - **cloud_efficiency**: ultra cloud disk.
+	//
+	// - **cloud_ssd**: standard SSD.
+	//
+	// - **local_hdd_pro**: local HDD.
+	//
+	// - **local_ssd_pro**: local SSD.
+	//
+	// - **cloud_essd_pl1**: ESSD.
+	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The engine type of the HBase Serverless instance. Set the value to **serverlesshbase**.
+	//
 	// example:
 	//
 	// serverlesshbase
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The DPI engine version.
+	//
 	// example:
 	//
 	// 2.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Prepaid**: subscription.
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The subscription duration of the subscription instance. Valid values:
+	//
+	// - If PeriodUnit is set to year, valid values are **1*	- to **3**.
+	//
+	// - If PeriodUnit is set to month, valid values are **1*	- to **9**.
+	//
+	// > This parameter is required only when the billing method of the instance is **Prepaid**.
+	//
 	// example:
 	//
 	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration for the subscription instance. Valid values:
+	//
+	// - **year**: year.
+	//
+	// - **month**: month.
+	//
+	// > This parameter is required only when the billing method of the instance is **Prepaid**.
+	//
 	// example:
 	//
 	// month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/144489.html) operation to query the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. For more information about resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	//
 	// example:
 	//
 	// rg-j4d53glb3****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The processing capability per unit. Unit: CU.
+	//
 	// example:
 	//
 	// 1000
 	ServerlessCapability *int32 `json:"ServerlessCapability,omitempty" xml:"ServerlessCapability,omitempty"`
+	// The specification type. Valid values: leave empty or **serverless.small**.
+	//
 	// example:
 	//
 	// serverless.small
 	ServerlessSpec *string `json:"ServerlessSpec,omitempty" xml:"ServerlessSpec,omitempty"`
+	// The storage size. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	ServerlessStorage *int32 `json:"ServerlessStorage,omitempty" xml:"ServerlessStorage,omitempty"`
+	// The vSwitch ID within the VPC.
+	//
 	// example:
 	//
 	// vsw-bp191ipotqj1ssyl*****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// > If both this parameter and the VswitchId parameter are left empty, the network type of the instance is classic network.
+	//
 	// example:
 	//
 	// vpc-bp120k6ixs4eog****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/144489.html) operation to query the zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:

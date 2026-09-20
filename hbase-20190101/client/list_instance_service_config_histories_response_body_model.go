@@ -23,18 +23,26 @@ type iListInstanceServiceConfigHistoriesResponseBody interface {
 
 type ListInstanceServiceConfigHistoriesResponseBody struct {
 	ConfigureHistoryList *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList `json:"ConfigureHistoryList,omitempty" xml:"ConfigureHistoryList,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 658C1549-2C02-4FD9-9490-EB3B285F9DCA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -138,26 +146,11 @@ func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList) Val
 }
 
 type ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig struct {
-	// example:
-	//
-	// hbase#hbase-site.xml#hbase.client.keyvalue.maxsize
 	ConfigureName *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
-	// example:
-	//
-	// 1608708923000
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// false
-	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// example:
-	//
-	// 10485770
-	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// example:
-	//
-	// 10485760
-	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Effective     *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	NewValue      *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	OldValue      *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
 }
 
 func (s ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) String() string {

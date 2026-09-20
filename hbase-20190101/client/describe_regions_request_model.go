@@ -16,10 +16,28 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
+	// The supported language. Valid values:
+	//
+	// - **zh-CN**: Chinese (default)
+	//
+	// - **en-US**: English
+	//
+	// - **ja**: Japanese.
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The data engine type. Valid values:
+	//
+	// - **hbase**: ApsaraDB for HBase Standard Edition or ApsaraDB for HBase single-node edition.
+	//
+	// - **hbaseue**: ApsaraDB for HBase Performance-enhanced Edition.
+	//
+	// - **serverlesshbase**: ApsaraDB for HBase Serverless edition.
+	//
+	// - **bds**: BDS instance.
+	//
 	// example:
 	//
 	// hbase

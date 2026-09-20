@@ -17,6 +17,8 @@ type iDescribeIpWhitelistResponseBody interface {
 
 type DescribeIpWhitelistResponseBody struct {
 	Groups *DescribeIpWhitelistResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AFAA617B-3268-5883-982B-DB8EC8CC1F1B
@@ -93,15 +95,9 @@ func (s *DescribeIpWhitelistResponseBodyGroups) Validate() error {
 }
 
 type DescribeIpWhitelistResponseBodyGroupsGroup struct {
-	// example:
-	//
-	// default
 	GroupName *string                                           `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IpList    *DescribeIpWhitelistResponseBodyGroupsGroupIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Struct"`
-	// example:
-	//
-	// 4
-	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion *int32                                            `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
 func (s DescribeIpWhitelistResponseBodyGroupsGroup) String() string {

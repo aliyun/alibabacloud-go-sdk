@@ -23,18 +23,26 @@ type iDescribeInstancesResponseBody interface {
 
 type DescribeInstancesResponseBody struct {
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The page number of the instance list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of rows displayed per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EBECBF12-2E34-41BE-8DE9-FC3700D4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 18
@@ -138,155 +146,44 @@ func (s *DescribeInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
-	// example:
-	//
-	// false
-	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// example:
-	//
-	// open
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// example:
-	//
-	// hb-bp1u0639js2h7****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// example:
-	//
-	// test
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// example:
-	//
-	// cluster
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// example:
-	//
-	// open
-	ColdStorageStatus *string `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
-	// example:
-	//
-	// 2
-	CoreDiskCount *string `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
-	// example:
-	//
-	// 100
-	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	// example:
-	//
-	// cloud_efficiency
-	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	// example:
-	//
-	// hbase.sn1.large
-	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	// example:
-	//
-	// 2
-	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	// example:
-	//
-	// 2019-09-12T14:40:46
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// example:
-	//
-	// 2019-09-12T14:40:46Z
-	CreatedTimeUTC *string `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
-	// example:
-	//
-	// 12
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// example:
-	//
-	// hbase
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// example:
-	//
-	// 2019-10-12T14:40:46
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// example:
-	//
-	// 2019-10-12T14:40:46Z
-	ExpireTimeUTC *string `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
-	// example:
-	//
-	// hb-bp1u0639js2h7****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// example:
-	//
-	// true
-	IsDeletionProtection *bool `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	// example:
-	//
-	// true
-	IsHa *bool `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
-	// example:
-	//
-	// 2.0
-	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	// example:
-	//
-	// 100
-	MasterDiskSize *int32 `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
-	// example:
-	//
-	// cloud_efficiency
-	MasterDiskType *string `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
-	// example:
-	//
-	// hbase.sn1.large
-	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	// example:
-	//
-	// 2
-	MasterNodeCount *int32 `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	// example:
-	//
-	// 0
-	ModuleId *int32 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	// example:
-	//
-	// 1.0
-	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// example:
-	//
-	// 2980****2123
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// example:
-	//
-	// Prepaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// rg-4f51d54g5****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// example:
-	//
-	// ACTIVATION
-	Status *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// example:
-	//
-	// vpc-bp120k6ixs4eoghz*****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// vsw-bp191ipotq****dbqf
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-f
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AutoRenewal          *bool                                               `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	BackupStatus         *string                                             `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	ClusterId            *string                                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName          *string                                             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterType          *string                                             `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ColdStorageStatus    *string                                             `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
+	CoreDiskCount        *string                                             `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	CoreDiskSize         *int32                                              `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	CoreDiskType         *string                                             `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	CoreInstanceType     *string                                             `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	CoreNodeCount        *int32                                              `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	CreatedTime          *string                                             `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTimeUTC       *string                                             `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	Duration             *int32                                              `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Engine               *string                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime           *string                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimeUTC        *string                                             `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	InstanceId           *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsDeletionProtection *bool                                               `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	IsHa                 *bool                                               `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
+	MajorVersion         *string                                             `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	MasterDiskSize       *int32                                              `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	MasterDiskType       *string                                             `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	MasterInstanceType   *string                                             `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	MasterNodeCount      *int32                                              `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	ModuleId             *int32                                              `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleStackVersion   *string                                             `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	NetworkType          *string                                             `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ParentId             *string                                             `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PayType              *string                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status               *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                 *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId            *string                                             `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId               *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstance) String() string {
@@ -683,13 +580,7 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceTags) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceTagsTag struct {
-	// example:
-	//
-	// test-key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// test-value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

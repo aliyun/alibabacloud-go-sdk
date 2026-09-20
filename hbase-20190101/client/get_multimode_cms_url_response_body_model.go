@@ -18,14 +18,20 @@ type iGetMultimodeCmsUrlResponseBody interface {
 }
 
 type GetMultimodeCmsUrlResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// hb-t4naqsay5gn******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The CloudMonitor URL.
+	//
 	// example:
 	//
 	// htpp://***********
 	MultimodCmsUrl *string `json:"MultimodCmsUrl,omitempty" xml:"MultimodCmsUrl,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 44183B05-852E-4716-B902-52977140190F

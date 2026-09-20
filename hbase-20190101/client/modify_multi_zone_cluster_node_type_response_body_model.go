@@ -16,10 +16,14 @@ type iModifyMultiZoneClusterNodeTypeResponseBody interface {
 }
 
 type ModifyMultiZoneClusterNodeTypeResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 12341234123****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06CF7A6F-A81C-431D-BACD-793F24A67C54

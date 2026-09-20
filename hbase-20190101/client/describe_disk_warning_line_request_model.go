@@ -14,6 +14,8 @@ type iDescribeDiskWarningLineRequest interface {
 }
 
 type DescribeDiskWarningLineRequest struct {
+	// The ID of the cluster to query.
+	//
 	// This parameter is required.
 	//
 	// example:

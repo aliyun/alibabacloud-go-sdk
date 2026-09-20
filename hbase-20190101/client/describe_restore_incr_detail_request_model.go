@@ -16,12 +16,16 @@ type iDescribeRestoreIncrDetailRequest interface {
 }
 
 type DescribeRestoreIncrDetailRequest struct {
+	// The ID of the cluster for backup and recovery.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-m5eyf188hw481xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the restoration record. You can call the DescribeRestoreSummary operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:

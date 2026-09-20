@@ -16,12 +16,16 @@ type iGetMultimodeCmsUrlRequest interface {
 }
 
 type GetMultimodeCmsUrlRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

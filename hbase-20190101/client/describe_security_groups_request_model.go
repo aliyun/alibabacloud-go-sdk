@@ -14,6 +14,8 @@ type iDescribeSecurityGroupsRequest interface {
 }
 
 type DescribeSecurityGroupsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

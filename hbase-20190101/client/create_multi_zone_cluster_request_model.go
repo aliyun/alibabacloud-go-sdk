@@ -70,160 +70,264 @@ type iCreateMultiZoneClusterRequest interface {
 }
 
 type CreateMultiZoneClusterRequest struct {
+	// The vSwitch ID of the arbiter zone. The vSwitch must be in the zone specified by ArbiterZoneId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-hangxzhouxb*****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// The zone ID of the arbiter zone.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou-b
 	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// The version of the deployment architecture. Currently, only the hbaseue engine type is supported. Set the value to **2.0**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.0
 	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	// The Unified Auto Renewal Cycle. Unit: months.
+	//
+	// ><ul><li>Default value: 0, which indicates that auto-renewal is disabled.</li>
+	//
+	// <li>If AutoRenewPeriod is set to 2, the instance is automatically renewed for two epochs upon expiration.</li></ul>
+	//
 	// example:
 	//
 	// 0
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// The token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// dfh3sf5gslfksfk****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the instance. The following rules apply:
+	//
+	// - The name must be 2 to 128 characters in length.
+	//
+	// - The name must start with an uppercase letter, a lowercase letter, or a Chinese character.
+	//
+	// - The name can contain digits or special characters, including periods (.), hyphens (-), and underscores (_).
+	//
 	// example:
 	//
 	// hbaseue_test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The disk size of the node. Valid values: 400 to 64000. Unit: GB. The value must be a multiple of 40.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 400
 	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// The disk type of the core node. Valid values:
+	//
+	// - **cloud_efficiency**: ultra cloud disk.
+	//
+	// - **cloud_ssd**: standard SSD.
+	//
+	// - **local_hdd_pro**: throughput-intensive local disk.
+	//
+	// - **local_ssd_pro**: I/O-intensive local disk.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cloud_ssd
 	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// The node specifications of the core node. You can invoke the [DescribeInstanceType](https://help.aliyun.com/document_detail/145796.html) operation to query the node specifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hbase.sn1.medium
 	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// The number of core nodes. Valid values: 2 to 20. The value must be an even number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// The service type. Currently, only ApsaraDB for HBase Performance-enhanced Edition is supported. Set the value to **hbaseue**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hbaseue
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version number of the engine type. Set the value to **2.0**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The disk size of the log node. Valid values: 400 to 64000. Unit: GB. The value must be a multiple of 40.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 400
 	LogDiskSize *int32 `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	// The disk type of the log node. Valid values:
+	//
+	// - **cloud_efficiency**: ultra cloud disk.
+	//
+	// - **cloud_ssd**: standard SSD.
+	//
+	// - **local_hdd_pro**: throughput-intensive local disk.
+	//
+	// - **local_ssd_pro**: I/O-intensive local disk.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cloud_ssd
 	LogDiskType *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	// The node specifications of the log node. You can invoke the [DescribeInstanceType](https://help.aliyun.com/document_detail/145796.html) operation to query the node specifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hbase.sn1.medium
 	LogInstanceType *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// The number of log nodes. Valid values: 4 to 400. The value must be a multiple of 4.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	LogNodeCount *int32 `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	// The node specifications of the master node. You can invoke the [DescribeInstanceType](https://help.aliyun.com/document_detail/145796.html) operation to query the node specifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hbase.sn1.medium
 	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// <props="china">The zone combination. You can go to the buy page or call the [DescribeMultiZoneAvailableRegions](https://help.aliyun.com/document_detail/203039.html) operation to view the supported zone combinations.
+	//
+	// <props="intl">The zone combination. You can go to the buy page to view the supported zone combinations..
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou-bef-aliyun-com
 	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// - **Prepaid**: subscription.
+	//
+	// - **Postpaid**: pay-as-you-go.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The subscription period of the subscription instance. Valid values:
+	//
+	// - If PeriodUnit is set to year, valid values are 1 to 3.
+	//
+	// - If PeriodUnit is set to month, valid values are 1 to 9.
+	//
+	// > This parameter is required only when PayType is set to Prepaid.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription period for the subscription instance. Valid values:
+	//
+	// - **year**: year.
+	//
+	// - **month**: month.
+	//
+	// > This parameter is required only when PayType is set to Prepaid.
+	//
 	// example:
 	//
 	// month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The vSwitch ID of the primary zone instance. The vSwitch must be in the zone specified by PrimaryZoneId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-hangxzhouxe****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// The zone ID of the primary zone instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou-e
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The ID of the region in which the instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/144489.html) operation to query the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group. You can query the resource group ID in the resource group console. If you do not specify this parameter, the instance is added to the default resource group.
+	//
 	// example:
 	//
 	// rg-gg3f4f5d5g5w****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
+	//
+	// > If the IP address is set to 127.0.0.1, no IP addresses are allowed to access the instance. For example, 192.168.0.0/24 indicates that all IP addresses in the 192.168.0.XX range are allowed to access the instance.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The vSwitch ID of the secondary zone instance. The vSwitch must be in the zone specified by StandbyZoneId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-hangxzhouxf****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// The zone ID of the secondary zone instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou-f
 	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The ID of the virtual private cloud (VPC). The VPC must be in the region specified by RegionId.
+	//
 	// This parameter is required.
 	//
 	// example:

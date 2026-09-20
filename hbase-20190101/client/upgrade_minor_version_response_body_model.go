@@ -16,10 +16,14 @@ type iUpgradeMinorVersionResponseBody interface {
 }
 
 type UpgradeMinorVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B8EC240-BB13-4DBC-B955-F90170E82609
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The components that were successfully upgraded.
+	//
 	// example:
 	//
 	// HADOOP

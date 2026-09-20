@@ -23,18 +23,26 @@ type iQueryHBaseHaDBResponseBody interface {
 
 type QueryHBaseHaDBResponseBody struct {
 	ClusterList *QueryHBaseHaDBResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 963355AD-A3B1-4654-AFFC-B5186EB8F889
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries in the list.
+	//
 	// example:
 	//
 	// 1
@@ -138,25 +146,11 @@ func (s *QueryHBaseHaDBResponseBodyClusterList) Validate() error {
 }
 
 type QueryHBaseHaDBResponseBodyClusterListCluster struct {
-	// example:
-	//
-	// hb-t4nn7dy1u1etbzmzm
-	ActiveName *string `json:"ActiveName,omitempty" xml:"ActiveName,omitempty"`
-	// bdsId
-	//
-	// example:
-	//
-	// bds-t4n3496whj23ia4k
-	BdsName *string `json:"BdsName,omitempty" xml:"BdsName,omitempty"`
-	// example:
-	//
-	// ha-v21tmnxjwh2yuy1il
+	ActiveName    *string                                                    `json:"ActiveName,omitempty" xml:"ActiveName,omitempty"`
+	BdsName       *string                                                    `json:"BdsName,omitempty" xml:"BdsName,omitempty"`
 	HaName        *string                                                    `json:"HaName,omitempty" xml:"HaName,omitempty"`
 	HaSlbConnList *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList `json:"HaSlbConnList,omitempty" xml:"HaSlbConnList,omitempty" type:"Struct"`
-	// example:
-	//
-	// hb-t4n0ye37832tx22vz
-	StandbyName *string `json:"StandbyName,omitempty" xml:"StandbyName,omitempty"`
+	StandbyName   *string                                                    `json:"StandbyName,omitempty" xml:"StandbyName,omitempty"`
 }
 
 func (s QueryHBaseHaDBResponseBodyClusterListCluster) String() string {
@@ -256,18 +250,9 @@ func (s *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList) Validate() e
 }
 
 type QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn struct {
-	// example:
-	//
-	// Standby
-	HbaseType *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
-	// example:
-	//
-	// ha-v21tmnxjwh2yuy1il-phoenix.bds.9b78df04-b.rds.aliyuncs.com:8765
+	HbaseType   *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
 	SlbConnAddr *string `json:"SlbConnAddr,omitempty" xml:"SlbConnAddr,omitempty"`
-	// example:
-	//
-	// phoenix
-	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	SlbType     *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
 func (s QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn) String() string {

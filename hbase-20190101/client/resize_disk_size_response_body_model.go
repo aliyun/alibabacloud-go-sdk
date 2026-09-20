@@ -16,10 +16,14 @@ type iResizeDiskSizeResponseBody interface {
 }
 
 type ResizeDiskSizeResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 3C22622B-8555-42BF-AD8A-1B960743****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 493A762B-E4A6-44E9-B877-CA6D0CAF8B29

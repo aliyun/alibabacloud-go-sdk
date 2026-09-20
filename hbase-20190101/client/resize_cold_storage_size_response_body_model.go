@@ -16,10 +16,14 @@ type iResizeColdStorageSizeResponseBody interface {
 }
 
 type ResizeColdStorageSizeResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 21711518427****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5AA6F80E-535C-5611-BD13-3832D96A4D0E

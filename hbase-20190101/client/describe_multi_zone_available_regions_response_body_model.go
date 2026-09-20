@@ -17,6 +17,8 @@ type iDescribeMultiZoneAvailableRegionsResponseBody interface {
 
 type DescribeMultiZoneAvailableRegionsResponseBody struct {
 	Regions *DescribeMultiZoneAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F03BB273-45EE-4B6C-A329-A6E6A8D15856
@@ -95,14 +97,8 @@ func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegions) Validate() error 
 type DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion struct {
 	AvailableCombines *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombines `json:"AvailableCombines,omitempty" xml:"AvailableCombines,omitempty" type:"Struct"`
 	LocalName         *string                                                                      `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// example:
-	//
-	// hbase.aliyuncs.com
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// example:
-	//
-	// cn-shenzhen
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionEndpoint    *string                                                                      `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	RegionId          *string                                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) String() string {
@@ -193,9 +189,6 @@ func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableComb
 }
 
 type DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine struct {
-	// example:
-	//
-	// cn-shenzhen-****-aliyun
 	Id    *string                                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
 	Zones *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombineZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }

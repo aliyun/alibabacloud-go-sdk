@@ -14,6 +14,8 @@ type iDeleteMultiZoneClusterResponseBody interface {
 }
 
 type DeleteMultiZoneClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 169A3910-A39E-4BC2-AA9F-E7AD8D473527

@@ -16,10 +16,14 @@ type iConvertInstanceResponseBody interface {
 }
 
 type ConvertInstanceResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 54124548879
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 50373857-C47B-4B64-9332-D0B5280B59EA

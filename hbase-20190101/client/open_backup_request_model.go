@@ -14,6 +14,8 @@ type iOpenBackupRequest interface {
 }
 
 type OpenBackupRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:

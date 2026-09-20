@@ -14,6 +14,14 @@ type iDescribeMultiZoneAvailableRegionsRequest interface {
 }
 
 type DescribeMultiZoneAvailableRegionsRequest struct {
+	// The supported language. Valid values:
+	//
+	// - zh-CN: Chinese (default)
+	//
+	// - en-US: English
+	//
+	// - ja: Japanese.
+	//
 	// example:
 	//
 	// zh-CN

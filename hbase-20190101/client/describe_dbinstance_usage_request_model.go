@@ -14,6 +14,8 @@ type iDescribeDBInstanceUsageRequest interface {
 }
 
 type DescribeDBInstanceUsageRequest struct {
+	// The ID of target instance. You can call [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) to obtain target instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

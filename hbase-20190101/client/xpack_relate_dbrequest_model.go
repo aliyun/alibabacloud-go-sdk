@@ -18,18 +18,38 @@ type iXpackRelateDBRequest interface {
 }
 
 type XpackRelateDBRequest struct {
+	// The instance ID of the current Spark instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ap-bp1qtz9rcbbt3****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID of the cluster to associate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-bp16o0pd52e3****
 	DbClusterIds *string `json:"DbClusterIds,omitempty" xml:"DbClusterIds,omitempty"`
+	// The type of database to associate. Valid values:
+	//
+	// - **hdfs**
+	//
+	// - **hbase**
+	//
+	// - **mongodb**
+	//
+	// - **mysql**
+	//
+	// - **polardb_mysql**
+	//
+	// - **redis**
+	//
+	// - **geomesa**.
+	//
 	// This parameter is required.
 	//
 	// example:

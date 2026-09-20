@@ -16,10 +16,14 @@ type iResizeNodeCountResponseBody interface {
 }
 
 type ResizeNodeCountResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 20470860005****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B288B41F-6681-42A6-8905-47C3C42B19B0

@@ -20,22 +20,30 @@ type iUnTagResourcesRequest interface {
 }
 
 type UnTagResourcesRequest struct {
+	// Specifies whether to delete all tags. If TagKey is specified, tags are deleted only by TagKey. Valid values: true and false. If this parameter is set to true and TagKey is not specified, all tags are deleted.
+	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of resource N to untag. The resource ID is the cluster ID. You can specify multiple resource IDs, such as ResourceId.2 and ResourceId.3. N is a positive integer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bds-bp15e022622fk0w1
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The key of tag N to delete. You can specify multiple tag keys, such as TagKey.2 and TagKey.3. N is a positive integer.
+	//
 	// example:
 	//
 	// key1

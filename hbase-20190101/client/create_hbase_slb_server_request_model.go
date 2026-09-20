@@ -18,16 +18,26 @@ type iCreateHBaseSlbServerRequest interface {
 }
 
 type CreateHBaseSlbServerRequest struct {
+	// The client token.
+	//
 	// example:
 	//
 	// xxxxx-xxxxx-xxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The load balancing service to create. Valid values:
+	//
+	// - **thrift**: the Thrift cross-language and cross-platform remote procedure call (RPC) protocol service.
+	//
+	// - **rest**: the HTTP protocol service.
+	//
 	// This parameter is required.
 	//
 	// example:

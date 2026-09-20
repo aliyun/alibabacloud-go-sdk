@@ -14,6 +14,8 @@ type iUnTagResourcesResponseBody interface {
 }
 
 type UnTagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9CBF8DF0-4931-4A54-9B60-4C6E1AB59286

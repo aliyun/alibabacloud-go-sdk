@@ -16,10 +16,14 @@ type iModifyInstanceTypeResponseBody interface {
 }
 
 type ModifyInstanceTypeResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 123412341234123
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E19E345-101D-4014-946C-****

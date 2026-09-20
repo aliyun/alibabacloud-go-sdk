@@ -28,35 +28,58 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
+	// The ID of target instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to query target instance ID.
+	//
 	// example:
 	//
 	// hb-bp1u0639js2h7****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the ApsaraDB for HBase instance.
+	//
 	// example:
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The service type. Valid values:
+	//
+	// - **hbase**: ApsaraDB for HBase Standard Edition or ApsaraDB for HBase single-node.
+	//
+	// - **hbaseue**: ApsaraDB for HBase Performance-enhanced Edition.
+	//
+	// - **bds**: BDS data synchronization service.
+	//
 	// example:
 	//
 	// hbase
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The page number of the instance list. Minimum value: **1**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of rows to display per page. Maximum value: **100**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region to which the instance belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/144489.html) operation to query the region ID.
+	//
+	// > If you specify the **Tag.N.Key*	- and **Tag.N.Value*	- parameters, this parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group. You can query the resource group ID in the Resource Group console.
+	//
 	// example:
 	//
 	// rg-4f51d54g5****
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of tags.
+	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -153,10 +176,14 @@ func (s *DescribeInstancesRequest) Validate() error {
 }
 
 type DescribeInstancesRequestTag struct {
+	// The key of the tag. The tag key and tag value form a key-value pair in the format of {"key1":"value1","key2":"value2"}.
+	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag key. The tag value and tag key form a key-value pair.
+	//
 	// example:
 	//
 	// value

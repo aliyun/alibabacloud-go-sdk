@@ -14,6 +14,8 @@ type iDescribeBackupStatusRequest interface {
 }
 
 type DescribeBackupStatusRequest struct {
+	// The ID of the HBaseue cluster for which data backup is performed.
+	//
 	// This parameter is required.
 	//
 	// example:

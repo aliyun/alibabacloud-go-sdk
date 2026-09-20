@@ -14,6 +14,8 @@ type iModifyInstanceServiceConfigResponseBody interface {
 }
 
 type ModifyInstanceServiceConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F008B7AB-025D-4C20-AE12-047C8F8C3D97

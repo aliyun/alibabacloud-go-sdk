@@ -14,6 +14,8 @@ type iModifyIpWhitelistResponseBody interface {
 }
 
 type ModifyIpWhitelistResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 101CFA8A-FB88-5014-A10C-3A0DA9AD8B0B

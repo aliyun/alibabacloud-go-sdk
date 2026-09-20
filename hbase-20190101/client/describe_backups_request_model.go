@@ -28,36 +28,52 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
+	// The ID of the backup to query.
+	//
 	// example:
 	//
 	// job-xxxx
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end time of the backup query. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2020-12-23 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time of the backup query in UTC. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mmZ.
+	//
 	// example:
 	//
 	// 2020-12-23T15:59:59Z
 	EndTimeUTC *string `json:"EndTimeUTC,omitempty" xml:"EndTimeUTC,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time of the backup query. Format: yyyy-MM-dd HH:mm.
+	//
 	// example:
 	//
 	// 2020-12-13 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time of the backup query in UTC. Format: yyyy-MM-ddTHH:mmZ.
+	//
 	// example:
 	//
 	// 2020-12-12T16:00:00Z
