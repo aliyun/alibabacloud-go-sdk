@@ -62,7 +62,7 @@ type ListInstancesRequest struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags used to filter instances.
+	// The tag information.
 	Tag []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -151,13 +151,13 @@ func (s *ListInstancesRequest) Validate() error {
 }
 
 type ListInstancesRequestTag struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

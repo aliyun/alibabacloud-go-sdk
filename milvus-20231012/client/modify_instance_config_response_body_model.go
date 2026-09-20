@@ -26,7 +26,7 @@ type iModifyInstanceConfigResponseBody interface {
 }
 
 type ModifyInstanceConfigResponseBody struct {
-	// The details of the access denied error.
+	// The details of the access denial.
 	//
 	// example:
 	//

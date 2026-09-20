@@ -31,7 +31,8 @@ type UpdateInstanceResponseBody struct {
 	// example:
 	//
 	// true
-	Data    *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The order ID.
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 	// Indicates whether the request was successful.
 	//

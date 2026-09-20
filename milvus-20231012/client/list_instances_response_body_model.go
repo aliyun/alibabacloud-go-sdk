@@ -28,13 +28,13 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// Details for an access denial error.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {     "PolicyType": "AccountLevelIdentityBasedPolicy",     "AuthPrincipalOwnerId": "xxxx",     "EncodedDiagnosticMessage": "xxxx",     "AuthPrincipalType": "SubUser",     "AuthPrincipalDisplayName": "xxxx",     "NoPermissionType": "ImplicitDeny",     "AuthAction": "milvus:xxxx" }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// An array of instance objects.
+	// The returned data.
 	Data []*ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -66,7 +66,7 @@ type ListInstancesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of instances found.
+	// The total count.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// true
 	AutoBackup *bool `json:"AutoBackup,omitempty" xml:"AutoBackup,omitempty"`
-	// The creation time of the instance.
+	// The start time.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// milvus-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The expiration time of the instance.
+	// The expiration time.
 	//
 	// example:
 	//
@@ -202,17 +202,17 @@ type ListInstancesResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - `creating`: The instance is being created.
+	// - creating: Being created.
 	//
-	// - `running`: The instance is running.
+	// - running: Running.
 	//
-	// - `updating`: The instance is being updated. This includes scaling the instance, changing configurations, or modifying public network access.
+	// - updating: Being upgraded. This includes specification changes, configuration changes, and enabling or disabling public network access.
 	//
-	// - `disable`: The instance is unavailable because it has expired and requires renewal.
+	// - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
 	//
-	// - `deleting`: The instance is being deleted.
+	// - deleting: Being deleted.
 	//
-	// - `deleted`: The instance has been deleted.
+	// - deleted: Deleted.
 	//
 	// example:
 	//
@@ -230,27 +230,27 @@ type ListInstancesResponseBodyData struct {
 	//
 	// true
 	OpenPublicNet *bool `json:"OpenPublicNet,omitempty" xml:"OpenPublicNet,omitempty"`
-	// The instance edition. Valid values:
+	// The edition. Valid values:
 	//
-	// - `trial`: Trial Edition.
+	// - trial: Trial Edition.
 	//
-	// - `standard`: Standard Edition.
+	// - standard: Standard Edition.
 	//
 	// example:
 	//
 	// trial
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The billing method. Valid values:
+	// The billing type. Valid values:
 	//
-	// - `0`: pay-as-you-go.
+	// - 0: Pay-as-you-go.
 	//
-	// - `1`: subscription.
+	// - 1: Subscription.
 	//
 	// example:
 	//
 	// 1
 	PayType *int32 `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The product code.
+	// The commodity code.
 	//
 	// example:
 	//
@@ -268,7 +268,13 @@ type ListInstancesResponseBodyData struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The duration the instance has been running.
+	// The ID of the resource owner account.
+	//
+	// example:
+	//
+	// 1234567890123456
+	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The running time.
 	//
 	// example:
 	//
@@ -280,12 +286,10 @@ type ListInstancesResponseBodyData struct {
 	//
 	// sg-123xxx
 	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	// The tags attached to the instance.
-	Tags []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The template version.
-	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The instance version.
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The tag information.
+	Tags            []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateVersion *string                              `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	Version         *string                              `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -298,7 +302,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// vsw-123xxx
 	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
-	// The zone ID.
+	// The zone.
 	//
 	// example:
 	//
@@ -368,6 +372,10 @@ func (s *ListInstancesResponseBodyData) GetRegionId() *string {
 
 func (s *ListInstancesResponseBodyData) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *ListInstancesResponseBodyData) GetResourceOwnerId() *string {
+	return s.ResourceOwnerId
 }
 
 func (s *ListInstancesResponseBodyData) GetRunningTime() *int32 {
@@ -472,6 +480,11 @@ func (s *ListInstancesResponseBodyData) SetResourceGroupId(v string) *ListInstan
 	return s
 }
 
+func (s *ListInstancesResponseBodyData) SetResourceOwnerId(v string) *ListInstancesResponseBodyData {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyData) SetRunningTime(v int32) *ListInstancesResponseBodyData {
 	s.RunningTime = &v
 	return s
@@ -531,7 +544,7 @@ func (s *ListInstancesResponseBodyData) Validate() error {
 }
 
 type ListInstancesResponseBodyDataClusterInfo struct {
-	// The Attu port.
+	// The port of the Attu component.
 	//
 	// example:
 	//
@@ -549,7 +562,7 @@ type ListInstancesResponseBodyDataClusterInfo struct {
 	//
 	// c-123xxx-internal.milvus.aliyuncs.com
 	IntranetUrl *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
-	// A list of resource details for the instance\\"s components.
+	// The resource details.
 	MilvusResourceInfoList []*ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList `json:"MilvusResourceInfoList,omitempty" xml:"MilvusResourceInfoList,omitempty" type:"Repeated"`
 	// The proxy port.
 	//
@@ -557,13 +570,19 @@ type ListInstancesResponseBodyDataClusterInfo struct {
 	//
 	// 19530
 	ProxyPort *int32 `json:"ProxyPort,omitempty" xml:"ProxyPort,omitempty"`
-	// The total number of CUs.
+	// The ID of the resource owner account.
+	//
+	// example:
+	//
+	// 1234567890123456
+	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The number of CUs.
 	//
 	// example:
 	//
 	// 24
 	TotalCuNum *int32 `json:"TotalCuNum,omitempty" xml:"TotalCuNum,omitempty"`
-	// The total disk size in GB.
+	// The total disk size.
 	//
 	// example:
 	//
@@ -599,6 +618,10 @@ func (s *ListInstancesResponseBodyDataClusterInfo) GetProxyPort() *int32 {
 	return s.ProxyPort
 }
 
+func (s *ListInstancesResponseBodyDataClusterInfo) GetResourceOwnerId() *string {
+	return s.ResourceOwnerId
+}
+
 func (s *ListInstancesResponseBodyDataClusterInfo) GetTotalCuNum() *int32 {
 	return s.TotalCuNum
 }
@@ -632,6 +655,11 @@ func (s *ListInstancesResponseBodyDataClusterInfo) SetProxyPort(v int32) *ListIn
 	return s
 }
 
+func (s *ListInstancesResponseBodyDataClusterInfo) SetResourceOwnerId(v string) *ListInstancesResponseBodyDataClusterInfo {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyDataClusterInfo) SetTotalCuNum(v int32) *ListInstancesResponseBodyDataClusterInfo {
 	s.TotalCuNum = &v
 	return s
@@ -658,17 +686,17 @@ func (s *ListInstancesResponseBodyDataClusterInfo) Validate() error {
 type ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	// The component type. Valid values:
 	//
-	// - `standalone`
+	// - standalone
 	//
-	// - `proxy`
+	// - proxy
 	//
-	// - `mix_coordinator`
+	// - mix_coordinator
 	//
-	// - `query`
+	// - query
 	//
-	// - `index`
+	// - index
 	//
-	// - `data`
+	// - data
 	//
 	// example:
 	//
@@ -680,7 +708,7 @@ type ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	//
 	// 16
 	CuNum *int32 `json:"CuNum,omitempty" xml:"CuNum,omitempty"`
-	// The disk size in GB.
+	// The disk size.
 	//
 	// example:
 	//
@@ -758,13 +786,13 @@ func (s *ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList) Validat
 }
 
 type ListInstancesResponseBodyDataTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

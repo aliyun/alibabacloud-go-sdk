@@ -62,7 +62,7 @@ type ListInstancesShrinkRequest struct {
 	//
 	// rg-123xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags used to filter instances.
+	// The tag information.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

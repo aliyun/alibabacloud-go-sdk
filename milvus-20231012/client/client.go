@@ -852,7 +852,7 @@ func (client *Client) ListAclGroups(request *ListAclGroupsRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves a list of Milvus instances in the current account.
+// Retrieves the list of Milvus instances under the current account.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -929,7 +929,7 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 // Summary:
 //
-// Retrieves a list of Milvus instances in the current account.
+// Retrieves the list of Milvus instances under the current account.
 //
 // @param request - ListInstancesRequest
 //
@@ -1052,7 +1052,7 @@ func (client *Client) ListInstancesV2(request *ListInstancesV2Request) (_result 
 
 // Summary:
 //
-// Modifies the configuration parameters for Milvus components.
+// Updates the configuration parameters of various Milvus components.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -1107,7 +1107,7 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 
 // Summary:
 //
-// Modifies the configuration parameters for Milvus components.
+// Updates the configuration parameters of various Milvus components.
 //
 // @param request - ModifyInstanceConfigRequest
 //
