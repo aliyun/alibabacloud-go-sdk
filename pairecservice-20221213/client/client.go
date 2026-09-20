@@ -25,18 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shenzhen":    dara.String("pairecservice.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":    dara.String("pairecservice.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("pairecservice.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("pairecservice.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":     dara.String("pairecservice.cn-beijing.aliyuncs.com"),
-		"ap-southeast-5": dara.String("pairecservice.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-1": dara.String("pairecservice.ap-southeast-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("pairecservice.eu-central-1.aliyuncs.com"),
-		"us-east-1":      dara.String("pairecservice.us-east-1.aliyuncs.com"),
-		"us-west-1":      dara.String("pairecservice.us-west-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -6961,7 +6949,7 @@ func (client *Client) GetFeatureConsistencyCheckJobConfig(FeatureConsistencyChec
 
 // Summary:
 //
-// Gets the details of a specified PAI-REC instance.
+// Retrieves the details of a specified PAIRec instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -7002,7 +6990,7 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, request *GetIns
 
 // Summary:
 //
-// Gets the details of a specified PAI-REC instance.
+// Retrieves the details of a specified PAIRec instance.
 //
 // @param request - GetInstanceRequest
 //

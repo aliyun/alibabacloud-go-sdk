@@ -17,6 +17,8 @@ type iGetInstanceResponseBody interface {
 	GetConfig() *GetInstanceResponseBodyConfig
 	SetExpiredTime(v string) *GetInstanceResponseBody
 	GetExpiredTime() *string
+	SetFeatureStoreInfo(v *GetInstanceResponseBodyFeatureStoreInfo) *GetInstanceResponseBody
+	GetFeatureStoreInfo() *GetInstanceResponseBodyFeatureStoreInfo
 	SetGmtCreateTime(v string) *GetInstanceResponseBody
 	GetGmtCreateTime() *string
 	SetGmtModifiedTime(v string) *GetInstanceResponseBody
@@ -25,6 +27,8 @@ type iGetInstanceResponseBody interface {
 	GetInstanceId() *string
 	SetOperatingTool(v *GetInstanceResponseBodyOperatingTool) *GetInstanceResponseBody
 	GetOperatingTool() *GetInstanceResponseBodyOperatingTool
+	SetRecommendCustomization(v *GetInstanceResponseBodyRecommendCustomization) *GetInstanceResponseBody
+	GetRecommendCustomization() *GetInstanceResponseBodyRecommendCustomization
 	SetRegionId(v string) *GetInstanceResponseBody
 	GetRegionId() *string
 	SetRequestId(v string) *GetInstanceResponseBody
@@ -36,7 +40,7 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
-	// The billing method of the instance. The value is fixed as Subscription.
+	// The billing type of the instance. Currently, only Subscription (prepayment) is supported.
 	//
 	// example:
 	//
@@ -48,14 +52,15 @@ type GetInstanceResponseBody struct {
 	//
 	// airec_developers_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance configurations.
+	// The instance configuration.
 	Config *GetInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
 	// The time when the instance expires.
 	//
 	// example:
 	//
 	// 2022-12-14 00:00:00.0
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ExpiredTime      *string                                  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	FeatureStoreInfo *GetInstanceResponseBodyFeatureStoreInfo `json:"FeatureStoreInfo,omitempty" xml:"FeatureStoreInfo,omitempty" type:"Struct"`
 	// The time when the instance was created.
 	//
 	// example:
@@ -74,9 +79,18 @@ type GetInstanceResponseBody struct {
 	//
 	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operating tool configurations.
-	OperatingTool *GetInstanceResponseBodyOperatingTool `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
-	// The region ID. Valid values:<br>● cn-shenzhen: Shenzhen<br>● cn-hangzhou: Hangzhou<br>● cn-beijing: Beijing<br>● cn-shanghai: Shanghai<br><br><br><br>
+	// The configuration of the operations tool.
+	OperatingTool          *GetInstanceResponseBodyOperatingTool          `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
+	RecommendCustomization *GetInstanceResponseBodyRecommendCustomization `json:"RecommendCustomization,omitempty" xml:"RecommendCustomization,omitempty" type:"Struct"`
+	// The region ID. Valid values:
+	//
+	// - cn-shenzhen: China (Shenzhen).
+	//
+	// - cn-hangzhou: China (Hangzhou).
+	//
+	// - cn-beijing: China (Beijing).
+	//
+	// - cn-shanghai: China (Shanghai).
 	//
 	// example:
 	//
@@ -88,13 +102,27 @@ type GetInstanceResponseBody struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The instance status. Valid values:<br>● Initializing<br>● Stopped<br>● Running<br><br><br>
+	// The instance status. Valid values:
+	//
+	// - Initializing: The instance is being initialized.
+	//
+	// - Stopped: The instance is stopped.
+	//
+	// - Running: The instance is running.
 	//
 	// example:
 	//
 	// Initializing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The instance type. Valid values:<br>● basic: Basic<br>● highlevel: High-level<br>● advanced: Advanced<br>● standard: Standard<br><br><br><br>
+	// The instance type. Valid values:
+	//
+	// - basic: Basic Edition.
+	//
+	// - highleve: Upgraded Edition.
+	//
+	// - advance: Advanced Edition.
+	//
+	// - standard: Standard Edition.
 	//
 	// example:
 	//
@@ -126,6 +154,10 @@ func (s *GetInstanceResponseBody) GetExpiredTime() *string {
 	return s.ExpiredTime
 }
 
+func (s *GetInstanceResponseBody) GetFeatureStoreInfo() *GetInstanceResponseBodyFeatureStoreInfo {
+	return s.FeatureStoreInfo
+}
+
 func (s *GetInstanceResponseBody) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
@@ -140,6 +172,10 @@ func (s *GetInstanceResponseBody) GetInstanceId() *string {
 
 func (s *GetInstanceResponseBody) GetOperatingTool() *GetInstanceResponseBodyOperatingTool {
 	return s.OperatingTool
+}
+
+func (s *GetInstanceResponseBody) GetRecommendCustomization() *GetInstanceResponseBodyRecommendCustomization {
+	return s.RecommendCustomization
 }
 
 func (s *GetInstanceResponseBody) GetRegionId() *string {
@@ -178,6 +214,11 @@ func (s *GetInstanceResponseBody) SetExpiredTime(v string) *GetInstanceResponseB
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetFeatureStoreInfo(v *GetInstanceResponseBodyFeatureStoreInfo) *GetInstanceResponseBody {
+	s.FeatureStoreInfo = v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetGmtCreateTime(v string) *GetInstanceResponseBody {
 	s.GmtCreateTime = &v
 	return s
@@ -195,6 +236,11 @@ func (s *GetInstanceResponseBody) SetInstanceId(v string) *GetInstanceResponseBo
 
 func (s *GetInstanceResponseBody) SetOperatingTool(v *GetInstanceResponseBodyOperatingTool) *GetInstanceResponseBody {
 	s.OperatingTool = v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetRecommendCustomization(v *GetInstanceResponseBodyRecommendCustomization) *GetInstanceResponseBody {
+	s.RecommendCustomization = v
 	return s
 }
 
@@ -224,8 +270,18 @@ func (s *GetInstanceResponseBody) Validate() error {
 			return err
 		}
 	}
+	if s.FeatureStoreInfo != nil {
+		if err := s.FeatureStoreInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.OperatingTool != nil {
 		if err := s.OperatingTool.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecommendCustomization != nil {
+		if err := s.RecommendCustomization.Validate(); err != nil {
 			return err
 		}
 	}
@@ -237,7 +293,7 @@ type GetInstanceResponseBodyConfig struct {
 	DataManagements []*GetInstanceResponseBodyConfigDataManagements `json:"DataManagements,omitempty" xml:"DataManagements,omitempty" type:"Repeated"`
 	// The list of service engines.
 	Engines []*GetInstanceResponseBodyConfigEngines `json:"Engines,omitempty" xml:"Engines,omitempty" type:"Repeated"`
-	// The list of monitoring components.
+	// The list of supporting features.
 	Monitors []*GetInstanceResponseBodyConfigMonitors `json:"Monitors,omitempty" xml:"Monitors,omitempty" type:"Repeated"`
 }
 
@@ -475,12 +531,47 @@ func (s *GetInstanceResponseBodyConfigMonitors) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetInstanceResponseBodyFeatureStoreInfo struct {
+	FeatureDBStatus *string `json:"FeatureDBStatus,omitempty" xml:"FeatureDBStatus,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetInstanceResponseBodyFeatureStoreInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyFeatureStoreInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyFeatureStoreInfo) GetFeatureDBStatus() *string {
+	return s.FeatureDBStatus
+}
+
+func (s *GetInstanceResponseBodyFeatureStoreInfo) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *GetInstanceResponseBodyFeatureStoreInfo) SetFeatureDBStatus(v string) *GetInstanceResponseBodyFeatureStoreInfo {
+	s.FeatureDBStatus = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyFeatureStoreInfo) SetInstanceId(v string) *GetInstanceResponseBodyFeatureStoreInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyFeatureStoreInfo) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetInstanceResponseBodyOperatingTool struct {
-	// Indicates whether the operating tool is enabled for the instance. Valid values:
+	// Indicates whether the operations tool is enabled for the instance. Valid values:
 	//
-	// - True: Enabled
+	// - True: Enabled.
 	//
-	// - False: Disabled
+	// - False: Not enabled.
 	//
 	// example:
 	//
@@ -506,5 +597,30 @@ func (s *GetInstanceResponseBodyOperatingTool) SetIsEnable(v bool) *GetInstanceR
 }
 
 func (s *GetInstanceResponseBodyOperatingTool) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceResponseBodyRecommendCustomization struct {
+	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+}
+
+func (s GetInstanceResponseBodyRecommendCustomization) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyRecommendCustomization) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyRecommendCustomization) GetIsEnable() *bool {
+	return s.IsEnable
+}
+
+func (s *GetInstanceResponseBodyRecommendCustomization) SetIsEnable(v bool) *GetInstanceResponseBodyRecommendCustomization {
+	s.IsEnable = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyRecommendCustomization) Validate() error {
 	return dara.Validate(s)
 }

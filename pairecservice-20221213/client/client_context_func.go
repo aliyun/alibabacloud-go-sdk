@@ -5140,7 +5140,7 @@ func (client *Client) GetFeatureConsistencyCheckJobConfigWithContext(ctx context
 
 // Summary:
 //
-// Gets the details of a specified PAI-REC instance.
+// Retrieves the details of a specified PAIRec instance.
 //
 // @param request - GetInstanceRequest
 //
