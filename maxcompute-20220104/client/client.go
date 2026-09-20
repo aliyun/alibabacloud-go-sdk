@@ -2296,7 +2296,7 @@ func (client *Client) GetPackage(projectName *string, packageName *string, reque
 
 // Summary:
 //
-// Queries the basic information of a MaxCompute project.
+// Queries the basic information about a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //
@@ -2351,7 +2351,7 @@ func (client *Client) GetProjectWithOptions(projectName *string, request *GetPro
 
 // Summary:
 //
-// Queries the basic information of a MaxCompute project.
+// Queries the basic information about a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //

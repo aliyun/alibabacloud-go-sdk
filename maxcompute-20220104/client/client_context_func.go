@@ -1566,7 +1566,7 @@ func (client *Client) GetPackageWithContext(ctx context.Context, projectName *st
 
 // Summary:
 //
-// Queries the basic information of a MaxCompute project.
+// Queries the basic information about a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //
