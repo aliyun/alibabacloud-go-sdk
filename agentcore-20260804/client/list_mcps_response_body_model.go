@@ -968,7 +968,7 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfig) Validate() error {
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigAccessControl struct {
-	// References an AgentCore Credential when mode is set to CREDENTIAL.
+	// The AgentCore Credential referenced when mode is set to CREDENTIAL.
 	//
 	// example:
 	//
@@ -976,7 +976,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigAccessControl struct {
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
 	// Indicates whether ingress access control is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// ANONYMOUS indicates anonymous access. CREDENTIAL indicates using an AgentCore access credential.
+	// ANONYMOUS indicates anonymous access. CREDENTIAL indicates using AgentCore access credentials.
 	//
 	// example:
 	//
@@ -1097,7 +1097,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigCodeConfiguration struct {
 	//
 	// upload-token
 	CodePackageToken *string `json:"codePackageToken,omitempty" xml:"codePackageToken,omitempty"`
-	// The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and remaining arguments.
+	// The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass in supergateway, --stdio, the full subcommand, and the remaining arguments.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
 	// The code package runtime: python3.13, nodejs22, or java17.
 	//
@@ -1304,7 +1304,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigHookConfigurationHooks struct {
 	//
 	// example:
 	//
-	// Record MCP tool invocations
+	// Record MCP tool calling invokes
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the hook is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
@@ -1410,7 +1410,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigLogConfiguration struct {
 	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
 	// Indicates whether request metrics collection is enabled.
 	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	// The log splitting begin rule for Function Compute (FC).
+	// The log segmentation begin rule for Function Compute (FC).
 	//
 	// example:
 	//
@@ -1422,7 +1422,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigLogConfiguration struct {
 	//
 	// mcp-logs
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The Simple Log Service project name.
+	// The Log Service project name.
 	//
 	// example:
 	//
@@ -1488,7 +1488,7 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigLogConfiguration) Validate() e
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration struct {
-	// The MCP endpoint path. For example, /mcp or /sse.
+	// The MCP endpoint path, such as /mcp or /sse.
 	//
 	// example:
 	//

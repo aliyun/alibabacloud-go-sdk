@@ -2544,13 +2544,13 @@ func (client *Client) GetManagedAgentWithContext(ctx context.Context, workspaceI
 
 // Summary:
 //
-// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
 //
 // Description:
 //
 // ## Operation description
 //
-// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
 //
 // @param request - GetMcpRequest
 //
@@ -3190,7 +3190,7 @@ func (client *Client) GetWorkspacePluginWithContext(ctx context.Context, workspa
 //
 // Description:
 //
-// Validates input based on the specified template version and creates an MCP in the workspace.
+// Validates the input based on the specified template version and creates an MCP in the workspace.
 //
 // @param tmpReq - InstallMcpMarketItemRequest
 //
@@ -4006,6 +4006,10 @@ func (client *Client) ListMcpsWithContext(ctx context.Context, workspaceId *stri
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomTag) {
+		query["customTag"] = request.CustomTag
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}
@@ -5742,7 +5746,7 @@ func (client *Client) UpdateMcpWithContext(ctx context.Context, workspaceId *str
 //
 // Description:
 //
-// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created. This operation does not upgrade the template version.
+// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created, without upgrading the template version.
 //
 // @param tmpReq - UpdateMcpTemplateConfigRequest
 //

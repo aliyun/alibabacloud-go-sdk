@@ -128,9 +128,9 @@ func (s *CreateMcpResponseBody) Validate() error {
 type CreateMcpResponseBodyData struct {
 	// The list of MCP service addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The backend authentication configuration. enabled indicates whether authentication is enabled. directProxy specifies custom authentication headers for direct proxy connections. httpToMcp specifies the list of OpenAPI credentials for HTTP_TO_MCP.
+	// The backend authentication configuration. enabled indicates whether authentication is enabled. directProxy specifies custom authentication headers for direct-connect proxies. httpToMcp specifies the OpenAPI credential list for HTTP_TO_MCP.
 	Auth *CreateMcpResponseBodyDataAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
-	// Custom tags. Multiple tags are supported.
+	// The custom tags. Multiple tags are supported.
 	CustomTags []*string `json:"customTags,omitempty" xml:"customTags,omitempty" type:"Repeated"`
 	// The deployment configuration for code-deployed MCP services.
 	DeploymentConfig *CreateMcpResponseBodyDataDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
@@ -418,7 +418,7 @@ func (s *CreateMcpResponseBodyData) Validate() error {
 }
 
 type CreateMcpResponseBodyDataAuth struct {
-	// The API key authentication configuration for callers of code-deployed MCP.
+	// The API key authentication configuration for code-deployed MCP callers.
 	CodePackage *CreateMcpResponseBodyDataAuthCodePackage `json:"codePackage,omitempty" xml:"codePackage,omitempty" type:"Struct"`
 	// The authentication configuration for direct proxy.
 	DirectProxy *CreateMcpResponseBodyDataAuthDirectProxy `json:"directProxy,omitempty" xml:"directProxy,omitempty" type:"Struct"`
@@ -1258,7 +1258,7 @@ type CreateMcpResponseBodyDataDeploymentConfigHookConfigurationHooks struct {
 	//
 	// example:
 	//
-	// Record MCP tool calling
+	// Record MCP tool invocations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable the hook.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
@@ -1270,7 +1270,7 @@ type CreateMcpResponseBodyDataDeploymentConfigHookConfigurationHooks struct {
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
 	// The hook request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The hook timeout period. Unit: milliseconds.
+	// The timeout period. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -1652,7 +1652,7 @@ type CreateMcpResponseBodyDataDeploymentConfigNetworkConfiguration struct {
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -1926,7 +1926,7 @@ type CreateMcpResponseBodyDataDeploymentConfigRuntimeConfiguration struct {
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
 	//
 	// example:
 	//

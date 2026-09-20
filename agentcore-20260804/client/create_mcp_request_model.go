@@ -18,7 +18,7 @@ type iCreateMcpRequest interface {
 type CreateMcpRequest struct {
 	// The request body.
 	Body *CreateMcpRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client token that ensures idempotency of the request.
+	// The client token that is used to ensure the idempotency of the request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateMcpRequestBody struct {
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The backend authentication configuration. When enabled is set to true: for DIRECT_PROXY, specify directProxy (name/value). For HTTP_TO_MCP, specify the httpToMcp array (each item contains id/type/credential. For apiKey, position/name are also required). Multiple authentication objects are supported, and the first one is used as the default upstream credential. HTTP_TO_MCP credentials are merged into the securitySchemes of the Swagger specification.
 	Auth *CreateMcpRequestBodyAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
-	// Custom tags. Multiple tags are supported.
+	// The custom tags. Multiple tags are supported.
 	CustomTags []*string `json:"customTags,omitempty" xml:"customTags,omitempty" type:"Repeated"`
 	// The code deployment configuration. Required when Type is set to CODE_PACKAGE. When creating a Code artifact, you must specify either CodeConfiguration.CodePackageToken or CodePackageUrl, but not both. CodePackageUrl supports only public Alibaba Cloud OSS HTTP(S) addresses.
 	DeploymentConfig *CreateMcpRequestBodyDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
@@ -210,7 +210,7 @@ func (s *CreateMcpRequestBody) Validate() error {
 }
 
 type CreateMcpRequestBodyAuth struct {
-	// The API key authentication configuration for callers of code-deployed MCP.
+	// The API key authentication configuration for code-deployed MCP callers.
 	CodePackage *CreateMcpRequestBodyAuthCodePackage `json:"codePackage,omitempty" xml:"codePackage,omitempty" type:"Struct"`
 	// The authentication configuration for direct proxy.
 	DirectProxy *CreateMcpRequestBodyAuthDirectProxy `json:"directProxy,omitempty" xml:"directProxy,omitempty" type:"Struct"`
@@ -1077,7 +1077,7 @@ type CreateMcpRequestBodyDeploymentConfigHookConfigurationHooks struct {
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
 	// The hook request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The hook timeout period. Unit: milliseconds.
+	// The timeout period. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -1459,7 +1459,7 @@ type CreateMcpRequestBodyDeploymentConfigNetworkConfiguration struct {
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -1733,7 +1733,7 @@ type CreateMcpRequestBodyDeploymentConfigRuntimeConfiguration struct {
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
 	//
 	// example:
 	//

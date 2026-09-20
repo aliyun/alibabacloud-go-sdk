@@ -126,20 +126,22 @@ func (s *GetMcpMarketItemResponseBody) Validate() error {
 }
 
 type GetMcpMarketItemResponseBodyData struct {
-	// The category of the MCP marketplace template.
+	// The MCP marketplace template category.
 	//
 	// example:
 	//
 	// knowledge
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The description of the MCP service.
+	// The MCP service description.
 	//
 	// example:
 	//
 	// An MCP service for querying knowledge bases
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display metadata of the template.
+	// The template display metadata.
 	DisplayMetadata map[string]interface{} `json:"displayMetadata,omitempty" xml:"displayMetadata,omitempty"`
+	// The multilingual display content, organized by BCP-47 language tags. Falls back to default fields when the specified language is not matched.
+	I18n map[string]*DataI18nValue `json:"i18n,omitempty" xml:"i18n,omitempty"`
 	// The icon URL of the MCP marketplace template.
 	//
 	// example:
@@ -164,7 +166,7 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// CODE_PACKAGE
 	McpType *string `json:"mcpType,omitempty" xml:"mcpType,omitempty"`
-	// The name of the MCP marketplace template.
+	// The MCP marketplace template name.
 	//
 	// example:
 	//
@@ -200,7 +202,7 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// {"type":"object","properties":{"addresses":{"type":"array","items":{"type":"string"}}}}
 	TemplateInputSchema *string `json:"templateInputSchema,omitempty" xml:"templateInputSchema,omitempty"`
-	// The version of the MCP marketplace template.
+	// The MCP marketplace template version.
 	//
 	// example:
 	//
@@ -226,6 +228,10 @@ func (s *GetMcpMarketItemResponseBodyData) GetDescription() *string {
 
 func (s *GetMcpMarketItemResponseBodyData) GetDisplayMetadata() map[string]interface{} {
 	return s.DisplayMetadata
+}
+
+func (s *GetMcpMarketItemResponseBodyData) GetI18n() map[string]*DataI18nValue {
+	return s.I18n
 }
 
 func (s *GetMcpMarketItemResponseBodyData) GetIconUrl() *string {
@@ -284,6 +290,11 @@ func (s *GetMcpMarketItemResponseBodyData) SetDescription(v string) *GetMcpMarke
 
 func (s *GetMcpMarketItemResponseBodyData) SetDisplayMetadata(v map[string]interface{}) *GetMcpMarketItemResponseBodyData {
 	s.DisplayMetadata = v
+	return s
+}
+
+func (s *GetMcpMarketItemResponseBodyData) SetI18n(v map[string]*DataI18nValue) *GetMcpMarketItemResponseBodyData {
+	s.I18n = v
 	return s
 }
 

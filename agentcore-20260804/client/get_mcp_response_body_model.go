@@ -42,7 +42,7 @@ type GetMcpResponseBody struct {
 	//
 	// example:
 	//
-	// Request processing succeeded
+	// Request processed successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The request ID.
 	//
@@ -136,7 +136,7 @@ type GetMcpResponseBodyData struct {
 	//
 	// 2026-08-23T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The custom tags. Multiple values are supported.
+	// The custom tags. Multiple tags are supported.
 	CustomTags []*string `json:"customTags,omitempty" xml:"customTags,omitempty" type:"Repeated"`
 	// The deployment configuration for code-deployed MCP.
 	DeploymentConfig *GetMcpResponseBodyDataDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
@@ -158,7 +158,7 @@ type GetMcpResponseBodyData struct {
 	//
 	// agentcore-mcp-example
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The marketplace source template of the MCP.
+	// The marketplace source template for the MCP.
 	MarketSource *GetMcpResponseBodyDataMarketSource `json:"marketSource,omitempty" xml:"marketSource,omitempty" type:"Struct"`
 	// The MCP server configuration, represented as a JSON string.
 	//
@@ -166,7 +166,7 @@ type GetMcpResponseBodyData struct {
 	//
 	// {"type":"object"}
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
-	// The MCP service ID.
+	// The MCP server ID.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type GetMcpResponseBodyData struct {
 	//
 	// file
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The last updated time of the MCP, in ISO 8601 UTC format.
+	// The last updated time of the MCP in ISO 8601 UTC format.
 	//
 	// example:
 	//
@@ -967,7 +967,7 @@ type GetMcpResponseBodyDataDeploymentConfigAccessControl struct {
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
 	// Indicates whether ingress access control is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// ANONYMOUS indicates anonymous access. CREDENTIAL indicates the use of AgentCore access credentials.
+	// ANONYMOUS indicates anonymous access. CREDENTIAL indicates that AgentCore access credentials are used.
 	//
 	// example:
 	//
@@ -1088,7 +1088,7 @@ type GetMcpResponseBodyDataDeploymentConfigCodeConfiguration struct {
 	//
 	// upload-token
 	CodePackageToken *string `json:"codePackageToken,omitempty" xml:"codePackageToken,omitempty"`
-	// The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and remaining arguments.
+	// The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and the remaining arguments.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
 	// The runtime of the code package: python3.13, nodejs22, or java17.
 	//
@@ -1295,7 +1295,7 @@ type GetMcpResponseBodyDataDeploymentConfigHookConfigurationHooks struct {
 	//
 	// example:
 	//
-	// Log MCP tool calling invokes
+	// Log MCP tool invocations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the hook is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
@@ -1307,7 +1307,7 @@ type GetMcpResponseBodyDataDeploymentConfigHookConfigurationHooks struct {
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
 	// The hook request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The timeout period, in milliseconds.
+	// The timeout period. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -1397,11 +1397,11 @@ func (s *GetMcpResponseBodyDataDeploymentConfigHookConfigurationHooks) Validate(
 }
 
 type GetMcpResponseBodyDataDeploymentConfigLogConfiguration struct {
-	// Indicates whether instance metrics are collected.
+	// Indicates whether instance metrics collection is enabled.
 	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
-	// Indicates whether request metrics are collected.
+	// Indicates whether request metrics collection is enabled.
 	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	// The log splitting begin rule for Function Compute (FC).
+	// The log segmentation begin rule for Function Compute (FC).
 	//
 	// example:
 	//
@@ -1479,7 +1479,7 @@ func (s *GetMcpResponseBodyDataDeploymentConfigLogConfiguration) Validate() erro
 }
 
 type GetMcpResponseBodyDataDeploymentConfigMcpConfiguration struct {
-	// The MCP endpoint path, such as /mcp or /sse.
+	// The MCP endpoint path. For example, /mcp or /sse.
 	//
 	// example:
 	//
@@ -1491,13 +1491,13 @@ type GetMcpResponseBodyDataDeploymentConfigMcpConfiguration struct {
 	//
 	// 1
 	SessionConcurrencyPerInstance *int32 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	// The session idle timeout period, in seconds. Default value: 1800.
+	// The session idle timeout period. Unit: seconds. Default value: 1800.
 	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	// The maximum session lifetime, in seconds. Default value: 21600.
+	// The maximum session lifetime. Unit: seconds. Default value: 21600.
 	//
 	// example:
 	//
@@ -1955,7 +1955,7 @@ type GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration struct {
 	//
 	// 0.25
 	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The temporary disk size. Unit: MB. Valid values: 512 and 10240.
+	// The ephemeral disk size. Unit: MB. Valid values: 512 and 10240.
 	//
 	// example:
 	//
@@ -1963,13 +1963,13 @@ type GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration struct {
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role used by user code to access downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
 	//
 	// example:
 	//
 	// acs:ram::1234567890123456:role/agentcore-mcp-execution
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// The maximum number of concurrent requests per instance. Default value: 200.
+	// The number of concurrent requests per instance. Default value: 200.
 	//
 	// example:
 	//
@@ -2080,7 +2080,7 @@ func (s *GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration) Validate() 
 }
 
 type GetMcpResponseBodyDataMarketSource struct {
-	// The MCP marketplace template ID.
+	// The marketplace template ID for the MCP.
 	//
 	// example:
 	//
@@ -2134,7 +2134,7 @@ type GetMcpResponseBodyDataTemplate struct {
 	//
 	// {"type":"object","properties":{"addresses":{"type":"array","items":{"type":"string"}}}}
 	TemplateInputSchema *string `json:"templateInputSchema,omitempty" xml:"templateInputSchema,omitempty"`
-	// Indicates whether an updated template version is available.
+	// Indicates whether a template version update is available.
 	UpdateAvailable *bool `json:"updateAvailable,omitempty" xml:"updateAvailable,omitempty"`
 }
 

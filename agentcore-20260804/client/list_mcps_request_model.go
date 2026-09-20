@@ -9,6 +9,8 @@ type iListMcpsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomTag(v string) *ListMcpsRequest
+	GetCustomTag() *string
 	SetMaxResults(v int32) *ListMcpsRequest
 	GetMaxResults() *int32
 	SetName(v string) *ListMcpsRequest
@@ -24,6 +26,12 @@ type iListMcpsRequest interface {
 }
 
 type ListMcpsRequest struct {
+	// Filters results by custom tag. The tag must be an exact match.
+	//
+	// example:
+	//
+	// KnowledgeBase
+	CustomTag *string `json:"customTag,omitempty" xml:"customTag,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// example:
@@ -60,7 +68,7 @@ type ListMcpsRequest struct {
 	//
 	// blur
 	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
-	// Specifies whether the service is still bound by the official template usage constraint.
+	// Specifies whether the service is still bound by the official template usage.
 	UsageActive *bool `json:"usageActive,omitempty" xml:"usageActive,omitempty"`
 }
 
@@ -70,6 +78,10 @@ func (s ListMcpsRequest) String() string {
 
 func (s ListMcpsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListMcpsRequest) GetCustomTag() *string {
+	return s.CustomTag
 }
 
 func (s *ListMcpsRequest) GetMaxResults() *int32 {
@@ -94,6 +106,11 @@ func (s *ListMcpsRequest) GetSearchType() *string {
 
 func (s *ListMcpsRequest) GetUsageActive() *bool {
 	return s.UsageActive
+}
+
+func (s *ListMcpsRequest) SetCustomTag(v string) *ListMcpsRequest {
+	s.CustomTag = &v
+	return s
 }
 
 func (s *ListMcpsRequest) SetMaxResults(v int32) *ListMcpsRequest {

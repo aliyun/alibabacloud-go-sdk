@@ -70,7 +70,7 @@ type ListMcpMarketItemsResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request was successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the filter conditions.
+	// The total number of records that match the specified conditions.
 	//
 	// example:
 	//
@@ -181,13 +181,13 @@ func (s *ListMcpMarketItemsResponseBody) Validate() error {
 }
 
 type ListMcpMarketItemsResponseBodyItems struct {
-	// The MCP marketplace template category.
+	// The category of the MCP marketplace template.
 	//
 	// example:
 	//
 	// knowledge
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The MCP service description.
+	// The description of the MCP service.
 	//
 	// example:
 	//
@@ -195,6 +195,8 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display metadata of the template.
 	DisplayMetadata map[string]interface{} `json:"displayMetadata,omitempty" xml:"displayMetadata,omitempty"`
+	// The multilingual display content organized by BCP-47 language tags. Falls back to default fields if the specified language is not matched.
+	I18n map[string]*ItemsI18nValue `json:"i18n,omitempty" xml:"i18n,omitempty"`
 	// The icon URL of the MCP marketplace template.
 	//
 	// example:
@@ -207,7 +209,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// 12
 	InstallCount *int64 `json:"installCount,omitempty" xml:"installCount,omitempty"`
-	// The MCP marketplace template ID.
+	// The ID of the MCP marketplace template.
 	//
 	// example:
 	//
@@ -219,7 +221,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// CODE_PACKAGE
 	McpType *string `json:"mcpType,omitempty" xml:"mcpType,omitempty"`
-	// The MCP marketplace template name.
+	// The name of the MCP marketplace template.
 	//
 	// example:
 	//
@@ -237,13 +239,13 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// StreamableHTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The usage instructions for the MCP marketplace template.
+	// The usage instructions of the MCP marketplace template.
 	//
 	// example:
 	//
 	// # Knowledge\\nKnowledge base query service
 	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
-	// The template schema version.
+	// The schema version of the template.
 	//
 	// example:
 	//
@@ -255,7 +257,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// {"type":"object","properties":{"addresses":{"type":"array","items":{"type":"string"}}}}
 	TemplateInputSchema *string `json:"templateInputSchema,omitempty" xml:"templateInputSchema,omitempty"`
-	// The MCP marketplace template version.
+	// The version of the MCP marketplace template.
 	//
 	// example:
 	//
@@ -281,6 +283,10 @@ func (s *ListMcpMarketItemsResponseBodyItems) GetDescription() *string {
 
 func (s *ListMcpMarketItemsResponseBodyItems) GetDisplayMetadata() map[string]interface{} {
 	return s.DisplayMetadata
+}
+
+func (s *ListMcpMarketItemsResponseBodyItems) GetI18n() map[string]*ItemsI18nValue {
+	return s.I18n
 }
 
 func (s *ListMcpMarketItemsResponseBodyItems) GetIconUrl() *string {
@@ -339,6 +345,11 @@ func (s *ListMcpMarketItemsResponseBodyItems) SetDescription(v string) *ListMcpM
 
 func (s *ListMcpMarketItemsResponseBodyItems) SetDisplayMetadata(v map[string]interface{}) *ListMcpMarketItemsResponseBodyItems {
 	s.DisplayMetadata = v
+	return s
+}
+
+func (s *ListMcpMarketItemsResponseBodyItems) SetI18n(v map[string]*ItemsI18nValue) *ListMcpMarketItemsResponseBodyItems {
+	s.I18n = v
 	return s
 }
 

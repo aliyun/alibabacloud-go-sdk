@@ -3690,13 +3690,13 @@ func (client *Client) GetManagedAgent(workspaceId *string, agentId *string, requ
 
 // Summary:
 //
-// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
 //
 // Description:
 //
 // ## Operation description
 //
-// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
 //
 // @param request - GetMcpRequest
 //
@@ -3737,13 +3737,13 @@ func (client *Client) GetMcpWithOptions(workspaceId *string, mcpServerId *string
 
 // Summary:
 //
-// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
 //
 // Description:
 //
 // ## Operation description
 //
-// Queries the details of a specified MCP service, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
 //
 // @param request - GetMcpRequest
 //
@@ -4650,7 +4650,7 @@ func (client *Client) GetWorkspacePlugin(workspaceId *string, pluginName *string
 //
 // Description:
 //
-// Validates input based on the specified template version and creates an MCP in the workspace.
+// Validates the input based on the specified template version and creates an MCP in the workspace.
 //
 // @param tmpReq - InstallMcpMarketItemRequest
 //
@@ -4717,7 +4717,7 @@ func (client *Client) InstallMcpMarketItemWithOptions(workspaceId *string, marke
 //
 // Description:
 //
-// Validates input based on the specified template version and creates an MCP in the workspace.
+// Validates the input based on the specified template version and creates an MCP in the workspace.
 //
 // @param request - InstallMcpMarketItemRequest
 //
@@ -5761,6 +5761,10 @@ func (client *Client) ListMcpsWithOptions(workspaceId *string, request *ListMcps
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomTag) {
+		query["customTag"] = request.CustomTag
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
 	}
@@ -8154,7 +8158,7 @@ func (client *Client) UpdateMcp(workspaceId *string, mcpServerId *string, reques
 //
 // Description:
 //
-// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created. This operation does not upgrade the template version.
+// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created, without upgrading the template version.
 //
 // @param tmpReq - UpdateMcpTemplateConfigRequest
 //
@@ -8221,7 +8225,7 @@ func (client *Client) UpdateMcpTemplateConfigWithOptions(workspaceId *string, mc
 //
 // Description:
 //
-// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created. This operation does not upgrade the template version.
+// Updates the schema-exposed parameters by using the same template version that was bound when the MCP was created, without upgrading the template version.
 //
 // @param request - UpdateMcpTemplateConfigRequest
 //
