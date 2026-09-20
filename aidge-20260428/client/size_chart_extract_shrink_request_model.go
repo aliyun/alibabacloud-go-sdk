@@ -18,7 +18,7 @@ type iSizeChartExtractShrinkRequest interface {
 }
 
 type SizeChartExtractShrinkRequest struct {
-	// The list of column names (such as Size, Bust, Length).
+	// The list of column names (such as Size, Bust, and Length).
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type SizeChartExtractShrinkRequest struct {
 	//
 	// https://example.com/size_chart.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The language model for output (such as en, cn). Set this parameter to cn for Chinese or en for English. If not specified, the original language is preserved.
+	// The language model (such as en and cn).
 	//
 	// example:
 	//

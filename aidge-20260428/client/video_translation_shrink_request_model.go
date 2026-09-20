@@ -24,7 +24,7 @@ type VideoTranslationShrinkRequest struct {
 	//
 	// This parameter is required.
 	CapabilitiesShrink *string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty"`
-	// The source language. This parameter is optional. Default value: auto (automatic detection).
+	// The source language. This parameter is optional. Default value: auto, which indicates automatic detection.
 	//
 	// example:
 	//

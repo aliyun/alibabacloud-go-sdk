@@ -38,7 +38,7 @@ type DocumentTranslateResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request identity, used for troubleshooting and Tracing Analysis.
+	// The unique request identity. Use this ID for troubleshooting and Tracing Analysis.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ func (s *DocumentTranslateResponseBody) Validate() error {
 }
 
 type DocumentTranslateResponseBodyData struct {
-	// The unique identifier of the asynchronous task. Use this ID to query the task status and result.
+	// The unique identifier of the asynchronous task. Use this ID to query the task status and results.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type VideoTranslationRequest struct {
 	//
 	// This parameter is required.
 	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
-	// The source language. This parameter is optional. Default value: auto (automatic detection).
+	// The source language. This parameter is optional. Default value: auto, which indicates automatic detection.
 	//
 	// example:
 	//

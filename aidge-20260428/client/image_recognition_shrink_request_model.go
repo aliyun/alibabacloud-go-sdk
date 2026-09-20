@@ -36,13 +36,13 @@ type ImageRecognitionShrinkRequest struct {
 	//
 	// https://fb-es.mrvcdn.com/kf/E6332bde0101849968532c4f08dac757cZ.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The list of non-subject element types to detect. Valid values: 1 (background), 2 (border), 3 (watermark), and 4 (splice).
+	// The element types to detect on the non-subject area of the image (1: watermark, 2: logo, 3: text, 4: text-containing color block). You can select multiple element types. This parameter and ObjectDetectElements cannot both be empty.
 	//
 	// example:
 	//
 	// [1,2,3,4]
 	NonObjectDetectElementsShrink *string `json:"NonObjectDetectElements,omitempty" xml:"NonObjectDetectElements,omitempty"`
-	// The list of subject element types to detect. Valid values: 1 (product subject), 2 (model), 3 (text), and 4 (logo).
+	// The element types to detect on the image subject (1: watermark, 2: logo, 3: text, 4: text-containing color block). You can select multiple element types.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ImageRecognitionShrinkRequest struct {
 	//
 	// 1
 	ReturnCharacter *int32 `json:"ReturnCharacter,omitempty" xml:"ReturnCharacter,omitempty"`
-	// Specifies whether to return text property information. Valid values: 1 (return) and 0 (do not return).
+	// Specifies whether to return text attribute information. Valid values: 1 (return) and 0 (do not return).
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ImageRecognitionShrinkRequest struct {
 	//
 	// 1
 	ReturnProductNum *int32 `json:"ReturnProductNum,omitempty" xml:"ReturnProductNum,omitempty"`
-	// Specifies whether to return product property information. Valid values: 1 (return) and 0 (do not return).
+	// Specifies whether to return product attribute information. Valid values: 1 (return) and 0 (do not return).
 	//
 	// example:
 	//

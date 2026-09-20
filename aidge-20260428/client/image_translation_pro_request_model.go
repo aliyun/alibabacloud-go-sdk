@@ -28,13 +28,13 @@ type iImageTranslationProRequest interface {
 }
 
 type ImageTranslationProRequest struct {
-	// Specifies whether to use asynchronous mode. Default value: false (synchronous mode). If you set this parameter to true, the API immediately returns a TaskId. Use the query translation result API to retrieve the final result.
+	// Specifies whether to use asynchronous mode. Default value: false (synchronous mode). When set to true, the API immediately returns a TaskId. Use the query translation result API to obtain the final result.
 	//
 	// example:
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The ID of the intervention glossary. This parameter is optional. Create the glossary in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
+	// The ID of the intervention glossary. This parameter is optional. Create the glossary separately in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ImageTranslationProRequest struct {
 	//
 	// - Format: png, jpeg, jpg, bmp, or webp.
 	//
-	// - Pixels: Width and height must not exceed 4000 pixels each.
+	// - Pixels: Both width and height must not exceed 4000.
 	//
 	// - File size: The original file must be 10 MB or smaller.
 	//
@@ -58,13 +58,13 @@ type ImageTranslationProRequest struct {
 	//
 	// https://img.alicdn.com/imgextra/i3/O1CN01HTDhDi28Fd85ZYs7H_!!6000000007903-0-tps-800-800.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate text on the image subject. This parameter is optional. Default value: false. This helps protect information such as embedded product names from being translated.
+	// Specifies whether to translate text on the image subject. This parameter is optional. Default value: false. This helps you protect information and avoid translating embedded information such as product names.
 	//
 	// example:
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// The source language code. This parameter is required. For supported language directions, see [Language Direction Mapping Table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+	// The source language code. This parameter is required. For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type ImageTranslationProRequest struct {
 	//
 	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The target language code. This parameter is required. For supported language directions, see [Language Direction Mapping Table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+	// The target language code. This parameter is required. For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 	//
 	// This parameter is required.
 	//
@@ -80,13 +80,13 @@ type ImageTranslationProRequest struct {
 	//
 	// ko
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand names on the image. This parameter is optional. Default value: false. This helps protect brand name information from being translated.
+	// Specifies whether to translate brand names on images. This parameter is optional. Default value: false. This helps you protect brand name information from being translated.
 	//
 	// example:
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// Specifies whether to return layout information such as text position, font, and color. Set this parameter to true to retrieve layer information for secondary editing with an image editor. Default value: false.
+	// Specifies whether to return layout information such as text position, font, and color. When set to true, layer information is returned for secondary editing with an image editor. Default value: false.
 	//
 	// example:
 	//

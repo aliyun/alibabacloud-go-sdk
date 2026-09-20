@@ -115,7 +115,7 @@ func (s *PrepaidTextTranslateResponseBody) Validate() error {
 type PrepaidTextTranslateResponseBodyData struct {
 	// The translation result list. Each element corresponds to a translation result for an entry in the input text list.
 	Translations []*PrepaidTextTranslateResponseBodyDataTranslations `json:"Translations,omitempty" xml:"Translations,omitempty" type:"Repeated"`
-	// The usage information, including the number of input characters.
+	// The usage information, including the input character count.
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
 }
 
@@ -175,7 +175,7 @@ type PrepaidTextTranslateResponseBodyDataTranslations struct {
 	//
 	// example:
 	//
-	// 你好世界
+	// Hello World
 	TranslatedText *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
 }
 

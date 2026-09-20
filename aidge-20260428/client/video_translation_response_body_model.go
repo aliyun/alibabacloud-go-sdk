@@ -28,7 +28,7 @@ type VideoTranslationResponseBody struct {
 	//
 	// Processing
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous task submit result.
+	// The submit status of the asynchronous task.
 	Data *VideoTranslationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description.
 	//

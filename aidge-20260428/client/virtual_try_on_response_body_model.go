@@ -36,13 +36,13 @@ type VirtualTryOnResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. Used to uniquely identify a single API call.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *VirtualTryOnResponseBody) Validate() error {
 }
 
 type VirtualTryOnResponseBodyData struct {
-	// The asynchronous task ID. Used to query the task result later.
+	// The asynchronous task ID, which is used to query the task result later.
 	//
 	// example:
 	//

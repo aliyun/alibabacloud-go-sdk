@@ -173,7 +173,7 @@ type ImageRecognitionResponseBodyData struct {
 	//
 	// 2
 	PdNum *int32 `json:"PdNum,omitempty" xml:"PdNum,omitempty"`
-	// The proportion of the product area in the image.
+	// The proportion of the product in the image.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type ImageRecognitionResponseBodyData struct {
 	PdProp *string `json:"PdProp,omitempty" xml:"PdProp,omitempty"`
 	// The list of recognized text.
 	RecText []*string `json:"RecText,omitempty" xml:"RecText,omitempty" type:"Repeated"`
-	// The proportion of the text area in the image.
+	// The proportion of text in the image.
 	//
 	// example:
 	//

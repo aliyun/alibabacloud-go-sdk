@@ -30,7 +30,7 @@ type TextCorrectResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The intelligent correction result data.
 	Data *TextCorrectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. The value "Success" is returned if the call is successful. A specific error message is returned if an exception occurs, such as "The parameters contain sensitive information. Try other input."
+	// The error message. The value "Success" is returned if the call is successful. If an error occurs, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
 	//
 	// example:
 	//
