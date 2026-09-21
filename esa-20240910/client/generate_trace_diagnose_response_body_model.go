@@ -24,7 +24,7 @@ type GenerateTraceDiagnoseResponseBody struct {
 	//
 	// 64D28B53-5902-409B-94F6-FD46680144FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A diagnostic message.
+	// The tip.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GenerateTraceDiagnoseResponseBody struct {
 	//
 	// Origin IP x.x.x.x: DNS A record does not point to an ESA service IP.
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
-	// The generated diagnostic link.
+	// The diagnostic link URL.
 	//
 	// example:
 	//

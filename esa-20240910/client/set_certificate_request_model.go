@@ -44,7 +44,7 @@ type SetCertificateRequest struct {
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The certificate ID. Certificates of the free type (created by calling the ApplyCertificate operation) are not supported. Certificates of the cas and upload types are supported.
+	// The certificate ID. Free certificates created by calling the ApplyCertificate operation are not supported. Certificate IDs of the cas and upload types are supported.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type SetCertificateRequest struct {
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	// The region. This parameter is required when Type is set to cas. Valid values:
 	//
-	// - China site accounts: cn-hangzhou.
+	// - Alibaba Cloud China Website accounts: cn-hangzhou.
 	//
-	// - International site accounts: ap-southeast-1.
+	// - Alibaba Cloud International Website accounts: ap-southeast-1.
 	//
 	// example:
 	//
@@ -89,11 +89,11 @@ type SetCertificateRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The certificate type. Valid values:
 	//
-	// - **cas**: certificate from SSL Certificates Service.
+	// - **cas**: a certificate from SSL Certificates Service.
 	//
-	// - **upload**: custom uploaded certificate.
+	// - **upload**: a custom uploaded certificate.
 	//
-	// - **keyless**: keyless certificate.
+	// - **keyless**: a keyless certificate.
 	//
 	// This parameter is required.
 	//

@@ -25,10 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-southeast-1": dara.String("esa.ap-southeast-1.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("esa.cn-hangzhou.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -376,6 +372,10 @@ func (client *Client) ApplyCertificateWithOptions(request *ApplyCertificateReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlgType) {
+		query["AlgType"] = request.AlgType
+	}
+
 	if !dara.IsNil(request.Domains) {
 		query["Domains"] = request.Domains
 	}
@@ -2538,11 +2538,11 @@ func (client *Client) CreateCompressionRule(request *CreateCompressionRuleReques
 
 // Summary:
 //
-// Creates a SaaS domain name for a site.
+// Creates a SaaS domain name under a site.
 //
 // Description:
 //
-// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid China Internet Content Provider (ICP) filing.
+// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid Internet Content Provider (ICP) filing.
 //
 // - Each user can invoke this operation up to 100 times per hour.
 //
@@ -2620,11 +2620,11 @@ func (client *Client) CreateCustomHostnameWithOptions(request *CreateCustomHostn
 
 // Summary:
 //
-// Creates a SaaS domain name for a site.
+// Creates a SaaS domain name under a site.
 //
 // Description:
 //
-// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid China Internet Content Provider (ICP) filing.
+// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid Internet Content Provider (ICP) filing.
 //
 // - Each user can invoke this operation up to 100 times per hour.
 //
@@ -5848,7 +5848,7 @@ func (client *Client) CreateScheduledPreloadJob(request *CreateScheduledPreloadJ
 //
 // - Before creating a site, you must have an active plan instance.
 //
-// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid Internet Content Provider (ICP) filing.
+// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid Chinese Internet Content Provider (ICP) filing.
 //
 // - Each user can invoke this operation up to 100 times per hour.
 //
@@ -5920,7 +5920,7 @@ func (client *Client) CreateSiteWithOptions(request *CreateSiteRequest, runtime 
 //
 // - Before creating a site, you must have an active plan instance.
 //
-// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid Internet Content Provider (ICP) filing.
+// - If the acceleration area is set to the Chinese mainland only or global, the site domain name must have a valid Chinese Internet Content Provider (ICP) filing.
 //
 // - Each user can invoke this operation up to 100 times per hour.
 //
@@ -13292,7 +13292,7 @@ func (client *Client) DescribeSiteTopData(request *DescribeSiteTopDataRequest) (
 //
 // - If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
-// - The time granularity of returned data varies based on the time span between StartTime and EndTime.
+// - The time granularity of the returned data varies based on the time span between StartTime and EndTime.
 //
 //   - Less than or equal to 3 hours: returns data at 1-minute granularity.
 //
@@ -13376,7 +13376,7 @@ func (client *Client) DescribeSiteWafTimeSeriesDataWithOptions(tmpReq *DescribeS
 //
 // - If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
-// - The time granularity of returned data varies based on the time span between StartTime and EndTime.
+// - The time granularity of the returned data varies based on the time span between StartTime and EndTime.
 //
 //   - Less than or equal to 3 hours: returns data at 1-minute granularity.
 //
@@ -13412,7 +13412,7 @@ func (client *Client) DescribeSiteWafTimeSeriesData(request *DescribeSiteWafTime
 //
 // - If you do not specify StartTime or EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
-// - Because of the high volume of access requests during the query period, data analytics may involve sampling.
+// - Because of the high number of access requests during the query time range, data analytics may involve sampling.
 //
 // @param tmpReq - DescribeSiteWafTopDataRequest
 //
@@ -13488,7 +13488,7 @@ func (client *Client) DescribeSiteWafTopDataWithOptions(tmpReq *DescribeSiteWafT
 //
 // - If you do not specify StartTime or EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
 //
-// - Because of the high volume of access requests during the query period, data analytics may involve sampling.
+// - Because of the high number of access requests during the query time range, data analytics may involve sampling.
 //
 // @param request - DescribeSiteWafTopDataRequest
 //
@@ -13506,11 +13506,11 @@ func (client *Client) DescribeSiteWafTopData(request *DescribeSiteWafTopDataRequ
 
 // Summary:
 //
-// Retrieves the details of a diagnostic report. 1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client-side diagnostics. 3. Call ListTraceTasks to obtain the TaskId or TraceId. 4. Call this operation to retrieve the report.
+// Retrieves the details of a diagnostic report. 1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client diagnostics. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this operation to retrieve the report.
 //
 // Description:
 //
-//	Notice: Make sure that you have activated the Layer 4 acceleration service before calling this operation.1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client-side diagnostics. 3. Call ListTraceTasks to obtain the TaskId or TraceId. 4. Call this operation to retrieve the report.
+//	Notice: Make sure that you have activated the Layer 4 acceleration service before calling this operation.1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client diagnostics. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this operation to retrieve the report.
 //
 // @param request - DescribeTraceDiagnoseReportRequest
 //
@@ -13558,11 +13558,11 @@ func (client *Client) DescribeTraceDiagnoseReportWithOptions(request *DescribeTr
 
 // Summary:
 //
-// Retrieves the details of a diagnostic report. 1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client-side diagnostics. 3. Call ListTraceTasks to obtain the TaskId or TraceId. 4. Call this operation to retrieve the report.
+// Retrieves the details of a diagnostic report. 1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client diagnostics. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this operation to retrieve the report.
 //
 // Description:
 //
-//	Notice: Make sure that you have activated the Layer 4 acceleration service before calling this operation.1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client-side diagnostics. 3. Call ListTraceTasks to obtain the TaskId or TraceId. 4. Call this operation to retrieve the report.
+//	Notice: Make sure that you have activated the Layer 4 acceleration service before calling this operation.1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client diagnostics. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this operation to retrieve the report.
 //
 // @param request - DescribeTraceDiagnoseReportRequest
 //
@@ -14176,7 +14176,7 @@ func (client *Client) ExportRecords(request *ExportRecordsRequest) (_result *Exp
 
 // Summary:
 //
-// Generates a diagnosis link.
+// Generates a diagnostic link.
 //
 // @param request - GenerateTraceDiagnoseRequest
 //
@@ -14224,7 +14224,7 @@ func (client *Client) GenerateTraceDiagnoseWithOptions(request *GenerateTraceDia
 
 // Summary:
 //
-// Generates a diagnosis link.
+// Generates a diagnostic link.
 //
 // @param request - GenerateTraceDiagnoseRequest
 //
@@ -14775,7 +14775,7 @@ func (client *Client) GetClientCaCertificate(request *GetClientCaCertificateRequ
 
 // Summary:
 //
-// Retrieves the list of hostnames bound to a specified client CA certificate. If no certificate is specified, this operation returns the list of hostnames bound to the ESA CA certificate.
+// Retrieves the domain name bindinglist for a specified client CA certificate. If no certificate is specified, the domain name binding list for the ESA CA certificate is returned.
 //
 // @param request - GetClientCaCertificateHostnamesRequest
 //
@@ -14823,7 +14823,7 @@ func (client *Client) GetClientCaCertificateHostnamesWithOptions(request *GetCli
 
 // Summary:
 //
-// Retrieves the list of hostnames bound to a specified client CA certificate. If no certificate is specified, this operation returns the list of hostnames bound to the ESA CA certificate.
+// Retrieves the domain name bindinglist for a specified client CA certificate. If no certificate is specified, the domain name binding list for the ESA CA certificate is returned.
 //
 // @param request - GetClientCaCertificateHostnamesRequest
 //
@@ -14899,7 +14899,7 @@ func (client *Client) GetClientCertificate(request *GetClientCertificateRequest)
 
 // Summary:
 //
-// Retrieves the list of hostnames bound to a specified client CA certificate. If you do not specify a certificate, the operation returns the list of hostnames for the ESA CA certificate.
+// Retrieves the domain name bindings for a specified client CA certificate. If no certificate is specified, returns the domain name bindings for the ESA CA certificate.
 //
 // @param request - GetClientCertificateHostnamesRequest
 //
@@ -14939,7 +14939,7 @@ func (client *Client) GetClientCertificateHostnamesWithOptions(request *GetClien
 
 // Summary:
 //
-// Retrieves the list of hostnames bound to a specified client CA certificate. If you do not specify a certificate, the operation returns the list of hostnames for the ESA CA certificate.
+// Retrieves the domain name bindings for a specified client CA certificate. If no certificate is specified, returns the domain name bindings for the ESA CA certificate.
 //
 // @param request - GetClientCertificateHostnamesRequest
 //
@@ -20205,7 +20205,7 @@ func (client *Client) GetWafBotAppKey() (_result *GetWafBotAppKeyResponse, _err 
 
 // Summary:
 //
-// Retrieves matching engine information for a site at a given WAF phase, which defines how the WAF detects and handles various network requests.
+// Retrieves the match engine information for a specified site at a specific WAF phase. This information defines how WAF detects and processes different types of network requests.
 //
 // @param request - GetWafFilterRequest
 //
@@ -20261,7 +20261,7 @@ func (client *Client) GetWafFilterWithOptions(request *GetWafFilterRequest, runt
 
 // Summary:
 //
-// Retrieves matching engine information for a site at a given WAF phase, which defines how the WAF detects and handles various network requests.
+// Retrieves the match engine information for a specified site at a specific WAF phase. This information defines how WAF detects and processes different types of network requests.
 //
 // @param request - GetWafFilterRequest
 //
@@ -20954,6 +20954,10 @@ func (client *Client) ListCertificatesWithOptions(request *ListCertificatesReque
 		query["SiteId"] = request.SiteId
 	}
 
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
 	if !dara.IsNil(request.ValidOnly) {
 		query["ValidOnly"] = request.ValidOnly
 	}
@@ -21479,7 +21483,7 @@ func (client *Client) ListCustomResponseCodeRules(request *ListCustomResponseCod
 
 // Summary:
 //
-// Retrieves a list of purchased DDoS protection instances.
+// Queries the list of additionally purchased DDoS security instances.
 //
 // @param request - ListDDoSInstancesRequest
 //
@@ -21547,7 +21551,7 @@ func (client *Client) ListDDoSInstancesWithOptions(request *ListDDoSInstancesReq
 
 // Summary:
 //
-// Retrieves a list of purchased DDoS protection instances.
+// Queries the list of additionally purchased DDoS security instances.
 //
 // @param request - ListDDoSInstancesRequest
 //
@@ -26656,7 +26660,7 @@ func (client *Client) OpenErService(request *OpenErServiceRequest) (_result *Ope
 
 // Summary:
 //
-// Prefetches cache content.
+// Prefetches URLs to warm the cache.
 //
 // @param tmpReq - PreloadCachesRequest
 //
@@ -26718,7 +26722,7 @@ func (client *Client) PreloadCachesWithOptions(tmpReq *PreloadCachesRequest, run
 
 // Summary:
 //
-// Prefetches cache content.
+// Prefetches URLs to warm the cache.
 //
 // @param request - PreloadCachesRequest
 //
@@ -27877,7 +27881,7 @@ func (client *Client) RebuildEdgeContainerAppStagingEnv(request *RebuildEdgeCont
 
 // Summary:
 //
-// Restores the status of a site that has been disabled.
+// Restores the status of a site that has been deactivated.
 //
 // @param request - RecoverSiteRequest
 //
@@ -27921,7 +27925,7 @@ func (client *Client) RecoverSiteWithOptions(request *RecoverSiteRequest, runtim
 
 // Summary:
 //
-// Restores the status of a site that has been disabled.
+// Restores the status of a site that has been deactivated.
 //
 // @param request - RecoverSiteRequest
 //
@@ -28947,7 +28951,7 @@ func (client *Client) SetHttpDDoSAttackRuleStatus(request *SetHttpDDoSAttackRule
 
 // Summary:
 //
-// Creates or updates a keyless server configuration.
+// Creates or updates a Keyless server configuration.
 //
 // @param request - SetKeylessServerRequest
 //
@@ -29025,7 +29029,7 @@ func (client *Client) SetKeylessServerWithOptions(request *SetKeylessServerReque
 
 // Summary:
 //
-// Creates or updates a keyless server configuration.
+// Creates or updates a Keyless server configuration.
 //
 // @param request - SetKeylessServerRequest
 //
@@ -30267,7 +30271,7 @@ func (client *Client) UpdateCacheTag(request *UpdateCacheTagRequest) (_result *U
 
 // Summary:
 //
-// Modifies the CNAME flattening configuration of a website.
+// Modifies the CNAME flattening configuration of a site.
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -30315,7 +30319,7 @@ func (client *Client) UpdateCnameFlatteningWithOptions(request *UpdateCnameFlatt
 
 // Summary:
 //
-// Modifies the CNAME flattening configuration of a website.
+// Modifies the CNAME flattening configuration of a site.
 //
 // @param request - UpdateCnameFlatteningRequest
 //
@@ -30845,7 +30849,19 @@ func (client *Client) UpdateCustomScenePolicy(request *UpdateCustomScenePolicyRe
 
 // Summary:
 //
-// Modifies the specifications of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Modifies the specifications of a DDoS instance.
+//
+// Description:
+//
+// - Call `PurchaseDDoSInstance` to purchase a DDoS instance. A newly purchased DDoS instance can only be associated with a pay-as-you-go plan instance.
+//
+// - Call `ListDDoSInstances` to query the list of DDoS instances.
+//
+// - Specification changes are not allowed within 31 days of purchase.
+//
+// - You can change specifications once per calendar month (from the 1st to the 31st of each month).
+//
+// - After a successful specification change, billing starts immediately on the same day based on the new instance specifications.
 //
 // @param request - UpdateDDoSSpecRequest
 //
@@ -30901,7 +30917,19 @@ func (client *Client) UpdateDDoSSpecWithOptions(request *UpdateDDoSSpecRequest, 
 
 // Summary:
 //
-// Modifies the specifications of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Modifies the specifications of a DDoS instance.
+//
+// Description:
+//
+// - Call `PurchaseDDoSInstance` to purchase a DDoS instance. A newly purchased DDoS instance can only be associated with a pay-as-you-go plan instance.
+//
+// - Call `ListDDoSInstances` to query the list of DDoS instances.
+//
+// - Specification changes are not allowed within 31 days of purchase.
+//
+// - You can change specifications once per calendar month (from the 1st to the 31st of each month).
+//
+// - After a successful specification change, billing starts immediately on the same day based on the new instance specifications.
 //
 // @param request - UpdateDDoSSpecRequest
 //
@@ -33937,7 +33965,7 @@ func (client *Client) UpdateSiteAccessType(request *UpdateSiteAccessTypeRequest)
 
 // Summary:
 //
-// Modifies the acceleration region of a site. Updates the acceleration configuration of a site to adapt to traffic distribution changes or improve the access experience for users in specific regions.
+// Modifies the acceleration region of a site. Updates the acceleration configuration of a site to adapt to changes in traffic distribution or improve the access experience for users in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -33985,7 +34013,7 @@ func (client *Client) UpdateSiteCoverageWithOptions(request *UpdateSiteCoverageR
 
 // Summary:
 //
-// Modifies the acceleration region of a site. Updates the acceleration configuration of a site to adapt to traffic distribution changes or improve the access experience for users in specific regions.
+// Modifies the acceleration region of a site. Updates the acceleration configuration of a site to adapt to changes in traffic distribution or improve the access experience for users in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -36078,11 +36106,11 @@ func (client *Client) UploadFileAdvance(request *UploadFileAdvanceRequest, runti
 
 // Summary:
 //
-// Uploads an origin server CA certificate.
+// Uploads a CA certificate for the origin server.
 //
 // Description:
 //
-// You can add multiple origins to a site. Edge Security Acceleration (ESA) supports various origin types, including domain names, IP addresses, OSS, and S3. Origin authentication is supported for OSS or S3 origins.
+// You can add multiple origin servers under a source address. Origin servers of the domain name, IP address, OSS, and S3 types are supported. Back-to-origin authentication is supported for OSS and S3 origin servers.
 //
 // @param request - UploadOriginCaCertificateRequest
 //
@@ -36134,11 +36162,11 @@ func (client *Client) UploadOriginCaCertificateWithOptions(request *UploadOrigin
 
 // Summary:
 //
-// Uploads an origin server CA certificate.
+// Uploads a CA certificate for the origin server.
 //
 // Description:
 //
-// You can add multiple origins to a site. Edge Security Acceleration (ESA) supports various origin types, including domain names, IP addresses, OSS, and S3. Origin authentication is supported for OSS or S3 origins.
+// You can add multiple origin servers under a source address. Origin servers of the domain name, IP address, OSS, and S3 types are supported. Back-to-origin authentication is supported for OSS and S3 origin servers.
 //
 // @param request - UploadOriginCaCertificateRequest
 //
@@ -36156,7 +36184,7 @@ func (client *Client) UploadOriginCaCertificate(request *UploadOriginCaCertifica
 
 // Summary:
 //
-// Uploads an origin client certificate for a site.
+// Uploads a domain-level back-to-origin client certificate.
 //
 // @param request - UploadOriginClientCertificateRequest
 //
@@ -36214,7 +36242,7 @@ func (client *Client) UploadOriginClientCertificateWithOptions(request *UploadOr
 
 // Summary:
 //
-// Uploads an origin client certificate for a site.
+// Uploads a domain-level back-to-origin client certificate.
 //
 // @param request - UploadOriginClientCertificateRequest
 //
@@ -36232,7 +36260,7 @@ func (client *Client) UploadOriginClientCertificate(request *UploadOriginClientC
 
 // Summary:
 //
-// # Upload site origin client certificate
+// Uploads a site-level back-to-origin client certificate.
 //
 // @param request - UploadSiteOriginClientCertificateRequest
 //
@@ -36290,7 +36318,7 @@ func (client *Client) UploadSiteOriginClientCertificateWithOptions(request *Uplo
 
 // Summary:
 //
-// # Upload site origin client certificate
+// Uploads a site-level back-to-origin client certificate.
 //
 // @param request - UploadSiteOriginClientCertificateRequest
 //
@@ -36370,13 +36398,13 @@ func (client *Client) VerifyCustomHostname(request *VerifyCustomHostnameRequest)
 
 // Summary:
 //
-// Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+// Verifies site ownership. A site that passes the verification is automatically activated.
 //
 // Description:
 //
-// 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+// 1. For sites connected through NS, verifies whether the current NS servers of the site are the NS servers assigned by Alibaba Cloud.
 //
-// 2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
+// 2. For sites connected through CNAME, verifies whether the site has a TXT record with the name _esaauth.[site name] and the content set to the site verification code (see the VerifyCode field in the site information).
 //
 // @param request - VerifySiteRequest
 //
@@ -36420,13 +36448,13 @@ func (client *Client) VerifySiteWithOptions(request *VerifySiteRequest, runtime 
 
 // Summary:
 //
-// Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+// Verifies site ownership. A site that passes the verification is automatically activated.
 //
 // Description:
 //
-// 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+// 1. For sites connected through NS, verifies whether the current NS servers of the site are the NS servers assigned by Alibaba Cloud.
 //
-// 2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
+// 2. For sites connected through CNAME, verifies whether the site has a TXT record with the name _esaauth.[site name] and the content set to the site verification code (see the VerifyCode field in the site information).
 //
 // @param request - VerifySiteRequest
 //

@@ -46,25 +46,25 @@ type UploadOriginClientCertificateResponseBody struct {
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The certification authority.
 	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The end of the certificate\\"s validity period (`not after`). The timestamp is in UTC and formatted in ISO 8601.
+	// The end time of the certificate validity period.
 	//
 	// example:
 	//
 	// 2024-12-01T02:13:07Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The start of the certificate\\"s validity period (`not before`). The timestamp is in UTC and formatted in ISO 8601.
+	// The start time of the certificate validity period.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type UploadOriginClientCertificateResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type UploadOriginClientCertificateResponseBody struct {
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The status of the certificate.
+	// The certificate status.
 	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The validity period of the certificate in days.
+	// The number of days the certificate is valid.
 	//
 	// example:
 	//

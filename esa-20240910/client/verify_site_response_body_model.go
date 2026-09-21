@@ -18,9 +18,9 @@ type iVerifySiteResponseBody interface {
 type VerifySiteResponseBody struct {
 	// Indicates whether the verification passed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The verification passed.
 	//
-	// 	- **false**
+	// - **false**: The verification failed.
 	//
 	// example:
 	//

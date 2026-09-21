@@ -20,7 +20,7 @@ type iSetKeylessServerResponseBody interface {
 }
 
 type SetKeylessServerResponseBody struct {
-	// The keyless server ID.
+	// Keyless server ID。
 	//
 	// example:
 	//

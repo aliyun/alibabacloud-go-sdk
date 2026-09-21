@@ -20,12 +20,18 @@ type iWafTimer interface {
 }
 
 type WafTimer struct {
+	// The effective periods.
 	Periods []*WafTimerPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Repeated"`
+	// The timer type: permanently effective (permanent/empty), effective during time periods (periods), or periodically effective (weekly).
+	//
 	// example:
 	//
 	// permanent
-	Scopes        *string                  `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
+	Scopes *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
+	// The weekly effective periods.
 	WeeklyPeriods []*WafTimerWeeklyPeriods `json:"WeeklyPeriods,omitempty" xml:"WeeklyPeriods,omitempty" type:"Repeated"`
+	// The time zone. Default value: UTC+00:00.<br>Example: 8 indicates UTC+8, -8 indicates UTC-8.<br>Valid range: -12 to +14.
+	//
 	// example:
 	//
 	// 8
@@ -99,10 +105,14 @@ func (s *WafTimer) Validate() error {
 }
 
 type WafTimerPeriods struct {
+	// The end time in RFC 3339 UTC format.
+	//
 	// example:
 	//
 	// 2025-01-01T01:00:00Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The start time in RFC 3339 UTC format.
+	//
 	// example:
 	//
 	// 2025-01-01T00:00:00Z
@@ -140,7 +150,10 @@ func (s *WafTimerPeriods) Validate() error {
 }
 
 type WafTimerWeeklyPeriods struct {
+	// The effective period within the epoch.
 	DailyPeriods []*WafTimerWeeklyPeriodsDailyPeriods `json:"DailyPeriods,omitempty" xml:"DailyPeriods,omitempty" type:"Repeated"`
+	// The days of the week, separated by commas. Values 1-7 represent Monday through Sunday.<br>Example: Monday and Wednesday is "1,3".
+	//
 	// example:
 	//
 	// 1
@@ -187,10 +200,14 @@ func (s *WafTimerWeeklyPeriods) Validate() error {
 }
 
 type WafTimerWeeklyPeriodsDailyPeriods struct {
+	// The end time in HH:mm:ss format.
+	//
 	// example:
 	//
 	// 01:00:00
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// The start time in HH:mm:ss format.
+	//
 	// example:
 	//
 	// 00:00:00

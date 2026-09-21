@@ -42,7 +42,7 @@ type ListTraceTasksRequest struct {
 	//
 	// f2xxx5
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
-	// The domain name to diagnose.
+	// The domain name to be diagnosed.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListTraceTasksRequest struct {
 	//
 	// 2
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Valid values: any integer from 1 to 1000.
+	// The number of entries per page. Valid values: any integer from 1 to 1000.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListTraceTasksRequest struct {
 	//
 	// xxxxxxxxxx-x-x-xxxxxxxxxxxxxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The diagnostic trace ID.
+	// The trace ID of the diagnostic task.
 	//
 	// example:
 	//

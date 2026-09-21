@@ -26,7 +26,7 @@ type iDescribeSiteWafTopDataRequest interface {
 type DescribeSiteWafTopDataRequest struct {
 	// The end of the time range to query.
 	//
-	// Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -52,7 +52,6 @@ type DescribeSiteWafTopDataRequest struct {
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
-	//
 	// If this parameter is left empty, user-level data is queried.
 	//
 	// example:
@@ -61,7 +60,7 @@ type DescribeSiteWafTopDataRequest struct {
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// example:
 	//
@@ -145,7 +144,7 @@ func (s *DescribeSiteWafTopDataRequest) Validate() error {
 }
 
 type DescribeSiteWafTopDataRequestFields struct {
-	// The query dimension.
+	// The query dimensions.
 	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
 	// The query metric value.
 	//

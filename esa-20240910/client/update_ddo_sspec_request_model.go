@@ -28,7 +28,7 @@ type UpdateDDoSSpecRequest struct {
 	//
 	// CleanTraffic
 	DDoSBillingMode *string `json:"DDoSBillingMode,omitempty" xml:"DDoSBillingMode,omitempty"`
-	// The instance specification for the Chinese mainland.
+	// The instance specification for Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateDDoSSpecRequest struct {
 	//
 	// cn_300
 	DDoSBurstableDomesticProtection *string `json:"DDoSBurstableDomesticProtection,omitempty" xml:"DDoSBurstableDomesticProtection,omitempty"`
-	// The instance specification for regions outside the Chinese mainland.
+	// The instance specification for regions outside Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdateDDoSSpecRequest struct {
 	//
 	// overseas_300
 	DDoSBurstableOverseasProtection *string `json:"DDoSBurstableOverseasProtection,omitempty" xml:"DDoSBurstableOverseasProtection,omitempty"`
-	// The instance ID.
+	// The instance ID. You can call the ListDDoSInstances operation to query the list of DDoS instances.
 	//
 	// This parameter is required.
 	//

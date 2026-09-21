@@ -14,6 +14,8 @@ type iWafQuotaString interface {
 }
 
 type WafQuotaString struct {
+	// The regular expression.
+	//
 	// example:
 	//
 	// ^\\d+$

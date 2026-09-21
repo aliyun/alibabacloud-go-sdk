@@ -22,22 +22,32 @@ type iWafQuotaInteger interface {
 }
 
 type WafQuotaInteger struct {
+	// The equal to value.
+	//
 	// example:
 	//
 	// 1
 	Equal *int32 `json:"Equal,omitempty" xml:"Equal,omitempty"`
+	// The greater than value.
+	//
 	// example:
 	//
 	// 1
 	GreaterThan *int32 `json:"GreaterThan,omitempty" xml:"GreaterThan,omitempty"`
+	// The greater than or equal to value.
+	//
 	// example:
 	//
 	// 1
 	GreaterThanOrEqual *int32 `json:"GreaterThanOrEqual,omitempty" xml:"GreaterThanOrEqual,omitempty"`
+	// The less than value.
+	//
 	// example:
 	//
 	// 1
 	LessThan *int32 `json:"LessThan,omitempty" xml:"LessThan,omitempty"`
+	// The less than or equal to value.
+	//
 	// example:
 	//
 	// 1

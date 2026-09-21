@@ -40,7 +40,7 @@ type CreateCustomHostnameRequest struct {
 	//
 	// - For Chinese site accounts, set this parameter to cn-hangzhou.
 	//
-	// - For International site accounts, set this parameter to ap-southeast-1.
+	// - For international site accounts, set this parameter to ap-southeast-1.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type CreateCustomHostnameRequest struct {
 	//
 	// custom.site.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The certificate private key. This parameter is required when CertType is set to upload.
+	// The private key of the certificate. This parameter is required when CertType is set to upload.
 	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The ID of the record to bind. You can call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to obtain the record ID.
+	// The ID of the record to bind. You can obtain this value by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CreateCustomHostnameRequest struct {
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

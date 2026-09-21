@@ -17,6 +17,8 @@ type iListCertificatesRequest interface {
 	GetPageSize() *int64
 	SetSiteId(v int64) *ListCertificatesRequest
 	GetSiteId() *int64
+	SetType(v string) *ListCertificatesRequest
+	GetType() *string
 	SetValidOnly(v bool) *ListCertificatesRequest
 	GetValidOnly() *bool
 }
@@ -47,7 +49,8 @@ type ListCertificatesRequest struct {
 	// example:
 	//
 	// 1234567890123
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Specifies whether to return only valid certificates.
 	//
 	// example:
@@ -80,6 +83,10 @@ func (s *ListCertificatesRequest) GetSiteId() *int64 {
 	return s.SiteId
 }
 
+func (s *ListCertificatesRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *ListCertificatesRequest) GetValidOnly() *bool {
 	return s.ValidOnly
 }
@@ -101,6 +108,11 @@ func (s *ListCertificatesRequest) SetPageSize(v int64) *ListCertificatesRequest 
 
 func (s *ListCertificatesRequest) SetSiteId(v int64) *ListCertificatesRequest {
 	s.SiteId = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetType(v string) *ListCertificatesRequest {
+	s.Type = &v
 	return s
 }
 

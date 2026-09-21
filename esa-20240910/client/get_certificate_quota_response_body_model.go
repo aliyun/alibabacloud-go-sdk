@@ -30,7 +30,7 @@ type GetCertificateQuotaResponseBody struct {
 	//
 	// 10
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The number of used free certificates.
+	// The free certificate quota usage.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type GetCertificateQuotaResponseBody struct {
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The site count.
+	// The number of sites.
 	//
 	// example:
 	//
 	// 2
 	SiteCount *int64 `json:"SiteCount,omitempty" xml:"SiteCount,omitempty"`
-	// Details about the certificate usage for each site.
+	// The list of site usage details.
 	SiteUsage []*GetCertificateQuotaResponseBodySiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
 	// The certificate quota type.
 	//
@@ -146,7 +146,7 @@ type GetCertificateQuotaResponseBodySiteUsage struct {
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The number of certificates used by the site.
+	// The site usage.
 	//
 	// example:
 	//

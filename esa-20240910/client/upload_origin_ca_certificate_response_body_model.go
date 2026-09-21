@@ -52,19 +52,19 @@ type UploadOriginCaCertificateResponseBody struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The certification authority.
 	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The validity end time of the certificate.
+	// The end time of the certificate validity period.
 	//
 	// example:
 	//
 	// 2024-12-01T02:13:07Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The validity start time of the certificate.
+	// The start time of the certificate validity period.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type UploadOriginCaCertificateResponseBody struct {
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type UploadOriginCaCertificateResponseBody struct {
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The validity period of the certificate in days.
+	// The number of days the certificate is valid.
 	//
 	// example:
 	//

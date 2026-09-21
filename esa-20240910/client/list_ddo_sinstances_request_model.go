@@ -26,49 +26,49 @@ type iListDDoSInstancesRequest interface {
 }
 
 type ListDDoSInstancesRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// esa-ddos-b1e0l80ugfeo
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Page number. Default: **1**.
+	// The page number for a paged query. The value must be greater than or equal to 1. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page. Default: 20. Maximum: 500. Valid values: integers from 1 to 500.
+	// The number of entries per page for a paged query. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Associated site package instance ID.
+	// The instance ID of the associated site plan.
 	//
 	// example:
 	//
 	// esa-site-a71k7bw1adf
 	SiteInstanceId *string `json:"SiteInstanceId,omitempty" xml:"SiteInstanceId,omitempty"`
-	// Sort field. Default: CreateTime.
+	// The sort field. By default, results are sorted by purchase time. Valid values:
 	//
-	// - **CreateTime**: Time when the instance was purchased.
+	// - **CreateTime**: purchase time.
 	//
 	// example:
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Sort order:
+	// The sort order. Valid values:
 	//
-	// - asc: ascending.
+	// - asc: ascending order.
 	//
-	// - desc: descending.
+	// - desc: descending order.
 	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// Instance status.
+	// The instance status.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetWafFilterResponseBody interface {
 }
 
 type GetWafFilterResponseBody struct {
-	// The returned matching engine configuration.
+	// The matching engine configuration information returned.
 	Filter *GetWafFilterResponseBodyFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,15 +62,15 @@ func (s *GetWafFilterResponseBody) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilter struct {
-	// A list of match objects and their properties.
+	// The list that describes match objects and their properties.
 	Fields []*GetWafFilterResponseBodyFilterFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The phase at which the WAF processes requests.
+	// The phase in which WAF processes the request.
 	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The target of the matching engine.
+	// The target value of the matching engine.
 	//
 	// example:
 	//
@@ -148,40 +148,42 @@ type GetWafFilterResponseBodyFilterFields struct {
 	//
 	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The internal key for the match object.
+	// The parameter of the match object used internally by the system.
 	//
 	// example:
 	//
 	// http.request.headers
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The label for the match object.
+	// The display label of the match object.
 	//
 	// example:
 	//
 	// Header
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// A list of logical operators that define the matching conditions.
+	// The list of logical operator properties that define the logical conditions used for matching.
 	Logics []*GetWafFilterResponseBodyFilterFieldsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
-	// The minimum plan that supports this match object, provided the current plan does not.
+	// The minimum plan that supports this match object, displayed when the current plan does not support it.
 	//
 	// example:
 	//
 	// high
 	MinPlan *string `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
-	// The selector, which defines how to select the match object.
+	// The selector object that defines how to select the match object.
 	Selector *GetWafFilterResponseBodyFilterFieldsSelector `json:"Selector,omitempty" xml:"Selector,omitempty" type:"Struct"`
-	// Indicates whether the match object includes subfields.
+	// Indicates whether the match object contains subfields.
 	//
 	// example:
 	//
 	// true
 	Sub *bool `json:"Sub,omitempty" xml:"Sub,omitempty"`
-	// A hint for entering the subfield value.
+	// The hint provided to users about how to enter subfields.
 	//
 	// example:
 	//
 	// e.g. Content-Type
 	SubTip *string `json:"SubTip,omitempty" xml:"SubTip,omitempty"`
+	// The enumerated sub-item list (dropdown subfields for grouped fields such as ali.websdk). Top-level match objects populate this list. Sub-items that are flat fields can be used directly as the left-hand side of an expression.
+	Subs []*GetWafFilterResponseBodyFilterFieldsSubs `json:"Subs,omitempty" xml:"Subs,omitempty" type:"Repeated"`
 }
 
 func (s GetWafFilterResponseBodyFilterFields) String() string {
@@ -224,6 +226,10 @@ func (s *GetWafFilterResponseBodyFilterFields) GetSubTip() *string {
 	return s.SubTip
 }
 
+func (s *GetWafFilterResponseBodyFilterFields) GetSubs() []*GetWafFilterResponseBodyFilterFieldsSubs {
+	return s.Subs
+}
+
 func (s *GetWafFilterResponseBodyFilterFields) SetEnable(v bool) *GetWafFilterResponseBodyFilterFields {
 	s.Enable = &v
 	return s
@@ -264,6 +270,11 @@ func (s *GetWafFilterResponseBodyFilterFields) SetSubTip(v string) *GetWafFilter
 	return s
 }
 
+func (s *GetWafFilterResponseBodyFilterFields) SetSubs(v []*GetWafFilterResponseBodyFilterFieldsSubs) *GetWafFilterResponseBodyFilterFields {
+	s.Subs = v
+	return s
+}
+
 func (s *GetWafFilterResponseBodyFilterFields) Validate() error {
 	if s.Logics != nil {
 		for _, item := range s.Logics {
@@ -279,57 +290,66 @@ func (s *GetWafFilterResponseBodyFilterFields) Validate() error {
 			return err
 		}
 	}
+	if s.Subs != nil {
+		for _, item := range s.Subs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type GetWafFilterResponseBodyFilterFieldsLogics struct {
-	// Configurable attributes, such as case sensitivity.
+	// The configurable attributes, such as whether the match is case-sensitive.
 	//
 	// example:
 	//
 	// 1
 	Attributes *int32 `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// Indicates whether the current plan supports this operator.
+	// Indicates whether the current plan supports this match operator.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The input type for the value. Valid values:
+	// The type of the value input field. Valid values:
 	//
-	// - `select:single`: A single-select input.
+	// 	- select:single: single-select input field
 	//
-	// - `select:multi`: A multi-select input.
+	// 	- select:multi: multi-select input field
 	//
-	// - `input:single`: A single-value text input.
+	// 	- input:single: single input field
 	//
-	// - `input:multi`: A multi-value text input.
+	// 	- input:multi: multi input field
 	//
 	// example:
 	//
 	// input:single
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The minimum plan that supports this operator, provided the current plan does not.
+	// The minimum plan that supports this match operator, displayed when the current plan does not support it.
 	//
 	// example:
 	//
 	// high
 	MinPlan *string `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
-	// Indicates whether to negate the match result.
+	// Indicates whether the match result is negated.
 	Negative *bool `json:"Negative,omitempty" xml:"Negative,omitempty"`
-	// The label for the operator.
+	// The display label of the match operator.
 	//
 	// example:
 	//
 	// Does not equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The internal identifier for the operator.
+	// The parameter of the match operator used internally by the system.
 	//
 	// example:
 	//
 	// eq
 	Symbol *string `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
-	// A hint for entering a valid value.
+	// The input hint that helps users provide valid values required by the rule.
 	//
 	// example:
 	//
@@ -337,19 +357,19 @@ type GetWafFilterResponseBodyFilterFieldsLogics struct {
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
 	// The type of the value. Valid values:
 	//
-	// - `integer`: An integer.
+	// 	- integer: integer
 	//
-	// - `integer_slice`: An integer array.
+	// 	- integer_slice: integer array
 	//
-	// - `string`: A string.
+	// 	- string: string
 	//
-	// - `string_slice`: A string array.
+	// 	- string_slice: string array
 	//
 	// example:
 	//
 	// string
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The validator, which defines validation rules for the value.
+	// The validator object that defines the validation rules for values.
 	Validator *GetWafFilterResponseBodyFilterFieldsLogicsValidator `json:"Validator,omitempty" xml:"Validator,omitempty" type:"Struct"`
 }
 
@@ -467,15 +487,15 @@ type GetWafFilterResponseBodyFilterFieldsLogicsValidator struct {
 	//
 	// Enter a valid expression
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The length limit for the value.
+	// The length limit of the value.
 	Length *WafQuotaInteger `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The regular expression pattern for the value.
+	// The regular expression pattern for the value, used for string validation.
 	//
 	// example:
 	//
 	// ^example$
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The value range for numeric validation.
+	// The numeric range of the value, used for number validation.
 	Range *WafQuotaInteger `json:"Range,omitempty" xml:"Range,omitempty"`
 }
 
@@ -538,9 +558,9 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogicsValidator) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelector struct {
-	// A list of data options available when the selector `Kind` is `data`.
+	// The list of available data when the selector kind is data.
 	Data []*GetWafFilterResponseBodyFilterFieldsSelectorData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The selector type, which indicates whether it targets data items or other entities.
+	// The kind of the selector, such as whether it is used for selecting data items or other purposes.
 	//
 	// example:
 	//
@@ -588,13 +608,13 @@ func (s *GetWafFilterResponseBodyFilterFieldsSelector) Validate() error {
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelectorData struct {
-	// The label for the data option.
+	// The display label of the available data.
 	//
 	// example:
 	//
 	// China
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The value of the data option.
+	// The parameter value of the available data.
 	//
 	// example:
 	//
@@ -630,4 +650,358 @@ func (s *GetWafFilterResponseBodyFilterFieldsSelectorData) SetValue(v string) *G
 
 func (s *GetWafFilterResponseBodyFilterFieldsSelectorData) Validate() error {
 	return dara.Validate(s)
+}
+
+type GetWafFilterResponseBodyFilterFieldsSubs struct {
+	// Indicates whether the current plan supports this match object.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The parameter of the sub-item match object.
+	//
+	// example:
+	//
+	// ali.websdk.umid
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The display label of the sub-item match object.
+	//
+	// example:
+	//
+	// Web UMID
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The list of logical operator properties applicable to the sub-item (same structure as the parent Logics).
+	Logics []*GetWafFilterResponseBodyFilterFieldsSubsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
+	// The minimum plan that supports this match object, displayed when the current plan does not support it.
+	//
+	// example:
+	//
+	// high
+	MinPlan *string `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
+}
+
+func (s GetWafFilterResponseBodyFilterFieldsSubs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWafFilterResponseBodyFilterFieldsSubs) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) GetLabel() *string {
+	return s.Label
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) GetLogics() []*GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	return s.Logics
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) GetMinPlan() *string {
+	return s.MinPlan
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) SetEnable(v bool) *GetWafFilterResponseBodyFilterFieldsSubs {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) SetKey(v string) *GetWafFilterResponseBodyFilterFieldsSubs {
+	s.Key = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) SetLabel(v string) *GetWafFilterResponseBodyFilterFieldsSubs {
+	s.Label = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) SetLogics(v []*GetWafFilterResponseBodyFilterFieldsSubsLogics) *GetWafFilterResponseBodyFilterFieldsSubs {
+	s.Logics = v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) SetMinPlan(v string) *GetWafFilterResponseBodyFilterFieldsSubs {
+	s.MinPlan = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubs) Validate() error {
+	if s.Logics != nil {
+		for _, item := range s.Logics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetWafFilterResponseBodyFilterFieldsSubsLogics struct {
+	// The field attributes.
+	//
+	// example:
+	//
+	// 0
+	Attributes *int32 `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// Indicates whether the current plan supports this match operator.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The type of the value input field. Valid values:
+	//
+	// 	- select:single: single-select input field
+	//
+	// 	- select:multi: multi-select input field
+	//
+	// 	- input:single: single input field
+	//
+	// 	- input:multi: multi input field
+	//
+	// example:
+	//
+	// select:single
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The minimum plan that supports this match operator, displayed when the current plan does not support it.
+	//
+	// example:
+	//
+	// high
+	MinPlan *string `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
+	// Indicates whether the match result is negated.
+	//
+	// example:
+	//
+	// false
+	Negative *bool `json:"Negative,omitempty" xml:"Negative,omitempty"`
+	// The display label of the match operator.
+	//
+	// example:
+	//
+	// Equal
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The parameter of the match operator used internally by the system.
+	//
+	// example:
+	//
+	// eq
+	Symbol *string `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	// The input hint that helps users provide valid values required by the rule.
+	//
+	// example:
+	//
+	// e.g. image/jpeg
+	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
+	// The type of the value. Valid values:
+	//
+	// 	- integer: integer
+	//
+	// 	- integer_slice: integer array
+	//
+	// 	- string: string
+	//
+	// 	- string_slice: string array
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The validator object that defines the validation rules for values.
+	Validator *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator `json:"Validator,omitempty" xml:"Validator,omitempty" type:"Struct"`
+}
+
+func (s GetWafFilterResponseBodyFilterFieldsSubsLogics) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWafFilterResponseBodyFilterFieldsSubsLogics) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetAttributes() *int32 {
+	return s.Attributes
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetKind() *string {
+	return s.Kind
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetMinPlan() *string {
+	return s.MinPlan
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetNegative() *bool {
+	return s.Negative
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetSymbol() *string {
+	return s.Symbol
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetTip() *string {
+	return s.Tip
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetType() *string {
+	return s.Type
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) GetValidator() *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator {
+	return s.Validator
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetAttributes(v int32) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Attributes = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetEnable(v bool) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetKind(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Kind = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetMinPlan(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.MinPlan = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetNegative(v bool) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Negative = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetOperator(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetSymbol(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Symbol = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetTip(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Tip = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetType(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Type = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) SetValidator(v *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) *GetWafFilterResponseBodyFilterFieldsSubsLogics {
+	s.Validator = v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogics) Validate() error {
+	if s.Validator != nil {
+		if err := s.Validator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator struct {
+	// The error message returned when validation fails.
+	//
+	// example:
+	//
+	// Enter a valid expression
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// The length limit of the value.
+	Length *WafQuotaInteger `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The regular expression pattern for the value, used for string validation.
+	//
+	// example:
+	//
+	// ^example$
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The numeric range of the value, used for number validation.
+	Range *WafQuotaInteger `json:"Range,omitempty" xml:"Range,omitempty"`
+}
+
+func (s GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) GetErrMsg() *string {
+	return s.ErrMsg
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) GetLength() *WafQuotaInteger {
+	return s.Length
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) GetRange() *WafQuotaInteger {
+	return s.Range
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) SetErrMsg(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) SetLength(v *WafQuotaInteger) *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator {
+	s.Length = v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) SetPattern(v string) *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) SetRange(v *WafQuotaInteger) *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator {
+	s.Range = v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator) Validate() error {
+	if s.Length != nil {
+		if err := s.Length.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

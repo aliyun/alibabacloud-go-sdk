@@ -9,6 +9,8 @@ type iApplyCertificateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlgType(v string) *ApplyCertificateRequest
+	GetAlgType() *string
 	SetDomains(v string) *ApplyCertificateRequest
 	GetDomains() *string
 	SetSiteId(v int64) *ApplyCertificateRequest
@@ -18,7 +20,9 @@ type iApplyCertificateRequest interface {
 }
 
 type ApplyCertificateRequest struct {
-	// A comma-separated list of domain names.
+	// The algorithm type.
+	AlgType *string `json:"AlgType,omitempty" xml:"AlgType,omitempty"`
+	// The list of domain names, separated by commas.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +38,13 @@ type ApplyCertificateRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The certificate type. Valid values: `lets_encrypt` for a Let\\"s Encrypt certificate, `digicert_single` for a Digicert single-domain certificate, and `digicert_wildcard` for a Digicert wildcard certificate.
+	// The certificate type. Valid values:
+	//
+	// - lets_encrypt: Let\\"s Encrypt certificate.
+	//
+	// - digicert_single: DigiCert single-domain certificate.
+	//
+	// - digicert_wildcard: DigiCert wildcard domain certificate.
 	//
 	// example:
 	//
@@ -50,6 +60,10 @@ func (s ApplyCertificateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ApplyCertificateRequest) GetAlgType() *string {
+	return s.AlgType
+}
+
 func (s *ApplyCertificateRequest) GetDomains() *string {
 	return s.Domains
 }
@@ -60,6 +74,11 @@ func (s *ApplyCertificateRequest) GetSiteId() *int64 {
 
 func (s *ApplyCertificateRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *ApplyCertificateRequest) SetAlgType(v string) *ApplyCertificateRequest {
+	s.AlgType = &v
+	return s
 }
 
 func (s *ApplyCertificateRequest) SetDomains(v string) *ApplyCertificateRequest {

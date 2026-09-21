@@ -36,7 +36,7 @@ type ListTraceTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Valid values: any integer from 1 to 1000.
+	// The number of entries per page. Valid values: any integer from 1 to 1000.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type ListTraceTasksResponseBodyList struct {
 	//
 	// f2a18ad5
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
-	// The diagnostic URL.
+	// The diagnose URL.
 	//
 	// example:
 	//
 	// http://cdn.dns-detect.alicdn.com/diagnose/xxxxxx
 	DiagnoseUrl *string `json:"DiagnoseUrl,omitempty" xml:"DiagnoseUrl,omitempty"`
-	// The domain name to diagnose.
+	// The domain name to be diagnosed.
 	//
 	// example:
 	//
@@ -187,11 +187,11 @@ type ListTraceTasksResponseBodyList struct {
 	//
 	// 0
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the diagnostic URL. Valid values:
+	// The status of the diagnose URL. Valid values:
 	//
-	// - 1: active
+	// - 1: Active.
 	//
-	// - 0: expired.
+	// - 0: Expired.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListTraceTasksResponseBodyList struct {
 	//
 	// 1
 	TimeConsuming *int64 `json:"TimeConsuming,omitempty" xml:"TimeConsuming,omitempty"`
-	// The diagnostic trace ID.
+	// The trace ID of the diagnostic task.
 	//
 	// example:
 	//

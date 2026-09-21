@@ -22,7 +22,7 @@ type iGetClientCaCertificateHostnamesResponseBody interface {
 }
 
 type GetClientCaCertificateHostnamesResponseBody struct {
-	// A list of domain names.
+	// The domain names.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
 	// The client CA certificate ID.
 	//
@@ -36,7 +36,7 @@ type GetClientCaCertificateHostnamesResponseBody struct {
 	//
 	// 3558df77-8a7a-4060-a900-2d7949403836
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The site ID.
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//

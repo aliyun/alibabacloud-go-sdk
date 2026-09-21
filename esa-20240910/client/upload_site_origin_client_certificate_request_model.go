@@ -42,7 +42,7 @@ type UploadSiteOriginClientCertificateRequest struct {
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// Site ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

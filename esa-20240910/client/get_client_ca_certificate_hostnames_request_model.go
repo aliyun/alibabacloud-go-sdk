@@ -22,7 +22,7 @@ type GetClientCaCertificateHostnamesRequest struct {
 	//
 	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The site ID. To obtain this ID, call the [ListSites](~~ListSites~~) API.
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//

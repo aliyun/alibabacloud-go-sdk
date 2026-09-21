@@ -16,7 +16,7 @@ type iGenerateTraceDiagnoseRequest interface {
 }
 
 type GenerateTraceDiagnoseRequest struct {
-	// The source of the request.
+	// The source.
 	//
 	// example:
 	//

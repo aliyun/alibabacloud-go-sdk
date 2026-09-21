@@ -26,7 +26,7 @@ type ApplyCertificateResponseBody struct {
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of application details for each free certificate.
+	// The list of free certificate application details.
 	Result []*ApplyCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The site name.
 	//
@@ -34,7 +34,7 @@ type ApplyCertificateResponseBody struct {
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The total number of certificates requested, which matches the number of domain names provided in the request.
+	// The number of certificates applied for, which is the same as the number of input domain names.
 	//
 	// example:
 	//

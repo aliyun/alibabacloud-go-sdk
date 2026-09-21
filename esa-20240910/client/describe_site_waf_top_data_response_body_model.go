@@ -26,7 +26,7 @@ type DescribeSiteWafTopDataResponseBody struct {
 	Data []*DescribeSiteWafTopDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The end of the time range for the returned data.
 	//
-	// The time is in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC+0.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeSiteWafTopDataResponseBody struct {
 	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ func (s *DescribeSiteWafTopDataResponseBody) Validate() error {
 type DescribeSiteWafTopDataResponseBodyData struct {
 	// The returned data.
 	DetailData []*DescribeSiteWafTopDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
-	// The query dimension.
+	// The query dimensions.
 	//
 	// example:
 	//

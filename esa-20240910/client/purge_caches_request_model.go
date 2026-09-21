@@ -24,7 +24,7 @@ type iPurgeCachesRequest interface {
 type PurgeCachesRequest struct {
 	// The refresh content.
 	Content *PurgeCachesRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Specifies whether to refresh edge computing cached resources. For example, this allows refreshing content cached by the Edge Routine Cache API operation function.
+	// Specifies whether to refresh edge computing cached resources. For example, this allows refreshing content cached by the Edge Routine CacheAPI API operation using edge functions.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type PurgeCachesRequest struct {
 	//
 	// >
 	//
-	// >  Effective scope: directory refresh, cache tag refresh, parameter-ignored refresh, hostname refresh, and refreshing all cached content under the site.
+	// >  This parameter applies to directory refresh, cache tag refresh, parameter-ignored refresh, hostname refresh, and entire site cache refresh.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type PurgeCachesRequest struct {
 	//
 	// - **directory**: folder refresh.
 	//
-	// - **ignoreParams**: parameter-ignored refresh. This refers to removing the question mark (?) and all parameters after it from the request URL. When you commit a parameter-stripped URL through this operation, the committed URL is matched against cached resource URLs after their parameters are stripped. If a cached resource URL matches the committed URL after parameter stripping, the point of presence executes the refresh on the cached resource.
+	// - **ignoreParams**: parameter-ignored refresh. This refers to removing the question mark (?) and all parameters after it from the request URL. When you commit a parameter-stripped URL through this API operation, the committed URL is matched against cached resource URLs after their parameters are stripped. If a cached resource URL matches the committed URL after parameter stripping, the point of presence executes the refresh on the cached resource.
 	//
 	// - **hostname**: hostname refresh.
 	//
@@ -139,19 +139,19 @@ func (s *PurgeCachesRequest) Validate() error {
 }
 
 type PurgeCachesRequestContent struct {
-	// The list of cache keys to refresh. This parameter is required when the type is set to cachekey.
+	// The list of cache keys to refresh. This parameter is required when Type is set to cachekey.
 	CacheKeys []*PurgeCachesRequestContentCacheKeys `json:"CacheKeys,omitempty" xml:"CacheKeys,omitempty" type:"Repeated"`
-	// The list of cache tags to refresh. This parameter is required when the type is set to cachetag.
+	// The list of cache tags to refresh. This parameter is required when Type is set to cachetag.
 	CacheTags []*string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
-	// The list of directories to refresh. This parameter is required when the type is set to directory.
+	// The list of directories to refresh. This parameter is required when Type is set to directory.
 	Directories []*string `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	// The list of files to refresh. This parameter is required when the type is set to file.
+	// The list of files to refresh. This parameter is required when Type is set to file.
 	Files []interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// The list of hostnames to refresh. This parameter is required when the type is set to hostname.
+	// The list of hostnames to refresh. This parameter is required when Type is set to hostname.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The list of files with parameters ignored. This parameter is required when the type is set to ignoreParams.
+	// The list of files with parameters ignored. This parameter is required when Type is set to ignoreParams.
 	IgnoreParams []*string `json:"IgnoreParams,omitempty" xml:"IgnoreParams,omitempty" type:"Repeated"`
-	// The flag for refreshing the entire site. Default value: false. Set this parameter to true when the type is set to purgeall.
+	// The entire site refresh flag. Default value: false. Set this parameter to true when Type is set to purgeall.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type PurgeCachesRequestContentCacheKeys struct {
 	//
 	// **UserLanguage: language**
 	//
-	// - Language codes follow the ISO 639-1 standard or the BCP47 standard. For example, entering zh indicates refreshing content in Chinese.
+	// - Language codes follow the ISO 639-1 or BCP 47 standard. For example, set this to zh to refresh content in Chinese.
 	Headers map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
 	// The URL to refresh.
 	//

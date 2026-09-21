@@ -36,9 +36,9 @@ type DescribeSiteWafTimeSeriesDataRequest struct {
 	//
 	// This parameter is required.
 	Fields []*DescribeSiteWafTimeSeriesDataRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The time granularity for querying data, in seconds.
+	// The time granularity of the queried data. Unit: seconds.
 	//
-	// Based on the maximum time span of a single query, this parameter supports the values 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **Supported time granularity*	- section above.
+	// Based on the maximum time span of a single query, this parameter supports the values 60 (1 minute), 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the **supported query time granularity*	- section above.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DescribeSiteWafTimeSeriesDataRequestFields struct {
 	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
 	// The metric name.
 	//
-	// >For specific dimensions, see [Data analytics field description](https://help.aliyun.com/document_detail/2878520.html).
+	// > For specific dimensions, see [Data analytics field description](https://help.aliyun.com/document_detail/2878520.html).
 	//
 	// example:
 	//

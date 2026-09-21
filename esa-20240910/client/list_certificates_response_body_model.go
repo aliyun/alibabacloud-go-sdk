@@ -175,7 +175,7 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -219,13 +219,13 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// - Expiring: The certificate is about to expire (within 30 days).
 	//
-	// - Issued: Free certificate - issued.
+	// - Issued: Free certificate - Issued.
 	//
-	// - Applying: Free certificate - applying.
+	// - Applying: Free certificate - Applying.
 	//
-	// - ApplyFailed: Free certificate - application failed.
+	// - ApplyFailed: Free certificate - Application failed.
 	//
-	// - Canceled: Free certificate - canceled.
+	// - Canceled: Free certificate - Canceled.
 	//
 	// example:
 	//
@@ -283,7 +283,7 @@ type ListCertificatesResponseBodyResult struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The certificate type. Valid values:
 	//
-	// - cas: SSL Certificates Service certificate.
+	// - cas: Alibaba Cloud SSL certificate.
 	//
 	// - upload: Custom uploaded certificate.
 	//
@@ -295,7 +295,7 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The update time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+	// The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -541,7 +541,7 @@ type ListCertificatesResponseBodyResultDCV struct {
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The DCV type. Valid values: DNS and HTTP.
+	// The DCV type. Valid values: DNS, HTTP.
 	//
 	// example:
 	//

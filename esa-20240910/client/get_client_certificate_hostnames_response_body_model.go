@@ -22,7 +22,7 @@ type iGetClientCertificateHostnamesResponseBody interface {
 }
 
 type GetClientCertificateHostnamesResponseBody struct {
-	// The list of bound hostnames.
+	// The list of bound domain names.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
 	// The client CA certificate ID.
 	//

@@ -23,14 +23,16 @@ type iWafRuleMatch interface {
 	GetMatchValue() interface{}
 	SetNegate(v bool) *WafRuleMatch
 	GetNegate() *bool
+	SetParent(v string) *WafRuleMatch
+	GetParent() *string
 }
 
 type WafRuleMatch struct {
-	// Specifies whether the value is case-insensitive.
+	// The case-insensitive value setting.
 	ConvertToLower *bool `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
 	// The logic list.
 	Criteria []*WafRuleMatch `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	// The logic relationship.
+	// The logical relationship.
 	//
 	// example:
 	//
@@ -54,8 +56,14 @@ type WafRuleMatch struct {
 	//
 	// 1.1.1.1
 	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	// Specifies whether to negate the match result.
+	// The negation of the match result.
 	Negate *bool `json:"Negate,omitempty" xml:"Negate,omitempty"`
+	// The primary row key of the parent group. This is used for two-level drop-down positioning of enumeration subkey fields. For example, the Parent of ali.websdk.umid is ali.websdk.
+	//
+	// example:
+	//
+	// ali.websdk
+	Parent *string `json:"Parent,omitempty" xml:"Parent,omitempty"`
 }
 
 func (s WafRuleMatch) String() string {
@@ -94,6 +102,10 @@ func (s *WafRuleMatch) GetNegate() *bool {
 	return s.Negate
 }
 
+func (s *WafRuleMatch) GetParent() *string {
+	return s.Parent
+}
+
 func (s *WafRuleMatch) SetConvertToLower(v bool) *WafRuleMatch {
 	s.ConvertToLower = &v
 	return s
@@ -126,6 +138,11 @@ func (s *WafRuleMatch) SetMatchValue(v interface{}) *WafRuleMatch {
 
 func (s *WafRuleMatch) SetNegate(v bool) *WafRuleMatch {
 	s.Negate = &v
+	return s
+}
+
+func (s *WafRuleMatch) SetParent(v string) *WafRuleMatch {
+	s.Parent = &v
 	return s
 }
 

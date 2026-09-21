@@ -156,7 +156,7 @@ type ListPagesResponseBodyPages struct {
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom response page. You can obtain this value by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	// The ID of the custom response page. You can obtain the ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
 	//
 	// example:
 	//
@@ -168,6 +168,8 @@ type ListPagesResponseBodyPages struct {
 	//
 	// custom
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The content moderation result.
+	//
 	// example:
 	//
 	// {}
@@ -280,10 +282,14 @@ func (s *ListPagesResponseBodyPages) Validate() error {
 }
 
 type ListPagesResponseBodyPagesModeration struct {
+	// The list of rejection reasons.
+	//
 	// example:
 	//
 	// []
 	Reasons []*string `json:"Reasons,omitempty" xml:"Reasons,omitempty" type:"Repeated"`
+	// The moderation status.
+	//
 	// example:
 	//
 	// pending
