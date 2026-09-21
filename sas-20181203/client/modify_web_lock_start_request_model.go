@@ -32,9 +32,9 @@ type iModifyWebLockStartRequest interface {
 type ModifyWebLockStartRequest struct {
 	// The defense mode. Valid values:
 	//
-	// - **block**: block
+	// - **block**: Block.
 	//
-	// - **audit**: alert.
+	// - **audit**: Alert.
 	//
 	// This parameter is required.
 	//
@@ -44,29 +44,31 @@ type ModifyWebLockStartRequest struct {
 	DefenceMode *string `json:"DefenceMode,omitempty" xml:"DefenceMode,omitempty"`
 	// The protection directories. Separate multiple directories with commas (,).
 	//
+	// The server automatically appends a forward slash (/) to the end of the directory path during storage. Use paths with a trailing slash to avoid matching inconsistencies.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /home/admin/tomcat
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The folder that does not require web tamper proofing protection (excluded folder).
+	// The directories that do not require web tamper-proofing protection (excluded directories).
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to the **blacklist*	- pattern.
+	// > This parameter is required when the protection mode **Mode*	- is set to **blacklist**.
 	//
 	// example:
 	//
 	// /home/admin/java
 	ExclusiveDir *string `json:"ExclusiveDir,omitempty" xml:"ExclusiveDir,omitempty"`
-	// The files that do not require web tamper proofing protection (excluded files).
+	// The files that do not require web tamper-proofing protection (excluded files).
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to the **blacklist*	- pattern.
+	// > This parameter is required when the protection mode **Mode*	- is set to **blacklist**.
 	//
 	// example:
 	//
 	// /home/admin/tomcat/localhost.log
 	ExclusiveFile *string `json:"ExclusiveFile,omitempty" xml:"ExclusiveFile,omitempty"`
-	// The file types that do not require web tamper proofing protection (excluded file types). Separate multiple file types with commas (,). Valid values:
+	// The file types that do not require web tamper-proofing protection (excluded file types). Separate multiple file types with semicolons (;). Valid values:
 	//
 	// - php
 	//
@@ -96,13 +98,13 @@ type ModifyWebLockStartRequest struct {
 	//
 	// - png
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to the **blacklist*	- pattern.
+	// > This parameter is required when the protection mode **Mode*	- is set to **blacklist**.
 	//
 	// example:
 	//
 	// jpg
 	ExclusiveFileType *string `json:"ExclusiveFileType,omitempty" xml:"ExclusiveFileType,omitempty"`
-	// The file types that require web tamper proofing protection. Separate multiple file types with commas (,). Valid values:
+	// The file types that require web tamper-proofing protection. Separate multiple file types with semicolons (;). Valid values:
 	//
 	// - php
 	//
@@ -132,17 +134,19 @@ type ModifyWebLockStartRequest struct {
 	//
 	// - png
 	//
-	// > This parameter is required when the Defense mode **Mode*	- is set to the **whitelist*	- pattern.
+	// > This parameter is required when the protection mode **Mode*	- is set to **whitelist**.
 	//
 	// example:
 	//
 	// php
 	InclusiveFileType *string `json:"InclusiveFileType,omitempty" xml:"InclusiveFileType,omitempty"`
-	// The local backup path used to back up the protection directories. The format of the protection directory path may differ between Linux servers and Windows servers. Make sure that you enter the path in the correct format. The following examples show the directory formats:
+	// The local backup path used to securely back up the protection directories.
+	//
+	// The format of the protection directory path may differ between Linux servers and Windows servers. Make sure that you enter the correct format. The following directory formats are provided for reference:
 	//
 	//  - Linux server: /usr/local/aegis/bak
 	//
-	//  - Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak.
+	//  - Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak
 	//
 	// This parameter is required.
 	//
@@ -152,9 +156,9 @@ type ModifyWebLockStartRequest struct {
 	LocalBackupDir *string `json:"LocalBackupDir,omitempty" xml:"LocalBackupDir,omitempty"`
 	// The protection type. Valid values:
 	//
-	// - **whitelist**: whitelist mode. Protects the specified protection directories and file types.
+	// - **whitelist**: Whitelist mode. Protects the specified protection directories and file types.
 	//
-	// - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files in the protection directories that are not excluded.
+	// - **blacklist**: Blacklist mode. Protects all subdirectories, file types, and specified files under the protection directories that are not excluded.
 	//
 	// This parameter is required.
 	//

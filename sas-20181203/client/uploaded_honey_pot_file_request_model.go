@@ -26,9 +26,11 @@ type iUploadedHoneyPotFileRequest interface {
 }
 
 type UploadedHoneyPotFileRequest struct {
-	// The FileKey used to upload the file.
+	// The FileKey used for the uploaded file.
 	//
 	// > Format: HONEYPOT_FILE/{timestamp}_{custom_file_name}
+	//
+	// You must obtain this value by calling GetHoneyPotUploadPolicyInfo and use the returned Data.Key. Do not construct this value manually based on the format. First obtain the upload policy, then upload the file by using the policy, and finally call this operation to register the upload result.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +54,9 @@ type UploadedHoneyPotFileRequest struct {
 	//
 	// application/zip
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The name of the honeypot image.
+	// The honeypot image name.
+	//
+	// Obtain valid values by calling ListAvailableHoneypot and using the HoneypotImageName field value from the response.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +64,7 @@ type UploadedHoneyPotFileRequest struct {
 	//
 	// ruoyi
 	HoneypotImageName *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
-	// The language type of the request and response. Default value: **zh**. Valid values:
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -72,9 +76,9 @@ type UploadedHoneyPotFileRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The ID of the honeypot management node.
 	//
-	// > Call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
+	// > Call [ListHoneypotNode](~~ListHoneypotNode~~) to obtain this value.
 	//
-	// Note: This parameter is required. If this parameter is not specified, the API returns InvalidParam (400). Call ListHoneypotNode to obtain a valid NodeId.
+	// Note: This parameter is required. If this parameter is not specified, the API returns InvalidParam(400). Call ListHoneypotNode to obtain a valid NodeId.
 	//
 	// example:
 	//

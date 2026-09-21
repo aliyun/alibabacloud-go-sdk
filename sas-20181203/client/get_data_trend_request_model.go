@@ -34,7 +34,7 @@ type GetDataTrendRequest struct {
 	//
 	// - **SUSP_NEW**: number of new alert risks
 	//
-	// - **SUSP_OPERATE**: number of handled alert risks.
+	// - **SUSP_OPERATE**: number of handled alert risks
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,14 @@ type GetDataTrendRequest struct {
 	// example:
 	//
 	// 86400000
-	Interval                   *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	//
+	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The start timestamp of the query. Unit: milliseconds.
 	//

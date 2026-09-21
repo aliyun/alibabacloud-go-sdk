@@ -18,9 +18,13 @@ type iDescribeReportExportRequest interface {
 }
 
 type DescribeReportExportRequest struct {
-	// The ID of the export task.
+	// The ID of the export task. Obtain this ID by following these steps:
 	//
-	// > You can call [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain this parameter.
+	// 1. Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain the ReportId.
+	//
+	// 2. Pass the ReportId to [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain the ExportId from the response.
+	//
+	// 3. Pass the ExportId to this operation to query the export status.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +34,21 @@ type DescribeReportExportRequest struct {
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
 	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
-	// > You can call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

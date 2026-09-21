@@ -26,62 +26,70 @@ type iDescribeCustomizeReportListRequest interface {
 }
 
 type DescribeCustomizeReportListRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **zh**: Chinese
+	//
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to pin the report. Valid values:
+	// Specifies whether the report is pinned to the top. Valid values:
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
 	// example:
 	//
 	// false
 	Pinned *bool `json:"Pinned,omitempty" xml:"Pinned,omitempty"`
-	// The state of the report. Valid values:
+	// The report status. Valid values:
 	//
-	// 	- **0**: disabled
+	//  - **0**: Disabled.
 	//
-	// 	- **1**: enabled
+	//  - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	ReportStatus *int32 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The type of the report. Valid values:
+	// The report type. Valid values:
 	//
-	// 	- **0**: daily report
+	// - **0**: Daily report.
 	//
-	// 	- **1**: weekly report
+	// - **1**: Weekly report.
 	//
-	// 	- **2**: monthly report
+	// - **2**: Monthly report.
 	//
-	// 	- **3**: report whose statistics are collected in a custom time range
+	// - **3**: Custom period.
 	//
 	// example:
 	//
 	// 0
 	ReportType *int32 `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The report version. Valid values:
+	// The security report version. Valid values:
 	//
-	// 	- **1.0.0**
+	// - **1.0.0**
 	//
-	// 	- **2.0.0**
+	// - **2.0.0**
 	//
 	// example:
 	//
 	// 2.0.0
-	ReportVersion              *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The name of the report.
+	ReportVersion *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory folder.
+	//
+	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The report name.
 	//
 	// example:
 	//

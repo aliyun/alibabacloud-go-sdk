@@ -18,25 +18,32 @@ type iSaveSuspEventUserSettingRequest interface {
 }
 
 type SaveSuspEventUserSettingRequest struct {
-	// The data source of the exception. Set the value to sas.
+	// The source of the exception event data. Set the value to sas.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The severities of alert notifications. Valid values:
+	// The alert level for alert notifications. Valid values:
 	//
-	// 	- **remind**
+	// - **remind**: Reminder.
 	//
-	// 	- **suspicious**
+	// - **suspicious**: Suspicious.
 	//
-	// 	- **serious**
+	// - **serious**: Urgent.
 	//
 	// example:
 	//
 	// suspicious,serious,remind
-	LevelsOn                   *string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	LevelsOn *string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty"`
+	// The ID of the member account in the resource directory.
+	//
+	// >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s SaveSuspEventUserSettingRequest) String() string {

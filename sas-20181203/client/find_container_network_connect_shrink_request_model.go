@@ -28,27 +28,33 @@ type iFindContainerNetworkConnectShrinkRequest interface {
 type FindContainerNetworkConnectShrinkRequest struct {
 	// The query type of the element to query. Valid values:
 	//
-	// - **EDGE**: connection information
+	// - **EDGE**: connection information.
+	//
+	// This parameter is required. If this parameter is not specified, the service returns error code -101.
 	//
 	// example:
 	//
 	// EDGE
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The page number of the page to return in a paged query. Default value: **1**, which indicates that the first page is returned.
+	// The page number of the page to return in a paginated query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The destination node information, which is used to filter destination nodes.
+	//
+	// This parameter is required. If this parameter is not specified, the service returns error code -101.
 	DstNodeShrink *string `json:"DstNode,omitempty" xml:"DstNode,omitempty"`
 	// The end time of the network connectivity. Specify a UNIX timestamp in milliseconds.
+	//
+	// This parameter is required. If this parameter is not specified, the service returns error code -101.
 	//
 	// example:
 	//
 	// 1649260799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries per page in a paged query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+	// The maximum number of entries per page when paging is used. Default value: 20. If this parameter is left empty, 20 entries are returned.
 	//
 	// > Do not leave PageSize empty.
 	//
@@ -57,8 +63,12 @@ type FindContainerNetworkConnectShrinkRequest struct {
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The source node information, which is used to filter source nodes.
+	//
+	// This parameter is required. If this parameter is not specified, the service returns error code -101.
 	SrcNodeShrink *string `json:"SrcNode,omitempty" xml:"SrcNode,omitempty"`
 	// The start time of the network connectivity. Specify a UNIX timestamp in milliseconds.
+	//
+	// This parameter is required. If this parameter is not specified, the service returns error code -101.
 	//
 	// example:
 	//

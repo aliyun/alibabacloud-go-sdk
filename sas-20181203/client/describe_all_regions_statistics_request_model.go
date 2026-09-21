@@ -48,7 +48,11 @@ type DescribeAllRegionsStatisticsRequest struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the Alibaba Cloud account of the member accounts in the resource folder.
 	//
-	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//

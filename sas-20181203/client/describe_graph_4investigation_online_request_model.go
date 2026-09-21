@@ -24,17 +24,21 @@ type iDescribeGraph4InvestigationOnlineRequest interface {
 type DescribeGraph4InvestigationOnlineRequest struct {
 	// The ID of the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the alert event ID. The value is in the data.SuspEvents[index].UniqueInfo path.
 	//
+	// This parameter is required. If this parameter is not specified, the API returns error code -101.
+	//
 	// example:
 	//
 	// 786fc80896b25422b5324cb6e57bxxxx
 	AnomalyId *string `json:"AnomalyId,omitempty" xml:"AnomalyId,omitempty"`
 	// The UUID of the asset associated with the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the asset UUID. The value is in the data.SuspEvents[index].Uuid path.
 	//
+	// This parameter is required. If this parameter is not specified, the API returns error code -101.
+	//
 	// example:
 	//
 	// 3502e4b0-f362-4059-84a2-f47fa2b5exxx
 	AnomalyUuid *string `json:"AnomalyUuid,omitempty" xml:"AnomalyUuid,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//

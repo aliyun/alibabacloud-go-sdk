@@ -32,13 +32,13 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// 13840
 	StrategyId *int64 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The policy name. Fixed value: Automated Batch Vulnerability Fix Policy.
+	// The policy name. Set the value to: Automated Batch Vulnerability Fix Policy.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Automated Batch Vulnerability Fixing Policy for Multiple Servers
+	// 漏洞自动化批量修复策略
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 	// The name of the policy task.
 	//
@@ -48,7 +48,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// task1
 	StrategyTaskName *string `json:"StrategyTaskName,omitempty" xml:"StrategyTaskName,omitempty"`
-	// The parameter information of the policy. A string in JSONArray format with the following items:
+	// The parameter information of the policy. The value is a string in JSONArray format. The following items are included:
 	//
 	// Vulnerability configuration item. Valid values:
 	//
@@ -56,7 +56,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// - associationProperty: sasAllVul
 	//
-	// - value: basic information about the vulnerability
+	// - value: the basic information of the vulnerability.
 	//
 	// Snapshot configuration item. Valid values:
 	//
@@ -64,7 +64,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// - associationProperty: snapshotConfig
 	//
-	// - value: storage time information
+	// - value: the storage time information.
 	//
 	// Notification configuration. Valid values:
 	//
@@ -72,7 +72,7 @@ type CreateSoarStrategyTaskRequest struct {
 	//
 	// - associationProperty: notifyConfig
 	//
-	// - value: email or DingTalk configuration information.
+	// - value: the configuration information of email or DingTalk notifications.
 	//
 	// This parameter is required.
 	//

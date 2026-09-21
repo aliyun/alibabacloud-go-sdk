@@ -58,7 +58,7 @@ type OperationCancelIgnoreSuspEventResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The time consumed by the task, in seconds.
+	// The time consumed by the task. Unit: seconds.
 	//
 	// example:
 	//

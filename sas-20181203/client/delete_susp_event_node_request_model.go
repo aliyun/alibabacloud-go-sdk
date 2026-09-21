@@ -26,9 +26,13 @@ type DeleteSuspEventNodeRequest struct {
 	//
 	// 123
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	// The Alibaba Cloud account ID of the member account in the resource directory.
+	// The ID of the Alibaba Cloud account of the member accounts in the resource directory.
 	//
 	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

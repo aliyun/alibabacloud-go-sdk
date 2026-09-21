@@ -176,7 +176,7 @@ type ExportSuspEventsRequest struct {
   // 
   // 20
   PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-  // The Alarm Metric of the alerting events to query. Valid values:
+  // The alert type of the alert events to query. Valid values:
   // 
   // - **Abnormal process behavior**
   // 
@@ -184,7 +184,7 @@ type ExportSuspEventsRequest struct {
   // 
   // - **Unusual logon**
   // 
-  // - **Anomaly event**
+  // - **Abnormal event**
   // 
   // - **Sensitive file tampering**
   // 
@@ -210,7 +210,7 @@ type ExportSuspEventsRequest struct {
   // 
   // - **Threat intelligence**
   // 
-  // - **Malicious network connectivity behavior**
+  // - **Malicious network behavior**
   // 
   // - **Container cluster exception**
   // 
@@ -234,9 +234,13 @@ type ExportSuspEventsRequest struct {
   // 
   // remark
   Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-  // The ID of the Alibaba Cloud account of the member accounts in the resource directory.
+  // The ID of the member accounts in the resource folder.
   // 
-  // > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+  // > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+  // 
+  // example:
+  // 
+  // 127608589417****
   ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
   // The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
   // 

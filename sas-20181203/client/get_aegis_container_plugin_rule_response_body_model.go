@@ -68,7 +68,7 @@ type GetAegisContainerPluginRuleResponseBodyData struct {
 	//
 	// 1671607025000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when the rule was modified. Unit: milliseconds.
+	// The timestamp when the rule was last modified. Unit: milliseconds.
 	//
 	// example:
 	//

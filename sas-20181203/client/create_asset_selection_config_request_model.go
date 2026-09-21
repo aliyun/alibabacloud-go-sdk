@@ -40,9 +40,9 @@ type CreateAssetSelectionConfigRequest struct {
 	//
 	// VIRUS_SCAN_CYCLE_CONFIG
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The operating system of the target asset. Valid values:
 	//
@@ -68,15 +68,15 @@ type CreateAssetSelectionConfigRequest struct {
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The target asset type. Valid values:
+	// The Asset Type of the target. Valid values:
 	//
 	// - **all_instance**: all servers.
 	//
-	// - **instance**: select by server.
+	// - **instance**: selected by server.
 	//
-	// - **group**: select by group.
+	// - **group**: selected by group.
 	//
-	// - **vpc**: select by VPC.
+	// - **vpc**: selected by VPC.
 	//
 	// This parameter is required.
 	//

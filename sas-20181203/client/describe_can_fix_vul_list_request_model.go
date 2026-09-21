@@ -118,9 +118,9 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// registry.cn-wulanchabu.aliyuncs.com/sas_test/huxin-test-001:nuxeo6-****
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The container image instance ID.
+	// The ID of the container image instance.
 	//
-	// > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId*	- response parameter.
+	// > Call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry to obtain the container image instance ID from the **InstanceId*	- response parameter.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// - **later**: medium
 	//
-	// - **nntf**: low.
+	// - **nntf**: low
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// - **eu-central-1**: Germany (Frankfurt)
 	//
-	// - **eu-west-1**: UK (London).
+	// - **eu-west-1**: UK (London)
 	//
 	// example:
 	//
@@ -196,15 +196,15 @@ type DescribeCanFixVulListRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the image repository.
 	//
-	// > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry and obtain the value of the **RepoId*	- response parameter.
+	// > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the image repository ID from the **RepoId*	- response parameter.
 	//
 	// example:
 	//
 	// crr-avo7qp02simz2njo
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The container image instance ID.
+	// The ID of the container image instance.
 	//
-	// > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId*	- response parameter.
+	// > Call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry to obtain the container image instance ID from the **InstanceId*	- response parameter.
 	//
 	// example:
 	//
@@ -250,13 +250,20 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// - **eu-central-1**: Germany (Frankfurt)
 	//
-	// - **eu-west-1**: UK (London).
+	// - **eu-west-1**: UK (London)
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RepoRegionId               *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	// The ID of the Alibaba Cloud account of a member account in the resource folder.
+	//
+	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The scan scope. Valid values:
 	//
 	// - **image**: Image.
@@ -285,7 +292,7 @@ type DescribeCanFixVulListRequest struct {
 	//
 	// - **cve**: system vulnerability
 	//
-	// - **sca**: application vulnerability.
+	// - **sca**: application vulnerability
 	//
 	// This parameter is required.
 	//

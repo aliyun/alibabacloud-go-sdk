@@ -26,15 +26,15 @@ type iCreateSasTrialShrinkRequest interface {
 }
 
 type CreateSasTrialShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	// Specifies whether to perform only a dry run. true: performs only a dry run without performing the actual request. false: performs the actual request. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether the request is from the ECS console. Valid values:
 	//
-	// - **true**: yes.
+	// - **true**
 	//
-	// - **false**: no.
+	// - **false**
 	//
 	// example:
 	//
@@ -50,24 +50,24 @@ type CreateSasTrialShrinkRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The reason for applying for a trial. This parameter is required for a second trial.
+	// The reason for applying for the trial. This parameter is required for a second trial.
 	RequestFormShrink *string `json:"RequestForm,omitempty" xml:"RequestForm,omitempty"`
 	// The trial type. Valid values:
 	//
-	// - **0**: trial not allowed.
+	// - **0**: Trial is not allowed.
 	//
-	// - **1**: first trial.
+	// - **1**: First trial.
 	//
-	// - **2**: second trial.
+	// - **2**: Second trial.
 	//
 	//
-	// > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter. A trial can be started only when the value is not 0.
+	// > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter. The trial can be started only when the value is not 0.
 	//
 	// example:
 	//
 	// 1
 	TryType *int32 `json:"TryType,omitempty" xml:"TryType,omitempty"`
-	// The trial version. Valid values:
+	// The trial edition. Valid values:
 	//
 	// - **3**: Enterprise Edition.
 	//

@@ -133,7 +133,7 @@ func (client *Client) AddBaselineCheckWhiteRecordWithContext(ctx context.Context
 
 // Summary:
 //
-// Adds instances to the whitelist at the check item level for cloud platform configuration checks.
+// Adds instances to the whitelist at the instance level for a specific check item in cloud platform configuration checks.
 //
 // @param request - AddCheckInstanceResultWhiteListRequest
 //
@@ -1143,7 +1143,11 @@ func (client *Client) AddProtectVpcListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Upgrades the Security Center agent in batches.
+// Creates a release batch for Security Center upgrades.
+//
+// Description:
+//
+// Before calling this operation, call GetCurrentVersionPublish to check the account eligibility. You can call this operation only when the returned BigCustomer parameter is true, which indicates that the account is a premium customer.
 //
 // @param request - AddPublishBatchRequest
 //
@@ -3381,6 +3385,10 @@ func (client *Client) CreateContainerScanTaskWithContext(ctx context.Context, re
 //
 // Creates a container runtime scan task in the appNames dimension.
 //
+// Description:
+//
+// Before calling this operation, make sure that your current Security Center edition supports container runtime scanning. Call [DescribeVersionConfig](~~DescribeVersionConfig~~) and verify that the response parameter IsNewContainerVersion is true, which indicates that container runtime scanning is available. If the value is false, upgrade your Security Center edition before calling this operation.
+//
 // @param request - CreateContainerScanTaskByAppNameRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4121,6 +4129,10 @@ func (client *Client) CreateHoneypotWithContext(ctx context.Context, request *Cr
 //
 // Creates a honeypot management node.
 //
+// Description:
+//
+// Before creating a management node, make sure that your account has a sufficient honeypot probe quota. Call [DescribeHoneyPotAuth](~~DescribeHoneyPotAuth~~) and [ListHoneypotNode](~~ListHoneypotNode~~) to query the quota and node usage. If the quota is insufficient, call [DeleteHoneypotNode](~~DeleteHoneypotNode~~) to release existing nodes or purchase more probe capacity.
+//
 // @param request - CreateHoneypotNodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4435,7 +4447,7 @@ func (client *Client) CreateHybridProxyClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a defense rule in the container firewall module.
+// Creates a container firewall blocking rule.
 //
 // @param tmpReq - CreateInterceptionRuleRequest
 //
@@ -5397,7 +5409,7 @@ func (client *Client) CreateOssBucketScanTaskWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Before calling this operation, call the [PublicPreCheckImageScanTask](~~PublicPreCheckImageScanTask~~) operation to query the number of container images covered by the image scan task and the number of authorizations consumed. Ensure that sufficient authorizations are available for the image scan task to prevent the task from being interrupted due to insufficient authorizations.
+// Before you call this operation, call the [PublicPreCheckImageScanTask](~~PublicPreCheckImageScanTask~~) operation to query the number of container images that the image scan task covers and the number of authorizations consumed. Make sure that sufficient authorizations are available for the image scan task to prevent the image scan task from being overwritten due to insufficient authorizations.
 //
 // @param request - CreateOssScanConfigRequest
 //
@@ -5509,11 +5521,11 @@ func (client *Client) CreateOssScanConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an automatic control policy for new accounts in the multi-account security management feature of Security Center. Member accounts under the automatic control policy folder are automatically added to the monitoring account list.
+// Creates an automatic control policy for new accounts in the multi-account security management feature of Security Center. Member accounts under the automatic control policy folder are automatically added to the monitored account list.
 //
 // Description:
 //
-// Call this operation by using the management account of the resource directory or the delegated administrator account of Security Center.
+// Call this operation by using the management account of the resource directory or the delegated administrator account of Security Center. Before calling this operation, enable the multi-account security management feature by calling [EnableServiceAccessResourceDirectory](~~EnableServiceAccessResourceDirectory~~).
 //
 // @param request - CreateRdDefaultSyncListRequest
 //
@@ -5629,7 +5641,7 @@ func (client *Client) CreateRestoreJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Starts a trial of Security Center.
+// Starts a free trial of Security Center.
 //
 // @param tmpReq - CreateSasTrialRequest
 //
@@ -5705,7 +5717,7 @@ func (client *Client) CreateSasTrialWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Creates a service-linked role and grants Security Center access to cloud resources.
+// Creates a service-linked role and authorizes Security Center to access cloud resources.
 //
 // Description:
 //
@@ -5883,7 +5895,7 @@ func (client *Client) CreateSimilarSecurityEventsQueryTaskWithContext(ctx contex
 
 // Summary:
 //
-// Creates a task under My Policies in Task Center.
+// Creates a task under My Policies in the task center.
 //
 // Description:
 //
@@ -5999,7 +6011,15 @@ func (client *Client) CreateSuspEventNoteWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an anti-ransomware policy for a database.
+// Creates a database anti-ransomware policy.
+//
+// Description:
+//
+// Before calling this operation, choose one of the following paths:
+//
+// - If DatabaseAddByUser is not set to true, install the Security Center agent on the ECS instance first, call StartDiscoverDatabaseTask to initiate database discovery, and then call DescribeUniBackupDatabase to confirm that the target database has been discovered.
+//
+// - If DatabaseAddByUser is set to true, you can manually register the database.
 //
 // @param tmpReq - CreateUniBackupPolicyRequest
 //
@@ -6097,7 +6117,7 @@ func (client *Client) CreateUniBackupPolicyWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates a restoration task for anti-ransomware database protection.
+// Creates a recovery task for database anti-ransomware.
 //
 // @param request - CreateUniRestorePlanRequest
 //
@@ -8631,7 +8651,7 @@ func (client *Client) DeleteSearchConditionWithContext(ctx context.Context, requ
 //
 // Summary:
 //
-// Deletes alert whitelisting configurations in batches.
+// Deletes alert whitelist configurations in batches.
 //
 // @param request - DeleteSecurityEventMarkMissListRequest
 //
@@ -10945,6 +10965,16 @@ func (client *Client) DescribeCanFixVulListWithContext(ctx context.Context, requ
 //
 // Queries the statistics of charts configured in a security report.
 //
+// Description:
+//
+// Before querying chart data for a custom report, perform the following steps in order:
+//
+// 1. Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain the ReportId and confirm the report version.
+//
+// 2. Call [DescribeChartList](~~DescribeChartList~~), set ProjectCode to customize_report, and pass in the ReportId to obtain the chart ID.
+//
+// 3. Call this operation to query chart data. If the report version is 1.0.0, the CharId parameter is required. If the report version is 2.0.0, the ChartId parameter is required. Use the IDs returned by the corresponding report and chart.
+//
 // @param request - DescribeChartDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12235,7 +12265,7 @@ func (client *Client) DescribeClusterNetworkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the scanner status information for a Kubernetes cluster.
+// Queries the scanner status information of a Kubernetes cluster.
 //
 // @param request - DescribeClusterScannerListRequest
 //
@@ -13091,7 +13121,7 @@ func (client *Client) DescribeContainerTagsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the filter conditions that are used to search for assets in fuzzy match mode.
+// Queries the fuzzy match conditions for asset properties that can be displayed when you query assets.
 //
 // @param request - DescribeCriteriaRequest
 //
@@ -13327,7 +13357,7 @@ func (client *Client) DescribeCustomizeReportConfigDetailWithContext(ctx context
 
 // Summary:
 //
-// Queries security reports.
+// Queries the list of security reports.
 //
 // @param request - DescribeCustomizeReportListRequest
 //
@@ -15015,7 +15045,7 @@ func (client *Client) DescribeFrontVulPatchListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the investigation and tracing graph of Cloud Workload Protection Platform (CWPP) alert events to visually investigate and reconstruct cyberattack processes.
+// Queries the investigation and tracing graph of a Cloud Workload Protection Platform (CWPP) alert event to visually investigate and reconstruct the cyberattack process.
 //
 // @param request - DescribeGraph4InvestigationOnlineRequest
 //
@@ -16791,7 +16821,7 @@ func (client *Client) DescribeImageFixTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a list of image vulnerabilities.
+// Queries the list of image vulnerabilities.
 //
 // @param request - DescribeImageGroupedVulListRequest
 //
@@ -17765,7 +17795,7 @@ func (client *Client) DescribeImageSensitiveFileListWithContext(ctx context.Cont
 //
 // Description:
 //
-// To view the latest container image vulnerability information, call the [PublicCreateImageScanTask](~~PublicCreateImageScanTask~~) operation to create an image scan task first, wait 1 to 5 minutes, and then call this operation to query the container image vulnerability list.
+// To view the latest container image vulnerability information, call the [PublicCreateImageScanTask](~~PublicCreateImageScanTask~~) operation to create an image scan task first. Wait 1 to 5 minutes, and then call this operation to query the container image vulnerability list.
 //
 // @param request - DescribeImageVulListRequest
 //
@@ -19037,7 +19067,7 @@ func (client *Client) DescribePropertyCountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of the scheduled task list in host assets.
+// Queries the details of scheduled tasks in the host asset fingerprint list.
 //
 // @param request - DescribePropertyCronDetailRequest
 //
@@ -23715,7 +23745,7 @@ func (client *Client) DescribeUuidVulNumClassifyStatisticWithContext(ctx context
 
 // Summary:
 //
-// Retrieves the list of servers that support vulnerability fix based on vulnerability names.
+// Retrieves the list of servers that support vulnerability fixing based on vulnerability names.
 //
 // @param request - DescribeUuidsByVulNamesRequest
 //
@@ -24615,7 +24645,7 @@ func (client *Client) DescribeVulTargetStatisticsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries vulnerability whitelists by paging.
+// Queries vulnerability whitelist entries by paging.
 //
 // @param request - DescribeVulWhitelistRequest
 //
@@ -25987,7 +26017,11 @@ func (client *Client) EnableCustomBlockRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Enables a custom rule for an instance.
+// Enables the status of a specific instance in a custom rule.
+//
+// Description:
+//
+// Before calling this operation, associate the target instance with a specified blocking rule by calling [ModifyCustomBlockRecord](~~ModifyCustomBlockRecord~~). You can call [CreateCustomBlockRecord](~~CreateCustomBlockRecord~~) to create a rule, call [DescribeCustomBlockRecords](~~DescribeCustomBlockRecords~~) to query rules, and then perform the association and enablement operations.
 //
 // @param request - EnableCustomInstanceBlockRecordRequest
 //
@@ -27207,6 +27241,60 @@ func (client *Client) GetAgentlessTaskCountWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAgentlessTaskCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves agentless detection risk statistics for resources in batches of 1 to 100 resources per request.
+//
+// Description:
+//
+// Only Alibaba Cloud accounts that have activated the pay-as-you-go billing method for Security Center agentless detection can call this operation. UuidList can contain up to 100 UUIDs. Duplicate UUIDs are deduplicated based on the order of first occurrence. The returned Data is keyed by UUID and does not aggregate results across multiple resources. RiskMachine, ScanMachine, and LastTaskTime are account-level statistics and remain consistent across all resources in the same request.
+//
+// @param request - GetAgentlessTaskCountBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentlessTaskCountBatchResponse
+func (client *Client) GetAgentlessTaskCountBatchWithContext(ctx context.Context, request *GetAgentlessTaskCountBatchRequest, runtime *dara.RuntimeOptions) (_result *GetAgentlessTaskCountBatchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TargetType) {
+		query["TargetType"] = request.TargetType
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UuidList) {
+		body["UuidList"] = request.UuidList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentlessTaskCountBatch"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentlessTaskCountBatchResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -29301,15 +29389,25 @@ func (client *Client) GetFileDetectReportWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// You can retrieve detection results only for files that have been submitted for detection. Detection results are retained for 5 hours and can be queried repeatedly within this period. For the detection submission operation, refer to [CreateFileDetect](~~CreateFileDetect~~).
+// You can retrieve detection results only for files that have been submitted for detection. Detection results are retained for 5 hours and can be queried repeatedly within this period. To submit files for detection, refer to [CreateFileDetect](~~CreateFileDetect~~).
 //
 // ### File unique identifier
 //
-// All file detection operations include the HashKey parameter, which represents the unique identifier of the file being detected and is used to query detection results. Only the MD5 or SHA-256 hash of the complete file content is supported.
+// All file detection-related operations include the HashKey parameter, which represents the unique identifier of the file being detected and is used to query detection results. Only the MD5 or SHA-256 hash of the complete file content is supported.
 //
 // ### Query detection results
 //
-// You can filter file properties by using the FileLabel in the Ext extension field. For example, combine the encrypted and Zip properties to filter encrypted archives. Supported file labels for compressed file types: Zip, RAR, 7-Zip, XAR, ZLib, GZip, and tar. You can locate malicious code segments in web shell files by using the Highlight field in the Ext extension field. The Highlight field is a list type, where each element corresponds to a code range. The numbers represent the offset in characters relative to the file header.
+// You can filter file properties by using the FileLabel field in the Ext extension field. For example, you can combine the encrypted and Zip properties to filter encrypted archives. Supported file labels for compressed file types: Zip, RAR, 7-Zip, XAR, ZLib, GZip, and tar. You can use the Highlight field in the Ext extension field to locate malicious code segments in web shell files. The Highlight field is a list type. Each element in the list corresponds to a code range, and the numbers represent the offset in characters from the beginning of the file.
+//
+// Before querying file detection results, complete the following steps in order:
+//
+// 1. Call [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) to obtain OSS upload parameters.
+//
+// 2. Use the returned signature information to upload the file to OSS by using a form. For more information about the upload method, see [OSS PostObject form upload documentation](https://www.alibabacloud.com/help/zh/oss/developer-reference/postobject).
+//
+// 3. Call [CreateFileDetect](~~CreateFileDetect~~) to submit a file detection task.
+//
+// 4. Call [GetFileDetectResult](~~GetFileDetectResult~~) to query the detection result.
 //
 // @param request - GetFileDetectResultRequest
 //
@@ -29538,7 +29636,7 @@ func (client *Client) GetFileProtectClientRuleDashboardWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieves information about core file monitoring events.
+// Retrieves the details of a core file monitoring event.
 //
 // @param request - GetFileProtectEventRequest
 //
@@ -30286,7 +30384,7 @@ func (client *Client) GetInstallCodeForUuidWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Count the number of security events for a single instance
+// Retrieves the alerting statistics information for a server.
 //
 // @param request - GetInstanceAlarmStatisticsRequest
 //
@@ -31356,7 +31454,7 @@ func (client *Client) GetSasContainerWebDefenseRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves the application list of container file defense configurations.
+// Retrieves the application list for container file defense configurations.
 //
 // @param request - GetSasContainerWebDefenseRuleApplicationRequest
 //
@@ -31544,7 +31642,7 @@ func (client *Client) GetSensitiveDefineRuleConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the authorization details of a Serverless application.
+// Retrieves the authorization details of a serverless application.
 //
 // @param request - GetServerlessAppAuthDetailRequest
 //
@@ -32431,6 +32529,10 @@ func (client *Client) HandleSimilarMaliciousFilesWithContext(ctx context.Context
 //
 // Batch processes alert events based on the same IP rule or type.
 //
+// Description:
+//
+// Before processing, call [DescribeSuspEvents](~~DescribeSuspEvents~~) to check the CanBeDealOnLine and EventStatus fields of the events. An event can be processed only when CanBeDealOnLine is true. If CanBeDealOnLine is false or EventStatus is 64, the event has expired and cannot be processed by this operation. [DescribeSecurityEventOperations](~~DescribeSecurityEventOperations~~) returns an empty array for expired events.
+//
 // @param request - HandleSimilarSecurityEventsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33017,7 +33119,7 @@ func (client *Client) InstallPmAgentWithContext(ctx context.Context, request *In
 
 // Summary:
 //
-// Installs the anti-ransomware agent for databases.
+// Installs the anti-ransomware client for databases.
 //
 // @param request - InstallUniBackupAgentRequest
 //
@@ -35957,7 +36059,7 @@ func (client *Client) ListFileProtectClientEventWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves a list of file protection rules.
+// Retrieves the list of file protection rules.
 //
 // @param request - ListFileProtectClientRuleRequest
 //
@@ -37330,7 +37432,7 @@ func (client *Client) ListInterceptionHistoryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries defense rules that are configured for the container firewall feature.
+// Queries micro-segmentation defense rules.
 //
 // @param request - ListInterceptionRulePageRequest
 //
@@ -39388,7 +39490,7 @@ func (client *Client) ListUnknownThreatDetectProcessWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the list of intelligent behavior analysis policies.
+// Queries the list of intelligent behavior analytics policies.
 //
 // @param request - ListUnknownThreatDetectStrategyRequest
 //
@@ -39972,7 +40074,11 @@ func (client *Client) MarkMonitorAccountsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Handles an AccessKey pair leak record.
+// Handles AccessKey leak records.
+//
+// Description:
+//
+// An HTTP 200 status code only indicates that the request was accepted, not that the record was actually modified. Call [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) to query and verify the operation result.
 //
 // @param request - ModifyAccessKeyLeakDealRequest
 //
@@ -44302,7 +44408,11 @@ func (client *Client) ModifyWebLockRefreshWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates web tamper proofing protection for a specified server and enables the protection.
+// Creates web tamper-proofing protection for a specified server and enables the protection.
+//
+// Description:
+//
+// Before you invoke this operation, purchase and allocate the web tamper-proofing value-added service authorization for the specified server. You can query the number of active authorizations by using the WhiteCount field of [DescribeWebLockStatus](~~DescribeWebLockStatus~~), and allocate authorizations through the console or by invoking [BindAuthToMachine](~~BindAuthToMachine~~).
 //
 // @param request - ModifyWebLockStartRequest
 //
@@ -45548,7 +45658,7 @@ func (client *Client) OperateWebLockFileEventsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Unmarks ignored anomaly alert events.
+// Settings the specified anomaly alerting events to unignored.
 //
 // @param request - OperationCancelIgnoreSuspEventRequest
 //
@@ -46092,7 +46202,7 @@ func (client *Client) PublicSyncAndCreateImageScanTaskWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the number of security alert events that occurred in each attack phase.
+// Queries the number of security alert events that occurred in each attack stage.
 //
 // @param request - QueryAttackCountRequest
 //
@@ -46372,7 +46482,7 @@ func (client *Client) QueryJenkinsImageRegistryPersistenceDayWithContext(ctx con
 
 // Summary:
 //
-// Queries the node result of a database dry run.
+// Queries the result of a database pre-check node.
 //
 // @param request - QueryPreCheckDatabaseRequest
 //
@@ -47052,7 +47162,7 @@ func (client *Client) RetryInstallProbeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Restores a quarantined file.
+// Restores a quarantined file from the quarantine.
 //
 // @param request - RollbackSuspEventQuaraFileRequest
 //
@@ -47152,7 +47262,7 @@ func (client *Client) SasInstallCodeWithContext(ctx context.Context, request *Sa
 
 // Summary:
 //
-// Saves the configurations of a custom security report.
+// Saves the configuration of a custom security report.
 //
 // @param request - SaveCustomizeReportConfigRequest
 //
@@ -47340,7 +47450,7 @@ func (client *Client) SaveImageBaselineStrategyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Saves alert settings.
+// Saves user security alert settings.
 //
 // @param request - SaveSuspEventUserSettingRequest
 //
@@ -47516,7 +47626,7 @@ func (client *Client) SaveWhiteListStrategyAssetsWithContext(ctx context.Context
 
 // Summary:
 //
-// Sends a security daily report to a specified email address. Only security reports with a custom time period as the report cycle are supported.
+// Sends a security daily report to a specified email address. Only security reports whose report period is set to a custom time range are supported.
 //
 // @param request - SendCustomizeReportRequest
 //
@@ -48138,6 +48248,10 @@ func (client *Client) StartVirusScanTaskWithContext(ctx context.Context, request
 //
 // Stops a honeypot.
 //
+// Description:
+//
+// Before calling this operation, ensure that you have sufficient honeypot probe quota. First, create a management node by calling CreateHoneypotNode, then create a honeypot by calling CreateHoneypot. Wait until the honeypot enters the running state before calling this operation.
+//
 // @param request - StopHoneypotRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48544,7 +48658,7 @@ func (client *Client) UninstallUniBackupAgentWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Updates the status of the honeypot installation time.
+// Modifies the processing status of a honeypot alert event.
 //
 // @param request - UpdateAlarmEventRequest
 //
@@ -50654,7 +50768,7 @@ func (client *Client) UpdateOssScanConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the protection edition bound to a server after you activate the pay-as-you-go billing method for host and container security.
+// Changes the protection edition bound to a server after you enable the pay-as-you-go billing method for host and container security.
 //
 // @param request - UpdatePostPaidBindRelRequest
 //
@@ -51302,6 +51416,24 @@ func (client *Client) UpdateWhiteListStrategyStatusWithContext(ctx context.Conte
 //
 // Upgrades the version of an anti-ransomware backup policy.
 //
+// Description:
+//
+// This operation upgrades a v1.0.0 backup policy to v2.0.0. Before you call this operation, make sure that the ECS instance is running, Cloud Assistant is installed, the Security Center agent is online, and a v1.0.0 policy exists. You can call [CreateBackupPolicy](~~CreateBackupPolicy~~) with PolicyVersion set to 1.0.0 to create a policy, and then call DescribeBackupPolicies to obtain the policy ID.
+//
+// Before you call this operation, you can check or complete the following prerequisites:
+//
+// | Prerequisite | Related API |
+//
+// | --- | --- |
+//
+// | The ECS instance is running. | [Ecs/StartInstance](https://api.aliyun.com/document/Ecs/2014-05-26/StartInstance) |
+//
+// | Cloud Assistant is installed on the ECS instance. | [Ecs/InstallCloudAssistant](https://api.aliyun.com/document/Ecs/2014-05-26/InstallCloudAssistant) |
+//
+// | The Security Center agent is installed. | [OperateAgentClientInstall](~~OperateAgentClientInstall~~) |
+//
+// | Check the agent installation status. | [DescribeAgentInstallStatus](~~DescribeAgentInstallStatus~~) |
+//
 // @param request - UpgradeBackupPolicyVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51455,6 +51587,18 @@ func (client *Client) UpgradeVersionByUuidsWithContext(ctx context.Context, requ
 // Summary:
 //
 // Creates and confirms a record after a honeypot file is uploaded.
+//
+// Description:
+//
+// Before calling this operation, complete the following steps in order:
+//
+// 1. Call [CreateHoneypotNode](~~CreateHoneypotNode~~) to create a management node, or call [ListHoneypotNode](~~ListHoneypotNode~~) to query existing nodes and obtain a valid NodeId.
+//
+// 2. Call [GetHoneyPotUploadPolicyInfo](~~GetHoneyPotUploadPolicyInfo~~) to obtain the OSS upload credentials, upload policy, and Data.Key.
+//
+// 3. Use the returned STS credentials to upload the file to the specified bucket by using the OSS PostObject protocol.
+//
+// 4. After the file is uploaded, call this operation to register the upload result.
 //
 // @param request - UploadedHoneyPotFileRequest
 //

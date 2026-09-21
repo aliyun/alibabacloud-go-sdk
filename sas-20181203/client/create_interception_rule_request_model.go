@@ -30,9 +30,11 @@ type iCreateInterceptionRuleRequest interface {
 }
 
 type CreateInterceptionRuleRequest struct {
-	// The ID of the container cluster.
+	// The ID of the container cluster to query.
 	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
+	//
+	// This parameter must be from an ACK cluster. You can call the DescribeClustersV1 operation of Container Service for Kubernetes (ACK) to query existing clusters, or call the CreateCluster operation to create a cluster, and then call the DescribeGroupedContainerInstances operation of Security Center to obtain the ID of a managed cluster.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +50,11 @@ type CreateInterceptionRuleRequest struct {
 	//
 	// sas-test-cnnf
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The information about the destination network object. The value of this parameter contains the following fields:
+	// The list of destination objects. The metric descriptions are as follows:
 	//
-	// 	- targetId: the ID of the destination network object. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the ID.
+	// - targetId: The ID of the destination object. You can invoke the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
 	//
-	// 	- ports: the destination port ranges.
+	// - ports: The list of destination port ranges.
 	//
 	// example:
 	//
@@ -72,13 +74,13 @@ type CreateInterceptionRuleRequest struct {
 	//
 	// ]
 	DstTargetList map[string]interface{} `json:"DstTargetList,omitempty" xml:"DstTargetList,omitempty"`
-	// The action on traffic. Valid values:
+	// The interception mode. Valid values:
 	//
-	// 	- **1**: blocks traffic.
+	// - **1**: Block Mode.
 	//
-	// 	- **2**: allows traffic and generates alerts.
+	// - **2**: Alert mode.
 	//
-	// 	- **3**: allows traffic and does not generate alerts.
+	// - **3**: Allow mode.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +88,7 @@ type CreateInterceptionRuleRequest struct {
 	//
 	// 1
 	InterceptType *int64 `json:"InterceptType,omitempty" xml:"InterceptType,omitempty"`
-	// The priority of the defense rule. Valid values: 1 to 1000. A smaller value indicates a higher priority.
+	// The priority of the rule. Valid values: 1 to 1000. A smaller value indicates a higher priority.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +96,7 @@ type CreateInterceptionRuleRequest struct {
 	//
 	// 1
 	OrderIndex *int64 `json:"OrderIndex,omitempty" xml:"OrderIndex,omitempty"`
-	// The name of the defense rule.
+	// The name of the rule.
 	//
 	// This parameter is required.
 	//
@@ -102,11 +104,11 @@ type CreateInterceptionRuleRequest struct {
 	//
 	// test-rule-1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Specifies the status of the defense rule. Valid values:
+	// Specifies whether to enable the rule. Valid values:
 	//
-	// 	- **0**: disables the rule.
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enables the rule.
+	// - **1**: Enabled.
 	//
 	// This parameter is required.
 	//
@@ -114,17 +116,17 @@ type CreateInterceptionRuleRequest struct {
 	//
 	// 0
 	RuleSwitch *int32 `json:"RuleSwitch,omitempty" xml:"RuleSwitch,omitempty"`
-	// The type of the defense rule. Valid values:
+	// The type of the rule. Valid values:
 	//
-	// 	- customize: custom rule
+	// - customize: user-defined rule
 	//
 	// example:
 	//
 	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The source network object. The value of this parameter contains the following field:
+	// The source object. The metric description is as follows:
 	//
-	// 	- targetId: the ID of the source network object. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the ID.
+	// - targetId: The ID of the source object. You can invoke the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
 	//
 	// example:
 	//

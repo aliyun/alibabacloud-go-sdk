@@ -66,7 +66,7 @@ type ListAttackEventInfoRequest struct {
 	//
 	// - ai_webshell: WebShell upload intelligent defense
 	//
-	// - java_common_rce: Java common remote code execution (RCE) vulnerability blocked
+	// - java_common_rce: Java common RCE vulnerability blocked
 	//
 	// - alinet_webrce: Adaptive web attack defense
 	//
@@ -74,7 +74,7 @@ type ListAttackEventInfoRequest struct {
 	//
 	// 9
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The number of the page to return in a paged query.
+	// The number of the page to return in a paging query.
 	//
 	// example:
 	//
@@ -88,11 +88,13 @@ type ListAttackEventInfoRequest struct {
 	DstPort *string `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
 	// The timestamp of the end time.
 	//
+	// This parameter is required. If this parameter is not specified, the API returns HTTP 400.
+	//
 	// example:
 	//
 	// 1753152532550
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -102,7 +104,7 @@ type ListAttackEventInfoRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paged query.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// example:
 	//
@@ -116,7 +118,9 @@ type ListAttackEventInfoRequest struct {
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 	// The timestamp of the start time.
 	//
-	// This field is a UNIX timestamp. Unit: milliseconds.
+	// This parameter is a UNIX timestamp. Unit: milliseconds.
+	//
+	// This parameter is required. If this parameter is not specified, the API returns HTTP 400.
 	//
 	// example:
 	//

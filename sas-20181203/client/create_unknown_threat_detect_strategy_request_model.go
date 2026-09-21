@@ -28,13 +28,13 @@ type CreateUnknownThreatDetectStrategyRequest struct {
 	//
 	// UNKNOWN_THREAT_DETECT_CONFIG_****
 	AssetSelectionType *string `json:"AssetSelectionType,omitempty" xml:"AssetSelectionType,omitempty"`
-	// The number of days after the model is initially created before learning ends.
+	// The number of days after the model is initially created before the learning phase ends.
 	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterInit *int32 `json:"DurationDaysAfterInit,omitempty" xml:"DurationDaysAfterInit,omitempty"`
-	// The number of days after no new processes are added to the model before learning ends.
+	// The number of days after which the model ends when no new processes are added.
 	//
 	// example:
 	//

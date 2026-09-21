@@ -40,9 +40,13 @@ type ExportCustomizeReportRequest struct {
   // 
   // 1
   ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-  // The Alibaba Cloud account ID of the member accounts in the resource directory.
+  // The Alibaba Cloud account ID of the member account in the resource directory.
   // 
-  // > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+  // > You can call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+  // 
+  // example:
+  // 
+  // 127608589417****
   ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

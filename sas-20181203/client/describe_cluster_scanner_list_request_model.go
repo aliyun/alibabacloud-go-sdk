@@ -19,6 +19,10 @@ type iDescribeClusterScannerListRequest interface {
 
 type DescribeClusterScannerListRequest struct {
 	// The list of cluster IDs.
+	//
+	// You must specify at least one of StatusList and ClusterIdList. If neither is specified, the API returns HTTP 400 with the error code InvalidParam.
+	//
+	// Before calling this operation, make sure that an ACK cluster exists. You can obtain the cluster ID by calling the [DescribeClusters](https://api.aliyun.com/document/CS/2015-12-15/DescribeClusters) operation of Container Service.
 	ClusterIdList []*string `json:"ClusterIdList,omitempty" xml:"ClusterIdList,omitempty" type:"Repeated"`
 	// The language type for the request and response messages.
 	//
@@ -32,11 +36,13 @@ type DescribeClusterScannerListRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The list of scanner statuses. Valid values:
 	//
-	// - **online**: running
+	// - **online**: Running.
 	//
-	// - **offline**: offline
+	// - **offline**: Offline.
 	//
-	// - **not_installed**: not installed
+	// - **not_installed**: Not installed.
+	//
+	// You must specify at least one of StatusList and ClusterIdList. If neither is specified, the API returns HTTP 400 with the error code InvalidParam.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 

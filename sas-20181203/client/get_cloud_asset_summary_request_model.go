@@ -32,9 +32,13 @@ type GetCloudAssetSummaryRequest struct {
 	//
 	// true
 	IsSaleData *bool `json:"IsSaleData,omitempty" xml:"IsSaleData,omitempty"`
-	// The ID of the member accounts in the resource folder.
+	// The ID of the Alibaba Cloud account of the resource directory member accounts.
 	//
-	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The list of cloud vendors to query.
 	Vendors []*int32 `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
@@ -98,7 +102,7 @@ func (s *GetCloudAssetSummaryRequest) Validate() error {
 }
 
 type GetCloudAssetSummaryRequestCloudAssetTypes struct {
-	// The subtype of the cloud service. The asset type-subtype. Valid values:
+	// The subtype of the cloud service. Asset type-subtype. Valid values:
 	//
 	// - **0**: Elastic Compute Service (ECS) server
 	//
@@ -108,7 +112,7 @@ type GetCloudAssetSummaryRequestCloudAssetTypes struct {
 	//
 	//     	- **100**: Instance
 	//
-	// - **1**: Load balancing
+	// - **1**: load balancing
 	//
 	//     	- **0**: Classic Load Balancer (CLB)
 	//
@@ -174,7 +178,7 @@ type GetCloudAssetSummaryRequestCloudAssetTypes struct {
 	//
 	//     	- **0**: Bucket
 	//
-	// - **19**: Cloud-native relational database PolarDB
+	// - **19**: cloud-native relational database PolarDB
 	//
 	//     	- **0**: Cluster
 	//
@@ -218,7 +222,7 @@ type GetCloudAssetSummaryRequestCloudAssetTypes struct {
 	//
 	// - **0**: Elastic Compute Service (ECS) server
 	//
-	// - **1**: Load balancing
+	// - **1**: load balancing
 	//
 	// - **3**: ApsaraDB RDS database
 	//
@@ -246,7 +250,7 @@ type GetCloudAssetSummaryRequestCloudAssetTypes struct {
 	//
 	// - **18**: Object Storage Service (OSS)
 	//
-	// - **19**: Cloud-native relational database PolarDB
+	// - **19**: cloud-native relational database PolarDB
 	//
 	// - **20**: ApsaraDB RDS for PostgreSQL database
 	//

@@ -72,7 +72,7 @@ type DescribeEventLevelCountRequest struct {
 	//
 	// c951761046a9c4afe92be0a7b5bexxxxx
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
-	// The container IDs.
+	// The container ID.
 	//
 	// example:
 	//
@@ -97,6 +97,10 @@ type DescribeEventLevelCountRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The query type. Valid values:
 	//

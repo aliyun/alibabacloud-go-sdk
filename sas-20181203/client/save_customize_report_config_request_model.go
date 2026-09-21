@@ -54,39 +54,39 @@ type iSaveCustomizeReportConfigRequest interface {
 }
 
 type SaveCustomizeReportConfigRequest struct {
-	// The grouping type. Valid values:
+	// The group type. Valid values:
 	//
-	// 	- **ALIYUN_RG**
+	// - **ALIYUN_RG**: Alibaba Cloud resource group.
 	//
-	// 	- **SAS_GROUP**
+	// - **SAS_GROUP**: Security Center group.
 	//
-	// >  This parameter is supported only in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// SAS_GROUP
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// Whether the new account is connected by default. Values:
+	// Specifies whether newly added accounts are included by default. Valid values:
 	//
 	// - **true**: Yes.
 	//
 	// - **false**: No.
 	//
-	// > Only supported in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// true
 	MemberAccountSyncFlag *bool `json:"MemberAccountSyncFlag,omitempty" xml:"MemberAccountSyncFlag,omitempty"`
-	// The time when the report is pinned. Unit: milliseconds.
+	// The pinned time. Unit: milliseconds.
 	//
-	// >  This parameter is supported only in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// 1717430400000
 	PinnedTime *int64 `json:"PinnedTime,omitempty" xml:"PinnedTime,omitempty"`
-	// The email address of the recipient. Separate multiple email addresses with commas (,).
+	// The email addresses of contacts. Separate multiple email addresses with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -94,25 +94,25 @@ type SaveCustomizeReportConfigRequest struct {
 	//
 	// xxx@163.com
 	Recipients *string `json:"Recipients,omitempty" xml:"Recipients,omitempty"`
-	// The most recent days for report statistics.
+	// The number of recent days for report statistics.
 	//
-	// >  This parameter is supported only in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// 7
 	ReportDays *int32 `json:"ReportDays,omitempty" xml:"ReportDays,omitempty"`
-	// The end date on which the report is sent. The value is in the yyyy-MM-dd format.
+	// The end date for report statistics. Format: yyyy-MM-dd.
 	//
-	// >  This parameter is required if the ReportType parameter is set to 3.
+	// > This parameter is required when ReportType is set to 3.
 	//
 	// example:
 	//
 	// 2024-01-15
 	ReportEndDate *string `json:"ReportEndDate,omitempty" xml:"ReportEndDate,omitempty"`
-	// The ID of the report.
+	// The report ID.
 	//
-	// >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+	// >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
 	//
 	// example:
 	//
@@ -120,41 +120,41 @@ type SaveCustomizeReportConfigRequest struct {
 	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	// The language of the report. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	ReportLang *string `json:"ReportLang,omitempty" xml:"ReportLang,omitempty"`
-	// The time range in which the report is sent. Valid values:
+	// The report sending type. Valid values:
 	//
-	// 	- **1**: 00:00 to 06:00.
+	// - **1**: 0:00 to 6:00.
 	//
-	// 	- **2**: 06:00 to 12:00.
+	// - **2**: 6:00 to 12:00.
 	//
-	// 	- **3**: 12:00 to 18:00.
+	// - **3**: 12:00 to 18:00.
 	//
-	// 	- **4**: 18:00 to 24:00.
+	// - **4**: 18:00 to 24:00.
 	//
 	// example:
 	//
 	// 2
 	ReportSendType *int32 `json:"ReportSendType,omitempty" xml:"ReportSendType,omitempty"`
-	// The start date on which the report is sent. The value is in the yyyy-MM-dd format.
+	// The start date for report statistics. Format: yyyy-MM-dd.
 	//
-	// >  This parameter is required if the ReportType parameter is set to 3.
+	// > This parameter is required when ReportType is set to 3.
 	//
 	// example:
 	//
 	// 2024-01-01
 	ReportStartDate *string `json:"ReportStartDate,omitempty" xml:"ReportStartDate,omitempty"`
-	// The status of the report. Valid values:
+	// The report status. Valid values:
 	//
-	// 	- **0**: disabled.
+	//  - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	//  - **1**: enabled.
 	//
 	// This parameter is required.
 	//
@@ -162,17 +162,17 @@ type SaveCustomizeReportConfigRequest struct {
 	//
 	// 1
 	ReportStatus *int32 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The type of the report. Valid values:
+	// The report type. Valid values:
 	//
-	// 	- **0**: daily report.
+	// - **0**: daily report.
 	//
-	// 	- **1**: weekly report.
+	// - **1**: weekly report.
 	//
-	// 	- **2**: monthly report.
+	// - **2**: monthly report.
 	//
-	// 	- **3**: report whose statistics are collected within a custom time range.
+	// - **3**: custom period.
 	//
-	// 	- **4**: report of the most recent time range.
+	// - **4**: latest period.
 	//
 	// This parameter is required.
 	//
@@ -180,72 +180,79 @@ type SaveCustomizeReportConfigRequest struct {
 	//
 	// 4
 	ReportType *int32 `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The version of the report. Valid values:
+	// The security report version. Valid values:
 	//
-	// 	- **1.0.0**
+	// - **1.0.0**
 	//
-	// 	- **2.0.0**
+	// - **2.0.0**
 	//
 	// example:
 	//
 	// 2.0.0
-	ReportVersion              *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The end time at which the report is sent. The value is in the HH:mm:ss format.
+	ReportVersion *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
-	// >  This parameter is required if the ReportType parameter is set to 0, 1, 2, or 4.
+	// >Invoke [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The send end time. Format: HH:mm:ss.
+	//
+	// > This parameter is required when ReportType is set to 0, 1, 2, or 4.
 	//
 	// example:
 	//
 	// 10:00:00
 	SendEndTime *string `json:"SendEndTime,omitempty" xml:"SendEndTime,omitempty"`
-	// The exact day within the sending period.
+	// The specific execution dates within the send period.
 	//
-	// >  This parameter is supported only in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// 12
 	SendPeriodDays *int32 `json:"SendPeriodDays,omitempty" xml:"SendPeriodDays,omitempty"`
-	// The interval at which the report is sent. Valid values:
+	// The send period type. Valid values:
 	//
-	// 	- **DAY**
+	// - **DAY**: day.
 	//
-	// 	- **WEEK**
+	// - **WEEK**: week.
 	//
-	// 	- **MONTH**
+	// - **MONTH**: month.
 	//
-	// >  This parameter is supported only in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// MONTH
 	SendPeriodType *string `json:"SendPeriodType,omitempty" xml:"SendPeriodType,omitempty"`
-	// The start time at which the report is sent. The value is in the HH:mm:ss format.
+	// The send start time. Format: HH:mm:ss.
 	//
-	// >  This parameter is required if the ReportType parameter is set to 0, 1, 2, or 4.
+	// > This parameter is required when ReportType is set to 0, 1, 2, or 4.
 	//
 	// example:
 	//
 	// 09:00:00
 	SendStartTime *string `json:"SendStartTime,omitempty" xml:"SendStartTime,omitempty"`
-	// The groups.
+	// The targets within the group.
 	//
-	// >  This parameter is supported only in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// 12,123
 	TargetGroups *string `json:"TargetGroups,omitempty" xml:"TargetGroups,omitempty"`
-	// The ID of the Alibaba Cloud account. Separate multiple IDs with commas (,).
+	// The list of target users. Separate multiple values with commas (,).
 	//
-	// >  This parameter is supported only in version 2.0.0.
+	// > This parameter is supported only in version 2.0.0.
 	//
 	// example:
 	//
 	// 12,123
 	TargetUids *string `json:"TargetUids,omitempty" xml:"TargetUids,omitempty"`
-	// The title of the report.
+	// The report name.
 	//
 	// This parameter is required.
 	//

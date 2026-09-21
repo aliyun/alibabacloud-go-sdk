@@ -38,9 +38,13 @@ type ChangeSecurityScoreRuleRequest struct {
 	//
 	// false
 	ResetSecurityScoreRule *bool `json:"ResetSecurityScoreRule,omitempty" xml:"ResetSecurityScoreRule,omitempty"`
-	// The ID of the member account in the resource directory.
+	// The ID of the Alibaba Cloud account of the member accounts in the resource directory.
 	//
 	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The list of new version security score rule deductions.
 	SecurityScoreCategoryList []*ChangeSecurityScoreRuleRequestSecurityScoreCategoryList `json:"SecurityScoreCategoryList,omitempty" xml:"SecurityScoreCategoryList,omitempty" type:"Repeated"`
@@ -136,7 +140,7 @@ type ChangeSecurityScoreRuleRequestSecurityScoreCategoryList struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The deduction threshold for the security score rule category.
 	//
-	// > The valid range is 0 to 100. The sum of all security score rule category deduction thresholds must equal 100.
+	// > The valid range is 0 to 100. The sum of deduction thresholds for all security score rule categories must equal 100.
 	//
 	// example:
 	//
@@ -209,11 +213,11 @@ type ChangeSecurityScoreRuleRequestSecurityScoreCategoryListSecurityRuleList str
 	//
 	// - **SS_SAS_CLOUD_HC**: Pending Cloud Security Posture Management (CSPM) risks.
 	//
-	// - **SS_SDDP_DATA_RISK**: Pending data security risks to address.
+	// - **SS_SDDP_DATA_RISK**: Pending data security risks to remediate.
 	//
 	// - **SS_WAF_API_RISK**: Pending API security risks.
 	//
-	// - **SS_DDOS_BH_ASSET**: Assets in DDoS blackhole filtering status.
+	// - **SS_DDOS_BH_ASSET**: Assets under DDoS blackhole filtering.
 	//
 	// - **SS_SAS_AK_LEAK**: Unhandled AccessKey/SecretKey leak events.
 	//
@@ -372,7 +376,7 @@ type ChangeSecurityScoreRuleRequestSecurityScoreRuleList struct {
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The deduction value of the security score rule.
 	//
-	// > The valid range is 0 to 100. The sum of all security score rule deduction thresholds must equal 100.
+	// > The valid range is 0 to 100. The sum of deduction thresholds for all security score rules must equal 100.
 	//
 	// example:
 	//
@@ -445,7 +449,7 @@ type ChangeSecurityScoreRuleRequestSecurityScoreRuleListSecurityScoreItemList st
 	//
 	// 10
 	ScoreThreshold *int32 `json:"ScoreThreshold,omitempty" xml:"ScoreThreshold,omitempty"`
-	// The sub-rule type of the individual deduction item. The mapping between security score types and sub-rule types is as follows:
+	// The sub-rule type of the individual deduction item. The relationship between security score types and sub-rule types is as follows:
 	//
 	// - SS_REINFORCE: Key feature configuration.
 	//
@@ -485,7 +489,7 @@ type ChangeSecurityScoreRuleRequestSecurityScoreRuleListSecurityScoreItemList st
 	//
 	// - SS_HC: Baseline issues.
 	//
-	//   - WEAK_EXPLOIT: A weak password risk exposed to the Internet exists.
+	//   - WEAK_EXPLOIT: A weak password risk with Internet Exposure exists.
 	//
 	//   - WEAK_PASSWORD: A weak password risk exists.
 	//
@@ -501,7 +505,7 @@ type ChangeSecurityScoreRuleRequestSecurityScoreRuleListSecurityScoreItemList st
 	//
 	//   - CSPM_COMPLIANCE_NOT_PASS: One failed compliance check item exists.
 	//
-	// - SS_AK: AccessKey pair leak risk. Categorization not applicable.
+	// - SS_AK: AccessKey pair leak risk.
 	//
 	// example:
 	//

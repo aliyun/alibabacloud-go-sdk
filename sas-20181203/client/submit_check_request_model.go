@@ -18,8 +18,15 @@ type iSubmitCheckRequest interface {
 }
 
 type SubmitCheckRequest struct {
+	// The Alibaba Cloud account ID of the member account in the resource directory.
+	//
+	// >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The scan range. Valid values:
+	// The check scope. Valid values:
 	//
 	// - **FULL**: scans all check items
 	//

@@ -44,7 +44,7 @@ type CreateHoneypotNodeRequest struct {
 	//
 	// manageNode
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The list of allowed CIDR blocks. This parameter is required. At least one allowed CIDR block must be specified (such as 0.0.0.0/0). If this parameter is not specified, the API returns InvalidParam (400).
+	// The list of allowed CIDR blocks. This parameter is required. At least one allowed CIDR block must be specified, such as 0.0.0.0/0. If this parameter is not specified, the API returns InvalidParam (400).
 	SecurityGroupProbeIpList []*string `json:"SecurityGroupProbeIpList,omitempty" xml:"SecurityGroupProbeIpList,omitempty" type:"Repeated"`
 }
 

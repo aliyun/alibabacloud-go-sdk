@@ -46,7 +46,7 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// - **ctdr**: Agentic SOC.
 	//
-	// 	Warning: When the vendor is **CHAITIN**, **FORTINET**, **THREATBOOK**, or **WIZ**, set this parameter to ctdr.</warning>
+	// 	Warning: If the vendor is **CHAITIN**, **FORTINET**, **THREATBOOK**, or **WIZ**, set this parameter to ctdr.</warning>
 	//
 	// This parameter is required.
 	//
@@ -55,6 +55,8 @@ type AddCloudVendorAccountAKRequest struct {
 	// primary
 	AkType *string `json:"AkType,omitempty" xml:"AkType,omitempty"`
 	// The list of AK-associated modules.
+	//
+	// If AkType is set to ctdr, this parameter is required. Specify at least one module, such as SIEM, HOST, or CSPM. If this parameter is not specified, the API returns HTTP 400 with error code -101.
 	AuthModules []*string `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
 	// The account ID.
 	//
@@ -64,7 +66,7 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// azure_demo_1
 	CtdrCloudUserId *string `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
-	// The account domain for access. Valid values:
+	// The account domain for connection. Valid values:
 	//
 	// - **china**: China
 	//
@@ -72,7 +74,7 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// - **europe**: Huawei Cloud Europe
 	//
-	// > This parameter is valid only when **Vendor*	- is set to **HUAWEICLOUD**, **Azure**, **AWS**, **VOLCENGINE**, **KingsoftCloud**, **UCloud**, or **BaiduCloud**, and is required. Set this parameter to **china*	- for KingsoftCloud and BaiduCloud, and to **global*	- for UCloud.
+	// > This parameter is valid only when **Vendor*	- is set to **HUAWEICLOUD**, **Azure**, **AWS**, **VOLCENGINE**, **KingsoftCloud**, **UCloud**, or **BaiduCloud**, and is required. For KingsoftCloud and BaiduCloud, set this parameter to **china**. For UCloud, set this parameter to **global**.
 	//
 	// example:
 	//
@@ -80,9 +82,9 @@ type AddCloudVendorAccountAKRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The extended information.
 	//
-	// > Used to record extended information for different vendors.
+	// > Used to store extended information for different vendors.
 	//
-	// >Google Cloud is accessed through a service account. ExtendInfo stores the JSON-formatted service key file, excluding the private_key_id and private_key fields. The file contains the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, and universe_domain.
+	// >Google Cloud is connected through a service account. ExtendInfo stores the JSON-formatted service key file, excluding the private_key_id and private_key fields. The file contains the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, and universe_domain.
 	//
 	// example:
 	//
@@ -104,7 +106,7 @@ type AddCloudVendorAccountAKRequest struct {
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The AK parameter ID. Valid values:
 	//
-	// 1. When AkType is set to primary:
+	// 1. If AkType is set to primary:
 	//
 	// - **Tencent**: AccessKeyId of the primary account
 	//
@@ -116,7 +118,7 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// - **VOLCENGINE**: AccessKeyId of the primary account
 	//
-	// 2. When AkType is set to sub:
+	// 2. If AkType is set to sub:
 	//
 	// - **Tencent**: AccessKeyId of the sub-account
 	//
@@ -130,7 +132,7 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// - **google**: private_key_id
 	//
-	// >If AkType is set to **primary**, this value is the SecretID of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Access Key ID of the sub-account on the third-party cloud. For **Azure**, no distinction is made, and this value is the **appId*	- in the authentication information. Google Cloud is accessed through a service account. AkType defaults to sub, and this value is the private_key_id property value from the JSON-formatted service key file.
+	// >If AkType is set to **primary**, this value is the SecretID of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Access Key ID of the sub-account on the third-party cloud. For **Azure**, no distinction is made. This value is the **appId*	- in the authentication information. Google Cloud is connected through a service account. AkType defaults to sub, and this value is the private_key_id property value from the JSON-formatted service key file.
 	//
 	// This parameter is required.
 	//
@@ -140,7 +142,7 @@ type AddCloudVendorAccountAKRequest struct {
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 	// The AK parameter secret. Valid values:
 	//
-	// 1. When AkType is set to primary:
+	// 1. If AkType is set to primary:
 	//
 	// - **Tencent**: SecretAccessKey of the primary account
 	//
@@ -150,7 +152,7 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// - **AWS**: SecretAccessKey of the primary account
 	//
-	// 2. When AkType is set to sub:
+	// 2. If AkType is set to sub:
 	//
 	// - **Tencent**: SecretAccessKey of the sub-account
 	//
@@ -162,7 +164,7 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// - **google**: private_key
 	//
-	// >If AkType is set to **primary**, this value is the Secret Access Key of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Secret Access Key of the sub-account on the third-party cloud. For **Azure**, no distinction is made, and this value is the **password*	- in the authentication information. Google Cloud is accessed through a service account. AkType defaults to sub, and this value is the private_key property value from the JSON-formatted service key file.
+	// >If AkType is set to **primary**, this value is the Secret Access Key of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Secret Access Key of the sub-account on the third-party cloud. For **Azure**, no distinction is made. This value is the **password*	- in the authentication information. Google Cloud is connected through a service account. AkType defaults to sub, and this value is the private_key property value from the JSON-formatted service key file.
 	//
 	// This parameter is required.
 	//

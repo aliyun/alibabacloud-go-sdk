@@ -139,7 +139,7 @@ type DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList stru
 	//
 	// push_command_failed
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The completion status of the check. Valid values:
+	// The check completion status. Valid values:
 	//
 	// - **0**: Unprocessed.
 	//
@@ -163,7 +163,7 @@ type DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList stru
 	//
 	// - **cms**: Web-CMS vulnerability
 	//
-	// - **sca**: sca vulnerability
+	// - **sca**: SCA vulnerability
 	//
 	// example:
 	//

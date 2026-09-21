@@ -36,23 +36,30 @@ type OperationSuspEventsRequest struct {
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The operation to perform on the alert. Valid values:
 	//
-	// - **deal**: handles the alert (quarantine).
+	// - **deal**: Handle the alert (quarantine).
 	//
-	// - **ignore**: ignores the alert.
+	// - **ignore**: Ignore the alert.
 	//
-	// - **mark_mis_info**: marks the alert as a false positive (adds it to the whitelist).
+	// - **mark_mis_info**: Mark as false positive (add to whitelist).
 	//
-	// - **rm_mark_mis_info**: unmarks the alert as a false positive (removes it from the whitelist).
+	// - **rm_mark_mis_info**: Unmark as false positive (remove from whitelist).
 	//
-	// - **offline_handled**: marks the alert as handled.
+	// - **offline_handled**: Mark as handled.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// deal
-	Operation                  *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The Alibaba Cloud account ID of a member account in the resource directory.
+	//
+	// > You can call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//
 	// example:
@@ -61,11 +68,11 @@ type OperationSuspEventsRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The sub-operation type to perform when quarantining the alert event. Valid values:
 	//
-	// - **killAndQuaraFileByPidAndMd5andPath**: terminates the process by PID and quarantines the source file of the process.
+	// - **killAndQuaraFileByPidAndMd5andPath**: Terminate the process by PID and quarantine the source file of the process.
 	//
-	// - **quaraFileByMd5andPath**: quarantines the source file of the process.
+	// - **quaraFileByMd5andPath**: Quarantine the source file of the process.
 	//
-	// - **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the source file of the process.
+	// - **killAndQuaraFileByMd5andPath**: Terminate the process and quarantine the source file of the process.
 	//
 	// example:
 	//
@@ -83,9 +90,9 @@ type OperationSuspEventsRequest struct {
 	SuspiciousEventIds *string `json:"SuspiciousEventIds,omitempty" xml:"SuspiciousEventIds,omitempty"`
 	// The type of the exception event to handle. Valid values:
 	//
-	// - **alarm**: alert.
+	// - **alarm**: alert
 	//
-	// - **Empty**: exception.
+	// - **Empty**: exception
 	//
 	// example:
 	//

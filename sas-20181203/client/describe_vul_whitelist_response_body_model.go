@@ -24,19 +24,19 @@ type iDescribeVulWhitelistResponseBody interface {
 }
 
 type DescribeVulWhitelistResponseBody struct {
-	// The number of entries on the current page when paging.
+	// The number of entries on the current page in the paged query.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The current page number when paging.
+	// The page number of the current page in the paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page when paging.
+	// The number of entries per page in the paged query.
 	//
 	// example:
 	//

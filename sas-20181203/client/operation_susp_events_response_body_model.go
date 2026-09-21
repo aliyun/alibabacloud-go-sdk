@@ -34,11 +34,11 @@ type OperationSuspEventsResponseBody struct {
 	//
 	// 7E0618A9-D5EF-4220-9471-C42B5E92719F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the alert events are handled. Valid values:
+	// Indicates whether the alert event is handled. Valid values:
 	//
 	// - **true**: Handled.
 	//
-	// - **false**: Not handled.
+	// - **false**: Failed to handle.
 	//
 	// example:
 	//

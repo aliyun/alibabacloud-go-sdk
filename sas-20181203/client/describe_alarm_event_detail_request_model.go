@@ -40,7 +40,7 @@ type DescribeAlarmEventDetailRequest struct {
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language type of the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -53,6 +53,10 @@ type DescribeAlarmEventDetailRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource directory.
 	//
 	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//

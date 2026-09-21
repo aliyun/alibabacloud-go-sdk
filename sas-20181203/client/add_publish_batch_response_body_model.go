@@ -16,7 +16,7 @@ type iAddPublishBatchResponseBody interface {
 }
 
 type AddPublishBatchResponseBody struct {
-	// The ID of the release batch.
+	// The release batch ID.
 	//
 	// example:
 	//

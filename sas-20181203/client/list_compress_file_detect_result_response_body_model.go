@@ -244,19 +244,19 @@ type ListCompressFileDetectResultResponseBodyResultList struct {
 	//
 	// - **Downloader**: Downloader trojan.
 	//
-	// - **Virus**: File infector virus.
+	// - **Virus**: File-infecting virus.
 	//
 	// - **Miner**: Mining programs.
 	//
 	// - **Worm**: Worms.
 	//
-	// - **DDoS**: DDoS trojan.
+	// - **DDoS**: DDoS Trojan.
 	//
-	// - **Malware**: Malware.
+	// - **Malware**: Malicious program.
 	//
 	// - **Backdoor**: Reverse shell backdoor.
 	//
-	// - **RiskWare**: Riskware.
+	// - **RiskWare**: Risky software.
 	//
 	// - **Proxytool**: Proxy tool.
 	//
@@ -266,7 +266,7 @@ type ListCompressFileDetectResultResponseBodyResultList struct {
 	//
 	// - **Rootkit**: Rootkit.
 	//
-	// - **Exploit**: Vulnerability exploits program.
+	// - **Exploit**: Vulnerability exploits.
 	//
 	// > This parameter is invalid when Result is 0 or 3.
 	//

@@ -16,12 +16,19 @@ type iGetCheckScopeConfigRequest interface {
 }
 
 type GetCheckScopeConfigRequest struct {
-	// The ID of the configuration. This parameter is optional. If you do not specify this parameter, a default ID is generated.
+	// The ID of the configuration. This parameter is optional. If you do not specify this parameter, an ID is automatically generated.
 	//
 	// example:
 	//
 	// 435f626256ebf564cf5ba966a539****
-	ConfigId                   *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the member accounts in the resource directory.
+	//
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

@@ -82,19 +82,19 @@ type DescribeImageVulListRequest struct {
 	//
 	// cc20a1024011c44b6a8710d6f8b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// docker-law
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The ID of the container.
+	// The container ID.
 	//
 	// example:
 	//
 	// c08d5fc1a329a4b88950a253d082f****
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The page number of the page to return in the query results. Default value: **1**, which indicates the first page.
+	// The page number of the page to return in the query results. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeImageVulListRequest struct {
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// Specifies whether to group results by image asset before pagination. If set to true, one vulnerability record is returned for each asset, and TotalCount indicates the total number of assets. If set to false or not specified, results are paginated by vulnerability record. Asset grouping is not applied when MaxId is specified.
 	GroupByAsset *bool `json:"GroupByAsset,omitempty" xml:"GroupByAsset,omitempty"`
-	// The name of the container image.
+	// The container image name.
 	//
 	// example:
 	//
@@ -152,19 +152,19 @@ type DescribeImageVulListRequest struct {
 	//
 	// test-002
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The priority level for fixing the vulnerability. Valid values:
+	// The priority of vulnerability fixing. Valid values:
 	//
-	// - **asap**: High-priority vulnerability that must be fixed as soon as possible.
+	// - **asap**: high-priority vulnerability
 	//
-	// - **later**: Medium-priority vulnerability that can be fixed later.
+	// - **later**: medium-priority vulnerability
 	//
-	// - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
+	// - **nntf**: low-priority vulnerability
 	//
 	// example:
 	//
 	// asap
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**, which indicates 10 vulnerability entries per page.
+	// Settings for paged query. The number of vulnerabilities to display on each page during paging. Default value: **10**, which indicates that 10 vulnerabilities are displayed on each page.
 	//
 	// example:
 	//
@@ -212,9 +212,13 @@ type DescribeImageVulListRequest struct {
 	//
 	// cn-hangzhou
 	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	// The ID of the Alibaba Cloud account that is added as one of the member accounts in a resource folder.
 	//
-	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The vulnerability tag. Valid values:
 	//
@@ -244,7 +248,7 @@ type DescribeImageVulListRequest struct {
 	//
 	// oval
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The type of vulnerability to query. Set the value to **cve**, which indicates container image vulnerabilities.
+	// The type of the vulnerability to query. Set the value to **cve**, which indicates container image vulnerabilities.
 	//
 	// This parameter is required.
 	//
@@ -252,7 +256,7 @@ type DescribeImageVulListRequest struct {
 	//
 	// cve
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUIDs of asset instances. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the asset instances. Separate multiple UUIDs with commas (,).
 	//
 	// example:
 	//

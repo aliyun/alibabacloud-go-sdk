@@ -32,7 +32,7 @@ type DescribeChartDataRequest struct {
 	//
 	// example:
 	//
-	// CID_ASSET_RISK_TREND
+	// BIZ_STAT_QUERY_SECURITY_SCORE
 	CharId *string `json:"CharId,omitempty" xml:"CharId,omitempty"`
 	// The chart ID.
 	//
@@ -40,13 +40,13 @@ type DescribeChartDataRequest struct {
 	//
 	// example:
 	//
-	// CID_VUL_SUMMARY
+	// BIZ_STAT_QUERY_SECURITY_SCORE
 	ChartId *string `json:"ChartId,omitempty" xml:"ChartId,omitempty"`
-	// The language type for the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -59,7 +59,14 @@ type DescribeChartDataRequest struct {
 	// example:
 	//
 	// 721734
-	ReportId                   *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	//
+	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The end timestamp for statistics. Unit: milliseconds.
 	//

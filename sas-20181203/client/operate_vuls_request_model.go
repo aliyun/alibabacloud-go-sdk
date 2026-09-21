@@ -33,6 +33,10 @@ type OperateVulsRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource directory.
 	//
 	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of vulnerability to fix. Set the value to **cve**, which indicates a Linux software vulnerability.
 	//

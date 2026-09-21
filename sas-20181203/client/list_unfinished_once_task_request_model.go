@@ -16,11 +16,13 @@ type iListUnfinishedOnceTaskRequest interface {
 }
 
 type ListUnfinishedOnceTaskRequest struct {
-	// The target object value. Valid values:
+	// The target object value.
 	//
-	// - If the task type is **IMAGE_SCAN**, the target object value is the **Digest*	- of the image.
+	// - If TaskType is set to IMAGE_SCAN, you must provide the image digest.
 	//
-	// - If the task type is **ASSETS_COLLECTION**, the target object value is the **Uuid*	- of the server.
+	// - If TaskType is set to ASSETS_COLLECTION, you must provide the machine UUID.
+	//
+	// If this parameter is not provided in the preceding scenarios, the service returns HTTP 400 with error code -101.
 	//
 	// example:
 	//
@@ -30,7 +32,7 @@ type ListUnfinishedOnceTaskRequest struct {
 	//
 	// - **ASSETS_COLLECTION**: asset information collection task
 	//
-	// - **IMAGE_SCAN**: image scan task.
+	// - **IMAGE_SCAN**: image scan task
 	//
 	// This parameter is required.
 	//

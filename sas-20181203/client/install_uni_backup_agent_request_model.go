@@ -18,6 +18,10 @@ type InstallUniBackupAgentRequest struct {
 	//
 	// >You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
 	//
+	// Before calling this operation, call DescribeUniBackupPolicies to confirm that AgentStatus is not INSTALLING. If the status is INSTALLING, wait for the current installation to complete before calling this operation.
+	//
+	// Before obtaining a valid PolicyId, install the Security Center agent on the ECS instance, complete database discovery or manual registration, and then call CreateUniBackupPolicy to create a backup policy.
+	//
 	// This parameter is required.
 	//
 	// example:

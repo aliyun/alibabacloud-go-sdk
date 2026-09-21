@@ -16,13 +16,13 @@ type iSaveCustomizeReportConfigResponseBody interface {
 }
 
 type SaveCustomizeReportConfigResponseBody struct {
-	// The ID of the report.
+	// The report ID.
 	//
 	// example:
 	//
 	// 123
 	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//

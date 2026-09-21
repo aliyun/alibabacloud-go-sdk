@@ -16,9 +16,9 @@ type iGetFileProtectEventResponseBody interface {
 }
 
 type GetFileProtectEventResponseBody struct {
-	// The details of the returned data.
+	// The returned data details.
 	Data *GetFileProtectEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *GetFileProtectEventResponseBody) Validate() error {
 }
 
 type GetFileProtectEventResponseBodyData struct {
-	// The severity of alerts. Valid values:
+	// The alert notification level. Valid values:
 	//
-	// - 0: does not generate alerts
+	// - 0: No alert.
 	//
-	// - 1: sends notifications
+	// - 1: Reminder.
 	//
-	// - 2: suspicious
+	// - 2: Suspicious.
 	//
-	// - 3: high-risk
+	// - 3: High-risk.
 	//
 	// example:
 	//
@@ -82,37 +82,37 @@ type GetFileProtectEventResponseBodyData struct {
 	//
 	// ["touch","/usr/local/aaaa"]
 	CmdLine *string `json:"CmdLine,omitempty" xml:"CmdLine,omitempty"`
-	// The path to the file.
+	// The file path.
 	//
 	// example:
 	//
 	// /usr/local
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The permissions to run the process.
+	// The process permissions.
 	//
 	// example:
 	//
 	// rwxr-xr-x
 	FilePermission *string `json:"FilePermission,omitempty" xml:"FilePermission,omitempty"`
-	// The timestamp at which the event was first detected.
+	// The timestamp when the event first occurred.
 	//
 	// example:
 	//
 	// 1694576692000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// The time when the event was handled.
+	// The time when the event was handled. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1694576692000
 	HandleTime *int64 `json:"HandleTime,omitempty" xml:"HandleTime,omitempty"`
-	// The ID of the event.
+	// The unique ID.
 	//
 	// example:
 	//
 	// 55037
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
@@ -130,29 +130,29 @@ type GetFileProtectEventResponseBodyData struct {
 	//
 	// 10.42.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The time when the event last occurred.
+	// The timestamp when the event most recently occurred. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1694576692000
 	LatestTime *int64 `json:"LatestTime,omitempty" xml:"LatestTime,omitempty"`
-	// The operation that the process performed on the file.
+	// The operation performed by the process on the file.
 	//
 	// example:
 	//
 	// DELETE
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// - **windows**: Windows
+	// - **windows**: Windows.
 	//
-	// - **linux**: Linux
+	// - **linux**: Linux.
 	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The path to the process.
+	// The process path.
 	//
 	// example:
 	//
@@ -170,25 +170,27 @@ type GetFileProtectEventResponseBodyData struct {
 	//
 	// ["test"]
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// test-000
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The status of the event. Valid values:
+	// The event status. Valid values:
 	//
-	// - 0: not handled
+	// - 0: Unhandled.
 	//
-	// - 1: handled
+	// - 1: Manually handled.
 	//
-	// - 2: added to the whitelist
+	// - 2: Whitelisted.
+	//
+	// - 3: Ignored.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// User ID of the user who started the current process.
+	// The user ID that started the current process.
 	//
 	// example:
 	//
@@ -200,7 +202,7 @@ type GetFileProtectEventResponseBodyData struct {
 	//
 	// test
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The UUID of the asset.
+	// The UUID of the asset instance.
 	//
 	// example:
 	//

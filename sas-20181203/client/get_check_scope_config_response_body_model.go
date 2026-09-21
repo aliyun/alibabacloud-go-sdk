@@ -117,9 +117,9 @@ func (s *GetCheckScopeConfigResponseBody) Validate() error {
 }
 
 type GetCheckScopeConfigResponseBodyData struct {
-	// The automatic scan configuration as a JSON string. The following fields are included:
+	// The automatic scan configuration as a JSON string. The fields are described as follows:
 	//
-	// - **autoInclude**: specifies whether to enable automatic scanning. Valid values: **true**: enabled. **false**: disabled.
+	// - **autoInclude**: specifies whether to enable automatic scan. Valid values: **true**: enabled. **false**: disabled.
 	//
 	// - **autoRule**: the enablement configuration.
 	//
@@ -131,7 +131,7 @@ type GetCheckScopeConfigResponseBodyData struct {
 	//
 	// - **condition**: the rule condition. Valid values: **vendor**: vendor. **assetType**: level-1 asset type. **assetSubType**: level-2 asset type.
 	//
-	// > For more information, see the [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~) operation.
+	// > For specific meanings, refer to the [GetCloudAssetCriteria](~~GetCloudAssetCriteria~~) operation.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type GetCheckScopeConfigResponseBodyData struct {
 	AutoConfig *string `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty"`
 	// The automatic scan configuration type. Valid values:
 	//
-	// - **0**: automatic scanning is disabled
+	// - **0**: Automatic scan is disabled.
 	//
-	// - **1**: automatically scan newly added cloud assets
+	// - **1**: Automatically scan newly added cloud assets.
 	//
 	// example:
 	//
@@ -167,9 +167,9 @@ type GetCheckScopeConfigResponseBodyData struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The scan scope configuration type. Valid values:
 	//
-	// - **1**: scan by instance
+	// - **1**: scan by instance.
 	//
-	// - **3**: scan all
+	// - **3**: scan all.
 	//
 	// example:
 	//

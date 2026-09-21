@@ -62,7 +62,7 @@ type iDescribeImageGroupedVulListRequest interface {
 }
 
 type DescribeImageGroupedVulListRequest struct {
-	// Specifies whether to filter by agentless fix capability. true: queries only vulnerabilities that support agentless fix. false: queries vulnerabilities that are not marked as supporting agentless fix. If this parameter is not specified, no filtering is applied based on this condition.
+	// Specifies whether to filter by agentless fix capability. If set to true, only vulnerabilities that support agentless fix are returned. If set to false, only vulnerabilities that are not marked as supporting agentless fix are returned. If not specified, no filtering is applied based on this condition.
 	AgentlessCanFix *bool `json:"AgentlessCanFix,omitempty" xml:"AgentlessCanFix,omitempty"`
 	// The alias of the vulnerability.
 	//
@@ -114,7 +114,7 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// oval
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// Specifies whether to query vulnerabilities only for the latest image. If this parameter is not set, vulnerabilities for all images are queried. Valid values:
+	// Specifies whether to query vulnerabilities only for the latest image. If this parameter is not specified, vulnerabilities for all images are queried. Valid values:
 	//
 	// - **0**: No.
 	//
@@ -142,7 +142,7 @@ type DescribeImageGroupedVulListRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The priority level for fixing the vulnerability. Valid values:
 	//
-	// - **asap**: High-priority vulnerability that must be fixed as soon as possible.
+	// - **asap**: High-priority vulnerability that requires immediate fixing.
 	//
 	// - **later**: Medium-priority vulnerability that can be fixed later.
 	//
@@ -152,7 +152,7 @@ type DescribeImageGroupedVulListRequest struct {
 	//
 	// asap
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The number of image vulnerabilities to display on each page in a paging query. Default value: **20**, which indicates 20 image vulnerabilities per page.
+	// Settings for the number of image vulnerabilities to display on each page in a paging query. Default value: **20**, which indicates that 20 image vulnerabilities are displayed on each page.
 	//
 	// example:
 	//
@@ -197,6 +197,10 @@ type DescribeImageGroupedVulListRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The vulnerability tag. Valid values:
 	//

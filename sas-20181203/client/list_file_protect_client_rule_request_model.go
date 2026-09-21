@@ -32,7 +32,7 @@ type ListFileProtectClientRuleRequest struct {
 	//
 	// - 2: suspicious
 	//
-	// - 3: high-risk.
+	// - 3: high-risk
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListFileProtectClientRuleRequest struct {
 	//
 	// - **windows**: Windows
 	//
-	// - **linux**: Linux.
+	// - **linux**: Linux
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type ListFileProtectClientRuleRequest struct {
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The rule action. Valid values:
 	//
-	// - **block**: blocks the request.
+	// - **block**: Block.
 	//
-	// - **monitor**: monitors the request.
+	// - **monitor**: Monitor.
 	//
-	// - **pass**: allows the request.
+	// - **pass**: Allow.
 	//
 	// example:
 	//

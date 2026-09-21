@@ -26,9 +26,9 @@ type AddPublishBatchRequest struct {
 	//
 	// example:
 	//
-	// 批次1
+	// Batch1
 	BatchName *string `json:"BatchName,omitempty" xml:"BatchName,omitempty"`
-	// The interval between two release batches.
+	// The interval between release batches.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type AddPublishBatchRequest struct {
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The dimension based on which the asset is selected. Valid values:
+	// The dimension for asset selection. Valid values:
 	//
-	// 	- **0**: selects the asset by instance.
+	// - **0**: server instance
 	//
-	// 	- **1**: selects the asset by machine group.
+	// - **1**: server group
 	//
-	// 	- **2**: selects the asset by the ID of the instance that is deployed in the virtual private cloud (VPC).
+	// - **2**: VPC-connected instance ID
 	//
 	// example:
 	//
 	// 0
 	OperationBase *int32 `json:"OperationBase,omitempty" xml:"OperationBase,omitempty"`
-	// The version to which you want to upgrade the agent.
+	// The target version to which you want to upgrade.
 	//
 	// This parameter is required.
 	//

@@ -24,9 +24,13 @@ type OperationCancelIgnoreSuspEventRequest struct {
 	//
 	// remark text
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The Alibaba Cloud account ID of the member account in the resource directory.
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The list of alert IDs.
 	//

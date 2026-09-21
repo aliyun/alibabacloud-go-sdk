@@ -18,7 +18,7 @@ type iStopHoneypotRequest interface {
 type StopHoneypotRequest struct {
 	// The honeypot ID.
 	//
-	// >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain IDs of honeypots.
+	// > You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type StopHoneypotRequest struct {
 	//
 	// 444c699ac151b183b04b562b1dc02639d504c9d097246a322de75c963fe*****
 	HoneypotId *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

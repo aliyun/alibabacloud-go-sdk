@@ -28,9 +28,9 @@ type iModifyOperateVulRequest interface {
 }
 
 type ModifyOperateVulRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The source identifier of the request. Set the value to **sas**.
 	//
@@ -46,15 +46,15 @@ type ModifyOperateVulRequest struct {
 	//
 	// - **tag**: The tag of the vulnerability. Valid values:
 	//
-	//     - **oval**: Linux software vulnerability.
+	//     - **oval**: Linux software vulnerability
 	//
-	//     - **system**: Windows system vulnerability.
+	//     - **system**: Windows system vulnerability
 	//
-	//     - **cms**: Web-CMS vulnerability.
+	//     - **cms**: Web-CMS vulnerability
 	//
 	// > For other vulnerability types, call the [DescribeVulList](~~DescribeVulList~~) operation to obtain the vulnerability information.
 	//
-	// - **isFront**: Specifies whether the Windows patch is a prerequisite patch. This field is required only when handling Windows system vulnerabilities and can be ignored for other vulnerability types. Valid values:
+	// - **isFront**: Specifies whether the Windows patch is a prerequisite patch. This parameter is required only when handling Windows system vulnerabilities and can be ignored for other vulnerability types. Valid values:
 	//
 	//     - **0**: No.
 	//
@@ -88,7 +88,7 @@ type ModifyOperateVulRequest struct {
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 	// The reason for ignoring the vulnerability.
 	//
-	// > This parameter is required only when the operation type is **ignore*	- (OperateType is set to **vul_ignore**).
+	// > This parameter is required only when the operation type is **ignore*	- (that is, **OperateType*	- is set to **vul_ignore**).
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ type ModifyOperateVulRequest struct {
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the vulnerability to handle. Valid values:
 	//
-	// - **cve**: Linux software vulnerability.
+	// - **cve**: Linux software vulnerability
 	//
-	// - **sys**: Windows system vulnerability.
+	// - **sys**: Windows system vulnerability
 	//
-	// - **cms**: Web-CMS vulnerability.
+	// - **cms**: Web-CMS vulnerability
 	//
-	// - **emg**: emergency vulnerability.
+	// - **emg**: emergency vulnerability
 	//
-	// - **app**: application vulnerability.
+	// - **app**: application vulnerability
 	//
-	// - **sca**: software constituency parsing vulnerability.
+	// - **sca**: software constituency parsing vulnerability
 	//
-	// > Emergency vulnerabilities (emg), application vulnerabilities (app), and software constituency parsing vulnerabilities (sca) do not support the execute vulnerability fix operation.
+	// > Emergency vulnerabilities (emg), application vulnerabilities (app), and software constituency parsing vulnerabilities (sca) do not support the vulnerability fix operation. You cannot execute the fix operation for these types.
 	//
 	// This parameter is required.
 	//

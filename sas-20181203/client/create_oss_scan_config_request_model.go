@@ -72,13 +72,13 @@ type CreateOssScanConfigRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
+	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression layers when multiple levels of nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
+	// The maximum number of decompression layers when nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type CreateOssScanConfigRequest struct {
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
 	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual request. false: performs the actual request. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the policy. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: Enable.
 	//
-	// - **0**: Disabled.
+	// - **0**: Disable.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type CreateOssScanConfigRequest struct {
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
 	// The list of file suffixes to scan.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
+	// Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type CreateOssScanConfigRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to enable real-time incremental detection. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
+	// Specifies whether to enable real-time incremental scanning. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
 	//
 	// example:
 	//
 	// true
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
-	// The scan schedule. The number represents the day of the week.
+	// The scan schedule. The number indicates the day of the week.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
 	// The business source. Valid values:
 	//

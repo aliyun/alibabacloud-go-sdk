@@ -24,7 +24,7 @@ type AddCheckInstanceResultWhiteListResponseBody struct {
 	//
 	// xxx
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The unique identifier that Alibaba Cloud generated for the request.
+	// The request ID.
 	//
 	// example:
 	//

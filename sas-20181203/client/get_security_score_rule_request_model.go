@@ -37,6 +37,10 @@ type GetSecurityScoreRuleRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iAddCloudVendorAccountAKResponseBody interface {
 }
 
 type AddCloudVendorAccountAKResponseBody struct {
-	// The information about the added AK.
+	// The AK information that is added.
 	Data *AddCloudVendorAccountAKResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -104,7 +104,7 @@ type AddCloudVendorAccountAKResponseBodyData struct {
 	//
 	// - **0**: In use.
 	//
-	// - **1**: Usage exception.
+	// - **1**: Abnormal.
 	//
 	// - **2**: Validity verification in progress.
 	//
@@ -306,7 +306,7 @@ type AddCloudVendorAccountAKResponseBodyDataAuthModules struct {
 	//
 	// - **0**: In use.
 	//
-	// - **1**: Usage exception.
+	// - **1**: Abnormal.
 	//
 	// - **2**: Validity verification in progress.
 	//
@@ -316,7 +316,7 @@ type AddCloudVendorAccountAKResponseBodyDataAuthModules struct {
 	//
 	// 0
 	ModuleServiceStatus *int32 `json:"ModuleServiceStatus,omitempty" xml:"ModuleServiceStatus,omitempty"`
-	// The description of permissions associated with the module.
+	// The associate permission description for the module.
 	//
 	// example:
 	//

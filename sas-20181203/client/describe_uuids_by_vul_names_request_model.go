@@ -44,7 +44,7 @@ type iDescribeUuidsByVulNamesRequest interface {
 }
 
 type DescribeUuidsByVulNamesRequest struct {
-	// Specifies whether the vulnerability is handled. Valid values:
+	// Specifies whether the vulnerability has been handled. Valid values:
 	//
 	// - **y**: Handled.
 	//
@@ -82,7 +82,7 @@ type DescribeUuidsByVulNamesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The vulnerability level. Separate multiple levels with commas (,). Valid values:
+	// The vulnerability severity level. Separate multiple levels with commas (,). Valid values:
 	//
 	// - **high**: High.
 	//
@@ -94,7 +94,7 @@ type DescribeUuidsByVulNamesRequest struct {
 	//
 	// high,low
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The priority level of the vulnerability fix. Separate multiple levels with commas (,). Valid values:
+	// The priority level of vulnerability fixing to query. Separate multiple levels with commas (,). Valid values:
 	//
 	// - **asap**: High.
 	//
@@ -115,6 +115,10 @@ type DescribeUuidsByVulNamesRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource directory.
 	//
 	// > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The tag for querying vulnerabilities.
 	//

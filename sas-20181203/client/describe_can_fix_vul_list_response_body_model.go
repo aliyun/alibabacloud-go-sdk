@@ -22,7 +22,7 @@ type DescribeCanFixVulListResponseBody struct {
 	//
 	// 1408FDB3-46F4-513C-9918-FE7D356DF048
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The vulnerability information returned.
+	// The vulnerability information returned by the query.
 	VulRecords []*DescribeCanFixVulListResponseBodyVulRecords `json:"VulRecords,omitempty" xml:"VulRecords,omitempty" type:"Repeated"`
 }
 
@@ -74,19 +74,19 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// Indicates whether the vulnerability can be fixed in the console. Valid values:
 	//
-	// - **yes**: Fixable.
+	// - **yes**: The vulnerability can be fixed.
 	//
-	// - **no**: Not fixable.
+	// - **no**: The vulnerability cannot be fixed.
 	//
 	// example:
 	//
 	// yes
 	CanFix *string `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
-	// Specifies whether the software package that causes the vulnerability can be upgraded through Security Center. Valid values:
+	// Indicates whether the software package that causes the vulnerability can be upgraded by using Security Center. Valid values:
 	//
-	// - **true**: Supported.
+	// - **true**: The upgrade is supported.
 	//
-	// - **false**: Not supported.
+	// - **false**: The upgrade is not supported.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The extended content of the vulnerability information.
 	ExtendContentJson *DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
-	// The timestamp when the vulnerability was first detected, in milliseconds.
+	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// 172.19.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp when the vulnerability was last detected, in milliseconds.
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// agentless
 	MaliciousSource *string `json:"MaliciousSource,omitempty" xml:"MaliciousSource,omitempty"`
-	// The timestamp when the vulnerability status was modified, in milliseconds.
+	// The timestamp when the vulnerability status was modified. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The priority level of the vulnerability fix. Valid values:
 	//
-	// - **asap**: High.
+	// - **asap**: high
 	//
-	// - **later**: Medium.
+	// - **later**: medium
 	//
-	// - **nntf**: Low.
+	// - **nntf**: low
 	//
-	// > Fix vulnerabilities with the **High*	- priority level as soon as possible.
+	// > Fix vulnerabilities with the **high*	- priority level as soon as possible.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// 3rdparty
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The timestamp of the scan, in milliseconds.
+	// The timestamp of the scan. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -284,7 +284,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// - **cve**: system vulnerability
 	//
-	// - **sca**: application vulnerability.
+	// - **sca**: application vulnerability
 	//
 	// example:
 	//
@@ -690,7 +690,7 @@ type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList s
 	//
 	// b1f5b9420803ad0657cf21566e3e20acc08581e7f22991249ef3aa80b8b1****
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The detailed information about the vulnerability match.
+	// The details of the vulnerability match.
 	//
 	// example:
 	//
@@ -710,7 +710,7 @@ type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList s
 	//
 	// /usr/lib64/python2.7/site-packages
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The command used to fix the vulnerability.
+	// The command to fix the vulnerability.
 	//
 	// example:
 	//

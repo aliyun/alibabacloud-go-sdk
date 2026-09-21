@@ -34,9 +34,13 @@ type CreateSuspEventNoteRequest struct {
 	//
 	// Ignore
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the member accounts in the resource folder.
+	// The Alibaba Cloud account ID of the member account in the resource directory.
 	//
-	// >Invoke [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+	// > Invoke [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 

@@ -30,7 +30,7 @@ type DescribeGraph4InvestigationOnlineResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response data.
 	Data *DescribeGraph4InvestigationOnlineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned for the request.
+	// The returned message.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DescribeGraph4InvestigationOnlineResponseBody struct {
 	//
 	// C699E4E4-F2F4-58FC-A949-457FFE59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The API call was successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The API call failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iDescribePropertyCronDetailRequest interface {
 }
 
 type DescribePropertyCronDetailRequest struct {
-	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+	// The page number of the results to return. Default value: **1**, which indicates that the results start from page 1.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribePropertyCronDetailRequest struct {
 	//
 	// 1
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The pagination token that marks the position from which you want to start reading. Leave this parameter empty to read from the beginning.
+	// The token that marks the current position from which to start reading. Leave this parameter empty to start reading from the beginning.
 	//
 	// > You do not need to specify this parameter for the first call. The response includes the NextToken value for the second call. Each subsequent response includes the NextToken value for the next call.
 	//
@@ -52,13 +52,13 @@ type DescribePropertyCronDetailRequest struct {
 	//
 	// 1426C575705AE8545E8360A6EFA3B***
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Settings the number of scheduled task asset fingerprint information entries displayed per page in a paging query. Default value: **10**, which indicates that 10 entries of scheduled task asset fingerprint information are displayed per page.
+	// Settings the number of entries per page in a paging query. Default value: **10**, which indicates that 10 fingerprint entries of scheduled task assets are displayed per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name or IP address of the server that you want to query.
+	// The name or IP address of the server to query.
 	//
 	// example:
 	//
@@ -67,8 +67,12 @@ type DescribePropertyCronDetailRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The task path that you want to query.
+	// The path of the scheduled task to query.
 	//
 	// example:
 	//
@@ -84,13 +88,13 @@ type DescribePropertyCronDetailRequest struct {
 	//
 	// true
 	UseNextToken *bool `json:"UseNextToken,omitempty" xml:"UseNextToken,omitempty"`
-	// The account name of the scheduled task that you want to query.
+	// The account name of the scheduled task to query.
 	//
 	// example:
 	//
 	// root
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The UUID of the server that you want to query.
+	// The UUID of the server to query.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iEnableCustomInstanceBlockRecordRequest interface {
 }
 
 type EnableCustomInstanceBlockRecordRequest struct {
-  // The IP address that you want to block.
+  // The IP address for brute-force attacks prevention that you want to enable on the server.
   // 
   // This parameter is required.
   // 
@@ -28,11 +28,13 @@ type EnableCustomInstanceBlockRecordRequest struct {
   // 
   // 192.168.xx.xx
   BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-  // The traffic direction from the IP address that you want to block. Valid value:
+  // The direction in which the brute-force attacks blocking policy blocks the IP address on the server.
   // 
-  // 	- **in**
+  // Valid values:
   // 
-  // 	- **out**
+  // - **in**: inbound
+  // 
+  // - **out**: outbound
   // 
   // example:
   // 

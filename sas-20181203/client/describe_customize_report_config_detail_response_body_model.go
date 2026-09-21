@@ -58,7 +58,7 @@ type iDescribeCustomizeReportConfigDetailResponseBody interface {
 }
 
 type DescribeCustomizeReportConfigDetailResponseBody struct {
-	// The IDs of report chart configurations. Multiple IDs are separated by commas (,).
+	// The IDs of the report chart configurations. Multiple IDs are separated by commas (,).
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeCustomizeReportConfigDetailResponseBody struct {
 	//
 	// 1
 	IsDefault *int32 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether newly added accounts are included by default. Valid values:
+	// Indicates whether newly added accounts are connected by default. Valid values:
 	//
 	// - **true**: Yes.
 	//

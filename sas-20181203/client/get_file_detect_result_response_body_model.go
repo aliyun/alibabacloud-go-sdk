@@ -66,7 +66,7 @@ func (s *GetFileDetectResultResponseBody) Validate() error {
 }
 
 type GetFileDetectResultResponseBodyResultList struct {
-	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of failure.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type GetFileDetectResultResponseBodyResultList struct {
 	//
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// The detailed information of the error code.
+	// The detailed information about the error code.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type GetFileDetectResultResponseBodyResultList struct {
 	//
 	// - **1**: Suspicious file.
 	//
-	// - **3**: Detection in progress. Wait for the result.
+	// - **3**: Detection in progress. Wait for the detection to complete.
 	//
 	// example:
 	//
@@ -146,15 +146,17 @@ type GetFileDetectResultResponseBodyResultList struct {
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The file detection score. The mapping between score ranges and risk levels is as follows:
 	//
-	// - 0-60: Safe.
+	// - 0–60: Safe.
 	//
-	// - 61-70: Risky.
+	// - 61–70: Risky.
 	//
-	// - 71-80: Suspicious.
+	// - 71–80: Suspicious.
 	//
-	// - 81-100: Malicious.
+	// - 81–100: Malicious.
 	//
 	// 	Notice: A higher score indicates a more suspicious file.
+	//
+	// This field is returned only when Result is 1 (suspicious file). This field is not returned when Result is 0 or 3.
 	//
 	// example:
 	//
@@ -162,49 +164,51 @@ type GetFileDetectResultResponseBodyResultList struct {
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The virus type. Valid values:
 	//
-	// - **Trojan**: trojan
+	// - **Trojan**: Trojan.
 	//
-	// - **WebShell**: web shell
+	// - **WebShell**: Web shell.
 	//
-	// - **Backdoor**: backdoor
+	// - **Backdoor**: Backdoor.
 	//
-	// - **RansomWare**: ransomware
+	// - **RansomWare**: Ransomware.
 	//
-	// - **Scanner**: scanner
+	// - **Scanner**: Scanner.
 	//
-	// - **Stealer**: credential stealer
+	// - **Stealer**: Credential stealer.
 	//
-	// - **Malbaseware**: contaminated base software
+	// - **Malbaseware**: Contaminated base software.
 	//
-	// - **Hacktool**: hacking tool
+	// - **Hacktool**: Hacking tool.
 	//
-	// - **Engtest**: DPI engine test program
+	// - **Engtest**: DPI engine test program.
 	//
-	// - **Downloader**: downloader trojan
+	// - **Downloader**: Downloader Trojan.
 	//
-	// - **Virus**: file infector virus
+	// - **Virus**: File infector virus.
 	//
-	// - **Miner**: mining programs
+	// - **Miner**: Mining programs.
 	//
-	// - **Worm**: worms
+	// - **Worm**: Worms.
 	//
-	// - **DDoS**: DDoS Trojan
+	// - **DDoS**: DDoS Trojan.
 	//
-	// - **Malware**: malware
+	// - **Malware**: Malware.
 	//
-	// - **RiskWare**: riskware
+	// - **RiskWare**: Riskware.
 	//
-	// - **Proxytool**: proxy tool
+	// - **Proxytool**: Proxy tool.
 	//
-	// - **Suspicious**: suspicious program
+	// - **Suspicious**: Suspicious program.
 	//
-	// - **MalScript**: malicious script
+	// - **MalScript**: Malicious script.
 	//
-	// - **Rootkit**: rootkit
+	// - **Rootkit**: Rootkit.
 	//
-	// - **Exploit**: vulnerability exploits
+	// - **Exploit**: Vulnerability exploits.
 	//
 	// > This parameter is not supported when Result is 0 or 3.
+	//
+	// This field is returned only when Result is 1 (suspicious file). This field is not returned when Result is 0 or 3.
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iDescribeImageVulListResponseBody interface {
 }
 
 type DescribeImageVulListResponseBody struct {
-	// The page number of the current page in a paging query.
+	// The page number of the current page when paging is used.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of vulnerabilities displayed per page in a paging query. Default value: **10**, which indicates that 10 vulnerabilities are displayed per page.
+	// The number of vulnerabilities displayed per page when paging is used. Default value: **10**, which indicates that 10 vulnerabilities are displayed per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	//
 	// CVE-2018-25010:libwebp up to 1.0.0 ApplyFilter out-of-bounds read
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// Indicates whether the vulnerability can be fixed in the console. Valid values:
+	// Indicates whether the vulnerability can be fixed from the console. Valid values:
 	//
 	// - **yes**: Can be fixed.
 	//
@@ -135,7 +135,7 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	//
 	// yes
 	CanFix *string `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
-	// Indicates whether the software package that caused the vulnerability can be upgraded through Security Center. Valid values:
+	// Indicates whether the software package that causes the vulnerability can be upgraded through Security Center. Valid values:
 	//
 	// - **true**: Upgrade is supported.
 	//
@@ -151,13 +151,13 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	//
 	// c08d5fc1a329a4b88950a253d082f1****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// docker-law
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The ID of the container.
+	// The container ID.
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	//
 	// test-002
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The priority level for fixing the vulnerability. Valid values:
+	// The priority of vulnerability fixing. Valid values:
 	//
-	// - **asap**: High-priority vulnerability that must be fixed as soon as possible.
+	// - **asap**: high-priority vulnerability
 	//
-	// - **later**: Medium-priority vulnerability that can be fixed later.
+	// - **later**: medium-priority vulnerability
 	//
-	// - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
+	// - **nntf**: low-priority vulnerability
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type DescribeImageVulListResponseBodyVulRecords struct {
 	//
 	// 782661
 	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	// The details of the related vulnerability.
+	// The details of the associated vulnerability.
 	//
 	// example:
 	//
@@ -692,7 +692,7 @@ type DescribeImageVulListResponseBodyVulRecordsExtendContentJson struct {
 	//
 	// 10.9
 	OsRelease *string `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
-	// The list of software packages that caused the vulnerability.
+	// The list of software packages that cause the vulnerability.
 	RpmEntityList []*DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
 }
 

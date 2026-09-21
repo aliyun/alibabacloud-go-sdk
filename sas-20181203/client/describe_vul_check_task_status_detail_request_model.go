@@ -23,12 +23,18 @@ type DescribeVulCheckTaskStatusDetailRequest struct {
 	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The list of task IDs.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 	// The list of vulnerability types for the one-click scan.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 	// The UUID of the server to query.
+	//
+	// This parameter is required. If this parameter is not specified, the API returns HTTP 503 with the error code ServiceUnavailable.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iModifyStrategyResponseBody interface {
 }
 
 type ModifyStrategyResponseBody struct {
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 8EFA2BD9-00CD-5D69-B6B0-4EE83EAF072E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result returned.
+	// The response result.
 	Result *ModifyStrategyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *ModifyStrategyResponseBody) Validate() error {
 }
 
 type ModifyStrategyResponseBodyResult struct {
-	// The ID of the baseline check policy.
+	// The policy ID.
 	//
 	// example:
 	//

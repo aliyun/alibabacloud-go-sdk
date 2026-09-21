@@ -44,7 +44,7 @@ type RefreshAssetsRequest struct {
 	CloudAssetSubType *int32 `json:"CloudAssetSubType,omitempty" xml:"CloudAssetSubType,omitempty"`
 	// The type of cloud product. Valid values:
 	//
-	// - **0**: server
+	// - **0**: cloud server
 	//
 	// - **1**: load balancing
 	//
@@ -72,7 +72,7 @@ type RefreshAssetsRequest struct {
 	//
 	// - **16**: Anti-DDoS
 	//
-	// - **17**: Web Application Firewall
+	// - **17**: Web application firewall
 	//
 	// - **18**: OSS
 	//
@@ -80,9 +80,9 @@ type RefreshAssetsRequest struct {
 	//
 	// - **20**: ApsaraDB RDS for PostgreSQL database
 	//
-	// - **21**: Microservices Engine
+	// - **21**: microservices engine
 	//
-	// - **22**: File Storage NAS
+	// - **22**: file storage NAS
 	//
 	// - **23**: Data Security Center
 	//
@@ -95,18 +95,22 @@ type RefreshAssetsRequest struct {
 	// The ID of the Alibaba Cloud account of the member accounts in the resource directory.
 	//
 	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
+	// example:
+	//
+	// 127608589417****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The server vendor. Valid values:
 	//
 	// - **0**: Alibaba Cloud asset
 	//
-	// - **1**: asset outside the cloud
+	// - **1**: Non-cloud asset
 	//
 	// - **2**: IDC asset
 	//
-	// - **3**, **4**, **5**, **7**: third-party cloud asset
+	// - **3**, **4**, **5**, **7**: Third-party cloud asset
 	//
-	// - **8**: lightweight asset
+	// - **8**: Lightweight asset
 	//
 	// example:
 	//

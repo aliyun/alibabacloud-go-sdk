@@ -18,11 +18,11 @@ type iDescribeMonitorAccountsResponseBody interface {
 }
 
 type DescribeMonitorAccountsResponseBody struct {
-	// List of member account information.
+	// The list of member account information.
 	AccountIdInfos []*DescribeMonitorAccountsResponseBodyAccountIdInfos `json:"AccountIdInfos,omitempty" xml:"AccountIdInfos,omitempty" type:"Repeated"`
-	// The IDs of the members.
+	// The list of member account IDs.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -85,39 +85,39 @@ type DescribeMonitorAccountsResponseBodyAccountIdInfos struct {
 	//
 	// 119593010538****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The time when it was added to the control list, in timestamp format with second precision.
+	// The time when the account was added to the management list. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1760520684000
 	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
-	// The account ID of the operator.
+	// The Alibaba Cloud account ID of the administrator.
 	//
 	// example:
 	//
 	// 106635707417****
 	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
-	// Basic service switch. Values:
+	// The basic service switch. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: off
 	//
-	// - **1**: On
+	// - **1**: on
 	//
 	// example:
 	//
 	// 1
 	PostBasicService *int32 `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
-	// The purchased version of Cloud Security Center. Values:
+	// The purchased edition of Security Center. Valid values:
 	//
 	// - **0*	- or **1**: Free Edition
 	//
 	// - **2*	- or **3**: Enterprise Edition
 	//
-	//  - **5**: Advanced Edition
+	// - **5**: Advanced Edition
 	//
-	// - **6**: Anti-Virus Edition
+	// - **6**: Anti-virus Edition
 	//
-	// - **7**: Flagship Edition
+	// - **7**: Ultimate Edition
 	//
 	// example:
 	//

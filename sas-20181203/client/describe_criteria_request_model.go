@@ -20,26 +20,33 @@ type iDescribeCriteriaRequest interface {
 }
 
 type DescribeCriteriaRequest struct {
-	// The type of the asset. Valid values:
+	// The Asset Type to query. Valid values:
 	//
-	// 	- Set the value to **ecs**, which specifies to query all Elastic Compute Service (ECS) instances.
+	// - **ecs**: queries all ECS servers.
 	//
 	// example:
 	//
 	// ecs
-	MachineTypes               *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
-	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Specifies whether the keyword that you specify for fuzzy search can be automatically matched. Default value: **false**. Valid values:
+	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
+	// The ID of the Alibaba Cloud account of the member accounts in the resource folder.
 	//
-	// 	- **true**
+	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
-	// 	- **false**
+	// example:
+	//
+	// 127608589417****
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// Specifies whether the fuzzy query field supports automatic matching. Default value: **false**. Valid values:
+	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	SupportAutoTag *bool `json:"SupportAutoTag,omitempty" xml:"SupportAutoTag,omitempty"`
-	// The keyword that you specify for fuzzy search when you query the asset.
+	// The fuzzy match value entered when querying assets.
 	//
 	// example:
 	//

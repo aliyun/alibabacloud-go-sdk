@@ -18,7 +18,7 @@ type iGetFileDetectResultRequest interface {
 }
 
 type GetFileDetectResultRequest struct {
-	// The list of file identifiers. A maximum of 100 elements can be specified.
+	// The list of file identifiers. A maximum of 200 elements can be specified.
 	//
 	// This parameter is required.
 	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`

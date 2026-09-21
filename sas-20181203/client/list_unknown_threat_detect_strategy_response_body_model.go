@@ -208,19 +208,19 @@ func (s *ListUnknownThreatDetectStrategyResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectStrategyResponseBodyPageInfo struct {
-	// The number of entries displayed on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page in a paging query.
+	// The page number of the current page in a paged query. This is used for paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries displayed on each page in a paging query.
+	// The maximum number of entries per page in a paged query. This is used for paging.
 	//
 	// example:
 	//

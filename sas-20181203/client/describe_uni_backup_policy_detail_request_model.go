@@ -16,7 +16,9 @@ type iDescribeUniBackupPolicyDetailRequest interface {
 type DescribeUniBackupPolicyDetailRequest struct {
 	// The ID of the anti-ransomware backup policy for databases.
 	//
-	// >You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
+	// >Call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
+	//
+	// If DescribeUniBackupPolicies returns an empty list, activate the anti-ransomware feature of Security Center first, make sure that the Security Center agent is installed on the ECS instance and the database has been discovered, and then call CreateUniBackupPolicy to create a backup policy.
 	//
 	// This parameter is required.
 	//

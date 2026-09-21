@@ -28,7 +28,7 @@ type ListCompressFileDetectResultRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The unique identifier of the file. This parameter is required in practice. If this parameter is not specified, the API returns ServerError(400). The value must be the MD5 or SHA-256 hash of the file.
+	// The unique identifier of the file. This parameter is required in practice. If this parameter is not specified, the API returns ServerError (500). The value must be the MD5 or SHA-256 hash of the file.
 	//
 	// example:
 	//

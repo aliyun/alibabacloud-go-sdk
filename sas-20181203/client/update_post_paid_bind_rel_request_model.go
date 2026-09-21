@@ -36,7 +36,7 @@ type UpdatePostPaidBindRelRequest struct {
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// The edition to automatically bind when new assets are added. Valid values:
+	// The edition that is automatically bound when new assets are added. Valid values:
 	//
 	// - **1**: Free Edition
 	//
@@ -54,11 +54,11 @@ type UpdatePostPaidBindRelRequest struct {
 	AutoBindVersion *int32 `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
 	// The binding action parameter.
 	BindAction []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 是否只预检此次请求。true：仅检查请求，不执行实际操作；false：正常执行请求。默认值为 false。
+	// Specifies whether to perform only a dry run of the request. Valid values: true: performs only a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The abbreviated name of the cloud service. Valid values:
+	// The abbreviation of the cloud service. Valid values:
 	//
 	// - **sas**: Security Center
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
