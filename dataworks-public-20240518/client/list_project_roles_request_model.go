@@ -24,25 +24,25 @@ type iListProjectRolesRequest interface {
 }
 
 type ListProjectRolesRequest struct {
-	// An array of workspace role codes.
+	// The list of workspace role codes.
 	Codes []*string `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
-	// An array of workspace role names.
+	// The list of workspace role names.
 	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
-	// The page number to return.
+	// The page number. Used for paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can find the ID on the Workspace Management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
 	//
-	// This parameter specifies the DataWorks workspace for which you want to list roles.
+	// This parameter specifies the DataWorks workspace for this API invoke operation.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type ListProjectRolesRequest struct {
 	//
 	// 21229
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the workspace role.
+	// The type of the workspace role. Valid values:
 	//
-	// - `UserCustom`: Custom Role
+	// - UserCustom: user-defined role.
 	//
-	// - `System`: System Role
+	// - System: system role.
 	//
 	// example:
 	//

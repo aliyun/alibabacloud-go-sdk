@@ -18,7 +18,7 @@ type iListProjectRolesResponseBody interface {
 type ListProjectRolesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListProjectRolesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	// The request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListProjectRolesResponseBody) Validate() error {
 }
 
 type ListProjectRolesResponseBodyPagingInfo struct {
-	// The returned page number.
+	// The page number. Used for paging.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type ListProjectRolesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of workspace roles.
+	// The list of workspace roles.
 	ProjectRoles []*ListProjectRolesResponseBodyPagingInfoProjectRoles `json:"ProjectRoles,omitempty" xml:"ProjectRoles,omitempty" type:"Repeated"`
-	// The total number of matching entries.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type ListProjectRolesResponseBodyPagingInfoProjectRoles struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the DataWorks workspace.
 	//
-	// Note: For system-defined roles, this parameter returns -1.
+	// Note: For default system workspace roles, the ProjectId returns a fixed value of -1.
 	//
 	// example:
 	//

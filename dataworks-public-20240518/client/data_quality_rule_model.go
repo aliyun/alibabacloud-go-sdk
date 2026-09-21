@@ -36,9 +36,9 @@ type iDataQualityRule interface {
 }
 
 type DataQualityRule struct {
-	// The check settings for sample data.
+	// The sample verification settings.
 	CheckingConfig *DataQualityRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The description of the rule. The description can be up to 500 characters in length.
+	// The rule description. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DataQualityRule struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The operations that you can perform after the rule-based check fails.
+	// The quality rule check issue handlers.
 	ErrorHandlers []*DataQualityRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
@@ -58,11 +58,11 @@ type DataQualityRule struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule name. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+	// The rule name. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
 	//
 	// example:
 	//
-	// 表不能为空
+	// Table cannot be empty
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The DataWorks workspace ID.
 	//
@@ -70,25 +70,25 @@ type DataQualityRule struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The settings for sampling.
+	// The settings required for sample collection.
 	SamplingConfig *DataQualityRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The strength of the rule. Valid values:
+	// The severity level of the rule for business, which corresponds to strong and weak rules on the page. Valid values:
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- High
+	// - High
 	//
 	// example:
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The monitored object of the rule.
+	// The object monitored by the rule.
 	Target *DataQualityRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The template used by the rule.
+	// The rule template referenced when creating the rule.
 	//
 	// example:
 	//
-	// system::user_defined
+	// SYSTEM:user_defined_sql
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// The DataWorks tenant ID.
 	//
@@ -243,7 +243,7 @@ func (s *DataQualityRule) Validate() error {
 }
 
 type DataQualityRuleCheckingConfig struct {
-	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to indicate the query method of referenced samples.
+	// Some threshold types require querying reference samples and then aggregating the values of these samples to derive the comparison threshold. This parameter uses an expression to specify how to query the reference samples.
 	//
 	// example:
 	//
@@ -253,17 +253,17 @@ type DataQualityRuleCheckingConfig struct {
 	Thresholds *DataQualityRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
 	// The threshold calculation method. Valid values:
 	//
-	// 	- Fixed
+	// - Fixed
 	//
-	// 	- Fluctation
+	// - Fluctation
 	//
-	// 	- FluctationDiscreate
+	// - FluctationDiscreate
 	//
-	// 	- Auto
+	// - Auto
 	//
-	// 	- Average
+	// - Average
 	//
-	// 	- Variance
+	// - Variance
 	//
 	// example:
 	//
@@ -316,11 +316,11 @@ func (s *DataQualityRuleCheckingConfig) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholds struct {
-	// The threshold settings for critical alerts.
+	// The critical warning threshold settings.
 	Critical *DataQualityRuleCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
-	// The expected threshold setting.
+	// The expected threshold settings.
 	Expected *DataQualityRuleCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
-	// The threshold settings for normal alerts.
+	// The warning threshold settings.
 	Warned *DataQualityRuleCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
 }
 
@@ -379,23 +379,25 @@ func (s *DataQualityRuleCheckingConfigThresholds) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsCritical struct {
+	// The verification expression.
+	//
 	// example:
 	//
-	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
+	// Used for fluctuation-type rules. The threshold is expressed through an expression. For example, fluctuation increase greater than 0.01: $checkValue > 0.01. Fluctuation decrease greater than 0.01: $checkValue < -0.01. Absolute value of fluctuation rate: abs($checkValue) > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
-	// 	- />
+	// - />
 	//
-	// 	- />=
+	// - />=
 	//
-	// 	- <
+	// - <
 	//
-	// 	- <=
+	// - <=
 	//
-	// 	- !=
+	// - !=
 	//
-	// 	- \\=
+	// - =
 	//
 	// example:
 	//
@@ -449,23 +451,25 @@ func (s *DataQualityRuleCheckingConfigThresholdsCritical) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsExpected struct {
+	// The threshold expression.
+	//
 	// example:
 	//
-	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
+	// Used for fluctuation-type rules. The threshold is expressed through an expression. For example, fluctuation increase greater than 0.01: $checkValue > 0.01. Fluctuation decrease greater than 0.01: $checkValue < -0.01. Absolute value of fluctuation rate: abs($checkValue) > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
-	// 	- />
+	// - />
 	//
-	// 	- />=
+	// - />=
 	//
-	// 	- <
+	// - <
 	//
-	// 	- <=
+	// - <=
 	//
-	// 	- !=
+	// - !=
 	//
-	// 	- \\=
+	// - =
 	//
 	// example:
 	//
@@ -519,23 +523,25 @@ func (s *DataQualityRuleCheckingConfigThresholdsExpected) Validate() error {
 }
 
 type DataQualityRuleCheckingConfigThresholdsWarned struct {
+	// The threshold expression.
+	//
 	// example:
 	//
-	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
+	// Used for fluctuation-type rules. The threshold is expressed through an expression. For example, fluctuation increase greater than 0.01: $checkValue > 0.01. Fluctuation decrease greater than 0.01: $checkValue < -0.01. Absolute value of fluctuation rate: abs($checkValue) > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
-	// 	- />
+	// - />
 	//
-	// 	- />=
+	// - />=
 	//
-	// 	- <
+	// - <
 	//
-	// 	- <=
+	// - <=
 	//
-	// 	- !=
+	// - !=
 	//
-	// 	- \\=
+	// - =
 	//
 	// example:
 	//
@@ -589,15 +595,15 @@ func (s *DataQualityRuleCheckingConfigThresholdsWarned) Validate() error {
 }
 
 type DataQualityRuleErrorHandlers struct {
-	// The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
+	// The SQL statement specified by the user to filter problematic data. This parameter is required for custom SQL rules.
 	//
 	// example:
 	//
 	// SELECT 	- FROM tb_api_log WHERE id IS NULL
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
-	// The type of the operation. Valid values:
+	// The handler type. Valid values:
 	//
-	// 	- SaveErrorData
+	// - SaveErrorData
 	//
 	// example:
 	//
@@ -636,55 +642,55 @@ func (s *DataQualityRuleErrorHandlers) Validate() error {
 }
 
 type DataQualityRuleSamplingConfig struct {
-	// The metrics used for sampling. Valid values:
+	// The sampling metric name. Valid values:
 	//
-	// 	- Count: the number of rows in the table.
+	// - Count: the number of table rows.
 	//
-	// 	- Min: the minimum value of the field.
+	// - Min: the minimum value of the field.
 	//
-	// 	- Max: the maximum value of the field.
+	// - Max: the maximum value of the field.
 	//
-	// 	- Avg: the average value of the field.
+	// - Avg: the average value of the field.
 	//
-	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	// - DistinctCount: the number of unique values in the field.
 	//
-	// 	- DistinctPercent: the percentage of the number of unique values of the field after deduplication to the number of rows in the table.
+	// - DistinctPercent: the ratio of unique values to the total number of rows.
 	//
-	// 	- DuplicatedCount: the number of duplicated values in the field.
+	// - DuplicatedCount: the number of duplicate values in the field.
 	//
-	// 	- DuplicatedPercent: the percentage of the number of duplicated values of the field to the number of rows in the table.
+	// - DuplicatedPercent: the ratio of duplicate values to the total number of rows.
 	//
-	// 	- TableSize: the table size.
+	// - TableSize: the table size.
 	//
-	// 	- NullValueCount: the number of rows in which the field is set to null.
+	// - NullValueCount: the number of rows where the field is null.
 	//
-	// 	- NullValuePercent: the percentage of the number of rows in which the field is set to null to the number of rows in the table.
+	// - NullValuePercent: the percentage of rows where the field is null.
 	//
-	// 	- GroupCount: the field value and the number of rows for each field value.
+	// - GroupCount: the number of rows for each value after aggregation by field value.
 	//
-	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	// - CountNotIn: the number of rows that do not match the enumerated values.
 	//
-	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	// - CountDistinctNotIn: the number of unique values that do not match the enumerated values.
 	//
-	// 	- UserDefinedSql: indicates that the data is sampled by executing custom SQL statements.
+	// - UserDefinedSql: sample collection through a custom SQL statement.
 	//
 	// example:
 	//
 	// Min
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The parameters required for sampling.
+	// The parameters required for sample collection.
 	//
 	// example:
 	//
 	// { "Columns": [ "id", "name" ] }
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+	// The filter condition for secondary filtering of irrelevant data during sampling. The value can be up to 16,777,215 characters in length.
 	//
 	// example:
 	//
 	// id IS NULL
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	// The runtime parameter setting statements to be executed before the sampling statement. The value can be up to 1000 characters in length. Currently, only MaxCompute is supported.
 	//
 	// example:
 	//
@@ -741,41 +747,41 @@ func (s *DataQualityRuleSamplingConfig) Validate() error {
 }
 
 type DataQualityRuleTarget struct {
-	// The type of the database to which the table belongs. Valid values:
+	// The database type of the table for a table-type dataset. Valid values:
 	//
-	// 	- maxcompute
+	// - maxcompute
 	//
-	// 	- emr
+	// - emr
 	//
-	// 	- cdh
+	// - cdh
 	//
-	// 	- hologres
+	// - hologres
 	//
-	// 	- analyticdb_for_postgresql
+	// - analyticdb_for_postgresql
 	//
-	// 	- analyticdb_for_mysql
+	// - analyticdb_for_mysql
 	//
-	// 	- starrocks
+	// - starrocks
 	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The configuration of the partitioned table.
+	// The partition settings of the partitioned table.
 	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The ID of the table in Data Map.
+	// The unique ID of the table in Data Map.
 	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The type of the monitored object. Valid values:
+	// The monitored object type. Valid values:
 	//
-	// 	- Table
+	// - Table
 	//
 	// example:
 	//
