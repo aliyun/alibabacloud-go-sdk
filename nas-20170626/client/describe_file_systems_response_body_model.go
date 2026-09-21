@@ -29,7 +29,7 @@ type DescribeFileSystemsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems per page.
+	// The number of file systems on each page.
 	//
 	// example:
 	//
@@ -146,27 +146,28 @@ func (s *DescribeFileSystemsResponseBodyFileSystems) Validate() error {
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
-	AccessPointCount     *string                                                           `json:"AccessPointCount,omitempty" xml:"AccessPointCount,omitempty"`
-	AutoSnapshotPolicyId *string                                                           `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	Bandwidth            *int64                                                            `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Capacity             *int64                                                            `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	ChargeType           *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateTime           *string                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description          *string                                                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	EncryptType          *int32                                                            `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	ExpiredTime          *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	FileSystemId         *string                                                           `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	FileSystemType       *string                                                           `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	KMSKeyId             *string                                                           `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	Ldap                 *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap         `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
-	MeteredArchiveSize   *int64                                                            `json:"MeteredArchiveSize,omitempty" xml:"MeteredArchiveSize,omitempty"`
-	MeteredIASize        *int64                                                            `json:"MeteredIASize,omitempty" xml:"MeteredIASize,omitempty"`
-	MeteredSize          *int64                                                            `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
-	MountTargets         *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
-	Options              *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions      `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
-	Packages             *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages     `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
-	ProtocolType         *string                                                           `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	QuorumVswId          *string                                                           `json:"QuorumVswId,omitempty" xml:"QuorumVswId,omitempty"`
+	AccessPointCount     *string                                                                `json:"AccessPointCount,omitempty" xml:"AccessPointCount,omitempty"`
+	AutoSnapshotPolicyId *string                                                                `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
+	AutoUpgradeConfig    *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig `json:"AutoUpgradeConfig,omitempty" xml:"AutoUpgradeConfig,omitempty" type:"Struct"`
+	Bandwidth            *int64                                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Capacity             *int64                                                                 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	ChargeType           *string                                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime           *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description          *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncryptType          *int32                                                                 `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	ExpiredTime          *string                                                                `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	FileSystemId         *string                                                                `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemType       *string                                                                `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
+	KMSKeyId             *string                                                                `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	Ldap                 *DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap              `json:"Ldap,omitempty" xml:"Ldap,omitempty" type:"Struct"`
+	MeteredArchiveSize   *int64                                                                 `json:"MeteredArchiveSize,omitempty" xml:"MeteredArchiveSize,omitempty"`
+	MeteredIASize        *int64                                                                 `json:"MeteredIASize,omitempty" xml:"MeteredIASize,omitempty"`
+	MeteredSize          *int64                                                                 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
+	MountTargets         *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets      `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
+	Options              *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions           `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	Packages             *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages          `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
+	ProtocolType         *string                                                                `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	QuorumVswId          *string                                                                `json:"QuorumVswId,omitempty" xml:"QuorumVswId,omitempty"`
 	// example:
 	//
 	// LRS
@@ -199,6 +200,10 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) GetAccessPointCou
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) GetAutoSnapshotPolicyId() *string {
 	return s.AutoSnapshotPolicyId
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) GetAutoUpgradeConfig() *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig {
+	return s.AutoUpgradeConfig
 }
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) GetBandwidth() *int64 {
@@ -336,6 +341,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetAccessPointCou
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetAutoSnapshotPolicyId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.AutoSnapshotPolicyId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetAutoUpgradeConfig(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.AutoUpgradeConfig = v
 	return s
 }
 
@@ -500,6 +510,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetZoneId(v strin
 }
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) Validate() error {
+	if s.AutoUpgradeConfig != nil {
+		if err := s.AutoUpgradeConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Ldap != nil {
 		if err := s.Ldap.Validate(); err != nil {
 			return err
@@ -541,6 +556,70 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) Validate() error 
 		}
 	}
 	return nil
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig struct {
+	// example:
+	//
+	// 80
+	CapacityUsedRatio *int32 `json:"capacityUsedRatio,omitempty" xml:"capacityUsedRatio,omitempty"`
+	Enabled           *bool  `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// 100
+	Step *int32 `json:"step,omitempty" xml:"step,omitempty"`
+	// example:
+	//
+	// 30
+	Time *int32 `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) GetCapacityUsedRatio() *int32 {
+	return s.CapacityUsedRatio
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) GetStep() *int32 {
+	return s.Step
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) GetTime() *int32 {
+	return s.Time
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) SetCapacityUsedRatio(v int32) *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig {
+	s.CapacityUsedRatio = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) SetEnabled(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) SetStep(v int32) *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig {
+	s.Step = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) SetTime(v int32) *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap struct {

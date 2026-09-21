@@ -9,6 +9,8 @@ type iModifyFileSystemRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUpgradeConfig(v *ModifyFileSystemRequestAutoUpgradeConfig) *ModifyFileSystemRequest
+	GetAutoUpgradeConfig() *ModifyFileSystemRequestAutoUpgradeConfig
 	SetDescription(v string) *ModifyFileSystemRequest
 	GetDescription() *string
 	SetFileSystemId(v string) *ModifyFileSystemRequest
@@ -18,13 +20,15 @@ type iModifyFileSystemRequest interface {
 }
 
 type ModifyFileSystemRequest struct {
-	// The file system description.
+	// The auto-scaling configuration.
+	AutoUpgradeConfig *ModifyFileSystemRequestAutoUpgradeConfig `json:"AutoUpgradeConfig,omitempty" xml:"AutoUpgradeConfig,omitempty" type:"Struct"`
+	// The description of the file system.
 	//
 	// Limits:
 	//
 	// - The description must be 2 to 128 characters in length.
 	//
-	// - The description must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+	// - The description must start with a letter. It cannot start with `http://` or `https://`.
 	//
 	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
@@ -36,9 +40,9 @@ type ModifyFileSystemRequest struct {
 	//
 	// - General-purpose NAS: `31a8e4****`.
 	//
-	// - Extreme NAS: must start with `extreme-`, for example, `extreme-0015****`.
+	// - Extreme NAS: The ID must start with `extreme-`, for example, `extreme-0015****`.
 	//
-	// - CPFS: must start with `cpfs-`, for example, `cpfs-125487****`.
+	// - Cloud Parallel File Storage (CPFS): The ID must start with `cpfs-`, for example, `cpfs-125487****`.
 	//
 	// This parameter is required.
 	//
@@ -58,6 +62,10 @@ func (s ModifyFileSystemRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyFileSystemRequest) GetAutoUpgradeConfig() *ModifyFileSystemRequestAutoUpgradeConfig {
+	return s.AutoUpgradeConfig
+}
+
 func (s *ModifyFileSystemRequest) GetDescription() *string {
 	return s.Description
 }
@@ -68,6 +76,11 @@ func (s *ModifyFileSystemRequest) GetFileSystemId() *string {
 
 func (s *ModifyFileSystemRequest) GetOptions() *ModifyFileSystemRequestOptions {
 	return s.Options
+}
+
+func (s *ModifyFileSystemRequest) SetAutoUpgradeConfig(v *ModifyFileSystemRequestAutoUpgradeConfig) *ModifyFileSystemRequest {
+	s.AutoUpgradeConfig = v
+	return s
 }
 
 func (s *ModifyFileSystemRequest) SetDescription(v string) *ModifyFileSystemRequest {
@@ -86,6 +99,11 @@ func (s *ModifyFileSystemRequest) SetOptions(v *ModifyFileSystemRequestOptions) 
 }
 
 func (s *ModifyFileSystemRequest) Validate() error {
+	if s.AutoUpgradeConfig != nil {
+		if err := s.AutoUpgradeConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Options != nil {
 		if err := s.Options.Validate(); err != nil {
 			return err
@@ -94,28 +112,99 @@ func (s *ModifyFileSystemRequest) Validate() error {
 	return nil
 }
 
+type ModifyFileSystemRequestAutoUpgradeConfig struct {
+	// The capacity usage threshold.
+	//
+	// example:
+	//
+	// 80
+	CapacityUsedRatio *int32 `json:"capacityUsedRatio,omitempty" xml:"capacityUsedRatio,omitempty"`
+	// Specifies whether to enable auto-scaling.
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The scaling increment.
+	//
+	// example:
+	//
+	// 100
+	Step *int32 `json:"step,omitempty" xml:"step,omitempty"`
+	// The duration.
+	//
+	// example:
+	//
+	// 30
+	Time *int32 `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s ModifyFileSystemRequestAutoUpgradeConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyFileSystemRequestAutoUpgradeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) GetCapacityUsedRatio() *int32 {
+	return s.CapacityUsedRatio
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) GetStep() *int32 {
+	return s.Step
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) GetTime() *int32 {
+	return s.Time
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) SetCapacityUsedRatio(v int32) *ModifyFileSystemRequestAutoUpgradeConfig {
+	s.CapacityUsedRatio = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) SetEnabled(v bool) *ModifyFileSystemRequestAutoUpgradeConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) SetStep(v int32) *ModifyFileSystemRequestAutoUpgradeConfig {
+	s.Step = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) SetTime(v int32) *ModifyFileSystemRequestAutoUpgradeConfig {
+	s.Time = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequestAutoUpgradeConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type ModifyFileSystemRequestOptions struct {
-	// Specifies whether to enable the SMB Access-based Enumeration (ABE) access control feature.
+	// Specifies whether to enable the SMB Access-Based Enumeration (ABE) feature.
 	//
 	// example:
 	//
 	// false
 	EnableABE *bool `json:"EnableABE,omitempty" xml:"EnableABE,omitempty"`
-	// Specifies whether to enable the OpLock feature.
+	// Specifies whether the OpLock feature is enabled.
 	//
 	// Valid values:
 	//
-	// - true: enables the feature.
+	// - true: Enabled.
 	//
-	// - false: does not enable the feature.
+	// - false: Not enabled.
 	//
-	// > Only file systems whose Protocol Type is SMB protocol are supported.
+	// > Only file systems of the SMB Protocol Type are supported.
 	//
 	// example:
 	//
 	// true
 	EnableOplock *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
-	// Specifies whether the Lingjun VSC mount target supports access only through access points.
+	// Specifies whether the Lingjun VSC mount target supports only access point-based access.
 	//
 	// example:
 	//

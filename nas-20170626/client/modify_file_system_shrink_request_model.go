@@ -9,6 +9,8 @@ type iModifyFileSystemShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoUpgradeConfigShrink(v string) *ModifyFileSystemShrinkRequest
+	GetAutoUpgradeConfigShrink() *string
 	SetDescription(v string) *ModifyFileSystemShrinkRequest
 	GetDescription() *string
 	SetFileSystemId(v string) *ModifyFileSystemShrinkRequest
@@ -18,13 +20,15 @@ type iModifyFileSystemShrinkRequest interface {
 }
 
 type ModifyFileSystemShrinkRequest struct {
-	// The file system description.
+	// The auto-scaling configuration.
+	AutoUpgradeConfigShrink *string `json:"AutoUpgradeConfig,omitempty" xml:"AutoUpgradeConfig,omitempty"`
+	// The description of the file system.
 	//
 	// Limits:
 	//
 	// - The description must be 2 to 128 characters in length.
 	//
-	// - The description must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+	// - The description must start with a letter. It cannot start with `http://` or `https://`.
 	//
 	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
@@ -36,9 +40,9 @@ type ModifyFileSystemShrinkRequest struct {
 	//
 	// - General-purpose NAS: `31a8e4****`.
 	//
-	// - Extreme NAS: must start with `extreme-`, for example, `extreme-0015****`.
+	// - Extreme NAS: The ID must start with `extreme-`, for example, `extreme-0015****`.
 	//
-	// - CPFS: must start with `cpfs-`, for example, `cpfs-125487****`.
+	// - Cloud Parallel File Storage (CPFS): The ID must start with `cpfs-`, for example, `cpfs-125487****`.
 	//
 	// This parameter is required.
 	//
@@ -58,6 +62,10 @@ func (s ModifyFileSystemShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyFileSystemShrinkRequest) GetAutoUpgradeConfigShrink() *string {
+	return s.AutoUpgradeConfigShrink
+}
+
 func (s *ModifyFileSystemShrinkRequest) GetDescription() *string {
 	return s.Description
 }
@@ -68,6 +76,11 @@ func (s *ModifyFileSystemShrinkRequest) GetFileSystemId() *string {
 
 func (s *ModifyFileSystemShrinkRequest) GetOptionsShrink() *string {
 	return s.OptionsShrink
+}
+
+func (s *ModifyFileSystemShrinkRequest) SetAutoUpgradeConfigShrink(v string) *ModifyFileSystemShrinkRequest {
+	s.AutoUpgradeConfigShrink = &v
+	return s
 }
 
 func (s *ModifyFileSystemShrinkRequest) SetDescription(v string) *ModifyFileSystemShrinkRequest {

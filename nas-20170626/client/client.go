@@ -10908,11 +10908,19 @@ func (client *Client) ModifyFileSystemWithOptions(tmpReq *ModifyFileSystemReques
 	}
 	request := &ModifyFileSystemShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AutoUpgradeConfig) {
+		request.AutoUpgradeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AutoUpgradeConfig, dara.String("AutoUpgradeConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Options) {
 		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, dara.String("Options"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUpgradeConfigShrink) {
+		query["AutoUpgradeConfig"] = request.AutoUpgradeConfigShrink
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
