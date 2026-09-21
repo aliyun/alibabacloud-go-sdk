@@ -65,7 +65,7 @@ type UploadSkillViaOssRequestBody struct {
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// The upload version number. This parameter is optional and used as a fallback when the ZIP package contains no version information.
+	// The target upload version number. This parameter is optional and serves as a fallback when the ZIP package does not contain version information.
 	//
 	// example:
 	//

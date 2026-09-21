@@ -280,6 +280,11 @@ type GetAgentSpecLatestResponseBodyDataSkills struct {
 	//
 	// agentspec-example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// REFERENCE
+	SourceType      *string                                                  `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	VersionSelector *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
 func (s GetAgentSpecLatestResponseBodyDataSkills) String() string {
@@ -294,11 +299,75 @@ func (s *GetAgentSpecLatestResponseBodyDataSkills) GetName() *string {
 	return s.Name
 }
 
+func (s *GetAgentSpecLatestResponseBodyDataSkills) GetSourceType() *string {
+	return s.SourceType
+}
+
+func (s *GetAgentSpecLatestResponseBodyDataSkills) GetVersionSelector() *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector {
+	return s.VersionSelector
+}
+
 func (s *GetAgentSpecLatestResponseBodyDataSkills) SetName(v string) *GetAgentSpecLatestResponseBodyDataSkills {
 	s.Name = &v
 	return s
 }
 
+func (s *GetAgentSpecLatestResponseBodyDataSkills) SetSourceType(v string) *GetAgentSpecLatestResponseBodyDataSkills {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetAgentSpecLatestResponseBodyDataSkills) SetVersionSelector(v *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) *GetAgentSpecLatestResponseBodyDataSkills {
+	s.VersionSelector = v
+	return s
+}
+
 func (s *GetAgentSpecLatestResponseBodyDataSkills) Validate() error {
+	if s.VersionSelector != nil {
+		if err := s.VersionSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetAgentSpecLatestResponseBodyDataSkillsVersionSelector struct {
+	// example:
+	//
+	// LABEL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// latest
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) GetType() *string {
+	return s.Type
+}
+
+func (s *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) SetType(v string) *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) SetValue(v string) *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector {
+	s.Value = &v
+	return s
+}
+
+func (s *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector) Validate() error {
 	return dara.Validate(s)
 }

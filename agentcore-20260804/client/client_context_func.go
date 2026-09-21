@@ -1598,7 +1598,7 @@ func (client *Client) DeleteModelConnectionWithContext(ctx context.Context, work
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // Deletes a skill and its related version data from a specified workspace. This operation is irreversible.
 //
@@ -2029,13 +2029,13 @@ func (client *Client) EnableConnectorWithContext(ctx context.Context, workspaceI
 
 // Summary:
 //
-// Skips the regular review process and forcibly publishes the specified Skill version.
+// Skips the regular review process and forcibly publishes a specified Skill version.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// Skips the regular review process and forcibly publishes the specified Skill version.
+// Skips the regular review process and forcibly publishes a specified Skill version.
 //
 // @param tmpReq - ForcePublishSkillVersionRequest
 //
@@ -3141,6 +3141,65 @@ func (client *Client) GetWorkspaceAcrRamAuthorizeUrlWithContext(ctx context.Cont
 
 // Summary:
 //
+// Queries the RAM authorization URL for mounting AgenticFS in a workspace.
+//
+// Description:
+//
+// The workspace determines the account, region, and shared role. The resource ARN is constructed based on the specified fileSystemId and accessPointId. The server parameter is used to generate the policy name. This operation does not query NAS or check resource status. The response contains only the authorization URL for the target NAS policy. After completing RAM authorization, call the verification operation.
+//
+// @param request - GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse
+func (client *Client) GetWorkspaceAgenticFsMountRamAuthorizeUrlWithContext(ctx context.Context, workspaceId *string, request *GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessPointId) {
+		query["accessPointId"] = request.AccessPointId
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["fileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.Server) {
+		query["server"] = request.Server
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkspaceAgenticFsMountRamAuthorizeUrl"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/agentic-fs/authorize"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the plug-in status of a specified workspace.
 //
 // Description:
@@ -3379,13 +3438,13 @@ func (client *Client) ListAgentIMChannelsWithContext(ctx context.Context, worksp
 
 // Summary:
 //
-// Queries AgentSpec resources in a specified workspace by using paging, supporting name search, sorting, and filtering by owner, visibility scope, and business labels.
+// Queries AgentSpec resources in a specified workspace by using paging, and supports name-based search, sorting, and filtering by owner, visibility scope, and business labels.
 //
 // Description:
 //
 // ## Operation description
 //
-// Queries AgentSpec resources in a specified workspace by using paging, supporting name search, sorting, and filtering by owner, visibility scope, and business labels.
+// Queries AgentSpec resources in a specified workspace by using paging, and supports name-based search, sorting, and filtering by owner, visibility scope, and business labels.
 //
 // @param request - ListAgentSpecsRequest
 //
@@ -4473,6 +4532,65 @@ func (client *Client) ListServiceEndpointsWithContext(ctx context.Context, works
 
 // Summary:
 //
+// Queries the reference relationships of a skill.
+//
+// @param request - ListSkillReferencesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSkillReferencesResponse
+func (client *Client) ListSkillReferencesWithContext(ctx context.Context, workspaceId *string, skillName *string, request *ListSkillReferencesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSkillReferencesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNo) {
+		query["pageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SelectorType) {
+		query["selectorType"] = request.SelectorType
+	}
+
+	if !dara.IsNil(request.SelectorValue) {
+		query["selectorValue"] = request.SelectorValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSkillReferences"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/skills/" + dara.PercentEncode(dara.StringValue(skillName)) + "/references"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSkillReferencesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a paged query of Skills in a specified workspace, and returns basic Skill information, version status, and paging details.
 //
 // Description:
@@ -4735,7 +4853,7 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // Takes the online version of a specified Skill offline so that it is no longer used as the online version.
 //
@@ -4853,7 +4971,7 @@ func (client *Client) OnlineSkillWithContext(ctx context.Context, workspaceId *s
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // Parses and checks one or more Skill ZIP packages uploaded to OSS, and returns the name, version, and conflict check results.
 //
@@ -4908,13 +5026,13 @@ func (client *Client) PrecheckSkillUploadViaOssWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Publishes a specified Skill version to change its state to published.
+// Publishes a specified Skill version to transition it to the published state.
 //
 // Description:
 //
 // ## Operation description
 //
-// Publishes a specified Skill version to change its state to published.
+// Publishes a specified Skill version to transition it to the published state.
 //
 // @param tmpReq - PublishSkillVersionRequest
 //
@@ -5998,7 +6116,7 @@ func (client *Client) UpdateSkillBizTagsWithContext(ctx context.Context, workspa
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // Updates the version labels and their mappings for a specified Skill.
 //
@@ -6517,6 +6635,57 @@ func (client *Client) VerifyWorkspaceAcrRamAuthorizationWithContext(ctx context.
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyWorkspaceAcrRamAuthorizationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the RAM authorization status of AgenticFS mounting for a workspace.
+//
+// Description:
+//
+// Determines the shared role and target access point based on the workspace and server, checks whether the role has a mounted policy with the expected name and a type of Custom, and returns AUTHORIZED or UNAUTHORIZED. Consistent with OSS/ACR, this operation does not verify the policy body, role trust, or actual mount read/write permissions. If the upstream query fails, an error is returned.
+//
+// @param request - VerifyWorkspaceAgenticFsMountRamAuthorizationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyWorkspaceAgenticFsMountRamAuthorizationResponse
+func (client *Client) VerifyWorkspaceAgenticFsMountRamAuthorizationWithContext(ctx context.Context, workspaceId *string, request *VerifyWorkspaceAgenticFsMountRamAuthorizationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *VerifyWorkspaceAgenticFsMountRamAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Server) {
+		query["server"] = request.Server
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyWorkspaceAgenticFsMountRamAuthorization"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/agentic-fs/authorize/verify"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyWorkspaceAgenticFsMountRamAuthorizationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

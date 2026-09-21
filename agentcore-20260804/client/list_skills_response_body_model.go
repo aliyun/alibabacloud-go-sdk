@@ -194,6 +194,10 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
+	// example:
+	//
+	// HEAD
+	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
 	// The version that is being edited.
 	//
 	// example:
@@ -276,6 +280,10 @@ func (s *ListSkillsResponseBodyDataPageItems) GetDownloadCount() *int64 {
 	return s.DownloadCount
 }
 
+func (s *ListSkillsResponseBodyDataPageItems) GetDraftMode() *string {
+	return s.DraftMode
+}
+
 func (s *ListSkillsResponseBodyDataPageItems) GetEditingVersion() *string {
 	return s.EditingVersion
 }
@@ -336,6 +344,11 @@ func (s *ListSkillsResponseBodyDataPageItems) SetDescription(v string) *ListSkil
 
 func (s *ListSkillsResponseBodyDataPageItems) SetDownloadCount(v int64) *ListSkillsResponseBodyDataPageItems {
 	s.DownloadCount = &v
+	return s
+}
+
+func (s *ListSkillsResponseBodyDataPageItems) SetDraftMode(v string) *ListSkillsResponseBodyDataPageItems {
+	s.DraftMode = &v
 	return s
 }
 

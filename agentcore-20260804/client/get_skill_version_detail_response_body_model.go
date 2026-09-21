@@ -74,7 +74,7 @@ type GetSkillVersionDetailResponseBodyData struct {
 	//
 	// skill-example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The resource mapping (key is the resource name).
+	// The resource mapping in which the key is the resource name.
 	Resource map[string]*DataResourceValue `json:"resource,omitempty" xml:"resource,omitempty"`
 	// The Skill card content (SKILL.md).
 	//

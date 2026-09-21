@@ -16,7 +16,7 @@ type iPrecheckSkillUploadViaOssResponseBody interface {
 }
 
 type PrecheckSkillUploadViaOssResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data []*PrecheckSkillUploadViaOssResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,6 +66,12 @@ func (s *PrecheckSkillUploadViaOssResponseBody) Validate() error {
 }
 
 type PrecheckSkillUploadViaOssResponseBodyData struct {
+	// The draft mode: HEAD or VERSIONED, determined by the server.
+	//
+	// example:
+	//
+	// HEAD
+	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
 	// The version currently being edited.
 	//
 	// example:
@@ -80,6 +86,18 @@ type PrecheckSkillUploadViaOssResponseBodyData struct {
 	EntryPath *string `json:"entryPath,omitempty" xml:"entryPath,omitempty"`
 	// Indicates whether the Skill already exists.
 	Exists *bool `json:"exists,omitempty" xml:"exists,omitempty"`
+	// The content revision identifier of the persistent draft, used to determine whether the local cache has expired. Returned only in HEAD draft mode.
+	//
+	// example:
+	//
+	// rev-1a2b3c4d
+	HeadRevision *string `json:"headRevision,omitempty" xml:"headRevision,omitempty"`
+	// The status of the persistent draft: draft, reviewing, or reviewed. Returned only in HEAD draft mode.
+	//
+	// example:
+	//
+	// draft
+	HeadStatus *string `json:"headStatus,omitempty" xml:"headStatus,omitempty"`
 	// The highest published version.
 	//
 	// example:
@@ -98,7 +116,7 @@ type PrecheckSkillUploadViaOssResponseBodyData struct {
 	//
 	// 1.0.0
 	ParsedVersion *string `json:"parsedVersion,omitempty" xml:"parsedVersion,omitempty"`
-	// The pre-check result code.
+	// The dry run result code.
 	//
 	// example:
 	//
@@ -144,6 +162,10 @@ func (s PrecheckSkillUploadViaOssResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *PrecheckSkillUploadViaOssResponseBodyData) GetDraftMode() *string {
+	return s.DraftMode
+}
+
 func (s *PrecheckSkillUploadViaOssResponseBodyData) GetEditingVersion() *string {
 	return s.EditingVersion
 }
@@ -154,6 +176,14 @@ func (s *PrecheckSkillUploadViaOssResponseBodyData) GetEntryPath() *string {
 
 func (s *PrecheckSkillUploadViaOssResponseBodyData) GetExists() *bool {
 	return s.Exists
+}
+
+func (s *PrecheckSkillUploadViaOssResponseBodyData) GetHeadRevision() *string {
+	return s.HeadRevision
+}
+
+func (s *PrecheckSkillUploadViaOssResponseBodyData) GetHeadStatus() *string {
+	return s.HeadStatus
 }
 
 func (s *PrecheckSkillUploadViaOssResponseBodyData) GetMaxPublishedVersion() *string {
@@ -192,6 +222,11 @@ func (s *PrecheckSkillUploadViaOssResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *PrecheckSkillUploadViaOssResponseBodyData) SetDraftMode(v string) *PrecheckSkillUploadViaOssResponseBodyData {
+	s.DraftMode = &v
+	return s
+}
+
 func (s *PrecheckSkillUploadViaOssResponseBodyData) SetEditingVersion(v string) *PrecheckSkillUploadViaOssResponseBodyData {
 	s.EditingVersion = &v
 	return s
@@ -204,6 +239,16 @@ func (s *PrecheckSkillUploadViaOssResponseBodyData) SetEntryPath(v string) *Prec
 
 func (s *PrecheckSkillUploadViaOssResponseBodyData) SetExists(v bool) *PrecheckSkillUploadViaOssResponseBodyData {
 	s.Exists = &v
+	return s
+}
+
+func (s *PrecheckSkillUploadViaOssResponseBodyData) SetHeadRevision(v string) *PrecheckSkillUploadViaOssResponseBodyData {
+	s.HeadRevision = &v
+	return s
+}
+
+func (s *PrecheckSkillUploadViaOssResponseBodyData) SetHeadStatus(v string) *PrecheckSkillUploadViaOssResponseBodyData {
+	s.HeadStatus = &v
 	return s
 }
 

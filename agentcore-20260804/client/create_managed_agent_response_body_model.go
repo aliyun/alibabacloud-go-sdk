@@ -24,13 +24,13 @@ type iCreateManagedAgentResponseBody interface {
 }
 
 type CreateManagedAgentResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the operation is successful.
+	// The business status code. The value is SUCCESS when the operation succeeds.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The information about the created managed agent.
+	// The information about the managed agent after creation.
 	Data *CreateManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code. The value 200 indicates success.
 	//
@@ -38,7 +38,7 @@ type CreateManagedAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The message that indicates the result of the request.
 	//
 	// example:
 	//
@@ -136,6 +136,10 @@ type CreateManagedAgentResponseBodyData struct {
 	//
 	// agent-1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The AgenticFS additional mount list. The total number of items combined with ossMounts cannot exceed 10.
+	AgenticFsMounts []*CreateManagedAgentResponseBodyDataAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
+	// 仅包含用户追加或覆盖的 Skill，不包含模板继承项。资源模型读取此字段以保留更新语义；创建和更新仍使用请求中的 skills。
+	ConfiguredSkills []*CreateManagedAgentResponseBodyDataConfiguredSkills `json:"configuredSkills,omitempty" xml:"configuredSkills,omitempty" type:"Repeated"`
 	// The creation mode.
 	//
 	// example:
@@ -162,7 +166,7 @@ type CreateManagedAgentResponseBodyData struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment configuration information.
 	Environment *CreateManagedAgentResponseBodyDataEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The agent harness.
+	// The agent runtime harness.
 	Harness *CreateManagedAgentResponseBodyDataHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
 	//
@@ -192,7 +196,7 @@ type CreateManagedAgentResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration information.
 	Network *CreateManagedAgentResponseBodyDataNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The OSS mount list. A maximum of 10 entries are supported.
+	// The OSS mount list. A maximum of 10 entries are allowed.
 	OssMounts []*CreateManagedAgentResponseBodyDataOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -202,7 +206,7 @@ type CreateManagedAgentResponseBodyData struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The runtime configuration information.
 	Runtime *CreateManagedAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The number of managed agent instances grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), and FAILED (runtime failure). Only phases that actually occur are returned. Missing keys should be treated as 0. This field is a dynamic map, and new keys may be added in the future. You can use FAILED > 0 to determine whether any instances have failed.
+	// The instance counts of the managed agent grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), FAILED (runtime failure). Only phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic mapping and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The list of skill configurations.
 	Skills []*CreateManagedAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
@@ -218,7 +222,7 @@ type CreateManagedAgentResponseBodyData struct {
 	Template *CreateManagedAgentResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 	// The list of tool configurations.
 	Tools []*CreateManagedAgentResponseBodyDataTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
-	// The time when the managed agent was last updated, in RFC 3339 format.
+	// The update time in RFC 3339 format.
 	//
 	// example:
 	//
@@ -242,6 +246,14 @@ func (s CreateManagedAgentResponseBodyData) GoString() string {
 
 func (s *CreateManagedAgentResponseBodyData) GetAgentId() *string {
 	return s.AgentId
+}
+
+func (s *CreateManagedAgentResponseBodyData) GetAgenticFsMounts() []*CreateManagedAgentResponseBodyDataAgenticFsMounts {
+	return s.AgenticFsMounts
+}
+
+func (s *CreateManagedAgentResponseBodyData) GetConfiguredSkills() []*CreateManagedAgentResponseBodyDataConfiguredSkills {
+	return s.ConfiguredSkills
 }
 
 func (s *CreateManagedAgentResponseBodyData) GetCreateMode() *string {
@@ -338,6 +350,16 @@ func (s *CreateManagedAgentResponseBodyData) GetWorkspaceId() *string {
 
 func (s *CreateManagedAgentResponseBodyData) SetAgentId(v string) *CreateManagedAgentResponseBodyData {
 	s.AgentId = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyData) SetAgenticFsMounts(v []*CreateManagedAgentResponseBodyDataAgenticFsMounts) *CreateManagedAgentResponseBodyData {
+	s.AgenticFsMounts = v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyData) SetConfiguredSkills(v []*CreateManagedAgentResponseBodyDataConfiguredSkills) *CreateManagedAgentResponseBodyData {
+	s.ConfiguredSkills = v
 	return s
 }
 
@@ -457,6 +479,24 @@ func (s *CreateManagedAgentResponseBodyData) SetWorkspaceId(v string) *CreateMan
 }
 
 func (s *CreateManagedAgentResponseBodyData) Validate() error {
+	if s.AgenticFsMounts != nil {
+		for _, item := range s.AgenticFsMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConfiguredSkills != nil {
+		for _, item := range s.ConfiguredSkills {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Environment != nil {
 		if err := s.Environment.Validate(); err != nil {
 			return err
@@ -524,6 +564,193 @@ func (s *CreateManagedAgentResponseBodyData) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateManagedAgentResponseBodyDataAgenticFsMounts struct {
+	// The subdirectory under /mnt/agenticfs/ in the container. This field is validated as required by the backend for each mount entry. Mount targets must not be duplicated or have parent-child overlaps.
+	//
+	// example:
+	//
+	// /mnt/agenticfs/data
+	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
+	// A non-empty relative directory that exists under the AccessPoint. This field is validated as required by the backend for each mount entry. Root directories, absolute paths, and parent directory segments are not allowed.
+	//
+	// example:
+	//
+	// workspace/data
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// Specifies whether to mount in read-only mode. Default value: false. This is not a RAM role read-only policy.
+	//
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// The AccessPoint domain name. This field is validated as required by the backend for each mount entry. Do not include the protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
+	//
+	// example:
+	//
+	// ap-0123456789abcdef0.0123456789-vlm36.cn-hangzhou.nas.aliyuncs.com
+	Server *string `json:"server,omitempty" xml:"server,omitempty"`
+}
+
+func (s CreateManagedAgentResponseBodyDataAgenticFsMounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentResponseBodyDataAgenticFsMounts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) GetPath() *string {
+	return s.Path
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) GetReadOnly() *bool {
+	return s.ReadOnly
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) GetServer() *string {
+	return s.Server
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) SetMountPath(v string) *CreateManagedAgentResponseBodyDataAgenticFsMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) SetPath(v string) *CreateManagedAgentResponseBodyDataAgenticFsMounts {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) SetReadOnly(v bool) *CreateManagedAgentResponseBodyDataAgenticFsMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) SetServer(v string) *CreateManagedAgentResponseBodyDataAgenticFsMounts {
+	s.Server = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataAgenticFsMounts) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateManagedAgentResponseBodyDataConfiguredSkills struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// web-search
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// REFERENCE
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	Version         *string                                                            `json:"version,omitempty" xml:"version,omitempty"`
+	VersionSelector *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
+}
+
+func (s CreateManagedAgentResponseBodyDataConfiguredSkills) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentResponseBodyDataConfiguredSkills) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) GetSourceType() *string {
+	return s.SourceType
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) GetVersion() *string {
+	return s.Version
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) GetVersionSelector() *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector {
+	return s.VersionSelector
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) SetName(v string) *CreateManagedAgentResponseBodyDataConfiguredSkills {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) SetSourceType(v string) *CreateManagedAgentResponseBodyDataConfiguredSkills {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) SetVersion(v string) *CreateManagedAgentResponseBodyDataConfiguredSkills {
+	s.Version = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) SetVersionSelector(v *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) *CreateManagedAgentResponseBodyDataConfiguredSkills {
+	s.VersionSelector = v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkills) Validate() error {
+	if s.VersionSelector != nil {
+		if err := s.VersionSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector struct {
+	// example:
+	//
+	// LABEL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// latest
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) SetType(v string) *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) SetValue(v string) *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateManagedAgentResponseBodyDataEnvironment struct {
@@ -663,9 +890,9 @@ func (s *CreateManagedAgentResponseBodyDataEnvironmentVariables) Validate() erro
 }
 
 type CreateManagedAgentResponseBodyDataHarness struct {
-	// The harness configuration.
+	// The runtime harness configuration.
 	Configuration *CreateManagedAgentResponseBodyDataHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The harness type.
+	// The runtime harness type.
 	//
 	// example:
 	//
@@ -766,7 +993,7 @@ type CreateManagedAgentResponseBodyDataModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration and the quota usage status in the current period. This field is empty if no quota is configured.
+	// The model token quota configuration and quota usage status for the current period. This field is empty if no quota is configured.
 	Quota *CreateManagedAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -833,7 +1060,7 @@ type CreateManagedAgentResponseBodyDataModelQuota struct {
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
-	// The quota statistical period. The value day indicates a daily period, and the value month indicates a monthly period.
+	// The quota statistical period. A value of day indicates daily and a value of month indicates monthly.
 	//
 	// example:
 	//
@@ -1042,19 +1269,19 @@ func (s *CreateManagedAgentResponseBodyDataNetworkAccessVpc) Validate() error {
 }
 
 type CreateManagedAgentResponseBodyDataOssMounts struct {
-	// The OSS bucket name. This parameter is required by backend validation for each mount entry.
+	// The OSS bucket name. This field is validated as required by the backend for each mount entry.
 	//
 	// example:
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The absolute mount path in the container. This parameter is required by backend validation for each mount entry.
+	// The absolute mount path in the container. This field is validated as required by the backend for each mount entry.
 	//
 	// example:
 	//
 	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+	// The relative object prefix within the bucket. If not specified, the entire bucket is mounted.
 	//
 	// example:
 	//
@@ -1117,7 +1344,7 @@ type CreateManagedAgentResponseBodyDataRuntime struct {
 	//
 	// This parameter is required.
 	Compute *CreateManagedAgentResponseBodyDataRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
-	// The sandbox auto scaling and session configuration.
+	// The sandbox auto-scaling and session configuration.
 	Hpa *CreateManagedAgentResponseBodyDataRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
 	// The session policy configuration.
 	//
@@ -1180,7 +1407,7 @@ func (s *CreateManagedAgentResponseBodyDataRuntime) Validate() error {
 }
 
 type CreateManagedAgentResponseBodyDataRuntimeCompute struct {
-	// The compute specification.
+	// The compute class.
 	//
 	// This parameter is required.
 	//
@@ -1212,27 +1439,27 @@ func (s *CreateManagedAgentResponseBodyDataRuntimeCompute) Validate() error {
 }
 
 type CreateManagedAgentResponseBodyDataRuntimeHpa struct {
-	// Specifies whether to enable auto scaling. This parameter is required by backend validation when hpa is present.
+	// Specifies whether to enable auto-scaling. This field is validated as required by the backend when hpa is present.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of active sessions per sandbox. This parameter is required by backend validation when hpa is present.
+	// The maximum number of active sessions per sandbox. This field is validated as required by the backend when hpa is present.
 	//
 	// example:
 	//
 	// 5
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of sandboxes. This parameter is required when HPA is enabled and the value must be no less than the minimum value.
+	// The maximum number of sandboxes. Required when HPA is enabled. The value must be greater than or equal to the minimum value.
 	//
 	// example:
 	//
 	// 3
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of sandboxes. This parameter is required when HPA is enabled.
+	// The minimum number of sandboxes. Required when HPA is enabled.
 	//
 	// example:
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The time in seconds before an inactive session is reclaimed. This parameter is required by backend validation when hpa is present.
+	// The time-to-live (TTL) for a session after inactivity, in seconds. This field is validated as required by the backend when hpa is present.
 	//
 	// example:
 	//
@@ -1345,20 +1572,35 @@ func (s *CreateManagedAgentResponseBodyDataRuntimeSessionPolicy) Validate() erro
 }
 
 type CreateManagedAgentResponseBodyDataSkills struct {
-	// The skill name.
+	// example:
 	//
-	// This parameter is required.
+	// 1.0.0
+	AppliedVersion *string `json:"appliedVersion,omitempty" xml:"appliedVersion,omitempty"`
+	// example:
+	//
+	// false
+	FromTemplate *bool `json:"fromTemplate,omitempty" xml:"fromTemplate,omitempty"`
+	// The skill name.
 	//
 	// example:
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	ResolvedVersion *string `json:"resolvedVersion,omitempty" xml:"resolvedVersion,omitempty"`
+	// example:
+	//
+	// REFERENCE
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The skill version.
 	//
 	// example:
 	//
 	// 1.0.0
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Version         *string                                                  `json:"version,omitempty" xml:"version,omitempty"`
+	VersionSelector *CreateManagedAgentResponseBodyDataSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
 func (s CreateManagedAgentResponseBodyDataSkills) String() string {
@@ -1369,16 +1611,56 @@ func (s CreateManagedAgentResponseBodyDataSkills) GoString() string {
 	return s.String()
 }
 
+func (s *CreateManagedAgentResponseBodyDataSkills) GetAppliedVersion() *string {
+	return s.AppliedVersion
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkills) GetFromTemplate() *bool {
+	return s.FromTemplate
+}
+
 func (s *CreateManagedAgentResponseBodyDataSkills) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkills) GetResolvedVersion() *string {
+	return s.ResolvedVersion
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkills) GetSourceType() *string {
+	return s.SourceType
 }
 
 func (s *CreateManagedAgentResponseBodyDataSkills) GetVersion() *string {
 	return s.Version
 }
 
+func (s *CreateManagedAgentResponseBodyDataSkills) GetVersionSelector() *CreateManagedAgentResponseBodyDataSkillsVersionSelector {
+	return s.VersionSelector
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkills) SetAppliedVersion(v string) *CreateManagedAgentResponseBodyDataSkills {
+	s.AppliedVersion = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkills) SetFromTemplate(v bool) *CreateManagedAgentResponseBodyDataSkills {
+	s.FromTemplate = &v
+	return s
+}
+
 func (s *CreateManagedAgentResponseBodyDataSkills) SetName(v string) *CreateManagedAgentResponseBodyDataSkills {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkills) SetResolvedVersion(v string) *CreateManagedAgentResponseBodyDataSkills {
+	s.ResolvedVersion = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkills) SetSourceType(v string) *CreateManagedAgentResponseBodyDataSkills {
+	s.SourceType = &v
 	return s
 }
 
@@ -1387,7 +1669,58 @@ func (s *CreateManagedAgentResponseBodyDataSkills) SetVersion(v string) *CreateM
 	return s
 }
 
+func (s *CreateManagedAgentResponseBodyDataSkills) SetVersionSelector(v *CreateManagedAgentResponseBodyDataSkillsVersionSelector) *CreateManagedAgentResponseBodyDataSkills {
+	s.VersionSelector = v
+	return s
+}
+
 func (s *CreateManagedAgentResponseBodyDataSkills) Validate() error {
+	if s.VersionSelector != nil {
+		if err := s.VersionSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateManagedAgentResponseBodyDataSkillsVersionSelector struct {
+	// example:
+	//
+	// LABEL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// latest
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateManagedAgentResponseBodyDataSkillsVersionSelector) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateManagedAgentResponseBodyDataSkillsVersionSelector) GoString() string {
+	return s.String()
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkillsVersionSelector) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkillsVersionSelector) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkillsVersionSelector) SetType(v string) *CreateManagedAgentResponseBodyDataSkillsVersionSelector {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkillsVersionSelector) SetValue(v string) *CreateManagedAgentResponseBodyDataSkillsVersionSelector {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateManagedAgentResponseBodyDataSkillsVersionSelector) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1481,8 +1814,6 @@ type CreateManagedAgentResponseBodyDataTemplateAiRegistry struct {
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The version of the template in the AI registry.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//

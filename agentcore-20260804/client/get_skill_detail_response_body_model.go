@@ -62,7 +62,7 @@ func (s *GetSkillDetailResponseBody) Validate() error {
 }
 
 type GetSkillDetailResponseBodyData struct {
-	// The business tag JSON array string.
+	// The business label JSON array string.
 	//
 	// example:
 	//
@@ -80,7 +80,13 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The version currently being edited.
+	// The draft pattern. HEAD indicates that the Skill has a persistent draft. VERSIONED indicates that each edit creates a draft with a version number. The server determines the pattern, and the invoker uses it for routing what to do next.
+	//
+	// example:
+	//
+	// HEAD
+	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
+	// The version being edited.
 	//
 	// example:
 	//
@@ -114,7 +120,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// alice
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The version currently under review.
+	// The version under review.
 	//
 	// example:
 	//
@@ -162,6 +168,10 @@ func (s *GetSkillDetailResponseBodyData) GetDescription() *string {
 
 func (s *GetSkillDetailResponseBodyData) GetDownloadCount() *int64 {
 	return s.DownloadCount
+}
+
+func (s *GetSkillDetailResponseBodyData) GetDraftMode() *string {
+	return s.DraftMode
 }
 
 func (s *GetSkillDetailResponseBodyData) GetEditingVersion() *string {
@@ -228,6 +238,11 @@ func (s *GetSkillDetailResponseBodyData) SetDescription(v string) *GetSkillDetai
 
 func (s *GetSkillDetailResponseBodyData) SetDownloadCount(v int64) *GetSkillDetailResponseBodyData {
 	s.DownloadCount = &v
+	return s
+}
+
+func (s *GetSkillDetailResponseBodyData) SetDraftMode(v string) *GetSkillDetailResponseBodyData {
+	s.DraftMode = &v
 	return s
 }
 
@@ -322,6 +337,12 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// Update documentation
 	CommitMsg *string `json:"commitMsg,omitempty" xml:"commitMsg,omitempty"`
+	// The MD5 checksum of the Skill content package for this version, used to verify content consistency.
+	//
+	// example:
+	//
+	// 9e107d9d372bb6826bd81d3542a419d6
+	ContentMd5 *string `json:"contentMd5,omitempty" xml:"contentMd5,omitempty"`
 	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
@@ -334,7 +355,7 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// A sample description that explains the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The download count.
+	// The number of downloads.
 	//
 	// example:
 	//
@@ -382,6 +403,10 @@ func (s *GetSkillDetailResponseBodyDataVersions) GetCommitMsg() *string {
 	return s.CommitMsg
 }
 
+func (s *GetSkillDetailResponseBodyDataVersions) GetContentMd5() *string {
+	return s.ContentMd5
+}
+
 func (s *GetSkillDetailResponseBodyDataVersions) GetCreateTime() *int64 {
 	return s.CreateTime
 }
@@ -417,6 +442,11 @@ func (s *GetSkillDetailResponseBodyDataVersions) SetAuthor(v string) *GetSkillDe
 
 func (s *GetSkillDetailResponseBodyDataVersions) SetCommitMsg(v string) *GetSkillDetailResponseBodyDataVersions {
 	s.CommitMsg = &v
+	return s
+}
+
+func (s *GetSkillDetailResponseBodyDataVersions) SetContentMd5(v string) *GetSkillDetailResponseBodyDataVersions {
+	s.ContentMd5 = &v
 	return s
 }
 

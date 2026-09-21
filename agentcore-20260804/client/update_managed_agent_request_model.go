@@ -18,7 +18,7 @@ type iUpdateManagedAgentRequest interface {
 type UpdateManagedAgentRequest struct {
 	// The request body.
 	Body *UpdateManagedAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
+	// The reserved idempotency token. The backend does not guarantee idempotency in the current release.
 	//
 	// example:
 	//
@@ -62,6 +62,8 @@ func (s *UpdateManagedAgentRequest) Validate() error {
 }
 
 type UpdateManagedAgentRequestBody struct {
+	// The AgenticFS mount list. Omit to retain existing values, pass [] to clear, or pass a non-empty array for full replacement. null is rejected. Combined with OSS mounts, a maximum of 10 entries are allowed.
+	AgenticFsMounts []*UpdateManagedAgentRequestBodyAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
 	// The description of the managed agent.
 	//
 	// example:
@@ -70,7 +72,7 @@ type UpdateManagedAgentRequestBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment configuration.
 	Environment *UpdateManagedAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The agent harness configuration.
+	// The agent runtime harness.
 	Harness *UpdateManagedAgentRequestBodyHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
 	// The agent instruction that guides the behavior of the agent.
 	//
@@ -88,17 +90,17 @@ type UpdateManagedAgentRequestBody struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration.
 	Network *UpdateManagedAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The list of OSS mounts. A maximum of 10 entries are supported. Pass an empty array to clear existing mounts.
+	// The OSS mount list. A maximum of 10 entries are allowed. Pass an empty array to clear existing mounts.
 	OssMounts []*UpdateManagedAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The runtime configuration.
 	Runtime *UpdateManagedAgentRequestBodyRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The list of skill configurations.
+	// The skill configuration list.
 	Skills []*UpdateManagedAgentRequestBodySkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
-	// The list of sub-agent configurations.
+	// The sub-agent configuration list.
 	SubAgents []*UpdateManagedAgentRequestBodySubAgents `json:"subAgents,omitempty" xml:"subAgents,omitempty" type:"Repeated"`
 	// The agent template configuration.
 	Template *UpdateManagedAgentRequestBodyTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
-	// The list of tool configurations.
+	// The tool configuration list.
 	Tools []*UpdateManagedAgentRequestBodyTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
@@ -108,6 +110,10 @@ func (s UpdateManagedAgentRequestBody) String() string {
 
 func (s UpdateManagedAgentRequestBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateManagedAgentRequestBody) GetAgenticFsMounts() []*UpdateManagedAgentRequestBodyAgenticFsMounts {
+	return s.AgenticFsMounts
 }
 
 func (s *UpdateManagedAgentRequestBody) GetDescription() *string {
@@ -160,6 +166,11 @@ func (s *UpdateManagedAgentRequestBody) GetTemplate() *UpdateManagedAgentRequest
 
 func (s *UpdateManagedAgentRequestBody) GetTools() []*UpdateManagedAgentRequestBodyTools {
 	return s.Tools
+}
+
+func (s *UpdateManagedAgentRequestBody) SetAgenticFsMounts(v []*UpdateManagedAgentRequestBodyAgenticFsMounts) *UpdateManagedAgentRequestBody {
+	s.AgenticFsMounts = v
+	return s
 }
 
 func (s *UpdateManagedAgentRequestBody) SetDescription(v string) *UpdateManagedAgentRequestBody {
@@ -228,6 +239,15 @@ func (s *UpdateManagedAgentRequestBody) SetTools(v []*UpdateManagedAgentRequestB
 }
 
 func (s *UpdateManagedAgentRequestBody) Validate() error {
+	if s.AgenticFsMounts != nil {
+		for _, item := range s.AgenticFsMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Environment != nil {
 		if err := s.Environment.Validate(); err != nil {
 			return err
@@ -295,6 +315,81 @@ func (s *UpdateManagedAgentRequestBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type UpdateManagedAgentRequestBodyAgenticFsMounts struct {
+	// The subdirectory under /mnt/agenticfs/ in the container. Required for each mount entry as validated by the backend. Mount targets must not be duplicated or have parent-child overlaps.
+	//
+	// example:
+	//
+	// /mnt/agenticfs/data
+	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
+	// The non-empty relative directory that exists under the AccessPoint. Required for each mount entry as validated by the backend. Root directory, absolute paths, and parent directory segments are not allowed.
+	//
+	// example:
+	//
+	// workspace/data
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// Specifies whether to mount in read-only mode. Default value: false. This is not the RAM role read-only policy.
+	//
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// The AccessPoint domain name. Required for each mount entry as validated by the backend. Do not include the protocol, port, or path. Use the DomainName from the NAS ListAccessPoints response.
+	//
+	// example:
+	//
+	// ap-0123456789abcdef0.0123456789-vlm36.cn-hangzhou.nas.aliyuncs.com
+	Server *string `json:"server,omitempty" xml:"server,omitempty"`
+}
+
+func (s UpdateManagedAgentRequestBodyAgenticFsMounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentRequestBodyAgenticFsMounts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) GetPath() *string {
+	return s.Path
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) GetReadOnly() *bool {
+	return s.ReadOnly
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) GetServer() *string {
+	return s.Server
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) SetMountPath(v string) *UpdateManagedAgentRequestBodyAgenticFsMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) SetPath(v string) *UpdateManagedAgentRequestBodyAgenticFsMounts {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) SetReadOnly(v bool) *UpdateManagedAgentRequestBodyAgenticFsMounts {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) SetServer(v string) *UpdateManagedAgentRequestBodyAgenticFsMounts {
+	s.Server = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodyAgenticFsMounts) Validate() error {
+	return dara.Validate(s)
 }
 
 type UpdateManagedAgentRequestBodyEnvironment struct {
@@ -434,9 +529,9 @@ func (s *UpdateManagedAgentRequestBodyEnvironmentVariables) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyHarness struct {
-	// The harness configuration.
+	// The runtime harness configuration.
 	Configuration *UpdateManagedAgentRequestBodyHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The harness type.
+	// The runtime harness type.
 	//
 	// example:
 	//
@@ -539,7 +634,7 @@ type UpdateManagedAgentRequestBodyModel struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration. If this parameter is not specified, no quota is configured.
+	// The model token quota configuration. If not specified, no quota is configured.
 	Quota *UpdateManagedAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -588,19 +683,19 @@ func (s *UpdateManagedAgentRequestBodyModel) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyModelQuota struct {
-	// Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the token quota is disabled and existing quota rules are deleted.
+	// Specifies whether to enable token quota. Default value: true. Set to false to disable and delete existing quota rules.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The quota limit type. This parameter is required by backend validation when the quota is enabled. Fixed value: token.
+	// The quota limit type. Required when quota is enabled, as validated by the backend. Fixed value: token.
 	//
 	// example:
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// The quota statistical period. This parameter is required by backend validation when the quota is enabled. Valid values:
+	// The quota statistical period. Required when quota is enabled, as validated by the backend. Valid values:
 	//
 	// - day: daily.
 	//
@@ -610,7 +705,7 @@ type UpdateManagedAgentRequestBodyModelQuota struct {
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The maximum number of tokens that can be consumed within a single period. This parameter is required by backend validation when the quota is enabled. The value must be greater than 0.
+	// The maximum number of tokens allowed within a single period. Required when quota is enabled, as validated by the backend. The value must be greater than 0.
 	//
 	// example:
 	//
@@ -774,19 +869,19 @@ func (s *UpdateManagedAgentRequestBodyNetworkAccessVpc) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyOssMounts struct {
-	// The OSS bucket name. This parameter is required by backend validation for each mount entry.
+	// The OSS bucket name. Required for each mount entry as validated by the backend.
 	//
 	// example:
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The absolute mount path in the container. This parameter is required by backend validation for each mount entry.
+	// The absolute mount path in the container. Required for each mount entry as validated by the backend.
 	//
 	// example:
 	//
 	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix within the bucket. If this parameter is not specified, the entire bucket is mounted.
+	// The relative object prefix within the bucket. If not specified, the entire bucket is mounted.
 	//
 	// example:
 	//
@@ -912,7 +1007,7 @@ func (s *UpdateManagedAgentRequestBodyRuntime) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeCompute struct {
-	// The compute specification.
+	// The compute class.
 	//
 	// This parameter is required.
 	//
@@ -944,27 +1039,27 @@ func (s *UpdateManagedAgentRequestBodyRuntimeCompute) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeHpa struct {
-	// Specifies whether to enable auto scaling. This parameter is required by backend validation when hpa is specified.
+	// Specifies whether to enable auto scaling. Required when hpa is present, as validated by the backend.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of active sessions per sandbox. This parameter is required by backend validation when hpa is specified.
+	// The maximum number of active sessions per sandbox. Required when hpa is present, as validated by the backend.
 	//
 	// example:
 	//
 	// 5
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of sandboxes. This parameter is required when HPA is enabled and the value must be no less than the minimum value.
+	// The maximum number of sandboxes. Required when HPA is enabled and must be no less than the minimum value.
 	//
 	// example:
 	//
 	// 3
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of sandboxes. This parameter is required when HPA is enabled.
+	// The minimum number of sandboxes. Required when HPA is enabled.
 	//
 	// example:
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The session reclamation time after inactivity, in seconds. This parameter is required by backend validation when hpa is specified.
+	// The time in seconds before an inactive session is reclaimed. Required when hpa is present, as validated by the backend.
 	//
 	// example:
 	//
@@ -1030,7 +1125,7 @@ func (s *UpdateManagedAgentRequestBodyRuntimeHpa) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyRuntimeSessionPolicy struct {
-	// The name of the HTTP header used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+	// The HTTP header name used for session affinity. Takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
 	//
 	// example:
 	//
@@ -1085,12 +1180,24 @@ type UpdateManagedAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The skill source type. Valid values:
+	//
+	// - REFERENCE: references AI Registry.
+	//
+	// - STATIC: statically bundled with the package.
+	//
+	// example:
+	//
+	// REFERENCE
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The skill version.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The referenced version selector. Defaults to LABEL/latest if omitted. Currently supports LABEL/latest.
+	VersionSelector *UpdateManagedAgentRequestBodySkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
 func (s UpdateManagedAgentRequestBodySkills) String() string {
@@ -1105,12 +1212,25 @@ func (s *UpdateManagedAgentRequestBodySkills) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateManagedAgentRequestBodySkills) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *UpdateManagedAgentRequestBodySkills) GetVersion() *string {
 	return s.Version
 }
 
+func (s *UpdateManagedAgentRequestBodySkills) GetVersionSelector() *UpdateManagedAgentRequestBodySkillsVersionSelector {
+	return s.VersionSelector
+}
+
 func (s *UpdateManagedAgentRequestBodySkills) SetName(v string) *UpdateManagedAgentRequestBodySkills {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodySkills) SetSourceType(v string) *UpdateManagedAgentRequestBodySkills {
+	s.SourceType = &v
 	return s
 }
 
@@ -1119,7 +1239,66 @@ func (s *UpdateManagedAgentRequestBodySkills) SetVersion(v string) *UpdateManage
 	return s
 }
 
+func (s *UpdateManagedAgentRequestBodySkills) SetVersionSelector(v *UpdateManagedAgentRequestBodySkillsVersionSelector) *UpdateManagedAgentRequestBodySkills {
+	s.VersionSelector = v
+	return s
+}
+
 func (s *UpdateManagedAgentRequestBodySkills) Validate() error {
+	if s.VersionSelector != nil {
+		if err := s.VersionSelector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateManagedAgentRequestBodySkillsVersionSelector struct {
+	// The version selector type. Valid values:
+	//
+	// - LABEL: selects by label.
+	//
+	// - VERSION: selects by specific version.
+	//
+	// example:
+	//
+	// LABEL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The selector value. If the type is LABEL, specify a label name such as latest. If the type is VERSION, specify a specific version number.
+	//
+	// example:
+	//
+	// latest
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateManagedAgentRequestBodySkillsVersionSelector) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateManagedAgentRequestBodySkillsVersionSelector) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateManagedAgentRequestBodySkillsVersionSelector) GetType() *string {
+	return s.Type
+}
+
+func (s *UpdateManagedAgentRequestBodySkillsVersionSelector) GetValue() *string {
+	return s.Value
+}
+
+func (s *UpdateManagedAgentRequestBodySkillsVersionSelector) SetType(v string) *UpdateManagedAgentRequestBodySkillsVersionSelector {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodySkillsVersionSelector) SetValue(v string) *UpdateManagedAgentRequestBodySkillsVersionSelector {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateManagedAgentRequestBodySkillsVersionSelector) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1130,7 +1309,7 @@ type UpdateManagedAgentRequestBodySubAgents struct {
 	//
 	// example:
 	//
-	// Review the code
+	// Please review the code
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The sub-agent name.
 	//
@@ -1173,7 +1352,7 @@ func (s *UpdateManagedAgentRequestBodySubAgents) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyTemplate struct {
-	// The AI registry template configuration.
+	// The AI Registry template configuration.
 	AiRegistry *UpdateManagedAgentRequestBodyTemplateAiRegistry `json:"aiRegistry,omitempty" xml:"aiRegistry,omitempty" type:"Struct"`
 }
 
@@ -1204,7 +1383,7 @@ func (s *UpdateManagedAgentRequestBodyTemplate) Validate() error {
 }
 
 type UpdateManagedAgentRequestBodyTemplateAiRegistry struct {
-	// The name of the template in the AI registry.
+	// The name of the template in AI Registry.
 	//
 	// This parameter is required.
 	//
@@ -1212,9 +1391,7 @@ type UpdateManagedAgentRequestBodyTemplateAiRegistry struct {
 	//
 	// code-review-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the template in the AI registry.
-	//
-	// This parameter is required.
+	// The version of the template in AI Registry.
 	//
 	// example:
 	//

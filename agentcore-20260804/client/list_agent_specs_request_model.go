@@ -30,7 +30,7 @@ type iListAgentSpecsRequest interface {
 }
 
 type ListAgentSpecsRequest struct {
-	// The AgentSpec name used as a search keyword. Use this parameter together with the search parameter.
+	// The AgentSpec name used as a search keyword. This parameter is used together with the search parameter.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ListAgentSpecsRequest struct {
 	//
 	// ai
 	BizTag *string `json:"bizTag,omitempty" xml:"bizTag,omitempty"`
-	// The field by which to sort results. Set this parameter to download_count to sort by download count. By default, results are sorted by update time.
+	// The field by which to sort the results. Set the value to download_count to sort by download count. By default, results are sorted by update time.
 	//
 	// example:
 	//
 	// download_count
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// The owner used to filter results.
+	// The owner used to filter the results.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListAgentSpecsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The visibility scope used to filter results. Valid values:
+	// The visibility scope used to filter the results. Valid values:
 	//
 	// - PUBLIC
 	//

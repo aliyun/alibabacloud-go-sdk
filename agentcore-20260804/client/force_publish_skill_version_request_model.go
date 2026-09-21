@@ -45,6 +45,12 @@ func (s *ForcePublishSkillVersionRequest) Validate() error {
 }
 
 type ForcePublishSkillVersionRequestBody struct {
+	// The commit message recorded on the release version produced by this publish operation. Takes effect in HEAD draft mode. If left empty, the draft message is used. Ignored in version Draft mode.
+	//
+	// example:
+	//
+	// First release version
+	CommitMsg *string `json:"commitMsg,omitempty" xml:"commitMsg,omitempty"`
 	// Specifies whether to update the latest label.
 	//
 	// example:
@@ -61,8 +67,17 @@ func (s ForcePublishSkillVersionRequestBody) GoString() string {
 	return s.String()
 }
 
+func (s *ForcePublishSkillVersionRequestBody) GetCommitMsg() *string {
+	return s.CommitMsg
+}
+
 func (s *ForcePublishSkillVersionRequestBody) GetUpdateLatestLabel() *bool {
 	return s.UpdateLatestLabel
+}
+
+func (s *ForcePublishSkillVersionRequestBody) SetCommitMsg(v string) *ForcePublishSkillVersionRequestBody {
+	s.CommitMsg = &v
+	return s
 }
 
 func (s *ForcePublishSkillVersionRequestBody) SetUpdateLatestLabel(v bool) *ForcePublishSkillVersionRequestBody {

@@ -9,17 +9,25 @@ type iDataResourceValue interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetName(v string) *DataResourceValue
-	GetName() *string
-	SetType(v string) *DataResourceValue
-	GetType() *string
 	SetContent(v string) *DataResourceValue
 	GetContent() *string
 	SetMetadata(v map[string]interface{}) *DataResourceValue
 	GetMetadata() map[string]interface{}
+	SetName(v string) *DataResourceValue
+	GetName() *string
+	SetType(v string) *DataResourceValue
+	GetType() *string
 }
 
 type DataResourceValue struct {
+	// The content.
+	//
+	// example:
+	//
+	// Sample content
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The metadata.
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The name.
 	//
 	// example:
@@ -32,14 +40,6 @@ type DataResourceValue struct {
 	//
 	// file
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The content.
-	//
-	// example:
-	//
-	// Sample content
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The metadata.
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 }
 
 func (s DataResourceValue) String() string {
@@ -50,14 +50,6 @@ func (s DataResourceValue) GoString() string {
 	return s.String()
 }
 
-func (s *DataResourceValue) GetName() *string {
-	return s.Name
-}
-
-func (s *DataResourceValue) GetType() *string {
-	return s.Type
-}
-
 func (s *DataResourceValue) GetContent() *string {
 	return s.Content
 }
@@ -66,14 +58,12 @@ func (s *DataResourceValue) GetMetadata() map[string]interface{} {
 	return s.Metadata
 }
 
-func (s *DataResourceValue) SetName(v string) *DataResourceValue {
-	s.Name = &v
-	return s
+func (s *DataResourceValue) GetName() *string {
+	return s.Name
 }
 
-func (s *DataResourceValue) SetType(v string) *DataResourceValue {
-	s.Type = &v
-	return s
+func (s *DataResourceValue) GetType() *string {
+	return s.Type
 }
 
 func (s *DataResourceValue) SetContent(v string) *DataResourceValue {
@@ -83,6 +73,16 @@ func (s *DataResourceValue) SetContent(v string) *DataResourceValue {
 
 func (s *DataResourceValue) SetMetadata(v map[string]interface{}) *DataResourceValue {
 	s.Metadata = v
+	return s
+}
+
+func (s *DataResourceValue) SetName(v string) *DataResourceValue {
+	s.Name = &v
+	return s
+}
+
+func (s *DataResourceValue) SetType(v string) *DataResourceValue {
+	s.Type = &v
 	return s
 }
 
