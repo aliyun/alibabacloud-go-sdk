@@ -40,7 +40,7 @@ type iListAppInstanceGroupRequest interface {
 }
 
 type ListAppInstanceGroupRequest struct {
-	// The application image ID. You can obtain this value from the Image Management page in the WUYING Cloud Application console.
+	// The application image ID. You can obtain this value from the Image Management page in the WUYING Workspace console.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type ListAppInstanceGroupRequest struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The delivery group name. Fuzzy matching is used for the query. For example, if you set the delivery group name to `OfficeApp`, all delivery groups whose names contain `OfficeApp` are returned, such as `MyOfficeApp` and `OfficeAppA`.
+	// The delivery group name. Fuzzy match is used for the query. For example, if you set the delivery group name to `OfficeApp`, all delivery groups whose names contain `OfficeApp` are returned, such as `MyOfficeApp` and `OfficeAppA`.
 	//
 	// example:
 	//
-	// 办公应用
+	// OfficeApp
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
 	//
@@ -64,6 +64,8 @@ type ListAppInstanceGroupRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The list of excluded authorized user group IDs.
+	//
 	// if can be null:
 	// true
 	ExcludedUserGroupIds []*string `json:"ExcludedUserGroupIds,omitempty" xml:"ExcludedUserGroupIds,omitempty" type:"Repeated"`
@@ -114,6 +116,8 @@ type ListAppInstanceGroupRequest struct {
 	// if can be null:
 	// true
 	Tag []*ListAppInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The list of authorized user group IDs.
+	//
 	// if can be null:
 	// true
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`

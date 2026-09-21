@@ -20,10 +20,30 @@ type iListModelProviderEndpointsRequest interface {
 }
 
 type ListModelProviderEndpointsRequest struct {
+	// The agent platform name. This parameter is not processed and is only passed through as a redundant field, such as ENTERPRISE.
+	//
+	// example:
+	//
+	// ENTERPRISE_AGENTIC_COMPUTER
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
+	// The agent provider name, such as HermesAgent or OpenClaw. If this parameter is specified, the providerName in the returned endpoints is the alias from the perspective of the specified agent provider.
+	//
+	// example:
+	//
+	// AgenticComputer
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	BizType       *int32  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ProviderName  *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// The business type.
+	//
+	// example:
+	//
+	// 1
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The name of the model provider, such as bailian, moonshot, or siliconflow. If this parameter is not specified, the endpoint configurations of all managed providers are returned.
+	//
+	// example:
+	//
+	// bailian
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
 }
 
 func (s ListModelProviderEndpointsRequest) String() string {

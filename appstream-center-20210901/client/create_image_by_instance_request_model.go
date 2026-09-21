@@ -34,7 +34,7 @@ type iCreateImageByInstanceRequest interface {
 }
 
 type CreateImageByInstanceRequest struct {
-	// This parameter applies only to Cloud Desktop scenarios. Specifies whether to clear user personal data. If set to true, the created image clears data in all directories under C:\\Users except Administrator and Public.
+	// This parameter is currently applicable only to cloud desktop scenarios. Specifies whether to clear user personal data. If you set this parameter to true, the created image clears data in all directories under C:\\Users except the Administrator and Public directories.
 	//
 	// example:
 	//
@@ -45,15 +45,20 @@ type CreateImageByInstanceRequest struct {
 	// example:
 	//
 	// 1
-	BizType     *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CopyProfile *bool  `json:"CopyProfile,omitempty" xml:"CopyProfile,omitempty"`
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Specifies whether to copy user profile data.
+	//
+	// example:
+	//
+	// false
+	CopyProfile *bool `json:"CopyProfile,omitempty" xml:"CopyProfile,omitempty"`
 	// The image description.
 	//
 	// example:
 	//
 	// my test image v1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of disk data included in the image. By default, both the system cloud disk and data cloud disk of the instance are included.
+	// The type of disk data included in the image. By default, the image includes both the system cloud disk and data cloud disk of the instance.
 	//
 	// example:
 	//
@@ -65,7 +70,7 @@ type CreateImageByInstanceRequest struct {
 	//
 	// test
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The WUYING instance ID. The instance can be a Cloud Desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before creating the image.
+	// The WUYING instance ID. The instance can be a cloud desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before creating the image.
 	//
 	// example:
 	//
@@ -83,13 +88,14 @@ type CreateImageByInstanceRequest struct {
 	//
 	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The sub-instance ID. This parameter does not apply to Cloud Desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
+	// The sub-instance ID. This parameter does not apply to cloud desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
 	//
 	// example:
 	//
 	// p-0cc7s3n1l*****
-	SubInstanceId *string                                `json:"SubInstanceId,omitempty" xml:"SubInstanceId,omitempty"`
-	TagList       []*CreateImageByInstanceRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	SubInstanceId *string `json:"SubInstanceId,omitempty" xml:"SubInstanceId,omitempty"`
+	// The tag list.
+	TagList []*CreateImageByInstanceRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
 func (s CreateImageByInstanceRequest) String() string {
@@ -213,7 +219,17 @@ func (s *CreateImageByInstanceRequest) Validate() error {
 }
 
 type CreateImageByInstanceRequestTagList struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// Group
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

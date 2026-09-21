@@ -80,7 +80,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// example:
 	//
-	// 办公应用
+	// OfficeApp
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// The package type.
 	//
@@ -115,7 +115,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The region ID of the delivery group. For information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	// The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
 	//
 	// This parameter is required.
 	//
@@ -151,13 +151,13 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The node pool object.
 	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
-	// The subscription duration of the resource when `ChargeType` is set to `PrePaid`. This parameter is required. The unit is specified by `PeriodUnit`.
+	// The duration for which you want to purchase resources when `ChargeType` is set to `PrePaid`. This parameter is required in this case. The unit is specified by `PeriodUnit`.
 	//
-	// - If `PeriodUnit` is set to `Week`, valid values:
+	// - If `PeriodUnit` is set to `Week`, valid values of this parameter:
 	//
 	//    - 1
 	//
-	// - If `PeriodUnit` is set to `Month`, valid values:
+	// - If `PeriodUnit` is set to `Month`, valid values of this parameter:
 	//
 	//    - 1
 	//
@@ -167,7 +167,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	//    - 6
 	//
-	// - If `PeriodUnit` is set to `Year`, valid values:
+	// - If `PeriodUnit` is set to `Year`, valid values of this parameter:
 	//
 	//    - 1
 	//
@@ -175,7 +175,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	//    - 3
 	//
-	// > If `ChargeType` is set to `PostPaid`, set this parameter to 1.
+	// > When `ChargeType` is set to `PostPaid`, set this parameter to the fixed value 1.
 	//
 	// This parameter is required.
 	//
@@ -185,11 +185,11 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
 	//
-	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
 	//
-	// If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
+	// In addition, if the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement phase.
 	//
-	// > If `ChargeType` is set to `PostPaid`, set this parameter to `Month`.
+	// > When `ChargeType` is set to `PostPaid`, set this parameter to the fixed value `Month`.
 	//
 	// This parameter is required.
 	//
@@ -197,7 +197,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	//
 	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The pre-opened AppId.
+	// The pre-opened application ID.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	RuntimePolicyShrink *string `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
 	// The security policy.
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	// The application recycling time, in minutes. After an end user disconnects from the cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
+	// The application recycling time, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
 	//
 	// This parameter is required.
 	//
@@ -244,9 +244,9 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	// if can be null:
 	// true
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The user information to be added to the delivery group as assigned users. This field is required if the `Users` parameter is specified.
+	// The information about the users to be added as assigned users of the delivery group. This parameter is required if the `Users` parameter is specified.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
-	// The list of usernames to be added to the delivery group as assigned users.
+	// The list of usernames to be added as assigned users of the delivery group.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 	// The display policy.
 	VideoPolicyShrink *string `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty"`

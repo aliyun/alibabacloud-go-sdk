@@ -88,9 +88,9 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// example:
 	//
-	// ENTERPRISE
+	// ENTERPRISE_AGENTIC_COMPUTER
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The list of agent platforms. If AgentPlatform is also specified, AgentPlatform takes precedence and this list is ignored.
+	// The list of agent platforms. If both AgentPlatformList and AgentPlatform are specified, AgentPlatform takes precedence and this list is ignored.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// example:
 	//
-	// OpenClaw
+	// AgenticComputer
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// The list of agent providers. If AgentProvider is also specified, AgentProvider takes precedence and this list is ignored.
+	// The list of agent providers. If both AgentProviderList and AgentProvider are specified, AgentProvider takes precedence and this list is ignored.
 	//
 	// example:
 	//
@@ -162,21 +162,21 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// Running
 	DesktopStatuses []*string `json:"DesktopStatuses,omitempty" xml:"DesktopStatuses,omitempty" type:"Repeated"`
-	// Indicates whether an authorized user exists for authorization.
+	// Indicates whether authorization is granted to an authorized user.
 	//
 	// example:
 	//
 	// true
 	HasAuthUser *bool `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
-	// Specifies whether a risk exists. This parameter is used to filter Cloud Desktops with or without risks and takes effect only when IncludeRiskInfo is set to true.
+	// Specifies whether risks exist. This parameter is used to filter Cloud Desktops with or without risks. It takes effect only when IncludeRiskInfo is set to true.
 	//
-	// Set this parameter to true to return only records with risks. Set this parameter to false to return only records without risks. If you do not specify this parameter, no filtering is applied.
+	// Set this parameter to true to return only records with risks. Set this parameter to false to return only records without risks. If this parameter is not specified, no filtering is applied.
 	//
 	// example:
 	//
 	// true
 	HasRisk *bool `json:"HasRisk,omitempty" xml:"HasRisk,omitempty"`
-	// Specifies whether to query and return risk information. Default value: false. If set to true, the response includes the RiskInfo field, and the HasRisk filter takes effect.
+	// Specifies whether to query and return risk information. Default value: false. If this parameter is set to true, the RiskInfo field is included in the response, and the HasRisk filter takes effect.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type ListDesktopAgentRuntimeRequest struct {
 	//
 	// cn-hangzhou+dir-xxxx
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The page number. Starts from 1. Values 0 and 1 return the same result.
+	// The page number, starting from 1. Values 0 and 1 return the same result.
 	//
 	// example:
 	//

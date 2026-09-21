@@ -53,6 +53,10 @@ type GetConnectionTicketResponseBody struct {
 	// p-0bxls9m3cl7s****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
 	// The avatar ID.
+	//
+	// example:
+	//
+	// default
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	// The region ID.
 	//
@@ -90,9 +94,9 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// 148871678899****
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The credentials for connecting to the cloud application.
+	// The credential for connecting to the cloud application.
 	//
-	// > This parameter is returned only on non-initial calls.
+	// > This parameter is returned only for non-initial calls.
 	//
 	// example:
 	//

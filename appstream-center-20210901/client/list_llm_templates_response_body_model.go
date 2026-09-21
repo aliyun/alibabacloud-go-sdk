@@ -24,7 +24,7 @@ type iListLlmTemplatesResponseBody interface {
 type ListLlmTemplatesResponseBody struct {
 	// The list of returned data objects.
 	Data []*ListLlmTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The current page number of the query results.
+	// The page number of the current query results.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListLlmTemplatesResponseBodyData struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The credit consumption multiplier (rate). A null value indicates that the model does not participate in credit-based billing.
+	// The credit consumption multiplier (rate). An empty value indicates that the model does not participate in credit-based billing.
 	CreditMultiplier *ListLlmTemplatesResponseBodyDataCreditMultiplier `json:"CreditMultiplier,omitempty" xml:"CreditMultiplier,omitempty" type:"Struct"`
 	// The template description.
 	//
@@ -185,7 +185,7 @@ type ListLlmTemplatesResponseBodyData struct {
 	//
 	// llmt-xxxx
 	LlmTemplateId *string `json:"LlmTemplateId,omitempty" xml:"LlmTemplateId,omitempty"`
-	// The model information, including context window size and maximum input/output tokens.
+	// The model information, such as context window size and maximum input/output tokens.
 	ModelInfo map[string]interface{} `json:"ModelInfo,omitempty" xml:"ModelInfo,omitempty"`
 	// The template name.
 	//
@@ -193,7 +193,7 @@ type ListLlmTemplatesResponseBodyData struct {
 	//
 	// Qwen3.6-Plus
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of price information.
+	// The list of pricing information.
 	Prices []*ListLlmTemplatesResponseBodyDataPrices `json:"Prices,omitempty" xml:"Prices,omitempty" type:"Repeated"`
 	// The ID of the model provider template.
 	//
@@ -202,10 +202,22 @@ type ListLlmTemplatesResponseBodyData struct {
 	// mpt-xxxx
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
 	// The publish time in ISO 8601 format, such as 2026-03-04T06:25:17.000+00:00.
+	//
+	// example:
+	//
+	// 2026-03-04T06:25:17.000+00:00
 	PublishedTime *string `json:"PublishedTime,omitempty" xml:"PublishedTime,omitempty"`
-	// The authorization scope of the associated model group. Valid values: ALL_USER (all users), USER_MIXED (specified users and user groups), RESOURCE_MIXED (specified resources). Returned only when SmartModel is set to true.
+	// The authorization scope of the model group. Valid values: ALL_USER (all users), USER_MIXED (specified users and user groups), and RESOURCE_MIXED (specified resources). Returned only when SmartModel is true.
+	//
+	// example:
+	//
+	// ALL_USER
 	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
-	// The number of route policies configured under this model tier. Returned only when SmartModel is set to true. Returns 0 for tiers without configured policies.
+	// The number of routing policies configured under this model tier. Returned only when SmartModel is true. Returns 0 for tiers with no configured policies.
+	//
+	// example:
+	//
+	// 1
 	RoutePolicyCount *int32 `json:"RoutePolicyCount,omitempty" xml:"RoutePolicyCount,omitempty"`
 }
 
@@ -376,9 +388,17 @@ func (s *ListLlmTemplatesResponseBodyData) Validate() error {
 }
 
 type ListLlmTemplatesResponseBodyDataCreditMultiplier struct {
-	// The maximum multiplier. A null value indicates no upper limit. For example, Min=1 with Max as null is displayed as 1x and above.
+	// The maximum multiplier. An empty value indicates no upper limit. For example, Min=1 with an empty Max is displayed as 1x and above.
+	//
+	// example:
+	//
+	// 3
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum multiplier. When equal to Max, it represents a fixed multiplier. For example, Min=Max=2 is displayed as 2x.
+	// The minimum multiplier. When equal to Max, it is a fixed multiplier. For example, Min=Max=2 is displayed as 2x.
+	//
+	// example:
+	//
+	// 2
 	Min *float32 `json:"Min,omitempty" xml:"Min,omitempty"`
 }
 
@@ -450,9 +470,13 @@ func (s *ListLlmTemplatesResponseBodyDataInferenceMetadata) Validate() error {
 }
 
 type ListLlmTemplatesResponseBodyDataPrices struct {
-	// The list of prices within the range.
+	// The list of prices within this range.
 	Prices []*ListLlmTemplatesResponseBodyDataPricesPrices `json:"Prices,omitempty" xml:"Prices,omitempty" type:"Repeated"`
 	// The range name, such as Default or 0-1M tokens.
+	//
+	// example:
+	//
+	// Default
 	RangeName *string `json:"RangeName,omitempty" xml:"RangeName,omitempty"`
 }
 
@@ -497,10 +521,22 @@ func (s *ListLlmTemplatesResponseBodyDataPrices) Validate() error {
 
 type ListLlmTemplatesResponseBodyDataPricesPrices struct {
 	// The price in string format, such as 0.2.
+	//
+	// example:
+	//
+	// 20
 	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
 	// The price name, such as Input, Output, or Image Generation.
+	//
+	// example:
+	//
+	// Input
 	PriceName *string `json:"PriceName,omitempty" xml:"PriceName,omitempty"`
 	// The price unit, such as per image or per thousand tokens.
+	//
+	// example:
+	//
+	// per million tokens
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
 }
 

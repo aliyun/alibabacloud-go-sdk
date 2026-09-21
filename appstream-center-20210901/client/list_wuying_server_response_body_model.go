@@ -117,13 +117,13 @@ func (s *ListWuyingServerResponseBody) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
-	// The status of adding to the virtual node pool.
+	// The status of adding the workstation to a virtual node pool.
 	//
 	// example:
 	//
 	// Added
 	AddVirtualNodePoolStatus *string `json:"AddVirtualNodePoolStatus,omitempty" xml:"AddVirtualNodePoolStatus,omitempty"`
-	// The tenant UID.
+	// The UID of the tenant.
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method.
+	// The payment method.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The creation time.
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -155,13 +155,19 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The list of data cloud disks.
 	DataDisk []*ListWuyingServerResponseBodyWuyingServerListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// The maximum number of private IP addresses per ENI, including the primary IP address.
+	// The maximum number of private IP addresses per elastic network interface (ENI), including the primary IP address.
 	//
 	// example:
 	//
 	// 10
 	EniPrivateIpAddressQuantity *int32 `json:"EniPrivateIpAddressQuantity,omitempty" xml:"EniPrivateIpAddressQuantity,omitempty"`
-	// The expiration time.
+	// The eRDMA activation status. Valid values: disabled, enabling, enabled, and failed.
+	//
+	// example:
+	//
+	// enabled
+	ErdmaStatus *string `json:"ErdmaStatus,omitempty" xml:"ErdmaStatus,omitempty"`
+	// The expiration time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -179,15 +185,15 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// imgc-06****oagaev
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image name.
+	// The name of the image.
 	//
 	// example:
 	//
 	// Alibaba Cloud Linux 3.2104 LTS 64位
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The list of workspace instance information.
+	// The list of workstation instance information.
 	InstanceInfoList []*ListWuyingServerResponseBodyWuyingServerListInstanceInfoList `json:"InstanceInfoList,omitempty" xml:"InstanceInfoList,omitempty" type:"Repeated"`
-	// The maximum price of the spot instance.
+	// The maximum price for the spot instance.
 	//
 	// example:
 	//
@@ -205,19 +211,19 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// cn-hangzhou+dir-1b****ayv2
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name.
+	// The name of the office network.
 	//
 	// example:
 	//
 	// exampleOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The office network type.
+	// The network type of the office network.
 	//
 	// example:
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The operating system type.
+	// The type of the operating system.
 	//
 	// example:
 	//
@@ -251,19 +257,25 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// spot
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	// Whether ASP streaming connection is supported.
+	//
+	// example:
+	//
+	// true
+	SupportASP *bool `json:"SupportASP,omitempty" xml:"SupportASP,omitempty"`
 	// The system cloud disk type.
 	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The ID of the system cloud disk.
+	// The system cloud disk ID.
 	//
 	// example:
 	//
 	// d-bp1234567890abcde
 	SystemDiskId *string `json:"SystemDiskId,omitempty" xml:"SystemDiskId,omitempty"`
-	// The system cloud disk performance level.
+	// The performance level (PL) of the system cloud disk.
 	//
 	// example:
 	//
@@ -275,7 +287,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 100
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The ID of the timer group.
+	// The timer group ID.
 	//
 	// example:
 	//
@@ -295,7 +307,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// vnp-bp1234567890abcde
 	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
-	// Indicates whether the Virtual Kubelet needs to be upgraded.
+	// Indicates whether a VirtualKubelet upgrade is needed.
 	VkUpgradeNeeded *bool `json:"VkUpgradeNeeded,omitempty" xml:"VkUpgradeNeeded,omitempty"`
 	// The Virtual Kubelet version.
 	//
@@ -361,6 +373,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetDataDisk() []*ListWuyi
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetEniPrivateIpAddressQuantity() *int32 {
 	return s.EniPrivateIpAddressQuantity
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetErdmaStatus() *string {
+	return s.ErdmaStatus
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetExpiredTime() *string {
@@ -437,6 +453,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetStatus() *string {
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetSubPayType() *string {
 	return s.SubPayType
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetSupportASP() *bool {
+	return s.SupportASP
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskCategory() *string {
@@ -528,6 +548,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetDataDisk(v []*ListWuyi
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetEniPrivateIpAddressQuantity(v int32) *ListWuyingServerResponseBodyWuyingServerList {
 	s.EniPrivateIpAddressQuantity = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetErdmaStatus(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.ErdmaStatus = &v
 	return s
 }
 
@@ -623,6 +648,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetStatus(v string) *List
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetSubPayType(v string) *ListWuyingServerResponseBodyWuyingServerList {
 	s.SubPayType = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetSupportASP(v bool) *ListWuyingServerResponseBodyWuyingServerList {
+	s.SupportASP = &v
 	return s
 }
 
@@ -737,31 +767,31 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
-	// The data cloud disk type.
+	// The type of the data cloud disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// The data cloud disk ID.
+	// The ID of the data cloud disk.
 	//
 	// example:
 	//
 	// d-bp1234567890abcde
 	DataDiskId *string `json:"DataDiskId,omitempty" xml:"DataDiskId,omitempty"`
-	// The data cloud disk sequence number.
+	// The sequence number of the data cloud disk.
 	//
 	// example:
 	//
 	// 1
 	DataDiskNo *string `json:"DataDiskNo,omitempty" xml:"DataDiskNo,omitempty"`
-	// The data cloud disk performance level.
+	// The performance level (PL) of the data cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
-	// The data cloud disk size. Unit: GB.
+	// The size of the data cloud disk. Unit: GB.
 	//
 	// example:
 	//
@@ -872,7 +902,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerListInstanceInfoList) Validate(
 }
 
 type ListWuyingServerResponseBodyWuyingServerListPrivateIpSets struct {
-	// Indicates whether the IP address is the primary private IP address. A value of true indicates the primary private IP address. A value of false indicates a secondary private IP address.
+	// Indicates whether the IP address is the primary private IP address. Valid values:
+	//
+	// - true: The IP address is the primary private IP address.
+	//
+	// - false: The IP address is a secondary private IP address.
 	//
 	// example:
 	//
@@ -1022,7 +1056,7 @@ func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) Val
 }
 
 type ListWuyingServerResponseBodyWuyingServerListSessions struct {
-	// The start time of the session.
+	// The session start time in ISO 8601 format.
 	//
 	// example:
 	//

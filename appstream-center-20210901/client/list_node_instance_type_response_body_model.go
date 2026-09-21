@@ -135,7 +135,7 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// 8192
 	GpuMemory *int64 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary by resource specification. The valid values for each resource specification are as follows:
+	// The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected at the same time, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
 	//
 	// - appstreaming.general.2c4g: 1
 	//
@@ -195,7 +195,7 @@ type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
 	//
 	// example:
 	//
-	// WUYING-General-purpose_4vCPU8GB.
+	// WUYING-General-purpose_4vCPU8GB
 	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
 }
 

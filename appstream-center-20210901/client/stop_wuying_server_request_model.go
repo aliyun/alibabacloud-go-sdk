@@ -18,16 +18,17 @@ type iStopWuyingServerRequest interface {
 }
 
 type StopWuyingServerRequest struct {
-	// Specifies whether to forcibly restart the workstation. Valid values:
-	//
-	// - True: forcibly
-	//
-	// - False: not forcibly
+	// Specifies whether to forcibly restart the workstation.
 	//
 	// example:
 	//
 	// True
-	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The product type.
+	//
+	// example:
+	//
+	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`

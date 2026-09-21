@@ -16,6 +16,11 @@ type iStartWuyingServerRequest interface {
 }
 
 type StartWuyingServerRequest struct {
+	// The product type.
+	//
+	// example:
+	//
+	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The list of workstation IDs.
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`

@@ -23,6 +23,10 @@ type iCreateWuyingServerRequest interface {
 	GetChargeType() *string
 	SetDataDisk(v []*CreateWuyingServerRequestDataDisk) *CreateWuyingServerRequest
 	GetDataDisk() []*CreateWuyingServerRequestDataDisk
+	SetErdmaEnabled(v bool) *CreateWuyingServerRequest
+	GetErdmaEnabled() *bool
+	SetGpuDriverVersion(v string) *CreateWuyingServerRequest
+	GetGpuDriverVersion() *string
 	SetHostName(v string) *CreateWuyingServerRequest
 	GetHostName() *string
 	SetIdempotenceToken(v string) *CreateWuyingServerRequest
@@ -66,7 +70,7 @@ type iCreateWuyingServerRequest interface {
 }
 
 type CreateWuyingServerRequest struct {
-	// The number of workstations to create.
+	// The quantity.
 	//
 	// example:
 	//
@@ -90,13 +94,13 @@ type CreateWuyingServerRequest struct {
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The billing method.
+	// The billing type.
 	//
 	// example:
 	//
@@ -104,27 +108,39 @@ type CreateWuyingServerRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The list of data cloud disks.
 	DataDisk []*CreateWuyingServerRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// Specifies whether to enable dedicated eRDMA network interfaces.
+	//
+	// example:
+	//
+	// true
+	ErdmaEnabled *bool `json:"ErdmaEnabled,omitempty" xml:"ErdmaEnabled,omitempty"`
+	// The GPU driver configuration version, such as grid19.
+	//
+	// example:
+	//
+	// grid19
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The hostname. The following limits apply:
 	//
-	// - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive periods or hyphens are not allowed.
+	// - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive use is not allowed.
 	//
-	// - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.). Consecutive hyphens are not allowed, and the hostname cannot be all digits. The hostname can contain uppercase and lowercase letters, digits, and hyphens (-).
+	// - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.), consecutive hyphens, or consist entirely of digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
 	//
 	// - Linux workstations:
 	//
-	//   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment separated by a period can contain uppercase and lowercase letters, digits, and hyphens (-).
+	//   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment between periods can contain uppercase and lowercase letters, digits, and hyphens (-).
 	//
-	//   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the ECS instance ID is `i-123abc****`, the hostname is `k8s-i-123abc****`.
+	//   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the created ECS instance ID is `i-123abc****`, the hostname of the instance is `k8s-i-123abc****`.
 	//
-	// - When you create multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` format to assign sequential hostnames. For example, if you set HostName to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
+	// - When creating multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to uniformly name multiple workstations. For example, if you set Hostname to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
 	//
 	//   - `name_prefix`: The prefix of the hostname.
 	//
 	//   - `[begin_number,bits]`: The sequential number in the hostname.
 	//
-	//     - `begin_number`: The starting number. Valid values: 0 to 999999. Default value: 0. If the value is invalid, it is set to 0.
+	//     - `begin_number`: The starting number. Valid values: 0 to 999999. Default value: 0. If an invalid value is specified, the value is set to 0.
 	//
-	//     - `bits`: The number of digits. Valid values: 1 to 6. Default value: 6. If the value is invalid, it is set to 6.
+	//     - `bits`: The number of digits. Valid values: 1 to 6. Default value: 6. If an invalid value is specified, the value is set to 6.
 	//
 	//   - `name_suffix`: The suffix of the hostname.
 	//
@@ -132,7 +148,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// testhost
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The idempotence token that ensures the uniqueness of the operation.
+	// The idempotency token that ensures operation uniqueness.
 	//
 	// example:
 	//
@@ -143,7 +159,12 @@ type CreateWuyingServerRequest struct {
 	// example:
 	//
 	// img-bp13mu****
-	ImageId  *string  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The maximum price.
+	//
+	// example:
+	//
+	// 0.05
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
 	// The network policy type (invite-only preview).
 	//
@@ -157,7 +178,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// cn-hangzhou+dir-643067****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The logon password of the workstation.
+	// The workstation logon password.
 	//
 	// example:
 	//
@@ -169,7 +190,7 @@ type CreateWuyingServerRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The time unit.
 	//
 	// example:
 	//
@@ -178,12 +199,17 @@ type CreateWuyingServerRequest struct {
 	// The discount ID.
 	//
 	//
-	// > If PromotionId is specified, the system attempts to apply the corresponding discount.
+	// > If PromotionId is specified, the corresponding discount is applied.
 	//
 	// example:
 	//
 	// 17440009****
-	PromotionId  *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The savings plan ID.
+	//
+	// example:
+	//
+	// spn-ce3f5b4fk**46CY
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
 	// The workstation instance type.
 	//
@@ -191,33 +217,45 @@ type CreateWuyingServerRequest struct {
 	//
 	// eds.proworkstation_flagship_elite_ne.96c384g.192g4x
 	ServerInstanceType *string `json:"ServerInstanceType,omitempty" xml:"ServerInstanceType,omitempty"`
-	ServerPortRange    *string `json:"ServerPortRange,omitempty" xml:"ServerPortRange,omitempty"`
-	SubPayType         *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The type of the system cloud disk.
+	// The service port range.
+	//
+	// example:
+	//
+	// 22/22
+	ServerPortRange *string `json:"ServerPortRange,omitempty" xml:"ServerPortRange,omitempty"`
+	// The sub-billing type.
+	//
+	// example:
+	//
+	// postPaid
+	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	// The system cloud disk type.
 	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The performance level of the system cloud disk.
+	// The system cloud disk performance level.
 	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The size of the system cloud disk. Unit: GB.
+	// The system cloud disk size. Unit: GB.
 	//
 	// example:
 	//
 	// 100
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The list of vSwitches in the office network.
+	// The list of office network vSwitches.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The virtual node pool ID.
+	//
 	// example:
 	//
 	// vnp-0b************gyw
 	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
-	// The workstation name. When you create multiple workstations, a numeric suffix is automatically appended.
+	// The workstation name. When creating multiple workstations, a numeric suffix is automatically appended.
 	//
 	// example:
 	//
@@ -259,6 +297,14 @@ func (s *CreateWuyingServerRequest) GetChargeType() *string {
 
 func (s *CreateWuyingServerRequest) GetDataDisk() []*CreateWuyingServerRequestDataDisk {
 	return s.DataDisk
+}
+
+func (s *CreateWuyingServerRequest) GetErdmaEnabled() *bool {
+	return s.ErdmaEnabled
+}
+
+func (s *CreateWuyingServerRequest) GetGpuDriverVersion() *string {
+	return s.GpuDriverVersion
 }
 
 func (s *CreateWuyingServerRequest) GetHostName() *string {
@@ -376,6 +422,16 @@ func (s *CreateWuyingServerRequest) SetDataDisk(v []*CreateWuyingServerRequestDa
 	return s
 }
 
+func (s *CreateWuyingServerRequest) SetErdmaEnabled(v bool) *CreateWuyingServerRequest {
+	s.ErdmaEnabled = &v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetGpuDriverVersion(v string) *CreateWuyingServerRequest {
+	s.GpuDriverVersion = &v
+	return s
+}
+
 func (s *CreateWuyingServerRequest) SetHostName(v string) *CreateWuyingServerRequest {
 	s.HostName = &v
 	return s
@@ -490,19 +546,19 @@ func (s *CreateWuyingServerRequest) Validate() error {
 }
 
 type CreateWuyingServerRequestDataDisk struct {
-	// The type of the data cloud disk.
+	// The data cloud disk type.
 	//
 	// example:
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// The performance level of the data cloud disk.
+	// The data cloud disk performance level.
 	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
-	// The size of the data cloud disk.
+	// The data cloud disk size.
 	//
 	// example:
 	//

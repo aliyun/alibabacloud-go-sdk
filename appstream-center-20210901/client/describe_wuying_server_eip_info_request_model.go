@@ -18,7 +18,7 @@ type iDescribeWuyingServerEipInfoRequest interface {
 type DescribeWuyingServerEipInfoRequest struct {
 	// The Internet service operation provider. Valid values:
 	//
-	// - ChinaMobile: Shift.
+	// - ChinaMobile: China Shift.
 	//
 	// - ChinaTelecom: China Telecom.
 	//
@@ -28,7 +28,7 @@ type DescribeWuyingServerEipInfoRequest struct {
 	//
 	// ChinaTelecom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The workspace ID.
+	// The workspace ID. You can obtain this ID from the WuyingServerIdList returned by CreateWuyingServer after creating a workspace, or query the ID of an existing workspace by calling ListWuyingServer.
 	//
 	// This parameter is required.
 	//

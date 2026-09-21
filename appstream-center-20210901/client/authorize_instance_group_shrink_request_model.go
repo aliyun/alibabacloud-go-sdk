@@ -11,6 +11,8 @@ type iAuthorizeInstanceGroupShrinkRequest interface {
 	GoString() string
 	SetAppInstanceGroupId(v string) *AuthorizeInstanceGroupShrinkRequest
 	GetAppInstanceGroupId() *string
+	SetAppInstanceGroupSetId(v string) *AuthorizeInstanceGroupShrinkRequest
+	GetAppInstanceGroupSetId() *string
 	SetAppInstancePersistentId(v string) *AuthorizeInstanceGroupShrinkRequest
 	GetAppInstancePersistentId() *string
 	SetAuthorizeUserGroupIds(v []*string) *AuthorizeInstanceGroupShrinkRequest
@@ -30,36 +32,46 @@ type iAuthorizeInstanceGroupShrinkRequest interface {
 }
 
 type AuthorizeInstanceGroupShrinkRequest struct {
-	// 交付群組 ID。可呼叫 [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) 介面取得。
-	//
-	// This parameter is required.
+	// The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// 持續性工作階段 ID。
+	// The delivery group set ID. You must specify either AppInstanceGroupSetId or AppInstanceGroupId, but not both.
+	//
+	// example:
+	//
+	// set-3jm9d0abc00example
+	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
+	// The persistent session ID.
+	//
+	// > Metric description
+	//
+	// > - This parameter is required when the authorization mode of the delivery group is Session. You can call the ListPersistentAppInstances operation to obtain a valid ID.
+	//
+	// > - This parameter is required when ProductType is set to WuyingServer. You can call the ListPersistentAppInstances operation to obtain a valid ID.
 	//
 	// example:
 	//
 	// p-0cc7s3mw2fg4j****
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	// 授權使用者群組 ID 清單。
+	// The list of authorized user group IDs to grant authorization.
 	//
 	// if can be null:
 	// true
 	AuthorizeUserGroupIds []*string `json:"AuthorizeUserGroupIds,omitempty" xml:"AuthorizeUserGroupIds,omitempty" type:"Repeated"`
-	// 要新增交付群組授權的使用者名稱清單。可設定 1\\~100 個。
+	// The list of usernames to add to the delivery group authorization. You can specify 1 to 100 usernames.
 	AuthorizeUserIds []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
-	// 使用者分身 ID。
+	// The user avatar ID.
 	//
-	// > 此參數未開放使用。
+	// > This parameter is not available for public use.
 	//
 	// example:
 	//
 	// default
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
-	// 產品類型。
+	// The product type.
 	//
 	// This parameter is required.
 	//
@@ -67,14 +79,14 @@ type AuthorizeInstanceGroupShrinkRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// 取消授權使用者群組 ID 清單。
+	// The list of authorized user group IDs to revoke authorization.
 	//
 	// if can be null:
 	// true
 	UnAuthorizeUserGroupIds []*string `json:"UnAuthorizeUserGroupIds,omitempty" xml:"UnAuthorizeUserGroupIds,omitempty" type:"Repeated"`
-	// 要移除交付群組授權的使用者名稱清單。可設定 1\\~100 個。
+	// The list of usernames to remove from the delivery group authorization. You can specify 1 to 100 usernames.
 	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
-	// 使用者資訊。
+	// The user information.
 	UserMetaShrink *string `json:"UserMeta,omitempty" xml:"UserMeta,omitempty"`
 }
 
@@ -88,6 +100,10 @@ func (s AuthorizeInstanceGroupShrinkRequest) GoString() string {
 
 func (s *AuthorizeInstanceGroupShrinkRequest) GetAppInstanceGroupId() *string {
 	return s.AppInstanceGroupId
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) GetAppInstanceGroupSetId() *string {
+	return s.AppInstanceGroupSetId
 }
 
 func (s *AuthorizeInstanceGroupShrinkRequest) GetAppInstancePersistentId() *string {
@@ -124,6 +140,11 @@ func (s *AuthorizeInstanceGroupShrinkRequest) GetUserMetaShrink() *string {
 
 func (s *AuthorizeInstanceGroupShrinkRequest) SetAppInstanceGroupId(v string) *AuthorizeInstanceGroupShrinkRequest {
 	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *AuthorizeInstanceGroupShrinkRequest) SetAppInstanceGroupSetId(v string) *AuthorizeInstanceGroupShrinkRequest {
+	s.AppInstanceGroupSetId = &v
 	return s
 }
 

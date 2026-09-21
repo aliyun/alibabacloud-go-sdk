@@ -96,15 +96,15 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// example:
 	//
-	// 办公应用
+	// OfficeApp
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The instance type of the delivery group.
+	// The specification type of the delivery group.
 	//
 	// example:
 	//
 	// __dynamic__
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	// The name of the instance type of the delivery group.
+	// The name of the specification type of the delivery group.
 	//
 	// example:
 	//
@@ -136,11 +136,11 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The expiration time of the delivery group.
+	// The expiration time of the delivery group. The time is in ISO 8601 format, including milliseconds and time zone offset. Format: yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX.
 	//
 	// example:
 	//
-	// 2022-04-27T16:00:00.000+00:00
+	// 2026-09-24T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The creation time.
 	//
@@ -218,19 +218,19 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// 5
 	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	// The number of sessions created during each scale-out operation. Minimum value: 1.
+	// The number of sessions created per scale-out operation. Minimum value: 1.
 	//
 	// example:
 	//
 	// 10
 	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: Session usage = Number of sessions in use ÷ Total number of sessions × 100%. Valid values: 0 to 99.
+	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The session usage is calculated as follows: Session usage = Number of sessions in use ÷ Total number of sessions × 100%. Valid values: 0 to 99.
 	//
 	// example:
 	//
 	// 85
 	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	// The session disconnection retention duration, in minutes. After a session is disconnected from the end user, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+	// The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// NORMAL
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	// Specifies whether to skip user authorization verification.
+	// Indicates whether user authorization verification is skipped.
 	//
 	// example:
 	//
@@ -259,10 +259,13 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// PUBLISHED
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportUserGroupMixedAuth *bool   `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether mixed authorization of users and user groups is supported.
+	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
 	// The list of resource tags.
 	Tags []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The user and user group authorization mode.
+	//
 	// example:
 	//
 	// Mixed
@@ -672,7 +675,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
 	//
 	// example:
 	//
-	// 办公应用
+	// OfficeApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The application version.
 	//
@@ -684,7 +687,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
 	//
 	// example:
 	//
-	// 初始版本
+	// InitialVersion
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -752,7 +755,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the idle sessions are considered sufficient and no automatic scale-out occurs. This parameter allows flexible control over elastic scaling behavior and helps reduce costs.
+	// The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions and automatic scale-out is not triggered. This parameter provides flexible control over elastic scaling behavior and helps reduce costs.
 	//
 	// example:
 	//
@@ -770,7 +773,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// 1
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary by resource specification:
+	// The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
 	//
 	// - appstreaming.general.4c8g: 1 to 2.
 	//
@@ -786,7 +789,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// 2
 	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	// The instance type ID of the purchased resource.
+	// The specification type ID of the purchased resource.
 	//
 	// example:
 	//
@@ -802,7 +805,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// example:
 	//
-	// 无影-通用型_4核8G
+	// WUYING-General_4vCPU8GiB
 	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
 	// The resource count of subscription resources in use.
 	//
@@ -830,13 +833,13 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// 4
 	ScalingNodeUsed *int32 `json:"ScalingNodeUsed,omitempty" xml:"ScalingNodeUsed,omitempty"`
-	// The number of resources created during each scale-out operation. Valid values: 1 to 10.
+	// The number of resources created per scale-out operation. Valid values: 1 to 10.
 	//
 	// example:
 	//
 	// 2
 	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: `Session usage = Current number of sessions ÷ (Total number of resources × Concurrent sessions per resource) × 100%`.
+	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The session usage is calculated as follows: `Session usage = Number of current sessions ÷ (Total number of resources × Concurrent sessions per resource) × 100%`.
 	//
 	// example:
 	//
@@ -1063,7 +1066,7 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) Validate
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules struct {
-	// The type of the policy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues`.
+	// The type of the policy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues` at the same time.
 	//
 	// example:
 	//

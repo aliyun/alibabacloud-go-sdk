@@ -52,7 +52,12 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The billing type.
+	//
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The number of CPU cores.
 	//
 	// example:
@@ -65,12 +70,17 @@ type ListNodeInstanceTypeRequest struct {
 	//
 	// 1
 	Gpu *float32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The GPU memory size. This parameter is meaningful for GPU-accelerated cloud desktops. Unit: MB.
+	// The GPU memory size. This value is meaningful for GPU-accelerated cloud desktops. Unit: MB.
 	//
 	// example:
 	//
 	// 2048
-	GpuMemory             *int32  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// The current specification of the instance for specification change.
+	//
+	// example:
+	//
+	// eds.proworkstation_flagship_elite_ne.32c64g.48g1x
 	InstanceTypeForModify *string `json:"InstanceTypeForModify,omitempty" xml:"InstanceTypeForModify,omitempty"`
 	// The language type.
 	//
@@ -101,7 +111,12 @@ type ListNodeInstanceTypeRequest struct {
 	// example:
 	//
 	// CPU
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The specification change type.
+	//
+	// example:
+	//
+	// UPGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The supported operating system type.
 	//

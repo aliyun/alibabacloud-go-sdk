@@ -24,13 +24,13 @@ type iListModelProviderTemplatesResponseBody interface {
 type ListModelProviderTemplatesResponseBody struct {
 	// The list of returned data objects.
 	Data []*ListModelProviderTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The current page number of the query results.
+	// The page number of the current query result.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in the query result.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// WuyingCredit
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// The WUYING secure gateway proxy ProviderKey.
+	// The ProviderKey of the WUYING secure gateway proxy.
 	//
 	// example:
 	//

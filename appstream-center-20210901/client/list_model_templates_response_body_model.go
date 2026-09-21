@@ -24,7 +24,7 @@ type iListModelTemplatesResponseBody interface {
 type ListModelTemplatesResponseBody struct {
 	// The list of returned data objects.
 	Data []*ListModelTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The current page number of the query results.
+	// The page number of the current query results.
 	//
 	// example:
 	//
@@ -118,6 +118,10 @@ func (s *ListModelTemplatesResponseBody) Validate() error {
 
 type ListModelTemplatesResponseBodyData struct {
 	// The Agent platform (such as ENTERPRISE or ENTERPRISE_JVS).
+	//
+	// example:
+	//
+	// ENTERPRISE_AGENTIC_COMPUTER
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
 	// The Agent provider name.
 	//
@@ -156,6 +160,10 @@ type ListModelTemplatesResponseBodyData struct {
 	// true
 	HasModel *bool `json:"HasModel,omitempty" xml:"HasModel,omitempty"`
 	// The number of models in the model group, including referenced system provider models.
+	//
+	// example:
+	//
+	// 8
 	ModelCount *int32 `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
 	// The model group ID.
 	//
@@ -169,15 +177,23 @@ type ListModelTemplatesResponseBodyData struct {
 	//
 	// model-template-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The group authorization scope. Valid values:
+	// The group authorization scope. Valid values: ALL_USER (all users) and USER_MIXED (a mix of user groups and users, only for Common groups).
 	//
-	// - ALL_USER: all users.
+	// example:
 	//
-	// - USER_MIXED: user mixed (a mix of user groups and users, only for Common groups).
+	// ALL_USER
 	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
-	// The number of authorized users in the group. Returned only when ListModelTemplates is called with refScope=USER_MIXED. Otherwise null.
+	// The number of authorized users in the group. This value is returned only when ListModelTemplates is called and refScope is USER_MIXED. Otherwise, the value is null.
+	//
+	// example:
+	//
+	// 1
 	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	// The number of authorized user groups in the group. Returned only when ListModelTemplates is called with refScope=USER_MIXED. Otherwise null.
+	// The number of authorized user groups in the group. This value is returned only when ListModelTemplates is called and refScope is USER_MIXED. Otherwise, the value is null.
+	//
+	// example:
+	//
+	// 2
 	UserGroupCount *int32 `json:"UserGroupCount,omitempty" xml:"UserGroupCount,omitempty"`
 }
 

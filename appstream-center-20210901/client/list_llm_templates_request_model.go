@@ -29,8 +29,12 @@ type iListLlmTemplatesRequest interface {
 
 type ListLlmTemplatesRequest struct {
 	// The business type. This parameter is required when SmartModel is set to true.
+	//
+	// example:
+	//
+	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The model code filter. Fuzzy match is supported.
+	// The model code used for filtering. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -44,7 +48,7 @@ type ListLlmTemplatesRequest struct {
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The page number, starting from 1. Values 0 and 1 return the same result.
+	// The page number. Pages start from page 1. Both 0 and 1 return the same result.
 	//
 	// example:
 	//
@@ -62,7 +66,13 @@ type ListLlmTemplatesRequest struct {
 	//
 	// mpt-xxxx
 	ProviderTemplateId *string `json:"ProviderTemplateId,omitempty" xml:"ProviderTemplateId,omitempty"`
-	// Specifies whether to query smart models. If set to true, only LLMs under system preset smart models are returned, and BizType is required. Default value: false.
+	// Specifies whether to query smart models. Valid values:
+	//
+	// - true: Only LLMs under system preset smart models are returned. In this case, BizType is required.
+	//
+	// - false: Smart model filtering is not applied.
+	//
+	// Default value: false.
 	//
 	// example:
 	//

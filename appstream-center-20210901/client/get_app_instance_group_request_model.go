@@ -16,7 +16,7 @@ type iGetAppInstanceGroupRequest interface {
 }
 
 type GetAppInstanceGroupRequest struct {
-	// The delivery group ID. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID.
+	// The ID of the delivery group. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

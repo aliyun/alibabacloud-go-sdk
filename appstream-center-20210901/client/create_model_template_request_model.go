@@ -46,13 +46,13 @@ type CreateModelTemplateRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The description of the model group.
+	// The template group description.
 	//
 	// example:
 	//
 	// Test model group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the model group.
+	// The template group name.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,11 @@ type CreateModelTemplateRequest struct {
 	//
 	// model-template-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The authorization scope. This parameter is optional and effective only for Common model groups. Valid values: ALL_USER and USER_MIXED (strictly uppercase). If not specified, the default value is USER_MIXED for Common groups. Non-Common groups ignore this parameter and use RESOURCE_MIXED.
+	// The authorization scope. This parameter is optional and effective only for Common model groups. Valid values: ALL_USER and USER_MIXED (strictly uppercase). If not specified, Common model groups default to USER_MIXED. Non-Common groups ignore this parameter and use RESOURCE_MIXED.
+	//
+	// example:
+	//
+	// ALL_USER
 	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
 }
 

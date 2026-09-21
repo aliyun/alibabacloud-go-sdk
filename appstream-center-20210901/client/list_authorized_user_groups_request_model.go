@@ -11,6 +11,8 @@ type iListAuthorizedUserGroupsRequest interface {
 	GoString() string
 	SetAppInstanceGroupId(v string) *ListAuthorizedUserGroupsRequest
 	GetAppInstanceGroupId() *string
+	SetAppInstanceGroupSetId(v string) *ListAuthorizedUserGroupsRequest
+	GetAppInstanceGroupSetId() *string
 	SetGroupId(v string) *ListAuthorizedUserGroupsRequest
 	GetGroupId() *string
 	SetGroupName(v string) *ListAuthorizedUserGroupsRequest
@@ -26,12 +28,16 @@ type iListAuthorizedUserGroupsRequest interface {
 type ListAuthorizedUserGroupsRequest struct {
 	// The ID of the delivery group.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the delivery group set. You must specify either AppInstanceGroupSetId or AppInstanceGroupId, but not both.
+	//
+	// example:
+	//
+	// set-3jm9d0abc00example
+	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
 	// The ID of the user group. This parameter is used for exact match.
 	//
 	// example:
@@ -42,7 +48,7 @@ type ListAuthorizedUserGroupsRequest struct {
 	//
 	// example:
 	//
-	// 用户组001
+	// UserGroup001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The page number, starting from 1.
 	//
@@ -82,6 +88,10 @@ func (s *ListAuthorizedUserGroupsRequest) GetAppInstanceGroupId() *string {
 	return s.AppInstanceGroupId
 }
 
+func (s *ListAuthorizedUserGroupsRequest) GetAppInstanceGroupSetId() *string {
+	return s.AppInstanceGroupSetId
+}
+
 func (s *ListAuthorizedUserGroupsRequest) GetGroupId() *string {
 	return s.GroupId
 }
@@ -104,6 +114,11 @@ func (s *ListAuthorizedUserGroupsRequest) GetProductType() *string {
 
 func (s *ListAuthorizedUserGroupsRequest) SetAppInstanceGroupId(v string) *ListAuthorizedUserGroupsRequest {
 	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsRequest) SetAppInstanceGroupSetId(v string) *ListAuthorizedUserGroupsRequest {
+	s.AppInstanceGroupSetId = &v
 	return s
 }
 

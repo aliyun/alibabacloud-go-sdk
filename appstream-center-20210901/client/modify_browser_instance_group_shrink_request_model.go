@@ -9,6 +9,8 @@ type iModifyBrowserInstanceGroupShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthNotificationEnabled(v bool) *ModifyBrowserInstanceGroupShrinkRequest
+	GetAuthNotificationEnabled() *bool
 	SetBrowserConfigShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest
 	GetBrowserConfigShrink() *string
 	SetBrowserInstanceGroupId(v string) *ModifyBrowserInstanceGroupShrinkRequest
@@ -28,6 +30,12 @@ type iModifyBrowserInstanceGroupShrinkRequest interface {
 }
 
 type ModifyBrowserInstanceGroupShrinkRequest struct {
+	// Specifies whether to send notification emails for authorization and deauthorization.
+	//
+	// example:
+	//
+	// true
+	AuthNotificationEnabled *bool `json:"AuthNotificationEnabled,omitempty" xml:"AuthNotificationEnabled,omitempty"`
 	// The browser configuration.
 	BrowserConfigShrink *string `json:"BrowserConfig,omitempty" xml:"BrowserConfig,omitempty"`
 	// The ID of the cloud browser to modify.
@@ -68,6 +76,10 @@ func (s ModifyBrowserInstanceGroupShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyBrowserInstanceGroupShrinkRequest) GetAuthNotificationEnabled() *bool {
+	return s.AuthNotificationEnabled
+}
+
 func (s *ModifyBrowserInstanceGroupShrinkRequest) GetBrowserConfigShrink() *string {
 	return s.BrowserConfigShrink
 }
@@ -98,6 +110,11 @@ func (s *ModifyBrowserInstanceGroupShrinkRequest) GetStoragePolicyShrink() *stri
 
 func (s *ModifyBrowserInstanceGroupShrinkRequest) GetTimersShrink() *string {
 	return s.TimersShrink
+}
+
+func (s *ModifyBrowserInstanceGroupShrinkRequest) SetAuthNotificationEnabled(v bool) *ModifyBrowserInstanceGroupShrinkRequest {
+	s.AuthNotificationEnabled = &v
+	return s
 }
 
 func (s *ModifyBrowserInstanceGroupShrinkRequest) SetBrowserConfigShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest {

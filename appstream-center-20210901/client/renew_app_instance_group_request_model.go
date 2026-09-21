@@ -44,7 +44,7 @@ type RenewAppInstanceGroupRequest struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The numeric part of the resource purchase duration. This parameter is used together with `PeriodUnit` to represent the complete purchase duration.
+	// The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
 	//
 	// This parameter is required.
 	//
@@ -52,25 +52,25 @@ type RenewAppInstanceGroupRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit part of the resource purchase duration. This parameter is used together with `Period` to represent the complete purchase duration. Valid combinations of `Period` and `PeriodUnit`:
+	// The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
 	//
-	// - 1 Week
+	// - 1 Week (1 week)
 	//
-	// - 1 Month
+	// - 1 Month (1 month)
 	//
-	// - 2 Month
+	// - 2 Month (2 months)
 	//
-	// - 3 Month
+	// - 3 Month (3 months)
 	//
-	// - 6 Month
+	// - 6 Month (6 months)
 	//
-	// - 1 Year
+	// - 1 Year (1 year)
 	//
-	// - 2 Year
+	// - 2 Year (2 years)
 	//
-	// - 3 Year
+	// - 3 Year (3 years)
 	//
-	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the valid combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
+	// > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
 	//
 	// This parameter is required.
 	//
@@ -91,10 +91,21 @@ type RenewAppInstanceGroupRequest struct {
 	// example:
 	//
 	// 17440009****
-	PromotionId *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	RenewAmount *int32    `json:"RenewAmount,omitempty" xml:"RenewAmount,omitempty"`
-	RenewMode   *string   `json:"RenewMode,omitempty" xml:"RenewMode,omitempty"`
-	RenewNodes  []*string `json:"RenewNodes,omitempty" xml:"RenewNodes,omitempty" type:"Repeated"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The number of nodes to renew.
+	//
+	// example:
+	//
+	// 2
+	RenewAmount *int32 `json:"RenewAmount,omitempty" xml:"RenewAmount,omitempty"`
+	// The renewal mode.
+	//
+	// example:
+	//
+	// RENEW_ORIGINAL_CONFIG
+	RenewMode *string `json:"RenewMode,omitempty" xml:"RenewMode,omitempty"`
+	// The list of node IDs to renew.
+	RenewNodes []*string `json:"RenewNodes,omitempty" xml:"RenewNodes,omitempty" type:"Repeated"`
 }
 
 func (s RenewAppInstanceGroupRequest) String() string {

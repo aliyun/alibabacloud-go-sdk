@@ -22,7 +22,7 @@ type iApproveOtaTaskRequest interface {
 }
 
 type ApproveOtaTaskRequest struct {
-	// The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain this value.
+	// The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ApproveOtaTaskRequest struct {
 	//
 	// 2022-08-04T14:36:00+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The OTA upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain this value.
+	// The OTA upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
 	//
 	// > Each successful call to `ApproveOtaTask` causes the `TaskId` to change. Therefore, before calling this operation again, call `ListAppInstanceGroup` again to obtain the latest `TaskId`.
 	//

@@ -42,7 +42,7 @@ type ListAppInstancesRequest struct {
 	//
 	// ai-azn3kmwruh1vl****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	// The list of application instance IDs. Maximum length: 100.
+	// The list of application instance IDs. The maximum length is 100.
 	//
 	// if can be null:
 	// false
@@ -53,13 +53,13 @@ type ListAppInstancesRequest struct {
 	//
 	// true
 	IncludeDeleted *bool `json:"IncludeDeleted,omitempty" xml:"IncludeDeleted,omitempty"`
-	// The page number of the query results to display. Default value: `1`. Specify this parameter.
+	// The page number of the query results to display. Default value: `1`. We recommend that you specify this parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of query results per page. Maximum value: `100`. Default value: `20`. Specify this parameter.
+	// The number of query results per page. Maximum value: `100`. Default value: `20`. We recommend that you specify this parameter.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAppInstancesRequest struct {
 	// if can be null:
 	// false
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	// The list of user IDs. Maximum length: 100.
+	// The list of user IDs. The maximum length is 100.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 

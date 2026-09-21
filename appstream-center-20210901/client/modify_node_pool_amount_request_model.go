@@ -18,7 +18,7 @@ type iModifyNodePoolAmountRequest interface {
 }
 
 type ModifyNodePoolAmountRequest struct {
-	// The delivery group ID.
+	// The ID of the delivery group.
 	//
 	// This parameter is required.
 	//
@@ -87,13 +87,17 @@ func (s *ModifyNodePoolAmountRequest) Validate() error {
 type ModifyNodePoolAmountRequestNodePool struct {
 	// The total number of subscription nodes after the upgrade.
 	//
+	// >
+	//
+	// > - This value must be greater than the current number of purchased nodes (Amount) in the delivery group. Otherwise, the API returns InvalidAmount.UnIncrease.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	// The subscription node modification mode.
+	// The modification mode for subscription nodes.
 	//
 	// example:
 	//

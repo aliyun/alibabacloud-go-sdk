@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Sets the execution time for an over-the-air update.
+// Sets the execution time for an OTA upgrade.
 //
 // @param request - ApproveOtaTaskRequest
 //
@@ -117,11 +117,11 @@ func (client *Client) AssignWuyingServerPrivateAddressesWithContext(ctx context.
 
 // Summary:
 //
-// 為交付群組新增或移除指派使用者。只有新增至指派使用者的使用者才可存取雲端應用程式。
+// Adds or removes assigned users for a delivery group. Only users added as assigned users can access cloud applications.
 //
 // Description:
 //
-// > 變更指派使用者後，選取的使用者將收到相應的通知電子郵件。一般需要等待約 2 分鐘，變更才會在終端機生效。
+// > After you change assigned users, the selected users receive notification emails. Changes typically take about 2 minutes to take effect on the client.
 //
 // @param tmpReq - AuthorizeInstanceGroupRequest
 //
@@ -144,6 +144,10 @@ func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmp
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
 		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupSetId) {
+		body["AppInstanceGroupSetId"] = request.AppInstanceGroupSetId
 	}
 
 	if !dara.IsNil(request.AppInstancePersistentId) {
@@ -196,6 +200,110 @@ func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmp
 		BodyType:    dara.String("json"),
 	}
 	_result = &AuthorizeInstanceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds or removes authorized users for a specified application deployed in a delivery group. Only authorized users can access the application.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation manages user authorization for a delivery group at the application level. The authorization result applies only to the application specified by AppId and does not affect the authorization of other applications in the delivery group. To authorize users for an entire delivery group, call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation.
+//
+// ## Before you begin
+//
+// - The delivery group is created, and **the application specified by AppId is deployed in the image used by the delivery group**. Otherwise, the error code `InvalidAppId.NotFound` is returned.
+//
+// - The delivery group **has not been added to a delivery group set that is in effect**. A delivery group that has been added to a set cannot be authorized individually. You must authorize it through the set. Otherwise, the error code `InvalidAppInstanceGroup.AuthorizeBlockedBySet` is returned.
+//
+// - If the workspace to which the delivery group belongs is an Active Directory (AD) workspace, **you must specify UserMeta**, with `UserMeta.Type` set to `ad` and `UserMeta.AdDomain` matching the AD domain bound to the workspace.
+//
+// - If the delivery group has been authorized through user groups and mixed authorization of users and user groups is not supported, you cannot authorize by user. Otherwise, the error code `AuthAppInstanceGroup.MixNotSupported` is returned.
+//
+// ## Parameter description
+//
+// - **At least one of AuthorizeUserIds and UnAuthorizeUserIds must be specified.*	- You can also specify both. If both are empty, this invocation does not change any authorization.
+//
+// - When adding authorizations, the sum of the currently authorized users for the application and the users to be added cannot exceed the authorized user quota for the application. If the quota is exceeded, the error code `ExceedAppAuthUserQuota` is returned. Removing authorizations is not subject to quota limits.
+//
+// ## Call sequence
+//
+// 1. Call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) or [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation to obtain the delivery group ID (AppInstanceGroupId) and the application IDs of deployed applications in the delivery group (AppId in the Apps list).
+//
+// 2. Call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the usernames of the users to be authorized or unauthorized.
+//
+// 3. Call this operation to complete the authorization change.
+//
+// > After the authorization is changed, the selected users receive a notification email. It typically takes about 2 minutes for the change to take effect on the client.
+//
+// @param tmpReq - AuthorizeUsersForAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeUsersForAppResponse
+func (client *Client) AuthorizeUsersForAppWithContext(ctx context.Context, tmpReq *AuthorizeUsersForAppRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeUsersForAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AuthorizeUsersForAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UserMeta) {
+		request.UserMetaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserMeta, dara.String("UserMeta"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AuthorizeUserIds) {
+		body["AuthorizeUserIds"] = request.AuthorizeUserIds
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.UnAuthorizeUserIds) {
+		body["UnAuthorizeUserIds"] = request.UnAuthorizeUserIds
+	}
+
+	if !dara.IsNil(request.UserMetaShrink) {
+		body["UserMeta"] = request.UserMetaShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeUsersForApp"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeUsersForAppResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -460,9 +568,9 @@ func (client *Client) ConfigRuntimeModelTemplateWithContext(ctx context.Context,
 //
 // Description:
 //
-// Make sure that you are familiar with the [billing methods and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING CloudApp before you call this operation.
+// Before you call this operation, make sure that you fully understand the [billing and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING CloudApp.
 //
-// A delivery group is a logical grouping for delivering cloud applications to end users. It includes underlying cloud application resources, images that contain cloud applications, resource management policies, and user allocation settings. For details, see [Publish a delivery group](https://help.aliyun.com/document_detail/426046.html).
+// A delivery group is a logical grouping for delivering cloud applications to end users. It includes the underlying cloud application resources, images that contain cloud applications, resource management policies, and user allocation settings. For details, see [Publish a delivery group](https://help.aliyun.com/document_detail/426046.html).
 //
 // @param tmpReq - CreateAppInstanceGroupRequest
 //
@@ -650,7 +758,231 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a custom image from a deployed WUYING instance to quickly create more instances with the same configuration, avoiding repetitive environment setup each time.
+// Creates a cloud browser group that is billed by monthly active users (MAU).
+//
+// Description:
+//
+// ## Before you begin
+//
+// - Prepare an available office network, image, and instance type in the target business region. Make sure that the account has the required browser configurations and resource quotas.
+//
+// - Specify `CloudBrowserName` and `BizRegionId`. Set `OsType` to `Windows`.
+//
+// - Authorized users must be created in advance and must match the account type. Authorized user groups must belong to the current account and match the account type of the office network.
+//
+// - **`Users` and `UserGroupIds` cannot both be non-empty.**
+//
+// ## MAU billing parameters
+//
+// - Set `ChargeType` to `PostPaid`.
+//
+// - **Set `SubPayType` to `mau` explicitly. Omitting this field does not enable MAU billing.**
+//
+// - Set `ChargeResourceMode` to `AppInstance`.
+//
+// - Do not specify `Period`, `PeriodUnit`, `AppPackageType`, `AutoPay`, `AutoRenew`, or `NodePool`.
+//
+// ## Post-call processing
+//
+// **A successful response does not indicate that the browser resources are ready.*	- After creation, query the browser group status and confirm that the group is connectable before use.
+//
+// This operation creates a new cloud browser group. You do not need to create a delivery group in advance.
+//
+// ## Example description
+//
+// The example values of fields are provided to demonstrate how to specify the fields. Replace resource identifiers with actual values under your account. Capacity examples do not represent default values or upper limits.
+//
+// An example value of `-` indicates that the field does not need to be specified. Omit the corresponding parameter when you call the operation. Do not pass the character `-`.
+//
+// @param tmpReq - CreateBrowserInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBrowserInstanceGroupResponse
+func (client *Client) CreateBrowserInstanceGroupWithContext(ctx context.Context, tmpReq *CreateBrowserInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateBrowserInstanceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateBrowserInstanceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BrowserConfig) {
+		request.BrowserConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BrowserConfig, dara.String("BrowserConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Network) {
+		request.NetworkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Network, dara.String("Network"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.NodePool) {
+		request.NodePoolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodePool, dara.String("NodePool"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Policy) {
+		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, dara.String("Policy"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SecurityPolicy) {
+		request.SecurityPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityPolicy, dara.String("SecurityPolicy"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StoragePolicy) {
+		request.StoragePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StoragePolicy, dara.String("StoragePolicy"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("Tag"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Timers) {
+		request.TimersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Timers, dara.String("Timers"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserInfo) {
+		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, dara.String("UserInfo"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Users) {
+		request.UsersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Users, dara.String("Users"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppPackageType) {
+		body["AppPackageType"] = request.AppPackageType
+	}
+
+	if !dara.IsNil(request.AuthNotificationEnabled) {
+		body["AuthNotificationEnabled"] = request.AuthNotificationEnabled
+	}
+
+	if !dara.IsNil(request.AutoPay) {
+		body["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		body["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.BrowserConfigShrink) {
+		body["BrowserConfig"] = request.BrowserConfigShrink
+	}
+
+	if !dara.IsNil(request.ChargeResourceMode) {
+		body["ChargeResourceMode"] = request.ChargeResourceMode
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		body["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.CloudBrowserName) {
+		body["CloudBrowserName"] = request.CloudBrowserName
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.MaxAmount) {
+		body["MaxAmount"] = request.MaxAmount
+	}
+
+	if !dara.IsNil(request.NetworkShrink) {
+		body["Network"] = request.NetworkShrink
+	}
+
+	if !dara.IsNil(request.NodePoolShrink) {
+		body["NodePool"] = request.NodePoolShrink
+	}
+
+	if !dara.IsNil(request.OsType) {
+		body["OsType"] = request.OsType
+	}
+
+	if !dara.IsNil(request.Period) {
+		body["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		body["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PolicyShrink) {
+		body["Policy"] = request.PolicyShrink
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		body["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.SecurityPolicyShrink) {
+		body["SecurityPolicy"] = request.SecurityPolicyShrink
+	}
+
+	if !dara.IsNil(request.StoragePolicyShrink) {
+		body["StoragePolicy"] = request.StoragePolicyShrink
+	}
+
+	if !dara.IsNil(request.SubPayType) {
+		body["SubPayType"] = request.SubPayType
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		body["Tag"] = request.TagShrink
+	}
+
+	if !dara.IsNil(request.TimersShrink) {
+		body["Timers"] = request.TimersShrink
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		body["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.UserInfoShrink) {
+		body["UserInfo"] = request.UserInfoShrink
+	}
+
+	if !dara.IsNil(request.UsersShrink) {
+		body["Users"] = request.UsersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBrowserInstanceGroup"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBrowserInstanceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom image from a deployed WUYING instance. You can use the custom image to quickly create more WUYING instances with the same configurations, without having to repeatedly configure the instance environment each time.
 //
 // @param request - CreateImageByInstanceRequest
 //
@@ -874,13 +1206,13 @@ func (client *Client) CreateModelProviderTemplateWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates a model creation template.
+// Creates a model template.
 //
 // Description:
 //
-// You can create a model group in the WUYING Agent Management Center to manage the model providers and model scope that an Agent can invoke. After creation, you can attach the model group to a cloud computer as the inference engine configuration for Agent task execution.
+// You can create a model group in the Wuying Agent Management Center to manage the model providers and model scope that an Agent can invoke. After model creation, you can attach the model group to a cloud computer as the inference engine configuration for Agent task execution.
 //
-// Make sure that you are familiar with the operations and usage of the WUYING Agent Management Center before invoking this operation.
+// Make sure that you are familiar with the operations and usage of the Wuying Agent Management Center before invoking this operation.
 //
 // @param request - CreateModelTemplateRequest
 //
@@ -950,7 +1282,7 @@ func (client *Client) CreateModelTemplateWithContext(ctx context.Context, reques
 //
 // 1. A project corresponds to the resource configuration module in the CloudFlow console.
 //
-// 2. When the ContentId input parameter has multiple versions, this API <notice>uses the default version</notice> for binding.
+// 2. When the ContentId input parameter has multiple versions, this API <notice>uses the default version</notice> and bindss it at the same time.
 //
 // 3. This operation succeeds only when the default version of the Content is in an available state.
 //
@@ -994,6 +1326,14 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.DataDisk) {
 		bodyFlat["DataDisk"] = request.DataDisk
+	}
+
+	if !dara.IsNil(request.ErdmaEnabled) {
+		body["ErdmaEnabled"] = request.ErdmaEnabled
+	}
+
+	if !dara.IsNil(request.GpuDriverVersion) {
+		body["GpuDriverVersion"] = request.GpuDriverVersion
 	}
 
 	if !dara.IsNil(request.HostName) {
@@ -1219,9 +1559,9 @@ func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request
 //
 // - For images associated with WUYING Cloud Computer Pool, WUYING Cloud Application, or WUYING Workspace product lines, ensure that no WUYING instances are using the image before you delete it.
 //
-// - If a WUYING Cloud Desktop template references the image, the template is also deleted when the image is deleted.
+// - If a WUYING Cloud Desktop template references an image, the template is also deleted when the image is deleted.
 //
-// - For images that span multiple regions, deleting the image removes it from all regions.
+// - For images that span multiple regions, deleting the image removes the image from all regions.
 //
 // @param request - DeleteImageRequest
 //
@@ -1530,7 +1870,7 @@ func (client *Client) DeliverToUserSlsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the details of a development workstation.
+// Queries the details of a development host.
 //
 // @param request - DescribeWuyingServerRequest
 //
@@ -1670,15 +2010,87 @@ func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves connection credentials for a cloud application.
+// Queries the configuration, status, and authorization statistics of a specified cloud browser group.
 //
 // Description:
 //
-// This operation requires multiple calls (at least two) to obtain the connection credentials.
+// This topic describes the query usage for the monthly active user (MAU) billing scenario.
 //
-// On the first call, an application instance is allocated to the specified convenience account and the application is started. A startup task ID (`TaskID`) is returned.
+// ## Before you begin
 //
-// On subsequent calls, pass the `TaskID` request parameter to query whether the task is complete. When the returned task status (`TaskStatus`) is completed (`Finished`), the connection credentials (`Ticket`) are also returned.
+// Obtain the cloud browser group ID under the current account. Call `ListBrowserInstanceGroup` to retrieve the ID.
+//
+// ## Response
+//
+// The response includes the current configuration, status, and authorization statistics of the browser group. The details return up to 20 bookmarks and 20 website access entries. To retrieve the complete lists, call `ListBrowserBookmarks` and `ListBrowserRestrictedURLs`.
+//
+// ## What to do next
+//
+// This operation only queries configurations and does not modify resources. After you read the returned status, perform the connection or management operation that corresponds to the status.
+//
+// ## Example description
+//
+// The `-` value in the examples indicates that the field is not applicable or not returned in the current scenario. It is not an actual string returned by the operation. Sample resource IDs are masked. Use the actual query results when you call this operation.
+//
+// @param request - GetBrowserInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBrowserInstanceGroupResponse
+func (client *Client) GetBrowserInstanceGroupWithContext(ctx context.Context, request *GetBrowserInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *GetBrowserInstanceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBrowserInstanceGroup"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBrowserInstanceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the connection credential for a cloud application.
+//
+// Description:
+//
+// Call protocol description: operation_type: polling, required_steps: 1.
+//
+// This operation may require multiple calls (at least one) to obtain the connection credential.
+//
+// On the first call, an application instance is allocated to the specified convenience account and the application is started. If a Ticket is returned, the result is obtained synchronously. If a startup task ID (`TaskId`) is returned, subsequent calls are required.
+//
+// On subsequent calls, include the `TaskId` request parameter to invoke the operation and query whether the node is complete. When the returned node status (`TaskStatus`) is completed (`Finished`), the connection credential (`Ticket`) is also returned.
+//
+// > Prerequisites
+//
+// > - Before calling this operation, make sure that you have created a delivery group and authorized users for the delivery group:
+//
+// > - 1. The API for creating a delivery group is CreateAppInstanceGroup. For more information about the parameters, see the corresponding API documentation.
+//
+// > - 2. You can call the ListAppInstanceGroup operation to query the list of delivery groups. If the corresponding delivery group is not found, verify that the delivery group has been created and that the authentication credentials belong to the correct tenant.
+//
+// > - 3. The API for authorizing users for a delivery group is AuthorizeInstanceGroup. For more information about the parameters, see the corresponding API documentation.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -1703,6 +2115,10 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.AppInstanceGroupIdList) {
 		body["AppInstanceGroupIdList"] = request.AppInstanceGroupIdList
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupSetId) {
+		body["AppInstanceGroupSetId"] = request.AppInstanceGroupSetId
 	}
 
 	if !dara.IsNil(request.AppInstanceId) {
@@ -2158,7 +2574,7 @@ func (client *Client) GetRuntimeChannelWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// You can query the model configuration details currently bound to a specified cloud computer in the Wuying Agent Management Center, including model groups, model provider lists, and associated model information. After enabling the risk information mode, you can also identify differences between the end user\\"s actual configuration and the configuration delivered by the administrator.
+// You can query the model configuration details currently bound to a specified cloud computer in the Wuying Agent Management Center, including model groups, model provider lists, and associated model information. After you enable the risk information mode, you can also identify differences between the end user\\"s actual configuration and the configuration delivered by the administrator.
 //
 // @param request - GetRuntimeModelConfigRequest
 //
@@ -2218,7 +2634,7 @@ func (client *Client) GetRuntimeModelConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of multiple delivery groups that meet specified conditions, without specifying a particular delivery group.
+// Queries the details of multiple delivery groups. This operation queries all delivery groups that meet the specified conditions instead of a specific delivery group.
 //
 // @param request - ListAppInstanceGroupRequest
 //
@@ -2316,7 +2732,7 @@ func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of session instances in a delivery group, including instance ID, instance status, creation time, update time, session status, and public IP address of the primary network interface.
+// Queries the details of session instances in a delivery group, including instance IDs, instance statuses, creation time, update time, session statuses, and public IP addresses of primary network interface controllers (NICs).
 //
 // @param request - ListAppInstancesRequest
 //
@@ -2390,6 +2806,114 @@ func (client *Client) ListAppInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Queries the delivery groups for which a specified user has obtained access permissions through delivery group-level authorization by paging, with support for fuzzy filtering by delivery group ID, delivery group name, application ID, or application name.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation queries the list of delivery groups for which a specified user (EndUserId) has been granted **delivery group-level authorization**. The response includes basic information about each delivery group (ID, name, status, region, creation time, expiration time, and more) and the list of applications deployed in the delivery group.
+//
+// Scope of returned results:
+//
+// - Only delivery groups that are authorized to the user as a whole through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are returned. Records authorized on a per-application basis through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation are not included.
+//
+// - Only delivery groups whose product type matches the ProductType parameter and that have not been deleted are returned. A delivery group is not returned if its image contains no deployed applications.
+//
+// - Results are sorted in reverse chronological order by the update time of the authorization record. The most recently authorized or modified delivery groups appear first.
+//
+// ## Before you begin
+//
+// - Call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize the delivery group to the user.
+//
+// ## Parameter description
+//
+// - **ProductType and EndUserId are required**. If ProductType is not specified, the error code `InvalidParameter.ProductType` is returned. If EndUserId is not specified, the error code `InvalidParameter.UserId` is returned.
+//
+// - EndUserId performs an **exact match*	- on the username. AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName all perform **fuzzy matching*	- (a hit occurs if the value is contained). When multiple filter conditions are specified, all conditions must be met simultaneously.
+//
+// - PageNumber starts from 1. Valid values of PageSize: 1 to 100.
+//
+// - If the user has no authorized delivery groups that match the conditions, the operation returns normally: AppInstanceGroupModels is an empty list and TotalCount is 0.
+//
+// ## Call sequence
+//
+// 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the delivery group ID, and then call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize the delivery group to the user.
+//
+// 2. Call this operation to query the delivery groups authorized to the user and the applications deployed in each delivery group.
+//
+// 3. To obtain an application connection ticket for the user, call the [GetConnectionTicket](~~GetConnectionTicket~~) operation with the AppInstanceGroupId and the AppId from the Apps list in the response.
+//
+// @param request - ListAuthorizedAppInstanceGroupByUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedAppInstanceGroupByUserResponse
+func (client *Client) ListAuthorizedAppInstanceGroupByUserWithContext(ctx context.Context, request *ListAuthorizedAppInstanceGroupByUserRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedAppInstanceGroupByUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		query["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupName) {
+		query["AppInstanceGroupName"] = request.AppInstanceGroupName
+	}
+
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizedAppInstanceGroupByUser"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizedAppInstanceGroupByUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of user groups authorized by a specified delivery group.
 //
 // @param request - ListAuthorizedUserGroupsRequest
@@ -2407,6 +2931,10 @@ func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, r
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
 		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupSetId) {
+		body["AppInstanceGroupSetId"] = request.AppInstanceGroupSetId
 	}
 
 	if !dara.IsNil(request.GroupId) {
@@ -2444,6 +2972,108 @@ func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAuthorizedUserGroupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries authorized users of a cloud browser group with paging.
+//
+// Description:
+//
+// ## Before you begin
+//
+// - The target cloud browser group or delivery group set must be created, belong to the current account, and match the specified `ProductType`.
+//
+// - When querying authorized users of cloud browsers, set `ProductType` to `CloudBrowser`.
+//
+// - **Specify either `AppInstanceGroupId` or `AppInstanceGroupSetId`, but not both.**
+//
+// ## Query notes
+//
+// - This operation returns authorization relationships and does not indicate whether users are currently online or sessions are connected.
+//
+// - When querying by set, omit `AppId` and `AppInstancePersistentId`.
+//
+// - Use `PageNumber` and `PageSize` for pagination and check `TotalCount` to determine whether to continue querying.
+//
+// ## Example notes
+//
+// The examples show how to set the fields. Replace resource identifiers with actual values in your account.
+//
+// An example value of `-` indicates that the parameter does not need to be set. Omit the corresponding parameter when calling the operation. Do not pass the character `-`.
+//
+// @param request - ListAuthorizedUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedUsersResponse
+func (client *Client) ListAuthorizedUsersWithContext(ctx context.Context, request *ListAuthorizedUsersRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.UserIdFuzzy) {
+		query["UserIdFuzzy"] = request.UserIdFuzzy
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupSetId) {
+		body["AppInstanceGroupSetId"] = request.AppInstanceGroupSetId
+	}
+
+	if !dara.IsNil(request.AppInstancePersistentId) {
+		body["AppInstancePersistentId"] = request.AppInstancePersistentId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthorizedUsers"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthorizedUsersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2512,6 +3142,123 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBindInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries cloud browser groups and their current status by paging.
+//
+// Description:
+//
+// This topic describes how to use this operation in the monthly active user (MAU) billing scenario.
+//
+// ## Query conditions
+//
+// You can filter by browser group identity, name, business region, office network, set, authorized user group, and status. Only one status value can be specified at a time.
+//
+// ## Paging
+//
+// Use `PageNumber` and `PageSize` for paging. Use the returned `TotalCount` to determine whether to continue querying the next page.
+//
+// ## What to do next
+//
+// To view the detailed configuration of a single browser group, invoke `GetBrowserInstanceGroup` with the returned identity.
+//
+// ## Example notes
+//
+// The `-` in the examples indicates that the field is not applicable or not returned in the current scenario. It is not an actual character string returned by the operation. Resource identities in the examples are masked. Use the actual query results in your environment.
+//
+// @param request - ListBrowserInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBrowserInstanceGroupResponse
+func (client *Client) ListBrowserInstanceGroupWithContext(ctx context.Context, request *ListBrowserInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ListBrowserInstanceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupSetId) {
+		query["AppInstanceGroupSetId"] = request.AppInstanceGroupSetId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.BrowserInstanceGroupId) {
+		query["BrowserInstanceGroupId"] = request.BrowserInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BrowserInstanceGroupName) {
+		query["BrowserInstanceGroupName"] = request.BrowserInstanceGroupName
+	}
+
+	if !dara.IsNil(request.CloudBrowserName) {
+		query["CloudBrowserName"] = request.CloudBrowserName
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.Tier) {
+		query["Tier"] = request.Tier
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExcludedUserGroupIds) {
+		body["ExcludedUserGroupIds"] = request.ExcludedUserGroupIds
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.Status) {
+		bodyFlat["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		body["UserGroupIds"] = request.UserGroupIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBrowserInstanceGroup"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBrowserInstanceGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2804,9 +3551,9 @@ func (client *Client) ListImageWithContext(ctx context.Context, request *ListIma
 //
 // Description:
 //
-// You can query the list of model templates under a model provider template in the Wuying Agent Management Center with paging. Filtering by model group ID, model provider template ID, model template ID, and model encoding is supported. When querying by model group dimension, the default model is automatically placed at the top.
+// You can query the list of model templates under a model provider template in the WUYING Agent Management Center with paging. Filtering by model group ID, model provider template ID, model template ID, and model encoding is supported. When querying by model group dimension, the default model is automatically pinned to the top.
 //
-// Before using this operation, make sure you are familiar with the operations and usage of the Wuying Agent Management Center.
+// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param tmpReq - ListLlmTemplatesRequest
 //
@@ -2944,9 +3691,9 @@ func (client *Client) ListModelProviderEndpointsWithContext(ctx context.Context,
 //
 // Description:
 //
-// You can perform a paged query to retrieve the list of model provider templates under a specified model group in the WUYING Agent Management Center. Filtering by provider name, model group ID, and provider template ID is supported. Use the paging parameters to control the number of results returned per page.
+// You can perform a paged query to retrieve the list of model provider templates under a specified model group in the WUYING Agent Management Center. You can filter results by provider name, model group ID, and provider template ID. Paging is supported.
 //
-// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Before you call this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
 // @param tmpReq - ListModelProviderTemplatesRequest
 //
@@ -3086,13 +3833,13 @@ func (client *Client) ListModelTemplateResourceGroupWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the list of model templates.
+// Queries a list of model templates.
 //
 // Description:
 //
-// You can query the model groups created in the WUYING Agent Management Center with paging. Filtering is supported by Agent provider, Agent platform, template group ID, and whether models have been configured.
+// You can use paged query to retrieve the list of model groups created in the Wuying Agent Management Center. You can filter results by Agent provider, Agent platform, template group ID, and whether models have been configured. Paging is supported.
 //
-// Before using this operation, make sure you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Before using this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param tmpReq - ListModelTemplatesRequest
 //
@@ -3578,11 +4325,11 @@ func (client *Client) ListTagCloudResourcesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the list of workstations.
+// Queries a list of workstations.
 //
 // Description:
 //
-// Retrieves the list of WUYING workstations.
+// Retrieves a list of WUYING workstations.
 //
 // @param request - ListWuyingServerRequest
 //
@@ -3761,7 +4508,7 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithContext(ctx context
 
 // Summary:
 //
-// Modifies the general policy of a delivery group, including the number of concurrent sessions and the session disconnection retention duration.
+// Modifies the General Policy of a delivery group, including the number of concurrent sessions and the session retention duration after disconnection.
 //
 // @param tmpReq - ModifyAppInstanceGroupAttributeRequest
 //
@@ -3981,6 +4728,10 @@ func (client *Client) ModifyBrowserInstanceGroupWithContext(ctx context.Context,
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthNotificationEnabled) {
+		body["AuthNotificationEnabled"] = request.AuthNotificationEnabled
+	}
+
 	if !dara.IsNil(request.CloudBrowserName) {
 		body["CloudBrowserName"] = request.CloudBrowserName
 	}
@@ -4218,6 +4969,10 @@ func (client *Client) ModifyWuyingServerAttributeWithContext(ctx context.Context
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ErdmaEnabled) {
+		body["ErdmaEnabled"] = request.ErdmaEnabled
+	}
+
 	if !dara.IsNil(request.Password) {
 		body["Password"] = request.Password
 	}
@@ -4503,6 +5258,10 @@ func (client *Client) RemoveRuntimeModelTemplateWithContext(ctx context.Context,
 //
 // Before you call this operation, make sure that you fully understand the [billing and pricing](https://help.aliyun.com/document_detail/426039.html) of WUYING Workspace.
 //
+// > Prerequisites:
+//
+// > - The delivery group must be in the PUBLISHED state, and ChargeType must be set to PrePaid.
+//
 // @param tmpReq - RenewAppInstanceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4643,7 +5402,7 @@ func (client *Client) RenewWuyingServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Restarts a cloud graphics workstation.
+// Restarts a workstation.
 //
 // @param request - RestartWuyingServerRequest
 //
@@ -5080,9 +5839,11 @@ func (client *Client) UntagCloudResourcesWithContext(ctx context.Context, reques
 //
 // Description:
 //
-//	Warning: After the image update starts, sessions of end users accessing cloud applications will be disconnected. Proceed with caution to avoid data loss for end users.
+//	Warning: After the image update starts, sessions of end users who are accessing cloud applications will be disconnected. Proceed with caution to avoid data loss for end users.
 //
-// > After the update is published, changes typically take about 2 minutes to take effect on the client.
+// > Before calling this API, the delivery group must be in the PUBLISHED, DEPLOYED, or MAINTAIN_FAILED state. You can call GetAppInstanceGroup to query the current state of the delivery group.
+//
+// > After the update is published, you typically need to wait about 2 minutes for the changes to take effect on the client.
 //
 // @param request - UpdateAppInstanceGroupImageRequest
 //
@@ -5216,9 +5977,9 @@ func (client *Client) UpdateModelProviderTemplateWithContext(ctx context.Context
 //
 // Description:
 //
-// You can update a model group that has been created in the WUYING Agent Management Center, including the group name, description, and model configuration information. You can modify the default model of a model group by updating the Config field. The updated configuration automatically takes effect on associated cloud desktops.
+// You can update a model group that has been created in the Wuying Agent Management Center, including the group name, description, and model configuration information. You can modify the default model of a model group by updating the Config field. The updated configuration automatically takes effect on associated cloud desktops.
 //
-// Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
+// Before you call this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - UpdateModelTemplateRequest
 //

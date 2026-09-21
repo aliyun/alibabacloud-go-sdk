@@ -28,11 +28,11 @@ type UpdateModelTemplateRequest struct {
 	//
 	// Set the default model by using the `defaults.model.primary` field in the format of `provider name/model code`.
 	//
-	// - **HermesAgent scenarios:**
+	// - **HermesAgent scenario:**
 	//
 	// Specify the provider name by using `model.provider` and the model code by using `model.default`.
 	//
-	// > Note:
+	// > :
 	//
 	// > - When you modify the default model, the system verifies whether the specified provider and model code already exist in the model group.
 	//
@@ -67,6 +67,10 @@ type UpdateModelTemplateRequest struct {
 	// model-template-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The authorization scope. This parameter is optional and can be modified only for Common model groups. Valid values: ALL_USER and USER_MIXED.
+	//
+	// example:
+	//
+	// ALL_USER
 	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
 }
 

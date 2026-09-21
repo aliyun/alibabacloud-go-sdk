@@ -42,7 +42,7 @@ type CreateImageByInstanceResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type CreateImageByInstanceResponseBodyData struct {
 	//
 	// imgc-07hnjj5fp****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The task ID for creating the image.
+	// The ID of the image creation task.
 	//
 	// example:
 	//

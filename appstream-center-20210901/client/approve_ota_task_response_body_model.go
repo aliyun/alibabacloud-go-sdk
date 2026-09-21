@@ -24,7 +24,7 @@ type ApproveOtaTaskResponseBody struct {
 	//
 	// OtaTask.Running
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. This parameter is not returned when `Code` is `success`.
+	// The error message. This parameter is not returned if `Code` is `success`.
 	//
 	// example:
 	//

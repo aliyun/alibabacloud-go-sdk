@@ -20,7 +20,7 @@ type iListOtaTaskRequest interface {
 }
 
 type ListOtaTaskRequest struct {
-	// The delivery group ID.
+	// The delivery group ID. You can call ListAppInstanceGroup to obtain the ID.
 	//
 	// This parameter is required.
 	//

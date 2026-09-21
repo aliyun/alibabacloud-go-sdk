@@ -28,13 +28,13 @@ type iListModelProviderTemplatesShrinkRequest interface {
 }
 
 type ListModelProviderTemplatesShrinkRequest struct {
-	// The Agent platform.
+	// The agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The Agent provider name.
+	// The name of the agent provider.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListModelProviderTemplatesShrinkRequest struct {
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// The business type.
+	// The business type. Not all business types are supported. Only business types within the supported range are valid. Refer to the listed enumeration values.
 	//
 	// This parameter is required.
 	//

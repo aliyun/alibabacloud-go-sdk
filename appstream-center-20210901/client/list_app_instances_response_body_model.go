@@ -24,13 +24,13 @@ type iListAppInstancesResponseBody interface {
 type ListAppInstancesResponseBody struct {
 	// The list of queried application instances.
 	AppInstanceModels []*ListAppInstancesResponseBodyAppInstanceModels `json:"AppInstanceModels,omitempty" xml:"AppInstanceModels,omitempty" type:"Repeated"`
-	// The page number of the query results to display. Specify this parameter.
+	// The page number of the query results to display. We recommend that you specify this parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of query results per page. Maximum value: `100`. Specify this parameter.
+	// The number of query results per page. Maximum value: `100`. We recommend that you specify this parameter.
 	//
 	// example:
 	//
@@ -131,11 +131,11 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
 	// The binding information between the instance and the user.
 	BindInfo *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
-	// The billing type of the instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - **PrePaid**: subscription (prepaid).
+	// - **PrePaid**: subscription.
 	//
-	// - **PostPaid**: pay-as-you-go (postpaid).
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// > This parameter is returned only when the billing mode of the delivery group to which this instance belongs is resource-based billing (ChargeResourceMode=Node).
 	//
@@ -160,8 +160,18 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	// example:
 	//
 	// 10.13.13.211
-	MainEthPublicIp    *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
+	MainEthPublicIp *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
+	// The NIC ID of the instance.
+	//
+	// example:
+	//
+	// eni-2ze1jetnxkm***qq7i
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The private IP address of the egress traffic NIC.
+	//
+	// example:
+	//
+	// 192.168.12.32
 	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
 	// The ID of the node on which the instance runs.
 	//
@@ -311,7 +321,7 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) Validate() error {
 }
 
 type ListAppInstancesResponseBodyAppInstanceModelsBindInfo struct {
-	// The end user ID bound to the instance.
+	// The ID of the end user bound to the instance.
 	//
 	// example:
 	//

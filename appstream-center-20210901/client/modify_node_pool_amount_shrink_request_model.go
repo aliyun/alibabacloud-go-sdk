@@ -18,7 +18,7 @@ type iModifyNodePoolAmountShrinkRequest interface {
 }
 
 type ModifyNodePoolAmountShrinkRequest struct {
-	// The delivery group ID.
+	// The ID of the delivery group.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iListAppInstanceGroupResponseBody interface {
 type ListAppInstanceGroupResponseBody struct {
 	// The delivery group information.
 	AppInstanceGroupModels []*ListAppInstanceGroupResponseBodyAppInstanceGroupModels `json:"AppInstanceGroupModels,omitempty" xml:"AppInstanceGroupModels,omitempty" type:"Repeated"`
-	// The page number of the displayed query results.
+	// The current page number of query results.
 	//
 	// example:
 	//
@@ -141,11 +141,11 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The delivery group name.
+	// The name of the delivery group.
 	//
 	// example:
 	//
-	// 办公应用
+	// OfficeApp
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// The specification type of the delivery group.
 	//
@@ -179,7 +179,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// App
 	AuthMode *string `json:"AuthMode,omitempty" xml:"AuthMode,omitempty"`
-	// The sales mode.
+	// The billing mode.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The expiration time of the delivery group.
+	// The expiration time of the delivery group. The value is in the ISO 8601 datetime format, including milliseconds and time zone offset. Format: yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The reserved instance percentage, which is the ratio of unused sessions in the delivery group. Valid values: 0 to 99.
+	// The percentage of reserved instances, which is the ratio of unused sessions in the delivery group. Valid values: 0 to 99.
 	//
 	// example:
 	//
@@ -269,7 +269,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	// The list of resource tags.
 	ResourceTags []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Repeated"`
-	// The duration of no session connections, in minutes. When a resource remains in a no-session-connection state for the specified duration, automatic scale-in is triggered. Minimum value: 0.
+	// The idle duration without session connections, in minutes. When a resource remains without session connections for the specified duration, automatic scale-in is triggered. Minimum value: 0.
 	//
 	// example:
 	//
@@ -281,13 +281,13 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// 10
 	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: session usage = number of sessions in use ÷ total number of sessions × 100%. Valid values: 0 to 99.
+	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The session usage is calculated as follows: Session usage = Number of sessions in use ÷ Total number of sessions × 100%. Valid values: 0 to 99.
 	//
 	// example:
 	//
 	// 85
 	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	// The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this value to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+	// The duration for which a disconnected session is retained, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
 	//
 	// example:
 	//
@@ -310,10 +310,13 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// PUBLISHED
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportUserGroupMixedAuth *bool   `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether mixed authorization of users and user groups is supported.
+	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
 	// The list of resource tags.
 	Tags []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The authorization mode for users and user groups.
+	//
 	// example:
 	//
 	// Mixed
@@ -732,7 +735,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
 	//
 	// example:
 	//
-	// 办公应用
+	// OfficeApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The application version.
 	//
@@ -744,7 +747,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
 	//
 	// example:
 	//
-	// 初始版本
+	// Initial version
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -812,13 +815,13 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions and automatic scale-out is not triggered. This parameter allows flexible control over elastic scaling behavior and helps reduce costs.
+	// The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions and automatic scale-out is not triggered. This parameter provides flexible control over elastic scaling behavior and helps reduce costs.
 	//
 	// example:
 	//
 	// 3
 	MaxIdleAppInstanceAmount *int32 `json:"MaxIdleAppInstanceAmount,omitempty" xml:"MaxIdleAppInstanceAmount,omitempty"`
-	// The maximum number of resources that can be created during scale-out.
+	// The maximum number of resources that can be created during a scale-out operation.
 	//
 	// example:
 	//
@@ -848,7 +851,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// rg-g6922kced36hx****
 	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	// The resource specification name.
+	// The name of the resource specification.
 	//
 	// example:
 	//
@@ -862,7 +865,7 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	NodeUsed *int32 `json:"NodeUsed,omitempty" xml:"NodeUsed,omitempty"`
 	// The list of policy execution cycles.
 	RecurrenceSchedules []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
-	// The duration of no session connections, in minutes. When a resource remains in a no-session-connection state for the specified duration, automatic scale-in is triggered. Default value: 5.
+	// The idle duration without session connections, in minutes. When a resource remains without session connections for the specified duration, automatic scale-in is triggered. Default value: 5.
 	//
 	// example:
 	//
@@ -886,13 +889,13 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
 	//
 	// 2
 	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: `session usage = current number of sessions ÷ (total number of resources × concurrent sessions per resource) × 100%`.
+	// The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The session usage is calculated as follows: `Session usage = Number of current sessions ÷ (Total number of resources × Concurrent sessions per resource) × 100%`.
 	//
 	// example:
 	//
 	// 85
 	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	// The date when the policy expires. Format: yyyy-MM-dd.
+	// The date when the policy becomes inactive. Format: yyyy-MM-dd.
 	//
 	// example:
 	//

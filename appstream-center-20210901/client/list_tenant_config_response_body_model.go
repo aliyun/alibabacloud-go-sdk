@@ -68,10 +68,15 @@ type ListTenantConfigResponseBodyTenantConfigModel struct {
 	//
 	// true
 	AppInstanceGroupExpireRemind *bool `json:"AppInstanceGroupExpireRemind,omitempty" xml:"AppInstanceGroupExpireRemind,omitempty"`
+	// The support type for creating shared session delivery groups.
+	//
 	// example:
 	//
 	// None
-	MultiSessionSupportType      *string   `json:"MultiSessionSupportType,omitempty" xml:"MultiSessionSupportType,omitempty"`
+	MultiSessionSupportType *string `json:"MultiSessionSupportType,omitempty" xml:"MultiSessionSupportType,omitempty"`
+	// The list of region IDs that support creating shared session delivery groups.
+	//
+	// Note: This field has a value only when the support type for creating shared session delivery groups is Specific.
 	MultiSessionSupportedRegions []*string `json:"MultiSessionSupportedRegions,omitempty" xml:"MultiSessionSupportedRegions,omitempty" type:"Repeated"`
 }
 

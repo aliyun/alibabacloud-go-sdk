@@ -46,7 +46,7 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	//
 	// example:
 	//
-	// 办公应用
+	// OfficeApp
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// The network configuration.
 	//
@@ -54,7 +54,7 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	Network *ModifyAppInstanceGroupAttributeRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The resource group object.
 	NodePool *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	// Specifies whether only one application can be opened per session.
+	// Specifies whether to allow only one application per session.
 	//
 	// - If enabled, opening multiple applications within the delivery group allocates a separate session for each application, consuming more sessions.
 	//
@@ -62,7 +62,7 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	//
 	// false
 	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
-	// The AppId of the pre-open application. If the `PreOpenMode` parameter is set to `SINGLE_APP`, the `PreOpenAppId` parameter cannot be an empty string.
+	// The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The security policy.
 	SecurityPolicy *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	// The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+	// The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ func (s *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) Validate() er
 }
 
 type ModifyAppInstanceGroupAttributeRequestNodePool struct {
-	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid value range varies depending on the resource specification. You can call the ListNodeInstanceType operation to obtain the valid value range for each resource specification.
+	// The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. Too many simultaneous sessions may degrade the application experience. The valid value range varies depending on the resource specification. You can call the ListNodeInstanceType operation to obtain the valid value range for each resource specification.
 	//
 	// example:
 	//
@@ -357,7 +357,7 @@ type ModifyAppInstanceGroupAttributeRequestSecurityPolicy struct {
 	//
 	// true
 	ResetAfterUnbind *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
-	// Specifies whether to skip user authorization verification.
+	// Specifies whether to skip user authorization check.
 	//
 	// example:
 	//
@@ -399,7 +399,8 @@ type ModifyAppInstanceGroupAttributeRequestStoragePolicy struct {
 	// The list of storage types.
 	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
 	// The user data roaming configuration.
-	UserProfile       *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile       `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
+	UserProfile *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
+	// The user data roaming configuration.
 	UserProfileFollow *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow `json:"UserProfileFollow,omitempty" xml:"UserProfileFollow,omitempty" type:"Struct"`
 }
 
@@ -498,8 +499,18 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile) Validat
 }
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow struct {
-	FileSystemId        *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	ProfileFollowSwitch *bool   `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
+	// The file system ID.
+	//
+	// example:
+	//
+	// file-0001
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// Specifies whether to enable user data roaming.
+	//
+	// example:
+	//
+	// true
+	ProfileFollowSwitch *bool `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
 }
 
 func (s ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow) String() string {

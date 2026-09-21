@@ -48,6 +48,10 @@ type RenewWuyingServerRequest struct {
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The workstation ID.
 	//
+	// >
+	//
+	// > - The workstation must have a completed order payment (AutoPay=true during creation or manually paid through the console payment page) before it can be renewed. Calling this API for an unpaid workstation returns WuyingServerError.NotFound.
+	//
 	// example:
 	//
 	// ws-0bw2f11****dial

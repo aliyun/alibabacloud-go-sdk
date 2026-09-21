@@ -16,7 +16,10 @@ type iListModelProviderEndpointsResponseBody interface {
 }
 
 type ListModelProviderEndpointsResponseBody struct {
+	// The returned data object.
 	Data []*ListModelProviderEndpointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID, which uniquely identifies the request.
+	//
 	// example:
 	//
 	// XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -63,10 +66,26 @@ func (s *ListModelProviderEndpointsResponseBody) Validate() error {
 }
 
 type ListModelProviderEndpointsResponseBodyData struct {
-	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Endpoints    []*ListModelProviderEndpointsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	ProviderName *string                                                `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	ProviderUrl  *string                                                `json:"ProviderUrl,omitempty" xml:"ProviderUrl,omitempty"`
+	// The provider description, such as Alibaba Cloud Bailian.
+	//
+	// example:
+	//
+	// Qwen Plus series models
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of all endpoints under the provider.
+	Endpoints []*ListModelProviderEndpointsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// The provider name, such as bailian or moonshot.
+	//
+	// example:
+	//
+	// bailian
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// The provider website URL, which is used to direct users to obtain an API key.
+	//
+	// example:
+	//
+	// https://test
+	ProviderUrl *string `json:"ProviderUrl,omitempty" xml:"ProviderUrl,omitempty"`
 }
 
 func (s ListModelProviderEndpointsResponseBodyData) String() string {
@@ -127,12 +146,38 @@ func (s *ListModelProviderEndpointsResponseBodyData) Validate() error {
 }
 
 type ListModelProviderEndpointsResponseBodyDataEndpoints struct {
-	ApiType     *string   `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
-	BaseUrl     *string   `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProviderUrl *string   `json:"ProviderUrl,omitempty" xml:"ProviderUrl,omitempty"`
-	Tags        []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The API compatibility type, such as openai-compatible or anthropic-compatible.
+	//
+	// example:
+	//
+	// openai-compatible
+	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// The API base URL, such as https://coding.dashscope.aliyuncs.com/v1.
+	//
+	// example:
+	//
+	// https://coding.dashscope.aliyuncs.com/v1
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The endpoint description, such as Coding Plan - OpenAI compatible protocol.
+	//
+	// example:
+	//
+	// Coding Plan - OpenAI
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The endpoint identifier name, such as coding-openai or cn-beijing.
+	//
+	// example:
+	//
+	// coding-openai
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The provider URL.
+	//
+	// example:
+	//
+	// https://test
+	ProviderUrl *string `json:"ProviderUrl,omitempty" xml:"ProviderUrl,omitempty"`
+	// The list of tags used for categorization and filtering, such as coding-plan, on-demand, or cn-beijing.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListModelProviderEndpointsResponseBodyDataEndpoints) String() string {

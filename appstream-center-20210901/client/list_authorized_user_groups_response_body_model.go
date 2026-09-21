@@ -40,7 +40,7 @@ type ListAuthorizedUserGroupsResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,6 +123,12 @@ type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The ID of the delivery group set.
+	//
+	// example:
+	//
+	// set-3jm9d0abc00example
+	AppInstanceGroupSetId *string `json:"AppInstanceGroupSetId,omitempty" xml:"AppInstanceGroupSetId,omitempty"`
 	// The authorization mode.
 	//
 	// example:
@@ -139,7 +145,7 @@ type ListAuthorizedUserGroupsResponseBodyUserGroups struct {
 	//
 	// example:
 	//
-	// 用户组001
+	// UserGroup001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -153,6 +159,10 @@ func (s ListAuthorizedUserGroupsResponseBodyUserGroups) GoString() string {
 
 func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) GetAppInstanceGroupId() *string {
 	return s.AppInstanceGroupId
+}
+
+func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) GetAppInstanceGroupSetId() *string {
+	return s.AppInstanceGroupSetId
 }
 
 func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) GetAuthMode() *string {
@@ -169,6 +179,11 @@ func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) GetGroupName() *string 
 
 func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) SetAppInstanceGroupId(v string) *ListAuthorizedUserGroupsResponseBodyUserGroups {
 	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ListAuthorizedUserGroupsResponseBodyUserGroups) SetAppInstanceGroupSetId(v string) *ListAuthorizedUserGroupsResponseBodyUserGroups {
+	s.AppInstanceGroupSetId = &v
 	return s
 }
 

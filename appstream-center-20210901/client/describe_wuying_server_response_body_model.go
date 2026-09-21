@@ -16,7 +16,7 @@ type iDescribeWuyingServerResponseBody interface {
 }
 
 type DescribeWuyingServerResponseBody struct {
-	// The details of the development workstation.
+	// The details of the development host.
 	Data *DescribeWuyingServerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,7 +62,7 @@ func (s *DescribeWuyingServerResponseBody) Validate() error {
 }
 
 type DescribeWuyingServerResponseBodyData struct {
-	// The bandwidth. Unit: Mbit/s.
+	// The bandwidth size, in Mbit/s.
 	//
 	// example:
 	//
@@ -80,23 +80,23 @@ type DescribeWuyingServerResponseBodyData struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the workstation was created.
+	// The creation time, in US English date and time format with a 12-hour clock.
 	//
 	// example:
 	//
-	// 2026-01-01T00:00:00Z
+	// Sep 2, 2026 1:46:41 PM
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The maximum number of private IP addresses per ENI, including the primary IP address.
+	// The maximum number of private IP addresses per NIC, including the primary IP address.
 	//
 	// example:
 	//
 	// 10
 	EniPrivateIpAddressQuantity *int32 `json:"EniPrivateIpAddressQuantity,omitempty" xml:"EniPrivateIpAddressQuantity,omitempty"`
-	// The time when the workstation expires.
+	// The expiration time, in US English date and time format with a 12-hour clock.
 	//
 	// example:
 	//
-	// 2027-01-01T00:00:00Z
+	// Oct 3, 2026 12:00:00 AM
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The image ID.
 	//
@@ -126,7 +126,7 @@ type DescribeWuyingServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// Default Workspace.
+	// Default Workspace
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The workspace type.
 	//
@@ -142,31 +142,37 @@ type DescribeWuyingServerResponseBodyData struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The set of private IP addresses, including the primary and secondary IP addresses.
 	PrivateIpSets []*DescribeWuyingServerResponseBodyDataPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Repeated"`
-	// The status of the development workstation.
+	// The status of the development host.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Whether ASP streaming connection is supported.
+	//
+	// example:
+	//
+	// true
+	SupportASP *bool `json:"SupportASP,omitempty" xml:"SupportASP,omitempty"`
 	// The type of the system cloud disk.
 	//
 	// example:
 	//
 	// cloud_essd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The size of the system cloud disk. Unit: GB.
+	// The size of the system cloud disk, in GB.
 	//
 	// example:
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The ID of the development workstation.
+	// The ID of the development host.
 	//
 	// example:
 	//
 	// aig-bp1234567890abcde
 	WuyingServerId *string `json:"WuyingServerId,omitempty" xml:"WuyingServerId,omitempty"`
-	// The name of the development workstation.
+	// The name of the development host.
 	//
 	// example:
 	//
@@ -240,6 +246,10 @@ func (s *DescribeWuyingServerResponseBodyData) GetPrivateIpSets() []*DescribeWuy
 
 func (s *DescribeWuyingServerResponseBodyData) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeWuyingServerResponseBodyData) GetSupportASP() *bool {
+	return s.SupportASP
 }
 
 func (s *DescribeWuyingServerResponseBodyData) GetSystemDiskCategory() *string {
@@ -330,6 +340,11 @@ func (s *DescribeWuyingServerResponseBodyData) SetPrivateIpSets(v []*DescribeWuy
 
 func (s *DescribeWuyingServerResponseBodyData) SetStatus(v string) *DescribeWuyingServerResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeWuyingServerResponseBodyData) SetSupportASP(v bool) *DescribeWuyingServerResponseBodyData {
+	s.SupportASP = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iModifyWuyingServerAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetErdmaEnabled(v bool) *ModifyWuyingServerAttributeRequest
+	GetErdmaEnabled() *bool
 	SetPassword(v string) *ModifyWuyingServerAttributeRequest
 	GetPassword() *string
 	SetProductType(v string) *ModifyWuyingServerAttributeRequest
@@ -20,12 +22,23 @@ type iModifyWuyingServerAttributeRequest interface {
 }
 
 type ModifyWuyingServerAttributeRequest struct {
+	// Specifies whether to enable dedicated eRDMA network interfaces. Only true is supported.
+	//
+	// example:
+	//
+	// true
+	ErdmaEnabled *bool `json:"ErdmaEnabled,omitempty" xml:"ErdmaEnabled,omitempty"`
 	// The logon password of the workstation.
 	//
 	// example:
 	//
 	// yourPassword
-	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The product type.
+	//
+	// example:
+	//
+	// WuyingServer
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The workstation ID.
 	//
@@ -49,6 +62,10 @@ func (s ModifyWuyingServerAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyWuyingServerAttributeRequest) GetErdmaEnabled() *bool {
+	return s.ErdmaEnabled
+}
+
 func (s *ModifyWuyingServerAttributeRequest) GetPassword() *string {
 	return s.Password
 }
@@ -63,6 +80,11 @@ func (s *ModifyWuyingServerAttributeRequest) GetWuyingServerId() *string {
 
 func (s *ModifyWuyingServerAttributeRequest) GetWuyingServerName() *string {
 	return s.WuyingServerName
+}
+
+func (s *ModifyWuyingServerAttributeRequest) SetErdmaEnabled(v bool) *ModifyWuyingServerAttributeRequest {
+	s.ErdmaEnabled = &v
+	return s
 }
 
 func (s *ModifyWuyingServerAttributeRequest) SetPassword(v string) *ModifyWuyingServerAttributeRequest {

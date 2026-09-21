@@ -40,9 +40,9 @@ type ListModelTemplatesShrinkRequest struct {
 	//
 	// example:
 	//
-	// ENTERPRISE
+	// ENTERPRISE_AGENTIC_COMPUTER
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The Agent platform list. Supports COMMON. If specified together with AgentPlatform, AgentPlatform takes precedence and this list is ignored. Defaults to ENTERPRISE if no platform filter is specified. To query Common model groups, explicitly include COMMON. If filtering by Provider simultaneously, set the value to Common.
+	// The list of Agent platforms. Supports COMMON. If specified together with AgentPlatform, AgentPlatform takes precedence and this list is ignored. If neither platform filter is specified, the default value is ENTERPRISE. To query Common model groups, explicitly include COMMON. If filtering by Provider at the same time, set the value to Common.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListModelTemplatesShrinkRequest struct {
 	//
 	// OpenClaw
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// The Agent provider list. Supports Common. If specified together with AgentProvider, AgentProvider takes precedence and this list is ignored. To query Common model groups, explicitly include COMMON in the platform filter.
+	// The list of Agent providers. Supports Common. If specified together with AgentProvider, AgentProvider takes precedence and this list is ignored. To query Common model groups, explicitly include COMMON in the platform filter.
 	//
 	// example:
 	//
@@ -74,9 +74,13 @@ type ListModelTemplatesShrinkRequest struct {
 	//
 	// true
 	HasModel *bool `json:"HasModel,omitempty" xml:"HasModel,omitempty"`
-	// The list of template group IDs to filter by.
+	// The list of template group IDs used for filtering.
 	ModelTemplateIdListShrink *string `json:"ModelTemplateIdList,omitempty" xml:"ModelTemplateIdList,omitempty"`
 	// The model group name. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// coding-openai
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The page number, starting from 1. Values 0 and 1 return the same result.
 	//
@@ -90,17 +94,13 @@ type ListModelTemplatesShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The authorization scope filter. Valid values: ALL_USER, USER_MIXED, or RESOURCE_MIXED (strictly uppercase. Case variants or unknown values return InvalidParameter). If not specified, no filtering is applied. Unlike create/update operations, the filter scenario allows RESOURCE_MIXED (to filter non-Common model groups).
+	// The authorization scope filter. Valid values: ALL_USER, USER_MIXED, and RESOURCE_MIXED (strictly uppercase. Case variants and unknown values return InvalidParameter). If not specified, no filtering is applied. Unlike the create/update operations, the filter scenario allows RESOURCE_MIXED (to filter non-Common model groups).
 	//
 	// example:
 	//
 	// ALL_USER
 	RefScope *string `json:"RefScope,omitempty" xml:"RefScope,omitempty"`
-	// The template source filter. Valid values:
-	//
-	// - User: tenant-created (default if not specified).
-	//
-	// - System: system preset.
+	// The template source filter. Valid values: User (tenant-created, default if not specified) and System (system preset).
 	//
 	// example:
 	//
