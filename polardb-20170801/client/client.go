@@ -3861,7 +3861,7 @@ func (client *Client) CreateAgenticDBTenantApiKey(request *CreateAgenticDBTenant
 
 // Summary:
 //
-// Creates an application associated with a PolarDB instance.
+// Creates an application that is associated with a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -3916,6 +3916,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(request.AgenticDBBranchSpecShrink) {
 		query["AgenticDBBranchSpec"] = request.AgenticDBBranchSpecShrink
+	}
+
+	if !dara.IsNil(request.AgenticDBClusterId) {
+		query["AgenticDBClusterId"] = request.AgenticDBClusterId
 	}
 
 	if !dara.IsNil(request.ApplicationType) {
@@ -4111,7 +4115,7 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 // Summary:
 //
-// Creates an application associated with a PolarDB instance.
+// Creates an application that is associated with a PolarDB instance.
 //
 // @param request - CreateApplicationRequest
 //

@@ -13,6 +13,8 @@ type iCreateApplicationRequest interface {
 	GetAIDBClusterId() *string
 	SetAgenticDBBranchSpec(v *CreateApplicationRequestAgenticDBBranchSpec) *CreateApplicationRequest
 	GetAgenticDBBranchSpec() *CreateApplicationRequestAgenticDBBranchSpec
+	SetAgenticDBClusterId(v string) *CreateApplicationRequest
+	GetAgenticDBClusterId() *string
 	SetApplicationType(v string) *CreateApplicationRequest
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationRequest
@@ -112,6 +114,12 @@ type CreateApplicationRequest struct {
 	//
 	// {"DBClusterId":"pagc-2zea920mcvd5o87","TenantId":"t-cfc2d7df0e59439681f0087f51","ProjectId":"proj-d7849d0050664c758af795d468","BranchId":"br-9054b3b7649e4c0d977bd0df37","ForkFromBranch":true,"ForkFromApplicationId":"pa-source"}
 	AgenticDBBranchSpec *CreateApplicationRequestAgenticDBBranchSpec `json:"AgenticDBBranchSpec,omitempty" xml:"AgenticDBBranchSpec,omitempty" type:"Struct"`
+	// The AgenticDB cluster ID.
+	//
+	// example:
+	//
+	// pagc-xxx
+	AgenticDBClusterId *string `json:"AgenticDBClusterId,omitempty" xml:"AgenticDBClusterId,omitempty"`
 	// The application type. Valid values:
 	//
 	// - supabase: Set this value to create a managed Supabase application.
@@ -148,13 +156,13 @@ type CreateApplicationRequest struct {
 	//
 	// xxx
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies whether to enable automatic creation of an elastic IP address (EIP) and attach it to the instance. This is equivalent to associate with an EIP.
+	// Specifies whether to automatically create an elastic IP address (EIP) and associate it with the instance.
 	//
 	// example:
 	//
 	// qwen3-max
 	AutoAllocatePublicEip *bool `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
-	// Specifies whether to enable automatic creation of a cold storage Polarlakebase instance. Valid values:
+	// Specifies whether to enable automatic creation of a cold storage Polarlakebase. Valid values:
 	//
 	// 	- false (default): Automatic creation is disabled.
 	//
@@ -196,7 +204,7 @@ type CreateApplicationRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
 	DnatEntries []*CreateApplicationRequestDnatEntries `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty" type:"Repeated"`
-	// The DNAT-dedicated NAT IP address that has been allocated (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in an available state. The vSwitch of the gateway must belong to a primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry has been bound to the vSwitch where the application resides.
+	// The DNAT-dedicated NAT IP address allocated by the customer, which must be separate from the SNAT IP address. The IP address must belong to the specified gateway and be in an available state. The vSwitch where the gateway resides must be in a primary CIDR block reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: The customer has bound an SNAT entry to the vSwitch where the application resides.
 	//
 	// example:
 	//
@@ -234,7 +242,7 @@ type CreateApplicationRequest struct {
 	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
 	// The model source. Valid values:
 	//
-	// 	- bailian: Alibaba Cloud Model Studio model.
+	// 	- bailian: Bailian model.
 	//
 	// 	- custom: Custom model.
 	//
@@ -306,7 +314,7 @@ type CreateApplicationRequest struct {
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP whitelist. If you do not specify this parameter, the default value is `127.0.0.1`.
+	// The IP whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
 	//
 	// example:
 	//
@@ -356,7 +364,7 @@ type CreateApplicationRequest struct {
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in an active state.
+	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in active status.
 	//
 	// example:
 	//
@@ -384,6 +392,10 @@ func (s *CreateApplicationRequest) GetAIDBClusterId() *string {
 
 func (s *CreateApplicationRequest) GetAgenticDBBranchSpec() *CreateApplicationRequestAgenticDBBranchSpec {
 	return s.AgenticDBBranchSpec
+}
+
+func (s *CreateApplicationRequest) GetAgenticDBClusterId() *string {
+	return s.AgenticDBClusterId
 }
 
 func (s *CreateApplicationRequest) GetApplicationType() *string {
@@ -561,6 +573,11 @@ func (s *CreateApplicationRequest) SetAIDBClusterId(v string) *CreateApplication
 
 func (s *CreateApplicationRequest) SetAgenticDBBranchSpec(v *CreateApplicationRequestAgenticDBBranchSpec) *CreateApplicationRequest {
 	s.AgenticDBBranchSpec = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetAgenticDBClusterId(v string) *CreateApplicationRequest {
+	s.AgenticDBClusterId = &v
 	return s
 }
 
@@ -959,7 +976,7 @@ type CreateApplicationRequestComponents struct {
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The maximum number of replicas for the application subcomponent with the same specification. Default value: the value of ComponentReplica.
+	// The maximum number of application subcomponents with the same specification. Default value: the value of ComponentReplica.
 	//
 	// - Only raycluster supports this parameter.
 	//
@@ -993,37 +1010,37 @@ type CreateApplicationRequestComponents struct {
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The maximum number of replicas for component scaling.
+	// The upper limit for component scaling.
 	//
 	// example:
 	//
 	// 16
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum number of replicas for component scaling.
+	// The lower limit for component scaling.
 	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The list of security groups for the application subcomponent, separated by commas (,).
+	// The list of security groups for the application subcomponent. Separate multiple security groups with commas (,).
 	//
 	// example:
 	//
 	// sg-********************
 	SecurityGroups *string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty"`
-	// The name of the whitelist IP address group for the application subcomponent. Default value: default.
+	// The name of the IP whitelist group for the application subcomponent. Default value: default.
 	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The whitelist IP addresses of the application subcomponent, separated by commas (,).
+	// The whitelisted IP addresses for the application subcomponent. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The type of the whitelist IP addresses for the application subcomponent. Default value: ipv4.
+	// The type of the whitelisted IP addresses for the application subcomponent. Default value: ipv4.
 	//
 	// example:
 	//
@@ -1134,13 +1151,13 @@ func (s *CreateApplicationRequestComponents) Validate() error {
 }
 
 type CreateApplicationRequestDnatEntries struct {
-	// The frontend port. This parameter is optional. If not specified, the system automatically assigns a port that does not conflict with ports already in use on the gateway. You can query the assignment result by calling the DescribeApplicationAttribute operation.
+	// The frontend port. This parameter is optional. If not specified, the control plane automatically assigns a port that does not conflict with ports already in use on the gateway. You can query the assignment result by calling the DescribeApplicationAttribute operation.
 	//
 	// example:
 	//
 	// 10001
 	FrontPort *int32 `json:"FrontPort,omitempty" xml:"FrontPort,omitempty"`
-	// The port name. Valid values: webui, hermesagent, dashboard, and ssh.
+	// The port name. Valid values: webui | hermesagent | dashboard | ssh.
 	//
 	// example:
 	//
@@ -1228,7 +1245,7 @@ type CreateApplicationRequestKnowledgeApplicationSpec struct {
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
 	// The password.
 	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	// Required for knowledge applications. The LLM model name, such as qwen3-max.
+	// The LLM model name. This parameter is required for knowledge applications, such as qwen3-max.
 	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
 }
 
@@ -1290,7 +1307,7 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// test-user
 	DbUser *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	// Required for mem0 applications. The embedder model name, such as text-embedding-v4.
+	// The embedder model name. This parameter is required for mem0 applications, such as text-embedding-v4.
 	//
 	// example:
 	//
@@ -1308,19 +1325,19 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// qwen-plus
 	GraphLlmModel *string `json:"GraphLlmModel,omitempty" xml:"GraphLlmModel,omitempty"`
-	// Required for mem0 applications. The LLM model name, such as qwen3-max.
+	// The LLM model name. This parameter is required for mem0 applications, such as qwen3-max.
 	//
 	// example:
 	//
 	// qwen3-max
 	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
-	// The project name, which corresponds to the database schema that stores project data.
+	// The project name, which corresponds to the schema in the database where project data is stored.
 	//
 	// example:
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Required for mem0 applications. The reranker model name, such as qwen3-rerank.
+	// The reranker model name. This parameter is required for mem0 applications, such as qwen3-rerank.
 	//
 	// example:
 	//
@@ -1488,7 +1505,7 @@ type CreateApplicationRequestStorages struct {
 	//
 	// /data/container
 	ContainerMountPath *string `json:"ContainerMountPath,omitempty" xml:"ContainerMountPath,omitempty"`
-	// The storage endpoint ID.
+	// The ID of the storage endpoint.
 	//
 	// example:
 	//
@@ -1506,7 +1523,7 @@ type CreateApplicationRequestStorages struct {
 	//
 	// 100
 	StorageCapacity *string `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
-	// The storage access endpoint.
+	// The storage access address.
 	//
 	// example:
 	//

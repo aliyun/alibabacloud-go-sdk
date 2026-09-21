@@ -13,6 +13,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetAIDBClusterId() *string
 	SetAgenticDBBranchSpecShrink(v string) *CreateApplicationShrinkRequest
 	GetAgenticDBBranchSpecShrink() *string
+	SetAgenticDBClusterId(v string) *CreateApplicationShrinkRequest
+	GetAgenticDBClusterId() *string
 	SetApplicationType(v string) *CreateApplicationShrinkRequest
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationShrinkRequest
@@ -112,6 +114,12 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// {"DBClusterId":"pagc-2zea920mcvd5o87","TenantId":"t-cfc2d7df0e59439681f0087f51","ProjectId":"proj-d7849d0050664c758af795d468","BranchId":"br-9054b3b7649e4c0d977bd0df37","ForkFromBranch":true,"ForkFromApplicationId":"pa-source"}
 	AgenticDBBranchSpecShrink *string `json:"AgenticDBBranchSpec,omitempty" xml:"AgenticDBBranchSpec,omitempty"`
+	// The AgenticDB cluster ID.
+	//
+	// example:
+	//
+	// pagc-xxx
+	AgenticDBClusterId *string `json:"AgenticDBClusterId,omitempty" xml:"AgenticDBClusterId,omitempty"`
 	// The application type. Valid values:
 	//
 	// - supabase: Set this value to create a managed Supabase application.
@@ -148,13 +156,13 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// xxx
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies whether to enable automatic creation of an elastic IP address (EIP) and attach it to the instance. This is equivalent to associate with an EIP.
+	// Specifies whether to automatically create an elastic IP address (EIP) and associate it with the instance.
 	//
 	// example:
 	//
 	// qwen3-max
 	AutoAllocatePublicEip *bool `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
-	// Specifies whether to enable automatic creation of a cold storage Polarlakebase instance. Valid values:
+	// Specifies whether to enable automatic creation of a cold storage Polarlakebase. Valid values:
 	//
 	// 	- false (default): Automatic creation is disabled.
 	//
@@ -196,7 +204,7 @@ type CreateApplicationShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
 	DnatEntriesShrink *string `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty"`
-	// The DNAT-dedicated NAT IP address that has been allocated (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in an available state. The vSwitch of the gateway must belong to a primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry has been bound to the vSwitch where the application resides.
+	// The DNAT-dedicated NAT IP address allocated by the customer, which must be separate from the SNAT IP address. The IP address must belong to the specified gateway and be in an available state. The vSwitch where the gateway resides must be in a primary CIDR block reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: The customer has bound an SNAT entry to the vSwitch where the application resides.
 	//
 	// example:
 	//
@@ -234,7 +242,7 @@ type CreateApplicationShrinkRequest struct {
 	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
 	// The model source. Valid values:
 	//
-	// 	- bailian: Alibaba Cloud Model Studio model.
+	// 	- bailian: Bailian model.
 	//
 	// 	- custom: Custom model.
 	//
@@ -306,7 +314,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP whitelist. If you do not specify this parameter, the default value is `127.0.0.1`.
+	// The IP whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
 	//
 	// example:
 	//
@@ -356,7 +364,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in an active state.
+	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in active status.
 	//
 	// example:
 	//
@@ -384,6 +392,10 @@ func (s *CreateApplicationShrinkRequest) GetAIDBClusterId() *string {
 
 func (s *CreateApplicationShrinkRequest) GetAgenticDBBranchSpecShrink() *string {
 	return s.AgenticDBBranchSpecShrink
+}
+
+func (s *CreateApplicationShrinkRequest) GetAgenticDBClusterId() *string {
+	return s.AgenticDBClusterId
 }
 
 func (s *CreateApplicationShrinkRequest) GetApplicationType() *string {
@@ -561,6 +573,11 @@ func (s *CreateApplicationShrinkRequest) SetAIDBClusterId(v string) *CreateAppli
 
 func (s *CreateApplicationShrinkRequest) SetAgenticDBBranchSpecShrink(v string) *CreateApplicationShrinkRequest {
 	s.AgenticDBBranchSpecShrink = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetAgenticDBClusterId(v string) *CreateApplicationShrinkRequest {
+	s.AgenticDBClusterId = &v
 	return s
 }
 

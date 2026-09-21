@@ -2934,7 +2934,7 @@ func (client *Client) CreateAgenticDBTenantApiKeyWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates an application associated with a PolarDB instance.
+// Creates an application that is associated with a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -2989,6 +2989,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.AgenticDBBranchSpecShrink) {
 		query["AgenticDBBranchSpec"] = request.AgenticDBBranchSpecShrink
+	}
+
+	if !dara.IsNil(request.AgenticDBClusterId) {
+		query["AgenticDBClusterId"] = request.AgenticDBClusterId
 	}
 
 	if !dara.IsNil(request.ApplicationType) {
