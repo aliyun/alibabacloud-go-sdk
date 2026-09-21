@@ -24,17 +24,17 @@ type iAddHDMInstanceResponseBody interface {
 }
 
 type AddHDMInstanceResponseBody struct {
-	// The HTTP status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information, including the error codes and the number of entries that are returned.
+	// The details, including the total number of entries and error codes.
 	Data *AddHDMInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type AddHDMInstanceResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ type AddHDMInstanceResponseBodyData struct {
 	//
 	// 31063db679****
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The HTTP status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -160,25 +160,25 @@ type AddHDMInstanceResponseBodyData struct {
 	//
 	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The endpoint of the instance.
+	// The IP endpoint of the instance.
 	//
 	// example:
 	//
 	// rm-de21209****.mysql.rds.aliyuncs.com
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ID of the instance owner.
+	// The owner ID.
 	//
 	// example:
 	//
 	// 325352345
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The port number of the instance that you want to access.
+	// The port of the target instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The role of the current API caller.
+	// The role information.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type AddHDMInstanceResponseBodyData struct {
 	//
 	// L0EPfLS****=SCE00000*****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token, which is a custom unique random string.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type AddHDMInstanceResponseBodyData struct {
 	//
 	// hdm_3063db6792965c080a4bcb6e6304****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//

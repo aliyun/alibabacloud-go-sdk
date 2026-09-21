@@ -28,9 +28,9 @@ type iDescribeErrorLogRecordsRequest interface {
 }
 
 type DescribeErrorLogRecordsRequest struct {
-	// The end time of the query. The value is in the format of a UNIX timestamp. Unit: milliseconds.
+	// The end time of the query. The value is in the format of a UNIX timestamp, in milliseconds.
 	//
-	// 	Notice: The value is of the Long type. Precision loss may occur during serialization/deserialization. The value must not be greater than 9007199254740991.
+	// 	Notice: The data type of this parameter is Long. During the sequence of serialization/deserialization, precision loss may occur. Ensure that the value does not exceed 9007199254740991.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeErrorLogRecordsRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter conditions.
 	//
-	// > Filtering is supported only for error logs of ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, and PolarDB for PostgreSQL (Compatible with Oracle).
+	// > Only error log filtering for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, and PolarDB for PostgreSQL (Compatible with Oracle) is supported.
 	Filters []*DescribeErrorLogRecordsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -74,15 +74,15 @@ type DescribeErrorLogRecordsRequest struct {
 	//
 	// - mongos
 	//
-	// > This parameter is supported only for ApsaraDB for MongoDB instances.
+	// > Only ApsaraDB for MongoDB instances are supported.
 	//
 	// example:
 	//
 	// db
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The start time of the query. The value is in the format of a UNIX timestamp. Unit: milliseconds.
+	// The start time of the query. The value is in the format of a UNIX timestamp, in milliseconds.
 	//
-	// 	Notice: The value is of the Long type. Precision loss may occur during serialization/deserialization. The value must not be greater than 9007199254740991.
+	// 	Notice: The data type of this parameter is Long. During the sequence of serialization/deserialization, precision loss may occur. Ensure that the value does not exceed 9007199254740991.
 	//
 	// This parameter is required.
 	//

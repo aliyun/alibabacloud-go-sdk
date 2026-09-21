@@ -30,11 +30,11 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
-	// Specifies whether to sort results in ascending order. Default value: **true**.
+	// Specifies whether to sort the results in ascending order. Default value: **true**.
 	//
-	// - **true**: ascending order.
+	// - **true**: Sort in ascending order.
 	//
-	// - **false**: descending order.
+	// - **false**: Sort in descending order.
 	//
 	// example:
 	//
@@ -64,35 +64,49 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// pi-d9j9fe7wq7t9i****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// - **MySQL*	-
+	// - **Common to all engines*	-
 	//
-	//   - QueryTimeSeconds: query duration in seconds.
+	//   - QueryTimeSeconds: query duration (seconds).
 	//
-	//   - LockTimeSeconds: lock time in seconds.
+	//   - Timestamp: timestamp.
 	//
-	//   - RowsSent: rows sent.
+	// - **SQL-based engines (MySQL / PolarDB for MySQL / PostgreSQL / PolarDB for PostgreSQL / PolarDB for Oracle / PolarDB-X DN)**
+	//
+	//   - LockTimeSeconds: lock time (seconds).
 	//
 	//   - RowsExamined: rows examined.
 	//
-	// - **Redis**
-	//
-	//   - QueryTime: query duration.
-	//
-	//   - Timestamp: execution end time.
+	//   - RowsSent: rows returned.
 	//
 	// - **MongoDB**
 	//
-	//   - QueryTime: query duration.
+	//   - KeysExamined: number of indexes scanned.
 	//
-	//   - Timestamp: execution end time.
-	//
-	//   - KeysExamined: keys examined.
-	//
-	//   - DocExamined: documents examined.
+	//   - DocExamined: number of documents scanned.
 	//
 	//   - ReturnNum: rows returned.
 	//
-	// <notice>RDS PostgreSQL, PolarDB for PostgreSQL, and SQL Server do not support sorting.</notice>
+	// - **SQL Server**
+	//
+	//   - CPUTimeSeconds: CPU time.
+	//
+	//   - IOWrites: number of I/O writes.
+	//
+	//   - LastRowsCountAffected: last rows affected.
+	//
+	//   - LogicalIOReads: logical I/O reads.
+	//
+	//   - PhysicalIOReads: physical I/O reads.
+	//
+	//   - RowsCountAffected: rows affected.
+	//
+	// - **PolarDB-X CN**
+	//
+	//   - RowsSent: rows returned or updated.
+	//
+	//   - Frows: rows fetched.
+	//
+	//   - Scnt: number of physical SQL statements.
 	//
 	// example:
 	//

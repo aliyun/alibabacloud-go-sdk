@@ -22,7 +22,7 @@ type iGetFullRequestSampleByInstanceIdResponseBody interface {
 }
 
 type GetFullRequestSampleByInstanceIdResponseBody struct {
-	// The HTTP status code returned.
+	// The response status code.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GetFullRequestSampleByInstanceIdResponseBody struct {
 	Data []*GetFullRequestSampleByInstanceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetFullRequestSampleByInstanceIdResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The request was successful.
 	//
-	// - **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *GetFullRequestSampleByInstanceIdResponseBody) Validate() error {
 }
 
 type GetFullRequestSampleByInstanceIdResponseBodyData struct {
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// dbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The number of rows fetched by PolarDB-X 2.0 compute nodes.
+	// The number of rows fetched by the PolarDB-X 2.0 compute node (CN).
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type GetFullRequestSampleByInstanceIdResponseBodyData struct {
 	//
 	// 165848
 	LogicalRead *float64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
-	// The source IP address.
+	// The source of the access.
 	//
 	// example:
 	//
@@ -165,51 +165,51 @@ type GetFullRequestSampleByInstanceIdResponseBodyData struct {
 	//
 	// 0
 	PhysicalSyncRead *float64 `json:"PhysicalSyncRead,omitempty" xml:"PhysicalSyncRead,omitempty"`
-	// The number of rows updated or returned on PolarDB-X 2.0 compute nodes.
+	// The number of rows updated or returned by the PolarDB-X 2.0 compute node (CN).
 	//
 	// example:
 	//
 	// 0
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The total number of scanned rows.
+	// The total number of rows examined.
 	//
-	// > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+	// > Currently, the following databases support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
 	//
 	// example:
 	//
 	// 2048576
 	RowsExamined *int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
-	// The number of rows returned by the SQL statement.
+	// The number of rows returned.
 	//
 	// example:
 	//
 	// 14
 	RowsReturned *int64 `json:"RowsReturned,omitempty" xml:"RowsReturned,omitempty"`
-	// The amount of time consumed to execute the SQL statement. Unit: seconds.
+	// The execution duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 0.409789
 	Rt *float64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// The number of scanned rows.
+	// The number of rows scanned.
 	//
 	// example:
 	//
 	// 0
 	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	// The number of requests sent from PolarDB-X 2.0 compute nodes to data nodes.
+	// The number of DN requests from the PolarDB-X 2.0 compute node (CN).
 	//
 	// example:
 	//
 	// 0
 	Scnt *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
-	// The sample SQL statement.
+	// The SQL sample.
 	//
 	// example:
 	//
 	// select 	- from testdb01 where ****
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The SQL statement ID.
+	// SQL ID。
 	//
 	// example:
 	//
@@ -221,19 +221,19 @@ type GetFullRequestSampleByInstanceIdResponseBodyData struct {
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the SQL statement was executed. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1660100753556
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The number of updated rows.
+	// The number of rows updated.
 	//
 	// example:
 	//
 	// 0
 	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
-	// The name of the user who executes the SQL statement.
+	// The username that executed the SQL statement.
 	//
 	// example:
 	//

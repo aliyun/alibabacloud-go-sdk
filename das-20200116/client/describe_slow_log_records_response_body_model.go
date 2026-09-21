@@ -44,11 +44,11 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// A1C79EE2-D04D-571B-8C60-961FAF8E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
-	// - **true**: successful.
+	// - **true**: The request was successful.
 	//
-	// - **false**: failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeSlowLogRecordsResponseBodyData struct {
 	//
 	// 1672617600000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of items in the query log list on the current page.
+	// The number of items in the log list on the current page.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type DescribeSlowLogRecordsResponseBodyData struct {
 	//
 	// node123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The page number for the paged query. Pages start from page 1. Default value: 1.
+	// The page number for the paged query. The value starts from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -319,15 +319,25 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	CPUTimeSeconds *float64 `json:"CPUTimeSeconds,omitempty" xml:"CPUTimeSeconds,omitempty"`
-	ClientIp       *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	Cmd            *string  `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	// The slow query statement.
-	//
-	// > Only ApsaraDB for Tair (Redis® OSS-Compatible) database instances are supported.
+	// The client IP address connected to the Redis proxy.
 	//
 	// example:
 	//
-	// SELECT
+	// 172.16.15.204
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The command executed at the Redis proxy layer.
+	//
+	// example:
+	//
+	// GET
+	Cmd *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	// The slow query statement.
+	//
+	// > Only ApsaraDB Tair (Redis® OSS-Compatible) database instances are supported.
+	//
+	// example:
+	//
+	// GET async_c4d163675f44fe83f6214cf9ba5exxxx
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The database name.
 	//
@@ -335,7 +345,12 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// test
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DbId   *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// Redis Proxy DbId
+	//
+	// example:
+	//
+	// r-uf6cfc5e1bcb1xxx-db-5
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -348,17 +363,27 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	DocsExamined *string `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
-	ExtText      *string `json:"ExtText,omitempty" xml:"ExtText,omitempty"`
-	Fail         *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	// The number of rows fetched by the compute node (CN) of the ApsaraDB PolarDB-X 2.0 database instance.
+	// The extension field that contains additional information about the SQL execution.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only PolarDB for MySQL instances are supported.
+	ExtText *string `json:"ExtText,omitempty" xml:"ExtText,omitempty"`
+	// Indicates whether the SQL execution was successful. 0 indicates success. A non-zero value indicates failure.
+	//
+	// > Only ApsaraDB for Lindorm instances are supported.
+	//
+	// example:
+	//
+	// 1
+	Fail *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// The number of rows fetched by the compute node (CN) of the PolarDB-X 2.0 database.
+	//
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	//
 	// example:
 	//
 	// 10
 	Frows *int64 `json:"Frows,omitempty" xml:"Frows,omitempty"`
-	// The source host address.
+	// The source address.
 	//
 	// example:
 	//
@@ -418,12 +443,32 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// example:
 	//
-	// pro-test
-	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OpType     *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// app.event
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The node ID.
+	//
+	// example:
+	//
+	// r-uf6cfc5e1xxx-proxy-11
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The operation type.
+	//
+	// > Only ApsaraDB for MongoDB instances are supported.
+	//
+	// example:
+	//
+	// getMore
+	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// The execution time at the Redis proxy.
+	//
+	// example:
+	//
+	// 2026-09-18 10:54:55.311
 	OriginTime *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
-	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The parameter values attached to the SQL statement in parameter query scenarios. Multiple parameters are separated by commas (,).
+	//
+	// > Only ApsaraDB for Lindorm database instances are supported.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The number of physical reads.
 	//
 	// > Only ApsaraDB RDS for SQL Server instances are supported.
@@ -444,7 +489,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// example:
 	//
-	// sq-1pzcdMwRb
+	// d236d0c4ae8485f6ffe5fdbe5e1bdxxx
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 	// The time when the query started. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
@@ -464,10 +509,34 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	QueryTimeSeconds *float64 `json:"QueryTimeSeconds,omitempty" xml:"QueryTimeSeconds,omitempty"`
-	Reason           *string  `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ReqId            *string  `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	RequestSize      *int64   `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
-	ResponseSize     *int64   `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
+	// The error message when the slow query execution fails.
+	//
+	// > Only ApsaraDB for Lindorm instances are supported.
+	//
+	// example:
+	//
+	// create-by-mse-can-not-delete
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The unique identifier of the slow query log record.
+	//
+	// > Only ApsaraDB for Lindorm instances are supported.
+	//
+	// example:
+	//
+	// hotspot-request-001
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// The request packet size at the Redis proxy layer, in bytes.
+	//
+	// example:
+	//
+	// 58
+	RequestSize *int64 `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
+	// The response packet size at the Redis proxy layer, in bytes.
+	//
+	// example:
+	//
+	// 1535916
+	ResponseSize *int64 `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
 	// The number of returned items.
 	//
 	// example:
@@ -482,9 +551,9 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 20
 	ReturnNum *string `json:"ReturnNum,omitempty" xml:"ReturnNum,omitempty"`
-	// The total number of rows updated or returned by the compute nodes of the ApsaraDB PolarDB-X 2.0 database instance.
+	// The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 database instance.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	//
 	// example:
 	//
@@ -510,7 +579,12 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 10
 	RowsSent *int64 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
-	Rt       *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// The total response time at the Redis proxy layer, in microseconds.
+	//
+	// example:
+	//
+	// 2055
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
 	// The SQL text.
 	//
 	// example:
@@ -523,9 +597,9 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// HTTPS
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	// The number of DN requests from the compute node (CN) of the ApsaraDB PolarDB-X 2.0 database instance.
+	// The number of data node (DN) requests from the compute node (CN) of the PolarDB-X 2.0 database.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	//
 	// example:
 	//
@@ -539,7 +613,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The tag.
 	SqlTag *DescribeSlowLogRecordsResponseBodyDataLogsSqlTag `json:"SqlTag,omitempty" xml:"SqlTag,omitempty" type:"Struct"`
-	// The SQL statement type. Valid values:
+	// The type of the SQL statement. Valid values:
 	//
 	// - **SELECT**
 	//
@@ -551,7 +625,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The child instance ID.
+	// The sub-instance ID.
 	//
 	// example:
 	//
@@ -563,9 +637,9 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// tableNameExample
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The template ID of the ApsaraDB PolarDB-X 2.0 database instance.
+	// The template ID of the PolarDB-X 2.0 database.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	//
 	// example:
 	//
@@ -583,9 +657,9 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 1747118812
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The trace ID of PolarDB-X 2.0, which is the execute ID of the SQL statement on the ApsaraDB PolarDB-X 2.0 database node.
+	// The trace ID of PolarDB-X 2.0, which is the execute ID of the SQL statement on the database data node.
 	//
-	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
 	//
 	// example:
 	//

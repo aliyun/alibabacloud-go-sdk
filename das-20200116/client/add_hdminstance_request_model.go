@@ -68,21 +68,21 @@ type AddHDMInstanceRequest struct {
 	//
 	// None
 	FlushAccount *string `json:"FlushAccount,omitempty" xml:"FlushAccount,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// yuecq--test****
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	// The type of the instance on which the database is deployed. Valid values:
+	// The database product to which the instance belongs. Valid values:
 	//
-	// - **RDS**: an Alibaba Cloud database instance.
+	// - **RDS**: cloud instance.
 	//
-	// - **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
+	// - **ECS**: self-managed instance on ECS.
 	//
-	// - **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+	// - **IDC**: self-managed instance not on a public cloud.
 	//
-	// > IDC refers to your data center.
+	// > IDC stands for Internet Data Center.
 	//
 	// This parameter is required.
 	//
@@ -96,7 +96,7 @@ type AddHDMInstanceRequest struct {
 	//
 	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The endpoint that is used to access the instance over internal networks.
+	// The internal endpoint of the instance to be connected.
 	//
 	// example:
 	//
@@ -108,31 +108,31 @@ type AddHDMInstanceRequest struct {
 	//
 	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The password for the username.
+	// The password of the username.
 	//
 	// example:
 	//
 	// 122****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The port that is used to access the instance over internal networks.
+	// The internal network connection port of the instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region in which the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The username that is used to log on to the database.
+	// The username.
 	//
 	// example:
 	//
 	// test****
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// VPC ID。
 	//
 	// example:
 	//

@@ -51,8 +51,6 @@ type iDescribeAuditLogsRequest interface {
 	GetRuleAggQuery() *bool
 	SetRuleCategory(v string) *DescribeAuditLogsRequest
 	GetRuleCategory() *string
-	SetRuleID(v string) *DescribeAuditLogsRequest
-	GetRuleID() *string
 	SetRuleId(v string) *DescribeAuditLogsRequest
 	GetRuleId() *string
 	SetRuleName(v string) *DescribeAuditLogsRequest
@@ -108,7 +106,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 15682887991222
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The range of execution time.
+	// The range of the execution time.
 	//
 	// example:
 	//
@@ -130,7 +128,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// aliyun
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// The language type for sending and receiving messages. Default value: zh_cn. Valid values:
+	// The language of the request and response. Default value: zh_cn. Valid values:
 	//
 	// - zh_cn: Chinese.
 	//
@@ -197,7 +195,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// Specifies whether to perform an aggregate query.
+	// Specifies whether to use aggregate query.
 	//
 	// example:
 	//
@@ -209,12 +207,6 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
-	// The ID of the audit policy.
-	//
-	// example:
-	//
-	// 9953411
-	RuleID *string `json:"RuleID,omitempty" xml:"RuleID,omitempty"`
 	// The rule ID.
 	//
 	// example:
@@ -339,10 +331,6 @@ func (s *DescribeAuditLogsRequest) GetRuleCategory() *string {
 	return s.RuleCategory
 }
 
-func (s *DescribeAuditLogsRequest) GetRuleID() *string {
-	return s.RuleID
-}
-
 func (s *DescribeAuditLogsRequest) GetRuleId() *string {
 	return s.RuleId
 }
@@ -465,11 +453,6 @@ func (s *DescribeAuditLogsRequest) SetRuleAggQuery(v bool) *DescribeAuditLogsReq
 
 func (s *DescribeAuditLogsRequest) SetRuleCategory(v string) *DescribeAuditLogsRequest {
 	s.RuleCategory = &v
-	return s
-}
-
-func (s *DescribeAuditLogsRequest) SetRuleID(v string) *DescribeAuditLogsRequest {
-	s.RuleID = &v
 	return s
 }
 

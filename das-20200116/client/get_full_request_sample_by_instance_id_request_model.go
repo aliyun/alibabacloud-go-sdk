@@ -19,14 +19,12 @@ type iGetFullRequestSampleByInstanceIdRequest interface {
 	GetSqlId() *string
 	SetStart(v int64) *GetFullRequestSampleByInstanceIdRequest
 	GetStart() *int64
-	SetUserId(v string) *GetFullRequestSampleByInstanceIdRequest
-	GetUserId() *string
 }
 
 type GetFullRequestSampleByInstanceIdRequest struct {
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range to query. Specify a UNIX timestamp in milliseconds.
 	//
-	// > The end time must be later than the start time. The interval between the start time and the end time must be equal to or greater than 1 hour.
+	// > The end time must be later than the start time, and the interval between the start time and end time cannot be less than 1 hour.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +40,7 @@ type GetFullRequestSampleByInstanceIdRequest struct {
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The role of the PolarDB-X 2.0 node. Valid values:
+	// The node information of a PolarDB-X 2.0 database instance.
 	//
 	// - **polarx_cn**: compute node.
 	//
@@ -52,7 +50,7 @@ type GetFullRequestSampleByInstanceIdRequest struct {
 	//
 	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The SQL statement ID.
+	// SQL ID。
 	//
 	// This parameter is required.
 	//
@@ -60,9 +58,9 @@ type GetFullRequestSampleByInstanceIdRequest struct {
 	//
 	// 651b56fe9418d48edb8fdf0980ec****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range to query. Specify a UNIX timestamp in milliseconds.
 	//
-	// > The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
+	// > The start time must be within the storage duration of SQL Explorer for the database instance and cannot be earlier than 90 days before the current time.
 	//
 	// This parameter is required.
 	//
@@ -70,14 +68,6 @@ type GetFullRequestSampleByInstanceIdRequest struct {
 	//
 	// 1660097421000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the database instance.
-	//
-	// > This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
-	//
-	// example:
-	//
-	// 196278346919****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetFullRequestSampleByInstanceIdRequest) String() string {
@@ -108,10 +98,6 @@ func (s *GetFullRequestSampleByInstanceIdRequest) GetStart() *int64 {
 	return s.Start
 }
 
-func (s *GetFullRequestSampleByInstanceIdRequest) GetUserId() *string {
-	return s.UserId
-}
-
 func (s *GetFullRequestSampleByInstanceIdRequest) SetEnd(v int64) *GetFullRequestSampleByInstanceIdRequest {
 	s.End = &v
 	return s
@@ -134,11 +120,6 @@ func (s *GetFullRequestSampleByInstanceIdRequest) SetSqlId(v string) *GetFullReq
 
 func (s *GetFullRequestSampleByInstanceIdRequest) SetStart(v int64) *GetFullRequestSampleByInstanceIdRequest {
 	s.Start = &v
-	return s
-}
-
-func (s *GetFullRequestSampleByInstanceIdRequest) SetUserId(v string) *GetFullRequestSampleByInstanceIdRequest {
-	s.UserId = &v
 	return s
 }
 

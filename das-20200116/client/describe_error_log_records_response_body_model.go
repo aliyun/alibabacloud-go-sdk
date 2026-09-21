@@ -32,7 +32,7 @@ type DescribeErrorLogRecordsResponseBody struct {
 	Data *DescribeErrorLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeErrorLogRecordsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The request is successful.
 	//
-	// - **false**
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeErrorLogRecordsResponseBodyData struct {
 	//
 	// 2025-07-23T05:48:43Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The total number of log entries returned on the current page.
+	// The total number of log entries returned.
 	//
 	// example:
 	//
@@ -133,13 +133,13 @@ type DescribeErrorLogRecordsResponseBodyData struct {
 	ItemsNumbers *int64 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
 	// The log details.
 	Logs []*DescribeErrorLogRecordsResponseBodyDataLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The maximum number of entries per page.
+	// The maximum number of records per page.
 	//
 	// example:
 	//
 	// 10
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The current page number.
+	// The page number of the current query.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type DescribeErrorLogRecordsResponseBodyData struct {
 	//
 	// 2025-07-22T05:48:43Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of log entries within the specified time range.
+	// The total number of log entries within the query time range.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type DescribeErrorLogRecordsResponseBodyDataLogs struct {
 	//
 	// - **ACCESS**: access control log.
 	//
-	// - **-**: common log.
+	// - **-**: general log.
 	//
 	// - **COMMAND**: slow log.
 	//
@@ -264,7 +264,7 @@ type DescribeErrorLogRecordsResponseBodyDataLogs struct {
 	//
 	// - **WRITE**: slow update log.
 	//
-	// > This parameter is supported only for ApsaraDB for MongoDB instances.
+	// > Only ApsaraDB for MongoDB instances are supported.
 	//
 	// example:
 	//
@@ -272,7 +272,7 @@ type DescribeErrorLogRecordsResponseBodyDataLogs struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The log connection information.
 	//
-	// > This parameter is supported only for ApsaraDB for MongoDB instances.
+	// > Only ApsaraDB for MongoDB instances are supported.
 	//
 	// example:
 	//
@@ -294,12 +294,36 @@ type DescribeErrorLogRecordsResponseBodyDataLogs struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The node ID.
 	//
-	// > This parameter is supported only for ApsaraDB for MongoDB instances.
+	// > Only ApsaraDB for MongoDB instances are supported.
 	//
 	// example:
 	//
 	// d-bp128a003436****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database name.
+	//
+	// > Only certain special logs of ApsaraDB RDS for PostgreSQL and PolarDB for PostgreSQL instances are supported.
+	//
+	// example:
+	//
+	// db_name
+	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
+	// The database account.
+	//
+	// > Only certain special logs of ApsaraDB RDS for PostgreSQL and PolarDB for PostgreSQL instances are supported.
+	//
+	// example:
+	//
+	// db_user
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The client IP address.
+	//
+	// > Only certain special logs of ApsaraDB RDS for PostgreSQL and PolarDB for PostgreSQL instances are supported.
+	//
+	// example:
+	//
+	// x.x.x.x
+	UserIp *string `json:"UserIp,omitempty" xml:"UserIp,omitempty"`
 }
 
 func (s DescribeErrorLogRecordsResponseBodyDataLogs) String() string {
@@ -330,6 +354,18 @@ func (s *DescribeErrorLogRecordsResponseBodyDataLogs) GetDBInstanceName() *strin
 	return s.DBInstanceName
 }
 
+func (s *DescribeErrorLogRecordsResponseBodyDataLogs) GetDb() *string {
+	return s.Db
+}
+
+func (s *DescribeErrorLogRecordsResponseBodyDataLogs) GetUser() *string {
+	return s.User
+}
+
+func (s *DescribeErrorLogRecordsResponseBodyDataLogs) GetUserIp() *string {
+	return s.UserIp
+}
+
 func (s *DescribeErrorLogRecordsResponseBodyDataLogs) SetCategory(v string) *DescribeErrorLogRecordsResponseBodyDataLogs {
 	s.Category = &v
 	return s
@@ -352,6 +388,21 @@ func (s *DescribeErrorLogRecordsResponseBodyDataLogs) SetCreateTime(v string) *D
 
 func (s *DescribeErrorLogRecordsResponseBodyDataLogs) SetDBInstanceName(v string) *DescribeErrorLogRecordsResponseBodyDataLogs {
 	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeErrorLogRecordsResponseBodyDataLogs) SetDb(v string) *DescribeErrorLogRecordsResponseBodyDataLogs {
+	s.Db = &v
+	return s
+}
+
+func (s *DescribeErrorLogRecordsResponseBodyDataLogs) SetUser(v string) *DescribeErrorLogRecordsResponseBodyDataLogs {
+	s.User = &v
+	return s
+}
+
+func (s *DescribeErrorLogRecordsResponseBodyDataLogs) SetUserIp(v string) *DescribeErrorLogRecordsResponseBodyDataLogs {
+	s.UserIp = &v
 	return s
 }
 

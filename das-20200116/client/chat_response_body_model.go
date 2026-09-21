@@ -64,7 +64,12 @@ type ChatResponseBody struct {
 	//
 	// waiting_for_agent_thinking
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	AgentId      *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent ID.
+	//
+	// example:
+	//
+	// agent-7f9c2a81
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// The response content.
 	//
 	// example:
@@ -77,7 +82,17 @@ type ChatResponseBody struct {
 	//
 	// hello
 	Delta *string `json:"Delta,omitempty" xml:"Delta,omitempty"`
-	Kind  *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The step type of STEP_STARTED, such as task.
+	//
+	// example:
+	//
+	// task
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The display name of the sub-agent for STEP_STARTED.
+	//
+	// example:
+	//
+	// SQL Performance Diagnostics
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The message ID.
 	//
@@ -90,9 +105,19 @@ type ChatResponseBody struct {
 	// example:
 	//
 	// summary
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The original ID of the tool call.
+	//
+	// example:
+	//
+	// ag-xxxx
 	OriginatingToolCallId *string `json:"OriginatingToolCallId,omitempty" xml:"OriginatingToolCallId,omitempty"`
-	ParentAgentId         *string `json:"ParentAgentId,omitempty" xml:"ParentAgentId,omitempty"`
+	// The parent agent ID.
+	//
+	// example:
+	//
+	// agent-3a6f1c92
+	ParentAgentId *string `json:"ParentAgentId,omitempty" xml:"ParentAgentId,omitempty"`
 	// The parent message ID.
 	//
 	// example:
@@ -116,9 +141,14 @@ type ChatResponseBody struct {
 	// example:
 	//
 	// sub_agent_performance_diagnose_mysql
-	StepName   *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The step status of STEP_FINISHED, such as completed.
+	//
+	// example:
+	//
+	// completed
 	StepStatus *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
-	// The callback tool class.
+	// The callback utility class.
 	//
 	// example:
 	//
@@ -129,10 +159,20 @@ type ChatResponseBody struct {
 	// example:
 	//
 	// 8e481be1-21d5-4a92-a2fb-fb54be0ab4f6
-	ThreadId      *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	Timestamp     *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	// The event timestamp.
+	//
+	// example:
+	//
+	// 1767225600000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The error that occurred during tool invocation.
+	//
+	// example:
+	//
+	// error
 	ToolCallError *string `json:"ToolCallError,omitempty" xml:"ToolCallError,omitempty"`
-	// The tool calling invoke ID.
+	// The tool invocation ID.
 	//
 	// example:
 	//

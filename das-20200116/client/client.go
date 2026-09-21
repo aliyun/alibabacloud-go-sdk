@@ -26,8 +26,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("central")
 	client.EndpointMap = map[string]*string{
-		"cn-shanghai":      dara.String("das.cn-shanghai.aliyuncs.com"),
-		"cn-north-2-gov-1": dara.String("das.aliyuncs.com"),
+		"cn-shanghai": dara.String("das.cn-shanghai.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -62,15 +61,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a database instance to Database Autonomy Service (DAS).
+// Calls the AddHDMInstance operation to connect a database instance to Database Autonomy Service (DAS).
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-// - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-// - If you use an SDK to call DAS, you must set the region to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - AddHDMInstanceRequest
 //
@@ -162,15 +161,15 @@ func (client *Client) AddHDMInstanceWithOptions(request *AddHDMInstanceRequest, 
 
 // Summary:
 //
-// Adds a database instance to Database Autonomy Service (DAS).
+// Calls the AddHDMInstance operation to connect a database instance to Database Autonomy Service (DAS).
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-// - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-// - If you use an SDK to call DAS, you must set the region to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - AddHDMInstanceRequest
 //
@@ -188,7 +187,7 @@ func (client *Client) AddHDMInstance(request *AddHDMInstanceRequest) (_result *A
 
 // Summary:
 //
-// Provides an asynchronous interface for interacting with DAS Agent powered by large language model capabilities.
+// Provides the asynchronous logic interface for DAS large model capabilities.
 //
 // Description:
 //
@@ -200,7 +199,7 @@ func (client *Client) AddHDMInstance(request *AddHDMInstanceRequest) (_result *A
 //
 // - Only database instances with DAS Enterprise Edition activated support creating batch tasks. For databases and regions supported by each DAS Enterprise Edition version, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
 //
-// For more methods and examples of interacting with DAS Agent by using the Chat API, see [Best practices for DAS Agent interaction (integrating Chat API)](https://www.alibabacloud.com/help/en/das/developer-reference/chat-api-best-practice).
+// For more methods and examples of interacting with DAS Agent by using the Chat API, see [Best practices for DAS Agent interaction (integrating the Chat API)](https://www.alibabacloud.com/help/en/das/developer-reference/chat-api-best-practice).
 //
 // @param request - ChatRequest
 //
@@ -215,7 +214,7 @@ func (client *Client) ChatWithSSE(request *ChatRequest, runtime *dara.RuntimeOpt
 
 // Summary:
 //
-// Provides an asynchronous interface for interacting with DAS Agent powered by large language model capabilities.
+// Provides the asynchronous logic interface for DAS large model capabilities.
 //
 // Description:
 //
@@ -227,7 +226,7 @@ func (client *Client) ChatWithSSE(request *ChatRequest, runtime *dara.RuntimeOpt
 //
 // - Only database instances with DAS Enterprise Edition activated support creating batch tasks. For databases and regions supported by each DAS Enterprise Edition version, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
 //
-// For more methods and examples of interacting with DAS Agent by using the Chat API, see [Best practices for DAS Agent interaction (integrating Chat API)](https://www.alibabacloud.com/help/en/das/developer-reference/chat-api-best-practice).
+// For more methods and examples of interacting with DAS Agent by using the Chat API, see [Best practices for DAS Agent interaction (integrating the Chat API)](https://www.alibabacloud.com/help/en/das/developer-reference/chat-api-best-practice).
 //
 // @param request - ChatRequest
 //
@@ -248,6 +247,10 @@ func (client *Client) ChatWithOptions(request *ChatRequest, runtime *dara.Runtim
 
 	if !dara.IsNil(request.Message) {
 		query["Message"] = request.Message
+	}
+
+	if !dara.IsNil(request.Resume) {
+		query["Resume"] = request.Resume
 	}
 
 	if !dara.IsNil(request.SessionId) {
@@ -283,7 +286,7 @@ func (client *Client) ChatWithOptions(request *ChatRequest, runtime *dara.Runtim
 
 // Summary:
 //
-// Provides an asynchronous interface for interacting with DAS Agent powered by large language model capabilities.
+// Provides the asynchronous logic interface for DAS large model capabilities.
 //
 // Description:
 //
@@ -295,7 +298,7 @@ func (client *Client) ChatWithOptions(request *ChatRequest, runtime *dara.Runtim
 //
 // - Only database instances with DAS Enterprise Edition activated support creating batch tasks. For databases and regions supported by each DAS Enterprise Edition version, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
 //
-// For more methods and examples of interacting with DAS Agent by using the Chat API, see [Best practices for DAS Agent interaction (integrating Chat API)](https://www.alibabacloud.com/help/en/das/developer-reference/chat-api-best-practice).
+// For more methods and examples of interacting with DAS Agent by using the Chat API, see [Best practices for DAS Agent interaction (integrating the Chat API)](https://www.alibabacloud.com/help/en/das/developer-reference/chat-api-best-practice).
 //
 // @param request - ChatRequest
 //
@@ -981,21 +984,21 @@ func (client *Client) CreateLatestDeadLockAnalysis(request *CreateLatestDeadLock
 
 // Summary:
 //
-// Adds a tag to a SQL template.
+// Calls the CreateQueryOptimizeTag operation to add tags to target SQL statements.
 //
 // Description:
 //
-// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
 //
-// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // - This operation supports the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+//   - RDS MySQL
 //
 //   - PolarDB for MySQL
 //
-//   - ApsaraDB RDS for PostgreSQL
+//   - RDS PostgreSQL
 //
 // @param request - CreateQueryOptimizeTagRequest
 //
@@ -1059,21 +1062,21 @@ func (client *Client) CreateQueryOptimizeTagWithOptions(request *CreateQueryOpti
 
 // Summary:
 //
-// Adds a tag to a SQL template.
+// Calls the CreateQueryOptimizeTag operation to add tags to target SQL statements.
 //
 // Description:
 //
-// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
 //
-// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // - This operation supports the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+//   - RDS MySQL
 //
 //   - PolarDB for MySQL
 //
-//   - ApsaraDB RDS for PostgreSQL
+//   - RDS PostgreSQL
 //
 // @param request - CreateQueryOptimizeTagRequest
 //
@@ -1751,7 +1754,7 @@ func (client *Client) DeleteStopGateway(request *DeleteStopGatewayRequest) (_res
 
 // Summary:
 //
-// Queries the list of audit alert logs for alert search and alert handling.
+// Queries the audit alert log list for alert search and alert handling.
 //
 // Description:
 //
@@ -1759,7 +1762,7 @@ func (client *Client) DeleteStopGateway(request *DeleteStopGatewayRequest) (_res
 //
 // - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-// - When calling DAS by using the SDK, set the region to cn-shanghai.
+// - When you call DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeAuditLogsRequest
 //
@@ -1858,10 +1861,6 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 		query["RuleCategory"] = request.RuleCategory
 	}
 
-	if !dara.IsNil(request.RuleID) {
-		query["RuleID"] = request.RuleID
-	}
-
 	if !dara.IsNil(request.RuleId) {
 		query["RuleId"] = request.RuleId
 	}
@@ -1907,7 +1906,7 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 
 // Summary:
 //
-// Queries the list of audit alert logs for alert search and alert handling.
+// Queries the audit alert log list for alert search and alert handling.
 //
 // Description:
 //
@@ -1915,7 +1914,7 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 //
 // - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-// - When calling DAS by using the SDK, set the region to cn-shanghai.
+// - When you call DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeAuditLogsRequest
 //
@@ -2695,15 +2694,15 @@ func (client *Client) DescribeDiagnosticReportList(request *DescribeDiagnosticRe
 //
 // Description:
 //
-// This operation queries the error log details of an instance within a specified time range.
+// Queries the error log details of an instance within a specified time range.
 //
-// Before you begin:
+// Before you begin, make sure the following prerequisites are met:
 //
-// - The target database engine must be one of the following: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB.
+// - The target database engine is one of the following: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB.
 //
-// - If you use the Alibaba Cloud or DAS SDK, use the latest version.
+// - If you use the SDK of Alibaba Cloud or DAS, use the latest version.
 //
-// - When you call DAS operations by using the SDK, set the region to cn-shanghai.
+// - When you call DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeErrorLogRecordsRequest
 //
@@ -2779,15 +2778,15 @@ func (client *Client) DescribeErrorLogRecordsWithOptions(request *DescribeErrorL
 //
 // Description:
 //
-// This operation queries the error log details of an instance within a specified time range.
+// Queries the error log details of an instance within a specified time range.
 //
-// Before you begin:
+// Before you begin, make sure the following prerequisites are met:
 //
-// - The target database engine must be one of the following: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB.
+// - The target database engine is one of the following: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB.
 //
-// - If you use the Alibaba Cloud or DAS SDK, use the latest version.
+// - If you use the SDK of Alibaba Cloud or DAS, use the latest version.
 //
-// - When you call DAS operations by using the SDK, set the region to cn-shanghai.
+// - When you call DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeErrorLogRecordsRequest
 //
@@ -3455,21 +3454,21 @@ func (client *Client) DescribeSlowLogHistogramAsync(request *DescribeSlowLogHist
 
 // Summary:
 //
-// Queries slow query log records of a database instance with support for filtering and sorting by multiple conditions.
+// Queries slow query log records of a database instance. You can filter and sort the results by multiple conditions.
 //
 // Description:
 //
-// - `InstanceId` specifies the instance ID. This parameter is required.
+// - InstanceId is the instance ID. This parameter is required.
 //
-// - `StartTime` and `EndTime` specify the time range for the query. These parameters are required.
+// - StartTime and EndTime specify the time range for the query. These parameters are required.
 //
-// - Set `PageNumber` and `PageSize` to retrieve results by paging.
+// - Settings PageNumber and PageSize to retrieve results by paging.
 //
-// - Use the `OrderBy` parameter to sort results. For sortable fields, refer to the References.
+// - Use the OrderBy parameter to sort the results. For more information about the sortable fields, refer to the References.
 //
-// - Use the `Filters` parameter to further refine query conditions, such as filtering by host address or SQL ID.
+// - Use the Filters parameter to further refine query conditions, such as filtering by host address or SQL ID.
 //
-// <notice>Certain database types (such as PostgreSQL and PolarDB for PostgreSQL) do not support specific sorting methods. Settings appropriate parameters as needed.</notice>
+// <notice>Certain database types, such as PostgreSQL and PolarDB for PostgreSQL, do not support specific sorting methods. Select appropriate parameters based on your database type.</notice>
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -3547,21 +3546,21 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// Queries slow query log records of a database instance with support for filtering and sorting by multiple conditions.
+// Queries slow query log records of a database instance. You can filter and sort the results by multiple conditions.
 //
 // Description:
 //
-// - `InstanceId` specifies the instance ID. This parameter is required.
+// - InstanceId is the instance ID. This parameter is required.
 //
-// - `StartTime` and `EndTime` specify the time range for the query. These parameters are required.
+// - StartTime and EndTime specify the time range for the query. These parameters are required.
 //
-// - Set `PageNumber` and `PageSize` to retrieve results by paging.
+// - Settings PageNumber and PageSize to retrieve results by paging.
 //
-// - Use the `OrderBy` parameter to sort results. For sortable fields, refer to the References.
+// - Use the OrderBy parameter to sort the results. For more information about the sortable fields, refer to the References.
 //
-// - Use the `Filters` parameter to further refine query conditions, such as filtering by host address or SQL ID.
+// - Use the Filters parameter to further refine query conditions, such as filtering by host address or SQL ID.
 //
-// <notice>Certain database types (such as PostgreSQL and PolarDB for PostgreSQL) do not support specific sorting methods. Settings appropriate parameters as needed.</notice>
+// <notice>Certain database types, such as PostgreSQL and PolarDB for PostgreSQL, do not support specific sorting methods. Select appropriate parameters based on your database type.</notice>
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -3700,6 +3699,202 @@ func (client *Client) DescribeSlowLogStatistic(request *DescribeSlowLogStatistic
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeSlowLogStatisticResponse{}
 	_body, _err := client.DescribeSlowLogStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Calls the DescribeSqlInsightStatistic operation to aggregate and collect statistics on SQL Explorer data for a specified instance within a given time window, by dimensions such as SQL template, access source, or database user.
+//
+// Description:
+//
+// Before you begin:
+//
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
+//
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
+//
+// - SQL Explorer must be enabled for the target instance. If SQL Explorer is not enabled, the operation returns an error.
+//
+// Usage notes:
+//
+// - **This is an asynchronous operation. The first call returns a ResultId and State. Poll with the exact same request parameters until State is SUCCESS to obtain the statistical results in Data.**
+//
+// - Both StartTime and EndTime are millisecond-level timestamps. StartTime must be within the last 30 days, and the span between StartTime and EndTime must not exceed 7 days.
+//
+// - Because data aggregation involves latency, EndTime is automatically trimmed to a few minutes before the current time. Data from the most recent minutes may not be available.
+//
+// - StartTime is automatically adjusted to be no earlier than the time when SQL Explorer was enabled for the instance.
+//
+// Response description:
+//
+// - Data.Data.List contains statistical results grouped by the aggregation dimension. Each element corresponds to a SQL template or an aggregation key, not an individual execution record.
+//
+// - Scnt, AvgScnt, Rows, AvgRows, Frows, and AvgFrows are metrics exclusive to PolarDB-X compute nodes and are returned only when Role is polarx_cn.
+//
+// - Writes, AvgWrites, MaxWrites, MinWrites, PhysicalRead, AvgPhysicalRead, MaxPhysicalRead, MinPhysicalRead, CpuTime, AvgCpuTime, MaxCpuTime, and MinCpuTime are metrics exclusive to SQL Server instances.
+//
+// - Trend is returned only when the DoFillTrend request parameter is set to true and the trend filling capability is enabled for the instance. The time slice interval is automatically determined by the query span.
+//
+// - SQL sample dimension fields such as SqlNew, Params, FirstTime, and Extra are not returned by this operation. This operation provides template-level aggregated statistics.
+//
+// @param request - DescribeSqlInsightStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlInsightStatisticResponse
+func (client *Client) DescribeSqlInsightStatisticWithOptions(request *DescribeSqlInsightStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeSqlInsightStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsoleContext) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !dara.IsNil(request.Filters) {
+		query["Filters"] = request.Filters
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Asc) {
+		body["Asc"] = request.Asc
+	}
+
+	if !dara.IsNil(request.DbName) {
+		body["DbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.DoFillTrend) {
+		body["DoFillTrend"] = request.DoFillTrend
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		body["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		body["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Role) {
+		body["Role"] = request.Role
+	}
+
+	if !dara.IsNil(request.SqlType) {
+		body["SqlType"] = request.SqlType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSqlInsightStatistic"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSqlInsightStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Calls the DescribeSqlInsightStatistic operation to aggregate and collect statistics on SQL Explorer data for a specified instance within a given time window, by dimensions such as SQL template, access source, or database user.
+//
+// Description:
+//
+// Before you begin:
+//
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
+//
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
+//
+// - SQL Explorer must be enabled for the target instance. If SQL Explorer is not enabled, the operation returns an error.
+//
+// Usage notes:
+//
+// - **This is an asynchronous operation. The first call returns a ResultId and State. Poll with the exact same request parameters until State is SUCCESS to obtain the statistical results in Data.**
+//
+// - Both StartTime and EndTime are millisecond-level timestamps. StartTime must be within the last 30 days, and the span between StartTime and EndTime must not exceed 7 days.
+//
+// - Because data aggregation involves latency, EndTime is automatically trimmed to a few minutes before the current time. Data from the most recent minutes may not be available.
+//
+// - StartTime is automatically adjusted to be no earlier than the time when SQL Explorer was enabled for the instance.
+//
+// Response description:
+//
+// - Data.Data.List contains statistical results grouped by the aggregation dimension. Each element corresponds to a SQL template or an aggregation key, not an individual execution record.
+//
+// - Scnt, AvgScnt, Rows, AvgRows, Frows, and AvgFrows are metrics exclusive to PolarDB-X compute nodes and are returned only when Role is polarx_cn.
+//
+// - Writes, AvgWrites, MaxWrites, MinWrites, PhysicalRead, AvgPhysicalRead, MaxPhysicalRead, MinPhysicalRead, CpuTime, AvgCpuTime, MaxCpuTime, and MinCpuTime are metrics exclusive to SQL Server instances.
+//
+// - Trend is returned only when the DoFillTrend request parameter is set to true and the trend filling capability is enabled for the instance. The time slice interval is automatically determined by the query span.
+//
+// - SQL sample dimension fields such as SqlNew, Params, FirstTime, and Extra are not returned by this operation. This operation provides template-level aggregated statistics.
+//
+// @param request - DescribeSqlInsightStatisticRequest
+//
+// @return DescribeSqlInsightStatisticResponse
+func (client *Client) DescribeSqlInsightStatistic(request *DescribeSqlInsightStatisticRequest) (_result *DescribeSqlInsightStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSqlInsightStatisticResponse{}
+	_body, _err := client.DescribeSqlInsightStatisticWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7128,15 +7323,15 @@ func (client *Client) GetFullRequestOriginStatByInstanceId(request *GetFullReque
 
 // Summary:
 //
-// Queries sample SQL statements in the SQL Explorer data of a database instance by SQL ID. You can query up to 20 sample SQL statements.
+// Queries SQL sample data from the SQL Explorer results of a database instance by SQL ID by calling the GetFullRequestSampleByInstanceId operation. A maximum of 20 sample records are returned.
 //
 // Description:
 //
-// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+// The SQL Explorer feature allows you to diagnose SQL health and troubleshoot performance issues. For details, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-// - For more information about the database engines that support SQL Explorer, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+// - For information about supported database engines, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When you use an SDK to invoke DAS, set the region to cn-shanghai.
 //
 // @param request - GetFullRequestSampleByInstanceIdRequest
 //
@@ -7172,10 +7367,6 @@ func (client *Client) GetFullRequestSampleByInstanceIdWithOptions(request *GetFu
 		body["Start"] = request.Start
 	}
 
-	if !dara.IsNil(request.UserId) {
-		body["UserId"] = request.UserId
-	}
-
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
@@ -7202,15 +7393,15 @@ func (client *Client) GetFullRequestSampleByInstanceIdWithOptions(request *GetFu
 
 // Summary:
 //
-// Queries sample SQL statements in the SQL Explorer data of a database instance by SQL ID. You can query up to 20 sample SQL statements.
+// Queries SQL sample data from the SQL Explorer results of a database instance by SQL ID by calling the GetFullRequestSampleByInstanceId operation. A maximum of 20 sample records are returned.
 //
 // Description:
 //
-// The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+// The SQL Explorer feature allows you to diagnose SQL health and troubleshoot performance issues. For details, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-// - For more information about the database engines that support SQL Explorer, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+// - For information about supported database engines, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When you use an SDK to invoke DAS, set the region to cn-shanghai.
 //
 // @param request - GetFullRequestSampleByInstanceIdRequest
 //
@@ -11658,6 +11849,10 @@ func (client *Client) chatWithSSE_opYieldFunc(_yield chan *ChatResponse, _yieldE
 
 	if !dara.IsNil(request.Message) {
 		query["Message"] = request.Message
+	}
+
+	if !dara.IsNil(request.Resume) {
+		query["Resume"] = request.Resume
 	}
 
 	if !dara.IsNil(request.SessionId) {

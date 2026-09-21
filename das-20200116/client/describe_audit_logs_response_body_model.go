@@ -38,7 +38,7 @@ type DescribeAuditLogsResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The client IP addresses in the SQL log records.
 	Items []*DescribeAuditLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page size for the paged query. This parameter indicates the number of entries per page for paging.
+	// The page size for the paged query. This value indicates the number of records per page for paging.
 	//
 	// example:
 	//
@@ -176,7 +176,11 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// 10
 	EffectRow *int64 `json:"EffectRow,omitempty" xml:"EffectRow,omitempty"`
-	// The execution status. Valid values: 0: failed. 1: succeeded.
+	// The execution status. Valid values:
+	//
+	// - 0: failed.
+	//
+	// - 1: succeeded.
 	//
 	// example:
 	//
@@ -200,7 +204,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// True
 	InWhiteList *bool `json:"InWhiteList,omitempty" xml:"InWhiteList,omitempty"`
-	// The instance audit status.
+	// The audit status of the instance.
 	//
 	// example:
 	//
@@ -296,7 +300,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
-	// The ID of the audit policy.
+	// The audit policy ID.
 	//
 	// example:
 	//
@@ -334,23 +338,23 @@ type DescribeAuditLogsResponseBodyItems struct {
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **1**: low-risk.
+	// - **1**: low.
 	//
-	// - **2**: medium-risk.
+	// - **2**: medium.
 	//
-	// - **3**: high-risk.
+	// - **3**: high.
 	//
 	// example:
 	//
 	// 1
 	WarnLevel *string `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
-	// The name of the risk level. Valid values:
+	// The risk level name. Valid values:
 	//
-	// - Low-risk.
+	// - Low.
 	//
-	// - Medium-risk.
+	// - Medium.
 	//
-	// - High-risk.
+	// - High.
 	//
 	// example:
 	//
