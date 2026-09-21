@@ -19,6 +19,8 @@ type iUpdateEngineConfigRequest interface {
 	GetInstanceId() *string
 	SetName(v string) *UpdateEngineConfigRequest
 	GetName() *string
+	SetSceneId(v string) *UpdateEngineConfigRequest
+	GetSceneId() *string
 	SetType(v string) *UpdateEngineConfigRequest
 	GetType() *string
 }
@@ -46,9 +48,7 @@ type UpdateEngineConfigRequest struct {
 	//
 	// update config
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The runtime environment.
-	//
-	// Valid values:
+	// The runtime environment. Valid values:
 	//
 	// - Daily: daily environment.
 	//
@@ -72,6 +72,12 @@ type UpdateEngineConfigRequest struct {
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scene.
+	//
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// The engine configuration type.
 	//
 	// example:
@@ -108,6 +114,10 @@ func (s *UpdateEngineConfigRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateEngineConfigRequest) GetSceneId() *string {
+	return s.SceneId
+}
+
 func (s *UpdateEngineConfigRequest) GetType() *string {
 	return s.Type
 }
@@ -134,6 +144,11 @@ func (s *UpdateEngineConfigRequest) SetInstanceId(v string) *UpdateEngineConfigR
 
 func (s *UpdateEngineConfigRequest) SetName(v string) *UpdateEngineConfigRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateEngineConfigRequest) SetSceneId(v string) *UpdateEngineConfigRequest {
+	s.SceneId = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iListEngineConfigsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListEngineConfigsRequest
 	GetPageSize() *int32
+	SetSceneId(v string) *ListEngineConfigsRequest
+	GetSceneId() *string
 	SetStatus(v string) *ListEngineConfigsRequest
 	GetStatus() *string
 	SetVersion(v string) *ListEngineConfigsRequest
@@ -26,13 +28,13 @@ type iListEngineConfigsRequest interface {
 }
 
 type ListEngineConfigsRequest struct {
-	// The runtime environment.
+	// The runtime environment. Valid values:
 	//
-	// - Daily: daily environment.
+	// - Daily: Daily environment.
 	//
-	// - Pre: staging environment.
+	// - Pre: Pre-release environment.
 	//
-	// - Prod: production environment.
+	// - Prod: Production environment.
 	//
 	// example:
 	//
@@ -58,23 +60,29 @@ type ListEngineConfigsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status filter.
+	// The scene ID.
 	//
-	// - Released: released.
+	// example:
 	//
-	// - Unreleased: not released.
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status filter. Valid values:
+	//
+	// - Released: Released.
+	//
+	// - Unreleased: Not released.
 	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version filter.
+	// The version filter. Valid values:
 	//
 	// latest: the most recently updated version.
 	//
@@ -112,6 +120,10 @@ func (s *ListEngineConfigsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListEngineConfigsRequest) GetSceneId() *string {
+	return s.SceneId
+}
+
 func (s *ListEngineConfigsRequest) GetStatus() *string {
 	return s.Status
 }
@@ -142,6 +154,11 @@ func (s *ListEngineConfigsRequest) SetPageNumber(v int32) *ListEngineConfigsRequ
 
 func (s *ListEngineConfigsRequest) SetPageSize(v int32) *ListEngineConfigsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListEngineConfigsRequest) SetSceneId(v string) *ListEngineConfigsRequest {
+	s.SceneId = &v
 	return s
 }
 

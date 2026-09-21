@@ -25,6 +25,8 @@ type iGetEngineConfigResponseBody interface {
 	GetName() *string
 	SetRequestId(v string) *GetEngineConfigResponseBody
 	GetRequestId() *string
+	SetSceneId(v string) *GetEngineConfigResponseBody
+	GetSceneId() *string
 	SetStatus(v string) *GetEngineConfigResponseBody
 	GetStatus() *string
 	SetType(v string) *GetEngineConfigResponseBody
@@ -86,6 +88,10 @@ type GetEngineConfigResponseBody struct {
 	//
 	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// The status. Valid values:
 	//
 	// - Released: published.
@@ -144,6 +150,10 @@ func (s *GetEngineConfigResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetEngineConfigResponseBody) GetSceneId() *string {
+	return s.SceneId
+}
+
 func (s *GetEngineConfigResponseBody) GetStatus() *string {
 	return s.Status
 }
@@ -189,6 +199,11 @@ func (s *GetEngineConfigResponseBody) SetName(v string) *GetEngineConfigResponse
 
 func (s *GetEngineConfigResponseBody) SetRequestId(v string) *GetEngineConfigResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetSceneId(v string) *GetEngineConfigResponseBody {
+	s.SceneId = &v
 	return s
 }
 

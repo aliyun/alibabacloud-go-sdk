@@ -31,6 +31,8 @@ type iGetServiceResponseBody interface {
 	GetRepositoryId() *string
 	SetRequestId(v string) *GetServiceResponseBody
 	GetRequestId() *string
+	SetSceneId(v string) *GetServiceResponseBody
+	GetSceneId() *string
 	SetServiceConfig(v string) *GetServiceResponseBody
 	GetServiceConfig() *string
 	SetServiceResourceUri(v string) *GetServiceResponseBody
@@ -38,7 +40,7 @@ type iGetServiceResponseBody interface {
 }
 
 type GetServiceResponseBody struct {
-	// The Container Registry Enterprise instance ID selected by the user when a non-official image is used.
+	// The instance ID of the Container Registry Enterprise instance selected when a non-official image is used.
 	//
 	// example:
 	//
@@ -56,7 +58,7 @@ type GetServiceResponseBody struct {
 	//
 	// 3
 	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
-	// The time of the most recent production release.
+	// The time of the most recent production publish.
 	//
 	// example:
 	//
@@ -70,7 +72,7 @@ type GetServiceResponseBody struct {
 	ImageAuth *string `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
 	// The image name.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The most recent production release record.
+	// The most recent production publish record.
 	LatestProdReleaseOrder *GetServiceResponseBodyLatestProdReleaseOrder `json:"LatestProdReleaseOrder,omitempty" xml:"LatestProdReleaseOrder,omitempty" type:"Struct"`
 	// The service name.
 	//
@@ -84,7 +86,7 @@ type GetServiceResponseBody struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The Container Registry Enterprise Edition repository ID selected by the user when a non-official image is used.
+	// The ID of the Container Registry Enterprise Edition repository selected when a non-official image is used.
 	//
 	// example:
 	//
@@ -96,13 +98,19 @@ type GetServiceResponseBody struct {
 	//
 	// D75C43DC-3D3A-5CC8-9AAC-8C77306C433B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The configuration used to publish the service, such as the service configuration in EAS.
+	// The scenario.
+	//
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The configuration used to publish the service, such as the Elastic Algorithm Service (EAS) service configuration.
 	//
 	// example:
 	//
 	// {"Port":8080}
 	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	// The resource address used to publish the service, such as the resource group name in Elastic Algorithm Service (EAS).
+	// The resource address used to publish the service, such as the EAS resource group name.
 	//
 	// example:
 	//
@@ -160,6 +168,10 @@ func (s *GetServiceResponseBody) GetRepositoryId() *string {
 
 func (s *GetServiceResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetServiceResponseBody) GetSceneId() *string {
+	return s.SceneId
 }
 
 func (s *GetServiceResponseBody) GetServiceConfig() *string {
@@ -225,6 +237,11 @@ func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody 
 	return s
 }
 
+func (s *GetServiceResponseBody) SetSceneId(v string) *GetServiceResponseBody {
+	s.SceneId = &v
+	return s
+}
+
 func (s *GetServiceResponseBody) SetServiceConfig(v string) *GetServiceResponseBody {
 	s.ServiceConfig = &v
 	return s
@@ -245,7 +262,7 @@ func (s *GetServiceResponseBody) Validate() error {
 }
 
 type GetServiceResponseBodyLatestProdReleaseOrder struct {
-	// The release content.
+	// The publish content.
 	//
 	// example:
 	//
@@ -257,7 +274,7 @@ type GetServiceResponseBodyLatestProdReleaseOrder struct {
 	//
 	// 2.0.0
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The release information.
+	// The publish information.
 	//
 	// example:
 	//
@@ -281,7 +298,7 @@ type GetServiceResponseBodyLatestProdReleaseOrder struct {
 	//
 	// }
 	ReleaseInfo *string `json:"ReleaseInfo,omitempty" xml:"ReleaseInfo,omitempty"`
-	// The release order ID.
+	// The publish order ID.
 	//
 	// example:
 	//
@@ -293,7 +310,7 @@ type GetServiceResponseBodyLatestProdReleaseOrder struct {
 	//
 	// E-xxx.xxx-@xxx.onaliyun.com
 	Releaser *string `json:"Releaser,omitempty" xml:"Releaser,omitempty"`
-	// The release title.
+	// The publish title.
 	//
 	// example:
 	//

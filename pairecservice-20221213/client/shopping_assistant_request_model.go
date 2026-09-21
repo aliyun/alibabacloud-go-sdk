@@ -40,7 +40,7 @@ type ShoppingAssistantRequest struct {
 	//
 	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The contents.
+	// The content.
 	Contents *ShoppingAssistantRequestContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Struct"`
 	// The conversation ID. This parameter is not yet effective.
 	//
@@ -52,7 +52,7 @@ type ShoppingAssistantRequest struct {
 	//
 	// example:
 	//
-	// Prod: productionPre: pre-release.
+	// Prod: ProductionPre: Pre-release
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
 	// The input message.
 	InputMessage *ShoppingAssistantRequestInputMessage `json:"InputMessage,omitempty" xml:"InputMessage,omitempty" type:"Struct"`
@@ -78,7 +78,7 @@ type ShoppingAssistantRequest struct {
 	//
 	// example:
 	//
-	// ServiceId.
+	// Service ID
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The session ID.
 	//
@@ -220,7 +220,7 @@ type ShoppingAssistantRequestContents struct {
 	//
 	// example:
 	//
-	// Recommend some light-colored long-sleeve shirts suitable for spring, budget under 300
+	// Recommend some light-colored long-sleeve shirts for spring, budget under 300
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The message type.
 	//
@@ -300,7 +300,7 @@ type ShoppingAssistantRequestInputMessageContent struct {
 	//
 	// example:
 	//
-	// Recommend some light-colored long-sleeve shirts suitable for spring, budget under 300
+	// Recommend some light-colored long-sleeve shirts for spring, budget under 300
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The message type.
 	//

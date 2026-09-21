@@ -16,7 +16,7 @@ type iCloneEngineConfigResponseBody interface {
 }
 
 type CloneEngineConfigResponseBody struct {
-	// The engine configuration ID.
+	// The DPI engine configuration ID.
 	//
 	// example:
 	//

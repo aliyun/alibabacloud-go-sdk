@@ -19,6 +19,8 @@ type iCreateEngineConfigRequest interface {
 	GetInstanceId() *string
 	SetName(v string) *CreateEngineConfigRequest
 	GetName() *string
+	SetSceneId(v string) *CreateEngineConfigRequest
+	GetSceneId() *string
 	SetType(v string) *CreateEngineConfigRequest
 	GetType() *string
 }
@@ -60,6 +62,10 @@ type CreateEngineConfigRequest struct {
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// The type of the engine configuration.
 	//
 	// example:
@@ -96,6 +102,10 @@ func (s *CreateEngineConfigRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateEngineConfigRequest) GetSceneId() *string {
+	return s.SceneId
+}
+
 func (s *CreateEngineConfigRequest) GetType() *string {
 	return s.Type
 }
@@ -122,6 +132,11 @@ func (s *CreateEngineConfigRequest) SetInstanceId(v string) *CreateEngineConfigR
 
 func (s *CreateEngineConfigRequest) SetName(v string) *CreateEngineConfigRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateEngineConfigRequest) SetSceneId(v string) *CreateEngineConfigRequest {
+	s.SceneId = &v
 	return s
 }
 

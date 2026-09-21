@@ -17,6 +17,8 @@ type iListSampleConsistencyJobsRequest interface {
 	GetPageNumber() *int64
 	SetPageSize(v int64) *ListSampleConsistencyJobsRequest
 	GetPageSize() *int64
+	SetSceneId(v string) *ListSampleConsistencyJobsRequest
+	GetSceneId() *string
 	SetSortBy(v string) *ListSampleConsistencyJobsRequest
 	GetSortBy() *string
 }
@@ -27,6 +29,7 @@ type ListSampleConsistencyJobsRequest struct {
 	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
@@ -54,6 +57,10 @@ func (s *ListSampleConsistencyJobsRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
+func (s *ListSampleConsistencyJobsRequest) GetSceneId() *string {
+	return s.SceneId
+}
+
 func (s *ListSampleConsistencyJobsRequest) GetSortBy() *string {
 	return s.SortBy
 }
@@ -75,6 +82,11 @@ func (s *ListSampleConsistencyJobsRequest) SetPageNumber(v int64) *ListSampleCon
 
 func (s *ListSampleConsistencyJobsRequest) SetPageSize(v int64) *ListSampleConsistencyJobsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListSampleConsistencyJobsRequest) SetSceneId(v string) *ListSampleConsistencyJobsRequest {
+	s.SceneId = &v
 	return s
 }
 

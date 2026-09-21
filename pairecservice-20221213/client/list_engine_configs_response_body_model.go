@@ -26,7 +26,7 @@ type ListEngineConfigsResponseBody struct {
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of elements in the list.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -101,13 +101,13 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// 2
 	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
-	// The runtime environment.
+	// The runtime environment. Valid values:
 	//
-	// - Daily: daily environment.
+	// - Daily: Daily environment.
 	//
-	// - Pre: staging environment.
+	// - Pre: Pre-release environment.
 	//
-	// - Prod: production environment.
+	// - Prod: Production environment.
 	//
 	// example:
 	//
@@ -137,11 +137,17 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status.
+	// The scene ID.
 	//
-	// - Released: released.
+	// example:
 	//
-	// - UnReleased: not released.
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The status. Valid values:
+	//
+	// - Released: Released.
+	//
+	// - UnReleased: Not released.
 	//
 	// example:
 	//
@@ -201,6 +207,10 @@ func (s *ListEngineConfigsResponseBodyEngineConfigs) GetName() *string {
 	return s.Name
 }
 
+func (s *ListEngineConfigsResponseBodyEngineConfigs) GetSceneId() *string {
+	return s.SceneId
+}
+
 func (s *ListEngineConfigsResponseBodyEngineConfigs) GetStatus() *string {
 	return s.Status
 }
@@ -250,6 +260,11 @@ func (s *ListEngineConfigsResponseBodyEngineConfigs) SetGmtReleasedTime(v string
 
 func (s *ListEngineConfigsResponseBodyEngineConfigs) SetName(v string) *ListEngineConfigsResponseBodyEngineConfigs {
 	s.Name = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetSceneId(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.SceneId = &v
 	return s
 }
 

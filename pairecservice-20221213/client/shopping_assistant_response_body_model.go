@@ -15,6 +15,8 @@ type iShoppingAssistantResponseBody interface {
 	GetContent() *string
 	SetConversationId(v string) *ShoppingAssistantResponseBody
 	GetConversationId() *string
+	SetEnableSuggestion(v bool) *ShoppingAssistantResponseBody
+	GetEnableSuggestion() *bool
 	SetErrorCode(v string) *ShoppingAssistantResponseBody
 	GetErrorCode() *string
 	SetEvent(v string) *ShoppingAssistantResponseBody
@@ -32,11 +34,11 @@ type iShoppingAssistantResponseBody interface {
 type ShoppingAssistantResponseBody struct {
 	// The citation information.
 	Citation *ShoppingAssistantResponseBodyCitation `json:"Citation,omitempty" xml:"Citation,omitempty" type:"Struct"`
-	// The returned content.
+	// The response content.
 	//
 	// example:
 	//
-	// Here are some light-colored long-sleeve shirts I picked for you:\\n.
+	// Here are some light-colored long-sleeve shirts for you:\\n
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The session ID.
 	//
@@ -44,6 +46,8 @@ type ShoppingAssistantResponseBody struct {
 	//
 	// e47cfae9-c0cc-42e1-91e2-e67cdb0e7b96
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// Indicates whether suggestions are provided.
+	EnableSuggestion *bool `json:"EnableSuggestion,omitempty" xml:"EnableSuggestion,omitempty"`
 	// The error message.
 	//
 	// example:
@@ -98,6 +102,10 @@ func (s *ShoppingAssistantResponseBody) GetConversationId() *string {
 	return s.ConversationId
 }
 
+func (s *ShoppingAssistantResponseBody) GetEnableSuggestion() *bool {
+	return s.EnableSuggestion
+}
+
 func (s *ShoppingAssistantResponseBody) GetErrorCode() *string {
 	return s.ErrorCode
 }
@@ -134,6 +142,11 @@ func (s *ShoppingAssistantResponseBody) SetContent(v string) *ShoppingAssistantR
 
 func (s *ShoppingAssistantResponseBody) SetConversationId(v string) *ShoppingAssistantResponseBody {
 	s.ConversationId = &v
+	return s
+}
+
+func (s *ShoppingAssistantResponseBody) SetEnableSuggestion(v bool) *ShoppingAssistantResponseBody {
+	s.EnableSuggestion = &v
 	return s
 }
 
@@ -182,7 +195,7 @@ func (s *ShoppingAssistantResponseBody) Validate() error {
 }
 
 type ShoppingAssistantResponseBodyCitation struct {
-	// The ID of the `item`.
+	// The ID of the item.
 	//
 	// example:
 	//
@@ -229,11 +242,11 @@ func (s *ShoppingAssistantResponseBodyCitation) Validate() error {
 type ShoppingAssistantResponseBodyResult struct {
 	// The citation information.
 	Citation *ShoppingAssistantResponseBodyResultCitation `json:"Citation,omitempty" xml:"Citation,omitempty" type:"Struct"`
-	// The returned content.
+	// The response content.
 	//
 	// example:
 	//
-	// Here are some light-colored long-sleeve shirts I picked for you:\\\\n.
+	// Here are some light-colored long-sleeve shirts for you:\\\\n
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The error message.
 	//

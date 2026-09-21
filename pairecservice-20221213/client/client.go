@@ -619,7 +619,7 @@ func (client *Client) CheckTrafficControlTaskExpression(request *CheckTrafficCon
 
 // Summary:
 //
-// Clones an engine configuration.
+// Clones a DPI engine configuration.
 //
 // @param request - CloneEngineConfigRequest
 //
@@ -652,6 +652,10 @@ func (client *Client) CloneEngineConfigWithOptions(EngineConfigId *string, reque
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -678,7 +682,7 @@ func (client *Client) CloneEngineConfigWithOptions(EngineConfigId *string, reque
 
 // Summary:
 //
-// Clones an engine configuration.
+// Clones a DPI engine configuration.
 //
 // @param request - CloneEngineConfigRequest
 //
@@ -1768,6 +1772,10 @@ func (client *Client) CreateEngineConfigWithOptions(request *CreateEngineConfigR
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
 	}
 
 	if !dara.IsNil(request.Type) {
@@ -9127,7 +9135,7 @@ func (client *Client) ListDataDiagnosisReports(DataDiagnosisId *string, request 
 
 // Summary:
 //
-// Retrieves the list of engine configurations.
+// Retrieves a list of engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -9164,6 +9172,10 @@ func (client *Client) ListEngineConfigsWithOptions(request *ListEngineConfigsReq
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
 	}
@@ -9198,7 +9210,7 @@ func (client *Client) ListEngineConfigsWithOptions(request *ListEngineConfigsReq
 
 // Summary:
 //
-// Retrieves the list of engine configurations.
+// Retrieves a list of engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -9377,7 +9389,7 @@ func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result 
 
 // Summary:
 //
-// Retrieves a list of feature consistency check task configurations.
+// Retrieves the list of feature consistency check task configurations.
 //
 // @param request - ListFeatureConsistencyCheckJobConfigsRequest
 //
@@ -9410,6 +9422,10 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigsWithOptions(request *
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
+	}
+
 	if !dara.IsNil(request.SortBy) {
 		query["SortBy"] = request.SortBy
 	}
@@ -9440,7 +9456,7 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigsWithOptions(request *
 
 // Summary:
 //
-// Retrieves a list of feature consistency check task configurations.
+// Retrieves the list of feature consistency check task configurations.
 //
 // @param request - ListFeatureConsistencyCheckJobConfigsRequest
 //
@@ -10960,6 +10976,10 @@ func (client *Client) ListSampleConsistencyJobsWithOptions(request *ListSampleCo
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		query["SceneId"] = request.SceneId
 	}
 
 	if !dara.IsNil(request.SortBy) {
@@ -13103,17 +13123,17 @@ func (client *Client) ReportSampleConsistencyJob(SampleConsistencyJobId *string,
 
 // Summary:
 //
-// Conducts conversations with users through an AI shopping guide to provide product recommendation services.
+// Conducts a conversation with a user through an AI shopping assistant to provide product recommendation services.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API is used to send conversation messages to the AI shopping guide and supports Server-Sent Events (SSE).
+// - This API operation sends conversation messages to the AI shopping assistant and supports Server-Sent Events (SSE).
 //
-// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these values to obtain optimal responses.
+// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these parameters to get the best response.
 //
-// - The `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
+// - `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
 //
 // - Based on the provided input, the system returns corresponding recommendation results or other relevant information.
 //
@@ -13134,17 +13154,17 @@ func (client *Client) ShoppingAssistantWithSSE(request *ShoppingAssistantRequest
 
 // Summary:
 //
-// Conducts conversations with users through an AI shopping guide to provide product recommendation services.
+// Conducts a conversation with a user through an AI shopping assistant to provide product recommendation services.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API is used to send conversation messages to the AI shopping guide and supports Server-Sent Events (SSE).
+// - This API operation sends conversation messages to the AI shopping assistant and supports Server-Sent Events (SSE).
 //
-// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these values to obtain optimal responses.
+// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these parameters to get the best response.
 //
-// - The `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
+// - `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
 //
 // - Based on the provided input, the system returns corresponding recommendation results or other relevant information.
 //
@@ -13235,17 +13255,17 @@ func (client *Client) ShoppingAssistantWithOptions(request *ShoppingAssistantReq
 
 // Summary:
 //
-// Conducts conversations with users through an AI shopping guide to provide product recommendation services.
+// Conducts a conversation with a user through an AI shopping assistant to provide product recommendation services.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API is used to send conversation messages to the AI shopping guide and supports Server-Sent Events (SSE).
+// - This API operation sends conversation messages to the AI shopping assistant and supports Server-Sent Events (SSE).
 //
-// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these values to obtain optimal responses.
+// - `InstanceId`, `SessionId`, `SceneId`, `ServiceId`, `Environment`, `Uid`, and `Language` are required parameters. Ensure the accuracy of these parameters to get the best response.
 //
-// - The `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
+// - `InputMessage` must contain at least one text-type message that describes the user\\"s request or question.
 //
 // - Based on the provided input, the system returns corresponding recommendation results or other relevant information.
 //
@@ -14527,6 +14547,10 @@ func (client *Client) UpdateEngineConfigWithOptions(EngineConfigId *string, requ
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
 	}
 
 	if !dara.IsNil(request.Type) {

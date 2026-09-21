@@ -17,12 +17,14 @@ type iListFeatureConsistencyCheckJobConfigsRequest interface {
 	GetPageNumber() *string
 	SetPageSize(v string) *ListFeatureConsistencyCheckJobConfigsRequest
 	GetPageSize() *string
+	SetSceneId(v string) *ListFeatureConsistencyCheckJobConfigsRequest
+	GetSceneId() *string
 	SetSortBy(v string) *ListFeatureConsistencyCheckJobConfigsRequest
 	GetSortBy() *string
 }
 
 type ListFeatureConsistencyCheckJobConfigsRequest struct {
-	// The instance ID. To obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	// The instance ID. For information about how to obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// This parameter is required.
 	//
@@ -30,17 +32,17 @@ type ListFeatureConsistencyCheckJobConfigsRequest struct {
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sort order.
+	// The sort order. Valid values:
 	//
-	// - `ASC`: Ascending order.
+	// - ASC: ascending order.
 	//
-	// - `DESC`: Descending order.
+	// - DESC: descending order.
 	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. The value starts at 1. The default value is 1.
+	// The page number. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
@@ -52,11 +54,17 @@ type ListFeatureConsistencyCheckJobConfigsRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field to sort by.
+	// The scene ID.
 	//
-	// - `GmtCreateTime`: Creation time.
+	// example:
 	//
-	// - `GmtModifiedTime`: Modified time.
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The field used to sort the results. Valid values:
+	//
+	// - GmtCreateTime: sorts by creation time.
+	//
+	// - GmtModifiedTime: sorts by update time.
 	//
 	// example:
 	//
@@ -88,6 +96,10 @@ func (s *ListFeatureConsistencyCheckJobConfigsRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *ListFeatureConsistencyCheckJobConfigsRequest) GetSceneId() *string {
+	return s.SceneId
+}
+
 func (s *ListFeatureConsistencyCheckJobConfigsRequest) GetSortBy() *string {
 	return s.SortBy
 }
@@ -109,6 +121,11 @@ func (s *ListFeatureConsistencyCheckJobConfigsRequest) SetPageNumber(v string) *
 
 func (s *ListFeatureConsistencyCheckJobConfigsRequest) SetPageSize(v string) *ListFeatureConsistencyCheckJobConfigsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsRequest) SetSceneId(v string) *ListFeatureConsistencyCheckJobConfigsRequest {
+	s.SceneId = &v
 	return s
 }
 
