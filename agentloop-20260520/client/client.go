@@ -4522,6 +4522,10 @@ func (client *Client) UpdateDatasetWithOptions(agentSpace *string, datasetName *
 		body["description"] = request.Description
 	}
 
+	if !dara.IsNil(request.Renames) {
+		body["renames"] = request.Renames
+	}
+
 	if !dara.IsNil(request.Schema) {
 		body["schema"] = request.Schema
 	}

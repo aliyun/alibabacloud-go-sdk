@@ -3309,6 +3309,10 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, agentSpace *
 		body["description"] = request.Description
 	}
 
+	if !dara.IsNil(request.Renames) {
+		body["renames"] = request.Renames
+	}
+
 	if !dara.IsNil(request.Schema) {
 		body["schema"] = request.Schema
 	}
