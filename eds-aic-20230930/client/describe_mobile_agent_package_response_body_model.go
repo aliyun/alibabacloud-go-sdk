@@ -152,6 +152,8 @@ type DescribeMobileAgentPackageResponseBodyPackageList struct {
 	PackageStatus   *string `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
 	PeriodEndTime   *string `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
 	PeriodStartTime *string `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
+	// The labels.
+	Tags []*DescribeMobileAgentPackageResponseBodyPackageListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The number of credits that have been used.
 	//
 	// example:
@@ -204,6 +206,10 @@ func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetPeriodStartTime()
 	return s.PeriodStartTime
 }
 
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetTags() []*DescribeMobileAgentPackageResponseBodyPackageListTags {
+	return s.Tags
+}
+
 func (s *DescribeMobileAgentPackageResponseBodyPackageList) GetUsedCredit() *string {
 	return s.UsedCredit
 }
@@ -253,11 +259,70 @@ func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetPeriodStartTime(v
 	return s
 }
 
+func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetTags(v []*DescribeMobileAgentPackageResponseBodyPackageListTags) *DescribeMobileAgentPackageResponseBodyPackageList {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeMobileAgentPackageResponseBodyPackageList) SetUsedCredit(v string) *DescribeMobileAgentPackageResponseBodyPackageList {
 	s.UsedCredit = &v
 	return s
 }
 
 func (s *DescribeMobileAgentPackageResponseBodyPackageList) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeMobileAgentPackageResponseBodyPackageListTags struct {
+	// The label key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label value.
+	//
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeMobileAgentPackageResponseBodyPackageListTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMobileAgentPackageResponseBodyPackageListTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageListTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageListTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageListTags) SetKey(v string) *DescribeMobileAgentPackageResponseBodyPackageListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageListTags) SetValue(v string) *DescribeMobileAgentPackageResponseBodyPackageListTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeMobileAgentPackageResponseBodyPackageListTags) Validate() error {
 	return dara.Validate(s)
 }

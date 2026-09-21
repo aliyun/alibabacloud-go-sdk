@@ -17,6 +17,8 @@ type iRunAgentTaskRequest interface {
 	GetMaxSteps() *int32
 	SetRunConfig(v *RunAgentTaskRequestRunConfig) *RunAgentTaskRequest
 	GetRunConfig() *RunAgentTaskRequestRunConfig
+	SetSaveArtifacts(v bool) *RunAgentTaskRequest
+	GetSaveArtifacts() *bool
 	SetScheduleId(v string) *RunAgentTaskRequest
 	GetScheduleId() *string
 	SetTargets(v []*RunAgentTaskRequestTargets) *RunAgentTaskRequest
@@ -50,13 +52,19 @@ type RunAgentTaskRequest struct {
 	//
 	// {"Skills":["sk-abc","sk-def"]}
 	RunConfig *RunAgentTaskRequestRunConfig `json:"RunConfig,omitempty" xml:"RunConfig,omitempty" type:"Struct"`
+	// Specifies whether to write the task artifacts to the user\\"s OSS bucket.
+	//
+	// example:
+	//
+	// true
+	SaveArtifacts *bool `json:"SaveArtifacts,omitempty" xml:"SaveArtifacts,omitempty"`
 	// The scheduling plan ID. When specified, the execution record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling dimension through aggregation.
 	//
 	// example:
 	//
 	// sch-260625-pbj2****
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// The Targets array. Each element is an object that contains InstanceId and SessionId.
+	// An array of target objects. Each element contains an InstanceId and a SessionId.
 	Targets []*RunAgentTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 	// The task configuration ID. This parameter is used to trigger a task with the specified configuration.
 	//
@@ -102,6 +110,10 @@ func (s *RunAgentTaskRequest) GetRunConfig() *RunAgentTaskRequestRunConfig {
 	return s.RunConfig
 }
 
+func (s *RunAgentTaskRequest) GetSaveArtifacts() *bool {
+	return s.SaveArtifacts
+}
+
 func (s *RunAgentTaskRequest) GetScheduleId() *string {
 	return s.ScheduleId
 }
@@ -139,6 +151,11 @@ func (s *RunAgentTaskRequest) SetMaxSteps(v int32) *RunAgentTaskRequest {
 
 func (s *RunAgentTaskRequest) SetRunConfig(v *RunAgentTaskRequestRunConfig) *RunAgentTaskRequest {
 	s.RunConfig = v
+	return s
+}
+
+func (s *RunAgentTaskRequest) SetSaveArtifacts(v bool) *RunAgentTaskRequest {
+	s.SaveArtifacts = &v
 	return s
 }
 

@@ -119,29 +119,29 @@ func (s *RunAgentTaskResponseBody) Validate() error {
 type RunAgentTaskResponseBodyTasks struct {
 	// The current status of the task. Valid values:
 	//
-	// - PENDING: The task is being created.
+	// PENDING: The task is being created.
 	//
-	// - RUNNING: The task is running.
+	// RUNNING: The task is running.
 	//
-	// - COMPLETED: The task is completed.
+	// COMPLETED: The task is completed.
 	//
-	// - FAILED: The task failed.
+	// FAILED: The task failed.
 	//
-	// - TIMEOUT: The task timed out.
+	// TIMEOUT: The task timed out.
 	//
-	// - CALL_FOR_USER: Waiting for user operation.
+	// CALL_FOR_USER: Waiting for user action.
 	//
-	// - PAUSING: The task is being paused.
+	// PAUSING: The task is being paused.
 	//
-	// - PAUSED: The task is paused.
+	// PAUSED: The task is paused.
 	//
-	// - CANCELLING: The task is being canceled.
+	// CANCELLING: The task is being canceled.
 	//
-	// - CANCELED: The task is canceled.
+	// CANCELED: The task is canceled.
 	//
-	// - STOPPED: The task is stopped.
+	// STOPPED: The task is stopped.
 	//
-	// - TIMEOUT: The task timed out.
+	// TIMEOUT: The task timed out.
 	//
 	// example:
 	//

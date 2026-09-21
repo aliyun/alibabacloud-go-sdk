@@ -26,7 +26,7 @@ type iDescribeScheduledTaskExecutionsRequest interface {
 }
 
 type DescribeScheduledTaskExecutionsRequest struct {
-	// The end time of the time range in ISO-8601 format.
+	// The end time of the time range in ISO 8601 format.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeScheduledTaskExecutionsRequest struct {
 	//
 	// sch-260705-agb*****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The start time of the time range in ISO-8601 format.
+	// The start time of the time range in ISO 8601 format.
 	//
 	// example:
 	//

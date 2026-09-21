@@ -28,11 +28,11 @@ type DescribeCloudPhoneNodesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Valid values:
+	// Indicates whether a next query token exists. Valid values:
 	//
-	// - If **NextToken*	- is empty, no more results exist.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If **NextToken*	- has a value, the value indicates the token from which the next query starts.
+	// - If **NextToken*	- has a return value, the value is the token for the next query.
 	//
 	// example:
 	//
@@ -121,19 +121,13 @@ func (s *DescribeCloudPhoneNodesResponseBody) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
-	// The bandwidth plan ID.
+	// The ID of the bandwidth plan.
 	//
 	// example:
 	//
 	// cbwp-7xvrl7axet2qg6yia******
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The status of the bandwidth plan. Valid values:
-	//
-	// - 0: initializing
-	//
-	// - 1: normal
-	//
-	// - 2: deleted
+	// The status of the bandwidth plan. Valid values: 0: initializing. 1: normal. 2: deleted.
 	//
 	// example:
 	//
@@ -148,7 +142,7 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// The array of tag information.
 	BizTags []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
 	Channel *string                                                `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
@@ -172,7 +166,7 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	//
 	// 2025-03-09 02:00:34
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	// The time when the matrix was last modified.
+	// The most recent modification time.
 	//
 	// example:
 	//
@@ -217,7 +211,7 @@ type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
 	// node_name
 	NodeName  *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
-	// The number of instances provisioned under the cloud phone matrix.
+	// The number of instances under the cloud phone matrix.
 	//
 	// example:
 	//

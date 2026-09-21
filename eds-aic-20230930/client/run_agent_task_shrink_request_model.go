@@ -17,6 +17,8 @@ type iRunAgentTaskShrinkRequest interface {
 	GetMaxSteps() *int32
 	SetRunConfigShrink(v string) *RunAgentTaskShrinkRequest
 	GetRunConfigShrink() *string
+	SetSaveArtifacts(v bool) *RunAgentTaskShrinkRequest
+	GetSaveArtifacts() *bool
 	SetScheduleId(v string) *RunAgentTaskShrinkRequest
 	GetScheduleId() *string
 	SetTargets(v []*RunAgentTaskShrinkRequestTargets) *RunAgentTaskShrinkRequest
@@ -50,13 +52,19 @@ type RunAgentTaskShrinkRequest struct {
 	//
 	// {"Skills":["sk-abc","sk-def"]}
 	RunConfigShrink *string `json:"RunConfig,omitempty" xml:"RunConfig,omitempty"`
+	// Specifies whether to write the task artifacts to the user\\"s OSS bucket.
+	//
+	// example:
+	//
+	// true
+	SaveArtifacts *bool `json:"SaveArtifacts,omitempty" xml:"SaveArtifacts,omitempty"`
 	// The scheduling plan ID. When specified, the execution record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling dimension through aggregation.
 	//
 	// example:
 	//
 	// sch-260625-pbj2****
 	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// The Targets array. Each element is an object that contains InstanceId and SessionId.
+	// An array of target objects. Each element contains an InstanceId and a SessionId.
 	Targets []*RunAgentTaskShrinkRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 	// The task configuration ID. This parameter is used to trigger a task with the specified configuration.
 	//
@@ -102,6 +110,10 @@ func (s *RunAgentTaskShrinkRequest) GetRunConfigShrink() *string {
 	return s.RunConfigShrink
 }
 
+func (s *RunAgentTaskShrinkRequest) GetSaveArtifacts() *bool {
+	return s.SaveArtifacts
+}
+
 func (s *RunAgentTaskShrinkRequest) GetScheduleId() *string {
 	return s.ScheduleId
 }
@@ -139,6 +151,11 @@ func (s *RunAgentTaskShrinkRequest) SetMaxSteps(v int32) *RunAgentTaskShrinkRequ
 
 func (s *RunAgentTaskShrinkRequest) SetRunConfigShrink(v string) *RunAgentTaskShrinkRequest {
 	s.RunConfigShrink = &v
+	return s
+}
+
+func (s *RunAgentTaskShrinkRequest) SetSaveArtifacts(v bool) *RunAgentTaskShrinkRequest {
+	s.SaveArtifacts = &v
 	return s
 }
 

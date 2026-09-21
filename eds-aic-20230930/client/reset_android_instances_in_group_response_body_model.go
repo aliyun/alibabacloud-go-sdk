@@ -9,6 +9,8 @@ type iResetAndroidInstancesInGroupResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetOrderId(v string) *ResetAndroidInstancesInGroupResponseBody
+	GetOrderId() *string
 	SetRequestId(v string) *ResetAndroidInstancesInGroupResponseBody
 	GetRequestId() *string
 	SetTasks(v *ResetAndroidInstancesInGroupResponseBodyTasks) *ResetAndroidInstancesInGroupResponseBody
@@ -16,13 +18,20 @@ type iResetAndroidInstancesInGroupResponseBody interface {
 }
 
 type ResetAndroidInstancesInGroupResponseBody struct {
+	// The order ID for storage reduction. This parameter is returned only when you reduce storage while resetting instances in a cloud phone matrix. It is not returned in other scenarios.
+	//
+	// example:
+	//
+	// 22365781890****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     *ResetAndroidInstancesInGroupResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task information.
+	Tasks *ResetAndroidInstancesInGroupResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s ResetAndroidInstancesInGroupResponseBody) String() string {
@@ -33,12 +42,21 @@ func (s ResetAndroidInstancesInGroupResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ResetAndroidInstancesInGroupResponseBody) GetOrderId() *string {
+	return s.OrderId
+}
+
 func (s *ResetAndroidInstancesInGroupResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *ResetAndroidInstancesInGroupResponseBody) GetTasks() *ResetAndroidInstancesInGroupResponseBodyTasks {
 	return s.Tasks
+}
+
+func (s *ResetAndroidInstancesInGroupResponseBody) SetOrderId(v string) *ResetAndroidInstancesInGroupResponseBody {
+	s.OrderId = &v
+	return s
 }
 
 func (s *ResetAndroidInstancesInGroupResponseBody) SetRequestId(v string) *ResetAndroidInstancesInGroupResponseBody {
@@ -61,7 +79,10 @@ func (s *ResetAndroidInstancesInGroupResponseBody) Validate() error {
 }
 
 type ResetAndroidInstancesInGroupResponseBodyTasks struct {
+	// The child tasks.
 	ChildTasks []*ResetAndroidInstancesInGroupResponseBodyTasksChildTasks `json:"ChildTasks,omitempty" xml:"ChildTasks,omitempty" type:"Repeated"`
+	// The parent task ID.
+	//
 	// example:
 	//
 	// t-xxxx
@@ -108,10 +129,14 @@ func (s *ResetAndroidInstancesInGroupResponseBodyTasks) Validate() error {
 }
 
 type ResetAndroidInstancesInGroupResponseBodyTasksChildTasks struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// acp-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The child task ID.
+	//
 	// example:
 	//
 	// t-xxxx

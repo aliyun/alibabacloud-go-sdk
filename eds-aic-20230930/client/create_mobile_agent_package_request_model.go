@@ -39,6 +39,8 @@ type iCreateMobileAgentPackageRequest interface {
 	GetPeriodUnit() *string
 	SetPromotionId(v string) *CreateMobileAgentPackageRequest
 	GetPromotionId() *string
+	SetTag(v []*CreateMobileAgentPackageRequestTag) *CreateMobileAgentPackageRequest
+	GetTag() []*CreateMobileAgentPackageRequestTag
 }
 
 type CreateMobileAgentPackageRequest struct {
@@ -50,14 +52,14 @@ type CreateMobileAgentPackageRequest struct {
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// - **true**: enables automatic payment. Make sure that your account balance is sufficient.
+	// - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
 	//
-	// - **false*	- (default): generates an order without charging the account.
-	//
-	//
+	// - **false*	- (default): Only an order is generated. No payment is made.
 	//
 	//
-	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can log on to the CloudPhone console to complete the payment.
+	//
+	//
+	// > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can log on to the Elastic Cloud Phone console to complete the payment.
 	//
 	// >
 	//
@@ -67,15 +69,15 @@ type CreateMobileAgentPackageRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// 	- **true**: enables auto-renewal.
+	// 	- **true**: Auto-renewal is enabled.
 	//
-	// 	- **false*	- (default): disables auto-renewal.
+	// 	- **false*	- (default): Auto-renewal is disabled.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The region in which the instance resides. Currently, only cn-hangzhou is supported.
+	// The region where the instance resides. Currently, only cn-hangzhou is supported.
 	//
 	// example:
 	//
@@ -138,6 +140,8 @@ type CreateMobileAgentPackageRequest struct {
 	//
 	// 50003308011****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The tags.
+	Tag []*CreateMobileAgentPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateMobileAgentPackageRequest) String() string {
@@ -206,6 +210,10 @@ func (s *CreateMobileAgentPackageRequest) GetPeriodUnit() *string {
 
 func (s *CreateMobileAgentPackageRequest) GetPromotionId() *string {
 	return s.PromotionId
+}
+
+func (s *CreateMobileAgentPackageRequest) GetTag() []*CreateMobileAgentPackageRequestTag {
+	return s.Tag
 }
 
 func (s *CreateMobileAgentPackageRequest) SetAmount(v string) *CreateMobileAgentPackageRequest {
@@ -283,6 +291,65 @@ func (s *CreateMobileAgentPackageRequest) SetPromotionId(v string) *CreateMobile
 	return s
 }
 
+func (s *CreateMobileAgentPackageRequest) SetTag(v []*CreateMobileAgentPackageRequestTag) *CreateMobileAgentPackageRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateMobileAgentPackageRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateMobileAgentPackageRequestTag struct {
+	// The tag key. This parameter cannot be empty.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateMobileAgentPackageRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMobileAgentPackageRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMobileAgentPackageRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateMobileAgentPackageRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateMobileAgentPackageRequestTag) SetKey(v string) *CreateMobileAgentPackageRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateMobileAgentPackageRequestTag) SetValue(v string) *CreateMobileAgentPackageRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateMobileAgentPackageRequestTag) Validate() error {
 	return dara.Validate(s)
 }

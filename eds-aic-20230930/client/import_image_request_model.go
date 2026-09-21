@@ -9,6 +9,8 @@ type iImportImageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBaseImageId(v string) *ImportImageRequest
+	GetBaseImageId() *string
 	SetImageDescription(v string) *ImportImageRequest
 	GetImageDescription() *string
 	SetImageFileURL(v string) *ImportImageRequest
@@ -18,13 +20,19 @@ type iImportImageRequest interface {
 }
 
 type ImportImageRequest struct {
+	// The ID of the base image.
+	//
+	// example:
+	//
+	// imgc-0aae4rgn0bk8f****
+	BaseImageId *string `json:"BaseImageId,omitempty" xml:"BaseImageId,omitempty"`
 	// The description of the image.
 	//
 	// example:
 	//
 	// android 12 custom image
 	ImageDescription *string `json:"ImageDescription,omitempty" xml:"ImageDescription,omitempty"`
-	// The URL of the image. This must be an Alibaba Cloud OSS address.
+	// The URL of the image. The URL must be an Alibaba Cloud Object Storage Service (OSS) address.
 	//
 	// example:
 	//
@@ -46,6 +54,10 @@ func (s ImportImageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ImportImageRequest) GetBaseImageId() *string {
+	return s.BaseImageId
+}
+
 func (s *ImportImageRequest) GetImageDescription() *string {
 	return s.ImageDescription
 }
@@ -56,6 +68,11 @@ func (s *ImportImageRequest) GetImageFileURL() *string {
 
 func (s *ImportImageRequest) GetImageName() *string {
 	return s.ImageName
+}
+
+func (s *ImportImageRequest) SetBaseImageId(v string) *ImportImageRequest {
+	s.BaseImageId = &v
+	return s
 }
 
 func (s *ImportImageRequest) SetImageDescription(v string) *ImportImageRequest {

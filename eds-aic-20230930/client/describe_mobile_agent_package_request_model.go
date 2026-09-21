@@ -26,7 +26,7 @@ type iDescribeMobileAgentPackageRequest interface {
 type DescribeMobileAgentPackageRequest struct {
 	// The list of node instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The list of package IDs.
+	// The list of packages.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
 	// The package specification.
 	//

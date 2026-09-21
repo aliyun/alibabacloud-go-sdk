@@ -1,3 +1,26 @@
+2026-09-21 Version: v4.31.0
+- Support API CreateAgentSkill.
+- Support API DeleteAgentSkill.
+- Support API DescribeSkills.
+- Support API InstallSkills.
+- Support API UninstallSkills.
+- Support API UpdateCloudPhoneNodeSystemImage.
+- Update API CreateMobileAgentPackage: add request parameters Tag.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.ArtifactCount.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.Artifacts.
+- Update API DescribeCreditDetail: add request parameters AgentTypes.
+- Update API DescribeCreditDetail: add response parameters Body.Data.Details.$.AgentType.
+- Update API DescribeMobileAgentPackage: add response parameters Body.PackageList.$.Tags.
+- Update API DescribeScheduledTaskExecutions: add response parameters Body.Executions.$.ArtifactCount.
+- Update API DescribeScheduledTaskExecutions: add response parameters Body.Executions.$.Artifacts.
+- Update API ImportImage: add request parameters BaseImageId.
+- Update API ResetAndroidInstancesInGroup: add request parameters AutoPay.
+- Update API ResetAndroidInstancesInGroup: add request parameters PromotionId.
+- Update API ResetAndroidInstancesInGroup: add request parameters TargetDataDiskSize.
+- Update API ResetAndroidInstancesInGroup: add response parameters Body.OrderId.
+- Update API RunAgentTask: add request parameters SaveArtifacts.
+
+
 2026-08-21 Version: v4.30.3
 - Generated golang 2023-09-30 for eds-aic.
 

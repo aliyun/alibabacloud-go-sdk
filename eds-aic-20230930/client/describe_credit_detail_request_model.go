@@ -9,6 +9,8 @@ type iDescribeCreditDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentTypes(v []*string) *DescribeCreditDetailRequest
+	GetAgentTypes() []*string
 	SetEndTime(v int64) *DescribeCreditDetailRequest
 	GetEndTime() *int64
 	SetInstanceIds(v []*string) *DescribeCreditDetailRequest
@@ -28,6 +30,8 @@ type iDescribeCreditDetailRequest interface {
 }
 
 type DescribeCreditDetailRequest struct {
+	// The list of agent types, used to filter credit change details by specified agent types.
+	AgentTypes []*string `json:"AgentTypes,omitempty" xml:"AgentTypes,omitempty" type:"Repeated"`
 	// The end time.
 	//
 	// example:
@@ -36,11 +40,21 @@ type DescribeCreditDetailRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of plan packages or credit booster packages.
+	// The maximum number of entries to read in this request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query. If a query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue retrieving results.
+	//
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of package or credit booster pack IDs.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
-	// The page number. Default value: 1.
+	// The page number for pagination. Default value: 1.
 	//
 	// example:
 	//
@@ -66,6 +80,10 @@ func (s DescribeCreditDetailRequest) String() string {
 
 func (s DescribeCreditDetailRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCreditDetailRequest) GetAgentTypes() []*string {
+	return s.AgentTypes
 }
 
 func (s *DescribeCreditDetailRequest) GetEndTime() *int64 {
@@ -98,6 +116,11 @@ func (s *DescribeCreditDetailRequest) GetPageSize() *string {
 
 func (s *DescribeCreditDetailRequest) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *DescribeCreditDetailRequest) SetAgentTypes(v []*string) *DescribeCreditDetailRequest {
+	s.AgentTypes = v
+	return s
 }
 
 func (s *DescribeCreditDetailRequest) SetEndTime(v int64) *DescribeCreditDetailRequest {

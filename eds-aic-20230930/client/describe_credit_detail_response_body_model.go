@@ -63,9 +63,14 @@ func (s *DescribeCreditDetailResponseBody) Validate() error {
 
 type DescribeCreditDetailResponseBodyData struct {
 	// The credit change details.
-	Details   []*DescribeCreditDetailResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	NextToken *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number. Default value: 1.
+	Details []*DescribeCreditDetailResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The token for the next query.
+	//
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number for pagination. Default value: 1.
 	//
 	// example:
 	//
@@ -167,8 +172,24 @@ func (s *DescribeCreditDetailResponseBodyData) Validate() error {
 }
 
 type DescribeCreditDetailResponseBodyDataDetails struct {
-	ApiKeyName   *string `json:"ApiKeyName,omitempty" xml:"ApiKeyName,omitempty"`
-	CachedTokens *int64  `json:"CachedTokens,omitempty" xml:"CachedTokens,omitempty"`
+	// The agent type. This field is populated only when querying by a single agent type.
+	//
+	// example:
+	//
+	// cloudphone_enterprise
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The API key name.
+	//
+	// example:
+	//
+	// default
+	ApiKeyName *string `json:"ApiKeyName,omitempty" xml:"ApiKeyName,omitempty"`
+	// The number of cached tokens.
+	//
+	// example:
+	//
+	// 50
+	CachedTokens *int64 `json:"CachedTokens,omitempty" xml:"CachedTokens,omitempty"`
 	// The time when the change occurred.
 	//
 	// example:
@@ -187,32 +208,72 @@ type DescribeCreditDetailResponseBodyDataDetails struct {
 	//
 	// Open Xiaohongshu
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DurationMs  *int64  `json:"DurationMs,omitempty" xml:"DurationMs,omitempty"`
-	InputTokens *int64  `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The model inference duration, in milliseconds.
+	//
+	// example:
+	//
+	// 3000
+	DurationMs *int64 `json:"DurationMs,omitempty" xml:"DurationMs,omitempty"`
+	// The number of input tokens.
+	//
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// acp-12oe0l75vl7o5****
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// my-instance
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	ModelId      *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	OutputTokens *int64  `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
-	// The ID of the credit or plan package.
+	// The model ID.
+	//
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The number of output tokens.
+	//
+	// example:
+	//
+	// 200
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The credit or package ID.
 	//
 	// example:
 	//
 	// cmag-0c1g77wjljl9h****
 	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1A923337-44D9-5CAD-B2A5-4B9E6628B1C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID, which is globally unique.
+	// The globally unique task ID.
 	//
 	// example:
 	//
 	// t-1fr0k51pozyr5****
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TotalTokens *int64  `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
-	TtftMs      *int64  `json:"TtftMs,omitempty" xml:"TtftMs,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The total number of tokens.
+	//
+	// example:
+	//
+	// 350
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	// The response time of the first token, in milliseconds.
+	//
+	// example:
+	//
+	// 500
+	TtftMs *int64 `json:"TtftMs,omitempty" xml:"TtftMs,omitempty"`
 }
 
 func (s DescribeCreditDetailResponseBodyDataDetails) String() string {
@@ -221,6 +282,10 @@ func (s DescribeCreditDetailResponseBodyDataDetails) String() string {
 
 func (s DescribeCreditDetailResponseBodyDataDetails) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) GetAgentType() *string {
+	return s.AgentType
 }
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetApiKeyName() *string {
@@ -285,6 +350,11 @@ func (s *DescribeCreditDetailResponseBodyDataDetails) GetTotalTokens() *int64 {
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) GetTtftMs() *int64 {
 	return s.TtftMs
+}
+
+func (s *DescribeCreditDetailResponseBodyDataDetails) SetAgentType(v string) *DescribeCreditDetailResponseBodyDataDetails {
+	s.AgentType = &v
+	return s
 }
 
 func (s *DescribeCreditDetailResponseBodyDataDetails) SetApiKeyName(v string) *DescribeCreditDetailResponseBodyDataDetails {

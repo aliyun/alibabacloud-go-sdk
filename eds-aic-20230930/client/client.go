@@ -25,10 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-southeast-1": dara.String("eds-aic.ap-southeast-1.aliyuncs.com"),
-		"cn-shanghai":    dara.String("eds-aic.cn-shanghai.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1044,6 +1040,88 @@ func (client *Client) CreateAICloudPhone(request *CreateAICloudPhoneRequest) (_r
 
 // Summary:
 //
+// Creates a custom skill.
+//
+// @param request - CreateAgentSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentSkillResponse
+func (client *Client) CreateAgentSkillWithOptions(request *CreateAgentSkillRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileList) {
+		query["FileList"] = request.FileList
+	}
+
+	if !dara.IsNil(request.IconKey) {
+		query["IconKey"] = request.IconKey
+	}
+
+	if !dara.IsNil(request.PackageOssKey) {
+		query["PackageOssKey"] = request.PackageOssKey
+	}
+
+	if !dara.IsNil(request.SkillDescription) {
+		query["SkillDescription"] = request.SkillDescription
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.SkillPackageUrl) {
+		query["SkillPackageUrl"] = request.SkillPackageUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentSkill"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom skill.
+//
+// @param request - CreateAgentSkillRequest
+//
+// @return CreateAgentSkillResponse
+func (client *Client) CreateAgentSkill(request *CreateAgentSkillRequest) (_result *CreateAgentSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgentSkillResponse{}
+	_body, _err := client.CreateAgentSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates pay-as-you-go or subscription cloud phone instance groups. An instance group can manage multiple instances. You can organize instances with the same functional purpose into the same instance group for unified management.
 //
 // Description:
@@ -1950,11 +2028,11 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 
 // Summary:
 //
-// Purchases a resource plan.
+// Purchases a resource plan by placing an order.
 //
 // Description:
 //
-// This operation involves billing. Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/ecp/jvs-mobile-billing-instructions) of Alibaba Cloud CloudPhone.
+// This operation involves billing. Before using this operation, make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/ecp/jvs-mobile-billing-instructions) of Elastic Cloud Phone.
 //
 // @param request - CreateMobileAgentPackageRequest
 //
@@ -2029,6 +2107,10 @@ func (client *Client) CreateMobileAgentPackageWithOptions(request *CreateMobileA
 		query["PromotionId"] = request.PromotionId
 	}
 
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2054,11 +2136,11 @@ func (client *Client) CreateMobileAgentPackageWithOptions(request *CreateMobileA
 
 // Summary:
 //
-// Purchases a resource plan.
+// Purchases a resource plan by placing an order.
 //
 // Description:
 //
-// This operation involves billing. Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/ecp/jvs-mobile-billing-instructions) of Alibaba Cloud CloudPhone.
+// This operation involves billing. Before using this operation, make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/ecp/jvs-mobile-billing-instructions) of Elastic Cloud Phone.
 //
 // @param request - CreateMobileAgentPackageRequest
 //
@@ -2438,6 +2520,68 @@ func (client *Client) CreateSystemPropertyTemplate(request *CreateSystemProperty
 
 // Summary:
 //
+// Deletes custom skills.
+//
+// @param request - DeleteAgentSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentSkillResponse
+func (client *Client) DeleteAgentSkillWithOptions(request *DeleteAgentSkillRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgentSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SkillIds) {
+		query["SkillIds"] = request.SkillIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentSkill"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes custom skills.
+//
+// @param request - DeleteAgentSkillRequest
+//
+// @return DeleteAgentSkillResponse
+func (client *Client) DeleteAgentSkill(request *DeleteAgentSkillRequest) (_result *DeleteAgentSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgentSkillResponse{}
+	_body, _err := client.DeleteAgentSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an Android instance group. All instances in the group are also deleted. This operation cannot be undone. Proceed with caution.
 //
 // Description:
@@ -2574,7 +2718,7 @@ func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteApp
 
 // Summary:
 //
-// Deletes a batch of backup files.
+// Deletes backup files in batches.
 //
 // @param request - DeleteBackupFileRequest
 //
@@ -2618,7 +2762,7 @@ func (client *Client) DeleteBackupFileWithOptions(request *DeleteBackupFileReque
 
 // Summary:
 //
-// Deletes a batch of backup files.
+// Deletes backup files in batches.
 //
 // @param request - DeleteBackupFileRequest
 //
@@ -3734,7 +3878,7 @@ func (client *Client) DescribeBuckets(request *DescribeBucketsRequest) (_result 
 //
 // Queries the details of a cloud phone matrix.
 //
-// In the Wuying Cloud Phone system, a matrix (Cloud Phone Server) is a logical resource snap-in that represents a physical server instance. The physical server can be divided into multiple independently running cloud phone instances that share the underlying compute, storage, and network resources of the matrix. Creating a matrix is equivalent to obtaining a physical server on which you can create cloud phone instances. The number of cloud phone instances that can be created varies depending on the configuration.
+// In the Wuying Cloud Phone system, a matrix (Cloud Phone Server) is a logical resource management snap-in that represents a physical server instance. The physical server can be divided into multiple independently running cloud phone instances that share the underlying compute, storage, and network resources of the matrix. Creating a matrix is equivalent to obtaining a physical server on which you can create cloud phone instances. The number of cloud phone instances that can be created varies depending on the configuration.
 //
 // @param request - DescribeCloudPhoneNodesRequest
 //
@@ -3828,7 +3972,7 @@ func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudP
 //
 // Queries the details of a cloud phone matrix.
 //
-// In the Wuying Cloud Phone system, a matrix (Cloud Phone Server) is a logical resource snap-in that represents a physical server instance. The physical server can be divided into multiple independently running cloud phone instances that share the underlying compute, storage, and network resources of the matrix. Creating a matrix is equivalent to obtaining a physical server on which you can create cloud phone instances. The number of cloud phone instances that can be created varies depending on the configuration.
+// In the Wuying Cloud Phone system, a matrix (Cloud Phone Server) is a logical resource management snap-in that represents a physical server instance. The physical server can be divided into multiple independently running cloud phone instances that share the underlying compute, storage, and network resources of the matrix. Creating a matrix is equivalent to obtaining a physical server on which you can create cloud phone instances. The number of cloud phone instances that can be created varies depending on the configuration.
 //
 // @param request - DescribeCloudPhoneNodesRequest
 //
@@ -3846,7 +3990,7 @@ func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRe
 
 // Summary:
 //
-// Queries all change records of credits.
+// Queries all credit change records.
 //
 // @param request - DescribeCreditDetailRequest
 //
@@ -3861,6 +4005,10 @@ func (client *Client) DescribeCreditDetailWithOptions(request *DescribeCreditDet
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentTypes) {
+		query["AgentTypes"] = request.AgentTypes
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
@@ -3918,7 +4066,7 @@ func (client *Client) DescribeCreditDetailWithOptions(request *DescribeCreditDet
 
 // Summary:
 //
-// Queries all change records of credits.
+// Queries all credit change records.
 //
 // @param request - DescribeCreditDetailRequest
 //
@@ -4888,7 +5036,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries the execution records of agent scheduled tasks.
+// Queries the execution records of an agent scheduled task.
 //
 // @param request - DescribeScheduledTaskExecutionsRequest
 //
@@ -4956,7 +5104,7 @@ func (client *Client) DescribeScheduledTaskExecutionsWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the execution records of agent scheduled tasks.
+// Queries the execution records of an agent scheduled task.
 //
 // @param request - DescribeScheduledTaskExecutionsRequest
 //
@@ -5055,6 +5203,92 @@ func (client *Client) DescribeScheduledTasks(request *DescribeScheduledTasksRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeScheduledTasksResponse{}
 	_body, _err := client.DescribeScheduledTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries skill information.
+//
+// @param request - DescribeSkillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSkillsResponse
+func (client *Client) DescribeSkillsWithOptions(request *DescribeSkillsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.StatusFilter) {
+		query["StatusFilter"] = request.StatusFilter
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSkills"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries skill information.
+//
+// @param request - DescribeSkillsRequest
+//
+// @return DescribeSkillsResponse
+func (client *Client) DescribeSkills(request *DescribeSkillsRequest) (_result *DescribeSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSkillsResponse{}
+	_body, _err := client.DescribeSkillsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6224,13 +6458,13 @@ func (client *Client) GetNetworkBlacklist(request *GetNetworkBlacklistRequest) (
 //
 // Description:
 //
-// 1. You can import a custom image to develop custom features or services.
+// 1. Importing a custom image is applicable to scenarios where you need to develop customized features or services.
 //
-// 2. First, obtain the required Android Open Source Project (AOSP) image baseline from the platform. Then, create a custom build. After the build is complete, import the image to the platform. For detailed instructions, contact Wuying technical support.
+// 2. Obtain the required AOSP base image from the platform, perform a custom build, and then import the built image to the platform for use. For detailed steps, contact Wuying technical support.
 //
-// 3. Ensure the image tar package is smaller than 2 GB. Otherwise, image parsing may fail.
+// 3. Ensure that the image TAR package is smaller than 2 GB. Otherwise, image parsing may fail.
 //
-// 4. Ensure the Object Storage Service (OSS) address is in mainland China. If the address is outside mainland China or in the Hong Kong region, the image file download may time out.
+// 4. Ensure that your OSS address is in the Chinese mainland. Addresses outside the Chinese mainland or in Hong Kong (China) may cause image file download timeouts.
 //
 // @param request - ImportImageRequest
 //
@@ -6245,6 +6479,10 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BaseImageId) {
+		query["BaseImageId"] = request.BaseImageId
+	}
+
 	if !dara.IsNil(request.ImageDescription) {
 		query["ImageDescription"] = request.ImageDescription
 	}
@@ -6286,13 +6524,13 @@ func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtim
 //
 // Description:
 //
-// 1. You can import a custom image to develop custom features or services.
+// 1. Importing a custom image is applicable to scenarios where you need to develop customized features or services.
 //
-// 2. First, obtain the required Android Open Source Project (AOSP) image baseline from the platform. Then, create a custom build. After the build is complete, import the image to the platform. For detailed instructions, contact Wuying technical support.
+// 2. Obtain the required AOSP base image from the platform, perform a custom build, and then import the built image to the platform for use. For detailed steps, contact Wuying technical support.
 //
-// 3. Ensure the image tar package is smaller than 2 GB. Otherwise, image parsing may fail.
+// 3. Ensure that the image TAR package is smaller than 2 GB. Otherwise, image parsing may fail.
 //
-// 4. Ensure the Object Storage Service (OSS) address is in mainland China. If the address is outside mainland China or in the Hong Kong region, the image file download may time out.
+// 4. Ensure that your OSS address is in the Chinese mainland. Addresses outside the Chinese mainland or in Hong Kong (China) may cause image file download timeouts.
 //
 // @param request - ImportImageRequest
 //
@@ -6519,6 +6757,72 @@ func (client *Client) InstallMonitorAgent(request *InstallMonitorAgentRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &InstallMonitorAgentResponse{}
 	_body, _err := client.InstallMonitorAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs skills to instances.
+//
+// @param request - InstallSkillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallSkillsResponse
+func (client *Client) InstallSkillsWithOptions(request *InstallSkillsRequest, runtime *dara.RuntimeOptions) (_result *InstallSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.SkillIds) {
+		query["SkillIds"] = request.SkillIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallSkills"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs skills to instances.
+//
+// @param request - InstallSkillsRequest
+//
+// @return InstallSkillsResponse
+func (client *Client) InstallSkills(request *InstallSkillsRequest) (_result *InstallSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InstallSkillsResponse{}
+	_body, _err := client.InstallSkillsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8662,11 +8966,11 @@ func (client *Client) RenewMobileAgentPackage(request *RenewMobileAgentPackageRe
 
 // Summary:
 //
-// Resets the instance by reinstalling the operating system using its original image. Note: The reset operation will fail if the image that was used to create the Cloud Phone has since been deleted.
+// Resets cloud phone instances. A reset reinstalls the system using the image of the cloud phone. For example, the reset fails if the image used when the cloud phone was created has been deleted.
 //
 // Description:
 //
-// You can reset an instance (initialize its system) only when the instance is Active, Stopped, Abnormal, Backup Failed, or **Recover Failed**.
+// Resetting (initializing the system) is supported only when the instance is in the **Available, Stopped, Abnormal, Backup Failed, or Restore Failed*	- state.
 //
 // @param request - ResetAndroidInstancesInGroupRequest
 //
@@ -8685,8 +8989,16 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 		query["AndroidInstanceIds"] = request.AndroidInstanceIds
 	}
 
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.IgnoreParamValidation) {
 		query["IgnoreParamValidation"] = request.IgnoreParamValidation
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	if !dara.IsNil(request.SaleMode) {
@@ -8695,6 +9007,10 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 
 	if !dara.IsNil(request.SettingResetType) {
 		query["SettingResetType"] = request.SettingResetType
+	}
+
+	if !dara.IsNil(request.TargetDataDiskSize) {
+		query["TargetDataDiskSize"] = request.TargetDataDiskSize
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8722,11 +9038,11 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 
 // Summary:
 //
-// Resets the instance by reinstalling the operating system using its original image. Note: The reset operation will fail if the image that was used to create the Cloud Phone has since been deleted.
+// Resets cloud phone instances. A reset reinstalls the system using the image of the cloud phone. For example, the reset fails if the image used when the cloud phone was created has been deleted.
 //
 // Description:
 //
-// You can reset an instance (initialize its system) only when the instance is Active, Stopped, Abnormal, Backup Failed, or **Recover Failed**.
+// Resetting (initializing the system) is supported only when the instance is in the **Available, Stopped, Abnormal, Backup Failed, or Restore Failed*	- state.
 //
 // @param request - ResetAndroidInstancesInGroupRequest
 //
@@ -8853,6 +9169,10 @@ func (client *Client) RunAgentTaskWithOptions(tmpReq *RunAgentTaskRequest, runti
 
 	if !dara.IsNil(request.RunConfigShrink) {
 		query["RunConfig"] = request.RunConfigShrink
+	}
+
+	if !dara.IsNil(request.SaveArtifacts) {
+		query["SaveArtifacts"] = request.SaveArtifacts
 	}
 
 	if !dara.IsNil(request.ScheduleId) {
@@ -9914,6 +10234,72 @@ func (client *Client) UninstallMonitorAgent(request *UninstallMonitorAgentReques
 
 // Summary:
 //
+// Uninstalls skills from instances.
+//
+// @param request - UninstallSkillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallSkillsResponse
+func (client *Client) UninstallSkillsWithOptions(request *UninstallSkillsRequest, runtime *dara.RuntimeOptions) (_result *UninstallSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.SkillIds) {
+		query["SkillIds"] = request.SkillIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallSkills"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uninstalls skills from instances.
+//
+// @param request - UninstallSkillsRequest
+//
+// @return UninstallSkillsResponse
+func (client *Client) UninstallSkills(request *UninstallSkillsRequest) (_result *UninstallSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UninstallSkillsResponse{}
+	_body, _err := client.UninstallSkillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Removes tags from cloud phones. If a tag is no longer associated with any cloud phone after it is removed, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
@@ -9979,6 +10365,80 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the system cloud disk image of a normal matrix node.
+//
+// Description:
+//
+// After changing the system cloud disk image, the instance may have compatibility issues. Verify compatibility before making the change.
+//
+// @param request - UpdateCloudPhoneNodeSystemImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudPhoneNodeSystemImageResponse
+func (client *Client) UpdateCloudPhoneNodeSystemImageWithOptions(request *UpdateCloudPhoneNodeSystemImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudPhoneNodeSystemImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.NodeIds) {
+		query["NodeIds"] = request.NodeIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCloudPhoneNodeSystemImage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCloudPhoneNodeSystemImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the system cloud disk image of a normal matrix node.
+//
+// Description:
+//
+// After changing the system cloud disk image, the instance may have compatibility issues. Verify compatibility before making the change.
+//
+// @param request - UpdateCloudPhoneNodeSystemImageRequest
+//
+// @return UpdateCloudPhoneNodeSystemImageResponse
+func (client *Client) UpdateCloudPhoneNodeSystemImage(request *UpdateCloudPhoneNodeSystemImageRequest) (_result *UpdateCloudPhoneNodeSystemImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCloudPhoneNodeSystemImageResponse{}
+	_body, _err := client.UpdateCloudPhoneNodeSystemImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

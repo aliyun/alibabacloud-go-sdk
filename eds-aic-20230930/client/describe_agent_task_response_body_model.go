@@ -34,7 +34,7 @@ type DescribeAgentTaskResponseBody struct {
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The message returned by the API.
+	// The response message.
 	//
 	// example:
 	//
@@ -117,23 +117,38 @@ func (s *DescribeAgentTaskResponseBody) Validate() error {
 }
 
 type DescribeAgentTaskResponseBodyTasks struct {
+	// The number of task artifacts.
+	//
+	// example:
+	//
+	// 2
+	ArtifactCount *int32 `json:"ArtifactCount,omitempty" xml:"ArtifactCount,omitempty"`
+	// The list of uploaded task artifacts.
+	Artifacts []*DescribeAgentTaskResponseBodyTasksArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
 	// The current status of the task. Valid values:
 	//
-	// PENDING: The task is being created.
+	// - PENDING: The task is being created.
 	//
-	// RUNNING: The task is running.
+	// - RUNNING: The task is running.
 	//
-	// COMPLETED: The task is completed.
+	// - COMPLETED: The task is completed.
 	//
-	// FAILED: The task failed.
+	// - FAILED: The task failed.
 	//
-	// TIMEOUT: The task execution timed out.
+	// - TIMEOUT: The task execution timed out.
 	//
 	// example:
 	//
 	// COMPLETED
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	DigestSource  *string `json:"DigestSource,omitempty" xml:"DigestSource,omitempty"`
+	// The source of the digest. Valid values:
+	//
+	// - PROMPT_AUTO: auto-generated.
+	//
+	// - RESULT_AUTO: result refinement.
+	//
+	// - USER: user-edited.
+	DigestSource *string `json:"DigestSource,omitempty" xml:"DigestSource,omitempty"`
 	// The Mobile node ID.
 	//
 	// example:
@@ -152,7 +167,8 @@ type DescribeAgentTaskResponseBodyTasks struct {
 	// example:
 	//
 	// 30
-	Steps      *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	Steps *string `json:"Steps,omitempty" xml:"Steps,omitempty"`
+	// The task digest text, up to 25 characters.
 	TaskDigest *string `json:"TaskDigest,omitempty" xml:"TaskDigest,omitempty"`
 	// The task duration. This field is returned only when CurrentStatus is FAILED or COMPLETED.
 	//
@@ -186,6 +202,14 @@ func (s DescribeAgentTaskResponseBodyTasks) String() string {
 
 func (s DescribeAgentTaskResponseBodyTasks) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) GetArtifactCount() *int32 {
+	return s.ArtifactCount
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) GetArtifacts() []*DescribeAgentTaskResponseBodyTasksArtifacts {
+	return s.Artifacts
 }
 
 func (s *DescribeAgentTaskResponseBodyTasks) GetCurrentStatus() *string {
@@ -230,6 +254,16 @@ func (s *DescribeAgentTaskResponseBodyTasks) GetTaskResult() *string {
 
 func (s *DescribeAgentTaskResponseBodyTasks) GetUserPrompt() *string {
 	return s.UserPrompt
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) SetArtifactCount(v int32) *DescribeAgentTaskResponseBodyTasks {
+	s.ArtifactCount = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasks) SetArtifacts(v []*DescribeAgentTaskResponseBodyTasksArtifacts) *DescribeAgentTaskResponseBodyTasks {
+	s.Artifacts = v
+	return s
 }
 
 func (s *DescribeAgentTaskResponseBodyTasks) SetCurrentStatus(v string) *DescribeAgentTaskResponseBodyTasks {
@@ -288,5 +322,104 @@ func (s *DescribeAgentTaskResponseBodyTasks) SetUserPrompt(v string) *DescribeAg
 }
 
 func (s *DescribeAgentTaskResponseBodyTasks) Validate() error {
+	if s.Artifacts != nil {
+		for _, item := range s.Artifacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAgentTaskResponseBodyTasksArtifacts struct {
+	// The MIME type.
+	//
+	// example:
+	//
+	// image/png
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The OSS pre-signed download URL.
+	//
+	// example:
+	//
+	// https://bucket.oss-cn-hangzhou.aliyuncs.com/...
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// screenshot.png
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The file size in bytes.
+	//
+	// example:
+	//
+	// 1024
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The upload time in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-08-05T10:00:00+08:00
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s DescribeAgentTaskResponseBodyTasksArtifacts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAgentTaskResponseBodyTasksArtifacts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) GetContentType() *string {
+	return s.ContentType
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) GetDownloadUrl() *string {
+	return s.DownloadUrl
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) GetSize() *int64 {
+	return s.Size
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) GetUpdatedTime() *string {
+	return s.UpdatedTime
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) SetContentType(v string) *DescribeAgentTaskResponseBodyTasksArtifacts {
+	s.ContentType = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) SetDownloadUrl(v string) *DescribeAgentTaskResponseBodyTasksArtifacts {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) SetName(v string) *DescribeAgentTaskResponseBodyTasksArtifacts {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) SetSize(v int64) *DescribeAgentTaskResponseBodyTasksArtifacts {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) SetUpdatedTime(v string) *DescribeAgentTaskResponseBodyTasksArtifacts {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *DescribeAgentTaskResponseBodyTasksArtifacts) Validate() error {
 	return dara.Validate(s)
 }

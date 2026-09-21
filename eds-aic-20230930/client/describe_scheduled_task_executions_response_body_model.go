@@ -34,7 +34,7 @@ type DescribeScheduledTaskExecutionsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The list of task execution records.
 	Executions []*DescribeScheduledTaskExecutionsResponseBodyExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of results returned in this request.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeScheduledTaskExecutionsResponseBody struct {
 	//
 	// 9A51B1DF-96FF-3BCC-B08C-783161D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The number of results returned.
 	//
 	// example:
 	//
@@ -151,6 +151,14 @@ func (s *DescribeScheduledTaskExecutionsResponseBody) Validate() error {
 }
 
 type DescribeScheduledTaskExecutionsResponseBodyExecutions struct {
+	// The number of task artifacts.
+	//
+	// example:
+	//
+	// 2
+	ArtifactCount *int32 `json:"ArtifactCount,omitempty" xml:"ArtifactCount,omitempty"`
+	// The list of uploaded task artifacts.
+	Artifacts []*DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
 	// The end time.
 	//
 	// example:
@@ -227,6 +235,14 @@ func (s DescribeScheduledTaskExecutionsResponseBodyExecutions) GoString() string
 	return s.String()
 }
 
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) GetArtifactCount() *int32 {
+	return s.ArtifactCount
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) GetArtifacts() []*DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts {
+	return s.Artifacts
+}
+
 func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) GetCompletedAt() *string {
 	return s.CompletedAt
 }
@@ -269,6 +285,16 @@ func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) GetStatus() *str
 
 func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) GetTaskId() *string {
 	return s.TaskId
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) SetArtifactCount(v int32) *DescribeScheduledTaskExecutionsResponseBodyExecutions {
+	s.ArtifactCount = &v
+	return s
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) SetArtifacts(v []*DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) *DescribeScheduledTaskExecutionsResponseBodyExecutions {
+	s.Artifacts = v
+	return s
 }
 
 func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) SetCompletedAt(v string) *DescribeScheduledTaskExecutionsResponseBodyExecutions {
@@ -327,5 +353,104 @@ func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) SetTaskId(v stri
 }
 
 func (s *DescribeScheduledTaskExecutionsResponseBodyExecutions) Validate() error {
+	if s.Artifacts != nil {
+		for _, item := range s.Artifacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts struct {
+	// The MIME type.
+	//
+	// example:
+	//
+	// image/png
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The OSS pre-signed download URL.
+	//
+	// example:
+	//
+	// https://bucket.oss-cn-hangzhou.aliyuncs.com/...
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// screenshot.png
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The file size in bytes.
+	//
+	// example:
+	//
+	// 1024
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The upload time in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-08-05T10:00:00+08:00
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) GetContentType() *string {
+	return s.ContentType
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) GetDownloadUrl() *string {
+	return s.DownloadUrl
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) GetSize() *int64 {
+	return s.Size
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) GetUpdatedTime() *string {
+	return s.UpdatedTime
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) SetContentType(v string) *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts {
+	s.ContentType = &v
+	return s
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) SetDownloadUrl(v string) *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) SetName(v string) *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) SetSize(v int64) *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) SetUpdatedTime(v string) *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts) Validate() error {
 	return dara.Validate(s)
 }
