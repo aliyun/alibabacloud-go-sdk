@@ -202,9 +202,10 @@ func (s *InvokeAssistantResponseBodyMessages) Validate() error {
 }
 
 type InvokeAssistantResponseBodyMessagesContent struct {
-	AguiContent  *InvokeAssistantResponseBodyMessagesContentAguiContent  `json:"aguiContent,omitempty" xml:"aguiContent,omitempty" type:"Struct"`
-	CardCallback *InvokeAssistantResponseBodyMessagesContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
-	DingCard     *InvokeAssistantResponseBodyMessagesContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	A2uiMessages []*InvokeAssistantResponseBodyMessagesContentA2uiMessages `json:"a2uiMessages,omitempty" xml:"a2uiMessages,omitempty" type:"Repeated"`
+	AguiContent  *InvokeAssistantResponseBodyMessagesContentAguiContent    `json:"aguiContent,omitempty" xml:"aguiContent,omitempty" type:"Struct"`
+	CardCallback *InvokeAssistantResponseBodyMessagesContentCardCallback   `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *InvokeAssistantResponseBodyMessagesContentDingCard       `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
 	// example:
 	//
 	// {}
@@ -226,6 +227,10 @@ func (s InvokeAssistantResponseBodyMessagesContent) String() string {
 
 func (s InvokeAssistantResponseBodyMessagesContent) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContent) GetA2uiMessages() []*InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	return s.A2uiMessages
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContent) GetAguiContent() *InvokeAssistantResponseBodyMessagesContentAguiContent {
@@ -258,6 +263,11 @@ func (s *InvokeAssistantResponseBodyMessagesContent) GetText() *InvokeAssistantR
 
 func (s *InvokeAssistantResponseBodyMessagesContent) GetType() *string {
 	return s.Type
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContent) SetA2uiMessages(v []*InvokeAssistantResponseBodyMessagesContentA2uiMessages) *InvokeAssistantResponseBodyMessagesContent {
+	s.A2uiMessages = v
+	return s
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContent) SetAguiContent(v *InvokeAssistantResponseBodyMessagesContentAguiContent) *InvokeAssistantResponseBodyMessagesContent {
@@ -301,6 +311,15 @@ func (s *InvokeAssistantResponseBodyMessagesContent) SetType(v string) *InvokeAs
 }
 
 func (s *InvokeAssistantResponseBodyMessagesContent) Validate() error {
+	if s.A2uiMessages != nil {
+		for _, item := range s.A2uiMessages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.AguiContent != nil {
 		if err := s.AguiContent.Validate(); err != nil {
 			return err
@@ -337,6 +356,291 @@ func (s *InvokeAssistantResponseBodyMessagesContent) Validate() error {
 		}
 	}
 	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentA2uiMessages struct {
+	AppendDataModel  *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel  `json:"appendDataModel,omitempty" xml:"appendDataModel,omitempty" type:"Struct"`
+	CreateSurface    *InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface    `json:"createSurface,omitempty" xml:"createSurface,omitempty" type:"Struct"`
+	DeleteSurface    *InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface    `json:"deleteSurface,omitempty" xml:"deleteSurface,omitempty" type:"Struct"`
+	Profile          *string                                                                 `json:"profile,omitempty" xml:"profile,omitempty"`
+	UpdateComponents *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents `json:"updateComponents,omitempty" xml:"updateComponents,omitempty" type:"Struct"`
+	UpdateDataModel  *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel  `json:"updateDataModel,omitempty" xml:"updateDataModel,omitempty" type:"Struct"`
+	Version          *string                                                                 `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessages) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) GetAppendDataModel() *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel {
+	return s.AppendDataModel
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) GetCreateSurface() *InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface {
+	return s.CreateSurface
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) GetDeleteSurface() *InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface {
+	return s.DeleteSurface
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) GetProfile() *string {
+	return s.Profile
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) GetUpdateComponents() *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents {
+	return s.UpdateComponents
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) GetUpdateDataModel() *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel {
+	return s.UpdateDataModel
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) GetVersion() *string {
+	return s.Version
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) SetAppendDataModel(v *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) *InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	s.AppendDataModel = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) SetCreateSurface(v *InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface) *InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	s.CreateSurface = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) SetDeleteSurface(v *InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface) *InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	s.DeleteSurface = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) SetProfile(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	s.Profile = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) SetUpdateComponents(v *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) *InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	s.UpdateComponents = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) SetUpdateDataModel(v *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) *InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	s.UpdateDataModel = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) SetVersion(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessages {
+	s.Version = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessages) Validate() error {
+	if s.AppendDataModel != nil {
+		if err := s.AppendDataModel.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CreateSurface != nil {
+		if err := s.CreateSurface.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeleteSurface != nil {
+		if err := s.DeleteSurface.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpdateComponents != nil {
+		if err := s.UpdateComponents.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpdateDataModel != nil {
+		if err := s.UpdateDataModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel struct {
+	Path      *string     `json:"path,omitempty" xml:"path,omitempty"`
+	SurfaceId *string     `json:"surfaceId,omitempty" xml:"surfaceId,omitempty"`
+	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) GetPath() *string {
+	return s.Path
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) GetSurfaceId() *string {
+	return s.SurfaceId
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) GetValue() interface{} {
+	return s.Value
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) SetPath(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel {
+	s.Path = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) SetSurfaceId(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel {
+	s.SurfaceId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) SetValue(v interface{}) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel {
+	s.Value = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface struct {
+	SurfaceId *string `json:"surfaceId,omitempty" xml:"surfaceId,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface) GetSurfaceId() *string {
+	return s.SurfaceId
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface) SetSurfaceId(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface {
+	s.SurfaceId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface struct {
+	SurfaceId *string `json:"surfaceId,omitempty" xml:"surfaceId,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface) GetSurfaceId() *string {
+	return s.SurfaceId
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface) SetSurfaceId(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface {
+	s.SurfaceId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents struct {
+	Components []interface{} `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	SurfaceId  *string       `json:"surfaceId,omitempty" xml:"surfaceId,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) GetComponents() []interface{} {
+	return s.Components
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) GetSurfaceId() *string {
+	return s.SurfaceId
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) SetComponents(v []interface{}) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents {
+	s.Components = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) SetSurfaceId(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents {
+	s.SurfaceId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel struct {
+	Path      *string     `json:"path,omitempty" xml:"path,omitempty"`
+	SurfaceId *string     `json:"surfaceId,omitempty" xml:"surfaceId,omitempty"`
+	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) GetPath() *string {
+	return s.Path
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) GetSurfaceId() *string {
+	return s.SurfaceId
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) GetValue() interface{} {
+	return s.Value
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) SetPath(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel {
+	s.Path = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) SetSurfaceId(v string) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel {
+	s.SurfaceId = &v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) SetValue(v interface{}) *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel {
+	s.Value = v
+	return s
+}
+
+func (s *InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel) Validate() error {
+	return dara.Validate(s)
 }
 
 type InvokeAssistantResponseBodyMessagesContentAguiContent struct {
