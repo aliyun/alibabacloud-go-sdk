@@ -32,7 +32,7 @@ type iListDataAgentSessionResponseBody interface {
 type ListDataAgentSessionResponseBody struct {
 	// The response struct.
 	Data []*ListDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned when the request is abnormal.
+	// The error code returned when the request fails.
 	//
 	// example:
 	//
@@ -376,11 +376,11 @@ type ListDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// ca-e*******ckd
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The usage stage of the custom agent. Valid values:
+	// The stage of the custom agent. Valid values:
 	//
 	// - **debug**: Debug stage.
 	//
-	// - **prod**: Production environment stage.
+	// - **prod**: Production stage.
 	//
 	// example:
 	//
@@ -416,7 +416,7 @@ type ListDataAgentSessionResponseBodyDataSessionConfig struct {
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The name of the user OSS bucket.
 	//
-	// - Analysis process files and report outputs can be uploaded to the user-specified OSS bucket.
+	// Analysis process files and report outputs can be uploaded to the user-specified OSS bucket.
 	//
 	// example:
 	//

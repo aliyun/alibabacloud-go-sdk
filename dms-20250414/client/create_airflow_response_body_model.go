@@ -26,7 +26,7 @@ type iCreateAirflowResponseBody interface {
 }
 
 type CreateAirflowResponseBody struct {
-	// Details of the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateAirflowResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The log information.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type CreateAirflowResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The Airflow data dictionary.
 	Root *CreateAirflowResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The request was successful.
 	//
 	// - **false**: The request failed.
 	//
@@ -151,7 +151,7 @@ func (s *CreateAirflowResponseBody) Validate() error {
 }
 
 type CreateAirflowResponseBodyRoot struct {
-	// The ID of the Airflow instance.
+	// The instance ID of the Airflow instance.
 	//
 	// example:
 	//
@@ -175,13 +175,13 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// SMALL
 	AppSpec *string `json:"AppSpec,omitempty" xml:"AppSpec,omitempty"`
-	// The application type. This value is always airflow.
+	// The type.
 	//
 	// example:
 	//
 	// airflow
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// Custom Airflow configurations.
+	// The custom Airflow configuration.
 	CustomAirflowCfg []*string `json:"CustomAirflowCfg,omitempty" xml:"CustomAirflowCfg,omitempty" type:"Repeated"`
 	// The directory that Airflow scans for DAGs.
 	//
@@ -189,9 +189,9 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// default/dags
 	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
-	// A list of data mount configurations.
+	// The list of data mount information.
 	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
-	// The deployment error message.
+	// The error log information.
 	//
 	// example:
 	//
@@ -203,15 +203,15 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// order scheduler
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether to enable serverless workers.
+	// Specifies whether to enable Worker elasticity.
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
-	// The time the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-08-12T05:46:01.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The timeout period for a graceful shutdown, in seconds.
+	// The timeout period for the Worker to gracefully shut down.
 	//
 	// example:
 	//
@@ -229,49 +229,49 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// The plugin directory that Airflow scans.
+	// The directory that Airflow scans for plugins.
 	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
-	// The path to the requirements file.
+	// The path of the installable package.
 	//
 	// example:
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-2ze1nak7h0alg1xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The file that is loaded when the Airflow instance starts. You can use this file to set environment variables.
+	// The file loaded when the Airflow instance starts. You can use this file to set environment variables and other configurations.
 	//
 	// example:
 	//
 	// default/startup.sh
 	StartupFile *string `json:"StartupFile,omitempty" xml:"StartupFile,omitempty"`
-	// The status of the Airflow instance.
+	// The instance status of the Airflow instance.
 	//
 	// example:
 	//
 	// DEPLOYING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-8vbaf073jawozfpbg****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//
 	// vpc-uf63r6coyiw9o5gf****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The number of scaled-out worker nodes.
+	// The number of worker scale-out nodes.
 	//
 	// example:
 	//

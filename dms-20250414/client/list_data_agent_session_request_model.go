@@ -36,26 +36,31 @@ type iListDataAgentSessionRequest interface {
 }
 
 type ListDataAgentSessionRequest struct {
-	// The end time for session creation.
+	// The end time of the session creation time range.
 	//
 	// example:
 	//
 	// 1770912000000
 	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	// The start time for session creation.
+	// The start time of the session creation time range.
 	//
 	// example:
 	//
 	// 1770825600000
-	CreateStartTime *int64  `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
-	CreatorId       *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreateStartTime *int64 `json:"CreateStartTime,omitempty" xml:"CreateStartTime,omitempty"`
+	// The ID of the session creator.
+	//
+	// example:
+	//
+	// 2096******
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The custom agent ID.
 	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current Data Management unit.
+	// The current DMS unit.
 	//
 	// example:
 	//
@@ -72,6 +77,10 @@ type ListDataAgentSessionRequest struct {
 	// - Analysis
 	//
 	// - Coding
+	//
+	// example:
+	//
+	// Analysis
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The page number.
 	//
@@ -95,7 +104,7 @@ type ListDataAgentSessionRequest struct {
 	//
 	// example:
 	//
-	// Analyze this data for me
+	// Help me analyze this data
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The workspace ID.
 	//

@@ -42,9 +42,9 @@ type DescribeDataAgentSessionResponseBody struct {
 	//
 	// 18****-*****-*******7A3122F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return value. Valid values:
+	// The return value description. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: Succeeded.
 	//
 	// - **false**: Failed.
 	//
@@ -131,6 +131,8 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
 	// The list of artifacts produced by the session. Currently, only reports are included.
 	Artifacts []*DescribeDataAgentSessionResponseBodyDataArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
+	// The capabilities (knowledge bases, skills, and others) mounted to the session.
+	Capabilities []*DescribeDataAgentSessionResponseBodyDataCapabilities `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
 	// The chat history replay records.
 	ChatHistoryLocations []*DescribeDataAgentSessionResponseBodyDataChatHistoryLocations `json:"ChatHistoryLocations,omitempty" xml:"ChatHistoryLocations,omitempty" type:"Repeated"`
 	// The time when the session was created.
@@ -141,7 +143,7 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The list of data sources used in the current session.
 	DataSources []*DescribeDataAgentSessionResponseBodyDataDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// Indicates whether the session is saved as a favorite in the workspace by the current logged-in user.
+	// Indicates whether the session is favorited by the current user in the workspace.
 	//
 	// example:
 	//
@@ -153,15 +155,15 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	//
 	// f-8*******01m
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
-	// The recall results from the knowledge base and memory for the current session.
+	// The recall results from knowledge bases and memory in this session.
 	RecallResults []*DescribeDataAgentSessionResponseBodyDataRecallResults `json:"RecallResults,omitempty" xml:"RecallResults,omitempty" type:"Repeated"`
-	// Indicates whether the session is saved as a favorite by the current logged-in user.
+	// Indicates whether the session is favorited by the current user.
 	//
 	// example:
 	//
 	// true
 	Saved *bool `json:"Saved,omitempty" xml:"Saved,omitempty"`
-	// The session configuration item.
+	// The session configuration items.
 	SessionConfig *DescribeDataAgentSessionResponseBodyDataSessionConfig `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty" type:"Struct"`
 	// The agent session ID.
 	//
@@ -207,6 +209,10 @@ func (s *DescribeDataAgentSessionResponseBodyData) GetAgentStatus() *string {
 
 func (s *DescribeDataAgentSessionResponseBodyData) GetArtifacts() []*DescribeDataAgentSessionResponseBodyDataArtifacts {
 	return s.Artifacts
+}
+
+func (s *DescribeDataAgentSessionResponseBodyData) GetCapabilities() []*DescribeDataAgentSessionResponseBodyDataCapabilities {
+	return s.Capabilities
 }
 
 func (s *DescribeDataAgentSessionResponseBodyData) GetChatHistoryLocations() []*DescribeDataAgentSessionResponseBodyDataChatHistoryLocations {
@@ -269,6 +275,11 @@ func (s *DescribeDataAgentSessionResponseBodyData) SetAgentStatus(v string) *Des
 
 func (s *DescribeDataAgentSessionResponseBodyData) SetArtifacts(v []*DescribeDataAgentSessionResponseBodyDataArtifacts) *DescribeDataAgentSessionResponseBodyData {
 	s.Artifacts = v
+	return s
+}
+
+func (s *DescribeDataAgentSessionResponseBodyData) SetCapabilities(v []*DescribeDataAgentSessionResponseBodyDataCapabilities) *DescribeDataAgentSessionResponseBodyData {
+	s.Capabilities = v
 	return s
 }
 
@@ -342,6 +353,15 @@ func (s *DescribeDataAgentSessionResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.Capabilities != nil {
+		for _, item := range s.Capabilities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.ChatHistoryLocations != nil {
 		for _, item := range s.ChatHistoryLocations {
 			if item != nil {
@@ -384,7 +404,7 @@ type DescribeDataAgentSessionResponseBodyDataArtifacts struct {
 	//
 	// a simple report
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the backend completed the artifact task. The value is a UNIX timestamp accurate to seconds.
+	// The time when the backend completed the artifact task. This is a UNIX timestamp accurate to the second.
 	//
 	// example:
 	//
@@ -396,19 +416,19 @@ type DescribeDataAgentSessionResponseBodyDataArtifacts struct {
 	//
 	// bab******33e1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The artifact name, which is typically a string concatenated by the system. This name is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
+	// The artifact name, which is typically a string concatenated by the system. This value is aligned with the name field of the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
 	//
 	// example:
 	//
 	// report_****_2026****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the backend received the artifact request. The value is a UNIX timestamp accurate to seconds.
+	// The time when the backend received the artifact request. This is a UNIX timestamp accurate to the second.
 	//
 	// example:
 	//
 	// 1778743587
 	ReceiveTime *string `json:"ReceiveTime,omitempty" xml:"ReceiveTime,omitempty"`
-	// The time when the backend actually started running the artifact task. The value is a UNIX timestamp accurate to seconds.
+	// The time when the backend actually started running the artifact task. This is a UNIX timestamp accurate to the second.
 	//
 	// example:
 	//
@@ -428,7 +448,7 @@ type DescribeDataAgentSessionResponseBodyDataArtifacts struct {
 	//
 	// PENDING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The artifact type. Valid values: TextReport, WebReport.
+	// The artifact type. Valid values: [TextReport, WebReport].
 	//
 	// example:
 	//
@@ -520,6 +540,59 @@ func (s *DescribeDataAgentSessionResponseBodyDataArtifacts) Validate() error {
 	return dara.Validate(s)
 }
 
+type DescribeDataAgentSessionResponseBodyDataCapabilities struct {
+	// The ID of the mounted capability.
+	//
+	// - If Type is set to skill, this value indicates the skill ID.
+	//
+	// - If Type is set to dms_kb, this value indicates the knowledge base ID.
+	//
+	// example:
+	//
+	// kb-HZ-s3df*******ld08d
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type. Valid values:
+	//
+	// - skill: skill.
+	//
+	// - dms_kb: knowledge base.
+	//
+	// example:
+	//
+	// dms_kb
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDataAgentSessionResponseBodyDataCapabilities) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDataAgentSessionResponseBodyDataCapabilities) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataCapabilities) GetId() *string {
+	return s.Id
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataCapabilities) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataCapabilities) SetId(v string) *DescribeDataAgentSessionResponseBodyDataCapabilities {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataCapabilities) SetType(v string) *DescribeDataAgentSessionResponseBodyDataCapabilities {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeDataAgentSessionResponseBodyDataCapabilities) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeDataAgentSessionResponseBodyDataChatHistoryLocations struct {
 	// The key of the chat history replay record.
 	//
@@ -566,11 +639,11 @@ func (s *DescribeDataAgentSessionResponseBodyDataChatHistoryLocations) Validate(
 }
 
 type DescribeDataAgentSessionResponseBodyDataDataSources struct {
-	// The data source category. Valid values:
+	// The source of the data source. Valid values:
 	//
-	// - **CHAT**: Specified through the CreateDataAgentSession or SendChatMessage operation during a conversation.
+	// - **CHAT**: Specified during a conversation by calling the CreateDataAgentSession or SendChatMessage operation.
 	//
-	// - **CUSTOM_AGENT**: From the preset analysis data scope in a custom agent.
+	// - **CUSTOM_AGENT**: Derived from the preset analysis data scope in a custom agent.
 	//
 	// example:
 	//
@@ -629,7 +702,7 @@ type DescribeDataAgentSessionResponseBodyDataRecallResults struct {
 	//
 	// 0.65
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The type of the recalled knowledge.
+	// The category of the recalled knowledge.
 	//
 	// example:
 	//
@@ -685,33 +758,33 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	// The stage of the custom agent. Valid values:
 	//
-	// - **debug**: The debug stage.
+	// - **debug**: Test stage.
 	//
-	// - **prod**: The production stage.
+	// - **prod**: Production stage.
 	//
 	// example:
 	//
 	// debug
 	CustomAgentStage *string `json:"CustomAgentStage,omitempty" xml:"CustomAgentStage,omitempty"`
-	// Specifies whether to enable web search.
+	// Specifies whether web search is enabled.
 	//
 	// example:
 	//
 	// True
 	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	// The encryption key for storing artifacts in OSS (both built-in and user-specified). This is typically specified in CreateDataAgentSession.
+	// The encryption key used to store artifacts in OSS (including built-in and user-specified OSS). This is typically specified in CreateDataAgentSession.
 	//
 	// example:
 	//
 	// ay***1Te
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// The encryption type for storing artifacts in OSS (both built-in and user-specified).
+	// The encryption type used to store artifacts in OSS (including built-in and user-specified OSS).
 	//
 	// example:
 	//
 	// null
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The list of knowledge base IDs for the current session.
+	// The list of knowledge base IDs for this session.
 	KbUuidList []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
 	// The language. Valid values:
 	//
@@ -727,11 +800,11 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// The mode. Valid values:
 	//
-	// - **ASK_DATA**: The ask-data mode.
+	//  - **ASK_DATA**: Ask data mode.
 	//
-	// - **ANALYSIS**: The analysis mode.
+	//  - **ANALYSIS**: Analysis mode.
 	//
-	// - **INSIGHT**: The insight mode.
+	//  - **INSIGHT**: Insight mode.
 	//
 	// example:
 	//
@@ -749,7 +822,9 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// ""
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	// The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+	// The name of the user OSS bucket.
+	//
+	// - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
 	//
 	// example:
 	//

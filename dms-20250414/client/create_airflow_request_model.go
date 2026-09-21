@@ -60,13 +60,13 @@ type CreateAirflowRequest struct {
 	//
 	// testairflow
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
-	// The Airflow version. Supported versions: 2.10 and 3.1.
+	// The Airflow version. Valid values: "3.2.2", "3.1.0", "2.10.4", and "3.0.6".
 	//
 	// example:
 	//
-	// 3.1
+	// 3.2.2
 	AirflowVersion *string `json:"AirflowVersion,omitempty" xml:"AirflowVersion,omitempty"`
-	// The compute specifications for the Airflow instance. Valid values: **SMALL**, **MEDIUM**, **LARGE**, **XLARGE**, or **X2LARGE**.
+	// The specification of the Airflow instance. Valid values: **SMALL**, **MEDIUM**, **LARGE**, **XLARGE**, and **X2LARGE**.
 	//
 	// This parameter is required.
 	//
@@ -74,19 +74,19 @@ type CreateAirflowRequest struct {
 	//
 	// SMALL
 	AppSpec *string `json:"AppSpec,omitempty" xml:"AppSpec,omitempty"`
-	// A client token to ensure request idempotence.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// token-****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The path to the DAG directory for Airflow to scan.
+	// The DAG directory scanned by Airflow.
 	//
 	// example:
 	//
 	// default/dags
 	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
-	// A list of data mount configurations.
+	// The list of data mount information.
 	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
 	// The description of the Airflow instance.
 	//
@@ -94,9 +94,9 @@ type CreateAirflowRequest struct {
 	//
 	// order scheduler
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable worker elasticity.
+	// Specifies whether to enable Worker elasticity.
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
-	// The graceful shutdown timeout for workers, in seconds.
+	// The timeout period for the Worker to gracefully shut down.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreateAirflowRequest struct {
 	//
 	// oss-test
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The OSS path for log storage.
+	// The OSS path for storing logs.
 	//
 	// This parameter is required.
 	//
@@ -118,19 +118,19 @@ type CreateAirflowRequest struct {
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// The path to the plugin directory for the Airflow instance to scan.
+	// The plugin directory scanned by the Airflow instance.
 	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
-	// The path to the Python requirements file.
+	// The path of the package installation file.
 	//
 	// example:
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// This parameter is required.
 	//
@@ -138,13 +138,13 @@ type CreateAirflowRequest struct {
 	//
 	// sg-bp108t8ldzeyk1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The path to the startup script in the Airflow container.
+	// The startup script of the Airflow container.
 	//
 	// example:
 	//
 	// default/startup.sh
 	StartupFile *string `json:"StartupFile,omitempty" xml:"StartupFile,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// This parameter is required.
 	//
@@ -152,7 +152,7 @@ type CreateAirflowRequest struct {
 	//
 	// vsw-8vbaf073jawozfp****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// This parameter is required.
 	//
@@ -160,7 +160,7 @@ type CreateAirflowRequest struct {
 	//
 	// vpc-uf63r6coyiw9o5****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The number of elastic worker nodes.
+	// The number of extended Worker node replicas.
 	//
 	// This parameter is required.
 	//
@@ -168,7 +168,7 @@ type CreateAirflowRequest struct {
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
-	// The ID of the DMS workspace.
+	// The ID of the Data Management workspace.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +176,7 @@ type CreateAirflowRequest struct {
 	//
 	// 8630242382****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The ID of the zone where the instance will be created.
+	// The zone ID within the region.
 	//
 	// example:
 	//
