@@ -26,13 +26,22 @@ type iPublicTemplateRuntimeConfig interface {
 }
 
 type PublicTemplateRuntimeConfig struct {
-	Cpu            *float32                     `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	DiskSize       *int32                       `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	InternetAccess *bool                        `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *PublicTemplateLogConfig     `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	MemorySize     *int32                       `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	SandboxConfig  *PublicTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	VpcConfig      *PublicTemplateVPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// example:
+	//
+	// 2
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// 10240
+	DiskSize       *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	InternetAccess *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	LogConfig      *PublicTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// example:
+	//
+	// 2048
+	MemorySize    *int32                       `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	SandboxConfig *PublicTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
+	VpcConfig     *PublicTemplateVPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s PublicTemplateRuntimeConfig) String() string {

@@ -44,18 +44,48 @@ type iE2BVolume interface {
 type E2BVolume struct {
   AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
   AgenticFSVolumeConfig *AgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty"`
+  // example:
+  // 
+  // 2026-09-07T02:12:36.531000Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
   JuiceFSVolumeConfig *JuiceFSVolumeConfig `json:"juiceFSVolumeConfig,omitempty" xml:"juiceFSVolumeConfig,omitempty"`
   MountConfig *VolumeMountConfig `json:"mountConfig,omitempty" xml:"mountConfig,omitempty"`
   OssVolumeConfig *OSSVolumeConfig `json:"ossVolumeConfig,omitempty" xml:"ossVolumeConfig,omitempty"`
+  // example:
+  // 
+  // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // example:
+  // 
+  // AVAILABLE
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // example:
+  // 
+  // 无
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+  // example:
+  // 
+  // OSS
   StorageClass *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+  // example:
+  // 
+  // 9f5a1fe9-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // example:
+  // 
+  // 2026-09-07T03:48:05.274000Z
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+  // example:
+  // 
+  // 2000****
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
+  // example:
+  // 
+  // 25878d34-****
   VolumeID *string `json:"volumeID,omitempty" xml:"volumeID,omitempty"`
+  // example:
+  // 
+  // workspace
   VolumeName *string `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
 }
 

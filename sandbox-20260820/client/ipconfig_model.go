@@ -16,8 +16,14 @@ type iIPConfig interface {
 }
 
 type IPConfig struct {
+	// example:
+	//
+	// 办公网出口地址
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	IpAddress   *string `json:"ipAddress,omitempty" xml:"ipAddress,omitempty"`
+	// example:
+	//
+	// 203.0.113.25/32
+	IpAddress *string `json:"ipAddress,omitempty" xml:"ipAddress,omitempty"`
 }
 
 func (s IPConfig) String() string {

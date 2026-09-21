@@ -16,8 +16,18 @@ type iLogConfiguration interface {
 }
 
 type LogConfiguration struct {
+	// The name of the Simple Log Service Logstore that receives sandbox runtime logs.
+	//
+	// example:
+	//
+	// sandbox-runtime
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the Simple Log Service project that receives sandbox runtime logs.
+	//
+	// example:
+	//
+	// sandbox-log-cn-hangzhou
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s LogConfiguration) String() string {

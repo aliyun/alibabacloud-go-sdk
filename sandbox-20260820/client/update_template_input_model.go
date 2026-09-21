@@ -23,7 +23,10 @@ type UpdateTemplateInput struct {
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
 	LogConfiguration       *LogConfiguration       `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	NetworkConfiguration   *NetworkConfiguration   `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	TeamID                 *string                 `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// 5f4a2c18-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s UpdateTemplateInput) String() string {

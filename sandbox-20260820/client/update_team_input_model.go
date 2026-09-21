@@ -20,10 +20,22 @@ type iUpdateTeamInput interface {
 }
 
 type UpdateTeamInput struct {
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	Plan            *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// example:
+	//
+	// 算法团队的生产沙箱环境
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// pro
+	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// example:
+	//
+	// rg-****
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	TeamName        *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// example:
+	//
+	// sandbox-prod
+	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
 }
 
 func (s UpdateTeamInput) String() string {

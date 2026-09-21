@@ -17,7 +17,10 @@ type iCreateTemplateStep interface {
 
 type CreateTemplateStep struct {
 	Args []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
-	Type *string   `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// RUN
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateTemplateStep) String() string {

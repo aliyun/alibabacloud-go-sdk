@@ -26,13 +26,31 @@ type iPublicTemplateSandboxConfig interface {
 }
 
 type PublicTemplateSandboxConfig struct {
-	AcrInstanceId  *string                       `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Generation     *int32                        `json:"generation,omitempty" xml:"generation,omitempty"`
-	Image          *string                       `json:"image,omitempty" xml:"image,omitempty"`
-	OsType         *string                       `json:"osType,omitempty" xml:"osType,omitempty"`
+	// example:
+	//
+	// cri-****
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/sandbox-demo/python:3.12
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// example:
+	//
+	// linux-amd64
+	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// example:
+	//
+	// curl -sf http://127.0.0.1:49983/health
 	ReadyCommand   *string                       `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
 	RegistryConfig *PublicTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	StartCommand   *string                       `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	// example:
+	//
+	// /usr/local/bin/start.sh
+	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
 }
 
 func (s PublicTemplateSandboxConfig) String() string {

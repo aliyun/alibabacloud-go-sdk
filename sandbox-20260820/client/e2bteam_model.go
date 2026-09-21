@@ -33,14 +33,38 @@ type iE2BTeam interface {
 
 type E2BTeam struct {
   AllowUpdateTeamName *bool `json:"allowUpdateTeamName,omitempty" xml:"allowUpdateTeamName,omitempty"`
+  // example:
+  // 
+  // 2026-08-20T08:30:00Z
   CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+  // example:
+  // 
+  // 算法团队的沙箱环境
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // example:
+  // 
+  // std
   Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
   ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+  // example:
+  // 
+  // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // example:
+  // 
+  // active
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // example:
+  // 
+  // 5f4a2c18-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // example:
+  // 
+  // sandbox-dev
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // example:
+  // 
+  // 9c1d4e72-****
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 

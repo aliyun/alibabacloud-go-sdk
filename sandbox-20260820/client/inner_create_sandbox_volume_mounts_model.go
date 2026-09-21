@@ -78,9 +78,15 @@ func (s *InnerCreateSandboxVolumeMounts) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsAgenticFs struct {
+	// example:
+	//
+	// 1000
 	GroupID     *int32                                                `json:"groupID,omitempty" xml:"groupID,omitempty"`
 	MountPoints []*InnerCreateSandboxVolumeMountsAgenticFsMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
-	UserID      *int32                                                `json:"userID,omitempty" xml:"userID,omitempty"`
+	// example:
+	//
+	// 1000
+	UserID *int32 `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
 func (s InnerCreateSandboxVolumeMountsAgenticFs) String() string {
@@ -132,7 +138,13 @@ func (s *InnerCreateSandboxVolumeMountsAgenticFs) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsAgenticFsMountPoints struct {
-	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// /mnt/agenticfs
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// ap-xxxx.03204sl2qjiax4ocdt2-ljs60.cn-shanghai.nas.aliyuncs.com
 	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
 }
 
@@ -201,7 +213,13 @@ func (s *InnerCreateSandboxVolumeMountsNamed) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsNamedMountPoints struct {
-	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// /mnt/named
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// workspace
 	VolumeName *string `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
 }
 
@@ -270,11 +288,26 @@ func (s *InnerCreateSandboxVolumeMountsOss) Validate() error {
 }
 
 type InnerCreateSandboxVolumeMountsOssMountPoints struct {
+	// example:
+	//
+	// oss-bucket-test
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// example:
+	//
+	// /
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// example:
+	//
+	// https://oss-cn-shenzhen-internal.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// example:
+	//
+	// /mnt/oss
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s InnerCreateSandboxVolumeMountsOssMountPoints) String() string {

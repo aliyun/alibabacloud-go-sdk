@@ -66,31 +66,94 @@ type iE2BSandbox interface {
 }
 
 type E2BSandbox struct {
+  // example:
+  // 
+  // sbx-xxxx.ap-southeast-1.sandbox.aliyun.com
   AccessEndpoint *string `json:"accessEndpoint,omitempty" xml:"accessEndpoint,omitempty"`
   AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+  // example:
+  // 
+  // 2
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
+  // example:
+  // 
+  // 10240
   DiskSizeMB *int32 `json:"diskSizeMB,omitempty" xml:"diskSizeMB,omitempty"`
+  // example:
+  // 
+  // ap-southeast-1.sandbox.aliyun.com
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+  // example:
+  // 
+  // 2026-09-04T02:03:43.826Z
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
   EnvVars map[string]*string `json:"envVars,omitempty" xml:"envVars,omitempty"`
+  // example:
+  // 
+  // 4b1e9d07-****
   EnvdAccessToken *string `json:"envdAccessToken,omitempty" xml:"envdAccessToken,omitempty"`
+  // example:
+  // 
+  // template-d391c80b5d1527de
   FcFunctionName *string `json:"fcFunctionName,omitempty" xml:"fcFunctionName,omitempty"`
+  // example:
+  // 
+  // c-6a9d1501-133e6f48-b3f07782dd47
   FcInstanceID *string `json:"fcInstanceID,omitempty" xml:"fcInstanceID,omitempty"`
+  // example:
+  // 
+  // 3a7ecd09-****
   FcSessionID *string `json:"fcSessionID,omitempty" xml:"fcSessionID,omitempty"`
+  // example:
+  // 
+  // 2
   Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+  // example:
+  // 
+  // 2
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
   Network *E2BNetwork `json:"network,omitempty" xml:"network,omitempty"`
+  // example:
+  // 
+  // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
   Runtime *InnerSandboxRuntimeConfig `json:"runtime,omitempty" xml:"runtime,omitempty"`
+  // example:
+  // 
+  // sbx-xxxx
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
+  // example:
+  // 
+  // 2026-09-04T02:02:43.826Z
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+  // example:
+  // 
+  // running
   State *string `json:"state,omitempty" xml:"state,omitempty"`
+  // example:
+  // 
+  // eea033af-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // example:
+  // 
+  // default
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // example:
+  // 
+  // eco
   TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+  // example:
+  // 
+  // v9vjyzw64bsu83vw0dgs
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+  // example:
+  // 
+  // base
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+  // example:
+  // 
+  // 2000****
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
   VolumeMounts *InnerSandboxVolumeMount `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty"`
 }

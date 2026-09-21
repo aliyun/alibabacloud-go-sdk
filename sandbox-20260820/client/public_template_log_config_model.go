@@ -16,8 +16,14 @@ type iPublicTemplateLogConfig interface {
 }
 
 type PublicTemplateLogConfig struct {
+	// example:
+	//
+	// sandbox-runtime
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// sandbox-log-cn-hangzhou
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s PublicTemplateLogConfig) String() string {

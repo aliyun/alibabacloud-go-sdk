@@ -16,7 +16,13 @@ type iPublicUpdateTemplateRegistryAuthConfig interface {
 }
 
 type PublicUpdateTemplateRegistryAuthConfig struct {
+	// example:
+	//
+	// ******
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// my-user
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 

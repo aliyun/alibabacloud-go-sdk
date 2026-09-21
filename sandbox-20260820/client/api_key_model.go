@@ -46,23 +46,68 @@ type iApiKey interface {
 }
 
 type ApiKey struct {
-	ApiKeyID        *string     `json:"apiKeyID,omitempty" xml:"apiKeyID,omitempty"`
-	ApiKeyMask      *string     `json:"apiKeyMask,omitempty" xml:"apiKeyMask,omitempty"`
-	ApiKeyName      *string     `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	ApiKeyValue     *string     `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
-	CreatedTime     *string     `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	ExpireTime      *string     `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	IpBlacklist     []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
-	IpWhitelist     []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
-	LastUsedTime    *string     `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	ResourceGroupID *string     `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	Source          *string     `json:"source,omitempty" xml:"source,omitempty"`
-	Status          *string     `json:"status,omitempty" xml:"status,omitempty"`
-	TeamID          *string     `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	TeamName        *string     `json:"teamName,omitempty" xml:"teamName,omitempty"`
-	TeamPlan        *string     `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
-	UserID          *string     `json:"userID,omitempty" xml:"userID,omitempty"`
-	Username        *string     `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// a1f8c3d6-****
+	ApiKeyID *string `json:"apiKeyID,omitempty" xml:"apiKeyID,omitempty"`
+	// example:
+	//
+	// e2b_3f9a****b915
+	ApiKeyMask *string `json:"apiKeyMask,omitempty" xml:"apiKeyMask,omitempty"`
+	// example:
+	//
+	// ci-pipeline-key
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// example:
+	//
+	// e2b_****
+	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	// example:
+	//
+	// 2026-08-20T08:30:00Z
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// 2099-12-31T23:59:59Z
+	ExpireTime  *string     `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2026-09-10T14:22:07Z
+	LastUsedTime *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	// example:
+	//
+	// rg-****
+	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	// example:
+	//
+	// generated
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 5f4a2c18-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// sandbox-dev
+	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// example:
+	//
+	// std
+	TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+	// example:
+	//
+	// 9c1d4e72-****
+	UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
+	// example:
+	//
+	// sandbox-admin
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ApiKey) String() string {

@@ -44,21 +44,66 @@ type iE2BListedSandbox interface {
 }
 
 type E2BListedSandbox struct {
+  // example:
+  // 
+  // 2
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
+  // example:
+  // 
+  // 10240
   DiskSizeMB *int32 `json:"diskSizeMB,omitempty" xml:"diskSizeMB,omitempty"`
+  // example:
+  // 
+  // 2026-09-03T02:06:37.932Z
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
+  // example:
+  // 
+  // 2
   Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+  // example:
+  // 
+  // 2
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+  // example:
+  // 
+  // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // example:
+  // 
+  // sbx-xxxx
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
+  // example:
+  // 
+  // 2026-09-03T02:05:37.932Z
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+  // example:
+  // 
+  // running
   State *string `json:"state,omitempty" xml:"state,omitempty"`
+  // example:
+  // 
+  // 9f5a1fe9-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // example:
+  // 
+  // default
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // example:
+  // 
+  // eco
   TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+  // example:
+  // 
+  // f1l97phhfw6ox18iwcfk
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+  // example:
+  // 
+  // base
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+  // example:
+  // 
+  // 2000****
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 

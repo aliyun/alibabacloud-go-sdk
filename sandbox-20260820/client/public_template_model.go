@@ -28,14 +28,32 @@ type iPublicTemplate interface {
 }
 
 type PublicTemplate struct {
-	CreatedTime     *string                      `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Name            *string                      `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2026-08-20T08:30:00Z
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// python-data-analysis
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// rg-****
 	ResourceGroupID *string                      `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
 	RuntimeConfig   *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
 	Status          *PublicTemplateStatus        `json:"status,omitempty" xml:"status,omitempty"`
-	TeamID          *string                      `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	TeamName        *string                      `json:"teamName,omitempty" xml:"teamName,omitempty"`
-	TemplateID      *string                      `json:"templateID,omitempty" xml:"templateID,omitempty"`
+	// example:
+	//
+	// 5f4a2c18-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// sandbox-dev
+	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// example:
+	//
+	// tm-8f3a2c7b5e14d806
+	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
 }
 
 func (s PublicTemplate) String() string {

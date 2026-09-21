@@ -16,8 +16,11 @@ type iUpdateTemplateRequest interface {
 }
 
 type UpdateTemplateRequest struct {
-	Body   *PublicUpdateTemplateInput `json:"body,omitempty" xml:"body,omitempty"`
-	TeamID *string                    `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	Body *PublicUpdateTemplateInput `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// team-a1b2c3d4e5f6
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s UpdateTemplateRequest) String() string {

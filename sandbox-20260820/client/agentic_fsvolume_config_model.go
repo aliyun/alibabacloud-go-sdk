@@ -24,12 +24,42 @@ type iAgenticFSVolumeConfig interface {
 }
 
 type AgenticFSVolumeConfig struct {
-	AccessPointID  *string `json:"accessPointID,omitempty" xml:"accessPointID,omitempty"`
+	// The access point ID.
+	//
+	// example:
+	//
+	// ap-xxxx
+	AccessPointID *string `json:"accessPointID,omitempty" xml:"accessPointID,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// agentic-xxxx
 	AgenticSpaceID *string `json:"agenticSpaceID,omitempty" xml:"agenticSpaceID,omitempty"`
-	FileSystemID   *string `json:"fileSystemID,omitempty" xml:"fileSystemID,omitempty"`
-	GroupID        *int32  `json:"groupID,omitempty" xml:"groupID,omitempty"`
-	ServerAddr     *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
-	UserID         *int32  `json:"userID,omitempty" xml:"userID,omitempty"`
+	// The file system ID.
+	//
+	// example:
+	//
+	// 03204sl2qjiax4ocdt2
+	FileSystemID *string `json:"fileSystemID,omitempty" xml:"fileSystemID,omitempty"`
+	// The group ID for local mounting.
+	//
+	// example:
+	//
+	// 1000
+	GroupID *int32 `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The AgenticFS access point address.
+	//
+	// example:
+	//
+	// ap-xxxx.03204sl2qjiax4ocdt2-ljs60.cn-shanghai.nas.aliyuncs.com
+	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
+	// The user ID for local mounting.
+	//
+	// example:
+	//
+	// 1000
+	UserID *int32 `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
 func (s AgenticFSVolumeConfig) String() string {

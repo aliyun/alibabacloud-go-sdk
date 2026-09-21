@@ -20,10 +20,19 @@ type iCreateTemplateVPCConfig interface {
 }
 
 type CreateTemplateVPCConfig struct {
-	Role            *string   `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// acs:ram::1234567890123456:role/aliyunfcdefaultrole
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// sg-****
 	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// vpc-****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s CreateTemplateVPCConfig) String() string {

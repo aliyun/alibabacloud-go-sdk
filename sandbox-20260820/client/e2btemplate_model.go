@@ -50,24 +50,63 @@ type iE2BTemplate interface {
 }
 
 type E2BTemplate struct {
+  // example:
+  // 
+  // ready
   BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
+  // example:
+  // 
+  // custom
   Category *string `json:"category,omitempty" xml:"category,omitempty"`
   ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
+  // example:
+  // 
+  // 2
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
+  // example:
+  // 
+  // 2026-08-20T08:30:00Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
   LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+  // example:
+  // 
+  // 2048
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Names []*string `json:"names,omitempty" xml:"names,omitempty" type:"Repeated"`
   NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
   Public *bool `json:"public,omitempty" xml:"public,omitempty"`
+  // example:
+  // 
+  // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // example:
+  // 
+  // 拉取源镜像失败：认证信息无效
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
   Tags []*E2BTemplateTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // 5f4a2c18-****
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  // example:
+  // 
+  // sandbox-dev
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  // example:
+  // 
+  // std
   TeamPlan *string `json:"teamPlan,omitempty" xml:"teamPlan,omitempty"`
+  // example:
+  // 
+  // tm-8f3a2c7b5e14d806
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+  // example:
+  // 
+  // 2026-08-21T09:15:30Z
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+  // example:
+  // 
+  // 9c1d4e72-****
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 

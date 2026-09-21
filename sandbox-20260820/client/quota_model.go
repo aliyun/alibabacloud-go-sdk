@@ -11,6 +11,8 @@ type iQuota interface {
 	GoString() string
 	SetCpuCores(v int32) *Quota
 	GetCpuCores() *int32
+	SetInstanceCount(v int32) *Quota
+	GetInstanceCount() *int32
 	SetMemoryGB(v int32) *Quota
 	GetMemoryGB() *int32
 	SetTagValue(v string) *Quota
@@ -18,8 +20,21 @@ type iQuota interface {
 }
 
 type Quota struct {
-	CpuCores *int32  `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	MemoryGB *int32  `json:"memoryGB,omitempty" xml:"memoryGB,omitempty"`
+	// example:
+	//
+	// 100
+	CpuCores *int32 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	// example:
+	//
+	// 100
+	InstanceCount *int32 `json:"instanceCount,omitempty" xml:"instanceCount,omitempty"`
+	// example:
+	//
+	// 200
+	MemoryGB *int32 `json:"memoryGB,omitempty" xml:"memoryGB,omitempty"`
+	// example:
+	//
+	// 7696f4cf-****
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -35,6 +50,10 @@ func (s *Quota) GetCpuCores() *int32 {
 	return s.CpuCores
 }
 
+func (s *Quota) GetInstanceCount() *int32 {
+	return s.InstanceCount
+}
+
 func (s *Quota) GetMemoryGB() *int32 {
 	return s.MemoryGB
 }
@@ -45,6 +64,11 @@ func (s *Quota) GetTagValue() *string {
 
 func (s *Quota) SetCpuCores(v int32) *Quota {
 	s.CpuCores = &v
+	return s
+}
+
+func (s *Quota) SetInstanceCount(v int32) *Quota {
+	s.InstanceCount = &v
 	return s
 }
 

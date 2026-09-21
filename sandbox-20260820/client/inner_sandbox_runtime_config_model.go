@@ -16,7 +16,13 @@ type iInnerSandboxRuntimeConfig interface {
 }
 
 type InnerSandboxRuntimeConfig struct {
-	Role      *string                             `json:"role,omitempty" xml:"role,omitempty"`
+	// The RAM role that grants the required permissions to the sandbox.
+	//
+	// example:
+	//
+	// acs:ram::xxxx:role/xxx_role
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The VPC configuration.
 	VpcConfig *InnerSandboxRuntimeConfigVpcConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty" type:"Struct"`
 }
 
@@ -56,9 +62,20 @@ func (s *InnerSandboxRuntimeConfig) Validate() error {
 }
 
 type InnerSandboxRuntimeConfigVpcConfig struct {
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-xxxx
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The vSwitch IDs.
+	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-xxxx
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s InnerSandboxRuntimeConfigVpcConfig) String() string {

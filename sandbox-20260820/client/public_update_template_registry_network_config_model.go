@@ -18,9 +18,18 @@ type iPublicUpdateTemplateRegistryNetworkConfig interface {
 }
 
 type PublicUpdateTemplateRegistryNetworkConfig struct {
+	// example:
+	//
+	// sg-bp1abc123
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchId       *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	VpcId           *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// vsw-bp1abc123
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp1abc123
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s PublicUpdateTemplateRegistryNetworkConfig) String() string {

@@ -24,12 +24,24 @@ type iCustomDomainResp interface {
 }
 
 type CustomDomainResp struct {
-	CertConfig  *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	CreatedAt   *int64      `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
-	DomainName  *string     `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	TlsConfig   *TLSConfig  `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	UpdatedAt   *int64      `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// example:
+	//
+	// 1755676800000
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 沙箱预览环境入口域名
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// sandbox.example.com
+	DomainName *string    `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	TlsConfig  *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	// example:
+	//
+	// 1755763200000
+	UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s CustomDomainResp) String() string {

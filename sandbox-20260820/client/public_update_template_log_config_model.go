@@ -16,8 +16,14 @@ type iPublicUpdateTemplateLogConfig interface {
 }
 
 type PublicUpdateTemplateLogConfig struct {
+	// example:
+	//
+	// my-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// my-sls-project
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s PublicUpdateTemplateLogConfig) String() string {

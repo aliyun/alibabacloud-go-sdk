@@ -28,14 +28,35 @@ type iPublicUpdateTemplateSandboxConfig interface {
 }
 
 type PublicUpdateTemplateSandboxConfig struct {
-	AcrInstanceId  *string                             `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Generation     *int32                              `json:"generation,omitempty" xml:"generation,omitempty"`
-	Image          *string                             `json:"image,omitempty" xml:"image,omitempty"`
-	OsType         *string                             `json:"osType,omitempty" xml:"osType,omitempty"`
+	// example:
+	//
+	// cri-abc123
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/my/ns:v1
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// example:
+	//
+	// linux
+	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// example:
+	//
+	// /ready
 	ReadyCommand   *string                             `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
 	RegistryConfig *PublicUpdateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	RegistryType   *string                             `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	StartCommand   *string                             `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	// example:
+	//
+	// acr
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// example:
+	//
+	// /start-coroutines.sh
+	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
 }
 
 func (s PublicUpdateTemplateSandboxConfig) String() string {

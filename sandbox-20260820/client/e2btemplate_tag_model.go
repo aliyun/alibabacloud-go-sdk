@@ -18,8 +18,17 @@ type iE2BTemplateTag interface {
 }
 
 type E2BTemplateTag struct {
+  // example:
+  // 
+  // b7e21c05-****
   BuildID *string `json:"buildID,omitempty" xml:"buildID,omitempty"`
+  // example:
+  // 
+  // 2026-08-20T08:35:12Z
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  // example:
+  // 
+  // latest
   Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

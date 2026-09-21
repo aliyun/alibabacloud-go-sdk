@@ -22,11 +22,23 @@ type iJuiceFSVolumeConfig interface {
 }
 
 type JuiceFSVolumeConfig struct {
-	Args       []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
-	BaseURL    *string   `json:"baseURL,omitempty" xml:"baseURL,omitempty"`
-	RemoteDir  *string   `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
-	Token      *string   `json:"token,omitempty" xml:"token,omitempty"`
-	VolumeName *string   `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
+	Args []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://127.0.0.1:8080
+	BaseURL *string `json:"baseURL,omitempty" xml:"baseURL,omitempty"`
+	// example:
+	//
+	// /sandbox/workspace
+	RemoteDir *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// example:
+	//
+	// data
+	VolumeName *string `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
 }
 
 func (s JuiceFSVolumeConfig) String() string {

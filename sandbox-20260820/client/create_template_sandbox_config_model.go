@@ -30,15 +30,36 @@ type iCreateTemplateSandboxConfig interface {
 }
 
 type CreateTemplateSandboxConfig struct {
-	AcrInstanceId  *string                       `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Generation     *int32                        `json:"generation,omitempty" xml:"generation,omitempty"`
-	Image          *string                       `json:"image,omitempty" xml:"image,omitempty"`
-	OsType         *string                       `json:"osType,omitempty" xml:"osType,omitempty"`
+	// example:
+	//
+	// cri-****
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/sandbox-demo/python:3.12
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// example:
+	//
+	// linux-amd64
+	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// example:
+	//
+	// curl -sf http://127.0.0.1:49983/health
 	ReadyCommand   *string                       `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
 	RegistryConfig *CreateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	RegistryType   *string                       `json:"registryType,omitempty" xml:"registryType,omitempty"`
-	StartCommand   *string                       `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
-	Steps          []*CreateTemplateStep         `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// acree
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// example:
+	//
+	// /usr/local/bin/start.sh
+	StartCommand *string               `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	Steps        []*CreateTemplateStep `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 }
 
 func (s CreateTemplateSandboxConfig) String() string {

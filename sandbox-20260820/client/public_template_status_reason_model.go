@@ -16,8 +16,14 @@ type iPublicTemplateStatusReason interface {
 }
 
 type PublicTemplateStatusReason struct {
+	// example:
+	//
+	// 拉取源镜像失败：认证信息无效
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Step    *string `json:"step,omitempty" xml:"step,omitempty"`
+	// example:
+	//
+	// build-context
+	Step *string `json:"step,omitempty" xml:"step,omitempty"`
 }
 
 func (s PublicTemplateStatusReason) String() string {

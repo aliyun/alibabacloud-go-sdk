@@ -20,10 +20,19 @@ type iOSSVolumeConfig interface {
 }
 
 type OSSVolumeConfig struct {
+	// example:
+	//
+	// sandbox-shared-data
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// example:
+	//
+	// /workspace/
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// example:
+	//
+	// oss-cn-hangzhou-internal.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	ReadOnly *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s OSSVolumeConfig) String() string {

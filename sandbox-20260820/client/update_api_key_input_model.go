@@ -22,11 +22,20 @@ type iUpdateApiKeyInput interface {
 }
 
 type UpdateApiKeyInput struct {
-	ApiKeyName  *string     `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// example:
+	//
+	// ci-pipeline-key-v2
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// example:
+	//
+	// 2099-12-31T23:59:59Z
 	ExpireTime  *string     `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
-	Status      *string     `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// inactive
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s UpdateApiKeyInput) String() string {

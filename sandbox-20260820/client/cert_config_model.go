@@ -18,9 +18,32 @@ type iCertConfig interface {
 }
 
 type CertConfig struct {
-	CertName    *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// The certificate name, which is used to identify the certificate in the console.
+	//
+	// example:
+	//
+	// sandbox-example-com
+	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// The certificate public key content in PEM format, including the complete certificate chain.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIIDdzCCAl+gAwIBAgIEbGVzc29u
+	//
+	// -----END CERTIFICATE-----
 	Certificate *string `json:"certificate,omitempty" xml:"certificate,omitempty"`
-	PrivateKey  *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
+	// The certificate private key content in PEM format. The private key is encrypted and stored on the server side, and is not returned in plaintext when queried.
+	//
+	// example:
+	//
+	// -----BEGIN RSA PRIVATE KEY-----
+	//
+	// ****
+	//
+	// -----END RSA PRIVATE KEY-----
+	PrivateKey *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
 }
 
 func (s CertConfig) String() string {

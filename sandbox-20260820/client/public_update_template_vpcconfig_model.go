@@ -20,10 +20,19 @@ type iPublicUpdateTemplateVPCConfig interface {
 }
 
 type PublicUpdateTemplateVPCConfig struct {
-	Role            *string   `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// acs:ram::123456789012:role/sandbox-vpc-role
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// sg-bp1abc123
 	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// vpc-bp1abc123
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s PublicUpdateTemplateVPCConfig) String() string {

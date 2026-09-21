@@ -18,9 +18,24 @@ type iPublicTemplateRegistryNetworkConfig interface {
 }
 
 type PublicTemplateRegistryNetworkConfig struct {
+	// The ID of the security group used to access the image repository.
+	//
+	// example:
+	//
+	// sg-****
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchId       *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	VpcId           *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The ID of the vSwitch used to access the image repository.
+	//
+	// example:
+	//
+	// vsw-****
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the VPC used to access the image repository.
+	//
+	// example:
+	//
+	// vpc-****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s PublicTemplateRegistryNetworkConfig) String() string {

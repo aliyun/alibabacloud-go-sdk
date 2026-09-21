@@ -36,18 +36,39 @@ type iInnerCreateSandboxInput interface {
 }
 
 type InnerCreateSandboxInput struct {
-	AllowInternetAccess *bool                           `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
-	AutoPause           *bool                           `json:"autoPause,omitempty" xml:"autoPause,omitempty"`
-	AutoResume          *bool                           `json:"autoResume,omitempty" xml:"autoResume,omitempty"`
-	EnvVars             map[string]*string              `json:"envVars,omitempty" xml:"envVars,omitempty"`
-	Metadata            map[string]*string              `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	Network             *E2BNetwork                     `json:"network,omitempty" xml:"network,omitempty"`
-	Runtime             *InnerSandboxRuntimeConfig      `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	Secure              *bool                           `json:"secure,omitempty" xml:"secure,omitempty"`
-	TeamID              *string                         `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	TemplateID          *string                         `json:"templateID,omitempty" xml:"templateID,omitempty"`
-	Timeout             *int32                          `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	VolumeMounts        *InnerCreateSandboxVolumeMounts `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty"`
+	// example:
+	//
+	// true
+	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
+	// example:
+	//
+	// true
+	AutoPause *bool `json:"autoPause,omitempty" xml:"autoPause,omitempty"`
+	// example:
+	//
+	// true
+	AutoResume *bool                      `json:"autoResume,omitempty" xml:"autoResume,omitempty"`
+	EnvVars    map[string]*string         `json:"envVars,omitempty" xml:"envVars,omitempty"`
+	Metadata   map[string]*string         `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Network    *E2BNetwork                `json:"network,omitempty" xml:"network,omitempty"`
+	Runtime    *InnerSandboxRuntimeConfig `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// example:
+	//
+	// true
+	Secure *bool `json:"secure,omitempty" xml:"secure,omitempty"`
+	// example:
+	//
+	// 76eeecaa-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// v9vjyzw64bsu83vw0dgs
+	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+	// example:
+	//
+	// 180
+	Timeout      *int32                          `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	VolumeMounts *InnerCreateSandboxVolumeMounts `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty"`
 }
 
 func (s InnerCreateSandboxInput) String() string {

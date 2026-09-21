@@ -23,6 +23,9 @@ type E2BNetwork struct {
   AllowOut []*string `json:"allowOut,omitempty" xml:"allowOut,omitempty" type:"Repeated"`
   AllowPublicTraffic *bool `json:"allowPublicTraffic,omitempty" xml:"allowPublicTraffic,omitempty"`
   DenyOut []*string `json:"denyOut,omitempty" xml:"denyOut,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // sandbox.example.com
   MaskRequestHost *string `json:"maskRequestHost,omitempty" xml:"maskRequestHost,omitempty"`
 }
 

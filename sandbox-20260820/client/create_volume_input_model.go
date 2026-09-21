@@ -26,13 +26,28 @@ type iCreateVolumeInput interface {
 }
 
 type CreateVolumeInput struct {
-	AgenticBucketVolumeConfig *AgenticBucketVolumeConfig              `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
-	AgenticFSVolumeConfig     *CreateVolumeInputAgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty" type:"Struct"`
-	JuiceFSVolumeConfig       *JuiceFSVolumeConfig                    `json:"juiceFSVolumeConfig,omitempty" xml:"juiceFSVolumeConfig,omitempty"`
-	MountConfig               *CreateVolumeInputMountConfig           `json:"mountConfig,omitempty" xml:"mountConfig,omitempty" type:"Struct"`
-	OssVolumeConfig           *OSSVolumeConfig                        `json:"ossVolumeConfig,omitempty" xml:"ossVolumeConfig,omitempty"`
-	TeamID                    *string                                 `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	VolumeName                *string                                 `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
+	// The AgenticBucket Volume configuration.
+	AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
+	// The AgenticFS Volume configuration.
+	AgenticFSVolumeConfig *CreateVolumeInputAgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty" type:"Struct"`
+	// The JuiceFS Volume configuration.
+	JuiceFSVolumeConfig *JuiceFSVolumeConfig `json:"juiceFSVolumeConfig,omitempty" xml:"juiceFSVolumeConfig,omitempty"`
+	// The mount configuration.
+	MountConfig *CreateVolumeInputMountConfig `json:"mountConfig,omitempty" xml:"mountConfig,omitempty" type:"Struct"`
+	// The OSS Volume configuration.
+	OssVolumeConfig *OSSVolumeConfig `json:"ossVolumeConfig,omitempty" xml:"ossVolumeConfig,omitempty"`
+	// The unique identifier of the team.
+	//
+	// example:
+	//
+	// 37ddc466-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The name, which must be unique within the team.
+	//
+	// example:
+	//
+	// workspace
+	VolumeName *string `json:"volumeName,omitempty" xml:"volumeName,omitempty"`
 }
 
 func (s CreateVolumeInput) String() string {
@@ -136,9 +151,24 @@ func (s *CreateVolumeInput) Validate() error {
 }
 
 type CreateVolumeInputAgenticFSVolumeConfig struct {
-	GroupID    *int32  `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The groupID of the local directory.
+	//
+	// example:
+	//
+	// 1000
+	GroupID *int32 `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// The Access Point endpoint address.
+	//
+	// example:
+	//
+	// ap-xxxx.xxxx-jnk89.cn-hangzhou.nas.aliyuncs.com:/
 	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
-	UserID     *int32  `json:"userID,omitempty" xml:"userID,omitempty"`
+	// The userID of the local directory.
+	//
+	// example:
+	//
+	// 1000
+	UserID *int32 `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
 func (s CreateVolumeInputAgenticFSVolumeConfig) String() string {
@@ -181,7 +211,13 @@ func (s *CreateVolumeInputAgenticFSVolumeConfig) Validate() error {
 }
 
 type CreateVolumeInputMountConfig struct {
-	Role      *string                                `json:"role,omitempty" xml:"role,omitempty"`
+	// The permission role.
+	//
+	// example:
+	//
+	// acs:ram::1118555931230119:role/aliyunfcdefaultrole
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The VPC configuration.
 	VpcConfig *CreateVolumeInputMountConfigVpcConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty" type:"Struct"`
 }
 
@@ -221,9 +257,20 @@ func (s *CreateVolumeInputMountConfig) Validate() error {
 }
 
 type CreateVolumeInputMountConfigVpcConfig struct {
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-xxxx
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The vSwitch IDs.
+	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s CreateVolumeInputMountConfigVpcConfig) String() string {

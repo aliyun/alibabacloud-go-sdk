@@ -20,10 +20,22 @@ type iCreateTeamInput interface {
 }
 
 type CreateTeamInput struct {
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	Plan            *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// example:
+	//
+	// 算法团队的沙箱环境
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// std
+	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	// example:
+	//
+	// rg-****
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	TeamName        *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// example:
+	//
+	// sandbox-dev
+	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
 }
 
 func (s CreateTeamInput) String() string {

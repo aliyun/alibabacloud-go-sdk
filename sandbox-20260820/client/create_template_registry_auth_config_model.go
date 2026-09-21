@@ -16,7 +16,13 @@ type iCreateTemplateRegistryAuthConfig interface {
 }
 
 type CreateTemplateRegistryAuthConfig struct {
+	// example:
+	//
+	// Passw0rd****
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// sandbox-puller
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 

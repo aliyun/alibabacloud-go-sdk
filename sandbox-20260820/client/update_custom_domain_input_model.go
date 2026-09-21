@@ -18,9 +18,12 @@ type iUpdateCustomDomainInput interface {
 }
 
 type UpdateCustomDomainInput struct {
-	CertConfig  *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	Description *string     `json:"description,omitempty" xml:"description,omitempty"`
-	TlsConfig   *TLSConfig  `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// example:
+	//
+	// 沙箱生产环境入口域名
+	Description *string    `json:"description,omitempty" xml:"description,omitempty"`
+	TlsConfig   *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s UpdateCustomDomainInput) String() string {

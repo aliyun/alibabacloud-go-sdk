@@ -20,9 +20,21 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
-	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message    *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// us7dxqaezw5uu7aa2cm5
 	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
 }
 

@@ -22,11 +22,20 @@ type iCreateTemplateCopyAction interface {
 }
 
 type CreateTemplateCopyAction struct {
-	AcrInstanceId  *string                       `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Enabled        *bool                         `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// cri-****
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	Enabled       *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/sandbox-demo/python:3.12-envd
 	Image          *string                       `json:"image,omitempty" xml:"image,omitempty"`
 	RegistryConfig *CreateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	RegistryType   *string                       `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// example:
+	//
+	// acree
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
 }
 
 func (s CreateTemplateCopyAction) String() string {

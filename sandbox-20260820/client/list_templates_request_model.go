@@ -18,9 +18,18 @@ type iListTemplatesRequest interface {
 }
 
 type ListTemplatesRequest struct {
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	TeamID     *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// cae5f900-8b1d-4c0e-9c2a-1a2b3c4d5e6f
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 13b721e6-8cc8-5df2-af13-80316f7508af
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {

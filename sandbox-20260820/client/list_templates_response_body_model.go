@@ -24,12 +24,27 @@ type iListTemplatesResponseBody interface {
 }
 
 type ListTemplatesResponseBody struct {
-	Code       *string           `json:"code,omitempty" xml:"code,omitempty"`
-	MaxResults *int32            `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Message    *string           `json:"message,omitempty" xml:"message,omitempty"`
-	NextToken  *string           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RequestId  *string           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Templates  []*PublicTemplate `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// cae5f900-8b1d-4c0e-9c2a-1a2b3c4d5e6f
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
+	RequestId *string           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Templates []*PublicTemplate `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
 }
 
 func (s ListTemplatesResponseBody) String() string {

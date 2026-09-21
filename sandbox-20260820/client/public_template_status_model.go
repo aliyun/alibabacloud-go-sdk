@@ -18,9 +18,15 @@ type iPublicTemplateStatus interface {
 }
 
 type PublicTemplateStatus struct {
+	// example:
+	//
+	// 2026-08-20T08:35:12Z
 	FinishedAt *string                     `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
 	Reason     *PublicTemplateStatusReason `json:"reason,omitempty" xml:"reason,omitempty"`
-	State      *string                     `json:"state,omitempty" xml:"state,omitempty"`
+	// example:
+	//
+	// ready
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s PublicTemplateStatus) String() string {

@@ -112,9 +112,18 @@ func (s *UpdateVolumeInput) Validate() error {
 }
 
 type UpdateVolumeInputAgenticFSVolumeConfig struct {
-	GroupID    *int32  `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// example:
+	//
+	// 1000
+	GroupID *int32 `json:"groupID,omitempty" xml:"groupID,omitempty"`
+	// example:
+	//
+	// ap-xxx.xxx-jnk89.cn-hangzhou.nas.aliyuncs.com:/
 	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
-	UserID     *int32  `json:"userID,omitempty" xml:"userID,omitempty"`
+	// example:
+	//
+	// 1000
+	UserID *int32 `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
 func (s UpdateVolumeInputAgenticFSVolumeConfig) String() string {
@@ -157,6 +166,9 @@ func (s *UpdateVolumeInputAgenticFSVolumeConfig) Validate() error {
 }
 
 type UpdateVolumeInputMountConfig struct {
+	// example:
+	//
+	// acs:ram::1338904783509062:role/aliyunfcdefaultrole
 	Role      *string                                `json:"role,omitempty" xml:"role,omitempty"`
 	VpcConfig *UpdateVolumeInputMountConfigVpcConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty" type:"Struct"`
 }
@@ -197,9 +209,15 @@ func (s *UpdateVolumeInputMountConfig) Validate() error {
 }
 
 type UpdateVolumeInputMountConfigVpcConfig struct {
+	// example:
+	//
+	// sg-xxxx
 	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// vpc-xxxx
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s UpdateVolumeInputMountConfigVpcConfig) String() string {

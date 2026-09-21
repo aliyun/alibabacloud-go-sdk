@@ -20,10 +20,16 @@ type iCreateTemplateInput interface {
 }
 
 type CreateTemplateInput struct {
-	BuildConfig   *CreateTemplateBuildConfig   `json:"buildConfig,omitempty" xml:"buildConfig,omitempty"`
+	BuildConfig *CreateTemplateBuildConfig `json:"buildConfig,omitempty" xml:"buildConfig,omitempty"`
+	// example:
+	//
+	// python-data-analysis
 	Name          *string                      `json:"name,omitempty" xml:"name,omitempty"`
 	RuntimeConfig *CreateTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
-	TeamID        *string                      `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// 5f4a2c18-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s CreateTemplateInput) String() string {

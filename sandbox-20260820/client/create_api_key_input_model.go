@@ -22,11 +22,28 @@ type iCreateApiKeyInput interface {
 }
 
 type CreateApiKeyInput struct {
-	ApiKeyName  *string     `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	ExpireTime  *string     `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The name of the API key. The name can be up to 128 characters in length and can contain letters, digits, spaces, hyphens (-), underscores (_), and periods (.).
+	//
+	// example:
+	//
+	// ci-pipeline-key
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The expiration time of the API key. The time is in UTC and in the RFC 3339 format. If you leave this parameter empty, the API key never expires.
+	//
+	// example:
+	//
+	// 2099-12-31T23:59:59Z
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// The IP blacklist. After you configure this parameter, IP addresses in the list cannot use the API key. This parameter is mutually exclusive with ipWhitelist.
 	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	// The IP address whitelist. After you configure this parameter, only IP addresses in the list can use the API key. This parameter is mutually exclusive with ipBlacklist.
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
-	TeamID      *string     `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The ID of the team to which the API key belongs. The value is in UUID format. If you do not specify this parameter, the default team of the current account is used.
+	//
+	// example:
+	//
+	// 5f4a2c18-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s CreateApiKeyInput) String() string {

@@ -22,11 +22,20 @@ type iPublicUpdateTemplateCopyAction interface {
 }
 
 type PublicUpdateTemplateCopyAction struct {
-	AcrInstanceId  *string                             `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	Enabled        *bool                               `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// cri-abc123
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	Enabled       *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/my/ns:v2
 	Image          *string                             `json:"image,omitempty" xml:"image,omitempty"`
 	RegistryConfig *PublicUpdateTemplateRegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	RegistryType   *string                             `json:"registryType,omitempty" xml:"registryType,omitempty"`
+	// example:
+	//
+	// acr
+	RegistryType *string `json:"registryType,omitempty" xml:"registryType,omitempty"`
 }
 
 func (s PublicUpdateTemplateCopyAction) String() string {

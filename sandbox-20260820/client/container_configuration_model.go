@@ -18,7 +18,13 @@ type iContainerConfiguration interface {
 }
 
 type ContainerConfiguration struct {
-	AcrInstanceId      *string                                   `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// example:
+	//
+	// cri-****
+	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/sandbox-demo/python:3.12
 	Image              *string                                   `json:"image,omitempty" xml:"image,omitempty"`
 	RegistryCredential *ContainerConfigurationRegistryCredential `json:"registryCredential,omitempty" xml:"registryCredential,omitempty" type:"Struct"`
 }
@@ -68,7 +74,13 @@ func (s *ContainerConfiguration) Validate() error {
 }
 
 type ContainerConfigurationRegistryCredential struct {
+	// example:
+	//
+	// Passw0rd****
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// sandbox-puller
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 

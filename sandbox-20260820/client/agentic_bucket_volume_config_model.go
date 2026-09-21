@@ -22,11 +22,26 @@ type iAgenticBucketVolumeConfig interface {
 }
 
 type AgenticBucketVolumeConfig struct {
+	// example:
+	//
+	// workspace01
 	AgenticBucket *string `json:"agenticBucket,omitempty" xml:"agenticBucket,omitempty"`
-	BucketName    *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	BucketPath    *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	Endpoint      *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	ReadOnly      *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// example:
+	//
+	// sandbox-test
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// example:
+	//
+	// /
+	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
+	// example:
+	//
+	// https://oss-cn-hangzhou.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s AgenticBucketVolumeConfig) String() string {

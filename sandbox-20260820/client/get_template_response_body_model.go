@@ -34,17 +34,44 @@ type iGetTemplateResponseBody interface {
 }
 
 type GetTemplateResponseBody struct {
-	Code            *string                      `json:"code,omitempty" xml:"code,omitempty"`
-	CreatedTime     *string                      `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Message         *string                      `json:"message,omitempty" xml:"message,omitempty"`
-	Name            *string                      `json:"name,omitempty" xml:"name,omitempty"`
-	RequestId       *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 2026-09-19T10:00:00Z
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// my-template
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy
 	ResourceGroupID *string                      `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
 	RuntimeConfig   *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
 	Status          *PublicTemplateStatus        `json:"status,omitempty" xml:"status,omitempty"`
-	TeamID          *string                      `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	TeamName        *string                      `json:"teamName,omitempty" xml:"teamName,omitempty"`
-	TemplateID      *string                      `json:"templateID,omitempty" xml:"templateID,omitempty"`
+	// example:
+	//
+	// 13b721e6-8cc8-5df2-af13-80316f7508af
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// my-team
+	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// example:
+	//
+	// us7dxqaezw5uu7aa2cm5
+	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {

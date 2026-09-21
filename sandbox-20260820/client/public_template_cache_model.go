@@ -30,15 +30,42 @@ type iPublicTemplateCache interface {
 }
 
 type PublicTemplateCache struct {
-	CreatedTime  *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	ImageDigest  *string `json:"imageDigest,omitempty" xml:"imageDigest,omitempty"`
-	ImageSizeMB  *int32  `json:"imageSizeMB,omitempty" xml:"imageSizeMB,omitempty"`
-	Progress     *int32  `json:"progress,omitempty" xml:"progress,omitempty"`
-	ReadyTime    *string `json:"readyTime,omitempty" xml:"readyTime,omitempty"`
-	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2026-09-18T10:00:00Z
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// sha256:8f3c2a1b
+	ImageDigest *string `json:"imageDigest,omitempty" xml:"imageDigest,omitempty"`
+	// example:
+	//
+	// 512
+	ImageSizeMB *int32 `json:"imageSizeMB,omitempty" xml:"imageSizeMB,omitempty"`
+	// example:
+	//
+	// 80
+	Progress *int32 `json:"progress,omitempty" xml:"progress,omitempty"`
+	// example:
+	//
+	// 2026-09-18T10:05:00Z
+	ReadyTime *string `json:"readyTime,omitempty" xml:"readyTime,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 镜像预热任务排队中
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	TeamID       *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	TemplateID   *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
+	// example:
+	//
+	// 13b721e6-8cc8-5df2-af13-80316f7508af
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// us7dxqaezw5uu7aa2cm5
+	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
 }
 
 func (s PublicTemplateCache) String() string {

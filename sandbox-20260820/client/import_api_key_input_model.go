@@ -20,10 +20,22 @@ type iImportApiKeyInput interface {
 }
 
 type ImportApiKeyInput struct {
-	ApiKeyName  *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// example:
+	//
+	// migrated-key
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// example:
+	//
+	// e2b_****
 	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
-	ExpireTime  *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	TeamID      *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// example:
+	//
+	// 2099-12-31T23:59:59Z
+	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	// example:
+	//
+	// 5f4a2c18-****
+	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
 }
 
 func (s ImportApiKeyInput) String() string {
