@@ -273,18 +273,26 @@ func (s *CreateDataPipelineRequestOutputsProcessors) Validate() error {
 }
 
 type CreateDataPipelineRequestOutputsProcessorsConfig struct {
-	// The application list.
+	// The list of applications.
 	Applications []*string `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
+	// The list of field assignments.
+	Assignments []*CreateDataPipelineRequestOutputsProcessorsConfigAssignments `json:"assignments,omitempty" xml:"assignments,omitempty" type:"Repeated"`
 	// The filter expression.
 	//
 	// example:
 	//
 	// attributes["http.route"] != "/health"
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// The field list.
+	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The masking rule list.
+	// The extended parameters.
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The list of field projections.
+	Projections []*CreateDataPipelineRequestOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
+	// The list of masking rules.
 	Rules []*CreateDataPipelineRequestOutputsProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// The pipeline processing scope.
+	Scope *CreateDataPipelineRequestOutputsProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
 	// example:
@@ -309,6 +317,10 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetApplications() []*
 	return s.Applications
 }
 
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetAssignments() []*CreateDataPipelineRequestOutputsProcessorsConfigAssignments {
+	return s.Assignments
+}
+
 func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetExpression() *string {
 	return s.Expression
 }
@@ -317,8 +329,20 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetFields() []*string
 	return s.Fields
 }
 
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetParameters() map[string]interface{} {
+	return s.Parameters
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetProjections() []*CreateDataPipelineRequestOutputsProcessorsConfigProjections {
+	return s.Projections
+}
+
 func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetRules() []*CreateDataPipelineRequestOutputsProcessorsConfigRules {
 	return s.Rules
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetScope() *CreateDataPipelineRequestOutputsProcessorsConfigScope {
+	return s.Scope
 }
 
 func (s *CreateDataPipelineRequestOutputsProcessorsConfig) GetScript() *string {
@@ -338,6 +362,11 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetApplications(v []*
 	return s
 }
 
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetAssignments(v []*CreateDataPipelineRequestOutputsProcessorsConfigAssignments) *CreateDataPipelineRequestOutputsProcessorsConfig {
+	s.Assignments = v
+	return s
+}
+
 func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetExpression(v string) *CreateDataPipelineRequestOutputsProcessorsConfig {
 	s.Expression = &v
 	return s
@@ -348,8 +377,23 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetFields(v []*string
 	return s
 }
 
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetParameters(v map[string]interface{}) *CreateDataPipelineRequestOutputsProcessorsConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetProjections(v []*CreateDataPipelineRequestOutputsProcessorsConfigProjections) *CreateDataPipelineRequestOutputsProcessorsConfig {
+	s.Projections = v
+	return s
+}
+
 func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetRules(v []*CreateDataPipelineRequestOutputsProcessorsConfigRules) *CreateDataPipelineRequestOutputsProcessorsConfig {
 	s.Rules = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetScope(v *CreateDataPipelineRequestOutputsProcessorsConfigScope) *CreateDataPipelineRequestOutputsProcessorsConfig {
+	s.Scope = v
 	return s
 }
 
@@ -369,6 +413,24 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfig) SetTarget(v *CreateDa
 }
 
 func (s *CreateDataPipelineRequestOutputsProcessorsConfig) Validate() error {
+	if s.Assignments != nil {
+		for _, item := range s.Assignments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Projections != nil {
+		for _, item := range s.Projections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Rules != nil {
 		for _, item := range s.Rules {
 			if item != nil {
@@ -376,6 +438,11 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfig) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.Scope != nil {
+		if err := s.Scope.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.Selector != nil {
@@ -389,6 +456,96 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateDataPipelineRequestOutputsProcessorsConfigAssignments struct {
+	// The assignment expression.
+	//
+	// example:
+	//
+	// duration / 1000000.0
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The output field.
+	//
+	// example:
+	//
+	// latency_ms
+	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigAssignments) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigAssignments) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigAssignments) GetExpression() *string {
+	return s.Expression
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigAssignments) GetField() *string {
+	return s.Field
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigAssignments) SetExpression(v string) *CreateDataPipelineRequestOutputsProcessorsConfigAssignments {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigAssignments) SetField(v string) *CreateDataPipelineRequestOutputsProcessorsConfigAssignments {
+	s.Field = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigAssignments) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDataPipelineRequestOutputsProcessorsConfigProjections struct {
+	// The source field.
+	//
+	// example:
+	//
+	// serviceName
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The target field.
+	//
+	// example:
+	//
+	// service
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigProjections) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigProjections) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigProjections) GetSource() *string {
+	return s.Source
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigProjections) GetTarget() *string {
+	return s.Target
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigProjections) SetSource(v string) *CreateDataPipelineRequestOutputsProcessorsConfigProjections {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigProjections) SetTarget(v string) *CreateDataPipelineRequestOutputsProcessorsConfigProjections {
+	s.Target = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigProjections) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateDataPipelineRequestOutputsProcessorsConfigRules struct {
@@ -488,8 +645,289 @@ func (s *CreateDataPipelineRequestOutputsProcessorsConfigRules) Validate() error
 	return dara.Validate(s)
 }
 
+type CreateDataPipelineRequestOutputsProcessorsConfigScope struct {
+	// The additional field conditions.
+	Conditions []*CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// The metric name scope.
+	MetricName *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName `json:"metricName,omitempty" xml:"metricName,omitempty" type:"Struct"`
+	// The service name scope.
+	ServiceName *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName `json:"serviceName,omitempty" xml:"serviceName,omitempty" type:"Struct"`
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) GetConditions() []*CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions {
+	return s.Conditions
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) GetMetricName() *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName {
+	return s.MetricName
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) GetServiceName() *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName {
+	return s.ServiceName
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) SetConditions(v []*CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) *CreateDataPipelineRequestOutputsProcessorsConfigScope {
+	s.Conditions = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) SetMetricName(v *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) *CreateDataPipelineRequestOutputsProcessorsConfigScope {
+	s.MetricName = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) SetServiceName(v *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) *CreateDataPipelineRequestOutputsProcessorsConfigScope {
+	s.ServiceName = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScope) Validate() error {
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MetricName != nil {
+		if err := s.MetricName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceName != nil {
+		if err := s.ServiceName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions struct {
+	// The field reference.
+	Field *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
+	// The matching method.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) GetField() *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField {
+	return s.Field
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) GetValues() []*string {
+	return s.Values
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) SetField(v *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions {
+	s.Field = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) SetMatchType(v string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions {
+	s.MatchType = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) SetValues(v []*string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions {
+	s.Values = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions) Validate() error {
+	if s.Field != nil {
+		if err := s.Field.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField struct {
+	// The JSON object container.
+	//
+	// example:
+	//
+	// attributes
+	Container *string `json:"container,omitempty" xml:"container,omitempty"`
+	// The reference data type.
+	//
+	// example:
+	//
+	// label
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The field or dimension name.
+	//
+	// example:
+	//
+	// serviceName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The JSON literal key path.
+	Path []*string `json:"path,omitempty" xml:"path,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) GetContainer() *string {
+	return s.Container
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) GetKind() *string {
+	return s.Kind
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) GetPath() []*string {
+	return s.Path
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) SetContainer(v string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField {
+	s.Container = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) SetKind(v string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField {
+	s.Kind = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) SetName(v string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) SetPath(v []*string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField {
+	s.Path = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName struct {
+	// The matching method.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The metric names.
+	//
+	// example:
+	//
+	// ["http_requests_total"]
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) SetMatchType(v string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) SetValues(v []*string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName {
+	s.Values = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName struct {
+	// The matching method.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) SetMatchType(v string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) SetValues(v []*string) *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName {
+	s.Values = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateDataPipelineRequestOutputsProcessorsConfigSelector struct {
-	// The service name list.
+	// The list of service names.
 	//
 	// example:
 	//
@@ -610,18 +1048,26 @@ func (s *CreateDataPipelineRequestProcessors) Validate() error {
 }
 
 type CreateDataPipelineRequestProcessorsConfig struct {
-	// The application list.
+	// The list of applications.
 	Applications []*string `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
+	// The list of field assignments.
+	Assignments []*CreateDataPipelineRequestProcessorsConfigAssignments `json:"assignments,omitempty" xml:"assignments,omitempty" type:"Repeated"`
 	// The filter expression.
 	//
 	// example:
 	//
 	// attributes["http.route"] != "/health"
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
-	// The field list.
+	// The list of fields.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The masking rule list.
+	// The extended parameters.
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The list of field projections.
+	Projections []*CreateDataPipelineRequestProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
+	// The list of masking rules.
 	Rules []*CreateDataPipelineRequestProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// The pipeline processing scope in which the processor takes effect.
+	Scope *CreateDataPipelineRequestProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
 	// example:
@@ -646,6 +1092,10 @@ func (s *CreateDataPipelineRequestProcessorsConfig) GetApplications() []*string 
 	return s.Applications
 }
 
+func (s *CreateDataPipelineRequestProcessorsConfig) GetAssignments() []*CreateDataPipelineRequestProcessorsConfigAssignments {
+	return s.Assignments
+}
+
 func (s *CreateDataPipelineRequestProcessorsConfig) GetExpression() *string {
 	return s.Expression
 }
@@ -654,8 +1104,20 @@ func (s *CreateDataPipelineRequestProcessorsConfig) GetFields() []*string {
 	return s.Fields
 }
 
+func (s *CreateDataPipelineRequestProcessorsConfig) GetParameters() map[string]interface{} {
+	return s.Parameters
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfig) GetProjections() []*CreateDataPipelineRequestProcessorsConfigProjections {
+	return s.Projections
+}
+
 func (s *CreateDataPipelineRequestProcessorsConfig) GetRules() []*CreateDataPipelineRequestProcessorsConfigRules {
 	return s.Rules
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfig) GetScope() *CreateDataPipelineRequestProcessorsConfigScope {
+	return s.Scope
 }
 
 func (s *CreateDataPipelineRequestProcessorsConfig) GetScript() *string {
@@ -675,6 +1137,11 @@ func (s *CreateDataPipelineRequestProcessorsConfig) SetApplications(v []*string)
 	return s
 }
 
+func (s *CreateDataPipelineRequestProcessorsConfig) SetAssignments(v []*CreateDataPipelineRequestProcessorsConfigAssignments) *CreateDataPipelineRequestProcessorsConfig {
+	s.Assignments = v
+	return s
+}
+
 func (s *CreateDataPipelineRequestProcessorsConfig) SetExpression(v string) *CreateDataPipelineRequestProcessorsConfig {
 	s.Expression = &v
 	return s
@@ -685,8 +1152,23 @@ func (s *CreateDataPipelineRequestProcessorsConfig) SetFields(v []*string) *Crea
 	return s
 }
 
+func (s *CreateDataPipelineRequestProcessorsConfig) SetParameters(v map[string]interface{}) *CreateDataPipelineRequestProcessorsConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfig) SetProjections(v []*CreateDataPipelineRequestProcessorsConfigProjections) *CreateDataPipelineRequestProcessorsConfig {
+	s.Projections = v
+	return s
+}
+
 func (s *CreateDataPipelineRequestProcessorsConfig) SetRules(v []*CreateDataPipelineRequestProcessorsConfigRules) *CreateDataPipelineRequestProcessorsConfig {
 	s.Rules = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfig) SetScope(v *CreateDataPipelineRequestProcessorsConfigScope) *CreateDataPipelineRequestProcessorsConfig {
+	s.Scope = v
 	return s
 }
 
@@ -706,6 +1188,24 @@ func (s *CreateDataPipelineRequestProcessorsConfig) SetTarget(v *CreateDataPipel
 }
 
 func (s *CreateDataPipelineRequestProcessorsConfig) Validate() error {
+	if s.Assignments != nil {
+		for _, item := range s.Assignments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Projections != nil {
+		for _, item := range s.Projections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Rules != nil {
 		for _, item := range s.Rules {
 			if item != nil {
@@ -713,6 +1213,11 @@ func (s *CreateDataPipelineRequestProcessorsConfig) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.Scope != nil {
+		if err := s.Scope.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.Selector != nil {
@@ -726,6 +1231,96 @@ func (s *CreateDataPipelineRequestProcessorsConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateDataPipelineRequestProcessorsConfigAssignments struct {
+	// The assignment expression.
+	//
+	// example:
+	//
+	// duration / 1000000.0
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The output field.
+	//
+	// example:
+	//
+	// latency_ms
+	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigAssignments) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigAssignments) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigAssignments) GetExpression() *string {
+	return s.Expression
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigAssignments) GetField() *string {
+	return s.Field
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigAssignments) SetExpression(v string) *CreateDataPipelineRequestProcessorsConfigAssignments {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigAssignments) SetField(v string) *CreateDataPipelineRequestProcessorsConfigAssignments {
+	s.Field = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigAssignments) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDataPipelineRequestProcessorsConfigProjections struct {
+	// The source field.
+	//
+	// example:
+	//
+	// serviceName
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The target field.
+	//
+	// example:
+	//
+	// service
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigProjections) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigProjections) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigProjections) GetSource() *string {
+	return s.Source
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigProjections) GetTarget() *string {
+	return s.Target
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigProjections) SetSource(v string) *CreateDataPipelineRequestProcessorsConfigProjections {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigProjections) SetTarget(v string) *CreateDataPipelineRequestProcessorsConfigProjections {
+	s.Target = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigProjections) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateDataPipelineRequestProcessorsConfigRules struct {
@@ -825,8 +1420,289 @@ func (s *CreateDataPipelineRequestProcessorsConfigRules) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateDataPipelineRequestProcessorsConfigScope struct {
+	// The additional field conditions.
+	Conditions []*CreateDataPipelineRequestProcessorsConfigScopeConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// The metric name scope.
+	MetricName *CreateDataPipelineRequestProcessorsConfigScopeMetricName `json:"metricName,omitempty" xml:"metricName,omitempty" type:"Struct"`
+	// The service name scope.
+	ServiceName *CreateDataPipelineRequestProcessorsConfigScopeServiceName `json:"serviceName,omitempty" xml:"serviceName,omitempty" type:"Struct"`
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScope) GetConditions() []*CreateDataPipelineRequestProcessorsConfigScopeConditions {
+	return s.Conditions
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScope) GetMetricName() *CreateDataPipelineRequestProcessorsConfigScopeMetricName {
+	return s.MetricName
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScope) GetServiceName() *CreateDataPipelineRequestProcessorsConfigScopeServiceName {
+	return s.ServiceName
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScope) SetConditions(v []*CreateDataPipelineRequestProcessorsConfigScopeConditions) *CreateDataPipelineRequestProcessorsConfigScope {
+	s.Conditions = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScope) SetMetricName(v *CreateDataPipelineRequestProcessorsConfigScopeMetricName) *CreateDataPipelineRequestProcessorsConfigScope {
+	s.MetricName = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScope) SetServiceName(v *CreateDataPipelineRequestProcessorsConfigScopeServiceName) *CreateDataPipelineRequestProcessorsConfigScope {
+	s.ServiceName = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScope) Validate() error {
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MetricName != nil {
+		if err := s.MetricName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceName != nil {
+		if err := s.ServiceName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateDataPipelineRequestProcessorsConfigScopeConditions struct {
+	// The field reference.
+	Field *CreateDataPipelineRequestProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
+	// The matching method.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeConditions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeConditions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditions) GetField() *CreateDataPipelineRequestProcessorsConfigScopeConditionsField {
+	return s.Field
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditions) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditions) GetValues() []*string {
+	return s.Values
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditions) SetField(v *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) *CreateDataPipelineRequestProcessorsConfigScopeConditions {
+	s.Field = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditions) SetMatchType(v string) *CreateDataPipelineRequestProcessorsConfigScopeConditions {
+	s.MatchType = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditions) SetValues(v []*string) *CreateDataPipelineRequestProcessorsConfigScopeConditions {
+	s.Values = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditions) Validate() error {
+	if s.Field != nil {
+		if err := s.Field.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateDataPipelineRequestProcessorsConfigScopeConditionsField struct {
+	// The JSON object container.
+	//
+	// example:
+	//
+	// attributes
+	Container *string `json:"container,omitempty" xml:"container,omitempty"`
+	// The reference data type.
+	//
+	// example:
+	//
+	// field
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The field or dimension name.
+	//
+	// example:
+	//
+	// serviceName
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The JSON literal key path.
+	Path []*string `json:"path,omitempty" xml:"path,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeConditionsField) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeConditionsField) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) GetContainer() *string {
+	return s.Container
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) GetKind() *string {
+	return s.Kind
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) GetPath() []*string {
+	return s.Path
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) SetContainer(v string) *CreateDataPipelineRequestProcessorsConfigScopeConditionsField {
+	s.Container = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) SetKind(v string) *CreateDataPipelineRequestProcessorsConfigScopeConditionsField {
+	s.Kind = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) SetName(v string) *CreateDataPipelineRequestProcessorsConfigScopeConditionsField {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) SetPath(v []*string) *CreateDataPipelineRequestProcessorsConfigScopeConditionsField {
+	s.Path = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeConditionsField) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDataPipelineRequestProcessorsConfigScopeMetricName struct {
+	// The matching method.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The metric names.
+	//
+	// example:
+	//
+	// ["http_requests_total"]
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeMetricName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeMetricName) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeMetricName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeMetricName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeMetricName) SetMatchType(v string) *CreateDataPipelineRequestProcessorsConfigScopeMetricName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeMetricName) SetValues(v []*string) *CreateDataPipelineRequestProcessorsConfigScopeMetricName {
+	s.Values = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeMetricName) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDataPipelineRequestProcessorsConfigScopeServiceName struct {
+	// The matching method.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeServiceName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDataPipelineRequestProcessorsConfigScopeServiceName) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeServiceName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeServiceName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeServiceName) SetMatchType(v string) *CreateDataPipelineRequestProcessorsConfigScopeServiceName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeServiceName) SetValues(v []*string) *CreateDataPipelineRequestProcessorsConfigScopeServiceName {
+	s.Values = v
+	return s
+}
+
+func (s *CreateDataPipelineRequestProcessorsConfigScopeServiceName) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateDataPipelineRequestProcessorsConfigSelector struct {
-	// The service name list.
+	// The list of service names.
 	//
 	// example:
 	//
@@ -974,7 +1850,7 @@ func (s *CreateDataPipelineRequestSinks) Validate() error {
 type CreateDataPipelineRequestSource struct {
 	// The datasource config.
 	Config *CreateDataPipelineRequestSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The data source type.
+	// The type of the data source.
 	//
 	// example:
 	//

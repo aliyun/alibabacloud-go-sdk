@@ -32,7 +32,9 @@ type iCreatePrometheusViewRequest interface {
 }
 
 type CreatePrometheusViewRequest struct {
-	// Not in use.
+	// Deprecated
+	//
+	// Not yet enabled.
 	//
 	// example:
 	//
@@ -56,7 +58,9 @@ type CreatePrometheusViewRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// Specifies whether anonymous read is supported.
+	// Deprecated
+	//
+	// Specifies whether authentication-free read is supported.
 	//
 	// example:
 	//
@@ -86,19 +90,19 @@ type CreatePrometheusViewRequest struct {
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Not in use.
+	// Not yet enabled.
 	//
 	// example:
 	//
 	// null
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags.
+	// The operation to perform.
 	Tags []*CreatePrometheusViewRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// Valid values:
 	//
-	// - V1: legacy version
+	// - V1: Legacy version.
 	//
-	// - V2: new version.
+	// - V2: New version.
 	//
 	// This parameter is required.
 	//

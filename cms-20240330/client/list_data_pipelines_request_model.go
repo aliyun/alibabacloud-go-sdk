@@ -22,7 +22,7 @@ type ListDataPipelinesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page.
+	// The pagination token for the next page.
 	//
 	// example:
 	//

@@ -11,6 +11,8 @@ type iPreviewDataPipelineResponseBody interface {
 	GoString() string
 	SetDatasets(v []*PreviewDataPipelineResponseBodyDatasets) *PreviewDataPipelineResponseBody
 	GetDatasets() []*PreviewDataPipelineResponseBodyDatasets
+	SetDiagnostics(v map[string]interface{}) *PreviewDataPipelineResponseBody
+	GetDiagnostics() map[string]interface{}
 	SetEffectiveScript(v string) *PreviewDataPipelineResponseBody
 	GetEffectiveScript() *string
 	SetRequestId(v string) *PreviewDataPipelineResponseBody
@@ -20,7 +22,9 @@ type iPreviewDataPipelineResponseBody interface {
 type PreviewDataPipelineResponseBody struct {
 	// The dataset preview results.
 	Datasets []*PreviewDataPipelineResponseBodyDatasets `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
-	// The effective SPL.
+	// The aggregated diagnostics.
+	Diagnostics map[string]interface{} `json:"diagnostics,omitempty" xml:"diagnostics,omitempty"`
+	// The effective SPL script.
 	//
 	// example:
 	//
@@ -46,6 +50,10 @@ func (s *PreviewDataPipelineResponseBody) GetDatasets() []*PreviewDataPipelineRe
 	return s.Datasets
 }
 
+func (s *PreviewDataPipelineResponseBody) GetDiagnostics() map[string]interface{} {
+	return s.Diagnostics
+}
+
 func (s *PreviewDataPipelineResponseBody) GetEffectiveScript() *string {
 	return s.EffectiveScript
 }
@@ -56,6 +64,11 @@ func (s *PreviewDataPipelineResponseBody) GetRequestId() *string {
 
 func (s *PreviewDataPipelineResponseBody) SetDatasets(v []*PreviewDataPipelineResponseBodyDatasets) *PreviewDataPipelineResponseBody {
 	s.Datasets = v
+	return s
+}
+
+func (s *PreviewDataPipelineResponseBody) SetDiagnostics(v map[string]interface{}) *PreviewDataPipelineResponseBody {
+	s.Diagnostics = v
 	return s
 }
 

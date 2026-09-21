@@ -8699,11 +8699,11 @@ func (client *Client) ListContextStores(workspace *string, request *ListContextS
 
 // Summary:
 //
-// Queries the list of DataPipelines.
+// Queries a list of DataPipelines.
 //
 // Description:
 //
-// Uses a paged query to retrieve data stream pipelines in a specified workspace. Paging is supported.
+// Queries data pipelines in a specified workspace by using paging.
 //
 // @param request - ListDataPipelinesRequest
 //
@@ -8754,11 +8754,11 @@ func (client *Client) ListDataPipelinesWithOptions(workspace *string, request *L
 
 // Summary:
 //
-// Queries the list of DataPipelines.
+// Queries a list of DataPipelines.
 //
 // Description:
 //
-// Uses a paged query to retrieve data stream pipelines in a specified workspace. Paging is supported.
+// Queries data pipelines in a specified workspace by using paging.
 //
 // @param request - ListDataPipelinesRequest
 //
@@ -13288,11 +13288,11 @@ func (client *Client) UpdatePrometheusUserSetting(settingKey *string, request *U
 
 // Summary:
 //
-// Updates the information about a Prometheus view instance.
+// Updates the information of a Prometheus view instance.
 //
 // Description:
 //
-// Updates the information about a Prometheus view instance.
+// Updates the information of a Prometheus view instance.
 //
 // @param request - UpdatePrometheusViewRequest
 //
@@ -13363,11 +13363,11 @@ func (client *Client) UpdatePrometheusViewWithOptions(prometheusViewId *string, 
 
 // Summary:
 //
-// Updates the information about a Prometheus view instance.
+// Updates the information of a Prometheus view instance.
 //
 // Description:
 //
-// Updates the information about a Prometheus view instance.
+// Updates the information of a Prometheus view instance.
 //
 // @param request - UpdatePrometheusViewRequest
 //

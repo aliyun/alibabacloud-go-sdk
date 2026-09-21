@@ -62,7 +62,7 @@ func (s *GetDataPipelineResponseBody) Validate() error {
 }
 
 type GetDataPipelineResponseBodyPipeline struct {
-	// The time when the pipeline was created.
+	// The creation time.
 	//
 	// This parameter is required.
 	//
@@ -427,6 +427,8 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessors) Validate() error 
 type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig struct {
 	// The application list.
 	Applications []*string `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
+	// The field assignment list.
+	Assignments []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments `json:"assignments,omitempty" xml:"assignments,omitempty" type:"Repeated"`
 	// The filter expression.
 	//
 	// example:
@@ -435,8 +437,14 @@ type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig struct {
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
 	// The field list.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The extended parameters.
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The field projection list.
+	Projections []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
 	// The masking rule list.
 	Rules []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// The scope in which the pipeline processing processor takes effect.
+	Scope *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
 	// example:
@@ -461,6 +469,10 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetApplicat
 	return s.Applications
 }
 
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetAssignments() []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments {
+	return s.Assignments
+}
+
 func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetExpression() *string {
 	return s.Expression
 }
@@ -469,8 +481,20 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetFields()
 	return s.Fields
 }
 
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetParameters() map[string]interface{} {
+	return s.Parameters
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetProjections() []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections {
+	return s.Projections
+}
+
 func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetRules() []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules {
 	return s.Rules
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetScope() *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope {
+	return s.Scope
 }
 
 func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) GetScript() *string {
@@ -490,6 +514,11 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetApplicat
 	return s
 }
 
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetAssignments(v []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig {
+	s.Assignments = v
+	return s
+}
+
 func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetExpression(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig {
 	s.Expression = &v
 	return s
@@ -500,8 +529,23 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetFields(v
 	return s
 }
 
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetParameters(v map[string]interface{}) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetProjections(v []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig {
+	s.Projections = v
+	return s
+}
+
 func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetRules(v []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig {
 	s.Rules = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetScope(v *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig {
+	s.Scope = v
 	return s
 }
 
@@ -521,6 +565,24 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) SetTarget(v
 }
 
 func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) Validate() error {
+	if s.Assignments != nil {
+		for _, item := range s.Assignments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Projections != nil {
+		for _, item := range s.Projections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Rules != nil {
 		for _, item := range s.Rules {
 			if item != nil {
@@ -528,6 +590,11 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) Validate() 
 					return err
 				}
 			}
+		}
+	}
+	if s.Scope != nil {
+		if err := s.Scope.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.Selector != nil {
@@ -543,14 +610,104 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig) Validate() 
 	return nil
 }
 
+type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments struct {
+	// The assignment expression.
+	//
+	// example:
+	//
+	// duration / 1000000.0
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The output field.
+	//
+	// example:
+	//
+	// latency_ms
+	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) GetExpression() *string {
+	return s.Expression
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) GetField() *string {
+	return s.Field
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) SetExpression(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) SetField(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments {
+	s.Field = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections struct {
+	// The source field.
+	//
+	// example:
+	//
+	// serviceName
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The target field.
+	//
+	// example:
+	//
+	// service
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) GetSource() *string {
+	return s.Source
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) GetTarget() *string {
+	return s.Target
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) SetSource(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections {
+	s.Source = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) SetTarget(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections {
+	s.Target = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules struct {
-	// The prefix length to retain.
+	// The retained prefix length.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The suffix length to retain.
+	// The retained suffix length.
 	//
 	// example:
 	//
@@ -637,6 +794,287 @@ func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules) SetTyp
 }
 
 func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope struct {
+	// The additional field conditions.
+	Conditions []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// The metric name scope.
+	MetricName *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName `json:"metricName,omitempty" xml:"metricName,omitempty" type:"Struct"`
+	// The service name scope.
+	ServiceName *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName `json:"serviceName,omitempty" xml:"serviceName,omitempty" type:"Struct"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) GetConditions() []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions {
+	return s.Conditions
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) GetMetricName() *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName {
+	return s.MetricName
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) GetServiceName() *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName {
+	return s.ServiceName
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) SetConditions(v []*GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope {
+	s.Conditions = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) SetMetricName(v *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope {
+	s.MetricName = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) SetServiceName(v *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope {
+	s.ServiceName = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope) Validate() error {
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MetricName != nil {
+		if err := s.MetricName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceName != nil {
+		if err := s.ServiceName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions struct {
+	// The field reference.
+	Field *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
+	// The match type.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) GetField() *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField {
+	return s.Field
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) GetValues() []*string {
+	return s.Values
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) SetField(v *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions {
+	s.Field = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) SetMatchType(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) SetValues(v []*string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions {
+	s.Values = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions) Validate() error {
+	if s.Field != nil {
+		if err := s.Field.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField struct {
+	// The JSON object container.
+	//
+	// example:
+	//
+	// {}
+	Container *string `json:"container,omitempty" xml:"container,omitempty"`
+	// The reference data type.
+	//
+	// example:
+	//
+	// label
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The field or dimension name.
+	//
+	// example:
+	//
+	// azone
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The JSON literal key path.
+	Path []*string `json:"path,omitempty" xml:"path,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) GetContainer() *string {
+	return s.Container
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) GetKind() *string {
+	return s.Kind
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) GetName() *string {
+	return s.Name
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) GetPath() []*string {
+	return s.Path
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) SetContainer(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField {
+	s.Container = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) SetKind(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField {
+	s.Kind = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) SetName(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) SetPath(v []*string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField {
+	s.Path = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName struct {
+	// The match type.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The metric name.
+	//
+	// example:
+	//
+	// ["http_requests_total"]
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) SetMatchType(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) SetValues(v []*string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName {
+	s.Values = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName struct {
+	// The match type.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) SetMatchType(v string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) SetValues(v []*string) *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName {
+	s.Values = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -764,6 +1202,8 @@ func (s *GetDataPipelineResponseBodyPipelineProcessors) Validate() error {
 type GetDataPipelineResponseBodyPipelineProcessorsConfig struct {
 	// The application list.
 	Applications []*string `json:"applications,omitempty" xml:"applications,omitempty" type:"Repeated"`
+	// The field assignment list.
+	Assignments []*GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments `json:"assignments,omitempty" xml:"assignments,omitempty" type:"Repeated"`
 	// The filter expression.
 	//
 	// example:
@@ -772,8 +1212,14 @@ type GetDataPipelineResponseBodyPipelineProcessorsConfig struct {
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
 	// The field list.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The extended parameters.
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// The field projection list.
+	Projections []*GetDataPipelineResponseBodyPipelineProcessorsConfigProjections `json:"projections,omitempty" xml:"projections,omitempty" type:"Repeated"`
 	// The masking rule list.
 	Rules []*GetDataPipelineResponseBodyPipelineProcessorsConfigRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+	// The scope in which the pipeline processing processor takes effect.
+	Scope *GetDataPipelineResponseBodyPipelineProcessorsConfigScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
 	// The SPL script.
 	//
 	// example:
@@ -798,6 +1244,10 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetApplications() 
 	return s.Applications
 }
 
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetAssignments() []*GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments {
+	return s.Assignments
+}
+
 func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetExpression() *string {
 	return s.Expression
 }
@@ -806,8 +1256,20 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetFields() []*str
 	return s.Fields
 }
 
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetParameters() map[string]interface{} {
+	return s.Parameters
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetProjections() []*GetDataPipelineResponseBodyPipelineProcessorsConfigProjections {
+	return s.Projections
+}
+
 func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetRules() []*GetDataPipelineResponseBodyPipelineProcessorsConfigRules {
 	return s.Rules
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetScope() *GetDataPipelineResponseBodyPipelineProcessorsConfigScope {
+	return s.Scope
 }
 
 func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) GetScript() *string {
@@ -827,6 +1289,11 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetApplications(v 
 	return s
 }
 
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetAssignments(v []*GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) *GetDataPipelineResponseBodyPipelineProcessorsConfig {
+	s.Assignments = v
+	return s
+}
+
 func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetExpression(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfig {
 	s.Expression = &v
 	return s
@@ -837,8 +1304,23 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetFields(v []*str
 	return s
 }
 
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetParameters(v map[string]interface{}) *GetDataPipelineResponseBodyPipelineProcessorsConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetProjections(v []*GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) *GetDataPipelineResponseBodyPipelineProcessorsConfig {
+	s.Projections = v
+	return s
+}
+
 func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetRules(v []*GetDataPipelineResponseBodyPipelineProcessorsConfigRules) *GetDataPipelineResponseBodyPipelineProcessorsConfig {
 	s.Rules = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetScope(v *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) *GetDataPipelineResponseBodyPipelineProcessorsConfig {
+	s.Scope = v
 	return s
 }
 
@@ -858,6 +1340,24 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) SetTarget(v *GetDa
 }
 
 func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) Validate() error {
+	if s.Assignments != nil {
+		for _, item := range s.Assignments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Projections != nil {
+		for _, item := range s.Projections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Rules != nil {
 		for _, item := range s.Rules {
 			if item != nil {
@@ -865,6 +1365,11 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.Scope != nil {
+		if err := s.Scope.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.Selector != nil {
@@ -880,14 +1385,104 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfig) Validate() error {
 	return nil
 }
 
+type GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments struct {
+	// The assignment expression.
+	//
+	// example:
+	//
+	// duration / 1000000.0
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// The output field.
+	//
+	// example:
+	//
+	// latency_ms
+	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) GetExpression() *string {
+	return s.Expression
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) GetField() *string {
+	return s.Field
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) SetExpression(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) SetField(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments {
+	s.Field = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigAssignments) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineProcessorsConfigProjections struct {
+	// The source field.
+	//
+	// example:
+	//
+	// serviceName
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The target field.
+	//
+	// example:
+	//
+	// service
+	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) GetSource() *string {
+	return s.Source
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) GetTarget() *string {
+	return s.Target
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) SetSource(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections {
+	s.Source = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) SetTarget(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections {
+	s.Target = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigProjections) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetDataPipelineResponseBodyPipelineProcessorsConfigRules struct {
-	// The prefix length to retain.
+	// The retained prefix length.
 	//
 	// example:
 	//
 	// 2
 	KeepPrefix *int32 `json:"keepPrefix,omitempty" xml:"keepPrefix,omitempty"`
-	// The suffix length to retain.
+	// The retained suffix length.
 	//
 	// example:
 	//
@@ -974,6 +1569,287 @@ func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigRules) SetTypes(v []
 }
 
 func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineProcessorsConfigScope struct {
+	// The additional field conditions.
+	Conditions []*GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// The metric name scope.
+	MetricName *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName `json:"metricName,omitempty" xml:"metricName,omitempty" type:"Struct"`
+	// The service name scope.
+	ServiceName *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName `json:"serviceName,omitempty" xml:"serviceName,omitempty" type:"Struct"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScope) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) GetConditions() []*GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions {
+	return s.Conditions
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) GetMetricName() *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName {
+	return s.MetricName
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) GetServiceName() *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName {
+	return s.ServiceName
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) SetConditions(v []*GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) *GetDataPipelineResponseBodyPipelineProcessorsConfigScope {
+	s.Conditions = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) SetMetricName(v *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) *GetDataPipelineResponseBodyPipelineProcessorsConfigScope {
+	s.MetricName = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) SetServiceName(v *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) *GetDataPipelineResponseBodyPipelineProcessorsConfigScope {
+	s.ServiceName = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScope) Validate() error {
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MetricName != nil {
+		if err := s.MetricName.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ServiceName != nil {
+		if err := s.ServiceName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions struct {
+	// The field reference.
+	Field *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField `json:"field,omitempty" xml:"field,omitempty" type:"Struct"`
+	// The match type.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) GetField() *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField {
+	return s.Field
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) GetValues() []*string {
+	return s.Values
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) SetField(v *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions {
+	s.Field = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) SetMatchType(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) SetValues(v []*string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions {
+	s.Values = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions) Validate() error {
+	if s.Field != nil {
+		if err := s.Field.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField struct {
+	// The JSON object container.
+	//
+	// example:
+	//
+	// {}
+	Container *string `json:"container,omitempty" xml:"container,omitempty"`
+	// The reference data type.
+	//
+	// example:
+	//
+	// explorer_link
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The field or dimension name.
+	//
+	// example:
+	//
+	// site_check_monitor
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The JSON literal key path.
+	Path []*string `json:"path,omitempty" xml:"path,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) GetContainer() *string {
+	return s.Container
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) GetKind() *string {
+	return s.Kind
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) GetName() *string {
+	return s.Name
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) GetPath() []*string {
+	return s.Path
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) SetContainer(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField {
+	s.Container = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) SetKind(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField {
+	s.Kind = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) SetName(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) SetPath(v []*string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField {
+	s.Path = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName struct {
+	// The match type.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The metric name.
+	//
+	// example:
+	//
+	// ["http_requests_total"]
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) SetMatchType(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) SetValues(v []*string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName {
+	s.Values = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName struct {
+	// The match type.
+	//
+	// example:
+	//
+	// EXACT
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) GetValues() []*string {
+	return s.Values
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) SetMatchType(v string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName {
+	s.MatchType = &v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) SetValues(v []*string) *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName {
+	s.Values = v
+	return s
+}
+
+func (s *GetDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1126,7 +2002,7 @@ func (s *GetDataPipelineResponseBodyPipelineSinks) Validate() error {
 type GetDataPipelineResponseBodyPipelineSource struct {
 	// The datasource config.
 	Config *GetDataPipelineResponseBodyPipelineSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The data source type.
+	// The type of the data source.
 	//
 	// example:
 	//

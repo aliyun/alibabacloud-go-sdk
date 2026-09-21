@@ -6228,11 +6228,11 @@ func (client *Client) ListContextStoresWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Queries the list of DataPipelines.
+// Queries a list of DataPipelines.
 //
 // Description:
 //
-// Uses a paged query to retrieve data stream pipelines in a specified workspace. Paging is supported.
+// Queries data pipelines in a specified workspace by using paging.
 //
 // @param request - ListDataPipelinesRequest
 //
@@ -9708,11 +9708,11 @@ func (client *Client) UpdatePrometheusUserSettingWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates the information about a Prometheus view instance.
+// Updates the information of a Prometheus view instance.
 //
 // Description:
 //
-// Updates the information about a Prometheus view instance.
+// Updates the information of a Prometheus view instance.
 //
 // @param request - UpdatePrometheusViewRequest
 //

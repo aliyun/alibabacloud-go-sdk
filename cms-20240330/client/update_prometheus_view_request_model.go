@@ -26,7 +26,9 @@ type iUpdatePrometheusViewRequest interface {
 }
 
 type UpdatePrometheusViewRequest struct {
-	// The policy for password-free read access. IP address segments and VPC IDs are supported.
+	// Deprecated
+	//
+	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -50,19 +52,21 @@ type UpdatePrometheusViewRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// Specifies whether to enable password-free read access.
+	// Deprecated
+	//
+	// Specifies whether authentication-free read is supported.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether to enable authentication tokens.
+	// Specifies whether authToken is supported.
 	//
 	// example:
 	//
 	// false
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// A list of Prometheus instances.
+	// The list of Prometheus instances.
 	PrometheusInstances []*UpdatePrometheusViewRequestPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
 	// The name of the Prometheus view.
 	//
@@ -70,13 +74,13 @@ type UpdatePrometheusViewRequest struct {
 	//
 	// test-prom-view-name
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
-	// The status of the Prometheus view.
+	// The running status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The workspace to which the view belongs.
+	// The workspace to which the instance belongs.
 	//
 	// example:
 	//
@@ -175,7 +179,7 @@ type UpdatePrometheusViewRequestPrometheusInstances struct {
 	//
 	// c7ba84651c71e442c8d0653085d862164
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
