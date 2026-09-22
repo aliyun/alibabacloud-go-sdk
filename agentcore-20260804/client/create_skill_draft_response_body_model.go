@@ -16,7 +16,7 @@ type iCreateSkillDraftResponseBody interface {
 }
 
 type CreateSkillDraftResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

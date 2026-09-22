@@ -30,7 +30,7 @@ type iListSkillsRequest interface {
 }
 
 type ListSkillsRequest struct {
-	// The maximum number of entries to return per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListSkillsRequest struct {
 	//
 	// next-page-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The sort field. The value download_count is supported. Default value: gmt_modified.
+	// The field by which to sort results. The value download_count is supported. Default value: gmt_modified.
 	//
 	// example:
 	//

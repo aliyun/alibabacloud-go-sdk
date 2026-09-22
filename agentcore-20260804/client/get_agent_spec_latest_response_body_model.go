@@ -80,7 +80,7 @@ type GetAgentSpecLatestResponseBodyData struct {
 	//
 	// A sample description that explains the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The download count.
+	// The number of downloads.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type GetAgentSpecLatestResponseBodyData struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The list of skill references.
+	// The list of Skill references.
 	Skills []*GetAgentSpecLatestResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
 	// The update time. This value is a UNIX timestamp in milliseconds.
 	//
@@ -280,10 +280,17 @@ type GetAgentSpecLatestResponseBodyDataSkills struct {
 	//
 	// agentspec-example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Skill source type. Valid values:
+	//
+	// - REFERENCE: references AI Registry.
+	//
+	// - STATIC: statically bundled with the package.
+	//
 	// example:
 	//
 	// REFERENCE
-	SourceType      *string                                                  `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The version selector for the reference. Defaults to LABEL/latest if omitted.
 	VersionSelector *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -332,10 +339,18 @@ func (s *GetAgentSpecLatestResponseBodyDataSkills) Validate() error {
 }
 
 type GetAgentSpecLatestResponseBodyDataSkillsVersionSelector struct {
+	// The version selector type. Valid values:
+	//
+	// - LABEL: selects by label.
+	//
+	// - VERSION: selects by specific version.
+	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The selector value. If the type is LABEL, this value is a label name such as latest. If the type is VERSION, this value is a specific version number.
+	//
 	// example:
 	//
 	// latest

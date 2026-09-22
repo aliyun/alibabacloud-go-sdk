@@ -16,7 +16,7 @@ type iDownloadSkillVersionViaOssResponseBody interface {
 }
 
 type DownloadSkillVersionViaOssResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

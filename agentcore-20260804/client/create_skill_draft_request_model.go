@@ -71,7 +71,7 @@ type CreateSkillDraftRequestBody struct {
 	//
 	// customer-service-skill
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The draft version number to assign. If not specified, the version number is automatically incremented.
+	// The draft version number. If not specified, the version number is automatically incremented.
 	//
 	// example:
 	//

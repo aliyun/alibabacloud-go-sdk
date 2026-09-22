@@ -22,7 +22,7 @@ type iListSkillsResponseBody interface {
 type ListSkillsResponseBody struct {
 	// The returned data.
 	Data *ListSkillsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of entries to return per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
@@ -194,11 +194,19 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
+	// The draft mode. Valid values:
+	//
+	// - HEAD: The Skill has a persistent draft.
+	//
+	// - VERSIONED: Each edit creates a versioned draft.
+	//
+	// The value is determined by the server. The caller uses this value to render the status column.
+	//
 	// example:
 	//
 	// HEAD
 	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
-	// The version that is being edited.
+	// The version that is being edited. In HEAD draft mode, the value is HEAD.
 	//
 	// example:
 	//
@@ -232,7 +240,7 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// alice
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The version that is under review.
+	// The version that is under review. In HEAD draft mode, the value is HEAD.
 	//
 	// example:
 	//
