@@ -46,7 +46,7 @@ type ListPluginStatusRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The plugin name. The full character set is supported. The name can be up to 255 characters in length.
+	// The plugin name. Full character set is supported. The name can be up to 255 characters in length.
 	//
 	// - If you do not specify this parameter, the status of all installed plugins on the instance is queried.
 	//
@@ -66,13 +66,13 @@ type ListPluginStatusRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to go offline. Use NextToken and MaxResults to perform a paging query instead.
+	// > This parameter will be offline soon. Use NextToken and MaxResults to complete paged query operations. Paging is handled by these parameters instead.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to go offline. Use NextToken and MaxResults to perform a paging query instead.
+	// > This parameter will be offline soon. Use NextToken and MaxResults to complete paged query operations. Paging is handled by these parameters instead.
 	//
 	// example:
 	//

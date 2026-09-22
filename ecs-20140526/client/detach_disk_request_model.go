@@ -34,13 +34,13 @@ type DetachDiskRequest struct {
 	//
 	// Default value: true
 	//
-	// Take note of the following items:
+	// Note:
 	//
 	// - Disks with the multi-attach feature enabled do not support this parameter.
 	//
-	// - If the disk to be detached is a data disk, the default value is `false`.
+	// - If you detach a data disk, the default value is `false`.
 	//
-	// - If the disk to be detached is an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
+	// - If the disk that you want to detach is an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DetachDiskRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The instance ID of the ECS instance from which you want to uninstall the disk that is attached to it.
+	// The ID of the ECS instance to which the disk is attached.
 	//
 	// This parameter is required.
 	//

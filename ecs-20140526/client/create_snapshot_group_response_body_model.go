@@ -22,7 +22,7 @@ type CreateSnapshotGroupResponseBody struct {
 	//
 	// 01ABBD93-1ABB-4D92-B496-1A3D20EC0697
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the snapshot consistency group.
+	// The ID of the snapshot-consistent group.
 	//
 	// example:
 	//

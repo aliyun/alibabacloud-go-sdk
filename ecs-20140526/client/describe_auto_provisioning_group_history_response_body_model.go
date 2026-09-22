@@ -41,7 +41,7 @@ type DescribeAutoProvisioningGroupHistoryResponseBody struct {
 	//
 	// B48A12CD-1295-4A38-A8F0-0E92C937****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of scheduling tasks queried.
+	// The total number of queried scheduling tasks.
 	//
 	// example:
 	//

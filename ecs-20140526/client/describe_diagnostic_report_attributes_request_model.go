@@ -24,7 +24,7 @@ type DescribeDiagnosticReportAttributesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The diagnostic report ID.
+	// The ID of the diagnostic report.
 	//
 	// This parameter is required.
 	//

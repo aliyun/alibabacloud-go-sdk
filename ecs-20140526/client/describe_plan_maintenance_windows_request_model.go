@@ -34,7 +34,7 @@ type DescribePlanMaintenanceWindowsRequest struct {
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	// The number of entries per page in a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribePlanMaintenanceWindowsRequest struct {
 	//
 	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
-	// The region ID of the instance. You can call DescribeRegions to query the most recent region list.
+	// The region ID. This parameter is required by the Alibaba Cloud SDK for routing purposes. However, setting any region ID for this operation makes no difference. The response returns all O&M windows that meet the specified conditions across all regions.
 	//
 	// This parameter is required.
 	//

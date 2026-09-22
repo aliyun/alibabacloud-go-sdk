@@ -23,13 +23,13 @@ type iDescribeImagePipelineExecutionsResponseBody interface {
 
 type DescribeImagePipelineExecutionsResponseBody struct {
 	ImagePipelineExecution *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution `json:"ImagePipelineExecution,omitempty" xml:"ImagePipelineExecution,omitempty" type:"Struct"`
-	// The maximum number of entries per page for paging.
+	// The maximum number of entries per page for paging queries.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in this call. For more information about how to use this token, see the operation description.
+	// The query token returned in this call. For more information about how to use this token, refer to the operation description.
 	//
 	// example:
 	//

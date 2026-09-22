@@ -34,7 +34,7 @@ type DescribeNetworkInterfaceAttributeRequest struct {
 	//
 	// connectionTrackingConfiguration: queries the network connectivity tracking configuration.
 	//
-	// Default value:
+	// Default value: empty.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeNetworkInterfaceAttributeRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

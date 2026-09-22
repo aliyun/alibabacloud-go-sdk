@@ -24,9 +24,9 @@ type CreateDiskResponseBody struct {
 	//
 	// d-bp131n0q38u3a4zi****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The generated order ID.
+	// The order ID.
 	//
-	// > An order ID is returned only when a subscription disk is created.
+	// > The order ID is returned only when you create a subscription disk.
 	//
 	// example:
 	//

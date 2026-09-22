@@ -38,7 +38,7 @@ type DescribeManagedInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page as specified in the request.
 	//
 	// example:
 	//
@@ -186,19 +186,19 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// ``10.0.**.**``
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The number of times that Cloud Assistant tasks were run on the managed instance.
+	// The number of times that Cloud Assistant tasks have been executed on the managed instance.
 	//
 	// example:
 	//
 	// 1
 	InvocationCount *int64 `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
-	// The time when the last Cloud Assistant task was run.
+	// The time when the last Cloud Assistant task was executed. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//
 	// 2021-01-20T09:00:40Z
 	LastInvokedTime *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
-	// The machine ID of the managed instance.
+	// The machine code of the managed instance.
 	//
 	// example:
 	//
@@ -210,13 +210,13 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The version of the operating system.
+	// The version information of the operating system.
 	//
 	// example:
 	//
 	// Linux_#38~18.04.1-Ubuntu SMP Wed Jan 6 18:26:30 UTC 2021_x86_64
 	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The registration time of the managed instance.
+	// The time when the managed instance was registered. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//
@@ -400,7 +400,7 @@ func (s *DescribeManagedInstancesResponseBodyInstances) Validate() error {
 type DescribeManagedInstancesResponseBodyInstancesTags struct {
 	// The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//

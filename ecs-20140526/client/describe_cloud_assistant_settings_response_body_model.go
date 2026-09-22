@@ -133,19 +133,19 @@ func (s *DescribeCloudAssistantSettingsResponseBody) Validate() error {
 
 type DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig struct {
 	AllowedUpgradeWindows *DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfigAllowedUpgradeWindows `json:"AllowedUpgradeWindows,omitempty" xml:"AllowedUpgradeWindows,omitempty" type:"Struct"`
-	// Indicates whether Cloud Assistant Agent checks for and performs updates immediately upon startup.
+	// Indicates whether the Cloud Assistant Agent checks for and performs updates immediately upon startup.
 	//
 	// example:
 	//
 	// true
 	BootstrapUpgrade *bool `json:"BootstrapUpgrade,omitempty" xml:"BootstrapUpgrade,omitempty"`
-	// Indicates whether Cloud Assistant Agent is prohibited from checking for and performing updates.
+	// Indicates whether the Cloud Assistant Agent is prohibited from checking for and performing updates.
 	//
 	// example:
 	//
 	// true
 	DisableUpgrade *bool `json:"DisableUpgrade,omitempty" xml:"DisableUpgrade,omitempty"`
-	// Indicates whether the custom Agent upgrade configuration is enabled. If the value is false or empty, the default behavior is to attempt an upgrade every 30 minutes.
+	// Indicates whether the custom Agent upgrade configuration is enabled. If the query result is false or empty, the default behavior of attempting an upgrade every 30 minutes is retained.
 	//
 	// example:
 	//
@@ -396,7 +396,7 @@ type DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig struct {
 	//
 	// 35MB
 	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	// The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. When this limit is reached, Cloud Assistant Agent automatically stops running.
+	// The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. After this limit is reached, the Cloud Assistant Agent automatically stops running.
 	//
 	// example:
 	//
@@ -471,15 +471,15 @@ func (s *DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig) Validate
 }
 
 type DescribeCloudAssistantSettingsResponseBodySessionManagerConfig struct {
-	// Specifies whether the Cloud Assistant session feature is enabled. Valid values:
+	// The toggle for the Cloud Assistant session feature. Valid values:
 	//
 	// 	- true: Enabled.
 	//
 	// 	- false: Disabled.
 	//
-	// Note:
+	// Precautions:
 	//
-	// 	- Enabling or disabling the session feature takes effect across all regions.
+	// 	- Enabling or disabling the session feature takes effect in all regions.
 	//
 	// example:
 	//

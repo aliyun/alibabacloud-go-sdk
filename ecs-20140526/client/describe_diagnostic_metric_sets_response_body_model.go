@@ -87,7 +87,7 @@ type DescribeDiagnosticMetricSetsResponseBodyMetricSets struct {
 	//
 	// example:
 	//
-	// 远程连接问题诊断
+	// Remote connection diagnostics
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of diagnostic metrics.
 	MetricIds []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
@@ -101,7 +101,7 @@ type DescribeDiagnosticMetricSetsResponseBodyMetricSets struct {
 	//
 	// example:
 	//
-	// 远程连接问题诊断
+	// Remote connection diagnostics
 	MetricSetName *string `json:"MetricSetName,omitempty" xml:"MetricSetName,omitempty"`
 	// The supported resource type.
 	//

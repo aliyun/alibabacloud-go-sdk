@@ -38,7 +38,7 @@ type DescribeDiagnosticMetricSetsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The list of diagnostic metric set IDs.
 	MetricSetIds []*string `json:"MetricSetIds,omitempty" xml:"MetricSetIds,omitempty" type:"Repeated"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
+	// The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//

@@ -40,11 +40,11 @@ type iModifyAutoSnapshotPolicyExRequest interface {
 }
 
 type ModifyAutoSnapshotPolicyExRequest struct {
-	// The retention period of cross-region replicated snapshots. Unit: days. Valid values:
+	// The retention period of cross-region snapshot replicas. Unit: days. Valid values:
 	//
-	// - -1: The snapshot is retained permanently.
+	// - -1: Snapshot replicas are permanently retained.
 	//
-	// - 1 to 65535: The snapshot is retained for the specified number of days.
+	// - 1 to 65535: the number of days for which snapshot replicas are retained.
 	//
 	// Default value: -1.
 	//
@@ -52,13 +52,13 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// 30
 	CopiedSnapshotsRetentionDays *int32 `json:"CopiedSnapshotsRetentionDays,omitempty" xml:"CopiedSnapshotsRetentionDays,omitempty"`
-	// The encryption configuration for cross-region snapshot replication.
+	// The encryption parameter object for cross-region snapshot replication.
 	CopyEncryptionConfiguration *ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration `json:"CopyEncryptionConfiguration,omitempty" xml:"CopyEncryptionConfiguration,omitempty" type:"Struct"`
-	// Specifies whether to allow automatic cross-region snapshot replication. Valid values:
+	// Specifies whether to allow automatic cross-region replication.
 	//
-	// - true: Allowed.
+	// - true: allowed.
 	//
-	// - false: Not allowed.
+	// - false: not allowed.
 	//
 	// example:
 	//
@@ -67,7 +67,7 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination region for cross-region snapshot replication. You can specify only one destination region.
+	// The destination region to which snapshots are replicated. Currently, you can set only one destination region.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The days of the week on which to create automatic snapshots. Valid values: 1 to 7, where 1 represents Monday.
+	// The days of the week on which automatic snapshots are created. Unit: days. The cycle is weekly. Valid values: 1 to 7. For example, 1 indicates Monday.
 	//
-	// To create multiple automatic snapshots within a week, specify multiple days:
+	// To create multiple automatic snapshots within a week, you can specify multiple days:
 	//
 	// - You can specify up to 7 days.
 	//
-	// - Specify multiple days as a JSON array in the format of `"1", "2", … "7"`. Separate multiple days with commas (,).
+	// - Multiple days are specified in a JSON array in the format of `"1", "2", … "7"`. Separate the days with commas (,).
 	//
 	// example:
 	//
@@ -111,9 +111,9 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	RepeatWeekdays *string `json:"repeatWeekdays,omitempty" xml:"repeatWeekdays,omitempty"`
 	// The retention period of automatic snapshots. Unit: days. Valid values:
 	//
-	// - -1: The snapshot is retained permanently.
+	// - -1: Automatic snapshots are permanently retained.
 	//
-	// - 1 to 65536: The snapshot is retained for the specified number of days.
+	// - 1 to 65536: the number of days for which automatic snapshots are retained.
 	//
 	// Default value: -1.
 	//
@@ -121,13 +121,13 @@ type ModifyAutoSnapshotPolicyExRequest struct {
 	//
 	// 30
 	RetentionDays *int32 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
-	// The time of day at which to create automatic snapshots. The time is in UTC+8 and in the format of hours. Valid values: 0 to 23, representing 24 points in time from 00:00 to 23:00. For example, 1 represents 01:00.
+	// The points in time at which automatic snapshots are created. The time is displayed in UTC+8. Unit: hours. Valid values: 0 to 23, which correspond to the 24 points in time from 00:00 to 23:00. For example, 1 indicates 01:00.
 	//
-	// To create multiple automatic snapshots within a day, specify multiple time points:
+	// To create multiple automatic snapshots within a day, you can specify multiple points in time:
 	//
-	// - You can specify up to 24 time points.
+	// - You can specify up to 24 points in time.
 	//
-	// - Specify multiple time points as a JSON array in the format of `"0", "1", … "23"`. Separate multiple time points with commas (,).
+	// - Multiple points in time are specified in a JSON array in the format of `"0", "1", … "23"`. Separate the points in time with commas (,).
 	//
 	// example:
 	//
@@ -288,13 +288,13 @@ func (s *ModifyAutoSnapshotPolicyExRequest) Validate() error {
 }
 
 type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration struct {
-	// This parameter is not available for use.
+	// This parameter is not publicly available.
 	Arn []*ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	// Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
 	//
-	// - true: Yes.
+	// - true: Encryption is enabled.
 	//
-	// - false: No.
+	// - false: Encryption is not enabled.
 	//
 	// Default value: false.
 	//
@@ -302,7 +302,7 @@ type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The key ID of the KMS key used for cross-region encrypted snapshot replication.
+	// The key ID of the Key Management Service (KMS) key used for encrypted cross-region snapshot replication.
 	//
 	// example:
 	//
@@ -359,19 +359,19 @@ func (s *ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration) Validate(
 }
 
 type ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn struct {
-	// This parameter is not available for use.
+	// This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 1000000000
 	AssumeRoleFor *int64 `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
-	// This parameter is not available for use.
+	// This parameter is not publicly available.
 	//
 	// example:
 	//
 	// hide
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// This parameter is not available for use.
+	// This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -423,7 +423,7 @@ type ModifyAutoSnapshotPolicyExRequestTargetTags struct {
 	//
 	// Valid values of N: 1 to 5.
 	//
-	// The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with aliyun or acs:, or contain http:// or https://.
+	// The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
@@ -431,7 +431,7 @@ type ModifyAutoSnapshotPolicyExRequestTargetTags struct {
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
-	// > If you pass an empty value or an empty string, the tag value matches any value.
+	// > If you pass in an empty value or an empty string, the tag value matches any value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -68,7 +68,7 @@ type DeregisterManagedInstanceResponseBodyInstance struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F7494****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The version number of Cloud Assistant Agent.
+	// The version number of the Cloud Assistant Agent.
 	//
 	// example:
 	//
@@ -104,19 +104,19 @@ type DeregisterManagedInstanceResponseBodyInstance struct {
 	//
 	// ``10.0.**.**``
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The number of times that Cloud Assistant tasks were run on the managed instance.
+	// The number of times that Cloud Assistant tasks were executed on the managed instance.
 	//
 	// example:
 	//
 	// 2
 	InvocationCount *int64 `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
-	// The time when the last Cloud Assistant task was run.
+	// The time when the last Cloud Assistant task was executed. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//
 	// 2021-01-20T09:00:40Z
 	LastInvokedTime *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
-	// The machine ID of the managed instance.
+	// The machine code of the managed instance.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DeregisterManagedInstanceResponseBodyInstance struct {
 	//
 	// Linux_#38~18.04.1-Ubuntu SMP Wed Jan 6 18:26:30 UTC 2021_x86_64
 	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The time when the managed instance was registered.
+	// The time when the managed instance was registered. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//

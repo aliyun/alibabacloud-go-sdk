@@ -82,27 +82,27 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// my-webapp-server
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The value of the MachineId parameter specified when registering the managed instance. A maximum of 36 characters are allowed.
+	// The value of the MachineId parameter specified when the managed instance was registered. The value can be up to 36 characters in length.
 	//
-	// Example registration script:
+	// Sample registration script:
 	//
 	// ```
 	//
 	// aliyun-service --register \\
 	//
-	//   --RegionId=ap-southeast-1 \\
+	//   --RegionId=cn-hangznou \\
 	//
 	//   --ActivationId=xxxxxxxxxxx \\
 	//
 	//   --ActivationCode=xxxxxxxxx \\
 	//
-	//   --MachineId=xxxxxx \\ # Optional parameter that specifies the unique identifier of the machine
+	//   --MachineId=xxxxxx \\ # Optional parameter that specifies the unique identifier of the machine.
 	//
 	//   --ForceResue
 	//
 	// ```
 	//
-	// - If MachineId and ForceResult are specified during registration, Cloud Assistant generates a fixed managed instance ID for this MachineId.
+	// - If MachineId and ForceResult are specified during registration, Cloud Assistant generates a fixed managed instance ID for the MachineId.
 	//
 	// - If MachineId is not explicitly specified, Cloud Assistant automatically generates a MachineId value based on the hardware information of the machine.
 	//
@@ -112,7 +112,7 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// GOG4X8312A0188
 	MachineId *string `json:"MachineId,omitempty" xml:"MachineId,omitempty"`
-	// The maximum number of entries per page for a paging query.
+	// The maximum number of entries per page in a paging query.
 	//
 	// Maximum value: 50.
 	//
@@ -154,7 +154,7 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. Currently supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
+	// The region ID. The following regions are supported: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
 	//
 	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query region IDs and other information.
 	//
@@ -362,7 +362,7 @@ func (s *DescribeManagedInstancesRequest) Validate() error {
 type DescribeManagedInstancesRequestTag struct {
 	// The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//

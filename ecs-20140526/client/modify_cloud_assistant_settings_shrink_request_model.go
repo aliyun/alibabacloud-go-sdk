@@ -50,7 +50,7 @@ type ModifyCloudAssistantSettingsShrinkRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Cloud Assistant resource usage configuration. This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
+	// The Cloud Assistant resource usage configuration. This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
 	//
 	// - Windows: 2.1.4.1065
 	//

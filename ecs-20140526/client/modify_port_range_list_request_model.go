@@ -216,11 +216,11 @@ type ModifyPortRangeListRequestAddEntry struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The port range. Valid values of N: 0 to 200. Settings:
 	//
-	// - The number of entries cannot exceed the maximum entry capacity (`MaxEntries`).
+	// - The number of entries cannot exceed the maximum number of entries (MaxEntries).
 	//
-	// - You cannot specify duplicate values for `PortRange`.
+	// - You cannot specify duplicate PortRange values.
 	//
-	// - The value cannot be the same as the value of the `RemoveEntry.N.PortRange` parameter.
+	// - The value cannot be the same as a RemoveEntry.N.PortRange parameter value.
 	//
 	// example:
 	//
@@ -261,9 +261,9 @@ func (s *ModifyPortRangeListRequestAddEntry) Validate() error {
 type ModifyPortRangeListRequestRemoveEntry struct {
 	// The port range. Valid values of N: 0 to 200. Settings:
 	//
-	// - You cannot specify duplicate values for `PortRange`.
+	// - You cannot specify duplicate PortRange values.
 	//
-	// - The value cannot be the same as the value of the `AddEntry.N.PortRange` parameter.
+	// - The value cannot be the same as an AddEntry.N.PortRange parameter value.
 	//
 	// example:
 	//

@@ -48,7 +48,7 @@ type DescribeTasksRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the results.
+	// The page number of the query results.
 	//
 	// Minimum value: 1.
 	//
@@ -94,7 +94,7 @@ type DescribeTasksRequest struct {
 	//
 	// - RedeployInstance: redeploy an ECS instance.
 	//
-	// - ModifyDiskSpec: change the cloud disk type.
+	// - ModifyDiskSpec: change the type of a cloud disk.
 	//
 	// - ArchiveSnapshot: archive a snapshot.
 	//

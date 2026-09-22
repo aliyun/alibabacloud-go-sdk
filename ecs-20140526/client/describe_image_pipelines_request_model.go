@@ -54,7 +54,7 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// testImagePipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token. Set this parameter to the value of `NextToken` returned by the previous call. You do not need to set this parameter for the first request.
+	// The pagination token. Set the value to the `NextToken` value returned in the previous call to this operation. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//

@@ -83,7 +83,7 @@ type DescribeDisksRequest struct {
 	Filter []*DescribeDisksRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The list of additional attribute values. The only valid value is `Placement`, which queries the data storage location of the disk.
 	//
-	// > Only regional ESSD (cloud_regional_disk_auto) disks have valid data storage locations.
+	// > Only regional disks have a data storage location.
 	//
 	// example:
 	//
@@ -115,9 +115,9 @@ type DescribeDisksRequest struct {
 	//
 	// - cloud_essd_entry: ESSD Entry disk.
 	//
-	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - standard.
+	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - Standard.
 	//
-	// - elastic_ephemeral_disk_premium: elastic ephemeral disk - premium.
+	// - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium.
 	//
 	// - local_ssd_pro: I/O-intensive local disk.
 	//
@@ -135,9 +135,9 @@ type DescribeDisksRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// Specifies whether automatic snapshots are released when the disk is released.
 	//
-	// - true: Automatic snapshots are released.
+	// - true: Yes.
 	//
-	// - false: Automatic snapshots are not released.
+	// - false: No.
 	//
 	// Default value: false.
 	//
@@ -145,11 +145,11 @@ type DescribeDisksRequest struct {
 	//
 	// false
 	DeleteAutoSnapshot *bool `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
-	// Specifies whether the disk is released when the associated instance is released. Valid values:
+	// Specifies whether the disk is set to be released together with the instance. Valid values:
 	//
-	// - true: The disk is released when the associated instance is released.
+	// - true: The disk is released together with the instance.
 	//
-	// - false: The disk is retained and converted to a pay-as-you-go data disk when the associated instance is released.
+	// - false: The disk is retained and converted to a pay-as-you-go data disk when the instance is released.
 	//
 	// Default value: false.
 	//
@@ -173,7 +173,7 @@ type DescribeDisksRequest struct {
 	//
 	// ["d-bp67acfmxazb4p****", "d-bp67acfmxazb4g****", … "d-bp67acfmxazb4d****"]
 	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	// The name of the disk. The name must be 2 to 128 characters in length and can contain letters, digits, and characters categorized as letter in Unicode. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the disk. The name must be 2 to 128 characters in length and can contain Unicode characters under the letter category (including letters from various languages, digits, and other characters). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
 	//
 	// example:
 	//
@@ -199,9 +199,9 @@ type DescribeDisksRequest struct {
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// - true: performs only a dry run. The system checks the request for potential issues, including whether the AccessKey is valid, the authorization of the Resource Access Management (RAM) user, and whether required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - false: performs a dry run and sends a Normal request. If the request passes the dry run, a 2XX HTTP status code is returned and the operation is performed.
+	// - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the resources are queried.
 	//
 	// Default value: false.
 	//
@@ -215,17 +215,17 @@ type DescribeDisksRequest struct {
 	//
 	// - false: Not enabled.
 	//
-	// > This parameter is deprecated. After a disk is created, the automatic snapshot policy feature is enabled by default. You only need to associate an automatic snapshot policy with the disk.
+	// > This parameter is deprecated. The automatic snapshot policy feature is enabled by default for disks after creation. You only need to associate an automatic snapshot policy with the disk.
 	//
 	// example:
 	//
 	// true
 	EnableAutoSnapshot *bool `json:"EnableAutoSnapshot,omitempty" xml:"EnableAutoSnapshot,omitempty"`
-	// Specifies whether an automatic snapshot policy is applied to the disk.
+	// Specifies whether an automatic snapshot policy is configured for the disk.
 	//
-	// - true: An automatic snapshot policy is applied.
+	// - true: Configured.
 	//
-	// - false: No automatic snapshot policy is applied.
+	// - false: Not configured.
 	//
 	// Default value: false.
 	//
@@ -241,9 +241,9 @@ type DescribeDisksRequest struct {
 	EnableShared *bool `json:"EnableShared,omitempty" xml:"EnableShared,omitempty"`
 	// Specifies whether to query only encrypted disks.
 	//
-	// - true: Queries only encrypted disks.
+	// - true: queries only encrypted disks.
 	//
-	// - false: Does not filter by encryption status.
+	// - false: does not filter disks by encryption status.
 	//
 	// Default value: false.
 	//
@@ -265,7 +265,7 @@ type DescribeDisksRequest struct {
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// The reason why the disk is locked. Valid values:
 	//
-	// - financial: The disk is locked due to overdue payments.
+	// - financial: The disk is locked because of overdue payments.
 	//
 	// - security: The disk is locked for security reasons.
 	//
@@ -279,17 +279,17 @@ type DescribeDisksRequest struct {
 	//
 	// - If this parameter is not specified or is set to a value less than 10, the default value is 10.
 	//
-	// - If this parameter is set to a value greater than 500, the default value is 500.
+	// - If the value is greater than 500, the default value is 500.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether the multi-attach feature is enabled for the disk. Valid values:
+	// Specifies whether the multi-attach feature is enabled. Valid values:
 	//
-	// - Disabled: The multi-attach feature is not enabled.
+	// - Disabled: not enabled.
 	//
-	// - Enabled: The multi-attach feature is enabled.
+	// - Enabled: enabled.
 	//
 	// - LegacyShared: queries Shared Block Storage devices.
 	//
@@ -307,13 +307,13 @@ type DescribeDisksRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be offline soon. Use NextToken and MaxResults for paging operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be offline soon. Use NextToken and MaxResults for paging operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
 	//
 	// example:
 	//
@@ -321,9 +321,9 @@ type DescribeDisksRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether the disk is removable. Valid values:
 	//
-	// - true: The disk is removable. The disk can exist independently and can be freely attached to or detached from instances within the same zone.
+	// - true: The disk is removable. The disk can exist independently and can be attached to or detached from instances within the same zone.
 	//
-	// - false: The disk is not removable. The disk cannot exist independently and cannot be freely attached to or detached from instances within the same zone.
+	// - false: The disk is not removable. The disk cannot exist independently and cannot be attached to or detached from instances within the same zone.
 	//
 	// The Portable attribute of the following types of block storage devices is false, and their lifecycle is the same as that of the associated instance:
 	//
@@ -383,7 +383,7 @@ type DescribeDisksRequest struct {
 	//
 	// All
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags of the disk.
+	// The tags of the disk.
 	Tag []*DescribeDisksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
@@ -736,7 +736,7 @@ type DescribeDisksRequestFilter struct {
 	//
 	// CreationStartTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value used to query resources. When you specify this parameter, you must also specify the `Filter.1.Key` parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC+0.
+	// The filter value used to query resources. When you specify this parameter, you must also specify the Filter.1.Key parameter. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC.
 	//
 	// example:
 	//
@@ -777,7 +777,7 @@ func (s *DescribeDisksRequestFilter) Validate() error {
 type DescribeDisksRequestTag struct {
 	// The tag key of the disk. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
 	//
 	// example:
 	//

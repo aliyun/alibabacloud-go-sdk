@@ -26,13 +26,13 @@ type iStopInvocationRequest interface {
 }
 
 type StopInvocationRequest struct {
-	// The IDs of instances on which you want to stop the command. You can specify up to 50 instance IDs. Valid values of N: 1 to 50.
+	// The IDs of the instances on which you want to stop the command. You can specify up to 50 instance IDs. Valid values of N: 1 to 50.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The command execution ID. You can call [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) to query all execution IDs.
+	// The command execution ID. You can call [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) to query all InvokeId values.
 	//
 	// This parameter is required.
 	//

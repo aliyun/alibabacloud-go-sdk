@@ -46,13 +46,13 @@ type iCopySnapshotRequest interface {
 type CopySnapshotRequest struct {
 	// > This parameter is in invitational preview and is not publicly available.
 	Arn []*CopySnapshotRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// Guarantees the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The value of ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the destination region to which to copy the snapshot.
+	// The ID of the destination region for the new snapshot.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type CopySnapshotRequest struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The customer master key (CMK) in Key Management Service (KMS) in the destination region.
+	// The customer master key (CMK) in the destination region.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type CopySnapshotRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The retention period of the new snapshot, in days. The snapshot is automatically released when the retention period expires. Valid values: 1 to 65536.
+	// The retention period of the new snapshot, in days. The snapshot undergoes automatic release when the retention period expires. Valid values: 1 to 65536.
 	//
 	// Default value: null, which indicates that the snapshot is not subject to automatic release.
 	//

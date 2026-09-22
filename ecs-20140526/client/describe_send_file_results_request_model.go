@@ -42,13 +42,13 @@ type iDescribeSendFileResultsRequest interface {
 }
 
 type DescribeSendFileResultsRequest struct {
-	// The instance ID. If you specify this parameter, all file sending records of the specified instance are queried.
+	// The instance ID. After you specify this parameter, all file sending records of the instance are queried.
 	//
 	// example:
 	//
 	// i-hz0jdfwd9f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The overall sending status of the file. The overall status depends on the combined execution status of all instances in the sending task. Valid values:
+	// The overall sending status of the file. The overall status depends on the common execution status of all target instances. Valid values:
 	//
 	// - Pending: The system is validating or sending the file. The overall status is Pending if the file sending status of at least one instance is Pending.
 	//
@@ -80,7 +80,7 @@ type DescribeSendFileResultsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The file name. If you specify this parameter, all sending records of the file with the specified name are queried.
+	// The name of the file. After you specify this parameter, all sending records of the file are queried.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type DescribeSendFileResultsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeSendFileResultsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the file sending task belongs. After you specify this parameter, you must also specify ResourceGroupId when sending a file. This parameter allows you to filter file sending results by resource group.
+	// The ID of the resource group to which the file sending task belongs. After you specify this parameter, you must also specify ResourceGroupId when sending files. This way, you can filter the file sending results of the specified resource group.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeSendFileResultsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*DescribeSendFileResultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -285,7 +285,7 @@ func (s *DescribeSendFileResultsRequest) Validate() error {
 type DescribeSendFileResultsRequestTag struct {
 	// The tag key of the file sending task. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+	// If you use one tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached with all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//

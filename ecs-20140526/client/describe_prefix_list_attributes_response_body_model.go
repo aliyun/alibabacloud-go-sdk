@@ -30,15 +30,15 @@ type iDescribePrefixListAttributesResponseBody interface {
 type DescribePrefixListAttributesResponseBody struct {
 	// The address family of the prefix list. Valid values:
 	//
-	// - IPv4
+	// - IPv4.
 	//
-	// - IPv6
+	// - IPv6.
 	//
 	// example:
 	//
 	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The time when the prefix list was created.
+	// The time when the prefix list was created. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iDescribeTaskAttributeResponseBody interface {
 }
 
 type DescribeTaskAttributeResponseBody struct {
-	// The time when the task was created.
+	// The time when the task was created. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeTaskAttributeResponseBody struct {
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The time when the task was completed.
+	// The time when the task was completed. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//

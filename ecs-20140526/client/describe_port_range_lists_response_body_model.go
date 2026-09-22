@@ -18,7 +18,7 @@ type iDescribePortRangeListsResponseBody interface {
 }
 
 type DescribePortRangeListsResponseBody struct {
-	// The pagination token returned in this call. If this value is empty, no more data is available.
+	// The pagination token returned in this call. If the return value is empty, no more data is available.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribePortRangeListsResponseBodyPortRangeLists struct {
 	//
 	// 1
 	AssociationCount *int32 `json:"AssociationCount,omitempty" xml:"AssociationCount,omitempty"`
-	// The time when the port range list was created.
+	// The time when the port range list was created. The time is in ISO 8601 format and displayed in UTC.
 	//
 	// example:
 	//

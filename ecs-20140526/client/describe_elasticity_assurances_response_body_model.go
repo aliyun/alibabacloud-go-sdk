@@ -23,13 +23,13 @@ type iDescribeElasticityAssurancesResponseBody interface {
 
 type DescribeElasticityAssurancesResponseBody struct {
 	ElasticityAssuranceSet *DescribeElasticityAssurancesResponseBodyElasticityAssuranceSet `json:"ElasticityAssuranceSet,omitempty" xml:"ElasticityAssuranceSet,omitempty" type:"Struct"`
-	// The number of entries per page for the elasticity assurance service query.
+	// The maximum number of entries per page for the elasticity assurance.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query of elasticity assurance services.
+	// The pagination token for the next query.
 	//
 	// example:
 	//

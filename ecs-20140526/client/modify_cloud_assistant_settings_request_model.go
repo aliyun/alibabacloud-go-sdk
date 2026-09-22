@@ -50,7 +50,7 @@ type ModifyCloudAssistantSettingsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Cloud Assistant resource usage configuration. This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
+	// The Cloud Assistant resource usage configuration. This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
 	//
 	// - Windows: 2.1.4.1065
 	//
@@ -219,9 +219,9 @@ type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {
 	//
 	// The interval between time windows cannot be less than 1 hour.
 	//
-	// Format: Start time (HH:mm)-End time (HH:mm).
+	// Format: start time (HH:mm)-end time (HH:mm).
 	//
-	// Example: [
+	// For example, [
 	//
 	// "02:00-03:00",
 	//
@@ -229,11 +229,11 @@ type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {
 	//
 	// ]
 	//
-	// This indicates that upgrades are allowed daily from 02:00 to 03:00 and from 05:00 to 06:00 in the UTC time zone.
+	// indicates that upgrades are allowed daily from 02:00 to 03:00 and from 05:00 to 06:00 in the UTC time zone.
 	AllowedUpgradeWindow []*string `json:"AllowedUpgradeWindow,omitempty" xml:"AllowedUpgradeWindow,omitempty" type:"Repeated"`
-	// Specifies whether the Cloud Assistant Agent checks for updates and performs an upgrade immediately upon startup. Default value: true.
+	// Specifies whether the Cloud Assistant Agent checks for version updates and performs upgrades immediately upon startup. Default value: true.
 	//
-	// This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
+	// This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
 	//
 	// - Windows: 2.1.4.1065
 	//
@@ -245,7 +245,7 @@ type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {
 	BootstrapUpgrade *bool `json:"BootstrapUpgrade,omitempty" xml:"BootstrapUpgrade,omitempty"`
 	// Specifies whether to prevent the Cloud Assistant Agent from checking for and performing updates. Default value: false.
 	//
-	// This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
+	// This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
 	//
 	// - Windows: 2.1.4.1065
 	//
@@ -255,7 +255,7 @@ type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {
 	//
 	// false
 	DisableUpgrade *bool `json:"DisableUpgrade,omitempty" xml:"DisableUpgrade,omitempty"`
-	// Specifies whether to enable the custom Agent upgrade configuration. If this parameter is set to false, the system attempts to upgrade the Agent every 30 minutes by default.
+	// Specifies whether to enable custom Agent upgrade configuration. If set to false, the default behavior of attempting an upgrade every 30 minutes is retained.
 	//
 	// Default value: false.
 	//
@@ -263,13 +263,13 @@ type ModifyCloudAssistantSettingsRequestAgentUpgradeConfig struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The time zone for the allowed upgrade time windows. Default value: UTC.
+	// The time zone for the allowed upgrade time windows. The default time zone is UTC.
 	//
-	// The time zone can be specified in the following formats:
+	// The time zone can be specified in the following two formats:
 	//
-	// - Full time zone name, such as Asia/Shanghai or America/Los_Angeles.
+	// - Full time zone name: such as Asia/Shanghai or America/Los_Angeles.
 	//
-	// - GMT offset from Greenwich Mean Time, such as GMT+8:00 or GMT-7:00. Leading zeros are not supported for the hour value.
+	// - GMT offset from Greenwich Mean Time: such as GMT+8:00 or GMT-7:00. Leading zeros are not supported for the hour value.
 	//
 	// example:
 	//
@@ -357,7 +357,7 @@ type ModifyCloudAssistantSettingsRequestOssDeliveryConfig struct {
 	//
 	// AES256
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" xml:"EncryptionAlgorithm,omitempty"`
-	// The ID of the customer master key (CMK) when the encryption method is set to KMS.
+	// The customer master key (CMK) ID when the encryption method is set to KMS.
 	//
 	// example:
 	//
@@ -365,23 +365,23 @@ type ModifyCloudAssistantSettingsRequestOssDeliveryConfig struct {
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
 	// The OSS encryption method. Valid values:
 	//
-	// - Inherit: inherits the encryption method of the bucket.
+	// - Inherit: Inherits the encryption method of the bucket.
 	//
-	// - OssManaged: OSS-managed encryption.
+	// - OssManaged: Uses OSS-managed encryption.
 	//
-	// - KMS: Key Management Service (KMS) encryption.
+	// - KMS: Uses KMS-based encryption.
 	//
 	// example:
 	//
 	// Inherit
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The directory prefix of the OSS bucket. The following limits apply:
+	// The directory prefix of the OSS bucket. Constraints:
 	//
 	// - The prefix cannot exceed 254 characters in length.
 	//
 	// - The prefix cannot start with a forward slash (/) or a backslash (\\).
 	//
-	// > Note: Set this parameter to an empty string ("") if no directory prefix is required. If a prefix was previously configured and is no longer needed, set this parameter to an empty string ("") to clear it.
+	// > Note: Pass an empty string ("") to indicate that no directory prefix is required. If a prefix was previously set and is no longer needed, pass an empty string ("") to clear it.
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type ModifyCloudAssistantSettingsRequestResourceUsageConfig struct {
 	//
 	// 30
 	LogFileCountLimit *int32 `json:"LogFileCountLimit,omitempty" xml:"LogFileCountLimit,omitempty"`
-	// The maximum size of a single Cloud Assistant log file. You must specify the unit (B|KB|MB).
+	// The size limit of a single Cloud Assistant log file. You must specify the unit (B|KB|MB).
 	//
 	// - Default value: 100MB.
 	//
@@ -512,7 +512,7 @@ type ModifyCloudAssistantSettingsRequestResourceUsageConfig struct {
 	//
 	// 50MB
 	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	// The maximum number of consecutive times that CPU or memory resources usage can exceed the limit before the Cloud Assistant Agent automatically stops running.
+	// The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. When this limit is reached, the Cloud Assistant Agent automatically stops running.
 	//
 	// - Default value: 3.
 	//
@@ -597,9 +597,9 @@ type ModifyCloudAssistantSettingsRequestSessionManagerConfig struct {
 	//
 	// 	- false: Disabled.
 	//
-	// Note:
+	// Precautions:
 	//
-	// 	- Enabling or disabling the session feature takes effect across all regions.
+	// 	- Enabling or disabling the session feature takes effect in all regions.
 	//
 	// example:
 	//

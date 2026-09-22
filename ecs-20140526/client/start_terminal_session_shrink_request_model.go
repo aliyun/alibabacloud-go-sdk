@@ -40,7 +40,7 @@ type iStartTerminalSessionShrinkRequest interface {
 }
 
 type StartTerminalSessionShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type StartTerminalSessionShrinkRequest struct {
 	//
 	// ssh root@192.168.0.246
 	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
-	// The network type of the WebSocket URL required for the remote connection to the instance. Valid values:
+	// The network type of the WebSocket URL required for establishing a remote connection to the instance. Valid values:
 	//
-	// - Internet: public network. This is the default value.
+	// - Internet: Internet. This is the default value.
 	//
 	// - Intranet: internal network.
 	//
@@ -80,7 +80,7 @@ type StartTerminalSessionShrinkRequest struct {
 	//
 	// axtSecretPassword
 	PasswordName *string `json:"PasswordName,omitempty" xml:"PasswordName,omitempty"`
-	// The port number of the ECS instance for data forwarding. After this parameter is set, the Cloud Assistant Agent forwards data to the specified port number for port forwarding. For example, SSH uses port 22.
+	// The port number of the ECS instance for data forwarding. After this parameter is set, Cloud Assistant Agent forwards data to the specified port for port forwarding. For example, SSH uses port 22.
 	//
 	// Default value: empty, which indicates that no port number is set for data forwarding.
 	//

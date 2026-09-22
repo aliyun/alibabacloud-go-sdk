@@ -44,7 +44,7 @@ type DescribePortRangeListsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call to this operation. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribePortRangeListsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000. You can invoke [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) to query the list of resource groups.
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000. You can invoke [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) to query the list of resource groups.
 	//
 	// >Filtering by the default resource group is not supported.
 	//
@@ -205,7 +205,7 @@ func (s *DescribePortRangeListsRequest) Validate() error {
 type DescribePortRangeListsRequestTag struct {
 	// The tag key of the instance. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to query resources.
+	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count that has all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to query resources.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDeleteCommandRequest interface {
 }
 
 type DeleteCommandRequest struct {
-	// The command ID. You can call [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) to query all available command IDs.
+	// The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
 	//
 	// This parameter is required.
 	//

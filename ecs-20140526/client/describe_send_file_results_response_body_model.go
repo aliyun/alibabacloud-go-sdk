@@ -31,7 +31,7 @@ type DescribeSendFileResultsResponseBody struct {
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the query result.
+	// The page number of the returned results.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeSendFileResultsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of scripts.
+	// The total number of entries.
 	//
 	// example:
 	//

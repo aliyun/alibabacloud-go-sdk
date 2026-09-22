@@ -56,10 +56,11 @@ type DescribeAutoProvisioningGroupsRequest struct {
 	//
 	// active
 	AutoProvisioningGroupStatus []*string `json:"AutoProvisioningGroupStatus,omitempty" xml:"AutoProvisioningGroupStatus,omitempty" type:"Repeated"`
-	AutoProvisioningGroupTypes  []*string `json:"AutoProvisioningGroupTypes,omitempty" xml:"AutoProvisioningGroupTypes,omitempty" type:"Repeated"`
-	OwnerAccount                *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the paging query to return.
+	// The type of the auto-provisioning group. Valid values: request, maintain, and candidate.
+	AutoProvisioningGroupTypes []*string `json:"AutoProvisioningGroupTypes,omitempty" xml:"AutoProvisioningGroupTypes,omitempty" type:"Repeated"`
+	OwnerAccount               *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number of the list to return in a paging query.
 	//
 	// Minimum value: 1.
 	//
@@ -69,7 +70,7 @@ type DescribeAutoProvisioningGroupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in the paging query. Settings:
+	// The number of entries per page in a paging query.
 	//
 	// Maximum value: 100.
 	//

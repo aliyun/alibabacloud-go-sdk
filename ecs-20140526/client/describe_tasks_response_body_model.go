@@ -24,13 +24,13 @@ type iDescribeTasksResponseBody interface {
 }
 
 type DescribeTasksResponseBody struct {
-	// The page number of the current page in a paged query.
+	// The page number of the current page in the paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//

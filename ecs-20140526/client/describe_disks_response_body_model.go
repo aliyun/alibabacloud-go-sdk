@@ -25,19 +25,19 @@ type iDescribeDisksResponseBody interface {
 
 type DescribeDisksResponseBody struct {
 	Disks *DescribeDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	// The pagination token returned in this call.
+	// The query token returned in this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// > This parameter will be offline soon. Use NextToken and MaxResults for paging operations.
+	// > This parameter will be offline soon. Use `NextToken` and `MaxResults` to perform paging query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be offline soon. Use NextToken and MaxResults for paging operations.
+	// > This parameter will be offline soon. Use `NextToken` and `MaxResults` to perform paging query operations.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeDisksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	//
-	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is invalid.
+	// > When you use `MaxResults` and `NextToken` parameters to perform a paging query, the returned `TotalCount` parameter value is invalid.
 	//
 	// example:
 	//

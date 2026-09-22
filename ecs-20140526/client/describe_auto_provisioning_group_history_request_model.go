@@ -40,7 +40,7 @@ type DescribeAutoProvisioningGroupHistoryRequest struct {
 	//
 	// apg-bp67acfmxazb4p****
 	AutoProvisioningGroupId *string `json:"AutoProvisioningGroupId,omitempty" xml:"AutoProvisioningGroupId,omitempty"`
-	// The end of the time range to query scheduling history. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time for querying the scheduling history. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeAutoProvisioningGroupHistoryRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The current page number in a paging query. Minimum value: 1.
+	// The page number of the current page in a paged query. Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -56,7 +56,7 @@ type DescribeAutoProvisioningGroupHistoryRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Settings for paging query. Maximum value: 100.
+	// The number of entries per page in a paged query. Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -74,7 +74,7 @@ type DescribeAutoProvisioningGroupHistoryRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query scheduling history. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time for querying the scheduling history. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

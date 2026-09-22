@@ -38,11 +38,11 @@ type StartInstanceRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to recover the instance to its initial health state when a local disk fails. This parameter is applicable to instance families that use local disks, such as the d1, i1, and i2 instance families. Valid values:
+	// Specifies whether to recover the instance to its initial health state when a local disk fails. This parameter is applicable to instances that use local disks, such as instances in the d1, i1, or i2 instance families. Valid values:
 	//
 	// - true: Recovers the instance to its initial health state.
 	//
-	// 	Warning: All data stored on the local disks of the instance will be lost.
+	// 	Warning: All data stored on the local disks of the instance is lost.
 	//
 	// - false: Does not perform any action and maintains the current state.
 	//
@@ -52,7 +52,7 @@ type StartInstanceRequest struct {
 	//
 	// true
 	InitLocalDisk *bool `json:"InitLocalDisk,omitempty" xml:"InitLocalDisk,omitempty"`
-	// The instance ID of the instance that you want to start.
+	// The ID of the instance that you want to start.
 	//
 	// This parameter is required.
 	//

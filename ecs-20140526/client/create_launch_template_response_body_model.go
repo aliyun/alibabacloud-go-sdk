@@ -18,13 +18,13 @@ type iCreateLaunchTemplateResponseBody interface {
 }
 
 type CreateLaunchTemplateResponseBody struct {
-	// The launch template ID.
+	// The ID of the launch template.
 	//
 	// example:
 	//
 	// lt-m5eiaupmvm2op9d****
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The launch template version number.
+	// The version number of the launch template.
 	//
 	// example:
 	//

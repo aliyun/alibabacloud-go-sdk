@@ -82,7 +82,7 @@ type DescribeDeploymentSetsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page for the paged query.
 	//
 	// Maximum value: 50.
 	//
@@ -104,11 +104,11 @@ type DescribeDeploymentSetsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The deployment strategy. Valid values:
 	//
-	// - Availability: high availability.
+	// - Availability: high availability strategy.
 	//
-	// - AvailabilityGroup: high availability for deployment set groups.
+	// - AvailabilityGroup: high availability group strategy.
 	//
-	// - LowLatency: low network latency.
+	// - LowLatency: low network latency strategy.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeDeploymentSetsRequest struct {
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 	// The deployment type. Valid values:
 	//
-	// - host: physical server
+	// - host: physical machine
 	//
 	// - sw: vSwitch
 	//

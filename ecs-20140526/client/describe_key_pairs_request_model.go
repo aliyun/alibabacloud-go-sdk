@@ -42,7 +42,7 @@ type DescribeKeyPairsRequest struct {
 	//
 	// false
 	IncludePublicKey *bool `json:"IncludePublicKey,omitempty" xml:"IncludePublicKey,omitempty"`
-	// The fingerprint of the key pair. The public key fingerprint format is defined in RFC 4716 and uses the MD5 message digest algorithm. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
+	// The fingerprint of the key pair. The public key fingerprint format is defined in RFC 4716 and uses the MD5 message digest algorithm. For more information, refer to [RFC 4716](https://tools.ietf.org/html/rfc4716).
 	//
 	// example:
 	//

@@ -64,11 +64,11 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// Specifies whether to return the execution history of scheduled commands. Valid values:
+	// Specifies whether to return the history records of scheduled command executions. Valid values:
 	//
-	//  - true: Returns the execution results of scheduled commands. When this parameter is set to true, the InvokeId parameter cannot be empty and must be the execution ID of a scheduled command (RepeatMode is Period) or a command that runs on each system startup (RepeatMode is EveryReboot).
+	//  - true: Returns the results of scheduled command executions. When this parameter is set to true, the InvokeId parameter cannot be empty and must be the execution ID of a scheduled command (RepeatMode is Period) or a command that runs on each system startup (RepeatMode is EveryReboot).
 	//
-	//  - false: Does not return the execution history.
+	//  - false: Does not return the history.
 	//
 	// Default value: false.
 	//
@@ -82,7 +82,7 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// i-bp1i7gg30r52z2em****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The execution ID of the command. You can call [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) to query the InvokeId.
+	// The command execution ID. You can call [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) to query the InvokeId.
 	//
 	// example:
 	//
@@ -94,33 +94,33 @@ type DescribeInvocationResultsRequest struct {
 	//
 	//     - Scheduled execution: The execution status remains running until you manually stop the scheduled command.
 	//
-	//     - One-time execution: The overall execution status is running as long as the command is running on any instance.
+	//     - One-time execution: The overall execution status is running as long as any command process is running.
 	//
 	// - Finished: The command execution is complete.
 	//
-	//     - Scheduled execution: The command process cannot be in the finished state.
+	//     - Scheduled execution: The command process status cannot be Finished.
 	//
-	//     - One-time execution: The command execution is complete on all instances, or the command process is manually stopped on some instances and the execution is complete on the remaining instances.
+	//     - One-time execution: All instances have completed execution, or you manually stopped the command process on some instances and the remaining instances have completed execution.
 	//
 	// - Success:
 	//
 	//     - One-time execution: The command execution is complete and the exit code is 0.
 	//
-	//     - Scheduled execution: The last execution was successful with an exit code of 0, and the specified execution time has ended.
+	//     - Scheduled execution: The last execution succeeded with an exit code of 0, and the specified execution time has ended.
 	//
 	// - Failed: The command execution failed.
 	//
-	//     - Scheduled execution: The command process cannot be in the failed state.
+	//     - Scheduled execution: The command process status cannot be Failed.
 	//
-	//     - One-time execution: The command execution failed on all instances.
+	//     - One-time execution: All instances failed to run the command.
 	//
 	// - PartialFailed: The command execution partially failed.
 	//
-	//     - Scheduled execution: The command process cannot be in the partially failed state.
+	//     - Scheduled execution: The command process status cannot be PartialFailed.
 	//
-	//     - One-time execution: The command execution failed on some instances, so the overall execution status is partially failed.
+	//     - One-time execution: Some instances have failed command processes, so the overall execution status is partially failed.
 	//
-	// - Stopped: The command execution is stopped.
+	// - Stopped: The command execution has been stopped.
 	//
 	// - Stopping: The command execution is being stopped.
 	//
@@ -128,7 +128,7 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// Running
 	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	// The maximum number of entries per page for paging query.
+	// The maximum number of entries per page for paging queries.
 	//
 	// Maximum value: 50.
 	//
@@ -146,13 +146,13 @@ type DescribeInvocationResultsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to go offline. Use NextToken and MaxResults to perform paging query operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to go offline. Use NextToken and MaxResults to perform paging query operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribeInvocationResultsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the command execution belongs. After you specify this parameter, you must also specify ResourceGroupId when you run the command. This parameter is used to filter the corresponding command execution results.
+	// The resource group ID of the command execution. After you specify this parameter, the resource group ID must also be specified when you run the command. This parameter is used to filter the corresponding command execution results.
 	//
 	// example:
 	//
@@ -355,7 +355,7 @@ func (s *DescribeInvocationResultsRequest) Validate() error {
 type DescribeInvocationResultsRequestTag struct {
 	// The tag key of the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all the specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to execute the query.
+	// If you use a single tag to filter resources, the number of resources with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to query the resources.
 	//
 	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//

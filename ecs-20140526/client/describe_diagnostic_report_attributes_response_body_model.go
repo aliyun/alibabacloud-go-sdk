@@ -44,19 +44,19 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// {"OfflineDiagReportStatus":"CONFIRMED"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The time when the diagnostic report was created.
+	// The time when the diagnostic report was created. The time is in ISO 8601 format in UTC.
 	//
 	// example:
 	//
 	// 2022-07-11T12:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The end time. This parameter was specified when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
+	// The end time. This is the parameter passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report. The time is in ISO 8601 format in UTC.
 	//
 	// example:
 	//
 	// 2022-07-11T14:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the diagnostic report was completed.
+	// The time when the diagnostic report was completed. The time is in ISO 8601 format in UTC.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// dms-bp17p0qwtr72zmu*****
 	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
-	// The diagnostic report ID. The unique identifier of the resource diagnostic report.
+	// The ID of the diagnostic report. This is the unique identifier of the resource diagnostic report.
 	//
 	// example:
 	//
@@ -93,9 +93,9 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The severity level of the report. This value represents the most severe level among all metrics. The severity levels in ascending order are:
+	// The severity level of the report. This is the most severe level among all metrics. The severity levels in ascending order are:
 	//
-	// - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnosis process exited abnormally. No diagnostic conclusion is available.
+	// - Unknown: The initial state. The diagnosis has not started, or the diagnostic process exited abnormally. No diagnostic conclusion is available.
 	//
 	// - Normal: The diagnosis is normal. No issues were found.
 	//
@@ -109,7 +109,7 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// Normal
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The start time. This parameter was specified when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report.
+	// The start time. This is the parameter passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report. The time is in ISO 8601 format in UTC.
 	//
 	// example:
 	//

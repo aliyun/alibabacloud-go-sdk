@@ -68,7 +68,7 @@ type DeleteActivationResponseBodyActivation struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The creation time.
+	// The time when the activation code was created. The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//

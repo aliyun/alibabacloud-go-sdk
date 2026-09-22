@@ -36,7 +36,7 @@ type iModifyCommandRequest interface {
 }
 
 type ModifyCommandRequest struct {
-	// > This parameter is deprecated and does not take effect.
+	// > This parameter is deprecated and does not take effect even if specified.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ModifyCommandRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The maximum timeout period for the command to run on ECS instances. Unit: seconds. If the command cannot be completed within the specified timeout period, the command process is forcefully terminated by canceling the PID of the command.
+	// The maximum timeout period for the command to run on ECS instances. Unit: seconds. If the command cannot be completed within the specified timeout period, the command times out. When a timeout occurs, the command process is forcefully terminated by canceling the PID of the command.
 	//
 	// example:
 	//

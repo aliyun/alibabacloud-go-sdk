@@ -40,7 +40,7 @@ type DescribeCloudAssistantStatusRequest struct {
 	//
 	// i-bp1iudwa5b1tqa****
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The maximum number of entries per page for a paged query. If **InstanceId*	- is specified, this parameter is ignored.
+	// The maximum number of entries per page for a paged query. If **InstanceId*	- is set, this parameter is ignored.
 	//
 	// Maximum value: 50.
 	//

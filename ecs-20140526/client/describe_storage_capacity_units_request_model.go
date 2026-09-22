@@ -56,7 +56,7 @@ type DescribeStorageCapacityUnitsRequest struct {
 	//
 	// 20
 	Capacity *int32 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The name of the SCU. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The name of the SCU. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//

@@ -72,7 +72,7 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The time when the image was created.
+	// The time when the image was created. The time follows the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// - self: your custom image.
 	//
-	// - others: shared image from other users.
+	// - others: public image of another user.
 	//
 	// - marketplace: Alibaba Cloud Marketplace image.
 	//
@@ -147,7 +147,7 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	//
 	// true
 	IsSupportCloudinit *bool `json:"IsSupportCloudinit,omitempty" xml:"IsSupportCloudinit,omitempty"`
-	// Indicates whether the image can run on an I/O optimized instance.
+	// Indicates whether the image can be used on I/O optimized instances.
 	//
 	// example:
 	//
@@ -208,11 +208,11 @@ type DescribeImageFromFamilyResponseBodyImage struct {
 	// Available
 	Status *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeImageFromFamilyResponseBodyImageTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of resource that references the image. Valid values:
+	// The type of resource to which the image is associated. Valid values:
 	//
-	// - instance: One or more ECS instances have been created from the image.
+	// - instance: one or more ECS instances have been created from the image.
 	//
-	// - none: No ECS instances have been created from the image.
+	// - none: no ECS instances have been created from the image.
 	//
 	// example:
 	//
