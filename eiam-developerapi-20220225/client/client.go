@@ -25,14 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"eu-central-1":   dara.String("eiam-developerapi.eu-central-1.aliyuncs.com"),
-		"cn-hongkong":    dara.String("eiam-developerapi.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("eiam-developerapi.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-5": dara.String("eiam-developerapi.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-1": dara.String("eiam-developerapi.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2": dara.String("eiam-developerapi.ap-northeast-2.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -511,7 +503,7 @@ func (client *Client) CreateUser(instanceId *string, applicationId *string, requ
 //
 // This API uses an Access Token issued by IDaaS for identity authentication and authorization.
 //
-// Ensure that the Access Token you provide has the "Manage Static Credentials" permission for the IDaaS built-in PAM application (Privileged Access Management).
+// Ensure that the Access Token you pass in has the "Manage Static Credentials" permission for the IDaaS built-in PAM application (Privileged Access Management).
 //
 // > The corresponding scope is `urn:cloud:idaas:pam|credential:manage`.
 //
@@ -603,7 +595,7 @@ func (client *Client) CreateUserExclusiveCredentialWithOptions(instanceId *strin
 //
 // This API uses an Access Token issued by IDaaS for identity authentication and authorization.
 //
-// Ensure that the Access Token you provide has the "Manage Static Credentials" permission for the IDaaS built-in PAM application (Privileged Access Management).
+// Ensure that the Access Token you pass in has the "Manage Static Credentials" permission for the IDaaS built-in PAM application (Privileged Access Management).
 //
 // > The corresponding scope is `urn:cloud:idaas:pam|credential:manage`.
 //
@@ -3273,7 +3265,7 @@ func (client *Client) ListUsersForGroup(instanceId *string, applicationId *strin
 //
 // This API authenticates and authorizes requests based on an Access Token issued by IDaaS.
 //
-// Ensure that the Access Token has the "Obtain Cloud Role Access Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
+// Ensure that the Access Token you provide has the "Obtain Cloud Role Access Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
 //
 // > The corresponding scope is `urn:cloud:idaas:pam|cloud_account_role:obtain_access_credential`.
 //
@@ -3341,7 +3333,7 @@ func (client *Client) ObtainCloudAccountRoleAccessCredentialWithOptions(instance
 //
 // This API authenticates and authorizes requests based on an Access Token issued by IDaaS.
 //
-// Ensure that the Access Token has the "Obtain Cloud Role Access Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
+// Ensure that the Access Token you provide has the "Obtain Cloud Role Access Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
 //
 // > The corresponding scope is `urn:cloud:idaas:pam|cloud_account_role:obtain_access_credential`.
 //
@@ -3362,15 +3354,15 @@ func (client *Client) ObtainCloudAccountRoleAccessCredential(instanceId *string,
 
 // Summary:
 //
-// Retrieves the plaintext of a secret.
+// Queries credential information and retrieves the credential plaintext.
 //
 // Description:
 //
-// This API uses an access token from IDaaS for authentication and authorization.
+// This API uses an Access Token issued by IDaaS for identity authentication and authorization.
 //
-// The access token must have permissions to obtain static credentials for the built-in privileged access management (PAM) application in IDaaS.
+// Ensure that the Access Token you pass in has the "Obtain Static Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
 //
-// > The required scope is `urn:cloud:idaas:pam|credential:obtain`.
+// > The corresponding scope is `urn:cloud:idaas:pam|credential:obtain`.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -3426,15 +3418,15 @@ func (client *Client) ObtainCredentialWithOptions(instanceId *string, request *O
 
 // Summary:
 //
-// Retrieves the plaintext of a secret.
+// Queries credential information and retrieves the credential plaintext.
 //
 // Description:
 //
-// This API uses an access token from IDaaS for authentication and authorization.
+// This API uses an Access Token issued by IDaaS for identity authentication and authorization.
 //
-// The access token must have permissions to obtain static credentials for the built-in privileged access management (PAM) application in IDaaS.
+// Ensure that the Access Token you pass in has the "Obtain Static Credential" permission for the IDaaS built-in PAM application (Privileged Access Management).
 //
-// > The required scope is `urn:cloud:idaas:pam|credential:obtain`.
+// > The corresponding scope is `urn:cloud:idaas:pam|credential:obtain`.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -3767,6 +3759,81 @@ func (client *Client) PatchOrganizationalUnit(instanceId *string, applicationId 
 	headers := &PatchOrganizationalUnitHeaders{}
 	_result = &PatchOrganizationalUnitResponse{}
 	_body, _err := client.PatchOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Moves an organizational unit.
+//
+// @param request - PatchOrganizationalUnitParentIdRequest
+//
+// @param headers - PatchOrganizationalUnitParentIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PatchOrganizationalUnitParentIdResponse
+func (client *Client) PatchOrganizationalUnitParentIdWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, request *PatchOrganizationalUnitParentIdRequest, headers *PatchOrganizationalUnitParentIdHeaders, runtime *dara.RuntimeOptions) (_result *PatchOrganizationalUnitParentIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ParentId) {
+		body["parentId"] = request.ParentId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PatchOrganizationalUnitParentId"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/" + dara.PercentEncode(dara.StringValue(applicationId)) + "/organizationalUnits/" + dara.PercentEncode(dara.StringValue(organizationalUnitId)) + "/parentId"),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &PatchOrganizationalUnitParentIdResponse{}
+	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Moves an organizational unit.
+//
+// @param request - PatchOrganizationalUnitParentIdRequest
+//
+// @return PatchOrganizationalUnitParentIdResponse
+func (client *Client) PatchOrganizationalUnitParentId(instanceId *string, applicationId *string, organizationalUnitId *string, request *PatchOrganizationalUnitParentIdRequest) (_result *PatchOrganizationalUnitParentIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &PatchOrganizationalUnitParentIdHeaders{}
+	_result = &PatchOrganizationalUnitParentIdResponse{}
+	_body, _err := client.PatchOrganizationalUnitParentIdWithOptions(instanceId, applicationId, organizationalUnitId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

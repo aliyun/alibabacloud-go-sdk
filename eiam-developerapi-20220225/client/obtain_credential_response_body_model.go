@@ -46,25 +46,30 @@ type iObtainCredentialResponseBody interface {
 }
 
 type ObtainCredentialResponseBody struct {
-	// The creation time of the credential, formatted as a Unix timestamp in milliseconds.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The detailed content of the credential. The structure of this object depends on the value of `credentialType`.
+	// The credential content.
 	CredentialContent *ObtainCredentialResponseBodyCredentialContent `json:"credentialContent,omitempty" xml:"credentialContent,omitempty" type:"Struct"`
-	// Indicates how the credential was created. Valid values:
+	// The creation type of the credential. Valid values:
 	//
-	// - `system_init`: System-initiated.
+	// - system_init: Created by the system.
 	//
-	// - `user_custom`: User-created.
+	// - user_custom: Created by the user.
 	//
 	// example:
 	//
 	// user_custom
 	CredentialCreationType *string `json:"credentialCreationType,omitempty" xml:"credentialCreationType,omitempty"`
-	CredentialExternalId   *string `json:"credentialExternalId,omitempty" xml:"credentialExternalId,omitempty"`
+	// The external unique identifier of the credential.
+	//
+	// example:
+	//
+	// 23528e9957304f57b98112c72788b5xxxxx
+	CredentialExternalId *string `json:"credentialExternalId,omitempty" xml:"credentialExternalId,omitempty"`
 	// The credential ID.
 	//
 	// example:
@@ -83,31 +88,31 @@ type ObtainCredentialResponseBody struct {
 	//
 	// credential_name
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	// The usage scenario for the credential. Valid values:
+	// The Scenarios label of the credential. Valid values:
 	//
-	// - `llm`: For use with a large language model.
+	// - llm: Large language model.
 	//
-	// - `saas`: For use with a third-party SaaS application.
+	// - saas: Third-party SaaS service.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"credentialScenarioLabel,omitempty" xml:"credentialScenarioLabel,omitempty"`
-	// The sharing scope of the credential, such as whether it is exclusive to a specific account.
+	// The credential sharing scope.
 	//
 	// example:
 	//
 	// user_exclusive
 	CredentialSharingScope *string `json:"credentialSharingScope,omitempty" xml:"credentialSharingScope,omitempty"`
-	// The ID of the credential\\"s subject.
+	// The subject ID that the credential belongs to.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"credentialSubjectId,omitempty" xml:"credentialSubjectId,omitempty"`
-	// The credential\\"s subject type. Valid values:
+	// The subject type that the credential belongs to. Valid values:
 	//
-	// - `authentication_token_provider`: An authentication token provider.
+	// - authentication_token_provider: Authentication token provider.
 	//
 	// example:
 	//
@@ -115,9 +120,9 @@ type ObtainCredentialResponseBody struct {
 	CredentialSubjectType *string `json:"credentialSubjectType,omitempty" xml:"credentialSubjectType,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - `api_key`: The credential is an API key.
+	// - api_key: API Key authentication credential.
 	//
-	// - `oauth_client`: The credential represents an OAuth client.
+	// - oauth_client: OAuth client authentication credential.
 	//
 	// example:
 	//
@@ -129,7 +134,7 @@ type ObtainCredentialResponseBody struct {
 	//
 	// credential_description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the account that exclusively owns the credential. This field is present only when `credentialSharingScope` is `user_exclusive`.
+	// The exclusive account ID of the credential.
 	//
 	// example:
 	//
@@ -141,17 +146,17 @@ type ObtainCredentialResponseBody struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The status of the credential. Valid values:
+	// The credential status. Valid values:
 	//
-	// - `enabled`: The credential can be used.
+	// - enabled: Enabled.
 	//
-	// - `disabled`: The credential cannot be used.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time of the credential, formatted as a Unix timestamp in milliseconds.
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -330,9 +335,9 @@ func (s *ObtainCredentialResponseBody) Validate() error {
 }
 
 type ObtainCredentialResponseBodyCredentialContent struct {
-	// Contains details for an API key credential. Returned only when `credentialType` is `api_key`.
+	// The credential content of the API Key credential type.
 	ApiKeyContent *ObtainCredentialResponseBodyCredentialContentApiKeyContent `json:"apiKeyContent,omitempty" xml:"apiKeyContent,omitempty" type:"Struct"`
-	// Contains details for an OAuth client credential. Returned only when `credentialType` is `oauth_client`.
+	// The credential content of the OAuth client authentication credential type.
 	OauthClientContent *ObtainCredentialResponseBodyCredentialContentOauthClientContent `json:"oauthClientContent,omitempty" xml:"oauthClientContent,omitempty" type:"Struct"`
 }
 
@@ -377,7 +382,7 @@ func (s *ObtainCredentialResponseBodyCredentialContent) Validate() error {
 }
 
 type ObtainCredentialResponseBodyCredentialContentApiKeyContent struct {
-	// The API key value.
+	// The value of the API Key.
 	//
 	// example:
 	//
@@ -407,13 +412,13 @@ func (s *ObtainCredentialResponseBodyCredentialContentApiKeyContent) Validate() 
 }
 
 type ObtainCredentialResponseBodyCredentialContentOauthClientContent struct {
-	// The `client_id` for OAuth 2.0.
+	// The client_id of the OAuth protocol.
 	//
 	// example:
 	//
 	// dmvncmxersdxxxxxx
 	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The `client_secret` for OAuth 2.0.
+	// The client_secret of the OAuth protocol.
 	//
 	// example:
 	//

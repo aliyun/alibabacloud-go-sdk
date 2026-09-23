@@ -132,7 +132,7 @@ func (s *ObtainCloudAccountRoleAccessCredentialResponseBody) Validate() error {
 }
 
 type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential struct {
-	// The expiration time of the temporary access credentials for the cloud account role, in UNIX timestamp format and in seconds.
+	// The expiration time of the temporary access credentials for the cloud account role, in UNIX timestamp format (seconds).
 	//
 	// example:
 	//
@@ -143,7 +143,8 @@ type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCre
 	// > This field is returned only when the cloud account type associated with the cloud account role is Alibaba Cloud (alibaba_cloud).
 	AlibabaCloudStsToken *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken `json:"alibabaCloudStsToken,omitempty" xml:"alibabaCloudStsToken,omitempty" type:"Struct"`
 	// The STS Token representing an AWS role.
-	AwsStsToken          *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken          `json:"awsStsToken,omitempty" xml:"awsStsToken,omitempty" type:"Struct"`
+	AwsStsToken *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken `json:"awsStsToken,omitempty" xml:"awsStsToken,omitempty" type:"Struct"`
+	// The STS Token representing a Tencent Cloud role.
 	TencentCloudStsToken *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialTencentCloudStsToken `json:"tencentCloudStsToken,omitempty" xml:"tencentCloudStsToken,omitempty" type:"Struct"`
 }
 
@@ -223,7 +224,7 @@ type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCre
 	//
 	// CVwjCkNzTMupZ8NbTCxCBRq3K16jtcWFTJAyBEv2****
 	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
-	// The expiration time of the token (UTC).
+	// The token expiration time (UTC).
 	//
 	// example:
 	//
@@ -292,7 +293,7 @@ type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCre
 	//
 	// ASIAYBGN7XJKRFOM****
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
-	// The expiration time of the STS Token (UTC).
+	// The STS Token expiration time (UTC).
 	//
 	// example:
 	//
@@ -304,7 +305,7 @@ type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCre
 	//
 	// CVwjCkNzTMupZ8NbTCxCBRq3K16jtcWFTJAyBEv2****
 	SecretAccessKey *string `json:"secretAccessKey,omitempty" xml:"secretAccessKey,omitempty"`
-	// The session token of the temporary credentials.
+	// The session security token of the temporary credentials.
 	//
 	// example:
 	//
@@ -361,10 +362,30 @@ func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAcces
 }
 
 type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialTencentCloudStsToken struct {
-	Expiration   *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	TmpSecretId  *string `json:"tmpSecretId,omitempty" xml:"tmpSecretId,omitempty"`
+	// The STS Token expiration time (UTC).
+	//
+	// example:
+	//
+	// 2021-10-20T04:27:09Z
+	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	// The access key ID.
+	//
+	// example:
+	//
+	// AKIDq2UjXVflTbnaxpFl0RFdN9yj****
+	TmpSecretId *string `json:"tmpSecretId,omitempty" xml:"tmpSecretId,omitempty"`
+	// The secret access key.
+	//
+	// example:
+	//
+	// 3fGkJjyI+ZHWTxnq8VJHtYGRg****
 	TmpSecretKey *string `json:"tmpSecretKey,omitempty" xml:"tmpSecretKey,omitempty"`
-	Token        *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The session security token of the temporary credentials.
+	//
+	// example:
+	//
+	// aHv1Z6aO7sxRbV4G2vjAij50jdew5Kaa****
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialTencentCloudStsToken) String() string {

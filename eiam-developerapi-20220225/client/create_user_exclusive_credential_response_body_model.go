@@ -18,6 +18,11 @@ type iCreateUserExclusiveCredentialResponseBody interface {
 }
 
 type CreateUserExclusiveCredentialResponseBody struct {
+	// The encrypted ciphertext of the credential.
+	//
+	// example:
+	//
+	// eyJraWQiOiJBVVRIU0tFWxxxxx
 	CredentialCiphertext *string `json:"credentialCiphertext,omitempty" xml:"credentialCiphertext,omitempty"`
 	// The credential ID.
 	//

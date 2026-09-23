@@ -31,8 +31,13 @@ type CreateUserExclusiveCredentialRequest struct {
 	// The credential content.
 	//
 	// This parameter is required.
-	CredentialContent    *CreateUserExclusiveCredentialRequestCredentialContent `json:"credentialContent,omitempty" xml:"credentialContent,omitempty" type:"Struct"`
-	CredentialExternalId *string                                                `json:"credentialExternalId,omitempty" xml:"credentialExternalId,omitempty"`
+	CredentialContent *CreateUserExclusiveCredentialRequestCredentialContent `json:"credentialContent,omitempty" xml:"credentialContent,omitempty" type:"Struct"`
+	// The external unique identifier of the credential.
+	//
+	// example:
+	//
+	// YNWLVQAZMNRROYWKxxx
+	CredentialExternalId *string `json:"credentialExternalId,omitempty" xml:"credentialExternalId,omitempty"`
 	// The credential identifier.
 	//
 	// This parameter is required.
@@ -76,8 +81,13 @@ type CreateUserExclusiveCredentialRequest struct {
 	// example:
 	//
 	// credential_description
-	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
-	ReturnCiphertext *bool   `json:"returnCiphertext,omitempty" xml:"returnCiphertext,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to return the encrypted ciphertext of the credential.
+	//
+	// example:
+	//
+	// true
+	ReturnCiphertext *bool `json:"returnCiphertext,omitempty" xml:"returnCiphertext,omitempty"`
 }
 
 func (s CreateUserExclusiveCredentialRequest) String() string {
