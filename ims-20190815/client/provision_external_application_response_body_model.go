@@ -16,7 +16,7 @@ type iProvisionExternalApplicationResponseBody interface {
 }
 
 type ProvisionExternalApplicationResponseBody struct {
-	// The information about the external application.
+	// The external application information.
 	ExternalApplication *ProvisionExternalApplicationResponseBodyExternalApplication `json:"ExternalApplication,omitempty" xml:"ExternalApplication,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,39 +62,39 @@ func (s *ProvisionExternalApplicationResponseBody) Validate() error {
 }
 
 type ProvisionExternalApplicationResponseBodyExternalApplication struct {
-	// The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+	// The application principal name in the format of `<app_name>@app.<account_id>.onaliyun.com`.
 	//
 	// example:
 	//
 	// GiteePrd@app.177242285274****.onaliyun.com
 	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
-	// The time when the application was installed. The value is a timestamp.
+	// The installation timestamp.
 	//
 	// example:
 	//
 	// 1603693518000
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the scopes of permissions that are granted to the application.
+	// The permission scope information of the application.
 	DelegatedScope *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
-	// The display name of the application.
+	// The display name.
 	//
 	// example:
 	//
 	// GiteeAliyun
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the application.
+	// The external application ID.
 	//
 	// example:
 	//
 	// 403550611646604****
 	ForeignAppId *string `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the external application belongs.
+	// The Alibaba Cloud account ID to which the external application is installed.
 	//
 	// example:
 	//
 	// 157242285274****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The update time. The value is a timestamp.
+	// The update timestamp.
 	//
 	// example:
 	//

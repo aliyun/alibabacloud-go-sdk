@@ -26,7 +26,7 @@ type GetServiceCredentialRequest struct {
 	ServiceCredentialId *string `json:"ServiceCredentialId,omitempty" xml:"ServiceCredentialId,omitempty"`
 	// The logon name of the Resource Access Management (RAM) user.
 	//
-	// If not specified, the service credential of the current caller identity that invokes this operation is retrieved.
+	// If not specified, the service credential of the current identity that invokes this operation is retrieved.
 	//
 	// if can be null:
 	// false

@@ -68,6 +68,10 @@ type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
 	//
 	// 177242285274****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// ThirdParty
+	AppCategory *string `json:"AppCategory,omitempty" xml:"AppCategory,omitempty"`
 	// The ID of the application.
 	//
 	// example:
@@ -80,6 +84,10 @@ type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
 	//
 	// GiteePrd
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// AllowAll
+	AssignmentType *string `json:"AssignmentType,omitempty" xml:"AssignmentType,omitempty"`
 	// The time when the application was installed. The value is a timestamp.
 	//
 	// example:
@@ -94,6 +102,10 @@ type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
 	//
 	// GiteeAliyun
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// true
+	NeedPrincipalConsent *bool `json:"NeedPrincipalConsent,omitempty" xml:"NeedPrincipalConsent,omitempty"`
 	// The update time. The value is a timestamp.
 	//
 	// example:
@@ -114,12 +126,20 @@ func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetAcc
 	return s.AccountId
 }
 
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetAppCategory() *string {
+	return s.AppCategory
+}
+
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetAppId() *string {
 	return s.AppId
 }
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetAppName() *string {
 	return s.AppName
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetAssignmentType() *string {
+	return s.AssignmentType
 }
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetCreateDate() *string {
@@ -134,12 +154,21 @@ func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetDis
 	return s.DisplayName
 }
 
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetNeedPrincipalConsent() *bool {
+	return s.NeedPrincipalConsent
+}
+
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GetUpdateDate() *string {
 	return s.UpdateDate
 }
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetAccountId(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
 	s.AccountId = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetAppCategory(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.AppCategory = &v
 	return s
 }
 
@@ -150,6 +179,11 @@ func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetApp
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetAppName(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
 	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetAssignmentType(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.AssignmentType = &v
 	return s
 }
 
@@ -165,6 +199,11 @@ func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetDel
 
 func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetDisplayName(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetNeedPrincipalConsent(v bool) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.NeedPrincipalConsent = &v
 	return s
 }
 

@@ -22,7 +22,7 @@ type DeletePasskeyRequest struct {
 	//
 	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
 	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
-	// The logon name of the RAM user.
+	// The logon name of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//

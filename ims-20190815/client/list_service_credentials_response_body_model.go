@@ -22,7 +22,7 @@ type iListServiceCredentialsResponseBody interface {
 }
 
 type ListServiceCredentialsResponseBody struct {
-	// Indicates whether there is a next page of results.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListServiceCredentialsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The token used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -119,11 +119,15 @@ func (s *ListServiceCredentialsResponseBody) Validate() error {
 type ListServiceCredentialsResponseBodyServiceCredentials struct {
 	// The time when the service credential was created.
 	//
+	// Format: RFC 3339 (UTC). Example: 2026-05-07T05:49:57Z.
+	//
 	// example:
 	//
 	// 2026-05-07T05:49:57Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The expiration time. This field is not returned for permanent service credentials.
+	//
+	// Format: RFC 3339 (UTC). Example: 2026-06-07T05:49:57Z.
 	//
 	// if can be null:
 	// true
@@ -144,7 +148,7 @@ type ListServiceCredentialsResponseBodyServiceCredentials struct {
 	//
 	// test
 	ServiceCredentialName *string `json:"ServiceCredentialName,omitempty" xml:"ServiceCredentialName,omitempty"`
-	// The service name of the Alibaba Cloud service.
+	// The Alibaba Cloud service name.
 	//
 	// example:
 	//

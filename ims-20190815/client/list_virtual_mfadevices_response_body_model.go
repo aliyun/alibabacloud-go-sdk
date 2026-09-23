@@ -20,7 +20,7 @@ type iListVirtualMFADevicesResponseBody interface {
 }
 
 type ListVirtualMFADevicesResponseBody struct {
-	// Indicates whether the response is truncated. Valid values:
+	// Indicates whether the returned results are truncated. Valid values:
 	//
 	// - true
 	//
@@ -30,7 +30,7 @@ type ListVirtualMFADevicesResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for querying the next page of results.
 	//
 	// > This parameter is returned only when `IsTruncated` is `true`.
 	//

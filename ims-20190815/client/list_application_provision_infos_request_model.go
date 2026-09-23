@@ -14,11 +14,11 @@ type iListApplicationProvisionInfosRequest interface {
 }
 
 type ListApplicationProvisionInfosRequest struct {
-	// The source of the applications. Valid values:
+	// The source type of the application. Valid values:
 	//
-	// - inner: The applications are from the current account.
+	// - inner: applications from the current account.
 	//
-	// - external: The applications are from other accounts.
+	// - external: applications from other accounts.
 	//
 	// example:
 	//

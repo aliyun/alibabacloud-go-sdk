@@ -28,7 +28,7 @@ type SetAccessKeyPolicyRequest struct {
 	//
 	// {"Status":"Inactive","Statements":[{"Value":"AllowAllVPC","Type":"VPCWhiteList","IPList":["::/0","0.0.0.0/0"]}]}
 	AccessKeyPolicy *string `json:"AccessKeyPolicy,omitempty" xml:"AccessKeyPolicy,omitempty"`
-	// The AccessKey ID.
+	// The access key ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type SetAccessKeyPolicyRequest struct {
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	// The logon name of the RAM user.
 	//
-	// If this parameter is left empty, the network access restriction policy is set for the specified AccessKey pair of the current user by default.
+	// If this parameter is left empty, the network access restriction policy is set for the specified access key of the current user by default.
 	//
 	// example:
 	//

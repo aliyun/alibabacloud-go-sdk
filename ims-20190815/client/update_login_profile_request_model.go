@@ -22,25 +22,25 @@ type iUpdateLoginProfileRequest interface {
 }
 
 type UpdateLoginProfileRequest struct {
-	// Specifies whether to enforce multi-factor authentication (MFA) for the RAM user. Valid values:
+	// Specifies whether the Resource Access Management (RAM) user is required to enable multi-factor authentication (MFA). Valid values:
 	//
-	// - true: Enforce MFA. The RAM user must attach an MFA device at the next logon.
+	// - true: MFA is required. The RAM user must attach an MFA device at the next logon.
 	//
-	// - false: Do not enforce MFA.
+	// - false: MFA is not required.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// The new console logon password for the RAM user.
+	// The new console logon password of the Resource Access Management (RAM) user.
 	//
-	// The password must meet the password policy.
+	// The password must meet the password strength requirements.
 	//
 	// example:
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user must reset the password at the next logon. Valid values:
+	// Specifies whether the Resource Access Management (RAM) user is required to reset the password at the next logon. Valid values:
 	//
 	// - true
 	//
@@ -50,17 +50,17 @@ type UpdateLoginProfileRequest struct {
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// Specifies whether to enable password-based logon to the console. Valid values:
+	// Enables or disables console password logon. Valid values:
 	//
-	// - Active: Enable
+	// - Active: enables console password logon.
 	//
-	// - Inactive: Disable
+	// - Inactive: disables console password logon.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The logon name of the RAM user.
+	// The logon name of the Resource Access Management (RAM) user.
 	//
 	// This parameter is required.
 	//

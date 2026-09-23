@@ -68,7 +68,7 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// 3600
 	AccessTokenValidity *int32 `json:"AccessTokenValidity,omitempty" xml:"AccessTokenValidity,omitempty"`
-	// The ID of the Alibaba Cloud account to which the application belongs.
+	// The Alibaba Cloud account ID to which the application belongs.
 	//
 	// example:
 	//
@@ -92,13 +92,15 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// WebApp
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The time when the application was created.
+	// The creation time.
+	//
+	// Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
 	//
 	// example:
 	//
 	// 2020-10-23T08:06:57Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the permissions that are granted on the application.
+	// The permission scope information of the application.
 	DelegatedScope *UpdateApplicationResponseBodyApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
 	// The display name of the application.
 	//
@@ -106,7 +108,7 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// NewApp
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Indicates whether the application can be installed by using other Alibaba Cloud accounts.
+	// Indicates whether the application is allowed to be installed by other accounts.
 	//
 	// example:
 	//
@@ -114,29 +116,30 @@ type UpdateApplicationResponseBodyApplication struct {
 	IsMultiTenant *bool `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
 	// The OAuth protocol version of the application. Valid values:
 	//
-	// - `2.0`: OAuth 2.0
+	// + `2.0`: OAuth 2.0 protocol.
 	//
-	// - `2.1`: OAuth 2.1
+	// + `2.1`: OAuth 2.1 protocol.
 	//
 	// example:
 	//
 	// 2.0
-	ProtocolVersion *string `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
-	// The redirect URLs.
-	RedirectUris *UpdateApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
+	ProtocolVersion *string                                               `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
+	RedirectUris    *UpdateApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
 	// The validity period of the refresh token. Unit: seconds.
 	//
 	// example:
 	//
 	// 7776000
 	RefreshTokenValidity *int32 `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// Indicates whether a secret is required.
+	// Indicates whether an application secret is required.
 	//
 	// example:
 	//
 	// true
 	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// The time when the application was updated.
+	// The update time.
+	//
+	// Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
 	//
 	// example:
 	//
@@ -293,7 +296,6 @@ func (s *UpdateApplicationResponseBodyApplication) Validate() error {
 }
 
 type UpdateApplicationResponseBodyApplicationDelegatedScope struct {
-	// The information about the permissions that are granted on the application.
 	PredefinedScopes *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 }
 

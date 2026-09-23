@@ -20,6 +20,8 @@ type iUpdatePasskeyRequest interface {
 type UpdatePasskeyRequest struct {
 	// The ID of the passkey.
 	//
+	// This parameter is required. If this parameter is not specified, the `MissingPasskeyId` error is returned.
+	//
 	// example:
 	//
 	// PASSKEY-CuZjEHhWcr7GIQOMGvkS

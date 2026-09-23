@@ -16,7 +16,7 @@ type iUpdateGroupResponseBody interface {
 }
 
 type UpdateGroupResponseBody struct {
-	// The information about the RAM user group.
+	// The user group information.
 	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,37 +62,41 @@ func (s *UpdateGroupResponseBody) Validate() error {
 }
 
 type UpdateGroupResponseBodyGroup struct {
-	// The description.
+	// The comments.
 	//
 	// example:
 	//
-	// 测试团队
+	// Test team
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The creation time.
+	//
+	// Format: RFC 3339 (UTC). Example: 2020-10-19T16:15:17Z.
 	//
 	// example:
 	//
 	// 2020-10-19T16:15:17Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The display name of the RAM user group.
+	// The display name of the user group.
 	//
 	// example:
 	//
 	// Test-Team
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the RAM user group.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// 740317625433843****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the RAM user group.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// Test-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The update time.
+	//
+	// Format: RFC 3339 (UTC). Example: 2020-10-20T03:44:27Z.
 	//
 	// example:
 	//

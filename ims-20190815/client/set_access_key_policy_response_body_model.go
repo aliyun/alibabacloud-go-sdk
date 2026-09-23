@@ -18,7 +18,7 @@ type iSetAccessKeyPolicyResponseBody interface {
 }
 
 type SetAccessKeyPolicyResponseBody struct {
-	// The AccessKey ID.
+	// The access key ID.
 	//
 	// example:
 	//

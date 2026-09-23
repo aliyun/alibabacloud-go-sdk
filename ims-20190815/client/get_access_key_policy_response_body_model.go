@@ -24,7 +24,7 @@ type GetAccessKeyPolicyResponseBody struct {
 	//
 	// LTAI*******************
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The network access restriction policy. The value is a JSON string. For more information, see the AccessKeyPolicy structure description in the SetAccessKeyPolicy documentation.
+	// The network access restriction policy. The value is a JSON-formatted string. For more information about the AccessKeyPolicy structure, see the SetAccessKeyPolicy documentation.
 	//
 	// example:
 	//

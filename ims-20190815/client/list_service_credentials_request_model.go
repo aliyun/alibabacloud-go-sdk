@@ -24,7 +24,7 @@ type iListServiceCredentialsRequest interface {
 type ListServiceCredentialsRequest struct {
 	// Specifies whether to query service credentials for all Resource Access Management (RAM) users under the Alibaba Cloud account.
 	//
-	// If this parameter is set to true, you cannot specify UserPrincipalName at the same time.
+	// When the value is true, you cannot specify UserPrincipalName at the same time.
 	//
 	// if can be null:
 	// false
@@ -42,7 +42,7 @@ type ListServiceCredentialsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first API call.
+	// The token used to retrieve the next page of results. This parameter is not required for the first API call.
 	//
 	// if can be null:
 	// false
@@ -51,7 +51,7 @@ type ListServiceCredentialsRequest struct {
 	//
 	// EXAMPLE*******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The service name of the Alibaba Cloud service.
+	// The Alibaba Cloud service name.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iUpdateServiceCredentialRequest interface {
 }
 
 type UpdateServiceCredentialRequest struct {
-	// The service credential ID.
+	// The ID of the service credential.
 	//
 	// This parameter is required.
 	//
@@ -28,25 +28,19 @@ type UpdateServiceCredentialRequest struct {
 	//
 	// SC****************
 	ServiceCredentialId *string `json:"ServiceCredentialId,omitempty" xml:"ServiceCredentialId,omitempty"`
-	// The name of the service credential. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). Specify at least one of Status and ServiceCredentialName.
+	// The name of the service credential. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). You must specify at least one of Status and ServiceCredentialName.
 	//
 	// example:
 	//
 	// yourServiceCredentialName
 	ServiceCredentialName *string `json:"ServiceCredentialName,omitempty" xml:"ServiceCredentialName,omitempty"`
-	// The status of the service credential. Valid values:
-	//
-	// - Active
-	//
-	// - Inactive
-	//
-	// Specify at least one of Status and ServiceCredentialName.
+	// The status of the service credential. Valid values: Active, Inactive. You must specify at least one of Status and ServiceCredentialName.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The logon name of the Resource Access Management (RAM) user. If this parameter is not specified, the service credential of the identity that invokes this operation is modified.
+	// The logon name of the Resource Access Management (RAM) user. If not specified, the service credential of the current invoke identity is updated.
 	//
 	// example:
 	//

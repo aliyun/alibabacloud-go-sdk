@@ -20,31 +20,31 @@ type iUpdateGroupRequest interface {
 }
 
 type UpdateGroupRequest struct {
-	// The name of the RAM user group.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The new description.
+	// The new comments.
 	//
-	// The description can be up to 128 characters in length.
+	// Maximum length: 128 characters.
 	//
 	// example:
 	//
-	// 测试团队
+	// Test team
 	NewComments *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
-	// The new display name of the RAM user group.
+	// The new display name of the user group.
 	//
-	// The name can be up to 24 characters in length.
+	// Maximum length: 24 characters.
 	//
 	// example:
 	//
 	// Test-Team
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	// The new name of the RAM user group.
+	// The new name of the user group.
 	//
-	// The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// Maximum length: 64 characters. The name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//

@@ -62,15 +62,13 @@ func (s *CreateServiceCredentialResponseBody) Validate() error {
 }
 
 type CreateServiceCredentialResponseBodyServiceCredential struct {
-	// The time when the service credential was created.
+	// The time when the service credential was created. The time follows RFC 3339 (UTC). Example: 2026-01-01T10:05:24Z.
 	//
 	// example:
 	//
 	// 2026-01-01T10:05:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time of the service credential.
-	//
-	// This field is not returned for permanently valid service credentials.
+	// The expiration time of the service credential. This field is not returned for service credentials that never expire. The time follows RFC 3339 (UTC). Example: 2026-02-01T10:05:24Z.
 	//
 	// if can be null:
 	// true
@@ -79,13 +77,13 @@ type CreateServiceCredentialResponseBodyServiceCredential struct {
 	//
 	// 2026-02-01T10:05:24Z
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The service credential ID.
+	// The ID of the service credential.
 	//
 	// example:
 	//
 	// SC*************
 	ServiceCredentialId *string `json:"ServiceCredentialId,omitempty" xml:"ServiceCredentialId,omitempty"`
-	// The service credential name.
+	// The name of the service credential.
 	//
 	// example:
 	//
@@ -97,13 +95,19 @@ type CreateServiceCredentialResponseBodyServiceCredential struct {
 	//
 	// yourServiceCredentialSecret
 	ServiceCredentialSecret *string `json:"ServiceCredentialSecret,omitempty" xml:"ServiceCredentialSecret,omitempty"`
-	// The Alibaba Cloud service name.
+	// The service name of the Alibaba Cloud service.
 	//
 	// example:
 	//
 	// xxx.aliyuncs.com
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The status of the service credential.
+	// The status of the service credential. Valid values:
+	//
+	// - Active: enabled.
+	//
+	// - Inactive: disabled.
+	//
+	// - Expired: expired.
 	//
 	// example:
 	//

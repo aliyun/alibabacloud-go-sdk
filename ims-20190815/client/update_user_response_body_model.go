@@ -22,7 +22,7 @@ type UpdateUserResponseBody struct {
 	//
 	// 1B56DD42-6962-4F89-A19C-079EED1F0FE3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM user.
+	// The Resource Access Management (RAM) user information.
 	User *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -62,71 +62,77 @@ func (s *UpdateUserResponseBody) Validate() error {
 }
 
 type UpdateUserResponseBodyUser struct {
-	// The description.
+	// The comments.
 	//
 	// example:
 	//
 	// This is a cloud computing engineer.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the RAM user was created.
+	// The time when the Resource Access Management (RAM) user was created.
+	//
+	// Format: RFC 3339 (UTC). Example: 2020-10-12T09:12:00Z.
 	//
 	// example:
 	//
 	// 2020-10-12T09:12:00Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The display name of the RAM user.
+	// The display name of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//
 	// new
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address of the RAM user.
+	// The email address of the Resource Access Management (RAM) user.
 	//
-	// > This parameter is valid only on the China site (aliyun.com).
+	// > This parameter is applicable only to China site (aliyun.com).
 	//
 	// example:
 	//
 	// alice@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The last time when the RAM user logged on to the Alibaba Cloud Management Console.
+	// The most recent time when the Resource Access Management (RAM) user logged on to the console.
+	//
+	// Format: RFC 3339 (UTC). Example: 2020-10-12T09:12:00Z.
 	//
 	// example:
 	//
 	// 2020-10-12T09:12:00Z
 	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	// The mobile phone number of the RAM user.
+	// The mobile phone number of the Resource Access Management (RAM) user.
 	//
-	// > This parameter is valid only on the China site (aliyun.com).
+	// > This parameter is applicable only to China site (aliyun.com).
 	//
 	// example:
 	//
 	// 86-1868888****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The source of the RAM user. Valid values:
+	// The synchronization type. Valid values:
 	//
-	// - Manual: The RAM user is manually created in the RAM console.
+	// - Manual: The Resource Access Management (RAM) user was manually created in RAM.
 	//
-	// - SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+	// - SCIM: The Resource Access Management (RAM) user was created by using the System for Cross-domain Identity Management protocol.
 	//
-	// - CloudSSO: The RAM user is mapped from a CloudSSO user.
+	// - CloudSSO: The user was created by using CloudSSO.
 	//
 	// example:
 	//
 	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	// The time when the information about the RAM user was updated.
+	// The time when the Resource Access Management (RAM) user was last updated.
+	//
+	// Format: RFC 3339 (UTC). Example: 2020-10-13T09:19:49Z.
 	//
 	// example:
 	//
 	// 2020-10-13T09:19:49Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	// The ID of the RAM user.
+	// The ID of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//
 	// 20732900249392****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The logon name of the RAM user.
+	// The logon name of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//

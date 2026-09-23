@@ -95,13 +95,16 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos) Val
 }
 
 type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo struct {
-	AccountId      *string                                                                                                   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AppId          *string                                                                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string                                                                                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CreateDate     *string                                                                                                   `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DelegatedScope *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
-	DisplayName    *string                                                                                                   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UpdateDate     *string                                                                                                   `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	AccountId            *string                                                                                                   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AppCategory          *string                                                                                                   `json:"AppCategory,omitempty" xml:"AppCategory,omitempty"`
+	AppId                *string                                                                                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName              *string                                                                                                   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AssignmentType       *string                                                                                                   `json:"AssignmentType,omitempty" xml:"AssignmentType,omitempty"`
+	CreateDate           *string                                                                                                   `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	DelegatedScope       *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	DisplayName          *string                                                                                                   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	NeedPrincipalConsent *bool                                                                                                     `json:"NeedPrincipalConsent,omitempty" xml:"NeedPrincipalConsent,omitempty"`
+	UpdateDate           *string                                                                                                   `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) String() string {
@@ -116,12 +119,20 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosAppli
 	return s.AccountId
 }
 
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GetAppCategory() *string {
+	return s.AppCategory
+}
+
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GetAppId() *string {
 	return s.AppId
 }
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GetAppName() *string {
 	return s.AppName
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GetAssignmentType() *string {
+	return s.AssignmentType
 }
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GetCreateDate() *string {
@@ -136,12 +147,21 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosAppli
 	return s.DisplayName
 }
 
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GetNeedPrincipalConsent() *bool {
+	return s.NeedPrincipalConsent
+}
+
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GetUpdateDate() *string {
 	return s.UpdateDate
 }
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetAccountId(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
 	s.AccountId = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetAppCategory(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.AppCategory = &v
 	return s
 }
 
@@ -152,6 +172,11 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosAppli
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetAppName(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetAssignmentType(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.AssignmentType = &v
 	return s
 }
 
@@ -167,6 +192,11 @@ func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosAppli
 
 func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetDisplayName(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetNeedPrincipalConsent(v bool) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.NeedPrincipalConsent = &v
 	return s
 }
 

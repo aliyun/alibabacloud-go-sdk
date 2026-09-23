@@ -68,7 +68,7 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	//
 	// acs:ram::177242285274****:oidc-provider/TestOIDCProvider
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	// The client IDs. Multiple client IDs are separated by commas (,).
 	//
 	// example:
 	//
@@ -86,31 +86,33 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	//
 	// This is a new OIDC Provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	// The fingerprints of the HTTPS CA certificate. Multiple fingerprints are separated by commas (,).
 	//
 	// example:
 	//
 	// 902ef2deeb3c5b13ea4c3d5193629309e231****
 	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	// The timestamp when the OIDC IdP was created.
+	// The time when the OIDC IdP was created. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1636613763000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp when the OIDC IdP was modified.
+	// The time when the OIDC IdP was last modified. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1636706309000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+	// The earliest time when an external IdP is allowed to issue an ID token. If the iat field in the ID token indicates a time earlier than the current time by more than this value, the request is rejected.
+	//
+	// Unit: hours. Valid values: 1 to 168.
 	//
 	// example:
 	//
 	// 12
 	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
-	// The URL of the issuer.
+	// The issuer URL.
 	//
 	// example:
 	//
@@ -122,7 +124,7 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	//
 	// TestOIDCProvider
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	// The time when the OIDC IdP was last modified. The time is displayed in UTC.
 	//
 	// example:
 	//
