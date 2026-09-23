@@ -46,7 +46,7 @@ type DescribeNamespacesResponseBody struct {
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -167,9 +167,15 @@ type DescribeNamespacesResponseBodyNamespaces struct {
 	// example:
 	//
 	// 1629879567394
-	GmtModified            *int64                                                          `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The subscription resources allocated to the namespace.
 	GuaranteedResourceSpec *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty" type:"Struct"`
-	Ha                     *bool                                                           `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// Indicates whether zone-disaster recovery is enabled for the namespace.
+	//
+	// example:
+	//
+	// false
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
 	// The name of the namespace.
 	//
 	// example:
@@ -332,7 +338,17 @@ func (s *DescribeNamespacesResponseBodyNamespaces) Validate() error {
 }
 
 type DescribeNamespacesResponseBodyNamespacesElasticResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The maximum CPU limit for pay-as-you-go resources.
+	//
+	// example:
+	//
+	// 0
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The maximum memory limit for pay-as-you-go resources. Unit: GB.
+	//
+	// example:
+	//
+	// 0
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -367,7 +383,17 @@ func (s *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec) Validate()
 }
 
 type DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of CPUs for subscription resources.
+	//
+	// example:
+	//
+	// 0
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size for subscription resources. Unit: GB.
+	//
+	// example:
+	//
+	// 0
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -447,14 +473,19 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceSpec) Validate() error 
 }
 
 type DescribeNamespacesResponseBodyNamespacesResourceUsed struct {
-	// The number of used CPUs.
+	// The number of CPUs used.
 	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Cu  *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The amount of used memory.
+	// The number of compute units (CUs) used.
+	//
+	// example:
+	//
+	// 0
+	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The amount of memory used.
 	//
 	// example:
 	//

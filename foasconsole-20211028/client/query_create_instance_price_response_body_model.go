@@ -95,7 +95,7 @@ type QueryCreateInstancePriceResponseBodyPriceInfo struct {
 	//
 	// 655.2
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Indicates whether the enterprise customer discount is applied.
+	// Indicates whether an enterprise discount is applied.
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
 	// The Lingxiao request ID of the call.
 	//
@@ -119,9 +119,9 @@ type QueryCreateInstancePriceResponseBodyPriceInfo struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The promotion rules.
 	Rules []*QueryCreateInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The promotional price based on the official website discount.
+	// The promotional price based on the standard discount from the official website.
 	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The official website discounted price or direct sales contract discounted price.
+	// The standard discounted price on the official website or the direct sales contract discounted price.
 	StandPrice *string `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
 	// The final price, which is the original price minus the discount.
 	//
@@ -284,15 +284,15 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
-	// The price reduction rate.
+	// The price reduction ratio.
 	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The standard total price after the price reduction.
+	// The total list price after the price reduction.
 	CheapStandAmount *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
 	// Indicates whether to display the price reduction percentage.
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
 	// The monthly equivalent price.
 	MonthPrice *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
-	// The original standard total price.
+	// The original total list price.
 	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
 	// The start time of the price reduction.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -385,6 +385,10 @@ type QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// Indicates whether the coupon is selected. Valid values:
 	//
+	// - true: Selected.
+	//
+	// - false: Not selected.
+	//
 	// example:
 	//
 	// true
@@ -440,11 +444,11 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) Valida
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoRules struct {
-	// The promotion rule description.
+	// The description of the promotion rule.
 	//
 	// example:
 	//
-	// Get a 15% discount for a 1-year subscription
+	// Purchase for one year or longer and enjoy a 15% discount off the list price
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The promotion ID.
 	//

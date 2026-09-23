@@ -40,7 +40,15 @@ type RenewInstanceRequest struct {
 	//
 	// sc_flinkserverless_public_cn-7e22ae5sess
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The subscription period.
+	// The subscription period. Valid values:
+	//
+	// - Month: month.
+	//
+	// - Year: year.
+	//
+	// - Hour: hour.
+	//
+	// - Day: day.
 	//
 	// This parameter is required.
 	//

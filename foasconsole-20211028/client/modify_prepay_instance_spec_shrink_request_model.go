@@ -26,15 +26,27 @@ type iModifyPrepayInstanceSpecShrinkRequest interface {
 }
 
 type ModifyPrepayInstanceSpecShrinkRequest struct {
+	// Specifies whether to enable zone-disaster recovery resources for the workspace.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The resource specifications for zone-disaster recovery.
+	//
 	// if can be null:
 	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
+	// The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+	//
 	// if can be null:
 	// true
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// The ID of the secondary zone for zone-disaster recovery.
+	//
 	// if can be null:
 	// true
 	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
@@ -46,7 +58,7 @@ type ModifyPrepayInstanceSpecShrinkRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// This parameter is required.
 	//

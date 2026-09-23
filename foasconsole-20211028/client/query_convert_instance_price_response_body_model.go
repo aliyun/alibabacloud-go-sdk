@@ -99,7 +99,7 @@ type QueryConvertInstancePriceResponseBodyPriceInfo struct {
 	//
 	// 655.2
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Indicates whether the enterprise discount is applied.
+	// Indicates whether an enterprise discount is applied.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type QueryConvertInstancePriceResponseBodyPriceInfo struct {
 	//
 	// example:
 	//
-	// An unpaid order exists. Pay or cancel the existing order first
+	// An unpaid order exists. Pay for or cancel the existing order first
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The coupon information.
 	OptionalPromotions []*QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
@@ -127,13 +127,13 @@ type QueryConvertInstancePriceResponseBodyPriceInfo struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The promotion rules.
 	Rules []*QueryConvertInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The discounted price based on the official website discount.
+	// The promotional price based on the standard discount from the official website.
 	//
 	// example:
 	//
 	// 21321
 	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The official website discounted price or direct sales contract discounted price.
+	// The standard discounted price on the official website or the direct sales contract discounted price.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ type QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 34%
 	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The standard total price after the price reduction.
+	// The total list price after the price reduction.
 	//
 	// example:
 	//
@@ -324,13 +324,13 @@ type QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 1000
 	MonthPrice *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
-	// The original standard total price.
+	// The original total list price.
 	//
 	// example:
 	//
 	// 12000
 	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
-	// The start time of the price reduction.
+	// The start time of the price reduction, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type QueryConvertInstancePriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// Purchase for 1 year or more and enjoy a 15% discount off the official price
+	// Purchase for 1 year or more and enjoy a 15% discount off the list price
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The promotion ID.
 	//

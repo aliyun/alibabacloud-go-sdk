@@ -127,13 +127,13 @@ type QueryConvertPrepayInstancePriceResponseBodyPriceInfo struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The promotion rules.
 	Rules []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The discounted price based on the official website discount.
+	// The discounted price based on the list discount.
 	//
 	// example:
 	//
 	// 21321
 	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The official website discount price or direct sales contract discount price.
+	// The list discount price or direct sales contract discount price.
 	//
 	// example:
 	//
@@ -306,13 +306,13 @@ type QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 20%
 	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The reduced list price total.
+	// The list price total after the price reduction.
 	//
 	// example:
 	//
 	// 8000
 	CheapStandAmount *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// Indicates whether to display the price reduction percentage.
+	// Indicates whether the price reduction is displayed.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 10000
 	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
-	// The price reduction start time.
+	// The price reduction start time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -409,13 +409,13 @@ type QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions stru
 	//
 	// example:
 	//
-	// ¥1,391.5 coupon (valid until 03/23/2022)
+	// ￥1,391.5 coupon (valid until 03/23/2022)
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The coupon name.
 	//
 	// example:
 	//
-	// ¥1,391.5 coupon
+	// ￥1,391.5 coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// The coupon number.
 	//

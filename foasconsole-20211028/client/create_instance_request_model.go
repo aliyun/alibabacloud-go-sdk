@@ -104,7 +104,7 @@ type CreateInstanceRequest struct {
 	//
 	// “”
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Specifies whether to enable zone-disaster recovery resources.
+	// Specifies whether to use zone-disaster recovery resources.
 	//
 	// if can be null:
 	// true
@@ -131,7 +131,7 @@ type CreateInstanceRequest struct {
 	//
 	// rtc-e2e-test-pre
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of monitoring and alerting service. You can select Application Real-Time Monitoring Service (ARMS) or CloudMonitor.
+	// The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
 	//
 	// example:
 	//
@@ -548,7 +548,7 @@ type CreateInstanceRequestHaResourceSpec struct {
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The memory size for zone-disaster recovery. The value is active memory allocated for high availability (HA).
+	// The memory size for zone-disaster recovery high availability (HA).
 	//
 	// example:
 	//
@@ -636,6 +636,8 @@ func (s *CreateInstanceRequestResourceSpec) Validate() error {
 }
 
 type CreateInstanceRequestStorage struct {
+	// Deprecated
+	//
 	// Specifies whether to use fully managed storage. You can select only one of fully managed storage or binding an OSS bucket. Valid values:
 	//
 	// - true: Use fully managed storage.
@@ -646,7 +648,7 @@ type CreateInstanceRequestStorage struct {
 	//
 	// false
 	FullyManaged *bool `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
-	// The Object Storage Service (OSS) storage.
+	// The OSS storage configurations.
 	Oss *CreateInstanceRequestStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 }
 

@@ -30,7 +30,7 @@ type ModifyPrepayInstanceSpecResponseBody struct {
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

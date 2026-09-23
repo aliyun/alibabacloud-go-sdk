@@ -169,7 +169,7 @@ type QueryModifyInstancePriceRequestHaResourceSpec struct {
 	//
 	// 20
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The memory size for zone-disaster recovery.
+	// The active memory size for zone-disaster recovery.
 	//
 	// example:
 	//

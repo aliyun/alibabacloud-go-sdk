@@ -2072,7 +2072,7 @@ func (client *Client) QueryConvertInstancePrice(request *QueryConvertInstancePri
 
 // Summary:
 //
-// Queries the estimated refund amount after converting your Flink instance from subscription to pay-as-you-go. After the conversion, your usage is metered hourly and bills are generated accordingly.
+// Queries the estimated refund amount after your Flink instance is switched from subscription to pay-as-you-go. After the switch, your usage is metered hourly and billed accordingly.
 //
 // @param request - QueryConvertPrepayInstancePriceRequest
 //
@@ -2120,7 +2120,7 @@ func (client *Client) QueryConvertPrepayInstancePriceWithOptions(request *QueryC
 
 // Summary:
 //
-// Queries the estimated refund amount after converting your Flink instance from subscription to pay-as-you-go. After the conversion, your usage is metered hourly and bills are generated accordingly.
+// Queries the estimated refund amount after your Flink instance is switched from subscription to pay-as-you-go. After the switch, your usage is metered hourly and billed accordingly.
 //
 // @param request - QueryConvertPrepayInstancePriceRequest
 //
@@ -2464,11 +2464,11 @@ func (client *Client) QueryRenewInstancePrice(request *QueryRenewInstancePriceRe
 
 // Summary:
 //
-// Renews a subscription Realtime Compute for Apache Flink workspace.
+// Renews a subscription fully managed Flink workspace.
 //
 // Description:
 //
-// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/renewal-policy) of Realtime Compute for Apache Flink.**
+// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/renewal-policy) of the fully managed Flink service.**
 //
 // @param request - RenewInstanceRequest
 //
@@ -2532,11 +2532,11 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 
 // Summary:
 //
-// Renews a subscription Realtime Compute for Apache Flink workspace.
+// Renews a subscription fully managed Flink workspace.
 //
 // Description:
 //
-// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/renewal-policy) of Realtime Compute for Apache Flink.**
+// *Before using this operation, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/flink/product-overview/renewal-policy) of the fully managed Flink service.**
 //
 // @param request - RenewInstanceRequest
 //

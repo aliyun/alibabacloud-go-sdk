@@ -26,15 +26,27 @@ type iModifyPrepayInstanceSpecRequest interface {
 }
 
 type ModifyPrepayInstanceSpecRequest struct {
+	// Specifies whether to enable zone-disaster recovery resources for the workspace.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// The resource specifications for zone-disaster recovery.
+	//
 	// if can be null:
 	// true
 	HaResourceSpec *ModifyPrepayInstanceSpecRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	// The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+	//
 	// if can be null:
 	// true
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// The ID of the secondary zone for zone-disaster recovery.
+	//
 	// if can be null:
 	// true
 	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
@@ -46,7 +58,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -146,7 +158,17 @@ func (s *ModifyPrepayInstanceSpecRequest) Validate() error {
 }
 
 type ModifyPrepayInstanceSpecRequestHaResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of CPUs for zone-disaster recovery resources.
+	//
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size of zone-disaster recovery resources, in GB. The value must be 4 times the number of CPUs.
+	//
+	// example:
+	//
+	// 40
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 

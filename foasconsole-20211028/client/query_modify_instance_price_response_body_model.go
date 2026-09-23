@@ -105,7 +105,7 @@ type QueryModifyInstancePriceResponseBodyPriceInfo struct {
 	//
 	// Yes
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// The Lingxiao request ID.
+	// The Lingxiao request ID of the call.
 	//
 	// example:
 	//
@@ -127,13 +127,13 @@ type QueryModifyInstancePriceResponseBodyPriceInfo struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The promotion rule group.
 	Rules []*QueryModifyInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The discounted price based on the official website discount.
+	// The discounted price based on the list discount.
 	//
 	// example:
 	//
 	// 1231
 	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The official website discount price or direct sales contract discount price.
+	// The list discount price or direct sales contract discount price.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ type QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 0.5
 	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The reduced list price total.
+	// The list price total after the price reduction.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 12000
 	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
-	// The price reduction start time.
+	// The price reduction start time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -417,7 +417,7 @@ type QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
 	//
 	// ¥1,391.5 coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// The coupon ID.
+	// The coupon number.
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type QueryModifyInstancePriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// Purchase for 1 year or more to enjoy a 15% discount off the list price
+	// Purchase for 1 year or more and enjoy a 15% discount off the list price
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The promotion ID.
 	//

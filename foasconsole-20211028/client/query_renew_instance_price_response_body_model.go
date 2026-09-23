@@ -18,7 +18,7 @@ type iQueryRenewInstancePriceResponseBody interface {
 }
 
 type QueryRenewInstancePriceResponseBody struct {
-	// The price information, including the price and discount rules.
+	// The price information, including the price and promotion rules.
 	PriceInfo *QueryRenewInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -125,15 +125,15 @@ type QueryRenewInstancePriceResponseBodyPriceInfo struct {
 	//
 	// 4368
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The promotion rules.
+	// The promotion rule group.
 	Rules []*QueryRenewInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The promotional price based on the standard discount on the official website.
+	// The promotional price based on the standard website discount.
 	//
 	// example:
 	//
 	// 21321
 	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The standard discounted price on the official website or the direct sales contract discounted price.
+	// The list price with the website discount or direct sales contract discount applied.
 	//
 	// example:
 	//
@@ -312,13 +312,13 @@ type QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 8000
 	CheapStandAmount *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// Indicates whether to display the price reduction percentage.
+	// Indicates whether the price reduction percentage is displayed.
 	//
 	// example:
 	//
 	// true
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
-	// The monthly equivalent price.
+	// The equivalent monthly price.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
 	//
 	// 12000
 	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
-	// The start time of the price reduction.
+	// The start time of the price reduction, in ISO 8601 format.
 	//
 	// example:
 	//
@@ -417,7 +417,7 @@ type QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
 	//
 	// ￥1,391.5 coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// The coupon ID.
+	// The coupon number.
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type QueryRenewInstancePriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// Purchase for 1 year or more to enjoy a 15% discount off the list price
+	// Purchase for 1 year or more and enjoy a 15% discount off the list price
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The promotion ID.
 	//

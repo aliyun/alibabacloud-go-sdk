@@ -275,13 +275,13 @@ type DescribeInstancesResponseBodyInstances struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the instance was created.
+	// The time when the instance was created. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1629879567394
 	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	// The overdue time.
+	// The time when the instance expires. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -1732,7 +1732,7 @@ func (s *DescribeInstancesResponseBodyInstancesResourceSpec) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesStorage struct {
-	// Indicates whether fully managed storage is selected. Valid values:
+	// Specifies whether fully managed storage is selected. Valid values:
 	//
 	// - true: Used.
 	//
@@ -2041,7 +2041,7 @@ type DescribeInstancesResponseBodyInstancesVpcInfo struct {
 	//
 	// 172.16.5.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The VPC description.
+	// The description of the VPC.
 	//
 	// example:
 	//

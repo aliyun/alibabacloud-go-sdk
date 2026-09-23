@@ -40,7 +40,7 @@ type DescribeInstancesRequest struct {
 	//
 	// X86
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	// The payment type.
+	// The billing method.
 	//
 	// example:
 	//

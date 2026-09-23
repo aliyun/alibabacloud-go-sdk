@@ -104,7 +104,7 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// “”
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// Specifies whether to enable zone-disaster recovery resources.
+	// Specifies whether to use zone-disaster recovery resources.
 	//
 	// if can be null:
 	// true
@@ -131,7 +131,7 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// rtc-e2e-test-pre
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of monitoring and alerting service. You can select Application Real-Time Monitoring Service (ARMS) or CloudMonitor.
+	// The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
 	//
 	// example:
 	//
