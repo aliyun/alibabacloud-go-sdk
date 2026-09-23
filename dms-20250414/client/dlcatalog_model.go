@@ -18,14 +18,20 @@ type iDLCatalog interface {
 }
 
 type DLCatalog struct {
+	// The description of the data catalog.
+	//
 	// example:
 	//
 	// init default catalog
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The storage path of the data catalog.
+	//
 	// example:
 	//
 	// oss://xxxx
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the data catalog.
+	//
 	// example:
 	//
 	// hive
