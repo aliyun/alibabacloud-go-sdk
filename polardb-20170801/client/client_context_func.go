@@ -6095,6 +6095,10 @@ func (client *Client) CreateNetworkChannelWithContext(ctx context.Context, reque
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	if !dara.IsNil(request.TargetDBClusterId) {
 		query["TargetDBClusterId"] = request.TargetDBClusterId
 	}
@@ -26349,7 +26353,7 @@ func (client *Client) ModifyDBClusterDescriptionZonalWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, the consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
+// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
 //
 // @param request - ModifyDBClusterEndpointRequest
 //

@@ -78,7 +78,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// testName
 	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
-	// The MCP Server address for DingTalk documents.
+	// The MCP Server endpoint for DingTalk documents.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The MCP Server address for DingTalk sheets.
+	// The MCP Server endpoint for DingTalk spreadsheets.
 	//
 	// example:
 	//
 	// https://mcp-gw.dingtalk.com/server/1a2b3cxxxxxx567?key=d5e6fxxxxxx543
 	SheetMcpEndpoint *string `json:"SheetMcpEndpoint,omitempty" xml:"SheetMcpEndpoint,omitempty"`
-	// The source directory address for synchronization.
+	// The directory address of the synchronization source.
 	//
 	// This parameter is required.
 	//

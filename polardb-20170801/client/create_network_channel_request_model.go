@@ -29,6 +29,8 @@ type iCreateNetworkChannelRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *CreateNetworkChannelRequest
 	GetResourceOwnerId() *int64
+	SetSecurityGroupId(v string) *CreateNetworkChannelRequest
+	GetSecurityGroupId() *string
 	SetTargetDBClusterId(v string) *CreateNetworkChannelRequest
 	GetTargetDBClusterId() *string
 	SetTargetIp(v string) *CreateNetworkChannelRequest
@@ -84,6 +86,10 @@ type CreateNetworkChannelRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// sg-2z********
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
@@ -158,6 +164,10 @@ func (s *CreateNetworkChannelRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *CreateNetworkChannelRequest) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
 func (s *CreateNetworkChannelRequest) GetTargetDBClusterId() *string {
 	return s.TargetDBClusterId
 }
@@ -221,6 +231,11 @@ func (s *CreateNetworkChannelRequest) SetResourceOwnerAccount(v string) *CreateN
 
 func (s *CreateNetworkChannelRequest) SetResourceOwnerId(v int64) *CreateNetworkChannelRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateNetworkChannelRequest) SetSecurityGroupId(v string) *CreateNetworkChannelRequest {
+	s.SecurityGroupId = &v
 	return s
 }
 

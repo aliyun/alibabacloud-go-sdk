@@ -40,6 +40,8 @@ type CreateKBSyncLinkResponseBody struct {
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The time when the synchronization link was created.
 	//
+	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	//
 	// example:
 	//
 	// 2026-08-14T05:58:42Z
@@ -78,7 +80,7 @@ type CreateKBSyncLinkResponseBody struct {
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The source directory address for synchronization.
+	// The directory address of the synchronization source.
 	//
 	// example:
 	//

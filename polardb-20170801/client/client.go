@@ -7670,6 +7670,10 @@ func (client *Client) CreateNetworkChannelWithOptions(request *CreateNetworkChan
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	if !dara.IsNil(request.TargetDBClusterId) {
 		query["TargetDBClusterId"] = request.TargetDBClusterId
 	}
@@ -33735,7 +33739,7 @@ func (client *Client) ModifyDBClusterDescriptionZonal(request *ModifyDBClusterDe
 
 // Summary:
 //
-// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, the consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
+// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
 //
 // @param request - ModifyDBClusterEndpointRequest
 //
@@ -33831,7 +33835,7 @@ func (client *Client) ModifyDBClusterEndpointWithOptions(request *ModifyDBCluste
 
 // Summary:
 //
-// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, the consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
+// Modifies the cluster endpoint attributes of a PolarDB cluster, including the read/write mode, whether new nodes are automatically added to the endpoint, consistency level, transaction splitting, whether the primary node accepts read requests, and connection pooling.
 //
 // @param request - ModifyDBClusterEndpointRequest
 //

@@ -78,6 +78,10 @@ type DescribeNetworkChannelResponseBodyChannelInfos struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// eni-2z******
+	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
 	// The notes about the channel.
 	//
 	// example:
@@ -138,6 +142,10 @@ func (s *DescribeNetworkChannelResponseBodyChannelInfos) GetDBClusterId() *strin
 	return s.DBClusterId
 }
 
+func (s *DescribeNetworkChannelResponseBodyChannelInfos) GetEniId() *string {
+	return s.EniId
+}
+
 func (s *DescribeNetworkChannelResponseBodyChannelInfos) GetNotes() *string {
 	return s.Notes
 }
@@ -173,6 +181,11 @@ func (s *DescribeNetworkChannelResponseBodyChannelInfos) SetChannelName(v string
 
 func (s *DescribeNetworkChannelResponseBodyChannelInfos) SetDBClusterId(v string) *DescribeNetworkChannelResponseBodyChannelInfos {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeNetworkChannelResponseBodyChannelInfos) SetEniId(v string) *DescribeNetworkChannelResponseBodyChannelInfos {
+	s.EniId = &v
 	return s
 }
 
