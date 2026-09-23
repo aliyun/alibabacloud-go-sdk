@@ -26,19 +26,19 @@ type iQueryCostCenterShareRuleResponseBody interface {
 type QueryCostCenterShareRuleResponseBody struct {
 	// The returned data list.
 	Data []*QueryCostCenterShareRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Reserved field.
+	// A reserved field.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The response metadata.
+	// The metadata of the response structure.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Reserved field.
+	// A reserved field.
 	//
 	// example:
 	//
@@ -134,37 +134,39 @@ func (s *QueryCostCenterShareRuleResponseBody) Validate() error {
 }
 
 type QueryCostCenterShareRuleResponseBodyData struct {
-	// The source cost center rule details.
+	// The rule information of the source financial unit.
 	FromCostCenterShareRuleDetails []*QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails `json:"FromCostCenterShareRuleDetails,omitempty" xml:"FromCostCenterShareRuleDetails,omitempty" type:"Repeated"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2026-01-01 00:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The owner account ID of the cost center.
+	// The ID of the user to whom the financial unit belongs.
 	//
 	// example:
 	//
 	// 1529600453335198
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The sharing rule ID.
+	// The ID of the cost allocation rule.
 	//
 	// example:
 	//
 	// 1826
 	ShareRuleId *int64 `json:"ShareRuleId,omitempty" xml:"ShareRuleId,omitempty"`
-	// The sharing rule name.
+	// The name of the cost allocation rule.
 	//
 	// example:
 	//
 	// test
 	ShareRuleName *string `json:"ShareRuleName,omitempty" xml:"ShareRuleName,omitempty"`
-	// The sharing rule type.
+	// The type of the cost allocation rule.
 	//
 	// example:
 	//
 	// AVERAGE
 	ShareRuleType *string `json:"ShareRuleType,omitempty" xml:"ShareRuleType,omitempty"`
-	// The target cost center rule details.
+	// The rule information of the target financial unit.
 	ToCostCenterShareRuleDetails []*QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails `json:"ToCostCenterShareRuleDetails,omitempty" xml:"ToCostCenterShareRuleDetails,omitempty" type:"Repeated"`
 }
 
@@ -262,23 +264,23 @@ func (s *QueryCostCenterShareRuleResponseBodyData) Validate() error {
 }
 
 type QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails struct {
-	// The cost center code.
+	// The code of the financial unit.
 	//
 	// example:
 	//
 	// 970354711219#
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
-	// The cost center ID.
+	// The ID of the financial unit.
 	//
 	// example:
 	//
 	// 637127
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// The cost center name.
+	// The name of the financial unit.
 	//
 	// example:
 	//
-	// 成本计划
+	// Cost Plan
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
 	// The creation time.
 	//
@@ -292,25 +294,25 @@ type QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails stru
 	//
 	// 2025-07-16 13:49:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The owner account ID of the cost center.
+	// The ID of the user to whom the financial unit belongs.
 	//
 	// example:
 	//
 	// 1529600453335198
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The parent cost center ID.
+	// The ID of the parent financial unit.
 	//
 	// example:
 	//
 	// 637537
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
-	// The previous cost center ID.
+	// The ID of the preceding financial unit.
 	//
 	// example:
 	//
 	// 583059
 	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
-	// The root cost center ID.
+	// The ID of the root financial unit.
 	//
 	// example:
 	//
@@ -412,23 +414,23 @@ func (s *QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails)
 }
 
 type QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails struct {
-	// The cost center code.
+	// The code of the financial unit.
 	//
 	// example:
 	//
 	// 970354711215#
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
-	// The cost center ID.
+	// The ID of the financial unit.
 	//
 	// example:
 	//
 	// 637127
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// The cost center name.
+	// The name of the financial unit.
 	//
 	// example:
 	//
-	// 成本分摊
+	// Cost Allocation
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
 	// The creation time.
 	//
@@ -442,31 +444,31 @@ type QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails struct
 	//
 	// 2025-07-16 13:49:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The owner account ID of the cost center.
+	// The ID of the user to whom the financial unit belongs.
 	//
 	// example:
 	//
 	// 1529600453335198
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The parent cost center ID.
+	// The ID of the parent financial unit.
 	//
 	// example:
 	//
 	// 637537
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
-	// The previous cost center ID.
+	// The ID of the preceding financial unit.
 	//
 	// example:
 	//
 	// 583055
 	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
-	// The root cost center ID.
+	// The ID of the root financial unit.
 	//
 	// example:
 	//
 	// 583050
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
-	// The sharing ratio.
+	// The cost allocation ratio.
 	//
 	// example:
 	//

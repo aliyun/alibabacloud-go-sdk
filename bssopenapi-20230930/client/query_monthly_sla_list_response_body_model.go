@@ -32,7 +32,7 @@ type QueryMonthlySlaListResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The data list.
 	Data []*QueryMonthlySlaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response struct metadata.
+	// The response metadata.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// 99.9155
 	AvailableRate *float64 `json:"AvailableRate,omitempty" xml:"AvailableRate,omitempty"`
-	// The unique ID of the damage record, used for targeted claims.
+	// The unique identifier of the damaged record, which is used to call the applyCoupon operation for targeted claim.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type QueryMonthlySlaListResponseBodyData struct {
 	//
 	// OSSBAG-cn-0xl0n****003
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The month in yyyyMM format.
+	// The month in the yyyyMM format.
 	//
 	// example:
 	//
 	// 202603
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
-	// The monthly service fee.
+	// The monthly service charge.
 	//
 	// example:
 	//

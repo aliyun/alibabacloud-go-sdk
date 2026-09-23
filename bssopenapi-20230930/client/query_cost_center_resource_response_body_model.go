@@ -26,19 +26,19 @@ type iQueryCostCenterResourceResponseBody interface {
 type QueryCostCenterResourceResponseBody struct {
 	// The data list.
 	CostCenterResourceDtoList []*QueryCostCenterResourceResponseBodyCostCenterResourceDtoList `json:"CostCenterResourceDtoList,omitempty" xml:"CostCenterResourceDtoList,omitempty" type:"Repeated"`
-	// The maximum number of records per query.
+	// The maximum number of records to return in a single query.
 	//
 	// example:
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The metadata of the response structure.
+	// The response metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The token for the next query. An empty NextToken indicates that there are no more results.
+	// The token for the next query. If this parameter is empty, no more results exist.
 	//
 	// This parameter is required.
 	//
@@ -136,25 +136,31 @@ func (s *QueryCostCenterResourceResponseBody) Validate() error {
 }
 
 type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
+	// The add strategy.
+	//
 	// example:
 	//
 	// AUTO_ALLOCATE
 	AddStrategy *string `json:"AddStrategy,omitempty" xml:"AddStrategy,omitempty"`
+	// The Policy Name of the add policy.
+	//
 	// example:
 	//
-	// 自动分配
+	// automatic allocation
 	AddStrategyName *string `json:"AddStrategyName,omitempty" xml:"AddStrategyName,omitempty"`
+	// The number of refreshed billing cycles.
+	//
 	// example:
 	//
 	// 3
 	ApplicablePeriodNum *int64 `json:"ApplicablePeriodNum,omitempty" xml:"ApplicablePeriodNum,omitempty"`
-	// The apportionment item code of the resource.
+	// The code of the attached resource.
 	//
 	// example:
 	//
 	// test
 	ApportionItemCode *string `json:"ApportionItemCode,omitempty" xml:"ApportionItemCode,omitempty"`
-	// The apportionment item name of the resource.
+	// The name of the attached resource.
 	//
 	// example:
 	//
@@ -170,38 +176,40 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// example:
 	//
-	// 云数据库
+	// ApsaraDB
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// The cost center code.
+	// The code of the cost center.
 	//
 	// example:
 	//
 	// code
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
-	// The creation time of the cost center.
+	// The time when the cost center was created.
 	//
 	// example:
 	//
 	// 2025-05-18 12:12:25
 	CostCenterCreateTime *string `json:"CostCenterCreateTime,omitempty" xml:"CostCenterCreateTime,omitempty"`
-	// The cost center ID.
+	// The ID of the cost center.
 	//
 	// example:
 	//
 	// 123456
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// The cost center name.
+	// The name of the cost center.
 	//
 	// example:
 	//
 	// test
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
-	// The last update time of the cost center.
+	// The time when the cost center was last updated.
 	//
 	// example:
 	//
 	// 2025-05-18 16:12:25
 	CostCenterUpdateTime *string `json:"CostCenterUpdateTime,omitempty" xml:"CostCenterUpdateTime,omitempty"`
+	// The rule version.
+	//
 	// example:
 	//
 	// 3
@@ -212,33 +220,37 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// cn-hangzhou;standard
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The associated commodity code.
+	//
 	// example:
 	//
 	// ecs
 	MasterCommodityCode *string `json:"MasterCommodityCode,omitempty" xml:"MasterCommodityCode,omitempty"`
+	// The associated instance ID.
+	//
 	// example:
 	//
 	// i-xxxxx
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
-	// The customer ID to which the cost center belongs.
+	// The ID of the customer to whom the cost center belongs.
 	//
 	// example:
 	//
 	// 1234567812345678
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The customer name to which the cost center belongs.
+	// The name of the customer to whom the cost center belongs.
 	//
 	// example:
 	//
-	// 客户A
+	// CustomerA
 	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
-	// The parent cost center ID.
+	// The ID of the parent cost center.
 	//
 	// example:
 	//
 	// 123456
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
-	// The product code, which is the same as the product code in Cost Center bills.
+	// The product code, which is the same as the product code in User Center bills.
 	//
 	// example:
 	//
@@ -248,16 +260,22 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// example:
 	//
-	// 云数据库
+	// ApsaraDB
 	PipName *string `json:"PipName,omitempty" xml:"PipName,omitempty"`
+	// The most recent billing cycle.
+	//
 	// example:
 	//
 	// 202509
 	RecentBillingMonth *int64 `json:"RecentBillingMonth,omitempty" xml:"RecentBillingMonth,omitempty"`
+	// The region name.
+	//
 	// example:
 	//
-	// 上海
+	// Shanghai
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -266,7 +284,7 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// example:
 	//
-	// 默认资源组
+	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The resource ID.
 	//
@@ -274,7 +292,7 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// OSSBAG-cn-v0h1s4hma018
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The custom alias of the resource.
+	// The custom nickname of the resource.
 	//
 	// example:
 	//
@@ -282,9 +300,9 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
 	// The resource source. Valid values:
 	//
-	// - AUTO_ALLOCATE: automatically allocated.
+	// - AUTO_ALLOCATE: automatic allocation.
 	//
-	// - MANUAL_ALLOCATE: manually allocated.
+	// - MANUAL_ALLOCATE: manual allocation.
 	//
 	// example:
 	//
@@ -302,30 +320,32 @@ type QueryCostCenterResourceResponseBodyCostCenterResourceDtoList struct {
 	//
 	// FPT_ossbag_absolute_Storage_bj
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The last update time of the cost center. This is a reserved field and is currently unavailable.
+	// The time when the cost center was last updated. This is a reserved field and is currently unavailable.
 	//
 	// example:
 	//
 	// 2025-05-18 16:12:25
 	ResourceUpdateTime *string `json:"ResourceUpdateTime,omitempty" xml:"ResourceUpdateTime,omitempty"`
-	// The owner user ID of the resource.
+	// The user ID of the resource owner.
 	//
 	// example:
 	//
 	// 1234567812345678
 	ResourceUserId *int64 `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
-	// The owner username of the resource.
+	// The username of the resource owner.
 	//
 	// example:
 	//
 	// test@test.aliyun.com
 	ResourceUserName *string `json:"ResourceUserName,omitempty" xml:"ResourceUserName,omitempty"`
-	// The root cost center ID.
+	// The ID of the root cost center.
 	//
 	// example:
 	//
 	// -1
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
+	// The billing cycle in which the rule takes effect.
+	//
 	// example:
 	//
 	// 202509

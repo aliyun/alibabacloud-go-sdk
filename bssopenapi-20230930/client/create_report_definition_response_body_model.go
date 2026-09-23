@@ -34,7 +34,7 @@ type iCreateReportDefinitionResponseBody interface {
 }
 
 type CreateReportDefinitionResponseBody struct {
-	// The start billing cycle for push. After successful subscription, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions and does not re-push historical data. Data within the last year can be pushed.
+	// The start billing cycle for push. After a successful subscription, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions and does not trigger re-push of historical data. Data within the last year can be pushed.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateReportDefinitionResponseBody struct {
 	//
 	// sh-bill
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The UID of the OSS owner that stores the files. If this is a Bid/Reseller subscription and you need to push to a sub-account\\"s OSS, specify this parameter. The account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The default value is the calling account.
+	// The UID of the OSS owner that stores the files. If you are a Bid/Reseller subscriber and need to push files to a sub-account\\"s OSS, specify this parameter. The account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The default value is the calling account.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateReportDefinitionResponseBody struct {
 	//
 	// OSS
 	ReportSourceName *string `json:"ReportSourceName,omitempty" xml:"ReportSourceName,omitempty"`
-	// The subscription source. Valid values: OSS or MC.
+	// The subscription source. Valid values: OSS and MC.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type CreateReportDefinitionResponseBody struct {
 	//
 	// 340CAB45-0637-5875-9BE4-EFD5750F6BA5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The subscription creation time.
+	// The time when the subscription was created.
 	//
 	// example:
 	//

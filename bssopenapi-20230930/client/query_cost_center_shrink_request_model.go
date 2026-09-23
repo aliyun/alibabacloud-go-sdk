@@ -34,13 +34,13 @@ type QueryCostCenterShrinkRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
-	// The ID of the primary sales channel. If this parameter is left empty, the sales channel ID of the current user is used by default.
+	// The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The ID of the user who owns the financial unit.
+	// The ID of the user who owns the cost center.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type QueryCostCenterShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the parent financial unit. A value of -1 indicates the root financial unit.
+	// The ID of the parent cost center. A value of -1 indicates the root cost center.
 	//
 	// This parameter is required.
 	//

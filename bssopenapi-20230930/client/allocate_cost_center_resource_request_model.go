@@ -24,7 +24,7 @@ type iAllocateCostCenterResourceRequest interface {
 type AllocateCostCenterResourceRequest struct {
 	// The ID of the source cost center. This parameter is required.
 	//
-	// - 0 indicates that the cost center is unallocated.
+	// - 0 indicates the unallocated cost center.
 	//
 	// - A value greater than 0 indicates an allocated cost center ID.
 	//
@@ -50,9 +50,9 @@ type AllocateCostCenterResourceRequest struct {
 	ResourceInstanceList []*AllocateCostCenterResourceRequestResourceInstanceList `json:"ResourceInstanceList,omitempty" xml:"ResourceInstanceList,omitempty" type:"Repeated"`
 	// The ID of the destination cost center. Valid values:
 	//
-	// - -1: moves the allocated resource to the unallocated state.
+	// - -1: moves allocated resources back to the unallocated state.
 	//
-	// - A value greater than 0: allocates the resource to the specified cost center.
+	// - A value greater than 0: allocates resources to the specified cost center.
 	//
 	// example:
 	//
@@ -131,13 +131,13 @@ type AllocateCostCenterResourceRequestResourceInstanceList struct {
 	//
 	// - Currently, eight commodities support attached resources. The commodity codes are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
 	//
-	// - You can call the QueryCostUnitResource operation to obtain all billing instances (including attached-resource instances with their attached resources) under a specific cost center (including the unallocated cost center) of a user.
+	// - You can call the QueryCostUnitResource operation to retrieve all billing instances (including attached-resource instances with their attached resource types) under a specific cost center (including the unallocated cost center) of a user.
 	//
 	// example:
 	//
 	// qwer1-cn-beijing
 	ApportionCode *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
-	// The attached resource name.
+	// The name of the attached resource.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type AllocateCostCenterResourceRequestResourceInstanceList struct {
 	//
 	// ecs-test-1
 	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
-	// The resource source. Valid values:
+	// The source of the resource. Valid values:
 	//
 	// - AUTO_ALLOCATE: automatic allocation.
 	//
@@ -225,7 +225,7 @@ type AllocateCostCenterResourceRequestResourceInstanceList struct {
 	//
 	// 273394581313325532
 	ResourceUserId *int64 `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
-	// The resource ownership username.
+	// The username of the resource ownership user.
 	//
 	// example:
 	//

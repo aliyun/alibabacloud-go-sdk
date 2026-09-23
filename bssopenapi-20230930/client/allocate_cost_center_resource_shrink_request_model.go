@@ -24,7 +24,7 @@ type iAllocateCostCenterResourceShrinkRequest interface {
 type AllocateCostCenterResourceShrinkRequest struct {
 	// The ID of the source cost center. This parameter is required.
 	//
-	// - 0 indicates that the cost center is unallocated.
+	// - 0 indicates the unallocated cost center.
 	//
 	// - A value greater than 0 indicates an allocated cost center ID.
 	//
@@ -50,9 +50,9 @@ type AllocateCostCenterResourceShrinkRequest struct {
 	ResourceInstanceListShrink *string `json:"ResourceInstanceList,omitempty" xml:"ResourceInstanceList,omitempty"`
 	// The ID of the destination cost center. Valid values:
 	//
-	// - -1: moves the allocated resource to the unallocated state.
+	// - -1: moves allocated resources back to the unallocated state.
 	//
-	// - A value greater than 0: allocates the resource to the specified cost center.
+	// - A value greater than 0: allocates resources to the specified cost center.
 	//
 	// example:
 	//

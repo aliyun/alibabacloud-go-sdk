@@ -24,7 +24,7 @@ type iQueryCostCenterResponseBody interface {
 }
 
 type QueryCostCenterResponseBody struct {
-	// The list of financial unit data.
+	// The list of cost center data.
 	CostCenterDtoList []*QueryCostCenterResponseBodyCostCenterDtoList `json:"CostCenterDtoList,omitempty" xml:"CostCenterDtoList,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -134,49 +134,50 @@ func (s *QueryCostCenterResponseBody) Validate() error {
 }
 
 type QueryCostCenterResponseBodyCostCenterDtoList struct {
-	// The code of the financial unit.
+	// The code of the cost center.
 	//
 	// example:
 	//
 	// 15945703968#
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
-	// The ID of the financial unit.
+	// The ID of the cost center.
 	//
 	// example:
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// The name of the financial unit. The name must be unique within the same account.
+	// The name of the cost center. The name must be unique within the same account.
 	//
 	// example:
 	//
-	// 资源组
+	// ResourceGroup
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
-	// The level of the financial unit node.
+	// The level of the cost center node.
 	//
 	// example:
 	//
 	// loose
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The ID of the user who owns the financial unit.
+	// The ID of the user who owns the cost center.
 	//
 	// example:
 	//
 	// 1314839403940987
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The ID of the parent financial unit.
+	// The ID of the parent cost center.
 	//
 	// example:
 	//
 	// -1
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
-	// The ID of the previous financial unit.
+	// The ID of the previous cost center.
 	//
 	// example:
 	//
 	// 485996
 	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
-	Priority         *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The priority of the cost center.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s QueryCostCenterResponseBodyCostCenterDtoList) String() string {

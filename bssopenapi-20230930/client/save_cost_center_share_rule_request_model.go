@@ -22,23 +22,23 @@ type iSaveCostCenterShareRuleRequest interface {
 }
 
 type SaveCostCenterShareRuleRequest struct {
-	// The list of sharing rules to create.
+	// The list of allocation rules to create.
 	CreateShareRuleList []*SaveCostCenterShareRuleRequestCreateShareRuleList `json:"CreateShareRuleList,omitempty" xml:"CreateShareRuleList,omitempty" type:"Repeated"`
-	// The list of sharing rules to modify.
+	// The list of allocation rules to update.
 	ModifyShareRuleList []*SaveCostCenterShareRuleRequestModifyShareRuleList `json:"ModifyShareRuleList,omitempty" xml:"ModifyShareRuleList,omitempty" type:"Repeated"`
-	// The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+	// The ID of the level-1 sales channel. If this parameter is left empty, the ID of the sales channel to which the current user belongs is used by default.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The user ID of the cost center owner.
+	// The ID of the user who owns the financial unit.
 	//
 	// example:
 	//
 	// 1977800748053695
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The list of sharing rules to delete.
+	// The list of allocation rules to delete.
 	RemoveShareRuleList []*int64 `json:"RemoveShareRuleList,omitempty" xml:"RemoveShareRuleList,omitempty" type:"Repeated"`
 }
 
@@ -118,17 +118,17 @@ func (s *SaveCostCenterShareRuleRequest) Validate() error {
 }
 
 type SaveCostCenterShareRuleRequestCreateShareRuleList struct {
-	// The list of source cost centers.
+	// The list of source financial units.
 	FromCostCenterList []*int64 `json:"FromCostCenterList,omitempty" xml:"FromCostCenterList,omitempty" type:"Repeated"`
-	// The list of sharing ratios.
+	// The list of allocation ratios.
 	ShareRatioList []*float64 `json:"ShareRatioList,omitempty" xml:"ShareRatioList,omitempty" type:"Repeated"`
-	// The name of the sharing rule.
+	// The name of the allocation rule.
 	//
 	// example:
 	//
 	// test
 	ShareRuleName *string `json:"ShareRuleName,omitempty" xml:"ShareRuleName,omitempty"`
-	// The type of the sharing rule.
+	// The type of the allocation rule.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +136,7 @@ type SaveCostCenterShareRuleRequestCreateShareRuleList struct {
 	//
 	// RATIO
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The list of target cost centers.
+	// The list of destination financial units.
 	ToCostCenterList []*int64 `json:"ToCostCenterList,omitempty" xml:"ToCostCenterList,omitempty" type:"Repeated"`
 }
 
@@ -198,11 +198,11 @@ func (s *SaveCostCenterShareRuleRequestCreateShareRuleList) Validate() error {
 }
 
 type SaveCostCenterShareRuleRequestModifyShareRuleList struct {
-	// The list of source cost centers.
+	// The list of source financial units.
 	FromCostCenterList []*int64 `json:"FromCostCenterList,omitempty" xml:"FromCostCenterList,omitempty" type:"Repeated"`
-	// The list of sharing ratios.
+	// The list of allocation ratios.
 	ShareRatioList []*float64 `json:"ShareRatioList,omitempty" xml:"ShareRatioList,omitempty" type:"Repeated"`
-	// The ID of the sharing rule.
+	// The ID of the allocation rule.
 	//
 	// This parameter is required.
 	//
@@ -210,13 +210,13 @@ type SaveCostCenterShareRuleRequestModifyShareRuleList struct {
 	//
 	// 1828
 	ShareRuleId *int64 `json:"ShareRuleId,omitempty" xml:"ShareRuleId,omitempty"`
-	// The name of the sharing rule.
+	// The name of the allocation rule.
 	//
 	// example:
 	//
 	// test
 	ShareRuleName *string `json:"ShareRuleName,omitempty" xml:"ShareRuleName,omitempty"`
-	// The type of the sharing rule.
+	// The type of the allocation rule.
 	//
 	// This parameter is required.
 	//
@@ -224,7 +224,7 @@ type SaveCostCenterShareRuleRequestModifyShareRuleList struct {
 	//
 	// CUSTOM
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The list of target cost centers.
+	// The list of destination financial units.
 	ToCostCenterList []*int64 `json:"ToCostCenterList,omitempty" xml:"ToCostCenterList,omitempty" type:"Repeated"`
 }
 

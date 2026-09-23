@@ -22,7 +22,7 @@ type iDeleteCostCenterResponseBody interface {
 }
 
 type DeleteCostCenterResponseBody struct {
-	// Cost center ID.
+	// The cost center ID.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type DeleteCostCenterResponseBody struct {
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Response metadata.
+	// The metadata of the response struct.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// User ID of the cost center owner.
+	// The ID of the user who owns the cost center.
 	//
 	// example:
 	//
 	// 1314839403940987
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

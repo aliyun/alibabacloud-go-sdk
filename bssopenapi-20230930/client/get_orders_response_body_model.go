@@ -126,7 +126,7 @@ type GetOrdersResponseBodyData struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. A maximum of 20 entries per page is recommended. A larger number may cause a timeout.
+	// The number of entries per page. A maximum of 20 entries per page is recommended. Excessive entries may cause a timeout.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DeleteReportDefinitionResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The metadata of the response struct.
+	// The response struct metadata.
 	//
 	// example:
 	//

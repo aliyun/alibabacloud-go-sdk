@@ -18,9 +18,9 @@ type iModifyCostCenterResponseBody interface {
 }
 
 type ModifyCostCenterResponseBody struct {
-	// The list of data entries.
+	// The data list.
 	CostCenterOperateDto []*ModifyCostCenterResponseBodyCostCenterOperateDto `json:"CostCenterOperateDto,omitempty" xml:"CostCenterOperateDto,omitempty" type:"Repeated"`
-	// The metadata of the response.
+	// The response struct metadata.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ModifyCostCenterResponseBody) Validate() error {
 }
 
 type ModifyCostCenterResponseBodyCostCenterOperateDto struct {
-	// The ID of the cost center.
+	// The cost center ID.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ModifyCostCenterResponseBodyCostCenterOperateDto struct {
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the owner to which the cost center belongs.
+	// The ID of the user who owns the cost center.
 	//
 	// example:
 	//

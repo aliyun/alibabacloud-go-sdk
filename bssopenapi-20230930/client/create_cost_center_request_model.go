@@ -16,11 +16,11 @@ type iCreateCostCenterRequest interface {
 }
 
 type CreateCostCenterRequest struct {
-	// Cost center entity list
+	// The list of cost center entities.
 	//
 	// This parameter is required.
 	CostCenterEntityList []*CreateCostCenterRequestCostCenterEntityList `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty" type:"Repeated"`
-	// Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	// The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ func (s *CreateCostCenterRequest) Validate() error {
 }
 
 type CreateCostCenterRequestCostCenterEntityList struct {
-	// Cost center name (must be unique within the same account)
+	// The cost center name. The name must be unique within the same account.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 资源组
+	// ResourceGroup
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
-	// Owner user ID of the new cost center
+	// The owner user ID of the new cost center.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateCostCenterRequestCostCenterEntityList struct {
 	//
 	// 1314839403940987
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// Parent cost center ID. A value of -1 indicates the root cost center.
+	// The parent cost center ID. A value of -1 indicates the root cost center.
 	//
 	// This parameter is required.
 	//

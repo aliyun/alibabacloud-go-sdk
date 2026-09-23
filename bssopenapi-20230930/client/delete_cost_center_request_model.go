@@ -18,7 +18,7 @@ type iDeleteCostCenterRequest interface {
 }
 
 type DeleteCostCenterRequest struct {
-	// Cost center ID.
+	// The cost center ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type DeleteCostCenterRequest struct {
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// First-level marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+	// The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// User ID of the cost center owner.
+	// The ID of the user who owns the cost center.
 	//
 	// This parameter is required.
 	//

@@ -18,13 +18,13 @@ type iDeleteCostCenterRuleResponseBody interface {
 }
 
 type DeleteCostCenterRuleResponseBody struct {
-	// The ID of the financial unit allocation rule.
+	// The ID of the cost center allocation rule.
 	//
 	// example:
 	//
 	// 37404
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response metadata.
+	// The response struct metadata.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iQueryCostCenterResourceRequest interface {
 }
 
 type QueryCostCenterResourceRequest struct {
-	// The ID of the cost center.
+	// The ID of the financial unit.
 	//
 	// example:
 	//
 	// 123456
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// The list of enterprises and accounts. An empty value indicates querying the current account.
+	// The list of enterprises and accounts. If this parameter is empty, the current account is queried.
 	EcIdAccountIds []*QueryCostCenterResourceRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// The maximum number of records per query.
+	// The maximum number of records to return in a single query.
 	//
 	// example:
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The first-level marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	// The ID of the primary marketplace. If this parameter is empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The token for the next query. An empty NextToken indicates that there are no more results.
+	// The token for the next query. If this parameter is empty, no more results exist.
 	//
 	// example:
 	//
 	// CAESEgoQCg4KCmd
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The owner user ID of the cost center.
+	// The ID of the owner of the financial unit.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *QueryCostCenterResourceRequest) Validate() error {
 }
 
 type QueryCostCenterResourceRequestEcIdAccountIds struct {
-	// The list of accessed accounts. An empty value indicates that all accounts under the current entity ID are selected.
+	// The list of account IDs to access. If this parameter is empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The enterprise entity ID.
+	// The ID of the enterprise entity.
 	//
 	// This parameter is required.
 	//

@@ -18,15 +18,15 @@ type iCreateCostCenterRuleShrinkRequest interface {
 }
 
 type CreateCostCenterRuleShrinkRequest struct {
-	// Financial unit ID
+	// The financial unit ID.
 	//
 	// example:
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// Rule expression
+	// The rule expression.
 	FilterExpressionShrink *string `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty"`
-	// First-level marketplace ID. If left empty, the ID of the marketplace to which the current user belongs is used by default.
+	// The level-1 marketplace ID. If left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//

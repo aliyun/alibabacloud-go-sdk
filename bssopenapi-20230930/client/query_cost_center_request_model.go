@@ -34,13 +34,13 @@ type QueryCostCenterRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*QueryCostCenterRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
-	// The ID of the primary sales channel. If this parameter is left empty, the sales channel ID of the current user is used by default.
+	// The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// The ID of the user who owns the financial unit.
+	// The ID of the user who owns the cost center.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type QueryCostCenterRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the parent financial unit. A value of -1 indicates the root financial unit.
+	// The ID of the parent cost center. A value of -1 indicates the root cost center.
 	//
 	// This parameter is required.
 	//
@@ -142,9 +142,9 @@ func (s *QueryCostCenterRequest) Validate() error {
 }
 
 type QueryCostCenterRequestEcIdAccountIds struct {
-	// The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
+	// The list of account IDs to access. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The ID of the enterprise entity.
+	// The enterprise entity ID.
 	//
 	// This parameter is required.
 	//

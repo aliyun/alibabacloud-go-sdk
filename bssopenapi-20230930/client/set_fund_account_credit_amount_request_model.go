@@ -9,6 +9,8 @@ type iSetFundAccountCreditAmountRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCancelCredit(v string) *SetFundAccountCreditAmountRequest
+	GetCancelCredit() *string
 	SetCreditAmount(v string) *SetFundAccountCreditAmountRequest
 	GetCreditAmount() *string
 	SetCurrency(v string) *SetFundAccountCreditAmountRequest
@@ -18,7 +20,19 @@ type iSetFundAccountCreditAmountRequest interface {
 }
 
 type SetFundAccountCreditAmountRequest struct {
-	// Credit limit
+	// Specifies whether to cancel credit control. Valid values:
+	//
+	// - true: Cancel credit control.
+	//
+	// - false or empty: Set credit control.
+	//
+	// When canceling credit control, CreditAmount must be set to 0.
+	//
+	// example:
+	//
+	// false
+	CancelCredit *string `json:"CancelCredit,omitempty" xml:"CancelCredit,omitempty"`
+	// The credit limit.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +40,7 @@ type SetFundAccountCreditAmountRequest struct {
 	//
 	// 500
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
-	// Currency for the credit control limit. Currently, only CNY is supported in mainland China, and only USD is supported for international use.
+	// The currency of the credit limit. Currently, only CNY is supported for Chinese mainland accounts, and only USD is supported for international accounts.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +48,7 @@ type SetFundAccountCreditAmountRequest struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// Fund account ID. If not specified, the account owned by the current account (owner) is used by default.
+	// The fund account ID. If this parameter is not specified, the account owned by the current account is used by default.
 	//
 	// example:
 	//
@@ -50,6 +64,10 @@ func (s SetFundAccountCreditAmountRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetFundAccountCreditAmountRequest) GetCancelCredit() *string {
+	return s.CancelCredit
+}
+
 func (s *SetFundAccountCreditAmountRequest) GetCreditAmount() *string {
 	return s.CreditAmount
 }
@@ -60,6 +78,11 @@ func (s *SetFundAccountCreditAmountRequest) GetCurrency() *string {
 
 func (s *SetFundAccountCreditAmountRequest) GetFundAccountId() *int64 {
 	return s.FundAccountId
+}
+
+func (s *SetFundAccountCreditAmountRequest) SetCancelCredit(v string) *SetFundAccountCreditAmountRequest {
+	s.CancelCredit = &v
+	return s
 }
 
 func (s *SetFundAccountCreditAmountRequest) SetCreditAmount(v string) *SetFundAccountCreditAmountRequest {

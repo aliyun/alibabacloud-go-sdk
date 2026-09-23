@@ -18,15 +18,15 @@ type iCreateCostCenterRuleRequest interface {
 }
 
 type CreateCostCenterRuleRequest struct {
-	// Financial unit ID
+	// The financial unit ID.
 	//
 	// example:
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// Rule expression
+	// The rule expression.
 	FilterExpression *CreateCostCenterRuleRequestFilterExpression `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty" type:"Struct"`
-	// First-level marketplace ID. If left empty, the ID of the marketplace to which the current user belongs is used by default.
+	// The level-1 marketplace ID. If left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//
@@ -79,23 +79,23 @@ func (s *CreateCostCenterRuleRequest) Validate() error {
 }
 
 type CreateCostCenterRuleRequestFilterExpression struct {
-	// Operation type
+	// The operation type.
 	//
 	// example:
 	//
 	// NARY
 	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
-	// Sub-condition filter
+	// The sub-condition filter.
 	FilterValues *CreateCostCenterRuleRequestFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
-	// Filter condition (deprecated)
+	// The filter condition (deprecated).
 	//
 	// example:
 	//
-	// 无
+	// None
 	Operand interface{} `json:"Operand,omitempty" xml:"Operand,omitempty"`
-	// Condition expression
+	// The conditional expression.
 	Operands []interface{} `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
-	// Relational expression
+	// The relational expression.
 	//
 	// example:
 	//
@@ -166,25 +166,25 @@ func (s *CreateCostCenterRuleRequestFilterExpression) Validate() error {
 }
 
 type CreateCostCenterRuleRequestFilterExpressionFilterValues struct {
-	// Condition filter key
+	// The filter condition key.
 	//
 	// example:
 	//
 	// TAG-test-xxx-key
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Condition filter key name (deprecated)
+	// The filter condition key name (deprecated).
 	//
 	// example:
 	//
-	// 无
+	// None
 	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	// Association relationship between code and value
+	// The association between the code and value.
 	//
 	// example:
 	//
 	// IN
 	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	// Condition filter value list
+	// The list of filter condition values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

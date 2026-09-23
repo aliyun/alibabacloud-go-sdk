@@ -18,17 +18,17 @@ type iDeleteCostCenterRuleShrinkRequest interface {
 }
 
 type DeleteCostCenterRuleShrinkRequest struct {
-	// Financial unit ID.
+	// The cost center ID.
 	//
 	// example:
 	//
 	// 637127
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// Rule expression.
+	// The rule expression.
 	//
-	// **This field does not need to be entered during the delete operation.**
+	// **This field does not need to be specified for delete operations.**
 	FilterExpressionShrink *string `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty"`
-	// Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	// The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
 	//
 	// example:
 	//

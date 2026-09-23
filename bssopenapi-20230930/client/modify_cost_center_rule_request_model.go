@@ -20,21 +20,21 @@ type iModifyCostCenterRuleRequest interface {
 }
 
 type ModifyCostCenterRuleRequest struct {
-	// Financial unit ID
+	// The financial unit ID.
 	//
 	// example:
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// Rule expression
+	// The rule expression.
 	FilterExpression *ModifyCostCenterRuleRequestFilterExpression `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty" type:"Struct"`
-	// Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	// The primary sales channel ID. If left empty, the channel ID of the current user is used by default.
 	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
-	// Owner of the financial unit (deprecated)
+	// The owner of the financial unit. (Deprecated)
 	//
 	// example:
 	//
@@ -96,23 +96,23 @@ func (s *ModifyCostCenterRuleRequest) Validate() error {
 }
 
 type ModifyCostCenterRuleRequestFilterExpression struct {
-	// Operation type
+	// The operation type.
 	//
 	// example:
 	//
 	// NARY
 	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
-	// Sub-condition filter
+	// The sub-condition filter.
 	FilterValues *ModifyCostCenterRuleRequestFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
-	// Filter condition (deprecated)
+	// The filter condition. (Deprecated)
 	//
 	// example:
 	//
-	// 无
+	// None
 	Operand interface{} `json:"Operand,omitempty" xml:"Operand,omitempty"`
-	// Condition expression
+	// The conditional expression.
 	Operands []interface{} `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
-	// Relational expression
+	// The relational expression.
 	//
 	// example:
 	//
@@ -183,25 +183,25 @@ func (s *ModifyCostCenterRuleRequestFilterExpression) Validate() error {
 }
 
 type ModifyCostCenterRuleRequestFilterExpressionFilterValues struct {
-	// Condition filter key
+	// The condition filter key.
 	//
 	// example:
 	//
 	// TAG-test-xxx-key
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Condition filter key name (deprecated)
+	// The condition filter key name. (Deprecated)
 	//
 	// example:
 	//
-	// 无
+	// None
 	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	// Association between code and value
+	// The association between the code and value.
 	//
 	// example:
 	//
 	// IN
 	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	// Condition filter value list
+	// The list of condition filter values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

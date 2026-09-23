@@ -18,7 +18,7 @@ type iSaveCostCenterShareRuleResponseBody interface {
 }
 
 type SaveCostCenterShareRuleResponseBody struct {
-	// The metadata of the response.
+	// The response struct metadata.
 	//
 	// example:
 	//

@@ -202,6 +202,88 @@ func (client *Client) AddCouponDeductTag(request *AddCouponDeductTagRequest) (_r
 
 // Summary:
 //
+// 席位新增
+//
+// @param request - AddCreditSeatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCreditSeatsResponse
+func (client *Client) AddCreditSeatsWithOptions(request *AddCreditSeatsRequest, runtime *dara.RuntimeOptions) (_result *AddCreditSeatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Configs) {
+		query["Configs"] = request.Configs
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.Seats) {
+		query["Seats"] = request.Seats
+	}
+
+	if !dara.IsNil(request.SubscriptionType) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddCreditSeats"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddCreditSeatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 席位新增
+//
+// @param request - AddCreditSeatsRequest
+//
+// @return AddCreditSeatsResponse
+func (client *Client) AddCreditSeats(request *AddCreditSeatsRequest) (_result *AddCreditSeatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddCreditSeatsResponse{}
+	_body, _err := client.AddCreditSeatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Allocates resource instances (instance-based and attached-resource-based) from a source cost center to a destination cost center.
 //
 // @param tmpReq - AllocateCostCenterResourceRequest
@@ -434,209 +516,7 @@ func (client *Client) CheckAccountExist(request *CheckAccountExistRequest) (_res
 
 // Summary:
 //
-// Checks whether a specified budgetName exists.
-//
-// @param request - CheckBudgetNameExistsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CheckBudgetNameExistsResponse
-func (client *Client) CheckBudgetNameExistsWithOptions(request *CheckBudgetNameExistsRequest, runtime *dara.RuntimeOptions) (_result *CheckBudgetNameExistsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.Nbid) {
-		query["Nbid"] = request.Nbid
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.BudgetName) {
-		body["BudgetName"] = request.BudgetName
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("CheckBudgetNameExists"),
-		Version:     dara.String("2023-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &CheckBudgetNameExistsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether a specified budgetName exists.
-//
-// @param request - CheckBudgetNameExistsRequest
-//
-// @return CheckBudgetNameExistsResponse
-func (client *Client) CheckBudgetNameExists(request *CheckBudgetNameExistsRequest) (_result *CheckBudgetNameExistsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckBudgetNameExistsResponse{}
-	_body, _err := client.CheckBudgetNameExistsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a budget.
-//
-// @param tmpReq - CreateBudgetRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateBudgetResponse
-func (client *Client) CreateBudgetWithOptions(tmpReq *CreateBudgetRequest, runtime *dara.RuntimeOptions) (_result *CreateBudgetResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = tmpReq.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	request := &CreateBudgetShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.CycleQuota) {
-		request.CycleQuotaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CycleQuota, dara.String("CycleQuota"), dara.String("json"))
-	}
-
-	if !dara.IsNil(tmpReq.EcIdAccountIds) {
-		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
-	}
-
-	if !dara.IsNil(tmpReq.QueryFilter) {
-		request.QueryFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryFilter, dara.String("QueryFilter"), dara.String("json"))
-	}
-
-	if !dara.IsNil(tmpReq.WarnConfs) {
-		request.WarnConfsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarnConfs, dara.String("WarnConfs"), dara.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.EcIdAccountIdsShrink) {
-		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
-	}
-
-	if !dara.IsNil(request.Nbid) {
-		query["Nbid"] = request.Nbid
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.BudgetName) {
-		body["BudgetName"] = request.BudgetName
-	}
-
-	if !dara.IsNil(request.BudgetType) {
-		body["BudgetType"] = request.BudgetType
-	}
-
-	if !dara.IsNil(request.Comment) {
-		body["Comment"] = request.Comment
-	}
-
-	if !dara.IsNil(request.CycleEndPeriod) {
-		body["CycleEndPeriod"] = request.CycleEndPeriod
-	}
-
-	if !dara.IsNil(request.CycleQuotaShrink) {
-		body["CycleQuota"] = request.CycleQuotaShrink
-	}
-
-	if !dara.IsNil(request.CycleStartPeriod) {
-		body["CycleStartPeriod"] = request.CycleStartPeriod
-	}
-
-	if !dara.IsNil(request.CycleType) {
-		body["CycleType"] = request.CycleType
-	}
-
-	if !dara.IsNil(request.Metric) {
-		body["Metric"] = request.Metric
-	}
-
-	if !dara.IsNil(request.QueryFilterShrink) {
-		body["QueryFilter"] = request.QueryFilterShrink
-	}
-
-	if !dara.IsNil(request.Quota) {
-		body["Quota"] = request.Quota
-	}
-
-	if !dara.IsNil(request.QuotaType) {
-		body["QuotaType"] = request.QuotaType
-	}
-
-	if !dara.IsNil(request.WarnConfsShrink) {
-		body["WarnConfs"] = request.WarnConfsShrink
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("CreateBudget"),
-		Version:     dara.String("2023-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &CreateBudgetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a budget.
-//
-// @param request - CreateBudgetRequest
-//
-// @return CreateBudgetResponse
-func (client *Client) CreateBudget(request *CreateBudgetRequest) (_result *CreateBudgetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBudgetResponse{}
-	_body, _err := client.CreateBudgetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create Cost Center
+// Creates cost centers.
 //
 // Description:
 //
@@ -694,7 +574,7 @@ func (client *Client) CreateCostCenterWithOptions(tmpReq *CreateCostCenterReques
 
 // Summary:
 //
-// # Create Cost Center
+// Creates cost centers.
 //
 // Description:
 //
@@ -716,7 +596,7 @@ func (client *Client) CreateCostCenter(request *CreateCostCenterRequest) (_resul
 
 // Summary:
 //
-// # Create a financial unit auto-allocation rule
+// Creates an automatic allocation rule for a financial unit.
 //
 // @param tmpReq - CreateCostCenterRuleRequest
 //
@@ -776,7 +656,7 @@ func (client *Client) CreateCostCenterRuleWithOptions(tmpReq *CreateCostCenterRu
 
 // Summary:
 //
-// # Create a financial unit auto-allocation rule
+// Creates an automatic allocation rule for a financial unit.
 //
 // @param request - CreateCostCenterRuleRequest
 //
@@ -785,6 +665,96 @@ func (client *Client) CreateCostCenterRule(request *CreateCostCenterRuleRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateCostCenterRuleResponse{}
 	_body, _err := client.CreateCostCenterRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建坐席
+//
+// @param request - CreateCreditSeatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCreditSeatResponse
+func (client *Client) CreateCreditSeatWithOptions(request *CreateCreditSeatRequest, runtime *dara.RuntimeOptions) (_result *CreateCreditSeatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.SubscriptionConfigs) {
+		query["SubscriptionConfigs"] = request.SubscriptionConfigs
+	}
+
+	if !dara.IsNil(request.SubscriptionType) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCreditSeat"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCreditSeatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建坐席
+//
+// @param request - CreateCreditSeatRequest
+//
+// @return CreateCreditSeatResponse
+func (client *Client) CreateCreditSeat(request *CreateCreditSeatRequest) (_result *CreateCreditSeatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCreditSeatResponse{}
+	_body, _err := client.CreateCreditSeatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1070,25 +1040,25 @@ func (client *Client) CreateInvoice(request *CreateInvoiceRequest) (_result *Cre
 //
 // Description:
 //
-// When calling this operation, note the following:
+// When you call this operation, note the following items:
 //
-// - A user can subscribe to one type of bill file at a time.
+// - You can subscribe to one type of bill file at a time.
 //
-// - Except for monthly bill PDFs, after subscription, starting from the next day, the system pushes a bill file that contains full detailed data from the beginning of the current month to date. Before the 4th of each month, the system pushes the full bill file for the entire previous billing cycle.
+// - Except for monthly bill PDFs, after you subscribe, the system pushes a bill file that contains full detailed data from the beginning of the current month to the present day starting from the next day. Before the 4th of each month, the system pushes the full bill file for the entire previous billing cycle.
 //
 // - Monthly bill PDFs are pushed before the 4th of each month for the previous month.
 //
-// - Bill files generated on a daily basis may have latency. Delayed bills are pushed the day after they are generated and may include bills from before the previous day that were delayed until the previous day. Pull the full file for the previous month at the beginning of each month.
+// - Bill files generated on a daily basis may be delayed. Delayed bills are pushed the day after they are generated and may include bills from before the previous day that were delayed until the previous day. We recommend that you pull the full file for the previous month at the beginning of each month.
 //
-// > Apply for permissions as described in the documentation: [Bill subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription)
+// > Apply for permissions by following the instructions in [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
 //
-// - This subscription is the same feature as Expenses and Costs - Bill Subscription. Subscriptions are shared between the two.
+// - This subscription shares the same functionality as the Expenses and Costs - Billing Subscription feature. Subscriptions are synchronized between the two.
 //
-// - When subscribing to a directory under a bucket, ensure the directory name complies with the naming conventions:
+// - When you subscribe to a directory under a bucket, make sure the directory name complies with the naming conventions:
 //
 //   - Emojis are not allowed. Use valid UTF-8 characters.
 //
-//   - / is used to separate paths and can quickly create subdirectories. Do not start with / or \\, and do not use consecutive / characters.
+//   - Use / to separate paths and quickly create subdirectories. Do not start with / or \\, and do not use consecutive / characters.
 //
 //   - Subdirectories named .. are not allowed.
 //
@@ -1102,7 +1072,7 @@ func (client *Client) CreateInvoice(request *CreateInvoiceRequest) (_result *Cre
 //
 //   - Full file name format at the beginning of the next month: `{Account UID}_{Sales site ID}_{Bill type}_{YYYYMM|YYYYMM}`, for example: `169**_2688801000001_consumeDetailBillV2_201903`.
 //
-// - Monthly bill PDF type files are in .pdf format. All other file types are .csv files. When the data volume is large, the system automatically splits the exported bill into multiple files and compresses them into one or more zip files. The zip file name format is the same.
+// - Monthly bill PDF files are in .pdf format. All other file types are .csv files. When the data volume is large, the system automatically splits the exported bill into multiple files and compresses them into one or more zip files. The zip file name format remains the same.
 //
 // @param tmpReq - CreateReportDefinitionRequest
 //
@@ -1210,25 +1180,25 @@ func (client *Client) CreateReportDefinitionWithOptions(tmpReq *CreateReportDefi
 //
 // Description:
 //
-// When calling this operation, note the following:
+// When you call this operation, note the following items:
 //
-// - A user can subscribe to one type of bill file at a time.
+// - You can subscribe to one type of bill file at a time.
 //
-// - Except for monthly bill PDFs, after subscription, starting from the next day, the system pushes a bill file that contains full detailed data from the beginning of the current month to date. Before the 4th of each month, the system pushes the full bill file for the entire previous billing cycle.
+// - Except for monthly bill PDFs, after you subscribe, the system pushes a bill file that contains full detailed data from the beginning of the current month to the present day starting from the next day. Before the 4th of each month, the system pushes the full bill file for the entire previous billing cycle.
 //
 // - Monthly bill PDFs are pushed before the 4th of each month for the previous month.
 //
-// - Bill files generated on a daily basis may have latency. Delayed bills are pushed the day after they are generated and may include bills from before the previous day that were delayed until the previous day. Pull the full file for the previous month at the beginning of each month.
+// - Bill files generated on a daily basis may be delayed. Delayed bills are pushed the day after they are generated and may include bills from before the previous day that were delayed until the previous day. We recommend that you pull the full file for the previous month at the beginning of each month.
 //
-// > Apply for permissions as described in the documentation: [Bill subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription)
+// > Apply for permissions by following the instructions in [Billing subscription](https://www.alibabacloud.com/help/en/user-center/user-guide/billing-subscription).
 //
-// - This subscription is the same feature as Expenses and Costs - Bill Subscription. Subscriptions are shared between the two.
+// - This subscription shares the same functionality as the Expenses and Costs - Billing Subscription feature. Subscriptions are synchronized between the two.
 //
-// - When subscribing to a directory under a bucket, ensure the directory name complies with the naming conventions:
+// - When you subscribe to a directory under a bucket, make sure the directory name complies with the naming conventions:
 //
 //   - Emojis are not allowed. Use valid UTF-8 characters.
 //
-//   - / is used to separate paths and can quickly create subdirectories. Do not start with / or \\, and do not use consecutive / characters.
+//   - Use / to separate paths and quickly create subdirectories. Do not start with / or \\, and do not use consecutive / characters.
 //
 //   - Subdirectories named .. are not allowed.
 //
@@ -1242,7 +1212,7 @@ func (client *Client) CreateReportDefinitionWithOptions(tmpReq *CreateReportDefi
 //
 //   - Full file name format at the beginning of the next month: `{Account UID}_{Sales site ID}_{Bill type}_{YYYYMM|YYYYMM}`, for example: `169**_2688801000001_consumeDetailBillV2_201903`.
 //
-// - Monthly bill PDF type files are in .pdf format. All other file types are .csv files. When the data volume is large, the system automatically splits the exported bill into multiple files and compresses them into one or more zip files. The zip file name format is the same.
+// - Monthly bill PDF files are in .pdf format. All other file types are .csv files. When the data volume is large, the system automatically splits the exported bill into multiple files and compresses them into one or more zip files. The zip file name format remains the same.
 //
 // @param request - CreateReportDefinitionRequest
 //
@@ -1260,79 +1230,11 @@ func (client *Client) CreateReportDefinition(request *CreateReportDefinitionRequ
 
 // Summary:
 //
-// Deletes a budget.
-//
-// @param request - DeleteBudgetRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteBudgetResponse
-func (client *Client) DeleteBudgetWithOptions(request *DeleteBudgetRequest, runtime *dara.RuntimeOptions) (_result *DeleteBudgetResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.Nbid) {
-		query["Nbid"] = request.Nbid
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.BudgetName) {
-		body["BudgetName"] = request.BudgetName
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DeleteBudget"),
-		Version:     dara.String("2023-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DeleteBudgetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a budget.
-//
-// @param request - DeleteBudgetRequest
-//
-// @return DeleteBudgetResponse
-func (client *Client) DeleteBudget(request *DeleteBudgetRequest) (_result *DeleteBudgetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBudgetResponse{}
-	_body, _err := client.DeleteBudgetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Cost Center
+// Deletes a cost center.
 //
 // Description:
 //
-// This API is in canary release and is only available to whitelisted users. Excessive calls may cause performance issues such as response timeouts.
+// This operation is in canary release and is available only to specific whitelisted users. Calling this operation too frequently may cause performance issues such as response timeouts.
 //
 // @param request - DeleteCostCenterRequest
 //
@@ -1384,11 +1286,11 @@ func (client *Client) DeleteCostCenterWithOptions(request *DeleteCostCenterReque
 
 // Summary:
 //
-// # Delete Cost Center
+// Deletes a cost center.
 //
 // Description:
 //
-// This API is in canary release and is only available to whitelisted users. Excessive calls may cause performance issues such as response timeouts.
+// This operation is in canary release and is available only to specific whitelisted users. Calling this operation too frequently may cause performance issues such as response timeouts.
 //
 // @param request - DeleteCostCenterRequest
 //
@@ -1406,11 +1308,11 @@ func (client *Client) DeleteCostCenter(request *DeleteCostCenterRequest) (_resul
 
 // Summary:
 //
-// # Delete financial unit automatic allocation rule
+// Deletes an automatic allocation rule for a cost center.
 //
 // Description:
 //
-// This API is in canary release and is only available to whitelisted users. Excessive calls may cause performance issues such as response timeouts.
+// This API is in canary release and is available only to specific whitelisted users. Calling this API too frequently may cause performance issues such as response timeouts.
 //
 // @param tmpReq - DeleteCostCenterRuleRequest
 //
@@ -1470,11 +1372,11 @@ func (client *Client) DeleteCostCenterRuleWithOptions(tmpReq *DeleteCostCenterRu
 
 // Summary:
 //
-// # Delete financial unit automatic allocation rule
+// Deletes an automatic allocation rule for a cost center.
 //
 // Description:
 //
-// This API is in canary release and is only available to whitelisted users. Excessive calls may cause performance issues such as response timeouts.
+// This API is in canary release and is available only to specific whitelisted users. Calling this API too frequently may cause performance issues such as response timeouts.
 //
 // @param request - DeleteCostCenterRuleRequest
 //
@@ -1633,158 +1535,6 @@ func (client *Client) DeleteReportDefinition(request *DeleteReportDefinitionRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteReportDefinitionResponse{}
 	_body, _err := client.DeleteReportDefinitionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query a Single Budget
-//
-// @param request - DescribeBudgetRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeBudgetResponse
-func (client *Client) DescribeBudgetWithOptions(request *DescribeBudgetRequest, runtime *dara.RuntimeOptions) (_result *DescribeBudgetResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.Nbid) {
-		query["Nbid"] = request.Nbid
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.BudgetName) {
-		body["BudgetName"] = request.BudgetName
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeBudget"),
-		Version:     dara.String("2023-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeBudgetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query a Single Budget
-//
-// @param request - DescribeBudgetRequest
-//
-// @return DescribeBudgetResponse
-func (client *Client) DescribeBudget(request *DescribeBudgetRequest) (_result *DescribeBudgetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBudgetResponse{}
-	_body, _err := client.DescribeBudgetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of budgets.
-//
-// @param request - DescribeBudgetsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeBudgetsResponse
-func (client *Client) DescribeBudgetsWithOptions(request *DescribeBudgetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBudgetsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.Nbid) {
-		query["Nbid"] = request.Nbid
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.BudgetName) {
-		body["BudgetName"] = request.BudgetName
-	}
-
-	if !dara.IsNil(request.BudgetType) {
-		body["BudgetType"] = request.BudgetType
-	}
-
-	if !dara.IsNil(request.ExpireStatus) {
-		body["ExpireStatus"] = request.ExpireStatus
-	}
-
-	if !dara.IsNil(request.PageNo) {
-		body["PageNo"] = request.PageNo
-	}
-
-	if !dara.IsNil(request.PageSize) {
-		body["PageSize"] = request.PageSize
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeBudgets"),
-		Version:     dara.String("2023-09-30"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeBudgetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of budgets.
-//
-// @param request - DescribeBudgetsRequest
-//
-// @return DescribeBudgetsResponse
-func (client *Client) DescribeBudgets(request *DescribeBudgetsRequest) (_result *DescribeBudgetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBudgetsResponse{}
-	_body, _err := client.DescribeBudgetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2844,7 +2594,7 @@ func (client *Client) GetFundAccountTransactionDetails(request *GetFundAccountTr
 
 // Summary:
 //
-// Queries the details of a specific order for a user or a reseller\\"s customer.
+// Queries the details of a specific order for a user or a reseller customer.
 //
 // @param request - GetOrderDetailRequest
 //
@@ -2896,7 +2646,7 @@ func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, 
 
 // Summary:
 //
-// Queries the details of a specific order for a user or a reseller\\"s customer.
+// Queries the details of a specific order for a user or a reseller customer.
 //
 // @param request - GetOrderDetailRequest
 //
@@ -2914,7 +2664,7 @@ func (client *Client) GetOrderDetail(request *GetOrderDetailRequest) (_result *G
 
 // Summary:
 //
-// Queries the order list of a user or a reseller customer. By default, this operation queries orders created within the most recent hour. To query orders over a longer time range, set the CreateTimeStart and CreateTimeEnd parameters.
+// Queries the order list of a user or a reseller customer. By default, orders created within the most recent 1 hour are queried. To query orders over a longer time range, set the CreateTimeStart and CreateTimeEnd parameters.
 //
 // @param request - GetOrdersRequest
 //
@@ -2998,7 +2748,7 @@ func (client *Client) GetOrdersWithOptions(request *GetOrdersRequest, runtime *d
 
 // Summary:
 //
-// Queries the order list of a user or a reseller customer. By default, this operation queries orders created within the most recent hour. To query orders over a longer time range, set the CreateTimeStart and CreateTimeEnd parameters.
+// Queries the order list of a user or a reseller customer. By default, orders created within the most recent 1 hour are queried. To query orders over a longer time range, set the CreateTimeStart and CreateTimeEnd parameters.
 //
 // @param request - GetOrdersRequest
 //
@@ -3719,7 +3469,7 @@ func (client *Client) ListReportDefinitions(request *ListReportDefinitionsReques
 
 // Summary:
 //
-// # Modify cost centers
+// Modifies one or more cost centers.
 //
 // Description:
 //
@@ -3777,7 +3527,7 @@ func (client *Client) ModifyCostCenterWithOptions(tmpReq *ModifyCostCenterReques
 
 // Summary:
 //
-// # Modify cost centers
+// Modifies one or more cost centers.
 //
 // Description:
 //
@@ -3799,11 +3549,11 @@ func (client *Client) ModifyCostCenter(request *ModifyCostCenterRequest) (_resul
 
 // Summary:
 //
-// # Modify financial unit rules
+// Modifies the automatic allocation rule of a financial unit.
 //
 // Description:
 //
-// # Modify one or more financial units
+// Modifies one or more financial units.
 //
 // @param tmpReq - ModifyCostCenterRuleRequest
 //
@@ -3867,11 +3617,11 @@ func (client *Client) ModifyCostCenterRuleWithOptions(tmpReq *ModifyCostCenterRu
 
 // Summary:
 //
-// # Modify financial unit rules
+// Modifies the automatic allocation rule of a financial unit.
 //
 // Description:
 //
-// # Modify one or more financial units
+// Modifies one or more financial units.
 //
 // @param request - ModifyCostCenterRuleRequest
 //
@@ -3975,11 +3725,11 @@ func (client *Client) PayOrder(request *PayOrderRequest) (_result *PayOrderRespo
 
 // Summary:
 //
-// # Query cost center expense overview
+// Queries the cost overview of financial units.
 //
 // Description:
 //
-// # Query cost center expense overview results for a specified billing period
+// Queries the cost overview results of a financial unit for a specified billing cycle.
 //
 // @param request - QueryCostByCostCenterRequest
 //
@@ -4039,11 +3789,11 @@ func (client *Client) QueryCostByCostCenterWithOptions(request *QueryCostByCostC
 
 // Summary:
 //
-// # Query cost center expense overview
+// Queries the cost overview of financial units.
 //
 // Description:
 //
-// # Query cost center expense overview results for a specified billing period
+// Queries the cost overview results of a financial unit for a specified billing cycle.
 //
 // @param request - QueryCostByCostCenterRequest
 //
@@ -4061,11 +3811,11 @@ func (client *Client) QueryCostByCostCenter(request *QueryCostByCostCenterReques
 
 // Summary:
 //
-// Queries financial units.
+// Queries cost centers.
 //
 // Description:
 //
-// Queries a parent financial unit and its child financial units.
+// Queries a parent cost center and its child cost centers.
 //
 // @param tmpReq - QueryCostCenterRequest
 //
@@ -4135,11 +3885,11 @@ func (client *Client) QueryCostCenterWithOptions(tmpReq *QueryCostCenterRequest,
 
 // Summary:
 //
-// Queries financial units.
+// Queries cost centers.
 //
 // Description:
 //
-// Queries a parent financial unit and its child financial units.
+// Queries a parent cost center and its child cost centers.
 //
 // @param request - QueryCostCenterRequest
 //
@@ -4157,7 +3907,7 @@ func (client *Client) QueryCostCenter(request *QueryCostCenterRequest) (_result 
 
 // Summary:
 //
-// Queries the list of resource instances that belong to a cost center of the user. When CostCenterId is 0, it queries unallocated primary and sub-resource instances.
+// Queries the list of resource instances that belong to a financial unit of a user. If CostCenterId is set to 0, unallocated primary and sub-resource instances are queried.
 //
 // @param request - QueryCostCenterResourceRequest
 //
@@ -4223,7 +3973,7 @@ func (client *Client) QueryCostCenterResourceWithOptions(request *QueryCostCente
 
 // Summary:
 //
-// Queries the list of resource instances that belong to a cost center of the user. When CostCenterId is 0, it queries unallocated primary and sub-resource instances.
+// Queries the list of resource instances that belong to a financial unit of a user. If CostCenterId is set to 0, unallocated primary and sub-resource instances are queried.
 //
 // @param request - QueryCostCenterResourceRequest
 //
@@ -4241,11 +3991,11 @@ func (client *Client) QueryCostCenterResource(request *QueryCostCenterResourceRe
 
 // Summary:
 //
-// # Query cost center rules
+// Queries the automatic allocation rules of a cost center.
 //
 // Description:
 //
-// Query parent cost center and its child cost centers.
+// Queries a parent cost center and its child cost centers.
 //
 // @param request - QueryCostCenterRuleRequest
 //
@@ -4299,11 +4049,11 @@ func (client *Client) QueryCostCenterRuleWithOptions(request *QueryCostCenterRul
 
 // Summary:
 //
-// # Query cost center rules
+// Queries the automatic allocation rules of a cost center.
 //
 // Description:
 //
-// Query parent cost center and its child cost centers.
+// Queries a parent cost center and its child cost centers.
 //
 // @param request - QueryCostCenterRuleRequest
 //
@@ -4321,11 +4071,11 @@ func (client *Client) QueryCostCenterRule(request *QueryCostCenterRuleRequest) (
 
 // Summary:
 //
-// # Query cost center sharing rules
+// Queries the cost allocation rules of financial units.
 //
 // Description:
 //
-// Queries the sharing rules of user cost centers.
+// Queries the cost allocation rules of a user\\"s financial units.
 //
 // @param request - QueryCostCenterShareRuleRequest
 //
@@ -4385,11 +4135,11 @@ func (client *Client) QueryCostCenterShareRuleWithOptions(request *QueryCostCent
 
 // Summary:
 //
-// # Query cost center sharing rules
+// Queries the cost allocation rules of financial units.
 //
 // Description:
 //
-// Queries the sharing rules of user cost centers.
+// Queries the cost allocation rules of a user\\"s financial units.
 //
 // @param request - QueryCostCenterShareRuleRequest
 //
@@ -4411,7 +4161,7 @@ func (client *Client) QueryCostCenterShareRule(request *QueryCostCenterShareRule
 //
 // Description:
 //
-// Provides the SLA compensation details list for a user. Only data from the last two months is available.
+// Queries the SLA compensation details list for a user. Only data from the last two months is available.
 //
 // @param request - QueryMonthlySlaListRequest
 //
@@ -4489,7 +4239,7 @@ func (client *Client) QueryMonthlySlaListWithOptions(request *QueryMonthlySlaLis
 //
 // Description:
 //
-// Provides the SLA compensation details list for a user. Only data from the last two months is available.
+// Queries the SLA compensation details list for a user. Only data from the last two months is available.
 //
 // @param request - QueryMonthlySlaListRequest
 //
@@ -4507,7 +4257,171 @@ func (client *Client) QueryMonthlySlaList(request *QueryMonthlySlaListRequest) (
 
 // Summary:
 //
-// Modifies cost center sharing rules, including creating, modifying, and deleting sharing rules.
+// 减席位
+//
+// @param request - ReduceCreditSeatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReduceCreditSeatsResponse
+func (client *Client) ReduceCreditSeatsWithOptions(request *ReduceCreditSeatsRequest, runtime *dara.RuntimeOptions) (_result *ReduceCreditSeatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.SubscriptionType) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReduceCreditSeats"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReduceCreditSeatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 减席位
+//
+// @param request - ReduceCreditSeatsRequest
+//
+// @return ReduceCreditSeatsResponse
+func (client *Client) ReduceCreditSeats(request *ReduceCreditSeatsRequest) (_result *ReduceCreditSeatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ReduceCreditSeatsResponse{}
+	_body, _err := client.ReduceCreditSeatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 整体续费席位
+//
+// @param request - RenewCreditSeatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewCreditSeatResponse
+func (client *Client) RenewCreditSeatWithOptions(request *RenewCreditSeatRequest, runtime *dara.RuntimeOptions) (_result *RenewCreditSeatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.SubscriptionType) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewCreditSeat"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewCreditSeatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 整体续费席位
+//
+// @param request - RenewCreditSeatRequest
+//
+// @return RenewCreditSeatResponse
+func (client *Client) RenewCreditSeat(request *RenewCreditSeatRequest) (_result *RenewCreditSeatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RenewCreditSeatResponse{}
+	_body, _err := client.RenewCreditSeatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies cost allocation rules for financial units, including creating, updating, and deleting allocation rules.
 //
 // @param tmpReq - SaveCostCenterShareRuleRequest
 //
@@ -4581,7 +4495,7 @@ func (client *Client) SaveCostCenterShareRuleWithOptions(tmpReq *SaveCostCenterS
 
 // Summary:
 //
-// Modifies cost center sharing rules, including creating, modifying, and deleting sharing rules.
+// Modifies cost allocation rules for financial units, including creating, updating, and deleting allocation rules.
 //
 // @param request - SaveCostCenterShareRuleRequest
 //
@@ -4599,7 +4513,7 @@ func (client *Client) SaveCostCenterShareRule(request *SaveCostCenterShareRuleRe
 
 // Summary:
 //
-// # Set the credit control limit for a fund account
+// Sets the credit limit for a fund account.
 //
 // @param request - SetFundAccountCreditAmountRequest
 //
@@ -4614,6 +4528,10 @@ func (client *Client) SetFundAccountCreditAmountWithOptions(request *SetFundAcco
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CancelCredit) {
+		body["CancelCredit"] = request.CancelCredit
+	}
+
 	if !dara.IsNil(request.CreditAmount) {
 		body["CreditAmount"] = request.CreditAmount
 	}
@@ -4651,7 +4569,7 @@ func (client *Client) SetFundAccountCreditAmountWithOptions(request *SetFundAcco
 
 // Summary:
 //
-// # Set the credit control limit for a fund account
+// Sets the credit limit for a fund account.
 //
 // @param request - SetFundAccountCreditAmountRequest
 //
@@ -4821,11 +4739,11 @@ func (client *Client) SetSavingPlanUserDeductRule(request *SetSavingPlanUserDedu
 
 // Summary:
 //
-// User claims coupons for the last two months.
+// Claims SLA compensation coupons for the last two months.
 //
 // Description:
 //
-// 1. Call QueryMonthlySlaList to obtain the claimable months and records.
+// 1. Call QueryMonthlySlaList to retrieve the claimable months and records.
 //
 // 2. Claim by month or by record.
 //
@@ -4887,11 +4805,11 @@ func (client *Client) SubmitSlaCouponApplyWithOptions(request *SubmitSlaCouponAp
 
 // Summary:
 //
-// User claims coupons for the last two months.
+// Claims SLA compensation coupons for the last two months.
 //
 // Description:
 //
-// 1. Call QueryMonthlySlaList to obtain the claimable months and records.
+// 1. Call QueryMonthlySlaList to retrieve the claimable months and records.
 //
 // 2. Claim by month or by record.
 //
@@ -4913,106 +4831,50 @@ func (client *Client) SubmitSlaCouponApply(request *SubmitSlaCouponApplyRequest)
 
 // Summary:
 //
-// Updates a budget.
+// 升级席位
 //
-// @param tmpReq - UpdateBudgetRequest
+// @param request - UpgradeCreditSeatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return UpdateBudgetResponse
-func (client *Client) UpdateBudgetWithOptions(tmpReq *UpdateBudgetRequest, runtime *dara.RuntimeOptions) (_result *UpdateBudgetResponse, _err error) {
+// @return UpgradeCreditSeatResponse
+func (client *Client) UpgradeCreditSeatWithOptions(request *UpgradeCreditSeatRequest, runtime *dara.RuntimeOptions) (_result *UpgradeCreditSeatResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = tmpReq.Validate()
+		_err = request.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
-	request := &UpdateBudgetShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.CycleQuota) {
-		request.CycleQuotaShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CycleQuota, dara.String("CycleQuota"), dara.String("json"))
-	}
-
-	if !dara.IsNil(tmpReq.EcIdAccountIds) {
-		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
-	}
-
-	if !dara.IsNil(tmpReq.QueryFilter) {
-		request.QueryFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryFilter, dara.String("QueryFilter"), dara.String("json"))
-	}
-
-	if !dara.IsNil(tmpReq.WarnConfs) {
-		request.WarnConfsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarnConfs, dara.String("WarnConfs"), dara.String("json"))
-	}
-
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.EcIdAccountIdsShrink) {
-		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
-	if !dara.IsNil(request.Nbid) {
-		query["Nbid"] = request.Nbid
+	if !dara.IsNil(request.Configs) {
+		query["Configs"] = request.Configs
 	}
 
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.BudgetName) {
-		body["BudgetName"] = request.BudgetName
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
 	}
 
-	if !dara.IsNil(request.BudgetType) {
-		body["BudgetType"] = request.BudgetType
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
 	}
 
-	if !dara.IsNil(request.Comment) {
-		body["Comment"] = request.Comment
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
 	}
 
-	if !dara.IsNil(request.CycleEndPeriod) {
-		body["CycleEndPeriod"] = request.CycleEndPeriod
-	}
-
-	if !dara.IsNil(request.CycleQuotaShrink) {
-		body["CycleQuota"] = request.CycleQuotaShrink
-	}
-
-	if !dara.IsNil(request.CycleStartPeriod) {
-		body["CycleStartPeriod"] = request.CycleStartPeriod
-	}
-
-	if !dara.IsNil(request.CycleType) {
-		body["CycleType"] = request.CycleType
-	}
-
-	if !dara.IsNil(request.Metric) {
-		body["Metric"] = request.Metric
-	}
-
-	if !dara.IsNil(request.OriginalBudgetName) {
-		body["OriginalBudgetName"] = request.OriginalBudgetName
-	}
-
-	if !dara.IsNil(request.QueryFilterShrink) {
-		body["QueryFilter"] = request.QueryFilterShrink
-	}
-
-	if !dara.IsNil(request.Quota) {
-		body["Quota"] = request.Quota
-	}
-
-	if !dara.IsNil(request.QuotaType) {
-		body["QuotaType"] = request.QuotaType
-	}
-
-	if !dara.IsNil(request.WarnConfsShrink) {
-		body["WarnConfs"] = request.WarnConfsShrink
+	if !dara.IsNil(request.SubscriptionType) {
+		query["SubscriptionType"] = request.SubscriptionType
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
-		Action:      dara.String("UpdateBudget"),
+		Action:      dara.String("UpgradeCreditSeat"),
 		Version:     dara.String("2023-09-30"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
@@ -5022,7 +4884,7 @@ func (client *Client) UpdateBudgetWithOptions(tmpReq *UpdateBudgetRequest, runti
 		ReqBodyType: dara.String("formData"),
 		BodyType:    dara.String("json"),
 	}
-	_result = &UpdateBudgetResponse{}
+	_result = &UpgradeCreditSeatResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5033,15 +4895,15 @@ func (client *Client) UpdateBudgetWithOptions(tmpReq *UpdateBudgetRequest, runti
 
 // Summary:
 //
-// Updates a budget.
+// 升级席位
 //
-// @param request - UpdateBudgetRequest
+// @param request - UpgradeCreditSeatRequest
 //
-// @return UpdateBudgetResponse
-func (client *Client) UpdateBudget(request *UpdateBudgetRequest) (_result *UpdateBudgetResponse, _err error) {
+// @return UpgradeCreditSeatResponse
+func (client *Client) UpgradeCreditSeat(request *UpgradeCreditSeatRequest) (_result *UpgradeCreditSeatResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateBudgetResponse{}
-	_body, _err := client.UpdateBudgetWithOptions(request, runtime)
+	_result = &UpgradeCreditSeatResponse{}
+	_body, _err := client.UpgradeCreditSeatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -18,19 +18,19 @@ type iCreateCostCenterRuleResponseBody interface {
 }
 
 type CreateCostCenterRuleResponseBody struct {
-	// Financial unit allocation rule ID
+	// The ID of the financial unit allocation rule.
 	//
 	// example:
 	//
 	// 1111
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Response structure metadata
+	// The response struct metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

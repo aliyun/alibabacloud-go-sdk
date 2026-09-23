@@ -28,13 +28,13 @@ type AllocateCostCenterResourceResponseBody struct {
 	//
 	// 640403
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The metadata of the response struct.
+	// The metadata of the response.
 	//
 	// example:
 	//

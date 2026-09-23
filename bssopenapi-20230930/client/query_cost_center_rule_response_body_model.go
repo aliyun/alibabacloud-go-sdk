@@ -54,7 +54,7 @@ type QueryCostCenterRuleResponseBody struct {
 	//
 	// Wed Oct 16 10:15:37 CST 2024
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the cost center auto-allocation rule.
+	// The ID of the cost center automatic allocation rule.
 	//
 	// example:
 	//
@@ -62,27 +62,27 @@ type QueryCostCenterRuleResponseBody struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The deletion status. Valid values:
 	//
-	// 	- **0**: active.
+	// 	- **0**: Active.
 	//
-	// 	- **1**: inactive.
+	// 	- **1**: Inactive.
 	//
 	// example:
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// Response structure metadata.
+	// The response struct metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The owner user of the cost center.
+	// The owner of the cost center.
 	//
 	// example:
 	//
 	// 1977800748053695
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type QueryCostCenterRuleResponseBody struct {
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
 	// The status. Valid values:
 	//
-	// - on: active.
+	// - on: Active.
 	//
-	// - off: inactive.
+	// - off: Inactive.
 	//
 	// example:
 	//
@@ -235,9 +235,9 @@ type QueryCostCenterRuleResponseBodyFilterExpression struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Operand interface{} `json:"Operand,omitempty" xml:"Operand,omitempty"`
-	// The condition expression.
+	// The conditional expression.
 	Operands []interface{} `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
 	// The relational expression.
 	//
@@ -320,15 +320,15 @@ type QueryCostCenterRuleResponseBodyFilterExpressionFilterValues struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	// The association between code and value.
+	// The association between the code and value.
 	//
 	// example:
 	//
 	// IN
 	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	// The attribute value types corresponding to the module code. Valid values:
+	// The attribute value type corresponding to the module Code. Valid values:
 	//
 	// - single_float: single value type.
 	//

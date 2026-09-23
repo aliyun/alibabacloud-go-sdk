@@ -16,13 +16,13 @@ type iSetFundAccountCreditAmountResponseBody interface {
 }
 
 type SetFundAccountCreditAmountResponseBody struct {
-	// Response metadata
+	// The response struct metadata.
 	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

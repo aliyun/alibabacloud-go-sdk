@@ -20,7 +20,7 @@ type iListReportDefinitionsResponseBody interface {
 type ListReportDefinitionsResponseBody struct {
 	// The metadata of the response struct.
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The data list.
+	// The list of report definitions.
 	ReportDefinitions []*ListReportDefinitionsResponseBodyReportDefinitions `json:"ReportDefinitions,omitempty" xml:"ReportDefinitions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -79,19 +79,19 @@ func (s *ListReportDefinitionsResponseBody) Validate() error {
 }
 
 type ListReportDefinitionsResponseBodyReportDefinitions struct {
-	// The start billing cycle for push. After the subscription is created, the system automatically pushes data from the start billing cycle to the current time. This parameter does not take effect for monthly bill PDF subscriptions, and historical data is not re-pushed. Data within the last year can be pushed.
+	// The start billing cycle for push. After the subscription is created, the system automatically pushes data from the start billing cycle to the current time. This parameter does not take effect for monthly bill PDF subscriptions, and historical data is not re-pushed. Data within the last year can be pushed at most.
 	//
 	// example:
 	//
 	// 2025-05
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
-	// The name of the OSS bucket that stores the files.
+	// The name of the OSS bucket for file storage.
 	//
 	// example:
 	//
 	// oss-bill
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The UID of the OSS bucket owner that stores the files. Specify this parameter when a Bid/Reseller subscription needs to push data to the OSS bucket of a sub-account. The specified account must be a sub-account of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. The calling account is used by default.
+	// The UID of the OSS owner that stores the files. If a Bid/Reseller subscription is used and data needs to be pushed to the OSS bucket of a sub-account, specify this parameter. The specified account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The calling account is used by default.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type ListReportDefinitionsResponseBodyReportDefinitions struct {
 	//
 	// bill/
 	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
-	// The subscription source name.
+	// The name of the subscription source.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type ListReportDefinitionsResponseBodyReportDefinitions struct {
 	//
 	// OSS
 	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
-	// The bill subscription task ID.
+	// The ID of the bill subscription task.
 	//
 	// example:
 	//
@@ -123,16 +123,17 @@ type ListReportDefinitionsResponseBodyReportDefinitions struct {
 	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
 	// The subscription type. Valid values:
 	//
-	// - BillingItemDetailForBillingPeriod: billable item consumption details.
+	// - BillingItemDetailForBillingPeriod: billing item consumption details.
 	//
 	// - InstanceDetailForBillingPeriod: instance consumption details.
 	//
-	// - BillingItemDetailMonthly: billable item consumption summary by billing cycle.
+	// - BillingItemDetailMonthly: billing item consumption summary by billing cycle.
 	//
 	// example:
 	//
 	// BillingItemDetailForBillingPeriod
-	ReportType     *string   `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The fields specified by the user for the subscription.
 	SelectedFields []*string `json:"SelectedFields,omitempty" xml:"SelectedFields,omitempty" type:"Repeated"`
 	// The time when the subscription was created.
 	//
