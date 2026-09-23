@@ -16,12 +16,16 @@ type iGetLlmModelProvidersRequest interface {
 }
 
 type GetLlmModelProvidersRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011

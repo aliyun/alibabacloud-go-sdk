@@ -120,6 +120,10 @@ func (s *SyncDepartmentUserRequestSyncDepartmentUserCommand) Validate() error {
 type SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping struct {
 	// The list of department IDs to which the user belongs. If this parameter is left empty, the user-department affiliation is deleted.
 	DepartmentIdList []*string `json:"DepartmentIdList,omitempty" xml:"DepartmentIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// aliyun
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The user ID in the user system. This value is the unique identifier of the user.
 	//
 	// This parameter is required.
@@ -142,12 +146,21 @@ func (s *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) GetD
 	return s.DepartmentIdList
 }
 
+func (s *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) GetSourceUserId() *string {
 	return s.SourceUserId
 }
 
 func (s *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) SetDepartmentIdList(v []*string) *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping {
 	s.DepartmentIdList = v
+	return s
+}
+
+func (s *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) SetSourceType(v string) *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping {
+	s.SourceType = &v
 	return s
 }
 

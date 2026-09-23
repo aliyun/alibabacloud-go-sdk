@@ -101,7 +101,7 @@ func (s *CreateDatasetRequest) Validate() error {
 
 type CreateDatasetRequestCreateCommand struct {
 	ApiInfo *CreateDatasetRequestCreateCommandApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Struct"`
-	// The dataset content type. Valid values: GENERAL, TEXT, AUDIO, VIDEO, IMAGE, TABLE, INDEX.
+	// The dataset content type. Valid values: GENERAL, TEXT, AUDIO, VIDEO, IMAGE, TABLE, and INDEX.
 	//
 	// This parameter is required.
 	//
@@ -119,9 +119,9 @@ type CreateDatasetRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// 测试数据集
+	// Test dataset
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory (obtained from the file service by using the fileId).
+	// The directory. Obtained from the file service by using the fileId.
 	//
 	// This parameter is required.
 	//
@@ -147,7 +147,7 @@ type CreateDatasetRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of owner IDs, separated by commas.
 	//
@@ -157,9 +157,9 @@ type CreateDatasetRequestCreateCommand struct {
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The dataset scenarios. Valid values:
 	//
-	// - OFFLINE: offline. This is the default value.
+	// - OFFLINE: Offline. This is the default value.
 	//
-	// - REALTIME: real-time.
+	// - REALTIME: Real-time.
 	//
 	// This parameter is required.
 	//
@@ -173,7 +173,7 @@ type CreateDatasetRequestCreateCommand struct {
 	//
 	// OSS
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The dataset type. Valid values: FILE, TABLE, HYBRID.
+	// The dataset type. Valid values: FILE, TABLE, and HYBRID.
 	//
 	// This parameter is required.
 	//
@@ -181,7 +181,7 @@ type CreateDatasetRequestCreateCommand struct {
 	//
 	// FILE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version number. If not specified, the default version V1 is used.
+	// The version number. If this parameter is not specified, the default version V1 is used.
 	//
 	// example:
 	//
@@ -665,13 +665,13 @@ type CreateDatasetRequestCreateCommandVersionConfig struct {
 	FileStorageConfig *CreateDatasetRequestCreateCommandVersionConfigFileStorageConfig `json:"FileStorageConfig,omitempty" xml:"FileStorageConfig,omitempty" type:"Struct"`
 	// The metastore configuration.
 	MetadataStorageConfig *CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfig `json:"MetadataStorageConfig,omitempty" xml:"MetadataStorageConfig,omitempty" type:"Struct"`
-	// The real-time meta table configuration. Takes effect when metadataStorageType is set to STREAM_TABLE.
+	// The real-time meta table configuration. This parameter takes effect when metadataStorageType is set to STREAM_TABLE.
 	RealtimeMetaTableConfig *CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig `json:"RealtimeMetaTableConfig,omitempty" xml:"RealtimeMetaTableConfig,omitempty" type:"Struct"`
-	// The version description.
+	// **Version description.**
 	//
 	// example:
 	//
-	// 测试数据集版本
+	// Test dataset version
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 }
 
@@ -751,9 +751,9 @@ type CreateDatasetRequestCreateCommandVersionConfigFileStorageConfig struct {
 	//
 	// example:
 	//
-	// 测试数据源
+	// Test data source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The development path (not required for basic projects).
+	// The development path. Not required for basic projects.
 	//
 	// example:
 	//
@@ -847,7 +847,7 @@ type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfig struct 
 	//
 	// example:
 	//
-	// 测试数据源
+	// Test data source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The development database/schema.
 	//
@@ -855,11 +855,7 @@ type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfig struct 
 	//
 	// HTML正文提取/test423/
 	DevSchema *string `json:"DevSchema,omitempty" xml:"DevSchema,omitempty"`
-	// The metadata storage mode. Valid values:
-	//
-	// - CREATE: create a new table.
-	//
-	// - EXISTING: use an existing table.
+	// The storage destination (new table or existing table).
 	//
 	// This parameter is required.
 	//
@@ -983,7 +979,7 @@ func (s *CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfig) Va
 }
 
 type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchema struct {
-	// The column list.
+	// The list of fields.
 	Columns []*CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -1018,19 +1014,19 @@ func (s *CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTabl
 }
 
 type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumns struct {
-	// The field comment.
+	// The field description.
 	//
 	// example:
 	//
 	// primary key
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The array element subtype. Valid only when type is set to ARRAY.
+	// The child class of the array element. This parameter is valid only when type is set to ARRAY.
 	//
 	// example:
 	//
 	// INT64
 	ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
-	// The maximum capacity of the array. Valid only when type is set to ARRAY. Default value: 4096.
+	// The maximum capacity of the array. This parameter is valid only when type is set to ARRAY. Default value: 4096.
 	//
 	// example:
 	//
@@ -1044,7 +1040,7 @@ type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSch
 	//
 	// id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether the field is a primary key.
+	// Indicates whether the field is a primary key.
 	//
 	// example:
 	//
@@ -1058,7 +1054,7 @@ type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSch
 	//
 	// int8
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Specifies whether the field is a URL.
+	// Indicates whether the field is a URL.
 	//
 	// example:
 	//
@@ -1158,7 +1154,7 @@ func (s *CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTabl
 }
 
 type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig struct {
-	// The vector dimensions.
+	// The embedding dimension.
 	//
 	// This parameter is required.
 	//
@@ -1174,13 +1170,13 @@ type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSch
 	//
 	// MultiModal-Embedding
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index build parameters. Different parameters are required based on the indexType. For example, HNSW requires {M:30, efConstruction:360} and IVF_FLAT requires {nlist:128}.
+	// The index build parameters, which vary by index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
 	//
 	// example:
 	//
 	// {M:30, efConstruction:360}
 	IndexParams map[string]interface{} `json:"IndexParams,omitempty" xml:"IndexParams,omitempty"`
-	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all types.
+	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
 	//
 	// This parameter is required.
 	//
@@ -1188,7 +1184,7 @@ type CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSch
 	//
 	// AUTOINDEX
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	// The similarity type. Default value: COSINE. Valid values: COSINE, L2, IP.
+	// The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
 	//
 	// This parameter is required.
 	//
@@ -1256,7 +1252,7 @@ func (s *CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTabl
 }
 
 type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig struct {
-	// The meta table data source type (only KAFKA is supported in this version).
+	// The data source type of the meta table. Currently, only KAFKA is supported.
 	//
 	// This parameter is required.
 	//
@@ -1270,9 +1266,9 @@ type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig struc
 	//
 	// example:
 	//
-	// 测试元表
+	// Test meta table
 	MetaTableName *string `json:"MetaTableName,omitempty" xml:"MetaTableName,omitempty"`
-	// The project ID of the meta table (cross-project supported).
+	// The project ID to which the meta table belongs. Cross-project references are supported.
 	//
 	// This parameter is required.
 	//
@@ -1338,7 +1334,7 @@ func (s *CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig) 
 }
 
 type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchema struct {
-	// The column list.
+	// The list of fields.
 	Columns []*CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -1373,19 +1369,19 @@ func (s *CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTa
 }
 
 type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns struct {
-	// The field comment.
+	// The field description.
 	//
 	// example:
 	//
 	// happen time
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The array element subtype. Valid only when type is set to ARRAY.
+	// The child class of the array element. This parameter is valid only when type is set to ARRAY.
 	//
 	// example:
 	//
 	// INT64
 	ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
-	// The maximum capacity of the array. Valid only when type is set to ARRAY. Default value: 4096.
+	// The maximum capacity of the array. This parameter is valid only when type is set to ARRAY. Default value: 4096.
 	//
 	// example:
 	//
@@ -1399,7 +1395,7 @@ type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableS
 	//
 	// happen_time
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether the field is a primary key.
+	// Indicates whether the field is a primary key.
 	//
 	// example:
 	//
@@ -1413,13 +1409,13 @@ type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableS
 	//
 	// date
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Specifies whether the field is a URL.
+	// Indicates whether the field is a URL.
 	//
 	// example:
 	//
 	// false
 	Url *bool `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The vector index configuration. Configure this when the field type is FLOAT_VECTOR/FLOAT16_VECTOR/BFLOAT16_VECTOR to set the dimension, index type, and similarity.
+	// The vector index configuration. Configure this parameter when the field type is FLOAT_VECTOR, FLOAT16_VECTOR, or BFLOAT16_VECTOR. This parameter is used to specify the vector dimensions, index type, and similarity metric.
 	VectorIndexConfig *CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig `json:"VectorIndexConfig,omitempty" xml:"VectorIndexConfig,omitempty" type:"Struct"`
 }
 
@@ -1513,7 +1509,7 @@ func (s *CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTa
 }
 
 type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig struct {
-	// The vector dimensions.
+	// The embedding dimension.
 	//
 	// This parameter is required.
 	//
@@ -1529,13 +1525,13 @@ type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableS
 	//
 	// MultiModal-Embedding
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index build parameters. Different parameters are required based on the indexType. For example, HNSW requires {M:30, efConstruction:360} and IVF_FLAT requires {nlist:128}.
+	// The index build parameters, which vary by index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
 	//
 	// example:
 	//
 	// {M:30, efConstruction:360}
 	IndexParams map[string]interface{} `json:"IndexParams,omitempty" xml:"IndexParams,omitempty"`
-	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all types.
+	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
 	//
 	// This parameter is required.
 	//
@@ -1543,7 +1539,7 @@ type CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableS
 	//
 	// AUTOINDEX
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	// The similarity type. Default value: COSINE. Valid values: COSINE, L2, IP.
+	// The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
 	//
 	// This parameter is required.
 	//

@@ -25,13 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing":  dara.String("dataphin-public.cn-beijing.aliyuncs.com"),
-		"cn-chengdu":  dara.String("dataphin-public.cn-chengdu.aliyuncs.com"),
-		"cn-hangzhou": dara.String("dataphin-public.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai": dara.String("dataphin-public.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen": dara.String("dataphin-public.cn-shenzhen.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -2491,19 +2484,19 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 
 // Summary:
 //
-// Creates a new dataset under a specified project. Available since v6.2.0.
+// Creates a dataset in a specified project. Online version: v6.2.0.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API creates a new dataset in a specified project.
+// - This API operation creates a dataset in a specified project.
 //
 // - `ProjectId` is a required parameter that specifies the ID of the project in which to create the dataset.
 //
 // - `CreateCommand` is a complex object that contains the configuration information required to create the dataset.
 //
-// - `Name`, `Type`, `ContentType`, and `Scenario` are required fields that specify the dataset name, type, content type, and scenarios respectively.
+// - `Name`, `Type`, `ContentType`, and `Scenario` are required fields that specify the dataset name, type, content type, and scenarios.
 //
 // - `FileStorageConfig` and `MetadataStorageConfig` in `VersionConfig` can be configured as needed.
 //
@@ -2573,19 +2566,19 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 
 // Summary:
 //
-// Creates a new dataset under a specified project. Available since v6.2.0.
+// Creates a dataset in a specified project. Online version: v6.2.0.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API creates a new dataset in a specified project.
+// - This API operation creates a dataset in a specified project.
 //
 // - `ProjectId` is a required parameter that specifies the ID of the project in which to create the dataset.
 //
 // - `CreateCommand` is a complex object that contains the configuration information required to create the dataset.
 //
-// - `Name`, `Type`, `ContentType`, and `Scenario` are required fields that specify the dataset name, type, content type, and scenarios respectively.
+// - `Name`, `Type`, `ContentType`, and `Scenario` are required fields that specify the dataset name, type, content type, and scenarios.
 //
 // - `FileStorageConfig` and `MetadataStorageConfig` in `VersionConfig` can be configured as needed.
 //
@@ -5025,7 +5018,7 @@ func (client *Client) DeleteBizUnit(request *DeleteBizUnitRequest) (_result *Del
 
 // Summary:
 //
-// 删除集群。
+// Deletes a cluster. Online version: v6.3.0.
 //
 // @param request - DeleteComputeClusterRequest
 //
@@ -5077,7 +5070,7 @@ func (client *Client) DeleteComputeClusterWithOptions(request *DeleteComputeClus
 
 // Summary:
 //
-// 删除集群。
+// Deletes a cluster. Online version: v6.3.0.
 //
 // @param request - DeleteComputeClusterRequest
 //
@@ -12109,7 +12102,7 @@ func (client *Client) GetLlmModelProviderByName(request *GetLlmModelProviderByNa
 
 // Summary:
 //
-// 查询所有大模型服务供应商和可用模型列表
+// Queries all large language model service providers and available models. Available since v6.3.0.
 //
 // @param request - GetLlmModelProvidersRequest
 //
@@ -12157,7 +12150,7 @@ func (client *Client) GetLlmModelProvidersWithOptions(request *GetLlmModelProvid
 
 // Summary:
 //
-// 查询所有大模型服务供应商和可用模型列表
+// Queries all large language model service providers and available models. Available since v6.3.0.
 //
 // @param request - GetLlmModelProvidersRequest
 //
@@ -15096,6 +15089,84 @@ func (client *Client) GetSecuritySecretKey(request *GetSecuritySecretKeyRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetSecuritySecretKeyResponse{}
 	_body, _err := client.GetSecuritySecretKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the Dataphin server version.
+//
+// Description:
+//
+// Queries the details of a published API based on the AppKey.
+//
+// @param request - GetServerVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServerVersionResponse
+func (client *Client) GetServerVersionWithOptions(request *GetServerVersionRequest, runtime *dara.RuntimeOptions) (_result *GetServerVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServerVersion"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServerVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the Dataphin server version.
+//
+// Description:
+//
+// Queries the details of a published API based on the AppKey.
+//
+// @param request - GetServerVersionRequest
+//
+// @return GetServerVersionResponse
+func (client *Client) GetServerVersion(request *GetServerVersionRequest) (_result *GetServerVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetServerVersionResponse{}
+	_body, _err := client.GetServerVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22921,7 +22992,7 @@ func (client *Client) RemoveQualityRuleSchedules(request *RemoveQualityRuleSched
 
 // Summary:
 //
-// Removes a tenant member. Only superusers and system administrators can call this API operation.
+// Removes a tenant member. Only super administrators and system administrators can invoke this API operation.
 //
 // @param tmpReq - RemoveTenantMemberRequest
 //
@@ -22981,7 +23052,7 @@ func (client *Client) RemoveTenantMemberWithOptions(tmpReq *RemoveTenantMemberRe
 
 // Summary:
 //
-// Removes a tenant member. Only superusers and system administrators can call this API operation.
+// Removes a tenant member. Only super administrators and system administrators can invoke this API operation.
 //
 // @param request - RemoveTenantMemberRequest
 //
@@ -25063,7 +25134,7 @@ func (client *Client) UpdateBizUnit(request *UpdateBizUnitRequest) (_result *Upd
 
 // Summary:
 //
-// 修改集群。
+// Modifies a cluster. Online version: v6.3.0.
 //
 // @param tmpReq - UpdateComputeClusterRequest
 //
@@ -25127,7 +25198,7 @@ func (client *Client) UpdateComputeClusterWithOptions(tmpReq *UpdateComputeClust
 
 // Summary:
 //
-// 修改集群。
+// Modifies a cluster. Online version: v6.3.0.
 //
 // @param request - UpdateComputeClusterRequest
 //
@@ -25223,13 +25294,13 @@ func (client *Client) UpdateComputeSource(request *UpdateComputeSourceRequest) (
 
 // Summary:
 //
-// 根据治理项id，批量修改问题清单对象的状态。
+// Batch updates the status of issue checklist objects by governance item ID. Online since v6.3.0.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于更新特定项目下已存在的问题清单的状态。
+// - This API operation updates the status of existing issue checklists under a specific project.
 //
 // @param tmpReq - UpdateDataAssetsGovernObjectStatusRequest
 //
@@ -25289,13 +25360,13 @@ func (client *Client) UpdateDataAssetsGovernObjectStatusWithOptions(tmpReq *Upda
 
 // Summary:
 //
-// 根据治理项id，批量修改问题清单对象的状态。
+// Batch updates the status of issue checklist objects by governance item ID. Online since v6.3.0.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于更新特定项目下已存在的问题清单的状态。
+// - This API operation updates the status of existing issue checklists under a specific project.
 //
 // @param request - UpdateDataAssetsGovernObjectStatusRequest
 //

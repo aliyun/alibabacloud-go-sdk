@@ -18,16 +18,22 @@ type iUpdateDataAssetsGovernObjectStatusShrinkRequest interface {
 }
 
 type UpdateDataAssetsGovernObjectStatusShrinkRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The update command.
+	//
 	// This parameter is required.
 	UpdateCommandShrink *string `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty"`
 }

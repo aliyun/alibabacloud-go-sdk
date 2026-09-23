@@ -24,24 +24,34 @@ type iGetLlmModelProvidersResponseBody interface {
 }
 
 type GetLlmModelProvidersResponseBody struct {
+	// The backend response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of large language model service providers and available models.
 	Data []*GetLlmModelProvidersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The details of the backend exception.
+	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetLlmModelProvidersResponseBody) String() string {
@@ -120,27 +130,56 @@ func (s *GetLlmModelProvidersResponseBody) Validate() error {
 }
 
 type GetLlmModelProvidersResponseBodyData struct {
+	// The base URL of the model.
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// The enabling status.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the model service provider.
+	//
 	// example:
 	//
 	// 1
-	Id        *int64                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list of models provided by the model service provider.
 	LlmModels []*GetLlmModelProvidersResponseBodyDataLlmModels `json:"LlmModels,omitempty" xml:"LlmModels,omitempty" type:"Repeated"`
+	// The source of the model service provider. Valid values:
+	//
+	// - BUILTIN_MODEL: built-in
+	//
+	// - BYOM: user-provided
+	//
 	// example:
 	//
 	// BUILTIN_MODEL
 	ProviderSource *string `json:"ProviderSource,omitempty" xml:"ProviderSource,omitempty"`
+	// The provider type. Valid values:
+	//
+	// - BAILIAN
+	//
+	// - DEEPSEEK
+	//
+	// - AI_STACK
+	//
+	// - VLLM
+	//
+	// - AGENT_ONE
+	//
+	// - DATAPHIN
+	//
 	// example:
 	//
 	// BAILIAN
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The name of the model service provider.
+	//
 	// example:
 	//
 	// bailian
@@ -232,37 +271,74 @@ func (s *GetLlmModelProvidersResponseBodyData) Validate() error {
 }
 
 type GetLlmModelProvidersResponseBodyDataLlmModels struct {
+	// The Chinese name of the model.
+	//
 	// example:
 	//
 	// 通义千问-Max
 	CnName *string `json:"CnName,omitempty" xml:"CnName,omitempty"`
+	// The description of the model.
+	//
 	// example:
 	//
-	// 通用文本生成模型
-	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// General text generation model
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of available dimension values for the embedding model. This value is returned only for embedding models.
 	EmbeddingDimensions []*int32 `json:"EmbeddingDimensions,omitempty" xml:"EmbeddingDimensions,omitempty" type:"Repeated"`
+	// The enabling status.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The model invocation method. Valid values:
+	//
+	// - OPEN_AI
+	//
+	// - DASH_SCOPE
+	//
 	// example:
 	//
 	// DASH_SCOPE
 	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// 1001
-	ModelId    *int64    `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelId *int64 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The list of model modality types. Valid values:
+	//
+	// - TEXT: text
+	//
+	// - IMAGE: image
+	//
+	// - AUDIO: audio
+	//
+	// - VIDEO: video
+	//
+	// - EMBEDDING: embedding
 	ModelTypes []*string `json:"ModelTypes,omitempty" xml:"ModelTypes,omitempty" type:"Repeated"`
+	// The name of the model.
+	//
 	// example:
 	//
 	// qwen-max
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service provider.
+	//
 	// example:
 	//
 	// bailian
-	ServiceProvider *string   `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
-	Tasks           []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	ServiceProvider *string `json:"ServiceProvider,omitempty" xml:"ServiceProvider,omitempty"`
+	// The list of model task capabilities. Valid values:
+	//
+	// - ASR: speech recognition
+	//
+	// - TTS: speech synthesis
+	//
+	// - TRANSLATION: speech translation
+	Tasks []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s GetLlmModelProvidersResponseBodyDataLlmModels) String() string {

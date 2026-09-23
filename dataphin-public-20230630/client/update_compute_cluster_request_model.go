@@ -20,20 +20,28 @@ type iUpdateComputeClusterRequest interface {
 }
 
 type UpdateComputeClusterRequest struct {
+	// The cluster configuration.
+	//
 	// This parameter is required.
 	ClusterConfig *UpdateComputeClusterRequestClusterConfig `json:"ClusterConfig,omitempty" xml:"ClusterConfig,omitempty" type:"Struct"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102311
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011
@@ -94,26 +102,38 @@ func (s *UpdateComputeClusterRequest) Validate() error {
 }
 
 type UpdateComputeClusterRequestClusterConfig struct {
-	ClusterAdmins        []*string                                                     `json:"ClusterAdmins,omitempty" xml:"ClusterAdmins,omitempty" type:"Repeated"`
+	// The list of cluster administrator IDs.
+	ClusterAdmins []*string `json:"ClusterAdmins,omitempty" xml:"ClusterAdmins,omitempty" type:"Repeated"`
+	// The cluster security control configuration.
 	ClusterSafetyControl *UpdateComputeClusterRequestClusterConfigClusterSafetyControl `json:"ClusterSafetyControl,omitempty" xml:"ClusterSafetyControl,omitempty" type:"Struct"`
+	// The connection configuration items.
+	//
 	// This parameter is required.
 	ConfigList []*UpdateComputeClusterRequestClusterConfigConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The cluster description.
+	//
 	// example:
 	//
 	// test
 	Des *string `json:"Des,omitempty" xml:"Des,omitempty"`
+	// The cluster name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cluster_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cluster type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The cluster version.
+	//
 	// example:
 	//
 	// CDH6
@@ -210,14 +230,16 @@ func (s *UpdateComputeClusterRequestClusterConfig) Validate() error {
 }
 
 type UpdateComputeClusterRequestClusterConfigClusterSafetyControl struct {
-	// 管控模式。CREATE_COMPUTE_SOURCE：有创建计算源权限即可使用；USER_DEFINE：仅白名单用户/用户组可用
+	// The control mode.
 	//
 	// example:
 	//
 	// CREATE_COMPUTE_SOURCE
-	ClusterSafetyAuthType *string   `json:"ClusterSafetyAuthType,omitempty" xml:"ClusterSafetyAuthType,omitempty"`
-	UserGroupIds          []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	UserIds               []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+	ClusterSafetyAuthType *string `json:"ClusterSafetyAuthType,omitempty" xml:"ClusterSafetyAuthType,omitempty"`
+	// The list of whitelist user group IDs.
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	// The list of whitelist user IDs.
+	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateComputeClusterRequestClusterConfigClusterSafetyControl) String() string {
@@ -260,12 +282,16 @@ func (s *UpdateComputeClusterRequestClusterConfigClusterSafetyControl) Validate(
 }
 
 type UpdateComputeClusterRequestClusterConfigConfigList struct {
+	// The configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the configuration item.
+	//
 	// This parameter is required.
 	//
 	// example:

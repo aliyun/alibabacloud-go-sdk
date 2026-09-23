@@ -18,16 +18,22 @@ type iUpdateDataAssetsGovernObjectStatusRequest interface {
 }
 
 type UpdateDataAssetsGovernObjectStatusRequest struct {
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The update command.
+	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataAssetsGovernObjectStatusRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -77,13 +83,20 @@ func (s *UpdateDataAssetsGovernObjectStatusRequest) Validate() error {
 }
 
 type UpdateDataAssetsGovernObjectStatusRequestUpdateCommand struct {
+	// Specifies whether to notify the owner. This parameter takes effect only when the status is reverted to NEW.
 	AlertOwners *bool `json:"AlertOwners,omitempty" xml:"AlertOwners,omitempty"`
+	// The list of governance object IDs.
+	//
 	// This parameter is required.
 	GovernObjectIds []*int64 `json:"GovernObjectIds,omitempty" xml:"GovernObjectIds,omitempty" type:"Repeated"`
+	// The operation description.
+	//
 	// example:
 	//
-	// 问题已修复
+	// Issue fixed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The target status. Valid values: FINISHED / NEW / IGNORE / CANCEL_IGNORE.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,6 +26,8 @@ type RemoveTenantMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *RemoveTenantMemberRequest) Validate() error {
 }
 
 type RemoveTenantMemberRequestRemoveCommand struct {
-	// The source ID of the user.
+	// The user source ID.
 	//
 	// This parameter is required.
 	//
@@ -89,6 +91,8 @@ type RemoveTenantMemberRequestRemoveCommand struct {
 	//
 	// 123@xx.com
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type.
+	//
 	// example:
 	//
 	// aliyun

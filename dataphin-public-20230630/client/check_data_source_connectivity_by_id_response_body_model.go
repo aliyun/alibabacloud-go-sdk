@@ -30,7 +30,7 @@ type CheckDataSourceConnectivityByIdResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The connectivity check result of the data source.
+	// The result of the data source connectivity check.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned by the backend.
 	//
@@ -38,7 +38,7 @@ type CheckDataSourceConnectivityByIdResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//

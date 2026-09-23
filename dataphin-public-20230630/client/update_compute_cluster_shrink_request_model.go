@@ -20,20 +20,28 @@ type iUpdateComputeClusterShrinkRequest interface {
 }
 
 type UpdateComputeClusterShrinkRequest struct {
+	// The cluster configuration.
+	//
 	// This parameter is required.
 	ClusterConfigShrink *string `json:"ClusterConfig,omitempty" xml:"ClusterConfig,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 102311
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011
