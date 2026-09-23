@@ -16,13 +16,13 @@ type iDescribeDefenseTemplateResponseBody interface {
 }
 
 type DescribeDefenseTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the protection template.
+	// The template information.
 	Template *DescribeDefenseTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
@@ -62,21 +62,21 @@ func (s *DescribeDefenseTemplateResponseBody) Validate() error {
 }
 
 type DescribeDefenseTemplateResponseBodyTemplate struct {
-	// The scenario in which the protection template is used. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) operation.
+	// The protection scenario. For more information, see the **DefenseScene*	- parameter in [CreateDefenseRule](~~CreateDefenseRule~~).
 	//
 	// example:
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The sub-scenario of the protection template. Valid values:
+	// The protection template sub-scenario. Valid values:
 	//
-	// - **web**: the bot management template for website protection.
+	// - **web**: bot management web protection scenario template.
 	//
-	// - **app**: the bot management template for app protection.
+	// - **app**: bot management app protection scenario template.
 	//
-	// - **basic**: the basic bot management template.
+	// - **basic**: bot management basic protection template.
 	//
-	// - **bot_custom_acl**: the bot management template for custom protection rules.
+	// - **bot_custom_acl**: bot management advanced custom rule protection template.
 	//
 	// example:
 	//
@@ -88,25 +88,31 @@ type DescribeDefenseTemplateResponseBodyTemplate struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The most recent time the protection template was modified. This value is a UNIX timestamp. Unit: milliseconds.
+	// The detailed template information. For more information, see the Detail parameter in [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html).
+	//
+	// example:
+	//
+	// {"trafficFeature":"{\\"global\\":0,\\"excludeStatus\\":1,\\"conditions\\":[{\\"key\\":\\"URL\\",\\"opValue\\":\\"not-contain\\",\\"values\\":\\"test\\"}]}"}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The time when the protection template was last modified.
 	//
 	// example:
 	//
 	// 1665283642000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the protection template.
+	// The ID of the protection rule template.
 	//
 	// example:
 	//
 	// 10097
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the protection template.
+	// The template name.
 	//
 	// example:
 	//
 	// test0621
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The origin of the protection template. A value of **custom*	- indicates that the template is user-defined.
+	// The source of the protection template. The value custom indicates that the template is user-defined.
 	//
 	// example:
 	//
@@ -114,19 +120,19 @@ type DescribeDefenseTemplateResponseBodyTemplate struct {
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
 	// The status of the protection template. Valid values:
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	// The type of the protection template. Valid values:
+	// The protection templatetype. Valid values:
 	//
-	// - **user_default**: the default template.
+	// - **user_default**: user default protection.
 	//
-	// - **user_custom**: a custom template.
+	// - **user_custom**: user custom protection.
 	//
 	// example:
 	//
@@ -152,6 +158,10 @@ func (s *DescribeDefenseTemplateResponseBodyTemplate) GetDefenseSubScene() *stri
 
 func (s *DescribeDefenseTemplateResponseBodyTemplate) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribeDefenseTemplateResponseBodyTemplate) GetDetail() map[string]interface{} {
+	return s.Detail
 }
 
 func (s *DescribeDefenseTemplateResponseBodyTemplate) GetGmtModified() *int64 {
@@ -190,6 +200,11 @@ func (s *DescribeDefenseTemplateResponseBodyTemplate) SetDefenseSubScene(v strin
 
 func (s *DescribeDefenseTemplateResponseBodyTemplate) SetDescription(v string) *DescribeDefenseTemplateResponseBodyTemplate {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeDefenseTemplateResponseBodyTemplate) SetDetail(v map[string]interface{}) *DescribeDefenseTemplateResponseBodyTemplate {
+	s.Detail = v
 	return s
 }
 

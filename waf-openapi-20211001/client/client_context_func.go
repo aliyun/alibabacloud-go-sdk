@@ -241,7 +241,7 @@ func (client *Client) ClearMajorProtectionBlackIpWithContext(ctx context.Context
 
 // Summary:
 //
-// Copies a protection template.
+// Copies the current mitigation template and generates a new mitigation template.
 //
 // @param request - CopyDefenseTemplateRequest
 //
@@ -256,6 +256,10 @@ func (client *Client) CopyDefenseTemplateWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -747,7 +751,7 @@ func (client *Client) CreateDefenseResourceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a web core protection rule.
+// Creates a Web core protection rule.
 //
 // @param request - CreateDefenseRuleRequest
 //
@@ -768,6 +772,10 @@ func (client *Client) CreateDefenseRuleWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.DefenseType) {
 		query["DefenseType"] = request.DefenseType
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -846,6 +854,14 @@ func (client *Client) CreateDefenseTemplateWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Detail) {
+		query["Detail"] = request.Detail
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -2082,6 +2098,10 @@ func (client *Client) DeleteDefenseRuleWithContext(ctx context.Context, request 
 		query["DefenseType"] = request.DefenseType
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -2191,7 +2211,7 @@ func (client *Client) DeleteDefenseRuleBlockIpWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes a protection rule template.
+// Deletes a protection template.
 //
 // @param request - DeleteDefenseTemplateRequest
 //
@@ -2206,6 +2226,10 @@ func (client *Client) DeleteDefenseTemplateWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -3172,6 +3196,10 @@ func (client *Client) DescribeApisecApiResourcesWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.ApiId) {
 		query["ApiId"] = request.ApiId
+	}
+
+	if !dara.IsNil(request.ApiIds) {
+		query["ApiIds"] = request.ApiIds
 	}
 
 	if !dara.IsNil(request.ApiMethod) {
@@ -5993,7 +6021,7 @@ func (client *Client) DescribeDefenseResourceOwnerUidWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the protection templates of a protected object or a protected object group.
+// Queries the protection templates of a protected object or protected object group.
 //
 // @param request - DescribeDefenseResourceTemplatesRequest
 //
@@ -6413,7 +6441,7 @@ func (client *Client) DescribeDefenseSceneConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves the details of a specific protection template.
+// Queries a single protection template.
 //
 // @param request - DescribeDefenseTemplateRequest
 //
@@ -13854,6 +13882,10 @@ func (client *Client) ModifyDefenseRuleWithContext(ctx context.Context, request 
 		query["DefenseType"] = request.DefenseType
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -13988,6 +14020,10 @@ func (client *Client) ModifyDefenseRuleStatusWithContext(ctx context.Context, re
 		query["DefenseType"] = request.DefenseType
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -14101,7 +14137,7 @@ func (client *Client) ModifyDefenseSceneConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies a defense template.
+// Modifies a protection template.
 //
 // @param request - ModifyDefenseTemplateRequest
 //
@@ -14118,6 +14154,14 @@ func (client *Client) ModifyDefenseTemplateWithContext(ctx context.Context, requ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Detail) {
+		query["Detail"] = request.Detail
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -14165,7 +14209,7 @@ func (client *Client) ModifyDefenseTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Changes the status of a protection rule template.
+// Modifies the status of a protection template.
 //
 // @param request - ModifyDefenseTemplateStatusRequest
 //
@@ -14180,6 +14224,10 @@ func (client *Client) ModifyDefenseTemplateStatusWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -15458,6 +15506,10 @@ func (client *Client) ModifyResourceLogStatusWithContext(ctx context.Context, tm
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -15511,7 +15563,7 @@ func (client *Client) ModifyResourceLogStatusWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Attaches protected objects to or detaches protected objects from a protection template.
+// Associates or disassociates protected resources with or from a protection template.
 //
 // @param request - ModifyTemplateResourcesRequest
 //
@@ -15536,6 +15588,10 @@ func (client *Client) ModifyTemplateResourcesWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.BindResources) {
 		query["BindResources"] = request.BindResources
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.InstanceId) {

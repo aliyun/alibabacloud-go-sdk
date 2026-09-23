@@ -13,6 +13,8 @@ type iModifyDefenseRuleRequest interface {
 	GetDefenseScene() *string
 	SetDefenseType(v string) *ModifyDefenseRuleRequest
 	GetDefenseType() *string
+	SetDryRun(v bool) *ModifyDefenseRuleRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *ModifyDefenseRuleRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *ModifyDefenseRuleRequest
@@ -40,6 +42,16 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	//
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Instance ID of the WAF instance.
 	//
 	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
@@ -74,7 +86,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The details of the protection rule. The value is a string that is converted from a JSON object constructed by a series of parameters. When you configure this parameter, you must specify the rule ID and the protection rule configuration to modify. The following parameters are included:
+	// The details of the protection rule. The value is a string that is converted from a JSON object constructed by a series of parameters. When you configure this parameter, specify the rule ID and the protection rule configuration to modify. The following parameters are included:
 	//
 	// - **id**: Long | Required | The rule ID.
 	//
@@ -124,6 +136,10 @@ func (s *ModifyDefenseRuleRequest) GetDefenseType() *string {
 	return s.DefenseType
 }
 
+func (s *ModifyDefenseRuleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyDefenseRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -155,6 +171,11 @@ func (s *ModifyDefenseRuleRequest) SetDefenseScene(v string) *ModifyDefenseRuleR
 
 func (s *ModifyDefenseRuleRequest) SetDefenseType(v string) *ModifyDefenseRuleRequest {
 	s.DefenseType = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleRequest) SetDryRun(v bool) *ModifyDefenseRuleRequest {
+	s.DryRun = &v
 	return s
 }
 

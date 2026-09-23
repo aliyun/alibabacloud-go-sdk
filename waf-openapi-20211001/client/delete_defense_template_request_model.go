@@ -9,6 +9,8 @@ type iDeleteDefenseTemplateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *DeleteDefenseTemplateRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *DeleteDefenseTemplateRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *DeleteDefenseTemplateRequest
@@ -20,9 +22,19 @@ type iDeleteDefenseTemplateRequest interface {
 }
 
 type DeleteDefenseTemplateRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,23 +42,23 @@ type DeleteDefenseTemplateRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the protection template to be deleted.
+	// The ID of the protection template that you want to delete.
 	//
 	// This parameter is required.
 	//
@@ -64,6 +76,10 @@ func (s DeleteDefenseTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteDefenseTemplateRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *DeleteDefenseTemplateRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -78,6 +94,11 @@ func (s *DeleteDefenseTemplateRequest) GetResourceManagerResourceGroupId() *stri
 
 func (s *DeleteDefenseTemplateRequest) GetTemplateId() *int64 {
 	return s.TemplateId
+}
+
+func (s *DeleteDefenseTemplateRequest) SetDryRun(v bool) *DeleteDefenseTemplateRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *DeleteDefenseTemplateRequest) SetInstanceId(v string) *DeleteDefenseTemplateRequest {

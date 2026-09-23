@@ -11,6 +11,8 @@ type iDeleteDefenseRuleRequest interface {
 	GoString() string
 	SetDefenseType(v string) *DeleteDefenseRuleRequest
 	GetDefenseType() *string
+	SetDryRun(v bool) *DeleteDefenseRuleRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *DeleteDefenseRuleRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *DeleteDefenseRuleRequest
@@ -32,6 +34,16 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// Specifies whether to enable the DryRun dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	//
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the WAF instance.
 	//
 	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
@@ -52,7 +64,7 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protection object associated with the rule to delete.
+	// The protected object associated with the rule to delete.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **resource**.
 	//
@@ -96,6 +108,10 @@ func (s *DeleteDefenseRuleRequest) GetDefenseType() *string {
 	return s.DefenseType
 }
 
+func (s *DeleteDefenseRuleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *DeleteDefenseRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -122,6 +138,11 @@ func (s *DeleteDefenseRuleRequest) GetTemplateId() *int64 {
 
 func (s *DeleteDefenseRuleRequest) SetDefenseType(v string) *DeleteDefenseRuleRequest {
 	s.DefenseType = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleRequest) SetDryRun(v bool) *DeleteDefenseRuleRequest {
+	s.DryRun = &v
 	return s
 }
 

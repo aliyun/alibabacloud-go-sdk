@@ -13,6 +13,8 @@ type iDescribeApisecApiResourcesRequest interface {
 	GetApiFormat() *string
 	SetApiId(v string) *DescribeApisecApiResourcesRequest
 	GetApiId() *string
+	SetApiIds(v []*string) *DescribeApisecApiResourcesRequest
+	GetApiIds() []*string
 	SetApiMethod(v string) *DescribeApisecApiResourcesRequest
 	GetApiMethod() *string
 	SetApiStatus(v string) *DescribeApisecApiResourcesRequest
@@ -70,6 +72,8 @@ type DescribeApisecApiResourcesRequest struct {
 	//
 	// 867ade***24ee6e205b8da82b8f84
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The list of API IDs.
+	ApiIds []*string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty" type:"Repeated"`
 	// The request method of the API. Valid values:
 	//
 	// - **GET**: GET request.
@@ -94,11 +98,11 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
 	// The status of the API. Valid values:
 	//
-	// - **NewbornInterface**: newly added.
+	// - **NewbornInterface**: New.
 	//
-	// - **OfflineInterface**: inactive.
+	// - **OfflineInterface**: Inactive.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
 	// example:
 	//
@@ -114,11 +118,11 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
 	// The service object. Valid values:
 	//
-	// - **PublicAPI**: public service.
+	// - **PublicAPI**: Public service.
 	//
-	// - **ThirdpartAPI**: third-party collaboration.
+	// - **ThirdpartAPI**: Third-party collaboration.
 	//
-	// - **InternalAPI**: internal office.
+	// - **InternalAPI**: Internal office.
 	//
 	// example:
 	//
@@ -126,9 +130,9 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
 	// Specifies whether the API has an authentication field. Valid values:
 	//
-	// - **0**: has authentication.
+	// - **0**: Has authentication.
 	//
-	// - **1**: does not have authentication.
+	// - **1**: Does not have authentication.
 	//
 	// example:
 	//
@@ -150,9 +154,9 @@ type DescribeApisecApiResourcesRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether the API is followed. Valid values:
 	//
-	// - **1**: followed.
+	// - **1**: Followed.
 	//
-	// - **0**: not followed.
+	// - **0**: Not followed.
 	//
 	// example:
 	//
@@ -202,27 +206,27 @@ type DescribeApisecApiResourcesRequest struct {
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **desc**: descending order (default).
+	// - **desc**: Descending order (default).
 	//
-	// - **asc**: ascending order.
+	// - **asc**: Ascending order.
 	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The page number to return in a paging query. Default value: **1**, which indicates that the first page is returned.
+	// The page number of the page to return in a paged query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page in a paging query. Default value: **10**, which indicates that each page contains 10 entries.
+	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -248,13 +252,13 @@ type DescribeApisecApiResourcesRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The sensitivity level of the API. Valid values:
 	//
-	// - **L1**: high sensitivity.
+	// - **L1**: High sensitivity.
 	//
-	// - **L2**: medium sensitivity.
+	// - **L2**: Medium sensitivity.
 	//
-	// - **L3**: low sensitivity.
+	// - **L3**: Low sensitivity.
 	//
-	// - **N**: not sensitive.
+	// - **N**: Not sensitive.
 	//
 	// example:
 	//
@@ -290,6 +294,10 @@ func (s *DescribeApisecApiResourcesRequest) GetApiFormat() *string {
 
 func (s *DescribeApisecApiResourcesRequest) GetApiId() *string {
 	return s.ApiId
+}
+
+func (s *DescribeApisecApiResourcesRequest) GetApiIds() []*string {
+	return s.ApiIds
 }
 
 func (s *DescribeApisecApiResourcesRequest) GetApiMethod() *string {
@@ -383,6 +391,11 @@ func (s *DescribeApisecApiResourcesRequest) SetApiFormat(v string) *DescribeApis
 
 func (s *DescribeApisecApiResourcesRequest) SetApiId(v string) *DescribeApisecApiResourcesRequest {
 	s.ApiId = &v
+	return s
+}
+
+func (s *DescribeApisecApiResourcesRequest) SetApiIds(v []*string) *DescribeApisecApiResourcesRequest {
+	s.ApiIds = v
 	return s
 }
 

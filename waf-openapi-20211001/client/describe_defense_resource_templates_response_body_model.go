@@ -66,7 +66,7 @@ func (s *DescribeDefenseResourceTemplatesResponseBody) Validate() error {
 }
 
 type DescribeDefenseResourceTemplatesResponseBodyTemplates struct {
-	// The protection scenario. For more information, refer to the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+	// The protection scenario. For more information, see the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type DescribeDefenseResourceTemplatesResponseBodyTemplates struct {
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario of the protection template. Valid values:
 	//
-	// - **web**: the bot management web protection scenario template.
+	// - **web**: bot management web protection scenario template.
 	//
-	// - **app**: the bot management app protection scenario template.
+	// - **app**: bot management app protection scenario template.
 	//
-	// - **basic**: the bot management basic protection template.
+	// - **basic**: bot management basic protection template.
 	//
 	// example:
 	//
@@ -90,6 +90,12 @@ type DescribeDefenseResourceTemplatesResponseBodyTemplates struct {
 	//
 	// testTemplate
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The detailed template information. For more information, see the Detail parameter in [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html).
+	//
+	// example:
+	//
+	// {"trafficFeature":"{\\"global\\":0,\\"excludeStatus\\":1,\\"conditions\\":[{\\"key\\":\\"URL\\",\\"opValue\\":\\"not-contain\\",\\"values\\":\\"test\\"}]}"}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The time when the protection template was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
@@ -156,6 +162,10 @@ func (s *DescribeDefenseResourceTemplatesResponseBodyTemplates) GetDescription()
 	return s.Description
 }
 
+func (s *DescribeDefenseResourceTemplatesResponseBodyTemplates) GetDetail() map[string]interface{} {
+	return s.Detail
+}
+
 func (s *DescribeDefenseResourceTemplatesResponseBodyTemplates) GetGmtModified() *int64 {
 	return s.GmtModified
 }
@@ -192,6 +202,11 @@ func (s *DescribeDefenseResourceTemplatesResponseBodyTemplates) SetDefenseSubSce
 
 func (s *DescribeDefenseResourceTemplatesResponseBodyTemplates) SetDescription(v string) *DescribeDefenseResourceTemplatesResponseBodyTemplates {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceTemplatesResponseBodyTemplates) SetDetail(v map[string]interface{}) *DescribeDefenseResourceTemplatesResponseBodyTemplates {
+	s.Detail = v
 	return s
 }
 

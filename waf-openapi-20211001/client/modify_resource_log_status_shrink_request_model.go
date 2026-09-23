@@ -9,6 +9,8 @@ type iModifyResourceLogStatusShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *ModifyResourceLogStatusShrinkRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *ModifyResourceLogStatusShrinkRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *ModifyResourceLogStatusShrinkRequest
@@ -26,9 +28,19 @@ type iModifyResourceLogStatusShrinkRequest interface {
 }
 
 type ModifyResourceLogStatusShrinkRequest struct {
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	//
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Log.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -82,9 +94,9 @@ type ModifyResourceLogStatusShrinkRequest struct {
 	//
 	// - **true**: Enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: Shutdown.
 	//
-	// > To enable Tracing Analysis, you must first enable the log status **Status*	- for the protected object.
+	// > To enable Tracing Analysis, you must first enable the log status **Status*	- of the protected object.
 	//
 	// example:
 	//
@@ -98,6 +110,10 @@ func (s ModifyResourceLogStatusShrinkRequest) String() string {
 
 func (s ModifyResourceLogStatusShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyResourceLogStatusShrinkRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ModifyResourceLogStatusShrinkRequest) GetInstanceId() *string {
@@ -126,6 +142,11 @@ func (s *ModifyResourceLogStatusShrinkRequest) GetTraceConfigShrink() *string {
 
 func (s *ModifyResourceLogStatusShrinkRequest) GetTraceStatus() *bool {
 	return s.TraceStatus
+}
+
+func (s *ModifyResourceLogStatusShrinkRequest) SetDryRun(v bool) *ModifyResourceLogStatusShrinkRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *ModifyResourceLogStatusShrinkRequest) SetInstanceId(v string) *ModifyResourceLogStatusShrinkRequest {

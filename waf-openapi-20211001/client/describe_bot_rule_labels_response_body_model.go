@@ -22,21 +22,21 @@ type iDescribeBotRuleLabelsResponseBody interface {
 }
 
 type DescribeBotRuleLabelsResponseBody struct {
-	// The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20. This parameter is used for paging.
+	// The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. If a value is returned for this parameter, the next page exists.
+	// The pagination token for the next page. If a next page exists, this field returns a value.
 	//
-	// > If this parameter has a return value, the next page exists. Use the returned NextToken value as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter returns a value, a next page exists. Use the returned **NextToken*	- as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DescribeBotRuleLabelsResponseBody) Validate() error {
 }
 
 type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
-	// The crawler behavior corresponding to the rule tag.
+	// The crawler behavior corresponding to the rule tag. Valid values:
 	//
 	// - **malicious**: malicious crawler.
 	//
@@ -133,9 +133,9 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	BotBehavior *string `json:"BotBehavior,omitempty" xml:"BotBehavior,omitempty"`
 	// The default action. Valid values:
 	//
-	// - **block**: Block.
+	// - **block**: block.
 	//
-	// - **monitor**: Monitor.
+	// - **monitor**: monitor.
 	//
 	// - **js**: JavaScript verification.
 	//
@@ -143,7 +143,7 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// - **captcha_strict**: strict slider CAPTCHA.
 	//
-	// - **bypass**: Allow.
+	// - **bypass**: allow.
 	//
 	// example:
 	//
@@ -155,11 +155,11 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// {"crawlerStatusMap":{"360":1,"bytedance":1}}
 	DefaultConfig *string `json:"DefaultConfig,omitempty" xml:"DefaultConfig,omitempty"`
-	// The default status of the tag rule.
+	// The default status of the tag rule. Valid values:
 	//
-	// - **1**: The rule is enabled.
+	// - **1**: enabled.
 	//
-	// - **0**: The rule is disabled.
+	// - **0**: disabled.
 	//
 	// example:
 	//
@@ -171,11 +171,11 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// malicious_crawler_python
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The tag status.
+	// The tag status. Valid values:
 	//
-	// - **online**: Online.
+	// - **online**: online.
 	//
-	// - **wait_offline**: Pending offline.
+	// - **wait_offline**: pending offline.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// human_machine_challenge
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The set of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
+	// The collection of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
 	//
 	// - **web**: Web protection scenario.
 	//

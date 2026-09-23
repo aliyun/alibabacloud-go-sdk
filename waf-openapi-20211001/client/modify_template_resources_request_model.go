@@ -15,6 +15,8 @@ type iModifyTemplateResourcesRequest interface {
 	GetBindResourceGroups() []*string
 	SetBindResources(v []*string) *ModifyTemplateResourcesRequest
 	GetBindResources() []*string
+	SetDryRun(v bool) *ModifyTemplateResourcesRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *ModifyTemplateResourcesRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *ModifyTemplateResourcesRequest
@@ -32,15 +34,25 @@ type iModifyTemplateResourcesRequest interface {
 }
 
 type ModifyTemplateResourcesRequest struct {
-	// The IDs of the protected assets to attach. The value is in the [**"XX1","XX2",...**] format.
+	// The IDs of the protected assets to associate, in the format of ["XX1","XX2",...].
 	BindAssets []*string `json:"BindAssets,omitempty" xml:"BindAssets,omitempty" type:"Repeated"`
-	// The protected object groups to attach. The value is in the [**"group1","group2",...**] format.
+	// The protected object groups to associate, in the format of [**"group1","group2",...**].
 	BindResourceGroups []*string `json:"BindResourceGroups,omitempty" xml:"BindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects to attach. The value is in the [**"XX1","XX2",...**] format.
+	// The protected objects to associate, in the format of [**"XX1","XX2",...**].
 	BindResources []*string `json:"BindResources,omitempty" xml:"BindResources,omitempty" type:"Repeated"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Instance ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -72,11 +84,11 @@ type ModifyTemplateResourcesRequest struct {
 	//
 	// 2291
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The IDs of the protected assets to detach. The value is in the [**"XX1","XX2",...**] format.
+	// The IDs of the protected assets to disassociate, in the format of ["XX1","XX2",...].
 	UnbindAssets []*string `json:"UnbindAssets,omitempty" xml:"UnbindAssets,omitempty" type:"Repeated"`
-	// The protected object groups to detach. The value is in the [**"group1","group2",...**] format.
+	// The protected object groups to disassociate, in the format of [**"group1","group2",...**].
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects to detach. The value is in the [**"XX1","XX2",...**] format.
+	// The protected objects to disassociate, in the format of [**"XX1","XX2",...**].
 	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
@@ -98,6 +110,10 @@ func (s *ModifyTemplateResourcesRequest) GetBindResourceGroups() []*string {
 
 func (s *ModifyTemplateResourcesRequest) GetBindResources() []*string {
 	return s.BindResources
+}
+
+func (s *ModifyTemplateResourcesRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ModifyTemplateResourcesRequest) GetInstanceId() *string {
@@ -140,6 +156,11 @@ func (s *ModifyTemplateResourcesRequest) SetBindResourceGroups(v []*string) *Mod
 
 func (s *ModifyTemplateResourcesRequest) SetBindResources(v []*string) *ModifyTemplateResourcesRequest {
 	s.BindResources = v
+	return s
+}
+
+func (s *ModifyTemplateResourcesRequest) SetDryRun(v bool) *ModifyTemplateResourcesRequest {
+	s.DryRun = &v
 	return s
 }
 

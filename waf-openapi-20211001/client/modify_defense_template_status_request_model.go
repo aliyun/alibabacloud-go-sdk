@@ -9,6 +9,8 @@ type iModifyDefenseTemplateStatusRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *ModifyDefenseTemplateStatusRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *ModifyDefenseTemplateStatusRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *ModifyDefenseTemplateStatusRequest
@@ -22,9 +24,19 @@ type iModifyDefenseTemplateStatusRequest interface {
 }
 
 type ModifyDefenseTemplateStatusRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// - **true**: Sends a dry run request. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: Sends a normal request. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Instance ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +44,11 @@ type ModifyDefenseTemplateStatusRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -48,7 +60,7 @@ type ModifyDefenseTemplateStatusRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the protection template.
+	// The ID of the protection rule template.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +68,7 @@ type ModifyDefenseTemplateStatusRequest struct {
 	//
 	// 2249
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The new status of the protection rule template. Valid values:
+	// The status of the protection template that you want to set. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -78,6 +90,10 @@ func (s ModifyDefenseTemplateStatusRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDefenseTemplateStatusRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyDefenseTemplateStatusRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -96,6 +112,11 @@ func (s *ModifyDefenseTemplateStatusRequest) GetTemplateId() *int64 {
 
 func (s *ModifyDefenseTemplateStatusRequest) GetTemplateStatus() *int32 {
 	return s.TemplateStatus
+}
+
+func (s *ModifyDefenseTemplateStatusRequest) SetDryRun(v bool) *ModifyDefenseTemplateStatusRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *ModifyDefenseTemplateStatusRequest) SetInstanceId(v string) *ModifyDefenseTemplateStatusRequest {

@@ -42,15 +42,15 @@ type DescribeBotRuleLabelsRequest struct {
 	//
 	// human_machine_challenge
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20. This parameter is used for paging.
+	// The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. If a value is returned for this parameter, the next page exists.
+	// The pagination token for the next page. If a next page exists, this field returns a value.
 	//
-	// > If this parameter has a return value, the next page exists. Use the returned NextToken value as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter returns a value, a next page exists. Use the returned **NextToken*	- as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeBotRuleLabelsRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of bot management protection scenario.
+	// The bot management protection scenario type.
 	//
 	// example:
 	//

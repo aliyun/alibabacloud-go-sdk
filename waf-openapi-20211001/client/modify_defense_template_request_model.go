@@ -11,6 +11,10 @@ type iModifyDefenseTemplateRequest interface {
 	GoString() string
 	SetDescription(v string) *ModifyDefenseTemplateRequest
 	GetDescription() *string
+	SetDetail(v string) *ModifyDefenseTemplateRequest
+	GetDetail() *string
+	SetDryRun(v bool) *ModifyDefenseTemplateRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *ModifyDefenseTemplateRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *ModifyDefenseTemplateRequest
@@ -24,15 +28,31 @@ type iModifyDefenseTemplateRequest interface {
 }
 
 type ModifyDefenseTemplateRequest struct {
-	// The description of the protection template.
+	// The description of the protection template that you want to modify.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The details of the template. For more information, see the Detail parameter in [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html).
+	//
+	// example:
+	//
+	// {"trafficFeature":"{\\"global\\":0,\\"excludeStatus\\":1,\\"conditions\\":[{\\"key\\":\\"URL\\",\\"opValue\\":\\"not-contain\\",\\"values\\":\\"test\\"}]}"}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	//
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +60,7 @@ type ModifyDefenseTemplateRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -56,7 +76,7 @@ type ModifyDefenseTemplateRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the protection template to modify.
+	// The ID of the protection template that you want to modify.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +84,9 @@ type ModifyDefenseTemplateRequest struct {
 	//
 	// 7392
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the protection template. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-).
+	// The name of the protection template that you want to modify. The name must be 1 to 255 characters in length and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-).
 	//
-	// > Template names must be unique for the same protection scenario (**DefenseScene**).
+	// > Template names within the same protection scenario (**DefenseScene**) must be unique.
 	//
 	// This parameter is required.
 	//
@@ -86,6 +106,14 @@ func (s ModifyDefenseTemplateRequest) GoString() string {
 
 func (s *ModifyDefenseTemplateRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ModifyDefenseTemplateRequest) GetDetail() *string {
+	return s.Detail
+}
+
+func (s *ModifyDefenseTemplateRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *ModifyDefenseTemplateRequest) GetInstanceId() *string {
@@ -110,6 +138,16 @@ func (s *ModifyDefenseTemplateRequest) GetTemplateName() *string {
 
 func (s *ModifyDefenseTemplateRequest) SetDescription(v string) *ModifyDefenseTemplateRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyDefenseTemplateRequest) SetDetail(v string) *ModifyDefenseTemplateRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *ModifyDefenseTemplateRequest) SetDryRun(v bool) *ModifyDefenseTemplateRequest {
+	s.DryRun = &v
 	return s
 }
 

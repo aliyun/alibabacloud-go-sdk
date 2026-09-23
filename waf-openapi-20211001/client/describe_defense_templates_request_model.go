@@ -46,13 +46,13 @@ type DescribeDefenseTemplatesRequest struct {
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario of the protection template. Valid values:
 	//
-	// - **web**: BOT management web protection scenario template.
+	// - **web**: bot management web protection scenario template.
 	//
-	// - **app**: BOT management app protection scenario template.
+	// - **app**: bot management app protection scenario template.
 	//
-	// - **basic**: BOT management basic protection template.
+	// - **basic**: bot management basic protection template.
 	//
-	// - **bot_custom_acl**: BOT management advanced custom rule protection template.
+	// - **bot_custom_acl**: bot management advanced custom rule protection template.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type DescribeDefenseTemplatesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-pe33b****03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number to return in a paging query request. Default value: **1**.
+	// The page number to return in a paging request. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paging query. Default value: **20**.
+	// The number of entries per page when paging. Default value: **20**.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeDefenseTemplatesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the protected object, protection group, or the ID of the protected asset.
+	// The name of the protected object, the name of the protected object group, or the ID of the protected asset.
 	//
 	// > This parameter is used together with the ResourceType parameter. Both parameters must have values for filtering to take effect.
 	//
@@ -132,9 +132,9 @@ type DescribeDefenseTemplatesRequest struct {
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The templatetype of the protection template. Valid values:
 	//
-	// - **user_default**: user default protection.
+	// - **user_default**: default protection.
 	//
-	// - **user_custom**: user custom protection.
+	// - **user_custom**: custom protection.
 	//
 	// example:
 	//

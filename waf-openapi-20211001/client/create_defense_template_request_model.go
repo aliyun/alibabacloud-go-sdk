@@ -15,6 +15,10 @@ type iCreateDefenseTemplateRequest interface {
 	GetDefenseSubScene() *string
 	SetDescription(v string) *CreateDefenseTemplateRequest
 	GetDescription() *string
+	SetDetail(v string) *CreateDefenseTemplateRequest
+	GetDetail() *string
+	SetDryRun(v bool) *CreateDefenseTemplateRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *CreateDefenseTemplateRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *CreateDefenseTemplateRequest
@@ -44,7 +48,7 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The sub-scenario of the protection template. This parameter is supported only for advanced bot management scenarios.
+	// The sub-scenario of the protection template. This parameter is supported only for the advanced bot management scenario.
 	//
 	// example:
 	//
@@ -56,9 +60,27 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The detailed template information, which is a JSON-formatted string. Different key-value pairs represent different attributes of the protected object. For more information, see the Detail description.
+	//
+	// > This parameter applies only to the new version of basic protection (**waf_base**) and the new version of bot management (**bot_manager**) protection scenarios. This parameter is required for the new version of bot management (**bot_manager**) protection scenario.
+	//
+	// example:
+	//
+	// {"trafficFeature":"{\\"global\\":0,\\"excludeStatus\\":1,\\"conditions\\":[{\\"key\\":\\"URL\\",\\"opValue\\":\\"not-contain\\",\\"values\\":\\"test\\"}]}"}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	//
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +104,7 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The name of the protection template to create. The name must be 1 to 255 characters in length and can contain Chinese characters, letters, digits, underscores (_), periods (.), or hyphens (-).
+	// The name of the protection template to create. The name must be 1 to 255 characters in length and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-).
 	//
 	// > Template names must be unique within the same protection scenario (**DefenseScene**).
 	//
@@ -126,11 +148,11 @@ type CreateDefenseTemplateRequest struct {
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// The protected object groups to unbind when creating a default protection template. Use the format [**"group1","group2",……**].
 	//
-	// > This parameter takes effect only when you create a **default template*	- (the value of **TemplateType*	- is **user_default**).
+	// > This parameter takes effect only when creating a **default template*	- (when **TemplateType*	- is set to **user_default**).
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
 	// The protected objects to unbind when creating a default protection template. Use the format [**"XX1","XX2",……**].
 	//
-	// > This parameter takes effect only when you create a **default template*	- (the value of **TemplateType*	- is **user_default**).
+	// > This parameter takes effect only when creating a **default template*	- (when **TemplateType*	- is set to **user_default**).
 	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
@@ -152,6 +174,14 @@ func (s *CreateDefenseTemplateRequest) GetDefenseSubScene() *string {
 
 func (s *CreateDefenseTemplateRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateDefenseTemplateRequest) GetDetail() *string {
+	return s.Detail
+}
+
+func (s *CreateDefenseTemplateRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *CreateDefenseTemplateRequest) GetInstanceId() *string {
@@ -202,6 +232,16 @@ func (s *CreateDefenseTemplateRequest) SetDefenseSubScene(v string) *CreateDefen
 
 func (s *CreateDefenseTemplateRequest) SetDescription(v string) *CreateDefenseTemplateRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateDefenseTemplateRequest) SetDetail(v string) *CreateDefenseTemplateRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateDefenseTemplateRequest) SetDryRun(v bool) *CreateDefenseTemplateRequest {
+	s.DryRun = &v
 	return s
 }
 

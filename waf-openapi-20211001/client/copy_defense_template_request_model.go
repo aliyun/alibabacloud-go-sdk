@@ -9,6 +9,8 @@ type iCopyDefenseTemplateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *CopyDefenseTemplateRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *CopyDefenseTemplateRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *CopyDefenseTemplateRequest
@@ -20,9 +22,19 @@ type iCopyDefenseTemplateRequest interface {
 }
 
 type CopyDefenseTemplateRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +42,7 @@ type CopyDefenseTemplateRequest struct {
 	//
 	// waf_v2_public_cn-lbj****x10g
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -40,13 +52,13 @@ type CopyDefenseTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the WAF instance belongs.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the protection template that you want to copy.
+	// The ID of the mitigation template to copy.
 	//
 	// This parameter is required.
 	//
@@ -64,6 +76,10 @@ func (s CopyDefenseTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CopyDefenseTemplateRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CopyDefenseTemplateRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -78,6 +94,11 @@ func (s *CopyDefenseTemplateRequest) GetResourceManagerResourceGroupId() *string
 
 func (s *CopyDefenseTemplateRequest) GetTemplateId() *int64 {
 	return s.TemplateId
+}
+
+func (s *CopyDefenseTemplateRequest) SetDryRun(v bool) *CopyDefenseTemplateRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *CopyDefenseTemplateRequest) SetInstanceId(v string) *CopyDefenseTemplateRequest {

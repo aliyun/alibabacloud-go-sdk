@@ -95,17 +95,17 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	//
 	// - **whitelist**: whitelist.
 	//
-	// - **region_block**: Location Blacklist.
+	// - **region_block**: location blacklist.
 	//
 	// - **custom_response**: custom response.
 	//
-	// - **cc**: HTTP flood protection.
+	// - **cc**: HTTP flood mitigation.
 	//
 	// - **tamperproof**: web tamper proofing.
 	//
 	// - **dlp**: data leak prevention.
 	//
-	// - **bot_manager**: new BOT management.
+	// - **bot_manager**: new bot management.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario of the protection template. Valid values:
 	//
-	// - **web**: BOT management web protection scenario template.
+	// - **web**: bot management web protection scenario template.
 	//
-	// - **app**: BOT management app protection scenario template.
+	// - **app**: bot management app protection scenario template.
 	//
-	// - **basic**: BOT management basic protection template.
+	// - **basic**: bot management basic protection template.
 	//
-	// - **bot_custom_acl**: BOT management advanced custom rule protection template.
+	// - **bot_custom_acl**: bot management advanced custom rule protection template.
 	//
 	// example:
 	//
@@ -131,7 +131,13 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	//
 	// testTemplate
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time of the protection template. The value is a timestamp in milliseconds.
+	// The detailed template information. For more information, see the Detail parameter in [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html).
+	//
+	// example:
+	//
+	// {"trafficFeature":"{\\"global\\":0,\\"excludeStatus\\":1,\\"conditions\\":[{\\"key\\":\\"URL\\",\\"opValue\\":\\"not-contain\\",\\"values\\":\\"test\\"}]}"}
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The time when the protection template was created. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -149,7 +155,7 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	//
 	// template-blockarea1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The source of the protection template. The value is custom, which indicates user-defined.
+	// The source of the protection template. The value custom indicates that the template is user-defined.
 	//
 	// example:
 	//
@@ -167,9 +173,9 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 	// The templatetype of the protection template. Valid values:
 	//
-	// - **user_default**: user default protection.
+	// - **user_default**: default protection.
 	//
-	// - **user_custom**: user custom protection.
+	// - **user_custom**: custom protection.
 	//
 	// example:
 	//
@@ -195,6 +201,10 @@ func (s *DescribeDefenseTemplatesResponseBodyTemplates) GetDefenseSubScene() *st
 
 func (s *DescribeDefenseTemplatesResponseBodyTemplates) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribeDefenseTemplatesResponseBodyTemplates) GetDetail() map[string]interface{} {
+	return s.Detail
 }
 
 func (s *DescribeDefenseTemplatesResponseBodyTemplates) GetGmtModified() *int64 {
@@ -233,6 +243,11 @@ func (s *DescribeDefenseTemplatesResponseBodyTemplates) SetDefenseSubScene(v str
 
 func (s *DescribeDefenseTemplatesResponseBodyTemplates) SetDescription(v string) *DescribeDefenseTemplatesResponseBodyTemplates {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeDefenseTemplatesResponseBodyTemplates) SetDetail(v map[string]interface{}) *DescribeDefenseTemplatesResponseBodyTemplates {
+	s.Detail = v
 	return s
 }
 

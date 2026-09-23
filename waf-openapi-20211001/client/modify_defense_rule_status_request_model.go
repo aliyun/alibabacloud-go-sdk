@@ -11,6 +11,8 @@ type iModifyDefenseRuleStatusRequest interface {
 	GoString() string
 	SetDefenseType(v string) *ModifyDefenseRuleStatusRequest
 	GetDefenseType() *string
+	SetDryRun(v bool) *ModifyDefenseRuleStatusRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *ModifyDefenseRuleStatusRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *ModifyDefenseRuleStatusRequest
@@ -32,6 +34,16 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	//
+	// - **true**: A dry run request is sent. Only the request conditions are checked, and the specified operation is not performed. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	//
+	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Instance ID of the WAF instance.
 	//
 	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
@@ -42,7 +54,7 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -68,7 +80,7 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// 20002615
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The status that you want to set for the protection rule. Valid values:
+	// The status of the protection rule that you want to modify. Valid values:
 	//
 	// - **0**: disabled.
 	//
@@ -100,6 +112,10 @@ func (s *ModifyDefenseRuleStatusRequest) GetDefenseType() *string {
 	return s.DefenseType
 }
 
+func (s *ModifyDefenseRuleStatusRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *ModifyDefenseRuleStatusRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -126,6 +142,11 @@ func (s *ModifyDefenseRuleStatusRequest) GetTemplateId() *int64 {
 
 func (s *ModifyDefenseRuleStatusRequest) SetDefenseType(v string) *ModifyDefenseRuleStatusRequest {
 	s.DefenseType = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleStatusRequest) SetDryRun(v bool) *ModifyDefenseRuleStatusRequest {
+	s.DryRun = &v
 	return s
 }
 
