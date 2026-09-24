@@ -95,7 +95,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// 2
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The creation time of the cloud desktop. The time is in the ISO 8601 standard (UTC).
+	// The time when the cloud desktop was created. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//
@@ -151,6 +151,12 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// 120
 	LatestConnectionTime *int64 `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
+	// The latest end time of the current session. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2026-09-14T05:01:12Z
+	LatestSessionEndTime *string `json:"LatestSessionEndTime,omitempty" xml:"LatestSessionEndTime,omitempty"`
 	// The memory of the cloud desktop. Unit: MiB.
 	//
 	// example:
@@ -185,7 +191,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The specific operating system model.
+	// The specific operating system version.
 	//
 	// example:
 	//
@@ -217,7 +223,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
 	// The session details.
 	Sessions []*DescribeGlobalDesktopRecordsResponseBodySessionsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The UNIX timestamp of the cloud desktop status change. Unit: milliseconds.
+	// The UNIX timestamp when the cloud desktop status changed. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -303,6 +309,10 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetGpuSpec() *string 
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetLatestConnectionTime() *int64 {
 	return s.LatestConnectionTime
+}
+
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetLatestSessionEndTime() *string {
+	return s.LatestSessionEndTime
 }
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetMemory() *int64 {
@@ -422,6 +432,11 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetGpuSpec(v string) 
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetLatestConnectionTime(v int64) *DescribeGlobalDesktopRecordsResponseBodySessions {
 	s.LatestConnectionTime = &v
+	return s
+}
+
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetLatestSessionEndTime(v string) *DescribeGlobalDesktopRecordsResponseBodySessions {
+	s.LatestSessionEndTime = &v
 	return s
 }
 
@@ -574,9 +589,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessionsSessions struct {
 	//
 	// TestUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The session creation time.
-	//
-	// The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the session was created. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

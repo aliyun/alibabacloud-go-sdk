@@ -9,6 +9,8 @@ type iGetConnectionTicketRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientType(v string) *GetConnectionTicketRequest
+	GetClientType() *string
 	SetCommandContent(v string) *GetConnectionTicketRequest
 	GetCommandContent() *string
 	SetDesktopId(v string) *GetConnectionTicketRequest
@@ -32,11 +34,17 @@ type iGetConnectionTicketRequest interface {
 }
 
 type GetConnectionTicketRequest struct {
-	// Specifies a custom user-mode application that is automatically started after the credential is obtained.
+	// The client type.
 	//
-	// - appPath: a value of the String type that specifies the application startup file path, such as `"C:\\Program Files (x86)\\000\\000.exe"`. Use double backslashes (\\\\) as path separators.
+	// example:
 	//
-	// - appParameter: a value of the String type that specifies the application startup parameters, such as `"meetingid 000 meetingname aaa"`. Separate parameters with spaces.
+	// macos
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The custom user-mode application to configure. After the credential is obtained, the application is automatically started.
+	//
+	// - appPath: a value of the STRING type that specifies the path of the application startup file. Example: `"C:\\Program Files (x86)\\000\\000.exe"`. Use double backslashes (\\\\) as path separators.
+	//
+	// - appParameter: a value of the STRING type that specifies the application startup parameters. Example: `"meetingid 000 meetingname aaa"`. Separate parameters with spaces.
 	//
 	// example:
 	//
@@ -70,7 +78,7 @@ type GetConnectionTicketRequest struct {
 	//
 	// }
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	// The ID of the cloud computer for which to generate a connection credential. This parameter is required to generate the credential.
+	// The ID of the cloud computer for which you want to generate a connection credential. This parameter is required to generate the credential.
 	//
 	// example:
 	//
@@ -121,6 +129,10 @@ func (s GetConnectionTicketRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetConnectionTicketRequest) GetClientType() *string {
+	return s.ClientType
+}
+
 func (s *GetConnectionTicketRequest) GetCommandContent() *string {
 	return s.CommandContent
 }
@@ -159,6 +171,11 @@ func (s *GetConnectionTicketRequest) GetTaskId() *string {
 
 func (s *GetConnectionTicketRequest) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *GetConnectionTicketRequest) SetClientType(v string) *GetConnectionTicketRequest {
+	s.ClientType = &v
+	return s
 }
 
 func (s *GetConnectionTicketRequest) SetCommandContent(v string) *GetConnectionTicketRequest {

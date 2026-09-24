@@ -52,9 +52,9 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 type DescribeGlobalDesktopRecordsRequest struct {
 	// The business channel. Valid values:
 	//
-	// Enterprise: Enterprise Edition.
+	// - Enterprise: Enterprise Edition.
 	//
-	// Business: Business Edition.
+	// - Business: Business Edition.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// The list of cloud desktop statuses to include.
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The cloud desktop specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported specification IDs for cloud desktops.
+	// The cloud desktop specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud desktops.
 	//
 	// example:
 	//
 	// eds.enterprise_office.2c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The end time. The maximum interval between the start time and end time is 30 days. Supported format:
+	// The end time. The interval between the start time and end time cannot exceed 30 days. Supported format:
 	//
 	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
@@ -98,7 +98,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The sort field. If not specified, results are sorted by creation time in descending order. Valid values:
+	// The sort field. If this parameter is not specified, results are sorted by creation time in descending order. Valid values:
 	//
 	// - uptime: sorts by cloud desktop uptime.
 	//
@@ -106,7 +106,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// uptime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number of the current page when using paging.
+	// The page number of the current page in a paged query.
 	//
 	// Default value: 1.
 	//
@@ -146,7 +146,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// ADVANCED
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The sort order. Default value: ascending order. Valid values:
+	// The sort order. Default value: Asc. Valid values:
 	//
 	// - Asc: ascending order.
 	//

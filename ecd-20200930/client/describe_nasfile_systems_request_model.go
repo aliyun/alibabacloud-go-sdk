@@ -46,7 +46,7 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

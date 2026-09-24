@@ -95,7 +95,7 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	//
 	// RunPowerShellScript
 	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	// The creation time of the task.
+	// The time when the task was created. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -103,9 +103,9 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The cloud desktop scenario. Valid values:
 	//
-	// - Classic: the classic cloud desktop scenario.
+	// - Classic: Classic cloud desktop scenario.
 	//
-	// - JvsClaw: the JVS Claw cloud desktop scenario.
+	// - JvsClaw: JVS Claw cloud desktop scenario.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	//
 	// User1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The overall execution status of the script. The overall execution status depends on the combined execution status of all cloud desktops in this call. Valid values:
+	// The overall execution status of the script. The overall execution status is determined by the combined execution status of all cloud desktops in this invocation. Valid values:
 	//
 	// - Pending: The system is validating or sending the command. The overall execution status is Pending if at least one cloud desktop has a script execution status of Pending.
 	//
@@ -125,27 +125,27 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	//
 	// - Success: The overall execution status is Success if the script execution status on each cloud desktop is Stopped or Success, and at least one cloud desktop has a script execution status of Success.
 	//
-	// - Failed: The overall execution status is Failed if the script execution status on each cloud desktop is Stopped or Failed. The return value is Failed when one or more of the following statuses occur on a cloud desktop:
+	// - Failed: The overall execution status is Failed if the script execution status on each cloud desktop is Stopped or Failed. The return value is Failed if one or more of the following statuses occur on a cloud desktop:
 	//
-	//     - Command validation failed (Invalid)
+	//     - Command validation failed (Invalid).
 	//
-	//     - Command delivery failed (Aborted)
+	//     - Command delivery failed (Aborted).
 	//
-	//     - Command execution completed with a non-zero exit code (Failed)
+	//     - Command execution completed but the exit code is non-zero (Failed).
 	//
-	//     - Command execution timed out (Timeout)
+	//     - Command execution timed out (Timeout).
 	//
-	//     - Command execution encountered an exception (Error)
+	//     - Command execution encountered an exception (Error).
 	//
 	// - Stopping: The task is being stopped. The overall execution status is Stopping if at least one instance has a script execution status of Stopping.
 	//
-	// - Stopped: The task has been stopped. The overall execution status is Stopped if the script execution status on all instances is Stopped. The return value is Stopped when the script execution status on an instance is one of the following:
+	// - Stopped: The task is stopped. The overall execution status is Stopped if the script execution status on all instances is Stopped. The return value is Stopped if the script execution status on an instance is one of the following:
 	//
-	//     - Task cancelled (Cancelled)
+	//     - Task cancelled (Cancelled).
 	//
-	//     - Task terminated (Terminated)
+	//     - Task terminated (Terminated).
 	//
-	// - PartialFailed: The overall execution status is PartialFailed if some instances succeeded and some instances failed. The overall execution status is PartialFailed if the script execution status on each instance is Success, Failed, or Stopped.
+	// - PartialFailed: The overall execution status is PartialFailed if some instances succeeded and some instances failed. The script execution status on each instance is Success, Failed, or Stopped.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ func (s *DescribeInvocationsResponseBodyInvocations) Validate() error {
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
-	// The creation time of the script process.
+	// The time when the script process was created. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -303,13 +303,13 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// demo1234
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The length of the truncated and discarded text after the text length in the Output field exceeded 24 KB.
+	// The length of the truncated and discarded text after the text length in the Output field exceeds 24 KB.
 	//
 	// example:
 	//
 	// 0
 	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	// The error code indicating the reason for command delivery failure or execution failure. Valid values:
+	// The error code that indicates the reason for a command delivery failure or execution failure. Valid values:
 	//
 	// - Empty: The command ran normally.
 	//
@@ -343,7 +343,7 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// InstanceNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The detailed reason for command delivery failure or execution failure. Valid values:
+	// The detailed information about the reason for a command delivery failure or execution failure. Valid values:
 	//
 	// - Empty: The command ran normally.
 	//
@@ -383,13 +383,13 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// 0
 	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	// The end time of the script process.
+	// The time when the script process ended. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2020-12-20T06:15:56Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The script process status on a single cloud desktop.
+	// The script execution status on a single cloud desktop.
 	//
 	// example:
 	//
@@ -401,11 +401,11 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// jvs-7xjos2l****
 	JvsAgentId *string `json:"JvsAgentId,omitempty" xml:"JvsAgentId,omitempty"`
-	// The output information of the script process.
+	// The output of the script process.
 	//
-	// - If the request parameter `IncludeOutput` is set to false, Output is not returned.
+	// - If the request parameter IncludeOutput is set to false, Output is not returned.
 	//
-	// - If the request parameter `ContentEncoding` is set to Base64, Output is the Base64-encoded output information.
+	// - If the request parameter ContentEncoding is set to Base64, Output is the Base64-encoded output.
 	//
 	// example:
 	//
@@ -417,19 +417,19 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// 0
 	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	// The time when the script process started running on the cloud desktop.
+	// The time when the script process started running on the cloud desktop. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2020-12-20T06:15:55Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when the execution was stopped, if StopInvocation was called.
+	// The time when the execution was stopped, if StopInvocation was called. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2020-12-25T09:15:47Z
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// The update time of the task status.
+	// The time when the task status was last updated. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeRecordFileResponseBody interface {
 }
 
 type DescribeRecordFileResponseBody struct {
-	// The details of the recording files.
+	// The details of the recording file list.
 	RecordFiles []*DescribeRecordFileResponseBodyRecordFiles `json:"RecordFiles,omitempty" xml:"RecordFiles,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeRecordFileResponseBody struct {
 	//
 	// 05C2791F-41A7-5E7C-B5E4-1401FD0E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,13 +83,15 @@ func (s *DescribeRecordFileResponseBody) Validate() error {
 }
 
 type DescribeRecordFileResponseBodyRecordFiles struct {
+	// The audit status list.
+	AuditStatus []*string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty" type:"Repeated"`
 	// The Cloud Desktop ID.
 	//
 	// example:
 	//
 	// ecd-7yulhw1g1attet7d2
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the Cloud Desktop.
+	// The Cloud Desktop name.
 	//
 	// example:
 	//
@@ -103,13 +105,13 @@ type DescribeRecordFileResponseBodyRecordFiles struct {
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The event details.
 	EventDetails []*DescribeRecordFileResponseBodyRecordFilesEventDetails `json:"EventDetails,omitempty" xml:"EventDetails,omitempty" type:"Repeated"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// Task3
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The size of the file. Unit: bytes.
+	// The file size. Unit: bytes.
 	//
 	// example:
 	//
@@ -121,7 +123,7 @@ type DescribeRecordFileResponseBodyRecordFiles struct {
 	//
 	// pg-**
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The time when the recording ended. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The recording end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
@@ -133,7 +135,7 @@ type DescribeRecordFileResponseBodyRecordFiles struct {
 	//
 	// 1774656000000
 	RecordExpire *int64 `json:"RecordExpire,omitempty" xml:"RecordExpire,omitempty"`
-	// The time when the recording started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The recording start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
@@ -173,9 +175,9 @@ type DescribeRecordFileResponseBodyRecordFiles struct {
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The status of the screen recording file. Valid values:
 	//
-	// - 0: uploaded.
+	// - 0: Upload succeeded.
 	//
-	// - 1: uploading.
+	// - 1: Uploading.
 	//
 	// example:
 	//
@@ -189,6 +191,10 @@ func (s DescribeRecordFileResponseBodyRecordFiles) String() string {
 
 func (s DescribeRecordFileResponseBodyRecordFiles) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRecordFileResponseBodyRecordFiles) GetAuditStatus() []*string {
+	return s.AuditStatus
 }
 
 func (s *DescribeRecordFileResponseBodyRecordFiles) GetDesktopId() *string {
@@ -249,6 +255,11 @@ func (s *DescribeRecordFileResponseBodyRecordFiles) GetResourceGroupName() *stri
 
 func (s *DescribeRecordFileResponseBodyRecordFiles) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *DescribeRecordFileResponseBodyRecordFiles) SetAuditStatus(v []*string) *DescribeRecordFileResponseBodyRecordFiles {
+	s.AuditStatus = v
+	return s
 }
 
 func (s *DescribeRecordFileResponseBodyRecordFiles) SetDesktopId(v string) *DescribeRecordFileResponseBodyRecordFiles {

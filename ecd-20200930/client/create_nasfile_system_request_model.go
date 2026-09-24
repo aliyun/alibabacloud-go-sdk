@@ -9,10 +9,14 @@ type iCreateNASFileSystemRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCapacity(v int64) *CreateNASFileSystemRequest
+	GetCapacity() *int64
 	SetDescription(v string) *CreateNASFileSystemRequest
 	GetDescription() *string
 	SetEncryptType(v string) *CreateNASFileSystemRequest
 	GetEncryptType() *string
+	SetFileSystemType(v string) *CreateNASFileSystemRequest
+	GetFileSystemType() *string
 	SetName(v string) *CreateNASFileSystemRequest
 	GetName() *string
 	SetOfficeSiteId(v string) *CreateNASFileSystemRequest
@@ -26,18 +30,30 @@ type iCreateNASFileSystemRequest interface {
 }
 
 type CreateNASFileSystemRequest struct {
+	// The capacity.
+	//
+	// example:
+	//
+	// 3600
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The description of the NAS file system.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to use a Key Management Service (KMS) managed key to encrypt data stored in the file system. Encrypted data does not need to be decrypted during read and write operations.
+	// Specifies whether the file system uses a key managed by Key Management Service (KMS) to encrypt data stored on the file system. Encrypted data does not need to be decrypted during read and write operations.
 	//
 	// example:
 	//
 	// 0
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The file system type.
+	//
+	// example:
+	//
+	// standard
+	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	// The name of the NAS file system. The name must meet the following requirements: The name must be 2 to 128 characters in length and can contain letters and Chinese characters. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, underscores (_), or hyphens (-).
 	//
 	// example:
@@ -56,7 +72,7 @@ type CreateNASFileSystemRequest struct {
 	//
 	// example:
 	//
-	// ASP
+	// SMB
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
 	//
@@ -82,12 +98,20 @@ func (s CreateNASFileSystemRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateNASFileSystemRequest) GetCapacity() *int64 {
+	return s.Capacity
+}
+
 func (s *CreateNASFileSystemRequest) GetDescription() *string {
 	return s.Description
 }
 
 func (s *CreateNASFileSystemRequest) GetEncryptType() *string {
 	return s.EncryptType
+}
+
+func (s *CreateNASFileSystemRequest) GetFileSystemType() *string {
+	return s.FileSystemType
 }
 
 func (s *CreateNASFileSystemRequest) GetName() *string {
@@ -110,6 +134,11 @@ func (s *CreateNASFileSystemRequest) GetStorageType() *string {
 	return s.StorageType
 }
 
+func (s *CreateNASFileSystemRequest) SetCapacity(v int64) *CreateNASFileSystemRequest {
+	s.Capacity = &v
+	return s
+}
+
 func (s *CreateNASFileSystemRequest) SetDescription(v string) *CreateNASFileSystemRequest {
 	s.Description = &v
 	return s
@@ -117,6 +146,11 @@ func (s *CreateNASFileSystemRequest) SetDescription(v string) *CreateNASFileSyst
 
 func (s *CreateNASFileSystemRequest) SetEncryptType(v string) *CreateNASFileSystemRequest {
 	s.EncryptType = &v
+	return s
+}
+
+func (s *CreateNASFileSystemRequest) SetFileSystemType(v string) *CreateNASFileSystemRequest {
+	s.FileSystemType = &v
 	return s
 }
 

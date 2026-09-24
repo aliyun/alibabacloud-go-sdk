@@ -221,13 +221,13 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoPricePromotions struct {
-	// The promotion rule description.
+	// The description of the promotion rule.
 	//
 	// example:
 	//
 	// test
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	// The promotion description.
+	// The description of the promotion.
 	//
 	// example:
 	//
@@ -315,7 +315,7 @@ type DescribeRenewalPriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// Get 15% off the list price when you purchase a 1-year subscription
+	// Purchase for 1 year or more and enjoy a 15% discount off the list price
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rule ID.
 	//

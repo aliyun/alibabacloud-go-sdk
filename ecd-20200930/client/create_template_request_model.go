@@ -25,6 +25,8 @@ type iCreateTemplateRequest interface {
 	GetDescription() *string
 	SetImageId(v string) *CreateTemplateRequest
 	GetImageId() *string
+	SetInstanceName(v string) *CreateTemplateRequest
+	GetInstanceName() *string
 	SetPeriod(v int32) *CreateTemplateRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *CreateTemplateRequest
@@ -56,7 +58,7 @@ type iCreateTemplateRequest interface {
 }
 
 type CreateTemplateRequest struct {
-	// Indicates whether automatic payment is enabled for the subscription order.
+	// Specifies whether automatic payment is enabled for the subscription order.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal for the subscription cloud computer.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
@@ -72,7 +74,7 @@ type CreateTemplateRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The size and specification configurations of data disks.
+	// The data disk size and specification configurations.
 	DataDiskList []*CreateTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
 	// The default language set when the cloud computer starts. This parameter takes effect only when a system image is used to create the cloud computer.
 	//
@@ -82,20 +84,26 @@ type CreateTemplateRequest struct {
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
 	// The description of the template. The description must meet the following requirements:
 	//
-	// - The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
+	// - The description can contain Chinese characters, letters, digits, spaces, and special characters, and supports line breaks.
 	//
 	// example:
 	//
 	// DesignDepartmentTemplate
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud computer image. You can query the ID on the image management page. System images and custom images are supported.
+	// The cloud computer image ID. You can query the ID on the image management page. System images, custom images, and other image types are supported.
 	//
 	// example:
 	//
 	// desktopimage-windows-server-2022-64-asp
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// myHost
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
 	//
 	// - If `PeriodUnit` is set to `Month`, valid values:
@@ -144,9 +152,9 @@ type CreateTemplateRequest struct {
 	//
 	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region-specific template configurations. You can specify multiple configurations. The configuration that matches the specific region is used.
+	// The region-specific template configurations. Multiple configurations are supported. The configuration that matches the specific region is used.
 	//
-	// > You can specify configurations for up to 20 regions.
+	// > You can configure up to 20 regions.
 	RegionConfigList []*CreateTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
@@ -154,21 +162,21 @@ type CreateTemplateRequest struct {
 	//
 	// rg-4knxmfneq1e******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the cloud computer in key-value format. You can specify up to 20 tags.
+	// The cloud computer tags in key-value format. You can specify up to 20 tags.
 	ResourceTagList []*CreateTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
 	// The site configuration management.
 	SiteConfigList []*CreateTemplateRequestSiteConfigList `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
-	// The type of the system disk.
+	// The system disk type.
 	//
-	// > Only high-frequency and GPU-accelerated cloud computer specifications support ESSD disks.
+	// > Only high frequency and graphics cloud computer specifications support ESSD disks.
 	//
 	// example:
 	//
 	// AutoPL
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
+	// The system disk size. Unit: GiB. Valid values: 40 to 500, in increments of 10 GiB.
 	//
-	// > The system disk size cannot be smaller than the image size.
+	// > The system disk size cannot be smaller than the size of the configured image.
 	//
 	// example:
 	//
@@ -176,7 +184,7 @@ type CreateTemplateRequest struct {
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// The name of the template. The name must meet the following requirements:
 	//
-	// - The name must be 2 to 126 characters in length.
+	// - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
 	//
 	// - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
@@ -240,6 +248,10 @@ func (s *CreateTemplateRequest) GetDescription() *string {
 
 func (s *CreateTemplateRequest) GetImageId() *string {
 	return s.ImageId
+}
+
+func (s *CreateTemplateRequest) GetInstanceName() *string {
+	return s.InstanceName
 }
 
 func (s *CreateTemplateRequest) GetPeriod() *int32 {
@@ -335,6 +347,11 @@ func (s *CreateTemplateRequest) SetDescription(v string) *CreateTemplateRequest 
 
 func (s *CreateTemplateRequest) SetImageId(v string) *CreateTemplateRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetInstanceName(v string) *CreateTemplateRequest {
+	s.InstanceName = &v
 	return s
 }
 
@@ -455,9 +472,9 @@ type CreateTemplateRequestDataDiskList struct {
 	//
 	// AutoPL
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
+	// The data cloud disk size. Unit: GiB. Valid values: 40 to 2040, in increments of 10 GiB.
 	//
-	// 	Notice: The larger the ESSD cloud disk capacity, the higher the performance level (PL) available (for example, PL2 is available for capacities of 460 GiB or more). Higher performance levels (PLs) incur higher costs. Select the ESSD cloud disk performance level (PL) based on your requirements. Note: Only standard SSD and ESSD cloud disks are supported.
+	// 	Notice: The larger the ESSD cloud disk capacity, the higher the available performance level (PL) (for example, PL2 is available for capacities of 460 GiB or more). Higher performance levels (PLs) incur higher costs. Select the ESSD cloud disk performance level (PL) based on your requirements.
 	//
 	// example:
 	//
@@ -502,7 +519,7 @@ type CreateTemplateRequestRegionConfigList struct {
 	//
 	// cn-hangzhou+dir-709******
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by WUYING Workspace.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by WUYING Workspace.
 	//
 	// example:
 	//
@@ -514,7 +531,7 @@ type CreateTemplateRequestRegionConfigList struct {
 	//
 	// eds.enterprise_office.8c16g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
-	// The ID of the automatic snapshot policy.
+	// The automatic snapshot policy ID.
 	//
 	// example:
 	//
@@ -526,13 +543,19 @@ type CreateTemplateRequestRegionConfigList struct {
 	//
 	// vsw-bp1yiu**********
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The virtual node pool, used in workstation scenarios.
+	//
+	// example:
+	//
+	// vnp-0bydg********
+	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
-	// The ID of the KMS key used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+	// The KMS key ID used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//
@@ -568,6 +591,10 @@ func (s *CreateTemplateRequestRegionConfigList) GetSubnetId() *string {
 	return s.SubnetId
 }
 
+func (s *CreateTemplateRequestRegionConfigList) GetVirtualNodePoolId() *string {
+	return s.VirtualNodePoolId
+}
+
 func (s *CreateTemplateRequestRegionConfigList) GetVolumeEncryptionEnable() *bool {
 	return s.VolumeEncryptionEnable
 }
@@ -598,6 +625,11 @@ func (s *CreateTemplateRequestRegionConfigList) SetSnapshotPolicyId(v string) *C
 
 func (s *CreateTemplateRequestRegionConfigList) SetSubnetId(v string) *CreateTemplateRequestRegionConfigList {
 	s.SubnetId = &v
+	return s
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetVirtualNodePoolId(v string) *CreateTemplateRequestRegionConfigList {
+	s.VirtualNodePoolId = &v
 	return s
 }
 

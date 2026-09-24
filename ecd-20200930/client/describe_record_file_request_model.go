@@ -9,6 +9,8 @@ type iDescribeRecordFileRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuditStatus(v string) *DescribeRecordFileRequest
+	GetAuditStatus() *string
 	SetDesktopId(v string) *DescribeRecordFileRequest
 	GetDesktopId() *string
 	SetEndTime(v string) *DescribeRecordFileRequest
@@ -38,6 +40,20 @@ type iDescribeRecordFileRequest interface {
 }
 
 type DescribeRecordFileRequest struct {
+	// The audit status. Valid values:
+	//
+	// - AI_ANALYZED: AI analysis completed.
+	//
+	// - REVIEWING: Under review.
+	//
+	// - REVIEWED: Reviewed.
+	//
+	// - UNREVIEWED: Not reviewed.
+	//
+	// example:
+	//
+	// REVIEWING
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	// The Cloud Desktop ID.
 	//
 	// example:
@@ -62,9 +78,9 @@ type DescribeRecordFileRequest struct {
 	//
 	// Task7
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The field used for sorting. If this parameter is not specified, the results are sorted by recording start time in descending order. Valid values:
+	// The field used for sorting. If not specified, results are sorted by recording start time in descending order. Valid values:
 	//
-	// - startTime: recording start time.
+	// - startTime: the recording start time.
 	//
 	// example:
 	//
@@ -86,7 +102,7 @@ type DescribeRecordFileRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of rows per page in a paging query.
+	// The maximum number of rows per page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
@@ -128,9 +144,9 @@ type DescribeRecordFileRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the screen recording file. Valid values:
 	//
-	// - 0: uploaded.
+	// - 0: Upload succeeded.
 	//
-	// - 1: uploading.
+	// - 1: Uploading.
 	//
 	// example:
 	//
@@ -144,6 +160,10 @@ func (s DescribeRecordFileRequest) String() string {
 
 func (s DescribeRecordFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRecordFileRequest) GetAuditStatus() *string {
+	return s.AuditStatus
 }
 
 func (s *DescribeRecordFileRequest) GetDesktopId() *string {
@@ -196,6 +216,11 @@ func (s *DescribeRecordFileRequest) GetStartTime() *string {
 
 func (s *DescribeRecordFileRequest) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *DescribeRecordFileRequest) SetAuditStatus(v string) *DescribeRecordFileRequest {
+	s.AuditStatus = &v
+	return s
 }
 
 func (s *DescribeRecordFileRequest) SetDesktopId(v string) *DescribeRecordFileRequest {

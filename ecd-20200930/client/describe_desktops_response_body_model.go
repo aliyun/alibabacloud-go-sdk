@@ -26,7 +26,7 @@ type iDescribeDesktopsResponseBody interface {
 type DescribeDesktopsResponseBody struct {
 	// The details of the cloud desktops.
 	Desktops []*DescribeDesktopsResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token for the next query. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//
@@ -357,13 +357,13 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// 4096
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the secondary ENI created by the cloud desktop service for the RAM or AD user. This value cannot be modified.
+	// The ID of the secondary network interface controller (NIC) created by the cloud desktop service for the RAM or AD user. This value cannot be modified.
 	//
 	// example:
 	//
 	// 123456
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The IP address of the secondary ENI created by the cloud desktop service for the RAM or AD user.
+	// The IP address of the secondary NIC created by the cloud desktop service for the RAM or AD user.
 	//
 	// example:
 	//
@@ -435,6 +435,14 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// example:
+	//
+	// rp-xxx
+	ReservePoolId *string `json:"ReservePoolId,omitempty" xml:"ReservePoolId,omitempty"`
+	// example:
+	//
+	// reserve-pool
+	ReservePoolName *string `json:"ReservePoolName,omitempty" xml:"ReservePoolName,omitempty"`
 	// The list of enterprise resource group information.
 	ResourceGroups []*DescribeDesktopsResponseBodyDesktopsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 	// The serial number of the terminal.
@@ -463,7 +471,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// testSnapshotName
 	SnapshotPolicyName *string `json:"SnapshotPolicyName,omitempty" xml:"SnapshotPolicyName,omitempty"`
-	// The start time of the query. The time is in the ISO 8601 standard and in UTC+0, in the format of `yyyy-mm-ddthh:mm:ssz`.
+	// The start time of the query. The time is in the ISO 8601 standard and in UTC+0. Format: `yyyy-mm-ddthh:mm:ssz`.
 	//
 	// example:
 	//
@@ -513,6 +521,10 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// 08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****
 	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The type of the zone. Default value: `AvailabilityZone`, which indicates a regular cloud zone.
 	//
 	// example:
@@ -757,6 +769,14 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetProtocolType() *string {
 	return s.ProtocolType
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) GetReservePoolId() *string {
+	return s.ReservePoolId
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) GetReservePoolName() *string {
+	return s.ReservePoolName
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) GetResourceGroups() []*DescribeDesktopsResponseBodyDesktopsResourceGroups {
 	return s.ResourceGroups
 }
@@ -815,6 +835,10 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetVolumeEncryptionEnabled() *boo
 
 func (s *DescribeDesktopsResponseBodyDesktops) GetVolumeEncryptionKey() *string {
 	return s.VolumeEncryptionKey
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) GetZoneId() *string {
+	return s.ZoneId
 }
 
 func (s *DescribeDesktopsResponseBodyDesktops) GetZoneType() *string {
@@ -1106,6 +1130,16 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetProtocolType(v string) *Descri
 	return s
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) SetReservePoolId(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.ReservePoolId = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetReservePoolName(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.ReservePoolName = &v
+	return s
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) SetResourceGroups(v []*DescribeDesktopsResponseBodyDesktopsResourceGroups) *DescribeDesktopsResponseBodyDesktops {
 	s.ResourceGroups = v
 	return s
@@ -1178,6 +1212,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetVolumeEncryptionEnabled(v bool
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetVolumeEncryptionKey(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.VolumeEncryptionKey = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetZoneId(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.ZoneId = &v
 	return s
 }
 
@@ -1387,7 +1426,7 @@ type DescribeDesktopsResponseBodyDesktopsDisks struct {
 	//
 	//    - cloud_auto (ultra-fast cloud disk)
 	//
-	//    - cloud_essd (enhanced standard SSD cloud disk. Only specific types are supported.)
+	//    - cloud_essd (enhanced standard SSD. Only specific types are supported.)
 	//
 	// example:
 	//
@@ -1649,7 +1688,7 @@ func (s *DescribeDesktopsResponseBodyDesktopsOsUpdate) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktopsOsUpdatePackages struct {
-	// The NAS file system description.
+	// The description of the NAS file system.
 	//
 	// example:
 	//
@@ -1754,7 +1793,7 @@ func (s *DescribeDesktopsResponseBodyDesktopsResourceGroups) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktopsSessions struct {
-	// The ID of the user connected to the cloud desktop.
+	// The ID of the user who is connected to the cloud desktop.
 	//
 	// example:
 	//

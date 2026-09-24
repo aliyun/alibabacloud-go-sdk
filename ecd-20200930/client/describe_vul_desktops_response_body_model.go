@@ -44,13 +44,13 @@ type DescribeVulDesktopsResponseBody struct {
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC21DB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of cloud computers affected by the vulnerability.
+	// The details of cloud desktops affected by the vulnerability.
 	VulDesktops []*DescribeVulDesktopsResponseBodyVulDesktops `json:"VulDesktops,omitempty" xml:"VulDesktops,omitempty" type:"Repeated"`
 }
 
@@ -127,35 +127,47 @@ type DescribeVulDesktopsResponseBodyVulDesktops struct {
 	//
 	// ccg-0bbay4w7bwbxd****
 	ConfigGroupId *string `json:"ConfigGroupId,omitempty" xml:"ConfigGroupId,omitempty"`
+	// The connection status of the cloud desktop.
+	//
+	// example:
+	//
+	// Connected
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The number of vulnerabilities.
 	//
 	// example:
 	//
 	// 60
 	CveCount *int32 `json:"CveCount,omitempty" xml:"CveCount,omitempty"`
-	// The list of vulnerability details.
+	// The vulnerability details.
 	Cves []*DescribeVulDesktopsResponseBodyVulDesktopsCves `json:"Cves,omitempty" xml:"Cves,omitempty" type:"Repeated"`
-	// The ID of the cloud computer affected by the vulnerability.
+	// The ID of the cloud desktop affected by the vulnerability.
 	//
 	// example:
 	//
 	// ecd-0jtd4z5binubxe32e
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The running status of the cloud desktop.
+	//
+	// example:
+	//
+	// Running
+	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
 	// Indicates whether the activation code is disabled.
 	//
 	// example:
 	//
 	// False
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The time when the vulnerability was first discovered.
+	// The time when the vulnerability was first detected. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-08-05 00:00:00
 	FirstFoundTime *string `json:"FirstFoundTime,omitempty" xml:"FirstFoundTime,omitempty"`
-	// The list of fix records for the cloud computer.
+	// The fix records of the cloud desktop.
 	FixRecords []*DescribeVulDesktopsResponseBodyVulDesktopsFixRecords `json:"FixRecords,omitempty" xml:"FixRecords,omitempty" type:"Repeated"`
-	// The list of patch IDs.
+	// The patch IDs.
 	PatchIds []*string `json:"PatchIds,omitempty" xml:"PatchIds,omitempty" type:"Repeated"`
 	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
@@ -195,6 +207,10 @@ func (s *DescribeVulDesktopsResponseBodyVulDesktops) GetConfigGroupId() *string 
 	return s.ConfigGroupId
 }
 
+func (s *DescribeVulDesktopsResponseBodyVulDesktops) GetConnectionStatus() *string {
+	return s.ConnectionStatus
+}
+
 func (s *DescribeVulDesktopsResponseBodyVulDesktops) GetCveCount() *int32 {
 	return s.CveCount
 }
@@ -205,6 +221,10 @@ func (s *DescribeVulDesktopsResponseBodyVulDesktops) GetCves() []*DescribeVulDes
 
 func (s *DescribeVulDesktopsResponseBodyVulDesktops) GetDesktopId() *string {
 	return s.DesktopId
+}
+
+func (s *DescribeVulDesktopsResponseBodyVulDesktops) GetDesktopStatus() *string {
+	return s.DesktopStatus
 }
 
 func (s *DescribeVulDesktopsResponseBodyVulDesktops) GetDisabled() *bool {
@@ -244,6 +264,11 @@ func (s *DescribeVulDesktopsResponseBodyVulDesktops) SetConfigGroupId(v string) 
 	return s
 }
 
+func (s *DescribeVulDesktopsResponseBodyVulDesktops) SetConnectionStatus(v string) *DescribeVulDesktopsResponseBodyVulDesktops {
+	s.ConnectionStatus = &v
+	return s
+}
+
 func (s *DescribeVulDesktopsResponseBodyVulDesktops) SetCveCount(v int32) *DescribeVulDesktopsResponseBodyVulDesktops {
 	s.CveCount = &v
 	return s
@@ -256,6 +281,11 @@ func (s *DescribeVulDesktopsResponseBodyVulDesktops) SetCves(v []*DescribeVulDes
 
 func (s *DescribeVulDesktopsResponseBodyVulDesktops) SetDesktopId(v string) *DescribeVulDesktopsResponseBodyVulDesktops {
 	s.DesktopId = &v
+	return s
+}
+
+func (s *DescribeVulDesktopsResponseBodyVulDesktops) SetDesktopStatus(v string) *DescribeVulDesktopsResponseBodyVulDesktops {
+	s.DesktopStatus = &v
 	return s
 }
 
@@ -322,7 +352,7 @@ func (s *DescribeVulDesktopsResponseBodyVulDesktops) Validate() error {
 }
 
 type DescribeVulDesktopsResponseBodyVulDesktopsCves struct {
-	// The CVE ID.
+	// The CVE ID of the vulnerability.
 	//
 	// example:
 	//
@@ -352,13 +382,13 @@ type DescribeVulDesktopsResponseBodyVulDesktopsCves struct {
 	//
 	// 7.0
 	ImpactScore *string `json:"ImpactScore,omitempty" xml:"ImpactScore,omitempty"`
-	// The reference URL.
+	// The reference URL for the vulnerability details.
 	//
 	// example:
 	//
 	// https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62690
 	ReferenceUrl *string `json:"ReferenceUrl,omitempty" xml:"ReferenceUrl,omitempty"`
-	// The release time. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	// The release time. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

@@ -11,6 +11,8 @@ type iModifyTemplateBaseInfoRequest interface {
 	GoString() string
 	SetDescription(v string) *ModifyTemplateBaseInfoRequest
 	GetDescription() *string
+	SetInstanceName(v string) *ModifyTemplateBaseInfoRequest
+	GetInstanceName() *string
 	SetTemplateId(v string) *ModifyTemplateBaseInfoRequest
 	GetTemplateId() *string
 	SetTemplateName(v string) *ModifyTemplateBaseInfoRequest
@@ -24,6 +26,12 @@ type ModifyTemplateBaseInfoRequest struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// myHost
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The template ID.
 	//
 	// This parameter is required.
@@ -36,7 +44,7 @@ type ModifyTemplateBaseInfoRequest struct {
 	//
 	// example:
 	//
-	// Shanghai template1
+	// ShanghaiTemplate1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -52,6 +60,10 @@ func (s *ModifyTemplateBaseInfoRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ModifyTemplateBaseInfoRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
 func (s *ModifyTemplateBaseInfoRequest) GetTemplateId() *string {
 	return s.TemplateId
 }
@@ -62,6 +74,11 @@ func (s *ModifyTemplateBaseInfoRequest) GetTemplateName() *string {
 
 func (s *ModifyTemplateBaseInfoRequest) SetDescription(v string) *ModifyTemplateBaseInfoRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoRequest) SetInstanceName(v string) *ModifyTemplateBaseInfoRequest {
+	s.InstanceName = &v
 	return s
 }
 

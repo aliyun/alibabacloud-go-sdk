@@ -179,7 +179,7 @@ type CreateDriveResponseBodyDrive struct {
 	//
 	// example:
 	//
-	// -
+	// true
 	ProfileRoaming *bool `json:"ProfileRoaming,omitempty" xml:"ProfileRoaming,omitempty"`
 	// The status of the user-level storage resource.
 	//

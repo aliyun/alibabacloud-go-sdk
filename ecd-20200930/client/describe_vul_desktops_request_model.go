@@ -9,10 +9,14 @@ type iDescribeVulDesktopsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConnectionStatus(v string) *DescribeVulDesktopsRequest
+	GetConnectionStatus() *string
 	SetCveId(v string) *DescribeVulDesktopsRequest
 	GetCveId() *string
 	SetDesktopIdList(v []*string) *DescribeVulDesktopsRequest
 	GetDesktopIdList() []*string
+	SetDesktopStatus(v string) *DescribeVulDesktopsRequest
+	GetDesktopStatus() *string
 	SetIncludeFixResult(v bool) *DescribeVulDesktopsRequest
 	GetIncludeFixResult() *bool
 	SetLanguage(v string) *DescribeVulDesktopsRequest
@@ -42,21 +46,37 @@ type iDescribeVulDesktopsRequest interface {
 }
 
 type DescribeVulDesktopsRequest struct {
-	// The CVE ID.
+	// The connection status of the cloud desktop. Valid values: CONNECTED and DISCONNECTED.
+	//
+	// example:
+	//
+	// Connected
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// The CVE ID of the vulnerability.
 	//
 	// example:
 	//
 	// CVE-2026-43284
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	// The list of cloud computer IDs.
+	// The list of cloud desktop IDs.
 	DesktopIdList []*string `json:"DesktopIdList,omitempty" xml:"DesktopIdList,omitempty" type:"Repeated"`
+	// The running status of the cloud desktop.
+	//
+	// example:
+	//
+	// Running
+	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
 	// Specifies whether to include patch update results.
 	//
 	// example:
 	//
 	// false
 	IncludeFixResult *bool `json:"IncludeFixResult,omitempty" xml:"IncludeFixResult,omitempty"`
-	// The language type of the returned information.
+	// The language of the returned information. Valid values:
+	//
+	// - **ch**: Chinese.
+	//
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -78,7 +98,7 @@ type DescribeVulDesktopsRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Specifies whether to include only cloud computers on which fix tasks were executed in the current month.
+	// Specifies whether to include only cloud desktops that have had fix tasks executed in the current month.
 	//
 	// example:
 	//
@@ -114,7 +134,7 @@ type DescribeVulDesktopsRequest struct {
 	//
 	// rg-f3s3dgt8dtb0vlqc8
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The region ID used to filter cloud computer information for a specific region.
+	// The region ID used to filter cloud desktop information for a specific region.
 	//
 	// example:
 	//
@@ -122,15 +142,15 @@ type DescribeVulDesktopsRequest struct {
 	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
 	// The list of vulnerability status details.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The security level of the intrusion prevention event. Valid values:
+	// The severity level of the intrusion prevention event. Valid values:
 	//
-	// - **low**: Low risk.
+	// - **low**: Low.
 	//
-	// - **medium**: Medium risk.
+	// - **medium**: Medium.
 	//
-	// - **critical**: High risk.
+	// - **critical**: Critical.
 	//
-	// > If you do not set this parameter, vulnerabilities of all security levels are queried.
+	// > If you do not set this parameter, vulnerabilities of all severity levels are queried.
 	//
 	// example:
 	//
@@ -146,12 +166,20 @@ func (s DescribeVulDesktopsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVulDesktopsRequest) GetConnectionStatus() *string {
+	return s.ConnectionStatus
+}
+
 func (s *DescribeVulDesktopsRequest) GetCveId() *string {
 	return s.CveId
 }
 
 func (s *DescribeVulDesktopsRequest) GetDesktopIdList() []*string {
 	return s.DesktopIdList
+}
+
+func (s *DescribeVulDesktopsRequest) GetDesktopStatus() *string {
+	return s.DesktopStatus
 }
 
 func (s *DescribeVulDesktopsRequest) GetIncludeFixResult() *bool {
@@ -206,6 +234,11 @@ func (s *DescribeVulDesktopsRequest) GetVulLevel() *string {
 	return s.VulLevel
 }
 
+func (s *DescribeVulDesktopsRequest) SetConnectionStatus(v string) *DescribeVulDesktopsRequest {
+	s.ConnectionStatus = &v
+	return s
+}
+
 func (s *DescribeVulDesktopsRequest) SetCveId(v string) *DescribeVulDesktopsRequest {
 	s.CveId = &v
 	return s
@@ -213,6 +246,11 @@ func (s *DescribeVulDesktopsRequest) SetCveId(v string) *DescribeVulDesktopsRequ
 
 func (s *DescribeVulDesktopsRequest) SetDesktopIdList(v []*string) *DescribeVulDesktopsRequest {
 	s.DesktopIdList = v
+	return s
+}
+
+func (s *DescribeVulDesktopsRequest) SetDesktopStatus(v string) *DescribeVulDesktopsRequest {
+	s.DesktopStatus = &v
 	return s
 }
 

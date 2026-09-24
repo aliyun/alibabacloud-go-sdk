@@ -26,7 +26,7 @@ type iGetConnectionTicketResponseBody interface {
 }
 
 type GetConnectionTicketResponseBody struct {
-	// The cloud computer ID.
+	// The ID of the cloud computer.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ticket used to connect to the user instance. Before you use the ticket, Base64-decode its content and save it as an xxx.ica file, and then open the file. The following Python code provides an example:
+	// The ticket used to connect to the user instance. Before you use the ticket, Base64-decode its content, save the decoded content as an xxx.ica file, and then open the file. Python code example:
 	//
 	// ```
 	//
@@ -84,7 +84,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// FINISHED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The connection credential for the cloud computer.
+	// The connection credential of the cloud computer.
 	//
 	// example:
 	//

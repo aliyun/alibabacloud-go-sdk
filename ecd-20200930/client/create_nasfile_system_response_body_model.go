@@ -17,6 +17,8 @@ type iCreateNASFileSystemResponseBody interface {
 	GetMountTargetDomain() *string
 	SetOfficeSiteId(v string) *CreateNASFileSystemResponseBody
 	GetOfficeSiteId() *string
+	SetProtocolType(v string) *CreateNASFileSystemResponseBody
+	GetProtocolType() *string
 	SetRequestId(v string) *CreateNASFileSystemResponseBody
 	GetRequestId() *string
 }
@@ -46,6 +48,12 @@ type CreateNASFileSystemResponseBody struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The protocol type.
+	//
+	// example:
+	//
+	// SMB
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -78,6 +86,10 @@ func (s *CreateNASFileSystemResponseBody) GetOfficeSiteId() *string {
 	return s.OfficeSiteId
 }
 
+func (s *CreateNASFileSystemResponseBody) GetProtocolType() *string {
+	return s.ProtocolType
+}
+
 func (s *CreateNASFileSystemResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -99,6 +111,11 @@ func (s *CreateNASFileSystemResponseBody) SetMountTargetDomain(v string) *Create
 
 func (s *CreateNASFileSystemResponseBody) SetOfficeSiteId(v string) *CreateNASFileSystemResponseBody {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *CreateNASFileSystemResponseBody) SetProtocolType(v string) *CreateNASFileSystemResponseBody {
+	s.ProtocolType = &v
 	return s
 }
 

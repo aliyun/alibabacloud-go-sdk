@@ -30,7 +30,7 @@ type DeleteTemplatesResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The operation result. The value `success` indicates success. Otherwise, an error message is returned.
+	// The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteTemplatesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message. This parameter is not returned when Code is `success`.
+	// The error message. This parameter is not returned if Code is `success`.
 	//
 	// example:
 	//
@@ -54,11 +54,7 @@ type DeleteTemplatesResponseBody struct {
 	//
 	// F7E4322D-D679-5ACB-A909-490D2F0E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// - true: The call was successful.
-	//
-	// - false: The call failed.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

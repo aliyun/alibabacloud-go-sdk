@@ -24,13 +24,13 @@ type iDescribeCloudDiskGroupDrivesResponseBody interface {
 type DescribeCloudDiskGroupDrivesResponseBody struct {
 	// The list of cloud disk team spaces.
 	CloudDriveGroups []*DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups `json:"CloudDriveGroups,omitempty" xml:"CloudDriveGroups,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The token for the next query. If NextToken is empty, no more results are available.
+	// The pagination token for the next query. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeCloudDiskGroupDrivesResponseBody struct {
 	//
 	// B9F9CBBE-8A9F-5FE5-8A72-0E81C2401A91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -117,6 +117,12 @@ func (s *DescribeCloudDiskGroupDrivesResponseBody) Validate() error {
 }
 
 type DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups struct {
+	// The authorization dimension.
+	//
+	// example:
+	//
+	// ROSTER
+	AuthDimension *string `json:"AuthDimension,omitempty" xml:"AuthDimension,omitempty"`
 	// The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
@@ -181,6 +187,10 @@ func (s DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups) GoString() str
 	return s.String()
 }
 
+func (s *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups) GetAuthDimension() *string {
+	return s.AuthDimension
+}
+
 func (s *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -215,6 +225,11 @@ func (s *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups) GetTotalSize(
 
 func (s *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups) GetUsedSize() *string {
 	return s.UsedSize
+}
+
+func (s *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups) SetAuthDimension(v string) *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups {
+	s.AuthDimension = &v
+	return s
 }
 
 func (s *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups) SetCreateTime(v string) *DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups {

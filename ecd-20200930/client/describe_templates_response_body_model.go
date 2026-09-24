@@ -30,7 +30,7 @@ type iDescribeTemplatesResponseBody interface {
 }
 
 type DescribeTemplatesResponseBody struct {
-	// The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
+	// The modification result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeTemplatesResponseBody struct {
 	//
 	// 1871984F-51F6-5588-BAF6-*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ func (s *DescribeTemplatesResponseBody) Validate() error {
 type DescribeTemplatesResponseBodyData struct {
 	// Indicates whether automatic payment is enabled for subscription orders.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Indicates whether auto-renewal is enabled for the subscription shared cloud computer.
+	// Indicates whether auto-renewal is enabled for subscription shared cloud computers.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The billing type of the cloud computer.
 	//
@@ -209,13 +209,13 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// MyTemplate
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time of the template (UTC).
+	// The time when the template was created (UTC).
 	//
 	// example:
 	//
 	// 2025-04-25T05:18:46.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time of the template (UTC).
+	// The time when the template was last updated (UTC).
 	//
 	// example:
 	//
@@ -233,25 +233,53 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// User
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The subscription duration of the subscription shared cloud computer. This parameter takes effect only when ChargeType is set to PrePaid, and is required in that case. The unit is specified by PeriodUnit.
+	// The instance name.
+	//
+	// example:
+	//
+	// myHost
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The subscription duration of the subscription shared cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
+	//
+	// - If `PeriodUnit` is set to `Month`, valid values:
+	//
+	//     - 1
+	//
+	//     - 2
+	//
+	//     - 3
+	//
+	//     - 6
+	//
+	// - If `PeriodUnit` is set to `Year`, valid values:
+	//
+	//     - 1
+	//
+	//     - 2
+	//
+	//     - 3
+	//
+	//     - 4
+	//
+	//     - 5
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription billing duration. Billable methods use this parameter to specify the time unit.
+	// The unit of the duration for the subscription billable methods.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The policy group ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-0caoeogkhz*****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// Indicates whether the cloud computer automatically switches to pay-as-you-go billing after the duration plan is exhausted.
+	// Indicates whether the cloud computer automatically switches to pay-as-you-go billing after the duration package is exhausted.
 	PostPaidAfterUsedUp *bool `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
 	// The product type.
 	//
@@ -313,7 +341,7 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// bcc-dweha*****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	// The per-user usage duration plan.
+	// The per-user duration package.
 	//
 	// example:
 	//
@@ -367,6 +395,10 @@ func (s *DescribeTemplatesResponseBodyData) GetImageId() *string {
 
 func (s *DescribeTemplatesResponseBodyData) GetImageType() *string {
 	return s.ImageType
+}
+
+func (s *DescribeTemplatesResponseBodyData) GetInstanceName() *string {
+	return s.InstanceName
 }
 
 func (s *DescribeTemplatesResponseBodyData) GetPeriod() *int32 {
@@ -484,6 +516,11 @@ func (s *DescribeTemplatesResponseBodyData) SetImageId(v string) *DescribeTempla
 
 func (s *DescribeTemplatesResponseBodyData) SetImageType(v string) *DescribeTemplatesResponseBodyData {
 	s.ImageType = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetInstanceName(v string) *DescribeTemplatesResponseBodyData {
+	s.InstanceName = &v
 	return s
 }
 
@@ -619,7 +656,7 @@ type DescribeTemplatesResponseBodyDataDataDiskList struct {
 	//
 	// AutoPL
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The data cloud disk size. Unit: GiB.
+	// The size of the data cloud disk. Unit: GiB.
 	//
 	// example:
 	//
@@ -664,7 +701,7 @@ type DescribeTemplatesResponseBodyDataRegionConfigList struct {
 	//
 	// 4
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The GPU memory information. This field is displayed only when the specification is a graphics-accelerated type.
+	// The GPU memory information. This field is displayed only when the specification is a graphics type.
 	//
 	// example:
 	//
@@ -706,6 +743,12 @@ type DescribeTemplatesResponseBodyDataRegionConfigList struct {
 	//
 	// vsw-dgea1*****
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The virtual node pool ID.
+	//
+	// example:
+	//
+	// vnp-0bw*******
+	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// Indicates whether disk encryption is enabled.
 	//
 	// example:
@@ -760,6 +803,10 @@ func (s *DescribeTemplatesResponseBodyDataRegionConfigList) GetSubnetId() *strin
 	return s.SubnetId
 }
 
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) GetVirtualNodePoolId() *string {
+	return s.VirtualNodePoolId
+}
+
 func (s *DescribeTemplatesResponseBodyDataRegionConfigList) GetVolumeEncryptionEnable() *bool {
 	return s.VolumeEncryptionEnable
 }
@@ -805,6 +852,11 @@ func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetSnapshotPolicyId(
 
 func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetSubnetId(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
 	s.SubnetId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetVirtualNodePoolId(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.VirtualNodePoolId = &v
 	return s
 }
 

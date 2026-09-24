@@ -4668,17 +4668,17 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 
 // Summary:
 //
-// Creates one or more cloud computers. If user information is provided during creation, the cloud computers are assigned directly.
+// Creates one or more cloud desktops. If user information is specified during creation, the cloud desktops are directly assigned to the users.
 //
 // Description:
 //
-// Before creating cloud computers, complete the following preparations:
+// Before creating cloud desktops, complete the following preparations:
 //
-// - Create an office network (formerly workspace) and users. For related API operations or documentation, refer to:
+// - Create an office network (formerly workspace) and users. For more information about the related API operations or documentation, see:
 //
-//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html), [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html), [Create AD users](https://help.aliyun.com/document_detail/188619.html).
+//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create AD users](https://help.aliyun.com/document_detail/188619.html).
 //
 // - Call [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) to create a policy, or confirm that an existing policy is available.
 //
@@ -4686,7 +4686,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // <details>
 //
-// <summary>Example of creating with a template</summary>
+// <summary>Example of creating a cloud desktop by using a template</summary>
 //
 // ```
 //
@@ -4714,7 +4714,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // <details>
 //
-// <summary>Example of creating without a template</summary>
+// <summary>Example of creating a cloud desktop without a template</summary>
 //
 // ```
 //
@@ -4754,7 +4754,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // <details>
 //
-// <summary>Example of creating a monthly hourly package</summary>
+// <summary>Example of creating a cloud desktop with a monthly hourly package</summary>
 //
 // ```
 //
@@ -4804,7 +4804,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // <details>
 //
-// <summary>Example of creating an Agent resource</summary>
+// <summary>Example of creating an agent resource</summary>
 //
 // ```
 //
@@ -4844,7 +4844,7 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // </details>
 //
-// To have cloud computers automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
+// To have the cloud desktop automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
 //
 // @param tmpReq - CreateDesktopsRequest
 //
@@ -4993,6 +4993,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
+	if !dara.IsNil(request.ReservePoolId) {
+		query["ReservePoolId"] = request.ReservePoolId
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -5070,17 +5074,17 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 
 // Summary:
 //
-// Creates one or more cloud computers. If user information is provided during creation, the cloud computers are assigned directly.
+// Creates one or more cloud desktops. If user information is specified during creation, the cloud desktops are directly assigned to the users.
 //
 // Description:
 //
-// Before creating cloud computers, complete the following preparations:
+// Before creating cloud desktops, complete the following preparations:
 //
-// - Create an office network (formerly workspace) and users. For related API operations or documentation, refer to:
+// - Create an office network (formerly workspace) and users. For more information about the related API operations or documentation, see:
 //
-//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html), [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html), [Create AD users](https://help.aliyun.com/document_detail/188619.html).
+//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create AD users](https://help.aliyun.com/document_detail/188619.html).
 //
 // - Call [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) to create a policy, or confirm that an existing policy is available.
 //
@@ -5088,7 +5092,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // <details>
 //
-// <summary>Example of creating with a template</summary>
+// <summary>Example of creating a cloud desktop by using a template</summary>
 //
 // ```
 //
@@ -5116,7 +5120,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // <details>
 //
-// <summary>Example of creating without a template</summary>
+// <summary>Example of creating a cloud desktop without a template</summary>
 //
 // ```
 //
@@ -5156,7 +5160,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // <details>
 //
-// <summary>Example of creating a monthly hourly package</summary>
+// <summary>Example of creating a cloud desktop with a monthly hourly package</summary>
 //
 // ```
 //
@@ -5206,7 +5210,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // <details>
 //
-// <summary>Example of creating an Agent resource</summary>
+// <summary>Example of creating an agent resource</summary>
 //
 // ```
 //
@@ -5246,7 +5250,7 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // </details>
 //
-// To have cloud computers automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
+// To have the cloud desktop automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
 //
 // @param request - CreateDesktopsRequest
 //
@@ -5719,12 +5723,20 @@ func (client *Client) CreateNASFileSystemWithOptions(request *CreateNASFileSyste
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Capacity) {
+		query["Capacity"] = request.Capacity
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.EncryptType) {
 		query["EncryptType"] = request.EncryptType
+	}
+
+	if !dara.IsNil(request.FileSystemType) {
+		query["FileSystemType"] = request.FileSystemType
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -7112,11 +7124,11 @@ func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *Creat
 //
 // Description:
 //
-// When you call this operation, note the following items:
+// When you call this operation, take note of the following items:
 //
 // - Most parameters in the instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence or validity of parameter values. Parameter values are validated only when you create an instance by using the template.
 //
-// - For parameters that have region attributes in the template, if the region does not match when you create a cloud computer by using the template, these parameters do not take effect.
+// - For region-specific parameters in the template, if the region does not match when you create a cloud computer by using the template, these parameters do not take effect.
 //
 // @param request - CreateTemplateRequest
 //
@@ -7162,6 +7174,10 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 	if !dara.IsNil(request.ImageId) {
 		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
 	}
 
 	if !dara.IsNil(request.Period) {
@@ -7251,11 +7267,11 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 //
 // Description:
 //
-// When you call this operation, note the following items:
+// When you call this operation, take note of the following items:
 //
 // - Most parameters in the instance launch template are optional. When you create a template, Alibaba Cloud does not strictly verify the existence or validity of parameter values. Parameter values are validated only when you create an instance by using the template.
 //
-// - For parameters that have region attributes in the template, if the region does not match when you create a cloud computer by using the template, these parameters do not take effect.
+// - For region-specific parameters in the template, if the region does not match when you create a cloud computer by using the template, these parameters do not take effect.
 //
 // @param request - CreateTemplateRequest
 //
@@ -9321,7 +9337,7 @@ func (client *Client) DeleteSubnet(request *DeleteSubnetRequest) (_result *Delet
 //
 // Description:
 //
-// After the template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
+// After a template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
 //
 // @param request - DeleteTemplatesRequest
 //
@@ -9373,7 +9389,7 @@ func (client *Client) DeleteTemplatesWithOptions(request *DeleteTemplatesRequest
 //
 // Description:
 //
-// After the template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
+// After a template is deleted, cloud computers that were created based on the template are not affected, and resources associated with the template are not affected.
 //
 // @param request - DeleteTemplatesRequest
 //
@@ -10221,7 +10237,7 @@ func (client *Client) DescribeClientEvents(request *DescribeClientEventsRequest)
 //
 // Description:
 //
-// The cloud disk team list is synchronized from the Wuying client > User Management > Organization Structure. To use team spaces, shift users to a specified organization in the User Management interface. Users can then see the team space menu bar in the cloud disk client.
+// The cloud disk team list is obtained through synchronization from the Wuying client > User Management > organization structure. To use team spaces, shift users to a specified organization in the User Management interface. Users can then see the team space menu bar in the cloud disk client.
 //
 // @param request - DescribeCloudDiskGroupDrivesRequest
 //
@@ -10285,7 +10301,7 @@ func (client *Client) DescribeCloudDiskGroupDrivesWithOptions(request *DescribeC
 //
 // Description:
 //
-// The cloud disk team list is synchronized from the Wuying client > User Management > Organization Structure. To use team spaces, shift users to a specified organization in the User Management interface. Users can then see the team space menu bar in the cloud disk client.
+// The cloud disk team list is obtained through synchronization from the Wuying client > User Management > organization structure. To use team spaces, shift users to a specified organization in the User Management interface. Users can then see the team space menu bar in the cloud disk client.
 //
 // @param request - DescribeCloudDiskGroupDrivesRequest
 //
@@ -11916,6 +11932,10 @@ func (client *Client) DescribeDesktopsWithOptions(request *DescribeDesktopsReque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ReservePoolId) {
+		query["ReservePoolId"] = request.ReservePoolId
+	}
+
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -12757,11 +12777,11 @@ func (client *Client) DescribeFotaTasks(request *DescribeFotaTasksRequest) (_res
 
 // Summary:
 //
-// Queries the basic information of all recent cloud desktops and their corresponding usage duration records.
+// Queries the basic information about all recent cloud desktops and the corresponding usage duration records.
 //
 // Description:
 //
-// - China site users should select Shanghai as the site. International site users should select Singapore.
+// - China site users must select Shanghai as the site. International site users must select Singapore.
 //
 // - By default, both deleted and non-deleted cloud desktops are queried.
 //
@@ -12883,11 +12903,11 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 
 // Summary:
 //
-// Queries the basic information of all recent cloud desktops and their corresponding usage duration records.
+// Queries the basic information about all recent cloud desktops and the corresponding usage duration records.
 //
 // Description:
 //
-// - China site users should select Shanghai as the site. International site users should select Singapore.
+// - China site users must select Shanghai as the site. International site users must select Singapore.
 //
 // - By default, both deleted and non-deleted cloud desktops are queried.
 //
@@ -13459,7 +13479,7 @@ func (client *Client) DescribeImages(request *DescribeImagesRequest) (_result *D
 //
 // Description:
 //
-// - After you run a command, it does not necessarily succeed or produce the expected results. Check the actual execution results based on the response values returned by this operation.
+// - After you run a command, the command is not guaranteed to succeed or produce the expected results. Check the actual execution results based on the response of this operation.
 //
 // - You can query execution information from the last two weeks. A maximum of 100,000 execution records are retained.
 //
@@ -13553,7 +13573,7 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 //
 // Description:
 //
-// - After you run a command, it does not necessarily succeed or produce the expected results. Check the actual execution results based on the response values returned by this operation.
+// - After you run a command, the command is not guaranteed to succeed or produce the expected results. Check the actual execution results based on the response of this operation.
 //
 // - You can query execution information from the last two weeks. A maximum of 100,000 execution records are retained.
 //
@@ -15342,6 +15362,10 @@ func (client *Client) DescribeRecordFileWithOptions(request *DescribeRecordFileR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditStatus) {
+		query["AuditStatus"] = request.AuditStatus
+	}
+
 	if !dara.IsNil(request.DesktopId) {
 		query["DesktopId"] = request.DesktopId
 	}
@@ -15679,7 +15703,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries the renewal price of a Wuying product.
+// Queries the renewal price of an Elastic Desktop Service product.
 //
 // @param request - DescribeRenewalPriceRequest
 //
@@ -15751,7 +15775,7 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 // Summary:
 //
-// Queries the renewal price of a Wuying product.
+// Queries the renewal price of an Elastic Desktop Service product.
 //
 // @param request - DescribeRenewalPriceRequest
 //
@@ -17117,13 +17141,13 @@ func (client *Client) DescribeVirtualMFADevices(request *DescribeVirtualMFADevic
 
 // Summary:
 //
-// Retrieves cloud computer information for a vulnerability.
+// Retrieves cloud desktop information for a vulnerability.
 //
 // Description:
 //
-// - This operation uses a centralized domain name. The access point is in the China (Shanghai) region. Other regions are not supported.
+// - This operation uses a centralized endpoint in the Shanghai region. Calls from other regions are not supported.
 //
-// - The cloud computer status information returned by this operation has a 1 to 3 second delay from the actual values.
+// - The cloud desktop status information returned by this operation has a 1 to 3 second delay from the actual values.
 //
 // @param request - DescribeVulDesktopsRequest
 //
@@ -17138,12 +17162,20 @@ func (client *Client) DescribeVulDesktopsWithOptions(request *DescribeVulDesktop
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionStatus) {
+		query["ConnectionStatus"] = request.ConnectionStatus
+	}
+
 	if !dara.IsNil(request.CveId) {
 		query["CveId"] = request.CveId
 	}
 
 	if !dara.IsNil(request.DesktopIdList) {
 		query["DesktopIdList"] = request.DesktopIdList
+	}
+
+	if !dara.IsNil(request.DesktopStatus) {
+		query["DesktopStatus"] = request.DesktopStatus
 	}
 
 	if !dara.IsNil(request.IncludeFixResult) {
@@ -17223,13 +17255,13 @@ func (client *Client) DescribeVulDesktopsWithOptions(request *DescribeVulDesktop
 
 // Summary:
 //
-// Retrieves cloud computer information for a vulnerability.
+// Retrieves cloud desktop information for a vulnerability.
 //
 // Description:
 //
-// - This operation uses a centralized domain name. The access point is in the China (Shanghai) region. Other regions are not supported.
+// - This operation uses a centralized endpoint in the Shanghai region. Calls from other regions are not supported.
 //
-// - The cloud computer status information returned by this operation has a 1 to 3 second delay from the actual values.
+// - The cloud desktop status information returned by this operation has a 1 to 3 second delay from the actual values.
 //
 // @param request - DescribeVulDesktopsRequest
 //
@@ -18311,6 +18343,76 @@ func (client *Client) ExportDesktopListInfo(request *ExportDesktopListInfoReques
 
 // Summary:
 //
+// Queries desktop data statistics by different dimensions.
+//
+// @param request - GetAggregatedDesktopsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAggregatedDesktopsResponse
+func (client *Client) GetAggregatedDesktopsWithOptions(request *GetAggregatedDesktopsRequest, runtime *dara.RuntimeOptions) (_result *GetAggregatedDesktopsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AggregationFactor) {
+		query["AggregationFactor"] = request.AggregationFactor
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAggregatedDesktops"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAggregatedDesktopsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries desktop data statistics by different dimensions.
+//
+// @param request - GetAggregatedDesktopsRequest
+//
+// @return GetAggregatedDesktopsResponse
+func (client *Client) GetAggregatedDesktops(request *GetAggregatedDesktopsRequest) (_result *GetAggregatedDesktopsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAggregatedDesktopsResponse{}
+	_body, _err := client.GetAggregatedDesktopsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a folder copy asynchronous node based on the AsyncTaskId parameter returned by the CopyCdsFile operation.
 //
 // @param request - GetAsyncTaskRequest
@@ -18381,7 +18483,7 @@ func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAs
 //
 // Description:
 //
-// The cloud computer must be in the Running state. The ticket obtained by calling this operation expires in 10 minutes.
+// The cloud computer must be in the Running state. The ticket obtained by calling this operation expires after 10 minutes.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -18396,6 +18498,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientType) {
+		query["ClientType"] = request.ClientType
+	}
+
 	if !dara.IsNil(request.CommandContent) {
 		query["CommandContent"] = request.CommandContent
 	}
@@ -18465,7 +18571,7 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 //
 // Description:
 //
-// The cloud computer must be in the Running state. The ticket obtained by calling this operation expires in 10 minutes.
+// The cloud computer must be in the Running state. The ticket obtained by calling this operation expires after 10 minutes.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -24433,7 +24539,7 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 //
 // Description:
 //
-//	Warning: To ensure compatibility with the logic for unset parameters and default upgrades in the template, this operation uses a full-parameter update logic. In other words, any parameter that is not specified is treated as being set to empty.
+//	Warning: To ensure compatibility with unset parameters and default upgrade logic in the template, this operation uses full parameter update logic. In other words, any parameter that is not specified is treated as being set to empty.
 //
 // @param request - ModifyTemplateRequest
 //
@@ -24475,6 +24581,10 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 
 	if !dara.IsNil(request.ImageId) {
 		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
 	}
 
 	if !dara.IsNil(request.Period) {
@@ -24564,7 +24674,7 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 //
 // Description:
 //
-//	Warning: To ensure compatibility with the logic for unset parameters and default upgrades in the template, this operation uses a full-parameter update logic. In other words, any parameter that is not specified is treated as being set to empty.
+//	Warning: To ensure compatibility with unset parameters and default upgrade logic in the template, this operation uses full parameter update logic. In other words, any parameter that is not specified is treated as being set to empty.
 //
 // @param request - ModifyTemplateRequest
 //
@@ -24582,11 +24692,11 @@ func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *M
 
 // Summary:
 //
-// Modifies the basic information of a custom cloud computer template, including the template name and description.
+// Modifies the basic information of a custom cloud computer template, including the template name and template description.
 //
 // Description:
 //
-// This operation only modifies the name and description of a custom cloud computer template. To modify the parameters of a custom cloud computer template, use [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html).
+// This operation is used only to modify the name and description of a custom cloud computer template. To modify the parameters of a custom cloud computer template, use [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html).
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
@@ -24603,6 +24713,10 @@ func (client *Client) ModifyTemplateBaseInfoWithOptions(request *ModifyTemplateB
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
 	}
 
 	if !dara.IsNil(request.TemplateId) {
@@ -24638,11 +24752,11 @@ func (client *Client) ModifyTemplateBaseInfoWithOptions(request *ModifyTemplateB
 
 // Summary:
 //
-// Modifies the basic information of a custom cloud computer template, including the template name and description.
+// Modifies the basic information of a custom cloud computer template, including the template name and template description.
 //
 // Description:
 //
-// This operation only modifies the name and description of a custom cloud computer template. To modify the parameters of a custom cloud computer template, use [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html).
+// This operation is used only to modify the name and description of a custom cloud computer template. To modify the parameters of a custom cloud computer template, use [ModifyTemplate](https://help.aliyun.com/document_detail/2925841.html).
 //
 // @param request - ModifyTemplateBaseInfoRequest
 //
@@ -25229,6 +25343,104 @@ func (client *Client) QueryActiveUserStatistic(request *QueryActiveUserStatistic
 	runtime := &dara.RuntimeOptions{}
 	_result = &QueryActiveUserStatisticResponse{}
 	_body, _err := client.QueryActiveUserStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the connection duration statistics of authorized users based on specified conditions. Statistics can be collected by daily cumulative duration or by individual session details.
+//
+// @param request - QueryAuthUserConnectDurationListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAuthUserConnectDurationListResponse
+func (client *Client) QueryAuthUserConnectDurationListWithOptions(request *QueryAuthUserConnectDurationListRequest, runtime *dara.RuntimeOptions) (_result *QueryAuthUserConnectDurationListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComparisonOperator) {
+		query["ComparisonOperator"] = request.ComparisonOperator
+	}
+
+	if !dara.IsNil(request.DataDate) {
+		query["DataDate"] = request.DataDate
+	}
+
+	if !dara.IsNil(request.IsAdUser) {
+		query["IsAdUser"] = request.IsAdUser
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StatisticType) {
+		query["StatisticType"] = request.StatisticType
+	}
+
+	if !dara.IsNil(request.Threshold) {
+		query["Threshold"] = request.Threshold
+	}
+
+	if !dara.IsNil(request.UserName) {
+		query["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.WithDetail) {
+		query["WithDetail"] = request.WithDetail
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAuthUserConnectDurationList"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAuthUserConnectDurationListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the connection duration statistics of authorized users based on specified conditions. Statistics can be collected by daily cumulative duration or by individual session details.
+//
+// @param request - QueryAuthUserConnectDurationListRequest
+//
+// @return QueryAuthUserConnectDurationListResponse
+func (client *Client) QueryAuthUserConnectDurationList(request *QueryAuthUserConnectDurationListRequest) (_result *QueryAuthUserConnectDurationListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryAuthUserConnectDurationListResponse{}
+	_body, _err := client.QueryAuthUserConnectDurationListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

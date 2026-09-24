@@ -38,15 +38,15 @@ type DescribeCloudDiskGroupDrivesRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The number of entries per page for a paged query.
 	//
-	// - Maximum value: 100
+	// - Maximum value: 100.
 	//
-	// - Default value: 20
+	// - Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. If NextToken is empty, no more results are available.
+	// The pagination token for the next query. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//

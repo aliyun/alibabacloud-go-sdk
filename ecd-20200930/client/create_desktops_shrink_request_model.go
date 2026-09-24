@@ -69,6 +69,8 @@ type iCreateDesktopsShrinkRequest interface {
 	GetRegionId() *string
 	SetResellerOwnerUid(v int64) *CreateDesktopsShrinkRequest
 	GetResellerOwnerUid() *int64
+	SetReservePoolId(v string) *CreateDesktopsShrinkRequest
+	GetReservePoolId() *string
 	SetResourceGroupId(v string) *CreateDesktopsShrinkRequest
 	GetResourceGroupId() *string
 	SetSavingPlanId(v string) *CreateDesktopsShrinkRequest
@@ -98,7 +100,7 @@ type iCreateDesktopsShrinkRequest interface {
 }
 
 type CreateDesktopsShrinkRequest struct {
-	// The number of cloud computers to create. Valid values: 1 to 300. Default value: 1.
+	// The number of cloud desktops to create. Valid values: 1 to 300. Default value: 1.
 	//
 	// example:
 	//
@@ -122,13 +124,13 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The cloud computer template ID. If no template ID is specified, you can create a cloud computer by providing the required fields.
+	// The cloud desktop template ID. If no template ID is specified, you can create a cloud desktop by specifying the required fields.
 	//
 	// example:
 	//
 	// b-je9hani001wfn****
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The list of cloud computer templates.
+	// The list of cloud desktop templates.
 	//
 	// if can be null:
 	// true
@@ -139,41 +141,41 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// PBKB1QbqEl2tslEuU6gRrLxvCFBU2M%2FVD0Eru6Oo%2FI9LTU3XQhvq3PGMWarE%2BPJdkNvCqT3blqlRSthNy4A%2BJQ%3D%3D
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
-	// The billing method of the cloud computer.
+	// The billing method of the cloud desktop.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The parameters for creating a cloud computer without a template. This parameter is invalid when the BundleId parameter is specified.
+	// The parameters for creating a cloud desktop without a template. This parameter is invalid when the BundleID parameter is specified.
 	DesktopAttachmentShrink *string `json:"DesktopAttachment,omitempty" xml:"DesktopAttachment,omitempty"`
-	// The private IP address of the cloud computer.
+	// The private IP address of the cloud desktop.
 	//
 	// example:
 	//
 	// 10.0.0.1
 	DesktopMemberIp *string `json:"DesktopMemberIp,omitempty" xml:"DesktopMemberIp,omitempty"`
-	// The cloud computer name. The naming rules are as follows:
+	// The cloud desktop name. The naming rules are as follows:
 	//
 	// - The name can be up to 64 characters in length.
 	//
 	// - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
 	//
-	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
+	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// DemoComputer01
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// Controls the format of the cloud computer name.
+	// Controls the format of the desktop name.
 	DesktopNameModelShrink *string `json:"DesktopNameModel,omitempty" xml:"DesktopNameModel,omitempty"`
-	// Specifies whether to automatically append a suffix to the cloud computer name when creating multiple cloud computers in a batch.
+	// Specifies whether to automatically append a suffix to the cloud desktop name when you create multiple cloud desktops in a batch.
 	//
 	// example:
 	//
 	// false
 	DesktopNameSuffix *bool `json:"DesktopNameSuffix,omitempty" xml:"DesktopNameSuffix,omitempty"`
-	// The details of the cloud computer scheduled tasks. This parameter is being deprecated. Use the TimerGroupId parameter instead.
+	// The details of the scheduled task for the cloud desktop. This parameter is being deprecated. Use the TimerGroupId parameter instead.
 	//
 	// if can be null:
 	// true
@@ -184,7 +186,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// cn-hangzhou+dir-300943****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The list of authorized user IDs to add to the cloud computer. You can specify 1 to 100 user IDs.
+	// The list of authorized user IDs to add to the cloud desktops. You can specify 1 to 100 user IDs.
 	//
 	// example:
 	//
@@ -196,21 +198,21 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// {}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// The cloud computer pool ID.
+	// The cloud desktop pool ID.
 	//
 	// example:
 	//
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The custom hostname of the cloud computer. Only cloud computers with a Windows operating system in an AD office network are supported.
+	// The custom hostname of the cloud desktop. Settings are supported only for Windows cloud desktops with the Windows operating system type in AD office networks.
 	//
 	// The naming rules for the hostname are as follows:
 	//
 	// - The hostname must be 2 to 15 characters in length.
 	//
-	// - The hostname can contain letters, digits, or hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
+	// - The hostname can contain uppercase letters, lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
 	//
-	// When creating multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` format to name them uniformly. For example, if Hostname is set to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+	// When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to name the cloud desktops in a unified manner. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
 	//
 	// - `name_prefix`: the prefix of the hostname.
 	//
@@ -222,7 +224,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// testhost
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The purchase parameters for the monthly hours package.
+	// The parameters for purchasing a monthly hours package.
 	MonthDesktopSetting *CreateDesktopsShrinkRequestMonthDesktopSetting `json:"MonthDesktopSetting,omitempty" xml:"MonthDesktopSetting,omitempty" type:"Struct"`
 	// The office network ID.
 	//
@@ -230,7 +232,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// cn-hangzhou+dir-387822****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The organizational unit (OU) path. After this parameter is specified, the cloud computer joins the corresponding OU in Active Directory (AD).
+	// The organizational unit (OU) path. If specified, the cloud desktop is added to the corresponding OU in Active Directory (AD).
 	//
 	// example:
 	//
@@ -264,7 +266,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the subscription billing method duration.
 	//
 	// example:
 	//
@@ -284,13 +286,13 @@ type CreateDesktopsShrinkRequest struct {
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The additional parameters for a specific purchase type.
 	PurchaseOptionsShrink *string `json:"PurchaseOptions,omitempty" xml:"PurchaseOptions,omitempty"`
-	// The ID of the public network bandwidth throttling rule.
+	// The ID of the Internet bandwidth throttling rule.
 	//
 	// example:
 	//
 	// qos-52fqmg6kvyro7zu4l
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service (EDS).
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -298,13 +300,19 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource owner in reseller mode. You do not need to specify this parameter if you are not in reseller mode.
+	// The user ID for resource ownership in reseller pattern. You do not need to specify this parameter in non-reseller pattern.
 	//
 	// example:
 	//
 	// 1828644634819902
 	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// The ID of the EDS resource group.
+	// The resource reserve pool ID (rp-xxx). This parameter is optional. If specified, the cloud desktop is created from the reserve pool, and compute resources are provided by the reserve pool without generating a compute fee order. If ZoneId is explicitly specified, it must match the zone of the reserve pool.
+	//
+	// example:
+	//
+	// rp-xxx
+	ReservePoolId *string `json:"ReservePoolId,omitempty" xml:"ReservePoolId,omitempty"`
+	// The ID of the WUYING resource group.
 	//
 	// example:
 	//
@@ -316,19 +324,19 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// spn-26c1b7bcrjcI****
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
-	// The ID of the Elastic Desktop Service (EDS) automatic snapshot policy.
+	// The ID of the WUYING automatic snapshot policy.
 	//
 	// example:
 	//
 	// sp-28mp6my0l6zow****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
-	// The purchase method of the cloud computer. Valid values:
+	// The purchase method of the cloud desktop. Valid values:
 	//
-	// - prePaid: monthly subscription with unlimited duration.
+	// - prePaid: Monthly subscription with unlimited duration.
 	//
-	// - postPaid: pay-as-you-go.
+	// - postPaid: Pay-as-you-go.
 	//
-	// - monthPackage: monthly hours package.
+	// - monthPackage: Monthly hours package.
 	//
 	// - jvsAgentPackage: JVS Agent hours package.
 	//
@@ -350,9 +358,9 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// ccg-0caoeogrk9m5****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	// The cloud computer assignment mode.
+	// The cloud desktop assignment mode.
 	//
-	// > If `EndUserId` is not specified, the created cloud computers are not assigned to any user.
+	// > If `EndUserId` is not specified, the created cloud desktops are not assigned to any user.
 	//
 	// example:
 	//
@@ -366,13 +374,13 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// Specifies whether to enable cloud disk encryption.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for cloud disk encryption. Call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to query available keys.
+	// The ID of the Key Management Service (KMS) key used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//
@@ -512,6 +520,10 @@ func (s *CreateDesktopsShrinkRequest) GetRegionId() *string {
 
 func (s *CreateDesktopsShrinkRequest) GetResellerOwnerUid() *int64 {
 	return s.ResellerOwnerUid
+}
+
+func (s *CreateDesktopsShrinkRequest) GetReservePoolId() *string {
+	return s.ReservePoolId
 }
 
 func (s *CreateDesktopsShrinkRequest) GetResourceGroupId() *string {
@@ -716,6 +728,11 @@ func (s *CreateDesktopsShrinkRequest) SetResellerOwnerUid(v int64) *CreateDeskto
 	return s
 }
 
+func (s *CreateDesktopsShrinkRequest) SetReservePoolId(v string) *CreateDesktopsShrinkRequest {
+	s.ReservePoolId = &v
+	return s
+}
+
 func (s *CreateDesktopsShrinkRequest) SetResourceGroupId(v string) *CreateDesktopsShrinkRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -827,41 +844,41 @@ func (s *CreateDesktopsShrinkRequest) Validate() error {
 }
 
 type CreateDesktopsShrinkRequestBundleModels struct {
-	// The number of cloud computers to create. Valid values: 1 to 300. Default value: 0.
+	// The number of cloud desktops to create. Valid values: 1 to 300. Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The cloud computer template ID.
+	// The cloud desktop template ID.
 	//
 	// example:
 	//
 	// b-je9hani001wfn****
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The cloud computer name. The naming rules are as follows:
+	// The cloud desktop name. The naming rules are as follows:
 	//
 	// - The name can be up to 64 characters in length.
 	//
 	// - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
 	//
-	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
+	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// DemoComputer02
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The list of users to whom the cloud computers are assigned.
+	// The list of users to whom the cloud desktops are assigned.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The custom hostname of the cloud computer. Only cloud computers with a Windows operating system in an AD office network are supported.
+	// The custom hostname of the cloud desktop. Settings are supported only for cloud desktops with the Windows operating system type in AD office networks.
 	//
 	// The naming rules for the hostname are as follows:
 	//
 	// - The hostname must be 2 to 15 characters in length.
 	//
-	// - The hostname can contain letters, digits, or hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
+	// - The hostname can contain uppercase letters, lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
 	//
-	// When creating multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` format to name them uniformly. For example, if Hostname is set to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+	// When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to name the cloud desktops in a unified manner. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
 	//
 	// - `name_prefix`: the prefix of the hostname.
 	//
@@ -873,13 +890,13 @@ type CreateDesktopsShrinkRequestBundleModels struct {
 	//
 	// testhost
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Specifies whether to enable cloud disk encryption.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for cloud disk encryption. Call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to query available keys.
+	// The ID of the Key Management Service (KMS) key used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//
@@ -963,7 +980,7 @@ func (s *CreateDesktopsShrinkRequestBundleModels) Validate() error {
 }
 
 type CreateDesktopsShrinkRequestDesktopTimers struct {
-	// Specifies whether to allow end users to configure scheduled tasks on their own.
+	// Specifies whether end users can configure scheduled tasks.
 	//
 	// example:
 	//
@@ -971,7 +988,7 @@ type CreateDesktopsShrinkRequestDesktopTimers struct {
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
 	// The cron expression of the scheduled task.
 	//
-	// 	Notice: Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, set this parameter to 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
+	// 	Notice: The time must be specified in UTC. For example, to specify 00:00 (UTC+8) every day, set this parameter to 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
 	//
 	// example:
 	//
@@ -989,13 +1006,13 @@ type CreateDesktopsShrinkRequestDesktopTimers struct {
 	//
 	// 10
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The operation type of the scheduled task. Currently, only the disconnection scheduled task is supported.
+	// The operation type of the scheduled task. Currently, only the disconnect scheduled task is supported.
 	//
 	// example:
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The reset type of the cloud computer.
+	// The reset type of the cloud desktop.
 	//
 	// example:
 	//
@@ -1097,11 +1114,11 @@ type CreateDesktopsShrinkRequestMonthDesktopSetting struct {
 	//
 	// null
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The plan selected when purchasing a monthly hours package. Valid values: 120, 250, and 360.
+	// The plan option when purchasing a monthly hours package. Valid values: 120, 250, and 360.
 	//
 	// example:
 	//
-	// null
+	// 120
 	UseDuration *int32 `json:"UseDuration,omitempty" xml:"UseDuration,omitempty"`
 }
 

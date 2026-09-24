@@ -114,7 +114,7 @@ type DownloadCdsFileResponseBodyDownloadFileModel struct {
 	//
 	// None
 	ExpirationSecond *string `json:"ExpirationSecond,omitempty" xml:"ExpirationSecond,omitempty"`
-	// The expiration time of the file download URL.
+	// The expiration time of the file download URL. The time follows the ISO 8601 standard in UTC and is accurate to milliseconds. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
 	//
 	// example:
 	//

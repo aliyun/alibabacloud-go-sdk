@@ -48,7 +48,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// The cloud desktop ID. If you specify a cloud desktop, all script execution records of the cloud desktop are queried.
+	// The cloud desktop ID. If you specify a cloud desktop, all script execution records for that cloud desktop are queried.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeInvocationsRequest struct {
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	// The list of cloud desktop IDs.
 	//
-	// > The `DesktopId` parameter will be deprecated. Use this parameter to pass the list of cloud desktop IDs.
+	// > The DesktopId parameter will be deprecated. Use this parameter to pass the list of cloud desktop IDs.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -64,9 +64,9 @@ type DescribeInvocationsRequest struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// Specifies whether to return the execution results of all cloud desktops when the remote command is executed on multiple cloud desktops.
+	// Specifies whether to return the execution results of all cloud desktops when a remote command is executed on multiple cloud desktops.
 	IncludeInvokeDesktops *bool `json:"IncludeInvokeDesktops,omitempty" xml:"IncludeInvokeDesktops,omitempty"`
-	// Specifies whether to return the output information of the script execution in the results.
+	// Specifies whether to return the output of the script execution in the results.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// t-hz0jdfwd9f****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The overall execution status of the script. The overall execution status depends on the combined execution status of one or more cloud desktops in the execution.
+	// The overall execution status of the script. The overall execution status is determined by the combined execution status of one or more cloud desktops in the invocation.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

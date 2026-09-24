@@ -18,9 +18,9 @@ type iDescribeNASFileSystemsResponseBody interface {
 }
 
 type DescribeNASFileSystemsResponseBody struct {
-	// The NAS file system information.
+	// The NAS file system information list.
 	FileSystems []*DescribeNASFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
-	// The pagination token for the next query. If NextToken is empty, no more results exist.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
@@ -91,6 +91,12 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	AllowOperateUserDrive *bool `json:"AllowOperateUserDrive,omitempty" xml:"AllowOperateUserDrive,omitempty"`
 	// The list of cloud application delivery group objects bound to the UPM-supported NAS file system.
 	AppInstanceGroups []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups `json:"AppInstanceGroups,omitempty" xml:"AppInstanceGroups,omitempty" type:"Repeated"`
+	// The bandwidth.
+	//
+	// example:
+	//
+	// 720
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The total capacity of the NAS file system. Unit: GiB.
 	//
 	// - If the storage type is Capacity, the capacity is fixed at 10 PiB (10485760 GiB).
@@ -101,7 +107,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// 10485760
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The time when the NAS file system was created.
+	// The time when the NAS file system was created. The time is in the ISO 8601 format in UTC.
 	//
 	// example:
 	//
@@ -177,7 +183,8 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The list of office networks.
 	OfficeSites []*DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
-	ProductType *string                                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The product type of the NAS file system.
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// Indicates whether the User Profile Management (UPM) feature is supported.
 	//
 	// example:
@@ -205,8 +212,13 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	// example:
 	//
 	// Upm
-	Scene     *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	SizeQuota *int64  `json:"SizeQuota,omitempty" xml:"SizeQuota,omitempty"`
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The capacity quota of the NAS file system.
+	//
+	// example:
+	//
+	// 0
+	SizeQuota *int64 `json:"SizeQuota,omitempty" xml:"SizeQuota,omitempty"`
 	// The storage type of the NAS file system.
 	//
 	// example:
@@ -219,7 +231,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// false
 	SupportAcl *bool `json:"SupportAcl,omitempty" xml:"SupportAcl,omitempty"`
-	// The zone ID.
+	// The zone.
 	//
 	// example:
 	//
@@ -241,6 +253,10 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetAllowOperateUserDrive
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetAppInstanceGroups() []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups {
 	return s.AppInstanceGroups
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetBandwidth() *int64 {
+	return s.Bandwidth
 }
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetCapacity() *int64 {
@@ -346,6 +362,11 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetAllowOperateUserDrive
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetAppInstanceGroups(v []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) *DescribeNASFileSystemsResponseBodyFileSystems {
 	s.AppInstanceGroups = v
+	return s
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetBandwidth(v int64) *DescribeNASFileSystemsResponseBodyFileSystems {
+	s.Bandwidth = &v
 	return s
 }
 

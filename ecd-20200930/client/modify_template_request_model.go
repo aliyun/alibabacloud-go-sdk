@@ -23,6 +23,8 @@ type iModifyTemplateRequest interface {
 	GetDescription() *string
 	SetImageId(v string) *ModifyTemplateRequest
 	GetImageId() *string
+	SetInstanceName(v string) *ModifyTemplateRequest
+	GetInstanceName() *string
 	SetPeriod(v int32) *ModifyTemplateRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *ModifyTemplateRequest
@@ -74,7 +76,7 @@ type ModifyTemplateRequest struct {
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
 	// The description of the template. The description must meet the following requirements:
 	//
-	// - The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	// - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
 	//
@@ -82,12 +84,18 @@ type ModifyTemplateRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud computer image. You can query the ID on the Image Management page. System images and custom images are supported.
+	// The cloud computer image ID. You can query the ID on the image management page. System images, custom images, and other image types are supported.
 	//
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// wework-aim-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
 	//
 	// - If `PeriodUnit` is set to `Month`, valid values:
@@ -140,19 +148,19 @@ type ModifyTemplateRequest struct {
 	//
 	// rg-a5fqjjqaejt***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the cloud computer in key-value format. You can specify up to 20 tags.
+	// The cloud computer tags in key-value format. You can specify up to 20 tags.
 	ResourceTagList []*ModifyTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
 	// The site configuration management.
 	SiteConfigList []*ModifyTemplateRequestSiteConfigList `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
 	// The type of the system cloud disk.
 	//
-	// > Only high frequency and graphics cloud computer specifications support ESSD cloud disks.
+	// > Only high frequency and GPU-accelerated cloud computer specifications support ESSD cloud disks.
 	//
 	// example:
 	//
 	// AutoPL
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The size of the system cloud disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
+	// The size of the system cloud disk. Unit: GiB. Valid values: 40 to 500, in increments of 10 GiB.
 	//
 	// > The system cloud disk size cannot be smaller than the size of the configured image.
 	//
@@ -170,9 +178,9 @@ type ModifyTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template. The name must meet the following requirements:
 	//
-	// - The name must be 2 to 126 characters in length.
+	// - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
 	//
-	// - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+	// - The name must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`.
 	//
 	// - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), or hyphens (-). Periods (.) are not supported.
 	//
@@ -186,7 +194,7 @@ type ModifyTemplateRequest struct {
 	//
 	// bcc-dweha*****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	// The per-user usage duration plan.
+	// The duration plan for a single user.
 	//
 	// example:
 	//
@@ -228,6 +236,10 @@ func (s *ModifyTemplateRequest) GetDescription() *string {
 
 func (s *ModifyTemplateRequest) GetImageId() *string {
 	return s.ImageId
+}
+
+func (s *ModifyTemplateRequest) GetInstanceName() *string {
+	return s.InstanceName
 }
 
 func (s *ModifyTemplateRequest) GetPeriod() *int32 {
@@ -318,6 +330,11 @@ func (s *ModifyTemplateRequest) SetDescription(v string) *ModifyTemplateRequest 
 
 func (s *ModifyTemplateRequest) SetImageId(v string) *ModifyTemplateRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetInstanceName(v string) *ModifyTemplateRequest {
+	s.InstanceName = &v
 	return s
 }
 
@@ -438,7 +455,7 @@ type ModifyTemplateRequestDataDiskList struct {
 	//
 	// AutoPL
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
+	// The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040, in increments of 10 GiB.
 	//
 	// example:
 	//
@@ -495,7 +512,7 @@ type ModifyTemplateRequestRegionConfigList struct {
 	//
 	// eds.enterprise_office.8c16g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
-	// The ID of the automatic snapshot policy.
+	// The automatic snapshot policy ID.
 	//
 	// example:
 	//
@@ -507,6 +524,12 @@ type ModifyTemplateRequestRegionConfigList struct {
 	//
 	// vsw-adjrehad1****
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The virtual node pool ID.
+	//
+	// example:
+	//
+	// vnp-0bz55ic*******
+	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// Specifies whether to enable disk encryption.
 	//
 	// example:
@@ -549,6 +572,10 @@ func (s *ModifyTemplateRequestRegionConfigList) GetSubnetId() *string {
 	return s.SubnetId
 }
 
+func (s *ModifyTemplateRequestRegionConfigList) GetVirtualNodePoolId() *string {
+	return s.VirtualNodePoolId
+}
+
 func (s *ModifyTemplateRequestRegionConfigList) GetVolumeEncryptionEnable() *bool {
 	return s.VolumeEncryptionEnable
 }
@@ -579,6 +606,11 @@ func (s *ModifyTemplateRequestRegionConfigList) SetSnapshotPolicyId(v string) *M
 
 func (s *ModifyTemplateRequestRegionConfigList) SetSubnetId(v string) *ModifyTemplateRequestRegionConfigList {
 	s.SubnetId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetVirtualNodePoolId(v string) *ModifyTemplateRequestRegionConfigList {
+	s.VirtualNodePoolId = &v
 	return s
 }
 
