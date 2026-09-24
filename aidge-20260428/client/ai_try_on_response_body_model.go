@@ -22,19 +22,28 @@ type iAiTryOnResponseBody interface {
 }
 
 type AiTryOnResponseBody struct {
+	// The error code. This parameter is not returned if the call is successful.
+	//
 	// example:
 	//
 	// 200
-	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result struct.
 	Data *AiTryOnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message. This parameter is not returned if the call is successful.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Used to uniquely identify a request.
+	//
 	// example:
 	//
-	// 2728332e-72c1-9c0d-8869-5781b2cd25d4
+	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// True
@@ -104,18 +113,26 @@ func (s *AiTryOnResponseBody) Validate() error {
 }
 
 type AiTryOnResponseBodyData struct {
+	// The height of the result image, in pixels.
+	//
 	// example:
 	//
 	// 1360
 	ImageHeight *string `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
+	// The URL of the virtual try-on result image.
+	//
 	// example:
 	//
 	// https://example.com/virtual-try-on-result.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The width of the result image, in pixels.
+	//
 	// example:
 	//
 	// 768
 	ImageWidth *string `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	// The usage details.
+	//
 	// example:
 	//
 	// {"ProcessedImageCount":1,"Resolution":"1K"}
@@ -176,10 +193,14 @@ func (s *AiTryOnResponseBodyData) Validate() error {
 }
 
 type AiTryOnResponseBodyDataUsageMap struct {
+	// The number of processed images.
+	//
 	// example:
 	//
 	// 1
 	ProcessedImageCount *int64 `json:"ProcessedImageCount,omitempty" xml:"ProcessedImageCount,omitempty"`
+	// The resolution of the processed image.
+	//
 	// example:
 	//
 	// 1K

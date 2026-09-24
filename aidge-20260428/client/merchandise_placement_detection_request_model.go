@@ -15,6 +15,8 @@ type iMerchandisePlacementDetectionRequest interface {
 	GetImageUrl() *string
 	SetRagId(v string) *MerchandisePlacementDetectionRequest
 	GetRagId() *string
+	SetRule(v string) *MerchandisePlacementDetectionRequest
+	GetRule() *string
 	SetType(v string) *MerchandisePlacementDetectionRequest
 	GetType() *string
 }
@@ -40,6 +42,7 @@ type MerchandisePlacementDetectionRequest struct {
 	//
 	// rag_xxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
+	Rule  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	// The business type (reserved for future routing by business line). The current release supports skincare.
 	//
 	// example:
@@ -68,6 +71,10 @@ func (s *MerchandisePlacementDetectionRequest) GetRagId() *string {
 	return s.RagId
 }
 
+func (s *MerchandisePlacementDetectionRequest) GetRule() *string {
+	return s.Rule
+}
+
 func (s *MerchandisePlacementDetectionRequest) GetType() *string {
 	return s.Type
 }
@@ -84,6 +91,11 @@ func (s *MerchandisePlacementDetectionRequest) SetImageUrl(v string) *Merchandis
 
 func (s *MerchandisePlacementDetectionRequest) SetRagId(v string) *MerchandisePlacementDetectionRequest {
 	s.RagId = &v
+	return s
+}
+
+func (s *MerchandisePlacementDetectionRequest) SetRule(v string) *MerchandisePlacementDetectionRequest {
+	s.Rule = &v
 	return s
 }
 
