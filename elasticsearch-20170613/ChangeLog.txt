@@ -1,3 +1,16 @@
+2026-09-24 Version: v6.4.0
+- Support API InvokeEsAgent.
+- Support API InvokeEsRequest.
+- Update API DescribeSnapshotSetting: add response parameters Body.Result.Indices.
+- Update API ListDiagnosisItems: add request parameters level.
+- Update API ListDiagnosisItems: add response parameters Body.Result.$.billable.
+- Update API ListDiagnosisItems: add response parameters Body.Result.$.category.
+- Update API ListDiagnosisItems: add response parameters Body.Result.$.level.
+- Update API ListDiagnosisItems: add response parameters Body.Result.$.sortOrder.
+- Update API ListDiagnosisItems: add response parameters Body.Result.$.supportedModes.
+- Update API UpdateSnapshotSetting: add response parameters Body.Result.indices.
+
+
 2026-07-31 Version: v6.3.3
 - Update API DescribeInstance: add response parameters Body.Result.nodeSpec.diskPreference.
 - Update API EnableKibanaPvlNetwork: add request parameters body.managedSecurityGroup.

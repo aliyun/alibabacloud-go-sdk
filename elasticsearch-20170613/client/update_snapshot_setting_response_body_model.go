@@ -68,6 +68,8 @@ type UpdateSnapshotSettingResponseBodyResult struct {
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The list of indexes to back up.
+	Indices []*string `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
 	// The automatic backup start time.
 	//
 	// example:
@@ -88,12 +90,21 @@ func (s *UpdateSnapshotSettingResponseBodyResult) GetEnable() *bool {
 	return s.Enable
 }
 
+func (s *UpdateSnapshotSettingResponseBodyResult) GetIndices() []*string {
+	return s.Indices
+}
+
 func (s *UpdateSnapshotSettingResponseBodyResult) GetQuartzRegex() *string {
 	return s.QuartzRegex
 }
 
 func (s *UpdateSnapshotSettingResponseBodyResult) SetEnable(v bool) *UpdateSnapshotSettingResponseBodyResult {
 	s.Enable = &v
+	return s
+}
+
+func (s *UpdateSnapshotSettingResponseBodyResult) SetIndices(v []*string) *UpdateSnapshotSettingResponseBodyResult {
+	s.Indices = v
 	return s
 }
 

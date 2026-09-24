@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -3762,6 +3763,168 @@ func (client *Client) InterruptLogstashTaskWithContext(ctx context.Context, Inst
 
 // Summary:
 //
+// Calls the Alibaba Cloud Elasticsearch Agent service based on the JSON-RPC 2.0 protocol. Supports creating and managing Agent sessions, sending messages and receiving SSE streaming responses, resuming from breakpoints, canceling in-progress tasks, and handling human-in-the-loop (HITL) interactions initiated by the Agent. Currently available only in the Shanghai region.
+//
+// @param request - InvokeEsAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeEsAgentResponse
+func (client *Client) InvokeEsAgentWithSSECtx(ctx context.Context, request *InvokeEsAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *InvokeEsAgentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.invokeEsAgentWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// Calls the Alibaba Cloud Elasticsearch Agent service based on the JSON-RPC 2.0 protocol. Supports creating and managing Agent sessions, sending messages and receiving SSE streaming responses, resuming from breakpoints, canceling in-progress tasks, and handling human-in-the-loop (HITL) interactions initiated by the Agent. Currently available only in the Shanghai region.
+//
+// @param request - InvokeEsAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeEsAgentResponse
+func (client *Client) InvokeEsAgentWithContext(ctx context.Context, request *InvokeEsAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InvokeEsAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Body) {
+		body["body"] = request.Body
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeEsAgent"),
+		Version:     dara.String("2017-06-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/agent/acp"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InvokeEsAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uses a registered managed credential to proxy access to the native ES API. The accessible scope is determined by the permissions of the credential on the ES side. When calling this operation through a RAM user with a managed credential, the caller must have both the permission for this operation and the elasticsearch:UseCredential permission for the credential being used.
+//
+// Description:
+//
+// Refer to the following example for RAM user authorization. Replace the region, account, and other information as needed.
+//
+// ```
+//
+// {
+//
+//	"Version": "1",
+//
+//	"Statement": [
+//
+//	    {
+//
+//	        "Effect": "Allow",
+//
+//	        "Action": "elasticsearch:InvokeEsRequest",
+//
+//	        "Resource": "*"
+//
+//	    },
+//
+//	    {
+//
+//	        "Effect": "Allow",
+//
+//	        "Action": "elasticsearch:UseCredential",
+//
+//	        "Resource": "acs:elasticsearch:{#regionId}:{#accountId}:instances/{#instanceId}/credentials/{#credentialId}"
+//
+//	    }
+//
+//	]
+//
+// }
+//
+// ```
+//
+// @param request - InvokeEsRequestRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeEsRequestResponse
+func (client *Client) InvokeEsRequestWithContext(ctx context.Context, instanceId *string, request *InvokeEsRequestRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InvokeEsRequestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialId) {
+		query["credentialId"] = request.CredentialId
+	}
+
+	if !dara.IsNil(request.Method) {
+		query["method"] = request.Method
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["path"] = request.Path
+	}
+
+	if !dara.IsNil(request.System) {
+		query["system"] = request.System
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    request.Body,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeEsRequest"),
+		Version:     dara.String("2017-06-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/es-request"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InvokeEsRequestResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of Container Service for Kubernetes (ACK) clusters.
 //
 // @param request - ListAckClustersRequest
@@ -4639,6 +4802,10 @@ func (client *Client) ListDiagnosisItemsWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.Lang) {
 		query["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Level) {
+		query["level"] = request.Level
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -9043,25 +9210,25 @@ func (client *Client) UpdateIndexTemplateWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// Upgrades an Elasticsearch cluster by increasing the number of nodes, roles, specifications, or disk configurations.
+// Upgrades the configuration of an Elasticsearch cluster, including the number of nodes, roles, specifications, and disk configurations.
 //
 // Description:
 //
 // When you call this operation, take note of the following items:
 //
-// - You cannot change the configurations of an instance when the instance status is activating, invalid, or freeze (inactive).
+// - You cannot change the configuration when the instance status is activating, invalid, or inactive (freeze).
 //
-// - If the cluster is under heavy load, indexes have no replicas, and a large number of write or query requests exist during the upgrade or decrease the quota procedure, occasional access timeouts may occur. Configure a retry mechanism on the client side before you change the cluster configurations to minimize the impact on your business.
+// - If the cluster has a high load and indexes have no replicas, and a large number of write or query requests exist during the upgrade or decrease the quota procedure, occasional access timeout may occur. Configure a retry mechanism on the client before you change the cluster configuration to reduce the impact on your business.
 //
 // - You can change the configuration of only one type of node at a time (data node, dedicated master node, warm node, client node, Kibana node, or elastic node).
 //
-// - For the health and stability of your cluster, since May 2021, Alibaba Cloud Elasticsearch no longer supports the purchase of instances with 1 vCPU and 2 GB of memory, dedicated master nodes with 2 vCPUs and 2 GB of memory, or instances of version 7.4. If you have confirmed that purchased specifications you purchased are no longer available for sale, perform the following operations first:
+// - For the health and stability of your cluster, since May 2021, Alibaba Cloud Elasticsearch no longer supports the purchase of 1-vCPU 2 GiB instances, 2-vCPU 2 GiB dedicated master nodes, or version 7.4 instances. If you have confirmed that the purchased specifications are no longer available for sale, perform the following operations first:
 //
-//   - For instances with 1 vCPU and 2 GB of memory or 2 vCPUs and 2 GB of memory, upgrade purchased specifications to a stable specification that is available on the buy page. For available specifications on the buy page, see <props="china"><ph>[Parameters on the buy page (Commercial Edition)](https://help.aliyun.com/document_detail/97672.html) or [Parameters on the buy page (Advanced Edition)](https://help.aliyun.com/document_detail/143091.html)</ph><props="intl">[Parameters on the buy page](https://help.aliyun.com/document_detail/163243.html).
+//   - For 1-vCPU 2 GiB and 2-vCPU 2 GiB specifications, upgrade to a stable specification available on the buy page in advance. For available specifications on the buy page, see <props="china"><ph>[Buy page parameters (commercial edition)](https://help.aliyun.com/document_detail/97672.html) or [Buy page parameters (Advanced Edition)](https://help.aliyun.com/document_detail/143091.html)</ph><props="intl">[Buy page parameters](https://help.aliyun.com/document_detail/163243.html).
 //
-//   - For version 7.4, purchase a new instance of version 7.10 and then migrate data. <props="china"><ph>For data migration, see [Migration solution selection guide](https://help.aliyun.com/document_detail/96650.html).</ph>
+//   - For version 7.4, purchase a version 7.10 instance and then migrate data. <props="china"><ph>For data migration, see [Migration solution selection guide](https://help.aliyun.com/document_detail/96650.html).</ph>
 //
-// For more precautions, see [Upgrade cluster configurations](https://help.aliyun.com/document_detail/96650.html) and [Downgrade cluster configurations](https://help.aliyun.com/document_detail/198887.html).
+// For more precautions, see [Upgrade cluster configuration](https://help.aliyun.com/document_detail/96650.html) and [Downgrade cluster configuration](https://help.aliyun.com/document_detail/198887.html).
 //
 // @param request - UpdateInstanceRequest
 //
@@ -10766,9 +10933,9 @@ func (client *Client) ValidateTransferableNodesWithContext(ctx context.Context, 
 //
 // Description:
 //
-// ### Before you begin
+// ### Precautions
 //
-// - Make sure that you fully understand the billing and pricing of Elasticsearch. For more information, see [Alibaba Cloud Elasticsearch pricing](https://www.aliyun.com/price/product?spm=a2c4g.11186623.2.7.657d2cbeRoSPCd#/elasticsearch/detail).
+// - Before using this operation, make sure that you fully understand the billing methods and pricing of Elasticsearch. For more information, see [Alibaba Cloud Elasticsearch billing rules](https://help.aliyun.com/document_detail/260947.html).
 //
 // - You must complete real-name verification before creating an instance.<props="china"><ph> For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>
 //
@@ -10885,4 +11052,53 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) invokeEsAgentWithSSECtx_opYieldFunc(_yield chan *InvokeEsAgentResponse, _yieldErr chan error, ctx context.Context, request *InvokeEsAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Body) {
+		body["body"] = request.Body
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeEsAgent"),
+		Version:     dara.String("2017-06-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/agent/acp"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

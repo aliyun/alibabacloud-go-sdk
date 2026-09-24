@@ -68,7 +68,9 @@ type DescribeSnapshotSettingResponseBodyResult struct {
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The automatic backup time configuration, which uses a Quartz Cron expression.
+	// The list of indexes to back up.
+	Indices []*string `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
+	// The automatic backup time configuration, specified as a Quartz Cron expression.
 	//
 	// example:
 	//
@@ -88,12 +90,21 @@ func (s *DescribeSnapshotSettingResponseBodyResult) GetEnable() *bool {
 	return s.Enable
 }
 
+func (s *DescribeSnapshotSettingResponseBodyResult) GetIndices() []*string {
+	return s.Indices
+}
+
 func (s *DescribeSnapshotSettingResponseBodyResult) GetQuartzRegex() *string {
 	return s.QuartzRegex
 }
 
 func (s *DescribeSnapshotSettingResponseBodyResult) SetEnable(v bool) *DescribeSnapshotSettingResponseBodyResult {
 	s.Enable = &v
+	return s
+}
+
+func (s *DescribeSnapshotSettingResponseBodyResult) SetIndices(v []*string) *DescribeSnapshotSettingResponseBodyResult {
+	s.Indices = v
 	return s
 }
 

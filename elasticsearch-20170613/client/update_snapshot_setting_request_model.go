@@ -14,6 +14,23 @@ type iUpdateSnapshotSettingRequest interface {
 }
 
 type UpdateSnapshotSettingRequest struct {
+	// The data backup configuration, including the automatic backup start time and the scheduled backup switch.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "quartzRegex":"0 0 01 ? 	- 	- *",
+	//
+	//     "enable":true,
+	//
+	//     "indices": [
+	//
+	//         "orders-*"
+	//
+	//     ]
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

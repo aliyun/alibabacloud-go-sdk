@@ -13,11 +13,18 @@ type iListDiagnosisItemsRequest interface {
 	GetInstanceId() *string
 	SetLang(v string) *ListDiagnosisItemsRequest
 	GetLang() *string
+	SetLevel(v string) *ListDiagnosisItemsRequest
+	GetLevel() *string
 }
 
 type ListDiagnosisItemsRequest struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// es-cn-v0h14zdee000mimee
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The language of the request. Default value: the browser language. Valid values:
+	// The supported request language. Default value: the browser request language. Valid values:
 	//
 	// - en: English
 	//
@@ -33,6 +40,18 @@ type ListDiagnosisItemsRequest struct {
 	//
 	// en
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The diagnostic item level. Valid values:
+	//
+	// - BASIC: basic inspection item (free).
+	//
+	// - ADVANCED: advanced inspection item (consumes billable tokens).
+	//
+	// If this parameter is not specified, diagnostic items of all levels are returned.
+	//
+	// example:
+	//
+	// BASIC
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s ListDiagnosisItemsRequest) String() string {
@@ -51,6 +70,10 @@ func (s *ListDiagnosisItemsRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ListDiagnosisItemsRequest) GetLevel() *string {
+	return s.Level
+}
+
 func (s *ListDiagnosisItemsRequest) SetInstanceId(v string) *ListDiagnosisItemsRequest {
 	s.InstanceId = &v
 	return s
@@ -58,6 +81,11 @@ func (s *ListDiagnosisItemsRequest) SetInstanceId(v string) *ListDiagnosisItemsR
 
 func (s *ListDiagnosisItemsRequest) SetLang(v string) *ListDiagnosisItemsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ListDiagnosisItemsRequest) SetLevel(v string) *ListDiagnosisItemsRequest {
+	s.Level = &v
 	return s
 }
 

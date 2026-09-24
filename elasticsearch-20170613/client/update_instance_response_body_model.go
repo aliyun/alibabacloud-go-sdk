@@ -20,7 +20,17 @@ type iUpdateInstanceResponseBody interface {
 }
 
 type UpdateInstanceResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code. This parameter is returned only when an exception occurs.
+	//
+	// example:
+	//
+	// InstanceNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message. This parameter is returned only when an exception occurs.
+	//
+	// example:
+	//
+	// The specified cluster does not exist. Check the cluster status and try again.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -98,7 +108,7 @@ type UpdateInstanceResponseBodyResult struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The internal-facing access endpoint of the instance for private network access.
+	// The internal-facing access domain name of the instance for private network access.
 	//
 	// example:
 	//
@@ -130,9 +140,9 @@ type UpdateInstanceResponseBodyResult struct {
 	NodeSpec *UpdateInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
-	// - prepaid: subscription.
+	// - prepaid: Subscription.
 	//
-	// - postpaid: pay-as-you-go.
+	// - postpaid: Pay-as-you-go.
 	//
 	// example:
 	//
