@@ -24,9 +24,9 @@ type iTestLargeModelRequest interface {
 }
 
 type TestLargeModelRequest struct {
-	// The base models.
+	// The foundation model.
 	BaseModel []*string `json:"BaseModel,omitempty" xml:"BaseModel,omitempty" type:"Repeated"`
-	// The ID of the test scenario.
+	// The scenario ID.
 	//
 	// example:
 	//
@@ -39,7 +39,7 @@ type TestLargeModelRequest struct {
 	//
 	// example:
 	//
-	// 你好。
+	// Hello
 	UserDialogContent *string `json:"UserDialogContent,omitempty" xml:"UserDialogContent,omitempty"`
 }
 

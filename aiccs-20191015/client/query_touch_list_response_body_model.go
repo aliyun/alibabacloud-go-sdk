@@ -22,29 +22,29 @@ type iQueryTouchListResponseBody interface {
 }
 
 type QueryTouchListResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 865658FD-80DE-5D49-ABEB-F3CC9863F4F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Data result.
+	// The data result.
 	ResultData *QueryTouchListResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
-	// Indicates whether the API call succeeded. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - **true**: Succeeded.
+	// - **true**: Successful.
 	//
 	// - **false**: Failed.
 	//
@@ -117,13 +117,13 @@ func (s *QueryTouchListResponseBody) Validate() error {
 }
 
 type QueryTouchListResponseBodyResultData struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data.
+	// The data.
 	Data []*QueryTouchListResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether the result is empty.
 	//
@@ -131,31 +131,31 @@ type QueryTouchListResponseBodyResultData struct {
 	//
 	// false
 	Empty *bool `json:"Empty,omitempty" xml:"Empty,omitempty"`
-	// The page number of the next page.
+	// The next page number.
 	//
 	// example:
 	//
 	// 2
 	NextPage *int32 `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// Page size.
+	// The page size.
 	//
 	// example:
 	//
 	// 2
 	OnePageSize *int32 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
-	// Previous page number.
+	// The previous page number.
 	//
 	// example:
 	//
 	// 2
 	PreviousPage *int32 `json:"PreviousPage,omitempty" xml:"PreviousPage,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 4
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	// Total number of query results.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -257,119 +257,119 @@ func (s *QueryTouchListResponseBodyResultData) Validate() error {
 }
 
 type QueryTouchListResponseBodyResultDataData struct {
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// example:
 	//
 	// 905
 	BuId *int64 `json:"BuId,omitempty" xml:"BuId,omitempty"`
-	// Session ID.
+	// The session ID.
 	//
 	// example:
 	//
 	// 4f8807a9de024507a3090b5b66a8****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// Contact channel.
+	// The touch channel.
 	//
 	// example:
 	//
 	// 1
 	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// Session end time. UNIX timestamp format (unit: milliseconds).
+	// The session end time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1611207976000
 	CloseTime *int64 `json:"CloseTime,omitempty" xml:"CloseTime,omitempty"`
-	// Skill group name.
+	// The skill group name.
 	//
 	// example:
 	//
-	// 测试1
+	// Test1
 	CommonQueueName *string `json:"CommonQueueName,omitempty" xml:"CommonQueueName,omitempty"`
-	// Department ID.
+	// The department ID.
 	//
 	// example:
 	//
 	// 100
 	DepId *int64 `json:"DepId,omitempty" xml:"DepId,omitempty"`
-	// Extension fields.
+	// The extended fields.
 	ExtAttrs *QueryTouchListResponseBodyResultDataDataExtAttrs `json:"ExtAttrs,omitempty" xml:"ExtAttrs,omitempty" type:"Struct"`
-	// Large object.
+	// The large field.
 	ExtAttrsString map[string]interface{} `json:"ExtAttrsString,omitempty" xml:"ExtAttrsString,omitempty"`
-	// Feedback.
+	// The feedback.
 	//
 	// example:
 	//
 	// xxxx
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// Conversation pickup time, in UNIX timestamp format (unit: milliseconds).
+	// The session pickup time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1611209971000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// Conversation initiator.
+	// The session initiator.
 	//
 	// example:
 	//
 	// 6400665****
 	FromId *int64 `json:"FromId,omitempty" xml:"FromId,omitempty"`
-	// Creation Time, in UNIX timestamp format (unit: milliseconds).
+	// The creation time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1611209971000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Update Time. UNIX timestamp format (unit: milliseconds).
+	// The update time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1611207979000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Membership ID.
+	// The member ID.
 	//
 	// example:
 	//
 	// 6400665****
 	MemberId *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// Membership name.
+	// The member name.
 	//
 	// example:
 	//
-	// 访客
+	// Visitor
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// Parent contact ID.
+	// The parent touch ID.
 	//
 	// example:
 	//
 	// 0
 	ParentTouchId *int64 `json:"ParentTouchId,omitempty" xml:"ParentTouchId,omitempty"`
-	// Skill group ID.
+	// The skill group ID.
 	//
 	// example:
 	//
 	// 111
 	QueueId *int64 `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	// Service agent ID.
+	// The agent ID.
 	//
 	// example:
 	//
 	// 67****
 	ServicerId *int64 `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
-	// Service agent name.
+	// The agent name.
 	//
 	// example:
 	//
 	// 1390000****
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	// Contact status. Valid values:
+	// The touch status. Valid values:
 	//
-	// - **1**: Incoming call received.
+	// - **1**: Queued.
 	//
-	// - **2**: Agent has joined.
+	// - **2**: Agent connected.
 	//
-	// - **3**: In conversation.
+	// - **3**: In call.
 	//
 	// - **4**: Ended.
 	//
@@ -377,57 +377,57 @@ type QueryTouchListResponseBodyResultDataData struct {
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Change owner list.
+	// The transfer list.
 	//
 	// example:
 	//
 	// null
 	SwitchUser *string `json:"SwitchUser,omitempty" xml:"SwitchUser,omitempty"`
-	// Conversation recipient.
+	// The session receiver.
 	//
 	// example:
 	//
 	// 67****
 	ToId *int64 `json:"ToId,omitempty" xml:"ToId,omitempty"`
-	// The reason why the session ended. Valid values:
+	// The session end reason. Valid values:
 	//
 	// - **0**: Unknown.
 	//
-	// - **1**: Contact failed.
+	// - **1**: Touch unsuccessful.
 	//
-	// - **2**: Terminated by customer.
+	// - **2**: Customer terminated.
 	//
-	// - **3**: Terminated by agent.
+	// - **3**: Agent terminated.
 	//
 	// - **4**: Call abnormally interrupted.
 	//
-	// - **5**: Terminated due to change owner.
+	// - **5**: Transfer terminated.
 	//
-	// - **6**: Terminated by system.
+	// - **6**: System terminated.
 	//
 	// example:
 	//
 	// 1
 	TouchContent *string `json:"TouchContent,omitempty" xml:"TouchContent,omitempty"`
-	// End reason.
+	// The end reason.
 	//
 	// example:
 	//
 	// 2
 	TouchEndReason *int32 `json:"TouchEndReason,omitempty" xml:"TouchEndReason,omitempty"`
-	// Touch ID.
+	// The contact ID.
 	//
 	// example:
 	//
 	// 1386****
 	TouchId *string `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
-	// Conversation duration (unit: seconds).
+	// The session duration, in seconds.
 	//
 	// example:
 	//
 	// 111
 	TouchTime *string `json:"TouchTime,omitempty" xml:"TouchTime,omitempty"`
-	// Touch type. Valid values:
+	// The touch type. Valid values:
 	//
 	// - **1**: Active touch.
 	//
@@ -437,7 +437,7 @@ type QueryTouchListResponseBodyResultDataData struct {
 	//
 	// 2
 	TouchType *int32 `json:"TouchType,omitempty" xml:"TouchType,omitempty"`
-	// User touch ID.
+	// The user touch ID.
 	//
 	// example:
 	//
@@ -715,33 +715,33 @@ func (s *QueryTouchListResponseBodyResultDataData) Validate() error {
 }
 
 type QueryTouchListResponseBodyResultDataDataExtAttrs struct {
-	// Inbound call caller number.
+	// The calling number for inbound calls.
 	//
 	// example:
 	//
 	// 187****0000
 	Ani *string `json:"Ani,omitempty" xml:"Ani,omitempty"`
-	// For outbound calls, this is the called number. For inbound calls, this is also the called number.
+	// The called number for both outbound and inbound calls.
 	//
 	// example:
 	//
 	// 05712688****
 	Dnis *string `json:"Dnis,omitempty" xml:"Dnis,omitempty"`
-	// Satisfaction Level. Valid values:
+	// The satisfaction level. Valid values:
 	//
-	// - **2**: Level 2 satisfaction.
+	// - **2**: 2-level satisfaction.
 	//
-	// - **3**: Level 3 satisfaction.
+	// - **3**: 3-level satisfaction.
 	//
-	// - **4**: Level 4 satisfaction.
+	// - **4**: 4-level satisfaction.
 	//
-	// - **5**: Level 5 satisfaction.
+	// - **5**: 5-level satisfaction.
 	//
 	// example:
 	//
 	// 2
 	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	// Satisfaction rating. Valid values:
+	// The satisfaction score. Valid values:
 	//
 	// - **1**: Very dissatisfied.
 	//
@@ -757,13 +757,13 @@ type QueryTouchListResponseBodyResultDataDataExtAttrs struct {
 	//
 	// 1
 	EvaluationScore *int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
-	// Evaluation solution.
+	// The evaluation Solutions.
 	//
 	// example:
 	//
 	// 0
 	EvaluationSolution *int32 `json:"EvaluationSolution,omitempty" xml:"EvaluationSolution,omitempty"`
-	// Evaluation status. Valid values:
+	// The evaluation status. Valid values:
 	//
 	// - **-1**: Evaluation not initiated.
 	//
@@ -775,19 +775,19 @@ type QueryTouchListResponseBodyResultDataDataExtAttrs struct {
 	//
 	// 1
 	EvaluationStatus *int32 `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty"`
-	// Duration until first response (unit: seconds).
+	// The first response duration, in seconds.
 	//
 	// example:
 	//
 	// 1
 	OnlineJoinRespInterval *int32 `json:"OnlineJoinRespInterval,omitempty" xml:"OnlineJoinRespInterval,omitempty"`
-	// Online session source.
+	// The online session source.
 	//
 	// example:
 	//
 	// 0
 	OnlineSessionSource *int32 `json:"OnlineSessionSource,omitempty" xml:"OnlineSessionSource,omitempty"`
-	// Outbound call caller number.
+	// The calling number for outbound calls.
 	//
 	// example:
 	//

@@ -76,77 +76,77 @@ type iAiccsSmartCallRequest interface {
 }
 
 type AiccsSmartCallRequest struct {
-	// Whether the initial audio playback file is interruptible. The default value is **true**, which means the initial audio playback file can be interrupted.
+	// Specifies whether the opening audio file can be interrupted. Default value: **true**, which indicates that the opening audio file can be interrupted.
 	//
 	// example:
 	//
 	// true
 	ActionCodeBreak *bool `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
-	// Interrupts based on the user\\"s continuous speaking duration. Takes effect only when ActionCodeBreak is **true**. Unit: milliseconds.
+	// The interruption threshold based on the duration of continuous user speech. This parameter takes effect only when ActionCodeBreak is set to **true**. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 120
 	ActionCodeTimeBreak *int32 `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
-	// Acoustic model ID.
+	// The acoustic model ID.
 	//
 	// example:
 	//
 	// 23387****
 	AsrAlsAmId *string `json:"AsrAlsAmId,omitempty" xml:"AsrAlsAmId,omitempty"`
-	// ASR foundation model.
+	// The ASR foundation model.
 	//
 	// - **customer_service_8k**: Mandarin.
 	//
 	// - **dialect_customer_service_8k**: Heavy accent.
 	//
-	// > - When invoking the **SendCcoSmartCall*	- API, you must specify an ASR model. We recommend that you provide either the **asrModelId*	- or **AsrBaseId*	- parameter.
+	// > - When calling the **SendCcoSmartCall*	- operation, specify the ASR model to use. Specify either **asrModelId*	- or **AsrBaseId**.
 	//
 	// - If only **asrModelId*	- is set, the specified ASR model is used.
 	//
 	// - If only **AsrBaseId*	- is set, the specified ASR foundation model is used.
 	//
-	// - If neither parameter is set, the default ASR foundation model is used. By default, **AsrBaseId*	- is **customer_service_8k**, which corresponds to the Mandarin ASR foundation model.
+	// - If neither is set, the default ASR foundation model is used. The default value of **AsrBaseId*	- is **customer_service_8k**, which indicates the Mandarin ASR foundation model.
 	//
-	// - If both parameters are set, confirm that they correctly correspond to each other.
+	// - If both are set, make sure they correspond correctly.
 	//
 	// example:
 	//
 	// customer_service_8k
 	AsrBaseId *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
-	// ASR model ID. You can view the ASR model ID on the [ASR Model Management page](https://aiccs.console.aliyun.com/sentence/model/private?spm=a2c4g.11186623.0.0.7f9b2964fYSGv4).
+	// The ASR model ID. View the ASR model ID on the [ASR Model Management page](https://aiccs.console.aliyun.com/sentence/model/private?spm=a2c4g.11186623.0.0.7f9b2964fYSGv4).
 	//
 	// example:
 	//
 	// bf71664d30d2478fb8cb8c39c6b6****
 	AsrModelId *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	// Hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management Page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+	// The hot word ID. View the ASR hot word ID on the [ASR Hot Word Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
 	//
 	// example:
 	//
 	// 6689****
 	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
-	// ID of the background audio file played during the conversation between the user and the robot.
+	// The ID of the background audio file played during the conversation between the user and the robot.
 	//
-	// You can log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview), choose **Intelligent Interaction > Audio File Management**, and click **View*	- to check the corresponding audio ID.
+	// Log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview), choose **Intelligent Interaction > Voice File Management**, and click **Details*	- to view the corresponding voice ID.
 	//
 	// example:
 	//
 	// 2d4c-4e78-8d2a-afbb06cf****.wav
 	BackgroundFileCode *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
-	// This parameter is currently not supported.
+	// This parameter is not supported.
 	//
 	// example:
 	//
 	// 1
 	BackgroundSpeed *int32 `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
-	// The parameter is not supported yet.
+	// This parameter is not supported.
 	//
 	// example:
 	//
 	// 1
 	BackgroundVolume *int32 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
-	// Called number. Only numbers in the Chinese mainland are supported.
+	// The called number. Only numbers in the Chinese mainland are supported.
 	//
 	// This parameter is required.
 	//
@@ -154,9 +154,9 @@ type AiccsSmartCallRequest struct {
 	//
 	// 1862222****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// The caller ID displayed to the callee. This must be a number you have purchased.
+	// The China-based number displayed to the called party. The number must be a purchased number.
 	//
-	// You can log on to the [Contact Center console](https://aiccs.console.aliyun.com/overview?spm=a2c4g.11186623.0.0.7f9bf9658X6jte) to view your purchased numbers.
+	// You can log on to the [Contact Center console](https://aiccs.console.aliyun.com/overview?spm=a2c4g.11186623.0.0.7f9bf9658X6jte) to view purchased numbers.
 	//
 	// This parameter is required.
 	//
@@ -164,70 +164,70 @@ type AiccsSmartCallRequest struct {
 	//
 	// 0571000****
 	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	// A dynamic extension ID reserved for the caller, which is returned in the webhook address to serve as the customer\\"s developer identity.
+	// The dynamic extension ID reserved for the caller. This ID is returned in the callback URL for the caller\\"s development identifier.
 	//
 	// example:
 	//
 	// 2234****
 	DynamicId *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
-	// Early media speech recognition identity. When set to **true**, it records the reason why the call was not answered. Default value: **false**, meaning disabled.
+	// The early media speech recognition flag. If set to **true**, the reason for unanswered calls is recorded. Default value: **false**, which indicates that this feature is disabled.
 	//
-	// > To enable early media speech recognition, you must manually set this parameter to **true**.
+	// > To enable early media speech recognition, manually set this parameter to **true**.
 	//
 	// example:
 	//
-	// fasle
+	// false
 	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	// Whether to execute ITN during post-processing.
+	// Specifies whether to perform Inverse Text Normalization (ITN) in post-processing.
 	//
-	// > When set to **true**, Chinese numerals are converted to Arabic numerals in the output. The default value is **false**.
+	// > If set to **true**, Chinese numerals are converted to Arabic numerals in the output. Default value: **false**.
 	//
 	// example:
 	//
 	// true
 	EnableITN *bool `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
-	// Silence duration. This parameter defines how long the call waits for user speech before ending the call. The unit is milliseconds, and valid values range from **1000 to 20000**.
+	// The silence duration. Specifies how long the user remains silent before the call ends. Unit: milliseconds. Valid values: **1000*	- to **20000**.
 	//
-	// - If the specified value is outside this range, **MuteTime*	- defaults to **10000**.
+	// - If the specified value is not within the valid range, the default value of MuteTime is **10000**.
 	//
-	// - This parameter can be dynamically updated during the call. The last set value takes effect.
+	// - This parameter can be dynamically set during the call. The last setting takes effect.
 	//
 	// example:
 	//
 	// 10000
 	MuteTime *int32 `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
-	// An ID reserved for the caller. This ID will be returned to the caller in the receipt message.
+	// The ID reserved for the caller. This ID is returned to the caller in the receipt message.
 	//
-	// It is a string with a length of 1 to 15 bytes.
+	// The value is a string of 1 to 15 bytes in length.
 	//
 	// example:
 	//
 	// 222356****
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Pause duration. Specifies how long the user must pause to indicate the end of a sentence. Unit: milliseconds. Valid range: **300–1200**.
+	// The pause duration. Specifies how long the user pauses before a sentence is considered complete. Unit: milliseconds. Valid values: **300*	- to **1200**.
 	//
-	// - If the specified value is outside this range, PauseTime defaults to **800**.
+	// - If the specified value is not within the valid range, the default value of PauseTime is **800**.
 	//
-	// - Only the first setting takes effect; subsequent settings are ignored.
+	// - Only the initial setting takes effect. Subsequent settings are ignored.
 	//
 	// example:
 	//
 	// 800
 	PauseTime *int32 `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
-	// The parameter is not supported yet.
+	// This parameter is not supported.
 	//
 	// example:
 	//
 	// 1
 	PlayTimes *int32 `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
-	// Product name. Default value: **aiccs**.
+	// The product name. Default value: **aiccs**.
 	//
 	// example:
 	//
 	// aiccs
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	// Whether to record during the call.
+	// Specifies whether to record the call.
 	//
 	// example:
 	//
@@ -235,51 +235,51 @@ type AiccsSmartCallRequest struct {
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Maximum call duration, in seconds. The call is automatically disconnected after timeout.
+	// The maximum call duration. Unit: seconds. The call is automatically hung up after the timeout period.
 	//
 	// example:
 	//
 	// 120
 	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	// This parameter is not currently supported.
+	// This parameter is not supported.
 	//
 	// example:
 	//
 	// 1
 	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	// Whether to configure TTS voice parameters.
+	// Specifies whether to configure TTS voice parameters.
 	//
-	// - If set to **true**, you must use the TtsStyle, TtsVolume, and TtsSpeed parameters to define the voice style.
+	// - true: Configure the voice style by using the TtsStyle, TtsColume, and TtsSpeed parameters.
 	//
-	// - If set to **false**, related parameters are not required and will have no effect even if configured.
+	// - false: No configuration is required. Even if these parameters are set, they do not take effect.
 	//
 	// example:
 	//
 	// true
 	TtsConf *bool `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
-	// Speech speed when playing TTS variables. Valid values range from **-200 to 200**. The default value is **0**.
+	// The speech speed for TTS variable playback. Valid values: **-200*	- to **200**. Default value: **0**.
 	//
 	// example:
 	//
 	// 100
 	TtsSpeed *int32 `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	// Voice style used during TTS variable playback. Default value: **xiaoyun**. For available styles, see the voice style list.
+	// The voice style for TTS variable playback. Default value: **xiaoyun**. For specific styles, refer to the voice style list.
 	//
 	// example:
 	//
 	// xiaoyun
 	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	// The volume for TTS variable playback. Valid values range from **0 to 100**. The default value is **0**.
+	// The volume for TTS variable playback. Valid values: **0*	- to **100**. Default value: **0**.
 	//
 	// example:
 	//
 	// 10
 	TtsVolume *int32 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	// The Intelligent Outbound Call playback audio file supports both network files and TTS. Multiple files and TTS parameters can be mixed for playback, separated by commas (,). The replacement values for TTS parameters are specified in **VoiceCodeParam**.
+	// The intelligent outbound call audio file. Network files and text-to-speech (TTS) are supported. You can mix multiple files and TTS parameters, separated by commas (,). The replacement values for TTS parameters are specified in **VoiceCodeParam**.
 	//
-	// - When the playback file is a network file: Set the VoiceCode parameter to a publicly accessible URL of the audio file. We recommend using a WAV-formatted audio file with a sampling frequency of 8000 Hz or 16000 Hz.
+	// - If the audio file is a network file, set VoiceCode to a URL of the audio file that allows public network access. Use a WAV format audio file with a sampling frequency of 8000 Hz or 16000 Hz.
 	//
-	// - When the playback file uses TTS: Set the VoiceCode parameter to a variable name such as $name$, and define the corresponding content for this variable in VoiceCodeParam.
+	// - If the audio file uses TTS, set VoiceCode to a variable name such as $name$, and set the corresponding content for the variable in VoiceCodeParam.
 	//
 	// This parameter is required.
 	//
@@ -287,13 +287,13 @@ type AiccsSmartCallRequest struct {
 	//
 	// 2d4c-4e78-8d2a-afbb06cf****.wav,$name$
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	// TTS parameter string in JSON format. It must correspond to the TTS parameters of VoiceCode.
+	// The TTS parameter string in JSON format. This parameter must correspond to the TTS parameters in VoiceCode.
 	//
 	// example:
 	//
-	// “{\\”name\\”:\\”喂，你好\\”}”
+	// "{\\"name\\":\\"Hello\\"}"
 	VoiceCodeParam *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
-	// The volume for playing user audio. Valid values range from **-4 to 4**. We recommend setting it to **1**.
+	// The volume for playing user audio. Valid values: **-4*	- to **4**. Set this parameter to **1**.
 	//
 	// example:
 	//

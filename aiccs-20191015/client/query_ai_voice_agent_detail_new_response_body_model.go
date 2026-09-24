@@ -24,25 +24,25 @@ type iQueryAiVoiceAgentDetailNewResponseBody interface {
 }
 
 type QueryAiVoiceAgentDetailNewResponseBody struct {
-	// The reason for the access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed data of the agent.
+	// The agent details.
 	Data *QueryAiVoiceAgentDetailNewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is associated with the status code.
+	// The status code description.
 	//
 	// example:
 	//
-	// 成功
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -50,11 +50,11 @@ type QueryAiVoiceAgentDetailNewResponseBody struct {
 	//
 	// 742C9243-2870-B8D6-0C68-C12345AABBCC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful. Possible values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The operation was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: Failure.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -134,15 +134,15 @@ func (s *QueryAiVoiceAgentDetailNewResponseBody) Validate() error {
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyData struct {
-	// The voice configuration for intelligent outbound calls.
+	// The intelligent outbound voice call configuration.
 	AgentCallConfig *QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfig `json:"AgentCallConfig,omitempty" xml:"AgentCallConfig,omitempty" type:"Struct"`
-	// The business requirement configuration for the agent.
+	// The agent business requirement configuration.
 	AgentDemandConfig *QueryAiVoiceAgentDetailNewResponseBodyDataAgentDemandConfig `json:"AgentDemandConfig,omitempty" xml:"AgentDemandConfig,omitempty" type:"Struct"`
 	// The agent description.
 	//
 	// example:
 	//
-	// 日常测试使用。
+	// Used for daily testing
 	AgentDesc *string `json:"AgentDesc,omitempty" xml:"AgentDesc,omitempty"`
 	// The agent ID.
 	//
@@ -150,11 +150,11 @@ type QueryAiVoiceAgentDetailNewResponseBodyData struct {
 	//
 	// 3021893791
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The build mode. Valid values:
+	// The building method. Valid values:
 	//
-	// - `0`: prompt-based mode.
+	// - 0: prompt mode.
 	//
-	// - `1`: dialog flow mode.
+	// - 1: dialog flow mode.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type QueryAiVoiceAgentDetailNewResponseBodyData struct {
 	//
 	// example:
 	//
-	// 测试智能体
+	// Test agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The deployment status. Valid values:
 	//
-	// - `0`: Inactive (NOT_EFFECT).
+	// - 0: not effective (NOT_EFFECT).
 	//
-	// - `1`: Active (EFFECT).
+	// - 1: effective (EFFECT).
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyData struct {
 	//
 	// example:
 	//
-	// 默认分支
+	// Default branch
 	BranchDesc *string `json:"BranchDesc,omitempty" xml:"BranchDesc,omitempty"`
 	// The branch ID.
 	//
@@ -192,45 +192,57 @@ type QueryAiVoiceAgentDetailNewResponseBodyData struct {
 	//
 	// example:
 	//
-	// 默认版本
+	// Default version
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The knowledge base configuration.
 	KnowledgeConfig *QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfig `json:"KnowledgeConfig,omitempty" xml:"KnowledgeConfig,omitempty" type:"Struct"`
-	// The call variable configuration.
+	// The call variable configurations.
 	PhoneTagConfig []*QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfig `json:"PhoneTagConfig,omitempty" xml:"PhoneTagConfig,omitempty" type:"Repeated"`
 	// The scenario.
 	//
 	// example:
 	//
-	// 个人客户线索转化
+	// Personal customer lead conversion
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The call summary configuration.
-	SummaryConfig *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig `json:"SummaryConfig,omitempty" xml:"SummaryConfig,omitempty" type:"Struct"`
-	// Version Description
+	// The service direction.
 	//
 	// example:
 	//
-	// 测试第一个版本
+	// 示例值示例值
+	ServiceDirection *string `json:"ServiceDirection,omitempty" xml:"ServiceDirection,omitempty"`
+	// The call summary configuration.
+	SummaryConfig *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig `json:"SummaryConfig,omitempty" xml:"SummaryConfig,omitempty" type:"Struct"`
+	// The version description.
+	//
+	// example:
+	//
+	// Test first version
 	VersionDesc *string `json:"VersionDesc,omitempty" xml:"VersionDesc,omitempty"`
-	// Version ID.
+	// The version ID.
 	//
 	// example:
 	//
 	// 89
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// Version name.
+	// The version name.
 	//
 	// example:
 	//
-	// 测试版本1
+	// Test version 1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	// The release status of the version. 0 indicates Unreleased, 1 indicates Released, and 2 indicates Draft.
+	// The version publish status. Valid values:
+	//
+	// - 0: Not published.
+	//
+	// - 1: Published.
+	//
+	// - 2: Draft.
 	//
 	// example:
 	//
 	// 1
 	VersionPublishStatus *int64 `json:"VersionPublishStatus,omitempty" xml:"VersionPublishStatus,omitempty"`
-	// The most recent release time of the version.
+	// The most recent publish time of the version. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -296,6 +308,10 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyData) GetPhoneTagConfig() []*Quer
 
 func (s *QueryAiVoiceAgentDetailNewResponseBodyData) GetScene() *string {
 	return s.Scene
+}
+
+func (s *QueryAiVoiceAgentDetailNewResponseBodyData) GetServiceDirection() *string {
+	return s.ServiceDirection
 }
 
 func (s *QueryAiVoiceAgentDetailNewResponseBodyData) GetSummaryConfig() *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig {
@@ -387,6 +403,11 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyData) SetScene(v string) *QueryAi
 	return s
 }
 
+func (s *QueryAiVoiceAgentDetailNewResponseBodyData) SetServiceDirection(v string) *QueryAiVoiceAgentDetailNewResponseBodyData {
+	s.ServiceDirection = &v
+	return s
+}
+
 func (s *QueryAiVoiceAgentDetailNewResponseBodyData) SetSummaryConfig(v *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig) *QueryAiVoiceAgentDetailNewResponseBodyData {
 	s.SummaryConfig = v
 	return s
@@ -453,29 +474,29 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyData) Validate() error {
 type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfig struct {
 	// The event configuration.
 	EventConfig *QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigEventConfig `json:"EventConfig,omitempty" xml:"EventConfig,omitempty" type:"Struct"`
-	// The prologue.
+	// The opening statement.
 	//
 	// example:
 	//
-	// 你好，这里是******。
+	// Hello, this is ******
 	Prologue *string `json:"Prologue,omitempty" xml:"Prologue,omitempty"`
-	// The URL of the audio file for the prologue. This parameter is returned only when `StartWordType` is set to `1`.
+	// The URL of the opening statement recording audio file. This parameter has a value only when StartWordType is set to 1.
 	//
 	// example:
 	//
 	// /oss-file-key
 	RecordingFile *string `json:"RecordingFile,omitempty" xml:"RecordingFile,omitempty"`
-	// The type of the prologue. Valid values: `0` (text) and `1` (recording).
+	// The opening statement type. 0: text. 1: recording.
 	//
 	// example:
 	//
 	// 1
 	StartWordType *int64 `json:"StartWordType,omitempty" xml:"StartWordType,omitempty"`
-	// The configuration for transferring the call to a manual agent.
+	// The transfer-to-agent configuration.
 	TransferConfig *QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTransferConfig `json:"TransferConfig,omitempty" xml:"TransferConfig,omitempty" type:"Struct"`
-	// The Text-to-Speech (TTS) configuration.
+	// The TTS configuration.
 	TtsConfig *QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
-	// The ID of the hotword vocabulary.
+	// The hot word library ID.
 	//
 	// example:
 	//
@@ -574,37 +595,37 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfig) Validate() e
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigEventConfig struct {
-	// Specifies whether to disconnect the call when an answering machine is detected.
+	// Specifies whether to hang up when intelligent answering is detected.
 	//
 	// example:
 	//
 	// false
 	CallAssistantHangup *bool `json:"CallAssistantHangup,omitempty" xml:"CallAssistantHangup,omitempty"`
-	// Specifies whether to enable answering machine detection.
+	// Specifies whether intelligent answering recognition is enabled.
 	//
 	// example:
 	//
 	// true
 	CallAssistantRecognize *bool `json:"CallAssistantRecognize,omitempty" xml:"CallAssistantRecognize,omitempty"`
-	// Specifies whether to wake up the model upon the first mute event.
+	// Specifies whether the first silence event triggers the model.
 	//
 	// example:
 	//
 	// true
 	MuteActive *bool `json:"MuteActive,omitempty" xml:"MuteActive,omitempty"`
-	// The mute duration. Unit: seconds. Valid values: 3 to 15.
+	// The silence duration in seconds. Minimum: 3s. Maximum: 15s.
 	//
 	// example:
 	//
 	// 5
 	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
-	// The number of consecutive mute events that trigger an automatic disconnection. Valid values: 1 to 5.
+	// The number of consecutive silence events before the call is automatically hung up. Minimum: 1. Maximum: 5.
 	//
 	// example:
 	//
 	// 1
 	MuteHangupNum *int64 `json:"MuteHangupNum,omitempty" xml:"MuteHangupNum,omitempty"`
-	// The maximum call duration. Unit: seconds. Valid values: 600 to 3600. The call is automatically disconnected if this duration is exceeded.
+	// The maximum call duration in seconds. Minimum: 600s. Maximum: 3600s. The call is automatically hung up after the timeout.
 	//
 	// example:
 	//
@@ -691,31 +712,31 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTransferConfig str
 	//
 	// 123111122222
 	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	// The type of the caller number.
+	// The caller number type.
 	//
 	// example:
 	//
 	// 48
 	CallerNumberType *int64 `json:"CallerNumberType,omitempty" xml:"CallerNumberType,omitempty"`
-	// The destination number for the transfer, such as the phone number of a customer service agent.
+	// The answering party number, such as a user mobile number, customer service agent number, or robot number.
 	//
 	// example:
 	//
 	// 123111122222
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// The type of the called number.
+	// The called number type.
 	//
 	// example:
 	//
 	// 1
 	CallingNumberType *int64 `json:"CallingNumberType,omitempty" xml:"CallingNumberType,omitempty"`
-	// The customer route code.
+	// The customer line code.
 	//
 	// example:
 	//
 	// 123
 	CustomerRouteCode *string `json:"CustomerRouteCode,omitempty" xml:"CustomerRouteCode,omitempty"`
-	// Specifies whether to enable call transfer.
+	// Specifies whether the feature is enabled.
 	//
 	// example:
 	//
@@ -727,23 +748,23 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTransferConfig str
 	//
 	// Additional information for the agent
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The prompt that is played when the transfer to a manual agent fails.
+	// The prompt displayed when the transfer to a human agent fails.
 	//
 	// example:
 	//
-	// 失败说明
+	// Failure description
 	FailureContent *string `json:"FailureContent,omitempty" xml:"FailureContent,omitempty"`
-	// The agent route code.
+	// The agent line code.
 	//
 	// example:
 	//
 	// SEAT_CTI_A_NET
 	SeatRouteCode *string `json:"SeatRouteCode,omitempty" xml:"SeatRouteCode,omitempty"`
-	// The name of the agent route.
+	// The agent line name.
 	//
 	// example:
 	//
-	// 人工座席
+	// Human agent
 	SeatRouteName *string `json:"SeatRouteName,omitempty" xml:"SeatRouteName,omitempty"`
 	// The business ID.
 	//
@@ -751,13 +772,13 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTransferConfig str
 	//
 	// 123
 	TransferBizId *string `json:"TransferBizId,omitempty" xml:"TransferBizId,omitempty"`
-	// The prompt that is played when the call is transferred to a manual agent.
+	// The prompt displayed when the call is transferred to a human agent.
 	//
 	// example:
 	//
-	// 提示语
+	// Prompt message
 	TransferContent *string `json:"TransferContent,omitempty" xml:"TransferContent,omitempty"`
-	// The agent transfer type.
+	// The transfer-to-agent type.
 	//
 	// example:
 	//
@@ -904,37 +925,37 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTransferConfig
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig struct {
-	// Specifies whether to enable background sound.
+	// Specifies whether background sound is enabled.
 	//
 	// example:
 	//
 	// true
 	BackgroundEnabled *bool `json:"BackgroundEnabled,omitempty" xml:"BackgroundEnabled,omitempty"`
-	// The ID of the background sound.
+	// The background sound ID.
 	//
 	// example:
 	//
 	// 17
 	BackgroundSound *int64 `json:"BackgroundSound,omitempty" xml:"BackgroundSound,omitempty"`
-	// The volume of the background sound. Valid values: `0` (low), `1` (medium), and `2` (high).
+	// The background sound volume. Valid values: 0: low. 1: medium. 2: high.
 	//
 	// example:
 	//
 	// 1
 	BackgroundVolume *int64 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
-	// The account of the third-party voice platform.
+	// The third-party voice platform account.
 	//
 	// example:
 	//
 	// 75
 	CustomerAccountId *int64 `json:"CustomerAccountId,omitempty" xml:"CustomerAccountId,omitempty"`
-	// Specifies whether to enable audio mixing.
+	// Specifies whether audio mixing is enabled.
 	//
 	// example:
 	//
 	// true
 	MixingEnabled *bool `json:"MixingEnabled,omitempty" xml:"MixingEnabled,omitempty"`
-	// The ID of the audio mixing template.
+	// The audio mixing template ID.
 	//
 	// example:
 	//
@@ -946,7 +967,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig struct {
 	//
 	// voice-12345
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The speech rate for TTS playback. Valid values: -200 to 200. Default value: 0.
+	// The voice speed for TTS playback. Valid values: -200 to 200. Default value: 0.
 	//
 	// example:
 	//
@@ -958,7 +979,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig struct {
 	//
 	// longxiaoxia_v2p1
 	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	// The volume of TTS playback. Valid values: 0 to 100.
+	// The volume for TTS playback. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -970,19 +991,19 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig struct {
 	//
 	// V123ABC00
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	// The type of the TTS voice. Valid values:
+	// The TTS voice type. Valid values:
 	//
-	// `VOICE_TYPE_SYSTEM`: a system voice.
+	// `VOICE_TYPE_SYSTEM`: system voice.
 	//
-	// `VOICE_TYPE_CLONE`: a cloned voice.
+	// `VOICE_TYPE_CLONE`: cloned voice.
 	//
-	// `VOICE_TYPE_DOUBAO`: a Doubao voice.
+	// `VOICE_TYPE_DOUBAO`: Doubao voice.
 	//
-	// `VOICE_TYPE_MINIMAX`: a Minimax voice.
+	// `VOICE_TYPE_MINIMAX`: Minimax voice.
 	//
-	// `VOICE_TYPE_OPENTTS`: an open voice.
+	// `VOICE_TYPE_OPENTTS`: open voice.
 	//
-	// `VOICE_TYPE_BL_CUSTOM`: a high-quality custom cloned voice.
+	// `VOICE_TYPE_BL_CUSTOM`: custom premium cloned voice.
 	//
 	// example:
 	//
@@ -1111,7 +1132,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataAgentCallConfigTtsConfig) Val
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataAgentDemandConfig struct {
-	// Specifies whether the agent was built with AI assistance.
+	// Specifies whether AI-assisted building is enabled.
 	//
 	// example:
 	//
@@ -1121,7 +1142,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentDemandConfig struct {
 	//
 	// example:
 	//
-	// 进行产品营销，介绍优势特点
+	// Conduct product marketing and introduce advantages and features
 	BasicTaskDescription *string `json:"BasicTaskDescription,omitempty" xml:"BasicTaskDescription,omitempty"`
 	// The business scenario.
 	//
@@ -1133,19 +1154,19 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataAgentDemandConfig struct {
 	//
 	// example:
 	//
-	// 销售线索转化
+	// Sales lead conversion
 	CoreTarget *string `json:"CoreTarget,omitempty" xml:"CoreTarget,omitempty"`
 	// The system role.
 	//
 	// example:
 	//
-	// 销售
+	// Sales
 	SysRole *string `json:"SysRole,omitempty" xml:"SysRole,omitempty"`
 	// The user role.
 	//
 	// example:
 	//
-	// 潜在客户
+	// Potential customer
 	UserRole *string `json:"UserRole,omitempty" xml:"UserRole,omitempty"`
 }
 
@@ -1218,7 +1239,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataAgentDemandConfig) Validate()
 type QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfig struct {
 	// The collection of knowledge bases.
 	KnowledgeIds []*QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigKnowledgeIds `json:"KnowledgeIds,omitempty" xml:"KnowledgeIds,omitempty" type:"Repeated"`
-	// The Retrieval-Augmented Generation (RAG) configuration.
+	// The RAG configuration.
 	RagConfig *QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigRagConfig `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
 }
 
@@ -1267,17 +1288,17 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfig) Validate() e
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigKnowledgeIds struct {
-	// The ID of the knowledge base.
+	// The knowledge base ID.
 	//
 	// example:
 	//
 	// 68
 	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	// The name of the knowledge base.
+	// The knowledge base name.
 	//
 	// example:
 	//
-	// 产品知识库
+	// Product knowledge base
 	KnowledgeName *string `json:"KnowledgeName,omitempty" xml:"KnowledgeName,omitempty"`
 }
 
@@ -1312,13 +1333,13 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigKnowledgeIds) 
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigRagConfig struct {
-	// RAG retrieval description
+	// The RAG retrieval description.
 	//
 	// example:
 	//
-	// 知识库检索
+	// Knowledge base retrieval
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Enable RAG retrieval
+	// Indicates whether RAG retrieval is enabled.
 	//
 	// example:
 	//
@@ -1357,15 +1378,15 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataKnowledgeConfigRagConfig) Val
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfig struct {
-	// The ID of the call variable.
+	// The call variable ID.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The enumerated values for the call variable.
+	// The available values for the call variable label.
 	PhoneTagEnum []*QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfigPhoneTagEnum `json:"PhoneTagEnum,omitempty" xml:"PhoneTagEnum,omitempty" type:"Repeated"`
-	// The key of the call variable.
+	// The key name of the call variable.
 	//
 	// example:
 	//
@@ -1375,9 +1396,9 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfig struct {
 	//
 	// example:
 	//
-	// 用户性别
+	// User gender
 	PhoneTagName *string `json:"PhoneTagName,omitempty" xml:"PhoneTagName,omitempty"`
-	// Specifies whether the call variable is required.
+	// Indicates whether the call variable is required.
 	//
 	// example:
 	//
@@ -1389,7 +1410,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfig struct {
 	//
 	// MANUAL_CREATE
 	PhoneTagSource *string `json:"PhoneTagSource,omitempty" xml:"PhoneTagSource,omitempty"`
-	// The type of the call variable. Valid values: `TEXT` and `ENUM`.
+	// The type of the call variable. Valid values: TEXT (text type) and ENUM (enumeration type).
 	//
 	// example:
 	//
@@ -1488,13 +1509,13 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfigPhoneTagEnum struct
 	//
 	// gender
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tag ID.
+	// The label ID.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//
@@ -1542,11 +1563,11 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataPhoneTagConfigPhoneTagEnum) V
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig struct {
-	// The configuration for mapping call results to tags.
+	// The call result tag mapping configuration.
 	CallResultTagConfig *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig `json:"CallResultTagConfig,omitempty" xml:"CallResultTagConfig,omitempty" type:"Struct"`
 	// The main intent.
 	MainPurpose *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurpose `json:"MainPurpose,omitempty" xml:"MainPurpose,omitempty" type:"Struct"`
-	// The output tag configuration.
+	// The output tag configurations.
 	OutputTagConfig []*QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfig `json:"OutputTagConfig,omitempty" xml:"OutputTagConfig,omitempty" type:"Repeated"`
 }
 
@@ -1611,7 +1632,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfig) Validate() err
 type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfig struct {
 	// The default fallback tag information.
 	DefaultTag *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigDefaultTag `json:"DefaultTag,omitempty" xml:"DefaultTag,omitempty" type:"Struct"`
-	// The mapping of call results to tags.
+	// The mapping between call results and tags.
 	MappingTag map[string]*string `json:"MappingTag,omitempty" xml:"MappingTag,omitempty"`
 }
 
@@ -1655,13 +1676,13 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagConfigD
 	//
 	// example:
 	//
-	// 标签说明
+	// Tag description
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The tag.
 	//
 	// example:
 	//
-	// 标签1
+	// Tag1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -1696,7 +1717,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigCallResultTagCon
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurpose struct {
-	// The ID of the main intent.
+	// The main intent ID.
 	//
 	// example:
 	//
@@ -1708,7 +1729,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurpose struct {
 	//
 	// Description of the main intent
 	MainPurposeDescription *string `json:"MainPurposeDescription,omitempty" xml:"MainPurposeDescription,omitempty"`
-	// The enumerated values for the main intent.
+	// The available values for the main intent.
 	MainPurposeEnum []*QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurposeMainPurposeEnum `json:"MainPurposeEnum,omitempty" xml:"MainPurposeEnum,omitempty" type:"Repeated"`
 	// The name of the main intent.
 	//
@@ -1716,7 +1737,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurpose struct {
 	//
 	// Customer inquiry handling
 	MainPurposeName *string `json:"MainPurposeName,omitempty" xml:"MainPurposeName,omitempty"`
-	// The value type of the main intent. Valid values: `TEXT` and `ENUM`.
+	// The value type of the main intent. Valid values: TEXT (text type) and ENUM (enumeration type).
 	//
 	// example:
 	//
@@ -1791,19 +1812,19 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurpose) Val
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurposeMainPurposeEnum struct {
-	// The description of the value.
+	// The description of the available value.
 	//
 	// example:
 	//
 	// Description of the tag value
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique ID of the tag.
+	// The unique ID of the label.
 	//
 	// example:
 	//
 	// tag_12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The value.
+	// The available value.
 	//
 	// example:
 	//
@@ -1851,7 +1872,7 @@ func (s *QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigMainPurposeMainP
 }
 
 type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfig struct {
-	// The ID of the output tag.
+	// The output tag ID.
 	//
 	// example:
 	//
@@ -1861,17 +1882,17 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfig stru
 	//
 	// example:
 	//
-	// 用户购买产品的意愿
+	// The user\\"s willingness to purchase the product
 	OutputTagDescription *string `json:"OutputTagDescription,omitempty" xml:"OutputTagDescription,omitempty"`
-	// The enumerated values for the output tag.
+	// The available options for the output tag.
 	OutputTagEnum []*QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfigOutputTagEnum `json:"OutputTagEnum,omitempty" xml:"OutputTagEnum,omitempty" type:"Repeated"`
 	// The name of the output tag.
 	//
 	// example:
 	//
-	// 购买意愿
+	// Purchase willingness
 	OutputTagName *string `json:"OutputTagName,omitempty" xml:"OutputTagName,omitempty"`
-	// The value type of the output tag. Valid values: `TEXT` and `ENUM`.
+	// The value type of the output tag. Valid values: TEXT (text type) and ENUM (enumeration type).
 	//
 	// example:
 	//
@@ -1950,7 +1971,7 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfigOutpu
 	//
 	// example:
 	//
-	// 用户有较高购买意愿
+	// The user has a high willingness to purchase
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tag ID.
 	//
@@ -1958,11 +1979,11 @@ type QueryAiVoiceAgentDetailNewResponseBodyDataSummaryConfigOutputTagConfigOutpu
 	//
 	// 10
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The enumerated value of the tag.
+	// The tag enumeration value.
 	//
 	// example:
 	//
-	// 高意愿
+	// High willingness
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

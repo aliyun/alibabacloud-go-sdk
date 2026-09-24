@@ -20,25 +20,25 @@ type iAiccsSmartCallResponseBody interface {
 }
 
 type AiccsSmartCallResponseBody struct {
-	// Unique receipt ID for this call.
+	// The unique receipt ID for this call.
 	//
 	// example:
 	//
 	// 116012854210^10281427****
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Request status code. A return value of "OK" indicates that the request succeeded.
+	// The request status code. OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

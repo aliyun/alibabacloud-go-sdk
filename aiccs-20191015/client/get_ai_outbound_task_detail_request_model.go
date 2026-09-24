@@ -16,9 +16,9 @@ type iGetAiOutboundTaskDetailRequest interface {
 }
 
 type GetAiOutboundTaskDetailRequest struct {
-	// Artificial Intelligence Cloud Call Service (AICCS) instance ID.
+	// The ID of the Artificial Intelligence Cloud Call Service (AICCS) instance.
 	//
-	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	// You can obtain the instance ID from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type GetAiOutboundTaskDetailRequest struct {
 	//
 	// agent_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Job ID.
+	// The task ID.
 	//
-	// You can call the [CreateAiOutboundTask](https://help.aliyun.com/document_detail/312260.html) API and check the **Data*	- field in the response, or call the [GetAiOutboundTaskList](https://help.aliyun.com/document_detail/2718026.html) API and check the **TaskId*	- field in the response.
+	// You can call the [CreateAiOutboundTask](https://help.aliyun.com/document_detail/312260.html) operation and check the **Data*	- parameter in the response, or call the [GetAiOutboundTaskList](https://help.aliyun.com/document_detail/2718026.html) operation and check the **TaskId*	- parameter in the response.
 	//
 	// This parameter is required.
 	//

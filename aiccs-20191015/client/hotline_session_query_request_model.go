@@ -76,23 +76,23 @@ type HotlineSessionQueryRequest struct {
 	AcidList []*string `json:"AcidList,omitempty" xml:"AcidList,omitempty" type:"Repeated"`
 	// The call result. Valid values:
 	//
-	// - **normal**: The call ended normally.
+	// - **normal**: normal hangup.
 	//
-	// - **touchRouteError**: The call was terminated in the queue.
+	// - **touchRouteError**: queue hangup.
 	//
-	// - **touchInQueue**: The call was terminated in the queue.
+	// - **touchInQueue**: queue hangup.
 	//
-	// - **touchInLoss**: The call was terminated in the queue.
+	// - **touchInLoss**: queue hangup.
 	//
-	// - **userHangup**: The user hung up or the call was terminated in the IVR.
+	// - **userHangup**: user hangup or IVR hangup.
 	//
-	// - **sysHangup**: The system hung up or the call was terminated in the IVR.
+	// - **sysHangup**: system hangup or IVR hangup.
 	//
-	// - **transferAgent**: The user hung up or the call was terminated in the IVR.
+	// - **transferAgent**: user hangup or IVR hangup.
 	//
-	// - **dailing**: The agent hung up or the call was terminated during ringing.
+	// - **dailing**: agent hangup or ringing hangup.
 	//
-	// - **TouchRingCallLoss**: The call was terminated in the queue or during ringing.
+	// - **TouchRingCallLoss**: queue hangup or ringing hangup.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type HotlineSessionQueryRequest struct {
 	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
 	// The list of call types.
 	CallTypeList []*int32 `json:"CallTypeList,omitempty" xml:"CallTypeList,omitempty" type:"Repeated"`
-	// The number of the caller. For example, a mobile phone number, an agent number, or a robot number.
+	// The number of the caller. For example, a mobile phone number of a user, an agent number, or a robot number.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type HotlineSessionQueryRequest struct {
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	// The list of called numbers.
 	CalledNumberList []*string `json:"CalledNumberList,omitempty" xml:"CalledNumberList,omitempty" type:"Repeated"`
-	// The number of the callee. For example, a mobile phone number, an agent number, or a robot number.
+	// The number of the callee. For example, a mobile phone number of a user, an agent number, or a robot number.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type HotlineSessionQueryRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the Artificial Intelligence Cloud Call Service (AICCS) instance.
 	//
-	// You can obtain the instance ID from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	// You can obtain the instance ID from <b>Instance Management</b> in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
 	//
 	// This parameter is required.
 	//

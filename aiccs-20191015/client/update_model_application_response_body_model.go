@@ -54,7 +54,7 @@ type UpdateModelApplicationResponseBody struct {
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
 	// - **true**: Successful.
 	//

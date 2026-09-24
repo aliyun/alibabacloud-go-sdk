@@ -42,11 +42,11 @@ type ListTaskDetailResponseBody struct {
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The operation was successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The operation failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListTaskDetailResponseBodyData struct {
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of task details.
+	// The list of task records.
 	Record []*ListTaskDetailResponseBodyDataRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
 	// The total number of tasks.
 	//
@@ -225,7 +225,7 @@ type ListTaskDetailResponseBodyDataRecord struct {
 	//
 	// 30
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The end time.
+	// The end time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -243,13 +243,13 @@ type ListTaskDetailResponseBodyDataRecord struct {
 	//
 	// 1
 	RetryCurTimes *int32 `json:"RetryCurTimes,omitempty" xml:"RetryCurTimes,omitempty"`
-	// The retry count.
+	// The total number of retries.
 	//
 	// example:
 	//
 	// 1
 	RetryTimes *int32 `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
-	// The start time.
+	// The start time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

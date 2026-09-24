@@ -38,9 +38,9 @@ type UpdateAiCallTaskResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The update result. Valid values:
 	//
-	// - **true**: Updated.
+	// - **true**: The update is successful.
 	//
-	// - **false**: Failed to update.
+	// - **false**: The update failed.
 	//
 	// example:
 	//

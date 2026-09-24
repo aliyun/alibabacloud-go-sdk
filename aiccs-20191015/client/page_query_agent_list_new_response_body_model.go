@@ -24,7 +24,7 @@ type iPageQueryAgentListNewResponseBody interface {
 }
 
 type PageQueryAgentListNewResponseBody struct {
-	// The access denied detail.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type PageQueryAgentListNewResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *PageQueryAgentListNewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that describes the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type PageQueryAgentListNewResponseBody struct {
 	//
 	// 12345678-1234-1234-1234-123456789012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the request succeeded.
+	// Indicates whether the API call was successful.
 	//
-	// - **`true`**: The request succeeded.
+	// - **true**: Successful.
 	//
-	// - **`false`**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type PageQueryAgentListNewResponseBodyData struct {
 	//
 	// 41
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total count.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -220,9 +220,11 @@ type PageQueryAgentListNewResponseBodyDataList struct {
 	//
 	// 51
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The agent creation mode. Valid values:<br>
+	// The agent building mode. Valid values:
 	//
-	// `0`: Prompt mode (`PROMPT`). `1`: Conversation flow mode (`CONVERSATION`).<br>
+	// - 0: prompt mode (PROMPT).
+	//
+	// - 1: dialog flow mode (CONVERSATION).
 	//
 	// example:
 	//
@@ -232,7 +234,7 @@ type PageQueryAgentListNewResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 智能客服助手
+	// Intelligent Customer Service Assistant
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The application code.
 	//
@@ -240,19 +242,19 @@ type PageQueryAgentListNewResponseBodyDataList struct {
 	//
 	// aicc_demo_app
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
-	// The creation time.
+	// The creation time, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-01-20 12:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The deployment branch ID.
+	// The ID of the branch being deployed.
 	//
 	// example:
 	//
 	// 24
 	DeployBranchId *int64 `json:"DeployBranchId,omitempty" xml:"DeployBranchId,omitempty"`
-	// The effective branch name.
+	// The name of the active branch.
 	//
 	// example:
 	//
@@ -262,44 +264,62 @@ type PageQueryAgentListNewResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 智能客服助手，提供自动化的客户服务支持
+	// Intelligent customer service assistant that provides automated customer service support
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The effective version ID.
+	// The ID of the active version.
 	//
 	// example:
 	//
 	// 71
 	EffectiveVersionId *int64 `json:"EffectiveVersionId,omitempty" xml:"EffectiveVersionId,omitempty"`
-	// The effective version name.
+	// The name of the active version.
 	//
 	// example:
 	//
 	// v1.0.0
 	EffectiveVersionName *string `json:"EffectiveVersionName,omitempty" xml:"EffectiveVersionName,omitempty"`
-	// Specifies whether the agent can be used for outbound calls. A value of `true` means the agent\\"s current deployment branch has a published version.
+	// Indicates whether the agent is available for outbound calls. A value of True indicates that the current deployment branch of the agent has a published version and is available for outbound calls.
 	//
 	// example:
 	//
 	// true
 	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	// The most recent publish time.
+	// The latest version publish time, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-01-20 12:00:00
 	LatestPublishTime *string `json:"LatestPublishTime,omitempty" xml:"LatestPublishTime,omitempty"`
-	// The last modified time.
+	// The last modification time, in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-01-15 10:30:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The scene.
+	// The scenario.
 	//
 	// example:
 	//
-	// 个人线索转化
+	// Personal lead conversion
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The service direction.
+	//
+	// example:
+	//
+	// Sample value
+	ServiceDirection *string `json:"ServiceDirection,omitempty" xml:"ServiceDirection,omitempty"`
+	// The source template ID.
+	//
+	// example:
+	//
+	// 62
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The source template name.
+	//
+	// example:
+	//
+	// Sample value
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s PageQueryAgentListNewResponseBodyDataList) String() string {
@@ -364,6 +384,18 @@ func (s *PageQueryAgentListNewResponseBodyDataList) GetModifyTime() *string {
 
 func (s *PageQueryAgentListNewResponseBodyDataList) GetScene() *string {
 	return s.Scene
+}
+
+func (s *PageQueryAgentListNewResponseBodyDataList) GetServiceDirection() *string {
+	return s.ServiceDirection
+}
+
+func (s *PageQueryAgentListNewResponseBodyDataList) GetTemplateId() *int64 {
+	return s.TemplateId
+}
+
+func (s *PageQueryAgentListNewResponseBodyDataList) GetTemplateName() *string {
+	return s.TemplateName
 }
 
 func (s *PageQueryAgentListNewResponseBodyDataList) SetAgentId(v int64) *PageQueryAgentListNewResponseBodyDataList {
@@ -433,6 +465,21 @@ func (s *PageQueryAgentListNewResponseBodyDataList) SetModifyTime(v string) *Pag
 
 func (s *PageQueryAgentListNewResponseBodyDataList) SetScene(v string) *PageQueryAgentListNewResponseBodyDataList {
 	s.Scene = &v
+	return s
+}
+
+func (s *PageQueryAgentListNewResponseBodyDataList) SetServiceDirection(v string) *PageQueryAgentListNewResponseBodyDataList {
+	s.ServiceDirection = &v
+	return s
+}
+
+func (s *PageQueryAgentListNewResponseBodyDataList) SetTemplateId(v int64) *PageQueryAgentListNewResponseBodyDataList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *PageQueryAgentListNewResponseBodyDataList) SetTemplateName(v string) *PageQueryAgentListNewResponseBodyDataList {
+	s.TemplateName = &v
 	return s
 }
 

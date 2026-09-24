@@ -24,7 +24,7 @@ type iQueryConversationDetailInfoRequest interface {
 }
 
 type QueryConversationDetailInfoRequest struct {
-	// The batch ID. This ID is returned by the [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) operation when you import callee data. You can view this ID on the **execution history*	- page by navigating to **call task management*	- > **details**.
+	// The task batch ID. This is the batch ID returned when callee data is imported. View the task batch ID on the **Call Task Management*	- > **Details*	- > **Execution Records*	- page, or use the batch ID returned when importing callee data by calling the [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type QueryConversationDetailInfoRequest struct {
 	//
 	// 139*********216
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The detail ID. You can find this ID in the upper-left corner of the page by navigating to **call task management*	- > **details*	- > **execution history*	- > **completed*	- > **call details**, or get it by calling the [QueryAiCallDetailPage](https://help.aliyun.com/document_detail/2926853.html) operation.
+	// The task detail ID. View the task detail ID in the upper-left corner of the **Call Task Management*	- > **Details*	- > **Execution Records*	- > **Completed*	- > **Call Details*	- page, or retrieve it by calling the [QueryAiCallDetailPage](https://help.aliyun.com/document_detail/2926853.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type QueryConversationDetailInfoRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The task ID. You can find this ID on the **call task management*	- page or get it by calling the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation.
+	// The task ID. View the task ID on the **Call Task Management*	- page or retrieve it by calling the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation.
 	//
 	// This parameter is required.
 	//

@@ -22,29 +22,29 @@ type iGetAiOutboundTaskDetailResponseBody interface {
 }
 
 type GetAiOutboundTaskDetailResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Outbound call job details.
+	// The details of the outbound call task.
 	Data *GetAiOutboundTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API was invoked successfully.
+	// Indicates whether the call was successful.
 	//
-	// - **true**: Succeeded.
+	// - **true**: Successful.
 	//
 	// - **false**: Failed.
 	//
@@ -117,63 +117,63 @@ func (s *GetAiOutboundTaskDetailResponseBody) Validate() error {
 }
 
 type GetAiOutboundTaskDetailResponseBodyData struct {
-	// Concurrency for automated outbound calls.
+	// The concurrency for automatic outbound calls.
 	//
 	// example:
 	//
 	// 10
 	ConcurrentRate *int32 `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	// Job description.
+	// The task description.
 	//
 	// example:
 	//
-	// 房产销售
+	// Real estate sales
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Task execution time.
+	// The task execution time. Time periods are configured by day of the week using a JSON object. The start and end values are in the HH:mm format.
 	//
 	// example:
 	//
 	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	// Fixed outbound call ratio for predictive dialing.
+	// The fixed call rate for predictive outbound calls.
 	//
 	// example:
 	//
 	// 1.2
 	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
-	// Skill group ID (for predictive outbound calls) or IVR ID (for automated outbound calls).
+	// The skill group ID (for predictive outbound calls) or IVR ID (for automatic outbound calls).
 	//
 	// example:
 	//
 	// 123456
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	// Skill group name or IVR name.
+	// The skill group name or IVR name.
 	//
 	// example:
 	//
-	// 热线技能组
+	// Hotline skill group
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
-	// Job name.
+	// The task name.
 	//
 	// example:
 	//
-	// xxxxx外呼
+	// xxxxx outbound call
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Called number deduplication policy.
+	// The callee number deduplication policy.
 	//
-	// - **0**: Remove duplicates.
+	// - **0**: Deduplicate.
 	//
-	// - **1**: Do not remove duplicates.
+	// - **1**: Do not deduplicate.
 	//
 	// example:
 	//
 	// 0
 	NumRepeated *int32 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
-	// Outbound caller numbers.
+	// The outbound caller numbers.
 	OutboundNums []*string `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
-	// Failed-call retry policy.
+	// The failed recall policy.
 	RecallRule *GetAiOutboundTaskDetailResponseBodyDataRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
-	// Job status. Valid values:
+	// The task status. Valid values:
 	//
 	// - **0**: Not started.
 	//
@@ -191,23 +191,23 @@ type GetAiOutboundTaskDetailResponseBodyData struct {
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Task status description.
+	// The task status description.
 	//
 	// example:
 	//
-	// 未开始
+	// Not started
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 123
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task Type. Valid values:
+	// The task type. Valid values:
 	//
 	// - **2**: Predictive outbound call.
 	//
-	// - **3**: Automated outbound call.
+	// - **3**: Automatic outbound call.
 	//
 	// example:
 	//
@@ -359,13 +359,13 @@ func (s *GetAiOutboundTaskDetailResponseBodyData) Validate() error {
 }
 
 type GetAiOutboundTaskDetailResponseBodyDataRecallRule struct {
-	// Number of retries.
+	// The number of recall attempts.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Recall interval. Unit: minutes.
+	// The recall interval. Unit: minutes.
 	//
 	// example:
 	//

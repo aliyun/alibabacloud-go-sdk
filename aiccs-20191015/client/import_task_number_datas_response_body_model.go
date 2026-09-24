@@ -30,7 +30,7 @@ type ImportTaskNumberDatasResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The request status code. `OK` indicates that the request was successful.
+	// The request status code. OK indicates that the request was successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ImportTaskNumberDatasResponseBody struct {
 	//
 	// 123497836486******
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type ImportTaskNumberDatasResponseBody struct {
 	//
 	// CFC2F07E-F763-7C48-1A32-6EFFB6EA344E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

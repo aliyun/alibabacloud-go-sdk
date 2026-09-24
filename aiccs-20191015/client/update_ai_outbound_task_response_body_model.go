@@ -26,7 +26,7 @@ type UpdateAiOutboundTaskResponseBody struct {
 	//
 	// ok
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type UpdateAiOutboundTaskResponseBody struct {
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API invocation succeeded.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Succeeded.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

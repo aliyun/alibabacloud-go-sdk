@@ -24,33 +24,33 @@ type iQuerySkillGroupsResponseBody interface {
 }
 
 type QuerySkillGroupsResponseBody struct {
-	// Current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Data.
+	// The data.
 	Data []*QuerySkillGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	OnePageSize *int32 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 4
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -134,35 +134,35 @@ func (s *QuerySkillGroupsResponseBody) Validate() error {
 }
 
 type QuerySkillGroupsResponseBodyData struct {
-	// Skill group channel type.
+	// The channel type of the skill group.
 	//
 	// example:
 	//
 	// 2
 	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// Skill group description.
+	// The description of the skill group.
 	//
 	// example:
 	//
-	// 自动化技能组
+	// Automation skill group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Skill group display name.
+	// The display name of the skill group.
 	//
 	// example:
 	//
-	// 自动化技能组
+	// Automation skill group
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Skill group ID.
+	// The ID of the skill group.
 	//
 	// example:
 	//
 	// 123456
 	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	// Skill group name.
+	// The name of the skill group.
 	//
 	// example:
 	//
-	// 自动化技能组
+	// Automation skill group
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
 

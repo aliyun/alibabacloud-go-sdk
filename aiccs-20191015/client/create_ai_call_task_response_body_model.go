@@ -24,7 +24,7 @@ type iCreateAiCallTaskResponseBody interface {
 }
 
 type CreateAiCallTaskResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateAiCallTaskResponseBody struct {
 	//
 	// example:
 	//
-	// Success
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -56,9 +56,9 @@ type CreateAiCallTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the API call is successful. Valid values:
 	//
-	// - **true**: successful.
+	// - **true**: Successful.
 	//
-	// - **false**: failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//

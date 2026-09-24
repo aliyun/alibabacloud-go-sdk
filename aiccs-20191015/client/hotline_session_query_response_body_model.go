@@ -209,7 +209,7 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	ActiveTransferId *string `json:"ActiveTransferId,omitempty" xml:"ActiveTransferId,omitempty"`
 	// The call duration. Unit: seconds.
 	//
-	// > No call duration is available for unanswered calls.
+	// > No call duration is available in scenarios where the call is not connected.
 	//
 	// example:
 	//
@@ -217,23 +217,23 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	CallContinueTime *int32 `json:"CallContinueTime,omitempty" xml:"CallContinueTime,omitempty"`
 	// The call result. Valid values:
 	//
-	// - **normal**: The call ended normally.
+	// - **normal**: normal hangup.
 	//
-	// - **touchRouteError**: The call was terminated in the queue.
+	// - **touchRouteError**: queue hangup.
 	//
-	// - **touchInQueue**: The call was terminated in the queue.
+	// - **touchInQueue**: queue hangup.
 	//
-	// - **touchInLoss**: The call was terminated in the queue.
+	// - **touchInLoss**: queue hangup.
 	//
-	// - **userHangup**: The user hung up or the call was terminated in the IVR.
+	// - **userHangup**: user hangup or IVR hangup.
 	//
-	// - **sysHangup**: The system hung up or the call was terminated in the IVR.
+	// - **sysHangup**: system hangup or IVR hangup.
 	//
-	// - **transferAgent**: The user hung up or the call was terminated in the IVR.
+	// - **transferAgent**: user hangup or IVR hangup.
 	//
-	// - **dailing**: The agent hung up or the call was terminated during ringing.
+	// - **dailing**: agent hangup or ringing hangup.
 	//
-	// - **TouchRingCallLoss**: The call was terminated in the queue or during ringing.
+	// - **TouchRingCallLoss**: queue hangup or ringing hangup.
 	//
 	// example:
 	//
@@ -257,17 +257,17 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	//
 	// 135615*****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// The number of the caller. For example, a mobile phone number, an agent number, or a robot number.
+	// The number of the caller. For example, a mobile phone number of a user, an agent number, or a robot number.
 	//
 	// example:
 	//
 	// 0571773
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// The time when the call was created.
+	// The time when the call was created. Format: YYYY-MM-DD HH:mm:ss.
 	//
-	// > - For outbound calls, this is the time when the outbound call was initiated.
+	// > - For outbound call scenarios, this is the time when the outbound call was initiated.
 	//
-	// - For inbound calls, this is the time when the call entered the ACC system.
+	// - For inbound call scenarios, this is the time when the call entered the ACC system.
 	//
 	// example:
 	//
@@ -275,21 +275,21 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The satisfaction rating level. Valid values:
 	//
-	// - **2**: level-2 satisfaction
+	// - **2**: 2-level satisfaction
 	//
-	// - **3**: level-3 satisfaction
+	// - **3**: 3-level satisfaction
 	//
-	// - **4**: level-4 satisfaction
+	// - **4**: 4-level satisfaction
 	//
-	// - **5**: level-5 satisfaction
+	// - **5**: 5-level satisfaction
 	//
-	// > No data is available for outbound calls or unanswered calls.
+	// > No data is available for outbound call scenarios or scenarios where the call is not connected.
 	//
 	// example:
 	//
 	// 4
 	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	// The satisfaction score. Valid values:
+	// The satisfaction rating score. Valid values:
 	//
 	// - **1**: Very dissatisfied.
 	//
@@ -301,7 +301,7 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	//
 	// - **5**: Very satisfied.
 	//
-	// > No data is available for outbound calls or unanswered calls.
+	// > No data is available for outbound call scenarios or scenarios where the call is not connected.
 	//
 	// example:
 	//
@@ -309,7 +309,7 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	EvaluationScore *int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
 	// The skill group ID.
 	//
-	// > When CallType is set to **1**, no skill group information is available for outbound calls.
+	// > When CallType is set to **1**, no skill group information is available for outbound call scenarios.
 	//
 	// example:
 	//
@@ -317,7 +317,7 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The skill group name.
 	//
-	// > When CallType is set to **1**, no skill group information is available for outbound calls.
+	// > When CallType is set to **1**, no skill group information is available for outbound call scenarios.
 	//
 	// example:
 	//
@@ -337,7 +337,7 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	//
 	// 2
 	HangUpRole *string `json:"HangUpRole,omitempty" xml:"HangUpRole,omitempty"`
-	// The hang-up time.
+	// The hang-up time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -349,9 +349,9 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	//
 	// acc1c58dab4a4dd280e3813c66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the call entered the queue for hotline assignment.
+	// The time when the call entered the queue for hotline assignment. Format: YYYY-MM-DD HH:mm:ss.
 	//
-	// > No queue entry time is available for outbound calls.
+	// > No queue entry time is available for outbound call scenarios.
 	//
 	// example:
 	//
@@ -369,9 +369,9 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	//
 	// AnonymousMember
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	// The time when the call left the queue for hotline assignment.
+	// The time when the call left the queue for hotline assignment. Format: YYYY-MM-DD HH:mm:ss.
 	//
-	// > No queue exit time is available for outbound calls.
+	// > No queue exit time is available for outbound call scenarios.
 	//
 	// example:
 	//
@@ -397,13 +397,13 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	//
 	// 1
 	PassiveTransferIdType *string `json:"PassiveTransferIdType,omitempty" xml:"PassiveTransferIdType,omitempty"`
-	// The time when the call was answered.
+	// The time when the call was answered. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2020-10-02 22:33:09
 	PickUpTime *string `json:"PickUpTime,omitempty" xml:"PickUpTime,omitempty"`
-	// The queue wait duration.
+	// The queue waiting duration.
 	//
 	// example:
 	//
@@ -411,23 +411,23 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	QueueUpContinueTime *int32 `json:"QueueUpContinueTime,omitempty" xml:"QueueUpContinueTime,omitempty"`
 	// The ringing duration. Unit: seconds.
 	//
-	// > No ringing duration is available for outbound calls.
+	// > No ringing duration is available for outbound call scenarios.
 	//
 	// example:
 	//
 	// 10
 	RingContinueTime *int32 `json:"RingContinueTime,omitempty" xml:"RingContinueTime,omitempty"`
-	// The time when ringing ended.
+	// The time when ringing ended. Format: YYYY-MM-DD HH:mm:ss.
 	//
-	// > No ringing end time is available for outbound calls.
+	// > No ringing end time is available for outbound call scenarios.
 	//
 	// example:
 	//
 	// 2020-10-02 22:33:09
 	RingEndTime *string `json:"RingEndTime,omitempty" xml:"RingEndTime,omitempty"`
-	// The time when ringing started.
+	// The time when ringing started. Format: YYYY-MM-DD HH:mm:ss.
 	//
-	// > No ringing start time is available for outbound calls.
+	// > No ringing start time is available for outbound call scenarios.
 	//
 	// example:
 	//
@@ -435,7 +435,7 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	RingStartTime *string `json:"RingStartTime,omitempty" xml:"RingStartTime,omitempty"`
 	// The agent ID.
 	//
-	// > No agent information is available before an agent is assigned for inbound calls.
+	// > No agent information is available before the call is assigned to an agent in inbound call scenarios.
 	//
 	// example:
 	//
@@ -443,7 +443,7 @@ type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
 	ServicerId *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
 	// The agent name.
 	//
-	// > No agent information is available before an agent is assigned for inbound calls.
+	// > No agent information is available before the call is assigned to an agent in inbound call scenarios.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iTestLargeModelShrinkRequest interface {
 }
 
 type TestLargeModelShrinkRequest struct {
-	// The base models.
+	// The foundation model.
 	BaseModelShrink *string `json:"BaseModel,omitempty" xml:"BaseModel,omitempty"`
-	// The ID of the test scenario.
+	// The scenario ID.
 	//
 	// example:
 	//
@@ -39,7 +39,7 @@ type TestLargeModelShrinkRequest struct {
 	//
 	// example:
 	//
-	// 你好。
+	// Hello
 	UserDialogContent *string `json:"UserDialogContent,omitempty" xml:"UserDialogContent,omitempty"`
 }
 

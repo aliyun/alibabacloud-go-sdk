@@ -24,7 +24,7 @@ type iQueryConversationDetailInfoResponseBody interface {
 }
 
 type QueryConversationDetailInfoResponseBody struct {
-	// The details of the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type QueryConversationDetailInfoResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *QueryConversationDetailInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code message.
+	// The description of the status code.
 	//
 	// example:
 	//
-	// 成功
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -50,11 +50,11 @@ type QueryConversationDetailInfoResponseBody struct {
 	//
 	// F2051E18-FF3F-5C08-8D24-6F150D2AF757
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *QueryConversationDetailInfoResponseBody) Validate() error {
 }
 
 type QueryConversationDetailInfoResponseBodyData struct {
-	// The unique call ID.
+	// The unique ID of the call.
 	//
 	// example:
 	//
@@ -142,41 +142,41 @@ type QueryConversationDetailInfoResponseBodyData struct {
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// The call result. Valid values:
 	//
-	// - `CALL_FORWARDING`: Call forwarding.
+	// - CALL_FORWARDING: Call forwarding.
 	//
-	// - `INCOMING_CALL_BARRED`: Incoming call barred.
+	// - INCOMING_CALL_BARRED: Incoming call barred.
 	//
-	// - `CALL_REJECTED`: Call rejected.
+	// - CALL_REJECTED: Call rejected.
 	//
-	// - `ANSWERED`: Answered by user.
+	// - ANSWERED: Answered by user.
 	//
-	// - `USER_BUSY`: Called party busy.
+	// - USER_BUSY: Callee busy.
 	//
-	// - `POWERED_OFF`: Powered off.
+	// - POWERED_OFF: Powered off.
 	//
-	// - `NO_USER_RESPONSE`: Out of service area.
+	// - NO_USER_RESPONSE: Out of service area.
 	//
-	// - `OPERATOR_BLOCK`: Blocked by carrier.
+	// - OPERATOR_BLOCK: Blocked by carrier.
 	//
-	// - `OTHERS`: Other.
+	// - OTHERS: Other status.
 	//
-	// - `SUSPEND`: Suspended.
+	// - SUSPEND: Service suspended.
 	//
-	// - `CANCEL`: Canceled by caller.
+	// - CANCEL: Canceled by caller.
 	//
-	// - `INVALID_NUMBER`: Invalid number.
+	// - INVALID_NUMBER: Invalid number.
 	//
-	// - `UNAVAILABLE`: Temporarily unavailable.
+	// - UNAVAILABLE: Temporarily unavailable.
 	//
-	// - `NETWORK_BUSY`: Network busy.
+	// - NETWORK_BUSY: Network busy.
 	//
-	// - `NO_ANSWER`: No answer.
+	// - NO_ANSWER: No answer.
 	//
 	// example:
 	//
 	// ANSWERED
 	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
-	// The called number.
+	// The callee number.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type QueryConversationDetailInfoResponseBodyData struct {
 	//
 	// 0571*******
 	CallerPhone *string `json:"CallerPhone,omitempty" xml:"CallerPhone,omitempty"`
-	// The conversation record. The structure is a JSON array in which entries are sorted by time. Example:
+	// The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The format is as follows:
 	//
 	// ```json
 	//
@@ -196,9 +196,9 @@ type QueryConversationDetailInfoResponseBodyData struct {
 	//
 	//     {
 	//
-	//         "content":"Conversation content",
+	//         "content":"Chat content",
 	//
-	//         "role":"Role", // Valid values: user, assistant
+	//         "role":"Role",//Valid values: user, assistant (robot)
 	//
 	//     }
 	//
@@ -308,7 +308,7 @@ type QueryConversationDetailInfoResponseBodyData struct {
 	//
 	// ]
 	ConversationRecord *string `json:"ConversationRecord,omitempty" xml:"ConversationRecord,omitempty"`
-	// The duration of the call, in seconds. If the call was not connected, the value is 0.
+	// The call duration, in seconds. The value is 0 if the call is not connected.
 	//
 	// example:
 	//
@@ -322,69 +322,69 @@ type QueryConversationDetailInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// 主动取消
+	// Actively canceled
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The party that hung up. Valid values:
+	// The hangup direction. Valid values:
 	//
-	// - **0**: user.
+	// - **0**: User.
 	//
-	// - **1**: assistant.
+	// - **1**: Robot.
 	//
 	// example:
 	//
-	// 用户
+	// User
 	HangupDirection *string `json:"HangupDirection,omitempty" xml:"HangupDirection,omitempty"`
-	// The primary intent.
+	// The major intent.
 	//
 	// example:
 	//
 	// D
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
-	// The business-specific ID that is passed in. You can use this unique ID to associate the call with your business.
+	// The external business serial number. You can use a unique ID for business association.
 	//
 	// example:
 	//
 	// bb3bc32d-54b8-49c4-80d3-61583417d22e
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// A list of output tags.
+	// The list of output tags.
 	OutputTags []*QueryConversationDetailInfoResponseBodyDataOutputTags `json:"OutputTags,omitempty" xml:"OutputTags,omitempty" type:"Repeated"`
-	// The timestamp when the call was answered, in milliseconds.
+	// The time when the call was answered. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1754617273000
 	PickUpTime *int64 `json:"PickUpTime,omitempty" xml:"PickUpTime,omitempty"`
-	// The download URL for the recording file. This parameter is returned only after the recording file is generated.
+	// The download URL of the recording file. This field is available only after a recording file is generated.
 	//
 	// example:
 	//
 	// https://********
 	RecordingFileDownloadUrl *string `json:"RecordingFileDownloadUrl,omitempty" xml:"RecordingFileDownloadUrl,omitempty"`
-	// The timestamp when the call ended, in milliseconds.
+	// The time when the call ended. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 98
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The timestamp when the call was initiated, in milliseconds.
+	// The time when the call started. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 123123123123123
 	StartCallTime *int64 `json:"StartCallTime,omitempty" xml:"StartCallTime,omitempty"`
-	// The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) for the voice service.
+	// The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in Voice Messaging.
 	//
 	// example:
 	//
 	// 200005
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The status message returned by the carrier.
+	// The call status information returned by the carrier.
 	//
 	// example:
 	//
-	// 呼叫结束（双呼）
+	// Call ended (dual call)
 	StatusMsg *string `json:"StatusMsg,omitempty" xml:"StatusMsg,omitempty"`
-	// A list of variables associated with the call task.
+	// The list of call variables. These are the call variables associated with the call task you created.
 	Variables []*QueryConversationDetailInfoResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -600,19 +600,19 @@ type QueryConversationDetailInfoResponseBodyDataOutputTags struct {
 	//
 	// example:
 	//
-	// 评估客户对车型的兴趣和购买可能性
+	// Evaluate the customer\\"s interest in the vehicle model and purchase likelihood
 	OutputTagDescription *string `json:"OutputTagDescription,omitempty" xml:"OutputTagDescription,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 客户意向度
+	// Customer intent level
 	OutputTagName *string `json:"OutputTagName,omitempty" xml:"OutputTagName,omitempty"`
 	// The tag value.
 	//
 	// example:
 	//
-	// ["高（非常积极，大概率转化）"]
+	// ["High (very positive, high conversion probability)"]
 	OutputTagValue *string `json:"OutputTagValue,omitempty" xml:"OutputTagValue,omitempty"`
 }
 
@@ -681,27 +681,29 @@ type QueryConversationDetailInfoResponseBodyDataVariables struct {
 	//
 	// example:
 	//
-	// 姓名
+	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the variable is required. Valid values:
 	//
-	// - `true`: The variable is required.
+	// - true: Required.
 	//
-	// - `false`: The variable is optional.
+	// - false: Not required.
 	//
 	// example:
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// The variable source.
+	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The variable value.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

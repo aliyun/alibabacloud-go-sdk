@@ -58,7 +58,7 @@ type iAddModelApplicationShrinkRequest interface {
 }
 
 type AddModelApplicationShrinkRequest struct {
-	// The number of concurrent requests per second (CPS).
+	// The number of concurrent requests for the application.
 	//
 	// This parameter is required.
 	//
@@ -72,19 +72,19 @@ type AddModelApplicationShrinkRequest struct {
 	//
 	// example:
 	//
-	// 测试应用
+	// TestApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// Specifies whether to push an event notification when a call is connected. The default value is false.
+	// Specifies whether to enable call-connected event push. Disabled by default.
 	//
 	// example:
 	//
 	// false
 	CallConnectedTriggerModel *bool `json:"CallConnectedTriggerModel,omitempty" xml:"CallConnectedTriggerModel,omitempty"`
-	// The scene name.
+	// The scenario name.
 	//
 	// example:
 	//
-	// 测试场景
+	// TestScenario
 	DyvmsSceneName *string `json:"DyvmsSceneName,omitempty" xml:"DyvmsSceneName,omitempty"`
 	// The model code.
 	//
@@ -112,7 +112,7 @@ type AddModelApplicationShrinkRequest struct {
 	//
 	// 70
 	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
-	// The number of consecutive mute events that trigger an automatic hang-up.
+	// The number of consecutive mute events before the system proactively hangs up the call.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type AddModelApplicationShrinkRequest struct {
 	//
 	// example:
 	//
-	// 测试提示词。
+	// Test prompt
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// The qualification ID.
 	//
@@ -131,13 +131,13 @@ type AddModelApplicationShrinkRequest struct {
 	//
 	// 85
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	// The name of the qualification.
+	// The qualification name.
 	//
 	// example:
 	//
-	// 测试资质
+	// TestQualification
 	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
-	// The URL of the audio file for the opening line. This parameter is required if `StartWordType` is set to `1`.
+	// The URL of the recorded audio file for the opening statement. This parameter is required when the opening statement type is set to 1.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type AddModelApplicationShrinkRequest struct {
 	RecordingFile        *string `json:"RecordingFile,omitempty" xml:"RecordingFile,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source. The value must be `USER`.
+	// The source. Fixed value: USER.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type AddModelApplicationShrinkRequest struct {
 	//
 	// example:
 	//
-	// 测试话术。
+	// Test speech script
 	SpeechContent *string `json:"SpeechContent,omitempty" xml:"SpeechContent,omitempty"`
 	// The speech script ID.
 	//
@@ -163,31 +163,29 @@ type AddModelApplicationShrinkRequest struct {
 	//
 	// 88
 	SpeechId *int64 `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
-	// The opening line.
+	// The opening statement.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 你好，这是一句开场白。
+	// Hello, this is an opening statement
 	StartWord *string `json:"StartWord,omitempty" xml:"StartWord,omitempty"`
-	// The type of the opening line.
+	// The type of the opening statement.
 	//
 	// example:
 	//
-	// 0：文本
-	//
-	// 1：录音
+	// 0
 	StartWordType *int64 `json:"StartWordType,omitempty" xml:"StartWordType,omitempty"`
-	// The TTS configuration, including voice, volume, speech speed, and more.
+	// The text-to-speech (TTS) configuration, including voice, volume, and speed.
 	//
 	// This parameter is required.
 	TtsConfigShrink *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
-	// The purpose of the application.
+	// The usage description.
 	//
 	// example:
 	//
-	// 测试用途
+	// TestUsage
 	UsageDesc *string `json:"UsageDesc,omitempty" xml:"UsageDesc,omitempty"`
 }
 

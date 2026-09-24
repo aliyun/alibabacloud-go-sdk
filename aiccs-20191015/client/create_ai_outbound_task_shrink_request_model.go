@@ -34,21 +34,21 @@ type iCreateAiOutboundTaskShrinkRequest interface {
 }
 
 type CreateAiOutboundTaskShrinkRequest struct {
-	// Concurrent call rate for automated outbound calls.
+	// The call concurrency for automatic outbound calls.
 	//
 	// example:
 	//
 	// 10
 	ConcurrentRate *int32 `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	// Job description. Length: 0 to 100 characters.
+	// The task description. The description can be up to 100 characters in length.
 	//
 	// example:
 	//
-	// 房产销售
+	// RealEstateSales
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Job execution time, in JSON format.
+	// The task execution time. The value is in JSON format.
 	//
-	// > The end time must be later than the start time.
+	// > The end time (end) must be later than the start time (start).
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type CreateAiOutboundTaskShrinkRequest struct {
 	//
 	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	// Fixed outbound ratio for predictive dialing. Valid values: **≥1**.
+	// The fixed call ratio for predictive outbound calls. Valid values: **≥ 1**.
 	//
 	// example:
 	//
 	// 1.5
 	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
-	// The skill group ID (for predictive outbound calls) or IVR ID (for automated outbound calls). You can obtain this information in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	// The skill group ID (for predictive outbound calls) or IVR ID (for automatic outbound calls). You can obtain this information from the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
 	//
 	// This parameter is required.
 	//
@@ -70,9 +70,9 @@ type CreateAiOutboundTaskShrinkRequest struct {
 	//
 	// 123456
 	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	// AICCS instance ID.
+	// The ID of the Artificial Intelligence Cloud Call Service (AICCS) instance.
 	//
-	// You can obtain it from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+	// You can obtain the instance ID from **Instance Management*	- in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
 	//
 	// This parameter is required.
 	//
@@ -80,19 +80,19 @@ type CreateAiOutboundTaskShrinkRequest struct {
 	//
 	// cc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Job name. Length: 1 to 15 characters.
+	// The task name. The name must be 1 to 15 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试任务
+	// TestTask
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Called number deduplication policy. Valid values:
+	// The callee number deduplication policy. Valid values:
 	//
-	// - **0**: Remove duplicates within the job.
+	// - **0**: deduplicate within the task.
 	//
-	// - **1**: Do not remove duplicates.
+	// - **1**: no deduplication.
 	//
 	// This parameter is required.
 	//
@@ -100,21 +100,21 @@ type CreateAiOutboundTaskShrinkRequest struct {
 	//
 	// 1
 	NumRepeated *int32 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
-	// Outbound caller numbers.
+	// The outbound caller numbers.
 	//
-	// > Must be purchased numbers. Separate multiple numbers with commas (,).
+	// > The numbers must be purchased numbers. Separate multiple numbers with commas (,).
 	//
 	// This parameter is required.
 	OutboundNumsShrink *string `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty"`
-	// Failed call retry policy.
+	// The failed call retry policy.
 	//
-	// > If empty, no retries are performed.
+	// > If the value is empty, no retry is performed.
 	RecallRuleShrink *string `json:"RecallRule,omitempty" xml:"RecallRule,omitempty"`
-	// Task Type. Valid values:
+	// The task type. Valid values:
 	//
-	// - **2**: Predictive outbound call.
+	// - **2**: predictive outbound call.
 	//
-	// - **3**: Automated outbound call.
+	// - **3**: automatic outbound call.
 	//
 	// This parameter is required.
 	//

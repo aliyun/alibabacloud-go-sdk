@@ -24,7 +24,7 @@ type iQueryConversationDetailInfoNewResponseBody interface {
 }
 
 type QueryConversationDetailInfoNewResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type QueryConversationDetailInfoNewResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result data.
+	// The returned data.
 	Data *QueryConversationDetailInfoNewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the status code.
 	//
@@ -140,6 +140,8 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// 1234******
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// The branch ID.
+	//
 	// example:
 	//
 	// 68
@@ -158,7 +160,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// - CALL_REJECTED: Call rejected.
 	//
-	// - ANSWERED: User answered.
+	// - ANSWERED: Answered by the user.
 	//
 	// - USER_BUSY: Callee busy.
 	//
@@ -166,13 +168,13 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// - NO_USER_RESPONSE: Out of service area.
 	//
-	// - OPERATOR_BLOCK: Operator blocked.
+	// - OPERATOR_BLOCK: Blocked by the carrier.
 	//
 	// - OTHERS: Other status.
 	//
 	// - SUSPEND: Service suspended.
 	//
-	// - CANCEL: Caller canceled.
+	// - CANCEL: Canceled by the caller.
 	//
 	// - INVALID_NUMBER: Invalid number.
 	//
@@ -198,7 +200,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// 0571*******
 	CallerPhone *string `json:"CallerPhone,omitempty" xml:"CallerPhone,omitempty"`
-	// The chat record information. The structure is a JSON array, sorted in chronological order. The format is as follows:
+	// The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The format is as follows:
 	//
 	// ```json
 	//
@@ -222,7 +224,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	//   {
 	//
-	//     "content": "111Hello, age 222, gender male, I am the official consultant of *	- Auto, we have a new model **; *	- is now available, starting at *	- yuan, *	- minutes to break 	- units, would you like to learn more?",
+	//     "content": "111Hello, age 222, gender male, I am the official consultant of *	- Auto. We have a new model called **; *	- is now available, starting at *	- RMB. It sold 	- units in *	- minutes. Would you like to learn more?",
 	//
 	//     "role": "assistant"
 	//
@@ -256,7 +258,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// 1234*******
 	DetailId *string `json:"DetailId,omitempty" xml:"DetailId,omitempty"`
-	// The call duration in seconds. The value is 0 if the call is not connected.
+	// The call duration. The value is 0 if the call is not connected. Unit: seconds.
 	//
 	// example:
 	//
@@ -270,7 +272,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// example:
 	//
-	// Actively canceled.
+	// Actively canceled
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
 	// The hangup direction. Valid values:
 	//
@@ -294,7 +296,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
-	// The variable information used at runtime, stored in this field as key-value pairs.
+	// The variable information used at runtime, stored in key-value format in this field.
 	//
 	// example:
 	//
@@ -308,7 +310,7 @@ type QueryConversationDetailInfoNewResponseBodyData struct {
 	//
 	//   "mendian": "444",
 	//
-	//   "sex": "male",
+	//   "sex": "Male",
 	//
 	//   "name": "111",
 	//
@@ -660,19 +662,19 @@ type QueryConversationDetailInfoNewResponseBodyDataOutputTags struct {
 	//
 	// example:
 	//
-	// Evaluate the customer\\"s interest in the model and purchase likelihood.
+	// Evaluate the customer\\"s interest in the vehicle model and purchase likelihood
 	OutputTagDescription *string `json:"OutputTagDescription,omitempty" xml:"OutputTagDescription,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// Customer intent level.
+	// Customer intent level
 	OutputTagName *string `json:"OutputTagName,omitempty" xml:"OutputTagName,omitempty"`
 	// The tag value.
 	//
 	// example:
 	//
-	// ["High (very positive, high probability of conversion)"]
+	// ["High (very positive, high conversion probability)"]
 	OutputTagValue *string `json:"OutputTagValue,omitempty" xml:"OutputTagValue,omitempty"`
 }
 

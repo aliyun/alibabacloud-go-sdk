@@ -96,7 +96,7 @@ type iUpdateModelApplicationRequest interface {
 }
 
 type UpdateModelApplicationRequest struct {
-	// The application code.
+	// The code of the application.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type UpdateModelApplicationRequest struct {
 	//
 	// example:
 	//
-	// 测试应用
+	// TestApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// Specifies whether to hang up when an intelligent answering service is detected.
 	//
@@ -128,19 +128,19 @@ type UpdateModelApplicationRequest struct {
 	//
 	// true
 	CallAssistantRecognize *bool `json:"CallAssistantRecognize,omitempty" xml:"CallAssistantRecognize,omitempty"`
-	// Specifies whether to enable call-connected event push. Disabled by default.
+	// Specifies whether to enable call-connected event push. This feature is disabled by default.
 	//
 	// example:
 	//
 	// false
 	CallConnectedTriggerModel *bool `json:"CallConnectedTriggerModel,omitempty" xml:"CallConnectedTriggerModel,omitempty"`
-	// The enumeration of allowed key digits, separated by commas, such as 1,2,3. Maximum of 20 values.
+	// The enumeration of allowed key digits, specified as comma-separated text such as 1,2,3. A maximum of 20 values are supported.
 	//
 	// example:
 	//
 	// 1
 	DtmfAllowedDigits *string `json:"DtmfAllowedDigits,omitempty" xml:"DtmfAllowedDigits,omitempty"`
-	// Specifies whether to enable automatic validation of key values.
+	// Specifies whether to enable automatic key value validation.
 	//
 	// example:
 	//
@@ -160,39 +160,43 @@ type UpdateModelApplicationRequest struct {
 	DtmfInputTimeout *int64 `json:"DtmfInputTimeout,omitempty" xml:"DtmfInputTimeout,omitempty"`
 	// The action to take when the input is out of range. Valid values:
 	//
-	// - RETURN_MODEL: return to the model
+	// - RETURN_MODEL
 	//
-	// - AUTO_RETRY: automatically retry
+	// - AUTO_RETRY
 	//
 	// example:
 	//
 	// RETURN_MODEL
 	DtmfOutOfRangeAction *string `json:"DtmfOutOfRangeAction,omitempty" xml:"DtmfOutOfRangeAction,omitempty"`
-	// The number of retry attempts (PlayTimes). Valid values: 1 to 3. Takes effect only when DtmfOutOfRangeAction is set to AUTO_RETRY.
+	// The number of retry attempts (PlayTimes). Valid values: 1 to 3. This parameter takes effect only when DtmfOutOfRangeAction is set to AUTO_RETRY.
 	//
 	// example:
 	//
 	// 1
 	DtmfRetryPlayTimes *int64 `json:"DtmfRetryPlayTimes,omitempty" xml:"DtmfRetryPlayTimes,omitempty"`
-	// The custom retry prompt text. Maximum length: 50 characters. If left empty, the default message is used.
+	// The custom retry prompt text. The maximum length is 50 characters. If this parameter is left empty, the default prompt "Invalid input. Enter again." is used.
 	//
 	// example:
 	//
-	// 测试文本
+	// Sample text
 	DtmfRetryPromptText *string `json:"DtmfRetryPromptText,omitempty" xml:"DtmfRetryPromptText,omitempty"`
+	// The maximum number of DTMF key sending attempts.
+	//
 	// example:
 	//
 	// 90
 	DtmfSendMaxCount *int64 `json:"DtmfSendMaxCount,omitempty" xml:"DtmfSendMaxCount,omitempty"`
+	// The timeout period for waiting for DTMF key sending.
+	//
 	// example:
 	//
 	// 58
 	DtmfSendWaitTimeout *int64 `json:"DtmfSendWaitTimeout,omitempty" xml:"DtmfSendWaitTimeout,omitempty"`
-	// The scenario name.
+	// The name of the scenario.
 	//
 	// example:
 	//
-	// 测试场景
+	// TestScenario
 	DyvmsSceneName *string `json:"DyvmsSceneName,omitempty" xml:"DyvmsSceneName,omitempty"`
 	// Specifies whether to enable DTMF key collection. Default value: false.
 	//
@@ -200,11 +204,13 @@ type UpdateModelApplicationRequest struct {
 	//
 	// false
 	EnableDtmfReceive *bool `json:"EnableDtmfReceive,omitempty" xml:"EnableDtmfReceive,omitempty"`
+	// Specifies whether to enable DTMF key sending.
+	//
 	// example:
 	//
 	// true
 	EnableDtmfSend *bool `json:"EnableDtmfSend,omitempty" xml:"EnableDtmfSend,omitempty"`
-	// Specifies whether to enable Morse code configuration. Disabled by default.
+	// Specifies whether to enable Morse code configuration. This feature is disabled by default.
 	//
 	// example:
 	//
@@ -212,13 +218,13 @@ type UpdateModelApplicationRequest struct {
 	EnableMorse *bool `json:"EnableMorse,omitempty" xml:"EnableMorse,omitempty"`
 	// The interruption configuration.
 	InterruptConfig *UpdateModelApplicationRequestInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
-	// The model code.
+	// The code of the model.
 	//
 	// example:
 	//
 	// 1231
 	ModelCode *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
-	// The model version.
+	// The version of the model.
 	//
 	// example:
 	//
@@ -236,7 +242,7 @@ type UpdateModelApplicationRequest struct {
 	//
 	// 85
 	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
-	// The number of consecutive mute events after which the system proactively hangs up.
+	// The number of consecutive mute events before the system proactively hangs up.
 	//
 	// example:
 	//
@@ -259,19 +265,19 @@ type UpdateModelApplicationRequest struct {
 	//
 	// example:
 	//
-	// 测试提示词
+	// TestPrompt
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The qualification ID.
+	// The ID of the qualification.
 	//
 	// example:
 	//
 	// 61
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	// The qualification name.
+	// The name of the qualification.
 	//
 	// example:
 	//
-	// 测试质检
+	// TestQualification
 	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
 	// The URL of the recording audio file.
 	//
@@ -293,13 +299,13 @@ type UpdateModelApplicationRequest struct {
 	//
 	// USER
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The speech script content.
+	// The content of the speech script.
 	//
 	// example:
 	//
-	// 测试话术
+	// TestSpeechScript
 	SpeechContent *string `json:"SpeechContent,omitempty" xml:"SpeechContent,omitempty"`
-	// The speech script ID.
+	// The ID of the speech script.
 	//
 	// example:
 	//
@@ -309,15 +315,13 @@ type UpdateModelApplicationRequest struct {
 	//
 	// example:
 	//
-	// 你好，这是个测试开场白
+	// Hello, this is a test opening statement
 	StartWord *string `json:"StartWord,omitempty" xml:"StartWord,omitempty"`
 	// The type of the opening statement.
 	//
 	// example:
 	//
-	// 0：文本
-	//
-	// 1：录音
+	// 0
 	StartWordType *int64 `json:"StartWordType,omitempty" xml:"StartWordType,omitempty"`
 	// The text-to-speech (TTS) configuration, including voice, volume, and speed.
 	TtsConfig *UpdateModelApplicationRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
@@ -325,7 +329,7 @@ type UpdateModelApplicationRequest struct {
 	//
 	// example:
 	//
-	// 测试用途
+	// TestUsage
 	UsageDesc *string `json:"UsageDesc,omitempty" xml:"UsageDesc,omitempty"`
 }
 
@@ -730,29 +734,33 @@ func (s *UpdateModelApplicationRequest) Validate() error {
 }
 
 type UpdateModelApplicationRequestInterruptConfig struct {
-	// The configuration for consecutive interruption prevention.
+	// The continuous interruption prevention configuration.
 	AvoidInterruptDTO *UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO `json:"AvoidInterruptDTO,omitempty" xml:"AvoidInterruptDTO,omitempty" type:"Struct"`
-	// Specifies whether to enable consecutive interruption prevention.
+	// Specifies whether to enable the continuous interruption prevention feature.
 	//
 	// example:
 	//
 	// true
 	EnableAvoidInterrupt *bool `json:"EnableAvoidInterrupt,omitempty" xml:"EnableAvoidInterrupt,omitempty"`
-	// Specifies whether to enable the interruption filler word configuration.
+	// Specifies whether to enable the interrupt filler word configuration.
 	//
 	// example:
 	//
 	// true
 	EnableInterruptBackchannel *bool `json:"EnableInterruptBackchannel,omitempty" xml:"EnableInterruptBackchannel,omitempty"`
-	// Specifies whether to prevent interruption during the entire opening statement.
+	// Specifies whether to disable interruption during the entire opening statement.
 	//
 	// example:
 	//
 	// true
 	EnableStartwordEntireNotInterrupt *bool `json:"EnableStartwordEntireNotInterrupt,omitempty" xml:"EnableStartwordEntireNotInterrupt,omitempty"`
-	// Specifies whether to enable the no-interruption configuration for the opening statement.
+	// Specifies whether to enable the opening line no-interrupt configuration.
+	//
+	// example:
+	//
+	// true
 	EnableStartwordNotInterrupt *bool `json:"EnableStartwordNotInterrupt,omitempty" xml:"EnableStartwordNotInterrupt,omitempty"`
-	// The protection duration for the opening statement.
+	// The opening line protection duration.
 	//
 	// example:
 	//
@@ -838,7 +846,7 @@ type UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO struct {
 	//
 	// 3
 	InterruptNum *int64 `json:"InterruptNum,omitempty" xml:"InterruptNum,omitempty"`
-	// The interruption protection duration.
+	// The interrupt protection duration.
 	//
 	// example:
 	//
@@ -883,19 +891,19 @@ type UpdateModelApplicationRequestTtsConfig struct {
 	//
 	// true
 	BackgroundEnabled *bool `json:"BackgroundEnabled,omitempty" xml:"BackgroundEnabled,omitempty"`
-	// The background sound ID.
+	// The ID of the background sound.
 	//
 	// example:
 	//
 	// 111
 	BackgroundSound *int64 `json:"BackgroundSound,omitempty" xml:"BackgroundSound,omitempty"`
-	// The background sound volume. Valid values:
+	// The background sound volume (ID). Valid values:
 	//
-	// - 0: low
+	// - 0: low.
 	//
-	// - 1: medium
+	// - 1: medium.
 	//
-	// - 2: high
+	// - 2: high.
 	//
 	// example:
 	//
@@ -913,7 +921,7 @@ type UpdateModelApplicationRequestTtsConfig struct {
 	//
 	// true
 	MixingEnabled *bool `json:"MixingEnabled,omitempty" xml:"MixingEnabled,omitempty"`
-	// The mixing template ID.
+	// The ID of the mixing template.
 	//
 	// example:
 	//
@@ -943,7 +951,7 @@ type UpdateModelApplicationRequestTtsConfig struct {
 	//
 	// 11
 	TtsVolume *int64 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	// The voice code.
+	// The code of the voice.
 	//
 	// example:
 	//
@@ -951,11 +959,11 @@ type UpdateModelApplicationRequestTtsConfig struct {
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
 	// The voice type. Valid values:
 	//
-	// - SYSTEM: system voice
+	// - SYSTEM: system voice.
 	//
-	// - COSYCLONE: cloned voice
+	// - COSYCLONE: cloned voice.
 	//
-	// - BL-CUSTOM: custom premium cloned voice
+	// - BL-CUSTOM: custom premium cloned voice.
 	//
 	// example:
 	//

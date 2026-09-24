@@ -34,10 +34,7 @@ type ImportTaskNumberDatasRequest struct {
 	//
 	// - JSON
 	//
-	//
-	//   	Notice:
-	//
-	//   API calls currently support only the JSON data type.
+	// 	Notice: API calls currently support only the JSON data type.
 	//
 	// This parameter is required.
 	//
@@ -51,18 +48,18 @@ type ImportTaskNumberDatasRequest struct {
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 	// The OSS file path. This parameter is optional.
 	//
-	// > Importing data by specifying an OSS file path is not available because API calls currently support only the JSON data type.
+	// > API calls do not currently support the Excel data type. Therefore, uploading an OSS file path is currently unavailable.
 	//
 	// example:
 	//
 	// 123dsdfsdfsdf.xlsx
 	OssFileName *string `json:"OssFileName,omitempty" xml:"OssFileName,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// If `DataType` is set to `JSON`, you must use this parameter to upload the data. You can import up to 1,000 records per request.
+	// If DataType is set to JSON, upload data through this field. A maximum of 1000 records can be uploaded at a time.
 	PhoneNumberList      []map[string]interface{} `json:"PhoneNumberList,omitempty" xml:"PhoneNumberList,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the call task.
+	// The task ID.
 	//
 	// This parameter is required.
 	//

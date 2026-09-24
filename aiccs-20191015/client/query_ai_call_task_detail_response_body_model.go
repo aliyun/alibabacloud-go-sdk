@@ -24,7 +24,7 @@ type iQueryAiCallTaskDetailResponseBody interface {
 }
 
 type QueryAiCallTaskDetailResponseBody struct {
-	// The access denial details. This field is returned only when RAM authentication fails.
+	// The details about the access denial. This parameter is returned only when the RAM permission verification fails.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type QueryAiCallTaskDetailResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryAiCallTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for successful calls.
+	// The error message. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type QueryAiCallTaskDetailResponseBody struct {
 	//
 	// 23822ECB-8CAA-5C52-9C9E-807FD82A5A7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
 	// - **true**: Successful.
 	//
@@ -134,7 +134,7 @@ func (s *QueryAiCallTaskDetailResponseBody) Validate() error {
 }
 
 type QueryAiCallTaskDetailResponseBodyData struct {
-	// The ID of the published agent.
+	// The code of the published agent.
 	//
 	// example:
 	//
@@ -144,37 +144,41 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// TestAgent
+	// Test agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The application code.
+	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The list of callable days.
 	CallDays []*string `json:"CallDays,omitempty" xml:"CallDays,omitempty" type:"Repeated"`
-	// The expiration date of outbound call details (specific deadline).
+	// The expiration date of outbound call details (specific deadline) in the format of YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-07-30 20:00:20
 	CallExpireDate *string `json:"CallExpireDate,omitempty" xml:"CallExpireDate,omitempty"`
-	// The expiration duration of outbound call details, in minutes.
+	// The expiration duration of outbound call details. Unit: minutes.
 	//
 	// example:
 	//
 	// 20
 	CallExpireMinutes *int64 `json:"CallExpireMinutes,omitempty" xml:"CallExpireMinutes,omitempty"`
-	// The outbound call validity type. Valid values:
+	// The expiration type of outbound calls. Valid values:
 	//
-	// 0: Permanently valid.
+	// 0: permanently valid.
 	//
-	// 1: Valid for a period of time after import.
+	// 1: valid for a period of time after import.
 	//
-	// 2: Valid until a specified time.
+	// 2: valid until a specified time.
 	//
 	// example:
 	//
@@ -182,7 +186,7 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	CallExpireType *int64 `json:"CallExpireType,omitempty" xml:"CallExpireType,omitempty"`
 	// The allowed call time periods.
 	CallTimes []*QueryAiCallTaskDetailResponseBodyDataCallTimes `json:"CallTimes,omitempty" xml:"CallTimes,omitempty" type:"Repeated"`
-	// The callable time periods for the current outbound call instance.
+	// The callable time periods of the current outbound call instance.
 	CallableTimes []*QueryAiCallTaskDetailResponseBodyDataCallableTimes `json:"CallableTimes,omitempty" xml:"CallableTimes,omitempty" type:"Repeated"`
 	// The caller number.
 	//
@@ -196,14 +200,20 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	//
 	// 10
 	ConcurrentCount *int64 `json:"ConcurrentCount,omitempty" xml:"ConcurrentCount,omitempty"`
+	// The line encoding.
+	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	LineEncoding *string `json:"LineEncoding,omitempty" xml:"LineEncoding,omitempty"`
+	// The phone number of the custom line.
+	//
 	// example:
 	//
-	// SampleValue
+	// Sample value
 	LinePhoneNum *string `json:"LinePhoneNum,omitempty" xml:"LinePhoneNum,omitempty"`
+	// The phone number type. Valid values: 0 indicates an Alibaba Cloud number. 1 indicates a custom line provided by the customer.
+	//
 	// example:
 	//
 	// 17
@@ -236,7 +246,7 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	//
 	// 1
 	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	// The list of reasons that allow retry on failure.
+	// The list of failure reasons that allow retry.
 	RetryReasons []*string `json:"RetryReasons,omitempty" xml:"RetryReasons,omitempty" type:"Repeated"`
 	// The scheduled start time of the task. This value is a timestamp in milliseconds.
 	//
@@ -244,7 +254,7 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	//
 	// 1748932499000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The start type. Valid values:
+	// The start mode. Valid values:
 	//
 	// - IMMEDIATE: Start immediately.
 	//
@@ -264,7 +274,7 @@ type QueryAiCallTaskDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// TestTask
+	// Test task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -515,13 +525,13 @@ func (s *QueryAiCallTaskDetailResponseBodyData) Validate() error {
 }
 
 type QueryAiCallTaskDetailResponseBodyDataCallTimes struct {
-	// The end time.
+	// The end time in the format of HH:mm:ss.
 	//
 	// example:
 	//
 	// 09:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time.
+	// The start time in the format of HH:mm:ss.
 	//
 	// example:
 	//
@@ -560,13 +570,13 @@ func (s *QueryAiCallTaskDetailResponseBodyDataCallTimes) Validate() error {
 }
 
 type QueryAiCallTaskDetailResponseBodyDataCallableTimes struct {
-	// The end time.
+	// The end time in the format of HH:mm:ss.
 	//
 	// example:
 	//
 	// 18:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time.
+	// The start time in the format of HH:mm:ss.
 	//
 	// example:
 	//

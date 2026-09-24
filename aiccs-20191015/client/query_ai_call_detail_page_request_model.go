@@ -60,35 +60,35 @@ type QueryAiCallDetailPageRequest struct {
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The call result. Valid values:
 	//
-	// - CALL_FORWARDING: call forwarding.
+	// - CALL_FORWARDING: Call forwarding.
 	//
-	// - INCOMING_CALL_BARRED: incoming call barred.
+	// - INCOMING_CALL_BARRED: Incoming call barred.
 	//
-	// - CALL_REJECTED: call rejected.
+	// - CALL_REJECTED: Call rejected.
 	//
-	// - ANSWERED: answered.
+	// - ANSWERED: Answered.
 	//
-	// - USER_BUSY: user busy.
+	// - USER_BUSY: User busy.
 	//
-	// - POWERED_OFF: powered off.
+	// - POWERED_OFF: Powered off.
 	//
-	// - NO_USER_RESPONSE: out of service area.
+	// - NO_USER_RESPONSE: Out of service area.
 	//
-	// - OPERATOR_BLOCK: blocked by carrier.
+	// - OPERATOR_BLOCK: Blocked by carrier.
 	//
-	// - OTHERS: other status.
+	// - OTHERS: Other status.
 	//
-	// - SUSPEND: suspended.
+	// - SUSPEND: Service suspended.
 	//
-	// - CANCEL: canceled by caller.
+	// - CANCEL: Caller canceled.
 	//
-	// - INVALID_NUMBER: invalid number.
+	// - INVALID_NUMBER: Invalid number.
 	//
-	// - UNAVAILABLE: temporarily unavailable.
+	// - UNAVAILABLE: Temporarily unavailable.
 	//
-	// - NETWORK_BUSY: network busy.
+	// - NETWORK_BUSY: Network busy.
 	//
-	// - NO_ANSWER: no answer.
+	// - NO_ANSWER: No answer.
 	//
 	// example:
 	//
@@ -108,31 +108,31 @@ type QueryAiCallDetailPageRequest struct {
 	//
 	// 1
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The end calling time. This value is a timestamp in milliseconds.
+	// The end calling time. This value is a UNIX timestamp. Unit: ms.
 	//
 	// example:
 	//
 	// 1748948749000
 	EndCallingTime *int64 `json:"EndCallingTime,omitempty" xml:"EndCallingTime,omitempty"`
-	// The end import time. This value is a timestamp in milliseconds.
+	// The end import time. This value is a UNIX timestamp. Unit: ms.
 	//
 	// example:
 	//
 	// 1748948749000
 	EndImportedTime *int64 `json:"EndImportedTime,omitempty" xml:"EndImportedTime,omitempty"`
-	// The major intent. On the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page, click agent details to view the major intent.
+	// The major intent. On the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page, click the agent details to view the major intent.
 	//
 	// example:
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
-	// The maximum conversation duration. Unit: minutes.
+	// The maximum call duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 20
 	MaxConversationDuration *int64 `json:"MaxConversationDuration,omitempty" xml:"MaxConversationDuration,omitempty"`
-	// The minimum conversation duration. Unit: minutes.
+	// The minimum call duration. Unit: minutes.
 	//
 	// example:
 	//
@@ -159,13 +159,13 @@ type QueryAiCallDetailPageRequest struct {
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start calling time. This value is a timestamp in milliseconds.
+	// The start calling time. This value is a UNIX timestamp. Unit: ms.
 	//
 	// example:
 	//
 	// 1748948749000
 	StartCallingTime *int64 `json:"StartCallingTime,omitempty" xml:"StartCallingTime,omitempty"`
-	// The start import time. This value is a timestamp in milliseconds.
+	// The start import time. This value is a UNIX timestamp. Unit: ms.
 	//
 	// example:
 	//
@@ -173,11 +173,11 @@ type QueryAiCallDetailPageRequest struct {
 	StartImportedTime *int64 `json:"StartImportedTime,omitempty" xml:"StartImportedTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// - 0: pending.
+	// - 0: Pending.
 	//
-	// - 1: completed.
+	// - 1: Completed.
 	//
-	// - 2: failed.
+	// - 2: Failed.
 	//
 	// This parameter is required.
 	//

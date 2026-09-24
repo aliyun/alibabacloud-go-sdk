@@ -58,11 +58,11 @@ type iUpdateAiCallTaskShrinkRequest interface {
 }
 
 type UpdateAiCallTaskShrinkRequest struct {
-	// The available call days.
+	// The callable days.
 	//
 	// This parameter is required.
 	CallDayShrink *string `json:"CallDay,omitempty" xml:"CallDay,omitempty"`
-	// The expiration date of outbound call details (the specific deadline).
+	// The expiration date of outbound call details (the specific deadline). Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -76,23 +76,23 @@ type UpdateAiCallTaskShrinkRequest struct {
 	CallExpireMinutes *int64 `json:"CallExpireMinutes,omitempty" xml:"CallExpireMinutes,omitempty"`
 	// The outbound call validity type. Valid values:
 	//
-	// 0: permanently valid.
+	// 0: Permanently valid.
 	//
-	// 1: valid for a specified duration after import.
+	// 1: Valid for a specified period after import.
 	//
-	// 2: valid until a specified date.
+	// 2: Valid until a specified date.
 	//
 	// example:
 	//
 	// 0
 	CallExpireType *int64 `json:"CallExpireType,omitempty" xml:"CallExpireType,omitempty"`
-	// The retry interval. Unit: minutes. The maximum value is 120 minutes.
+	// The retry interval. Unit: minutes. The maximum value is 120.
 	//
 	// example:
 	//
 	// 25
 	CallRetryInterval *int64 `json:"CallRetryInterval,omitempty" xml:"CallRetryInterval,omitempty"`
-	// The reasons for retry upon failure.
+	// The reasons for retrying failed calls.
 	CallRetryReasonShrink *string `json:"CallRetryReason,omitempty" xml:"CallRetryReason,omitempty"`
 	// The number of retries. The maximum value is 3.
 	//
@@ -100,7 +100,7 @@ type UpdateAiCallTaskShrinkRequest struct {
 	//
 	// 2
 	CallRetryTimes *int64 `json:"CallRetryTimes,omitempty" xml:"CallRetryTimes,omitempty"`
-	// The available call time periods.
+	// The callable time periods.
 	//
 	// This parameter is required.
 	CallTimeShrink     *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
@@ -142,19 +142,19 @@ type UpdateAiCallTaskShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The creation source. Valid values:
 	//
-	// 0: created by agent.
+	// 0: Created by agent.
 	//
-	// 1: created by engine.
+	// 1: Created by engine.
 	//
 	// example:
 	//
-	// Cannot be modified. Leave this parameter empty
+	// Cannot be modified. You do not need to specify this parameter
 	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The start mode. Valid values:
 	//
-	// - IMMEDIATE: starts immediately.
+	// - IMMEDIATE: Starts immediately.
 	//
-	// - SCHEDULE: starts at a scheduled time.
+	// - SCHEDULE: Starts at a scheduled time.
 	//
 	// This parameter is required.
 	//
@@ -186,7 +186,7 @@ type UpdateAiCallTaskShrinkRequest struct {
 	//
 	// TestTask
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The preset start time of the task. The value is a UNIX timestamp in milliseconds. This parameter is valid and required when the StartType parameter is set to SCHEDULE. The task automatically starts at the time specified by this parameter.
+	// The preset start time of the task. The value is a UNIX timestamp in milliseconds. This parameter is valid and required when StartType is set to SCHEDULE. The task automatically starts at the time specified by this parameter.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iQueryAiCallDetailPageResponseBody interface {
 }
 
 type QueryAiCallDetailPageResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type QueryAiCallDetailPageResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryAiCallDetailPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
-	// OK
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -52,9 +52,9 @@ type QueryAiCallDetailPageResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: successful.
+	// - **true**: Successful.
 	//
-	// - **false**: failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// 9
 	BranchVersionId *int64 `json:"BranchVersionId,omitempty" xml:"BranchVersionId,omitempty"`
-	// The expiration time of the outbound call detail.
+	// The expiration time of the outbound call detail. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -262,19 +262,19 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// 0537101****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	// The calling time. This value is a timestamp in milliseconds.
+	// The calling time. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1748948749000
 	CallingTime *int64 `json:"CallingTime,omitempty" xml:"CallingTime,omitempty"`
-	// The conversation duration. Unit: seconds.
+	// The call duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 100
 	ConversationDuration *int64 `json:"ConversationDuration,omitempty" xml:"ConversationDuration,omitempty"`
-	// The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The format is as follows:
+	// The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The structure is as follows:
 	//
 	// ```json
 	//
@@ -284,7 +284,7 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	//         "content":"Chat content",
 	//
-	//         "role":"Role",//Valid values: user, assistant (bot)
+	//         "role":"Role",//Valid values: user and assistant (bot).
 	//
 	//     }
 	//
@@ -412,13 +412,13 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// 1
 	EncryptionType *int64 `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The reason for call failure. This field is available only when the call fails.
+	// The reason for the call failure. This field is returned only when the call fails.
 	//
 	// example:
 	//
 	// Account suspended
 	FailedReason *string `json:"FailedReason,omitempty" xml:"FailedReason,omitempty"`
-	// The import time. This value is a timestamp in milliseconds.
+	// The import time. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -430,7 +430,7 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// A
 	MajorIntent *string `json:"MajorIntent,omitempty" xml:"MajorIntent,omitempty"`
-	// The variable information used at runtime, stored in this field as key-value pairs.
+	// The variable information used at runtime. The information is stored in this field as key-value pairs.
 	//
 	// example:
 	//
@@ -444,7 +444,7 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	//   "mendian": "444",
 	//
-	//   "sex": "male",
+	//   "sex": "Male",
 	//
 	//   "name": "111",
 	//
@@ -452,13 +452,13 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The external business serial number reserved for external input. A unique ID can be used for business association.
+	// The external business serial number reserved for external input. You can use a unique ID for business association.
 	//
 	// example:
 	//
 	// outId
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// The download path of the recording file. This field is available only after the recording file is generated.
+	// The download path of the recording file. This field is returned only after the recording file is generated.
 	//
 	// example:
 	//
@@ -466,17 +466,17 @@ type QueryAiCallDetailPageResponseBodyDataList struct {
 	RecordingFilePath *string `json:"RecordingFilePath,omitempty" xml:"RecordingFilePath,omitempty"`
 	// The task detail status. Valid values:
 	//
-	// - 0: initialized.
+	// - 0: Initialization.
 	//
-	// - 1: waiting to call.
+	// - 1: Waiting for call.
 	//
-	// - 2: waiting to retry.
+	// - 2: Waiting for retry.
 	//
-	// - 3: calling.
+	// - 3: Calling.
 	//
-	// - 4: call ended.
+	// - 4: Call ended.
 	//
-	// - 5: call failed.
+	// - 5: Call failed.
 	//
 	// Only 4 and 5 are desired states.
 	//

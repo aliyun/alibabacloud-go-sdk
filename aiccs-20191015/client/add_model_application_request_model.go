@@ -58,7 +58,7 @@ type iAddModelApplicationRequest interface {
 }
 
 type AddModelApplicationRequest struct {
-	// The number of concurrent requests per second (CPS).
+	// The number of concurrent requests for the application.
 	//
 	// This parameter is required.
 	//
@@ -72,19 +72,19 @@ type AddModelApplicationRequest struct {
 	//
 	// example:
 	//
-	// 测试应用
+	// TestApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// Specifies whether to push an event notification when a call is connected. The default value is false.
+	// Specifies whether to enable call-connected event push. Disabled by default.
 	//
 	// example:
 	//
 	// false
 	CallConnectedTriggerModel *bool `json:"CallConnectedTriggerModel,omitempty" xml:"CallConnectedTriggerModel,omitempty"`
-	// The scene name.
+	// The scenario name.
 	//
 	// example:
 	//
-	// 测试场景
+	// TestScenario
 	DyvmsSceneName *string `json:"DyvmsSceneName,omitempty" xml:"DyvmsSceneName,omitempty"`
 	// The model code.
 	//
@@ -112,7 +112,7 @@ type AddModelApplicationRequest struct {
 	//
 	// 70
 	MuteDuration *int64 `json:"MuteDuration,omitempty" xml:"MuteDuration,omitempty"`
-	// The number of consecutive mute events that trigger an automatic hang-up.
+	// The number of consecutive mute events before the system proactively hangs up the call.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type AddModelApplicationRequest struct {
 	//
 	// example:
 	//
-	// 测试提示词。
+	// Test prompt
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// The qualification ID.
 	//
@@ -131,13 +131,13 @@ type AddModelApplicationRequest struct {
 	//
 	// 85
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	// The name of the qualification.
+	// The qualification name.
 	//
 	// example:
 	//
-	// 测试资质
+	// TestQualification
 	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
-	// The URL of the audio file for the opening line. This parameter is required if `StartWordType` is set to `1`.
+	// The URL of the recorded audio file for the opening statement. This parameter is required when the opening statement type is set to 1.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type AddModelApplicationRequest struct {
 	RecordingFile        *string `json:"RecordingFile,omitempty" xml:"RecordingFile,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source. The value must be `USER`.
+	// The source. Fixed value: USER.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type AddModelApplicationRequest struct {
 	//
 	// example:
 	//
-	// 测试话术。
+	// Test speech script
 	SpeechContent *string `json:"SpeechContent,omitempty" xml:"SpeechContent,omitempty"`
 	// The speech script ID.
 	//
@@ -163,31 +163,29 @@ type AddModelApplicationRequest struct {
 	//
 	// 88
 	SpeechId *int64 `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
-	// The opening line.
+	// The opening statement.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 你好，这是一句开场白。
+	// Hello, this is an opening statement
 	StartWord *string `json:"StartWord,omitempty" xml:"StartWord,omitempty"`
-	// The type of the opening line.
+	// The type of the opening statement.
 	//
 	// example:
 	//
-	// 0：文本
-	//
-	// 1：录音
+	// 0
 	StartWordType *int64 `json:"StartWordType,omitempty" xml:"StartWordType,omitempty"`
-	// The TTS configuration, including voice, volume, speech speed, and more.
+	// The text-to-speech (TTS) configuration, including voice, volume, and speed.
 	//
 	// This parameter is required.
 	TtsConfig *AddModelApplicationRequestTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
-	// The purpose of the application.
+	// The usage description.
 	//
 	// example:
 	//
-	// 测试用途
+	// TestUsage
 	UsageDesc *string `json:"UsageDesc,omitempty" xml:"UsageDesc,omitempty"`
 }
 
@@ -432,11 +430,7 @@ type AddModelApplicationRequestTtsConfig struct {
 	//
 	// example:
 	//
-	// 0：low
-	//
-	// 1：medium
-	//
-	// 2：high
+	// 1
 	BackgroundVolume *int64 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
 	// The account ID.
 	//
@@ -444,7 +438,7 @@ type AddModelApplicationRequestTtsConfig struct {
 	//
 	// 45
 	CustomerAccountId *int64 `json:"CustomerAccountId,omitempty" xml:"CustomerAccountId,omitempty"`
-	// Specifies whether to enable mixing.
+	// Specifies whether to enable audio mixing.
 	//
 	// example:
 	//
@@ -462,7 +456,7 @@ type AddModelApplicationRequestTtsConfig struct {
 	//
 	// example
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The speech speed for TTS playback. Valid values: -200–200. The default value is 0.
+	// The speed for TTS variable playback. Valid values: -200 to 200. Default value: 0.
 	//
 	// example:
 	//
@@ -474,7 +468,7 @@ type AddModelApplicationRequestTtsConfig struct {
 	//
 	// 龙小夏
 	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	// The volume for TTS playback. Valid values: 0–100. The default value is 0.
+	// The volume for TTS variable playback. Valid values: 0 to 100. Default value: 0.
 	//
 	// example:
 	//
@@ -486,17 +480,13 @@ type AddModelApplicationRequestTtsConfig struct {
 	//
 	// ddddfd
 	VoiceCode *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	// The voice type.
+	// The voice type. Valid values:
 	//
-	// ```
+	// - SYSTEM: system voice.
 	//
-	// SYSTEM: System voice
+	// - COSYCLONE: cloned voice.
 	//
-	// COSYCLONE: Cloned voice
-	//
-	// BL-CUSTOM: Premium custom cloned voice
-	//
-	// ```
+	// - BL-CUSTOM: custom premium cloned voice.
 	//
 	// example:
 	//
