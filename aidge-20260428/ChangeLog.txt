@@ -1,3 +1,10 @@
+2026-09-24 Version: v5.6.0
+- Support API DiduiAreaDeductionPro.
+- Support API GeneralRephotographyDetection.
+- Support API MerchandisePlacementDetectionPro.
+- Support API PetHealthAnalysis.
+
+
 2026-09-24 Version: v5.5.1
 - Update API MerchandisePlacementDetection: add request parameters Rule.
 

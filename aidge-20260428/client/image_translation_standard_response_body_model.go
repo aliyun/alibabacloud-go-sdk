@@ -22,13 +22,13 @@ type iImageTranslationStandardResponseBody interface {
 }
 
 type ImageTranslationStandardResponseBody struct {
-	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+	// The response code. 200 indicates a successful call. For other response codes, refer to the error code information.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The translation result data, including the translated image URL and usage information.
+	// The translation result data, including the URL of the translated image and usage information.
 	Data *ImageTranslationStandardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call.
 	//
@@ -180,9 +180,9 @@ type ImageTranslationStandardResponseBodyDataEditInfo struct {
 	//
 	// ["NotoSansSC-Bold"]
 	Font []*string `json:"Font,omitempty" xml:"Font,omitempty" type:"Repeated"`
-	// The product area rectangles.
+	// The rectangle of the product area.
 	GoodsRects *ImageTranslationStandardResponseBodyDataEditInfoGoodsRects `json:"GoodsRects,omitempty" xml:"GoodsRects,omitempty" type:"Struct"`
-	// The product image URL.
+	// The URL of the product image.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ type ImageTranslationStandardResponseBodyDataEditInfo struct {
 	//
 	// ["zh"]
 	Languages []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
-	// The original image URL.
+	// The URL of the original image.
 	//
 	// example:
 	//
 	// https://xiuxiu-pro.meitudata.com/posters/34d78f9157e5560a4d612949ca6f6485.jpg
 	PictUrl *string `json:"PictUrl,omitempty" xml:"PictUrl,omitempty"`
-	// The repaired image URL.
+	// The URL of the repaired image.
 	//
 	// example:
 	//
@@ -439,7 +439,7 @@ type ImageTranslationStandardResponseBodyDataEditInfoTextAreas struct {
 	//
 	// left
 	HorizontalLayout *string `json:"HorizontalLayout,omitempty" xml:"HorizontalLayout,omitempty"`
-	// The line count.
+	// The number of lines.
 	//
 	// example:
 	//
@@ -566,7 +566,7 @@ type ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts struct {
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The line count.
+	// The number of lines.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iMerchandisePlacementDetectionResponseBody interface {
 }
 
 type MerchandisePlacementDetectionResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type MerchandisePlacementDetectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The display detection result.
 	Data *MerchandisePlacementDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type MerchandisePlacementDetectionResponseBodyData struct {
 	//
 	// 100
 	BoxCount *int32 `json:"BoxCount,omitempty" xml:"BoxCount,omitempty"`
-	// The list of recall details for each detection box.
+	// The list of retrieval details for each detection box.
 	Data []*MerchandisePlacementDetectionResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The usage information, where the key is the usage name and the value is the count.
 	//
@@ -182,13 +182,13 @@ func (s *MerchandisePlacementDetectionResponseBodyData) Validate() error {
 }
 
 type MerchandisePlacementDetectionResponseBodyDataData struct {
-	// The position coordinates of the detection box in the format [x1,y1,x2,y2].
+	// The detection box position coordinates in the format [x1,y1,x2,y2].
 	Bbox []*float32 `json:"Bbox,omitempty" xml:"Bbox,omitempty" type:"Repeated"`
-	// The failure reason for the detection box. The value is null if the detection is successful.
+	// The failure reason for a single detection box. The value is null if the detection is successful.
 	//
 	// example:
 	//
-	// "Embedding failed"
+	// "embedding failed"
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The index of the detection box.
 	//
@@ -334,7 +334,7 @@ func (s *MerchandisePlacementDetectionResponseBodyDataDataTop1) Validate() error
 }
 
 type MerchandisePlacementDetectionResponseBodyDataDataTopk struct {
-	// The recall rank of the product.
+	// The recall rank.
 	//
 	// example:
 	//
