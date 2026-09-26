@@ -189,19 +189,16 @@ type TicketPageQueryProductResponseBodyDataProducts struct {
 	// example:
 	//
 	// 123456
-	ScenicId *int64                                                 `json:"ScenicId,omitempty" xml:"ScenicId,omitempty"`
-	Session  *TicketPageQueryProductResponseBodyDataProductsSession `json:"Session,omitempty" xml:"Session,omitempty" type:"Struct"`
+	ScenicId    *int64                                                     `json:"ScenicId,omitempty" xml:"ScenicId,omitempty"`
+	SellerAgent *TicketPageQueryProductResponseBodyDataProductsSellerAgent `json:"SellerAgent,omitempty" xml:"SellerAgent,omitempty" type:"Struct"`
+	Session     *TicketPageQueryProductResponseBodyDataProductsSession     `json:"Session,omitempty" xml:"Session,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
-	SettlePriceCalculateType *int32                                             `json:"SettlePriceCalculateType,omitempty" xml:"SettlePriceCalculateType,omitempty"`
-	Spu                      *TicketPageQueryProductResponseBodyDataProductsSpu `json:"Spu,omitempty" xml:"Spu,omitempty" type:"Struct"`
-	// example:
-	//
-	// 飞猪景区乐园旗舰店
-	SupplierName *string                                                   `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	TicketKind   *TicketPageQueryProductResponseBodyDataProductsTicketKind `json:"TicketKind,omitempty" xml:"TicketKind,omitempty" type:"Struct"`
-	UseRule      *TicketPageQueryProductResponseBodyDataProductsUseRule    `json:"UseRule,omitempty" xml:"UseRule,omitempty" type:"Struct"`
+	SettlePriceCalculateType *int32                                                    `json:"SettlePriceCalculateType,omitempty" xml:"SettlePriceCalculateType,omitempty"`
+	Spu                      *TicketPageQueryProductResponseBodyDataProductsSpu        `json:"Spu,omitempty" xml:"Spu,omitempty" type:"Struct"`
+	TicketKind               *TicketPageQueryProductResponseBodyDataProductsTicketKind `json:"TicketKind,omitempty" xml:"TicketKind,omitempty" type:"Struct"`
+	UseRule                  *TicketPageQueryProductResponseBodyDataProductsUseRule    `json:"UseRule,omitempty" xml:"UseRule,omitempty" type:"Struct"`
 }
 
 func (s TicketPageQueryProductResponseBodyDataProducts) String() string {
@@ -260,6 +257,10 @@ func (s *TicketPageQueryProductResponseBodyDataProducts) GetScenicId() *int64 {
 	return s.ScenicId
 }
 
+func (s *TicketPageQueryProductResponseBodyDataProducts) GetSellerAgent() *TicketPageQueryProductResponseBodyDataProductsSellerAgent {
+	return s.SellerAgent
+}
+
 func (s *TicketPageQueryProductResponseBodyDataProducts) GetSession() *TicketPageQueryProductResponseBodyDataProductsSession {
 	return s.Session
 }
@@ -270,10 +271,6 @@ func (s *TicketPageQueryProductResponseBodyDataProducts) GetSettlePriceCalculate
 
 func (s *TicketPageQueryProductResponseBodyDataProducts) GetSpu() *TicketPageQueryProductResponseBodyDataProductsSpu {
 	return s.Spu
-}
-
-func (s *TicketPageQueryProductResponseBodyDataProducts) GetSupplierName() *string {
-	return s.SupplierName
 }
 
 func (s *TicketPageQueryProductResponseBodyDataProducts) GetTicketKind() *TicketPageQueryProductResponseBodyDataProductsTicketKind {
@@ -344,6 +341,11 @@ func (s *TicketPageQueryProductResponseBodyDataProducts) SetScenicId(v int64) *T
 	return s
 }
 
+func (s *TicketPageQueryProductResponseBodyDataProducts) SetSellerAgent(v *TicketPageQueryProductResponseBodyDataProductsSellerAgent) *TicketPageQueryProductResponseBodyDataProducts {
+	s.SellerAgent = v
+	return s
+}
+
 func (s *TicketPageQueryProductResponseBodyDataProducts) SetSession(v *TicketPageQueryProductResponseBodyDataProductsSession) *TicketPageQueryProductResponseBodyDataProducts {
 	s.Session = v
 	return s
@@ -356,11 +358,6 @@ func (s *TicketPageQueryProductResponseBodyDataProducts) SetSettlePriceCalculate
 
 func (s *TicketPageQueryProductResponseBodyDataProducts) SetSpu(v *TicketPageQueryProductResponseBodyDataProductsSpu) *TicketPageQueryProductResponseBodyDataProducts {
 	s.Spu = v
-	return s
-}
-
-func (s *TicketPageQueryProductResponseBodyDataProducts) SetSupplierName(v string) *TicketPageQueryProductResponseBodyDataProducts {
-	s.SupplierName = &v
 	return s
 }
 
@@ -387,6 +384,11 @@ func (s *TicketPageQueryProductResponseBodyDataProducts) Validate() error {
 	}
 	if s.Region != nil {
 		if err := s.Region.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SellerAgent != nil {
+		if err := s.SellerAgent.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1572,6 +1574,47 @@ func (s *TicketPageQueryProductResponseBodyDataProductsRegion) SetName(v string)
 }
 
 func (s *TicketPageQueryProductResponseBodyDataProductsRegion) Validate() error {
+	return dara.Validate(s)
+}
+
+type TicketPageQueryProductResponseBodyDataProductsSellerAgent struct {
+	// example:
+	//
+	// 飞猪景区乐园旗舰店
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// example:
+	//
+	// 1
+	AgentType *int32 `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+}
+
+func (s TicketPageQueryProductResponseBodyDataProductsSellerAgent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TicketPageQueryProductResponseBodyDataProductsSellerAgent) GoString() string {
+	return s.String()
+}
+
+func (s *TicketPageQueryProductResponseBodyDataProductsSellerAgent) GetAgentName() *string {
+	return s.AgentName
+}
+
+func (s *TicketPageQueryProductResponseBodyDataProductsSellerAgent) GetAgentType() *int32 {
+	return s.AgentType
+}
+
+func (s *TicketPageQueryProductResponseBodyDataProductsSellerAgent) SetAgentName(v string) *TicketPageQueryProductResponseBodyDataProductsSellerAgent {
+	s.AgentName = &v
+	return s
+}
+
+func (s *TicketPageQueryProductResponseBodyDataProductsSellerAgent) SetAgentType(v int32) *TicketPageQueryProductResponseBodyDataProductsSellerAgent {
+	s.AgentType = &v
+	return s
+}
+
+func (s *TicketPageQueryProductResponseBodyDataProductsSellerAgent) Validate() error {
 	return dara.Validate(s)
 }
 
