@@ -20,13 +20,13 @@ type iDeleteDBInstanceReplicationRequest interface {
 }
 
 type DeleteDBInstanceReplicationRequest struct {
-	// 复制通道名称，用于标识需要删除的复制链路
+	// The name of the replication channel, which identifies the replication task.
 	//
 	// example:
 	//
 	// replication-channel-001
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 目标RDS实例ID，复制链路将从此实例上删除
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DeleteDBInstanceReplicationRequest struct {
 	//
 	// 1234567890123456
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 地域ID，表示RDS实例所在的地域
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// This parameter is required.
 	//

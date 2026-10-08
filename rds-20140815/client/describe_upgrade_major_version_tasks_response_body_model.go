@@ -22,7 +22,7 @@ type iDescribeUpgradeMajorVersionTasksResponseBody interface {
 }
 
 type DescribeUpgradeMajorVersionTasksResponseBody struct {
-	// The tasks for major engine version upgrades.
+	// The list of major engine version upgrade tasks.
 	Items []*DescribeUpgradeMajorVersionTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -42,7 +42,7 @@ type DescribeUpgradeMajorVersionTasksResponseBody struct {
 	//
 	// 152E0C6D-B9C3-4468-9F2C-FEF9D9E8417B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,87 +117,87 @@ func (s *DescribeUpgradeMajorVersionTasksResponseBody) Validate() error {
 }
 
 type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
-	// The time when the system collects the statistics.
+	// The statistics information collection pattern.
 	//
 	// Valid values:
 	//
-	// 	- **After**: The system collects the statistics after a switchover.
+	// - **After**: Upgrade after the cutover.
 	//
-	// 	- **Before**: The system collects the statistics before a switchover.
+	// - **Before**: Upgrade before the cutover.
 	//
 	// example:
 	//
 	// After
 	CollectStatMode *string `json:"CollectStatMode,omitempty" xml:"CollectStatMode,omitempty"`
-	// The details of the task.
+	// The detailed information about the task.
 	//
 	// example:
 	//
 	// 2021-10-27 15:03:05 --- do upgrade precheck on slave succcess.\\n2021-10-27 15:03:11 --- begin to upgrade major version, source instance will locked in readonly mode.\\n2021-10-27 15:03:21 --- upgrade master success.\\n2021-10-27 15:06:10 --- exchange source and target instance dns success.\\n
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The end time of the task.
+	// The end time of the major engine version upgrade.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	// The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614237779000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The status of the task.
+	// The final result of the task. Valid values:
 	//
 	// 	- **Success**: The task is successful.
 	//
 	// 	- **Failed**: The task failed.
 	//
-	// 	- **Running**: The task is in the phase in which data is being migrated to a new instance.
+	// 	- **Running**: The migration is in progress.
 	//
 	// example:
 	//
 	// Success
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The ID of the original instance.
+	// The ID of the original instance before the upgrade.
 	//
 	// example:
 	//
 	// pgm-bp1i3kkq7321****
 	SourceInsName *string `json:"SourceInsName,omitempty" xml:"SourceInsName,omitempty"`
-	// The major engine version of the original instance.
+	// The version of the original instance before the upgrade.
 	//
 	// example:
 	//
 	// 11.0
 	SourceMajorVersion *string `json:"SourceMajorVersion,omitempty" xml:"SourceMajorVersion,omitempty"`
-	// The start time of the task.
+	// The start time of the major engine version upgrade.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	// The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614236007000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The end time of the switching from the original instance to the new instance.
+	// The end time of the instance switchover from the original instance to the new instance.
 	//
-	// Expressed in Unix timestamp. Unit: milliseconds.
+	// The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1714237539000
 	SwitchEndTime *string `json:"SwitchEndTime,omitempty" xml:"SwitchEndTime,omitempty"`
-	// The time at which your workloads are switched over from the original instance to the new instance.
+	// The time of the instance switchover from the original instance to the new instance.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	// The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1614237539000
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The ID of the new instance.
+	// The ID of the new instance after the upgrade.
 	//
 	// example:
 	//
 	// pgm-bp1c0v6d8092****
 	TargetInsName *string `json:"TargetInsName,omitempty" xml:"TargetInsName,omitempty"`
-	// The major engine version of the new instance. Valid values:
+	// The major engine version after the upgrade. Valid values:
 	//
 	// 	- **10.0**
 	//
@@ -225,19 +225,56 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	//
 	// Valid values:
 	//
-	// 	- **clone**: The system does not migrate data to the new instance and does not switch your workloads over to the new instance.
+	// - **clone**: no cutover
 	//
-	// 	- **switch**: The system migrates data to the new instance and switches your workloads over to the new instance.
+	// - **switch**: cutover
 	//
 	// example:
 	//
 	// switch
-	UpgradeMode                  *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
-	CutOver                      *bool   `json:"cutOver,omitempty" xml:"cutOver,omitempty"`
-	TotalLogicRepDelayTime       *int32  `json:"totalLogicRepDelayTime,omitempty" xml:"totalLogicRepDelayTime,omitempty"`
-	TotalLogicRepLatencyMB       *int32  `json:"totalLogicRepLatencyMB,omitempty" xml:"totalLogicRepLatencyMB,omitempty"`
+	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+	// Indicates whether a cutover is performed.
+	//
+	// - **true**: A cutover is performed.
+	//
+	// - **false**: No cutover is performed.
+	//
+	// example:
+	//
+	// true
+	CutOver *bool `json:"cutOver,omitempty" xml:"cutOver,omitempty"`
+	// The estimated synchronization time for the logical replication lag. Unit: seconds.
+	//
+	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	//
+	// example:
+	//
+	// 10
+	TotalLogicRepDelayTime *int32 `json:"totalLogicRepDelayTime,omitempty" xml:"totalLogicRepDelayTime,omitempty"`
+	// The size of the logical replication lag. Unit: MB.
+	//
+	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	//
+	// example:
+	//
+	// 1
+	TotalLogicRepLatencyMB *int32 `json:"totalLogicRepLatencyMB,omitempty" xml:"totalLogicRepLatencyMB,omitempty"`
+	// The temporary internal endpoint of the higher-version instance for the zero-downtime major engine version upgrade. The format is `****.pg.rds.aliyuncs.com`.
+	//
+	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	//
+	// example:
+	//
+	// ****.pg.rds.aliyuncs.com
 	ZeroDownTimeConnectionString *string `json:"zeroDownTimeConnectionString,omitempty" xml:"zeroDownTimeConnectionString,omitempty"`
-	ZeroDownTimePort             *int32  `json:"zeroDownTimePort,omitempty" xml:"zeroDownTimePort,omitempty"`
+	// The port of the higher-version instance, which is the same as the port of the source instance.
+	//
+	// > This parameter is used only for **zero-downtime*	- major engine version upgrades.
+	//
+	// example:
+	//
+	// 5432
+	ZeroDownTimePort *int32 `json:"zeroDownTimePort,omitempty" xml:"zeroDownTimePort,omitempty"`
 }
 
 func (s DescribeUpgradeMajorVersionTasksResponseBodyItems) String() string {

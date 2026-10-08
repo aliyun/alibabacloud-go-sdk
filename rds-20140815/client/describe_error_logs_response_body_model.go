@@ -29,7 +29,7 @@ type DescribeErrorLogsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of error logs on the current page.
+	// The number of error log entries on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeErrorLogsResponseBody struct {
 	//
 	// 98504E07-BB0E-40FC-B152-E4882615812C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

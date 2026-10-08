@@ -26,21 +26,21 @@ type iDescribeRCMetricListResponseBody interface {
 }
 
 type DescribeRCMetricListResponseBody struct {
-	// The HTTP status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The monitoring data.
+	// The list of monitoring data.
 	//
 	// example:
 	//
-	// [{\\"timestamp\\":1722909960000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988087373\\",\\"Minimum\\":0.097,\\"Maximum\\":0.097,\\"Average\\":0.097},{\\"timestamp\\":1722910020000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988087373\\",\\"Minimum\\":0.093,\\"Maximum\\":0.093,\\"Average\\":0.093}]
+	// [{\\"timestamp\\":1722909960000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988******\\",\\"Minimum\\":0.097,\\"Maximum\\":0.097,\\"Average\\":0.097},{\\"timestamp\\":1722910020000,\\"instanceId\\":\\"rc-dh2jf9n6j4s14926****\\",\\"userId\\":\\"1695619988******\\",\\"Minimum\\":0.093,\\"Maximum\\":0.093,\\"Average\\":0.093}]
 	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	// The message that is returned for the request.
+	// The returned message.
 	//
-	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// > This parameter returns **Successful*	- if the request is successful. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeRCMetricListResponseBody struct {
 	//
 	// example:
 	//
-	// 6178f1825f9fb76ce0b5e8707e68181f
+	// 6178f1825f9fb76ce0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The statistical period of the monitoring data.
 	//
@@ -66,9 +66,9 @@ type DescribeRCMetricListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

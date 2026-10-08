@@ -24,17 +24,17 @@ type DescribeAvailableMetricsResponseBody struct {
 	//
 	// example:
 	//
-	// rm-bp1*****
+	// rm-bp1****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Details of the Enhanced Monitoring metric.
+	// The list of enhanced monitoring metrics.
 	Items []*DescribeAvailableMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5CD61041-35F7-10F7-BE94-33A48B221218
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of enhanced monitoring metrics that are available for the instance.
+	// The total number of enhanced monitoring metrics supported by the instance.
 	//
 	// example:
 	//
@@ -100,65 +100,65 @@ func (s *DescribeAvailableMetricsResponseBody) Validate() error {
 }
 
 type DescribeAvailableMetricsResponseBodyItems struct {
-	// The description of the Enhanced Monitoring metric.
+	// The description of the enhanced monitoring metric.
 	//
 	// example:
 	//
-	// OS CPU utilization, equal to the number of OS-consumed CPUs divided by the total number of CPUs
+	// sys cpu usage, sys cpu usage / total cpu
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The category of the Enhanced Monitoring metric. Valid values:
+	// The category of the enhanced monitoring metric. Valid values:
 	//
-	// 	- **os**: OS metric
+	// - **os**: operating system metric.
 	//
-	// 	- **db**: database metric
+	// - **db**: database metric.
 	//
 	// example:
 	//
 	// os
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The key of the group to which the Enhanced Monitoring metric belongs.
+	// The key of the group to which the enhanced monitoring metric belongs.
 	//
 	// example:
 	//
 	// os.cpu_usage
 	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	// The name of the group to which the Enhanced Monitoring metric belongs.
+	// The name of the group to which the enhanced monitoring metric belongs.
 	//
 	// example:
 	//
-	// CPU Utilization Rate
+	// CPU Usage
 	GroupKeyType *string `json:"GroupKeyType,omitempty" xml:"GroupKeyType,omitempty"`
-	// The method that is used to aggregate the monitoring data of the Enhanced Monitoring metric. Valid values:
+	// The statistical method of the enhanced monitoring metric. Valid values:
 	//
-	// 	- **avg**: The system calculates the average value of the Enhanced Monitoring metric.
+	// - **avg**: average value.
 	//
-	// 	- **min**: The system calculates the minimum value of the Enhanced Monitoring metric.
+	// - **min**: minimum value.
 	//
-	// 	- **max**: The system calculates the maximum value of the Enhanced Monitoring metric.
+	// - **max**: maximum value.
 	//
 	// example:
 	//
 	// avg
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The key of the Enhanced Monitoring metric.
+	// The key of the enhanced monitoring metric.
 	//
 	// example:
 	//
 	// os.cpu_usage.sys.avg
 	MetricsKey *string `json:"MetricsKey,omitempty" xml:"MetricsKey,omitempty"`
-	// The alias of the Enhanced Monitoring metric.
+	// The alias of the enhanced monitoring metric.
 	//
 	// example:
 	//
 	// cpu_sys_per_core
 	MetricsKeyAlias *string `json:"MetricsKeyAlias,omitempty" xml:"MetricsKeyAlias,omitempty"`
-	// The serial number of the Enhanced Monitoring metric.
+	// The sequence number of the enhanced monitoring metric.
 	//
 	// example:
 	//
 	// 1
 	SortRule *int32 `json:"SortRule,omitempty" xml:"SortRule,omitempty"`
-	// The unit of the Enhanced Monitoring metric.
+	// The unit of the enhanced monitoring metric.
 	//
 	// example:
 	//

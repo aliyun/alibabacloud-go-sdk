@@ -28,12 +28,22 @@ type iDescribeRCDisksRequest interface {
 }
 
 type DescribeRCDisksRequest struct {
-	// The disk ID. The value is a JSON array that consists of up to 100 disk IDs. Separate the disk IDs with commas (,). Format: `["Disk ID1","Disk ID2"]`.
+	// The disk IDs. The value is a JSON array that contains up to 100 IDs separated by commas (,). Format: `["Disk ID1","Disk ID2"]`.
 	//
 	// example:
 	//
 	// ["rcd-bp67acfmxazb4p****", "rcd-bp67acfmxazb4g****", … "rcd-bp67acfmxazb4d****"]
 	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// The type of cloud disk or elastic ephemeral disk to query. Valid values:
+	//
+	// ● all: queries both system cloud disks and data cloud disks.
+	//
+	// ● system: queries only system cloud disks.
+	//
+	// ● data: queries only data cloud disks.
+	//
+	// Default value: all.
+	//
 	// example:
 	//
 	// data
@@ -64,11 +74,29 @@ type DescribeRCDisksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The disk status. Valid values:
+	//
+	// ● In_use: in use.
+	//
+	// ● Available: to be attached.
+	//
+	// ● Attaching: being attached.
+	//
+	// ● Detaching: being detached.
+	//
+	// ● Creating: being created.
+	//
+	// ● ReIniting: being initialized.
+	//
+	// ● All: all statuses.
+	//
+	// Default value: All.
+	//
 	// example:
 	//
 	// All
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of the tags.
+	// The tags.
 	Tag []*DescribeRCDisksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -166,13 +194,13 @@ func (s *DescribeRCDisksRequest) Validate() error {
 }
 
 type DescribeRCDisksRequestTag struct {
-	// The key of the tag. The tag key **cannot be*	- an empty string or a duplicate value.
+	// The tag key. Empty values and duplicate values are **not allowed**.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The tag value **can be*	- an empty string.
+	// The tag value. Empty values are **allowed**.
 	//
 	// example:
 	//

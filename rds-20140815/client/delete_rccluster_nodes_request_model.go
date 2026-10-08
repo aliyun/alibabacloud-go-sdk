@@ -20,7 +20,7 @@ type iDeleteRCClusterNodesRequest interface {
 }
 
 type DeleteRCClusterNodesRequest struct {
-	// The instance IDs.
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The node information.
 	Nodes []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
@@ -32,7 +32,7 @@ type DeleteRCClusterNodesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The virtual private cloud (VPC) ID.
 	//
-	// >  This is a reserved parameter.
+	// > Reserved parameter.
 	//
 	// example:
 	//

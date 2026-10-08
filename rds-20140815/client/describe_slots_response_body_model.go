@@ -16,13 +16,13 @@ type iDescribeSlotsResponseBody interface {
 }
 
 type DescribeSlotsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 76AF0609-4195-5DFC-BC78-3AD76FF872BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the replication slot.
+	// The list of replication slots of the instance.
 	Slots []*DescribeSlotsResponseBodySlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
 }
 
@@ -72,55 +72,55 @@ type DescribeSlotsResponseBodySlots struct {
 	//
 	// db_test01
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The extension used by the replication slot.
+	// The plugin used by the replication slot.
 	//
 	// example:
 	//
 	// test_decoding
 	Plugin *string `json:"Plugin,omitempty" xml:"Plugin,omitempty"`
-	// The replication slot name.
+	// The name of the replication slot.
 	//
 	// example:
 	//
 	// slot_test01
 	SlotName *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
-	// The replication slot status. Valid values:
+	// The status of the replication slot. Valid values:
 	//
-	// 	- ACTIVE
+	// - ACTIVE: Active.
 	//
-	// 	- INACTIVE
+	// - INACTIVE: Inactive.
 	//
 	// example:
 	//
 	// INACTIVE
 	SlotStatus *string `json:"SlotStatus,omitempty" xml:"SlotStatus,omitempty"`
-	// The replication slot type. Valid values:
+	// The type of the replication slot. Valid values:
 	//
-	// 	- physical
+	// - physical: Physical.
 	//
-	// 	- logical
+	// - logical: Logical.
 	//
 	// example:
 	//
 	// logical
 	SlotType *string `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
-	// The latency of the logical subscription on the subscriber node that corresponds to the current replication slot. Unit: seconds.
+	// The specific latency of the logical subscription on the subscriber corresponding to the current replication slot. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	SubReplayLag *string `json:"SubReplayLag,omitempty" xml:"SubReplayLag,omitempty"`
-	// Indicates whether the replication slot is a temporary replication slot. Valid values:
+	// Indicates whether the replication slot is temporary. Valid values:
 	//
-	// 	- true
+	// - true: The replication slot is temporary.
 	//
-	// 	- false
+	// - false: The replication slot is not temporary.
 	//
 	// example:
 	//
 	// false
 	Temporary *string `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
-	// The number of logs accumulated in the replication slot.
+	// The amount of logs accumulated by the replication slot.
 	//
 	// example:
 	//

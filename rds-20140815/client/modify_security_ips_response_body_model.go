@@ -16,7 +16,7 @@ type iModifySecurityIpsResponseBody interface {
 }
 
 type ModifySecurityIpsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type ModifySecurityIpsResponseBody struct {
 	//
 	// example:
 	//
-	// 115855279
+	// 11585****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

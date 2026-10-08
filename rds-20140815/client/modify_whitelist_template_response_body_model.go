@@ -24,31 +24,31 @@ type iModifyWhitelistTemplateResponseBody interface {
 }
 
 type ModifyWhitelistTemplateResponseBody struct {
-	// The response code returned. Valid values:
+	// The response code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Normal.
 	//
-	// 	- **400**: client error
+	// - **400**: Client error.
 	//
-	// 	- **401**: identity authentication failed
+	// - **401**: Authentication failed.
 	//
-	// 	- **404**: request page not found
+	// - **404**: Request page not found.
 	//
-	// 	- **500**: server error
+	// - **500**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data list.
 	Data *ModifyWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Normal.
 	//
-	// 	- **400**: client error
+	// - **400**: Client error.
 	//
-	// 	- **500**: server error
+	// - **500**: Server error.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ModifyWhitelistTemplateResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The request ID. Each request has a unique ID, which facilitates troubleshooting.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ModifyWhitelistTemplateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -150,11 +150,11 @@ func (s *ModifyWhitelistTemplateResponseBody) Validate() error {
 }
 
 type ModifyWhitelistTemplateResponseBodyData struct {
-	// The status code returned. Valid values:
+	// The return status. Valid values:
 	//
-	// 	- **ok**: The request is successful.
+	// - **ok**: Normal return.
 	//
-	// 	- **error**: The request fails.
+	// - **error**: Error return.
 	//
 	// example:
 	//

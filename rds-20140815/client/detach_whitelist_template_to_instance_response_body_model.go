@@ -26,35 +26,35 @@ type iDetachWhitelistTemplateToInstanceResponseBody interface {
 type DetachWhitelistTemplateToInstanceResponseBody struct {
 	// The response code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Normal.
 	//
-	// 	- **400**: client error
+	// - **400**: Client fault.
 	//
-	// 	- **401**: identity authentication failed
+	// - **401**: Authentication failed.
 	//
-	// 	- **404**: request page not found
+	// - **404**: Request page not found.
 	//
-	// 	- **500**: server error
+	// - **500**: Server fault.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DetachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Success.
 	//
-	// 	- **400**: client error
+	// - **400**: Client error.
 	//
-	// 	- **500**: server error
+	// - **500**: Server error.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response parameters.
+	// The response message.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DetachWhitelistTemplateToInstanceResponseBody struct {
 	//
 	// 224DB9F7-3100-4899-AB9C-C938BCCB43E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Success.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -150,11 +150,11 @@ func (s *DetachWhitelistTemplateToInstanceResponseBody) Validate() error {
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyData struct {
-	// The status code returned. Valid values:
+	// The return status. Valid values:
 	//
-	// 	- **ok**: The request is successful.
+	// - **ok**: Success.
 	//
-	// 	- **error**: The request fails.
+	// - **error**: Error.
 	//
 	// example:
 	//

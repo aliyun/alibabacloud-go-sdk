@@ -24,7 +24,7 @@ type iDescribeReplicationLinkLogsRequest interface {
 }
 
 type DescribeReplicationLinkLogsRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,35 +38,29 @@ type DescribeReplicationLinkLogsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of records per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The task ID. You must set this parameter to the ID of the task that you create by calling the **CreateReplicationLink*	- operation for the disaster recovery instance.
+	// The task ID. The task ID returned when you call the **CreateReplicationLink*	- operation to create a disaster recovery instance.
 	//
 	// example:
 	//
 	// 8413252
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name. You must set this parameter to the name of the task that you create by calling the **CreateReplicationLink*	- operation for the disaster recovery instance.
+	// The task name. The task name returned when you call the **CreateReplicationLink*	- operation to create a disaster recovery instance.
 	//
 	// example:
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **create**: creates a synchronization link.
+	// - **create**: Create a replication link.
 	//
-	// 	- **create-dryrun**: performs a precheck before a synchronization link is created.
-	//
-	// Valid values:
-	//
-	// 	- create: creates a replication link.
-	//
-	// 	- create-dryrun: performs a precheck before a replication link is created.
+	// - **create-dryrun**: Dry run for creating a replication link.
 	//
 	// This parameter is required.
 	//

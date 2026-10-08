@@ -20,7 +20,7 @@ type iUpgradeDBInstanceMajorVersionPrecheckRequest interface {
 }
 
 type UpgradeDBInstanceMajorVersionPrecheckRequest struct {
-	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -29,15 +29,26 @@ type UpgradeDBInstanceMajorVersionPrecheckRequest struct {
 	// pgm-bp1c808s731l****
 	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new major engine version of the instance. The new major engine version must be later than the original major engine version.
+	// The major engine version of the target instance. The version must be later than the current major engine version of the instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 12.0
+	// 17.0
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
-	UpgradeMode        *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+	// The upgrade mode. Valid values:
+	//
+	// - **zeroDownTimeUpgrade**: zero-downtime upgrade.
+	//
+	// - **inPlaceUpgrade**: in-place upgrade.
+	//
+	// - **greenBlueDeployment**: blue-green deployment.
+	//
+	// example:
+	//
+	// zeroDownTimeUpgrade
+	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
 }
 
 func (s UpgradeDBInstanceMajorVersionPrecheckRequest) String() string {

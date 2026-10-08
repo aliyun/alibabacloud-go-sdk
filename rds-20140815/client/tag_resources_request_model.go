@@ -27,7 +27,7 @@ type iTagResourcesRequest interface {
 
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,17 @@ type TagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **INSTANCE**.
+	// The resource type. Valid values:
+	//
+	// - **INSTANCE**: regular ApsaraDB RDS instance.
+	//
+	// - **CUSTOM**: RDS Custom instance.
+	//
+	// - **CUSTOMDEPLOYMENTSET**: RDS Custom deployment set.
+	//
+	// - **CUSTOMDISK**: RDS Custom cloud disk.
+	//
+	// - **CUSTOMSNAPSHOT**: RDS Custom snapshot.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +152,9 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag. You can create N tag keys at a time. Valid values of N: **1*	- to **20**. The value of this parameter cannot be an empty string.
+	// The tag key. Empty values and duplicate values are **not allowed**.
+	//
+	// > An existing tag key is overwritten by a new tag key with the same name.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +162,7 @@ type TagResourcesRequestTag struct {
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can create N tag values at a time. Valid values of N: **1*	- to **20**. The value of this parameter can be an empty string.
+	// The tag value. Empty values are **allowed**.
 	//
 	// example:
 	//

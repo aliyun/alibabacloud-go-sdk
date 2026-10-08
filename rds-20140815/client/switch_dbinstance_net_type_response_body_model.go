@@ -18,17 +18,17 @@ type iSwitchDBInstanceNetTypeResponseBody interface {
 }
 
 type SwitchDBInstanceNetTypeResponseBody struct {
-	// The endpoint that is used to connect to the instance after the switch of endpoints.
+	// The database endpoint after the switch.
 	//
 	// example:
 	//
-	// new**********.mysql.rds.aliyuncs.com
+	// new****.mysql.rds.aliyuncs.com
 	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
-	// The endpoint that is used to connect to the instance before the switch of endpoints.
+	// The database endpoint before the switch.
 	//
 	// example:
 	//
-	// rm-bp1**************.mysql.rds.aliyuncs.com
+	// rm-bp1****.mysql.rds.aliyuncs.com
 	OldConnectionString *string `json:"OldConnectionString,omitempty" xml:"OldConnectionString,omitempty"`
 	// The request ID.
 	//

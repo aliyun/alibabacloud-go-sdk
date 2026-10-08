@@ -16,9 +16,9 @@ type iDescribeDBInstanceEndpointsResponseBody interface {
 }
 
 type DescribeDBInstanceEndpointsResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DescribeDBInstanceEndpointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -63,17 +63,17 @@ func (s *DescribeDBInstanceEndpointsResponseBody) Validate() error {
 
 type DescribeDBInstanceEndpointsResponseBodyData struct {
 	DBInstanceEndpoints *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpoints `json:"DBInstanceEndpoints,omitempty" xml:"DBInstanceEndpoints,omitempty" type:"Struct"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// rm-u****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The version of the IP protocol. Valid values:
+	// The IP address protocol version. Valid values:
 	//
-	// 	- **ipv4**
+	// - **ipv4**
 	//
-	// 	- **ipv6**
+	// - **ipv6**
 	//
 	// example:
 	//

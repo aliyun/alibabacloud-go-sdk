@@ -32,33 +32,18 @@ type DescribeRCClusterNodesRequest struct {
 	//
 	// rcnpf5e3ee4a65104cf0801f94850d37****
 	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	// The page number.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 100**.
-	//
-	// Default value: **30**.
-	//
 	// example:
 	//
-	// 30
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	// 10
+	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// >  This is a reserved parameter.
-	//
 	// example:
 	//
-	// None
+	// vpc-2zet5c7111r33zbie****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

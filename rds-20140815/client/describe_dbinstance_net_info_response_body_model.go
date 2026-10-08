@@ -21,27 +21,27 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 
 type DescribeDBInstanceNetInfoResponseBody struct {
 	DBInstanceNetInfos *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
-	// The network type of the instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **Classic**: classic network
+	// 	- **Classic**: classic network.
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// 	- **VPC**: virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 777C4593-8053-427B-99E2-105593277CAB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The whitelist mode of the instance. Valid values:
+	// The whitelist mode. Valid values:
 	//
-	// 	- **normal**: standard whitelist mode
+	// 	- **normal**: standard whitelist mode.
 	//
-	// 	- **safety**: enhanced whitelist mode
+	// 	- **safety**: enhanced whitelist.
 	//
 	// example:
 	//

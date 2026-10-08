@@ -34,13 +34,13 @@ type iDescribeSlowLogsRequest interface {
 }
 
 type DescribeSlowLogsRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
 	//
@@ -48,9 +48,9 @@ type DescribeSlowLogsRequest struct {
 	//
 	// RDS_MySQL
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
+	// The end date of the query. The end date must be later than or equal to the start date, and the interval between the start date and the end date cannot exceed 31 days. Format: <i>yyyy-MM-dd</i>Z (UTC).
 	//
-	// >  If the end date of the query is the same as the start date of the query, you can query the logs that are generated at 08:00 on the start date of the query. You can query the slow logs within a maximum time range of 24 hours.
+	// > If the end date is the same as the start date, the query starts from 08:00 on the start date and covers up to 24 hours of slow query log statistics.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type DescribeSlowLogsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from 1.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -76,23 +76,23 @@ type DescribeSlowLogsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The dimension based on which the system sorts the entries to return. Valid values:
+	// The sorting criterion. Valid values:
 	//
-	// 	- **TotalExecutionCounts**: The system sorts the entries to return based on the number of times that SQL statements are executed.
+	// 	- **TotalExecutionCounts**: sorted by total number of executions in descending order.
 	//
-	// 	- **TotalQueryTimes**: The system sorts the entries to return based on the total execution duration.
+	// 	- **TotalQueryTimes**: sorted by total execution duration in descending order.
 	//
-	// 	- **TotalLogicalReads**: The system sorts the entries to return based on the total number of logical reads.
+	// 	- **TotalLogicalReads**: sorted by total number of logical reads in descending order.
 	//
-	// 	- **TotalPhysicalReads**: The system sorts the entries to return based on the total number of physical reads.
+	// 	- **TotalPhysicalReads**: sorted by total number of physical reads in descending order.
 	//
-	// > This parameter is supported only for instances that run SQL Server 2008 R2.
+	// > This parameter is supported only for SQL Server 2008 R2 instances.
 	//
 	// example:
 	//
 	// TotalExecutionCounts
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
+	// The start date of the query. Format: <i>yyyy-MM-dd</i>Z (UTC).
 	//
 	// This parameter is required.
 	//

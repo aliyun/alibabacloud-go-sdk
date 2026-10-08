@@ -27,13 +27,13 @@ type iDescribeCrossRegionBackupDBInstanceResponseBody interface {
 
 type DescribeCrossRegionBackupDBInstanceResponseBody struct {
 	Items *DescribeCrossRegionBackupDBInstanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The total number of items returned for cross-region backup settings.
+	// The number of items in the cross-region backup settings list.
 	//
 	// example:
 	//
 	// 1
 	ItemsNumbers *int32 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -59,7 +59,7 @@ type DescribeCrossRegionBackupDBInstanceResponseBody struct {
 	//
 	// 33517002-182D-40BE-93EC-610BD3381045
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

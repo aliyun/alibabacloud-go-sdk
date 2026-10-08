@@ -16,9 +16,6 @@ type iRdsCustomInitResponseBody interface {
 }
 
 type RdsCustomInitResponseBody struct {
-	// example:
-	//
-	// true
 	RegisterUidSuccess *bool `json:"RegisterUidSuccess,omitempty" xml:"RegisterUidSuccess,omitempty"`
 	// example:
 	//

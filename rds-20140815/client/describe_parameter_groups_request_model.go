@@ -24,18 +24,18 @@ type iDescribeParameterGroupsRequest interface {
 }
 
 type DescribeParameterGroupsRequest struct {
-	// Specifies whether to return the parameter overview.
+	// The parameter overview information.
 	//
-	// 	- **false*	- (default): The parameter overview is returned.
+	// - **false**: Returns parameter overview information. This is the default value.
 	//
-	// 	- **true**: The parameter overview is not returned.
+	// - **true**: Does not return parameter overview information.
 	//
 	// example:
 	//
 	// false
 	EnableDetail *bool  `json:"EnableDetail,omitempty" xml:"EnableDetail,omitempty"`
 	OwnerId      *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type DescribeParameterGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

@@ -18,15 +18,17 @@ type iDeleteDatabaseRequest interface {
 }
 
 type DeleteDatabaseRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
+	// The database name.
+	//
+	// You cannot delete multiple databases at a time.
 	//
 	// This parameter is required.
 	//

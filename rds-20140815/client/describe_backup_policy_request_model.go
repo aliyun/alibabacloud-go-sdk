@@ -38,39 +38,39 @@ type DescribeBackupPolicyRequest struct {
 	//
 	// DataBackupPolicy
 	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
-	// The method that is used to compress backup data. Valid values:
+	// The backup compression method. Valid values:
 	//
-	// 	- **0**: Backup data is not compressed.
+	// 	- **0**: no compression
 	//
-	// 	- **1**: Backup data is compressed by using zlib.
+	// 	- **1**: zlib compression
 	//
-	// 	- **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
+	// 	- **2**: parallel zlib compression
 	//
-	// 	- **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
+	// 	- **4**: QuickLZ compression with fast restoration for individual databases and tables enabled
 	//
-	// 	- **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
+	// 	- **8**: QuickLZ compression without fast restoration for individual databases and tables supported
 	//
 	// example:
 	//
 	// 1
 	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The policy that is used to retain archived backup files if the instance is released. Valid values:
+	// The archived backup data retention policy for deleted **MySQL*	- instances. Valid values:
 	//
-	// 	- **None**: No archived backup files are retained.
+	// 	- **None**: No archived backups are retained.
 	//
-	// 	- **Lastest**: Only the last archived backup file is retained.
+	// 	- **Lastest**: Only the last archived backup is retained.
 	//
-	// 	- **All**: All archived backup files are retained.
+	// 	- **All**: All archived backups are retained.
 	//
 	// example:
 	//

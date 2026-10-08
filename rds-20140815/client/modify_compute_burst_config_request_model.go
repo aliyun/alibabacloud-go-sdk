@@ -37,6 +37,10 @@ type iModifyComputeBurstConfigRequest interface {
 	GetScaleMaxCpus() *string
 	SetScaleMaxMemory(v string) *ModifyComputeBurstConfigRequest
 	GetScaleMaxMemory() *string
+	SetScaleMaxRcu(v float64) *ModifyComputeBurstConfigRequest
+	GetScaleMaxRcu() *float64
+	SetScaleMinRcu(v float64) *ModifyComputeBurstConfigRequest
+	GetScaleMinRcu() *float64
 	SetSwitchTime(v string) *ModifyComputeBurstConfigRequest
 	GetSwitchTime() *string
 	SetSwitchTimeMode(v string) *ModifyComputeBurstConfigRequest
@@ -46,31 +50,31 @@ type iModifyComputeBurstConfigRequest interface {
 }
 
 type ModifyComputeBurstConfigRequest struct {
-	// This parameter is set to **disabled*	- if the assured serverless feature is disabled.
+	// Set this parameter to **disabled*	- to disable the committed serverless feature.
 	//
 	// example:
 	//
 	// disabled
 	BurstStatus *string `json:"BurstStatus,omitempty" xml:"BurstStatus,omitempty"`
-	// The client token that is used to ensure the idempotence of requests and prevent repeated requests from being submitted. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCziJZNwH****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The CPU utilization threshold for **scale-out**. Valid values: 60 to 90. Unit: %.
+	// The CPU utilization threshold for elastic **scale-out**. Valid values: 60 to 90. Unit: %.
 	//
 	// example:
 	//
 	// 80
 	CpuEnlargeThreshold *string `json:"CpuEnlargeThreshold,omitempty" xml:"CpuEnlargeThreshold,omitempty"`
-	// The CPU utilization threshold for **scale-in**. Valid values: 30 to 55. Unit: %.
+	// The CPU utilization threshold for elastic **scale-in**. Valid values: 30 to 55. Unit: %.
 	//
 	// example:
 	//
 	// 50
 	CpuShrinkThreshold *string `json:"CpuShrinkThreshold,omitempty" xml:"CpuShrinkThreshold,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
@@ -84,13 +88,13 @@ type ModifyComputeBurstConfigRequest struct {
 	//
 	// pgm-2ze63v2p3o3k****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The memory usage threshold for **scale-out**. Valid values: 60 to 90. Unit: %.
+	// The memory utilization threshold for elastic **scale-out**. Valid values: 60 to 90. Unit: %.
 	//
 	// example:
 	//
 	// 80
 	MemoryEnlargeThreshold *string `json:"MemoryEnlargeThreshold,omitempty" xml:"MemoryEnlargeThreshold,omitempty"`
-	// The memory usage threshold for **scale-in**. Valid values: 30 to 55. Unit: %.
+	// The memory utilization threshold for elastic **scale-in**. Valid values: 30 to 55. Unit: %.
 	//
 	// example:
 	//
@@ -105,21 +109,23 @@ type ModifyComputeBurstConfigRequest struct {
 	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The maximum number of CPU cores for elastic scaling. The maximum value cannot exceed twice the initial CPU configuration.
+	// The maximum number of CPUs for elastic scale-out. The value can be up to twice the initial CPU configuration of the instance.
 	//
 	// example:
 	//
 	// 2
 	ScaleMaxCpus *string `json:"ScaleMaxCpus,omitempty" xml:"ScaleMaxCpus,omitempty"`
-	// The maximum memory for elastic scaling. The value cannot exceed twice the instance\\"s initial memory size. Unit: GB. Step size: 2 GB.
+	// The maximum memory for elastic scale-out. The value can be up to twice the initial memory configuration of the instance. Unit: GB. The value is adjusted in increments of 2 GB.
 	//
 	// example:
 	//
 	// 4
-	ScaleMaxMemory *string `json:"ScaleMaxMemory,omitempty" xml:"ScaleMaxMemory,omitempty"`
-	// The time when the specified entry takes effect. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	ScaleMaxMemory *string  `json:"ScaleMaxMemory,omitempty" xml:"ScaleMaxMemory,omitempty"`
+	ScaleMaxRcu    *float64 `json:"ScaleMaxRcu,omitempty" xml:"ScaleMaxRcu,omitempty"`
+	ScaleMinRcu    *float64 `json:"ScaleMinRcu,omitempty" xml:"ScaleMinRcu,omitempty"`
+	// The specified time at which the modification takes effect. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC).
 	//
-	// >  This parameter is required only if **SwitchTimeMode*	- is set to **2**.
+	// > This parameter is required when **SwitchTimeMode*	- is set to **2**.
 	//
 	// example:
 	//
@@ -127,17 +133,17 @@ type ModifyComputeBurstConfigRequest struct {
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The effective policy. Valid values:
 	//
-	// 	- **0**: Immediately takes effect.
+	// - **0**: The modification takes effect immediately.
 	//
-	// 	- **1**: Takes effect within the maintenance window. You can call the **ModifyDBInstanceMaintainTime*	- operation to change the maintenance window of an instance.
+	// - **1**: The modification takes effect during the maintenance window. You can call the **ModifyDBInstanceMaintainTime*	- operation to modify the maintenance window.
 	//
-	// 	- **2**: Takes effect at a specified point in time.
+	// - **2**: The modification takes effect at a specified point in time.
 	//
 	// example:
 	//
 	// Immediate
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
@@ -207,6 +213,14 @@ func (s *ModifyComputeBurstConfigRequest) GetScaleMaxCpus() *string {
 
 func (s *ModifyComputeBurstConfigRequest) GetScaleMaxMemory() *string {
 	return s.ScaleMaxMemory
+}
+
+func (s *ModifyComputeBurstConfigRequest) GetScaleMaxRcu() *float64 {
+	return s.ScaleMaxRcu
+}
+
+func (s *ModifyComputeBurstConfigRequest) GetScaleMinRcu() *float64 {
+	return s.ScaleMinRcu
 }
 
 func (s *ModifyComputeBurstConfigRequest) GetSwitchTime() *string {
@@ -288,6 +302,16 @@ func (s *ModifyComputeBurstConfigRequest) SetScaleMaxCpus(v string) *ModifyCompu
 
 func (s *ModifyComputeBurstConfigRequest) SetScaleMaxMemory(v string) *ModifyComputeBurstConfigRequest {
 	s.ScaleMaxMemory = &v
+	return s
+}
+
+func (s *ModifyComputeBurstConfigRequest) SetScaleMaxRcu(v float64) *ModifyComputeBurstConfigRequest {
+	s.ScaleMaxRcu = &v
+	return s
+}
+
+func (s *ModifyComputeBurstConfigRequest) SetScaleMinRcu(v float64) *ModifyComputeBurstConfigRequest {
+	s.ScaleMinRcu = &v
 	return s
 }
 

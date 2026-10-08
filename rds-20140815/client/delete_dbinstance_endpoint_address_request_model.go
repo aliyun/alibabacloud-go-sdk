@@ -22,7 +22,7 @@ type iDeleteDBInstanceEndpointAddressRequest interface {
 }
 
 type DeleteDBInstanceEndpointAddressRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
 	//
 	// The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -38,7 +38,7 @@ type DeleteDBInstanceEndpointAddressRequest struct {
 	//
 	// new****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+	// The endpoint ID of the instance. You can call DescribeDBInstanceEndpoints to query the endpoint ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteDBInstanceEndpointAddressRequest struct {
 	//
 	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//

@@ -30,17 +30,17 @@ type iModifyDTCSecurityIpHostsForSQLServerRequest interface {
 }
 
 type ModifyDTCSecurityIpHostsForSQLServerRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeDBInstanceAttribute to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,18 +50,18 @@ type ModifyDTCSecurityIpHostsForSQLServerRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IP address of the ECS instance and the hostname of the Windows computer. Format: `IP address,Hostname`. Separate multiple entries with semicolon (;).
+	// The IP addresses of ECS instances and the computer names of the Windows operating systems. Format: `ip,hostname`. Separate multiple instances with semicolons (;).
 	//
-	// >  For more information about how to query the computer hostname, see [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html).
+	// >For more information about how to view the computer name, see [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 192.168.1.100,k3ecstest
+	// 192.168.XX.XX,k3ecstest
 	SecurityIpHosts *string `json:"SecurityIpHosts,omitempty" xml:"SecurityIpHosts,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the IP address whitelist.
+	// The name of the whitelist group.
 	//
 	// This parameter is required.
 	//

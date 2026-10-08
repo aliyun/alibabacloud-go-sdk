@@ -22,23 +22,23 @@ type iDescribeDBInstanceConnectivityResponseBody interface {
 }
 
 type DescribeDBInstanceConnectivityResponseBody struct {
-	// The error code for connection diagnosis. Valid values:
+	// The error code of the connection diagnostics. Valid values:
 	//
 	// 	- **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
 	//
-	// 	- **CONNECTION_ABNORMAL**: The connection to the cluster is normal.
+	// 	- **CONNECTION_ABNORMAL**: The connection is normal.
 	//
 	// example:
 	//
 	// SRC_IP_NOT_IN_USER_WHITELIST
 	ConnCheckErrorCode *string `json:"ConnCheckErrorCode,omitempty" xml:"ConnCheckErrorCode,omitempty"`
-	// The error message for connection diagnosis.
+	// The error message of the connection diagnostics.
 	//
 	// example:
 	//
 	// Src ip:39.106.64.59 not in user whitelist
 	ConnCheckErrorMessage *string `json:"ConnCheckErrorMessage,omitempty" xml:"ConnCheckErrorMessage,omitempty"`
-	// The connection diagnosis result. Valid values:
+	// The result of the connection diagnostics. Valid values:
 	//
 	// 	- **Success**
 	//
@@ -54,7 +54,7 @@ type DescribeDBInstanceConnectivityResponseBody struct {
 	//
 	// rm-2ze2za3is7baay1w4
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

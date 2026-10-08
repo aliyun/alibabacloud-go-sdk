@@ -22,29 +22,29 @@ type iDescribeAvailableRecoveryTimeResponseBody interface {
 }
 
 type DescribeAvailableRecoveryTimeResponseBody struct {
-	// The ID of the cross-region data backup file.
+	// The ID of the cross-region backup file.
 	//
 	// example:
 	//
-	// 14377
+	// 1249****
 	CrossBackupId *int32 `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
-	// The start time from which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time of the restorable time range for the cross-region backup file. The time follows the format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
-	// 2019-06-12T05:22:29Z
+	// 2024-03-04T21:00:47Z
 	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
-	// The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The end time of the restorable time range for the cross-region backup file. The time follows the format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
-	// 2019-06-12T07:33:12Z
+	// 2024-03-07T02:23:26Z
 	RecoveryEndTime *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
 	// The region where the source instance resides.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-chengdu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
 	//

@@ -18,19 +18,19 @@ type iDescribeRCInstanceDdosCountRequest interface {
 }
 
 type DescribeRCInstanceDdosCountRequest struct {
-	// The region ID of the asset.
+	// The region ID of the assets that are assigned public IP addresses to query.
 	//
 	// example:
 	//
 	// cn-beijing
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
-	// The type of the asset that is assigned a public IP address. Fixed value: **ecs**.
+	// The instance type of the assets that are assigned public IP addresses to query. Set the value to **ecs**.
 	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the region in which the RDS Custom instance resides.
+	// The region ID of the RDS Custom instance.
 	//
 	// example:
 	//

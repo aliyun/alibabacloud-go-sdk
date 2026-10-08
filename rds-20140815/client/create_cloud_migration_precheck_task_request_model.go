@@ -28,7 +28,7 @@ type iCreateCloudMigrationPrecheckTaskRequest interface {
 }
 
 type CreateCloudMigrationPrecheckTaskRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The ID of the target instance. You can invoke the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,7 @@ type CreateCloudMigrationPrecheckTaskRequest struct {
 	// pgm-bp102g323jd4****
 	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The username of the account that is used to connect to the self-managed PostgreSQL instance. Enter the username of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](https://help.aliyun.com/document_detail/369500.html) topic.
+	// The username. The database account created in the [Create a migration account](https://help.aliyun.com/document_detail/369500.html) step.
 	//
 	// This parameter is required.
 	//
@@ -45,11 +45,11 @@ type CreateCloudMigrationPrecheckTaskRequest struct {
 	//
 	// migratetest
 	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
-	// The environment in which the self-managed PostgreSQL instance runs.
+	// The type of the self-managed PostgreSQL database. Valid values:
 	//
-	// 	- **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
+	// - **idcOnVpc**: IDC-based self-managed PostgreSQL database (the IDC is connected to the VPC).
 	//
-	// 	- **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
+	// - **ecsOnVpc**: ECS-based self-managed PostgreSQL database on Alibaba Cloud.
 	//
 	// This parameter is required.
 	//
@@ -57,11 +57,11 @@ type CreateCloudMigrationPrecheckTaskRequest struct {
 	//
 	// ecsOnVpc
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The private IP address that is used to connect to the self-managed PostgreSQL instance.
+	// The internal IP address of the self-managed PostgreSQL database.
 	//
-	// 	- If the self-managed PostgreSQL instance resides on an ECS instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
+	// - For one-click migration of an ECS-based self-managed PostgreSQL database, set this parameter to the private IP address of the ECS instance. For more information about how to obtain the IP address, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
 	//
-	// 	- If the self-managed PostgreSQL instance resides in an on-premises data center, enter the private IP address of the on-premises data center.
+	// - For one-click migration of an IDC-based self-managed PostgreSQL database, set this parameter to the internal IP address of the IDC.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +69,7 @@ type CreateCloudMigrationPrecheckTaskRequest struct {
 	//
 	// 172.2.XX.XX
 	SourceIpAddress *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
-	// The password of the account that is used to connect to the self-managed PostgreSQL instance. Enter the password of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](https://help.aliyun.com/document_detail/369500.html) topic.
+	// The password. The password of the database account created in the [Create a migration account](https://help.aliyun.com/document_detail/369500.html) step.
 	//
 	// This parameter is required.
 	//
@@ -77,7 +77,7 @@ type CreateCloudMigrationPrecheckTaskRequest struct {
 	//
 	// 123456
 	SourcePassword *string `json:"SourcePassword,omitempty" xml:"SourcePassword,omitempty"`
-	// The port that is used to connect to the self-managed PostgreSQL instance. You can run the `netstat -a | grep PGSQL` command to view the port.
+	// The port of the self-managed PostgreSQL database. You can run the `netstat -a | grep PGSQL` command to view the port.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +85,7 @@ type CreateCloudMigrationPrecheckTaskRequest struct {
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The name of the task. If you do not specify this parameter, ApsaraDB RDS automatically generates a name for the cloud migration task.
+	// The task name. You can specify a custom name. If you do not specify this parameter, the system automatically generates a name.
 	//
 	// example:
 	//

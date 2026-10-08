@@ -20,21 +20,21 @@ type iModifyAccountMaskingPrivilegeResponseBody interface {
 }
 
 type ModifyAccountMaskingPrivilegeResponseBody struct {
-	// Returned data
+	// The returned data.
 	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Return message
+	// The returned message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 2144F5CC-10C5-3B72-8C74-E52C********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type DescribeReadDBInstanceDelayResponseBody struct {
 	//
 	// example:
 	//
-	// rm-bp*****
+	// rm-bp****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The latency of data replication. Unit: seconds.
+	// The latency, in seconds.
 	//
 	// example:
 	//
@@ -39,7 +39,7 @@ type DescribeReadDBInstanceDelayResponseBody struct {
 	//
 	// example:
 	//
-	// rr-bp*****
+	// rr-bp****
 	ReadDBInstanceId *string `json:"ReadDBInstanceId,omitempty" xml:"ReadDBInstanceId,omitempty"`
 	// The request ID.
 	//

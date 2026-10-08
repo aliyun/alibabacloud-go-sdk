@@ -34,15 +34,15 @@ type iDescribeDBProxyPerformanceRequest interface {
 }
 
 type DescribeDBProxyPerformanceRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-t4n3axxxxx
+	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
@@ -50,21 +50,31 @@ type DescribeDBProxyPerformanceRequest struct {
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
 	// The type of the database proxy instance. Valid values:
 	//
-	// 	- common: the general-purpose database proxy
+	// - common: general-purpose database proxy
 	//
-	// 	- exclusive: the dedicated database proxy
+	// - exclusive: dedicated database proxy
 	//
 	// example:
 	//
-	// DedicatedProxy
+	// exclusive
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// Dimension.
+	// The aggregation dimension. Valid values. The service and server values cannot be specified at the same time.
+	//
+	// - service: aggregates monitoring metrics by proxy endpoint.
+	//
+	// - node: aggregates monitoring metrics by proxy node.
+	//
+	// - server: aggregates monitoring metrics by database node.
 	//
 	// example:
+	//
+	// service,node
+	//
+	// server,node
 	//
 	// service
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// This parameter is required.
 	//
@@ -72,27 +82,27 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// 2019-09-21T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metrics that you want to query.
+	// The performance metrics.
 	//
-	// If the instance runs MySQL, you can query only the **Maxscale_CpuUsage*	- performance metric, which indicates the CPU utilization of the instance.
+	// RDS MySQL supports only **Maxscale_CpuUsage**: CPU utilization.
 	//
-	// If the instance runs PostgreSQL, you can query the following performance metrics:
+	// RDS PostgreSQL supports the following performance metrics:
 	//
-	// 	- **Maxscale_TotalConns**: the number of connections per second
+	// - **Maxscale_TotalConns**: connection rate
 	//
-	// 	- **Maxscale_CurrentConns**: the number of connections that are established
+	// - **Maxscale_CurrentConns**: current connections
 	//
-	// 	- **Maxscale_DownFlows**: outbound traffic
+	// - **Maxscale_DownFlows**: outbound traffic
 	//
-	// 	- **Maxscale_UpFlows**: inbound traffic
+	// - **Maxscale_UpFlows**: inbound traffic
 	//
-	// 	- **Maxscale_QPS**: QPS
+	// - **Maxscale_QPS**: request rate (QPS)
 	//
-	// 	- **Maxscale_MemUsage**: memory usage
+	// - **Maxscale_MemUsage**: memory utilization
 	//
-	// 	- **Maxscale_CpuUsage**: CPU utilization
+	// - **Maxscale_CpuUsage**: CPU utilization
 	//
-	// If you want to query more than one performance metric, separate the performance metrics with commas (,). You can specify up to six performance metrics in a single request.
+	// To query multiple performance metrics, separate them with commas (,). You can query up to six performance metrics at a time.
 	//
 	// This parameter is required.
 	//
@@ -101,7 +111,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	// Maxscale_CpuUsage
 	MetricsName *string `json:"MetricsName,omitempty" xml:"MetricsName,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -111,7 +121,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// This parameter is required.
 	//

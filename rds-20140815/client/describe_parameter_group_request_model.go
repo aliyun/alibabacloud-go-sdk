@@ -23,7 +23,7 @@ type iDescribeParameterGroupRequest interface {
 
 type DescribeParameterGroupRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
+	// The parameter template ID. You can call the [DescribeParameterGroups](~~DescribeParameterGroups~~) operation to query the parameter template ID.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DescribeParameterGroupRequest struct {
 	//
 	// rpg-dp****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

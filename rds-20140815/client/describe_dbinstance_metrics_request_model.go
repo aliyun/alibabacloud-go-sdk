@@ -18,7 +18,7 @@ type iDescribeDBInstanceMetricsRequest interface {
 }
 
 type DescribeDBInstanceMetricsRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeDBInstanceMetricsRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

@@ -24,13 +24,13 @@ type MigrateConnectionToOtherZoneResponseBody struct {
 	//
 	// InvalidParam
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error details.
 	//
 	// example:
 	//
 	// Invalid Parameter.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

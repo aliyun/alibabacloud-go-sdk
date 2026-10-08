@@ -26,58 +26,61 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
-	// The backup type of the instance. Valid values:
+	// The backup type. Valid values:
 	//
-	// 	- **Logical**: logical backup
+	// 	- **Logical**: logical backup. Only MySQL instances with local disks support this type.
 	//
-	// 	- **Physical**: physical backup
+	// 	- **Physical**: physical backup. MySQL instances with local disks, SQL Server instances, and PostgreSQL instances support this type.
 	//
-	// 	- **Snapshot**: snapshot backup
+	// 	- **Snapshot**: snapshot backup. MySQL instances with cloud disks, SQL Server instances, PostgreSQL instances, and MariaDB instances support this type.
 	//
 	// Default value: **Physical**.
 	//
-	// > 	- You can perform a logical backup only when databases are created on the instance.
+	// > 	- When you use logical backup, the database must contain data (the data cannot be empty).
 	//
-	// > 	- When you perform a snapshot backup on an ApsaraDB RDS for MariaDB instance, you must set this parameter to **Physical**.
-	//
-	// > 	- For more information about the supported backup types, see [Use the data backup feature](https://help.aliyun.com/document_detail/98818.html).
-	//
-	// > 	- When you perform a snapshot backup on an ApsaraDB RDS for SQL Server instance that uses cloud disks, you must set this parameter to **Snapshot**.
+	// > 	- MariaDB instances support only snapshot backup. However, set this parameter to **Physical**.
 	//
 	// example:
 	//
 	// Physical
-	BackupMethod          *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	BackupRetentionPeriod *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The backup policy. Valid values:
+	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	// - **SQL Server**: When the BackupStrategy parameter is set to db, the BackupMethod parameter is set to Physical, and the BackupType parameter is set to FullBackup, you can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
 	//
-	// 	- **db**: a database-level backup.
+	// - **MySQL**: You can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
 	//
-	// 	- **instance**: an instance-level backup.
+	// example:
 	//
-	// > You can specify this parameter when you perform a logical backup on an ApsaraDB RDS for MySQL instance. You can also specify this parameter when you perform a full physical backup on an ApsaraDB RDS for SQL Server instance.
+	// 7
+	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The backup strategy. Valid values:
+	//
+	// 	- **db**: single-database backup
+	//
+	// 	- **instance**: instance backup
+	//
+	// > This parameter takes effect only when the following conditions are met:
+	//
+	// > - MySQL: The **BackupMethod*	- parameter is set to **Logical**.
+	//
+	// > - SQL Server: The **BackupType*	- parameter is set to **FullBackup**.
 	//
 	// example:
 	//
 	// db
 	BackupStrategy *string `json:"BackupStrategy,omitempty" xml:"BackupStrategy,omitempty"`
-	// The backup method. Valid values:
+	// The backup method for SQL Server instances. Valid values:
 	//
-	// 	- **Auto**: full or incremental backup that is automatically selected
+	// 	- **Auto*	- (default): automatically selects full backup or incremental backup.
 	//
-	// 	- **FullBackup**: full backup
+	// 	- **FullBackup**: full backup.
 	//
-	// Default value: **Auto**.
-	//
-	// > 	- You must set this parameter only when the instance runs SQL Server.
-	//
-	// > 	- This parameter is valid only when you set the **BackupMethod*	- parameter to **Physical**.
+	// > This parameter takes effect only when the **BackupMethod*	- parameter is set to **Physical**.
 	//
 	// example:
 	//
 	// Auto
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -85,9 +88,9 @@ type CreateBackupRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
+	// The list of databases. Separate multiple databases with commas (,).
 	//
-	// > You can specify this parameter when you perform a logical backup on individual databases of an ApsaraDB RDS for MySQL instance. You can also specify this parameter when you perform a full physical backup on individual databases of an ApsaraDB RDS for SQL Server instance.
+	// > This parameter takes effect only when the **BackupStrategy*	- parameter is set to **db**.
 	//
 	// example:
 	//

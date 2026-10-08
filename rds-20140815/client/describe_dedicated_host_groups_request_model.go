@@ -30,22 +30,22 @@ type DescribeDedicatedHostGroupsRequest struct {
 	//
 	// dhg-7a9xxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The image based on which the hosts in the dedicated clusters are created. Valid values:
+	// The host image based on which you want to query dedicated clusters. Valid values:
 	//
-	// 	- **WindowsWithMssqlStdLicense**: a Windows image that contains the licenses of SQL Server Standard Edition
+	// 	- **WindowsWithMssqlStdLicense**: Windows (with SQL Server Standard Edition license).
 	//
-	// 	- **WindowsWithMssqlEntLisence**: a Windows image that contains the licenses of SQL Server Enterprise Edition
+	// 	- **WindowsWithMssqlEntLisence**: Windows (with SQL Server Enterprise Edition license).
 	//
-	// 	- **WindowsWithMssqlWebLisence**: a Windows image that contains the licenses of SQL Server Web Edition
+	// 	- **WindowsWithMssqlWebLisence**: Windows (with SQL Server Web Edition license).
 	//
-	// 	- **AliLinux**: a Linux image
+	// 	- **AliLinux**: Linux.
 	//
 	// example:
 	//
 	// WindowsWithMssqlStdLicense
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query available region IDs.
 	//
 	// This parameter is required.
 	//

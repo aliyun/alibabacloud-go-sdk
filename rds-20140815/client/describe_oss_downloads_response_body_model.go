@@ -24,7 +24,7 @@ type DescribeOssDownloadsResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Items        *DescribeOssDownloadsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the migration task.

@@ -14,7 +14,7 @@ type iModifyReadWriteSplittingConnectionResponseBody interface {
 }
 
 type ModifyReadWriteSplittingConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

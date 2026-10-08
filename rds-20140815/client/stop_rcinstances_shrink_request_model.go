@@ -22,31 +22,11 @@ type iStopRCInstancesShrinkRequest interface {
 }
 
 type StopRCInstancesShrinkRequest struct {
-	// The batch operation mode. Set the value to **AllTogether**. In this mode, if all instances are stopped, a success message is returned. If an instance fails the verification, none of the instances can be stopped and an error message is returned.
-	//
-	// example:
-	//
-	// AllTogether
 	BatchOptimization *string `json:"BatchOptimization,omitempty" xml:"BatchOptimization,omitempty"`
-	// Specifies whether to forcefully stop the instance. Valid values:
-	//
-	// 	- **true**: forcefully stops the instance. If an instance fails to stop due to system or network issues, a forced stop can be triggered, **though it may result in data loss.**
-	//
-	// 	- **false**: does not forcefully stop the instance. This is the default value.
-	//
-	// example:
-	//
-	// false
-	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
-	// The node IDs.
+	ForceStop         *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StoppedMode       *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
 }
 
 func (s StopRCInstancesShrinkRequest) String() string {

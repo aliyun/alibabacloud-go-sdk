@@ -36,17 +36,17 @@ type DescribeDBInstanceByTagsRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz*****
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// example:
 	//
-	// rm-uf6w**********
+	// rm-uf6w****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. Valid values: any non-zero positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -54,13 +54,13 @@ type DescribeDBInstanceByTagsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **30 to 100**. Default value: **30**.
+	// The number of entries per page. Valid values: **30*	- to **100**. Default value: **30**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// This parameter is required.
 	//

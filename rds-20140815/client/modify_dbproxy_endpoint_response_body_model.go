@@ -14,7 +14,7 @@ type iModifyDBProxyEndpointResponseBody interface {
 }
 
 type ModifyDBProxyEndpointResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

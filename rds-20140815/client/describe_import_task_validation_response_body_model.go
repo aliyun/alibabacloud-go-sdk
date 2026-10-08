@@ -20,6 +20,8 @@ type iDescribeImportTaskValidationResponseBody interface {
 }
 
 type DescribeImportTaskValidationResponseBody struct {
+	// The task details.
+	//
 	// example:
 	//
 	// {"ValidateAction": "Detail"}
@@ -30,10 +32,18 @@ type DescribeImportTaskValidationResponseBody struct {
 	//
 	// 3E36DB6E-AE3B-53B6-A703-85F883FD1B2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status. This parameter is invalid.
+	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
 	// example:
 	//
 	// true

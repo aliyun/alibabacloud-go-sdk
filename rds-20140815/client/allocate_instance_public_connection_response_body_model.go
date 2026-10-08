@@ -18,19 +18,19 @@ type iAllocateInstancePublicConnectionResponseBody interface {
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
-	// The endpoint that is used to connect to the database instance.
+	// The database endpoint.
 	//
 	// example:
 	//
-	// test*****.mysql.rds.aliyuncs.com
+	// test****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
-	// rm-bp1*****
+	// rm-bp1****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

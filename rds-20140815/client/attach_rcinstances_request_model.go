@@ -22,17 +22,17 @@ type iAttachRCInstancesRequest interface {
 }
 
 type AttachRCInstancesRequest struct {
-	// The node IDs.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The key pair of the node.
+	// The key pair of the RDS Custom instance.
 	//
 	// example:
 	//
 	// Custom_test
 	KeyPair *string `json:"KeyPair,omitempty" xml:"KeyPair,omitempty"`
-	// The logon password of the node.
+	// The logon password of the RDS Custom instance.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type AttachRCInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The ID of the virtual private cloud (VPC).
 	//
-	// > This is a reserved parameter.
+	// > Reserved parameter.
 	//
 	// example:
 	//

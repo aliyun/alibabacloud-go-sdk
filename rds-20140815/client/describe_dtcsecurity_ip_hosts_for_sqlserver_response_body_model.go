@@ -24,9 +24,9 @@ type DescribeDTCSecurityIpHostsForSQLServerResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The number of distributed transaction whitelists.
+	// The number of entries in the distributed transaction whitelist.
 	//
 	// example:
 	//

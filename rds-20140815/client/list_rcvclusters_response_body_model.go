@@ -16,9 +16,6 @@ type iListRCVClustersResponseBody interface {
 }
 
 type ListRCVClustersResponseBody struct {
-	// example:
-	//
-	// 07F6177E-6DE4-408A-BB4F-0723301340F3
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VClusters []*ListRCVClustersResponseBodyVClusters `json:"VClusters,omitempty" xml:"VClusters,omitempty" type:"Repeated"`
 }
@@ -63,23 +60,14 @@ func (s *ListRCVClustersResponseBody) Validate() error {
 }
 
 type ListRCVClustersResponseBodyVClusters struct {
-	// example:
-	//
-	// cd21387ea640145bab79a78276c1a****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// example:
-	//
-	// 1
-	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId                    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SupportDiskPerformanceLevel []*string `json:"SupportDiskPerformanceLevel,omitempty" xml:"SupportDiskPerformanceLevel,omitempty" type:"Repeated"`
-	// example:
-	//
-	// vpc-2zeqj40j2ce0s5yhg****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ClusterId                   *string                                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName                 *string                                            `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	InstanceCount               *int64                                             `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	MysqlOperator               *ListRCVClustersResponseBodyVClustersMysqlOperator `json:"MysqlOperator,omitempty" xml:"MysqlOperator,omitempty" type:"Struct"`
+	RegionId                    *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                      *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportDiskPerformanceLevel []*string                                          `json:"SupportDiskPerformanceLevel,omitempty" xml:"SupportDiskPerformanceLevel,omitempty" type:"Repeated"`
+	VpcId                       *string                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListRCVClustersResponseBodyVClusters) String() string {
@@ -94,12 +82,24 @@ func (s *ListRCVClustersResponseBodyVClusters) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *ListRCVClustersResponseBodyVClusters) GetClusterName() *string {
+	return s.ClusterName
+}
+
 func (s *ListRCVClustersResponseBodyVClusters) GetInstanceCount() *int64 {
 	return s.InstanceCount
 }
 
+func (s *ListRCVClustersResponseBodyVClusters) GetMysqlOperator() *ListRCVClustersResponseBodyVClustersMysqlOperator {
+	return s.MysqlOperator
+}
+
 func (s *ListRCVClustersResponseBodyVClusters) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ListRCVClustersResponseBodyVClusters) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListRCVClustersResponseBodyVClusters) GetSupportDiskPerformanceLevel() []*string {
@@ -115,13 +115,28 @@ func (s *ListRCVClustersResponseBodyVClusters) SetClusterId(v string) *ListRCVCl
 	return s
 }
 
+func (s *ListRCVClustersResponseBodyVClusters) SetClusterName(v string) *ListRCVClustersResponseBodyVClusters {
+	s.ClusterName = &v
+	return s
+}
+
 func (s *ListRCVClustersResponseBodyVClusters) SetInstanceCount(v int64) *ListRCVClustersResponseBodyVClusters {
 	s.InstanceCount = &v
 	return s
 }
 
+func (s *ListRCVClustersResponseBodyVClusters) SetMysqlOperator(v *ListRCVClustersResponseBodyVClustersMysqlOperator) *ListRCVClustersResponseBodyVClusters {
+	s.MysqlOperator = v
+	return s
+}
+
 func (s *ListRCVClustersResponseBodyVClusters) SetRegionId(v string) *ListRCVClustersResponseBodyVClusters {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListRCVClustersResponseBodyVClusters) SetStatus(v string) *ListRCVClustersResponseBodyVClusters {
+	s.Status = &v
 	return s
 }
 
@@ -136,5 +151,75 @@ func (s *ListRCVClustersResponseBodyVClusters) SetVpcId(v string) *ListRCVCluste
 }
 
 func (s *ListRCVClustersResponseBodyVClusters) Validate() error {
+	if s.MysqlOperator != nil {
+		if err := s.MysqlOperator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListRCVClustersResponseBodyVClustersMysqlOperator struct {
+	DashboardPublicEndpoint *string `json:"DashboardPublicEndpoint,omitempty" xml:"DashboardPublicEndpoint,omitempty"`
+	DashboardUsername       *string `json:"DashboardUsername,omitempty" xml:"DashboardUsername,omitempty"`
+	DashboardVpcEndpoint    *string `json:"DashboardVpcEndpoint,omitempty" xml:"DashboardVpcEndpoint,omitempty"`
+	DeployTime              *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListRCVClustersResponseBodyVClustersMysqlOperator) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListRCVClustersResponseBodyVClustersMysqlOperator) GoString() string {
+	return s.String()
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) GetDashboardPublicEndpoint() *string {
+	return s.DashboardPublicEndpoint
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) GetDashboardUsername() *string {
+	return s.DashboardUsername
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) GetDashboardVpcEndpoint() *string {
+	return s.DashboardVpcEndpoint
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) GetDeployTime() *string {
+	return s.DeployTime
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) SetDashboardPublicEndpoint(v string) *ListRCVClustersResponseBodyVClustersMysqlOperator {
+	s.DashboardPublicEndpoint = &v
+	return s
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) SetDashboardUsername(v string) *ListRCVClustersResponseBodyVClustersMysqlOperator {
+	s.DashboardUsername = &v
+	return s
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) SetDashboardVpcEndpoint(v string) *ListRCVClustersResponseBodyVClustersMysqlOperator {
+	s.DashboardVpcEndpoint = &v
+	return s
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) SetDeployTime(v string) *ListRCVClustersResponseBodyVClustersMysqlOperator {
+	s.DeployTime = &v
+	return s
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) SetStatus(v string) *ListRCVClustersResponseBodyVClustersMysqlOperator {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRCVClustersResponseBodyVClustersMysqlOperator) Validate() error {
 	return dara.Validate(s)
 }

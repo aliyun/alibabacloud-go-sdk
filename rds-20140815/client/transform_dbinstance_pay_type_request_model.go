@@ -38,25 +38,25 @@ type iTransformDBInstancePayTypeRequest interface {
 }
 
 type TransformDBInstancePayTypeRequest struct {
-	// Specifies whether to enable the auto-renewal feature for the instance. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: Enabled.
 	//
-	// 	- **false**
+	// 	- **false**: Disabled.
 	//
-	// > - This parameter is valid only when you change the billing method from pay-as-you-go to subscription.
+	// > 	- This parameter takes effect only when you change the billing method from pay-as-you-go to subscription.
 	//
-	// > - All strings except **true*	- are considered **false**.
+	// > 	- All non-**true*	- strings are treated as **false**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Specifies whether to use vouchers to offset fees. Valid values:
+	// Specifies whether to use coupons to offset fees. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Uses coupons to offset fees.
 	//
-	// 	- **false*	- (default)
+	// - **false**: Does not use coupons to offset fees. This is the default value.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type TransformDBInstancePayTypeRequest struct {
 	//
 	// example:
 	//
-	// None
+	// 123456789
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The new billing method of the instance. Valid values:
+	// The billing method of the instance after the change. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go
 	//
@@ -96,13 +96,13 @@ type TransformDBInstancePayTypeRequest struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The renewal cycle of the instance. Valid values:
+	// The renewal cycle of the subscription instance. Valid values:
 	//
-	// 	- **Year**
+	// 	- **Year**: yearly subscription
 	//
-	// 	- **Month**
+	// 	- **Month**: monthly subscription
 	//
-	// > This parameter must be specified if you set **PayType*	- to **Prepaid**.
+	// > This parameter is required if **PayType*	- is set to **Prepaid**.
 	//
 	// example:
 	//
@@ -112,17 +112,17 @@ type TransformDBInstancePayTypeRequest struct {
 	//
 	// example:
 	//
-	// 726702810223
+	// 726122650073
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The subscription duration of the instance. Valid values:
+	// The subscription duration. Valid values:
 	//
-	// 	- If you set **Period*	- to **Year**, the value of UsedTime ranges from **1 to 5**.
+	// 	- If **Period*	- is set to **Year**, the value of UsedTime ranges from **1 to 5**.
 	//
-	// 	- If you set **Period*	- to **Month**, the value of UsedTime ranges from **1 to 11**.
+	// 	- If **Period*	- is set to **Month**, the value of UsedTime ranges from **1 to 11**.
 	//
-	// > This parameter must be specified when **PayType*	- is set to **Prepaid**.
+	// > This parameter is required if **PayType*	- is set to **Prepaid**.
 	//
 	// example:
 	//

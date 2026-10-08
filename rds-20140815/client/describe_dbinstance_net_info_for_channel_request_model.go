@@ -32,9 +32,9 @@ type DescribeDBInstanceNetInfoForChannelRequest struct {
 	//
 	// example:
 	//
-	// 0c593ea1-3bea-11e9-b96b-88**********
+	// 0c593ea1-3bea-11e9-b96b-88****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type DescribeDBInstanceNetInfoForChannelRequest struct {
 	//
 	// rm-bp1k8s41l2o52****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The type of the endpoint to query. Valid values:
+	// The type of endpoint to query. Valid values:
 	//
-	// 	- **0**: a regular endpoint. This is the default value.
+	// 	- **0*	- (default): regular endpoints.
 	//
-	// 	- **1**: a read/write splitting endpoint that is assigned after the shared proxy feature is enabled.
+	// 	- **1**: read/write splitting endpoints of the shared database proxy.
 	//
 	// example:
 	//

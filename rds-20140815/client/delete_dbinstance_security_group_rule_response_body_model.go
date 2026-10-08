@@ -18,13 +18,13 @@ type iDeleteDBInstanceSecurityGroupRuleResponseBody interface {
 }
 
 type DeleteDBInstanceSecurityGroupRuleResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the status code.
+	// The response message.
 	//
 	// example:
 	//

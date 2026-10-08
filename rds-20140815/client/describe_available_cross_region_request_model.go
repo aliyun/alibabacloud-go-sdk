@@ -21,7 +21,7 @@ type iDescribeAvailableCrossRegionRequest interface {
 
 type DescribeAvailableCrossRegionRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent zone list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// This parameter is required.
 	//

@@ -43,13 +43,13 @@ type iDescribeDBInstancesByPerformanceRequest interface {
 
 type DescribeDBInstancesByPerformanceRequest struct {
 	Tag []*DescribeDBInstancesByPerformanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -57,7 +57,7 @@ type DescribeDBInstancesByPerformanceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any non-zero positive integer.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -65,7 +65,7 @@ type DescribeDBInstancesByPerformanceRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **5*	- to **100**.
+	// The number of entries per page. Valid values: **5*	- to **100**.
 	//
 	// Default value: **30**.
 	//
@@ -73,13 +73,13 @@ type DescribeDBInstancesByPerformanceRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the available regions.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type DescribeDBInstancesByPerformanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The sorting basis.
+	// The sorting criterion.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type DescribeDBInstancesByPerformanceRequest struct {
 	//
 	// ASC
 	SortMethod *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
-	// The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
+	// The tags that are bound to the instances you want to query. The tags include TagKey and TagValue. Format: `{"key1":"value1"}`.
 	//
 	// example:
 	//
@@ -270,13 +270,13 @@ func (s *DescribeDBInstancesByPerformanceRequest) Validate() error {
 }
 
 type DescribeDBInstancesByPerformanceRequestTag struct {
-	// The key of tag 1 that is added to the instances.
+	// Queries instances that are bound to the tag Tag.1.key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of tag 1 that is added to the instances.
+	// Queries instances that are bound to the tag Tag.1.value.
 	//
 	// example:
 	//

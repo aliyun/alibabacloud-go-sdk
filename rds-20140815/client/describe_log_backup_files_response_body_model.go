@@ -25,7 +25,7 @@ type iDescribeLogBackupFilesResponseBody interface {
 
 type DescribeLogBackupFilesResponseBody struct {
 	Items *DescribeLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the page returned.
+	// The page number.
 	//
 	// example:
 	//
@@ -43,7 +43,7 @@ type DescribeLogBackupFilesResponseBody struct {
 	//
 	// F8EC669C-FC85-43D7-AF06-C3641626B37E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total size of log files. Unit: bytes.
+	// The total size of all log files. Unit: bytes.
 	//
 	// example:
 	//

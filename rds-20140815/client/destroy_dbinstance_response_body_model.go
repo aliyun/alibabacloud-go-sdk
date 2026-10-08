@@ -14,7 +14,7 @@ type iDestroyDBInstanceResponseBody interface {
 }
 
 type DestroyDBInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

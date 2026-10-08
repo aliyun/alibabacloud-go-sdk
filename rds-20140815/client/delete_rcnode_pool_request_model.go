@@ -18,29 +18,11 @@ type iDeleteRCNodePoolRequest interface {
 }
 
 type DeleteRCNodePoolRequest struct {
-	// The ID of the ACK cluster to which the RDS Custom instance belongs.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// c463aaa89e2b84cacacfbf23c4867****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The node pool ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// np31da1b38983f4511b490fc62108a****
 	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	// The region ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

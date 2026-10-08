@@ -26,23 +26,31 @@ type iDescribeAccountMaskingPrivilegeRequest interface {
 }
 
 type DescribeAccountMaskingPrivilegeRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-t4n8t18o******6d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// myDB
 	DBName  *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// ap-southeast-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The account name. You can specify a specific account to query.
+	//
 	// example:
 	//
 	// rds

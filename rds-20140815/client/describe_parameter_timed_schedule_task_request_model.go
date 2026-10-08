@@ -14,6 +14,8 @@ type iDescribeParameterTimedScheduleTaskRequest interface {
 }
 
 type DescribeParameterTimedScheduleTaskRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

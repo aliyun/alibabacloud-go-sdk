@@ -24,21 +24,21 @@ type iModifyRCInstanceChargeTypeResponseBody interface {
 }
 
 type ModifyRCInstanceChargeTypeResponseBody struct {
-	// The billing method.
+	// The billing method. Valid values:
 	//
-	// 	- **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go.
 	//
-	// 	- **PREPAY**: subscription.
+	// - **PREPAY**: subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the instance expires.
+	// The expiration time.
 	//
-	// >  If you change the billing method from subscription to pay-as-you-go, this parameter is not returned.
+	// > This parameter is not returned if the billing method is changed to pay-as-you-go.
 	ExpiredTime []*string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty" type:"Repeated"`
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	FeeOfInstances []*ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances `json:"FeeOfInstances,omitempty" xml:"FeeOfInstances,omitempty" type:"Repeated"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -132,19 +132,19 @@ func (s *ModifyRCInstanceChargeTypeResponseBody) Validate() error {
 }
 
 type ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances struct {
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//
 	// None
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//
 	// None
 	Fee *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//

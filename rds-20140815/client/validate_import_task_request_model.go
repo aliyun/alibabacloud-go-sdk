@@ -36,16 +36,22 @@ type iValidateImportTaskRequest interface {
 }
 
 type ValidateImportTaskRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to obtain this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-sdfljk123****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The estimated instance size. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	EstimatedSize *int32 `json:"EstimatedSize,omitempty" xml:"EstimatedSize,omitempty"`
+	// The address of the source MySQL instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53,44 +59,62 @@ type ValidateImportTaskRequest struct {
 	// 192.168.10.1
 	Host    *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The password of the source MySQL user, encoded in Base64.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UGFzc3dvcmQxMjMK
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The port number of the source MySQL instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The region ID. You can call DescribeRegions to obtain this parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the source cloud instance.
+	//
 	// example:
 	//
 	// i-wz9ff3acy500io5wdf5s
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	// The type of the source instance. Valid values:
+	//
+	// - ECS
+	//
 	// example:
 	//
 	// ECS
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// The port number for backup transmission.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9999
 	StreamPort *int32 `json:"StreamPort,omitempty" xml:"StreamPort,omitempty"`
+	// The username of the source MySQL instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The path of the Xtrabackup tool on the source instance.
+	//
 	// example:
 	//
 	// /usr/local/bin/xtrabackup

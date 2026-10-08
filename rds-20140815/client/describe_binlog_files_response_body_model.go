@@ -43,7 +43,7 @@ type DescribeBinlogFilesResponseBody struct {
 	//
 	// ED169A3E-1657-4104-82AB-24EA8CD0DB75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total size of the log file.
+	// The total size of the log files.
 	//
 	// example:
 	//

@@ -23,25 +23,25 @@ type iDescribeDBInstancesByPerformanceResponseBody interface {
 
 type DescribeDBInstancesByPerformanceResponseBody struct {
 	Items *DescribeDBInstancesByPerformanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of instances on the current page.
 	//
 	// example:
 	//
 	// 28
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 23907437-79B9-411A-9EE6-75A8F0F1C619
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of instances returned by the query.
 	//
 	// example:
 	//

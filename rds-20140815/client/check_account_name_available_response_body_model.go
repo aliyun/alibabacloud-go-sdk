@@ -22,7 +22,7 @@ type CheckAccountNameAvailableResponseBody struct {
 	//
 	// 5E4AA101-1EE5-41C0-AE6D-0F066331AC1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

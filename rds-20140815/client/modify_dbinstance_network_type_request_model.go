@@ -38,23 +38,23 @@ type iModifyDBInstanceNetworkTypeRequest interface {
 }
 
 type ModifyDBInstanceNetworkTypeRequest struct {
-	// The number of days for which you want to retain the classic network endpoint. Valid values: **1 to 120**. Default value: **7**.
+	// The number of days for which the classic network address reservation is retained. Valid values: **1 to 120**. Unit: days. Default value: **7**.
 	//
-	// > If you set the **RetainClassic*	- parameter to **True**, you must also specify this parameter.
+	// >This parameter is required if **RetainClassic*	- is set to **True**.
 	//
 	// example:
 	//
 	// 7
 	ClassicExpiredDays *string `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type after the modification. Set the value to **VPC**.
+	// The target network type. Set the value to **VPC**.
 	//
 	// This parameter is required.
 	//
@@ -64,51 +64,51 @@ type ModifyDBInstanceNetworkTypeRequest struct {
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The internal IP address of the instance. The internal IP address must be within the CIDR block supported by the specified vSwitch. The system automatically assigns a private IP address to an instance based on the values of **VPCId*	- and **VSwitchId**.
+	// Settings for the internal network IP address of the instance. The IP address must be within the address range of the specified vSwitch. By default, the system automatically allocates an IP address based on the values of **VPCId*	- and **VSwitchId**.
 	//
 	// example:
 	//
-	// 172.10.40.25
+	// 172.10.XX.XX
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The number of days for which you want to retain the read/write splitting endpoint of the classic network type. Valid values: **1 to 120**. Default value: **7**.
+	// The number of days for which the read/write splitting endpoint of the classic network type is retained for address reservation. Valid values: **1 to 120**. Unit: days. Default value: **7**.
 	//
-	// >  This parameter takes effect only when a read/write splitting endpoint of the classic network type exists and the **RetainClassic*	- parameter is set to **True**.
+	// >This parameter takes effect only when the instance has a classic network type read/write splitting endpoint and **RetainClassic*	- is set to **True**.
 	//
 	// example:
 	//
 	// 7
 	ReadWriteSplittingClassicExpiredDays *int32 `json:"ReadWriteSplittingClassicExpiredDays,omitempty" xml:"ReadWriteSplittingClassicExpiredDays,omitempty"`
-	// The internal IP address that corresponds to the read/write splitting endpoint of the instance. The internal IP address must be within the CIDR block supported by the specified vSwitch. The system automatically assigns a private IP address to an instance based on the values of **VPCId*	- and **VSwitchId**.
+	// Settings for the internal network read/write splitting IP address of the instance. The IP address must be within the address range of the specified vSwitch. By default, the system automatically allocates an IP address based on the values of **VPCId*	- and **VSwitchId**.
 	//
-	// >  This parameter is valid when a read/write splitting endpoint of the classic network type exists.
+	// >This parameter takes effect only when the instance has a classic network type read/write splitting endpoint.
 	//
 	// example:
 	//
-	// 192.168.0.22
+	// 192.168.XX.XX
 	ReadWriteSplittingPrivateIpAddress *string `json:"ReadWriteSplittingPrivateIpAddress,omitempty" xml:"ReadWriteSplittingPrivateIpAddress,omitempty"`
 	ResourceOwnerAccount               *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                    *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to retain the classic network endpoint. Valid values:
 	//
-	// 	- **True**: retains the classic network endpoint.
+	// 	- **True**: The classic network endpoint is retained.
 	//
-	// 	- **False*	- (default): does not retain the classic network endpoint.
+	// 	- **False*	- (default): The classic network endpoint is not retained.
 	//
 	// example:
 	//
 	// True
 	RetainClassic *string `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
-	// The VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//
-	// vpc-uf6f7l4fg90xxxxxx
+	// vpc-uf6f7l4fg90****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch. This parameter is required if the **VPCId*	- parameter is specified.
+	// The vSwitch ID. This parameter is required if **VPCId*	- is specified.
 	//
 	// example:
 	//
-	// vsw-uf6adz52c2pxxxxx
+	// vsw-uf6adz52c2p****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 

@@ -18,23 +18,23 @@ type iDescribeHASwitchConfigResponseBody interface {
 }
 
 type DescribeHASwitchConfigResponseBody struct {
-	// The status of the automatic primary/secondary switchover feature. Valid values:
+	// The automatic primary/secondary switchover setting. Valid values:
 	//
-	// 	- **Auto:*	- The automatic primary/secondary switchover feature is enabled. The system automatically switches your workloads over from the instance to its secondary instance in the event of a fault.
+	// 	- **Auto**: The system automatically switches over between the primary and secondary instances upon a fault.
 	//
-	// 	- **Manual:*	- The automatic primary/secondary switchover feature is temporarily disabled.
+	// 	- **Manual**: Automatic switchover has been temporarily disabled.
 	//
 	// example:
 	//
 	// Manual
 	HAConfig *string `json:"HAConfig,omitempty" xml:"HAConfig,omitempty"`
-	// The time when the automatic primary/secondary switchover feature is enabled again. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The deadline for the temporary disabling of automatic switchover. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-08-29T15:00:00Z
 	ManualHATime *string `json:"ManualHATime,omitempty" xml:"ManualHATime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -24,24 +24,24 @@ type iCreateYouhuiForOrderRequest interface {
 }
 
 type CreateYouhuiForOrderRequest struct {
-	// The activity ID.
+	// The ID of the ticket that was created.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1711510887******
+	// 171151088708****
 	ActivityId *int64  `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The promotion ID. You can call the GetResourcePrice operation to query the promotion ID.
+	// The promotion ID. You can call the GetResourcePrice operation to obtain this value.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2000001******
+	// 200000199****
 	PromotionId *int64 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query available region IDs.
 	//
 	// This parameter is required.
 	//

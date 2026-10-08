@@ -18,11 +18,11 @@ type iRebuildDBInstanceResponseBody interface {
 }
 
 type RebuildDBInstanceResponseBody struct {
-	// The serial number of the task in the rebuild task queue. When the serial number becomes 0, the system starts to rebuild the secondary instance.
+	// The queue number for the rebuild. When the number is 0, the rebuild migration starts.
 	//
 	// example:
 	//
-	// 329****
+	// 3298015
 	MigrationId *int32 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type RebuildDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 20867****
+	// 208676661
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

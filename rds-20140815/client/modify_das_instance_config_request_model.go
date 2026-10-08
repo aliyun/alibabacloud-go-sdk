@@ -28,19 +28,19 @@ type iModifyDasInstanceConfigRequest interface {
 }
 
 type ModifyDasInstanceConfigRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz*****
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -57,7 +57,7 @@ type ModifyDasInstanceConfigRequest struct {
 	//
 	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance. Valid values:
+	// The threshold in percentage of remaining storage space that triggers automatic storage expansion. Valid values:
 	//
 	// 	- **10**
 	//
@@ -69,19 +69,19 @@ type ModifyDasInstanceConfigRequest struct {
 	//
 	// 	- **50**
 	//
-	// >  If you set the StorageAutoScale parameter to **Enable**, you must specify this parameter.
+	// > This parameter is required when **StorageAutoScale*	- is set to **Enable**.
 	//
 	// example:
 	//
 	// 50
 	StorageThreshold *int32 `json:"StorageThreshold,omitempty" xml:"StorageThreshold,omitempty"`
-	// The maximum storage capacity that is allowed for an automatic storage expansion. The value of this parameter must be greater than or equal to the current storage capacity of the RDS instance.
+	// The upper limit of automatic storage expansion. The value must be greater than or equal to the current total storage capacity of the instance.
 	//
-	// 	- If the RDS instance uses ESSDs, the maximum value of this parameter can be set to 32000 GB.
+	// - Upper limit for ESSDs: 32000 GB.
 	//
-	// 	- If the RDS instance uses standard SSDs, the maximum value of this parameter can be set to 6000 GB.
+	// - Upper limit for standard SSDs: 6000 GB.
 	//
-	// >  If you set the **StorageAutoScale*	- parameter to **Enable**, you must specify this parameter.
+	// > This parameter is required when **StorageAutoScale*	- is set to **Enable**.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type UpgradeDBInstanceMajorVersionPrecheckResponseBody struct {
 	//
 	// 99C1FEEE-FB44-5342-8EBA-DC1E1A1557A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The new major engine version of the instance.
+	// The major engine version of the target instance.
 	//
 	// example:
 	//

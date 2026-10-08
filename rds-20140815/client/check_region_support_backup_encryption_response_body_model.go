@@ -16,10 +16,14 @@ type iCheckRegionSupportBackupEncryptionResponseBody interface {
 }
 
 type CheckRegionSupportBackupEncryptionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 081FAAD5-9E56-5BE7-A495-*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether backup encryption is supported. Valid values: true and false.
+	//
 	// example:
 	//
 	// true

@@ -18,7 +18,7 @@ type iDescribeRCNodePoolRequest interface {
 }
 
 type DescribeRCNodePoolRequest struct {
-	// The ID of the ACK Edge cluster in which the RDS Custom instance resides.
+	// The ID of the RDS Custom container cluster.
 	//
 	// example:
 	//

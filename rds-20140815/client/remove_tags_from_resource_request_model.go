@@ -39,7 +39,7 @@ type RemoveTagsFromResourceRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID.
 	//
@@ -47,11 +47,11 @@ type RemoveTagsFromResourceRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -59,23 +59,23 @@ type RemoveTagsFromResourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the ListResourceGroups operation to query the resource group ID.
+	// The resource group ID. You can call the ListResourceGroups operation to obtain the resource group ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// A set of a TagKey and a TagValue that you use to unbind the tag. Format: {"key1":"value1"}.
+	// The tags to unbind, including TagKey and TagValue. Format: {"key1":"value1"}.
 	//
-	// >  You cannot specify an empty string for TagKey. You can specify an empty string for TagValue.
+	// >TagKey cannot be empty. TagValue can be empty.
 	//
 	// example:
 	//
 	// {"key1":"value1"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the proxy mode.
+	// The proxy mode ID.
 	//
 	// example:
 	//
@@ -204,13 +204,13 @@ func (s *RemoveTagsFromResourceRequest) Validate() error {
 }
 
 type RemoveTagsFromResourceRequestTag struct {
-	// The TagKey of the first tag that you want to unbind. Each tag consists of a TagKey and a TagValue. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
+	// The TagKey of the first tag to unbind. The tags to unbind include TagKey and TagValue. You can specify up to 5 pairs at a time. TagKey cannot be empty. TagValue can be empty.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The TagValue of the first tag that you want to unbind. Each tag consists of a TagKey and a TagValue. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
+	// The TagValue of the first tag to unbind. The tags to unbind include TagKey and TagValue. You can specify up to 5 pairs at a time. TagKey cannot be empty. TagValue can be empty.
 	//
 	// example:
 	//

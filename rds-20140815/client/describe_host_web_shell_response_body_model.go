@@ -16,11 +16,11 @@ type iDescribeHostWebShellResponseBody interface {
 }
 
 type DescribeHostWebShellResponseBody struct {
-	// The webshell URL.
+	// The WebShell logon URL.
 	//
 	// example:
 	//
-	// ***
+	// ****
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The request ID.
 	//

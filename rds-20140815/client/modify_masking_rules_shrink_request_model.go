@@ -34,24 +34,34 @@ type iModifyMaskingRulesShrinkRequest interface {
 }
 
 type ModifyMaskingRulesShrinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-t4n8t18o******6d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// myDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The name of the default encryption or masking algorithm.
+	//
 	// example:
 	//
 	// sm4-128-gcm
 	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	// Specifies whether the rule is enabled. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, encryption length}}.
+	//
 	// example:
 	//
 	// [{"name": "sha256"},
@@ -59,13 +69,18 @@ type ModifyMaskingRulesShrinkRequest struct {
 	//         {"name":"sm4-128-gcm"}]
 	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// ap-southeast-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RuleConfigShrink     *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// The rule configuration in JSON string format.
+	RuleConfigShrink *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// The name of the rule to modify.
+	//
 	// This parameter is required.
 	//
 	// example:

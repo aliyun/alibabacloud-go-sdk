@@ -32,7 +32,7 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
-	// The ID of the backup set.
+	// The backup set ID.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeBackupsRequest struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// 	- **Automated**
+	// 	- **Automated**: automatic backup
 	//
-	// 	- **Manual**
+	// 	- **Manual**: manual backup
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeBackupsRequest struct {
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The status of the backup set. Valid values:
 	//
-	// 	- **Success**
+	// 	- **Success**: The backup is complete.
 	//
-	// 	- **Failed**
+	// 	- **Failed**: The backup failed.
 	//
 	// example:
 	//
@@ -68,23 +68,23 @@ type DescribeBackupsRequest struct {
 	//
 	// FullBackup
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
 	//
-	// > We recommend that you specify a time range that is as short as possible to avoid timeout.
+	// > Narrow down the time range when you use this operation to query backup sets. A large time range may cause a timeout.
 	//
 	// example:
 	//
 	// 2011-06-15T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of the page to return. Valid values: any non-zero positive integer.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -107,7 +107,7 @@ type DescribeBackupsRequest struct {
 	// 30
 	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
 	//
 	// example:
 	//

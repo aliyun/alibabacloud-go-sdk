@@ -42,69 +42,69 @@ type iModifyRCInstanceChargeTypeRequest interface {
 }
 
 type ModifyRCInstanceChargeTypeRequest struct {
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//
 	// None
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable the auto-renewal feature. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: Enabled (default).
 	//
-	// 	- **false**
+	// 	- **false**: Disabled.
 	//
-	// > 	- This parameter is valid only when you change the billing method from pay-as-you-go to subscription.
+	// > 	- This parameter takes effect only when you switch from pay-as-you-go to subscription.
 	//
-	// > 	- All strings except **true*	- are considered **false**.
+	// > 	- All non-**true*	- strings are treated as **false**.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Specifies whether to use a coupon. Valid values:
+	// Specifies whether to use coupons. Valid values:
 	//
-	// 	- **true*	- (default)
+	// 	- **true*	- (default): Coupons are used.
 	//
-	// 	- **false**
+	// 	- **false**: Coupons are not used.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The additional business information about the instance.
+	// The business extension parameter.
 	//
 	// example:
 	//
 	// None
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The custom client token that is used to ensure the idempotence of the request.
+	// The custom token that is used to ensure the idempotence of the request.
 	//
-	// > The value can contain ASCII characters and can be up to 64 characters in length.
+	// > The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//
 	// None
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//
 	// None
 	IncludeDataDisks *bool `json:"IncludeDataDisks,omitempty" xml:"IncludeDataDisks,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//
 	// None
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The ID of the instance or disk.
+	// The instance ID or cloud disk ID.
 	//
 	// This parameter is required.
 	//
@@ -112,13 +112,13 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// Reserved parameter. Not supported.
 	//
 	// example:
 	//
 	// None
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The new billing method of the instance. Valid values:
+	// The billing method of the instance after the change. Valid values:
 	//
 	// 	- **Prepaid**: subscription.
 	//
@@ -128,13 +128,13 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The renewal cycle of the instance. Valid values:
+	// The unit of the subscription duration. Valid values:
 	//
-	// 	- **Year**
+	// 	- **Year**: yearly subscription.
 	//
-	// 	- **Month**
+	// 	- **Month**: monthly subscription.
 	//
-	// > This parameter must be specified if you set the PayType parameter to **Prepaid**.
+	// > This parameter is required if **PayType*	- is set to **Prepaid**.
 	//
 	// example:
 	//
@@ -157,13 +157,13 @@ type ModifyRCInstanceChargeTypeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration. Valid values:
 	//
-	// 	- If you set the **Period*	- parameter to **Year**, the value of the **UsedTime*	- parameter ranges from **1*	- to **5**.
+	// 	- If **Period*	- is set to **Year**, the valid values of UsedTime are **1 to 5**.
 	//
-	// 	- If the **Period*	- parameter is set to **Month**, the value of the **UsedTime*	- parameter ranges from **1*	- to **11**.
+	// 	- If **Period*	- is set to **Month**, the valid values of UsedTime are **1 to 11**.
 	//
-	// > If you set the **PayType*	- parameter to **Prepaid**, you must specify this parameter.
+	// > This parameter is required if PayType is set to **Prepaid**.
 	//
 	// example:
 	//

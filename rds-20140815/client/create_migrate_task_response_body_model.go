@@ -24,11 +24,11 @@ type iCreateMigrateTaskResponseBody interface {
 }
 
 type CreateMigrateTaskResponseBody struct {
-	// The type of the migration task. Valid values:
+	// The type of the cloud migration task. Valid values:
 	//
-	// 	- **FULL**: The migration task migrates full backup files.
+	// 	- **FULL**: performs a restore operation by using a full backup file.
 	//
-	// 	- **UPDF**: The migration task migrates incremental or log backup files.
+	// 	- **UPDF**: restores incremental data by using an incremental backup file or log file.
 	//
 	// example:
 	//
@@ -38,21 +38,21 @@ type CreateMigrateTaskResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk******
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// test02
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The ID of the migration task.
+	// The migration task ID.
 	//
 	// example:
 	//
-	// 564******
+	// 564563****
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

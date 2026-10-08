@@ -22,15 +22,15 @@ type iTerminateMigrateTaskRequest interface {
 }
 
 type TerminateMigrateTaskRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The ID of the ApsaraDB RDS for SQL Server instance. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-bp159vfbu******
+	// rm-bp159vf****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+	// The ID of the backup migration task. You can call DescribeMigrateTasks to query the task ID.
 	//
 	// This parameter is required.
 	//

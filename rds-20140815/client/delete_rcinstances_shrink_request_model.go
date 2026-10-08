@@ -22,27 +22,27 @@ type iDeleteRCInstancesShrinkRequest interface {
 }
 
 type DeleteRCInstancesShrinkRequest struct {
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run for this release operation. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+	// 	- **true**: Performs a dry run without releasing the instance.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+	// 	- **false*	- (default): Sends a normal request and directly releases the instance after the request passes the check.
 	//
 	// example:
 	//
-	// true
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to forcefully release a running instance. Valid values:
+	// Specifies whether to forcefully release running instances. Valid values:
 	//
-	// 	- **Yes**
+	// 	- **Yes**: Forcefully releases the instances.
 	//
-	// 	- **No*	- (default)
+	// 	- **No*	- (default): Does not forcefully release the instances.
 	//
 	// example:
 	//
 	// Yes
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The details of the instance.
+	// The instance details.
 	//
 	// This parameter is required.
 	InstanceIdShrink *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -52,15 +52,11 @@ type DeleteRCInstancesShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to release an expired subscription instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
+	// A reserved parameter.
 	//
 	// example:
 	//
-	// true
+	// None
 	TerminateSubscription *bool `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
 }
 

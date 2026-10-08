@@ -18,23 +18,23 @@ type iModifyDatabaseConfigResponseBody interface {
 }
 
 type ModifyDatabaseConfigResponseBody struct {
-	// The code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
+	// F5C79A20-E931-5389-BC04-DEBA2D3ABD8D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

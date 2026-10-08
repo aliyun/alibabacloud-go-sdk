@@ -34,27 +34,29 @@ type iDescribeDBInstanceReplicationResponseBody interface {
 }
 
 type DescribeDBInstanceReplicationResponseBody struct {
-	// Indicates whether the native replication mods is enabled. Valid values:
+	// Indicates whether native replication mode is enabled. Valid values:
 	//
-	// 	- **ON**
+	// - **ON**: Enabled.
 	//
-	// 	- **OFF**
+	// - **OFF**: Disabled.
 	//
 	// example:
 	//
 	// ON
 	ExternalReplication *string `json:"ExternalReplication,omitempty" xml:"ExternalReplication,omitempty"`
+	// The executed global transaction identifier.
+	//
 	// example:
 	//
 	// bd2a34b9-8b8d-11ef-8917-00163e1298b9:1-20567
 	GtidExecuted *string `json:"GtidExecuted,omitempty" xml:"GtidExecuted,omitempty"`
-	// COMPLETED: 导入完成，INIT: 初始化，IMPORTING: 正在导入
+	// The import status, which indicates whether full data is successfully imported.
 	//
 	// example:
 	//
 	// COMPLETED
 	ImportStatus *string `json:"ImportStatus,omitempty" xml:"ImportStatus,omitempty"`
-	// The replication latency. Unit: seconds.
+	// The current replication delay, in seconds.
 	//
 	// example:
 	//
@@ -66,39 +68,37 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	//
 	// Got fatal error 1236 from master when reading data from binary log...
 	ReplicationErrorMessage *string `json:"ReplicationErrorMessage,omitempty" xml:"ReplicationErrorMessage,omitempty"`
+	// The IP address of the replication endpoint.
+	//
 	// example:
 	//
 	// 192.168.10.x
 	ReplicationIp *string `json:"ReplicationIp,omitempty" xml:"ReplicationIp,omitempty"`
+	// The port of the replication endpoint.
+	//
 	// example:
 	//
 	// 3306
 	ReplicationPort *string `json:"ReplicationPort,omitempty" xml:"ReplicationPort,omitempty"`
-	// The source of the native replication.
+	// The replication source of native replication.
 	//
 	// example:
 	//
-	// 192.168.x.x
+	// 192.168.XX.XX
 	ReplicationSource *string `json:"ReplicationSource,omitempty" xml:"ReplicationSource,omitempty"`
 	// The current replication status. Valid values:
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Connecting**
+	// - **Connecting**: Connecting.
 	//
-	// 	- **Stopped**
+	// - **Stopped**: Stopped.
 	//
-	// 	- **Error**
+	// - **Error**: Error.
 	//
 	// example:
 	//
-	// Running
-	//
-	// Connecting
-	//
 	// Stopped
-	//
-	// Error
 	ReplicationState *string `json:"ReplicationState,omitempty" xml:"ReplicationState,omitempty"`
 	// The request ID.
 	//
@@ -241,27 +241,27 @@ type DescribeDBInstanceReplicationResponseBodySlaveStatusList struct {
 	//
 	// bd2a34b9-8b8d-11ef-8917-00163e1298b9:1-20567
 	ExecutedGtidSet *string `json:"ExecutedGtidSet,omitempty" xml:"ExecutedGtidSet,omitempty"`
-	// 0表示无错误，其他值表示具体的错误代码
+	// A value of 0 indicates no error. Other values indicate specific error codes.
 	//
 	// example:
 	//
 	// 0
 	LastErrno *int32 `json:"LastErrno,omitempty" xml:"LastErrno,omitempty"`
-	// 0表示无错误，其他值表示IO线程的错误代码
+	// A value of 0 indicates no error. Other values indicate error codes of the I/O thread.
 	//
 	// example:
 	//
 	// 0
 	LastIoErrno *int32 `json:"LastIoErrno,omitempty" xml:"LastIoErrno,omitempty"`
-	// IO线程的错误信息描述
+	// The error message description of the I/O thread.
 	LastIoError *string `json:"LastIoError,omitempty" xml:"LastIoError,omitempty"`
-	// 0表示无错误，其他值表示SQL线程的错误代码
+	// A value of 0 indicates no error. Other values indicate error codes of the SQL thread.
 	//
 	// example:
 	//
 	// 0
 	LastSqlErrno *int32 `json:"LastSqlErrno,omitempty" xml:"LastSqlErrno,omitempty"`
-	// SQL线程的错误信息描述
+	// The error message description of the SQL thread.
 	LastSqlError *string `json:"LastSqlError,omitempty" xml:"LastSqlError,omitempty"`
 	// example:
 	//
@@ -303,7 +303,7 @@ type DescribeDBInstanceReplicationResponseBodySlaveStatusList struct {
 	//
 	// 0
 	SecondsBehindMaster *int32 `json:"SecondsBehindMaster,omitempty" xml:"SecondsBehindMaster,omitempty"`
-	// Yes: 运行中，No: 已停止
+	// Valid values: Yes (running) and No (stopped).
 	//
 	// example:
 	//
@@ -313,7 +313,7 @@ type DescribeDBInstanceReplicationResponseBodySlaveStatusList struct {
 	//
 	// Waiting for master to send event
 	SlaveIoState *string `json:"SlaveIoState,omitempty" xml:"SlaveIoState,omitempty"`
-	// Yes: 运行中，No: 已停止
+	// Valid values: Yes (running) and No (stopped).
 	//
 	// example:
 	//

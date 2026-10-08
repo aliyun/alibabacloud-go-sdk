@@ -22,27 +22,19 @@ type iModifyBackupSetExpireTimeResponseBody interface {
 }
 
 type ModifyBackupSetExpireTimeResponseBody struct {
-	// The status code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the returned parameters.
+	// The returned fields.
 	//
 	// example:
 	//
-	// {
-	//
-	//       "SupportOnlineResizeDisk": true,
-	//
-	//       "DBInstanceName": "rm-bp****",
-	//
-	//       "maxSupportDiskSizeGB": 6144
-	//
-	// }
+	// {expectExpireTime=1752581423000, dbClusterId=rm-7xv8f2zcia0e4****, backupId=262186****}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The information about the status code.
+	// The response code message.
 	//
 	// example:
 	//
@@ -56,9 +48,9 @@ type ModifyBackupSetExpireTimeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

@@ -34,29 +34,29 @@ type iDescribeAvailableClassesRequest interface {
 }
 
 type DescribeAvailableClassesRequest struct {
-	// The RDS edition of the instance. Valid values:
+	// The instance edition. Valid values:
 	//
-	// 	- Regular instance
+	// 	- Regular instances
 	//
-	//     	- **Basic**: RDS Basic Edition
+	//     	- **Basic**: Basic Edition
 	//
-	//     	- **HighAvailability**: RDS High-availability Edition
+	//     	- **HighAvailability**: high-availability series
 	//
-	//     	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL
+	//     	- **cluster**: Cluster Edition (applicable only to MySQL and PostgreSQL)
 	//
-	//     	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+	//     	- **AlwaysOn**: SQL Server Cluster Edition
 	//
 	//     	- **Finance**: RDS Enterprise Edition
 	//
-	// 	- Serverless instance
+	// 	- Serverless instances
 	//
-	//     	- **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
+	//     	- **serverless_basic**: Serverless Basic Edition (applicable only to MySQL and PostgreSQL)
 	//
-	//     	- **serverless_standard**: RDS High-availability Edition for ApsaraDB RDS for MySQL.
+	//     	- **serverless_standard**: Serverless high availability series (applicable only to MySQL and PostgreSQL)
 	//
-	//     	- **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
+	//     	- **serverless_ha**: SQL Server Serverless high availability series
 	//
-	//     > If you create a serverless instance, you must specify this parameter.
+	//     > This parameter is required when you create a serverless instance.
 	//
 	// This parameter is required.
 	//
@@ -66,27 +66,27 @@ type DescribeAvailableClassesRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The commodity code of the instance. Valid values:
 	//
-	// 	- **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
+	// - **bards**: pay-as-you-go primary instance (China site)
 	//
-	// 	- **rds**: The instance is a subscription primary instance. This value is available at the China site (aliyun.com).
+	// - **rds**: subscription primary instance (China site)
 	//
-	// 	- **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
+	// - **rords**: pay-as-you-go read-only instance (China site)
 	//
-	// 	- **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
+	// - **rds_rordspre_public_cn**: subscription read-only instance (China site)
 	//
-	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the International site (alibabacloud.com).
+	// - **bards_intl**: pay-as-you-go primary instance (international site)
 	//
-	// 	- **rds_intl**: The instance is a subscription primary instance. This value is available at the International site (alibabacloud.com).
+	// - **rds_intl**: subscription primary instance (international site)
 	//
-	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the International site (alibabacloud.com).
+	// - **rords_intl**: pay-as-you-go read-only instance (international site)
 	//
-	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available at the International site (alibabacloud.com).
+	// - **rds_rordspre_public_intl**: subscription read-only instance (international site)
 	//
-	// 	- **rds_serverless_public_cn**: The instance is a serverless instance. This value is available at the China site (aliyun.com).
+	// - **rds_serverless_public_cn**: serverless (China site)
 	//
-	// 	- **rds_serverless_public_intl**: The instance is a serverless instance. This value is available at the International site (alibabacloud.com).
+	// - **rds_serverless_public_intl**: serverless (international site)
 	//
-	// > If you want to query the price of a read-only instance, you must specify this parameter.
+	// > This parameter is required when you query a read-only instance.
 	//
 	// example:
 	//
@@ -96,21 +96,25 @@ type DescribeAvailableClassesRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The storage type of the instance. Valid values:
+	// The instance storage type. Valid values:
 	//
-	// 	- **local_ssd**: local SSD. This is the recommended storage type.
+	// 	- **general_essd**: premium performance disk
 	//
-	// 	- **cloud_ssd**: standard SSD.
+	// 	- **local_ssd**: local SSD
 	//
-	// 	- **cloud_essd**: performance level 1 (PL1) Enterprise SSD (ESSD)
+	// 	- **cloud_ssd**: standard SSD
 	//
-	// 	- **cloud_essd2**: PL2 ESSD
+	// 	- **cloud_essd0**: PL0 ESSD cloud disk
 	//
-	// 	- **cloud_essd3**: PL3 ESSD
+	// 	- **cloud_essd**: PL1 ESSD cloud disk
 	//
-	// >  Serverless instances use only PL1 ESSDs. If you want to create a serverless instance, you must set this parameter to **cloud_essd**.
+	// 	- **cloud_essd2**: PL2 ESSD cloud disk
+	//
+	// 	- **cloud_essd3**: PL3 ESSD cloud disk
+	//
+	// > Serverless instances support only PL1 ESSD cloud disks. Set this parameter to **cloud_essd**.
 	//
 	// This parameter is required.
 	//
@@ -118,7 +122,7 @@ type DescribeAvailableClassesRequest struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The database engine that is run by the instance. Valid values:
+	// The database engine of the instance. Valid values:
 	//
 	// 	- **MySQL**
 	//
@@ -136,23 +140,23 @@ type DescribeAvailableClassesRequest struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version of the instance. Valid values:
 	//
-	// 	- Regular instance
+	// - Regular instances
 	//
-	//     	- Valid values if you set Engine to MySQL: **5.5, 5.6, 5.7, and 8.0**
+	//     - MySQL: **5.5, 5.6, 5.7, 8.0**
 	//
-	//     	- Valid values if you set Engine to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**
+	//     - SQL Server: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, 2019_ent**
 	//
-	//     	- Valid values if you set Engine to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**
+	//     - PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0**
 	//
-	//     	- Valid value when you set Engine to MariaDB: **10.3**
+	//     - MariaDB: **10.3**
 	//
-	// 	- Serverless instance
+	// - Serverless instances
 	//
-	//     	- Valid values if you set Engine to MySQL: **5.7*	- and **8.0**
+	//     - MySQL: **5.7**, **8.0**
 	//
-	//     	- Valid values if you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**
+	//     - SQL Server: **2016_std_sl**, **2017_std_sl**, **2019_std_sl**
 	//
-	//     	- Valid value if you set Engine to PostgreSQL: **14.0**
+	//     - PostgreSQL: **14.0, 15.0, 16.0, 17.0**
 	//
 	//     > ApsaraDB RDS for MariaDB does not support serverless instances.
 	//
@@ -176,13 +180,13 @@ type DescribeAvailableClassesRequest struct {
 	//
 	// Prepaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The type of order. Set the value to **BUY**
+	// The order type. The only valid value is **BUY**.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
+	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -191,15 +195,15 @@ type DescribeAvailableClassesRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the zone ID of the instance.
+	// The zone ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the zone ID.
 	//
-	// >  If the DescribeDBInstanceAttribute operation returns multiple zones, you must specify only one of the returned zones. For example, if the DescribeDBInstanceAttribute operation returns `cn-hangzhou-MAZ9(g,h)`, you can set this parameter to `cn-hangzhou-g` or `cn-hangzhou-h`.
+	// >If DescribeDBInstanceAttribute returns a multi-zone value (such as `cn-hangzhou-MAZ9(g,h)`), specify a single zone. Example: `cn-hangzhou-g` or `cn-hangzhou-j`.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cn-hangzhou-h
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

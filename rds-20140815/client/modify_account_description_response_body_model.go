@@ -14,7 +14,7 @@ type iModifyAccountDescriptionResponseBody interface {
 }
 
 type ModifyAccountDescriptionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

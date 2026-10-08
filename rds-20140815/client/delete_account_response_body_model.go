@@ -14,7 +14,7 @@ type iDeleteAccountResponseBody interface {
 }
 
 type DeleteAccountResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

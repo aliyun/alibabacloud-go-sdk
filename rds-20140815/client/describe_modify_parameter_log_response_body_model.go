@@ -32,15 +32,15 @@ type DescribeModifyParameterLogResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine of the instance.
+	// The database engine type.
 	//
 	// example:
 	//
 	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -65,7 +65,7 @@ type DescribeModifyParameterLogResponseBody struct {
 	//
 	// C8E88DED-533F-4B3C-9207-731FBF394CCA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of log records.
 	//
 	// example:
 	//

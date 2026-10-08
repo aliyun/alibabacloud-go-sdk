@@ -14,7 +14,7 @@ type iModifyDBInstanceHAConfigResponseBody interface {
 }
 
 type ModifyDBInstanceHAConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

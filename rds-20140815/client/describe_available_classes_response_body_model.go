@@ -16,9 +16,9 @@ type iDescribeAvailableClassesResponseBody interface {
 }
 
 type DescribeAvailableClassesResponseBody struct {
-	// An array that consists of the instance types available for the instance.
+	// The available instance types for the instance.
 	DBInstanceClasses []*DescribeAvailableClassesResponseBodyDBInstanceClasses `json:"DBInstanceClasses,omitempty" xml:"DBInstanceClasses,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeAvailableClassesResponseBody) Validate() error {
 }
 
 type DescribeAvailableClassesResponseBodyDBInstanceClasses struct {
-	// The instance type of the instance.
+	// The instance type.
 	//
 	// example:
 	//
 	// rds.mysql.c1.large
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The storage capacity range that is supported for the instance.
+	// The instance storage capacity range.
 	DBInstanceStorageRange *DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
 }
 
@@ -112,19 +112,19 @@ func (s *DescribeAvailableClassesResponseBodyDBInstanceClasses) Validate() error
 }
 
 type DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange struct {
-	// The maximum storage capacity that is supported for the instance. Unit: GB.
+	// The maximum storage capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 2000
 	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum storage capacity that is supported for the instance. Unit: GB.
+	// The minimum storage capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 5
 	MinValue *int32 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The minimum step size at which you can adjust the storage capacity of the instance. The minimum step size is 5 GB.
+	// The minimum granularity for storage capacity adjustment. The value is fixed at 5 GB increments.
 	//
 	// example:
 	//

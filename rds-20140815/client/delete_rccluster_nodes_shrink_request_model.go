@@ -20,7 +20,7 @@ type iDeleteRCClusterNodesShrinkRequest interface {
 }
 
 type DeleteRCClusterNodesShrinkRequest struct {
-	// The instance IDs.
+	// The list of instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The node information.
 	NodesShrink *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
@@ -32,7 +32,7 @@ type DeleteRCClusterNodesShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The virtual private cloud (VPC) ID.
 	//
-	// >  This is a reserved parameter.
+	// > Reserved parameter.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeHistoryEventsStatResponseBody interface {
 }
 
 type DescribeHistoryEventsStatResponseBody struct {
-	// The event.
+	// The event list.
 	Items []*DescribeHistoryEventsStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,21 @@ func (s *DescribeHistoryEventsStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsStatResponseBodyItems struct {
-	// The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
+	// The system event categorization. Valid values:
+	//
+	// - **Exception**: abnormal event.
+	//
+	// - **Optimize**: optimization events.
+	//
+	// - **Notification**: notification event.
+	//
+	// - **Maintenance**: scheduled maintenance event.
 	//
 	// example:
 	//
 	// Exception
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

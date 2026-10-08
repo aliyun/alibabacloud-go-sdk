@@ -16,13 +16,13 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language that is used for the return value of the **LocalName*	- parameter. Valid values:
+	// The language of the returned **LocalName*	- parameter. Valid values:
 	//
 	// 	- **zh-CN**: Chinese
 	//
 	// 	- **en-US**: English
 	//
-	// Default value: **en-US**.
+	// Default value: **en-US**
 	//
 	// example:
 	//

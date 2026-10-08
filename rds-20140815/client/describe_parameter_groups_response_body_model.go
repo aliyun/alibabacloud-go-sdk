@@ -25,13 +25,13 @@ type DescribeParameterGroupsResponseBody struct {
 	//
 	// D4A23265-C5B6-42E1-98A0-EFA1EB42E723
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether parameter templates exist in the specified region. Valid values:
+	// **[Deprecated]*	- Indicates whether the specified region has parameter templates. Valid values:
 	//
-	// 	- true
+	// 	- true: No parameter templates exist.
 	//
-	// 	- false
+	// 	- false: Parameter templates exist.
 	//
-	// 	Notice: This parameter is deprecated.
+	// 	Warning: This parameter is deprecated and is not recommended.
 	//
 	// example:
 	//

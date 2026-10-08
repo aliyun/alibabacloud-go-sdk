@@ -22,15 +22,15 @@ type iDescribeHistoryEventsResponseBody interface {
 }
 
 type DescribeHistoryEventsResponseBody struct {
-	// The events.
+	// The event list.
 	Items []*DescribeHistoryEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. Valid values: any non-zero positive integer. Default value: **1**.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 30.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *DescribeHistoryEventsResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyItems struct {
-	// The details of the data.
+	// The data overview.
 	Data *DescribeHistoryEventsResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The task ID
+	// The task ID.
 	//
 	// example:
 	//
 	// 4309
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// loanBill
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The database engine version.
+	// The database version.
 	//
 	// example:
 	//
@@ -149,13 +149,13 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// QiTian
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// The amount of time that has elapsed from the start time of the query. Unit: seconds.
+	// The elapsed time of the query task. Unit: seconds.
 	//
 	// example:
 	//
 	// 1675232573125
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The event type. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
+	// The event type.
 	//
 	// example:
 	//
@@ -253,13 +253,17 @@ func (s *DescribeHistoryEventsResponseBodyItems) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyItemsData struct {
-	// The cloud service type of the application group. Valid values: **web*	- and native. The value web indicates a web application. The value **native*	- indicates a local application.
+	// The cloud service type of the application group. Valid values:
+	//
+	// - **web**: web application.
+	//
+	// - **native**: on-premises application.
 	//
 	// example:
 	//
 	// web
 	CmsProduct *string `json:"CmsProduct,omitempty" xml:"CmsProduct,omitempty"`
-	// The database engine.
+	// The database type.
 	//
 	// example:
 	//
@@ -271,19 +275,27 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 1
 	DetailImpact *string `json:"DetailImpact,omitempty" xml:"DetailImpact,omitempty"`
-	// The details of the instance operation.
+	// The instance operation details.
 	//
 	// example:
 	//
 	// xxxx
 	DetailReason *string `json:"DetailReason,omitempty" xml:"DetailReason,omitempty"`
-	// The time when the alert was closed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+	// The alert end time.
 	//
 	// example:
 	//
 	// 2023-03-06T11:46:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
+	// The system event categorization. Valid values:
+	//
+	// - **Exception**: abnormal event.
+	//
+	// - **Optimize**: optimization events.
+	//
+	// - **Notification**: notification event.
+	//
+	// - **Maintenance**: scheduled maintenance event.
 	//
 	// example:
 	//
@@ -307,57 +319,81 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 669036
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event impact.
+	// The event impact overview.
 	//
 	// example:
 	//
 	// xxxxx
 	EventImpact *string `json:"EventImpact,omitempty" xml:"EventImpact,omitempty"`
-	// The event level. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
+	// The event level. Valid values:
+	//
+	// - **INFO**: notification.
+	//
+	// - **WARN**: warning.
+	//
+	// - **CRITICAL**: critical.
 	//
 	// example:
 	//
-	// high
+	// INFO
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The event source.
+	// The source of the event operation.
 	//
 	// example:
 	//
 	// xxxxx
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The status of the alert event. Valid values:
+	// The event status. Valid values:
 	//
-	// 	- **1**: pending
+	// - **Inquiring**: inquiring.
 	//
-	// 	- **2**: ignored
+	// - **Scheduled**: scheduled.
 	//
-	// 	- **4**: confirmed
+	// - **Running**: running.
 	//
-	// 	- **8**: marked as false positive
+	// - **Succeed**: completed.
 	//
-	// 	- **16**: handling
+	// - **Failed**: failed.
 	//
-	// 	- **32**: handled
-	//
-	// 	- **64**: expired
+	// - **Canceled**: canceled.
 	//
 	// example:
 	//
 	// 1
 	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The event type. Valid values:
+	// The system event type. Valid values:
+	//
+	// - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
+	//
+	// - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
+	//
+	// - **SystemFailure.Reboot**: The instance is restarted due to a system error.
+	//
+	// - **SystemFailure.Redeploy**: The instance is redeployed due to a system error.
+	//
+	// - **SystemFailure.Delete**: The instance is released due to an instance creation failure.
+	//
+	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance error.
+	//
+	// - **InstanceExpiration.Stop**: The instance is stopped due to subscription expiration.
+	//
+	// - **InstanceExpiration.Delete**: The instance is released due to subscription expiration.
+	//
+	// - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
+	//
+	// - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
 	//
 	// example:
 	//
 	// StatusNotification
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+	// The time when the event was created.
 	//
 	// example:
 	//
 	// 2023-03-17T16:05:40Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The update time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+	// The time when the event was last updated.
 	//
 	// example:
 	//
@@ -387,29 +423,39 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// dhimgsearch
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the alert is closed. Valid values: **0**: closed. **1**: not closed.
+	// Indicates whether the event is closed. Valid values:
+	//
+	// - **0**: closed.
+	//
+	// - **1**: open.
 	//
 	// example:
 	//
 	// 0
 	IsClosed *int32 `json:"IsClosed,omitempty" xml:"IsClosed,omitempty"`
-	// The service name.
+	// The product name.
 	//
 	// example:
 	//
 	// rds
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-guangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type. The value is fixed as **INSTANCE**.
+	// The resource type. Valid values:
+	//
+	// - **Instance**: instance resource.
+	//
+	// - **Host**: host resource.
+	//
+	// - **User**: user resource.
 	//
 	// example:
 	//
-	// INSTANCE
+	// Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The type of the source data.
 	//
@@ -417,13 +463,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// MSE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+	// The start time.
 	//
 	// example:
 	//
 	// 2022-11-29T07:23Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the resource owner.
+	// The ID of the user who owns the resource.
 	//
 	// example:
 	//

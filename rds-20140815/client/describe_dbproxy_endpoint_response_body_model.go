@@ -52,13 +52,13 @@ type iDescribeDBProxyEndpointResponseBody interface {
 }
 
 type DescribeDBProxyEndpointResponseBody struct {
-	// The timeout period for consistency reads. Unit: milliseconds. Default value: **10**. Valid values: **0*	- to **60000**.
+	// The timeout period for consistency reads. Unit: milliseconds. Default value: **10**. Valid values: **0 to 60000**.
 	//
 	// example:
 	//
 	// 10
 	CausalConsistReadTimeout *string `json:"CausalConsistReadTimeout,omitempty" xml:"CausalConsistReadTimeout,omitempty"`
-	// The proxy endpoint queried.
+	// The proxy endpoint.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type DescribeDBProxyEndpointResponseBody struct {
 	DBProxyConnectString *string `json:"DBProxyConnectString,omitempty" xml:"DBProxyConnectString,omitempty"`
 	// The network type of the proxy endpoint. Valid values:
 	//
-	// 	- **InnerString**: internal network
+	// 	- **InnerString**: internal endpoint.
 	//
-	// 	- **OuterString**: Internet
+	// 	- **OuterString**: public endpoint.
 	//
 	// example:
 	//
 	// InnerString
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The port number that is associated with the proxy endpoint.
+	// The port of the proxy endpoint.
 	//
 	// example:
 	//
@@ -99,93 +99,95 @@ type DescribeDBProxyEndpointResponseBody struct {
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The configuration of the proxy terminal. The value of this parameter is a JSON string that consists of the following parameters:
+	// The settings of the proxy endpoint in JSON format. The following parameters are included:
 	//
-	// 	- **TransactionReadSqlRouteOptimizeStatus**: the status of the transaction splitting feature. Valid values: **0*	- and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+	// 	- **TransactionReadSqlRouteOptimizeStatus**: the transaction splitting setting. The value is **0*	- (disabled) or **1*	- (enabled).
 	//
-	// 	- **ConnectionPersist**: the status of the connection pooling feature. Valid values: **0**, **1**, and **2**. The value 0 indicates that the connection pooling feature is disabled. The value 1 indicates that the session-level connection pooling feature is enabled. The value 2 indicates that the transaction-level connection pooling feature is enabled.
+	// 	- **ConnectionPersist**: the connection pool setting. The value is **0*	- (disabled), **1*	- (session-level connection pool), or **2*	- (transaction-level connection pooling).
 	//
-	// 	- **ReadWriteSpliting**: the status of the read/write splitting feature. Valid values: **0*	- and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+	// 	- **ReadWriteSpliting**: the read/write splitting setting. The value is **0*	- (disabled) or **1*	- (enabled).
 	//
-	// 	- **AZProximityAccess**: the status of the nearest access feature. Valid values: **0*	- and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+	// 	- **AZProximityAccess**: the nearest access feature. The value is **0*	- (disabled) or **1*	- (enabled).
 	//
-	// 	- **CausalConsistRead**: the read consistency settings. Valid values: **0**, **1**, and **2**. The value 0 indicates eventual consistency. The value 1 indicates session consistency. The value 2 indicates global consistency.
+	// 	- **CausalConsistRead**: the read consistency setting. The value is **0*	- (eventual consistency), **1*	- (session consistency), or **2*	- (global consistency).
 	//
-	// 	- **PinPreparedStmt**: an internal parameter that is available only for ApsaraDB RDS for PostgrSQL instances.
+	// 	- **HtapFilter**: the automatic request distribution among row store and column store nodes setting. The value is **0*	- (disabled) or **1*	- (enabled).
 	//
-	// >  If the instance runs PostgreSQL, you can change only the value of the **ReadWriteSpliting*	- field. The **TransactionReadSqlRouteOptimizeStatus*	- and **PinPreparedStmt*	- fields are set to their default values 1.
+	// 	- **PinPreparedStmt**: visible only for ApsaraDB RDS for PostgreSQL. This is an internal parameter.
+	//
+	// > ApsaraDB RDS for PostgreSQL supports modification of only **ReadWriteSpliting**. **TransactionReadSqlRouteOptimizeStatus*	- and **PinPreparedStmt*	- are set to 1 by default.
 	//
 	// example:
 	//
 	// TransactionReadSqlRouteOptimizeStatus:1;ConnectionPersist:0;ReadWriteSpliting:1
 	DBProxyFeatures *string                                          `json:"DBProxyFeatures,omitempty" xml:"DBProxyFeatures,omitempty"`
 	DBProxyNodes    *DescribeDBProxyEndpointResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
-	// The description of the proxy terminal.
+	// The description of the proxy endpoint.
 	//
 	// example:
 	//
 	// proxyterminal-test
 	DbProxyEndpointAliases *string `json:"DbProxyEndpointAliases,omitempty" xml:"DbProxyEndpointAliases,omitempty"`
-	// The read and write attributes of the proxy terminal. Valid values:
+	// The read/write type of the proxy endpoint. Valid values:
 	//
-	// 	- **ReadWrite**: The proxy terminal supports read and write requests.
+	// 	- **ReadWrite**: read/write splitting mode.
 	//
-	// 	- **ReadOnly**: The proxy terminal supports only read requests.
+	// 	- **ReadOnly**: read-only mode.
 	//
 	// example:
 	//
 	// ReadWrite
 	DbProxyEndpointReadWriteMode *string `json:"DbProxyEndpointReadWriteMode,omitempty" xml:"DbProxyEndpointReadWriteMode,omitempty"`
-	// The virtual private cloud (VPC) ID of the proxy.
+	// The VPC ID of the proxy endpoint.
 	//
 	// example:
 	//
 	// vpc-****
 	DbProxyEndpointVpcId *string `json:"DbProxyEndpointVpcId,omitempty" xml:"DbProxyEndpointVpcId,omitempty"`
-	// The vSwitch ID of the proxy terminal.
+	// The vSwitch ID of the proxy endpoint.
 	//
 	// example:
 	//
 	// vsw-****
 	DbProxyEndpointVswitchId *string `json:"DbProxyEndpointVswitchId,omitempty" xml:"DbProxyEndpointVswitchId,omitempty"`
-	// The zone ID of the proxy terminal.
+	// The zone information of the proxy endpoint.
 	//
 	// example:
 	//
 	// cn-hangzhou-c
 	DbProxyEndpointZoneId *string                                                  `json:"DbProxyEndpointZoneId,omitempty" xml:"DbProxyEndpointZoneId,omitempty"`
 	EndpointConnectItems  *DescribeDBProxyEndpointResponseBodyEndpointConnectItems `json:"EndpointConnectItems,omitempty" xml:"EndpointConnectItems,omitempty" type:"Struct"`
-	// The method that is used to assign read weights. For more information, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html). Valid values:
+	// The read weight distribution mode. For more information, see [Read weight distribution](https://help.aliyun.com/document_detail/96076.html). Valid values:
 	//
-	// 	- **Standard**: The system automatically assigns read weights to the instance and its read-only instances based on the specifications of these instances.
+	// 	- **Standard**: automatically distributes weights based on instance specifications.
 	//
-	// 	- **Custom**: You must manually assign read weights to the instance and its read-only instances.
+	// 	- **Custom**: uses custom weight distribution.
 	//
 	// example:
 	//
 	// Standard
 	ReadOnlyInstanceDistributionType *string `json:"ReadOnlyInstanceDistributionType,omitempty" xml:"ReadOnlyInstanceDistributionType,omitempty"`
-	// The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the specified threshold, ApsaraDB RDS no longer forwards read requests to the read-only instance.
+	// The latency threshold for read/write splitting. When the latency of a read-only instance exceeds this threshold, read traffic is not routed to the instance. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
 	ReadOnlyInstanceMaxDelayTime *string `json:"ReadOnlyInstanceMaxDelayTime,omitempty" xml:"ReadOnlyInstanceMaxDelayTime,omitempty"`
-	// The read weights of the instance and its read-only instances. The value of this parameter is a JSON string that consists of the following parameters:
+	// The read weight distribution information, which specifies the read request weights of the primary instance and read-only instances. The value is in JSON format and includes the following parameters:
 	//
-	// 	- **DBInstanceId**: the ID of the instance.
+	// 	- **DBInstanceId**: the instance ID.
 	//
-	// 	- **DBInstanceType**: the role of the instance. Valid values: **Master*	- and **ReadOnly**.
+	// 	- **DBInstanceType**: the instance type. The value is **Master*	- (primary instance) or **ReadOnly*	- (read-only instance).
 	//
-	// 	- **NodeID**: The IDs of the primary and secondary nodes of the cluster. An instance that runs RDS Cluster Edition refers to a cluster.
+	// 	- **NodeID**: the node ID of the primary node or secondary node of the primary instance in the Cluster Edition.
 	//
-	// 	- **NodeType**: The node type. Valid values: **Primary*	- and **Secondary**.
+	// 	- **NodeType**: the node type in the Cluster Edition. The value is **Primary*	- (primary node of the primary instance) or **Secondary*	- (secondary node of the primary instance).
 	//
-	// 	- **Weight**: the read weight of the instance. The read weight increases in increments of **100*	- and cannot exceed **10000**.
+	// 	- **Weight**: the read request weight. The value increases in increments of **100**. Maximum value: **10000**.
 	//
 	// example:
 	//
-	// [{\\"Availability\\":\\"Available\\",\\"DBInstanceId\\":\\"rr-bp176984qewd8****\\",\\"DBInstanceType\\":\\"ReadOnly\\",\\"Weight\\":400},{\\"Availability\\":\\"Available\\",\\"DBInstanceId\\":\\"rm-bp1ja4f56s7us****\\",\\"DBInstanceType\\":\\"Master\\",\\"Weight\\":0}]
+	// [{\\"Availability\\":\\"Available\\",\\"DBInstanceId\\":\\"rm-2z****\\"，\\"DBInstanceType\\":\\"Master\\",\\"NodeId\\":\\"rn-t2****\\",\\"NodeType\\":\\"Primary\\",\\"Weight\\":0}, {\\"Availability\\":\\"Available\\",\\"DBInstanceId\\":\\"rm-2z****\\"，\\"DBInstanceType\\":\\"Master\\",\\"NodeId\\":\\"rn-z9****\\",\\"NodeType\\":\\"Secondary\\",\\"Weight\\":400}, {\\"Availability\\":\\"Available\\",,\\"DBInstanceId\\":\\"rm-2z****\\"，\\"DBInstanceType\\":\\"Master\\",\\"NodeId\\":\\"rn-1c****\\",\\"NodeType\\":\\"Secondary\\",\\"Weight\\":400}]]
 	ReadOnlyInstanceWeight *string `json:"ReadOnlyInstanceWeight,omitempty" xml:"ReadOnlyInstanceWeight,omitempty"`
 	// The request ID.
 	//

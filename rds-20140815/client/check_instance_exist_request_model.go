@@ -20,7 +20,7 @@ type iCheckInstanceExistRequest interface {
 }
 
 type CheckInstanceExistRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

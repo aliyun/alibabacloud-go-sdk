@@ -30,7 +30,7 @@ type iDescribeUpgradeMajorVersionTasksRequest interface {
 }
 
 type DescribeUpgradeMajorVersionTasksRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeUpgradeMajorVersionTasksRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
 	//
-	// Pages start from 1.
+	// Valid values: a value greater than 0 that does not exceed the maximum value of Integer.
 	//
 	// Default value: **1**.
 	//
@@ -62,7 +62,7 @@ type DescribeUpgradeMajorVersionTasksRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The major engine version of the new instance. Valid values:
+	// The major engine version after the upgrade. Valid values:
 	//
 	// 	- **10.0**
 	//
@@ -80,7 +80,7 @@ type DescribeUpgradeMajorVersionTasksRequest struct {
 	//
 	// 12.0
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//

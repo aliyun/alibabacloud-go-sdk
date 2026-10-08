@@ -17,7 +17,7 @@ type iDescribeDBInstancesAsCsvResponseBody interface {
 
 type DescribeDBInstancesAsCsvResponseBody struct {
 	Items *DescribeDBInstancesAsCsvResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

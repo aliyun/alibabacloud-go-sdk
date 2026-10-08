@@ -26,19 +26,19 @@ type iModifyDBInstanceHAConfigRequest interface {
 }
 
 type ModifyDBInstanceHAConfigRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk543xxxxx
+	// rm-uf6wjk543****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The HA mode of the instance.
+	// The High-availability Mode. Valid values:
 	//
-	// 	- RPO: Data consistency is preferred. The instance ensures data reliability to minimize data losses. If you have high requirements on data consistency, select this mode.
+	// - RPO: Data consistency is preferred. The instance ensures data reliability to the greatest extent, which minimizes the amount of data loss. Use RPO mode if you have high requirements for data consistency.
 	//
-	// 	- RTO: Service availability is preferred. The instance restores the database service at the earliest opportunity to ensure service availability. If you have high requirements for service availability, select this mode.
+	// - RTO: Instance availability is preferred. The instance recovers services as soon as possible, which maximizes the active time. Use RTO mode if you have high requirements for database uptime.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,15 @@ type ModifyDBInstanceHAConfigRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The data replication mode of the instance. For more information, see [Data replication mode](https://help.aliyun.com/document_detail/96055.html).
+	// The data replication method. Valid values:
 	//
-	// 	- Semi-sync: the semi-synchronous mode.
+	// - Semi-sync: semi-synchronous replication.
 	//
-	// 	- Sync: the synchronous mode.
+	// - Sync: synchronous replication.
 	//
-	// 	- gAsyncg: the asynchronous mode.
+	// - Async: asynchronous replication.
 	//
-	// 	- Mgr: the MySQL group replication (MGR) mode. This mode is available only for the China site (aliyun.com).
-	//
-	// > This parameter is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+	// <props="china">- Mgr: MySQL Group Replication.
 	//
 	// This parameter is required.
 	//

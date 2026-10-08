@@ -18,7 +18,7 @@ type iCreateYouhuiForOrderResponseBody interface {
 }
 
 type CreateYouhuiForOrderResponseBody struct {
-	// The response parameters.
+	// The response message.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CreateYouhuiForOrderResponseBody struct {
 	//
 	// example:
 	//
-	// 221201******
+	// 22120151****
 	YouhuiId *string `json:"YouhuiId,omitempty" xml:"YouhuiId,omitempty"`
 }
 

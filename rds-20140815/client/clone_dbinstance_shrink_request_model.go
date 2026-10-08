@@ -63,6 +63,8 @@ type iCloneDBInstanceShrinkRequest interface {
 	GetServerlessConfigShrink() *string
 	SetTableMeta(v string) *CloneDBInstanceShrinkRequest
 	GetTableMeta() *string
+	SetTag(v []*CloneDBInstanceShrinkRequestTag) *CloneDBInstanceShrinkRequest
+	GetTag() []*CloneDBInstanceShrinkRequestTag
 	SetUsedTime(v int32) *CloneDBInstanceShrinkRequest
 	GetUsedTime() *int32
 	SetVPCId(v string) *CloneDBInstanceShrinkRequest
@@ -78,13 +80,18 @@ type iCloneDBInstanceShrinkRequest interface {
 }
 
 type CloneDBInstanceShrinkRequest struct {
-	// Specifies whether to enable the automatic payment feature for the new instance. Valid values:
+	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 1.  **true**: enables the feature. You must make sure that your account balance is sufficient.
+	// 1. **true**: enables automatic payment. Make sure that your account balance is sufficient.
 	//
-	// 2.  **false**: disables the feature. An unpaid order is generated.
+	// 1. **false**: generates an order without charging the account.
 	//
-	// >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+	//
+	//
+	//
+	// > Default value: true. If your payment method has insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ApsaraDB RDS console to pay for the order.
+	//
+	// >
 	//
 	// example:
 	//
@@ -92,57 +99,58 @@ type CloneDBInstanceShrinkRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The backup set ID.
 	//
-	// You can call the DescribeBackups operation to query the backup set ID.
+	// You can call the DescribeBackups operation to query the backup set list.
 	//
-	// >  You must specify at least one of the **BackupId*	- or **RestoreTime*	- parameters.
+	// > You must specify at least one of **BackupId*	- and **RestoreTime**.
 	//
 	// example:
 	//
 	// 902****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The type of backup that is used to restore the data of the original instance. Valid values:
+	// The backup type. Valid values:
 	//
-	// 	- **FullBackup**
+	// 	- **FullBackup**: full backup.
 	//
-	// 	- **IncrementalBackup**
+	// 	- **IncrementalBackup**: incremental backup.
 	//
 	// example:
 	//
 	// FullBackup
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
-	//
-	// example:
-	//
-	// false
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
-	// An invalid parameter. You do not need to specify this parameter.
+	// Specifies whether to enable the I/O burst feature for the Premium ESSD cloud disk. Valid values:
+	//
+	// 	- **true**: enables the feature.
+	//
+	// 	- **false**: disables the feature.
+	//
+	// > For more information about the I/O burst feature, see [What is Premium ESSD?](https://help.aliyun.com/document_detail/2340501.html).
 	//
 	// example:
 	//
 	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The RDS edition of the instance. Valid values:
+	// The instance edition. Valid values:
 	//
-	// 	- **Basic**: RDS Basic Edition.
+	// - **Basic**: Basic Edition.
 	//
-	// 	- **HighAvailability**: RDS High-availability Edition.
+	// - **HighAvailability**: High-availability Edition.
 	//
-	// 	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
+	// - **AlwaysOn**: Cluster Edition (SQL Server).
 	//
-	// 	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
+	// - **cluster**: Cluster Edition (MySQL).
 	//
-	// 	- **Finance**: RDS Enterprise Edition. This edition is available only on the China site (aliyun.com).
+	// - **Finance**: Enterprise Edition. This value is supported only on the China site (aliyun.com).
 	//
 	// **Serverless instances**
 	//
-	// 	- **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
+	// - **serverless_basic**: Serverless Basic Edition. This value is valid only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
 	//
-	// 	- **serverless_standard**: RDS High-availability Edition for ApsaraDB RDS for MySQL
+	// - **serverless_standard**: MySQL Serverless High-availability Edition.
 	//
-	// 	- **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server
+	// - **serverless_ha**: SQL Server Serverless High-availability Edition.
 	//
-	// >  You do not need to configure this parameter. The value of this parameter is the same as that of the original instance.
+	// > You do not need to specify this parameter. The clone instance uses the same edition as the source instance.
 	//
 	// example:
 	//
@@ -155,17 +163,17 @@ type CloneDBInstanceShrinkRequest struct {
 	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CustomExtraInfo *string `json:"CustomExtraInfo,omitempty" xml:"CustomExtraInfo,omitempty"`
-	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
-	// > By default, the new instance uses the same instance type as the original primary instance.
+	// > Default value: the instance type of the source instance.
 	//
 	// example:
 	//
 	// mysql.n1.micro.1
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance name. The value must be 2 to 255 characters in length The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	// The name of the instance. The name must be 2 to 255 characters in length. It must start with a letter or a Chinese character and can contain digits, Chinese characters, letters, underscores (_), and hyphens (-).
 	//
-	// >  The value cannot start with http:// or https://.
+	// > The name cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -177,83 +185,89 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The storage capacity of the new instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+	// Instance storage capacity of the instance. Unit: GB. The value increases in increments of 5 GB. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
-	// > By default, the new instance has the same storage capacity as the original primary instance.
+	// > Default value: instance storage capacity of the source instance.
 	//
 	// example:
 	//
 	// 1000
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The storage type of the new instance. Valid values:
+	// The instance storage type. Valid values:
 	//
-	// 	- **general_essd*	- (recommend): general Enterprise SSD (ESSD)
+	// 	- **general_essd**: Premium ESSD (recommended).
 	//
-	// 	- **local_ssd**: local SSD
+	// 	- **local_ssd**: local SSD.
 	//
-	// 	- **cloud_ssd**: standard SSD
+	// 	- **cloud_ssd**: standard SSD.
 	//
-	// 	- **cloud_essd**: performance level 1 (PL1) ESSD
+	// 	- **cloud_essd**: PL1 ESSD.
 	//
-	// 	- **cloud_essd2**: PL2 ESSD
+	// 	- **cloud_essd2**: PL2 ESSD.
 	//
-	// 	- **cloud_essd3**: PL3 ESSD
+	// 	- **cloud_essd3**: PL3 ESSD.
 	//
-	// >  Serverless instances support only PL1 ESSDs and general ESSDs.
+	// > Serverless instances support only PL1 ESSDs and Premium ESSDs.
 	//
 	// example:
 	//
-	// cloud_essd
+	// general_essd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The name of the database. If you specify more than one database, the value is in the following format: `Original database name 1,Original database name 2`.
+	// The database names in the following format: `OriginalDatabaseName1,OriginalDatabaseName2`.
 	//
 	// example:
 	//
 	// test1,test2
 	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
-	// The ID of the dedicated cluster.
+	// The dedicated cluster ID.
 	//
 	// example:
 	//
-	// dhg-7a9xxxxxxxx
+	// dhg-7a9****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// Specifies whether to enable the release protection feature for the new instance. Valid values:
+	// Specifies whether to enable the release protection feature. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: enables the feature.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): disables the feature.
 	//
 	// example:
 	//
 	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The network type of the new instance. Valid values:
+	// The network type of the instance. Valid values:
 	//
-	// 	- **VPC**
+	// 	- **VPC**: virtual private cloud (VPC).
 	//
-	// 	- **Classic**
+	// 	- **Classic**: classic network.
 	//
-	// > By default, the new instance has the same network type as the original primary instance.
+	// > Default value: the network type of the source instance.
 	//
 	// example:
 	//
 	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// A reserved parameter.
+	// Specifies whether to enable the Buffer Pool Extension (BPE) feature for the Premium ESSD cloud disk. Valid values:
+	//
+	//  - **1**: enables the feature.
+	//
+	//  - **0**: disables the feature.
+	//
+	// > For more information about the BPE feature, see [Buffer Pool Extension (BPE)](https://help.aliyun.com/document_detail/2527067.html).
 	//
 	// example:
 	//
-	// None
+	// 0
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
 	//
 	// 	- **Prepaid**: subscription.
 	//
-	// 	- **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
+	// 	- **Serverless**: serverless. This value is not supported for ApsaraDB RDS for MariaDB instances. For more information, see [Overview of MySQL Serverless instances](https://help.aliyun.com/document_detail/411291.html), [Overview of SQL Server Serverless instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of PostgreSQL Serverless instances](https://help.aliyun.com/document_detail/607742.html).
 	//
 	// This parameter is required.
 	//
@@ -261,23 +275,23 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit that is used to calculate the billing cycle of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
+	// The unit of the subscription duration. Valid values:
 	//
 	// 	- **Year**
 	//
 	// 	- **Month**
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
+	// > This parameter is required if PayType is set to **Prepaid**.
 	//
 	// example:
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The internal IP address of the new instance, which must be within the CIDR block supported by the specified vSwitch. The system automatically assigns an internal IP address based on the values of the **VPCId*	- and **VSwitchId*	- parameters.
+	// The internal IP address of the new instance. The IP address must be within the IP address range of the specified vSwitch. The system automatically assigns an internal IP address based on the values of **VPCId*	- and **VSwitchId**.
 	//
 	// example:
 	//
-	// 172.XX.XXX.69
+	// 172.XX.XX.69
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
@@ -286,75 +300,78 @@ type CloneDBInstanceShrinkRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to restore only the databases and tables that you specify. The value **1*	- specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you do not need to specify this parameter.
+	// Specifies whether to restore individual databases and tables. Set this parameter to **true*	- to restore individual databases and tables. Otherwise, leave this parameter empty.
 	//
 	// example:
 	//
-	// 1
+	// true
 	RestoreTable *string `json:"RestoreTable,omitempty" xml:"RestoreTable,omitempty"`
-	// The point in time to which you want to restore data. The point in time must fall within the specified backup retention period. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// Any point in time within the backup retention period. Specify the time in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// > You must specify at least one of the **BackupId*	- and **RestoreTime*	- parameters.
+	// > You must specify at least one of **BackupId*	- and **RestoreTime**.
 	//
 	// example:
 	//
 	// 2011-06-11T16:00:00Z
-	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The specifications for the serverless instance. You must specify this parameter only when you restore data to a new serverless instance.
-	//
-	// >  This parameter is available only on the China site (aliyun.com).
+	RestoreTime            *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
-	// The information about the database and table that you want to restore. The value is in the following format: `[{"type":"db","name":"Name of Database 1","newname":"New name of Database 1","tables":[{"type":"table","name":"Name of Table 1 in Database 1","newname":"New name of Table 1"},{"type":"table","name":"Name of Table 2 in Database 1","newname":"New name of Table 2"}]},{"type":"db","name":"Name of Database 2","newname":"New name of Database 2","tables":[{"type":"table","name":"Name of Table 1 in Database 2","newname":"New name of Table 1"},{"type":"table","name":"Name of Table 2 in Database 2","newname":"New name of Table 2"}]}]`
+	// The information about the databases and tables that you want to restore. Format:
+	//
+	// ```[{"type":"db","name":"Database1Name","newname":"NewDatabase1Name","tables":[{"type":"table","name":"Table1NameInDatabase1","newname":"NewTable1Name"},{"type":"table","name":"Table2NameInDatabase1","newname":"NewTable2Name"}]},{"type":"db","name":"Database2Name","newname":"NewDatabase2Name","tables":[{"type":"table","name":"Table1NameInDatabase2","newname":"NewTable1Name"},{"type":"table","name":"Table2NameInDatabase2","newname":"NewTable2Name"}]}]```
 	//
 	// example:
 	//
 	// [{"type":"db","name":"testdb1","newname":"testdb1_new","tables":[{"type":"table","name":"testdb1table1","newname":"testdb1table1_new"}]}]
 	TableMeta *string `json:"TableMeta,omitempty" xml:"TableMeta,omitempty"`
-	// The subscription duration of the new instance. Valid values:
+	// The tag list.
+	Tag []*CloneDBInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The subscription duration. Valid values:
 	//
-	// 	- If you set the **Period*	- parameter to **Year**, the value of the UsedTime parameter ranges from **1 to 3**.
+	// 	- If **Period*	- is set to **Year**, the value of UsedTime ranges from **1 to 3**.
 	//
-	// 	- If you set the **Period*	- parameter to **Month**, the value of the UsedTime parameter ranges from **1 to 9**.
+	// 	- If **Period*	- is set to **Month**, the value of UsedTime ranges from **1 to 9**.
 	//
-	// > If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
+	// > This parameter is required if PayType is set to **Prepaid**.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
-	// >  Make sure that the VPC belongs to the required region.
+	// > Make sure that the VPC belongs to the corresponding region.
 	//
 	// example:
 	//
-	// vpc-uf6f7l4fg90xxxxxxxxxx
+	// vpc-uf6f7l4fg90****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch. The vSwitch must belong to the zone that is specified by **ZoneId**.
+	// The vSwitch ID. The zone of the vSwitch must correspond to the active zone ID specified in **ZoneId**.
 	//
-	// 	- If you set **InstanceNetworkType*	- to **VPC**, you must also specify this parameter.
+	// - The network type (**InstanceNetworkType**) must be set to **VPC**.
 	//
-	// 	- If you specify the **ZoneSlaveId1*	- parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
+	// - If you specify **ZoneSlaveId1*	- (secondary zone ID), you must specify two vSwitch IDs separated by a comma (,).
 	//
 	// example:
 	//
-	// vsw-uf6adz52c2pxxxxxxxxxx
+	// vsw-uf6adz52c2p****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the primary instance. You can call the DescribeRegions operation to query the zone ID.
+	// The primary zone ID. You can call the DescribeRegions operation to query the zone ID.
 	//
-	// >  Set this value to the zone ID of the original instance.
+	// > Default value: the zone of the source instance.
 	//
 	// example:
 	//
 	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone ID of the secondary instance. If you set the ZoneIdSlave1 parameter and the **ZoneId*	- parameter to the same value, the single-zone deployment method is used. If you set the ZoneIdSlave1 parameter and the **ZoneId*	- parameter to different values, the multi-zone deployment method is used.
+	// The zone ID of the secondary node. If this parameter is set to the same value as **ZoneId**, the single-zone deployment method is used. If this parameter is set to a different value from **ZoneId**, the multi-zone deployment method is used.
 	//
 	// example:
 	//
 	// cn-hangzhou-c
 	ZoneIdSlave1 *string `json:"ZoneIdSlave1,omitempty" xml:"ZoneIdSlave1,omitempty"`
-	// The zone ID of the logger instance. If you set the ZoneIdSlave2 parameter to the same value as the **ZoneId*	- parameter, the single-zone deployment method is used. If you set the ZoneIdSlave2 parameter to a different value from the **ZoneId*	- parameter, the multi-zone deployment method is used.
+	// <props="intl">The zone ID of the logger node. If this parameter is set to the same value as **ZoneId**, the single-zone deployment method is used. If this parameter is set to a different value from **ZoneId**, the multi-zone deployment method is used.
+	//
+	// <props="china">The zone ID of the secondary node or logger node. If this parameter is set to the same value as **ZoneId**, the single-zone deployment method is used. If this parameter is set to a different value from **ZoneId**, the multi-zone deployment method is used.
 	//
 	// example:
 	//
@@ -476,6 +493,10 @@ func (s *CloneDBInstanceShrinkRequest) GetServerlessConfigShrink() *string {
 
 func (s *CloneDBInstanceShrinkRequest) GetTableMeta() *string {
 	return s.TableMeta
+}
+
+func (s *CloneDBInstanceShrinkRequest) GetTag() []*CloneDBInstanceShrinkRequestTag {
+	return s.Tag
 }
 
 func (s *CloneDBInstanceShrinkRequest) GetUsedTime() *int32 {
@@ -637,6 +658,11 @@ func (s *CloneDBInstanceShrinkRequest) SetTableMeta(v string) *CloneDBInstanceSh
 	return s
 }
 
+func (s *CloneDBInstanceShrinkRequest) SetTag(v []*CloneDBInstanceShrinkRequestTag) *CloneDBInstanceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CloneDBInstanceShrinkRequest) SetUsedTime(v int32) *CloneDBInstanceShrinkRequest {
 	s.UsedTime = &v
 	return s
@@ -668,5 +694,73 @@ func (s *CloneDBInstanceShrinkRequest) SetZoneIdSlave2(v string) *CloneDBInstanc
 }
 
 func (s *CloneDBInstanceShrinkRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CloneDBInstanceShrinkRequestTag struct {
+	// The tag key. Specify this parameter to attach a tag to the instance.
+	//
+	// 	- If the specified tag key already exists, the tag is directly attached to the instance. You can call the ListTagResources operation to query existing tags.
+	//
+	// 	- If the specified tag key does not exist, the tag key is created and then attached to the instance.
+	//
+	// 	- Empty strings are not allowed.
+	//
+	// 	- This parameter must be used together with **Tag.Value**.
+	//
+	// example:
+	//
+	// testkey1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value that corresponds to the tag key. Specify this parameter to attach a tag to the instance.
+	//
+	// 	- If the specified tag value already exists for the corresponding tag key, the tag value is directly attached to the instance. You can call the ListTagResources operation to query existing tags.
+	//
+	// 	- If the specified tag value does not exist for the corresponding tag key, the tag value is created and then attached to the instance.
+	//
+	// 	- This parameter must be used together with **Tag.Key**.
+	//
+	// example:
+	//
+	// testvalue1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CloneDBInstanceShrinkRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CloneDBInstanceShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CloneDBInstanceShrinkRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CloneDBInstanceShrinkRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *CloneDBInstanceShrinkRequestTag) SetKey(v string) *CloneDBInstanceShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CloneDBInstanceShrinkRequestTag) SetValue(v string) *CloneDBInstanceShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *CloneDBInstanceShrinkRequestTag) Validate() error {
 	return dara.Validate(s)
 }

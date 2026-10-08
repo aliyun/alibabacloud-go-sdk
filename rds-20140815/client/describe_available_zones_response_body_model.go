@@ -16,9 +16,9 @@ type iDescribeAvailableZonesResponseBody interface {
 }
 
 type DescribeAvailableZonesResponseBody struct {
-	// The available zones in the region.
+	// The list of available zone resources for ApsaraDB RDS.
 	AvailableZones []*DescribeAvailableZonesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeAvailableZonesResponseBodyAvailableZones struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The database engines that are available for purchase.
+	// The list of supported database engines available for sale.
 	SupportedEngines []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
@@ -131,13 +131,13 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZones) Validate() error {
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines struct {
-	// The database engine of the instance.
+	// The database engine.
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine versions that are available for purchase.
+	// The list of supported database engine versions available for sale.
 	SupportedEngineVersions []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Repeated"`
 }
 
@@ -181,7 +181,7 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) Valid
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions struct {
-	// The RDS editions that are available that are available for purchase.
+	// The list of supported instance editions available for sale.
 	SupportedCategorys []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys `json:"SupportedCategorys,omitempty" xml:"SupportedCategorys,omitempty" type:"Repeated"`
 	// The database engine version.
 	//
@@ -231,13 +231,13 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupport
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys struct {
-	// The RDS edition of the instance.
+	// The instance edition.
 	//
 	// example:
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The storage types that are available for purchase.
+	// The list of supported storage types available for sale.
 	SupportedStorageTypes []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Repeated"`
 }
 
@@ -281,7 +281,7 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupport
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes struct {
-	// The storage type of the instance.
+	// The instance storage type.
 	//
 	// example:
 	//

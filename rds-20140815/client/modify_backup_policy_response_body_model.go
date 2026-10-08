@@ -15,8 +15,14 @@ type iModifyBackupPolicyResponseBody interface {
 	GetDBInstanceID() *string
 	SetEnableBackupLog(v string) *ModifyBackupPolicyResponseBody
 	GetEnableBackupLog() *string
+	SetEnableIncrementDataBackup(v bool) *ModifyBackupPolicyResponseBody
+	GetEnableIncrementDataBackup() *bool
+	SetEnablePitrProtection(v bool) *ModifyBackupPolicyResponseBody
+	GetEnablePitrProtection() *bool
 	SetHighSpaceUsageProtection(v string) *ModifyBackupPolicyResponseBody
 	GetHighSpaceUsageProtection() *string
+	SetIncBackupInterval(v int32) *ModifyBackupPolicyResponseBody
+	GetIncBackupInterval() *int32
 	SetLocalLogRetentionHours(v int32) *ModifyBackupPolicyResponseBody
 	GetLocalLogRetentionHours() *int32
 	SetLocalLogRetentionSpace(v string) *ModifyBackupPolicyResponseBody
@@ -28,17 +34,17 @@ type iModifyBackupPolicyResponseBody interface {
 }
 
 type ModifyBackupPolicyResponseBody struct {
-	// The method that is used to compress backups. Valid values:
+	// The backup compression method. Valid values:
 	//
-	// 	- **0:*	- Backups are not compressed.
+	// 	- **0**: not compressed.
 	//
-	// 	- **1**: Backups are compressed by using the zlib tool.
+	// 	- **1**: zlib compression.
 	//
-	// 	- **2**: Backups are compressed in parallel by using the zlib tool.
+	// 	- **2**: parallel zlib compression.
 	//
-	// 	- **4**: Backups are compressed by using the QuickLZ tool and can be used to restore individual databases and tables.
+	// 	- **4**: quicklz compression with database and table restoration enabled.
 	//
-	// 	- **8**: Backups are compressed by using the QuickLZ tool but cannot be used to restore individual databases or tables. This value is supported only for instances that run MySQL 8.0.
+	// 	- **8**: MySQL 8.0 quicklz compression without database and table restoration support.
 	//
 	// example:
 	//
@@ -48,43 +54,49 @@ type ModifyBackupPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	// Indicates whether the log backup feature is enabled. Valid values:
+	// Indicates whether instance log backup is enabled. Valid values:
 	//
-	// 	- **1**: The feature is enabled.
+	// 	- **1**: enabled.
 	//
-	// 	- **0**: The feature is disabled.
+	// 	- **0**: disabled.
+	//
+	//
+	// > Instance log backup for SQL Server instances is enabled by default and cannot be disabled.
 	//
 	// example:
 	//
 	// 1
-	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// Specifies whether to forcefully delete log backup files from the instance when the storage usage of the instance exceeds 80% or the amount of remaining storage on the instance is less than 5 GB.
+	EnableBackupLog           *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	EnableIncrementDataBackup *bool   `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
+	EnablePitrProtection      *bool   `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
+	// Indicates whether binary logs are unconditionally cleaned up when the storage usage of a **MySQL*	- instance exceeds 80% or the remaining storage is less than 5 GB.
 	//
 	// example:
 	//
 	// Disable
 	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	// The number of hours for which log backup files are retained on the instance.
+	IncBackupInterval        *int32  `json:"IncBackupInterval,omitempty" xml:"IncBackupInterval,omitempty"`
+	// The number of hours for which instance log backups are retained on the local storage of a **MySQL*	- instance.
 	//
 	// example:
 	//
 	// 18
 	LocalLogRetentionHours *int32 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	// The maximum storage usage that is allowed for log backup files on the instance.
+	// The maximum loop space usage of binary logs for a **MySQL*	- instance.
 	//
 	// example:
 	//
 	// 30
 	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	// The number of binary log files on the instance.
+	// The number of binary logs retained locally for a **MySQL*	- instance.
 	//
 	// example:
 	//
 	// 60
 	LogBackupLocalRetentionNumber *int32 `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -112,8 +124,20 @@ func (s *ModifyBackupPolicyResponseBody) GetEnableBackupLog() *string {
 	return s.EnableBackupLog
 }
 
+func (s *ModifyBackupPolicyResponseBody) GetEnableIncrementDataBackup() *bool {
+	return s.EnableIncrementDataBackup
+}
+
+func (s *ModifyBackupPolicyResponseBody) GetEnablePitrProtection() *bool {
+	return s.EnablePitrProtection
+}
+
 func (s *ModifyBackupPolicyResponseBody) GetHighSpaceUsageProtection() *string {
 	return s.HighSpaceUsageProtection
+}
+
+func (s *ModifyBackupPolicyResponseBody) GetIncBackupInterval() *int32 {
+	return s.IncBackupInterval
 }
 
 func (s *ModifyBackupPolicyResponseBody) GetLocalLogRetentionHours() *int32 {
@@ -147,8 +171,23 @@ func (s *ModifyBackupPolicyResponseBody) SetEnableBackupLog(v string) *ModifyBac
 	return s
 }
 
+func (s *ModifyBackupPolicyResponseBody) SetEnableIncrementDataBackup(v bool) *ModifyBackupPolicyResponseBody {
+	s.EnableIncrementDataBackup = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetEnablePitrProtection(v bool) *ModifyBackupPolicyResponseBody {
+	s.EnablePitrProtection = &v
+	return s
+}
+
 func (s *ModifyBackupPolicyResponseBody) SetHighSpaceUsageProtection(v string) *ModifyBackupPolicyResponseBody {
 	s.HighSpaceUsageProtection = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyResponseBody) SetIncBackupInterval(v int32) *ModifyBackupPolicyResponseBody {
+	s.IncBackupInterval = &v
 	return s
 }
 

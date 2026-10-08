@@ -22,13 +22,13 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. The value of this parameter is the same as the value of the **PageSize*	- parameter in the request parameters.
+	// The number of entries per page. This value corresponds to the value specified for the **PageSize*	- request parameter.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 8A68AEA1-AFBD-53F8-9BBB-06555EAE5C0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Details of the vSwitches.
+	// The list of vSwitch information.
 	VSwitchs []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 }
 
@@ -125,11 +125,11 @@ type DescribeVSwitchesResponseBodyVSwitchs struct {
 	//
 	// 1
 	AvailableIpAddressCount *string `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	// The CIDR block of the vSwitch.
+	// The vSwitch CIDR block.
 	//
 	// example:
 	//
-	// 172.16.0.0/24
+	// 172.16.XX.XX/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// The description of the vSwitch.
 	//
@@ -137,11 +137,11 @@ type DescribeVSwitchesResponseBodyVSwitchs struct {
 	//
 	// vSwitchDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the vSwitch is the default vSwitch. Valid values:
+	// Indicates whether the vSwitch is the default vSwitch.
 	//
-	// 	- **true**
+	// 	- **true**: The vSwitch is the default vSwitch.
 	//
-	// 	- **false**
+	// 	- **false**: The vSwitch is not the default vSwitch.
 	//
 	// example:
 	//
@@ -151,11 +151,11 @@ type DescribeVSwitchesResponseBodyVSwitchs struct {
 	//
 	// example:
 	//
-	// cn-hangzhou-h
+	// cn-hangzhou-j
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
 	// The status of the vSwitch. Valid values:
 	//
-	// 	- **Pending**: The vSwitch is being specified.
+	// 	- **Pending**: The vSwitch is being configured.
 	//
 	// 	- **Available**: The vSwitch is available.
 	//
@@ -167,7 +167,7 @@ type DescribeVSwitchesResponseBodyVSwitchs struct {
 	//
 	// example:
 	//
-	// vsw-bp1pnaz94xc**********
+	// vsw-bp1pnaz94xc****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The vSwitch name.
 	//

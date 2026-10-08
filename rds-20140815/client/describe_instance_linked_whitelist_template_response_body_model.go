@@ -24,31 +24,31 @@ type iDescribeInstanceLinkedWhitelistTemplateResponseBody interface {
 }
 
 type DescribeInstanceLinkedWhitelistTemplateResponseBody struct {
-	// The response code returned. Valid values:
+	// The response code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Normal.
 	//
-	// 	- **400**: client error
+	// - **400**: Client fault.
 	//
-	// 	- **401**: identity authentication failed
+	// - **401**: Authentication failed.
 	//
-	// 	- **404**: request page not found
+	// - **404**: Request page not found.
 	//
-	// 	- **500**: server error
+	// - **500**: Server fault.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data list.
 	Data *DescribeInstanceLinkedWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Success.
 	//
-	// 	- **400**: client error
+	// - **400**: Client error.
 	//
-	// 	- **500**: server error
+	// - **500**: Server error.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribeInstanceLinkedWhitelistTemplateResponseBody struct {
 	//
 	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -154,9 +154,9 @@ type DescribeInstanceLinkedWhitelistTemplateResponseBodyData struct {
 	//
 	// example:
 	//
-	// rm-bp191w771kd3****
+	// rm-bp191w771k******
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The information about whitelists that are returned by page.
+	// The whitelist template information returned in a paged manner.
 	Templates []*DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -206,7 +206,7 @@ type DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates struct {
 	//
 	// 1884
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP addresses.
+	// The IP address list.
 	//
 	// example:
 	//

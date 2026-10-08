@@ -30,11 +30,11 @@ type iDescribeSlowLogsResponseBody interface {
 }
 
 type DescribeSlowLogsResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end date of the query.
 	//
@@ -42,20 +42,20 @@ type DescribeSlowLogsResponseBody struct {
 	//
 	// 2011-05-30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The database engine of the instance.
+	// The database engine type.
 	//
 	// example:
 	//
-	// MySQL
+	// SQLServer
 	Engine *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	Items  *DescribeSlowLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The number of the page returned.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of SQL statements that are returned on the current page.
+	// The number of SQL statements on the current page.
 	//
 	// example:
 	//
@@ -71,9 +71,9 @@ type DescribeSlowLogsResponseBody struct {
 	//
 	// example:
 	//
-	// 2011-05-30Z
+	// 2011-05-01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of entries.
 	//
 	// example:
 	//

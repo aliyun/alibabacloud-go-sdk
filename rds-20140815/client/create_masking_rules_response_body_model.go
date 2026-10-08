@@ -20,25 +20,25 @@ type iCreateMaskingRulesResponseBody interface {
 }
 
 type CreateMaskingRulesResponseBody struct {
-	// Returned data
+	// The returned data.
 	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Return message
+	// The returned message.
 	//
 	// example:
 	//
 	// successful create
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 792233B1-76B8-5A01-92B4-**********864
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Return values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: Succeeded
+	// - **true**: The request was successful.
 	//
-	// - **false**: Failed
+	// - **false**: The request failed.
 	//
 	// example:
 	//

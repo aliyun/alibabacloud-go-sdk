@@ -22,7 +22,7 @@ type iPrecheckDuckDBDependencyRequest interface {
 }
 
 type PrecheckDuckDBDependencyRequest struct {
-	// The primary instance ID.
+	// The instance ID of the primary instance.
 	//
 	// This parameter is required.
 	//

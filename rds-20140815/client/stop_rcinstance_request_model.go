@@ -22,9 +22,9 @@ type iStopRCInstanceRequest interface {
 type StopRCInstanceRequest struct {
 	// Specifies whether to forcefully stop the instance. Valid values:
 	//
-	// 	- **true**
+	// -   **true**: Forcefully stops the instance.
 	//
-	// 	- **false*	- (default)
+	// -   **false*	- (default): Gracefully stops the instance.
 	//
 	// example:
 	//
@@ -43,7 +43,22 @@ type StopRCInstanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The stop mode of the instance. Valid values:
+	//
+	//   - StopCharging: economical mode. After economical mode is enabled:
+	//
+	//     - Billing for compute resources is suspended.
+	//
+	//     - Billing for system cloud disks and data cloud disks continues.
+	//
+	//     - Because compute resources are released, the instance may fail to start due to insufficient resources. Try again later or change the instance type.
+	//
+	//   - KeepCharging: standard mode. Billing continues after the instance is stopped.
+	//
+	// example:
+	//
+	// KeepCharging
 	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
 }
 

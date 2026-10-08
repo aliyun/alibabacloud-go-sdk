@@ -41,7 +41,7 @@ type DescibeImportsFromDatabaseResponseBody struct {
 	//
 	// B000AA91-393D-46F9-8D9B-098E28931A3A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

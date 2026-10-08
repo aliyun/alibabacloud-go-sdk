@@ -18,24 +18,9 @@ type iUnassociateEipAddressWithRCInstanceRequest interface {
 }
 
 type UnassociateEipAddressWithRCInstanceRequest struct {
-	// The EIP ID.
-	//
-	// example:
-	//
-	// eip-bp166out2x4bpcf******
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rc-i322y2t562oh7o******
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UnassociateEipAddressWithRCInstanceRequest) String() string {

@@ -22,23 +22,32 @@ type iDescribeVpcsResponseBody interface {
 }
 
 type DescribeVpcsResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8F4596F7-FA71-590E-9E1C-********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 14
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Vpcs       []*DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of VPCs.
+	Vpcs []*DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVpcsResponseBody) String() string {
@@ -108,43 +117,64 @@ func (s *DescribeVpcsResponseBody) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcs struct {
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 18757856124****
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The business ID.
+	//
 	// example:
 	//
 	// 26888
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The CIDR block of the VPC.
+	//
 	// example:
 	//
 	// 172.16.0.0/12
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the VPC was created.
+	//
 	// example:
 	//
 	// 2023-01-01T12:00:00Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the VPC was last modified.
+	//
 	// example:
 	//
 	// 2023-01-01T12:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the VPC is the default VPC.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The VPC status.
+	//
 	// example:
 	//
 	// Available
-	Status   *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch information.
 	VSwitchs []*DescribeVpcsResponseBodyVpcsVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	// The ID of the VPC.
+	//
 	// example:
 	//
 	// vpc-xxxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
 	// example:
 	//
 	// my-vpc
@@ -272,34 +302,50 @@ func (s *DescribeVpcsResponseBodyVpcs) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcsVSwitchs struct {
+	// The vSwitch CIDR block.
+	//
 	// example:
 	//
 	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the vSwitch was created.
+	//
 	// example:
 	//
 	// 2023-01-01T12:00:00Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the vSwitch was last modified.
+	//
 	// example:
 	//
 	// 2023-01-01T12:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the vSwitch is the default vSwitch.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// The vSwitch status.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xxxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The vSwitch name.
+	//
 	// example:
 	//
 	// default-vswitch

@@ -16,27 +16,15 @@ type iAcceptRCInquiredSystemEventRequest interface {
 }
 
 type AcceptRCInquiredSystemEventRequest struct {
-	// The ID of the system event.
-	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// e-2zeielxl1qzq8slb****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The region ID of the system event.
-	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

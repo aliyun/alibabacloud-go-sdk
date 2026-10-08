@@ -20,13 +20,27 @@ type iAttachRCDiskRequest interface {
 }
 
 type AttachRCDiskRequest struct {
-	// The reserved parameter. This parameter is not supported.
+	// Specifies whether the cloud disk is released when the instance is released. Valid values:
+	//
+	// true: The cloud disk is released when the instance is released.
+	//
+	// false: The cloud disk is not released when the instance is released. The cloud disk is retained as a pay-as-you-go data cloud disk.
+	//
+	// Default value: false.
+	//
+	// When you configure this parameter, take note of the following items:
+	//
+	// If you set DeleteWithInstance to false and the instance is locked for security reasons, meaning that OperationLocks contains "LockReason" : "security", this parameter is ignored and the cloud disk is released along with the instance.
+	//
+	// If the cloud disk to be attached is an elastic ephemeral disk, you must set DeleteWithInstance to true.
+	//
+	// This parameter is not supported for cloud disks that have the multi-attach feature enabled.
 	//
 	// example:
 	//
 	// false
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The disk ID.
+	// The ID of the cloud disk to be attached. The cloud disk (DiskId) and the instance (InstanceId) must be in the same zone.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +48,7 @@ type AttachRCDiskRequest struct {
 	//
 	// rcd-wz98hnpj2sjo85zc7t2w
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The instance ID.
+	// The ID of the destination RDS Custom instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +56,7 @@ type AttachRCDiskRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID
+	// The region ID.
 	//
 	// example:
 	//

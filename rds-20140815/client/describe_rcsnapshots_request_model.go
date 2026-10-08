@@ -26,7 +26,7 @@ type iDescribeRCSnapshotsRequest interface {
 }
 
 type DescribeRCSnapshotsRequest struct {
-	// The cloud disk ID.
+	// The ID of the cloud disk.
 	//
 	// example:
 	//
@@ -45,21 +45,22 @@ type DescribeRCSnapshotsRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query available regions.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The snapshot IDs.
+	// The IDs of snapshots.
 	//
-	// You can specify a maximum of 100 IDs. Separate multiple IDs with commas (,).
+	// You can specify multiple snapshot IDs separated by commas (,). A maximum of 100 IDs can be specified.
 	//
 	// example:
 	//
 	// ["rcds-bp67acfmxazb4p****", "rcds-bp67acfmxazb5p****", … "rcds-bp67acfmxazb6p****"]
-	SnapshotIds *string                          `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
-	Tag         []*DescribeRCSnapshotsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SnapshotIds *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	// The tag details.
+	Tag []*DescribeRCSnapshotsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRCSnapshotsRequest) String() string {
@@ -147,7 +148,17 @@ func (s *DescribeRCSnapshotsRequest) Validate() error {
 }
 
 type DescribeRCSnapshotsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// testRC
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// test01
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

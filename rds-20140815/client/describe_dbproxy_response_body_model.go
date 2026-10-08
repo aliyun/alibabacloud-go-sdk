@@ -56,110 +56,113 @@ type DescribeDBProxyResponseBody struct {
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The version of the proxy instance.
+	// The current minor version of the proxy instance.
 	//
 	// example:
 	//
 	// 1.13.11
 	DBProxyInstanceCurrentMinorVersion *string `json:"DBProxyInstanceCurrentMinorVersion,omitempty" xml:"DBProxyInstanceCurrentMinorVersion,omitempty"`
-	// The latest version that is available for the proxy instance.
+	// The latest minor version of the proxy instance.
 	//
 	// example:
 	//
 	// 1.13.12
-	DBProxyInstanceLatestMinorVersion *string                                                  `json:"DBProxyInstanceLatestMinorVersion,omitempty" xml:"DBProxyInstanceLatestMinorVersion,omitempty"`
-	DBProxyInstanceMinorVersions      *DescribeDBProxyResponseBodyDBProxyInstanceMinorVersions `json:"DBProxyInstanceMinorVersions,omitempty" xml:"DBProxyInstanceMinorVersions,omitempty" type:"Struct"`
+	DBProxyInstanceLatestMinorVersion *string `json:"DBProxyInstanceLatestMinorVersion,omitempty" xml:"DBProxyInstanceLatestMinorVersion,omitempty"`
+	// example:
+	//
+	// 2.25.9
+	DBProxyInstanceMinorVersions *DescribeDBProxyResponseBodyDBProxyInstanceMinorVersions `json:"DBProxyInstanceMinorVersions,omitempty" xml:"DBProxyInstanceMinorVersions,omitempty" type:"Struct"`
 	// The name of the proxy instance.
 	//
 	// example:
 	//
 	// gos787jog2wk0ye1****
 	DBProxyInstanceName *string `json:"DBProxyInstanceName,omitempty" xml:"DBProxyInstanceName,omitempty"`
-	// The number of proxies that are enabled on the instance.
+	// The number of enabled proxy instances.
 	//
 	// example:
 	//
 	// 1
 	DBProxyInstanceNum *int32 `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
-	// This parameter is available only for ApsaraDB RDS for PostgreSQL instances. The specifications of the proxy instance that is enabled.
+	// This parameter is supported only for ApsaraDB RDS for PostgreSQL. The actual specification size of the proxy instance.
 	//
-	// Format: `Number of cores/Memory capacity`.
+	// Format: `CPU/Memory`.
 	//
-	// For example, a value of 4/8 indicates that the proxy instance has 4 cores and 8 GB of memory.
+	// Example: 4/8 indicates 4 CPU cores and 8 GB of memory.
 	//
 	// example:
 	//
 	// 4/8
 	DBProxyInstanceSize *string `json:"DBProxyInstanceSize,omitempty" xml:"DBProxyInstanceSize,omitempty"`
-	// The status of the proxy instance.
+	// The running status of the proxy instance. Valid values:
 	//
-	// 	- DBInstanceClassChanging: The specifications of the proxy instance are being changed.
+	// - DBInstanceClassChanging: The specification is being changed.
 	//
-	// 	- Creating: The proxy instance is being created.
+	// - Creating: The instance is being created.
 	//
-	// 	- Running: The proxy instance is running.
+	// - Running: The instance is running.
 	//
-	// 	- Deleting: The proxy instance is being deleted.
+	// - Deleting: The instance is being deleted.
 	//
 	// example:
 	//
 	// Running
 	DBProxyInstanceStatus *string `json:"DBProxyInstanceStatus,omitempty" xml:"DBProxyInstanceStatus,omitempty"`
-	// The type of the database proxy that is enabled on the instance. Valid values:
+	// The type of the proxy service. Valid values:
 	//
-	// 	- 1: shared database proxy
+	// - 1: shared database proxy
 	//
-	// 	- 2: dedicated database proxy
+	// - 2: dedicated database proxy
 	//
-	// 	- 3: general-purpose database proxy
+	// - 3: general-purpose database proxy
 	//
-	// >  ApsaraDB RDS for PostgreSQL does not support shared database proxies.
+	// > ApsaraDB RDS for PostgreSQL does not support shared database proxies.
 	//
 	// example:
 	//
 	// 2
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// An internal parameter. You do not need to specify this parameter.
+	// An internal parameter. You can ignore this parameter.
 	//
 	// example:
 	//
 	// 18
 	DBProxyKindCode *string                                  `json:"DBProxyKindCode,omitempty" xml:"DBProxyKindCode,omitempty"`
 	DBProxyNodes    *DescribeDBProxyResponseBodyDBProxyNodes `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty" type:"Struct"`
-	// The status of persistence connections. Valid values:
+	// The persistent connection status. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: Persistent connections are enabled.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: Persistent connections are disabled.
 	//
-	// 	- **Unsupported**
+	// - **Unsupported**: The instance does not support persistent connections.
 	//
 	// example:
 	//
 	// Disabled
 	DBProxyPersistentConnectionStatus *string `json:"DBProxyPersistentConnectionStatus,omitempty" xml:"DBProxyPersistentConnectionStatus,omitempty"`
-	// The status of the database proxy.
+	// The status of the database proxy feature. Valid values:
 	//
-	// 	- Shutdown: disabled
+	// - Shutdown: disabled
 	//
-	// 	- Startup: enabled
+	// - Startup: enabled
 	//
 	// example:
 	//
 	// Startup
 	DBProxyServiceStatus *string                                          `json:"DBProxyServiceStatus,omitempty" xml:"DBProxyServiceStatus,omitempty"`
 	DbProxyEndpointItems *DescribeDBProxyResponseBodyDbProxyEndpointItems `json:"DbProxyEndpointItems,omitempty" xml:"DbProxyEndpointItems,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 909A69EE-71C8-4417-A0B9-FF085407E1E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

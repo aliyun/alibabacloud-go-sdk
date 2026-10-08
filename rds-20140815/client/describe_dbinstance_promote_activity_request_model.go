@@ -24,7 +24,7 @@ type iDescribeDBInstancePromoteActivityRequest interface {
 }
 
 type DescribeDBInstancePromoteActivityRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The ID of the current Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -38,14 +38,14 @@ type DescribeDBInstancePromoteActivityRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5******
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The resource group ID.
 	//
 	// example:
 	//
-	// 111
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

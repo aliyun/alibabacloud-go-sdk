@@ -14,11 +14,6 @@ type iStopRCInstancesResponseBody interface {
 }
 
 type StopRCInstancesResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 481BC3B1-7069-5D37-9B6C-21757F8F9FB1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

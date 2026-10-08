@@ -30,9 +30,9 @@ type iCreateRCSnapshotRequest interface {
 }
 
 type CreateRCSnapshotRequest struct {
-	// The snapshot description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
-	// By default, this parameter is left empty.
+	// Default value: null.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type CreateRCSnapshotRequest struct {
 	//
 	// rcd-wz9f3peueu5npsl****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
-	// none
+	// None
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	// This parameter is deprecated.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
-	// none
+	// None
 	InstantAccessRetentionDays *int32 `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
 	// The region ID.
 	//
@@ -62,24 +62,27 @@ type CreateRCSnapshotRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
-	// None
+	// rc-t8q22a87745hf8****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.
+	// Settings for the retention period of the snapshot. Unit: days. The snapshot is subject to automatic release after the retention period expires. Valid values: 1 to 65536.
 	//
-	// By default, this parameter is left empty, which specifies that the snapshot is not automatically released.
+	// Default value: null, which indicates that the snapshot is not subject to automatic release.
 	//
 	// example:
 	//
 	// 2
-	RetentionDays *int32                        `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	Tag           []*CreateRCSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// This parameter has been deprecated.
+	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	// The tag details.
+	Tag []*CreateRCSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
-	// cn-hangzhou-b
+	// None
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -186,13 +189,17 @@ func (s *CreateRCSnapshotRequest) Validate() error {
 }
 
 type CreateRCSnapshotRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
-	// None
+	// testRC
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
-	// None
+	// test01
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

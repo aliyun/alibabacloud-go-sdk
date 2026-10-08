@@ -22,13 +22,13 @@ type iDescribeInstanceKeywordsRequest interface {
 }
 
 type DescribeInstanceKeywordsRequest struct {
-	// The type of reserved keyword to query. Valid values:
+	// The type of reserved keywords, which indicates whether the reserved keywords are for account names or database names. Valid values:
 	//
-	// 	- **account**
+	// - **account**
 	//
-	// 	- **database**
+	// - **database**
 	//
-	// >  This parameter is required.
+	// > This parameter is required.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type ModifyTaskInfoResponseBody struct {
 	//
 	// mst.errorcode.success.errormessage
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the failed task. This parameter is returned when a task fails.
+	// The ID of the failed task. The first failed task ID is returned.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ModifyTaskInfoResponseBody struct {
 	//
 	// 18B3000C-2B06-5D4F-AA5B-456D5FBCA55B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of completed tasks.
+	// The number of successful tasks.
 	//
 	// example:
 	//

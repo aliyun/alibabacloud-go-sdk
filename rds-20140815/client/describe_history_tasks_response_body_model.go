@@ -22,9 +22,9 @@ type iDescribeHistoryTasksResponseBody interface {
 }
 
 type DescribeHistoryTasksResponseBody struct {
-	// The tasks.
+	// The task list.
 	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeHistoryTasksResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	// The request ID. If you encounter an issue, provide this request ID for troubleshooting.
 	//
 	// example:
 	//
 	// 5CD61041-35F7-10F7-BE94-33A48B22****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of tasks that meet these constraints without taking pagination into account.
+	// The total number of tasks that meet the filter conditions, regardless of pagination.
 	//
 	// example:
 	//
@@ -117,61 +117,81 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
-	// A set of allowed actions that can be taken on the task. The system matches the current step name and status of the task to the available actions specified by ActionInfo. If no matching action is found, the current status of the task does not support any action. Example:
+	// The allowed operation information. When used, the system matches the Action based on currentStepName and status in this information. If no Action is matched, the task does not support operations in its current state. Example:
 	//
-	//       "steps": [
+	// ```
 	//
-	//         {
+	//   "steps": [
 	//
-	//           "step_name": "exec_task", // The name of the step, which matches CurrentStepName.      "action_info": {    // The actions supported for this step.        "Waiting": [      // The status, which matches Status.          "modifySwitchTime" // The action. Multiple actions are supported.        ]
+	//     {
 	//
-	//           }
+	//       "step_name": "exec_task", // Step name, matched with currentStepName
 	//
-	//         },
+	//       "action_info": {    // Operations supported by the step
 	//
-	//         {
+	//         "Waiting": [      // Status, matched with status
 	//
-	//           "step_name": "init_task", // The name of the step.      "action_info": {    // The actions supported for this step.        "Running": [      // The status.          "cancel",       // The action.          "pause"
+	//           "modifySwitchTime" // Action. Multiple actions may be available.
 	//
-	//             ]
+	//         ]
 	//
-	//           }
+	//       }
 	//
-	//         }
+	//     },
 	//
-	//       ]
+	//     {
+	//
+	//       "step_name": "init_task", // Step name
+	//
+	//       "action_info": {    // Operations supported by the step
+	//
+	//         "Running": [      // Status
+	//
+	//           "cancel",       // Action
+	//
+	//           "pause"
+	//
+	//         ]
+	//
+	//       }
 	//
 	//     }
 	//
-	// The system may support the following actions:
+	//   ]
 	//
-	// 	- **retry**: retries the action.
+	// }
 	//
-	// 	- **cancel**: cancels the action.
+	// ```
 	//
-	// 	- **modifySwitchTime**: changes the switching time or restoration time.
+	// Supported operations:
+	//
+	// - **retry**: Retry.
+	//
+	// - **cancel**: Cancel.
+	//
+	// - **modifySwitchTime**: Modify the switchover time or recovery time.
 	//
 	// example:
 	//
 	// {\\"steps\\":[{\\"action_info\\":{\\"Waiting\\":[\\"modifySwitchTime\\"]},\\"step_name\\":\\"exec_task\\"}]}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	// The ID of the user who made the request. If CallerSource is set to User, CallerUid indicates the unique ID (UID) of the user.
+	// The request user ID. If callerSource is User, this value indicates the user UID.
 	//
 	// example:
 	//
 	// 141345906006****
 	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
-	// The source of the request. Valid values:
+	// The request source. Valid values:
 	//
-	// 	- **System**
+	// - **System**: System.
 	//
-	// 	- **User**
+	// - **User**: User.
 	//
 	// example:
 	//
 	// User
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The name of the current step. If this parameter is left empty, the task is not started.
+	// The name of the current step being executed. An empty value indicates that the task has not started.
 	//
 	// example:
 	//
@@ -183,7 +203,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// mysql
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The end time of the task.
+	// The task end time.
 	//
 	// example:
 	//
@@ -201,19 +221,19 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance category.
+	// The instance type.
 	//
 	// example:
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The service name.
+	// The product.
 	//
 	// example:
 	//
 	// rds
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// Indicates the task progress.
+	// The current progress.
 	//
 	// example:
 	//
@@ -231,13 +251,13 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The estimated amount of time remaining to complete the task. Unit: seconds.
+	// The estimated remaining execution time. Unit: seconds.
 	//
 	// example:
 	//
 	// 1000
 	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	// The start time of the task.
+	// The task start time.
 	//
 	// example:
 	//
@@ -245,19 +265,19 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- Scheduled
+	// - Scheduled: Waiting to be executed.
 	//
-	// 	- Running
+	// - Running: Running.
 	//
-	// 	- Succeed
+	// - Succeed: Succeeded.
 	//
-	// 	- Failed
+	// - Failed: Failed.
 	//
-	// 	- Cancelling
+	// - Cancelling: Being terminated.
 	//
-	// 	- Canceled
+	// - Canceled: Terminated.
 	//
-	// 	- Waiting
+	// - Waiting: Waiting for the scheduled time.
 	//
 	// example:
 	//
@@ -281,7 +301,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// autotest_dispatch_cases
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The ID of the user to which the resources belong.
+	// The user ID of the resource owner.
 	//
 	// example:
 	//

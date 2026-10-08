@@ -36,17 +36,17 @@ type iDescribeDBInstancesByExpireTimeRequest interface {
 }
 
 type DescribeDBInstancesByExpireTimeRequest struct {
-	// The number of remaining days for which the instances are available. Valid values: **0 to 180**.
+	// The remaining available days of the instance. Valid values: **0*	- to **180**.
 	//
 	// example:
 	//
 	// 180
 	ExpirePeriod *int32 `json:"ExpirePeriod,omitempty" xml:"ExpirePeriod,omitempty"`
-	// Specifies whether to query instances that have expired. Valid values:
+	// The expiration status of the instance. Valid values:
 	//
-	// 	- **True**: queries instances that have expired.
+	// - **True**: The instance has expired.
 	//
-	// 	- **False**: does not query instances that have expired.
+	// - **False**: The instance has not expired.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any **non-zero*	- positive integer.
+	// The page number. The value must be greater than **0*	- and must not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -62,7 +62,7 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1 to 100**.
+	// The number of entries per page. Valid values: **1*	- to **100**.
 	//
 	// Default value: **30**.
 	//
@@ -70,13 +70,13 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the resource group ID.
+	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag that is added to the instance. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. You can specify a maximum of five tags in the following format for each request: `{"key1":"value1","key2":"value2"...}`.
+	// The tags that are bound to the instance, including TagKey and TagValue. You can specify up to 5 tag pairs at a time. Format: `{"key1":"value1","key2":"value2"...}`.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeDBInstancesByExpireTimeRequest struct {
 	//
 	// example:
 	//
-	// None
+	// API
 	ProxyId *string `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
 }
 

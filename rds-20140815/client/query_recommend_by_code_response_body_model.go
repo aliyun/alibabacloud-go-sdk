@@ -38,15 +38,15 @@ type QueryRecommendByCodeResponseBody struct {
 	//
 	// 90496720-2319-42A8-87CD-FCE4DF95EBED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request is successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

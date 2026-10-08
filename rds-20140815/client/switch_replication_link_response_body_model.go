@@ -20,7 +20,7 @@ type iSwitchReplicationLinkResponseBody interface {
 }
 
 type SwitchReplicationLinkResponseBody struct {
-	// The ID of the DR instance.
+	// The instance ID of the disaster recovery instance.
 	//
 	// example:
 	//

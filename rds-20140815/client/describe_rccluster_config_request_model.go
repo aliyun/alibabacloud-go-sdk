@@ -24,17 +24,17 @@ type DescribeRCClusterConfigRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The validity period of the temporary kubeconfig file. Unit: minutes. Valid values: 15 to 4320.
+	// The validity period of the temporary KubeConfig. Unit: minutes. Valid values: 15 (15 minutes) to 4320 (3 days).
 	//
-	// >  If you do not specify this parameter, the system specifies a longer validity period. The validity period is returned in the `expiration` parameter.
+	// > If this parameter is not specified, the system automatically determines a longer validity period. The specific expiration time is indicated by the value of the `expiration` field in the response.
 	//
 	// example:
 	//
 	// 20
 	TemporaryDurationMinutes *int32 `json:"TemporaryDurationMinutes,omitempty" xml:"TemporaryDurationMinutes,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The ID of the virtual private cloud (VPC).
 	//
-	// >  This is a reserved parameter.
+	// > Reserved parameter.
 	//
 	// example:
 	//

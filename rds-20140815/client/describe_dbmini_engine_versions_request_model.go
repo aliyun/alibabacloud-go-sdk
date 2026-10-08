@@ -30,35 +30,39 @@ type iDescribeDBMiniEngineVersionsRequest interface {
 }
 
 type DescribeDBMiniEngineVersionsRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the ID.
+	//
+	// > For ApsaraDB RDS for PostgreSQL instances, if you specify an instance ID, only minor versions later than the current minor version of the instance are returned.
 	//
 	// example:
 	//
-	// rm-uf6wjk5*******
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the ID.
 	//
 	// example:
 	//
-	// dhg-4n*****
+	// dhg-4n****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The database engine of the instance. Valid values: **MySQL*	- and **PostgreSQL**.
+	// The database engine. Set the value to **MySQL*	- or **PostgreSQL**.
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Valid values:
+	// The database engine version. Valid values:
 	//
-	// 	- Valid values when you set the Engine parameter to MySQL: **8.0**, **5.7**, **5.6**, and **5.5**
+	// 	- MySQL: **8.0**, **5.7**, **5.6**, **5.5**
 	//
-	// 	- Valid values when you set the Engine parameter to PostgreSQL: **15.0**, **14.0**, **13.0**, **12.0**, **11.0**, and **10.0**
+	// 	- PostgreSQL: **17.0**, **16.0**, **15.0**, **14.0**, **13.0**, **12.0**, **11.0**, **10.0**
 	//
 	// example:
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The minor engine version of the instance. You can specify this parameter to query the minor engine version of the instance.
+	// The minor engine version number. Specify this parameter to query the details of the specified minor version.
+	//
+	// > This parameter is applicable only to ApsaraDB RDS for MySQL.
 	//
 	// example:
 	//
@@ -66,17 +70,19 @@ type DescribeDBMiniEngineVersionsRequest struct {
 	MinorVersionTag *string `json:"MinorVersionTag,omitempty" xml:"MinorVersionTag,omitempty"`
 	// The instance edition. Valid values:
 	//
-	// 	- **Basic**: RDS Basic Edition
+	// 	- **Basic**: Basic Edition.
 	//
-	// 	- **HighAvailability**: RDS High-availability Edition
+	// 	- **HighAvailability**: high-availability series.
 	//
-	// 	- **Finance**: RDS Enterprise Edition
+	// 	- **cluster**: Cluster Edition.
+	//
+	// 	- **Finance**: RDS Enterprise Edition.
 	//
 	// example:
 	//
 	// HighAvailability
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -85,17 +91,19 @@ type DescribeDBMiniEngineVersionsRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The storage type of the instance. Valid values:
+	// The instance storage type. Valid values:
 	//
-	// 	- **local_ssd**: local SSD
+	// 	- **local_ssd**: Premium Local SSDs.
 	//
-	// 	- **cloud_ssd**: standard SSD
+	// 	- **general_essd**: premium performance disk.
 	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1)
+	// 	- **cloud_ssd**: standard SSDs.
 	//
-	// 	- **cloud_essd2**: ESSD of PL2
+	// 	- **cloud_essd**: PL1 ESSDs.
 	//
-	// 	- **cloud_essd3**: ESSD of PL3
+	// 	- **cloud_essd2**: PL2 ESSDs.
+	//
+	// 	- **cloud_essd3**: PL3 ESSDs.
 	//
 	// example:
 	//

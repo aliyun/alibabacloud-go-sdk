@@ -20,31 +20,31 @@ type iCopyDatabaseResponseBody interface {
 }
 
 type CopyDatabaseResponseBody struct {
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// test02
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The status of the database. Valid values:
+	// The database status. Valid values:
 	//
-	// 	- **Creating**
+	// 	- **Creating**: The database is being created.
 	//
-	// 	- **Running**
+	// 	- **Running**: The database is running.
 	//
-	// 	- **Deleting**
+	// 	- **Deleting**: The database is being deleted.
 	//
 	// example:
 	//
 	// Creating
 	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

@@ -20,29 +20,31 @@ type iCreateReplicationLinkResponseBody interface {
 }
 
 type CreateReplicationLinkResponseBody struct {
-	// The ID of the DR instance.
+	// The instance ID of the disaster recovery instance.
 	//
 	// example:
 	//
-	// pgm-****.pg.rds.aliyuncs.com
+	// PostgreSQL：pgm-****.pg.rds.aliyuncs.com
+	//
+	// SQL Server：92****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
+	// 442FC501-C4DD-1349-B70A-DE13D189072E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// 564532302
+	// 159****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task name.
 	//
 	// example:
 	//
-	// test01
+	// zbtest
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

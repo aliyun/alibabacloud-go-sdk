@@ -24,13 +24,13 @@ type iDescribeADInfoResponseBody interface {
 }
 
 type DescribeADInfoResponseBody struct {
-	// The DNS information about the AD domain.
+	// The DNS information of the AD domain.
 	//
 	// example:
 	//
 	// 100.100.XX.XX
 	ADDNS *string `json:"ADDNS,omitempty" xml:"ADDNS,omitempty"`
-	// The service IP address of the AD domain.
+	// The IP address of the AD domain server.
 	//
 	// example:
 	//
@@ -38,21 +38,21 @@ type DescribeADInfoResponseBody struct {
 	ADServerIpAddress *string `json:"ADServerIpAddress,omitempty" xml:"ADServerIpAddress,omitempty"`
 	// The status of the AD domain. Valid values:
 	//
-	// 	- **-1**: The instance is being added to the AD domain.
+	// 	- **-1**: The instance is being joined to the AD domain.
 	//
-	// 	- **0**: The instance fails to be added to the AD domain.
+	// 	- **0**: Failed to join the AD domain.
 	//
-	// 	- **1**: The instance is added to the AD domain.
+	// 	- **1**: Joined the AD domain.
 	//
 	// example:
 	//
 	// 1
 	ADStatus *string `json:"ADStatus,omitempty" xml:"ADStatus,omitempty"`
-	// The cause of the error.
+	// The reason for the exception.
 	//
 	// example:
 	//
-	// XXXX
+	// ****
 	AbnormalReason *string `json:"AbnormalReason,omitempty" xml:"AbnormalReason,omitempty"`
 	// The request ID.
 	//

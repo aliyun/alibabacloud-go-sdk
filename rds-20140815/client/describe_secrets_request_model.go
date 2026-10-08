@@ -36,33 +36,33 @@ type iDescribeSecretsRequest interface {
 }
 
 type DescribeSecretsRequest struct {
-	// The language of the text within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// - **zh-CN**: Chinese
 	//
-	// 	- **en-US**: English
+	// - **en-US**: English
 	//
-	// > The default value is **en-US**.
+	// > Default value: **en-US**.
 	//
 	// example:
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz*****
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// example:
 	//
-	// rm-xjkljjxxxxx
+	// rm-xjkljj****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The database engine of the database.
+	// The database engine type.
 	//
-	// > Only MySQL is supported.
+	// > This parameter currently supports only the value MySQL.
 	//
 	// This parameter is required.
 	//
@@ -72,9 +72,9 @@ type DescribeSecretsRequest struct {
 	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any non-zero positive integer.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
-	// > The default value is 1.
+	// > Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type DescribeSecretsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID.
+	// The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type DescribeSecretsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The resource group ID of the instance.
 	//
 	// example:
 	//

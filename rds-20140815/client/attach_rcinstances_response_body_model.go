@@ -24,7 +24,7 @@ type AttachRCInstancesResponseBody struct {
 	//
 	// 847BA085-B377-4BFA-8267-F82345ECE1D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response parameters.
+	// The response results.
 	Responses []*AttachRCInstancesResponseBodyResponses `json:"Responses,omitempty" xml:"Responses,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -83,21 +83,21 @@ func (s *AttachRCInstancesResponseBody) Validate() error {
 }
 
 type AttachRCInstancesResponseBodyResponses struct {
-	// The HTTP status code returned.
+	// The status code returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The node ID.
+	// The RDS Custom instance ID.
 	//
 	// example:
 	//
 	// rc-e2g521l55k038cr8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message returned.
+	// The message returned for the request.
 	//
-	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, exception information such as an error code is returned.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iSwitchReplicationLinkRequest interface {
 }
 
 type SwitchReplicationLinkRequest struct {
-	// The ID of the source or primary instance.
+	// The ID of the source instance, which is the primary instance ID.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,7 @@ type SwitchReplicationLinkRequest struct {
 	// rm-2zecuz9tolf******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the destination DR instance.
+	// The name of the target disaster recovery instance to which you want to switch.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,7 @@ type SwitchReplicationLinkRequest struct {
 	//
 	// rm-t4neh0q12v1******
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// The ID of the region in which the destination DR instance resides.
+	// The region of the target disaster recovery instance to which you want to switch.
 	//
 	// This parameter is required.
 	//

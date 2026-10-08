@@ -24,7 +24,7 @@ type iReceiveDBInstanceRequest interface {
 }
 
 type ReceiveDBInstanceRequest struct {
-	// The ID of the primary instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the primary instance.
+	// The ID of the primary instance. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ReceiveDBInstanceRequest struct {
 	//
 	// rm-uf6wjk5*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the disaster recovery instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the disaster recovery instance.
+	// The ID of the disaster recovery instance. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//

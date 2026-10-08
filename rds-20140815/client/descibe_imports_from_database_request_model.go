@@ -42,25 +42,25 @@ type DescibeImportsFromDatabaseRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
+	// ETnLKlblzczshOTUbOCz*******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the IDs of instances.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-bpxxxxx
+	// rm-bp*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2011-06-11T16:00Z
+	// 2023-06-11T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The database engine of the instance. Set the value to **MySQL**
+	// The database engine. Set the value to **MySQL**.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type DescibeImportsFromDatabaseRequest struct {
 	ImportId     *int32  `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any non-zero positive integer.
+	// The page number. Valid values: any non-zero positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -84,7 +84,7 @@ type DescibeImportsFromDatabaseRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// 	- **30**
 	//
@@ -98,7 +98,7 @@ type DescibeImportsFromDatabaseRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
+	// The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type DescibeImportsFromDatabaseRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2011-06-11T15:00Z
+	// 2023-06-11T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

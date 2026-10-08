@@ -28,7 +28,7 @@ type DescribeRCSnapshotsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeRCSnapshotsResponseBody struct {
 	//
 	// 9DAC759A-F4F0-5D02-8335-BC458C0CCB94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of snapshots.
+	// The snapshot information.
 	Snapshots []*DescribeRCSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ func (s *DescribeRCSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeRCSnapshotsResponseBodySnapshots struct {
-	// Indicates whether the snapshot can be shared and used to create or roll back a cloud disk. Valid values:
+	// Indicates whether the snapshot can be used to create cloud disks, roll back cloud disks, or share snapshots. Valid values:
 	//
-	// 	- true
+	// - true: Available.
 	//
-	// 	- false
+	// - false: Not available.
 	//
 	// example:
 	//
@@ -129,11 +129,11 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
 	// The snapshot type. Valid values:
 	//
-	// 	- Standard: standard snapshot
+	// - Standard: standard snapshot.
 	//
-	// 	- Flash: local snapshot This value will be deprecated. The local snapshot feature is replaced with the instant access feature.
+	// - Flash: local snapshot. This value will be deprecated. Local snapshots have been replaced by the instant access feature.
 	//
-	// 	- archive: archived snapshot
+	// - archive: archived snapshot.
 	//
 	// example:
 	//
@@ -145,30 +145,30 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	//
 	// 2024-10-18T09:37:14Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The snapshot description.
+	// The description of the snapshot.
 	//
 	// example:
 	//
 	// zd_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the snapshot was encrypted. Valid values:
+	// Indicates whether the snapshot is encrypted. Valid values:
 	//
-	// 	- true
+	// - true: Encrypted.
 	//
-	// 	- false
+	// - false: Not encrypted.
 	//
 	// example:
 	//
 	// true
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// none
 	InstantAccess    *bool   `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// The progress of the snapshot creation task in percentage.
+	// The progress of snapshot creation, in percentage.
 	//
 	// example:
 	//
@@ -179,7 +179,12 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rc-t8q22a87745hf8****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The snapshot ID.
 	//
@@ -191,45 +196,45 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	//
 	// example:
 	//
-	// s-2ze8klip00xcogcwer76
+	// csw-37-SystemDisk
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// The snapshot type. Valid values:
+	// The type of automatic creation. Valid values:
 	//
-	// 	- auto or timer: automatically created snapshot
+	// - auto or timer: automatic snapshot.
 	//
-	// 	- user: manually created snapshot
+	// - user: manual snapshot.
 	//
-	// 	- all: all snapshot types
+	// - all: all automatic creation types.
 	//
 	// example:
 	//
 	// auto
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The ID of the original disk. This parameter is retained even after the original disk for which the snapshot was created is released.
+	// The ID of the source cloud disk. This field is retained even if the source cloud disk of the snapshot has been released.
 	//
 	// example:
 	//
 	// rcd-bp67acfmxazb4ph****
 	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
-	// The storage capacity of the original disk. Unit: GiB.
+	// The capacity of the source cloud disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 60
 	SourceDiskSize *int64 `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty"`
-	// The type of the original disk. Valid values:
+	// The type of the source cloud disk. Valid values:
 	//
-	// 	- SYSTEM: system disk
+	// - SYSTEM: system cloud disk.
 	//
-	// 	- DATA: data disk
+	// - DATA: data cloud disk.
 	//
 	// example:
 	//
 	// data
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The type of the source disk.
+	// The type of the source cloud disk.
 	//
-	// >  This parameter will be removed in the future. To ensure future compatibility, we recommend that you use other parameters.
+	// >This parameter will be deprecated. To ensure compatibility, use other parameters instead.
 	//
 	// example:
 	//
@@ -237,26 +242,27 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	SourceStorageType *string `json:"SourceStorageType,omitempty" xml:"SourceStorageType,omitempty"`
 	// The snapshot status. Valid values:
 	//
-	// 	- progressing: The snapshot is being created.
+	// - progressing: The snapshot is being created.
 	//
-	// 	- accomplished: The snapshot is created.
+	// - accomplished: The snapshot is created.
 	//
-	// 	- failed: The snapshot fails to be created.
+	// - failed: The snapshot failed to be created.
 	//
 	// example:
 	//
 	// progressing
-	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*DescribeRCSnapshotsResponseBodySnapshotsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Indicates whether the snapshot is used to create custom images or disks. Valid values:
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag details.
+	Tag []*DescribeRCSnapshotsResponseBodySnapshotsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Indicates whether the snapshot has been used to create images or cloud disks. Valid values:
 	//
-	// 	- image: The snapshot is used to create custom images.
+	// - image: The snapshot has been used to create custom images.
 	//
-	// 	- disk: The snapshot is used to create disks.
+	// - disk: The snapshot has been used to create cloud disks.
 	//
-	// 	- image_disk: The snapshot is used to create custom images and data disks.
+	// - image_disk: The snapshot has been used to create both data cloud disks and custom images.
 	//
-	// 	- none: The snapshot is not used to create custom images or disks.
+	// - none: The snapshot has not been used.
 	//
 	// example:
 	//
@@ -466,7 +472,17 @@ func (s *DescribeRCSnapshotsResponseBodySnapshots) Validate() error {
 }
 
 type DescribeRCSnapshotsResponseBodySnapshotsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// testRC
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test01
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

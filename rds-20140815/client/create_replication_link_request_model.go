@@ -36,19 +36,19 @@ type iCreateReplicationLinkRequest interface {
 }
 
 type CreateReplicationLinkRequest struct {
-	// The ID of the DR instance.
+	// The instance ID of the disaster recovery instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pgm-bp1trqb4p1xd****
+	// rm-2zeytekus0r******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to perform a dry run before the system creates the DR instance. Valid values:
+	// Specifies whether to perform a dry run for creating the synchronization link of the disaster recovery instance. Valid values:
 	//
-	// 	- **true**: performs a dry run but does not create the instance. The system checks the request parameters, request syntax, limits, and available resources.
+	// - **true**: Executes a dry run without creating the instance. The system checks items such as request parameters, request format, business limits, and inventory.
 	//
-	// 	- **false*	- (default): performs a dry run and the actual request. If the request passes the dry run, the instance is directly created.
+	// - **false*	- (default): Sends a normal request and creates the instance after the check is passed.
 	//
 	// This parameter is required.
 	//
@@ -56,41 +56,43 @@ type CreateReplicationLinkRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The account of the database that is used for data synchronization.
+	// The database account used for data synchronization.
 	//
 	// example:
 	//
 	// testdbuser
 	ReplicatorAccount *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
-	// The password of the account.
+	// The password of the synchronization account.
 	//
 	// example:
 	//
 	// testpassword
 	ReplicatorPassword *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
-	// The endpoint of the source ApsaraDB RDS for PostgreSQL instance or the IP address of the source ApsaraDB RDS for SQL Server instance.
+	// The endpoint of the PostgreSQL source instance or the IP address of the SQL Server source instance.
 	//
 	// example:
 	//
-	// pgm-****.pg.rds.aliyuncs.com
+	// PostgreSQL：pgm-****.pg.rds.aliyuncs.com
+	//
+	// SQL Server：10.XX.XXX.XXX
 	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
-	// The type of the source instance. Valid values:
+	// The category of the source instance. Valid values:
 	//
-	// 	- **other**: other instances. **SQL Server instances are not supported.**
+	// - **other**: Other. (**Not supported for SQL Server.**)
 	//
-	// 	- **aliyunRDS**: an ApsaraDB RDS instance.
+	// - **aliyunRDS**: ApsaraDB RDS instance.
 	//
 	// example:
 	//
 	// aliyunRDS
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The name of the source instance. If you set **SourceCategory*	- to **aliyunRDS**, this parameter is required.
+	// The name of the source instance. This parameter is required when **SourceCategory*	- is set to **aliyunRDS**.
 	//
 	// example:
 	//
-	// testInstance
+	// rm-2zeaaz62s18******
 	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
-	// The region ID of the source instance. If you set **SourceCategory*	- to **aliyunRDS**, this parameter is required.
+	// The region ID of the source instance. This parameter is required when **SourceCategory*	- is set to **aliyunRDS**.
 	//
 	// example:
 	//
@@ -102,23 +104,23 @@ type CreateReplicationLinkRequest struct {
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The IP address of the DR instance of the ApsaraDB RDS for SQL Server instance.
+	// The IP address of the SQL Server disaster recovery instance.
 	//
 	// example:
 	//
 	// 192.XXX.XX.XXX
 	TargetAddress *string `json:"TargetAddress,omitempty" xml:"TargetAddress,omitempty"`
-	// The task ID of the successful dry run.
+	// The ID of a successful dry run task.
 	//
 	// example:
 	//
-	// 439946016
+	// 43994****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name of the dry run. You can specify a custom task name. If you do not specify this parameter, ApsaraDB RDS automatically generates a task name.
+	// The name of the dry run task. You can specify a custom name. If you do not specify this parameter, the system automatically generates a name.
 	//
 	// example:
 	//
-	// test01
+	// zbtest
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

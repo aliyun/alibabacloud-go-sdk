@@ -16,13 +16,13 @@ type iModifyActiveOperationTasksResponseBody interface {
 }
 
 type ModifyActiveOperationTasksResponseBody struct {
-	// The ID of the O\\&M task. IDs are separated by commas (,).
+	// The O&M task IDs. Multiple IDs are separated with commas (,).
 	//
 	// example:
 	//
 	// 11111,22222
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The ID of the region.
+	// The request ID.
 	//
 	// example:
 	//

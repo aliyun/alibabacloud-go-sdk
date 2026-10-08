@@ -22,7 +22,7 @@ type iModifyActionEventPolicyRequest interface {
 }
 
 type ModifyActionEventPolicyRequest struct {
-	// Specifies whether to enable the event history feature. Valid values:
+	// Specifies whether to enable the historical events feature. Valid values:
 	//
 	// 	- **True**
 	//
@@ -35,7 +35,7 @@ type ModifyActionEventPolicyRequest struct {
 	// True
 	EnableEventLog *string `json:"EnableEventLog,omitempty" xml:"EnableEventLog,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the available regions.
 	//
 	// This parameter is required.
 	//

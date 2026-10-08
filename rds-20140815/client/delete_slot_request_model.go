@@ -38,7 +38,7 @@ type DeleteSlotRequest struct {
 	//
 	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// Target instance ID. You can call the DescribeDBInstances operation to query target instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type DeleteSlotRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group. You can leave this parameter empty.
+	// The resource group ID. This parameter can be left empty.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the replication slot. You can call the DescribeSlots operation to query the name of the replication slot.
+	// The replication slot name. You can call the DescribeSlots operation to query the replication slot name.
 	//
 	// This parameter is required.
 	//
@@ -64,11 +64,11 @@ type DeleteSlotRequest struct {
 	//
 	// slot_test01
 	SlotName *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
-	// The status of the replication slot. You can call the DescribeSlots operation to query the status of the replication slot. Valid values:
+	// The replication slot status. You can call the DescribeSlots operation to query the replication slot status. Valid values:
 	//
-	// 	- **ACTIVE**
+	// - **ACTIVE**: active.
 	//
-	// 	- **INACTIVE**
+	// - **INACTIVE**: inactive.
 	//
 	// This parameter is required.
 	//

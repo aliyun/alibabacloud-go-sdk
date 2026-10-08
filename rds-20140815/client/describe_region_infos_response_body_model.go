@@ -21,7 +21,7 @@ type DescribeRegionInfosResponseBody struct {
 	//
 	// example:
 	//
-	// 5414A4E5-4C36-4461-95FC-************
+	// 5414A4E5-4C36-4461-95FC-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

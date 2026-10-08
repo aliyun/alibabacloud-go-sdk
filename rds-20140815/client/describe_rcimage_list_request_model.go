@@ -28,18 +28,33 @@ type iDescribeRCImageListRequest interface {
 }
 
 type DescribeRCImageListRequest struct {
-	// The image architecture. Valid values:
+	// The system architecture of the image. Valid values:
 	//
-	// 	- x86_64
+	// - x86_64.
 	//
-	// 	- arm64
+	// - arm64.
 	//
 	// example:
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image ID.
+	//
+	// example:
+	//
+	// m-2oqiu973jwcxe****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
+	// example:
+	//
+	// test_image_name
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// Queries available images for the specified instance type.
+	//
+	// example:
+	//
+	// mysql.x2.xlarge.6cm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The page number.
 	//
@@ -61,7 +76,7 @@ type DescribeRCImageListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The image type. Set the value to **self**.
+	// The image type. Currently, only **self*	- is supported.
 	//
 	// example:
 	//

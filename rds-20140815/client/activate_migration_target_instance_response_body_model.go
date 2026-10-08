@@ -22,31 +22,31 @@ type iActivateMigrationTargetInstanceResponseBody interface {
 }
 
 type ActivateMigrationTargetInstanceResponseBody struct {
-	// The name of the destination instance.
+	// The name of the target instance.
 	//
 	// example:
 	//
 	// pgm-bp102g323jd4****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 76364A52-E0AB-5CC8-9818-CF1DC482C092
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The private IP address that is used to connect to the self-managed PostgreSQL instance.
+	// The internal IP address of the self-managed PostgreSQL database.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	SourceIpAddress *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
-	// The port number that is used to connect to the self-managed PostgreSQL instance.
+	// The port of the self-managed PostgreSQL database.
 	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The ID of the identification task.
+	// The task ID.
 	//
 	// example:
 	//

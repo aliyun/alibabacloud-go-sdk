@@ -30,11 +30,11 @@ type ModifyDBInstanceMetricsResponseBody struct {
 	//
 	// B55934BB-FFAA-5276-80A8-E0FDB12810B3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The application scope of this modification. Valid values:
+	// The scope of the modification. Valid values:
 	//
-	// 	- **instance**: This modification is applied only to the current instance.
+	// 	- **instance**: instance level.
 	//
-	// 	- **region**: This modification is applied to all ApsaraDB RDS for PostgreSQL instances that are equipped with the same type of storage media as the current instance in the region to which the current instance belongs.
+	// 	- **region**: region level.
 	//
 	// example:
 	//

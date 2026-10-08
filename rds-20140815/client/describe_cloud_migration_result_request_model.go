@@ -28,7 +28,7 @@ type iDescribeCloudMigrationResultRequest interface {
 }
 
 type DescribeCloudMigrationResultRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The target instance ID. You can invoke the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,14 +36,6 @@ type DescribeCloudMigrationResultRequest struct {
 	//
 	// pgm-bp102g323jd4****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The number of entries per page.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The page number.
 	//
 	// This parameter is required.
@@ -51,31 +43,39 @@ type DescribeCloudMigrationResultRequest struct {
 	// example:
 	//
 	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize        *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The private IP address that is used to connect to the self-managed PostgreSQL instance.
+	// The internal IP address of the self-managed PostgreSQL database.
 	//
-	// 	- If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
+	// - For a one-click cloud migration of a self-managed PostgreSQL database on an ECS instance, set this parameter to the private IP address of the ECS instance. For more information, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
 	//
-	// 	- If the self-managed PostgreSQL instance resides in a data center, enter the private IP address of the data center.
+	// - For a one-click cloud migration of a self-managed PostgreSQL database in an IDC, set this parameter to the internal IP address of the IDC.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	SourceIpAddress *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
-	// The port number that is used to connect to the self-managed PostgreSQL instance. You can run the netstat -a | grep PGSQL command to obtain the port number.
+	// The port of the self-managed PostgreSQL database. You can run the netstat -a | grep PGSQL command to query the port.
 	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The task ID. You can obtain the task ID from the response that is returned when you call the CreateCloudMigrationTask operation to create the task.
+	// The task ID. You can obtain the task ID from the response of the CreateCloudMigrationTask operation when you create an RDS PostgreSQL cloud migration task.
 	//
 	// example:
 	//
 	// 440437220
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name. You can obtain the task name from the response that is returned when you call the CreateCloudMigrationTask operation to create the task.
+	// The task name. You can obtain the task name from the response of the CreateCloudMigrationTask operation when you create an RDS PostgreSQL cloud migration task.
 	//
 	// example:
 	//

@@ -18,21 +18,21 @@ type iDescribeDBInstanceAttributeRequest interface {
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
-	// 	Notice: Do not query the details of multiple instances at a time by using multiple instance IDs. Otherwise, the query times out and fails.
+	// 	Warning: Do not specify multiple instance IDs for batch queries. Otherwise, the query times out and fails.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether the instance expires. Valid values:
+	// The expiration status of the instance. Valid values:
 	//
-	// 	- **True**
+	// 	- **True**: The instance has expired.
 	//
-	// 	- **False**
+	// 	- **False**: The instance has not expired.
 	//
 	// example:
 	//

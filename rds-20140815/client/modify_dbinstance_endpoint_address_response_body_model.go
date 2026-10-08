@@ -16,9 +16,9 @@ type iModifyDBInstanceEndpointAddressResponseBody interface {
 }
 
 type ModifyDBInstanceEndpointAddressResponseBody struct {
-	// The data returned.
+	// The returned fields.
 	Data *ModifyDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ModifyDBInstanceEndpointAddressResponseBodyData struct {
 	//
 	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

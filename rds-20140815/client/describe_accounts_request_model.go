@@ -28,25 +28,25 @@ type DescribeAccountsRequest struct {
 	//
 	// example:
 	//
-	// test1
+	// zhttest
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
-	// >  This parameter is not supported for RDS instances that run SQL Server 2017 on RDS Cluster Edition.
+	// >SQL Server 2017 Cluster Edition instances are not supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-bp1v6z81ho9******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The page number. Default value: **1**. Pages start from page 1.
+	// The page number. Default value: **1**. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **30 to 200**. Default value: **30**.
+	// The number of entries per page. Valid values: **30*	- to **200**. Default value: **30**.
 	//
 	// example:
 	//

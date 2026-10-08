@@ -18,7 +18,7 @@ type iCheckServiceLinkedRoleResponseBody interface {
 }
 
 type CheckServiceLinkedRoleResponseBody struct {
-	// Indicates whether an SLR is created.
+	// Indicates whether the service-linked role (SLR) has been created.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CheckServiceLinkedRoleResponseBody struct {
 	//
 	// AB44DC0A-7E77-442A-97A9-C6418694CB22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the service-linked role is required. Default value: true.
+	// Indicates whether the service-linked role is required in the current scenario. Default value: true.
 	//
 	// example:
 	//

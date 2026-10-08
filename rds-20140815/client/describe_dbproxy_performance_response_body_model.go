@@ -24,13 +24,13 @@ type iDescribeDBProxyPerformanceResponseBody interface {
 }
 
 type DescribeDBProxyPerformanceResponseBody struct {
-	// The instance ID.
+	// The ID of the monitored instance.
 	//
 	// example:
 	//
-	// lsmexxxxxxx
+	// lsme****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// An internal parameter. You do not need to specify this parameter.
+	// An internal parameter. You can ignore this parameter.
 	//
 	// example:
 	//

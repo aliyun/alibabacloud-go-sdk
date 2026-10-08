@@ -28,23 +28,25 @@ type iDescribeSQLLogFilesRequest interface {
 }
 
 type DescribeSQLLogFilesRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the audit log file.
+	// The name of the audit file.
 	//
 	// example:
 	//
-	// custinsxxxxx.csv
+	// custins****.csv
 	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: **1 to 100000**. Default value: **1**.
+	// The page number. Valid values: **1 to 100000**.
+	//
+	// Default value: **1**.
 	//
 	// example:
 	//

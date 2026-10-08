@@ -14,7 +14,7 @@ type iSwitchDBInstanceVpcResponseBody interface {
 }
 
 type SwitchDBInstanceVpcResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

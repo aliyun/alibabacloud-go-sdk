@@ -24,21 +24,21 @@ type iReleaseInstancePublicConnectionRequest interface {
 }
 
 type ReleaseInstancePublicConnectionRequest struct {
-	// The public endpoint. You can call the DescribeDBInstanceNetInfo operation to query the public endpoint.
+	// The public endpoint. You can call DescribeDBInstanceNetInfo to query the public endpoint.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxx.mysql.rds.aliyuncs.com
+	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

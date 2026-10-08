@@ -22,7 +22,7 @@ type CreateGadInstanceMemberResponseBody struct {
 	//
 	// 16C62438-491B-5C02-9B49-BA924A1372A2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information returned.
+	// The array of returned information.
 	Result *CreateGadInstanceMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *CreateGadInstanceMemberResponseBody) Validate() error {
 }
 
 type CreateGadInstanceMemberResponseBodyResult struct {
-	// The number of unit nodes that are created by calling this operation.
+	// The number of nodes created in this call.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type CreateGadInstanceMemberResponseBodyResult struct {
 	//
 	// example:
 	//
-	// gad-rm-bp1npi2j8********
+	// gad-rm-bp1npi2j8****
 	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
 }
 

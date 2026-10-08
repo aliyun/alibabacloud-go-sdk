@@ -80,7 +80,7 @@ type iCreateRCNodePoolShrinkRequest interface {
 }
 
 type CreateRCNodePoolShrinkRequest struct {
-	// The number of RDS Custom instances that you want to create. The parameter is available if you want to create multiple RDS Custom instances at a time.
+	// The number of RDS Custom instances to create. This parameter is applicable only to batch creation of RDS Custom instances.
 	//
 	// Valid values: **1*	- to **5**. Default value: **1**.
 	//
@@ -88,29 +88,32 @@ type CreateRCNodePoolShrinkRequest struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to enable automatic payment. Valid values:
+	// Specifies whether to enable automatic payment.
 	//
-	// 	- **true**: enables the feature. Make sure that your account balance is sufficient when you enable automatic payment.
+	// Valid values:
 	//
-	// 	- **false**: does not automatically complete the payment. An unpaid order is generated.
+	// - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
 	//
-	// >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+	// - **false**: Only an order is generated. No payment is made.
+	//
+	//
+	// > The default value is true. If your payment method has an insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ApsaraDB RDS console to complete the payment.
+	//
+	// >
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for the instance. If you specify the subscription billing method for the instance, you must specify this parameter. Valid values:
+	// Specifies whether to enable auto-renewal. This parameter is valid only when you create subscription instances. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// >
+	// > 	- If you purchase on a monthly basis, the auto-renewal epoch is 1 month.
 	//
-	// 	- Monthly subscription: The auto-renewal period is one month.
-	//
-	// 	- Annually: The auto-renewal period is one year.
+	// > 	- If you purchase on a yearly basis, the auto-renewal epoch is 1 year.
 	//
 	// example:
 	//
@@ -122,7 +125,7 @@ type CreateRCNodePoolShrinkRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the ACK cluster to which the RDS Custom instance belongs.
+	// The ID of the RDS Custom container cluster.
 	//
 	// This parameter is required.
 	//
@@ -130,53 +133,53 @@ type CreateRCNodePoolShrinkRequest struct {
 	//
 	// c463aaa89e2b84cacacfbf23c4867****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to add the instance to the ACK cluster. If this parameter is set to **1**, the created instances can be added to the ACK cluster. This allows you to efficiently manage container applications. Valid values:
+	// Specifies whether to allow the instance to join an ACK cluster. If this parameter settings is set to **1**, the created instance can be added to an ACK cluster for efficient container application management.
 	//
-	// 	- **1**: adds the instance to the ACK cluster.
+	// - **1**: Yes.
 	//
-	// 	- **0*	- (default): does not add the instance to the ACK cluster.
+	// - **0*	- (default): No.
 	//
 	// example:
 	//
 	// 1
 	CreateMode *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
-	// The data disks.
+	// The list of data cloud disks.
 	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
-	// The ID of the deployment set.
+	// The deployment set ID.
 	//
 	// example:
 	//
 	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The instance description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The instance description. The description must be 2 to 256 characters in length and can contain letters and Chinese characters. The description cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run. Default value: false. Valid values:
+	// Specifies whether to perform a dry run for this request. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
+	// 	- **true**: performs a dry run without creating the instance. The system checks the request parameters, request format, service limits, and available stock.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is directly created.
+	// 	- **false*	- (default): sends the request. If the request passes the check, the instance is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The instance hostname.
+	// The hostname of the instance.
 	//
 	// example:
 	//
 	// testHost1
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the image used by the instance.
+	// The image ID used by the instance.
 	//
 	// example:
 	//
 	// image-dsvjzw2ii8n4fvr6de
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
 	// 	- **Prepaid**: subscription.
 	//
@@ -192,7 +195,7 @@ type CreateRCNodePoolShrinkRequest struct {
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types for RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
+	// The instance type. For the instance types supported by RDS Custom instances, see [RDS Custom instance types](https://help.aliyun.com/document_detail/2844823.html).
 	//
 	// This parameter is required.
 	//
@@ -200,25 +203,25 @@ type CreateRCNodePoolShrinkRequest struct {
 	//
 	// mysql.i8.large.2cm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The name of the AccessKey pair. You can specify only one name.
+	// The name of the key pair. Only a single name is supported.
 	//
 	// example:
 	//
@@ -230,23 +233,23 @@ type CreateRCNodePoolShrinkRequest struct {
 	//
 	// testNodePool
 	NodePoolName *string `json:"NodePoolName,omitempty" xml:"NodePoolName,omitempty"`
-	// The password for the root account of the instance.
+	// The password of the root account of the instance.
 	//
 	// example:
 	//
 	// testPassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The subscription duration of the instance. Default value: **1**.
+	// The subscription duration of the resource. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// The unit of the subscription duration for the subscription billable methods. Valid values:
 	//
-	// 	- **Year**
+	// - **Year**
 	//
-	// 	- **Month*	- (default)
+	// - **Month*	- (default)
 	//
 	// example:
 	//
@@ -260,41 +263,41 @@ type CreateRCNodePoolShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The ID of the security group. You can enter an existing security group ID. If no security groups exist, a security group is automatically created.
+	// The security group ID. You can specify an existing security group ID. If the security group does not exist, automatic creation of a security group is performed.
 	//
 	// example:
 	//
 	// sg-m5e9abdu1rtxa12b****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// None
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The supported scenario. If you set the **createMode*	- parameter to **1**, you must also specify the SupportCase parameter. Valid value: **edge**.
+	// The supported scenario. This parameter is required when **createMode*	- is set to **1**. Currently, only **edge*	- is supported.
 	//
 	// example:
 	//
 	// edge
 	SupportCase *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
-	// The specification of the system disk.
+	// The system cloud disk specifications.
 	SystemDiskShrink *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*CreateRCNodePoolShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
@@ -302,7 +305,7 @@ type CreateRCNodePoolShrinkRequest struct {
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The vSwitch ID.
 	//
-	// >  The vSwitch must belong to the same zone as the instance.
+	// > The vSwitch must be in the same zone as the ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -312,7 +315,7 @@ type CreateRCNodePoolShrinkRequest struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the instance.
 	//
-	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
+	// > If you specify the VSwitchId parameter, the ZoneId parameter must match the zone of the specified vSwitch. You can also leave this parameter empty, and the system automatically selects the zone of the specified vSwitch.
 	//
 	// example:
 	//
@@ -648,13 +651,13 @@ func (s *CreateRCNodePoolShrinkRequest) Validate() error {
 }
 
 type CreateRCNodePoolShrinkRequestTag struct {
-	// The key of the tag. You can create N tag keys at a time. Valid values of N: **1 to 20**. This parameter cannot be an empty string.
+	// The tag key. You can create up to N tag keys at a time. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can create N tag values at a time. Valid values of N: **1*	- to **20**. This parameter can be an empty string.
+	// The tag value that corresponds to the tag key. You can create up to N tag values at a time. Valid values of N: **1*	- to **20**. The tag value can be an empty string.
 	//
 	// example:
 	//

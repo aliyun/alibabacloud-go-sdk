@@ -26,27 +26,27 @@ type DetachGadInstanceMemberRequest struct {
 	//
 	// example:
 	//
-	// gad-rm-bp1npi2j8********
+	// gad-rm-bp1npi2j8****
 	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
-	// The ID of the instance that serves as the unit node you want to remove. You can call the DescribeGadInstances query the instance ID.
+	// The ID of the ApsaraDB RDS instance that corresponds to the unit node you want to remove. You can call DescribeGadInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-bp1npi2j8********
+	// rm-bp1npi2j8****
 	MemberInstanceName *string `json:"MemberInstanceName,omitempty" xml:"MemberInstanceName,omitempty"`
-	// The region ID of the central node. You can call the DescribeGadInstances operation to query the region ID.
+	// The region ID of the central node in the cluster. You can call DescribeGadInstances to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	// The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

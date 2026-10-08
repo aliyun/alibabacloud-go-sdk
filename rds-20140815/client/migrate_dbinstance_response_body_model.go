@@ -18,11 +18,11 @@ type iMigrateDBInstanceResponseBody interface {
 }
 
 type MigrateDBInstanceResponseBody struct {
-	// The serial number of the task in the migration task queue. When the serial number becomes 0, the system starts the migration.
+	// The migration queue number. When the number is 0, the migration switchover is performed.
 	//
 	// example:
 	//
-	// 224****
+	// 2245016
 	MigrationId *int32 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type MigrateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 10824****
+	// 108246861
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

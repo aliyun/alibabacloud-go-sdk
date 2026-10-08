@@ -29,7 +29,7 @@ type DescribeDetachedBackupsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of backup sets on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeDetachedBackupsResponseBody struct {
 	//
 	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

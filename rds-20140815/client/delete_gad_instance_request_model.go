@@ -18,15 +18,15 @@ type iDeleteGadInstanceRequest interface {
 }
 
 type DeleteGadInstanceRequest struct {
-	// The ID of the global active database cluster. You can call the GadInstanceName operation to query the cluster ID.
+	// The ID of the ApsaraDB RDS global active database cluster that you want to delete. You can call DescribeGadInstances to query the cluster ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// gad-rm-bp1npi2j8********
+	// gad-rm-bp1npi2j8****
 	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
-	// The region ID of the central node of the global active database cluster. The central node refers to the primary node. You can call the DescribeGadInstances operation to query the region ID.
+	// The region ID of the central node (primary node) in the cluster. You can call DescribeGadInstances to query the region ID.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DeleteGadInstanceRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

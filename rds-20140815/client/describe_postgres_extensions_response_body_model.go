@@ -20,9 +20,9 @@ type iDescribePostgresExtensionsResponseBody interface {
 }
 
 type DescribePostgresExtensionsResponseBody struct {
-	// The list of extensions that are installed on the specified database.
+	// The list of installed extensions in the specified database.
 	InstalledExtensions []*DescribePostgresExtensionsResponseBodyInstalledExtensions `json:"InstalledExtensions,omitempty" xml:"InstalledExtensions,omitempty" type:"Repeated"`
-	// The overview of the extension.
+	// The overview information about extensions.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribePostgresExtensionsResponseBody struct {
 	//
 	// 7E4448A6-9FE6-4474-A0C1-AA7CFC772CAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of extensions that are not installed on the specified database.
+	// The list of uninstalled extensions in the specified database.
 	UninstalledExtensions []*DescribePostgresExtensionsResponseBodyUninstalledExtensions `json:"UninstalledExtensions,omitempty" xml:"UninstalledExtensions,omitempty" type:"Repeated"`
 }
 
@@ -105,29 +105,29 @@ func (s *DescribePostgresExtensionsResponseBody) Validate() error {
 }
 
 type DescribePostgresExtensionsResponseBodyInstalledExtensions struct {
-	// The category of the extension.
+	// The extension category. Valid values:
 	//
-	// 	- **external_access**
+	// - **external_access**: external access.
 	//
-	// 	- **index_support**
+	// - **index_support**: index support.
 	//
-	// 	- **information_stat**
+	// - **information_stat**: information statistics.
 	//
-	// 	- **geography_space**
+	// - **geography_space**: geospatial.
 	//
-	// 	- **vector_engine**
+	// - **vector_engine**: vector engine.
 	//
-	// 	- **timing_engine**
+	// - **timing_engine**: time series engine.
 	//
-	// 	- **data_type**
+	// - **data_type**: data type.
 	//
-	// 	- **encrypt_secure**
+	// - **encrypt_secure**: encryption and security.
 	//
-	// 	- **text_process**
+	// - **text_process**: text processing.
 	//
-	// 	- **operation_maintenance**
+	// - **operation_maintenance**: application O&M.
 	//
-	// 	- **self_develop**
+	// - **self_develop**: self-developed.
 	//
 	// example:
 	//
@@ -145,43 +145,43 @@ type DescribePostgresExtensionsResponseBodyInstalledExtensions struct {
 	//
 	// 4.1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The current version of the extension.
+	// The currently installed version of the extension.
 	//
 	// example:
 	//
 	// 4.1
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
-	// The name of the extension.
+	// The extension name.
 	//
 	// example:
 	//
 	// pg_profile
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user of the extension.
+	// The user to which the extension belongs.
 	//
 	// example:
 	//
 	// test_user
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the extension.
+	// The extension priority. Valid values:
 	//
-	// 	- **0**: The extension is displayed by default.
+	// - **0**: displayed by default.
 	//
-	// 	- **1**: The extension is preferentially displayed.
+	// - **1**: displayed with priority.
 	//
 	// example:
 	//
 	// 0
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The extensions on which the current extension depends when it is installed.
+	// The extensions on which this extension depends during installation.
 	//
 	// example:
 	//
 	// {dblink,plpgsql}
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
-	// >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
+	// > This parameter is returned only for exclusive extensions (extensions written by the user). Each Alibaba Cloud account can view only its own exclusive extensions.
 	//
 	// example:
 	//
@@ -283,7 +283,7 @@ func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) Validate() e
 }
 
 type DescribePostgresExtensionsResponseBodyUninstalledExtensions struct {
-	// The category of the extension.
+	// The extension category.
 	//
 	// example:
 	//
@@ -301,39 +301,39 @@ type DescribePostgresExtensionsResponseBodyUninstalledExtensions struct {
 	//
 	// 4.1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The current version of the extension.
+	// The currently installed version of the extension.
 	//
 	// example:
 	//
 	// 4.1
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
-	// The name of the extension.
+	// The extension name.
 	//
 	// example:
 	//
 	// pg_cron
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user of the extension.
+	// The user to which the extension belongs.
 	//
 	// example:
 	//
 	// test_user
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the extension.
+	// The extension priority.
 	//
 	// example:
 	//
 	// 0
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The extensions on which the current extension depends when it is installed.
+	// The extensions on which this extension depends during installation.
 	//
 	// example:
 	//
 	// {dblink,plpgsql}
 	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
-	// >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
+	// > This parameter is returned only for exclusive extensions (extensions written by the user). Each Alibaba Cloud account can view only its own exclusive extensions.
 	//
 	// example:
 	//

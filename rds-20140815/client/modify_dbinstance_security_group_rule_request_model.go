@@ -32,7 +32,7 @@ type iModifyDBInstanceSecurityGroupRuleRequest interface {
 }
 
 type ModifyDBInstanceSecurityGroupRuleRequest struct {
-	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,11 @@ type ModifyDBInstanceSecurityGroupRuleRequest struct {
 	//
 	// zht_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the transport layer protocol. Valid values:
+	// The transport layer protocol type. Valid values:
 	//
-	// 	- TCP
+	// - TCP
 	//
-	// 	- UDP
+	// - UDP
 	//
 	// This parameter is required.
 	//
@@ -62,9 +62,9 @@ type ModifyDBInstanceSecurityGroupRuleRequest struct {
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The range of destination ports over which TCP and UDP traffic is allowed in the security group rule.
+	// The range of destination ports for the transport layer protocol (TCP/UDP) that the security group opens.
 	//
-	// Valid values: 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+	// Valid values: 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ModifyDBInstanceSecurityGroupRuleRequest struct {
 	PortRange            *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the security group rule. You can call the [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the ID of the security group rule.
+	// The security group rule ID. You can call [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the security group rule ID.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ModifyDBInstanceSecurityGroupRuleRequest struct {
 	//
 	// sgr-2ze17u******
 	SecurityGroupRuleId *string `json:"SecurityGroupRuleId,omitempty" xml:"SecurityGroupRuleId,omitempty"`
-	// The range of source IP addresses. CIDR blocks and IPv4 addresses are supported.
+	// The source IP address range. CIDR format and IPv4 format are supported.
 	//
 	// This parameter is required.
 	//

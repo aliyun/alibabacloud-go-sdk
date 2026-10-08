@@ -32,25 +32,25 @@ type ModifyResourceGroupRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-bpxxxxx
+	// rm-bp****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call the ListResourceGroups operation to obtain the resource group ID.
+	// The resource group ID. You can call ListResourceGroups to query the resource group ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rg-acxxxxx
+	// rg-ac****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -58,7 +58,7 @@ type ModifyResourceGroupRequest struct {
 	//
 	// example:
 	//
-	// Instance
+	// For example, the default resource type Custom is Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

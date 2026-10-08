@@ -18,13 +18,13 @@ type iUpgradeDBProxyInstanceKernelVersionResponseBody interface {
 }
 
 type UpgradeDBProxyInstanceKernelVersionResponseBody struct {
-	// The ID of the database proxy of the instance.
+	// The proxy ID.
 	//
 	// example:
 	//
-	// bu9***
+	// bu9****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type UpgradeDBProxyInstanceKernelVersionResponseBody struct {
 	//
 	// example:
 	//
-	// 33436****
+	// 334362871
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

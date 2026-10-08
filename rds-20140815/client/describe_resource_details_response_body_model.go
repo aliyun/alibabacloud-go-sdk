@@ -40,49 +40,49 @@ type iDescribeResourceDetailsResponseBody interface {
 }
 
 type DescribeResourceDetailsResponseBody struct {
-	// The storage that is occupied by data backup files, excluding archived backup files, on the instance. Unit: bytes.
+	// The storage space occupied by data backups, excluding archived backups. Unit: bytes.
 	//
 	// example:
 	//
 	// 8139046912
 	BackupDataSize *int64 `json:"BackupDataSize,omitempty" xml:"BackupDataSize,omitempty"`
-	// The size of the backup log. Unit: bytes.
+	// The size of backup logs. Unit: bytes.
 	//
 	// example:
 	//
 	// 21183797
 	BackupLogSize *int64 `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
-	// The size of the backup data. Unit: MB.
+	// The backup size. Unit: MB.
 	//
 	// example:
 	//
 	// 53002759
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The disk capacity of the instance.
+	// The disk capacity.
 	//
 	// example:
 	//
 	// 200
 	DbInstanceStorage *int64 `json:"DbInstanceStorage,omitempty" xml:"DbInstanceStorage,omitempty"`
-	// The name of the proxy instance.
+	// The name of the database proxy instance.
 	//
 	// example:
 	//
 	// mr-n1m1wjrylfolvrt67s
 	DbProxyInstanceName *string `json:"DbProxyInstanceName,omitempty" xml:"DbProxyInstanceName,omitempty"`
-	// The total storage used. The value is the sum of the DataSize and LogSize values. Unit: bytes. The value -1 indicates that no data files or log files are stored.
+	// The used storage space, which consists of the space occupied by data files and log files. Unit: bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
 	// 4871684096
 	DiskUsed *int64 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
-	// The storage type of the instance.
+	// The instance storage type.
 	//
 	// example:
 	//
 	// cloud_essd
 	InstanceStorageType *string `json:"InstanceStorageType,omitempty" xml:"InstanceStorageType,omitempty"`
-	// The rule for the IP address whitelist of the instance.
+	// The RDS whitelist group specifications.
 	RdsEcsSecurityGroupRel []*DescribeResourceDetailsResponseBodyRdsEcsSecurityGroupRel `json:"RdsEcsSecurityGroupRel,omitempty" xml:"RdsEcsSecurityGroupRel,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -90,7 +90,7 @@ type DescribeResourceDetailsResponseBody struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type DescribeResourceDetailsResponseBody struct {
 	//
 	// rg-acfmv3h25bj7yhq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The IP address whitelist of the instance. For more information, see [Configure IP address whitelists](https://help.aliyun.com/document_detail/43185.html). If the returned IP address whitelist contains more than one entry, these entries are separated with commas (,). Each entry is unique and up to 1,000 entries are returned. The entries in the IP address whitelist must be in one of the following formats:
+	// The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the instance. Separate multiple entries with commas (,). Each entry must be unique. A maximum of 1,000 entries are supported. The following two formats are supported:
 	//
-	// 	- IP addresses, such as 10.10.XX.XX.
+	// 	- IP address format, such as 10.10.XX.XX.
 	//
-	// 	- CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+	// 	- CIDR format, such as 10.10.XX.XX/24, where 24 indicates the length of the prefix in the IP address. The prefix length ranges from 1 to 32.
 	//
-	// If this parameter is not specified, the default IP address whitelist is used.
+	// If this parameter is not specified, the whitelist information of the default group of the original instance is used.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type DescribeResourceDetailsResponseBody struct {
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The vSwitch ID.
 	//
-	// >  The vSwitch must belong to the same zone as the instance.
+	// > The vSwitch must belong to the same zone as the ApsaraDB RDS instance.
 	//
 	// example:
 	//
 	// vsw-2zelwi1jd271p670lzl8h
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// VPC ID。
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ func (s *DescribeResourceDetailsResponseBody) Validate() error {
 }
 
 type DescribeResourceDetailsResponseBodyRdsEcsSecurityGroupRel struct {
-	// The name of the security group.
+	// The security group name.
 	//
 	// example:
 	//

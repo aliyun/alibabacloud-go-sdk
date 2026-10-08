@@ -30,23 +30,23 @@ type iModifyInstanceCrossBackupPolicyResponseBody interface {
 }
 
 type ModifyInstanceCrossBackupPolicyResponseBody struct {
-	// The status of the cross-region backup feature on the instance. Valid values:
+	// The status of the cross-region backup feature. Valid values:
 	//
-	// 	- **Disable**
+	// 	- **Disable**: Disabled.
 	//
-	// 	- **Enable**
+	// 	- **Enable**: Enabled.
 	//
 	// example:
 	//
 	// Enable
 	BackupEnabled *string `json:"BackupEnabled,omitempty" xml:"BackupEnabled,omitempty"`
-	// The ID of the region in which the cross-region backup files of the instance are stored.
+	// The ID of the destination region for cross-region backup.
 	//
 	// example:
 	//
 	// cn-shanghai
 	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	// The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
+	// The type of cross-region backup retention. Default value: **1**, which indicates that all backups are retained.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ModifyInstanceCrossBackupPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of the cross-region log backup feature on the instance. Valid values:
+	// The status of cross-region log backup. Valid values:
 	//
-	// 	- **Disable**
+	// 	- **Disable**: Disabled.
 	//
-	// 	- **Enable**
+	// 	- **Enable**: Enabled.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type ModifyInstanceCrossBackupPolicyResponseBody struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 50A6059D-6DBB-46C6-A851-1EE93C9013CF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The policy that is used to retain the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that the cross-region backup files of the instance are retained based on the specified retention period.
+	// The cross-region backup retention method. Default value: **1**, which indicates retention by duration.
 	//
 	// example:
 	//
 	// 1
 	RetentType *int32 `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
-	// The number of days for which the cross-region backup files of the instance are retained. Valid values: **7 to 1825**.
+	// The number of days for which cross-region backups are retained. Valid values: **7 to 1825**.
 	//
 	// example:
 	//

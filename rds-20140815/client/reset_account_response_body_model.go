@@ -14,7 +14,7 @@ type iResetAccountResponseBody interface {
 }
 
 type ResetAccountResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

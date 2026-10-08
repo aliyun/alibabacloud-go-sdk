@@ -32,13 +32,13 @@ type DescribeSecretsResponseBody struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DF4961DD-16F5-5B24-BD4C-0C7788F7ADAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the credential.
+	// The list of credential details.
 	Secrets []*DescribeSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
@@ -100,11 +100,11 @@ func (s *DescribeSecretsResponseBody) Validate() error {
 }
 
 type DescribeSecretsResponseBodySecrets struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
-	// 1266348003******
+	// 1266348003****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The description of the credential.
 	//
@@ -118,19 +118,19 @@ type DescribeSecretsResponseBodySecrets struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account.
+	// The user credential of the Data API account.
 	//
 	// example:
 	//
-	// acs:rds:cn-hangzhou:1335786***:dbInstance/rm-bp1m7l3j63****
+	// acs:rds:cn-hangzhou:1335786****:dbInstance/rm-bp1m7l3j63****
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the credential.
+	// The credential name.
 	//
 	// example:
 	//
 	// Foo
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The username that is used to access the database.
+	// The database username.
 	//
 	// example:
 	//

@@ -40,15 +40,15 @@ type DeleteSecretRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
-	// >  If you specify this parameter, you must also specify the **SecretName*	- parameter. parameter.
+	// >This parameter must be specified together with **SecretName**.
 	//
 	// example:
 	//
 	// rm-sfjdlsjxxxxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The engine of the database.
+	// The database engine type.
 	//
-	// > Only MySQL is supported.
+	// > This parameter currently supports only the value MySQL.
 	//
 	// This parameter is required.
 	//
@@ -73,19 +73,19 @@ type DeleteSecretRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account. You can call the CreateSecret operation to obtain the value of this parameter.
+	// The user credential of the Data API account that has been created. You can call the createSecret operation to query the value of this parameter.
 	//
-	// >  You must specify one of the SecretArn and **SecretName*	- parameters.
+	// >You must specify either **SecretName*	- or this parameter.
 	//
 	// example:
 	//
 	// acs:rds:cn-hangzhou:1335786***:dbInstance/rm-bp1m7l3j63****
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the credential.
+	// The name of the user credential.
 	//
-	// > 	- You must specify one of **SecretArn*	- and SecretName.
+	// > 	- You must specify either **SecretArn*	- or this parameter.
 	//
-	// > 	- If you specify this parameter, you must also specify **DbInstanceId**.
+	// > 	- This parameter must be specified together with **DbInstanceId**.
 	//
 	// example:
 	//

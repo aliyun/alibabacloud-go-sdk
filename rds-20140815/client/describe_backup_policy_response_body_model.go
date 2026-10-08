@@ -43,6 +43,8 @@ type iDescribeBackupPolicyResponseBody interface {
 	GetEnablePitrProtection() *bool
 	SetHighSpaceUsageProtection(v string) *DescribeBackupPolicyResponseBody
 	GetHighSpaceUsageProtection() *string
+	SetIncBackupInterval(v int32) *DescribeBackupPolicyResponseBody
+	GetIncBackupInterval() *int32
 	SetLocalLogRetentionHours(v int32) *DescribeBackupPolicyResponseBody
 	GetLocalLogRetentionHours() *int32
 	SetLocalLogRetentionSpace(v string) *DescribeBackupPolicyResponseBody
@@ -79,19 +81,19 @@ type DescribeBackupPolicyResponseBody struct {
 	AdvancedBackupPolicyEnabled *bool                                                 `json:"AdvancedBackupPolicyEnabled,omitempty" xml:"AdvancedBackupPolicyEnabled,omitempty"`
 	AdvancedDataPolicies        *DescribeBackupPolicyResponseBodyAdvancedDataPolicies `json:"AdvancedDataPolicies,omitempty" xml:"AdvancedDataPolicies,omitempty" type:"Struct"`
 	AdvancedLogPolicies         *DescribeBackupPolicyResponseBodyAdvancedLogPolicies  `json:"AdvancedLogPolicies,omitempty" xml:"AdvancedLogPolicies,omitempty" type:"Struct"`
-	// The number of archived backup files that are retained.
+	// The number of archived backups retained for the **MySQL*	- instance.
 	//
 	// example:
 	//
 	// 1
 	ArchiveBackupKeepCount *string `json:"ArchiveBackupKeepCount,omitempty" xml:"ArchiveBackupKeepCount,omitempty"`
-	// The cycle based on which archived backup files are retained.
+	// The retention cycle of archived backups for the **MySQL*	- instance.
 	//
 	// example:
 	//
 	// ByMonth
 	ArchiveBackupKeepPolicy *string `json:"ArchiveBackupKeepPolicy,omitempty" xml:"ArchiveBackupKeepPolicy,omitempty"`
-	// The number of days for which archived backup files are retained.
+	// The number of days for which archived backups are retained for the **MySQL*	- instance.
 	//
 	// example:
 	//
@@ -99,167 +101,176 @@ type DescribeBackupPolicyResponseBody struct {
 	ArchiveBackupRetentionPeriod *string `json:"ArchiveBackupRetentionPeriod,omitempty" xml:"ArchiveBackupRetentionPeriod,omitempty"`
 	// The backup interval. Unit: minutes.
 	//
-	// 	- If the instance runs MySQL, the interval is the same as the value of the Snapshot Backup Start Time parameter rather than the Snapshot Backup Period parameter in the ApsaraDB RDS console. For more information, see [Back up an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html).
+	// 	- For MySQL instances: the [snapshot backup frequency](https://help.aliyun.com/document_detail/98818.html) (not the snapshot backup cycle).
 	//
-	// 	- If the instance runs SQL Server, the interval is the same as the log backup frequency.
+	// 	- For SQL Server instances: the log backup frequency.
 	//
 	// example:
 	//
 	// 30
 	BackupInterval *string `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
-	// Indicates whether the log backup feature is enabled. Valid values:
+	// Indicates whether log backup is enabled. Valid values:
 	//
-	// 	- **Enable**
+	// 	- **Enable**: enabled
 	//
-	// 	- **Disabled**
+	// 	- **Disabled**: disabled
+	//
+	// **For SQL Server instances:**
+	//
+	// - **Enable*	- is returned only when instance log backup frequency is **every 5 minutes**.
+	//
+	// - When instance log backup frequency is **every 30 minutes*	- or **consistent with the data backup cycle**, this parameter returns **Disabled**. **Use the value of BackupInterval as the reference**.
 	//
 	// example:
 	//
 	// Enable
 	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
-	// The backup method of the instance. Valid values:
+	// The backup method of the **SQL Server instance with cloud disks**. Valid values:
 	//
 	// 	- **Physical**: physical backup
 	//
 	// 	- **Snapshot**: snapshot backup
 	//
-	// > This parameter is returned only when the instance runs SQL Server and uses cloud disks.
-	//
 	// example:
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup settings of the secondary instance. Valid values:
+	// The backup settings for the secondary instance of an **SQL Server Enterprise Cluster Edition*	- instance. Valid values:
 	//
-	// 	- **1**: Secondary instance preferred
+	// - **1**: The secondary instance is preferred.
 	//
-	// 	- **2**: Primary instance preferred
+	// - **2**: The primary instance is forced.
 	//
-	// >  This parameter is available only for instances that run SQL Server on RDS Cluster Edition. This parameter is returned only when SupportModifyBackupPriority is set to True.
+	// > This parameter is returned only when SupportModifyBackupPriority is True.
 	//
 	// example:
 	//
 	// 2
 	BackupPriority *int32 `json:"BackupPriority,omitempty" xml:"BackupPriority,omitempty"`
-	// The number of days for which data backup files are retained.
+	// The number of days for which data backups are retained.
 	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Indicates whether to enable the single-digit second backup feature. This feature allows ApsaraDB RDS to complete a backup within single-digit seconds. Valid values:
+	// Indicates whether backup within seconds is enabled for the **MySQL*	- or **PostgreSQL*	- instance. Valid values:
 	//
-	// 	- **Flash**: The single-digit second backup feature is enabled.
+	// - **Flash**: enabled
 	//
-	// 	- **Standard**: The single-digit second backup feature is disabled.
+	// - **Standard**: disabled
 	//
-	// > This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **DataBackupPolicy**.
+	// > This parameter takes effect only when the **BackupPolicyMode*	- parameter is set to **DataBackupPolicy**.
 	//
 	// example:
 	//
 	// Standard
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The method that is used to compress backup data. Valid values:
+	// The backup compression method. Valid values:
 	//
-	// 	- **0**: Backup data is not compressed.
+	// 	- **0**: no compression
 	//
-	// 	- **1**: Backup data is compressed by using zlib.
+	// 	- **1**: zlib compression
 	//
-	// 	- **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
+	// 	- **2**: parallel zlib compression
 	//
-	// 	- **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
+	// 	- **4**: QuickLZ compression with fast restoration for individual databases and tables enabled
 	//
-	// 	- **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
+	// 	- **8**: QuickLZ compression without fast restoration for individual databases and tables supported
 	//
 	// example:
 	//
 	// 1
 	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
-	// Indicates whether the log backup feature is enabled. Valid values:
+	// Indicates whether log backup is enabled. Valid values:
 	//
 	// 	- **1**: enabled
 	//
 	// 	- **0**: disabled
 	//
+	// **For SQL Server instances:**
+	//
+	// - **1*	- is returned only when instance log backup frequency is **every 5 minutes**.
+	//
+	// - When instance log backup frequency is **every 30 minutes*	- or **consistent with the data backup cycle**, this parameter returns **0**. **Use the value of BackupInterval as the reference**.
+	//
 	// example:
 	//
 	// 1
 	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// Indicates whether incremental backup is enabled. Valid values:
+	// Indicates whether incremental backup is enabled for the **SQL Server*	- instance. Valid values:
 	//
-	// 	- **True**: Incremental backup is enabled.
+	// 	- **True**: enabled
 	//
-	// 	- **False**: Incremental backup is disabled.
+	// 	- **False**: disabled
 	//
 	// example:
 	//
 	// True
 	EnableIncrementDataBackup *bool `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
-	// Indicates whether the point-in-time restoration (PITR) feature is enabled. The PITR feature is an enhancement of the log backup feature. Valid values:
+	// Indicates whether point-in-time recovery (PITR) is enabled for the **MySQL*	- instance. PITR is an upgraded version of log backup. Valid values:
 	//
-	// 	- **True**
+	// - **True**: enabled
 	//
-	// 	- **False**
+	// - **False**: disabled
 	//
-	// >  This parameter is returned only when the instance runs MySQL. For more information, see [Configure the PITR feature](https://help.aliyun.com/document_detail/2666046.html).
+	// > For more information, see [Configure a point-in-time recovery policy](https://help.aliyun.com/document_detail/2666046.html).
 	//
 	// example:
 	//
 	// True
 	EnablePitrProtection *bool `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
-	// Indicates whether the log backup deletion feature is enabled. If the disk usage exceeds 80% or the remaining disk space is less than 5 GB on the instance, this feature deletes binary log files. Valid values:
+	// Indicates whether binary logs are forcibly deleted when the storage usage of the **MySQL*	- instance exceeds 80% or the remaining storage is less than 5 GB. Valid values:
 	//
-	// 	- **Disable**
+	// 	- **Disable**: Binary logs are not deleted.
 	//
-	// 	- **Enable**
+	// 	- **Enable**: Binary logs are deleted.
 	//
 	// example:
 	//
 	// Enable
 	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	// The number of hours for which log backup files are retained on the instance.
+	IncBackupInterval        *int32  `json:"IncBackupInterval,omitempty" xml:"IncBackupInterval,omitempty"`
+	// The number of hours for which binary logs are retained on the **MySQL*	- instance.
 	//
 	// example:
 	//
 	// 0
 	LocalLogRetentionHours *int32 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	// The maximum storage usage that is allowed for log files on the instance.
+	// The maximum storage usage of binary logs on the **MySQL*	- instance, in percentage.
 	//
 	// example:
 	//
 	// 30
 	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	// The backup frequency of logs. Valid values:
+	// The log backup frequency of the **SQL Server*	- instance. Valid values:
 	//
-	// 	- **LogInterval**: Log backups are performed every 30 minutes.
+	// 	- **LogInterval**: every 30 minutes.
 	//
-	// 	- Default value: same as the value of the **PreferredBackupPeriod*	- parameter.
-	//
-	// >  This parameter is returned only when the instance runs SQL Server.
+	// 	- Default: consistent with the data backup cycle specified by **PreferredBackupPeriod**.
 	//
 	// example:
 	//
 	// LogInterval
 	LogBackupFrequency *string `json:"LogBackupFrequency,omitempty" xml:"LogBackupFrequency,omitempty"`
-	// The number of binary log files that you want to retain on the instance.
+	// The number of binary logs retained on the **MySQL*	- instance.
 	//
 	// example:
 	//
 	// 60
 	LogBackupLocalRetentionNumber *int32 `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
-	// The number of days for which log backup files are retained.
+	// The number of days for which log backups are retained.
 	//
 	// example:
 	//
 	// 7
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	// The number of days during which you can restore data of the instance to any point in time.
+	// The number of days for which point-in-time recovery is supported for the **MySQL*	- instance.
 	//
 	// example:
 	//
 	// 7
 	PitrRetentionPeriod *int32 `json:"PitrRetentionPeriod,omitempty" xml:"PitrRetentionPeriod,omitempty"`
-	// The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
+	// The data backup cycle. Multiple values are separated by commas (,). Valid values:
 	//
 	// 	- **Monday**
 	//
@@ -279,41 +290,41 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// Monday,Wednesday,Friday,Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The time when a data backup is performed. The time follows the ISO 8601 standard in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
+	// The data backup time. Format: <i>HH:mm</i>Z-<i>HH:mm</i>Z (UTC).
 	//
 	// example:
 	//
 	// 15:00Z-16:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The time when the next backup is performed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+	// The next backup time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2018-01-19T15:15Z
 	PreferredNextBackupTime *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
-	// The policy that is used to retain archived backup files if the instance is released. Valid values:
+	// The archived backup data retention policy for deleted **MySQL*	- instances. Valid values:
 	//
-	// 	- **None**: No archived backup files are retained.
+	// 	- **None**: No archived backups are retained.
 	//
-	// 	- **Lastest**: Only the last archived backup file is retained.
+	// 	- **Lastest**: Only the last archived backup is retained.
 	//
-	// 	- **All**: All archived backup files are retained.
+	// 	- **All**: All archived backups are retained.
 	//
 	// example:
 	//
 	// None
 	ReleasedKeepPolicy *string `json:"ReleasedKeepPolicy,omitempty" xml:"ReleasedKeepPolicy,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B87E2AB3-B7C9-4394-9160-7F639F732031
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the backup settings of a secondary instance can be modified. Valid values:
+	// Indicates whether the secondary instance backup option can be modified for the **SQL Server*	- instance. Valid values:
 	//
-	// 	- **True**
+	// - **True**: The option can be modified.
 	//
-	// 	- **False**
+	// - **False**: The option cannot be modified.
 	//
 	// example:
 	//
@@ -325,23 +336,21 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 0
 	SupportReleasedKeep *int32 `json:"SupportReleasedKeep,omitempty" xml:"SupportReleasedKeep,omitempty"`
-	// Indicates whether the instance supports snapshot backups. Valid values:
+	// Indicates whether snapshot backup is supported for the **SQL Server*	- instance. Valid values:
 	//
-	// 	- **1**: The instance supports snapshot backups.
+	// - **1**: supported
 	//
-	// 	- **0**: The instance does not support snapshot backups.
-	//
-	// >  This parameter is returned only when the instance runs SQL Server.
+	// - **0**: not supported
 	//
 	// example:
 	//
 	// 1
 	SupportVolumeShadowCopy *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
-	// Indicates whether log backups for SQL Server are performed verery five minutes.
+	// Indicates whether the [5-minute log backup feature](https://help.aliyun.com/document_detail/95717.html) is supported for the **SQL Server*	- instance. Valid values:
 	//
-	// 	- 0: No
+	// - **0**: not supported
 	//
-	// 	- 1: Yes
+	// - **1**: supported
 	//
 	// example:
 	//
@@ -423,6 +432,10 @@ func (s *DescribeBackupPolicyResponseBody) GetEnablePitrProtection() *bool {
 
 func (s *DescribeBackupPolicyResponseBody) GetHighSpaceUsageProtection() *string {
 	return s.HighSpaceUsageProtection
+}
+
+func (s *DescribeBackupPolicyResponseBody) GetIncBackupInterval() *int32 {
+	return s.IncBackupInterval
 }
 
 func (s *DescribeBackupPolicyResponseBody) GetLocalLogRetentionHours() *int32 {
@@ -567,6 +580,11 @@ func (s *DescribeBackupPolicyResponseBody) SetEnablePitrProtection(v bool) *Desc
 
 func (s *DescribeBackupPolicyResponseBody) SetHighSpaceUsageProtection(v string) *DescribeBackupPolicyResponseBody {
 	s.HighSpaceUsageProtection = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetIncBackupInterval(v int32) *DescribeBackupPolicyResponseBody {
+	s.IncBackupInterval = &v
 	return s
 }
 

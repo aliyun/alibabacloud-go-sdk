@@ -28,7 +28,7 @@ type iDescribeHostWebShellRequest interface {
 }
 
 type DescribeHostWebShellRequest struct {
-	// The username of the account that is used to log on to the host of the instance.
+	// The name of the account that is used to log on to the host of the RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeHostWebShellRequest struct {
 	//
 	// example:
 	//
-	// ***
+	// ****
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The instance ID.
 	//
@@ -50,9 +50,9 @@ type DescribeHostWebShellRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance hostname. You can call the DescribeDBInstanceIpHostname operation to query the hostname.
+	// The hostname of the instance. You can call the DescribeDBInstanceIpHostname operation to query the hostname.
 	//
 	// This parameter is required.
 	//

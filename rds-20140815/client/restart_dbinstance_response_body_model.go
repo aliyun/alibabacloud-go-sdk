@@ -14,7 +14,7 @@ type iRestartDBInstanceResponseBody interface {
 }
 
 type RestartDBInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

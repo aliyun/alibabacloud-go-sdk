@@ -21,7 +21,7 @@ type DeleteBackupFileResponseBody struct {
 	//
 	// example:
 	//
-	// C7B3A91C-0ACD-4948-ACAE-xxxxxxxD4069
+	// C7B3A91C-0ACD-4948-ACAE-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

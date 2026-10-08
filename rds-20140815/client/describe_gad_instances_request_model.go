@@ -18,17 +18,18 @@ type iDescribeGadInstancesRequest interface {
 }
 
 type DescribeGadInstancesRequest struct {
-	// The ID of the global active database cluster.
+	// The ID of the active geo-redundancy database cluster.
 	//
-	// 	- If you leave this parameter empty, this operation returns the details about all global active database clusters that are created within your Alibaba Cloud account.
+	// 	- If you do not specify this parameter, the IDs of all clusters under the current account are returned.
 	//
-	// 	- If you specify this parameter, this operation returns the details about the global active database cluster that you specify.
+	// 	- If you specify this parameter, the details of the specified cluster are returned.
 	//
-	// >  If you do not specify this parameter when you call this operation for the first time, the IDs of all clusters that are created by using the current account are returned. Then, you can specify the cluster ID to view the cluster details.
+	//
+	// >You can call this operation without specifying this parameter to obtain the IDs of all clusters under the current account, and then specify a cluster ID to query the details of the cluster.
 	//
 	// example:
 	//
-	// gad-rm-bp1npi2j8********
+	// gad-rm-bp1npi2j8****
 	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
@@ -36,11 +37,11 @@ type DescribeGadInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

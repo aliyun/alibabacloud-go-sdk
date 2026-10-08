@@ -28,13 +28,13 @@ type iDescribeCharacterSetNameRequest interface {
 type DescribeCharacterSetNameRequest struct {
 	// The type of the database engine. Valid values:
 	//
-	// 	- **mysql**
+	// - **mysql**: MySQL
 	//
-	// 	- **mssql**
+	// - **mssql**: SQL Server
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**: PostgreSQL
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**: MariaDB
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeCharacterSetNameRequest struct {
 	Engine       *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeCharacterSetNameRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	// The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
 	//
 	// example:
 	//

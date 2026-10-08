@@ -16,18 +16,8 @@ type iRedeployRCInstanceResponseBody interface {
 }
 
 type RedeployRCInstanceResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 866F5EB8-4650-4061-87F0-379F6F968BCE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// t-bp10e8orkp8x****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RedeployRCInstanceResponseBody) String() string {

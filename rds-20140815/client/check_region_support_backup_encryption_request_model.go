@@ -18,10 +18,14 @@ type iCheckRegionSupportBackupEncryptionRequest interface {
 }
 
 type CheckRegionSupportBackupEncryptionRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-wz91q53f9*******
 	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,25 +22,25 @@ type iTransformDBInstancePayTypeResponseBody interface {
 }
 
 type TransformDBInstancePayTypeResponseBody struct {
-	// The payment type.
+	// The billing method. Valid values:
 	//
-	// 	- Valid value if the new billing method is pay-as-you-go: POSTPAY
+	// - POSTPAY: pay-as-you-go
 	//
-	// 	- Valid value if the new billing method is subscription: PREPAY
+	// - PREPAY: subscription
 	//
 	// example:
 	//
-	// Prepaid
+	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The expiration time.
 	//
-	// > If you call this operation to change the billing method of an instance from subscription to pay-as-you-go, this parameter is not returned.
+	// > This parameter is not returned if the billing method is changed to pay-as-you-go.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type TransformDBInstancePayTypeResponseBody struct {
 	//
 	// example:
 	//
-	// 205157600280623
+	// 20515760028****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

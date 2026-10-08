@@ -20,13 +20,13 @@ type iModifyReadonlyInstanceDelayReplicationTimeResponseBody interface {
 }
 
 type ModifyReadonlyInstanceDelayReplicationTimeResponseBody struct {
-	// The ID of the read-only instance.
+	// The instance ID of the read-only instance.
 	//
 	// example:
 	//
-	// rr-bpxxxxx
+	// rr-bp****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The latency at which to replicate data from the primary instance to the read-only instance. Unit: seconds.
+	// The delayed replication time. Unit: seconds.
 	//
 	// example:
 	//

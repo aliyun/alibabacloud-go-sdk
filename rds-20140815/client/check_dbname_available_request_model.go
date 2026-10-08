@@ -30,17 +30,17 @@ type CheckDBNameAvailableRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-t4n3axxxxx
+	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name that you want to check.
+	// The database name to check.
 	//
 	// This parameter is required.
 	//

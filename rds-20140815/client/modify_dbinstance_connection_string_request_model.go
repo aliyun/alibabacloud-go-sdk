@@ -38,17 +38,17 @@ type iModifyDBInstanceConnectionStringRequest interface {
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
-	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	// The TDS port number for Babelfish for RDS PostgreSQL.
 	//
-	// > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
+	// > This parameter is applicable only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for RDS PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
 	//
 	// example:
 	//
 	// 1433
 	BabelfishPort *string `json:"BabelfishPort,omitempty" xml:"BabelfishPort,omitempty"`
-	// The prefix of the endpoint after the change. Only the prefix of the value of **CurrentConnectionString*	- can be changed.
+	// The prefix of the endpoint. You can modify only the prefix of the value specified by the **CurrentConnectionString*	- parameter.
 	//
-	// > The value must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). The value cannot contain any of the following special characters: ! # % ^ & \\	- = + | {} ; : \\" " ,<> / ?
+	// >The prefix must be 8 to 64 characters in length and cannot contain Chinese characters or special characters (~!#%^&*=+\\|{};:\\"",<>/?). The prefix can contain letters, digits, and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -56,9 +56,9 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// rm-****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The endpoint of the instance. It can be an internal endpoint, a public endpoint, or a classic network endpoint in hybrid access mode.
+	// The current endpoint of the instance. The endpoint can be a public endpoint or internal endpoint, or a classic network connectivity endpoint in hybrid access mode.
 	//
-	// > The read/write splitting endpoint cannot be changed.
+	// >Modification of read/write splitting connection endpoints is not supported.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// rm-uf6wjk5x****.mysql.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
+	// The name of the group to which the dedicated cluster MySQL general-purpose instance belongs.
 	//
 	// example:
 	//
@@ -82,15 +82,15 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	GeneralGroupName *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The PgBouncer port.
+	// The PgBouncer port number.
 	//
-	// > This parameter is suitable only for ApsaraDB RDS for PostgreSQL instances. If you enable PgBouncer for your instance, you can change the PgBouncer port of the instance.
+	// > This parameter is applicable only to ApsaraDB RDS for PostgreSQL instances. If PgBouncer is enabled, you can modify the PgBouncer port number.
 	//
 	// example:
 	//
 	// 6432
 	PGBouncerPort *string `json:"PGBouncerPort,omitempty" xml:"PGBouncerPort,omitempty"`
-	// The port number after the change.
+	// The target port.
 	//
 	// This parameter is required.
 	//
@@ -100,8 +100,26 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RetainVip            *bool   `json:"RetainVip,omitempty" xml:"RetainVip,omitempty"`
-	TargetDBInstanceId   *string `json:"TargetDBInstanceId,omitempty" xml:"TargetDBInstanceId,omitempty"`
+	// Specifies whether to retain the virtual IP address (VIP) when swapping the endpoint.
+	//
+	// - **true**: The VIP is retained.
+	//
+	// - **false*	- (default): The VIP is not retained.
+	//
+	// > This parameter is applicable only to ApsaraDB RDS for PostgreSQL instances.
+	//
+	// example:
+	//
+	// false
+	RetainVip *bool `json:"RetainVip,omitempty" xml:"RetainVip,omitempty"`
+	// The instance ID of the target ApsaraDB RDS for PostgreSQL instance with which you want to swap the endpoint.
+	//
+	// > This parameter is applicable only to ApsaraDB RDS for PostgreSQL instances.
+	//
+	// example:
+	//
+	// pgm-bp1206s14p3o****
+	TargetDBInstanceId *string `json:"TargetDBInstanceId,omitempty" xml:"TargetDBInstanceId,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringRequest) String() string {

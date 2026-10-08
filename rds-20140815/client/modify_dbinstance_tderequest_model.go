@@ -38,23 +38,23 @@ type iModifyDBInstanceTDERequest interface {
 }
 
 type ModifyDBInstanceTDERequest struct {
-	// The file that contains the certificate.\\
+	// The certificate file.
 	//
 	// Format:
 	//
-	// 	- Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
+	// - Public endpoint: `oss-<RegionId>.aliyuncs.com:<BucketName>:<CertificateFileName (with file extension)>`
 	//
-	// 	- Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
+	// - Internal network endpoint: `oss-<RegionId>-internal.aliyuncs.com:<BucketName>:<CertificateFileName (with file extension)>`
 	//
-	// > 	- This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	// > - This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
 	//
-	// > 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// > - You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query active region IDs.
 	//
 	// example:
 	//
 	// oss-ap-southeast-1.aliyuncs.com:****:key.cer
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -62,29 +62,29 @@ type ModifyDBInstanceTDERequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+	// The name of the database for which you want to enable TDE. You can specify multiple database names separated by commas (,). You can specify up to 50 database names.
 	//
-	// > This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	// > This parameter is active and required only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
 	//
 	// example:
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The ID of the custom key.
+	// The custom key ID.
 	//
-	// > This parameter is available when the instance runs MySQL or PostgreSQL.
+	// > This parameter is available only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
 	//
 	// example:
 	//
 	// 749c1df7-****-****-****-****
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// Specifies whether to replace the key. Valid values:
+	// Specifies whether to rotate the key. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Rotate the key.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): Do not rotate the key.
 	//
-	// >  This parameter is available for only ApsaraDB RDS for PostgreSQL instances.
+	// > This parameter is available only for ApsaraDB RDS for PostgreSQL instances.
 	//
 	// example:
 	//
@@ -92,25 +92,25 @@ type ModifyDBInstanceTDERequest struct {
 	IsRotate     *bool   `json:"IsRotate,omitempty" xml:"IsRotate,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password of the certificate.
+	// The certificate password.
 	//
-	// > This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	// > This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
 	//
 	// example:
 	//
 	// 1qaz@WSX
 	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	// The file that contains the private key of the certificate.\\
+	// The private key file.
 	//
 	// Format:
 	//
-	// 	- Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
+	// - Public endpoint: `oss-<RegionId>.aliyuncs.com:<BucketName>:<PrivateKeyFileName (with file extension)>`
 	//
-	// 	- Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
+	// - Internal network endpoint: `oss-<RegionId>-internal.aliyuncs.com:<BucketName>:<PrivateKeyFileName (with file extension)>`
 	//
-	// > 	- This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	// > - This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
 	//
-	// > 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// > - You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query active region IDs.
 	//
 	// example:
 	//
@@ -118,19 +118,19 @@ type ModifyDBInstanceTDERequest struct {
 	PrivateKey           *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+	// The global resource descriptor of the RAM role. The resource descriptor is used to specify a RAM role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
 	//
-	// > This parameter is available when the instance runs MySQL or PostgreSQL.
+	// > This parameter is available only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
 	//
 	// example:
 	//
 	// acs:ram::1406926****:role/aliyunrdsinstanceencryptiondefaultrole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The status of TDE. Valid values:
+	// The TDE status. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled*	-
 	//
-	// 	- **Disabled**
+	// - **Disabled**
 	//
 	// This parameter is required.
 	//

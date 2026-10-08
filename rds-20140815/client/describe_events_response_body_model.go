@@ -41,7 +41,7 @@ type DescribeEventsResponseBody struct {
 	//
 	// A103039D-B1B2-4C57-B989-7D7C0DA95426
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

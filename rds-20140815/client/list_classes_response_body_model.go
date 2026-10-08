@@ -18,15 +18,15 @@ type iListClassesResponseBody interface {
 }
 
 type ListClassesResponseBody struct {
-	// The list of instance specifications.
+	// The list of instance type information.
 	Items []*ListClassesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,103 +83,110 @@ func (s *ListClassesResponseBody) Validate() error {
 }
 
 type ListClassesResponseBodyItems struct {
-	// The code of the instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/145759.html).
+	// The instance type code. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only instance types](https://help.aliyun.com/document_detail/145759.html).
 	//
 	// example:
 	//
 	// mysql.n1.micro.1
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The instance family. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/57184.html).
+	// The instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/57184.html).
 	//
 	// example:
 	//
-	// General
+	// general-purpose
 	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	// The number of CPU cores that are supported by the instance type. Unit: cores.
+	// The number of CPU cores for the instance type. Unit: cores.
 	//
 	// example:
 	//
 	// 1
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The size of the encrypted memory that is supported by the security-enhanced instance type. Unit: GB.
+	// The encrypted memory size for the security-enhanced instance family. Unit: GB.
 	//
 	// example:
 	//
 	// 4
 	EncryptedMemory *string `json:"EncryptedMemory,omitempty" xml:"EncryptedMemory,omitempty"`
-	// The architecture of the instance type. Valid values:
+	// The architecture type of the instance type. Valid values:
 	//
-	// 	- If the architecture of the instance type is **x86**, an empty string is returned by default.
+	// - If the instance uses the **x86*	- architecture, this parameter is empty by default.
 	//
-	// 	- If the architecture of the instance type is **ARM**, **arm*	- is returned.
+	// - If the instance uses the **arm*	- architecture, **arm*	- is returned.
 	//
 	// example:
 	//
 	// arm
 	InstructionSetArch *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
-	// The maximum number of connections that are supported by the instance type. Unit: connections.
+	// The maximum number of connections for the instance type.
 	//
 	// example:
 	//
 	// 2000
 	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+	// The maximum I/O bandwidth for the instance type. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 1024Mbps
 	MaxIOMBPS *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
-	// The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+	// The maximum IOPS for the instance type.
 	//
 	// example:
 	//
 	// 10000
 	MaxIOPS *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The memory size that is supported by the instance type. Unit: GB.
+	// The memory size for the instance type. Unit: GB.
 	//
 	// example:
 	//
-	// 1 GB (RDS Basic Edition)
+	// 1GB
 	MemoryClass *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
-	// The fee that you must pay for the instance type.
+	// The price for the instance type.
+	//
+	// <props="china">
+	//
+	// 	- Unit: cents (CNY).
+	//
+	// <props="intl">
 	//
 	// 	- Unit: cents (USD).
 	//
-	// > 	- If you set **CommodityCode*	- to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
 	//
-	// > 	- If you set **CommodityCode*	- to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
+	// > 	- If you set the **CommodityCode*	- parameter to a pay-as-you-go commodity code, this parameter indicates the hourly price.
+	//
+	// > 	- If you set the **CommodityCode*	- parameter to a subscription commodity code, this parameter indicates the monthly price.
 	//
 	// example:
 	//
 	// 2500
 	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
-	// The RDS edition of the instance. Valid values:
+	// The instance edition. Valid values:
 	//
-	// 	- Regular instance
+	// 	- Regular instances
 	//
-	//     	- **Basic**: RDS Basic Edition
+	//     	- **Basic**: Basic Edition.
 	//
-	//     	- **HighAvailability**: RDS High-availability Edition
+	//     	- **HighAvailability**: High availability series.
 	//
-	//     	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
+	//     	- **cluster**: MySQL or PostgreSQL Cluster Edition.
 	//
-	//     	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+	//     	- **AlwaysOn**: SQL Server Cluster Edition.
 	//
-	//     	- **Finance**: RDS Basic Edition for serverless instances
+	//     	- **Finance**: RDS Enterprise Edition.
 	//
-	// 	- Serverless instance
+	// 	- Serverless instances
 	//
-	//     	- **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+	//     	- **serverless_basic**: Serverless Basic Edition. (Applicable only to MySQL and PostgreSQL)
 	//
-	//     	- **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+	//     	- **serverless_standard**: Serverless high availability series. (Applicable only to MySQL and PostgreSQL)
 	//
-	//     	- **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
+	//     	- **serverless_ha**: SQL Server Serverless high availability series.
 	//
 	// example:
 	//
 	// Basic
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The storage type of the instance.
+	// The instance storage type.
 	//
 	// example:
 	//

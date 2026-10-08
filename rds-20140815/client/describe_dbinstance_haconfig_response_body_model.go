@@ -26,15 +26,15 @@ type DescribeDBInstanceHAConfigResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The high availability mode of the instance. Valid values:
+	// The High-availability Mode. Valid values:
 	//
-	// 	- **RPO**: Data consistency is preferred. The instance ensures data reliability to minimize data losses. If you have high requirements on data consistency, select this mode.
+	// 	- **RPO**: Data consistency is preferred. The instance prioritizes data reliability to minimize data loss. Use RPO mode if you have high requirements for data consistency.
 	//
-	// 	- **RTO**: Service availability is preferred. The instance restores the database service at the earliest opportunity to ensure service availability. If you have high requirements on instance availability, select this mode.
+	// 	- **RTO**: Instance availability is preferred. The instance recovers services as soon as possible to maximize available time. Use RTO mode if you have high requirements for database uptime.
 	//
-	// > This parameter is returned only for instances that run MySQL.
+	// >This parameter is returned only for ApsaraDB RDS for MySQL instances.
 	//
 	// example:
 	//
@@ -47,15 +47,15 @@ type DescribeDBInstanceHAConfigResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data replication mode of the instance. Valid values:
+	// The data replication mode. Valid values:
 	//
-	// 	- **Sync**: the synchronous mode
+	// 	- **Sync**: synchronous replication
 	//
-	// 	- **Semi-sync**: the semi-synchronous replication mode
+	// 	- **Semi-sync**: semi-synchronous replication
 	//
-	// 	- **Async**: the asynchronous mode
+	// 	- **Async**: asynchronous replication
 	//
-	// > This parameter is returned only for instances that run MySQL.
+	// >This parameter is returned only for ApsaraDB RDS for MySQL instances.
 	//
 	// example:
 	//

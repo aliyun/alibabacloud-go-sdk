@@ -40,7 +40,7 @@ type DescribeTagsRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
-	// >  If you specify this parameter, all tags that are added to this instance are queried, and other filter conditions becomes invalid.
+	// > If you specify this parameter, all tags of the instance are returned and other filter conditions are ignored.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeTagsRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,15 @@ type DescribeTagsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of resource. Set the value to INSTANCE.
+	// The resource type. Set the value to a fixed value.
 	//
 	// example:
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag that you want to query. The value of the parameter consists of TagKey and TagValue. Format: `{"TagKey":"TagValue"}`.
+	// The tags to query, including TagKey and TagValue.
+	//
+	// Format: `{"TagKey":"TagValue"}`.
 	//
 	// example:
 	//

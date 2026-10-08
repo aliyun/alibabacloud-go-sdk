@@ -30,7 +30,7 @@ type iModifyDBProxyEndpointAddressRequest interface {
 }
 
 type ModifyDBProxyEndpointAddressRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,20 @@ type ModifyDBProxyEndpointAddressRequest struct {
 	//
 	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type of the database proxy endpoint. Valid values:
+	// The network type of the database proxy endpoint to be modified. Valid values:
 	//
-	// 	- **Public**
+	// 	- **Public**: Internet
 	//
-	// 	- **VPC*	- (default)
+	// 	- **VPC*	- (default): virtual private cloud (VPC)
 	//
-	// >  If the RDS instance runs MySQL, this parameter is required.
+	//
+	// > This parameter is required when the database engine is RDS MySQL.
 	//
 	// example:
 	//
 	// Public
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID of the database proxy endpoint.
+	// The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -58,23 +59,23 @@ type ModifyDBProxyEndpointAddressRequest struct {
 	//
 	// ta9um4****
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// A deprecated parameter. You do not need to specify this parameter.
+	// A deprecated parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The prefix of the new database proxy endpoint. A custom value is supported.
+	// The prefix of the new database proxy endpoint. You can customize this value.
 	//
-	// >  You must specify at least one of the **DBProxyNewConnectString*	- and **DBProxyNewConnectStringPort*	- parameters.
+	// >You must specify at least one of the **DBProxyNewConnectString*	- and **DBProxyNewConnectStringPort*	- parameters.
 	//
 	// example:
 	//
 	// test123456
 	DBProxyNewConnectString *string `json:"DBProxyNewConnectString,omitempty" xml:"DBProxyNewConnectString,omitempty"`
-	// The port number that is associated with the database proxy endpoint. A custom value is supported.
+	// The port number of the new database proxy endpoint. You can customize this value.
 	//
-	// >  You must specify at least one of the **DBProxyNewConnectString*	- and **DBProxyNewConnectStringPort*	- parameters.
+	// >You must specify at least one of the **DBProxyNewConnectString*	- and **DBProxyNewConnectStringPort*	- parameters.
 	//
 	// example:
 	//

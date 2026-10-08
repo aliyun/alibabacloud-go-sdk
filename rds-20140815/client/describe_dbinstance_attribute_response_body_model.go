@@ -17,7 +17,7 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 
 type DescribeDBInstanceAttributeResponseBody struct {
 	Items *DescribeDBInstanceAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -134,6 +134,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DeletionProtection             *bool                                                                                 `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	DisasterRecoveryInfo           *string                                                                               `json:"DisasterRecoveryInfo,omitempty" xml:"DisasterRecoveryInfo,omitempty"`
 	DisasterRecoveryInstances      *string                                                                               `json:"DisasterRecoveryInstances,omitempty" xml:"DisasterRecoveryInstances,omitempty"`
+	DrReplicaInfo                  *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo         `json:"DrReplicaInfo,omitempty" xml:"DrReplicaInfo,omitempty" type:"Struct"`
 	Engine                         *string                                                                               `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion                  *string                                                                               `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ExpireTime                     *string                                                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
@@ -158,6 +159,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	MaxIOMBPS                      *int32                                                                                `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
 	MaxIOPS                        *int32                                                                                `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	MultipleTempUpgrade            *bool                                                                                 `json:"MultipleTempUpgrade,omitempty" xml:"MultipleTempUpgrade,omitempty"`
+	NodePerformance                *string                                                                               `json:"NodePerformance,omitempty" xml:"NodePerformance,omitempty"`
 	OptimizedWritesInfo            *string                                                                               `json:"OptimizedWritesInfo,omitempty" xml:"OptimizedWritesInfo,omitempty"`
 	PGBouncerEnabled               *string                                                                               `json:"PGBouncerEnabled,omitempty" xml:"PGBouncerEnabled,omitempty"`
 	PayType                        *string                                                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -184,11 +186,12 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// ON
-	VectorSupportStatus *string `json:"VectorSupportStatus,omitempty" xml:"VectorSupportStatus,omitempty"`
-	VpcCloudInstanceId  *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId              *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	KindCode            *string `json:"kindCode,omitempty" xml:"kindCode,omitempty"`
+	VectorSupportStatus *string                                                                         `json:"VectorSupportStatus,omitempty" xml:"VectorSupportStatus,omitempty"`
+	VpcCloudInstanceId  *string                                                                         `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	VpcId               *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WarmStandbyInfo     *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo `json:"WarmStandbyInfo,omitempty" xml:"WarmStandbyInfo,omitempty" type:"Struct"`
+	ZoneId              *string                                                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	KindCode            *string                                                                         `json:"kindCode,omitempty" xml:"kindCode,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) String() string {
@@ -355,6 +358,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetDis
 	return s.DisasterRecoveryInstances
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetDrReplicaInfo() *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo {
+	return s.DrReplicaInfo
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetEngine() *string {
 	return s.Engine
 }
@@ -449,6 +456,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetMax
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetMultipleTempUpgrade() *bool {
 	return s.MultipleTempUpgrade
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetNodePerformance() *string {
+	return s.NodePerformance
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetOptimizedWritesInfo() *string {
@@ -553,6 +564,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetVpc
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetWarmStandbyInfo() *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo {
+	return s.WarmStandbyInfo
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetZoneId() *string {
@@ -758,6 +773,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDis
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDrReplicaInfo(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DrReplicaInfo = v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetEngine(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.Engine = &v
 	return s
@@ -875,6 +895,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMax
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMultipleTempUpgrade(v bool) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MultipleTempUpgrade = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetNodePerformance(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.NodePerformance = &v
 	return s
 }
 
@@ -1008,6 +1033,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetVpc
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetWarmStandbyInfo(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.WarmStandbyInfo = v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.ZoneId = &v
 	return s
@@ -1029,6 +1059,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) Valida
 			return err
 		}
 	}
+	if s.DrReplicaInfo != nil {
+		if err := s.DrReplicaInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Extra != nil {
 		if err := s.Extra.Validate(); err != nil {
 			return err
@@ -1046,6 +1081,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) Valida
 	}
 	if s.SlaveZones != nil {
 		if err := s.SlaveZones.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WarmStandbyInfo != nil {
+		if err := s.WarmStandbyInfo.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1233,6 +1273,51 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBCluste
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNodesDBClusterNode) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo struct {
+	InsName  *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	UnitCode *string `json:"UnitCode,omitempty" xml:"UnitCode,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) GetInsName() *string {
+	return s.InsName
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) GetRegion() *string {
+	return s.Region
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) GetUnitCode() *string {
+	return s.UnitCode
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) SetInsName(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) SetRegion(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) SetUnitCode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo {
+	s.UnitCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1481,5 +1566,50 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZon
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo struct {
+	InsName  *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	UnitCode *string `json:"UnitCode,omitempty" xml:"UnitCode,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) GetInsName() *string {
+	return s.InsName
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) GetRegion() *string {
+	return s.Region
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) GetUnitCode() *string {
+	return s.UnitCode
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) SetInsName(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) SetRegion(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) SetUnitCode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo {
+	s.UnitCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo) Validate() error {
 	return dara.Validate(s)
 }

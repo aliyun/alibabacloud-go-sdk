@@ -28,17 +28,17 @@ type DescribeDBMiniEngineVersionsResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The number of entries returned per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The details of the minor engine version.
+	// The list of minor engine versions.
 	MinorVersionItems []*DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems `json:"MinorVersionItems,omitempty" xml:"MinorVersionItems,omitempty" type:"Repeated"`
-	// The page number returned.
+	// The current page number.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeDBMiniEngineVersionsResponseBody struct {
 	//
 	// EFB6083A-7699-489B-8278-C0CB4793A96E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -134,21 +134,19 @@ func (s *DescribeDBMiniEngineVersionsResponseBody) Validate() error {
 }
 
 type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
-	// The PostgreSQL version to which the minor engine version corresponds. For more information, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
-	//
-	// >  This parameter is available only for instances that run **PostgreSQL**.
+	// The community minor version that corresponds to the minor engine version.
 	//
 	// example:
 	//
-	// 13.6
+	// 5.7.38
 	CommunityMinorVersion *string `json:"CommunityMinorVersion,omitempty" xml:"CommunityMinorVersion,omitempty"`
-	// The database engine that corresponds to the minor engine version.
+	// The database engine that corresponds to the minor version.
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version that corresponds to the minor engine version.
+	// The database engine version that corresponds to the minor version.
 	//
 	// example:
 	//
@@ -162,41 +160,41 @@ type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// The expiration status of the minor engine version. Valid values:
 	//
-	// 	- **vaild**
+	// - **vaild**: Milvus version is valid.
 	//
-	// 	- **expired**
+	// - **expired**: Milvus version has expired.
 	//
-	// >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
+	// > If the offline status is Offline, Milvus version has been taken offline and the expiration status is ignored. If the offline status is Online and the expiration status is expired, Milvus version has exceeded its lifecycle. If the offline status is Online and the expiration status is vaild, Milvus version is still within its lifecycle.
 	//
 	// example:
 	//
 	// vaild
 	ExpireStatus *string `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
-	// An internal parameter. You do not need to specify this parameter.
+	// An internal parameter. You can ignore this parameter.
 	//
 	// example:
 	//
 	// True
 	IsHotfixVersion *bool `json:"IsHotfixVersion,omitempty" xml:"IsHotfixVersion,omitempty"`
-	// The minor engine version.
+	// The version number of the minor engine version.
 	//
 	// example:
 	//
 	// rds_20220731
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The RDS edition of the instance that runs the minor engine version. Valid values:
+	// The instance edition that corresponds to the minor version. Valid values:
 	//
-	// 	- **Basic**: RDS Basic Edition
+	// 	- **Basic**: Basic Edition.
 	//
-	// 	- **HighAvailability**: RDS High-availability Edition
+	// 	- **HighAvailability**: high-availability series.
 	//
-	// 	- **Finance**: RDS Enterprise Edition
+	// 	- **Finance**: RDS Enterprise Edition.
 	//
 	// example:
 	//
 	// HighAvailability
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The URL of the release notes for the minor engine version.
+	// The URL of the release notes for the minor version.
 	//
 	// example:
 	//
@@ -204,21 +202,21 @@ type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
 	// The release type. Valid values:
 	//
-	// 	- **LTS**: a long-term version
+	// 	- **LTS**: Long-term support version.
 	//
-	// 	- **BETA**: a preview version
+	// 	- **BETA**: Preview version.
 	//
 	// example:
 	//
 	// BETA
 	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
-	// The status of the minor engine version. Valid values:
+	// The offline status of the minor engine version. Valid values:
 	//
-	// 	- **Offline**: discontinued
+	// - **Offline**: Milvus version has been taken offline.
 	//
-	// 	- **Online**: available
+	// - **Online**: Milvus version is online.
 	//
-	// >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
+	// > If the offline status is Offline, Milvus version has been taken offline and the expiration status is ignored. If the offline status is Online and the expiration status is expired, Milvus version has exceeded its lifecycle. If the offline status is Online and the expiration status is vaild, Milvus version is still within its lifecycle.
 	//
 	// example:
 	//
@@ -226,11 +224,11 @@ type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// The tag that corresponds to the minor engine version. Valid values:
 	//
-	// 	- **pgsql_docker_image**: tag of common instances
+	// - **pgsql_docker_image**: general instance tag.
 	//
-	// 	- **pgsql_babelfish_image**: tag of instances for which Babelfish is enabled
+	// - **pgsql_babelfish_image**: Babelfish instance tag.
 	//
-	// >  This parameter is available only for instances that run **PostgreSQL**.
+	// > This value is returned only for **PostgreSQL**.
 	//
 	// example:
 	//

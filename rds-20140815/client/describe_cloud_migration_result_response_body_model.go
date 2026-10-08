@@ -22,7 +22,7 @@ type iDescribeCloudMigrationResultResponseBody interface {
 }
 
 type DescribeCloudMigrationResultResponseBody struct {
-	// The details about the cloud migration task.
+	// The list of cloud migration tasks.
 	Items []*DescribeCloudMigrationResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,13 +30,13 @@ type DescribeCloudMigrationResultResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeCloudMigrationResultResponseBody) Validate() error {
 }
 
 type DescribeCloudMigrationResultResponseBodyItems struct {
-	// The details about the migration task.
+	// The migration details.
 	//
 	// example:
 	//
@@ -129,47 +129,47 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	//
 	// 2022-02-25T08:53:13Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the task was modified.
+	// The time when the task was last modified.
 	//
 	// example:
 	//
 	// 2022-03-01T06:39:51Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The migration phase of the migration task.
+	// The migration stage. Valid values:
 	//
-	// 	- **precheck**: precheck
+	// - **precheck**: Precheck.
 	//
-	// 	- **basebackup**: full data backup
+	// - **basebackup**: Full backup.
 	//
-	// 	- **startup**: link establishment
+	// - **startup**: Link setup.
 	//
-	// 	- **increment**: incremental data synchronization
+	// - **increment**: Incremental synchronization.
 	//
-	// 	- **switch**: cloud migration-triggered switchover
+	// - **switch**: Cloud switchover.
 	//
-	// 	- **success**: cloud migration completed
+	// - **success**: Migration completed.
 	//
 	// example:
 	//
 	// switch
 	MigrateStage *string `json:"MigrateStage,omitempty" xml:"MigrateStage,omitempty"`
-	// The information about the replication link.
+	// The replication task information.
 	//
 	// example:
 	//
 	// {\\"Status\\":\\"streaming\\",\\"ReceiveStartLsn\\":\\"0/3000000\\",\\"ReceivedTli\\":\\"1\\",\\"LatestEndTime\\":\\"2022-02-25 17:03:59.3344+08\\",\\"Synced\\":\\"true\\",\\"IsSlave\\":\\"true\\",\\"ReplayTimestamp\\":\\"null\\",\\"LastMsgSendTime\\":\\"2022-03-01 14:42:57.967537+08\\",\\"Conninfo\\":\\"user=migratetest password=*******	- channel_binding=prefer dbname=replication host=172.16.254.203 port=5432 application_name=rds_db_instance fallback_application_name=walreceiver sslmode=prefer sslcompression=1 sslsni=1 ssl_min_protocol_version=TLSv1.2 gssencmode=prefer krbsrvname=postgres target_session_attrs=any\\",\\"LastMsgReceiptTime\\":\\"2022-03-01 14:42:57.96727+08\\",\\"LatestEndLsn\\":\\"0/3000148\\",\\"ReceivedLsn\\":\\"0/3000148\\",\\"ReplayLsn\\":\\"0/3000148\\",\\"ReceiveStartTli\\":\\"1\\",\\"ReplayLag\\":\\"0\\"}
 	ReplicationInfo *string `json:"ReplicationInfo,omitempty" xml:"ReplicationInfo,omitempty"`
-	// The status of data replication.
+	// The replication status. Valid values:
 	//
-	// 	- **unstarted**
+	// - **unstarted**: Not started.
 	//
-	// 	- **catchup**
+	// - **catchup**: Catching up.
 	//
-	// 	- **streaming**
+	// - **streaming**: Streaming.
 	//
-	// 	- **disconnect**
+	// - **disconnect**: Disconnected.
 	//
-	// 	- **finish**
+	// - **finish**: Completed.
 	//
 	// example:
 	//
@@ -181,17 +181,17 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	//
 	// migratetest
 	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
-	// The environment in which the self-managed PostgreSQL instance runs.
+	// The type of the self-managed PostgreSQL database. Valid values:
 	//
-	// 	- **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
+	// - **idcOnVpc**: A self-managed PostgreSQL database in an IDC that is connected to a VPC.
 	//
-	// 	- **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
+	// - **ecsOnVpc**: A self-managed PostgreSQL database on an Alibaba Cloud ECS instance.
 	//
 	// example:
 	//
 	// ecsonvpc
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The private IP address that is used to connect to the self-managed PostgreSQL instance.
+	// The internal IP address of the self-managed PostgreSQL database.
 	//
 	// example:
 	//
@@ -203,25 +203,25 @@ type DescribeCloudMigrationResultResponseBodyItems struct {
 	//
 	// 123456
 	SourcePassword *string `json:"SourcePassword,omitempty" xml:"SourcePassword,omitempty"`
-	// The port number that is used to connect to the self-managed PostgreSQL instance.
+	// The port of the self-managed PostgreSQL database.
 	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The time when the switchover was performed.
+	// The switchover time.
 	//
 	// example:
 	//
 	// 2022-03-01T06:40:51Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// A reserved parameter. The return value of this parameter is empty.
+	// A reserved parameter. The query result is empty.
 	//
 	// example:
 	//
 	// null
 	TargetEip *string `json:"TargetEip,omitempty" xml:"TargetEip,omitempty"`
-	// The ID of the destination instance.
+	// The instance ID of the target instance.
 	//
 	// example:
 	//

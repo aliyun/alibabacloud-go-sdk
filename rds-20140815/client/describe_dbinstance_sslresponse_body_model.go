@@ -54,99 +54,99 @@ type iDescribeDBInstanceSSLResponseBody interface {
 }
 
 type DescribeDBInstanceSSLResponseBody struct {
-	// The method that is used to verify the instance. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The authentication method of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
 	//
-	// 	- **cert**
+	// - **cert**
 	//
-	// 	- **prefer**
+	// - **prefer**
 	//
-	// 	- **verify-ca**
+	// - **verify-ca**
 	//
-	// 	- **verify-full*	- (supported only when the instance runs PostgreSQL 12 or later)
+	// - **verify-full*	- (supported by ApsaraDB RDS for PostgreSQL 12 and later)
 	//
 	// example:
 	//
 	// cert
 	ACL *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
-	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
+	// The server certificate type of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
 	//
-	// 	- **aliyun**: a cloud certificate
+	// - **aliyun**: The cloud certificate is used.
 	//
-	// 	- **custom**: a custom certificate
+	// - **custom**: A custom certificate is used.
 	//
 	// example:
 	//
 	// aliyun
 	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The public key of the client certificate authority (CA) for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****viXk=-----END CERTIFICATE-----
 	ClientCACert *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
-	// The time when the public key of the CA that issues client certificates expires. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
+	// The expiration time of the public key of the client certificate authorization authority (CA) for the ApsaraDB RDS for PostgreSQL instance with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
-	// This parameter is not supported.
+	// This parameter is not supported. You can ignore this parameter.
 	//
 	// example:
 	//
 	// -
 	ClientCACertExpireTime *string `json:"ClientCACertExpireTime,omitempty" xml:"ClientCACertExpireTime,omitempty"`
-	// The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The client certificate revocation certificate file of the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// -----BEGIN X509 CRL-----MIIB****19mg==-----END X509 CRL-----
 	ClientCertRevocationList *string `json:"ClientCertRevocationList,omitempty" xml:"ClientCertRevocationList,omitempty"`
-	// The endpoint that is protected by SSL encryption.
+	// The endpoint that is protected by SSL.
 	//
 	// example:
 	//
 	// rm-bp162dfr55g47****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// Indicates whether the [forceful SSL encryption](https://help.aliyun.com/document_detail/95715.html) feature is enabled. This parameter is supported only for RDS for SQL Server instances.
+	// Indicates whether the [forced Secure Sockets Layer (SSL) encryption feature](https://help.aliyun.com/document_detail/95715.html) is enabled for the ApsaraDB RDS for SQL Server instance. Valid values:
 	//
-	// 	- **1**: The feature is enabled.
+	// - **1**: Enabled.
 	//
-	// 	- **0**: The feature is disabled.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
-	// The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The current SSL link configuration status of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
 	//
-	// 	- **success**: The SSL link is successfully configured.
+	// - **success**: Successful.
 	//
-	// 	- **setting**: The SSL link is being configured.
+	// - **setting**: Being configured.
 	//
-	// 	- **failed**: The SSL link failed to be configured.
+	// - **failed**: Failed.
 	//
 	// example:
 	//
 	// setting
 	LastModifyStatus *string `json:"LastModifyStatus,omitempty" xml:"LastModifyStatus,omitempty"`
-	// The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The reason for the current SSL link configuration status of the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// Modify DB Instance SSL Config.
 	ModifyStatusReason *string `json:"ModifyStatusReason,omitempty" xml:"ModifyStatusReason,omitempty"`
-	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
+	// The authentication method for replication permissions of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
 	//
-	// 	- **cert**
+	// - **cert**
 	//
-	// 	- **prefer**
+	// - **prefer**
 	//
-	// 	- **verify-ca**
+	// - **verify-ca**
 	//
-	// 	- **verify-full*	- (supported only when the instance runs PostgreSQL 12 or later)
+	// - **verify-full*	- (supported by ApsaraDB RDS for PostgreSQL 12 and later)
 	//
 	// example:
 	//
 	// cert
 	ReplicationACL *string `json:"ReplicationACL,omitempty" xml:"ReplicationACL,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -154,85 +154,101 @@ type DescribeDBInstanceSSLResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the SSL certificate needs to be updated. Valid values:
 	//
-	// >  An SSL certificate remains valid for one year. Before the used SSL certificate expires, you must update the validity period of the SSL certificate. If you do not update the validity period of the SSL certificate, your application or client that uses encrypted network connections cannot connect to your RDS instance.
+	// > The SSL certificate is valid for one year. If the certificate is not renewed after it expires, client programs that use encrypted connections cannot connect to the instance.
 	//
-	// **RDS instances that run MySQL and SQL Server**
+	// <details>
 	//
-	// 	- **No**: The SSL certificate does not need to be updated.
+	// <summary>MySQL and SQL Server</summary>
 	//
-	// 	- **Yes**: The SSL certificate needs to be updated.
+	// - **No**: No update is required.
 	//
-	// **RDS instances that run PostgreSQL**
+	// - **Yes**: An update is required.
 	//
-	// 	- **0**: The SSL certificate does not need to be updated.
+	// </details>
 	//
-	// 	- **1**: The SSL certificate needs to be updated.
+	// <details>
+	//
+	// <summary>PostgreSQL</summary>
+	//
+	// - **0**: No update is required.
+	//
+	// - **1**: An update is required.
+	//
+	// </details>
 	//
 	// example:
 	//
 	// Yes
 	RequireUpdate *string `json:"RequireUpdate,omitempty" xml:"RequireUpdate,omitempty"`
-	// The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with cloud disk.
+	// The list of server certificates that need to be updated for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// -
 	RequireUpdateItem *string `json:"RequireUpdateItem,omitempty" xml:"RequireUpdateItem,omitempty"`
-	// The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The reason why the certificates need to be updated for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// -
 	RequireUpdateReason *string `json:"RequireUpdateReason,omitempty" xml:"RequireUpdateReason,omitempty"`
-	// The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is valid only when the CAType parameter value is aliyun.
+	// The creation time of the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks. This parameter is valid only when CAType is set to aliyun.
 	//
 	// example:
 	//
 	// -
 	SSLCreateTime *string `json:"SSLCreateTime,omitempty" xml:"SSLCreateTime,omitempty"`
-	// Indicates whether SSL encryption is enabled. Valid values:
+	// The SSL encryption status. Valid values:
 	//
-	// **RDS instances that run MySQL and SQL Server**
+	// <details>
 	//
-	// 	- **Yes**: SSL encryption is enabled.
+	// <summary>MySQL and SQL Server</summary>
 	//
-	// 	- **No**: SSL encryption is disabled.
+	// - **Yes**: Enabled.
 	//
-	// **RDS instances that run PostgreSQL**
+	// - **No**: Disabled.
 	//
-	// 	- **on**: SSL encryption is enabled.
+	// </details>
 	//
-	// 	- **off**: SSL encryption is disabled.
+	// <details>
+	//
+	// <summary>PostgreSQL</summary>
+	//
+	// - **on**: Enabled.
+	//
+	// - **off**: Disabled.
+	//
+	// </details>
 	//
 	// example:
 	//
 	// Yes
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
+	// The expiration time of the SSL certificate. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2022-10-11T08:16:43Z
+	// 2025-06-16T08:16:43Z
 	SSLExpireTime *string `json:"SSLExpireTime,omitempty" xml:"SSLExpireTime,omitempty"`
-	// The URL of the certificate that is used to issue the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disk.
+	// The URL of the CA certificate that is used to issue the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// -
 	ServerCAUrl *string `json:"ServerCAUrl,omitempty" xml:"ServerCAUrl,omitempty"`
-	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The content of the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
-	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+	// The private key of the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
 	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----
 	ServerKey *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
-	// The [minimum Transport Layer Security (TLS) version](https://help.aliyun.com/document_detail/95715.html). Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances.
+	// The specified [minimum TLS version](https://help.aliyun.com/document_detail/95715.html) for the ApsaraDB RDS for SQL Server instance. Valid values: 1.0, 1.1, and 1.2.
 	//
 	// example:
 	//

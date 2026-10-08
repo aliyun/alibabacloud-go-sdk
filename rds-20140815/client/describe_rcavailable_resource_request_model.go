@@ -37,6 +37,8 @@ type iDescribeRCAvailableResourceRequest interface {
 	GetSpotDuration() *int32
 	SetSpotStrategy(v string) *DescribeRCAvailableResourceRequest
 	GetSpotStrategy() *string
+	SetSupportCase(v string) *DescribeRCAvailableResourceRequest
+	GetSupportCase() *string
 	SetSystemDiskCategory(v string) *DescribeRCAvailableResourceRequest
 	GetSystemDiskCategory() *string
 	SetZoneId(v string) *DescribeRCAvailableResourceRequest
@@ -44,70 +46,25 @@ type iDescribeRCAvailableResourceRequest interface {
 }
 
 type DescribeRCAvailableResourceRequest struct {
-	// example:
-	//
-	// 2
-	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// example:
-	//
-	// cloud_ssd
+	Cores            *int32  `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// example:
-	//
-	// dh-bp165p6xk2tlw61e****
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostId  *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// InstanceType
-	DestinationResource *string `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty"`
-	// example:
-	//
-	// PrePaid
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// example:
-	//
-	// mysql.x4.4xlarge.7cm
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// example:
-	//
-	// optimized
-	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// example:
-	//
-	// 8.0
-	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// example:
-	//
-	// vpc
-	NetworkCategory *string `json:"NetworkCategory,omitempty" xml:"NetworkCategory,omitempty"`
+	DestinationResource *string  `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty"`
+	InstanceChargeType  *string  `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceType        *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IoOptimized         *string  `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkCategory     *string  `json:"NetworkCategory,omitempty" xml:"NetworkCategory,omitempty"`
 	// This parameter is required.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// instance
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// example:
-	//
-	// Region
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// example:
-	//
-	// 1
-	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// example:
-	//
-	// NoSpot
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// example:
-	//
-	// cloud_ssd
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Scope              *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SpotDuration       *int32  `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	SpotStrategy       *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SupportCase        *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-e
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCAvailableResourceRequest) String() string {
@@ -172,6 +129,10 @@ func (s *DescribeRCAvailableResourceRequest) GetSpotDuration() *int32 {
 
 func (s *DescribeRCAvailableResourceRequest) GetSpotStrategy() *string {
 	return s.SpotStrategy
+}
+
+func (s *DescribeRCAvailableResourceRequest) GetSupportCase() *string {
+	return s.SupportCase
 }
 
 func (s *DescribeRCAvailableResourceRequest) GetSystemDiskCategory() *string {
@@ -249,6 +210,11 @@ func (s *DescribeRCAvailableResourceRequest) SetSpotDuration(v int32) *DescribeR
 
 func (s *DescribeRCAvailableResourceRequest) SetSpotStrategy(v string) *DescribeRCAvailableResourceRequest {
 	s.SpotStrategy = &v
+	return s
+}
+
+func (s *DescribeRCAvailableResourceRequest) SetSupportCase(v string) *DescribeRCAvailableResourceRequest {
+	s.SupportCase = &v
 	return s
 }
 

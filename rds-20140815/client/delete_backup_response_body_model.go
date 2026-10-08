@@ -14,7 +14,7 @@ type iDeleteBackupResponseBody interface {
 }
 
 type DeleteBackupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

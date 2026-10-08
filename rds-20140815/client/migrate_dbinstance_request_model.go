@@ -36,13 +36,13 @@ type iMigrateDBInstanceRequest interface {
 }
 
 type MigrateDBInstanceRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5******
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
 	//
@@ -50,22 +50,22 @@ type MigrateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// dhg-4n******
+	// dhg-4nxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The time when you want the system to start the migration. Valid values:
+	// The migration time. Valid values:
 	//
-	// 	- **Immediately**: The system immediately starts the migration. This is the default value.
+	// 	- **Immediately**: migrates the instance immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: The system starts the migration during the specified maintenance window.
+	// 	- **MaintainTime**: migrates the instance during the maintenance window.
 	//
-	// 	- **Specified**: The system starts the migration at the specified point in time.
+	// 	- **Specified**: migrates the instance at a specified time.
 	//
 	// example:
 	//
 	// MaintainTime
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -73,37 +73,37 @@ type MigrateDBInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time when you want the system to start the migration. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The specified switchover time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// > This parameter must be specified when you set **EffectiveTime*	- to **Specified**.
+	// >This parameter is required when **EffectiveTime*	- is set to **Specified**.
 	//
 	// example:
 	//
 	// 2019-10-21T10:00:00Z
 	SpecifiedTime *string `json:"SpecifiedTime,omitempty" xml:"SpecifiedTime,omitempty"`
-	// The ID of the host to which you want to migrate the primary instance. You can call the DescribeDedicatedHosts operation to query the host ID.
+	// The ID of the destination host to which the primary instance is migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
 	//
 	// example:
 	//
-	// i-bp******
+	// i-bpxxxxxxx1
 	TargetDedicatedHostIdForMaster *string `json:"TargetDedicatedHostIdForMaster,omitempty" xml:"TargetDedicatedHostIdForMaster,omitempty"`
-	// The ID of the host to which you want to migrate the secondary instance. You can call the DescribeDedicatedHosts operation to query the host ID.
+	// The ID of the destination host to which the secondary instance is migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
 	//
 	// example:
 	//
-	// i-bp******
+	// i-bpxxxxxxx2
 	TargetDedicatedHostIdForSlave *string `json:"TargetDedicatedHostIdForSlave,omitempty" xml:"TargetDedicatedHostIdForSlave,omitempty"`
 	// The zone ID of the secondary node.
 	//
 	// example:
 	//
-	// cn-hangzhou-h
+	// cn-hangzhou-j
 	ZoneIdForFollower *string `json:"ZoneIdForFollower,omitempty" xml:"ZoneIdForFollower,omitempty"`
-	// The zone ID of the logger instance.
+	// The zone ID of the log node.
 	//
 	// example:
 	//
-	// cn-hangzhou-i
+	// cn-hangzhou-k
 	ZoneIdForLog *string `json:"ZoneIdForLog,omitempty" xml:"ZoneIdForLog,omitempty"`
 }
 

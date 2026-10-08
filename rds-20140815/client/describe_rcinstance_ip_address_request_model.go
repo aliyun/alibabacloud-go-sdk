@@ -32,65 +32,65 @@ type iDescribeRCInstanceIpAddressRequest interface {
 }
 
 type DescribeRCInstanceIpAddressRequest struct {
-	// The page number. Default value: 1. Pages start from page 1.
+	// The page number of the page to return. Default value: 1, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The region ID of the asset.
+	// The region ID of the assets that are assigned public IP addresses to query.
 	//
 	// example:
 	//
 	// cn-beijing
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
-	// The DDoS mitigation status of the asset. Valid values:
+	// The DDoS mitigation status of the assets that are assigned public IP addresses to query. Valid values:
 	//
-	// 	- **defense**: queries assets for which traffic scrubbing is performed.
+	// - **defense**: Cleaning. Assets that are assigned public IP addresses for which Anti-DDoS Origin scrubs traffic are queried.
 	//
-	// 	- **blackhole**: queries assets for which blackhole filtering is triggered.
+	// - **blackhole**: Black Hole Activated. Assets that are assigned public IP addresses that are in the blackhole filtering status are queried.
 	//
 	// example:
 	//
 	// defense
 	DdosStatus *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
-	// The ID of the RDS Custom instance to which the asset to query is added.
+	// The instance ID of the Custom instance to which the assets that are assigned public IP addresses belong.
 	//
 	// example:
 	//
 	// rc-y6dn4pyuub1r89******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the asset to query.
+	// The IP address of the assets that are assigned public IP addresses to query.
 	//
 	// example:
 	//
 	// 39.105.XXX.XXX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	// The name of the RDS Custom instance to which the asset to query is added.
+	// The name of the Custom instance to which the assets that are assigned public IP addresses belong.
 	//
 	// example:
 	//
 	// rc-y6dn4pyuub1r89******
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of the asset that is assigned a public IP address. Set the value to **ecs**.
+	// The instance type of the assets that are assigned public IP addresses to query. Set the value to **ecs**.
 	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The number of instances on each page.
+	// Settings for paged query. The number of instances to return on each page for paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the RDS Custom instance resides.
+	// The region ID of the Custom instance.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the resource. Set the value to **ecs**.
+	// The resource type. Set the value to **ecs**.
 	//
 	// example:
 	//

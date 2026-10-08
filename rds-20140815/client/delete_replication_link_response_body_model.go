@@ -20,29 +20,31 @@ type iDeleteReplicationLinkResponseBody interface {
 }
 
 type DeleteReplicationLinkResponseBody struct {
-	// The ID of the DR instance.
+	// The instance ID of the disaster recovery instance.
 	//
 	// example:
 	//
-	// pgm-bp1trqb4p1xd****
+	// PostgreSQL：pgm-bp1trqb4p1******
+	//
+	// SQL Server：135****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 847BA085-B377-4BFA-8267-F82345ECE1D2
+	// 1EFCFB59-7152-19C4-8C53-F887D107AFD3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// 3472****
+	// 159****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task name.
 	//
 	// example:
 	//
-	// test01
+	// zbtest
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 

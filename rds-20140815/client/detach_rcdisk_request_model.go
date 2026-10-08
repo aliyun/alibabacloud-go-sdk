@@ -20,13 +20,13 @@ type iDetachRCDiskRequest interface {
 }
 
 type DetachRCDiskRequest struct {
-	// The reserved parameter. This parameter is not supported.
+	// A reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
-	// true
+	// none
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The ID of the disk that you want to detach.
+	// The ID of the cloud disk to be detached.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DetachRCDiskRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query available region IDs.
 	//
 	// example:
 	//

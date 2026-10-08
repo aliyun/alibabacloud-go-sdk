@@ -16,7 +16,7 @@ type iDescribeAnalyticdbByPrimaryDBInstanceResponseBody interface {
 }
 
 type DescribeAnalyticdbByPrimaryDBInstanceResponseBody struct {
-	// The number of associated analytic instances.
+	// The number of associated analytical instances.
 	//
 	// example:
 	//

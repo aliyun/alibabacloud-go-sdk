@@ -22,15 +22,15 @@ type iModifyDBInstancePayTypeRequest interface {
 }
 
 type ModifyDBInstancePayTypeRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID of the target instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-bp1842vmucoa5w874
+	// rm-bp****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The billing method of the instance. The value is fixed as **Prepaid**, which indicates the subscription billing method.
+	// The billing method. Set the value to **Prepaid**, which specifies the subscription billing method.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type ModifyDBInstancePayTypeRequest struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The renewal cycle of the instance.
+	// The unit of the subscription duration. Valid values:
 	//
-	// 	- **Year**
+	// - **Year**
 	//
-	// 	- **Month**
+	// - **Month**
 	//
 	// This parameter is required.
 	//
@@ -51,11 +51,11 @@ type ModifyDBInstancePayTypeRequest struct {
 	// Year
 	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The subscription duration of the instance. Valid values:
+	// The subscription duration:
 	//
-	// 	- If you set the **Period*	- parameter to **Year**, the value of the **UsedTime*	- parameter ranges from 1 to 5.
+	// - If **Period*	- is set to **Year**, valid values are 1 to 5.
 	//
-	// 	- If you set the **Period*	- parameter to **Month**, the value of the **UsedTime*	- parameter ranges from 1 to 11.
+	// - If **Period*	- is set to **Month**, valid values are 1 to 11.
 	//
 	// example:
 	//

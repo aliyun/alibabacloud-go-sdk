@@ -32,6 +32,11 @@ type iSwitchOverMajorVersionUpgradeRequest interface {
 }
 
 type SwitchOverMajorVersionUpgradeRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance name.
 	//
@@ -41,28 +46,33 @@ type SwitchOverMajorVersionUpgradeRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query available regions.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             []byte  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId []byte `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The timeout period for the switchover operation. The operation is canceled after it has been performed for a time period that exceeds the value. Unit: seconds. Valid value: 10 to 3600.
+	// The maximum tolerable time for the switchover, in seconds. If the switchover exceeds this time, it is canceled. Valid values: 10 to 3600.
 	//
 	// example:
 	//
 	// 10
 	SwitchoverTimeout *int32 `json:"SwitchoverTimeout,omitempty" xml:"SwitchoverTimeout,omitempty"`
-	// The type of the switchover operation. Valid values:
+	// The type of switchover operation. Valid values:
 	//
-	// 	- switch
+	// 	- switch: performs the switchover.
 	//
-	// 	- cancel
+	// 	- cancel: cancels the switchover.
 	//
-	// 	- interrupt
+	// 	- interrupt: interrupts the switchover.
 	//
 	// example:
 	//

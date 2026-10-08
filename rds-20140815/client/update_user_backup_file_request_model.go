@@ -28,22 +28,22 @@ type iUpdateUserBackupFileRequest interface {
 }
 
 type UpdateUserBackupFileRequest struct {
-	// The backup ID. You can call the ListUserBackupFiles operation to query the backup ID.
+	// The user backup ID. You can call ListUserBackupFiles to obtain the ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// b-kwwvr7v8t7of********
+	// b-g14d0m772f7b****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The new description of the full backup file.
+	// The new description to set for the user backup.
 	//
 	// example:
 	//
 	// CommentTest
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -51,15 +51,15 @@ type UpdateUserBackupFileRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new retention period of the full backup file. Unit: days. Valid values: any non-zero positive integer.
+	// The new retention period of the user backup. Unit: days. The value must be an integer greater than 0.
 	//
 	// example:
 	//

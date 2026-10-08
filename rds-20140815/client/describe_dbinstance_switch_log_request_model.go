@@ -32,36 +32,54 @@ type iDescribeDBInstanceSwitchLogRequest interface {
 }
 
 type DescribeDBInstanceSwitchLogRequest struct {
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	//
 	// example:
 	//
-	// rdsaiiabnaiiabn
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end time of the query. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2018-06-11T15:00Z
+	// 2026-04-02T00:00Z
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Valid values: values greater than 0 and not exceeding the maximum value of Integer.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID. You can call DescribeRegions to obtain the region ID.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             []byte  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2014-06-11T15:00Z
+	// 2026-04-01T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

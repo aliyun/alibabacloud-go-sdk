@@ -30,15 +30,15 @@ type ModifyDbProxyInstanceSslRequest struct {
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-t4n3axxxxx
+	// rm-t4n3a****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The dedicated proxy endpoint of the instance.
+	// The endpoint for which you want to enable SSL encryption.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,23 @@ type ModifyDbProxyInstanceSslRequest struct {
 	//
 	// test123456.rwlb.rds.aliyuncs.com
 	DbProxyConnectString *string `json:"DbProxyConnectString,omitempty" xml:"DbProxyConnectString,omitempty"`
-	// The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID of the proxy endpoint.
+	// The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ta9um4xxxxx
+	// ta9um4****
 	DbProxyEndpointId *string `json:"DbProxyEndpointId,omitempty" xml:"DbProxyEndpointId,omitempty"`
-	// The SSL configuration setting that you want to apply on the instance. Valid values:
+	// The operation that you want to perform on SSL encryption. Valid values:
 	//
-	// 	- 0: disables SSL encryption.
+	// 	- 0: Disables SSL encryption.
 	//
-	// 	- 1: enables SSL encryption or modifies the endpoint that requires SSL encryption.
+	// 	- 1: Enables SSL encryption or changes the endpoint for which SSL encryption is enabled.
 	//
-	// 	- 2: updates the validity period of the SSL certificate.
+	// 	- 2: Updates the validity period of the SSL certificate.
 	//
-	// > This setting causes your instance to restart. Proceed with caution.
+	// >The preceding operations restart the instance. Proceed with caution.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ModifyDbProxyInstanceSslRequest struct {
 	//
 	// 1
 	DbProxySslEnabled *string `json:"DbProxySslEnabled,omitempty" xml:"DbProxySslEnabled,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// example:
 	//

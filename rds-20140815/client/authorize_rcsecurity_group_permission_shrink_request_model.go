@@ -22,9 +22,9 @@ type iAuthorizeRCSecurityGroupPermissionShrinkRequest interface {
 type AuthorizeRCSecurityGroupPermissionShrinkRequest struct {
 	// The direction of the rule. Valid values:
 	//
-	// 	- **ingress**: the inbound security group rule.
+	// - **ingress**: inbound.
 	//
-	// 	- **egress**: the outbound security group rule.
+	// - **egress**: outbound.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type AuthorizeRCSecurityGroupPermissionShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-2ze27hs990o2hn9****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The information about the security group.
+	// The security group information.
 	SecurityGroupPermissionsShrink *string `json:"SecurityGroupPermissions,omitempty" xml:"SecurityGroupPermissions,omitempty"`
 }
 

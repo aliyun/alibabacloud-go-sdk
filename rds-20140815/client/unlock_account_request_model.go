@@ -22,7 +22,7 @@ type iUnlockAccountRequest interface {
 }
 
 type UnlockAccountRequest struct {
-	// The account that you want to unlock. You can unlock a single account at a time.
+	// The name of the account that you want to unlock. You can unlock only one account at a time.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type UnlockAccountRequest struct {
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pgm-bpxxxxx
+	// pgm-bp****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

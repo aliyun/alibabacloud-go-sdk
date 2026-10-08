@@ -20,6 +20,8 @@ type iDescribeImportTaskRequest interface {
 }
 
 type DescribeImportTaskRequest struct {
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27,12 +29,16 @@ type DescribeImportTaskRequest struct {
 	// rm-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call DescribeRegions to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

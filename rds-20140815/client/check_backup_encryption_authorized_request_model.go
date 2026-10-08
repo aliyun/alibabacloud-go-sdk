@@ -16,6 +16,8 @@ type iCheckBackupEncryptionAuthorizedRequest interface {
 }
 
 type CheckBackupEncryptionAuthorizedRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

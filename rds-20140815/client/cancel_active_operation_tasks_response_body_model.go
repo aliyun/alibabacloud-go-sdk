@@ -16,7 +16,7 @@ type iCancelActiveOperationTasksResponseBody interface {
 }
 
 type CancelActiveOperationTasksResponseBody struct {
-	// The IDs of the tasks that are canceled. Multiple task IDs are separated with commas (,).
+	// The IDs of the tasks that are canceled in batch. Multiple IDs are separated by commas (,).
 	//
 	// example:
 	//

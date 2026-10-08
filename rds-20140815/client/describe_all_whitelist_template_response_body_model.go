@@ -24,37 +24,37 @@ type iDescribeAllWhitelistTemplateResponseBody interface {
 }
 
 type DescribeAllWhitelistTemplateResponseBody struct {
-	// The response code returned. Valid values:
+	// The response code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Normal.
 	//
-	// 	- **400**: client error
+	// - **400**: Client fault.
 	//
-	// 	- **401**: identity authentication failed
+	// - **401**: Authentication failed.
 	//
-	// 	- **404**: request page not found
+	// - **404**: Request page not found.
 	//
-	// 	- **500**: server error
+	// - **500**: Server fault.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeAllWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Success.
 	//
-	// 	- **400**: client error
+	// - **400**: Client error.
 	//
-	// 	- **500**: server error
+	// - **500**: Server error.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response parameters.
+	// The returned message.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribeAllWhitelistTemplateResponseBody struct {
 	//
 	// 16C62438-491B-5C02-9B49-BA924A1372A2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Successful.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -156,41 +156,41 @@ type DescribeAllWhitelistTemplateResponseBodyData struct {
 	//
 	// 1
 	CurrPageNumbers *int32 `json:"CurrPageNumbers,omitempty" xml:"CurrPageNumbers,omitempty"`
-	// Indicates whether the data that meets the conditions is displayed on the next page. Valid values:
+	// Indicates whether there is a next page of data that meets the conditions. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// Indicates whether the data that meets the conditions is displayed on the previous page. Valid values:
+	// Indicates whether there is a previous page of data that meets the conditions. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	HasPrev *bool `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The information about whitelist templates that are returned by page.
+	// The whitelist template information returned by page.
 	Templates []*DescribeAllWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 3
 	TotalPageNumbers *int32 `json:"TotalPageNumbers,omitempty" xml:"TotalPageNumbers,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -289,19 +289,19 @@ type DescribeAllWhitelistTemplateResponseBodyDataTemplates struct {
 	//
 	// 123
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP addresses.
+	// The IP address list.
 	//
 	// example:
 	//
 	// 12.2.X.X,10.0.X.X
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The ID of the whitelist template.
+	// The whitelist template ID.
 	//
 	// example:
 	//
 	// 412
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the whitelist template.
+	// The whitelist template name.
 	//
 	// example:
 	//

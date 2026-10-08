@@ -23,7 +23,7 @@ type iDescribeActionEventPolicyRequest interface {
 
 type DescribeActionEventPolicyRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DescribeActionEventPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
+	// The resource group ID. You can call DescribeDBInstanceAttribute to obtain the resource group ID.
 	//
 	// example:
 	//

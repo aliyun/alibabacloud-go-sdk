@@ -24,7 +24,7 @@ type MigrateDBNodesResponseBody struct {
 	//
 	// rm-uf64oq9381l03w1qp
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type MigrateDBNodesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

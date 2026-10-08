@@ -34,23 +34,23 @@ type DescribeDBInstanceNetInfoRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOC*****
+	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// 	- **Normal**: regular endpoint
+	// 	- **Normal**: regular endpoint.
 	//
-	// 	- **ReadWriteSplitting**: read/write splitting endpoint
+	// 	- **ReadWriteSplitting**: read/write splitting endpoint.
 	//
-	// > By default, the system returns both types of endpoints.
+	// > By default, endpoints of all types are returned.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeDBInstanceNetInfoRequest struct {
 	//
 	// example:
 	//
-	// None
+	// test
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The name of the dedicated cluster to which the instance belongs. This parameter takes effect only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster.
+	// The name of the group to which the general-purpose ApsaraDB RDS for MySQL instance in a dedicated cluster belongs.
 	//
 	// example:
 	//
-	// rgc-2ze*****
+	// rgc-2ze****
 	GeneralGroupName     *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -22,13 +22,13 @@ type iDescribeParameterTemplatesResponseBody interface {
 }
 
 type DescribeParameterTemplatesResponseBody struct {
-	// The database engine of the instance.
+	// The database engine.
 	//
 	// example:
 	//
 	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
 	// example:
 	//

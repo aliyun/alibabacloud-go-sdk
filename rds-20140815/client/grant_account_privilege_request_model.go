@@ -22,7 +22,7 @@ type iGrantAccountPrivilegeRequest interface {
 }
 
 type GrantAccountPrivilegeRequest struct {
-	// The username of the account.
+	// The account name. You can call [DescribeAccounts](https://help.aliyun.com/document_detail/610454.html) to query the account name.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,49 @@ type GrantAccountPrivilegeRequest struct {
 	//
 	// test1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The permissions that you want to grant to the account. The number of permissions must be the same as the number of databases that you specify for the DBName parameter. You can specify this parameter based on your business requirements. Valid values:
+	// The type of account permission. If you specify multiple values for DBName, you must specify the same number of permission types in the same order, separated by commas (,).
 	//
-	// 	- **ReadWrite**: read and write permissions
+	// The supported permission types vary by database engine. Valid values:
 	//
-	// 	- **ReadOnly**: read-only permissions
+	// > For more information about account permissions, see [MySQL/MariaDB permission list](https://help.aliyun.com/document_detail/146395.html), [SQL Server permission list](https://help.aliyun.com/document_detail/95692.html), and [PostgreSQL permission list](https://help.aliyun.com/document_detail/257684.html).
 	//
-	// 	- **DDLOnly**: DDL-only permissions
+	// <details>
 	//
-	// 	- **DMLOnly**: DML-only permissions
+	// <summary>ApsaraDB RDS for MySQL/ApsaraDB RDS for MariaDB</summary>
 	//
-	// 	- **DBOwner**: database owner permissions
+	// - **ReadWrite**: read and write.
 	//
-	// >
+	// - **ReadOnly**: read-only.
 	//
-	// 	- If the instance runs MySQL or MariaDB, you can set this parameter to **ReadWrite**, **ReadOnly**, **DDLOnly**, or **DMLOnly**.
+	// - **DDLOnly**: DDL only.
 	//
-	// 	- If the instance runs SQL Server, you can set this parameter to **ReadWrite**, **ReadOnly**, or **DBOwner**.
+	// - **DMLOnly**: DML only.
 	//
-	// 	- If the instance runs PostgreSQL and uses cloud disks, you can set this parameter to **DBOwner**.
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>ApsaraDB RDS for SQL Server</summary>
+	//
+	// - **ReadWrite**: read and write. This permission corresponds to the `db_datawriter` and `db_datareader` database roles in SQL Server.
+	//
+	// - **ReadOnly**: read-only. This permission corresponds to the `db_datareader` database role in SQL Server.
+	//
+	// - **DBOwner**: database owner. This permission corresponds to the `db_owner` database role in SQL Server.
+	//
+	// > For more information about database-level roles, see [Microsoft official documentation](https://learn.microsoft.com/en-us/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver16).
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>ApsaraDB RDS for PostgreSQL</summary>
+	//
+	// **DBOwner**: database owner.
+	//
+	// > For fine-grained permission management, see [Best practices for PostgreSQL permission management](https://help.aliyun.com/document_detail/352149.html).
+	//
+	// </details>
 	//
 	// This parameter is required.
 	//
@@ -56,15 +80,15 @@ type GrantAccountPrivilegeRequest struct {
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The ID of the instance.
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database on which you want to grant permissions. Separate multiple database names with commas (,).
+	// The name of the database to which you want to grant access permissions. To grant permissions on multiple databases at a time, separate the database names with commas (,), such as `db1,db2,db3`.
 	//
 	// This parameter is required.
 	//

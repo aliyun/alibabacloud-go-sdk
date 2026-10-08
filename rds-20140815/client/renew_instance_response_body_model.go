@@ -20,9 +20,9 @@ type RenewInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 201815745430941
+	// 20181574543****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

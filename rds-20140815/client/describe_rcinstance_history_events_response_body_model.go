@@ -24,38 +24,12 @@ type iDescribeRCInstanceHistoryEventsResponseBody interface {
 }
 
 type DescribeRCInstanceHistoryEventsResponseBody struct {
-	// Details about the instance system event.
 	InstanceSystemEventSet []*DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSet `json:"InstanceSystemEventSet,omitempty" xml:"InstanceSystemEventSet,omitempty" type:"Repeated"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the returned page.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 866F5EB8-4650-4061-87F0-379F6F968BCE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instance events.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	NextToken              *string                                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber             *int32                                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *int32                                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId              *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount             *int32                                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRCInstanceHistoryEventsResponseBody) String() string {
@@ -134,66 +108,18 @@ func (s *DescribeRCInstanceHistoryEventsResponseBody) Validate() error {
 }
 
 type DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSet struct {
-	// The lifecycle state of the system event.
-	EventCycleStatus *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventCycleStatus `json:"EventCycleStatus,omitempty" xml:"EventCycleStatus,omitempty" type:"Struct"`
-	// The time when the system event ended. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-04-01T06:32:31Z
-	EventFinishTime *string `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
-	// The ID of the system event.
-	//
-	// example:
-	//
-	// e-uf64yvznlao4jl2c****
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The time when the system event was published. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-03-30T06:32:31Z
-	EventPublishTime *string `json:"EventPublishTime,omitempty" xml:"EventPublishTime,omitempty"`
-	// The type of the system event.
-	EventType *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventType `json:"EventType,omitempty" xml:"EventType,omitempty" type:"Struct"`
-	// The extended attribute of the system event.
+	EventCycleStatus  *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventCycleStatus  `json:"EventCycleStatus,omitempty" xml:"EventCycleStatus,omitempty" type:"Struct"`
+	EventFinishTime   *string                                                                             `json:"EventFinishTime,omitempty" xml:"EventFinishTime,omitempty"`
+	EventId           *string                                                                             `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventPublishTime  *string                                                                             `json:"EventPublishTime,omitempty" xml:"EventPublishTime,omitempty"`
+	EventType         *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventType         `json:"EventType,omitempty" xml:"EventType,omitempty" type:"Struct"`
 	ExtendedAttribute *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttribute `json:"ExtendedAttribute,omitempty" xml:"ExtendedAttribute,omitempty" type:"Struct"`
-	// The impact level of the event.
-	//
-	// example:
-	//
-	// 100
-	ImpactLevel *string `json:"ImpactLevel,omitempty" xml:"ImpactLevel,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rc-yuf59nplc45t2tzn****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the scheduled execution of the system event. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-04-01T06:32:31Z
-	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The reason why the system event occurred.
-	//
-	// example:
-	//
-	// System maintenance is scheduled due to ***.
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The reason code category for the system event.
-	//
-	// example:
-	//
-	// VPCMigrationEcs
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The resource type. The value is fixed to INSTANCE.
-	//
-	// example:
-	//
-	// custom
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ImpactLevel       *string                                                                             `json:"ImpactLevel,omitempty" xml:"ImpactLevel,omitempty"`
+	InstanceId        *string                                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NotBefore         *string                                                                             `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	Reason            *string                                                                             `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonCode        *string                                                                             `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ResourceType      *string                                                                             `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSet) String() string {
@@ -332,17 +258,7 @@ func (s *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSet) Vali
 }
 
 type DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventCycleStatus struct {
-	// The state code of the system event.
-	//
-	// example:
-	//
-	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The state name of the system event.
-	//
-	// example:
-	//
-	// Executed
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -377,17 +293,7 @@ func (s *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventC
 }
 
 type DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventType struct {
-	// The code of the system event type.
-	//
-	// example:
-	//
-	// 34
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the system event type.
-	//
-	// example:
-	//
-	// InstanceExpiration.Stop
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -422,90 +328,20 @@ func (s *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetEventT
 }
 
 type DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttribute struct {
-	// Indicates whether the event can be handled.
-	//
-	// example:
-	//
-	// true
-	CanAccept *string `json:"CanAccept,omitempty" xml:"CanAccept,omitempty"`
-	// The code of the security violation.
-	//
-	// example:
-	//
-	// PR111
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The device name of the local disk.
-	//
-	// example:
-	//
-	// /dev/vda
-	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The ID of the local disk.
-	//
-	// example:
-	//
-	// rcd-****
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the host.
-	//
-	// example:
-	//
-	// dh-bp1ewce1gk3iwv2****
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The type of the host. Valid values:
-	//
-	// 	- **ddh**: dedicated host
-	//
-	// 	- **managehost**: physical machine in a smart hosting pool
-	//
-	// example:
-	//
-	// ddh
-	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	// The inactive disks that have been released and whose data must be cleared.
-	InactiveDisks []*DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttributeInactiveDisks `json:"InactiveDisks,omitempty" xml:"InactiveDisks,omitempty" type:"Repeated"`
-	// The migration solutions of the instance.
-	MigrationOptions []*string `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty" type:"Repeated"`
-	// The online repair policy for the damaged disk. Valid value: IsolateOnly, which indicates that damaged disks are isolated but not repaired.
-	//
-	// example:
-	//
-	// IsolateOnly
-	OnlineRepairPolicy *string `json:"OnlineRepairPolicy,omitempty" xml:"OnlineRepairPolicy,omitempty"`
-	// The illegal domain name.
-	//
-	// example:
-	//
-	// 1228.test.com
-	PunishDomain *string `json:"PunishDomain,omitempty" xml:"PunishDomain,omitempty"`
-	// The type of the penalty.
-	//
-	// example:
-	//
-	// ecs_message_alert
-	PunishType *string `json:"PunishType,omitempty" xml:"PunishType,omitempty"`
-	// The illegal URL.
-	//
-	// example:
-	//
-	// http://1228.test.com/1
-	PunishUrl *string `json:"PunishUrl,omitempty" xml:"PunishUrl,omitempty"`
-	// The rack number of the cloud box.
-	//
-	// example:
-	//
-	// A01
-	Rack *string `json:"Rack,omitempty" xml:"Rack,omitempty"`
-	// The response result of the event. Valid values:
-	//
-	// 	- **true**: the event was handled.
-	//
-	// 	- **false**: the event failed to be handled.
-	//
-	// example:
-	//
-	// true
-	ResponseResult *string `json:"ResponseResult,omitempty" xml:"ResponseResult,omitempty"`
+	CanAccept          *string                                                                                            `json:"CanAccept,omitempty" xml:"CanAccept,omitempty"`
+	Code               *string                                                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Device             *string                                                                                            `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskId             *string                                                                                            `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	HostId             *string                                                                                            `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	HostType           *string                                                                                            `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	InactiveDisks      []*DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttributeInactiveDisks `json:"InactiveDisks,omitempty" xml:"InactiveDisks,omitempty" type:"Repeated"`
+	MigrationOptions   []*string                                                                                          `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty" type:"Repeated"`
+	OnlineRepairPolicy *string                                                                                            `json:"OnlineRepairPolicy,omitempty" xml:"OnlineRepairPolicy,omitempty"`
+	PunishDomain       *string                                                                                            `json:"PunishDomain,omitempty" xml:"PunishDomain,omitempty"`
+	PunishType         *string                                                                                            `json:"PunishType,omitempty" xml:"PunishType,omitempty"`
+	PunishUrl          *string                                                                                            `json:"PunishUrl,omitempty" xml:"PunishUrl,omitempty"`
+	Rack               *string                                                                                            `json:"Rack,omitempty" xml:"Rack,omitempty"`
+	ResponseResult     *string                                                                                            `json:"ResponseResult,omitempty" xml:"ResponseResult,omitempty"`
 }
 
 func (s DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttribute) String() string {
@@ -656,48 +492,11 @@ func (s *DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtend
 }
 
 type DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttributeInactiveDisks struct {
-	// The time when the disk was created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-03-26T03:33:56Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The category of the cloud disk or local disk. Valid values:
-	//
-	// 	- **cloud_efficiency**: ultra disk
-	//
-	// 	- **cloud_ssd**: standard SSD
-	//
-	// 	- **cloud_essd**: ESSD
-	//
-	// 	- **cloud_auto**: Premium ESSD
-	//
-	// example:
-	//
-	// cloud_auto
+	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DeviceCategory *string `json:"DeviceCategory,omitempty" xml:"DeviceCategory,omitempty"`
-	// The size of the disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 40
-	DeviceSize *string `json:"DeviceSize,omitempty" xml:"DeviceSize,omitempty"`
-	// The disk type. Valid values:
-	//
-	// 	- **system**: system disk.
-	//
-	// 	- **data**: data disk.
-	//
-	// example:
-	//
-	// data
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The time when the disk was released. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-03-26T03:33:56Z
-	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	DeviceSize     *string `json:"DeviceSize,omitempty" xml:"DeviceSize,omitempty"`
+	DeviceType     *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	ReleaseTime    *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 }
 
 func (s DescribeRCInstanceHistoryEventsResponseBodyInstanceSystemEventSetExtendedAttributeInactiveDisks) String() string {

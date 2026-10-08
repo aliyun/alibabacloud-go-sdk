@@ -38,13 +38,13 @@ type ModifyADInfoRequest struct {
 	//
 	// test_account
 	ADAccountName *string `json:"ADAccountName,omitempty" xml:"ADAccountName,omitempty"`
-	// The DNS information about the AD domain.
+	// The DNS domain name of the AD domain.
 	//
 	// example:
 	//
 	// example.com
 	ADDNS *string `json:"ADDNS,omitempty" xml:"ADDNS,omitempty"`
-	// The password for the account of the AD domain.
+	// The password of the AD domain.
 	//
 	// example:
 	//
@@ -60,18 +60,18 @@ type ModifyADInfoRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// This parameter is required.
 	//

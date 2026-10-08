@@ -14,7 +14,7 @@ type iCreateDBProxyEndpointAddressResponseBody interface {
 }
 
 type CreateDBProxyEndpointAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

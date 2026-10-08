@@ -18,15 +18,11 @@ type iDescribeRCClusterNodesResponseBody interface {
 }
 
 type DescribeRCClusterNodesResponseBody struct {
-	// The details of the nodes.
 	Nodes []*DescribeRCClusterNodesResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The pagination information.
-	Page *DescribeRCClusterNodesResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	// The request ID.
-	//
+	Page  *DescribeRCClusterNodesResponseBodyPage    `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 	// example:
 	//
-	// 16C62438-491B-5C02-9B49-BA924A1372A2
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -84,100 +80,33 @@ func (s *DescribeRCClusterNodesResponseBody) Validate() error {
 }
 
 type DescribeRCClusterNodesResponseBodyNodes struct {
-	// The time when the node was created.
-	//
 	// example:
 	//
-	// 2024-10-21T07:20:09Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The container version.
-	//
-	// example:
-	//
-	// 1.0
+	// 2026-01-06T22:22:16.00+08:00
+	CreationTime  *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DockerVersion *string `json:"DockerVersion,omitempty" xml:"DockerVersion,omitempty"`
-	// The image ID of the node.
-	//
+	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// example:
 	//
-	// m-2oqiu973jwcxe****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The node ID.
-	//
+	// vn-uoeaq5a51g0vk473****
+	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceRole *string   `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
+	IpAddresses  []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
+	IsAliyunNode *bool     `json:"IsAliyunNode,omitempty" xml:"IsAliyunNode,omitempty"`
 	// example:
 	//
-	// rc-u79597n5f54s5bnz****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The node role. Valid values:
-	//
-	// 	- **Master**: master node
-	//
-	// 	- **Worker**: worker node
-	//
-	// example:
-	//
-	// Master
-	InstanceRole *string `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
-	// The IP address.
-	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// Indicates whether the node is provided by Alibaba Cloud. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsAliyunNode *bool `json:"IsAliyunNode,omitempty" xml:"IsAliyunNode,omitempty"`
-	// The node name, which is the identifier of the RDS Custom node in the cluster.
-	//
-	// example:
-	//
-	// cn-hangzhou.192.168.XXX.XXX
+	// vn-uoeaq5a51g0vk473****
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The node pool ID.
-	//
 	// example:
 	//
-	// None
+	// rcnpf5e3ee4a65104cf0801f94850d37****
 	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	// Indicates whether the node is ready. Valid values:
-	//
-	// 	- **Ready**: The node is ready.
-	//
-	// 	- **NotReady**: The node is not ready.
-	//
-	// 	- **Unknown**: The status of the node is unknown.
-	//
-	// 	- **Offline**: The node is offline.
-	//
-	// example:
-	//
-	// Ready
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
 	// example:
 	//
 	// 1
-	PodCount *int64 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	// The runtime of the ACK cluster.
-	//
-	// example:
-	//
-	// 2024-10-21T07:20:09Z
+	PodCount       *int64  `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
 	RuntimeVersion *string `json:"RuntimeVersion,omitempty" xml:"RuntimeVersion,omitempty"`
-	// The node status. Valid values:
-	//
-	// 	- **pending**
-	//
-	// 	- **running**
-	//
-	// 	- **starting**
-	//
-	// 	- **stopping**
-	//
-	// 	- **stopped**
-	//
 	// example:
 	//
 	// running
@@ -314,23 +243,17 @@ func (s *DescribeRCClusterNodesResponseBodyNodes) Validate() error {
 }
 
 type DescribeRCClusterNodesResponseBodyPage struct {
-	// The page number.
-	//
 	// example:
 	//
-	// 2
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned per page.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	//
 	// example:
 	//
-	// 4
+	// 5
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

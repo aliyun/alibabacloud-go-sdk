@@ -34,65 +34,18 @@ type iModifyRCInstanceAttributeShrinkRequest interface {
 }
 
 type ModifyRCInstanceAttributeShrinkRequest struct {
-	// Specifies whether to enable the release protection feature for the instance. Valid values:
-	//
-	// - **true**: enables the release protection feature.
-	//
-	// - **false*	- (default): does not enable the release protection feature.
-	//
-	// example:
-	//
-	// false
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	EnableJumboFrame   *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
-	// The hostname of the instance.
-	//
-	// example:
-	//
-	// testHost1
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf62br2491p5l****
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	EnableJumboFrame   *bool   `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	HostName           *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIdsShrink  *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// example:
 	//
 	// k8s-node
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The new password of the instance.
-	//
-	// 	- The value must be 8 to 30 characters in length.
-	//
-	// 	- The value must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `()` ~ ! @ # $ % ^ & \\	- - _ + = \\`
-	//
-	// example:
-	//
-	// 2F9e9@a69c!e18b569c8
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether to restart the instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
-	//
-	// example:
-	//
-	// true
-	Reboot *bool `json:"Reboot,omitempty" xml:"Reboot,omitempty"`
-	// The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group to which the instance is added.
-	//
-	// example:
-	//
-	// sg-uf6av412xaxixu****
+	InstanceName           *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Reboot                 *bool   `json:"Reboot,omitempty" xml:"Reboot,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId        *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SecurityGroupIdsShrink *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
 }

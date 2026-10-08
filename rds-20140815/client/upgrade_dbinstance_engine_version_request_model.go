@@ -28,31 +28,31 @@ type iUpgradeDBInstanceEngineVersionRequest interface {
 }
 
 type UpgradeDBInstanceEngineVersionRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The effective time. Valid values:
+	// The effective period. Valid values:
 	//
-	// 	- **Immediate**: This is the default value.
+	// 	- **Immediate*	- (default): The upgrade takes effect immediately.
 	//
-	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The upgrade takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
 	// example:
 	//
 	// Immediate
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The major engine version that the new instance runs. Valid values:
+	// The target database engine version. Valid values:
 	//
 	// 	- **8.0**
 	//

@@ -30,15 +30,15 @@ type iCheckCloudResourceAuthorizedRequest interface {
 }
 
 type CheckCloudResourceAuthorizedRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// example:
 	//
-	// rm-t4n7j9eb52y7c1960
+	// rm-t4n****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the available regions.
 	//
 	// example:
 	//
@@ -48,12 +48,12 @@ type CheckCloudResourceAuthorizedRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmy**********
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The destination region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The ID of the target region. You can call DescribeRegions to query the available regions.
 	//
 	// example:
 	//

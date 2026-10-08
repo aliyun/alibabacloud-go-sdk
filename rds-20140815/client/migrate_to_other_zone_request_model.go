@@ -50,15 +50,15 @@ type iMigrateToOtherZoneRequest interface {
 }
 
 type MigrateToOtherZoneRequest struct {
-	// The RDS edition of the instance. Valid values:
+	// The instance edition. Valid values:
 	//
-	// 	- **Basic**: RDS Basic Edition
+	// 	- **Basic**: Basic Edition
 	//
-	// 	- **HighAvailability**: RDS High-availability Edition
+	// 	- **HighAvailability**: High-availability Edition
 	//
-	// 	- **AlwaysOn**: SQL Server on RDS Cluster Edition
+	// 	- **AlwaysOn**: SQL Server Cluster Edition
 	//
-	// 	- **cluster**: MySQL on RDS Cluster Edition
+	// 	- **cluster**: MySQL Cluster Edition
 	//
 	// 	- **Finance**: RDS Enterprise Edition
 	//
@@ -67,7 +67,9 @@ type MigrateToOtherZoneRequest struct {
 	// HighAvailability
 	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CustomExtraInfo *string `json:"CustomExtraInfo,omitempty" xml:"CustomExtraInfo,omitempty"`
-	// The new instance type of the instance. You can change the instance type of the instance. You cannot change the storage type of the instance. If you set **IsModifySpec*	- to **true**, you must specify at least one of DBInstanceClass and **DBInstanceStorage**.
+	// The target instance type of the destination instance. Only the instance type can be changed. The storage type cannot be changed.
+	//
+	// When the **IsModifySpec*	- parameter settings require **true**, you must specify at least one of this parameter and **DBInstanceStorage**.
 	//
 	// For more information about instance types, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
 	//
@@ -75,75 +77,71 @@ type MigrateToOtherZoneRequest struct {
 	//
 	// mysql.x4.xlarge.2
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The new storage capacity of the instance. If you set **IsModifySpec*	- to **true**, you must specify at least one of DBInstanceStorage and **DBInstanceClass**.
+	// The destination storage capacity. When the **IsModifySpec*	- parameter settings require **true**, you must specify at least one of this parameter and **DBInstanceClass**.
 	//
-	// Unit: GB. The available storage capacity range varies based on the instance type of the instance. For more information, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
+	// Unit: GB.
+	//
+	// Valid values: The storage capacity varies based on the instance type. For more information, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
 	//
 	// example:
 	//
 	// 500
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The storage type of the instance. Valid values:
+	// The instance storage type. Valid values:
 	//
-	// 	- **local_ssd**: local SSD. This is the recommended storage type.
+	// - cloud_essd: PL1 ESSD cloud disk.
 	//
-	// 	- **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
+	// - cloud_essd2: PL2 ESSD cloud disk.
 	//
-	// 	- **cloud_essd**: PL1 ESSD
+	// - cloud_essd3: PL3 ESSD cloud disk.
 	//
-	// 	- **cloud_essd2**: PL2 ESSD
-	//
-	// 	- **cloud_essd3**: PL3 ESSD
-	//
-	// 	- **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-	//
-	// The default value of this parameter is determined by the instance type specified by the **DBInstanceClass*	- parameter.
-	//
-	// 	- If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
-	//
-	// 	- If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
-	//
-	// >  Serverless instances support only PL1 ESSDs and general ESSDs.
+	// - cloud_ssd: standard SSD (not recommended because standard SSDs are no longer available for purchase in some regions).
 	//
 	// example:
 	//
-	// local_ssd
+	// cloud_essd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The time when you want the change to take effect. Valid values:
+	// The effective period. Valid values:
 	//
-	// 	- **Immediately*	- (default): The change immediately takes effect.
+	// 	- **Immediate**: The migration takes effect immediately. This is the default value.
 	//
-	// 	- **MaintainTime**: The change takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The migration takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **ScheduleTime**: The change takes effect at the point in time that you specify.
+	// 	- **ScheduleTime**: The migration takes effect at a custom time.
 	//
-	// >  If you set this parameter to **ScheduleTime**, you must specify the **SwitchTime*	- parameter.
+	// > If you set this parameter to **ScheduleTime**, you must also specify the **SwitchTime*	- parameter.
 	//
 	// example:
 	//
 	// Immediate
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// A reserved parameter.
+	// Specifies whether to enable the Buffer Pool Extension (BPE) feature for premium performance disks. Valid values:
+	//
+	//  - **1**: Enable.
+	//
+	//  - **0**: Disable.
+	//
+	// > For more information about the BPE feature, see [Buffer Pool Extension (BPE)](https://help.aliyun.com/document_detail/2527067.html).
 	//
 	// example:
 	//
 	// 0
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	// Specifies whether to change the specifications of the instance during the cross-zone migration. Valid values:
+	// Specifies whether to change the instance specifications during zone migration.
 	//
-	// 	- **true**: You want to change the specifications of the instance during the cross-zone migration. If you set this parameter to **true**, you must specify at least one of **DBInstanceClass*	- and **DBInstanceStorage**.
+	// - **true**: Change the specifications. When this parameter is set to **true**, you must specify at least one of the **DBInstanceClass*	- and **DBInstanceStorage*	- parameters.
 	//
-	// 	- **false*	- (default): You do not want to change the specifications of the instance during the cross-zone migration.
+	// - **false**: Do not change the specifications. This is the default value.
 	//
-	// > This parameter applies only to instances that run MySQL.
+	// > This parameter is applicable only to ApsaraDB RDS for MySQL instances.
 	//
 	// example:
 	//
@@ -153,35 +151,35 @@ type MigrateToOtherZoneRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The migration time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The custom time at which the zone switch takes effect. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
-	// > This parameter is used with **EffectiveTime**. You must specify this parameter only when **EffectiveTime*	- is set to **ScheduleTime**.
+	// > This parameter is used together with the **EffectiveTime*	- parameter and is required only when **EffectiveTime*	- is set to **ScheduleTime**.
 	//
 	// example:
 	//
 	// 2021-12-14T15:15:15Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The ID of the virtual private cloud (VPC). Do not change the VPC of the instance when you migrate the instance across zones.
+	// The virtual private cloud (VPC) ID. The VPC cannot be changed during instance migration and must remain the same.
 	//
-	// 	- This parameter must be specified when the instance resides in a VPC.
+	// - This parameter is required when you migrate a VPC-connected instance to a different zone.
 	//
-	// 	- If the instance runs SQL Server, you can change the VPC of the instance.
+	// - If the instance engine is SQL Server, the VPC can be changed during instance migration.
 	//
 	// example:
 	//
-	// vpc-xxxxxxx
+	// vpc-****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
 	//
-	// 	- This parameter must be specified when the instance resides in a VPC. You can call the DescribeVSwitches operation to query existing vSwitches.
+	// - This parameter is required when you migrate a VPC-connected instance to a different zone. You can invoke DescribeVSwitches to query the vSwitches that have been created.
 	//
-	// 	- If the instance runs PostgreSQL or SQL Server and a secondary zone is specified for the instance, you can specify multiple vSwitch IDs, each of which corresponds to a zone. Separate the vSwitch IDs with commas (,).
+	// - When you perform instance migration for an ApsaraDB RDS for PostgreSQL or SQL Server instance to a different zone with a secondary zone configured, you can specify multiple vSwitch IDs separated by commas (,), corresponding to the zones.
 	//
 	// example:
 	//
-	// vsw-uf6adz52c2pxxxxxxx
+	// vsw-uf6adz52c2p****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the destination zone. You can call the DescribeRegions operation to query the most recent region list.
+	// The ID of the destination zone. You can call DescribeRegions to query the zone ID.
 	//
 	// This parameter is required.
 	//
@@ -189,17 +187,17 @@ type MigrateToOtherZoneRequest struct {
 	//
 	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The secondary zone 1 of the instance.
+	// The secondary zone 1.
 	//
-	// >  This parameter must be configured if the instance runs RDS editions other than RDS Basic Edition.
+	// > This parameter is required for instances that are not of the Basic Edition.
 	//
 	// example:
 	//
 	// cn-hangzhou-c
 	ZoneIdSlave1 *string `json:"ZoneIdSlave1,omitempty" xml:"ZoneIdSlave1,omitempty"`
-	// The secondary zone 2 of the instance.
+	// The secondary zone 2.
 	//
-	// >  You can specify this parameter only for instances that run RDS Enterprise Edition.
+	// > This parameter is applicable only to RDS Enterprise Edition instances.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iDescribeMarketingActivityRequest interface {
 }
 
 type DescribeMarketingActivityRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeMarketingActivityRequest struct {
 	//
 	// 20725049
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 	- China site: 26842
+	// - Chinese site: 26842
 	//
-	// 	- International site: 26888
+	// - International site: 26888
 	//
 	// example:
 	//
@@ -53,7 +53,7 @@ type DescribeMarketingActivityRequest struct {
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query the available regions.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +69,7 @@ type DescribeMarketingActivityRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The service name.
+	// The product name.
 	//
 	// This parameter is required.
 	//

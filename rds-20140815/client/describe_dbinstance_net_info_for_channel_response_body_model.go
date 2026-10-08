@@ -21,15 +21,15 @@ type DescribeDBInstanceNetInfoForChannelResponseBody struct {
 	DBInstanceNetInfos *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **VPC**: a virtual private cloud (VPC)
+	// 	- **VPC**: virtual private cloud (VPC).
 	//
-	// 	- **Classic**: classic network
+	// 	- **Classic**: classic network.
 	//
 	// example:
 	//
 	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

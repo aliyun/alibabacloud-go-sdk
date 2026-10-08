@@ -32,7 +32,7 @@ type iDescribeClassDetailsRequest interface {
 }
 
 type DescribeClassDetailsRequest struct {
-	// The code of the instance type.
+	// The instance type code.
 	//
 	// This parameter is required.
 	//
@@ -40,21 +40,29 @@ type DescribeClassDetailsRequest struct {
 	//
 	// rds.mysql.s3.large
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz*****
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The commodity code of the instance. Valid values:
+	// The commodity code. Valid values:
 	//
-	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance.
+	// 	- **bards**: pay-as-you-go primary instance
 	//
-	// 	- **rds_intl**: The instance is a subscription primary instance.
+	// 	- **rds**: subscription primary instance
 	//
-	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance.
+	// 	- **rords**: pay-as-you-go read-only instance
 	//
-	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+	// 	- **rds_rordspre_public_cn**: subscription read-only instance
+	//
+	// 	- **bards_intl**: pay-as-you-go primary instance
+	//
+	// 	- **rds_intl**: subscription primary instance
+	//
+	// 	- **rords_intl**: pay-as-you-go read-only instance
+	//
+	// 	- **rds_rordspre_public_intl**: subscription read-only instance
 	//
 	// This parameter is required.
 	//
@@ -62,7 +70,7 @@ type DescribeClassDetailsRequest struct {
 	//
 	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The type of the database engine.
+	// The database engine type.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +78,7 @@ type DescribeClassDetailsRequest struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version.
 	//
 	// This parameter is required.
 	//
@@ -79,7 +87,7 @@ type DescribeClassDetailsRequest struct {
 	// 5.6
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -87,11 +95,11 @@ type DescribeClassDetailsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain this value.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

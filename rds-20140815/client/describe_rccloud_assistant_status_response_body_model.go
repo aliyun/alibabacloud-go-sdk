@@ -24,40 +24,13 @@ type iDescribeRCCloudAssistantStatusResponseBody interface {
 }
 
 type DescribeRCCloudAssistantStatusResponseBody struct {
-	// Details about the installation status of Cloud Assistant on the instances.
 	InstanceCloudAssistantStatusSet []*DescribeRCCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet `json:"InstanceCloudAssistantStatusSet,omitempty" xml:"InstanceCloudAssistantStatusSet,omitempty" type:"Repeated"`
-	// The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// AAAAAdDWBF2
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0688F1D2-CDA8-5617-A43C-ADAC61D80D43
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances.
-	//
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRCCloudAssistantStatusResponseBody) String() string {
@@ -136,66 +109,18 @@ func (s *DescribeRCCloudAssistantStatusResponseBody) Validate() error {
 }
 
 type DescribeRCCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet struct {
-	// The number of tasks that Cloud Assistant was running on the instance.
-	//
-	// example:
-	//
-	// 0
-	ActiveTaskCount *int32 `json:"ActiveTaskCount,omitempty" xml:"ActiveTaskCount,omitempty"`
-	// Indicates whether Cloud Assistant is running on the instance. Valid values:
-	//
-	// 	- **true**: Heartbeats are detected in the last 2 minutes.
-	//
-	// 	- **false**: No heartbeat is detected in the last 2 minutes.
-	//
-	// example:
-	//
-	// true
-	CloudAssistantStatus *string `json:"CloudAssistantStatus,omitempty" xml:"CloudAssistantStatus,omitempty"`
-	// The version number of Cloud Assistant Agent. This parameter is empty if Cloud Assistant Agent is not installed or is not running on the instance.
-	//
-	// example:
-	//
-	// 2.2.0.106
+	ActiveTaskCount       *int32  `json:"ActiveTaskCount,omitempty" xml:"ActiveTaskCount,omitempty"`
+	CloudAssistantStatus  *string `json:"CloudAssistantStatus,omitempty" xml:"CloudAssistantStatus,omitempty"`
 	CloudAssistantVersion *string `json:"CloudAssistantVersion,omitempty" xml:"CloudAssistantVersion,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rc-e2g521l55k038cr8****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of tasks that Cloud Assistant completed on the instance.
-	//
-	// example:
-	//
-	// 2
-	InvocationCount *int32 `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
-	// The last heartbeat time of Cloud Assistant. The value is updated every minute on average. The interval can be 55, 60, or 65 seconds.
-	//
-	// example:
-	//
-	// 2025-03-15T09:00:00Z
-	LastHeartbeatTime *string `json:"LastHeartbeatTime,omitempty" xml:"LastHeartbeatTime,omitempty"`
-	// The time when commands were last run.
-	//
-	// example:
-	//
-	// 2025-03-15T09:00:00Z
-	LastInvokedTime *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
-	// The operating system type of the instance.
-	//
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InvocationCount       *int32  `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
+	LastHeartbeatTime     *string `json:"LastHeartbeatTime,omitempty" xml:"LastHeartbeatTime,omitempty"`
+	LastInvokedTime       *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
 	// example:
 	//
 	// Linux
-	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// Indicates whether Cloud Assistant supports Session Manager on the instance. If Session Manager is not supported, the version of Cloud Assistant Agent is outdated. Update Cloud Assistant Agent to the latest version.
-	//
-	// To support Session Manager, the version of Cloud Assistant Agent cannot be earlier than 2.2.3.189.
-	//
-	// example:
-	//
-	// true
-	SupportSessionManager *bool `json:"SupportSessionManager,omitempty" xml:"SupportSessionManager,omitempty"`
+	OSType                *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	SupportSessionManager *bool   `json:"SupportSessionManager,omitempty" xml:"SupportSessionManager,omitempty"`
 }
 
 func (s DescribeRCCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet) String() string {

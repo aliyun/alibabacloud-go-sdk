@@ -16,11 +16,11 @@ type iCheckCreateDdrDBInstanceResponseBody interface {
 }
 
 type CheckCreateDdrDBInstanceResponseBody struct {
-	// Indicates whether the data of the source instance can be restored across regions. Valid values:
+	// Indicates whether the disaster recovery instance can be created. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

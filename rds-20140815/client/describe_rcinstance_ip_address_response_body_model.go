@@ -18,7 +18,7 @@ type iDescribeRCInstanceIpAddressResponseBody interface {
 }
 
 type DescribeRCInstanceIpAddressResponseBody struct {
-	// An array that consists of details of the instance.
+	// The details of instances to which the assets that are assigned public IP addresses belong.
 	RCInstanceList []*DescribeRCInstanceIpAddressResponseBodyRCInstanceList `json:"RCInstanceList,omitempty" xml:"RCInstanceList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeRCInstanceIpAddressResponseBody struct {
 	//
 	// C048E440-EA84-5E97-8C81-2A7060D0****_th**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the assets.
+	// The total number of assets that are assigned public IP addresses returned.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeRCInstanceIpAddressResponseBody) Validate() error {
 }
 
 type DescribeRCInstanceIpAddressResponseBodyRCInstanceList struct {
-	// The ID of the RDS Custom instance.
+	// The Custom instance ID.
 	//
 	// example:
 	//
 	// rc-kti8hw44yy0x53******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// The Custom instance name.
 	//
 	// example:
 	//
@@ -97,21 +97,21 @@ type DescribeRCInstanceIpAddressResponseBodyRCInstanceList struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The DDoS mitigation status of the instance. Valid values:
 	//
-	// 	- **normal**
+	// - **normal**: Normal.
 	//
-	// 	- **abnormal**
+	// - **abnormal**: Under attack.
 	//
 	// example:
 	//
 	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The type of the asset. The value is fixed to **ecs**.
+	// The type of the assets that are assigned public IP addresses. The value is fixed as **ecs**.
 	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// An array that consists of the details of the asset.
+	// The details of the assets that are assigned public IP addresses.
 	IpAddressConfig []*DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig `json:"IpAddressConfig,omitempty" xml:"IpAddressConfig,omitempty" type:"Repeated"`
 }
 
@@ -182,79 +182,79 @@ func (s *DescribeRCInstanceIpAddressResponseBodyRCInstanceList) Validate() error
 }
 
 type DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig struct {
-	// The basic protection threshold for the asset. Unit: Mbit/s.
+	// The basic DDoS Mitigation Threshold of the assets that are assigned public IP addresses. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 5200
 	BlackholeThreshold *int32 `json:"BlackholeThreshold,omitempty" xml:"BlackholeThreshold,omitempty"`
-	// The traffic scrubbing threshold for the asset measured in Mbit/s. Unit: Mbit/s.
+	// The traffic scrubbing threshold of the assets that are assigned public IP addresses. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 300
 	DefenseBpsThreshold *int32 `json:"DefenseBpsThreshold,omitempty" xml:"DefenseBpsThreshold,omitempty"`
-	// The traffic scrubbing threshold for the asset measured in packets per second (PPS). Unit: packets per second (pps).
+	// The message rate scrubbing threshold of the assets that are assigned public IP addresses. Unit: pps.
 	//
 	// example:
 	//
 	// 70000
 	DefensePpsThreshold *int32 `json:"DefensePpsThreshold,omitempty" xml:"DefensePpsThreshold,omitempty"`
-	// The burstable protection threshold for the asset. Unit: Mbit/s.
+	// The DDoS burstable Mitigation Threshold of the assets that are assigned public IP addresses. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 12310
 	ElasticThreshold *int32 `json:"ElasticThreshold,omitempty" xml:"ElasticThreshold,omitempty"`
-	// The IP address of the asset.
+	// The IP address of the assets that are assigned public IP addresses.
 	//
 	// example:
 	//
 	// 39.105.XXX.XXX
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	// The DDoS mitigation status of the asset. Valid values:
+	// The DDoS mitigation status of the assets that are assigned public IP addresses. Valid values:
 	//
-	// 	- **mitigating**
+	// - **mitigating**: Cleaning.
 	//
-	// 	- **blackholed**
+	// - **blackholed**: Black Hole Activated.
 	//
-	// 	- **normal**
+	// - **normal**: Normal.
 	//
 	// example:
 	//
 	// normal
 	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
-	// The IP version of the instance. Valid values:
+	// The IP protocol version of the instance. Valid values:
 	//
-	// 	- **v4**
+	// - **v4**
 	//
-	// 	- **v6**
+	// - **v6**
 	//
 	// example:
 	//
 	// v4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Indicates whether the asset is added to the instance. Valid values:
+	// Indicates whether the assets that are assigned public IP addresses is attached to Anti-DDoS Origin. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Attached.
 	//
-	// 	- **false**
+	// - **false**: Not attached.
 	//
 	// example:
 	//
 	// true
 	IsBgppack *bool `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
-	// Indicates whether best-effort protection is enabled for the asset. Valid values:
+	// Indicates whether best-effort protection is enabled for the assets that are assigned public IP addresses in Anti-DDoS Origin. Valid values:
 	//
-	// 	- **0**: Best-effort protection is disabled.
+	// - **0**: Best-effort protection is not enabled.
 	//
-	// 	- **1**: Best-effort protection is enabled.
+	// - **1**: Best-effort protection is enabled.
 	//
 	// example:
 	//
 	// 0
 	IsFullProtection *int32 `json:"IsFullProtection,omitempty" xml:"IsFullProtection,omitempty"`
-	// The region code of the asset.
+	// The region encoding of the assets that are assigned public IP addresses.
 	//
 	// example:
 	//

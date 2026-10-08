@@ -22,16 +22,16 @@ type iModifyDBInstanceDelayedReplicationTimeRequest interface {
 }
 
 type ModifyDBInstanceDelayedReplicationTimeRequest struct {
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+	// The ID of the read-only instance. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rr-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The replication latency of the read-only instance. Unit: seconds.
+	// The replication delay time of the read-only instance. Unit: seconds.
 	//
 	// This parameter is required.
 	//

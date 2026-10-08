@@ -20,25 +20,25 @@ type iUpgradeDBInstanceMajorVersionResponseBody interface {
 }
 
 type UpgradeDBInstanceMajorVersionResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// pgm-bp1gm3yh0ht1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 21128667463****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 006729E5-2A33-5955-89E3-651D3F44EBE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A reserved parameter.
+	// Reserved parameter.
 	//
 	// example:
 	//

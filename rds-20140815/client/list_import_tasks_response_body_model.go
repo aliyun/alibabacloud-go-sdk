@@ -20,11 +20,20 @@ type iListImportTasksResponseBody interface {
 }
 
 type ListImportTasksResponseBody struct {
+	// None.
 	Items []*ListImportTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: **1 to 100**.
+	//
+	// Default value: **30**.
+	//
+	// >If you specify this parameter, the **PageSize*	- and **PageNumber*	- parameters are not available.
+	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// None
@@ -95,30 +104,44 @@ func (s *ListImportTasksResponseBody) Validate() error {
 }
 
 type ListImportTasksResponseBodyItems struct {
+	// The creation time in UTC. The time follows the format of YYYY-MM-DDTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The kernel version number.
+	//
 	// example:
 	//
 	// 5.7
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Importing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance ID of the target instance.
+	//
 	// example:
 	//
 	// rm-bp*****
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 342900000
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
 	// 362c6c7a-4d20-4eac-898c-1495ceab374c
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// import

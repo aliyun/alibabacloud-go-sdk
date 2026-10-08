@@ -34,16 +34,16 @@ type DescribeCrossRegionLogBackupFilesResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2019-06-15T12:10:00Z
 	EndTime *string                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Items   *DescribeCrossRegionLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number. Pages start from page 1.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -51,7 +51,7 @@ type DescribeCrossRegionLogBackupFilesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of cross-region backup files on the current page.
+	// The number of backup files on the current page.
 	//
 	// example:
 	//
@@ -69,13 +69,13 @@ type DescribeCrossRegionLogBackupFilesResponseBody struct {
 	//
 	// DAC241E8-28E6-49DA-BFB0-B2DD090885C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2019-05-30T12:10:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries that are returned.
+	// The total number of records.
 	//
 	// example:
 	//

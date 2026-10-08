@@ -22,29 +22,29 @@ type iModifyCollationTimeZoneResponseBody interface {
 }
 
 type ModifyCollationTimeZoneResponseBody struct {
-	// The character set collation of the instance.
+	// The system character set collation.
 	//
 	// example:
 	//
-	// Latin1_General_CI_AS
+	// Chinese_PRC_CS_AS
 	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-bp15qi0nd1u27****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 8EA054AF-DFA7-497D-9F57-790FFC974C0B
+	// 58D48758-F035-52D3-A4FB-80C73DA3E95C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// 114413215
+	// 56365****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The time zone.
 	//

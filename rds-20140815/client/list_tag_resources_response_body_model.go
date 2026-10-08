@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The token used to return more results. If a query does not return all results, pass in the token returned from the previous query to continue the query.
 	//
 	// example:
 	//

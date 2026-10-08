@@ -26,29 +26,29 @@ type iModifyDBDescriptionRequest interface {
 }
 
 type ModifyDBDescriptionRequest struct {
-	// The description of the database.
+	// The database description.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test database A
+	// testdb01
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// testDB01
+	// testdb
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

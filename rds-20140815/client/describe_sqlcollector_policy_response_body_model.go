@@ -26,9 +26,9 @@ type DescribeSQLCollectorPolicyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the SQL Explorer (SQL Audit) feature. Valid values:
 	//
-	// 	- **Enable**
+	// 	- **Enable**: enabled.
 	//
-	// 	- **Disabled**
+	// 	- **Disabled**: disabled.
 	//
 	// example:
 	//

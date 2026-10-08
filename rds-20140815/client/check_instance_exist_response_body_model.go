@@ -16,17 +16,17 @@ type iCheckInstanceExistResponseBody interface {
 }
 
 type CheckInstanceExistResponseBody struct {
-	// Indicates whether the instance exists. Valid values:
+	// Indicates whether the specified instance exists. Valid values:
 	//
-	// - **true**: The instance exists.
+	// 	- **true**: Target instance exists.
 	//
-	// - **false**: The instance does not exist.
+	// 	- **false**: Target instance does not exist.
 	//
 	// example:
 	//
 	// true
 	IsExistInstance *bool `json:"IsExistInstance,omitempty" xml:"IsExistInstance,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

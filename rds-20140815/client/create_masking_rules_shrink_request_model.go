@@ -32,7 +32,7 @@ type iCreateMaskingRulesShrinkRequest interface {
 }
 
 type CreateMaskingRulesShrinkRequest struct {
-	// instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,19 @@ type CreateMaskingRulesShrinkRequest struct {
 	//
 	// rm-t4n8t18o3*****d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Database name
+	// The database name.
 	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// Name of the default encryption or masking algorithm
+	// The name of the default encryption or masking algorithm.
 	//
 	// example:
 	//
 	// aes-128-gcm
 	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
-	// Rule algorithm. Multiple algorithms can be selected. Masking Algorithm can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, number of encrypted characters}}
+	// The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, encryption length}}.
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type CreateMaskingRulesShrinkRequest struct {
 	//         {"name":"sm4-128-gcm"}]
 	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
@@ -69,9 +69,9 @@ type CreateMaskingRulesShrinkRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Rule configuration, in JSON string format, containing matching rules for databases, tables, and columns
+	// The rule configuration in JSON string format, which contains matching rules for databases, tables, and columns.
 	RuleConfigShrink *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// Rule Name (only one rule name is supported per request)
+	// The rule name. Only one rule name can be specified at a time.
 	//
 	// This parameter is required.
 	//

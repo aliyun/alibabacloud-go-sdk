@@ -14,7 +14,7 @@ type iModifyDBInstanceDescriptionResponseBody interface {
 }
 
 type ModifyDBInstanceDescriptionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

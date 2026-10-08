@@ -22,7 +22,7 @@ type CreateRCDiskResponseBody struct {
 	//
 	// example:
 	//
-	// rcd-2zegrjtnkp6dqbe1egca
+	// rcd-2zegrjtnkp6dqbe1****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The order ID.
 	//

@@ -13,8 +13,8 @@ type iModifyTaskInfoRequest interface {
 	GetActionParams() *string
 	SetRegionId(v string) *ModifyTaskInfoRequest
 	GetRegionId() *string
-	SetResourceOwnerAccount(v int64) *ModifyTaskInfoRequest
-	GetResourceOwnerAccount() *int64
+	SetResourceOwnerAccount(v string) *ModifyTaskInfoRequest
+	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyTaskInfoRequest
 	GetResourceOwnerId() *int64
 	SetSecurityToken(v string) *ModifyTaskInfoRequest
@@ -28,23 +28,21 @@ type iModifyTaskInfoRequest interface {
 }
 
 type ModifyTaskInfoRequest struct {
-	// The action-related parameters. You can add action-related parameters based on your business requirements. If you set the TaskAction parameter to modifySwitchTime, you must set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+	// The action-related parameters, which can be extended as needed. When taskAction is set to modifySwitchTime, set ActionParams to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
 	//
-	// The recoverMode field specifies the task restoration mode. valid values:
+	// recoverMode specifies the task recovery pattern. Valid values:
 	//
-	// 	- **timePoint**: The task is executed at a specified point in time.
+	// - **timePoint**: Execute at a specified point in time.
 	//
-	// 	- **Immediate**: The task is executed immediately.
+	// - **immediate**: Execute immediately.
 	//
-	// 	- **maintainTime**: The task is executed based on the O\\&M time.
-	//
-	// The recoverTime field specifies restoration time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If you set the recoverMode field to timePoint, you must also specify the recoverTime field.
+	// recoverTime specifies the recovery time in UTC+0. Format: yyyy-MM-ddTHH:mm:ssZ. This parameter is required when recoverMode is set to timePoint.
 	//
 	// example:
 	//
-	// {\\"recoverTime\\":\\"2023-04-12T18:30:00Z\\",\\"recoverMode\\":\\"timePoint\\"}
+	// {"recoverTime":"2023-04-12T18:30:00Z","recoverMode":"timePoint"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +50,7 @@ type ModifyTaskInfoRequest struct {
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the execution step.
@@ -61,13 +59,13 @@ type ModifyTaskInfoRequest struct {
 	//
 	// ha_switch
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The task action. Set the value to modifySwitchTime. The value specifies that you want to change the switching time or restoration time.
+	// The task action. Set the value to modifySwitchTime, which indicates modifying the switchover time or recovery time.
 	//
 	// example:
 	//
-	// ImportImage
+	// modifySwitchTime
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The task ID. You can call the DescribeTasks operation to query task IDs.
+	// The task ID. You can call the DescribeTasks operation to obtain the task ID.
 	//
 	// This parameter is required.
 	//
@@ -93,7 +91,7 @@ func (s *ModifyTaskInfoRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *ModifyTaskInfoRequest) GetResourceOwnerAccount() *int64 {
+func (s *ModifyTaskInfoRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
 
@@ -127,7 +125,7 @@ func (s *ModifyTaskInfoRequest) SetRegionId(v string) *ModifyTaskInfoRequest {
 	return s
 }
 
-func (s *ModifyTaskInfoRequest) SetResourceOwnerAccount(v int64) *ModifyTaskInfoRequest {
+func (s *ModifyTaskInfoRequest) SetResourceOwnerAccount(v string) *ModifyTaskInfoRequest {
 	s.ResourceOwnerAccount = &v
 	return s
 }

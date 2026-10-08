@@ -18,9 +18,9 @@ type iDescribeRenewalPriceResponseBody interface {
 }
 
 type DescribeRenewalPriceResponseBody struct {
-	// Details of price information.
+	// The pricing information.
 	PriceInfo *DescribeRenewalPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
-	// The information about the promotion.
+	// The promotion information.
 	ActivityInfo *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
 	Coupons      *DescribeRenewalPriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
 	// The currency unit.
@@ -88,7 +88,7 @@ type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount.
+	// The discount amount.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	// 138
 	OriginalPrice *float32                                          `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	RuleIds       *DescribeRenewalPriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The transaction price, which is equal to the original price minus the discount.
+	// The final price, which is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoActivityInfo struct {
-	// The returned message.
+	// The error description.
 	//
 	// example:
 	//
 	// Error description
 	CheckErrMsg *string `json:"CheckErrMsg,omitempty" xml:"CheckErrMsg,omitempty"`
-	// The error code that is returned.
+	// The error code.
 	//
 	// example:
 	//

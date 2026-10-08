@@ -16,7 +16,10 @@ type iDescribeMaskingRulesResponseBody interface {
 }
 
 type DescribeMaskingRulesResponseBody struct {
+	// The returned data.
 	Data *DescribeMaskingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 69779000-57A4-38F6-BF85-**********A2
@@ -59,6 +62,7 @@ func (s *DescribeMaskingRulesResponseBody) Validate() error {
 }
 
 type DescribeMaskingRulesResponseBodyData struct {
+	// The list of encryption or masking rules.
 	Rules []*DescribeMaskingRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -93,21 +97,30 @@ func (s *DescribeMaskingRulesResponseBodyData) Validate() error {
 }
 
 type DescribeMaskingRulesResponseBodyDataRules struct {
+	// The default encryption or masking algorithm.
+	//
 	// example:
 	//
 	// aes-128-gcm
 	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {masking position, masking length}}.
+	//
 	// example:
 	//
 	// [{"name": "aes-128-gcm"},
 	//
 	//         {"name":"sm4-128-gcm"}]
-	MaskingAlgo *string                                              `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
-	RuleConfig  *DescribeMaskingRulesResponseBodyDataRulesRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
+	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
+	// The rule configuration.
+	RuleConfig *DescribeMaskingRulesResponseBodyDataRulesRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
+	// The rule name.
+	//
 	// example:
 	//
 	// test
@@ -177,9 +190,12 @@ func (s *DescribeMaskingRulesResponseBodyDataRules) Validate() error {
 }
 
 type DescribeMaskingRulesResponseBodyDataRulesRuleConfig struct {
-	Columns   []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The list of columns.
+	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The list of databases.
 	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The list of tables.
+	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMaskingRulesResponseBodyDataRulesRuleConfig) String() string {

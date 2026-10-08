@@ -16,13 +16,13 @@ type iCreateParameterGroupResponseBody interface {
 }
 
 type CreateParameterGroupResponseBody struct {
-	// The ID of the parameter template. You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/144491.html) operation to query the IDs of parameter templates.
+	// The parameter template ID. You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/144491.html) operation to query the parameter template ID.
 	//
 	// example:
 	//
 	// rpg-q488w14xvsk****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

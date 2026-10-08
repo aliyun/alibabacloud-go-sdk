@@ -38,7 +38,7 @@ type iModifyDBProxyInstanceShrinkRequest interface {
 }
 
 type ModifyDBProxyInstanceShrinkRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,15 +46,15 @@ type ModifyDBProxyInstanceShrinkRequest struct {
 	//
 	// rm-t4n3a****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A deprecated parameter. You do not need to specify this parameter.
+	// A deprecated parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The number of database proxies. If you set this parameter to 0, the database proxy feature is disabled for the instance. Valid values: **1*	- to **16**.
+	// The number of proxy instances. If this parameter is set to 0, the proxy service of this type is disabled for the instance. Valid values: **1*	- to **16**.
 	//
-	// >  The capability of the database proxy feature to process requests increases with the number of database proxies that are enabled. You can monitor the load on the instance and specify an appropriate number of database proxies based on the load monitoring data.
+	// > More proxy instances can handle more requests. You can check the load of proxy instances based on monitoring data and then specify an appropriate number of proxy instances.
 	//
 	// This parameter is required.
 	//
@@ -62,37 +62,37 @@ type ModifyDBProxyInstanceShrinkRequest struct {
 	//
 	// 2
 	DBProxyInstanceNum *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
-	// The database proxy type. Valid values:
+	// The type of the database proxy instance. Valid values:
 	//
-	// 	- **common**: general-purpose database proxy
+	// - **common**: general-purpose database proxy
 	//
-	// 	- **exclusive*	- (default): dedicated database proxy
+	// - **exclusive**: dedicated database proxy (default)
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// DedicatedProxy
+	// exclusive
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// List of proxy nodes.
+	// The list of proxy nodes.
 	//
-	// > This parameter must be passed when the current proxy instance is deployed in multiple availability zones.
+	// > This parameter is required when the current proxy instance uses multi-active zone deployment.
 	DBProxyNodesShrink *string `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty"`
-	// The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The specified time for the modification to take effect. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// >  If the **EffectiveTime*	- parameter is set to **SpecificTime**, you must specify this parameter.
+	// > This parameter is required when **EffectiveTime*	- is set to **SpecificTime**.
 	//
 	// example:
 	//
 	// 2019-07-10T13:15:12Z
 	EffectiveSpecificTime *string `json:"EffectiveSpecificTime,omitempty" xml:"EffectiveSpecificTime,omitempty"`
-	// The effective time. Valid values:
+	// The effective period. Valid values:
 	//
-	// 	- **Immediate**: The effective time is immediate.
+	// 	- **Immediate**: The modification takes effect immediately.
 	//
-	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The modification takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **SpecificTime**: The effective time is a specified point in time.
+	// 	- **SpecificTime**: The modification takes effect at a specified time.
 	//
 	// Default value: **MaintainTime**.
 	//
@@ -100,12 +100,12 @@ type ModifyDBProxyInstanceShrinkRequest struct {
 	//
 	// MaintainTime
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The list of available zones for migration agents.
+	// The list of active zones for proxy migration.
 	//
-	// > Currently, only RDS MySQL cloud disk version agent instance migration is supported.
+	// > Currently, only ApsaraDB RDS for MySQL proxy instances with cloud disks support active zone migration.
 	MigrateAZShrink *string `json:"MigrateAZ,omitempty" xml:"MigrateAZ,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the region ID.
 	//
 	// example:
 	//
@@ -113,9 +113,7 @@ type ModifyDBProxyInstanceShrinkRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the vSwitch in the destination zone. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/610431.html) operation to query existing vSwitches.
-	//
-	// >  Only database proxies for ApsaraDB RDS for MySQL instances that use cloud disks can be migrated to different zones.
+	// A deprecated parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//

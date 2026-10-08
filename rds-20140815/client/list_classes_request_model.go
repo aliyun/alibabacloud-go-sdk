@@ -34,33 +34,46 @@ type ListClassesRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The commodity code of the instances.
+	// The commodity code of the instance to query.
 	//
-	// 	- **bards_intl**: The instances are pay-as-you-go primary instances.
+	// <props="china">
 	//
-	// 	- **rds_intl**: The instances are subscription primary instances.
+	// 	- **bards**: Pay-as-you-go primary instance.
 	//
-	// 	- **rords_intl**: The instances are pay-as-you-go read-only instances.
+	// 	- **rds**: Subscription primary instance.
 	//
-	// 	- **rds_rordspre_public_intl**: The instances are subscription read-only instances.
+	// 	- **rords**: Pay-as-you-go read-only instance.
+	//
+	// 	- **rds_rordspre_public_cn**: Subscription read-only instance.
+	//
+	//
+	// <props="intl">
+	//
+	// 	- **bards_intl**: Pay-as-you-go primary instance.
+	//
+	// 	- **rds_intl**: Subscription primary instance.
+	//
+	// 	- **rords_intl**: Pay-as-you-go read-only instance.
+	//
+	// 	- **rds_rordspre_public_intl**: Subscription read-only instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// bards_intl
+	// bards
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
-	// >  If you set the **CommodityCode*	- parameter to the commodity code of read-only instances, you must specify this parameter.
+	// >This parameter is required when you query the instance type list for read-only instances, which means you set the **CommodityCode*	- parameter to a commodity code for read-only instances.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine of the instance. Valid values:
+	// The database engine type. Valid values:
 	//
 	// 	- **MySQL**
 	//
@@ -74,15 +87,15 @@ type ListClassesRequest struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The type of order that you want to query. Valid values:
+	// The type of order to query. Valid values:
 	//
-	// 	- **BUY**: specifies the query orders that are used to purchase instances.
+	// 	- **BUY**: New purchase.
 	//
-	// 	- **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
+	// 	- **UPGRADE**: Configuration change.
 	//
-	// 	- **RENEW**: specifies the query orders that are used to renew instances.
+	// 	- **RENEW**: Renewal.
 	//
-	// 	- **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
+	// 	- **CONVERT**: Billing method change.
 	//
 	// This parameter is required.
 	//
@@ -91,9 +104,9 @@ type ListClassesRequest struct {
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the region ID.
 	//
-	// >  If you are using an Alibaba Cloud account on the International site (alibabacloud.com), you must specify this parameter.
+	// >This parameter is required if you use an Alibaba Cloud International Website account.
 	//
 	// example:
 	//

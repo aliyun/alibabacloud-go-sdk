@@ -14,7 +14,7 @@ type iModifySQLCollectorPolicyResponseBody interface {
 }
 
 type ModifySQLCollectorPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

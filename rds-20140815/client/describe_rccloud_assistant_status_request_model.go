@@ -26,57 +26,25 @@ type iDescribeRCCloudAssistantStatusRequest interface {
 }
 
 type DescribeRCCloudAssistantStatusRequest struct {
-	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. If you specify `InstanceId`, this parameter does not take effect.
-	//
-	// Maximum value: 50.
-	//
-	// Default value: 10.
-	//
 	// example:
 	//
 	// 10
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the end of the current returned page. If this parameter is empty, the data is queried from the first entry.
-	//
-	// example:
-	//
-	// AAAAAdDWBF2
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The operating system type of the instance. Only **Linux*	- is supported.
-	//
-	// Valid values:
-	//
-	// 	- Windows
-	//
-	// 	- Linux
-	//
-	// 	- FreeBSD
-	//
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// example:
 	//
 	// Linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use `NextToken` and `MaxResults` for a paged query.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// >  This parameter will be removed in the future. We recommend that you use `NextToken` and `MaxResults` for a paged query.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the instance resides.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

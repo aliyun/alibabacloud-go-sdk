@@ -14,11 +14,6 @@ type iRevokeRCSecurityGroupPermissionResponseBody interface {
 }
 
 type RevokeRCSecurityGroupPermissionResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 847BA085-B377-4BFA-8267-F82345ECE1D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

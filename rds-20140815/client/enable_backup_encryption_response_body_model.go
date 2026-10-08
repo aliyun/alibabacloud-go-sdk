@@ -16,10 +16,14 @@ type iEnableBackupEncryptionResponseBody interface {
 }
 
 type EnableBackupEncryptionResponseBody struct {
+  // The instance ID.
+  // 
   // example:
   // 
   // rm-wz951f7f******
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // FCA65FA6-658A-5C43-96F4-D************

@@ -16,13 +16,13 @@ type iDeleteUserBackupFileResponseBody interface {
 }
 
 type DeleteUserBackupFileResponseBody struct {
-	// The ID of the deleted full backup file.
+	// The ID of the deleted user backup.
 	//
 	// example:
 	//
-	// b-w1haya7e4i25********
+	// b-w1haya7e4i25****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

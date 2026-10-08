@@ -24,13 +24,13 @@ type iDescribeHostGroupElasticStrategyParametersResponseBody interface {
 }
 
 type DescribeHostGroupElasticStrategyParametersResponseBody struct {
-	// The CPU utilization of the instance. Unit: percentage.
+	// The current CPU utilization of the instance. Unit: %.
 	//
 	// example:
 	//
 	// 20
 	CpuShar *int32 `json:"CpuShar,omitempty" xml:"CpuShar,omitempty"`
-	// The number of CPU cores used by the instance. Unit: cores.
+	// The CPU usage of the instance. Unit: cores.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type DescribeHostGroupElasticStrategyParametersResponseBody struct {
 	//
 	// 10
 	IopsZoom *int32 `json:"IopsZoom,omitempty" xml:"IopsZoom,omitempty"`
-	// The maximum number of concurrent connections supported by the instance type.
+	// The maximum number of concurrent connections for the instance type.
 	//
 	// example:
 	//
 	// 30
 	MaxConnZoom *int32 `json:"MaxConnZoom,omitempty" xml:"MaxConnZoom,omitempty"`
-	// The total memory size of the instance in the dedicated cluster. Unit: MB.
+	// The total memory of instances in the current dedicated cluster. Unit: MB.
 	//
 	// example:
 	//

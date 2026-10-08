@@ -18,11 +18,11 @@ type iDescribeRCInstanceVncUrlRequest interface {
 }
 
 type DescribeRCInstanceVncUrlRequest struct {
-	// The database engine. Valid values:
+	// The database engine type. Valid values:
 	//
-	// 	- **mssql**: SQL Server
+	// - **mssql**: SQL Server
 	//
-	// 	- **mysql**: MySQL
+	// - **mysql**: MySQL
 	//
 	// example:
 	//

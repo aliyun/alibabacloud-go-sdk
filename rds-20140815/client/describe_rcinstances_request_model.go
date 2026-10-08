@@ -9,8 +9,12 @@ type iDescribeRCInstancesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClusterId(v string) *DescribeRCInstancesRequest
+	GetClusterId() *string
 	SetDescription(v string) *DescribeRCInstancesRequest
 	GetDescription() *string
+	SetDescriptionForFuzzy(v string) *DescribeRCInstancesRequest
+	GetDescriptionForFuzzy() *string
 	SetHostIp(v string) *DescribeRCInstancesRequest
 	GetHostIp() *string
 	SetImageId(v string) *DescribeRCInstancesRequest
@@ -38,50 +42,91 @@ type iDescribeRCInstancesRequest interface {
 }
 
 type DescribeRCInstancesRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HostIp      *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance ID.
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DescriptionForFuzzy *string `json:"DescriptionForFuzzy,omitempty" xml:"DescriptionForFuzzy,omitempty"`
+	// Queries instances by host IP address.
 	//
 	// example:
 	//
-	// rm-2ze704f*****
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 172.16.XX.XX
+	HostIp  *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance ID. This parameter is used to query a single instance.
+	//
+	// > If no instance ID is specified (neither **InstanceId*	- nor **InstanceIds*	- is passed), the operation returns detailed information about all RDS Custom instances in the specified region.
+	//
+	// example:
+	//
+	// rc-i2p26bde8bckf141****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance IDs.
+	//
+	// This parameter is used to query multiple instances at a time. Separate multiple instance IDs with commas (,). A maximum of 100 IDs are supported. Input format: `["InstanceID1","InstanceID2"]`.
+	//
+	// > If both **InstanceIds*	- and **InstanceId*	- are specified, the value of **InstanceIds*	- takes precedence.
+	//
+	// example:
+	//
+	// ["rc-i2p26bde8bckf141****","rc-l1753m982otq2s2m****"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// k8s-node
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The page number.
+	// The page number of the instance status list.
 	//
-	// Page starts from page 1.
-	//
-	// Default value: 1.
+	// Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
-	// Maximum value: 100.
-	//
-	// Default value: 10.
+	// Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Queries instances by public IP address.
+	//
+	// example:
+	//
+	// 121.89.XX.XX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// The region ID.
+	// The region ID. This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The instance status. Valid values:
+	//
+	// - **Pending**: Being created.
+	//
+	// - **Running**: Running.
+	//
+	// - **Starting**: Being started.
+	//
+	// - **Stopping**: Being stopped.
+	//
+	// - **Stopped**: Stopped.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Queries instances by the specified tag. Input format: `{"TagKey":"TagValue"}`.
+	//
+	// example:
+	//
+	// {"testRC":"test01"}
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -97,8 +142,16 @@ func (s DescribeRCInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRCInstancesRequest) GetClusterId() *string {
+	return s.ClusterId
+}
+
 func (s *DescribeRCInstancesRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *DescribeRCInstancesRequest) GetDescriptionForFuzzy() *string {
+	return s.DescriptionForFuzzy
 }
 
 func (s *DescribeRCInstancesRequest) GetHostIp() *string {
@@ -149,8 +202,18 @@ func (s *DescribeRCInstancesRequest) GetVpcId() *string {
 	return s.VpcId
 }
 
+func (s *DescribeRCInstancesRequest) SetClusterId(v string) *DescribeRCInstancesRequest {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *DescribeRCInstancesRequest) SetDescription(v string) *DescribeRCInstancesRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeRCInstancesRequest) SetDescriptionForFuzzy(v string) *DescribeRCInstancesRequest {
+	s.DescriptionForFuzzy = &v
 	return s
 }
 

@@ -14,7 +14,7 @@ type iRestoreTableResponseBody interface {
 }
 
 type RestoreTableResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

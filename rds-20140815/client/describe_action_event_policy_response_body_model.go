@@ -18,7 +18,7 @@ type iDescribeActionEventPolicyResponseBody interface {
 }
 
 type DescribeActionEventPolicyResponseBody struct {
-	// Indicates whether the event history feature is enabled.
+	// The status of the historical events feature.
 	//
 	// example:
 	//

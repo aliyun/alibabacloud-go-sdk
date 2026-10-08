@@ -30,7 +30,7 @@ type iModifyAccountCheckPolicyRequest interface {
 }
 
 type ModifyAccountCheckPolicyRequest struct {
-	// The account username.
+	// The account name.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,11 @@ type ModifyAccountCheckPolicyRequest struct {
 	//
 	// DatabaseTest
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Specifies whether to apply the password policy
+	// Specifies whether to apply the password policy. Valid values:
+	//
+	// - **true**: Applies the password policy to the account.
+	//
+	// - **false**: Removes the password policy from the account.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +50,15 @@ type ModifyAccountCheckPolicyRequest struct {
 	//
 	// true
 	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the value of RequestId as the value of ClientToken. The value of RequestId for each API request may be different.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID.
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +68,7 @@ type ModifyAccountCheckPolicyRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. For more information about resource groups, see related documentation.
+	// The resource group ID.
 	//
 	// example:
 	//

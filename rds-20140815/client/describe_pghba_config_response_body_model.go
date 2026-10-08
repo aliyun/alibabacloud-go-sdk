@@ -26,44 +26,13 @@ type iDescribePGHbaConfigResponseBody interface {
 }
 
 type DescribePGHbaConfigResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-bp1*****
-	DBInstanceId    *string                                         `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DefaultHbaItems *DescribePGHbaConfigResponseBodyDefaultHbaItems `json:"DefaultHbaItems,omitempty" xml:"DefaultHbaItems,omitempty" type:"Struct"`
-	// The time when the previous modification was made to the pg_hba.conf file.
-	//
-	// example:
-	//
-	// 2021-11-25T06:00:40Z
-	HbaModifyTime *string `json:"HbaModifyTime,omitempty" xml:"HbaModifyTime,omitempty"`
-	// The status of the previous modification to the pg_hba.conf file. Valid values:
-	//
-	// 	- **success**
-	//
-	// 	- **setting**
-	//
-	// 	- **failed**
-	//
-	// example:
-	//
-	// success
-	LastModifyStatus *string `json:"LastModifyStatus,omitempty" xml:"LastModifyStatus,omitempty"`
-	// The reason why the previous modification was made to the pg_hba.conf file.
-	//
-	// example:
-	//
-	// The specified users (testuser) is not exist.
-	ModifyStatusReason *string `json:"ModifyStatusReason,omitempty" xml:"ModifyStatusReason,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// A147A124-A147-5CCF-9609-B73C028848DF
-	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RunningHbaItems *DescribePGHbaConfigResponseBodyRunningHbaItems `json:"RunningHbaItems,omitempty" xml:"RunningHbaItems,omitempty" type:"Struct"`
+	DBInstanceId       *string                                         `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DefaultHbaItems    *DescribePGHbaConfigResponseBodyDefaultHbaItems `json:"DefaultHbaItems,omitempty" xml:"DefaultHbaItems,omitempty" type:"Struct"`
+	HbaModifyTime      *string                                         `json:"HbaModifyTime,omitempty" xml:"HbaModifyTime,omitempty"`
+	LastModifyStatus   *string                                         `json:"LastModifyStatus,omitempty" xml:"LastModifyStatus,omitempty"`
+	ModifyStatusReason *string                                         `json:"ModifyStatusReason,omitempty" xml:"ModifyStatusReason,omitempty"`
+	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RunningHbaItems    *DescribePGHbaConfigResponseBodyRunningHbaItems `json:"RunningHbaItems,omitempty" xml:"RunningHbaItems,omitempty" type:"Struct"`
 }
 
 func (s DescribePGHbaConfigResponseBody) String() string {

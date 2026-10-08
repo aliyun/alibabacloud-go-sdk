@@ -20,41 +20,41 @@ type iModifyBackupSetExpireTimeRequest interface {
 }
 
 type ModifyBackupSetExpireTimeRequest struct {
-	// The backup set ID. You can call the DescribeBackups operation to query the backup set ID. The backup set must meet the following requirements:
+	// The backup set ID. You can invoke DescribeBackups to query the backup set ID. The backup set must meet the following conditions:
 	//
-	// 	- The Engine parameter is SQLServer
+	// - Engine (database type): SQLServer
 	//
-	// 	- The BackupMode parameter is set to Manual.
+	// - BackupMode (backup pattern): Manual (manual backup)
 	//
-	// 	- The BackupMethod parameter is set to Physical.
+	// - BackupMethod: Physical (physical backup)
 	//
-	// 	- The BackupType parameter is set to FullBackup.
+	// - BackupType: FullBackup (full backup)
 	//
-	// 	- The BackupStatus parameter is set to Success.
+	// - BackupStatus: Success (backup completed)
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// b-n8tpg24c6i0v****
+	// 262186****
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5****
+	// rm-7xv8f2zcia0e4****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The point in time to which you want to extend the expiration time of the backup set. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	// The time to which you want to extend the expiration time of the backup set. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
 	//
-	// The time cannot be earlier than the current expiration time. You can call the DescribeBackups operation to view the current expiration time of the backup set.
+	// The specified time cannot be earlier than the current expiration time. You can call DescribeBackups to query the current expiration time (ExpectExpireTime).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2025-06-17T12:10:23Z
+	// 2025-07-15T12:10:23Z
 	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

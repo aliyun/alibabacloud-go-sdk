@@ -32,11 +32,11 @@ type iCreateOnlineDatabaseTaskRequest interface {
 type CreateOnlineDatabaseTaskRequest struct {
 	// The consistency check method after the database is open. Valid values:
 	//
-	// 	- **SyncExecuteDBCheck**: synchronous database check
+	// 	- **SyncExecuteDBCheck**: synchronous database check.
 	//
-	// 	- **AsyncExecuteDBCheck**: asynchronous database check
+	// 	- **AsyncExecuteDBCheck**: asynchronous database check.
 	//
-	// > The check methods are supported for RDS instances that run SQL Server 2008 R2.
+	// >Compatible with SQL Server 2008 R2.
 	//
 	// This parameter is required.
 	//
@@ -50,15 +50,15 @@ type CreateOnlineDatabaseTaskRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateOnlineDatabaseTaskRequest struct {
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The ID of the migration task.
+	// The migration task ID.
 	//
 	// This parameter is required.
 	//

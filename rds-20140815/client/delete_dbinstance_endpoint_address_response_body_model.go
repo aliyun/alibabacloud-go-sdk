@@ -18,7 +18,7 @@ type iDeleteDBInstanceEndpointAddressResponseBody interface {
 type DeleteDBInstanceEndpointAddressResponseBody struct {
 	// The returned data.
 	Data *DeleteDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DeleteDBInstanceEndpointAddressResponseBodyData struct {
 	//
 	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

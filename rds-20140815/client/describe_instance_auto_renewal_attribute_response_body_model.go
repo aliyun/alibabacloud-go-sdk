@@ -41,7 +41,7 @@ type DescribeInstanceAutoRenewalAttributeResponseBody struct {
 	//
 	// 4182309D-CD29-49B1-B4A5-D7CB4D56C31F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

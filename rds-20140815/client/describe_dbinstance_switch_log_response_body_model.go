@@ -24,26 +24,36 @@ type iDescribeDBInstanceSwitchLogResponseBody interface {
 }
 
 type DescribeDBInstanceSwitchLogResponseBody struct {
+	// The instance name.
+	//
 	// example:
 	//
-	// rdsaiiabnaiiabn
+	// rm-uf6wjk5****
 	DBInstanceName *string                                       `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	Items          *DescribeDBInstanceSwitchLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 60
+	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1CA494F-CC13-4EB6-8C4D-5352EE4045BD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries on the current page.
+	//
 	// example:
 	//
-	// 5
+	// 2
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 

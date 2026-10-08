@@ -20,18 +20,30 @@ type iAuthorizeBackupEncryptionResponseBody interface {
 }
 
 type AuthorizeBackupEncryptionResponseBody struct {
+	// The authorization status of the account. Valid values:
+	//
+	// 	- 0: Not authorized.
+	//
+	// 	- 1: Authorized.
+	//
 	// example:
 	//
 	// 1
 	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
+	// The error message returned by the operation.
+	//
 	// example:
 	//
 	// create backup encrypt service linked role error.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1A1DD2A4-69F7-5848-AD56-********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Alibaba Resource Name (ARN) of the service-linked role associated with backup encryption.
+	//
 	// example:
 	//
 	// acs:ram::113991************:role/AliyunServiceRoleForRdsBackupEncryption

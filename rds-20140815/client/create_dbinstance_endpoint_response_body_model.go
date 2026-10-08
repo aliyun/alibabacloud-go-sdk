@@ -16,9 +16,9 @@ type iCreateDBInstanceEndpointResponseBody interface {
 }
 
 type CreateDBInstanceEndpointResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *CreateDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateDBInstanceEndpointResponseBodyData struct {
 	//
 	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

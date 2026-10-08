@@ -36,13 +36,11 @@ type ResetAccountRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The new password of the privileged account.
 	//
-	// >
+	// > 	- The password must be 8 to 32 characters in length.
 	//
-	// 	- The password must be 8 to 32 characters in length.
+	// > 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-	//
-	// 	- It can contain the following special characters: `! @ # $ & ; % ^ 	- () _ + - =`.
+	// > 	- Special characters include `!@#$&%^*()_+-=`.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +48,13 @@ type ResetAccountRequest struct {
 	//
 	// Test123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

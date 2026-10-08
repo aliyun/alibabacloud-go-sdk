@@ -16,17 +16,17 @@ type iDescribeBackupDatabaseResponseBody interface {
 }
 
 type DescribeBackupDatabaseResponseBody struct {
-	// The name of the database. Format: "db1,db2".
+	// The database names, in the format of "db1,db2".
 	//
 	// example:
 	//
 	// db1,db2
 	DatabaseNames *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 08A3B71B-FE08-4B03-974F-CC7EA6DB1828
+	// 08A3B71B-FE08-xxxx-974F-CC7EA6DBxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

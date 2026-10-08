@@ -38,21 +38,21 @@ type iCreateSecretRequest interface {
 }
 
 type CreateSecretRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz*****
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance. You can call the DescribeDBInstances operation to query the ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-sdfljk123***
+	// rm-sdfljk123****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type CreateSecretRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The engine of the database.
+	// The database engine type.
 	//
-	// > Only MySQL is supported.
+	// > This parameter currently supports only the value MySQL.
 	//
 	// This parameter is required.
 	//
@@ -75,7 +75,7 @@ type CreateSecretRequest struct {
 	// MySQL
 	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password that is used to access the database.
+	// The password of the database account.
 	//
 	// This parameter is required.
 	//
@@ -83,7 +83,7 @@ type CreateSecretRequest struct {
 	//
 	// 12345678
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
+	// The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -91,13 +91,13 @@ type CreateSecretRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID of the resource group.
+	// The ID of the resource group to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rg-acfmxypivk***
+	// rg-acfmxypivk****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -107,7 +107,7 @@ type CreateSecretRequest struct {
 	//
 	// Foo
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The username that is used to access the database.
+	// The username of the database account.
 	//
 	// This parameter is required.
 	//

@@ -20,15 +20,15 @@ type iDescribeDBInstanceSecurityGroupRuleResponseBody interface {
 }
 
 type DescribeDBInstanceSecurityGroupRuleResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the security group rule.
+	// The details of the security group rules.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The information about the status code.
+	// The response message.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iQueryNotifyRequest interface {
 }
 
 type QueryNotifyRequest struct {
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type QueryNotifyRequest struct {
 	//
 	// 2022-05-02T08:38:37Z
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.****
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -52,7 +52,7 @@ type QueryNotifyRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type QueryNotifyRequest struct {
 	//
 	// 2022-05-09T08:38:37Z
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
-	// Specifies whether the query results contain confirmed notifications. Valid values:
+	// Specifies whether to include confirmed notifications in the query results. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Include confirmed notifications.
 	//
-	// 	- **false**
+	// - **false**: Do not include confirmed notifications.
 	//
-	// >  A confirmed notification is a notification that has been marked as confirmed by calling the ConfirmNotify operation.
+	// >Confirmed notifications are notifications that have been marked as confirmed by calling the ConfirmNotify operation.
 	//
 	// This parameter is required.
 	//

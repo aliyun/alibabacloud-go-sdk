@@ -21,11 +21,11 @@ type iDescribeRdsResourceSettingsRequest interface {
 
 type DescribeRdsResourceSettingsRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The location of the notification.
+	// The resource niche. Valid values:
 	//
-	// 	- noticeBar: notification bar
+	// - noticeBar: notification bar.
 	//
-	// 	- popUp: popup
+	// - popUp: pop-up dialog box.
 	//
 	// This parameter is required.
 	//

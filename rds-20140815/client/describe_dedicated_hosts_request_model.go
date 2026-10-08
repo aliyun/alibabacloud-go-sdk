@@ -34,11 +34,11 @@ type iDescribeDedicatedHostsRequest interface {
 }
 
 type DescribeDedicatedHostsRequest struct {
-	// Specifies whether instances can be deployed on the host. Valid values:
+	// Specifies whether the host allows instance allocation. Valid values:
 	//
-	// 	- **0**: Instances cannot be deployed on the host.
+	// 	- **0**: Instance allocation is not allowed.
 	//
-	// 	- **1**: Instances can be deployed on the host.
+	// 	- **1**: Instance allocation is allowed.
 	//
 	// example:
 	//
@@ -50,27 +50,27 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// dhg-7a9xxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The ID of the host in the dedicated cluster.
+	// The host ID in the dedicated cluster.
 	//
 	// example:
 	//
 	// ch-t4nn100ddxxxxxxxx
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The status of the host. Valid values:
+	// The host status. Valid values:
 	//
-	// 	- **0**: creating
+	//  	- **0**: being created
 	//
-	// 	- **1**: running
+	//  	- **1**: running
 	//
-	// 	- **2**: faulty
+	//  	- **2**: down
 	//
-	// 	- **3**: being replaced
+	//  	- **3**: offline (host being replaced)
 	//
-	// 	- **4**: deprecated
+	//  	- **4**: offline
 	//
-	// 	- **5**: deleting
+	//  	- **5**: deleted
 	//
-	// 	- **6**: restarting
+	//  	- **6**: restarting
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type DescribeDedicatedHostsRequest struct {
 	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
 	// The storage type of the host. Valid values:
 	//
-	// 	- **dhg_cloud_ssd**: enhanced SSD (ESSD)
+	// 	- **dhg_cloud_ssd**: ESSD cloud disk.
 	//
-	// 	- **dhg_local_ssd**: local SSD
+	// 	- **dhg_local_ssd**: local standard SSD.
 	//
 	// example:
 	//
@@ -93,7 +93,7 @@ type DescribeDedicatedHostsRequest struct {
 	// 102565235
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//

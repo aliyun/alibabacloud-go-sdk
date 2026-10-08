@@ -24,37 +24,37 @@ type iAttachWhitelistTemplateToInstanceResponseBody interface {
 }
 
 type AttachWhitelistTemplateToInstanceResponseBody struct {
-	// The response code returned. Valid values:
+	// The response code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Normal.
 	//
-	// 	- **400**: client error
+	// - **400**: Client fault.
 	//
-	// 	- **401**: identity authentication failed
+	// - **401**: Authentication failed.
 	//
-	// 	- **404**: request page not found
+	// - **404**: Request page not found.
 	//
-	// 	- **500**: server error
+	// - **500**: Server fault.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *AttachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Success.
 	//
-	// 	- **400**: client error
+	// - **400**: Client error.
 	//
-	// 	- **500**: server error
+	// - **500**: Server error.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type AttachWhitelistTemplateToInstanceResponseBody struct {
 	//
 	// 08A3B71B-FE08-4B03-974F-CC7EA6DB1828
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -150,11 +150,11 @@ func (s *AttachWhitelistTemplateToInstanceResponseBody) Validate() error {
 }
 
 type AttachWhitelistTemplateToInstanceResponseBodyData struct {
-	// The status code returned. Valid values:
+	// The return status. Valid values:
 	//
-	// 	- **ok**: The request is successful.
+	// - **ok**: Success.
 	//
-	// 	- **error**: The request fails.
+	// - **error**: Error.
 	//
 	// example:
 	//

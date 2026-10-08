@@ -36,13 +36,13 @@ type DescribeInstanceAutoRenewalAttributeRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// example:
 	//
-	// rm-bpxxxxxxx
+	// rm-bp****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -54,7 +54,7 @@ type DescribeInstanceAutoRenewalAttributeRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30 (default value)**
+	// 	- **30*	- (default)
 	//
 	// 	- **50**
 	//
@@ -64,7 +64,7 @@ type DescribeInstanceAutoRenewalAttributeRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -74,11 +74,11 @@ type DescribeInstanceAutoRenewalAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// This parameter is reserved. You do not need to specify this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
-	// API
+	// test
 	ProxyId *string `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
 }
 

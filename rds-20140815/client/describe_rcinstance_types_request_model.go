@@ -22,32 +22,11 @@ type iDescribeRCInstanceTypesRequest interface {
 }
 
 type DescribeRCInstanceTypesRequest struct {
-	// The commodity code of the instance.
-	//
-	// example:
-	//
-	// rds_customprepaid_public_cn
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The database engine. Set the value to MySQL.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The instance types.
-	InstanceType []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
-	// The instance family. You can call the **DescribeRCInstanceTypeFamilies*	- operation to query the instance families of instances.
-	//
-	// example:
-	//
-	// gn8.cm
-	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	CommodityCode      *string   `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Engine             *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	InstanceType       []*string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
+	InstanceTypeFamily *string   `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRCInstanceTypesRequest) String() string {

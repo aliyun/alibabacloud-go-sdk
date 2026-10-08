@@ -22,25 +22,33 @@ type iDescribeSupportOnlineResizeDiskResponseBody interface {
 }
 
 type DescribeSupportOnlineResizeDiskResponseBody struct {
-	// The response code returned.
-	//
-	// example:
-	//
-	// NotExists.InstanceId
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response result set.
-	//
-	// example:
-	//
-	// {"SupportOnlineResizeDisk":true,"DBInstanceName":"rm-uf6wjk5xxxxxxx"}
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The response code.
 	//
 	// example:
 	//
-	// successful
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "SupportOnlineResizeDisk": true,
+	//
+	//       "DBInstanceName": "rm-bp****",
+	//
+	//       "maxSupportDiskSizeGB": 6144
+	//
+	// }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned for the response code.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -60,51 +60,51 @@ type DescribePriceRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz*****
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The commodity code of the instance. Valid values:
 	//
-	// 	- **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
+	// 	- **bards**: pay-as-you-go primary instance (China site)
 	//
-	// 	- **rds*	- (default): The instance is a subscription primary instance. This value is available at the China site (aliyun.com).
+	// 	- **rds*	- (default): subscription primary instance (China site)
 	//
-	// 	- **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
+	// 	- **rords**: pay-as-you-go read-only instance (China site)
 	//
-	// 	- **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
+	// 	- **rds_rordspre_public_cn**: subscription read-only instance (China site)
 	//
-	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
+	// 	- **bards_intl**: pay-as-you-go primary instance (international site)
 	//
-	// 	- **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
+	// 	- **rds_intl**: subscription primary instance (international site)
 	//
-	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
+	// 	- **rords_intl**: pay-as-you-go read-only instance (international site)
 	//
-	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available at the international site (alibabacloud.com).
+	// 	- **rds_rordspre_public_intl**: subscription read-only instance (international site)
 	//
-	// >  If you want to query the price of a read-only instance, you must specify this parameter.
+	// > This parameter is required when you query the price of a read-only instance.
 	//
 	// example:
 	//
 	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+	// The instance type. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rds.mysql.s1.small
+	// mysql.x2.medium.xc
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The ID of the instance for which you want to change the specifications or the instance that you want to renew.
+	// Instance ID of the instance for which you want to change the specifications or renew.
 	//
-	// > 	- If you want to query the price of a specification change order or a renewal order, you must specify this parameter.
+	// > - This parameter is required when you query the price for a specification change or renewal.
 	//
-	// > 	- If the instance is a read-only instance, you must set this parameter to the ID of its primary instance.
+	// > - If the instance is a read-only instance, specify instance ID of its primary instance.
 	//
 	// example:
 	//
-	// rm-*****
+	// rm-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+	// The instance storage space. Unit: GB. The value increases in increments of 5 GB. For more information about the value range, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
 	// This parameter is required.
 	//
@@ -112,32 +112,32 @@ type DescribePriceRequest struct {
 	//
 	// 20
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The storage type of the new instance. Valid values:
+	// The instance storage type. Valid values:
 	//
-	// 	- **general_essd**: premium Enterprise SSD (ESSD)
+	// 	- **general_essd**: Premium ESSD
 	//
-	// 	- **local_ssd**: premium local SSD
+	// 	- **local_ssd**: Premium Local SSDs
 	//
 	// 	- **cloud_ssd**: standard SSD
 	//
-	// 	- **cloud_essd**: performance level 1 (PL1) ESSD
+	// 	- **cloud_essd**: PL1 ESSD cloud disk
 	//
-	// 	- **cloud_essd2**: PL2 ESSD
+	// 	- **cloud_essd2**: PL2 ESSD cloud disk
 	//
-	// 	- **cloud_essd3**: PL3 ESSD
+	// 	- **cloud_essd3**: PL3 ESSD cloud disk
 	//
 	// example:
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The information about the node.
+	// The node information.
 	//
-	// >  This parameter is supported for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
+	// > This parameter is used for ApsaraDB RDS for MySQL instances in the cluster edition.
 	//
 	// if can be null:
 	// true
 	DBNode []*DescribePriceRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
-	// The database engine of the instance. Valid values:
+	// The database engine. Valid values:
 	//
 	// 	- **MySQL**
 	//
@@ -153,25 +153,37 @@ type DescribePriceRequest struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Valid values:
+	// <props="china">The database engine version. Valid values:
 	//
-	// 	- Valid values if you set Engine to **MySQL**: **5.5**, **5.6**, **5.7**, and **8.0**
+	// - **MySQL**: **5.5**, **5.6**, **5.7**, **8.0**
 	//
-	// 	- Valid values if you set Engine to **SQL Server**: **08r2_ent_ha**(cloud disks, discontinued), **2008r2**(high-performance local disks, discontinued), **2012*	- (SQL Server EE Basic)**2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**
+	// - **SQL Server**: **08r2_ent_ha*	- (cloud disk, discontinued), **2008r2*	- (Premium Local SSDs, discontinued), **2012*	- (Enterprise Edition Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, **2022_web**
 	//
-	// 	- Valid values if you set Engine to **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
+	// - **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**
 	//
-	// 	- Valid value if you set Engine to **MariaDB**: **10.3**
+	// - **MariaDB**: **10.3**
 	//
-	// >  The following information describes the valid values when you set Engine to SQLServer: `_ent` specifies SQL Server EE on RDS Cluster Edition, `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+	//
+	//
+	// <props="intl">The database engine version. Valid values:
+	//
+	// - **MySQL**: **5.5**, **5.6**, **5.7**, **8.0**
+	//
+	// - **SQL Server**: **08r2_ent_ha*	- (cloud disk, discontinued), **2008r2*	- (Premium Local SSDs, discontinued), **2012*	- (Enterprise Edition Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, **2022_web**
+	//
+	// - **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**
+	//
+	// - **MariaDB**: **10.3**
+	//
+	// > For SQL Server instances, `_ent` indicates Enterprise Edition (Cluster), `_ent_ha` indicates Enterprise Edition, `_std_ha` indicates Standard Edition, and `_web` indicates Web Edition.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 5.5
+	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The role of the instance. Valid values:
+	// The instance type. Valid values:
 	//
 	// 	- **0**: primary instance
 	//
@@ -183,13 +195,13 @@ type DescribePriceRequest struct {
 	InstanceUsedType *int32 `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
 	// The order type. Valid values:
 	//
-	// 	- **BUY**
+	// 	- **BUY**: purchase
 	//
-	// 	- **RENEW**
+	// 	- **RENEW**: renewal
 	//
-	// 	- **UPGRADE**
+	// 	- **UPGRADE**: upgrade
 	//
-	// 	- **DOWNGRADE**
+	// 	- **DOWNGRADE**: downgrade
 	//
 	// example:
 	//
@@ -207,7 +219,7 @@ type DescribePriceRequest struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The number of instances that you want to purchase. Valid values: **0 to 30**.
+	// The number of instances to purchase. Valid values: **0 to 30**.
 	//
 	// This parameter is required.
 	//
@@ -215,7 +227,7 @@ type DescribePriceRequest struct {
 	//
 	// 10
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the most recent region list.
 	//
 	// example:
 	//
@@ -223,25 +235,25 @@ type DescribePriceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The settings of the serverless instance.
+	// The settings of the serverless ApsaraDB RDS instance.
 	//
-	// > ApsaraDB RDS for MariaDB does not support serverless instances.
+	// > MariaDB does not support serverless instances.
 	ServerlessConfig *DescribePriceRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
-	// The billing cycle of the subscription instance. This parameter is required when **CommodityCode*	- is set to **rds**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**. Valid values:
+	// The subscription type. This parameter is required when **CommodityCode*	- is set to **rds**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**. Valid values:
 	//
-	// 	- **Year**
+	// 	- **Year**: yearly subscription
 	//
-	// 	- **Month**
+	// 	- **Month**: monthly subscription
 	//
 	// example:
 	//
 	// Year
 	TimeType *string `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration. Valid values:
 	//
-	// 	- If you set the **TimeType*	- parameter to **Year**, the value of the UsedTime parameter ranges from **1 to 100**.
+	// 	- If **TimeType*	- is set to **Year**, the value of UsedTime ranges from **1 to 100**.
 	//
-	// 	- If you set the **TimeType*	- parameter to **Month**, the value of the UsedTime parameter ranges from **1 to 999**.
+	// 	- If **TimeType*	- is set to **Month**, the value of UsedTime ranges from **1 to 999**.
 	//
 	// Default value: **1**.
 	//
@@ -249,9 +261,9 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The zone ID of the primary instance. You can call the DescribeRegions operation to query the most recent zone list.
+	// The zone ID of the primary node. You can call DescribeRegions to query the most recent zone list.
 	//
-	// >  If you specify a virtual private cloud (VPC) and a vSwitch, this parameter is required to identify the zone for the vSwitch.
+	// > If you specify a VPC and a vSwitch, this parameter is required to match the zone of the specified vSwitch.
 	//
 	// example:
 	//
@@ -484,11 +496,11 @@ func (s *DescribePriceRequest) Validate() error {
 }
 
 type DescribePriceRequestDBNode struct {
-	// The instance type of the node.
+	// The node specifications.
 	//
 	// example:
 	//
-	// mysql.n2.small.xc
+	// mysql.x2.medium.xc
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
 	// The zone ID of the node.
 	//
@@ -529,13 +541,13 @@ func (s *DescribePriceRequestDBNode) Validate() error {
 }
 
 type DescribePriceRequestServerlessConfig struct {
-	// The maximum number of RDS Capacity Units (RCUs).
+	// The maximum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
 	//
 	// example:
 	//
 	// 8
 	MaxCapacity *float64 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// The minimum number of RCUs.
+	// The minimum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
 	//
 	// example:
 	//

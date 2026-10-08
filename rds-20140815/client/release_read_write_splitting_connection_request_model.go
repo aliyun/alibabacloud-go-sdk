@@ -24,13 +24,13 @@ type iReleaseReadWriteSplittingConnectionRequest interface {
 }
 
 type ReleaseReadWriteSplittingConnectionRequest struct {
-	// The ID of the primary instance. You can call the DescribeDBInstances operation to query the instance ID.
+	// The ID of the primary instance. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

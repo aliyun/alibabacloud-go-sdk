@@ -14,11 +14,6 @@ type iModifyRCInstanceAttributeResponseBody interface {
 }
 
 type ModifyRCInstanceAttributeResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 776C5EC4-7714-5E40-AD5C-51F7C472A68E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

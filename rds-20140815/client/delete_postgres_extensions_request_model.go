@@ -36,7 +36,7 @@ type DeletePostgresExtensionsRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeletePostgresExtensionsRequest struct {
 	//
 	// pgm-bp156o9ti493****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database on which the extension is installed. If you want to specify multiple databases, separate the databases with commas (,).
+	// The database in which the extension is installed. Separate multiple databases with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DeletePostgresExtensionsRequest struct {
 	//
 	// test_db
 	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
-	// The name of the extension. If you want to specify multiple extensions, separate the extension names with commas (,).
+	// The extension name. Separate multiple extensions with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type DeletePostgresExtensionsRequest struct {
 	Extensions   *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

@@ -17,7 +17,7 @@ type iDescribeAvailableCrossRegionResponseBody interface {
 
 type DescribeAvailableCrossRegionResponseBody struct {
 	Regions *DescribeAvailableCrossRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

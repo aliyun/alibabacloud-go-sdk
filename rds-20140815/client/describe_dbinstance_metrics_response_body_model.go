@@ -24,11 +24,11 @@ type DescribeDBInstanceMetricsResponseBody struct {
 	//
 	// example:
 	//
-	// rm-bp1*****
+	// rm-bp1****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// An array consisting of the Enhanced Monitoring metrics that are enabled for the instance.
+	// The list of enhanced monitoring metrics that are enabled for the instance.
 	Items []*DescribeDBInstanceMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type DescribeDBInstanceMetricsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// OS CPU utilization, equal to the number of OS-consumed CPUs divided by the total number of CPUs
+	// sys cpu使用率，sys cpu使用量 / cpu总量
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The category of the enhanced monitoring metric. Valid values:
 	//
-	// 	- **os**: OS metric
+	// - **os**: operating system metric.
 	//
-	// 	- **db**: database metric
+	// - **db**: database metric.
 	//
 	// example:
 	//
@@ -126,15 +126,15 @@ type DescribeDBInstanceMetricsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// CPU Utilization Rate
+	// CPU使用率
 	GroupKeyType *string `json:"GroupKeyType,omitempty" xml:"GroupKeyType,omitempty"`
-	// The method that is used to aggregate the monitoring data of the enhanced monitoring metric. Valid values:
+	// The statistical method of the enhanced monitoring metric. Valid values:
 	//
-	// 	- **avg**: The system calculates the average value of the enhanced monitoring metric.
+	// - **avg**: average value.
 	//
-	// 	- **min**: The system calculates the minimum value of the enhanced monitoring metric.
+	// - **min**: minimum value.
 	//
-	// 	- **max**: The system calculates the maximum value of the enhanced monitoring metric.
+	// - **max**: maximum value.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type DescribeDBInstanceMetricsResponseBodyItems struct {
 	//
 	// os.cpu_usage.sys
 	MetricsKeyAlias *string `json:"MetricsKeyAlias,omitempty" xml:"MetricsKeyAlias,omitempty"`
-	// The serial number of the enhanced monitoring metric.
+	// The sequence number of the enhanced monitoring metric.
 	//
 	// example:
 	//

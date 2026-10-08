@@ -20,25 +20,25 @@ type iCreateDBNodesResponseBody interface {
 }
 
 type CreateDBNodesResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rm-2ze450g4ctg6t****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the created node. The value is a string. Multiple values are separated by commas (`,`).
+	// The IDs of the created nodes. The value is of the String type. Multiple node IDs are separated by commas (,).
 	//
 	// example:
 	//
-	// rn-abcd2*****
+	// rn-abcd2****
 	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
-	// 2133400000*****
+	// 2133400000****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

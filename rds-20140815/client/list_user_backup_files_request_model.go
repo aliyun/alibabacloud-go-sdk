@@ -32,28 +32,28 @@ type iListUserBackupFilesRequest interface {
 }
 
 type ListUserBackupFilesRequest struct {
-	// The ID of the full backup file.
+	// The user backup ID.
 	//
 	// example:
 	//
-	// b-kwwvr7v8t7of********
+	// b-kwwvr7v8t7of****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The description of the full backup file.
+	// The comment of the user backup to query.
 	//
-	// > The system implements a fuzzy match based on the value of this parameter.
+	// >You can enter part of the comment for fuzzy matching.
 	//
 	// example:
 	//
 	// BackupTest
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The URL from which you can download the full backup file that is stored as an object in an Object Storage Service (OSS) bucket. For more information about how to obtain the URL, see [Obtain the access URL after you upload objects](https://help.aliyun.com/document_detail/39607.html).
+	// The OSS download URL of the user backup file. For information about how to obtain the OSS download URL of a user backup file, see [How do I obtain the URL of an uploaded object?](https://help.aliyun.com/document_detail/39607.html).
 	//
 	// example:
 	//
-	// https://******.oss-ap-********.aliyuncs.com/backup_qp.xb
+	// https://****.oss-ap-****.aliyuncs.com/backup_qp.xb
 	OssUrl  *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the available regions.
 	//
 	// This parameter is required.
 	//
@@ -61,31 +61,31 @@ type ListUserBackupFilesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
+	// The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the full backup file. Valid values:
+	// The status of the user backup file. Valid values:
 	//
-	// 	- **Importing**: The full backup file is being imported.
+	// 	- **Importing**: The backup is being imported.
 	//
-	// 	- **Failed**: The full backup file fails to be imported.
+	// 	- **Failed**: The import failed.
 	//
-	// 	- **CheckSucccess**: The full backup file passes the check.
+	// 	- **CheckSuccess**: The verification passed.
 	//
-	// 	- **BackupSuccess**: The full backup file is imported.
+	// 	- **BackupSuccess**: The import succeeded.
 	//
-	// 	- **Deleted**: The full backup file is deleted.
+	// 	- **Deleted**: The backup is deleted.
 	//
 	// example:
 	//
 	// CheckSuccess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag that is added to the full backup file.
+	// The tag information used to query the user backup.
 	//
 	// example:
 	//

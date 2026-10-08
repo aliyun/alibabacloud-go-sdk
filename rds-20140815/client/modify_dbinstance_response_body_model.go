@@ -18,14 +18,20 @@ type iModifyDBInstanceResponseBody interface {
 }
 
 type ModifyDBInstanceResponseBody struct {
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to query the instance ID.
+	//
 	// example:
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 221172852******
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74

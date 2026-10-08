@@ -26,7 +26,7 @@ type iModifyDBInstanceNetworkExpireTimeRequest interface {
 }
 
 type ModifyDBInstanceNetworkExpireTimeRequest struct {
-	// The retention days of the classic network endpoint. Valid values: **1 to 120**. Unit: days.
+	// The number of days for the classic network endpoint reservation. Valid values: **1 to 120**. Unit: days.
 	//
 	// This parameter is required.
 	//
@@ -34,25 +34,25 @@ type ModifyDBInstanceNetworkExpireTimeRequest struct {
 	//
 	// 7
 	ClassicExpiredDays *int32 `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	// The classic network endpoint whose expiration time you want to extend. Two types of classic network endpoints are supported:
+	// The classic network connectivity endpoint to be extended. Two types of classic network endpoints are supported:
 	//
-	// 	- The internal endpoint of the classic network.
+	// 	- Classic network internal network endpoint
 	//
-	// 	- The read/write splitting endpoint of the classic network.
+	// 	- Classic network read/write splitting endpoint
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxx.mysql.rds.aliyuncs.com
+	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

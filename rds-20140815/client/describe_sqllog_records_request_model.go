@@ -42,41 +42,43 @@ type iDescribeSQLLogRecordsRequest interface {
 }
 
 type DescribeSQLLogRecordsRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database. You can enter only one database name. If you specify this parameter, this operation returns the logs that are generated only for the specified database. If you do not specify this parameter, this operation returns the logs that are generated for all databases on the instance.
+	// The name of the database. By default, all databases are queried. You can also enter a database name to query. Only one database name can be entered at a time.
 	//
 	// example:
 	//
 	// Database
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 15 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time, and the interval between the start time and end time must be 7 days or less. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
+	// > If DAS Enterprise Edition V3 is activated and you use the SQL Explorer and Audit feature it provides, you can query data within the hot data storage duration. You can call [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) to query the activated Enterprise Edition information.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2011-06-11T15:00:00Z
+	// 2011-06-06T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to generate an SQL audit log file or return SQL audit logs. Valid values:
+	// Specifies whether to generate an audit file or return a list of SQL records. Valid values:
 	//
-	// 	- **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the DescribeSQLLogFiles operation to obtain the download URL of the SQL audit log file.
+	// 	- **File**: If you set this parameter to File, an audit file is generated. Only common parameters are returned. You must call the DescribeSQLLogFiles operation to obtain the download URL of the file.
 	//
-	// 	- **Stream*	- (default): If you set this parameter to Stream, this operation returns SQL audit logs.
+	// 	- **Stream**: This is the default value. A list of SQL records is returned.
 	//
-	// >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of 1 million logs are returned.
+	// > If this parameter is set to **File**, only MySQL (with Premium Local SSDs) and SQL Server instances are supported, and a maximum of 1,000,000 log entries are recorded.
 	//
 	// example:
 	//
@@ -84,7 +86,7 @@ type DescribeSQLLogRecordsRequest struct {
 	Form         *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from 1.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
 	//
 	// Default value: **1**.
 	//
@@ -98,15 +100,15 @@ type DescribeSQLLogRecordsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The keyword that is used for the query.
+	// The keywords that are used for the query.
 	//
-	// 	- When you call this operation and set the **Form*	- parameter to **File*	- to generate an audit file, you cannot filter log entries by keyword.
+	// - When you generate an audit file by calling this operation (the **Form*	- request parameter is set to **File**), keyword-based filtering is not supported.
 	//
-	// 	- You can specify up to 10 keywords. The keywords are evaluated by using the **AND*	- operator. Separate multiple keywords with spaces.
+	// - Separate multiple keywords with spaces. You can specify up to 10 keywords. The logical relationship among keywords is **and**.
 	//
-	// 	- If a field name in the specified SQL statement is enclosed in grave accents (\\`) and you want to use the field name as a keyword, you must enter the grave accents (\\`) as part of the field name. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
+	// - If a field name in the SQL statement uses backticks (\\`), you must also include the backticks when using the field name as a keyword. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
 	//
-	// >  After you enter a keyword, the system matches the keyword based on the **Database**, **User**, and **QueryKeywords*	- parameters. The parameters are evaluated by using the **AND*	- operator.
+	// > After you enter keywords, the system matches the keywords against the **Database**, **User**, and **QueryKeywords*	- parameters simultaneously. The logical relationship among the three request parameters is **and**.
 	//
 	// example:
 	//
@@ -114,13 +116,15 @@ type DescribeSQLLogRecordsRequest struct {
 	QueryKeywords        *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The unique ID of the SQL statement.
+	// A reserved parameter.
 	//
 	// example:
 	//
-	// 25623548
+	// None
 	SQLId *int64 `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// The beginning of the time range to query. You can query data in the last 15 days before the current date. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time of the query. You can query data within the last 7 days from the current date. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
+	// > If DAS Enterprise Edition V3 is activated and you use the SQL Explorer and Audit feature it provides, you can query data within the hot data storage duration. You can call [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) to query the activated Enterprise Edition information.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +132,7 @@ type DescribeSQLLogRecordsRequest struct {
 	//
 	// 2011-06-01T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The username of the account. You can enter only one username. If you specify this parameter, this operation returns the logs that are generated only for the specified account. If you do not specify this parameter, this operation returns the logs that are generated for all accounts on the instance.
+	// The username. By default, all users are queried. You can also enter a username to query. Only one username can be entered at a time.
 	//
 	// example:
 	//

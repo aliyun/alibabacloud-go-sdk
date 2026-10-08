@@ -24,17 +24,17 @@ type iModifyDBInstanceDescriptionRequest interface {
 }
 
 type ModifyDBInstanceDescriptionRequest struct {
-	// The name of the instance.
+	// The name of the ApsaraDB RDS instance.
 	//
-	// > The name must be 2 to 64 characters in length.
+	// >The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Instance in Alibaba Cloud test environment
+	// testInstance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -66,31 +66,31 @@ func (s *DescribeCustinsResourceInfoResponseBody) Validate() error {
 }
 
 type DescribeCustinsResourceInfoResponseBodyData struct {
-	// The deadline for the CPU adjustment.
+	// The deadline for CPU adjustment.
 	//
 	// example:
 	//
 	// 2023-10-25
 	CpuAdjustDeadline *string `json:"CpuAdjustDeadline,omitempty" xml:"CpuAdjustDeadline,omitempty"`
-	// The maximum percentage of the system CPU resources that the instance can use.
+	// The maximum adjustable CPU ratio.
 	//
 	// example:
 	//
 	// 30
 	CpuAdjustableMaxRatio *string `json:"CpuAdjustableMaxRatio,omitempty" xml:"CpuAdjustableMaxRatio,omitempty"`
-	// The maximum CPU utilization.
+	// The maximum CPU usage.
 	//
 	// example:
 	//
 	// 60
 	CpuAdjustableMaxValue *string `json:"CpuAdjustableMaxValue,omitempty" xml:"CpuAdjustableMaxValue,omitempty"`
-	// The CPU utilization.
+	// The CPU usage.
 	//
 	// example:
 	//
 	// 10
 	CpuIncreaseRatio *string `json:"CpuIncreaseRatio,omitempty" xml:"CpuIncreaseRatio,omitempty"`
-	// The CPU utilization. Unit: percentage.
+	// The CPU usage. Unit: %.
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// rm-wz92gn1ll9fe5d3a4
+	// rm-wz9s06u4drm******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The maximum IOPS.
+	// The maximum number of I/O requests per second.
 	//
 	// example:
 	//
 	// 20
 	IopsAdjustableMaxValue *string `json:"IopsAdjustableMaxValue,omitempty" xml:"IopsAdjustableMaxValue,omitempty"`
-	// The deadline for the adjustment of the maximum number of connections.
+	// The deadline for maximum connection adjustment.
 	//
 	// example:
 	//
@@ -132,47 +132,47 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 20
 	MaxConnIncreaseRatioValue *string `json:"MaxConnIncreaseRatioValue,omitempty" xml:"MaxConnIncreaseRatioValue,omitempty"`
-	// The deadline for the adjustment of the maximum IOPS.
+	// The deadline for maximum IOPS adjustment.
 	//
 	// example:
 	//
 	// 2023-10-25
 	MaxIopsAdjustDeadline *string `json:"MaxIopsAdjustDeadline,omitempty" xml:"MaxIopsAdjustDeadline,omitempty"`
-	// The maximum IOPS.
+	// The maximum number of I/O requests per second.
 	//
 	// example:
 	//
 	// 100
 	MaxIopsIncreaseRatio *string `json:"MaxIopsIncreaseRatio,omitempty" xml:"MaxIopsIncreaseRatio,omitempty"`
-	// The maximum IOPS that can be supported by the instance.
+	// The maximum number of I/O requests per second.
 	//
 	// example:
 	//
 	// 20
 	MaxIopsIncreaseRatioValue *string `json:"MaxIopsIncreaseRatioValue,omitempty" xml:"MaxIopsIncreaseRatioValue,omitempty"`
-	// The maximum percentage of the system memory that the instance can use.
+	// The maximum adjustable memory ratio.
 	//
 	// example:
 	//
 	// 60
 	MemAdjustableMaxRatio *string `json:"MemAdjustableMaxRatio,omitempty" xml:"MemAdjustableMaxRatio,omitempty"`
-	// The maximum value of the resources to be evaluated.
+	// The maximum value of the resource to be evaluated.
 	//
 	// example:
 	//
 	// 200
 	MemAdjustableMaxValue *string `json:"MemAdjustableMaxValue,omitempty" xml:"MemAdjustableMaxValue,omitempty"`
-	// The deadline for the memory adjustment.
+	// The deadline for memory adjustment.
 	//
 	// example:
 	//
 	// 2023-10-25
 	MemoryAdjustDeadline *string `json:"MemoryAdjustDeadline,omitempty" xml:"MemoryAdjustDeadline,omitempty"`
-	// The memory increase percentage.
+	// The memory increase ratio.
 	//
 	// example:
 	//
-	// 2023-10-25
+	// 20
 	MemoryIncreaseRatio *string `json:"MemoryIncreaseRatio,omitempty" xml:"MemoryIncreaseRatio,omitempty"`
 	// The memory usage. Unit: MB.
 	//
@@ -180,7 +180,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 200
 	MemoryIncreaseRatioValue *string `json:"MemoryIncreaseRatioValue,omitempty" xml:"MemoryIncreaseRatioValue,omitempty"`
-	// The number of CPUs of the instance.
+	// The number of CPU cores of the instance.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// 30
 	OriginMaxConn *string `json:"OriginMaxConn,omitempty" xml:"OriginMaxConn,omitempty"`
-	// The maximum IOPS.
+	// The maximum number of I/O requests per second.
 	//
 	// example:
 	//
 	// 20
 	OriginMaxIops *string `json:"OriginMaxIops,omitempty" xml:"OriginMaxIops,omitempty"`
-	// The actual memory used. Unit: MB.
+	// The actual memory usage. Unit: MB.
 	//
 	// example:
 	//

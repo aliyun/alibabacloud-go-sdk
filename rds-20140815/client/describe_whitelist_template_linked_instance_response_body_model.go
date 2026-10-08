@@ -24,31 +24,31 @@ type iDescribeWhitelistTemplateLinkedInstanceResponseBody interface {
 }
 
 type DescribeWhitelistTemplateLinkedInstanceResponseBody struct {
-	// The response code returned. Valid values:
+	// The response code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Normal.
 	//
-	// 	- **400**: client error
+	// - **400**: Client fault.
 	//
-	// 	- **401**: identity authentication failed
+	// - **401**: Failed to authenticate.
 	//
-	// 	- **404**: request page not found
+	// - **404**: Request page not found.
 	//
-	// 	- **500**: server error
+	// - **500**: Server fault.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeWhitelistTemplateLinkedInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **200**: success
+	// - **200**: Success.
 	//
-	// 	- **400**: client error
+	// - **400**: Client error.
 	//
-	// 	- **500**: server error
+	// - **500**: Server error.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribeWhitelistTemplateLinkedInstanceResponseBody struct {
 	//
 	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -150,9 +150,9 @@ func (s *DescribeWhitelistTemplateLinkedInstanceResponseBody) Validate() error {
 }
 
 type DescribeWhitelistTemplateLinkedInstanceResponseBodyData struct {
-	// The information about the instance.
+	// The instance information.
 	InsName []*string `json:"InsName,omitempty" xml:"InsName,omitempty" type:"Repeated"`
-	// The ID of the whitelist template.
+	// The whitelist template ID.
 	//
 	// example:
 	//

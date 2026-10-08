@@ -17,16 +17,8 @@ type iDescribeRCSecurityGroupPermissionRequest interface {
 
 type DescribeRCSecurityGroupPermissionRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// sg-2ze27hs990o2hn94****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 

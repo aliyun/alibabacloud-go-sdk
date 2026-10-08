@@ -20,25 +20,25 @@ type iCreateCloudMigrationPrecheckTaskResponseBody interface {
 }
 
 type CreateCloudMigrationPrecheckTaskResponseBody struct {
-	// The name of the instance.
+	// The name of the target instance.
 	//
 	// example:
 	//
 	// pgm-bp102g323jd4****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 60F9A12A-16B8-4728-B099-4CA38D32C31C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 439946016
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//

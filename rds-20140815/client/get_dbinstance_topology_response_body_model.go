@@ -26,7 +26,7 @@ type GetDBInstanceTopologyResponseBody struct {
 	//
 	// None
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details about the topology.
+	// The topology details.
 	Data *GetDBInstanceTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// An internal parameter. You can ignore this parameter.
 	//
@@ -34,7 +34,7 @@ type GetDBInstanceTopologyResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ func (s *GetDBInstanceTopologyResponseBody) Validate() error {
 }
 
 type GetDBInstanceTopologyResponseBodyData struct {
-	// The network connection information of the instance.
+	// The network connectivity information of the instance.
 	Connections []*GetDBInstanceTopologyResponseBodyDataConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
 	// example:
 	//
-	// rm-m5ezban**********
+	// rm-m5ezban****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The queried nodes.
+	// The node list.
 	Nodes []*GetDBInstanceTopologyResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -166,29 +166,29 @@ func (s *GetDBInstanceTopologyResponseBodyData) Validate() error {
 }
 
 type GetDBInstanceTopologyResponseBodyDataConnections struct {
-	// The endpoint that is used to connect to the database instance.
+	// The database endpoint.
 	//
 	// example:
 	//
-	// rm-m5ezban**********.mysql.rds.aliyuncs.com
+	// rm-m5ezban****mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
-	// rm-m5ezban**********
+	// rm-m5ezban****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The network type of the endpoint. Valid values:
+	// The network endpoint type of the instance. Valid values:
 	//
-	// 	- **vpc**
+	// 	- **vpc**: internal endpoint.
 	//
-	// 	- **public**
+	// 	- **public**: public endpoint.
 	//
 	// example:
 	//
 	// vpc
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -245,47 +245,47 @@ func (s *GetDBInstanceTopologyResponseBodyDataConnections) Validate() error {
 }
 
 type GetDBInstanceTopologyResponseBodyDataNodes struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
-	// rm-m5ezban**********
+	// rm-m5ezban****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the dedicated cluster.
+	// The dedicated cluster ID.
 	//
-	// > : If the instance does not reside in the specified dedicated cluster, no value is returned.
+	// >This parameter is empty for non-dedicated cluster instances.
 	//
 	// example:
 	//
-	// dhg-4n*****
+	// dhg-4n****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The host ID of the instance in the dedicated cluster.
+	// The host ID in the dedicated cluster.
 	//
-	// > : If the instance does not reside in the specified dedicated cluster, no value is returned.
+	// >This parameter is empty for non-dedicated cluster instances.
 	//
 	// example:
 	//
-	// i-bpxxxxxxx
+	// i-bp****
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The ID of the instance.
+	// The unique identifier of the instance.
 	//
-	// > : The value \\*\\*-1\\*\\	- is returned for an instance that does not reside in a dedicated cluster.
+	// >This parameter returns **-1*	- for non-dedicated cluster instances.
 	//
 	// example:
 	//
 	// 349054
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The type of the node. The following result is returned:
+	// The node type. Valid values:
 	//
-	// 	- **Master**: a primary node
+	// 	- **Master**: primary node.
 	//
-	// 	- **Slave**: a secondary node
+	// 	- **Slave**: secondary node.
 	//
 	// example:
 	//
 	// master
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	//
 	// example:
 	//

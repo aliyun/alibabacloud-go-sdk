@@ -44,49 +44,49 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// The filter condition that is used to return tasks based on the settings of task cancellation. Default value: -1. Valid values:
+	// Specifies whether the task can be canceled. Default value: -1. Valid values:
 	//
-	// 	- **-1**: returns all tasks.
+	// - **-1**: all tasks.
 	//
-	// 	- **0**: returns only tasks that cannot be canceled.
+	// - **0**: Only tasks that cannot be canceled are returned.
 	//
-	// 	- **1**: returns only tasks that can be canceled.
+	// - **1**: Only tasks that can be canceled are returned.
 	//
 	// example:
 	//
 	// -1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// The filter condition that is used to return tasks based on the settings of the switching time. Default value: -1. Valid values:
+	// Specifies whether the task time can be modified. Default value: -1. Valid values:
 	//
-	// 	- **-1**: returns all tasks.
+	// - **-1**: all tasks.
 	//
-	// 	- **0**: returns only tasks for which the switching time cannot be changed.
+	// - **0**: Only tasks whose time cannot be modified are returned.
 	//
-	// 	- **1**: returns only tasks for which the switching time can be changed.
+	// - **1**: Only tasks whose time can be modified are returned.
 	//
 	// example:
 	//
 	// -1
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The filter condition that is used to return tasks based on the task level. Default value: all. Valid values:
+	// The task level. Default value: all. Valid values:
 	//
-	// 	- **all**: all types
+	// - **all**: all levels.
 	//
-	// 	- **S0**: returns the tasks of the exception fixing level.
+	// - **S0**: Only tasks at the exception recovery level are returned.
 	//
-	// 	- **S1**: returns the tasks of the system O\\&M level.
+	// - **S1**: Only tasks at the system O&M level are returned.
 	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// The type of the database. Default value: all. Valid values: mysql, pgsql, and mssql.
+	// The database type. Default value: all. Valid values: mysql, pgsql, and mssql.
 	//
 	// example:
 	//
 	// all
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The name of the instance. You can leave this parameter empty. If you configure this parameter, you can specify the name only of one instance.
+	// The instance name. This parameter is optional. You can specify at most one instance name.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeActiveOperationTasksRequest struct {
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be greater than 0. Default value: 1.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For RDS instances, set the value to RDS.
+	// The product name. Valid values: RDS, POLARDB, MongoDB, and Redis. For ApsaraDB RDS instances, set this parameter to RDS.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeActiveOperationTasksRequest struct {
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The region ID of the pending event. You can call the DescribeRegions operation to query the most recent region list.
 	//
-	// >  The value **all*	- indicates all regions.
+	// > Set this parameter to **all*	- to specify all region IDs.
 	//
 	// example:
 	//
@@ -123,35 +123,35 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The status of the task, which is used as a filter condition to return tasks.
+	// The task status. This parameter is used to filter the returned tasks. Valid values:
 	//
-	// 	- **-1**: all tasks
+	// 	- **-1**: all tasks.
 	//
-	// 	- **3**: pending
+	// 	- **3**: pending tasks.
 	//
-	// 	- **4**: being processed
+	// 	- **4**: in-progress tasks.
 	//
-	// 	- **5**: completed
+	// 	- **5**: succeeded tasks.
 	//
-	// 	- **6**: failed
+	// 	- **6**: failed tasks.
 	//
-	// 	- **7**: canceled
+	// 	- **7**: canceled tasks.
 	//
 	// example:
 	//
 	// -1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **rds_apsaradb_ha**: primary/secondary switchover
+	// 	- **rds_apsaradb_ha**: primary/secondary node switch.
 	//
-	// 	- **rds_apsaradb_transfer**: instance migration
+	// 	- **rds_apsaradb_transfer**: instance migration.
 	//
-	// 	- **rds_apsaradb_upgrade**: update of the minor engine version
+	// 	- **rds_apsaradb_upgrade**: minor engine version update.
 	//
-	// 	- **rds_apsaradb_maxscale**: update of the minor version of the proxy
+	// 	- **rds_apsaradb_maxscale**: proxy minor version upgrade.
 	//
-	// 	- **all**: all types
+	// 	- **all**: all task types.
 	//
 	// example:
 	//

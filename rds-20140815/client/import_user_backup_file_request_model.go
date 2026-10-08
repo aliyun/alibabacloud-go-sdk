@@ -46,28 +46,41 @@ type iImportUserBackupFileRequest interface {
 }
 
 type ImportUserBackupFileRequest struct {
-	// A JSON array that consists of the information about the full backup file stored as an object in an OSS bucket. Example: `{"Bucket":"test", "Object":"test/test_db_employees.xb","Location":"ap-southeast-1"}`
+	// A JSON array that describes the backup file information in the OSS bucket. Example:
 	//
-	// The JSON array contains the following fields:
+	// `{"Bucket":"test", "Object":"test/test_db_employees.xb","Location":"ap-southeast-1"}`
 	//
-	// 	- **Bucket**: The name of the OSS bucket in which the full backup file is stored as an object. You can call the [GetBucket](https://help.aliyun.com/document_detail/31965.html) operation to query the name of the bucket.
+	// The following list describes the parameters in the array:
 	//
-	// 	- **Object**: The path of the full backup file that is stored as an object in the OSS bucket. You can call the [GetObject](https://help.aliyun.com/document_detail/31980.html) operation to query the path of the object.
+	// 	- **Bucket**: the name of the OSS bucket that stores the backup file. You can call [GetBucket](https://help.aliyun.com/document_detail/31965.html) to query the bucket name.
 	//
-	// 	- **Location**: The ID of the region in which the OSS bucket is located. You can call the [GetBucketLocation](https://help.aliyun.com/document_detail/31967.html) operation to query the region of the bucket.
+	// 	- **Object**: the full path of the backup file in the directory. You can call [GetObject](https://help.aliyun.com/document_detail/31980.html) to query the path.
+	//
+	// 	- **Location**: the region ID of the OSS bucket. You can call [GetBucketLocation](https://help.aliyun.com/document_detail/31967.html) to query the region ID.
 	//
 	// example:
 	//
 	// {"Bucket":"test", "Object":"test/test_db_employees.xb","Location":"ap-southeast-1"}
 	BackupFile *string `json:"BackupFile,omitempty" xml:"BackupFile,omitempty"`
-	// The region ID of the OSS bucket where the full backup file of the self-managed MySQL database is located. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID of the OSS bucket that stores the backup file of the self-managed MySQL 5.7 database. You can call DescribeRegions to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	BucketRegion     *string `json:"BucketRegion,omitempty" xml:"BucketRegion,omitempty"`
-	BuildReplication *bool   `json:"BuildReplication,omitempty" xml:"BuildReplication,omitempty"`
-	// The description of the full backup file.
+	BucketRegion *string `json:"BucketRegion,omitempty" xml:"BucketRegion,omitempty"`
+	// Specifies whether to automatically set up replication. Valid values:
+	//
+	// - true: automatically sets up replication. The `MasterInfo` parameter is required.
+	//
+	// - false: does not set up replication.
+	//
+	// > This parameter takes effect only for native replication instances. You must specify the `DBInstanceId` parameter when you call this operation.
+	//
+	// example:
+	//
+	// true
+	BuildReplication *bool `json:"BuildReplication,omitempty" xml:"BuildReplication,omitempty"`
+	// The description of the user backup to be imported.
 	//
 	// example:
 	//
@@ -79,23 +92,52 @@ type ImportUserBackupFileRequest struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The version of the database engine that is run on the self-managed MySQL database and ApsaraDB RDS for MySQL instance. Set the value to **5.7**.
+	// The version of the MySQL database engine. Valid values: **5.7*	- and **8.0**.
 	//
 	// example:
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	MasterInfo    *string `json:"MasterInfo,omitempty" xml:"MasterInfo,omitempty"`
+	// A JSON array that contains the master information for setting up MySQL replication (case-sensitive). Example:
+	//
+	// ```
+	//
+	// {"masterIp":"172.20.xx.xx","masterPort":"3306","masterUser":"replica","masterPassword":"W33uopkehBQ="}
+	//
+	// ```
+	//
+	// The following list describes the parameters in the array:
+	//
+	// - `masterIp`: the IP address of the primary database.
+	//
+	// - `masterPort`: the port of the primary database.
+	//
+	// - `masterUser`: the replication account of the primary database.
+	//
+	// - `masterPassword`: the password of the replication account for the primary database. The password must be Base64-encoded.
+	//
+	// > This parameter takes effect only for native replication instances. You must specify the `DBInstanceId` parameter when you call this operation.
+	//
+	// example:
+	//
+	// {"masterIp":"172.20.xx.xx","masterPort":"3306","masterUser":"replica","masterPassword":"W33uopkehBQ="}
+	MasterInfo *string `json:"MasterInfo,omitempty" xml:"MasterInfo,omitempty"`
+	// The import mode. Valid values:
+	//
+	// - oss: imports the backup from OSS.
+	//
+	// - stream: imports the backup over the network.
+	//
 	// example:
 	//
 	// oss
 	Mode    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID of the ApsaraDB RDS instance. You can call DescribeRegions to query the region ID.
 	//
-	// > 	- The value of this parameter is the ID of the region in which you want to create the instance.
+	// > 	- The value of this parameter specifies the region ID in which you want to create the ApsaraDB RDS instance.
 	//
-	// > 	- The value of this parameter must be consistent with the value of **BucketRegion**.
+	// > 	- The value must be the same as the value of the **BucketRegion*	- parameter.
 	//
 	// This parameter is required.
 	//
@@ -103,7 +145,7 @@ type ImportUserBackupFileRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	// The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
 	//
 	// example:
 	//
@@ -111,28 +153,49 @@ type ImportUserBackupFileRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The amount of storage that is required to restore the data of the full backup file. Unit: GB.
+	// The storage space required to restore the user backup. Unit: GB.
 	//
-	// > 	- The default value of this parameter is 5 times the size of the full backup file.
+	// > 	- The default value is five times the size of the backup file.
 	//
-	// > 	- The minimum value of this parameter is 20.
+	// > 	- The minimum value is 20.
 	//
 	// example:
 	//
 	// 20
 	RestoreSize *int32 `json:"RestoreSize,omitempty" xml:"RestoreSize,omitempty"`
-	// The retention period of the full backup file. Unit: days. Valid values: any **non-zero*	- positive integer.
+	// The retention period of the user backup file. Unit: days. The value must be an integer greater than **0**.
 	//
 	// example:
 	//
 	// 30
-	Retention  *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// A JSON array that provides the source information for the full backup (case-sensitive). Example:
+	//
+	// ```
+	//
+	// {"sourceIp":"172.20.xx
+	//
+	// .xx","sourcePort":"9999"}
+	//
+	// ```
+	//
+	// The following list describes the parameters in the array:
+	//
+	// - `sourceIp`: the source IP address.
+	//
+	// - `sourcePort`: the Netcat listening port on the source.
+	//
+	// > This parameter takes effect only for native replication instances. You must specify the `DBInstanceId` parameter when you call this operation.
+	//
+	// example:
+	//
+	// {"sourceIp":"172.20.xx.xx","sourcePort":"9999"}
 	SourceInfo *string `json:"SourceInfo,omitempty" xml:"SourceInfo,omitempty"`
-	// The zone ID. You can call the DescribeRegions operation to query the zone ID.
+	// The zone ID. You can call DescribeRegions to query the zone ID.
 	//
-	// > 	- If you specify this parameter, the system creates a snapshot in single-digit seconds, which greatly reduces the time that is required to import the full backup file.
+	// > 	- After you specify a zone, the system creates a second-level snapshot in the zone, which significantly reduces the time required for backup import.
 	//
-	// > 	- When you call the CreateDBInstance operation to create an instance by using the full backup file, the instance is created in the zone that you specify for this parameter.
+	// > 	- When you call CreateDBInstance to create an instance from the user backup, this zone is the zone in which the new instance resides.
 	//
 	// example:
 	//

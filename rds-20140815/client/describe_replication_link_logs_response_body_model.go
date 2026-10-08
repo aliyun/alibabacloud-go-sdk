@@ -20,13 +20,13 @@ type iDescribeReplicationLinkLogsResponseBody interface {
 }
 
 type DescribeReplicationLinkLogsResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The items.
+	// The records.
 	Items []*DescribeReplicationLinkLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type DescribeReplicationLinkLogsResponseBody struct {
 	//
 	// 16C62438-491B-5C02-9B49-BA924A1372A2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -100,125 +100,125 @@ func (s *DescribeReplicationLinkLogsResponseBody) Validate() error {
 }
 
 type DescribeReplicationLinkLogsResponseBodyItems struct {
-	// The details of the task.
+	// The task details.
 	//
 	// example:
 	//
 	// [Check rds empty]\\nCheck rds databases: success\\n[Check source connectivity]\\nCheck ip connectable: success\\nCheck port connectable: success\\nCheck database connectable: success\\nCheck account replication privilege: success\\nCheck account createrole privilege: success\\nCheck account monitor privilege: success\\n[Check source version]\\nCheck major version consistent: success\\n[Check source glibc version]\\nCheck source glibc version compatible: warning(warning:source glibc version is not compatible with rds pg)\\n[Check disk size]\\nCheck disk size enough: success\\n[Check wal keep size]\\nCheck wal keep size large enough: success\\n[Check spec params]\\nCheck if spec params too large: success\\n [Check triggers]\\nCheck triggers compatible: success\\n[Check user functions]\\nCheck user functions compatible: success\\n*Migrate check success*
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The creation time. The time is displayed in UTC.
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2022-02-25T06:57:41Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time. The time is displayed in UTC.
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2022-03-01T06:39:51Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The synchronization information. This parameter is a reserved parameter.
+	// The synchronization information. This is a reserved field.
 	//
 	// example:
 	//
 	// None
 	ReplicationInfo *string `json:"ReplicationInfo,omitempty" xml:"ReplicationInfo,omitempty"`
-	// The status of the synchronization. Valid values:
+	// The synchronization status. Valid values:
 	//
-	// 	- **steaming**: The synchronization is in progress.
+	// - **steaming**: Synchronizing.
 	//
-	// 	- **finish**: The synchronization is complete.
+	// - **finish**: Completed.
 	//
-	// 	- **disconnect**: The synchronization is disconnected.
+	// - **disconnect**: Disconnected.
 	//
 	// example:
 	//
 	// finish
 	ReplicationState *string `json:"ReplicationState,omitempty" xml:"ReplicationState,omitempty"`
-	// The account of the database that is used for data synchronization.
+	// The database account used for data synchronization.
 	//
 	// example:
 	//
 	// testdbuser
 	ReplicatorAccount *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
-	// The password of the account.
+	// The password of the synchronization account.
 	//
 	// example:
 	//
 	// testpassword
 	ReplicatorPassword *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
-	// The endpoint of the source instance.
+	// The address of the source instance.
 	//
 	// example:
 	//
 	// pgm-****.pg.rds.aliyuncs.com
 	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
-	// The type of the source instance. Valid values:
+	// The category of the source instance. Valid values:
 	//
-	// 	- other: other instances
+	// - other: Other.
 	//
-	// 	- aliyunRDS: an ApsaraDB RDS instance
+	// - aliyunRDS: ApsaraDB RDS instance.
 	//
 	// example:
 	//
 	// aliyunRDS
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The port number of the source instance.
+	// The port of the source instance.
 	//
 	// example:
 	//
 	// 5432
 	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The destination instance ID.
+	// The ID of the target instance.
 	//
 	// example:
 	//
 	// pgm-bp1l4dutw453****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 8413252
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The stage of the task. Valid values:
+	// The task stage. Valid values:
 	//
-	// 	- **precheck**: the precheck stage.
+	// - **precheck**: Dry run.
 	//
-	// 	- **basebackup**: the basic backup stage.
+	// - **basebackup**: Basic backup.
 	//
-	// 	- **startup**: the startup stage.
+	// - **startup**: Startup.
 	//
-	// 	- **increment**: the incremental synchronization stage.
+	// - **increment**: Incremental synchronization.
 	//
 	// example:
 	//
 	// increment
 	TaskStage *string `json:"TaskStage,omitempty" xml:"TaskStage,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Succeeded.
 	//
-	// 	- **failure**
+	// - **failure**: Failed.
 	//
-	// 	- **running**
+	// - **running**: Running.
 	//
 	// example:
 	//
 	// success
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **create**: creates a synchronization link.
+	// - **create**: Create a replication link.
 	//
-	// 	- **create-dryrun**: performs a precheck before a synchronization link is created.
+	// - **create-dryrun**: Dry run for creating a replication link.
 	//
 	// example:
 	//

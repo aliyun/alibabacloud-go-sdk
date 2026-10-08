@@ -22,25 +22,29 @@ type iEvaluateLocalExtendDiskResponseBody interface {
 }
 
 type EvaluateLocalExtendDiskResponseBody struct {
-  // Indicates whether the instance is available. Valid values: true and false.
+  // Indicates whether the expansion is available. Valid values:
+  // 
+  // - **true**: Available.
+  // 
+  // - **false**: Not available.
   // 
   // example:
   // 
-  // True
+  // true
   Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
   // The instance ID.
   // 
   // example:
   // 
-  // rm-bp1375i66nd******
+  // rm-wz9s06u4drm******
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-  // The data transfer type supported by the instance.
+  // The transfer type of the database instance.
   // 
   // example:
   // 
   // 0
   DBInstanceTransType *string `json:"DBInstanceTransType,omitempty" xml:"DBInstanceTransType,omitempty"`
-  // The maximum value of the local disk. Unit: GB.
+  // The maximum capacity of the local disk. Unit: GB.
   // 
   // example:
   // 

@@ -28,19 +28,19 @@ type iSwitchDBInstanceHARequest interface {
 }
 
 type SwitchDBInstanceHARequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The time when the switching takes effect. Valid values:
+	// The effective period. Valid values:
 	//
-	// 	- **Immediate**: The switching immediately takes effect.
+	// 	- **Immediate**: The switchover is executed immediately.
 	//
-	// 	- **MaintainTime**: The switching takes effect during the maintenance time.
+	// 	- **MaintainTime**: The switchover is executed during the maintenance window.
 	//
 	// Default value: **Immediate**.
 	//
@@ -48,11 +48,11 @@ type SwitchDBInstanceHARequest struct {
 	//
 	// Immediate
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// Specifies whether to enable forcible switching. Valid values:
+	// The switchover method. Valid values:
 	//
-	// 	- **Yes**
+	// 	- **Yes**: A forced switchover is performed.
 	//
-	// 	- **No**
+	// 	- **No**: A non-forced switchover is performed.
 	//
 	// Default value: **No**.
 	//
@@ -60,7 +60,7 @@ type SwitchDBInstanceHARequest struct {
 	//
 	// No
 	Force *string `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The secondary instance ID. You can call the DescribeDBInstanceHAConfig operation to query the secondary instance ID.
+	// The unique ID of the secondary instance. You can call DescribeDBInstanceHAConfig to query this value.
 	//
 	// This parameter is required.
 	//

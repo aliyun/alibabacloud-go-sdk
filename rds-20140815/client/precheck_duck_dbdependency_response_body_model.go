@@ -16,13 +16,13 @@ type iPrecheckDuckDBDependencyResponseBody interface {
 }
 
 type PrecheckDuckDBDependencyResponseBody struct {
-	// The check items that do not meet the requirements for creating DuckDB-based analytical instances.
+	// The items that do not meet the prerequisites for creating a DuckDB-based analytical instance.
 	FailedCheckItems []*PrecheckDuckDBDependencyResponseBodyFailedCheckItems `json:"FailedCheckItems,omitempty" xml:"FailedCheckItems,omitempty" type:"Repeated"`
-	// Indicates whether the primary instance meet the requirements for creating DuckDB-based analytical instances. Valid values:
+	// Indicates whether the prerequisite check for creating a DuckDB-based analytical instance is passed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The check is passed.
 	//
-	// 	- **false**
+	// - **false**: The check is not passed.
 	//
 	// example:
 	//
@@ -70,13 +70,14 @@ func (s *PrecheckDuckDBDependencyResponseBody) Validate() error {
 }
 
 type PrecheckDuckDBDependencyResponseBodyFailedCheckItems struct {
-	// Indicates whether the item can be changed with one click to meet the requirements.
+	// Indicates whether the item can be fixed with one click.
 	//
-	// 	- **true**: Yes. You can call the [ModifyDBInstanceConfig](https://help.aliyun.com/document_detail/2623684.html) operation to change the item with one click.
+	// - **true**: The item can be fixed with one click by calling the [ModifyDBInstanceConfig](https://help.aliyun.com/document_detail/2623684.html) operation.
 	//
-	// 	- **false**: No.
+	// - **false**: The item cannot be fixed with one click.
 	//
-	// >  If the major engine version of the primary does not meet the requirements, you must manually upgrade it.
+	//
+	// 	Notice: If the major engine version of the database instance does not meet the requirements, you must perform a [manual upgrade](https://help.aliyun.com/document_detail/2623684.html).
 	//
 	// example:
 	//
@@ -94,19 +95,19 @@ type PrecheckDuckDBDependencyResponseBodyFailedCheckItems struct {
 	//
 	// MajorVersion
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value or value range that meets the requirements.
+	// The target value or target range of the check item.
 	//
 	// example:
 	//
 	// 17.0
 	RequiredValue *string `json:"RequiredValue,omitempty" xml:"RequiredValue,omitempty"`
-	// The check item. Valid values:
+	// The check item type. Valid values:
 	//
-	// 	- **Parameter**: The parameters of the primary instance.
+	// - **Parameter**: parameter.
 	//
-	// 	- **MinorVersion**: The minor engine version of the primary instance.
+	// - **MinorVersion**: minor engine version.
 	//
-	// 	- **MajorVersion**: The major engine version of the primary instance.
+	// - **MajorVersion**: major engine version.
 	//
 	// example:
 	//

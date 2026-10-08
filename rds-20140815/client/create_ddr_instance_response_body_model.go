@@ -22,35 +22,35 @@ type iCreateDdrInstanceResponseBody interface {
 }
 
 type CreateDdrInstanceResponseBody struct {
-	// The endpoint that is used to connect to the destination instance.
+	// The endpoint of the new instance.
 	//
-	// >  The **DBInstanceNetType*	- parameter indicates whether the endpoint is internal or public.
+	// > The **DBInstanceNetType*	- parameter determines whether this endpoint is an internal endpoint or a public endpoint.
 	//
 	// example:
 	//
-	// rm-xxxxx.mysql.rds.aliyuncs.com
+	// rm-****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The destination instance ID.
+	// The instance ID of the new instance.
 	//
 	// example:
 	//
-	// rm-xxxxx
+	// rm-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The order ID.
 	//
 	// example:
 	//
-	// 2038691xxxxx
+	// 2038691****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The port number that is used to connect to the destination instance.
+	// The port of the new instance.
 	//
-	// > **DBInstanceNetType*	- indicates whether the port is internal or public.
+	// > The **DBInstanceNetType*	- parameter determines whether this port is an internal port or a public port.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCopyDatabaseBetweenInstancesResponseBody interface {
 }
 
 type CopyDatabaseBetweenInstancesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

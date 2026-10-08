@@ -32,19 +32,19 @@ type iDescribeBackupTasksRequest interface {
 }
 
 type DescribeBackupTasksRequest struct {
-	// The ID of the backup task.
+	// The backup task ID.
 	//
 	// example:
 	//
-	// 4762614
+	// 476****
 	BackupJobId *int32 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The status of the backup task. Valid values:
+	// The backup task status. Valid values:
 	//
-	// 	- **NoStart**
+	// 	- **NoStart**: not started
 	//
-	// 	- **Progressing**
+	// 	- **Progressing**: in progress
 	//
-	// By default, this operation returns backup tasks in both states.
+	// Default value: all statuses.
 	//
 	// example:
 	//
@@ -52,27 +52,27 @@ type DescribeBackupTasksRequest struct {
 	BackupJobStatus *string `json:"BackupJobStatus,omitempty" xml:"BackupJobStatus,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// 	- **Automated**
+	// 	- **Automated**: automatic backup
 	//
-	// 	- **Manual**
+	// 	- **Manual**: manual backup
 	//
 	// example:
 	//
 	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// A reserved parameter.
 	//

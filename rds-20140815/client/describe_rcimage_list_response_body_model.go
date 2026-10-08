@@ -24,7 +24,7 @@ type iDescribeRCImageListResponseBody interface {
 }
 
 type DescribeRCImageListResponseBody struct {
-	// The information about the images.
+	// The image information.
 	Images []*DescribeRCImageListResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,7 +32,7 @@ type DescribeRCImageListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -134,11 +134,11 @@ func (s *DescribeRCImageListResponseBody) Validate() error {
 }
 
 type DescribeRCImageListResponseBodyImages struct {
-	// The image architecture. Valid values:
+	// The system architecture of the image. Valid values:
 	//
-	// 	- x86_64
+	// - x86_64.
 	//
-	// 	- arm64
+	// - arm64.
 	//
 	// example:
 	//
@@ -155,7 +155,8 @@ type DescribeRCImageListResponseBodyImages struct {
 	// example:
 	//
 	// test
-	Description        *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The mapping between cloud disks and snapshots in the image.
 	DiskDeviceMappings []*DescribeRCImageListResponseBodyImagesDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -175,20 +176,33 @@ type DescribeRCImageListResponseBodyImages struct {
 	//
 	// 2
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// Indicates whether the image is a public image. Public images include public images provided by Alibaba Cloud and custom images published as community images.
+	// Indicates whether the image is a public image. Public images include Alibaba Cloud-provided public images and custom images that you have published as community images.
 	//
-	// 	- **true**: The image is a public image.
+	// - **true**: The image is a public image.
 	//
-	// 	- **false**: The image is not a public image.
+	// - **false**: The image is not a public image.
 	//
 	// example:
 	//
 	// false
-	IsPublic           *bool `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	IsPublic *bool `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	// Indicates whether the image supports RDS Custom instances. Valid values:
+	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
+	// example:
+	//
+	// true
 	IsSupportRdsCustom *bool `json:"IsSupportRdsCustom,omitempty" xml:"IsSupportRdsCustom,omitempty"`
-	// The display name of the operating system in Chinese.
+	// The Chinese display name of the operating system.
+	//
+	// example:
+	//
+	// Alibaba Cloud Linux  2.1903 LTS 64位 快速启动版
 	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	// The display name of the operating system in English.
+	// The English display name of the operating system.
 	//
 	// example:
 	//
@@ -196,40 +210,45 @@ type DescribeRCImageListResponseBodyImages struct {
 	OSNameEn *string `json:"OSNameEn,omitempty" xml:"OSNameEn,omitempty"`
 	// The type of the operating system. Valid values:
 	//
-	// 	- **windows**
+	// - **windows**.
 	//
-	// 	- **linux**
+	// - **linux**.
 	//
 	// example:
 	//
 	// linux
-	OSType   *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The operating system platform.
+	//
+	// example:
+	//
+	// Aliyun
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The image size. Unit: GiB.
+	// The size of the image. Unit: GiB.
 	//
 	// example:
 	//
 	// 40
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The image status. Valid values:
+	// The status of the image. Valid values:
 	//
-	// 	- **Unavailable**
+	// - **UnAvailable**: Unavailable.
 	//
-	// 	- **Available**
+	// - **Available**: Available.
 	//
-	// 	- **Creating**
+	// - **Creating**: Being created.
 	//
-	// 	- **CreateFailed**
+	// - **CreateFailed**: Creation failed.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the image is used by the RDS Custom instance. Valid values:
+	// Indicates whether the image is used by RDS Custom instances. Valid values:
 	//
-	// 	- **instance**: The image is used to create one or more RDS Custom instances.
+	// - **instance**: One or more RDS Custom instances have been created.
 	//
-	// 	- **none**: The image is not used to create RDS Custom instances.
+	// - **none**: No RDS Custom instances have been created.
 	//
 	// example:
 	//
@@ -403,9 +422,28 @@ func (s *DescribeRCImageListResponseBodyImages) Validate() error {
 }
 
 type DescribeRCImageListResponseBodyImagesDiskDeviceMappings struct {
+	// The device information of the cloud disk, such as `/dev/xvdb`.
+	//
+	// example:
+	//
+	// /dev/xvdb
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	Size   *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The size of the cloud disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 40
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The type of the cloud disk.
+	//
+	// - **system**: System cloud disk.
+	//
+	// - **data**: Data cloud disk.
+	//
+	// example:
+	//
+	// system
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRCImageListResponseBodyImagesDiskDeviceMappings) String() string {

@@ -25,7 +25,7 @@ type iDescribeBackupsResponseBody interface {
 
 type DescribeBackupsResponseBody struct {
 	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -37,7 +37,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 0
 	TotalEcsSnapshotSize *int64 `json:"TotalEcsSnapshotSize,omitempty" xml:"TotalEcsSnapshotSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

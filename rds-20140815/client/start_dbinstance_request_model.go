@@ -46,7 +46,7 @@ type iStartDBInstanceRequest interface {
 }
 
 type StartDBInstanceRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,31 +54,31 @@ type StartDBInstanceRequest struct {
 	//
 	// rm-bp****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The data migration method of the instance. This parameter is available only for instances that are created in dedicated clusters. Valid values:
+	// This parameter is supported only for dedicated cluster instances. The migration method of the instance. Valid values:
 	//
-	// 	- **0*	- (default): The system preferentially upgrades or downgrades the instance without a migration. If the resources on the host on which the instance resides are insufficient, the system migrates the instance to another suitable host.
+	// 	- **0**: Default value. The system preferentially performs a local specification change. If local resources are insufficient, a cross-instance migration is performed.
 	//
-	// 	- **1**: The system upgrades or downgrades the instance without a migration. If the upgrade or downgrade is not supported, the system reports an error.
+	// 	- **1**: Local specification change. If the system determines that the instance does not support a local specification change, an error is returned.
 	//
-	// 	- **2**: The system migrates the data of the instance from the host on which the instance resides to another host. You must also specify **DedicatedHostGroupId**, **TargetDedicatedHostIdForMaster**, and **TargetDedicatedHostIdForSlave**. If you set DBInstanceTransType to 2, you cannot migrate the data of the instance to the host on which the instance resides. If you migrate the data of the instance to the host on which the instance resides, the migration fails.
+	// 	- **2**: Cross-instance migration. The instance is migrated to a specified host. You must specify **DedicatedHostGroupId**, **TargetDedicatedHostIdForMaster**, and **TargetDedicatedHostIdForSlave**. The instance cannot be migrated to the host on which it currently resides. Otherwise, the migration fails.
 	//
 	// example:
 	//
 	// 0
 	DBInstanceTransType *int32 `json:"DBInstanceTransType,omitempty" xml:"DBInstanceTransType,omitempty"`
-	// The dedicated cluster ID. This parameter is supported if you call this operation to suspend an RDS instance in the dedicated cluster. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+	// This operation also supports starting an ApsaraDB RDS instance in a dedicated cluster. In this case, specify the dedicated cluster ID. You can call DescribeDedicatedHostGroups to query the dedicated cluster ID.
 	//
 	// example:
 	//
 	// dhg-39****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The effective time. This parameter is available only for instances that are created in dedicated clusters.
+	// This parameter is supported only for dedicated cluster instances. The effective period. Valid values:
 	//
-	// 	- **Immediate**
+	// 	- **Immediate**: The operation takes effect immediately.
 	//
-	// 	- **MaintainTime**: The change takes effect during the planned maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The operation takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **SpecificTime**: The change takes effect at a specified point in time.
+	// 	- **SpecificTime**: The operation takes effect at a specified time.
 	//
 	// Default value: MaintainTime.
 	//
@@ -86,14 +86,14 @@ type StartDBInstanceRequest struct {
 	//
 	// Immediate
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The database engine version of the instance. This parameter is available only for instances that are created in dedicated clusters.
+	// This parameter is supported only for dedicated cluster instances. The database engine version.
 	//
 	// example:
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the region ID.
 	//
 	// example:
 	//
@@ -101,55 +101,55 @@ type StartDBInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The switching time. This parameter is available only for instances that are created in dedicated clusters. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// This parameter is supported only for dedicated cluster instances. The specified switchover time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
-	// > This parameter must be specified when **EffectiveTime*	- is set to **Specified**.
+	// > This parameter is required when **EffectiveTime*	- is set to **Specified**.
 	//
 	// example:
 	//
 	// 2019-10-21T10:00:00Z
 	SpecifiedTime *string `json:"SpecifiedTime,omitempty" xml:"SpecifiedTime,omitempty"`
-	// The storage capacity of the instance. This parameter is available only for instances that are created in dedicated clusters. Valid values: **5 to 2000**. Unit: GB. If you do not specify this parameter, the storage capacity of the instance remains unchanged.
+	// This parameter is supported only for dedicated cluster instances. The custom storage capacity. Valid values: **5 to 2000**. Unit: GB. If you do not specify this parameter, the storage capacity remains unchanged.
 	//
 	// example:
 	//
 	// 1000
 	Storage *int32 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The instance type of the required instance. This parameter is available only for instances that are created in dedicated clusters.
+	// This parameter is supported only for dedicated cluster instances. The instance type of the target instance.
 	//
 	// example:
 	//
 	// rds.ebmhfc6.20xlarge
 	TargetDBInstanceClass *string `json:"TargetDBInstanceClass,omitempty" xml:"TargetDBInstanceClass,omitempty"`
-	// A deprecated parameter. You do not need to specify this parameter.
+	// **[Deprecated]*	- This parameter is deprecated and does not need to be configured.
 	//
 	// example:
 	//
 	// dh-bp****
 	TargetDedicatedHostIdForLog *string `json:"TargetDedicatedHostIdForLog,omitempty" xml:"TargetDedicatedHostIdForLog,omitempty"`
-	// The ID of the host on which the primary instance is created. This parameter is available only for instances that are created in dedicated clusters.
+	// This parameter is supported only for dedicated cluster instances. Specifies the ID of the destination host for the primary node.
 	//
-	// > This parameter must be specified when **DBInstanceTransType*	- is set to **2**.
+	// > This parameter is required when **DBInstanceTransType*	- is set to **2**.
 	//
 	// example:
 	//
 	// dh-bp****
 	TargetDedicatedHostIdForMaster *string `json:"TargetDedicatedHostIdForMaster,omitempty" xml:"TargetDedicatedHostIdForMaster,omitempty"`
-	// The ID of the host on which the secondary instance is created. This parameter is available only for instances that are created in dedicated clusters.
+	// This parameter is supported only for dedicated cluster instances. Specifies the ID of the destination host for the secondary node.
 	//
-	// > This parameter must be specified when **DBInstanceTransType*	- is set to **2**.
+	// > This parameter is required when **DBInstanceTransType*	- is set to **2**.
 	//
 	// example:
 	//
 	// dh-bp****
 	TargetDedicatedHostIdForSlave *string `json:"TargetDedicatedHostIdForSlave,omitempty" xml:"TargetDedicatedHostIdForSlave,omitempty"`
-	// The vSwitch ID. This parameter is available only for instances that are created in dedicated clusters.
+	// This parameter is supported only for dedicated cluster instances. The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID. This parameter is available only for instances that are created in dedicated clusters.
+	// This parameter is supported only for dedicated cluster instances. The zone ID.
 	//
 	// example:
 	//

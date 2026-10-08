@@ -36,7 +36,7 @@ type UpdatePostgresExtensionsRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type UpdatePostgresExtensionsRequest struct {
 	//
 	// pgm-gc7f1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name. You can call the DescribeDatabases operation to obtain the database name.
+	// The database name of the instance. You can call DescribeDatabases to query the database name.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UpdatePostgresExtensionsRequest struct {
 	//
 	// test_db
 	DBNames *string `json:"DBNames,omitempty" xml:"DBNames,omitempty"`
-	// The name of the extension. Separate multiple extensions with commas (,).
+	// The extension name. Separate multiple extensions with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdatePostgresExtensionsRequest struct {
 	Extensions   *string `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

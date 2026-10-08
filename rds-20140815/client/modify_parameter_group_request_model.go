@@ -34,22 +34,22 @@ type iModifyParameterGroupRequest interface {
 type ModifyParameterGroupRequest struct {
 	// The modification mode of the parameter template. Valid values:
 	//
-	// 	- **Collectivity*	- (default): adds new parameters or modifies parameters in the original parameter template.
+	// 	- **Collectivity*	- (default): adds or updates parameters.
 	//
-	// >  If you set the ModifyMode parameter to Collectivity, the system adds the value of the **Parameters*	- parameter to the original parameter template or modifies the corresponding parameters in the original parameter template. Other parameters in the original parameter template are not affected.
+	// > The parameters that you specify in the **Parameters*	- parameter are added to or updated in the existing parameter template. Other parameters in the existing parameter template are not affected.
 	//
-	// 	- **Individual**: overwrites original parameters.
+	// 	- **Individual**: overwrites the parameter template.
 	//
-	// >  If you set the ModifyMode parameter to Individual, the system uses the value of the **Parameters*	- parameter to overwrite the parameter settings in the original parameter template.
+	// > The existing parameter template is replaced with the parameters that you specify in the **Parameters*	- parameter.
 	//
 	// example:
 	//
 	// Collectivity
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The new description of the parameter template. The description can be up to 200 characters in length.
+	// The description of the parameter template. The description can be up to 200 characters in length.
 	//
-	// > If you do not specify this parameter, the original description of the parameter template is retained.
+	// > If you do not specify this parameter, the original parameter template description is retained.
 	//
 	// example:
 	//
@@ -63,33 +63,33 @@ type ModifyParameterGroupRequest struct {
 	//
 	// rpg-13ppdh****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The parameter template name.
+	// The name of the parameter template.
 	//
-	// 	- The name can contain letters, digits, periods (.), and underscores (_). It must start with a letter.
+	// 	- The name must start with a letter and can contain letters, digits, periods (.), and underscores (_).
 	//
-	// 	- It can be 8 to 64 characters in length.
+	// 	- The name must be 8 to 64 characters in length.
 	//
-	// > If you do not specify this parameter, the original name of the parameter template is retained.
+	// > If you do not specify this parameter, the original parameter template name is retained.
 	//
 	// example:
 	//
 	// testgroup1
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
+	// A JSON string that consists of parameters and their values. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. For more information about the parameters that can be modified, see [Configure the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Configure the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
 	//
-	// > 	- If **ModifyMode*	- is set to **Individual*	- and this parameter is specified, the new parameters overwrite the parameters in the original parameter template.
+	// > 	- If **ModifyMode*	- is set to **Individual**, the parameters that you specify overwrite the existing parameter template.
 	//
-	// > 	- If you set **ModifyMode*	- to **Collectivity*	- and specify this parameter, the new parameters are added to the original parameter template, or the parameters in the original parameter template are modified.
+	// > 	- If **ModifyMode*	- is set to **Collectivity**, the parameters that you specify are added to or updated in the existing parameter template. Other parameters in the existing parameter template are not affected.
 	//
-	// > 	- If you do not specify this parameter, the parameters in the original parameter template remain unchanged.
+	// > 	- If you do not specify this parameter, the original parameter information is retained.
 	//
 	// example:
 	//
 	// {"back_log":"3000"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
-	// >  The region of a parameter template cannot be changed. You can call the CloneParameterGroup operation to replicate a parameter template to a specific region.
+	// > The region of a parameter template cannot be changed. You can call the CloneParameterGroup operation to copy a parameter template to another region.
 	//
 	// This parameter is required.
 	//

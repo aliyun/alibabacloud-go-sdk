@@ -36,43 +36,45 @@ type CreateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****.mysql.rds.aliyuncs.com
+	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID. If the value of the **Amount*	- parameter is greater than **1**, more than one instance ID is returned. The number of instance IDs that are returned is the same as the value of the Amount parameter. The returned instance IDs are separated by commas (,).
+	// The instance ID. If you set the **Amount*	- parameter to a value greater than **1**, the number of instance IDs that corresponds to the value is returned, separated by commas.
 	//
-	// For example, if the value of the **Amount*	- parameter is **3**, three instance IDs are returned. Examples: `rm-uf6wjk5*****1,rm-uf6wjk5*****2,rm-uf6wjk5*****3`
+	// For example, if **Amount*	- is set to **3**, three instance IDs are returned. Example:
+	//
+	// `rm-uf6wjk5*****1，rm-uf6wjk5*****2，rm-uf6wjk5*****3`
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Indicates that the system performed a dry run.
+	// Indicates that a dry run is performed before the instance is created.
 	//
-	// 	- The value is fixed as **true**.
+	// 	- The return value is always **true**.
 	//
-	// 	- If the system does not perform a dry run, this parameter is not returned.
+	// 	- If no dry run is performed, this parameter is not returned.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Indicates whether the request passed the dry run. Valid values:
+	// Indicates whether the dry run for instance creation passed. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The dry run passed.
 	//
-	// 	- **false**
+	// 	- **false**: The dry run failed.
 	//
-	// > 	- If the system does not perform a dry run, this parameter is not returned.
+	// > 	- If no dry run is performed, this parameter is not returned.
 	//
-	// > 	- If the request failed the dry run, an error message is returned.
+	// > 	- If the dry run fails, the corresponding error is returned.
 	//
 	// example:
 	//
 	// true
 	DryRunResult *bool `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty"`
-	// The message that indicates whether multiple instances are created.
+	// The message for the batch creation task.
 	//
-	// > The parameter is returned only when the value of the **Amount*	- parameter is greater than 1.
+	// > This parameter is returned only when the **Amount*	- parameter is greater than 1.
 	//
 	// example:
 	//
@@ -82,41 +84,41 @@ type CreateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 1007893702*****
+	// 1007893702****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The internal IP address and port number that are used to connect to the instance.
+	// The port number that corresponds to the internal endpoint of the instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the specified tag is added to the instance. Valid values:
+	// Indicates whether tags are successfully bound to the instance. Valid values:
 	//
-	// 	- **true**: The specified tag is added to the instance.
+	// 	- **true**: Tags are successfully bound.
 	//
-	// 	- **false**: The specified tag fails to be added to the instance.
+	// 	- **false**: Tags failed to be bound.
 	//
-	// > If you do not add a tag to the instance, this parameter is not returned.
+	// > If no tags are bound to the instance, this parameter is not returned.
 	//
 	// example:
 	//
 	// true
 	TagResult *bool `json:"TagResult,omitempty" xml:"TagResult,omitempty"`
-	// The ID of the task that is run to create multiple instances.
+	// The task ID of the batch creation task.
 	//
-	// 	- This parameter is returned only when the value of **Amount*	- is greater than 1.
+	// 	- This parameter is returned only when the **Amount*	- parameter is greater than 1.
 	//
-	// 	- The **TaskID*	- parameter cannot be used to query a task.
+	// 	- Querying tasks by **TaskId*	- is not supported at this time.
 	//
 	// example:
 	//
-	// s2365879-a9d0-55af-fgae-f2*****
+	// s2365879-a9d0-55af-fgae-f2****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

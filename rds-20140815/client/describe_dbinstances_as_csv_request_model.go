@@ -34,11 +34,11 @@ type DescribeDBInstancesAsCsvRequest struct {
 	//
 	// API
 	CachedAsync *bool `json:"CachedAsync,omitempty" xml:"CachedAsync,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the IDs of instances.
+	// The instance ID. You can call DescribeDBInstances to query instance IDs.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// A deprecated parameter. You do not need to configure this parameter.
 	//
@@ -47,7 +47,7 @@ type DescribeDBInstancesAsCsvRequest struct {
 	// API
 	ExportKey *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -55,11 +55,11 @@ type DescribeDBInstancesAsCsvRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

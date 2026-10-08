@@ -16,7 +16,7 @@ type iQueryNotifyResponseBody interface {
 }
 
 type QueryNotifyResponseBody struct {
-	// The response parameters.
+	// The returned data.
 	Data *QueryNotifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,21 +62,21 @@ func (s *QueryNotifyResponseBody) Validate() error {
 }
 
 type QueryNotifyResponseBodyData struct {
-	// The details of notifications.
+	// The list of notifications.
 	NotifyItemList []*QueryNotifyResponseBodyDataNotifyItemList `json:"NotifyItemList,omitempty" xml:"NotifyItemList,omitempty" type:"Repeated"`
-	// The page number of the page returned.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -142,25 +142,25 @@ func (s *QueryNotifyResponseBodyData) Validate() error {
 }
 
 type QueryNotifyResponseBodyDataNotifyItemList struct {
-	// The ID of the Alibaba Cloud account.
+	// The ID of the current Alibaba Cloud account.
 	//
 	// example:
 	//
-	// 22973492**********
+	// 22973492****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// Indicates whether the notification has been confirmed. You can call the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. Valid values:
+	// Indicates whether the notification has been confirmed, that is, whether the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation has been called to mark the notification as confirmed. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The notification has been confirmed.
 	//
-	// 	- **false**
+	// 	- **false**: The notification has not been confirmed.
 	//
 	// example:
 	//
 	// true
 	ConfirmFlag *bool `json:"ConfirmFlag,omitempty" xml:"ConfirmFlag,omitempty"`
-	// The UID of the contact who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. The contact belongs to the current Alibaba Cloud account.
+	// The UID of the notification recipient under the current Alibaba Cloud account who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed.
 	//
-	// The value **0*	- indicates that the notification is automatically confirmed by the system.
+	// A return value of **0*	- indicates that the notification was automatically confirmed by the system.
 	//
 	// example:
 	//
@@ -178,77 +178,77 @@ type QueryNotifyResponseBodyDataNotifyItemList struct {
 	//
 	// 2022-04-21T02:10:47Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the notification.
+	// The notification ID.
 	//
 	// example:
 	//
 	// 103499
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of times that repeatedly sent notifications are blocked.
+	// The number of times that duplicate notifications were blocked.
 	//
 	// example:
 	//
 	// 0
 	IdempotentCount *string `json:"IdempotentCount,omitempty" xml:"IdempotentCount,omitempty"`
-	// This parameter ensures the idempotence of the notification and prevents the notification from being repeatedly sent.
+	// The idempotency identifier used to prevent duplicate notifications from being sent.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	IdempotentId *string `json:"IdempotentId,omitempty" xml:"IdempotentId,omitempty"`
 	// The level of the notification. Valid values:
 	//
-	// 	- **help**
+	// 	- **help**: help
 	//
-	// 	- **success**
+	// 	- **success**: execution succeeded
 	//
-	// 	- **warning**
+	// 	- **warning**: warning
 	//
-	// 	- **error**
+	// 	- **error**: execution failed
 	//
-	// 	- **loading**
+	// 	- **loading**: task in progress
 	//
-	// 	- **notice**
+	// 	- **notice**: general
 	//
 	// example:
 	//
 	// error
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The element in the notification template. This parameter is a JSON string. Fields in the JSON string vary based on the value of the **TemplateName*	- parameter.
+	// The elements in the notification template, which are represented as a JSON string. The parameters in the JSON string vary based on the value of **TemplateName**.
 	//
-	// 	- If the **TemplateName*	- parameter is **RenewalRecommend**, the JSON string contains the following fields:
+	// 	- If **TemplateName*	- is set to **RenewalRecommend**:
 	//
-	//     	- **instanceName**: the ID of the instance that is about to expire
+	//     	- **instanceName**: the ID of the instance that is about to expire.
 	//
-	//     	- **reservedTime**: the remaining validity period of the instance in days
+	//     	- **reservedTime**: the number of remaining days.
 	//
-	// 	- If the **TemplateName*	- parameter is **InstanceCreateFailed**, the JSON string contains the following fields:
+	// 	- If **TemplateName*	- is set to **InstanceCreateFailed**:
 	//
-	//     	- **orderId**: the ID of the order to purchase the instance
+	//     	- **orderId**: the order ID for the instance purchase.
 	//
-	//     	- **reason**: the cause of the instance creation failure
+	//     	- **reason**: the reason why the instance failed to be created.
 	//
 	// example:
 	//
-	// {\\"orderId\\":21466**********}
+	// {\\"orderId\\":21466****}
 	NotifyElement *string `json:"NotifyElement,omitempty" xml:"NotifyElement,omitempty"`
-	// The template of the notification. Valid values:
+	// The notification template. Valid values:
 	//
-	// 	- **RenewalRecommend**: The template that is used to notify of renewal suggestions.
+	// 	- **RenewalRecommend**: renewal recommendation
 	//
-	// 	- **InstanceCreateFailed**: The template that is used to notify that an instance fails to be created and is refunded.
+	// 	- **InstanceCreateFailed**: instance creation failed with refund
 	//
 	// example:
 	//
 	// InstanceCreateFailed
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the notification. Valid values:
+	// The notification type. Valid values:
 	//
-	// 	- **Sell**: sales notification
+	// 	- **Sell**: sale-related notification
 	//
-	// 	- **Operation**: O\\&M notification
+	// 	- **Operation**: O&M notification
 	//
-	// 	- **Promotion**: promotion notification
+	// 	- **Promotion**: promotional notification
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iRebuildDBInstanceRequest interface {
 }
 
 type RebuildDBInstanceRequest struct {
-	// The instance ID.
+	// The instance ID in the dedicated cluster.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type RebuildDBInstanceRequest struct {
 	//
 	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+	// The dedicated cluster ID. You can call DescribeDedicatedHostGroups to query the dedicated cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -44,26 +44,26 @@ type RebuildDBInstanceRequest struct {
 	//
 	// dhg-4nxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The ID of the host on which the system rebuilds the secondary instance.
+	// The ID of the host on which the secondary instance is to be rebuilt.
 	//
-	// >  If you do not specify this parameter, the system preferentially rebuilds the secondary instance on the original host on which the secondary instance resides. If the remaining storage of the original host is insufficient, the system rebuilds the secondary instance on a host on which the primary instance does not reside. If no suitable hosts are found, the system reports an error that indicates insufficient storage.
+	// >If you do not specify this parameter, the secondary instance is preferentially rebuilt on the original host. If the original host does not have sufficient space, the system selects a host that does not contain the primary instance. If no host with sufficient space is found, an insufficient space error is returned.
 	//
 	// example:
 	//
 	// i-bpxxxxxxx
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The role of the secondary instance that you want to rebuild. Valid values:
+	// The type of secondary instance to rebuild. Valid values:
 	//
-	// 	- **FOLLOWER**: secondary instance
+	// 	- **FOLLOWER**: secondary node.
 	//
-	// 	- **LOG**: logger instance
+	// 	- **LOG**: log node.
 	//
 	// example:
 	//
 	// FOLLOWER
 	RebuildNodeType *string `json:"RebuildNodeType,omitempty" xml:"RebuildNodeType,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to query the region ID.
 	//
 	// example:
 	//

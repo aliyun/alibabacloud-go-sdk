@@ -26,27 +26,11 @@ type iDescribeRCInvocationResultsResponseBody interface {
 type DescribeRCInvocationResultsResponseBody struct {
 	InvocationResults []*DescribeRCInvocationResultsResponseBodyInvocationResults `json:"InvocationResults,omitempty" xml:"InvocationResults,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// AAAAAdDWBF2
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 1
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 1
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 49BC2500-8078-5AC4-A545-20AA5945B0E6
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRCInvocationResultsResponseBody) String() string {
@@ -125,75 +109,24 @@ func (s *DescribeRCInvocationResultsResponseBody) Validate() error {
 }
 
 type DescribeRCInvocationResultsResponseBodyInvocationResults struct {
-	// example:
-	//
-	// c-7d2a745b412b4601b2d47f6a768d****
-	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// example:
-	//
-	// ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// example:
-	//
-	// test-container
-	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// example:
-	//
-	// 0
-	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	// example:
-	//
-	// InstanceNotExists
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// example:
-	//
-	// the specified instance does not exists
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// example:
-	//
-	// 0
-	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	// example:
-	//
-	// 2024-12-20T06:15:56Z
-	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// example:
-	//
-	// rc-i322y2t562oh7o******
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// Success
-	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// example:
-	//
-	// t-7d2a745b412b4601b2d47f6a768d****
-	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// example:
-	//
-	// Running
-	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	// example:
-	//
-	// MTU6MzA6MDEK
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// example:
-	//
-	// 0
-	Repeats *string `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	// example:
-	//
-	// 2024-12-20T06:15:55Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// 2025-01-19T09:15:47Z
-	StopTime *string                                                         `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	Tags     []*DescribeRCInvocationResultsResponseBodyInvocationResultsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// example:
-	//
-	// testuser
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	CommandId          *string                                                         `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	ContainerId        *string                                                         `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName      *string                                                         `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	Dropped            *int32                                                          `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
+	ErrorCode          *string                                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorInfo          *string                                                         `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	ExitCode           *int32                                                          `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	FinishedTime       *string                                                         `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	InstanceId         *string                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InvocationStatus   *string                                                         `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvokeId           *string                                                         `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeRecordStatus *string                                                         `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
+	Output             *string                                                         `json:"Output,omitempty" xml:"Output,omitempty"`
+	Repeats            *string                                                         `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
+	StartTime          *string                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StopTime           *string                                                         `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	Tags               []*DescribeRCInvocationResultsResponseBodyInvocationResultsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Username           *string                                                         `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeRCInvocationResultsResponseBodyInvocationResults) String() string {
@@ -380,13 +313,7 @@ func (s *DescribeRCInvocationResultsResponseBodyInvocationResults) Validate() er
 }
 
 type DescribeRCInvocationResultsResponseBodyInvocationResultsTags struct {
-	// example:
-	//
-	// testKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// example:
-	//
-	// testValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

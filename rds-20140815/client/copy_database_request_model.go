@@ -28,13 +28,13 @@ type iCopyDatabaseRequest interface {
 }
 
 type CopyDatabaseRequest struct {
-	// The instance name.
+	// The instance name. **This parameter is required**.
 	//
 	// example:
 	//
-	// rm-uf6wjk5******
+	// rm-wz9s06u4drm******
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The destination database name.
+	// The destination database name. **This parameter is required**.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type CopyDatabaseRequest struct {
 	//
 	// 1
 	ReserveAccount *int32 `json:"ReserveAccount,omitempty" xml:"ReserveAccount,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -55,7 +55,7 @@ type CopyDatabaseRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source database name.
+	// The source database name. **This parameter is required**.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iDeleteRCSnapshotRequest interface {
 }
 
 type DeleteRCSnapshotRequest struct {
-	// Specifies whether to forcefully delete the snapshot that is used to create cloud disks. Valid values:
+	// Specifies whether to force delete a snapshot that has been used to create a cloud disk. Valid values:
 	//
-	// 	- **true**: forcefully deletes the snapshot After the snapshot is forcefully deleted, the cloud disks created from the snapshot cannot be re-initialized.
+	// - **true**: Force deletes the snapshot. After the snapshot is forcefully deleted, the cloud disk cannot be reinitialized.
 	//
-	// 	- **false**(default): does not forcefully delete the snapshot.
+	// - **false*	- (default): Does not force delete the snapshot.
 	//
 	// example:
 	//

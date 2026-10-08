@@ -16,7 +16,7 @@ type iReceiveDBInstanceResponseBody interface {
 }
 
 type ReceiveDBInstanceResponseBody struct {
-	// The ID of the disaster recovery instance after the switchover.
+	// The instance ID of the disaster recovery instance after the switchover is complete.
 	//
 	// example:
 	//

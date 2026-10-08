@@ -18,19 +18,19 @@ type iDeleteReplicationLinkRequest interface {
 }
 
 type DeleteReplicationLinkRequest struct {
-	// The ID of the DR instance.
+	// The instance ID of the disaster recovery instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pgm-bp1trqb4p1xd****
+	// m-2zecuz9tolf******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to delete the data synchronization link between the DR instance and the primary instance and promote the DR instance to the primary instance. Valid values:
+	// Specifies whether to delete the data synchronization link between the primary instance and the disaster recovery instance and promote the disaster recovery instance to a primary instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// This parameter is required.
 	//

@@ -20,19 +20,19 @@ type iDeleteSecretResponseBody interface {
 }
 
 type DeleteSecretResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DF4961DD-16F5-5B24-BD4C-0C7788F7ADAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ARN of the credential for the Data API account.
+	// The user credential of the Data API account.
 	//
 	// example:
 	//
 	// acs:rds:cn-hangzhou:1335786***:dbInstance/rm-bp1m7l3j63****
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the credential.
+	// The name of the user credential.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DeleteSecretResponseBody struct {
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

@@ -32,36 +32,41 @@ type iDescribeRCMetricListRequest interface {
 }
 
 type DescribeRCMetricListRequest struct {
+	// Queries the monitoring data of specified resources in batches for Custom for SQL Server.
+	//
+	// Format: a collection of `key:value` pairs.
+	//
+	// example:
+	//
+	// [{"instanceId":"rc-l9hv3rv74ql7oa******"},{"instanceId":"rc-b532l1uj8n6sex******"}]
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Example: `2024-08-06 10:15:00`.
+	// The end of the time range to query. Specify the time in the `2024-08-06 10:15:00` format. The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2024-08-06 10:15:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// None
 	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
-	// The instance ID.
+	// The instance ID. This parameter is required.
 	//
 	// example:
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page.
+	// The number of records per page for paging query.
 	//
 	// Default value: 1000.
-	//
-	// >  The maximum value of the Length parameter in a request is 1440.
 	//
 	// example:
 	//
 	// 1000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The metric that you want to use. For more information, see [CloudMonitor metrics](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+	// The [monitoring metric](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	//
 	// This parameter is required.
 	//
@@ -73,15 +78,13 @@ type DescribeRCMetricListRequest struct {
 	//
 	// example:
 	//
-	// 6178f1825f9fb76ce0b5e8707e68181f
+	// 6178f1825f9fb76ce0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The statistical period of the monitoring data.
+	// The statistical period of the monitoring data. Unit: seconds. Valid values:
 	//
-	// Set the value to 60 or an integer multiple of 60.
+	// - 60 (default)
 	//
-	// Unit: seconds.
-	//
-	// Default value: 60.
+	// - An integer multiple of 60
 	//
 	// example:
 	//
@@ -93,7 +96,7 @@ type DescribeRCMetricListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Example: `2024-08-06 10:05:00`.
+	// The beginning of the time range to query. Specify the time in the `2024-08-06 10:05:00` format.
 	//
 	// example:
 	//

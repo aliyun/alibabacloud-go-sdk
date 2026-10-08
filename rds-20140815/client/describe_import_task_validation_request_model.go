@@ -18,6 +18,8 @@ type iDescribeImportTaskValidationRequest interface {
 }
 
 type DescribeImportTaskValidationRequest struct {
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DescribeImportTaskValidationRequest struct {
 	// rm-xjkljj****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The task ID. The task ID returned when you call the **ValidateImportTask*	- operation to create an import task dry run.
+	//
 	// This parameter is required.
 	//
 	// example:

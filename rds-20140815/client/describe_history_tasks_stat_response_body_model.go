@@ -16,7 +16,7 @@ type iDescribeHistoryTasksStatResponseBody interface {
 }
 
 type DescribeHistoryTasksStatResponseBody struct {
-	// The queried tasks.
+	// The list of task information.
 	Items []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,21 +66,21 @@ func (s *DescribeHistoryTasksStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksStatResponseBodyItems struct {
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **Scheduled**
+	// - **Scheduled**: Waiting to be executed.
 	//
-	// 	- **Running**
+	// - **Running**: Running.
 	//
-	// 	- **Succeed**
+	// - **Succeed**: Succeeded.
 	//
-	// 	- **Failed**
+	// - **Failed**: Failed.
 	//
-	// 	- **Cancelling**
+	// - **Cancelling**: Being stopped.
 	//
-	// 	- **Canceled**
+	// - **Canceled**: Stopped.
 	//
-	// 	- **Waiting**
+	// - **Waiting**: Waiting for the scheduled time.
 	//
 	// example:
 	//

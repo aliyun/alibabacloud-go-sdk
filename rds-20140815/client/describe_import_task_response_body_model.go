@@ -36,50 +36,78 @@ type iDescribeImportTaskResponseBody interface {
 }
 
 type DescribeImportTaskResponseBody struct {
+	// The account name.
+	//
 	// example:
 	//
 	// myadmin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The Milvus version number.
+	//
 	// example:
 	//
 	// 5.7
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// The detailed information about the task.
+	//
 	// example:
 	//
 	// Error Message
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A103039D-B1B2-4C57-B989-7D7C0DA95426
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The category of the source instance.
+	//
+	// - **ECS**: Alibaba Cloud ECS.
+	//
+	// - **other**: Other.
+	//
 	// example:
 	//
 	// aliyunRDS
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 59.172.25.122
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source MySQL port.
+	//
 	// example:
 	//
 	// 3306
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Importing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the destination disaster recovery instance for the switchover.
+	//
 	// example:
 	//
 	// rm-t4neh0q12v1******
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 416980000
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task type. This parameter is used to query tasks of specific types. Separate multiple task types with commas (,). A maximum of 30 task types are supported. If this parameter is left empty, tasks of all types are queried.
+	//
 	// example:
 	//
 	// import

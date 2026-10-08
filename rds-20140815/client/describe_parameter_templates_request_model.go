@@ -32,13 +32,13 @@ type iDescribeParameterTemplatesRequest interface {
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// The RDS edition of the instance. Valid values:
+	// The instance edition. Valid values:
 	//
-	// 	- **Basic**: RDS Basic Edition
+	// - **Basic**: Basic Edition
 	//
-	// 	- **HighAvailability**: RDS High-availability Edition
+	// - **HighAvailability**: high-availability series
 	//
-	// 	- **Finance**: RDS Enterprise Edition
+	// - **Finance**: RDS Enterprise Edition
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type DescribeParameterTemplatesRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
-	// rm-bp1imnm**********
+	// rm-bp1imnm****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine of the instance. Valid values:
+	// The database engine. Valid values:
 	//
 	// 	- **mysql**: MySQL
 	//
@@ -72,15 +72,15 @@ type DescribeParameterTemplatesRequest struct {
 	//
 	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine. Valid values:
+	// The database engine version. Valid values:
 	//
-	// 	- Valid values when you set the Engine parameter to mysql: **5.5, 5.6, 5.7, and 8.0**.
+	// 	- MySQL: **5.5, 5.6, 5.7, 8.0**
 	//
-	// 	- Valid values when you set the Engine parameter to mssql: **2008r2**.
+	// 	- SQL Server: **2008r2**
 	//
-	// 	- Valid values when you set the Engine parameter to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**.
+	// 	- PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, 15.0**
 	//
-	// 	- Valid values when you set the Engine parameter to MariaDB: **10.3**.
+	// 	- MariaDB: **10.3**
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type DescribeParameterTemplatesRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query available region IDs.
 	//
 	// example:
 	//

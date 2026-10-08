@@ -18,19 +18,19 @@ type iDescribeQuickSaleConfigResponseBody interface {
 }
 
 type DescribeQuickSaleConfigResponseBody struct {
-	// The product code. Valid values:
+	// The commodity code. Valid values:
 	//
-	// 	- rds: The instance is a subscription instance.
+	// - rds: subscription
 	//
-	// 	- bards: The instance is a pay-as-you-go instance.
+	// - bards: pay-as-you-go
 	//
 	// example:
 	//
 	// rds
 	Commodity *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	// The configuration details of the product.
+	// The commodity configuration details.
 	Items map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

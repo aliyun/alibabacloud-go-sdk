@@ -42,13 +42,13 @@ type iModifyDBProxyShrinkRequest interface {
 }
 
 type ModifyDBProxyShrinkRequest struct {
-	// Specifies whether to enable or disable the database proxy feature. Valid values:
+	// Specifies whether to enable, disable, or modify the database proxy. Valid values:
 	//
-	// 	- **Startup**: enables the feature.
+	// 	- **Startup**: Enables the database proxy.
 	//
-	// 	- **Shutdown**: disables the feature.
+	// 	- **Shutdown**: Disables the database proxy.
 	//
-	// 	- **Modify**: modifies the configuration of the feature.
+	// 	- **Modify**: Modifies the database proxy.
 	//
 	// This parameter is required.
 	//
@@ -56,43 +56,43 @@ type ModifyDBProxyShrinkRequest struct {
 	//
 	// Startup
 	ConfigDBProxyService *string `json:"ConfigDBProxyService,omitempty" xml:"ConfigDBProxyService,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// A deprecated parameter. You do not need to specify this parameter.
+	// A deprecated parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The number of proxy instances that are enabled. Valid values: **1*	- to **16**. Default value: **1**.
+	// The number of proxy instances. Valid values: **1*	- to **16**. Default value: **1**.
 	//
-	// >  The capability of the database proxy to process requests increases with the number of proxy instances that are enabled. You can monitor the load on the instance and specify an appropriate number of proxy instances based on the load monitoring data.
+	// > More proxy instances can handle more requests. You can check the monitoring data to understand the load on proxy instances and then set an appropriate number of proxy instances.
 	//
 	// example:
 	//
 	// 1
 	DBProxyInstanceNum *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
-	// The database proxy type. Valid values:
+	// The type of the database proxy instance. Valid values:
 	//
-	// 	- **common**: general-purpose database proxy
+	// - **common**: general-purpose database proxy
 	//
-	// 	- **exclusive*	- (default): dedicated database proxy
+	// - **exclusive**: dedicated database proxy (default)
 	//
 	// example:
 	//
-	// common
+	// exclusive
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// The proxy nodes.
+	// The list of proxy nodes.
 	DBProxyNodesShrink *string `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty"`
-	// The network type of the instance. Only the VPC network type is supported. Set the value to **VPC**.
+	// The network type of the instance. Only Virtual Private Cloud (VPC) is supported. Set the value to **VPC**.
 	//
-	// >  If you enable the database proxy feature for the instance, you must specify this parameter.
+	// > This parameter is required when you enable the database proxy.
 	//
 	// example:
 	//
@@ -101,21 +101,19 @@ type ModifyDBProxyShrinkRequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to enable persistent connections. Valid values:
 	//
-	// 	- **Enabled**
+	// - **Enabled**: enables persistent connections.
 	//
-	// 	- **Disabled**
+	// - **Disabled**: disables persistent connections.
 	//
-	// >
+	// > - Only RDS MySQL supports this parameter.
 	//
-	// 	- This parameter is available only for instances that run MySQL.
-	//
-	// 	- If you want to modify persistent connections, you must set the **ConfigDBProxyService*	- parameter to **Modify**.
+	// > - To modify the persistent connection status, set **ConfigDBProxyService*	- to **Modify**.
 	//
 	// example:
 	//
-	// Enabled
+	// Disabled
 	PersistentConnectionStatus *string `json:"PersistentConnectionStatus,omitempty" xml:"PersistentConnectionStatus,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the region ID.
 	//
 	// example:
 	//
@@ -125,25 +123,25 @@ type ModifyDBProxyShrinkRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
+	// The VPC ID of the instance. You can call DescribeDBInstanceAttribute to obtain the VPC ID.
 	//
-	// >  If you enable the database proxy feature for the instance, you must specify this parameter.
+	// > This parameter is required when you enable the database proxy.
 	//
 	// example:
 	//
-	// vpc-xxxxxxxxxxxx
+	// vpc-****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID.
+	// The vSwitch ID of the instance. You can call DescribeDBInstanceAttribute to obtain the vSwitch ID.
 	//
-	// >  If you enable the database proxy feature for the instance, you must specify this parameter.
+	// > This parameter is required when you enable the database proxy.
 	//
 	// example:
 	//
-	// vsw-xxxxxxxxxxxx
+	// vsw-****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 

@@ -18,11 +18,11 @@ type iCreateOrderForDeleteDBNodesResponseBody interface {
 }
 
 type CreateOrderForDeleteDBNodesResponseBody struct {
-	// The instance ID
+	// The instance ID.
 	//
 	// example:
 	//
-	// rm-7xv******
+	// rm-7x******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The order ID.
 	//

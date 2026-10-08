@@ -28,7 +28,7 @@ type iDescribeDBProxyEndpointRequest interface {
 }
 
 type DescribeDBProxyEndpointRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,26 +36,26 @@ type DescribeDBProxyEndpointRequest struct {
 	//
 	// rm-bp1ja4f56s7us****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The proxy endpoint that you want to query. You can call the DescribeDBProxy interface to query the proxy endpoint.
+	// The proxy endpoint. You can call the [DescribeDBProxy](https://help.aliyun.com/document_detail/610507.html) operation to query the proxy endpoint.
 	//
 	// example:
 	//
 	// testproxy****.rwlb.rds.aliyuncs.com
 	DBProxyConnectString *string `json:"DBProxyConnectString,omitempty" xml:"DBProxyConnectString,omitempty"`
-	// The name of the proxy terminal. You can call the DescribeDBProxy interface to query the name of the proxy terminal.
+	// The proxy endpoint name. You can call the [DescribeDBProxy](https://help.aliyun.com/document_detail/610507.html) operation to query the proxy endpoint name.
 	//
 	// example:
 	//
 	// keaxncrjluwu0gue****
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter. You do not need to configure this parameter.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query the region ID.
 	//
 	// example:
 	//

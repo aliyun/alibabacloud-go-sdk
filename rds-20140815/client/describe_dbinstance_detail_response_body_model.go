@@ -22,31 +22,31 @@ type iDescribeDBInstanceDetailResponseBody interface {
 }
 
 type DescribeDBInstanceDetailResponseBody struct {
-	// Indicates whether the instance is in the active state.
+	// The activation state.
 	//
 	// example:
 	//
 	// Invalid
 	ActivationState *string `json:"ActivationState,omitempty" xml:"ActivationState,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rm-bp6wjk5xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The type of the license.
+	// The license type.
 	//
 	// example:
 	//
 	// Normal
 	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

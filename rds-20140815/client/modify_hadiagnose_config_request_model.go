@@ -24,16 +24,16 @@ type iModifyHADiagnoseConfigRequest interface {
 }
 
 type ModifyHADiagnoseConfigRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID. You can call DescribeRegions to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -43,11 +43,11 @@ type ModifyHADiagnoseConfigRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The availability check method of the instance. Valid values:
+	// The availability detection method of the instance. Valid values:
 	//
-	// 	- **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+	// - **SHORT**: short-lived connection
 	//
-	// 	- **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+	// - **LONG**: persistent connection
 	//
 	// example:
 	//

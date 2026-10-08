@@ -20,17 +20,17 @@ type iModifyDTCSecurityIpHostsForSQLServerResponseBody interface {
 }
 
 type ModifyDTCSecurityIpHostsForSQLServerResponseBody struct {
-	// The instance ID.
+	// The ApsaraDB RDS instance ID.
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The result of the IP address whitelist configuration. Valid values:
+	// The result of configuring the whitelist. Valid values:
 	//
-	// 	- **Success**
+	// 	- **Success**: The configuration is successful.
 	//
-	// 	- **Fail**
+	// 	- **Fail**: The configuration failed.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModifyDTCSecurityIpHostsForSQLServerResponseBody struct {
 	//
 	// 671B6D32-B907-4EFF-A3B7-94D2EAD5E3A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
+	// The task ID of the configuration task.
 	//
 	// example:
 	//

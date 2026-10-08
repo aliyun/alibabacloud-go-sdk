@@ -16,7 +16,7 @@ type iDescribeDBInstanceMonitorResponseBody interface {
 }
 
 type DescribeDBInstanceMonitorResponseBody struct {
-	// The monitoring frequency. Unit: seconds.
+	// The interval at which monitoring data is collected. Unit: seconds.
 	//
 	// example:
 	//

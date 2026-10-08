@@ -66,13 +66,13 @@ func (s *DescribeCurrentModifyOrderResponseBody) Validate() error {
 }
 
 type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
-	// The instance family of the instance.
+	// The instance family.
 	//
 	// example:
 	//
 	// x
 	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	// The number of CPU cores that are supported by the instance type. Unit: cores.
+	// The number of CPU cores for the instance type. Unit: cores.
 	//
 	// example:
 	//
@@ -84,41 +84,41 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	//
 	// rm-cn-nwy39qeys0003r
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The effective time. Valid values:
+	// The effective period. Valid values:
 	//
-	// 	- **Immediate**: This is the default value.
+	// 	- **Immediate*	- (default): The specification change takes effect immediately.
 	//
-	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
+	// 	- **MaintainTime**: The specification change takes effect during the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
 	//
 	// example:
 	//
 	// MaintainTime
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The description of the instance.
+	// The mark.
 	//
 	// example:
 	//
-	// eyJ2IjoibWV0YS5rOHMuaW8vdjEiLCJydiI6MTg2MjEwOTkwLCJzdGFydCI6InNob3BpZnktdXNlci1jb3JlXHUwMDAwIn0
+	// None
 	Mark *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
-	// The memory capacity that is supported by the instance type. Unit: GB.
+	// The memory capacity for the instance type. Unit: GB.
 	//
 	// example:
 	//
 	// 1024
 	MemoryClass *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// Succeed,Scheduled,Running,Cancelling,Canceled,Waiting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage capacity of the instance.
+	// The storage description.
 	//
 	// example:
 	//
 	// 20
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The new instance type of the instance. Valid values:
+	// The target instance type for the specification change.
 	//
 	// example:
 	//

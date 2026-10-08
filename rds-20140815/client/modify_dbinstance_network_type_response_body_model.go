@@ -18,19 +18,19 @@ type iModifyDBInstanceNetworkTypeResponseBody interface {
 }
 
 type ModifyDBInstanceNetworkTypeResponseBody struct {
-	// The endpoint that is used to connect to the instance.
+	// The endpoint of the instance.
 	//
 	// example:
 	//
-	// rm-bp1*****************.mysql.rds.aliyuncs.com
+	// rm-bp1****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

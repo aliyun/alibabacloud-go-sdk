@@ -18,12 +18,16 @@ type iEnableBackupEncryptionRequest interface {
 }
 
 type EnableBackupEncryptionRequest struct {
+  // The instance ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // rm-wz951f7f******
   DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+  // The backup encryption key.
+  // 
   // example:
   // 
   // 564cf6c4-d2ee-495b-b265-5724******

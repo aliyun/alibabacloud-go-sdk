@@ -44,110 +44,23 @@ type iDescribeRCInstanceHistoryEventsRequest interface {
 }
 
 type DescribeRCInstanceHistoryEventsRequest struct {
-	EventPublishTime *DescribeRCInstanceHistoryEventsRequestEventPublishTime `json:"EventPublishTime,omitempty" xml:"EventPublishTime,omitempty" type:"Struct"`
-	NotBefore        *DescribeRCInstanceHistoryEventsRequestNotBefore        `json:"NotBefore,omitempty" xml:"NotBefore,omitempty" type:"Struct"`
-	// The lifecycle state of the system event. This parameter is valid only when the **InstanceEventCycleStatus.N*	- parameter is not specified. Valid values:
-	//
-	// 	- **Scheduled**
-	//
-	// 	- **Avoided**
-	//
-	// 	- **Executing**
-	//
-	// 	- **Executed**
-	//
-	// 	- **Canceled**
-	//
-	// 	- **Failed**
-	//
-	// 	- **Inquiring**
-	//
-	// example:
-	//
-	// Executed
-	EventCycleStatus *string `json:"EventCycleStatus,omitempty" xml:"EventCycleStatus,omitempty"`
-	// The IDs of one or more system events.
-	EventId []*string `json:"EventId,omitempty" xml:"EventId,omitempty" type:"Repeated"`
-	// The system event type. This parameter is valid only when the **InstanceEventType.N*	- parameter is not specified. Valid values:
-	//
-	// 	- **SystemMaintenance.Reboot**: The instance was restarted due to system maintenance.
-	//
-	// 	- **SystemMaintenance.Redeploy**: The instance was redeployed due to system maintenance.
-	//
-	// 	- **SystemFailure.Reboot**: The instance was restarted due to system failures.
-	//
-	// 	- **SystemFailure.Redeploy**: The instance was redeployed due to system failures.
-	//
-	// 	- **SystemFailure.Delete**: The instance was released due to an instance creation failure.
-	//
-	// 	- **InstanceFailure.Reboot**: The instance was restarted due to an instance error.
-	//
-	// 	- **InstanceExpiration.Stop**: The subscription instance was stopped due to expiration.
-	//
-	// 	- **InstanceExpiration.Delete**: The subscription instance was released due to expiration.
-	//
-	// 	- **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
-	//
-	// 	- **AccountUnbalanced.Delete**: The pay-as-you-go instance was released due to an overdue payment.
-	//
-	// >  The values of this parameter are applicable only to instance system events, but not to disk system events.
-	//
-	// example:
-	//
-	// SystemMaintenance.Reboot
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	ImpactLevel *string `json:"ImpactLevel,omitempty" xml:"ImpactLevel,omitempty"`
-	// The lifecycle states of system events.
-	InstanceEventCycleStatus []*string `json:"InstanceEventCycleStatus,omitempty" xml:"InstanceEventCycleStatus,omitempty" type:"Repeated"`
-	// The type of system event N.
-	InstanceEventType []*string `json:"InstanceEventType,omitempty" xml:"InstanceEventType,omitempty" type:"Repeated"`
-	// The instance ID. If you do not specify an instance ID, system events of all instances in the specified region are queried.
-	//
-	// example:
-	//
-	// rc-yuf59nplc45t2tzn****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The page number of the returned page.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries returned per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the instance resides.
-	//
+	EventPublishTime         *DescribeRCInstanceHistoryEventsRequestEventPublishTime `json:"EventPublishTime,omitempty" xml:"EventPublishTime,omitempty" type:"Struct"`
+	NotBefore                *DescribeRCInstanceHistoryEventsRequestNotBefore        `json:"NotBefore,omitempty" xml:"NotBefore,omitempty" type:"Struct"`
+	EventCycleStatus         *string                                                 `json:"EventCycleStatus,omitempty" xml:"EventCycleStatus,omitempty"`
+	EventId                  []*string                                               `json:"EventId,omitempty" xml:"EventId,omitempty" type:"Repeated"`
+	EventType                *string                                                 `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	ImpactLevel              *string                                                 `json:"ImpactLevel,omitempty" xml:"ImpactLevel,omitempty"`
+	InstanceEventCycleStatus []*string                                               `json:"InstanceEventCycleStatus,omitempty" xml:"InstanceEventCycleStatus,omitempty" type:"Repeated"`
+	InstanceEventType        []*string                                               `json:"InstanceEventType,omitempty" xml:"InstanceEventType,omitempty" type:"Repeated"`
+	InstanceId               *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults               *string                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	PageNumber               *string                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                 *string                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group that you want to query.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4p****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of resource N.
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// An array that consists of the tags that are supported by system events.
-	Tag []*DescribeRCInstanceHistoryEventsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId        *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId      []*string                                    `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	Tag             []*DescribeRCInstanceHistoryEventsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRCInstanceHistoryEventsRequest) String() string {
@@ -326,17 +239,7 @@ func (s *DescribeRCInstanceHistoryEventsRequest) Validate() error {
 }
 
 type DescribeRCInstanceHistoryEventsRequestEventPublishTime struct {
-	// The end of the time range in which to query published system events. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-04-01T06:32:31Z
-	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The beginning of the time range in which to query published system events. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-03-30T06:32:31Z
+	End   *string `json:"End,omitempty" xml:"End,omitempty"`
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -371,17 +274,10 @@ func (s *DescribeRCInstanceHistoryEventsRequestEventPublishTime) Validate() erro
 }
 
 type DescribeRCInstanceHistoryEventsRequestNotBefore struct {
-	// The end time of the scheduled execution period for the system event. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2025-04-01T06:32:31Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The start time of the scheduled execution period for the system event. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
 	// example:
 	//
-	// 2025-03-30T06:32:31Z
+	// 2017-11-30T06:32:31Z
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
@@ -416,17 +312,7 @@ func (s *DescribeRCInstanceHistoryEventsRequestNotBefore) Validate() error {
 }
 
 type DescribeRCInstanceHistoryEventsRequestTag struct {
-	// The key of the tag that is added to the resource.
-	//
-	// example:
-	//
-	// TestKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the port list.
-	//
-	// example:
-	//
-	// TestValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

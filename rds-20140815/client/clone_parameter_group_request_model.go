@@ -31,13 +31,13 @@ type iCloneParameterGroupRequest interface {
 
 type CloneParameterGroupRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The description of the parameter template in the destination region.
+	// The description of the parameter template that is copied to the destination region.
 	//
 	// example:
 	//
 	// CloneGroup1
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
-	// The ID of the parameter template. You can call the DescribeParameterGroups operation to query the parameter template ID.
+	// The ID of the source parameter template. You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/144491.html) operation to query the parameter template ID.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type CloneParameterGroupRequest struct {
 	//
 	// rpg-13ppdh****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The name of the parameter template in the destination region.
+	// The name of the parameter template that is copied to the destination region.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type CloneParameterGroupRequest struct {
 	//
 	// tartestgroup
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// The ID of the source region to which the parameter template belongs. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID of the source parameter template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type CloneParameterGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. You can leave this parameter empty.
+	// The resource group ID. This parameter can be left empty.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type CloneParameterGroupRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the destination region. You can call the DescribeRegions operation to query the most recent region list.
+	// The ID of the destination region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

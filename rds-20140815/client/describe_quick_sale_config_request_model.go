@@ -18,17 +18,17 @@ type iDescribeQuickSaleConfigRequest interface {
 }
 
 type DescribeQuickSaleConfigRequest struct {
-	// The product code. Valid values:
+	// The commodity code. Valid values:
 	//
-	// 	- rds: The instance is a subscription instance.
+	// - rds: subscription
 	//
-	// 	- bards: The instance is a pay-as-you-go instance.
+	// - bards: pay-as-you-go
 	//
 	// example:
 	//
 	// rds
 	Commodity *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	// The database engine of the instance. Valid values:
+	// The database engine. Valid values:
 	//
 	// 	- **MySQL**
 	//
@@ -42,7 +42,7 @@ type DescribeQuickSaleConfigRequest struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the available regions.
 	//
 	// example:
 	//

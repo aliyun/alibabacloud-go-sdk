@@ -44,13 +44,18 @@ type iCreateOrderForDeleteDBNodesRequest interface {
 }
 
 type CreateOrderForDeleteDBNodesRequest struct {
-	// Specifies whether to automatically complete the payment. Valid values:
+	// Specifies whether to automatically complete automatic payment. Valid values:
 	//
-	// 1.  **true**: You must make sure that your account balance is sufficient.
+	// 1. **true**: automatically completes automatic payment. Make sure that your account balance is sufficient.
 	//
-	// 2.  **false**: An unpaid order is generated.
+	// 1. **false**: generates the order without completing automatic payment.
 	//
-	// >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+	//
+	//
+	//
+	// > Default value: true. If your payment method has insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ApsaraDB RDS console to complete automatic payment.
+	//
+	// >
 	//
 	// example:
 	//
@@ -60,7 +65,7 @@ type CreateOrderForDeleteDBNodesRequest struct {
 	//
 	// example:
 	//
-	// {\\"shopCartItemId\\":\\"25******\\",\\"produceDriver\\":\\"NoOrder\\",\\"aliyun_shopcart_order_source\\":\\"fromShopcart\\",\\"shopCartId\\":\\"10190203suffix20230509******\\"}
+	// None
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -70,21 +75,21 @@ type CreateOrderForDeleteDBNodesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The commodity code. Valid values:
 	//
-	// 	- **bards**: The instance is a pay-as-you-go primary instance.
+	// 	- **bards**: pay-as-you-go primary instance
 	//
-	// 	- **rds**: The instance is a subscription primary instance.
+	// 	- **rds**: subscription primary instance
 	//
-	// 	- **rords**: The instance is a pay-as-you-go read-only instance.
+	// 	- **rords**: pay-as-you-go read-only instance
 	//
-	// 	- **rds_rordspre_public_cn**: The instance is a subscription read-only instance.
+	// 	- **rds_rordspre_public_cn**: subscription read-only instance
 	//
-	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance.
+	// 	- **bards_intl**: pay-as-you-go primary instance
 	//
-	// 	- **rds_intl**: The instance is a subscription primary instance.
+	// 	- **rds_intl**: subscription primary instance
 	//
-	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance.
+	// 	- **rords_intl**: pay-as-you-go read-only instance
 	//
-	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+	// 	- **rds_rordspre_public_intl**: subscription read-only instance
 	//
 	// This parameter is required.
 	//
@@ -92,27 +97,27 @@ type CreateOrderForDeleteDBNodesRequest struct {
 	//
 	// bards
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+	// The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
 	//
 	// example:
 	//
-	// rm-8vb******
+	// rm-8vb9******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// An array that consists of information about the ID of the node.
+	// The list of node IDs.
 	DBNodeId []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
-	// The database engine version of the instance. Valid values:
+	// The current database engine version. Valid values:
 	//
-	// Valid values if you set Engine to MySQL: **5.5, 5.6, 5.7, and 8.0**
+	// MySQL: **5.5, 5.6, 5.7, 8.0**
 	//
 	// example:
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The type of the database node. Valid values:
+	// The database node type. Valid values:
 	//
-	// 	- **Master**: the primary node
+	// - **Master**: primary node
 	//
-	// 	- **Slave**: the secondary node
+	// - **Slave**: secondary node
 	//
 	// example:
 	//
@@ -125,13 +130,13 @@ type CreateOrderForDeleteDBNodesRequest struct {
 	//
 	// aliwood-1688-mobile-promotion
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query the most recent region list.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resources.
+	// The resource.
 	//
 	// example:
 	//

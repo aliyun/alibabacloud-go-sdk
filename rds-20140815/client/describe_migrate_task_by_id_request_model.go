@@ -24,15 +24,15 @@ type iDescribeMigrateTaskByIdRequest interface {
 }
 
 type DescribeMigrateTaskByIdRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	// The instance ID. You can call DescribeDBInstances to query the instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-bp11e1tzgxxxx4ox
+	// rm-bp11e1tzg****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+	// The ID of the backup migration task. You can call DescribeMigrateTasks to query the task ID.
 	//
 	// This parameter is required.
 	//
@@ -41,11 +41,11 @@ type DescribeMigrateTaskByIdRequest struct {
 	// 235943
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

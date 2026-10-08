@@ -70,87 +70,85 @@ type DescribeDBInstancesForCloneRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The connection mode of the instance. Valid values:
+	// The access mode of the instance. Valid values:
 	//
-	// 	- **Standard**: standard mode
+	// - **Standard**: standard access mode
 	//
-	// 	- **Safe**: database proxy mode
+	// - **Safe**: database proxy mode
 	//
-	// By default, this operation queries the instances that use any of the supported connection modes.
+	// By default, instances in all access modes are returned.
 	//
 	// example:
 	//
 	// Standard
 	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// The ID of the current instance.
+	// The current instance ID.
 	//
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxxxxx
 	CurrentInstanceId *string `json:"CurrentInstanceId,omitempty" xml:"CurrentInstanceId,omitempty"`
-	// The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
+	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
 	// example:
 	//
 	// mysql.n1.micro.1
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
+	// The instance status. For more information, see [Instance states](https://help.aliyun.com/document_detail/26315.html).
 	//
 	// example:
 	//
 	// Running
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The role of the instance that you want to query. Valid values:
+	// The instance type. Valid values:
 	//
-	// 	- **Primary**: primary instance
+	// - **Primary**: primary instance
 	//
-	// 	- **Readonly**: read-only instance
+	// - **Readonly**: read-only instance
 	//
-	// 	- **Guard**: disaster recovery instance
+	// - **Guard**: disaster recovery instance
 	//
-	// 	- **Temp**: temporary instance
+	// - **Temp**: temporary instance
 	//
-	// By default, this operation queries the instances of all roles.
+	// By default, instances of all types are returned.
 	//
 	// example:
 	//
 	// Primary
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The database engine of the instance. Valid values:
+	// The database engine. Valid values:
 	//
-	// 	- MySQL
+	// - MySQL
 	//
-	// 	- SQLServer
+	// - SQLServer
 	//
-	// 	- PostgreSQL
+	// - PostgreSQL
 	//
-	// 	- PPAS
+	// - MariaDB
 	//
-	// 	- MariaDB
-	//
-	// By default, this operation queries the instances that run any of the supported database engine types.
+	// > If you do not specify this parameter, instances of all database engines are returned.
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Specifies whether the instance expires. Valid values:
+	// Specifies whether the instance has expired. Valid values:
 	//
-	// 	- **True**: queries the instances that have expired.
+	// - **True**: The instance has expired.
 	//
-	// 	- **False**: does not query instances that have expired.
+	// - **False**: The instance has not expired.
 	//
 	// example:
 	//
@@ -158,9 +156,9 @@ type DescribeDBInstancesForCloneRequest struct {
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **Classic**
+	// - **Classic**: classic network
 	//
-	// 	- **VPC**
+	// - **VPC**: virtual private cloud (VPC)
 	//
 	// example:
 	//
@@ -168,9 +166,9 @@ type DescribeDBInstancesForCloneRequest struct {
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The type of the database node. Valid values:
 	//
-	// 	- **Master**: the primary node
+	// - **Master**: primary node
 	//
-	// 	- **Slave**: the secondary node
+	// - **Slave**: secondary node
 	//
 	// example:
 	//
@@ -178,13 +176,13 @@ type DescribeDBInstancesForCloneRequest struct {
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1 to 100**.
+	// The number of entries per page. Valid values: **1 to 100**.
 	//
 	// Default value: **30**.
 	//
@@ -194,17 +192,17 @@ type DescribeDBInstancesForCloneRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// 	- **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go
 	//
-	// 	- **Prepaid**: subscription
+	// - **Prepaid**: subscription
 	//
-	// By default, this operation queries the instances that use any of the supported billing methods.
+	// By default, instances of all billing methods are returned.
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -212,7 +210,7 @@ type DescribeDBInstancesForCloneRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -220,25 +218,25 @@ type DescribeDBInstancesForCloneRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The keyword that is used for the search. The keyword can be part of an instance ID or an instance description.
+	// The search keyword. You can perform a fuzzy search by instance ID or instance description.
 	//
 	// example:
 	//
 	// rm-uf6w
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-j6csw46bgrgkxxxxxxxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-j6cjvqms29yxxxxxxxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	//
 	// example:
 	//
