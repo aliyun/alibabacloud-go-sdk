@@ -435,6 +435,58 @@ func (client *Client) FindGuestTicketRecordWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// # MOS活动签到
+//
+// @param request - MosCheckInRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MosCheckInResponse
+func (client *Client) MosCheckInWithContext(ctx context.Context, request *MosCheckInRequest, runtime *dara.RuntimeOptions) (_result *MosCheckInResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ActivityId) {
+		body["ActivityId"] = request.ActivityId
+	}
+
+	if !dara.IsNil(request.ExtParam) {
+		body["ExtParam"] = request.ExtParam
+	}
+
+	if !dara.IsNil(request.QrCode) {
+		body["QrCode"] = request.QrCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MosCheckIn"),
+		Version:     dara.String("2021-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MosCheckInResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - QueryAllActivityInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
