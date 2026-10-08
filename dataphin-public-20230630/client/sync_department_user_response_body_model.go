@@ -24,13 +24,13 @@ type iSyncDepartmentUserResponseBody interface {
 }
 
 type SyncDepartmentUserResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The request error code. OK indicates a successful request.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The response result.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type SyncDepartmentUserResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned for the request.
+	// The request error message.
 	//
 	// example:
 	//

@@ -753,6 +753,66 @@ func (client *Client) BatchCreateKgRelationWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
+// 批量交接资产。
+//
+// @param tmpReq - BatchHandoverAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchHandoverAssetResponse
+func (client *Client) BatchHandoverAssetWithContext(ctx context.Context, tmpReq *BatchHandoverAssetRequest, runtime *dara.RuntimeOptions) (_result *BatchHandoverAssetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchHandoverAssetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.HandoverCommand) {
+		request.HandoverCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HandoverCommand, dara.String("HandoverCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HandoverCommandShrink) {
+		body["HandoverCommand"] = request.HandoverCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchHandoverAsset"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchHandoverAssetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks the connectivity of a compute source.
 //
 // @param tmpReq - CheckComputeSourceConnectivityRequest
@@ -967,6 +1027,70 @@ func (client *Client) CheckDataSourceConnectivityByIdWithContext(ctx context.Con
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckDataSourceConnectivityByIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 在指定调度资源组上检查数据源连通性
+//
+// Description:
+//
+// 在指定调度资源组上异步发起数据源连通性检查，立即返回检查任务ID（Data）；任务结果通过 GetCheckConnectivityJobByJobId 轮询。与 CheckDataSourceConnectivity 的区别：本接口的检查任务在客户指定的调度资源组上执行，适用于 Dataphin 服务端与目标数据源网络不通的场景。
+//
+// @param tmpReq - CheckDataSourceConnectivityOnResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDataSourceConnectivityOnResourceGroupResponse
+func (client *Client) CheckDataSourceConnectivityOnResourceGroupWithContext(ctx context.Context, tmpReq *CheckDataSourceConnectivityOnResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *CheckDataSourceConnectivityOnResourceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CheckDataSourceConnectivityOnResourceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CheckCommand) {
+		request.CheckCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckCommand, dara.String("CheckCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckCommandShrink) {
+		body["CheckCommand"] = request.CheckCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckDataSourceConnectivityOnResourceGroup"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckDataSourceConnectivityOnResourceGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1867,13 +1991,13 @@ func (client *Client) CreateDataSourceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a dataset in a specified project. Online version: v6.2.0.
+// Creates a new dataset in the specified project. Available since v6.2.0.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API operation creates a dataset in a specified project.
+// - This API creates a new dataset in the specified project.
 //
 // - `ProjectId` is a required parameter that specifies the ID of the project in which to create the dataset.
 //
@@ -1883,9 +2007,9 @@ func (client *Client) CreateDataSourceWithContext(ctx context.Context, tmpReq *C
 //
 // - `FileStorageConfig` and `MetadataStorageConfig` in `VersionConfig` can be configured as needed.
 //
-// - If you need a real-time meta table configuration, provide the `RealtimeMetaTableConfig` information.
+// - If you need real-time meta-table configuration, provide the `RealtimeMetaTableConfig` information.
 //
-// - Ensure that all required fields are correctly specified. Otherwise, the request failed.
+// - Make sure all required fields are correctly filled in. Otherwise, the request failed.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -2525,7 +2649,7 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, tmpReq *Cre
 //
 // Description:
 //
-// Queries the details of published APIs by appKey.
+// Queries the details of published APIs based on the appKey.
 //
 // @param tmpReq - CreateRowPermissionRequest
 //
@@ -7221,6 +7345,62 @@ func (client *Client) GetCatalogAssetDetailsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// 按任务ID查询数据源连通性检查任务
+//
+// Description:
+//
+// 按任务ID查询数据源连通性检查任务的最新状态与错误信息，用于轮询 CheckDataSourceConnectivityOnResourceGroup 返回的异步任务。任务不存在时 Data 为空。
+//
+// @param request - GetCheckConnectivityJobByJobIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCheckConnectivityJobByJobIdResponse
+func (client *Client) GetCheckConnectivityJobByJobIdWithContext(ctx context.Context, request *GetCheckConnectivityJobByJobIdRequest, runtime *dara.RuntimeOptions) (_result *GetCheckConnectivityJobByJobIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCheckConnectivityJobByJobId"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCheckConnectivityJobByJobIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of connectivity check tasks for a specified data source ID. This operation includes null value validation and tenant permission verification to prevent cross-tenant access.
 //
 // Release version: v5.5.0.
@@ -11487,6 +11667,74 @@ func (client *Client) GetServerVersionWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 获取集成源表的描述与元数据信息（表描述+字段列表）。支持项目/计算源表、数据源直查表、外部采集数据源三种来源；结果为实时查询；外部数据源需先完成元数据采集。
+//
+// @param tmpReq - GetSourceTableMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSourceTableMetaResponse
+func (client *Client) GetSourceTableMetaWithContext(ctx context.Context, tmpReq *GetSourceTableMetaRequest, runtime *dara.RuntimeOptions) (_result *GetSourceTableMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetSourceTableMetaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Query) {
+		request.QueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Query, dara.String("Query"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.QueryShrink) {
+		body["Query"] = request.QueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSourceTableMeta"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSourceTableMetaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the Spark client information of the cluster associated with a compute source.
 //
 // @param request - GetSparkLocalClientInfoRequest
@@ -12069,6 +12317,58 @@ func (client *Client) GetSupplementDagrunInstanceWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSupplementDagrunInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询表资产清单详情。
+//
+// @param request - GetTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableResponse
+func (client *Client) GetTableWithContext(ctx context.Context, request *GetTableRequest, runtime *dara.RuntimeOptions) (_result *GetTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.TableGuid) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTable"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13485,6 +13785,66 @@ func (client *Client) ListAuthorizedDataServiceApiDetailsWithContext(ctx context
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAuthorizedDataServiceApiDetailsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询离线计算任务列表，支持按任务名称模糊检索、按产出表名精确定位构建该表的任务并获取其文件ID
+//
+// @param tmpReq - ListBatchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBatchTasksResponse
+func (client *Client) ListBatchTasksWithContext(ctx context.Context, tmpReq *ListBatchTasksRequest, runtime *dara.RuntimeOptions) (_result *ListBatchTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListBatchTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BatchTaskQuery) {
+		request.BatchTaskQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BatchTaskQuery, dara.String("BatchTaskQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BatchTaskQueryShrink) {
+		body["BatchTaskQuery"] = request.BatchTaskQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBatchTasks"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBatchTasksResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15205,6 +15565,68 @@ func (client *Client) ListProjectMembersWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// 获取项目角色列表
+//
+// Description:
+//
+// 获取租户指定项目类型下的项目角色列表。返回角色列表中 roleType 字段标识角色类型：
+//
+// - BUILD_IN：内置角色
+//
+// - CUSTOM：自定义角色
+//
+// 请求参数 ProjectType 必填，可选值为：BASIC（基础模式项目）、DEV（开发环境项目）、PROD（生产环境项目）、TAG（标签平台项目）。
+//
+// @param request - ListProjectRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectRolesResponse
+func (client *Client) ListProjectRolesWithContext(ctx context.Context, request *ListProjectRolesRequest, runtime *dara.RuntimeOptions) (_result *ListProjectRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectType) {
+		query["ProjectType"] = request.ProjectType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProjectRoles"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProjectRolesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of projects.
 //
 // @param tmpReq - ListProjectsRequest
@@ -15927,6 +16349,66 @@ func (client *Client) ListRowPermissionByUserIdWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 查询租户下的调度模板列表
+//
+// @param tmpReq - ListScheduleTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScheduleTemplatesResponse
+func (client *Client) ListScheduleTemplatesWithContext(ctx context.Context, tmpReq *ListScheduleTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListScheduleTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListScheduleTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListScheduleTemplatesCommand) {
+		request.ListScheduleTemplatesCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListScheduleTemplatesCommand, dara.String("ListScheduleTemplatesCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListScheduleTemplatesCommandShrink) {
+		body["ListScheduleTemplatesCommand"] = request.ListScheduleTemplatesCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListScheduleTemplates"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListScheduleTemplatesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the data classification list by paging.
 //
 // @param tmpReq - ListSecurityClassifyRequest
@@ -16341,6 +16823,64 @@ func (client *Client) ListTenantMembersWithContext(ctx context.Context, tmpReq *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTenantMembersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取租户角色列表
+//
+// Description:
+//
+// 获取租户角色列表。返回角色列表中 roleType 字段标识角色类型：
+//
+// - BUILD_IN：内置角色
+//
+// - CUSTOM：自定义角色（即租户自定义创建的角色）
+//
+// 本接口无需额外业务入参，tenantId 由 POP 网关上下文自动注入。
+//
+// @param request - ListTenantRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTenantRolesResponse
+func (client *Client) ListTenantRolesWithContext(ctx context.Context, request *ListTenantRolesRequest, runtime *dara.RuntimeOptions) (_result *ListTenantRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTenantRoles"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTenantRolesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18025,6 +18565,74 @@ func (client *Client) SearchKgBySemanticWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// 启动增全量一体化实例。
+//
+// @param tmpReq - StartPipelineIntegratedTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartPipelineIntegratedTaskResponse
+func (client *Client) StartPipelineIntegratedTaskWithContext(ctx context.Context, tmpReq *StartPipelineIntegratedTaskRequest, runtime *dara.RuntimeOptions) (_result *StartPipelineIntegratedTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &StartPipelineIntegratedTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StartCommand) {
+		request.StartCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StartCommand, dara.String("StartCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.StartCommandShrink) {
+		body["StartCommand"] = request.StartCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartPipelineIntegratedTask"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartPipelineIntegratedTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops an ad hoc query task.
 //
 // @param request - StopAdHocTaskRequest
@@ -18071,6 +18679,74 @@ func (client *Client) StopAdHocTaskWithContext(ctx context.Context, request *Sto
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopAdHocTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量停止增全量一体化实例。
+//
+// @param tmpReq - StopPipelineIntegratedTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopPipelineIntegratedTaskResponse
+func (client *Client) StopPipelineIntegratedTaskWithContext(ctx context.Context, tmpReq *StopPipelineIntegratedTaskRequest, runtime *dara.RuntimeOptions) (_result *StopPipelineIntegratedTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &StopPipelineIntegratedTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StopCommand) {
+		request.StopCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StopCommand, dara.String("StopCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.StopCommandShrink) {
+		body["StopCommand"] = request.StopCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopPipelineIntegratedTask"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopPipelineIntegratedTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18514,6 +19190,18 @@ func (client *Client) SyncDepartmentWithContext(ctx context.Context, tmpReq *Syn
 // Summary:
 //
 // Synchronizes department member information.
+//
+// Description:
+//
+// 同步用户的部门映射关系。支持为指定用户设置部门，或通过传入空列表 departmentIdList 清除该用户已设置的全部部门。
+//
+// 使用说明：
+//
+// - departmentIdList 为 null（未传）：直接报错，防止调用方误清空；
+//
+// - departmentIdList 为空列表 []：显式清除该 sourceUserId 对应的全部部门映射；
+//
+// - departmentIdList 为非空列表：全量覆盖，先删除该用户全部旧部门映射，再插入新列表中的部门。
 //
 // @param tmpReq - SyncDepartmentUserRequest
 //

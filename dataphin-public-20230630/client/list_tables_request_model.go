@@ -81,8 +81,6 @@ func (s *ListTablesRequest) Validate() error {
 type ListTablesRequestListQuery struct {
 	// The asset catalog, such as the project name or business unit name.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// LD_test01_dev
@@ -93,6 +91,10 @@ type ListTablesRequestListQuery struct {
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 30012011
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -104,7 +106,8 @@ type ListTablesRequestListQuery struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SubTypes []*string `json:"SubTypes,omitempty" xml:"SubTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListTablesRequestListQuery) String() string {
@@ -123,12 +126,20 @@ func (s *ListTablesRequestListQuery) GetKeyword() *string {
 	return s.Keyword
 }
 
+func (s *ListTablesRequestListQuery) GetOwnerId() *string {
+	return s.OwnerId
+}
+
 func (s *ListTablesRequestListQuery) GetPageNo() *int32 {
 	return s.PageNo
 }
 
 func (s *ListTablesRequestListQuery) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListTablesRequestListQuery) GetSubTypes() []*string {
+	return s.SubTypes
 }
 
 func (s *ListTablesRequestListQuery) SetCatalog(v string) *ListTablesRequestListQuery {
@@ -141,6 +152,11 @@ func (s *ListTablesRequestListQuery) SetKeyword(v string) *ListTablesRequestList
 	return s
 }
 
+func (s *ListTablesRequestListQuery) SetOwnerId(v string) *ListTablesRequestListQuery {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ListTablesRequestListQuery) SetPageNo(v int32) *ListTablesRequestListQuery {
 	s.PageNo = &v
 	return s
@@ -148,6 +164,11 @@ func (s *ListTablesRequestListQuery) SetPageNo(v int32) *ListTablesRequestListQu
 
 func (s *ListTablesRequestListQuery) SetPageSize(v int32) *ListTablesRequestListQuery {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTablesRequestListQuery) SetSubTypes(v []*string) *ListTablesRequestListQuery {
+	s.SubTypes = v
 	return s
 }
 

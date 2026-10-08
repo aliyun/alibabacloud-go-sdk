@@ -126,12 +126,34 @@ func (s *GetBatchTaskInfoResponseBody) Validate() error {
 }
 
 type GetBatchTaskInfoResponseBodyTaskInfo struct {
+	// example:
+	//
+	// 7305621095333696
+	BaseScheduleTemplateId *int64 `json:"BaseScheduleTemplateId,omitempty" xml:"BaseScheduleTemplateId,omitempty"`
+	// example:
+	//
+	// 天级调度模板
+	BaseScheduleTemplateName *string `json:"BaseScheduleTemplateName,omitempty" xml:"BaseScheduleTemplateName,omitempty"`
 	// The task code.
 	//
 	// example:
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	ConditionScheduleEnable    *bool                                                             `json:"ConditionScheduleEnable,omitempty" xml:"ConditionScheduleEnable,omitempty"`
+	ConditionScheduleParamList []*GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList `json:"ConditionScheduleParamList,omitempty" xml:"ConditionScheduleParamList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7305621095333697
+	ConditionScheduleTemplateId *int64 `json:"ConditionScheduleTemplateId,omitempty" xml:"ConditionScheduleTemplateId,omitempty"`
+	// example:
+	//
+	// 条件调度模板
+	ConditionScheduleTemplateName *string                                                 `json:"ConditionScheduleTemplateName,omitempty" xml:"ConditionScheduleTemplateName,omitempty"`
+	ContextParamList              []*GetBatchTaskInfoResponseBodyTaskInfoContextParamList `json:"ContextParamList,omitempty" xml:"ContextParamList,omitempty" type:"Repeated"`
 	// The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
 	//
 	// example:
@@ -164,6 +186,18 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// erp
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
+	// example:
+	//
+	// /sql/protocolv1/o/xxx
+	DevHttpPath *string `json:"DevHttpPath,omitempty" xml:"DevHttpPath,omitempty"`
+	// example:
+	//
+	// rg-def456
+	DevResourceGroupId *string `json:"DevResourceGroupId,omitempty" xml:"DevResourceGroupId,omitempty"`
+	// example:
+	//
+	// 默认资源组
+	DevResourceGroupName *string `json:"DevResourceGroupName,omitempty" xml:"DevResourceGroupName,omitempty"`
 	// The user ID of the development owner.
 	//
 	// example:
@@ -278,6 +312,10 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// /sql/protocolv1/o/yyy
+	ProdHttpPath *string `json:"ProdHttpPath,omitempty" xml:"ProdHttpPath,omitempty"`
 	// The project ID.
 	//
 	// example:
@@ -294,6 +332,14 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// Indicates whether the node can be rerun.
 	Rerunable *bool `json:"Rerunable,omitempty" xml:"Rerunable,omitempty"`
+	// example:
+	//
+	// rg-abc123
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 默认资源组
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The scheduling period. Valid values:
 	//
 	// - YEARLY
@@ -335,7 +381,8 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	// example:
 	//
 	// TestTask1
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskTagList []*string `json:"TaskTagList,omitempty" xml:"TaskTagList,omitempty" type:"Repeated"`
 	// The task type. For more information, refer to the API operation for creating a batch task.
 	//
 	// example:
@@ -344,6 +391,14 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The upstream dependencies.
 	UpStreamList []*GetBatchTaskInfoResponseBodyTaskInfoUpStreamList `json:"UpStreamList,omitempty" xml:"UpStreamList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9999-12-31
+	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
+	// example:
+	//
+	// 2026-01-01
+	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
 }
 
 func (s GetBatchTaskInfoResponseBodyTaskInfo) String() string {
@@ -354,8 +409,36 @@ func (s GetBatchTaskInfoResponseBodyTaskInfo) GoString() string {
 	return s.String()
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetBaseScheduleTemplateId() *int64 {
+	return s.BaseScheduleTemplateId
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetBaseScheduleTemplateName() *string {
+	return s.BaseScheduleTemplateName
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetCode() *string {
 	return s.Code
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetConditionScheduleEnable() *bool {
+	return s.ConditionScheduleEnable
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetConditionScheduleParamList() []*GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	return s.ConditionScheduleParamList
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetConditionScheduleTemplateId() *int64 {
+	return s.ConditionScheduleTemplateId
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetConditionScheduleTemplateName() *string {
+	return s.ConditionScheduleTemplateName
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetContextParamList() []*GetBatchTaskInfoResponseBodyTaskInfoContextParamList {
+	return s.ContextParamList
 }
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetCronExpression() *string {
@@ -380,6 +463,18 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDataSourceId() *string {
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDataSourceSchema() *string {
 	return s.DataSourceSchema
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevHttpPath() *string {
+	return s.DevHttpPath
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevResourceGroupId() *string {
+	return s.DevResourceGroupId
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevResourceGroupName() *string {
+	return s.DevResourceGroupName
 }
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevelopOwnerId() *string {
@@ -478,6 +573,10 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetPriority() *int32 {
 	return s.Priority
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetProdHttpPath() *string {
+	return s.ProdHttpPath
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -492,6 +591,14 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetRemark() *string {
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetRerunable() *bool {
 	return s.Rerunable
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetResourceGroupName() *string {
+	return s.ResourceGroupName
 }
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetSchedulePeriod() *string {
@@ -510,6 +617,10 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetStatus() *string {
 	return s.Status
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetTaskTagList() []*string {
+	return s.TaskTagList
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetTaskType() *int32 {
 	return s.TaskType
 }
@@ -518,8 +629,51 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetUpStreamList() []*GetBatchTask
 	return s.UpStreamList
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetValidEndDate() *string {
+	return s.ValidEndDate
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetValidStartDate() *string {
+	return s.ValidStartDate
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetBaseScheduleTemplateId(v int64) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.BaseScheduleTemplateId = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetBaseScheduleTemplateName(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.BaseScheduleTemplateName = &v
+	return s
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetCode(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
 	s.Code = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetConditionScheduleEnable(v bool) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ConditionScheduleEnable = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetConditionScheduleParamList(v []*GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ConditionScheduleParamList = v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetConditionScheduleTemplateId(v int64) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ConditionScheduleTemplateId = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetConditionScheduleTemplateName(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ConditionScheduleTemplateName = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetContextParamList(v []*GetBatchTaskInfoResponseBodyTaskInfoContextParamList) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ContextParamList = v
 	return s
 }
 
@@ -550,6 +704,21 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDataSourceId(v string) *GetBat
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDataSourceSchema(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
 	s.DataSourceSchema = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDevHttpPath(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.DevHttpPath = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDevResourceGroupId(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.DevResourceGroupId = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDevResourceGroupName(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.DevResourceGroupName = &v
 	return s
 }
 
@@ -673,6 +842,11 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetPriority(v int32) *GetBatchTas
 	return s
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetProdHttpPath(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ProdHttpPath = &v
+	return s
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetProjectId(v int64) *GetBatchTaskInfoResponseBodyTaskInfo {
 	s.ProjectId = &v
 	return s
@@ -690,6 +864,16 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetRemark(v string) *GetBatchTask
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetRerunable(v bool) *GetBatchTaskInfoResponseBodyTaskInfo {
 	s.Rerunable = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetResourceGroupId(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetResourceGroupName(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ResourceGroupName = &v
 	return s
 }
 
@@ -713,6 +897,11 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetStatus(v string) *GetBatchTask
 	return s
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetTaskTagList(v []*string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.TaskTagList = v
+	return s
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetTaskType(v int32) *GetBatchTaskInfoResponseBodyTaskInfo {
 	s.TaskType = &v
 	return s
@@ -723,7 +912,35 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetUpStreamList(v []*GetBatchTask
 	return s
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetValidEndDate(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ValidEndDate = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetValidStartDate(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.ValidStartDate = &v
+	return s
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) Validate() error {
+	if s.ConditionScheduleParamList != nil {
+		for _, item := range s.ConditionScheduleParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ContextParamList != nil {
+		for _, item := range s.ContextParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.CustomScheduleConfig != nil {
 		if err := s.CustomScheduleConfig.Validate(); err != nil {
 			return err
@@ -753,6 +970,186 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 失败重跑
+	ConditionName *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0 30 	- 	- 	- ?
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	FollowScheduleParam *bool `json:"FollowScheduleParam,omitempty" xml:"FollowScheduleParam,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"type":"EXPRESSION_GROUP","operator":"or"}
+	ScheduleConditionJson *string `json:"ScheduleConditionJson,omitempty" xml:"ScheduleConditionJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 00:30
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+}
+
+func (s GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GetConditionName() *string {
+	return s.ConditionName
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GetCronExpression() *string {
+	return s.CronExpression
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GetFollowScheduleParam() *bool {
+	return s.FollowScheduleParam
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GetNodeStatus() *int32 {
+	return s.NodeStatus
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GetScheduleConditionJson() *string {
+	return s.ScheduleConditionJson
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) GetScheduleTime() *string {
+	return s.ScheduleTime
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) SetConditionName(v string) *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	s.ConditionName = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) SetCronExpression(v string) *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) SetEnable(v bool) *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) SetFollowScheduleParam(v bool) *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	s.FollowScheduleParam = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) SetNodeStatus(v int32) *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) SetScheduleConditionJson(v string) *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	s.ScheduleConditionJson = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) SetScheduleTime(v string) *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetBatchTaskInfoResponseBodyTaskInfoContextParamList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 输出条数
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cnt
+	ParamKey *string `json:"ParamKey,omitempty" xml:"ParamKey,omitempty"`
+}
+
+func (s GetBatchTaskInfoResponseBodyTaskInfoContextParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetBatchTaskInfoResponseBodyTaskInfoContextParamList) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoContextParamList) GetDefaultValue() *string {
+	return s.DefaultValue
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoContextParamList) GetDesc() *string {
+	return s.Desc
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoContextParamList) GetParamKey() *string {
+	return s.ParamKey
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoContextParamList) SetDefaultValue(v string) *GetBatchTaskInfoResponseBodyTaskInfoContextParamList {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoContextParamList) SetDesc(v string) *GetBatchTaskInfoResponseBodyTaskInfoContextParamList {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoContextParamList) SetParamKey(v string) *GetBatchTaskInfoResponseBodyTaskInfoContextParamList {
+	s.ParamKey = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfoContextParamList) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig struct {

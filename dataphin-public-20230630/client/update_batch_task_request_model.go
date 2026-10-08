@@ -83,6 +83,10 @@ func (s *UpdateBatchTaskRequest) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommand struct {
+	// example:
+	//
+	// 7305621095333696
+	BaseScheduleTemplateId *int64 `json:"BaseScheduleTemplateId,omitempty" xml:"BaseScheduleTemplateId,omitempty"`
 	// The code of the node.
 	//
 	// This parameter is required.
@@ -91,6 +95,16 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	ConditionScheduleEnable    *bool                                                            `json:"ConditionScheduleEnable,omitempty" xml:"ConditionScheduleEnable,omitempty"`
+	ConditionScheduleParamList []*UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList `json:"ConditionScheduleParamList,omitempty" xml:"ConditionScheduleParamList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7305621095333697
+	ConditionScheduleTemplateId *int64                                                 `json:"ConditionScheduleTemplateId,omitempty" xml:"ConditionScheduleTemplateId,omitempty"`
+	ContextParamList            []*UpdateBatchTaskRequestUpdateCommandContextParamList `json:"ContextParamList,omitempty" xml:"ContextParamList,omitempty" type:"Repeated"`
 	// The cron expression for automatic scheduling. Refer to Linux cron expressions.
 	//
 	// example:
@@ -117,6 +131,14 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// erp
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
+	// example:
+	//
+	// /sql/protocolv1/o/xxx
+	DevHttpPath *string `json:"DevHttpPath,omitempty" xml:"DevHttpPath,omitempty"`
+	// example:
+	//
+	// rg-def456
+	DevResourceGroupId *string `json:"DevResourceGroupId,omitempty" xml:"DevResourceGroupId,omitempty"`
 	// The list of development owner IDs.
 	DevelopOwnerIdList []*string `json:"DevelopOwnerIdList,omitempty" xml:"DevelopOwnerIdList,omitempty" type:"Repeated"`
 	// The execution engine for the node, such as for Python nodes. Valid values:
@@ -166,7 +188,8 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	// example:
 	//
 	// 1
-	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	NodeStatus     *int32    `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	OpsOwnerIdList []*string `json:"OpsOwnerIdList,omitempty" xml:"OpsOwnerIdList,omitempty" type:"Repeated"`
 	// The list of custom parameters.
 	ParamList []*UpdateBatchTaskRequestUpdateCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
 	// The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
@@ -175,6 +198,10 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// /sql/protocolv1/o/yyy
+	ProdHttpPath *string `json:"ProdHttpPath,omitempty" xml:"ProdHttpPath,omitempty"`
 	// The ID of the project to which the node belongs.
 	//
 	// This parameter is required.
@@ -185,6 +212,10 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The third-party Python packages required by the node.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-abc123
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule period. Valid values:
 	//
 	// - YEARLY
@@ -205,6 +236,7 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
 	// The Spark client information.
 	SparkClientInfo *UpdateBatchTaskRequestUpdateCommandSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
+	TaskTagList     []*string                                           `json:"TaskTagList,omitempty" xml:"TaskTagList,omitempty" type:"Repeated"`
 	// The node type. Valid values:
 	//
 	// - 1: Hive_SQL.
@@ -223,6 +255,14 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The upstream dependencies.
 	UpStreamList []*UpdateBatchTaskRequestUpdateCommandUpStreamList `json:"UpStreamList,omitempty" xml:"UpStreamList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9999-12-31
+	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
+	// example:
+	//
+	// 2026-01-01
+	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
 }
 
 func (s UpdateBatchTaskRequestUpdateCommand) String() string {
@@ -233,8 +273,28 @@ func (s UpdateBatchTaskRequestUpdateCommand) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) GetBaseScheduleTemplateId() *int64 {
+	return s.BaseScheduleTemplateId
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) GetCode() *string {
 	return s.Code
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetConditionScheduleEnable() *bool {
+	return s.ConditionScheduleEnable
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetConditionScheduleParamList() []*UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	return s.ConditionScheduleParamList
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetConditionScheduleTemplateId() *int64 {
+	return s.ConditionScheduleTemplateId
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetContextParamList() []*UpdateBatchTaskRequestUpdateCommandContextParamList {
+	return s.ContextParamList
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetCronExpression() *string {
@@ -255,6 +315,14 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetDataSourceId() *string {
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetDataSourceSchema() *string {
 	return s.DataSourceSchema
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetDevHttpPath() *string {
+	return s.DevHttpPath
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetDevResourceGroupId() *string {
+	return s.DevResourceGroupId
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetDevelopOwnerIdList() []*string {
@@ -285,12 +353,20 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetNodeStatus() *int32 {
 	return s.NodeStatus
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) GetOpsOwnerIdList() []*string {
+	return s.OpsOwnerIdList
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) GetParamList() []*UpdateBatchTaskRequestUpdateCommandParamList {
 	return s.ParamList
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetPriority() *int32 {
 	return s.Priority
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetProdHttpPath() *string {
+	return s.ProdHttpPath
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetProjectId() *int64 {
@@ -301,12 +377,20 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetPythonModuleList() []*string {
 	return s.PythonModuleList
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) GetSchedulePeriod() *string {
 	return s.SchedulePeriod
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetSparkClientInfo() *UpdateBatchTaskRequestUpdateCommandSparkClientInfo {
 	return s.SparkClientInfo
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetTaskTagList() []*string {
+	return s.TaskTagList
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetTaskType() *int32 {
@@ -317,8 +401,41 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetUpStreamList() []*UpdateBatchTa
 	return s.UpStreamList
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) GetValidEndDate() *string {
+	return s.ValidEndDate
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetValidStartDate() *string {
+	return s.ValidStartDate
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetBaseScheduleTemplateId(v int64) *UpdateBatchTaskRequestUpdateCommand {
+	s.BaseScheduleTemplateId = &v
+	return s
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) SetCode(v string) *UpdateBatchTaskRequestUpdateCommand {
 	s.Code = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetConditionScheduleEnable(v bool) *UpdateBatchTaskRequestUpdateCommand {
+	s.ConditionScheduleEnable = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetConditionScheduleParamList(v []*UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) *UpdateBatchTaskRequestUpdateCommand {
+	s.ConditionScheduleParamList = v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetConditionScheduleTemplateId(v int64) *UpdateBatchTaskRequestUpdateCommand {
+	s.ConditionScheduleTemplateId = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetContextParamList(v []*UpdateBatchTaskRequestUpdateCommandContextParamList) *UpdateBatchTaskRequestUpdateCommand {
+	s.ContextParamList = v
 	return s
 }
 
@@ -344,6 +461,16 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetDataSourceId(v string) *UpdateB
 
 func (s *UpdateBatchTaskRequestUpdateCommand) SetDataSourceSchema(v string) *UpdateBatchTaskRequestUpdateCommand {
 	s.DataSourceSchema = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetDevHttpPath(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.DevHttpPath = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetDevResourceGroupId(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.DevResourceGroupId = &v
 	return s
 }
 
@@ -382,6 +509,11 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetNodeStatus(v int32) *UpdateBatc
 	return s
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) SetOpsOwnerIdList(v []*string) *UpdateBatchTaskRequestUpdateCommand {
+	s.OpsOwnerIdList = v
+	return s
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) SetParamList(v []*UpdateBatchTaskRequestUpdateCommandParamList) *UpdateBatchTaskRequestUpdateCommand {
 	s.ParamList = v
 	return s
@@ -389,6 +521,11 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetParamList(v []*UpdateBatchTaskR
 
 func (s *UpdateBatchTaskRequestUpdateCommand) SetPriority(v int32) *UpdateBatchTaskRequestUpdateCommand {
 	s.Priority = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetProdHttpPath(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.ProdHttpPath = &v
 	return s
 }
 
@@ -402,6 +539,11 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetPythonModuleList(v []*string) *
 	return s
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) SetResourceGroupId(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) SetSchedulePeriod(v string) *UpdateBatchTaskRequestUpdateCommand {
 	s.SchedulePeriod = &v
 	return s
@@ -409,6 +551,11 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetSchedulePeriod(v string) *Updat
 
 func (s *UpdateBatchTaskRequestUpdateCommand) SetSparkClientInfo(v *UpdateBatchTaskRequestUpdateCommandSparkClientInfo) *UpdateBatchTaskRequestUpdateCommand {
 	s.SparkClientInfo = v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetTaskTagList(v []*string) *UpdateBatchTaskRequestUpdateCommand {
+	s.TaskTagList = v
 	return s
 }
 
@@ -422,7 +569,35 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetUpStreamList(v []*UpdateBatchTa
 	return s
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) SetValidEndDate(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.ValidEndDate = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetValidStartDate(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.ValidStartDate = &v
+	return s
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) Validate() error {
+	if s.ConditionScheduleParamList != nil {
+		for _, item := range s.ConditionScheduleParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ContextParamList != nil {
+		for _, item := range s.ContextParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.CustomScheduleConfig != nil {
 		if err := s.CustomScheduleConfig.Validate(); err != nil {
 			return err
@@ -452,6 +627,166 @@ func (s *UpdateBatchTaskRequestUpdateCommand) Validate() error {
 		}
 	}
 	return nil
+}
+
+type UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList struct {
+	// example:
+	//
+	// condition1
+	ConditionName *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
+	// example:
+	//
+	// 0 0 1 	- 	- ?
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// true
+	FollowScheduleParam *bool `json:"FollowScheduleParam,omitempty" xml:"FollowScheduleParam,omitempty"`
+	// example:
+	//
+	// 1
+	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// example:
+	//
+	// {"type":"EXPRESSION","operator":"or"}
+	ScheduleConditionJson *string `json:"ScheduleConditionJson,omitempty" xml:"ScheduleConditionJson,omitempty"`
+	// example:
+	//
+	// 01:00
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GetConditionName() *string {
+	return s.ConditionName
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GetCronExpression() *string {
+	return s.CronExpression
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GetFollowScheduleParam() *bool {
+	return s.FollowScheduleParam
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GetNodeStatus() *int32 {
+	return s.NodeStatus
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GetScheduleConditionJson() *string {
+	return s.ScheduleConditionJson
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) GetScheduleTime() *string {
+	return s.ScheduleTime
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) SetConditionName(v string) *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	s.ConditionName = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) SetCronExpression(v string) *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) SetEnable(v bool) *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) SetFollowScheduleParam(v bool) *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	s.FollowScheduleParam = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) SetNodeStatus(v int32) *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) SetScheduleConditionJson(v string) *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	s.ScheduleConditionJson = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) SetScheduleTime(v string) *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateBatchTaskRequestUpdateCommandContextParamList struct {
+	// example:
+	//
+	// 1
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// 测试参数
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// example:
+	//
+	// param1
+	ParamKey *string `json:"ParamKey,omitempty" xml:"ParamKey,omitempty"`
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandContextParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandContextParamList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandContextParamList) GetDefaultValue() *string {
+	return s.DefaultValue
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandContextParamList) GetDesc() *string {
+	return s.Desc
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandContextParamList) GetParamKey() *string {
+	return s.ParamKey
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandContextParamList) SetDefaultValue(v string) *UpdateBatchTaskRequestUpdateCommandContextParamList {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandContextParamList) SetDesc(v string) *UpdateBatchTaskRequestUpdateCommandContextParamList {
+	s.Desc = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandContextParamList) SetParamKey(v string) *UpdateBatchTaskRequestUpdateCommandContextParamList {
+	s.ParamKey = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandContextParamList) Validate() error {
+	return dara.Validate(s)
 }
 
 type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
