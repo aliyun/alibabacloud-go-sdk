@@ -25,12 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"eu-central-1":          dara.String("governance.eu-central-1.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("governance.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("governance.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("governance.ap-southeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -215,6 +209,68 @@ func (client *Client) CreateAccountFactoryBaseline(request *CreateAccountFactory
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateAccountFactoryBaselineResponse{}
 	_body, _err := client.CreateAccountFactoryBaselineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables and unsubscribes from Cloud Governance Center.
+//
+// @param request - DecommissionGovernanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DecommissionGovernanceResponse
+func (client *Client) DecommissionGovernanceWithOptions(request *DecommissionGovernanceRequest, runtime *dara.RuntimeOptions) (_result *DecommissionGovernanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DecommissionGovernance"),
+		Version:     dara.String("2021-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DecommissionGovernanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables and unsubscribes from Cloud Governance Center.
+//
+// @param request - DecommissionGovernanceRequest
+//
+// @return DecommissionGovernanceResponse
+func (client *Client) DecommissionGovernance(request *DecommissionGovernanceRequest) (_result *DecommissionGovernanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DecommissionGovernanceResponse{}
+	_body, _err := client.DecommissionGovernanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1191,6 +1247,68 @@ func (client *Client) ListEvaluationScoreHistory(request *ListEvaluationScoreHis
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListEvaluationScoreHistoryResponse{}
 	_body, _err := client.ListEvaluationScoreHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Activates Cloud Governance Center.
+//
+// @param request - OpenGovernanceServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenGovernanceServiceResponse
+func (client *Client) OpenGovernanceServiceWithOptions(request *OpenGovernanceServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenGovernanceServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenGovernanceService"),
+		Version:     dara.String("2021-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenGovernanceServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Activates Cloud Governance Center.
+//
+// @param request - OpenGovernanceServiceRequest
+//
+// @return OpenGovernanceServiceResponse
+func (client *Client) OpenGovernanceService(request *OpenGovernanceServiceRequest) (_result *OpenGovernanceServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OpenGovernanceServiceResponse{}
+	_body, _err := client.OpenGovernanceServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

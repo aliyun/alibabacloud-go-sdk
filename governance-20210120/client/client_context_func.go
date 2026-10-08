@@ -127,6 +127,50 @@ func (client *Client) CreateAccountFactoryBaselineWithContext(ctx context.Contex
 
 // Summary:
 //
+// Disables and unsubscribes from Cloud Governance Center.
+//
+// @param request - DecommissionGovernanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DecommissionGovernanceResponse
+func (client *Client) DecommissionGovernanceWithContext(ctx context.Context, request *DecommissionGovernanceRequest, runtime *dara.RuntimeOptions) (_result *DecommissionGovernanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DecommissionGovernance"),
+		Version:     dara.String("2021-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DecommissionGovernanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an account factory baseline.
 //
 // @param request - DeleteAccountFactoryBaselineRequest
@@ -863,6 +907,50 @@ func (client *Client) ListEvaluationScoreHistoryWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEvaluationScoreHistoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Activates Cloud Governance Center.
+//
+// @param request - OpenGovernanceServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenGovernanceServiceResponse
+func (client *Client) OpenGovernanceServiceWithContext(ctx context.Context, request *OpenGovernanceServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenGovernanceServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenGovernanceService"),
+		Version:     dara.String("2021-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenGovernanceServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
