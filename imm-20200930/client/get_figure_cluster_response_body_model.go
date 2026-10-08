@@ -16,9 +16,9 @@ type iGetFigureClusterResponseBody interface {
 }
 
 type GetFigureClusterResponseBody struct {
-	// The information about the face cluster.
+	// The detailed information of the clustering group.
 	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

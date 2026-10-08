@@ -22,15 +22,15 @@ type iSimpleQueryResponseBody interface {
 }
 
 type SimpleQueryResponseBody struct {
-	// The aggregations. This parameter is returned only when the value of the Aggregations request parameter is not empty.
+	// The list of aggregation field information. This parameter is returned only when Aggregations in the request is not empty.
 	Aggregations []*SimpleQueryResponseBodyAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
-	// The files. This parameter is returned only when the value of the Aggregations request parameter is empty.
+	// The list of file information. This parameter is returned only when Aggregations in the request is empty.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+	// The token used for pagination when the total number of files exceeds the value of MaxResults.
 	//
-	// It can be used in the next request to retrieve a new page of results.
+	// When you list file information next time, set NextToken to this value to return the remaining results.
 	//
-	// If NextToken is empty, no next page exists.
+	// This parameter has a value only when not all files are returned.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type SimpleQueryResponseBody struct {
 	//
 	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of total hits.
+	// The number of matched records.
 	//
 	// example:
 	//
@@ -128,21 +128,21 @@ func (s *SimpleQueryResponseBody) Validate() error {
 }
 
 type SimpleQueryResponseBodyAggregations struct {
-	// The name of the field.
+	// The name of the aggregation field.
 	//
 	// example:
 	//
 	// Size
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The grouped aggregations. This parameter is returned only when the group operator is specified in the Aggregations request parameter.
+	// The list of grouping and aggregation results. This parameter is returned only when an Operation of the group type exists in Aggregations of the request.
 	Groups []*SimpleQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The operator.
+	// The aggregation operation for the aggregation field.
 	//
 	// example:
 	//
 	// sum
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The statistical result.
+	// The statistical result of the aggregation.
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ func (s *SimpleQueryResponseBodyAggregations) Validate() error {
 }
 
 type SimpleQueryResponseBodyAggregationsGroups struct {
-	// The number of results in the grouped aggregation.
+	// The total count of the grouping and aggregation.
 	//
 	// example:
 	//
 	// 5
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The value for the grouped aggregation.
+	// The value of the grouping and aggregation.
 	//
 	// example:
 	//

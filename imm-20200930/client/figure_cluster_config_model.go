@@ -20,13 +20,17 @@ type iFigureClusterConfig interface {
 }
 
 type FigureClusterConfig struct {
-	// Whether to automatically group similar figures into clusters.
+	// Specifies whether to allow IMM to perform classification tasks on files in the dataset. Default value: False.
 	AutoClustering *bool `json:"AutoClustering,omitempty" xml:"AutoClustering,omitempty"`
-	// Whether to automatically generate metadata for each cluster, such as a representative cover image.
+	// Indicates whether IMM is allowed to perform automatic creation of new groups. Default value: False.
 	AutoGenerate *bool `json:"AutoGenerate,omitempty" xml:"AutoGenerate,omitempty"`
-	// An array of strings specifying the clustering strategies to use.
+	// The features supported by figure clustering.
 	EnabledFeatures []*string `json:"EnabledFeatures,omitempty" xml:"EnabledFeatures,omitempty" type:"Repeated"`
-	// The minimum number of figures required to form a cluster.
+	// The minimum threshold for the number of entities when automatic generation of new groups is allowed. Default value: 3.
+	//
+	// example:
+	//
+	// 3
 	MinEntityCount *int64 `json:"MinEntityCount,omitempty" xml:"MinEntityCount,omitempty"`
 }
 

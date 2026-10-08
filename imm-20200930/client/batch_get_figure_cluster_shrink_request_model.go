@@ -26,7 +26,7 @@ type BatchGetFigureClusterShrinkRequest struct {
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The cluster IDs.
+	// The array of group object IDs.
 	//
 	// This parameter is required.
 	ObjectIdsShrink *string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty"`

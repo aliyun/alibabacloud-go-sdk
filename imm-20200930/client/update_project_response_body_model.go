@@ -16,7 +16,7 @@ type iUpdateProjectResponseBody interface {
 }
 
 type UpdateProjectResponseBody struct {
-	// The project information. Click Project for details.
+	// The project information. For more information, see Project.
 	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The request ID.
 	//

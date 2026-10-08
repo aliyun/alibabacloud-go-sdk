@@ -19,7 +19,8 @@ type iDatasetConfig interface {
 
 type DatasetConfig struct {
 	// The content awareness configuration.
-	Insights     *InsightsConfig     `json:"Insights,omitempty" xml:"Insights,omitempty"`
+	Insights *InsightsConfig `json:"Insights,omitempty" xml:"Insights,omitempty"`
+	// The reverse image search configuration.
 	ReverseImage *ReverseImageConfig `json:"ReverseImage,omitempty" xml:"ReverseImage,omitempty"`
 	// The intelligent clustering configuration.
 	SmartCluster *SmartClusterConfig `json:"SmartCluster,omitempty" xml:"SmartCluster,omitempty"`

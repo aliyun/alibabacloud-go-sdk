@@ -34,7 +34,7 @@ type iCreateHighlightTaskRequest interface {
 }
 
 type CreateHighlightTaskRequest struct {
-	// The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**
+	// The chained authorization configuration. **Leave this parameter empty unless otherwise required.**
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The editing configuration.
 	Edit *CreateHighlightTaskRequestEdit `json:"Edit,omitempty" xml:"Edit,omitempty" type:"Struct"`
@@ -42,21 +42,23 @@ type CreateHighlightTaskRequest struct {
 	Highlight *CreateHighlightTaskRequestHighlight `json:"Highlight,omitempty" xml:"Highlight,omitempty" type:"Struct"`
 	// The highlight recognition mode. Valid values:
 	//
-	// - Scene: scene and frame recognition.
+	// - Scene: scene and frame recognition
 	//
-	// - Average (default): average slice recognition.
+	// - Average: average clip recognition
+	//
+	// Default value: Average.
 	//
 	// example:
 	//
 	// Average
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The message notification configuration. For more information, click Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://www.alibabacloud.com/help/en/imm/developer-reference/asynchronous-notification-message-examples).
+	// The message notification configuration. For more information, see Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://www.alibabacloud.com/help/en/imm/developer-reference/asynchronous-notification-message-examples).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The output configuration.
 	//
 	// This parameter is required.
 	Output *CreateHighlightTaskRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// The project name.
+	// The name of the project.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +66,11 @@ type CreateHighlightTaskRequest struct {
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The list of media resources to process.
-	//
-	// A maximum of 10 videos are supported.
+	// The list of media resources to be processed. You can specify up to 10 videos.
 	//
 	// This parameter is required.
 	Sources []*CreateHighlightTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	// The custom tags used to search for and filter asynchronous tasks.
+	// The custom tags used to search and filter asynchronous tasks.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type CreateHighlightTaskRequest struct {
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The processing type. Valid values:
 	//
-	// - Retrieval: highlight extraction.
+	// - Retrieval: highlight extraction
 	//
-	// - Concat: video composition.
+	// - Concat: video composition
 	//
-	// - Compose: one-click video production.
+	// - Compose: one-click video creation
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateHighlightTaskRequest struct {
 	//
 	// Retrieval
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The custom information, which is returned in asynchronous message notifications.
+	// The custom user data, which is returned in asynchronous message notifications.
 	//
 	// example:
 	//
@@ -244,25 +244,25 @@ func (s *CreateHighlightTaskRequest) Validate() error {
 }
 
 type CreateHighlightTaskRequestEdit struct {
-	// The background music mode. Default value: Closed. Valid values:
+	// The background music mode. Valid values:
 	//
-	// - Random: custom background music, randomly selected based on weight.
+	// - Random: custom background music, randomly selected based on weights
 	//
-	// - Sequential: custom background music, applied in order.
+	// - Sequential: custom background music, applied in sequence
 	//
-	// - Closed: no background music.
+	// - Closed: no background music
+	//
+	// Default value: Closed.
 	//
 	// example:
 	//
 	// Closed
 	BackgroundMusicMode *string `json:"BackgroundMusicMode,omitempty" xml:"BackgroundMusicMode,omitempty"`
-	// The background music list. This parameter takes effect only when BackgroundMusicMode is set to Random or Sequential.
-	//
-	// **The maximum number is 1.**
+	// The background music. This parameter is valid only when BackgroundMusicMode is set to Random or Sequential. **The current maximum number of background music tracks is 1.**
 	BackgroundMusics []*CreateHighlightTaskRequestEditBackgroundMusics `json:"BackgroundMusics,omitempty" xml:"BackgroundMusics,omitempty" type:"Repeated"`
 	// The editing mode. Valid values:
 	//
-	// - Sequential: sequential mode.
+	// - Sequential: sequential mode
 	//
 	// This parameter is required.
 	//
@@ -270,43 +270,41 @@ type CreateHighlightTaskRequestEdit struct {
 	//
 	// Sequential
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The transition mode. Default value: Closed. Valid values:
+	// The transition mode. Valid values:
 	//
-	// - Auto: automatic transition.
+	// - Auto: automatic transition
 	//
-	// - Random: custom transition, randomly selected based on weight.
+	// - Random: custom transition, randomly selected based on weights
 	//
-	// - Sequential: custom transition, applied in order.
+	// - Sequential: custom transition, applied in sequence
 	//
-	// - Closed: no transition.
+	// - Closed: no transition
+	//
+	// Default value: Closed.
 	//
 	// example:
 	//
 	// Closed
 	TransitionMode *string `json:"TransitionMode,omitempty" xml:"TransitionMode,omitempty"`
-	// The transition effects.
-	//
-	// This parameter takes effect only when TransitionMode is set to Random or Sequential.
-	//
-	// A maximum of 10 transitions are supported.
+	// The transition effects. This parameter is valid only when TransitionMode is set to Random or Sequential. You can specify up to 10 transition effects.
 	Transitions []*CreateHighlightTaskRequestEditTransitions `json:"Transitions,omitempty" xml:"Transitions,omitempty" type:"Repeated"`
-	// The effect mode. Default value: Closed. Valid values:
+	// The visual effect mode. Valid values:
 	//
-	// - Auto: automatic effect.
+	// - Auto: automatic visual effect
 	//
-	// - Random: custom effect, randomly selected based on weight.
+	// - Random: custom visual effect, randomly selected based on weights
 	//
-	// - Sequential: custom effect, applied in order.
+	// - Sequential: custom visual effect, applied in sequence
 	//
-	// - Closed: no effect.
+	// - Closed: no visual effect
+	//
+	// Default value: Closed.
 	//
 	// example:
 	//
 	// Closed
 	VfxEffectMode *string `json:"VfxEffectMode,omitempty" xml:"VfxEffectMode,omitempty"`
-	// The visual effects. This parameter takes effect only when VfxEffectMode is set to Random or Sequential.
-	//
-	// A maximum of 10 effects are supported.
+	// The visual effects. This parameter is valid only when VfxEffectMode is set to Random or Sequential. You can specify up to 10 visual effects.
 	VfxEffects []*CreateHighlightTaskRequestEditVfxEffects `json:"VfxEffects,omitempty" xml:"VfxEffects,omitempty" type:"Repeated"`
 }
 
@@ -413,7 +411,7 @@ func (s *CreateHighlightTaskRequestEdit) Validate() error {
 }
 
 type CreateHighlightTaskRequestEditBackgroundMusics struct {
-	// The URI of the background music (OSS URI). Only audio files are supported.
+	// The URI of the background music, which is an OSS URI. Only audio files are supported.
 	//
 	// This parameter is required.
 	//
@@ -421,7 +419,7 @@ type CreateHighlightTaskRequestEditBackgroundMusics struct {
 	//
 	// oss://test-bucket/test-object/test.mp3
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// The volume intensity of the background music. Valid values: [0, 10]. Default value: 0.2. A value of 1 indicates the original volume.
+	// The volume of the background music. Valid values: [0, 10]. Default value: 0.2. A value of 1 indicates the original volume.
 	//
 	// example:
 	//
@@ -460,9 +458,7 @@ func (s *CreateHighlightTaskRequestEditBackgroundMusics) Validate() error {
 }
 
 type CreateHighlightTaskRequestEditTransitions struct {
-	// The transition duration. Unit: seconds. If the transition duration is greater than the segment duration minus 1, the transition effect on that segment does not take effect.
-	//
-	// Valid values: [0, 5].
+	// The duration of the transition. Unit: seconds. If the transition duration is greater than the clip duration minus 1, the transition effect on the clip does not take effect. Valid values: [0, 5].
 	//
 	// example:
 	//
@@ -476,9 +472,7 @@ type CreateHighlightTaskRequestEditTransitions struct {
 	//
 	// fade
 	Transition *string `json:"Transition,omitempty" xml:"Transition,omitempty"`
-	// The transition weight. Valid values: [1, 100]. Default value: 50.
-	//
-	// This parameter takes effect only when TransitionMode is set to Random.
+	// The weight of the transition. Valid values: [1, 100]. Default value: 50. This parameter is valid only when TransitionMode is set to Random.
 	//
 	// example:
 	//
@@ -526,7 +520,7 @@ func (s *CreateHighlightTaskRequestEditTransitions) Validate() error {
 }
 
 type CreateHighlightTaskRequestEditVfxEffects struct {
-	// The visual effect. For more information, see [Effects](https://www.alibabacloud.com/help/en/imm/developer-reference/effects).
+	// The visual effect. For more information, see [Visual effects](https://www.alibabacloud.com/help/en/imm/developer-reference/effects).
 	//
 	// This parameter is required.
 	//
@@ -534,9 +528,7 @@ type CreateHighlightTaskRequestEditVfxEffects struct {
 	//
 	// letterboxed
 	VfxEffect *string `json:"VfxEffect,omitempty" xml:"VfxEffect,omitempty"`
-	// The effect weight. Valid values: [1, 100]. Default value: 50.
-	//
-	// This parameter takes effect only when VfxEffectMode is set to Random.
+	// The weight of the visual effect. Valid values: [1, 100]. Default value: 50. This parameter is valid only when VfxEffectMode is set to Random.
 	//
 	// example:
 	//
@@ -577,15 +569,15 @@ func (s *CreateHighlightTaskRequestEditVfxEffects) Validate() error {
 type CreateHighlightTaskRequestHighlight struct {
 	// The highlight content. Valid values:
 	//
-	// - 宠物
+	// - Pet
 	//
-	// - 人物
+	// - Person
 	//
-	// - 运动
+	// - Sports
 	//
-	// - 会议
+	// - Meeting
 	//
-	// The value cannot exceed 100 characters.
+	// The value cannot exceed 100 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -617,36 +609,40 @@ func (s *CreateHighlightTaskRequestHighlight) Validate() error {
 }
 
 type CreateHighlightTaskRequestOutput struct {
-	// The audio processing parameter settings.
-	//
-	// 	Notice: If Audio is empty, the first audio stream (if any) is directly copied to the output file.
+	// The audio processing parameter settings. 	Notice: If Audio is empty, the first audio stream (if any) is directly copied to the output file.</notice>
 	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
 	// The media container type. This parameter is required when Type is set to Concat or Compose. Valid values:
 	//
-	// - Audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, flv.
+	// - Audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, and flv
 	//
-	// 	Notice: Container and URI must be specified together.
+	// 	Notice: You must specify both Container and URI.</notice>
 	//
 	// example:
 	//
 	// mp4
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
-	// The maximum duration of the clipped video. Unit: seconds.
+	// The maximum duration of the edited video. Unit: seconds.
 	//
 	// example:
 	//
 	// 10.0
 	MaxDuration *float64 `json:"MaxDuration,omitempty" xml:"MaxDuration,omitempty"`
-	// The media segmentation settings. By default, no segmentation is performed.
+	// The media segmentation settings. By default, segmentation is not performed.
 	Segment *CreateHighlightTaskRequestOutputSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	// The playback speed of the media. Valid values: [0.5, 1.0]. Default value: 1.0.
+	// The playback speed multiplier for the media. Valid values: [0.5, 1.0]. Default value: 1.0.
 	//
-	// > This value is the ratio of the playback speed of the transcoded media file to the default playback speed of the source media file. This is not speed-adjusted transcoding.
+	// > The ratio of the default playback speed of the transcoded media file to that of the source media file. This is not speed-adjusted transcoding.
 	//
 	// example:
 	//
 	// 1.0
 	Speed *float64 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The target duration of the video. Unit: seconds.
+	//
+	// example:
+	//
+	// 10.0
+	TargetDuration *float64 `json:"TargetDuration,omitempty" xml:"TargetDuration,omitempty"`
 	// The URI of the output file.
 	//
 	// This parameter is required.
@@ -655,9 +651,7 @@ type CreateHighlightTaskRequestOutput struct {
 	//
 	// oss://test-bucket/test-target-object.mp4
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// The video processing parameter settings.
-	//
-	// 	Notice: If Video is empty, the first video stream (if any) is directly copied to the output file.
+	// The video processing parameter settings. 	Notice: If Video is empty, the first video stream (if any) is directly copied to the output file.</notice>
 	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
@@ -687,6 +681,10 @@ func (s *CreateHighlightTaskRequestOutput) GetSegment() *CreateHighlightTaskRequ
 
 func (s *CreateHighlightTaskRequestOutput) GetSpeed() *float64 {
 	return s.Speed
+}
+
+func (s *CreateHighlightTaskRequestOutput) GetTargetDuration() *float64 {
+	return s.TargetDuration
 }
 
 func (s *CreateHighlightTaskRequestOutput) GetURI() *string {
@@ -722,6 +720,11 @@ func (s *CreateHighlightTaskRequestOutput) SetSpeed(v float64) *CreateHighlightT
 	return s
 }
 
+func (s *CreateHighlightTaskRequestOutput) SetTargetDuration(v float64) *CreateHighlightTaskRequestOutput {
+	s.TargetDuration = &v
+	return s
+}
+
 func (s *CreateHighlightTaskRequestOutput) SetURI(v string) *CreateHighlightTaskRequestOutput {
 	s.URI = &v
 	return s
@@ -752,7 +755,7 @@ func (s *CreateHighlightTaskRequestOutput) Validate() error {
 }
 
 type CreateHighlightTaskRequestOutputSegment struct {
-	// The segment length. Unit: seconds.
+	// The length of each segment. Unit: seconds.
 	//
 	// example:
 	//
@@ -768,7 +771,7 @@ type CreateHighlightTaskRequestOutputSegment struct {
 	//
 	// hls
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The start number. Only hls is supported. Default value: 0.
+	// The start number. This parameter is supported only for hls. Default value: 0.
 	//
 	// example:
 	//
@@ -816,23 +819,19 @@ func (s *CreateHighlightTaskRequestOutputSegment) Validate() error {
 }
 
 type CreateHighlightTaskRequestSources struct {
-	// The duration of the media segment. Unit: seconds. Default value: 0, which indicates the end of the video.
-	//
-	// This parameter takes effect only when Type is set to Concat.
+	// The duration of the media clip. Unit: seconds. Default value: 0, which indicates the end time of the video. This parameter is valid only when Type is set to Concat.
 	//
 	// example:
 	//
 	// 0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start time of the media resource. Valid values: [0, video duration]. Unit: seconds.
-	//
-	// This parameter takes effect only when Type is set to Concat.
+	// The start time of the media resource. Valid values: [0, video duration]. This parameter is valid only when Type is set to Concat. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The URI of the media resource (OSS URI). Only videos are supported.
+	// The URI of the media resource, which is an OSS URI. Only videos are supported.
 	//
 	// This parameter is required.
 	//

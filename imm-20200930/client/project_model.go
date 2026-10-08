@@ -146,7 +146,7 @@ type Project struct {
 	//
 	// example:
 	//
-	// Official:ImageManagement
+	// DefaultId
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The current total file size in the project, in bytes.
 	//

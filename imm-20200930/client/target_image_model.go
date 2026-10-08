@@ -101,7 +101,7 @@ type TargetImageAnimations struct {
 	//
 	// gif
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Animation frame rate, in frames per second
+	// FrameRate
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ type TargetImageAnimations struct {
 	//
 	// 960
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Time interval between animation frames, in seconds
+	// Interval
 	//
 	// example:
 	//
 	// 0.5
 	Interval *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Total number of animation frames to generate
+	// Number
 	//
 	// example:
 	//
 	// 100
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// Scaling method
+	// ScaleType
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type TargetImageAnimations struct {
 	//
 	// 0
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The URI of the animation.
+	// URI
 	//
 	// This parameter is required.
 	//
@@ -145,7 +145,7 @@ type TargetImageAnimations struct {
 	//
 	// oss://test-bucket/animations
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// Output width, in pixels
+	// Width
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ func (s *TargetImageAnimations) Validate() error {
 }
 
 type TargetImageSnapshots struct {
-	// Image format
+	// Format
 	//
 	// This parameter is required.
 	//
@@ -255,13 +255,13 @@ type TargetImageSnapshots struct {
 	//
 	// jpg
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Output height, in pixels
+	// Height
 	//
 	// example:
 	//
 	// 960
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Time interval between snapshots, in seconds
+	// Interval
 	//
 	// example:
 	//
@@ -271,19 +271,19 @@ type TargetImageSnapshots struct {
 	//
 	// interval
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The sequence number of the snapshot.
+	// Number
 	//
 	// example:
 	//
 	// 10
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// Scaling method
+	// ScaleType
 	//
 	// example:
 	//
 	// crop
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	// The start time of the snapshot.
+	// StartTime
 	//
 	// example:
 	//
@@ -293,7 +293,7 @@ type TargetImageSnapshots struct {
 	//
 	// 0
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// OSS URI where snapshots are stored
+	// URI
 	//
 	// This parameter is required.
 	//
@@ -301,7 +301,7 @@ type TargetImageSnapshots struct {
 	//
 	// oss://test-bucket/snapshots
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
-	// The width of the snapshot.
+	// Width
 	//
 	// example:
 	//
@@ -412,7 +412,7 @@ func (s *TargetImageSnapshots) Validate() error {
 }
 
 type TargetImageSprites struct {
-	// Image format
+	// Format
 	//
 	// This parameter is required.
 	//
@@ -420,13 +420,13 @@ type TargetImageSprites struct {
 	//
 	// jpg
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Time interval between sprites, in seconds
+	// Interval
 	//
 	// example:
 	//
 	// 1
 	Interval *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Margin around the sprite grid, in pixels
+	// Margin
 	//
 	// example:
 	//
@@ -436,31 +436,31 @@ type TargetImageSprites struct {
 	//
 	// interval
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Total number of sprites to generate
+	// Number
 	//
 	// example:
 	//
 	// 0
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
-	// Padding between sprite tiles, in pixels
+	// Pad
 	//
 	// example:
 	//
 	// 2
 	Pad *int32 `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// Output height after scaling, in pixels
+	// ScaleHeight
 	//
 	// example:
 	//
 	// 960
 	ScaleHeight *float32 `json:"ScaleHeight,omitempty" xml:"ScaleHeight,omitempty"`
-	// Scaling method
+	// ScaleType
 	//
 	// example:
 	//
 	// crop
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	// Output width after scaling, in pixels
+	// ScaleWidth
 	//
 	// example:
 	//
@@ -476,13 +476,13 @@ type TargetImageSprites struct {
 	//
 	// 0
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Height of each sprite tile, in pixels
+	// TileHeight
 	//
 	// example:
 	//
 	// 6
 	TileHeight *int32 `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
-	// Width of each sprite tile, in pixels
+	// TileWidth
 	//
 	// example:
 	//

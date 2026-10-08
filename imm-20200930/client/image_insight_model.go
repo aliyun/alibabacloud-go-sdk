@@ -13,29 +13,19 @@ type iImageInsight interface {
 	GetCaption() *string
 	SetDescription(v string) *ImageInsight
 	GetDescription() *string
+	SetMultilingualContent(v map[string]*MultilingualContentEntry) *ImageInsight
+	GetMultilingualContent() map[string]*MultilingualContentEntry
 }
 
 type ImageInsight struct {
-	// Image summary.
-	//
-	// >  Not supported.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// 无。
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The description of the image.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// 图片中有一人，穿着深色西装外套，内搭白色衬衫。背景为渐变的浅蓝色至灰色。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The multilingual image content.
+	MultilingualContent map[string]*MultilingualContentEntry `json:"MultilingualContent,omitempty" xml:"MultilingualContent,omitempty"`
 }
 
 func (s ImageInsight) String() string {
@@ -54,6 +44,10 @@ func (s *ImageInsight) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ImageInsight) GetMultilingualContent() map[string]*MultilingualContentEntry {
+	return s.MultilingualContent
+}
+
 func (s *ImageInsight) SetCaption(v string) *ImageInsight {
 	s.Caption = &v
 	return s
@@ -61,6 +55,11 @@ func (s *ImageInsight) SetCaption(v string) *ImageInsight {
 
 func (s *ImageInsight) SetDescription(v string) *ImageInsight {
 	s.Description = &v
+	return s
+}
+
+func (s *ImageInsight) SetMultilingualContent(v map[string]*MultilingualContentEntry) *ImageInsight {
+	s.MultilingualContent = v
 	return s
 }
 

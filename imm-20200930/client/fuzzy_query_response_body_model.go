@@ -20,13 +20,13 @@ type iFuzzyQueryResponseBody interface {
 }
 
 type FuzzyQueryResponseBody struct {
-	// The files.
+	// The list of file information.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// A pagination token.
+	// The token used for pagination when the total number of files exceeds the value of MaxResults.
 	//
-	// It can be used in the next request to retrieve a new page of results.
+	// When you list file information next time, set NextToken to this value to return the remaining results.
 	//
-	// If NextToken is empty, no next page exists.
+	// This parameter is returned only when not all files are returned.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type FuzzyQueryResponseBody struct {
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of hits.
+	// The number of matched records.
 	//
 	// example:
 	//

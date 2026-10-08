@@ -32,7 +32,7 @@ type iUpdateDatasetRequest interface {
 }
 
 type UpdateDatasetRequest struct {
-	// The maximum number of bindings for each dataset. Valid values: 1 to 10.
+	// The maximum number of bindings per dataset. Valid values: 1 to 10.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type UpdateDatasetRequest struct {
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
 	// The maximum number of metadata entities (including data files, file relationships, and clustering groups) in each dataset. The maximum value is 2^63-1.
 	//
-	// >This is a reserved parameter and is not enforced during use.
+	// > This is a reserved parameter and no actual limits are enforced.
 	//
 	// example:
 	//
@@ -54,19 +54,19 @@ type UpdateDatasetRequest struct {
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
 	// The maximum number of metadata relationships in each dataset. The maximum value is 2^63-1.
 	//
-	// >This is a reserved parameter and is not enforced during use.
+	// > This is a reserved parameter and no actual limits are enforced.
 	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total file size in each dataset. After this limit is exceeded, no more indexes can be added. The maximum value is 2^63-1. Unit: bytes.
+	// The maximum total size of files in each dataset. If the limit is exceeded, no more indexes can be added. The maximum value is 2^63-1. Unit: bytes.
 	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// The dataset name. For information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	// The name of the dataset. For more information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type UpdateDatasetRequest struct {
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+	// The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type UpdateDatasetRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	// The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
 	//
 	// example:
 	//

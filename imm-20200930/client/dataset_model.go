@@ -112,7 +112,7 @@ type Dataset struct {
 	//
 	// example:
 	//
-	// Official:ImageManagement
+	// DefaultId
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The total file size in the dataset, in bytes.
 	//

@@ -34,41 +34,41 @@ type iUpdateProjectRequest interface {
 }
 
 type UpdateProjectRequest struct {
-	// The maximum number of bindings for each dataset. Valid values: 1 to 10.
+	// The maximum number of bindings per dataset. Valid values: 1 to 10.
 	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	// The maximum number of metadata entities in each dataset.
+	// The maximum number of metadata entities per dataset.
 	//
-	// >This is a reserved parameter and is not enforced during use.
+	// > Reserved parameter. No actual limit is imposed during use.
 	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// The maximum number of files in each dataset. Valid values: 1 to 100000000.
+	// The maximum number of files per dataset. Valid values: 1 to 100000000.
 	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// The maximum number of metadata relationships in each dataset.
+	// The maximum number of metadata relations per dataset.
 	//
-	// >This is a reserved parameter and is not enforced during use.
+	// > Reserved parameter. No actual limit is imposed during use.
 	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total file size in each dataset. After the limit is exceeded, no more indexes can be added. Unit: bytes.
+	// The maximum total size of files in each dataset. If the limit is exceeded, no more indexes can be added. Unit: bytes.
 	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// The project description. The description must be 1 to 256 characters in length.
+	// The description of the project. The description must be 1 to 256 characters in length.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type UpdateProjectRequest struct {
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+	// The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -88,9 +88,9 @@ type UpdateProjectRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The service role that grants Intelligent Media Management (IMM) permissions to access other cloud resources such as Object Storage Service (OSS).
+	// The service role that is authorized for Intelligent Media Management (IMM) to access other cloud resources such as Object Storage Service (OSS).
 	//
-	// To customize a service role, create a regular service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	// To use a custom service role, you can create a regular service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a RAM role](https://help.aliyun.com/document_detail/116147.html).
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type UpdateProjectRequest struct {
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 	// The list of tags.
 	Tag []*UpdateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	// The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
 	//
 	// example:
 	//

@@ -14,6 +14,7 @@ type iSmartClusterConfig interface {
 }
 
 type SmartClusterConfig struct {
+	// The figure clustering configuration.
 	Figure *FigureClusterConfig `json:"Figure,omitempty" xml:"Figure,omitempty"`
 }
 

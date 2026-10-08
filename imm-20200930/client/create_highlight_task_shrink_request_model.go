@@ -34,7 +34,7 @@ type iCreateHighlightTaskShrinkRequest interface {
 }
 
 type CreateHighlightTaskShrinkRequest struct {
-	// The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**
+	// The chained authorization configuration. **Leave this parameter empty unless otherwise required.**
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The editing configuration.
 	EditShrink *string `json:"Edit,omitempty" xml:"Edit,omitempty"`
@@ -42,21 +42,23 @@ type CreateHighlightTaskShrinkRequest struct {
 	HighlightShrink *string `json:"Highlight,omitempty" xml:"Highlight,omitempty"`
 	// The highlight recognition mode. Valid values:
 	//
-	// - Scene: scene and frame recognition.
+	// - Scene: scene and frame recognition
 	//
-	// - Average (default): average slice recognition.
+	// - Average: average clip recognition
+	//
+	// Default value: Average.
 	//
 	// example:
 	//
 	// Average
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The message notification configuration. For more information, click Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://www.alibabacloud.com/help/en/imm/developer-reference/asynchronous-notification-message-examples).
+	// The message notification configuration. For more information, see Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://www.alibabacloud.com/help/en/imm/developer-reference/asynchronous-notification-message-examples).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// The output configuration.
 	//
 	// This parameter is required.
 	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +66,11 @@ type CreateHighlightTaskShrinkRequest struct {
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The list of media resources to process.
-	//
-	// A maximum of 10 videos are supported.
+	// The list of media resources to be processed. You can specify up to 10 videos.
 	//
 	// This parameter is required.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	// The custom tags used to search for and filter asynchronous tasks.
+	// The custom tags used to search and filter asynchronous tasks.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type CreateHighlightTaskShrinkRequest struct {
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The processing type. Valid values:
 	//
-	// - Retrieval: highlight extraction.
+	// - Retrieval: highlight extraction
 	//
-	// - Concat: video composition.
+	// - Concat: video composition
 	//
-	// - Compose: one-click video production.
+	// - Compose: one-click video creation
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateHighlightTaskShrinkRequest struct {
 	//
 	// Retrieval
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The custom information, which is returned in asynchronous message notifications.
+	// The custom user data, which is returned in asynchronous message notifications.
 	//
 	// example:
 	//

@@ -44,15 +44,15 @@ type iQueryStoriesShrinkRequest interface {
 }
 
 type QueryStoriesShrinkRequest struct {
-	// The time range in which stories were created.
+	// The creation time range of the story.
 	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	// The custom labels in key-value pairs.
+	// The custom label key-value pairs. Only stories that match the specified label pairs are returned.
 	//
 	// example:
 	//
 	// key=value
 	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	// The name of the dataset.[](~~478160~~)
+	// The name of the dataset. For more information about how to obtain the name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
 	//
 	// This parameter is required.
 	//
@@ -60,37 +60,37 @@ type QueryStoriesShrinkRequest struct {
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The IDs of the face clusters.
+	// The IDs of the figure clusters.
 	FigureClusterIdsShrink *string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty"`
-	// The maximum number of entries to return. Valid values: 1 to 100. Default value: 100.
+	// The maximum number of entries to return in a single call. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If you do not specify this token in the next request, results are returned from the beginning.
+	// The pagination token. If this parameter is left empty, the query starts from the beginning. To query the next page, set this parameter to the NextToken value returned in the previous call.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpw****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the story.
+	// The ID of the story object.
 	//
 	// example:
 	//
 	// id1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The sort order. Valid values:
+	// The sorting order. Valid values:
 	//
-	// - asc: in ascending order.
+	// - asc: Ascending order.
 	//
-	// - desc: in descending order.
+	// - desc: Descending order.
 	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The name of the project.[](~~478153~~)
+	// The name of the project. For more information about how to obtain the name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -98,21 +98,21 @@ type QueryStoriesShrinkRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The sort field. Valid values:
+	// The field used for sorting. Valid values:
 	//
-	// - CreateTime: sorts by story creation time.
+	// - CreateTime: Sorts by story creation time.
 	//
-	// - StoryName: sorts by story name.
+	// - StoryName: Sorts by story name.
 	//
-	// - StoryStartTime: sorts by story start time.
+	// - StoryStartTime: Sorts by story start time.
 	//
-	// - StoryEndTime: sorts by story end time.
+	// - StoryEndTime: Sorts by story end time.
 	//
 	// example:
 	//
 	// CreateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The time range for the creation time of the last photo or video in the story.
+	// The end time range of the photos or videos in the story.
 	StoryEndTimeRangeShrink *string `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
 	// The name of the story.
 	//
@@ -120,15 +120,15 @@ type QueryStoriesShrinkRequest struct {
 	//
 	// name1
 	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
-	// The time range for the creation time of the first photo or video in the story.
+	// The start time range of the photos or videos in the story.
 	StoryStartTimeRangeShrink *string `json:"StoryStartTimeRange,omitempty" xml:"StoryStartTimeRange,omitempty"`
-	// The subtype of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	// The subtype of the story. For valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
 	//
 	// example:
 	//
 	// SeasonHighlights
 	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
-	// The type of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	// The type of the story. For valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ type QueryStoriesShrinkRequest struct {
 	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
 	// Specifies whether to return empty stories. Valid values:
 	//
-	// - true (The default value)
+	// - true: Returns empty stories. This is the default value.
 	//
-	// - false
+	// - false: Does not return empty stories.
 	//
 	// example:
 	//

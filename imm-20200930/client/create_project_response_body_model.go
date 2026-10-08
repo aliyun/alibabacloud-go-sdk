@@ -16,9 +16,9 @@ type iCreateProjectResponseBody interface {
 }
 
 type CreateProjectResponseBody struct {
-	// The project information. Click Project to view details.
+	// The project information. For more information, see Project.
 	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

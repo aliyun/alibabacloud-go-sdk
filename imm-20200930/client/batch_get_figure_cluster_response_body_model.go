@@ -16,9 +16,9 @@ type iBatchGetFigureClusterResponseBody interface {
 }
 
 type BatchGetFigureClusterResponseBody struct {
-	// The clusters.
+	// The list of figure clusters.
 	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

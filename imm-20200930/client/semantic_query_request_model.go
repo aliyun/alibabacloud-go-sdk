@@ -36,17 +36,15 @@ type SemanticQueryRequest struct {
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The maximum number of entries to return. Valid values: 1 to 1000.
+	// The maximum number of data records to return in this request. Value range: (0,100].
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The types of the media that you want to query. Default value:
-	//
-	// ["image"]
+	// The media types to search. If this parameter is left empty, the default value is:
 	MediaTypes []*string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty" type:"Repeated"`
-	// This parameter is no longer available.
+	// This parameter is no longer provided.
 	//
 	// example:
 	//
@@ -60,27 +58,29 @@ type SemanticQueryRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The content of the query that you input.
+	// <notice>Either this parameter or the SourceURI parameter must be specified.</notice>
+	//
+	// The content for semantic search.
 	//
 	// example:
 	//
 	// Scenery of Hangzhou in April 2021
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// > Either this parameter or the Query parameter must be specified. This parameter is valid only for image searches on datasets configured with a search-by-image workflow.
+	// <notice>Either this parameter or the Query parameter must be specified. This parameter is currently valid only when the search type is specified as image and the dataset is configured with a workflow template for image-to-image search.</notice>
 	//
-	// URI of the source data for retrieval.
+	// The storage address of the source data used for retrieval. The storage address supports OSS URIs.
 	//
-	// The URI must be in the oss\\://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+	// The OSS address format is oss://${Bucket}/${Object}, where ${Bucket} is the name of the OSS bucket that resides in the same region as the current project, and ${Object} is the full path of the file including the file name extension.
 	//
-	// Contact us if you need to configure a workflow template.
+	// If you need to configure the corresponding workflow template, [contact us](https://help.aliyun.com/document_detail/84454.html).
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	// > Either this parameter or the SourceURI parameter must be specified.
+	// Specifies the specific fields to return instead of all existing metadata fields. This helps reduce the size of the returned struct.
 	//
-	// The content of the query that you input.
+	// If this parameter is left empty, all fields are returned.
 	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 

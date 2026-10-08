@@ -32,7 +32,7 @@ type Label struct {
 	//
 	// example:
 	//
-	// 0.877
+	// 0.7319999933242798
 	CentricScore *float32 `json:"CentricScore,omitempty" xml:"CentricScore,omitempty"`
 	// Event clips.
 	Clips []*Clip `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
@@ -46,13 +46,13 @@ type Label struct {
 	//
 	// example:
 	//
-	// 0.95
+	// 0.9891784601980591
 	LabelConfidence *float32 `json:"LabelConfidence,omitempty" xml:"LabelConfidence,omitempty"`
 	// The tag level. Valid values are 1, 2, and 3, representing first-level, second-level, and third-level tags, respectively.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	LabelLevel *int64 `json:"LabelLevel,omitempty" xml:"LabelLevel,omitempty"`
 	// The tag name.
 	//

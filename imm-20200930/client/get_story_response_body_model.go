@@ -16,13 +16,13 @@ type iGetStoryResponseBody interface {
 }
 
 type GetStoryResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the story.
+	// The detailed information about the story.
 	Story *Story `json:"Story,omitempty" xml:"Story,omitempty"`
 }
 

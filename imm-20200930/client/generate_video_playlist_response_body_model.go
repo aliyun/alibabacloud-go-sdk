@@ -237,7 +237,7 @@ type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The token generated for the subtitle Media Playlist. You can use this parameter to construct the addresses of the generated subtitle files.
 	//
-	// > Based on the returned Token value, you can construct the addresses of the transcoded subtitle files. The format is: oss://${Bucket}/${Object}-${Token}_${Index}.ts, where oss://${Bucket}/${Object} is the Subtitle URI specified in the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the subtitle file.
+	// > Based on the returned Token value, you can construct the addresses of the transcoded subtitle files. The format is: oss://${Bucket}/${Object}-${Token}_${Index}.ts, where oss://${Bucket}/${Object} is the Subtitle URI from the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the subtitle.
 	//
 	// example:
 	//
@@ -314,7 +314,7 @@ type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 	// The token generated for the video Media Playlist. You can use this parameter to construct the addresses of the generated TS files.
 	//
-	// > Based on the returned Token value, you can construct the addresses of the transcoded TS files. The format is: oss://${Bucket}/${Object}-${Token}-${Index}.ts, where oss://${Bucket}/${Object} is the Target URI specified in the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the TS file.
+	// > Based on the returned Token value, you can construct the addresses of the transcoded TS files. The format is: oss://${Bucket}/${Object}-${Token}-${Index}.ts, where oss://${Bucket}/${Object} is the Target URI from the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the TS file.
 	//
 	// example:
 	//

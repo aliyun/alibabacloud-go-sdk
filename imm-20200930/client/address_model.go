@@ -54,7 +54,7 @@ type Address struct {
 	//
 	// example:
 	//
-	// zh-Hans
+	// zh-hans
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The province.
 	//

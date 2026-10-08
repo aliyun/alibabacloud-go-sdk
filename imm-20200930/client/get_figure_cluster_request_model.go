@@ -18,7 +18,7 @@ type iGetFigureClusterRequest interface {
 }
 
 type GetFigureClusterRequest struct {
-	// The dataset name.[](~~CreateDataset~~)
+	// The name of the dataset. For more information about how to obtain the dataset name, see [CreateDataset](~~CreateDataset~~).
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetFigureClusterRequest struct {
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The ID of the face clustering task. You can obtain the ID from the face clustering information returned after you call the [QueryFigureClusters](~~QueryFigureClusters~~) operation.
+	// The object ID of the clustering group. You can obtain the object ID from the face group information returned by [QueryFigureClusters](~~QueryFigureClusters~~).
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetFigureClusterRequest struct {
 	//
 	// Cluster-1f2e1a2c-d5ee-4bc5-84f6-fef94ea****
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The project name.[](~~CreateProject~~)
+	// The name of the project. For more information about how to obtain the project name, see [CreateProject](~~CreateProject~~).
 	//
 	// This parameter is required.
 	//

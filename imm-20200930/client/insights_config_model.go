@@ -18,6 +18,7 @@ type iInsightsConfig interface {
 }
 
 type InsightsConfig struct {
+	// The image content-aware configuration.
 	Image *ImageInsightsConfig `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The language.
 	//

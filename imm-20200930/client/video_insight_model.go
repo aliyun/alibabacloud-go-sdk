@@ -13,29 +13,19 @@ type iVideoInsight interface {
 	GetCaption() *string
 	SetDescription(v string) *VideoInsight
 	GetDescription() *string
+	SetMultilingualContent(v map[string]*MultilingualContentEntry) *VideoInsight
+	GetMultilingualContent() map[string]*MultilingualContentEntry
 }
 
 type VideoInsight struct {
-	// Video summary.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// 视频中展示了两个不同场景：一个是静止的白色盘子、黑色瓶子和透明玻璃杯，另一个是手拿着标有“YEZOLU”的洗发水瓶在浴室中缓慢上移。
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The description of the video file.
-	//
-	// >  Not supported.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// 无。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The multilingual video information content.
+	MultilingualContent map[string]*MultilingualContentEntry `json:"MultilingualContent,omitempty" xml:"MultilingualContent,omitempty"`
 }
 
 func (s VideoInsight) String() string {
@@ -54,6 +44,10 @@ func (s *VideoInsight) GetDescription() *string {
 	return s.Description
 }
 
+func (s *VideoInsight) GetMultilingualContent() map[string]*MultilingualContentEntry {
+	return s.MultilingualContent
+}
+
 func (s *VideoInsight) SetCaption(v string) *VideoInsight {
 	s.Caption = &v
 	return s
@@ -61,6 +55,11 @@ func (s *VideoInsight) SetCaption(v string) *VideoInsight {
 
 func (s *VideoInsight) SetDescription(v string) *VideoInsight {
 	s.Description = &v
+	return s
+}
+
+func (s *VideoInsight) SetMultilingualContent(v map[string]*MultilingualContentEntry) *VideoInsight {
+	s.MultilingualContent = v
 	return s
 }
 

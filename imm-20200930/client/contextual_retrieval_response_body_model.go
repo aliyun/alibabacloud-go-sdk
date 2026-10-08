@@ -16,13 +16,13 @@ type iContextualRetrievalResponseBody interface {
 }
 
 type ContextualRetrievalResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of files retrieved. The document structure and content are contained in File.Elements.
+	// The list of retrieved files. The document-related structural content is included in File.Elements.
 	Results []*File `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 

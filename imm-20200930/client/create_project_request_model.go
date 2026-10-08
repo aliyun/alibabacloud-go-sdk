@@ -34,41 +34,41 @@ type iCreateProjectRequest interface {
 }
 
 type CreateProjectRequest struct {
-	// The maximum number of bindings per dataset. Valid values: 1 to 10. Default value: 10.
+	// The maximum number of bindings for each dataset. Valid values: 1 to 10. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	// The maximum number of metadata entities per dataset. Default value: 10000000000.
+	// The maximum number of metadata entities in each dataset. Default value: 10000000000.
 	//
-	// >This parameter is reserved for future use and is not enforced.
+	// > This parameter is reserved for future use and does not impose actual limits.
 	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// The maximum number of files per dataset. Valid values: 1 to 100000000. Default value: 10000000000.
+	// The maximum number of files in each dataset. Valid values: 1 to 100000000. Default value: 10000000000.
 	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// The maximum number of metadata relationships per dataset. Default value: 100000000000.
+	// The maximum number of metadata relations in each dataset. Default value: 100000000000.
 	//
-	// >This parameter is reserved for future use and is not enforced.
+	// > This parameter is reserved for future use and does not impose actual limits.
 	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total file size per dataset. After this limit is reached, no more indexes can be added. Unit: bytes. Default value: 90000000000000000.
+	// The maximum total size of files in each dataset. If the limit is exceeded, no more indexes can be added. Unit: bytes. Default value: 90000000000000000.
 	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// The project description. The description can be 1 to 256 characters in length. Default value: empty.
+	// The description of the project. The description must be 1 to 256 characters in length. Default value: empty.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type CreateProjectRequest struct {
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// The project name. The following naming rules apply:
+	// The name of the project. The naming rules are as follows:
 	//
 	// - The name must be 1 to 128 characters in length.
 	//
-	// - The name can contain letters, digits, hyphens (-), and underscores (_).
+	// - The name can contain only letters, digits, hyphens (-), and underscores (_).
 	//
 	// - The name must start with a letter or an underscore (_).
 	//
@@ -94,9 +94,9 @@ type CreateProjectRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The service role that grants IMM permissions to access other Alibaba Cloud resources such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
+	// The service role that is authorized to allow IMM to access other cloud resources such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
 	//
-	// To customize a service role, create a regular service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Grant permissions to a role](https://help.aliyun.com/document_detail/477258.html).
+	// To use a custom service role, you can create a standard service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Grant permissions to a RAM role](https://help.aliyun.com/document_detail/477258.html).
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type CreateProjectRequest struct {
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
 	// The list of tags.
 	Tag []*CreateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The workflow template ID. Default value: empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	// The ID of the workflow template. Default value: empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
 	//
 	// example:
 	//

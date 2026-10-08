@@ -22,25 +22,7 @@ type AssumeRoleChain struct {
 	//
 	// example:
 	//
-	// {
-	//
-	//   "Statement": [
-	//
-	//     {
-	//
-	//       "Action": "oss:*",
-	//
-	//       "Effect": "Allow",
-	//
-	//       "Resource": "*"
-	//
-	//     }
-	//
-	//   ],
-	//
-	//   "Version": "1"
-	//
-	// }
+	// test
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 

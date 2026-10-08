@@ -16,9 +16,9 @@ type iSemanticQueryResponseBody interface {
 }
 
 type SemanticQueryResponseBody struct {
-	// The files.
+	// The list of files.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

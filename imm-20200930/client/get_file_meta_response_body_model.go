@@ -16,7 +16,7 @@ type iGetFileMetaResponseBody interface {
 }
 
 type GetFileMetaResponseBody struct {
-	// The metadata returned.
+	// The file metadata.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	// The request ID.
 	//

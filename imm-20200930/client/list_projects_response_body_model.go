@@ -18,13 +18,13 @@ type iListProjectsResponseBody interface {
 }
 
 type ListProjectsResponseBody struct {
-	// The credential for querying subsequent pages when the total number of expected projects exceeds the specified MaxResults value. This parameter has a value only when not all projects are returned.
+	// The token used to query subsequent pages when the expected total number of returned projects is greater than the specified MaxResults value. This parameter has a value only when not all projects are returned.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDAx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The array of projects. Project information is returned.
+	// The array of projects, which contains the information about each project.
 	Projects []*Project `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
 	// The request ID.
 	//

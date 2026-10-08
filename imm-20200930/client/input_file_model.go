@@ -174,7 +174,7 @@ type InputFile struct {
 	//
 	// example:
 	//
-	// oss://test-bucket/test-object
+	// oss://examplebucket/sampleobject.jpg
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
