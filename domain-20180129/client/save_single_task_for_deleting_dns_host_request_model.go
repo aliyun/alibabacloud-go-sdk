@@ -20,22 +20,36 @@ type iSaveSingleTaskForDeletingDnsHostRequest interface {
 }
 
 type SaveSingleTaskForDeletingDnsHostRequest struct {
+	// DNS name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dns1
 	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S2019270W570xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

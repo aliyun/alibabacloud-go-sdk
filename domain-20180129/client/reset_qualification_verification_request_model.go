@@ -18,16 +18,28 @@ type iResetQualificationVerificationRequest interface {
 }
 
 type ResetQualificationVerificationRequest struct {
+	// Domain name instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S20181*****85212
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value is en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

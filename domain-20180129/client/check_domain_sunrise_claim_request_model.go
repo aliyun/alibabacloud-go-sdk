@@ -18,16 +18,28 @@ type iCheckDomainSunriseClaimRequest interface {
 }
 
 type CheckDomainSunriseClaimRequest struct {
+	// The domain name to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value is **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address. You can set it to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

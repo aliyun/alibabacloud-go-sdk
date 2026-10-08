@@ -28,31 +28,45 @@ type iQueryAdvancedDomainListResponseBody interface {
 }
 
 type QueryAdvancedDomainListResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32                                   `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryAdvancedDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
 	// example:
 	//
 	// true
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Paging size.
+	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
 	// example:
 	//
 	// false
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// D200000-C0B9-4CD3-B92A-9B44A000000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 549
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 275

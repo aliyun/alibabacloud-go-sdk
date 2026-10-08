@@ -28,30 +28,68 @@ type iCheckDomainResponseBody interface {
 }
 
 type CheckDomainResponseBody struct {
+	// Indicates whether the domain name can be registered. Valid values:
+	//
+	// - **1**: Registrable.
+	//
+	// - **3**: Pre-registration.
+	//
+	// - **4**: Deletion reservation available.
+	//
+	// - **0**: Not registrable.
+	//
+	// - **-1**: Abnormal.
+	//
+	// - **-2**: Registration paused.
+	//
+	// - **-3**: Blacklisted.
+	//
 	// example:
 	//
 	// 1
 	Avail *string `json:"Avail,omitempty" xml:"Avail,omitempty"`
+	// The queried domain name.
+	//
 	// example:
 	//
 	// test**.xin
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Indicates whether dynamic pricing is enabled. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
 	DynamicCheck *bool `json:"DynamicCheck,omitempty" xml:"DynamicCheck,omitempty"`
+	// Indicates whether the domain name is a premium term. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
 	Premium *string `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// Registration price for premium domain names.
+	//
 	// example:
 	//
 	// 1286
 	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// The reason for non-registrability returned by the domain name registry.
+	//
+	// > The reason may vary depending on the domain name registry.
+	//
 	// example:
 	//
 	// In use
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// BA7A4FD4-EB9A-4A20-BB0C-9AEB15634DC1

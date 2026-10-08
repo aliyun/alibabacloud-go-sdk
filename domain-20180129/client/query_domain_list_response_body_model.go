@@ -28,44 +28,44 @@ type iQueryDomainListResponseBody interface {
 }
 
 type QueryDomainListResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 0
 	CurrentPageNum *int32                           `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Indicates whether the current page is followed by a page.
+	// Indicates whether a next page is available.
 	//
 	// example:
 	//
 	// false
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The number of entries per page.
+	// The number of domain names per page.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the current page is preceded by a page.
+	// Indicates whether a previous page is available.
 	//
 	// example:
 	//
 	// false
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// B7AB5469-5E38-4AA9-A920-C65B7A9C8E6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of domain names returned.
+	// The total number of domain names.
 	//
 	// example:
 	//
 	// 1
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//

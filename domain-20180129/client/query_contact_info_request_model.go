@@ -20,22 +20,44 @@ type iQueryContactInfoRequest interface {
 }
 
 type QueryContactInfoRequest struct {
+	// The contact type. Valid values:
+	//
+	// - **registrant**: Domain name registrant.
+	//
+	// - **tech**: Technical contact.
+	//
+	// - **admin**: Administrative contact.
+	//
+	// - **billing**: Billing contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// admin
 	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

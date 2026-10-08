@@ -16,6 +16,8 @@ type iBatchFuzzyMatchDomainSensitiveWordResponseBody interface {
 }
 
 type BatchFuzzyMatchDomainSensitiveWordResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C560A803-B975-481D-A66B-A4395EA863A1

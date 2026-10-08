@@ -70,116 +70,248 @@ type iQueryAdvancedDomainListRequest interface {
 }
 
 type QueryAdvancedDomainListRequest struct {
+	// Domain group ID.
+	//
 	// example:
 	//
 	// -1
 	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// Sorting field based on lexicographic order of domain names. Valid values:
+	//
+	// - **false**: Descending order
+	//
+	// - **true**: Ascending order
+	//
 	// example:
 	//
 	// false
 	DomainNameSort *bool `json:"DomainNameSort,omitempty" xml:"DomainNameSort,omitempty"`
+	// Domain status. Valid values:
+	//
+	// - **0**: All.
+	//
+	// - **1**: Renewal required urgently.
+	//
+	// - **2**: Redemption required urgently.
+	//
+	// - **3**: Normal.
+	//
+	// - **4**: Transferring out from HiChina.
+	//
+	// - **5**: Registrant information being modified.
+	//
+	// - **6**: Identity verification not completed.
+	//
+	// - **7**: Review failed; re-initiate identity verification.
+	//
+	// - **8**: Under review.
+	//
 	// example:
 	//
 	// 1
 	DomainStatus *int32 `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// End time for expiration date range query, represented as the number of milliseconds since 00:00:00 UTC on January 1, 1970.
+	//
 	// example:
 	//
 	// 1522080000000
 	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
+	// End length for domain name length range query.
+	//
 	// example:
 	//
 	// 5
 	EndLength *int32 `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
+	// The end time of the registration date range query, expressed as the number of milliseconds since 00:00 on January 1, 1970, UTC.
+	//
 	// example:
 	//
 	// 1522080000000
 	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
+	// Excluded keyword.
+	//
 	// example:
 	//
 	// test
 	Excluded *string `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
+	// Keyword to exclude at the beginning.
+	//
 	// example:
 	//
 	// false
 	ExcludedPrefix *bool `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
+	// Keyword to exclude at the end.
+	//
 	// example:
 	//
 	// false
 	ExcludedSuffix *bool `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
+	// Sorting field based on expiration date. Valid values:
+	//
+	// - **false**: Descending order.
+	//
+	// - **true**: Ascending order.
+	//
 	// example:
 	//
 	// false
 	ExpirationDateSort *bool `json:"ExpirationDateSort,omitempty" xml:"ExpirationDateSort,omitempty"`
+	// Domain name composition information:
+	//
+	// - **11**: Numeric-only domain name
+	//
+	// - **12**: Letter-only domain name
+	//
+	// - **13**: Mixed domain name (combination of letters and numbers)
+	//
+	// - **14**: Chinese domain name
+	//
 	// example:
 	//
-	// 1
-	Form            *int32 `json:"Form,omitempty" xml:"Form,omitempty"`
-	IsPremiumDomain *bool  `json:"IsPremiumDomain,omitempty" xml:"IsPremiumDomain,omitempty"`
+	// 12
+	Form *int32 `json:"Form,omitempty" xml:"Form,omitempty"`
+	// Indicates whether the domain is a premium domain. Valid values:
+	//
+	// - **false**: No
+	//
+	// - **true**: Yes
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
+	IsPremiumDomain *bool `json:"IsPremiumDomain,omitempty" xml:"IsPremiumDomain,omitempty"`
+	// Keyword.
+	//
 	// example:
 	//
 	// test
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// Keyword at the beginning.
+	//
 	// example:
 	//
 	// false
 	KeyWordPrefix *bool `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
+	// Keyword at the end.
+	//
 	// example:
 	//
 	// true
 	KeyWordSuffix *bool `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
+	// The language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Page number for paging. The minimum value is **0**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size for paging. The minimum value is **1*	- and the maximum value is **200**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Domain name type. Valid values:
+	//
+	// - **New gTLD*	- (new top-level domain).
+	//
+	// - **gTLD*	- (generic top-level domain).
+	//
+	// - **ccTLD*	- (country code top-level domain).
+	//
+	// - **other*	- (other top-level domains not listed above).
+	//
 	// example:
 	//
 	// gTLD
 	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	// Sorting field, used to sort by domain name type. Valid values:
+	//
+	// - **false**: Descending order.
+	//
+	// - **true**: Ascending order.
+	//
 	// example:
 	//
 	// false
 	ProductDomainTypeSort *bool `json:"ProductDomainTypeSort,omitempty" xml:"ProductDomainTypeSort,omitempty"`
+	// Sorting field based on registration date. Valid values:
+	//
+	// - **false**: Descending order.
+	//
+	// - **true**: Ascending order.
+	//
 	// example:
 	//
 	// false
 	RegistrationDateSort *bool `json:"RegistrationDateSort,omitempty" xml:"RegistrationDateSort,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmw6bpc6n7zai
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Start time for expiration date range query, represented as the number of milliseconds since 00:00:00 UTC on January 1, 1970.
+	//
 	// example:
 	//
 	// 1522080000000
 	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
+	// The starting length for domain name length range queries.
+	//
 	// example:
 	//
 	// 5
 	StartLength *int32 `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
+	// The start time of the registration date range query, expressed as the number of milliseconds since 00:00 on January 1, 1970, UTC.
+	//
 	// example:
 	//
 	// 1522080000000
 	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
+	// List of suffixes to query, separated by commas (",").
+	//
 	// example:
 	//
 	// com.cn
-	Suffixs *string                              `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
-	Tag     []*QueryAdvancedDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Suffixs *string `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
+	// List of tags.
+	Tag []*QueryAdvancedDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Publishing status. Valid values:
+	//
+	// - **2**: Fixed-price listing published
+	//
+	// - **13**: Negotiable-price listing published
+	//
+	// - **4**: Auction listing published
+	//
+	// - **6**: Priced push listing published
+	//
+	// - **-1**: Domain trading not published
+	//
 	// example:
 	//
 	// -1
 	TradeType *int32 `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1
@@ -469,7 +601,17 @@ func (s *QueryAdvancedDomainListRequest) Validate() error {
 }
 
 type QueryAdvancedDomainListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag key.
+	//
+	// example:
+	//
+	// 数智
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value of the instance.
+	//
+	// example:
+	//
+	// 废弃
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

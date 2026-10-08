@@ -18,16 +18,28 @@ type iTransferInCheckMailTokenRequest interface {
 }
 
 type TransferInCheckMailTokenRequest struct {
+	// The language of the error message returned by the operation. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The token received in the email.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3bdbaa0e-faa2-4ad2-98f4-bcfeb0237054
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The IP address of the user.
+	//
 	// example:
 	//
 	// 127.0.0.1

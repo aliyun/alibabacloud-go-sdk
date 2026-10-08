@@ -14,6 +14,8 @@ type iCancelQualificationVerificationResponseBody interface {
 }
 
 type CancelQualificationVerificationResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48

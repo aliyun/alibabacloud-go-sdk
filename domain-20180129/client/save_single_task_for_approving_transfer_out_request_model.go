@@ -19,14 +19,8 @@ type iSaveSingleTaskForApprovingTransferOutRequest interface {
 
 type SaveSingleTaskForApprovingTransferOutRequest struct {
 	// This parameter is required.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// example:
-	//
-	// 127.0.0.1
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

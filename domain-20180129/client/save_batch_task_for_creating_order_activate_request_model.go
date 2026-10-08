@@ -26,28 +26,48 @@ type iSaveBatchTaskForCreatingOrderActivateRequest interface {
 }
 
 type SaveBatchTaskForCreatingOrderActivateRequest struct {
+	// The voucher ID.
+	//
 	// example:
 	//
 	// 123456
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The language of the error message returned by the API operation. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The list of task details.
+	//
 	// This parameter is required.
 	OrderActivateParam []*SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam `json:"OrderActivateParam,omitempty" xml:"OrderActivateParam,omitempty" type:"Repeated"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 123124
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// Specifies whether to use a voucher.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Specifies whether to use a coupon.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// The IP address of the user.
+	//
 	// example:
 	//
 	// 127.0.0.1
@@ -139,101 +159,232 @@ func (s *SaveBatchTaskForCreatingOrderActivateRequest) Validate() error {
 }
 
 type SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam struct {
+	// The mailing address in English.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// chao yan qu **	- dasha **	- hao
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Specifies whether to use Alibaba Cloud DNS. Valid values: **true*	- and **false**. Default value: **true**.
+	//
+	// > - If this parameter is set to **true**, you do not need to specify the **OrderActivateParam.N.Dns1*	- and **OrderActivateParam.N.Dns2*	- parameters. Otherwise, the specified **OrderActivateParam.N.Dns1*	- and **OrderActivateParam.N.Dns2*	- parameters do not take effect.
+	//
+	// - If this parameter is set to **false**, you must also specify the **OrderActivateParam.N.Dns1*	- and **OrderActivateParam.N.Dns2*	- parameters.
+	//
 	// example:
 	//
 	// true
 	AliyunDns *bool `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// The city name in English.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// bei jing shi
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The country code. For example, **CN*	- represents China, and **US*	- represents the United States.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The custom DNS server 1.
+	//
+	// > - This parameter is available and required only when the **OrderActivateParam.N.AliyunDns*	- parameter is set to **false**.
+	//
+	// - Make sure that the custom DNS server is correct. Otherwise, the registration may fail.
+	//
 	// example:
 	//
 	// ns2.aliyun.com
 	Dns1 *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	// The custom DNS server 2.
+	//
+	// > - This parameter is available and required only when the **OrderActivateParam.N.AliyunDns*	- parameter is set to **false**.
+	//
+	// - Make sure that the custom DNS server is correct. Otherwise, the registration may fail.
+	//
 	// example:
 	//
 	// ns1.aliyun.com
 	Dns2 *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// The domain name to be registered.
+	//
+	// > When you register a domain name, you must specify the domain name registrant information. Otherwise, the domain name registration fails. You can specify the domain name registrant information by using the OrderActivateParam.N.RegistrantProfileId parameter to associate a domain name registrant profile.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The email address.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Specifies whether to enable the domain name privacy protection service. Default value: **true**.
+	//
 	// example:
 	//
 	// true
 	EnableDomainProxy *bool `json:"EnableDomainProxy,omitempty" xml:"EnableDomainProxy,omitempty"`
+	// The domain name in Punycode format. This parameter can be left empty.
+	//
+	// example:
+	//
+	// xn--fiqs8s.com
+	ExpectedPunycode *string `json:"ExpectedPunycode,omitempty" xml:"ExpectedPunycode,omitempty"`
+	// Specifies whether to allow the registration of premium domain names. Default value: **false**.
+	//
 	// example:
 	//
 	// true
 	PermitPremiumActivation *bool `json:"PermitPremiumActivation,omitempty" xml:"PermitPremiumActivation,omitempty"`
+	// The postal code.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// 102629
 	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// The province name in English.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// bei jing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The domain name contact in English.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// zhang san
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// The name of the domain name registrant in English.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// zhang san
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// The ID of the domain name registrant profile. The profile contains information such as the name of the domain name registrant, the domain name contact, the phone number, and the email address. You can only use the ID of a real-name verified domain name registrant profile to register a domain name. If you have created a domain name registrant profile, you can call the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) operation to query the profile ID.
+	//
+	// > After you specify this parameter, you do not need to specify the **OrderActivateParam.N.RegistrantType**, **OrderActivateParam.N.ZhRegistrantOrganization**, **OrderActivateParam.N.ZhRegistrantName**, **OrderActivateParam.N.ZhProvince**, **OrderActivateParam.N.ZhCity**, **OrderActivateParam.N.ZhAddress**, **OrderActivateParam.N.RegistrantOrganization**, **OrderActivateParam.N.RegistrantName**, **OrderActivateParam.N.Province**, **OrderActivateParam.N.City**, **OrderActivateParam.N.Address**, **OrderActivateParam.N.PostalCode**, **OrderActivateParam.N.Country**, **OrderActivateParam.N.TelArea**, **OrderActivateParam.N.Telephone**, **OrderActivateParam.N.TelExt**, and **OrderActivateParam.N.Email*	- parameters.
+	//
 	// example:
 	//
 	// 000000
 	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// The type of the domain name registrant. Valid values:
+	//
+	// - **1**: Individual.
+	//
+	// - **2**: Enterprise or organization.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// The resource group ID.
+	//
+	// > If this parameter is not specified or the specified resource group ID does not exist, the default resource group ID is used.
+	//
 	// example:
 	//
 	// rg-XX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The subscription duration. Unit: **year**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	SubscriptionDuration *int32 `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	// The country code for the phone number. For example, the country code for China is **86**.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// The extension number.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// 1234
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// The phone number.
+	//
+	// > This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
 	// example:
 	//
 	// 1820000****
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// Specifies whether to allow the registration of trademark terms.
+	//
 	// example:
 	//
 	// false
-	TrademarkDomainActivation *bool   `json:"TrademarkDomainActivation,omitempty" xml:"TrademarkDomainActivation,omitempty"`
-	ZhAddress                 *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                    *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince                *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName          *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	ZhRegistrantOrganization  *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	TrademarkDomainActivation *bool `json:"TrademarkDomainActivation,omitempty" xml:"TrademarkDomainActivation,omitempty"`
+	// The mailing address in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
+	// example:
+	//
+	// 朝阳区***大厦***号
+	ZhAddress *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	// The city name in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
+	// example:
+	//
+	// 北京市
+	ZhCity *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	// The province name in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
+	// example:
+	//
+	// 北京
+	ZhProvince *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	// The domain name contact in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
+	// example:
+	//
+	// 张三
+	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	// The name of the domain name registrant in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **OrderActivateParam.N.RegistrantProfileId*	- parameter is not specified. If this parameter is not specified, the domain name registration fails.
+	//
+	// example:
+	//
+	// 张三
+	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) String() string {
@@ -278,6 +429,10 @@ func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) GetEmai
 
 func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) GetEnableDomainProxy() *bool {
 	return s.EnableDomainProxy
+}
+
+func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) GetExpectedPunycode() *string {
+	return s.ExpectedPunycode
 }
 
 func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) GetPermitPremiumActivation() *bool {
@@ -394,6 +549,11 @@ func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) SetEmai
 
 func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) SetEnableDomainProxy(v bool) *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam {
 	s.EnableDomainProxy = &v
+	return s
+}
+
+func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) SetExpectedPunycode(v string) *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam {
+	s.ExpectedPunycode = &v
 	return s
 }
 

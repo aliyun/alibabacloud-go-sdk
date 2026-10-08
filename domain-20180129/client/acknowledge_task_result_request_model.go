@@ -18,16 +18,28 @@ type iAcknowledgeTaskResultRequest interface {
 }
 
 type AcknowledgeTaskResultRequest struct {
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// List of task detail numbers.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2659c29493e94416b297a7691340ccc4
 	TaskDetailNo []*string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty" type:"Repeated"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

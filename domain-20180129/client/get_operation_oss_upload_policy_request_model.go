@@ -16,12 +16,24 @@ type iGetOperationOssUploadPolicyRequest interface {
 }
 
 type GetOperationOssUploadPolicyRequest struct {
+	// Review type. Valid value:
+	//
+	// **1**: Offline domain name transfer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en

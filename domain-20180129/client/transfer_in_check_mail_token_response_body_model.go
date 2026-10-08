@@ -19,6 +19,8 @@ type iTransferInCheckMailTokenResponseBody interface {
 
 type TransferInCheckMailTokenResponseBody struct {
 	FailList *TransferInCheckMailTokenResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60

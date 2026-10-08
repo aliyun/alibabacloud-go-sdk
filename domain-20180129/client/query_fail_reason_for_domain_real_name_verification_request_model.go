@@ -20,22 +20,42 @@ type iQueryFailReasonForDomainRealNameVerificationRequest interface {
 }
 
 type QueryFailReasonForDomainRealNameVerificationRequest struct {
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Review Type. Valid values:
+	//
+	// - **ACTIVATE**: New registration.
+	//
+	// - **CHGHOLDER**: Change of holder.
+	//
+	// - **TRANSFER**: Transfer-in.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ACTIVATE
 	RealNameVerificationAction *string `json:"RealNameVerificationAction,omitempty" xml:"RealNameVerificationAction,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

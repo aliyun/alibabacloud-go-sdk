@@ -16,7 +16,10 @@ type iCreateIntlFixedPriceDomainOrderResponseBody interface {
 }
 
 type CreateIntlFixedPriceDomainOrderResponseBody struct {
+	// The returned object.
 	Module *CreateIntlFixedPriceDomainOrderResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E879DC07-38EE-4408-9F33-73B30CD965CD
@@ -59,18 +62,26 @@ func (s *CreateIntlFixedPriceDomainOrderResponseBody) Validate() error {
 }
 
 type CreateIntlFixedPriceDomainOrderResponseBodyModule struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The order number.
+	//
 	// example:
 	//
 	// 31199295f2074ce895645d386cb2****
 	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 100.00
 	PayPrice *int64 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
+	// The payment URL.
+	//
 	// example:
 	//
 	// https://

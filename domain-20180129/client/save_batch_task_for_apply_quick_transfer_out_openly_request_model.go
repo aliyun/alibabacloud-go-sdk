@@ -18,11 +18,16 @@ type iSaveBatchTaskForApplyQuickTransferOutOpenlyRequest interface {
 }
 
 type SaveBatchTaskForApplyQuickTransferOutOpenlyRequest struct {
+	// The domain names to transfer out.
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	// The language of returned error messages. Valid values: zh (Chinese) and en (English). Default value: en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the user\\"s client.
+	//
 	// example:
 	//
 	// 127.0.0.1

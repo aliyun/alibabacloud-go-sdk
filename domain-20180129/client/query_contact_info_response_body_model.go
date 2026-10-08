@@ -48,62 +48,113 @@ type iQueryContactInfoResponseBody interface {
 }
 
 type QueryContactInfoResponseBody struct {
+	// Mailing address (English).
+	//
 	// example:
 	//
 	// xi hu qu **	- jiedao **	- xiaoqu **	- zhuang 101
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// City (English).
+	//
 	// example:
 	//
 	// hang zhou shi
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Country code. For example, **CN*	- represents China and **US*	- represents the United States.
+	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// Domain registration date.
+	//
 	// example:
 	//
 	// 2019-03-20 11:37:29
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// Mailbox.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Postal code.
+	//
 	// example:
 	//
 	// 310024
 	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// Province (English).
+	//
 	// example:
 	//
 	// zhe jiang
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// Contact name (English).
+	//
 	// example:
 	//
 	// zhang san
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// Registrant name (English).
+	//
 	// example:
 	//
 	// zhang san
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// C39ECA8A-BB5E-4F92-B013-6A032FA06B04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The country code for the telephone number. For example, the country code for China is **86**.
+	//
 	// example:
 	//
 	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// Telephone extension number.
+	//
 	// example:
 	//
 	// 1234
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// Telephone number.
+	//
 	// example:
 	//
 	// 1820000****
-	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// Mailing address (in Chinese).
+	//
+	// example:
+	//
+	// 西湖区***街道***小区***幢101
+	ZhAddress *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	// City (Chinese).
+	//
+	// example:
+	//
+	// 杭州市
+	ZhCity *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	// Province (Chinese).
+	//
+	// example:
+	//
+	// 浙江
+	ZhProvince *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	// Contact name (Chinese).
+	//
+	// example:
+	//
+	// 张三
+	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	// Registrant name (Chinese).
+	//
+	// example:
+	//
+	// 张三
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 

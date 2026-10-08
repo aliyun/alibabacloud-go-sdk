@@ -18,14 +18,26 @@ type iQueryServerLockRequest interface {
 }
 
 type QueryServerLockRequest struct {
+	// Domain instance ID.
+	//
 	// example:
 	//
 	// S20181*****85212
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value: en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address. You can set it to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

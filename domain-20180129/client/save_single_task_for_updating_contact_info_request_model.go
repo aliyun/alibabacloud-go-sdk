@@ -26,36 +26,64 @@ type iSaveSingleTaskForUpdatingContactInfoRequest interface {
 }
 
 type SaveSingleTaskForUpdatingContactInfoRequest struct {
+	// Specifies whether to add a transfer-out restriction. This parameter takes effect only when **ContactType*	- is **registrant**. It indicates whether to restrict domain transfer-out for 60 days after the registrant is updated. Default value: **false**, which means no transfer-out restriction is applied.
+	//
 	// example:
 	//
 	// false
 	AddTransferLock *bool `json:"AddTransferLock,omitempty" xml:"AddTransferLock,omitempty"`
+	// Contact type. Valid values:
+	//
+	// - **registrant**
+	//
+	// - **admin**
+	//
+	// - **billing**
+	//
+	// - **tech**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// registrant
 	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Domain instance ID.
+	//
 	// example:
 	//
 	// S123456789
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Information template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

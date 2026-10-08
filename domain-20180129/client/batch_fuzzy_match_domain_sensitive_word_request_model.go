@@ -18,16 +18,28 @@ type iBatchFuzzyMatchDomainSensitiveWordRequest interface {
 }
 
 type BatchFuzzyMatchDomainSensitiveWordRequest struct {
+	// Domain name keywords, separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com,aliyundoc.com
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP.
+	//
 	// example:
 	//
 	// 127.0.0.1

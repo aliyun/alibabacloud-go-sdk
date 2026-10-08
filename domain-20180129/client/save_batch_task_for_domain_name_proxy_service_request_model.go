@@ -22,12 +22,22 @@ type iSaveBatchTaskForDomainNameProxyServiceRequest interface {
 }
 
 type SaveBatchTaskForDomainNameProxyServiceRequest struct {
+	// List of domain names, separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test1.com,test2.com,test3.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// Language for error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
@@ -36,12 +46,20 @@ type SaveBatchTaskForDomainNameProxyServiceRequest struct {
 	//
 	// cnnicRegistryService
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// Enabled or shutdown status. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Shutdown.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -18,11 +18,15 @@ type iResendEmailVerificationResponseBody interface {
 }
 
 type ResendEmailVerificationResponseBody struct {
+	// List of failed verification email sends.
 	FailList []*ResendEmailVerificationResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0EA54E99-DB48-4CE3-A099-6ED8E451B8AC
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of successfully sent verification emails.
 	SuccessList []*ResendEmailVerificationResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Repeated"`
 }
 
@@ -84,14 +88,20 @@ func (s *ResendEmailVerificationResponseBody) Validate() error {
 }
 
 type ResendEmailVerificationResponseBodyFailList struct {
+	// Return code.
+	//
 	// example:
 	//
 	// SendTokenQuotaExceeded
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Verified mailbox.
+	//
 	// example:
 	//
 	// test1@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// The maximum number of attempts allowed to send the email verification link is exceeded.
@@ -138,14 +148,20 @@ func (s *ResendEmailVerificationResponseBodyFailList) Validate() error {
 }
 
 type ResendEmailVerificationResponseBodySuccessList struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Verified mailbox.
+	//
 	// example:
 	//
 	// test2@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// Success

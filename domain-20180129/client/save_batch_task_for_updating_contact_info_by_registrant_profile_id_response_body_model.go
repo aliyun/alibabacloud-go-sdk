@@ -16,10 +16,14 @@ type iSaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponseBody inter
 }
 
 type SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponseBody struct {
+	// A unique ID for the request.
+	//
 	// example:
 	//
 	// EDC28FEC-6BE0-4583-95BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// 880f1579-be51-4dd3-a69d

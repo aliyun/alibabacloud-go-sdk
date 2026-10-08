@@ -18,16 +18,28 @@ type iQueryDomainByInstanceIdRequest interface {
 }
 
 type QueryDomainByInstanceIdRequest struct {
+	// The domain instance ID. Call the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) API to get this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S20131205001****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of API error messages. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user\\"s IP address. You can use **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

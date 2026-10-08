@@ -25,6 +25,9 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("central")
+	client.EndpointMap = map[string]*string{
+		"ap-southeast-1": dara.String("domain-intl.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 确认任务结果
+// Invoke AcknowledgeTaskResult to confirm the task detail result.
+//
+// Description:
+//
+// After the task detail result is confirmed, it can no longer be queried from the [PollTaskResult](https://help.aliyun.com/document_detail/69361.html) API.
 //
 // @param request - AcknowledgeTaskResultRequest
 //
@@ -110,7 +117,11 @@ func (client *Client) AcknowledgeTaskResultWithOptions(request *AcknowledgeTaskR
 
 // Summary:
 //
-// 确认任务结果
+// Invoke AcknowledgeTaskResult to confirm the task detail result.
+//
+// Description:
+//
+// After the task detail result is confirmed, it can no longer be queried from the [PollTaskResult](https://help.aliyun.com/document_detail/69361.html) API.
 //
 // @param request - AcknowledgeTaskResultRequest
 //
@@ -128,7 +139,7 @@ func (client *Client) AcknowledgeTaskResult(request *AcknowledgeTaskResultReques
 
 // Summary:
 //
-// 通过关键字进行批量模糊匹配
+// You can invoke BatchFuzzyMatchDomainSensitiveWord to batch check whether domain names contain sensitive words.
 //
 // @param request - BatchFuzzyMatchDomainSensitiveWordRequest
 //
@@ -180,7 +191,7 @@ func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithOptions(request *Bat
 
 // Summary:
 //
-// 通过关键字进行批量模糊匹配
+// You can invoke BatchFuzzyMatchDomainSensitiveWord to batch check whether domain names contain sensitive words.
 //
 // @param request - BatchFuzzyMatchDomainSensitiveWordRequest
 //
@@ -272,7 +283,7 @@ func (client *Client) CancelDomainVerification(request *CancelDomainVerification
 
 // Summary:
 //
-// 取消审核
+// Invoke the CancelOperationAudit API to cancel a self-service operation audit.
 //
 // @param request - CancelOperationAuditRequest
 //
@@ -320,7 +331,7 @@ func (client *Client) CancelOperationAuditWithOptions(request *CancelOperationAu
 
 // Summary:
 //
-// 取消审核
+// Invoke the CancelOperationAudit API to cancel a self-service operation audit.
 //
 // @param request - CancelOperationAuditRequest
 //
@@ -336,6 +347,10 @@ func (client *Client) CancelOperationAudit(request *CancelOperationAuditRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancel the qualification verification for ".restaurant" and ".trademark" domain names.
+//
 // @param request - CancelQualificationVerificationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -388,6 +403,10 @@ func (client *Client) CancelQualificationVerificationWithOptions(request *Cancel
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancel the qualification verification for ".restaurant" and ".trademark" domain names.
+//
 // @param request - CancelQualificationVerificationRequest
 //
 // @return CancelQualificationVerificationResponse
@@ -402,6 +421,10 @@ func (client *Client) CancelQualificationVerification(request *CancelQualificati
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke CancelTask to cancel an ongoing job.
+//
 // @param request - CancelTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -450,6 +473,10 @@ func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke CancelTask to cancel an ongoing job.
+//
 // @param request - CancelTaskRequest
 //
 // @return CancelTaskResponse
@@ -466,7 +493,7 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 
 // Summary:
 //
-// # ChangeResourceGroup
+// Modify the resource group to which a domain name belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -526,7 +553,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// # ChangeResourceGroup
+// Modify the resource group to which a domain name belongs.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -544,7 +571,13 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Checks whether a domain name can be registered.
+// Invoke the CheckDomain API to check whether a domain name can be registered.
+//
+// Description:
+//
+// For the legitimacy requirements of domain names, see [Domain Name Legitimacy](https://help.aliyun.com/document_detail/67788.html).
+//
+// > The CheckDomain API has a frequency limit. The combined queries per second (QPS) limit for an Alibaba Cloud account and its RAM users is 10, and the total QPS limit for this API is 100.
 //
 // @param request - CheckDomainRequest
 //
@@ -604,7 +637,13 @@ func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtim
 
 // Summary:
 //
-// Checks whether a domain name can be registered.
+// Invoke the CheckDomain API to check whether a domain name can be registered.
+//
+// Description:
+//
+// For the legitimacy requirements of domain names, see [Domain Name Legitimacy](https://help.aliyun.com/document_detail/67788.html).
+//
+// > The CheckDomain API has a frequency limit. The combined queries per second (QPS) limit for an Alibaba Cloud account and its RAM users is 10, and the total QPS limit for this API is 100.
 //
 // @param request - CheckDomainRequest
 //
@@ -620,6 +659,10 @@ func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDo
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the trademark keyword key based on the provided domain name.
+//
 // @param request - CheckDomainSunriseClaimRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -668,6 +711,10 @@ func (client *Client) CheckDomainSunriseClaimWithOptions(request *CheckDomainSun
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the trademark keyword key based on the provided domain name.
+//
 // @param request - CheckDomainSunriseClaimRequest
 //
 // @return CheckDomainSunriseClaimResponse
@@ -684,7 +731,7 @@ func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRe
 
 // Summary:
 //
-// Checks the domain name status and price inquiries of a fixed-price order at the international site (alibabacloud.com).
+// Calls CheckIntlFixPriceDomainStatus to check the status and price of an international fixed-price domain name that is on sale.
 //
 // @param request - CheckIntlFixPriceDomainStatusRequest
 //
@@ -728,7 +775,7 @@ func (client *Client) CheckIntlFixPriceDomainStatusWithOptions(request *CheckInt
 
 // Summary:
 //
-// Checks the domain name status and price inquiries of a fixed-price order at the international site (alibabacloud.com).
+// Calls CheckIntlFixPriceDomainStatus to check the status and price of an international fixed-price domain name that is on sale.
 //
 // @param request - CheckIntlFixPriceDomainStatusRequest
 //
@@ -744,6 +791,10 @@ func (client *Client) CheckIntlFixPriceDomainStatus(request *CheckIntlFixPriceDo
 	return _result, _err
 }
 
+// Summary:
+//
+// Detects the maximum number of years for which a domain name can be purchased or renewed.
+//
 // @param request - CheckMaxYearOfServerLockRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -796,6 +847,10 @@ func (client *Client) CheckMaxYearOfServerLockWithOptions(request *CheckMaxYearO
 	return _result, _err
 }
 
+// Summary:
+//
+// Detects the maximum number of years for which a domain name can be purchased or renewed.
+//
 // @param request - CheckMaxYearOfServerLockRequest
 //
 // @return CheckMaxYearOfServerLockResponse
@@ -810,6 +865,10 @@ func (client *Client) CheckMaxYearOfServerLock(request *CheckMaxYearOfServerLock
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the domain name has a registry lock service request with the **Processing*	- status at the domain name registry.
+//
 // @param request - CheckProcessingServerLockApplyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -862,6 +921,10 @@ func (client *Client) CheckProcessingServerLockApplyWithOptions(request *CheckPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the domain name has a registry lock service request with the **Processing*	- status at the domain name registry.
+//
 // @param request - CheckProcessingServerLockApplyRequest
 //
 // @return CheckProcessingServerLockApplyResponse
@@ -876,6 +939,10 @@ func (client *Client) CheckProcessingServerLockApply(request *CheckProcessingSer
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the CheckTransferInFeasibility API to validate whether a domain name can be transferred in.
+//
 // @param request - CheckTransferInFeasibilityRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -928,6 +995,10 @@ func (client *Client) CheckTransferInFeasibilityWithOptions(request *CheckTransf
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the CheckTransferInFeasibility API to validate whether a domain name can be transferred in.
+//
 // @param request - CheckTransferInFeasibilityRequest
 //
 // @return CheckTransferInFeasibilityResponse
@@ -942,6 +1013,14 @@ func (client *Client) CheckTransferInFeasibility(request *CheckTransferInFeasibi
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke ConfirmTransferInEmail to confirm the transfer-in mailbox.
+//
+// Description:
+//
+// Directly confirm the transfer-in mailbox.
+//
 // @param request - ConfirmTransferInEmailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -994,6 +1073,14 @@ func (client *Client) ConfirmTransferInEmailWithOptions(request *ConfirmTransfer
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke ConfirmTransferInEmail to confirm the transfer-in mailbox.
+//
+// Description:
+//
+// Directly confirm the transfer-in mailbox.
+//
 // @param request - ConfirmTransferInEmailRequest
 //
 // @return ConfirmTransferInEmailResponse
@@ -1010,7 +1097,7 @@ func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequ
 
 // Summary:
 //
-// Creates a fixed-price order at the international site (alibabacloud.com).
+// Creates an international fixed-price domain name order by calling CreateIntlFixedPriceDomainOrder.
 //
 // @param request - CreateIntlFixedPriceDomainOrderRequest
 //
@@ -1070,7 +1157,7 @@ func (client *Client) CreateIntlFixedPriceDomainOrderWithOptions(request *Create
 
 // Summary:
 //
-// Creates a fixed-price order at the international site (alibabacloud.com).
+// Creates an international fixed-price domain name order by calling CreateIntlFixedPriceDomainOrder.
 //
 // @param request - CreateIntlFixedPriceDomainOrderRequest
 //
@@ -1088,7 +1175,7 @@ func (client *Client) CreateIntlFixedPriceDomainOrder(request *CreateIntlFixedPr
 
 // Summary:
 //
-// 批量删除联系人模板
+// Batch delete domain contact templates.
 //
 // @param request - DeleteContactTemplatesRequest
 //
@@ -1136,7 +1223,7 @@ func (client *Client) DeleteContactTemplatesWithOptions(request *DeleteContactTe
 
 // Summary:
 //
-// 批量删除联系人模板
+// Batch delete domain contact templates.
 //
 // @param request - DeleteContactTemplatesRequest
 //
@@ -1154,7 +1241,7 @@ func (client *Client) DeleteContactTemplates(request *DeleteContactTemplatesRequ
 
 // Summary:
 //
-// 删除域名分组
+// Deleting a group containing more than 1,000 domain names is an asynchronous procedure. You must wait for the system to process the request.
 //
 // @param request - DeleteDomainGroupRequest
 //
@@ -1206,7 +1293,7 @@ func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupReq
 
 // Summary:
 //
-// 删除域名分组
+// Deleting a group containing more than 1,000 domain names is an asynchronous procedure. You must wait for the system to process the request.
 //
 // @param request - DeleteDomainGroupRequest
 //
@@ -1224,7 +1311,11 @@ func (client *Client) DeleteDomainGroup(request *DeleteDomainGroupRequest) (_res
 
 // Summary:
 //
-// 删除邮箱验证
+// Invoke the DeleteEmailVerification API to delete an email address that has passed verification.
+//
+// Description:
+//
+// > If you want to use the email address again after deletion, you must complete email verification again.
 //
 // @param request - DeleteEmailVerificationRequest
 //
@@ -1276,7 +1367,11 @@ func (client *Client) DeleteEmailVerificationWithOptions(request *DeleteEmailVer
 
 // Summary:
 //
-// 删除邮箱验证
+// Invoke the DeleteEmailVerification API to delete an email address that has passed verification.
+//
+// Description:
+//
+// > If you want to use the email address again after deletion, you must complete email verification again.
 //
 // @param request - DeleteEmailVerificationRequest
 //
@@ -1294,7 +1389,11 @@ func (client *Client) DeleteEmailVerification(request *DeleteEmailVerificationRe
 
 // Summary:
 //
-// 删除联系人模板
+// Invoke the DeleteRegistrantProfile API to delete a specified domain name registrant profile.
+//
+// Description:
+//
+// > If the API call succeeds, the System immediately deletes the corresponding domain name registrant profile.
 //
 // @param request - DeleteRegistrantProfileRequest
 //
@@ -1346,7 +1445,11 @@ func (client *Client) DeleteRegistrantProfileWithOptions(request *DeleteRegistra
 
 // Summary:
 //
-// 删除联系人模板
+// Invoke the DeleteRegistrantProfile API to delete a specified domain name registrant profile.
+//
+// Description:
+//
+// > If the API call succeeds, the System immediately deletes the corresponding domain name registrant profile.
 //
 // @param request - DeleteRegistrantProfileRequest
 //
@@ -1364,7 +1467,77 @@ func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRe
 
 // Summary:
 //
-// 取消域名特殊业务流程
+// Retrieves information from the domain name knowledge base.
+//
+// @param request - DomainKnowledgeRetrieveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DomainKnowledgeRetrieveResponse
+func (client *Client) DomainKnowledgeRetrieveWithOptions(request *DomainKnowledgeRetrieveRequest, runtime *dara.RuntimeOptions) (_result *DomainKnowledgeRetrieveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GlobalTopN) {
+		query["GlobalTopN"] = request.GlobalTopN
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Site) {
+		query["Site"] = request.Site
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DomainKnowledgeRetrieve"),
+		Version:     dara.String("2018-01-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DomainKnowledgeRetrieveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves information from the domain name knowledge base.
+//
+// @param request - DomainKnowledgeRetrieveRequest
+//
+// @return DomainKnowledgeRetrieveResponse
+func (client *Client) DomainKnowledgeRetrieve(request *DomainKnowledgeRetrieveRequest) (_result *DomainKnowledgeRetrieveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DomainKnowledgeRetrieveResponse{}
+	_body, _err := client.DomainKnowledgeRetrieveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Cancel the special business process for a domain name
 //
 // @param request - DomainSpecialBizCancelRequest
 //
@@ -1414,7 +1587,7 @@ func (client *Client) DomainSpecialBizCancelWithOptions(request *DomainSpecialBi
 
 // Summary:
 //
-// 取消域名特殊业务流程
+// # Cancel the special business process for a domain name
 //
 // @param request - DomainSpecialBizCancelRequest
 //
@@ -1502,7 +1675,7 @@ func (client *Client) EmailVerified(request *EmailVerifiedRequest) (_result *Ema
 
 // Summary:
 //
-// 通过关键字进行模糊匹配
+// Invoke FuzzyMatchDomainSensitiveWord to check whether a domain name contains sensitive words.
 //
 // @param request - FuzzyMatchDomainSensitiveWordRequest
 //
@@ -1554,7 +1727,7 @@ func (client *Client) FuzzyMatchDomainSensitiveWordWithOptions(request *FuzzyMat
 
 // Summary:
 //
-// 通过关键字进行模糊匹配
+// Invoke FuzzyMatchDomainSensitiveWord to check whether a domain name contains sensitive words.
 //
 // @param request - FuzzyMatchDomainSensitiveWordRequest
 //
@@ -1632,6 +1805,10 @@ func (client *Client) GetIntlFixPriceDomainListUrl(request *GetIntlFixPriceDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke GetOperationOssUploadPolicy to obtain the storage information for review materials.
+//
 // @param request - GetOperationOssUploadPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1676,6 +1853,10 @@ func (client *Client) GetOperationOssUploadPolicyWithOptions(request *GetOperati
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke GetOperationOssUploadPolicy to obtain the storage information for review materials.
+//
 // @param request - GetOperationOssUploadPolicyRequest
 //
 // @return GetOperationOssUploadPolicyResponse
@@ -1690,6 +1871,10 @@ func (client *Client) GetOperationOssUploadPolicy(request *GetOperationOssUpload
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain the authorization policy corresponding to the ".restaurant" and ".trademark" domain names.
+//
 // @param request - GetQualificationUploadPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1734,6 +1919,10 @@ func (client *Client) GetQualificationUploadPolicyWithOptions(request *GetQualif
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain the authorization policy corresponding to the ".restaurant" and ".trademark" domain names.
+//
 // @param request - GetQualificationUploadPolicyRequest
 //
 // @return GetQualificationUploadPolicyResponse
@@ -1748,6 +1937,10 @@ func (client *Client) GetQualificationUploadPolicy(request *GetQualificationUplo
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the ListEmailVerification API to query the email verification list.
+//
 // @param request - ListEmailVerificationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1816,6 +2009,10 @@ func (client *Client) ListEmailVerificationWithOptions(request *ListEmailVerific
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the ListEmailVerification API to query the email verification list.
+//
 // @param request - ListEmailVerificationRequest
 //
 // @return ListEmailVerificationResponse
@@ -1940,6 +2137,10 @@ func (client *Client) ListServerLock(request *ListServerLockRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Call `LookupTmchNotice` to look up a trademark term from the TMCH by passing it as the `key`.
+//
 // @param request - LookupTmchNoticeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1988,6 +2189,10 @@ func (client *Client) LookupTmchNoticeWithOptions(request *LookupTmchNoticeReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Call `LookupTmchNotice` to look up a trademark term from the TMCH by passing it as the `key`.
+//
 // @param request - LookupTmchNoticeRequest
 //
 // @return LookupTmchNoticeResponse
@@ -2002,6 +2207,14 @@ func (client *Client) LookupTmchNotice(request *LookupTmchNoticeRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke PollTaskResult to obtain a list of domain name job details that have completed execution (including jobs that succeeded or failed and exceeded the retry count).
+//
+// Description:
+//
+// This API must be used together with [AcknowledgeTaskResult](~~AcknowledgeTaskResult~~) to confirm job results. Once a job result is confirmed, the corresponding job record can no longer be queried through this API.
+//
 // @param request - PollTaskResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2070,6 +2283,14 @@ func (client *Client) PollTaskResultWithOptions(request *PollTaskResultRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke PollTaskResult to obtain a list of domain name job details that have completed execution (including jobs that succeeded or failed and exceeded the retry count).
+//
+// Description:
+//
+// This API must be used together with [AcknowledgeTaskResult](~~AcknowledgeTaskResult~~) to confirm job results. Once a job result is confirmed, the corresponding job record can no longer be queried through this API.
+//
 // @param request - PollTaskResultRequest
 //
 // @return PollTaskResultResponse
@@ -2086,7 +2307,11 @@ func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *P
 
 // Summary:
 //
-// Searches for domain names by using the advanced search feature.
+// Invoke QueryAdvancedDomainList to perform an advanced search of the domain name list.
+//
+// Description:
+//
+// Search for domain names under your current Alibaba Cloud account that meet specific conditions. A maximum of **5000*	- entries are displayed. If the result reaches **5000*	- entries, narrow your search scope.
 //
 // @param request - QueryAdvancedDomainListRequest
 //
@@ -2242,7 +2467,11 @@ func (client *Client) QueryAdvancedDomainListWithOptions(request *QueryAdvancedD
 
 // Summary:
 //
-// Searches for domain names by using the advanced search feature.
+// Invoke QueryAdvancedDomainList to perform an advanced search of the domain name list.
+//
+// Description:
+//
+// Search for domain names under your current Alibaba Cloud account that meet specific conditions. A maximum of **5000*	- entries are displayed. If the result reaches **5000*	- entries, narrow your search scope.
 //
 // @param request - QueryAdvancedDomainListRequest
 //
@@ -2258,6 +2487,10 @@ func (client *Client) QueryAdvancedDomainList(request *QueryAdvancedDomainListRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryArtExtension API to query Art extension information.
+//
 // @param request - QueryArtExtensionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2306,6 +2539,10 @@ func (client *Client) QueryArtExtensionWithOptions(request *QueryArtExtensionReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryArtExtension API to query Art extension information.
+//
 // @param request - QueryArtExtensionRequest
 //
 // @return QueryArtExtensionResponse
@@ -2322,7 +2559,7 @@ func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_res
 
 // Summary:
 //
-// Queries the operations logs of a domain name.
+// Call QueryChangeLogList to get a paginated list of the operation logs.
 //
 // @param request - QueryChangeLogListRequest
 //
@@ -2390,7 +2627,7 @@ func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListR
 
 // Summary:
 //
-// Queries the operations logs of a domain name.
+// Call QueryChangeLogList to get a paginated list of the operation logs.
 //
 // @param request - QueryChangeLogListRequest
 //
@@ -2406,6 +2643,10 @@ func (client *Client) QueryChangeLogList(request *QueryChangeLogListRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryContactInfo to query domain contact information.
+//
 // @param request - QueryContactInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2458,6 +2699,10 @@ func (client *Client) QueryContactInfoWithOptions(request *QueryContactInfoReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryContactInfo to query domain contact information.
+//
 // @param request - QueryContactInfoRequest
 //
 // @return QueryContactInfoResponse
@@ -2472,6 +2717,10 @@ func (client *Client) QueryContactInfo(request *QueryContactInfoRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryDSRecord to query the DS records of a domain name.
+//
 // @param request - QueryDSRecordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2520,6 +2769,10 @@ func (client *Client) QueryDSRecordWithOptions(request *QueryDSRecordRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryDSRecord to query the DS records of a domain name.
+//
 // @param request - QueryDSRecordRequest
 //
 // @return QueryDSRecordResponse
@@ -2534,6 +2787,10 @@ func (client *Client) QueryDSRecord(request *QueryDSRecordRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the DNS host for a domain name.
+//
 // @param request - QueryDnsHostRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2582,6 +2839,10 @@ func (client *Client) QueryDnsHostWithOptions(request *QueryDnsHostRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the DNS host for a domain name.
+//
 // @param request - QueryDnsHostRequest
 //
 // @return QueryDnsHostResponse
@@ -2596,6 +2857,10 @@ func (client *Client) QueryDnsHost(request *QueryDnsHostRequest) (_result *Query
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryDomainAdminDivision API to query Chinese administrative regions.
+//
 // @param request - QueryDomainAdminDivisionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2640,6 +2905,10 @@ func (client *Client) QueryDomainAdminDivisionWithOptions(request *QueryDomainAd
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryDomainAdminDivision API to query Chinese administrative regions.
+//
 // @param request - QueryDomainAdminDivisionRequest
 //
 // @return QueryDomainAdminDivisionResponse
@@ -2656,7 +2925,7 @@ func (client *Client) QueryDomainAdminDivision(request *QueryDomainAdminDivision
 
 // Summary:
 //
-// Queries the information about a domain name.
+// Call `QueryDomainByDomainName` to retrieve information about a domain name.
 //
 // @param request - QueryDomainByDomainNameRequest
 //
@@ -2708,7 +2977,7 @@ func (client *Client) QueryDomainByDomainNameWithOptions(request *QueryDomainByD
 
 // Summary:
 //
-// Queries the information about a domain name.
+// Call `QueryDomainByDomainName` to retrieve information about a domain name.
 //
 // @param request - QueryDomainByDomainNameRequest
 //
@@ -2726,7 +2995,7 @@ func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRe
 
 // Summary:
 //
-// Queries the basic information about a domain name based on the instance ID.
+// Call `QueryDomainByInstanceId` to retrieve the basic information of a domain name by instance ID.
 //
 // @param request - QueryDomainByInstanceIdRequest
 //
@@ -2778,7 +3047,7 @@ func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByI
 
 // Summary:
 //
-// Queries the basic information about a domain name based on the instance ID.
+// Call `QueryDomainByInstanceId` to retrieve the basic information of a domain name by instance ID.
 //
 // @param request - QueryDomainByInstanceIdRequest
 //
@@ -2796,7 +3065,7 @@ func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRe
 
 // Summary:
 //
-// Queries a list of domain name groups.
+// Queries a list of domain groups.
 //
 // @param request - QueryDomainGroupListRequest
 //
@@ -2860,7 +3129,7 @@ func (client *Client) QueryDomainGroupListWithOptions(request *QueryDomainGroupL
 
 // Summary:
 //
-// Queries a list of domain name groups.
+// Queries a list of domain groups.
 //
 // @param request - QueryDomainGroupListRequest
 //
@@ -2878,7 +3147,7 @@ func (client *Client) QueryDomainGroupList(request *QueryDomainGroupListRequest)
 
 // Summary:
 //
-// Queries a list of domain names within your Alibaba Cloud account by page.
+// Returns a paginated list of domain names in your account.
 //
 // @param request - QueryDomainListRequest
 //
@@ -2998,7 +3267,7 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 
 // Summary:
 //
-// Queries a list of domain names within your Alibaba Cloud account by page.
+// Returns a paginated list of domain names in your account.
 //
 // @param request - QueryDomainListRequest
 //
@@ -3014,6 +3283,10 @@ func (client *Client) QueryDomainList(request *QueryDomainListRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryDomainRealNameVerificationInfo to query real-name verification information for a domain name.
+//
 // @param request - QueryDomainRealNameVerificationInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3066,6 +3339,10 @@ func (client *Client) QueryDomainRealNameVerificationInfoWithOptions(request *Qu
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryDomainRealNameVerificationInfo to query real-name verification information for a domain name.
+//
 // @param request - QueryDomainRealNameVerificationInfoRequest
 //
 // @return QueryDomainRealNameVerificationInfoResponse
@@ -3154,7 +3431,7 @@ func (client *Client) QueryDomainRealTimePrice(request *QueryDomainRealTimePrice
 
 // Summary:
 //
-// 查询域名特殊业务详情
+// # Query domain name special business details
 //
 // @param request - QueryDomainSpecialBizDetailRequest
 //
@@ -3204,7 +3481,7 @@ func (client *Client) QueryDomainSpecialBizDetailWithOptions(request *QueryDomai
 
 // Summary:
 //
-// 查询域名特殊业务详情
+// # Query domain name special business details
 //
 // @param request - QueryDomainSpecialBizDetailRequest
 //
@@ -3222,7 +3499,7 @@ func (client *Client) QueryDomainSpecialBizDetail(request *QueryDomainSpecialBiz
 
 // Summary:
 //
-// 通过域名查询域名特殊业务详情
+// # Query domain special business details by domain name
 //
 // @param request - QueryDomainSpecialBizInfoByDomainRequest
 //
@@ -3276,7 +3553,7 @@ func (client *Client) QueryDomainSpecialBizInfoByDomainWithOptions(request *Quer
 
 // Summary:
 //
-// 通过域名查询域名特殊业务详情
+// # Query domain special business details by domain name
 //
 // @param request - QueryDomainSpecialBizInfoByDomainRequest
 //
@@ -3292,6 +3569,10 @@ func (client *Client) QueryDomainSpecialBizInfoByDomain(request *QueryDomainSpec
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available domain name suffixes.
+//
 // @param request - QueryDomainSuffixRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3336,6 +3617,10 @@ func (client *Client) QueryDomainSuffixWithOptions(request *QueryDomainSuffixReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available domain name suffixes.
+//
 // @param request - QueryDomainSuffixRequest
 //
 // @return QueryDomainSuffixResponse
@@ -3352,7 +3637,7 @@ func (client *Client) QueryDomainSuffix(request *QueryDomainSuffixRequest) (_res
 
 // Summary:
 //
-// 查询邮箱验证状态
+// Invoke the QueryEmailVerification API to query the email verification result.
 //
 // @param request - QueryEmailVerificationRequest
 //
@@ -3404,7 +3689,7 @@ func (client *Client) QueryEmailVerificationWithOptions(request *QueryEmailVerif
 
 // Summary:
 //
-// 查询邮箱验证状态
+// Invoke the QueryEmailVerification API to query the email verification result.
 //
 // @param request - QueryEmailVerificationRequest
 //
@@ -3420,6 +3705,10 @@ func (client *Client) QueryEmailVerification(request *QueryEmailVerificationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryEnsAssociation API to query the wallet address attached in the ENS system.
+//
 // @param request - QueryEnsAssociationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3468,6 +3757,10 @@ func (client *Client) QueryEnsAssociationWithOptions(request *QueryEnsAssociatio
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryEnsAssociation API to query the wallet address attached in the ENS system.
+//
 // @param request - QueryEnsAssociationRequest
 //
 // @return QueryEnsAssociationResponse
@@ -3482,6 +3775,10 @@ func (client *Client) QueryEnsAssociation(request *QueryEnsAssociationRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the reasons for real-name verification (including naming review) failure for a domain name.
+//
 // @param request - QueryFailReasonForDomainRealNameVerificationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3534,6 +3831,10 @@ func (client *Client) QueryFailReasonForDomainRealNameVerificationWithOptions(re
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the reasons for real-name verification (including naming review) failure for a domain name.
+//
 // @param request - QueryFailReasonForDomainRealNameVerificationRequest
 //
 // @return QueryFailReasonForDomainRealNameVerificationResponse
@@ -3548,6 +3849,10 @@ func (client *Client) QueryFailReasonForDomainRealNameVerification(request *Quer
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryFailReasonForRegistrantProfileRealNameVerification API to query the reasons why identity verification for an information template failed the Review.
+//
 // @param request - QueryFailReasonForRegistrantProfileRealNameVerificationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3596,6 +3901,10 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWit
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryFailReasonForRegistrantProfileRealNameVerification API to query the reasons why identity verification for an information template failed the Review.
+//
 // @param request - QueryFailReasonForRegistrantProfileRealNameVerificationRequest
 //
 // @return QueryFailReasonForRegistrantProfileRealNameVerificationResponse
@@ -3610,6 +3919,10 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerification(re
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the reasons for qualification verification failure for ".restaurant" and ".trademark" domain names.
+//
 // @param request - QueryFailingReasonListForQualificationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3666,6 +3979,10 @@ func (client *Client) QueryFailingReasonListForQualificationWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the reasons for qualification verification failure for ".restaurant" and ".trademark" domain names.
+//
 // @param request - QueryFailingReasonListForQualificationRequest
 //
 // @return QueryFailingReasonListForQualificationResponse
@@ -3682,7 +3999,7 @@ func (client *Client) QueryFailingReasonListForQualification(request *QueryFaili
 
 // Summary:
 //
-// Queries the list of fixed-price orders at the international site (alibabacloud.com).
+// Queries the list of international fixed-price orders by calling QueryIntlFixedPriceOrderList.
 //
 // @param request - QueryIntlFixedPriceOrderListRequest
 //
@@ -3738,7 +4055,7 @@ func (client *Client) QueryIntlFixedPriceOrderListWithOptions(request *QueryIntl
 
 // Summary:
 //
-// Queries the list of fixed-price orders at the international site (alibabacloud.com).
+// Queries the list of international fixed-price orders by calling QueryIntlFixedPriceOrderList.
 //
 // @param request - QueryIntlFixedPriceOrderListRequest
 //
@@ -3754,6 +4071,10 @@ func (client *Client) QueryIntlFixedPriceOrderList(request *QueryIntlFixedPriceO
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryLocalEnsAssociation to query the ENS binding address recorded in the Alibaba Cloud system.
+//
 // @param request - QueryLocalEnsAssociationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3802,6 +4123,10 @@ func (client *Client) QueryLocalEnsAssociationWithOptions(request *QueryLocalEns
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryLocalEnsAssociation to query the ENS binding address recorded in the Alibaba Cloud system.
+//
 // @param request - QueryLocalEnsAssociationRequest
 //
 // @return QueryLocalEnsAssociationResponse
@@ -3816,6 +4141,10 @@ func (client *Client) QueryLocalEnsAssociation(request *QueryLocalEnsAssociation
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryOperationAuditInfoDetail API to query the details of a self-service operation review record.
+//
 // @param request - QueryOperationAuditInfoDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3860,6 +4189,10 @@ func (client *Client) QueryOperationAuditInfoDetailWithOptions(request *QueryOpe
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryOperationAuditInfoDetail API to query the details of a self-service operation review record.
+//
 // @param request - QueryOperationAuditInfoDetailRequest
 //
 // @return QueryOperationAuditInfoDetailResponse
@@ -3874,6 +4207,10 @@ func (client *Client) QueryOperationAuditInfoDetail(request *QueryOperationAudit
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke QueryOperationAuditInfoList to query the list of review records for self-service operations.
+//
 // @param request - QueryOperationAuditInfoListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3934,6 +4271,10 @@ func (client *Client) QueryOperationAuditInfoListWithOptions(request *QueryOpera
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke QueryOperationAuditInfoList to query the list of review records for self-service operations.
+//
 // @param request - QueryOperationAuditInfoListRequest
 //
 // @return QueryOperationAuditInfoListResponse
@@ -3948,6 +4289,10 @@ func (client *Client) QueryOperationAuditInfoList(request *QueryOperationAuditIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the qualification verification details of ".restaurant" and ".trademark" domain names.
+//
 // @param request - QueryQualificationDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4000,6 +4345,10 @@ func (client *Client) QueryQualificationDetailWithOptions(request *QueryQualific
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the qualification verification details of ".restaurant" and ".trademark" domain names.
+//
 // @param request - QueryQualificationDetailRequest
 //
 // @return QueryQualificationDetailResponse
@@ -4014,6 +4363,10 @@ func (client *Client) QueryQualificationDetail(request *QueryQualificationDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryRegistrantProfileRealNameVerificationInfo API to query the identity verification documents of an information template.
+//
 // @param request - QueryRegistrantProfileRealNameVerificationInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4066,6 +4419,10 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithOptions(
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the QueryRegistrantProfileRealNameVerificationInfo API to query the identity verification documents of an information template.
+//
 // @param request - QueryRegistrantProfileRealNameVerificationInfoRequest
 //
 // @return QueryRegistrantProfileRealNameVerificationInfoResponse
@@ -4082,15 +4439,15 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfo(request *Qu
 
 // Summary:
 //
-// Queries the registrant profiles that belong to your Alibaba Cloud account.
+// Queries the domain name registrant profiles under the current account.
 //
 // Description:
 //
-// You can use optional request parameters to specify specific query criteria to query registrant profiles as required. For example:
+// You can pass in optional parameters to help you find registrant profiles more precisely. For example:
 //
-//   - If you know the ID of the profile that you want to query, you can use the registrant profile ID parameter to query the detailed information about the profile.
+// - If you already know the ID of a registrant profile, you can pass in the registrant profile ID to query detailed profile information.
 //
-//   - If you do not know the ID of the profile that you want to query, you can use parameters such as the registrant name parameter to query the detailed information about the profile.
+// - If you do not know the ID of a registrant profile, you can pass in parameters such as the domain name registrant name to query detailed profile information.
 //
 // @param request - QueryRegistrantProfilesRequest
 //
@@ -4182,15 +4539,15 @@ func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistran
 
 // Summary:
 //
-// Queries the registrant profiles that belong to your Alibaba Cloud account.
+// Queries the domain name registrant profiles under the current account.
 //
 // Description:
 //
-// You can use optional request parameters to specify specific query criteria to query registrant profiles as required. For example:
+// You can pass in optional parameters to help you find registrant profiles more precisely. For example:
 //
-//   - If you know the ID of the profile that you want to query, you can use the registrant profile ID parameter to query the detailed information about the profile.
+// - If you already know the ID of a registrant profile, you can pass in the registrant profile ID to query detailed profile information.
 //
-//   - If you do not know the ID of the profile that you want to query, you can use parameters such as the registrant name parameter to query the detailed information about the profile.
+// - If you do not know the ID of a registrant profile, you can pass in parameters such as the domain name registrant name to query detailed profile information.
 //
 // @param request - QueryRegistrantProfilesRequest
 //
@@ -4206,6 +4563,10 @@ func (client *Client) QueryRegistrantProfiles(request *QueryRegistrantProfilesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the registry lock details of a domain name.
+//
 // @param request - QueryServerLockRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4254,6 +4615,10 @@ func (client *Client) QueryServerLockWithOptions(request *QueryServerLockRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the registry lock details of a domain name.
+//
 // @param request - QueryServerLockRequest
 //
 // @return QueryServerLockResponse
@@ -4268,6 +4633,10 @@ func (client *Client) QueryServerLock(request *QueryServerLockRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke QueryTaskDetailHistory to perform a paged query on the detail history list of a specified domain name job.
+//
 // @param request - QueryTaskDetailHistoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4336,6 +4705,10 @@ func (client *Client) QueryTaskDetailHistoryWithOptions(request *QueryTaskDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke QueryTaskDetailHistory to perform a paged query on the detail history list of a specified domain name job.
+//
 // @param request - QueryTaskDetailHistoryRequest
 //
 // @return QueryTaskDetailHistoryResponse
@@ -4352,7 +4725,7 @@ func (client *Client) QueryTaskDetailHistory(request *QueryTaskDetailHistoryRequ
 
 // Summary:
 //
-// Queries the details of a specific domain name task by page.
+// Queries the details list of a specified domain name task by paging.
 //
 // @param request - QueryTaskDetailListRequest
 //
@@ -4424,7 +4797,7 @@ func (client *Client) QueryTaskDetailListWithOptions(request *QueryTaskDetailLis
 
 // Summary:
 //
-// Queries the details of a specific domain name task by page.
+// Queries the details list of a specified domain name task by paging.
 //
 // @param request - QueryTaskDetailListRequest
 //
@@ -4440,6 +4813,10 @@ func (client *Client) QueryTaskDetailList(request *QueryTaskDetailListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke QueryTaskInfoHistory to perform a paged query of the domain name job history list under your account.
+//
 // @param request - QueryTaskInfoHistoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4504,6 +4881,10 @@ func (client *Client) QueryTaskInfoHistoryWithOptions(request *QueryTaskInfoHist
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke QueryTaskInfoHistory to perform a paged query of the domain name job history list under your account.
+//
 // @param request - QueryTaskInfoHistoryRequest
 //
 // @return QueryTaskInfoHistoryResponse
@@ -4520,7 +4901,7 @@ func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest)
 
 // Summary:
 //
-// Queries the domain name tasks under your account by page.
+// Invoke QueryTaskList to perform a paged query of the domain name job list under your account.
 //
 // @param request - QueryTaskListRequest
 //
@@ -4584,7 +4965,7 @@ func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, ru
 
 // Summary:
 //
-// Queries the domain name tasks under your account by page.
+// Invoke QueryTaskList to perform a paged query of the domain name job list under your account.
 //
 // @param request - QueryTaskListRequest
 //
@@ -4600,6 +4981,10 @@ func (client *Client) QueryTaskList(request *QueryTaskListRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryTransferInByInstanceId to query domain name transfer-in information by instance ID.
+//
 // @param request - QueryTransferInByInstanceIdRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4648,6 +5033,10 @@ func (client *Client) QueryTransferInByInstanceIdWithOptions(request *QueryTrans
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryTransferInByInstanceId to query domain name transfer-in information by instance ID.
+//
 // @param request - QueryTransferInByInstanceIdRequest
 //
 // @return QueryTransferInByInstanceIdResponse
@@ -4664,7 +5053,7 @@ func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInst
 
 // Summary:
 //
-// Queries the domain names that are transferred to Alibaba Cloud.
+// Invoke QueryTransferInList to query the domain name transfer-in list.
 //
 // @param request - QueryTransferInListRequest
 //
@@ -4736,7 +5125,7 @@ func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInLis
 
 // Summary:
 //
-// Queries the domain names that are transferred to Alibaba Cloud.
+// Invoke QueryTransferInList to query the domain name transfer-in list.
 //
 // @param request - QueryTransferInListRequest
 //
@@ -4752,6 +5141,10 @@ func (client *Client) QueryTransferInList(request *QueryTransferInListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryTransferOutInfo to query domain name transfer-out information.
+//
 // @param request - QueryTransferOutInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4800,6 +5193,10 @@ func (client *Client) QueryTransferOutInfoWithOptions(request *QueryTransferOutI
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke QueryTransferOutInfo to query domain name transfer-out information.
+//
 // @param request - QueryTransferOutInfoRequest
 //
 // @return QueryTransferOutInfoResponse
@@ -4816,7 +5213,15 @@ func (client *Client) QueryTransferOutInfo(request *QueryTransferOutInfoRequest)
 
 // Summary:
 //
-// 保存联系人模板实名资料
+// Invoke the RegistrantProfileRealNameVerification API to submit real-name verification for an information template.
+//
+// Description:
+//
+// - Identity verification document review takes 3 to 5 business days. After the authority completes the review, you can invoke the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the identity verification result.
+//
+// - If identity verification fails, refer to [Reasons for Identity Verification Failure and Solutions](https://help.aliyun.com/document_detail/35885.html) for troubleshooting and resolution.
+//
+// > You must invoke this API using the POST method; otherwise, the invocation will fail. When using a software development kit (SDK), set the **method*	- parameter of the request object to **POST**.
 //
 // @param request - RegistrantProfileRealNameVerificationRequest
 //
@@ -4882,7 +5287,15 @@ func (client *Client) RegistrantProfileRealNameVerificationWithOptions(request *
 
 // Summary:
 //
-// 保存联系人模板实名资料
+// Invoke the RegistrantProfileRealNameVerification API to submit real-name verification for an information template.
+//
+// Description:
+//
+// - Identity verification document review takes 3 to 5 business days. After the authority completes the review, you can invoke the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the identity verification result.
+//
+// - If identity verification fails, refer to [Reasons for Identity Verification Failure and Solutions](https://help.aliyun.com/document_detail/35885.html) for troubleshooting and resolution.
+//
+// > You must invoke this API using the POST method; otherwise, the invocation will fail. When using a software development kit (SDK), set the **method*	- parameter of the request object to **POST**.
 //
 // @param request - RegistrantProfileRealNameVerificationRequest
 //
@@ -4900,7 +5313,7 @@ func (client *Client) RegistrantProfileRealNameVerification(request *RegistrantP
 
 // Summary:
 //
-// 重新发送验证邮件
+// Invoke the ResendEmailVerification API to resend the verification email.
 //
 // @param request - ResendEmailVerificationRequest
 //
@@ -4952,7 +5365,7 @@ func (client *Client) ResendEmailVerificationWithOptions(request *ResendEmailVer
 
 // Summary:
 //
-// 重新发送验证邮件
+// Invoke the ResendEmailVerification API to resend the verification email.
 //
 // @param request - ResendEmailVerificationRequest
 //
@@ -4970,7 +5383,7 @@ func (client *Client) ResendEmailVerification(request *ResendEmailVerificationRe
 
 // Summary:
 //
-// 重置资质审核状态
+// Reset the qualification verification status for .restaurant and .trademark domain names.
 //
 // @param request - ResetQualificationVerificationRequest
 //
@@ -5022,7 +5435,7 @@ func (client *Client) ResetQualificationVerificationWithOptions(request *ResetQu
 
 // Summary:
 //
-// 重置资质审核状态
+// Reset the qualification verification status for .restaurant and .trademark domain names.
 //
 // @param request - ResetQualificationVerificationRequest
 //
@@ -5040,7 +5453,7 @@ func (client *Client) ResetQualificationVerification(request *ResetQualification
 
 // Summary:
 //
-// 批量保存域名备注信息
+// Invoke SaveBatchDomainRemark to batch save domain name remarks.
 //
 // @param request - SaveBatchDomainRemarkRequest
 //
@@ -5096,7 +5509,7 @@ func (client *Client) SaveBatchDomainRemarkWithOptions(request *SaveBatchDomainR
 
 // Summary:
 //
-// 批量保存域名备注信息
+// Invoke SaveBatchDomainRemark to batch save domain name remarks.
 //
 // @param request - SaveBatchDomainRemarkRequest
 //
@@ -5114,7 +5527,11 @@ func (client *Client) SaveBatchDomainRemark(request *SaveBatchDomainRemarkReques
 
 // Summary:
 //
-// 批量申请域名快速转出
+// Submits a batch task to quickly transfer out domain names.
+//
+// Description:
+//
+// This is an asynchronous operation. To query the result of the task, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) operation.
 //
 // @param request - SaveBatchTaskForApplyQuickTransferOutOpenlyRequest
 //
@@ -5166,7 +5583,11 @@ func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenlyWithOptions(req
 
 // Summary:
 //
-// 批量申请域名快速转出
+// Submits a batch task to quickly transfer out domain names.
+//
+// Description:
+//
+// This is an asynchronous operation. To query the result of the task, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) operation.
 //
 // @param request - SaveBatchTaskForApplyQuickTransferOutOpenlyRequest
 //
@@ -5184,7 +5605,21 @@ func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenly(request *SaveB
 
 // Summary:
 //
-// Submits a task to register multiple domain names at a time.
+// Submits a batch domain name registration task.
+//
+// Description:
+//
+// Starting from March 1, 2022, domain names can only be registered by using real-name verified domain name registrant profiles. Passing registrant information directly to register domain names is no longer supported.
+//
+// To register a domain name, you must specify associated domain name to be registered, associated domain name registrant information, and the DNS servers. You must associate associated domain name registrant information by using the ID of a real-name verified domain name registrant profile. For DNS servers, you can use the default Alibaba Cloud DNS or specify custom DNS servers.
+//
+// > - The total number of domain names registered per week cannot exceed 100,000.
+//
+// > - Registration payments can only be made by using the account cash balance. Credit limits are not supported.
+//
+// - The request parameter format for the **SaveBatchTaskForCreatingOrderActivate*	- operation is OrderActivateParam.N.*, where N represents the sequence number of associated domain name.
+//
+// To query the task execution result, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation.
 //
 // @param request - SaveBatchTaskForCreatingOrderActivateRequest
 //
@@ -5252,7 +5687,21 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *
 
 // Summary:
 //
-// Submits a task to register multiple domain names at a time.
+// Submits a batch domain name registration task.
+//
+// Description:
+//
+// Starting from March 1, 2022, domain names can only be registered by using real-name verified domain name registrant profiles. Passing registrant information directly to register domain names is no longer supported.
+//
+// To register a domain name, you must specify associated domain name to be registered, associated domain name registrant information, and the DNS servers. You must associate associated domain name registrant information by using the ID of a real-name verified domain name registrant profile. For DNS servers, you can use the default Alibaba Cloud DNS or specify custom DNS servers.
+//
+// > - The total number of domain names registered per week cannot exceed 100,000.
+//
+// > - Registration payments can only be made by using the account cash balance. Credit limits are not supported.
+//
+// - The request parameter format for the **SaveBatchTaskForCreatingOrderActivate*	- operation is OrderActivateParam.N.*, where N represents the sequence number of associated domain name.
+//
+// To query the task execution result, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation.
 //
 // @param request - SaveBatchTaskForCreatingOrderActivateRequest
 //
@@ -5268,6 +5717,14 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivate(request *SaveBatchTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveBatchTaskForCreatingOrderRedeem API to submit a batch domain redeem job.
+//
+// Description:
+//
+// You can query the job execution result by using the [Query Task Detail List](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveBatchTaskForCreatingOrderRedeemRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5332,6 +5789,14 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithOptions(request *Sa
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveBatchTaskForCreatingOrderRedeem API to submit a batch domain redeem job.
+//
+// Description:
+//
+// You can query the job execution result by using the [Query Task Detail List](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveBatchTaskForCreatingOrderRedeemRequest
 //
 // @return SaveBatchTaskForCreatingOrderRedeemResponse
@@ -5348,7 +5813,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeem(request *SaveBatchTask
 
 // Summary:
 //
-// 保存批量任务-续费订单
+// Submits a batch domain name renewal task.
+//
+// Description:
+//
+// To query the task result, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation.
 //
 // @param request - SaveBatchTaskForCreatingOrderRenewRequest
 //
@@ -5416,7 +5885,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenewWithOptions(request *Sav
 
 // Summary:
 //
-// 保存批量任务-续费订单
+// Submits a batch domain name renewal task.
+//
+// Description:
+//
+// To query the task result, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation.
 //
 // @param request - SaveBatchTaskForCreatingOrderRenewRequest
 //
@@ -5432,6 +5905,14 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenew(request *SaveBatchTaskF
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveBatchTaskForCreatingOrderTransfer API to submit a batch domain name transfer-in job.
+//
+// Description:
+//
+// You can query the job execution result by invoking the QueryTaskDetailList API. For more information, see [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.htm?spm=a2c4g.11186623.0.0.5096389cgV6sng).
+//
 // @param request - SaveBatchTaskForCreatingOrderTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5496,6 +5977,14 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransferWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveBatchTaskForCreatingOrderTransfer API to submit a batch domain name transfer-in job.
+//
+// Description:
+//
+// You can query the job execution result by invoking the QueryTaskDetailList API. For more information, see [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.htm?spm=a2c4g.11186623.0.0.5096389cgV6sng).
+//
 // @param request - SaveBatchTaskForCreatingOrderTransferRequest
 //
 // @return SaveBatchTaskForCreatingOrderTransferResponse
@@ -5512,7 +6001,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransfer(request *SaveBatchTa
 
 // Summary:
 //
-// 保存批量任务-开启/关闭whois隐私保护锁
+// Invoke the SaveBatchTaskForDomainNameProxyService API to submit a batch domain name proxy service job.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveBatchTaskForDomainNameProxyServiceRequest
 //
@@ -5572,7 +6065,11 @@ func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request 
 
 // Summary:
 //
-// 保存批量任务-开启/关闭whois隐私保护锁
+// Invoke the SaveBatchTaskForDomainNameProxyService API to submit a batch domain name proxy service job.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveBatchTaskForDomainNameProxyServiceRequest
 //
@@ -5666,7 +6163,11 @@ func (client *Client) SaveBatchTaskForGenerateDomainCertificate(request *SaveBat
 
 // Summary:
 //
-// 批量修改dns
+// Submits a batch task to modify the DNS servers for the specified domain names.
+//
+// Description:
+//
+// To query the task result, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveBatchTaskForModifyingDomainDnsRequest
 //
@@ -5726,7 +6227,11 @@ func (client *Client) SaveBatchTaskForModifyingDomainDnsWithOptions(request *Sav
 
 // Summary:
 //
-// 批量修改dns
+// Submits a batch task to modify the DNS servers for the specified domain names.
+//
+// Description:
+//
+// To query the task result, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveBatchTaskForModifyingDomainDnsRequest
 //
@@ -5744,7 +6249,11 @@ func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskF
 
 // Summary:
 //
-// Submits a task to reserve multiple domain names that are provided by HiChina.
+// Call the SaveBatchTaskForReserveDropListDomain API to submit a batch task for domain reservation.
+//
+// Description:
+//
+// To query task execution results, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveBatchTaskForReserveDropListDomainRequest
 //
@@ -5792,7 +6301,11 @@ func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *
 
 // Summary:
 //
-// Submits a task to reserve multiple domain names that are provided by HiChina.
+// Call the SaveBatchTaskForReserveDropListDomain API to submit a batch task for domain reservation.
+//
+// Description:
+//
+// To query task execution results, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveBatchTaskForReserveDropListDomainRequest
 //
@@ -5810,7 +6323,11 @@ func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTa
 
 // Summary:
 //
-// Submits multiple transfer-out tasks based on the transfer keys of domain names.
+// Submits a batch transfer-out task for multiple domain names using their authorization codes.
+//
+// Description:
+//
+// This is an asynchronous operation. After submitting the task, call `QueryTaskDetailList` to check its status.
 //
 // @param request - SaveBatchTaskForTransferOutByAuthorizationCodeRequest
 //
@@ -5854,7 +6371,11 @@ func (client *Client) SaveBatchTaskForTransferOutByAuthorizationCodeWithOptions(
 
 // Summary:
 //
-// Submits multiple transfer-out tasks based on the transfer keys of domain names.
+// Submits a batch transfer-out task for multiple domain names using their authorization codes.
+//
+// Description:
+//
+// This is an asynchronous operation. After submitting the task, call `QueryTaskDetailList` to check its status.
 //
 // @param request - SaveBatchTaskForTransferOutByAuthorizationCodeRequest
 //
@@ -5872,7 +6393,11 @@ func (client *Client) SaveBatchTaskForTransferOutByAuthorizationCode(request *Sa
 
 // Summary:
 //
-// 保存批量任务-开启/关闭禁止转移锁
+// Call SaveBatchTaskForTransferProhibitionLock to enable or disable the transfer prohibition lock for multiple domain names.
+//
+// Description:
+//
+// To check the result of the task, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveBatchTaskForTransferProhibitionLockRequest
 //
@@ -5928,7 +6453,11 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request
 
 // Summary:
 //
-// 保存批量任务-开启/关闭禁止转移锁
+// Call SaveBatchTaskForTransferProhibitionLock to enable or disable the transfer prohibition lock for multiple domain names.
+//
+// Description:
+//
+// To check the result of the task, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveBatchTaskForTransferProhibitionLockRequest
 //
@@ -5944,6 +6473,14 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLock(request *SaveBatch
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a batch task to enable or disable the update prohibition lock for one or more domain names.
+//
+// Description:
+//
+// To check the status of the task, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) operation.
+//
 // @param request - SaveBatchTaskForUpdateProhibitionLockRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5996,6 +6533,14 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a batch task to enable or disable the update prohibition lock for one or more domain names.
+//
+// Description:
+//
+// To check the status of the task, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) operation.
+//
 // @param request - SaveBatchTaskForUpdateProhibitionLockRequest
 //
 // @return SaveBatchTaskForUpdateProhibitionLockResponse
@@ -6012,7 +6557,11 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLock(request *SaveBatchTa
 
 // Summary:
 //
-// 使用联系人信息修改联系人的批量任务
+// Submit a domain information modification job with new contact information.
+//
+// Description:
+//
+// You can query the job execution result by using the [Query Task Detail List](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveBatchTaskForUpdatingContactInfoByNewContactRequest
 //
@@ -6140,7 +6689,11 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions
 
 // Summary:
 //
-// 使用联系人信息修改联系人的批量任务
+// Submit a domain information modification job with new contact information.
+//
+// Description:
+//
+// You can query the job execution result by using the [Query Task Detail List](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveBatchTaskForUpdatingContactInfoByNewContactRequest
 //
@@ -6158,7 +6711,11 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContact(request *S
 
 // Summary:
 //
-// 使用模板修改联系人的批量任务
+// Call SaveBatchTaskForUpdatingContactInfoByRegistrantProfileId to update the contact information of one or more domain names by using a registrant profile.
+//
+// Description:
+//
+// To check the task result, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation.
 //
 // @param request - SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest
 //
@@ -6222,7 +6779,11 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdWi
 
 // Summary:
 //
-// 使用模板修改联系人的批量任务
+// Call SaveBatchTaskForUpdatingContactInfoByRegistrantProfileId to update the contact information of one or more domain names by using a registrant profile.
+//
+// Description:
+//
+// To check the task result, call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation.
 //
 // @param request - SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest
 //
@@ -6240,7 +6801,7 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByRegistrantProfileId(r
 
 // Summary:
 //
-// 创建/更新域名分组
+// Invoke the SaveDomainGroup API to create or update a domain name group.
 //
 // @param request - SaveDomainGroupRequest
 //
@@ -6296,7 +6857,7 @@ func (client *Client) SaveDomainGroupWithOptions(request *SaveDomainGroupRequest
 
 // Summary:
 //
-// 创建/更新域名分组
+// Invoke the SaveDomainGroup API to create or update a domain name group.
 //
 // @param request - SaveDomainGroupRequest
 //
@@ -6314,7 +6875,11 @@ func (client *Client) SaveDomainGroup(request *SaveDomainGroupRequest) (_result 
 
 // Summary:
 //
-// 保存联系人模板
+// Invoke the SaveRegistrantProfile API to create or update a domain name registrant profile.
+//
+// Description:
+//
+// The domain name registrant profile contains registrant information. When you create or update a registrant profile, we recommend that you fill in all registrant information according to your actual situation and ensure consistency between the Chinese and English versions. To avoid faults during domain name registry review, we recommend entering all English registrant information in lowercase letters. For specific requirements, see the parameter descriptions below.
 //
 // @param request - SaveRegistrantProfileRequest
 //
@@ -6442,7 +7007,11 @@ func (client *Client) SaveRegistrantProfileWithOptions(request *SaveRegistrantPr
 
 // Summary:
 //
-// 保存联系人模板
+// Invoke the SaveRegistrantProfile API to create or update a domain name registrant profile.
+//
+// Description:
+//
+// The domain name registrant profile contains registrant information. When you create or update a registrant profile, we recommend that you fill in all registrant information according to your actual situation and ensure consistency between the Chinese and English versions. To avoid faults during domain name registry review, we recommend entering all English registrant information in lowercase letters. For specific requirements, see the parameter descriptions below.
 //
 // @param request - SaveRegistrantProfileRequest
 //
@@ -6460,7 +7029,7 @@ func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileReques
 
 // Summary:
 //
-// 保存联系人模板和凭据
+// Invoke the SaveRegistrantProfileRealNameVerification API to save domain contact and certificate information.
 //
 // @param request - SaveRegistrantProfileRealNameVerificationRequest
 //
@@ -6596,7 +7165,7 @@ func (client *Client) SaveRegistrantProfileRealNameVerificationWithOptions(reque
 
 // Summary:
 //
-// 保存联系人模板和凭据
+// Invoke the SaveRegistrantProfileRealNameVerification API to save domain contact and certificate information.
 //
 // @param request - SaveRegistrantProfileRealNameVerificationRequest
 //
@@ -6614,7 +7183,11 @@ func (client *Client) SaveRegistrantProfileRealNameVerification(request *SaveReg
 
 // Summary:
 //
-// 添加dnsSec记录
+// Invoke the SaveSingleTaskForAddingDSRecord API to submit a job for creating a DS record.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForAddingDSRecordRequest
 //
@@ -6682,7 +7255,11 @@ func (client *Client) SaveSingleTaskForAddingDSRecordWithOptions(request *SaveSi
 
 // Summary:
 //
-// 添加dnsSec记录
+// Invoke the SaveSingleTaskForAddingDSRecord API to submit a job for creating a DS record.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForAddingDSRecordRequest
 //
@@ -6700,7 +7277,11 @@ func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskFor
 
 // Summary:
 //
-// 申请域名快速转出
+// Submits a task for a quick transfer-out of a domain name.
+//
+// Description:
+//
+// This is an asynchronous operation. To check the task\\"s status, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForApplyQuickTransferOutOpenlyRequest
 //
@@ -6752,7 +7333,11 @@ func (client *Client) SaveSingleTaskForApplyQuickTransferOutOpenlyWithOptions(re
 
 // Summary:
 //
-// 申请域名快速转出
+// Submits a task for a quick transfer-out of a domain name.
+//
+// Description:
+//
+// This is an asynchronous operation. To check the task\\"s status, call the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForApplyQuickTransferOutOpenlyRequest
 //
@@ -6838,6 +7423,14 @@ func (client *Client) SaveSingleTaskForApprovingTransferOut(request *SaveSingleT
 	return _result, _err
 }
 
+// Summary:
+//
+// Submit a job to attach an ENS address.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveSingleTaskForAssociatingEnsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6890,6 +7483,14 @@ func (client *Client) SaveSingleTaskForAssociatingEnsWithOptions(request *SaveSi
 	return _result, _err
 }
 
+// Summary:
+//
+// Submit a job to attach an ENS address.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveSingleTaskForAssociatingEnsRequest
 //
 // @return SaveSingleTaskForAssociatingEnsResponse
@@ -6904,6 +7505,14 @@ func (client *Client) SaveSingleTaskForAssociatingEns(request *SaveSingleTaskFor
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveSingleTaskForCancelingTransferIn API to submit a job to cancel a domain name transfer-in.
+//
+// Description:
+//
+// You can query the job execution result by invoking the QueryTaskDetailList API (~~67710~~).
+//
 // @param request - SaveSingleTaskForCancelingTransferInRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6952,6 +7561,14 @@ func (client *Client) SaveSingleTaskForCancelingTransferInWithOptions(request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveSingleTaskForCancelingTransferIn API to submit a job to cancel a domain name transfer-in.
+//
+// Description:
+//
+// You can query the job execution result by invoking the QueryTaskDetailList API (~~67710~~).
+//
 // @param request - SaveSingleTaskForCancelingTransferInRequest
 //
 // @return SaveSingleTaskForCancelingTransferInResponse
@@ -6968,7 +7585,11 @@ func (client *Client) SaveSingleTaskForCancelingTransferIn(request *SaveSingleTa
 
 // Summary:
 //
-// 取消转出
+// Invoke the SaveSingleTaskForCancelingTransferOut API to submit a job to cancel a domain name transfer-out.
+//
+// Description:
+//
+// You can query the job execution result by invoking the QueryTaskDetailList API (~~67710~~).
 //
 // @param request - SaveSingleTaskForCancelingTransferOutRequest
 //
@@ -7020,7 +7641,11 @@ func (client *Client) SaveSingleTaskForCancelingTransferOutWithOptions(request *
 
 // Summary:
 //
-// 取消转出
+// Invoke the SaveSingleTaskForCancelingTransferOut API to submit a job to cancel a domain name transfer-out.
+//
+// Description:
+//
+// You can query the job execution result by invoking the QueryTaskDetailList API (~~67710~~).
 //
 // @param request - SaveSingleTaskForCancelingTransferOutRequest
 //
@@ -7038,7 +7663,11 @@ func (client *Client) SaveSingleTaskForCancelingTransferOut(request *SaveSingleT
 
 // Summary:
 //
-// 保存创建dns服务器的任务请求
+// Invoke SaveSingleTaskForCreatingDnsHost to submit a single job for creating a DNS host.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForCreatingDnsHostRequest
 //
@@ -7098,7 +7727,11 @@ func (client *Client) SaveSingleTaskForCreatingDnsHostWithOptions(request *SaveS
 
 // Summary:
 //
-// 保存创建dns服务器的任务请求
+// Invoke SaveSingleTaskForCreatingDnsHost to submit a single job for creating a DNS host.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForCreatingDnsHostRequest
 //
@@ -7116,7 +7749,15 @@ func (client *Client) SaveSingleTaskForCreatingDnsHost(request *SaveSingleTaskFo
 
 // Summary:
 //
-// 保存单个任务-注册订单
+// Submits a domain name registration task.
+//
+// Description:
+//
+// Starting from March 1, 2022, you can associated domain names only by using real-name verified domain name registrant profiles. Passing registrant information directly to associated domain names is no longer supported.
+//
+// To register a domain name, you must specify the domain name, registrant information, and DNS servers. You must associate the registrant information with a real-name verified domain name registrant profile by specifying the profile ID. You can use the default Alibaba Cloud DNS servers or specify custom DNS servers.
+//
+// You can call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation to query the task execution result.
 //
 // @param request - SaveSingleTaskForCreatingOrderActivateRequest
 //
@@ -7169,6 +7810,10 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request 
 
 	if !dara.IsNil(request.EnableDomainProxy) {
 		query["EnableDomainProxy"] = request.EnableDomainProxy
+	}
+
+	if !dara.IsNil(request.ExpectedPunycode) {
+		query["ExpectedPunycode"] = request.ExpectedPunycode
 	}
 
 	if !dara.IsNil(request.Lang) {
@@ -7288,7 +7933,15 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request 
 
 // Summary:
 //
-// 保存单个任务-注册订单
+// Submits a domain name registration task.
+//
+// Description:
+//
+// Starting from March 1, 2022, you can associated domain names only by using real-name verified domain name registrant profiles. Passing registrant information directly to associated domain names is no longer supported.
+//
+// To register a domain name, you must specify the domain name, registrant information, and DNS servers. You must associate the registrant information with a real-name verified domain name registrant profile by specifying the profile ID. You can use the default Alibaba Cloud DNS servers or specify custom DNS servers.
+//
+// You can call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) operation to query the task execution result.
 //
 // @param request - SaveSingleTaskForCreatingOrderActivateRequest
 //
@@ -7304,6 +7957,14 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivate(request *SaveSingle
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke SaveSingleTaskForCreatingOrderRedeem to submit a domain redeem job.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveSingleTaskForCreatingOrderRedeemRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7372,6 +8033,14 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithOptions(request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke SaveSingleTaskForCreatingOrderRedeem to submit a domain redeem job.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveSingleTaskForCreatingOrderRedeemRequest
 //
 // @return SaveSingleTaskForCreatingOrderRedeemResponse
@@ -7388,7 +8057,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeem(request *SaveSingleTa
 
 // Summary:
 //
-// 保存单个任务-续费订单
+// Use SaveSingleTaskForCreatingOrderRenew to submit a domain name renewal task.
+//
+// Description:
+//
+// To check the execution results of the task, call [QueryTaskDetailList](~~QueryTaskDetailList~~).
 //
 // @param request - SaveSingleTaskForCreatingOrderRenewRequest
 //
@@ -7468,7 +8141,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *Sa
 
 // Summary:
 //
-// 保存单个任务-续费订单
+// Use SaveSingleTaskForCreatingOrderRenew to submit a domain name renewal task.
+//
+// Description:
+//
+// To check the execution results of the task, call [QueryTaskDetailList](~~QueryTaskDetailList~~).
 //
 // @param request - SaveSingleTaskForCreatingOrderRenewRequest
 //
@@ -7484,6 +8161,14 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenew(request *SaveSingleTas
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveSingleTaskForCreatingOrderTransfer API to submit a domain name transfer-in job.
+//
+// Description:
+//
+// You can query the task execution result by calling the QueryTaskDetailList API (~~67710~~).
+//
 // @param request - SaveSingleTaskForCreatingOrderTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7560,6 +8245,14 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransferWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveSingleTaskForCreatingOrderTransfer API to submit a domain name transfer-in job.
+//
+// Description:
+//
+// You can query the task execution result by calling the QueryTaskDetailList API (~~67710~~).
+//
 // @param request - SaveSingleTaskForCreatingOrderTransferRequest
 //
 // @return SaveSingleTaskForCreatingOrderTransferResponse
@@ -7576,7 +8269,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransfer(request *SaveSingle
 
 // Summary:
 //
-// 删除dnsSec记录
+// Invoke the SaveSingleTaskForDeletingDSRecord API to submit a job for deleting a DS record.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForDeletingDSRecordRequest
 //
@@ -7632,7 +8329,11 @@ func (client *Client) SaveSingleTaskForDeletingDSRecordWithOptions(request *Save
 
 // Summary:
 //
-// 删除dnsSec记录
+// Invoke the SaveSingleTaskForDeletingDSRecord API to submit a job for deleting a DS record.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForDeletingDSRecordRequest
 //
@@ -7650,7 +8351,11 @@ func (client *Client) SaveSingleTaskForDeletingDSRecord(request *SaveSingleTaskF
 
 // Summary:
 //
-// 删除DNS HOST任务
+// Invoke the SaveSingleTaskForDeletingDnsHost API to submit a job for deleting a DNS host.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForDeletingDnsHostRequest
 //
@@ -7706,7 +8411,11 @@ func (client *Client) SaveSingleTaskForDeletingDnsHostWithOptions(request *SaveS
 
 // Summary:
 //
-// 删除DNS HOST任务
+// Invoke the SaveSingleTaskForDeletingDnsHost API to submit a job for deleting a DNS host.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForDeletingDnsHostRequest
 //
@@ -7722,6 +8431,14 @@ func (client *Client) SaveSingleTaskForDeletingDnsHost(request *SaveSingleTaskFo
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveSingleTaskForDisassociatingEns API to submit a job for detaching an ENS address.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveSingleTaskForDisassociatingEnsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7770,6 +8487,14 @@ func (client *Client) SaveSingleTaskForDisassociatingEnsWithOptions(request *Sav
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the SaveSingleTaskForDisassociatingEns API to submit a job for detaching an ENS address.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
+//
 // @param request - SaveSingleTaskForDisassociatingEnsRequest
 //
 // @return SaveSingleTaskForDisassociatingEnsResponse
@@ -7786,7 +8511,11 @@ func (client *Client) SaveSingleTaskForDisassociatingEns(request *SaveSingleTask
 
 // Summary:
 //
-// 保存单个任务-开启/关闭whois隐私保护锁
+// Invoke the SaveSingleTaskForDomainNameProxyService API to submit a domain name proxy service job.
+//
+// Description:
+//
+// Invoke the SaveSingleTaskForDomainNameProxyService API to submit a domain name proxy service job.
 //
 // @param request - SaveSingleTaskForDomainNameProxyServiceRequest
 //
@@ -7842,7 +8571,11 @@ func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithOptions(request
 
 // Summary:
 //
-// 保存单个任务-开启/关闭whois隐私保护锁
+// Invoke the SaveSingleTaskForDomainNameProxyService API to submit a domain name proxy service job.
+//
+// Description:
+//
+// Invoke the SaveSingleTaskForDomainNameProxyService API to submit a domain name proxy service job.
 //
 // @param request - SaveSingleTaskForDomainNameProxyServiceRequest
 //
@@ -7930,7 +8663,11 @@ func (client *Client) SaveSingleTaskForGenerateDomainCertificate(request *SaveSi
 
 // Summary:
 //
-// 修改DnsSec记录
+// Invoke SaveSingleTaskForModifyingDSRecord to submit a job for modifying a DS record.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForModifyingDSRecordRequest
 //
@@ -7998,7 +8735,11 @@ func (client *Client) SaveSingleTaskForModifyingDSRecordWithOptions(request *Sav
 
 // Summary:
 //
-// 修改DnsSec记录
+// Invoke SaveSingleTaskForModifyingDSRecord to submit a job for modifying a DS record.
+//
+// Description:
+//
+// You can query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForModifyingDSRecordRequest
 //
@@ -8016,7 +8757,11 @@ func (client *Client) SaveSingleTaskForModifyingDSRecord(request *SaveSingleTask
 
 // Summary:
 //
-// 保存修改dns服务器的任务请求
+// Invoke the SaveSingleTaskForModifyingDnsHost API to submit a job for modifying a DNS host.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForModifyingDnsHostRequest
 //
@@ -8076,7 +8821,11 @@ func (client *Client) SaveSingleTaskForModifyingDnsHostWithOptions(request *Save
 
 // Summary:
 //
-// 保存修改dns服务器的任务请求
+// Invoke the SaveSingleTaskForModifyingDnsHost API to submit a job for modifying a DNS host.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForModifyingDnsHostRequest
 //
@@ -8094,7 +8843,11 @@ func (client *Client) SaveSingleTaskForModifyingDnsHost(request *SaveSingleTaskF
 
 // Summary:
 //
-// 发送转移码
+// Invoke the SaveSingleTaskForQueryingTransferAuthorizationCode API to submit a job for retrieving the domain name transfer password.
+//
+// Description:
+//
+// You can query the job execution result by calling the QueryTaskDetailList API (~~67710~~). The transfer password is returned in the TaskResult field of the corresponding job.
 //
 // @param request - SaveSingleTaskForQueryingTransferAuthorizationCodeRequest
 //
@@ -8146,7 +8899,11 @@ func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithOpti
 
 // Summary:
 //
-// 发送转移码
+// Invoke the SaveSingleTaskForQueryingTransferAuthorizationCode API to submit a job for retrieving the domain name transfer password.
+//
+// Description:
+//
+// You can query the job execution result by calling the QueryTaskDetailList API (~~67710~~). The transfer password is returned in the TaskResult field of the corresponding job.
 //
 // @param request - SaveSingleTaskForQueryingTransferAuthorizationCodeRequest
 //
@@ -8238,7 +8995,11 @@ func (client *Client) SaveSingleTaskForReserveDropListDomain(request *SaveSingle
 
 // Summary:
 //
-// 保存art扩展信息任务
+// Invoke the SaveSingleTaskForSaveArtExtension API to submit a job for creating Art extension information.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForSaveArtExtensionRequest
 //
@@ -8326,7 +9087,11 @@ func (client *Client) SaveSingleTaskForSaveArtExtensionWithOptions(request *Save
 
 // Summary:
 //
-// 保存art扩展信息任务
+// Invoke the SaveSingleTaskForSaveArtExtension API to submit a job for creating Art extension information.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForSaveArtExtensionRequest
 //
@@ -8344,7 +9109,11 @@ func (client *Client) SaveSingleTaskForSaveArtExtension(request *SaveSingleTaskF
 
 // Summary:
 //
-// 同步DnsSec记录
+// Invoke the SaveSingleTaskForSynchronizingDSRecord API to submit a job for synchronizing a DS record.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForSynchronizingDSRecordRequest
 //
@@ -8396,7 +9165,11 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithOptions(request 
 
 // Summary:
 //
-// 同步DnsSec记录
+// Invoke the SaveSingleTaskForSynchronizingDSRecord API to submit a job for synchronizing a DS record.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForSynchronizingDSRecordRequest
 //
@@ -8414,7 +9187,11 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecord(request *SaveSingle
 
 // Summary:
 //
-// 保存同步dns服务器的任务请求
+// Invoke the SaveSingleTaskForSynchronizingDnsHost API to submit a DNS host synchronization job. This is used to handle cases such as missing or inconsistent DNS hosts.
+//
+// Description:
+//
+// You can query the job execution result by using the [Query Task Detail List](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForSynchronizingDnsHostRequest
 //
@@ -8466,7 +9243,11 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithOptions(request *
 
 // Summary:
 //
-// 保存同步dns服务器的任务请求
+// Invoke the SaveSingleTaskForSynchronizingDnsHost API to submit a DNS host synchronization job. This is used to handle cases such as missing or inconsistent DNS hosts.
+//
+// Description:
+//
+// You can query the job execution result by using the [Query Task Detail List](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForSynchronizingDnsHostRequest
 //
@@ -8558,7 +9339,11 @@ func (client *Client) SaveSingleTaskForTransferOutByAuthorizationCode(request *S
 
 // Summary:
 //
-// 保存单个任务-开启/关闭禁止转移锁
+// Invoke the SaveSingleTaskForTransferProhibitionLock API to submit a transfer prohibition lock job.
+//
+// Description:
+//
+// You can query the task execution result by using the [List Task Details](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForTransferProhibitionLockRequest
 //
@@ -8614,7 +9399,11 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLockWithOptions(reques
 
 // Summary:
 //
-// 保存单个任务-开启/关闭禁止转移锁
+// Invoke the SaveSingleTaskForTransferProhibitionLock API to submit a transfer prohibition lock job.
+//
+// Description:
+//
+// You can query the task execution result by using the [List Task Details](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForTransferProhibitionLockRequest
 //
@@ -8632,7 +9421,11 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLock(request *SaveSing
 
 // Summary:
 //
-// 保存单个任务-开启/关闭信息安全锁
+// Invoke the SaveSingleTaskForUpdateProhibitionLock API to submit a task for the Update Prohibition Lock.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForUpdateProhibitionLockRequest
 //
@@ -8688,7 +9481,11 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithOptions(request 
 
 // Summary:
 //
-// 保存单个任务-开启/关闭信息安全锁
+// Invoke the SaveSingleTaskForUpdateProhibitionLock API to submit a task for the Update Prohibition Lock.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](~~QueryTaskDetailList~~) API.
 //
 // @param request - SaveSingleTaskForUpdateProhibitionLockRequest
 //
@@ -8706,7 +9503,11 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLock(request *SaveSingle
 
 // Summary:
 //
-// 保存修改联系人的任务
+// Invoke the SaveSingleTaskForUpdatingContactInfo API to submit a domain contact information update job.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForUpdatingContactInfoRequest
 //
@@ -8774,7 +9575,11 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfoWithOptions(request *S
 
 // Summary:
 //
-// 保存修改联系人的任务
+// Invoke the SaveSingleTaskForUpdatingContactInfo API to submit a domain contact information update job.
+//
+// Description:
+//
+// You can query the job execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveSingleTaskForUpdatingContactInfoRequest
 //
@@ -8792,7 +9597,11 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfo(request *SaveSingleTa
 
 // Summary:
 //
-// 保存删除域名的任务
+// Submit a domain deletion job. Only whitelist users can access this API.
+//
+// Description:
+//
+// Invoke SaveTaskForSubmittingDomainDelete to submit a domain deletion job.
 //
 // @param request - SaveTaskForSubmittingDomainDeleteRequest
 //
@@ -8844,7 +9653,11 @@ func (client *Client) SaveTaskForSubmittingDomainDeleteWithOptions(request *Save
 
 // Summary:
 //
-// 保存删除域名的任务
+// Submit a domain deletion job. Only whitelist users can access this API.
+//
+// Description:
+//
+// Invoke SaveTaskForSubmittingDomainDelete to submit a domain deletion job.
 //
 // @param request - SaveTaskForSubmittingDomainDeleteRequest
 //
@@ -8862,7 +9675,7 @@ func (client *Client) SaveTaskForSubmittingDomainDelete(request *SaveTaskForSubm
 
 // Summary:
 //
-// 批量提交域名资料
+// Submits real-name verification information for one or more domain names in bulk.
 //
 // @param request - SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 //
@@ -8928,7 +9741,7 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 
 // Summary:
 //
-// 批量提交域名资料
+// Submits real-name verification information for one or more domain names in bulk.
 //
 // @param request - SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 //
@@ -8946,7 +9759,7 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 
 // Summary:
 //
-// 根据模板保存域名的实名认证信息
+// Creates a task to submit real-name verification information for a domain name by using a specified registrant profile.
 //
 // @param request - SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest
 //
@@ -9006,7 +9819,7 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 
 // Summary:
 //
-// 根据模板保存域名的实名认证信息
+// Creates a task to submit real-name verification information for a domain name by using a specified registrant profile.
 //
 // @param request - SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest
 //
@@ -9024,7 +9837,11 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 
 // Summary:
 //
-// 根据联系人信息批量修改注册联系人信息
+// Invoke the SaveTaskForUpdatingRegistrantInfoByIdentityCredential API to submit a batch job for updating registrant contact information by providing contact details and required documentation. You must provide the corresponding documentation as required.
+//
+// Description:
+//
+// Query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest
 //
@@ -9162,7 +9979,11 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithO
 
 // Summary:
 //
-// 根据联系人信息批量修改注册联系人信息
+// Invoke the SaveTaskForUpdatingRegistrantInfoByIdentityCredential API to submit a batch job for updating registrant contact information by providing contact details and required documentation. You must provide the corresponding documentation as required.
+//
+// Description:
+//
+// Query the task execution result by using the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.html) API.
 //
 // @param request - SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest
 //
@@ -9180,7 +10001,11 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredential(requ
 
 // Summary:
 //
-// 根据模板批量修改注册联系人
+// Submits a task to update registrant information using a registrant profile ID.
+//
+// Description:
+//
+// Call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.htm?spm=a2c4g.11186623.0.0.33f47edeV0nkFx) API to check the task result. After a successful update, the registrant information for the domain name is updated to match the registrant profile. If the domain name requires real-name verification, it becomes verified.
 //
 // @param request - SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest
 //
@@ -9240,7 +10065,11 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWith
 
 // Summary:
 //
-// 根据模板批量修改注册联系人
+// Submits a task to update registrant information using a registrant profile ID.
+//
+// Description:
+//
+// Call the [QueryTaskDetailList](https://help.aliyun.com/document_detail/67710.htm?spm=a2c4g.11186623.0.0.33f47edeV0nkFx) API to check the task result. After a successful update, the registrant information for the domain name is updated to match the registrant profile. If the domain name requires real-name verification, it becomes verified.
 //
 // @param request - SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest
 //
@@ -9416,7 +10245,7 @@ func (client *Client) ScrollDomainList(request *ScrollDomainListRequest) (_resul
 
 // Summary:
 //
-// 设置默认模板
+// Invoke the SetDefaultRegistrantProfile API to set the default contact template for a domain name.
 //
 // @param request - SetDefaultRegistrantProfileRequest
 //
@@ -9464,7 +10293,7 @@ func (client *Client) SetDefaultRegistrantProfileWithOptions(request *SetDefault
 
 // Summary:
 //
-// 设置默认模板
+// Invoke the SetDefaultRegistrantProfile API to set the default contact template for a domain name.
 //
 // @param request - SetDefaultRegistrantProfileRequest
 //
@@ -9482,7 +10311,13 @@ func (client *Client) SetDefaultRegistrantProfile(request *SetDefaultRegistrantP
 
 // Summary:
 //
-// 域名设置自动续费
+// Sets or cancels auto-renewal for a domain name.
+//
+// Description:
+//
+// This operation currently supports only domain names registered on the China site (aliyun.com).
+//
+// **Before using this operation, make sure that you fully understand the billing method and [pricing](https://wanwang.aliyun.com/help/price.html?spm=5176.22941859.J_9989412330.10.68a51838KnzTeD) of domain name services.**
 //
 // @param request - SetupDomainAutoRenewRequest
 //
@@ -9530,7 +10365,13 @@ func (client *Client) SetupDomainAutoRenewWithOptions(request *SetupDomainAutoRe
 
 // Summary:
 //
-// 域名设置自动续费
+// Sets or cancels auto-renewal for a domain name.
+//
+// Description:
+//
+// This operation currently supports only domain names registered on the China site (aliyun.com).
+//
+// **Before using this operation, make sure that you fully understand the billing method and [pricing](https://wanwang.aliyun.com/help/price.html?spm=5176.22941859.J_9989412330.10.68a51838KnzTeD) of domain name services.**
 //
 // @param request - SetupDomainAutoRenewRequest
 //
@@ -9548,7 +10389,7 @@ func (client *Client) SetupDomainAutoRenew(request *SetupDomainAutoRenewRequest)
 
 // Summary:
 //
-// 域名特殊业务提交资料
+// # Submit documentation for special domain name services
 //
 // @param request - SubmitDomainSpecialBizCredentialsRequest
 //
@@ -9606,7 +10447,7 @@ func (client *Client) SubmitDomainSpecialBizCredentialsWithOptions(request *Subm
 
 // Summary:
 //
-// 域名特殊业务提交资料
+// # Submit documentation for special domain name services
 //
 // @param request - SubmitDomainSpecialBizCredentialsRequest
 //
@@ -9624,7 +10465,11 @@ func (client *Client) SubmitDomainSpecialBizCredentials(request *SubmitDomainSpe
 
 // Summary:
 //
-// 提交邮箱验证
+// Invoke the SubmitEmailVerification API to send an email verification message.
+//
+// Description:
+//
+// After receiving the verification email, you must log on to your mailbox and complete verification within 3 days. If the verification email has expired, you can invoke the [ResendEmailVerification](https://help.aliyun.com/document_detail/67734.html) API to resend the verification email.
 //
 // @param request - SubmitEmailVerificationRequest
 //
@@ -9680,7 +10525,11 @@ func (client *Client) SubmitEmailVerificationWithOptions(request *SubmitEmailVer
 
 // Summary:
 //
-// 提交邮箱验证
+// Invoke the SubmitEmailVerification API to send an email verification message.
+//
+// Description:
+//
+// After receiving the verification email, you must log on to your mailbox and complete verification within 3 days. If the verification email has expired, you can invoke the [ResendEmailVerification](https://help.aliyun.com/document_detail/67734.html) API to resend the verification email.
 //
 // @param request - SubmitEmailVerificationRequest
 //
@@ -9698,7 +10547,7 @@ func (client *Client) SubmitEmailVerification(request *SubmitEmailVerificationRe
 
 // Summary:
 //
-// 提交申请信息
+// Invoke the SubmitOperationAuditInfo API to submit self-service business review information.
 //
 // @param request - SubmitOperationAuditInfoRequest
 //
@@ -9758,7 +10607,7 @@ func (client *Client) SubmitOperationAuditInfoWithOptions(request *SubmitOperati
 
 // Summary:
 //
-// 提交申请信息
+// Invoke the SubmitOperationAuditInfo API to submit self-service business review information.
 //
 // @param request - SubmitOperationAuditInfoRequest
 //
@@ -9776,7 +10625,7 @@ func (client *Client) SubmitOperationAuditInfo(request *SubmitOperationAuditInfo
 
 // Summary:
 //
-// 提交证件资料
+// Invoke the SubmitOperationCredentials API to submit certificate materials for self-service operations pending review.
 //
 // @param request - SubmitOperationCredentialsRequest
 //
@@ -9836,7 +10685,7 @@ func (client *Client) SubmitOperationCredentialsWithOptions(request *SubmitOpera
 
 // Summary:
 //
-// 提交证件资料
+// Invoke the SubmitOperationCredentials API to submit certificate materials for self-service operations pending review.
 //
 // @param request - SubmitOperationCredentialsRequest
 //
@@ -9852,6 +10701,10 @@ func (client *Client) SubmitOperationCredentials(request *SubmitOperationCredent
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the TransferInCheckMailToken operation to verify the email token of a domain name registrant.
+//
 // @param request - TransferInCheckMailTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9900,6 +10753,10 @@ func (client *Client) TransferInCheckMailTokenWithOptions(request *TransferInChe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the TransferInCheckMailToken operation to verify the email token of a domain name registrant.
+//
 // @param request - TransferInCheckMailTokenRequest
 //
 // @return TransferInCheckMailTokenResponse
@@ -9914,6 +10771,10 @@ func (client *Client) TransferInCheckMailToken(request *TransferInCheckMailToken
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the TransferInReenterTransferAuthorizationCode API to re-enter the transfer password for domain name transfer-in.
+//
 // @param request - TransferInReenterTransferAuthorizationCodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9966,6 +10827,10 @@ func (client *Client) TransferInReenterTransferAuthorizationCodeWithOptions(requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the TransferInReenterTransferAuthorizationCode API to re-enter the transfer password for domain name transfer-in.
+//
 // @param request - TransferInReenterTransferAuthorizationCodeRequest
 //
 // @return TransferInReenterTransferAuthorizationCodeResponse
@@ -9980,6 +10845,14 @@ func (client *Client) TransferInReenterTransferAuthorizationCode(request *Transf
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke TransferInRefetchWhoisEmail to perform email verification for domain transfer-in.
+//
+// Description:
+//
+// The system automatically retrieves the registrant\\"s email address from WHOIS. If the email address is incorrect or cannot be retrieved, the system will re-scrape the WHOIS email address.
+//
 // @param request - TransferInRefetchWhoisEmailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10028,6 +10901,14 @@ func (client *Client) TransferInRefetchWhoisEmailWithOptions(request *TransferIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke TransferInRefetchWhoisEmail to perform email verification for domain transfer-in.
+//
+// Description:
+//
+// The system automatically retrieves the registrant\\"s email address from WHOIS. If the email address is incorrect or cannot be retrieved, the system will re-scrape the WHOIS email address.
+//
 // @param request - TransferInRefetchWhoisEmailRequest
 //
 // @return TransferInRefetchWhoisEmailResponse
@@ -10042,6 +10923,10 @@ func (client *Client) TransferInRefetchWhoisEmail(request *TransferInRefetchWhoi
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the TransferInResendMailToken API to resend the verification email for domain transfer-in.
+//
 // @param request - TransferInResendMailTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10090,6 +10975,10 @@ func (client *Client) TransferInResendMailTokenWithOptions(request *TransferInRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Invoke the TransferInResendMailToken API to resend the verification email for domain transfer-in.
+//
 // @param request - TransferInResendMailTokenRequest
 //
 // @return TransferInResendMailTokenResponse
@@ -10106,7 +10995,7 @@ func (client *Client) TransferInResendMailToken(request *TransferInResendMailTok
 
 // Summary:
 //
-// 向分组设置域名
+// If you use file upload to replace more than 1,000 domain names in a domain name group, the operation is asynchronous. The result is available only after the request is processed.
 //
 // @param request - UpdateDomainToDomainGroupRequest
 //
@@ -10176,7 +11065,7 @@ func (client *Client) UpdateDomainToDomainGroupWithOptions(request *UpdateDomain
 
 // Summary:
 //
-// 向分组设置域名
+// If you use file upload to replace more than 1,000 domain names in a domain name group, the operation is asynchronous. The result is available only after the request is processed.
 //
 // @param request - UpdateDomainToDomainGroupRequest
 //
@@ -10194,7 +11083,7 @@ func (client *Client) UpdateDomainToDomainGroup(request *UpdateDomainToDomainGro
 
 // Summary:
 //
-// 校验联系人信息
+// Whether some parameters are required depends on the requirements of the domain name registry. This API validates the compliance and validity of the input parameters and does not perform validation against actual domain information.
 //
 // @param request - VerifyContactFieldRequest
 //
@@ -10314,7 +11203,7 @@ func (client *Client) VerifyContactFieldWithOptions(request *VerifyContactFieldR
 
 // Summary:
 //
-// 校验联系人信息
+// Whether some parameters are required depends on the requirements of the domain name registry. This API validates the compliance and validity of the input parameters and does not perform validation against actual domain information.
 //
 // @param request - VerifyContactFieldRequest
 //
@@ -10332,7 +11221,7 @@ func (client *Client) VerifyContactField(request *VerifyContactFieldRequest) (_r
 
 // Summary:
 //
-// 验证邮箱Token
+// Invoke the VerifyEmail API to submit email verification.
 //
 // @param request - VerifyEmailRequest
 //
@@ -10384,7 +11273,7 @@ func (client *Client) VerifyEmailWithOptions(request *VerifyEmailRequest, runtim
 
 // Summary:
 //
-// 验证邮箱Token
+// Invoke the VerifyEmail API to submit email verification.
 //
 // @param request - VerifyEmailRequest
 //

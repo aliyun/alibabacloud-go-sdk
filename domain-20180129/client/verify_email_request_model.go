@@ -18,16 +18,30 @@ type iVerifyEmailRequest interface {
 }
 
 type VerifyEmailRequest struct {
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Token code included in the email verification link.
+	//
+	// After the verification email is sent successfully, you can log on to the mailbox to be verified and view the token code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0b32247496409441e9e179ea7c2e0****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// User IP address. You can set it to 127.0.0.1.
+	//
 	// example:
 	//
 	// 127.0.0.1

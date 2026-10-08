@@ -14,6 +14,8 @@ type iCheckIntlFixPriceDomainStatusRequest interface {
 }
 
 type CheckIntlFixPriceDomainStatusRequest struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// appp16.com

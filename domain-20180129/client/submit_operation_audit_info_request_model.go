@@ -22,23 +22,44 @@ type iSubmitOperationAuditInfoRequest interface {
 }
 
 type SubmitOperationAuditInfoRequest struct {
+	// The information to be reviewed. The displayed information varies by business type.
+	//
+	// example:
+	//
+	// 个人 {"regType":1,"registrantName":"张三","registrantNo":"2201919190**","telephone":"1390123****","account":"zhangsan@alimail.com","reason":1,"remark":"账号丢失"} 企业 {"regType":2,"registrantName":"华大信通","operatorName":"王武","operatorNo":"2201811987101901**",      "operatorPhone":"1390123****","account":"wangwu@alimail.com","companyNo":"91361100MA35N6****","reason":2,"remark":"账号丢失"}
 	AuditInfo *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
+	// The business type. Valid values:
+	//
+	// **1**: Transfer a domain name offline, that is, transfer the domain name from the current Alibaba Cloud account to another Alibaba Cloud account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// The domain name. You can specify one or more domain names, separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// example.com,example.org
+	// xxxx.com,yyyy.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The review ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en

@@ -16,12 +16,22 @@ type iQueryOperationAuditInfoDetailRequest interface {
 }
 
 type QueryOperationAuditInfoDetailRequest struct {
+	// Review record ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AuditRecordId *int64 `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
+	// Language for error messages in API responses. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en

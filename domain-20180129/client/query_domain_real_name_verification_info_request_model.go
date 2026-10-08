@@ -20,20 +20,38 @@ type iQueryDomainRealNameVerificationInfoRequest interface {
 }
 
 type QueryDomainRealNameVerificationInfoRequest struct {
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Specifies whether to retrieve the real-name verification image. Valid values:
+	//
+	// - **true**: Retrieve the image.
+	//
+	// - **false**: Do not retrieve the image.
+	//
 	// example:
 	//
 	// false
 	FetchImage *bool `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -16,7 +16,10 @@ type iQueryFailingReasonListForQualificationResponseBody interface {
 }
 
 type QueryFailingReasonListForQualificationResponseBody struct {
+	// List of domain name qualification verification failures.
 	Data []*QueryFailingReasonListForQualificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
@@ -63,10 +66,17 @@ func (s *QueryFailingReasonListForQualificationResponseBody) Validate() error {
 }
 
 type QueryFailingReasonListForQualificationResponseBodyData struct {
+	// Review date.
+	//
 	// example:
 	//
 	// 2017-03-17 11:08:02
-	Date       *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Reason for domain name qualification verification failure.
+	//
+	// example:
+	//
+	// 证件审核不通过
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 }
 

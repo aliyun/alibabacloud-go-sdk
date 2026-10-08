@@ -28,38 +28,66 @@ type iPollTaskResultRequest interface {
 }
 
 type PollTaskResultRequest struct {
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Domain instance ID.
+	//
+	// The system automatically generates this after the information template is created successfully. You can invoke the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the information template ID.
+	//
 	// example:
 	//
 	// S20181T0WLI85212
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value is **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. Maximum value is **1000**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Task result status. Valid values:
+	//
+	// - **2**: Succeeded.
+	//
+	// - **3**: Failed.
+	//
 	// example:
 	//
 	// 2
 	TaskResultStatus *int32 `json:"TaskResultStatus,omitempty" xml:"TaskResultStatus,omitempty"`
+	// User IP address. It can be set to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

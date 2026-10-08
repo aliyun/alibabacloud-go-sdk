@@ -20,22 +20,36 @@ type iSaveSingleTaskForDeletingDSRecordRequest interface {
 }
 
 type SaveSingleTaskForDeletingDSRecordRequest struct {
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Key tag, used to identify DNSSEC records. It is an integer value less than 65536.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

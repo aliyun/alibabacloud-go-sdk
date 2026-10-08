@@ -17,6 +17,8 @@ type iQueryDomainGroupListResponseBody interface {
 
 type QueryDomainGroupListResponseBody struct {
 	Data *QueryDomainGroupListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 80011ABC-F573-4795-B0E8-377BFBBA3422

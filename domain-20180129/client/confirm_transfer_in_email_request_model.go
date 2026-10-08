@@ -20,22 +20,30 @@ type iConfirmTransferInEmailRequest interface {
 }
 
 type ConfirmTransferInEmailRequest struct {
+	// Domain name list
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// abc.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// Mailbox
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test@test.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Language of the error message returned by the API. Valid enumeration values: zh (Chinese); en (English). Default value is en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP
+	//
 	// example:
 	//
 	// 127.0.0.1

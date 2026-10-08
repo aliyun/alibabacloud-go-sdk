@@ -28,31 +28,58 @@ type iSaveDomainGroupResponseBody interface {
 }
 
 type SaveDomainGroupResponseBody struct {
+	// Indicates whether the group is being deleted.
+	//
+	// > For groups containing more than 1,000 domain names, deletion is an asynchronous procedure that requires some time for the system to process. During this period, this field is **true**.
+	//
 	// example:
 	//
 	// false
 	BeingDeleted *bool `json:"BeingDeleted,omitempty" xml:"BeingDeleted,omitempty"`
+	// Creation Time of the domain name group.
+	//
 	// example:
 	//
 	// 2018-04-02 15:59:06
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	// Domain group ID.
+	//
 	// example:
 	//
 	// 123456
-	DomainGroupId   *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// Domain Name Group Name.
+	//
+	// example:
+	//
+	// 测试分组
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// Status of the domain name group. Valid values:
+	//
+	// - **PROCESSING**: Processing;
+	//
+	// - **COMPLETE**: Complete.
+	//
+	// > In cases such as setting a group via a file or replacing a group with more than 1,000 domain names, the operation is asynchronous and requires waiting for system processing. During this time, this field is **PROCESSING**.
+	//
 	// example:
 	//
 	// COMPLETE
 	DomainGroupStatus *string `json:"DomainGroupStatus,omitempty" xml:"DomainGroupStatus,omitempty"`
+	// Updated At time of the domain name group.
+	//
 	// example:
 	//
 	// 2018-04-02 15:59:06
 	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// Unique request identity.
+	//
 	// example:
 	//
 	// 80011ABC-F573-4795-B0E8-377BFBBA3422
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Quantity of domain names.
+	//
 	// example:
 	//
 	// 20

@@ -28,38 +28,74 @@ type iQueryTransferInListRequest interface {
 }
 
 type QueryTransferInListRequest struct {
+	// The domain name, which supports prefix matching (fuzzy query).
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number of the domain name list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size for paging the domain name list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Transfer status. Valid values:
+	//
+	// - **INIT**: Submit transfer-in.
+	//
+	// - **AUTHORIZATION**: Authorize transfer-in (email verification).
+	//
+	// - **NAME_VERIFICATION**: Name review.
+	//
+	// - **PASSWORD_VERIFICATION**: Transfer password verification.
+	//
+	// - **PENDING**: Transfer-in in progress.
+	//
+	// - **SUCCESS**: Transfer-in succeeded.
+	//
+	// - **FAIL**: Transfer-in failed.
+	//
 	// example:
 	//
 	// INIT
 	SimpleTransferInStatus *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
+	// End time for submitting the domain name list for transfer-in.
+	//
 	// example:
 	//
 	// 1514428524669
 	SubmissionEndDate *int64 `json:"SubmissionEndDate,omitempty" xml:"SubmissionEndDate,omitempty"`
+	// The start time for submitting the domain name list for transfer-in.
+	//
 	// example:
 	//
 	// 1514428524669
 	SubmissionStartDate *int64 `json:"SubmissionStartDate,omitempty" xml:"SubmissionStartDate,omitempty"`
+	// The user IP address, which can be set to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

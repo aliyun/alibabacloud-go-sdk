@@ -22,14 +22,22 @@ type iSaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest struct {
+	// The domain name to submit for real-name verification.
+	//
 	// This parameter is required.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the domain name instance.
+	//
 	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the error message to return. Valid values: `zh` (Chinese) and `en` (English). Default value: `en`.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the registrant profile to use for real-name verification.
+	//
 	// This parameter is required.
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// The IP address of the client that makes the request.
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest) String() string {

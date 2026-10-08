@@ -20,20 +20,40 @@ type iSubmitEmailVerificationRequest interface {
 }
 
 type SubmitEmailVerificationRequest struct {
+	// The mailbox that requires verification. Separate multiple mailboxes with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default Value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to resend the verification email if it already exists. Valid values:
+	//
+	// - **true**: Resend the verification email.
+	//
+	// - **false**: Do not resend the verification email.
+	//
+	// Default Value: **false**.
+	//
 	// example:
 	//
 	// false
 	SendIfExist *bool `json:"SendIfExist,omitempty" xml:"SendIfExist,omitempty"`
+	// The user IP address. You can set it to 127.0.0.1.
+	//
 	// example:
 	//
 	// 127.0.0.1

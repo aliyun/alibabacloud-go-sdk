@@ -18,28 +18,10 @@ type iSaveBatchTaskForGenerateDomainCertificateShrinkRequest interface {
 }
 
 type SaveBatchTaskForGenerateDomainCertificateShrinkRequest struct {
-	// The domain names.
-	//
 	// This parameter is required.
 	DomainNamesShrink *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The language of the error message to return if the request fails. Valid values:
-	//
-	// 	- **zh**: Chinese.
-	//
-	// 	- **en**: English.
-	//
-	// Default value: **en**.
-	//
-	// example:
-	//
-	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 127.0.0.1
-	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp      *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForGenerateDomainCertificateShrinkRequest) String() string {

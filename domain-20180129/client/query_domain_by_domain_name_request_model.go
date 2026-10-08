@@ -26,11 +26,11 @@ type QueryDomainByDomainNameRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the error message to return if the request fails. Valid values:
+	// The language of the error message that is returned. Valid values:
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// Default value: **en**.
 	//
@@ -38,7 +38,7 @@ type QueryDomainByDomainNameRequest struct {
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IP address of the client.
+	// The IP address of the user.
 	//
 	// example:
 	//

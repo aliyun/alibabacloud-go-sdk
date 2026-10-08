@@ -20,22 +20,36 @@ type iSaveSingleTaskForAssociatingEnsRequest interface {
 }
 
 type SaveSingleTaskForAssociatingEnsRequest struct {
+	// ENS address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0x1234567890123456789012345678901234567890
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.luxe
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -16,10 +16,14 @@ type iSaveBatchTaskForTransferOutByAuthorizationCodeResponseBody interface {
 }
 
 type SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody struct {
+	// The unique ID for the request.
+	//
 	// example:
 	//
 	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the batch transfer-out task.
+	//
 	// example:
 	//
 	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8

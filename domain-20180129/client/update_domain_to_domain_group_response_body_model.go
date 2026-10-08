@@ -14,6 +14,8 @@ type iUpdateDomainToDomainGroupResponseBody interface {
 }
 
 type UpdateDomainToDomainGroupResponseBody struct {
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528

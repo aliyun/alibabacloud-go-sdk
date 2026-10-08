@@ -28,31 +28,45 @@ type iPollTaskResultResponseBody interface {
 }
 
 type PollTaskResultResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32                          `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *PollTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether there is a next page.
+	//
 	// example:
 	//
 	// false
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Paging size.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
 	// example:
 	//
 	// false
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// E879DC07-38EE-4408-9F33-73B30CD965CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 10
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 10

@@ -26,28 +26,56 @@ type iSaveBatchTaskForCreatingOrderRenewRequest interface {
 }
 
 type SaveBatchTaskForCreatingOrderRenewRequest struct {
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 12312412
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The language of the error messages. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The parameters for each domain name to be renewed.
+	//
 	// This parameter is required.
 	OrderRenewParam []*SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam `json:"OrderRenewParam,omitempty" xml:"OrderRenewParam,omitempty" type:"Repeated"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// 123123123
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - **false**: Do not use a coupon.
+	//
+	// - **true**: Use a coupon.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Specifies whether to use a promotion. Valid values:
+	//
+	// - **false**: Do not use a promotion.
+	//
+	// - **true**: Use a promotion.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// The user\\"s IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1
@@ -139,15 +167,22 @@ func (s *SaveBatchTaskForCreatingOrderRenewRequest) Validate() error {
 }
 
 type SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam struct {
+	// The current expiration date of the domain name, expressed in milliseconds since 00:00:00 UTC on January 1, 1970.
+	//
 	// example:
 	//
 	// 1522080000000
 	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// The domain name that you want to renew. You can obtain a list of your domain names by calling the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) operation.
+	//
 	// example:
 	//
 	// Aliyun.com
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	PermitPremiumRenew *bool   `json:"PermitPremiumRenew,omitempty" xml:"PermitPremiumRenew,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Specifies whether to allow the renewal of premium domain names. Default value: false.
+	PermitPremiumRenew *bool `json:"PermitPremiumRenew,omitempty" xml:"PermitPremiumRenew,omitempty"`
+	// The renewal duration, in years. Default value: **1**. Valid values: **1*	- to **10**.
+	//
 	// example:
 	//
 	// 1

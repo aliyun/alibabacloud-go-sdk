@@ -25,22 +25,32 @@ type iLookupTmchNoticeResponseBody interface {
 
 type LookupTmchNoticeResponseBody struct {
 	Claims *LookupTmchNoticeResponseBodyClaims `json:"Claims,omitempty" xml:"Claims,omitempty" type:"Struct"`
+	// The TMCH notification ID.
+	//
 	// example:
 	//
 	// 586608000000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The trademark label.
+	//
 	// example:
 	//
 	// noted
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The end time of the trademark notice.
+	//
 	// example:
 	//
 	// 2018-10-15T00:00:00.0Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The start time of the trademark notice.
+	//
 	// example:
 	//
 	// 2018-10-13T00:00:00.0Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// A unique identifier for the request.
+	//
 	// example:
 	//
 	// 01C10C8E-0468-468C-BCD9-E709BDD0AE8F

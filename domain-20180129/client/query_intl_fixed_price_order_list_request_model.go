@@ -20,18 +20,26 @@ type iQueryIntlFixedPriceOrderListRequest interface {
 }
 
 type QueryIntlFixedPriceOrderListRequest struct {
+	// The business ID.
+	//
 	// example:
 	//
 	// T2024061115213700****
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The order status.
+	//
 	// example:
 	//
 	// 6

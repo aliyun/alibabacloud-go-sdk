@@ -18,16 +18,28 @@ type iFuzzyMatchDomainSensitiveWordRequest interface {
 }
 
 type FuzzyMatchDomainSensitiveWordRequest struct {
+	// The domain name keyword (a term contained in the domain name excluding its suffix). Separate multiple keywords with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xxx**.cn
+	// xxx**
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The User IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

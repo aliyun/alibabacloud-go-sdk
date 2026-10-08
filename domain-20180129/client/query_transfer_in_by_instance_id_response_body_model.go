@@ -56,87 +56,194 @@ type iQueryTransferInByInstanceIdResponseBody interface {
 }
 
 type QueryTransferInByInstanceIdResponseBody struct {
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Mailbox to which the domain name transfer-in confirmation email was sent.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The expiration time of the domain name transfer-in.
+	//
 	// example:
 	//
 	// 2018-03-28 00:41:42
 	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// The UNIX timestamp indicating when the transfer-in expires.
+	//
 	// example:
 	//
 	// 1514428524669
 	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// S20181T0WLI85212
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The update time of the transfer-in information.
+	//
 	// example:
 	//
 	// 2018-03-28 00:41:42
 	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// The UNIX timestamp indicating when the transfer-in information was updated.
+	//
 	// example:
 	//
 	// 1514428524669
 	ModificationDateLong *int64 `json:"ModificationDateLong,omitempty" xml:"ModificationDateLong,omitempty"`
+	// Indicates whether email verification is required.
+	//
 	// example:
 	//
 	// true
 	NeedMailCheck *bool `json:"NeedMailCheck,omitempty" xml:"NeedMailCheck,omitempty"`
+	// Progress bar chart type for the transfer procedure. Valid values:
+	//
+	// - **0**: Both email verification and naming review are required;
+	//
+	// - **1**: Email verification is required, but naming review is not;
+	//
+	// - **2**: Naming review is required, but email verification is not;
+	//
+	// - **3**: Neither email verification nor naming review is required.
+	//
 	// example:
 	//
 	// 0
 	ProgressBarType *int32 `json:"ProgressBarType,omitempty" xml:"ProgressBarType,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code indicating the reason for transfer failure. Valid values:
+	//
+	// - **clientCancelled**: You canceled the domain transfer-in.
+	//
+	// - **clientRejected**: The original registrar rejected the domain transfer-in (or you performed a rejection operation through the original registrar).
+	//
+	// - **serverCancelled**: The domain name registry canceled the transfer.
+	//
+	// - **transferProhibited**: The domain is in a transfer-prohibited status.
+	//
+	// - **transferExpired**: You did not complete the required transfer confirmation within the validity period.
+	//
+	// - **nameVerificationFailed**: The domain naming review did not pass.
+	//
+	// - **transferSubmitted**: Another user has already submitted a transfer request for this domain.
+	//
 	// example:
 	//
 	// clientCancelled
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The time when the transfer succeeded or failed.
+	//
 	// example:
 	//
 	// 2018-03-28 00:41:42
 	ResultDate *string `json:"ResultDate,omitempty" xml:"ResultDate,omitempty"`
+	// The UNIX timestamp indicating when the transfer succeeded or failed.
+	//
 	// example:
 	//
 	// 1514428524669
-	ResultDateLong *int64  `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
-	ResultMsg      *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	ResultDateLong *int64 `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
+	// Description of the failure reason when the transfer failed.
+	//
+	// example:
+	//
+	// 您取消了此次域名转入
+	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	// Transfer status. Valid values:
+	//
+	// - **INIT**: Transfer-in submitted;
+	//
+	// - **AUTHORIZATION**: Authorization for transfer-in (email verification);
+	//
+	// - **NAME_VERIFICATION**: Naming review;
+	//
+	// - **PASSWORD_VERIFICATION**: Transfer password verification;
+	//
+	// - **PENDING**: Transfer-in in progress;
+	//
+	// - **SUCCESS**: Transfer-in succeeded;
+	//
+	// - **FAIL**: Transfer-in failed.
+	//
 	// example:
 	//
 	// SUCCESS
 	SimpleTransferInStatus *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
+	// Detailed domain name transfer-in status. Valid values:
+	//
+	// - **10**: Initial status;
+	//
+	// - **11**: Email verification token link has been sent;
+	//
+	// - **19**: Token link has been successfully verified;
+	//
+	// - **20**: Naming review has been submitted;
+	//
+	// - **21**: Naming review failed;
+	//
+	// - **29**: Naming review succeeded;
+	//
+	// - **31**: Transfer password is incorrect;
+	//
+	// - **39**: Transfer-in submission succeeded;
+	//
+	// - **50**: Customer canceled the transfer-in;
+	//
+	// - **51**: Transfer-in failed;
+	//
+	// - **52**: Transfer-in expired;
+	//
+	// - **59**: Transfer-in succeeded.
+	//
 	// example:
 	//
 	// 11
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Transfer request submission time.
+	//
 	// example:
 	//
 	// 2018-03-28 00:41:42
 	SubmissionDate *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
+	// UNIX timestamp of the transfer request submission time.
+	//
 	// example:
 	//
 	// 1514428524669
 	SubmissionDateLong *int64 `json:"SubmissionDateLong,omitempty" xml:"SubmissionDateLong,omitempty"`
+	// Time when the transfer password was successfully submitted.
+	//
 	// example:
 	//
 	// 2018-03-28 00:41:42
 	TransferAuthorizationCodeSubmissionDate *string `json:"TransferAuthorizationCodeSubmissionDate,omitempty" xml:"TransferAuthorizationCodeSubmissionDate,omitempty"`
+	// UNIX timestamp of the time when the transfer password was successfully submitted.
+	//
 	// example:
 	//
 	// 1514428524669
 	TransferAuthorizationCodeSubmissionDateLong *int64 `json:"TransferAuthorizationCodeSubmissionDateLong,omitempty" xml:"TransferAuthorizationCodeSubmissionDateLong,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 123456
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Indicates whether the registrant\\"s mailbox was scraped from WHOIS. When the domain transfer-in is in the authorization (email verification) phase and this field is **false**, it means the registrant\\"s mailbox was not obtained via WHOIS scraping, and manual processing is required.
+	//
 	// example:
 	//
 	// true

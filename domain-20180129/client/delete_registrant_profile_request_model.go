@@ -18,16 +18,28 @@ type iDeleteRegistrantProfileRequest interface {
 }
 
 type DeleteRegistrantProfileRequest struct {
+	// The language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the domain name registrant profile to delete. You can call the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the profile ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3600000
 	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// The User IP address. You can set it to 127.0.0.1.
+	//
 	// example:
 	//
 	// 127.0.0.1

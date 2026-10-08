@@ -19,6 +19,8 @@ type iConfirmTransferInEmailResponseBody interface {
 
 type ConfirmTransferInEmailResponseBody struct {
 	FailList *ConfirmTransferInEmailResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Struct"`
+	// Unique request access token
+	//
 	// example:
 	//
 	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528

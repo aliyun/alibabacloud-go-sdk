@@ -22,26 +22,46 @@ type iSaveBatchTaskForModifyingDomainDnsRequest interface {
 }
 
 type SaveBatchTaskForModifyingDomainDnsRequest struct {
+	// Specifies whether to use Alibaba Cloud DNS servers. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	AliyunDns *bool `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// The domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// The new DNS servers. This parameter is required if **AliyunDns*	- is set to **false**.
+	//
 	// example:
 	//
 	// ns1.test.com
 	DomainNameServer []*string `json:"DomainNameServer,omitempty" xml:"DomainNameServer,omitempty" type:"Repeated"`
+	// The language of API error messages. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

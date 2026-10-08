@@ -22,24 +22,48 @@ type iCheckDomainRequest interface {
 }
 
 type CheckDomainRequest struct {
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test**.xin
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Operation command. Valid values:
+	//
+	// - **create**: Purchase.
+	//
+	// - **renew**: Renewal.
+	//
+	// - **transfer**: Transfer-in.
+	//
+	// - **restore**: Redeem.
+	//
 	// example:
 	//
 	// create
 	FeeCommand *string `json:"FeeCommand,omitempty" xml:"FeeCommand,omitempty"`
+	// Currency type. Valid value: **USD*	- (US Dollar).
+	//
 	// example:
 	//
 	// USD
 	FeeCurrency *string `json:"FeeCurrency,omitempty" xml:"FeeCurrency,omitempty"`
+	// Registration period in years. Unit: **year**. Valid range: **1*	- to **10*	- years.
+	//
 	// example:
 	//
 	// 1
 	FeePeriod *int32 `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en

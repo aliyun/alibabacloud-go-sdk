@@ -16,10 +16,14 @@ type iSaveSingleTaskForTransferProhibitionLockResponseBody interface {
 }
 
 type SaveSingleTaskForTransferProhibitionLockResponseBody struct {
+	// Unique request access token.
+	//
 	// example:
 	//
 	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// d3babb0a-c939-4c25-8c65-c47b65f5492a

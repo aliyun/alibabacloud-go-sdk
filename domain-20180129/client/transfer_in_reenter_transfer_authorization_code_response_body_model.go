@@ -14,6 +14,8 @@ type iTransferInReenterTransferAuthorizationCodeResponseBody interface {
 }
 
 type TransferInReenterTransferAuthorizationCodeResponseBody struct {
+	// Unique Request ID.
+	//
 	// example:
 	//
 	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60

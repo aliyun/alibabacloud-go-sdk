@@ -18,16 +18,28 @@ type iSaveSingleTaskForSynchronizingDnsHostRequest interface {
 }
 
 type SaveSingleTaskForSynchronizingDnsHostRequest struct {
+	// Domain instance ID, which can be obtained by invoking the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ST2017120814571100001303
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language for error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -18,16 +18,28 @@ type iSaveTaskForSubmittingDomainDeleteRequest interface {
 }
 
 type SaveTaskForSubmittingDomainDeleteRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S20181*****85212
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the error message returned by the API. Valid values:
+	//
+	// - zh: Chinese.
+	//
+	// - en: English.
+	//
+	// Default value: en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -16,10 +16,14 @@ type iSaveBatchTaskForUpdatingContactInfoByNewContactResponseBody interface {
 }
 
 type SaveBatchTaskForUpdatingContactInfoByNewContactResponseBody struct {
+	// Unique request access token.
+	//
 	// example:
 	//
 	// 464AF466-CA8E-43A8-B61D-test
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 65de2165-ca09-491f-9fe0-test

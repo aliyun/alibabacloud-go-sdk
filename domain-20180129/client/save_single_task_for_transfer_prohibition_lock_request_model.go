@@ -20,22 +20,40 @@ type iSaveSingleTaskForTransferProhibitionLockRequest interface {
 }
 
 type SaveSingleTaskForTransferProhibitionLockRequest struct {
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Enabled or shutdown status. Valid values:
+	//
+	// - **true**: Enabled;
+	//
+	// - **false**: shutdown.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

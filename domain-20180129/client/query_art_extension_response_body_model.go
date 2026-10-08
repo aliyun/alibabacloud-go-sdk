@@ -34,46 +34,68 @@ type iQueryArtExtensionResponseBody interface {
 }
 
 type QueryArtExtensionResponseBody struct {
+	// Creation time.
+	//
 	// example:
 	//
 	// 2019-10-01
 	DateOrPeriod *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
+	// Dimensions.
+	//
 	// example:
 	//
 	// 20 cm
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// Art features.
+	//
 	// example:
 	//
 	// iconicity
 	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	// Inscriptions and markings.
+	//
 	// example:
 	//
 	// realism
 	InscriptionsAndMarkings *string `json:"InscriptionsAndMarkings,omitempty" xml:"InscriptionsAndMarkings,omitempty"`
+	// Artist or creator.
+	//
 	// example:
 	//
 	// zhang san
 	Maker *string `json:"Maker,omitempty" xml:"Maker,omitempty"`
+	// Materials and techniques.
+	//
 	// example:
 	//
 	// silk
 	MaterialsAndTechniques *string `json:"MaterialsAndTechniques,omitempty" xml:"MaterialsAndTechniques,omitempty"`
+	// Art categorization.
+	//
 	// example:
 	//
 	// The embroidery
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// Reference.
+	//
 	// example:
 	//
 	// drawings
 	Reference *string `json:"Reference,omitempty" xml:"Reference,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// 814B2AF0-ED6F-4C13-B41C-8AC0B1023583
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Art subject.
+	//
 	// example:
 	//
 	// peace
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// Name.
+	//
 	// example:
 	//
 	// Peace and friendship

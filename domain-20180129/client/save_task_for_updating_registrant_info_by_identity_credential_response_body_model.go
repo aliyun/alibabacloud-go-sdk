@@ -16,10 +16,14 @@ type iSaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponseBody interfac
 }
 
 type SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponseBody struct {
+	// Unique request ID.
+	//
 	// example:
 	//
 	// EDC28FEC-6BE0-4583-95BC-test
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 880f1579-be51-4dd3-a69d-test

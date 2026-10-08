@@ -16,10 +16,14 @@ type iSubmitOperationAuditInfoResponseBody interface {
 }
 
 type SubmitOperationAuditInfoResponseBody struct {
+	// The system-generated record ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9DKCF6F8-243C-40EC-8035-4B12FEFD7C22

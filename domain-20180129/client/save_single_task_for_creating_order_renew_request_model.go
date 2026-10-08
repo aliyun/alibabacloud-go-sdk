@@ -32,45 +32,77 @@ type iSaveSingleTaskForCreatingOrderRenewRequest interface {
 }
 
 type SaveSingleTaskForCreatingOrderRenewRequest struct {
+	// The coupon number.
+	//
 	// example:
 	//
 	// 123123
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The current expiration date of the domain name. This value is a Unix timestamp in milliseconds, representing the time elapsed since 00:00:00 UTC on January 1, 1970.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0000
+	// 1522080000000
 	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// The domain name to renew.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// The default value is **en**.
+	//
 	// example:
 	//
 	// en
 	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PermitPremiumRenew *bool   `json:"PermitPremiumRenew,omitempty" xml:"PermitPremiumRenew,omitempty"`
+	// The promotion number.
+	//
 	// example:
 	//
 	// 123132
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// The renewal period, in years. The value must be an integer from **1*	- to **10**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SubscriptionDuration *int32 `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - **false**: Do not use a coupon.
+	//
+	// - **true**: Use a coupon.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Specifies whether to use a promotion. Valid values:
+	//
+	// - **false**: Do not use a promotion.
+	//
+	// - **true**: Use a promotion.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// The user\\"s IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

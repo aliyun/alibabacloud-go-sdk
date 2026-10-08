@@ -18,16 +18,28 @@ type iQueryTransferInByInstanceIdRequest interface {
 }
 
 type QueryTransferInByInstanceIdRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S20181T0WLI85212
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

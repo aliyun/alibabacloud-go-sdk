@@ -28,31 +28,45 @@ type iQueryTaskListResponseBody interface {
 }
 
 type QueryTaskListResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32                         `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryTaskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
 	// example:
 	//
 	// true
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether there is a previous page.
+	//
 	// example:
 	//
 	// false
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// 8D7D294A-8E99-481F-B64C-017EFC793059
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of entries.
+	//
 	// example:
 	//
 	// 43
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 22

@@ -53,74 +53,76 @@ type iQueryDomainListRequest interface {
 
 type QueryDomainListRequest struct {
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// The name of the domain name registrant.
+	// The name of the domain owner.
 	//
 	// example:
 	//
-	// Guangzhou Jinye Renewable Resources Recycling Co., Ltd
+	// 广州金烨再生资源回收有限公司
 	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
 	Dns      *string `json:"Dns,omitempty" xml:"Dns,omitempty"`
-	// The ID of the domain name group.
+	// <props="china">The ID of the domain group. You can obtain this ID by calling the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation.
+	//
+	// <props="intl">The ID of the domain group.
 	//
 	// example:
 	//
 	// 123456
 	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	// The domain name. You can search for the domain name in the domain name list.
+	// The domain name to query.
 	//
 	// example:
 	//
 	// test.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed from January 1, 1970, 00:00:00 UTC to the time you perform the query. Only queries by day are supported.
+	// The end of the expiration date range. The value is a Unix timestamp in milliseconds. Currently, only queries by day are supported.
 	//
 	// example:
 	//
 	// 1522080000000
 	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
-	// The end of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	// The end of the registration date range. The value is a Unix timestamp in milliseconds. Currently, only queries by day are supported.
 	//
 	// example:
 	//
 	// 1522080000000
 	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
-	// The language of the error message to return if the request fails. Valid values:
+	// The language for API error messages. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
-	// Default value: **en**.
+	// The default value is **en**.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order of the information based on which the domain names are sorted, such as the registration date and expiration date. Valid values:
+	// The sort order for the results. Valid values:
 	//
-	// 	- **ASC**: ascending order
+	// - **ASC**: Ascending.
 	//
-	// 	- **DESC**: descending order
+	// - **DESC**: Descending.
 	//
-	// >  If this parameter is not specified, the default value **DESC*	- is used.
+	// > The default value is **DESC**.
 	//
 	// example:
 	//
 	// ASC
 	OrderByType *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
-	// The field that you use to sort the domain names. Valid values:
+	// The field to use for sorting. Valid values:
 	//
-	// 	- **RegistrationDate**: registration date
+	// - **RegistrationDate**: Sorts by registration date.
 	//
-	// 	- **ExpirationDate**: expiration date
+	// - **ExpirationDate**: Sorts by expiration date.
 	//
-	// >  If this parameter is not specified, the domain names are sorted by the time when they were added to the database.
+	// > By default, the results are sorted by the time they were added to the system.
 	//
 	// example:
 	//
 	// RegistrationDate
 	OrderKeyType *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
-	// The page number.
+	// The page number for the paginated results.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +130,7 @@ type QueryDomainListRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// This parameter is required.
 	//
@@ -136,23 +138,23 @@ type QueryDomainListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the domain name. Valid values:
+	// The domain type. Valid values:
 	//
-	// 	- **New gTLD**: new generic top-level domain names
+	// - **New gTLD**: new generic top-level domain.
 	//
-	// 	- **gTLD**: generic top-level domain names
+	// - **gTLD**: generic top-level domain.
 	//
-	// 	- **ccTLD**: country code top-level domain names
+	// - **ccTLD**: country-code top-level domain.
 	//
 	// example:
 	//
 	// New gTLD
 	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
-	// The category of the domain names that you want to query. Valid values:
+	// The type of list to return. Valid values:
 	//
-	// 	- **1**: the domain names that need to be renewed
+	// - **1**: Domain names that require urgent renewal.
 	//
-	// 	- **2**: the domain names that need to be redeemed
+	// - **2**: Domain names that require urgent redemption.
 	//
 	// example:
 	//
@@ -165,21 +167,21 @@ type QueryDomainListRequest struct {
 	//
 	// rg-aek2indvyxgpfti
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query domain names based on expiration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed from January 1, 1970, 00:00:00 UTC to the time you perform the query. Only queries by day are supported.
+	// The start of the expiration date range. The value is a Unix timestamp in milliseconds. Currently, only queries by day are supported.
 	//
 	// example:
 	//
 	// 1522080000000
 	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
-	// The beginning of the time range to query domain names based on registration dates. Set the value to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Only queries by day are supported.
+	// The start of the registration date range. The value is a Unix timestamp in milliseconds. Currently, only queries by day are supported.
 	//
 	// example:
 	//
 	// 1522080000000
 	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
-	// The tags to add to the resource.
+	// A list of tags.
 	Tag []*QueryDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The IP address of the client. Set the value to **127.0.0.1**.
+	// The user\\"s client IP address. You can set this parameter to **127.0.0.1**.
 	//
 	// example:
 	//
@@ -389,17 +391,17 @@ func (s *QueryDomainListRequest) Validate() error {
 }
 
 type QueryDomainListRequestTag struct {
-	// The key of the tag to add to the resource.
+	// The key of the tag.
 	//
 	// example:
 	//
-	// testKey
+	// 备注
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag to add to the resource.
+	// The value of the tag.
 	//
 	// example:
 	//
-	// testValue
+	// 标签1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

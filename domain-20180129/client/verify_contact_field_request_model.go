@@ -52,67 +52,145 @@ type iVerifyContactFieldRequest interface {
 }
 
 type VerifyContactFieldRequest struct {
+	// Street address (in English).
+	//
 	// example:
 	//
 	// Rd. xitucheng
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// City (in English).
+	//
 	// example:
 	//
 	// Bei jing
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Country code, such as **CN*	- or **US**.
+	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Email address.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Postal code.
+	//
+	// example:
+	//
+	// 100000
 	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// Province (in English).
+	//
 	// example:
 	//
 	// Bei jing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// Contact name (in English).
+	//
 	// example:
 	//
 	// wang xian sheng
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// Registrant name (in English).
+	//
 	// example:
 	//
 	// wang xian sheng
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// Registrant type. Valid values:
+	//
+	// - **1**: Individual.
+	//
+	// - **2**: Enterprise.
+	//
 	// example:
 	//
 	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// Telephone country code, for example, **86*	- for China.
+	//
 	// example:
 	//
 	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// Extension number.
+	//
 	// example:
 	//
 	// 01
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// Telephone number.
+	//
 	// example:
 	//
 	// 1390000****
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// User IP address, which can be set to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1
-	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// Detailed address (in Chinese).
+	//
+	// > This parameter applies only to the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 西土城路
+	ZhAddress *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	// City (in Chinese).
+	//
+	// > This parameter applies only to the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 北京市
+	ZhCity *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	// Province (in Chinese).
+	//
+	// > This parameter applies only to the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 北京
+	ZhProvince *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	// Contact name (in Chinese).
+	//
+	// > This parameter applies only to the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 王先生
+	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	// Registrant name (in Chinese).
+	//
+	// > This parameter applies only to the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 王先生
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 

@@ -22,26 +22,44 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// The language in which error messages are returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **zh**.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the resource group to which you want to shift the domain name.
+	//
+	// You can view the resource group ID in the [Resource Management Console](https://resourcemanager.console.aliyun.com/resource-groups).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-aek2tcx7os7bkmq
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The resource ID of the domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S20227H17A561968
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type of the domain name. This parameter is fixed to “Domain” and does not need to be specified.
+	//
 	// example:
 	//
 	// Domain
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The IP address of the user client.
+	//
 	// example:
 	//
 	// 127.0.0.1

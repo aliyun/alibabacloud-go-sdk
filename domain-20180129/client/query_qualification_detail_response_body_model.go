@@ -20,15 +20,31 @@ type iQueryQualificationDetailResponseBody interface {
 }
 
 type QueryQualificationDetailResponseBody struct {
+	// Review Status. Valid values:
+	//
+	// - 0: Information pending completion.
+	//
+	// - 1, 2, 3, 4: Under review.
+	//
+	// - 5: Review failed.
+	//
+	// - 6: Review succeeded.
+	//
+	// - 7: Review canceled.
+	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32                                           `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	Credentials *QueryQualificationDetailResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Business trail ID for qualification verification.
+	//
 	// example:
 	//
 	// 943a1662898a****0acbdbeca91

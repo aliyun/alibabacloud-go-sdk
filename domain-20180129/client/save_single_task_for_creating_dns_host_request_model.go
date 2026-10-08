@@ -22,28 +22,44 @@ type iSaveSingleTaskForCreatingDnsHostRequest interface {
 }
 
 type SaveSingleTaskForCreatingDnsHostRequest struct {
+	// DNS name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dns1
 	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// Domain instance ID, which can be obtained by calling the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S1234567890
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of IP addresses. You can specify up to 13 IP addresses. When specifying multiple IP addresses, pass them as a **list**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 218.xx.xx.236
 	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address, which can be set to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

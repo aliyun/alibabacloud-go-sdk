@@ -28,34 +28,62 @@ type iQueryTransferOutInfoResponseBody interface {
 }
 
 type QueryTransferOutInfoResponseBody struct {
+	// Mailbox to which the transfer password was sent.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Expiration time of the obtained transfer password.
+	//
 	// example:
 	//
 	// 2018-04-13 19:57:56
 	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// Time when the transfer-out request was received from the domain name registry.
+	//
 	// example:
 	//
 	// 2018-04-13 19:57:56
 	PendingRequestDate *string `json:"PendingRequestDate,omitempty" xml:"PendingRequestDate,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// BBEC5A50-DFDF-482E-8343-B4EB0105E055
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Encoding of the transfer-out failure reason.
+	//
 	// example:
 	//
 	// clientRejected
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// Description of the transfer-out failure reason.
+	//
 	// example:
 	//
 	// Transfer out rejected
 	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	// Transfer-out status. Valid values:
+	//
+	// - **1**: Phone authentication required;
+	//
+	// - **2**: Mailbox authentication required;
+	//
+	// - **3**: Transfer password already obtained;
+	//
+	// - **4**: Transfer-out in progress (transfer request received from the domain name registry);
+	//
+	// - **5**: Transfer-out succeeded;
+	//
+	// - **8**: Transfer-out failed.
+	//
 	// example:
 	//
 	// 8
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Time when the transfer password was obtained.
+	//
 	// example:
 	//
 	// 2018-04-13 19:57:56

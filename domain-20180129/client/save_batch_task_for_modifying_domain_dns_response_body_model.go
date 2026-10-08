@@ -16,10 +16,14 @@ type iSaveBatchTaskForModifyingDomainDnsResponseBody interface {
 }
 
 type SaveBatchTaskForModifyingDomainDnsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6A862A8A-E7AB-4C4E-8946-A74122D9CC4B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 35fb2fb7-d4d6-4478-9408-22cb63696b86

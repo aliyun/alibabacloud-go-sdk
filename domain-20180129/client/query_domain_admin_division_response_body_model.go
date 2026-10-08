@@ -17,6 +17,8 @@ type iQueryDomainAdminDivisionResponseBody interface {
 
 type QueryDomainAdminDivisionResponseBody struct {
 	AdminDivisions *QueryDomainAdminDivisionResponseBodyAdminDivisions `json:"AdminDivisions,omitempty" xml:"AdminDivisions,omitempty" type:"Struct"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// 4EA05A10-D4BC-47EA-AD9E-370A46BB4FB9

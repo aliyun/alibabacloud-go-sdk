@@ -16,10 +16,14 @@ type iSaveSingleTaskForQueryingTransferAuthorizationCodeResponseBody interface {
 }
 
 type SaveSingleTaskForQueryingTransferAuthorizationCodeResponseBody struct {
+	// Unique request ID.
+	//
 	// example:
 	//
 	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8

@@ -26,28 +26,56 @@ type iSaveBatchTaskForCreatingOrderRedeemRequest interface {
 }
 
 type SaveBatchTaskForCreatingOrderRedeemRequest struct {
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123123
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// List of job details.
+	//
 	// This parameter is required.
 	OrderRedeemParam []*SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam `json:"OrderRedeemParam,omitempty" xml:"OrderRedeemParam,omitempty" type:"Repeated"`
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123213123
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// Is coupon used? Valid values:
+	//
+	// - **false**: No.
+	//
+	// - **true**: Yes.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Is coupon used? Valid values:
+	//
+	// - **false**: No.
+	//
+	// - **true**: Yes.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// User IP address. You can set it to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1
@@ -139,10 +167,14 @@ func (s *SaveBatchTaskForCreatingOrderRedeemRequest) Validate() error {
 }
 
 type SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam struct {
+	// Current expiration date of the domain name, represented as the number of milliseconds from 00:00 UTC on January 1, 1970, to the domain’s current expiration date.
+	//
 	// example:
 	//
 	// 000000
 	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// Domain name. If multiple domain names are involved, pass a domain name list. You can obtain the domain name list by using the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) API.
+	//
 	// example:
 	//
 	// Aliyun.com

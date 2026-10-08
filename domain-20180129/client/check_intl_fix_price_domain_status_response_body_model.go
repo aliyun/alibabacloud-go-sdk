@@ -16,7 +16,10 @@ type iCheckIntlFixPriceDomainStatusResponseBody interface {
 }
 
 type CheckIntlFixPriceDomainStatusResponseBody struct {
+	// The returned object.
 	Module *CheckIntlFixPriceDomainStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
@@ -59,30 +62,52 @@ func (s *CheckIntlFixPriceDomainStatusResponseBody) Validate() error {
 }
 
 type CheckIntlFixPriceDomainStatusResponseBodyModule struct {
+	// The currency. Valid values:
+	//
+	// - RMB: Chinese Yuan.
+	//
+	// - USD: US Dollar.
+	//
 	// example:
 	//
 	// USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The expiration date of the domain name. After this date, the domain name requires renewal.
+	//
 	// example:
 	//
 	// 1567353497
 	DeadDate *int64 `json:"DeadDate,omitempty" xml:"DeadDate,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The sale deadline of the domain name. After this time, the domain name is no longer available for sale.
+	//
 	// example:
 	//
 	// 1567353497
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the domain name is a premium domain name. Valid values:
+	//
+	// - true: The domain name is a premium domain name.
+	//
+	// - false: The domain name is not a premium domain name.
+	//
 	// example:
 	//
 	// true
 	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// The price.
+	//
 	// example:
 	//
 	// 20.00
 	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// The registration date of the domain name.
+	//
 	// example:
 	//
 	// 1566353497

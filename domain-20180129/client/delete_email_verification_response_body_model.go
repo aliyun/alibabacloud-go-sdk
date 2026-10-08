@@ -18,11 +18,15 @@ type iDeleteEmailVerificationResponseBody interface {
 }
 
 type DeleteEmailVerificationResponseBody struct {
+	// List of email addresses for which deletion failed.
 	FailList []*DeleteEmailVerificationResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 7A3D0E4A-0D4B-4BD0-90D7-A61DF8DD26AE
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of successfully deleted email addresses.
 	SuccessList []*DeleteEmailVerificationResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Repeated"`
 }
 
@@ -84,14 +88,20 @@ func (s *DeleteEmailVerificationResponseBody) Validate() error {
 }
 
 type DeleteEmailVerificationResponseBodyFailList struct {
+	// Returned code.
+	//
 	// example:
 	//
 	// ParameterIllegall
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Email address for which deletion failed.
+	//
 	// example:
 	//
 	// test1@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Message returned upon failure to delete the email address.
+	//
 	// example:
 	//
 	// Parameter error
@@ -138,14 +148,20 @@ func (s *DeleteEmailVerificationResponseBodyFailList) Validate() error {
 }
 
 type DeleteEmailVerificationResponseBodySuccessList struct {
+	// Returned code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Email address that was successfully deleted.
+	//
 	// example:
 	//
 	// test2@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Message returned upon successful deletion of the email address.
+	//
 	// example:
 	//
 	// Success

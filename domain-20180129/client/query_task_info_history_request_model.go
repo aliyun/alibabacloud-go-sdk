@@ -26,32 +26,52 @@ type iQueryTaskInfoHistoryRequest interface {
 }
 
 type QueryTaskInfoHistoryRequest struct {
+	// Start time of the creation date range for the query, expressed as the number of milliseconds since 00:00 UTC on January 1, 1970. Currently supports queries by day only.
+	//
 	// example:
 	//
 	// 1522080000000
 	BeginCreateTime *int64 `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
+	// Cursor for creation date (technical parameter).
+	//
 	// example:
 	//
 	// 1522080000000
 	CreateTimeCursor *int64 `json:"CreateTimeCursor,omitempty" xml:"CreateTimeCursor,omitempty"`
+	// End time of the creation date range for the query, expressed as the number of milliseconds since 00:00 UTC on January 1, 1970. Currently supports queries by day only.
+	//
 	// example:
 	//
 	// 1522080000000
 	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	// Language for API error messages. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value is **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Job cursor; pass in the job number from the corresponding page cursor during pagination (technical parameter).
+	//
 	// example:
 	//
 	// aa634d3f-927e-4d17-9d2c-test
 	TaskNoCursor *string `json:"TaskNoCursor,omitempty" xml:"TaskNoCursor,omitempty"`
+	// User IP address, which can be set to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -56,84 +56,161 @@ type iSaveBatchTaskForUpdatingContactInfoByNewContactRequest interface {
 }
 
 type SaveBatchTaskForUpdatingContactInfoByNewContactRequest struct {
+	// Specific address.
+	//
 	// example:
 	//
 	// chao yang qu
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// City.
+	//
 	// example:
 	//
 	// bei jing shi
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Contact type. Valid values:
+	//
+	// - **registrant**: Registrant.
+	//
+	// - **admin**: Administrator.
+	//
+	// - **billing**: Billing contact.
+	//
+	// - **tech**: Technical contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// registrant
 	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// Country code, such as **CN*	- or **US**.
+	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// Domain name list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alibabacloud.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// Mailbox.
+	//
 	// example:
 	//
 	// test@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Postal code.
+	//
 	// example:
 	//
 	// 123456
 	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// Province.
+	//
 	// example:
 	//
 	// bei jing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// Contact name.
+	//
 	// example:
 	//
 	// ce shi
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// Registrant organization name.
+	//
 	// example:
 	//
 	// ce shi
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// Domain registrant type. Valid values:
+	//
+	// - **1**: Individual.
+	//
+	// - **2**: Enterprise.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// Telephone country code.
+	//
 	// example:
 	//
 	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// Extension number.
+	//
 	// example:
 	//
 	// 1235
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// Telephone number.
+	//
 	// example:
 	//
 	// 1234567890
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// Whether to add a transfer-out prohibition restriction. This parameter only takes effect when **ContactType*	- is **registrant**, indicating whether the domain name is restricted from transfer-out for 60 days after the registrant is modified. The default value is **false**, which means transfer-out is not restricted.
+	//
 	// example:
 	//
 	// false
 	TransferOutProhibited *bool `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	// User IP.
+	//
 	// example:
 	//
 	// 127.0.0.1
-	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// Chinese address.
+	//
+	// example:
+	//
+	// 朝阳区
+	ZhAddress *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	// Chinese city.
+	//
+	// example:
+	//
+	// 北京市
+	ZhCity *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	// Chinese province.
+	//
+	// example:
+	//
+	// 北京
+	ZhProvince *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	// Chinese contact name.
+	//
+	// example:
+	//
+	// 测试
+	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	// Chinese registrant organization name.
+	//
+	// example:
+	//
+	// 测试
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 

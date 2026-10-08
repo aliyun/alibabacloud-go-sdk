@@ -28,14 +28,14 @@ type iQueryTaskDetailListResponseBody interface {
 }
 
 type QueryTaskDetailListResponseBody struct {
-	// The page number returned.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryTaskDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Indicates whether the current page is followed by a page.
+	// Indicates whether a next page exists.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type QueryTaskDetailListResponseBody struct {
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the current page is preceded by a page.
+	// Indicates whether a previous page exists.
 	//
 	// example:
 	//

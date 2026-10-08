@@ -20,20 +20,34 @@ type iSaveBatchDomainRemarkRequest interface {
 }
 
 type SaveBatchDomainRemarkRequest struct {
+	// List of instance IDs. We recommend grouping them in sets of **10**, with a maximum of **50*	- per group, separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S12344567
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**. This parameter is Required.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Remark information.
+	//
 	// example:
 	//
 	// MyRemarkInfo
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// User IP address, which can be set to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

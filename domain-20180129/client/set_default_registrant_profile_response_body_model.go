@@ -14,6 +14,8 @@ type iSetDefaultRegistrantProfileResponseBody interface {
 }
 
 type SetDefaultRegistrantProfileResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4D73432C-7600-4779-ACBB-C3B5CA145D32

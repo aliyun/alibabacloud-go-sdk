@@ -22,22 +22,36 @@ type iCheckTransferInFeasibilityResponseBody interface {
 }
 
 type CheckTransferInFeasibilityResponseBody struct {
+	// Indicates whether the domain name can be transferred in. Valid values:
+	//
+	// - **true**: The domain name can be transferred in.
+	//
+	// - **false**: The domain name cannot be transferred in.
+	//
 	// example:
 	//
 	// false
 	CanTransfer *bool `json:"CanTransfer,omitempty" xml:"CanTransfer,omitempty"`
+	// The error code returned when the domain name cannot be transferred in.
+	//
 	// example:
 	//
 	// CheckTransferResult.DomainTransferProhibited
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error description returned when the domain name cannot be transferred in.
+	//
 	// example:
 	//
 	// This domain name is in transfer prohibited status, so it cannot be transferred. You can contact your original registrar to change its status.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The product ID of the domain name.
+	//
 	// example:
 	//
 	// 2a
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The unique request access token.
+	//
 	// example:
 	//
 	// FC0D6B89-2353-4D64-BD80-6606A7DBD7C1

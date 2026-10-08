@@ -36,52 +36,82 @@ type iSaveSingleTaskForSaveArtExtensionRequest interface {
 }
 
 type SaveSingleTaskForSaveArtExtensionRequest struct {
+	// Creation time.
+	//
 	// example:
 	//
 	// 2019-10-01
 	DateOrPeriod *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
+	// Dimensions.
+	//
 	// example:
 	//
 	// 20 cm
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.art
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Artistic features.
+	//
 	// example:
 	//
 	// iconicity
 	Features *string `json:"Features,omitempty" xml:"Features,omitempty"`
+	// Inscriptions and markings.
+	//
 	// example:
 	//
 	// realism
 	InscriptionsAndMarkings *string `json:"InscriptionsAndMarkings,omitempty" xml:"InscriptionsAndMarkings,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Artist or creator.
+	//
 	// example:
 	//
 	// zhang san
 	Maker *string `json:"Maker,omitempty" xml:"Maker,omitempty"`
+	// Materials and techniques.
+	//
 	// example:
 	//
 	// silk
 	MaterialsAndTechniques *string `json:"MaterialsAndTechniques,omitempty" xml:"MaterialsAndTechniques,omitempty"`
+	// Artwork category.
+	//
 	// example:
 	//
 	// The embroidery
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// Reference.
+	//
 	// example:
 	//
 	// drawings
 	Reference *string `json:"Reference,omitempty" xml:"Reference,omitempty"`
+	// Art subject.
+	//
 	// example:
 	//
 	// peace
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// Name.
+	//
 	// example:
 	//
 	// Peace and friendship

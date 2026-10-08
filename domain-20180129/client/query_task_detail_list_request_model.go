@@ -34,17 +34,19 @@ type QueryTaskDetailListRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The instance ID of the domain name.
+	// The domain name instance ID.
+	//
+	// > You can call <props="china">[QueryDomainByDomainName](https://help.aliyun.com/document_detail/442021.html)<props="intl">[QueryDomainByDomainName](https://help.aliyun.com/document_detail/121704.html) to query the domain name instance ID.
 	//
 	// example:
 	//
 	// S20179H1BBI9test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the error message to return if the request fails. Valid value:
+	// The language of the error message returned by the operation. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// Default value: **en**.
 	//
@@ -60,7 +62,7 @@ type QueryTaskDetailListRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Maximum value: **1000**.
+	// The number of entries per page. Maximum value: **1000**.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +70,7 @@ type QueryTaskDetailListRequest struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The task ID.
+	// The task number. This is the TaskNo value returned by a successfully executed task.
 	//
 	// This parameter is required.
 	//
@@ -76,21 +78,21 @@ type QueryTaskDetailListRequest struct {
 	//
 	// 75addb07-28a3-450e-b5ec-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	// The task status. Valid value:
+	// The task status. Valid values:
 	//
-	// 	- **0**: waiting for execution
+	// - **0**: Waiting to be executed.
 	//
-	// 	- **1**: being executed
+	// - **1**: Executing.
 	//
-	// 	- **2**: successful
+	// - **2**: Successful.
 	//
-	// 	- **3**: failed
+	// - **3**: Failed.
 	//
 	// example:
 	//
 	// 2
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The IP address of the client. Set the value to **127.0.0.1**.
+	// The user IP address. You can set this parameter to **127.0.0.1**.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iCheckMaxYearOfServerLockResponseBody interface {
 }
 
 type CheckMaxYearOfServerLockResponseBody struct {
+	// Maximum number of years that can be purchased.
+	//
 	// example:
 	//
 	// 10
 	MaxYear *int32 `json:"MaxYear,omitempty" xml:"MaxYear,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48

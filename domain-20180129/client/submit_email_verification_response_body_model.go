@@ -20,12 +20,17 @@ type iSubmitEmailVerificationResponseBody interface {
 }
 
 type SubmitEmailVerificationResponseBody struct {
+	// List of emails for which verification messages already exist.
 	ExistList []*SubmitEmailVerificationResponseBodyExistList `json:"ExistList,omitempty" xml:"ExistList,omitempty" type:"Repeated"`
-	FailList  []*SubmitEmailVerificationResponseBodyFailList  `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	// List of emails for which verification messages failed to send.
+	FailList []*SubmitEmailVerificationResponseBodyFailList `json:"FailList,omitempty" xml:"FailList,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// E2A8A5EF-DF8A-4C48-8FD4-9F6BD71AB26D
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of emails for which verification messages were sent successfully.
 	SuccessList []*SubmitEmailVerificationResponseBodySuccessList `json:"SuccessList,omitempty" xml:"SuccessList,omitempty" type:"Repeated"`
 }
 
@@ -105,14 +110,20 @@ func (s *SubmitEmailVerificationResponseBody) Validate() error {
 }
 
 type SubmitEmailVerificationResponseBodyExistList struct {
+	// Returned code.
+	//
 	// example:
 	//
 	// SendTokenQuotaExceeded
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Email address for verification.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Returned message.
+	//
 	// example:
 	//
 	// The maximum number of attempts allowed to send the email verification link is exceeded.
@@ -159,14 +170,20 @@ func (s *SubmitEmailVerificationResponseBodyExistList) Validate() error {
 }
 
 type SubmitEmailVerificationResponseBodyFailList struct {
+	// The returned code.
+	//
 	// example:
 	//
 	// SendTokenQuotaExceeded
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Email address for verification.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// The maximum number of attempts allowed to send the email verification link is exceeded
@@ -213,14 +230,20 @@ func (s *SubmitEmailVerificationResponseBodyFailList) Validate() error {
 }
 
 type SubmitEmailVerificationResponseBodySuccessList struct {
+	// Returned code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Email address for verification.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Returned message.
+	//
 	// example:
 	//
 	// Success

@@ -26,36 +26,64 @@ type iUpdateDomainToDomainGroupRequest interface {
 }
 
 type UpdateDomainToDomainGroupRequest struct {
+	// The data source for the domain names. Valid values:
+	//
+	// - **1**: custom input.
+	//
+	// - **2**: file upload.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DataSource *int32 `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// The ID of the domain name group. Call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) API to get this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// An array of domain names. This parameter is required when DataSource is set to 1 (custom input).
+	//
 	// example:
 	//
 	// example.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// The Base64-encoded content of a file. This parameter is required if you set DataSource to 2. The file must be in **.xls*	- or **.xlsx*	- format, contain one domain name per line, and not exceed 2 MB.
+	//
 	// example:
 	//
 	// dGVzdA==
 	FileToUpload *string `json:"FileToUpload,omitempty" xml:"FileToUpload,omitempty"`
+	// The language of API error messages. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to replace the existing domain names in the group. Valid values:
+	//
+	// - **false**: Adds the new domain names to the group.
+	//
+	// - **true**: Replaces all existing domain names in the group with the new ones.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Replace *bool `json:"Replace,omitempty" xml:"Replace,omitempty"`
+	// The user IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

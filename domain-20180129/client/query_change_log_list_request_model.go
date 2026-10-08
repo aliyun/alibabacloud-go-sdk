@@ -26,34 +26,54 @@ type iQueryChangeLogListRequest interface {
 }
 
 type QueryChangeLogListRequest struct {
+	// The domain name for which to query change logs.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range to query, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1522080000000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language for API error messages. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Defaults to **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. The minimum value is **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return per page. The value must be between **1*	- and **100**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start of the time range to query, specified as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1522080000000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The user\\"s IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

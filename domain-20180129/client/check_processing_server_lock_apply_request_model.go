@@ -20,20 +20,34 @@ type iCheckProcessingServerLockApplyRequest interface {
 }
 
 type CheckProcessingServerLockApplyRequest struct {
+	// The domain name to be checked.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Registration period in years. Unit: **year(s)**. Valid range: **1 to 10*	- years.
+	//
 	// example:
 	//
 	// 1
 	FeePeriod *int32 `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value: en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address. You can set it to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

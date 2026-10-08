@@ -63,6 +63,10 @@ type QueryDomainSpecialBizInfoByDomainResponseBody struct {
 	// The array of error parameters that are returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
+	//
+	// example:
+	//
+	// 参数错误
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//
@@ -225,8 +229,16 @@ func (s *QueryDomainSpecialBizInfoByDomainResponseBody) Validate() error {
 
 type QueryDomainSpecialBizInfoByDomainResponseBodyModule struct {
 	// The review information.
+	//
+	// example:
+	//
+	// 审核通过
 	AuditMsg *string `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
 	// The business name.
+	//
+	// example:
+	//
+	// GOV.CN域名注册(test003.cn)
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
 	// The business ID.
 	//
@@ -305,6 +317,10 @@ type QueryDomainSpecialBizInfoByDomainResponseBodyModule struct {
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The description of business status.
+	//
+	// example:
+	//
+	// 信息审核成功
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// The time when the business was updated.
 	//
@@ -525,8 +541,16 @@ type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact 
 	// 258
 	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The city.
+	//
+	// example:
+	//
+	// 鞍山市
 	CCity *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
 	// The organization name.
+	//
+	// example:
+	//
+	// 河北易迪管道制造有限公司
 	CCompany *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
 	// The country code.
 	//
@@ -535,10 +559,22 @@ type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact 
 	// CN
 	CCountry *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
 	// The contact name.
+	//
+	// example:
+	//
+	// 佟大伟
 	CName *string `json:"CName,omitempty" xml:"CName,omitempty"`
 	// The province.
+	//
+	// example:
+	//
+	// 辽宁
 	CProvince *string `json:"CProvince,omitempty" xml:"CProvince,omitempty"`
 	// The address.
+	//
+	// example:
+	//
+	// 铁西区新开街59栋1单元4号
 	CVenu *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
 	// The city in English.
 	//

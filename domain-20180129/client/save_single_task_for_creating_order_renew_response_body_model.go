@@ -16,10 +16,14 @@ type iSaveSingleTaskForCreatingOrderRenewResponseBody interface {
 }
 
 type SaveSingleTaskForCreatingOrderRenewResponseBody struct {
+	// The unique ID generated for the request.
+	//
 	// example:
 	//
 	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique number for the submitted task.
+	//
 	// example:
 	//
 	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8

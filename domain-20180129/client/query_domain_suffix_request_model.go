@@ -16,10 +16,20 @@ type iQueryDomainSuffixRequest interface {
 }
 
 type QueryDomainSuffixRequest struct {
+	// The language of the error message in the API response. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

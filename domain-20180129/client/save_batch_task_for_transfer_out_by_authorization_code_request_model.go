@@ -14,7 +14,13 @@ type iSaveBatchTaskForTransferOutByAuthorizationCodeRequest interface {
 }
 
 type SaveBatchTaskForTransferOutByAuthorizationCodeRequest struct {
+	// A list of domain names to transfer out, each with its authorization code.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SaveBatchTaskForTransferOutByAuthorizationCode
 	TransferOutParamList []*SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList `json:"TransferOutParamList,omitempty" xml:"TransferOutParamList,omitempty" type:"Repeated"`
 }
 
@@ -49,10 +55,14 @@ func (s *SaveBatchTaskForTransferOutByAuthorizationCodeRequest) Validate() error
 }
 
 type SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList struct {
+	// The authorization code for the domain name.
+	//
 	// example:
 	//
 	// Test2o#Lck
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// The domain name to transfer out.
+	//
 	// example:
 	//
 	// example.com

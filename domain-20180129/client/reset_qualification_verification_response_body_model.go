@@ -14,6 +14,8 @@ type iResetQualificationVerificationResponseBody interface {
 }
 
 type ResetQualificationVerificationResponseBody struct {
+	// Unique request access token.
+	//
 	// example:
 	//
 	// D6CB3623-4726-4947-AC2B-2C6E673B447C

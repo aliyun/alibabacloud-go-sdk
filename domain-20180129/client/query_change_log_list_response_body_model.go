@@ -30,35 +30,51 @@ type iQueryChangeLogListResponseBody interface {
 }
 
 type QueryChangeLogListResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32                              `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryChangeLogListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Indicates whether a next page exists.
+	//
 	// example:
 	//
 	// true
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
 	// example:
 	//
 	// false
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 2DEDFF32-7827-46B1-BE90-3DB8ABD91A58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The API returns a maximum of 1,000 recent records per query, regardless of the specified page size. If your query matches more than 1,000 records, **ResultLimit*	- is **true**. To retrieve all results, narrow the time range and query again. Otherwise, **ResultLimit*	- is **false**.
+	//
 	// example:
 	//
 	// true
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
+	// The total number of items.
+	//
 	// example:
 	//
 	// 1000
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1000

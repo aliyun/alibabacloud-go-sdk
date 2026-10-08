@@ -63,6 +63,10 @@ type SubmitDomainSpecialBizCredentialsResponseBody struct {
 	// The array of error parameters that are returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The error code.
+	//
+	// example:
+	//
+	// 参数错误
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	//

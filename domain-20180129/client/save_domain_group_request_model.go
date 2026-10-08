@@ -20,16 +20,34 @@ type iSaveDomainGroupRequest interface {
 }
 
 type SaveDomainGroupRequest struct {
+	// Domain group ID. If this parameter is not provided, a new group is created. If it is provided, the domain group name is updated.
+	//
 	// example:
 	//
 	// 123456
 	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	// Domain Name Group Name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试分组
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// Language for error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value is **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

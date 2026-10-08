@@ -18,31 +18,9 @@ type iSaveSingleTaskForGenerateDomainCertificateRequest interface {
 }
 
 type SaveSingleTaskForGenerateDomainCertificateRequest struct {
-	// The domain name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The language of the error message to return if the request fails. Valid values:
-	//
-	// 	- **zh**: Chinese.
-	//
-	// 	- **en**: English.
-	//
-	// Default value: **en**.
-	//
-	// example:
-	//
-	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 127.0.0.1
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 

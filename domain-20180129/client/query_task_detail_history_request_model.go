@@ -28,38 +28,70 @@ type iQueryTaskDetailHistoryRequest interface {
 }
 
 type QueryTaskDetailHistoryRequest struct {
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Domain name cursor.
+	//
 	// example:
 	//
 	// example.com
 	DomainNameCursor *string `json:"DomainNameCursor,omitempty" xml:"DomainNameCursor,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Task detail cursor.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec
 	TaskDetailNoCursor *string `json:"TaskDetailNoCursor,omitempty" xml:"TaskDetailNoCursor,omitempty"`
+	// Job number.
+	//
+	// > You can obtain the job number by calling the [QueryTaskList](https://help.aliyun.com/document_detail/67709.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Job status. Valid values:
+	//
+	// - **0**: Waiting to execute.
+	//
+	// - **1**: Executing.
+	//
+	// - **2**: Succeeded.
+	//
+	// - **3**: Failed.
+	//
 	// example:
 	//
 	// 0
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

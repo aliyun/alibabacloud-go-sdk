@@ -16,10 +16,14 @@ type iQueryLocalEnsAssociationResponseBody interface {
 }
 
 type QueryLocalEnsAssociationResponseBody struct {
+	// The ENS address recorded in the Alibaba Cloud system.
+	//
 	// example:
 	//
 	// 3ECD5439-39A2-477D-9A19-64FCA1F77EEB
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// 0x1234567890123456789012345678901234567890

@@ -28,34 +28,64 @@ type iQueryRegistrantProfileRealNameVerificationInfoResponseBody interface {
 }
 
 type QueryRegistrantProfileRealNameVerificationInfoResponseBody struct {
+	// The Base64-encoded image of the identity verification documents.
+	//
 	// example:
 	//
 	// dGVzdA==
 	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// The certificate number used for identity verification.
+	//
 	// example:
 	//
 	// 4111111111111110**
 	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// The type of certificate used for identity verification. Valid values:
+	//
+	// - **SFZ**: Identity card.
+	//
+	// - **HZ**: Passport.
+	//
+	// - **YYZZ**: Business license.
+	//
+	// - **ORG**: Organization code certificate.
+	//
+	// - **XYDM**: Unified Social Credit Code certificate.
+	//
+	// - **TXZ**: Mainland Travel Permits for Hong Kong and Macao Residents.
+	//
+	// > For more certificate types, see [Certificate Types Supported for Identity Verification](https://help.aliyun.com/document_detail/72209.html).
+	//
 	// example:
 	//
 	// SFZ
 	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+	// The download URL of the identity verification image.
+	//
 	// example:
 	//
 	// http://test.oss-cn-hangzhou.aliyuncs.com/20170522/1219541161213057_070445190.jpg
 	IdentityCredentialUrl *string `json:"IdentityCredentialUrl,omitempty" xml:"IdentityCredentialUrl,omitempty"`
+	// The update time of the identity verification documents.
+	//
 	// example:
 	//
 	// 2017-05-22 19:04:49
 	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	// The ID of the queried information template.
+	//
 	// example:
 	//
 	// 1234567
 	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4D73432C-7600-4779-ACBB-C3B5CA145D32
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The submission time of the identity verification documents.
+	//
 	// example:
 	//
 	// 2017-05-22 19:04:49

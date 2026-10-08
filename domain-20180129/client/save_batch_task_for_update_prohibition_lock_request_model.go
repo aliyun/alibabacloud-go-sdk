@@ -20,22 +20,40 @@ type iSaveBatchTaskForUpdateProhibitionLockRequest interface {
 }
 
 type SaveBatchTaskForUpdateProhibitionLockRequest struct {
+	// The domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aliyundoc.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// The language of the error message to be returned. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to enable or disable the update prohibition lock. Valid values:
+	//
+	// - **true**: enables the lock.
+	//
+	// - **false**: disables the lock.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

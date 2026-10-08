@@ -14,6 +14,8 @@ type iDeleteDomainGroupResponseBody interface {
 }
 
 type DeleteDomainGroupResponseBody struct {
+	// Unique request access token.
+	//
 	// example:
 	//
 	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528

@@ -18,16 +18,28 @@ type iDeleteEmailVerificationRequest interface {
 }
 
 type DeleteEmailVerificationRequest struct {
+	// Email addresses to be deleted, separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test1@aliyun.com,test2@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address, which can be set to 127.0.0.1.
+	//
 	// example:
 	//
 	// 127.0.0.1

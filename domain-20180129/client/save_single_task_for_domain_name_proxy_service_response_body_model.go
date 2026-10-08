@@ -16,10 +16,14 @@ type iSaveSingleTaskForDomainNameProxyServiceResponseBody interface {
 }
 
 type SaveSingleTaskForDomainNameProxyServiceResponseBody struct {
+	// Unique request ID.
+	//
 	// example:
 	//
 	// F51977F9-2B40-462B-BCCD-CF5BB1E9DB56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8

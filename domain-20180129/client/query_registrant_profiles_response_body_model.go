@@ -28,33 +28,33 @@ type iQueryRegistrantProfilesResponseBody interface {
 }
 
 type QueryRegistrantProfilesResponseBody struct {
-	// The page number returned.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// Indicates whether the current page is followed by a page. Valid values:
+	// Indicates whether there is a next page. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The number of entries returned on each page. Default value: **0**. Maximum value: **5000**.
+	// The number of records per page. Default value: **0**. Maximum value: **5000**.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the current page is preceded by a page. Valid values:
+	// Indicates whether there is a previous page. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -67,15 +67,15 @@ type QueryRegistrantProfilesResponseBody struct {
 	//
 	// 94053D79-7455-4F71-BF06-20EB2DEDE6BD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
-	// >  This parameter indicates the total number of queried registrant profiles. If multiple registrant profiles are queried, the information about these profiles is returned in sequence by profile.
+	// > The total number of records refers to the number of registrant profiles returned by the query. When there are multiple registrant profiles, the next profile is displayed after the previous one.
 	//
 	// example:
 	//
 	// 9
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//

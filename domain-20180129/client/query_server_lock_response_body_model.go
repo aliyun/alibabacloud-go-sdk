@@ -34,46 +34,74 @@ type iQueryServerLockResponseBody interface {
 }
 
 type QueryServerLockResponseBody struct {
+	// Domain instance ID.
+	//
 	// example:
 	//
 	// S20190N1DAI4****
 	DomainInstanceId *string `json:"DomainInstanceId,omitempty" xml:"DomainInstanceId,omitempty"`
+	// The queried domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Expiration Time.
+	//
 	// example:
 	//
 	// 2030-07-10 17:37:36
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// Creation Time.
+	//
 	// example:
 	//
 	// 2021-07-10 17:37:36
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Updated At.
+	//
 	// example:
 	//
 	// 2021-07-10 17:37:36
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Registry lock instance ID.
+	//
 	// example:
 	//
 	// S2021591IQ28****
 	LockInstanceId *string `json:"LockInstanceId,omitempty" xml:"LockInstanceId,omitempty"`
+	// Lock product ID.
+	//
 	// example:
 	//
 	// 1807**
 	LockProductId *string `json:"LockProductId,omitempty" xml:"LockProductId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-****-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Registry lock status. Valid values:
+	//
+	// - 1: Disabled
+	//
+	// - 2: Enabled
+	//
+	// - 3: Shutdown
+	//
 	// example:
 	//
 	// 2
 	ServerLockStatus *int32 `json:"ServerLockStatus,omitempty" xml:"ServerLockStatus,omitempty"`
+	// The time when the lock takes effect.
+	//
 	// example:
 	//
 	// 2021-07-10 17:37:36
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// User UID.
+	//
 	// example:
 	//
 	// 121000000****

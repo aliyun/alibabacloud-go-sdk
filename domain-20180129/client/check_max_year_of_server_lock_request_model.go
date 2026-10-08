@@ -20,22 +20,40 @@ type iCheckMaxYearOfServerLockRequest interface {
 }
 
 type CheckMaxYearOfServerLockRequest struct {
+	// Type of purchase operation. Valid values:
+	//
+	// - activate: new registration
+	//
+	// - renew: renewal
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// activate
 	CheckAction *string `json:"CheckAction,omitempty" xml:"CheckAction,omitempty"`
+	// The domain name to be checked.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value: en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

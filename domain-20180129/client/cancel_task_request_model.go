@@ -18,16 +18,30 @@ type iCancelTaskRequest interface {
 }
 
 type CancelTaskRequest struct {
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Job number.
+	//
+	// >You can query the job number by using the [QueryTaskList](https://help.aliyun.com/document_detail/67709.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7f217ae0-61f5-42e2-a1c3-42bad0124****
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -14,6 +14,8 @@ type iSubmitOperationCredentialsResponseBody interface {
 }
 
 type SubmitOperationCredentialsResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-40EC-8035-4B12FEFX7D98

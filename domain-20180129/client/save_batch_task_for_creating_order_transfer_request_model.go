@@ -26,28 +26,56 @@ type iSaveBatchTaskForCreatingOrderTransferRequest interface {
 }
 
 type SaveBatchTaskForCreatingOrderTransferRequest struct {
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123123
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value is **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// List of job details.
+	//
 	// This parameter is required.
 	OrderTransferParam []*SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam `json:"OrderTransferParam,omitempty" xml:"OrderTransferParam,omitempty" type:"Repeated"`
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123123
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// Is a coupon used? Valid values:
+	//
+	// - **false**: No.
+	//
+	// - **true**: Yes.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Whether to use a coupon. Valid values:
+	//
+	// - **false**: Do not use.
+	//
+	// - **true**: Use.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// User IP address, which can be set to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1
@@ -139,18 +167,32 @@ func (s *SaveBatchTaskForCreatingOrderTransferRequest) Validate() error {
 }
 
 type SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam struct {
+	// Domain name transfer-in password. If multiple domain names are involved, pass the passwords as a list.
+	//
 	// example:
 	//
 	// testCode
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// Domain name. If multiple domain names are involved, pass them as a list.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Is transfer-in of premium domain names allowed? Valid values:
+	//
+	// - **false**: Allowed.
+	//
+	// - **true**: Not allowed.
+	//
+	// Default value: **false**.
+	//
 	// example:
 	//
 	// false
 	PermitPremiumTransfer *bool `json:"PermitPremiumTransfer,omitempty" xml:"PermitPremiumTransfer,omitempty"`
+	// ID of an identity-verified domain name registrant profile. You can obtain this ID by invoking the [QueryRegistrantProfileRealNameVerificationInfo](https://help.aliyun.com/document_detail/69359.htm?spm=a2c4g.11186623.0.0.5096253c12PfdB) API.
+	//
 	// example:
 	//
 	// 123456

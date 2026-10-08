@@ -20,15 +20,25 @@ type iFuzzyMatchDomainSensitiveWordResponseBody interface {
 }
 
 type FuzzyMatchDomainSensitiveWordResponseBody struct {
+	// Indicates whether the domain name contains sensitive words. Valid values:
+	//
+	// - **true**: The domain name contains sensitive words.
+	//
+	// - **false**: The domain name does not contain sensitive words.
+	//
 	// example:
 	//
 	// true
 	Exist *bool `json:"Exist,omitempty" xml:"Exist,omitempty"`
+	// The domain name keyword that was passed in.
+	//
 	// example:
 	//
-	// xxx**.cn
+	// xxx**
 	Keyword             *string                                                       `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	MatchedSentiveWords *FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWords `json:"MatchedSentiveWords,omitempty" xml:"MatchedSentiveWords,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D15F91FD-0B34-4E48-8CBF-EFA5D2A31586

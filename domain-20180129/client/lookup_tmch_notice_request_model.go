@@ -18,16 +18,28 @@ type iLookupTmchNoticeRequest interface {
 }
 
 type LookupTmchNoticeRequest struct {
+	// The trademark claim key. Call the [CheckDomainSunriseClaim](https://help.aliyun.com/document_detail/97210.htm?spm=a2c4g.11186623.0.0.4aec615fTVPYjt) operation to obtain this key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2017092100/8/2/1/kDfu9htHGEx_y-LJ3XSlKMZ70000020001
 	ClaimKey *string `json:"ClaimKey,omitempty" xml:"ClaimKey,omitempty"`
+	// The language of the error messages that are returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user\\"s IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

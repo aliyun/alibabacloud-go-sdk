@@ -28,31 +28,46 @@ type iQueryOperationAuditInfoListResponseBody interface {
 }
 
 type QueryOperationAuditInfoListResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 2
-	CurrentPageNum *int32                                         `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*QueryOperationAuditInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// Review data.
+	Data []*QueryOperationAuditInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Indicates whether there is a next page.
+	//
 	// example:
 	//
 	// true
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether a previous page exists.
+	//
 	// example:
 	//
 	// true
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-40EC-8035-4B12FEFD7D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 199
 	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 10
@@ -153,29 +168,68 @@ func (s *QueryOperationAuditInfoListResponseBody) Validate() error {
 }
 
 type QueryOperationAuditInfoListResponseBodyData struct {
+	// Information pending review.
+	//
+	// example:
+	//
+	// {"regType":1,"registrantName":"张三","telephone":"1390123****","account":"username@example.com","reason":1,"remark":"账号丢失"}
 	AuditInfo *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
+	// Review status. Valid values:
+	//
+	// - **0**: Information to be completed.
+	//
+	// - **1**, **2**, **3**, **4**: Under review.
+	//
+	// - **5**: Review failed.
+	//
+	// - **6**: Review succeeded.
+	//
+	// - **7**: Review canceled.
+	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Review type. Valid value:
+	//
+	// **1**: Offline domain name transfer.
+	//
 	// example:
 	//
 	// 1
-	AuditType    *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// Name of the reviewed business.
+	//
+	// example:
+	//
+	// example.com等域名线下转移
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// Record creation time.
+	//
 	// example:
 	//
 	// 1581919010101
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com,aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Review record ID.
+	//
 	// example:
 	//
 	// 1
-	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Review remark.
+	//
+	// example:
+	//
+	// 审核中
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Record update time.
+	//
 	// example:
 	//
 	// 1581919010101

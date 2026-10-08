@@ -16,10 +16,14 @@ type iSaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody interface {
 }
 
 type SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody struct {
+	// The unique request ID.
+	//
 	// example:
 	//
 	// D200000-C0B9-4CD3-B92A-9B44A000000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8

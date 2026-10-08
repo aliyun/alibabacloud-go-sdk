@@ -29,6 +29,8 @@ type iSaveSingleTaskForCreatingOrderActivateRequest interface {
 	GetEmail() *string
 	SetEnableDomainProxy(v bool) *SaveSingleTaskForCreatingOrderActivateRequest
 	GetEnableDomainProxy() *bool
+	SetExpectedPunycode(v string) *SaveSingleTaskForCreatingOrderActivateRequest
+	GetExpectedPunycode() *string
 	SetLang(v string) *SaveSingleTaskForCreatingOrderActivateRequest
 	GetLang() *string
 	SetPermitPremiumActivation(v bool) *SaveSingleTaskForCreatingOrderActivateRequest
@@ -78,124 +80,299 @@ type iSaveSingleTaskForCreatingOrderActivateRequest interface {
 }
 
 type SaveSingleTaskForCreatingOrderActivateRequest struct {
+	// The detailed address in English.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// chao yang qu
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// Specifies whether to use Alibaba Cloud DNS servers. Valid values: **true*	- and **false**. Default value: **true**.
+	//
+	// > - If you set this parameter to **true**, you do not need to specify the **Dns1*	- and **Dns2*	- parameters. Otherwise, the specified **Dns1*	- and **Dns2*	- parameters do not take effect.
+	//
+	// - If you set this parameter to **false**, you must specify the **Dns1*	- and **Dns2*	- parameters.
+	//
 	// example:
 	//
 	// true
 	AliyunDns *bool `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// The city name in English.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// bei jing shi
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The country code, such as **CN**.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The ID of the voucher. Default value: a string.
+	//
 	// example:
 	//
 	// 123456
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The first custom DNS server.
+	//
+	// > - This parameter is available and required only when the **AliyunDns*	- parameter is set to **false**.
+	//
+	// - Make sure that the custom DNS server is correct. Otherwise, the registration may fail.
+	//
 	// example:
 	//
 	// ns1.aliyun.com
 	Dns1 *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	// The second custom DNS server.
+	//
+	// > - This parameter is available and required only when the **AliyunDns*	- parameter is set to **false**.
+	//
+	// - Make sure that the custom DNS server is correct. Otherwise, the registration may fail.
+	//
 	// example:
 	//
 	// ns2.aliyun.com
 	Dns2 *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// The domain name that you want to register.
+	//
+	// > When you register a domain name, you must specify the registrant information. If you do not specify the registrant information, the domain name registration fails. You can specify the RegistrantProfileId parameter to use a registrant profile that defines the registrant information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The email address.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Specifies whether to enable the domain name privacy protection service. Valid values:
+	//
+	// - **true**: Enable.
+	//
+	// - **false**: Do not enable.
+	//
+	// Default value: **true**.
+	//
 	// example:
 	//
 	// false
 	EnableDomainProxy *bool `json:"EnableDomainProxy,omitempty" xml:"EnableDomainProxy,omitempty"`
+	// The domain name in Punycode format. This parameter can be left empty.
+	//
+	// example:
+	//
+	// xn--fiqs8s.com
+	ExpectedPunycode *string `json:"ExpectedPunycode,omitempty" xml:"ExpectedPunycode,omitempty"`
+	// The language of the error message returned by the API operation. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to allow the registration of premium domain names. Valid values:
+	//
+	// - **false**: Not allowed.
+	//
+	// - **true**: Allowed.
+	//
+	// Default value: **false**.
+	//
 	// example:
 	//
 	// false
 	PermitPremiumActivation *bool `json:"PermitPremiumActivation,omitempty" xml:"PermitPremiumActivation,omitempty"`
+	// The postal code.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// 1234567
 	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// The ID of the coupon.
+	//
 	// example:
 	//
 	// 123123
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// The province name in English.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// bei jing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The name of the domain name contact in English.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// ce shi
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// The name of the domain name registrant in English.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// ce shi
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// The ID of the domain name registrant profile. The profile contains information such as the registrant name, contact name, phone number, and email address. You can use only a real-name verified registrant profile to register a domain name. If you have created a registrant profile, you can call the [QueryRegistrantProfiles](~~QueryRegistrantProfiles~~) operation to query the profile ID.
+	//
+	// > After you specify this parameter, you do not need to specify the **RegistrantType**, **ZhRegistrantOrganization**, **ZhRegistrantName**, **ZhProvince**, **ZhCity**, **ZhAddress**, **RegistrantOrganization**, **RegistrantName**, **Province**, **City**, **Address**, **PostalCode**, **Country**, **TelArea**, **Telephone**, **TelExt**, or **Email*	- parameter.
+	//
 	// example:
 	//
 	// 123
 	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// The type of the domain name registrant. Valid values:
+	//
+	// - **1**: Individual.
+	//
+	// - **2**: Enterprise or organization.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// None.
+	//
 	// example:
 	//
 	// rg-XX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The subscription duration. Unit: **year**. Default value: **1 year**. Maximum value: **10 years**.
+	//
 	// example:
 	//
 	// 1
 	SubscriptionDuration *int32 `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	// The country code for the phone number, such as **86*	- for China.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// The extension number.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// 1234
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// The phone number.
+	//
+	// > This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
 	// example:
 	//
 	// 12345678
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// Specifies whether to allow the registration of trademark domain names. Valid values:
+	//
+	// - **false**: Not allowed.
+	//
+	// - **true**: Allowed.
+	//
 	// example:
 	//
 	// false
 	TrademarkDomainActivation *bool `json:"TrademarkDomainActivation,omitempty" xml:"TrademarkDomainActivation,omitempty"`
+	// Specifies whether to use a voucher. Valid values:
+	//
+	// - **true**: Use.
+	//
+	// - **false**: Do not use.
+	//
+	// Default value: **false**.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - **false**: Not allowed.
+	//
+	// - **true**: Allowed.
+	//
+	// Default value: **false**.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// The IP address of the client. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1
-	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The detailed address in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
+	// example:
+	//
+	// 朝阳区
+	ZhAddress *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	// The city name in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
+	// example:
+	//
+	// 北京市
+	ZhCity *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	// The province name in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
+	// example:
+	//
+	// 北京
+	ZhProvince *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	// The name of the domain name contact in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
+	// example:
+	//
+	// 测试
+	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	// The name of the domain name registrant in Chinese.
+	//
+	// > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId*	- parameter is not specified. If you do not specify this parameter, the domain name registration fails.
+	//
+	// example:
+	//
+	// 测试
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
@@ -245,6 +422,10 @@ func (s *SaveSingleTaskForCreatingOrderActivateRequest) GetEmail() *string {
 
 func (s *SaveSingleTaskForCreatingOrderActivateRequest) GetEnableDomainProxy() *bool {
 	return s.EnableDomainProxy
+}
+
+func (s *SaveSingleTaskForCreatingOrderActivateRequest) GetExpectedPunycode() *string {
+	return s.ExpectedPunycode
 }
 
 func (s *SaveSingleTaskForCreatingOrderActivateRequest) GetLang() *string {
@@ -386,6 +567,11 @@ func (s *SaveSingleTaskForCreatingOrderActivateRequest) SetEmail(v string) *Save
 
 func (s *SaveSingleTaskForCreatingOrderActivateRequest) SetEnableDomainProxy(v bool) *SaveSingleTaskForCreatingOrderActivateRequest {
 	s.EnableDomainProxy = &v
+	return s
+}
+
+func (s *SaveSingleTaskForCreatingOrderActivateRequest) SetExpectedPunycode(v string) *SaveSingleTaskForCreatingOrderActivateRequest {
+	s.ExpectedPunycode = &v
 	return s
 }
 

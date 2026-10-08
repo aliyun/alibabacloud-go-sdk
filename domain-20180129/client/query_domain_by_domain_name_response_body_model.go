@@ -86,18 +86,24 @@ type iQueryDomainByDomainNameResponseBody interface {
 }
 
 type QueryDomainByDomainNameResponseBody struct {
+	// The status of the privacy protection service for .cn domain names.
+	//
 	// example:
 	//
 	// UN_SUPPORT
 	CnnicPrivacyServiceStatus *string                                     `json:"CnnicPrivacyServiceStatus,omitempty" xml:"CnnicPrivacyServiceStatus,omitempty"`
 	DnsList                   *QueryDomainByDomainNameResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	// The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
+	// The ID of the domain group. You can obtain the ID by calling the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation.
 	//
 	// example:
 	//
 	// 123456
 	DomainGroupId *int64 `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	// The name of the domain name group.
+	// The name of the domain group.
+	//
+	// example:
+	//
+	// 测试分组
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
 	// The domain name.
 	//
@@ -105,21 +111,21 @@ type QueryDomainByDomainNameResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether privacy protection is enabled for the domain name.
+	// Indicates whether privacy protection is enabled.
 	//
 	// example:
 	//
 	// false
 	DomainNameProxyService *bool `json:"DomainNameProxyService,omitempty" xml:"DomainNameProxyService,omitempty"`
-	// The status of name auditing for the domain name. Valid values:
+	// The status of the domain name review. Valid values:
 	//
-	// 	- **NONAUDIT**: The name auditing for the domain name is not performed.
+	// - **NONAUDIT**: Not reviewed.
 	//
-	// 	- **SUCCEED**: The name auditing for the domain name is successful.
+	// - **SUCCEED**: Successful.
 	//
-	// 	- **FAILED**: The name auditing for the domain name fails.
+	// - **FAILED**: Failed.
 	//
-	// 	- **AUDITING**: The name auditing for the domain name is in progress.
+	// - **AUDITING**: In review.
 	//
 	// example:
 	//
@@ -127,11 +133,11 @@ type QueryDomainByDomainNameResponseBody struct {
 	DomainNameVerificationStatus *string `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// 	- 1: The domain name needs to be renewed.
+	// - **1**: Renewal required.
 	//
-	// 	- 2: The domain name needs to be redeemed.
+	// - **2**: Redemption required.
 	//
-	// 	- 3: The domain name is normal.
+	// - **3**: Active.
 	//
 	// example:
 	//
@@ -139,61 +145,61 @@ type QueryDomainByDomainNameResponseBody struct {
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// 	- New gTLD
+	// - New gTLD
 	//
-	// 	- gTLD
+	// - gTLD
 	//
-	// 	- ccTLD
+	// - ccTLD
 	//
 	// example:
 	//
 	// gTLD
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The email address of the domain name registrant.
+	// The registrant\\"s email.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether the domain name is in the ClientHold state.
+	// Indicates whether the domain name has a `clientHold` status due to email verification failure.
 	//
 	// example:
 	//
 	// false
 	EmailVerificationClientHold *bool `json:"EmailVerificationClientHold,omitempty" xml:"EmailVerificationClientHold,omitempty"`
-	// Indicates whether the email address passes verification. Valid values:
+	// The email verification status. Valid values:
 	//
-	// 	- **0**: The email address fails the verification.
+	// - **0**: Not verified.
 	//
-	// 	- **1**: The email address passes the verification.
+	// - **1**: Verified.
 	//
 	// example:
 	//
 	// 1
 	EmailVerificationStatus *int32 `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
-	// The number of days from the expiration date of the domain name to the current date.
+	// The number of days until the expiration date.
 	//
 	// example:
 	//
 	// 356
 	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	// The expiration date.
+	// The expiration date of the domain name.
 	//
 	// example:
 	//
 	// 2019-12-07 17:02:13
 	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	// The timestamp generated when the domain name expired.
+	// The timestamp of the expiration date.
 	//
 	// example:
 	//
 	// 1625111915000
 	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	// Indicates whether the domain name expires. Valid values:
+	// The expiration status of the domain name. Valid values:
 	//
-	// 	- **1**: The domain name does not expire.
+	// - **1**: The domain name has not expired.
 	//
-	// 	- **2**: The domain name expires.
+	// - **2**: The domain name has expired.
 	//
 	// example:
 	//
@@ -205,78 +211,85 @@ type QueryDomainByDomainNameResponseBody struct {
 	//
 	// S20179H1BBI9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the domain name is a premium domain name.
+	// Indicates whether the domain name is a premium domain.
 	//
 	// example:
 	//
 	// false
 	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// The status of the privacy protection service.
+	//
 	// example:
 	//
 	// UN_SUPPORT
 	PrivacyServiceStatus *string `json:"PrivacyServiceStatus,omitempty" xml:"PrivacyServiceStatus,omitempty"`
-	// The status of real-name verification for the domain name. Valid values:
+	// The real-name verification status of the domain name. Valid values:
 	//
-	// 	- **NONAUDIT**: The real-name verification is not performed.
+	// - **NONAUDIT**: Not verified.
 	//
-	// 	- **SUCCEED**: The real-name verification is successful.
+	// - **SUCCEED**: Successful.
 	//
-	// 	- **FAILED**: The real-name verification fails.
+	// - **FAILED**: Failed.
 	//
-	// 	- **AUDITING**: The real-name verification is in progress.
+	// - **AUDITING**: In review.
 	//
 	// example:
 	//
 	// NONAUDIT
 	RealNameStatus *string `json:"RealNameStatus,omitempty" xml:"RealNameStatus,omitempty"`
-	// The name of the contact.
+	// The name of the individual registrant or the contact person for an organization.
 	//
 	// example:
 	//
 	// Test litm
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	// The registrant of the domain name.
+	// The name of the registrant organization.
 	//
 	// example:
 	//
 	// Test litm
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	// The type of contact who registers the domain name. Valid values:
+	// The type of the registrant. Valid values:
 	//
-	// 	- **1**: individual.
+	// - **1**: Individual.
 	//
-	// 	- **2**: enterprise.
+	// - **2**: Enterprise.
 	//
 	// example:
 	//
 	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	// The status of the information about the domain name registrant. Valid values:
+	// The status of registrant information updates. Valid values:
 	//
-	// 	- **PENDING**: The information about the domain name registrant is being modified.
+	// - **PENDING**: The registrant information is being updated.
 	//
-	// 	- **NORMAL**: normal.
+	// - **NORMAL**: No update is in progress.
 	//
 	// example:
 	//
 	// NORMAL
 	RegistrantUpdatingStatus *string `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
-	Registrar                *string `json:"Registrar,omitempty" xml:"Registrar,omitempty"`
-	// The time when the domain name was registered.
+	// The registrar of the domain name.
+	Registrar *string `json:"Registrar,omitempty" xml:"Registrar,omitempty"`
+	// The registration date of the domain name.
 	//
 	// example:
 	//
 	// 2017-12-07 17:02:13
 	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	// The timestamp generated when the domain name was registered.
+	// The timestamp of the registration date.
 	//
 	// example:
 	//
 	// 1584675448000
 	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	// The remarks on the domain name.
+	// The user-provided remark for the domain name.
+	//
+	// example:
+	//
+	// 测试备注
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -287,51 +300,60 @@ type QueryDomainByDomainNameResponseBody struct {
 	// example:
 	//
 	// rg-acfmw6bpc6n7zai
-	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             *QueryDomainByDomainNameResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	// The transfer status of the domain name. Valid values:
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags attached to the domain name.
+	Tag *QueryDomainByDomainNameResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	// The status of the domain transfer out. Valid values:
 	//
-	// 	- **NORMAL**: The domain name is normal.
+	// - **NORMAL**: The domain name is not being transferred out.
 	//
-	// 	- **PENDING**: The domain name is being transferred out from Alibaba Cloud.
+	// - **PENDING**: The domain name is being transferred out from HiChina.
 	//
 	// example:
 	//
 	// NORMAL
 	TransferOutStatus *string `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
-	// The status of the transfer lock for the domain name. Valid values:
+	// The status of the domain transfer lock. Valid values:
 	//
-	// 	- **NONE_SETTING**: No transfer lock is configured.
+	// - **NONE_SETTING**: Not set.
 	//
-	// 	- **OPEN**: The transfer lock is enabled.
+	// - **OPEN**: Enabled.
 	//
-	// 	- **CLOSE**: The transfer lock is disabled.
+	// - **CLOSE**: Disabled.
 	//
 	// example:
 	//
 	// CLOSE
 	TransferProhibitionLock *string `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
-	// The status of the security lock for the domain name. Valid values:
+	// The status of the domain name security lock. Valid values:
 	//
-	// 	- **NONE_SETTING**: No security lock is configured.
+	// - **NONE_SETTING**: Not set.
 	//
-	// 	- **OPEN**: The security lock is enabled.
+	// - **OPEN**: Enabled.
 	//
-	// 	- **CLOSE**: The security lock is disabled.
+	// - **CLOSE**: Disabled.
 	//
 	// example:
 	//
 	// CLOSE
 	UpdateProhibitionLock *string `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
-	// The user ID.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 121000000****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The Chinese name of the domain name contact.
+	// The name of the contact person in Chinese.
+	//
+	// example:
+	//
+	// 王先生
 	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
-	// The Chinese name of the domain name registrant.
+	// The name of the registrant in Chinese.
+	//
+	// example:
+	//
+	// 王先生
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 

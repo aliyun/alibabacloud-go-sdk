@@ -20,20 +20,34 @@ type iCheckTransferInFeasibilityRequest interface {
 }
 
 type CheckTransferInFeasibilityRequest struct {
+	// The domain name to be validated.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The transfer-in password for the domain name.
+	//
 	// example:
 	//
 	// test
 	TransferAuthorizationCode *string `json:"TransferAuthorizationCode,omitempty" xml:"TransferAuthorizationCode,omitempty"`
+	// The user IP address. You can set it to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

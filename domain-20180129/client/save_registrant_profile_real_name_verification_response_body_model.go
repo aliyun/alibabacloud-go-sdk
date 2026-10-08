@@ -16,10 +16,14 @@ type iSaveRegistrantProfileRealNameVerificationResponseBody interface {
 }
 
 type SaveRegistrantProfileRealNameVerificationResponseBody struct {
+	// The ID of the retrieved information template.
+	//
 	// example:
 	//
 	// 1234567
 	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4D73432C-7600-****-ACBB-C3B5CA145D32

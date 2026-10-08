@@ -16,7 +16,10 @@ type iQueryFailReasonForDomainRealNameVerificationResponseBody interface {
 }
 
 type QueryFailReasonForDomainRealNameVerificationResponseBody struct {
+	// List of reasons for identity verification failure.
 	Data []*QueryFailReasonForDomainRealNameVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// 1F1BA893-AD33-4248-8CB8-1657E3733052
@@ -63,15 +66,32 @@ func (s *QueryFailReasonForDomainRealNameVerificationResponseBody) Validate() er
 }
 
 type QueryFailReasonForDomainRealNameVerificationResponseBodyData struct {
+	// Date.
+	//
 	// example:
 	//
 	// 2017-03-17 11:08:02
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Review Status. Valid values:
+	//
+	// - **NONAUDIT**: Not authenticated.
+	//
+	// - **SUCCEED**: Succeeded.
+	//
+	// - **FAILED**: Review failed.
+	//
+	// - **AUDITING**: Under review.
+	//
 	// example:
 	//
 	// SUCCEED
 	DomainNameVerificationStatus *string `json:"DomainNameVerificationStatus,omitempty" xml:"DomainNameVerificationStatus,omitempty"`
-	FailReason                   *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	// Reason for real-name verification failure.
+	//
+	// example:
+	//
+	// 审核失败，所有者（中文）字段必须包含中文字符。
+	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
 }
 
 func (s QueryFailReasonForDomainRealNameVerificationResponseBodyData) String() string {

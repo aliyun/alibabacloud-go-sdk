@@ -18,16 +18,28 @@ type iQueryDnsHostRequest interface {
 }
 
 type QueryDnsHostRequest struct {
+	// The ID of the domain name instance. Call the QueryDomainList API to obtain this ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ST2017120814571100001303
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language for returned error messages. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user\\"s IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

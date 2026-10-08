@@ -16,12 +16,16 @@ type iSetupDomainAutoRenewRequest interface {
 }
 
 type SetupDomainAutoRenewRequest struct {
+	// The instance ID of the domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S2019270W570xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operation type.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,19 +22,40 @@ type iSubmitOperationCredentialsRequest interface {
 }
 
 type SubmitOperationCredentialsRequest struct {
+	// Review record ID.
+	//
 	// example:
 	//
 	// 1
 	AuditRecordId *int64 `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
+	// Review type. Valid value:
+	//
+	// **1**: Offline domain name transfer.
+	//
 	// example:
 	//
 	// 1
-	AuditType   *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// Certificate materials pending review.
 	Credentials *string `json:"Credentials,omitempty" xml:"Credentials,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Registrant type. Valid values:
+	//
+	// - **1**: Individual.
+	//
+	// - **2**: Enterprise.
+	//
 	// example:
 	//
 	// 1

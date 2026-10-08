@@ -32,48 +32,74 @@ type iSaveSingleTaskForCreatingOrderTransferRequest interface {
 }
 
 type SaveSingleTaskForCreatingOrderTransferRequest struct {
+	// Domain name transfer-in password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testCode
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123456
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language for error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Is transfer-in of premium domain names allowed. Default value: **false**.
+	//
 	// example:
 	//
 	// false
 	PermitPremiumTransfer *bool `json:"PermitPremiumTransfer,omitempty" xml:"PermitPremiumTransfer,omitempty"`
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123456
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// ID of the domain name registrant profile that has passed identity verification.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// Is a coupon used.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Is a coupon used.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

@@ -18,16 +18,22 @@ type iSaveSingleTaskForApplyQuickTransferOutOpenlyRequest interface {
 }
 
 type SaveSingleTaskForApplyQuickTransferOutOpenlyRequest struct {
+	// The domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of the returned error message. Valid values: zh (Chinese) and en (English). The default is en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user\\"s client IP.
+	//
 	// example:
 	//
 	// 127.0.0.1

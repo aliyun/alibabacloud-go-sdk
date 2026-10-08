@@ -16,12 +16,22 @@ type iCancelOperationAuditRequest interface {
 }
 
 type CancelOperationAuditRequest struct {
+	// The audit record ID. You can query the audit record ID by using the [QueryOperationAuditInfoList](https://help.aliyun.com/document_detail/172568.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AuditRecordId *int64 `json:"AuditRecordId,omitempty" xml:"AuditRecordId,omitempty"`
+	// The language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en

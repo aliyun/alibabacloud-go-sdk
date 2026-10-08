@@ -24,17 +24,40 @@ type iQueryDomainGroupListRequest interface {
 }
 
 type QueryDomainGroupListRequest struct {
+	// The user-defined domain group name.
+	//
+	// example:
+	//
+	// 默认分组
 	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	// The language of error messages in the response. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// The default value is **en**.
+	//
 	// example:
 	//
 	// en
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	OrderByType  *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
 	OrderKeyType *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
+	// Specifies whether to show domain groups that are being deleted. Valid values:
+	//
+	// - **false**
+	//
+	// - **true**
+	//
+	// The default value is **false**.
+	//
 	// example:
 	//
 	// false
 	ShowDeletingGroup *bool `json:"ShowDeletingGroup,omitempty" xml:"ShowDeletingGroup,omitempty"`
+	// The client IP address. You can set this parameter to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

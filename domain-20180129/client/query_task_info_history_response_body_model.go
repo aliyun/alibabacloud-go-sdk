@@ -24,14 +24,22 @@ type iQueryTaskInfoHistoryResponseBody interface {
 }
 
 type QueryTaskInfoHistoryResponseBody struct {
+	// Cursor for the current page.
 	CurrentPageCursor *QueryTaskInfoHistoryResponseBodyCurrentPageCursor `json:"CurrentPageCursor,omitempty" xml:"CurrentPageCursor,omitempty" type:"Struct"`
-	NextPageCursor    *QueryTaskInfoHistoryResponseBodyNextPageCursor    `json:"NextPageCursor,omitempty" xml:"NextPageCursor,omitempty" type:"Struct"`
-	Objects           []*QueryTaskInfoHistoryResponseBodyObjects         `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	// Cursor for the next page.
+	NextPageCursor *QueryTaskInfoHistoryResponseBodyNextPageCursor `json:"NextPageCursor,omitempty" xml:"NextPageCursor,omitempty" type:"Struct"`
+	// Job information.
+	Objects []*QueryTaskInfoHistoryResponseBodyObjects `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	// Page size.
+	//
 	// example:
 	//
 	// 2
-	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Cursor for the previous page.
 	PrePageCursor *QueryTaskInfoHistoryResponseBodyPrePageCursor `json:"PrePageCursor,omitempty" xml:"PrePageCursor,omitempty" type:"Struct"`
+	// Unique request access token.
+	//
 	// example:
 	//
 	// EB3FCCBA-CA1F-4D31-9F34-test
@@ -129,38 +137,103 @@ func (s *QueryTaskInfoHistoryResponseBody) Validate() error {
 }
 
 type QueryTaskInfoHistoryResponseBodyCurrentPageCursor struct {
+	// User IP address when the job was submitted.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// Job creation time.
+	//
 	// example:
 	//
 	// 2017-11-01 17:22:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Job creation UNIX timestamp.
+	//
 	// example:
 	//
 	// 1509528171000
 	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// aa634d3f-927e-4d17-9d2c-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Number of domain names included in the job.
+	//
 	// example:
 	//
 	// 1
 	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting for execution;
+	//
+	// - **EXECUTING**: Executing;
+	//
+	// - **COMPLETE**: Execution completed.
+	//
 	// example:
 	//
 	// COMPLETE
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Job status code. Valid values:
+	//
+	// - **1**: Waiting for execution
+	//
+	// - **2**: Executing
+	//
+	// - **3**: Execution completed
+	//
 	// example:
 	//
 	// 3
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// Job type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify registrant information
+	//
+	// - **CHG_DNS**: Modify DNS
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Modify administrator contact information
+	//
+	// - **UPDATE_BILLING_CONTACT**: Modify billing contact information
+	//
+	// - **UPDATE_TECH_CONTACT**: Modify technical contact information
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock
+	//
+	// - **ORDER_ACTIVATE**: Create registration order
+	//
+	// - **ORDER_RENEW**: Create renewal order
+	//
+	// - **ORDER_REDEEM**: Create redemption order
+	//
+	// - **CREATE_DNSHOST**: Create DNS host
+	//
+	// - **UPDATE_DNSHOST**: Update DNS host
+	//
+	// - **UPDATE_REGISTRANT_CONTACT**: Modify registrant contact
+	//
+	// - **DELETE_DOMAIN**: Delete domain name
+	//
+	// - **SYNC_DNSHOST**: Synchronize DNS host
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Task Type description.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
 
@@ -258,38 +331,103 @@ func (s *QueryTaskInfoHistoryResponseBodyCurrentPageCursor) Validate() error {
 }
 
 type QueryTaskInfoHistoryResponseBodyNextPageCursor struct {
+	// User IP address when the job was submitted.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// Creation Time of the job.
+	//
 	// example:
 	//
 	// 2017-10-27 13:07:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creation Time of the job.
+	//
 	// example:
 	//
 	// 1509080827000
 	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 8f112aa1-98be-48c3-82f8-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Number of domain names included in the job.
+	//
 	// example:
 	//
 	// 15
 	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting to execute;
+	//
+	// - **EXECUTING**: Executing;
+	//
+	// - **COMPLETE**: Execution completed.
+	//
 	// example:
 	//
 	// COMPLETE
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Job status code. Valid values:
+	//
+	// - **1**: Waiting to execute;
+	//
+	// - **2**: Executing;
+	//
+	// - **3**: Execution completed.
+	//
 	// example:
 	//
 	// 3
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// Task Type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify registrant information;
+	//
+	// - **CHG_DNS**: Modify DNS;
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection;
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information;
+	//
+	// - **UPDATE_BILLING_CONTACT**: Modify billing contact information;
+	//
+	// - **UPDATE_TECH_CONTACT**: Modify technical contact information;
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable domain name Edit Lock;
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock;
+	//
+	// - **ORDER_ACTIVATE**: Create a registration order;
+	//
+	// - **ORDER_RENEW**: Create a renewal order;
+	//
+	// - **ORDER_REDEEM**: Create a redemption order;
+	//
+	// - **CREATE_DNSHOST**: Create a DNS host;
+	//
+	// - **UPDATE_DNSHOST**: Update a DNS host;
+	//
+	// - **UPDATE_REGISTRANT_CONTACT**: Modify registrant contact information;
+	//
+	// - **DELETE_DOMAIN**: Delete a domain name;
+	//
+	// - **SYNC_DNSHOST**: Synchronize DNS host.
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Task type description.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
 
@@ -387,38 +525,103 @@ func (s *QueryTaskInfoHistoryResponseBodyNextPageCursor) Validate() error {
 }
 
 type QueryTaskInfoHistoryResponseBodyObjects struct {
+	// User IP address when submitting the task.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// Task creation time.
+	//
 	// example:
 	//
 	// 2017-11-01 17:22:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Task creation time.
+	//
 	// example:
 	//
 	// 1509528171000
 	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// aa634d3f-927e-4d17-9d2c-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Number of domain names included in the job.
+	//
 	// example:
 	//
 	// 1
 	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// Task status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting for execution;
+	//
+	// - **EXECUTING**: Executing;
+	//
+	// - **COMPLETE**: Execution completed.
+	//
 	// example:
 	//
 	// COMPLETE
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Task status code. Valid values:
+	//
+	// - **1**: Waiting for execution;
+	//
+	// - **2**: Executing;
+	//
+	// - **3**: Execution completed.
+	//
 	// example:
 	//
 	// 3
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// Task Type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify owner information;
+	//
+	// - **CHG_DNS**: Modify DNS;
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection;
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information;
+	//
+	// - **UPDATE_BILLING_CONTACT**: Modify billing contact information;
+	//
+	// - **UPDATE_TECH_CONTACT**: Modify technical contact information;
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock;
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock;
+	//
+	// - **ORDER_ACTIVATE**: Create a registration order;
+	//
+	// - **ORDER_RENEW**: Create a renewal order;
+	//
+	// - **ORDER_REDEEM**: Create a redemption order;
+	//
+	// - **CREATE_DNSHOST**: Create a DNS host;
+	//
+	// - **UPDATE_DNSHOST**: Update a DNS host;
+	//
+	// - **UPDATE_REGISTRANT_CONTACT**: Modify registrant contact information;
+	//
+	// - **DELETE_DOMAIN**: Delete a domain name;
+	//
+	// - **SYNC_DNSHOST**: Synchronize a DNS host.
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Task type description.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
 
@@ -516,38 +719,103 @@ func (s *QueryTaskInfoHistoryResponseBodyObjects) Validate() error {
 }
 
 type QueryTaskInfoHistoryResponseBodyPrePageCursor struct {
+	// User IP address when submitting the job.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	// Job creation time.
+	//
 	// example:
 	//
 	// 2017-11-01 17:19:47
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Job creation time.
+	//
 	// example:
 	//
 	// 1509527987000
 	CreateTimeLong *int64 `json:"CreateTimeLong,omitempty" xml:"CreateTimeLong,omitempty"`
+	// Task number.
+	//
 	// example:
 	//
 	// f9baa3d5-33b9-4c81-8847-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Number of domain names included in the job.
+	//
 	// example:
 	//
 	// 15
 	TaskNum *int32 `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting for execution;
+	//
+	// - **EXECUTING**: Executing;
+	//
+	// - **COMPLETE**: Execution completed.
+	//
 	// example:
 	//
 	// COMPLETE
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Task status code. Valid values:
+	//
+	// - **1**: Waiting for execution;
+	//
+	// - **2**: Executing;
+	//
+	// - **3**: Execution completed.
+	//
 	// example:
 	//
 	// 3
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// Task Type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify registrant information;
+	//
+	// - **CHG_DNS**: Modify DNS;
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection;
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Update administrative contact;
+	//
+	// - **UPDATE_BILLING_CONTACT**: Update billing contact;
+	//
+	// - **UPDATE_TECH_CONTACT**: Update technical contact;
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock;
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock;
+	//
+	// - **ORDER_ACTIVATE**: Create a registration order;
+	//
+	// - **ORDER_RENEW**: Create a renewal order;
+	//
+	// - **ORDER_REDEEM**: Create a redemption order;
+	//
+	// - **CREATE_DNSHOST**: Create a DNS host;
+	//
+	// - **UPDATE_DNSHOST**: Update a DNS host;
+	//
+	// - **UPDATE_REGISTRANT_CONTACT**: Update registrant contact;
+	//
+	// - **DELETE_DOMAIN**: Delete a domain name;
+	//
+	// - **SYNC_DNSHOST**: Synchronize DNS host.
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Task type description.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
 

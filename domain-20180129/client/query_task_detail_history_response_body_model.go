@@ -24,14 +24,22 @@ type iQueryTaskDetailHistoryResponseBody interface {
 }
 
 type QueryTaskDetailHistoryResponseBody struct {
+	// Current page cursor.
 	CurrentPageCursor *QueryTaskDetailHistoryResponseBodyCurrentPageCursor `json:"CurrentPageCursor,omitempty" xml:"CurrentPageCursor,omitempty" type:"Struct"`
-	NextPageCursor    *QueryTaskDetailHistoryResponseBodyNextPageCursor    `json:"NextPageCursor,omitempty" xml:"NextPageCursor,omitempty" type:"Struct"`
-	Objects           []*QueryTaskDetailHistoryResponseBodyObjects         `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	// Cursor for the next page.
+	NextPageCursor *QueryTaskDetailHistoryResponseBodyNextPageCursor `json:"NextPageCursor,omitempty" xml:"NextPageCursor,omitempty" type:"Struct"`
+	// Task detail information.
+	Objects []*QueryTaskDetailHistoryResponseBodyObjects `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	// Paging size.
+	//
 	// example:
 	//
 	// 2
-	PageSize      *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Cursor for the previous page.
 	PrePageCursor *QueryTaskDetailHistoryResponseBodyPrePageCursor `json:"PrePageCursor,omitempty" xml:"PrePageCursor,omitempty" type:"Struct"`
+	// Unique Request access token.
+	//
 	// example:
 	//
 	// 548CAE74-88F8-402F-8C12-97E747389C51
@@ -129,44 +137,118 @@ func (s *QueryTaskDetailHistoryResponseBody) Validate() error {
 }
 
 type QueryTaskDetailHistoryResponseBodyCurrentPageCursor struct {
+	// Job Creation Time.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Result of task execution.
+	//
+	// example:
+	//
+	// 执行成功
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Domain instance ID.
+	//
 	// example:
 	//
 	// S1234456789
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task detail ID.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-2342
 	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting for execution.
+	//
+	// - **EXECUTING**: Executing.
+	//
+	// - **EXECUTE_SUCCESS**: Execution succeeded.
+	//
+	// - **EXECUTE_FAILURE**: Execution failed.
+	//
 	// example:
 	//
 	// EXECUTE_SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Job Status code. Valid values:
+	//
+	// - **0**: Waiting to execute.
+	//
+	// - **1**: Executing.
+	//
+	// - **2**: Succeeded.
+	//
+	// - **3**: Failed.
+	//
 	// example:
 	//
 	// 2
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// Task Type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify registrant information.
+	//
+	// - **CHG_DNS**: Modify DNS.
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection.
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information.
+	//
+	// - **UPDATE_BILLING_CONTACT**: Modify billing contact information.
+	//
+	// - **UPDATE_TECH_CONTACT**: Modify technical contact information.
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock.
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock.
+	//
+	// - **ORDER_ACTIVATE**: Create a registration order.
+	//
+	// - **ORDER_RENEW**: Create a renewal order.
+	//
+	// - **ORDER_REDEEM**: Create a redemption order.
+	//
+	// - **CREATE_DNSHOST**: Create a DNS host.
+	//
+	// - **UPDATE_DNSHOST**: Update a DNS host.
+	//
+	// - **SYNC_DNSHOST**: Synchronize a DNS host.
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Description of the task type.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
+	// Retry Count of job details.
+	//
 	// example:
 	//
 	// 0
 	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// The most recent task execution time.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00
@@ -294,44 +376,118 @@ func (s *QueryTaskDetailHistoryResponseBodyCurrentPageCursor) Validate() error {
 }
 
 type QueryTaskDetailHistoryResponseBodyNextPageCursor struct {
+	// Creation time of the job.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Result of task execution.
+	//
+	// example:
+	//
+	// 域名有禁止更新锁
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Domain name instance ID.
+	//
 	// example:
 	//
 	// S1234567890
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task detail number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-2424
 	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting for execution.
+	//
+	// - **EXECUTING**: Executing.
+	//
+	// - **EXECUTE_SUCCESS**: Succeeded.
+	//
+	// - **EXECUTE_FAILURE**: Failed.
+	//
 	// example:
 	//
 	// EXECUTE_FAILURE
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Task status code. Valid values:
+	//
+	// - **0**: Waiting for execution.
+	//
+	// - **1**: Executing.
+	//
+	// - **2**: Succeeded.
+	//
+	// - **3**: Failed.
+	//
 	// example:
 	//
 	// 3
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// Task Type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify registrant information.
+	//
+	// - **CHG_DNS**: Modify DNS.
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection.
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Modify administrator contact information.
+	//
+	// - **UPDATE_BILLING_CONTACT**: Modify billing contact information.
+	//
+	// - **UPDATE_TECH_CONTACT**: Modify technical contact information.
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable Edit Lock.
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable transfer lock.
+	//
+	// - **ORDER_ACTIVATE**: Create a registration order.
+	//
+	// - **ORDER_RENEW**: Create a renewal order.
+	//
+	// - **ORDER_REDEEM**: Create a redemption order.
+	//
+	// - **CREATE_DNSHOST**: Create a DNS host.
+	//
+	// - **UPDATE_DNSHOST**: Update a DNS host.
+	//
+	// - **SYNC_DNSHOST**: Synchronize a DNS host.
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Task Type Description.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
+	// Number of retries for the task details.
+	//
 	// example:
 	//
 	// 5
 	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// The most recent running time of the job details.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00
@@ -459,44 +615,118 @@ func (s *QueryTaskDetailHistoryResponseBodyNextPageCursor) Validate() error {
 }
 
 type QueryTaskDetailHistoryResponseBodyObjects struct {
+	// The creation time of the job.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The result of the job execution.
+	//
+	// example:
+	//
+	// 域名有禁止更新锁
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The instance ID of the domain name.
+	//
 	// example:
 	//
 	// S123456789
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task detail number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-4234
 	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// The job number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting for execution.
+	//
+	// - **EXECUTING**: Executing.
+	//
+	// - **EXECUTE_SUCCESS**: Execution succeeded.
+	//
+	// - **EXECUTE_FAILURE**: Execution failed.
+	//
 	// example:
 	//
 	// EXECUTE_FAILURE
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The job status code. Valid values:
+	//
+	// - **0**: Waiting for execution.
+	//
+	// - **1**: Executing.
+	//
+	// - **2**: Succeeded.
+	//
+	// - **3**: Failed.
+	//
 	// example:
 	//
 	// 3
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// The task type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify registrant information.
+	//
+	// - **CHG_DNS**: Modify DNS settings.
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection.
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Update administrative contact information.
+	//
+	// - **UPDATE_BILLING_CONTACT**: Update billing contact information.
+	//
+	// - **UPDATE_TECH_CONTACT**: Update technical contact information.
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable the Edit Lock for the domain name.
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable the transfer lock for the domain name.
+	//
+	// - **ORDER_ACTIVATE**: Create a registration order.
+	//
+	// - **ORDER_RENEW**: Create a renewal order.
+	//
+	// - **ORDER_REDEEM**: Create a redemption order.
+	//
+	// - **CREATE_DNSHOST**: Create a DNS host.
+	//
+	// - **UPDATE_DNSHOST**: Update a DNS host.
+	//
+	// - **SYNC_DNSHOST**: Synchronize a DNS host.
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Task Type description.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
+	// Number of retries for the task detail.
+	//
 	// example:
 	//
 	// 5
 	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// The running time of the most recent job execution.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00
@@ -624,44 +854,118 @@ func (s *QueryTaskDetailHistoryResponseBodyObjects) Validate() error {
 }
 
 type QueryTaskDetailHistoryResponseBodyPrePageCursor struct {
+	// Task creation time.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Result of task execution.
+	//
+	// example:
+	//
+	// 域名有禁止更新锁
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Domain instance ID.
+	//
 	// example:
 	//
 	// S123456789
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Task detail number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-123
 	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	// Task number.
+	//
 	// example:
 	//
 	// 75addb07-28a3-450e-b5ec-test
 	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// Task Status. Valid values:
+	//
+	// - **WAITING_EXECUTE**: Waiting for execution.
+	//
+	// - **EXECUTING**: Executing.
+	//
+	// - **EXECUTE_SUCCESS**: Execution succeeded.
+	//
+	// - **EXECUTE_FAILURE**: Execution failed.
+	//
 	// example:
 	//
 	// EXECUTE_FAILURE
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Task status code. Valid values:
+	//
+	// - **0**: Waiting for execution.
+	//
+	// - **1**: Executing.
+	//
+	// - **2**: Execution succeeded.
+	//
+	// - **3**: Execution failed.
+	//
 	// example:
 	//
 	// 3
 	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	// Task Type. Valid values:
+	//
+	// - **CHG_HOLDER**: Modify registrant information.
+	//
+	// - **CHG_DNS**: Modify DNS.
+	//
+	// - **SET_WHOIS_PROTECT**: Enable privacy protection.
+	//
+	// - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information.
+	//
+	// - **UPDATE_BILLING_CONTACT**: Modify billing contact information.
+	//
+	// - **UPDATE_TECH_CONTACT**: Modify technical contact information.
+	//
+	// - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock.
+	//
+	// - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock.
+	//
+	// - **ORDER_ACTIVATE**: Create a registration order.
+	//
+	// - **ORDER_RENEW**: Create a renewal order.
+	//
+	// - **ORDER_REDEEM**: Create a redemption order.
+	//
+	// - **CREATE_DNSHOST**: Create a DNS host.
+	//
+	// - **UPDATE_DNSHOST**: Update a DNS host.
+	//
+	// - **SYNC_DNSHOST**: Synchronize a DNS host.
+	//
 	// example:
 	//
 	// CHG_DNS
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Description of the task type.
+	//
+	// example:
+	//
+	// 修改DNS
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
+	// Number of retries for the task detail.
+	//
 	// example:
 	//
 	// 5
 	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	// The most recent running time of the task details.
+	//
 	// example:
 	//
 	// 2019-07-30 00:00:00

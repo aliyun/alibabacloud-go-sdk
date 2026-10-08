@@ -16,10 +16,14 @@ type iSetupDomainAutoRenewResponseBody interface {
 }
 
 type SetupDomainAutoRenewResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8fc97e44-837a-447d-ac61-ea28d2fe8a38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

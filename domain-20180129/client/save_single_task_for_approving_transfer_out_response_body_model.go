@@ -16,14 +16,8 @@ type iSaveSingleTaskForApprovingTransferOutResponseBody interface {
 }
 
 type SaveSingleTaskForApprovingTransferOutResponseBody struct {
-	// example:
-	//
-	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
-	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForApprovingTransferOutResponseBody) String() string {

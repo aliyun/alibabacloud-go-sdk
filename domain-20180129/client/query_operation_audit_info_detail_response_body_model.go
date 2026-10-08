@@ -32,33 +32,74 @@ type iQueryOperationAuditInfoDetailResponseBody interface {
 }
 
 type QueryOperationAuditInfoDetailResponseBody struct {
+	// Review information.
+	//
+	// example:
+	//
+	// {"regType":1,"registrantName":"张三","telephone":"1390123****","account":"username@example.com","reason":1,"remark":"账号丢失"}
 	AuditInfo *string `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty"`
+	// Review Status. Valid values:
+	//
+	// - **0**: Pending supplementary information.
+	//
+	// - **1**, **2**, **3**, **4**: Under review.
+	//
+	// - **5**: Review failed.
+	//
+	// - **6**: Review succeeded.
+	//
+	// - **7**: Review canceled.
+	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Review Type. Valid value:
+	//
+	// **1**: Offline domain name transfer.
+	//
 	// example:
 	//
 	// 1
-	AuditType    *int32  `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// Name of the reviewed business.
+	//
+	// example:
+	//
+	// example.com等域名线下转移
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// Record creation time.
+	//
 	// example:
 	//
 	// 1581919010100
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// example.com,aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Review record ID.
+	//
 	// example:
 	//
 	// 1
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Review remark.
+	//
+	// example:
+	//
+	// 审核通过
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9DFCF6F8-243C-40EC-8035-4B12FEFD7D1L
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Record update time.
+	//
 	// example:
 	//
 	// 1581919010101

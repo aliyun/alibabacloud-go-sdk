@@ -28,38 +28,60 @@ type iSaveSingleTaskForCreatingOrderRedeemRequest interface {
 }
 
 type SaveSingleTaskForCreatingOrderRedeemRequest struct {
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123123
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// Current expiration time of the domain name, represented as the number of milliseconds since 00:00:00 UTC on January 1, 1970.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0000
 	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// Domain name to be redeemed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Coupon number.
+	//
 	// example:
 	//
 	// 123123
 	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// Is a coupon used.
+	//
 	// example:
 	//
 	// false
 	UseCoupon *bool `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	// Is a coupon used.
+	//
 	// example:
 	//
 	// false
 	UsePromotion *bool `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

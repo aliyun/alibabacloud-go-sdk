@@ -24,26 +24,56 @@ type iQueryOperationAuditInfoListRequest interface {
 }
 
 type QueryOperationAuditInfoListRequest struct {
+	// Review status. Valid values:
+	//
+	// - **0**: Information pending completion.
+	//
+	// - **1**, **2**, **3**, **4**: Under review.
+	//
+	// - **5**: Review failed.
+	//
+	// - **6**: Review succeeded.
+	//
+	// - **7**: Review canceled.
+	//
 	// example:
 	//
 	// 1
 	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// Review type. Valid value:
+	//
+	// **1**: Offline domain name transfer.
+	//
 	// example:
 	//
 	// 1
 	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
+	// Domain name to query.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 20

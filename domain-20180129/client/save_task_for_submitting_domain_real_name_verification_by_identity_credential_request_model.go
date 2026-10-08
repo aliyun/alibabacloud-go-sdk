@@ -24,16 +24,26 @@ type iSaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest struct {
+	// The domain names to be verified in bulk.
+	//
 	// This parameter is required.
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// The Base64-encoded content of the identity credential file.
+	//
 	// This parameter is required.
 	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// The ID number of the identity credential.
+	//
 	// This parameter is required.
 	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// The type of the identity credential. Valid values: IDC, Passport, and OfficerAcademy.
+	//
 	// This parameter is required.
 	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp           *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The response language. Valid values: zh-CN and en-US. The default is en-US.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The client IP address.
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest) String() string {

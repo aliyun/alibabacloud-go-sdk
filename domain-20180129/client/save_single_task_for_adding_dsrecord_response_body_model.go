@@ -16,10 +16,14 @@ type iSaveSingleTaskForAddingDSRecordResponseBody interface {
 }
 
 type SaveSingleTaskForAddingDSRecordResponseBody struct {
+	// Unique request access token.
+	//
 	// example:
 	//
 	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job number.
+	//
 	// example:
 	//
 	// e893148f-6343-4ae1-9eba-6e2a4116e142

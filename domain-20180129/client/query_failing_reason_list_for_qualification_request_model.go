@@ -22,28 +22,44 @@ type iQueryFailingReasonListForQualificationRequest interface {
 }
 
 type QueryFailingReasonListForQualificationRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// S20181*****85212
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Language of error messages returned by the API. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
+	// Default value: en.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Number of records to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// Qualification verification API type. Fixed value: **knet**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// knet
 	QualificationType *string `json:"QualificationType,omitempty" xml:"QualificationType,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

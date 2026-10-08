@@ -16,7 +16,10 @@ type iQueryIntlFixedPriceOrderListResponseBody interface {
 }
 
 type QueryIntlFixedPriceOrderListResponseBody struct {
+	// The response object.
 	Module *QueryIntlFixedPriceOrderListResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D6CB3623-4726-4947-AC2B-2C6E673B447C
@@ -59,11 +62,32 @@ func (s *QueryIntlFixedPriceOrderListResponseBody) Validate() error {
 }
 
 type QueryIntlFixedPriceOrderListResponseBodyModule struct {
-	CurrentPageNum *int32                                                `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	Data           []*QueryIntlFixedPriceOrderListResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalItemNum   *int32                                                `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                                `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	// The order list data.
+	Data []*QueryIntlFixedPriceOrderListResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 294
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 4
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryIntlFixedPriceOrderListResponseBodyModule) String() string {
@@ -133,14 +157,64 @@ func (s *QueryIntlFixedPriceOrderListResponseBodyModule) Validate() error {
 }
 
 type QueryIntlFixedPriceOrderListResponseBodyModuleData struct {
-	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OrderType  *int32  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Price      *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The business ID.
+	//
+	// example:
+	//
+	// T2023122019031400****
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1715134456000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// jslxv.cn
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The order type. Valid values:
+	//
+	// - 11: international fixed-price.
+	//
+	// example:
+	//
+	// 11
+	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The price.
+	//
+	// example:
+	//
+	// 15000
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// The order status. Valid values:
+	//
+	// - 5: Transaction closed.
+	//
+	// - 6: Paid.
+	//
+	// - 7: Pending production.
+	//
+	// - 9: Transaction completed.
+	//
+	// example:
+	//
+	// 6
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1715134456000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 545684317770****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryIntlFixedPriceOrderListResponseBodyModuleData) String() string {

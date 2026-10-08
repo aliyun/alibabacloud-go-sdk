@@ -20,22 +20,40 @@ type iSaveBatchTaskForTransferProhibitionLockRequest interface {
 }
 
 type SaveBatchTaskForTransferProhibitionLockRequest struct {
+	// The domain names for which you want to enable or disable the transfer prohibition lock.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test1.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// The language of the error message that is returned if the request fails. Valid values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to enable or disable the transfer prohibition lock. Valid values:
+	//
+	// - **true**: Enable the transfer prohibition lock.
+	//
+	// - **false**: Disable the transfer prohibition lock.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The client IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1

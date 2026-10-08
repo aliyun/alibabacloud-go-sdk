@@ -16,12 +16,16 @@ type iSaveBatchTaskForReserveDropListDomainRequest interface {
 }
 
 type SaveBatchTaskForReserveDropListDomainRequest struct {
+	// The contact template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123123
 	ContactTemplateId *string `json:"ContactTemplateId,omitempty" xml:"ContactTemplateId,omitempty"`
+	// The domain list.
+	//
 	// This parameter is required.
 	Domains []*SaveBatchTaskForReserveDropListDomainRequestDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 }
@@ -66,8 +70,28 @@ func (s *SaveBatchTaskForReserveDropListDomainRequest) Validate() error {
 }
 
 type SaveBatchTaskForReserveDropListDomainRequestDomains struct {
+	// The first custom DNS server.
+	//
+	// > - This parameter is required only if you set **AliyunDns*	- to **false**.
+	//
+	// - Make sure that your custom DNS servers are valid. Otherwise, the domain reservation may fail.
+	//
+	// example:
+	//
+	// ns11.bigwww.com
 	Dns1 *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	// The second custom DNS server.
+	//
+	// > - This parameter is required only if you set **AliyunDns*	- to **false**.
+	//
+	// - Make sure that your custom DNS servers are valid. Otherwise, the domain reservation may fail.
+	//
+	// example:
+	//
+	// nsb.263idc.net
 	Dns2 *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// The domain name to reserve.
+	//
 	// This parameter is required.
 	//
 	// example:

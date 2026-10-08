@@ -16,7 +16,10 @@ type iQueryDnsHostResponseBody interface {
 }
 
 type QueryDnsHostResponseBody struct {
+	// A list of DNS hosts.
 	DnsHostList []*QueryDnsHostResponseBodyDnsHostList `json:"DnsHostList,omitempty" xml:"DnsHostList,omitempty" type:"Repeated"`
+	// A unique ID for the request.
+	//
 	// example:
 	//
 	// 18A313DD-3AF3-40AA-84F9-56BA45DC511F
@@ -63,11 +66,14 @@ func (s *QueryDnsHostResponseBody) Validate() error {
 }
 
 type QueryDnsHostResponseBodyDnsHostList struct {
+	// The DNS name.
+	//
 	// example:
 	//
 	// ns3
-	DnsName *string   `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	IpList  []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// A list of IP addresses.
+	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 }
 
 func (s QueryDnsHostResponseBodyDnsHostList) String() string {

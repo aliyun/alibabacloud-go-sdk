@@ -60,102 +60,195 @@ type iSaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest interface {
 }
 
 type SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest struct {
+	// Specific address.
+	//
 	// example:
 	//
 	// chao yang qu
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// City.
+	//
 	// example:
 	//
 	// bei jing shi
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Country code, such as **CN*	- or **US**.
+	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// List of domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alibabacloud.com
 	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// Mailbox.
+	//
 	// example:
 	//
 	// test@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Base64-encoded image of the identity verification document. Image requirements:
+	//
+	// - Format must be **jpg*	- or **bmp**.
+	//
+	// - Original image size must be between **55 KB and 1 MB**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// h6UPhXz/ADP/2Q==
 	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// Certificate number used for identity verification, such as an ID card number or Unified Social Credit Code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5****************9
 	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// Identity verification certificate type. Valid values:
+	//
+	// - **SFZ**: Identity card.
+	//
+	// - **HZ**: Passport.
+	//
+	// - **YYZZ**: Business license.
+	//
+	// - **ORG**: Organization code certificate.
+	//
+	// - **XYDM**: Unified Social Credit Code certificate.
+	//
+	// - **TXZ**: Mainland Travel Permits for Hong Kong and Macao Residents.
+	//
+	// If your certificate type is not listed above, see [Supported identity verification certificate types](https://help.aliyun.com/document_detail/72209.html) for valid values of other certificate types.
+	//
+	// > You must select the certificate type that matches the document you are submitting.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SFZ
 	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Postal code.
+	//
 	// example:
 	//
 	// 123456
 	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// Province.
+	//
 	// example:
 	//
 	// bei jing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// Contact name.
+	//
 	// example:
 	//
 	// ce shi
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// Registrant organization name.
+	//
 	// example:
 	//
 	// ce shi
 	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// Domain registrant type. Valid values:
+	//
+	// - **1**: Individual.
+	//
+	// - **2**: Organization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// Telephone country code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86
 	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// Telephone extension number.
+	//
 	// example:
 	//
 	// 12345
 	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// Telephone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345678
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// Whether to add a transfer-out prohibition restriction. This indicates whether modifying the registrant imposes a 60-day restriction on domain name transfer-out. Default value: **false**, which means transfer-out is not restricted.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	TransferOutProhibited *bool `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	// User IP address.
+	//
 	// example:
 	//
 	// 127.0.0.1
-	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZhAddress                *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
-	ZhCity                   *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
-	ZhProvince               *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
-	ZhRegistrantName         *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// Chinese address.
+	//
+	// example:
+	//
+	// 朝阳区
+	ZhAddress *string `json:"ZhAddress,omitempty" xml:"ZhAddress,omitempty"`
+	// Chinese city name.
+	//
+	// example:
+	//
+	// 北京市
+	ZhCity *string `json:"ZhCity,omitempty" xml:"ZhCity,omitempty"`
+	// Chinese province name.
+	//
+	// example:
+	//
+	// 北京
+	ZhProvince *string `json:"ZhProvince,omitempty" xml:"ZhProvince,omitempty"`
+	// Chinese contact name.
+	//
+	// example:
+	//
+	// 测试
+	ZhRegistrantName *string `json:"ZhRegistrantName,omitempty" xml:"ZhRegistrantName,omitempty"`
+	// Chinese registrant organization name.
+	//
+	// example:
+	//
+	// 测试
 	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 

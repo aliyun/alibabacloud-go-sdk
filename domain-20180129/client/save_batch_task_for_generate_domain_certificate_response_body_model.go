@@ -16,18 +16,8 @@ type iSaveBatchTaskForGenerateDomainCertificateResponseBody interface {
 }
 
 type SaveBatchTaskForGenerateDomainCertificateResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 40F46D3D-F4F3-4CCB-AC30-2DD20E32E528
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 8b1cd755-4928-4b02-adee-e5d41d7b1939
-	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveBatchTaskForGenerateDomainCertificateResponseBody) String() string {

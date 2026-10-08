@@ -20,22 +20,40 @@ type iSaveSingleTaskForDomainNameProxyServiceRequest interface {
 }
 
 type SaveSingleTaskForDomainNameProxyServiceRequest struct {
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Language of the error message returned by the API. Valid values:
+	//
+	// - **zh**: Chinese;
+	//
+	// - **en**: English.
+	//
+	// Default value: **en**.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Enabled or shutdown status. Valid values:
+	//
+	// - **true**: Enabled;
+	//
+	// - **false**: Shutdown.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User IP address. You can set it to **127.0.0.1**.
+	//
 	// example:
 	//
 	// 127.0.0.1

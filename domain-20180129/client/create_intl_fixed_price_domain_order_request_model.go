@@ -22,18 +22,30 @@ type iCreateIntlFixedPriceDomainOrderRequest interface {
 }
 
 type CreateIntlFixedPriceDomainOrderRequest struct {
+	// Specifies whether to enable automatic payment. Valid values:
+	//
+	// - false (default): manual payment.
+	//
+	//  - true: automatic payment.
+	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The contact ID.
+	//
 	// example:
 	//
 	// 13350500
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// appp16.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The expected price.
+	//
 	// example:
 	//
 	// 58.00

@@ -16,8 +16,10 @@ type iSaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRespon
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// The task number.
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponseBody) String() string {

@@ -16,10 +16,14 @@ type iSaveTaskForSubmittingDomainDeleteResponseBody interface {
 }
 
 type SaveTaskForSubmittingDomainDeleteResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 23C9B3C4-9E2C-4405-A88D-BD33E459D140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The job number.
+	//
 	// example:
 	//
 	// 3cb1adc3-20e8-44ae-9e76-e812fa6fc9d8
