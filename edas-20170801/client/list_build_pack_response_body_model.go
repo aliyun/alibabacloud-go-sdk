@@ -20,7 +20,6 @@ type iListBuildPackResponseBody interface {
 }
 
 type ListBuildPackResponseBody struct {
-	// The returned versions of EDAS Container.
 	BuildPackList *ListBuildPackResponseBodyBuildPackList `json:"BuildPackList,omitempty" xml:"BuildPackList,omitempty" type:"Struct"`
 	// code
 	//
@@ -28,13 +27,13 @@ type ListBuildPackResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -130,122 +129,26 @@ func (s *ListBuildPackResponseBodyBuildPackList) Validate() error {
 }
 
 type ListBuildPackResponseBodyBuildPackListBuildPack struct {
-	// The build package number of EDAS Container.
-	//
-	// example:
-	//
-	// 57
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Indicates whether the EDAS Container version is disabled. A disabled version cannot be configured for use.
-	//
-	// example:
-	//
-	// false
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The features of the EDAS Container version, which are released for public preview.
-	//
-	// example:
-	//
-	// “”
-	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	// The ID of the base image that corresponds to EDAS Container.
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Indicates whether EDAS Container supports multitenancy.
-	//
-	// example:
-	//
-	// true
-	MultipleTenant *bool `json:"MultipleTenant,omitempty" xml:"MultipleTenant,omitempty"`
-	// The version of the application.
-	//
-	// example:
-	//
-	// 3.5.6
-	PackVersion *string `json:"PackVersion,omitempty" xml:"PackVersion,omitempty"`
-	// The description of the Pandora container.
-	//
-	// example:
-	//
-	// test
-	PandoraDesc *string `json:"PandoraDesc,omitempty" xml:"PandoraDesc,omitempty"`
-	// The download URL of the Pandora installer.
-	//
-	// example:
-	//
-	// http://edas.oss-cn-hangzhou.aliyuncs.com/edas-plugins/edas.sar.V3.5.6/taobao-hsf.tgz
+	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Disabled           *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Feature            *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	MultipleTenant     *bool   `json:"MultipleTenant,omitempty" xml:"MultipleTenant,omitempty"`
+	PackVersion        *string `json:"PackVersion,omitempty" xml:"PackVersion,omitempty"`
+	PandoraDesc        *string `json:"PandoraDesc,omitempty" xml:"PandoraDesc,omitempty"`
 	PandoraDownloadUrl *string `json:"PandoraDownloadUrl,omitempty" xml:"PandoraDownloadUrl,omitempty"`
-	// The version of the Pandora container.
-	//
-	// example:
-	//
-	// edas.public.sar.V3.5.6
-	PandoraVersion *string `json:"PandoraVersion,omitempty" xml:"PandoraVersion,omitempty"`
-	// The description of the plug-in.
-	//
-	// example:
-	//
-	// 1
-	PluginInfo *string `json:"PluginInfo,omitempty" xml:"PluginInfo,omitempty"`
-	// The name of the Shell script that runs EDAS Container.
-	//
-	// example:
-	//
-	// default
-	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// The version of the Shell script that runs EDAS Container.
-	//
-	// example:
-	//
-	// 1.0.3
-	ScriptVersion *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
-	// The features supported by EDAS Container.
-	//
-	// example:
-	//
-	// tengine,fatjar,restful,eip_nodeport,dpath
-	SupportFeatures *string `json:"SupportFeatures,omitempty" xml:"SupportFeatures,omitempty"`
-	// The download URL of the Tengine installer.
-	//
-	// example:
-	//
-	// http://edas.oss-cn-hangzhou.aliyuncs.com/components/tengine/3.4.7/tengine.sh
+	PandoraVersion     *string `json:"PandoraVersion,omitempty" xml:"PandoraVersion,omitempty"`
+	PluginInfo         *string `json:"PluginInfo,omitempty" xml:"PluginInfo,omitempty"`
+	ScriptName         *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	ScriptVersion      *string `json:"ScriptVersion,omitempty" xml:"ScriptVersion,omitempty"`
+	SupportFeatures    *string `json:"SupportFeatures,omitempty" xml:"SupportFeatures,omitempty"`
 	TengineDownloadUrl *string `json:"TengineDownloadUrl,omitempty" xml:"TengineDownloadUrl,omitempty"`
-	// The ID of the Tengine image that corresponds to EDAS Container.
-	//
-	// example:
-	//
-	// registry.aliyuncs.com/edas/****-*********-*****:*.*.*
-	TengineImageId *string `json:"TengineImageId,omitempty" xml:"TengineImageId,omitempty"`
-	// The description of the Tomcat container.
-	//
-	// example:
-	//
-	// 1\\. The config-client plug-in is updated. The issue of unread cache in multitenancy scenarios is fixed. 2. The High-Speed Service Framework (HSF) plug-in is updated to fix the issue that the qos command of the Pandora container cannot be executed and the issue that the service address cannot be found if the HSF plug-in subscribes to an excessive number of services. 3. The Fastjson package is updated to the sec06 secure version in all plug-ins that use this package.
-	TomcatDesc *string `json:"TomcatDesc,omitempty" xml:"TomcatDesc,omitempty"`
-	// The download URL of the Tomcat installer.
-	//
-	// example:
-	//
-	// http://edas.oss-cn-hangzhou.aliyuncs.com/edas-container/7.0.92/taobao-tomcat-production-7.0.92.tar.gz
-	TomcatDownloadUrl *string `json:"TomcatDownloadUrl,omitempty" xml:"TomcatDownloadUrl,omitempty"`
-	// The directory of the Tomcat container.
-	//
-	// example:
-	//
-	// taobao-tomcat-production-7.0.59.3
-	TomcatPath *string `json:"TomcatPath,omitempty" xml:"TomcatPath,omitempty"`
-	// The version of the Tomcat container.
-	//
-	// example:
-	//
-	// 8.5.63
-	TomcatVersion *string `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
-	// Indicates whether EDAS Container supports traffic management.
-	//
-	// example:
-	//
-	// true
-	WithTengine *bool `json:"WithTengine,omitempty" xml:"WithTengine,omitempty"`
+	TengineImageId     *string `json:"TengineImageId,omitempty" xml:"TengineImageId,omitempty"`
+	TomcatDesc         *string `json:"TomcatDesc,omitempty" xml:"TomcatDesc,omitempty"`
+	TomcatDownloadUrl  *string `json:"TomcatDownloadUrl,omitempty" xml:"TomcatDownloadUrl,omitempty"`
+	TomcatPath         *string `json:"TomcatPath,omitempty" xml:"TomcatPath,omitempty"`
+	TomcatVersion      *string `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
+	WithTengine        *bool   `json:"WithTengine,omitempty" xml:"WithTengine,omitempty"`
 }
 
 func (s ListBuildPackResponseBodyBuildPackListBuildPack) String() string {

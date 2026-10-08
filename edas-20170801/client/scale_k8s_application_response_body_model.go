@@ -20,25 +20,25 @@ type iScaleK8sApplicationResponseBody interface {
 }
 
 type ScaleK8sApplicationResponseBody struct {
-	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the progress of this scaling operation. For more information, see [GetChangeOrderInfo](https://help.aliyun.com/document_detail/62072.html).
+	// The ID of the change process. Call the [GetChangeOrderInfo](https://help.aliyun.com/document_detail/62072.html) operation to query the progress of the scaling task.
 	//
 	// example:
 	//
 	// 9d7232b2-****-****-b9d9-7e17695779ab
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//

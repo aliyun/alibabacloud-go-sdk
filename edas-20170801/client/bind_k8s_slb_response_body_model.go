@@ -26,13 +26,13 @@ type BindK8sSlbResponseBody struct {
 	//
 	// b4b37bde-a125-****-****-741f7f4a9ae3
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The message that is returned.
 	//
 	// example:
 	//

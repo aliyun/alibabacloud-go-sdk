@@ -97,6 +97,10 @@ func (s *StartK8sAppPrecheckResponseBody) Validate() error {
 
 type StartK8sAppPrecheckResponseBodyData struct {
 	// The jobs and the details about the jobs.
+	//
+	// example:
+	//
+	// Cluster health check.
 	Jobs []*string `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 }
 

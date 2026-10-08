@@ -130,9 +130,9 @@ type EnableApplicationScalingRuleResponseBodyAppScalingRule struct {
   MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
   // Indicates whether the auto scaling policy is enabled. Valid values:
   // 
-  // 	- **true**: The auto scaling policy is enabled.
+  // - **true**: The auto scaling policy is enabled.
   // 
-  // 	- **false**: The auto scaling policy is disabled.
+  // - **false**: The auto scaling policy is disabled.
   // 
   // example:
   // 

@@ -18,11 +18,11 @@ type iTransformClusterMemberRequest interface {
 }
 
 type TransformClusterMemberRequest struct {
-	// The ID of the instance that you want to import or migrate. Separate multiple IDs with commas (,).
+	// The IDs of the ECS instances. Separate multiple IDs with a comma (,).
 	//
-	// 	- An instance may not belong to a cluster, but an instance can belong to only one cluster at most.
+	// - The instances must be in the same VPC as the target cluster.
 	//
-	// 	- The ECS instances and the destination cluster must be in the same virtual private cloud (VPC).
+	// - An instance can belong to only one cluster at a time.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type TransformClusterMemberRequest struct {
 	//
 	// i-2ze7s2v0b789k60p****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The logon password of the ECS instance that you want to import or migrate to the cluster.
+	// The logon password to set for the instances.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type TransformClusterMemberRequest struct {
 	//
 	// Hello****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the destination cluster.
+	// The ID of the target cluster.
 	//
 	// This parameter is required.
 	//

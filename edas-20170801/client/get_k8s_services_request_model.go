@@ -14,7 +14,7 @@ type iGetK8sServicesRequest interface {
 }
 
 type GetK8sServicesRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

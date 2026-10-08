@@ -42,9 +42,9 @@ type UnbindK8sSlbRequest struct {
 	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
 	// The type of the SLB instance. Valid values:
 	//
-	// 	- **internet**: Internet-facing SLB instance
+	// - **internet**: Internet-facing SLB instance
 	//
-	// 	- **intranet**: internal-facing SLB instance
+	// - **intranet**: internal-facing SLB instance
 	//
 	// This parameter is required.
 	//

@@ -54,9 +54,9 @@ type UpdateK8sSecretRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The data of the Secret. The value must be a JSON array that contains the following information:
 	//
-	// 	- Key: Secret key
+	// - Key: Secret key
 	//
-	// 	- Value: Secret value
+	// - Value: Secret value
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type UpdateK8sSecretRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The type of the Secret. Valid values:
 	//
-	// 	- Opaque: user-defined data type
+	// - Opaque: user-defined data type
 	//
-	// 	- kubernetes.io/tls: Transport Layer Security (TLS) certificate type
+	// - kubernetes.io/tls: Transport Layer Security (TLS) certificate type
 	//
 	// example:
 	//

@@ -20,7 +20,6 @@ type iListRecentChangeOrderResponseBody interface {
 }
 
 type ListRecentChangeOrderResponseBody struct {
-	// The information about change processes.
 	ChangeOrderList *ListRecentChangeOrderResponseBodyChangeOrderList `json:"ChangeOrderList,omitempty" xml:"ChangeOrderList,omitempty" type:"Struct"`
 	// The HTTP status code that is returned.
 	//
@@ -130,114 +129,20 @@ func (s *ListRecentChangeOrderResponseBodyChangeOrderList) Validate() error {
 }
 
 type ListRecentChangeOrderResponseBodyChangeOrderListChangeOrder struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 3616cdca-4f92-4413-****-************
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of batches for the change. Valid values: 1 to 5.
-	//
-	// example:
-	//
-	// 1
-	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	// The way in which the next batch is triggered during a phased release. Valid values:
-	//
-	// 	- Automatic
-	//
-	// 	- Manual
-	//
-	// example:
-	//
-	// Automatic
-	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The description of the change process.
-	//
-	// example:
-	//
-	// Version: 2020-05-14 20:02:33 | Deployment Package: hsf-pandora-boot-provider-1.0.jar | Deploy to: all groups
+	AppId                  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BatchCount             *int32  `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
+	BatchType              *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
 	ChangeOrderDescription *string `json:"ChangeOrderDescription,omitempty" xml:"ChangeOrderDescription,omitempty"`
-	// The unique ID of the change process.
-	//
-	// example:
-	//
-	// 1074f3e2-e974-4a0e-****-************
-	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The type of the change process.
-	//
-	// example:
-	//
-	// Application Scale Out
-	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The type of the change process.
-	//
-	// example:
-	//
-	// CoDeploy
-	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
-	// The time when the change process was created.
-	//
-	// example:
-	//
-	// 2019-11-13 14:23:46
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user who created the change process.
-	//
-	// example:
-	//
-	// edas_test1@aliyun-test.com
-	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The time when the change process ended.
-	//
-	// example:
-	//
-	// 2019-11-13 14:24:02
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the application instance group on which the change was performed.
-	//
-	// example:
-	//
-	// 8123db90-880f-486f-****-************
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The source of the change. Valid values:
-	//
-	// 	- console: the Enterprise Distributed Application Service (EDAS) console
-	//
-	// 	- pop: the POP API or tool
-	//
-	// example:
-	//
-	// pop
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The state of the change process. Valid values:
-	//
-	// 	- 0: ready to start execution
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: waiting for manual confirmation (You can see the state when you manually confirm the execution of the next batch of the change.)
-	//
-	// 	- 9: waiting for automatic execution
-	//
-	// 	- 10: failed due to a system error
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user who created the change process.
-	//
-	// example:
-	//
-	// 1432536****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ChangeOrderId          *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+	CoType                 *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
+	CoTypeCode             *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
+	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserId           *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	FinishTime             *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListRecentChangeOrderResponseBodyChangeOrderListChangeOrder) String() string {

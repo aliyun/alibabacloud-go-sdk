@@ -46,7 +46,7 @@ type UpdateK8sApplicationBaseInfoRequest struct {
 	//
 	// example:
 	//
-	// Tom
+	// John Doe
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The phone number of the application owner.
 	//

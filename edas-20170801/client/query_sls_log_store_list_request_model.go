@@ -42,9 +42,9 @@ type QuerySlsLogStoreListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of data that is collected by Log Service. Valid values:
 	//
-	// 	- file: the file type
+	// - file: the file type
 	//
-	// 	- stdout: the standard output type
+	// - stdout: the standard output type
 	//
 	// This parameter is required.
 	//

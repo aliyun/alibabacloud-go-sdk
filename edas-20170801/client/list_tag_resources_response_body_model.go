@@ -37,8 +37,7 @@ type ListTagResourcesResponseBody struct {
 	// example:
 	//
 	// xxxxE654-xxxx-xxxx-xxxx-98F45996xxxx
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about resource tags.
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -130,30 +129,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The ID of the resource.
-	//
-	// example:
-	//
-	// 000e5836-xxxx-xxxx-xxxx-0d6ab2ac4877
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// ALIYUN::EDAS::APPLICATION
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key of the resource.
-	//
-	// example:
-	//
-	// key1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the resource.
-	//
-	// example:
-	//
-	// value1
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

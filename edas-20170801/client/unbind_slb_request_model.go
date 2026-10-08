@@ -28,11 +28,11 @@ type UnbindSlbRequest struct {
 	//
 	// c627c157-560d-********************
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to remove the configured listeners. Valid values:
+	// Specifies whether to delete the listener.
 	//
-	// 	- true: removes the configured listeners.
+	// - true: Delete the listener.
 	//
-	// 	- false: does not remove the configured listeners.
+	// - false: Do not delete the listener.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type UnbindSlbRequest struct {
 	//
 	// lb-wz9vo49****************
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The network type of the SLB instance. Valid values:
+	// The network type of the SLB instance.
 	//
-	// 	- **internet**: Internet-facing SLB instance
+	// - **internet**: an internet-facing instance.
 	//
-	// 	- **intranet**: internal-facing SLB instance
+	// - **intranet**: an internal-facing instance.
 	//
 	// This parameter is required.
 	//

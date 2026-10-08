@@ -20,19 +20,19 @@ type iStartK8sApplicationResponseBody interface {
 }
 
 type StartK8sApplicationResponseBody struct {
-	// The ID of the change process.
+	// The ID of the change process for the operation.
 	//
 	// example:
 	//
 	// *********d237-4827-a4f4-ed2ae98de18d
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The response code. A 200 response indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//

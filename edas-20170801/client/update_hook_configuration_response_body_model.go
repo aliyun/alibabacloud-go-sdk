@@ -102,9 +102,9 @@ func (s *UpdateHookConfigurationResponseBody) Validate() error {
 type UpdateHookConfigurationResponseBodyHooksConfiguration struct {
 	// Indicates whether a mount failure is ignored. Valid values:
 	//
-	// 	- **true**: A mount failure is ignored.
+	// - **true**: A mount failure is ignored.
 	//
-	// 	- **false**: A mount failure is not ignored.
+	// - **false**: A mount failure is not ignored.
 	//
 	// example:
 	//

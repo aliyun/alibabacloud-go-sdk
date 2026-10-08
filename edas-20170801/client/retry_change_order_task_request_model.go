@@ -22,7 +22,7 @@ type RetryChangeOrderTaskRequest struct {
 	//
 	// true
 	RetryStatus *bool `json:"RetryStatus,omitempty" xml:"RetryStatus,omitempty"`
-	// The ID of the process.
+	// The ID of the change order task.
 	//
 	// This parameter is required.
 	//

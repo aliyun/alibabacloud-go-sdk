@@ -110,9 +110,9 @@ type GetContainerConfigurationResponseBodyContainerConfiguration struct {
 	HttpPort *int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
 	// The maximum number of threads in the Tomcat container.
 	//
-	// 	- If no instance group is specified, the configuration of the application is returned.
+	// - If no instance group is specified, the configuration of the application is returned.
 	//
-	// 	- If no application is specified, the default configuration is returned.
+	// - If no application is specified, the default configuration is returned.
 	//
 	// example:
 	//
@@ -120,9 +120,9 @@ type GetContainerConfigurationResponseBodyContainerConfiguration struct {
 	MaxThreads *int32 `json:"MaxThreads,omitempty" xml:"MaxThreads,omitempty"`
 	// The Uniform Resource Identifier (URI) encoding scheme. Valid values: ISO-8859-1, GBK, GB2312, and UTF-8.
 	//
-	// 	- If no instance group is specified, the configuration of the application is returned.
+	// - If no instance group is specified, the configuration of the application is returned.
 	//
-	// 	- If no application is specified, the default configuration is returned.
+	// - If no application is specified, the default configuration is returned.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ type GetContainerConfigurationResponseBodyContainerConfiguration struct {
 	URIEncoding *string `json:"URIEncoding,omitempty" xml:"URIEncoding,omitempty"`
 	// Indicates whether useBodyEncodingForURI is enabled in the Tomcat container.
 	//
-	// 	- If no instance group is specified, the configuration of the application is returned.
+	// - If no instance group is specified, the configuration of the application is returned.
 	//
-	// 	- If no application is specified, the default configuration is returned.
+	// - If no application is specified, the default configuration is returned.
 	//
 	// example:
 	//

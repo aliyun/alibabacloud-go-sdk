@@ -18,9 +18,9 @@ type iListEcsNotInClusterRequest interface {
 type ListEcsNotInClusterRequest struct {
 	// The network type. Valid values:
 	//
-	// 	- 1: classic network
+	// - 1: classic network
 	//
-	// 	- 2: virtual private cloud (VPC)
+	// - 2: virtual private cloud (VPC)
 	//
 	// This parameter is required.
 	//

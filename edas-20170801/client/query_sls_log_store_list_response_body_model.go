@@ -121,7 +121,7 @@ type QuerySlsLogStoreListResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Log Service
+	// SLS log service
 	ConsumerSide *string `json:"ConsumerSide,omitempty" xml:"ConsumerSide,omitempty"`
 	// The time when the logging service was created.
 	//
@@ -145,9 +145,9 @@ type QuerySlsLogStoreListResponseBodyResult struct {
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The source of logs. Valid values:
 	//
-	// 	- Standard output: stdout.log
+	// - Standard output: stdout.log
 	//
-	// 	- File log: the directory that stores logs
+	// - File log: the directory that stores logs
 	//
 	// example:
 	//

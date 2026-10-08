@@ -20,15 +20,14 @@ type iListDeployGroupResponseBody interface {
 }
 
 type ListDeployGroupResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the request or a POP error code.
 	//
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the instance group in which the application is deployed.
+	Code            *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	DeployGroupList *ListDeployGroupResponseBodyDeployGroupList `json:"DeployGroupList,omitempty" xml:"DeployGroupList,omitempty" type:"Struct"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -130,220 +129,40 @@ func (s *ListDeployGroupResponseBodyDeployGroupList) Validate() error {
 }
 
 type ListDeployGroupResponseBodyDeployGroupListDeployGroup struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 3616cdca-4f92-4413-****-************
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the change process for application deployment in the instance group.
-	//
-	// example:
-	//
-	// changeorder_a**_*******_**
-	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	// The name of the basic component.
-	//
-	// example:
-	//
-	// k8s-sc-consumer-****
-	BaseComponentMetaName *string `json:"BaseComponentMetaName,omitempty" xml:"BaseComponentMetaName,omitempty"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// 0d247b93-8d62-4e34-****-************
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
-	//
-	// example:
-	//
-	// doc-test
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The maximum number of CPU cores allowed for each application instance when the application is running.
-	//
-	// example:
-	//
-	// 400
-	CpuLimit *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	// The number of CPU cores requested for each application instance when the application is running. Unit: cores. Value 0 indicates that no limit is set on CPU cores.
-	//
-	// example:
-	//
-	// 1
-	CpuRequest *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	// The time when the application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573627695779
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the Container Service for Kubernetes (ACK) cluster.
-	//
-	// example:
-	//
-	// c66e65950db****cba92f17434df1****
-	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	// The name of the deployment.
-	//
-	// example:
-	//
-	// test
-	DeploymentName *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
-	// The ID of the ACK cluster.
-	//
-	// example:
-	//
-	// 497806cb-****-6a7
-	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The maximum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
-	//
-	// example:
-	//
-	// 8
-	EphemeralStorageLimit *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
-	// The minimum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
-	//
-	// example:
-	//
-	// 4
+	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersionId            *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	BaseComponentMetaName   *string `json:"BaseComponentMetaName,omitempty" xml:"BaseComponentMetaName,omitempty"`
+	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName             *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CpuLimit                *string `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	CpuRequest              *string `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	CreateTime              *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CsClusterId             *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	DeploymentName          *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
+	Env                     *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	EphemeralStorageLimit   *string `json:"EphemeralStorageLimit,omitempty" xml:"EphemeralStorageLimit,omitempty"`
 	EphemeralStorageRequest *string `json:"EphemeralStorageRequest,omitempty" xml:"EphemeralStorageRequest,omitempty"`
-	// The ID of the instance group.
-	//
-	// example:
-	//
-	// 577f4c50-16ee-43d8-****-************
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the instance group.
-	//
-	// example:
-	//
-	// _DEFAULT_GROUP
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the instance group. Valid values:
-	//
-	// 	- 0: default group.
-	//
-	// 	- 1: Canary release is disabled for traffic management.
-	//
-	// 	- 2: Canary release is enabled for traffic management.
-	//
-	// example:
-	//
-	// 1
-	GroupType *int32 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The tag.
-	//
-	// example:
-	//
-	// test
-	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The time when the application was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1587888503825
-	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// The maximum size of memory allowed for each application instance when the application is running. Unit: MB. Value 0 indicates that no limit is set on the memory size.
-	//
-	// example:
-	//
-	// 0
-	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	// The size of memory requested for each application instance when the application is running. Unit: MB. Value 0 indicates that no limit is set on the memory size.
-	//
-	// example:
-	//
-	// 512
-	MemoryRequest *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
-	// The namespace.
-	//
-	// example:
-	//
-	// ping****est
-	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	// The external download URL of the deployment package.
-	PackagePublicUrl *string `json:"PackagePublicUrl,omitempty" xml:"PackagePublicUrl,omitempty"`
-	// The URL of the deployment package.
-	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// The version of the deployment package.
-	//
-	// example:
-	//
-	// E
-	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The version of the deployment package that was used to deploy an application in the instance group.
-	//
-	// example:
-	//
-	// a7d48fe8-ad8f-****-89bd-74cc1ee6****
-	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
-	// The post-start script.
-	//
-	// example:
-	//
-	// {\\"exec\\":{\\"command\\":[\\"ls\\",\\"/\\"]}}"
-	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The pre-stop script.
-	//
-	// example:
-	//
-	// {\\"exec\\":{\\"command\\":[\\"ls\\",\\"/\\"]}}"
-	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The version of the application. The value progressively increases in the range of 0 to 7.
-	//
-	// example:
-	//
-	// 2
-	Reversion *string `json:"Reversion,omitempty" xml:"Reversion,omitempty"`
-	// The ID of the application deployed in the ACK cluster in Enterprise Distributed Application Service (EDAS).
-	//
-	// example:
-	//
-	// 53dd85cc-25b4-4d0e-****-6bf5465****4
-	Selector *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The state of the application instance group. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The throttling policy. This parameter is reserved.
-	//
-	// example:
-	//
-	// RollingUpdate
-	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	// The time when the application was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573627695779
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the vServer group of the Internet-facing SLB instance associated with the instance group.
-	//
-	// example:
-	//
-	// rsp-cige6******
-	VExtServerGroupId *string `json:"VExtServerGroupId,omitempty" xml:"VExtServerGroupId,omitempty"`
-	// The ID of the vServer group of the internal-facing Server Load Balancer (SLB) instance associated with the instance group.
-	//
-	// example:
-	//
-	// rsp-cige6******
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	GroupId                 *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName               *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType               *int32  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Labels                  *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	LastUpdateTime          *int64  `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	MemoryLimit             *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	MemoryRequest           *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
+	NameSpace               *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	PackagePublicUrl        *string `json:"PackagePublicUrl,omitempty" xml:"PackagePublicUrl,omitempty"`
+	PackageUrl              *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
+	PackageVersion          *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PackageVersionId        *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
+	PostStart               *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop                 *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	Reversion               *string `json:"Reversion,omitempty" xml:"Reversion,omitempty"`
+	Selector                *string `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Strategy                *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	UpdateTime              *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VExtServerGroupId       *string `json:"VExtServerGroupId,omitempty" xml:"VExtServerGroupId,omitempty"`
+	VServerGroupId          *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
 func (s ListDeployGroupResponseBodyDeployGroupListDeployGroup) String() string {

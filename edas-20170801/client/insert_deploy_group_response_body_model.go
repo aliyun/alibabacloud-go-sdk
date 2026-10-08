@@ -104,9 +104,9 @@ type InsertDeployGroupResponseBodyDeployGroupEntity struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The version of the deployment package for the application.
 	//
-	// 	- If the application is deployed, a string of random numbers is returned.
+	// - If the application is deployed, a string of random numbers is returned.
 	//
-	// 	- If the application is not deployed, the return value is empty.
+	// - If the application is not deployed, the return value is empty.
 	//
 	// example:
 	//
@@ -132,11 +132,11 @@ type InsertDeployGroupResponseBodyDeployGroupEntity struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the instance group. Valid values:
 	//
-	// 	- 0: the default group.
+	// - 0: the default group.
 	//
-	// 	- 1: a group for which canary traffic management is not enabled.
+	// - 1: a group for which canary traffic management is not enabled.
 	//
-	// 	- 2: a group for which canary traffic management is enabled.
+	// - 2: a group for which canary traffic management is enabled.
 	//
 	// example:
 	//
@@ -150,9 +150,9 @@ type InsertDeployGroupResponseBodyDeployGroupEntity struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The version of the deployment package that was used to deploy an application in the instance group.
 	//
-	// 	- If an application is deployed in the instance group, a string of random numbers is returned.
+	// - If an application is deployed in the instance group, a string of random numbers is returned.
 	//
-	// 	- If no application is deployed in the instance group, the return value is empty.
+	// - If no application is deployed in the instance group, the return value is empty.
 	//
 	// example:
 	//

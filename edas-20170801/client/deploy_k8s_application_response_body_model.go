@@ -20,25 +20,25 @@ type iDeployK8sApplicationResponseBody interface {
 }
 
 type DeployK8sApplicationResponseBody struct {
-	// The ID of the change process. You can call the GetChangeOrderInfo operation to query the change process ID. For more information, see [GetChangeOrderInfo](https://help.aliyun.com/document_detail/62072.html).
+	// The ID of the change process. You can call the GetChangeOrderInfo operation to obtain it. For more information, see [GetChangeOrderInfo](https://help.aliyun.com/document_detail/62072.html).
 	//
 	// example:
 	//
 	// cd65b247-****-475b-ad4b-7039040d625c
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The status of the interface or a POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// Additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

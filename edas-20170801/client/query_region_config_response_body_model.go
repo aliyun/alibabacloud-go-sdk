@@ -132,7 +132,7 @@ type QueryRegionConfigResponseBodyRegionConfig struct {
 	//
 	// example:
 	//
-	// China (Beijing)
+	// 华北2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The serial number of the region. This parameter is deprecated.
 	//

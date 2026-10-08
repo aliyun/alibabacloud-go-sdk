@@ -24,7 +24,7 @@ type iBindSlbRequest interface {
 }
 
 type BindSlbRequest struct {
-	// The ID of the EDAS application.
+	// The ID of the Enterprise Distributed Application Service (EDAS) application.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type BindSlbRequest struct {
 	//
 	// 3616cdca-*********
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The listener port for the SLB instance.
+	// The listener port.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type BindSlbRequest struct {
 	//
 	// 192.16*.*.*
 	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	// The type of the SLB instance. Valid values:
+	// The network type of the SLB instance. Valid values:
 	//
-	// 	- internet: Internet-facing SLB instance
+	// - internet: an Internet-facing instance.
 	//
-	// 	- intranet: internal-facing SLB instance
+	// - intranet: an internal-facing instance.
 	//
 	// This parameter is required.
 	//

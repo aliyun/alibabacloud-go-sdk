@@ -96,7 +96,6 @@ func (s *InsertSwimmingLaneGroupResponseBody) Validate() error {
 }
 
 type InsertSwimmingLaneGroupResponseBodyData struct {
-	// The list of all applications that are related to the lane group.
 	ApplicationList *InsertSwimmingLaneGroupResponseBodyDataApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Struct"`
 	// The information about the Enterprise Distributed Application Service (EDAS) ingress gateway.
 	EntryApplication *InsertSwimmingLaneGroupResponseBodyDataEntryApplication `json:"EntryApplication,omitempty" xml:"EntryApplication,omitempty" type:"Struct"`
@@ -222,17 +221,7 @@ func (s *InsertSwimmingLaneGroupResponseBodyDataApplicationList) Validate() erro
 }
 
 type InsertSwimmingLaneGroupResponseBodyDataApplicationListApplication struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// bdb251cc-02a6-48dd-891b-2ab21b25****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
-	//
-	// example:
-	//
-	// test-app
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 

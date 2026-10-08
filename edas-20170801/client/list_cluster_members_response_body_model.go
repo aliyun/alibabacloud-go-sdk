@@ -96,7 +96,6 @@ func (s *ListClusterMembersResponseBody) Validate() error {
 }
 
 type ListClusterMembersResponseBodyClusterMemberPage struct {
-	// The list of ECS instances in the cluster.
 	ClusterMemberList *ListClusterMembersResponseBodyClusterMemberPageClusterMemberList `json:"ClusterMemberList,omitempty" xml:"ClusterMemberList,omitempty" type:"Struct"`
 	// The page number of the returned page. If this parameter is not returned, the first page is returned.
 	//
@@ -206,62 +205,14 @@ func (s *ListClusterMembersResponseBodyClusterMemberPageClusterMemberList) Valid
 }
 
 type ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember struct {
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// 52984524-6d48-4bbd-85f2-a34b0e5b****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the ECS instance in the cluster.
-	//
-	// example:
-	//
-	// adb03eeb-3adf-4d7e-afe1-03d1ad45****
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterMemberId *string `json:"ClusterMemberId,omitempty" xml:"ClusterMemberId,omitempty"`
-	// The timestamp when the ECS instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281038175
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the ECS instance.
-	//
-	// example:
-	//
-	// i-2zej4i2jdf3ntwhj****
-	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
-	// The unique ID of the elastic compute unit (ECU). You can run the `dmidecode` command on the ECS instance to query the ECU ID.
-	//
-	// example:
-	//
-	// 70ed3f59-b476-49aa-be09-9e6c375d****
-	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	// The private IP address for the ECS instance.
-	//
-	// example:
-	//
-	// 172.16.XX.XX
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The state of the ECS instance. Valid values:
-	//
-	// 	- 1: The instance is running.
-	//
-	// 	- 0: The instance is being converted.
-	//
-	// 	- \\-1: The instance fails to be converted.
-	//
-	// 	- \\-2: The instance is offline.
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The timestamp when the ECS instance was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281041113
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EcsId           *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
+	EcuId           *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	PrivateIp       *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListClusterMembersResponseBodyClusterMemberPageClusterMemberListClusterMember) String() string {

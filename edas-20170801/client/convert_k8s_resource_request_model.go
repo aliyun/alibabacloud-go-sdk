@@ -20,7 +20,7 @@ type iConvertK8sResourceRequest interface {
 }
 
 type ConvertK8sResourceRequest struct {
-	// The ID of the cluster. You can call the ListCluster operation to query the cluster ID. For more information, see [ListCluster](https://help.aliyun.com/document_detail/154995.html).
+	// The ID of the cluster. For more information, see [ListCluster](https://help.aliyun.com/document_detail/154995.html).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ConvertK8sResourceRequest struct {
 	//
 	// deployment-to-convert
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource that is used. Set the value to deployment.
+	// The resource type. Only deployment is supported.
 	//
 	// This parameter is required.
 	//

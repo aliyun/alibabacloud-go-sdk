@@ -31,8 +31,7 @@ type ListAliyunRegionResponseBody struct {
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the regions.
+	Message          *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	RegionEntityList *ListAliyunRegionResponseBodyRegionEntityList `json:"RegionEntityList,omitempty" xml:"RegionEntityList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -130,17 +129,7 @@ func (s *ListAliyunRegionResponseBodyRegionEntityList) Validate() error {
 }
 
 type ListAliyunRegionResponseBodyRegionEntityListRegionEntity struct {
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the region.
-	//
-	// example:
-	//
-	// China East 1 (Hangzhou)
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

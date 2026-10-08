@@ -37,8 +37,7 @@ type ListResourceGroupResponseBody struct {
 	// example:
 	//
 	// b197-40ab-9155-****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// For more information about how to define a resource group, see ResGroupEntity.
+	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupList *ListResourceGroupResponseBodyResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Struct"`
 }
 
@@ -130,52 +129,15 @@ func (s *ListResourceGroupResponseBodyResourceGroupList) Validate() error {
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntity struct {
-	// The UID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// ****@aliyun.com
-	AdminUserId *string `json:"AdminUserId,omitempty" xml:"AdminUserId,omitempty"`
-	// The time when the resource group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1557890594376
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the resource group.
-	//
-	// example:
-	//
-	// QqLZDA3pBZ
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// 8592
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the resource group.
-	//
-	// example:
-	//
-	// TIa2LGixyD
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the resource group belongs.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Server Load Balancer (SLB) instances.
-	SlbList *ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
-	// The time when the resource group was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281040827
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The Elastic Compute Service (ECS) instances.
-	EcsList *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsList `json:"ecsList,omitempty" xml:"ecsList,omitempty" type:"Struct"`
+	AdminUserId *string                                                              `json:"AdminUserId,omitempty" xml:"AdminUserId,omitempty"`
+	CreateTime  *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id          *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId    *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SlbList     *ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
+	UpdateTime  *int64                                                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	EcsList     *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsList `json:"ecsList,omitempty" xml:"ecsList,omitempty" type:"Struct"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntity) String() string {
@@ -316,90 +278,18 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbList) Va
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbListSlbEntity struct {
-	// The IP address of the SLB instance.
-	//
-	// example:
-	//
-	// 192.168.xxx.xx
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The type of the IP address of the SLB instance. Valid values:
-	//
-	// 	- Internet: Users can connect to the SLB instance over the Internet.
-	//
-	// 	- Intranet: Users can connect to the SLB instance over the internal network.
-	//
-	// example:
-	//
-	// Intranet
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// Indicates whether the SLB instance has expired. Valid values:
-	//
-	// 	- true: The SLB instance has expired.
-	//
-	// 	- false: The SLB instance has not expired.
-	//
-	// example:
-	//
-	// true
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The ID of the group to which the SLB instance belongs.
-	//
-	// example:
-	//
-	// 64189****
-	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The network type of the SLB instance. Valid values:
-	//
-	// 	- Classic network
-	//
-	// 	- VPC
-	//
-	// example:
-	//
-	// vpc
+	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	GroupId     *int32  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The unique ID of the SLB instance.
-	//
-	// example:
-	//
-	// lb-2zebf1fpbpkc7dnro****
-	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The name of the SLB instance.
-	//
-	// example:
-	//
-	// a9315af59b4cd11e9a18c00163e1****
-	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	// The status of the SLB instance.
-	//
-	// example:
-	//
-	// active
-	SlbStatus *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
-	// The UID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// ****@aliyun.com
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-m5e666n89m2bx8jar****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-mktkxkhah14****
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbName     *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	SlbStatus   *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId   *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntitySlbListSlbEntity) String() string {
@@ -557,138 +447,27 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsList) Va
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntity struct {
-	// The total number of CPU cores.
-	//
-	// example:
-	//
-	// 2
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The description of the ECS instance.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The elastic compute unit (ECU) that corresponds to the ECS instance.
-	EcuEntity *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity `json:"EcuEntity,omitempty" xml:"EcuEntity,omitempty" type:"Struct"`
-	// The elastic IP address (EIP).
-	//
-	// example:
-	//
-	// 192.168.xxx.xx
-	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	// Indicates whether the ECS instance has expired. Valid values:
-	//
-	// 	- true: The ECS instance has expired.
-	//
-	// 	- false: The ECS instance has not expired.
-	//
-	// example:
-	//
-	// true
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The ID of the resource group in Enterprise Distributed Application Service (EDAS).
-	//
-	// example:
-	//
-	// 64189****
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the host.
-	//
-	// example:
-	//
-	// iZm5e853hvvrodnvqus****
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The private IP address.
-	//
-	// example:
-	//
-	// 192.168.xx.xxx
-	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	// The ID of the ECS instance.
-	//
-	// example:
-	//
-	// i-m5e853hvvrodnvqu****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the ECS instance.
-	//
-	// example:
-	//
-	// betabjmixcoud_01
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The total size of memory. Unit: MB.
-	//
-	// example:
-	//
-	// 1
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The private IP address of the ECS instance.
-	//
-	// example:
-	//
-	// 192.168.xx.xxx
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The public IP address.
-	//
-	// example:
-	//
-	// 192.168.xx.xxx
-	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// ch-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The serial number of the ECS instance.
-	//
-	// example:
-	//
-	// 98b480b8-458b-4ff3-84b9-cf7097c5****
-	SerialNum *string `json:"SerialNum,omitempty" xml:"SerialNum,omitempty"`
-	// The ID of the security group.
-	//
-	// example:
-	//
-	// sg-m5eajgzn6b8sg9mv****
-	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	// The status of the ECS instance. Valid values:
-	//
-	// 	- Pending: The ECS instance is being created.
-	//
-	// 	- Running: The ECS instance is running.
-	//
-	// 	- Starting: The ECS instance is being started.
-	//
-	// 	- Stopping: The ECS instance is being stopped.
-	//
-	// 	- Stopped: The ECS instance is stopped.
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user account.
-	//
-	// example:
-	//
-	// ****_common_****@aliyun.com
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The VPCs.
-	VpcEntity *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity `json:"VpcEntity,omitempty" xml:"VpcEntity,omitempty" type:"Struct"`
-	// The unique ID of the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-bp13evu4aayj2t1er****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-qingdao-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Cpu          *int32                                                                                 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Description  *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	EcuEntity    *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity `json:"EcuEntity,omitempty" xml:"EcuEntity,omitempty" type:"Struct"`
+	Eip          *string                                                                                `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	Expired      *bool                                                                                  `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	GroupId      *string                                                                                `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	HostName     *string                                                                                `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InnerIp      *string                                                                                `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	InstanceId   *string                                                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string                                                                                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Mem          *int32                                                                                 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	PrivateIp    *string                                                                                `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	PublicIp     *string                                                                                `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	RegionId     *string                                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SerialNum    *string                                                                                `json:"SerialNum,omitempty" xml:"SerialNum,omitempty"`
+	SgId         *string                                                                                `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	Status       *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId       *string                                                                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcEntity    *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity `json:"VpcEntity,omitempty" xml:"VpcEntity,omitempty" type:"Struct"`
+	VpcId        *string                                                                                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId       *string                                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntity) String() string {
@@ -903,116 +682,23 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsE
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity struct {
-	// The number of available CPUs.
-	//
-	// example:
-	//
-	// 1
-	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	// The size of the available memory.
-	//
-	// example:
-	//
-	// 200
-	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	// The total number of CPU cores.
-	//
-	// example:
-	//
-	// 2
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1557890594376
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether Docker is installed. Valid values:
-	//
-	// 	- true: Docker is installed.
-	//
-	// 	- false: Docker is not installed.
-	//
-	// example:
-	//
-	// true
-	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	// The unique ID of the elastic compute unit (ECU). You can run the `dmidecode` command on the ECS instance to query the ECU ID.
-	//
-	// example:
-	//
-	// 0de2ebdb-9490-4fc4-be41***************
-	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281040819
-	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-2zej4i2jdf*********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The private IP address of the ECU.
-	//
-	// example:
-	//
-	// 192.168.xxx.xx
-	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	// The total size of memory. Unit: MB.
-	//
-	// example:
-	//
-	// 200
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The name of the ECU.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the ECU is online. Valid values:
-	//
-	// 	- true: The ECU is online.
-	//
-	// 	- false: The ECU is offline.
-	//
-	// example:
-	//
-	// true
-	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the ECU was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281040827
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the user associated with the ECU.
-	//
-	// example:
-	//
-	// edas_****_test@aliyun-****.com
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-2ze1ram356umxs598****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-beijing-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	Cpu           *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	Mem           *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityEcuEntity) String() string {
@@ -1181,64 +867,15 @@ func (s *ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsE
 }
 
 type ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity struct {
-	// The IPv4 CIDR block of the vSwitch.
-	//
-	// example:
-	//
-	// 192.168.xx.xxx
-	Cidrblock *string `json:"Cidrblock,omitempty" xml:"Cidrblock,omitempty"`
-	// The description of the VPC.
-	//
-	// example:
-	//
-	// ""
+	Cidrblock   *string `json:"Cidrblock,omitempty" xml:"Cidrblock,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of ECS instances that run in the VPC.
-	//
-	// example:
-	//
-	// 1
-	EcsNum *int32 `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
-	// Indicates whether the VPC has expired. Valid values:
-	//
-	// 	- true: The VPC has expired.
-	//
-	// 	- false: The VPC has not expired.
-	//
-	// example:
-	//
-	// true
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the VPC.
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// ****_common_****@aliyun.com
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The unique ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-bp13evu42t1er****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
-	//
-	// example:
-	//
-	// test
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	EcsNum      *int32  `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
+	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName     *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListResourceGroupResponseBodyResourceGroupListResGroupEntityEcsListEcsEntityVpcEntity) String() string {

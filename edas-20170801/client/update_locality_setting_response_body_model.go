@@ -24,23 +24,34 @@ type iUpdateLocalitySettingResponseBody interface {
 }
 
 type UpdateLocalitySettingResponseBody struct {
+	// The status code of the request.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the update.
 	Data *UpdateLocalitySettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// a5281053-08e4-47a5-b2ab-5c0323de*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// True
@@ -119,10 +130,14 @@ func (s *UpdateLocalitySettingResponseBody) Validate() error {
 }
 
 type UpdateLocalitySettingResponseBodyData struct {
+	// Whether it is active.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The threshold of the ECU.
+	//
 	// example:
 	//
 	// 15

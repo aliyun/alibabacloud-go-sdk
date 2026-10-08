@@ -34,17 +34,17 @@ type CreateConfigTemplateRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The data format of the configuration template. Valid values:
 	//
-	// 	- JSON: JSON format
+	// - JSON: JSON format
 	//
-	// 	- XML: XML format
+	// - XML: XML format
 	//
-	// 	- YAML: YAML format
+	// - YAML: YAML format
 	//
-	// 	- Properties: .properties format
+	// - Properties: .properties format
 	//
-	// 	- KeyValue: key-value pairs
+	// - KeyValue: key-value pairs
 	//
-	// 	- Custom: custom format
+	// - Custom: custom format
 	//
 	// example:
 	//

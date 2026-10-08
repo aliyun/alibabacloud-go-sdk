@@ -20,21 +20,20 @@ type iListConsumedServicesResponseBody interface {
 }
 
 type ListConsumedServicesResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about consumed services.
+	Code                 *int32                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumedServicesList *ListConsumedServicesResponseBodyConsumedServicesList `json:"ConsumedServicesList,omitempty" xml:"ConsumedServicesList,omitempty" type:"Struct"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -130,48 +129,14 @@ func (s *ListConsumedServicesResponseBodyConsumedServicesList) Validate() error 
 }
 
 type ListConsumedServicesResponseBodyConsumedServicesListListConsumedServices struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// a5281053-08e4-47a5-b2ab-5c0323de7b5a
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Indicates whether the application runs in a Docker container. Valid values:
-	//
-	// 	- true: The application runs in a Docker container.
-	//
-	// 	- false: The application does not run in a Docker container.
-	//
-	// example:
-	//
-	// true
-	DockerApplication *bool `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
-	// A reserved parameter.
-	//
-	// example:
-	//
-	// ""
-	Group2Ip *string                                                                         `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	Groups   *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	Ips      *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The name of the consumed service.
-	//
-	// example:
-	//
-	// service
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the consumed service.
-	//
-	// example:
-	//
-	// HSF
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the consumed service.
-	//
-	// example:
-	//
-	// 1.0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	AppId             *string                                                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DockerApplication *bool                                                                           `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
+	Group2Ip          *string                                                                         `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
+	Groups            *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	Ips               *ListConsumedServicesResponseBodyConsumedServicesListListConsumedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	Name              *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type              *string                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	Version           *string                                                                         `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListConsumedServicesResponseBodyConsumedServicesListListConsumedServices) String() string {

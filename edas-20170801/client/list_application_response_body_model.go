@@ -20,15 +20,14 @@ type iListApplicationResponseBody interface {
 }
 
 type ListApplicationResponseBody struct {
-	// The information about applications.
 	ApplicationList *ListApplicationResponseBodyApplicationList `json:"ApplicationList,omitempty" xml:"ApplicationList,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The status code of the response.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The additional information.
 	//
 	// example:
 	//
@@ -130,148 +129,26 @@ func (s *ListApplicationResponseBodyApplicationList) Validate() error {
 }
 
 type ListApplicationResponseBodyApplicationListApplication struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 00ee517d-dd7d-4d4e-****-************
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The deployment type of the application. Valid values:
-	//
-	// 	- War: The application is deployed by using a WAR package.
-	//
-	// 	- FatJar: The application is deployed by using a JAR package.
-	//
-	// 	- Image: The application is deployed by using an image.
-	//
-	// 	- If this parameter is empty, the application is not deployed.
-	//
-	// example:
-	//
-	// FatJar
-	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
-	//
-	// example:
-	//
-	// 58
-	BuildPackageId *int64 `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// c37aec2a-bcca-4ec1-****-************
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the cluster in which the application is deployed. Valid values:
-	//
-	// 	- **2**: Elastic Compute Service (ECS) cluster
-	//
-	// 	- **3**: self-managed Kubernetes cluster in EDAS
-	//
-	// 	- **5**: Container Service for Kubernetes (ACK) cluster
-	//
-	// example:
-	//
-	// 2
-	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The time when the application was created.
-	//
-	// example:
-	//
-	// 1664208000000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The IP address of the Internet-facing SLB instance.
-	//
-	// example:
-	//
-	// 100.100.70.***
-	ExtSlbIp *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
-	// The listener port of the Internet-facing SLB instance.
-	//
-	// example:
-	//
-	// 8080
-	ExtSlbListenerPort *int32 `json:"ExtSlbListenerPort,omitempty" xml:"ExtSlbListenerPort,omitempty"`
-	// The number of application instances.
-	//
-	// example:
-	//
-	// 5
-	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	// The namespace of the Kubernetes cluster.
-	//
-	// example:
-	//
-	// default
-	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	// The name of the application.
-	//
-	// example:
-	//
-	// doc-test-consumer
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the microservices namespace.
-	//
-	// example:
-	//
-	// cn-hangzhou:test
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The service port of the application.
-	//
-	// example:
-	//
-	// 8080
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID of the application.
-	//
-	// example:
-	//
-	// cn-beijing:docTes
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-aek24j4s4b*****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of running application instances.
-	//
-	// example:
-	//
-	// 0
-	RunningInstanceCount *int32 `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
-	// The IP address of the internal-facing Server Load Balancer (SLB) instance.
-	//
-	// example:
-	//
-	// 192.168.0.***
-	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	// The listener port of the internal-facing SLB instance.
-	//
-	// example:
-	//
-	// 8088
-	SlbListenerPort *int32 `json:"SlbListenerPort,omitempty" xml:"SlbListenerPort,omitempty"`
-	// The port of the internal-facing SLB instance.
-	//
-	// example:
-	//
-	// 80
-	SlbPort *int32 `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	// The state of the application. Valid values:
-	//
-	// 	- RUNNING: The application is running.
-	//
-	// 	- STOPPED: The application is stopped.
-	//
-	// 	- DEPLOYING: The application is being deployed.
-	//
-	// 	- DELETING: The application is being deleted.
-	//
-	// example:
-	//
-	// RUNNING
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ApplicationType      *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	BuildPackageId       *int64  `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
+	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterType          *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExtSlbIp             *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
+	ExtSlbListenerPort   *int32  `json:"ExtSlbListenerPort,omitempty" xml:"ExtSlbListenerPort,omitempty"`
+	Instances            *int32  `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	K8sNamespace         *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RunningInstanceCount *int32  `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
+	SlbIp                *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	SlbListenerPort      *int32  `json:"SlbListenerPort,omitempty" xml:"SlbListenerPort,omitempty"`
+	SlbPort              *int32  `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	State                *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListApplicationResponseBodyApplicationListApplication) String() string {

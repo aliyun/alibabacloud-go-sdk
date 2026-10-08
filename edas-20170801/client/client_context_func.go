@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Terminates a change process and rolls back the application. This operation is applicable to applications that are deployed in Container Service for Kubernetes (ACK) clusters.
+// You can call the AbortAndRollbackChangeOrder operation to stop and roll back a change order for applications in Container Service for Kubernetes (ACK) clusters.
 //
 // @param request - AbortAndRollbackChangeOrderRequest
 //
@@ -256,7 +256,7 @@ func (client *Client) AuthorizeResourceGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Assigns one or more roles to a RAM user.
+// Grant permissions to RAM roles.
 //
 // @param request - AuthorizeRoleRequest
 //
@@ -386,7 +386,7 @@ func (client *Client) BindEcsSlbWithContext(ctx context.Context, request *BindEc
 
 // Summary:
 //
-// Binds a Server Load Balancer (SLB) instance to an application that is deployed in a Container Service for Kubernetes (ACK) cluster.
+// Attaches a Server Load Balancer (SLB) instance to an application in a Container Service for Kubernetes cluster.
 //
 // @param request - BindK8sSlbRequest
 //
@@ -469,7 +469,7 @@ func (client *Client) BindK8sSlbWithContext(ctx context.Context, request *BindK8
 
 // Summary:
 //
-// Binds a Server Load Balancer (SLB) instance to an application in Enterprise Distributed Application Service (EDAS).
+// Calls the BindSlb operation to attach a Server Load Balancer (SLB) instance to a specified application.
 //
 // @param request - BindSlbRequest
 //
@@ -536,7 +536,7 @@ func (client *Client) BindSlbWithContext(ctx context.Context, request *BindSlbRe
 
 // Summary:
 //
-// Changes the application instance group for an Elastic Compute Service (ECS) instance in an ECS cluster.
+// Call the ChangeDeployGroup operation to change the group of an ECS instance in an application deployed in an ECS cluster.
 //
 // @param request - ChangeDeployGroupRequest
 //
@@ -646,7 +646,7 @@ func (client *Client) ContinuePipelineWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Converts a Deployment into an application.
+// Converts a Deployment resource into an application.
 //
 // @param request - ConvertK8sResourceRequest
 //
@@ -705,7 +705,7 @@ func (client *Client) ConvertK8sResourceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates an auto scaling policy for an application.
+// Call the CreateApplicationScalingRule operation to create an Auto Scaling rule for an application.
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -1156,7 +1156,7 @@ func (client *Client) CreateK8sServiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes an application.
+// Call the DeleteApplication operation to delete an application instance.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -1203,7 +1203,7 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes an auto scaling policy for an application.
+// Deletes an Auto Scaling rule for an application.
 //
 // @param request - DeleteApplicationScalingRuleRequest
 //
@@ -1768,7 +1768,7 @@ func (client *Client) DeleteK8sServiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Removes a log directory from an application. This operation is applicable to applications that are deployed in Alibaba Cloud Elastic Compute Service (ECS) clusters and hybrid cloud ECS clusters.
+// Deletes resources associated with a log directory. This operation is suitable for applications deployed on Alibaba Cloud Elastic Compute Service (ECS) instances or container orchestration clusters from other cloud providers.
 //
 // @param request - DeleteLogPathRequest
 //
@@ -2118,7 +2118,7 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deploys an application in a Container Service for Kubernetes (ACK) cluster or a serverless Kubernetes cluster.
+// Deploys an application in a Container Service for Kubernetes (ACK) cluster or a Serverless Kubernetes (ASK) cluster.
 //
 // @param request - DeployK8sApplicationRequest
 //
@@ -2488,7 +2488,7 @@ func (client *Client) DescribeAppInstanceListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the auto scaling policies of an application.
+// Call the DescribeApplicationScalingRules operation to query the scaling rules for an application.
 //
 // @param request - DescribeApplicationScalingRulesRequest
 //
@@ -2533,6 +2533,14 @@ func (client *Client) DescribeApplicationScalingRulesWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the locality configuration.
+//
+// Description:
+//
+// > Currently, only deployment resources can be modified.
+//
 // @param request - DescribeLocalitySettingRequest
 //
 // @param headers - map
@@ -2735,7 +2743,7 @@ func (client *Client) GetAppDeploymentWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the details about a specified application in an Elastic Compute Service (ECS) cluster.
+// Retrieves information about a specified application in an ECS cluster.
 //
 // @param request - GetApplicationRequest
 //
@@ -2782,7 +2790,7 @@ func (client *Client) GetApplicationWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the details about a change process.
+// You can call the GetChangeOrderInfo operation to view the details of a change process.
 //
 // @param request - GetChangeOrderInfoRequest
 //
@@ -3080,7 +3088,7 @@ func (client *Client) GetK8sAppPrecheckResultWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about applications deployed in a Container Service for Kubernetes (ACK) cluster or a serverless Kubernetes cluster.
+// Retrieves information about an application deployed in a Container Service for Kubernetes (ACK) cluster or a Serverless Kubernetes (ASK) cluster.
 //
 // @param request - GetK8sApplicationRequest
 //
@@ -3131,7 +3139,7 @@ func (client *Client) GetK8sApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries Container Service for Kubernetes (ACK) clusters or Serverless Kubernetes clusters in a specified region.
+// Gets a list of Container Service for Kubernetes (ACK) clusters or Serverless Kubernetes (ASK) clusters.
 //
 // @param request - GetK8sClusterRequest
 //
@@ -3194,7 +3202,7 @@ func (client *Client) GetK8sClusterWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries application services that are deployed in a Kubernetes cluster.
+// Gets a list of Services for an application in a Kubernetes cluster.
 //
 // @param request - GetK8sServicesRequest
 //
@@ -3965,11 +3973,11 @@ func (client *Client) ImportK8sClusterWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates an application in an Elastic Compute Service (ECS) cluster.
+// Creates an application in an ECS cluster.
 //
 // Description:
 //
-// > To create an application in a Kubernetes cluster, call the InsertK8sApplication operation provided by Enterprise Distributed Application Service (EDAS).
+// > To create an application in a Kubernetes cluster, call the InsertK8sApplication operation.
 //
 // @param request - InsertApplicationRequest
 //
@@ -4289,7 +4297,7 @@ func (client *Client) InsertDeployGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates an application in a Container Service for Kubernetes (ACK) cluster or serverless Kubernetes cluster.
+// Creates an application in a Kubernetes cluster or a Serverless Kubernetes cluster.
 //
 // @param request - InsertK8sApplicationRequest
 //
@@ -5067,7 +5075,7 @@ func (client *Client) ListAliyunRegionWithContext(ctx context.Context, headers m
 
 // Summary:
 //
-// Queries a list of applications.
+// Retrieves the list of applications.
 //
 // @param request - ListApplicationRequest
 //
@@ -5226,7 +5234,7 @@ func (client *Client) ListAuthorityWithContext(ctx context.Context, headers map[
 
 // Summary:
 //
-// Queries Enterprise Distributed Application Service (EDAS) Container versions.
+// Calls the ListBuildPack operation to retrieve the list of container versions.
 //
 // @param headers - map
 //
@@ -5461,7 +5469,7 @@ func (client *Client) ListConfigTemplatesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the services that are consumed by an application.
+// Queries consumed services.
 //
 // @param request - ListConsumedServicesRequest
 //
@@ -5555,7 +5563,7 @@ func (client *Client) ListConvertableEcuWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the instance groups to which an application is deployed.
+// Call the ListDeployGroup operation to obtain a list of deployment groups.
 //
 // @param request - ListDeployGroupRequest
 //
@@ -5659,11 +5667,11 @@ func (client *Client) ListEcsNotInClusterWithContext(ctx context.Context, reques
 //
 // ## Terms
 //
-//   - **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
+// - **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
 //
-//   - **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+// - **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
 //
-//   - **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+// - **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
 //
 // @param request - ListEcuByRegionRequest
 //
@@ -6009,7 +6017,7 @@ func (client *Client) ListK8sSecretsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries service methods.
+// You can call the ListMethods operation to query a list of service methods.
 //
 // @param request - ListMethodsRequest
 //
@@ -6060,7 +6068,7 @@ func (client *Client) ListMethodsWithContext(ctx context.Context, request *ListM
 
 // Summary:
 //
-// Queries the services that are published by an application.
+// Queries published services.
 //
 // @param request - ListPublishedServicesRequest
 //
@@ -6187,7 +6195,7 @@ func (client *Client) ListResourceGroupWithContext(ctx context.Context, headers 
 
 // Summary:
 //
-// Queries roles.
+// Queries a list of roles.
 //
 // @param headers - map
 //
@@ -6226,11 +6234,11 @@ func (client *Client) ListRoleWithContext(ctx context.Context, headers map[strin
 //
 // ## Terms
 //
-//   - **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
+// - **Namespace**: the logical concept that is used to isolate resources such as clusters, ECS instances, and applications, and microservices published in EDAS. This concept involves the default namespace and custom namespaces. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
 //
-//   - **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+// - **Elastic compute unit (ECU)**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
 //
-//   - **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+// - **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
 //
 // @param request - ListScaleOutEcuRequest
 //
@@ -6334,7 +6342,7 @@ func (client *Client) ListServiceGroupsWithContext(ctx context.Context, headers 
 
 // Summary:
 //
-// Queries Server Load Balancer (SLB) instances.
+// Retrieves a list of SLB instances.
 //
 // @param request - ListSlbRequest
 //
@@ -6389,7 +6397,7 @@ func (client *Client) ListSlbWithContext(ctx context.Context, request *ListSlbRe
 
 // Summary:
 //
-// Queries the Resource Access Management (RAM) users.
+// Queries a list of Resource Access Management (RAM) users.
 //
 // @param headers - map
 //
@@ -6579,7 +6587,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries custom namespaces.
+// Queries a list of user-defined namespaces.
 //
 // @param request - ListUserDefineRegionRequest
 //
@@ -6626,7 +6634,7 @@ func (client *Client) ListUserDefineRegionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// The HTTP status code returned.
+// Queries virtual private clouds (VPCs). This operation is applicable to Elastic Compute Service (ECS) clusters and Kubernetes clusters.
 //
 // @param headers - map
 //
@@ -6659,23 +6667,90 @@ func (client *Client) ListVpcWithContext(ctx context.Context, headers map[string
 
 // Summary:
 //
-// Migrates an elastic compute unit (ECU) to the default cluster in a specified namespace.
+// Migrates an application.
 //
 // Description:
 //
-// ## Limits
+// > For application deployment in a container service Kubernetes cluster imported to Enterprise Distributed Application Service (EDAS), use the DeployK8sApplication operation provided by EDAS. For more information, see [DeployK8sApplication](https://help.aliyun.com/document_detail/149420.html).
 //
-// We recommend that you do not call this operation. Instead, we recommend that you call the TransformClusterMember operation. For more information, see [TransformClusterMember](https://help.aliyun.com/document_detail/71514.html).
+// @param request - MigrateApplicationRequest
 //
-// When you call this operation to import an Elastic Compute Service (ECS) instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all data of the ECS instance is deleted. You must set a logon password for the ECS instance. Make sure that no important data exists on or data has been backed up for the ECS instance that you want to import.
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MigrateApplicationResponse
+func (client *Client) MigrateApplicationWithContext(ctx context.Context, request *MigrateApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *MigrateApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppIds) {
+		query["appIds"] = request.AppIds
+	}
+
+	if !dara.IsNil(request.Cmd) {
+		query["cmd"] = request.Cmd
+	}
+
+	if !dara.IsNil(request.Config) {
+		query["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.RawData) {
+		query["rawData"] = request.RawData
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MigrateApplication"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v5/k8s/migrateK8sApp"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MigrateApplicationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Transfers an ECU to the default cluster in a specified namespace.
+//
+// Description:
+//
+// ## Usage notes
+//
+// This API operation is deprecated. Use the TransformClusterMember operation instead. For more information, see [TransformClusterMember](https://help.aliyun.com/document_detail/71514.html).
+//
+// This operation imports an Elastic Compute Service (ECS) instance and reinstalls its operating system. This process deletes all data on the instance. You must also reset the logon password. Before you import an instance, back up its data or make sure it contains no important data.
 //
 // ## Terms
 //
-//   - **Namespace**: the logical concept that is used to isolate resources and microservices in Enterprise Distributed Application Service (EDAS). The resources include clusters, ECS instances, and applications. You can use a default or custom namespace. Each region has a default namespace and supports multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources or microservices.
+// - **Namespace**: A logical concept in Enterprise Distributed Application Service (EDAS) used to isolate resources and microservices. Resources include clusters, ECS instances, and applications. Namespaces can be default or custom. Each region has one default namespace and can have multiple custom namespaces. By default, only the default namespace is available. You do not need to create a custom namespace if you do not want to isolate resources and microservices.
 //
-//   - **ECU**: After an ECS instance is imported to a cluster, the instance becomes an ECU.
+// - **ECU**: An ECS instance becomes an Elastic Compute Unit (ECU) after it is imported into a cluster.
 //
-//   - **Elastic compute container (ECC)**: After you deploy an application to an ECU in a cluster, the ECU becomes an ECC.
+// - **ECC**: An ECU in a cluster becomes an Elastic Compute Container (ECC) after it is deployed in an application.
 //
 // @param request - MigrateEcuRequest
 //
@@ -7220,7 +7295,7 @@ func (client *Client) ResetApplicationWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Restarts an application. This operation is applicable to applications that are deployed in Elastic Compute Service (ECS) clusters.
+// Restarts an application. This operation is suitable for applications that are deployed on Elastic Compute Service (ECS) instances.
 //
 // @param request - RestartApplicationRequest
 //
@@ -7271,7 +7346,7 @@ func (client *Client) RestartApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Restarts an application that is deployed in a Container Service for Kubernetes (ACK) cluster or a serverless Kubernetes cluster.
+// Call the RestartK8sApplication operation to restart an application deployed in a Container Service for Kubernetes (ACK) cluster or a Serverless Kubernetes (ASK) cluster.
 //
 // @param request - RestartK8sApplicationRequest
 //
@@ -7322,7 +7397,7 @@ func (client *Client) RestartK8sApplicationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retries a failed process.
+// Call the RetryChangeOrderTask operation to retry a failed change order task.
 //
 // @param request - RetryChangeOrderTaskRequest
 //
@@ -7483,7 +7558,7 @@ func (client *Client) RollbackChangeOrderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Scales in an application.
+// Scales in the instances of an application.
 //
 // @param request - ScaleInApplicationRequest
 //
@@ -7538,7 +7613,7 @@ func (client *Client) ScaleInApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Scales out or in an application that is deployed in a Container Service for Kubernetes (ACK) cluster.
+// Scales out or scales down application instances in a Container Service for Kubernetes (K8s) cluster.
 //
 // @param request - ScaleK8sApplicationRequest
 //
@@ -7939,7 +8014,7 @@ func (client *Client) StartK8sAppPrecheckWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Starts an application in a Container Service for Kubernetes (ACK) cluster or Serverless Kubernetes cluster.
+// Starts an application in a Container Service for Kubernetes (ACK) or Serverless Kubernetes (ASK) cluster.
 //
 // @param request - StartK8sApplicationRequest
 //
@@ -8265,13 +8340,13 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Imports or migrates one or more Elastic Compute Service (ECS) instances to a cluster.
+// Imports or transfers ECS instances.
 //
 // Description:
 //
-// ## Limits
+// ## Limitations
 //
-// When you call this operation to import an ECS instance, the operating system of the ECS instance is reinstalled. After the operating system is reinstalled, all data of the ECS instance is deleted. You must set a logon password for the ECS instance. Make sure that no important data exists on or data has been backed up for the ECS instance that you want to import.
+// Calling this API to import an ECS instance reinstalls its operating system. This process deletes all data on the instance and requires you to reset the logon password. Before you import the instance, back up any important data.
 //
 // @param request - TransformClusterMemberRequest
 //
@@ -8385,7 +8460,7 @@ func (client *Client) UnbindK8sSlbWithContext(ctx context.Context, request *Unbi
 
 // Summary:
 //
-// Unbinds a Server Load Balancer (SLB) instance from an application.
+// Call the UnbindSlb operation to detach a Server Load Balancer (SLB) instance.
 //
 // @param request - UnbindSlbRequest
 //
@@ -8507,7 +8582,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Modifies the information about an account.
+// Modifies information about an account.
 //
 // @param request - UpdateAccountInfoRequest
 //
@@ -8562,7 +8637,7 @@ func (client *Client) UpdateAccountInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the name, description, and owner of an application.
+// Updates the basic information such as the description and owner of an application.
 //
 // @param request - UpdateApplicationBaseInfoRequest
 //
@@ -8621,7 +8696,7 @@ func (client *Client) UpdateApplicationBaseInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies an auto scaling policy for an application.
+// Calls the UpdateApplicationScalingRule operation to update the Auto Scaling rule for an application.
 //
 // @param request - UpdateApplicationScalingRuleRequest
 //
@@ -9330,7 +9405,7 @@ func (client *Client) UpdateK8sIngressRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Updates a specified resource in a Kubernetes cluster.
+// Update Kubernetes resources.
 //
 // Description:
 //
@@ -9527,7 +9602,7 @@ func (client *Client) UpdateK8sServiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Updates the Server Load Balancer (SLB) instance bound to an application that is deployed in a Container Service for Kubernetes (ACK) cluster.
+// Call UpdateK8sSlb to update the Server Load Balancer (SLB) instance attached to a Container Service for Kubernetes application.
 //
 // @param request - UpdateK8sSlbRequest
 //
@@ -9614,7 +9689,11 @@ func (client *Client) UpdateK8sSlbWithContext(ctx context.Context, request *Upda
 
 // Summary:
 //
-// 更新本地设置
+// Updates a localization configuration.
+//
+// Description:
+//
+// > This operation modifies only Deployment resources.
 //
 // @param request - UpdateLocalitySettingRequest
 //
@@ -9779,7 +9858,7 @@ func (client *Client) UpdateSlsLogStoreWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新泳道
+// Updates a swimming lane.
 //
 // @param request - UpdateSwimmingLaneRequest
 //

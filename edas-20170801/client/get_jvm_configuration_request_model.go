@@ -26,9 +26,9 @@ type GetJvmConfigurationRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The ID of the instance group.
 	//
-	// 	- If an ID is specified, this operation queries the JVM configuration information of the instance group.
+	// - If an ID is specified, this operation queries the JVM configuration information of the instance group.
 	//
-	// 	- If an ID is not specified, this operation queries the JVM configuration information of the application.
+	// - If an ID is not specified, this operation queries the JVM configuration information of the application.
 	//
 	// example:
 	//

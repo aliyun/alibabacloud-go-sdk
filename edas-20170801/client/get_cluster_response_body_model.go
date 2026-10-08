@@ -104,15 +104,15 @@ type GetClusterResponseBodyCluster struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The import status of the cluster. Valid values:
 	//
-	// 	- 1: The cluster is imported.
+	// - 1: The cluster is imported.
 	//
-	// 	- 2: The cluster fails to be imported.
+	// - 2: The cluster fails to be imported.
 	//
-	// 	- 3: The cluster is being imported.
+	// - 3: The cluster is being imported.
 	//
-	// 	- 4: The cluster is deleted.
+	// - 4: The cluster is deleted.
 	//
-	// 	- 0: The cluster is not imported.
+	// - 0: The cluster is not imported.
 	//
 	// example:
 	//
@@ -126,17 +126,17 @@ type GetClusterResponseBodyCluster struct {
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The type of the cluster. Valid values:
 	//
-	// 	- 0: regular Docker cluster
+	// - 0: regular Docker cluster
 	//
-	// 	- 1: Swarm cluster
+	// - 1: Swarm cluster
 	//
-	// 	- 2: Elastic Compute Service (ECS) cluster
+	// - 2: Elastic Compute Service (ECS) cluster
 	//
-	// 	- 3: self-managed Kubernetes cluster in EDAS
+	// - 3: self-managed Kubernetes cluster in EDAS
 	//
-	// 	- 4: cluster in which Pandora automatically registers applications
+	// - 4: cluster in which Pandora automatically registers applications
 	//
-	// 	- 5: ACK cluster
+	// - 5: ACK cluster
 	//
 	// example:
 	//
@@ -192,9 +192,9 @@ type GetClusterResponseBodyCluster struct {
 	MemUsed *int32 `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
 	// The network type of the cluster. Valid values:
 	//
-	// 	- 1: classic network
+	// - 1: classic network
 	//
-	// 	- 2: virtual private cloud (VPC)
+	// - 2: virtual private cloud (VPC)
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ type GetClusterResponseBodyCluster struct {
 	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	// The overcommit ratio supported by a Docker cluster. Valid values:
 	//
-	// 	- 1: 1:1, which means that resources are not overcommitted.
+	// - 1: 1:1, which means that resources are not overcommitted.
 	//
-	// 	- 2: 1:2, which means that resources are overcommitted by 1:2.
+	// - 2: 1:2, which means that resources are overcommitted by 1:2.
 	//
-	// 	- 4: 1:4, which means that resources are overcommitted by 1:4.
+	// - 4: 1:4, which means that resources are overcommitted by 1:4.
 	//
-	// 	- 8: 1:8, which means that resources are overcommitted by 1:8.
+	// - 8: 1:8, which means that resources are overcommitted by 1:8.
 	//
 	// example:
 	//

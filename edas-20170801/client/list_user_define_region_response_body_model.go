@@ -20,13 +20,13 @@ type iListUserDefineRegionResponseBody interface {
 }
 
 type ListUserDefineRegionResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status of the API call or a POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// Additional information.
 	//
 	// example:
 	//
@@ -37,8 +37,7 @@ type ListUserDefineRegionResponseBody struct {
 	// example:
 	//
 	// b197-40ab-9155-****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The namespaces.
+	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserDefineRegionList *ListUserDefineRegionResponseBodyUserDefineRegionList `json:"UserDefineRegionList,omitempty" xml:"UserDefineRegionList,omitempty" type:"Struct"`
 }
 
@@ -130,66 +129,15 @@ func (s *ListUserDefineRegionResponseBodyUserDefineRegionList) Validate() error 
 }
 
 type ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity struct {
-	// The ID of the region to which the namespace belongs.
-	//
-	// example:
-	//
-	// cn-shenzhen
-	BelongRegion *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
-	// Indicates whether remote debugging is allowed.
-	//
-	// example:
-	//
-	// false
-	DebugEnable *bool `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
-	// The description of the namespace.
-	//
-	// example:
-	//
-	// betaappManager
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique identifier of the namespace.
-	//
-	// example:
-	//
-	// 1330
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the registry. Valid values:
-	//
-	// 	- default: shared service registry of Enterprise Distributed Application Service (EDAS)
-	//
-	// 	- exclusive_mse: Microservices Engine (MSE) Nacos registry
-	//
-	// example:
-	//
-	// default: EDAS
+	BelongRegion  *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
+	DebugEnable   *bool   `json:"DebugEnable,omitempty" xml:"DebugEnable,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MseInstanceId *string `json:"MseInstanceId,omitempty" xml:"MseInstanceId,omitempty"`
-	// The ID of the namespace.
-	//
-	// > The ID cannot be changed after the namespace is created. The ID is in the `Physical region ID:Logical region identifier` format .
-	//
-	// example:
-	//
-	// cn-shenzhen:betaappManager
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the namespace.
-	//
-	// example:
-	//
-	// betaappManager
-	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The ID of the MSE instance.
-	//
-	// example:
-	//
-	// mse_prepaid_public_cn-tl32n******
-	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	// The ID of the Alibaba Cloud account to which the namespace belongs.
-	//
-	// example:
-	//
-	// edas_****_test@aliyun-****.com
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName    *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	RegistryType  *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListUserDefineRegionResponseBodyUserDefineRegionListUserDefineRegionEntity) String() string {

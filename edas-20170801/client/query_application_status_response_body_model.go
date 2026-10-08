@@ -97,15 +97,11 @@ func (s *QueryApplicationStatusResponseBody) Validate() error {
 
 type QueryApplicationStatusResponseBodyAppInfo struct {
 	// The basic information about the application.
-	Application *QueryApplicationStatusResponseBodyAppInfoApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	// The information about deployment records.
+	Application      *QueryApplicationStatusResponseBodyAppInfoApplication      `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	DeployRecordList *QueryApplicationStatusResponseBodyAppInfoDeployRecordList `json:"DeployRecordList,omitempty" xml:"DeployRecordList,omitempty" type:"Struct"`
-	// The information about elastic compute containers (ECCs).
-	EccList *QueryApplicationStatusResponseBodyAppInfoEccList `json:"EccList,omitempty" xml:"EccList,omitempty" type:"Struct"`
-	// The information about elastic compute units (ECUs).
-	EcuList *QueryApplicationStatusResponseBodyAppInfoEcuList `json:"EcuList,omitempty" xml:"EcuList,omitempty" type:"Struct"`
-	// The information about the instance groups.
-	GroupList *QueryApplicationStatusResponseBodyAppInfoGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Struct"`
+	EccList          *QueryApplicationStatusResponseBodyAppInfoEccList          `json:"EccList,omitempty" xml:"EccList,omitempty" type:"Struct"`
+	EcuList          *QueryApplicationStatusResponseBodyAppInfoEcuList          `json:"EcuList,omitempty" xml:"EcuList,omitempty" type:"Struct"`
+	GroupList        *QueryApplicationStatusResponseBodyAppInfoGroupList        `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Struct"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfo) String() string {
@@ -261,7 +257,7 @@ type QueryApplicationStatusResponseBodyAppInfoApplication struct {
 	//
 	// example:
 	//
-	// EDAS-scaled-cluster:default cluster
+	// EDAS-scaled-cluster：默认集群
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the user who created the application.
 	//
@@ -510,41 +506,11 @@ func (s *QueryApplicationStatusResponseBodyAppInfoDeployRecordList) Validate() e
 }
 
 type QueryApplicationStatusResponseBodyAppInfoDeployRecordListDeployRecord struct {
-	// The time when the deployment record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573626226691
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the deployment record.
-	//
-	// example:
-	//
-	// bbc6c0d5-d792-4907-****-************
-	DeployRecordId *string `json:"DeployRecordId,omitempty" xml:"DeployRecordId,omitempty"`
-	// The unique ID of the ECC.
-	//
-	// example:
-	//
-	// 0cf49a6c-95a8-4aa8-****-************
-	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	// The unique ID of the ECU.
-	//
-	// example:
-	//
-	// 07bd417a-b863-477d-****-************
-	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	// The MD5 hash value of the deployment package.
-	//
-	// example:
-	//
-	// d0db5bcb442e492104d0f00e10a03dd9
-	PackageMd5 *string `json:"PackageMd5,omitempty" xml:"PackageMd5,omitempty"`
-	// The version of the deployment package that was used to deploy an application in the instance group.
-	//
-	// example:
-	//
-	// 441beb18-da42-44dc-****-************
+	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeployRecordId   *string `json:"DeployRecordId,omitempty" xml:"DeployRecordId,omitempty"`
+	EccId            *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	EcuId            *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	PackageMd5       *string `json:"PackageMd5,omitempty" xml:"PackageMd5,omitempty"`
 	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
 }
 
@@ -649,88 +615,17 @@ func (s *QueryApplicationStatusResponseBodyAppInfoEccList) Validate() error {
 }
 
 type QueryApplicationStatusResponseBodyAppInfoEccListEcc struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 3616cdca-4f92-4413-****-************
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The status of the application instance. Valid values:
-	//
-	// 	- 0: AGENT_OFF: indicates that the agent is offline.
-	//
-	// 	- 1: STOPPED: indicates that the application is stopped.
-	//
-	// 	- 3: RUNNING_BUT_URL_FAILED: indicates that the health check failed.
-	//
-	// 	- 7: RUNNING: indicates that the application is running.
-	//
-	// example:
-	//
-	// 7
-	AppState *int32 `json:"AppState,omitempty" xml:"AppState,omitempty"`
-	// The status of the container.
-	//
-	// example:
-	//
-	// “”
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppState        *int32  `json:"AppState,omitempty" xml:"AppState,omitempty"`
 	ContainerStatus *string `json:"ContainerStatus,omitempty" xml:"ContainerStatus,omitempty"`
-	// The time when the ECC was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573626226691
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The unique ID of the ECC.
-	//
-	// example:
-	//
-	// 0cf49a6c-95a8-4aa8-****-************
-	EccId *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
-	// The unique ID of the ECU.
-	//
-	// example:
-	//
-	// 07bd417a-b863-477d-****-************
-	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	// The ID of the instance group.
-	//
-	// example:
-	//
-	// 8123db90-880f-486f-****-************
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The private IP address of the ECU.
-	//
-	// example:
-	//
-	// 172.16.*.***
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The state of the latest task initiated on the application instance. Valid values:
-	//
-	// 	- 0: UNKNOWN: indicates that the state of the latest task is unknown.
-	//
-	// 	- 1: PROCESSING: indicates that the latest task is being processed.
-	//
-	// 	- 2: SUCCESS: indicates that the latest task is executed.
-	//
-	// 	- 3: FAILED: indicates that the latest task failed.
-	//
-	// example:
-	//
-	// 3
-	TaskState *int32 `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// The time when the ECC was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573635952012
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-wz9b246zg************
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EccId           *string `json:"EccId,omitempty" xml:"EccId,omitempty"`
+	EcuId           *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	TaskState       *int32  `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfoEccListEcc) String() string {
@@ -879,102 +774,22 @@ func (s *QueryApplicationStatusResponseBodyAppInfoEcuList) Validate() error {
 }
 
 type QueryApplicationStatusResponseBodyAppInfoEcuListEcu struct {
-	// The number of available CPU cores.
-	//
-	// example:
-	//
-	// 0
-	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	// The size of the available memory.
-	//
-	// example:
-	//
-	// 0
-	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573626207270
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether Docker is installed.
-	//
-	// example:
-	//
-	// false
-	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	// The unique ID of the ECU. You can run the `dmidecode` command on the ECS instance to query the ECU ID.
-	//
-	// example:
-	//
-	// 07bd417a-b863-477d-****-************
-	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	// The ID of the group.
-	//
-	// example:
-	//
-	// 8123db90-880f-486f-****-************
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573635952012
-	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-wz9fp1ljg***********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The private IP address of the ECU.
-	//
-	// example:
-	//
-	// 172.16.*.**
-	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	// The name of the ECU.
-	//
-	// example:
-	//
-	// EDAS-scaled-cluster: default cluster
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the ECU is online.
-	//
-	// example:
-	//
-	// true
-	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-shen****-*
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the ECU was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573635952012
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the user associated with the ECU.
-	//
-	// example:
-	//
-	// edas_com***_****@******-*****.***
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-wz9b246zg************
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-shen****-*
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfoEcuListEcu) String() string {
@@ -1168,66 +983,15 @@ func (s *QueryApplicationStatusResponseBodyAppInfoGroupList) Validate() error {
 }
 
 type QueryApplicationStatusResponseBodyAppInfoGroupListGroup struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 3616cdca-4f92-4413-****-************
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the change process for application deployment in the instance group.
-	//
-	// example:
-	//
-	// changeorder_a**_*******_**
-	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// 0d247b93-8d62-4e34-****-************
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The time when the instance group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573626155185
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the instance group.
-	//
-	// example:
-	//
-	// 8123db90-880f-486f-****-************
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the instance group.
-	//
-	// example:
-	//
-	// _DEFAULT_GROUP
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the instance group. Valid values:
-	//
-	// 	- 0: default group
-	//
-	// 	- 1: self-managed group
-	//
-	// 	- 2: canary release group
-	//
-	// example:
-	//
-	// 0
-	GroupType *int32 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The version of the deployment package that was used to deploy an application in the instance group.
-	//
-	// example:
-	//
-	// 441beb18-da42-44dc-****-************
+	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersionId     *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName        *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType        *int32  `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
-	// The time when the instance group was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573627441388
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime       *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s QueryApplicationStatusResponseBodyAppInfoGroupListGroup) String() string {

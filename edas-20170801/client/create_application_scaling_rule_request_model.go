@@ -28,13 +28,13 @@ type iCreateApplicationScalingRuleRequest interface {
 }
 
 type CreateApplicationScalingRuleRequest struct {
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplicationlink](https://help.aliyun.com/document_detail/149390.html).
+	// The application ID. To get this ID, call the [ListApplication](https://help.aliyun.com/document_detail/149390.html) operation.
 	//
 	// example:
 	//
 	// 78194c76-3dca-418e-a263-cccd1ab4****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Configure custom elastic behavior, refer to the example for specific data structure.
+	// The configuration for custom scaling behaviors. For more information about the data structure, see the example.
 	//
 	// example:
 	//
@@ -86,11 +86,11 @@ type CreateApplicationScalingRuleRequest struct {
 	//
 	// }
 	ScalingBehaviour *string `json:"ScalingBehaviour,omitempty" xml:"ScalingBehaviour,omitempty"`
-	// Specifies whether to enable the auto scaling policy. Valid values:
+	// Specifies whether to enable the Auto Scaling rule.
 	//
-	// 	- **true**: enables the auto scaling policy.
+	// - **true**: enables the rule.
 	//
-	// 	- **false**: disables the auto scaling policy.
+	// - **false**: disables the rule.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreateApplicationScalingRuleRequest struct {
 	//
 	// 1
 	ScalingRuleMetric *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
-	// The name of the auto scaling policy. The name must start with a lowercase letter, and can contain lowercase letters, digits, and hyphens (-). The name must be 1 to 32 characters in length.
+	// The name of the Auto Scaling rule. The name must start with a lowercase letter. It can contain lowercase letters, digits, and hyphens (-). The name must be 1 to 32 characters long.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ type CreateApplicationScalingRuleRequest struct {
 	//
 	// 1
 	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
-	// The trigger policy for the auto scaling policy. Set the value in the JSON format by using the ScalingRuleTriggerDTO class. For more information, see Additional information about request parameters.
+	// The trigger policy. Set this parameter to a JSON string of the ScalingRuleTriggerDTO object. For more information about the format, see Additional information about request parameters.
 	//
 	// example:
 	//
 	// ScalingRuleTriggerDTO{......}
 	ScalingRuleTrigger *string `json:"ScalingRuleTrigger,omitempty" xml:"ScalingRuleTrigger,omitempty"`
-	// The type of the auto scaling policy. Set the value to **trigger**.
+	// The type of the Auto Scaling rule. Only the **trigger*	- type is supported.
 	//
 	// example:
 	//

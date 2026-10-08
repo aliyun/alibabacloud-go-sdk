@@ -28,7 +28,7 @@ type iListScaleOutEcuRequest interface {
 type ListScaleOutEcuRequest struct {
 	// The ID of the application. Specify this parameter if you want to query the available ECUs in the cluster where the application is deployed.
 	//
-	// >  Specify at least one of the ClusterId and AppId parameters as the query parameter.
+	// > Specify at least one of the ClusterId and AppId parameters as the query parameter.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type ListScaleOutEcuRequest struct {
 	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
 	// The ID of the namespace.
 	//
-	// 	- The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:test.
+	// - The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:test.
 	//
-	// 	- The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
+	// - The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
 	//
 	// example:
 	//

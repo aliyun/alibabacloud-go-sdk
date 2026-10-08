@@ -22,29 +22,29 @@ type iGetK8sClusterRequest interface {
 }
 
 type GetK8sClusterRequest struct {
-	// The type of the Kubernetes cluster. Valid values:
+	// The type of the Kubernetes cluster:
 	//
-	// 	- 5: ACK cluster
+	// - 5: an ACK cluster.
 	//
-	// 	- 7: self-managed Kubernetes cluster
+	// - 7: a self-managed Kubernetes cluster.
 	//
 	// example:
 	//
 	// 5
 	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The number of the page to return for a paged query. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page. Default value: 1000.
+	// The number of entries to return on each page for a paged query. The default value is 1000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type GetK8sClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionTag *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
-	// The subtype of the cluster. Valid values:
+	// The subtype of the cluster:
 	//
-	// 	- Ask: Serverless Kubernetes cluster
+	// - Ask: an ASK cluster.
 	//
-	// 	- ManagedKubernetes: ACK cluster
+	// - ManagedKubernetes: an ACK cluster.
 	//
 	// example:
 	//

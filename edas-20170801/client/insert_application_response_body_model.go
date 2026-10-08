@@ -20,15 +20,15 @@ type iInsertApplicationResponseBody interface {
 }
 
 type InsertApplicationResponseBody struct {
-	// The information about the created application.
+	// The application object that is returned after the application is created.
 	ApplicationInfo *InsertApplicationResponseBodyApplicationInfo `json:"ApplicationInfo,omitempty" xml:"ApplicationInfo,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *InsertApplicationResponseBody) Validate() error {
 }
 
 type InsertApplicationResponseBodyApplicationInfo struct {
-	// The ID of the application. The ID is the unique identifier of the application in EDAS.
+	// The ID of the application. This ID is the unique identifier of an EDAS application.
 	//
 	// example:
 	//
@@ -116,21 +116,21 @@ type InsertApplicationResponseBodyApplicationInfo struct {
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 	// Indicates whether the application is a Docker application. Valid values:
 	//
-	// 	- **true**: The application is a Docker application.
+	// - **true**: The application is a Docker application.
 	//
-	// 	- **false**: The application is not a Docker application.
+	// - **false**: The application is not a Docker application.
 	//
 	// example:
 	//
 	// false
 	Dockerize *bool `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
-	// The owner of the application. The owner is the user who created the application.
+	// The owner of the application. This is the user who created the application.
 	//
 	// example:
 	//
 	// 249763358688********
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The port used by the created application. Default value: 8080. You can call the UpdateContainerConfiguration operation to change the port. For more information, see [UpdateContainerConfiguration](https://help.aliyun.com/document_detail/149403.html).
+	// The default port of the application is 8080. You can call the UpdateContainerConfiguration operation to change the port. For more information, see [UpdateContainerConfiguration](https://help.aliyun.com/document_detail/149403.html).
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type InsertApplicationResponseBodyApplicationInfo struct {
 	//
 	// cn-hangzhou
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The ID of the user who created the application.
+	// The user ID of the application owner.
 	//
 	// example:
 	//

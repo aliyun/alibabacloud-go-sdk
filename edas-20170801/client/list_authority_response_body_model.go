@@ -20,7 +20,6 @@ type iListAuthorityResponseBody interface {
 }
 
 type ListAuthorityResponseBody struct {
-	// The permissions.
 	AuthorityList *ListAuthorityResponseBodyAuthorityList `json:"AuthorityList,omitempty" xml:"AuthorityList,omitempty" type:"Struct"`
 	// The HTTP status code that is returned.
 	//
@@ -130,26 +129,10 @@ func (s *ListAuthorityResponseBodyAuthorityList) Validate() error {
 }
 
 type ListAuthorityResponseBodyAuthorityListAuthority struct {
-	// The set of permissions.
-	ActionList *ListAuthorityResponseBodyAuthorityListAuthorityActionList `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Struct"`
-	// The description of the permission group.
-	//
-	// example:
-	//
-	// Operations on applications
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the permission group.
-	//
-	// example:
-	//
-	// 1
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the permission group.
-	//
-	// example:
-	//
-	// Application management
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ActionList  *ListAuthorityResponseBodyAuthorityListAuthorityActionList `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Struct"`
+	Description *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId     *string                                                    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name        *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListAuthorityResponseBodyAuthorityListAuthority) String() string {
@@ -240,30 +223,10 @@ func (s *ListAuthorityResponseBodyAuthorityListAuthorityActionList) Validate() e
 }
 
 type ListAuthorityResponseBodyAuthorityListAuthorityActionListAction struct {
-	// The code of the permission.
-	//
-	// example:
-	//
-	// 1
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the permission.
-	//
-	// example:
-	//
-	// Create an application
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the permission group.
-	//
-	// example:
-	//
-	// 1
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the permission.
-	//
-	// example:
-	//
-	// Create an application
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListAuthorityResponseBodyAuthorityListAuthorityActionListAction) String() string {

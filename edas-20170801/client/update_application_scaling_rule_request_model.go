@@ -28,23 +28,23 @@ type iUpdateApplicationScalingRuleRequest interface {
 }
 
 type UpdateApplicationScalingRuleRequest struct {
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. Call the [ListApplication](https://help.aliyun.com/document_detail/149390.html) operation to obtain this ID.
 	//
 	// example:
 	//
 	// 78194c76-3dca-418e-a263-cccd1ab4****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The behavior of the auto scaling. See the example for the data structure.
+	// The configuration of custom scaling behaviors. For more information about the data structure, see the example.
 	//
 	// example:
 	//
 	// {"scaleUp":{"stabilizationWindowSeconds":"0","selectPolicy":"Max","policies":[{"type":"Pods","value":5,"periodSeconds":15}]},"scaleDown":{"stabilizationWindowSeconds":"300","selectPolicy":"Max","policies":[{"type":"Percent","value":200,"periodSeconds":15}]}}
 	ScalingBehaviour *string `json:"ScalingBehaviour,omitempty" xml:"ScalingBehaviour,omitempty"`
-	// Specifies whether to enable the auto scaling policy. Valid values:
+	// The status of the Auto Scaling policy.
 	//
-	// 	- **true**: enables the auto scaling policy.
+	// - **true**: enabled
 	//
-	// 	- **false**: disables the auto scaling policy.
+	// - **false**: disabled
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type UpdateApplicationScalingRuleRequest struct {
 	//
 	// 1
 	ScalingRuleMetric *string `json:"ScalingRuleMetric,omitempty" xml:"ScalingRuleMetric,omitempty"`
-	// The name of the auto scaling policy.
+	// The name of the Auto Scaling policy.
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ type UpdateApplicationScalingRuleRequest struct {
 	//
 	// 1
 	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
-	// The trigger policy for the auto scaling policy. Set this parameter in the JSON format by using the ScalingRuleTriggerDTO class. For more information, see Additional description of request parameters.
+	// The trigger policy, which is a JSON string of a ScalingRuleTriggerDTO object. For more information about the format, see the Additional information about request parameters section.
 	//
 	// example:
 	//
 	// ScalingRuleTriggerDTO{......}
 	ScalingRuleTrigger *string `json:"ScalingRuleTrigger,omitempty" xml:"ScalingRuleTrigger,omitempty"`
-	// The type of the auto scaling policy.
+	// The type of the Auto Scaling policy. Only the following type is supported:
 	//
-	// 	- Set the value to trigger.
+	// - trigger: a trigger-based policy.
 	//
 	// example:
 	//

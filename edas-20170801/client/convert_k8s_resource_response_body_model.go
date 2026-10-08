@@ -18,13 +18,13 @@ type iConvertK8sResourceResponseBody interface {
 }
 
 type ConvertK8sResourceResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//

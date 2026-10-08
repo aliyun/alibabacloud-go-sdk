@@ -31,8 +31,7 @@ type QueryMigrateRegionListResponseBody struct {
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The namespaces.
+	Message          *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	RegionEntityList *QueryMigrateRegionListResponseBodyRegionEntityList `json:"RegionEntityList,omitempty" xml:"RegionEntityList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -130,18 +129,8 @@ func (s *QueryMigrateRegionListResponseBodyRegionEntityList) Validate() error {
 }
 
 type QueryMigrateRegionListResponseBodyRegionEntityListRegionEntity struct {
-	// The name of the namespace.
-	//
-	// example:
-	//
-	// Beta
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The ID of the namespace.
-	//
-	// example:
-	//
-	// cn-beijing:beta
-	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RegionNo   *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 }
 
 func (s QueryMigrateRegionListResponseBodyRegionEntityListRegionEntity) String() string {

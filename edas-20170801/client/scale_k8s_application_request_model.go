@@ -18,7 +18,7 @@ type iScaleK8sApplicationRequest interface {
 }
 
 type ScaleK8sApplicationRequest struct {
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. Call the [ListApplication](https://help.aliyun.com/document_detail/149390.html) operation to obtain the application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ScaleK8sApplicationRequest struct {
 	//
 	// 23bf94d9-****-4994-****-616a827aa777
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The expected number of application instances after the scale-out or scale-in. The minimum number is 0.
+	// The target number of application instances. The minimum value is 0.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ScaleK8sApplicationRequest struct {
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The timeout period of the change process. Unit: seconds.
+	// The timeout period for the change process, in seconds.
 	//
 	// example:
 	//

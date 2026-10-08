@@ -28,9 +28,9 @@ type iInsertOrUpdateRegionRequest interface {
 type InsertOrUpdateRegionRequest struct {
 	// Specifies whether to enable remote debugging. Valid values:
 	//
-	// 	- true: enables remote debugging.
+	// - true: enables remote debugging.
 	//
-	// 	- false: disables remote debugging.
+	// - false: disables remote debugging.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type InsertOrUpdateRegionRequest struct {
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	// The ID of the namespace.
 	//
-	// 	- The ID of a custom namespace is in the `Region ID:Namespace identifier` format. Example: cn-beijing:tdy218.
+	// - The ID of a custom namespace is in the `Region ID:Namespace identifier` format. Example: cn-beijing:tdy218.
 	//
-	// 	- The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
+	// - The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
 	//
 	// This parameter is required.
 	//
@@ -76,9 +76,9 @@ type InsertOrUpdateRegionRequest struct {
 	RegionTag *string `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
 	// The type of the registry.
 	//
-	// 	- default: the shared registry of Enterprise Distributed Application Service (EDAS)
+	// - default: the shared registry of Enterprise Distributed Application Service (EDAS)
 	//
-	// 	- exclusive_mse: a Microservices Engine (MSE) registry
+	// - exclusive_mse: a Microservices Engine (MSE) registry
 	//
 	// example:
 	//

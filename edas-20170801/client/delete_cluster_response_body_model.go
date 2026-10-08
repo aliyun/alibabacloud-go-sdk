@@ -28,9 +28,9 @@ type DeleteClusterResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the cluster is deleted. Valid values:
 	//
-	// 	- true: The cluster is deleted.
+	// - true: The cluster is deleted.
 	//
-	// 	- false: The cluster is not deleted.
+	// - false: The cluster is not deleted.
 	//
 	// example:
 	//

@@ -20,19 +20,19 @@ type iRetryChangeOrderTaskResponseBody interface {
 }
 
 type RetryChangeOrderTaskResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status of the API call or a POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The retry information.
+	// Information about the retry.
 	//
 	// example:
 	//
 	// success retry task
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//

@@ -104,9 +104,9 @@ type InsertOrUpdateRegionResponseBodyUserDefineRegionEntity struct {
 	BelongRegion *string `json:"BelongRegion,omitempty" xml:"BelongRegion,omitempty"`
 	// Indicates whether remote debugging is enabled. Valid values:
 	//
-	// 	- true: Remote debugging is enabled.
+	// - true: Remote debugging is enabled.
 	//
-	// 	- false: Remote debugging is disabled.
+	// - false: Remote debugging is disabled.
 	//
 	// example:
 	//
@@ -126,9 +126,9 @@ type InsertOrUpdateRegionResponseBodyUserDefineRegionEntity struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the namespace.
 	//
-	// 	- The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:tdy218.
+	// - The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:tdy218.
 	//
-	// 	- The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
+	// - The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
 	//
 	// example:
 	//

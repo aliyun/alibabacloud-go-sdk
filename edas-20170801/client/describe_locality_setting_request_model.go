@@ -18,18 +18,24 @@ type iDescribeLocalitySettingRequest interface {
 }
 
 type DescribeLocalitySettingRequest struct {
+	// The ID of the application. To obtain the application ID, call the ListApplication operation. For more information, see [ListApplication](https://help.aliyun.com/document_detail/423162.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dc190221-22b5-491c-a548-82f5fa1e3e26
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the microservices namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,21 +20,21 @@ type iBindSlbResponseBody interface {
 }
 
 type BindSlbResponseBody struct {
-	// The HTTP status code that is returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned data.
 	Data *BindSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The additional information that is returned.
+	// Additional information.
 	//
 	// example:
 	//
 	// bind slb success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -120,31 +120,31 @@ type BindSlbResponseBodyData struct {
 	//
 	// “”
 	ExtVServerGroupId *string `json:"ExtVServerGroupId,omitempty" xml:"ExtVServerGroupId,omitempty"`
-	// The ID of the internal-facing SLB instance.
+	// The ID of the internal SLB instance.
 	//
 	// example:
 	//
 	// lb-wz96ph63r************
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The IP address of the internal-facing SLB instance.
+	// The IP address of the internal SLB instance.
 	//
 	// example:
 	//
 	// 192.16*.*.*
 	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	// The name of the internal-facing SLB instance.
+	// The name of the internal SLB instance.
 	//
 	// example:
 	//
 	// test**********
 	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	// The listener port for the SLB instance.
+	// The listener port of the SLB instance.
 	//
 	// example:
 	//
 	// 80
 	SlbPort *int32 `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	// The ID of the vServer group for the internal-facing SLB instance.
+	// The ID of the internal vServer group.
 	//
 	// example:
 	//

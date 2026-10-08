@@ -20,25 +20,25 @@ type iChangeDeployGroupResponseBody interface {
 }
 
 type ChangeDeployGroupResponseBody struct {
-	// The ID of the change process.
+	// The ID of the change flow.
 	//
 	// example:
 	//
 	// 435f-regfr4********************
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

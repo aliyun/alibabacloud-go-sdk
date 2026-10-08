@@ -108,9 +108,9 @@ type DescribeAppInstanceListResponseBodyInstanceList struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// Indicates whether the application was released in canary release mode.
 	//
-	// 	- `true`: The application was released in canary release mode.
+	// - `true`: The application was released in canary release mode.
 	//
-	// 	- `false`: The application was not released in canary release mode
+	// - `false`: The application was not released in canary release mode
 	//
 	// example:
 	//

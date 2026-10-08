@@ -16,7 +16,7 @@ type iRestartK8sApplicationRequest interface {
 }
 
 type RestartK8sApplicationRequest struct {
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. You can call the ListApplication operation to obtain this ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type RestartK8sApplicationRequest struct {
 	//
 	// 93fdd228-********ed2ae98de18d
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The timeout period of the change process. Unit: seconds.
+	// The timeout period for the change process, in seconds.
 	//
 	// example:
 	//

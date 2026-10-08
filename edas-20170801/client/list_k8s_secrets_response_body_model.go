@@ -148,9 +148,9 @@ func (s *ListK8sSecretsResponseBodyResult) Validate() error {
 type ListK8sSecretsResponseBodyResultSecrets struct {
 	// Indicates whether the data is Base64-encoded. Valid values:
 	//
-	// 	- true: The data is Base64-encoded.
+	// - true: The data is Base64-encoded.
 	//
-	// 	- false: The data is not Base64-encoded.
+	// - false: The data is not Base64-encoded.
 	//
 	// example:
 	//
@@ -208,9 +208,9 @@ type ListK8sSecretsResponseBodyResultSecrets struct {
 	RelatedIngressRules []*ListK8sSecretsResponseBodyResultSecretsRelatedIngressRules `json:"RelatedIngressRules,omitempty" xml:"RelatedIngressRules,omitempty" type:"Repeated"`
 	// The type of the Secret. Valid values:
 	//
-	// 	- Opaque: user-defined data
+	// - Opaque: user-defined data
 	//
-	// 	- kubernetes.io/tls: Transport Layer Security (TLS) certificate
+	// - kubernetes.io/tls: Transport Layer Security (TLS) certificate
 	//
 	// example:
 	//
@@ -402,15 +402,15 @@ type ListK8sSecretsResponseBodyResultSecretsCertDetail struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the SSL certificate. Valid values:
 	//
-	// 	- normal: The SSL certificate is valid.
+	// - normal: The SSL certificate is valid.
 	//
-	// 	- invalid: The SSL certificate is invalid.
+	// - invalid: The SSL certificate is invalid.
 	//
-	// 	- expired: The SSL certificate has expired.
+	// - expired: The SSL certificate has expired.
 	//
-	// 	- not_yet_valid: The SSL certificate is currently invalid.
+	// - not_yet_valid: The SSL certificate is currently invalid.
 	//
-	// 	- about_to_expire: The SSL certificate is about to expire.
+	// - about_to_expire: The SSL certificate is about to expire.
 	//
 	// example:
 	//

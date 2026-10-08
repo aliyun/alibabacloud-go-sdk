@@ -16,7 +16,7 @@ type iGetK8sApplicationRequest interface {
 }
 
 type GetK8sApplicationRequest struct {
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. You can call the [ListApplication](https://help.aliyun.com/document_detail/149390.html) operation to obtain the application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type GetK8sApplicationRequest struct {
 	//
 	// 5a166fbd-****-4f98-a286-781659d9****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The source from which data is queried.
+	// The source of the query.
 	//
-	// 	- If you leave this parameter empty, a common query is performed.
+	// - If this parameter is empty, a regular query is performed.
 	//
-	// 	- If you set the value to deploy, you query application information from the deployment page.
+	// - deploy: The query is initiated from the deployment page.
 	//
 	// example:
 	//

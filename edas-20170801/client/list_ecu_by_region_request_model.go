@@ -26,13 +26,13 @@ type ListEcuByRegionRequest struct {
 	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
 	// The ID of the namespace.
 	//
-	// 	- The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:tdy218.
+	// - The ID of a custom namespace is in the `region ID:namespace identifier` format. Example: cn-beijing:tdy218.
 	//
-	// 	- The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
+	// - The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
 	//
 	// example:
 	//
-	// cn-beijing or cn-beijing:tdy218
+	// Cn-beijing or cn-beijing:tdy218
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 }
 

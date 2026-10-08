@@ -18,9 +18,9 @@ type iContinuePipelineRequest interface {
 type ContinuePipelineRequest struct {
 	// Specifies whether to release the next batch. Valid values:
 	//
-	// 	- true: releases the next batch.
+	// - true: releases the next batch.
 	//
-	// 	- false: does not release the next batch.
+	// - false: does not release the next batch.
 	//
 	// example:
 	//

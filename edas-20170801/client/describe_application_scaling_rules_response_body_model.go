@@ -20,21 +20,21 @@ type iDescribeApplicationScalingRulesResponseBody interface {
 }
 
 type DescribeApplicationScalingRulesResponseBody struct {
-	// The auto scaling policies of the application.
+	// The Auto Scaling rules for the application.
 	AppScalingRules *DescribeApplicationScalingRulesResponseBodyAppScalingRules `json:"AppScalingRules,omitempty" xml:"AppScalingRules,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *DescribeApplicationScalingRulesResponseBody) Validate() error {
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRules struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of auto scaling policies returned per page.
+	// The number of scaling rules returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about auto scaling policies.
+	// The details of the Auto Scaling rules.
 	Result []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of auto scaling policies.
+	// The total number of scaling rules.
 	//
 	// example:
 	//
@@ -176,20 +176,21 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRules) Validate() 
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult struct {
-	// The ID of the application to which the auto scaling policy belongs.
+	// The ID of the application to which the scaling rule belongs.
 	//
 	// example:
 	//
 	// 78194c76-3dca-418e-a263-cccd1ab4****
-	AppId     *string                                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The scaling behavior.
 	Behaviour *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour `json:"Behaviour,omitempty" xml:"Behaviour,omitempty" type:"Struct"`
-	// The time when the auto scaling policy was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the scaling rule was created.
 	//
 	// example:
 	//
 	// 23212323123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the auto scaling policy was last disabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the scaling rule was last disabled.
 	//
 	// example:
 	//
@@ -209,31 +210,31 @@ type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult struct {
 	//
 	// 1
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	// Indicates whether the auto scaling policy is enabled. Valid values:
+	// Indicates whether the scaling rule is enabled.
 	//
-	// 	- **true**: The auto scaling policy is enabled.
+	// - **true**: The scaling rule is enabled.
 	//
-	// 	- **false**: The auto scaling policy is disabled.
+	// - **false**: The scaling rule is disabled.
 	//
 	// example:
 	//
 	// true
 	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	// The name of the auto scaling policy.
+	// The name of the scaling rule.
 	//
 	// example:
 	//
 	// cpu-trigger
 	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	// The type of the auto scaling policy. The value is fixed to trigger.
+	// The type of the scaling rule. Only \\`trigger\\` is supported.
 	//
 	// example:
 	//
 	// trigger
 	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	// The configurations of the trigger.
+	// The trigger configuration.
 	Trigger *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	// The time when the auto scaling policy was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the scaling rule was last updated.
 	//
 	// example:
 	//
@@ -377,8 +378,10 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResult) Valid
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour struct {
+	// The configuration of the scale-in behavior.
 	ScaleDown *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown `json:"ScaleDown,omitempty" xml:"ScaleDown,omitempty" type:"Struct"`
-	ScaleUp   *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp   `json:"ScaleUp,omitempty" xml:"ScaleUp,omitempty" type:"Struct"`
+	// The configuration of the scale-out behavior.
+	ScaleUp *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp `json:"ScaleUp,omitempty" xml:"ScaleUp,omitempty" type:"Struct"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviour) String() string {
@@ -422,9 +425,20 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehavio
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown struct {
-	Policies                   []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	SelectPolicy               *string                                                                                       `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
-	StabilizationWindowSeconds *int32                                                                                        `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	// The policy configuration.
+	Policies []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The policy for the scaling step size for scale-in events. Valid values: \\`Max\\`, \\`Min\\`, and \\`Disable\\`.
+	//
+	// example:
+	//
+	// Max
+	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	// The cooldown period for a scale-in event. Unit: seconds. Valid values: 0 to 3600. Default value: 300.
+	//
+	// example:
+	//
+	// 300
+	StabilizationWindowSeconds *int32 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDown) String() string {
@@ -476,9 +490,24 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehavio
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies struct {
-	PeriodSeconds *int32  `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The execution interval. Unit: seconds. Valid values: 0 to 1800.
+	//
+	// example:
+	//
+	// 15
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The type of the policy. Valid values: \\`Pods\\` and \\`Percent\\`.
+	//
+	// example:
+	//
+	// Pods
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value for the policy. The value must be an integer greater than 0. If \\`Type\\` is \\`Pods\\`, this parameter specifies the number of pods. If \\`Type\\` is \\`Percent\\`, this parameter specifies a percentage. The value can be greater than 100%.
+	//
+	// example:
+	//
+	// 10
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleDownPolicies) String() string {
@@ -521,9 +550,20 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehavio
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp struct {
-	Policies                   []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	SelectPolicy               *string                                                                                     `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
-	StabilizationWindowSeconds *int32                                                                                      `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
+	// The policy configuration.
+	Policies []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The policy for the scaling step size for scale-out events. Valid values: \\`Max\\`, \\`Min\\`, and \\`Disable\\`.
+	//
+	// example:
+	//
+	// Max
+	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
+	// The cooldown period for a scale-out event. Unit: seconds. Valid values: 0 to 3600. Default value: 0.
+	//
+	// example:
+	//
+	// 15
+	StabilizationWindowSeconds *int32 `json:"StabilizationWindowSeconds,omitempty" xml:"StabilizationWindowSeconds,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUp) String() string {
@@ -575,9 +615,24 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehavio
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies struct {
-	PeriodSeconds *int32  `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The execution interval. Unit: seconds. Valid values: 0 to 1800.
+	//
+	// example:
+	//
+	// 15
+	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The type of the policy. Valid values: \\`Pods\\` and \\`Percent\\`.
+	//
+	// example:
+	//
+	// Pods
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value for the policy. The value must be an integer greater than 0. If \\`Type\\` is \\`Pods\\`, this parameter specifies the number of pods. If \\`Type\\` is \\`Percent\\`, this parameter specifies a percentage. The value can be greater than 100%.
+	//
+	// example:
+	//
+	// 10
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultBehaviourScaleUpPolicies) String() string {
@@ -730,19 +785,19 @@ func (s *DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultMetricM
 }
 
 type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTrigger struct {
-	// The maximum number of replicas. The upper limit is 1000.
+	// The maximum number of replicas. The value cannot exceed 1000.
 	//
 	// example:
 	//
 	// 122
 	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	// The minimum number of replicas. The lower limit is 0.
+	// The minimum number of replicas. The value cannot be less than 0.
 	//
 	// example:
 	//
 	// 1
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	// The configurations of the trigger.
+	// A list of trigger configurations.
 	Triggers []*DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
@@ -807,7 +862,7 @@ type DescribeApplicationScalingRulesResponseBodyAppScalingRulesResultTriggerTrig
 	//
 	// cron-trigger
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the trigger. Valid values: cron and app_metric.
+	// The type of the trigger. Valid values: \\`cron\\` and \\`app_metric\\`.
 	//
 	// example:
 	//

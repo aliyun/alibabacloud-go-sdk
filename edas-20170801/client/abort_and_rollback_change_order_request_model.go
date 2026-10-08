@@ -14,7 +14,7 @@ type iAbortAndRollbackChangeOrderRequest interface {
 }
 
 type AbortAndRollbackChangeOrderRequest struct {
-	// The ID of the change process.
+	// The ID of the change order.
 	//
 	// This parameter is required.
 	//

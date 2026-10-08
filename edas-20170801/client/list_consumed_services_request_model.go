@@ -14,7 +14,7 @@ type iListConsumedServicesRequest interface {
 }
 
 type ListConsumedServicesRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

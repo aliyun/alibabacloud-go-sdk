@@ -20,21 +20,21 @@ type iUpdateApplicationScalingRuleResponseBody interface {
 }
 
 type UpdateApplicationScalingRuleResponseBody struct {
-	// The information about the auto scaling policy.
+	// The Auto Scaling policy.
 	AppScalingRule *UpdateApplicationScalingRuleResponseBodyAppScalingRule `json:"AppScalingRule,omitempty" xml:"AppScalingRule,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,20 +96,21 @@ func (s *UpdateApplicationScalingRuleResponseBody) Validate() error {
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRule struct {
-	// The ID of the application to which the auto scaling policy belongs.
+	// The ID of the application to which the Auto Scaling policy belongs.
 	//
 	// example:
 	//
 	// 78194c76-3dca-418e-a263-cccd1ab4****
-	AppId     *string                                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The scaling behavior configuration.
 	Behaviour *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour `json:"Behaviour,omitempty" xml:"Behaviour,omitempty" type:"Struct"`
-	// The time when the auto scaling policy was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the Auto Scaling policy was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1574251601785
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the auto scaling policy was last disabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the Auto Scaling policy was last disabled. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -129,31 +130,31 @@ type UpdateApplicationScalingRuleResponseBodyAppScalingRule struct {
 	//
 	// 1
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	// Indicates whether the auto scaling policy is enabled. Valid values:
+	// The status of the Auto Scaling policy.
 	//
-	// 	- **true**: The auto scaling policy is enabled.
+	// - **true**: enabled
 	//
-	// 	- **false**: The auto scaling policy is disabled.
+	// - **false**: disabled
 	//
 	// example:
 	//
 	// true
 	ScaleRuleEnabled *bool `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
-	// The name of the auto scaling policy.
+	// The name of the Auto Scaling policy.
 	//
 	// example:
 	//
 	// cpu-trigger
 	ScaleRuleName *string `json:"ScaleRuleName,omitempty" xml:"ScaleRuleName,omitempty"`
-	// The type of the auto scaling policy. The value is fixed to trigger.
+	// The type of the Auto Scaling policy. Only the trigger type is supported.
 	//
 	// example:
 	//
 	// trigger
 	ScaleRuleType *string `json:"ScaleRuleType,omitempty" xml:"ScaleRuleType,omitempty"`
-	// The configurations of the trigger.
+	// The trigger configuration.
 	Trigger *UpdateApplicationScalingRuleResponseBodyAppScalingRuleTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	// The time when the auto scaling policy was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the Auto Scaling policy was updated. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -297,8 +298,10 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRule) Validate() erro
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour struct {
+	// The scale-in behavior configuration.
 	ScaleDown *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown `json:"ScaleDown,omitempty" xml:"ScaleDown,omitempty" type:"Struct"`
-	ScaleUp   *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp   `json:"ScaleUp,omitempty" xml:"ScaleUp,omitempty" type:"Struct"`
+	// The scale-out behavior configuration.
+	ScaleUp *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp `json:"ScaleUp,omitempty" xml:"ScaleUp,omitempty" type:"Struct"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) String() string {
@@ -342,15 +345,15 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviour) Valida
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDown struct {
-	// The configuration of the policy.
+	// The policy configurations.
 	Policies []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The step size policy for the scale-in. Valid values: Max, Min, and Disable.
+	// The policy for the scale-in step size. Valid values: Max, Min, and Disable.
 	//
 	// example:
 	//
 	// Max
 	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
-	// The cooldown time of the scale-in. Valid values: 0 to 3600. Unit: seconds. Default value: 300.
+	// The cooldown time for scale-ins. Valid values: 0 to 3,600. Unit: seconds. Default value: 300.
 	//
 	// example:
 	//
@@ -407,19 +410,19 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDow
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDownPolicies struct {
-	// The cycle of the policy check. Valid values: 0 to 1800. Unit: seconds.
+	// The check period. Valid values: 0 to 1,800. Unit: seconds.
 	//
 	// example:
 	//
 	// 15
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	// The type of the policy. Valid values: Pods and Percent.
+	// The policy type. Valid values: Pods and Percent.
 	//
 	// example:
 	//
 	// Pods
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The policy value of auto scaling. Set the value to an integer greater than zero. If the policy type is Pods, the value of this parameter indicates the number of pods. If the policy type is Percent, the value of this parameter indicates a percentage, which can exceed 100%.
+	// The value of the policy for the scaling behavior. The value must be an integer greater than 0. If the policy type is Pods, the value indicates the number of pods. If the policy type is Percent, the value indicates a percentage, which can exceed 100%.
 	//
 	// example:
 	//
@@ -467,15 +470,15 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleDow
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp struct {
-	// The configuration of the policy.
+	// The policy configurations.
 	Policies []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The step size policy for the scale-out. Valid values: Max, Min, and Disable.
+	// The policy for the scale-out step size. Valid values: Max, Min, and Disable.
 	//
 	// example:
 	//
 	// Max
 	SelectPolicy *string `json:"SelectPolicy,omitempty" xml:"SelectPolicy,omitempty"`
-	// The cooldown time of the scale-out. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+	// The cooldown time for scale-outs. Valid values: 0 to 3,600. Unit: seconds. Default value: 0.
 	//
 	// example:
 	//
@@ -532,19 +535,19 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUp)
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleBehaviourScaleUpPolicies struct {
-	// The cycle of the policy check. Valid values: 0 to 1800. Unit: seconds.
+	// The check period. Valid values: 0 to 1,800. Unit: seconds.
 	//
 	// example:
 	//
 	// 15
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
-	// The type of the policy. Valid values: Pods and Percent.
+	// The policy type. Valid values: Pods and Percent.
 	//
 	// example:
 	//
 	// Pods
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The policy value of auto scaling. Set the value to an integer greater than zero. If the policy type is Pods, the value of this parameter indicates the number of pods. If the policy type is Percent, the value of this parameter indicates a percentage, which can exceed 100%.
+	// The value of the policy for the scaling behavior. The value must be an integer greater than 0. If the policy type is Pods, the value indicates the number of pods. If the policy type is Percent, the value indicates a percentage, which can exceed 100%.
 	//
 	// example:
 	//
@@ -702,19 +705,19 @@ func (s *UpdateApplicationScalingRuleResponseBodyAppScalingRuleMetricMetrics) Va
 }
 
 type UpdateApplicationScalingRuleResponseBodyAppScalingRuleTrigger struct {
-	// The maximum number of replicas. The maximum value is 1000.
+	// The maximum number of replicas. The value cannot exceed 1,000.
 	//
 	// example:
 	//
 	// 122
 	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	// The minimum number of replicas. The minimum value is 0.
+	// The minimum number of replicas. The value cannot be less than 0.
 	//
 	// example:
 	//
 	// 1
 	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
-	// The configurations of the trigger.
+	// The list of trigger configurations.
 	Triggers []*UpdateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
@@ -779,7 +782,7 @@ type UpdateApplicationScalingRuleResponseBodyAppScalingRuleTriggerTriggers struc
 	//
 	// cpu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the trigger. Valid values: cron and app_metric.
+	// The trigger type. Only cron and app_metric are supported.
 	//
 	// example:
 	//

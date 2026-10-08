@@ -25,8 +25,7 @@ type ListEcsNotInClusterResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about ECS instances.
+	Code          *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	EcsEntityList *ListEcsNotInClusterResponseBodyEcsEntityList `json:"EcsEntityList,omitempty" xml:"EcsEntityList,omitempty" type:"Struct"`
 	// The message that is returned.
 	//
@@ -130,98 +129,19 @@ func (s *ListEcsNotInClusterResponseBodyEcsEntityList) Validate() error {
 }
 
 type ListEcsNotInClusterResponseBodyEcsEntityListEcsEntity struct {
-	// The number of CPU cores.
-	//
-	// example:
-	//
-	// 2
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The elastic IP address (EIP) associated with the ECS instance.
-	//
-	// example:
-	//
-	// 139.30.xxx.xx
-	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	// Indicates whether the ECS instance has expired. Valid values:
-	//
-	// 	- **true**: The ECS instance has expired.
-	//
-	// 	- **false**: The ECS instance has not expired.
-	//
-	// example:
-	//
-	// false
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The private IP address of the ECS instance.
-	//
-	// example:
-	//
-	// 192.168.20.113
-	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	// The ID of the ECS instance.
-	//
-	// example:
-	//
-	// i-2ze7s2v0b***********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the ECS instance.
-	//
-	// example:
-	//
-	// worker-k8s-for-cs-c9dfa009a5e7c4faab2010b87cae4****
+	Cpu          *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Eip          *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	InnerIp      *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The size of memory. Unit: bytes.
-	//
-	// example:
-	//
-	// 4096
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The private IP address of the ECS instance.
-	//
-	// example:
-	//
-	// 192.168.*.**
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The public IP address of the ECS instance.
-	//
-	// example:
-	//
-	// 131.30.xxx.xx
-	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// The ID of the region where the ECS instance is located.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the ECS instance. Valid values:
-	//
-	// 	- **Pending**: The ECS instance is being created.
-	//
-	// 	- **Running**: The ECS instance is running.
-	//
-	// 	- **Starting**: The ECS instance is being started.
-	//
-	// 	- **Stopping**: The ECS instance is being stopped.
-	//
-	// 	- **Stopped**: The ECS instance is stopped.
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-2zef6ob8mrlzv8x3q****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
-	//
-	// example:
-	//
-	// test
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	Mem          *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	PrivateIp    *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	PublicIp     *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName      *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListEcsNotInClusterResponseBodyEcsEntityListEcsEntity) String() string {

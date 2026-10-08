@@ -16,7 +16,7 @@ type iMigrateEcuRequest interface {
 }
 
 type MigrateEcuRequest struct {
-	// The ID of the ECS instance. Separate multiple IDs with commas (,).
+	// The IDs of the instances. To specify multiple instances, separate the IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type MigrateEcuRequest struct {
 	//
 	// i-2zej4i2jdf3ntwhj****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The ID of the custom namespace.
+	// The ID of the namespace.
 	//
-	// 	- The ID of a custom namespace is in the `region ID:custom namespace ID` format. Example: cn-beijing:tdy218.
+	// - A custom namespace ID is in the format `Region ID:Namespace identifier`. Example: cn-beijing:tdy218.
 	//
-	// 	- The ID of the default namespace is in the `region ID` format. Example: cn-beijing.
+	// - A default namespace ID is the same as its region ID. Example: cn-beijing.
 	//
 	// example:
 	//

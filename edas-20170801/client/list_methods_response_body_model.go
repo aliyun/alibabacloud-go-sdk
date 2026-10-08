@@ -20,13 +20,13 @@ type iListMethodsResponseBody interface {
 }
 
 type ListMethodsResponseBody struct {
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message that indicates whether the request is successful.
+	// The returned message.
 	//
 	// example:
 	//
@@ -37,8 +37,7 @@ type ListMethodsResponseBody struct {
 	// example:
 	//
 	// 69AD2AA7-DB47-449B-941B-B14409DF****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about service methods.
+	RequestId         *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceMethodList *ListMethodsResponseBodyServiceMethodList `json:"ServiceMethodList,omitempty" xml:"ServiceMethodList,omitempty" type:"Struct"`
 }
 
@@ -130,32 +129,12 @@ func (s *ListMethodsResponseBodyServiceMethodList) Validate() error {
 }
 
 type ListMethodsResponseBodyServiceMethodListServiceMethod struct {
-	// The name of the application.
-	//
-	// example:
-	//
-	// App
 	AppName     *string                                                           `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	InputParams *ListMethodsResponseBodyServiceMethodListServiceMethodInputParams `json:"InputParams,omitempty" xml:"InputParams,omitempty" type:"Struct"`
-	// The name of the service method.
-	//
-	// example:
-	//
-	// echo
-	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	// The return type of the service method.
-	//
-	// example:
-	//
-	// java.lang.string
-	Output     *string                                                          `json:"Output,omitempty" xml:"Output,omitempty"`
-	ParamTypes *ListMethodsResponseBodyServiceMethodListServiceMethodParamTypes `json:"ParamTypes,omitempty" xml:"ParamTypes,omitempty" type:"Struct"`
-	// The name of the service.
-	//
-	// example:
-	//
-	// com.alibaba.edas.demo.EchoService
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	MethodName  *string                                                           `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	Output      *string                                                           `json:"Output,omitempty" xml:"Output,omitempty"`
+	ParamTypes  *ListMethodsResponseBodyServiceMethodListServiceMethodParamTypes  `json:"ParamTypes,omitempty" xml:"ParamTypes,omitempty" type:"Struct"`
+	ServiceName *string                                                           `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s ListMethodsResponseBodyServiceMethodListServiceMethod) String() string {

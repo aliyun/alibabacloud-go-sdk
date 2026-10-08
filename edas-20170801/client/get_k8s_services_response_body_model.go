@@ -20,25 +20,25 @@ type iGetK8sServicesResponseBody interface {
 }
 
 type GetK8sServicesResponseBody struct {
-	// The ID of the change process.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// Additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4823-bhjf-23u4-eiufh
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of services in the Kubernetes cluster.
+	// The list of Kubernetes Services.
 	Services []*GetK8sServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -100,21 +100,21 @@ func (s *GetK8sServicesResponseBody) Validate() error {
 }
 
 type GetK8sServicesResponseBodyServices struct {
-	// The IP address of the service in the Kubernetes cluster.
+	// The IP address of the Kubernetes Service.
 	//
 	// example:
 	//
 	// 104.23.xx.xx
 	ClusterIP *string `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
 	// service-http
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The mapping of service ports.
+	// The list of port mappings.
 	ServicePorts []*GetK8sServicesResponseBodyServicesServicePorts `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
-	// The type of the service.
+	// The service type.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ func (s *GetK8sServicesResponseBodyServices) Validate() error {
 }
 
 type GetK8sServicesResponseBodyServicesServicePorts struct {
-	// The port of the node.
+	// The node port.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type GetK8sServicesResponseBodyServicesServicePorts struct {
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol of the service.
+	// The service protocol.
 	//
 	// example:
 	//

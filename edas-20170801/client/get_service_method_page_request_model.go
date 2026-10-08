@@ -84,9 +84,9 @@ type GetServiceMethodPageRequest struct {
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	// The source of the data. Valid values:
 	//
-	// 	- agent: Use this value if you use the service query feature of the latest version to pass the query result.
+	// - agent: Use this value if you use the service query feature of the latest version to pass the query result.
 	//
-	// 	- registry: Use this value if you use the service query feature of the earlier version to pass the query result.
+	// - registry: Use this value if you use the service query feature of the earlier version to pass the query result.
 	//
 	// example:
 	//
@@ -136,11 +136,11 @@ type GetServiceMethodPageRequest struct {
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	// The type of the service. Valid values:
 	//
-	// 	- dubbo: Dubbo service
+	// - dubbo: Dubbo service
 	//
-	// 	- springCloud: Spring Cloud service
+	// - springCloud: Spring Cloud service
 	//
-	// 	- hsf: High-speed Service Framework (HSF) service
+	// - hsf: High-speed Service Framework (HSF) service
 	//
 	// example:
 	//

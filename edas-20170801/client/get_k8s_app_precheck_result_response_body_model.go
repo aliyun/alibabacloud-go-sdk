@@ -102,15 +102,15 @@ type GetK8sAppPrecheckResultResponseBodyData struct {
 	//
 	// example:
 	//
-	// The Kubernetes cluster is disconnected from the EDAS control plane.
+	// K8s cluster disconnected.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The precheck state for the application change. Valid values:
 	//
-	// 	- checking: The application is being prechecked.
+	// - checking: The application is being prechecked.
 	//
-	// 	- pass: The application passed the precheck.
+	// - pass: The application passed the precheck.
 	//
-	// 	- failed: The application failed the precheck.
+	// - failed: The application failed the precheck.
 	//
 	// example:
 	//
@@ -169,9 +169,9 @@ func (s *GetK8sAppPrecheckResultResponseBodyData) Validate() error {
 type GetK8sAppPrecheckResultResponseBodyDataJobResults struct {
 	// Specifies whether the precheck of the item was interrupted:
 	//
-	// 	- true: The precheck of the item was interrupted.
+	// - true: The precheck of the item was interrupted.
 	//
-	// 	- false: The precheck of the item was not interrupted.
+	// - false: The precheck of the item was not interrupted.
 	//
 	// example:
 	//
@@ -185,9 +185,9 @@ type GetK8sAppPrecheckResultResponseBodyDataJobResults struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the precheck item passed the precheck:
 	//
-	// 	- true: The precheck item passed the precheck.
+	// - true: The precheck item passed the precheck.
 	//
-	// 	- false: The precheck item failed the precheck.
+	// - false: The precheck item failed the precheck.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type GetK8sAppPrecheckResultResponseBodyDataJobResults struct {
 	//
 	// example:
 	//
-	// The Kubernetes cluster is disconnected from the EDAS control plane.
+	// K8s集群失联。
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 

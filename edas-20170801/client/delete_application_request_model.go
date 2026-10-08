@@ -14,7 +14,7 @@ type iDeleteApplicationRequest interface {
 }
 
 type DeleteApplicationRequest struct {
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
 	//
 	// This parameter is required.
 	//

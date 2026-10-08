@@ -25,8 +25,7 @@ type ListConvertableEcuResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ECS instances that can be imported to the cluster.
+	Code         *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceList *ListConvertableEcuResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 	// The additional information that is returned.
 	//
@@ -130,100 +129,20 @@ func (s *ListConvertableEcuResponseBodyInstanceList) Validate() error {
 }
 
 type ListConvertableEcuResponseBodyInstanceListInstance struct {
-	// The number of CPU cores of the ECS instance.
-	//
-	// example:
-	//
-	// 2
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The ID of the elastic compute units (ECU).
-	//
-	// example:
-	//
-	// b197-40ab-9155-7ca7
-	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	// The elastic IP address (EIP) associated with the ECS instance. The EIP can be changed.
-	//
-	// example:
-	//
-	// 13.xx.xxx.xx
-	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	// Indicates whether the ECS instance has expired.
-	//
-	// example:
-	//
-	// false
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The private IP address of the ECS instance. This parameter is valid only when the ECS instance is deployed in a VPC.
-	//
-	// example:
-	//
-	// 192.168.13.xx
-	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	// The ID of the ECS instance.
-	//
-	// example:
-	//
-	// i-2ze7s2v0b***********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the ECS instance.
-	//
-	// example:
-	//
-	// worker-k8s
+	Cpu          *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EcuId        *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	Eip          *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	InnerIp      *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The size of memory for the ECS instance.
-	//
-	// example:
-	//
-	// 4096
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The private IP address of the ECS instance. This parameter is valid only when the ECS instance is deployed in a VPC.
-	//
-	// example:
-	//
-	// 192.XX.XX.123
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The public IP address of the ECS instance. This IP address can be used only by the ECS instance.
-	//
-	// example:
-	//
-	// 13.xx.xx.xxx
-	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	// The ID of the region where the ECS instance is located.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The state of the instance. Valid values:
-	//
-	// 	- Pending: The instance is being created.
-	//
-	// 	- Running: The instance is running.
-	//
-	// 	- Starting: The instance is being started.
-	//
-	// 	- Stopping: The instance is being stopped.
-	//
-	// 	- Stopped: The instance is stopped.
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-2zef6ob8m************
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
-	//
-	// example:
-	//
-	// jianwei-test
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	Mem          *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	PrivateIp    *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	PublicIp     *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName      *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListConvertableEcuResponseBodyInstanceListInstance) String() string {

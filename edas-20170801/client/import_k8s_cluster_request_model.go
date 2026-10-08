@@ -30,9 +30,9 @@ type ImportK8sClusterRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Specifies whether to enable the integration with Alibaba Cloud Service Mesh (ASM). Valid values:
 	//
-	// 	- true: Enables the integration with ASM.
+	// - true: Enables the integration with ASM.
 	//
-	// 	- false: Disables the integration with ASM.
+	// - false: Disables the integration with ASM.
 	//
 	// example:
 	//

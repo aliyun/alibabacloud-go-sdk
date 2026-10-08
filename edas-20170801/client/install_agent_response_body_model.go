@@ -25,8 +25,7 @@ type InstallAgentResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The execution result.
+	Code                *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	ExecutionResultList *InstallAgentResponseBodyExecutionResultList `json:"ExecutionResultList,omitempty" xml:"ExecutionResultList,omitempty" type:"Struct"`
 	// The message that is returned.
 	//
@@ -130,36 +129,11 @@ func (s *InstallAgentResponseBodyExecutionResultList) Validate() error {
 }
 
 type InstallAgentResponseBodyExecutionResultListExecutionResult struct {
-	// The time when the installation was complete.
-	//
-	// example:
-	//
-	// 20**-11-10T07:02:17Z
-	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-2ze7s2v0b789k*******
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The state of the installation.
-	//
-	// example:
-	//
-	// Finished
+	FinishedTime       *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	// The state of the installation command.
-	//
-	// example:
-	//
-	// OK
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the installation was successful.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InstallAgentResponseBodyExecutionResultListExecutionResult) String() string {

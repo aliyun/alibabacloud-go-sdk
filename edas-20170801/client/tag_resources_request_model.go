@@ -38,9 +38,9 @@ type TagResourcesRequest struct {
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// 	- **application**: Enterprise Distributed Application Service (EDAS) application
+	// - **application**: Enterprise Distributed Application Service (EDAS) application
 	//
-	// 	- **cluster**: EDAS cluster
+	// - **cluster**: EDAS cluster
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type TagResourcesRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key-value pairs. When you set this parameter, take note of the following limits:
 	//
-	// 	- You can add up to 20 tags to a resource.
+	// - You can add up to 20 tags to a resource.
 	//
-	// 	- The tag key cannot start with **aliyun*	- or **acs:**. It cannot contain **http://*	- or **https://**.
+	// - The tag key cannot start with **aliyun*	- or **acs:**. It cannot contain **http\\://*	- or **https\\://**.
 	//
-	// 	- The tag key or tag value can be up to 128 characters in length, and can contain letters, digits, hyphens (-), commas (,), asterisks (\\*), forward slashes (/), question marks (?), and colons (:).
+	// - The tag key or tag value can be up to 128 characters in length, and can contain letters, digits, hyphens (-), commas (,), asterisks (\\*), forward slashes (/), question marks (?), and colons (:).
 	//
-	// 	- Set this parameter to a JSON array.
+	// - Set this parameter to a JSON array.
 	//
 	// This parameter is required.
 	//

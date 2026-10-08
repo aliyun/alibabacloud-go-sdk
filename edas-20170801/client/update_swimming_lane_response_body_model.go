@@ -20,21 +20,21 @@ type iUpdateSwimmingLaneResponseBody interface {
 }
 
 type UpdateSwimmingLaneResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned data.
 	Data *UpdateSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,25 +96,25 @@ func (s *UpdateSwimmingLaneResponseBody) Validate() error {
 }
 
 type UpdateSwimmingLaneResponseBodyData struct {
-	// The rule of the lane.
+	// The rule of the swimming lane.
 	//
 	// example:
 	//
 	// [{\\"condition\\":\\"AND\\",\\"enable\\":true,\\"path\\":\\"/traffictest\\",\\"priority\\":1,\\"restItems\\":[{\\"cond\\":\\"==\\",\\"datum\\":\\"testheadervalue\\",\\"name\\":\\"testheader\\",\\"operator\\":\\"rawvalue\\",\\"type\\":\\"header\\",\\"value\\":\\"testheadervalue\\"}]}]"
 	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	// The ID of the lane group.
+	// The ID of the swimming lane group.
 	//
 	// example:
 	//
 	// 171
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the lane.
+	// The ID of the swimming lane.
 	//
 	// example:
 	//
 	// 321
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the lane.
+	// The name of the swimming lane.
 	//
 	// example:
 	//
@@ -126,9 +126,9 @@ type UpdateSwimmingLaneResponseBodyData struct {
 	//
 	// cn-beijing:qa
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The list of associations between the lane and the related application.
+	// A list of relationships between applications and the swimming lane.
 	SwimmingLaneAppRelationShipList []*UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList `json:"SwimmingLaneAppRelationShipList,omitempty" xml:"SwimmingLaneAppRelationShipList,omitempty" type:"Repeated"`
-	// The tag of the lane.
+	// The tag of the swimming lane.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type UpdateSwimmingLaneResponseBodyDataSwimmingLaneAppRelationShipList struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the lane.
+	// The ID of the swimming lane.
 	//
 	// example:
 	//

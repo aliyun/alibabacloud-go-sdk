@@ -14,7 +14,7 @@ type iListUserDefineRegionRequest interface {
 }
 
 type ListUserDefineRegionRequest struct {
-	// Specifies whether remote debugging is allowed.
+	// Indicates whether remote debugging is allowed.
 	//
 	// example:
 	//

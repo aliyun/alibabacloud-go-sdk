@@ -20,29 +20,29 @@ type iMigrateEcuResponseBody interface {
 }
 
 type MigrateEcuResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the API call.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// The data returned.
 	//
-	// 	- true: The request is successful.
+	// - true: The operation was successful.
 	//
-	// 	- false: The request fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

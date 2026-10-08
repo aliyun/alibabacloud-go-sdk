@@ -20,21 +20,21 @@ type iGetApplicationResponseBody interface {
 }
 
 type GetApplicationResponseBody struct {
-	// The details of the application.
+	// The application information.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,63 +96,63 @@ func (s *GetApplicationResponseBody) Validate() error {
 }
 
 type GetApplicationResponseBodyApplication struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// cfac****-847e-4325-ad56-b5c2bc54****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The current status of the Kubernetes application, which is used to determine whether the application is in a stable state. If the application is in an unstable state, related configuration operations are prohibited. Valid values:
+	// The current phase of the Kubernetes application. This helps determine if the application is stable. Configuration operations are prohibited when the application is in an unstable state.
 	//
-	// 	- ready: The application is in the ready state and can be changed.
+	// - ready: The application is ready and can be changed.
 	//
-	// 	- progressive: The application is being changed.
+	// - progressing: The application is being changed.
 	//
-	// 	- pending: The application change is blocked.
+	// - pending: The application change is blocked.
 	//
-	// 	- failed: The application fails to be changed.
+	// - failed: The application change failed.
 	//
-	// In these states, ready is a stable state and other states are unstable.
+	// The ready phase is stable. Other phases are unstable.
 	//
 	// example:
 	//
 	// ready
 	AppPhase *string `json:"AppPhase,omitempty" xml:"AppPhase,omitempty"`
-	// The deployment type of the application. Valid values:
+	// The deployment type of the application:
 	//
-	// 	- War: The application is deployed by using a WAR package.
+	// - War: The application is deployed from a WAR package.
 	//
-	// 	- FatJar: The application is deployed by using a JAR package.
+	// - FatJar: The application is deployed from a JAR package.
 	//
-	// 	- Empty: The application is not deployed.
+	// - Empty: The application is not deployed.
 	//
 	// example:
 	//
 	// FatJar
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
+	// The ID of the container version.
 	//
 	// example:
 	//
 	// 59
 	BuildPackageId *int64 `json:"BuildPackageId,omitempty" xml:"BuildPackageId,omitempty"`
-	// The ID of the ECS cluster in which the application is deployed.
+	// The ID of the ECS cluster where the application is deployed.
 	//
 	// example:
 	//
 	// 5ffc5895-****-b03a-c223c6c3****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the cluster. Valid values:
+	// The type of the application cluster:
 	//
-	// 	- 0: regular Docker cluster
+	// - 0: A regular Docker cluster.
 	//
-	// 	- 1: Swarm cluster
+	// - 1: A Swarm cluster.
 	//
-	// 	- 2: ECS cluster
+	// - 2: An ECS cluster.
 	//
-	// 	- 3: Kubernetes cluster
+	// - 3: A Kubernetes cluster.
 	//
-	// 	- 4: cluster in which Pandora automatically registers applications
+	// - 4: A Pandora application cluster that supports automatic registration.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// 1
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The UNIX timestamp when the application was created.
 	//
 	// example:
 	//
@@ -176,64 +176,69 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the application is a Docker application. Valid values:
+	// Indicates whether the application is a Docker application:
 	//
-	// 	- false: The application is not a Docker application.
+	// - false: The application is not a Docker application.
 	//
-	// 	- true: The application is a Docker application.
+	// - true: The application is a Docker application.
 	//
 	// example:
 	//
 	// false
 	Dockerize *bool `json:"Dockerize,omitempty" xml:"Dockerize,omitempty"`
-	// The email address of the account.
+	// The email address.
 	//
 	// example:
 	//
-	// xxxx@gmail.com
+	// ****@***.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether the port health check is enabled. Valid values:
+	// Indicates whether the port health check is enabled:
 	//
-	// 	- true: The port health check is enabled.
+	// - true: Enabled.
 	//
-	// 	- false: The port health check is disabled.
+	// - false: Disabled.
 	//
-	// If the port health check is enabled, EDAS checks whether a port exists during application startup. If the port exists, the application is considered to have started.
+	// If enabled, EDAS checks if the port is in use during application startup. If the port is in use, the application is considered started.
 	//
 	// example:
 	//
 	// false
 	EnablePortCheck *bool `json:"EnablePortCheck,omitempty" xml:"EnablePortCheck,omitempty"`
-	// Indicates whether the URL health check is enabled. Valid values:
+	// Indicates whether the URL health check is enabled:
 	//
-	// 	- true: The URL health check is enabled.
+	// - true: Enabled.
 	//
-	// 	- false: The URL health check is disabled.
+	// - false: Disabled.
 	//
-	// If the URL health check is enabled, EDAS attempts to detect the specified URL during application startup. If EDAS detects the specified URL, the application is considered to have started.
+	// If enabled, EDAS probes the specified URL during application startup. If the URL is accessible, the application is considered started.
 	//
 	// example:
 	//
 	// false
 	EnableUrlCheck *bool `json:"EnableUrlCheck,omitempty" xml:"EnableUrlCheck,omitempty"`
-	// The ID of the Internet-facing SLB instance that is bound to the application.
+	// The ID of the public-facing SLB instance attached to the application.
 	//
 	// example:
 	//
 	// lb-bp1vceck3s3b9xs6x****
 	ExtSlbId *string `json:"ExtSlbId,omitempty" xml:"ExtSlbId,omitempty"`
-	// The IP address of the Internet-facing Server Load Balancer (SLB) instance that is bound to the application.
+	// The public IP address of the SLB instance attached to the application.
 	//
 	// example:
 	//
 	// 47.114.xxx.xx
 	ExtSlbIp *string `json:"ExtSlbIp,omitempty" xml:"ExtSlbIp,omitempty"`
-	// The name of the Internet-facing SLB instance that is bound to the application.
+	// The name of the public-facing SLB instance attached to the application.
 	//
 	// example:
 	//
 	// aa8eee383db084f42aebc4d9f52c****
-	ExtSlbName       *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
+	ExtSlbName *string `json:"ExtSlbName,omitempty" xml:"ExtSlbName,omitempty"`
+	// Indicates whether the current user has management permissions on the application. This parameter is available only in RAM authentication mode.
+	//
+	// example:
+	//
+	// true
 	HaveManageAccess *string `json:"HaveManageAccess,omitempty" xml:"HaveManageAccess,omitempty"`
 	// The health check URL of the application.
 	//
@@ -241,13 +246,13 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// http://127.0.0.1:8080/xyz.html
 	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	// The number of instances deployed with the application.
+	// The number of instances in the application.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The memory size of the application instance. Unit: MB.
+	// The memory size for the application instance, in MB.
 	//
 	// example:
 	//
@@ -265,7 +270,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// doc-test
 	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	// The ID of the user who created the application.
+	// The creator of the application.
 	//
 	// example:
 	//
@@ -277,44 +282,49 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// 8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region in which the application is deployed.
+	// The ID of the region where the application is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekz****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of running instances for the application.
+	// The number of running application instances.
 	//
 	// example:
 	//
 	// 1
 	RunningInstanceCount *int32 `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
-	// The ID of the internal-facing SLB instance that is bound to the application.
+	// The ID of the internal-facing SLB instance attached to the application.
 	//
 	// example:
 	//
 	// lb-bp****ck3s3b9xs6x****
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The information about the internal-facing SLB instance that is bound to the application.
+	// Information about the internal-facing SLB instance attached to the application.
 	//
 	// example:
 	//
 	// test
 	SlbInfo *string `json:"SlbInfo,omitempty" xml:"SlbInfo,omitempty"`
-	// The IP address of the internal-facing SLB instance that is bound to the application.
+	// The IP address of the internal-facing SLB instance attached to the application.
 	//
 	// example:
 	//
-	// 192.168.0.100
+	// 192.***.***.***
 	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	// The name of the internal-facing SLB instance that is bound to the application.
+	// The name of the internal-facing SLB instance attached to the application.
 	//
 	// example:
 	//
 	// test
 	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	// The port of the internal-facing SLB instance that is bound to the application.
+	// The port of the internal-facing SLB instance attached to the application.
 	//
 	// example:
 	//
@@ -325,7 +335,12 @@ type GetApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// test@dd******
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workload type used to create the application. Supported types are Deployment and StatefulSet. This parameter does not apply to ECS applications.
+	//
+	// example:
+	//
+	// StatefulSet
 	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
 }
 

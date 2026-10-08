@@ -36,9 +36,9 @@ type UpdateJvmConfigurationRequest struct {
 	//
 	// >
 	//
-	// 	- To configure the JVM parameters for an instance group, set this parameter to a specific ID.
+	// - To configure the JVM parameters for an instance group, set this parameter to a specific ID.
 	//
-	// 	- To configure the JVM parameters for an application, leave this parameter empty.
+	// - To configure the JVM parameters for an application, leave this parameter empty.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type UpdateJvmConfigurationRequest struct {
 	//
 	// >
 	//
-	// 	- If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	// - If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
 	//
-	// 	- If this parameter is not specified in the application configuration, the default value is used.
+	// - If this parameter is not specified in the application configuration, the default value is used.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type UpdateJvmConfigurationRequest struct {
 	//
 	// >
 	//
-	// 	- If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	// - If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
 	//
-	// 	- If this parameter is not specified in the application configuration, the default value is used.
+	// - If this parameter is not specified in the application configuration, the default value is used.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type UpdateJvmConfigurationRequest struct {
 	//
 	// >
 	//
-	// 	- If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	// - If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
 	//
-	// 	- If this parameter is not specified in the application configuration, the default value is used.
+	// - If this parameter is not specified in the application configuration, the default value is used.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type UpdateJvmConfigurationRequest struct {
 	//
 	// >
 	//
-	// 	- If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
+	// - If this parameter is not specified in the group configuration, the value specified in the application configuration is used.
 	//
-	// 	- If this parameter is not specified in the application configuration, the default value is used.
+	// - If this parameter is not specified in the application configuration, the default value is used.
 	//
 	// example:
 	//

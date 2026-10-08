@@ -104,13 +104,13 @@ type UpdateApplicationBaseInfoResponseBodyApplcation struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The deployment type of the application. Valid values:
 	//
-	// 	- War: The application is deployed by using a WAR package.
+	// - War: The application is deployed by using a WAR package.
 	//
-	// 	- FatJar: The application is deployed by using a JAR package.
+	// - FatJar: The application is deployed by using a JAR package.
 	//
-	// 	- Image: The application is deployed by using an image.
+	// - Image: The application is deployed by using an image.
 	//
-	// 	- If this parameter is empty, the application is not deployed.
+	// - If this parameter is empty, the application is not deployed.
 	//
 	// example:
 	//
@@ -130,17 +130,17 @@ type UpdateApplicationBaseInfoResponseBodyApplcation struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of the cluster. Valid values:
 	//
-	// 	- 0: normal Docker cluster
+	// - 0: normal Docker cluster
 	//
-	// 	- 1: Swarm cluster
+	// - 1: Swarm cluster
 	//
-	// 	- 2: ECS cluster
+	// - 2: ECS cluster
 	//
-	// 	- 3: self-managed Kubernetes cluster in EDAS
+	// - 3: self-managed Kubernetes cluster in EDAS
 	//
-	// 	- 4: cluster in which Pandora automatically registers applications
+	// - 4: cluster in which Pandora automatically registers applications
 	//
-	// 	- 5: Container Service for Kubernetes (ACK) clusters
+	// - 5: Container Service for Kubernetes (ACK) clusters
 	//
 	// example:
 	//

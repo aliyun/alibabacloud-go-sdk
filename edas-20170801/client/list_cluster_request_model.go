@@ -18,9 +18,9 @@ type iListClusterRequest interface {
 type ListClusterRequest struct {
 	// The ID of the namespace. You can call the ListUserDefineRegion operation to query the namespace ID. For more information, see [ListUserDefineRegion](https://help.aliyun.com/document_detail/149377.html).
 	//
-	// 	- If this parameter is left empty, the clusters in the default namespace are queried.
+	// - If this parameter is left empty, the clusters in the default namespace are queried.
 	//
-	// 	- If this parameter is specified, the clusters in the specified namespace are queried.
+	// - If this parameter is specified, the clusters in the specified namespace are queried.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type ListClusterRequest struct {
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
 	// The ID of the resource group. You can call the ListResourceGroup operation to query the resource group ID. For more information, see [ListResourceGroup](https://help.aliyun.com/document_detail/62055.html).
 	//
-	// 	- If this parameter is left empty, the clusters in the default resource group are queried.
+	// - If this parameter is left empty, the clusters in the default resource group are queried.
 	//
-	// 	- If this parameter is specified, the clusters in the specified resource group are queried.
+	// - If this parameter is specified, the clusters in the specified resource group are queried.
 	//
 	// example:
 	//

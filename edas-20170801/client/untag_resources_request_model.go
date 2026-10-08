@@ -24,9 +24,9 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all existing tags from the specified resources. Default value: false. Valid values:
 	//
-	// 	- **true**: removes all existing tags from the specified resources.
+	// - **true**: removes all existing tags from the specified resources.
 	//
-	// 	- **false**: does not remove all existing tags from the specified resources.
+	// - **false**: does not remove all existing tags from the specified resources.
 	//
 	// > All existing tags of a resource are removed only if the **tagKeys*	- parameter is left empty and the **DeleteAll*	- parameter is set to true.
 	//
@@ -52,9 +52,9 @@ type UntagResourcesRequest struct {
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// 	- **application**: Enterprise Distributed Application Service (EDAS) application
+	// - **application**: Enterprise Distributed Application Service (EDAS) application
 	//
-	// 	- **cluster**: EDAS cluster
+	// - **cluster**: EDAS cluster
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iStartK8sApplicationRequest interface {
 }
 
 type StartK8sApplicationRequest struct {
-	// The ID of the application. You can query the application ID by calling the ListApplication operation. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. You can call the ListApplication operation to obtain the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type StartK8sApplicationRequest struct {
 	//
 	// 93fdd228-*******-ed2ae98de18d
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of instances on which you want to start the application.
+	// The number of application instances to start.
 	//
 	// example:
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The timeout period of the change process. Valid values: 1 to 1800. Default value: 600. Unit: seconds.
+	// The timeout period for the change process, in seconds. Valid values: 1 to 1800. Default value: 600.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type ListSwimmingLaneGroupRequest struct {
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the namespace.
 	//
-	// The ID of a custom namespace is in the region ID:namespace identifier format. Example: cn-beijing:test.\\
+	// The ID of a custom namespace is in the region ID:namespace identifier format. Example: cn-beijing:test.<br>
 	//
 	// The ID of the default namespace is in the region ID format. Example: cn-beijing.
 	//

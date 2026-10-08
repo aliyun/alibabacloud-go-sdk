@@ -25,8 +25,7 @@ type ListScaleOutEcuResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ECUs.
+	Code        *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	EcuInfoList *ListScaleOutEcuResponseBodyEcuInfoList `json:"EcuInfoList,omitempty" xml:"EcuInfoList,omitempty" type:"Struct"`
 	// The additional information that is returned.
 	//
@@ -130,104 +129,21 @@ func (s *ListScaleOutEcuResponseBodyEcuInfoList) Validate() error {
 }
 
 type ListScaleOutEcuResponseBodyEcuInfoListEcuInfo struct {
-	// The number of available CPU cores for the ECU.
-	//
-	// example:
-	//
-	// 2
-	AvailableCpu *int32 `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
-	// The size of available memory for the ECU. Unit: MB.
-	//
-	// example:
-	//
-	// 111
-	AvailableMem *int32 `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
-	// The time when the ECU was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281040819
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether Docker is installed. Valid values:
-	//
-	// 	- true: Docker is installed.
-	//
-	// 	- false: Docker is not installed.
-	//
-	// example:
-	//
-	// false
-	DockerEnv *bool `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
-	// The unique ID of the ECU. To query the ID, you can run the `dmidecode` command on the ECS instance that corresponds to the ECU.
-	//
-	// example:
-	//
-	// 0de2ebdb-9490-4fc4-be41***************
-	EcuId *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
-	// The time when the last heartbeat detection was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281040819
-	HeartbeatTime *int64 `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
-	// The ID of the ECU.
-	//
-	// example:
-	//
-	// i-2zej4i2jdf*********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The private IP address of the ECU.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	IpAddr *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
-	// The name of the ECU.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the ECU is online. If the ECU is online, its corresponding ECS instance is managed in EDAS. Valid values:
-	//
-	// 	- true: The ECU is online.
-	//
-	// 	- false: The ECU is offline.
-	//
-	// example:
-	//
-	// true
-	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
-	// The ID of the region where the ECU is located.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the ECU was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573281040827
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the Alibaba Cloud account to which the ECU belongs.
-	//
-	// example:
-	//
-	// 1172****6608****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the virtual private cloud (VPC) where the ECU is located.
-	//
-	// example:
-	//
-	// vpc-2zef6ob8**********
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone where the ECU resides.
-	//
-	// example:
-	//
-	// cn-beijing-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AvailableCpu  *int32  `json:"AvailableCpu,omitempty" xml:"AvailableCpu,omitempty"`
+	AvailableMem  *int32  `json:"AvailableMem,omitempty" xml:"AvailableMem,omitempty"`
+	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DockerEnv     *bool   `json:"DockerEnv,omitempty" xml:"DockerEnv,omitempty"`
+	EcuId         *string `json:"EcuId,omitempty" xml:"EcuId,omitempty"`
+	HeartbeatTime *int64  `json:"HeartbeatTime,omitempty" xml:"HeartbeatTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpAddr        *string `json:"IpAddr,omitempty" xml:"IpAddr,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Online        *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListScaleOutEcuResponseBodyEcuInfoListEcuInfo) String() string {

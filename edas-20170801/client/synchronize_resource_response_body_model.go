@@ -48,9 +48,9 @@ type SynchronizeResourceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the resources are synchronized. Valid values:
 	//
-	// 	- **true**: The resources are synchronized.
+	// - **true**: The resources are synchronized.
 	//
-	// 	- **false**: The resources fail to be synchronized.
+	// - **false**: The resources fail to be synchronized.
 	//
 	// example:
 	//

@@ -24,21 +24,21 @@ type iAbortAndRollbackChangeOrderResponseBody interface {
 }
 
 type AbortAndRollbackChangeOrderResponseBody struct {
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the change process.
+	// The information about the change order.
 	Data *AbortAndRollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code that is returned.
+	// The error code.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type AbortAndRollbackChangeOrderResponseBody struct {
 	//
 	// 81E0B333-2871-****-****-B8F5FF43****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the trace.
+	// The ID of the call chain.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *AbortAndRollbackChangeOrderResponseBody) Validate() error {
 }
 
 type AbortAndRollbackChangeOrderResponseBodyData struct {
-	// The ID of the change process.
+	// The ID of the change order.
 	//
 	// example:
 	//

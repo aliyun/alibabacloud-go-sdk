@@ -20,21 +20,21 @@ type iGetK8sApplicationResponseBody interface {
 }
 
 type GetK8sApplicationResponseBody struct {
-	// The information about the application.
+	// The application information.
 	Applcation *GetK8sApplicationResponseBodyApplcation `json:"Applcation,omitempty" xml:"Applcation,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -98,17 +98,16 @@ func (s *GetK8sApplicationResponseBody) Validate() error {
 type GetK8sApplicationResponseBodyApplcation struct {
 	// The basic information about the application.
 	App *GetK8sApplicationResponseBodyApplcationApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. You can call the [ListApplication](https://help.aliyun.com/document_detail/149390.html) operation to obtain the application ID.
 	//
 	// example:
 	//
 	// a5281053-****-47a5-b2ab-5c0323de****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The configurations.
-	Conf *GetK8sApplicationResponseBodyApplcationConf `json:"Conf,omitempty" xml:"Conf,omitempty" type:"Struct"`
-	// The information about the instance group in which the application is deployed.
+	// The configuration information.
+	Conf         *GetK8sApplicationResponseBodyApplcationConf         `json:"Conf,omitempty" xml:"Conf,omitempty" type:"Struct"`
 	DeployGroups *GetK8sApplicationResponseBodyApplcationDeployGroups `json:"DeployGroups,omitempty" xml:"DeployGroups,omitempty" type:"Struct"`
-	// The information about the image.
+	// The image information.
 	ImageInfo *GetK8sApplicationResponseBodyApplcationImageInfo `json:"ImageInfo,omitempty" xml:"ImageInfo,omitempty" type:"Struct"`
 	// The information about the latest version.
 	LatestVersion *GetK8sApplicationResponseBodyApplcationLatestVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty" type:"Struct"`
@@ -206,13 +205,13 @@ func (s *GetK8sApplicationResponseBodyApplcation) Validate() error {
 }
 
 type GetK8sApplicationResponseBodyApplcationApp struct {
-	// The annotation of an application pod.
+	// The annotations of the application pod.
 	//
 	// example:
 	//
 	// {"test-annokey":"test-annovalue"}
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	// The ID of the application. You can call the ListApplication operation to query the application ID. For more information, see [ListApplication](https://help.aliyun.com/document_detail/149390.html).
+	// The ID of the application. You can call the [ListApplication](https://help.aliyun.com/document_detail/149390.html) operation to obtain the application ID.
 	//
 	// example:
 	//
@@ -224,19 +223,19 @@ type GetK8sApplicationResponseBodyApplcationApp struct {
 	//
 	// test
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The type of the application.
+	// The application type.
 	//
 	// example:
 	//
 	// War
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The build package number of Enterprise Distributed Application Service (EDAS) Container.
+	// The ID of the application build type.
 	//
 	// example:
 	//
 	// 57
 	BuildpackId *int32 `json:"BuildpackId,omitempty" xml:"BuildpackId,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -247,62 +246,60 @@ type GetK8sApplicationResponseBodyApplcationApp struct {
 	// example:
 	//
 	// ls
-	Cmd *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	// The list of commands.
+	Cmd     *string                                            `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
 	CmdArgs *GetK8sApplicationResponseBodyApplcationAppCmdArgs `json:"CmdArgs,omitempty" xml:"CmdArgs,omitempty" type:"Struct"`
-	// The ID of the cluster to which the container belongs.
+	// The ID of the container cluster.
 	//
 	// example:
 	//
 	// c383bc813c1974e****451b50c0c8****
 	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	// The deployment type of the application. Example: Image.
+	// The deployment type. The value is Image.
 	//
 	// example:
 	//
 	// Image
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The application type. Valid values:
+	// The application type:
 	//
-	// 	- General: native Java application
+	// - General: a native Java application.
 	//
-	// 	- Pandora: Pandora application
+	// - Pandora: a Pandora application.
 	//
-	// 	- Multilingual: multilingual application
+	// - Multilingual: a multilingual application.
 	//
 	// example:
 	//
 	// General
 	DevelopType *string `json:"DevelopType,omitempty" xml:"DevelopType,omitempty"`
-	// The version of EDAS Container.
+	// The version of the EDAS container.
 	//
 	// example:
 	//
 	// 3.60.0
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	// Indicates whether the Empty List Protection feature is enabled for the application.
+	// Indicates whether empty-push protection is enabled for the application.
 	//
 	// example:
 	//
 	// true
 	EnableEmptyPushReject *bool `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
-	// Indicates whether the Graceful Release feature is enabled for the application.
+	// Indicates whether graceful start is enabled for the application.
 	//
 	// example:
 	//
 	// true
-	EnableLosslessRule *bool `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
-	// The list of environment variables.
-	EnvList *GetK8sApplicationResponseBodyApplcationAppEnvList `json:"EnvList,omitempty" xml:"EnvList,omitempty" type:"Struct"`
-	// The feature annotations. Possible values:
+	EnableLosslessRule *bool                                              `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
+	EnvList            *GetK8sApplicationResponseBodyApplcationAppEnvList `json:"EnvList,omitempty" xml:"EnvList,omitempty" type:"Struct"`
+	// The tags of advanced configurations for the current application. This parameter indicates the features that are enabled. Valid values:
 	//
-	// 	- base.combination.edas: enables EDAS integrated management solution.
+	// - base.combination.edas: the EDAS integrated management solution.
 	//
-	// 	- base.combination.arms: enables ARMS monitoring.
+	// - base.combination.arms: ARMS monitoring is enabled.
 	//
-	// 	- base.combination.mse: enables MSE microservices governance.
+	// - base.combination.mse: MSE is enabled.
 	//
-	// 	- base.combination.none: enables lifecycle management.
+	// - base.combination.none: Only lifecycle management is enabled.
 	//
 	// example:
 	//
@@ -314,98 +311,103 @@ type GetK8sApplicationResponseBodyApplcationApp struct {
 	//
 	// 4
 	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	// The number of application instances before the last auto scaling operation.
+	// The number of application instances before the last scaling event.
 	//
 	// example:
 	//
 	// 10
 	InstancesBeforeScaling *int32 `json:"InstancesBeforeScaling,omitempty" xml:"InstancesBeforeScaling,omitempty"`
-	// The namespace of the Kubernetes cluster.
+	// The Kubernetes namespace.
 	//
 	// example:
 	//
 	// default
 	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	// The label of an application pod.
+	// The labels of the application pod.
 	//
 	// example:
 	//
 	// {"test-labelkey":"test-labelvalue"}
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The maximum number of CPU cores allowed. Unit: millicores. 1,000 millicores equal one CPU core.
+	// The CPU limit. Unit: millicores. 1,000 millicores are equal to one CPU core.
 	//
 	// example:
 	//
 	// 1000
 	LimitCpuM *int32 `json:"LimitCpuM,omitempty" xml:"LimitCpuM,omitempty"`
-	// The maximum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	// The limit of ephemeral storage resources. Unit: GB. A value of 0 indicates that no limit is set.
 	//
 	// example:
 	//
 	// 4
 	LimitEphemeralStorage *string `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
-	// The maximum size of the memory allowed. Unit: MiB.
+	// The memory limit. Unit: MiB.
 	//
 	// example:
 	//
 	// 1024
 	LimitMem *int32 `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
-	// Indicates whether the Graceful Rolling Release and Configure Complete Service Registration before Readiness Probing feature is enabled for the application.
+	// Indicates whether the application, in graceful rolling deployment mode, is configured to complete service registration before it passes the readiness probe.
 	//
 	// example:
 	//
 	// true
 	LosslessRuleAligned *bool `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
-	// The delay of service registration. Unit: seconds.
+	// The duration of delayed service registration that is configured for the application. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	LosslessRuleDelayTime *int32 `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
-	// The number of prefetching curves.
+	// The service prefetch curve that is set for the application.
 	//
 	// example:
 	//
 	// 2
 	LosslessRuleFuncType *int32 `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
-	// Indicates whether the Graceful Rolling Release and Configure Complete Service Prefetching before Readiness Probing feature is enabled for the application.
+	// Indicates whether the application, in graceful rolling deployment mode, is configured to complete service prefetch before it passes the readiness probe.
 	//
 	// example:
 	//
 	// true
 	LosslessRuleRelated *bool `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
-	// The service prefetching duration. Unit: seconds.
+	// The service prefetch duration that is set for the application. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	LosslessRuleWarmupTime *int32 `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of requested CPU cores. Unit: millicores. 1,000 millicores equal one CPU core.
+	// The number of CPU cores that are requested. Unit: millicores. 1,000 millicores are equal to one CPU core.
 	//
 	// example:
 	//
 	// 1000
 	RequestCpuM *int32 `json:"RequestCpuM,omitempty" xml:"RequestCpuM,omitempty"`
-	// The size of space reserved for ephemeral storage resources. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	// The amount of ephemeral storage resources to reserve. Unit: GB. A value of 0 indicates that no limit is set.
 	//
 	// example:
 	//
 	// 2
 	RequestEphemeralStorage *string `json:"RequestEphemeralStorage,omitempty" xml:"RequestEphemeralStorage,omitempty"`
-	// The size of the reserved memory. Unit: MiB.
+	// The amount of memory that is reserved. Unit: MiB.
 	//
 	// example:
 	//
 	// 1024
-	RequestMem      *int32  `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
+	RequestMem *int32 `json:"RequestMem,omitempty" xml:"RequestMem,omitempty"`
+	// The SecurityContext properties of the application pod container.
+	//
+	// example:
+	//
+	// {\\"runAsUser\\":0,\\"runAsGroup\\":0}
 	SecurityContext *string `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
-	// The configuration information about the Server Load Balancer (SLB).
+	// The SLB configurations.
 	//
 	// example:
 	//
@@ -463,7 +465,7 @@ type GetK8sApplicationResponseBodyApplcationApp struct {
 	//
 	// 8.5.55
 	TomcatVersion *string `json:"TomcatVersion,omitempty" xml:"TomcatVersion,omitempty"`
-	// The workload type. Valid values: Deployment and StatefulSet. If you do not specify this parameter, Deployment is used.
+	// The type of the workload that is used to create the application. Valid values: Deployment and StatefulSet. If you leave this parameter empty, Deployment is used.
 	//
 	// example:
 	//
@@ -877,17 +879,7 @@ func (s *GetK8sApplicationResponseBodyApplcationAppEnvList) Validate() error {
 }
 
 type GetK8sApplicationResponseBodyApplcationAppEnvListEnv struct {
-	// The name of the environment variable.
-	//
-	// example:
-	//
-	// CATALINA_OPTS
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the environment variable.
-	//
-	// example:
-	//
-	// -Xmx 1024m -Dhsf.default.tid=false $(EDAS_CATALINA_OPTS)
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -922,45 +914,45 @@ func (s *GetK8sApplicationResponseBodyApplcationAppEnvListEnv) Validate() error 
 }
 
 type GetK8sApplicationResponseBodyApplcationConf struct {
-	// The affinity configuration of the pod.
+	// The pod affinity configuration.
 	//
 	// example:
 	//
 	// "{\\"nodeAffinity\\":{\\"requiredDuringSchedulingIgnoredDuringExecution\\":{\\"nodeSelectorTerms\\":[{\\"matchExpressions\\":[{\\"key\\":\\"beta.kubernetes.io/arch\\",\\"operator\\":\\"NotIn\\",\\"values\\":[\\"arm64\\",\\"arm32\\"]}]}]},\\"preferredDuringSchedulingIgnoredDuringExecution\\":[{\\"weight\\":5,\\"preference\\":{\\"matchExpressions\\":[{\\"key\\":\\"kubernetes.io/os\\",\\"operator\\":\\"In\\",\\"values\\":[\\"linux\\"]}]}}]},\\"podAffinity\\":{\\"requiredDuringSchedulingIgnoredDuringExecution\\":[{\\"labelSelector\\":{\\"matchExpressions\\":[{\\"key\\":\\"edas.oam.acname\\",\\"operator\\":\\"NotIn\\",\\"values\\":[\\"edas-test-app\\"]}]},\\"namespaces\\":[\\"default\\"],\\"topologyKey\\":\\"kubernetes.io/hostname\\"}]},\\"podAntiAffinity\\":{\\"preferredDuringSchedulingIgnoredDuringExecution\\":[{\\"weight\\":15,\\"podAffinityTerm\\":{\\"labelSelector\\":{\\"matchExpressions\\":[{\\"key\\":\\"edas.oam.acname\\",\\"operator\\":\\"In\\",\\"values\\":[\\"edas-test-app-2\\"]}]},\\"namespaces\\":[\\"default\\"],\\"topologyKey\\":\\"failure-domain.beta.kubernetes.io/zone\\"}}]}}"
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
-	// Indicates whether the application is connected to Application High Availability Service (AHAS).
+	// Indicates whether the application is connected to AHAS.
 	//
 	// example:
 	//
 	// true
 	AhasEnabled *bool `json:"AhasEnabled,omitempty" xml:"AhasEnabled,omitempty"`
-	// Indicates whether the application instances are deployed across nodes.
+	// Indicates whether to distribute application instances across multiple nodes:
 	//
-	// 	- Value `true` indicates that the application instances are deployed across nodes.
+	// - `true`: The application instances are distributed across multiple nodes.
 	//
-	// 	- Other values indicate that the application instances are not deployed across nodes.
+	// - Other values: The application instances are not distributed across multiple nodes.
 	//
 	// example:
 	//
 	// true
 	DeployAcrossNodes *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
-	// Indicates whether the application instances are deployed across zones.
+	// Indicates whether to distribute application instances across multiple zones:
 	//
-	// 	- Value `true` indicates that the application instances are deployed across zones.
+	// - `true`: The application instances are distributed across multiple zones.
 	//
-	// 	- Other values indicate that the application instances are not deployed across zones.
+	// - Other values: The application instances are not distributed across multiple zones.
 	//
 	// example:
 	//
 	// true
 	DeployAcrossZones *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
-	// The startup parameters for a JAR application. This parameter is deprecated.
+	// The startup parameters of the JAR package. This parameter is deprecated.
 	//
 	// example:
 	//
 	// -lh
 	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	// The startup options for a JAR application. This parameter is deprecated.
+	// The startup options of the JAR package. This parameter is deprecated.
 	//
 	// example:
 	//
@@ -978,61 +970,61 @@ type GetK8sApplicationResponseBodyApplcationConf struct {
 	//
 	// -lh
 	K8sCmdArgs *string `json:"K8sCmdArgs,omitempty" xml:"K8sCmdArgs,omitempty"`
-	// The information about the local storage.
+	// The local storage information.
 	//
 	// example:
 	//
 	// [{"type":"","nodePath":"/mnt/","mountPath":"/mnt/"}]
 	K8sLocalvolumeInfo *string `json:"K8sLocalvolumeInfo,omitempty" xml:"K8sLocalvolumeInfo,omitempty"`
-	// The information about the File Storage NAS (NAS) storage.
+	// The NAS storage information.
 	//
 	// example:
 	//
 	// [{"nasPath":"/mnt/","mountPath":"/mnt/"}]
 	K8sNasInfo *string `json:"K8sNasInfo,omitempty" xml:"K8sNasInfo,omitempty"`
-	// The information about the storage.
+	// The storage information.
 	//
 	// example:
 	//
 	// "{\\"hostPaths\\":\\"[]\\",\\"emptyDirs\\":\\"[]\\"}"
 	K8sVolumeInfo *string `json:"K8sVolumeInfo,omitempty" xml:"K8sVolumeInfo,omitempty"`
-	// The information about the liveness check on the container.
+	// The information about the liveness probe of the Kubernetes container.
 	//
 	// example:
 	//
 	// {"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080}}
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	// The script executed after the container is started.
+	// The information about the post-start execution of the Kubernetes container.
 	//
 	// example:
 	//
 	// {\\"exec\\":{\\"command\\":[\\"ls\\",\\"/\\"]}}"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The script executed before the container is stopped.
+	// The information about the pre-stop execution of the Kubernetes container.
 	//
 	// example:
 	//
 	// {\\"exec\\":{\\"command\\":[\\"ls\\",\\"/\\"]}}"
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The information about the readiness check on the container.
+	// The information about the readiness probe of the Kubernetes container.
 	//
 	// example:
 	//
 	// {"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"}\\]}}
 	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	// The type of the container runtime. This parameter is applicable only to clusters that use sandboxed containers.
+	// The pod runtime class. This parameter is applicable only to clusters that use sandboxed containers.
 	//
 	// example:
 	//
 	// runc
 	RuntimeClassName *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
-	// The scheduling tolerance configuration of the pod.
+	// The pod scheduling toleration configuration.
 	//
 	// example:
 	//
 	// "[{\\"key\\":\\"edas-taint-key2\\",\\"operator\\":\\"Exists\\",\\"effect\\":\\"NoExecute\\",\\"tolerationSeconds\\":50},{\\"key\\":\\"edas-taint-key\\",\\"operator\\":\\"Equal\\",\\"value\\":\\"edas-taint-value\\",\\"effect\\":\\"PreferNoSchedule\\"}]"
 	Tolerations *string `json:"Tolerations,omitempty" xml:"Tolerations,omitempty"`
-	// The URL of the base image. If you use a custom Java Development Kit (JDK) runtime, you must specify this parameter.
+	// The URL of the base image. This parameter is configured when a custom OpenJDK runtime is used.
 	//
 	// example:
 	//
@@ -1249,20 +1241,9 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroups) Validate() error {
 }
 
 type GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup struct {
-	// The information about the component.
 	Components *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Struct"`
-	// The environment variable. This parameter is different from the EnvList parameter. This parameter specifies the referenced configuration of the ConfigMap or Secret.
-	//
-	// example:
-	//
-	// "["{\\"name\\":\\"test1\\",\\"valueFrom\\":{\\"configMapKeyRef\\":{\\"name\\":\\"edas-demo-configmap\\",\\"key\\":\\"key1\\"}}}","{\\"name\\":\\"k2\\",\\"value\\":\\"v2\\"}","{\\"name\\":\\"s1\\",\\"valueFrom\\":{\\"secretKeyRef\\":{\\"name\\":\\"edas-demo-secret\\",\\"key\\":\\"k1\\"}}}"]"
-	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The source of the environment variable.
-	//
-	// example:
-	//
-	// [{"configMapRef":{"name":"test-cm"}}]
-	EnvFrom *string `json:"EnvFrom,omitempty" xml:"EnvFrom,omitempty"`
+	Env        *string                                                                   `json:"Env,omitempty" xml:"Env,omitempty"`
+	EnvFrom    *string                                                                   `json:"EnvFrom,omitempty" xml:"EnvFrom,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) String() string {
@@ -1344,24 +1325,9 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponent
 }
 
 type GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponentsComponents struct {
-	// The component ID.
-	//
-	// example:
-	//
-	// 5
-	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The keyword that is included in the component name.
-	//
-	// example:
-	//
-	// Open JDK 8
+	ComponentId  *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
 	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
-	// The component type. Valid values:
-	//
-	// example:
-	//
-	// JDK
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponentsComponents) String() string {
@@ -1406,7 +1372,7 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponent
 type GetK8sApplicationResponseBodyApplcationImageInfo struct {
 	// The URL of the image.
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The region ID of the image repository.
+	// The ID of the region where the image is located.
 	//
 	// example:
 	//
@@ -1424,13 +1390,13 @@ type GetK8sApplicationResponseBodyApplcationImageInfo struct {
 	//
 	// 131****067006888_shared_repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
+	// The namespace of the image repository.
 	//
 	// example:
 	//
 	// edas-server****-user
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The source type of the image repository.
+	// The type of the source of the image repository.
 	//
 	// example:
 	//
@@ -1520,19 +1486,19 @@ func (s *GetK8sApplicationResponseBodyApplcationImageInfo) Validate() error {
 }
 
 type GetK8sApplicationResponseBodyApplcationLatestVersion struct {
-	// The version of the deployment package.
+	// The version number of the deployment package.
 	//
 	// example:
 	//
 	// 20200720
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The URL of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application.
+	// The URL of the deployment package. This parameter is required for applications that are deployed using a FatJar or WAR package.
 	//
 	// example:
 	//
 	// https://e***.oss-cn-beijing.aliyuncs.com/s***-1.0-SNAPSHOT-spring-boot.jar
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The URL of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application.
+	// The URL of the deployment package. This parameter is required for applications that are deployed using a FatJar or WAR package.
 	//
 	// example:
 	//

@@ -18,27 +18,27 @@ type iListSlbRequest interface {
 }
 
 type ListSlbRequest struct {
-	// The type of the IP addresses. Valid values:
+	// The address type. Valid values:
 	//
-	// 	- Internet: Users can connect to the SLB instance over the Internet.
+	// - Internet: public address.
 	//
-	// 	- Intranet: Users can connect to the SLB instance over the internal network.
+	// - Intranet: private network address.
 	//
 	// example:
 	//
 	// internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The type of the SLB instance. Valid values:
+	// The SLB type. Valid values:
 	//
-	// 	- clb: Classic Load Balancer (CLB)
+	// - clb: classic load balancing.
 	//
-	// 	- alb: Application Load Balancer (ALB)
+	// - alb: application load balancing.
 	//
 	// example:
 	//
 	// clb
 	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//

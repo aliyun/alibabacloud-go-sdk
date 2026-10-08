@@ -20,7 +20,6 @@ type iListClusterResponseBody interface {
 }
 
 type ListClusterResponseBody struct {
-	// The clusters.
 	ClusterList *ListClusterResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
 	// The HTTP status code that is returned.
 	//
@@ -130,138 +129,24 @@ func (s *ListClusterResponseBodyClusterList) Validate() error {
 }
 
 type ListClusterResponseBodyClusterListCluster struct {
-	// The ID of the cluster in EDAS.
-	//
-	// example:
-	//
-	// b98b5919-c111-4dad-9f74-7233********
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
-	//
-	// example:
-	//
-	// cluster-test
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster. Valid values:
-	//
-	// 	- 0: regular Docker cluster
-	//
-	// 	- 1: Swarm cluster
-	//
-	// 	- 2: Elastic Compute Service (ECS) cluster
-	//
-	// 	- 3: self-managed Kubernetes cluster in Enterprise Distributed Application Service (EDAS)
-	//
-	// 	- 4: cluster in which Pandora automatically registers applications
-	//
-	// 	- 5: ACK cluster
-	//
-	// example:
-	//
-	// 2
-	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The total number of CPU cores.
-	//
-	// example:
-	//
-	// 2
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of used CPU cores.
-	//
-	// example:
-	//
-	// 1
-	CpuUsed *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	// The timestamp when the cluster was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1502888064561
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the cluster in Container Service for Kubernetes (ACK).
-	//
-	// example:
-	//
-	// c2ce************b9203a9
-	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	// The description of the cluster.
-	//
-	// example:
-	//
-	// Test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The provider of the cluster.
-	//
-	// example:
-	//
-	// ALIYUN
-	IaasProvider *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
-	// The total size of memory. Unit: MB.
-	//
-	// example:
-	//
-	// 3072
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The size of used memory. Unit: MB.
-	//
-	// example:
-	//
-	// 200
-	MemUsed *int32 `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
-	// The network type of the cluster. Valid values:
-	//
-	// 	- 1: classic network
-	//
-	// 	- 2: virtual private cloud (VPC)
-	//
-	// example:
-	//
-	// 1
-	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	// The number of instances.
-	//
-	// example:
-	//
-	// 2
-	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	// The CPU overcommit ratio that is supported by a Docker cluster. Valid values:
-	//
-	// 	- 1: 1:1, which means that CPU resources are not overcommitted.
-	//
-	// 	- 2: 1:2, which means that CPU resources are overcommitted by 1:2.
-	//
-	// 	- 4: 1:4, which means that CPU resources are overcommitted by 1:4.
-	//
-	// 	- 8: 1:8, which means that CPU resources are overcommitted by 1:8.
-	//
-	// example:
-	//
-	// 1
-	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// 461
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterType     *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CpuUsed         *int32  `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CsClusterId     *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IaasProvider    *string `json:"IaasProvider,omitempty" xml:"IaasProvider,omitempty"`
+	Mem             *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	MemUsed         *int32  `json:"MemUsed,omitempty" xml:"MemUsed,omitempty"`
+	NetworkMode     *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	NodeNum         *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	OversoldFactor  *int32  `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The timestamp when the cluster was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1533820823203
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// VPC ID
-	//
-	// example:
-	//
-	// vpc-23727****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListClusterResponseBodyClusterListCluster) String() string {

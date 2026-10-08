@@ -22,13 +22,13 @@ type iUpdateSwimmingLaneRequest interface {
 }
 
 type UpdateSwimmingLaneRequest struct {
-	// The list of applications that are related to the lane.
+	// A list of applications associated with the swimming lane.
 	//
 	// example:
 	//
 	// [{"appId":"8e7689af-6ddd-4676-8ee6-5fbecdf2****"},{"appId":"f72deaac-26ba-429a-948d-5fa47c4a****"},{"appId":"99a2d4b5-99a5-4e25-a964-1bd03a17****"}]
 	AppInfos *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
-	// Specifies whether to enable the throttling rule.
+	// Specifies whether the throttling rule is enabled.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateSwimmingLaneRequest struct {
 	//
 	// [{"priority":1,"path":"/traffictest","condition":"AND","restItems":[{"type":"header","name":"testheader","value":"testheadervalue","cond":"==","operator":"rawvalue"}]}]
 	EntryRules *string `json:"EntryRules,omitempty" xml:"EntryRules,omitempty"`
-	// The ID of the lane.
+	// The ID of the swimming lane.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UpdateSwimmingLaneRequest struct {
 	//
 	// 224
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// The name of the lane.
+	// The name of the swimming lane.
 	//
 	// example:
 	//

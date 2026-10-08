@@ -24,23 +24,38 @@ type iDescribeLocalitySettingResponseBody interface {
 }
 
 type DescribeLocalitySettingResponseBody struct {
+	// The status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is not in use.
 	Data *DescribeLocalitySettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1053-08e4-47a5-b2ab-5c0323de****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// True
@@ -119,10 +134,14 @@ func (s *DescribeLocalitySettingResponseBody) Validate() error {
 }
 
 type DescribeLocalitySettingResponseBodyData struct {
+	// Indicates whether the feature is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The threshold.
+	//
 	// example:
 	//
 	// 15

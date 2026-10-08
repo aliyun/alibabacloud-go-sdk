@@ -152,9 +152,9 @@ type GetSecureTokenResponseBodySecureToken struct {
 	MseIntranetAddress *string `json:"MseIntranetAddress,omitempty" xml:"MseIntranetAddress,omitempty"`
 	// The type of the Microservices Engine (MSE) registry.
 	//
-	// 	- default: the shared registry of EDAS
+	// - default: the shared registry of EDAS
 	//
-	// 	- exclusive_mse: MSE Nacos registry
+	// - exclusive_mse: MSE Nacos registry
 	//
 	// example:
 	//

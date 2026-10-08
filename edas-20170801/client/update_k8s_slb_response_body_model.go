@@ -20,19 +20,19 @@ type iUpdateK8sSlbResponseBody interface {
 }
 
 type UpdateK8sSlbResponseBody struct {
-	// The ID of the change process.
+	// The ID of the change order.
 	//
 	// example:
 	//
 	// 9a1dcdee-****-****-ad37-cbf9dc91fba9
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//

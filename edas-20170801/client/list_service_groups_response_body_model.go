@@ -37,8 +37,7 @@ type ListServiceGroupsResponseBody struct {
 	// example:
 	//
 	// a5281053-08e4-47a5-b2ab-5c0323de7b5a
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about service groups.
+	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceGroupsList *ListServiceGroupsResponseBodyServiceGroupsList `json:"ServiceGroupsList,omitempty" xml:"ServiceGroupsList,omitempty" type:"Struct"`
 }
 
@@ -130,24 +129,9 @@ func (s *ListServiceGroupsResponseBodyServiceGroupsList) Validate() error {
 }
 
 type ListServiceGroupsResponseBodyServiceGroupsListListServiceGroups struct {
-	// The time when the service group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1575357165770
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the service group.
-	//
-	// example:
-	//
-	// 789d9cda-74b1-****-****-05e21a0a7661
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the service group.
-	//
-	// example:
-	//
-	// edas-test-group
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s ListServiceGroupsResponseBodyServiceGroupsListListServiceGroups) String() string {

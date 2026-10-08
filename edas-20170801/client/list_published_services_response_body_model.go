@@ -20,21 +20,20 @@ type iListPublishedServicesResponseBody interface {
 }
 
 type ListPublishedServicesResponseBody struct {
-	// The HTTP status code that is returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The published services.
+	Message               *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	PublishedServicesList *ListPublishedServicesResponseBodyPublishedServicesList `json:"PublishedServicesList,omitempty" xml:"PublishedServicesList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -130,48 +129,14 @@ func (s *ListPublishedServicesResponseBodyPublishedServicesList) Validate() erro
 }
 
 type ListPublishedServicesResponseBodyPublishedServicesListListPublishedServices struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// ECD1D6FC-4307-4583-BA6F-215F3857E****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Indicates whether the application runs in a Docker container. Valid values:
-	//
-	// 	- true: The application runs in a Docker container.
-	//
-	// 	- false: The application does not run in a Docker container.
-	//
-	// example:
-	//
-	// false
-	DockerApplication *bool `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
-	// A reserved parameter.
-	//
-	// example:
-	//
-	// ""
-	Group2Ip *string                                                                            `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	Groups   *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	Ips      *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The name of the published service.
-	//
-	// example:
-	//
-	// providers:com.****
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the published service.
-	//
-	// example:
-	//
-	// RESTful
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the published services.
-	//
-	// example:
-	//
-	// --
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	AppId             *string                                                                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DockerApplication *bool                                                                              `json:"DockerApplication,omitempty" xml:"DockerApplication,omitempty"`
+	Group2Ip          *string                                                                            `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
+	Groups            *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	Ips               *ListPublishedServicesResponseBodyPublishedServicesListListPublishedServicesIps    `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	Name              *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type              *string                                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	Version           *string                                                                            `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListPublishedServicesResponseBodyPublishedServicesListListPublishedServices) String() string {

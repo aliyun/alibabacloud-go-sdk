@@ -20,19 +20,19 @@ type iDeleteApplicationResponseBody interface {
 }
 
 type DeleteApplicationResponseBody struct {
-	// The ID of the change process.
+	// The ID of the change flow.
 	//
 	// example:
 	//
 	// 0b8e3c0b-5818-430*************
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The status of the call or a POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// Additional information.
 	//
 	// example:
 	//

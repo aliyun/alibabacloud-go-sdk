@@ -23,8 +23,7 @@ type ListComponentsResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The components.
+	Code          *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ComponentList *ListComponentsResponseBodyComponentList `json:"ComponentList,omitempty" xml:"ComponentList,omitempty" type:"Struct"`
 	// The message that is returned.
 	//
@@ -113,52 +112,12 @@ func (s *ListComponentsResponseBodyComponentList) Validate() error {
 }
 
 type ListComponentsResponseBodyComponentListComponent struct {
-	// The ID of the component.
-	//
-	// example:
-	//
-	// 1
-	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The key of the component.
-	//
-	// example:
-	//
-	// JDK 7
+	ComponentId  *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
 	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
-	// The description of the component.
-	//
-	// example:
-	//
-	// JDK 7
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Indicates whether the component has expired. Valid values:
-	//
-	// 	- false: The component has not expired.
-	//
-	// 	- true: The component has expired.
-	//
-	// example:
-	//
-	// false
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The type of the component. Valid values:
-	//
-	// 	- JDK
-	//
-	// 	- TOMCAT
-	//
-	// 	- TENGINE
-	//
-	// example:
-	//
-	// JDK
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the component.
-	//
-	// example:
-	//
-	// oraclejdk7
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Desc         *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListComponentsResponseBodyComponentListComponent) String() string {

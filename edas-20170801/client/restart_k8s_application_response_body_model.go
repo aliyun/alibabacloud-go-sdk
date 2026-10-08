@@ -20,19 +20,19 @@ type iRestartK8sApplicationResponseBody interface {
 }
 
 type RestartK8sApplicationResponseBody struct {
-	// The ID of the change process.
+	// The ID of the change process for this operation.
 	//
 	// example:
 	//
 	// *********-ed2ae98de18d
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The HTTP status code that is returned.
+	// The status of the API call or a POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// Additional information.
 	//
 	// example:
 	//

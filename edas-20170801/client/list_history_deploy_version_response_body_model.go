@@ -31,8 +31,7 @@ type ListHistoryDeployVersionResponseBody struct {
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The information about historical deployment packages.
+	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	PackageVersionList *ListHistoryDeployVersionResponseBodyPackageVersionList `json:"PackageVersionList,omitempty" xml:"PackageVersionList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -130,56 +129,15 @@ func (s *ListHistoryDeployVersionResponseBodyPackageVersionList) Validate() erro
 }
 
 type ListHistoryDeployVersionResponseBodyPackageVersionListPackageVersion struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 3616cdca-4f92-4413-****-************
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the deployment package was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573627440892
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the deployment package.
-	//
-	// example:
-	//
-	// deploy
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique ID of the deployment package.
-	//
-	// example:
-	//
-	// 441beb18-da42-44dc-****-************
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The version of the application that was released by using the deployment package. This version can be used to call the RollbackApplication operation.
-	//
-	// example:
-	//
-	// 1.0
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The URL of the deployment package.
-	PublicUrl *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
-	// The deployment mode of the application. Valid values:
-	//
-	// 	- url: The application is deployed by using a JAR or WAR package.
-	//
-	// 	- image: The application is deployed by using an image.
-	//
-	// example:
-	//
-	// url
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the deployment package was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1573627440892
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The URL of the deployment package.
-	WarUrl *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
+	PublicUrl      *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime     *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	WarUrl         *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
 }
 
 func (s ListHistoryDeployVersionResponseBodyPackageVersionListPackageVersion) String() string {

@@ -20,21 +20,21 @@ type iGetK8sClusterResponseBody interface {
 }
 
 type GetK8sClusterResponseBody struct {
-	// The cluster data that is returned by page.
+	// The paginated list of clusters.
 	ClusterPage *GetK8sClusterResponseBodyClusterPage `json:"ClusterPage,omitempty" xml:"ClusterPage,omitempty" type:"Struct"`
-	// The HTTP status code that is returned.
+	// The status of the call or a POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,21 +96,20 @@ func (s *GetK8sClusterResponseBody) Validate() error {
 }
 
 type GetK8sClusterResponseBodyClusterPage struct {
-	// The list of clusters.
 	ClusterList *GetK8sClusterResponseBodyClusterPageClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
-	// The number of the returned page. Default value: 1.
+	// The number of the returned page. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: 1000.
+	// The number of entries returned per page. The default value is 1000.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of pages that are returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -206,156 +205,23 @@ func (s *GetK8sClusterResponseBodyClusterPageClusterList) Validate() error {
 }
 
 type GetK8sClusterResponseBodyClusterPageClusterListCluster struct {
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// 81453e4b-4df0-4592-****-b835a2ee****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The import state of the cluster. Valid values:
-	//
-	// 	- 0: The cluster is not imported.
-	//
-	// 	- 1: The cluster is imported.
-	//
-	// 	- 2: The cluster fails to be imported.
-	//
-	// 	- 3: The cluster is being imported.
-	//
-	// 	- 4: The cluster is deleted.
-	//
-	// example:
-	//
-	// 1
-	ClusterImportStatus *int32 `json:"ClusterImportStatus,omitempty" xml:"ClusterImportStatus,omitempty"`
-	// The name of the cluster.
-	//
-	// example:
-	//
-	// test
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The status of the cluster. Valid values:
-	//
-	// 	- 1: The cluster runs as expected.
-	//
-	// 	- 2: The cluster does not run as expected.
-	//
-	// 	- 3: The cluster is offline.
-	//
-	// example:
-	//
-	// 1
-	ClusterStatus *int32 `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// The type of the cluster. Valid values:
-	//
-	// 	- 2: Elastic Compute Service (ECS) cluster
-	//
-	// 	- 5: ACK cluster or Serverless Kubernetes cluster
-	//
-	// example:
-	//
-	// 5
-	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The total number of CPU cores.
-	//
-	// example:
-	//
-	// 4
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The ID of the ACK cluster.
-	//
-	// example:
-	//
-	// 2ce62869f4d4466b920312315f05****
-	CsClusterId *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
-	// The state of the ACK cluster. Valid values:
-	//
-	// 	- initial: The cluster is being initialized.
-	//
-	// 	- failed: The cluster fails to be created.
-	//
-	// 	- running: The cluster is running.
-	//
-	// 	- updating: The cluster is being updated.
-	//
-	// 	- scaling: The cluster is being scaled out.
-	//
-	// 	- removing: Nodes are being removed from the cluster.
-	//
-	// 	- upgrading: The cluster is being upgraded.
-	//
-	// 	- deleting: The cluster is being deleted.
-	//
-	// 	- delete_failed: The cluster fails to be deleted.
-	//
-	// 	- deleted: The cluster is deleted. The deleted cluster is invisible to users.
-	//
-	// example:
-	//
-	// running
-	CsClusterStatus *string `json:"CsClusterStatus,omitempty" xml:"CsClusterStatus,omitempty"`
-	// The description of the cluster.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The total size of memory. Unit: MB.
-	//
-	// example:
-	//
-	// 2048
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The network type of the cluster. Valid values:
-	//
-	// 	- 1: classic network
-	//
-	// 	- 2: VPC
-	//
-	// example:
-	//
-	// 2
-	NetworkMode *int32 `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
-	// The number of nodes.
-	//
-	// example:
-	//
-	// 4
-	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	// The ID of the namespace.
-	//
-	// example:
-	//
-	// test
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The subtype of the cluster. Valid values:
-	//
-	// 	- Ask: Serverless Kubernetes cluster
-	//
-	// 	- ManagedKubernetes: ACK cluster
-	//
-	// example:
-	//
-	// Ask
-	SubClusterType *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
-	// The CIDR block of the subnet.
-	//
-	// example:
-	//
-	// 172.20.0.0/16
-	SubNetCidr *string `json:"SubNetCidr,omitempty" xml:"SubNetCidr,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-**z1mlwpbjx3e9m**
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-bp1uf97****xjxgip****
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterImportStatus *int32  `json:"ClusterImportStatus,omitempty" xml:"ClusterImportStatus,omitempty"`
+	ClusterName         *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterStatus       *int32  `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	ClusterType         *int32  `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Cpu                 *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CsClusterId         *string `json:"CsClusterId,omitempty" xml:"CsClusterId,omitempty"`
+	CsClusterStatus     *string `json:"CsClusterStatus,omitempty" xml:"CsClusterStatus,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Mem                 *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	NetworkMode         *int32  `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	NodeNum             *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SubClusterType      *string `json:"SubClusterType,omitempty" xml:"SubClusterType,omitempty"`
+	SubNetCidr          *string `json:"SubNetCidr,omitempty" xml:"SubNetCidr,omitempty"`
+	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId           *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s GetK8sClusterResponseBodyClusterPageClusterListCluster) String() string {

@@ -20,26 +20,25 @@ type iListSlbResponseBody interface {
 }
 
 type ListSlbResponseBody struct {
-	// The HTTP status code that is returned.
+	// The interface status or POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// b197-40ab-9155-7ca7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of SLB instances.
-	SlbList *ListSlbResponseBodySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SlbList   *ListSlbResponseBodySlbList `json:"SlbList,omitempty" xml:"SlbList,omitempty" type:"Struct"`
 }
 
 func (s ListSlbResponseBody) String() string {
@@ -130,102 +129,20 @@ func (s *ListSlbResponseBodySlbList) Validate() error {
 }
 
 type ListSlbResponseBodySlbListSlbEntity struct {
-	// The IP address of the SLB instance.
-	//
-	// example:
-	//
-	// 39.176.XX.XX
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The type of the IP addresses. Valid values:
-	//
-	// 	- internet: Users can connect to the SLB instance over the Internet.
-	//
-	// 	- intranet: Users can connect to the SLB instance over the internal network.
-	//
-	// example:
-	//
-	// internet
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// Indicates whether the SLB instance has expired. Valid values:
-	//
-	// 	- true: The SLB instance has expired.
-	//
-	// 	- false: The SLB instance has not expired.
-	//
-	// example:
-	//
-	// false
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The ID of the resource group in Enterprise Distributed Application Service (EDAS).
-	//
-	// example:
-	//
-	// 0
-	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The type of the network.
-	//
-	// example:
-	//
-	// classic
+	Expired     *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	GroupId     *int32  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether Kubernetes applications can be reused. Valid values:
-	//
-	// 	- true: Kubernetes applications can be reused.
-	//
-	// 	- false: Kubernetes applications cannot be reused.
-	//
-	// example:
-	//
-	// true
-	Reusable *bool `json:"Reusable,omitempty" xml:"Reusable,omitempty"`
-	// The ID of the SLB instance.
-	//
-	// example:
-	//
-	// lb-2ze055t3xv7s8****
-	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The name of the SLB instance.
-	//
-	// example:
-	//
-	// adce
-	SlbName *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
-	// The status of the SLB instance.
-	//
-	// example:
-	//
-	// active
-	SlbStatus *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
-	// The tag of the SLB instance.
-	//
-	// example:
-	//
-	// [{"tagKey":"tag","tagValue":"value"}]
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// edas_****_**st@aliyun-****.com
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-bp1f90rfybszjogyw****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch in the VPC.
-	//
-	// example:
-	//
-	// vsw-bp156w1gpbv0o50hs****
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Reusable    *bool   `json:"Reusable,omitempty" xml:"Reusable,omitempty"`
+	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbName     *string `json:"SlbName,omitempty" xml:"SlbName,omitempty"`
+	SlbStatus   *string `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
+	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId   *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListSlbResponseBodySlbListSlbEntity) String() string {

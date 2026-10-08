@@ -37,9 +37,8 @@ type ListRoleResponseBody struct {
 	// example:
 	//
 	// 57609587-DFA2-41EC-****-*********
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The roles.
-	RoleList *ListRoleResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleList  *ListRoleResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Struct"`
 }
 
 func (s ListRoleResponseBody) String() string {
@@ -130,10 +129,8 @@ func (s *ListRoleResponseBodyRoleList) Validate() error {
 }
 
 type ListRoleResponseBodyRoleListRoleItem struct {
-	// The set of permissions to be granted to the role.
 	ActionList *ListRoleResponseBodyRoleListRoleItemActionList `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Struct"`
-	// The roles.
-	Role *ListRoleResponseBodyRoleListRoleItemRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	Role       *ListRoleResponseBodyRoleListRoleItemRole       `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s ListRoleResponseBodyRoleListRoleItem) String() string {
@@ -211,30 +208,10 @@ func (s *ListRoleResponseBodyRoleListRoleItemActionList) Validate() error {
 }
 
 type ListRoleResponseBodyRoleListRoleItemActionListAction struct {
-	// The serial number of the permission that is granted to the role.
-	//
-	// example:
-	//
-	// 1
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the permission to be granted to the role.
-	//
-	// example:
-	//
-	// Operations in operation records
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the permission group to which the permission that is granted to the role belongs.
-	//
-	// example:
-	//
-	// 31
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the permission to be granted to the role.
-	//
-	// example:
-	//
-	// Operation records
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListRoleResponseBodyRoleListRoleItemActionListAction) String() string {
@@ -286,42 +263,12 @@ func (s *ListRoleResponseBodyRoleListRoleItemActionListAction) Validate() error 
 }
 
 type ListRoleResponseBodyRoleListRoleItemRole struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// test**@aliyun.com
 	AdminUserId *string `json:"AdminUserId,omitempty" xml:"AdminUserId,omitempty"`
-	// The timestamp when the role was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1542717260156
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the role.
-	//
-	// example:
-	//
-	// 1
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the role is a default role.
-	//
-	// example:
-	//
-	// false
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The name of the role.
-	//
-	// example:
-	//
-	// Super Admin(All privileges)
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The timestamp when the role was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1542717260156
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Id          *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpdateTime  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListRoleResponseBodyRoleListRoleItemRole) String() string {

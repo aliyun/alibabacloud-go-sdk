@@ -20,19 +20,19 @@ type iTransformClusterMemberResponseBody interface {
 }
 
 type TransformClusterMemberResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the response.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// `Transform submit success!` is returned if the request is successful.
+	// The data returned. If the request is successful, `Transform submit success!` is returned.
 	//
 	// example:
 	//
 	// Transform submit success!
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The additional information that is returned.
+	// The returned message.
 	//
 	// example:
 	//

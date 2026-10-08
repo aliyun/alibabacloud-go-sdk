@@ -20,19 +20,19 @@ type iUnbindSlbResponseBody interface {
 }
 
 type UnbindSlbResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// This parameter is left empty. It has no meaning.
+	// This parameter is not used.
 	//
 	// example:
 	//
 	// {}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message that is returned.
+	// The message returned.
 	//
 	// example:
 	//

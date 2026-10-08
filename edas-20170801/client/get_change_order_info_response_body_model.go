@@ -20,25 +20,25 @@ type iGetChangeOrderInfoResponseBody interface {
 }
 
 type GetChangeOrderInfoResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status of the API call or a POP error code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional information that is returned.
+	// Additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4JFR-FV9F***************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the change process.
+	// The details of the change process.
 	ChangeOrderInfo *GetChangeOrderInfoResponseBodyChangeOrderInfo `json:"changeOrderInfo,omitempty" xml:"changeOrderInfo,omitempty" type:"Struct"`
 }
 
@@ -102,11 +102,11 @@ type GetChangeOrderInfoResponseBodyChangeOrderInfo struct {
 	//
 	// 1
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	// Indicates whether the change for the next batch is automatically or manually triggered when phased release is performed. Valid values:
+	// The execution mode for the next batch in a phased release.
 	//
-	// 	- Automatic: The change for the next batch is automatically triggered.
+	// - Automatic: The next batch is automatically executed.
 	//
-	// 	- Manual: The change for the next batch is manually triggered.
+	// - Manual: The next batch is manually executed.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type GetChangeOrderInfoResponseBodyChangeOrderInfo struct {
 	//
 	// example:
 	//
-	// Application scale-out
+	// Application scale-up
 	ChangeOrderDescription *string `json:"ChangeOrderDescription,omitempty" xml:"ChangeOrderDescription,omitempty"`
 	// The ID of the change process.
 	//
@@ -124,19 +124,19 @@ type GetChangeOrderInfoResponseBodyChangeOrderInfo struct {
 	//
 	// 1074f3e2-e974-4a0e-****-************
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The type of the change process.
+	// The classification of the change process.
 	//
 	// example:
 	//
 	// Application Scale Out
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The time when the change process is created.
+	// The time when the change process was created.
 	//
 	// example:
 	//
 	// 2019-11-13 14:23:46
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The person in charge of the change process.
+	// The owner of the change process.
 	//
 	// example:
 	//
@@ -147,45 +147,44 @@ type GetChangeOrderInfoResponseBodyChangeOrderInfo struct {
 	// example:
 	//
 	// IP of Scale-Out Instance: 47.107.XX.XX
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The information about the batches of the change task.
+	Desc             *string                                                        `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	PipelineInfoList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoList `json:"PipelineInfoList,omitempty" xml:"PipelineInfoList,omitempty" type:"Struct"`
-	// The state of the change process. Valid values:
+	// The status of the change.
 	//
-	// 	- 0: ready
+	// - 0: ready
 	//
-	// 	- 1: in progress
+	// - 1: in progress
 	//
-	// 	- 2: successful
+	// - 2: successful
 	//
-	// 	- 3: failed
+	// - 3: failed
 	//
-	// 	- 6: terminated
+	// - 6: stopped
 	//
-	// 	- 7: partially executed
+	// - 7: partially successful
 	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
+	// - 8: waiting for manual confirmation to proceed with the next batch in manual phased release mode
 	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
+	// - 9: waiting for the next batch to be executed in automatic phased release mode
 	//
-	// 	- 10: failed due to a system exception
+	// - 10: failed due to a system exception
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether rollbacks are allowed. Valid values:
+	// Indicates whether rollback is supported.
 	//
-	// 	- true: Rollbacks are allowed.
+	// - true: Rollback is supported.
 	//
-	// 	- false: Rollbacks are not allowed.
+	// - false: Rollback is not supported.
 	//
 	// example:
 	//
 	// false
 	SupportRollback *bool                                                 `json:"SupportRollback,omitempty" xml:"SupportRollback,omitempty"`
 	Targets         *GetChangeOrderInfoResponseBodyChangeOrderInfoTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Struct"`
-	// The throttling rules.
+	// The throttling rule.
 	TrafficControl *GetChangeOrderInfoResponseBodyChangeOrderInfoTrafficControl `json:"TrafficControl,omitempty" xml:"TrafficControl,omitempty" type:"Struct"`
 }
 
@@ -368,56 +367,13 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoList) Validate
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfo struct {
-	// The ID of each batch for the change during the phased release.
-	//
-	// example:
-	//
-	// 4c4ee320-5e47-4a48-****-************
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The name of the batch.
-	//
-	// example:
-	//
-	// Batch: 1
-	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
-	// The state of the change task. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
-	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	PipelineStatus *int32 `json:"PipelineStatus,omitempty" xml:"PipelineStatus,omitempty"`
-	// The execution results in each stage.
+	PipelineId      *string                                                                                   `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PipelineName    *string                                                                                   `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
+	PipelineStatus  *int32                                                                                    `json:"PipelineStatus,omitempty" xml:"PipelineStatus,omitempty"`
 	StageDetailList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailList `json:"StageDetailList,omitempty" xml:"StageDetailList,omitempty" type:"Struct"`
-	// The stages of the change process.
-	StageList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageList `json:"StageList,omitempty" xml:"StageList,omitempty" type:"Struct"`
-	// The time when the change task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1583911702158
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when the change task was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1583911743633
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	StageList       *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageList       `json:"StageList,omitempty" xml:"StageList,omitempty" type:"Struct"`
+	StartTime       *string                                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UpdateTime      *string                                                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfo) String() string {
@@ -540,42 +496,10 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTO struct {
-	// The ID of the stage.
-	//
-	// example:
-	//
-	// d7561440-10a6-452f-8a90-62f6e7ec****
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The name of the stage.
-	//
-	// example:
-	//
-	// Process Start
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The status of the stage. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
-	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	StageStatus *int32 `json:"StageStatus,omitempty" xml:"StageStatus,omitempty"`
-	// The information about the task.
-	TaskList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
+	StageId     *string                                                                                                         `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName   *string                                                                                                         `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageStatus *int32                                                                                                          `json:"StageStatus,omitempty" xml:"StageStatus,omitempty"`
+	TaskList    *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTO) String() string {
@@ -666,84 +590,15 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskListTaskInfoDTO struct {
-	// The type of the retry policy. Value 0 indicates no retry, value 1 indicates automatic retry, and value 2 indicates manual retry.
-	//
-	// example:
-	//
-	// 0
-	RetryType *int32 `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
-	// Indicates whether errors that occur in the change process are ignored. Valid values:``
-	//
-	// 	- true: Errors that occur in the change process are ignored. This parameter can be set to true only when URL health checks are performed.
-	//
-	// 	- false: Errors that occur in the change process are not ignored.
-	//
-	// example:
-	//
-	// false
-	ShowManualIgnorance *bool `json:"ShowManualIgnorance,omitempty" xml:"ShowManualIgnorance,omitempty"`
-	// Error codes
-	//
-	// example:
-	//
-	// 400
-	TaskErrorCode *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
-	// Indicates whether the task is error-tolerant. If the task can tolerate errors, the errors that occur in the change process are ignored and the next task is executed.
-	//
-	// 	- 0: The task is not error-tolerant.
-	//
-	// 	- 1: The task is error-tolerant.
-	//
-	// example:
-	//
-	// 0
-	TaskErrorIgnorance *int32 `json:"TaskErrorIgnorance,omitempty" xml:"TaskErrorIgnorance,omitempty"`
-	// The error message for the task.
-	//
-	// example:
-	//
-	// 400
-	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// d6d3b934-90a1-4ae8-8cbd-2446003d****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task information
-	//
-	// example:
-	//
-	// [CALLBACK] 2020-03-11 15:28:44.781  requestId: c952ab99-8c5b-4ff1-9412-ae3bf9b1****, message: success
-	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
-	// The name of the task.
-	//
-	// example:
-	//
-	// Build Image
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The state of the task. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
-	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	RetryType           *int32  `json:"RetryType,omitempty" xml:"RetryType,omitempty"`
+	ShowManualIgnorance *bool   `json:"ShowManualIgnorance,omitempty" xml:"ShowManualIgnorance,omitempty"`
+	TaskErrorCode       *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
+	TaskErrorIgnorance  *int32  `json:"TaskErrorIgnorance,omitempty" xml:"TaskErrorIgnorance,omitempty"`
+	TaskErrorMessage    *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskMessage         *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
+	TaskName            *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageDetailListStageDetailDTOTaskListTaskInfoDTO) String() string {
@@ -874,42 +729,10 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTO struct {
-	// The ID of the stage.
-	//
-	// example:
-	//
-	// 358a143f-09a0-45e0-****-************@**_*******_*****
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The name of the stage.
-	//
-	// example:
-	//
-	// Scale Out
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The results of the task executed in the stage.
+	StageId        *string                                                                                                       `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName      *string                                                                                                       `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	StageResultDTO *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTO `json:"StageResultDTO,omitempty" xml:"StageResultDTO,omitempty" type:"Struct"`
-	// The state of the stage. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
-	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status         *int32                                                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTO) String() string {
@@ -966,10 +789,8 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTO struct {
-	// The results of the task executed on each Elastic Compute Service (ECS) instance in each stage.
 	InstanceDTOList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOList `json:"InstanceDTOList,omitempty" xml:"InstanceDTOList,omitempty" type:"Struct"`
-	// The results of tasks executed in each service-oriented stage.
-	ServiceStage *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage `json:"ServiceStage,omitempty" xml:"ServiceStage,omitempty" type:"Struct"`
+	ServiceStage    *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage    `json:"ServiceStage,omitempty" xml:"ServiceStage,omitempty" type:"Struct"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTO) String() string {
@@ -1047,54 +868,12 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTO struct {
-	// The IP address of the ECS instance.
-	//
-	// example:
-	//
-	// 47.XX.XX.12 (Public)<br>***.**.*.**	- (*******)
-	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	// The name of the ECS instance.
-	//
-	// example:
-	//
-	// EDAS-scaled
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The results of the task executed on the ECS instance in each stage.
+	InstanceIp           *string                                                                                                                                                     `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	InstanceName         *string                                                                                                                                                     `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceStageDTOList *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTOInstanceStageDTOList `json:"InstanceStageDTOList,omitempty" xml:"InstanceStageDTOList,omitempty" type:"Struct"`
-	// The name of the node.
-	//
-	// example:
-	//
-	// canary-test
-	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	// The state of the pod.
-	//
-	// example:
-	//
-	// In progress
-	PodStatus *string `json:"PodStatus,omitempty" xml:"PodStatus,omitempty"`
-	// The running state. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
-	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	PodName              *string                                                                                                                                                     `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	PodStatus            *string                                                                                                                                                     `json:"PodStatus,omitempty" xml:"PodStatus,omitempty"`
+	Status               *int32                                                                                                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTO) String() string {
@@ -1203,58 +982,12 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTOInstanceStageDTOListInstanceStageDTO struct {
-	// The time when the execution stopped.
-	//
-	// example:
-	//
-	// 2020-03-11T07:28:52Z
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the stage.
-	//
-	// example:
-	//
-	// 5dd4c0f2-d81a-406f-****-************
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The information about the stage.
-	//
-	// example:
-	//
-	// Pulling image \\"registry-vpc.cn-hangzhou.aliyuncs.com****-user/1172745****_shared_repo:428084d6-265f-****-911a-7eb0d2c3****_15839117****\\
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	StageId      *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	StageMessage *string `json:"StageMessage,omitempty" xml:"StageMessage,omitempty"`
-	// The name of the stage.
-	//
-	// example:
-	//
-	// scale out
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The time when the execution was started.
-	//
-	// example:
-	//
-	// 2020-03-11T07:28:49Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The state of the stage. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
-	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOInstanceDTOListInstanceDTOInstanceStageDTOListInstanceStageDTO) String() string {
@@ -1324,46 +1057,10 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineIn
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage struct {
-	// The execution result in the stage.
-	//
-	// example:
-	//
-	// Success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the stage.
-	//
-	// example:
-	//
-	// 358a143f-09a0-45e0-****-************
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// Phase Name
-	//
-	// example:
-	//
-	// Enable Tengine
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	StageId   *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The running state. Valid values:
-	//
-	// 	- 0: ready
-	//
-	// 	- 1: in progress
-	//
-	// 	- 2: successful
-	//
-	// 	- 3: failed
-	//
-	// 	- 6: terminated
-	//
-	// 	- 8: wait for manual confirmation to trigger the next batch during a manual phased release
-	//
-	// 	- 9: wait to trigger the next batch during an automatic phased release
-	//
-	// 	- 10: failed due to a system exception
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetChangeOrderInfoResponseBodyChangeOrderInfoPipelineInfoListPipelineInfoStageListStageInfoDTOStageResultDTOServiceStage) String() string {
@@ -1440,23 +1137,23 @@ func (s *GetChangeOrderInfoResponseBodyChangeOrderInfoTargets) Validate() error 
 }
 
 type GetChangeOrderInfoResponseBodyChangeOrderInfoTrafficControl struct {
-	// The route forwarding policy.
+	// The traffic forwarding rule.
 	//
 	// example:
 	//
 	// [{"app":"9c8247da-91b6-42bb-8f99-92a0b9c6f****","type":"GROUP"}]
 	Routes *string `json:"Routes,omitempty" xml:"Routes,omitempty"`
-	// The traffic routing rules.
+	// The routing rule for traffic.
 	//
 	// example:
 	//
 	// [{"conditionType":"content","conditions":[{"key":"name","operator":"EQ","strategy":"PARAM","values":["jim"]},{"key":"name","operator":"EQ","strategy":"COOKIE","values":["jim"]}],"percent":100,"protocol":"SPRINGCLOUD","triggerPolicy":"AND"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The description of throttling rules.
+	// The description of the traffic rule.
 	//
 	// example:
 	//
-	// This canary release batch is complete, and the user has confirmed to proceed to the next batch.
+	// Canary batch release completed. Confirmed to proceed to the next batch.
 	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 }
 

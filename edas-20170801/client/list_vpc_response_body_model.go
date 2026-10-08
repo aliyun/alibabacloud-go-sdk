@@ -37,13 +37,8 @@ type ListVpcResponseBody struct {
 	// example:
 	//
 	// b197-40ab-9155-7ca7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the VPC is available. Valid values:
-	//
-	// - true: The VPC is available.
-	//
-	// - false: The VPC is unavailable.
-	VpcList *ListVpcResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Struct"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VpcList   *ListVpcResponseBodyVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Struct"`
 }
 
 func (s ListVpcResponseBody) String() string {
@@ -134,44 +129,12 @@ func (s *ListVpcResponseBodyVpcList) Validate() error {
 }
 
 type ListVpcResponseBodyVpcListVpcEntity struct {
-	// This operation uses only common request headers. For more information, see [Common parameters for API calls](https://help.aliyun.com/document_detail/123488.html).
-	//
-	// example:
-	//
-	// 0
-	EcsNum *int32 `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
-	// The region ID of the VPC.
-	//
-	// example:
-	//
-	// false
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// No request parameters.
-	//
-	// example:
-	//
-	// cn-shenzhen
+	EcsNum   *int32  `json:"EcsNum,omitempty" xml:"EcsNum,omitempty"`
+	Expired  *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// GET /pop/v5/vpc_list HTTP/1.1
-	//
-	// Common request headers
-	//
-	// example:
-	//
-	// edas_****_test@aliyun-****.com
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
-	//
-	// example:
-	//
-	// vpc-wz9pcq3jofczwpujq****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The number of ECS instances associated with the VPC.
-	//
-	// example:
-	//
-	// edas-default-vpc4
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName  *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s ListVpcResponseBodyVpcListVpcEntity) String() string {

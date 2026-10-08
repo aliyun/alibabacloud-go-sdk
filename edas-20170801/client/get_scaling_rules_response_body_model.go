@@ -115,17 +115,17 @@ func (s *GetScalingRulesResponseBody) Validate() error {
 type GetScalingRulesResponseBodyData struct {
 	// The type of the cluster. Valid values:
 	//
-	// 	- 0: regular Docker cluster
+	// - 0: regular Docker cluster
 	//
-	// 	- 1: Swarm cluster (deprecated)
+	// - 1: Swarm cluster (deprecated)
 	//
-	// 	- 2: Elastic Compute Service (ECS) cluster
+	// - 2: Elastic Compute Service (ECS) cluster
 	//
-	// 	- 3: self-managed Kubernetes cluster in EDAS
+	// - 3: self-managed Kubernetes cluster in EDAS
 	//
-	// 	- 4: cluster in which Pandora automatically registers applications
+	// - 4: cluster in which Pandora automatically registers applications
 	//
-	// 	- 5: Container Service for Kubernetes (ACK) clusters
+	// - 5: Container Service for Kubernetes (ACK) clusters
 	//
 	// example:
 	//
@@ -133,20 +133,19 @@ type GetScalingRulesResponseBodyData struct {
 	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The overcommit ratio supported by a Docker cluster. Valid values:
 	//
-	// 	- 1: 1:1, which means that resources are not overcommitted.
+	// - 1: 1:1, which means that resources are not overcommitted.
 	//
-	// 	- 2: 1:2, which means that resources are overcommitted by 1:2.
+	// - 2: 1:2, which means that resources are overcommitted by 1:2.
 	//
-	// 	- 4: 1:4, which means that resources are overcommitted by 1:4.
+	// - 4: 1:4, which means that resources are overcommitted by 1:4.
 	//
-	// 	- 8: 1:8, which means that resources are overcommitted by 1:8.
+	// - 8: 1:8, which means that resources are overcommitted by 1:8.
 	//
 	// example:
 	//
 	// 1
-	OversoldFactor *int32 `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
-	// The array data of the scaling rule.
-	RuleList *GetScalingRulesResponseBodyDataRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
+	OversoldFactor *int32                                   `json:"OversoldFactor,omitempty" xml:"OversoldFactor,omitempty"`
+	RuleList       *GetScalingRulesResponseBodyDataRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
 	// The time when the scaling rule was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
@@ -258,154 +257,27 @@ func (s *GetScalingRulesResponseBodyDataRuleList) Validate() error {
 }
 
 type GetScalingRulesResponseBodyDataRuleListRule struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 33e39be9-3e5f-*********
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The relationship among the conditions that trigger the scaling rule.
-	//
-	// 	- OR: one of the conditions
-	//
-	// 	- AND: all conditions
-	//
-	// example:
-	//
-	// OR
-	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
-	// The minimum CPU utilization that triggers the scaling rule.
-	//
-	// example:
-	//
-	// 1
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the scaling rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1574251601801
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The duration of the scaling rule. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1574251601
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Indicates whether scale-ins or scale-outs are allowed. Valid values:
-	//
-	// 	- true: Scale-ins or scale-outs are allowed.
-	//
-	// 	- false: Scale-ins or scale-outs are disallowed.
-	//
-	// example:
-	//
-	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the instance group to which the application is deployed.
-	//
-	// example:
-	//
-	// d8bb9d60-91b5-4cdf-****-************
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The maximum number of instances in the group when a scale-out is performed, or the minimum number of instances in the group when a scale-in is performed.
-	//
-	// example:
-	//
-	// 2
-	InstNum *int32 `json:"InstNum,omitempty" xml:"InstNum,omitempty"`
-	// The system load that triggers the scaling rule. The system load is evaluated based on the number of processes that are being executed by CPUs and the number of processes that wait to be executed by CPUs.
-	//
-	// example:
-	//
-	// 1
-	LoadNum *int32 `json:"LoadNum,omitempty" xml:"LoadNum,omitempty"`
-	// The type of the metric.
-	//
-	// example:
-	//
-	// HSF
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The type of the scaling rule. Valid values:
-	//
-	// 	- SCALE_IN: scale-in rules
-	//
-	// 	- SCALE_OUT: scale-out rules
-	//
-	// example:
-	//
-	// SCALE_OUT
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The policy of auto scaling across multiple zones. Valid values:
-	//
-	// 	- PRIORITY: The vSwitch that is first selected has the highest priority.
-	//
-	// 	- BALANCE: This policy evenly distributes instances across zones in which the vSwitches reside.
-	//
-	// example:
-	//
-	// PRIORITY
-	MultiAzPolicy *string `json:"MultiAzPolicy,omitempty" xml:"MultiAzPolicy,omitempty"`
-	// The source of the instance that you want to add during a scale-out. Valid values:
-	//
-	// 	- NEW: Elastic resources are used.
-	//
-	// 	- AVAILABLE: The existing resources are used.
-	//
-	// 	- AVAILABLE_FIRST: The existing resources are used first.
-	//
-	// example:
-	//
-	// AVAILABLE
-	ResourceFrom *string `json:"ResourceFrom,omitempty" xml:"ResourceFrom,omitempty"`
-	// The service latency that triggers the scaling rule. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1
-	Rt *int32 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// The ID of the specification.
-	//
-	// example:
-	//
-	// 03f493c0-xxxx-xxxx-xxxx-12e85cadeb41
-	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	// The number of instances that are added during each scale-out or removed during each scale-in.
-	//
-	// example:
-	//
-	// 1
-	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The ID of the launch template.
-	//
-	// example:
-	//
-	// lt-bp1xxxxn73pxxxxf83l
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The version of the launch template.
-	//
-	// example:
-	//
-	// 1143542
-	TemplateVersion *int32 `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The time when the scaling rule was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1574251601785
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The IDs of the vSwitches. The IDs of multiple vSwitches are separated by commas (,).
-	//
-	// example:
-	//
-	// vsw-mxxxxkxxxx4xxxxwbionj
-	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-wz9b246z******
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Cond            *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
+	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Duration        *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	InstNum         *int32  `json:"InstNum,omitempty" xml:"InstNum,omitempty"`
+	LoadNum         *int32  `json:"LoadNum,omitempty" xml:"LoadNum,omitempty"`
+	MetricType      *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	MultiAzPolicy   *string `json:"MultiAzPolicy,omitempty" xml:"MultiAzPolicy,omitempty"`
+	ResourceFrom    *string `json:"ResourceFrom,omitempty" xml:"ResourceFrom,omitempty"`
+	Rt              *int32  `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	SpecId          *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	Step            *int32  `json:"Step,omitempty" xml:"Step,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateVersion *int32  `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	UpdateTime      *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetScalingRulesResponseBodyDataRuleListRule) String() string {

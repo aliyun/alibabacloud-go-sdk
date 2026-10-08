@@ -184,19 +184,19 @@ type iInsertK8sApplicationRequest interface {
 }
 
 type InsertK8sApplicationRequest struct {
-	// The annotation of an application pod.
+	// The annotations of the application pod.
 	//
 	// example:
 	//
 	// {"annotation-name-1":"annotation-value-1","annotation-name-2":"annotation-value-2"}
 	Annotations *string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
-	// The application configuration when the application template is used. Set this parameter to a JSON array.
+	// The application configuration when an application template is used. The value is a JSON string.
 	//
 	// example:
 	//
 	// {}
 	AppConfig *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The name of the application. The name must start with a letter, and can contain digits, letters, and hyphens (-). It can be up to 36 characters in length.
+	// The name of the application. The name must start with a letter and can contain digits, letters, and hyphens (-). The name can be up to 36 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -204,7 +204,7 @@ type InsertK8sApplicationRequest struct {
 	//
 	// doc-test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the template used to create the application. If you specify an application template when you create an application, the application template and the AppConfig parameter are used to configure the application. Other configurations are ignored.
+	// The name of the application template that is used to create the application. If you specify an application template when you create the application, the application template and the AppConfig parameter are preferentially used to determine the application configuration. Other configurations are ignored.
 	//
 	// example:
 	//
@@ -214,9 +214,9 @@ type InsertK8sApplicationRequest struct {
 	//
 	// example:
 	//
-	// Application in the production environment
+	// Production Environment
 	ApplicationDescription *string `json:"ApplicationDescription,omitempty" xml:"ApplicationDescription,omitempty"`
-	// The version of `EDAS Container`. The value of this parameter conflicts with that of the `EdasContainerVersion` parameter. We recommend that you use the `EdasContainerVersion` parameter.
+	// The version of EDAS Container. This parameter conflicts with `EdasContainerVersion`. Use the `EdasContainerVersion` parameter instead.
 	//
 	// example:
 	//
@@ -230,37 +230,37 @@ type InsertK8sApplicationRequest struct {
 	//
 	// c9cd****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The application startup command. If you specify this parameter, the value of this parameter will replace the startup command in the image.
+	// The startup command of the application. If you set this parameter, the original startup command of the image is overridden.
 	//
 	// example:
 	//
 	// ls
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The arguments in the command. The parameter value is a JSON array of strings. An example is `[{"argument":"-c"},{"argument":"test"}]`, where `-c` and `test` are two arguments that can be set.
+	// The arguments for the startup command. The arguments are a JSON array of strings. Example: `[{"argument":"-c"},{"argument":"test"}]`. In this example, `-c` and `test` are two arguments.
 	//
 	// example:
 	//
 	// [{"argument":"-lh"}]
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// The configuration for mounting a Kubernetes ConfigMap or Secret to a directory in an elastic container instance. The following parameters are included in the configuration:
+	// The configuration for mounting Kubernetes ConfigMaps and Secrets. You can mount ConfigMaps and Secrets to specified directories in a container. The following parameters are included in ConfigMountDescs:
 	//
-	// 	- name: the name of the Kubernetes ConfigMap or Secret.
+	// - name: The name of the ConfigMap or Secret.
 	//
-	// 	- type: the type of the API object that you want to mount. You can mount a Kubernetes ConfigMap or Secret.
+	// - type: The configuration type. Valid values: ConfigMap and Secret.
 	//
-	// 	- mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	// - mountPath: The mount path. The path must be an absolute path that starts with a forward slash (/).
 	//
 	// example:
 	//
 	// [{"name":"nginx-config","type":"ConfigMap","mountPath":"/etc/nginx"},{"name":"tls-secret","type":"secret","mountPath":"/etc/ssh"}]
 	ConfigMountDescs *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
-	// The ID of the repository used to build the image repository. If this parameter is left empty, the default repository provided by EDAS is used. Only the default repository provided by EDAS is supported.
+	// The ID of the repository that is used to build the image repository. If you leave this parameter empty, the default repository provided by EDAS is used. Currently, only the default repository provided by EDAS is supported.
 	//
 	// example:
 	//
-	// Leave empty
+	// leave empty
 	ContainerRegistryId *string `json:"ContainerRegistryId,omitempty" xml:"ContainerRegistryId,omitempty"`
-	// The ID of the cluster. This parameter is required only when you create the application in a cluster that has not been imported.
+	// You must specify CsClusterId only when you create an application in a cluster that has never been imported.
 	//
 	// example:
 	//
@@ -271,134 +271,148 @@ type InsertK8sApplicationRequest struct {
 	// example:
 	//
 	// demo
-	CustomAffinity     *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
+	CustomAffinity *string `json:"CustomAffinity,omitempty" xml:"CustomAffinity,omitempty"`
+	// The version of the agent.
+	//
+	// example:
+	//
+	// 2.8.3,3.2.10,4.3.1
 	CustomAgentVersion *string `json:"CustomAgentVersion,omitempty" xml:"CustomAgentVersion,omitempty"`
-	// The custom tolerances.
+	// The custom tolerations.
 	//
 	// example:
 	//
 	// demo
 	CustomTolerations *string `json:"CustomTolerations,omitempty" xml:"CustomTolerations,omitempty"`
-	// Specifies whether to distribute application instances across nodes. Value `true` indicates that application instances are distributed across nodes. Other values indicate that application instances are not distributed across nodes.
+	// Specifies whether to distribute application instances to multiple nodes. A value of `true` means yes. Other values mean no.
 	//
 	// example:
 	//
 	// true
 	DeployAcrossNodes *string `json:"DeployAcrossNodes,omitempty" xml:"DeployAcrossNodes,omitempty"`
-	// Specifies whether to distribute application instances across zones. Value `true` indicates that application instances are distributed across zones. Other values indicate that application instances are not distributed across zones.
+	// Specifies whether to distribute application instances to multiple zones. A value of `true` means yes. Other values mean no.
 	//
 	// example:
 	//
 	// true
 	DeployAcrossZones *string `json:"DeployAcrossZones,omitempty" xml:"DeployAcrossZones,omitempty"`
-	// The version of `EDAS Container` on which the deployment package of the application depends.
+	// The version of the `EDAS-Container` on which the deployment package depends.
 	//
-	// > This parameter is unavailable if you deploy applications by using images.
+	// > This parameter is not supported for image-based deployments.
 	//
 	// example:
 	//
 	// 3.5.9
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	// The configuration for mounting a Kubernetes emptyDir volume to a directory in an elastic container instance. The following parameters are included in the configuration:
+	// The configuration for mounting a Kubernetes emptyDir volume. You can mount an emptyDir volume to a specified directory in a container. The following parameters are included in EmptyDirs:
 	//
-	// 	- mountPath: The mount path in the container. This parameter is required.
+	// - mountPath: The mount path in the container. This parameter is required.
 	//
-	// 	- readOnly: (Optional) The mount mode. Value true indicates the read-only mode. Value false indicates the read and write mode. Default value: false.
+	// - readOnly: Specifies whether the volume is read-only. This parameter is optional. true specifies read-only. false specifies read and write. Default value: false.
 	//
-	// 	- subPathExpr: (Optional) The regular expression that is used to match the subdirectory.
+	// - subPathExpr: The subdirectory expression. This parameter is optional.
 	//
 	// example:
 	//
 	// [{"mountPath":"/app-log","subPathExpr":"$(POD_IP)"},{"readOnly":true,"mountPath":"/etc/nginx"}]
 	EmptyDirs *string `json:"EmptyDirs,omitempty" xml:"EmptyDirs,omitempty"`
-	// Specifies whether to enable access to Application High Availability Service (AHAS). Valid values:
+	// Specifies whether to enable Application High Availability Service (AHAS):
 	//
-	// 	- true: enables access to AHAS.
+	// - true: Enable AHAS.
 	//
-	// 	- false: does not enable access to AHAS.
+	// - false: Do not enable AHAS.
 	//
 	// example:
 	//
 	// true
 	EnableAhas *bool `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// Specifies whether to activate Alibaba Cloud Service Mesh (ASM). Set this parameter to true only when you create the application in a cluster that has not been imported and you need to use ASM.
+	// You must set this parameter to true only when you create an application in a cluster that has never been imported and enable Service Mesh (ASM).
 	//
 	// example:
 	//
 	// false
 	EnableAsm *bool `json:"EnableAsm,omitempty" xml:"EnableAsm,omitempty"`
-	// Specifies whether to enable the empty list protection feature. Valid values:
+	// Specifies whether to enable protection against empty pushes:
 	//
-	// 	- true: enables the empty list protection feature.
+	// - true: Enable protection against empty pushes.
 	//
-	// 	- false: disables the empty list protection feature.
+	// - false: Do not enable protection against empty pushes.
 	//
 	// example:
 	//
 	// false
 	EnableEmptyPushReject *bool `json:"EnableEmptyPushReject,omitempty" xml:"EnableEmptyPushReject,omitempty"`
-	// Specifies whether to enable graceful start rules. Valid values:
+	// Specifies whether to enable the graceful start rule:
 	//
-	// 	- true: enables graceful start rules.
+	// - true: Enable the graceful start rule.
 	//
-	// 	- false: disables graceful start rules.
+	// - false: Do not enable the graceful start rule.
 	//
 	// example:
 	//
 	// true
 	EnableLosslessRule *bool `json:"EnableLosslessRule,omitempty" xml:"EnableLosslessRule,omitempty"`
-	// The Kubernetes environment variables that are configured in EnvFrom mode. A ConfigMap or Secret is mounted to a directory. Each key corresponds to a file in the directory, and the content of the file is the value of the key.
+	// The configuration for environment variables of the Kubernetes EnvFrom type. You can mount a specified ConfigMap or Secret to a specified directory. Each key corresponds to a file in the directory. The content of the file is the value of the key.
 	//
-	// The following parameters are included in the configuration:
+	// The following parameters are included in EnvFroms:
 	//
-	// 	- configMapRef: the ConfigMap that is referenced. The following parameter is contained:
+	// - configMapRef: The reference to the ConfigMap. This field includes the following parameter:
 	//
-	//     	- name: the name of the ConfigMap.
+	//   - name: The name of the ConfigMap.
 	//
-	// 	- secretRef: the Secret that is referenced. The following parameter is contained:
+	// - secretRef: The reference to the Secret. This field includes the following parameter:
 	//
-	//     	- name: the name of the Secret.
+	//   - name: The name of the Secret.
 	//
 	// example:
 	//
 	// [{"name":"appname","valueFrom":{"configMapKeyRef":{"name":"appconf","key":"name"}}}]
 	EnvFroms *string `json:"EnvFroms,omitempty" xml:"EnvFroms,omitempty"`
-	// The environment variables that are used to deploy the application. The value must be a JSON array. Valid values: regular environment variables, Kubernetes ConfigMap environment variables, or Kubernetes Secret environment variables. Specify regular environment variables in the following format:
+	// The environment variables for the deployment. The value must be a JSON array of objects. Three types of environment variables are supported: regular environment variables, Kubernetes ConfigMap environment variables, and Kubernetes Secret environment variables. The format of a regular environment variable is as follows:
 	//
 	// `{"name":"x", "value": "y"}`
 	//
-	// Specify Kubernetes ConfigMap environment variables in the following format to reference values from ConfigMaps:
+	// You can use a ConfigMap to inject the value of a specific key into a container\\"s environment variable. The format is as follows:
 	//
 	// `{ "name": "x2", "valueFrom": { "configMapKeyRef": { "name": "my-config", "key": "y2" } } }`
 	//
-	// Specify Kubernetes Secret environment variables in the following format to reference values from Secrets:
+	// You can use a Secret to inject the value of a specific key into a container\\"s environment variable. The format is as follows:
 	//
 	// `{ "name": "x3", "valueFrom": { "secretKeyRef": { "name": "my-secret", "key": "y3" } } }`
 	//
-	// >  If you want to cancel this configuration, set this parameter to an empty JSON array in the format of "[]".
+	// > To clear this configuration, set the value to an empty JSON array ([]).
 	//
 	// example:
 	//
 	// [{"name":"x1","value":"y1"},{"name":"x2","valueFrom":{"configMapKeyRef":{"name":"my-config","key":"y2"}}},{"name":"x3","valueFrom":{"secretKeyRef":{"name":"my-secret","key":"y3"}}}]
-	Envs          *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The configuration of the custom monitoring and administration solution.
+	//
+	// example:
+	//
+	// {"features":[{"name":"base.combination.arms","enable":true},{"name":"base.combination.mse","enable":true}]}
 	FeatureConfig *string `json:"FeatureConfig,omitempty" xml:"FeatureConfig,omitempty"`
-	// Mirror the target platform architecture, which is effective when deployed using war or jar. Enter an example:
+	// The architecture of the image platform. This parameter is valid when you use a WAR or JAR package for deployment. Examples:
 	//
-	// - Specify x86 64 architecture: Linux/amd64
+	// - To specify the x86-64 architecture, enter linux/amd64.
 	//
-	// - Specify ARM 64 architecture: Linux/arm64
+	// - To specify the ARM64 architecture, enter linux/arm64.
 	//
-	// - Specify the construction of dual architecture images: Linux/amd64, Linux/arm64
+	// - To build a dual-architecture image, enter linux/amd64,linux/arm64.
 	//
-	// - Do not input: default schema
+	// - If you do not enter a value, the default architecture is used.
+	//
+	// example:
+	//
+	// linux/arm64,linux/amd64
 	ImagePlatforms *string `json:"ImagePlatforms,omitempty" xml:"ImagePlatforms,omitempty"`
-	// The URL of the image. This parameter is required if you set the `PackageType` parameter to `Image`.
+	// The address of the image. This parameter is required when you set `PackageType` to `Image`.
 	//
 	// example:
 	//
 	// registry.cn-beijing.aliyuncs.com/****_test/****-cons****:1.0
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Set the initialization container for the application Pod. Support setting the format YAML for container configuration, which is the value of Init container YAML configured with base64 encoding.
+	// The init containers for the application pod. You can set the container configuration in the YAML format. The value is the Base64-encoded YAML configuration of the init container.
 	//
 	// example:
 	//
@@ -412,37 +426,37 @@ type InsertK8sApplicationRequest struct {
 	//
 	// ]
 	InitContainers *string `json:"InitContainers,omitempty" xml:"InitContainers,omitempty"`
-	// The ID of the Internet-facing SLB instance. If you do not specify this parameter, EDAS automatically purchases a new SLB instance for you.
+	// The ID of the internet-facing SLB instance. If you do not specify this parameter, EDAS automatically purchases a new SLB instance for you.
 	//
 	// example:
 	//
 	// a3d4********
 	InternetSlbId *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
-	// The frontend port of the Internet-facing SLB instance. Valid values: 1 to 65535.
+	// The frontend port of the internet-facing SLB instance. The value must be in the range of 1 to 65535.
 	//
 	// example:
 	//
 	// 80
 	InternetSlbPort *int32 `json:"InternetSlbPort,omitempty" xml:"InternetSlbPort,omitempty"`
-	// The protocol used by the Internet-facing SLB instance. Valid values: TCP, HTTP, and HTTPS.
+	// The protocol used by the internet-facing SLB instance. Valid values: TCP, HTTP, and HTTPS.
 	//
 	// example:
 	//
 	// TCP
 	InternetSlbProtocol *string `json:"InternetSlbProtocol,omitempty" xml:"InternetSlbProtocol,omitempty"`
-	// The backend port of the internal-facing SLB instance. This port also serves as the service port of the application. Valid values: 1 to 65535.
+	// The backend port of the internal SLB instance, which also serves as the service port for the application. The port number must be an integer from 1 to 65535.
 	//
 	// example:
 	//
 	// 8080
 	InternetTargetPort *int32 `json:"InternetTargetPort,omitempty" xml:"InternetTargetPort,omitempty"`
-	// The ID of the internal-facing SLB instance. If you do not specify this parameter, Enterprise Distributed Application Service (EDAS) automatically purchases a new SLB instance for you.
+	// The ID of the internal-facing SLB instance. If you do not specify this parameter, EDAS automatically purchases a new SLB instance for you.
 	//
 	// example:
 	//
 	// ae93********
 	IntranetSlbId *string `json:"IntranetSlbId,omitempty" xml:"IntranetSlbId,omitempty"`
-	// The frontend port of the internal-facing SLB instance. Valid values: 1 to 65535.
+	// The frontend port of the internal-facing SLB instance. The value must be in the range of 1 to 65535.
 	//
 	// example:
 	//
@@ -454,209 +468,207 @@ type InsertK8sApplicationRequest struct {
 	//
 	// TCP
 	IntranetSlbProtocol *string `json:"IntranetSlbProtocol,omitempty" xml:"IntranetSlbProtocol,omitempty"`
-	// The backend port of the internal-facing Server Load Balancer (SLB) instance. This port also serves as the service port of the application. Valid values: 1 to 65535.
+	// The backend port of the internal-facing SLB instance. This is also the service port of the application. The value must be in the range of 1 to 65535.
 	//
 	// example:
 	//
 	// 80
 	IntranetTargetPort *int32 `json:"IntranetTargetPort,omitempty" xml:"IntranetTargetPort,omitempty"`
-	// Specifies whether the application is a multi-language application.
+	// Specifies whether the application is a multilingual application.
 	//
 	// example:
 	//
 	// true
 	IsMultilingualApp *bool `json:"IsMultilingualApp,omitempty" xml:"IsMultilingualApp,omitempty"`
-	// The version of the Java Development Kit (JDK) on which the deployment package of the application depends. Valid values: Open JDK 7 and Open JDK 8. This parameter is unavailable if you deploy applications by using images.
+	// The version of the Java Development Kit (JDK) on which the deployment package depends. Valid values: Open JDK 7, Open JDK 8, and Custom OpenJDK. This parameter is not supported for image-based deployments. If you select Custom OpenJDK, you must also specify the UserBaseImageUrl parameter.
 	//
 	// example:
 	//
 	// Open JDK 8
 	JDK *string `json:"JDK,omitempty" xml:"JDK,omitempty"`
-	// The configuration of Java startup parameters for a Java application. These startup parameters involve the memory, application, garbage collection (GC) policy, tools, service registration and discovery, and custom configurations. Appropriate parameter settings help reduce the GC overheads, shorten the server response time, and improve the throughput. Set this parameter to a JSON string. In the example, original indicates the configuration value, and startup indicates a startup parameter. The system automatically concatenates all startup values as the settings of Java startup parameters for the application. To delete this configuration, leave the parameter value empty by entering `""` or `"{}"`. The following parameters are included in the configuration:
+	// The Java startup parameters. You can configure startup parameters for a Java application. You can configure memory, application, garbage collection (GC) policy, tools, service registration and discovery, and custom parameters. Proper parameter configuration helps reduce GC overhead, shorten server response time, and improve throughput. The value is a JSON string. original specifies the configuration value, and startup specifies the startup parameter. The system automatically concatenates all startup values as the Java startup parameters for the application. To clear the configuration, set the value to `""` or `"{}"`. The keys in the JSON string are described as follows:
 	//
-	// 	- InitialHeapSize: the initial size of the heap memory.
+	// - InitialHeapSize: the initial heap size.
 	//
-	// 	- MaxHeapSize: the maximum size of the heap memory.
+	// - MaxHeapSize: the maximum heap size.
 	//
-	// 	- CustomParams: the custom parameters, such as JVM -D parameters.
+	// - CustomParams: custom content, such as JVM -D parameters.
 	//
-	// 	- Other parameters: You can view the JSON structure submitted by the frontend.
+	// - Other keys: You can view the JSON structure submitted by the frontend.
 	//
 	// example:
 	//
 	// {"InitialHeapSize":{"original":512,"startup":"-Xms512m"},"MaxHeapSize":{"original":1024,"startup":"-Xmx1024m"},"CustomParams":{"original":"-Dcustom.property.sample=false","startup":"-Dcustom.property.sample=false"}}
 	JavaStartUpConfig *string `json:"JavaStartUpConfig,omitempty" xml:"JavaStartUpConfig,omitempty"`
-	// The label of an application pod.
+	// The labels of the application pod.
 	//
 	// example:
 	//
 	// {"label-name-1":"label-value-1","label-name-2":"label-value-2"}
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The maximum number of CPU cores allowed for each application instance when the application is running. Unit: cores. If the LimitmCpu parameter is specified, you can ignore this parameter.
+	// The maximum number of CPU cores that can be used by an application instance. If you specify LimitmCpu, this parameter is ignored.
 	//
 	// example:
 	//
 	// 4
 	LimitCpu *int32 `json:"LimitCpu,omitempty" xml:"LimitCpu,omitempty"`
-	// The maximum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	// The maximum ephemeral storage. Unit: GB. A value of 0 means no limit.
 	//
 	// example:
 	//
 	// 4
 	LimitEphemeralStorage *int32 `json:"LimitEphemeralStorage,omitempty" xml:"LimitEphemeralStorage,omitempty"`
-	// The maximum size of memory allowed for each application instance when the application is running. Unit: MB. The value of LimitMem must be greater than that of RequestsMem.
+	// The maximum amount of memory that can be used by an application instance. Unit: MB. The value of LimitMem must be greater than or equal to the value of RequestsMem.
 	//
 	// example:
 	//
 	// 2
 	LimitMem *int32 `json:"LimitMem,omitempty" xml:"LimitMem,omitempty"`
-	// The maximum number of CPU cores allowed for each application instance when the application is running. Unit: millicores. Value 0 indicates that no limit is set on CPU cores.
+	// The maximum number of CPU cores that can be used by an application instance. Unit: millicores. A value of 0 means no limit.
 	//
 	// example:
 	//
 	// 1000
 	LimitmCpu *int32 `json:"LimitmCpu,omitempty" xml:"LimitmCpu,omitempty"`
-	// The configuration for the liveness check on the container. Example: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080}}`.
+	// The liveness probe of the container. Example: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080}}`.
 	//
-	// If you want to cancel this configuration, leave the parameter value empty by entering `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	// To clear this configuration, set the value to `""` or `{}`. If you do not set this parameter, it is ignored.
 	//
 	// example:
 	//
 	// {"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080}}
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	// The configurations that are used when the host files are mounted to the container on which the application is running. Example: `[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt","mountPath":"/app/storage"}\\]`. Description:
+	// The configuration for mounting a host file to a container. Example: `[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt","mountPath":"/app/storage"}]`. The following parameters are included:
 	//
-	// 	- `nodePath`: the host path.
+	// - `nodePath`: the path on the host.
 	//
-	// 	- `mountPath`: the path in the container.
+	// - `mountPath`: the path in the container.
 	//
-	// 	- `type`: the mounting type.
+	// - `type`: the mount type.
 	//
 	// example:
 	//
 	// [{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt","mountPath":"/app/storage"}]
 	LocalVolume *string `json:"LocalVolume,omitempty" xml:"LocalVolume,omitempty"`
-	// The ID of the EDAS namespace. This parameter is required for a non-default namespace.
+	// The ID of the EDAS namespace. This parameter is required if you want to use a non-default namespace.
 	//
 	// example:
 	//
 	// cn-shenzhen:beta****
 	LogicalRegionId *string `json:"LogicalRegionId,omitempty" xml:"LogicalRegionId,omitempty"`
-	// Specifies whether to enable the graceful rolling deployment mode and ensure that the service is registered before the readiness check. Valid values:
+	// Specifies whether to enable the graceful rolling deployment mode in which service registration is complete before the readiness probe is passed:
 	//
-	// 	- true: provides port 55199 and the /health path for the health check in a non-intrusive manner. When the service is registered, the system returns HTTP 200 status code. Otherwise, the system returns HTTP 500 status code.
+	// - true: A health check URL is provided for the application on port 55199. The path is /health. The URL returns 200 after the service is registered. Otherwise, the URL returns 500.
 	//
-	//     **
+	//   > If you also set `LosslessRuleRelated` to `true`, this URL is used to check whether the service warm-up is complete.
 	//
-	//     **Note**If you set both the `LosslessRuleRelated` parameter and this parameter to `true`, the operation checks whether the service prefetching is complete.
-	//
-	// 	- false: does not check whether the service is registered.
+	// - false: A URL is not provided for the application to check whether the service is registered.
 	//
 	// example:
 	//
 	// false
 	LosslessRuleAligned *bool `json:"LosslessRuleAligned,omitempty" xml:"LosslessRuleAligned,omitempty"`
-	// The delay of service registration. Valid values: 0 to 86400. Unit: seconds.
+	// The delay of service registration. Unit: seconds. The value must be in the range of 0 to 86400.
 	//
 	// example:
 	//
 	// 0
 	LosslessRuleDelayTime *int32 `json:"LosslessRuleDelayTime,omitempty" xml:"LosslessRuleDelayTime,omitempty"`
-	// The number of prefetching curves. Valid values: 0 to 20. The default value is 2, which is suitable for common prefetching scenarios. This value indicates that the received traffic of the provider during prefetching is displayed as a quadratic curve.
+	// The warm-up curve of the service. The value must be in the range of 0 to 20. Default value: 2. This value is suitable for normal warm-up scenarios and indicates that the traffic that the service provider receives follows a quadratic curve during the warm-up period.
 	//
 	// example:
 	//
 	// 2
 	LosslessRuleFuncType *int32 `json:"LosslessRuleFuncType,omitempty" xml:"LosslessRuleFuncType,omitempty"`
-	// Specifies whether to enable the graceful rolling deployment mode and ensure that the service prefetching is complete before the readiness check. Valid values:
+	// Specifies whether to enable the graceful rolling deployment mode in which service warm-up is complete before the readiness probe is passed:
 	//
-	// 	- true: provides port 55199 and the /health path for the health check in a non-intrusive manner. When the service prefetching is complete, the system returns HTTP 200 status code. Otherwise, the system returns HTTP 500 status code.
+	// - true: A health check URL is provided for the application on port 55199. The path is /health. The URL returns 200 after the service warm-up is complete. Otherwise, the URL returns 500.
 	//
-	// 	- false: does not check whether the service prefetching is complete.
+	// - false: A URL is not provided for the application to check whether the service warm-up is complete.
 	//
 	// example:
 	//
 	// false
 	LosslessRuleRelated *bool `json:"LosslessRuleRelated,omitempty" xml:"LosslessRuleRelated,omitempty"`
-	// The service prefetching duration. Valid values: 0 to 86400. Unit: seconds.
+	// The warm-up duration of the service. Unit: seconds. The value must be in the range of 0 to 86400.
 	//
 	// example:
 	//
 	// 120
 	LosslessRuleWarmupTime *int32 `json:"LosslessRuleWarmupTime,omitempty" xml:"LosslessRuleWarmupTime,omitempty"`
-	// The description of the NAS mounting configuration. Set this parameter to a serialized JSON string. Example: `[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}\\]`. The `nasPath` parameter specifies the file storage path, and the `mountPath` parameter specifies the path to mount the file system to the container where the application is running.
+	// The description of the mount configuration. The value is a serialized JSON string. Example: `[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}]`. `nasPath` specifies the file storage path. `mountPath` specifies the path to which the file system is mounted in the container.
 	//
 	// example:
 	//
 	// [{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}]
 	MountDescs *string `json:"MountDescs,omitempty" xml:"MountDescs,omitempty"`
-	// The namespace of the Kubernetes cluster. This parameter specifies the Kubernetes namespace in which your application is deployed. By default, the default namespace is used.
+	// The namespace of the Kubernetes cluster. This parameter determines the Kubernetes namespace in which your application is deployed. The default value is default.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the Network Attached Storage (NAS) file system that you want to mount to the application. If you do not specify this parameter but specify the MountDescs parameter, a NAS file system is automatically purchased and mounted to the vSwitch in the VPC.
+	// The ID of the NAS file system that you want to mount. If you do not specify this parameter but mountDescs is specified, a new NAS file system is automatically purchased and mounted to a vSwitch in the VPC.
 	//
 	// example:
 	//
 	// dfs23****
 	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	// The type of the deployment package. Valid values: FatJar, WAR, and Image.
+	// The type of the application package. Valid values: FatJar, WAR, and Image.
 	//
 	// example:
 	//
 	// WAR
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The URL of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application.
+	// The URL of the deployment package. This parameter is required for applications that are deployed using a FatJar or WAR package.
 	//
-	// > The version of EDAS SDK for Java or Python must be V2.44.0 or later.
+	// > The version of the EDAS POP API SDK for Java or Python must be 2.44.0 or later.
 	//
 	// example:
 	//
 	// https://e***.oss-cn-beijing.aliyuncs.com/s***-1.0-SNAPSHOT-spring-boot.jar
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// The version of the deployment package. This parameter is required if you use a FatJar or WAR package to deploy the application. You must specify a version.
+	// The version number of the deployment package. This parameter is required for WAR and FatJar packages. You can define the meaning of the version number.
 	//
-	// > The version of EDAS SDK for Java or Python must be V2.44.0 or later.
+	// > The version of the EDAS POP API SDK for Java or Python must be 2.44.0 or later.
 	//
 	// example:
 	//
 	// 20200720
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The post-start script. Example: `{"exec":{"command":["cat","/etc/group"\\]}}`.
+	// The script that is run after the container is started. Example: `{"exec":{"command":["cat","/etc/group"]}}`.
 	//
-	// If you want to cancel this configuration, leave this parameter empty by setting it to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	// To clear this configuration, set the value to `""` or `{}`. If you do not set this parameter, it is ignored.
 	//
 	// example:
 	//
 	// {\\"exec\\":{\\"command\\":[\\"ls\\",\\"/\\"]}}"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The pre-stop script. Example: `{"tcpSocket":{"host":"", "port":8080}}`.
+	// The script that is run before the container is stopped. Example: `{"tcpSocket":{"host":"", "port":8080}}`.
 	//
-	// If you want to cancel this configuration, leave this parameter empty by setting it to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	// To clear this configuration, set the value to `""` or `{}`. If you do not set this parameter, it is ignored.
 	//
 	// example:
 	//
 	// {\\"exec\\":{\\"command\\":[\\"ls\\",\\"/\\"]}}"
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The configuration for mounting a Kubernetes PersistentVolumeClaim (PVC) volume to a directory in an elastic container instance. The following parameters are included in the configuration:
+	// The configuration for mounting a Kubernetes PersistentVolumeClaim (PVC). You can mount a Kubernetes PVC volume to a specified directory in a container. The following parameters are included in PvcMountDescs:
 	//
-	// 	- pvcName: the name of the PVC volume. Make sure that the PVC volume is an existing volume and is in the Bound state.
+	// - pvcName: The name of the PVC volume. The PVC volume must exist and be in the Bound state.
 	//
-	// 	- mountPaths: the directory to which you want to mount the PVC volume. You can configure multiple directories. You can set the following two parameters for each mount directory:
+	// - mountPaths: The list of mount directories. You can configure multiple mount directories. Each mount directory supports two parameters.
 	//
-	//     	- mountPath: the mount path. The mount path must be an absolute path that starts with a forward slash (/).
+	//   - mountPath: The mount path. The path must be an absolute path that starts with a forward slash (/).
 	//
-	//     	- readOnly: the mount mode. Value true indicates the read-only mode. Value false indicates the read and write mode. Default value: false.
+	//   - readOnly: The mount mode. true specifies the read-only mode. false specifies the read and write mode. Default value: false.
 	//
 	// example:
 	//
 	// [{"pvcName":"nas-pvc-1","mountPaths":[{"mountPath":"/usr/share/nginx/data"},{"mountPath":"/usr/share/nginx/html","readOnly":true}]}]
 	PvcMountDescs *string `json:"PvcMountDescs,omitempty" xml:"PvcMountDescs,omitempty"`
-	// The configuration for the readiness check on the container. If the check fails, the traffic that passes through the Kubernetes Service is not transmitted to the container. Example: \\`{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": \[{"name": "test","value": "testvalue"}\\\\]}}\\`.``
+	// The readiness probe of the container. If the check fails, traffic is not routed to the container through the Kubernetes Service. Example: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"}]}}`.
 	//
-	// If you want to cancel this configuration, leave the parameter value empty by entering `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	// To clear this configuration, set the value to `""` or `{}`. If you do not set this parameter, it is ignored.
 	//
 	// example:
 	//
@@ -674,25 +686,25 @@ type InsertK8sApplicationRequest struct {
 	//
 	// ced********
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The maximum number of CPU cores allowed for each application instance when the application is created. Unit: cores. Value 0 indicates that no limit is set on CPU cores. If the RequestsmCpu parameter is specified, the value of the RequestsmCpu parameter is used. You can ignore this parameter.
+	// The number of CPU cores requested for an application instance upon creation. Unit: cores. A value of 0 means no limit. If you specify RequestsmCpu, this parameter is ignored.
 	//
 	// example:
 	//
 	// 0
 	RequestsCpu *int32 `json:"RequestsCpu,omitempty" xml:"RequestsCpu,omitempty"`
-	// The minimum size of space required by ephemeral storage. Unit: GB. Value 0 indicates that no limit is set on the space size.
+	// The minimum ephemeral storage. Unit: GB. A value of 0 means no limit.
 	//
 	// example:
 	//
 	// 2
 	RequestsEphemeralStorage *int32 `json:"RequestsEphemeralStorage,omitempty" xml:"RequestsEphemeralStorage,omitempty"`
-	// The maximum size of memory allowed for each application instance when the application is created. Unit: MB. Value 0 indicates that no limit is set on the memory size. The value of RequestsMem cannot be greater than that of LimitMem.
+	// The amount of memory requested for an application instance upon creation. Unit: MB. A value of 0 means no limit. The value of RequestsMem cannot be greater than the value of LimitMem.
 	//
 	// example:
 	//
 	// 0
 	RequestsMem *int32 `json:"RequestsMem,omitempty" xml:"RequestsMem,omitempty"`
-	// The maximum number of CPU cores allowed for each application instance when the application is created. Unit: millicores.
+	// The number of CPU cores requested for an application instance upon creation. Unit: millicores.
 	//
 	// example:
 	//
@@ -710,72 +722,77 @@ type InsertK8sApplicationRequest struct {
 	//
 	// runc
 	RuntimeClassName *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
-	// The name of the credential that is used to pull the images specified by the user. You must configure the Secret.
+	// The name of the image pull secret. You must create the secret.
 	//
 	// example:
 	//
 	// edas-app-01-image-secret
-	SecretName      *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The SecurityContext attribute for the application pod container. The value is the Base64-encoded YAML configuration of the SecurityContext.
+	//
+	// example:
+	//
+	// {"yamlEncoded":"cnVuQXNVc2VyOiAwCnJ1bkFzR3JvdXA6IDA="}
 	SecurityContext *string `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty"`
-	// The configurations of services in a Kubernetes cluster.
+	// The configuration of the Kubernetes Service.
 	//
 	// example:
 	//
 	// [{"name": "test-svc-create","serviceType":"ClusterIP","portMappings":[{"servicePort": {"targetPort":8080,"port":80,"protocol":"TCP"}}]}]
 	ServiceConfigs *string `json:"ServiceConfigs,omitempty" xml:"ServiceConfigs,omitempty"`
-	// Set up a Sidecar container for the application Pod. Support setting the format YAML for container configuration, which is the value of Sidecar container YAML configured with base64 encoding.
+	// The sidecar containers for the application pod. You can set the container configuration in the YAML format. The value is the Base64-encoded YAML configuration of the sidecar container.
 	//
 	// example:
 	//
 	// [{"yamlEncoded":"Y29tbWFuZDoKICAtIHRhaWwKICAtICctZicKICAtIC9kZXYvbnVsbAppbWFnZTogJ2J1c3lib3g6bGF0ZXN0JwpuYW1lOiBidXN5Ym94Cg=="}]
 	Sidecars *string `json:"Sidecars,omitempty" xml:"Sidecars,omitempty"`
-	// The Logstore configuration. To delete this configuration, leave the parameter value empty by entering `""` or `"{}"`.
+	// The Logstore configuration. To clear the configuration, set the value to `""` or `"{}"`:
 	//
-	// 	- The following parameters are included in the configuration:
+	// - Configs:
 	//
-	//     	- type: the collection type. Set this parameter to file to specify the file type. Set this parameter to stdout to specify the standard output type.
+	//   - type: The collection type. file indicates the file type. stdout indicates the standard output type.
 	//
-	//     	- logstore: the name of the Logstore. Make sure that the name of the Logstore is unique in the cluster. The name must comply with the following rules:
+	//   - Logstore: The name of the Logstore. Make sure that the Logstore name is unique in the same cluster and meets the following naming conventions:
 	//
-	//         	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	//     - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	//         	- The name must start and end with a lowercase letter or a digit.
+	//     - The name must start and end with a lowercase letter or a digit.
 	//
-	//         	- The name must be 3 to 63 characters in length. If you leave this parameter empty, the system automatically generates a name.
+	//     - The name must be 3 to 63 characters in length. If you leave this parameter empty, the system automatically generates a name.
 	//
-	//     	- LogDir: If the standard output type is used, the collection path is stdout.log. If the file type is used, the collection path is the path of the collected file. Wildcards (\\*) are supported. The collection path must match the following regular expression: `^/(.+)/(.*)^/$`.
+	//   - LogDir: If the collection type is standard output, the collection path is stdout.log. If the collection type is file, the collection path is the path of the file to be collected. Wildcards are supported. The collection path must match the following regular expression: `^/(.+)/(.*)^/$`.
 	//
 	// example:
 	//
 	// [{"logstore":"thisisanotherfilelog","type":"file","logDir":"/var/log/*"},{"logstore":"","type":"stdout","logDir":"stdout.log"},{"logstore":"thisisafilelog","type":"file","logDir":"/tmp/log/*"}]
 	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	// The startup probe can be used to detect the viability of slow start containers, avoiding them from being killed before startup. The format is as follows: {"FailureThreshold": 3, "initialDelaySeconds": 5, "SuccessThreshold": 1, "timeoutSeconds": 1, "https Get": {"path": "/consumer", "port": 8080, "scheme": "HTTP", "https Headers": [{"name": "test", "value": "testvalue"}]}.
+	// The startup probe. You can use a startup probe to check the liveness of a slow-start container and prevent the container from being killed before it is started. Example: {"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"}]}}.
 	//
-	// If set to "" or {}, it means delete, and if not set, it means ignore.
+	// To clear this configuration, set the value to "" or {}. If you do not set this parameter, it is ignored.
 	//
 	// example:
 	//
 	// {"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080}}
 	Startup *string `json:"Startup,omitempty" xml:"Startup,omitempty"`
-	// The storage type of the NAS file system.
+	// The storage type of the NAS file system. Valid values:
 	//
-	// 	- Valid values for General-purpose NAS file systems: Capacity and Performance.
+	// - General-purpose NAS file systems: Capacity and Performance
 	//
-	// 	- Valid values for Extreme NAS file systems: Standard and Advance.
+	// - Extreme NAS file systems: Standard and Advance
 	//
-	// You can set this parameter only to Performance.
+	// Currently, only the Performance type is supported.
 	//
 	// example:
 	//
 	// Performance
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// Set the grace stop timeout for the application. Unit: seconds.
+	// The timeout period for a graceful stop. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	TerminateGracePeriod *int32 `json:"TerminateGracePeriod,omitempty" xml:"TerminateGracePeriod,omitempty"`
-	// The timeout period of the change process. Valid values: 1 to 1800. Unit: seconds. If you do not specify this Unidentifiedparameter, the default value 1800 is used.
+	// The timeout period for the change process. Unit: seconds. The value must be in the range of 1 to 1800. If you do not specify this parameter, the default value 1800 is used.
 	//
 	// example:
 	//
@@ -783,67 +800,65 @@ type InsertK8sApplicationRequest struct {
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The URI encoding scheme. Valid values: ISO-8859-1, GBK, GB2312, and UTF-8.
 	//
-	// > If you do not specify this parameter in the application configurations, the default URI encoding scheme in the Tomcat container is applied.
+	// > If you do not set this parameter for the application, the default value of Tomcat is used.
 	//
 	// example:
 	//
 	// GBK
 	UriEncoding *string `json:"UriEncoding,omitempty" xml:"UriEncoding,omitempty"`
-	// Specifies whether to use the encoding scheme specified in the request body for URI query parameters.
+	// Specifies whether to enable useBodyEncodingForURI.
 	//
-	// > If this parameter is not specified in application configuration, the default value false is applied.
+	// > If you do not set this parameter for the application, the default value false is used.
 	//
 	// example:
 	//
 	// false
 	UseBodyEncoding *bool `json:"UseBodyEncoding,omitempty" xml:"UseBodyEncoding,omitempty"`
-	// When using custom JDK runtime, it is necessary to configure the basic image address. The address needs to be publicly accessible, and the EDAS server will pull the image to build the application image.
+	// If you use a custom JDK runtime, you must configure the address of the base image. The address must be accessible over the Internet. The EDAS server pulls the image to build an application image.
 	//
 	// example:
 	//
 	// openjdk:8u302
 	UserBaseImageUrl *string `json:"UserBaseImageUrl,omitempty" xml:"UserBaseImageUrl,omitempty"`
-	// The version of the Tomcat container on which the deployment package of the application depends. This parameter is applicable to Spring Cloud and Dubbo applications that you deploy by using WAR packages. This parameter is unavailable if you deploy applications by using images.
+	// The version of the Tomcat container on which the deployment package depends. This parameter is applicable to Spring Cloud and Dubbo applications that are deployed using a WAR package. This parameter is not supported for image-based deployments.
 	//
 	// example:
 	//
 	// apache-tomcat-7.0.91
 	WebContainer *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
-	// The configuration of the Tomcat container. If you want to cancel this configuration, set this parameter to "" or "{}". The following parameters are included in the configuration:
+	// The configuration of the Tomcat container. To clear the configuration, set the value to "" or "{}":
 	//
-	// 	- useDefaultConfig: specifies whether to use the default configuration. Value true indicates that the default configuration is used. Value false indicates that the custom configuration is used. If the default configuration is used, the following parameters do not take effect:
+	// - useDefaultConfig: Specifies whether to use the default configuration. If you set this parameter to true, the custom configuration is not used. If you set this parameter to false, the custom configuration is used. If you do not use the custom configuration, the following parameter settings do not take effect.
 	//
-	// 	- contextInputType: the type of the access path for the application. Valid values:
+	// - contextInputType: The access path of the application.
 	//
-	//     	- war: The access path is the name of the WAR package. You do not need to specify a custom path.
+	//   - war: You do not need to specify a custom path. The access path is the name of the WAR package.
 	//
-	//     	- root: The access path for the application is `/`. You do not need to specify a custom path.
+	//   - root: You do not need to specify a custom path. The access path is `/`.
 	//
-	//     	- custom: If you select this option, you must specify a custom path for the contextPath parameter.
+	//   - custom: You must specify a custom path in the contextPath parameter.
 	//
-	// 	- contextPath: the custom access path for the application. This parameter is required only when you set the contextInputType parameter to custom.
+	// - contextPath: The custom path. This parameter is required only when you set contextInputType to custom.
 	//
-	// 	- httpPort: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is less than 1024. Enter a value that ranges from 1024 to 65535 because the container has only the admin permissions. If you do not configure this parameter, the default port number 8080 is used.
+	// - httpPort: The port number. The value must be in the range of 1024 to 65535. Ports smaller than 1024 require root permissions. Because the container is configured with administrator permissions, specify a port number greater than 1024. If you do not specify this parameter, the default port 8080 is used.
 	//
-	// 	- maxThreads: the maximum number of connections in the connection pool. Default value: 400.
+	// - maxThreads: The maximum number of connections in the connection pool. Default value: 400.
 	//
-	//     **
+	//   > This parameter greatly affects application performance. Configure this parameter with the help of a professional.
 	//
-	//     **Note**This parameter significantly affects application performance. We recommend that you consult with technical support before you set this parameter.
+	// - uriEncoding: The encoding format for Tomcat. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312. If you do not specify this parameter, the default value ISO-8859-1 is used.
 	//
-	// 	- uriEncoding: the URI encoding scheme in the Tomcat container. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312. If you do not specify this parameter, the default value ISO-8859-1 is used.
+	// - useBodyEncoding: Specifies whether to use BodyEncoding for URLs.
 	//
-	// 	- useBodyEncoding: specifies whether to use the encoding scheme specified in the request body for URI query parameters.
+	// - useAdvancedServerXml: Specifies whether to use advanced settings to customize the server.xml file. If the preceding parameter types and specific parameters cannot meet your requirements, you can use advanced settings to directly edit the server.xml file of Tomcat.
 	//
-	// 	- useAdvancedServerXml: specifies whether to use advanced configurations to customize the server.xml file. If the preceding parameter types and specific parameters cannot meet your requirements, you can use advanced configurations to customize the server.xml file of Tomcat.
-	//
-	// 	- serverXml: the content of the server.xml file customized by using advanced configurations. This parameter takes effect only when you set the useAdvancedServerXml parameter to true.
+	// - serverXml: The content of the server.xml file that is customized in the advanced settings. This parameter takes effect only when useAdvancedServerXml is set to true.
 	//
 	// example:
 	//
 	// {"useDefaultConfig":false,"contextInputType":"custom","contextPath":"hello","httpPort":8088,"maxThreads":400,"uriEncoding":"UTF-8","useBodyEncoding":true,"useAdvancedServerXml":false}
 	WebContainerConfig *string `json:"WebContainerConfig,omitempty" xml:"WebContainerConfig,omitempty"`
-	// The type of Workload when creating an application is currently only supported for the Deployment type.
+	// The type of the workload. Currently, only deployments are supported.
 	//
 	// example:
 	//

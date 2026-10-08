@@ -26,9 +26,9 @@ type DeleteClusterRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of the cluster ID. Valid values:
 	//
-	// 	- 0: specifies the ID of the cluster in Enterprise Distributed Application Service (EDAS).
+	// - 0: specifies the ID of the cluster in Enterprise Distributed Application Service (EDAS).
 	//
-	// 	- 1: specifies the ID of the ACK cluster.
+	// - 1: specifies the ID of the ACK cluster.
 	//
 	// example:
 	//
