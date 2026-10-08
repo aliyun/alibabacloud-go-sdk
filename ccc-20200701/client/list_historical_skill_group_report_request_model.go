@@ -23,16 +23,18 @@ type iListHistoricalSkillGroupReportRequest interface {
 	GetSkillGroupIdList() *string
 	SetStartTime(v int64) *ListHistoricalSkillGroupReportRequest
 	GetStartTime() *int64
+	SetSummarizeByInstanceId(v bool) *ListHistoricalSkillGroupReportRequest
+	GetSummarizeByInstanceId() *bool
 }
 
 type ListHistoricalSkillGroupReportRequest struct {
-	// End time of the historical data to retrieve, formatted as a UNIX timestamp in milliseconds. This parameter is optional. The default value is the current time. The time precision for statistics is hourly, rounded down to the previous hour, and uses an open interval. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned input time range becomes [11:00:00, 12:00:00), meaning greater than or equal to 11:00:00 and less than 12:00:00.
+	// The end time of the historical data to retrieve. Specify a UNIX timestamp in milliseconds. This parameter is optional. Default value: the current time. The statistical time precision is in hours. The end time is rounded up to the nearest hour, and the interval is open. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned time range is [11:00:00, 12:00:00), which means greater than or equal to 11:00:00 and less than 12:00:00.
 	//
 	// example:
 	//
 	// 1532707199000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +42,13 @@ type ListHistoricalSkillGroupReportRequest struct {
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Media type. The default value is Audio. Other valid values include Chat and Video.
+	// The media type. Default value: Audio. Valid values: Audio, Chat, and Video.
 	//
 	// example:
 	//
 	// VIDEO
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Page number, ranging from 1 to 100.
+	// The page number. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +56,7 @@ type ListHistoricalSkillGroupReportRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size, ranging from 1 to 100.
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -62,18 +64,20 @@ type ListHistoricalSkillGroupReportRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of skill group IDs to query, provided as a JSON array string. Each array element is a skill group ID. This parameter is optional. The default value is empty, which means all skill groups in the current page are queried.
+	// The list of skill group IDs to query. The value is a character string in the JSON array format, where each array element is a skill group ID. This parameter is optional. Default value: empty. An empty value indicates that all skill groups in the current paging are queried.
 	//
 	// example:
 	//
 	// ["skillgroup1@ccc-test", "skillgroup2@ccc-test2"]
 	SkillGroupIdList *string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty"`
-	// Start time of the historical data to retrieve, formatted as a UNIX timestamp in milliseconds. This parameter is optional. The default value is 00:00:00 of the current day. The earliest allowed value is 180 days before the current time. The time precision for statistics is hourly, rounded down to the previous hour, and uses a closed interval.
+	// The start time of the historical data to retrieve. Specify a UNIX timestamp in milliseconds. This parameter is optional. Default value: 00:00:00 on the current day. The earliest allowed time is 180 days before the current time. The statistical time precision is in hours. The start time is rounded down to the nearest hour, and the interval is closed.
 	//
 	// example:
 	//
 	// 1532448000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Specifies whether to aggregate data by instance ID.
+	SummarizeByInstanceId *bool `json:"SummarizeByInstanceId,omitempty" xml:"SummarizeByInstanceId,omitempty"`
 }
 
 func (s ListHistoricalSkillGroupReportRequest) String() string {
@@ -112,6 +116,10 @@ func (s *ListHistoricalSkillGroupReportRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *ListHistoricalSkillGroupReportRequest) GetSummarizeByInstanceId() *bool {
+	return s.SummarizeByInstanceId
+}
+
 func (s *ListHistoricalSkillGroupReportRequest) SetEndTime(v int64) *ListHistoricalSkillGroupReportRequest {
 	s.EndTime = &v
 	return s
@@ -144,6 +152,11 @@ func (s *ListHistoricalSkillGroupReportRequest) SetSkillGroupIdList(v string) *L
 
 func (s *ListHistoricalSkillGroupReportRequest) SetStartTime(v int64) *ListHistoricalSkillGroupReportRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListHistoricalSkillGroupReportRequest) SetSummarizeByInstanceId(v bool) *ListHistoricalSkillGroupReportRequest {
+	s.SummarizeByInstanceId = &v
 	return s
 }
 

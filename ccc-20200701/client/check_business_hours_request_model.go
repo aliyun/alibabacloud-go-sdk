@@ -16,12 +16,16 @@ type iCheckBusinessHoursRequest interface {
 }
 
 type CheckBusinessHoursRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The 13-digit timestamp. If this parameter is not specified, the current time is used by default.
+	//
 	// example:
 	//
 	// 1789526665860

@@ -22,22 +22,32 @@ type iCheckBusinessHoursResponseBody interface {
 }
 
 type CheckBusinessHoursResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the current time is a working hour.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 678F7002-CA01-4ABF-A112-585AFBDF3A3B

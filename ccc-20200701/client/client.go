@@ -1881,11 +1881,11 @@ func (client *Client) ChangeWorkMode(request *ChangeWorkModeRequest) (_result *C
 
 // Summary:
 //
-// 假期工作日检查
+// Checks whether the current time is a working hour, considering holidays and special workdays.
 //
 // Description:
 //
-// 拥有RAM权限的账号可以到RAM控制台查询阿里云主账号下管理的所有RAM子账号，RAM控制台地址：https://ram.console.aliyun.com/users
+// Accounts with RAM permissions can go to the Resource Access Management (RAM) console to query all RAM users managed under the Alibaba Cloud account. RAM console URL: https://ram.console.aliyun.com/users.
 //
 // @param request - CheckBusinessHoursRequest
 //
@@ -1933,11 +1933,11 @@ func (client *Client) CheckBusinessHoursWithOptions(request *CheckBusinessHoursR
 
 // Summary:
 //
-// 假期工作日检查
+// Checks whether the current time is a working hour, considering holidays and special workdays.
 //
 // Description:
 //
-// 拥有RAM权限的账号可以到RAM控制台查询阿里云主账号下管理的所有RAM子账号，RAM控制台地址：https://ram.console.aliyun.com/users
+// Accounts with RAM permissions can go to the Resource Access Management (RAM) console to query all RAM users managed under the Alibaba Cloud account. RAM console URL: https://ram.console.aliyun.com/users.
 //
 // @param request - CheckBusinessHoursRequest
 //
@@ -10817,7 +10817,7 @@ func (client *Client) ListHistoricalAgentSkillGroupReport(request *ListHistorica
 
 // Summary:
 //
-// You can invoke ListHistoricalSkillGroupReport to obtain historical data reports for one or more skill groups under a specified instance.
+// Retrieves historical data reports for one or more skill groups in a specified instance.
 //
 // @param request - ListHistoricalSkillGroupReportRequest
 //
@@ -10856,6 +10856,10 @@ func (client *Client) ListHistoricalSkillGroupReportWithOptions(request *ListHis
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.SummarizeByInstanceId) {
+		query["SummarizeByInstanceId"] = request.SummarizeByInstanceId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SkillGroupIdList) {
 		body["SkillGroupIdList"] = request.SkillGroupIdList
@@ -10887,7 +10891,7 @@ func (client *Client) ListHistoricalSkillGroupReportWithOptions(request *ListHis
 
 // Summary:
 //
-// You can invoke ListHistoricalSkillGroupReport to obtain historical data reports for one or more skill groups under a specified instance.
+// Retrieves historical data reports for one or more skill groups in a specified instance.
 //
 // @param request - ListHistoricalSkillGroupReportRequest
 //
