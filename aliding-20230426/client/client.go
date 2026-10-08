@@ -18122,6 +18122,91 @@ func (client *Client) InvokeContainer(request *InvokeContainerRequest) (_result 
 
 // Summary:
 //
+// 调用页面操作
+//
+// @param request - InvokePageRequest
+//
+// @param tmpHeader - InvokePageHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokePageResponse
+func (client *Client) InvokePageWithOptions(request *InvokePageRequest, tmpHeader *InvokePageHeaders, runtime *dara.RuntimeOptions) (_result *InvokePageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	headers := &InvokePageShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("accountContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OperationId) {
+		body["operationId"] = request.OperationId
+	}
+
+	if !dara.IsNil(request.Params) {
+		body["params"] = request.Params
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["accountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokePage"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/spi/ai/v1/page/invoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InvokePageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用页面操作
+//
+// @param request - InvokePageRequest
+//
+// @return InvokePageResponse
+func (client *Client) InvokePage(request *InvokePageRequest) (_result *InvokePageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &InvokePageHeaders{}
+	_result = &InvokePageResponse{}
+	_body, _err := client.InvokePageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 调用AI技能
 //
 // @param tmpReq - InvokeSkillRequest
@@ -20051,6 +20136,95 @@ func (client *Client) ListTicketOperateRecord(request *ListTicketOperateRecordRe
 	headers := &ListTicketOperateRecordHeaders{}
 	_result = &ListTicketOperateRecordResponse{}
 	_body, _err := client.ListTicketOperateRecordWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前登录用户在指定权限点、指定资源类型下已授权的资源列表
+//
+// @param request - ListUserAuthorizedResourcesRequest
+//
+// @param tmpHeader - ListUserAuthorizedResourcesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserAuthorizedResourcesResponse
+func (client *Client) ListUserAuthorizedResourcesWithOptions(request *ListUserAuthorizedResourcesRequest, tmpHeader *ListUserAuthorizedResourcesHeaders, runtime *dara.RuntimeOptions) (_result *ListUserAuthorizedResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	headers := &ListUserAuthorizedResourcesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PermissionCode) {
+		body["PermissionCode"] = request.PermissionCode
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserAuthorizedResources"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/ai/v1/skill/listUserAuthorizedResources"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserAuthorizedResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前登录用户在指定权限点、指定资源类型下已授权的资源列表
+//
+// @param request - ListUserAuthorizedResourcesRequest
+//
+// @return ListUserAuthorizedResourcesResponse
+func (client *Client) ListUserAuthorizedResources(request *ListUserAuthorizedResourcesRequest) (_result *ListUserAuthorizedResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ListUserAuthorizedResourcesHeaders{}
+	_result = &ListUserAuthorizedResourcesResponse{}
+	_body, _err := client.ListUserAuthorizedResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

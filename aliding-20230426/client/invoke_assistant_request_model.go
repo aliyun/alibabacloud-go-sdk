@@ -333,7 +333,10 @@ type InvokeAssistantRequestMessagesContent struct {
 	//
 	// {}
 	DingNormalCard *InvokeAssistantRequestMessagesContentDingNormalCard `json:"dingNormalCard,omitempty" xml:"dingNormalCard,omitempty" type:"Struct"`
+	Extensions     []*string                                            `json:"extensions,omitempty" xml:"extensions,omitempty" type:"Repeated"`
 	Markdown       *InvokeAssistantRequestMessagesContentMarkdown       `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Metadata       map[string]interface{}                               `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Parts          []*InvokeAssistantRequestMessagesContentParts        `json:"parts,omitempty" xml:"parts,omitempty" type:"Repeated"`
 	StructView     *InvokeAssistantRequestMessagesContentStructView     `json:"structView,omitempty" xml:"structView,omitempty" type:"Struct"`
 	Text           *InvokeAssistantRequestMessagesContentText           `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -364,8 +367,20 @@ func (s *InvokeAssistantRequestMessagesContent) GetDingNormalCard() *InvokeAssis
 	return s.DingNormalCard
 }
 
+func (s *InvokeAssistantRequestMessagesContent) GetExtensions() []*string {
+	return s.Extensions
+}
+
 func (s *InvokeAssistantRequestMessagesContent) GetMarkdown() *InvokeAssistantRequestMessagesContentMarkdown {
 	return s.Markdown
+}
+
+func (s *InvokeAssistantRequestMessagesContent) GetMetadata() map[string]interface{} {
+	return s.Metadata
+}
+
+func (s *InvokeAssistantRequestMessagesContent) GetParts() []*InvokeAssistantRequestMessagesContentParts {
+	return s.Parts
 }
 
 func (s *InvokeAssistantRequestMessagesContent) GetStructView() *InvokeAssistantRequestMessagesContentStructView {
@@ -395,8 +410,23 @@ func (s *InvokeAssistantRequestMessagesContent) SetDingNormalCard(v *InvokeAssis
 	return s
 }
 
+func (s *InvokeAssistantRequestMessagesContent) SetExtensions(v []*string) *InvokeAssistantRequestMessagesContent {
+	s.Extensions = v
+	return s
+}
+
 func (s *InvokeAssistantRequestMessagesContent) SetMarkdown(v *InvokeAssistantRequestMessagesContentMarkdown) *InvokeAssistantRequestMessagesContent {
 	s.Markdown = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContent) SetMetadata(v map[string]interface{}) *InvokeAssistantRequestMessagesContent {
+	s.Metadata = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContent) SetParts(v []*InvokeAssistantRequestMessagesContentParts) *InvokeAssistantRequestMessagesContent {
+	s.Parts = v
 	return s
 }
 
@@ -434,6 +464,15 @@ func (s *InvokeAssistantRequestMessagesContent) Validate() error {
 	if s.Markdown != nil {
 		if err := s.Markdown.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Parts != nil {
+		for _, item := range s.Parts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.StructView != nil {
@@ -871,6 +910,131 @@ func (s *InvokeAssistantRequestMessagesContentMarkdown) SetValue(v string) *Invo
 }
 
 func (s *InvokeAssistantRequestMessagesContentMarkdown) Validate() error {
+	return dara.Validate(s)
+}
+
+type InvokeAssistantRequestMessagesContentParts struct {
+	Data     interface{}                                     `json:"data,omitempty" xml:"data,omitempty"`
+	File     *InvokeAssistantRequestMessagesContentPartsFile `json:"file,omitempty" xml:"file,omitempty" type:"Struct"`
+	Kind     *string                                         `json:"kind,omitempty" xml:"kind,omitempty"`
+	Metadata map[string]interface{}                          `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Text     *string                                         `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentParts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentParts) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) GetData() interface{} {
+	return s.Data
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) GetFile() *InvokeAssistantRequestMessagesContentPartsFile {
+	return s.File
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) GetKind() *string {
+	return s.Kind
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) GetMetadata() map[string]interface{} {
+	return s.Metadata
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) GetText() *string {
+	return s.Text
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) SetData(v interface{}) *InvokeAssistantRequestMessagesContentParts {
+	s.Data = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) SetFile(v *InvokeAssistantRequestMessagesContentPartsFile) *InvokeAssistantRequestMessagesContentParts {
+	s.File = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) SetKind(v string) *InvokeAssistantRequestMessagesContentParts {
+	s.Kind = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) SetMetadata(v map[string]interface{}) *InvokeAssistantRequestMessagesContentParts {
+	s.Metadata = v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) SetText(v string) *InvokeAssistantRequestMessagesContentParts {
+	s.Text = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentParts) Validate() error {
+	if s.File != nil {
+		if err := s.File.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type InvokeAssistantRequestMessagesContentPartsFile struct {
+	Bytes    *string `json:"bytes,omitempty" xml:"bytes,omitempty"`
+	MimeType *string `json:"mimeType,omitempty" xml:"mimeType,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Uri      *string `json:"uri,omitempty" xml:"uri,omitempty"`
+}
+
+func (s InvokeAssistantRequestMessagesContentPartsFile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InvokeAssistantRequestMessagesContentPartsFile) GoString() string {
+	return s.String()
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) GetBytes() *string {
+	return s.Bytes
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) GetMimeType() *string {
+	return s.MimeType
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) GetName() *string {
+	return s.Name
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) GetUri() *string {
+	return s.Uri
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) SetBytes(v string) *InvokeAssistantRequestMessagesContentPartsFile {
+	s.Bytes = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) SetMimeType(v string) *InvokeAssistantRequestMessagesContentPartsFile {
+	s.MimeType = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) SetName(v string) *InvokeAssistantRequestMessagesContentPartsFile {
+	s.Name = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) SetUri(v string) *InvokeAssistantRequestMessagesContentPartsFile {
+	s.Uri = &v
+	return s
+}
+
+func (s *InvokeAssistantRequestMessagesContentPartsFile) Validate() error {
 	return dara.Validate(s)
 }
 
