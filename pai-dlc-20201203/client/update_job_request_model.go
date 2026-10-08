@@ -22,9 +22,9 @@ type iUpdateJobRequest interface {
 }
 
 type UpdateJobRequest struct {
-	// The visibility of the job. The visibility can only be expanded, not reduced. Valid values:
+	// The visibility of the node can only be expanded, not reduced. Valid values:
 	//
-	// - PUBLIC: visible to all users in the workspace.
+	// - PUBLIC: Visible to everyone in the workspace.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type UpdateJobRequest struct {
 	//
 	// This is a training job
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The job specification definition.
+	// The node specifications.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	// The priority of the job. Valid values: 1 to 9.
+	// The priority of the node. Valid values: 1 to 9.
 	//
-	// - 1: the lowest priority.
+	// - 1: lowest priority.
 	//
-	// - 9: the highest priority.
+	// - 9: highest priority.
 	//
 	// example:
 	//

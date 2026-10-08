@@ -16,7 +16,7 @@ type iCreateJobResponseBody interface {
 }
 
 type CreateJobResponseBody struct {
-	// The ID of the job created by this request.
+	// The ID of the job created by this call.
 	//
 	// example:
 	//

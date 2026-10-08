@@ -9,13 +9,13 @@ import (
 
 // Summary:
 //
-// Creates a job and runs it in a cluster. You can specify information such as the data source configuration, code source configuration, startup command, and compute resource configuration for each node of the job.
+// Creates a job and runs it in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
 //
 // Description:
 //
-// Before using this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+// Before you call this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
 //
-//	Notice: The total length of CreateJob operation parameters (including system-generated parameters) cannot exceed 65,536 bytes.
+//	Notice: The total length of CreateJob request parameters, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -2677,7 +2677,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *Unt
 
 // Summary:
 //
-// Updates the configuration of a job, such as modifying the priority of a queued job.
+// Updates the configuration of a node, such as modifying the priority of a queued node.
 //
 // @param request - UpdateJobRequest
 //
