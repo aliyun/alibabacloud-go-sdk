@@ -31,14 +31,12 @@ type iListInstancesRequest interface {
 	GetShowSize() *int32
 	SetStatus(v string) *ListInstancesRequest
 	GetStatus() *string
+	SetVersionType(v string) *ListInstancesRequest
+	GetVersionType() *string
 }
 
 type ListInstancesRequest struct {
-	// Specifies whether the instance is managed. Valid values:
-	//
-	// - 1: Managed.
-	//
-	// - 0: Not managed.
+	// Specifies whether the instance is managed. Valid values: 1 (managed) and 0 (not managed).
 	//
 	// example:
 	//
@@ -70,17 +68,13 @@ type ListInstancesRequest struct {
 	//
 	// DV
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The page number of the current page in a paged query. Default value: **1**.
+	// The page number of the current page in a paging query. Settings the current page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The instance type. Valid values:
-	//
-	// - BUY: formal certificate.
-	//
-	// - TEST: test certificate.
+	// The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
 	//
 	// example:
 	//
@@ -100,15 +94,15 @@ type ListInstancesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies whether to return only instances that meet server deployment conditions. Valid values:
 	//
-	// - 1: Yes.
+	// - 1: is.
 	//
-	// - 0: No.
+	// - 0: no.
 	//
 	// example:
 	//
 	// 1
 	ServerDeployFlag *int32 `json:"ServerDeployFlag,omitempty" xml:"ServerDeployFlag,omitempty"`
-	// The number of instances to display per page in a paged query. Default value: **10**. Maximum value: **100**.
+	// The number of instances to display per page in a paging query. Settings the number of instances displayed per page. Default value: **10**. Maximum value: **100**.
 	//
 	// example:
 	//
@@ -118,7 +112,7 @@ type ListInstancesRequest struct {
 	//
 	// - **inactive**: Pending use.
 	//
-	// - **pending**: Under review. The latest certificate is being reviewed.
+	// - **pending**: Under review. The latest certificate is being submitted for review.
 	//
 	// - **willExpire**: The instance is about to expire.
 	//
@@ -128,12 +122,18 @@ type ListInstancesRequest struct {
 	//
 	// - **normal**: Normal.
 	//
-	// - **closed**: Closed. The instance is unavailable.
+	// - **closed**: Shutdown and unavailable.
 	//
 	// example:
 	//
 	// inactive
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version type. Valid values: basic (Basic Edition), standard (Standard Edition), professional (Professional Edition), and ultimate (Ultimate Edition).
+	//
+	// example:
+	//
+	// professional
+	VersionType *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -188,6 +188,10 @@ func (s *ListInstancesRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListInstancesRequest) GetVersionType() *string {
+	return s.VersionType
+}
+
 func (s *ListInstancesRequest) SetAutoReissueFlag(v int32) *ListInstancesRequest {
 	s.AutoReissueFlag = &v
 	return s
@@ -240,6 +244,11 @@ func (s *ListInstancesRequest) SetShowSize(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetVersionType(v string) *ListInstancesRequest {
+	s.VersionType = &v
 	return s
 }
 

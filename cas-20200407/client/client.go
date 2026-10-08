@@ -3326,13 +3326,13 @@ func (client *Client) GetCsrDetail(request *GetCsrDetailRequest) (_result *GetCs
 //
 // Description:
 //
-// This operation queries the status information of a Private Certificate Authority (PCA) instance that you purchased in the Certificate Management Service console by using the instance ID. The status information includes the CA instance status, the number of digital certificates included, and the number of digital certificates issued.
+// Queries the status information of a Private Certificate Authority (PCA) instance that you purchased through the SSL Certificate Service console by using the instance ID. The information includes the instance status, the total number of certificates, and the number of issued certificates.
 //
-// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must purchase a private CA through the [digital certificate management service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, throttling is triggered, which may affect your business. Invoke this operation as appropriate.
+// The QPS limit for a single user is 10 invocations per second. If the limit is exceeded, API invocations are throttled, which may affect your services. Invoke this operation at a reasonable frequency.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -3380,13 +3380,13 @@ func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailReq
 //
 // Description:
 //
-// This operation queries the status information of a Private Certificate Authority (PCA) instance that you purchased in the Certificate Management Service console by using the instance ID. The status information includes the CA instance status, the number of digital certificates included, and the number of digital certificates issued.
+// Queries the status information of a Private Certificate Authority (PCA) instance that you purchased through the SSL Certificate Service console by using the instance ID. The information includes the instance status, the total number of certificates, and the number of issued certificates.
 //
-// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must purchase a private CA through the [digital certificate management service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, throttling is triggered, which may affect your business. Invoke this operation as appropriate.
+// The QPS limit for a single user is 10 invocations per second. If the limit is exceeded, API invocations are throttled, which may affect your services. Invoke this operation at a reasonable frequency.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -4727,13 +4727,13 @@ func (client *Client) ListDeploymentJobResource(request *ListDeploymentJobResour
 //
 // Description:
 //
-// Queries the status information of Private Certificate Authority (PCA) instances that you purchased through the SSL Certificate console by using the IDs of the PCA instances. For example, you can query the status of a CA instance, the number of digital certificates included, and the number of digital certificates issued.
+// Queries the status information of Private Certificate Authority (PCA) instances that you purchased through the SSL Certificate console by specifying the IDs of the private CA instances. For example, you can query the status of a CA instance, the number of digital certificates included, and the number of digital certificates issued.
 //
-// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before invoking this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - ListInstancesRequest
 //
@@ -4792,6 +4792,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		query["Status"] = request.Status
 	}
 
+	if !dara.IsNil(request.VersionType) {
+		query["VersionType"] = request.VersionType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4821,13 +4825,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 //
 // Description:
 //
-// Queries the status information of Private Certificate Authority (PCA) instances that you purchased through the SSL Certificate console by using the IDs of the PCA instances. For example, you can query the status of a CA instance, the number of digital certificates included, and the number of digital certificates issued.
+// Queries the status information of Private Certificate Authority (PCA) instances that you purchased through the SSL Certificate console by specifying the IDs of the private CA instances. For example, you can query the status of a CA instance, the number of digital certificates included, and the number of digital certificates issued.
 //
-// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before invoking this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - ListInstancesRequest
 //
@@ -5957,9 +5961,9 @@ func (client *Client) Sign(request *SignRequest) (_result *SignResponse, _err er
 //
 // Description:
 //
-// Queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased in the Certificate Service console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of SSL certificates included, and the number of SSL certificates issued.
 //
-// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must have purchased a private CA in the [digital certificate management service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //
@@ -6023,9 +6027,9 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 //
 // Description:
 //
-// Queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased in the Certificate Service console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of SSL certificates included, and the number of SSL certificates issued.
 //
-// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+// Before you invoke this operation, you must have purchased a private CA in the [digital certificate management service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
 // ## QPS limit
 //

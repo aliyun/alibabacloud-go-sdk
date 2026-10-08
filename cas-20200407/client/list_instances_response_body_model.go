@@ -26,7 +26,7 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The page number of the current page in a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// DigiCert
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	// The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+	// The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services. Valid values:
 	//
-	// - China site: certificate ID + "-cn-hangzhou"
+	// - For the China site: certificate ID + "-cn-hangzhou".
 	//
-	// - International site: certificate ID + "-ap-southeast-1"
+	// - For the China site (Chinese): certificate ID + "-ap-southeast-1".
 	//
-	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the international site is "123-ap-southeast-1".
+	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site (Chinese) is "123-ap-southeast-1".
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// cert-13216408
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The end time of the latest certificate. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
+	// The end time of the latest certificate. The value is a UNIX timestamp in seconds. This value is empty if no certificate has been issued.
 	//
 	// example:
 	//
 	// 1801324800000
 	CertificateNotAfter *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
-	// The start time of the latest certificate. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
+	// The start time of the latest certificate. The value is a UNIX timestamp in seconds. This value is empty if no certificate has been issued.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// DV
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The domain name bound to the certificate.
+	// The domain name attached to the certificate.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// 1
 	FullDomainCount *int32 `json:"FullDomainCount,omitempty" xml:"FullDomainCount,omitempty"`
-	// The expiration time of the instance. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
+	// The expiration time of the instance. The value is a UNIX timestamp in seconds. This value is empty if no certificate has been issued.
 	//
 	// example:
 	//
@@ -259,17 +259,13 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the instance. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
+	// The start time of the instance. The value is a UNIX timestamp in seconds. This value is empty if no certificate has been issued.
 	//
 	// example:
 	//
 	// 1801324800000
 	InstanceStartTime *int64 `json:"InstanceStartTime,omitempty" xml:"InstanceStartTime,omitempty"`
-	// The instance type. Valid values:
-	//
-	// - BUY: formal certificate.
-	//
-	// - TEST: test certificate.
+	// The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
 	//
 	// example:
 	//
@@ -325,7 +321,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// - **inactive**: Pending use.
 	//
-	// - **pending**: Under review. The latest certificate is being reviewed.
+	// - **pending**: Under review. The latest certificate commit is under review.
 	//
 	// - **willExpire**: The instance is about to expire.
 	//
@@ -335,23 +331,15 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// - **normal**: Normal.
 	//
-	// - **closed**: Closed. The instance is unavailable.
+	// - **closed**: Shutdown and unavailable.
 	//
 	// example:
 	//
 	// inactive
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of cloud services to which the latest certificate is deployed.
+	// The deployment list of cloud services for the latest certificate.
 	UsingProductList []*string `json:"UsingProductList,omitempty" xml:"UsingProductList,omitempty" type:"Repeated"`
-	// The version type. Valid values:
-	//
-	// - basic: Basic Edition.
-	//
-	// - standard: Standard Edition.
-	//
-	// - professional: Professional Edition.
-	//
-	// - ultimate: Ultimate Edition.
+	// The version type. Valid values: basic (Basic Edition), standard (Standard Edition), professional (Professional Edition), and ultimate (Ultimate Edition).
 	//
 	// example:
 	//
