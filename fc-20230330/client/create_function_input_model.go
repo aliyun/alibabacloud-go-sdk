@@ -86,13 +86,13 @@ type iCreateFunctionInput interface {
 type CreateFunctionInput struct {
 	// The ZIP package of the function code. Specify either code or customContainerConfig.
 	Code *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
-	// The CPU specification of the function, in vCPUs. The value must be a multiple of 0.05 vCPU. Minimum value: 0.05. Maximum value: 16. The ratio of cpu to memorySize (in GB) must be between 1:1 and 1:4.
+	// The CPU specification of the function in vCPU. The value must be a multiple of 0.05 vCPU. The minimum value is 0.05 and the maximum value is 16. The ratio of cpu to memorySize (in GB) must be between 1:1 and 1:4.
 	//
 	// example:
 	//
 	// 1
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The configuration for the custom container runtime. After this parameter is configured, the function can use a custom container image for execution. Specify either code or customContainerConfig.
+	// The configuration of the custom container runtime. After successful configuration, the function can use a custom container image to execute the function. Specify either code or customContainerConfig.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	// The custom DNS configuration.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
@@ -106,13 +106,13 @@ type CreateFunctionInput struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to disable STS token injection. Valid values:
 	//
-	// - None: STS tokens are injected in all methods.
+	// - None: Injects STS tokens in all methods.
 	//
-	// - Env: STS tokens are not injected through environment variables.
+	// - Env: Does not inject STS tokens into environment variables.
 	//
-	// - Request: STS tokens are not injected in requests, including context and headers.
+	// - Request: Does not inject STS tokens into requests, including context and headers.
 	//
-	// - All: STS tokens are not injected in any method.
+	// - All: Does not inject STS tokens in any method.
 	//
 	// example:
 	//
@@ -120,9 +120,9 @@ type CreateFunctionInput struct {
 	DisableInjectCredentials *string `json:"disableInjectCredentials,omitempty" xml:"disableInjectCredentials,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to disable the creation of on-demand instances. If this feature is enabled, on-demand instances are not created and only provisioned instances can be used.
+	// Specifies whether to disable the creation of on-demand instances. After this feature is enabled, on-demand instances are not created and only provisioned instances can be used.
 	DisableOndemand *bool `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
-	// The disk specification of the function, in MB. Valid values: 512 and 10240.
+	// The disk specification of the function in MB. Valid values: 512 and 10240.
 	//
 	// example:
 	//
@@ -130,11 +130,11 @@ type CreateFunctionInput struct {
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to allow provisioned instances of GPU functions to be long-running. When this feature is enabled, function instances are not injected with STS tokens.
+	// Specifies whether to allow provisioned instances of GPU functions to be long-running. When this feature is enabled, function instances that are created are not injected with STS tokens.
 	EnableLongLiving *bool `json:"enableLongLiving,omitempty" xml:"enableLongLiving,omitempty"`
 	// The environment variables of the function. You can access the configured environment variables in the runtime environment.
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
-	// The name of the function. The name can contain only letters, digits, underscores (_), and hyphens (-). The name cannot start with a digit or hyphen (-). The name must be 1 to 64 characters in length.
+	// The name of the function. The name can contain only letters, digits, underscores (_), and hyphens (-). It cannot start with a digit or hyphen (-). The name must be 1 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -144,7 +144,7 @@ type CreateFunctionInput struct {
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	// The GPU configuration of the function.
 	GpuConfig *GPUConfig `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
-	// The function entry point. The specific format depends on the runtime.
+	// The function entry point. The specific format is related to the runtime.
 	//
 	// This parameter is required.
 	//
@@ -152,7 +152,7 @@ type CreateFunctionInput struct {
 	//
 	// index.handler
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The deferred release time of the instance.
+	// The instance deferred release time.
 	//
 	// example:
 	//
@@ -166,40 +166,41 @@ type CreateFunctionInput struct {
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The instance isolation mode.
 	InstanceIsolationMode *string `json:"instanceIsolationMode,omitempty" xml:"instanceIsolationMode,omitempty"`
-	// The instance lifecycle hook configuration.
+	// The instance lifecycle hook method configuration.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
 	// Specifies whether the function can access the Internet. Default value: true.
 	//
 	// example:
 	//
 	// true
-	InternetAccess *bool          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	JuiceFsConfig  *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
-	// The list of layers. Multiple layers are merged in descending order of array index. Files in a layer with a smaller index overwrite files with the same name in a layer with a larger index.
+	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	// The JuiceFs mount configuration.
+	JuiceFsConfig *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
+	// The list of layers. Multiple layers are merged in descending order of array index. Content from a layer with a smaller index overwrites files with the same name from a layer with a larger index.
 	Layers []*string `json:"layers" xml:"layers" type:"Repeated"`
 	// The log configuration. Logs generated by the function are written to the configured Logstore.
 	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	// The memory specification of the function, in MB. The value must be a multiple of 64 MB. Minimum value: 128. Maximum value: 32768 (32 GB). The ratio of cpu to memorySize (in GB) must be between 1:1 and 1:4.
+	// The memory specification of the function in MB. The value must be a multiple of 64 MB. The minimum value is 128 MB and the maximum value is 32 GB. The ratio of cpu to memorySize (in GB) must be between 1:1 and 1:4.
 	//
 	// example:
 	//
 	// 512
 	MemorySize         *int32              `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	MicroSandboxConfig *MicroSandboxConfig `json:"microSandboxConfig,omitempty" xml:"microSandboxConfig,omitempty"`
-	// The NAS configuration. After this parameter is configured, the function can access the specified NAS resources.
+	// The NAS configuration. After you configure this parameter, the function can access the specified NAS resources.
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// The OSS mount configuration.
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	// The PolarFs configuration. After this parameter is configured, the function can access the specified PolarFs resources.
+	// The PolarFs configuration. After you configure this parameter, the function can access the specified PolarFs resources.
 	PolarFsConfig   *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
 	ResourceGroupId *string        `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The RAM role that the user grants to Function Compute. After this parameter is set, Function Compute assumes this role to generate temporary access credentials. You can use the temporary access credentials of this role in the function to access specified Alibaba Cloud services, such as OSS and OTS.
+	// The RAM role that you grant to Function Compute. After the role is configured, Function Compute assumes this role to generate temporary access credentials. You can use the temporary access credentials of this role in the function to access specified Alibaba Cloud services such as OSS and OTS.
 	//
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The runtime environment of the function. Supported runtimes: nodejs12, nodejs14, nodejs16, nodejs18, nodejs20, go1, python3, python3.9, python3.10, python3.12, java8, java11, php7.2, dotnetcore3.1, custom, custom.debian10, custom.debian11, custom.debian12, and custom-container.
+	// The runtime environment of the function. Currently supported runtime environments include: nodejs12, nodejs14, nodejs16, nodejs18, nodejs20, go1, python3, python3.9, python3.10, python3.12, java8, java11, php7.2, dotnetcore3.1, custom, custom.debian10, custom.debian11, custom.debian12, and custom-container.
 	//
 	// This parameter is required.
 	//
@@ -207,13 +208,13 @@ type CreateFunctionInput struct {
 	//
 	// python3.10
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The affinity policy for Function Compute invocation requests. To implement request affinity for the MCP SSE protocol, set this parameter to MCP_SSE. To use cookie-based affinity, set this parameter to GENERATED_COOKIE. To use header-based affinity, set this parameter to HEADER_FIELD. If this parameter is not set or is set to NONE, no affinity is applied and requests are routed based on the default scheduling policy of Function Compute.
+	// The session affinity policy for Function Compute invocation requests. To implement request affinity for the MCP SSE protocol, set this parameter to MCP_SSE. To use cookie-based affinity, set this parameter to GENERATED_COOKIE. To use header-based affinity, set this parameter to HEADER_FIELD. If this parameter is not set or is set to NONE, no affinity is applied and requests are routed based on the default scheduling policy of Function Compute.
 	//
 	// example:
 	//
 	// MCP_SSE
 	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
-	// The affinity configuration that corresponds to the sessionAffinity type. For MCP_SSE affinity, specify MCPSSESessionAffinityConfig. For cookie-based affinity, specify CookieSessionAffinityConfig. For header field affinity, specify HeaderFieldSessionAffinityConfig.
+	// The session affinity configuration that corresponds to the sessionAffinity type. For MCP_SSE affinity, configure MCPSSESessionAffinityConfig. For cookie-based affinity, configure CookieSessionAffinityConfig. For header field affinity, configure HeaderFieldSessionAffinityConfig.
 	//
 	// example:
 	//
@@ -221,15 +222,15 @@ type CreateFunctionInput struct {
 	SessionAffinityConfig *string `json:"sessionAffinityConfig,omitempty" xml:"sessionAffinityConfig,omitempty"`
 	// The list of tags.
 	Tags []*Tag `json:"tags" xml:"tags" type:"Repeated"`
-	// The timeout period for function execution, in seconds. Minimum value: 1. Maximum value: 86400. Default value: 3. The function is terminated if it exceeds this time limit.
+	// The timeout period for function execution in seconds. The minimum value is 1, the maximum value is 86400, and the default value is 3. The function is terminated if it exceeds this time limit.
 	//
 	// example:
 	//
 	// 60
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The Tracing Analysis configuration. After Function Compute is integrated with Tracing Analysis, you can record the time consumed by requests in Function Compute, view the cold start time of functions, and record the time consumed within functions.
+	// The tracing configuration. After Function Compute is integrated with Tracing Analysis, you can record the time consumed by requests in Function Compute, view the cold start time of functions, and record the time consumed by internal operations of functions.
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	// The VPC configuration. After this parameter is configured, the function can access the specified VPC resources.
+	// The VPC configuration. After you configure this parameter, the function can access the specified VPC resources.
 	VpcConfig *VPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 

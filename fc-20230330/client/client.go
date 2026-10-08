@@ -31,7 +31,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-southeast-1":        dara.String("fcv3.ap-southeast-1.aliyuncs.com"),
 		"ap-southeast-2":        dara.String("fcv3.ap-southeast-2.aliyuncs.com"),
 		"ap-southeast-3":        dara.String("fcv3.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("fcv3.ap-southeast-5.aliyuncs.com	"),
+		"ap-southeast-5":        dara.String("fcv3.ap-southeast-5.aliyuncs.com\t"),
 		"ap-southeast-7":        dara.String("fcv3.ap-southeast-7.aliyuncs.com"),
 		"cn-beijing":            dara.String("fcv3.cn-beijing.aliyuncs.com"),
 		"cn-chengdu":            dara.String("fcv3.cn-chengdu.aliyuncs.com"),

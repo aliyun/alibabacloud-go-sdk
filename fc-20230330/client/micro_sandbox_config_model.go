@@ -24,15 +24,18 @@ type iMicroSandboxConfig interface {
 }
 
 type MicroSandboxConfig struct {
-	// The ID of the ACR Enterprise Edition image repository instance. Used in pair with MicroSandbox images. This parameter is optional. If not provided, the server resolves it as needed.
+	// The instance ID of the Container Registry (ACR) Enterprise Edition image repository. This parameter is used together with MicroSandbox images. This parameter is optional. If not provided, the server resolves it as needed.
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
 	// The image address.
-	Image        *string `json:"image,omitempty" xml:"image,omitempty"`
-	OsType       *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// The operating system type.
+	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// The ready command.
 	ReadyCommand *string `json:"readyCommand,omitempty" xml:"readyCommand,omitempty"`
 	// The image repository configuration.
 	RegistryConfig *RegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
-	StartCommand   *string         `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
+	// The start command.
+	StartCommand *string `json:"startCommand,omitempty" xml:"startCommand,omitempty"`
 }
 
 func (s MicroSandboxConfig) String() string {

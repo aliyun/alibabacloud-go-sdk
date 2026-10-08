@@ -9,6 +9,8 @@ type iPolarFsMountConfig interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExtraOptions(v string) *PolarFsMountConfig
+	GetExtraOptions() *string
 	SetInstanceId(v string) *PolarFsMountConfig
 	GetInstanceId() *string
 	SetMountDir(v string) *PolarFsMountConfig
@@ -20,13 +22,33 @@ type iPolarFsMountConfig interface {
 }
 
 type PolarFsMountConfig struct {
+	// example:
+	//
+	// --skip-delete-rows-check=false  --skip-dir-nlink=0
+	ExtraOptions *string `json:"extraOptions,omitempty" xml:"extraOptions,omitempty"`
 	// The ID of the PolarFS file system instance to mount.
+	//
+	// example:
+	//
+	// pfs-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The local mount directory in the function\\"s runtime environment.
+	//
+	// example:
+	//
+	// /mnt/polarfs
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
 	// Specifies whether the file system is mounted as read-only. If `true`, write operations are prohibited.
+	//
+	// example:
+	//
+	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 	// The directory within the PolarFS file system to mount.
+	//
+	// example:
+	//
+	// /share
 	RemoteDir *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
 }
 
@@ -36,6 +58,10 @@ func (s PolarFsMountConfig) String() string {
 
 func (s PolarFsMountConfig) GoString() string {
 	return s.String()
+}
+
+func (s *PolarFsMountConfig) GetExtraOptions() *string {
+	return s.ExtraOptions
 }
 
 func (s *PolarFsMountConfig) GetInstanceId() *string {
@@ -52,6 +78,11 @@ func (s *PolarFsMountConfig) GetReadOnly() *bool {
 
 func (s *PolarFsMountConfig) GetRemoteDir() *string {
 	return s.RemoteDir
+}
+
+func (s *PolarFsMountConfig) SetExtraOptions(v string) *PolarFsMountConfig {
+	s.ExtraOptions = &v
+	return s
 }
 
 func (s *PolarFsMountConfig) SetInstanceId(v string) *PolarFsMountConfig {
