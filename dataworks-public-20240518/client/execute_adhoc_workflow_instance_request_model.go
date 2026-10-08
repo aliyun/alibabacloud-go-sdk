@@ -376,7 +376,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksDataSource) Validate() error {
 }
 
 type ExecuteAdhocWorkflowInstanceRequestTasksDependencies struct {
-  // The output identifier of the dependent task.
+  // The output identifier of the upstream task.
   // 
   // example:
   // 

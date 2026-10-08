@@ -50,7 +50,7 @@ type CreateBusinessRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the DataStudio page. You must specify either this parameter or ProjectId to determine the DataWorks workspace on which the API operation is performed.
+	// The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the Data Studio page. You must specify either this parameter or ProjectId to determine the DataWorks workspace on which the API operation is performed.
 	//
 	// example:
 	//
@@ -58,7 +58,10 @@ type CreateBusinessRequest struct {
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// The functional module to which the business process belongs. Valid values:
 	//
-	// - NORMAL: DataStudio.
+	//
+	//
+	//
+	// - NORMAL: Data Studio.
 	//
 	// - MANUAL_BIZ: Manual business process.
 	//

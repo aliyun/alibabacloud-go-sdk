@@ -62,7 +62,7 @@ type ListAlertRulesShrinkRequest struct {
 	Receiver *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
 	// The IDs of the scheduling tasks.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
-	// The alert triggering condition.
+	// The list of alert types.
 	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 

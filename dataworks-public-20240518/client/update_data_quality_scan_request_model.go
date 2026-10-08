@@ -342,7 +342,10 @@ func (s *UpdateDataQualityScanRequestComputeResource) Validate() error {
 }
 
 type UpdateDataQualityScanRequestComputeResourceRuntime struct {
-	// The engine type. These settings are only supported for the EMR compute engine.This setting? Valid values:
+	// The engine type. These settings are only supported for the EMR compute engine. Valid values:
+	//
+	//
+	//
 	//
 	// - Hive: Hive SQL
 	//
@@ -354,13 +357,13 @@ type UpdateDataQualityScanRequestComputeResourceRuntime struct {
 	//
 	// Hive
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported.
+	// Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported to configure the queue.
 	//
 	// example:
 	//
 	// mapreduce.job.queuename=dq_queue
 	HiveConf map[string]interface{} `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
-	// Additional Spark engine parameters. Currently, only the spark.yarn.queue parameter is supported.
+	// Additional Spark engine parameters. Currently, only the spark.yarn.queue parameter is supported to configure the queue.
 	//
 	// example:
 	//
@@ -502,7 +505,7 @@ func (s *UpdateDataQualityScanRequestParameters) Validate() error {
 }
 
 type UpdateDataQualityScanRequestRuntimeResource struct {
-	// The default number of CUs configured for task running.
+	// The CU consumption configured for task execution.
 	//
 	// example:
 	//

@@ -62,7 +62,7 @@ type ListAlertRulesRequest struct {
 	Receiver *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
 	// The IDs of the scheduling tasks.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The alert triggering condition.
+	// The list of alert types.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 

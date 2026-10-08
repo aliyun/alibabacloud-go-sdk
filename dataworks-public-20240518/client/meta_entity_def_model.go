@@ -46,13 +46,13 @@ type MetaEntityDef struct {
 	//
 	// example:
 	//
-	// 业务API
+	// Business API
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The entity type.
 	//
 	// example:
 	//
-	// custom_entity-biz_api
+	// custom_entity-customer_api
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
 	// The extension mode. Valid values: NONE and TABLE. NONE indicates a custom type. TABLE indicates that the type extends a table type.
 	//
@@ -70,7 +70,7 @@ type MetaEntityDef struct {
 	//
 	// example:
 	//
-	// biz_api
+	// customer_api
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

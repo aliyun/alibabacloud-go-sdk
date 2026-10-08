@@ -38,7 +38,7 @@ type UpdateSecurityStrategyRequest struct {
 	//
 	// example:
 	//
-	// 控制数据分析模块的查询结果安全行为
+	// Controls the security behavior of query results in the Data Analysis module
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// **The policy ID.**
 	//
@@ -52,7 +52,7 @@ type UpdateSecurityStrategyRequest struct {
 	//
 	// example:
 	//
-	// 默认数据分析策略
+	// Default data analysis policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// **A list of associated workspace IDs.**
 	Workspaces []*int64 `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
@@ -193,7 +193,7 @@ type UpdateSecurityStrategyRequestContentControllers struct {
 	//
 	// example:
 	//
-	// 查询结果-单次展示记录值上限
+	// Query results - Maximum number of records per display
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The English display name.
 	//

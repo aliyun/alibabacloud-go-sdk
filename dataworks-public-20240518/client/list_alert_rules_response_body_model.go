@@ -22,7 +22,7 @@ type ListAlertRulesResponseBody struct {
 	//
 	// example:
 	//
-	// A6C6B486-E3A2-5D52-9E76-D938048****
+	// A6C6B486-E3A2-5D52-9E76-D9380485D946
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -76,7 +76,7 @@ type ListAlertRulesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -239,7 +239,10 @@ type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition struct {
 	Target *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// The alert type. Valid values:
 	//
-	// - Finished: An instance is successfully run.
+	//
+	//
+	//
+	// - Finished: An instance finishes running.
 	//
 	// - UnFinished: An instance does not finish running before a specified point in time.
 	//
@@ -528,7 +531,7 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError struct {
-	// Indicates whether an alert is triggered if a batch synchronization task is automatically rerun upon a failure.
+	// Indicates whether an alert is triggered if a batch task is automatically rerun upon a failure.
 	//
 	// example:
 	//

@@ -284,6 +284,9 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
 	// The run status of the instance. Valid values:
 	//
+	//
+	//
+	//
 	// - NotRun: not run.
 	//
 	// - Running: running.
@@ -298,7 +301,7 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// - Success: execution succeeded.
 	//
-	// - Checking: submitted for qualityrule check.
+	// - Checking: submitted for data quality check.
 	//
 	// - WaitTrigger: waiting for an external trigger. Trigger-based nodes enter this status after the waiting period.
 	//
@@ -326,7 +329,10 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The timeout period for node execution, in seconds.
 	//
-	// Note: The scheduling system rounds the configured value to the nearest hour.
+	//
+	//
+	//
+	// Note: The scheduling system rounds the configured value to whole hours.
 	//
 	// example:
 	//
@@ -396,6 +402,9 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 	// The type of the workflow instance to which the instance belongs. Valid values:
 	//
+	//
+	//
+	//
 	// - SmokeTest: smoke test.
 	//
 	// - SupplementData: data backfill.
@@ -406,7 +415,7 @@ type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// - Normal: periodic scheduling.
 	//
-	// - ManualFlow: manually triggered workflow.
+	// - ManualFlow: manually executed business flow.
 	//
 	// example:
 	//

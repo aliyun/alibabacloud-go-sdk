@@ -26,11 +26,7 @@ type UnTagDataAssetsShrinkRequest struct {
 	//
 	// This parameter is required.
 	DataAssetIdsShrink *string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty"`
-	// The type of the data asset. Valid values:
-	//
-	// - ACS::DataWorks::Table
-	//
-	// - ACS::DataWorks::Task
+	// The type of the data asset. Valid values: ACS::DataWorks::Table (data table) and ACS::DataWorks::Task (scheduled task).
 	//
 	// This parameter is required.
 	//

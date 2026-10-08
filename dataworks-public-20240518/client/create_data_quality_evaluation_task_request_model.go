@@ -70,6 +70,13 @@ type CreateDataQualityEvaluationTaskRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The extended configuration. The value is a JSON-formatted string. This parameter takes effect only for EMR-type data quality monitors.
 	//
+	//
+	//
+	//
+	// - queue: The YARN queue used for EMR data quality checks. By default, the queue configured for the current project is used.
+	//
+	// - sqlEngine: The SQL engine used for EMR data quality checks. Valid values: HIVE_SQL and SPARK_SQL.
+	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
@@ -250,6 +257,13 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRules struct {
 	SamplingConfig *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
 	// The severity level of the rule for the business (corresponding to strong or weak rules on the page). Valid values:
 	//
+	//
+	//
+	//
+	// - Normal
+	//
+	// - High
+	//
 	// example:
 	//
 	// High
@@ -385,6 +399,19 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct
 	Thresholds *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
 	// The threshold calculation method.
 	//
+	//
+	//
+	//
+	// - Fixed
+	//
+	// - Fluctation
+	//
+	// - FluctationDiscreate
+	//
+	// - Auto
+	//
+	// - Average
+	//
 	// example:
 	//
 	// Fixed
@@ -517,6 +544,21 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresho
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator.
 	//
+	//
+	//
+	//
+	// - &gt;
+	//
+	// - &gt;=
+	//
+	// - &lt;
+	//
+	// - &lt;=
+	//
+	// - !=
+	//
+	// - =
+	//
 	// example:
 	//
 	// >
@@ -586,6 +628,21 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresho
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator.
+	//
+	//
+	//
+	//
+	// - &gt;
+	//
+	// - &gt;=
+	//
+	// - &lt;
+	//
+	// - &lt;=
+	//
+	// - !=
+	//
+	// - =
 	//
 	// example:
 	//
@@ -657,6 +714,21 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresho
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator.
 	//
+	//
+	//
+	//
+	// - &gt;
+	//
+	// - &gt;=
+	//
+	// - &lt;
+	//
+	// - &lt;=
+	//
+	// - !=
+	//
+	// - =
+	//
 	// example:
 	//
 	// >
@@ -716,6 +788,11 @@ type CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers struct 
 	// SELECT 	- FROM ods_api_log WHERE status = \\"Error\\";
 	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
 	// The handler type:
+	//
+	//
+	//
+	//
+	// - SaveErrorData: Retains problematic data.
 	//
 	// example:
 	//
@@ -870,6 +947,11 @@ type CreateDataQualityEvaluationTaskRequestHooks struct {
 	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 	// The hook type. Currently, only one type is supported:
+	//
+	//
+	//
+	//
+	// - BlockTaskInstance: Blocks the scheduling task from continuing to run. If the data quality monitor is triggered by a scheduling task, Hook.Condition is evaluated after quality monitoring completes to determine whether the scheduling task is blocked from continuing.
 	//
 	// example:
 	//
@@ -1045,11 +1127,29 @@ func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotific
 type CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers struct {
 	// The additional parameter settings for sending alerts. The value is in JSON format. The following keys are supported:
 	//
+	//
+	//
+	//
+	// - atAll: Specifies whether to mention all members in the group when sending DingTalk alerts. This setting takes effect when ReceiverType is DingdingUrl.
+	//
 	// example:
 	//
 	// {  "atAll": true }
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The type of the alert recipient.
+	//
+	//
+	//
+	//
+	// - WebhookUrl: Custom webhook URL.
+	//
+	// - FeishuUrl: Lark alert URL.
+	//
+	// - DingdingUrl: DingTalk alert URL.
+	//
+	// - WeixinUrl: WeCom alert URL.
+	//
+	// - AliUid: Alibaba Cloud user ID.
 	//
 	// example:
 	//

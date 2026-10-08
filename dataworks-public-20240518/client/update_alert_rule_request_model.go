@@ -245,9 +245,12 @@ type UpdateAlertRuleRequestNotificationReceivers struct {
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The type of the alert recipient. Valid valves:
 	//
+	//
+	//
+	//
 	// - AliUid: Alibaba Cloud account ID.
 	//
-	// - Shift Schedules: the personnel in a shift schedule.
+	// - ShiftSchedule: the personnel in a shift schedule.
 	//
 	// - TaskOwner: the task owner. The task owner can receive custom alerts and event alerts.
 	//
@@ -315,7 +318,10 @@ type UpdateAlertRuleRequestTriggerCondition struct {
 	Target *UpdateAlertRuleRequestTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// The alert type. Valid values:
 	//
-	// - Finished: An instance is successfully run.
+	//
+	//
+	//
+	// - Finished: An instance finishes running.
 	//
 	// - UnFinished: An instance does not finish running before a specified point in time.
 	//
@@ -604,7 +610,7 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndT
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionError struct {
-	// Specifies whether to trigger an alert if a batch synchronization task is automatically rerun upon a failure.
+	// Specifies whether to trigger an alert if a batch task is automatically rerun upon a failure.
 	//
 	// example:
 	//
@@ -822,11 +828,14 @@ type UpdateAlertRuleRequestTriggerConditionTarget struct {
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The type of the monitored objects. Valid values:
 	//
+	//
+	//
+	//
 	// - Task: node
 	//
 	// - Baseline: baseline
 	//
-	// - project: workspace
+	// - Project: workspace
 	//
 	// - BizProcess: workflow
 	//

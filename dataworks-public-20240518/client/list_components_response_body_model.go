@@ -164,7 +164,7 @@ type ListComponentsResponseBodyPagingInfoComponents struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The input parameters.
 	Inputs []*ListComponentsResponseBodyPagingInfoComponentsInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	// The timestamp when the publishing process was modified.
+	// The timestamp when the deployment process was modified.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//

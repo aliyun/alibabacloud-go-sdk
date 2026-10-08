@@ -152,7 +152,7 @@ type ListSkillsResponseBodyPagingInfoSkills struct {
 	//
 	// example:
 	//
-	// 数据分析技能
+	// Data analysis skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The creation time.
 	//

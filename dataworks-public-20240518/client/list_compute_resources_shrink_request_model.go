@@ -30,9 +30,12 @@ type iListComputeResourcesShrinkRequest interface {
 type ListComputeResourcesShrinkRequest struct {
 	// The environment type of the computing resource. Valid values:
 	//
-	// - Dev
 	//
-	// - Prod
+	//
+	//
+	// - Dev: development environment.
+	//
+	// - Prod: production environment.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type ListPipelineRunItemsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The requested page number, used for pagination.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//

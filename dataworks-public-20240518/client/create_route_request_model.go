@@ -32,7 +32,7 @@ type CreateRouteRequest struct {
 	//
 	// example:
 	//
-	// 10001
+	// 1000
 	NetworkId *int64 `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	// Unique identifier of the serverless resource group.
 	//

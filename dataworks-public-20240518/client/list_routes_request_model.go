@@ -40,7 +40,7 @@ type ListRoutesRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the general quota.
+	// The unique identifier of the general-purpose resource group.
 	//
 	// This parameter is required.
 	//

@@ -48,7 +48,7 @@ type ListCertificatesRequest struct {
 	//
 	// xm_create_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order in which you want to sort the certificate files. Valid values: Desc: descending order ASC: ascending order Default value: Asc
+	// The order in which you want to sort the certificate files. Valid values: Desc: descending order Asc: ascending order Default value: Asc
 	//
 	// example:
 	//

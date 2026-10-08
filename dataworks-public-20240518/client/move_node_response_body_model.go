@@ -22,11 +22,7 @@ type MoveNodeResponseBody struct {
 	//
 	// C99E2BE6-9DEA-5C2E-8F51-1DDCFEADXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
 	//
 	// example:
 	//

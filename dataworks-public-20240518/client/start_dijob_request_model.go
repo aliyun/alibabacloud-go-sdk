@@ -38,7 +38,7 @@ type StartDIJobRequest struct {
 	//
 	// false
 	ForceToRerun *bool `json:"ForceToRerun,omitempty" xml:"ForceToRerun,omitempty"`
-	// The ID of the synchronization task.
+	// The instance ID.
 	//
 	// example:
 	//

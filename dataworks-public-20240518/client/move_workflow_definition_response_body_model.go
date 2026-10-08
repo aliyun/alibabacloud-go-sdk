@@ -22,11 +22,7 @@ type MoveWorkflowDefinitionResponseBody struct {
 	//
 	// 05ADAF4F-7709-5FB1-B606-3513483FXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
 	//
 	// example:
 	//

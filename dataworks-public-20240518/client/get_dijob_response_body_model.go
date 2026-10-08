@@ -78,7 +78,7 @@ type GetDIJobResponseBodyPagingInfo struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The settings for the destination data source.
 	DestinationDataSourceSettings []*GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty" type:"Repeated"`
-	// The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB for MySQL`, `Kafka`, and `Hive`.
+	// The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB_For_MySQL`, `Kafka`, and `Hive`.
 	//
 	// example:
 	//
@@ -100,7 +100,10 @@ type GetDIJobResponseBodyPagingInfo struct {
 	JobSettings *GetDIJobResponseBodyPagingInfoJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
 	// The status of the job. Valid values:
 	//
-	// - `Finished`: The job is complete.
+	//
+	//
+	//
+	// - `Finished`: The job completed successfully.
 	//
 	// - `Failed`: The job failed.
 	//

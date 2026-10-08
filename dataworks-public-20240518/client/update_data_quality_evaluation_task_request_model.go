@@ -536,13 +536,22 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
 	// Threshold expression.
 	//
+	//
+	//
+	//
 	// Fluctuation-type rules must use an expression to represent the fluctuation threshold. For example:
 	//
-	// - Fluctuation rises above 0.01: $checkValue > 0.01
 	//
-	// - Fluctuation drops below 0.01: $checkValue < -0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
+	//
+	// - Fluctuation rises above 0.01: $checkValue &gt; 0.01
+	//
+	// - A decrease in the fluctuation rate of more than 0.01: $checkValue &lt; -0.01
+	//
+	// - Absolute fluctuation rate: abs($checkValue) &gt; 0.01
+	//
+	//
+	//
 	//
 	// Fixed-value-type rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
 	//
@@ -618,13 +627,22 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
 	// Threshold expression.
 	//
+	//
+	//
+	//
 	// Fluctuation-type rules must use an expression to represent the fluctuation threshold. For example:
 	//
-	// - Fluctuation rises above 0.01: $checkValue > 0.01
 	//
-	// - Fluctuation drops below 0.01: $checkValue < -0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
+	//
+	// - Fluctuation rises above 0.01: $checkValue &gt; 0.01
+	//
+	// - A decrease in the fluctuation rate of more than 0.01: $checkValue &lt; -0.01
+	//
+	// - Absolute fluctuation rate: abs($checkValue) &gt; 0.01
+	//
+	//
+	//
 	//
 	// Fixed-value-type rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
 	//
@@ -700,13 +718,22 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
 	// Threshold expression.
 	//
+	//
+	//
+	//
 	// Fluctuation-type rules must use an expression to represent the fluctuation threshold. For example:
 	//
-	// - Fluctuation rises above 0.01: $checkValue > 0.01
 	//
-	// - Fluctuation drops below 0.01: $checkValue < -0.01
 	//
-	// - Absolute fluctuation rate: abs($checkValue) > 0.01
+	//
+	// - Fluctuation rises above 0.01: $checkValue &gt; 0.01
+	//
+	// - A decrease in the fluctuation rate of more than 0.01: $checkValue &lt; -0.01
+	//
+	// - Absolute fluctuation rate: abs($checkValue) &gt; 0.01
+	//
+	//
+	//
 	//
 	// Fixed-value-type rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
 	//

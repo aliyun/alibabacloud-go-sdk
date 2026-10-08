@@ -42,13 +42,16 @@ type ListFileVersionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace. You can click the small wrench icon in the upper-right corner of the page to go to the storage management page and view the ID.
+	// The ID of the DataWorks workspace. You can click the small wrench icon in the upper-right corner of the page to go to the workspace management page and view the ID.
 	//
 	// example:
 	//
 	// 100001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the DataStudio page.
+	// The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the Data Studio page.
+	//
+	//
+	//
 	//
 	// You must set either this parameter or ProjectId to determine the DataWorks workspace for this API call.
 	//

@@ -112,7 +112,10 @@ type CreateImageShrinkRequest struct {
 	//
 	// System_shell_20251201
 	ProviderImageId *string `json:"ProviderImageId,omitempty" xml:"ProviderImageId,omitempty"`
-	// The image reference data type. Valid values:
+	// The image reference type. Valid values:
+	//
+	//
+	//
 	//
 	// - ACR: ACR image repository.
 	//

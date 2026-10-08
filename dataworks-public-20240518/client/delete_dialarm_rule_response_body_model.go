@@ -20,7 +20,7 @@ type DeleteDIAlarmRuleResponseBody struct {
 	//
 	// example:
 	//
-	// C99E2BE6-9DEA-5C2E-8F51-1DDCFE****
+	// C99E2BE6-9DEA-5C2E-8F51-1DDCFEADE490
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//

@@ -54,7 +54,7 @@ type CustomAttribute struct {
 	//
 	// example:
 	//
-	// 业务负责人
+	// Business owner
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// List of applicable entity types. Supports exact entity types and wildcard patterns such as `*-table` and `*-column`, for example:
 	//

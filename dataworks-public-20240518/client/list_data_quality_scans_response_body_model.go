@@ -76,7 +76,7 @@ type ListDataQualityScansResponseBodyPageInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records returned.
+	// The total number of records.
 	//
 	// example:
 	//

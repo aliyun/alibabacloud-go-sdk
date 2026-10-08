@@ -38,7 +38,7 @@ type GetDIJobLogRequest struct {
 	//
 	// 10
 	FailoverId *int64 `json:"FailoverId,omitempty" xml:"FailoverId,omitempty"`
-	// The node ID.
+	// The task ID.
 	//
 	// example:
 	//

@@ -90,7 +90,7 @@ type GetApplicationContentsResponseBodyData struct {
 	//
 	// example:
 	//
-	// 业务需要
+	// Business requirement
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The approval status. Valid values:
 	//

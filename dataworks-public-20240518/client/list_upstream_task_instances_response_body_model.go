@@ -170,11 +170,21 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The business date.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	// The creation time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
 	//
 	// example:
 	//
@@ -196,11 +206,23 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The project environment.
 	//
+	//
+	//
+	//
+	// - Prod: production.
+	//
+	// - Dev: development.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The time when the instance finished running.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
 	//
 	// example:
 	//
@@ -213,6 +235,11 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
 	//
 	// example:
 	//
@@ -245,6 +272,13 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// Deprecated
 	//
 	// The project environment.
+	//
+	//
+	//
+	//
+	// - Prod: production.
+	//
+	// - Dev: development.
 	//
 	// example:
 	//
@@ -280,17 +314,58 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	RuntimeResource *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The time when the instance started running.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
 	// The instance running status.
 	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - NotRun: not run.
+	//
+	// - Running: running.
+	//
+	// - WaitTime: waiting for TriggerTime.
+	//
+	// - CheckingCondition: checking branch conditions.
+	//
+	// - WaitResource: waiting for resources.
+	//
+	// - Failure: execution failed.
+	//
+	// - Success: execution succeeded.
+	//
+	// - Checking: submitted for data quality checking.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The dependency type.
+	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - Normal: same-cycle dependency.
+	//
+	// - CrossCycle: cross-cycle dependency.
 	//
 	// example:
 	//
@@ -316,6 +391,11 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The timeout period for task execution, in seconds.
 	//
+	//
+	//
+	//
+	// Note: The scheduling system rounds the configured value to whole hours.
+	//
 	// example:
 	//
 	// 3600
@@ -336,11 +416,28 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	// The scheduled trigger time.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
 	// The trigger type.
+	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - Scheduler: triggered by a scheduling cycle.
+	//
+	// - Manual: triggered manually.
 	//
 	// example:
 	//
@@ -359,6 +456,26 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 	// The type of the workflow instance to which the instance belongs.
+	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - SmokeTest: test.
+	//
+	// - SupplementData: data backfill.
+	//
+	// - Manual: manual.
+	//
+	// - ManualWorkflow: manual workflow.
+	//
+	// - Normal: scheduled run.
+	//
+	// - ManualFlow: manually executed business workflow.
 	//
 	// example:
 	//
@@ -843,6 +960,18 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeReso
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances struct {
 	// The dependency type.
 	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - Normal: same-cycle dependency.
+	//
+	// - CrossCycle: cross-cycle dependency.
+	//
 	// example:
 	//
 	// Normal
@@ -895,11 +1024,21 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The business date.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	// The creation time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
 	//
 	// example:
 	//
@@ -921,11 +1060,23 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the target data source. Valid values:
 	//
+	//
+	//
+	//
+	// - Dev: development environment.
+	//
+	// - Prod: production environment.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The time when the instance finished running.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
 	//
 	// example:
 	//
@@ -938,6 +1089,11 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
 	//
 	// example:
 	//
@@ -991,11 +1147,42 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	RuntimeResource *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The time when the instance started running.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
 	// The instance running status.
+	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - NotRun: not run.
+	//
+	// - Running: running.
+	//
+	// - WaitTime: waiting for TriggerTime.
+	//
+	// - CheckingCondition: checking branch conditions.
+	//
+	// - WaitResource: waiting for resources.
+	//
+	// - Failure: execution failed.
+	//
+	// - Success: execution succeeded.
+	//
+	// - Checking: submitted for data quality checking.
+	//
+	// - WaitTrigger: waiting for an external trigger. Trigger-based nodes enter this state after the waiting period.
 	//
 	// example:
 	//
@@ -1021,6 +1208,11 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The timeout period for task execution, in seconds.
 	//
+	//
+	//
+	//
+	// Note: The scheduling system rounds the configured value to whole hours.
+	//
 	// example:
 	//
 	// 3600
@@ -1041,11 +1233,28 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	// The scheduled trigger time.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, for example, 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
 	// The trigger type.
+	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - Scheduler: triggered by a scheduling cycle.
+	//
+	// - Manual: triggered manually.
 	//
 	// example:
 	//
@@ -1064,6 +1273,24 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 	// The type of the workflow instance to which the instance belongs.
+	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - Normal: scheduled run.
+	//
+	// - Manual: manual task.
+	//
+	// - SmokeTest: test.
+	//
+	// - SupplementData: data backfill.
+	//
+	// - ManualWorkflow: manual workflow.
 	//
 	// example:
 	//

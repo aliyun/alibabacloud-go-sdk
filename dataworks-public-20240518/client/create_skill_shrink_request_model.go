@@ -38,7 +38,7 @@ type CreateSkillShrinkRequest struct {
 	//
 	// example:
 	//
-	// 数据分析技能
+	// Data analytics skill.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extension metadata in key-value pairs.
 	//
@@ -64,7 +64,7 @@ type CreateSkillShrinkRequest struct {
 	//
 	// example:
 	//
-	// 初版
+	// Initial version.
 	VersionNote *string `json:"VersionNote,omitempty" xml:"VersionNote,omitempty"`
 	// The **visibility level**. Valid values:
 	//

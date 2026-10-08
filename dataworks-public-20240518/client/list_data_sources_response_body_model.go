@@ -76,7 +76,7 @@ type ListDataSourcesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//

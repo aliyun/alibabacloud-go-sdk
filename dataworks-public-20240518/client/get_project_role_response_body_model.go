@@ -18,7 +18,7 @@ type iGetProjectRoleResponseBody interface {
 type GetProjectRoleResponseBody struct {
 	// The details of the workspace role.
 	ProjectRole *GetProjectRoleResponseBodyProjectRole `json:"ProjectRole,omitempty" xml:"ProjectRole,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

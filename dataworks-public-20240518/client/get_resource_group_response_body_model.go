@@ -147,7 +147,10 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// - CommonV2: new-version resource group.
+	//
+	//
+	//
+	// - CommonV2: new-version general-purpose resource group.
 	//
 	// - ExclusiveDataIntegration: exclusive data integration resource group.
 	//

@@ -20,7 +20,7 @@ type iListDIJobMetricsShrinkRequest interface {
 }
 
 type ListDIJobMetricsShrinkRequest struct {
-	// The ID of the synchronization task.
+	// The instance ID.
 	//
 	// example:
 	//

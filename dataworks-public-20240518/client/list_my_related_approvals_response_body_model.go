@@ -166,7 +166,7 @@ type ListMyRelatedApprovalsResponseBodyDataData struct {
 	//
 	// example:
 	//
-	// 业务需要
+	// Business requirement
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// Approval status. Enum values:
 	//

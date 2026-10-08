@@ -103,7 +103,7 @@ type ListDIJobMetricsResponseBodyPagingInfoJobMetrics struct {
 	//
 	// JobDelay
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The metric data.
+	// The metric series, consisting of sampling times and sampled values at different points in time.
 	SeriesList []*ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList `json:"SeriesList,omitempty" xml:"SeriesList,omitempty" type:"Repeated"`
 }
 

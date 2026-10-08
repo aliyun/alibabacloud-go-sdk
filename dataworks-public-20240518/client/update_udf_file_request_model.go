@@ -78,15 +78,7 @@ type UpdateUdfFileRequest struct {
 	//
 	// STRING
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	// The function parameter description, corresponding to the parameter description field in the Create Function form.
-	//
-	// Valid values:
-	//
-	// - ALL_ALLOWD
-	//
-	// - FAILURE_ALLOWED
-	//
-	// - ALL_DENIED
+	// The description of the function input parameters, corresponding to the Parameter Description field in the Create Function form.
 	//
 	// example:
 	//
@@ -98,7 +90,10 @@ type UpdateUdfFileRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces.
+	// The unique identifier of the DataWorks workspace, which is the English identifier at the top of the Data Studio page where you switch workspaces.
+	//
+	//
+	//
 	//
 	// Either this parameter or ProjectId must be specified to identify the target DataWorks workspace for this API call.
 	//

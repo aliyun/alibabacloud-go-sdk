@@ -32,7 +32,7 @@ type DeleteDIAlarmRuleRequest struct {
 	//
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The ID of the synchronization task.
+	// The alert rule ID.
 	//
 	// example:
 	//

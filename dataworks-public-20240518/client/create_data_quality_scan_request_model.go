@@ -66,7 +66,7 @@ type CreateDataQualityScanRequest struct {
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The definition of execution parameters for the data quality monitoring.
 	Parameters []*CreateDataQualityScanRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to obtain the workspace ID. This parameter is required to specify the target DataWorks workspace for this API operation.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/overview) and go to the workspace configuration page to obtain the workspace ID. This parameter is required to specify the target DataWorks workspace for this API operation.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateDataQualityScanRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The resource group used during execution of the data quality monitoring.
 	RuntimeResource *CreateDataQualityScanRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// Spec code for the content of the data quality monitoring.
+	// Spec code for the content of the data quality monitoring. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
 	//
 	// example:
 	//
@@ -510,7 +510,7 @@ func (s *CreateDataQualityScanRequestParameters) Validate() error {
 }
 
 type CreateDataQualityScanRequestRuntimeResource struct {
-	// The default number of CUs configured for task running.
+	// The number of CUs configured for task running.
 	//
 	// example:
 	//

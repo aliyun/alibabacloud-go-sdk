@@ -167,7 +167,7 @@ type GetCrossProjectPipelineRunResponseBodyData struct {
 	//
 	// object-1
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The object type of the publish object.
+	// The type of the deployment object.
 	//
 	// example:
 	//

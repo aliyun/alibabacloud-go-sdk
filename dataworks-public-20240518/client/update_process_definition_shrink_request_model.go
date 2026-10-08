@@ -38,7 +38,7 @@ type UpdateProcessDefinitionShrinkRequest struct {
 	//
 	// example:
 	//
-	// lwt_ide_simple 项目 MaxCompute 表审批策略
+	// MaxCompute table approval policy for the lwt_ide_simple project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the process definition.
 	//
@@ -52,7 +52,7 @@ type UpdateProcessDefinitionShrinkRequest struct {
 	//
 	// example:
 	//
-	// MaxCompute 表审批
+	// MaxCompute table approval
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The notification service configurations.
 	NotificationServicesShrink *string `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty"`

@@ -36,13 +36,13 @@ type SubmitFileRequest struct {
 	//
 	// 1000000
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
 	//
 	// example:
 	//
 	// 100001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
+	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the workspace configuration page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type DeleteDIJobResponseBody struct {
 	//
 	// example:
 	//
-	// D33D4A51-5845-579A-B4BA-FAADD0F****
+	// D33D4A51-5845-579A-B4BA-FAADD0F83D53
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// true
+	// Indicates whether the call was successful. Valid values: true: successful; false: failed.
 	//
 	// example:
 	//

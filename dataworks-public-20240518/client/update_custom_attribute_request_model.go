@@ -26,7 +26,7 @@ type iUpdateCustomAttributeRequest interface {
 }
 
 type UpdateCustomAttributeRequest struct {
-	// The new description for the custom attribute. It must be 256 characters or less.
+	// The new description for the custom attribute. It must be less than 256 characters.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type UpdateCustomAttributeRequest struct {
 	//
 	// true
 	DisplayEnabled *bool `json:"DisplayEnabled,omitempty" xml:"DisplayEnabled,omitempty"`
-	// The new display name for the custom attribute. It must be 128 characters or less.
+	// The new display name for the custom attribute. It must be less than 128 characters.
 	//
 	// example:
 	//
-	// 业务负责人
+	// Business owner
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The applicable entity types. This parameter supports specific types and wildcard formats, such as `*-table` and `*-column`. For example:
 	//

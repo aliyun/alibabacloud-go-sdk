@@ -72,7 +72,7 @@ type FindBestMatchSecurityStrategyResponseBodyData struct {
 	//
 	// example:
 	//
-	// 标准版
+	// Standard Edition
 	EditionDisplayName *string `json:"EditionDisplayName,omitempty" xml:"EditionDisplayName,omitempty"`
 	// Security policy.
 	SecurityStrategy *FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy `json:"SecurityStrategy,omitempty" xml:"SecurityStrategy,omitempty" type:"Struct"`
@@ -159,7 +159,7 @@ type FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy struct {
 	//
 	// example:
 	//
-	// 控制数据分析模块的查询结果安全行为
+	// Controls the security behavior of query results in the Data Analysis module.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// **Whether enabled**
 	//
@@ -177,7 +177,7 @@ type FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy struct {
 	//
 	// example:
 	//
-	// 默认数据分析策略
+	// Default Data Analysis Policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// System default policy source ID.
 	//
@@ -386,7 +386,7 @@ type FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContent struct
 	//
 	// example:
 	//
-	// 数据分析
+	// Data Analysis
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// **English display name**
 	//
@@ -541,7 +541,7 @@ type FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContentControl
 	//
 	// example:
 	//
-	// 查询结果-单次展示记录值上限
+	// Query Results - Single Display Record Limit
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// **English display name**
 	//

@@ -272,7 +272,7 @@ type GetNodeResponseBodyNode struct {
 	//
 	// }
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The ID of the corresponding scheduling task after the node is published.
+	// The ID of the corresponding scheduling task after the node is deployed.
 	//
 	// example:
 	//

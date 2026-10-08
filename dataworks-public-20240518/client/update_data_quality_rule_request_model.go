@@ -60,7 +60,7 @@ type UpdateDataQualityRuleRequest struct {
 	//
 	// example:
 	//
-	// The table cannot be empty.
+	// The table cannot be empty
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
 	//
@@ -643,29 +643,32 @@ func (s *UpdateDataQualityRuleRequestErrorHandlers) Validate() error {
 type UpdateDataQualityRuleRequestSamplingConfig struct {
 	// The name of the metric to sample. This parameter is not required when a template is used.
 	//
+	//
+	//
+	//
 	// - Count: the number of rows in the table.
 	//
-	// - Min: the minimum value of the field.
+	// - Min: the minimum value of the column.
 	//
-	// - Max: the maximum value of the field.
+	// - Max: the maximum value of the column.
 	//
-	// - Avg: the average value of the field.
+	// - Avg: the average value of the column.
 	//
-	// - DistinctCount: the number of distinct values in the field.
+	// - DistinctCount: the number of distinct values in the column.
 	//
-	// - DistinctPercent: the ratio of the number of distinct values in the field to the total number of rows.
+	// - DistinctPercent: the ratio of the number of distinct values in the column to the total number of rows.
 	//
-	// - DuplicatedCount: the number of duplicate values in the field.
+	// - DuplicatedCount: the number of duplicate values in the column.
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate values in the field to the total number of rows.
+	// - DuplicatedPercent: the ratio of the number of duplicate values in the column to the total number of rows.
 	//
 	// - TableSize: the size of the table.
 	//
-	// - NullValueCount: the number of rows in which the field is null.
+	// - NullValueCount: the number of rows in which the column is null.
 	//
-	// - NullValuePercent: the percentage of rows in which the field is null.
+	// - NullValuePercent: the percentage of rows in which the column is null.
 	//
-	// - GroupCount: the number of data rows for each value after aggregation by field value.
+	// - GroupCount: the number of data rows for each value after aggregation by column value.
 	//
 	// - CountNotIn: the number of rows that do not match the enumerated values.
 	//

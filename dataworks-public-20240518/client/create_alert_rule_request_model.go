@@ -132,7 +132,7 @@ type CreateAlertRuleRequestNotification struct {
 	//
 	// 30
 	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
-	// The maximum number of alerts within a calendar year. Valid values: 1 to 10000.
+	// The maximum number of alerts within a calendar day. Valid values: 1 to 10000.
 	//
 	// example:
 	//

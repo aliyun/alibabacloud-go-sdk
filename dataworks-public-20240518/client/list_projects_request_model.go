@@ -38,9 +38,9 @@ type ListProjectsRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmzbn****
+	// rg-acfmzbn7pti3zff
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags. This parameter queries workspaces that have any of the specified tag key-value pairs.
 	AliyunResourceTags []*ListProjectsRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
 	// Specifies whether the development environment is enabled. Valid values:
 	//
@@ -52,11 +52,7 @@ type ListProjectsRequest struct {
 	//
 	// true
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
-	// Specifies whether the Develop role is disabled. Valid values:
-	//
-	// - false (default)
-	//
-	// - true
+	// Specifies whether the developer role is disabled. Valid values: false (enabled, default) and true (disabled). This parameter filters workspaces by whether the developer role is enabled or disabled.
 	//
 	// example:
 	//
@@ -88,25 +84,7 @@ type ListProjectsRequest struct {
 	//
 	// true
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
-	// The status of the workspaces. Valid values:
-	//
-	// - Available
-	//
-	// - Initializing
-	//
-	// - InitFailed
-	//
-	// - Forbidden
-	//
-	// - Deleting
-	//
-	// - DeleteFailed
-	//
-	// - Frozen
-	//
-	// - Updating
-	//
-	// - UpdateFailed
+	// The status of the workspaces. Valid values: Available (running normally), Initializing (initializing), InitFailed (initialization failed), Forbidden (manually disabled), Deleting (being deleted), DeleteFailed (deletion failed), Frozen (frozen due to overdue payments), Updating (being updated), and UpdateFailed (update failed). This parameter filters workspaces by the specified status.
 	//
 	// example:
 	//

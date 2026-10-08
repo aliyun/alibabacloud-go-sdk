@@ -34,9 +34,9 @@ type MetaEntityAttributeDef struct {
 	//
 	// example:
 	//
-	// 层级描述
+	// Hierarchy description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the attribute appears on the product page. Default is true.
+	// Indicates whether the attribute appears on the details page. Default is true.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type MetaEntityAttributeDef struct {
 	//
 	// example:
 	//
-	// API编码
+	// API code
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// Indicates whether the value is optional. Default is true.	Notice:  Validation occurs when creating an entity. If this value is false and no value is provided during creation, validation fails and an error is returned.
 	//

@@ -16,7 +16,7 @@ type iCreatePipelineRunResponseBody interface {
 }
 
 type CreatePipelineRunResponseBody struct {
-	// The unique identifier of the publish process.
+	// The unique identifier of the deployment process.
 	//
 	// example:
 	//

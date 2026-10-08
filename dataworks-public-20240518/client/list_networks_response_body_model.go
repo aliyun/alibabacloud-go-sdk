@@ -93,7 +93,7 @@ type ListNetworksResponseBodyPagingInfo struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListNetworksResponseBodyPagingInfoNetworkList struct {
 	//
 	// sg-2ze13vamugr7jenXXXXX
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The status of the network resource. Valid values: Pending, Creating, Running, Deleting, and Deleted.
+	// The status of the network resource. Valid values: Pending: waiting; Creating: being created; Running: running normally; Deleting: being deleted; Deleted: deleted.
 	//
 	// example:
 	//

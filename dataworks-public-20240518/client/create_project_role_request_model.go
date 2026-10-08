@@ -24,7 +24,7 @@ type CreateProjectRoleRequest struct {
 	//
 	// example:
 	//
-	// 保留字段
+	// Reserved field
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of DataWorks module permissions.
 	ModulePermissions []*CreateProjectRoleRequestModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`

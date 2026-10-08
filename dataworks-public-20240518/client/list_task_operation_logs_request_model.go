@@ -22,13 +22,13 @@ type iListTaskOperationLogsRequest interface {
 }
 
 type ListTaskOperationLogsRequest struct {
-	// The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days.
+	// The date of the operation, accurate to the day. Default value: the current day. You can query operation logs from the past 31 days. The value is a timestamp.
 	//
 	// example:
 	//
 	// 1710239005403
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The task ID.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListTaskOperationLogsRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type ListTaskOperationLogsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment. Valid values:
 	//
-	// - Prod: production environment
+	// - Prod: production
 	//
-	// - Dev: development environment
+	// - Dev: development
 	//
 	// example:
 	//

@@ -22,11 +22,7 @@ type UnTagDataAssetsResponseBody struct {
 	//
 	// 8754EE08-4AA2-5F77-ADD7-754DBBDA9F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
 	//
 	// example:
 	//

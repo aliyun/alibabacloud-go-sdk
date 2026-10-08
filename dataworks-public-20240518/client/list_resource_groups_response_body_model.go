@@ -203,7 +203,7 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the order for the resource group.
+	// The order instance ID for the resource group.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	//
 	// example:
 	//
-	// Create a general-purpose resource group for common tasks.
+	// 创建用于普通任务的通用资源组
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the resource group. Valid values:
 	//

@@ -18,7 +18,7 @@ type iListTaskOperationLogsResponseBody interface {
 type ListTaskOperationLogsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListTaskOperationLogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListTaskOperationLogsResponseBody) Validate() error {
 }
 
 type ListTaskOperationLogsResponseBodyPagingInfo struct {
-	// The operation logs.
+	// The list of operation logs.
 	OperationLogs []*ListTaskOperationLogsResponseBodyPagingInfoOperationLogs `json:"OperationLogs,omitempty" xml:"OperationLogs,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -76,7 +76,7 @@ type ListTaskOperationLogsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,31 +142,49 @@ func (s *ListTaskOperationLogsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListTaskOperationLogsResponseBodyPagingInfoOperationLogs struct {
-	// The time when the operation log was generated.
+	// The time when the operation logs are generated.
+	//
+	// The format is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The object type. Valid values:
+	//
+	// - Task: node
+	//
+	// - TaskInstance: node instance
+	//
+	// example:
+	//
+	// TaskInstance
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The operation content.
 	//
 	// example:
 	//
 	// Freeze tasks
 	OperationContent *string `json:"OperationContent,omitempty" xml:"OperationContent,omitempty"`
-	// The serial number of the operation.
+	// The operation sequence number.
 	//
 	// example:
 	//
 	// 1111
 	OperationSeq *int64 `json:"OperationSeq,omitempty" xml:"OperationSeq,omitempty"`
-	// The ID of the task on which the operation was performed.
+	// The ID of the node on which the operation was performed.
 	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The account ID of the operator.
+	// The ID of the node instance on which the operation was performed.
+	//
+	// example:
+	//
+	// 1234
+	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	// The account ID of the user who performed the operation.
 	//
 	// example:
 	//
@@ -186,6 +204,10 @@ func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) GetCreateTime
 	return s.CreateTime
 }
 
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) GetObjectType() *string {
+	return s.ObjectType
+}
+
 func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) GetOperationContent() *string {
 	return s.OperationContent
 }
@@ -198,12 +220,21 @@ func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) GetTaskId() *
 	return s.TaskId
 }
 
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) GetTaskInstanceId() *int64 {
+	return s.TaskInstanceId
+}
+
 func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) GetUser() *string {
 	return s.User
 }
 
 func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetCreateTime(v int64) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetObjectType(v string) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.ObjectType = &v
 	return s
 }
 
@@ -219,6 +250,11 @@ func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetOperationS
 
 func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetTaskId(v int64) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
 	s.TaskId = &v
+	return s
+}
+
+func (s *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs) SetTaskInstanceId(v int64) *ListTaskOperationLogsResponseBodyPagingInfoOperationLogs {
+	s.TaskInstanceId = &v
 	return s
 }
 

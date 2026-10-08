@@ -107,7 +107,7 @@ type GetRouteResponseBodyRoute struct {
 	//
 	// example:
 	//
-	// Serverless_res_group_524257424564736_6831777****
+	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The network resource ID.
 	//

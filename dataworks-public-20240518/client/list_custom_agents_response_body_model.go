@@ -152,13 +152,13 @@ type ListCustomAgentsResponseBodyPagingInfoAgents struct {
 	//
 	// example:
 	//
-	// 数据分析助手
+	// Data analysis assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the custom agent.
 	//
 	// example:
 	//
-	// 我的助手
+	// My assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The time when the agent was created, provided in milliseconds since the Unix epoch.
 	//

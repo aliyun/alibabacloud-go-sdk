@@ -238,7 +238,10 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The timeout period for task execution. Unit: seconds.
 	//
-	// Note: The scheduling system rounds the configured value to the nearest hour.
+	//
+	//
+	//
+	// Note: The scheduling system rounds the configured value to whole hours.
 	//
 	// example:
 	//

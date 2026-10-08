@@ -95,7 +95,7 @@ type ListCrossProjectPipelineRunItemsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of publish items for the root objects and their child objects that are included in the cross-workspace publish pipeline.
+	// The list of publish items for the root objects and their child objects that are fixed in the cross-workspace publish pipeline.
 	//
 	// example:
 	//

@@ -287,13 +287,19 @@ type GetPipelineRunResponseBodyPipelineStages struct {
 	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
 	// The type of the deployment stage.
 	//
+	//
+	//
+	//
 	// Valid values:
+	//
+	//
+	//
 	//
 	// - Deploy: deploy operation
 	//
 	// - Check: check operation
 	//
-	// - Offline: offline operation
+	// - Offline: undeploy operation
 	//
 	// - Build: build operation
 	//

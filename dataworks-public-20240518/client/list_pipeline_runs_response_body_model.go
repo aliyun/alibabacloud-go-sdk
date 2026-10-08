@@ -158,7 +158,7 @@ type ListPipelineRunsResponseBodyPagingInfoPipelineRuns struct {
 	//
 	// example:
 	//
-	// Release process description
+	// 发布流程描述信息
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the deployment pipeline run.
 	//

@@ -336,7 +336,10 @@ func (s *UpdateImageRequestBuildConfigPackageInstallationScripts) Validate() err
 type UpdateImageRequestSupported struct {
 	// The image sub-module. Valid values:
 	//
-	// - Scheduler: data development.
+	//
+	//
+	//
+	// - Scheduler: Data Studio.
 	//
 	// example:
 	//

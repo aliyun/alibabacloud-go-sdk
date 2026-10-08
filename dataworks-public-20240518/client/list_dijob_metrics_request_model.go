@@ -20,7 +20,7 @@ type iListDIJobMetricsRequest interface {
 }
 
 type ListDIJobMetricsRequest struct {
-	// The ID of the synchronization task.
+	// The instance ID.
 	//
 	// example:
 	//

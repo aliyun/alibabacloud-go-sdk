@@ -163,9 +163,9 @@ func (s *CreateMcpServerRequestConfig) Validate() error {
 }
 
 type CreateMcpServerRequestVisibilityScope struct {
-	// The list of project IDs that are visible. This parameter takes effect when Visibility is set to `PROJECT`.
+	// The IDs of the projects in which the MCP Server is visible. This parameter takes effect when Visibility is set to `PROJECT`.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of user IDs that are visible. This parameter takes effect when Visibility is set to `USER`.
+	// The IDs of the users to whom the MCP Server is visible. This parameter takes effect when Visibility is set to `USER`.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

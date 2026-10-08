@@ -90,7 +90,7 @@ type GetComponentResponseBodyComponent struct {
 	//
 	// 2024-01-26T07:44:21Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Parameter
+	// The name.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GetComponentResponseBodyComponent struct {
 	//
 	// 64623
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region ID, such as ap-southeast-1. The region ID is automatically parsed from your endpoint.
+	// The region information, usually the region where the service is located. For example, cn-shanghai specifies China (Shanghai), and cn-zhangjiakou specifies China (Zhangjiakou). You do not need to specify RegionId because it is automatically parsed from the endpoint that you call.
 	//
 	// example:
 	//

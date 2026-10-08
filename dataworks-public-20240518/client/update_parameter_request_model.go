@@ -24,7 +24,7 @@ type UpdateParameterRequest struct {
 	//
 	// example:
 	//
-	// This is a test parameter.
+	// 这是一个测试参数
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter ID.
 	//

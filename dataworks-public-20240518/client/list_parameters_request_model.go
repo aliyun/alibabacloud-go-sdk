@@ -64,7 +64,10 @@ type ListParametersRequest struct {
 	//
 	// Project
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The field to sort the parameters by. Specify the value in the "FieldName SortOrder" format. The Asc sort order is optional. Supported values are:
+	// The list of fields to sort the parameters by. Specify the value in the "FieldName SortOrder" format. The Asc sort order is optional. Supported values are:
+	//
+	//
+	//
 	//
 	// - ModifyTime (Desc/Asc)
 	//

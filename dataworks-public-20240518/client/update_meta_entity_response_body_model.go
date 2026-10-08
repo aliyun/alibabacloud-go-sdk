@@ -24,7 +24,7 @@ type UpdateMetaEntityResponseBody struct {
 	//
 	// AASFDFSDFG-DFSDF-DFSDFD-SDFSDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the update operation.
+	// The updated entity or the result of the write operation.
 	Result *UpdateMetaEntityResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//

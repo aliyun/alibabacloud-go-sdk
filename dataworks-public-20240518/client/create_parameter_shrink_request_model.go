@@ -30,7 +30,7 @@ type CreateParameterShrinkRequest struct {
 	//
 	// example:
 	//
-	// This is a test parameter.
+	// 这是一个测试参数
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter name. It must be unique within the workspace, be prefixed with `workspace.`, and not exceed 255 characters. The part of the name after the prefix must start with a letter and can contain only letters, digits, and underscores (_).
 	//

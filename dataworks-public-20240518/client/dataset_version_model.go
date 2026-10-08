@@ -40,9 +40,9 @@ type DatasetVersion struct {
 	//
 	// example:
 	//
-	// 初始版本
+	// Initial version
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Creation time (milliseconds)
+	// Creation time, represented by a timestamp in milliseconds
 	//
 	// example:
 	//
@@ -66,29 +66,36 @@ type DatasetVersion struct {
 	//
 	// dataworks-datasetVersion:0gfxxxjx155usz3hrv:1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The storage import configuration for the dataset; required configuration varies by storage type.
+	// The storage import configuration for the dataset. The required configuration varies by storage type.
 	//
-	// **NAS**
 	//
-	// Refer to the return values from the file storage API DescribeFileSystems.
+	// <details>
+	//
+	// <summary>NAS</summary>
+	//
+	// For values, see the response of the File Storage NAS DescribeFileSystems API.
+	//
 	//
 	// ```JSON
 	//
 	// {
 	//
-	// "fileSystemId": "3b6XXX89c9", // The file system ID.
+	//   "fileSystemId": "3b6XXX89c9", // The file system ID.
 	//
-	// "fileSystemStorageType":  "Performance" // The file system storage type.
+	//   "fileSystemStorageType": "Performance", // The file system storage type.
 	//
-	// "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+	//   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
 	//
 	// }
 	//
 	// ```
+	//
+	//
+	// </details>
 	ImportInfo map[string]*string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
 	// The PAI dataset label.
 	Labels []*DatasetLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Modification time (milliseconds)
+	// Modification time, represented by a timestamp in milliseconds
 	//
 	// example:
 	//

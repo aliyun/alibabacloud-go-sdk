@@ -38,7 +38,10 @@ type UpdateProjectRoleRequest struct {
 	//
 	// This parameter is required.
 	ModulePermissions []*UpdateProjectRoleRequestModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Storage Management page to obtain the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace Management page to obtain the ID.
+	//
+	//
+	//
 	//
 	// This parameter specifies the DataWorks workspace for this API invocation.
 	//
@@ -110,6 +113,9 @@ func (s *UpdateProjectRoleRequest) Validate() error {
 type UpdateProjectRoleRequestModulePermissions struct {
 	// The DataWorks module ID. Valid values:
 	//
+	//
+	//
+	//
 	// - 2: HoloStudio
 	//
 	// - 3: StreamStudio
@@ -126,7 +132,7 @@ type UpdateProjectRoleRequestModulePermissions struct {
 	//
 	// - 10: Data Modeling (DataBlau DDM)
 	//
-	// - 11: DataStudio
+	// - 11: Data Studio
 	//
 	// - 12: Data Quality
 	//

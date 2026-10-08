@@ -309,7 +309,7 @@ type GetFileResponseBodyDataFile struct {
 	//
 	// ods_user_info_d
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The code type of the file. Different file types use different code. For more information, see [DataWorks Edge Zone Collection](https://help.aliyun.com/document_detail/600169.html).
+	// The code type of the file. Different file types use different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
 	//
 	// example:
 	//
@@ -335,7 +335,7 @@ type GetFileResponseBodyDataFile struct {
 	//
 	// 424732****
 	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
-	// The ID of the scheduling task generated in the CDN mapping system after the file is submitted.
+	// The ID of the scheduling task generated in the scheduling system after the file is submitted.
 	//
 	// example:
 	//
@@ -347,7 +347,7 @@ type GetFileResponseBodyDataFile struct {
 	//
 	// 7775674356****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// If the current file is an internal file of a composite edge zone file, this field identifies the ID of the corresponding composite edge zone file.
+	// If the current file is an internal file of a combined node file, this field identifies the ID of the corresponding combined node file.
 	//
 	// example:
 	//
@@ -355,17 +355,20 @@ type GetFileResponseBodyDataFile struct {
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The function module to which the file belongs. Valid values:
 	//
-	// - NORMAL: Data Development.
 	//
-	// - MANUAL: One-time task.
+	//
+	//
+	// - NORMAL: Data Studio.
+	//
+	// - MANUAL: Manually triggered task.
 	//
 	// - MANUAL_BIZ: Manually triggered workflow.
 	//
-	// - SKIP: Dry-run scheduling in Data Development.
+	// - SKIP: Dry-run scheduling in Data Studio.
 	//
 	// - ADHOCQUERY: Ad-hoc query.
 	//
-	// - COMPONENT: Widget Management.
+	// - COMPONENT: Component Management.
 	//
 	// example:
 	//
@@ -621,9 +624,12 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	//
 	// 00 05 00 	- 	- ?
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
-	// The type of recurrence, including NOT_DAY (minute, hour) and DAY (day, week, month).
+	// The type of scheduling cycle, including NOT_DAY (minute, hour) and DAY (day, week, month).
 	//
-	// This parameter corresponds to "Schedule Configuration > Time Properties > Recurrence" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to "Schedule Configuration &gt; Time Properties &gt; Scheduling Cycle" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -653,7 +659,10 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	DependentType *string `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
 	// The UNIX timestamp, in milliseconds, when automatic scheduling stops.
 	//
-	// This parameter corresponds to the millisecond UNIX timestamp of the end time configured in the "Scan Configuration > Time Properties > Effective Date" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the millisecond UNIX timestamp of the end time configured in the "Schedule Configuration &gt; Time Properties &gt; Effective Date" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -681,7 +690,10 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	OutputParameters []*GetFileResponseBodyDataNodeConfigurationOutputParameters `json:"OutputParameters,omitempty" xml:"OutputParameters,omitempty" type:"Repeated"`
 	// Schedule parameter.
 	//
-	// This parameter corresponds to the "Scan Configuration > Parameters" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console). You can refer to the [Schedule Parameters](https://help.aliyun.com/document_detail/137548.html) documentation for configuration details.
+	//
+	//
+	//
+	// This parameter corresponds to the "Schedule Configuration &gt; Parameters" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console). You can refer to the [Schedule Parameters](https://help.aliyun.com/document_detail/137548.html) documentation for configuration details.
 	//
 	// example:
 	//
@@ -689,13 +701,19 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 	// Rerun property. Valid values:
 	//
+	//
+	//
+	//
 	// - ALL_ALLOWED: The job can be rerun regardless of whether it previously Succeeded or failed.
 	//
 	// - FAILURE_ALLOWED: The job cannot be rerun if it previously Succeeded, but can be rerun if it previously failed.
 	//
 	// - ALL_DENIED: The job cannot be rerun regardless of whether it previously Succeeded or failed.
 	//
-	// This parameter corresponds to the "Scan Configuration > Time Properties > Rerun Property" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Schedule Configuration &gt; Time Properties &gt; Rerun Property" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -709,9 +727,12 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule type. Valid values:
 	//
+	//
+	//
+	//
 	// - NORMAL: Normal scheduling task.
 	//
-	// - MANUAL: One-time task, which is not included in regular scheduling and corresponds to a node in a manually triggered workflow.
+	// - MANUAL: Manually triggered task, which is not included in regular scheduling and corresponds to a node in a manually triggered workflow.
 	//
 	// - PAUSE: Paused task.
 	//
@@ -737,13 +758,19 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	//
 	// true
 	StartImmediately *bool `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
-	// Indicates whether to skip execution. Valid values:
+	// Indicates whether to pause scheduling. Valid values:
 	//
-	// - true: Skip execution.
 	//
-	// - false: Do not skip execution.
 	//
-	// This parameter corresponds to the setting "Schedule Type" under "Schedule Configuration > Time Properties" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console), when it is set to "skip execution".
+	//
+	// - true: Pause scheduling.
+	//
+	// - false: Do not pause scheduling.
+	//
+	//
+	//
+	//
+	// This parameter corresponds to the setting "Schedule Type" under "Schedule Configuration &gt; Time Properties" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console), when it is set to "pause scheduling".
 	//
 	// example:
 	//
@@ -1106,7 +1133,10 @@ func (s *GetFileResponseBodyDataNodeConfigurationInputParameters) Validate() err
 type GetFileResponseBodyDataNodeConfigurationOutputList struct {
 	// Output name of the file.
 	//
-	// This parameter corresponds to the value in the "Output Name" column when "Same Cycle" is selected under "Scan Configuration > Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the value in the "Output Name" column when "Same Cycle" is selected under "Schedule Configuration &gt; Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -1114,7 +1144,10 @@ type GetFileResponseBodyDataNodeConfigurationOutputList struct {
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	// Output value of the file.
 	//
-	// This parameter corresponds to the value in the "Output Table" column when "Same Cycle" is selected under "Scan Configuration > Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the value in the "Output Table" column when "Same Cycle" is selected under "Schedule Configuration &gt; Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -1153,7 +1186,7 @@ func (s *GetFileResponseBodyDataNodeConfigurationOutputList) Validate() error {
 }
 
 type GetFileResponseBodyDataNodeConfigurationOutputParameters struct {
-	// The description of the output parameter in the edge zone context.
+	// The description of the output parameter in the node context.
 	//
 	// example:
 	//
@@ -1167,7 +1200,10 @@ type GetFileResponseBodyDataNodeConfigurationOutputParameters struct {
 	//
 	// output
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The type of the expression for the edge zone context output parameter. Valid values are as follows:
+	// The type of the expression for the node context output parameter. Valid values are as follows:
+	//
+	//
+	//
 	//
 	// - 1: constant
 	//
@@ -1175,15 +1211,21 @@ type GetFileResponseBodyDataNodeConfigurationOutputParameters struct {
 	//
 	// - 3: pass-through variable from a parameter node
 	//
-	// This parameter corresponds to the "Type" field in the "Scan Configuration > Edge Zone Context > Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Type" field in the "Schedule Configuration &gt; Node Context &gt; Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
 	// 1
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The expression of the output parameter in the edge zone context.
+	// The expression of the output parameter in the node context.
 	//
-	// This parameter corresponds to the "Value" field in the "Scan Configuration > Edge Zone Context > Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Value" field in the "Schedule Configuration &gt; Node Context &gt; Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//

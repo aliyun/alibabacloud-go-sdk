@@ -40,7 +40,10 @@ type ListCatalogsRequest struct {
 	//
 	// abc
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order in which the tables are sorted. Default value: Asc. Valid values:
+	// The order in which the catalogs are sorted. Default value: Asc. Valid values:
+	//
+	//
+	//
 	//
 	// - Asc: ascending order.
 	//
@@ -64,13 +67,22 @@ type ListCatalogsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
 	//
+	//
+	//
+	//
 	// Currently, only the DLF and StarRocks types are supported.
 	//
-	// - For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `DLF`.
 	//
-	// - For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` `is StarRocks:(instance_id|encoded_jdbc_url)`.
 	//
-	// > <br>`instance_id`: The instance ID. Required if the data source is registered in instance mode.<br>
+	//
+	// - For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `dlf`.
+	//
+	// - For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` is `starrocks:(instance_id|encoded_jdbc_url)`.
+	//
+	//
+	//
+	//
+	// > &lt;br&gt;`instance_id`: The instance ID. Required if the data source is registered in instance mode.&lt;br&gt;
 	//
 	// > `encoded_jdbc_url`: The JDBC connection string encoded with URL encoding. Required if the data source is registered in connection-string mode.
 	//

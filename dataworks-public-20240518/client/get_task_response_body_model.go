@@ -100,7 +100,7 @@ type GetTaskResponseBodyTask struct {
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The instance ID.
+	// The unique identifier of the task.
 	//
 	// example:
 	//
@@ -113,9 +113,12 @@ type GetTaskResponseBodyTask struct {
 	Inputs *GetTaskResponseBodyTaskInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The instance generation mode. Valid values:
 	//
-	// - T+1
 	//
-	// - Immediately
+	//
+	//
+	// - T+1: generated the next day
+	//
+	// - Immediately: generated immediately
 	//
 	// example:
 	//
@@ -602,7 +605,7 @@ type GetTaskResponseBodyTaskDependencies struct {
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
+	// The ID of the upstream task. This field is returned for cross-cycle dependencies on other nodes, or for same-cycle dependencies when input content is not configured. It is not returned in other cases.
 	//
 	// example:
 	//
@@ -693,9 +696,12 @@ type GetTaskResponseBodyTaskInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
+	//
+	//
+	//
 	// - Constant: constant
 	//
-	// - PassThrough: node output
+	// - PassThrough: parameter node output
 	//
 	// - System: variable
 	//
@@ -846,9 +852,12 @@ type GetTaskResponseBodyTaskOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
+	//
+	//
+	//
 	// - Constant: constant
 	//
-	// - PassThrough: node output
+	// - PassThrough: parameter node output
 	//
 	// - System: variable
 	//
@@ -906,7 +915,7 @@ func (s *GetTaskResponseBodyTaskOutputsVariables) Validate() error {
 }
 
 type GetTaskResponseBodyTaskRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The number of compute units (CUs) configured for task running.
 	//
 	// example:
 	//
@@ -1461,7 +1470,7 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasksDataSource) Validate() error {
 }
 
 type GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource struct {
-	// The default number of CUs configured for task running.
+	// The number of CUs configured for task running.
 	//
 	// example:
 	//
@@ -1535,11 +1544,14 @@ type GetTaskResponseBodyTaskSubTasksSubTasksTrigger struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// - Pause
 	//
-	// - Skip
 	//
-	// - Normal
+	//
+	// - Pause: paused
+	//
+	// - Skip: dry run
+	//
+	// - Normal: normal operation
 	//
 	// example:
 	//
@@ -1680,11 +1692,14 @@ type GetTaskResponseBodyTaskTrigger struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// - Pause
 	//
-	// - Skip
 	//
-	// - Normal
+	//
+	// - Pause: paused
+	//
+	// - Skip: dry run
+	//
+	// - Normal: normal operation
 	//
 	// example:
 	//

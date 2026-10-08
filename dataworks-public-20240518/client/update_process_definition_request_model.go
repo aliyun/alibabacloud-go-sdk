@@ -38,7 +38,7 @@ type UpdateProcessDefinitionRequest struct {
 	//
 	// example:
 	//
-	// lwt_ide_simple 项目 MaxCompute 表审批策略
+	// MaxCompute table approval policy for the lwt_ide_simple project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the process definition.
 	//
@@ -52,7 +52,7 @@ type UpdateProcessDefinitionRequest struct {
 	//
 	// example:
 	//
-	// MaxCompute 表审批
+	// MaxCompute table approval
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The notification service configurations.
 	NotificationServices []*UpdateProcessDefinitionRequestNotificationServices `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty" type:"Repeated"`
@@ -165,13 +165,16 @@ func (s *UpdateProcessDefinitionRequest) Validate() error {
 type UpdateProcessDefinitionRequestApprovalNodes struct {
 	// The approver type for the node. Valid values:
 	//
+	//
+	//
+	//
 	// - `DataWorksProjectRole`: A workspace role.
 	//
 	// - `DataWorksProjectMember`: A workspace member.
 	//
-	// - `TableAdministrator`: A table administrator.
+	// - `TableAdministrator`: A table owner.
 	//
-	// - `TableOrProjectAdministrator`: The administrator of the table or project.
+	// - `TableOrProjectAdministrator`: The administrator of the table or workspace.
 	//
 	// - `AliyunResourceOwner`: An Alibaba Cloud account.
 	//

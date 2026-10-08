@@ -26,11 +26,7 @@ type UnTagDataAssetsRequest struct {
 	//
 	// This parameter is required.
 	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
-	// The type of the data asset. Valid values:
-	//
-	// - ACS::DataWorks::Table
-	//
-	// - ACS::DataWorks::Task
+	// The type of the data asset. Valid values: ACS::DataWorks::Table (data table) and ACS::DataWorks::Task (scheduled task).
 	//
 	// This parameter is required.
 	//

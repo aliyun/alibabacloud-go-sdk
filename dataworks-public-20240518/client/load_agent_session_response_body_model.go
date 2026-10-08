@@ -28,7 +28,7 @@ type iLoadAgentSessionResponseBody interface {
 }
 
 type LoadAgentSessionResponseBody struct {
-	// The error object of the SSE frame. This field is present when an error occurs.
+	// The error object of the SSE frame. This field is present when an error occurs. The returned content conforms to the Agent Client Protocol (ACP). For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type LoadAgentSessionResponseBody struct {
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The method of the SSE frame.
+	// The method of the SSE frame. The returned content conforms to the Agent Client Protocol (ACP). For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//
 	// session/update
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The parameters of the SSE frame.
+	// The parameters of the SSE frame. The returned content conforms to the Agent Client Protocol (ACP). For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type LoadAgentSessionResponseBody struct {
 	//
 	// 0D41C608-0C60-5EB0-B986-1460909CF642
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result object of the SSE frame. This field is present when the operation is successful.
+	// The result object of the SSE frame. This field is present when the operation is successful. The returned content conforms to the Agent Client Protocol (ACP). For more information, see https://agentclientprotocol.com/protocol/prompt-turn.
 	//
 	// example:
 	//

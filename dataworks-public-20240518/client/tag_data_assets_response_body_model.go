@@ -22,11 +22,7 @@ type TagDataAssetsResponseBody struct {
 	//
 	// 0bc1ec92159376
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
 	//
 	// example:
 	//

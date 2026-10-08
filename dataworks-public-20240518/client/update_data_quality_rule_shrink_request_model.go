@@ -60,7 +60,7 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	//
 	// example:
 	//
-	// The table cannot be empty.
+	// The table cannot be empty
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
 	//

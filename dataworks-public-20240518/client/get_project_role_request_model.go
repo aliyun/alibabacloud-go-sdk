@@ -44,7 +44,7 @@ type GetProjectRoleRequest struct {
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Configuration page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//

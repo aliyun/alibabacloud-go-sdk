@@ -24,9 +24,12 @@ type DeleteFunctionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true
 	//
-	// - false
+	//
+	//
+	// - true: successful
+	//
+	// - false: failed
 	//
 	// example:
 	//

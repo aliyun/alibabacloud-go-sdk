@@ -38,11 +38,11 @@ type iDataset interface {
 }
 
 type Dataset struct {
-	// The description of the dataset. The length cannot exceed 1024 characters.
+	// The description of the dataset. The length must be less than 1024 characters.
 	//
 	// example:
 	//
-	// 测试数据集
+	// Test dataset
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The creation time. This value is a UNIX timestamp in milliseconds.
 	//
@@ -58,19 +58,22 @@ type Dataset struct {
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The data type. Valid values:
 	//
-	// 	- COMMON
 	//
-	// 	- PIC
 	//
-	// 	- TEXT
 	//
-	// 	- TABLE
+	// - COMMON: general
 	//
-	// 	- VIDEO
+	// - PIC: image
 	//
-	// 	- AUDIO
+	// - TEXT: text
 	//
-	// 	- INDEX
+	// - TABLE: table
+	//
+	// - VIDEO: video
+	//
+	// - AUDIO: audio
+	//
+	// - INDEX: index
 	//
 	// example:
 	//
@@ -92,7 +95,7 @@ type Dataset struct {
 	//
 	// 1736756055000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The dataset name. It must be a non-empty string and cannot exceed 128 characters.
+	// The dataset name. It must be a non-empty string and must be less than 128 characters.
 	//
 	// example:
 	//

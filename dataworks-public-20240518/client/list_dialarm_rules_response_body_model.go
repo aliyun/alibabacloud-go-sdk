@@ -76,7 +76,7 @@ type ListDIAlarmRulesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -176,15 +176,18 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// - Heartbeat
 	//
-	// - FailoverCount
 	//
-	// - Delay
 	//
-	// - DdlReport
+	// - Heartbeat: task status alert
 	//
-	// - ResourceUtilization
+	// - FailoverCount: failover count alert
+	//
+	// - Delay: task latency alert
+	//
+	// - DdlReport: DDL notification
+	//
+	// - ResourceUtilization: resource group utilization
 	//
 	// example:
 	//

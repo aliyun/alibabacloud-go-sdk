@@ -38,7 +38,7 @@ type UpdateSecurityStrategyShrinkRequest struct {
 	//
 	// example:
 	//
-	// 控制数据分析模块的查询结果安全行为
+	// Controls the security behavior of query results in the Data Analysis module
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// **The policy ID.**
 	//
@@ -52,7 +52,7 @@ type UpdateSecurityStrategyShrinkRequest struct {
 	//
 	// example:
 	//
-	// 默认数据分析策略
+	// Default data analysis policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// **A list of associated workspace IDs.**
 	WorkspacesShrink *string `json:"Workspaces,omitempty" xml:"Workspaces,omitempty"`

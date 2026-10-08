@@ -46,7 +46,7 @@ type UpdateComputeResourceRequest struct {
 	//
 	// }
 	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
-	// The category of the computing resource to be added. Different types have different subtypes and corresponding parameter schema constraints. Examples: InstanceMode and UrlMode.
+	// The category of the computing resource to be added. Different types have different subtypes and corresponding parameter schema constraints. Examples: InstanceMode (instance mode) and UrlMode (connection string mode).
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type UpdateComputeResourceRequest struct {
 	//
 	// example:
 	//
-	// Level description
+	// Table level description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the computing resource.
 	//

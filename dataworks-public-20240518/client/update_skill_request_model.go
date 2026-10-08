@@ -166,9 +166,9 @@ func (s *UpdateSkillRequest) Validate() error {
 }
 
 type UpdateSkillRequestVisibilityScope struct {
-	// The list of visible project IDs.
+	// The IDs of the projects in which the Skill is visible.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// The list of visible user IDs.
+	// The IDs of the users to whom the Skill is visible.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

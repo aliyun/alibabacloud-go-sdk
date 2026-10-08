@@ -48,7 +48,7 @@ type UpdateDIAlarmRuleRequest struct {
 	//
 	// example:
 	//
-	// Alert rule description.
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
@@ -64,15 +64,18 @@ type UpdateDIAlarmRuleRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric type in the alert rule. Valid values:
 	//
-	// - Heartbeat
 	//
-	// - FailoverCount
 	//
-	// - Delay
 	//
-	// - DdlReport
+	// - Heartbeat: task status alert
 	//
-	// - ResourceUtilization
+	// - FailoverCount: failover count alert
+	//
+	// - Delay: task latency alert
+	//
+	// - DdlReport: DDL notification
+	//
+	// - ResourceUtilization: resource group utilization
 	//
 	// example:
 	//
@@ -287,13 +290,16 @@ func (s *UpdateDIAlarmRuleRequestNotificationSettings) Validate() error {
 type UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {
 	// The alert notification method. Valid values:
 	//
-	// - Mail
 	//
-	// - Phone
 	//
-	// - Sms
 	//
-	// - Ding
+	// - Mail: email
+	//
+	// - Phone: phone call
+	//
+	// - Sms: SMS
+	//
+	// - Ding: DingTalk
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
@@ -387,7 +393,7 @@ type UpdateDIAlarmRuleRequestTriggerConditions struct {
 	//
 	// This parameter is deprecated and replaced by the DdlTypes parameter.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
-	// The types of DDL operations for which the alert rule takes effect.
+	// The types of DDL operations for which the alert rule takes effect. This setting takes effect only for DDL notifications.
 	DdlTypes []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//

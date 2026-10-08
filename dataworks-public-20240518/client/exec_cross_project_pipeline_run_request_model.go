@@ -16,7 +16,7 @@ type iExecCrossProjectPipelineRunRequest interface {
 }
 
 type ExecCrossProjectPipelineRunRequest struct {
-  // The ID of the cross-workspace publish flow.
+  // The ID of the cross-workspace deployment flow.
   // 
   // This parameter is required.
   // 

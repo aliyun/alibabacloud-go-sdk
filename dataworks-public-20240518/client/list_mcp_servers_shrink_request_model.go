@@ -38,7 +38,7 @@ type ListMcpServersShrinkRequest struct {
 	//
 	// mcp
 	Q *string `json:"Q,omitempty" xml:"Q,omitempty"`
-	// The visibility level for filtering the results.
+	// The visibility levels for filtering the results. You can specify multiple levels.
 	//
 	// example:
 	//

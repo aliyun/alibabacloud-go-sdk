@@ -146,7 +146,7 @@ type ListPendingApprovalsResponseBodyDataData struct {
 	//
 	// example:
 	//
-	// 申请时间
+	// Application time
 	ApplicationTime *int64 `json:"ApplicationTime,omitempty" xml:"ApplicationTime,omitempty"`
 	// Request content.
 	Contents []*ListPendingApprovalsResponseBodyDataDataContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
@@ -166,7 +166,7 @@ type ListPendingApprovalsResponseBodyDataData struct {
 	//
 	// example:
 	//
-	// 业务需要
+	// Business requirement
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// Approval status. Enumeration:
 	//

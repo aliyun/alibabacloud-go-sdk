@@ -72,9 +72,12 @@ type GetProjectMemberResponseBodyProjectMember struct {
 	Roles []*GetProjectMemberResponseBodyProjectMemberRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
 	// The status of the Workspace member.
 	//
+	//
+	//
+	//
 	// - Normal: The member is active.
 	//
-	// - Disabled: The member is disabled.
+	// - Forbidden: The member is disabled.
 	//
 	// example:
 	//

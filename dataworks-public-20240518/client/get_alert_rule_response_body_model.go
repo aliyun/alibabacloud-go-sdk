@@ -283,6 +283,9 @@ type GetAlertRuleResponseBodyAlertRuleNotificationReceivers struct {
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The type of the alert recipient. Valid values:
 	//
+	//
+	//
+	//
 	// - AliUid: Alibaba Cloud UID.
 	//
 	// - ShiftSchedule: shift schedule.
@@ -297,7 +300,7 @@ type GetAlertRuleResponseBodyAlertRuleNotificationReceivers struct {
 	//
 	// - FeishuUrl: Lark webhook URL.
 	//
-	// - WeixinUrl: WeChat webhook URL.
+	// - WeixinUrl: WeCom webhook URL.
 	//
 	// example:
 	//
@@ -353,6 +356,9 @@ type GetAlertRuleResponseBodyAlertRuleTriggerCondition struct {
 	Target *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// The type of the alert trigger. Valid values:
 	//
+	//
+	//
+	//
 	// - Finished: instance completed.
 	//
 	// - UnFinished: instance not completed.
@@ -375,9 +381,9 @@ type GetAlertRuleResponseBodyAlertRuleTriggerCondition struct {
 	//
 	// - InstanceErrorPercentage: percentage of failed instances.
 	//
-	// - ResourceGroupPercentage: schedule resource utilization.
+	// - ResourceGroupPercentage: resource group utilization.
 	//
-	// - ResourceGroupWaitCount: number of instances waiting for schedule resources.
+	// - ResourceGroupWaitCount: number of instances waiting for resource group resources.
 	//
 	// example:
 	//

@@ -84,7 +84,13 @@ type iCreateFileRequest interface {
 type CreateFileRequest struct {
 	// The advanced settings of the node.
 	//
-	// This parameter corresponds to the "Advanced Settings" in the right-side navigation bar on the editing page of EMR Spark Streaming and EMR Streaming SQL DataStudio nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Advanced Settings" in the right-side navigation bar on the editing page of EMR Spark Streaming and EMR Streaming SQL Data Studio nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
 	//
 	// Currently, only EMR Spark Streaming and EMR Streaming SQL nodes support this parameter. The parameter value is in JSON format.
 	//
@@ -92,7 +98,7 @@ type CreateFileRequest struct {
 	//
 	// {"queue":"default","SPARK_CONF":"--conf spark.driver.memory=2g"}
 	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
-	// Specifies whether the scheduling configuration takes effect immediately after publishing.
+	// Specifies whether the scheduling configuration takes effect immediately after deployment.
 	//
 	// example:
 	//
@@ -100,11 +106,17 @@ type CreateFileRequest struct {
 	ApplyScheduleImmediately *bool `json:"ApplyScheduleImmediately,omitempty" xml:"ApplyScheduleImmediately,omitempty"`
 	// Specifies whether to enable automatic parsing for the file. Valid values:
 	//
+	//
+	//
+	//
 	// - true: The file automatically parses code.
 	//
 	// - false: The file does not automatically parse code.
 	//
-	// This parameter corresponds to the code parsing setting in the "Schedule Configuration > Scheduling Dependencies" section of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the code parsing setting in the "Schedule Configuration &gt; Scheduling Dependencies" section of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -112,7 +124,13 @@ type CreateFileRequest struct {
 	AutoParsing *bool `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
 	// The interval between automatic reruns upon failure, in milliseconds. The maximum value is 1800000 milliseconds (30 minutes).
 	//
-	// This parameter corresponds to the "Rerun Interval" setting in the "Schedule Configuration > Time Properties > Auto Rerun upon Error" section of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Rerun Interval" setting in the "Schedule Configuration &gt; Time Properties &gt; Auto Rerun upon Error" section of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
 	//
 	// The "Rerun Interval" in the console uses minutes as the unit. Convert the time accordingly when calling this operation.
 	//
@@ -126,7 +144,10 @@ type CreateFileRequest struct {
 	//
 	// 3
 	AutoRerunTimes *int32 `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
-	// The data source that the node connects to when the file is published as a node and the node runs.
+	// The data source that the node connects to when the file is deployed as a node and the node runs.
+	//
+	//
+	//
 	//
 	// You can call the [UpdateDataSource](https://help.aliyun.com/document_detail/211432.html) operation to obtain the list of available data sources in the workspace.
 	//
@@ -152,9 +173,15 @@ type CreateFileRequest struct {
 	//
 	// false
 	CreateFolderIfNotExists *bool `json:"CreateFolderIfNotExists,omitempty" xml:"CreateFolderIfNotExists,omitempty"`
-	// The cron expression for timed scheduling on an epoch basis. This parameter corresponds to the "Schedule Configuration > Time Property > Cron Expression" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure the scheduling epoch and timed scheduling time, DataWorks automatically generates the corresponding cron expression.
+	// The cron expression for periodic scheduling. This parameter corresponds to the "Schedule Configuration &gt; Time Property &gt; Cron Expression" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure the scheduling cycle and timed scheduling time, DataWorks automatically generates the corresponding cron expression.
+	//
+	//
+	//
 	//
 	// Examples:
+	//
+	//
+	//
 	//
 	// - Timed scheduling at 05:30 every day: `00 30 05 	- 	- ?`
 	//
@@ -170,7 +197,13 @@ type CreateFileRequest struct {
 	//
 	// - Timed scheduling at 00:05 every Tuesday and Friday: `00 05 00 	- 	- 2,5`
 	//
+	//
+	//
+	//
 	// Due to the rules of the DataWorks scheduling system, cron expressions have the following limits:
+	//
+	//
+	//
 	//
 	// - The minimum scheduling interval is 5 minutes.
 	//
@@ -182,7 +215,10 @@ type CreateFileRequest struct {
 	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
 	// The type of the scheduling cycle. Valid values: NOT_DAY (minute or hour) and DAY (day, week, or month).
 	//
-	// This parameter corresponds to the "Schedule Configuration > Time Properties > Scheduling Cycle" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Schedule Configuration &gt; Time Properties &gt; Scheduling Cycle" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -190,7 +226,10 @@ type CreateFileRequest struct {
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
 	// The IDs of the nodes that the current file depends on when DependentType is set to USER_DEFINE. Separate multiple node IDs with commas (,).
 	//
-	// This parameter corresponds to the node IDs specified when you select "Other Nodes" as the dependency after the parameter settings of "Schedule Configuration > Scheduling Dependencies" are set to "Cross-Epoch Dependency (Previous Epoch)" for a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the node IDs specified when you select "Other Nodes" as the dependency after the parameter settings of "Schedule Configuration &gt; Scheduling Dependencies" are set to "Cross-Cycle Dependency (Previous Cycle)" for a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -216,7 +255,10 @@ type CreateFileRequest struct {
 	DependentType *string `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
 	// The timestamp in milliseconds when automatic scheduling stops.
 	//
-	// This parameter corresponds to the end time (in milliseconds) of the "Schedule Configuration > Time Properties > Effective Date" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the end time (in milliseconds) of the "Schedule Configuration &gt; Time Properties &gt; Effective Date" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -272,7 +314,10 @@ type CreateFileRequest struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The output names of the upstream files on which the current file depends. Separate multiple output names with commas (,).
 	//
-	// This parameter corresponds to the "Upstream Node Output Name" configured in the "Schedule Configuration > Scheduling Dependencies" section of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Upstream Node Output Name" configured in the "Schedule Configuration &gt; Scheduling Dependencies" section of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -280,7 +325,10 @@ type CreateFileRequest struct {
 	InputList *string `json:"InputList,omitempty" xml:"InputList,omitempty"`
 	// The context input parameters of the node. The parameter value is in JSON format. For the fields included, see the InputContextParameterList parameter structure in the response of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
 	//
-	// This parameter corresponds to the "Schedule Configuration > Node Context Parameters > Input Parameters of This Node" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Schedule Configuration &gt; Node Context Parameters &gt; Input Parameters of This Node" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -289,7 +337,10 @@ type CreateFileRequest struct {
 	OutputList      *string `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
 	// The context output parameters of the node. The parameter value is in JSON format. For the fields included, see the OutputContextParameterList parameter structure in the response of the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation.
 	//
-	// This parameter corresponds to the "Schedule Configuration > Node Context Parameters > Output Parameters of This Node" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Schedule Configuration &gt; Node Context Parameters &gt; Output Parameters of This Node" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -303,7 +354,10 @@ type CreateFileRequest struct {
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The scheduling parameters. Separate multiple parameters with spaces.
 	//
-	// This parameter corresponds to the "Schedule Configuration > Scheduling Parameters" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
+	//
+	//
+	//
+	// This parameter corresponds to the "Schedule Configuration &gt; Scheduling Parameters" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
 	//
 	// example:
 	//
@@ -327,13 +381,19 @@ type CreateFileRequest struct {
 	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
 	// The rerun property. Valid values:
 	//
+	//
+	//
+	//
 	// - ALL_ALLOWED: The node can be rerun regardless of whether it runs successfully or fails.
 	//
 	// - FAILURE_ALLOWED: The node can be rerun only after it fails.
 	//
 	// - ALL_DENIED: The node cannot be rerun regardless of whether it runs successfully or fails.
 	//
-	// This parameter corresponds to the "Schedule Configuration > Time Properties > Rerun Property" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Schedule Configuration &gt; Time Properties &gt; Rerun Property" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -345,7 +405,7 @@ type CreateFileRequest struct {
 	//
 	// 375827434852437
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The schedule resource used when the file is published as a node and the node runs. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the Workspace Settings page, and click **Resource Groups*	- in the left-side navigation pane to obtain the ID of the resource group bound to the current workspace.
+	// The schedule resource group used when the file is deployed as a node and the node runs. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the Workspace Settings page, and click **Resource Groups*	- in the left-side navigation pane to obtain the ID of the resource group bound to the current workspace.
 	//
 	// example:
 	//
@@ -367,15 +427,21 @@ type CreateFileRequest struct {
 	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 	// The timestamp in milliseconds when automatic scheduling starts.
 	//
-	// This parameter corresponds to the start time (in milliseconds) of the "Schedule Configuration > Time Properties > Effective Date" setting of a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the start time (in milliseconds) of the "Schedule Configuration &gt; Time Properties &gt; Effective Date" setting of a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
 	// 1671608450000
 	StartEffectDate *int64 `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
-	// Specifies whether to start the node immediately after it is published.
+	// Specifies whether to start the node immediately after it is deployed.
 	//
-	// This parameter corresponds to the "Configuration > Time Properties > Startup Method" setting in the right-side navigation bar on the editing page of EMR Spark Streaming and EMR Streaming SQL DataStudio nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to the "Configuration &gt; Time Properties &gt; Startup Method" setting in the right-side navigation bar on the editing page of EMR Spark Streaming and EMR Streaming SQL Data Studio nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//
@@ -383,11 +449,17 @@ type CreateFileRequest struct {
 	StartImmediately *bool `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
 	// Specifies whether to suspend scheduling. Valid values:
 	//
+	//
+	//
+	//
 	// - true: Suspend scheduling.
 	//
 	// - false: Do not suspend scheduling.
 	//
-	// This parameter corresponds to setting the "Schedule Configuration > Time Properties > Scheduling Type" to "Suspend Scheduling" for a DataStudio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
+	//
+	//
+	//
+	// This parameter corresponds to setting the "Schedule Configuration &gt; Time Properties &gt; Scheduling Type" to "Suspend Scheduling" for a Data Studio node in the [DataWorks console](https://workbench.data.aliyun.com/console).
 	//
 	// example:
 	//

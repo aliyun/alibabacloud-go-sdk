@@ -373,7 +373,7 @@ type GetWorkflowResponseBodyWorkflowDependencies struct {
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
+	// The ID of the upstream task. This field is returned for cross-cycle dependencies on other nodes, or for same-cycle dependencies when input content is not specified. It is not returned in other cases.
 	//
 	// example:
 	//
@@ -563,11 +563,7 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values:
-	//
-	// - Prod
-	//
-	// - Dev
+	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
 	//
 	// example:
 	//
@@ -647,13 +643,7 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The running mode of the task after it is triggered. Valid values:
-	//
-	// - Pause
-	//
-	// - Skip
-	//
-	// - Normal
+	// The running mode of the task after it is triggered. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
 	//
 	// example:
 	//
@@ -924,7 +914,7 @@ func (s *GetWorkflowResponseBodyWorkflowTasksDataSource) Validate() error {
 }
 
 type GetWorkflowResponseBodyWorkflowTasksRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The number of compute units (CUs) configured for task running.
 	//
 	// example:
 	//
@@ -996,13 +986,7 @@ type GetWorkflowResponseBodyWorkflowTrigger struct {
 	//
 	// 1970-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
-	//
-	// - Pause
-	//
-	// - Skip
-	//
-	// - Normal
+	// The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
 	//
 	// example:
 	//

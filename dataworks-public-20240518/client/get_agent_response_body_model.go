@@ -74,13 +74,13 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// example:
 	//
-	// 数据分析助手
+	// Data analysis assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// **The display name.**
 	//
 	// example:
 	//
-	// 我的助手
+	// My assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The creation time, as a Unix timestamp in milliseconds.
 	//
@@ -126,7 +126,7 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// example:
 	//
-	// 你是一个数据分析助手。
+	// You are a data analysis assistant.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// **A list of tools.**
 	Tools []*GetAgentResponseBodyAgentTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
@@ -338,7 +338,7 @@ type GetAgentResponseBodyAgentCallableAgents struct {
 	//
 	// example:
 	//
-	// 子助手
+	// Sub-assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The sub-agent name.
 	//

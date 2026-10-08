@@ -79,13 +79,13 @@ func (s *GetAgentSessionArtifactMetaRequest) Validate() error {
 }
 
 type GetAgentSessionArtifactMetaRequestParams struct {
-	// The path of the artifact.
+	// The path of the artifact. Required.
 	//
 	// example:
 	//
 	// mock/mock_report.md
 	ArtifactPath *string `json:"ArtifactPath,omitempty" xml:"ArtifactPath,omitempty"`
-	// The ID of the session.
+	// The ID of the session. Required.
 	//
 	// example:
 	//

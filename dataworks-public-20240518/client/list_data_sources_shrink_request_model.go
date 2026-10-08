@@ -82,11 +82,17 @@ type ListDataSourcesShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The field that you want to use to sort the data sources. Valid values:
 	//
-	// - CreateTime
 	//
-	// - Id
 	//
-	// - Name
+	//
+	// - CreateTime: creation time
+	//
+	// - Id: data source ID
+	//
+	// - Name: data source name
+	//
+	//
+	//
 	//
 	// Default value: CreateTime
 	//
@@ -96,9 +102,12 @@ type ListDataSourcesShrinkRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The tag of the data source. This parameter specifies a filter condition.
 	//
+	//
+	//
+	//
 	// - You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
 	//
-	// - If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
+	// - If you do not configure this parameter or leave it empty, tag-based filtering is not performed. You can specify up to 10 tags.
 	//
 	// example:
 	//

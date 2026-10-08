@@ -24,23 +24,29 @@ type iCreatePipelineRunRequest interface {
 }
 
 type CreatePipelineRunRequest struct {
-	// The code of the stage in the publish process. This parameter takes effect only when RunMode is set to Auto. After the publish process is created, it automatically runs to the specified stage.
+	// The code of the stage in the deployment process. This parameter takes effect only when RunMode is set to Auto. After the deployment process is created, it automatically runs to the specified stage.
 	//
-	// 	Notice: The specified stage is automatically completed. For example, if you set this parameter to DEV, the automatic run stops after the DEV stage reaches the desired state.
+	//
+	//
+	//
+	// > &lt;notice&gt;The specified stage is automatically completed. For example, if you set this parameter to DEV, the automatic run stops after the DEV stage reaches the terminal state.&gt;&lt;/notice&gt;
 	//
 	// example:
 	//
 	// DEV
 	AutoRunUntilStage *string `json:"AutoRunUntilStage,omitempty" xml:"AutoRunUntilStage,omitempty"`
-	// The description of the publish process.
+	// The description of the deployment process.
 	//
 	// example:
 	//
 	// This is a OdpsSQL-node publishing process. The function is XXXX.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of entity IDs that you want to publish in this publish process.
+	// The list of entity IDs that you want to deploy in this deployment process.
 	//
-	// 	Notice: Only a single entity and its child entities can be published at a time. Only the first entity in this array and its child entities are published. Make sure that the length of this array is 1. Entities beyond the first one are ignored.
+	//
+	//
+	//
+	// > &lt;notice&gt;Only a single entity and its child entities can be deployed at a time. Only the first entity in this array and its child entities are deployed. Make sure that the length of this array is 1. Entities beyond the first one are ignored.&gt;&lt;/notice&gt;
 	//
 	// This parameter is required.
 	ObjectIds []*string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty" type:"Repeated"`
@@ -54,9 +60,15 @@ type CreatePipelineRunRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The run mode of the publish process. Default value: Normal. If you set this parameter to Auto, the publish process is automatically driven to the specified stage. This parameter is used together with the AutoRunUntilStage parameter.
+	// The run mode of the deployment process. Default value: Normal. If you set this parameter to Auto, the deployment process is automatically driven to the specified stage. This parameter is used together with the AutoRunUntilStage parameter.
+	//
+	//
+	//
 	//
 	// Valid values:
+	//
+	//
+	//
 	//
 	// - Normal
 	//
@@ -66,11 +78,14 @@ type CreatePipelineRunRequest struct {
 	//
 	// Normal
 	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	// Specifies whether the publish process is used to bring an entity online or offline.
+	// Specifies whether the deployment process is used to deploy or undeploy an entity.
 	//
-	// - Online: online
 	//
-	// - Offline: offline
+	//
+	//
+	// - Online: deploy
+	//
+	// - Offline: undeploy
 	//
 	// This parameter is required.
 	//

@@ -161,7 +161,10 @@ type CreateDataQualityAlertRuleRequestNotificationReceivers struct {
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The object type of the alerting accept object.
+	// The alert recipient type.
+	//
+	//
+	//
 	//
 	// - AliUid
 	//

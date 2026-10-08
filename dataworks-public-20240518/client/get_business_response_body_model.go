@@ -164,7 +164,7 @@ type GetBusinessResponseBodyData struct {
 	//
 	// 10000
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The functional module to which the business process belongs. Valid values: NORMAL (DataStudio) and MANUAL_BIZ (manual business process).
+	// The functional module to which the business process belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (manual business process).
 	//
 	// example:
 	//

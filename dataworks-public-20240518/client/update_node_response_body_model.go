@@ -22,11 +22,7 @@ type UpdateNodeResponseBody struct {
 	//
 	// 99EBE7CF-69C0-5089-BE3E-79563C31****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
 	//
 	// example:
 	//

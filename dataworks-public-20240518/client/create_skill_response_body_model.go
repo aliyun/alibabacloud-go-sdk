@@ -78,7 +78,7 @@ type CreateSkillResponseBodySkill struct {
 	//
 	// example:
 	//
-	// 数据分析技能
+	// Data analytics skill.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The creation time, in millisecond-level UNIX timestamp.
 	//

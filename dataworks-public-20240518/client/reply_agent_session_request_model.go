@@ -165,7 +165,7 @@ func (s *ReplyAgentSessionRequestParams) Validate() error {
 }
 
 type ReplyAgentSessionRequestParamsOutcome struct {
-	// Required and cannot be empty when Outcome is set to selected. Set this parameter to the optionId of an actual option in the event options. To submit an answer, select the option with kind=allow_once. Omit this parameter when Outcome is set to cancelled.
+	// Required and cannot be empty when Outcome is set to selected. Set this parameter to the optionId of an actual option in the event options. To submit an answer, typically select the option with kind=allow_once. Omit this parameter when Outcome is set to cancelled.
 	//
 	// example:
 	//

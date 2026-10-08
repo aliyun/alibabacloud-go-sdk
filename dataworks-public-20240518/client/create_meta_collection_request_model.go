@@ -26,7 +26,7 @@ type CreateMetaCollectionRequest struct {
 	//
 	// test comment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the collection.
+	// The name of the collection.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,15 @@ type CreateMetaCollectionRequest struct {
 	//
 	// as78d756asd
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The collection name.
+	// The collection type. Valid values:
 	//
-	// - Category
 	//
-	// - Album
 	//
-	// - AlbumCategory: Album subcategory.
+	// - Category: category.
+	//
+	// - Album: data album.
+	//
+	// - AlbumCategory: album subcategory.
 	//
 	// This parameter is required.
 	//

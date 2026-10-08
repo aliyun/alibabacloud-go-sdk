@@ -62,7 +62,7 @@ func (s *ListNodesResponseBody) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfo struct {
-	// The list of data development nodes.
+	// The list of Data Studio nodes.
 	Nodes []*ListNodesResponseBodyPagingInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The page number for pagination.
 	//
@@ -142,7 +142,7 @@ func (s *ListNodesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodes struct {
-	// The timestamp when the data development node was created.
+	// The timestamp when the Data Studio node was created.
 	//
 	// example:
 	//
@@ -156,9 +156,12 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	//
 	// Node description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The unique identifier of the data development node.
+	// The unique identifier of the Data Studio node.
 	//
-	// 	Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.
+	//
+	//
+	//
+	// > &lt;notice&gt;This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.&gt;&lt;/notice&gt;
 	//
 	// example:
 	//
@@ -166,7 +169,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The node inputs.
 	Inputs *ListNodesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The timestamp when the data development node was last modified.
+	// The timestamp when the Data Studio node was last modified.
 	//
 	// example:
 	//
@@ -180,7 +183,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node outputs.
 	Outputs *ListNodesResponseBodyPagingInfoNodesOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The owner of the data development node.
+	// The owner of the Data Studio node.
 	//
 	// example:
 	//
@@ -193,6 +196,20 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	// 33233
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The scheduling type.
+	//
+	//
+	//
+	//
+	// Valid values:
+	//
+	//
+	//
+	//
+	// - Normal: The task is executed normally.
+	//
+	// - Pause: The node is paused and blocks downstream nodes that depend on it.
+	//
+	// - Skip: The node performs a dry run. The system immediately returns success with a run duration of 0 seconds, does not block downstream nodes, and does not consume resources.
 	//
 	// example:
 	//
@@ -1253,6 +1270,11 @@ func (s *ListNodesResponseBodyPagingInfoNodesScriptRuntime) Validate() error {
 type ListNodesResponseBodyPagingInfoNodesStrategy struct {
 	// The mode for generating instances.
 	//
+	//
+	//
+	//
+	// Valid values: T+1 and Immediately.
+	//
 	// example:
 	//
 	// T+1
@@ -1264,6 +1286,11 @@ type ListNodesResponseBodyPagingInfoNodesStrategy struct {
 	// 180000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// The mode that specifies whether reruns are allowed.
+	//
+	//
+	//
+	//
+	// Valid values: Allowed, Denied, and FailureAllowed.
 	//
 	// example:
 	//

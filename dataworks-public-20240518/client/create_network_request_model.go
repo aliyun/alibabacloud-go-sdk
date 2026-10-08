@@ -34,7 +34,7 @@ type CreateNetworkRequest struct {
 	//
 	// example:
 	//
-	// Serverless_res_group_524257424564736_6831777003****
+	// Serverless_res_group_524257424564736_6831777003XXXXX
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the virtual private cloud (VPC).
 	//

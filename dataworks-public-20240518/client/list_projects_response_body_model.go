@@ -166,11 +166,7 @@ type ListProjectsResponseBodyPagingInfoProjects struct {
 	//
 	// true
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
-	// Indicates whether the Develop role is disabled. Valid values:
-	//
-	// - false (default)
-	//
-	// - true
+	// Indicates whether the developer role is disabled. Valid values: false (enabled) and true (disabled).
 	//
 	// example:
 	//
@@ -210,25 +206,7 @@ type ListProjectsResponseBodyPagingInfoProjects struct {
 	//
 	// true
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
-	// The status of the workspace. Valid values:
-	//
-	// - Available
-	//
-	// - Initializing
-	//
-	// - InitFailed
-	//
-	// - Forbidden
-	//
-	// - Deleting
-	//
-	// - DeleteFailed
-	//
-	// - Frozen
-	//
-	// - Updating
-	//
-	// - UpdateFailed
+	// The status of the workspace. Valid values: Available (running normally), Initializing (initializing), InitFailed (initialization failed), Forbidden (manually disabled), Deleting (being deleted), DeleteFailed (deletion failed), Frozen (frozen due to overdue payments), Updating (being updated), and UpdateFailed (update failed).
 	//
 	// example:
 	//

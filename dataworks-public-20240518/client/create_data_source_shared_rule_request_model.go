@@ -44,7 +44,7 @@ type CreateDataSourceSharedRuleRequest struct {
 	//
 	// example:
 	//
-	// 110755000****
+	// 1107550004253538
 	SharedUser *string `json:"SharedUser,omitempty" xml:"SharedUser,omitempty"`
 	// The ID of the workspace to which you want to share the data source. You cannot share the data source to the workspace with which the data source is associated.
 	//

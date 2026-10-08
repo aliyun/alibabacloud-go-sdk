@@ -50,7 +50,7 @@ type iUpdateTaskAsyncRequest interface {
 }
 
 type UpdateTaskAsyncRequest struct {
-	// The client unique code of the node, which uniquely identifies a node. This code is used for asynchronous operations and idempotence. If you do not specify this parameter during creation, the system automatically generates one. The code is uniquely bound to the resource ID. When updating or deleting a resource, if you specify this parameter, it must be the same as the client unique code specified during creation.
+	// The client unique code of the node, used to uniquely identify a node. This code is used for asynchronous processing and idempotence. If you do not specify this parameter when creating a node, the system automatically generates a value and binds it to the resource ID. If you specify this parameter when updating or deleting a resource, the value must match the client unique code used when the resource was created.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type UpdateTaskAsyncRequest struct {
 	Inputs *UpdateTaskAsyncRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The instance generation mode. Valid values:
 	//
-	// - T+1: Generates instances the next day.
+	// - T+1: generates instances the next day.
 	//
-	// - Immediately: Generates instances immediately. Note: Only periodic instances whose scheduled time is at least 10 minutes after the node publish time are generated. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish nodes, but new nodes do not automatically generate instances.
+	// - Immediately: generates instances immediately. Note: only periodic instances whose scheduled time is more than 10 minutes after the node publish time are generated normally. During the full-to-instance conversion period (22:00–24:00), real-time instance conversion is not supported. You can submit and publish nodes, but new nodes are not automatically converted to instances.
 	//
 	// example:
 	//
@@ -116,31 +116,34 @@ type UpdateTaskAsyncRequest struct {
 	//
 	// 60000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// Specifies whether the node can be rerun. Valid values:
+	// The configuration that specifies whether the node can be rerun. Valid values:
 	//
-	// - AllDenied: Cannot be rerun regardless of success or failure.
 	//
-	// - FailureAllowed: Can be rerun only upon failure.
 	//
-	// - AllAllowed: Can be rerun regardless of success or failure.
+	//
+	// - AllDenied: the node cannot be rerun regardless of whether it succeeds or fails.
+	//
+	// - FailureAllowed: the node can be rerun only if it fails.
+	//
+	// - AllAllowed: the node can be rerun regardless of whether it succeeds or fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries. This parameter takes effect when the node is configured to allow reruns.
+	// The number of retries. This parameter takes effect only when the node is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The runtime environment configuration, such as schedule resource group information.
+	// The runtime environment configuration, such as the resource group information.
 	RuntimeResource *UpdateTaskAsyncRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The script information.
+	// The runtime script information.
 	Script *UpdateTaskAsyncRequestScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The list of data asset tags to bind.
+	// The list of data asset tags to attach.
 	Tags []*UpdateTaskAsyncRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timeout setting for scheduling configuration.
+	// The timeout period defined in the scheduling configuration.
 	//
 	// example:
 	//
@@ -414,13 +417,13 @@ func (s *UpdateTaskAsyncRequestDataSource) Validate() error {
 type UpdateTaskAsyncRequestDependencies struct {
 	// The dependency type. Valid values:
 	//
-	// - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes
+	// - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes.
 	//
-	// - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+	// - CrossCycleDependsOnSelf: cross-cycle dependency on the node itself.
 	//
-	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes.
 	//
-	// - Normal: same-cycle dependency
+	// - Normal: same-cycle dependency.
 	//
 	// This parameter is required.
 	//
@@ -428,13 +431,13 @@ type UpdateTaskAsyncRequestDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream node. This field is returned when the dependency type is same-cycle dependency and input content is set.
+	// The output identifier of the upstream node. This field is returned for same-cycle dependencies when the input content is configured.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ID of the upstream node. This field is returned when the dependency type is cross-cycle dependency on other nodes or same-cycle dependency without input content set. It is not returned in other cases.
+	// The ID of the upstream node. This field is returned for cross-cycle dependencies on other nodes and for same-cycle dependencies when no input content is configured. It is not returned in other cases.
 	//
 	// example:
 	//
@@ -523,15 +526,15 @@ type UpdateTaskAsyncRequestInputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type. Valid values:
+	// The variable type. Valid values:
 	//
-	// - Constant: constant
+	// - Constant: constant.
 	//
-	// - PassThrough: parameter node output
+	// - PassThrough: output of a pass-through parameter node.
 	//
-	// - System: variable
+	// - System: system variable.
 	//
-	// - NodeOutput: script output
+	// - NodeOutput: script output.
 	//
 	// This parameter is required.
 	//
@@ -678,15 +681,15 @@ type UpdateTaskAsyncRequestOutputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type. Valid values:
+	// The variable type. Valid values:
 	//
-	// - Constant: constant
+	// - Constant: constant.
 	//
-	// - PassThrough: parameter node output
+	// - PassThrough: output of a pass-through parameter node.
 	//
-	// - System: variable
+	// - System: system variable.
 	//
-	// - NodeOutput: script output
+	// - NodeOutput: script output.
 	//
 	// This parameter is required.
 	//
@@ -742,19 +745,19 @@ func (s *UpdateTaskAsyncRequestOutputsVariables) Validate() error {
 }
 
 type UpdateTaskAsyncRequestRuntimeResource struct {
-	// The CU consumption configured for the node.
+	// The CU consumption for the node runtime configuration.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The image ID configured for the node.
+	// The image ID for the node runtime configuration.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the schedule resource group configured for the node.
+	// The identifier of the schedule resource group for the node runtime configuration.
 	//
 	// example:
 	//
@@ -896,41 +899,44 @@ func (s *UpdateTaskAsyncRequestTags) Validate() error {
 }
 
 type UpdateTaskAsyncRequestTrigger struct {
-	// The cron expression. This parameter takes effect when type is set to Scheduler.
+	// The cron expression. This parameter takes effect when Type is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The epoch type. This parameter takes effect when Type is set to Scheduler and the cron expression specifies timed scheduling within a specific hour. Default value: Daily. Valid values:
+	// The scheduling cycle type. This parameter takes effect when Type is set to Scheduler and the cron expression specifies a timed scheduling at a specific hour. Default value: Daily. Valid values:
 	//
-	// - Daily: daily scheduling
 	//
-	// - NotDaily: hourly scheduling
+	//
+	//
+	// - Daily: daily scheduling.
+	//
+	// - NotDaily: hourly scheduling.
 	//
 	// example:
 	//
 	// Daily
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The time when the periodic trigger expires. This parameter takes effect when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+	// The time when the periodic trigger expires. This parameter takes effect when Type is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The run mode when the trigger fires. This parameter takes effect when type is set to Scheduler. Valid values:
+	// The run mode when the trigger fires. This parameter takes effect when Type is set to Scheduler. Valid values:
 	//
-	// - Pause: paused
+	// - Pause: paused.
 	//
-	// - Skip: dry run
+	// - Skip: dry run.
 	//
-	// - Normal: normal execution
+	// - Normal: normal run.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The effective period of the epoch trigger. This parameter takes effect when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+	// The time at which the scheduled trigger takes effect. This parameter takes effect when Type is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
@@ -938,9 +944,9 @@ type UpdateTaskAsyncRequestTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Scheduler: periodic scheduling trigger
+	// - Scheduler: scheduled periodic trigger.
 	//
-	// - Manual: manual trigger
+	// - Manual: manual trigger.
 	//
 	// example:
 	//

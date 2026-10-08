@@ -76,7 +76,7 @@ type ListDIJobRunDetailsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//

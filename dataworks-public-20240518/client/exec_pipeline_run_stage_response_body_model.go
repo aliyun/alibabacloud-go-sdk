@@ -24,11 +24,17 @@ type ExecPipelineRunStageResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // Indicates whether the call is successful. Valid values:
   // 
+  // 
+  // 
+  // 
   // - true: The call is successful.
   // 
   // - false: The call failed.
   // 
-  // 	Notice: This only indicates whether the stage is triggered, not the execution result of the publish stage.
+  // 
+  // 
+  // 
+  // > &lt;notice&gt;This only indicates whether the stage is triggered, not the execution result of the deployment stage.&gt;&lt;/notice&gt;
   // 
   // example:
   // 

@@ -22,7 +22,7 @@ type UpdateTableBusinessMetadataShrinkRequest struct {
 	//
 	// example:
 	//
-	// {"biz_owner":["张三"]}
+	// {"biz_owner":["Zhang San"]}
 	CustomAttributesShrink *string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
 	// The ID of the table. For the format, refer to the response of the ListTables operation.
 	//

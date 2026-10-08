@@ -40,15 +40,13 @@ type RerunWorkflowInstancesShrinkRequest struct {
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	// The end trigger time of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
+	// The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
 	//
 	// example:
 	//
 	// 1710239005403
 	EndTriggerTime *int64 `json:"EndTriggerTime,omitempty" xml:"EndTriggerTime,omitempty"`
-	// The environment of the workspace. Valid values:
-	//
-	// Prod Dev
+	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
 	//
 	// example:
 	//
@@ -80,19 +78,11 @@ type RerunWorkflowInstancesShrinkRequest struct {
 	StartTriggerTime *int64 `json:"StartTriggerTime,omitempty" xml:"StartTriggerTime,omitempty"`
 	// The status used for matching manual workflow instances.
 	//
-	// Valid values:
-	//
-	// - Success
-	//
-	// - Failure
-	//
 	// example:
 	//
 	// Failure
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the workflow instance. Valid values:
-	//
-	// ManualWorkflow.
+	// The type of the workflow instance. Valid value: ManualWorkflow (manual workflow).
 	//
 	// This parameter is required.
 	//

@@ -22,11 +22,7 @@ type RenameNodeResponseBody struct {
 	//
 	// 4CDF7B72-020B-542A-8465-21CFFA81XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true
-	//
-	// - false
+	// Indicates whether the request was successful. Valid values: true (successful) and false (failed).
 	//
 	// example:
 	//

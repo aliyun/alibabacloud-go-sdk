@@ -124,7 +124,7 @@ type GetDataQualityScanResponseBodyDataQualityScan struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The resource group used during the running of the data quality monitor.
 	RuntimeResource *GetDataQualityScanResponseBodyDataQualityScanRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// Spec code for the content of the data quality monitoring.
+	// Spec code for the content of the data quality monitoring. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
 	//
 	// example:
 	//

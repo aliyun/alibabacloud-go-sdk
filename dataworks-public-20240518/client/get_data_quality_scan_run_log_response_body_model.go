@@ -16,7 +16,7 @@ type iGetDataQualityScanRunLogResponseBody interface {
 }
 
 type GetDataQualityScanRunLogResponseBody struct {
-	// The node task logs information.
+	// The task log information.
 	LogSegment *GetDataQualityScanRunLogResponseBodyLogSegment `json:"LogSegment,omitempty" xml:"LogSegment,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetDataQualityScanRunLogResponseBody) Validate() error {
 }
 
 type GetDataQualityScanRunLogResponseBodyLogSegment struct {
-	// The node task logs.
+	// The task logs.
 	//
 	// example:
 	//

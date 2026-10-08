@@ -18,7 +18,7 @@ type iListProjectRolesResponseBody interface {
 type ListProjectRolesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListProjectRolesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. Used for locating logs and troubleshooting issues.
+	// The request ID. Used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListProjectRolesResponseBody) Validate() error {
 }
 
 type ListProjectRolesResponseBodyPagingInfo struct {
-	// The page number. Used for paging.
+	// The requested page number. Used for pagination.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListProjectRolesResponseBodyPagingInfo struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of workspace roles.
 	ProjectRoles []*ListProjectRolesResponseBodyPagingInfoProjectRoles `json:"ProjectRoles,omitempty" xml:"ProjectRoles,omitempty" type:"Repeated"`
-	// The total number of entries that meet the conditions.
+	// The total number of entries that meet the filter conditions.
 	//
 	// example:
 	//
@@ -142,14 +142,14 @@ func (s *ListProjectRolesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListProjectRolesResponseBodyPagingInfoProjectRoles struct {
-	// The code of the workspace role.
+	// The role code of the workspace.
 	//
 	// example:
 	//
 	// role_project_guest
 	Code              *string                                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	ModulePermissions []*ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty" type:"Repeated"`
-	// The name of the workspace role.
+	// The role name of the workspace.
 	//
 	// example:
 	//
@@ -157,13 +157,13 @@ type ListProjectRolesResponseBodyPagingInfoProjectRoles struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the DataWorks workspace.
 	//
-	// Note: For default system workspace roles, the ProjectId returns a fixed value of -1.
+	// Note: For system default workspace roles, ProjectId returns a fixed value of -1.
 	//
 	// example:
 	//
 	// 21229
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the workspace role.
+	// The role type of the workspace.
 	//
 	// example:
 	//

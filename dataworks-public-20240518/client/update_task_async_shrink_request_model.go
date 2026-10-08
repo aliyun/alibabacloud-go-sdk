@@ -50,7 +50,7 @@ type iUpdateTaskAsyncShrinkRequest interface {
 }
 
 type UpdateTaskAsyncShrinkRequest struct {
-	// The client unique code of the node, which uniquely identifies a node. This code is used for asynchronous operations and idempotence. If you do not specify this parameter during creation, the system automatically generates one. The code is uniquely bound to the resource ID. When updating or deleting a resource, if you specify this parameter, it must be the same as the client unique code specified during creation.
+	// The client unique code of the node, used to uniquely identify a node. This code is used for asynchronous processing and idempotence. If you do not specify this parameter when creating a node, the system automatically generates a value and binds it to the resource ID. If you specify this parameter when updating or deleting a resource, the value must match the client unique code used when the resource was created.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type UpdateTaskAsyncShrinkRequest struct {
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
 	// The instance generation mode. Valid values:
 	//
-	// - T+1: Generates instances the next day.
+	// - T+1: generates instances the next day.
 	//
-	// - Immediately: Generates instances immediately. Note: Only periodic instances whose scheduled time is at least 10 minutes after the node publish time are generated. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish nodes, but new nodes do not automatically generate instances.
+	// - Immediately: generates instances immediately. Note: only periodic instances whose scheduled time is more than 10 minutes after the node publish time are generated normally. During the full-to-instance conversion period (22:00–24:00), real-time instance conversion is not supported. You can submit and publish nodes, but new nodes are not automatically converted to instances.
 	//
 	// example:
 	//
@@ -116,31 +116,34 @@ type UpdateTaskAsyncShrinkRequest struct {
 	//
 	// 60000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// Specifies whether the node can be rerun. Valid values:
+	// The configuration that specifies whether the node can be rerun. Valid values:
 	//
-	// - AllDenied: Cannot be rerun regardless of success or failure.
 	//
-	// - FailureAllowed: Can be rerun only upon failure.
 	//
-	// - AllAllowed: Can be rerun regardless of success or failure.
+	//
+	// - AllDenied: the node cannot be rerun regardless of whether it succeeds or fails.
+	//
+	// - FailureAllowed: the node can be rerun only if it fails.
+	//
+	// - AllAllowed: the node can be rerun regardless of whether it succeeds or fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries. This parameter takes effect when the node is configured to allow reruns.
+	// The number of retries. This parameter takes effect only when the node is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The runtime environment configuration, such as schedule resource group information.
+	// The runtime environment configuration, such as the resource group information.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	// The script information.
+	// The runtime script information.
 	ScriptShrink *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// The list of data asset tags to bind.
+	// The list of data asset tags to attach.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The timeout setting for scheduling configuration.
+	// The timeout period defined in the scheduling configuration.
 	//
 	// example:
 	//

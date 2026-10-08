@@ -38,7 +38,10 @@ type CreateDataQualityEvaluationTaskInstanceShrinkRequest struct {
 	//
 	// { "triggerTime": 1733284062000 }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Storage Management page to obtain the ID.
+	// The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+	//
+	//
+	//
 	//
 	// This parameter specifies the DataWorks workspace for this API invoke operation.
 	//

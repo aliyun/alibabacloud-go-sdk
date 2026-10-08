@@ -46,7 +46,7 @@ type CreateProcessDefinitionRequest struct {
 	//
 	// example:
 	//
-	// 这是一个示例策略
+	// This is a sample policy
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable the process definition.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
@@ -56,7 +56,7 @@ type CreateProcessDefinitionRequest struct {
 	//
 	// example:
 	//
-	// 我的审批策略
+	// My Approval Policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The notification service declarations.
 	NotificationServices []*CreateProcessDefinitionRequestNotificationServices `json:"NotificationServices,omitempty" xml:"NotificationServices,omitempty" type:"Repeated"`

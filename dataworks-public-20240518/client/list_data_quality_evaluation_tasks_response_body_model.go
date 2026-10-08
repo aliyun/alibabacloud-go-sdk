@@ -16,7 +16,7 @@ type iListDataQualityEvaluationTasksResponseBody interface {
 }
 
 type ListDataQualityEvaluationTasksResponseBody struct {
-	// The paged query result of quality evaluation nodes.
+	// The paged query result of quality evaluation tasks.
 	PagingInfo *ListDataQualityEvaluationTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The API request ID.
 	//
@@ -149,7 +149,7 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// This is a daily run data quality evaluation plan
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The callback settings during the epoch of data quality evaluation task instances. Currently, only one hook that blocks a scheduling node instance is supported.
+	// The callback settings during the lifecycle of data quality evaluation task instances. Currently, only one hook that blocks a scheduling node instance is supported.
 	Hooks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
 	// The ID of the data quality evaluation task.
 	//
@@ -157,7 +157,7 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data quality evaluation task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
+	// The name of the data quality evaluation task. The name can contain digits, English letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks struct {
-	// The cause that triggers the hook.
+	// The condition that triggers the hook.
 	//
 	// example:
 	//
@@ -357,7 +357,7 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications struct {
-	// The cause that triggers the notification.
+	// The condition that triggers the notification.
 	//
 	// example:
 	//

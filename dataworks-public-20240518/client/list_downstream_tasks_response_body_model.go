@@ -238,11 +238,7 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values:
-	//
-	// - Prod
-	//
-	// - Dev
+	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
 	//
 	// example:
 	//
@@ -254,11 +250,7 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance generation mode. Valid values:
-	//
-	// - T+1
-	//
-	// - Immediately
+	// The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
 	//
 	// example:
 	//
@@ -604,7 +596,7 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource)
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The number of compute units (CUs) configured for task running.
 	//
 	// example:
 	//
@@ -676,13 +668,7 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger struct 
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
-	//
-	// - Pause
-	//
-	// - Skip
-	//
-	// - Normal
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
 	//
 	// example:
 	//
@@ -805,11 +791,7 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values:
-	//
-	// - Prod
-	//
-	// - Dev
+	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
 	//
 	// example:
 	//
@@ -821,11 +803,7 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance generation mode. Valid values:
-	//
-	// - T+1
-	//
-	// - Immediately
+	// The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
 	//
 	// example:
 	//
@@ -1215,7 +1193,7 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource) Validate() er
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The number of compute units (CUs) configured for task running.
 	//
 	// example:
 	//

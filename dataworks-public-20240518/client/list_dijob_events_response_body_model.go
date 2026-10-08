@@ -22,7 +22,7 @@ type ListDIJobEventsResponseBody struct {
 	//
 	// example:
 	//
-	// 645F6D68-9C29-5961-80B1-BDD4****
+	// 645F6D68-9C29-5961-80B1-BDD4B794C22D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -76,7 +76,7 @@ type ListDIJobEventsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
 	//
 	// example:
 	//
-	// Data integration sync task exception: Level: WARNING, DataWorks project name:*	- [Region: cn-shanghai], Task name:**, Alert rule: Business delay, aggregator:avg [**] for 5 minutes, service maybe abnormal.
+	// Data Integration synchronization task exception: Level: WARNING, DataWorks project name:*	- [Region: cn-shanghai], Task name:, Alert rule: business latency, aggregator:avg [] for 5 minutes, service maybe abnormal
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The DDL statement of the destination table.
 	//
@@ -220,15 +220,18 @@ type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the alert event.
 	//
-	// - Heartbeat
 	//
-	// - Delay
 	//
-	// - FailoverCount
 	//
-	// - DdlReport
+	// - Heartbeat: task heartbeat alert.
 	//
-	// - ResourceUtilization
+	// - Delay: task latency alert.
+	//
+	// - FailoverCount: failover count alert.
+	//
+	// - DdlReport: DDL notification.
+	//
+	// - ResourceUtilization: resource group utilization.
 	//
 	// example:
 	//

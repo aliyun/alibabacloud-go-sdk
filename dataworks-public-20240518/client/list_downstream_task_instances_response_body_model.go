@@ -162,7 +162,14 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances struct {
-	// The dependency type.
+	// The dependency type. Valid values:
+	//
+	//
+	//
+	//
+	// - Normal: dependency within the same scheduling cycle.
+	//
+	// - CrossCycle: cross-cycle dependency.
 	//
 	// example:
 	//
@@ -216,11 +223,21 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The business date.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	// The creation time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
 	//
 	// example:
 	//
@@ -242,11 +259,23 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the target data source. Valid values:
 	//
+	//
+	//
+	//
+	// - Dev: development environment.
+	//
+	// - Prod: production environment.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The time when the instance finished running.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
 	//
 	// example:
 	//
@@ -259,6 +288,11 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
 	//
 	// example:
 	//
@@ -312,11 +346,37 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	RuntimeResource *ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The time when the instance started running.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The run status of the instance.
+	// The run status of the instance. Valid values:
+	//
+	//
+	//
+	//
+	// - NotRun: not run.
+	//
+	// - Running: running.
+	//
+	// - WaitTime: waiting for TriggerTime to arrive.
+	//
+	// - CheckingCondition: checking branch conditions.
+	//
+	// - WaitResource: waiting for resources.
+	//
+	// - Failure: execution failed.
+	//
+	// - Success: execution succeeded.
+	//
+	// - Checking: submitted for data quality check.
+	//
+	// - WaitTrigger: waiting for an external trigger. Trigger-based nodes enter this status after the waiting time elapses.
 	//
 	// example:
 	//
@@ -342,6 +402,11 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The timeout period for node execution. Unit: seconds.
 	//
+	//
+	//
+	//
+	// Note: The scheduling system rounds the configured value to whole hours.
+	//
 	// example:
 	//
 	// 3600
@@ -360,11 +425,23 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	// The scheduled trigger time.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
-	// The trigger type.
+	// The trigger type. Valid values:
+	//
+	//
+	//
+	//
+	// - Scheduler: triggered by a scheduling cycle.
+	//
+	// - Manual: manually triggered.
 	//
 	// example:
 	//
@@ -382,7 +459,20 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTas
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance to which the instance belongs.
+	// The type of the workflow instance to which the instance belongs. Valid values:
+	//
+	//
+	//
+	//
+	// - Normal: scheduled execution.
+	//
+	// - Manual: manual task.
+	//
+	// - SmokeTest: test.
+	//
+	// - SupplementData: data backfill.
+	//
+	// - ManualWorkflow: manual workflow.
 	//
 	// example:
 	//
@@ -855,11 +945,21 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The business date.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
 	// The creation time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
 	//
 	// example:
 	//
@@ -881,11 +981,23 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the target data source. Valid values:
 	//
+	//
+	//
+	//
+	// - Dev: development environment.
+	//
+	// - Prod: production environment.
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The time when the instance finished running.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
 	//
 	// example:
 	//
@@ -898,6 +1010,11 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The modification time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
 	//
 	// example:
 	//
@@ -959,17 +1076,50 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	RuntimeResource *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The time when the instance started running.
 	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The run status of the instance.
+	// The run status of the instance. Valid values:
+	//
+	//
+	//
+	//
+	// - NotRun: not run.
+	//
+	// - Running: running.
+	//
+	// - WaitTime: waiting for TriggerTime to arrive.
+	//
+	// - CheckingCondition: checking branch conditions.
+	//
+	// - WaitResource: waiting for resources.
+	//
+	// - Failure: execution failed.
+	//
+	// - Success: execution succeeded.
+	//
+	// - Checking: submitted for data quality check.
+	//
+	// - WaitTrigger: waiting for an external trigger. Trigger-based nodes enter this status after the waiting time elapses.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The dependency type.
+	// The dependency type. Valid values:
+	//
+	//
+	//
+	//
+	// - Normal: dependency within the same scheduling cycle.
+	//
+	// - CrossCycle: cross-cycle dependency.
 	//
 	// example:
 	//
@@ -995,6 +1145,11 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The timeout period for node execution. Unit: seconds.
 	//
+	//
+	//
+	//
+	// Note: The scheduling system rounds the configured value to whole hours.
+	//
 	// example:
 	//
 	// 3600
@@ -1006,6 +1161,11 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
 	// The scheduled trigger time.
+	//
+	//
+	//
+	//
+	// The value is a 13-digit number, such as 1710239005403.
 	//
 	// example:
 	//

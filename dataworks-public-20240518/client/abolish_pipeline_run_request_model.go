@@ -24,7 +24,10 @@ type AbolishPipelineRunRequest struct {
 	//
 	// 1606087c-9ac4-43f0-83a8-0b5ced21XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the storage management page to obtain the ID.
+	// The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+	//
+	//
+	//
 	//
 	// This parameter specifies the DataWorks workspace for this API invoke operation.
 	//

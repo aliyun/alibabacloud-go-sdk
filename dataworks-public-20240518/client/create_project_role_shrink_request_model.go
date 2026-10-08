@@ -24,7 +24,7 @@ type CreateProjectRoleShrinkRequest struct {
 	//
 	// example:
 	//
-	// 保留字段
+	// Reserved field
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of DataWorks module permissions.
 	ModulePermissionsShrink *string `json:"ModulePermissions,omitempty" xml:"ModulePermissions,omitempty"`
