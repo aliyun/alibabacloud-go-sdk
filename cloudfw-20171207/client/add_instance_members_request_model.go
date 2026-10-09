@@ -55,7 +55,7 @@ func (s *AddInstanceMembersRequest) Validate() error {
 }
 
 type AddInstanceMembersRequestMembers struct {
-	// The description of the Cloud Firewall member account. The description must be 1 to 256 characters in length. You can add up to 20 member accounts.
+	// The remarks of the Cloud Firewall member account. The value must be 1 to 256 characters in length. You can add up to 20 member accounts.
 	//
 	// example:
 	//

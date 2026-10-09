@@ -44,11 +44,21 @@ type iModifyAddressBookRequest interface {
 }
 
 type ModifyAddressBookRequest struct {
-	// The list of labels for pods in the ACK cluster.
+	// The list of pod labels in the ACK cluster.
+	//
+	// > A maximum of 10 labels are supported.
 	AckLabels []*ModifyAddressBookRequestAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
-	// The list of namespaces for pods in the ACK cluster.
+	// The list of pod namespaces in the ACK cluster.
+	//
+	// > A maximum of 10 namespaces are supported.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The addresses in the address book. Separate multiple addresses with commas (,). Use a space to separate an address from its description. This parameter is required when GroupType is set to **ip**, **port**, or **domain**.
+	// The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space. You must specify this parameter when GroupType is set to **ip**, **port**, or **domain**.
+	//
+	// - If GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
+	//
+	// - If GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
+	//
+	// - If GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
 	//
 	// example:
 	//
@@ -56,9 +66,9 @@ type ModifyAddressBookRequest struct {
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
 	// The list of member accounts in the asset address book.
 	AssetMemberUids []*int64 `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty" type:"Repeated"`
-	// The cloud address book, including the list of regions and resource types.
+	// The asset address book, region, and resource type list.
 	AssetRegionResourceTypes []*ModifyAddressBookRequestAssetRegionResourceTypes `json:"AssetRegionResourceTypes,omitempty" xml:"AssetRegionResourceTypes,omitempty" type:"Repeated"`
-	// Indicates whether the public IP addresses of Elastic Compute Service (ECS) instances that match the specified tags are automatically added to the address book.
+	// Specifies if the automatic addition of the public IP addresses of Elastic Compute Service (ECS) instances that match the new labels to the address book is enabled.
 	//
 	// example:
 	//
@@ -78,7 +88,7 @@ type ModifyAddressBookRequest struct {
 	//
 	// bj-001
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform a dry run.
+	// The dry run mode.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The name of the address book.
 	//
@@ -88,7 +98,9 @@ type ModifyAddressBookRequest struct {
 	//
 	// bj-001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The unique ID of the address book.
+	// The UUID of the address book.
+	//
+	// > To obtain the value, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +116,17 @@ type ModifyAddressBookRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The modification mode.
 	//
+	// > If GroupType is set to **ip**, **ipv6**, **port**, or **domain*	- and this parameter is not specified, the **Cover*	- mode is used by default to modify the address book.
+	//
+	// 	Notice: If GroupType is set to **tag**, this parameter must be left empty.</notice>
+	//
 	// example:
 	//
 	// Cover
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
@@ -118,7 +134,7 @@ type ModifyAddressBookRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The list of ECS tags.
 	TagList []*ModifyAddressBookRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The logical relationship among multiple ECS tags.
+	// The relationship between multiple ECS tags.
 	//
 	// example:
 	//
@@ -310,13 +326,13 @@ func (s *ModifyAddressBookRequest) Validate() error {
 }
 
 type ModifyAddressBookRequestAckLabels struct {
-	// The key of the label for pods in the ACK cluster.
+	// The key of the pod label in the ACK cluster.
 	//
 	// example:
 	//
 	// app
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the label for pods in the ACK cluster.
+	// The value of the pod label in the ACK cluster.
 	//
 	// example:
 	//

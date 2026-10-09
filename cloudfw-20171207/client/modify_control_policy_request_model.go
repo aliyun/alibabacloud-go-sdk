@@ -66,7 +66,7 @@ type ModifyControlPolicyRequest struct {
 	//
 	// - **accept**: allows access.
 	//
-	// - **drop**: deny access.
+	// - **drop**: deny.
 	//
 	// - **log**: monitors the traffic.
 	//
@@ -86,7 +86,7 @@ type ModifyControlPolicyRequest struct {
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// Deprecated
 	//
-	// The application type supported by the access control policy. Valid values:
+	// The application type supported by the access control policy. The following application types are supported:
 	//
 	// - **ANY**
 	//
@@ -170,7 +170,7 @@ type ModifyControlPolicyRequest struct {
 	//
 	// - If **DestinationType*	- is set to domain, **Destination*	- is a destination domain name. Example: *.aliyuncs.com.
 	//
-	// - If **DestinationType*	- is set to location, **Destination*	- is a destination area. For specific area positional encoding, see the subsequent sections. Example: ["BJ11", "ZB"\\].
+	// - If **DestinationType*	- is set to location, **Destination*	- is a destination area. For more information about area positional encoding, see the following sections. Example: ["BJ11", "ZB"\\].
 	//
 	// example:
 	//
@@ -192,9 +192,9 @@ type ModifyControlPolicyRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The traffic direction of the access control policy. Valid values:
 	//
-	// - **in**: inbound traffic access control
+	// - **in**: inbound traffic
 	//
-	// - **out**: outbound traffic access control
+	// - **out**: outbound traffic
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type ModifyControlPolicyRequest struct {
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
 	// Specifies whether to perform a dry run.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The end time of the Policy Validity Period for the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes later than the start time. Settings for the access control policy validity period.
+	// The end time of the Policy Validity Period of the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes later than the start time. Settings for the end time.
 	//
 	// > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
 	//
@@ -232,7 +232,7 @@ type ModifyControlPolicyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The security protocol type in the access control policy. Valid values:
+	// The security protocol type in the access control policy. The following protocol types are supported:
 	//
 	// - **ANY**
 	//
@@ -244,7 +244,7 @@ type ModifyControlPolicyRequest struct {
 	//
 	// > **ANY*	- indicates that the policy applies to all protocol types.
 	//
-	// > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain type, you can configure only the TCP or ANY protocol. If you select TCP, the application can be HTTP, HTTPS, SMTP, SMTPS, or SSL. If you select ANY, the application can only be ANY.
+	// > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain type, you can set the protocol to TCP or ANY. If you select TCP, the application can be set to HTTP, HTTPS, SMTP, SMTPS, or SSL. If you select ANY, the application can only be set to ANY.
 	//
 	// example:
 	//
@@ -254,25 +254,25 @@ type ModifyControlPolicyRequest struct {
 	//
 	// - true: The policy is enabled.
 	//
-	// - false: The policy is in shutdown state.
+	// - false: The policy is disabled.
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The days of a week or of a month on which the access control policy takes effect. Settings for the Policy Validity Period recurrence days.
+	// The days of a week or of a month on which the access control policy takes effect. Settings for the Policy Validity Period.
 	//
-	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty collection.
+	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty array.
 	//
 	//   Example: []
 	//
-	// - If RepeatType is set to Weekly, RepeatDays cannot be empty.
+	// - If RepeatType is set to Weekly, RepeatDays must not be empty.
 	//
 	//   Example: [0, 6]
 	//
 	// > If RepeatType is set to Weekly, the values in RepeatDays cannot be repeated.
 	//
-	// - If RepeatType is set to `Monthly`, RepeatDays cannot be empty.
+	// - If RepeatType is set to `Monthly`, RepeatDays must not be empty.
 	//
 	//   Example: [1, 31]
 	//
@@ -316,7 +316,7 @@ type ModifyControlPolicyRequest struct {
 	//
 	// - If **SourceType*	- is set to group, **Source*	- is a source address book name. Example: db_group.
 	//
-	// - If **SourceType*	- is set to location, **Source*	- is a source area. For specific area positional encoding, see the subsequent sections. Example: ["BJ11", "ZB"\\].
+	// - If **SourceType*	- is set to location, **Source*	- is a source area. For more information about area positional encoding, see the following sections. Example: ["BJ11", "ZB"\\].
 	//
 	// example:
 	//
@@ -334,7 +334,7 @@ type ModifyControlPolicyRequest struct {
 	//
 	// net
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the Policy Validity Period for the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes earlier than the end time. Settings for the access control policy validity period.
+	// The start time of the Policy Validity Period of the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes earlier than the end time. Settings for the start time.
 	//
 	// > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
 	//

@@ -42,9 +42,9 @@ type iCreateSecurityProxyRequest interface {
 type CreateSecurityProxyRequest struct {
 	// The deployment mode of the firewall service. Valid values:
 	//
-	// - PrimaryStandby: active/standby mode
+	// - **PrimaryStandby**: primary/standby mode.
 	//
-	// - MultiPrimary: active-active mode
+	// - **MultiPrimary**: active-active mode.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type CreateSecurityProxyRequest struct {
 	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
 	// The security protection switch. Valid values:
 	//
-	// - **open**: enabled
+	// - **open**: Enabled.
 	//
-	// - **close**: disabled
+	// - **close**: Disabled.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type CreateSecurityProxyRequest struct {
 	//
 	// cn-beijing-b
 	FwVswitchZoneId *string `json:"FwVswitchZoneId,omitempty" xml:"FwVswitchZoneId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateSecurityProxyRequest struct {
 	//
 	// This parameter is required.
 	NatRouteEntryList []*CreateSecurityProxyRequestNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
-	// The name of the NAT firewall. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
+	// The name of the NAT firewall. The name must be 4 to 50 characters in length and can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It cannot start with an underscore.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type CreateSecurityProxyRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// Specifies whether to enable strict mode.
+	// Specifies whether to enable strict mode. Valid values:
 	//
 	// - 1: Enable strict mode.
 	//
@@ -118,7 +118,7 @@ type CreateSecurityProxyRequest struct {
 	//
 	// 0
 	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	// The VPC-connected instance ID.
+	// The ID of the VPC.
 	//
 	// This parameter is required.
 	//
@@ -126,25 +126,25 @@ type CreateSecurityProxyRequest struct {
 	//
 	// vpc-uf6b5lyul0x******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Specifies whether to use the automatic vSwitch mode. Valid values:
+	// Specifies whether to use the automatic mode for the vSwitch. Valid values:
 	//
-	// - **true**: automatic mode
+	// - **true**: automatic mode.
 	//
-	// - **false**: manual mode
+	// - **false**: manual mode.
 	//
-	// > The default value of VswitchAuto is true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
+	// > Default value: true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
 	//
 	// example:
 	//
 	// true
 	VswitchAuto *string `json:"VswitchAuto,omitempty" xml:"VswitchAuto,omitempty"`
-	// The CIDR block of the vSwitch. This parameter is required when the vSwitch is in automatic mode.
+	// The CIDR block of the vSwitch. This parameter is required when the automatic mode is used for the vSwitch.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	VswitchCidr *string `json:"VswitchCidr,omitempty" xml:"VswitchCidr,omitempty"`
-	// The vSwitch ID. This parameter is required when the vSwitch is in manual mode.
+	// The ID of the vSwitch. This parameter is required when the manual mode is used for the vSwitch.
 	//
 	// example:
 	//
@@ -308,7 +308,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// 0.0.0.0/0
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The next hop address of the original NAT gateway.
+	// The next hop of the original NAT gateway.
 	//
 	// This parameter is required.
 	//
@@ -316,7 +316,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// ngw-bp1okz6******
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The network type of the next hop. Valid values: NatGateway.
+	// The network type of the next hop. Valid value: NatGateway.
 	//
 	// This parameter is required.
 	//
@@ -324,7 +324,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// NatGateway
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The route table that contains the default route of the NAT gateway.
+	// The ID of the route table to which the default route of the NAT gateway belongs.
 	//
 	// This parameter is required.
 	//

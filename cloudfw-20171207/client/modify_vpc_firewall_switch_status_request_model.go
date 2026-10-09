@@ -22,9 +22,9 @@ type iModifyVpcFirewallSwitchStatusRequest interface {
 type ModifyVpcFirewallSwitchStatusRequest struct {
 	// The status of the virtual private cloud (VPC) firewall. Valid values:
 	//
-	// - **open**: enabled.
+	// - **open**: Enable.
 	//
-	// - **close**: disabled.
+	// - **close**: Disable.
 	//
 	// This parameter is required.
 	//

@@ -78,7 +78,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// vpc-firewall-description
 	FirewallDescription *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
-	// The ENI ID of the firewall.
+	// The ID of the firewall ENI.
 	//
 	// example:
 	//
@@ -102,19 +102,19 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// vfw-tr-9c7c711abdfa4d80****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The name of the virtual private cloud (VPC) firewalls instance.
+	// The instance name of the virtual private cloud (VPC) firewalls.
 	//
 	// example:
 	//
 	// cloudfirewall-manual
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	// The deployment mode of the TR firewall service. Valid values: **PrimaryStandby*	- (active/standby mode) and **MultiPrimary*	- (active-active mode).
+	// The deployment mode of the VPC firewall for the transit router. Valid values: **PrimaryStandby*	- (active/standby mode) and **MultiPrimary*	- (active-active mode).
 	//
 	// example:
 	//
 	// PrimaryStandby
 	FirewallServiceMode *string `json:"FirewallServiceMode,omitempty" xml:"FirewallServiceMode,omitempty"`
-	// The list of zone IDs used by the TR firewall service.
+	// The list of zone IDs used by the VPC firewall for the transit router.
 	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
 	// The status of the firewall. Valid values:
 	//
@@ -128,7 +128,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// Ready
 	FirewallStatus *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
-	// The subnet CIDR block that hosts the firewall ENI in the firewall VPC in automatic mode.
+	// The subnet CIDR block that stores the firewall ENI in the firewall VPC in automatic mode.
 	//
 	// example:
 	//
@@ -136,22 +136,22 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	FirewallSubnetCidr *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
 	// The status of the virtual private cloud (VPC) firewalls. Valid values:
 	//
-	// - **opened**: enabled
+	// - **opened**: enabled.
 	//
-	// - **closed**: disabled
+	// - **closed**: disabled.
 	//
-	// - **notconfigured**: The VPC firewall is not configured.
+	// - **notconfigured**: the virtual private cloud (VPC) firewalls are not configured.
 	//
-	// - **configured**: The VPC firewall is configured.
+	// - **configured**: the virtual private cloud (VPC) firewalls are configured but not enabled.
 	//
-	// - **creating**: The VPC firewall is being created.
+	// - **creating**: the virtual private cloud (VPC) firewalls are being created.
 	//
-	// - **opening**: The VPC firewall is being enabled.
+	// - **opening**: the virtual private cloud (VPC) firewalls are being enabled.
 	//
-	// - **deleting**: The VPC firewall is being deleted.
+	// - **deleting**: the virtual private cloud (VPC) firewalls are being deleted.
 	//
 	//
-	// > If this parameter is not specified, virtual private cloud (VPC) firewalls in all states are queried.
+	// > If this parameter is not set, virtual private cloud (VPC) firewalls in all states are queried.
 	//
 	// example:
 	//
@@ -177,15 +177,15 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The routing mode. Valid values:
 	//
-	// - **managed**: automatic mode
+	// - **managed**: automatic mode.
 	//
-	// - **manual**: manual mode
+	// - **manual**: manual mode.
 	//
 	// example:
 	//
 	// managed
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	// The attachment ID used to connect to the transit router in the firewall VPC in automatic mode.
+	// The attachment ID used to connect the firewall VPC to the transit router in automatic mode.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	TrAttachmentId *string `json:"TrAttachmentId,omitempty" xml:"TrAttachmentId,omitempty"`
 	// Deprecated
 	//
-	// The primary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
+	// The primary subnet CIDR block used to connect the firewall VPC to the transit router in automatic mode.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
 	// Deprecated
 	//
-	// The primary zone used to connect to the transit router in the firewall VPC in automatic mode.
+	// The primary zone used to connect the firewall VPC to the transit router in automatic mode.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
 	// Deprecated
 	//
-	// The secondary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
+	// The secondary subnet CIDR block used to connect the firewall VPC to the transit router in automatic mode.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
 	// Deprecated
 	//
-	// The secondary zone used to connect to the transit router in the firewall VPC in automatic mode.
+	// The secondary zone used to connect the firewall VPC to the transit router in automatic mode.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
 	// The list of zones and vSwitch CIDR blocks for the transit router connection.
 	TrAttachmentZones []*DescribeTrFirewallsV2DetailResponseBodyTrAttachmentZones `json:"TrAttachmentZones,omitempty" xml:"TrAttachmentZones,omitempty" type:"Repeated"`
-	// The instance ID of the transit router.
+	// The ID of the transit routing instance.
 	//
 	// example:
 	//

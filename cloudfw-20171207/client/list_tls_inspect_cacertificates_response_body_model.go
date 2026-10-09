@@ -20,7 +20,7 @@ type iListTlsInspectCACertificatesResponseBody interface {
 type ListTlsInspectCACertificatesResponseBody struct {
 	// The list of certificates.
 	Certificates []*ListTlsInspectCACertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,25 +83,25 @@ func (s *ListTlsInspectCACertificatesResponseBody) Validate() error {
 }
 
 type ListTlsInspectCACertificatesResponseBodyCertificates struct {
-	// The encryption algorithm of the CA certificate. Valid values:
+	// The encryption algorithm type of the CA certificate. Valid values:
 	//
-	// - **RSA**: the RSA algorithm.
+	// - **RSA**: RSA algorithm.
 	//
-	// - **ECC**: the ECC algorithm.
+	// - **ECC**: ECC algorithm.
 	//
-	// - **SM2**: the SM2 algorithm.
+	// - **SM2**: SM2 (Chinese national cryptographic) algorithm.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The alias of the certificate.
+	// The certificate alias.
 	//
 	// example:
 	//
 	// rsa_ml_***_root
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The ID of the CA certificate.
+	// The CA certificate ID.
 	//
 	// example:
 	//
@@ -109,14 +109,20 @@ type ListTlsInspectCACertificatesResponseBodyCertificates struct {
 	CaCertId *string `json:"CaCertId,omitempty" xml:"CaCertId,omitempty"`
 	// The type of the CA certificate. Valid values:
 	//
-	// - **ROOT**: a root CA certificate.
+	// - **ROOT**: Root CA certificate.
 	//
-	// - **SUB_ROOT**: a subordinate CA certificate.
+	// - **SUB_ROOT**: Subordinate CA certificate.
 	//
 	// example:
 	//
 	// ROOT
 	CaCertType *string `json:"CaCertType,omitempty" xml:"CaCertType,omitempty"`
+	// The certificate chain expiration timestamp.
+	//
+	// example:
+	//
+	// 1934***149
+	CertChainExpirationTime *int64 `json:"CertChainExpirationTime,omitempty" xml:"CertChainExpirationTime,omitempty"`
 	// The expiration timestamp.
 	//
 	// example:
@@ -129,7 +135,7 @@ type ListTlsInspectCACertificatesResponseBodyCertificates struct {
 	//
 	// 2048
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	// The ID of the parent CA certificate.
+	// The parent CA certificate ID.
 	//
 	// example:
 	//
@@ -141,11 +147,11 @@ type ListTlsInspectCACertificatesResponseBodyCertificates struct {
 	//
 	// SHA256WITHRSA
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
 	//
-	// - **ISSUE**: enabled.
+	// - **ISSUE**: Enabled.
 	//
-	// - **REVOKE**: revoked.
+	// - **REVOKE**: Revoked.
 	//
 	// example:
 	//
@@ -175,6 +181,10 @@ func (s *ListTlsInspectCACertificatesResponseBodyCertificates) GetCaCertId() *st
 
 func (s *ListTlsInspectCACertificatesResponseBodyCertificates) GetCaCertType() *string {
 	return s.CaCertType
+}
+
+func (s *ListTlsInspectCACertificatesResponseBodyCertificates) GetCertChainExpirationTime() *int64 {
+	return s.CertChainExpirationTime
 }
 
 func (s *ListTlsInspectCACertificatesResponseBodyCertificates) GetExpirationTime() *int64 {
@@ -214,6 +224,11 @@ func (s *ListTlsInspectCACertificatesResponseBodyCertificates) SetCaCertId(v str
 
 func (s *ListTlsInspectCACertificatesResponseBodyCertificates) SetCaCertType(v string) *ListTlsInspectCACertificatesResponseBodyCertificates {
 	s.CaCertType = &v
+	return s
+}
+
+func (s *ListTlsInspectCACertificatesResponseBodyCertificates) SetCertChainExpirationTime(v int64) *ListTlsInspectCACertificatesResponseBodyCertificates {
+	s.CertChainExpirationTime = &v
 	return s
 }
 

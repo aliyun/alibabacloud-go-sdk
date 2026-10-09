@@ -28,7 +28,7 @@ type DescribeVpcFirewallCenDetailRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The VPC instance ID used to create a VPC firewall.
+	// The ID of the VPC for which the virtual private cloud (VPC) firewall is created.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeVpcFirewallCenDetailRequest struct {
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
 	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
-	// > You can invoke the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance ID of the VPC firewall.
+	// > You can invoke the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// This parameter is required.
 	//

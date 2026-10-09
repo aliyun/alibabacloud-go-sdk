@@ -22,7 +22,7 @@ type CreateSecurityProxyResponseBody struct {
 	//
 	// proxy-nat97a******
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
