@@ -28,45 +28,45 @@ type iGetQualityCheckTaskResultResponseBody interface {
 }
 
 type GetQualityCheckTaskResultResponseBody struct {
-	// Processing time, in milliseconds
+	// The duration.
 	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// Response data
+	// The response data.
 	Data *GetQualityCheckTaskResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Data type
+	// The data type.
 	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 67C7021A-D268-553D-8C15-A087B9604028
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Whether the request succeeded
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// Timestamp
+	// The timestamp.
 	//
 	// example:
 	//
@@ -164,35 +164,35 @@ func (s *GetQualityCheckTaskResultResponseBody) Validate() error {
 }
 
 type GetQualityCheckTaskResultResponseBodyData struct {
-	// Original conversation content
+	// The original conversation content.
 	ConversationList *GetQualityCheckTaskResultResponseBodyDataConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Struct"`
-	// Task creation time. This is when the task was submitted
+	// The time when the task was created and submitted.
 	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// System execution end time
+	// The time when the system finished execution.
 	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
 	GmtEnd *string `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
-	// System execution start time
+	// The time when the system started execution.
 	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
 	GmtStart *string `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
-	// Quality check result set
+	// The quality check results.
 	QualityCheckList []*GetQualityCheckTaskResultResponseBodyDataQualityCheckList `json:"qualityCheckList,omitempty" xml:"qualityCheckList,omitempty" type:"Repeated"`
-	// Task status
+	// The task status.
 	//
 	// example:
 	//
 	// INIT
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
@@ -290,39 +290,39 @@ func (s *GetQualityCheckTaskResultResponseBodyData) Validate() error {
 }
 
 type GetQualityCheckTaskResultResponseBodyDataConversationList struct {
-	// Call type:
+	// The call type.
 	//
 	// example:
 	//
 	// 1
 	CallType *string `json:"callType,omitempty" xml:"callType,omitempty"`
-	// Customer ID
+	// The customer ID.
 	//
 	// example:
 	//
 	// 234234
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
-	// Customer name
+	// The customer name.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	CustomerName *string `json:"customerName,omitempty" xml:"customerName,omitempty"`
-	// Agent ID
+	// The customer service ID.
 	//
 	// example:
 	//
 	// 23984763826
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
-	// Agent name
+	// The customer service name.
 	//
 	// example:
 	//
-	// 李四
+	// Li Si
 	CustomerServiceName *string `json:"customerServiceName,omitempty" xml:"customerServiceName,omitempty"`
-	// Dialogue details list
+	// The list of dialogue details.
 	DialogueList []*GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
-	// Conversation time
+	// The conversation time.
 	//
 	// example:
 	//
@@ -415,61 +415,61 @@ func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) Validate() e
 }
 
 type GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList struct {
-	// Start time of this utterance, in milliseconds relative to the start of the conversation
+	// The start time of the utterance, as an offset in milliseconds from the start of the conversation.
 	//
 	// example:
 	//
 	// 0
 	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
-	// Start time of this utterance
+	// The start time of the utterance.
 	//
 	// example:
 	//
 	// 2024-09-27 11:23:20
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// Dialogue content
+	// The specific content of the dialogue.
 	//
 	// example:
 	//
-	// 您好，我是2001，很高兴为您服务！
+	// Hello, this is 2001. How may I help you?
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Unique identifier for the dialogue role
+	// The unique identifier of the dialogue role.
 	//
 	// example:
 	//
 	// null
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
-	// Agent ID
+	// The customer service ID.
 	//
 	// example:
 	//
-	// 李四
+	// Li Si
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
-	// Agent type
+	// The agent type.
 	//
 	// example:
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
-	// End time of this utterance, in milliseconds relative to the start of the conversation
+	// The end time of the utterance, as an offset in milliseconds from the start of the conversation.
 	//
 	// example:
 	//
 	// 0
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
-	// Unique identifier for this utterance. Assigned internally
+	// The unique identifier of the utterance. This value is assigned internally.
 	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
-	// Role
+	// The role.
 	//
 	// example:
 	//
 	// 0
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// Content type
+	// The type of the dialogue content.
 	//
 	// example:
 	//
@@ -580,81 +580,81 @@ func (s *GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList) 
 }
 
 type GetQualityCheckTaskResultResponseBodyDataQualityCheckList struct {
-	// Rule business type
+	// The business type of the rule.
 	//
 	// example:
 	//
 	// No
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	// Reason for passing or failing the quality check
+	// The explanation for why the check passed or failed.
 	//
 	// example:
 	//
-	// 暂无
+	// None
 	CheckExplanation *string `json:"checkExplanation,omitempty" xml:"checkExplanation,omitempty"`
-	// Whether the quality check passed
+	// Indicates whether the quality check passed.
 	//
 	// example:
 	//
 	// PASSED
 	CheckPassed *string `json:"checkPassed,omitempty" xml:"checkPassed,omitempty"`
-	// Description of the quality check process
+	// The description of the quality check process.
 	//
 	// example:
 	//
-	// 暂无
+	// None
 	CheckProcess *string `json:"checkProcess,omitempty" xml:"checkProcess,omitempty"`
-	// Whether the rule matched
+	// Indicates whether the rule was hit.
 	//
 	// example:
 	//
 	// HIT
 	Checked *string `json:"checked,omitempty" xml:"checked,omitempty"`
-	// Quality check completion time
+	// The quality check completion time.
 	//
 	// example:
 	//
 	// 2024-05-23 14:57:50
 	GmtEnd *string `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
-	// Quality check start time
+	// The quality check start time.
 	//
 	// example:
 	//
 	// 2024-05-23 14:57:50
 	GmtStart *string `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
-	// Internal quality check mode
+	// The internal quality check mode.
 	//
 	// example:
 	//
 	// 0
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// Original dialogue list
+	// The original dialogue list.
 	OriginDialogue []*GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue `json:"originDialogue,omitempty" xml:"originDialogue,omitempty" type:"Repeated"`
-	// Quality check group ID
+	// The quality check group ID.
 	//
 	// example:
 	//
 	// warning_customers
 	QualityGroupId *string `json:"qualityGroupId,omitempty" xml:"qualityGroupId,omitempty"`
-	// Quality check item description
+	// The quality check item description.
 	//
 	// example:
 	//
-	// 进入检测预警客户流程
+	// Enter the early-warning customer detection process
 	RuleDescription *string `json:"ruleDescription,omitempty" xml:"ruleDescription,omitempty"`
-	// Quality check item ID
+	// The quality check item ID.
 	//
 	// example:
 	//
 	// wcm_start
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
-	// Rule direction. 0: negative, 1: positive
+	// The polarity type of the rule. Valid values: 0: negative. 1: positive.
 	//
 	// example:
 	//
 	// 0
 	RuleType *string `json:"ruleType,omitempty" xml:"ruleType,omitempty"`
-	// Child node
+	// The child node.
 	SubNodeCol []interface{} `json:"subNodeCol,omitempty" xml:"subNodeCol,omitempty" type:"Repeated"`
 }
 
@@ -806,61 +806,61 @@ func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) Validate() e
 }
 
 type GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue struct {
-	// Start time of this utterance, in milliseconds relative to the start of the conversation
+	// The start time of the utterance, as an offset in milliseconds from the start of the conversation.
 	//
 	// example:
 	//
 	// 0
 	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
-	// Start time of this utterance
+	// The start time of the utterance.
 	//
 	// example:
 	//
 	// 2024-05-23 14:57:50
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// Dialogue content
+	// The specific content of the dialogue.
 	//
 	// example:
 	//
-	// 您好，我是2001，很高兴为您服务！
+	// Hello, this is 2001. How may I help you?
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Unique identifier for the dialogue role
+	// The unique identifier of the dialogue role.
 	//
 	// example:
 	//
 	// xxx
 	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
-	// Agent ID
+	// The customer service ID.
 	//
 	// example:
 	//
 	// 23876432
 	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
-	// Agent type
+	// The agent type.
 	//
 	// example:
 	//
 	// 0
 	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
-	// End time of this utterance, in milliseconds relative to the start of the conversation
+	// The end time of the utterance, as an offset in milliseconds from the start of the conversation.
 	//
 	// example:
 	//
 	// 0
 	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
-	// Unique identifier for this utterance. Assigned internally
+	// The unique identifier of the sentence, which is assigned internally.
 	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
-	// Role
+	// The role.
 	//
 	// example:
 	//
 	// 0
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// Content type
+	// The type of the dialogue content.
 	//
 	// example:
 	//

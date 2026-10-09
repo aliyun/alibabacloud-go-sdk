@@ -22,7 +22,7 @@ type iCreatePdfTranslateTaskRequest interface {
 }
 
 type CreatePdfTranslateTaskRequest struct {
-	// Document ID
+	// The document ID.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type CreatePdfTranslateTaskRequest struct {
 	//
 	// 873648346573245
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
-	// Domain knowledge used as reference during translation
+	// The domain knowledge referenced during translation.
 	//
 	// example:
 	//
-	// 净利润 (Net Profit)
+	// Net Profit
 	//
-	// 英文：Net Profit
+	// English: Net Profit
 	//
-	// 中文：净利润（通常指扣除所有费用和税后的利润）
+	// Chinese: Net profit (typically refers to the profit after deducting all expenses and taxes)
 	Knowledge *string `json:"knowledge,omitempty" xml:"knowledge,omitempty"`
-	// Document library ID
+	// The document library ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreatePdfTranslateTaskRequest struct {
 	//
 	// cjshcxxxx
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
-	// Model ID
+	// The model ID.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type CreatePdfTranslateTaskRequest struct {
 	//
 	// qwen-plus
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// Target language. Default is Chinese
+	// The target language. Default value: Chinese.
 	//
 	// example:
 	//
-	// 中文
+	// Chinese
 	TranslateTo *string `json:"translateTo,omitempty" xml:"translateTo,omitempty"`
 }
 

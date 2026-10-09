@@ -14,7 +14,7 @@ type iDeleteLibraryRequest interface {
 }
 
 type DeleteLibraryRequest struct {
-	// Document library ID
+	// The document library ID.
 	//
 	// This parameter is required.
 	//

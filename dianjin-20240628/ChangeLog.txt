@@ -1,3 +1,6 @@
+2026-10-09 Version: v1.23.1
+- Generated golang 2024-06-28 for DianJin.
+
 2026-09-09 Version: v1.23.0
 - Support API QueryAmount.
 

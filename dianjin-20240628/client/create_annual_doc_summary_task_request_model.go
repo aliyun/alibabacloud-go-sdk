@@ -22,33 +22,33 @@ type iCreateAnnualDocSummaryTaskRequest interface {
 }
 
 type CreateAnnualDocSummaryTaskRequest struct {
-	// List of years to analyze
+	// The list of analysis years.
 	//
 	// This parameter is required.
 	AnaYears []*int32 `json:"anaYears,omitempty" xml:"anaYears,omitempty" type:"Repeated"`
-	// List of document information
+	// The list of document information.
 	//
 	// This parameter is required.
 	DocInfos []*CreateAnnualDocSummaryTaskRequestDocInfos `json:"docInfos,omitempty" xml:"docInfos,omitempty" type:"Repeated"`
-	// Enable table extraction. Default is true.
+	// Specifies whether to enable tables. Default value: true.
 	//
 	// example:
 	//
 	// true
 	EnableTable *bool `json:"enableTable,omitempty" xml:"enableTable,omitempty"`
-	// Instruction
+	// The instruction.
 	//
 	// example:
 	//
-	// 你是资深的证券研究员，对xx年上市公司进行业绩分析。根据参考信息从如下方面详细分析：
+	// You are a senior securities researcher conducting performance analysis on listed companies for the year XX. Based on the reference information, provide a detailed analysis covering the following aspects:
 	//
-	// 1. 整体业绩变化情况，包括营收，利润等详细指标变化情况
+	// 1. Overall performance changes, including detailed metrics such as revenue and profit.
 	//
-	// 2. 业绩变化情况具体原因，包括各个业务变化情况
+	// 2. Specific reasons for performance changes, including changes in each business segment.
 	//
-	// 严格只输出xx年情况。
+	// Strictly output only the information for the year XX
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
-	// Model ID
+	// The model ID.
 	//
 	// This parameter is required.
 	//
@@ -125,7 +125,7 @@ func (s *CreateAnnualDocSummaryTaskRequest) Validate() error {
 }
 
 type CreateAnnualDocSummaryTaskRequestDocInfos struct {
-	// Document ID
+	// The document ID.
 	//
 	// This parameter is required.
 	//
@@ -133,7 +133,7 @@ type CreateAnnualDocSummaryTaskRequestDocInfos struct {
 	//
 	// 198386463432
 	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
-	// Document year
+	// The document year.
 	//
 	// This parameter is required.
 	//
@@ -141,13 +141,13 @@ type CreateAnnualDocSummaryTaskRequestDocInfos struct {
 	//
 	// 2023
 	DocYear *int32 `json:"docYear,omitempty" xml:"docYear,omitempty"`
-	// End page number
+	// The end page.
 	//
 	// example:
 	//
 	// 2
 	EndPage *int32 `json:"endPage,omitempty" xml:"endPage,omitempty"`
-	// Document library ID
+	// The document library ID.
 	//
 	// This parameter is required.
 	//
@@ -155,7 +155,7 @@ type CreateAnnualDocSummaryTaskRequestDocInfos struct {
 	//
 	// rdxrmo6amk
 	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
-	// Start page number
+	// The start page.
 	//
 	// example:
 	//

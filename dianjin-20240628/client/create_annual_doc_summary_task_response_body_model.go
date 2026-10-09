@@ -28,49 +28,49 @@ type iCreateAnnualDocSummaryTaskResponseBody interface {
 }
 
 type CreateAnnualDocSummaryTaskResponseBody struct {
-	// Processing time in milliseconds
+	// The execution duration.
 	//
 	// example:
 	//
 	// null
 	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// Response data. This is the task ID.
+	// The response data, which is the task ID.
 	//
 	// example:
 	//
 	// 3284627354
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// Data type
+	// The data type.
 	//
 	// example:
 	//
 	// null
 	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 32FFC91D-0A9F-585A-B84F-8A54C5187035
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request succeeded
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// Timestamp
+	// The timestamp.
 	//
 	// example:
 	//
