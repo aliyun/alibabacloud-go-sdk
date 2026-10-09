@@ -132,6 +132,10 @@ type ListPipelinesResponseBodyPipelines struct {
 	// My pipeline
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The execution policy.
+	//
+	// example:
+	//
+	// {"mode":"RunOnce","runOnce":{"fromTime":1735660800,"toTime":1735664400}}
 	ExecutePolicy *ListPipelinesResponseBodyPipelinesExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
 	// The name of the pipeline.
 	//
@@ -172,6 +176,10 @@ type ListPipelinesResponseBodyPipelines struct {
 	// The pipeline sink (data write destination).
 	Sink *ListPipelinesResponseBodyPipelinesSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
 	// The pipeline data source.
+	//
+	// example:
+	//
+	// {"type":"logstore","logstore":{"project":"my-sls-project","logstore":"agent-logs"},"inputFields":[{"name":"question","type":"text"}]}
 	Source *ListPipelinesResponseBodyPipelinesSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 	// The time when the pipeline was last updated, in ISO 8601 UTC format.
 	//
@@ -316,6 +324,10 @@ func (s *ListPipelinesResponseBodyPipelines) Validate() error {
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicy struct {
+	// example:
+	//
+	// {"fromTime":1735660800}
+	Continuous *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous `json:"continuous,omitempty" xml:"continuous,omitempty" type:"Struct"`
 	// The scheduling mode. Valid values:
 	//
 	// - RunOnce: one-time execution.
@@ -327,8 +339,16 @@ type ListPipelinesResponseBodyPipelinesExecutePolicy struct {
 	// RunOnce
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// The parameters for one-time execution. This parameter has a value only when mode is set to RunOnce.
+	//
+	// example:
+	//
+	// {"fromTime":1735660800,"toTime":1735664400}
 	RunOnce *ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
 	// The parameters for periodic scheduling. This parameter has a value only when mode is set to Scheduled.
+	//
+	// example:
+	//
+	// {"interval":"1h","fromTime":1735660800}
 	Scheduled *ListPipelinesResponseBodyPipelinesExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
 }
 
@@ -338,6 +358,10 @@ func (s ListPipelinesResponseBodyPipelinesExecutePolicy) String() string {
 
 func (s ListPipelinesResponseBodyPipelinesExecutePolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) GetContinuous() *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous {
+	return s.Continuous
 }
 
 func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) GetMode() *string {
@@ -350,6 +374,11 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) GetRunOnce() *ListPipe
 
 func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) GetScheduled() *ListPipelinesResponseBodyPipelinesExecutePolicyScheduled {
 	return s.Scheduled
+}
+
+func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) SetContinuous(v *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous) *ListPipelinesResponseBodyPipelinesExecutePolicy {
+	s.Continuous = v
+	return s
 }
 
 func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) SetMode(v string) *ListPipelinesResponseBodyPipelinesExecutePolicy {
@@ -368,6 +397,11 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) SetScheduled(v *ListPi
 }
 
 func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) Validate() error {
+	if s.Continuous != nil {
+		if err := s.Continuous.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RunOnce != nil {
 		if err := s.RunOnce.Validate(); err != nil {
 			return err
@@ -379,6 +413,34 @@ func (s *ListPipelinesResponseBodyPipelinesExecutePolicy) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ListPipelinesResponseBodyPipelinesExecutePolicyContinuous struct {
+	// example:
+	//
+	// 1735660800
+	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+}
+
+func (s ListPipelinesResponseBodyPipelinesExecutePolicyContinuous) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPipelinesResponseBodyPipelinesExecutePolicyContinuous) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous) GetFromTime() *int64 {
+	return s.FromTime
+}
+
+func (s *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous) SetFromTime(v int64) *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous {
+	s.FromTime = &v
+	return s
+}
+
+func (s *ListPipelinesResponseBodyPipelinesExecutePolicyContinuous) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce struct {
@@ -889,9 +951,25 @@ func (s *ListPipelinesResponseBodyPipelinesSinkDataset) Validate() error {
 
 type ListPipelinesResponseBodyPipelinesSource struct {
 	// The dataset datasource config in the current AgentSpace.
+	//
+	// example:
+	//
+	// {"dataset":"my-dataset","filter":"status = \\"pending\\""}
 	Dataset *ListPipelinesResponseBodyPipelinesSourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// example:
+	//
+	// [{"name":"question","type":"text"}]
+	InputFields []*ListPipelinesResponseBodyPipelinesSourceInputFields `json:"inputFields,omitempty" xml:"inputFields,omitempty" type:"Repeated"`
 	// The Simple Log Service (SLS) Logstore datasource config.
+	//
+	// example:
+	//
+	// {"project":"my-sls-project","logstore":"agent-logs"}
 	Logstore *ListPipelinesResponseBodyPipelinesSourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"enrich":{"enabled":true,"columns":["input","output"]}}
+	Trajectory *ListPipelinesResponseBodyPipelinesSourceTrajectory `json:"trajectory,omitempty" xml:"trajectory,omitempty" type:"Struct"`
 	// The data source type. Valid values: logstore or dataset.
 	//
 	// example:
@@ -912,8 +990,16 @@ func (s *ListPipelinesResponseBodyPipelinesSource) GetDataset() *ListPipelinesRe
 	return s.Dataset
 }
 
+func (s *ListPipelinesResponseBodyPipelinesSource) GetInputFields() []*ListPipelinesResponseBodyPipelinesSourceInputFields {
+	return s.InputFields
+}
+
 func (s *ListPipelinesResponseBodyPipelinesSource) GetLogstore() *ListPipelinesResponseBodyPipelinesSourceLogstore {
 	return s.Logstore
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSource) GetTrajectory() *ListPipelinesResponseBodyPipelinesSourceTrajectory {
+	return s.Trajectory
 }
 
 func (s *ListPipelinesResponseBodyPipelinesSource) GetType() *string {
@@ -925,8 +1011,18 @@ func (s *ListPipelinesResponseBodyPipelinesSource) SetDataset(v *ListPipelinesRe
 	return s
 }
 
+func (s *ListPipelinesResponseBodyPipelinesSource) SetInputFields(v []*ListPipelinesResponseBodyPipelinesSourceInputFields) *ListPipelinesResponseBodyPipelinesSource {
+	s.InputFields = v
+	return s
+}
+
 func (s *ListPipelinesResponseBodyPipelinesSource) SetLogstore(v *ListPipelinesResponseBodyPipelinesSourceLogstore) *ListPipelinesResponseBodyPipelinesSource {
 	s.Logstore = v
+	return s
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSource) SetTrajectory(v *ListPipelinesResponseBodyPipelinesSourceTrajectory) *ListPipelinesResponseBodyPipelinesSource {
+	s.Trajectory = v
 	return s
 }
 
@@ -941,8 +1037,22 @@ func (s *ListPipelinesResponseBodyPipelinesSource) Validate() error {
 			return err
 		}
 	}
+	if s.InputFields != nil {
+		for _, item := range s.InputFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Logstore != nil {
 		if err := s.Logstore.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trajectory != nil {
+		if err := s.Trajectory.Validate(); err != nil {
 			return err
 		}
 	}
@@ -991,6 +1101,47 @@ func (s *ListPipelinesResponseBodyPipelinesSourceDataset) SetFilter(v string) *L
 }
 
 func (s *ListPipelinesResponseBodyPipelinesSourceDataset) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListPipelinesResponseBodyPipelinesSourceInputFields struct {
+	// example:
+	//
+	// question
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListPipelinesResponseBodyPipelinesSourceInputFields) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPipelinesResponseBodyPipelinesSourceInputFields) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceInputFields) GetName() *string {
+	return s.Name
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceInputFields) GetType() *string {
+	return s.Type
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceInputFields) SetName(v string) *ListPipelinesResponseBodyPipelinesSourceInputFields {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceInputFields) SetType(v string) *ListPipelinesResponseBodyPipelinesSourceInputFields {
+	s.Type = &v
+	return s
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceInputFields) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1051,5 +1202,79 @@ func (s *ListPipelinesResponseBodyPipelinesSourceLogstore) SetQuery(v string) *L
 }
 
 func (s *ListPipelinesResponseBodyPipelinesSourceLogstore) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListPipelinesResponseBodyPipelinesSourceTrajectory struct {
+	// example:
+	//
+	// {"enabled":true,"columns":["input","output"]}
+	Enrich *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich `json:"enrich,omitempty" xml:"enrich,omitempty" type:"Struct"`
+}
+
+func (s ListPipelinesResponseBodyPipelinesSourceTrajectory) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPipelinesResponseBodyPipelinesSourceTrajectory) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectory) GetEnrich() *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich {
+	return s.Enrich
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectory) SetEnrich(v *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) *ListPipelinesResponseBodyPipelinesSourceTrajectory {
+	s.Enrich = v
+	return s
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectory) Validate() error {
+	if s.Enrich != nil {
+		if err := s.Enrich.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich struct {
+	// example:
+	//
+	// ["input","output","session_id"]
+	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) GetColumns() []*string {
+	return s.Columns
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) SetColumns(v []*string) *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich {
+	s.Columns = v
+	return s
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) SetEnabled(v bool) *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich) Validate() error {
 	return dara.Validate(s)
 }

@@ -18,11 +18,15 @@ type iPreviewPipelineResponseBody interface {
 }
 
 type PreviewPipelineResponseBody struct {
-	// `data` is a collection of sample rows (maps within an array) that contains only the first N rows (up to 5 by default) and does not reflect the complete write plan.
+	// The collection of sample rows for the preview result. Each row is a key-value structure. The array contains only the first N rows, up to 5 rows by default, and does not reflect the complete write plan.
+	//
+	// example:
+	//
+	// [{"status":"200","method":"POST"}]
 	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The query metadata.
 	Meta *PreviewPipelineResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID. You can use this ID to locate the request when you troubleshoot issues.
 	//
 	// example:
 	//
@@ -75,13 +79,17 @@ func (s *PreviewPipelineResponseBody) Validate() error {
 }
 
 type PreviewPipelineResponseBodyMeta struct {
-	// The aggregation analysis SPL statement.
+	// The SPL statement for aggregation analysis.
 	//
 	// example:
 	//
 	// 	- | SELECT status, count(*) AS cnt GROUP BY status
 	AggQuery *string `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
-	// `meta.columnTypes` provides the mapping from column names to data types (string / long / double / json).
+	// The list of data types for each column. This field provides a mapping from column names to data types, such as string, long, double, and json.
+	//
+	// example:
+	//
+	// ["long","string"]
 	ColumnTypes []*string `json:"columnTypes,omitempty" xml:"columnTypes,omitempty" type:"Repeated"`
 	// The number of matched log entries.
 	//
@@ -89,43 +97,55 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 100
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The number of CPU cores consumed.
+	// The number of consumed CPU cores.
 	//
 	// example:
 	//
 	// 2
 	CpuCores *int32 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	// The CPU time consumed, in seconds.
+	// The consumed CPU time in seconds.
 	//
 	// example:
 	//
 	// 0.5
 	CpuSec *float64 `json:"cpuSec,omitempty" xml:"cpuSec,omitempty"`
-	// The query duration, in milliseconds.
+	// The query duration in milliseconds.
 	//
 	// example:
 	//
 	// 1200
 	ElapsedMillisecond *int64 `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
-	// Indicates whether the query is an SQL query.
+	// Specifies whether an SQL query is used.
+	//
+	// example:
+	//
+	// true
 	HasSQL *bool `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
-	// Indicates whether nanosecond-level ordering is enabled.
+	// Specifies whether nanosecond-level ordering is enabled.
+	//
+	// example:
+	//
+	// true
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// The list of result column names.
+	//
+	// example:
+	//
+	// ["status","method","path"]
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	// The maximum number of rows that can be returned.
+	// The maximum number of rows returned in the result.
 	//
 	// example:
 	//
 	// 5
 	Limited *int32 `json:"limited,omitempty" xml:"limited,omitempty"`
-	// The query mode identifier.
+	// The identifier of the query mode.
 	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The number of data bytes processed.
+	// The number of bytes of processed data.
 	//
 	// example:
 	//
@@ -137,21 +157,31 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 10000
 	ProcessedRows *int64 `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
-	// The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is complete.
+	// The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is completed.
 	//
 	// example:
 	//
 	// Complete
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
-	// The number of raw data bytes scanned.
+	// The number of bytes of scanned raw data.
 	//
 	// example:
 	//
 	// 1048576
 	ScanBytes *int64 `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
-	// The type and aggregation information of columns.
+	// The dataset schema of the final pipeline output. The keys are field names, and the type in the values supports text, long, double, and json. The field order is determined by the keys.
+	//
+	// example:
+	//
+	// {"status":{"type":"long"}}
+	Schema map[string]*MetaSchemaValue `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The column types and aggregation information.
+	//
+	// example:
+	//
+	// [{"column":"status","type":"long"}]
 	Terms []map[string]interface{} `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
-	// The filter condition SPL statement.
+	// The SPL statement for the filter condition.
 	//
 	// example:
 	//
@@ -225,6 +255,10 @@ func (s *PreviewPipelineResponseBodyMeta) GetProgress() *string {
 
 func (s *PreviewPipelineResponseBodyMeta) GetScanBytes() *int64 {
 	return s.ScanBytes
+}
+
+func (s *PreviewPipelineResponseBodyMeta) GetSchema() map[string]*MetaSchemaValue {
+	return s.Schema
 }
 
 func (s *PreviewPipelineResponseBodyMeta) GetTerms() []map[string]interface{} {
@@ -307,6 +341,11 @@ func (s *PreviewPipelineResponseBodyMeta) SetProgress(v string) *PreviewPipeline
 
 func (s *PreviewPipelineResponseBodyMeta) SetScanBytes(v int64) *PreviewPipelineResponseBodyMeta {
 	s.ScanBytes = &v
+	return s
+}
+
+func (s *PreviewPipelineResponseBodyMeta) SetSchema(v map[string]*MetaSchemaValue) *PreviewPipelineResponseBodyMeta {
+	s.Schema = v
 	return s
 }
 

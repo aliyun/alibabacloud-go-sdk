@@ -14,7 +14,7 @@ type iCreatePipelineResponseBody interface {
 }
 
 type CreatePipelineResponseBody struct {
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID used to locate the request during troubleshooting.
 	//
 	// example:
 	//

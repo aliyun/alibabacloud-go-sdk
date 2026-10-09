@@ -14,7 +14,7 @@ type iUpdatePipelineResponseBody interface {
 }
 
 type UpdatePipelineResponseBody struct {
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID, used to locate the request for troubleshooting.
 	//
 	// example:
 	//
